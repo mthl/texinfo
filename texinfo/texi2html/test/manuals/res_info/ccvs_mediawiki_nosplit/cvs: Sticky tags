@@ -29,7 +29,7 @@ example, how to avoid them!).
 You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs status driver.c
  ===================================================================
  File: driver.c          Status: Up-to-date
@@ -41,7 +41,6 @@ sticky tags or dates are set:
      Sticky Options:     (none)
  
 </div>
-</td></tr></table>
 
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
@@ -78,7 +77,7 @@ a file without setting a sticky tag.  This can
 be done with the &lsquo;<code>-p</code>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -p -r 1.1 file1 &gt;file1
  ===================================================================
  Checking out file1
@@ -87,7 +86,6 @@ standard output.  For example:
  ***************
  $
 </div>
-</td></tr></table>
 
 However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put

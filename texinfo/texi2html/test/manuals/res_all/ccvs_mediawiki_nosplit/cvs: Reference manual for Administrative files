@@ -23,7 +23,6 @@ discussion of how to edit them, see [[cvs: The administrative files#The administ
 The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: The modules file#The modules file|&bull; modules]]::                     Defining modules
  [[cvs: The cvswrappers file#The cvswrappers file|&bull; Wrappers]]::                    Specify binary-ness based on file name
  [[cvs: The commit support files#The commit support files|&bull; commit files]]::                The commit support files (commitinfo,
@@ -34,6 +33,5 @@ file, which defines the modules inside the repository.
  [[cvs: The history file#The history file|&bull; history file]]::                History information
  [[cvs: Expansions in administrative files#Expansions in administrative files|&bull; Variables]]::                   Various variables are expanded
  [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

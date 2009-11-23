@@ -32,11 +32,10 @@ them):
 
 : Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t made any changes to the file.  If the current revision of <var>file</var> is 1.7, then the following two commands are equivalent:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -f <var>file</var>
  $ cvs commit -r 1.8 <var>file</var>
 </div>
-</td></tr></table>
 
 : The &lsquo;<code>-f</code>&rsquo; option disables recursion (i.e., it implies &lsquo;<code>-l</code>&rsquo;).  To force <small>CVS</small> to commit a new revision for all files in all subdirectories, you must use &lsquo;<code>-f -R</code>&rsquo;.
 

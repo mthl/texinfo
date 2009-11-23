@@ -16,19 +16,17 @@ suppose that you have a script &lsquo;<tt>logcommit.pl</tt>&rsquo;
 which you run by including the following line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; administrative file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL   $CVSROOT/CVSROOT/logcommit.pl
 </div>
-</td></tr></table>
 
 To maintain &lsquo;<tt>logcommit.pl</tt>&rsquo; with <small>CVS</small> you would
 add the following line to the &lsquo;<tt>checkoutlist</tt>&rsquo;
 administrative file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  logcommit.pl
 </div>
-</td></tr></table>
 
 The format of &lsquo;<tt>checkoutlist</tt>&rsquo; is one line for each
 file that you want to maintain using <small>CVS</small>, giving
@@ -40,10 +38,9 @@ the files listed there will function just like
 when checking in one of the files you should get a
 message such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.

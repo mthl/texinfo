@@ -41,10 +41,9 @@ to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
 &lsquo;<tt>numbers.c</tt>&rsquo; you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs admin -NR4patches:1.4.2 numbers.c
 </div>
-</td></tr></table>
 
 It only works if at least one revision is already
 committed on the branch.  Be very careful so that you

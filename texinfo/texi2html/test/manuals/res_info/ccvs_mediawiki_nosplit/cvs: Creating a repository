@@ -48,10 +48,9 @@ command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
 (see [[cvs: The Repository#The Repository|Repository]]).  For example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot init
 </div>
-</td></tr></table>
 
 <code>cvs init</code> is careful to never overwrite any
 existing files in the repository, so no harm is done if

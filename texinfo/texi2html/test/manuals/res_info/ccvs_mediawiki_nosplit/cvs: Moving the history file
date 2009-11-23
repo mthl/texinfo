@@ -13,11 +13,10 @@ This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>dir</var>
  $ mv <var>old</var>,v <var>new</var>,v
 </div>
-</td></tr></table>
 
 Advantages:
 

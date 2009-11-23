@@ -70,11 +70,9 @@ directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see [[cvs: Getting the source#Getting the source|Getting the source]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: import options#import options|&bull; import options]]::              import options
  [[cvs: import output#import output|&bull; import output]]::               import output
  [[cvs: import examples#import examples|&bull; import examples]]::             import examples
-</div>
 
 
 ----

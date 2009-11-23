@@ -78,10 +78,8 @@ directory.
 For the output produced by the <code>checkout</code> command
 see [[cvs: update output#update output|update output]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: checkout options#checkout options|&bull; checkout options]]::            checkout options
  [[cvs: checkout examples#checkout examples|&bull; checkout examples]]::           checkout examples
-</div>
 
 
 ----

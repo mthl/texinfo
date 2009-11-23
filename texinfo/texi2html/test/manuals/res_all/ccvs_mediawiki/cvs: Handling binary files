@@ -111,28 +111,26 @@ nor keyword expansion will be done.
 Here is an example of how you can create a new file
 using the &lsquo;<code>-kb</code>&rsquo; flag:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ echo '$<i></i>Id$' &gt; kotest
  $ cvs add -kb -m&quot;A test file&quot; kotest
  $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 </div>
-</td></tr></table>
 
 If a file accidentally gets added without &lsquo;<code>-kb</code>&rsquo;,
 one can use the <code>cvs admin</code> command to recover.
 For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ echo '$<i></i>Id$' &gt; kotest
  $ cvs add -m&quot;A test file&quot; kotest
  $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
  $ cvs admin -kb kotest
  $ cvs update -A kotest
- # <span class="roman" style="font-family:serif; font-weight:normal;">For non-unix systems:</span>
- # <span class="roman" style="font-family:serif; font-weight:normal;">Copy in a good copy of the file from outside CVS</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">For non-unix systems:</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Copy in a good copy of the file from outside CVS</span>
  $ cvs commit -m &quot;make it binary&quot; kotest
 </div>
-</td></tr></table>
 
 When you check in the file &lsquo;<tt>kotest</tt>&rsquo; the file is
 not preserved as a binary file, because you did not

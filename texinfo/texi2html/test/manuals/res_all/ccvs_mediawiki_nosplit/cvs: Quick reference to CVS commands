@@ -19,10 +19,9 @@ described in detail.  For other references run the
 
 A <small>CVS</small> command looks like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki> <var>global_options</var> <nowiki>]</nowiki> <var>command</var> <nowiki>[</nowiki> <var>command_options</var> <nowiki>]</nowiki> <nowiki>[</nowiki> <var>command_args</var> <nowiki>]</nowiki>
 </div>
-</td></tr></table>
 
 Global options:
 
@@ -89,7 +88,7 @@ Global options:
 
 Keyword expansion modes (see [[cvs: Substitution modes#Substitution modes|Substitution modes]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  -kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
  -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
  -kk   $<i></i>Id$
@@ -97,11 +96,10 @@ Keyword expansion modes (see [[cvs: Substitution modes#Substitution modes|Substi
  -ko   <i>no expansion</i>
  -kb   <i>no expansion, file is binary</i>
 </div>
-</td></tr></table>
 
 Keywords (see [[cvs: Keyword List#Keyword List|Keyword list]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $<i></i>Author: joe $
  $<i></i>Date: 1993/12/09 03:21:13 $
  $<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
@@ -118,7 +116,6 @@ Keywords (see [[cvs: Keyword List#Keyword List|Keyword list]]):
  Initial revision
  
 </div>
-</td></tr></table>
 
 Commands, command options, and command arguments:
 

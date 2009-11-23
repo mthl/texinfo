@@ -35,11 +35,10 @@ want to be able to use even when new releases are made
 in the future.  You start by importing the source to
 your repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd wdiff-0.04
  $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 </div>
-</td></tr></table>
 
 The vendor tag is named &lsquo;<code>FSF_DIST</code>&rsquo; in the above
 example, and the only release tag assigned is

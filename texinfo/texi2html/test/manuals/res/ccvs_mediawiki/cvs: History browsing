@@ -150,19 +150,17 @@ aborted.
 Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL /usr/local/cvsroot/CVSROOT/loggit
 </div>
-</td></tr></table>
 
 Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
 following script:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </div>
-</td></tr></table>
 
 
 ----
@@ -191,14 +189,13 @@ following script:
 
 : For each file in <var>files</var>, print the head revision of the trunk, together with information on the last modification for each line.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs annotate ssfile
  Annotations for ssfile
  ***************
  1.1          (mary     27-Mar-96): ssfile line 1
  1.2          (joe      28-Mar-96): ssfile line 2
 </div>
-</td></tr></table>
 
 : The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines. The <code>ssfile line 1</code> line was checked in by <code>mary</code> on March 27.  Then, on March 28, <code>joe</code> added a line <code>ssfile line 2</code>, without modifying the <code>ssfile line 1</code> line.  This report doesn&rsquo;t tell you anything about lines which have been deleted or replaced; you need to use <code>cvs diff</code> for that (see section [[cvs: Guide to CVS commands#diff&mdash;Show differences between revisions|diff&mdash;Show differences between revisions]]).
 

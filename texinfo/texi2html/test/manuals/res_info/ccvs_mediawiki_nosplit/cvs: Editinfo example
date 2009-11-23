@@ -18,15 +18,14 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  BugId:
 </div>
-</td></tr></table>
 
 The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
 edit the log message.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  #
  #       bugid.edit filename
@@ -46,20 +45,17 @@ edit the log message.
      $CVSEDITOR $1
  done
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/bugid.edit
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/tc.template
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -82,10 +82,9 @@ display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
 
 <div id="index-update_002c-to-display-file-status"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs -n -q update
 </div>
-</td></tr></table>
 
 The &lsquo;<code>-n</code>&rsquo; option means to not actually do the
 update, but merely to display statuses; the &lsquo;<code>-q</code>&rsquo;

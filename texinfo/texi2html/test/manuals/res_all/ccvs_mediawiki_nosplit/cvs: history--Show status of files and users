@@ -30,8 +30,6 @@ Logging must be enabled by creating the file
 &lsquo;<code>-n</code>&rsquo;, and &lsquo;<code>-p</code>&rsquo; in ways that conflict with the
 normal use inside <small>CVS</small> (see [[cvs: Common command options#Common command options|Common options]]).'''
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: history options#history options|&bull; history options]]::             history options
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -76,10 +76,9 @@ supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL mail %s -s &quot;CVS notification&quot;
 </div>
-</td></tr></table>
 
 This causes users to be notified by electronic mail.
 

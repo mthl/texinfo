@@ -15,10 +15,9 @@ Next: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs:
 
 The overall format of all <small>CVS</small> commands is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki> cvs_options <nowiki>]</nowiki> cvs_command <nowiki>[</nowiki> command_options <nowiki>]</nowiki> <nowiki>[</nowiki> command_args <nowiki>]</nowiki>
 </div>
-</td></tr></table>
 
 ;<code>cvs</code>
 : The name of the <small>CVS</small> program.

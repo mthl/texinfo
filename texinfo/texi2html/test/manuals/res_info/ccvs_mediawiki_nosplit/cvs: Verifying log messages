@@ -99,15 +99,14 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  BugId:
 </div>
-</td></tr></table>
 
 The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
 evaluate the log message.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  #
  #       bugid.verify filename
@@ -128,28 +127,24 @@ evaluate the log message.
      exit 1
  fi
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/bugid.verify
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/tc.template
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  RereadLogAfterVerify=always
 </div>
-</td></tr></table>
 
 
 

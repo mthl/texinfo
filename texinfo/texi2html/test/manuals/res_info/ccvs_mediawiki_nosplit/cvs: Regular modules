@@ -15,14 +15,13 @@ Next: [[cvs: Ampersand modules#Ampersand modules|Ampersand modules]], Previous: 
 
 For example, if a module is defined by:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  regmodule first-dir
 </div>
-</td></tr></table>
 
 then regmodule will contain the files from first-dir:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co regmodule
  cvs checkout: Updating regmodule
  U regmodule/file1
@@ -31,17 +30,15 @@ then regmodule will contain the files from first-dir:
  U regmodule/sdir/sfile
  $
 </div>
-</td></tr></table>
 
 By explicitly specifying files in the module definition
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  regfiles first-dir/sdir sfile
 </div>
-</td></tr></table>
 
 With this definition, getting the regfiles module
 will create a single working directory
@@ -49,11 +46,10 @@ will create a single working directory
 comes from a directory deeper
 in the <small>CVS</small> source repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co regfiles
  U regfiles/sfile
  $
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

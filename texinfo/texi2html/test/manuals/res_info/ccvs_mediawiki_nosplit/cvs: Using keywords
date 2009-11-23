@@ -32,7 +32,7 @@ values from a file.  This can be handy for text files,
 but it is even more useful for extracting keywords from
 binary files.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ident samp.c
  samp.c:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
@@ -41,7 +41,6 @@ binary files.
  a.out:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </div>
-</td></tr></table>
 
 <div id="index-What-_0028shell-command_0029"></div>
 S<small>CCS</small> is another popular revision control system.
@@ -53,9 +52,8 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

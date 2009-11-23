@@ -20,10 +20,8 @@ directory is even harder.  See [[cvs: Moving and renaming directories#Moving and
 The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: The Normal way to Rename#The Normal way to Rename|&bull; Outside]]::                     The normal way to Rename
  [[cvs: Moving the history file#Moving the history file|&bull; Inside]]::                      A tricky, alternative way
  [[cvs: Copying the history file#Copying the history file|&bull; Rename by copying]]::           Another tricky, alternative way
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

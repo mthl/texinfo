@@ -46,22 +46,20 @@ specifically in the &lsquo;<tt>$CVSROOT/CVSROOT/readers</tt>&rsquo;
 file, which is simply a newline-separated list of
 users.  Here is a sample &lsquo;<tt>readers</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  melissa
  splotnik
  jrandom
 </div>
-</td></tr></table>
 
 (Don&rsquo;t forget the newline after the last user.)
 
 &quot;Exclusion&quot; means explicitly listing everyone
 who has ''write'' access&mdash;if the file
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $CVSROOT/CVSROOT/writers
 </div>
-</td></tr></table>
 
 exists, then only
 those users listed in it have write access, and

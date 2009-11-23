@@ -14,7 +14,6 @@ This appendix describes the overall structure of
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Overall structure of CVS commands#Overall structure of CVS commands|&bull; Structure]]::                   Overall structure of CVS commands
  [[cvs: CVS's exit status#CVS&rsquo;s exit status|&bull; Exit status]]::                 Indicating CVS's success or failure
  [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|&bull; ~/.cvsrc]]::                    Default options with the ~/.csvrc file
@@ -31,7 +30,6 @@ reference to <small>CVS</small> commands, see [[cvs: Quick reference to CVS comm
  [[cvs: rdiff--'patch' format diffs between releases#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|&bull; rdiff]]::                       'patch' format diffs between releases
  [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|&bull; release]]::                     Indicate that a directory is no longer in use
  [[cvs: update--Bring work tree in sync with repository#update&mdash;Bring work tree in sync with repository|&bull; update]]::                      Bring work tree in sync with repository
-</div>
 
 
 ----

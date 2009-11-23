@@ -74,10 +74,9 @@ refer to a test directory you might create a user
 variable <code>TESTDIR</code>.  Then if <small>CVS</small> is invoked
 as
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -s TESTDIR=/work/local/tests
 </div>
-</td></tr></table>
 
 and the
 administrative file contains <code>sh

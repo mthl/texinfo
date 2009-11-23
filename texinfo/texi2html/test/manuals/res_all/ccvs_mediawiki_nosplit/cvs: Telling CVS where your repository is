@@ -14,10 +14,9 @@ where to find the repository.  You can name the
 repository on the command line explicitly, with the
 <code>-d</code> (for &quot;directory&quot;) option:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 <div id="index-_002eprofile_002c-setting-CVSROOT-in"></div>
 <div id="index-_002ecshrc_002c-setting-CVSROOT-in"></div>
@@ -31,19 +30,17 @@ To set <code>$CVSROOT</code>, <code>csh</code> and <code>tcsh</code>
 users should have this line in their &lsquo;<tt>.cshrc</tt>&rsquo; or
 &lsquo;<tt>.tcshrc</tt>&rsquo; files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  setenv CVSROOT /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 <code>sh</code> and <code>bash</code> users should instead have these lines in their
 &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.bashrc</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT=/usr/local/cvsroot
  export CVSROOT
 </div>
-</td></tr></table>
 
 <div id="index-Root-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRoot-file"></div>

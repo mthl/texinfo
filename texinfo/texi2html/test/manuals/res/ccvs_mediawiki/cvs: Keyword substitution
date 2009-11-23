@@ -106,7 +106,7 @@ This is a list of the keywords:
 ;<code>$<i></i>Log$</code>
 : The log message supplied during commit, preceded by a header containing the <small>RCS</small> filename, the revision number, the author, and the date (UTC).  Existing log messages are ''not'' replaced.  Instead, the new log message is inserted after <code>$<i></i>Log:&hellip;$</code>. Each new line is prefixed with the same string which precedes the <code>$Log</code> keyword.  For example, if the file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /* Here is what people have been up to:
     *
     * $<i></i>Log: frob.c,v $
@@ -115,7 +115,6 @@ This is a list of the keywords:
     *
     */
 </div>
-</td></tr></table>
 
 : then additional lines which are added when expanding the <code>$Log</code> keyword will be preceded by &lsquo;<code>   * </code>&rsquo;. Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the <em>comment leader</em> from the <small>RCS</small> file is not used. The <code>$Log</code> keyword is useful for accumulating a complete change log in a source file, but for several reasons it can be problematic. See section [[#Problems with the $ Log$ keyword.|Problems with the $ <i></i>Log$ keyword.]].
 
@@ -139,12 +138,11 @@ This is a list of the keywords:
 ;<code>Local keyword</code>
 : The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file may be used to specify a local keyword which is to be used as an alias for one of the other keywords. For example, if the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file contains a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a file with the local keyword $<i></i>MYBSD$ will be expanded as if it were a $<i></i>CVSHeader$ keyword. If the src/frob.c file contained this keyword, it might look something like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /*
     * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
     */
 </div>
-</td></tr></table>
 
 : Many repositories make use of a such a &ldquo;local keyword&rdquo; feature. An old patch to <small>CVS</small> provided the <code>LocalKeyword</code> feature using a <code>tag=</code> option and called this the &ldquo;custom tag&rdquo; or &ldquo;local tag&rdquo; feature. It was used in conjunction with the what they called the <code>tagexpand=</code> option. In <small>CVS</small> this other option is known as the <code>KeywordExpand</code> option.  See [[#Configuring Keyord Expansion|Configuring Keyord Expansion]] for more details.
 
@@ -200,7 +198,7 @@ values from a file.  This can be handy for text files,
 but it is even more useful for extracting keywords from
 binary files.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ident samp.c
  samp.c:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
@@ -209,7 +207,6 @@ binary files.
  a.out:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </div>
-</td></tr></table>
 
 <div id="index-What-_0028shell-command_0029"></div>
 S<small>CCS</small> is another popular revision control system.
@@ -221,10 +218,9 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </div>
-</td></tr></table>
 
 
 ----
@@ -385,24 +381,22 @@ to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD
 </div>
-</td></tr></table>
 
 then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion to the MyBSD, Name and Date keywords.
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD,Name,Date
 </div>
-</td></tr></table>
 
 would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
@@ -410,11 +404,10 @@ $<i></i>Date$ to be expanded.
 It is also possible to configure an exclusion list
 using the following:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Do not expand the non-RCS keyword CVSHeader
          KeywordExpand=eCVSHeader
 </div>
-</td></tr></table>
 
 This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
@@ -429,11 +422,10 @@ expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the &lsquo;<tt>CVSROOT/config</tt>&rsquo; line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  	# Do not expand any RCS keywords
  	KeywordExpand=i
 </div>
-</td></tr></table>
 
 this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,

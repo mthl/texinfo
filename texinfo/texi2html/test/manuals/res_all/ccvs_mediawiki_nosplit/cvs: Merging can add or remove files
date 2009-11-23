@@ -14,7 +14,7 @@ or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 
 For example:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -A
  touch a b c
  cvs add a b c ; cvs ci -m &quot;added&quot; a b c
@@ -26,7 +26,6 @@ For example:
  cvs update -A
  cvs update -jbranchtag
 </div>
-</td></tr></table>
 
 After these commands are executed and a &lsquo;<code>cvs commit</code>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.

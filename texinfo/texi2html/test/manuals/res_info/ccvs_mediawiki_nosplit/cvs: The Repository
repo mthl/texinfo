@@ -61,7 +61,6 @@ The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; c
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Telling CVS where your repository is#Telling CVS where your repository is|&bull; Specifying a repository]]::     Telling CVS where your repository is
  [[cvs: How data is stored in the repository#How data is stored in the repository|&bull; Repository storage]]::          The structure of the repository
  [[cvs: How data is stored in the working directory#How data is stored in the working directory|&bull; Working directory storage]]::   The structure of working directories
@@ -73,7 +72,6 @@ user-defined modules.
  [[cvs: Remote repositories#Remote repositories|&bull; Remote repositories]]::         Accessing repositories on remote machines
  [[cvs: Read-only repository access#Read-only repository access|&bull; Read-only access]]::            Granting read-only access to the repository
  [[cvs: Temporary directories for the server#Temporary directories for the server|&bull; Server temporary directory]]::  The server creates temporary directories
-</div>
 
 
 ----

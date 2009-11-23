@@ -16,10 +16,9 @@ Next: [[cvs: Accessing branches#Accessing branches|Accessing branches]], Previou
 You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag -b rel-1-0-patches
 </div>
-</td></tr></table>
 
 
 This splits off a branch based on the current revisions
@@ -36,10 +35,9 @@ to do that, see [[cvs: Accessing branches#Accessing branches|Accessing branches]
 You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 &lsquo;<code>-r rel-1-0</code>&rsquo; says that this branch should be
 rooted at the revision that

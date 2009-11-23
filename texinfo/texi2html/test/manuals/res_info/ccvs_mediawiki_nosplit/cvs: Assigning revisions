@@ -37,10 +37,9 @@ For example, to bring all your files up to
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -r 3.0
 </div>
-</td></tr></table>
 
 Note that the number you specify with &lsquo;<code>-r</code>&rsquo; must be
 larger than any existing revision number.  That is, if

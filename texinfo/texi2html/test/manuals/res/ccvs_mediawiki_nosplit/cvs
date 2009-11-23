@@ -15,7 +15,6 @@ This info manual describes how to use and administer
 <small>CVS</small> version 4.2.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Overview|&bull; Overview]]::                    An introduction to CVS
  [[#The Repository|&bull; Repository]]::                  Where all your sources are stored
  [[#Starting a project with CVS|&bull; Starting a new project]]::      Starting a project with CVS
@@ -46,7 +45,6 @@ This info manual describes how to use and administer
  [[#Credits|&bull; Credits]]::                     Some of the contributors to this manual
  [[#Dealing with bugs in CVS or this manual|&bull; BUGS]]::                        Dealing with bugs in CVS or this manual
  [[#Index|&bull; Index]]::                       Index
-</div>
 
 <hr size="6">
 <div id="Overview"></div>
@@ -77,11 +75,9 @@ If you are already familiar with <small>CVS</small> and are just
 trying to learn a particular feature or remember a
 certain command, you can probably skip everything here.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#What is CVS?|&bull; What is CVS?]]::                What you can do with CVS
  [[#What is CVS not?|&bull; What is CVS not?]]::            Problems CVS doesn't try to solve
  [[#A sample session|&bull; A sample session]]::            A tour of basic CVS usage
-</div>
 
 
 ----
@@ -158,11 +154,10 @@ You can get <small>CVS</small> in a variety of ways, including
 free download from the internet.  For more information
 on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  http://www.cvshome.org/
  http://www.loria.fr/~molli/cvs-index.html
 </div>
-</td></tr></table>
 
 <div id="index-Mailing-list"></div>
 <div id="index-List_002c-mailing-list"></div>
@@ -304,12 +299,10 @@ The compiler is called &lsquo;<code>tc</code>&rsquo; (Trivial Compiler),
 and the repository is set up so that there is a module
 called &lsquo;<code>tc</code>&rsquo;.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Getting the source|&bull; Getting the source]]::          Creating a workspace
  [[#Committing your changes|&bull; Committing your changes]]::     Making your work available to others
  [[#Cleaning up|&bull; Cleaning up]]::                 Cleaning up
  [[#Viewing differences|&bull; Viewing differences]]::         Viewing differences
-</div>
 
 
 ----
@@ -341,20 +334,18 @@ called &lsquo;<code>tc</code>&rsquo;.
 The first thing you must do is to get your own working copy of the
 source for &lsquo;<code>tc</code>&rsquo;.  For this, you use the <code>checkout</code> command:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout tc
 </div>
-</td></tr></table>
 
 This will create a new directory called &lsquo;<tt>tc</tt>&rsquo; and populate it with
 the source files.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ ls
  CVS         Makefile    backend.c   driver.c    frontend.c  parser.c
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>CVS</tt>&rsquo; directory is used internally by
 <small>CVS</small>.  Normally, you should not modify or remove
@@ -395,10 +386,9 @@ store your new &lsquo;<tt>backend.c</tt>&rsquo; in the repository and
 make it available to anyone else who is using that same
 repository.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit backend.c
 </div>
-</td></tr></table>
 
 <small>CVS</small> starts an editor, to allow you to enter a log
 message.  You type in &ldquo;Added an optimization pass.&rdquo;,
@@ -443,10 +433,9 @@ starting an editor you can specify the log message on
 the command line using the &lsquo;<code>-m</code>&rsquo; flag instead, like
 this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Added an optimization pass&quot; backend.c
 </div>
-</td></tr></table>
 
 
 ----
@@ -477,15 +466,14 @@ this:
 Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ rm -r tc
 </div>
-</td></tr></table>
 
 but a better way is to use the <code>release</code> command (see section [[#release&mdash;Indicate that a Module is no longer in use|release&mdash;Indicate that a Module is no longer in use]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ cvs release -d tc
  M driver.c
@@ -494,7 +482,6 @@ but a better way is to use the <code>release</code> command (see section [[#rele
  Are you sure you want to release (and delete) directory `tc': n
  ** `release' aborted by user choice.
 </div>
-</td></tr></table>
 
 The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the
@@ -551,18 +538,17 @@ when <code>release</code> asks for confirmation.
 You do not remember modifying &lsquo;<tt>driver.c</tt>&rsquo;, so you want to see what
 has happened to that file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs diff driver.c
 </div>
-</td></tr></table>
 
 This command runs <code>diff</code> to compare the version of &lsquo;<tt>driver.c</tt>&rsquo;
 that you checked out with your working copy.  When you see the output
 you remember that you added a command line option that enabled the
 optimization pass.  You check it in, and release the module.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Added an optimization pass&quot; driver.c
  Checking in driver.c;
  /usr/local/cvsroot/tc/driver.c,v  &lt;--  driver.c
@@ -574,7 +560,6 @@ optimization pass.  You check it in, and release the module.
  You have <nowiki>[</nowiki>0<nowiki>]</nowiki> altered files in this repository.
  Are you sure you want to release (and delete) directory `tc': y
 </div>
-</td></tr></table>
 
 
 ----
@@ -650,7 +635,6 @@ The repository is split in two parts.  &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo; c
 administrative files for <small>CVS</small>.  The other directories contain the actual
 user-defined modules.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Telling CVS where your repository is|&bull; Specifying a repository]]::     Telling CVS where your repository is
  [[#How data is stored in the repository|&bull; Repository storage]]::          The structure of the repository
  [[#How data is stored in the working directory|&bull; Working directory storage]]::   The structure of working directories
@@ -662,7 +646,6 @@ user-defined modules.
  [[#Remote repositories|&bull; Remote repositories]]::         Accessing repositories on remote machines
  [[#Read-only repository access|&bull; Read-only access]]::            Granting read-only access to the repository
  [[#Temporary directories for the server|&bull; Server temporary directory]]::  The server creates temporary directories
-</div>
 
 
 ----
@@ -691,10 +674,9 @@ where to find the repository.  You can name the
 repository on the command line explicitly, with the
 <code>-d</code> (for &quot;directory&quot;) option:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 <div id="index-_002eprofile_002c-setting-CVSROOT-in"></div>
 <div id="index-_002ecshrc_002c-setting-CVSROOT-in"></div>
@@ -708,19 +690,17 @@ To set <code>$CVSROOT</code>, <code>csh</code> and <code>tcsh</code>
 users should have this line in their &lsquo;<tt>.cshrc</tt>&rsquo; or
 &lsquo;<tt>.tcshrc</tt>&rsquo; files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  setenv CVSROOT /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 <code>sh</code> and <code>bash</code> users should instead have these lines in their
 &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.bashrc</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT=/usr/local/cvsroot
  export CVSROOT
 </div>
-</td></tr></table>
 
 <div id="index-Root-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRoot-file"></div>
@@ -773,7 +753,6 @@ for example you might need to track down <small>CVS</small> locks
 (see section [[#Several developers simultaneously attempting to run CVS|Several developers simultaneously attempting to run CVS]]) or you might need to deal with
 the file permissions appropriate for the repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Where files are stored within the repository|&bull; Repository files]]::            What files are stored in the repository
  [[#File permissions|&bull; File permissions]]::            File permissions
  [[#File Permission issues specific to Windows|&bull; Windows permissions]]::         Issues specific to Windows
@@ -781,7 +760,6 @@ the file permissions appropriate for the repository.
  [[#The CVS directory in the repository|&bull; CVS in repository]]::           Additional information in CVS directory
  [[#CVS locks in the repository|&bull; Locks]]::                       CVS locks control concurrent accesses
  [[#How files are stored in the CVSROOT directory|&bull; CVSROOT storage]]::             A few things about CVSROOT are different
-</div>
 
 
 ----
@@ -810,15 +788,14 @@ The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 here is a possible directory tree (showing only the
 directories):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <tt>/usr</tt>
   |
   +--<tt>local</tt>
@@ -849,14 +826,13 @@ directories):
                |
                +--(other Yoyodyne software)
 </div>
-</td></tr></table>
 
 With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
 the name of the corresponding file with &lsquo;<code>,v</code>&rsquo;
 appended to the end.  Here is what the repository for
 the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    <code>$CVSROOT</code>
      |
      +--<tt>yoyodyne</tt>
@@ -877,7 +853,6 @@ the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
                   +--<tt>testpgm.t,v</tt>
                   +--<tt>test2.t,v</tt>
 </div>
-</td></tr></table>
 
 <div id="index-History-files"></div>
 <div id="index-RCS-history-files"></div>
@@ -1089,17 +1064,15 @@ talking about the file &lsquo;<tt>backend.c</tt>&rsquo; in the
 directory &lsquo;<tt>yoyodyne/tc</tt>&rsquo;, then the file normally
 would be in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc/backend.c,v
 </div>
-</td></tr></table>
 
 but if it goes in the attic, it would be in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 </div>
-</td></tr></table>
 
 <div id="index-Dead-state"></div>
 instead.  It should not matter from a user point of
@@ -1193,12 +1166,11 @@ Builtin attributes:
 
 Example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
  Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
  D _watched=
 </div>
-</td></tr></table>
 
 means that the file &lsquo;<tt>file1</tt>&rsquo; should be checked out
 read-only.  Furthermore, joe is watching for edits and
@@ -1345,10 +1317,9 @@ contains the latest revision contained in
 &lsquo;<tt>loginfo,v</tt>&rsquo;.  When you check in an administrative
 file, <small>CVS</small> should print
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
@@ -1437,31 +1408,27 @@ such systems either.
 ;&lsquo;<tt>Repository</tt>&rsquo;
 : This file contains the directory within the repository which the current directory corresponds with.  It can be either an absolute pathname or a relative pathname; <small>CVS</small> has had the ability to read either format since at least version 1.3 or so.  The relative pathname is relative to the root, and is the more sensible approach, but the absolute pathname is quite common and implementations should accept either.  For example, after the command
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d<nowiki> :</nowiki>local:/usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 : &lsquo;<tt>Root</tt>&rsquo; will contain
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  :local:/usr/local/cvsroot
 </div>
-</td></tr></table>
 
 : and &lsquo;<tt>Repository</tt>&rsquo; will contain either
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc
 </div>
-</td></tr></table>
 
 : or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  yoyodyne/tc
 </div>
-</td></tr></table>
 
 : If the particular working directory does not correspond to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo; should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;. <div id="index-Emptydir_002c-in-CVSROOT-directory"></div> <div id="index-CVSROOT_002fEmptydir-directory"></div>
 
@@ -1472,10 +1439,9 @@ such systems either.
 
 : If the first character is &lsquo;<code>/</code>&rsquo;, then the format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /<var>name</var>/<var>revision</var>/<var>timestamp</var><nowiki>[</nowiki>+<var>conflict</var><nowiki>]</nowiki>/<var>options</var>/<var>tagdate</var>
 </div>
-</td></tr></table>
 
 : where &lsquo;<code><nowiki>[</nowiki></code>&rsquo; and &lsquo;<code><nowiki>]</nowiki></code>&rsquo; are not part of the entry, but instead indicate that the &lsquo;<code>+</code>&rsquo; and conflict marker are optional.  <var>name</var> is the name of the file within the directory.  <var>revision</var> is the revision that the file in the working derives from, or &lsquo;<code>0</code>&rsquo; for an added file, or &lsquo;<code>-</code>&rsquo; followed by a revision for a removed file.  <var>timestamp</var> is the timestamp of the file at the time that <small>CVS</small> created it; if the timestamp differs with the actual modification time of the file it means the file has been modified.  It is stored in the format used by the ISO C asctime() function (for example, &lsquo;<code>Sun Apr  7 01:29:26 1996</code>&rsquo;).  One may write a string which is not in that format, for example, &lsquo;<code>Result of merge</code>&rsquo;, to indicate that the file should always be considered to be modified.  This is not a special case; to see whether a file is modified a program should take the timestamp of the file and simply do a string compare with <var>timestamp</var>. If there was a conflict, <var>conflict</var> can be set to the modification time of the file after the file has been written with conflict markers (see section [[#Conflicts example|Conflicts example]]). Thus if <var>conflict</var> is subsequently the same as the actual modification time of the file it means that the user has obviously not resolved the conflict.  <var>options</var> contains sticky options (for example &lsquo;<code>-kb</code>&rsquo; for a binary file).  <var>tagdate</var> contains &lsquo;<code>T</code>&rsquo; followed by a tag name, or &lsquo;<code>D</code>&rsquo; for a date, followed by a sticky tag or date.  Note that if <var>timestamp</var> contains a pair of timestamps separated by a space, rather than a single timestamp, you are dealing with a version of <small>CVS</small> earlier than <small>CVS</small> 1.5 (not documented here).
 
@@ -1483,10 +1449,9 @@ such systems either.
 
 : If the first character of a line in &lsquo;<tt>Entries</tt>&rsquo; is &lsquo;<code>D</code>&rsquo;, then it indicates a subdirectory.  &lsquo;<code>D</code>&rsquo; on a line all by itself indicates that the program which wrote the &lsquo;<tt>Entries</tt>&rsquo; file does record subdirectories (therefore, if there is such a line and no other lines beginning with &lsquo;<code>D</code>&rsquo;, one knows there are no subdirectories).  Otherwise, the line looks like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
 </div>
-</td></tr></table>
 
 : where <var>name</var> is the name of the subdirectory, and all the <var>filler</var> fields should be silently ignored, for future expansion.  Programs which modify <code>Entries</code> files should preserve these fields.
 
@@ -1536,10 +1501,9 @@ such systems either.
 ;&lsquo;<tt>Baserev</tt>&rsquo;
 : The file lists the revision for each of the files in the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </div>
-</td></tr></table>
 
 : where <var>expansion</var> should be ignored, to allow for future expansion.
 
@@ -1590,7 +1554,7 @@ The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file.  It defines all modules in the repository.  This
 is a sample &lsquo;<tt>modules</tt>&rsquo; file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT         CVSROOT
  modules         CVSROOT modules
  cvs             gnu/cvs
@@ -1598,7 +1562,6 @@ is a sample &lsquo;<tt>modules</tt>&rsquo; file.
  diff            gnu/diff
  tc              yoyodyne/tc
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>modules</tt>&rsquo; file is line oriented.  In its
 simplest form each line contains the name of the
@@ -1697,13 +1660,12 @@ connections to as many server machines as necessary to
 perform the requested command.  Here is an example of
 how to set up a working directory:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d server1:/cvs co dir1
  cd dir1
  cvs -d server2:/root co sdir
  cvs update
 </div>
-</td></tr></table>
 
 The <code>cvs co</code> commands set up the working
 directory, and then the <code>cvs update</code> command will
@@ -1772,10 +1734,9 @@ command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
 (see section [[#The Repository|The Repository]]).  For example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot init
 </div>
-</td></tr></table>
 
 <code>cvs init</code> is careful to never overwrite any
 existing files in the repository, so no harm is done if
@@ -1941,10 +1902,9 @@ which can mount the repository, known as the
 repository is just like using a local one, except that
 the format of the repository name is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>:<var>method</var>:<nowiki>][[</nowiki><var>user</var><nowiki>][</nowiki>:<var>password</var><nowiki>]</nowiki>@<nowiki>]</nowiki><var>hostname</var><nowiki>[</nowiki>:<nowiki>[</nowiki><var>port</var><nowiki>]]</nowiki>/path/to/repository
 </div>
-</td></tr></table>
 
 Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
@@ -1959,14 +1919,12 @@ name contains &lsquo;<code>:</code>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
 described in [[#Connecting with rsh|Connecting with rsh]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Server requirements|&bull; Server requirements]]::         Memory and other resources for servers
  [[#Connecting with rsh|&bull; Connecting via rsh]]::          Using the <code>rsh</code> program to connect
  [[#Direct connection with password authentication|&bull; Password authenticated]]::      Direct connections using passwords
  [[#Direct connection with GSSAPI|&bull; GSSAPI authenticated]]::        Direct connections using GSSAPI
  [[#Direct connection with kerberos|&bull; Kerberos authenticated]]::      Direct connections with kerberos
  [[#Connecting with fork|&bull; Connecting via fork]]::         Using a forked <code>cvs server</code> to connect
-</div>
 
 
 ----
@@ -2080,17 +2038,15 @@ server machine is &lsquo;<code>faun.example.org</code>&rsquo;.  On
 faun, put the following line into the file
 &lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<code>bach</code>&rsquo;&rsquo;s home directory:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  toe.example.com  mozart
 </div>
-</td></tr></table>
 
 Then test that &lsquo;<code>rsh</code>&rsquo; is working with
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  rsh -l bach faun.example.org 'echo $PATH'
 </div>
-</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-environment-variable"></div>
 Next you have to make sure that <code>rsh</code> will be able
@@ -2140,10 +2096,9 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 &lsquo;<tt>/usr/local/cvsroot/</tt>&rsquo;, on machine
 &lsquo;<tt>faun.example.org</tt>&rsquo;, you are ready to go:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 (The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
 the same on both the local and remote hosts.)
@@ -2180,11 +2135,9 @@ not available.
 To use this method, it is necessary to make
 some adjustments on both the server and client sides.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Setting up the server for password authentication|&bull; Password authentication server]]::     Setting up the server
  [[#Using the client with password authentication|&bull; Password authentication client]]::     Using the client
  [[#Security considerations with password authentication|&bull; Password authentication security]]::   What this method does and does not do
-</div>
 
 
 ----
@@ -2238,11 +2191,10 @@ If your <code>inetd</code> allows raw port numbers in
 &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;, then the following (all on a
 single line in &lsquo;<tt>inetd.conf</tt>&rsquo;) should be sufficient:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  2401  stream  tcp  nowait  root  /usr/local/bin/cvs
  cvs -f --allow-root=/usr/cvsroot pserver
 </div>
-</td></tr></table>
 
 (You could also use the
 &lsquo;<code>-T</code>&rsquo; option to specify a temporary directory.)
@@ -2262,10 +2214,9 @@ If your <code>inetd</code> wants a symbolic service
 name instead of a raw port number, then put this in
 &lsquo;<tt>/etc/services</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvspserver      2401/tcp
 </div>
-</td></tr></table>
 
 and put <code>cvspserver</code> instead of <code>2401</code> in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 
@@ -2273,7 +2224,7 @@ If your system uses <code>xinetd</code> instead of <code>inetd</code>,
 the procedure is slightly different.
 Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing the following:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  service cvspserver
  <nowiki>{</nowiki>
     port        = 2401
@@ -2286,7 +2237,6 @@ Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing 
     server_args = -f --allow-root=/usr/cvsroot pserver
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 (If <code>cvspserver</code> is defined in &lsquo;<tt>/etc/services</tt>&rsquo;, you can omit
 the <code>port</code> line.)
@@ -2312,14 +2262,13 @@ optional password, and an optional system username for
 <small>CVS</small> to run as if authentication succeeds.  Here is
 an example &lsquo;<tt>passwd</tt>&rsquo; file with five entries:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  anonymous:
  bach:ULtgRLXo7NRxs
  spwang:1sOp854gDF3DY
  melissa:tGX1fS8sun6rY:pubcvs
  qproj:XR4EZcEs0szik:pubcvs
 </div>
-</td></tr></table>
 
 (The passwords are encrypted according to the standard
 Unix <code>crypt()</code> function, so it is possible to
@@ -2379,12 +2328,11 @@ omit the colon that would have separated it from the
 encrypted password).  For example, this would be a
 valid &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  anonymous::pubcvs
  fish:rKa5jzULzmhOo:kfogel
  sussman:1sOp854gDF3DY
 </div>
-</td></tr></table>
 
 When the password field is omitted or empty, then the
 client&rsquo;s authentication attempt will succeed with any
@@ -2432,19 +2380,17 @@ would therefore have the following lines
 in &lsquo;<tt>/etc/pam.conf</tt>&rsquo; to emulate the standard <small>CVS</small> 
 system &lsquo;<tt>/etc/passwd</tt>&rsquo; authentication:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs	auth	    required	pam_unix.so
  cvs	account	    required	pam_unix.so
 </div>
-</td></tr></table>
 
 The the equivalent &lsquo;<tt>/etc/pam.d/cvs</tt>&rsquo; would contain
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  auth	    required	pam_unix.so
  account	    required	pam_unix.so
 </div>
-</td></tr></table>
 
 Some systems require a full path to the module so that
 &lsquo;<tt>pam_unix.so</tt>&rsquo; (Linux) would become something like 
@@ -2540,18 +2486,16 @@ the password-authenticating server, one specifies the
 <code>pserver</code> protocol, optional username, repository host, an
 optional port number, and path to the repository.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:faun.example.org:/usr/local/cvsroot checkout someproj
 </div>
-</td></tr></table>
 
 or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT=:pserver:bach@faun.example.org:2401/usr/local/cvsroot
  cvs checkout someproj
 </div>
-</td></tr></table>
 
 However, unless you&rsquo;re connecting to a public-access
 repository (i.e., one where that username doesn&rsquo;t
@@ -2561,18 +2505,16 @@ It&rsquo;s done with the <code>login</code> command, which will
 prompt you interactively for the password if you didn&rsquo;t supply one as part of
 <var>$CVSROOT</var>:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot login
  CVS password:
 </div>
-</td></tr></table>
 
 or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach:p4ss30rd@faun.example.org:/usr/local/cvsroot login
 </div>
-</td></tr></table>
 
 After you enter the password, <small>CVS</small> verifies it with
 the server.  If the verification succeeds, then that
@@ -2605,10 +2547,9 @@ Once you have logged in, all <small>CVS</small> commands using
 that remote repository and username will authenticate
 with the stored password.  So, for example
   
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 should just work (unless the password changes on the
 server side, in which case you&rsquo;ll have to re-run
@@ -2758,10 +2699,9 @@ set this up as required by your GSSAPI mechanism.
 To connect using GSSAPI, use &lsquo;<code>:gserver:</code>&rsquo;.  For
 example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 
 ----
@@ -2827,10 +2767,9 @@ usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
 you are ready to go:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
@@ -2880,10 +2819,9 @@ To connect using the <code>fork</code> method, use
 &lsquo;<code>:fork:</code>&rsquo; and the pathname to your local
 repository.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :fork:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
 As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;
@@ -2949,22 +2887,20 @@ specifically in the &lsquo;<tt>$CVSROOT/CVSROOT/readers</tt>&rsquo;
 file, which is simply a newline-separated list of
 users.  Here is a sample &lsquo;<tt>readers</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  melissa
  splotnik
  jrandom
 </div>
-</td></tr></table>
 
 (Don&rsquo;t forget the newline after the last user.)
 
 &quot;Exclusion&quot; means explicitly listing everyone
 who has ''write'' access&mdash;if the file
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $CVSROOT/CVSROOT/writers
 </div>
-</td></tr></table>
 
 exists, then only
 those users listed in it have write access, and
@@ -3025,10 +2961,9 @@ read-only access.
 While running, the <small>CVS</small> server creates temporary
 directories.  They are named
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs-serv<var>pid</var>
 </div>
-</td></tr></table>
 
 where <var>pid</var> is the process identification number of
 the server.
@@ -3092,10 +3027,8 @@ directories.  See section [[#Moving and renaming files|Moving and renaming files
 
 What to do next depends on the situation at hand.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Setting up the files|&bull; Setting up the files]]::        Getting the files into the repository
  [[#Defining the module|&bull; Defining the module]]::         How to make a module of the files
-</div>
 
 
 ----
@@ -3122,13 +3055,11 @@ What to do next depends on the situation at hand.
 The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Creating a directory tree from a number of files|&bull; From files]]::                  This method is useful with old projects
                                  where files already exists.
  [[#Creating Files From Other Version Control Systems|&bull; From other version control systems]]::  Old projects where you want to
                                          preserve history from another system.
  [[#Creating a directory tree from scratch|&bull; From scratch]]::                Creating a directory tree from scratch.
-</div>
 
 
 ----
@@ -3161,11 +3092,10 @@ explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd <var>wdir</var>
  $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </div>
-</td></tr></table>
 
 Unless you supply a log message with the &lsquo;<code>-m</code>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
@@ -3178,13 +3108,12 @@ more information about them.
 You can now verify that it worked, and remove your
 original source directory.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
- $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
+ $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal">Explanation below</span>
  $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
  $ rm -r <var>wdir</var>
 </div>
-</td></tr></table>
 
 Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
@@ -3278,22 +3207,20 @@ files.
 For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ mkdir tc
  $ mkdir tc/man
  $ mkdir tc/testing
 </div>
-</td></tr></table>
 
 After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
 </div>
-</td></tr></table>
 
 Then, use <code>add</code> to add files (and new directories)
 as they appear.
@@ -3337,36 +3264,32 @@ In simple cases these steps are sufficient to define a module.
 
 # Get a working copy of the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout CVSROOT/modules
  $ cd CVSROOT
 </div>
-</td></tr></table>
 
 
 # Edit the file and insert a line that defines the module.  See section [[#The administrative files|The administrative files]], for an introduction.  See section [[#The modules file|The modules file]], for a full description of the modules file.  You can use the following line to define the module &lsquo;<code>tc</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  tc   yoyodyne/tc
 </div>
-</td></tr></table>
 
 
 # Commit your changes to the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Added the tc module.&quot; modules
 </div>
-</td></tr></table>
 
 
 # Release the modules module.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ cvs release -d CVSROOT
 </div>
-</td></tr></table>
 
 
 ----
@@ -3403,7 +3326,6 @@ went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
  [[#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual
  [[#Assigning revisions|&bull; Assigning revisions]]::         Assigning revisions
@@ -3413,7 +3335,6 @@ numeric revision in each file.
  [[#Deleting, moving, and renaming tags|&bull; Modifying tags]]::              Adding, renaming, and deleting tags
  [[#Tagging and adding and removing files|&bull; Tagging add/remove]]::          Tags with adding and removing files
  [[#Sticky tags|&bull; Sticky tags]]::                 Certain tags are persistent
-</div>
 
 
 ----
@@ -3454,12 +3375,11 @@ revision is given a new number by increasing the
 rightmost number by one.  The following figure displays
 a few revisions, with newer revisions to the right.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +-----+    +-----+    +-----+    +-----+    +-----+
         ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
         +-----+    +-----+    +-----+    +-----+    +-----+
 </div>
-</td></tr></table>
 
 It is also possible to end up with numbers containing
 more than one period, for example &lsquo;<code>1.3.2.2</code>&rsquo;.  Such
@@ -3552,10 +3472,9 @@ For example, to bring all your files up to
 revision 3.0 (including those that haven&rsquo;t changed),
 you might invoke:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -r 3.0
 </div>
-</td></tr></table>
 
 Note that the number you specify with &lsquo;<code>-r</code>&rsquo; must be
 larger than any existing revision number.  That is, if
@@ -3595,7 +3514,7 @@ source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
 <div id="index-RCS-revision-numbers"></div>
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ci.c            5.21
  co.c            5.9
  ident.c         5.3
@@ -3609,7 +3528,6 @@ revision numbers:
  rcsmap.c        5.2
  rcsutil.c       5.10
 </div>
-</td></tr></table>
 
 <div id="index-tag-_0028subcommand_0029_002c-introduction"></div>
 <div id="index-Tags_002c-symbolic-name"></div>
@@ -3651,7 +3569,7 @@ directory.  That is, you should issue the
 command in the directory where &lsquo;<tt>backend.c</tt>&rsquo;
 resides.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag rel-0-4 backend.c
  T backend.c
  $ cvs status -v backend.c
@@ -3668,7 +3586,6 @@ resides.
          rel-0-4                     (revision: 1.4)
  
 </div>
-</td></tr></table>
 
 For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see [[#Quick reference to CVS commands|Quick reference to CVS commands]].
@@ -3678,7 +3595,7 @@ to tag all the files that constitute a module with the same tag at
 strategic points in the development life-cycle, such as when a release
 is made.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag rel-1-0 .
  cvs tag: Tagging .
  T Makefile
@@ -3687,7 +3604,6 @@ is made.
  T frontend.c
  T parser.c
 </div>
-</td></tr></table>
 
 (When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
@@ -3700,10 +3616,9 @@ a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module &lsquo;<code>tc</code>&rsquo; at
 any time in the future:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r rel-1-0 tc
 </div>
-</td></tr></table>
 
 This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
@@ -3718,7 +3633,7 @@ can think about the tag as &quot;a curve drawn through a
 matrix of filename vs. revision number.&quot;  Say we have 5
 files with the following revisions:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          file1   file2   file3   file4   file5
  
          1.1     1.1     1.1     1.1  /--1.1*      &lt;-*-  TAG
@@ -3728,7 +3643,6 @@ files with the following revisions:
                        \-1.5*-   1.5
                          1.6
 </div>
-</td></tr></table>
 
 At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
@@ -3738,7 +3652,7 @@ way to look at it is that you &quot;sight&quot; through a set of
 revisions that is &quot;flat&quot; along the tagged revisions,
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          file1   file2   file3   file4   file5
  
                          1.1
@@ -3750,7 +3664,6 @@ like this:
          1.4                     1.4
                                  1.5
 </div>
-</td></tr></table>
 
 
 ----
@@ -3798,12 +3711,11 @@ If you want to avoid doing this by mistake, specify the
 locally modified files, <small>CVS</small> will abort with an
 error before it tags any files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag -c rel-0-4
  cvs tag: backend.c is locally modified
  cvs <nowiki>[</nowiki>tag aborted<nowiki>]</nowiki>: correct the above errors first!
 </div>
-</td></tr></table>
 
 
 ----
@@ -3857,10 +3769,9 @@ than the files which existed as of the given tag/date.
 Therefore, you are generally better off using <code>cvs
 rtag</code>.  The exceptions might be cases like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs tag -r 1.4 stable backend.c
 </div>
-</td></tr></table>
 
 
 ----
@@ -3911,10 +3822,9 @@ commands with taginfo (see section [[#User-defined logging|User-defined logging]
 To delete a tag, specify the &lsquo;<code>-d</code>&rsquo; option to either
 <code>cvs tag</code> or <code>cvs rtag</code>.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs rtag -d rel-0-4 tc
 </div>
-</td></tr></table>
 
 deletes the non-branch tag <code>rel-0-4</code> from the module <code>tc</code>.
 In the event that branch tags are encountered within the repository
@@ -3942,10 +3852,9 @@ point to revision 1.6.  To move a non-branch tag, specify the
 rtag</code>.  For example, the task just mentioned might be
 accomplished as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs tag -r 1.6 -F stable backend.c
 </div>
-</td></tr></table>
 
 If any branch tags are encountered in the repository 
 with the given name, a warning is issued and the branch
@@ -3972,11 +3881,10 @@ this method will not work with branch tags.)
 This leaves the new tag on exactly the 
 same files as the old tag.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs rtag -r old-name-0-4 rel-0-4 tc
  cvs rtag -d old-name-0-4 tc
 </div>
-</td></tr></table>
 
 
 ----
@@ -4074,7 +3982,7 @@ example, how to avoid them!).
 You can use the <code>status</code> command to see if any
 sticky tags or dates are set:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs status driver.c
  ===================================================================
  File: driver.c          Status: Up-to-date
@@ -4086,7 +3994,6 @@ sticky tags or dates are set:
      Sticky Options:     (none)
  
 </div>
-</td></tr></table>
 
 <div id="index-Resetting-sticky-tags"></div>
 <div id="index-Sticky-tags_002c-resetting"></div>
@@ -4123,7 +4030,7 @@ a file without setting a sticky tag.  This can
 be done with the &lsquo;<code>-p</code>&rsquo; option to <code>checkout</code> or
 <code>update</code>, which sends the contents of the file to
 standard output.  For example:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -p -r 1.1 file1 &gt;file1
  ===================================================================
  Checking out file1
@@ -4132,7 +4039,6 @@ standard output.  For example:
  ***************
  $
 </div>
-</td></tr></table>
 
 However, this isn&rsquo;t the easiest way, if you are asking
 how to undo a previous checkin (in this example, put
@@ -4183,7 +4089,6 @@ the changes into the working directory.
 You can then commit that revision, and thus effectively
 copy the changes onto another branch.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#What branches are good for|&bull; Branches motivation]]::         What branches are good for
  [[#Creating a branch|&bull; Creating a branch]]::           Creating a branch
  [[#Accessing branches|&bull; Accessing branches]]::          Checking out and updating branches
@@ -4194,7 +4099,6 @@ copy the changes onto another branch.
  [[#Merging differences between any two revisions|&bull; Merging two revisions]]::       Merging differences between two revisions
  [[#Merging can add or remove files|&bull; Merging adds and removals]]::   What if files are added or removed?
  [[#Merging and keywords|&bull; Merging and keywords]]::        Avoiding conflicts due to keyword substitution
-</div>
 
 
 ----
@@ -4266,10 +4170,9 @@ the main trunk, or leave them on the branch.
 You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag -b rel-1-0-patches
 </div>
-</td></tr></table>
 
 
 This splits off a branch based on the current revisions
@@ -4286,10 +4189,9 @@ to do that, see [[#Accessing branches|Accessing branches]].
 You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 &lsquo;<code>-r rel-1-0</code>&rsquo; says that this branch should be
 rooted at the revision that
@@ -4348,26 +4250,23 @@ To check out a branch from the repository, invoke
 &lsquo;<code>checkout</code>&rsquo; with the &lsquo;<code>-r</code>&rsquo; flag, followed by
 the tag name of the branch (see section [[#Creating a branch|Creating a branch]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 Or, if you already have a working copy, you can switch
 it to a given branch with &lsquo;<code>update -r</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 or equivalently:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs update -r rel-1-0-patches
 </div>
-</td></tr></table>
 
 It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
@@ -4389,7 +4288,7 @@ the field named &lsquo;<code>Sticky tag</code>&rsquo; (see section [[#Sticky tag
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs status -v driver.c backend.c
  ===================================================================
  File: driver.c          Status: Up-to-date
@@ -4419,7 +4318,6 @@ any, of the current working files:
          rel-0-4                     (revision: 1.4)
  
 </div>
-</td></tr></table>
 
 Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<code>1.7.2</code>&rsquo; and
@@ -4462,12 +4360,11 @@ branch numbers are constructed.
 Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section [[#Revision numbers|Revision numbers]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +-----+    +-----+    +-----+    +-----+    +-----+
         ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
         +-----+    +-----+    +-----+    +-----+    +-----+
 </div>
-</td></tr></table>
 
 However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
@@ -4487,7 +4384,7 @@ by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
                                                        +-------------+
                             Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
                                                      / +-------------+
@@ -4508,7 +4405,6 @@ example.
                      +---------+    +---------+    +---------+
  
 </div>
-</td></tr></table>
 
 
 
@@ -4577,10 +4473,9 @@ to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
 &lsquo;<tt>numbers.c</tt>&rsquo; you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs admin -NR4patches:1.4.2 numbers.c
 </div>
-</td></tr></table>
 
 It only works if at least one revision is already
 committed on the branch.  Be very careful so that you
@@ -4626,7 +4521,7 @@ The &lsquo;<code>-j</code>&rsquo; stands for &ldquo;join&rdquo;.
 <div id="index-Merge_002c-branch-example"></div>
 Consider this revision tree:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+
@@ -4636,23 +4531,21 @@ Consider this revision tree:
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                      +---------+    +---------+
 </div>
-</td></tr></table>
 
 The branch 1.2.2 has been given the tag (symbolic name) &lsquo;<code>R1fix</code>&rsquo;.  The
 following example assumes that the module &lsquo;<code>mod</code>&rsquo; contains only one
 file, &lsquo;<tt>m.c</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal;">Retrieve the latest revision, 1.4</span>
+<div class="example" style="margin-left: 3.2em">
+ $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal">Retrieve the latest revision, 1.4</span>
  
- $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal;">Merge all changes made on the branch,</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">i.e. the changes between revision 1.2</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">and 1.2.2.2, into your working copy</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">of the file.</span>
+ $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal">Merge all changes made on the branch,</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">i.e. the changes between revision 1.2</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">and 1.2.2.2, into your working copy</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">of the file.</span>
  
- $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal;">Create revision 1.5.</span>
+ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal">Create revision 1.5.</span>
 </div>
-</td></tr></table>
 
 A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
@@ -4665,11 +4558,10 @@ you might be getting more conflicts than strictly necessary.  See
 The <code>checkout</code> command also supports the &lsquo;<code>-j <var>branchname</var></code>&rsquo; flag.  The
 same effect as above could be achieved with this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -j R1fix mod
  $ cvs commit -m &quot;Included R1fix&quot;
 </div>
-</td></tr></table>
 
 It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging can add or remove files|Merging can add or remove files]], for more.
@@ -4699,7 +4591,7 @@ not produce the desired result.  See section [[#Merging can add or remove files|
 Continuing our example, the revision tree now looks
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -4709,7 +4601,6 @@ like this:
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                      +---------+    +---------+
 </div>
-</td></tr></table>
 
 where the starred line represents the merge from the
 &lsquo;<code>R1fix</code>&rsquo; branch to the main trunk, as just
@@ -4718,7 +4609,7 @@ discussed.
 Now suppose that development continues on the
 &lsquo;<code>R1fix</code>&rsquo; branch:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -4728,7 +4619,6 @@ Now suppose that development continues on the
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
                      +---------+    +---------+    +---------+
 </div>
-</td></tr></table>
 
 and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
@@ -4743,28 +4633,25 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal;">Merge changes from 1.2.2.2 to the</span>
-                                       # <span class="roman" style="font-family:serif; font-weight:normal;">head of the R1fix branch</span>
+<div class="example" style="margin-left: 3.2em">
+ cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal">Merge changes from 1.2.2.2 to the</span>
+                                       # <span class="roman" style="font-family:serif; font-weight:normal">head of the R1fix branch</span>
 </div>
-</td></tr></table>
 
 The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j R1fix:yesterday -j R1fix m.c
 </div>
-</td></tr></table>
 
 Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </div>
-</td></tr></table>
 
 
 ----
@@ -4797,10 +4684,9 @@ between any two revisions into your working file.
 
 <div id="index-Undoing-a-change"></div>
 <div id="index-Removing-a-change"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -j 1.5 -j 1.3 backend.c
 </div>
-</td></tr></table>
 
 will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
@@ -4822,7 +4708,7 @@ you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -j 1.2 -j 1.1 file1
  U file1
  $ cvs commit -m test
@@ -4832,7 +4718,6 @@ contents it had previously.  Here is how to do it:
  done
  $
 </div>
-</td></tr></table>
 
 
 ----
@@ -4861,7 +4746,7 @@ or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 
 For example:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -A
  touch a b c
  cvs add a b c ; cvs ci -m &quot;added&quot; a b c
@@ -4873,7 +4758,6 @@ For example:
  cvs update -A
  cvs update -jbranchtag
 </div>
-</td></tr></table>
 
 After these commands are executed and a &lsquo;<code>cvs commit</code>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.
@@ -4928,7 +4812,7 @@ spurious conflicts.
 
 For example, suppose you have a file like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +---------+
        _! 1.1.2.1 !   &lt;-  br1
       / +---------+
@@ -4938,13 +4822,12 @@ For example, suppose you have a file like this:
  ! 1.1 !----! 1.2 !
  +-----+    +-----+
 </div>
-</td></tr></table>
 
 and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -4963,7 +4846,6 @@ results from a merge:
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
  . . .
 </div>
-</td></tr></table>
 
 What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
@@ -4975,7 +4857,7 @@ working directory had contained <code>Revision: 1.2</code>.
 
 Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -4989,7 +4871,6 @@ Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
  key $<i></i>Revision$
  . . .
 </div>
-</td></tr></table>
 
 What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore
@@ -5045,7 +4926,7 @@ recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
        <code>$HOME</code>
          |
          +--<tt>tc</tt>
@@ -5070,7 +4951,6 @@ structure:
                   +--<tt>testpgm.t</tt>
                   +--<tt>test2.t</tt>
 </div>
-</td></tr></table>
 
 If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
@@ -5078,10 +4958,9 @@ following is true:
 
 * &lsquo;<code>cvs update testing</code>&rsquo; is equivalent to
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update testing/testpgm.t testing/test2.t
 </div>
-</td></tr></table>
 
 
 * &lsquo;<code>cvs update testing man</code>&rsquo; updates all files in the subdirectories
@@ -5101,10 +4980,9 @@ turned off with the &lsquo;<code>-l</code>&rsquo; option.
 Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recursion if
 &lsquo;<code>-l</code>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section [[#Default options and the ~/.cvsrc file|Default options and the ~/.cvsrc file]]).
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal;">Don't update files in subdirectories</span>
+<div class="example" style="margin-left: 3.2em">
+ $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal">Don't update files in subdirectories</span>
 </div>
-</td></tr></table>
 
 
 ----
@@ -5137,13 +5015,11 @@ fact that a change has taken place, just as with
 modifying an existing file.  The exact mechanisms to do
 this in <small>CVS</small> vary depending on the situation.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Adding files to a directory|&bull; Adding files]]::                Adding files
  [[#Removing files|&bull; Removing files]]::              Removing files
  [[#Removing directories|&bull; Removing directories]]::        Removing directories
  [[#Moving and renaming files|&bull; Moving files]]::                Moving and renaming files
  [[#Moving and renaming directories|&bull; Moving directories]]::          Moving and renaming directories
-</div>
 
 
 ----
@@ -5189,11 +5065,10 @@ Unlike most other commands, the <code>add</code> command is
 not recursive.  You cannot even type &lsquo;<code>cvs add
 foo/bar</code>&rsquo;!  Instead, you have to
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd foo
  $ cvs add bar
 </div>
-</td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
 ;<div id="index-cvs-add"></div>Command<nowiki>:</nowiki> <strong>cvs add</strong><em> <nowiki>[</nowiki><code>-k</code> kflag<nowiki>]</nowiki> <nowiki>[</nowiki><code>-m</code> message<nowiki>]</nowiki> files &hellip;</em>
@@ -5209,11 +5084,10 @@ foo/bar</code>&rsquo;!  Instead, you have to
 For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs add backend.c
  $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </div>
-</td></tr></table>
 
 When you add a file it is added only on the branch
 which you are working on (see section [[#Branching and merging|Branching and merging]]).  You can
@@ -5278,7 +5152,7 @@ specified to <code>checkout</code> or <code>update</code>.
 
 Here is an example of removing several files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ rm *.c
  $ cvs remove
@@ -5290,14 +5164,13 @@ Here is an example of removing several files:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 As a convenience you can remove the file and <code>cvs
 remove</code> it in one step, by specifying the &lsquo;<code>-f</code>&rsquo;
 option.  For example, the above example could also be
 done like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ cvs remove -f *.c
  cvs remove: scheduling a.c for removal
@@ -5307,14 +5180,13 @@ done like this:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
 
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ls
  CVS   ja.h  oj.c
  $ rm oj.c
@@ -5325,19 +5197,17 @@ change your mind before you commit, you can undo the
  U oj.c
  cvs add: oj.c, version 1.1.1.1, resurrected
 </div>
-</td></tr></table>
 
 If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ rm oj.c
  $ cvs update oj.c
  cvs update: warning: oj.c was lost
  U oj.c
 </div>
-</td></tr></table>
 
 When you remove a file it is removed only on the branch
 which you are working on (see section [[#Branching and merging|Branching and merging]]).  You can
@@ -5427,11 +5297,9 @@ directory is even harder.  See section [[#Moving and renaming directories|Moving
 The examples below assume that the file <var>old</var> is renamed to
 <var>new</var>.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#The Normal way to Rename|&bull; Outside]]::                     The normal way to Rename
  [[#Moving the history file|&bull; Inside]]::                      A tricky, alternative way
  [[#Copying the history file|&bull; Rename by copying]]::           Another tricky, alternative way
-</div>
 
 
 ----
@@ -5461,13 +5329,12 @@ The normal way to move a file is to copy <var>old</var> to
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ mv <var>old</var> <var>new</var>
  $ cvs remove <var>old</var>
  $ cvs add <var>new</var>
  $ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
 </div>
-</td></tr></table>
 
 This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was
@@ -5508,11 +5375,10 @@ This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>dir</var>
  $ mv <var>old</var>,v <var>new</var>,v
 </div>
-</td></tr></table>
 
 Advantages:
 
@@ -5558,23 +5424,22 @@ Disadvantages:
 This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- # <span class="roman" style="font-family:serif; font-weight:normal;">Copy the RCS file inside the repository</span>
+<div class="example" style="margin-left: 3.2em">
+ # <span class="roman" style="font-family:serif; font-weight:normal">Copy the RCS file inside the repository</span>
  $ cd $CVSROOT/<var>dir</var>
  $ cp <var>old</var>,v <var>new</var>,v
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove the old file</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove the old file</span>
  $ cd ~/<var>dir</var>
  $ rm <var>old</var>
  $ cvs remove <var>old</var>
  $ cvs commit <var>old</var>
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove all tags from <var>new</var></span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove all tags from <var>new</var></span>
  $ cvs update <var>new</var>
- $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal;">Remember the non-branch tag names</span>
+ $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal">Remember the non-branch tag names</span>
  $ cvs tag -d <var>tag1</var> <var>new</var>
  $ cvs tag -d <var>tag2</var> <var>new</var>
  &hellip;
 </div>
-</td></tr></table>
 
 By removing the tags you will be able to check out old
 revisions.
@@ -5636,11 +5501,10 @@ like this:
 
 # Rename the directory inside the repository.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>parent-dir</var>
  $ mv <var>old-dir</var> <var>new-dir</var>
 </div>
-</td></tr></table>
 
 
 # Fix the <small>CVS</small> administrative files, if necessary (for instance if you renamed an entire module).
@@ -5690,12 +5554,10 @@ history&mdash;what files have changed when, how, and by
 whom, there are a variety of mechanisms for looking
 through the history.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Log messages|&bull; log messages]]::                Log messages
  [[#The history database|&bull; history database]]::            The history database
  [[#User-defined logging|&bull; user-defined logging]]::        User-defined logging
  [[#Annotate command|&bull; annotate]]::                    What revision modified each line of a file?
-</div>
 
 
 ----
@@ -5814,19 +5676,17 @@ aborted.
 Here is an example of using taginfo to log tag and rtag
 commands.  In the taginfo file put:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL /usr/local/cvsroot/CVSROOT/loggit
 </div>
-</td></tr></table>
 
 Where &lsquo;<tt>/usr/local/cvsroot/CVSROOT/loggit</tt>&rsquo; contains the
 following script:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  echo &quot;$@&quot; &gt;&gt;/home/kingdon/cvsroot/CVSROOT/taglog
 </div>
-</td></tr></table>
 
 
 ----
@@ -5855,14 +5715,13 @@ following script:
 
 : For each file in <var>files</var>, print the head revision of the trunk, together with information on the last modification for each line.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs annotate ssfile
  Annotations for ssfile
  ***************
  1.1          (mary     27-Mar-96): ssfile line 1
  1.2          (joe      28-Mar-96): ssfile line 2
 </div>
-</td></tr></table>
 
 : The file &lsquo;<tt>ssfile</tt>&rsquo; currently contains two lines. The <code>ssfile line 1</code> line was checked in by <code>mary</code> on March 27.  Then, on March 28, <code>joe</code> added a line <code>ssfile line 2</code>, without modifying the <code>ssfile line 1</code> line.  This report doesn&rsquo;t tell you anything about lines which have been deleted or replaced; you need to use <code>cvs diff</code> for that (see section [[#diff&mdash;Show differences between revisions|diff&mdash;Show differences between revisions]]).
 
@@ -5905,10 +5764,8 @@ abilities, <small>CVS</small> can store binary files.  For
 example, one might store a web site in <small>CVS</small>
 including both text files and binary images.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#The issues with binary files|&bull; Binary why]]::     More details on issues with binary files
  [[#How to store binary files|&bull; Binary howto]]::   How to store them
-</div>
 
 
 ----
@@ -6022,28 +5879,26 @@ nor keyword expansion will be done.
 Here is an example of how you can create a new file
 using the &lsquo;<code>-kb</code>&rsquo; flag:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ echo '$<i></i>Id$' &gt; kotest
  $ cvs add -kb -m&quot;A test file&quot; kotest
  $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
 </div>
-</td></tr></table>
 
 If a file accidentally gets added without &lsquo;<code>-kb</code>&rsquo;,
 one can use the <code>cvs admin</code> command to recover.
 For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ echo '$<i></i>Id$' &gt; kotest
  $ cvs add -m&quot;A test file&quot; kotest
  $ cvs ci -m&quot;First checkin; contains a keyword&quot; kotest
  $ cvs admin -kb kotest
  $ cvs update -A kotest
- # <span class="roman" style="font-family:serif; font-weight:normal;">For non-unix systems:</span>
- # <span class="roman" style="font-family:serif; font-weight:normal;">Copy in a good copy of the file from outside CVS</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">For non-unix systems:</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Copy in a good copy of the file from outside CVS</span>
  $ cvs commit -m &quot;make it binary&quot; kotest
 </div>
-</td></tr></table>
 
 When you check in the file &lsquo;<tt>kotest</tt>&rsquo; the file is
 not preserved as a binary file, because you did not
@@ -6148,7 +6003,6 @@ models work, and some of the issues involved in
 choosing between them.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#File status|&bull; File status]]::                 A file can be in several states
  [[#Bringing a file up to date|&bull; Updating a file]]::             Bringing a file up-to-date
  [[#Conflicts example|&bull; Conflicts example]]::           An informative example
@@ -6156,7 +6010,6 @@ choosing between them.
  [[#Several developers simultaneously attempting to run CVS|&bull; Concurrency]]::                 Simultaneous repository access
  [[#Mechanisms to track who is editing files|&bull; Watches]]::                     Mechanisms to track who is editing files
  [[#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
-</div>
 
 
 ----
@@ -6253,10 +6106,9 @@ display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
 
 <div id="index-update_002c-to-display-file-status"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs -n -q update
 </div>
-</td></tr></table>
 
 The &lsquo;<code>-n</code>&rsquo; option means to not actually do the
 update, but merely to display statuses; the &lsquo;<code>-q</code>&rsquo;
@@ -6344,7 +6196,7 @@ See section [[#update&mdash;Bring work tree in sync with repository|update&mdash
 
 Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdio.h&gt;
  
  void main()
@@ -6357,11 +6209,10 @@ Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
      exit(nerr == 0 ? 0 : 1);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdio.h&gt;
  
  int main(int argc,
@@ -6380,12 +6231,11 @@ Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
      exit(!!nerr);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
 1.4, contains this before you run &lsquo;<code>cvs update</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -6400,11 +6250,10 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 You run &lsquo;<code>cvs update</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update driver.c
  RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
  retrieving revision 1.4
@@ -6414,7 +6263,6 @@ You run &lsquo;<code>cvs update</code>&rsquo;:
  cvs update: conflicts found in driver.c
  C driver.c
 </div>
-</td></tr></table>
 
 <div id="index-Conflicts-_0028merge-example_0029"></div>
 <small>CVS</small> tells you that there were some conflicts.
@@ -6422,7 +6270,7 @@ Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
 &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -6447,7 +6295,6 @@ Your original working file is saved unmodified in
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 <div id="index-Markers_002c-conflict"></div>
 <div id="index-Conflict-markers"></div>
@@ -6463,7 +6310,7 @@ copy, and that the overlapping section is clearly marked with
 <div id="index-Conflict-resolution"></div>
 You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -6484,18 +6331,16 @@ the erroneous line.  Suppose you end up with this file:
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 You can now go ahead and commit this as revision 1.7.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
  Checking in driver.c;
  /usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
  new revision: 1.7; previous revision: 1.6
  done
 </div>
-</td></tr></table>
 
 For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved
@@ -6576,10 +6421,9 @@ newsgroup.
 If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>11:43:23<nowiki>]</nowiki> waiting for bach's lock in /usr/local/cvsroot/foo
 </div>
-</td></tr></table>
 
 <div id="index-_0023cvs_002erfl_002c-removing"></div>
 <div id="index-_0023cvs_002ewfl_002c-removing"></div>
@@ -6617,20 +6461,18 @@ changes, or none of them.
 but <small>CVS</small> does ''not'' have this property.  For
 example, given the files
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  a/one.c
  a/two.c
  b/three.c
  b/four.c
 </div>
-</td></tr></table>
 
 if someone runs
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs ci a/two.c b/three.c
 </div>
-</td></tr></table>
 
 and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
@@ -6680,13 +6522,11 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Telling CVS to watch certain files|&bull; Setting a watch]]::             Telling CVS to watch certain files
  [[#Telling CVS to notify you|&bull; Getting Notified]]::            Telling CVS to notify you
  [[#How to edit a file which is being watched|&bull; Editing files]]::               How to edit a file which is being watched
  [[#Information about who is watching and editing|&bull; Watch information]]::           Information about who is watching and editing
  [[#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
-</div>
 
 
 ----
@@ -6821,10 +6661,9 @@ supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL mail %s -s &quot;CVS notification&quot;
 </div>
-</td></tr></table>
 
 This causes users to be notified by electronic mail.
 
@@ -6986,11 +6825,10 @@ If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the
 following (all on one line):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update: cannot open CVS/Entries for reading:
  No such file or directory
 </div>
-</td></tr></table>
 
 and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of <small>CVS</small>
@@ -7110,9 +6948,7 @@ you could probably skip this chapter.  The questions
 this chapter takes up become more important when more
 than one person is working in a repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#When to commit?|&bull; When to commit]]::              Some discussion on the subject
-</div>
 
 
 ----
@@ -7204,14 +7040,12 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Keyword List|&bull; Keyword list]]::                   Keywords
  [[#Using keywords|&bull; Using keywords]]::                 Using keywords
  [[#Avoiding substitution|&bull; Avoiding substitution]]::          Avoiding substitution
  [[#Substitution modes|&bull; Substitution modes]]::             Substitution modes
  [[#Configuring Keyord Expansion|&bull; Configuring keyword expansion]]::  Configuring keyword expansion
  [[#Problems with the $ Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
-</div>
 
 
 ----
@@ -7273,7 +7107,7 @@ This is a list of the keywords:
 ;<code>$<i></i>Log$</code>
 : The log message supplied during commit, preceded by a header containing the <small>RCS</small> filename, the revision number, the author, and the date (UTC).  Existing log messages are ''not'' replaced.  Instead, the new log message is inserted after <code>$<i></i>Log:&hellip;$</code>. Each new line is prefixed with the same string which precedes the <code>$Log</code> keyword.  For example, if the file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /* Here is what people have been up to:
     *
     * $<i></i>Log: frob.c,v $
@@ -7282,7 +7116,6 @@ This is a list of the keywords:
     *
     */
 </div>
-</td></tr></table>
 
 : then additional lines which are added when expanding the <code>$Log</code> keyword will be preceded by &lsquo;<code>   * </code>&rsquo;. Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the <em>comment leader</em> from the <small>RCS</small> file is not used. The <code>$Log</code> keyword is useful for accumulating a complete change log in a source file, but for several reasons it can be problematic. See section [[#Problems with the $ Log$ keyword.|Problems with the $ <i></i>Log$ keyword.]].
 
@@ -7306,12 +7139,11 @@ This is a list of the keywords:
 ;<code>Local keyword</code>
 : The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file may be used to specify a local keyword which is to be used as an alias for one of the other keywords. For example, if the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file contains a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a file with the local keyword $<i></i>MYBSD$ will be expanded as if it were a $<i></i>CVSHeader$ keyword. If the src/frob.c file contained this keyword, it might look something like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /*
     * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
     */
 </div>
-</td></tr></table>
 
 : Many repositories make use of a such a &ldquo;local keyword&rdquo; feature. An old patch to <small>CVS</small> provided the <code>LocalKeyword</code> feature using a <code>tag=</code> option and called this the &ldquo;custom tag&rdquo; or &ldquo;local tag&rdquo; feature. It was used in conjunction with the what they called the <code>tagexpand=</code> option. In <small>CVS</small> this other option is known as the <code>KeywordExpand</code> option.  See [[#Configuring Keyord Expansion|Configuring Keyord Expansion]] for more details.
 
@@ -7367,7 +7199,7 @@ values from a file.  This can be handy for text files,
 but it is even more useful for extracting keywords from
 binary files.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ident samp.c
  samp.c:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
@@ -7376,7 +7208,6 @@ binary files.
  a.out:
       $<i></i>Id: samp.c,v 1.5 1993/10/19 14:57:32 ceder Exp $
 </div>
-</td></tr></table>
 
 <div id="index-What-_0028shell-command_0029"></div>
 S<small>CCS</small> is another popular revision control system.
@@ -7388,10 +7219,9 @@ easy to include keywords that are detected by either
 command.  Simply prefix the keyword with the
 magic <small>SCCS</small> phrase, like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  static char *id=&quot;@(#) $<i></i>Id: ab.c,v 1.5 1993/10/19 14:57:32 ceder Exp $&quot;;
 </div>
-</td></tr></table>
 
 
 ----
@@ -7552,24 +7382,22 @@ to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD
 </div>
-</td></tr></table>
 
 then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion to the MyBSD, Name and Date keywords.
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD,Name,Date
 </div>
-</td></tr></table>
 
 would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
@@ -7577,11 +7405,10 @@ $<i></i>Date$ to be expanded.
 It is also possible to configure an exclusion list
 using the following:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Do not expand the non-RCS keyword CVSHeader
          KeywordExpand=eCVSHeader
 </div>
-</td></tr></table>
 
 This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
@@ -7596,11 +7423,10 @@ expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the &lsquo;<tt>CVSROOT/config</tt>&rsquo; line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  	# Do not expand any RCS keywords
  	KeywordExpand=i
 </div>
-</td></tr></table>
 
 this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,
@@ -7713,14 +7539,12 @@ revision.  When a local modification is committed it is
 placed on the main trunk, and made the &lsquo;head&rsquo;
 revision.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Importing for the first time|&bull; First import]]::                Importing for the first time
  [[#Updating with the import command|&bull; Update imports]]::              Updating with the import command
  [[#Reverting to the latest vendor release|&bull; Reverting local changes]]::     Reverting to the latest vendor release
  [[#How to handle binary files with cvs import|&bull; Binary files in imports]]::     Binary files require special handling
  [[#How to handle keyword substitution with cvs import|&bull; Keywords in imports]]::         Keyword substitution might be undesirable
  [[#Multiple vendor branches|&bull; Multiple vendor branches]]::    What if you get sources from several places?
-</div>
 
 
 ----
@@ -7770,11 +7594,10 @@ want to be able to use even when new releases are made
 in the future.  You start by importing the source to
 your repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd wdiff-0.04
  $ cvs import -m &quot;Import of FSF v. 0.04&quot; fsf/wdiff FSF_DIST WDIFF_0_04
 </div>
-</td></tr></table>
 
 The vendor tag is named &lsquo;<code>FSF_DIST</code>&rsquo; in the above
 example, and the only release tag assigned is
@@ -7807,22 +7630,20 @@ repository with the same <code>import</code> command that you used to set up
 the repository in the first place.  The only difference is that you
 specify a different release tag this time:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ tar xfz wdiff-0.05.tar.gz
  $ cd wdiff-0.05
  $ cvs import -m &quot;Import of FSF v. 0.05&quot; fsf/wdiff FSF_DIST WDIFF_0_05
 </div>
-</td></tr></table>
 
 For files that have not been modified locally, the newly created
 revision becomes the head revision.  If you have made local
 changes, <code>import</code> will warn you that you must merge the changes
 into the main trunk, and tell you to use &lsquo;<code>checkout -j</code>&rsquo; to do so:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -jFSF_DIST:yesterday -jFSF_DIST wdiff
 </div>
-</td></tr></table>
 
 The above command will check out the latest revision of
 &lsquo;<code>wdiff</code>&rsquo;, merging the changes made on the vendor branch &lsquo;<code>FSF_DIST</code>&rsquo;
@@ -7832,10 +7653,9 @@ the merge they should be resolved in the normal way (see section [[#Conflicts ex
 However, it is much better to use the two release tags rather than using
 a date on the branch as suggested above:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -jWDIFF_0_04 -jWDIFF_0_05 wdiff
 </div>
-</td></tr></table>
 
 The reason this is better is that
 using a date, as suggested above, assumes that you do
@@ -7875,11 +7695,10 @@ in &lsquo;<tt>~/work.d/wdiff</tt>&rsquo;, and you want to revert to the
 vendor&rsquo;s version for all the files in that directory,
 you would type:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ~/work.d/wdiff
  $ cvs admin -bWDIFF .
 </div>
-</td></tr></table>
 
 You must specify the &lsquo;<code>-bWDIFF</code>&rsquo; without any space
 after the &lsquo;<code>-b</code>&rsquo;.  See section [[#admin options|admin options]].
@@ -7997,20 +7816,18 @@ You want to import the red team&rsquo;s efforts to branch
 the blue team&rsquo;s efforts to branch 1.1.3 and use the
 vendor tag BLUE.  So the commands you might use are:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs import dir RED RED_1-0
  $ cvs import -b 1.1.3 dir BLUE BLUE_1-5
 </div>
-</td></tr></table>
 
 Note that if your vendor tag does not match your
 &lsquo;<code>-b</code>&rsquo; option, <small>CVS</small> will not detect this case!  For
 example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs import -b 1.1.3 dir RED RED_1-0
 </div>
-</td></tr></table>
 
 Be careful; this kind of mismatch is sure to sow
 confusion or worse.  I can&rsquo;t think of a useful purpose
@@ -8169,7 +7986,6 @@ This appendix describes the overall structure of
 detail (others are described elsewhere; for a quick
 reference to <small>CVS</small> commands, see section [[#Quick reference to CVS commands|Quick reference to CVS commands]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Overall structure of CVS commands|&bull; Structure]]::                   Overall structure of CVS commands
  [[#CVS&rsquo;s exit status|&bull; Exit status]]::                 Indicating CVS's success or failure
  [[#Default options and the ~/.cvsrc file|&bull; ~/.cvsrc]]::                    Default options with the ~/.csvrc file
@@ -8186,7 +8002,6 @@ reference to <small>CVS</small> commands, see section [[#Quick reference to CVS 
  [[#rdiff&mdash;&rsquo;patch&rsquo; format diffs between releases|&bull; rdiff]]::                       'patch' format diffs between releases
  [[#release&mdash;Indicate that a Module is no longer in use|&bull; release]]::                     Indicate that a directory is no longer in use
  [[#update&mdash;Bring work tree in sync with repository|&bull; update]]::                      Bring work tree in sync with repository
-</div>
 
 
 ----
@@ -8216,10 +8031,9 @@ reference to <small>CVS</small> commands, see section [[#Quick reference to CVS 
 
 The overall format of all <small>CVS</small> commands is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki> cvs_options <nowiki>]</nowiki> cvs_command <nowiki>[</nowiki> command_options <nowiki>]</nowiki> <nowiki>[</nowiki> command_args <nowiki>]</nowiki>
 </div>
-</td></tr></table>
 
 ;<code>cvs</code>
 : The name of the <small>CVS</small> program.
@@ -8338,7 +8152,7 @@ used on the command line, will be used to match against
 the file.  So if this is the contents of the user&rsquo;s
 &lsquo;<tt>~/.cvsrc</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  log -N
  diff -uN
  rdiff -u
@@ -8346,7 +8160,6 @@ the file.  So if this is the contents of the user&rsquo;s
  checkout -P
  release -d
 </div>
-</td></tr></table>
 
 the command &lsquo;<code>cvs checkout foo</code>&rsquo; would have the
 &lsquo;<code>-P</code>&rsquo; option added to the arguments, as well as
@@ -8364,10 +8177,9 @@ In place of the command name you can use <code>cvs</code> to
 specify global options (see section [[#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -z6
 </div>
-</td></tr></table>
 
 causes <small>CVS</small> to use compression level 6.
 
@@ -8541,22 +8353,20 @@ many options that conflict even with these standard options.'''
 
 : ISO8601 dates have many variants but a few examples are:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  1972-09-24
  1972-09-24 20:05
 </div>
-</td></tr></table>
 
 : There are a lot more ISO8601 date formats, and <small>CVS</small> accepts many of them, but you probably don&rsquo;t want to hear the ''whole'' long story<nowiki> :</nowiki>-).
 
 
 : In addition to the dates allowed in Internet e-mail itself, <small>CVS</small> also allows some of the fields to be omitted.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  24 Sep 1972 20:05
  24 Sep
 </div>
-</td></tr></table>
 
 : The date is interpreted as being in the local timezone, unless a specific timezone is specified.
 
@@ -8566,10 +8376,9 @@ many options that conflict even with these standard options.'''
 
 : Remember to quote the argument to the &lsquo;<code>-D</code>&rsquo; flag so that your shell doesn&rsquo;t interpret spaces as argument separators.  A command using the &lsquo;<code>-D</code>&rsquo; flag can look like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </div>
-</td></tr></table>
 
 <div id="index-Forcing-a-tag-match"></div>
 ;<code>-f</code>
@@ -8693,9 +8502,7 @@ group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#admin options|&bull; admin options]]::               admin options
-</div>
 
 
 ----
@@ -8933,10 +8740,8 @@ directory.
 For the output produced by the <code>checkout</code> command
 see [[#update output|update output]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#checkout options|&bull; checkout options]]::            checkout options
  [[#checkout examples|&bull; checkout examples]]::           checkout examples
-</div>
 
 
 ----
@@ -9048,18 +8853,16 @@ options with <code>checkout</code>:
 
 Get a copy of the module &lsquo;<code>tc</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout tc
 </div>
-</td></tr></table>
 
 Get a copy of the module &lsquo;<code>tc</code>&rsquo; as it looked one day
 ago:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -D yesterday tc
 </div>
-</td></tr></table>
 
 
 ----
@@ -9127,10 +8930,8 @@ log message on the command line with the &lsquo;<code>-m
 or use the &lsquo;<code>-F <var>file</var></code>&rsquo; option to specify
 that the argument file contains the log message.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#commit options|&bull; commit options]]::              commit options
  [[#commit examples|&bull; commit examples]]::             commit examples
-</div>
 
 
 ----
@@ -9177,11 +8978,10 @@ them):
 
 : Force <small>CVS</small> to commit a new revision even if you haven&rsquo;t made any changes to the file.  If the current revision of <var>file</var> is 1.7, then the following two commands are equivalent:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -f <var>file</var>
  $ cvs commit -r 1.8 <var>file</var>
 </div>
-</td></tr></table>
 
 : The &lsquo;<code>-f</code>&rsquo; option disables recursion (i.e., it implies &lsquo;<code>-l</code>&rsquo;).  To force <small>CVS</small> to commit a new revision for all files in all subdirectories, you must use &lsquo;<code>-f -R</code>&rsquo;.
 
@@ -9246,14 +9046,13 @@ way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
  $ cvs checkout -r FCS1_2_Patch product_module
  $ cd product_module
  <nowiki>[[</nowiki> hack away <nowiki>]]</nowiki>
  $ cvs commit
 </div>
-</td></tr></table>
 
 This works automatically since the &lsquo;<code>-r</code>&rsquo; option is
 sticky.
@@ -9289,13 +9088,12 @@ checkout your experimental stuff and utilize the full
 benefit of <small>CVS</small> conflict resolution.  The scenario might
 look like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[[</nowiki> hacked sources are present <nowiki>]]</nowiki>
  $ cvs tag -b EXPR1
  $ cvs update -r EXPR1
  $ cvs commit
 </div>
-</td></tr></table>
 
 The <code>update</code> command will make the &lsquo;<code>-r
 EXPR1</code>&rsquo; option sticky on all files.  Note that your
@@ -9304,12 +9102,11 @@ changes to the files will never be removed by the
 automatically commit to the correct branch, because the
 &lsquo;<code>-r</code>&rsquo; is sticky.  You could also do like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[[</nowiki> hacked sources are present <nowiki>]]</nowiki>
  $ cvs tag -b EXPR1
  $ cvs commit -r EXPR1
 </div>
-</td></tr></table>
 
 but then, only those files that were changed by you
 will have the &lsquo;<code>-r EXPR1</code>&rsquo; sticky flag.  If you hack
@@ -9320,10 +9117,9 @@ trunk.
 To work with you on the experimental change, others
 would simply do
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r EXPR1 whatever_module
 </div>
-</td></tr></table>
 
 
 ----
@@ -9367,10 +9163,8 @@ under them will be compared.
 The exit status for diff is different than for other
 <small>CVS</small> commands; for details [[#CVS&rsquo;s exit status|CVS&rsquo;s exit status]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#diff options|&bull; diff options]]::                diff options
  [[#diff examples|&bull; diff examples]]::               diff examples
-</div>
 
 
 ----
@@ -9443,7 +9237,7 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 : Use the context output format.
 
 ;&lsquo;<code>-C <var>lines</var></code>&rsquo;
-;&lsquo;<code>--context<span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>]</nowiki></span></code>&rsquo;
+;&lsquo;<code>--context<span class="roman" style="font-family:serif; font-weight:normal"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal"><nowiki>]</nowiki></span></code>&rsquo;
 : Use the context output format, showing <var>lines</var> (an integer) lines of context, or three if <var>lines</var> is not given. For proper operation, <code>patch</code> typically needs at least two lines of context.
 
 ;&lsquo;<code>--changed-group-format=<var>format</var></code>&rsquo;
@@ -9579,7 +9373,7 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 : Use <var>format</var> to output a line common to both files in if-then-else format.  See section [[#Line formats|Line formats]].
 
 ;&lsquo;<code>-U <var>lines</var></code>&rsquo;
-;&lsquo;<code>--unified<span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>]</nowiki></span></code>&rsquo;
+;&lsquo;<code>--unified<span class="roman" style="font-family:serif; font-weight:normal"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal"><nowiki>]</nowiki></span></code>&rsquo;
 : Use the unified output format, showing <var>lines</var> (an integer) lines of context, or three if <var>lines</var> is not given. For proper operation, <code>patch</code> typically needs at least two lines of context.
 
 ;&lsquo;<code>-w</code>&rsquo;
@@ -9592,10 +9386,8 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 ;&lsquo;<code>-y</code>&rsquo;
 : Use the side by side output format.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Line group formats|&bull; Line group formats]]::          Line group formats
  [[#Line formats|&bull; Line formats]]::                Line formats
-</div>
 
 
 ----
@@ -9630,7 +9422,7 @@ and outputs a merged file in which old regions are
 surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo; lines, and new
 regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo; lines.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
  %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
@@ -9640,12 +9432,11 @@ regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowi
  ' \
     myfile
 </div>
-</td></tr></table>
 
 The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
  %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
@@ -9661,12 +9452,11 @@ little more verbose, because it spells out the default line group formats.
  ' \
     myfile
 </div>
-</td></tr></table>
 
 Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &ldquo;plain English&rdquo; style.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --unchanged-group-format=<nowiki>''</nowiki> \
     --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
@@ -9678,7 +9468,6 @@ headers containing line numbers in a &ldquo;plain English&rdquo; style.
  %&gt;' \
     myfile
 </div>
-</td></tr></table>
 
 To specify a line group format, use one of the options
 listed below.  You can specify up to four line group formats, one for
@@ -9779,7 +9568,7 @@ is &lsquo;<code>-</code>&rsquo; for deleted lines, &lsquo;<code>|</code>&rsquo; 
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-line-format='-%l
  ' \
@@ -9789,7 +9578,6 @@ newlines are desired on output.
  ' \
     myfile
 </div>
-</td></tr></table>
 
 To specify a line format, use one of the following options.  You should
 quote <var>format</var>, since it often contains shell metacharacters.
@@ -9842,7 +9630,7 @@ different formats.  For example, the following command uses a format
 similar to <code>diff</code>&rsquo;s normal format.  You can tailor this command
 to get fine control over <code>diff</code>&rsquo;s output.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-line-format='&lt; %l
  ' \
@@ -9858,7 +9646,6 @@ to get fine control over <code>diff</code>&rsquo;s output.
     --unchanged-group-format=<nowiki>''</nowiki> \
     myfile
 </div>
-</td></tr></table>
 
 
 ----
@@ -9888,37 +9675,33 @@ between revision 1.14 and 1.19 of
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
 </div>
-</td></tr></table>
 
 Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -r RELEASE_1_0 -r EXPR1
 </div>
-</td></tr></table>
 
 A command like this can be used to produce a context
 diff between two releases:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
 </div>
-</td></tr></table>
 
 If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -u | less
 </div>
-</td></tr></table>
 
 
 ----
@@ -9971,9 +9754,7 @@ ident(1)) which looks for keyword strings.  If
 you want to be able to use <code>ident</code> you must not
 use &lsquo;<code>-kv</code>&rsquo;.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#export options|&bull; export options]]::              export options
-</div>
 
 
 ----
@@ -10075,9 +9856,7 @@ Logging must be enabled by creating the file
 &lsquo;<code>-n</code>&rsquo;, and &lsquo;<code>-p</code>&rsquo; in ways that conflict with the
 normal use inside <small>CVS</small> (see section [[#Common command options|Common command options]]).'''
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#history options|&bull; history options]]::             history options
-</div>
 
 
 ----
@@ -10279,11 +10058,9 @@ directory; if you want to work with the sources import
 them first and then check them out into a different
 directory (see section [[#Getting the source|Getting the source]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#import options|&bull; import options]]::              import options
  [[#import output|&bull; import output]]::               import output
  [[#import examples|&bull; import examples]]::             import examples
-</div>
 
 
 ----
@@ -10448,10 +10225,8 @@ Coordinated Universal Time (UTC).  (Other parts of
 '''Note: <code>log</code> uses &lsquo;<code>-R</code>&rsquo; in a way that conflicts
 with the normal use inside <small>CVS</small> (see section [[#Common command options|Common command options]]).'''
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#log options|&bull; log options]]::                 log options
  [[#log examples|&bull; log examples]]::                log examples
-</div>
 
 
 ----
@@ -10640,10 +10415,8 @@ specify the &lsquo;<code>-p</code>&rsquo; option to the <code>patch</code> comma
 patching the old sources, so that <code>patch</code> is able to find
 the files that are located in other directories.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#rdiff options|&bull; rdiff options]]::               rdiff options
  [[#rdiff examples|&bull; rdiff examples]]::              rdiff examples
-</div>
 
 
 ----
@@ -10730,11 +10503,10 @@ update from release 1.2 to 1.4 of the tc compiler.  You
 have no such patches on hand, but with <small>CVS</small> that can
 easily be fixed with a command such as this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rdiff -c -r FOO1_2 -r FOO1_4 tc | \
  $$ Mail -s 'The patches you asked for' foo@example.net
 </div>
-</td></tr></table>
 
 Suppose you have made release 1.3, and forked a branch
 called &lsquo;<code>R_1_3fix</code>&rsquo; for bugfixes.  &lsquo;<code>R_1_3_1</code>&rsquo;
@@ -10742,14 +10514,13 @@ corresponds to release 1.3.1, which was made some time
 ago.  Now, you want to see how much development has been
 done on the branch.  This command can be used:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs patch -s -r R_1_3_1 -r R_1_3fix module-name
  cvs rdiff: Diffing module-name
  File ChangeLog,v changed from revision 1.52.2.5 to 1.52.2.6
  File foo.c,v changed from revision 1.52.2.3 to 1.52.2.4
  File bar.h,v changed from revision 1.29.2.1 to 1.2
 </div>
-</td></tr></table>
 
 
 ----
@@ -10802,11 +10573,9 @@ leaves a record of its execution (attesting to your
 intentionally abandoning your checkout) in the <small>CVS</small>
 history log.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#release options|&bull; release options]]::             release options
  [[#release output|&bull; release output]]::              release output
  [[#release examples|&bull; release examples]]::            release examples
-</div>
 
 
 ----
@@ -10904,15 +10673,14 @@ up-to-date.
 Release the &lsquo;<tt>tc</tt>&rsquo; directory, and delete your local working copy
 of the files.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- $ cd ..         # <span class="roman" style="font-family:serif; font-weight:normal;">You must stand immediately above the</span>
-                 # <span class="roman" style="font-family:serif; font-weight:normal;">sources when you issue &lsquo;<code>cvs release</code>&rsquo;.</span>
+<div class="example" style="margin-left: 3.2em">
+ $ cd ..         # <span class="roman" style="font-family:serif; font-weight:normal">You must stand immediately above the</span>
+                 # <span class="roman" style="font-family:serif; font-weight:normal">sources when you issue &lsquo;<code>cvs release</code>&rsquo;.</span>
  $ cvs release -d tc
  You have <nowiki>[</nowiki>0<nowiki>]</nowiki> altered files in this repository.
  Are you sure you want to release (and delete) directory `tc': y
  $
 </div>
-</td></tr></table>
 
 
 ----
@@ -10957,10 +10725,8 @@ between the local copy of files and their base revisions
 into any destination revisions specified with <code>-r</code>,
 <code>-D</code>, or <code>-A</code>.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#update options|&bull; update options]]::              update options
  [[#update output|&bull; update output]]::               update output
-</div>
 
 
 ----
@@ -11131,10 +10897,9 @@ described in detail.  For other references run the
 
 A <small>CVS</small> command looks like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki> <var>global_options</var> <nowiki>]</nowiki> <var>command</var> <nowiki>[</nowiki> <var>command_options</var> <nowiki>]</nowiki> <nowiki>[</nowiki> <var>command_args</var> <nowiki>]</nowiki>
 </div>
-</td></tr></table>
 
 Global options:
 
@@ -11201,7 +10966,7 @@ Global options:
 
 Keyword expansion modes (see section [[#Substitution modes|Substitution modes]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  -kkv  $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp $
  -kkvl $<i></i>Id: file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
  -kk   $<i></i>Id$
@@ -11209,11 +10974,10 @@ Keyword expansion modes (see section [[#Substitution modes|Substitution modes]])
  -ko   <i>no expansion</i>
  -kb   <i>no expansion, file is binary</i>
 </div>
-</td></tr></table>
 
 Keywords (see section [[#Keyword List|Keyword List]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $<i></i>Author: joe $
  $<i></i>Date: 1993/12/09 03:21:13 $
  $<i></i>CVSHeader: files/file1,v 1.1 1993/12/09 03:21:13 joe Exp harry $
@@ -11230,7 +10994,6 @@ Keywords (see section [[#Keyword List|Keyword List]]):
  Initial revision
  
 </div>
-</td></tr></table>
 
 Commands, command options, and command arguments:
 
@@ -11879,7 +11642,6 @@ discussion of how to edit them, see [[#The administrative files|The administrati
 The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file, which defines the modules inside the repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#The modules file|&bull; modules]]::                     Defining modules
  [[#The cvswrappers file|&bull; Wrappers]]::                    Specify binary-ness based on file name
  [[#The commit support files|&bull; commit files]]::                The commit support files (commitinfo,
@@ -11890,7 +11652,6 @@ file, which defines the modules inside the repository.
  [[#The history file|&bull; history file]]::                History information
  [[#Expansions in administrative files|&bull; Variables]]::                   Various variables are expanded
  [[#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
-</div>
 
 
 ----
@@ -11939,7 +11700,6 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Alias modules|&bull; Alias modules]]::             The simplest kind of module
  [[#Regular modules|&bull; Regular modules]]::
  [[#Ampersand modules|&bull; Ampersand modules]]::
@@ -11947,7 +11707,6 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
  [[#Module options|&bull; Module options]]::            Regular and ampersand modules can take options
  [[#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules ``program options<nowiki>''</nowiki> programs
                                are run. 
-</div>
 
 
 ----
@@ -11980,29 +11739,26 @@ Alias modules are the simplest kind of module:
 
 For example, if the modules file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  amodule -a first-dir
 </div>
-</td></tr></table>
 
 then the following two commands are equivalent:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co amodule
  $ cvs co first-dir
 </div>
-</td></tr></table>
 
 and they each would provide output such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs checkout: Updating first-dir
  U first-dir/file1
  U first-dir/file2
  cvs checkout: Updating first-dir/sdir
  U first-dir/sdir/sfile
 </div>
-</td></tr></table>
 
 
 ----
@@ -12032,14 +11788,13 @@ and they each would provide output such as:
 
 For example, if a module is defined by:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  regmodule first-dir
 </div>
-</td></tr></table>
 
 then regmodule will contain the files from first-dir:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co regmodule
  cvs checkout: Updating regmodule
  U regmodule/file1
@@ -12048,17 +11803,15 @@ then regmodule will contain the files from first-dir:
  U regmodule/sdir/sfile
  $
 </div>
-</td></tr></table>
 
 By explicitly specifying files in the module definition
 after <var>dir</var>, you can select particular files from
 directory <var>dir</var>.  Here is
 an example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  regfiles first-dir/sdir sfile
 </div>
-</td></tr></table>
 
 With this definition, getting the regfiles module
 will create a single working directory
@@ -12066,12 +11819,11 @@ will create a single working directory
 comes from a directory deeper
 in the <small>CVS</small> source repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co regfiles
  U regfiles/sfile
  $
 </div>
-</td></tr></table>
 
 
 ----
@@ -12099,45 +11851,41 @@ in the <small>CVS</small> source repository:
 
 A module definition can refer to other modules by
 including &lsquo;<code>&amp;<var>module</var></code>&rsquo; in its definition.
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <var>mname</var> <nowiki>[</nowiki> options <nowiki>]</nowiki> <var>&amp;module</var>&hellip;
 </div>
-</td></tr></table>
 
 Then getting the module creates a subdirectory for each such
 module, in the directory containing the module.  For
 example, if modules contains
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ampermod &amp;first-dir
 </div>
-</td></tr></table>
 
 then a checkout will create an <code>ampermod</code> directory
 which contains a directory called <code>first-dir</code>,
 which in turns contains all the directories and files
 which live there.  For example, the command
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co ampermod
 </div>
-</td></tr></table>
 
 will create the following files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ampermod/first-dir/file1
  ampermod/first-dir/file2
  ampermod/first-dir/sdir/sfile
 </div>
-</td></tr></table>
 
 There is one quirk/bug: the messages that <small>CVS</small>
 prints omit the &lsquo;<tt>ampermod</tt>&rsquo;, and thus do not
 correctly display the location to which it is checking
 out the files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co ampermod
  cvs checkout: Updating first-dir
  U first-dir/file1
@@ -12146,7 +11894,6 @@ out the files:
  U first-dir/sdir/sfile
  $
 </div>
-</td></tr></table>
 
 Do not rely on this buggy behavior; it may get fixed in
 a future release of <small>CVS</small>.
@@ -12182,10 +11929,9 @@ before the name of each directory to be excluded.
 
 For example, if the modules file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  exmodule -a !first-dir/sdir first-dir
 </div>
-</td></tr></table>
 
 then checking out the module &lsquo;<code>exmodule</code>&rsquo; will check
 out everything in &lsquo;<code>first-dir</code>&rsquo; except any files in
@@ -12345,7 +12091,7 @@ binary files.
 
 The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  wildcard     <nowiki>[</nowiki>option value<nowiki>][</nowiki>option value<nowiki>]</nowiki>...
  
  where option is one of
@@ -12354,17 +12100,15 @@ The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
  
  and value is a single-quote delimited value.
 </div>
-</td></tr></table>
 
 
 For example, the following command imports a
 directory, treating files whose name ends in
 &lsquo;<code>.exe</code>&rsquo; as binary:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
 </div>
-</td></tr></table>
 
 
 
@@ -12414,14 +12158,12 @@ programs.
 ;&lsquo;<tt>loginfo</tt>&rsquo;
 : The specified program is called when the commit is complete.  It receives the log message and some additional information and can store the log message in a file, or mail it to appropriate persons, or maybe post it to a local newsgroup, or&hellip;  Your imagination is the limit!
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#The common syntax|&bull; syntax]]::                      The common syntax
  [[#Commitinfo|&bull; commitinfo]]::                  Pre-commit checking
  [[#Verifying log messages|&bull; verifymsg]]::                   How are log messages evaluated?
  [[#Editinfo|&bull; editinfo]]::                    Specifying how log messages are created
                                  (obsolete)
  [[#Loginfo|&bull; loginfo]]::                     Where should log messages be sent?
-</div>
 
 
 ----
@@ -12666,15 +12408,14 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  BugId:
 </div>
-</td></tr></table>
 
 The script &lsquo;<tt>/usr/cvssupport/bugid.verify</tt>&rsquo; is used to
 evaluate the log message.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  #
  #       bugid.verify filename
@@ -12695,28 +12436,24 @@ evaluate the log message.
      exit 1
  fi
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>verifymsg</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/bugid.verify
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/tc.template
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>config</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  RereadLogAfterVerify=always
 </div>
-</td></tr></table>
 
 
 
@@ -12799,9 +12536,7 @@ commit</code> are used, &lsquo;<tt>editinfo</tt>&rsquo; will not be consulted.
 There is no good workaround for this; use
 &lsquo;<tt>verifymsg</tt>&rsquo; instead.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Editinfo example|&bull; editinfo example]]::            Editinfo example
-</div>
 
 
 ----
@@ -12834,15 +12569,14 @@ line of the log message.  The rest of log message is
 free text.  The following template is found in the file
 &lsquo;<tt>/usr/cvssupport/tc.template</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  BugId:
 </div>
-</td></tr></table>
 
 The script &lsquo;<tt>/usr/cvssupport/bugid.edit</tt>&rsquo; is used to
 edit the log message.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  #
  #       bugid.edit filename
@@ -12862,21 +12596,18 @@ edit the log message.
      $CVSEDITOR $1
  done
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>editinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/bugid.edit
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>rcsinfo</tt>&rsquo; file contains this line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^tc     /usr/cvssupport/tc.template
 </div>
-</td></tr></table>
 
 
 ----
@@ -12962,10 +12693,9 @@ is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  &quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
 </div>
-</td></tr></table>
 
 As another example, &lsquo;<code>%<nowiki>{</nowiki><nowiki>}</nowiki></code>&rsquo; means that only the
 name of the repository will be generated.
@@ -12974,10 +12704,8 @@ Note: when <small>CVS</small> is accessing a remote repository,
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the ''remote''
 (i.e., server) side, not the client side (see section [[#Remote repositories|Remote repositories]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Loginfo example|&bull; loginfo example]]::             Loginfo example
  [[#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
-</div>
 
 
 ----
@@ -13009,17 +12737,16 @@ the &lsquo;<tt>CVSROOT</tt>&rsquo; directory) are also logged in
 &lsquo;<tt>/usr/adm/cvsroot-log</tt>&rsquo;.
 Commits to the &lsquo;<tt>prog1</tt>&rsquo; directory are mailed to <tt>ceder</tt>.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL             /usr/local/bin/cvs-log $CVSROOT/CVSROOT/commitlog $USER
  ^CVSROOT        /usr/local/bin/cvs-log /usr/adm/cvsroot-log
  ^prog1          Mail -s %s ceder
 </div>
-</td></tr></table>
 
 The shell-script &lsquo;<tt>/usr/local/bin/cvs-log</tt>&rsquo; looks
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  (echo &quot;------------------------------------------------------&quot;;
   echo -n $2&quot;  &quot;;
@@ -13027,7 +12754,6 @@ like this:
   echo;
   cat) &gt;&gt; $1
 </div>
-</td></tr></table>
 
 
 ----
@@ -13069,11 +12795,10 @@ cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
   cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
 </div>
-</td></tr></table>
 
 This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked
@@ -13186,7 +12911,7 @@ This list is constructed in the following way.
 
 <div id="index-Ignored-files"></div>
 <div id="index-Automatically-ignored-files"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
      RCS     SCCS    CVS     CVS.adm
      RCSLOG  cvslog.*
      tags    TAGS
@@ -13197,7 +12922,6 @@ This list is constructed in the following way.
      *.Z     *.elc   *.ln
      core
 </div>
-</td></tr></table>
 
 
 * The per-repository list in &lsquo;<tt>$CVSROOT/CVSROOT/cvsignore</tt>&rsquo; is appended to the list, if that file exists.
@@ -13271,19 +12995,17 @@ suppose that you have a script &lsquo;<tt>logcommit.pl</tt>&rsquo;
 which you run by including the following line in the
 &lsquo;<tt>commitinfo</tt>&rsquo; administrative file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL   $CVSROOT/CVSROOT/logcommit.pl
 </div>
-</td></tr></table>
 
 To maintain &lsquo;<tt>logcommit.pl</tt>&rsquo; with <small>CVS</small> you would
 add the following line to the &lsquo;<tt>checkoutlist</tt>&rsquo;
 administrative file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  logcommit.pl
 </div>
-</td></tr></table>
 
 The format of &lsquo;<tt>checkoutlist</tt>&rsquo; is one line for each
 file that you want to maintain using <small>CVS</small>, giving
@@ -13295,10 +13017,9 @@ the files listed there will function just like
 when checking in one of the files you should get a
 message such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 and the checked out copy in the &lsquo;<tt>CVSROOT</tt>&rsquo;
 directory should be updated.
@@ -13434,10 +13155,9 @@ refer to a test directory you might create a user
 variable <code>TESTDIR</code>.  Then if <small>CVS</small> is invoked
 as
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -s TESTDIR=/work/local/tests
 </div>
-</td></tr></table>
 
 and the
 administrative file contains <code>sh
@@ -13745,11 +13465,9 @@ alphabetically.  If not, you can look through the
 section on other problems to see if your problem is
 mentioned there.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[#Partial list of error messages|&bull; Error messages]]::              Partial list of CVS errors
  [[#Trouble making a connection to a CVS server|&bull; Connection]]::                  Trouble making a connection to a CVS server
  [[#Other common problems|&bull; Other problems]]::              Problems not readily listed by error message
-</div>
 
 
 
@@ -13800,10 +13518,9 @@ particular moment).
 : This message indicates that you removed a file, and someone else modified it.  To resolve the conflict, first run &lsquo;<code>cvs add <var>file</var></code>&rsquo;.  If desired, look at the other party&rsquo;s modification to decide whether you still want to remove it.  If you don&rsquo;t want to remove it, stop here.  If you do want to remove it, proceed with &lsquo;<code>cvs remove <var>file</var></code>&rsquo; and commit your removal.
 
 ;<code>cannot change permissions on temporary directory</code>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Operation not permitted
 </div>
-</td></tr></table>
 : This message has been happening in a non-reproducible, occasional way when we run the client/server testsuite, both on Red Hat Linux 3.0.3 and 4.1.  We haven&rsquo;t been able to figure out what causes it, nor is it known whether it is specific to linux (or even to this particular machine!).  If the problem does occur on other unices, &lsquo;<code>Operation not permitted</code>&rsquo; would be likely to read &lsquo;<code>Not owner</code>&rsquo; or whatever the system in question uses for the unix <code>EPERM</code> error.  If you have any information to add, please let us know as described in [[#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]].  If you experience this error while using <small>CVS</small>, retrying the operation which produced it should work fine.
 
 ;<code>cvs <nowiki>[</nowiki>server aborted<nowiki>]</nowiki>: Cannot check out files into the repository itself</code>
@@ -13860,10 +13577,9 @@ particular moment).
 ;<code>cvs commit: Executing 'mkmodules'</code>
 : This means that your repository is set up for a version of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small> 1.8 or later, the above message will be preceded by
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 : If you see both messages, the database is being rebuilt twice, which is unnecessary but harmless.  If you wish to avoid the duplication, and you have no versions of <small>CVS</small> 1.7 or earlier in use, remove <code>-i mkmodules</code> every place it appears in your <code>modules</code> file.  For more information on the <code>modules</code> file, see [[#The modules file|The modules file]].
 
@@ -13898,10 +13614,9 @@ particular moment).
 : This means that someone else has committed a change to that file since the last time that you did a <code>cvs update</code>.  So before proceeding with your <code>cvs commit</code> you need to <code>cvs update</code>.  <small>CVS</small> will merge the changes that you made and the changes that the other person made.  If it does not detect any conflicts it will report &lsquo;<code>M <var>file</var></code>&rsquo; and you are ready to <code>cvs commit</code>.  If it detects conflicts it will print a message saying so, will report &lsquo;<code>C <var>file</var></code>&rsquo;, and you need to manually resolve the conflict.  For more details on this process see [[#Conflicts example|Conflicts example]].
 
 ;<code>Usage:	diff3 <nowiki>[</nowiki>-exEX3 <nowiki>[</nowiki>-i | -m<nowiki>]</nowiki> <nowiki>[</nowiki>-L label1 -L label3<nowiki>]]</nowiki> file1 file2 file3</code>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Only one of <nowiki>[</nowiki>exEX3<nowiki>]</nowiki> allowed
 </div>
-</td></tr></table>
 : This indicates a problem with the installation of <code>diff3</code> and <code>rcsmerge</code>.  Specifically <code>rcsmerge</code> was compiled to look for GNU diff3, but it is finding unix diff3 instead.  The exact text of the message will vary depending on the system.  The simplest solution is to upgrade to a current version of <small>CVS</small>, which does not rely on external <code>rcsmerge</code> or <code>diff3</code> programs.
 
 ;<code>warning: unrecognized response `<var>text</var>' from cvs server</code>
@@ -13914,12 +13629,11 @@ particular moment).
 <div id="index-Exit-status_002c-of-editor"></div>
 : This means that the editor which <small>CVS</small> is using exits with a nonzero exit status.  Some versions of vi will do this even when there was not a problem editing the file.  If so, point the <code>CVSEDITOR</code> environment variable to a small script such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  vi $*
  exit 0
 </div>
-</td></tr></table>
 
 
 
@@ -13971,40 +13685,36 @@ access method you are using.
 
 : One good debugging tool is to &quot;telnet servername 2401&quot;.  After connecting, send any text (for example &quot;foo&quot; followed by return).  If <small>CVS</small> is working correctly, it will respond with
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki>pserver aborted<nowiki>]</nowiki>: bad auth protocol start: foo
 </div>
-</td></tr></table>
 
 : If instead you get:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Usage: cvs <nowiki>[</nowiki>cvs-options<nowiki>]</nowiki> command <nowiki>[</nowiki>command-options-and-arguments<nowiki>]</nowiki>
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;re missing the &lsquo;<code>pserver</code>&rsquo; command at the end of the line in &lsquo;<tt>inetd.conf</tt>&rsquo;; check to make sure that the entire command is on one line and that it&rsquo;s complete.
 
 : Likewise, if you get something like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Unknown command: `pserved'
  
  CVS commands are:
          add          Add a new file/directory to the repository
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;ve misspelled &lsquo;<code>pserver</code>&rsquo; in some way.  If it isn&rsquo;t obvious, check for invisible control characters (particularly carriage returns) in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 
 : If it fails to work at all, then make sure inetd is working right.  Change the invocation in &lsquo;<tt>inetd.conf</tt>&rsquo; to run the echo program instead of cvs.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  2401  stream  tcp  nowait  root /bin/echo echo hello
 </div>
-</td></tr></table>
 
 : After making that change and instructing inetd to re-read its configuration file, &quot;telnet servername 2401&quot; should show you the text hello and then the server should close the connection.  If this doesn&rsquo;t work, you need to fix it before you can worry about <small>CVS</small> problems.
 
@@ -14014,11 +13724,10 @@ access method you are using.
 
 : If you seem to be connecting but get errors like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs server: cannot open /root/.cvsignore: Permission denied
  cvs <nowiki>[</nowiki>server aborted<nowiki>]</nowiki>: can't chdir(/root): Permission denied
 </div>
-</td></tr></table>
 
 : then you probably haven&rsquo;t specified &lsquo;<code>-f</code>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;. (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by your system setting the <code>$HOME</code> environment variable for programs being run by inetd.  In this case, you can either have inetd run a shell script that unsets <code>$HOME</code> and then runs <small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine environment.)
 
@@ -14103,7 +13812,7 @@ use <small>CVS</small>, at least).
 In addition, the following persons have helped by
 telling me about mistakes I&rsquo;ve made:
 
-<table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
+<div class="display" style="margin-left: 3.2em; font-family: serif">
  Roxanne Brunskill &lt;<tt>rbrunski@datap.ca</tt>&gt;,
  Kathy Dyer &lt;<tt>dyer@phoenix.ocf.llnl.gov</tt>&gt;,
  Karl Pingle &lt;<tt>pingle@acuson.com</tt>&gt;,
@@ -14112,7 +13821,6 @@ telling me about mistakes I&rsquo;ve made:
  Dirk Koschuetzki &lt;<tt>koschuet@fmi.uni-passau.de</tt>&gt;
  and Michael Brown &lt;<tt>brown@wi.extrel.com</tt>&gt;.
 </div>
-</td></tr></table>
 
 The list of contributors here is not comprehensive; for a more
 complete list of who has contributed to this manual see
@@ -14158,7 +13866,7 @@ something about as well as problems with <small>CVS</small> itself.
 
 <div id="index-Ximbiot"></div>
 <div id="index-Support_002c-getting-CVS-support"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Ximbiot
  319 S. River St.
  Harrisburg, PA  17104-1657
@@ -14169,7 +13877,6 @@ something about as well as problems with <small>CVS</small> itself.
  http://ximbiot.com/
  
 </div>
-</td></tr></table>
 
 
 * If you got <small>CVS</small> through a distributor, such as an operating system vendor or a vendor of freeware <small>CD-ROM</small>s, you may wish to see whether the distributor provides support.  Often, they will provide no support or minimal support, but this may vary from distributor to distributor.
@@ -14180,11 +13887,10 @@ something about as well as problems with <small>CVS</small> itself.
 
 * There may be resources on the net which can help.  Two good places to start are:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  http://www.cvshome.org
  http://www.loria.fr/~molli/cvs-index.html
 </div>
-</td></tr></table>
 
 * If you are so inspired, increasing the information available on the net is likely to be appreciated.  For example, before the standard <small>CVS</small> distribution worked on Windows 95, there was a web page with some explanation and patches for running <small>CVS</small> on Windows 95, and various people helped out by mentioning this page on mailing lists or newsgroups when the subject came up.
 

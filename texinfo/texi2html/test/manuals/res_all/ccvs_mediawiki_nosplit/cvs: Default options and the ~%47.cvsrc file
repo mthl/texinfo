@@ -38,7 +38,7 @@ used on the command line, will be used to match against
 the file.  So if this is the contents of the user&rsquo;s
 &lsquo;<tt>~/.cvsrc</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  log -N
  diff -uN
  rdiff -u
@@ -46,7 +46,6 @@ the file.  So if this is the contents of the user&rsquo;s
  checkout -P
  release -d
 </div>
-</td></tr></table>
 
 the command &lsquo;<code>cvs checkout foo</code>&rsquo; would have the
 &lsquo;<code>-P</code>&rsquo; option added to the arguments, as well as
@@ -64,10 +63,9 @@ In place of the command name you can use <code>cvs</code> to
 specify global options (see [[cvs: Global options#Global options|Global options]]).  For
 example the following line in &lsquo;<tt>.cvsrc</tt>&rsquo;
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -z6
 </div>
-</td></tr></table>
 
 causes <small>CVS</small> to use compression level 6.
 

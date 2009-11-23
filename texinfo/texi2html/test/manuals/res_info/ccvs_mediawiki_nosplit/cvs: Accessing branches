@@ -25,26 +25,23 @@ To check out a branch from the repository, invoke
 &lsquo;<code>checkout</code>&rsquo; with the &lsquo;<code>-r</code>&rsquo; flag, followed by
 the tag name of the branch (see [[cvs: Creating a branch#Creating a branch|Creating a branch]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 Or, if you already have a working copy, you can switch
 it to a given branch with &lsquo;<code>update -r</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 or equivalently:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs update -r rel-1-0-patches
 </div>
-</td></tr></table>
 
 It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
@@ -66,7 +63,7 @@ the field named &lsquo;<code>Sticky tag</code>&rsquo; (see [[cvs: Sticky tags#St
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs status -v driver.c backend.c
  ===================================================================
  File: driver.c          Status: Up-to-date
@@ -96,7 +93,6 @@ any, of the current working files:
          rel-0-4                     (revision: 1.4)
  
 </div>
-</td></tr></table>
 
 Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<code>1.7.2</code>&rsquo; and

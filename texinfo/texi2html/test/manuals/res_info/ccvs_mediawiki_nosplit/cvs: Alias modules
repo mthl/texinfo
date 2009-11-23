@@ -18,28 +18,25 @@ Alias modules are the simplest kind of module:
 
 For example, if the modules file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  amodule -a first-dir
 </div>
-</td></tr></table>
 
 then the following two commands are equivalent:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs co amodule
  $ cvs co first-dir
 </div>
-</td></tr></table>
 
 and they each would provide output such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs checkout: Updating first-dir
  U first-dir/file1
  U first-dir/file2
  cvs checkout: Updating first-dir/sdir
  U first-dir/sdir/sfile
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

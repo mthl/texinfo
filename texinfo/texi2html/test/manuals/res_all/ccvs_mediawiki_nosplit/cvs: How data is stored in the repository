@@ -23,7 +23,6 @@ for example you might need to track down <small>CVS</small> locks
 (see [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]]) or you might need to deal with
 the file permissions appropriate for the repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Where files are stored within the repository#Where files are stored within the repository|&bull; Repository files]]::            What files are stored in the repository
  [[cvs: File permissions#File permissions|&bull; File permissions]]::            File permissions
  [[cvs: File Permission issues specific to Windows#File Permission issues specific to Windows|&bull; Windows permissions]]::         Issues specific to Windows
@@ -31,6 +30,5 @@ the file permissions appropriate for the repository.
  [[cvs: The CVS directory in the repository#The CVS directory in the repository|&bull; CVS in repository]]::           Additional information in CVS directory
  [[cvs: CVS locks in the repository#CVS locks in the repository|&bull; Locks]]::                       CVS locks control concurrent accesses
  [[cvs: How files are stored in the CVSROOT directory#How files are stored in the CVSROOT directory|&bull; CVSROOT storage]]::             A few things about CVSROOT are different
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

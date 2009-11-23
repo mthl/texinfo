@@ -43,22 +43,20 @@ many options that conflict even with these standard options.'''
 
 : ISO8601 dates have many variants but a few examples are:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  1972-09-24
  1972-09-24 20:05
 </div>
-</td></tr></table>
 
 : There are a lot more ISO8601 date formats, and <small>CVS</small> accepts many of them, but you probably don&rsquo;t want to hear the ''whole'' long story<nowiki> :</nowiki>-).
 
 
 : In addition to the dates allowed in Internet e-mail itself, <small>CVS</small> also allows some of the fields to be omitted.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  24 Sep 1972 20:05
  24 Sep
 </div>
-</td></tr></table>
 
 : The date is interpreted as being in the local timezone, unless a specific timezone is specified.
 
@@ -68,10 +66,9 @@ many options that conflict even with these standard options.'''
 
 : Remember to quote the argument to the &lsquo;<code>-D</code>&rsquo; flag so that your shell doesn&rsquo;t interpret spaces as argument separators.  A command using the &lsquo;<code>-D</code>&rsquo; flag can look like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -D &quot;1 hour ago&quot; cvs.texinfo
 </div>
-</td></tr></table>
 
 <div id="index-Forcing-a-tag-match"></div>
 ;<code>-f</code>

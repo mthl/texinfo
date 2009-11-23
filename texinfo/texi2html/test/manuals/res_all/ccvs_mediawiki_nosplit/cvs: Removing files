@@ -45,7 +45,7 @@ specified to <code>checkout</code> or <code>update</code>.
 
 Here is an example of removing several files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ rm *.c
  $ cvs remove
@@ -57,14 +57,13 @@ Here is an example of removing several files:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 As a convenience you can remove the file and <code>cvs
 remove</code> it in one step, by specifying the &lsquo;<code>-f</code>&rsquo;
 option.  For example, the above example could also be
 done like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ cvs remove -f *.c
  cvs remove: scheduling a.c for removal
@@ -74,14 +73,13 @@ done like this:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
 
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ls
  CVS   ja.h  oj.c
  $ rm oj.c
@@ -92,19 +90,17 @@ change your mind before you commit, you can undo the
  U oj.c
  cvs add: oj.c, version 1.1.1.1, resurrected
 </div>
-</td></tr></table>
 
 If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ rm oj.c
  $ cvs update oj.c
  cvs update: warning: oj.c was lost
  U oj.c
 </div>
-</td></tr></table>
 
 When you remove a file it is removed only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can

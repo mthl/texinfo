@@ -22,7 +22,6 @@ went into a particular release, one uses a <em>tag</em>,
 which is a symbolic revision which can be assigned to a
 numeric revision in each file.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Revision numbers#Revision numbers|&bull; Revision numbers]]::            The meaning of a revision number
  [[cvs: Versions, revisions and releases#Versions, revisions and releases|&bull; Versions revisions releases]]::  Terminology used in this manual
  [[cvs: Assigning revisions#Assigning revisions|&bull; Assigning revisions]]::         Assigning revisions
@@ -32,6 +31,5 @@ numeric revision in each file.
  [[cvs: Deleting, moving, and renaming tags#Deleting, moving, and renaming tags|&bull; Modifying tags]]::              Adding, renaming, and deleting tags
  [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|&bull; Tagging add/remove]]::          Tags with adding and removing files
  [[cvs: Sticky tags#Sticky tags|&bull; Sticky tags]]::                 Certain tags are persistent
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

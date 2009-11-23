@@ -34,7 +34,6 @@ directory &lsquo;<tt>sdir</tt>&rsquo;.  &lsquo;<tt>first-dir/sdir</tt>&rsquo; co
 a file &lsquo;<tt>sfile</tt>&rsquo;.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Alias modules#Alias modules|&bull; Alias modules]]::             The simplest kind of module
  [[cvs: Regular modules#Regular modules|&bull; Regular modules]]::
  [[cvs: Ampersand modules#Ampersand modules|&bull; Ampersand modules]]::
@@ -42,6 +41,5 @@ a file &lsquo;<tt>sfile</tt>&rsquo;.
  [[cvs: Module options#Module options|&bull; Module options]]::            Regular and ampersand modules can take options
  [[cvs: How the modules file "program options" programs are run#How the modules file &ldquo;program options&rdquo; programs are run|&bull; Module program options]]::    How the modules ``program options<nowiki>''</nowiki> programs
                                are run. 
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -66,12 +66,11 @@ Builtin attributes:
 
 Example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
  Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
  D _watched=
 </div>
-</td></tr></table>
 
 means that the file &lsquo;<tt>file1</tt>&rsquo; should be checked out
 read-only.  Furthermore, joe is watching for edits and

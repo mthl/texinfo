@@ -31,11 +31,10 @@ Unlike most other commands, the <code>add</code> command is
 not recursive.  You cannot even type &lsquo;<code>cvs add
 foo/bar</code>&rsquo;!  Instead, you have to
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd foo
  $ cvs add bar
 </div>
-</td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
 ;<div id="index-cvs-add"></div>Command<nowiki>:</nowiki> <strong>cvs add</strong><em> <nowiki>[</nowiki><code>-k</code> kflag<nowiki>]</nowiki> <nowiki>[</nowiki><code>-m</code> message<nowiki>]</nowiki> files &hellip;</em>
@@ -51,11 +50,10 @@ foo/bar</code>&rsquo;!  Instead, you have to
 For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs add backend.c
  $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </div>
-</td></tr></table>
 
 When you add a file it is added only on the branch
 which you are working on (see [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can

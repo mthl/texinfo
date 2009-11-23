@@ -16,15 +16,14 @@ Next: [[cvs: Viewing differences#Viewing differences|Viewing differences]], Prev
 Before you turn to other tasks you decide to remove your working copy of
 tc.  One acceptable way to do that is of course
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ rm -r tc
 </div>
-</td></tr></table>
 
 but a better way is to use the <code>release</code> command (see [[cvs: release--Indicate that a Module is no longer in use#release&mdash;Indicate that a Module is no longer in use|release]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ cvs release -d tc
  M driver.c
@@ -33,7 +32,6 @@ but a better way is to use the <code>release</code> command (see [[cvs: release-
  Are you sure you want to release (and delete) directory `tc': n
  ** `release' aborted by user choice.
 </div>
-</td></tr></table>
 
 The <code>release</code> command checks that all your modifications have been
 committed.  If history logging is enabled it also makes a note in the

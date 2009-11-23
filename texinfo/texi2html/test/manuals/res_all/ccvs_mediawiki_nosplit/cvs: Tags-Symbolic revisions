@@ -19,7 +19,7 @@ source files that make up <small>RCS</small> 5.6 have the following
 revision numbers:
 <div id="index-RCS-revision-numbers"></div>
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ci.c            5.21
  co.c            5.9
  ident.c         5.3
@@ -33,7 +33,6 @@ revision numbers:
  rcsmap.c        5.2
  rcsutil.c       5.10
 </div>
-</td></tr></table>
 
 <div id="index-tag-_0028subcommand_0029_002c-introduction"></div>
 <div id="index-Tags_002c-symbolic-name"></div>
@@ -75,7 +74,7 @@ directory.  That is, you should issue the
 command in the directory where &lsquo;<tt>backend.c</tt>&rsquo;
 resides.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag rel-0-4 backend.c
  T backend.c
  $ cvs status -v backend.c
@@ -92,7 +91,6 @@ resides.
          rel-0-4                     (revision: 1.4)
  
 </div>
-</td></tr></table>
 
 For a complete summary of the syntax of <code>cvs tag</code>,
 including the various options, see [[cvs: Quick reference to CVS commands#Quick reference to CVS commands|Invoking CVS]].
@@ -102,7 +100,7 @@ to tag all the files that constitute a module with the same tag at
 strategic points in the development life-cycle, such as when a release
 is made.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag rel-1-0 .
  cvs tag: Tagging .
  T Makefile
@@ -111,7 +109,6 @@ is made.
  T frontend.c
  T parser.c
 </div>
-</td></tr></table>
 
 (When you give <small>CVS</small> a directory as argument, it generally applies the
 operation to all the files in that directory, and (recursively), to any
@@ -124,10 +121,9 @@ a certain revision of a module.  This flag makes it easy to
 retrieve the sources that make up release 1.0 of the module &lsquo;<code>tc</code>&rsquo; at
 any time in the future:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r rel-1-0 tc
 </div>
-</td></tr></table>
 
 This is useful, for instance, if someone claims that there is a bug in
 that release, but you cannot find the bug in the current working copy.
@@ -142,7 +138,7 @@ can think about the tag as &quot;a curve drawn through a
 matrix of filename vs. revision number.&quot;  Say we have 5
 files with the following revisions:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          file1   file2   file3   file4   file5
  
          1.1     1.1     1.1     1.1  /--1.1*      &lt;-*-  TAG
@@ -152,7 +148,6 @@ files with the following revisions:
                        \-1.5*-   1.5
                          1.6
 </div>
-</td></tr></table>
 
 At some time in the past, the <code>*</code> versions were tagged.
 You can think of the tag as a handle attached to the curve
@@ -162,7 +157,7 @@ way to look at it is that you &quot;sight&quot; through a set of
 revisions that is &quot;flat&quot; along the tagged revisions,
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          file1   file2   file3   file4   file5
  
                          1.1
@@ -174,7 +169,6 @@ like this:
          1.4                     1.4
                                  1.5
 </div>
-</td></tr></table>
 
 
 ----

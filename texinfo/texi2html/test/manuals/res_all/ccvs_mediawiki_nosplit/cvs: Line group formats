@@ -20,7 +20,7 @@ and outputs a merged file in which old regions are
 surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>em<nowiki>}</nowiki></code>&rsquo; lines, and new
 regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo;-&lsquo;<code>\end<nowiki>{</nowiki>bf<nowiki>}</nowiki></code>&rsquo; lines.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
  %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
@@ -30,12 +30,11 @@ regions are surrounded by &lsquo;<code>\begin<nowiki>{</nowiki>bf<nowiki>}</nowi
  ' \
     myfile
 </div>
-</td></tr></table>
 
 The following command is equivalent to the above example, but it is a
 little more verbose, because it spells out the default line group formats.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-group-format='\begin<nowiki>{</nowiki>em<nowiki>}</nowiki>
  %&lt;\end<nowiki>{</nowiki>em<nowiki>}</nowiki>
@@ -51,12 +50,11 @@ little more verbose, because it spells out the default line group formats.
  ' \
     myfile
 </div>
-</td></tr></table>
 
 Here is a more advanced example, which outputs a diff listing with
 headers containing line numbers in a &ldquo;plain English&rdquo; style.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --unchanged-group-format=<nowiki>''</nowiki> \
     --old-group-format='-------- %dn line%(n=1?:s) deleted at %df:
@@ -68,7 +66,6 @@ headers containing line numbers in a &ldquo;plain English&rdquo; style.
  %&gt;' \
     myfile
 </div>
-</td></tr></table>
 
 To specify a line group format, use one of the options
 listed below.  You can specify up to four line group formats, one for

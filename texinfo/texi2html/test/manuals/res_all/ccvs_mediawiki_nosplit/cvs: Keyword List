@@ -47,7 +47,7 @@ This is a list of the keywords:
 ;<code>$<i></i>Log$</code>
 : The log message supplied during commit, preceded by a header containing the <small>RCS</small> filename, the revision number, the author, and the date (UTC).  Existing log messages are ''not'' replaced.  Instead, the new log message is inserted after <code>$<i></i>Log:&hellip;$</code>. Each new line is prefixed with the same string which precedes the <code>$Log</code> keyword.  For example, if the file contains:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /* Here is what people have been up to:
     *
     * $<i></i>Log: frob.c,v $
@@ -56,7 +56,6 @@ This is a list of the keywords:
     *
     */
 </div>
-</td></tr></table>
 
 : then additional lines which are added when expanding the <code>$Log</code> keyword will be preceded by &lsquo;<code>   * </code>&rsquo;. Unlike previous versions of <small>CVS</small> and <small>RCS</small>, the <em>comment leader</em> from the <small>RCS</small> file is not used. The <code>$Log</code> keyword is useful for accumulating a complete change log in a source file, but for several reasons it can be problematic. See [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|Log keyword]].
 
@@ -80,12 +79,11 @@ This is a list of the keywords:
 ;<code>Local keyword</code>
 : The <code>LocalKeyword</code> option in the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file may be used to specify a local keyword which is to be used as an alias for one of the other keywords. For example, if the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file contains a line with <code>LocalKeyword=MYBSD=CVSHeader</code>, then a file with the local keyword $<i></i>MYBSD$ will be expanded as if it were a $<i></i>CVSHeader$ keyword. If the src/frob.c file contained this keyword, it might look something like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    /*
     * $<i></i>MYBSD: src/frob.c,v 1.1 2003/05/04 09:27:45 john Exp $ 
     */
 </div>
-</td></tr></table>
 
 : Many repositories make use of a such a &ldquo;local keyword&rdquo; feature. An old patch to <small>CVS</small> provided the <code>LocalKeyword</code> feature using a <code>tag=</code> option and called this the &ldquo;custom tag&rdquo; or &ldquo;local tag&rdquo; feature. It was used in conjunction with the what they called the <code>tagexpand=</code> option. In <small>CVS</small> this other option is known as the <code>KeywordExpand</code> option.  See [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|Configuring keyword expansion]] for more details.
 

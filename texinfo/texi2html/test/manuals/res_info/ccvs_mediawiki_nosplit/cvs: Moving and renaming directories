@@ -27,11 +27,10 @@ like this:
 
 # Rename the directory inside the repository.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>parent-dir</var>
  $ mv <var>old-dir</var> <var>new-dir</var>
 </div>
-</td></tr></table>
 
 
 # Fix the <small>CVS</small> administrative files, if necessary (for instance if you renamed an entire module).

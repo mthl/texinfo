@@ -78,11 +78,10 @@ Unlike most other commands, the <code>add</code> command is
 not recursive.  You cannot even type &lsquo;<code>cvs add
 foo/bar</code>&rsquo;!  Instead, you have to
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd foo
  $ cvs add bar
 </div>
-</td></tr></table>
 
 <div id="index-add-_0028subcommand_0029"></div>
 ;<div id="index-cvs-add"></div>Command<nowiki>:</nowiki> <strong>cvs add</strong><em> <nowiki>[</nowiki><code>-k</code> kflag<nowiki>]</nowiki> <nowiki>[</nowiki><code>-m</code> message<nowiki>]</nowiki> files &hellip;</em>
@@ -98,11 +97,10 @@ foo/bar</code>&rsquo;!  Instead, you have to
 For example, the following commands add the file
 &lsquo;<tt>backend.c</tt>&rsquo; to the repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs add backend.c
  $ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
 </div>
-</td></tr></table>
 
 When you add a file it is added only on the branch
 which you are working on (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
@@ -167,7 +165,7 @@ specified to <code>checkout</code> or <code>update</code>.
 
 Here is an example of removing several files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ rm *.c
  $ cvs remove
@@ -179,14 +177,13 @@ Here is an example of removing several files:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 As a convenience you can remove the file and <code>cvs
 remove</code> it in one step, by specifying the &lsquo;<code>-f</code>&rsquo;
 option.  For example, the above example could also be
 done like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd test
  $ cvs remove -f *.c
  cvs remove: scheduling a.c for removal
@@ -196,14 +193,13 @@ done like this:
  cvs commit: Examining .
  cvs commit: Committing .
 </div>
-</td></tr></table>
 
 If you execute <code>remove</code> for a file, and then
 change your mind before you commit, you can undo the
 <code>remove</code> with an <code>add</code> command.
 
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ ls
  CVS   ja.h  oj.c
  $ rm oj.c
@@ -214,19 +210,17 @@ change your mind before you commit, you can undo the
  U oj.c
  cvs add: oj.c, version 1.1.1.1, resurrected
 </div>
-</td></tr></table>
 
 If you realize your mistake before you run the
 <code>remove</code> command you can use <code>update</code> to
 resurrect the file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ rm oj.c
  $ cvs update oj.c
  cvs update: warning: oj.c was lost
  U oj.c
 </div>
-</td></tr></table>
 
 When you remove a file it is removed only on the branch
 which you are working on (see section [[cvs: Branching and merging#Branching and merging|Branching and merging]]).  You can
@@ -350,13 +344,12 @@ The normal way to move a file is to copy <var>old</var> to
 to remove <var>old</var> from the repository, and add
 <var>new</var> to it.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ mv <var>old</var> <var>new</var>
  $ cvs remove <var>old</var>
  $ cvs add <var>new</var>
  $ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
 </div>
-</td></tr></table>
 
 This is the simplest way to move a file, it is not
 error-prone, and it preserves the history of what was
@@ -397,11 +390,10 @@ This method is more dangerous, since it involves moving
 files inside the repository.  Read this entire section
 before trying it out!
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>dir</var>
  $ mv <var>old</var>,v <var>new</var>,v
 </div>
-</td></tr></table>
 
 Advantages:
 
@@ -447,23 +439,22 @@ Disadvantages:
 This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- # <span class="roman" style="font-family:serif; font-weight:normal;">Copy the RCS file inside the repository</span>
+<div class="example" style="margin-left: 3.2em">
+ # <span class="roman" style="font-family:serif; font-weight:normal">Copy the RCS file inside the repository</span>
  $ cd $CVSROOT/<var>dir</var>
  $ cp <var>old</var>,v <var>new</var>,v
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove the old file</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove the old file</span>
  $ cd ~/<var>dir</var>
  $ rm <var>old</var>
  $ cvs remove <var>old</var>
  $ cvs commit <var>old</var>
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove all tags from <var>new</var></span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove all tags from <var>new</var></span>
  $ cvs update <var>new</var>
- $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal;">Remember the non-branch tag names</span>
+ $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal">Remember the non-branch tag names</span>
  $ cvs tag -d <var>tag1</var> <var>new</var>
  $ cvs tag -d <var>tag2</var> <var>new</var>
  &hellip;
 </div>
-</td></tr></table>
 
 By removing the tags you will be able to check out old
 revisions.
@@ -525,11 +516,10 @@ like this:
 
 # Rename the directory inside the repository.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd $CVSROOT/<var>parent-dir</var>
  $ mv <var>old-dir</var> <var>new-dir</var>
 </div>
-</td></tr></table>
 
 
 # Fix the <small>CVS</small> administrative files, if necessary (for instance if you renamed an entire module).

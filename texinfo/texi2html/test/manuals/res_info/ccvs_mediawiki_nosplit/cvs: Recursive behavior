@@ -18,7 +18,7 @@ recursively when you specify a directory as an
 argument.  For instance, consider this directory
 structure:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
        <code>$HOME</code>
          |
          +--<tt>tc</tt>
@@ -43,7 +43,6 @@ structure:
                   +--<tt>testpgm.t</tt>
                   +--<tt>test2.t</tt>
 </div>
-</td></tr></table>
 
 If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
 following is true:
@@ -51,10 +50,9 @@ following is true:
 
 * &lsquo;<code>cvs update testing</code>&rsquo; is equivalent to
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update testing/testpgm.t testing/test2.t
 </div>
-</td></tr></table>
 
 
 * &lsquo;<code>cvs update testing man</code>&rsquo; updates all files in the subdirectories
@@ -74,9 +72,8 @@ turned off with the &lsquo;<code>-l</code>&rsquo; option.
 Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recursion if
 &lsquo;<code>-l</code>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see [[cvs: Default options and the ~%47.cvsrc file#Default options and the ~/.cvsrc file|~/.cvsrc]]).
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal;">Don't update files in subdirectories</span>
+<div class="example" style="margin-left: 3.2em">
+ $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal">Don't update files in subdirectories</span>
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

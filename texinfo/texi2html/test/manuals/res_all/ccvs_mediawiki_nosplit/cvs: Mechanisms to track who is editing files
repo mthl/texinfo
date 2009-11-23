@@ -30,13 +30,11 @@ discard a working directory which is no longer in use,
 but <small>CVS</small> is not able to enforce this behavior.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Telling CVS to watch certain files#Telling CVS to watch certain files|&bull; Setting a watch]]::             Telling CVS to watch certain files
  [[cvs: Telling CVS to notify you#Telling CVS to notify you|&bull; Getting Notified]]::            Telling CVS to notify you
  [[cvs: How to edit a file which is being watched#How to edit a file which is being watched|&bull; Editing files]]::               How to edit a file which is being watched
  [[cvs: Information about who is watching and editing#Information about who is watching and editing|&bull; Watch information]]::           Information about who is watching and editing
  [[cvs: Using watches with old versions of CVS#Using watches with old versions of CVS|&bull; Watches Compatibility]]::       Watches interact poorly with CVS 1.6 or earlier
-</div>
 
 
 ----

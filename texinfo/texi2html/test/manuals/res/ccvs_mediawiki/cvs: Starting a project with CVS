@@ -99,11 +99,10 @@ explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd <var>wdir</var>
  $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </div>
-</td></tr></table>
 
 Unless you supply a log message with the &lsquo;<code>-m</code>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
@@ -116,13 +115,12 @@ more information about them.
 You can now verify that it worked, and remove your
 original source directory.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
- $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
+ $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal">Explanation below</span>
  $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
  $ rm -r <var>wdir</var>
 </div>
-</td></tr></table>
 
 Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.
@@ -216,22 +214,20 @@ files.
 For a new project, the easiest thing to do is probably
 to create an empty directory structure, like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ mkdir tc
  $ mkdir tc/man
  $ mkdir tc/testing
 </div>
-</td></tr></table>
 
 After that, you use the <code>import</code> command to create
 the corresponding (empty) directory structure inside
 the repository:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs import -m &quot;Created directory structure&quot; yoyodyne/<var>dir</var> yoyo start
 </div>
-</td></tr></table>
 
 Then, use <code>add</code> to add files (and new directories)
 as they appear.
@@ -275,36 +271,32 @@ In simple cases these steps are sufficient to define a module.
 
 # Get a working copy of the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout CVSROOT/modules
  $ cd CVSROOT
 </div>
-</td></tr></table>
 
 
 # Edit the file and insert a line that defines the module.  See section [[cvs: The Repository#The administrative files|The administrative files]], for an introduction.  See section [[cvs: Reference manual for Administrative files#The modules file|The modules file]], for a full description of the modules file.  You can use the following line to define the module &lsquo;<code>tc</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  tc   yoyodyne/tc
 </div>
-</td></tr></table>
 
 
 # Commit your changes to the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Added the tc module.&quot; modules
 </div>
-</td></tr></table>
 
 
 # Release the modules module.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ cvs release -d CVSROOT
 </div>
-</td></tr></table>
 
 
 ----

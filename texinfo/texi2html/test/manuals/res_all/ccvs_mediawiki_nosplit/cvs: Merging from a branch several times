@@ -12,7 +12,7 @@ Next: [[cvs: Merging differences between any two revisions#Merging differences b
 Continuing our example, the revision tree now looks
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -22,7 +22,6 @@ like this:
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                      +---------+    +---------+
 </div>
-</td></tr></table>
 
 where the starred line represents the merge from the
 &lsquo;<code>R1fix</code>&rsquo; branch to the main trunk, as just
@@ -31,7 +30,7 @@ discussed.
 Now suppose that development continues on the
 &lsquo;<code>R1fix</code>&rsquo; branch:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -41,7 +40,6 @@ Now suppose that development continues on the
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
                      +---------+    +---------+    +---------+
 </div>
-</td></tr></table>
 
 and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
@@ -56,28 +54,25 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal;">Merge changes from 1.2.2.2 to the</span>
-                                       # <span class="roman" style="font-family:serif; font-weight:normal;">head of the R1fix branch</span>
+<div class="example" style="margin-left: 3.2em">
+ cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal">Merge changes from 1.2.2.2 to the</span>
+                                       # <span class="roman" style="font-family:serif; font-weight:normal">head of the R1fix branch</span>
 </div>
-</td></tr></table>
 
 The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j R1fix:yesterday -j R1fix m.c
 </div>
-</td></tr></table>
 
 Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </div>
-</td></tr></table>
 
 
 ----

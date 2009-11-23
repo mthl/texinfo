@@ -54,7 +54,6 @@ models work, and some of the issues involved in
 choosing between them.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: File status#File status|&bull; File status]]::                 A file can be in several states
  [[cvs: Bringing a file up to date#Bringing a file up to date|&bull; Updating a file]]::             Bringing a file up-to-date
  [[cvs: Conflicts example#Conflicts example|&bull; Conflicts example]]::           An informative example
@@ -62,7 +61,6 @@ choosing between them.
  [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|&bull; Concurrency]]::                 Simultaneous repository access
  [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is editing files|&bull; Watches]]::                     Mechanisms to track who is editing files
  [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|&bull; Choosing a model]]::            Reserved or unreserved checkouts?
-</div>
 
 
 ----

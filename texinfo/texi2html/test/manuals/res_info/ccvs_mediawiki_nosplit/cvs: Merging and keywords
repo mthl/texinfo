@@ -28,7 +28,7 @@ spurious conflicts.
 
 For example, suppose you have a file like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +---------+
        _! 1.1.2.1 !   &lt;-  br1
       / +---------+
@@ -38,13 +38,12 @@ For example, suppose you have a file like this:
  ! 1.1 !----! 1.2 !
  +-----+    +-----+
 </div>
-</td></tr></table>
 
 and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -63,7 +62,6 @@ results from a merge:
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
  . . .
 </div>
-</td></tr></table>
 
 What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
@@ -75,7 +73,7 @@ working directory had contained <code>Revision: 1.2</code>.
 
 Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -89,7 +87,6 @@ Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
  key $<i></i>Revision$
  . . .
 </div>
-</td></tr></table>
 
 What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore

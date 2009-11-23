@@ -29,13 +29,11 @@ with strings of the form
 <code>$<var>keyword</var>:<var>value</var>$</code> whenever you obtain
 a new revision of the file.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Keyword List#Keyword List|&bull; Keyword list]]::                   Keywords
  [[cvs: Using keywords#Using keywords|&bull; Using keywords]]::                 Using keywords
  [[cvs: Avoiding substitution#Avoiding substitution|&bull; Avoiding substitution]]::          Avoiding substitution
  [[cvs: Substitution modes#Substitution modes|&bull; Substitution modes]]::             Substitution modes
  [[cvs: Configuring Keyord Expansion#Configuring Keyord Expansion|&bull; Configuring keyword expansion]]::  Configuring keyword expansion
  [[cvs: Problems with the $ Log$ keyword.#Problems with the $ Log$ keyword.|&bull; Log keyword]]::                    Problems with the $<i></i>Log$ keyword.
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

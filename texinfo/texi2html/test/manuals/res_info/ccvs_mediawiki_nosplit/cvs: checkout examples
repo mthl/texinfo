@@ -11,17 +11,15 @@ Previous: [[cvs: checkout options#checkout options|checkout options]], Up: [[cvs
 
 Get a copy of the module &lsquo;<code>tc</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout tc
 </div>
-</td></tr></table>
 
 Get a copy of the module &lsquo;<code>tc</code>&rsquo; as it looked one day
 ago:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -D yesterday tc
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

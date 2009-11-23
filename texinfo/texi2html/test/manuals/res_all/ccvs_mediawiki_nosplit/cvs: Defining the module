@@ -23,35 +23,31 @@ In simple cases these steps are sufficient to define a module.
 
 # Get a working copy of the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout CVSROOT/modules
  $ cd CVSROOT
 </div>
-</td></tr></table>
 
 
 # Edit the file and insert a line that defines the module.  See [[cvs: The administrative files#The administrative files|Intro administrative files]], for an introduction.  See [[cvs: The modules file#The modules file|modules]], for a full description of the modules file.  You can use the following line to define the module &lsquo;<code>tc</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  tc   yoyodyne/tc
 </div>
-</td></tr></table>
 
 
 # Commit your changes to the modules file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Added the tc module.&quot; modules
 </div>
-</td></tr></table>
 
 
 # Release the modules module.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
  $ cvs release -d CVSROOT
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -17,11 +17,10 @@ in &lsquo;<tt>~/work.d/wdiff</tt>&rsquo;, and you want to revert to the
 vendor&rsquo;s version for all the files in that directory,
 you would type:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ~/work.d/wdiff
  $ cvs admin -bWDIFF .
 </div>
-</td></tr></table>
 
 You must specify the &lsquo;<code>-bWDIFF</code>&rsquo; without any space
 after the &lsquo;<code>-b</code>&rsquo;.  See [[cvs: admin options#admin options|admin options]].

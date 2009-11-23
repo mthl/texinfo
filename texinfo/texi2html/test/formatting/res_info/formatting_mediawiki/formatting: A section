@@ -12,12 +12,12 @@ Up: [[formatting: chapter#chapter|chapter]] &nbsp; |[[formatting: chapter 2#SEC_
 <div class="menu-preformatted" style="font-family: serif">
  [[formatting: subsection#subsection|&bull; subsection]]:: 
  
-</div>
 <div class="menu-preformatted" style="font-family: serif">
  In detailmenu
  
  [[formatting: subsubsection "simple-double-#subsubsection &ldquo;simple-double&ndash;|&bull; subsubsection ``simple-double--]]::
  [[formatting: three--four---"#three&mdash;four&mdash;-&rdquo;|&bull; subsubsection three---four----<nowiki>''</nowiki>]]::
+</div>
 </div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -48,31 +48,27 @@ such systems either.
 ;&lsquo;<tt>Repository</tt>&rsquo;
 : This file contains the directory within the repository which the current directory corresponds with.  It can be either an absolute pathname or a relative pathname; <small>CVS</small> has had the ability to read either format since at least version 1.3 or so.  The relative pathname is relative to the root, and is the more sensible approach, but the absolute pathname is quite common and implementations should accept either.  For example, after the command
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d<nowiki> :</nowiki>local:/usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 : &lsquo;<tt>Root</tt>&rsquo; will contain
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  :local:/usr/local/cvsroot
 </div>
-</td></tr></table>
 
 : and &lsquo;<tt>Repository</tt>&rsquo; will contain either
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc
 </div>
-</td></tr></table>
 
 : or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  yoyodyne/tc
 </div>
-</td></tr></table>
 
 : If the particular working directory does not correspond to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo; should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;. <div id="index-Emptydir_002c-in-CVSROOT-directory"></div> <div id="index-CVSROOT_002fEmptydir-directory"></div>
 
@@ -83,10 +79,9 @@ such systems either.
 
 : If the first character is &lsquo;<code>/</code>&rsquo;, then the format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /<var>name</var>/<var>revision</var>/<var>timestamp</var><nowiki>[</nowiki>+<var>conflict</var><nowiki>]</nowiki>/<var>options</var>/<var>tagdate</var>
 </div>
-</td></tr></table>
 
 : where &lsquo;<code><nowiki>[</nowiki></code>&rsquo; and &lsquo;<code><nowiki>]</nowiki></code>&rsquo; are not part of the entry, but instead indicate that the &lsquo;<code>+</code>&rsquo; and conflict marker are optional.  <var>name</var> is the name of the file within the directory.  <var>revision</var> is the revision that the file in the working derives from, or &lsquo;<code>0</code>&rsquo; for an added file, or &lsquo;<code>-</code>&rsquo; followed by a revision for a removed file.  <var>timestamp</var> is the timestamp of the file at the time that <small>CVS</small> created it; if the timestamp differs with the actual modification time of the file it means the file has been modified.  It is stored in the format used by the ISO C asctime() function (for example, &lsquo;<code>Sun Apr  7 01:29:26 1996</code>&rsquo;).  One may write a string which is not in that format, for example, &lsquo;<code>Result of merge</code>&rsquo;, to indicate that the file should always be considered to be modified.  This is not a special case; to see whether a file is modified a program should take the timestamp of the file and simply do a string compare with <var>timestamp</var>. If there was a conflict, <var>conflict</var> can be set to the modification time of the file after the file has been written with conflict markers (see [[cvs: Conflicts example#Conflicts example|Conflicts example]]). Thus if <var>conflict</var> is subsequently the same as the actual modification time of the file it means that the user has obviously not resolved the conflict.  <var>options</var> contains sticky options (for example &lsquo;<code>-kb</code>&rsquo; for a binary file).  <var>tagdate</var> contains &lsquo;<code>T</code>&rsquo; followed by a tag name, or &lsquo;<code>D</code>&rsquo; for a date, followed by a sticky tag or date.  Note that if <var>timestamp</var> contains a pair of timestamps separated by a space, rather than a single timestamp, you are dealing with a version of <small>CVS</small> earlier than <small>CVS</small> 1.5 (not documented here).
 
@@ -94,10 +89,9 @@ such systems either.
 
 : If the first character of a line in &lsquo;<tt>Entries</tt>&rsquo; is &lsquo;<code>D</code>&rsquo;, then it indicates a subdirectory.  &lsquo;<code>D</code>&rsquo; on a line all by itself indicates that the program which wrote the &lsquo;<tt>Entries</tt>&rsquo; file does record subdirectories (therefore, if there is such a line and no other lines beginning with &lsquo;<code>D</code>&rsquo;, one knows there are no subdirectories).  Otherwise, the line looks like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
 </div>
-</td></tr></table>
 
 : where <var>name</var> is the name of the subdirectory, and all the <var>filler</var> fields should be silently ignored, for future expansion.  Programs which modify <code>Entries</code> files should preserve these fields.
 
@@ -147,10 +141,9 @@ such systems either.
 ;&lsquo;<tt>Baserev</tt>&rsquo;
 : The file lists the revision for each of the files in the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </div>
-</td></tr></table>
 
 : where <var>expansion</var> should be ignored, to allow for future expansion.
 

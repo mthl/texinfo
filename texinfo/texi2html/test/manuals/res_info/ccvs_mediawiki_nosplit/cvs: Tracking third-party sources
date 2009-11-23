@@ -38,14 +38,12 @@ revision.  When a local modification is committed it is
 placed on the main trunk, and made the &lsquo;head&rsquo;
 revision.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Importing for the first time#Importing for the first time|&bull; First import]]::                Importing for the first time
  [[cvs: Updating with the import command#Updating with the import command|&bull; Update imports]]::              Updating with the import command
  [[cvs: Reverting to the latest vendor release#Reverting to the latest vendor release|&bull; Reverting local changes]]::     Reverting to the latest vendor release
  [[cvs: How to handle binary files with cvs import#How to handle binary files with cvs import|&bull; Binary files in imports]]::     Binary files require special handling
  [[cvs: How to handle keyword substitution with cvs import#How to handle keyword substitution with cvs import|&bull; Keywords in imports]]::         Keyword substitution might be undesirable
  [[cvs: Multiple vendor branches#Multiple vendor branches|&bull; Multiple vendor branches]]::    What if you get sources from several places?
-</div>
 
 
 ----

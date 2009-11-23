@@ -14,10 +14,9 @@ Previous: [[cvs: Read-only repository access#Read-only repository access|Read-on
 While running, the <small>CVS</small> server creates temporary
 directories.  They are named
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs-serv<var>pid</var>
 </div>
-</td></tr></table>
 
 where <var>pid</var> is the process identification number of
 the server.

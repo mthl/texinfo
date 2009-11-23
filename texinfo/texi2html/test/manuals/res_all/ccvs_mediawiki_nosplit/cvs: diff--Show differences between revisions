@@ -29,9 +29,7 @@ under them will be compared.
 The exit status for diff is different than for other
 <small>CVS</small> commands; for details [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: diff options#diff options|&bull; diff options]]::                diff options
  [[cvs: diff examples#diff examples|&bull; diff examples]]::               diff examples
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

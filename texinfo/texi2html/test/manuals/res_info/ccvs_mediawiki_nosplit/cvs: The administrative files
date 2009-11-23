@@ -24,7 +24,7 @@ The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file.  It defines all modules in the repository.  This
 is a sample &lsquo;<tt>modules</tt>&rsquo; file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT         CVSROOT
  modules         CVSROOT modules
  cvs             gnu/cvs
@@ -32,7 +32,6 @@ is a sample &lsquo;<tt>modules</tt>&rsquo; file.
  diff            gnu/diff
  tc              yoyodyne/tc
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>modules</tt>&rsquo; file is line oriented.  In its
 simplest form each line contains the name of the

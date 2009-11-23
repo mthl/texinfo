@@ -30,7 +30,7 @@ This list is constructed in the following way.
 
 <div id="index-Ignored-files"></div>
 <div id="index-Automatically-ignored-files"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
      RCS     SCCS    CVS     CVS.adm
      RCSLOG  cvslog.*
      tags    TAGS
@@ -41,7 +41,6 @@ This list is constructed in the following way.
      *.Z     *.elc   *.ln
      core
 </div>
-</td></tr></table>
 
 
 * The per-repository list in &lsquo;<tt>$CVSROOT/CVSROOT/cvsignore</tt>&rsquo; is appended to the list, if that file exists.

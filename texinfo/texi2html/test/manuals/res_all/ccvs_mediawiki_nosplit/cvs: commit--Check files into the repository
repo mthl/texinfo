@@ -53,10 +53,8 @@ log message on the command line with the &lsquo;<code>-m
 or use the &lsquo;<code>-F <var>file</var></code>&rsquo; option to specify
 that the argument file contains the log message.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: commit options#commit options|&bull; commit options]]::              commit options
  [[cvs: commit examples#commit examples|&bull; commit examples]]::             commit examples
-</div>
 
 
 ----

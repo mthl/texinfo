@@ -18,11 +18,10 @@ explain how to use it.  If the files you want to install in
 <small>CVS</small> reside in &lsquo;<tt><var>wdir</var></tt>&rsquo;, and you want them to appear in the
 repository as &lsquo;<tt>$CVSROOT/yoyodyne/<var>rdir</var></tt>&rsquo;, you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd <var>wdir</var>
  $ cvs import -m &quot;Imported sources&quot; yoyodyne/<var>rdir</var> yoyo start
 </div>
-</td></tr></table>
 
 Unless you supply a log message with the &lsquo;<code>-m</code>&rsquo;
 flag, <small>CVS</small> starts an editor and prompts for a
@@ -35,13 +34,12 @@ more information about them.
 You can now verify that it worked, and remove your
 original source directory.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd ..
- $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal;">Explanation below</span>
+ $ cvs checkout yoyodyne/<var>rdir</var>       # <span class="roman" style="font-family:serif; font-weight:normal">Explanation below</span>
  $ diff -r <var>wdir</var> yoyodyne/<var>rdir</var>
  $ rm -r <var>wdir</var>
 </div>
-</td></tr></table>
 
 Erasing the original sources is a good idea, to make sure that you do
 not accidentally edit them in <var>wdir</var>, bypassing <small>CVS</small>.

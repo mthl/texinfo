@@ -36,40 +36,36 @@ access method you are using.
 
 : One good debugging tool is to &quot;telnet servername 2401&quot;.  After connecting, send any text (for example &quot;foo&quot; followed by return).  If <small>CVS</small> is working correctly, it will respond with
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki>pserver aborted<nowiki>]</nowiki>: bad auth protocol start: foo
 </div>
-</td></tr></table>
 
 : If instead you get:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Usage: cvs <nowiki>[</nowiki>cvs-options<nowiki>]</nowiki> command <nowiki>[</nowiki>command-options-and-arguments<nowiki>]</nowiki>
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;re missing the &lsquo;<code>pserver</code>&rsquo; command at the end of the line in &lsquo;<tt>inetd.conf</tt>&rsquo;; check to make sure that the entire command is on one line and that it&rsquo;s complete.
 
 : Likewise, if you get something like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Unknown command: `pserved'
  
  CVS commands are:
          add          Add a new file/directory to the repository
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;ve misspelled &lsquo;<code>pserver</code>&rsquo; in some way.  If it isn&rsquo;t obvious, check for invisible control characters (particularly carriage returns) in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 
 : If it fails to work at all, then make sure inetd is working right.  Change the invocation in &lsquo;<tt>inetd.conf</tt>&rsquo; to run the echo program instead of cvs.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  2401  stream  tcp  nowait  root /bin/echo echo hello
 </div>
-</td></tr></table>
 
 : After making that change and instructing inetd to re-read its configuration file, &quot;telnet servername 2401&quot; should show you the text hello and then the server should close the connection.  If this doesn&rsquo;t work, you need to fix it before you can worry about <small>CVS</small> problems.
 
@@ -79,11 +75,10 @@ access method you are using.
 
 : If you seem to be connecting but get errors like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs server: cannot open /root/.cvsignore: Permission denied
  cvs <nowiki>[</nowiki>server aborted<nowiki>]</nowiki>: can't chdir(/root): Permission denied
 </div>
-</td></tr></table>
 
 : then you probably haven&rsquo;t specified &lsquo;<code>-f</code>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;. (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by your system setting the <code>$HOME</code> environment variable for programs being run by inetd.  In this case, you can either have inetd run a shell script that unsets <code>$HOME</code> and then runs <small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine environment.)
 

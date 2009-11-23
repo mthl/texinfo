@@ -18,7 +18,7 @@ is &lsquo;<code>-</code>&rsquo; for deleted lines, &lsquo;<code>|</code>&rsquo; 
 for unchanged lines.  The formats contain newline characters where
 newlines are desired on output.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-line-format='-%l
  ' \
@@ -28,7 +28,6 @@ newlines are desired on output.
  ' \
     myfile
 </div>
-</td></tr></table>
 
 To specify a line format, use one of the following options.  You should
 quote <var>format</var>, since it often contains shell metacharacters.
@@ -81,7 +80,7 @@ different formats.  For example, the following command uses a format
 similar to <code>diff</code>&rsquo;s normal format.  You can tailor this command
 to get fine control over <code>diff</code>&rsquo;s output.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs diff \
     --old-line-format='&lt; %l
  ' \
@@ -97,7 +96,6 @@ to get fine control over <code>diff</code>&rsquo;s output.
     --unchanged-group-format=<nowiki>''</nowiki> \
     myfile
 </div>
-</td></tr></table>
 
 
 ----

@@ -12,12 +12,10 @@ Next: [[cvs: Defining the module#Defining the module|Defining the module]], Up: 
 The first step is to create the files inside the repository.  This can
 be done in a couple of different ways.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Creating a directory tree from a number of files#Creating a directory tree from a number of files|&bull; From files]]::                  This method is useful with old projects
                                  where files already exists.
  [[cvs: Creating Files From Other Version Control Systems#Creating Files From Other Version Control Systems|&bull; From other version control systems]]::  Old projects where you want to
                                          preserve history from another system.
  [[cvs: Creating a directory tree from scratch#Creating a directory tree from scratch|&bull; From scratch]]::                Creating a directory tree from scratch.
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

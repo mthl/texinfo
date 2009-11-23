@@ -43,7 +43,7 @@ binary files.
 
 The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  wildcard     <nowiki>[</nowiki>option value<nowiki>][</nowiki>option value<nowiki>]</nowiki>...
  
  where option is one of
@@ -52,17 +52,15 @@ The basic format of the file &lsquo;<tt>cvswrappers</tt>&rsquo; is:
  
  and value is a single-quote delimited value.
 </div>
-</td></tr></table>
 
 
 For example, the following command imports a
 directory, treating files whose name ends in
 &lsquo;<code>.exe</code>&rsquo; as binary:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs import -I ! -W &quot;*.exe -k 'b'&quot; first-dir vendortag reltag
 </div>
-</td></tr></table>
 
 
 

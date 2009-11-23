@@ -12,23 +12,22 @@ Previous: [[cvs: Moving the history file#Moving the history file|Inside]], Up: [
 This way also involves direct modifications to the
 repository.  It is safe, but not without drawbacks.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- # <span class="roman" style="font-family:serif; font-weight:normal;">Copy the RCS file inside the repository</span>
+<div class="example" style="margin-left: 3.2em">
+ # <span class="roman" style="font-family:serif; font-weight:normal">Copy the RCS file inside the repository</span>
  $ cd $CVSROOT/<var>dir</var>
  $ cp <var>old</var>,v <var>new</var>,v
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove the old file</span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove the old file</span>
  $ cd ~/<var>dir</var>
  $ rm <var>old</var>
  $ cvs remove <var>old</var>
  $ cvs commit <var>old</var>
- # <span class="roman" style="font-family:serif; font-weight:normal;">Remove all tags from <var>new</var></span>
+ # <span class="roman" style="font-family:serif; font-weight:normal">Remove all tags from <var>new</var></span>
  $ cvs update <var>new</var>
- $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal;">Remember the non-branch tag names</span>
+ $ cvs log <var>new</var>             # <span class="roman" style="font-family:serif; font-weight:normal">Remember the non-branch tag names</span>
  $ cvs tag -d <var>tag1</var> <var>new</var>
  $ cvs tag -d <var>tag2</var> <var>new</var>
  &hellip;
 </div>
-</td></tr></table>
 
 By removing the tags you will be able to check out old
 revisions.

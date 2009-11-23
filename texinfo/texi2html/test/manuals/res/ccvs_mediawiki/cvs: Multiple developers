@@ -167,10 +167,9 @@ display file status in a more brief format than is
 displayed by the <code>status</code> command, you can invoke
 
 <div id="index-update_002c-to-display-file-status"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs -n -q update
 </div>
-</td></tr></table>
 
 The &lsquo;<code>-n</code>&rsquo; option means to not actually do the
 update, but merely to display statuses; the &lsquo;<code>-q</code>&rsquo;
@@ -258,7 +257,7 @@ See section [[cvs: Guide to CVS commands#update&mdash;Bring work tree in sync wi
 
 Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdio.h&gt;
  
  void main()
@@ -271,11 +270,10 @@ Suppose revision 1.4 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
      exit(nerr == 0 ? 0 : 1);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdio.h&gt;
  
  int main(int argc,
@@ -294,12 +292,11 @@ Revision 1.6 of &lsquo;<tt>driver.c</tt>&rsquo; contains this:
      exit(!!nerr);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
 1.4, contains this before you run &lsquo;<code>cvs update</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -314,11 +311,10 @@ Your working copy of &lsquo;<tt>driver.c</tt>&rsquo;, based on revision
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 You run &lsquo;<code>cvs update</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update driver.c
  RCS file: /usr/local/cvsroot/yoyodyne/tc/driver.c,v
  retrieving revision 1.4
@@ -328,7 +324,6 @@ You run &lsquo;<code>cvs update</code>&rsquo;:
  cvs update: conflicts found in driver.c
  C driver.c
 </div>
-</td></tr></table>
 
 <div id="index-Conflicts-_0028merge-example_0029"></div>
 <small>CVS</small> tells you that there were some conflicts.
@@ -336,7 +331,7 @@ Your original working file is saved unmodified in
 &lsquo;<tt>.#driver.c.1.4</tt>&rsquo;.  The new version of
 &lsquo;<tt>driver.c</tt>&rsquo; contains this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -361,7 +356,6 @@ Your original working file is saved unmodified in
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.6
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 <div id="index-Markers_002c-conflict"></div>
 <div id="index-Conflict-markers"></div>
@@ -377,7 +371,7 @@ copy, and that the overlapping section is clearly marked with
 <div id="index-Conflict-resolution"></div>
 You resolve the conflict by editing the file, removing the markers and
 the erroneous line.  Suppose you end up with this file:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #include &lt;stdlib.h&gt;
  #include &lt;stdio.h&gt;
  
@@ -398,18 +392,16 @@ the erroneous line.  Suppose you end up with this file:
      exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 You can now go ahead and commit this as revision 1.7.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs commit -m &quot;Initialize scanner. Use symbolic exit values.&quot; driver.c
  Checking in driver.c;
  /usr/local/cvsroot/yoyodyne/tc/driver.c,v  &lt;--  driver.c
  new revision: 1.7; previous revision: 1.6
  done
 </div>
-</td></tr></table>
 
 For your protection, <small>CVS</small> will refuse to check in a
 file if a conflict occurred and you have not resolved
@@ -490,10 +482,9 @@ newsgroup.
 If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>11:43:23<nowiki>]</nowiki> waiting for bach's lock in /usr/local/cvsroot/foo
 </div>
-</td></tr></table>
 
 <div id="index-_0023cvs_002erfl_002c-removing"></div>
 <div id="index-_0023cvs_002ewfl_002c-removing"></div>
@@ -531,20 +522,18 @@ changes, or none of them.
 but <small>CVS</small> does ''not'' have this property.  For
 example, given the files
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  a/one.c
  a/two.c
  b/three.c
  b/four.c
 </div>
-</td></tr></table>
 
 if someone runs
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs ci a/two.c b/three.c
 </div>
-</td></tr></table>
 
 and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
@@ -735,10 +724,9 @@ supplied to the command on standard input.  The
 standard thing to put in the <code>notify</code> file is the
 single line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ALL mail %s -s &quot;CVS notification&quot;
 </div>
-</td></tr></table>
 
 This causes users to be notified by electronic mail.
 
@@ -900,11 +888,10 @@ If you attempt to use <small>CVS</small> 1.6 or earlier with the
 repository, you get an error message such as the
 following (all on one line):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update: cannot open CVS/Entries for reading:
  No such file or directory
 </div>
-</td></tr></table>
 
 and your operation will likely be aborted.  To use the
 watch features, you must upgrade all copies of <small>CVS</small>

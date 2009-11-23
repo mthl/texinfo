@@ -71,10 +71,9 @@ is the format string, and three files (<tt>ChangeLog</tt>,
 <tt>Makefile</tt>, <tt>foo.c</tt>) were modified, the output
 might be:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  &quot;yoyodyne/tc ChangeLog,1.1,1.2 Makefile,1.3,1.4 foo.c,1.12,1.13&quot;
 </div>
-</td></tr></table>
 
 As another example, &lsquo;<code>%<nowiki>{</nowiki><nowiki>}</nowiki></code>&rsquo; means that only the
 name of the repository will be generated.
@@ -83,10 +82,8 @@ Note: when <small>CVS</small> is accessing a remote repository,
 &lsquo;<tt>loginfo</tt>&rsquo; will be run on the ''remote''
 (i.e., server) side, not the client side (see [[cvs: Remote repositories#Remote repositories|Remote repositories]]).
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Loginfo example#Loginfo example|&bull; loginfo example]]::             Loginfo example
  [[cvs: Keeping a checked out copy#Keeping a checked out copy|&bull; Keeping a checked out copy]]::  Updating a tree on every checkin
-</div>
 
 
 ----

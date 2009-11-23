@@ -42,8 +42,6 @@ group with no users in it.  On NT, the <code>cvsadmin</code>
 feature does not exist and all users
 can run <code>cvs admin</code>.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: admin options#admin options|&bull; admin options]]::               admin options
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

@@ -79,10 +79,9 @@ particular moment).
 : This message indicates that you removed a file, and someone else modified it.  To resolve the conflict, first run &lsquo;<code>cvs add <var>file</var></code>&rsquo;.  If desired, look at the other party&rsquo;s modification to decide whether you still want to remove it.  If you don&rsquo;t want to remove it, stop here.  If you do want to remove it, proceed with &lsquo;<code>cvs remove <var>file</var></code>&rsquo; and commit your removal.
 
 ;<code>cannot change permissions on temporary directory</code>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Operation not permitted
 </div>
-</td></tr></table>
 : This message has been happening in a non-reproducible, occasional way when we run the client/server testsuite, both on Red Hat Linux 3.0.3 and 4.1.  We haven&rsquo;t been able to figure out what causes it, nor is it known whether it is specific to linux (or even to this particular machine!).  If the problem does occur on other unices, &lsquo;<code>Operation not permitted</code>&rsquo; would be likely to read &lsquo;<code>Not owner</code>&rsquo; or whatever the system in question uses for the unix <code>EPERM</code> error.  If you have any information to add, please let us know as described in [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|Dealing with bugs in CVS or this manual]].  If you experience this error while using <small>CVS</small>, retrying the operation which produced it should work fine.
 
 ;<code>cvs <nowiki>[</nowiki>server aborted<nowiki>]</nowiki>: Cannot check out files into the repository itself</code>
@@ -139,10 +138,9 @@ particular moment).
 ;<code>cvs commit: Executing 'mkmodules'</code>
 : This means that your repository is set up for a version of <small>CVS</small> prior to <small>CVS</small> 1.8.  When using <small>CVS</small> 1.8 or later, the above message will be preceded by
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 : If you see both messages, the database is being rebuilt twice, which is unnecessary but harmless.  If you wish to avoid the duplication, and you have no versions of <small>CVS</small> 1.7 or earlier in use, remove <code>-i mkmodules</code> every place it appears in your <code>modules</code> file.  For more information on the <code>modules</code> file, see [[cvs: Reference manual for Administrative files#The modules file|The modules file]].
 
@@ -177,10 +175,9 @@ particular moment).
 : This means that someone else has committed a change to that file since the last time that you did a <code>cvs update</code>.  So before proceeding with your <code>cvs commit</code> you need to <code>cvs update</code>.  <small>CVS</small> will merge the changes that you made and the changes that the other person made.  If it does not detect any conflicts it will report &lsquo;<code>M <var>file</var></code>&rsquo; and you are ready to <code>cvs commit</code>.  If it detects conflicts it will print a message saying so, will report &lsquo;<code>C <var>file</var></code>&rsquo;, and you need to manually resolve the conflict.  For more details on this process see [[cvs: Multiple developers#Conflicts example|Conflicts example]].
 
 ;<code>Usage:	diff3 <nowiki>[</nowiki>-exEX3 <nowiki>[</nowiki>-i | -m<nowiki>]</nowiki> <nowiki>[</nowiki>-L label1 -L label3<nowiki>]]</nowiki> file1 file2 file3</code>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Only one of <nowiki>[</nowiki>exEX3<nowiki>]</nowiki> allowed
 </div>
-</td></tr></table>
 : This indicates a problem with the installation of <code>diff3</code> and <code>rcsmerge</code>.  Specifically <code>rcsmerge</code> was compiled to look for GNU diff3, but it is finding unix diff3 instead.  The exact text of the message will vary depending on the system.  The simplest solution is to upgrade to a current version of <small>CVS</small>, which does not rely on external <code>rcsmerge</code> or <code>diff3</code> programs.
 
 ;<code>warning: unrecognized response `<var>text</var>' from cvs server</code>
@@ -193,12 +190,11 @@ particular moment).
 <div id="index-Exit-status_002c-of-editor"></div>
 : This means that the editor which <small>CVS</small> is using exits with a nonzero exit status.  Some versions of vi will do this even when there was not a problem editing the file.  If so, point the <code>CVSEDITOR</code> environment variable to a small script such as:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  #!/bin/sh
  vi $*
  exit 0
 </div>
-</td></tr></table>
 
 
 
@@ -250,40 +246,36 @@ access method you are using.
 
 : One good debugging tool is to &quot;telnet servername 2401&quot;.  After connecting, send any text (for example &quot;foo&quot; followed by return).  If <small>CVS</small> is working correctly, it will respond with
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs <nowiki>[</nowiki>pserver aborted<nowiki>]</nowiki>: bad auth protocol start: foo
 </div>
-</td></tr></table>
 
 : If instead you get:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Usage: cvs <nowiki>[</nowiki>cvs-options<nowiki>]</nowiki> command <nowiki>[</nowiki>command-options-and-arguments<nowiki>]</nowiki>
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;re missing the &lsquo;<code>pserver</code>&rsquo; command at the end of the line in &lsquo;<tt>inetd.conf</tt>&rsquo;; check to make sure that the entire command is on one line and that it&rsquo;s complete.
 
 : Likewise, if you get something like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Unknown command: `pserved'
  
  CVS commands are:
          add          Add a new file/directory to the repository
  ...
 </div>
-</td></tr></table>
 
 : then you&rsquo;ve misspelled &lsquo;<code>pserver</code>&rsquo; in some way.  If it isn&rsquo;t obvious, check for invisible control characters (particularly carriage returns) in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 
 : If it fails to work at all, then make sure inetd is working right.  Change the invocation in &lsquo;<tt>inetd.conf</tt>&rsquo; to run the echo program instead of cvs.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  2401  stream  tcp  nowait  root /bin/echo echo hello
 </div>
-</td></tr></table>
 
 : After making that change and instructing inetd to re-read its configuration file, &quot;telnet servername 2401&quot; should show you the text hello and then the server should close the connection.  If this doesn&rsquo;t work, you need to fix it before you can worry about <small>CVS</small> problems.
 
@@ -293,11 +285,10 @@ access method you are using.
 
 : If you seem to be connecting but get errors like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs server: cannot open /root/.cvsignore: Permission denied
  cvs <nowiki>[</nowiki>server aborted<nowiki>]</nowiki>: can't chdir(/root): Permission denied
 </div>
-</td></tr></table>
 
 : then you probably haven&rsquo;t specified &lsquo;<code>-f</code>&rsquo; in &lsquo;<tt>inetd.conf</tt>&rsquo;. (In releases prior to <small>CVS</small> 1.11.1, this problem can be caused by your system setting the <code>$HOME</code> environment variable for programs being run by inetd.  In this case, you can either have inetd run a shell script that unsets <code>$HOME</code> and then runs <small>CVS</small>, or you can use <code>env</code> to run <small>CVS</small> with a pristine environment.)
 

@@ -58,7 +58,7 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 : Use the context output format.
 
 ;&lsquo;<code>-C <var>lines</var></code>&rsquo;
-;&lsquo;<code>--context<span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>]</nowiki></span></code>&rsquo;
+;&lsquo;<code>--context<span class="roman" style="font-family:serif; font-weight:normal"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal"><nowiki>]</nowiki></span></code>&rsquo;
 : Use the context output format, showing <var>lines</var> (an integer) lines of context, or three if <var>lines</var> is not given. For proper operation, <code>patch</code> typically needs at least two lines of context.
 
 ;&lsquo;<code>--changed-group-format=<var>format</var></code>&rsquo;
@@ -194,7 +194,7 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 : Use <var>format</var> to output a line common to both files in if-then-else format.  See [[cvs: Line formats#Line formats|Line formats]].
 
 ;&lsquo;<code>-U <var>lines</var></code>&rsquo;
-;&lsquo;<code>--unified<span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal;"><nowiki>]</nowiki></span></code>&rsquo;
+;&lsquo;<code>--unified<span class="roman" style="font-family:serif; font-weight:normal"><nowiki>[</nowiki></span>=<var>lines</var><span class="roman" style="font-family:serif; font-weight:normal"><nowiki>]</nowiki></span></code>&rsquo;
 : Use the unified output format, showing <var>lines</var> (an integer) lines of context, or three if <var>lines</var> is not given. For proper operation, <code>patch</code> typically needs at least two lines of context.
 
 ;&lsquo;<code>-w</code>&rsquo;
@@ -207,10 +207,8 @@ preceded by &lsquo;<code>-</code>&rsquo;, and the other of which is a long name 
 ;&lsquo;<code>-y</code>&rsquo;
 : Use the side by side output format.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Line group formats#Line group formats|&bull; Line group formats]]::          Line group formats
  [[cvs: Line formats#Line formats|&bull; Line formats]]::                Line formats
-</div>
 
 
 ----

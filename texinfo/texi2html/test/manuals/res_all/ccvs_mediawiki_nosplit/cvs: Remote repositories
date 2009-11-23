@@ -31,10 +31,9 @@ which can mount the repository, known as the
 repository is just like using a local one, except that
 the format of the repository name is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>:<var>method</var>:<nowiki>][[</nowiki><var>user</var><nowiki>][</nowiki>:<var>password</var><nowiki>]</nowiki>@<nowiki>]</nowiki><var>hostname</var><nowiki>[</nowiki>:<nowiki>[</nowiki><var>port</var><nowiki>]]</nowiki>/path/to/repository
 </div>
-</td></tr></table>
 
 Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
@@ -49,14 +48,12 @@ name contains &lsquo;<code>:</code>&rsquo;, then the default is <code>ext</code>
 or <code>server</code>, depending on your platform; both are
 described in [[cvs: Connecting with rsh#Connecting with rsh|Connecting via rsh]].
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Server requirements#Server requirements|&bull; Server requirements]]::         Memory and other resources for servers
  [[cvs: Connecting with rsh#Connecting with rsh|&bull; Connecting via rsh]]::          Using the <code>rsh</code> program to connect
  [[cvs: Direct connection with password authentication#Direct connection with password authentication|&bull; Password authenticated]]::      Direct connections using passwords
  [[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|&bull; GSSAPI authenticated]]::        Direct connections using GSSAPI
  [[cvs: Direct connection with kerberos#Direct connection with kerberos|&bull; Kerberos authenticated]]::      Direct connections with kerberos
  [[cvs: Connecting with fork#Connecting with fork|&bull; Connecting via fork]]::         Using a forked <code>cvs server</code> to connect
-</div>
 
 
 ----

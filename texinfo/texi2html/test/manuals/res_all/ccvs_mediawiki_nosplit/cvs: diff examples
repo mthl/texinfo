@@ -15,36 +15,32 @@ between revision 1.14 and 1.19 of
 keywords are substituted, so differences that only depend
 on keyword substitution are ignored.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -kk -u -r 1.14 -r 1.19 backend.c
 </div>
-</td></tr></table>
 
 Suppose the experimental branch EXPR1 was based on a
 set of files tagged RELEASE_1_0.  To see what has
 happened on that branch, the following can be used:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -r RELEASE_1_0 -r EXPR1
 </div>
-</td></tr></table>
 
 A command like this can be used to produce a context
 diff between two releases:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -c -r RELEASE_1_0 -r RELEASE_1_1 &gt; diffs
 </div>
-</td></tr></table>
 
 If you are maintaining ChangeLogs, a command like the following
 just before you commit your changes may help you write
 the ChangeLog entry.  All local modifications that have
 not yet been committed will be printed.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs diff -u | less
 </div>
-</td></tr></table>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

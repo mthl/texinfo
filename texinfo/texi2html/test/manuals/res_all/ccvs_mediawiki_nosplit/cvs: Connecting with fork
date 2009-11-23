@@ -32,10 +32,9 @@ To connect using the <code>fork</code> method, use
 &lsquo;<code>:fork:</code>&rsquo; and the pathname to your local
 repository.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :fork:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
 As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;

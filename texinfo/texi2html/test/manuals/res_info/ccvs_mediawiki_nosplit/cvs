@@ -14,7 +14,6 @@ This info manual describes how to use and administer
 <small>CVS</small> version 4.2.
 
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: Overview#Overview|&bull; Overview]]::                    An introduction to CVS
  [[cvs: The Repository#The Repository|&bull; Repository]]::                  Where all your sources are stored
  [[cvs: Starting a project with CVS#Starting a project with CVS|&bull; Starting a new project]]::      Starting a project with CVS
@@ -45,7 +44,6 @@ This info manual describes how to use and administer
  [[cvs: Credits#Credits|&bull; Credits]]::                     Some of the contributors to this manual
  [[cvs: Dealing with bugs in CVS or this manual#Dealing with bugs in CVS or this manual|&bull; BUGS]]::                        Dealing with bugs in CVS or this manual
  [[cvs: Index#Index|&bull; Index]]::                       Index
-</div>
 
 
 ----

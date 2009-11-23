@@ -55,10 +55,9 @@ set this up as required by your GSSAPI mechanism.
 To connect using GSSAPI, use &lsquo;<code>:gserver:</code>&rsquo;.  For
 example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 
 ----

@@ -40,24 +40,22 @@ to start an inclusion list or <code>e</code> to start an
 exclusion list. If the following lines were added to
 the &lsquo;<tt>CVSROOT/config</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD
 </div>
-</td></tr></table>
 
 then only the $<i></i>MyBSD$ keyword would be expanded.
 A list may be used. The this example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Add a &quot;MyBSD&quot; keyword and restrict keyword
          # expansion to the MyBSD, Name and Date keywords.
          LocalKeyword=MyBSD=CVSHeader
          KeywordExpand=iMyBSD,Name,Date
 </div>
-</td></tr></table>
 
 would allow $<i></i>MyBSD$, $<i></i>Name$, and
 $<i></i>Date$ to be expanded.
@@ -65,11 +63,10 @@ $<i></i>Date$ to be expanded.
 It is also possible to configure an exclusion list
 using the following:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
          # Do not expand the non-RCS keyword CVSHeader
          KeywordExpand=eCVSHeader
 </div>
-</td></tr></table>
 
 This allows <small>CVS</small> to ignore the recently introduced
 $<i></i>CVSHeader$ keyword and retain all of the
@@ -84,11 +81,10 @@ expanded and not use the <code>-ko</code> flags everywhere,
 an administrator may disable all keyword expansion
 using the &lsquo;<tt>CVSROOT/config</tt>&rsquo; line:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  	# Do not expand any RCS keywords
  	KeywordExpand=i
 </div>
-</td></tr></table>
 
 this could be confusing to users that expect RCS
 keywords like $<i></i>Id$ to be expanded properly,

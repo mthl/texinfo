@@ -120,10 +120,9 @@ the main trunk, or leave them on the branch.
 You can create a branch with <code>tag -b</code>; for
 example, assuming you&rsquo;re in a working copy:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs tag -b rel-1-0-patches
 </div>
-</td></tr></table>
 
 
 This splits off a branch based on the current revisions
@@ -140,10 +139,9 @@ to do that, see [[#Accessing branches|Accessing branches]].
 You can also create a branch without reference to any
 working copy, by using <code>rtag</code>:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rtag -b -r rel-1-0 rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 &lsquo;<code>-r rel-1-0</code>&rsquo; says that this branch should be
 rooted at the revision that
@@ -202,26 +200,23 @@ To check out a branch from the repository, invoke
 &lsquo;<code>checkout</code>&rsquo; with the &lsquo;<code>-r</code>&rsquo; flag, followed by
 the tag name of the branch (see section [[#Creating a branch|Creating a branch]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 Or, if you already have a working copy, you can switch
 it to a given branch with &lsquo;<code>update -r</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -r rel-1-0-patches tc
 </div>
-</td></tr></table>
 
 or equivalently:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cd tc
  $ cvs update -r rel-1-0-patches
 </div>
-</td></tr></table>
 
 It does not matter if the working copy was originally
 on the main trunk or on some other branch &ndash; the above
@@ -243,7 +238,7 @@ the field named &lsquo;<code>Sticky tag</code>&rsquo; (see section [[cvs: Revisi
 &ndash; that&rsquo;s <small>CVS</small>&rsquo;s way of telling you the branch, if
 any, of the current working files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs status -v driver.c backend.c
  ===================================================================
  File: driver.c          Status: Up-to-date
@@ -273,7 +268,6 @@ any, of the current working files:
          rel-0-4                     (revision: 1.4)
  
 </div>
-</td></tr></table>
 
 Don&rsquo;t be confused by the fact that the branch numbers
 for each file are different (&lsquo;<code>1.7.2</code>&rsquo; and
@@ -316,12 +310,11 @@ branch numbers are constructed.
 Ordinarily, a file&rsquo;s revision history is a linear
 series of increments (see section [[cvs: Revisions#Revision numbers|Revision numbers]]):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +-----+    +-----+    +-----+    +-----+    +-----+
         ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !
         +-----+    +-----+    +-----+    +-----+    +-----+
 </div>
-</td></tr></table>
 
 However, <small>CVS</small> is not limited to linear development.  The
 <em>revision tree</em> can be split into <em>branches</em>,
@@ -341,7 +334,7 @@ by appending an ordinal number to the branch number.
 The following figure illustrates branching with an
 example.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
                                                        +-------------+
                             Branch 1.2.2.3.2 -&gt;        ! 1.2.2.3.2.1 !
                                                      / +-------------+
@@ -362,7 +355,6 @@ example.
                      +---------+    +---------+    +---------+
  
 </div>
-</td></tr></table>
 
 
 
@@ -431,10 +423,9 @@ to be.  If <code>R4patches</code> is assigned to the branch
 1.4.2 (magic branch number 1.4.0.2) in file
 &lsquo;<tt>numbers.c</tt>&rsquo; you can do this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs admin -NR4patches:1.4.2 numbers.c
 </div>
-</td></tr></table>
 
 It only works if at least one revision is already
 committed on the branch.  Be very careful so that you
@@ -480,7 +471,7 @@ The &lsquo;<code>-j</code>&rsquo; stands for &ldquo;join&rdquo;.
 <div id="index-Merge_002c-branch-example"></div>
 Consider this revision tree:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !      &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+
@@ -490,23 +481,21 @@ Consider this revision tree:
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                      +---------+    +---------+
 </div>
-</td></tr></table>
 
 The branch 1.2.2 has been given the tag (symbolic name) &lsquo;<code>R1fix</code>&rsquo;.  The
 following example assumes that the module &lsquo;<code>mod</code>&rsquo; contains only one
 file, &lsquo;<tt>m.c</tt>&rsquo;.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal;">Retrieve the latest revision, 1.4</span>
+<div class="example" style="margin-left: 3.2em">
+ $ cvs checkout mod               # <span class="roman" style="font-family:serif; font-weight:normal">Retrieve the latest revision, 1.4</span>
  
- $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal;">Merge all changes made on the branch,</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">i.e. the changes between revision 1.2</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">and 1.2.2.2, into your working copy</span>
-                                  # <span class="roman" style="font-family:serif; font-weight:normal;">of the file.</span>
+ $ cvs update -j R1fix m.c        # <span class="roman" style="font-family:serif; font-weight:normal">Merge all changes made on the branch,</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">i.e. the changes between revision 1.2</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">and 1.2.2.2, into your working copy</span>
+                                  # <span class="roman" style="font-family:serif; font-weight:normal">of the file.</span>
  
- $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal;">Create revision 1.5.</span>
+ $ cvs commit -m &quot;Included R1fix&quot; # <span class="roman" style="font-family:serif; font-weight:normal">Create revision 1.5.</span>
 </div>
-</td></tr></table>
 
 A conflict can result from a merge operation.  If that
 happens, you should resolve it before committing the
@@ -519,11 +508,10 @@ you might be getting more conflicts than strictly necessary.  See
 The <code>checkout</code> command also supports the &lsquo;<code>-j <var>branchname</var></code>&rsquo; flag.  The
 same effect as above could be achieved with this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs checkout -j R1fix mod
  $ cvs commit -m &quot;Included R1fix&quot;
 </div>
-</td></tr></table>
 
 It should be noted that <code>update -j <var>tagname</var></code> will also work but may
 not produce the desired result.  See section [[#Merging can add or remove files|Merging can add or remove files]], for more.
@@ -553,7 +541,7 @@ not produce the desired result.  See section [[#Merging can add or remove files|
 Continuing our example, the revision tree now looks
 like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -563,7 +551,6 @@ like this:
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !
                      +---------+    +---------+
 </div>
-</td></tr></table>
 
 where the starred line represents the merge from the
 &lsquo;<code>R1fix</code>&rsquo; branch to the main trunk, as just
@@ -572,7 +559,7 @@ discussed.
 Now suppose that development continues on the
 &lsquo;<code>R1fix</code>&rsquo; branch:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  +-----+    +-----+    +-----+    +-----+    +-----+
  ! 1.1 !----! 1.2 !----! 1.3 !----! 1.4 !----! 1.5 !   &lt;- The main trunk
  +-----+    +-----+    +-----+    +-----+    +-----+
@@ -582,7 +569,6 @@ Now suppose that development continues on the
  Branch R1fix -&gt; +---! 1.2.2.1 !----! 1.2.2.2 !----! 1.2.2.3 !
                      +---------+    +---------+    +---------+
 </div>
-</td></tr></table>
 
 and then you want to merge those new changes onto the
 main trunk.  If you just use the <code>cvs update -j
@@ -597,28 +583,25 @@ merged into the trunk.  To do that you specify two
 the first revision to the second revision.  For
 example, in this case the simplest way would be
 
-<table><tr><td>&nbsp;</td><td><div class="example">
- cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal;">Merge changes from 1.2.2.2 to the</span>
-                                       # <span class="roman" style="font-family:serif; font-weight:normal;">head of the R1fix branch</span>
+<div class="example" style="margin-left: 3.2em">
+ cvs update -j 1.2.2.2 -j R1fix m.c    # <span class="roman" style="font-family:serif; font-weight:normal">Merge changes from 1.2.2.2 to the</span>
+                                       # <span class="roman" style="font-family:serif; font-weight:normal">head of the R1fix branch</span>
 </div>
-</td></tr></table>
 
 The problem with this is that you need to specify the
 1.2.2.2 revision manually.  A slightly better approach
 might be to use the date the last merge was done:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j R1fix:yesterday -j R1fix m.c
 </div>
-</td></tr></table>
 
 Better yet, tag the R1fix branch after every merge into
 the trunk, and then use that tag for subsequent merges:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -j merged_from_R1fix_to_trunk -j R1fix m.c
 </div>
-</td></tr></table>
 
 
 ----
@@ -651,10 +634,9 @@ between any two revisions into your working file.
 
 <div id="index-Undoing-a-change"></div>
 <div id="index-Removing-a-change"></div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -j 1.5 -j 1.3 backend.c
 </div>
-</td></tr></table>
 
 will undo all changes made between revision
 1.3 and 1.5.  Note the order of the revisions!
@@ -676,7 +658,7 @@ you then removed it (thus adding a dead revision 1.2).
 Now suppose you want to add it again, with the same
 contents it had previously.  Here is how to do it:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs update -j 1.2 -j 1.1 file1
  U file1
  $ cvs commit -m test
@@ -686,7 +668,6 @@ contents it had previously.  Here is how to do it:
  done
  $
 </div>
-</td></tr></table>
 
 
 ----
@@ -715,7 +696,7 @@ or adding some files, <code>update -j</code> will reflect
 such additions or removals.
 
 For example:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs update -A
  touch a b c
  cvs add a b c ; cvs ci -m &quot;added&quot; a b c
@@ -727,7 +708,6 @@ For example:
  cvs update -A
  cvs update -jbranchtag
 </div>
-</td></tr></table>
 
 After these commands are executed and a &lsquo;<code>cvs commit</code>&rsquo; is done,
 file &lsquo;<tt>a</tt>&rsquo; will be removed and file &lsquo;<tt>d</tt>&rsquo; added in the main branch.
@@ -782,7 +762,7 @@ spurious conflicts.
 
 For example, suppose you have a file like this:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
         +---------+
        _! 1.1.2.1 !   &lt;-  br1
       / +---------+
@@ -792,13 +772,12 @@ For example, suppose you have a file like this:
  ! 1.1 !----! 1.2 !
  +-----+    +-----+
 </div>
-</td></tr></table>
 
 and your working directory is currently on the trunk
 (revision 1.2).  Then you might get the following
 results from a merge:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -817,7 +796,6 @@ results from a merge:
  &gt;&gt;&gt;&gt;&gt;&gt;&gt; 1.1.2.1
  . . .
 </div>
-</td></tr></table>
 
 What happened was that the merge tried to merge the
 differences between 1.1 and 1.1.2.1 into your working
@@ -829,7 +807,7 @@ working directory had contained <code>Revision: 1.2</code>.
 
 Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cat file1
  key $<i></i>Revision: 1.2 $
  . . .
@@ -843,7 +821,6 @@ Here is what happens if you had used &lsquo;<code>-kk</code>&rsquo;:
  key $<i></i>Revision$
  . . .
 </div>
-</td></tr></table>
 
 What is going on here is that revision 1.1 and 1.1.2.1
 both expand as plain <code>Revision</code>, and therefore

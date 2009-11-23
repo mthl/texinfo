@@ -161,12 +161,12 @@ but , ,
 <code>@key<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;--a&gt;
 <code>@math<nowiki>{</nowiki>--a <nowiki>{</nowiki>\frac<nowiki>{</nowiki>1<nowiki>}</nowiki><nowiki>{</nowiki>2<nowiki>}</nowiki><nowiki>}</nowiki> @minus<nowiki>{</nowiki><nowiki>}</nowiki><nowiki>}</nowiki></code> <math>--a {\frac{1}{2}} -</math>
 <code>@option<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
-<code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal;">&ndash;a</span>
+<code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal">&ndash;a</span>
 <code>@samp<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
 <code>@sc<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <small>&ndash;A</small>
 <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''&ndash;a'''
 <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>&ndash;a</tt>
-<code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">&ndash;a</span>
+<code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">&ndash;a</span>
 <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> == &ndash;a ==
 
 <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
@@ -304,46 +304,38 @@ After clickstyle &rArr;
 <tr><td>truc</td><td>bidule</td></tr>
 </table>
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  e--xample  some
     text
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+<div class="smallexample" style="margin-left: 3.2em; font-size: smaller">
  s--mallexample
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
+<div class="display" style="margin-left: 3.2em; font-family: serif">
  d&ndash;isplay
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smalldisplay" style="font-family: serif; font-size: smaller">
+<div class="smalldisplay" style="margin-left: 3.2em; font-family: serif; font-size: smaller">
  s&ndash;malldisplay
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="lisp">
+<div class="lisp" style="margin-left: 3.2em">
  l--isp
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+<div class="smalllisp" style="margin-left: 3.2em; font-size: smaller">
  s--malllisp
 </div>
-</td></tr></table>
 
 <div class="format" style="font-family: serif">
  f&ndash;ormat
 </div>
 
-
 <div class="smallformat" style="font-family: serif; font-size: smaller">
  s&ndash;mallformat
 </div>
-
 
 ;<div id="index-copying-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
 : d&ndash;effn
@@ -795,12 +787,12 @@ but , ,
 <code>@key<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;--a&gt;
 <code>@math<nowiki>{</nowiki>--a <nowiki>{</nowiki>\frac<nowiki>{</nowiki>1<nowiki>}</nowiki><nowiki>{</nowiki>2<nowiki>}</nowiki><nowiki>}</nowiki> @minus<nowiki>{</nowiki><nowiki>}</nowiki><nowiki>}</nowiki></code> <math>--a {\frac{1}{2}} -</math>
 <code>@option<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
-<code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal;">&ndash;a</span>
+<code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal">&ndash;a</span>
 <code>@samp<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
 <code>@sc<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <small>&ndash;A</small>
 <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''&ndash;a'''
 <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>&ndash;a</tt>
-<code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">&ndash;a</span>
+<code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">&ndash;a</span>
 <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> == &ndash;a ==
 
 <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
@@ -938,46 +930,38 @@ After clickstyle &rArr;
 <tr><td>truc</td><td>bidule</td></tr>
 </table>
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  e--xample  some
     text
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+<div class="smallexample" style="margin-left: 3.2em; font-size: smaller">
  s--mallexample
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="display" style="font-family: serif">
+<div class="display" style="margin-left: 3.2em; font-family: serif">
  d&ndash;isplay
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smalldisplay" style="font-family: serif; font-size: smaller">
+<div class="smalldisplay" style="margin-left: 3.2em; font-family: serif; font-size: smaller">
  s&ndash;malldisplay
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="lisp">
+<div class="lisp" style="margin-left: 3.2em">
  l--isp
 </div>
-</td></tr></table>
 
-<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+<div class="smalllisp" style="margin-left: 3.2em; font-size: smaller">
  s--malllisp
 </div>
-</td></tr></table>
 
 <div class="format" style="font-family: serif">
  f&ndash;ormat
 </div>
 
-
 <div class="smallformat" style="font-family: serif; font-size: smaller">
  s&ndash;mallformat
 </div>
-
 
 ;<div id="index-d_002d_002deffn_005fname"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
 : d&ndash;effn
@@ -1290,7 +1274,7 @@ Invalid use of @&rsquo;:<br>
 
 
 In example.
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  
  &lt;
  &gt;
@@ -1434,12 +1418,12 @@ In example.
  <code>@key<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;--a&gt;
  <code>@math<nowiki>{</nowiki>--a <nowiki>{</nowiki>\frac<nowiki>{</nowiki>1<nowiki>}</nowiki><nowiki>{</nowiki>2<nowiki>}</nowiki><nowiki>}</nowiki> @minus<nowiki>{</nowiki><nowiki>}</nowiki><nowiki>}</nowiki></code> <math>--a {\frac{1}{2}} -</math>
  <code>@option<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
- <code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal;">--a</span>
+ <code>@r<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="roman" style="font-family:serif; font-weight:normal">--a</span>
  <code>@samp<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lsquo;<code>--a</code>&rsquo;
  <code>@sc<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> --A
  <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''--a'''
  <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>--a</tt>
- <code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal;">--a</span>
+ <code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">--a</span>
  <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> --a
  <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>--a</nowiki></code>&gt;
  <code>@uref<nowiki>{</nowiki>--a,--b<nowiki>}</nowiki></code> [--a --b]
@@ -1497,282 +1481,128 @@ In example.
  After clickstyle &rArr;
  <code>@clicksequence<nowiki>{</nowiki>click @click<nowiki>{</nowiki><nowiki>}</nowiki> A<nowiki>}</nowiki></code> click &rArr; A
  
-</div>
-<blockquote><div class="example">
- A quot---ation
-</div>
+<blockquote> A quot---ation
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Note:</b> A Note
-</div>
+<blockquote> <b>Note:</b> A Note
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>note:</b> A note
-</div>
+<blockquote> <b>note:</b> A note
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Caution:</b> Caution
-</div>
+<blockquote> <b>Caution:</b> Caution
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Important:</b> Important
-</div>
+<blockquote> <b>Important:</b> Important
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Tip:</b> a Tip
-</div>
+<blockquote> <b>Tip:</b> a Tip
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Warning:</b> a Warning.
-</div>
+<blockquote> <b>Warning:</b> a Warning.
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>something &eacute; TeX:</b> The something &eacute; TeX is here.
-</div>
+<blockquote> <b>something &eacute; TeX:</b> The something &eacute; TeX is here.
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>@ at the end of line </b> A @ at the end of the @quotation line.
-</div>
+<blockquote> <b>@ at the end of line </b> A @ at the end of the @quotation line.
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>something, other thing:</b> something, other thing
-</div>
+<blockquote> <b>something, other thing:</b> something, other thing
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Note, the note:</b> Note, the note
-</div>
+<blockquote> <b>Note, the note:</b> Note, the note
 </blockquote>
-<div class="example">
  
-</div>
 <blockquote></blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>Empty:</b> </div>
+<blockquote> <b>Empty:</b> </blockquote>
+ 
+<blockquote> <b>:</b> </blockquote>
+ 
+<blockquote> <b>
+ :</b> </blockquote>
+ 
+<blockquote class="smallquotation" style="font-size: smaller"> A small quot---ation
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>:</b> </div>
+<blockquote class="smallquotation" style="font-size: smaller"> <b>Note:</b> A small Note
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote><div class="example">
- <b>
- :</b> </div>
+<blockquote class="smallquotation" style="font-size: smaller"> <b>something, other thing:</b> something, other thing
 </blockquote>
-<div class="example">
  
-</div>
-<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
- A small quot---ation
-</div>
-</blockquote>
-<div class="example">
- 
-</div>
-<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
- <b>Note:</b> A small Note
-</div>
-</blockquote>
-<div class="example">
- 
-</div>
-<blockquote class="smallquotation" style="font-size: smaller"><div class="example">
- <b>something, other thing:</b> something, other thing
-</div>
-</blockquote>
-<div class="example">
- 
-</div>
-<div class="example">
   i--temize
-</div>
-<div class="example">
  
-</div>
-<div class="example">
  + i--tem +
-</div>
-<div class="example">
  
-</div>
-<div class="example">
   b--ullet
-</div>
-<div class="example">
  
-</div>
-<div class="example">
   minu--s
-</div>
-<div class="example">
  
-</div>
-<div class="example">
   e--mph item
-</div>
-<div class="example">
  
-</div>
-<div class="example">
  ''after emph'' e--mph item
-</div>
-<div class="example">
  
-</div>
-<div class="example">
- <div id="index-index-entry-within-itemize-1"></div></div>
-<div class="example">
- &bull; a--n itemize line i--tem 1
-</div>
-<div class="example">
+ <div id="index-index-entry-within-itemize-1"></div> &bull; a--n itemize line i--tem 1
  &bull; a--n itemize line i--tem 2
-</div>
-<div class="example">
  
-</div>
-<div class="example">
   e--numerate
-</div>
-<div class="example">
  
-</div>
 <table>
-<thead><tr><th width="600%"><div class="example">
- mu--ltitable headitem</div></th><th width="700%"><div class="example">
- another tab</div></th></tr></thead>
-<tr><td width="600%"><div class="example">
- mu--ltitable item</div></td><td width="700%"><div class="example">
- multitable tab</div></td></tr>
-<tr><td width="600%"><div class="example">
- mu--ltitable item 2</div></td><td width="700%"><div class="example">
- multitable tab 2
- <div id="index-index-entry-within-multitable-1"></div></div></td></tr>
-<tr><td width="600%"><div class="example">
- lone mu--ltitable item</div></td></tr>
+<thead><tr><th width="600%">mu--ltitable headitem</th><th width="700%">another tab</th></tr></thead>
+<tr><td width="600%">mu--ltitable item</td><td width="700%">multitable tab</td></tr>
+<tr><td width="600%">mu--ltitable item 2</td><td width="700%">multitable tab 2
+ <div id="index-index-entry-within-multitable-1"></div></td></tr>
+<tr><td width="600%">lone mu--ltitable item</td></tr>
 </table>
-<div class="example">
  
-</div>
 <table>
-<tr><td><div class="example">
- truc</div></td><td><div class="example">
- bidule</div></td></tr>
+<tr><td>truc</td><td>bidule</td></tr>
 </table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  e--xample  some
     text
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="smallexample" style="font-size: smaller">
+<div class="smallexample" style="margin-left: 3.2em; font-size: smaller">
  s--mallexample
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="display" style="margin-left: 3.2em; font-family: serif">
  d--isplay
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="smalldisplay" style="margin-left: 3.2em; font-family: serif; font-size: smaller">
  s--malldisplay
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="lisp">
+<div class="lisp" style="margin-left: 3.2em">
  l--isp
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<table><tr><td>&nbsp;</td><td><div class="smalllisp" style="font-size: smaller">
+<div class="smalllisp" style="margin-left: 3.2em; font-size: smaller">
  s--malllisp
 </div>
-</td></tr></table>
-<div class="example">
  
-</div>
-<div class="example">
+<div class="format" style="font-family: serif">
  f--ormat
 </div>
-
-<div class="example">
  
-</div>
-<div class="example">
+<div class="smallformat" style="font-family: serif; font-size: smaller">
  s--mallformat
 </div>
-
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deffn_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--effn_name</strong><em> a--rguments...</em>
-<div class="example">
  d--effn
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-de_002d_002dffn_005fname-1"></div>cate--gory<nowiki>:</nowiki> <strong>de--ffn_name</strong><em> ar--guments more args 
  even more so</em>
-<div class="example">
  def--fn
-</div>
-<div class="example">
   
-</div>
 ;<div id="index-i-2"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
-<div class="example">
- <div id="index-index-entry-within-deffn-1"></div></div>
-;<div id="index-truc-2"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
+ <div id="index-index-entry-within-deffn-1"></div>;<div id="index-truc-2"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
 ;<div id="index-log-trap-1"></div>Command<nowiki>:</nowiki> <strong>log trap</strong>
 ;<div id="index-log-trap1-1"></div>Command<nowiki>:</nowiki> <strong> log trap1</strong>
 ;<div id="index-log-trap2-1"></div>Command<nowiki>:</nowiki> <strong>log trap2 </strong>
@@ -1792,150 +1622,69 @@ In example.
 ;<div id="index--16"></div><nowiki>:</nowiki>
 ;<div id="index-a-3"></div>truc<nowiki>:</nowiki> <strong>a</strong><em> b c d e <b>f g</b> h i</em>
 ;<div id="index-deffnx-2"></div>truc<nowiki>:</nowiki> <strong>deffnx</strong><em> before end deffn</em>
-<div class="example">
  
-</div>
 ;<div id="index-deffn-2"></div>empty<nowiki>:</nowiki> <strong>deffn</strong>
-<div class="example">
  
-</div>
 ;<div id="index-deffn-3"></div>empty<nowiki>:</nowiki> <strong>deffn</strong><em> with deffnx</em>
 ;<div id="index-deffnx-3"></div>empty<nowiki>:</nowiki> <strong>deffnx</strong>
-<div class="example">
  
-</div>
 ;<div id="index-i-3"></div>fset<nowiki>:</nowiki> <strong><var>i</var></strong><em> a g</em>
 ;<div id="index-truc-3"></div>cmde<nowiki>:</nowiki> <strong>truc</strong>
-<div class="example">
  text in def item for second def item
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defvr_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--efvr_name</strong>
-<div class="example">
  d--efvr
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypefn_005fname-1"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefn_name</strong><em> a--rguments...</em>
-<div class="example">
  d--eftypefn
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypeop_005fname-on-c_002d_002dlass-1"></div>c--ategory on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeop_name</strong><em> a--rguments...</em>
-<div class="example">
  d--eftypeop
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypevr_005fname-1"></div>c--ategory<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevr_name</strong>
-<div class="example">
  d--eftypevr
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defcv_005fname-1"></div>c--ategory of c--lass<nowiki>:</nowiki> <strong>d--efcv_name</strong>
-<div class="example">
  d--efcv
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defop_005fname-on-c_002d_002dlass-1"></div>c--ategory on c--lass<nowiki>:</nowiki> <strong>d--efop_name</strong><em> a--rguments...</em>
-<div class="example">
  d--efop
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftp_005fname-1"></div>c--ategory<nowiki>:</nowiki> <strong>d--eftp_name</strong><em> a--ttributes...</em>
-<div class="example">
  d--eftp
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defun_005fname-1"></div>Function<nowiki>:</nowiki> <strong>d--efun_name</strong><em> a--rguments...</em>
-<div class="example">
  d--efun
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defmac_005fname-1"></div>Macro<nowiki>:</nowiki> <strong>d--efmac_name</strong><em> a--rguments...</em>
-<div class="example">
  d--efmac
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defspec_005fname-1"></div>Special Form<nowiki>:</nowiki> <strong>d--efspec_name</strong><em> a--rguments...</em>
-<div class="example">
  d--efspec
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defvar_005fname-1"></div>Variable<nowiki>:</nowiki> <strong>d--efvar_name</strong><em> argvar argvar1</em>
-<div class="example">
  d--efvar
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defopt_005fname-1"></div>User Option<nowiki>:</nowiki> <strong>d--efopt_name</strong>
-<div class="example">
  d--efopt
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypefun_005fname-1"></div>Function<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypefun_name</strong><em> a--rguments...</em>
-<div class="example">
  d--eftypefun
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypevar_005fname-1"></div>Variable<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypevar_name</strong>
-<div class="example">
  d--eftypevar
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defivar_005fname-1"></div>Instance Variable of c--lass<nowiki>:</nowiki> <strong>d--efivar_name</strong>
-<div class="example">
  d--efivar
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypeivar_005fname-of-c_002d_002dlass-1"></div>Instance Variable of c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypeivar_name</strong>
-<div class="example">
  d--eftypeivar
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002defmethod_005fname-on-c_002d_002dlass-1"></div>Method on c--lass<nowiki>:</nowiki> <strong>d--efmethod_name</strong><em> a--rguments...</em>
-<div class="example">
  d--efmethod
-</div>
-<div class="example">
  
-</div>
 ;<div id="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
-<div class="example">
  d--eftypemethod
-</div>
-<div class="example">
  
  <code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [../file n---ame@@/c_002d_002d_002dhapter_0040.#c_002d_002d_002dhapter_0040 cross r---ef name@: (file n---ame@)c---hapter@] section `t---itle@' in <cite>ma---nual@</cite>.
  <code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [../file name/chapter.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
@@ -1998,60 +1747,30 @@ In example.
  See [../a comma@comma{} in file/s_002d_002dect_002cion.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s--ect,ion]
  
  
-</div>
 ;<tt>&bull; a</tt>
-<div class="example">
  l--ine
-</div>
-<div class="example">
  
-</div>
 ;<tt>a</tt>
 <div id="index-a-4"></div>
 ;<tt>b</tt>
 <div id="index-b-2"></div>
-<div class="example">
  l--ine
-</div>
-<div class="example">
  
-</div>
 ;<tt>- a</tt>
 <div id="index-a-5"></div>
-<div class="example">
- <div id="index-index-entry-between-item-and-itemx-1"></div></div>
-;<tt>- b</tt>
+ <div id="index-index-entry-between-item-and-itemx-1"></div>;<tt>- b</tt>
 <div id="index-b-3"></div>
-<div class="example">
  l--ine
-</div>
-<div class="example">
  
-</div>
 <table class="cartouche" border="1"><tr><td>
-<div class="example">
  c--artouche
-</div>
 </td></tr></table>
-<div class="example">
  
-</div>
-<div class="example">
  g--roupe
-</div>
-<div class="example">
  
-</div>
-<div class="example">
  f--lushleft
-</div>
-<div class="example">
  
-</div>
-<div class="example">
  f--lushright
-</div>
-<div class="example">
  
   ce--ntered line
  
@@ -2065,10 +1784,8 @@ In example.
  
  @bye
  </pre>
-</div>
 <pre class="verbatim">in verbatim ''
-</pre><div class="example">
- 
+</pre> 
  
  html ''
  
@@ -2133,33 +1850,19 @@ In example.
  
  
  
-</div>
-<div class="example">
  @emph after emph e--mph item
-</div>
-<div class="example">
  
-</div>
-<div class="example">
  &bull; a--n itemize line i--tem 1
-</div>
-<div class="example">
  &bull; a--n itemize line i--tem 2
-</div>
-<div class="example">
  
-</div>
 ;<div id="index--17"></div>fun<nowiki>:</nowiki>
 ;<div id="index-machin-8"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and </em>
 ;<div id="index-machin-9"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and  after</em>
 ;<div id="index-machin-10"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and {</em>
 ;<div id="index-machin-11"></div>truc<nowiki>:</nowiki> <strong>machin</strong><em> bidule chose and { and after</em>
 ;<div id="index-followed-3"></div>truc<nowiki>:</nowiki> <strong>followed</strong><em> by a comment</em>
-<div class="example">
  Various deff lines
-</div>
 ;<div id="index-after-1"></div>truc<nowiki>:</nowiki> <strong>after</strong><em> a deff item</em>
-<div class="example">
  
  <code>@ref<nowiki>{</nowiki>node<nowiki>}</nowiki></code> @ref{node}
  
@@ -2200,7 +1903,6 @@ In example.
  
  
 </div>
-</td></tr></table>
 
 <div id="index-t_002d_002druc"></div>
 <div id="index-T_002d_002druc"></div>

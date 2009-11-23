@@ -88,10 +88,9 @@ where to find the repository.  You can name the
 repository on the command line explicitly, with the
 <code>-d</code> (for &quot;directory&quot;) option:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 <div id="index-_002eprofile_002c-setting-CVSROOT-in"></div>
 <div id="index-_002ecshrc_002c-setting-CVSROOT-in"></div>
@@ -105,19 +104,17 @@ To set <code>$CVSROOT</code>, <code>csh</code> and <code>tcsh</code>
 users should have this line in their &lsquo;<tt>.cshrc</tt>&rsquo; or
 &lsquo;<tt>.tcshrc</tt>&rsquo; files:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  setenv CVSROOT /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 <code>sh</code> and <code>bash</code> users should instead have these lines in their
 &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.bashrc</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT=/usr/local/cvsroot
  export CVSROOT
 </div>
-</td></tr></table>
 
 <div id="index-Root-file_002c-in-CVS-directory"></div>
 <div id="index-CVS_002fRoot-file"></div>
@@ -185,15 +182,14 @@ The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 here is a possible directory tree (showing only the
 directories):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <tt>/usr</tt>
   |
   +--<tt>local</tt>
@@ -224,14 +220,13 @@ directories):
                |
                +--(other Yoyodyne software)
 </div>
-</td></tr></table>
 
 With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
 the name of the corresponding file with &lsquo;<code>,v</code>&rsquo;
 appended to the end.  Here is what the repository for
 the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    <code>$CVSROOT</code>
      |
      +--<tt>yoyodyne</tt>
@@ -252,7 +247,6 @@ the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
                   +--<tt>testpgm.t,v</tt>
                   +--<tt>test2.t,v</tt>
 </div>
-</td></tr></table>
 
 <div id="index-History-files"></div>
 <div id="index-RCS-history-files"></div>
@@ -431,17 +425,15 @@ talking about the file &lsquo;<tt>backend.c</tt>&rsquo; in the
 directory &lsquo;<tt>yoyodyne/tc</tt>&rsquo;, then the file normally
 would be in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc/backend.c,v
 </div>
-</td></tr></table>
 
 but if it goes in the attic, it would be in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc/Attic/backend.c,v
 </div>
-</td></tr></table>
 
 <div id="index-Dead-state"></div>
 instead.  It should not matter from a user point of
@@ -524,12 +516,11 @@ Builtin attributes:
 
 Example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  Ffile1 _watched=;_watchers=joe&gt;edit,mary&gt;commit
  Ffile2 _watched=;_editors=sue&gt;8 Jan 1975+workstn1+/home/sue/cvs
  D _watched=
 </div>
-</td></tr></table>
 
 means that the file &lsquo;<tt>file1</tt>&rsquo; should be checked out
 read-only.  Furthermore, joe is watching for edits and
@@ -654,10 +645,9 @@ contains the latest revision contained in
 &lsquo;<tt>loginfo,v</tt>&rsquo;.  When you check in an administrative
 file, <small>CVS</small> should print
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs commit: Rebuilding administrative file database
 </div>
-</td></tr></table>
 
 and update the checked out copy in
 &lsquo;<tt>$CVSROOT/CVSROOT</tt>&rsquo;.  If it does not, there is
@@ -735,31 +725,27 @@ such systems either.
 ;&lsquo;<tt>Repository</tt>&rsquo;
 : This file contains the directory within the repository which the current directory corresponds with.  It can be either an absolute pathname or a relative pathname; <small>CVS</small> has had the ability to read either format since at least version 1.3 or so.  The relative pathname is relative to the root, and is the more sensible approach, but the absolute pathname is quite common and implementations should accept either.  For example, after the command
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d<nowiki> :</nowiki>local:/usr/local/cvsroot checkout yoyodyne/tc
 </div>
-</td></tr></table>
 
 : &lsquo;<tt>Root</tt>&rsquo; will contain
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  :local:/usr/local/cvsroot
 </div>
-</td></tr></table>
 
 : and &lsquo;<tt>Repository</tt>&rsquo; will contain either
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot/yoyodyne/tc
 </div>
-</td></tr></table>
 
 : or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  yoyodyne/tc
 </div>
-</td></tr></table>
 
 : If the particular working directory does not correspond to a directory in the repository, then &lsquo;<tt>Repository</tt>&rsquo; should contain &lsquo;<tt>CVSROOT/Emptydir</tt>&rsquo;. <div id="index-Emptydir_002c-in-CVSROOT-directory"></div> <div id="index-CVSROOT_002fEmptydir-directory"></div>
 
@@ -770,10 +756,9 @@ such systems either.
 
 : If the first character is &lsquo;<code>/</code>&rsquo;, then the format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /<var>name</var>/<var>revision</var>/<var>timestamp</var><nowiki>[</nowiki>+<var>conflict</var><nowiki>]</nowiki>/<var>options</var>/<var>tagdate</var>
 </div>
-</td></tr></table>
 
 : where &lsquo;<code><nowiki>[</nowiki></code>&rsquo; and &lsquo;<code><nowiki>]</nowiki></code>&rsquo; are not part of the entry, but instead indicate that the &lsquo;<code>+</code>&rsquo; and conflict marker are optional.  <var>name</var> is the name of the file within the directory.  <var>revision</var> is the revision that the file in the working derives from, or &lsquo;<code>0</code>&rsquo; for an added file, or &lsquo;<code>-</code>&rsquo; followed by a revision for a removed file.  <var>timestamp</var> is the timestamp of the file at the time that <small>CVS</small> created it; if the timestamp differs with the actual modification time of the file it means the file has been modified.  It is stored in the format used by the ISO C asctime() function (for example, &lsquo;<code>Sun Apr  7 01:29:26 1996</code>&rsquo;).  One may write a string which is not in that format, for example, &lsquo;<code>Result of merge</code>&rsquo;, to indicate that the file should always be considered to be modified.  This is not a special case; to see whether a file is modified a program should take the timestamp of the file and simply do a string compare with <var>timestamp</var>. If there was a conflict, <var>conflict</var> can be set to the modification time of the file after the file has been written with conflict markers (see [[cvs: Multiple developers#Conflicts example|Conflicts example]]). Thus if <var>conflict</var> is subsequently the same as the actual modification time of the file it means that the user has obviously not resolved the conflict.  <var>options</var> contains sticky options (for example &lsquo;<code>-kb</code>&rsquo; for a binary file).  <var>tagdate</var> contains &lsquo;<code>T</code>&rsquo; followed by a tag name, or &lsquo;<code>D</code>&rsquo; for a date, followed by a sticky tag or date.  Note that if <var>timestamp</var> contains a pair of timestamps separated by a space, rather than a single timestamp, you are dealing with a version of <small>CVS</small> earlier than <small>CVS</small> 1.5 (not documented here).
 
@@ -781,10 +766,9 @@ such systems either.
 
 : If the first character of a line in &lsquo;<tt>Entries</tt>&rsquo; is &lsquo;<code>D</code>&rsquo;, then it indicates a subdirectory.  &lsquo;<code>D</code>&rsquo; on a line all by itself indicates that the program which wrote the &lsquo;<tt>Entries</tt>&rsquo; file does record subdirectories (therefore, if there is such a line and no other lines beginning with &lsquo;<code>D</code>&rsquo;, one knows there are no subdirectories).  Otherwise, the line looks like:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  D/<var>name</var>/<var>filler1</var>/<var>filler2</var>/<var>filler3</var>/<var>filler4</var>
 </div>
-</td></tr></table>
 
 : where <var>name</var> is the name of the subdirectory, and all the <var>filler</var> fields should be silently ignored, for future expansion.  Programs which modify <code>Entries</code> files should preserve these fields.
 
@@ -834,10 +818,9 @@ such systems either.
 ;&lsquo;<tt>Baserev</tt>&rsquo;
 : The file lists the revision for each of the files in the &lsquo;<tt>Base</tt>&rsquo; directory.  The format is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  B<var>name</var>/<var>rev</var>/<var>expansion</var>
 </div>
-</td></tr></table>
 
 : where <var>expansion</var> should be ignored, to allow for future expansion.
 
@@ -877,7 +860,7 @@ The most important of these files is the &lsquo;<tt>modules</tt>&rsquo;
 file.  It defines all modules in the repository.  This
 is a sample &lsquo;<tt>modules</tt>&rsquo; file.
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT         CVSROOT
  modules         CVSROOT modules
  cvs             gnu/cvs
@@ -885,7 +868,6 @@ is a sample &lsquo;<tt>modules</tt>&rsquo; file.
  diff            gnu/diff
  tc              yoyodyne/tc
 </div>
-</td></tr></table>
 
 The &lsquo;<tt>modules</tt>&rsquo; file is line oriented.  In its
 simplest form each line contains the name of the
@@ -962,13 +944,12 @@ connections to as many server machines as necessary to
 perform the requested command.  Here is an example of
 how to set up a working directory:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d server1:/cvs co dir1
  cd dir1
  cvs -d server2:/root co sdir
  cvs update
 </div>
-</td></tr></table>
 
 The <code>cvs co</code> commands set up the working
 directory, and then the <code>cvs update</code> command will
@@ -1026,10 +1007,9 @@ command.  It will set up an empty repository in the
 <small>CVS</small> root specified in the usual way
 (see [[#The Repository|Repository]]).  For example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d /usr/local/cvsroot init
 </div>
-</td></tr></table>
 
 <code>cvs init</code> is careful to never overwrite any
 existing files in the repository, so no harm is done if
@@ -1162,10 +1142,9 @@ which can mount the repository, known as the
 repository is just like using a local one, except that
 the format of the repository name is:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>:<var>method</var>:<nowiki>][[</nowiki><var>user</var><nowiki>][</nowiki>:<var>password</var><nowiki>]</nowiki>@<nowiki>]</nowiki><var>hostname</var><nowiki>[</nowiki>:<nowiki>[</nowiki><var>port</var><nowiki>]]</nowiki>/path/to/repository
 </div>
-</td></tr></table>
 
 Specifying a password in the repository name is not recommended during
 checkout, since this will cause <small>CVS</small> to store a cleartext copy of the
@@ -1279,17 +1258,15 @@ server machine is &lsquo;<code>faun.example.org</code>&rsquo;.  On
 faun, put the following line into the file
 &lsquo;<tt>.rhosts</tt>&rsquo; in &lsquo;<code>bach</code>&rsquo;&rsquo;s home directory:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  toe.example.com  mozart
 </div>
-</td></tr></table>
 
 Then test that &lsquo;<code>rsh</code>&rsquo; is working with
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  rsh -l bach faun.example.org 'echo $PATH'
 </div>
-</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-environment-variable"></div>
 Next you have to make sure that <code>rsh</code> will be able
@@ -1339,10 +1316,9 @@ the module &lsquo;<tt>foo</tt>&rsquo; in the repository
 &lsquo;<tt>/usr/local/cvsroot/</tt>&rsquo;, on machine
 &lsquo;<tt>faun.example.org</tt>&rsquo;, you are ready to go:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :ext:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 (The &lsquo;<tt>bach@</tt>&rsquo; can be omitted if the username is
 the same on both the local and remote hosts.)
@@ -1415,11 +1391,10 @@ If your <code>inetd</code> allows raw port numbers in
 &lsquo;<tt>/etc/inetd.conf</tt>&rsquo;, then the following (all on a
 single line in &lsquo;<tt>inetd.conf</tt>&rsquo;) should be sufficient:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  2401  stream  tcp  nowait  root  /usr/local/bin/cvs
  cvs -f --allow-root=/usr/cvsroot pserver
 </div>
-</td></tr></table>
 
 (You could also use the
 &lsquo;<code>-T</code>&rsquo; option to specify a temporary directory.)
@@ -1439,10 +1414,9 @@ If your <code>inetd</code> wants a symbolic service
 name instead of a raw port number, then put this in
 &lsquo;<tt>/etc/services</tt>&rsquo;:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvspserver      2401/tcp
 </div>
-</td></tr></table>
 
 and put <code>cvspserver</code> instead of <code>2401</code> in &lsquo;<tt>inetd.conf</tt>&rsquo;.
 
@@ -1450,7 +1424,7 @@ If your system uses <code>xinetd</code> instead of <code>inetd</code>,
 the procedure is slightly different.
 Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing the following:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  service cvspserver
  <nowiki>{</nowiki>
     port        = 2401
@@ -1463,7 +1437,6 @@ Create a file called &lsquo;<tt>/etc/xinetd.d/cvspserver</tt>&rsquo; containing 
     server_args = -f --allow-root=/usr/cvsroot pserver
  <nowiki>}</nowiki>
 </div>
-</td></tr></table>
 
 (If <code>cvspserver</code> is defined in &lsquo;<tt>/etc/services</tt>&rsquo;, you can omit
 the <code>port</code> line.)
@@ -1489,14 +1462,13 @@ optional password, and an optional system username for
 <small>CVS</small> to run as if authentication succeeds.  Here is
 an example &lsquo;<tt>passwd</tt>&rsquo; file with five entries:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  anonymous:
  bach:ULtgRLXo7NRxs
  spwang:1sOp854gDF3DY
  melissa:tGX1fS8sun6rY:pubcvs
  qproj:XR4EZcEs0szik:pubcvs
 </div>
-</td></tr></table>
 
 (The passwords are encrypted according to the standard
 Unix <code>crypt()</code> function, so it is possible to
@@ -1556,12 +1528,11 @@ omit the colon that would have separated it from the
 encrypted password).  For example, this would be a
 valid &lsquo;<tt>$CVSROOT/CVSROOT/passwd</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  anonymous::pubcvs
  fish:rKa5jzULzmhOo:kfogel
  sussman:1sOp854gDF3DY
 </div>
-</td></tr></table>
 
 When the password field is omitted or empty, then the
 client&rsquo;s authentication attempt will succeed with any
@@ -1609,19 +1580,17 @@ would therefore have the following lines
 in &lsquo;<tt>/etc/pam.conf</tt>&rsquo; to emulate the standard <small>CVS</small> 
 system &lsquo;<tt>/etc/passwd</tt>&rsquo; authentication:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs	auth	    required	pam_unix.so
  cvs	account	    required	pam_unix.so
 </div>
-</td></tr></table>
 
 The the equivalent &lsquo;<tt>/etc/pam.d/cvs</tt>&rsquo; would contain
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  auth	    required	pam_unix.so
  account	    required	pam_unix.so
 </div>
-</td></tr></table>
 
 Some systems require a full path to the module so that
 &lsquo;<tt>pam_unix.so</tt>&rsquo; (Linux) would become something like 
@@ -1706,18 +1675,16 @@ the password-authenticating server, one specifies the
 <code>pserver</code> protocol, optional username, repository host, an
 optional port number, and path to the repository.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:faun.example.org:/usr/local/cvsroot checkout someproj
 </div>
-</td></tr></table>
 
 or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  CVSROOT=:pserver:bach@faun.example.org:2401/usr/local/cvsroot
  cvs checkout someproj
 </div>
-</td></tr></table>
 
 However, unless you&rsquo;re connecting to a public-access
 repository (i.e., one where that username doesn&rsquo;t
@@ -1727,18 +1694,16 @@ It&rsquo;s done with the <code>login</code> command, which will
 prompt you interactively for the password if you didn&rsquo;t supply one as part of
 <var>$CVSROOT</var>:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot login
  CVS password:
 </div>
-</td></tr></table>
 
 or
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach:p4ss30rd@faun.example.org:/usr/local/cvsroot login
 </div>
-</td></tr></table>
 
 After you enter the password, <small>CVS</small> verifies it with
 the server.  If the verification succeeds, then that
@@ -1771,10 +1736,9 @@ Once you have logged in, all <small>CVS</small> commands using
 that remote repository and username will authenticate
 with the stored password.  So, for example
   
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :pserver:bach@faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 should just work (unless the password changes on the
 server side, in which case you&rsquo;ll have to re-run
@@ -1902,10 +1866,9 @@ set this up as required by your GSSAPI mechanism.
 To connect using GSSAPI, use &lsquo;<code>:gserver:</code>&rsquo;.  For
 example,
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :gserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 
 ----
@@ -1960,10 +1923,9 @@ usual way (generally <code>kinit</code>); it must be a ticket
 which allows you to log into the server machine.  Then
 you are ready to go:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :kserver:faun.example.org:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 Previous versions of <small>CVS</small> would fall back to a
 connection via rsh; this version will not do so.
@@ -2002,10 +1964,9 @@ To connect using the <code>fork</code> method, use
 &lsquo;<code>:fork:</code>&rsquo; and the pathname to your local
 repository.  For example:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs -d :fork:/usr/local/cvsroot checkout foo
 </div>
-</td></tr></table>
 
 <div id="index-CVS_005fSERVER_002c-and-_003afork_003a"></div>
 As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;
@@ -2060,22 +2021,20 @@ specifically in the &lsquo;<tt>$CVSROOT/CVSROOT/readers</tt>&rsquo;
 file, which is simply a newline-separated list of
 users.  Here is a sample &lsquo;<tt>readers</tt>&rsquo; file:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  melissa
  splotnik
  jrandom
 </div>
-</td></tr></table>
 
 (Don&rsquo;t forget the newline after the last user.)
 
 &quot;Exclusion&quot; means explicitly listing everyone
 who has ''write'' access&mdash;if the file
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $CVSROOT/CVSROOT/writers
 </div>
-</td></tr></table>
 
 exists, then only
 those users listed in it have write access, and
@@ -2125,10 +2084,9 @@ Previous: [[#Read-only repository access|Read-only access]], Up: [[#The Reposito
 While running, the <small>CVS</small> server creates temporary
 directories.  They are named
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs-serv<var>pid</var>
 </div>
-</td></tr></table>
 
 where <var>pid</var> is the process identification number of
 the server.

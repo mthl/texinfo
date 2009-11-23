@@ -22,14 +22,13 @@ way.  For example, if you had to create a patch to the
 1.2 version of the product, even though the 2.0 version
 is already under development, you might do:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  $ cvs rtag -b -r FCS1_2 FCS1_2_Patch product_module
  $ cvs checkout -r FCS1_2_Patch product_module
  $ cd product_module
  <nowiki>[[</nowiki> hack away <nowiki>]]</nowiki>
  $ cvs commit
 </div>
-</td></tr></table>
 
 This works automatically since the &lsquo;<code>-r</code>&rsquo; option is
 sticky.

@@ -14,15 +14,14 @@ The overall structure of the repository is a directory
 tree corresponding to the directories in the working
 directory.  For example, supposing the repository is in
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  /usr/local/cvsroot
 </div>
-</td></tr></table>
 
 here is a possible directory tree (showing only the
 directories):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <tt>/usr</tt>
   |
   +--<tt>local</tt>
@@ -53,14 +52,13 @@ directories):
                |
                +--(other Yoyodyne software)
 </div>
-</td></tr></table>
 
 With the directories are <em>history files</em> for each file
 under version control.  The name of the history file is
 the name of the corresponding file with &lsquo;<code>,v</code>&rsquo;
 appended to the end.  Here is what the repository for
 the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
    <code>$CVSROOT</code>
      |
      +--<tt>yoyodyne</tt>
@@ -81,7 +79,6 @@ the &lsquo;<tt>yoyodyne/tc</tt>&rsquo; directory might look like:
                   +--<tt>testpgm.t,v</tt>
                   +--<tt>test2.t,v</tt>
 </div>
-</td></tr></table>
 
 <div id="index-History-files"></div>
 <div id="index-RCS-history-files"></div>

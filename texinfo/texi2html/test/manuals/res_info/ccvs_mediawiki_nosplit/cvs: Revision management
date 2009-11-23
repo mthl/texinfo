@@ -21,8 +21,6 @@ you could probably skip this chapter.  The questions
 this chapter takes up become more important when more
 than one person is working in a repository.
 
-<div class="menu-preformatted" style="font-family: serif">
  [[cvs: When to commit?#When to commit?|&bull; When to commit]]::              Some discussion on the subject
-</div>
 
 This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].

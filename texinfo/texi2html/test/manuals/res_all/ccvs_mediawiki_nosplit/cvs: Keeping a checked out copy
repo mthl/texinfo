@@ -27,11 +27,10 @@ cause a problem with locks, so the <code>cvs update</code>
 must be run in the background.
 Here is an example for unix (this should all be on one line):
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  ^cyclic-pages		(date; cat; (sleep 2; cd /u/www/local-docs;
   cvs -q update -d) &amp;) &gt;&gt; $CVSROOT/CVSROOT/updatelog 2&gt;&amp;1
 </div>
-</td></tr></table>
 
 This will cause checkins to repository directories
 starting with <code>cyclic-pages</code> to update the checked

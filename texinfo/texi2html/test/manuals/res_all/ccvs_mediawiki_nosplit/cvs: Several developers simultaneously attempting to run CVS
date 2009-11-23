@@ -13,10 +13,9 @@ Next: [[cvs: Mechanisms to track who is editing files#Mechanisms to track who is
 If several developers try to run <small>CVS</small> at the same
 time, one may get the following message:
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  <nowiki>[</nowiki>11:43:23<nowiki>]</nowiki> waiting for bach's lock in /usr/local/cvsroot/foo
 </div>
-</td></tr></table>
 
 <div id="index-_0023cvs_002erfl_002c-removing"></div>
 <div id="index-_0023cvs_002ewfl_002c-removing"></div>
@@ -54,20 +53,18 @@ changes, or none of them.
 but <small>CVS</small> does ''not'' have this property.  For
 example, given the files
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  a/one.c
  a/two.c
  b/three.c
  b/four.c
 </div>
-</td></tr></table>
 
 if someone runs
 
-<table><tr><td>&nbsp;</td><td><div class="example">
+<div class="example" style="margin-left: 3.2em">
  cvs ci a/two.c b/three.c
 </div>
-</td></tr></table>
 
 and someone else runs <code>cvs update</code> at the same
 time, the person running <code>update</code> might get only
