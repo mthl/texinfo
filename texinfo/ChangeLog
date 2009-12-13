@@ -1,3 +1,9 @@
+2009-12-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Image Syntax): mention convention for installing
+	images for use by capable Info readers (i.e., Emacs Info).
+	Suggested by Jose Marchesi.
+
 2009-10-26  Roland Kaufmann  <roland.kaufmann@gmail.com>  (tiny change)
 
 	* util/texi2dvi (max-iterations): new option.

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
+@c $Id: texinfo.txi,v 1.246 2009-12-13 23:00:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9426,6 +9426,12 @@ Info output (more or less as if it was an @code{@@example}).
 will cause @code{makeinfo} to look for @file{foo.xpm} before any others.
 
 @end itemize
+
+If you want to install image files for use by Info readers too, we
+recommend putting them in a subdirectory like @samp{@var{foo}-figures}
+for a package @var{foo}.  Copying the files into
+@code{$(infodir)/@var{foo}-figures/} should be done in your
+@code{Makefile}.
 
 The @var{width} and @var{height} arguments are described in the next
 section.
@@ -19313,7 +19319,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
+$Id: texinfo.txi,v 1.246 2009-12-13 23:00:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19392,7 +19398,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.245 2009-10-25 23:30:42 karl Exp $
+@comment $Id: texinfo.txi,v 1.246 2009-12-13 23:00:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
