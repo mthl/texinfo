@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.358 2009-11-23 13:30:48 pertusus Exp $
+# $Id: texi2html.pl,v 1.359 2009-12-17 23:13:59 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5960,7 +5960,7 @@ sub enter_author_command($$$$$$)
         }
         elsif (!$state->{'region'} or $state->{'region'} ne 'titlepage')
         {
-            line_warn (sprintf(__("@%s not meaningful outside `\@titlepage' and `\@quotation' environments"), $command), $line_nr);
+            line_warn (sprintf(__("\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"), $command), $line_nr);
         }
     }
 }
