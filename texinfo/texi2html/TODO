@@ -237,9 +237,6 @@ table menu
 @r span roman
 @titlefont h1 titlefont
 
-* test @verb{
-  at end of line
-
 * test stuff on 'line_command' relevant in pass 1, like @macro, @ignore...
 
 * in chm.init (Jose Fonseca)
@@ -530,4 +527,5 @@ tex + txicodequote*:
 So things are right as is, but in formats that always set the quotes to 
 a special font should honor  txicodequote* like tex. There is an example
 of such code commented out in texi2html.init in normal_text.
+
 

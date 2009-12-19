@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename verb_end_of_line.info
+
+@settitle in set title @verb{
+
+@node Top
+
+texte
+
+some @verb{
+
+In verb
+
+
+}
+
+Another verb, not  closed @verb{
+
+@bye

@@ -1,0 +1,19 @@
+verb_and_char_end_of_line.texi(,2) 
+verb_and_char_end_of_line.texi(,3) @setfilename verb_and_char_end_of_line.info
+verb_and_char_end_of_line.texi(,4) 
+verb_and_char_end_of_line.texi(,5) @settitle in set title @verb{*
+verb_and_char_end_of_line.texi(,6) 
+verb_and_char_end_of_line.texi(,7) @node Top
+verb_and_char_end_of_line.texi(,8) 
+verb_and_char_end_of_line.texi(,9) texte
+verb_and_char_end_of_line.texi(,10) 
+verb_and_char_end_of_line.texi(,11) some @verb{*
+verb_and_char_end_of_line.texi(,12) 
+verb_and_char_end_of_line.texi(,13) In verb
+verb_and_char_end_of_line.texi(,14) 
+verb_and_char_end_of_line.texi(,15) 
+verb_and_char_end_of_line.texi(,16) *}
+verb_and_char_end_of_line.texi(,17) 
+verb_and_char_end_of_line.texi(,18) Another verb, not  closed @verb{*
+verb_and_char_end_of_line.texi(,19) 
+verb_and_char_end_of_line.texi(,20) @bye

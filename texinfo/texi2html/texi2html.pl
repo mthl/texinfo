@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.359 2009-12-17 23:13:59 pertusus Exp $
+# $Id: texi2html.pl,v 1.360 2009-12-19 17:33:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5153,11 +5153,11 @@ sub pass_structure($$)
                     $node_line =~ s/^\@node\s+//;
                     my @node_res = parse_line_arguments($node_line, undef, '@node', $line_nr);
                     @node_res = normalise_node_array (\@node_res);
-                    line_error ("Error scanning $cline", $line_nr) if (@node_res < 1);
+                    line_error (sprintf(__("Error scanning %s"), $cline), $line_nr) if (@node_res < 1);
                     $auto_directions = 1 if (scalar(@node_res) == 1);
                     if (@node_res > 4)
                     {
-                        line_warn("Superfluous arguments for node", $line_nr);
+                        line_warn(__("Superfluous arguments for node"), $line_nr);
                     }
                     my ($node, $node_next, $node_prev, $node_up) = @node_res;
                     if (defined($node) and ($node ne ''))
@@ -5768,6 +5768,7 @@ sub misc_command_structure($$$$)
     {
         my $arg = trim_comment_spaces($line, "\@$command");
         $Texi2HTML::THISDOC{$command . '_texi'} = $arg;
+        $Texi2HTML::THISDOC{$command . '_line_nr'} = $line_nr;
 
         # FIXME backward compatibility. Obsoleted in nov 2009.
         $value{"_$command"} = $arg;
@@ -5780,7 +5781,11 @@ sub misc_command_structure($$$$)
     {
         my $arg = trim_comment_spaces($line, "\@$command");
         $Texi2HTML::THISDOC{$command . '_texi'} .= $arg . "\n";
-        push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg if ($state->{'region'} and $state->{'region'} eq 'titlepage');
+        if ($state->{'region'} and $state->{'region'} eq 'titlepage')
+        {
+           push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
+           push @{$Texi2HTML::THISDOC{"${command}s_line_nr"}}, $line_nr;
+        }
         #chomp($arg);
 
         # FIXME backward compatibility. Obsoleted in nov 2009.
@@ -8255,7 +8260,7 @@ sub pass_text($$)
            'titlefont', 'subtitle', 'title', 'fulltitle', 'simpletitle'))
     {
         my $thing_texi = $Texi2HTML::THISDOC{$doc_thing . '_texi'};
-        $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi, "\@$doc_thing");
+        $Texi2HTML::THISDOC{$doc_thing} = substitute_line($thing_texi, "\@$doc_thing", undef, $Texi2HTML::THISDOC{$doc_thing . '_line_nr'});
         $Texi2HTML::THISDOC{$doc_thing . '_no_texi'} =
            remove_texi($thing_texi);
         $Texi2HTML::THISDOC{$doc_thing . '_simple_format'} =
@@ -8311,8 +8316,9 @@ sub pass_text($$)
         for ($i = 0; $i < $#{$Texi2HTML::THISDOC{$command .'_texi'}} + 1; $i++) 
         {
             my $texi_line = $Texi2HTML::THISDOC{$command .'_texi'}->[$i];
+            my $command_line_nr = $Texi2HTML::THISDOC{$command .'_line_nr'}->[$i];
             chomp ($texi_line);
-            $Texi2HTML::THISDOC{$command}->[$i] = substitute_line($texi_line, "\@$command");
+            $Texi2HTML::THISDOC{$command}->[$i] = substitute_line($texi_line, "\@$command", undef, $command_line_nr);
             #print STDERR "$command:$i: $Texi2HTML::THISDOC{$command}->[$i]\n";
         }
     }
@@ -12518,7 +12524,7 @@ sub scan_texi($$$$;$)
                 {
                     if ($cline =~ /^$/)
                     {
-                        line_error ("\@$command without associated character", $line_nr);
+                        line_error (sprintf(__("\@%s without associated character"), $command), $line_nr);
                     }
                     else
                     {
@@ -15453,7 +15459,7 @@ sub close_stack($$$$;$)
        my $latest_command = pop @command_stack;
        if (defined($style_type{$latest_command}) and $style_type{$latest_command} ne 'special')
        {
-          line_error ("\@$latest_command missing close brace.", $line_nr);
+          line_error (sprintf(__("\@%s missing close brace."), $latest_command), $line_nr);
        }
        else
        {

@@ -1,0 +1,21 @@
+This is verb_and_char_end_of_line.info, produced by makeinfo version
+4.13 from verb_and_char_end_of_line.texi.
+
+
+File: verb_and_char_end_of_line.info,  Node: Top,  Up: (dir)
+
+texte
+
+   some
+
+
+
+   Another verb, not  closed
+
+@bye
+
+
+Tag Table:
+Node: Top112
+
+End Tag Table
