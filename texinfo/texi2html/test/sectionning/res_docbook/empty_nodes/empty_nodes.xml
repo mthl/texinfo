@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="empty_nodes.xml" lang="en">
+<chapter label="" xreflabel="Test empty nodes" id="Top">
+<title>Test empty nodes</title>
+
+<para>See <xref linkend=""></xref>.
+See <xref linkend="-"></xref>.
+</para>
+
+
+
+</chapter>
+</book>

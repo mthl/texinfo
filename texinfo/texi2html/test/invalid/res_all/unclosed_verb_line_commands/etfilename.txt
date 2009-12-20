@@ -1,0 +1,29 @@
+ettitle @c settittle
+********************
+
+op element@ @comment @top
+*************************
+
+* (gcc)node::{  * node {name:(truc)node 
+* nodesub ::
+* next::
+
+eading @ @c heading
+===================
+
+{truc : In quotation
+
+Float
+
+ext @ , label @ @c float}
+
+
+
+* Index:
+* index ntry @c index entry: op element@ @comment @top.
+
+odesub@ ,next,,Top
+------------------
+
+next
+----

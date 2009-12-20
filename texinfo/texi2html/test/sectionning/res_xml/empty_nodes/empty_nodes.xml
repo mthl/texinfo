@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>empty_nodes.xml</setfilename>
+<node>
+<nodename>Top</nodename>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>Test empty nodes</title>
+
+<para>See <xref><xrefnodename></xrefnodename></xref>.
+See <xref><xrefnodename> </xrefnodename></xref>.
+</para>
+
+
+</top>
+<node>
+<nodename>&space;</nodename>
+</node>
+<node>
+<nodename></nodename>
+</node>
+<node>
+<nodename> </nodename>
+</node>
+
+</texinfo>

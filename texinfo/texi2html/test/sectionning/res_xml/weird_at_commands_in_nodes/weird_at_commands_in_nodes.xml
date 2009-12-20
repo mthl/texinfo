@@ -23,6 +23,10 @@
 <menutitle>a</menutitle>
 <menucomment>
 </menucomment>
+</menuentry><menuentry>
+<menunode>c&eosperiod;</menunode>
+<menutitle> b&eosperiod;</menutitle>
+<menucomment></menucomment>
 </menuentry></menu>
 
 </top>
@@ -35,7 +39,14 @@
 
 <node>
 <nodename>a</nodename>
+<nodenext>c&eosperiod;</nodenext>
 <nodeprev>a&space;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+
+<node>
+<nodename>c&eosperiod;</nodename>
+<nodeprev>a</nodeprev>
 <nodeup>Top</nodeup>
 </node>
 

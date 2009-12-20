@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename empty_nodes.info
+@node Top
+@top Test empty nodes
+
+@xref{@:}.
+@xref{@asis{ }}.
+
+@node
+
+@node @c comment
+
+@node @
+@node @:
+@node @asis{ }
+
+@bye

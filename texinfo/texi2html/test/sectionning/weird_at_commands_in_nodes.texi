@@ -8,10 +8,13 @@
 @menu
 * a@ ::
 * a@:::
+* b@.:c@.
 @end menu
 
 @node a@ 
 
 @node a@:
+
+@node c@.
 
 @bye

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.253 2009-11-23 22:31:37 pertusus Exp $
+# $Id: texi2html.init,v 1.254 2009-12-20 20:23:02 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -7076,7 +7076,6 @@ sub t2h_default_element_file_name($$$)
 
     my $outname;
     return unless ($USE_SETFILENAME_EXTENSION and $PREFIX eq '');
-#print STDERR "NNNNNN $type " . get_conf('SPLIT') ."\n";
     $outname = $OUT if (defined($OUT) and $OUT ne '' and $OUT !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
     if ($type eq 'doc' or !get_conf('SPLIT'))
     {

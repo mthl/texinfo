@@ -439,9 +439,6 @@ and other weirdness, and corresponding error messages.
 Misc info and boring stuff
 --------------------------
 
-* invalid/texi_unclosed_verb_line_commands file name for res_all is 
-  etfilename.pass*
-
 * texi2html is immune to https://savannah.gnu.org/bugs/?25822
 
 * the following is erroneous, but maybe it could be better handled anyway
@@ -527,5 +524,3 @@ tex + txicodequote*:
 So things are right as is, but in formats that always set the quotes to 
 a special font should honor  txicodequote* like tex. There is an example
 of such code commented out in texi2html.init in normal_text.
-
-

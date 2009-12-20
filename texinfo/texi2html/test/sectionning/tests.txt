@@ -1,5 +1,6 @@
 # formats :_docbook :_xml :_html
 texi html-top.texi
+texi empty_nodes.texi
 top top.texi
 sectionning sectionning.texi
 sectionning_directions sectionning.texi --init test_directions.init
@@ -80,6 +81,7 @@ test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../manuals@PATH_SEPAR
 only_documentencoding only_documentencoding.texi
 weird_at_commands_in_nodes weird_at_commands_in_nodes.texi
 double_node_anchor_float double_node_anchor_float.texi
+empty_nodes empty_nodes.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

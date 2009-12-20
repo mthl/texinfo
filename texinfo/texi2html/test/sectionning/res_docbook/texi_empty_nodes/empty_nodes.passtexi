@@ -1,0 +1,14 @@
+empty_nodes.texi(,2) 
+empty_nodes.texi(,3) @setfilename empty_nodes.info
+empty_nodes.texi(,4) @node Top
+empty_nodes.texi(,5) @top Test empty nodes
+empty_nodes.texi(,6) 
+empty_nodes.texi(,7) @node
+empty_nodes.texi(,8) 
+empty_nodes.texi(,9) @node @c comment
+empty_nodes.texi(,10) 
+empty_nodes.texi(,11) @node @
+empty_nodes.texi(,12) @node @:
+empty_nodes.texi(,13) @node @asis{ }
+empty_nodes.texi(,14) 
+empty_nodes.texi(,15) @bye

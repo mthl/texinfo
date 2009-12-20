@@ -1,3 +1,10 @@
+2009-12-20   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: handle better @verb{ not closed in listoffloats.
+	Error for empty nodes. 
+	Use t_0 for basename when the node consists in spaces after @-command
+	expansions.
+
 2009-12-19   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: keep line number information for settitle and

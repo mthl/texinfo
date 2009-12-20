@@ -11,18 +11,23 @@ Top
 
 * a ::
 * a::
+* b.:c.
 
 
 File: weird_at_commands_in_nodes.info,  Node: a ,  Next: a,  Prev: Top,  Up: Top
 
 
-File: weird_at_commands_in_nodes.info,  Node: a,  Prev: a ,  Up: Top
+File: weird_at_commands_in_nodes.info,  Node: a,  Next: c.,  Prev: a ,  Up: Top
+
+
+File: weird_at_commands_in_nodes.info,  Node: c.,  Prev: a,  Up: Top
 
 
 
 Tag Table:
 Node: Top114
-Node: a 222
-Node: a306
+Node: a 230
+Node: a314
+Node: c.397
 
 End Tag Table

@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.360 2009-12-19 17:33:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.361 2009-12-20 20:23:02 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5113,7 +5113,7 @@ sub pass_structure($$)
             delete $state->{'in_deff_line'};
         }
 
-        #print STDERR "PASS_STRUCTURE: $cline";
+        #print STDERR "PASS_STRUCTURE($line_nr->{'line_nr'}. raw:".var_to_str($state->{'raw'}).", verb:".var_to_str($state->{'verb'})."): $cline";
         if (!$state->{'raw'} and !$state->{'verb'})
         {
             my $tag = '';
@@ -5150,10 +5150,11 @@ sub pass_structure($$)
                     my $node_ref;
                     my $auto_directions;
                     my $node_line = $cline;
-                    $node_line =~ s/^\@node\s+//;
+                    $node_line =~ s/^\@node\s*//;
                     my @node_res = parse_line_arguments($node_line, undef, '@node', $line_nr);
                     @node_res = normalise_node_array (\@node_res);
-                    line_error (sprintf(__("Error scanning %s"), $cline), $line_nr) if (@node_res < 1);
+                    # even for empty nodes, @nodes_res has one element.
+                    #line_error (sprintf(__("Error scanning %s"), $cline), $line_nr) if (@node_res < 1);
                     $auto_directions = 1 if (scalar(@node_res) == 1);
                     if (@node_res > 4)
                     {
@@ -5226,7 +5227,7 @@ sub pass_structure($$)
                     }
                     else
                     {
-                        #line_error ("Node is undefined: $cline (eg. \@node NODE-NAME, NEXT, PREVIOUS, UP)", $line_nr);
+                        line_error ("Empty node", $line_nr);
                         next;
                     }
 
@@ -6230,7 +6231,13 @@ sub cross_manual_links()
         else 
         {
             $node->{'cross_manual_target'} = remove_texi($node->{'texi'});
-            if ($Texi2HTML::Config::USE_UNICODE)
+            if ($node->{'cross_manual_target'} !~ /\S/)
+            {
+                line_error (sprintf(__("Empty node name after expansion `%s'"), $node->{'texi'}), $node->{'line_nr'});
+                $node->{'cross_manual_target'} = 't_0';
+                $node->{'cross_manual_file'} = 't_0';
+            }
+            elsif ($Texi2HTML::Config::USE_UNICODE)
             {
                 $node->{'cross_manual_target'} = Unicode::Normalize::NFC($node->{'cross_manual_target'});
                 if ($Texi2HTML::Config::TRANSLITERATE_FILE_NAMES and $Texi2HTML::Config::USE_UNIDECODE)
@@ -6287,7 +6294,14 @@ sub cross_manual_links()
             if (defined($node->{'texi'}))
             {
                  $node->{'cross_manual_file'} = remove_texi($node->{'texi'});
-                 $node->{'cross_manual_file'} = unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_file'})) if ($Texi2HTML::Config::USE_UNICODE);
+                 if ($node->{'cross_manual_file'} !~ /\S/)
+                 {
+                    $node->{'cross_manual_file'} = 't_0';
+                 }
+                 elsif ($Texi2HTML::Config::USE_UNICODE)
+                 {
+                    $node->{'cross_manual_file'} = unicode_to_protected(unicode_to_transliterate($node->{'cross_manual_file'}));
+                 }
             }
         }
 
@@ -6335,6 +6349,11 @@ sub cross_manual_line($;$)
     my $transliterate = shift;
 #print STDERR "cross_manual_line $text\n";
 #print STDERR "remove_texi text ". remove_texi($text)."\n\n\n";
+    if ($text !~ /\S/)
+    {
+       # special case for empty node/ref
+       return ('t_0', 't_0');
+    }
     $::simple_map_texi_ref = \%cross_ref_simple_map_texi;
     $::style_map_texi_ref = \%cross_ref_style_map_texi;
     $::texi_map_ref = \%cross_ref_texi_map;
@@ -8432,6 +8451,7 @@ sub pass_text($$)
         # make sure the current state from here is $Texi2HTML::THIS_ELEMENT
         # in case it was set by the user.
         $state{'element'} = $Texi2HTML::THIS_ELEMENT if (defined($Texi2HTML::THIS_ELEMENT));
+	#print STDERR "PASS_TEXT($line_nr->{'line_nr'})$cline";
         if (!$state{'raw'} and !$state{'verb'})
         {
             my $tag = '';
@@ -8440,7 +8460,7 @@ sub pass_text($$)
             {
                 if (defined($Texi2HTML::THIS_ELEMENT))
                 {
-                    line_warn ("\@$tag after the first element", $line_nr);
+                    line_warn (sprintf(__("\@%s after the first element"), $tag), $line_nr);
                 }
                 else
                 {
@@ -8465,6 +8485,10 @@ sub pass_text($$)
                 # handle node and structuring elements
                 $current_element = shift (@all_elements);
                 ########################## begin debug section
+                if (!defined($current_element))
+                {
+                    msg_debug ("No element left for $cline", $line_nr);
+                }
                 if ($current_element->{'node'})
                 {
                     print STDERR 'NODE ' . "$current_element->{'texi'}($current_element->{'file'})" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
@@ -8541,10 +8565,14 @@ sub pass_text($$)
                 my $cmd_line = $cline;
                 $cmd_line =~ s/\@$tag\s*//;
 
+                ######################## begin debug
                 msg_debug ("Element $current_element current_element->{'tag_level'} not defined", $line_nr)
                    if (!defined($current_element->{'tag_level'}));
                 msg_debug ("Element $current_element $tag ne ".var_to_str($current_element->{'tag'}), $line_nr)
                    if ($tag ne 'node' and (!defined($current_element->{'tag'}) or $tag ne $current_element->{'tag'}));
+                msg_debug ("Element $current_element ".var_to_str($current_element->{'tag'})." is not a node, but tag is a node", $line_nr)
+                  if ($tag eq 'node' and !$current_element->{'node'});
+                ######################## end debug
 
                 my $heading_formatted = &$Texi2HTML::Config::element_heading($current_element, $tag, $cmd_line, substitute_line($cmd_line, "\@$tag"), undef, $one_section, $current_element->{'this'}, $first_section, $current_element->{'top'}, $previous_is_top, $cline, $current_element->{'id'}, $new_element);
                 push @{$Texi2HTML::THIS_SECTION}, $heading_formatted if (defined($heading_formatted) and ($heading_formatted ne ''));
@@ -13091,6 +13119,11 @@ sub scan_structure($$$$;$)
                 push @{$state->{'place'}}, $printindex;
                 push @{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}}, $printindex;
                 #print STDERR "PRINTINDEX add($printindex) region $region name $index_name, nr ".scalar(@{$Texi2HTML::THISDOC{'indices'}->{$region}->{$index_name}})."\n";
+                add_prev ($text, $stack, "\@$macro" .  $cline);
+                last;
+            }
+            elsif ($macro eq 'listoffloats')
+            {
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
             }

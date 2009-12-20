@@ -33,4 +33,4 @@ unclosed_verb_line_commands.texi(,33)
 unclosed_verb_line_commands.texi(,34) @node @verb{nodesub@ ,next,,Top
 unclosed_verb_line_commands.texi(,35) 
 unclosed_verb_line_commands.texi(,36) @node next, @verb{nodesub@ 
-unclosed_verb_line_commands.texi(,37) @bye @c bye
+unclosed_verb_line_commands.texi(,37) @bye
