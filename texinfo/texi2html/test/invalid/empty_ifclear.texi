@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename empty_ifclear.info
+@node Top
+@top Test for empty @@if*
+
+@ifclear
+
+Something
+
+@end ifclear
+
+@ifset
+
+Something ifset
+
+@end ifset
+
+@bye

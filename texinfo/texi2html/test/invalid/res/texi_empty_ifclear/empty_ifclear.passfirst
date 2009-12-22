@@ -1,0 +1,15 @@
+empty_ifclear.texi(,2) @setfilename empty_ifclear.info
+empty_ifclear.texi(,3) @node Top
+empty_ifclear.texi(,4) @top Test for empty @@if*
+empty_ifclear.texi(,5) 
+empty_ifclear.texi(,7) 
+empty_ifclear.texi(,8) Something
+empty_ifclear.texi(,9) 
+empty_ifclear.texi(,10) 
+empty_ifclear.texi(,11) 
+empty_ifclear.texi(,13) 
+empty_ifclear.texi(,14) Something ifset
+empty_ifclear.texi(,15) 
+empty_ifclear.texi(,16) 
+empty_ifclear.texi(,17) 
+empty_ifclear.texi(,18) @bye

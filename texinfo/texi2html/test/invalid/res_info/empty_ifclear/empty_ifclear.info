@@ -1,0 +1,19 @@
+This is empty_ifclear.info, produced by makeinfo version 4.13 from
+empty_ifclear.texi.
+
+
+File: empty_ifclear.info,  Node: Top,  Up: (dir)
+
+Test for empty @if*
+*******************
+
+Something
+
+   Something ifset
+
+
+
+Tag Table:
+Node: Top88
+
+End Tag Table

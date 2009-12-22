@@ -17,6 +17,7 @@ EXTRA_DIST = brace_not_closed.texi recursive_copying.texi \
  command_without_open_brace.texi author_outside_titlepage_quotation.texi \
  itemx_in_itemize.texi double_top_section.texi \
  verb_end_of_line.texi verb_and_char_end_of_line.texi \
+ empty_ifclear.texi \
  tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

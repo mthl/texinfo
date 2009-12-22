@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-20 21:05+0100\n"
+"POT-Creation-Date: 2009-12-22 21:56+0100\n"
 "PO-Revision-Date: 2008-07-20\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: Unknown\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5937 texi2html.pl:5941 texi2html.pl:5945
+#: texi2html.pl:5945 texi2html.pl:5949 texi2html.pl:5953
 msgid "About This Document"
 msgstr "A propos de ce document"
 
-#: texi2html.pl:5938 texi2html.pl:5942 texi2html.pl:5946
+#: texi2html.pl:5946 texi2html.pl:5950 texi2html.pl:5954
 msgid "Table of Contents"
 msgstr "Table des mati@`eres"
 
-#: texi2html.pl:5939 texi2html.pl:5943 texi2html.pl:5947
+#: texi2html.pl:5947 texi2html.pl:5951 texi2html.pl:5955
 msgid "Short Table of Contents"
 msgstr "R@'esum@'e du contenu"
 
-#: texi2html.pl:5940 texi2html.pl:5944 texi2html.pl:5948 texi2html.init:6489
+#: texi2html.pl:5948 texi2html.pl:5952 texi2html.pl:5956 texi2html.init:6489
 #: formats/html.init:2475
 msgid "Footnotes"
 msgstr "Notes de bas de page"
 
-#: texi2html.pl:12484
+#: texi2html.pl:12492
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

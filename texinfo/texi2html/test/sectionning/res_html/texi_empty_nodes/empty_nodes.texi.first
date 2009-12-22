@@ -4,6 +4,9 @@
 @node Top
 @top Test empty nodes
 
+@xref{@:}.
+@xref{@asis{ }}.
+
 
 
 @node @

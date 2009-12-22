@@ -276,8 +276,7 @@ function clean_antispam() {
 
 * texi2dvi doesn't accept @table in @format
 
-* warnings and errors are somewhat random at present. Also it would be nice
-  to have the same error messages than makeinfo.
+* warnings and errors should be checked in .init files.
 
 * when there are nested complex_formats, a small format that doesn't have
   style, like smalldisplay in a format with style, like example, the
@@ -428,13 +427,6 @@ in nested table line
 * drop color from body and put in css (Noah Slater).
 
 * maybe put lang= in <html> and not <body>, though I am not convinced.
-
-* Tests for 
-@node @ 
-@node @:
-@node @asis{ }
-@node @.
-and other weirdness, and corresponding error messages.
 
 Misc info and boring stuff
 --------------------------

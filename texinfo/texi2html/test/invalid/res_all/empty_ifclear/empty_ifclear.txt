@@ -1,0 +1,13 @@
+Test for empty @if*
+*******************
+
+
+Something
+
+
+
+
+Something ifset
+
+
+

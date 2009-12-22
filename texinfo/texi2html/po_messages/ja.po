@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-20 21:06+0100\n"
+"POT-Creation-Date: 2009-12-22 21:55+0100\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -326,514 +326,678 @@ msgstr ""
 msgid "Node `%s' previously defined %s"
 msgstr "ノード `%s' 前(%d 行目)に定義されています"
 
-#: texi2html.pl:5174 texi2html.pl:12762
+#: texi2html.pl:5174 texi2html.pl:12771 texi2html.pl:13271
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: texi2html.pl:5464 texi2html.pl:5475
+#: texi2html.pl:5299
+#, fuzzy, perl-format
+msgid "@%s requires an argument"
+msgstr "%c%s には名前が必要です"
+
+#: texi2html.pl:5390 texi2html.pl:15303
+#, fuzzy, perl-format
+msgid "Expected @end %s"
+msgstr "ここでは `%s' が要求されます"
+
+#: texi2html.pl:5438
+#, perl-format
+msgid "Translations for `%s' not found. Reverting to `%s'"
+msgstr ""
+
+#: texi2html.pl:5470 texi2html.pl:5481 texi2html.pl:9872
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s には名前が必要です"
 
-#: texi2html.pl:5540
+#: texi2html.pl:5493
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
+
+#: texi2html.pl:5531
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5546
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent 引数は `%s' ではなく、数値/`none'/`asis' でなければ\n"
 "    なりません。\n"
 
-#: texi2html.pl:5551
+#: texi2html.pl:5557
 #, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr ""
 
-#: texi2html.pl:5639
+#: texi2html.pl:5568
+#, fuzzy, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5595
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5613 texi2html.pl:5838 texi2html.pl:5866 texi2html.pl:5931
+#: texi2html.pl:6094 texi2html.pl:12704 texi2html.pl:14074
+#, fuzzy, perl-format
+msgid "Bad argument to @%s: %s"
+msgstr "%c%s に対する不正な引数"
+
+#: texi2html.pl:5645
 #, perl-format
 msgid "Encoding %s is not a canonical texinfo encoding"
 msgstr ""
 
-#: texi2html.pl:5801
+#: texi2html.pl:5668
+#, fuzzy, perl-format
+msgid "@%s arg must be an encoding"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5679 texi2html.pl:5690
+#, fuzzy, perl-format
+msgid "Bad argument to @%s"
+msgstr "%c%s に対する不正な引数"
+
+#: texi2html.pl:5811
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "不明なインデックス `%s'"
 
-#: texi2html.pl:5803
+#: texi2html.pl:5813
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "不明なインデックス `%s'"
 
-#: texi2html.pl:5838
+#: texi2html.pl:5848
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: texi2html.pl:5881
+#: texi2html.pl:5878
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5889
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
-#: texi2html.pl:5969
+#: texi2html.pl:5919
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr ""
+"%s: --footnote-style 引数は `%s' ではなく、`separate' 又は `end' でなければ\n"
+"    なりません。\n"
+
+#: texi2html.pl:5977
 #, fuzzy, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "`@%2$s' ブロック内側での @%1$s は、あまり意味がありません"
 
-#: texi2html.pl:6034
+#: texi2html.pl:6046
 #, perl-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp には `%s' ではなく、正の数値を与えなければなりません"
 
-#: texi2html.pl:6236
+#: texi2html.pl:6066
+#, fuzzy, perl-format
+msgid "Cannot read %s: %s"
+msgstr "ディレクトリ `%s' を作成できません: %s"
+
+#: texi2html.pl:6089 texi2html.pl:12699
+#, fuzzy, perl-format
+msgid "@%s: Cannot find %s"
+msgstr "`%s' を見つけられません。"
+
+#: texi2html.pl:6249
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: texi2html.pl:6794
+#: texi2html.pl:6807
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "参照されていないノード `%s'"
 
-#: texi2html.pl:6869
+#: texi2html.pl:6882
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "参照されていないノード `%s'"
 
-#: texi2html.pl:6920
+#: texi2html.pl:6933
 #, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "ノード `%s' には 上位項目があるのに、`%s' へのメニューアイテムを欠いています"
 
-#: texi2html.pl:6939
+#: texi2html.pl:6952
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: texi2html.pl:6969
+#: texi2html.pl:6982
 #, perl-format
 msgid "No node following `%s' in menu, but `%s' follows in sectionning"
 msgstr ""
 
-#: texi2html.pl:6970
+#: texi2html.pl:6983
 #, perl-format
 msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
 msgstr ""
 
-#: texi2html.pl:8001
+#: texi2html.pl:8014
 #, perl-format
 msgid "Unknown index `%s'"
 msgstr "不明なインデックス `%s'"
 
-#: texi2html.pl:8006
+#: texi2html.pl:8019
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "見出し `%s' のエントリはあらゆるノードの外側です"
 
-#: texi2html.pl:8463
+#: texi2html.pl:8476
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: texi2html.pl:9074
+#: texi2html.pl:9087
 #, perl-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: エラーにより、出力ファイル `%s' を削除します。\n"
 "       -- 残したい場合には `--force' オプションを使ってください。\n"
 
-#: texi2html.pl:9078
+#: texi2html.pl:9091
 #, fuzzy, perl-format
 msgid "%s: Removing output files due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: エラーにより、出力ファイル `%s' を削除します。\n"
 "       -- 残したい場合には `--force' オプションを使ってください。\n"
 
-#: texi2html.pl:9125
+#: texi2html.pl:9138
 msgid "Too many errors!  Gave up.\n"
 msgstr "エラーが多すぎます!  諦めました。\n"
 
-#: texi2html.pl:9217
+#: texi2html.pl:9230
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s (via @%s)\n"
 msgstr "%s:%d: 警告: "
 
-#: texi2html.pl:9221
+#: texi2html.pl:9234
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s\n"
 msgstr "%s:%d: 警告: "
 
-#: texi2html.pl:9254
+#: texi2html.pl:9267
 #, perl-format
 msgid "(in %s l. %d via @%s)"
 msgstr ""
 
-#: texi2html.pl:9258
+#: texi2html.pl:9271
 #, perl-format
 msgid "(l. %d via @%s)"
 msgstr ""
 
-#: texi2html.pl:9263
+#: texi2html.pl:9276
 #, perl-format
 msgid "(in %s l. %d)"
 msgstr ""
 
-#: texi2html.pl:9267
+#: texi2html.pl:9280
 #, perl-format
 msgid "(l. %d)"
 msgstr ""
 
-#: texi2html.pl:9424
+#: texi2html.pl:9437
 #, perl-format
 msgid "Too much '}' in @%s"
 msgstr ""
 
-#: texi2html.pl:9434
+#: texi2html.pl:9447
 #, fuzzy, perl-format
 msgid "Missing `}' on @%s line"
 msgstr "@def 引数に `}' を忘れています"
 
-#: texi2html.pl:9589
+#: texi2html.pl:9597
 #, fuzzy, perl-format
 msgid "Anchor `%s' ignored in %s expanded more than once"
 msgstr "アンカー `%s' とノード `%s' が同じファイルをマップしています"
 
-#: texi2html.pl:10216
+#: texi2html.pl:9946
+#, fuzzy, perl-format
+msgid "Region %s inside region %s is not allowed"
+msgstr "脚注に親ノードの定義がありません"
+
+#: texi2html.pl:10224
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: texi2html.pl:10237
+#: texi2html.pl:10245
 #, perl-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "@multitable の後ろのテクスト `%s' を無視します"
 
-#: texi2html.pl:10259
+#: texi2html.pl:10267
 #, perl-format
 msgid "Too many %s closed"
 msgstr ""
 
-#: texi2html.pl:10324 texi2html.pl:10350
+#: texi2html.pl:10332 texi2html.pl:10358 texi2html.pl:10520
 #, perl-format
-msgid "Waiting for @end %s, found @end %s"
-msgstr ""
+msgid "mismatched @end %s with @%s"
+msgstr "@%2$s と一致しない @end %1$s"
 
-#: texi2html.pl:10328
+#: texi2html.pl:10336
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: texi2html.pl:10638
+#: texi2html.pl:10496
+#, fuzzy, perl-format
+msgid "Unknown format %s"
+msgstr "知らないコマンド `%s'"
+
+#: texi2html.pl:10646
 #, fuzzy, perl-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "`%2$sx' を使うためには `%1$s' 挿入でなければなりません"
 
-#: texi2html.pl:10697 texi2html.pl:11135
+#: texi2html.pl:10705 texi2html.pl:11143
 #, fuzzy, perl-format
 msgid "@%s (argument nr %d)"
 msgstr "%c%s に対する不正な引数"
 
-#: texi2html.pl:10778
+#: texi2html.pl:10786
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s には引数が必要です: %citem を整形するため"
 
-#: texi2html.pl:10781
+#: texi2html.pl:10789
 #, perl-format
 msgid "prepended for @%s"
 msgstr ""
 
-#: texi2html.pl:10807
+#: texi2html.pl:10805
+#, fuzzy
+msgid "empty multitable"
+msgstr "マルチテーブルの外側の @tab を無視します"
+
+#: texi2html.pl:10815
 #, perl-format
 msgid "@columnfraction (argument nr %d)"
 msgstr ""
 
-#: texi2html.pl:10989 texi2html.pl:11003
+#: texi2html.pl:10997 texi2html.pl:11011
 msgid "node name in menu"
 msgstr ""
 
-#: texi2html.pl:10990
+#: texi2html.pl:10998
 msgid "normalized node name in menu"
 msgstr ""
 
-#: texi2html.pl:10996
+#: texi2html.pl:11004
 msgid "menu entry name"
 msgstr ""
 
-#: texi2html.pl:11114
+#: texi2html.pl:11039
+#, fuzzy, perl-format
+msgid "Menu reference to nonexistent node `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: texi2html.pl:11122
 #, fuzzy, perl-format
 msgid "First argument to @%s may not be empty"
 msgstr "@inforef への第一引数は空であってはなりません"
 
-#: texi2html.pl:11267 texi2html.pl:14007
+#: texi2html.pl:11263
+#, perl-format
+msgid "@%s not in text (in anchor, node, section...)"
+msgstr ""
+
+#: texi2html.pl:11275 texi2html.pl:14016
 msgid "@listoffloats @float type"
 msgstr ""
 
-#: texi2html.pl:11368
+#: texi2html.pl:11294
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr "参照されていないノード `%s'"
+
+#: texi2html.pl:11376
 #, fuzzy, perl-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "`@%2$s' ブロック内側での @%1$s は、あまり意味がありません"
 
-#: texi2html.pl:11426
+#: texi2html.pl:11434
 msgid "@float style"
 msgstr ""
 
-#: texi2html.pl:11558 texi2html.pl:11559
+#: texi2html.pl:11566 texi2html.pl:11567
 msgid "@image base name"
 msgstr ""
 
-#: texi2html.pl:11568 texi2html.pl:11569
+#: texi2html.pl:11576 texi2html.pl:11577
 msgid "@image extension"
 msgstr ""
 
-#: texi2html.pl:11576
+#: texi2html.pl:11584
 #, fuzzy
 msgid "@image file name"
 msgstr "@image ファイル `%s' が読めません: %s"
 
-#: texi2html.pl:11598
+#: texi2html.pl:11606
 msgid "@image alt text"
 msgstr ""
 
-#: texi2html.pl:11681
+#: texi2html.pl:11689
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "マクロ `%s' 呼び出し(%d行目)の引数が多すぎます"
 
-#: texi2html.pl:11705
+#: texi2html.pl:11713
 #, fuzzy, perl-format
 msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
 msgstr "マクロ展開内の \\ の後ろに \\ やパラメタ名ではなく `%s' が続いています"
 
-#: texi2html.pl:11900
+#: texi2html.pl:11908
 #, fuzzy, perl-format
 msgid "No index prefix found for @%s"
 msgstr "`%s' に対する項目が見つかりません\n"
 
-#: texi2html.pl:12410
+#: texi2html.pl:12330 texi2html.pl:12861 texi2html.pl:13874 texi2html.pl:13894
+#: texi2html.pl:13936
+#, perl-format
+msgid "Unmatched `%c%s'"
+msgstr "`%c%s' との対応が見つかりません"
+
+#: texi2html.pl:12390 texi2html.pl:14146
+#, fuzzy, perl-format
+msgid "@%s not allowed in argument to @%s"
+msgstr "%c%s に対する不正な引数"
+
+#: texi2html.pl:12418
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "マクロ `%s' は以前に定義されています"
 
-#: texi2html.pl:12411
+#: texi2html.pl:12419
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "ここは、`%s' の前の定義です"
 
-#: texi2html.pl:12444
+#: texi2html.pl:12452
 #, perl-format
 msgid "Macro definition without macro name: %s"
 msgstr ""
 
-#: texi2html.pl:12485
+#: texi2html.pl:12493
 #, perl-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: texi2html.pl:12497
+#: texi2html.pl:12505
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: texi2html.pl:12555
+#: texi2html.pl:12542
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: texi2html.pl:12564
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: texi2html.pl:12705
+#: texi2html.pl:12714
 #, fuzzy, perl-format
 msgid "@%s already set"
 msgstr "見出し `%s' は既に存在します"
 
-#: texi2html.pl:12757
+#: texi2html.pl:12766
 #, fuzzy, perl-format
 msgid "Anchor `%s' previously defined %s"
 msgstr "マクロ `%s' は以前に定義されています"
 
-#: texi2html.pl:13080
+#: texi2html.pl:12802
+#, fuzzy, perl-format
+msgid "No closing brace for specially handled command %s"
+msgstr "脚注 `%s' の閉じブレースがありません"
+
+#: texi2html.pl:13089
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s は廃れた命令です"
 
-#: texi2html.pl:13084
+#: texi2html.pl:13093
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s は廃れた命令です"
 
-#: texi2html.pl:13100
+#: texi2html.pl:13109
 #, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex に、知らない見出し `%s' があります"
 
-#: texi2html.pl:13172
+#: texi2html.pl:13114
+#, perl-format
+msgid "Printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: texi2html.pl:13181
 #, perl-format
 msgid "ignored @%s already in an @%s entry"
 msgstr ""
 
-#: texi2html.pl:13197 texi2html.pl:13240
+#: texi2html.pl:13206 texi2html.pl:13249
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
 
-#: texi2html.pl:13198
+#: texi2html.pl:13207
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべきでは？"
 
-#: texi2html.pl:13576 texi2html.pl:13577 texi2html.pl:13580
+#: texi2html.pl:13218
+#, fuzzy, perl-format
+msgid "@%s not allowed within %s"
+msgstr "%c%s に対する不正な引数"
+
+#: texi2html.pl:13267
+#, fuzzy, perl-format
+msgid "Float label `%s' previously defined %s"
+msgstr "ノード `%s' 前(%d 行目)に定義されています"
+
+#: texi2html.pl:13441
+#, fuzzy, perl-format
+msgid "Bad argument `%s' to `@%s', using `%s'"
+msgstr "`%s' に対する不正な引数 `%s'。`%s' を使います"
+
+#: texi2html.pl:13585 texi2html.pl:13586 texi2html.pl:13589
 msgid "new menu entry"
 msgstr ""
 
-#: texi2html.pl:13702
+#: texi2html.pl:13711
 msgid "paragraph end"
 msgstr ""
 
-#: texi2html.pl:13936
+#: texi2html.pl:13945
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end' には `%s' が必要ですが、`%s' が見つかりました"
 
-#: texi2html.pl:14000
+#: texi2html.pl:14009
 msgid "@listoffloats type"
 msgstr ""
 
-#: texi2html.pl:14023
+#: texi2html.pl:14032
 #, perl-format
 msgid "Requested float type `%s' not previously used"
 msgstr ""
 
-#: texi2html.pl:14135
-#, fuzzy, perl-format
-msgid "@%s not allowed on in argument to @%s"
-msgstr "%c%s に対する不正な引数"
-
-#: texi2html.pl:14190
+#: texi2html.pl:14201
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: texi2html.pl:14194
+#: texi2html.pl:14205
 #, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "@%s への引数としてコマンドを与えるには、ブレースを使いましょう"
 
-#: texi2html.pl:14355 texi2html.pl:14368
+#: texi2html.pl:14223
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%s には `{...}' が必要です"
+
+#: texi2html.pl:14366 texi2html.pl:14379
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%2$s' ブロック内側での @%1$s は、あまり意味がありません"
 
-#: texi2html.pl:14404
+#: texi2html.pl:14415
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: texi2html.pl:14437
+#: texi2html.pl:14433
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "マルチテーブルの外側の @tab を無視します"
+
+#: texi2html.pl:14448
 msgid "ignoring @tab outside of multitable"
 msgstr "マルチテーブルの外側の @tab を無視します"
 
-#: texi2html.pl:14444
+#: texi2html.pl:14455
 #, fuzzy
 msgid "ignoring @tab in empty multitable"
 msgstr "マルチテーブルの外側の @tab を無視します"
 
-#: texi2html.pl:14448
+#: texi2html.pl:14459
 #, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "マルチテーブル項目内のカラム数が多すぎます(最大 %d)"
 
-#: texi2html.pl:14479
+#: texi2html.pl:14490
 msgid "@center should not appear in another format"
 msgstr ""
 
-#: texi2html.pl:14519 texi2html.pl:14539
+#: texi2html.pl:14530 texi2html.pl:14550
 #, perl-format
 msgid "Misplaced %c"
 msgstr "間違った位置に %c"
 
-#: texi2html.pl:15093
+#: texi2html.pl:14872
+msgid "@tab before @item"
+msgstr ""
+
+#: texi2html.pl:15104
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s は引数として `i' か `j' のいずれか一文字が必要です"
 
-#: texi2html.pl:15097
+#: texi2html.pl:15108
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s は `%c' ではなく、`i' か `j' を引数として必要とします"
 
-#: texi2html.pl:15146
+#: texi2html.pl:15157
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "知らないコマンド `%s'"
 
-#: texi2html.pl:15182
+#: texi2html.pl:15193
 #, fuzzy, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s には `{...}' が必要です"
 
-#: texi2html.pl:15186
+#: texi2html.pl:15197
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "知らないコマンド `%s'"
 
-#: texi2html.pl:15264
+#: texi2html.pl:15275
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "@end %s の対応の前にファイルの終りに出くわしました"
 
-#: texi2html.pl:15272
+#: texi2html.pl:15283
 #, perl-format
 msgid "%cend macro not found"
 msgstr "%cend マクロが見つかりません"
 
-#: texi2html.pl:15440
+#: texi2html.pl:15288
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "閉じるブレースのない %c%s"
+
+#: texi2html.pl:15452
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr "`%cend %s' との対応が見つかりません"
 
-#: texi2html.pl:15468
+#: texi2html.pl:15480 texi2html.pl:15507
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "閉じるブレースのない %c%s"
 
-#: texi2html.pl:15495
-#, fuzzy, perl-format
-msgid "@%s missing close brace."
-msgstr "閉じるブレースのない %c%s"
-
-#: texi2html.pl:15576
+#: texi2html.pl:15588
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "マクロ拡張出力 `%s' を開けません"
 
-#: texi2html.pl:16053
+#: texi2html.pl:16065
 #, perl-format
 msgid "Index entry not caught: `%s' in %s"
 msgstr ""
 
-#: texi2html.pl:16151
+#: texi2html.pl:16163
 #, fuzzy, perl-format
 msgid "Empty index entry for @%s"
 msgstr "`%s' に対する項目が見つかりません\n"
 
-#: texi2html.pl:16287
+#: texi2html.pl:16299
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16288
+#: texi2html.pl:16300
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr ""
 
-#: texi2html.pl:16289
+#: texi2html.pl:16301
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16319
+#: texi2html.pl:16331
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "マクロ拡張出力 `%s' を開けません"
 
-#: texi2html.pl:16374
+#: texi2html.pl:16386
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: ファイル引数を忘れていますよ\n"
@@ -1876,9 +2040,6 @@ msgstr "脚注に親ノードの定義がありません"
 #~ msgid "Find file: "
 #~ msgstr "ファイルを見つける: "
 
-#~ msgid "Cannot find `%s'."
-#~ msgstr "`%s' を見つけられません。"
-
 #~ msgid "Could not create output file `%s'."
 #~ msgstr "出力ファイル `%s' を作成できません。"
 
@@ -2215,18 +2376,11 @@ msgstr "脚注に親ノードの定義がありません"
 #~ msgid "`}' expected, but saw `%c'"
 #~ msgstr "`}' があるはずですが、`%c' でした"
 
-#~ msgid "Bad argument to %c%s"
-#~ msgstr "%c%s に対する不正な引数"
-
 #~ msgid "asis"
 #~ msgstr "そのまま"
 
 #~ msgid "none"
 #~ msgstr "なし"
-
-#, fuzzy
-#~ msgid "Bad argument to @%s: %s"
-#~ msgstr "%c%s に対する不正な引数"
 
 #~ msgid "Function"
 #~ msgstr "機能"
@@ -2264,13 +2418,6 @@ msgstr "脚注に親ノードの定義がありません"
 #~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
 #~ msgstr "`%c%s' には `%s' だけでなく、`{...}' 形式の引数が必要です"
 
-#~ msgid "No closing brace for footnote `%s'"
-#~ msgstr "脚注 `%s' の閉じブレースがありません"
-
-#, fuzzy
-#~ msgid "Footnotes inside footnotes are not allowed"
-#~ msgstr "脚注に親ノードの定義がありません"
-
 #~ msgid "Footnotes"
 #~ msgstr "脚注"
 
@@ -2305,15 +2452,8 @@ msgstr "脚注に親ノードの定義がありません"
 #~ msgid "@detailmenu seen before first node, creating `Top' node"
 #~ msgstr "@detailmenu が最初のノード以前に現れました。`頂点' ノードを作ります"
 
-#~ msgid "Unmatched `%c%s'"
-#~ msgstr "`%c%s' との対応が見つかりません"
-
 #~ msgid "`%c%s' needs something after it"
 #~ msgstr "`%c%s' の後ろには何かが必要です"
-
-#, fuzzy
-#~ msgid "Bad argument `%s' to `@%s', using `%s'"
-#~ msgstr "`%s' に対する不正な引数 `%s'。`%s' を使います"
 
 #~ msgid "@itemx not meaningful inside `%s' block"
 #~ msgstr "`%s' ブロック内側での @itemx は、あまり意味がありません"
@@ -2323,9 +2463,6 @@ msgstr "脚注に親ノードの定義がありません"
 
 #~ msgid "invalid encoded character `%s'"
 #~ msgstr "エンコード文字 `%s' が無効です"
-
-#~ msgid "mismatched @end %s with @%s"
-#~ msgstr "@%2$s と一致しない @end %1$s"
 
 #~ msgid "%s: %s arg must be numeric, not `%s'.\n"
 #~ msgstr "%s: %s 引数は `%s' ではなくて、数値でなければなりません。\n"
@@ -2337,9 +2474,6 @@ msgstr "脚注に親ノードの定義がありません"
 #, fuzzy
 #~ msgid "%s: ignoring second internal links output `%s'.\n"
 #~ msgstr "マクロ拡張出力 `%s' を開けません"
-
-#~ msgid "Expected `%s'"
-#~ msgstr "ここでは `%s' が要求されます"
 
 #~ msgid "No `%s' found in `%s'"
 #~ msgstr "`%2$s' に `%1$s' が見つかりません"
