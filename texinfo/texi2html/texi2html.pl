@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.362 2009-12-22 23:27:35 pertusus Exp $
+# $Id: texi2html.pl,v 1.363 2009-12-23 15:22:31 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -10329,7 +10329,8 @@ sub end_format($$$$$)
         { # for example vtable closing a table. Cannot be known 
           # before if in a cell
              $format_mismatch = 1;
-             line_error (sprintf(__("mismatched \@end %s with \@%s"), $format, $format_ref->{'format'}), $line_nr);
+             line_error (sprintf(__("`\@end' expected `%s', but saw `%s'"), $format_ref->{'format'}, $format), $line_nr);
+             
         }
         if (!$format_ref->{'empty_first'} and $format_ref->{'item_nr'} == 0)
         {
@@ -10355,7 +10356,7 @@ sub end_format($$$$$)
         elsif ($format_ref->{'format'} ne $format)
         {
              $format_mismatch = 1;
-             line_error (sprintf(__("mismatched \@end %s with \@%s"), $format, $format_ref->{'format'}), $line_nr);
+             line_error (sprintf(__("`\@end' expected `%s', but saw `%s'"), $format_ref->{'format'}, $format), $line_nr);
         }
         add_prev($text, $stack, &$Texi2HTML::Config::def($format_ref->{'text'}, $format_ref->{'orig_format'}));
     }

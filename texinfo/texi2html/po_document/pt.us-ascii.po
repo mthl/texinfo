@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-22 21:56+0100\n"
+"POT-Creation-Date: 2009-12-23 11:02+0100\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -32,7 +32,7 @@ msgstr "Breve Sum@'ario"
 msgid "Footnotes"
 msgstr "Notas de Rodap@'e"
 
-#: texi2html.pl:12492
+#: texi2html.pl:12493
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
