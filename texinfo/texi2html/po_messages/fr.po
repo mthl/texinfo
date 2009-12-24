@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:19+0100\n"
+"POT-Creation-Date: 2009-12-23 23:08+0100\n"
 "PO-Revision-Date: 2004-12-06 08:00-05:00\n"
 "Last-Translator: Laurent Bourbeau <bourbeau@progiciels-bpi.ca>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -568,7 +568,7 @@ msgstr ""
 msgid "Unknown index `%s'"
 msgstr "Nom d'index inconnu « %s »"
 
-#: texi2html.pl:8019
+#: texi2html.pl:8019 formats/info.init:2964
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Entrée pour l'index « %s » à l'extérieure de tout noeud"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "« @end » s'attendait à « %s », mais a vu « %s »"
 
-#: texi2html.pl:10337
+#: texi2html.pl:10337 formats/info.init:882
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
@@ -1075,12 +1075,18 @@ msgstr ""
 msgid "arguments are quoted by default"
 msgstr ""
 
-#: formats/docbook.init:1025 formats/info.init:2885
+#: texi2html.init:6418 formats/docbook.init:1501 formats/html.init:2407
+#: maintained_extra/mediawiki.init:1134
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2885 formats/plaintext.init:152
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "commande @image avec un fichier « %s » illisible: %s"
 
-#: formats/docbook.init:1030 formats/info.init:2890
+#: formats/docbook.init:1030 formats/info.init:2890 formats/plaintext.init:157
 #, fuzzy, perl-format
 msgid "Cannot find @image file `%s.txt'"
 msgstr "Ne peut pas trouver le noeud « %s »."
@@ -1108,9 +1114,36 @@ msgstr "« . » ou « , » doit suivre une référence croisée, non pas %c"
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "« . » ou « , » doit suivre une référence croisée, non pas %c"
 
+#: formats/info.init:2360
+msgid "anchor outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:2671
+#, fuzzy
+msgid "@menu before first node"
+msgstr "@menu vu avant le premier @node, création du noeud « Top »"
+
+#: formats/info.init:2676
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "@menu vu avant le premier @node, création du noeud « Top »"
+
 #: formats/info.init:3086
 msgid "Footnote defined without parent node"
 msgstr "La note de bas de page est définie sans noeud parent"
+
+#: formats/info.init:3427
+msgid "float reference outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:3530
+msgid "@dircategory after first node"
+msgstr ""
+
+#: maintained_extra/mediawiki.init:1093
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "commande @image dans un fichier (pour HTML) « %s » illisible: %s"
 
 #~ msgid "%s: option `%s' is ambiguous\n"
 #~ msgstr "%s: l'option « %s » est ambiguë\n"

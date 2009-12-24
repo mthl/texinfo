@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 4.0f\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:19+0100\n"
+"POT-Creation-Date: 2009-12-23 23:08+0100\n"
 "PO-Revision-Date: 2002-01-23 20:46+0900\n"
 "Last-Translator: Daisuke Yamashita <yamad@mb.infoweb.ne.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Unknown index `%s'"
 msgstr "不明なインデックス `%s'"
 
-#: texi2html.pl:8019
+#: texi2html.pl:8019 formats/info.init:2964
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "見出し `%s' のエントリはあらゆるノードの外側です"
@@ -605,7 +605,7 @@ msgstr ""
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end' には `%s' が必要ですが、`%s' が見つかりました"
 
-#: texi2html.pl:10337
+#: texi2html.pl:10337 formats/info.init:882
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
@@ -1010,12 +1010,18 @@ msgstr ""
 msgid "arguments are quoted by default"
 msgstr ""
 
-#: formats/docbook.init:1025 formats/info.init:2885
+#: texi2html.init:6418 formats/docbook.init:1501 formats/html.init:2407
+#: maintained_extra/mediawiki.init:1134
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2885 formats/plaintext.init:152
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image ファイル `%s' が読めません: %s"
 
-#: formats/docbook.init:1030 formats/info.init:2890
+#: formats/docbook.init:1030 formats/info.init:2890 formats/plaintext.init:157
 #, fuzzy, perl-format
 msgid "Cannot find @image file `%s.txt'"
 msgstr "`%s' ノードが見つかりません。"
@@ -1041,9 +1047,36 @@ msgstr "`.' や ',' は %c ではなく、相互参照に続けられなければなりません"
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' や ',' は %c ではなく、相互参照に続けられなければなりません"
 
+#: formats/info.init:2360
+msgid "anchor outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:2671
+#, fuzzy
+msgid "@menu before first node"
+msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
+
+#: formats/info.init:2676
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "@menu が最初の @node 以前に現れました。`Top' ノードをつくります"
+
 #: formats/info.init:3086
 msgid "Footnote defined without parent node"
 msgstr "脚注に親ノードの定義がありません"
+
+#: formats/info.init:3427
+msgid "float reference outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:3530
+msgid "@dircategory after first node"
+msgstr ""
+
+#: maintained_extra/mediawiki.init:1093
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "@image ファイル `%s' (HTML 用) が読めません: %s"
 
 #~ msgid "%s: option `%s' is ambiguous\n"
 #~ msgstr "%s: オプション `%s' は曖昧です\n"

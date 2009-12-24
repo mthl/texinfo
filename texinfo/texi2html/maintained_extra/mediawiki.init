@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.4 2009-11-23 16:49:52 pertusus Exp $
+# $Id: mediawiki.init,v 1.5 2009-12-24 10:12:19 pertusus Exp $
 
 use strict;
 
@@ -1090,7 +1090,7 @@ sub mediawiki_default_image($$$$$$$$$$$$$$$$$)
         {
             $file = "$base.jpg";
         }
-        main::line_warn ("no image file for $base, (using $file)", $line_nr);
+        main::line_warn (sprintf(__("\@image file `%s' not found, using `%s'"), $base, $file), $line_nr);
     }
     elsif (! $COMPLETE_IMAGE_PATHS)
     {
@@ -1131,7 +1131,7 @@ sub mediawiki_default_raw($$;$)
     }
     elsif ($expanded)
     {
-        main::line_warn ("Raw $style not handled especially, but expanded", $line_nr);
+        main::line_warn (sprintf(__("Raw format %s is not converted"), $style), $line_nr);
         return &$protect_text($text);
     }
     else

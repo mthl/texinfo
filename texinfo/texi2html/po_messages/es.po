@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:19+0100\n"
+"POT-Creation-Date: 2009-12-23 23:08+0100\n"
 "PO-Revision-Date: 2008-09-04 23:50+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -639,7 +639,7 @@ msgstr ""
 msgid "Unknown index `%s'"
 msgstr "Índice desconocido `%s'"
 
-#: texi2html.pl:8019
+#: texi2html.pl:8019 formats/info.init:2964
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "La entrada para el índice `%s' se encuentra fuera de nodo alguno"
@@ -738,7 +738,7 @@ msgstr ""
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "Se esperaba ver `@end' `%s', pero se ha leído `%s'"
 
-#: texi2html.pl:10337
+#: texi2html.pl:10337 formats/info.init:882
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
@@ -1155,12 +1155,18 @@ msgstr ""
 "`@quote-arg' consta como una primitiva obsoleta; sus argumentos son "
 "entrecomillados por defecto"
 
-#: formats/docbook.init:1025 formats/info.init:2885
+#: texi2html.init:6418 formats/docbook.init:1501 formats/html.init:2407
+#: maintained_extra/mediawiki.init:1134
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2885 formats/plaintext.init:152
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "El fichero de imagen `%s' no es accesible: %s"
 
-#: formats/docbook.init:1030 formats/info.init:2890
+#: formats/docbook.init:1030 formats/info.init:2890 formats/plaintext.init:157
 #, fuzzy, perl-format
 msgid "Cannot find @image file `%s.txt'"
 msgstr "Nodo `%s' no fue encontrado."
@@ -1188,9 +1194,36 @@ msgstr "`@%s' debe ser precedido por `.' o `,', no por `%c'"
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`@%s' debe ser precedido por `.' o `,', no por `%c'"
 
+#: formats/info.init:2360
+msgid "anchor outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:2671
+#, fuzzy
+msgid "@menu before first node"
+msgstr "`@menu' ha sido leído antes que `@node', se creará un nodo `Top'"
+
+#: formats/info.init:2676
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "`@menu' ha sido leído antes que `@node', se creará un nodo `Top'"
+
 #: formats/info.init:3086
 msgid "Footnote defined without parent node"
 msgstr "Nota de pie de página definida sin nodo al que referirse"
+
+#: formats/info.init:3427
+msgid "float reference outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:3530
+msgid "@dircategory after first node"
+msgstr ""
+
+#: maintained_extra/mediawiki.init:1093
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "La imagen `%s' no es válida (para su salida en formato HTML): %s"
 
 #~ msgid "Unknown system error"
 #~ msgstr "Error de sistema desconocido"

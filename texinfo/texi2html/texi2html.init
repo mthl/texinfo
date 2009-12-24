@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.254 2009-12-20 20:23:02 pertusus Exp $
+# $Id: texi2html.init,v 1.255 2009-12-24 10:12:19 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6415,7 +6415,7 @@ sub t2h_default_raw($$;$)
     }
     elsif ($expanded)
     {
-        main::line_warn ("Raw $style not handled especially, but expanded", $line_nr);
+        main::line_warn (sprintf(__("Raw format %s is not converted"), $style), $line_nr);
         return $text;
     }
     else

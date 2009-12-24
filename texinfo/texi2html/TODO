@@ -276,8 +276,6 @@ function clean_antispam() {
 
 * texi2dvi doesn't accept @table in @format
 
-* warnings and errors should be checked in .init files.
-
 * when there are nested complex_formats, a small format that doesn't have
   style, like smalldisplay in a format with style, like example, the
   smalldisplay will use the class of the above format, and lose the 

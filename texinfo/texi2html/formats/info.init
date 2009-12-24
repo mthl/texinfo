@@ -879,7 +879,7 @@ sub info_default_process_content($$)
           # has to be done here
           if (defined($content->{'total_item_nr'}) and !$content->{'total_item_nr'} and $content->{'content'})
           {
-              main::line_warn ("\@$content->{'command'} has text but no \@item", $content->{'line_nr'});
+              main::line_warn (sprintf(__("\@%s has text but no \@item"), $content->{'command'}), $content->{'line_nr'});
           }
           # check whether there is a blank line following, to avoid adding
           # one when closing a format.
@@ -2357,7 +2357,7 @@ sub info_default_anchor_label($$$$)
     my $in_special_region = shift;
     return '' if ($in_special_region);
     #print STDERR "Storing anchor $anchor_reference->{'text'}\n";
-    main::line_warn("anchor outside of any node, it won't be registered", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
+    main::line_warn(__("anchor outside of any node, it won't be registered"), $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
    return info_default_store_text(undef,undef,'anchor',{'anchor_reference' => $anchor_reference});
 }
 
@@ -2668,12 +2668,12 @@ sub info_default_complex_format($$)
     my ($begin, $end);
     if ($name eq 'menu')
     {
-        main::line_warn("\@menu before first node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
+        main::line_warn(__("\@menu before first node"), $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node));
         $begin = "* Menu:\n\n";
     }
     elsif ($name eq 'direntry')
     {
-        main::line_warn("\@direntry after first node", $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
+        main::line_warn(__("\@direntry after first node"), $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
         $begin = "START-INFO-DIR-ENTRY\n"; 
         $end = "END-INFO-DIR-ENTRY\n";
     }
@@ -2961,7 +2961,7 @@ sub info_default_index_entry_label($$$$$$$$$)
     #return '' if ($index_entry_ref->{'hidden'});
     #return '' if (!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
     return '' if ($in_region_not_in_output or !defined($index_entry_ref->{'index_name'}));
-    main::line_warn("Entry for index `$index_entry_ref->{'index_name'}' outside of any node", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node) and !$Texi2HTML::THISDOC{'state'}->{'outside_document'});
+    main::line_warn(sprintf(__("Entry for index `%s' outside of any node"), $index_entry_ref->{'index_name'}), $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node) and !$Texi2HTML::THISDOC{'state'}->{'outside_document'});
     my $index_entry_stored = {'index_entry_reference' => $index_entry_ref, 'index_command' => $index_command, 'texi_entry' => $texi_entry};
     return info_default_store_text(undef, undef, 'index_label', $index_entry_stored);
 }
@@ -3424,7 +3424,7 @@ sub info_default_float($$$$$)
     if (exists($float->{'id'}))
     {
         $additional_arguments->{'anchor_reference'} = $float;
-        main::line_warn("float reference outside of any node, it won't be registered", $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node) and !$Texi2HTML::THISDOC{'state'}->{'outside_document'});
+        main::line_warn(__("float reference outside of any node, it won't be registered"), $Texi2HTML::THISDOC{'line_nr'}) if (!defined($info_default_current_node) and !$Texi2HTML::THISDOC{'state'}->{'outside_document'});
     }
     my $caption_text = '';
 
@@ -3527,7 +3527,7 @@ sub info_default_line_command($$$$)
     my $arg_texi = shift;
     my $state = shift;
 
-    main::line_warn("\@dircategory after first node", $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
+    main::line_warn(__("\@dircategory after first node"), $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node));
     return '' if ($arg_text eq '');
     $info_default_dir_specification .= "INFO-DIR-SECTION $arg_text\n";
     return '';

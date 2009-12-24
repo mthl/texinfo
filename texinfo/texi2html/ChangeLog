@@ -1,3 +1,7 @@
+2009-12-24   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.init,*/*.init: more messages setup to be translated.
+
 2009-12-22   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: more messages setup to be translated.

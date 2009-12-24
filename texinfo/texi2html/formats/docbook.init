@@ -1498,7 +1498,7 @@ sub docbook_raw($$$)
     }
     else
     {
-        main::line_warn ("Raw style $style not handled", $line_nr);
+        main::line_warn (sprintf(__("Raw format %s is not converted"), $style), $line_nr);
         return &$protect_text($text);
     }
 }

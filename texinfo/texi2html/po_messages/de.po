@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 16:19+0100\n"
+"POT-Creation-Date: 2009-12-23 23:08+0100\n"
 "PO-Revision-Date: 2008-08-25 10:25+0200\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -590,7 +590,7 @@ msgstr ""
 msgid "Unknown index `%s'"
 msgstr "Unbekannter Index „%s“"
 
-#: texi2html.pl:8019
+#: texi2html.pl:8019 formats/info.init:2964
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Eintrag für Index „%s“ außerhalb jeglichen Knotens"
@@ -688,7 +688,7 @@ msgstr ""
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "„@end“ erwartete „%s“, bekam jedoch „%s“"
 
-#: texi2html.pl:10337
+#: texi2html.pl:10337 formats/info.init:882
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
@@ -1102,12 +1102,18 @@ msgstr ""
 "@quote-arg ist veraltet; Argumente werden standardmäßig in Anführungszeichen "
 "eingeschlossen"
 
-#: formats/docbook.init:1025 formats/info.init:2885
+#: texi2html.init:6418 formats/docbook.init:1501 formats/html.init:2407
+#: maintained_extra/mediawiki.init:1134
+#, perl-format
+msgid "Raw format %s is not converted"
+msgstr ""
+
+#: formats/docbook.init:1025 formats/info.init:2885 formats/plaintext.init:152
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image-Datei „%s“ nicht lesbar: %s"
 
-#: formats/docbook.init:1030 formats/info.init:2890
+#: formats/docbook.init:1030 formats/info.init:2890 formats/plaintext.init:157
 #, fuzzy, perl-format
 msgid "Cannot find @image file `%s.txt'"
 msgstr "Knoten „%s“ nicht gefunden."
@@ -1135,9 +1141,36 @@ msgstr "„.“ or „,“ muss @%s folgen, nicht „%c“"
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "„.“ or „,“ muss @%s folgen, nicht „%c“"
 
+#: formats/info.init:2360
+msgid "anchor outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:2671
+#, fuzzy
+msgid "@menu before first node"
+msgstr "@menu vor ersten @node gefunden. „Top“-Knoten wird angelegt"
+
+#: formats/info.init:2676
+#, fuzzy
+msgid "@direntry after first node"
+msgstr "@menu vor ersten @node gefunden. „Top“-Knoten wird angelegt"
+
 #: formats/info.init:3086
 msgid "Footnote defined without parent node"
 msgstr "Fußnote außerhalb eines Elternknotens definiert"
+
+#: formats/info.init:3427
+msgid "float reference outside of any node, it won't be registered"
+msgstr ""
+
+#: formats/info.init:3530
+msgid "@dircategory after first node"
+msgstr ""
+
+#: maintained_extra/mediawiki.init:1093
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "@image-Datei „%s“ (für HTML) nicht lesbar: %s"
 
 #~ msgid "Unknown system error"
 #~ msgstr "Unbekannter Systemfehler"
