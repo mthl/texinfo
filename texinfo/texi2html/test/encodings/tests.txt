@@ -52,6 +52,7 @@ ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
 nodetest_info nodetest.texi --init info.init
 japanese japanese.texi
+japanese_shift_jis japanese_shift_jis.texi
 chinese_mixed_with_en chinese_mixed_with_en.texi
 documentlanguage_set documentlanguage_set.texi
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
@@ -64,3 +65,4 @@ encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.init
 encoding_index-latin1 encoding_index-latin1.texi
 encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.init
 accentenc_info accentenc.texi --init info.init
+sample_utf8 sample_utf8.texi

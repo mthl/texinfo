@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.363 2009-12-23 15:22:31 pertusus Exp $
+# $Id: texi2html.pl,v 1.364 2009-12-27 22:33:35 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2517,6 +2517,20 @@ sub encoding_alias($;$$)
     }
 }
 
+# libintl converts between encodings but doesn't decode them into the
+# perl internal format.
+sub encode_i18n_string($$)
+{
+   my $string = shift;
+   my $encoding = shift;
+   if ($encoding ne 'us-ascii' and $Texi2HTML::Config::USE_UNICODE
+        and Encode::resolve_alias($encoding))
+   {
+      return Encode::decode($encoding, $string);
+   }
+   return $string;
+}
+
 sub gdt($;$$)
 {
     my $message = shift;
@@ -2543,7 +2557,7 @@ sub gdt($;$$)
 
        Locale::Messages::textdomain($strings_textdomain);
 
-       # FIXME this should be done only once
+       # FIXME this should be done only once, for @documentencoding
        my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
        if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
        {
@@ -2551,6 +2565,9 @@ sub gdt($;$$)
        }
        $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
    
+       Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding) if ($encoding ne 'us-ascii');
+       Locale::Messages::bind_textdomain_filter($strings_textdomain, \&encode_i18n_string, $encoding);
+
        my $lang = Texi2HTML::Config::get_conf('documentlanguage');
        my @langs = ($lang);
        if ($lang =~ /^([a-z]+)_([A-Z]+)/)
@@ -2564,6 +2581,7 @@ sub gdt($;$$)
        foreach my $language (@langs)
        {
            $locales .= "$language.$encoding:";
+           #$locales .= "$language:";
            # always try us-ascii, the charset should always be a subset of
            # all charset, and should resort to @-commands if needed for non
            # ascii characters
@@ -2573,6 +2591,7 @@ sub gdt($;$$)
            }
        }
        $locales =~ s/:$//;
+       #print STDERR "$locales\n";
        Locale::Messages::nl_putenv("LANGUAGE=$locales");
    
        if (!defined($context) or ref($context))

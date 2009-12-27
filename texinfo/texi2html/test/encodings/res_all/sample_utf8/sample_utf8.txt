@@ -1,0 +1,48 @@
+Sample
+******
+
+Table of Contents
+*****************
+
+Texinfo中文示例
+1 第一章（First Chapter）
+2 Chapter 2
+Index
+
+
+Texinfo中文示例
+***********
+
+This is a short example of a complete Texinfo file.
+
+Copyright (C) 2005 Free Software Foundation, Inc.
+
+* 第一章（First Chapter）:: 这是此示例文档的第一章
+                           (with mixed cjk & latin char title)
+* Second Chapter::  this is chapter 2.
+* Index::    Complete index.
+
+
+1 第一章（First Chapter）
+********************
+
+
+This is the first chapter. 这是第一章。
+
+Here is a numbered list.
+
+1. This is the first item.
+
+2. This is the second item.
+
+2 Chapter 2
+***********
+empty
+
+Index
+*****
+
+* Index:
+* chapter, first: 1 第一章（First Chapter）.
+* 另一个，index entry: 1 第一章（First Chapter）.
+

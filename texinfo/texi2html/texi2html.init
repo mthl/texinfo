@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.255 2009-12-24 10:12:19 pertusus Exp $
+# $Id: texi2html.init,v 1.256 2009-12-27 22:33:35 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3024,6 +3024,7 @@ foreach my $symbol(keys(%unicode_map))
               'utf8'       => 'utf-8',
               'utf-8-strict'       => 'utf-8',
               'ascii'      => 'us-ascii',
+              'shiftjis'      => 'shift_jis',
 );
 
 %t2h_encoding_aliases = (

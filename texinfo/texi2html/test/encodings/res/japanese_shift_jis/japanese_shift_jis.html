@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright C 1999-2008 著作者一同
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+以下は英語を話さない人々のための著作権についての注意書きです。しかしながら、
+英語で書かれた注意書きだけが法的に有効です。
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU LilyPond &ndash; Manuel d&rsquo;initiation</title>
+
+<meta name="description" content="GNU LilyPond &ndash; Manuel d&rsquo;initiation">
+<meta name="keywords" content="GNU LilyPond &ndash; Manuel d&rsquo;initiation">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="ja" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 class="settitle" align="center">GNU LilyPond &ndash; Manuel d&rsquo;initiation</h1>
+<hr>
+<a name="Top"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[ &lt; ]</td>
+<td valign="middle" align="left">[<a href="#Preface" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[目次]</td>
+<td valign="middle" align="left">[見出し]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="GNU-LilyPond-_002d_002d_002d-_5b66_7fd2_30de_30cb_30e5_30a2_30eb"></a>
+<h1 class="top">GNU LilyPond &mdash; 学習マニュアル</h1>
+
+
+
+<p>これは GNU LilyPond バージョン 
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Preface">1 Preface</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Introduction">2 Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   LilyPond とは何なのか、なぜ LilyPond を使うのか、どうやって LilyPond を使うのか
+</td></tr>
+</table>
+
+<hr size="6">
+<a name="Preface"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Introduction" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[目次]</td>
+<td valign="middle" align="left">[見出し]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Preface-1"></a>
+<h1 class="chapter">1 Preface</h1>
+
+<p>それは 1995 年のある日の EJE (Eindhoven Youth Orchestra) のリハーサル中のできごとでした － ある変わり者のバイオリン奏者であるジャンは同じく変わり者のフレンチホルン奏者のハン-ウェンに彼がかかわっている新しい大きなプロジェクトのことを話しました。それは音楽を出版するための自動化されたシステムです (正確には、それは MPP － MusiXTeX のプリプロセッサです)。それを聞いてハン-ウェンはすぐに楽譜からいくつかの部分をプリントアウトしたいと思い、彼はそのためのソフトウェアを探し始め、すぐにその虜になってしまいました。それが MPP の終わりを決定付けました。多くの哲学的考察を含み白熱した email の交換の後、ハン-ウェンは 1996 年に LilyPond の製作を開始しました。この時、ジャンはハン-ウェンの新しいプロジェクトに引きずり込まれました。
+</p>
+
+<hr>
+<a name="Introduction"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Preface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Preface" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Top" title="Up section">上</a>]</td>
+<td valign="middle" align="left">[ &gt; ]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[目次]</td>
+<td valign="middle" align="left">[見出し]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Introduction-1"></a>
+<h1 class="chapter">2 Introduction</h1>
+
+<p>この章では読者に LilyPond とこのドキュメントについての紹介を行います。
+</p>
+<hr size="6">
+<a name="SEC_About"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Top" title="Cover (top) of document">冒頭</a>]</td>
+<td valign="middle" align="left">[目次]</td>
+<td valign="middle" align="left">[見出し]</td>
+<td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h1>この文書について</h1>
+
+<p>
+  この文書は<em>a sunny day</em>に<a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>を用いて生成されました。
+</p>
+<p>
+ナビゲーションパネル中のボタンには以下の意味があります。
+</p>
+<table border="1">
+  <tr>
+    <th> ボタン </th>
+    <th> 名称 </th>
+    <th> 移動先 </th>
+    <th> 1.2.3項からの移動先</th>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt;&lt; ] </td>
+    <td align="center">FastBack</td>
+    <td>Beginning of this chapter or previous chapter</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &lt; ] </td>
+    <td align="center">Back</td>
+    <td>Previous section in reading order</td>
+    <td>1.2.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [上] </td>
+    <td align="center">Up</td>
+    <td>Up section</td>
+    <td>1.2</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt; ] </td>
+    <td align="center">Forward</td>
+    <td>Next section in reading order</td>
+    <td>1.2.4</td>
+  </tr>
+  <tr>
+    <td align="center"> [ &gt;&gt; ] </td>
+    <td align="center">FastForward</td>
+    <td>Next chapter</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td align="center"> [冒頭] </td>
+    <td align="center">冒頭</td>
+    <td>Cover (top) of document</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [目次] </td>
+    <td align="center">目次</td>
+    <td>Table of contents</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [見出し] </td>
+    <td align="center">見出し</td>
+    <td>見出し</td>
+    <td> &nbsp; </td>
+  </tr>
+  <tr>
+    <td align="center"> [ ? ] </td>
+    <td align="center">About</td>
+    <td>About (help)</td>
+    <td> &nbsp; </td>
+  </tr>
+</table>
+
+<p>
+<strong>例</strong>では、以下に示す構造を持つ文書の<strong>1.2.3項</strong>を現在位置に仮定しています。
+</p>
+
+<ul>
+  <li> 1. 第1項
+    <ul>
+      <li>1.1 第1.1項
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.2 第1.2項
+        <ul>
+          <li>1.2.1 第1.2.1項</li>
+          <li>1.2.2 第1.2.2項</li>
+          <li>1.2.3 第1.2.3項 &nbsp; &nbsp;
+            <strong>&lt;== 現在位置 </strong></li>
+          <li>1.2.4 第1.2.4項</li>
+        </ul>
+      </li>
+      <li>1.3 第1.3項
+        <ul>
+          <li>...</li>
+        </ul>
+      </li>
+      <li>1.4 第1.4項</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+<p>
+ <font size="-1">
+  この文書は<em>a sunny day</em>に<a href="http://www.nongnu.org/texi2html/"><em>texi2html</em></a>を用いて生成されました。
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

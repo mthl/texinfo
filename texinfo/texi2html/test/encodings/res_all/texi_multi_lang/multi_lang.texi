@@ -3,6 +3,7 @@
 @setfilename multi_lang.info
 
 @documentlanguage fr_NOWHERE
+@documentencoding utf-8
 
 @node Top
 @top Multi language file

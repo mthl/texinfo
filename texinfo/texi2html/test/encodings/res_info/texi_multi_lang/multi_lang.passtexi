@@ -2,60 +2,61 @@ multi_lang.texi(,2)
 multi_lang.texi(,3) @setfilename multi_lang.info
 multi_lang.texi(,4) 
 multi_lang.texi(,5) @documentlanguage fr_NOWHERE
-multi_lang.texi(,6) 
-multi_lang.texi(,7) @node Top
-multi_lang.texi(,8) @top Multi language file
-multi_lang.texi(,9) 
-multi_lang.texi(,10) This is in french
-multi_lang.texi(,11) 
-multi_lang.texi(,12) @menu
-multi_lang.texi(,13) * chapter fr_NOWHERE::
-multi_lang.texi(,14) * chapter ja::
-multi_lang.texi(,15) * chapter en::
-multi_lang.texi(,16) * chapter fr_FR::
-multi_lang.texi(,17) * chapter de::
-multi_lang.texi(,18) * chapter pt_BR::
-multi_lang.texi(,19) @end menu
-multi_lang.texi(,20) 
-multi_lang.texi(,21) @node chapter fr_NOWHERE
-multi_lang.texi(,22) @chapter Fr_NOWHERE
-multi_lang.texi(,23) 
-multi_lang.texi(,24) In french. @xref{Top}.
-multi_lang.texi(,25) 
-multi_lang.texi(,26) @menu
-multi_lang.texi(,27) * sub fr_NOWHERE::
-multi_lang.texi(,28) @end menu
-multi_lang.texi(,29) 
-multi_lang.texi(,30) @node sub fr_NOWHERE
-multi_lang.texi(,31) @section fr_NOWHERE section
-multi_lang.texi(,32) 
-multi_lang.texi(,33) In fr section.
-multi_lang.texi(,34) 
-multi_lang.texi(,35) @documentlanguage ja
-multi_lang.texi(,36) @node chapter ja
-multi_lang.texi(,37) @chapter ja
-multi_lang.texi(,38) 
-multi_lang.texi(,39) In japanese. @xref{Top}.
-multi_lang.texi(,40) 
-multi_lang.texi(,41) @documentlanguage en
-multi_lang.texi(,42) @node chapter en
-multi_lang.texi(,43) @chapter en
-multi_lang.texi(,44) 
-multi_lang.texi(,45) In english. @xref{Top}.
-multi_lang.texi(,46) 
-multi_lang.texi(,47) @documentlanguage fr_FR
-multi_lang.texi(,48) @node chapter fr_FR
-multi_lang.texi(,49) @chapter fr_FR
-multi_lang.texi(,50) 
-multi_lang.texi(,51) @documentlanguage de
-multi_lang.texi(,52) @node chapter de
-multi_lang.texi(,53) @chapter de
-multi_lang.texi(,54) 
-multi_lang.texi(,55) @documentlanguage pt_BR
-multi_lang.texi(,56) @node chapter pt_BR
-multi_lang.texi(,57) @chapter pt_bR
-multi_lang.texi(,58) 
-multi_lang.texi(,59) In brazilian. @xref{Top}.
-multi_lang.texi(,60) 
+multi_lang.texi(,6) @documentencoding utf-8
+multi_lang.texi(,7) 
+multi_lang.texi(,8) @node Top
+multi_lang.texi(,9) @top Multi language file
+multi_lang.texi(,10) 
+multi_lang.texi(,11) This is in french
+multi_lang.texi(,12) 
+multi_lang.texi(,13) @menu
+multi_lang.texi(,14) * chapter fr_NOWHERE::
+multi_lang.texi(,15) * chapter ja::
+multi_lang.texi(,16) * chapter en::
+multi_lang.texi(,17) * chapter fr_FR::
+multi_lang.texi(,18) * chapter de::
+multi_lang.texi(,19) * chapter pt_BR::
+multi_lang.texi(,20) @end menu
+multi_lang.texi(,21) 
+multi_lang.texi(,22) @node chapter fr_NOWHERE
+multi_lang.texi(,23) @chapter Fr_NOWHERE
+multi_lang.texi(,24) 
+multi_lang.texi(,25) In french. @xref{Top}.
+multi_lang.texi(,26) 
+multi_lang.texi(,27) @menu
+multi_lang.texi(,28) * sub fr_NOWHERE::
+multi_lang.texi(,29) @end menu
+multi_lang.texi(,30) 
+multi_lang.texi(,31) @node sub fr_NOWHERE
+multi_lang.texi(,32) @section fr_NOWHERE section
+multi_lang.texi(,33) 
+multi_lang.texi(,34) In fr section.
+multi_lang.texi(,35) 
+multi_lang.texi(,36) @documentlanguage ja
+multi_lang.texi(,37) @node chapter ja
+multi_lang.texi(,38) @chapter ja
+multi_lang.texi(,39) 
+multi_lang.texi(,40) In japanese. @xref{Top}.
+multi_lang.texi(,41) 
+multi_lang.texi(,42) @documentlanguage en
+multi_lang.texi(,43) @node chapter en
+multi_lang.texi(,44) @chapter en
+multi_lang.texi(,45) 
+multi_lang.texi(,46) In english. @xref{Top}.
+multi_lang.texi(,47) 
+multi_lang.texi(,48) @documentlanguage fr_FR
+multi_lang.texi(,49) @node chapter fr_FR
+multi_lang.texi(,50) @chapter fr_FR
+multi_lang.texi(,51) 
+multi_lang.texi(,52) @documentlanguage de
+multi_lang.texi(,53) @node chapter de
+multi_lang.texi(,54) @chapter de
+multi_lang.texi(,55) 
+multi_lang.texi(,56) @documentlanguage pt_BR
+multi_lang.texi(,57) @node chapter pt_BR
+multi_lang.texi(,58) @chapter pt_bR
+multi_lang.texi(,59) 
+multi_lang.texi(,60) In brazilian. @xref{Top}.
 multi_lang.texi(,61) 
-multi_lang.texi(,62) @bye
+multi_lang.texi(,62) 
+multi_lang.texi(,63) @bye
