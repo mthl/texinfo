@@ -78,7 +78,9 @@ i18n_files = i18n/de \
 	i18n/no \
 	i18n/pt \
 	i18n/pt_BR \
-	i18n/ja
+	i18n/ja \
+	i18n/it \
+	i18n/hu
 
 dist_i18n_DATA = i18n/en \
 	$(i18n_files)

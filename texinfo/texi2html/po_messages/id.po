@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-27 21:19+0100\n"
+"POT-Creation-Date: 2009-12-27 23:58+0100\n"
 "PO-Revision-Date: 2008-11-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -56,28 +56,28 @@ msgstr ""
 msgid "Encoding %s certainly poorly supported"
 msgstr "maaf, pengkodean `%s' tidak didukung"
 
-#: texi2html.pl:2636 texi2html.pl:2640
+#: texi2html.pl:2635 texi2html.pl:2639
 msgid "translation"
 msgstr ""
 
-#: texi2html.pl:2798
+#: texi2html.pl:2797
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
 
-#: texi2html.pl:2802
+#: texi2html.pl:2801
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
 
-#: texi2html.pl:3660
+#: texi2html.pl:3659
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Penggunaan: %s [OPSI]... BERKAS-TEXINFO...\n"
 
-#: texi2html.pl:3662
+#: texi2html.pl:3661
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -86,7 +86,7 @@ msgstr ""
 "Berkas info yang sesuai untuk pembacaan online dengan Emacs atau standalone "
 "GNU Info.\n"
 
-#: texi2html.pl:3665
+#: texi2html.pl:3664
 #, perl-format
 msgid ""
 "General options:\n"
@@ -112,7 +112,7 @@ msgstr ""
 "  -v, --verbose               jelaskan apa yang sedang dilakukan.\n"
 "      --version               tampilkan informasi versi dan keluar.\n"
 
-#: texi2html.pl:3676
+#: texi2html.pl:3675
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -126,7 +126,7 @@ msgstr ""
 "      --xml                   keluarkan Texinfo XML daripada Info.\n"
 "      --plaintext             keluarkan plain teks daripada Info.\n"
 
-#: texi2html.pl:3682
+#: texi2html.pl:3681
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -159,7 +159,7 @@ msgstr ""
 "  -o, --output=BERKAS         keluarkan ke BERKAS (atau direktori jika split "
 "HTML).\n"
 
-#: texi2html.pl:3694
+#: texi2html.pl:3693
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -201,7 +201,7 @@ msgstr ""
 "                               `asis', jaga indentasi yang sudah ada.\n"
 "      --split-size=NUM         pisah berkas Info di ukuran NUM (baku %d).\n"
 
-#: texi2html.pl:3709
+#: texi2html.pl:3708
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -221,7 +221,7 @@ msgstr ""
 "                              hasilkan nama berkas dalam transliterasi "
 "ASCII.\n"
 
-#: texi2html.pl:3722
+#: texi2html.pl:3721
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -238,7 +238,7 @@ msgstr ""
 "  -U VAR                        tidak definisikan variabel VAR, sama dengan "
 "@clear.\n"
 
-#: texi2html.pl:3729
+#: texi2html.pl:3728
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -276,7 +276,7 @@ msgstr ""
 "\n"
 "  Juga, untuk opsi --no-ifFORMAT, jangan proses @ifnotFORMAT teks.\n"
 
-#: texi2html.pl:3746
+#: texi2html.pl:3745
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -291,7 +291,7 @@ msgstr ""
 "off;\n"
 "  jika menghasilkan XML, --ifxml adalah on dan yang lain adalah off.\n"
 
-#: texi2html.pl:3752
+#: texi2html.pl:3751
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -319,7 +319,7 @@ msgstr ""
 "  makeinfo --no-split foo.texi            tulis satu berkas Info walaupun "
 "besar\n"
 
-#: texi2html.pl:3763
+#: texi2html.pl:3762
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -329,7 +329,7 @@ msgstr ""
 "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
 "Texinfo halaman rumah: http://www.gnu.org/software/texinfo/"
 
-#: texi2html.pl:3842
+#: texi2html.pl:3841
 #, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -346,692 +346,692 @@ msgstr ""
 "TIDAK ADA GARANSI, sampai batas yang masih diijinkan oleh hukum yang "
 "berlaku.\n"
 
-#: texi2html.pl:3864
+#: texi2html.pl:3863
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Mengabaikan nilai TEXINFO_OUTPUT_FORMAT tidak dikenal `%s'.\n"
 
-#: texi2html.pl:4471
+#: texi2html.pl:4470
 #, perl-format
 msgid "Can't create directory `%s': %s"
 msgstr "Tidak dapat membuat direktori `%s': %s"
 
-#: texi2html.pl:5181
+#: texi2html.pl:5180
 msgid "Superfluous arguments for node"
 msgstr ""
 
-#: texi2html.pl:5189
+#: texi2html.pl:5188
 #, fuzzy, perl-format
 msgid "Node `%s' previously defined %s"
 msgstr "Titik `%s' telah didefinisikan sebelumnya di baris %d"
 
-#: texi2html.pl:5194 texi2html.pl:12792 texi2html.pl:13292
+#: texi2html.pl:5193 texi2html.pl:12791 texi2html.pl:13291
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: texi2html.pl:5319
+#: texi2html.pl:5318
 #, fuzzy, perl-format
 msgid "@%s requires an argument"
 msgstr "%c%s membutuhkan sebuah nama"
 
-#: texi2html.pl:5410 texi2html.pl:15324
+#: texi2html.pl:5409 texi2html.pl:15323
 #, fuzzy, perl-format
 msgid "Expected @end %s"
 msgstr "Diduga `%s'"
 
-#: texi2html.pl:5458
+#: texi2html.pl:5457
 #, perl-format
 msgid "Translations for `%s' not found. Reverting to `%s'"
 msgstr ""
 
-#: texi2html.pl:5490 texi2html.pl:5501 texi2html.pl:9892
+#: texi2html.pl:5489 texi2html.pl:5500 texi2html.pl:9891
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s membutuhkan sebuah nama"
 
-#: texi2html.pl:5513
+#: texi2html.pl:5512
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr ""
 "Gunakan kurung untuk memberi sebuah perintah sebagai sebuah argumen ke @%s"
 
-#: texi2html.pl:5551
+#: texi2html.pl:5550
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
 
-#: texi2html.pl:5566
+#: texi2html.pl:5565
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'.\n"
 
-#: texi2html.pl:5577
+#: texi2html.pl:5576
 #, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "Diduga @%s on atau off, bukan `%s'"
 
-#: texi2html.pl:5588
+#: texi2html.pl:5587
 #, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
 
-#: texi2html.pl:5615
+#: texi2html.pl:5614
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
 
-#: texi2html.pl:5633 texi2html.pl:5858 texi2html.pl:5886 texi2html.pl:5951
-#: texi2html.pl:6114 texi2html.pl:12725 texi2html.pl:14095
+#: texi2html.pl:5632 texi2html.pl:5857 texi2html.pl:5885 texi2html.pl:5950
+#: texi2html.pl:6113 texi2html.pl:12724 texi2html.pl:14094
 #, perl-format
 msgid "Bad argument to @%s: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: texi2html.pl:5665
+#: texi2html.pl:5664
 #, perl-format
 msgid "Encoding %s is not a canonical texinfo encoding"
 msgstr ""
 
-#: texi2html.pl:5688
+#: texi2html.pl:5687
 #, fuzzy, perl-format
 msgid "@%s arg must be an encoding"
 msgstr ""
 "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
 
-#: texi2html.pl:5699 texi2html.pl:5710
+#: texi2html.pl:5698 texi2html.pl:5709
 #, fuzzy, perl-format
 msgid "Bad argument to @%s"
 msgstr "Argumen ke %c%s buruk"
 
-#: texi2html.pl:5831
+#: texi2html.pl:5830
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "Indeks `%s' tidak diketahui"
 
-#: texi2html.pl:5833
+#: texi2html.pl:5832
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "Indeks `%s' tidak diketahui"
 
-#: texi2html.pl:5868
+#: texi2html.pl:5867
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: texi2html.pl:5898
+#: texi2html.pl:5897
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr ""
 "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
 
-#: texi2html.pl:5909
+#: texi2html.pl:5908
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Hanya @%s 10 atau 11 yang didukung, bukan `%s'"
 
-#: texi2html.pl:5939
+#: texi2html.pl:5938
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr ""
 "%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'.\n"
 
-#: texi2html.pl:5997
+#: texi2html.pl:5996
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s tidak berarti diluar lingkunga `@titlepage' dan `@quotation'"
 
-#: texi2html.pl:6066
+#: texi2html.pl:6065
 #, perl-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp membutuhkan sebuah argumen numerik positif, bukan `%s'"
 
-#: texi2html.pl:6086
+#: texi2html.pl:6085
 #, fuzzy, perl-format
 msgid "Cannot read %s: %s"
 msgstr "Tidak dapat membuat direktori `%s': %s"
 
-#: texi2html.pl:6109 texi2html.pl:12720
+#: texi2html.pl:6108 texi2html.pl:12719
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "Tidak dapat menemukan `%s'."
 
-#: texi2html.pl:6269
+#: texi2html.pl:6268
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: texi2html.pl:6827
+#: texi2html.pl:6826
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "titik `%s' tidak tereferensi"
 
-#: texi2html.pl:6902
+#: texi2html.pl:6901
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "titik `%s' tidak tereferensi"
 
-#: texi2html.pl:6953
+#: texi2html.pl:6952
 #, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Titik `%s' kurang item menu untuk `%s' dariapda target Up nya"
 
-#: texi2html.pl:6972
+#: texi2html.pl:6971
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: texi2html.pl:7002
+#: texi2html.pl:7001
 #, perl-format
 msgid "No node following `%s' in menu, but `%s' follows in sectionning"
 msgstr ""
 
-#: texi2html.pl:7003
+#: texi2html.pl:7002
 #, perl-format
 msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
 msgstr ""
 
-#: texi2html.pl:8034
+#: texi2html.pl:8033
 #, perl-format
 msgid "Unknown index `%s'"
 msgstr "Indeks `%s' tidak diketahui"
 
-#: texi2html.pl:8039 formats/info.init:2964
+#: texi2html.pl:8038 formats/info.init:2964
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Masukan untuk indeks `%s' diluar dari titik apapun"
 
-#: texi2html.pl:8496
+#: texi2html.pl:8495
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: texi2html.pl:9107
+#: texi2html.pl:9106
 #, perl-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Menghapus berkas keluaran `%s' karena adanya errors; gunakan --force "
 "untuk menjaga.\n"
 
-#: texi2html.pl:9111
+#: texi2html.pl:9110
 #, fuzzy, perl-format
 msgid "%s: Removing output files due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: Menghapus berkas keluaran `%s' karena adanya errors; gunakan --force "
 "untuk menjaga.\n"
 
-#: texi2html.pl:9158
+#: texi2html.pl:9157
 msgid "Too many errors!  Gave up.\n"
 msgstr "Terlalu banyak errors! Menyerah.\n"
 
-#: texi2html.pl:9250
+#: texi2html.pl:9249
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s (via @%s)\n"
 msgstr "%s:%d: peringatan: "
 
-#: texi2html.pl:9254
+#: texi2html.pl:9253
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s\n"
 msgstr "%s:%d: peringatan: "
 
-#: texi2html.pl:9287
+#: texi2html.pl:9286
 #, perl-format
 msgid "(in %s l. %d via @%s)"
 msgstr ""
 
-#: texi2html.pl:9291
+#: texi2html.pl:9290
 #, perl-format
 msgid "(l. %d via @%s)"
 msgstr ""
 
-#: texi2html.pl:9296
+#: texi2html.pl:9295
 #, fuzzy, perl-format
 msgid "(in %s l. %d)"
 msgstr "(baris %*d)"
 
-#: texi2html.pl:9300
+#: texi2html.pl:9299
 #, fuzzy, perl-format
 msgid "(l. %d)"
 msgstr "(baris %*d)"
 
-#: texi2html.pl:9457
+#: texi2html.pl:9456
 #, perl-format
 msgid "Too much '}' in @%s"
 msgstr ""
 
-#: texi2html.pl:9467
+#: texi2html.pl:9466
 #, fuzzy, perl-format
 msgid "Missing `}' on @%s line"
 msgstr "Hilang `}' dalam @def arg"
 
-#: texi2html.pl:9617
+#: texi2html.pl:9616
 #, fuzzy, perl-format
 msgid "Anchor `%s' ignored in %s expanded more than once"
 msgstr "Anchor `%s' dan titik `%s' peta di nama beraks yang sama"
 
-#: texi2html.pl:9966
+#: texi2html.pl:9965
 #, fuzzy, perl-format
 msgid "Region %s inside region %s is not allowed"
 msgstr "Catatan kaki didalam catatan kaki tidak diijinkan"
 
-#: texi2html.pl:10244
+#: texi2html.pl:10243
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: texi2html.pl:10265
+#: texi2html.pl:10264
 #, perl-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "mengabaikan stray teks `%s' setelah @multitable"
 
-#: texi2html.pl:10287
+#: texi2html.pl:10286
 #, perl-format
 msgid "Too many %s closed"
 msgstr ""
 
-#: texi2html.pl:10352 texi2html.pl:10379 texi2html.pl:13966
+#: texi2html.pl:10351 texi2html.pl:10378 texi2html.pl:13965
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "`@end' diduga `%s', tetapi terlihat `%s'"
 
-#: texi2html.pl:10357 formats/info.init:882
+#: texi2html.pl:10356 formats/info.init:882
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: texi2html.pl:10517
+#: texi2html.pl:10516
 #, fuzzy, perl-format
 msgid "Unknown format %s"
 msgstr "Perintah `%s' tidak diketahui"
 
-#: texi2html.pl:10541
+#: texi2html.pl:10540
 #, perl-format
 msgid "mismatched @end %s with @%s"
 msgstr "tidak cocok @end %s dengan @%s"
 
-#: texi2html.pl:10667
+#: texi2html.pl:10666
 #, perl-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "Harus berada dalam lingkungan `@%s' untuk menggunakan `@%s'"
 
-#: texi2html.pl:10726 texi2html.pl:11164
+#: texi2html.pl:10725 texi2html.pl:11163
 #, fuzzy, perl-format
 msgid "@%s (argument nr %d)"
 msgstr "Argumen ke @%s buruk"
 
-#: texi2html.pl:10807
+#: texi2html.pl:10806
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s membutuhkan sebuah argumen: peformat untuk %c item"
 
-#: texi2html.pl:10810
+#: texi2html.pl:10809
 #, perl-format
 msgid "prepended for @%s"
 msgstr ""
 
-#: texi2html.pl:10826
+#: texi2html.pl:10825
 #, fuzzy
 msgid "empty multitable"
 msgstr "mengabaikan @tab diluar dari multitabel"
 
-#: texi2html.pl:10836
+#: texi2html.pl:10835
 #, perl-format
 msgid "@columnfraction (argument nr %d)"
 msgstr ""
 
-#: texi2html.pl:11018 texi2html.pl:11032
+#: texi2html.pl:11017 texi2html.pl:11031
 msgid "node name in menu"
 msgstr ""
 
-#: texi2html.pl:11019
+#: texi2html.pl:11018
 msgid "normalized node name in menu"
 msgstr ""
 
-#: texi2html.pl:11025
+#: texi2html.pl:11024
 msgid "menu entry name"
 msgstr ""
 
-#: texi2html.pl:11060
+#: texi2html.pl:11059
 #, fuzzy, perl-format
 msgid "Menu reference to nonexistent node `%s'"
 msgstr "titik `%s' tidak tereferensi"
 
-#: texi2html.pl:11143
+#: texi2html.pl:11142
 #, fuzzy, perl-format
 msgid "First argument to @%s may not be empty"
 msgstr "Argumen pertama ke @inforef tidak boleh kosong"
 
-#: texi2html.pl:11284
+#: texi2html.pl:11283
 #, perl-format
 msgid "@%s not in text (in anchor, node, section...)"
 msgstr ""
 
-#: texi2html.pl:11296 texi2html.pl:14037
+#: texi2html.pl:11295 texi2html.pl:14036
 msgid "@listoffloats @float type"
 msgstr ""
 
-#: texi2html.pl:11315
+#: texi2html.pl:11314
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "titik `%s' tidak tereferensi"
 
-#: texi2html.pl:11397
+#: texi2html.pl:11396
 #, perl-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s tidak berarti diluar lingkungan `@float'"
 
-#: texi2html.pl:11455
+#: texi2html.pl:11454
 msgid "@float style"
 msgstr ""
 
-#: texi2html.pl:11587 texi2html.pl:11588
+#: texi2html.pl:11586 texi2html.pl:11587
 msgid "@image base name"
 msgstr ""
 
-#: texi2html.pl:11597 texi2html.pl:11598
+#: texi2html.pl:11596 texi2html.pl:11597
 msgid "@image extension"
 msgstr ""
 
-#: texi2html.pl:11605
+#: texi2html.pl:11604
 #, fuzzy
 msgid "@image file name"
 msgstr "@image berkas `%s' tidak dapat dibaca: %s"
 
-#: texi2html.pl:11627
+#: texi2html.pl:11626
 msgid "@image alt text"
 msgstr ""
 
-#: texi2html.pl:11710
+#: texi2html.pl:11709
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "Makro `%s' dipanggil di baris %d dengan terlalu banyak args"
 
-#: texi2html.pl:11734
+#: texi2html.pl:11733
 #, fuzzy, perl-format
 msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ dalam ekspansi makro diikuti oleh `%s' daripada nama parameter"
 
-#: texi2html.pl:11929
+#: texi2html.pl:11928
 #, fuzzy, perl-format
 msgid "No index prefix found for @%s"
 msgstr "tidak ada masukan indeks ditemukan untuk `%s'\n"
 
-#: texi2html.pl:12351 texi2html.pl:12882 texi2html.pl:13895 texi2html.pl:13915
-#: texi2html.pl:13957
+#: texi2html.pl:12350 texi2html.pl:12881 texi2html.pl:13894 texi2html.pl:13914
+#: texi2html.pl:13956
 #, perl-format
 msgid "Unmatched `%c%s'"
 msgstr "Tidak cocok `%c%s'"
 
-#: texi2html.pl:12411 texi2html.pl:14167
+#: texi2html.pl:12410 texi2html.pl:14166
 #, fuzzy, perl-format
 msgid "@%s not allowed in argument to @%s"
 msgstr "@item tidak diijinkan dalam argume ke @itemize"
 
-#: texi2html.pl:12439
+#: texi2html.pl:12438
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makro `%s' telah didefinisikan sebelumnya"
 
-#: texi2html.pl:12440
+#: texi2html.pl:12439
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "disini adalah definisi sebelumnya dari `%s'"
 
-#: texi2html.pl:12473
+#: texi2html.pl:12472
 #, perl-format
 msgid "Macro definition without macro name: %s"
 msgstr ""
 
-#: texi2html.pl:12514
+#: texi2html.pl:12513
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "opsi tidak terdefinisi: %s"
 
-#: texi2html.pl:12526
+#: texi2html.pl:12525
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: texi2html.pl:12563
+#: texi2html.pl:12562
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: texi2html.pl:12585
+#: texi2html.pl:12584
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: texi2html.pl:12735
+#: texi2html.pl:12734
 #, fuzzy, perl-format
 msgid "@%s already set"
 msgstr "Indeks `%s' telah ada"
 
-#: texi2html.pl:12787
+#: texi2html.pl:12786
 #, fuzzy, perl-format
 msgid "Anchor `%s' previously defined %s"
 msgstr "makro `%s' telah didefinisikan sebelumnya"
 
-#: texi2html.pl:12823
+#: texi2html.pl:12822
 #, fuzzy, perl-format
 msgid "No closing brace for specially handled command %s"
 msgstr "Tidak ada kurung penutup untuk catatan kaki `%s'"
 
-#: texi2html.pl:13110
+#: texi2html.pl:13109
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s sudah ditinggalkan"
 
-#: texi2html.pl:13114
+#: texi2html.pl:13113
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s sudah ditinggalkan"
 
-#: texi2html.pl:13130
+#: texi2html.pl:13129
 #, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Indeks `%s' tidak diketahui dalam @printindex"
 
-#: texi2html.pl:13135
+#: texi2html.pl:13134
 #, perl-format
 msgid "Printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: texi2html.pl:13202
+#: texi2html.pl:13201
 #, perl-format
 msgid "ignored @%s already in an @%s entry"
 msgstr ""
 
-#: texi2html.pl:13227 texi2html.pl:13270
+#: texi2html.pl:13226 texi2html.pl:13269
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu terlihat sebelum @node pertama, membuat titik `Top'"
 
-#: texi2html.pl:13228
+#: texi2html.pl:13227
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "mungkin titik @top anda seharusnya wrapped dalam @ifnottex daripada @ifinfo?"
 
-#: texi2html.pl:13239
+#: texi2html.pl:13238
 #, fuzzy, perl-format
 msgid "@%s not allowed within %s"
 msgstr "@item tidak diijinkan dalam argume ke @itemize"
 
-#: texi2html.pl:13288
+#: texi2html.pl:13287
 #, fuzzy, perl-format
 msgid "Float label `%s' previously defined %s"
 msgstr "Titik `%s' telah didefinisikan sebelumnya di baris %d"
 
-#: texi2html.pl:13462
+#: texi2html.pl:13461
 #, perl-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Argumen `%s' ke `@%s' buruk, menggunakan `%s'"
 
-#: texi2html.pl:13606 texi2html.pl:13607 texi2html.pl:13610
+#: texi2html.pl:13605 texi2html.pl:13606 texi2html.pl:13609
 msgid "new menu entry"
 msgstr ""
 
-#: texi2html.pl:13732
+#: texi2html.pl:13731
 msgid "paragraph end"
 msgstr ""
 
-#: texi2html.pl:14030
+#: texi2html.pl:14029
 msgid "@listoffloats type"
 msgstr ""
 
-#: texi2html.pl:14053
+#: texi2html.pl:14052
 #, perl-format
 msgid "Requested float type `%s' not previously used"
 msgstr "Tipe float `%s' yang diminta belum digunakan sebelumnya"
 
-#: texi2html.pl:14222
+#: texi2html.pl:14221
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: texi2html.pl:14226
+#: texi2html.pl:14225
 #, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr ""
 "Gunakan kurung untuk memberi sebuah perintah sebagai sebuah argumen ke @%s"
 
-#: texi2html.pl:14244
+#: texi2html.pl:14243
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s diduga kurung"
 
-#: texi2html.pl:14387 texi2html.pl:14400
+#: texi2html.pl:14386 texi2html.pl:14399
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s tidak berarti didalam blok `@%s'"
 
-#: texi2html.pl:14436
+#: texi2html.pl:14435
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: texi2html.pl:14454
+#: texi2html.pl:14453
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "mengabaikan @tab diluar dari multitabel"
 
-#: texi2html.pl:14469
+#: texi2html.pl:14468
 msgid "ignoring @tab outside of multitable"
 msgstr "mengabaikan @tab diluar dari multitabel"
 
-#: texi2html.pl:14476
+#: texi2html.pl:14475
 #, fuzzy
 msgid "ignoring @tab in empty multitable"
 msgstr "mengabaikan @tab diluar dari multitabel"
 
-#: texi2html.pl:14480
+#: texi2html.pl:14479
 #, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Terlalu banyak kolom dalam multitable item (maksimal %d)"
 
-#: texi2html.pl:14511
+#: texi2html.pl:14510
 msgid "@center should not appear in another format"
 msgstr ""
 
-#: texi2html.pl:14551 texi2html.pl:14571
+#: texi2html.pl:14550 texi2html.pl:14570
 #, perl-format
 msgid "Misplaced %c"
 msgstr "Salah tempat %c"
 
-#: texi2html.pl:14893
+#: texi2html.pl:14892
 msgid "@tab before @item"
 msgstr ""
 
-#: texi2html.pl:15125
+#: texi2html.pl:15124
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s menduga sebuah karakter tunggal `i' atau `j' sebagai argumen"
 
-#: texi2html.pl:15129
+#: texi2html.pl:15128
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s diduga `i' atau `j' sebagai sebuah argumen, bukan `%c'"
 
-#: texi2html.pl:15178
+#: texi2html.pl:15177
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "Perintah `%s' tidak diketahui"
 
-#: texi2html.pl:15214
+#: texi2html.pl:15213
 #, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s diduga kurung"
 
-#: texi2html.pl:15218
+#: texi2html.pl:15217
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "Perintah `%s' tidak diketahui"
 
-#: texi2html.pl:15296
+#: texi2html.pl:15295
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "Mencapai eof sebelum cocok @end %s"
 
-#: texi2html.pl:15304
+#: texi2html.pl:15303
 #, perl-format
 msgid "%cend macro not found"
 msgstr "%cend makro tidak ditemukan"
 
-#: texi2html.pl:15309
+#: texi2html.pl:15308
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s hilang kurung penutup"
 
-#: texi2html.pl:15473
+#: texi2html.pl:15472
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr "Tidak cocok `%cend %s'"
 
-#: texi2html.pl:15501 texi2html.pl:15528
+#: texi2html.pl:15500 texi2html.pl:15527
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s hilang kurung penutup"
 
-#: texi2html.pl:15609
+#: texi2html.pl:15608
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: texi2html.pl:16086
+#: texi2html.pl:16085
 #, perl-format
 msgid "Index entry not caught: `%s' in %s"
 msgstr ""
 
-#: texi2html.pl:16184
+#: texi2html.pl:16183
 #, fuzzy, perl-format
 msgid "Empty index entry for @%s"
 msgstr "tidak ada masukan indeks ditemukan untuk `%s'\n"
 
-#: texi2html.pl:16320
+#: texi2html.pl:16319
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html.pl:16321
+#: texi2html.pl:16320
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-file berakhir dalam komentar"
 
-#: texi2html.pl:16322
+#: texi2html.pl:16321
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html.pl:16352
+#: texi2html.pl:16351
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: texi2html.pl:16407
+#: texi2html.pl:16406
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: hilang argumen berkas.\n"
