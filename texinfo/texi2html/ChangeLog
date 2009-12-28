@@ -1,7 +1,7 @@
 2009-12-28   Patrice Dumas  <pertusus@free.fr>
 
 	* po_document/hu.po, po_document/it.po: hungarian 
-	translation (DÈnes Harmath) and italian translation 
+	translation (D√©nes Harmath) and italian translation 
 	(Federico Bruni).
 	* po_document/ja.utf-8.po: remove the utf-8 part of the 
 	filename since it prevents conversion to other encodings.
@@ -2636,7 +2636,7 @@
 
 	* texi2html.pl, texi2html.init: call the $index_summary_file_* 
 	function references for all the indices, even those not printed. 
-	* examples/chm.init: enhancements based on the Peter Verh·s
+	* examples/chm.init: enhancements based on the Peter Verh√°s
 	implementation (t2h.pl) and languages codes based on the docbook 
 	xslt.
 
@@ -2654,7 +2654,7 @@
 	* examples/noheaders.init: perform better when split.
 	* examples/chm.init: new init file to generate chm files (after 
 	compilation by a windows application, leads to windows help files).
-	After JosÈ Fonseca (jrfonseca at users dot berlios dot de) work on 
+	After Jos√© Fonseca (jrfonseca at users dot berlios dot de) work on 
 	an older texi2html.
 	* l2h.init: Set NO_SUBDIRS to 1, don't set html version.
 
@@ -3818,7 +3818,7 @@
 	attributes, avoid using deprecated elements and attributes,
 	always quote attribute values, avoid use of minimized
 	attributes.  Internal cleanups.
-	(Patch from Ville Skytt‰ <ville.skytta@xemacs.org> through
+	(Patch from Ville Skytt√§ <ville.skytta@xemacs.org> through
 	Adrian Aichner <adrian@xemacs.org>.)
 
 2002-06-08  Derek Price  <oberon@umich.edu>
