@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.256 2009-12-27 22:33:35 pertusus Exp $
+# $Id: texi2html.init,v 1.257 2009-12-28 18:03:17 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -88,7 +88,7 @@ $HEADERS = 0;
 
 # -o filename
 # If this is set a monolithic document is outputted into $filename.
-$OUT = '';
+$OUT = undef;
 
 # --split-size
 # if undef, the info output is not split

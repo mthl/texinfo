@@ -5,6 +5,8 @@
 	(Federico Bruni).
 	* po_document/ja.utf-8.po: remove the utf-8 part of the 
 	filename since it prevents conversion to other encodings.
+	* texi2html.init, texi2html.pl: set $OUT to undef in the
+	default case, such that it is determined by $SPLIT.
 
 2009-12-27   Patrice Dumas  <pertusus@free.fr>
 

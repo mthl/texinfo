@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.364 2009-12-27 22:33:35 pertusus Exp $
+# $Id: texi2html.pl,v 1.365 2009-12-28 18:03:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4322,9 +4322,9 @@ if ($Texi2HTML::Config::SPLIT and defined($Texi2HTML::Config::SUBDIR)
 }
 
 die "output to STDOUT and split or frames incompatible\n" 
-    if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and ($Texi2HTML::Config::OUT eq '-'));
+    if (($Texi2HTML::Config::SPLIT or $Texi2HTML::Config::FRAMES) and defined($Texi2HTML::Config::OUT) and $Texi2HTML::Config::OUT eq '-');
 
-if ($Texi2HTML::Config::SPLIT and ($Texi2HTML::Config::OUT eq '.'))
+if ($Texi2HTML::Config::SPLIT and defined($Texi2HTML::Config::OUT) and ($Texi2HTML::Config::OUT eq '.'))
 {# This is to avoid trouble with latex2html
     $Texi2HTML::Config::OUT = '';
 }
