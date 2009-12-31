@@ -17,5 +17,3 @@ automake --add-missing
 
 # Create `configure' from `configure.in'.
 autoconf
-
-chmod a+x configure mdate-sh

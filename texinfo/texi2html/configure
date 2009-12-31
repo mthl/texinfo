@@ -5095,7 +5095,7 @@ $as_echo "#define HAVE_DCGETTEXT 1" >>confdefs.h
 
 
 
-PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
+PACKAGE_DATE=`${CONFIG_SHELL} "$srcdir"/mdate-sh "$srcdir"/configure.ac`
 
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether ln -s works" >&5

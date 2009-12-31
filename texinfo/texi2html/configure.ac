@@ -15,7 +15,7 @@ dnl not fully used.
 AM_GNU_GETTEXT_VERSION([0.14])
 
 dnl Misc variable settings
-PACKAGE_DATE=`"$srcdir"/mdate-sh "$srcdir"/configure.ac`
+PACKAGE_DATE=`${CONFIG_SHELL} "$srcdir"/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
 
 dnl Checks for programs.
