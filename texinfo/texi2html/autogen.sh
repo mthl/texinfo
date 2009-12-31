@@ -9,7 +9,7 @@ cp po/* po_document
 rm -rf po
 
 # Create `aclocal.m4'.
-aclocal
+aclocal -I m4
 
 # Create `Makefile.in' from `Makefile.am', and symlink `install-sh',
 # `missing' and `mkinstalldirs' from /usr/share/automake.
