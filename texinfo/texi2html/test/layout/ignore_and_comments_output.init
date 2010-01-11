@@ -25,7 +25,7 @@ sub comments_output_misc_command_line($$$$$)
    return ($macro, $line, $result);
 }
 
-# 
+# output @ignore blocks in comments.
 
 $texi_formats_map{'ignore'} = 'raw';
 #$format_in_paragraph{'ignore'} = 1;
