@@ -68,6 +68,7 @@ tex_mediawiki tex.texi --init mediawiki.init --iftex
 tex_httex_mediawiki tex.texi --html --init tex4ht.init --init mediawiki.init --iftex
 tex_l2h_mediawiki tex.texi --html --l2h --iftex --init l2h_tmp_dir.init --init mediawiki.init
 block_EOL block_EOL.texi
+block_EOL_tex block_EOL.texi --l2h --iftex --init l2h_tmp_dir.init
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --init simple_menu.init
 commands_in_ifset commands_in_ifset.texi

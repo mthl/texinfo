@@ -1,0 +1,64 @@
+Test for end of lines and block commands
+****************************************
+
+html
+====
+
+
+Block commands on a line
+end commands on a line.
+
+Block commands on a line. A dot in the end of the block
+end commands on a line, after the block with a dot.
+
+Before the opening command end commands on a line.
+
+Before the opening command  after the closing command.
+
+Before the opening command . A symbol on a line.
+
+Before the opening command . A symbol after the closing command.
+
+tex
+===
+
+Surrounded by empty lines.
+
+Block commands on a line
+in block
+end commands on a line.
+
+Before the opening command in block
+end commands on a line.
+
+Before the opening command in block
+ after the closing command.
+
+Before the opening command in block
+. A symbol on a line.
+
+Before the opening command in block
+. A symbol after the closing command.
+
+
+verbatim
+========
+
+Surrounded by empty lines.
+
+Block commands on a line
+in block
+end commands on a line.
+
+Before the opening command in block
+end commands on a line.
+
+Before the opening command in block
+ after the closing command.
+
+Before the opening command in block
+. A symbol on a line.
+
+Before the opening command in block
+. A symbol after the closing command.
+

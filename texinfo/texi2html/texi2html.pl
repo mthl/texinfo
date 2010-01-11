@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.365 2009-12-28 18:03:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.366 2010-01-11 00:08:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4186,9 +4186,9 @@ if ($Texi2HTML::Config::L2H and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $
 {
    push @Texi2HTML::Config::command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
-    # do it here once to have somethng ready for special regions
+   # do it here once to have something ready for special regions
    push @Texi2HTML::Config::command_handler_process, \&Texi2HTML::LaTeX2HTML::init_from_html;
-    # do it here once more in case the file was modified (see mediawiki.init)
+   # do it here once more in case the file was modified (see mediawiki.init)
    push @Texi2HTML::Config::command_handler_output, \&Texi2HTML::LaTeX2HTML::init_from_html;
    push @Texi2HTML::Config::command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
    $Texi2HTML::Config::command_handler{'math'} = 
@@ -9780,7 +9780,9 @@ sub no_line($)
     my $next_tag = next_tag($line);
     return 1 if (($line =~ /^\s*$/) or $Texi2HTML::Config::no_paragraph_commands{$next_tag} or 
        ($Texi2HTML::Config::no_paragraph_commands{'cindex'} and (index_command_prefix($next_tag) ne '')) or 
-       (($line =~ /^\@end\s+(\w+)/) and  $Texi2HTML::Config::no_paragraph_commands{"end $1"}));
+       (($line =~ /^\@end\s+(\w+)/) and  $Texi2HTML::Config::no_paragraph_commands{"end $1"}) or
+        ($next_tag =~ /^special_(\w+)_(\d+)$/ and $Texi2HTML::Config::no_paragraph_commands{$1})
+     );
     return 0;
 }
 
@@ -9905,7 +9907,7 @@ sub do_text_macro($$$$$)
     return ($line, $text);
 }
 
-# do regions handled specially, currently only tex, going through latex2html
+# do regions handled specially, for example tex or math going through latex2html
 sub init_special($$)
 {
     my $style = shift;
@@ -15142,14 +15144,17 @@ sub do_style_command($$$$$$$$)
     {
         my $style = $1;
         my $count = $2;
-        print STDERR "Bug? text in \@$macro not empty.\n" if ($text ne '');  
+
+        msg_debug ("Bug? text in \@$macro not empty", $line_nr) if ($text ne '');  
         if (defined($Texi2HTML::Config::command_handler{$style}) and
           defined($Texi2HTML::Config::command_handler{$style}->{'expand'}))
         {
             my $struct_count = 1+ $special_commands{$style}->{'max'} - $special_commands{$style}->{'count'};
+            # may happen for text expanded more than once, for example
+            # in invalid/tex_in_copying
             if (($count != $struct_count) and $T2H_DEBUG)
             {
-                print STDERR "count $count in \@special $style and structure $struct_count differ\n";
+                msg_debug ("count $count in \@special $style and structure $struct_count differ", $line_nr);
             }
             $special_commands{$style}->{'count'}--;  
         }

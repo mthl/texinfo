@@ -1,0 +1,64 @@
+use strict;
+
+# output comment lines in comments
+
+$misc_command_line = \&comments_output_misc_command_line;
+
+sub comments_output_misc_command_line($$$$$)
+{
+   my $macro = shift;
+   my $line = shift;
+   my $args = shift;
+   my $stack = shift;
+   my $state = shift;
+
+   my $result;
+
+    if ($macro eq 'c' or $macro eq 'comment' and scalar(@$args))
+    {
+        my $comment_line = $args->[0];
+        chomp ($comment_line);
+        # makeinfo remove all the leading spaces
+        $comment_line =~ s/^\s//;
+        $result = &$comment ($comment_line);
+    }
+   return ($macro, $line, $result);
+}
+
+# 
+
+$texi_formats_map{'ignore'} = 'raw';
+#$format_in_paragraph{'ignore'} = 1;
+$no_paragraph_commands{'end ignore'} = 1;
+$no_paragraph_commands{'ignore'} = 1;
+
+$command_handler{'ignore'} = { 'init' => \&collect_ignore_blocks,
+  'expand' => \&ignore_blocks_to_comments,
+};
+
+my %ignore_blocks;
+
+push @command_handler_init, \&ignore_block_to_comments_init;
+
+sub ignore_block_to_comments_init
+{
+  %ignore_blocks = ();
+}
+
+sub collect_ignore_blocks($$$)
+{
+  my $command = shift;
+  my $text = shift;
+  my $counter = shift;
+
+  $ignore_blocks{$command}->{$counter} = $text;
+}
+
+sub ignore_blocks_to_comments($$)
+{
+  my $command = shift;
+  my $counter = shift;
+  my $result = &$comment ($ignore_blocks{$command}->{$counter});
+  chomp ($result);
+  return $result;
+}

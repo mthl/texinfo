@@ -320,6 +320,15 @@ my %info_default_index_entries = ();
 my $info_default_footnote_index = 0;
 my $info_default_current_node = undef;
 
+my %info_default_command_handler_expand;
+
+sub info_default_intercept_handler
+{
+    my $command = $_[0];
+    my $result = &{$info_default_command_handler_expand{$command}}(@_);
+    return info_default_store_text (undef, $result, $command);
+}
+
 sub info_default_init_variables()
 {
    %info_default_state_map = ();
@@ -335,6 +344,15 @@ sub info_default_init_variables()
    $info_default_current_node = undef;
    $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'info');
    $FRAMES = 0 if ($OUTPUT_FORMAT eq 'info');
+
+   foreach my $command (keys (%command_handler))
+   {
+      if ($command_handler{$command}->{'expand'})
+      {
+         $info_default_command_handler_expand{$command} = $command_handler{$command}->{'expand'};
+         $command_handler{$command}->{'expand'} = \&info_default_intercept_handler;
+      }
+   }
 }
 
 # this is put in command_handler_init such that it sets things right
@@ -1929,7 +1947,8 @@ sub info_default_begin_style_texi($$$$$)
    my $remove_texi = shift;
 
    info_default_open_command($state,$command)
-     unless ($info_default_accent_commands{$command} or exists $things_map{$command});
+     unless ($info_default_accent_commands{$command} or exists $things_map{$command} 
+      or $command =~ /^special_(\w+)_(\d+)$/);
 #      if ($real_style_command);
 }
 

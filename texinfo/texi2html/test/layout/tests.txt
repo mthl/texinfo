@@ -1,6 +1,7 @@
 texi no_monolithic.texi
 texi navigation.texi
 texi formatting_regions.texi
+texi ../coverage/comments.texi --init ignore_and_comments_output.init
 no_monolithic no_monolithic.texi --no-monolithic
 no_monolithic_only_toc_out no_monolithic.texi --no-monolithic --init only_toc_out.init
 navigation navigation.texi
@@ -28,3 +29,4 @@ formatting_regions formatting_regions.texi
 formatting_exotic ../coverage/formatting.texi --split section --no-header --no-number-sections --toc-links --def-table --short-ref --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --init no_use_titlepage_for_title.init
 formatting_makeinfo ../coverage/formatting.texi --init makeinfo.init --no-warn
 formatting_chm ../coverage/formatting.texi --init chm.init
+comments_ignore_and_comments_output ../coverage/comments.texi --init ignore_and_comments_output.init

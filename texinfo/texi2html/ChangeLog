@@ -1,3 +1,20 @@
+2009-01-10   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: don't open a paragraph when a specially handled
+	command that doesn't open a paragraph is encountered.
+	This leads to constructs badly rendered, with a paragraph opened
+	right after the @end tex, like
+	
+	With:
+
+	@tex
+	a = b/c
+	@end tex
+	.@*
+
+	However, without the first newline, the result is right.
+	* formats/info.init: handle commands specially handled in info.
+
 2009-12-28   Patrice Dumas  <pertusus@free.fr>
 
 	* po_document/hu.po, po_document/it.po: hungarian 

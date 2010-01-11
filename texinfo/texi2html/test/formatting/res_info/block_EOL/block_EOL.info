@@ -39,7 +39,9 @@ Block commands on a line end commands on a line.
 verbatim
 ========
 
-Block commands on a line
+Surrounded by empty lines.
+
+   Block commands on a line
 in block
    end commands on a line.
 

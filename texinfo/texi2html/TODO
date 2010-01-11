@@ -3,6 +3,44 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
+Currently length is used everywhere, so the number of characters is counted.
+This is however not right in some cases. In many cases, indeed, what matters
+is the text width, or the bytes number.
+
+For the text width one can use
+Unicode::LineBreak
+It also compute end of lines and stuffs!
+
+There are some places where the number of characters or bytes are counted. 
+At some places it is important to determine how the output looks like, 
+and at some other points it is even more important since it determines 
+the document structure. For the second case, I need to know how info 
+counts since both ways of counting must match.
+
+Here is a list of places where the width of characters may matter, that 
+impacts only on the output formatting:
+
+    * Underlying of titles, as described in http://savannah.gnu.org/bugs/?28359
+
+    * formatting of listoffloats and menus (41 byte-width characters). 
+      My guess here is that info reader doesn't care about the precise 
+      length, what it detects is the format.
+
+    * formatting of @printindex index entries.
+
+    * indentation length is more than the current position on 
+      the line (for indented formats, like @itemize, @enumerate).
+
+    * lines splitting in paragraph
+
+    * formatting of @center and @flush*
+
+    * formatting of @multitable
+
+Here is the place where info readers and formatters must agree:
+
+    * offset of anchors and nodes
+
 
 Later
 -----
@@ -270,10 +308,6 @@ function clean_antispam() {
 * roff is not uptodate. At least the @quote* and @guillem* and many 
   others.
 
-* manuals/mini_ker result is not valid, but it looks like a validate bug?
-  In any case, it may make sense to have @tex not starting paragraph,
-  like @html, at least when expanding it.
-
 * texi2dvi doesn't accept @table in @format
 
 * when there are nested complex_formats, a small format that doesn't have
@@ -474,6 +508,10 @@ macro isn't defined.
 
 * @chapter following a @appendix still uses a number for numbering, and
   is not affected by the @appendix number. Karl is ok with that.
+
+* manuals/mini_ker result is not valid, because tex4ht and latex2html
+  open paragraphs in tex rendering while the whole is already in a 
+  paragraph.
 
 * utf8.init doesn't work with info.init (see encodings/nodetest_to_utf8_latin1)
 

@@ -402,13 +402,13 @@ form of the algebraic system is closed to the classical Crank-Nicolson scheme:
 
 
 
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex2x.png" alt="(            )(    )   (  )
    A     B      &#x03B4;&#x03B7;      &#x0393;
  - C+  I - D    &#x03B4;&#x03C6;   =  &#x03A9; " class="math-display" ></center> 
-</p>
+
 <p>The blocks appearing in the Jacobian matrix are constructed with partial derivative
 of       f and       g, and with       &#x03B4;t. From this system the
 elimination of       &#x03B4;&#x03B7; leads to another formulation giving
@@ -534,7 +534,7 @@ src="mini_ker_tex4ht_tex3x.png" alt="&#x2202;&#x03B7;(t) = g(&#x03B7;(t),&#x03C6
 model of Lotka-Volterra is used.
 This model can be written in the following <acronym title="Transfer Evolution Formalism">TEF</acronym> form:
 </p>
-<p>
+
 
     <center class="math-display" >
 <img 
@@ -546,7 +546,7 @@ src="mini_ker_tex4ht_tex4x.png" alt="{
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex5x.png" alt="&#x03C6;meet = &#x03B7;prey&#x03B7;pred  " class="math-display" ></center>  
-</p>
+
 <p>with two cell equations, <i>i.e</i>. state evolution of the prey and predator 
 groups, and one transfer accounting for the meeting of individuals of 
 different group.
@@ -2234,14 +2234,14 @@ or by the explicit form <code>exp(f(y)*log(g(x,y)))</code>.
 <p>Its derivative will have the following form:
 </p>
 
-<p>
+
 
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex13x.png" alt="&#x2202;xf g = gfg-1&#x2202;xf + f glogf &#x2202;xg
         g-1
      = f   (g&#x2202;xf + f&#x2202;xg)  " class="math-display" ></center>  
-</p>
+
 <p>and is in the macros list already defined in: &lsquo;<tt>DERIVE_MAC</tt>&rsquo;.
 </p>
 <hr>
@@ -2404,11 +2404,11 @@ They are used in the Kalman filter (see section <a href="#Kalman-filter">Kalman 
 <p>The (model) observation vector is noted       &#x03C9;
 and the observation function is noted       h:
 </p>
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex14x.png" alt="&#x03C9; = h(&#x03B7;,&#x03C6; )  " class="math-display" ></center>  
-</p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Observations">3.8.1 Observations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -3203,13 +3203,13 @@ compiled as a subroutine to be driven by an external program
 
 <p>The functionnal       J to be optimised is defined as
 </p>
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex15x.png" alt="                       &#x222B; T
 J = &#x03C8; [&#x03B7;(T),&#x03C6;(T),h(T)]+    l[&#x03B7;(&#x03C4;),&#x03C6; (&#x03C4; ),h(&#x03C4;)]d&#x03C4;
                         0  " class="math-display" ></center>  
-</p>
+
 <a name="index-final-cost"></a>
 <a name="index-integrand-cost"></a>
 
@@ -3450,14 +3450,14 @@ The situation implemented in Miniker corresponds to a continuous
 stochastic perturbation on the state, and discrete noisy observations.
 In the <acronym title="Transfer Evolution Formalism">TEF</acronym> this leads to:
 </p>
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex16x.png" alt="&#x2202;t&#x03B7;(t) = g(&#x03B7;(t),&#x03C6;(t))+ W (t)&#x03BC;
  &#x03C6; (t) = f (&#x03B7;(t),&#x03C6; (t))
 
  &#x03C9; (t) = h (&#x03B7;(t),&#x03C6; (t))+ &#x03BD;  " class="math-display" ></center>  
-</p>
+
 
 <p>The observations       &#x03C9; are available at discrete time steps       t = si. The
 stochastic perturbation on state,       &#x03BC; is characterized by a 
@@ -3471,7 +3471,7 @@ on state and observation of state. The model has 3 states and 3 corresponding
 transfers (equal to the states), but the error on the state is of dimension 
 2. The 3 states are observed. The corresponding equations read:
 </p>
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex17x.png" alt="(
@@ -3494,7 +3494,7 @@ src="mini_ker_tex4ht_tex19x.png" alt="(
   &#x03C9; = &#x03B7;  + &#x03BD;
 |(  2   2   2
   &#x03C9;3 = &#x03B7;3 + &#x03BD;3  " class="math-display" ></center>  
-</p>
+
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Coding-the-Kalman-filter">4.3.1 Coding the Kalman filter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -4158,13 +4158,13 @@ rapid modes of instability of the perturbed system.
 </p>
 <p>The Singular value decomposition of a matrix is noted
 </p>
-<p>
+
     <center class="math-display" >
 <img 
 src="mini_ker_tex4ht_tex20x.png" alt="    &#8224;
 UwV " class="math-display" ></center>
  
-</p>
+
 <p>An executable file, &lsquo;<tt>sltc.exe</tt>&rsquo; is generated and running this file will
 produce the corresponding results.
 </p>

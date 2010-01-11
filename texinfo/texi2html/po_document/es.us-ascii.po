@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-28 17:53+0100\n"
+"POT-Creation-Date: 2010-01-10 22:37+0100\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -27,199 +27,199 @@ msgstr "@'{@dotless{I}}ndice General"
 msgid "Short Table of Contents"
 msgstr "Resumen del Contenido"
 
-#: texi2html.pl:5967 texi2html.pl:5971 texi2html.pl:5975 texi2html.init:6491
+#: texi2html.pl:5967 texi2html.pl:5971 texi2html.pl:5975 texi2html.init:6490
 #: formats/html.init:2476
 msgid "Footnotes"
 msgstr "Notas el pie"
 
-#: texi2html.pl:12512
+#: texi2html.pl:12514
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
 
-#: texi2html.init:924 texi2html.init:976 formats/html.init:688
+#: texi2html.init:923 texi2html.init:975 formats/html.init:688
 msgid "Top"
 msgstr "Arriba"
 
-#: texi2html.init:925 texi2html.init:977 formats/html.init:689
+#: texi2html.init:924 texi2html.init:976 formats/html.init:689
 msgid "Contents"
 msgstr "@'Indice general"
 
-#: texi2html.init:926 texi2html.init:978 formats/html.init:690
+#: texi2html.init:925 texi2html.init:977 formats/html.init:690
 msgid "Overview"
 msgstr "Panor@'amica"
 
-#: texi2html.init:927 texi2html.init:954 texi2html.init:979
+#: texi2html.init:926 texi2html.init:953 texi2html.init:978
 #: formats/html.init:691
 msgid "Index"
 msgstr "@'Indice"
 
-#: texi2html.init:929
+#: texi2html.init:928
 msgid "Current"
 msgstr ""
 
-#: texi2html.init:932 texi2html.init:937
+#: texi2html.init:931 texi2html.init:936
 msgid "Previous"
 msgstr ""
 
-#: texi2html.init:933 texi2html.init:935 texi2html.init:985
+#: texi2html.init:932 texi2html.init:934 texi2html.init:984
 msgid "Up"
 msgstr "Subir"
 
-#: texi2html.init:934 texi2html.init:936 texi2html.init:986
+#: texi2html.init:933 texi2html.init:935 texi2html.init:985
 #: formats/html.init:698
 msgid "Next"
 msgstr "Siguiente"
 
-#: texi2html.init:938 texi2html.init:990
+#: texi2html.init:937 texi2html.init:989
 msgid "Following"
 msgstr "Siguiente"
 
-#: texi2html.init:944 formats/html.init:708
+#: texi2html.init:943 formats/html.init:708
 msgid "Next file"
 msgstr "Archivo siguiente"
 
-#: texi2html.init:945 formats/html.init:709
+#: texi2html.init:944 formats/html.init:709
 msgid "Previous file"
 msgstr "Archivo anterior"
 
-#: texi2html.init:951
+#: texi2html.init:950
 msgid "Cover (top) of document"
 msgstr "Portada del documento"
 
-#: texi2html.init:952
+#: texi2html.init:951
 msgid "Table of contents"
 msgstr "@'{@dotless{I}}ndice general"
 
-#: texi2html.init:953
+#: texi2html.init:952
 msgid "Short table of contents"
 msgstr "Resumen del contenido"
 
-#: texi2html.init:955
+#: texi2html.init:954
 msgid "Current section"
 msgstr "Secci@'on actual"
 
-#: texi2html.init:956
+#: texi2html.init:955
 msgid "Previous section in reading order"
 msgstr "Secci@'on anterior en orden de lectura"
 
-#: texi2html.init:957
+#: texi2html.init:956
 msgid "Beginning of this chapter or previous chapter"
 msgstr "Inicio de este cap@'itulo o cap@'itulo anterior"
 
-#: texi2html.init:958
+#: texi2html.init:957
 msgid "Previous section on same level"
 msgstr "Secci@'on anterior en el mismo nivel"
 
-#: texi2html.init:959
+#: texi2html.init:958
 msgid "Up section"
 msgstr "Subir secci@'on"
 
-#: texi2html.init:960
+#: texi2html.init:959
 msgid "Next section on same level"
 msgstr "Secci@'on siguiente en el mismo nivel"
 
-#: texi2html.init:961
+#: texi2html.init:960
 msgid "Up node"
 msgstr "Subir nodo"
 
-#: texi2html.init:962 formats/html.init:700
+#: texi2html.init:961 formats/html.init:700
 msgid "Next node"
 msgstr "Nodo siguiente"
 
-#: texi2html.init:963 formats/html.init:701
+#: texi2html.init:962 formats/html.init:701
 msgid "Previous node"
 msgstr "Nodo anterior"
 
-#: texi2html.init:964
+#: texi2html.init:963
 msgid "Node following in node reading order"
 msgstr "Nodo siguiente en orden de lectura de nodos"
 
-#: texi2html.init:965
+#: texi2html.init:964
 msgid "Next section in reading order"
 msgstr "Secci@'on siguiente en orden de lectura"
 
-#: texi2html.init:966
+#: texi2html.init:965
 msgid "Next chapter"
 msgstr "Cap@'itulo siguiente"
 
-#: texi2html.init:967
+#: texi2html.init:966
 msgid "About (help)"
 msgstr "Acerca de (p@'agina de ayuda)"
 
-#: texi2html.init:968
+#: texi2html.init:967
 msgid "First section in reading order"
 msgstr "Primera secci@'on en orden de lectura"
 
-#: texi2html.init:969
+#: texi2html.init:968
 msgid "Last section in reading order"
 msgstr "@'Ultima secci@'on en orden de lectura"
 
-#: texi2html.init:970
+#: texi2html.init:969
 msgid "Forward section in next file"
 msgstr "Avanzar secci@'on en el pr@'oximo archivo"
 
-#: texi2html.init:971
+#: texi2html.init:970
 msgid "Back section in previous file"
 msgstr "Retroceder secci@'on en el archivo anterior"
 
-#: texi2html.init:981
+#: texi2html.init:980
 msgid "This"
 msgstr "Este"
 
-#: texi2html.init:982
+#: texi2html.init:981
 msgid "Back"
 msgstr "Atr@'as"
 
-#: texi2html.init:983
+#: texi2html.init:982
 msgid "FastBack"
 msgstr "Retroceso r@'apido"
 
-#: texi2html.init:984 formats/html.init:696
+#: texi2html.init:983 formats/html.init:696
 msgid "Prev"
 msgstr "Ant"
 
-#: texi2html.init:987
+#: texi2html.init:986
 msgid "NodeUp"
 msgstr "SubirNodo"
 
-#: texi2html.init:988
+#: texi2html.init:987
 msgid "NodeNext"
 msgstr "NodoSiguiente"
 
-#: texi2html.init:989
+#: texi2html.init:988
 msgid "NodePrev"
 msgstr "NodoAnterior"
 
-#: texi2html.init:991
+#: texi2html.init:990
 msgid "Forward"
 msgstr "Adelante"
 
-#: texi2html.init:992
+#: texi2html.init:991
 msgid "FastForward"
 msgstr "Avance r@'apido"
 
-#: texi2html.init:993
+#: texi2html.init:992
 msgid "About"
 msgstr "Acerca de"
 
-#: texi2html.init:994
+#: texi2html.init:993
 msgid "First"
 msgstr "Primero"
 
-#: texi2html.init:995
+#: texi2html.init:994
 msgid "Last"
 msgstr "@'Ultimo"
 
-#: texi2html.init:996
+#: texi2html.init:995
 msgid "NextFile"
 msgstr "ArchivoSiguiente"
 
-#: texi2html.init:997
+#: texi2html.init:996
 msgid "PrevFile"
 msgstr "ArchivoAnt"
 
-#: texi2html.init:1612
+#: texi2html.init:1611
 #, perl-brace-format
 msgid ""
 "This document was generated on @i{{date}} using @uref{{program_homepage}, @i"
@@ -228,7 +228,7 @@ msgstr ""
 "Este documento se gener el @i{{date}} utilizando @uref{{program_homepage}, @i"
 "{{program}}}."
 
-#: texi2html.init:1615
+#: texi2html.init:1614
 #, perl-brace-format
 msgid ""
 "This document was generated using @uref{{program_homepage}, @emph"
@@ -237,148 +237,148 @@ msgstr ""
 "Este documento se gener utilizando @uref{{program_homepage}, @emph"
 "{{program}}}."
 
-#: texi2html.init:5173 texi2html.init:5296 formats/html.init:1575
+#: texi2html.init:5172 texi2html.init:5295 formats/html.init:1575
 #: formats/html.init:1673
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr ""
 
-#: texi2html.init:5195 formats/html.init:1589
+#: texi2html.init:5194 formats/html.init:1589
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr ""
 
-#: texi2html.init:5223 formats/html.init:1606
+#: texi2html.init:5222 formats/html.init:1606
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr ""
 
-#: texi2html.init:5528 texi2html.init:5549
+#: texi2html.init:5527 texi2html.init:5548
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} en {class}"
 
-#: texi2html.init:5532 texi2html.init:5553
+#: texi2html.init:5531 texi2html.init:5552
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} de {class}"
 
-#: texi2html.init:5856
+#: texi2html.init:5855
 #, perl-brace-format
 msgid "see {node_file_href} section `{section}' in @cite{{book}}"
 msgstr "v@'ease {node_file_href} secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5857
+#: texi2html.init:5856
 #, perl-brace-format
 msgid "see {node_file_href} @cite{{book}}"
 msgstr "v@'ease {node_file_href} @cite{{book}}"
 
-#: texi2html.init:5861
+#: texi2html.init:5860
 #, perl-brace-format
 msgid "see section `{section}' in @cite{{book}}"
 msgstr "v@'ease la secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5862
+#: texi2html.init:5861
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr "v@'ease @cite{{book}}"
 
-#: texi2html.init:5866
+#: texi2html.init:5865
 #, perl-brace-format
 msgid "see {node_file_href}"
 msgstr "v@'ease {node_file_href}"
 
-#: texi2html.init:5873
+#: texi2html.init:5872
 #, perl-brace-format
 msgid "See {node_file_href} section `{section}' in @cite{{book}}"
 msgstr "V@'ease {node_file_href} secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5874
+#: texi2html.init:5873
 #, perl-brace-format
 msgid "See {node_file_href} @cite{{book}}"
 msgstr "V@'ease {node_file_href} @cite{{book}}"
 
-#: texi2html.init:5878
+#: texi2html.init:5877
 #, perl-brace-format
 msgid "See section `{section}' in @cite{{book}}"
 msgstr "V@'ease la secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5879
+#: texi2html.init:5878
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr "V@'ease @cite{{book}}"
 
-#: texi2html.init:5883
+#: texi2html.init:5882
 #, perl-brace-format
 msgid "See {node_file_href}"
 msgstr "V@'ease {node_file_href}"
 
-#: texi2html.init:5890
+#: texi2html.init:5889
 #, perl-brace-format
 msgid "{node_file_href} section `{section}' in @cite{{book}}"
 msgstr "{node_file_href} secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5891
+#: texi2html.init:5890
 #, perl-brace-format
 msgid "{node_file_href} @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5895
+#: texi2html.init:5894
 #, perl-brace-format
 msgid "section `{section}' in @cite{{book}}"
 msgstr "secci@'on `{section}' en @cite{{book}}"
 
-#: texi2html.init:5896
+#: texi2html.init:5895
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5900
+#: texi2html.init:5899
 #, perl-brace-format
 msgid "{node_file_href}"
 msgstr ""
 
-#: texi2html.init:5935
+#: texi2html.init:5934
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr "v@'ease la secci@'on {reference_name}"
 
-#: texi2html.init:5936 texi2html.init:5953
+#: texi2html.init:5935 texi2html.init:5952
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr "v@'ease {reference_name}"
 
-#: texi2html.init:5940
+#: texi2html.init:5939
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr "V@'ease la secci@'on  {reference_name}"
 
-#: texi2html.init:5941 texi2html.init:5957
+#: texi2html.init:5940 texi2html.init:5956
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr "V@'ease {reference_name}"
 
-#: texi2html.init:5945 texi2html.init:5961
+#: texi2html.init:5944 texi2html.init:5960
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr ""
 
-#: texi2html.init:6579
+#: texi2html.init:6578
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr "el @emph{{date}}"
 
-#: texi2html.init:6756 formats/html.init:2680 maintained_extra/html32.init:172
+#: texi2html.init:6755 formats/html.init:2680 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
 
-#: texi2html.init:6776 formats/docbook.init:1402
+#: texi2html.init:6775 formats/docbook.init:1402
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html.init:6901
+#: texi2html.init:6900
 msgid "(outside of any element)"
 msgstr ""
 
@@ -575,7 +575,7 @@ msgstr "Subsecci@'on uno-cuatro"
 msgid "The node you are looking for is at {href}."
 msgstr "El nodo que busca se encuentra en {href}."
 
-#: formats/html.init:2704 formats/info.init:2699
+#: formats/html.init:2704 formats/info.init:2718
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -592,7 +592,7 @@ msgstr "Secci@'on"
 msgid "Jump to"
 msgstr "Saltar a"
 
-#: formats/info.init:3016
+#: formats/info.init:3035
 msgid "(outside of any node)"
 msgstr ""
 

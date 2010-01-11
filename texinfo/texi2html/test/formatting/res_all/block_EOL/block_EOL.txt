@@ -4,6 +4,7 @@ Test for end of lines and block commands
 html
 ====
 
+
 Block commands on a line
 end commands on a line.
 
@@ -21,6 +22,7 @@ Before the opening command . A symbol after the closing command.
 tex
 ===
 
+
 Block commands on a line
 end commands on a line.
 
@@ -35,6 +37,8 @@ Before the opening command . A symbol after the closing command.
 
 verbatim
 ========
+
+Surrounded by empty lines.
 
 Block commands on a line
 in block

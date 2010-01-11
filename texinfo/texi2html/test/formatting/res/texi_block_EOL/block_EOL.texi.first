@@ -7,6 +7,10 @@
 
 @heading html
 
+@html
+Surrounded by empty lines.
+@end html
+
 Block commands on a line
 @html
 in block
@@ -41,6 +45,10 @@ in block
 
 @heading tex
 
+@tex
+Surrounded by empty lines.
+@end tex
+
 Block commands on a line
 @tex
 in block
@@ -67,6 +75,10 @@ in block
 
 
 @heading verbatim
+
+@verbatim
+Surrounded by empty lines.
+@end verbatim
 
 Block commands on a line
 @verbatim
