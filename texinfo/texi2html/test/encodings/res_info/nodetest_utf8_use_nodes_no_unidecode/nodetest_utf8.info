@@ -130,10 +130,10 @@ File: nodetest_utf8.info,  Node: Ü,  Up: Umlaut
 ======
 
 
-File: nodetest_utf8.info,  Node: ss,  Up: Umlaut
+File: nodetest_utf8.info,  Node: ß,  Up: Umlaut
 
-1.12 ss
-=======
+1.12 ß
+======
 
 
 File: nodetest_utf8.info,  Node: no section,  Up: Umlaut
@@ -510,64 +510,64 @@ File: nodetest_utf8.info,  Node: rest,  Prev: Top,  Up: Top
 * ,::     , comma
 
 
-File: nodetest_utf8.info,  Node: aa,  Up: rest
+File: nodetest_utf8.info,  Node: å,  Up: rest
 
-7.1 aa
-======
-
-
-File: nodetest_utf8.info,  Node: ae,  Up: rest
-
-7.2 ae
-======
+7.1 å
+=====
 
 
-File: nodetest_utf8.info,  Node: oe,  Up: rest
+File: nodetest_utf8.info,  Node: æ,  Up: rest
 
-7.3 oe
-======
-
-
-File: nodetest_utf8.info,  Node: AA,  Up: rest
-
-7.4 AA
-======
+7.2 æ
+=====
 
 
-File: nodetest_utf8.info,  Node: AE,  Up: rest
+File: nodetest_utf8.info,  Node: œ,  Up: rest
 
-7.5 AE
-======
-
-
-File: nodetest_utf8.info,  Node: OE,  Up: rest
-
-7.6 OE
-======
+7.3 œ
+=====
 
 
-File: nodetest_utf8.info,  Node: /l,  Up: rest
+File: nodetest_utf8.info,  Node: Å,  Up: rest
 
-7.7 /l
-======
-
-
-File: nodetest_utf8.info,  Node: /o,  Up: rest
-
-7.8 /o
-======
+7.4 Å
+=====
 
 
-File: nodetest_utf8.info,  Node: /L,  Up: rest
+File: nodetest_utf8.info,  Node: Æ,  Up: rest
 
-7.9 /L
-======
+7.5 Æ
+=====
 
 
-File: nodetest_utf8.info,  Node: /O,  Up: rest
+File: nodetest_utf8.info,  Node: Œ,  Up: rest
 
-7.10 /O
-=======
+7.6 Œ
+=====
+
+
+File: nodetest_utf8.info,  Node: ł,  Up: rest
+
+7.7 ł
+=====
+
+
+File: nodetest_utf8.info,  Node: ø,  Up: rest
+
+7.8 ø
+=====
+
+
+File: nodetest_utf8.info,  Node: Ł,  Up: rest
+
+7.9 Ł
+=====
+
+
+File: nodetest_utf8.info,  Node: Ø,  Up: rest
+
+7.10 Ø
+======
 
 
 File: nodetest_utf8.info,  Node: a̋,  Up: rest
@@ -679,78 +679,78 @@ Node: Ë1691
 Node: Ï1757
 Node: Ö1823
 Node: Ü1891
-Node: ss1959
-Node: no section2028
-Node: acute accent2132
-Node: á2412
-Node: é2517
-Node: í2589
-Node: ó2661
-Node: ú2733
-Node: ý2805
-Node: Á2877
-Node: É2949
-Node: Í3021
-Node: Ó3093
-Node: Ú3167
-Node: Ý3241
-Node: grave accent3396
-Node: à3699
-Node: è3771
-Node: ì3843
-Node: with brace ì3915
-Node: with dotless ì3998
-Node: ò4083
-Node: ù4155
-Node: À4227
-Node: È4299
-Node: Ì4371
-Node: Ò4445
-Node: Ù4519
-Node: circumflex accent4593
-Node: â4860
-Node: ê4937
-Node: î5014
-Node: ô5091
-Node: û5168
-Node: Â5245
-Node: Ê5322
-Node: Î5399
-Node: Ô5476
-Node: Û5553
-Node: tilde accent5632
-Node: ã5814
-Node: ñ5886
-Node: õ5958
-Node: Ã6030
-Node: Õ6102
-Ref: x-spot6189
-Ref: é-o6228
-Node: cedilla accent6231
-Node: ç6377
-Node: Ç6451
-Node: rest6525
-Node: aa6948
-Node: ae7013
-Node: oe7078
-Node: AA7143
-Node: AE7208
-Node: OE7273
-Node: /l7338
-Node: /o7403
-Node: /L7468
-Node: /O7533
-Node: a̋7600
-Node: ă7669
-Node: ǎ7735
-Node: ạ7801
-Node: ȧ7887
-Node: å7970
-Node: a[8036
-Node: a̲8103
-Node: ı8172
-Node: j8238
-Node: ,8447
+Node: ß1959
+Node: no section2027
+Node: acute accent2131
+Node: á2411
+Node: é2516
+Node: í2588
+Node: ó2660
+Node: ú2732
+Node: ý2804
+Node: Á2876
+Node: É2948
+Node: Í3020
+Node: Ó3092
+Node: Ú3166
+Node: Ý3240
+Node: grave accent3395
+Node: à3698
+Node: è3770
+Node: ì3842
+Node: with brace ì3914
+Node: with dotless ì3997
+Node: ò4082
+Node: ù4154
+Node: À4226
+Node: È4298
+Node: Ì4370
+Node: Ò4444
+Node: Ù4518
+Node: circumflex accent4592
+Node: â4859
+Node: ê4936
+Node: î5013
+Node: ô5090
+Node: û5167
+Node: Â5244
+Node: Ê5321
+Node: Î5398
+Node: Ô5475
+Node: Û5552
+Node: tilde accent5631
+Node: ã5813
+Node: ñ5885
+Node: õ5957
+Node: Ã6029
+Node: Õ6101
+Ref: x-spot6188
+Ref: é-o6227
+Node: cedilla accent6230
+Node: ç6376
+Node: Ç6450
+Node: rest6524
+Node: å6947
+Node: æ7011
+Node: œ7075
+Node: Å7139
+Node: Æ7203
+Node: Œ7267
+Node: ł7331
+Node: ø7395
+Node: Ł7459
+Node: Ø7523
+Node: a̋7589
+Node: ă7658
+Node: ǎ7724
+Node: ạ7790
+Node: ȧ7876
+Node: å7959
+Node: a[8025
+Node: a̲8092
+Node: ı8161
+Node: j8227
+Node: ,8436
 
 End Tag Table
 

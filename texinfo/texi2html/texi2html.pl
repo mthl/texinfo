@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.367 2010-01-19 10:11:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.368 2010-01-19 23:31:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -644,6 +644,7 @@ $punctuation_characters
 $after_punctuation_characters
 @command_handler_setup
 @command_handler_init
+@command_handler_names
 @command_handler_process
 @command_handler_output
 @command_handler_finish
@@ -4103,7 +4104,7 @@ if ($Texi2HTML::Config::USE_UNICODE)
         unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
     }
     # unicode east asian character width tables.
-#    require Unicode::EastAsianWidth;
+    #require Unicode::EastAsianWidth;
 }
 
 # no user provided USE_UNIDECODE, use configure provided
@@ -16685,6 +16686,12 @@ while(@input_files)
 
    $global_pass = 2;
    my ($doc_lines, $doc_numbers) = pass_structure($texi_lines, $lines_numbers);
+
+   foreach my $handler(@Texi2HTML::Config::command_handler_names)
+   {
+       &$handler;
+   }
+
    if ($T2H_DEBUG & $DEBUG_TEXI)
    {
       dump_texi($doc_lines, 'first', $doc_numbers);

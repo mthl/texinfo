@@ -2348,7 +2348,7 @@ sub info_default_normal_text($$$$$$$;$)
    # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
    # not when parsing commands in first or second pass, and removeing texi
    # like what is done for @setfilename.
-   if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8') and $USE_UNICODE)
+   if ($ENABLE_ENCODING and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8') and $USE_UNICODE)
    {
       $text = &t2h_utf8_normal_text(@initial_args);
    }

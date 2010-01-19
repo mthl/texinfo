@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.257 2009-12-28 18:03:17 pertusus Exp $
+# $Id: texi2html.init,v 1.258 2010-01-19 23:31:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1122,8 +1122,6 @@ sub t2h_default_set_out_encoding()
     print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n" if ($VERBOSE);
 }
 
-# We have to do this dynamically because of internationalization and because
-# in body $DOCUMENTLANGUAGE could be used.
 sub t2h_default_init_out()
 {
     &$translate_names;
@@ -1144,7 +1142,6 @@ sub t2h_default_init_out()
         $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'} = $EXTERNAL_CROSSREF_SPLIT;
     }
 
-    t2h_default_set_out_encoding();
     
 }
 
@@ -1186,7 +1183,7 @@ my %t2h_enable_encoding_default_commands;
 
 sub t2h_enable_encoding_load()
 {
-   t2h_default_push_handler(\&t2h_enable_encoding_init, \@command_handler_process);
+   t2h_default_push_handler(\&t2h_enable_encoding_init, \@command_handler_names);
    t2h_default_push_handler(\&t2h_enable_encoding_finish, \@command_handler_finish);
    #push @command_handler_process, \&t2h_enable_encoding_init;
    #push @command_handler_finish, \&t2h_enable_encoding_finish;
@@ -1253,6 +1250,31 @@ sub t2h_enable_encoding_init()
     }
     @t2h_enable_encoding_accents_stack = ();
   }
+}
+
+sub t2h_default_string_width($)
+{
+   my $string = shift;
+   if ($USE_UNICODE)
+   {
+       my $width = 0;
+       foreach my $character(split '', $string)
+       {
+          if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/)
+          {
+             $width += 2;
+          }
+          else 
+          {
+             $width += 1;
+          }
+       }
+       return $width;
+   }
+   else
+   {
+       return length($string);
+   }
 }
 
 sub t2h_default_finish_out()
@@ -1532,6 +1554,7 @@ sub t2h_default_heading_text($$$)
     # as seen in encodings/nodetest_utf8_no_unicode, the length can be in
     # bytes (certainly) when there hasn't been a require Encode
     $result .=($t2h_default_underline_symbol{$level} x length($text))."\n";
+    #$result .=($t2h_default_underline_symbol{$level} x t2h_default_string_width($text))."\n";
     return $result;
 }
 
@@ -3788,7 +3811,7 @@ sub t2h_enable_encoding_pre_accent($$$)
 
 sub t2h_enable_encoding_accent($$$$)
 {
-  my $in = shift;
+  my $context = shift;
   my @other_args = @_;
 
   my $accent = shift;
@@ -3796,14 +3819,20 @@ sub t2h_enable_encoding_accent($$$$)
   my $style_stack = shift;
   my $text = $args->[0];
 
-#print STDERR "enable_encoding_accent called($in) $accent (@$style_stack)\n";
+#print STDERR "enable_encoding_accent called($context) $accent (@$style_stack)\n";
 
-  # this should happen rarely, like during @setfilename parsing.
-  return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!defined($Texi2HTML::THISDOC{'ENCODING_NAME'}));
+  # in case ENCODING_NAME is not known, the accent functions saved previously
+  # are used. 
+  # This should happen rarely, like during @setfilename parsing.
+  return &{$t2h_enable_encoding_default_accent{$context}->{$accent}}(@other_args) if (!defined($Texi2HTML::THISDOC{'ENCODING_NAME'}));
 
   return t2h_utf8_accent($accent,[$text],$style_stack) if ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8');
-  return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args) if (!exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}));
-  if (scalar(@t2h_enable_encoding_accents_stack)) 
+
+  # use the saved default handling if this is not a known 8 bit encoding
+  return &{$t2h_enable_encoding_default_accent{$context}->{$accent}}(@other_args) if (!exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}));
+
+  # the following is for the handling of known 8 bit encodings.
+  if (scalar(@t2h_enable_encoding_accents_stack))
   {
     # in that case, we already have a result ready that corresponds with the
     # formatting of a part of the stack mapped to 
@@ -3917,7 +3946,7 @@ sub t2h_enable_encoding_accent($$$$)
      return $result->{'result'};
   }
   
-  return &{$t2h_enable_encoding_default_accent{$in}->{$accent}}(@other_args);
+  return &{$t2h_enable_encoding_default_accent{$context}->{$accent}}(@other_args);
 }
 
 # end special accent/encoding commands
@@ -4841,9 +4870,13 @@ my %misc_command_old = (
 # expansion.
 # Those in @command_handler_process are called after the third pass,
 # after the document generation.
+@command_handler_setup = ();
 @command_handler_init = ();
+@command_handler_names = ();
 @command_handler_process = ();
+@command_handler_output = ();
 @command_handler_finish = ();
+
 
 sub t2h_default_push_handler($$)
 {

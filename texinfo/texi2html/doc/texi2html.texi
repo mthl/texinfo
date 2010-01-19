@@ -4310,12 +4310,23 @@ The function references in that array are called before anything is done,
 including collecting the output file names. The input file names directory
 are available.
 @item @@command_handler_init
-The function references in that array are called before the collecting pass.
+The function references in that array are as soon as the file names are 
+known. It may be at different moments, before processing anything, right after
+@@sefilename, or at the end of the first pass (after @@macro and @@include
+expansions).
 At that time the information available is essentially the file names.
-@item @@command_handler_process 
-The function references in that array are called between the collecting
-pass and the expansion pass. At that time all the special @@-commands  
-have been collected as explained above but no output has been produced.
+@item @@command_handler_names
+The function references in that array are called right after the collecting
+pass. At that time all the special @@-commands  
+have been collected as explained above but no output has been produced,
+the element (node and section) names hasn't been processed and expanded.
+@item @@command_handler_process
+The function references in that array are called after the element names 
+have been processed, but before the main output initialization.
+@item @@command_handler_output
+The function references in that array are called rigth before the 
+main output processing, so that more informations are available,
+like the title.
 @item @@command_handler_finish
 he function references in that array are called after the end of the
 output generation.

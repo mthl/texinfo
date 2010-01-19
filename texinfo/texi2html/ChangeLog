@@ -4,6 +4,13 @@
 	Texi2HTML::GLOBAL, this allows using get_conf sooner.
 	Runtime configuration variable, USE_NLS for nls support.
 	Prepare for character width handling with Unicode::EastAsianWidth.
+	New command handler, @command_handler_names, after second pass, but
+	before element names expansions.
+	* texi2html.init: use @command_handler_names to set things_map 
+	to the encoded character if ENABLE_ENCODING is set, such that
+	the encoded characters are use in node and section names.
+	Don't call t2h_default_set_out_encoding in init_out, since it was
+	already called earlier in the main program.
 	* formats/info.init: count bytes and not characters for nodes,
 	anchor and file offsets.
 	Very partial fix of http://savannah.gnu.org/bugs/?28359.

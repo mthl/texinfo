@@ -130,10 +130,10 @@ File: nodetest_latin1.info,  Node: Ü,  Up: Umlaut
 ======
 
 
-File: nodetest_latin1.info,  Node: ss,  Up: Umlaut
+File: nodetest_latin1.info,  Node: ß,  Up: Umlaut
 
-1.12 ss
-=======
+1.12 ß
+======
 
 
 File: nodetest_latin1.info,  Node: no section,  Up: Umlaut
@@ -510,16 +510,16 @@ File: nodetest_latin1.info,  Node: rest,  Prev: Top,  Up: Top
 * ,::     , comma
 
 
-File: nodetest_latin1.info,  Node: aa,  Up: rest
+File: nodetest_latin1.info,  Node: å,  Up: rest
 
-7.1 aa
-======
+7.1 å
+=====
 
 
-File: nodetest_latin1.info,  Node: ae,  Up: rest
+File: nodetest_latin1.info,  Node: æ,  Up: rest
 
-7.2 ae
-======
+7.2 æ
+=====
 
 
 File: nodetest_latin1.info,  Node: oe,  Up: rest
@@ -528,16 +528,16 @@ File: nodetest_latin1.info,  Node: oe,  Up: rest
 ======
 
 
-File: nodetest_latin1.info,  Node: AA,  Up: rest
+File: nodetest_latin1.info,  Node: Å,  Up: rest
 
-7.4 AA
-======
+7.4 Å
+=====
 
 
-File: nodetest_latin1.info,  Node: AE,  Up: rest
+File: nodetest_latin1.info,  Node: Æ,  Up: rest
 
-7.5 AE
-======
+7.5 Æ
+=====
 
 
 File: nodetest_latin1.info,  Node: OE,  Up: rest
@@ -552,10 +552,10 @@ File: nodetest_latin1.info,  Node: /l,  Up: rest
 ======
 
 
-File: nodetest_latin1.info,  Node: /o,  Up: rest
+File: nodetest_latin1.info,  Node: ø,  Up: rest
 
-7.8 /o
-======
+7.8 ø
+=====
 
 
 File: nodetest_latin1.info,  Node: /L,  Up: rest
@@ -564,10 +564,10 @@ File: nodetest_latin1.info,  Node: /L,  Up: rest
 ======
 
 
-File: nodetest_latin1.info,  Node: /O,  Up: rest
+File: nodetest_latin1.info,  Node: Ø,  Up: rest
 
-7.10 /O
-=======
+7.10 Ø
+======
 
 
 File: nodetest_latin1.info,  Node: a'',  Up: rest
@@ -679,78 +679,78 @@ Node: Ë1668
 Node: Ï1734
 Node: Ö1800
 Node: Ü1868
-Node: ss1936
-Node: no section2007
-Node: acute accent2113
-Node: á2371
-Node: é2475
-Node: í2547
-Node: ó2619
-Node: ú2691
-Node: ý2763
-Node: Á2835
-Node: É2907
-Node: Í2979
-Node: Ó3051
-Node: Ú3125
-Node: Ý3199
-Node: grave accent3350
-Node: à3631
-Node: è3703
-Node: ì3775
-Node: with brace ì3847
-Node: with dotless ì3930
-Node: ò4015
-Node: ù4087
-Node: À4159
-Node: È4231
-Node: Ì4303
-Node: Ò4377
-Node: Ù4451
-Node: circumflex accent4525
-Node: â4774
-Node: ê4851
-Node: î4928
-Node: ô5005
-Node: û5082
-Node: Â5159
-Node: Ê5236
-Node: Î5313
-Node: Ô5390
-Node: Û5467
-Node: tilde accent5546
-Node: ã5720
-Node: ñ5792
-Node: õ5864
-Node: Ã5936
-Node: Õ6008
-Ref: x-spot6095
-Ref: é-o6134
-Node: cedilla accent6137
-Node: ç6281
-Node: Ç6355
-Node: rest6429
-Node: aa6834
-Node: ae6901
-Node: oe6968
-Node: AA7035
-Node: AE7102
-Node: OE7169
-Node: /l7236
-Node: /o7303
-Node: /L7370
-Node: /O7437
-Node: a''7506
-Node: a(7578
-Node: a<7647
-Node: .a7716
-Node: a.7803
-Node: å7889
-Node: a[7955
-Node: a_8024
-Node: i8093
-Node: j8159
-Node: ,8367
+Node: ß1936
+Node: no section2004
+Node: acute accent2110
+Node: á2368
+Node: é2472
+Node: í2544
+Node: ó2616
+Node: ú2688
+Node: ý2760
+Node: Á2832
+Node: É2904
+Node: Í2976
+Node: Ó3048
+Node: Ú3122
+Node: Ý3196
+Node: grave accent3347
+Node: à3628
+Node: è3700
+Node: ì3772
+Node: with brace ì3844
+Node: with dotless ì3927
+Node: ò4012
+Node: ù4084
+Node: À4156
+Node: È4228
+Node: Ì4300
+Node: Ò4374
+Node: Ù4448
+Node: circumflex accent4522
+Node: â4771
+Node: ê4848
+Node: î4925
+Node: ô5002
+Node: û5079
+Node: Â5156
+Node: Ê5233
+Node: Î5310
+Node: Ô5387
+Node: Û5464
+Node: tilde accent5543
+Node: ã5717
+Node: ñ5789
+Node: õ5861
+Node: Ã5933
+Node: Õ6005
+Ref: x-spot6092
+Ref: é-o6131
+Node: cedilla accent6134
+Node: ç6278
+Node: Ç6352
+Node: rest6426
+Node: å6831
+Node: æ6895
+Node: oe6959
+Node: Å7026
+Node: Æ7090
+Node: OE7154
+Node: /l7221
+Node: ø7288
+Node: /L7352
+Node: Ø7419
+Node: a''7485
+Node: a(7557
+Node: a<7626
+Node: .a7695
+Node: a.7782
+Node: å7868
+Node: a[7934
+Node: a_8003
+Node: i8072
+Node: j8138
+Node: ,8346
 
 End Tag Table
 
