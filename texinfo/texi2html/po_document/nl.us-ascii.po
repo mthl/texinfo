@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-10 22:37+0100\n"
+"POT-Creation-Date: 2010-01-19 10:22+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5964 texi2html.pl:5968 texi2html.pl:5972
+#: texi2html.pl:5990 texi2html.pl:5994 texi2html.pl:5998
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html.pl:5965 texi2html.pl:5969 texi2html.pl:5973
+#: texi2html.pl:5991 texi2html.pl:5995 texi2html.pl:5999
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: texi2html.pl:5966 texi2html.pl:5970 texi2html.pl:5974
+#: texi2html.pl:5992 texi2html.pl:5996 texi2html.pl:6000
 msgid "Short Table of Contents"
 msgstr "Korte inhoudsopgave"
 
-#: texi2html.pl:5967 texi2html.pl:5971 texi2html.pl:5975 texi2html.init:6490
+#: texi2html.pl:5993 texi2html.pl:5997 texi2html.pl:6001 texi2html.init:6490
 #: formats/html.init:2476
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html.pl:12514
+#: texi2html.pl:12540
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -568,7 +568,7 @@ msgstr ""
 msgid "The node you are looking for is at {href}."
 msgstr ""
 
-#: formats/html.init:2704 formats/info.init:2718
+#: formats/html.init:2704 formats/info.init:2740
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -585,7 +585,7 @@ msgstr ""
 msgid "Jump to"
 msgstr ""
 
-#: formats/info.init:3035
+#: formats/info.init:3057
 msgid "(outside of any node)"
 msgstr ""
 

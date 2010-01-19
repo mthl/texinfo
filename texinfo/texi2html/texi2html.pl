@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.366 2010-01-11 00:08:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.367 2010-01-19 10:11:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -414,6 +414,7 @@ $USE_TITLEPAGE_FOR_TITLE
 $INLINE_CSS_STYLE
 $NO_CSS
 $I18N_PERL_HASH
+$USE_NLS
 );
 
 # customization variables which may be guessed in the script
@@ -771,12 +772,14 @@ my %config_map = (
    'kbdinputstyle' => \$KBDINPUTSTYLE,
    'frenchspacing' => \$FRENCHSPACING,
    'setfilename' => \$SETFILENAME,
+   'use_nls' => \$USE_NLS,
 );
 
 sub get_conf($)
 {
     my $name = shift;
     return $Texi2HTML::THISDOC{$name} if (defined($Texi2HTML::THISDOC{$name}));
+    return $Texi2HTML::GLOBAL{$name} if (defined($Texi2HTML::GLOBAL{$name}));
     return ${$config_map{$name}} if (defined($config_map{$name}));
     # there is no default value for many @-commmands, like headings....
     #print STDERR "Unknown conf string: $name\n";
@@ -1897,11 +1900,15 @@ my $WORDS_IN_PAGE;
 
 package main;
 
+if (!defined(Texi2HTML::Config::get_conf('use_nls')))
+{
+   my $use_nls = ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/);
+   Texi2HTML::Config::set_conf('use_nls', $use_nls);
+}
+
 # prepare the gettext-like framework. To be noted that Locales::TextDomain
 # canot be used, since it cannot be used dynamically through a reuires.
 # Fortunately, Locales::TextDomain is a thin layer above Locales::Messages.
-
-my $use_nls = ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/);
 
 my $strings_textdomain = '@PACKAGE@' . '_document';
 $strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
@@ -1910,7 +1917,7 @@ $messages_textdomain = 'texi2html' if ($messages_textdomain eq '@'.'PACKAGE@');
 
 #my $messages_textdomain = 'texinfo';
 
-if ($use_nls)
+if (Texi2HTML::Config::get_conf('use_nls'))
 {
     if ($0 =~ /\.pl$/)
     { # use in-source libintl when testing
@@ -2548,10 +2555,11 @@ sub gdt($;$$)
     }
 
     my $result;
-    # taken from libintl perl, copyright Guido. sub __expand
+    # taken from libintl perl, copyright Guido. sub __expand. Overall not
+    # enough code taken form Guido right now to be copyrightable.
     my $re = join '|', map { quotemeta $_ } keys %$context if (defined($context) and ref($context));
 
-    if ($use_nls)
+    if (Texi2HTML::Config::get_conf('use_nls'))
     {
        my $saved_LANGUAGE = $ENV{'LANGUAGE'};
 
@@ -2617,11 +2625,13 @@ sub gdt($;$$)
     # now perform the argument substitutions
     if ($state->{'keep_texi'})
     {
+         # next line taken from libintl perl, copyright Guido. sub __expand
          $result =~ s/\{($re)\}/defined $context->{$1} ? $context->{$1} : "{$1}"/ge if (defined($re));
          return $result;
     }
     if (defined($re))
     {
+         # next line taken from libintl perl, copyright Guido. sub __expand
          $result =~ s/\{($re)\}/\@internal_translation_open_brace\{\}$1\@internal_translation_close_brace\{\}/g;
          foreach my $map (\%Texi2HTML::Config::things_map, \%Texi2HTML::Config::pre_map,  \%Texi2HTML::Config::texi_map, \%Texi2HTML::Config::simple_format_texi_map)
          {
@@ -4078,6 +4088,22 @@ if ($Texi2HTML::Config::USE_UNICODE)
     require Encode;
     require Unicode::Normalize;
     Encode->import('encode');
+
+    # use EastAsianWidth if USE_UNICODE is set
+    if ($0 =~ /\.pl$/)
+    { # use in-source EastAsianWidth when testing
+        unshift @INC, "$T2H_HOME/lib/Unicode-EastAsianWidth/lib";
+    }
+    elsif ($ENV{T2H_SOURCE_EASTASIANWIDTH})
+    {
+        unshift @INC, $ENV{T2H_SOURCE_EASTASIANWIDTH};
+    }
+    elsif ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes')
+    {
+        unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
+    }
+    # unicode east asian character width tables.
+#    require Unicode::EastAsianWidth;
 }
 
 # no user provided USE_UNIDECODE, use configure provided

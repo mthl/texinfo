@@ -46,7 +46,9 @@ txt: texi2html.txt
 SUFFIXES = .txt
 
 check-local: $(TEXI2HTML) 
-	TEXINPUTS=$(srcdir)::$$TEXINPUTS T2H_SOURCE_LIBINTL=$(srcdir)/../lib/libintl-perl/lib \
+	TEXINPUTS=$(srcdir)::$$TEXINPUTS \
+	T2H_SOURCE_LIBINTL=$(srcdir)/../lib/libintl-perl/lib \
+	T2H_SOURCE_EASTASIANWIDTH=$(srcdir)/../lib/Unicode-EastAsianWidth/lib \
 	   $(TEXI2HTML) -V $(srcdir)/texi2html.texi
 
 # texinfo based targets automake neglects to include

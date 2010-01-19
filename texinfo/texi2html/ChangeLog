@@ -1,5 +1,15 @@
 2009-01-10   Patrice Dumas  <pertusus@free.fr>
 
+	* texi2html.pl: in get_conf take into the values in 
+	Texi2HTML::GLOBAL, this allows using get_conf sooner.
+	Runtime configuration variable, USE_NLS for nls support.
+	Prepare for character width handling with Unicode::EastAsianWidth.
+	* formats/info.init: count bytes and not characters for nodes,
+	anchor and file offsets.
+	Very partial fix of http://savannah.gnu.org/bugs/?28359.
+
+2009-01-10   Patrice Dumas  <pertusus@free.fr>
+
 	* texi2html.pl: don't open a paragraph when a specially handled
 	command that doesn't open a paragraph is encountered.
 	This leads to constructs badly rendered, with a paragraph opened

@@ -305,7 +305,6 @@ $heading_text       = \&t2h_default_heading_text;
 
 }
 
-# FIXME initialize
 my %info_default_state_map = ();
 my $info_default_out_file_nr = 1;
 my $info_default_dir_specification = '';
@@ -443,6 +442,20 @@ sub info_default_copying_comment($$$$)
     my $copying_simple_text = shift;
     return '' if ($copying_text eq '');
     return $copying_text;
+}
+
+sub info_default_byte_count($)
+{
+    my $string = shift;
+    my $out_encoding = Texi2HTML::Config::get_conf('OUT_ENCODING');
+    if ($out_encoding and lc($out_encoding) ne 'us-ascii' and $USE_UNICODE)
+    {
+       return length (Encode::encode($out_encoding, $string));
+    }
+    # There is no default encoding. We assume it is us-ascii. Not sure
+    # about what perl thinks it is...
+    #print STDERR "Unknown encoding for: $string\n" if (!$out_encoding);
+    return length($string);
 }
 
 sub info_default_count_lines($;$$)
@@ -802,9 +815,9 @@ sub info_default_output($)
    my $result = '';
    #print STDERR "Storing the stack\n";
    print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]) if ($DEBUG);
-   my ($characters_count, $lines_count);
-   ($characters_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
-   $info_state->{'offset_in_file'} += $characters_count;
+   my ($bytes_count, $lines_count);
+   ($bytes_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
+   $info_state->{'offset_in_file'} += $bytes_count;
    $info_state->{'line_count'} += $lines_count;
    #print STDERR "HHHHHH($lines_count) $info_state->{'line_count'}: $result\n";
    info_default_reset_state($info_state) 
@@ -1057,7 +1070,8 @@ sub info_default_process_content($$)
               #print STDERR "ROW cell_beginning $cell_beginning, max_lines $max_lines, previous_last_cell $previous_last_cell\n";
               for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++)
               {
-                  my $length = $indent_len;
+                  my $line_width = $indent_len;
+                  my $line_bytes = info_default_byte_count(' ' x$indent_len);
                   my $line = '';
                   # determine the last cell in the line, to fill spaces in 
                   # cells preceding that cell on the line
@@ -1080,20 +1094,22 @@ sub info_default_process_content($$)
                               $line = ' ' x $indent_len;
                           }
                           $line .= $cell_text;
-                          $length += length($cell_text);
+                          $line_width += length($cell_text);
+                          $line_bytes += info_default_byte_count($cell_text);
                       }
                       if ($cell_idx+1 < $last_cell)
                       {
-                          if ($length < $indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
+                          if ($line_width < $indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'})
                           {
                               if ($line eq '')
                               {
                                   $line = ' ' x $indent_len;
                               }
-                              my $spaces = ' ' x ($indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $length);
-                              $length += length($spaces);
+                              my $spaces = ' ' x ($indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $line_width);
+                              $line_width += length($spaces);
+                              $line_bytes += info_default_byte_count($spaces);
                               $line .= $spaces;
-                              #print STDERR "   Csp($length) `$spaces'";
+                              #print STDERR "   Csp($line_width) `$spaces'";
                           }
                       }
                   }
@@ -1102,20 +1118,21 @@ sub info_default_process_content($$)
                       foreach my $anchor (@{$anchor_lines_array[$line_idx]})
                       {
                           my $anchor_position = $indent_len + $anchor->{'line_char_counter'} + $multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'};
-                          if ($anchor_position > $length)
+                          if ($anchor_position > $line_width)
                           {
-                              my $spaces = ' ' x ($anchor_position - $length);
+                              my $spaces = ' ' x ($anchor_position - $line_width);
                               $line .= $spaces;
-                              $length += length($spaces);
+                              $line_width += length($spaces);
+                              $line_bytes += info_default_byte_count($spaces);
                           }
-                          $anchor->{'info_offset'} = $anchor_position + $row_length + $multitable->{'length'};
+                          $anchor->{'info_offset'} = $line_bytes + $row_length + $multitable->{'length'};
                           #print STDERR "ROW anchor close: anchor[$anchor->{'cell_idx'}]($multitable->{'cells'}->[$anchor->{'cell_idx'}]->{'beginning'}+$anchor->{'line_char_counter'}) $anchor_position $anchor->{'info_offset'}\n";
                           $anchor->{'line_char_counter'} = $anchor_position;
                       }
                   }
                   $line .= "\n";
                   $row_length += length($line);
-                  #print STDERR "  ($length,".length($line).") $line";
+                  #print STDERR "  ($line_width,".length($line).") $line";
                   $row .= $line;
                   $previous_last_cell = $last_cell;
               }
@@ -1146,6 +1163,8 @@ sub info_default_process_content($$)
           if ($content->{'command'})
           {
               my $pending_added_length = 0;
+              my $pending_added_bytes = 0;
+
               if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp' or $content->{'raw_command'})
               {
                   my $pending;
@@ -1158,6 +1177,7 @@ sub info_default_process_content($$)
                     # in that case line_char_counter has been increased and 
                     # $pending ends with an end of line
                       $pending_added_length += length($pending);
+                      $pending_added_bytes += info_default_byte_count($pending);
                       $text_added .= $pending;
                   }
               }
@@ -1172,7 +1192,7 @@ sub info_default_process_content($$)
               elsif ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
               {
                   #print STDERR "anchor: offset_in_file $info_state->{'offset_in_file'}, line_count $info_state->{'line_count'}, line_char_counter $line_char_counter pending_added_length $pending_added_length\n";
-                  $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_length;
+                  $content->{'anchor_reference'}->{'info_offset'} = $length + $info_state->{'offset_in_file'} + $pending_added_bytes;
                   $content->{'anchor_reference'}->{'line_nr'} = $all_line_passed + $info_state->{'line_count'};
                   $content->{'anchor_reference'}->{'line_char_counter'} = $line_char_counter + $pending_added_length;
                   if (@{$info_state->{'multitable_stack'}})
@@ -1735,7 +1755,7 @@ sub info_default_process_content($$)
           }
           $text_indented = '';
           $current_line = undef;
-          my $length_prepended = undef;
+          my $spaces_prepended = undef;
           foreach my $line (split /^/, $text_added) 
           {
              my $chomped_line = $line;
@@ -1746,24 +1766,24 @@ sub info_default_process_content($$)
                 
                 if (length($line) eq 0)
                 {
-                    $length_prepended = 0;
+                    $spaces_prepended = 0;
                     $text_indented .= "\n";
                 }
                 else
                 {
                     if (length($line) > $max_column)
                     {
-                        $length_prepended = 0;
+                        $spaces_prepended = 0;
                     }
                     elsif ($info_state->{'align_stack'}->[-1]->{'command'} eq 'center')
                     {
-                         $length_prepended = (($max_column -1 - length($line)) /2);
+                        $spaces_prepended = (($max_column -1 - length($line)) /2);
                     }
                     else
                     {
-                         $length_prepended = ($max_column -1 - length($line));
+                         $spaces_prepended = ($max_column -1 - length($line));
                     }
-                    $text_indented .= ' ' x$length_prepended . $line ."\n";
+                    $text_indented .= ' ' x$spaces_prepended . $line ."\n";
                 }
              }
              else
@@ -1771,12 +1791,12 @@ sub info_default_process_content($$)
                 $current_line = $line;
              }
           }
-          if (defined ($length_prepended) and defined($info_state->{'align_stack'}->[-1]->{'anchors'}))
+          if (defined ($spaces_prepended) and defined($info_state->{'align_stack'}->[-1]->{'anchors'}))
           {
              while (@{$info_state->{'align_stack'}->[-1]->{'anchors'}})
              {
                 my $anchor = shift @{$info_state->{'align_stack'}->[-1]->{'anchors'}};
-                $anchor->{'info_offset'} += $length_prepended;
+                $anchor->{'info_offset'} += info_default_byte_count(' ' x$spaces_prepended);
              }
           }
       }
@@ -1788,7 +1808,7 @@ sub info_default_process_content($$)
       else
       {
          $result .= $text_indented;
-         $length += length($text_indented);
+         $length += info_default_byte_count($text_indented);
          $all_line_passed += $line_passed;
       }
    }
@@ -2121,7 +2141,7 @@ sub info_default_print_page_head($)
 
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
-    $info_state->{'offset_in_file'} += length($header);
+    $info_state->{'offset_in_file'} += info_default_byte_count($header);
     $info_state->{'blank_line'} = 1 if ($Texi2HTML::THISDOC{'copying_comment'} eq '');
 }
 
@@ -2225,7 +2245,7 @@ sub info_default_node_line($$)
     $result .= "\n\n";
     # the line_count is ahead from the number of lines by one.
     $info_state->{'line_count'} = 3;
-    $info_state->{'offset_in_file'} += length($result);
+    $info_state->{'offset_in_file'} += info_default_byte_count($result);
     $info_state->{'blank_line'} = 1;
     return $result;
 }
@@ -2504,7 +2524,7 @@ sub info_default_print_section
     if (!$info_state->{'blank_line'})
     {
        my $end = "\n";
-       $info_state->{'offset_in_file'} += length($end);
+       $info_state->{'offset_in_file'} += info_default_byte_count($end);
        $info_state->{'line_count'}++;
        print $fh "$end";
     }
@@ -2528,9 +2548,9 @@ sub info_default_print_section
             $footnote_text = info_default_node_line($footnote_element, $info_state); 
         }
         else
-        {
+        { # FIXME i18n?
             $footnote_text = "   ---------- Footnotes ----------\n\n";
-            $info_state->{'offset_in_file'} += length($footnote_text);
+            $info_state->{'offset_in_file'} += info_default_byte_count($footnote_text);
             $info_state->{'line_count'} += 2;
             #print STDERR "MMMMMMMMMMMMMMMMMM $info_state->{'line_count'}\n";
         }
@@ -2544,14 +2564,17 @@ sub info_default_print_section
             push @{$info_state->{'pending_tags'}}, {'anchor' => 1, 'text' => "${node_name}-Footnote-${foot_nr}", 'info_offset' => $info_state->{'offset_in_file'} };
             my $footnote_info_state = $footnote->{'footnote_info_state'};
             my $footnote_result = shift @{$lines};
-            my $initial_length = length($footnote_result);
+            # this is used to keep track of the size when there were 
+            # leading spaces that will be removed below. This is only used
+            # to get the difference, the value itself is not of use.
+            my $initial_length = info_default_byte_count($footnote_result);
             
             $footnote_result =~ s/^\s*//;
             #$footnote_result = "   ($foot_nr) " . $footnote_result;
             $footnote_result = ' ' x get_conf('paragraphindent') . $footnote_result;
             foreach my $footnote_pending_tags(@{$footnote_info_state->{'pending_tags'}})
             {
-               $footnote_pending_tags->{'info_offset'} += $info_state->{'offset_in_file'} + length($footnote_result) - $initial_length;
+               $footnote_pending_tags->{'info_offset'} += $info_state->{'offset_in_file'} + info_default_byte_count($footnote_result) - $initial_length;
                push @{$info_state->{'pending_tags'}}, $footnote_pending_tags;
             }
             foreach my $footnote_pending_index_entry(@{$footnote_info_state->{'pending_index_entries'}})
@@ -2579,7 +2602,7 @@ sub info_default_print_section
                $line_passed += 1;
             }
             
-            $info_state->{'offset_in_file'} += length($footnote_result);
+            $info_state->{'offset_in_file'} += info_default_byte_count($footnote_result);
             $info_state->{'line_count'} += $line_passed;
             $footnote_text .= $footnote_result;
         }
@@ -2599,7 +2622,7 @@ sub info_default_end_section($$$)
    $info_state->{'offset_in_file'} > ($info_default_out_file_nr) * $Texi2HTML::THISDOC{'SPLIT_SIZE'})
     {
        if ($info_default_out_file_nr == 1)
-       {
+       { # push also the first node, which is always the first pending_tags
           push @info_default_pending_indirect, {'file'=>"$Texi2HTML::THISDOC{'filename'}->{'top'}-$info_default_out_file_nr", 'offset' => $info_state->{'pending_tags'}->[0]->{'info_offset'} };
        }
        $info_default_out_file_nr++;
@@ -2648,7 +2671,7 @@ sub info_default_end_special_region($$$)
     if (!$info_state->{'blank_line'})
     {
        $end = "\n";
-       $info_state->{'offset_in_file'} += length($end);
+       $info_state->{'offset_in_file'} += info_default_byte_count($end);
     }
     return $text.$end;
 }
@@ -3488,11 +3511,11 @@ sub info_default_listoffloats_entry($$$$)
     {
         $caption_entry .= ' ' x ($info_default_listoffloat_caption_entry_length - length($caption_entry));
     }
-    my $length = $info_default_listoffloat_caption_entry_length;
+    my $width = $info_default_listoffloat_caption_entry_length;
     while ($caption =~ s/^(\S+\s*)//)
     { 
         my $new_word = $1;
-        if ((length($new_word) + $length) > get_conf('fillcolumn') - 3)
+        if ((length($new_word) + $width) > get_conf('fillcolumn') - 3)
         {
             $caption_entry .= $info_default_listoffloat_append;
             last;
@@ -3500,7 +3523,7 @@ sub info_default_listoffloats_entry($$$$)
         else
         {
            $caption_entry .= $new_word; 
-           $length += length($new_word);
+           $width += length($new_word);
         }
     }
     return $caption_entry. "\n";
