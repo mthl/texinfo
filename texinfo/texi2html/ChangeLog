@@ -1,4 +1,12 @@
-2009-01-10   Patrice Dumas  <pertusus@free.fr>
+2009-01-20   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.init: use Unicode::EastAsianWidth to determine string 
+	width. Use it for section titles, fixing the original issue in
+	http://savannah.gnu.org/bugs/?28359.
+	* Makefile.am, configure.ac, lib: ship Unicode::EastAsianWidth to 
+	always be able to use an internal copy.
+
+2009-01-19   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: in get_conf take into the values in 
 	Texi2HTML::GLOBAL, this allows using get_conf sooner.

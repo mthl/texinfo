@@ -67,6 +67,26 @@ AC_ARG_WITH([encode],
      fi
      ])
 
+USE_EXTERNAL_EASTASIANWIDTH=no
+AC_ARG_WITH([external-Unicode-EastAsianWidth],
+   AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
+      [use external Unicode-EastAsianWidth if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_EASTASIANWIDTH=yes
+   fi]
+)
+
+if test z"$USE_UNICODE" = 'z1'; then
+   if test $USE_EXTERNAL_EASTASIANWIDTH = 'yes'; then
+      if $PERL -e "use Unicode::EastAsianWidth;" > /dev/null 2>&1;
+      then :
+      else 
+        USE_EXTERNAL_EASTASIANWIDTH=no
+      fi
+   fi
+fi
+AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
+
 AC_ARG_WITH([unidecode],
     AC_HELP_STRING([--with-unidecode],
            [use Text::Unidecode (default: detected)]),

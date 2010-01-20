@@ -11,7 +11,7 @@ Index
 
 
 Texinfo中文示例
-***********
+***************
 
 This is a short example of a complete Texinfo file.
 
@@ -24,7 +24,7 @@ Copyright (C) 2005 Free Software Foundation, Inc.
 
 
 1 第一章（First Chapter）
-********************
+*************************
 
 
 This is the first chapter. 这是第一章。

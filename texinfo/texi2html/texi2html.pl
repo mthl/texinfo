@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.368 2010-01-19 23:31:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.369 2010-01-20 00:36:01 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4104,7 +4104,7 @@ if ($Texi2HTML::Config::USE_UNICODE)
         unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
     }
     # unicode east asian character width tables.
-    #require Unicode::EastAsianWidth;
+    require Unicode::EastAsianWidth;
 }
 
 # no user provided USE_UNIDECODE, use configure provided

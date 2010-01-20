@@ -216,6 +216,9 @@ install-data-local:
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode
 	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/RecodeData/*.pm \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
+	$(INSTALL_DATA) $(srcdir)/lib/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
+	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
