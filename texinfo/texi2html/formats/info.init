@@ -619,24 +619,24 @@ sub info_default_next($$$)
 sub info_default_process_line_text($$$)
 {
    my $text = shift;
-   my $line_char_counter = shift;
+   my $line_width_counter = shift;
    my $indent_length = shift;
    $indent_length = 0 if (!defined($indent_length));
 
    my $line_passed = 0;
    my $chomped_text = $text;
    chomp($chomped_text);
-   if ($indent_length > $line_char_counter and $chomped_text ne '')
+   if ($indent_length > $line_width_counter and $chomped_text ne '')
    {
-      $text = ' ' x ($indent_length - $line_char_counter) . $text;
+      $text = ' ' x ($indent_length - $line_width_counter) . $text;
    }
-   $line_char_counter += length($text);
+   $line_width_counter += t2h_default_string_width($text);
    if (chomp($chomped_text))
    {
       $line_passed = 1;
-      $line_char_counter = 0;
+      $line_width_counter = 0;
    }
-   return ($line_char_counter, $line_passed, $text);
+   return ($line_width_counter, $line_passed, $text);
 }
 
 # Beware that there is a pending word if the text doesn't end with
@@ -679,12 +679,12 @@ sub info_default_process_para_text($$$$$$;$)
           }
           if (defined($pending_word))
           {
-             if ($indent_length > $line_char_counter + length($pending_spaces))
+             if ($indent_length > $line_char_counter + t2h_default_string_width($pending_spaces))
              {
                  $pending_spaces = ' ' x ($indent_length - $line_char_counter) . $pending_spaces;
              }
              $result .= $pending_spaces . $pending_word;
-             $line_char_counter += length($pending_spaces)+length($pending_word);
+             $line_char_counter += t2h_default_string_width($pending_spaces)+t2h_default_string_width($pending_word);
              $pending_spaces = $new_spaces;
              $pending_word = undef;
          }
@@ -702,7 +702,7 @@ sub info_default_process_para_text($$$$$$;$)
              #$pending_spaces = $new_spaces;
              $pending_spaces = '';
          }
-         if (length($pending_spaces) +  $line_char_counter > $max_column)
+         if (t2h_default_string_width($pending_spaces) +  $line_char_counter > $max_column)
          {
              $pending_spaces = '';
              $result .= "\n";
@@ -719,7 +719,7 @@ sub info_default_process_para_text($$$$$$;$)
          # The $line_char_counter != 0 is here to cope with the case of a 
          # word longer than $line_char_counter followed by more letters:
          # a line would be passed each time some text is appended.
-         if ((length($pending_spaces)+length($pending_word) + $line_char_counter > $max_column) and $line_char_counter != 0)
+         if ((t2h_default_string_width($pending_spaces)+t2h_default_string_width($pending_word) + $line_char_counter > $max_column) and $line_char_counter != 0)
          {
              $pending_spaces = '';
              $result .= "\n";
@@ -805,7 +805,7 @@ sub info_default_store_pending($$$;$)
       $result = $indent_text . $result;
    }
 
-   $line_char_counter += length($result);
+   $line_char_counter += t2h_default_string_width($result);
    return ($line_char_counter, $pending_spaces, $pending_word, $result);
 }
 
@@ -959,7 +959,7 @@ sub info_default_process_content($$)
               $pending_spaces = '';
               $in_para = 0;
               $info_state->{'indent_para'} = undef;
-              $text_added .= "\n" unless (($line_char_counter + length($text_added)) == 0);
+              $text_added .= "\n" unless (($line_char_counter + t2h_default_string_width($text_added)) == 0);
           }
           elsif ($content->{'command'} eq 'preformatted')
           {
@@ -1094,7 +1094,7 @@ sub info_default_process_content($$)
                               $line = ' ' x $indent_len;
                           }
                           $line .= $cell_text;
-                          $line_width += length($cell_text);
+                          $line_width += t2h_default_string_width($cell_text);
                           $line_bytes += info_default_byte_count($cell_text);
                       }
                       if ($cell_idx+1 < $last_cell)
@@ -1106,7 +1106,7 @@ sub info_default_process_content($$)
                                   $line = ' ' x $indent_len;
                               }
                               my $spaces = ' ' x ($indent_len + $multitable->{'cells'}->[$cell_idx+1]->{'beginning'} - $line_width);
-                              $line_width += length($spaces);
+                              $line_width += t2h_default_string_width($spaces);
                               $line_bytes += info_default_byte_count($spaces);
                               $line .= $spaces;
                               #print STDERR "   Csp($line_width) `$spaces'";
@@ -1122,7 +1122,7 @@ sub info_default_process_content($$)
                           {
                               my $spaces = ' ' x ($anchor_position - $line_width);
                               $line .= $spaces;
-                              $line_width += length($spaces);
+                              $line_width += t2h_default_string_width($spaces);
                               $line_bytes += info_default_byte_count($spaces);
                           }
                           $anchor->{'info_offset'} = $line_bytes + $row_length + $multitable->{'length'};
@@ -1131,7 +1131,7 @@ sub info_default_process_content($$)
                       }
                   }
                   $line .= "\n";
-                  $row_length += length($line);
+                  $row_length += info_default_byte_count($line);
                   #print STDERR "  ($line_width,".length($line).") $line";
                   $row .= $line;
                   $previous_last_cell = $last_cell;
@@ -1147,7 +1147,7 @@ sub info_default_process_content($$)
                   # the cell following the end of the table -> full width
                   my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
                   $row .= $line;
-                  $row_length += length($line);
+                  $row_length += info_default_byte_count($line);
               }
               #print STDERR "ROW_LENGTH $row_length\n";
               $multitable->{'result'} .= $row;
@@ -1176,7 +1176,7 @@ sub info_default_process_content($$)
                     # FIXME this is wrong if an end of line was passed.
                     # in that case line_char_counter has been increased and 
                     # $pending ends with an end of line
-                      $pending_added_length += length($pending);
+                      $pending_added_length += t2h_default_string_width($pending);
                       $pending_added_bytes += info_default_byte_count($pending);
                       $text_added .= $pending;
                   }
@@ -1228,8 +1228,8 @@ sub info_default_process_content($$)
                   }
                   #print STDERR "index in a blank_line $content->{'index_command'} `$content->{'texi_entry'}'\n" if ($info_state->{'blank_line'});
                   my $index_name = $content->{'index_entry_reference'}->{'index_name'};
-                  $info_default_index_line_string_length{$index_name} = length($index_line_nr) 
-                      if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < length($index_line_nr));
+                  $info_default_index_line_string_length{$index_name} = t2h_default_string_width($index_line_nr) 
+                      if (!defined($info_default_index_line_string_length{$index_name}) or $info_default_index_line_string_length{$index_name} < t2h_default_string_width($index_line_nr));
                   #print STDERR "RRRRRRRRRRRRR($content->{'index_entry_reference'}) $content->{'index_entry_reference'}->{'texi'}   name: $index_name line: $index_line_nr max: $info_default_index_line_string_length{$index_name}\n";
                   my $index_ref = { 'index_entry_reference' => $content->{'index_entry_reference'}, 'line_nr' => $index_line_nr };
 #print STDERR "INDEX($index_name) line $index_line_nr\n";
@@ -1262,7 +1262,7 @@ sub info_default_process_content($$)
                  info_default_skip_spaces($current, $index, $close);
                  # this isn't done otherwise, though, here it is not important
                  # since this end the line
-                 $line_char_counter += length($content->{'text'});
+                 $line_char_counter += t2h_default_string_width($content->{'text'});
                  goto new_text;
               }
               elsif ($content->{'command'} eq 'paragraph' and $info_state->{'align_stack'}->[-1]->{'command'} eq 'normal')
@@ -1677,7 +1677,7 @@ sub info_default_process_content($$)
       }
       else
       {
-          $line_char_counter += length($text_added);
+          $line_char_counter += t2h_default_string_width($text_added);
       }
     new_text:
       if ($text_added ne '')
@@ -1729,7 +1729,7 @@ sub info_default_process_content($$)
          if ($line_passed)
          {# in that case we added more than one line, the $line_char_counter
           # is reset to the last line length.
-            $line_char_counter = length($last_line);
+            $line_char_counter = t2h_default_string_width($last_line);
             $in_exdent = 0;
             $indent_length = $indent_level * $info_default_indent_length;
             if ($last_line !~ /\S/)
@@ -1764,24 +1764,25 @@ sub info_default_process_content($$)
                 $line =~ s/^\s*//;
                 $line =~ s/\s*$//;
                 
-                if (length($line) eq 0)
+                if (t2h_default_string_width($line) eq 0)
                 {
                     $spaces_prepended = 0;
                     $text_indented .= "\n";
                 }
                 else
                 {
-                    if (length($line) > $max_column)
+                    my $line_width = t2h_default_string_width($line);
+                    if ($line_width > $max_column)
                     {
                         $spaces_prepended = 0;
                     }
                     elsif ($info_state->{'align_stack'}->[-1]->{'command'} eq 'center')
                     {
-                        $spaces_prepended = (($max_column -1 - length($line)) /2);
+                        $spaces_prepended = (($max_column -1 - $line_width) /2);
                     }
                     else
                     {
-                         $spaces_prepended = ($max_column -1 - length($line));
+                         $spaces_prepended = ($max_column -1 - $line_width);
                     }
                     $text_indented .= ' ' x$spaces_prepended . $line ."\n";
                 }
@@ -3039,9 +3040,9 @@ sub info_default_index_entry($$$$$$$$$$)
     }
 
     my $result = "* $entry${entry_nr}: ";
-    if (length($result) < $info_default_index_length_to_node)
+    if (t2h_default_string_width($result) < $info_default_index_length_to_node)
     {
-       $result .= ' ' x($info_default_index_length_to_node - length($result));
+       $result .= ' ' x($info_default_index_length_to_node - t2h_default_string_width($result));
     }
 
     #print STDERR "DDDDDDDDDDD $index_entry_ref `$index_entry_ref->{'texi'}'\n";
@@ -3069,17 +3070,17 @@ sub info_default_index_entry($$$$$$$$$$)
     }
     $result .= $real_element_text . '.';
     my $max_len = $info_default_index_line_string_length{$index_entry_ref->{'index_name'}};
-    $max_len = length($line_nr) if (!defined($max_len));
+    $max_len = t2h_default_string_width($line_nr) if (!defined($max_len));
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
     #print STDERR "GGGGGGGGGG name: $index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
-    if (length($result)+length($line_part) +1 >  get_conf('fillcolumn'))
+    if (t2h_default_string_width($result)+t2h_default_string_width($line_part) +1 >  get_conf('fillcolumn'))
     {
-        $result .= "\n" . ' ' x (get_conf('fillcolumn') - length($line_part)) ;
+        $result .= "\n" . ' ' x (get_conf('fillcolumn') - t2h_default_string_width($line_part)) ;
     }
     else
     {
-        $result .= ' ' x (get_conf('fillcolumn') - length($line_part) - length($result));
+        $result .= ' ' x (get_conf('fillcolumn') - t2h_default_string_width($line_part) - t2h_default_string_width($result));
     }
     $result .= "$line_part\n";
 
@@ -3503,7 +3504,7 @@ sub info_default_listoffloats_entry($$$$)
     my $result = '';
     #$caption .= ':' if ($caption ne '');
     my $caption_entry = "* $float_style: $float->{'text'}.";
-    if (length($caption_entry) > $info_default_listoffloat_caption_entry_length)
+    if (t2h_default_string_width($caption_entry) > $info_default_listoffloat_caption_entry_length)
     {
         $caption_entry .= "\n" . ' ' x $info_default_listoffloat_caption_entry_length;
     }
@@ -3515,7 +3516,7 @@ sub info_default_listoffloats_entry($$$$)
     while ($caption =~ s/^(\S+\s*)//)
     { 
         my $new_word = $1;
-        if ((length($new_word) + $width) > get_conf('fillcolumn') - 3)
+        if ((t2h_default_string_width($new_word) + $width) > get_conf('fillcolumn') - 3)
         {
             $caption_entry .= $info_default_listoffloat_append;
             last;
@@ -3523,7 +3524,7 @@ sub info_default_listoffloats_entry($$$$)
         else
         {
            $caption_entry .= $new_word; 
-           $width += length($new_word);
+           $width += t2h_default_string_width($new_word);
         }
     }
     return $caption_entry. "\n";

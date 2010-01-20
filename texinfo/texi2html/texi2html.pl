@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.369 2010-01-20 00:36:01 pertusus Exp $
+# $Id: texi2html.pl,v 1.370 2010-01-20 16:16:40 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -10861,7 +10861,7 @@ sub begin_format($$$$$$)
                 foreach my $prototype (@$prototype_row)
                 { 
                    $prototype_nr++;
-                   push @prototype_lengths, 2+length(substitute_line($prototype, sprintf(__("\@columnfraction (argument nr %d)"), $prototype_nr), prepare_state_multiple_pass('columnfractions', $state))); 
+                   push @prototype_lengths, 2+Texi2HTML::Config::t2h_default_string_width(substitute_line($prototype, sprintf(__("\@columnfraction (argument nr %d)"), $prototype_nr), prepare_state_multiple_pass('columnfractions', $state))); 
                 }
             }
             $format = { 'format' => $macro, 'text' => '', 'max_columns' => $max_columns, 'columnfractions' => $fractions, 'prototype_row' => $prototype_row, 'prototype_lengths' => \@prototype_lengths, 'cell' => 1 };

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 00:38+0100\n"
+"POT-Creation-Date: 2010-01-20 15:14+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Federico Bruni <brunology@gmx.com>\n"
 "Language-Team: Unknown\n"
@@ -575,7 +575,7 @@ msgstr "Sottosezione Uno-Quattro"
 msgid "The node you are looking for is at {href}."
 msgstr "Il nodo che stai cercando è {href}"
 
-#: formats/html.init:2704 formats/info.init:2741
+#: formats/html.init:2704 formats/info.init:2742
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -592,7 +592,7 @@ msgstr "Sezione"
 msgid "Jump to"
 msgstr "Salta a"
 
-#: formats/info.init:3058
+#: formats/info.init:3059
 msgid "(outside of any node)"
 msgstr "(fuori da qualsiasi nodo)"
 
