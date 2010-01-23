@@ -2259,11 +2259,11 @@ File: xemacs.info,  Node: Tools Menu,  Next: Help Menu,  Prev: Buffers Menu,  Up
 --------------------
 
 The Tools pull-down menu contains the Grep..., Compile..., Shell
-Command..., Shell Command on Region..., Debug(GDB)...   and
-Debug(DBX)... menu items, and the Compare, Merge, Apply Patch and Tags
-sub-menus.  When you select a menu item, Emacs executes the equivalent
-command.  For some of the menu items, there are sub-menus which you will
-need to select.
+Command..., Shell Command on Region..., Debug(GDB)...  and Debug(DBX)...
+menu items, and the Compare, Merge, Apply Patch and Tags sub-menus.
+When you select a menu item, Emacs executes the equivalent command.  For
+some of the menu items, there are sub-menus which you will need to
+select.
 
 
 File: xemacs.info,  Node: Help Menu,  Next: Menu Customization,  Prev: Tools Menu,  Up: Pull-down Menus
@@ -2527,7 +2527,7 @@ so on.
 
    The operating system usually listens for certain special characters
 whose meaning is to kill or suspend the program you are running.  This
-operating system feature is turned off while you are in Emacs.   The
+operating system feature is turned off while you are in Emacs.  The
 meanings of `C-z' and `C-x C-c' as keys in Emacs were inspired by the
 use of `C-z' and `C-c' on several operating systems as the characters
 for stopping or killing a program, but that is their only relationship

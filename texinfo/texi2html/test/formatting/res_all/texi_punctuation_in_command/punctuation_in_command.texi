@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename punctuation_in_command.info
+
+@node Top
+@top Element
+
+Text.@asis{)
+follows}.
+
+Text. Email @email{.,.}
+dmn @dmn{1.}
+and text. indicateurl @indicateurl{.}
+and kbd @kbd{.}
+and emph @emph{.}
+text. asis in code @code{@asis{.}}
+text. a dot before a emph open .@emph{
+and in emph.}
+
+@bye

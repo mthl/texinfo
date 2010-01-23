@@ -1,3 +1,14 @@
+2009-01-22   Patrice Dumas  <pertusus@free.fr>
+
+	* formats/info.init: don't munge punctuation when in code style
+	command, @dots, @var, @cite, or a simple_style command.
+	Ignore @emph, @strong and other style commands better, even if 
+	they lead to a begin or end string and even if there are 
+	info_default_after_punctuation_characters in following commands.
+	info_default_leaf_command are simple simple_style commands.
+	* texi2html.init: more simple_style command and @w isn't a 
+	simple_style command.
+
 2009-01-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/info.init: use string width when

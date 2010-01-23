@@ -1,4 +1,5 @@
 # -*-perl-*-
+# vim: set filetype=perl:
 ######################################################################
 # File: html.init
 # html output formatting
@@ -6,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.42 2009-12-28 18:03:18 pertusus Exp $
+# $Id: html.init,v 1.43 2010-01-23 00:46:49 pertusus Exp $
 
 use strict;
 
@@ -1743,11 +1744,16 @@ sub html_default_normal_text($$$$$$$;$)
   # like utf8.init
    if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and $Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8')
    {
-      return &t2h_utf8_normal_text(@initial_args);
+      my $result = &t2h_utf8_normal_text(@initial_args);
+      $result =~ s/ /&nbsp;/g 
+         if (!$in_raw_text and !$in_preformatted and in_cmd($style_stack, 'w'));
+      return $result;
    }
 
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
    $text = &$protect_text($text) unless($in_raw_text);
+#   $text =~ s/ /&nbsp;/g
+#     if (!$in_raw_text and !$in_preformatted and in_cmd($style_stack, 'w'));
    if (! $in_code and !$in_preformatted)
    {
        if ($USE_ISO and !$in_raw_text)

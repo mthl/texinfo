@@ -22,12 +22,12 @@ kbd: ```simple-double--three---four----'''
    foo vs. bar.  colon :And something else.  semi colon ;.  And ? ?.
 Now ! !@ but , ,
 
-   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ...  @enddots
-...  @equiv == @error error--> @expansion ==> @minus - @point -!- @print
--| @result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE
-OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
-!  @questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o
-@comma , @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
+   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ... @enddots ...
+@equiv == @error error--> @expansion ==> @minus - @point -!- @print -|
+@result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE OE
+@o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown !
+@questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o @comma
+, @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
 @quotedblbase ,, @quotesinglbase , @guillemetleft << @guillemetright >>
 @guillemotleft << @guillemotright >> @guilsinglleft < @guilsinglright >
 @textdegree o @euro Euro @arrow -> @leq <= @geq >=
@@ -47,7 +47,9 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 `--a' `@uref{,--b}' -b () `@uref{--a,--b,--c}' -c `@uref{,--b,--c}' -c
 `@uref{--a,,--c}' -c `@uref{,,--c}' -c `@url{--a,--b}' -b (--a)
 `@url{--a,}' `--a' `@url{,--b}' -b () `@var{--a}' -A `@verb{:--a:}' --a
-`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{}'  `@H{a}' a''
+`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a}' a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a `@H{a}' a''
 `@H{--a}' -a'' `@dotaccent{a}' a. `@dotaccent{--a}' -a. `@ringaccent{a}'
 a* `@ringaccent{--a}' -a* `@tieaccent{a}' a[ `@tieaccent{--a}' -a[
 `@u{a}' a( `@u{--a}' -a( `@ubaraccent{a}' a_ `@ubaraccent{--a}' -a_
@@ -456,12 +458,12 @@ kbd: ```simple-double--three---four----'''
    foo vs. bar.  colon :And something else.  semi colon ;.  And ? ?.
 Now ! !@ but , ,
 
-   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ...  @enddots
-...  @equiv == @error error--> @expansion ==> @minus - @point -!- @print
--| @result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE
-OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
-!  @questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o
-@comma , @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
+   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ... @enddots ...
+@equiv == @error error--> @expansion ==> @minus - @point -!- @print -|
+@result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE OE
+@o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown !
+@questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o @comma
+, @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
 @quotedblbase ,, @quotesinglbase , @guillemetleft << @guillemetright >>
 @guillemotleft << @guillemotright >> @guilsinglleft < @guilsinglright >
 @textdegree o @euro Euro @arrow -> @leq <= @geq >=
@@ -481,7 +483,9 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 `--a' `@uref{,--b}' -b () `@uref{--a,--b,--c}' -c `@uref{,--b,--c}' -c
 `@uref{--a,,--c}' -c `@uref{,,--c}' -c `@url{--a,--b}' -b (--a)
 `@url{--a,}' `--a' `@url{,--b}' -b () `@var{--a}' -A `@verb{:--a:}' --a
-`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{}'  `@H{a}' a''
+`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a}' a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a `@H{a}' a''
 `@H{--a}' -a'' `@dotaccent{a}' a. `@dotaccent{--a}' -a. `@ringaccent{a}'
 a* `@ringaccent{--a}' -a* `@tieaccent{a}' a[ `@tieaccent{--a}' -a[
 `@u{a}' a( `@u{--a}' -a( `@ubaraccent{a}' a_ `@ubaraccent{--a}' -a_
@@ -1012,7 +1016,7 @@ manual}' *note title: (file name).  `@ref{,,,file name,manual}' *note :
      `@var{--a}' --A
      `@verb{:--a:}' --a
      `@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b
-     `@w{}' 
+     `@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}' a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
      `@H{a}' a''
      `@H{--a}' --a''
      `@dotaccent{a}' a.
@@ -1453,12 +1457,12 @@ kbd: ```simple-double--three---four----'''
    foo vs. bar.  colon :And something else.  semi colon ;.  And ? ?.
 Now ! !@ but , ,
 
-   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ...  @enddots
-...  @equiv == @error error--> @expansion ==> @minus - @point -!- @print
--| @result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE
-OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
-!  @questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o
-@comma , @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
+   @TeX TeX @LaTeX LaTeX @bullet * @copyright (C) @dots ... @enddots ...
+@equiv == @error error--> @expansion ==> @minus - @point -!- @print -|
+@result => @today a sunny day @aa aa @AA AA @ae ae @oe oe @AE AE @OE OE
+@o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown !
+@questiondown ?  @pounds # @registeredsymbol (R) @ordf a @ordm o @comma
+, @quotedblleft `` @quotedblright '' @quoteleft ` @quoteright '
 @quotedblbase ,, @quotesinglbase , @guillemetleft << @guillemetright >>
 @guillemotleft << @guillemotright >> @guilsinglleft < @guilsinglright >
 @textdegree o @euro Euro @arrow -> @leq <= @geq >=
@@ -1478,7 +1482,9 @@ OE @o /o @O /O @ss ss @l /l @L /L @DH D @TH TH @dh d @th th @exclamdown
 `--a' `@uref{,--b}' -b () `@uref{--a,--b,--c}' -c `@uref{,--b,--c}' -c
 `@uref{--a,,--c}' -c `@uref{,,--c}' -c `@url{--a,--b}' -b (--a)
 `@url{--a,}' `--a' `@url{,--b}' -b () `@var{--a}' -A `@verb{:--a:}' --a
-`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{}'  `@H{a}' a''
+`@verb{:a  < & @ % " --    b:}' a  < & @ % " --    b `@w{a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a}' a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a `@H{a}' a''
 `@H{--a}' -a'' `@dotaccent{a}' a. `@dotaccent{--a}' -a. `@ringaccent{a}'
 a* `@ringaccent{--a}' -a* `@tieaccent{a}' a[ `@tieaccent{--a}' -a[
 `@u{a}' a( `@u{--a}' -a( `@ubaraccent{a}' a_ `@ubaraccent{--a}' -a_
@@ -1851,28 +1857,28 @@ manual}' *note title: (file name).  `@ref{,,,file name,manual}' *note :
 * Menu:
 
 * ":                                     constructs.         (line   15)
-* " <1>:                                 constructs.         (line  441)
-* " <2>:                                 constructs.         (line 1012)
+* " <1>:                                 constructs.         (line  443)
+* " <2>:                                 constructs.         (line 1014)
 * -option:                               constructs.         (line   15)
-* -option <1>:                           constructs.         (line  441)
-* -option <2>:                           constructs.         (line 1012)
-* .:                                     constructs.         (line 1415)
-* ?:                                     constructs.         (line 1415)
-* a:                                     constructs.         (line 1415)
-* index entry between item and itemx:    constructs.         (line  311)
-* index entry between item and itemx <1>: constructs.        (line  863)
-* index entry between item and itemx <2>: constructs.        (line 1308)
-* index entry within deffn:              constructs.         (line  156)
-* index entry within deffn <1>:          constructs.         (line  710)
-* index entry within deffn <2>:          constructs.         (line 1153)
-* index entry within itemize:            constructs.         (line  117)
-* index entry within itemize <1>:        constructs.         (line  671)
-* index entry within itemize <2>:        constructs.         (line 1114)
-* index entry within multitable:         constructs.         (line  125)
-* index entry within multitable <1>:     constructs.         (line  680)
-* index entry within multitable <2>:     constructs.         (line 1122)
-* t-ruc:                                 constructs.         (line 1415)
-* T-ruc:                                 constructs.         (line 1415)
+* -option <1>:                           constructs.         (line  443)
+* -option <2>:                           constructs.         (line 1014)
+* .:                                     constructs.         (line 1419)
+* ?:                                     constructs.         (line 1419)
+* a:                                     constructs.         (line 1419)
+* index entry between item and itemx:    constructs.         (line  313)
+* index entry between item and itemx <1>: constructs.        (line  865)
+* index entry between item and itemx <2>: constructs.        (line 1312)
+* index entry within deffn:              constructs.         (line  158)
+* index entry within deffn <1>:          constructs.         (line  712)
+* index entry within deffn <2>:          constructs.         (line 1157)
+* index entry within itemize:            constructs.         (line  119)
+* index entry within itemize <1>:        constructs.         (line  673)
+* index entry within itemize <2>:        constructs.         (line 1118)
+* index entry within multitable:         constructs.         (line  127)
+* index entry within multitable <1>:     constructs.         (line  682)
+* index entry within multitable <2>:     constructs.         (line 1126)
+* t-ruc:                                 constructs.         (line 1419)
+* T-ruc:                                 constructs.         (line 1419)
 
    fn
 
@@ -1880,163 +1886,163 @@ manual}' *note title: (file name).  `@ref{,,,file name,manual}' *note :
 * Menu:
 
 * ":                                     constructs.         (line   15)
-* " <1>:                                 constructs.         (line  441)
-* " <2>:                                 constructs.         (line 1012)
+* " <1>:                                 constructs.         (line  443)
+* " <2>:                                 constructs.         (line 1014)
 * -foption:                              constructs.         (line   15)
-* -foption <1>:                          constructs.         (line  441)
-* -foption <2>:                          constructs.         (line 1012)
-* .:                                     constructs.         (line 1415)
-* ?:                                     constructs.         (line 1415)
-* a:                                     constructs.         (line  174)
-* a <1>:                                 constructs.         (line  310)
-* a <2>:                                 constructs.         (line  728)
-* a <3>:                                 constructs.         (line  862)
-* a <4>:                                 constructs.         (line 1171)
-* a <5>:                                 constructs.         (line 1307)
-* a <6>:                                 constructs.         (line 1415)
-* after:                                 constructs.         (line  384)
-* after <1>:                             constructs.         (line  961)
-* after <2>:                             constructs.         (line 1381)
-* b:                                     constructs.         (line  311)
-* b <1>:                                 constructs.         (line  863)
-* b <2>:                                 constructs.         (line 1308)
-* bidule machin:                         constructs.         (line  168)
-* bidule machin <1>:                     constructs.         (line  722)
-* bidule machin <2>:                     constructs.         (line 1165)
-* d-effn_name:                           constructs.         (line  148)
-* d-effn_name <1>:                       constructs.         (line  702)
-* d-effn_name <2>:                       constructs.         (line 1145)
-* d-efmac_name:                          constructs.         (line  210)
-* d-efmac_name <1>:                      constructs.         (line  764)
-* d-efmac_name <2>:                      constructs.         (line 1207)
-* d-efmethod_name on c-lass:             constructs.         (line  234)
-* d-efmethod_name on c-lass <1>:         constructs.         (line  788)
-* d-efmethod_name on c-lass <2>:         constructs.         (line 1231)
-* d-efop_name on c-lass:                 constructs.         (line  201)
-* d-efop_name on c-lass <1>:             constructs.         (line  755)
-* d-efop_name on c-lass <2>:             constructs.         (line 1198)
-* d-efspec_name:                         constructs.         (line  213)
-* d-efspec_name <1>:                     constructs.         (line  767)
-* d-efspec_name <2>:                     constructs.         (line 1210)
-* d-eftypefn_name:                       constructs.         (line  189)
-* d-eftypefn_name <1>:                   constructs.         (line  743)
-* d-eftypefn_name <2>:                   constructs.         (line 1186)
-* d-eftypefun_name:                      constructs.         (line  222)
-* d-eftypefun_name <1>:                  constructs.         (line  776)
-* d-eftypefun_name <2>:                  constructs.         (line 1219)
-* d-eftypemethod_name on c-lass:         constructs.         (line  237)
-* d-eftypemethod_name on c-lass <1>:     constructs.         (line  791)
-* d-eftypemethod_name on c-lass <2>:     constructs.         (line 1234)
-* d-eftypeop_name on c-lass:             constructs.         (line  192)
-* d-eftypeop_name on c-lass <1>:         constructs.         (line  746)
-* d-eftypeop_name on c-lass <2>:         constructs.         (line 1189)
-* d-efun_name:                           constructs.         (line  207)
-* d-efun_name <1>:                       constructs.         (line  761)
-* d-efun_name <2>:                       constructs.         (line 1204)
-* de-ffn_name:                           constructs.         (line  151)
-* de-ffn_name <1>:                       constructs.         (line  705)
-* de-ffn_name <2>:                       constructs.         (line 1148)
-* deffn:                                 constructs.         (line  177)
-* deffn <1>:                             constructs.         (line  179)
-* deffn <2>:                             constructs.         (line  731)
-* deffn <3>:                             constructs.         (line  733)
-* deffn <4>:                             constructs.         (line 1174)
-* deffn <5>:                             constructs.         (line 1176)
-* deffnx:                                constructs.         (line  175)
-* deffnx <1>:                            constructs.         (line  180)
-* deffnx <2>:                            constructs.         (line  729)
-* deffnx <3>:                            constructs.         (line  734)
-* deffnx <4>:                            constructs.         (line 1172)
-* deffnx <5>:                            constructs.         (line 1177)
-* followed:                              constructs.         (line  171)
-* followed <1>:                          constructs.         (line  382)
-* followed <2>:                          constructs.         (line  725)
-* followed <3>:                          constructs.         (line  959)
-* followed <4>:                          constructs.         (line 1168)
-* followed <5>:                          constructs.         (line 1379)
-* I:                                     constructs.         (line  155)
-* I <1>:                                 constructs.         (line  182)
-* I <2>:                                 constructs.         (line  709)
-* I <3>:                                 constructs.         (line  736)
-* I <4>:                                 constructs.         (line 1152)
-* I <5>:                                 constructs.         (line 1179)
-* id ule:                                constructs.         (line  160)
-* id ule <1>:                            constructs.         (line  714)
-* id ule <2>:                            constructs.         (line 1157)
-* id `i' ule:                            constructs.         (line  161)
-* id `i' ule <1>:                        constructs.         (line  715)
-* id `i' ule <2>:                        constructs.         (line 1158)
-* log trap:                              constructs.         (line  157)
-* log trap <1>:                          constructs.         (line  711)
-* log trap <2>:                          constructs.         (line 1154)
-* log trap1:                             constructs.         (line  158)
-* log trap1 <1>:                         constructs.         (line  712)
-* log trap1 <2>:                         constructs.         (line 1155)
-* log trap2:                             constructs.         (line  159)
-* log trap2 <1>:                         constructs.         (line  713)
-* log trap2 <2>:                         constructs.         (line 1156)
-* machin:                                constructs.         (line  167)
-* machin <1>:                            constructs.         (line  169)
-* machin <2>:                            constructs.         (line  378)
-* machin <3>:                            constructs.         (line  379)
-* machin <4>:                            constructs.         (line  380)
-* machin <5>:                            constructs.         (line  381)
-* machin <6>:                            constructs.         (line  721)
-* machin <7>:                            constructs.         (line  723)
-* machin <8>:                            constructs.         (line  955)
-* machin <9>:                            constructs.         (line  956)
-* machin <10>:                           constructs.         (line  957)
-* machin <11>:                           constructs.         (line  958)
-* machin <12>:                           constructs.         (line 1164)
-* machin <13>:                           constructs.         (line 1166)
-* machin <14>:                           constructs.         (line 1375)
-* machin <15>:                           constructs.         (line 1376)
-* machin <16>:                           constructs.         (line 1377)
-* machin <17>:                           constructs.         (line 1378)
-* t-ruc:                                 constructs.         (line 1415)
-* T-ruc:                                 constructs.         (line 1415)
-* truc:                                  constructs.         (line  156)
-* truc <1>:                              constructs.         (line  183)
-* truc <2>:                              constructs.         (line  710)
-* truc <3>:                              constructs.         (line  737)
-* truc <4>:                              constructs.         (line 1153)
-* truc <5>:                              constructs.         (line 1180)
+* -foption <1>:                          constructs.         (line  443)
+* -foption <2>:                          constructs.         (line 1014)
+* .:                                     constructs.         (line 1419)
+* ?:                                     constructs.         (line 1419)
+* a:                                     constructs.         (line  176)
+* a <1>:                                 constructs.         (line  312)
+* a <2>:                                 constructs.         (line  730)
+* a <3>:                                 constructs.         (line  864)
+* a <4>:                                 constructs.         (line 1175)
+* a <5>:                                 constructs.         (line 1311)
+* a <6>:                                 constructs.         (line 1419)
+* after:                                 constructs.         (line  386)
+* after <1>:                             constructs.         (line  963)
+* after <2>:                             constructs.         (line 1385)
+* b:                                     constructs.         (line  313)
+* b <1>:                                 constructs.         (line  865)
+* b <2>:                                 constructs.         (line 1312)
+* bidule machin:                         constructs.         (line  170)
+* bidule machin <1>:                     constructs.         (line  724)
+* bidule machin <2>:                     constructs.         (line 1169)
+* d-effn_name:                           constructs.         (line  150)
+* d-effn_name <1>:                       constructs.         (line  704)
+* d-effn_name <2>:                       constructs.         (line 1149)
+* d-efmac_name:                          constructs.         (line  212)
+* d-efmac_name <1>:                      constructs.         (line  766)
+* d-efmac_name <2>:                      constructs.         (line 1211)
+* d-efmethod_name on c-lass:             constructs.         (line  236)
+* d-efmethod_name on c-lass <1>:         constructs.         (line  790)
+* d-efmethod_name on c-lass <2>:         constructs.         (line 1235)
+* d-efop_name on c-lass:                 constructs.         (line  203)
+* d-efop_name on c-lass <1>:             constructs.         (line  757)
+* d-efop_name on c-lass <2>:             constructs.         (line 1202)
+* d-efspec_name:                         constructs.         (line  215)
+* d-efspec_name <1>:                     constructs.         (line  769)
+* d-efspec_name <2>:                     constructs.         (line 1214)
+* d-eftypefn_name:                       constructs.         (line  191)
+* d-eftypefn_name <1>:                   constructs.         (line  745)
+* d-eftypefn_name <2>:                   constructs.         (line 1190)
+* d-eftypefun_name:                      constructs.         (line  224)
+* d-eftypefun_name <1>:                  constructs.         (line  778)
+* d-eftypefun_name <2>:                  constructs.         (line 1223)
+* d-eftypemethod_name on c-lass:         constructs.         (line  239)
+* d-eftypemethod_name on c-lass <1>:     constructs.         (line  793)
+* d-eftypemethod_name on c-lass <2>:     constructs.         (line 1238)
+* d-eftypeop_name on c-lass:             constructs.         (line  194)
+* d-eftypeop_name on c-lass <1>:         constructs.         (line  748)
+* d-eftypeop_name on c-lass <2>:         constructs.         (line 1193)
+* d-efun_name:                           constructs.         (line  209)
+* d-efun_name <1>:                       constructs.         (line  763)
+* d-efun_name <2>:                       constructs.         (line 1208)
+* de-ffn_name:                           constructs.         (line  153)
+* de-ffn_name <1>:                       constructs.         (line  707)
+* de-ffn_name <2>:                       constructs.         (line 1152)
+* deffn:                                 constructs.         (line  179)
+* deffn <1>:                             constructs.         (line  181)
+* deffn <2>:                             constructs.         (line  733)
+* deffn <3>:                             constructs.         (line  735)
+* deffn <4>:                             constructs.         (line 1178)
+* deffn <5>:                             constructs.         (line 1180)
+* deffnx:                                constructs.         (line  177)
+* deffnx <1>:                            constructs.         (line  182)
+* deffnx <2>:                            constructs.         (line  731)
+* deffnx <3>:                            constructs.         (line  736)
+* deffnx <4>:                            constructs.         (line 1176)
+* deffnx <5>:                            constructs.         (line 1181)
+* followed:                              constructs.         (line  173)
+* followed <1>:                          constructs.         (line  384)
+* followed <2>:                          constructs.         (line  727)
+* followed <3>:                          constructs.         (line  961)
+* followed <4>:                          constructs.         (line 1172)
+* followed <5>:                          constructs.         (line 1383)
+* I:                                     constructs.         (line  157)
+* I <1>:                                 constructs.         (line  184)
+* I <2>:                                 constructs.         (line  711)
+* I <3>:                                 constructs.         (line  738)
+* I <4>:                                 constructs.         (line 1156)
+* I <5>:                                 constructs.         (line 1183)
+* id ule:                                constructs.         (line  162)
+* id ule <1>:                            constructs.         (line  716)
+* id ule <2>:                            constructs.         (line 1161)
+* id `i' ule:                            constructs.         (line  163)
+* id `i' ule <1>:                        constructs.         (line  717)
+* id `i' ule <2>:                        constructs.         (line 1162)
+* log trap:                              constructs.         (line  159)
+* log trap <1>:                          constructs.         (line  713)
+* log trap <2>:                          constructs.         (line 1158)
+* log trap1:                             constructs.         (line  160)
+* log trap1 <1>:                         constructs.         (line  714)
+* log trap1 <2>:                         constructs.         (line 1159)
+* log trap2:                             constructs.         (line  161)
+* log trap2 <1>:                         constructs.         (line  715)
+* log trap2 <2>:                         constructs.         (line 1160)
+* machin:                                constructs.         (line  169)
+* machin <1>:                            constructs.         (line  171)
+* machin <2>:                            constructs.         (line  380)
+* machin <3>:                            constructs.         (line  381)
+* machin <4>:                            constructs.         (line  382)
+* machin <5>:                            constructs.         (line  383)
+* machin <6>:                            constructs.         (line  723)
+* machin <7>:                            constructs.         (line  725)
+* machin <8>:                            constructs.         (line  957)
+* machin <9>:                            constructs.         (line  958)
+* machin <10>:                           constructs.         (line  959)
+* machin <11>:                           constructs.         (line  960)
+* machin <12>:                           constructs.         (line 1168)
+* machin <13>:                           constructs.         (line 1170)
+* machin <14>:                           constructs.         (line 1379)
+* machin <15>:                           constructs.         (line 1380)
+* machin <16>:                           constructs.         (line 1381)
+* machin <17>:                           constructs.         (line 1382)
+* t-ruc:                                 constructs.         (line 1419)
+* T-ruc:                                 constructs.         (line 1419)
+* truc:                                  constructs.         (line  158)
+* truc <1>:                              constructs.         (line  185)
+* truc <2>:                              constructs.         (line  712)
+* truc <3>:                              constructs.         (line  739)
+* truc <4>:                              constructs.         (line 1157)
+* truc <5>:                              constructs.         (line 1184)
 
    vr
 
  [index ]
 * Menu:
 
-* a:                                     constructs.         (line  306)
-* a <1>:                                 constructs.         (line  858)
-* a <2>:                                 constructs.         (line 1303)
-* b:                                     constructs.         (line  307)
-* b <1>:                                 constructs.         (line  859)
-* b <2>:                                 constructs.         (line 1304)
-* d-efcv_name:                           constructs.         (line  198)
-* d-efcv_name <1>:                       constructs.         (line  752)
-* d-efcv_name <2>:                       constructs.         (line 1195)
-* d-efivar_name:                         constructs.         (line  228)
-* d-efivar_name <1>:                     constructs.         (line  782)
-* d-efivar_name <2>:                     constructs.         (line 1225)
-* d-efopt_name:                          constructs.         (line  219)
-* d-efopt_name <1>:                      constructs.         (line  773)
-* d-efopt_name <2>:                      constructs.         (line 1216)
-* d-eftypeivar_name of c-lass:           constructs.         (line  231)
-* d-eftypeivar_name of c-lass <1>:       constructs.         (line  785)
-* d-eftypeivar_name of c-lass <2>:       constructs.         (line 1228)
-* d-eftypevar_name:                      constructs.         (line  225)
-* d-eftypevar_name <1>:                  constructs.         (line  779)
-* d-eftypevar_name <2>:                  constructs.         (line 1222)
-* d-eftypevr_name:                       constructs.         (line  195)
-* d-eftypevr_name <1>:                   constructs.         (line  749)
-* d-eftypevr_name <2>:                   constructs.         (line 1192)
-* d-efvar_name:                          constructs.         (line  216)
-* d-efvar_name <1>:                      constructs.         (line  770)
-* d-efvar_name <2>:                      constructs.         (line 1213)
-* d-efvr_name:                           constructs.         (line  186)
-* d-efvr_name <1>:                       constructs.         (line  740)
-* d-efvr_name <2>:                       constructs.         (line 1183)
+* a:                                     constructs.         (line  308)
+* a <1>:                                 constructs.         (line  860)
+* a <2>:                                 constructs.         (line 1307)
+* b:                                     constructs.         (line  309)
+* b <1>:                                 constructs.         (line  861)
+* b <2>:                                 constructs.         (line 1308)
+* d-efcv_name:                           constructs.         (line  200)
+* d-efcv_name <1>:                       constructs.         (line  754)
+* d-efcv_name <2>:                       constructs.         (line 1199)
+* d-efivar_name:                         constructs.         (line  230)
+* d-efivar_name <1>:                     constructs.         (line  784)
+* d-efivar_name <2>:                     constructs.         (line 1229)
+* d-efopt_name:                          constructs.         (line  221)
+* d-efopt_name <1>:                      constructs.         (line  775)
+* d-efopt_name <2>:                      constructs.         (line 1220)
+* d-eftypeivar_name of c-lass:           constructs.         (line  233)
+* d-eftypeivar_name of c-lass <1>:       constructs.         (line  787)
+* d-eftypeivar_name of c-lass <2>:       constructs.         (line 1232)
+* d-eftypevar_name:                      constructs.         (line  227)
+* d-eftypevar_name <1>:                  constructs.         (line  781)
+* d-eftypevar_name <2>:                  constructs.         (line 1226)
+* d-eftypevr_name:                       constructs.         (line  197)
+* d-eftypevr_name <1>:                   constructs.         (line  751)
+* d-eftypevr_name <2>:                   constructs.         (line 1196)
+* d-efvar_name:                          constructs.         (line  218)
+* d-efvar_name <1>:                      constructs.         (line  772)
+* d-efvar_name <2>:                      constructs.         (line 1217)
+* d-efvr_name:                           constructs.         (line  188)
+* d-efvr_name <1>:                       constructs.         (line  742)
+* d-efvr_name <2>:                       constructs.         (line 1187)
 
    ky
 
@@ -2047,9 +2053,9 @@ manual}' *note title: (file name).  `@ref{,,,file name,manual}' *note :
  [index ]
 * Menu:
 
-* d-eftp_name:                           constructs.         (line  204)
-* d-eftp_name <1>:                       constructs.         (line  758)
-* d-eftp_name <2>:                       constructs.         (line 1201)
+* d-eftp_name:                           constructs.         (line  206)
+* d-eftp_name <1>:                       constructs.         (line  760)
+* d-eftp_name <2>:                       constructs.         (line 1205)
 
    ---------- Footnotes ----------
 
@@ -2121,172 +2127,172 @@ chapter 2
 * Menu:
 
 * ":                                     constructs.         (line   15)
-* " <1>:                                 constructs.         (line  441)
-* " <2>:                                 constructs.         (line 1012)
+* " <1>:                                 constructs.         (line  443)
+* " <2>:                                 constructs.         (line 1014)
 * -option:                               constructs.         (line   15)
-* -option <1>:                           constructs.         (line  441)
-* -option <2>:                           constructs.         (line 1012)
-* .:                                     constructs.         (line 1415)
-* ?:                                     constructs.         (line 1415)
-* a:                                     constructs.         (line 1415)
-* index entry between item and itemx:    constructs.         (line  311)
-* index entry between item and itemx <1>: constructs.        (line  863)
-* index entry between item and itemx <2>: constructs.        (line 1308)
-* index entry within deffn:              constructs.         (line  156)
-* index entry within deffn <1>:          constructs.         (line  710)
-* index entry within deffn <2>:          constructs.         (line 1153)
-* index entry within itemize:            constructs.         (line  117)
-* index entry within itemize <1>:        constructs.         (line  671)
-* index entry within itemize <2>:        constructs.         (line 1114)
-* index entry within multitable:         constructs.         (line  125)
-* index entry within multitable <1>:     constructs.         (line  680)
-* index entry within multitable <2>:     constructs.         (line 1122)
-* t-ruc:                                 constructs.         (line 1415)
-* T-ruc:                                 constructs.         (line 1415)
+* -option <1>:                           constructs.         (line  443)
+* -option <2>:                           constructs.         (line 1014)
+* .:                                     constructs.         (line 1419)
+* ?:                                     constructs.         (line 1419)
+* a:                                     constructs.         (line 1419)
+* index entry between item and itemx:    constructs.         (line  313)
+* index entry between item and itemx <1>: constructs.        (line  865)
+* index entry between item and itemx <2>: constructs.        (line 1312)
+* index entry within deffn:              constructs.         (line  158)
+* index entry within deffn <1>:          constructs.         (line  712)
+* index entry within deffn <2>:          constructs.         (line 1157)
+* index entry within itemize:            constructs.         (line  119)
+* index entry within itemize <1>:        constructs.         (line  673)
+* index entry within itemize <2>:        constructs.         (line 1118)
+* index entry within multitable:         constructs.         (line  127)
+* index entry within multitable <1>:     constructs.         (line  682)
+* index entry within multitable <2>:     constructs.         (line 1126)
+* t-ruc:                                 constructs.         (line 1419)
+* T-ruc:                                 constructs.         (line 1419)
 
  [index ]
 * Menu:
 
 * ":                                     constructs.         (line   15)
-* " <1>:                                 constructs.         (line  441)
-* " <2>:                                 constructs.         (line 1012)
+* " <1>:                                 constructs.         (line  443)
+* " <2>:                                 constructs.         (line 1014)
 * -foption:                              constructs.         (line   15)
-* -foption <1>:                          constructs.         (line  441)
-* -foption <2>:                          constructs.         (line 1012)
-* .:                                     constructs.         (line 1415)
-* ?:                                     constructs.         (line 1415)
-* a:                                     constructs.         (line  174)
-* a <1>:                                 constructs.         (line  310)
-* a <2>:                                 constructs.         (line  728)
-* a <3>:                                 constructs.         (line  862)
-* a <4>:                                 constructs.         (line 1171)
-* a <5>:                                 constructs.         (line 1307)
-* a <6>:                                 constructs.         (line 1415)
-* after:                                 constructs.         (line  384)
-* after <1>:                             constructs.         (line  961)
-* after <2>:                             constructs.         (line 1381)
-* b:                                     constructs.         (line  311)
-* b <1>:                                 constructs.         (line  863)
-* b <2>:                                 constructs.         (line 1308)
-* bidule machin:                         constructs.         (line  168)
-* bidule machin <1>:                     constructs.         (line  722)
-* bidule machin <2>:                     constructs.         (line 1165)
-* d-effn_name:                           constructs.         (line  148)
-* d-effn_name <1>:                       constructs.         (line  702)
-* d-effn_name <2>:                       constructs.         (line 1145)
-* d-efmac_name:                          constructs.         (line  210)
-* d-efmac_name <1>:                      constructs.         (line  764)
-* d-efmac_name <2>:                      constructs.         (line 1207)
-* d-efmethod_name on c-lass:             constructs.         (line  234)
-* d-efmethod_name on c-lass <1>:         constructs.         (line  788)
-* d-efmethod_name on c-lass <2>:         constructs.         (line 1231)
-* d-efop_name on c-lass:                 constructs.         (line  201)
-* d-efop_name on c-lass <1>:             constructs.         (line  755)
-* d-efop_name on c-lass <2>:             constructs.         (line 1198)
-* d-efspec_name:                         constructs.         (line  213)
-* d-efspec_name <1>:                     constructs.         (line  767)
-* d-efspec_name <2>:                     constructs.         (line 1210)
-* d-eftypefn_name:                       constructs.         (line  189)
-* d-eftypefn_name <1>:                   constructs.         (line  743)
-* d-eftypefn_name <2>:                   constructs.         (line 1186)
-* d-eftypefun_name:                      constructs.         (line  222)
-* d-eftypefun_name <1>:                  constructs.         (line  776)
-* d-eftypefun_name <2>:                  constructs.         (line 1219)
-* d-eftypemethod_name on c-lass:         constructs.         (line  237)
-* d-eftypemethod_name on c-lass <1>:     constructs.         (line  791)
-* d-eftypemethod_name on c-lass <2>:     constructs.         (line 1234)
-* d-eftypeop_name on c-lass:             constructs.         (line  192)
-* d-eftypeop_name on c-lass <1>:         constructs.         (line  746)
-* d-eftypeop_name on c-lass <2>:         constructs.         (line 1189)
-* d-efun_name:                           constructs.         (line  207)
-* d-efun_name <1>:                       constructs.         (line  761)
-* d-efun_name <2>:                       constructs.         (line 1204)
-* de-ffn_name:                           constructs.         (line  151)
-* de-ffn_name <1>:                       constructs.         (line  705)
-* de-ffn_name <2>:                       constructs.         (line 1148)
-* deffn:                                 constructs.         (line  177)
-* deffn <1>:                             constructs.         (line  179)
-* deffn <2>:                             constructs.         (line  731)
-* deffn <3>:                             constructs.         (line  733)
-* deffn <4>:                             constructs.         (line 1174)
-* deffn <5>:                             constructs.         (line 1176)
-* deffnx:                                constructs.         (line  175)
-* deffnx <1>:                            constructs.         (line  180)
-* deffnx <2>:                            constructs.         (line  729)
-* deffnx <3>:                            constructs.         (line  734)
-* deffnx <4>:                            constructs.         (line 1172)
-* deffnx <5>:                            constructs.         (line 1177)
-* followed:                              constructs.         (line  171)
-* followed <1>:                          constructs.         (line  382)
-* followed <2>:                          constructs.         (line  725)
-* followed <3>:                          constructs.         (line  959)
-* followed <4>:                          constructs.         (line 1168)
-* followed <5>:                          constructs.         (line 1379)
-* I:                                     constructs.         (line  155)
-* I <1>:                                 constructs.         (line  182)
-* I <2>:                                 constructs.         (line  709)
-* I <3>:                                 constructs.         (line  736)
-* I <4>:                                 constructs.         (line 1152)
-* I <5>:                                 constructs.         (line 1179)
-* id ule:                                constructs.         (line  160)
-* id ule <1>:                            constructs.         (line  714)
-* id ule <2>:                            constructs.         (line 1157)
-* id `i' ule:                            constructs.         (line  161)
-* id `i' ule <1>:                        constructs.         (line  715)
-* id `i' ule <2>:                        constructs.         (line 1158)
-* log trap:                              constructs.         (line  157)
-* log trap <1>:                          constructs.         (line  711)
-* log trap <2>:                          constructs.         (line 1154)
-* log trap1:                             constructs.         (line  158)
-* log trap1 <1>:                         constructs.         (line  712)
-* log trap1 <2>:                         constructs.         (line 1155)
-* log trap2:                             constructs.         (line  159)
-* log trap2 <1>:                         constructs.         (line  713)
-* log trap2 <2>:                         constructs.         (line 1156)
-* machin:                                constructs.         (line  167)
-* machin <1>:                            constructs.         (line  169)
-* machin <2>:                            constructs.         (line  378)
-* machin <3>:                            constructs.         (line  379)
-* machin <4>:                            constructs.         (line  380)
-* machin <5>:                            constructs.         (line  381)
-* machin <6>:                            constructs.         (line  721)
-* machin <7>:                            constructs.         (line  723)
-* machin <8>:                            constructs.         (line  955)
-* machin <9>:                            constructs.         (line  956)
-* machin <10>:                           constructs.         (line  957)
-* machin <11>:                           constructs.         (line  958)
-* machin <12>:                           constructs.         (line 1164)
-* machin <13>:                           constructs.         (line 1166)
-* machin <14>:                           constructs.         (line 1375)
-* machin <15>:                           constructs.         (line 1376)
-* machin <16>:                           constructs.         (line 1377)
-* machin <17>:                           constructs.         (line 1378)
-* t-ruc:                                 constructs.         (line 1415)
-* T-ruc:                                 constructs.         (line 1415)
-* truc:                                  constructs.         (line  156)
-* truc <1>:                              constructs.         (line  183)
-* truc <2>:                              constructs.         (line  710)
-* truc <3>:                              constructs.         (line  737)
-* truc <4>:                              constructs.         (line 1153)
-* truc <5>:                              constructs.         (line 1180)
+* -foption <1>:                          constructs.         (line  443)
+* -foption <2>:                          constructs.         (line 1014)
+* .:                                     constructs.         (line 1419)
+* ?:                                     constructs.         (line 1419)
+* a:                                     constructs.         (line  176)
+* a <1>:                                 constructs.         (line  312)
+* a <2>:                                 constructs.         (line  730)
+* a <3>:                                 constructs.         (line  864)
+* a <4>:                                 constructs.         (line 1175)
+* a <5>:                                 constructs.         (line 1311)
+* a <6>:                                 constructs.         (line 1419)
+* after:                                 constructs.         (line  386)
+* after <1>:                             constructs.         (line  963)
+* after <2>:                             constructs.         (line 1385)
+* b:                                     constructs.         (line  313)
+* b <1>:                                 constructs.         (line  865)
+* b <2>:                                 constructs.         (line 1312)
+* bidule machin:                         constructs.         (line  170)
+* bidule machin <1>:                     constructs.         (line  724)
+* bidule machin <2>:                     constructs.         (line 1169)
+* d-effn_name:                           constructs.         (line  150)
+* d-effn_name <1>:                       constructs.         (line  704)
+* d-effn_name <2>:                       constructs.         (line 1149)
+* d-efmac_name:                          constructs.         (line  212)
+* d-efmac_name <1>:                      constructs.         (line  766)
+* d-efmac_name <2>:                      constructs.         (line 1211)
+* d-efmethod_name on c-lass:             constructs.         (line  236)
+* d-efmethod_name on c-lass <1>:         constructs.         (line  790)
+* d-efmethod_name on c-lass <2>:         constructs.         (line 1235)
+* d-efop_name on c-lass:                 constructs.         (line  203)
+* d-efop_name on c-lass <1>:             constructs.         (line  757)
+* d-efop_name on c-lass <2>:             constructs.         (line 1202)
+* d-efspec_name:                         constructs.         (line  215)
+* d-efspec_name <1>:                     constructs.         (line  769)
+* d-efspec_name <2>:                     constructs.         (line 1214)
+* d-eftypefn_name:                       constructs.         (line  191)
+* d-eftypefn_name <1>:                   constructs.         (line  745)
+* d-eftypefn_name <2>:                   constructs.         (line 1190)
+* d-eftypefun_name:                      constructs.         (line  224)
+* d-eftypefun_name <1>:                  constructs.         (line  778)
+* d-eftypefun_name <2>:                  constructs.         (line 1223)
+* d-eftypemethod_name on c-lass:         constructs.         (line  239)
+* d-eftypemethod_name on c-lass <1>:     constructs.         (line  793)
+* d-eftypemethod_name on c-lass <2>:     constructs.         (line 1238)
+* d-eftypeop_name on c-lass:             constructs.         (line  194)
+* d-eftypeop_name on c-lass <1>:         constructs.         (line  748)
+* d-eftypeop_name on c-lass <2>:         constructs.         (line 1193)
+* d-efun_name:                           constructs.         (line  209)
+* d-efun_name <1>:                       constructs.         (line  763)
+* d-efun_name <2>:                       constructs.         (line 1208)
+* de-ffn_name:                           constructs.         (line  153)
+* de-ffn_name <1>:                       constructs.         (line  707)
+* de-ffn_name <2>:                       constructs.         (line 1152)
+* deffn:                                 constructs.         (line  179)
+* deffn <1>:                             constructs.         (line  181)
+* deffn <2>:                             constructs.         (line  733)
+* deffn <3>:                             constructs.         (line  735)
+* deffn <4>:                             constructs.         (line 1178)
+* deffn <5>:                             constructs.         (line 1180)
+* deffnx:                                constructs.         (line  177)
+* deffnx <1>:                            constructs.         (line  182)
+* deffnx <2>:                            constructs.         (line  731)
+* deffnx <3>:                            constructs.         (line  736)
+* deffnx <4>:                            constructs.         (line 1176)
+* deffnx <5>:                            constructs.         (line 1181)
+* followed:                              constructs.         (line  173)
+* followed <1>:                          constructs.         (line  384)
+* followed <2>:                          constructs.         (line  727)
+* followed <3>:                          constructs.         (line  961)
+* followed <4>:                          constructs.         (line 1172)
+* followed <5>:                          constructs.         (line 1383)
+* I:                                     constructs.         (line  157)
+* I <1>:                                 constructs.         (line  184)
+* I <2>:                                 constructs.         (line  711)
+* I <3>:                                 constructs.         (line  738)
+* I <4>:                                 constructs.         (line 1156)
+* I <5>:                                 constructs.         (line 1183)
+* id ule:                                constructs.         (line  162)
+* id ule <1>:                            constructs.         (line  716)
+* id ule <2>:                            constructs.         (line 1161)
+* id `i' ule:                            constructs.         (line  163)
+* id `i' ule <1>:                        constructs.         (line  717)
+* id `i' ule <2>:                        constructs.         (line 1162)
+* log trap:                              constructs.         (line  159)
+* log trap <1>:                          constructs.         (line  713)
+* log trap <2>:                          constructs.         (line 1158)
+* log trap1:                             constructs.         (line  160)
+* log trap1 <1>:                         constructs.         (line  714)
+* log trap1 <2>:                         constructs.         (line 1159)
+* log trap2:                             constructs.         (line  161)
+* log trap2 <1>:                         constructs.         (line  715)
+* log trap2 <2>:                         constructs.         (line 1160)
+* machin:                                constructs.         (line  169)
+* machin <1>:                            constructs.         (line  171)
+* machin <2>:                            constructs.         (line  380)
+* machin <3>:                            constructs.         (line  381)
+* machin <4>:                            constructs.         (line  382)
+* machin <5>:                            constructs.         (line  383)
+* machin <6>:                            constructs.         (line  723)
+* machin <7>:                            constructs.         (line  725)
+* machin <8>:                            constructs.         (line  957)
+* machin <9>:                            constructs.         (line  958)
+* machin <10>:                           constructs.         (line  959)
+* machin <11>:                           constructs.         (line  960)
+* machin <12>:                           constructs.         (line 1168)
+* machin <13>:                           constructs.         (line 1170)
+* machin <14>:                           constructs.         (line 1379)
+* machin <15>:                           constructs.         (line 1380)
+* machin <16>:                           constructs.         (line 1381)
+* machin <17>:                           constructs.         (line 1382)
+* t-ruc:                                 constructs.         (line 1419)
+* T-ruc:                                 constructs.         (line 1419)
+* truc:                                  constructs.         (line  158)
+* truc <1>:                              constructs.         (line  185)
+* truc <2>:                              constructs.         (line  712)
+* truc <3>:                              constructs.         (line  739)
+* truc <4>:                              constructs.         (line 1157)
+* truc <5>:                              constructs.         (line 1184)
 
 
 
 Tag Table:
-Node: Top15002
-Node: constructs15213
-Ref: constructs-Footnote-175382
-Ref: constructs-Footnote-275402
-Ref: constructs-Footnote-375423
-Ref: constructs-Footnote-475443
-Ref: constructs-Footnote-575464
-Ref: constructs-Footnote-675484
-Node: chapter75505
-Ref: chapter-Footnote-175743
-Node: s--ect,ion75763
-Node: subsection75884
-Ref: anchor76016
-Node: subsubsection76016
-Node: chapter276133
+Node: Top15137
+Node: constructs15348
+Ref: constructs-Footnote-175925
+Ref: constructs-Footnote-275945
+Ref: constructs-Footnote-375966
+Ref: constructs-Footnote-475986
+Ref: constructs-Footnote-576007
+Ref: constructs-Footnote-676027
+Node: chapter76048
+Ref: chapter-Footnote-176286
+Node: s--ect,ion76306
+Node: subsection76427
+Ref: anchor76559
+Node: subsubsection76559
+Node: chapter276676
 
 End Tag Table

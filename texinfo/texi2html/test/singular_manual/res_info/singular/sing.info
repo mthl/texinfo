@@ -2253,7 +2253,7 @@ in the rest are equal.
    * the ring K[x,y,z] $K[x,y,z]$
      , where K=Z/7[a] $K=Z/7[a]$
       denotes the algebraic extension of degree 2 of Z/7 $Z/7$
-      by a.   $a.$
+      by a. $a.$
       In other words, K $K$
       is the finite field with 49 elements.  In the first case, a $a$
       denotes an algebraic element over Z/7 $Z/7$

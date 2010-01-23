@@ -1,0 +1,19 @@
+punctuation_in_command.texi(,2) 
+punctuation_in_command.texi(,3) @setfilename punctuation_in_command.info
+punctuation_in_command.texi(,4) 
+punctuation_in_command.texi(,5) @node Top
+punctuation_in_command.texi(,6) @top Element
+punctuation_in_command.texi(,7) 
+punctuation_in_command.texi(,8) Text.@asis{)
+punctuation_in_command.texi(,9) follows}.
+punctuation_in_command.texi(,10) 
+punctuation_in_command.texi(,11) Text. Email @email{.,.}
+punctuation_in_command.texi(,12) dmn @dmn{1.}
+punctuation_in_command.texi(,13) and text. indicateurl @indicateurl{.}
+punctuation_in_command.texi(,14) and kbd @kbd{.}
+punctuation_in_command.texi(,15) and emph @emph{.}
+punctuation_in_command.texi(,16) text. asis in code @code{@asis{.}}
+punctuation_in_command.texi(,17) text. a dot before a emph open .@emph{
+punctuation_in_command.texi(,18) and in emph.}
+punctuation_in_command.texi(,19) 
+punctuation_in_command.texi(,20) @bye

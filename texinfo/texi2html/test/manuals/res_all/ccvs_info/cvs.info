@@ -179,29 +179,29 @@ Node: Excluding directories346162
 Node: Module options346714
 Node: Module program options348294
 Node: Wrappers349079
-Node: commit files350782
-Node: syntax352781
-Node: commitinfo353689
-Node: verifymsg355855
-Node: editinfo360482
-Node: editinfo example362781
-Node: loginfo364089
-Node: loginfo example366675
-Node: Keeping a checked out copy367523
-Node: rcsinfo368553
-Node: cvsignore370111
-Node: checkoutlist373383
-Node: history file374716
-Node: Variables375374
-Node: config378926
-Node: Environment variables384065
-Node: Compatibility390065
-Node: Troubleshooting391088
-Node: Error messages391730
-Node: Connection407786
-Node: Other problems412725
-Node: Credits413663
-Node: BUGS415071
-Node: Index418681
+Node: commit files350783
+Node: syntax352782
+Node: commitinfo353690
+Node: verifymsg355856
+Node: editinfo360483
+Node: editinfo example362782
+Node: loginfo364090
+Node: loginfo example366676
+Node: Keeping a checked out copy367524
+Node: rcsinfo368554
+Node: cvsignore370112
+Node: checkoutlist373384
+Node: history file374717
+Node: Variables375375
+Node: config378927
+Node: Environment variables384066
+Node: Compatibility390066
+Node: Troubleshooting391089
+Node: Error messages391731
+Node: Connection407787
+Node: Other problems412726
+Node: Credits413664
+Node: BUGS415072
+Node: Index418682
 
 End Tag Table

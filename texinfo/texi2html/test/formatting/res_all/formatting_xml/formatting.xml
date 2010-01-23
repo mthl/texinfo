@@ -185,7 +185,7 @@ but , ,
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
 <code>@dotaccent{a}</code> a.
@@ -727,7 +727,7 @@ but , ,
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
 <code>@dotaccent{a}</code> a.
@@ -1264,7 +1264,7 @@ but , ,
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
 <code>@dotaccent{a}</code> a.
@@ -1802,7 +1802,7 @@ but , ,
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
 <code>@dotaccent{a}</code> a.
@@ -2338,7 +2338,7 @@ but , ,
 <code>@var{--a}</code> <var>&ndash;a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> &ndash;a''
 <code>@dotaccent{a}</code> a.
@@ -2874,7 +2874,7 @@ but , ,
 <code>@var{--a}</code> <var>--a</var>
 <code>@verb{:--a:}</code> <verb>--a</verb>
 <code>@verb{:a  &lt; &amp; @ % &quot; --    b:}</code> <verb>a  &lt; &amp; @ % &quot; --    b</verb>
-<code>@w{}</code> <!-- /@w -->
+<code>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <code>@H{a}</code> a''
 <code>@H{--a}</code> --a''
 <code>@dotaccent{a}</code> a.

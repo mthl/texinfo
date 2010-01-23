@@ -172,7 +172,7 @@ but , ,@:
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
-@code{@@w@{@}} @w{}
+@code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}
@@ -898,7 +898,7 @@ but , ,@:
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
-@code{@@w@{@}} @w{}
+@code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}
@@ -1623,7 +1623,7 @@ but , ,@:
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
-@code{@@w@{@}} @w{}
+@code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}
@@ -2344,7 +2344,7 @@ but , ,@:
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
-@code{@@w@{@}} @w{}
+@code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}
@@ -3061,7 +3061,7 @@ but , ,@:
 @code{@@var@{--a@}} @var{--a}
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
-@code{@@w@{@}} @w{}
+@code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 @code{@@H@{a@}} @H{a}
 @code{@@H@{--a@}} @H{--a}
 @code{@@dotaccent@{a@}} @dotaccent{a}

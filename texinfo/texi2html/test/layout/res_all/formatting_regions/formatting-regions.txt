@@ -180,7 +180,7 @@ but , ,
 @var{--a} -a
 @verb{:--a:} --a
 @verb{:a  < & @ % " --    b:} a  < & @ % " --    b
-@w{} 
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 @H{a} a''
 @H{--a} -a''
 @dotaccent{a} a.
@@ -756,7 +756,7 @@ but , ,
 @var{--a} --a
 @verb{:--a:} --a
 @verb{:a  < & @ % " --    b:} a  < & @ % " --    b
-@w{} 
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 @H{a} a''
 @H{--a} --a''
 @dotaccent{a} a.
@@ -1335,7 +1335,7 @@ but , ,
 @var{--a} -a
 @verb{:--a:} --a
 @verb{:a  < & @ % " --    b:} a  < & @ % " --    b
-@w{} 
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 @H{a} a''
 @H{--a} -a''
 @dotaccent{a} a.

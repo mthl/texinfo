@@ -32,7 +32,7 @@ END-INFO-DIR-ENTRY
 Indirect:
 texinfo-1: 1448
 texinfo-2: 302269
-texinfo-3: 604639
+texinfo-3: 604637
 
 Tag Table:
 (Indirect)
@@ -270,94 +270,94 @@ Node: Conditionals352211
 Node: Conditional Commands353314
 Node: Conditional Not Commands354902
 Node: Raw Formatter Commands356030
-Node: set clear value357866
-Node: set value358975
-Node: ifset ifclear360572
-Node: value Example362698
-Node: Internationalization364724
-Node: documentlanguage365255
-Node: documentencoding369389
-Node: Defining New Texinfo Commands370011
-Node: Defining Macros371177
-Node: Invoking Macros373321
-Node: Macro Details375116
-Node: alias376535
-Node: definfoenclose377738
-Node: Hardcopy380480
-Node: Use TeX382500
-Node: Format with tex/texindex383128
-Node: Format with texi2dvi387505
-Node: Print with lpr388951
-Node: Within Emacs391109
-Node: Texinfo Mode Printing392005
-Node: Compile-Command395761
-Node: Requirements Summary396639
-Node: Preparing for TeX397970
-Node: Preparing for TeX-Footnotes401533
-Ref: Preparing for TeX-Footnote-1401610
-Node: Overfull hboxes401709
-Node: smallbook403863
-Node: A4 Paper405063
-Node: pagesizes405994
-Node: Cropmarks and Magnification407189
-Node: PDF Output409252
-Node: Creating and Installing Info Files410515
-Node: Creating an Info File410913
-Node: makeinfo advantages412195
-Node: Invoking makeinfo413126
-Node: makeinfo options413807
-Node: Pointer Validation421414
-Node: makeinfo in Emacs424540
-Node: texinfo-format commands427099
-Node: Batch Formatting428381
-Node: Tag and Split Files429605
-Node: makeinfo html433018
-Node: Installing an Info File435514
-Node: Directory File436350
-Node: New Info File438147
-Node: New Info File-Footnotes439256
-Ref: New Info File-Footnote-1439325
-Node: Other Info Directories439406
-Node: Other Info Directories-Footnotes443736
-Ref: Other Info Directories-Footnote-1443823
-Ref: Other Info Directories-Footnote-2443950
-Node: Installing Dir Entries444011
-Node: Invoking install-info446246
-Node: Command List449115
-Node: Tips490528
-Node: Sample Texinfo Files501504
-Node: Short Sample Texinfo File501923
-Node: GNU Sample Texts503493
-Node: Include Files508549
-Node: Using Include Files509654
-Node: texinfo-multiple-files-update511610
-Node: Include File Requirements513962
-Node: Sample Include File515208
-Node: Include Files Evolution516676
-Node: Headings518651
-Node: Headings Introduced519302
-Node: Heading Format521183
-Node: Heading Choice523636
-Node: Custom Headings525009
-Node: Catching Mistakes529110
-Node: makeinfo Preferred530413
-Node: Debugging with Info531311
-Node: Debugging with TeX534652
-Node: Using texinfo-show-structure538912
-Node: Using occur542009
-Node: Running Info-Validate543546
-Node: Using Info-validate544605
-Node: Unsplit546440
-Node: Tagifying547490
-Node: Splitting548346
-Node: Refilling Paragraphs549969
-Node: Refilling Paragraphs-Footnotes551638
-Ref: Refilling Paragraphs-Footnote-1551721
-Node: Command Syntax551884
-Node: Obtaining TeX554862
-Node: Copying This Manual555912
-Node: GNU Free Documentation License556166
-Node: Command and Variable Index576019
-Node: Concept Index604639
+Node: set clear value357865
+Node: set value358974
+Node: ifset ifclear360571
+Node: value Example362697
+Node: Internationalization364723
+Node: documentlanguage365254
+Node: documentencoding369388
+Node: Defining New Texinfo Commands370010
+Node: Defining Macros371176
+Node: Invoking Macros373320
+Node: Macro Details375115
+Node: alias376534
+Node: definfoenclose377737
+Node: Hardcopy380479
+Node: Use TeX382499
+Node: Format with tex/texindex383127
+Node: Format with texi2dvi387504
+Node: Print with lpr388950
+Node: Within Emacs391108
+Node: Texinfo Mode Printing392004
+Node: Compile-Command395760
+Node: Requirements Summary396638
+Node: Preparing for TeX397969
+Node: Preparing for TeX-Footnotes401532
+Ref: Preparing for TeX-Footnote-1401609
+Node: Overfull hboxes401708
+Node: smallbook403862
+Node: A4 Paper405062
+Node: pagesizes405993
+Node: Cropmarks and Magnification407188
+Node: PDF Output409251
+Node: Creating and Installing Info Files410514
+Node: Creating an Info File410912
+Node: makeinfo advantages412194
+Node: Invoking makeinfo413125
+Node: makeinfo options413806
+Node: Pointer Validation421413
+Node: makeinfo in Emacs424539
+Node: texinfo-format commands427098
+Node: Batch Formatting428380
+Node: Tag and Split Files429604
+Node: makeinfo html433017
+Node: Installing an Info File435513
+Node: Directory File436349
+Node: New Info File438146
+Node: New Info File-Footnotes439255
+Ref: New Info File-Footnote-1439324
+Node: Other Info Directories439405
+Node: Other Info Directories-Footnotes443735
+Ref: Other Info Directories-Footnote-1443822
+Ref: Other Info Directories-Footnote-2443949
+Node: Installing Dir Entries444010
+Node: Invoking install-info446245
+Node: Command List449114
+Node: Tips490527
+Node: Sample Texinfo Files501502
+Node: Short Sample Texinfo File501921
+Node: GNU Sample Texts503491
+Node: Include Files508547
+Node: Using Include Files509652
+Node: texinfo-multiple-files-update511608
+Node: Include File Requirements513960
+Node: Sample Include File515206
+Node: Include Files Evolution516674
+Node: Headings518649
+Node: Headings Introduced519300
+Node: Heading Format521181
+Node: Heading Choice523634
+Node: Custom Headings525007
+Node: Catching Mistakes529108
+Node: makeinfo Preferred530411
+Node: Debugging with Info531309
+Node: Debugging with TeX534650
+Node: Using texinfo-show-structure538910
+Node: Using occur542007
+Node: Running Info-Validate543544
+Node: Using Info-validate544603
+Node: Unsplit546438
+Node: Tagifying547488
+Node: Splitting548344
+Node: Refilling Paragraphs549967
+Node: Refilling Paragraphs-Footnotes551636
+Ref: Refilling Paragraphs-Footnote-1551719
+Node: Command Syntax551882
+Node: Obtaining TeX554860
+Node: Copying This Manual555910
+Node: GNU Free Documentation License556164
+Node: Command and Variable Index576017
+Node: Concept Index604637
 
 End Tag Table

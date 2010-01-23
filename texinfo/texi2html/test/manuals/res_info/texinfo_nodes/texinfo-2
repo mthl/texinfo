@@ -1563,7 +1563,7 @@ are reading this in Info, you will not see the equation that appears in
 the printed manual.
 
   Analogously, you can use `@ifhtml ... @end ifhtml' to delimit a region
-to be included in HTML output only, and `@html ...  @end html' for a
+to be included in HTML output only, and `@html ... @end html' for a
 region of raw HTML (again, except that `@' is still the escape
 character, so the `@end' command can be recognized.)
 
@@ -5280,7 +5280,7 @@ And Finally ...
 
    * Write notes for yourself at the very end of a Texinfo file after
      the `@bye'.  None of the formatters process text after the `@bye';
-     it is as if the text were within `@ignore' ...  `@end ignore'.
+     it is as if the text were within `@ignore' ... `@end ignore'.
 
 
 File: texinfo,  Node: Sample Texinfo Files,  Next: Include Files,  Prev: Tips,  Up: Top

@@ -176,7 +176,7 @@ but , ,
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
 <literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
-<literal>@w{}</literal> <!-- /@w -->
+<literal>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</literal> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
 <literal>@dotaccent{a}</literal> a.
@@ -704,7 +704,7 @@ but , ,
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
 <literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
-<literal>@w{}</literal> <!-- /@w -->
+<literal>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</literal> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
 <literal>@dotaccent{a}</literal> a.
@@ -1228,7 +1228,7 @@ but , ,
 <literal>@var{--a}</literal> <replaceable>&ndash;a</replaceable>
 <literal>@verb{:--a:}</literal> --a
 <literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
-<literal>@w{}</literal> <!-- /@w -->
+<literal>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</literal> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> &ndash;a''
 <literal>@dotaccent{a}</literal> a.
@@ -1752,7 +1752,7 @@ but , ,
 <literal>@var{--a}</literal> <replaceable>--a</replaceable>
 <literal>@verb{:--a:}</literal> --a
 <literal>@verb{:a  &lt; &amp; @ % &quot; --    b:}</literal> a  &lt; &amp; @ % &quot; --    b
-<literal>@w{}</literal> <!-- /@w -->
+<literal>@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}</literal> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<!-- /@w -->
 <literal>@H{a}</literal> a''
 <literal>@H{--a}</literal> --a''
 <literal>@dotaccent{a}</literal> a.

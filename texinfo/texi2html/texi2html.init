@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.259 2010-01-20 00:36:01 pertusus Exp $
+# $Id: texi2html.init,v 1.260 2010-01-23 00:46:49 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -3147,12 +3147,12 @@ sub t2h_default_copy_style_map ($$;$)
       'b',          {},
       'cite',       {},
       'clicksequence', {},
-      'click',      {'function' => \&t2h_default_click_normal},
+      'click',      {'function' => \&t2h_default_click_normal, 'type' => 'simple_style'},
       'code',       {'args' => ['code']},
       'command',    {'args' => ['code']},
       'ctrl',       {'function' => \&t2h_default_ctrl,'type' => 'simple_style'}, 
       'dfn',        {}, 
-      'dmn',        {},   
+      'dmn',        {'type' => 'simple_style'},   
       'email',      {'args' => ['code', 'normal'], 
                        'function' => \&t2h_default_email,
                        'type' => 'simple_style'}, 
@@ -3188,7 +3188,7 @@ sub t2h_default_copy_style_map ($$;$)
       'verb',       {'args' => ['code'], },
       'titlefont',  {'function' => \&t2h_default_titlefont, 
             'type' => 'simple_style'},
-      'w',          {'type' => 'simple_style'},
+      'w',          {},
       'hyphenation', {'function' => \&t2h_default_hyphenation, 'args' => ['keep']},
      );
 

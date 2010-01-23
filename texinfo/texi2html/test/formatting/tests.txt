@@ -49,6 +49,7 @@ texi paragraph_in_samp.texi
 texi formats_only_titles.texi
 texi line_commands_comments_spaces.texi
 texi lightweight_markups.texi
+texi punctuation_in_command.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -126,6 +127,7 @@ simple_images simple_images.texi
 html-extrali_plain html-extrali.texi
 formats_only_titles formats_only_titles.texi
 line_commands_comments_spaces line_commands_comments_spaces.texi
+punctuation_in_command punctuation_in_command.texi
 
 lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
 quotation_docbook quotation.texi --docbook

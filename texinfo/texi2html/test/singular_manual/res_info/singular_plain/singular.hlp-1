@@ -2208,7 +2208,7 @@ in the rest are equal.
           ring r = (7,a,b,c),(x,y,z),Dp;
 
    * the ring K[x,y,z] , where K=Z/7[a]  denotes the algebraic extension
-     of degree 2 of Z/7  by a.    In other words, K  is the finite field
+     of degree 2 of Z/7  by a.  In other words, K  is the finite field
      with 49 elements.  In the first case, a  denotes an algebraic
      element over Z/7  with minimal polynomial mu_a=a^2+a+3, in the
      second case, a

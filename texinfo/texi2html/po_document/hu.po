@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 15:14+0100\n"
+"POT-Creation-Date: 2010-01-21 20:52+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -28,7 +28,7 @@ msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
 #: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
-#: formats/html.init:2476
+#: formats/html.init:2478
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
@@ -368,7 +368,7 @@ msgstr "{reference_name}"
 msgid "on @emph{{date}}"
 msgstr "ekkor: @emph{{date}}"
 
-#: texi2html.init:6788 formats/html.init:2680 maintained_extra/html32.init:172
+#: texi2html.init:6788 formats/html.init:2682 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
@@ -576,24 +576,24 @@ msgstr "alszakasz"
 msgid "The node you are looking for is at {href}."
 msgstr "A keresett csomópont itt található: {href}."
 
-#: formats/html.init:2704 formats/info.init:2742
+#: formats/html.init:2706 formats/info.init:2762
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
 
-#: formats/html.init:2721
+#: formats/html.init:2723
 msgid "Index Entry"
 msgstr "Tárgymutató-bejegyzés"
 
-#: formats/html.init:2721
+#: formats/html.init:2723
 msgid "Section"
 msgstr "Szakasz"
 
-#: formats/html.init:2833 maintained_extra/mediawiki.init:1031
+#: formats/html.init:2835 maintained_extra/mediawiki.init:1031
 msgid "Jump to"
 msgstr "Ugorj ide"
 
-#: formats/info.init:3059
+#: formats/info.init:3079
 msgid "(outside of any node)"
 msgstr "(bármelyik csomóponton kívül)"
 

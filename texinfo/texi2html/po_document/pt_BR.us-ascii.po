@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 15:14+0100\n"
+"POT-Creation-Date: 2010-01-21 20:52+0100\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -28,7 +28,7 @@ msgid "Short Table of Contents"
 msgstr "Breve Sum@'ario"
 
 #: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
-#: formats/html.init:2476
+#: formats/html.init:2478
 msgid "Footnotes"
 msgstr "Notas de Rodap@'e"
 
@@ -367,7 +367,7 @@ msgstr ""
 msgid "on @emph{{date}}"
 msgstr "em @emph{{date}}"
 
-#: texi2html.init:6788 formats/html.init:2680 maintained_extra/html32.init:172
+#: texi2html.init:6788 formats/html.init:2682 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
@@ -576,24 +576,24 @@ msgstr "Subse@,{c}@~ao Um-Quatro"
 msgid "The node you are looking for is at {href}."
 msgstr "O nodo que vo@^e est@'a olhando est@'a em {href}."
 
-#: formats/html.init:2704 formats/info.init:2742
+#: formats/html.init:2706 formats/info.init:2762
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
 
-#: formats/html.init:2721
+#: formats/html.init:2723
 msgid "Index Entry"
 msgstr "Entrada de @'Indice"
 
-#: formats/html.init:2721
+#: formats/html.init:2723
 msgid "Section"
 msgstr "Se@,{c}@~ao"
 
-#: formats/html.init:2833 maintained_extra/mediawiki.init:1031
+#: formats/html.init:2835 maintained_extra/mediawiki.init:1031
 msgid "Jump to"
 msgstr "Pular para"
 
-#: formats/info.init:3059
+#: formats/info.init:3079
 msgid "(outside of any node)"
 msgstr ""
 

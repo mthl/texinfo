@@ -1,0 +1,15 @@
+Element
+*******
+
+Text.)
+follows.
+
+Text. Email . <mailto:.>
+dmn 1.
+and text. indicateurl <.>
+and kbd .
+and emph .
+text. asis in code .
+text. a dot before a emph open .
+and in emph.
+

@@ -1532,7 +1532,7 @@ insert any necessary changes.
 
    *WARNING: do not use `COPY' with CVS 1.9 or earlier - such versions
 of CVS will copy one version of your file over the other, wiping out the
-previous contents.* The `-m' wrapper option only affects behavior when
+previous contents.*  The `-m' wrapper option only affects behavior when
 merging is done on update; it does not affect how files are stored.  See
 *note Binary files::, for more on binary files.
 

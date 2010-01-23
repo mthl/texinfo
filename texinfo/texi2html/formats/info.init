@@ -102,11 +102,12 @@ $no_paragraph_commands{'anchor'} = 1;
 @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp');
 # slanted? 
-@asis_commands = ('asis', 'b', 'ctrl', 'dmn', 'i', 'math', 'sc', 't', 'r', 
+@asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'math', 'sc', 't', 'r', 
   'slanted', 'var', 'titlefont', 'verb', 'clickstyle', 'headitemfont');
 @chevron_commands = ('key', 'indicateurl');
 
 %info_default_accent_commands = ();
+%info_default_leaf_command = ();
 
 %style_map = ();
 t2h_default_copy_style_map (\%default_style_map, \%style_map);
@@ -140,6 +141,7 @@ foreach my $command (keys(%style_map))
         $style_map{$command}->{'end'} = '>';
         next;
     }
+    $info_default_leaf_command{$command} = 1 if ($style_map{$command}->{'type'} and $style_map{$command}->{'type'} eq 'simple_style');
 }
 
 $style_map{'strong'}->{'begin'} = '*';
@@ -150,10 +152,8 @@ $style_map{'emph'}->{'begin'} = '_';
 $style_map{'emph'}->{'end'} = '_';
 
 
-%info_default_leaf_command = ();
-foreach my $command ('uref', 'url', 'email', 'click')
+foreach my $command (keys(%info_default_leaf_command))
 {
-   $info_default_leaf_command{$command} = 1;
    if (defined ($style_map{$command}->{'args'}))
    {
       $style_map{$command}->{'orig_args'} = [ @{$style_map{$command}->{'args'}} ];
@@ -865,20 +865,7 @@ sub info_default_process_content($$)
       my $line_added_before_item = 0;
       my $indentation_done = 0;
       my $prepend_newline;
-      #$indent_length = $indent_level * $info_default_indent_length;
-      #my $indent_length_next_line;
-      # indent_length is also set here for table @item so in that case
-      # $info_default_indent_format_length{$item_pending} is not taken 
-      # into account, luckily it is 0.
 
-      #$indent_length = ($indent_level -1) * $info_default_indent_length
-      #      if ($indent_level and ($in_exdent or $table_item_line));
-      #if ($item_pending)
-      #{
-      #  $indent_length_next_line = $indent_length;
-      #  $indent_length = ($info_default_indent_format_length{$item_pending}
-      #             +($indent_level -1)* $info_default_indent_length);
-      #}
       if ($DEBUG)
       {
          my $text_item_pending = '';
@@ -891,8 +878,6 @@ sub info_default_process_content($$)
          $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
          my $pending_word_text = 'undef';
          $pending_word_text = "`$pending_word'" if (defined($pending_word));
-         #my $indent_length_next_line_text = $indent_length_next_line;
-         #$indent_length_next_line_text = '' if (!defined($indent_length_next_line_text));
          print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level($indent_length) in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending spaces: `$pending_spaces' word: $pending_word_text\n";
       }
       
@@ -1418,8 +1403,6 @@ sub info_default_process_content($$)
                   }
                   else
                   { 
-                      #my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
-                      #info_default_skip_spaces($current_next, $index_next, $close_next) if (defined($current_next));
                       info_default_skip_spaces($current, $index, $close);
                   }
               }
@@ -1442,7 +1425,7 @@ sub info_default_process_content($$)
               elsif ($content->{'command'} eq 'verbatim' or $content->{'command'} eq 'verbatiminclude')
               {
                   # $preformatted cannot be used here since preformatted 
-                  # is closed before a verbatim
+                  # is closed before a verbatim, $preformatted_format is used
                   if (!$preformatted_format and $indent_level != 0)
                   {
                       if (!$info_state->{'blank_line'} and $info_state->{'only_spaces'})
@@ -1559,31 +1542,79 @@ sub info_default_process_content($$)
               {
                   #print STDERR "IN_PARA text\n";
                   my $new_text = $content->{'text'};
-                  # a punctuation at the end of a command is treated like a punctuation in 
-                  # plain text, except for @: and accent commands.
-                  if ((!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands')) and get_conf('frenchspacing') ne 'on' and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
+                  # first find if within a code style command @var, @cite, @math
+                  # acceptable: asis b dfn, emph i slanted sansserif r sc strong t w
+                  my $current_tested = $content;
+                  my $no_punctation_munging_command;
+                  while ($current_tested)
                   {
-                      # the info_default_after_punctuation_characters should
-                      # always be in the same text element except if the
-                      # punctuation character is in a command.
+                     if (defined($current_tested->{'command'}) and (($style_map{$current_tested->{'command'}} and $style_map{$current_tested->{'command'}}->{'args'} and $style_map{$current_tested->{'command'}}->{'args'}->[0] and $style_map{$current_tested->{'command'}}->{'args'}->[0] eq 'code') or $current_tested->{'command'} eq 'var' or $current_tested->{'command'} eq 'cite' or $current_tested->{'command'} eq 'math'))
+                     {
+                        $no_punctation_munging_command = 1;
+                        last; 
+                     }
+                     $current_tested = $current_tested->{'parent'};
+                  }
+                  # a punctuation at the end of line in a command is treated 
+                  # like a punctuation in plain text, except for @:,
+                  # accent commands, @dots, 'simple_style' command, and if in
+                  # a command as found out just above.
+
+                  if (!$no_punctation_munging_command and (!defined($content->{'command'}) or ($content->{'command'} ne ':' and $content->{'command'} ne 'accents_commands' and $content->{'command'} ne 'dots') and !$info_default_leaf_command{$content->{'command'}}) and get_conf('frenchspacing') ne 'on' and $new_text =~ /([$info_default_end_sentence_character])([$info_default_after_punctuation_characters]*)(\s*)$/)
+                  {
+                      my $spaces = $3;
                       if (chomp($new_text))
                       {
                           $new_text =~ s/(\s*)$/  /;
                       }
                       else
                       {
-                          # spaces may be in following commands, and also 
-                          # info_default_after_punctuation_characters
+                          # these variables hold the place where the end 
+                          # of line characters are normalized.
+                          my ($current_start_from, $index_start_from, $close_start_from) = ($current, $index, $close);
+                          my $only_after_punctuation_characters = 1;
+                          my $spaces_to_normalize = 0;
+
+                          # first find whether there are only 
+                          # after_punctuation_characters followed by spaces
+                          # and find the place where the 
+                          # after_punctuation_characters end
                           my ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current, $index, $close);
-                          # the info_default_after_punctuation_characters
-                          # may be in the next elemnt, if it is the only 
-                          # text in the element and the element is only text
-                          if (defined($content->{'command'}) and defined($current_next) and !defined($command_next) and $text_next =~ /^([$info_default_after_punctuation_characters]*)(\s*)$/ and chomp ($text_next))
+                          # go through the text as long as there are after_punctuation_characters
+                          if (!$spaces)
                           {
-                              my $content = $current_next->{'content'}->[$index_next];
-                              $content->{'text'} =~ s/(\s*)$/  /;
+                              while (1)
+                              {
+                                  # !defined($text_next) catches many special 
+                                  # commands, like anchor, index. Not sure if 
+                                  # it is right or wrong.
+                                  # Also a style_map command never stops
+                                  # the search, so that @emp{ or @strong{
+                                  # begin and end are not taken into account
+                                  if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*') or ($text_next !~ /^[$info_default_after_punctuation_characters]*(\s*)$/ and (!defined($command_next) or !$style_map{$command_next})))
+                                  {
+                                      $only_after_punctuation_characters = 0;
+                                      last;
+                                  }
+                                  my $text_next_kept = $text_next;
+                                  # begin normalizing spaces at the last place
+                                  # where there are after_punctuation_characters
+                                  $current_start_from = $current_next;
+                                  $index_start_from = $index_next;
+                                  $index_start_from = $index_next;
+                                  ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
+                                  if ($text_next_kept =~ /^[$info_default_after_punctuation_characters]*\s+$/)
+                                  {
+                                      if (chomp($text_next_kept))
+                                      {
+                                          $spaces_to_normalize = 1;
+                                      }
+                                      last;
+                                  }
+                              }
                           }
-                          else
+                          # check if there are only spaces until end of line
+                          if ($only_after_punctuation_characters and !$spaces_to_normalize)
                           {
                               while (1)
                               {
@@ -1591,7 +1622,7 @@ sub info_default_process_content($$)
                                   # commands, like anchor, index. Not sure if 
                                   # it is right or wrong.
                                   last if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*'));
-                                  if ($text_next =~ /\S/)
+                                  if ($text_next =~ /\S/ and (!defined($command_next) or !$style_map{$command_next}))
                                   {
                                       last;
                                   }
@@ -1599,13 +1630,20 @@ sub info_default_process_content($$)
                                   {
                                       if (chomp($text_next))
                                       {
-                                           info_default_skip_spaces($current, $index, $close);
-                                           $new_text =~ s/(\s*)$/  /;
+                                           $spaces_to_normalize = 1;
                                            last;
                                       }
                                   }
                                   ($current_next, $index_next, $close_next, $text_next, $command_next) = info_default_next ($current_next, $index_next, $close_next);
                               }
+                              
+                          }
+                          if ($spaces_to_normalize)
+                          {
+                              # now do the spaces normalization
+                              info_default_skip_spaces($current_start_from, $index_start_from, $close_start_from);
+                              my $content = $current_start_from->{'content'}->[$index_start_from];
+                              $content->{'text'} =~ s/(\s*)$/  /;
                           }
                       }
                   }
@@ -2086,6 +2124,11 @@ sub info_default_style($$$$$$$$$$)
      # more accents on the command_stack, otherwise it is put in the tree.
      # Other commands text results are put in the tree below.
       $text = &{$style->{'function'}}($command, $args, $command_stack, $state, $line_nr, $kept_line_nrs);
+   }
+   elsif ($info_default_leaf_command{$command})
+   { # no formatting function but a leaf command, it is just replaced 
+     # by the formatted argument, and put in the tree below.
+      $text = $args->[0];
    }
    if (defined($style->{'begin'}) and !$no_open)
    {
