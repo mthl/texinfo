@@ -3,6 +3,9 @@
 	* formats/info.init: handle @w rightly, by considering everything
 	in @w to be a pending word, even the spaces.
 	* formats/html.init: handle @w correctly in html.
+	* i18n/es, po_document/es.us-ascii.po: fix some accented characters 
+	in the Spanish translations (Francisco Vila).
+	* *Makefile*: use automake 1.11.1.
 
 2009-01-22   Patrice Dumas  <pertusus@free.fr>
 

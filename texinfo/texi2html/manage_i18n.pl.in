@@ -25,6 +25,15 @@
 # for file in ../i18n/*; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file`; post='.us-ascii.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/us-ascii/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
 #  for file in ../i18n/hu ../i18n/it ; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file`; post='.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/utf-8/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
 
+# remove every translations while keeping the header
+#  msgfilter --keep-header -i es.us-ascii.po 'true' > es.us-ascii.po-head
+# duplicate english messages to msgstr
+#  msgen es.us-ascii.po-head > es.us-ascii.po-en
+# use the new translations
+#  msgfilter --keep-header -i es.us-ascii.po-en ../manage_i18n.pl filter -I ../ --lang es > es.us-ascii.po-new
+# 
+# mv es.us-ascii.po-new es.us-ascii.po
+
 # This requires perl version 5 or higher
 require 5.0;
 
@@ -625,7 +634,7 @@ elsif ($command eq 'filter')
     my $string_to_find = <STDIN>;
     my $translated_string = get_translation_string(\@searched_dirs, $dir, $lang, $string_to_find);
     $translated_string = '' if (!defined($translated_string));
-#print STDERR "LLL $string_to_find $translated_string\n";
+#print STDERR "LLL $string_to_find|$translated_string\n";
     if (defined($charset))
     { # this doesn't work, and is not needed
        binmode(STDOUT, ":encoding($charset)");

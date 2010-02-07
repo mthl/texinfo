@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:04+0100\n"
+"POT-Creation-Date: 2010-02-07 22:06+0100\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -30,7 +30,7 @@ msgstr "Resumen del Contenido"
 #: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
 #: formats/html.init:2482
 msgid "Footnotes"
-msgstr "Notas el pie"
+msgstr "Notas al pie"
 
 #: texi2html.pl:12541
 #, perl-brace-format
@@ -225,8 +225,8 @@ msgid ""
 "This document was generated on @i{{date}} using @uref{{program_homepage}, @i"
 "{{program}}}."
 msgstr ""
-"Este documento se gener el @i{{date}} utilizando @uref{{program_homepage}, @i"
-"{{program}}}."
+"Este documento se gener@'o el @i{{date}} utilizando @uref"
+"{{program_homepage}, @i{{program}}}."
 
 #: texi2html.init:1637
 #, perl-brace-format
@@ -234,7 +234,7 @@ msgid ""
 "This document was generated using @uref{{program_homepage}, @emph"
 "{{program}}}."
 msgstr ""
-"Este documento se gener utilizando @uref{{program_homepage}, @emph"
+"Este documento se gener@'o utilizando @uref{{program_homepage}, @emph"
 "{{program}}}."
 
 #: texi2html.init:5205 texi2html.init:5328 formats/html.init:1576
@@ -527,8 +527,9 @@ msgid ""
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
 "structure:"
 msgstr ""
-"  donde el @strong{ Ejemplo } supone que la posicin actual est en la @strong"
-"{ Sub-subsecci@'on uno-dos-tres } de un documento de la estructura siguiente:"
+"  donde el @strong{ Ejemplo } supone que la posici@'on actual est@'a en la "
+"@strong{ Sub-subsecci@'on uno-dos-tres } de un documento de la estructura "
+"siguiente:"
 
 #: formats/html.init:1417
 msgid "Section One"
@@ -575,7 +576,7 @@ msgstr "Subsecci@'on uno-cuatro"
 msgid "The node you are looking for is at {href}."
 msgstr "El nodo que busca se encuentra en {href}."
 
-#: formats/html.init:2710 formats/info.init:2811
+#: formats/html.init:2710 formats/info.init:2812
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -592,7 +593,7 @@ msgstr "Secci@'on"
 msgid "Jump to"
 msgstr "Saltar a"
 
-#: formats/info.init:3128
+#: formats/info.init:3129
 msgid "(outside of any node)"
 msgstr ""
 

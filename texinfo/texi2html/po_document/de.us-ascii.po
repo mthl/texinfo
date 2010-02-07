@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:04+0100\n"
+"POT-Creation-Date: 2010-02-07 22:06+0100\n"
 "PO-Revision-Date: 2008-03-19\n"
 "Last-Translator: Reinhold Kainhofer <reinhold@kainhofer.com>\n"
 "Language-Team: Unknown\n"
@@ -575,7 +575,7 @@ msgstr "Unterabschnitt 1-4"
 msgid "The node you are looking for is at {href}."
 msgstr "Der Knoten, den Sie sehen, befindet sich bei {href}"
 
-#: formats/html.init:2710 formats/info.init:2811
+#: formats/html.init:2710 formats/info.init:2812
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -592,7 +592,7 @@ msgstr "Abschnitt"
 msgid "Jump to"
 msgstr "Springe zu"
 
-#: formats/info.init:3128
+#: formats/info.init:3129
 msgid "(outside of any node)"
 msgstr ""
 
