@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.154 2009-10-26 21:52:23 karl Exp $
+# $Id: texi2dvi,v 1.155 2010-02-07 00:14:21 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.154 $'
+rcs_revision='$Revision: 1.155 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -186,12 +186,12 @@ absolute ()
       local rel
       rel=$orig_pwd/`func_dirname "$1"`
       if test -d "$rel"; then
-	(cd "$rel" 2>/dev/null &&
-	 local n
-	 n=`pwd`/`basename "$1"`"$slashes"
-	 echo "$n")
+        (cd "$rel" 2>/dev/null &&
+         local n
+         n=`pwd`/`basename "$1"`"$slashes"
+         echo "$n")
       else
-	error 1 "not a directory: $rel"
+        error 1 "not a directory: $rel"
       fi
       ;;
   esac
@@ -244,12 +244,12 @@ findprog ()
     # We have to try this both for $1 and $1.exe.
     #
     # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
-    # also `test -f' has this enhancement, bot not on DJGPP.  (Both are
+    # also `test -f' has this enhancement, but not on DJGPP.  (Both are
     # design decisions, so there is little chance to make them consistent.)
     # Thusly, it seems to be difficult to make use of these enhancements.
     #
-    if  { test -f "$dir/$1"	&& test -x "$dir/$1"; } ||
-	{ test -f "$dir/$1.exe"	&& test -x "$dir/$1.exe"; }; then
+    if  { test -f "$dir/$1"     && test -x "$dir/$1"; } ||
+        { test -f "$dir/$1.exe" && test -x "$dir/$1.exe"; }; then
       return 0
     fi
   done
@@ -317,7 +317,7 @@ General options:
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
   -o, --output=OFILE  leave output in OFILE (implies --clean);
-			only one input FILE may be specified in this case
+                        only one input FILE may be specified in this case
   -q, --quiet         no output unless errors (implies --batch)
   -s, --silent        same as --quiet
   -v, --version       display version information and exit successfully
@@ -350,10 +350,10 @@ Build modes:
       --tidy           same as --build=tidy
   -c, --clean          same as --build=clean
       --build-dir=DIR  specify where the tidy compilation is performed;
-			 implies --tidy;
-			 defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
+                         implies --tidy;
+                         defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
   --mostly-clean       remove the auxiliary files and directories
-			 but not the output
+                         but not the output
   --max-iterations=N   don't process files more than N times
 
 The MODE specifies where the TeX compilation takes place, and, as a
@@ -362,11 +362,11 @@ can also be set using the environment variable TEXI2DVI_BUILD_MODE.
 
 Valid MODEs are:
   \`local'      compile in the current directory, leaving all the auxiliary
-	       files around.  This is the traditional TeX use.
+               files around.  This is the traditional TeX use.
   \`tidy'       compile in a local *.t2d directory, where the auxiliary files
-	       are left.  Output files are copied back to the original file.
+               are left.  Output files are copied back to the original file.
   \`clean'      same as \`tidy', but remove the auxiliary directory afterwards.
-	       Every compilation therefore requires the full cycle.
+               Every compilation therefore requires the full cycle.
 
 Using the \`tidy' mode brings several advantages:
   - the current directory is not cluttered with plethora of temporary files.
@@ -613,19 +613,19 @@ absolute_filenames ()
   do
     case $dir in
       EMPTY)
-	res=$res$path_sep
-	;;
+        res=$res$path_sep
+        ;;
       *)
-	if test -d "$dir"; then
-	  res=$res$path_sep`absolute "$dir"`
-	else
-	  # Even if $dir is not a directory, preserve it in the path.
-	  # It might contain metacharacters that TeX will expand in
-	  # turn, e.g., /some/path/{a,b,c}.  This will not get the
-	  # implicit absolutification of the path, but we can't help that.
-	  res=$res$path_sep$dir
-	fi
-	;;
+        if test -d "$dir"; then
+          res=$res$path_sep`absolute "$dir"`
+        else
+          # Even if $dir is not a directory, preserve it in the path.
+          # It might contain metacharacters that TeX will expand in
+          # turn, e.g., /some/path/{a,b,c}.  This will not get the
+          # implicit absolutification of the path, but we can't help that.
+          res=$res$path_sep$dir
+        fi
+        ;;
     esac
   done
   echo "$res"
@@ -641,10 +641,10 @@ output_base_name ()
   case $oname in
     '') echo "$1";;
      *) local out_noext
-	out_noext=`noext "$oname"`
-	local file_ext
-	file_ext=`echo "$1" | sed 's/^.*\.//'`
-	echo "$out_noext.$file_ext"
+        out_noext=`noext "$oname"`
+        local file_ext
+        file_ext=`echo "$1" | sed 's/^.*\.//'`
+        echo "$out_noext.$file_ext"
       ;;
   esac
 }
@@ -790,7 +790,7 @@ xref_file_p ()
   case `sed '1q' "$1"` in
     "\\input texinfo"*) return 1;;
     [\\''@]*)           return 0;;
-	   *)           return 1;;
+           *)           return 1;;
   esac
 }
 
@@ -817,15 +817,15 @@ generated_files_get ()
     echo $file
     case $in_lang in
       texinfo)
-	# texindex: texinfo.cp -> texinfo.cps
+        # texindex: texinfo.cp -> texinfo.cps
        if index_file_p $file; then
-	 echo ${file}s
+         echo ${file}s
        fi
        ;;
       latex)
-	if aux_file_p $file; then
+        if aux_file_p $file; then
           # bibtex: *.aux -> *.bbl and *.blg.
-	  echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
+          echo $file | sed 's/^\(.*\)\.aux$/\1.bbl/'
           echo $file | sed 's/^\(.*\)\.aux$/\1.blg/'
           # -recorder: .fls
           echo $file | sed 's/^\(.*\)\.aux$/\1.fls/'
@@ -900,7 +900,7 @@ xref_files_changed ()
     if cmp -s "$this_file" "$work_bak/$this_file"; then :; else
       verbose "xref file `echo $this_file | sed 's|\./||g'` differed ..."
       if $debug; then
-	diff -u "$work_bak/$this_file" "$this_file"
+        diff -u "$work_bak/$this_file" "$this_file"
       fi
       return 0
     fi
@@ -929,12 +929,12 @@ run_tex ()
     latex:*:pdf)
         tex=${PDFLATEX:-pdflatex};;
     texinfo:*:dvi)
-	# MetaPost also uses the TEX environment variable.  If the user
-	# has set TEX=latex for that reason, don't bomb out.
-	case $TEX in
-	  *latex) tex=tex;; # don't bother trying to find etex
-	       *) tex=$TEX
-	esac;;
+        # MetaPost also uses the TEX environment variable.  If the user
+        # has set TEX=latex for that reason, don't bomb out.
+        case $TEX in
+          *latex) tex=tex;; # don't bother trying to find etex
+               *) tex=$TEX
+        esac;;
     texinfo:*:pdf) tex=$PDFTEX;;
 
     *) error 1 "$out_lang not supported for $in_lang";;
@@ -956,7 +956,7 @@ run_tex ()
        sort -u |
        while read d
        do
-	 ensure_dir "$work_build/$d"
+         ensure_dir "$work_build/$d"
        done
        ;;
   esac
@@ -1030,9 +1030,9 @@ run_tex ()
     true:*["$space$tab$newline\"#\$%\\^_{}~"]*)
       _run_tex_file_name=`basename "$in_input"`
       if test ! -f "$_run_tex_file_name"; then
-	# It might not be a file, clear it.
-	run rm -f "$_run_tex_file_name"
-	run ln -s "$in_input"
+        # It might not be a file, clear it.
+        run rm -f "$_run_tex_file_name"
+        run ln -s "$in_input"
       fi
       cmd="$cmd '$_run_tex_file_name'"
       ;;
@@ -1082,11 +1082,11 @@ run_bibtex ()
   if test -r "$in_noext.aux" \
      && test -r "$in_noext.log" \
      && (grep 'Warning:.*Citation.*undefined' "$in_noext.log" \
-	  || grep '.*Undefined citation' "$in_noext.log" \
-	  || grep 'No file .*\.bbl\.' "$in_noext.log") \
-	  || (grep 'No \.aux file' "$in_noext.log" \
-	      && grep '^\\bibdata' "$in_noext.aux") \
-	>&6 2>&1; \
+          || grep '.*Undefined citation' "$in_noext.log" \
+          || grep 'No file .*\.bbl\.' "$in_noext.log") \
+          || (grep 'No \.aux file' "$in_noext.log" \
+              && grep '^\\bibdata' "$in_noext.aux") \
+        >&6 2>&1; \
   then
     for f in `generated_files_get "$in_noext" bibaux_file_p`
     do
@@ -1178,7 +1178,7 @@ run_thumbpdf ()
       run_tex
     else
       report "$thumbpdf exited with bad status." \
-	     "Ignoring its output."
+             "Ignoring its output."
     fi
   fi
 }
@@ -1194,7 +1194,7 @@ run_dvipdf ()
     for i in "$DVIPDF" dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf;
     do
       if findprog $i; then
-	dvipdf=$i
+        dvipdf=$i
       fi
     done
   fi
@@ -1375,7 +1375,7 @@ run_makeinfo ()
     # happens with gettext 0.14.5, at least.
     sed "$comment_iftex" "$command_line_filename" \
       | eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
-	-o /dev/null --macro-expand=- \
+        -o /dev/null --macro-expand=- \
       | sed "$uncomment_iftex" >"$in_src"
     # Continue only if everything succeeded.
     if test $? -ne 0 \
@@ -1435,18 +1435,18 @@ run_recode ()
 
   if test $in_lang = texinfo; then
     pgm='s/^ *@documentencoding  *\([^ ][^ ]*\) *$/\1/
-	t found
-	d
-	:found
-	q'
+        t found
+        d
+        :found
+        q'
     encoding=`sed -e "$pgm" "$in_input"`
     if $recode && test -n "$encoding" && findprog recode; then
       if test -n "$recode_from"; then
-	from=$recode_from
-	to=$encoding
+        from=$recode_from
+        to=$encoding
       else
-	from=$encoding
-	to=$texinfo
+        from=$encoding
+        to=$texinfo
       fi
       verbose "Recoding from $from to $to."
       # _rcd.  The Texinfo file recoded in 7bit.
@@ -1454,10 +1454,10 @@ run_recode ()
       in_rcd=$work_rcd/$in_base
       ensure_dir "$work_rcd"
       if recode "$encoding..$to" <"$in_input" >"$in_rcd" \
-	 && test -s "$in_rcd"; then
-	in_input=$in_rcd
+         && test -s "$in_rcd"; then
+        in_input=$in_rcd
       else
-	verbose "Recoding failed, using original input."
+        verbose "Recoding failed, using original input."
       fi
     fi
   fi
@@ -1528,7 +1528,7 @@ run_hevea ()
     case $1 in
     html|text) move_to_dest "$out_base";;
     info) # There can be foo.info-1, foo.info-2 etc.
-	       move_to_dest "$out_base"*;;
+               move_to_dest "$out_base"*;;
     esac
   else
     error 1 "$hevea exited with bad status, quitting."
@@ -1543,11 +1543,11 @@ run_core_conversion ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
     *:dvi|*:pdf|latex:tex4ht:html)
-	run_tex;;
+        run_tex;;
     latex:*:html|latex:*:text|latex:*:info)
-	run_hevea $out_lang;;
+        run_hevea $out_lang;;
     *)
-	error 1 "invalid input/output combination: $in_lang/$out_lang";;
+        error 1 "invalid input/output combination: $in_lang/$out_lang";;
   esac
 }
 
@@ -1673,8 +1673,8 @@ while test x"$1" != x"$arg_sep"; do
     -~ ) catcode_special=false;;
     # Silently and without documentation accept -b and --b[atch] as synonyms.
     -b | --batch) batch=true;;
-	 --build)      shift; build_mode=$1;;
-	 --build-dir)  shift; build_dir=$1; build_mode=tidy;;
+         --build)      shift; build_mode=$1;;
+         --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
     -D | --debug) debug=true;;
     -e | -E | --expand) expand=true;;
@@ -1709,13 +1709,13 @@ while test x"$1" != x"$arg_sep"; do
     --) # What remains are not options.
       shift
       while test x"$1" != x"$arg_sep"; do
-	set dummy ${1+"$@"} "$1"; shift
-	shift
+        set dummy ${1+"$@"} "$1"; shift
+        shift
       done
       break;;
     -*)
       error 1 "Unknown or ambiguous option \`$1'." \
-	      "Try \`--help' for more information."
+              "Try \`--help' for more information."
       ;;
     *) set dummy ${1+"$@"} "$1"; shift;;
    esac
@@ -1842,7 +1842,7 @@ input_file_name_decode ()
       # Let AUC-TeX error parser deal with line numbers.
       line_error=false
       command_line_filename=`\
-	expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
+        expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
       ;;
   esac
 
@@ -1912,8 +1912,8 @@ do
          # an invisible file. The sed expression is fragile if the cwd
          # has active characters.  Transform / into ! so that we don't
          # need `mkdir -p'.  It might be something to reconsider.
-	 t2ddir=$build_dir/`echo "$out_dir_abs/$out_noext.t2d" |
-	     sed "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
+         t2ddir=$build_dir/`echo "$out_dir_abs/$out_noext.t2d" |
+             sed "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
   esac
   # Remove it at exit if clean mode.
   trap "cleanup" 0 1 2 15

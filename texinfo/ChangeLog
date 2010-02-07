@@ -1,3 +1,11 @@
+2010-02-06  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: untabify.
+
+2010-01-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Two Arguments): blank line consistency.
+
 2010-01-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (exampleindent): no longer ignored in HTML.
