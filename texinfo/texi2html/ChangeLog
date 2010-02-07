@@ -1,3 +1,8 @@
+2009-02-07   Patrice Dumas  <pertusus@free.fr>
+
+	* formats/info.init: handle @w rightly, by considering everything
+	in @w to be a pending word, even the spaces.
+
 2009-01-22   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/info.init: don't munge punctuation when in code style

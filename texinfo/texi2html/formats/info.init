@@ -631,6 +631,7 @@ sub info_default_process_line_text($$$)
       $text = ' ' x ($indent_length - $line_width_counter) . $text;
    }
    $line_width_counter += t2h_default_string_width($text);
+# FIXME this is a bug, already chomed above!
    if (chomp($chomped_text))
    {
       $line_passed = 1;
@@ -641,14 +642,15 @@ sub info_default_process_line_text($$$)
 
 # Beware that there is a pending word if the text doesn't end with
 # a space
-sub info_default_process_para_text($$$$$$;$)
+sub info_default_process_para_text($$$$$;$$)
 {
    my $text = shift;
    my $line_char_counter = shift;
-   my $pending_spaces = shift;
-   my $pending_word = shift;
+   my $pending_spaces_word = shift;
    my $indent_length = shift;
    my $max_column = shift;
+   my $keep_end_of_lines = shift;
+   $keep_end_of_lines = 0 if (!$keep_end_of_lines);
 # indentation for the lines except for the first one
    my $indent_length_next = shift;
    $indent_length = 0 if (!defined($indent_length));
@@ -657,71 +659,83 @@ sub info_default_process_para_text($$$$$$;$)
    my $line_passed = 0;
    my $result = '';
 
-   #print STDERR "process_text(indent($indent_length), spaces `$pending_spaces') line_char_counter $line_char_counter `$text'\n";
+   #print STDERR "process_text(indent($indent_length,$indent_length_next),keep_eol $keep_end_of_lines)  spaces `$pending_spaces_word->{'spaces'}') line_char_counter $line_char_counter |$text|\n";
    
    while ($text ne '')
    {
-      #my $pending_word_text = 'UNDEF';
-      #$pending_word_text = $pending_word  if (defined($pending_word));
-      #print STDERR "l_c_c $line_char_counter  pending_word $pending_word_text, pending_spaces `$pending_spaces', result `$result'\n";
-      if ($text =~ s/^(\s+)//)
+      #print STDERR "l_c_c $line_char_counter  pending_word ".var_to_str($pending_spaces_word->{'word'}).", pending_spaces `$pending_spaces_word->{'spaces'}', result `$result'\n";
+      if (!$keep_end_of_lines and $text =~ s/^(\s+)//)
       {
           my $new_spaces = $1;
-          # in general there are no end of lines in the lines cut. However, it
-          # may happen with @* in @def* lines
+          # in general there are no end of lines in the lines cut, since they
+          # are replaced by spaces in the main loop. However, it may happen 
+          # with @* in @def* lines
           my @lines = split /^/, $new_spaces;
           my $eol_spaces;
+          # last line is in $new_spaces, other lines are in $eol_spaces
           if (@lines > 1)
           {
               $new_spaces = pop @lines;
               $eol_spaces = join ("", @lines);
-              #print STDERR "EOL_SPACES[$line_char_counter](+$pending_spaces) `$eol_spaces'\n";
+              #print STDERR "EOL_SPACES[$line_char_counter](+$pending_spaces_word->{'spaces'}) `$eol_spaces'\n";
           }
-          if (defined($pending_word))
+          if (defined($pending_spaces_word->{'word'}))
           {
-             if ($indent_length > $line_char_counter + t2h_default_string_width($pending_spaces))
+             # add spaces in front if needed for the indentation
+             if ($indent_length > $line_char_counter + t2h_default_string_width($pending_spaces_word->{'spaces'}))
              {
-                 $pending_spaces = ' ' x ($indent_length - $line_char_counter) . $pending_spaces;
+                 $pending_spaces_word->{'spaces'} = ' ' x ($indent_length - $line_char_counter) . $pending_spaces_word->{'spaces'};
              }
-             $result .= $pending_spaces . $pending_word;
-             $line_char_counter += t2h_default_string_width($pending_spaces)+t2h_default_string_width($pending_word);
-             $pending_spaces = $new_spaces;
-             $pending_word = undef;
+             $result .= $pending_spaces_word->{'spaces'} . $pending_spaces_word->{'word'};
+             $line_char_counter += t2h_default_string_width($pending_spaces_word->{'spaces'})+t2h_default_string_width($pending_spaces_word->{'word'});
+             $pending_spaces_word->{'spaces'} = $new_spaces;
+             $pending_spaces_word->{'word'} = undef;
          }
          elsif (!$eol_spaces)
          {
-             $pending_spaces .= $new_spaces;
+             $pending_spaces_word->{'spaces'} .= $new_spaces;
          }
          if ($eol_spaces)
-         {
-             #$result .= $pending_spaces . $eol_spaces;
+         { 
              $result .= $eol_spaces;
              $line_passed += scalar(@lines);
              $indent_length = $indent_length_next;
              $line_char_counter = 0;
-             #$pending_spaces = $new_spaces;
-             $pending_spaces = '';
+             $pending_spaces_word->{'spaces'} = '';
          }
-         if (t2h_default_string_width($pending_spaces) +  $line_char_counter > $max_column)
+         if ((t2h_default_string_width($pending_spaces_word->{'spaces'}) +  $line_char_counter > $max_column))
          {
-             $pending_spaces = '';
+             $pending_spaces_word->{'spaces'} = '';
              $result .= "\n";
              $line_passed++;
              $indent_length = $indent_length_next;
              $line_char_counter = 0;
          }
       }
-      elsif ($text =~ s/^([^\s]+)//)
+      else
       {
-         my $word = $1;
-         $pending_word = '' if (!defined($pending_word));
-         $pending_word .= $word;
-         # The $line_char_counter != 0 is here to cope with the case of a 
-         # word longer than $line_char_counter followed by more letters:
-         # a line would be passed each time some text is appended.
-         if ((t2h_default_string_width($pending_spaces)+t2h_default_string_width($pending_word) + $line_char_counter > $max_column) and $line_char_counter != 0)
+         my $word;
+         if ($keep_end_of_lines)
          {
-             $pending_spaces = '';
+             $word = $text;
+             $text = '';
+         }
+         elsif ($text =~ s/^([^\s]+)//)
+         {
+            $word = $1;
+         }
+         #else
+         #{
+         #    die "BUG: Impossible situation.\n";
+         #}
+         $pending_spaces_word->{'word'} = '' if (!defined($pending_spaces_word->{'word'}));
+         $pending_spaces_word->{'word'} .= $word;
+         # The $line_char_counter != 0 is here to cope with the case of a 
+         # word longer than $line_char_counter followed by more text:
+         # a line would be passed each time some piece text is appended.
+         if ((t2h_default_string_width($pending_spaces_word->{'spaces'})+t2h_default_string_width($pending_spaces_word->{'word'}) + $line_char_counter > $max_column) and $line_char_counter != 0)
+         {
+             $pending_spaces_word->{'spaces'} = '';
              $result .= "\n";
              $line_passed++;
              $indent_length = $indent_length_next;
@@ -729,7 +743,7 @@ sub info_default_process_para_text($$$$$$;$)
          }
       }
    }
-   return ($line_char_counter, $pending_spaces, $pending_word, $line_passed, $result)
+   return ($line_char_counter, $pending_spaces_word, $line_passed, $result)
 }
 
 sub info_default_skip_spaces($$$)
@@ -776,26 +790,23 @@ sub info_default_skip_spaces($$$)
     }
 }
 
-sub info_default_store_pending($$$;$)
+sub info_default_store_pending($$;$)
 {
    my $line_char_counter = shift;
-   my $pending_spaces = shift;
-   my $pending_word = shift;
+   my $pending_spaces_word = shift;
    my $indent_length = shift;
 
    $indent_length = 0 if (!defined($indent_length));
    my $indent_text = '';
    $indent_text = ' ' x $indent_length;
 
-   #my $pending_word_text = 'undef';
-   #$pending_word_text = $pending_word if (defined($pending_word));
-   #print STDERR "store_pending(spaces `$pending_spaces', indent($indent_length) `$indent_text' word `$pending_word_text'\n";
-   my $result = $pending_spaces;
-   $pending_spaces = '';
-   if (defined($pending_word))
+   #print STDERR "store_pending(spaces `$pending_spaces_word->{'spaces'}', indent($indent_length) `$indent_text' word `".var_to_str($pending_spaces_word->{'word'})."'\n";
+   my $result = $pending_spaces_word->{'spaces'};
+   $pending_spaces_word->{'spaces'} = '';
+   if (defined($pending_spaces_word->{'word'}))
    {
-      $result .= $pending_word;
-      $pending_word = undef;
+      $result .= $pending_spaces_word->{'word'};
+      $pending_spaces_word->{'word'} = undef;
    }
 
    my $chomped_result = $result;
@@ -806,7 +817,7 @@ sub info_default_store_pending($$$;$)
    }
 
    $line_char_counter += t2h_default_string_width($result);
-   return ($line_char_counter, $pending_spaces, $pending_word, $result);
+   return ($line_char_counter, $pending_spaces_word, $result);
 }
 
 sub info_default_output($)
@@ -836,13 +847,14 @@ sub info_default_process_content($$)
    my $line_char_counter = 0;
    my $all_line_passed = 0;
 
-   my $pending_spaces = '';
-   my $pending_word;
+   my $pending_spaces_word;
+   $pending_spaces_word->{'spaces'} = '';
    my $preformatted = 0;
    my $indent_level = 0;
    my $item_pending;
    my $in_exdent = 0;
    my $in_para = 0;
+   my $in_w = 0;
    my $table_item_line = 0;
    my $in_table_item = 0;
    my $max_column = get_conf('fillcolumn');
@@ -876,9 +888,7 @@ sub info_default_process_content($$)
          $text_command = $content->{'command'} if defined($content->{'command'});
          my $in_node_count = 0;
          $in_node_count = $info_state->{'line_count'} if defined($info_state->{'line_count'});
-         my $pending_word_text = 'undef';
-         $pending_word_text = "`$pending_word'" if (defined($pending_word));
-         print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level($indent_length) in_exdent $in_exdent only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending spaces: `$pending_spaces' word: $pending_word_text\n";
+         print STDERR "($text_command|$text_length|$close|${all_line_passed}+$in_node_count|l_c_cnt $line_char_counter)  prfrmted $preformatted para $in_para indent_lvl $indent_level($indent_length) in_exdent $in_exdent in_w $in_w only_spaces $info_state->{'only_spaces'} blank_line $info_state->{'blank_line'} table_item_line $table_item_line in_table_item $in_table_item item_pending $text_item_pending spaces: `$pending_spaces_word->{'spaces'}' word: ".main::var_to_str($pending_spaces_word->{'word'})."\n";
       }
       
       if ($close)
@@ -938,10 +948,10 @@ sub info_default_process_content($$)
               # pending text, for example, if there is an ending line like
               #         Some text@c a comment
               my $pending;
-              ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
+              ($line_char_counter, $pending_spaces_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces_word, $indent_length);
               $text_added .= $pending if (defined($pending));
               $text_added =~ s/\s*$//;
-              $pending_spaces = '';
+              $pending_spaces_word->{'spaces'} = '';
               $in_para = 0;
               $info_state->{'indent_para'} = undef;
               $text_added .= "\n" unless (($line_char_counter + t2h_default_string_width($text_added)) == 0);
@@ -960,6 +970,10 @@ sub info_default_process_content($$)
           {
               #$text_added = "\n" . $text_added unless ($info_state->{'blank_line'});
               $prepend_newline = 1 unless ($info_state->{'blank_line'});
+          }
+          elsif ($content->{'command'} eq 'w')
+          {
+              $in_w--;
           }
           elsif ($paragraph_style{$content->{'command'}})
           {
@@ -1147,13 +1161,21 @@ sub info_default_process_content($$)
       {
           if ($content->{'command'})
           {
+              # if processing a paragraph, there may be some pending text 
+              # and spaces, as the idea is to write them down only when
+              # there is a space in case of pending text, or when there is some
+              # text in case of pending space. So all the commands 
+              # that should write something within paragraph must flush the
+              # pending text/spaces _before_ they output something, or the
+              # text order will be reversed, with the pending things output
+              # after the other commands text.
               my $pending_added_length = 0;
               my $pending_added_bytes = 0;
 
               if ($content->{'command'} eq 'anchor' or $content->{'command'} eq 'image' or $content->{'command'} eq 'index_command' or $content->{'command'} eq 'sp' or $content->{'raw_command'})
               {
                   my $pending;
-                  ($line_char_counter, $pending_spaces, $pending_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces, $pending_word, $indent_length);
+                  ($line_char_counter, $pending_spaces_word, $pending) = info_default_store_pending($line_char_counter, $pending_spaces_word, $indent_length);
                   # here spaces out of any environment are ignored.
                   if ($in_para or $preformatted or $pending =~ /\S/)
                   { # this has to be done before the anchor related code
@@ -1173,6 +1195,10 @@ sub info_default_process_content($$)
                   {
                      main::line_warn(__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $content->{'line_nr'});
                   }
+              }
+              elsif ($content->{'command'} eq 'w')
+              {
+                  $in_w++ if ($content->{'content'});
               }
               elsif ($content->{'command'} eq 'anchor' or ($content->{'command'} eq 'float' and $content->{'anchor_reference'}))
               {
@@ -1235,13 +1261,13 @@ sub info_default_process_content($$)
               }
               elsif ($content->{'command'} eq '*' and !$preformatted)
               {
-                 if (defined($pending_word))
+                 if (defined($pending_spaces_word->{'word'}))
                  {
-                    $text_added .= $pending_spaces . $pending_word;
-                    $pending_word = undef;
+                    $text_added .= $pending_spaces_word->{'spaces'} . $pending_spaces_word->{'word'};
+                    $pending_spaces_word->{'word'} = undef;
                  }
                  # spaces preceding @* are skipped
-                 $pending_spaces = '';
+                 $pending_spaces_word->{'spaces'} = '';
                  $text_added .=  $content->{'text'};
                  # just like following spaces
                  info_default_skip_spaces($current, $index, $close);
@@ -1343,13 +1369,13 @@ sub info_default_process_content($$)
               {
                   
                   my $dummy_line_passed;
-                  print STDERR "BUG: defined pending_word before DEFINITION_LINE\n" if defined($pending_word);
-                  #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces,$indent_length,$in_para,$max_column): $content->{'text'}";
-                  ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_para_text($content->{'text'}, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $max_column, $indent_length+2*$info_default_indent_length);
-                  $text_added .= $pending_spaces;
-                  $pending_spaces = '';
-                  #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces) -> $text_added";
-                  print STDERR "BUG: defined pending_word after DEFINITION_LINE\n" if defined($pending_word);
+                  print STDERR "BUG: defined pending_word before DEFINITION_LINE\n" if defined($pending_spaces_word->{'word'});
+                  #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces_word->{'spaces'},$indent_length,$in_para,$max_column): $content->{'text'}";
+                  ($line_char_counter, $pending_spaces_word, $dummy_line_passed, $text_added) = info_default_process_para_text($content->{'text'}, $line_char_counter, $pending_spaces_word, $indent_length, $max_column, 0, $indent_length+2*$info_default_indent_length);
+                  $text_added .= $pending_spaces_word->{'spaces'};
+                  $pending_spaces_word->{'spaces'} = '';
+                  #print STDERR "DEFINITION_LINE($line_char_counter,$pending_spaces_word->{'spaces'}) -> $text_added";
+                  print STDERR "BUG: defined pending_word after DEFINITION_LINE\n" if defined($pending_spaces_word->{'word'});
                   $indentation_done = 1;
                   
                   goto new_text;
@@ -1705,7 +1731,7 @@ sub info_default_process_content($$)
           # below.
           $indentation_done = 1;
           my $dummy_line_passed;
-          ($line_char_counter, $pending_spaces, $pending_word, $dummy_line_passed, $text_added) = info_default_process_para_text($text_added, $line_char_counter, $pending_spaces, $pending_word, $indent_length, $max_column, $indent_level * $info_default_indent_length) if ($text_added ne '');
+          ($line_char_counter, $pending_spaces_word, $dummy_line_passed, $text_added) = info_default_process_para_text($text_added, $line_char_counter, $pending_spaces_word, $indent_length, $max_column, $in_w, $indent_level * $info_default_indent_length) if ($text_added ne '');
       }
       elsif ($info_state->{'align_stack'}->[-1]->{'command'} ne 'center' and $info_state->{'align_stack'}->[-1]->{'command'} ne 'flushright')
       {
@@ -2166,7 +2192,7 @@ sub info_default_header ()
     $output_basename =~ s/^.*\///;
     my $result = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename. ";
     my $dummy;
-    ($dummy, $dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, '', undef, undef, get_conf('fillcolumn'));
+    ($dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, {'spaces' => ''}, undef, get_conf('fillcolumn'));
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     if ($info_default_dir_specification)
@@ -2579,7 +2605,8 @@ sub info_default_print_section
         if (get_conf('footnotestyle') eq 'separate')
         {
             my $node_ref = $info_default_current_node;
-            # FIXME warning
+            # thee is a warning when processing the footnote, like
+            # "Footnote defined without parent node"
             $node_ref = {'text' => 'no node', 'file' => ''} if (!defined($node_ref));
             $footnote_element = { 'NodeUp' => $node_ref, 
                        'text' => $node_ref->{'text'} . "-Footnotes", 

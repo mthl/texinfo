@@ -4062,8 +4062,8 @@ kill just `FOO', type `Meta-b Meta-d' instead of `Meta-<DEL>'.
 
    `Meta-t' (`transpose-words') exchanges the word before or containing
 point with the following word.  The delimiter characters between the
-words do not move.  For example, transposing `FOO, BAR' results in `BAR,
-FOO' rather than `BAR FOO,'.  *Note Transpose::, for more on
+words do not move.  For example, transposing `FOO, BAR' results in
+`BAR, FOO' rather than `BAR FOO,'.  *Note Transpose::, for more on
 transposition and on arguments to transposition commands.
 
    To operate on the next N words with an operation which applies

@@ -1,0 +1,50 @@
+test_w.texi(,2) 
+test_w.texi(,3) @setfilename test_w.info
+test_w.texi(,4) 
+test_w.texi(,5) @node Top
+test_w.texi(,6) @top Element
+test_w.texi(,7) 
+test_w.texi(,8) @w{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
+test_w.texi(,9) ccc dddd}.
+test_w.texi(,10) 
+test_w.texi(,11) a a a a a a a a a a a a a a a a a a a a a a a a a a a a  @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
+test_w.texi(,12) 
+test_w.texi(,13) 
+test_w.texi(,14) @w{}
+test_w.texi(,15) 
+test_w.texi(,16) @w{ a rr   
+test_w.texi(,17)   ggg.}
+test_w.texi(,18) 
+test_w.texi(,19) AA@w{}bbb.
+test_w.texi(,20) 
+test_w.texi(,21) FF@w{d}nnn.
+test_w.texi(,22) 
+test_w.texi(,23) aa@w{  f  f}ggg.
+test_w.texi(,24) 
+test_w.texi(,25) aa2@w{  f  f }ggg2.
+test_w.texi(,26) 
+test_w.texi(,27) 
+test_w.texi(,28) aa3 @w{  f  f }ggg3.
+test_w.texi(,29) 
+test_w.texi(,30) 
+test_w.texi(,31) aa4 @w{  f  f } ggg4.
+test_w.texi(,32) 
+test_w.texi(,33) aa5 @w{} ggg5.
+test_w.texi(,34) 
+test_w.texi(,35) aa6 @w{}ggg6.
+test_w.texi(,36) 
+test_w.texi(,37) aa6@w{} ggg6.
+test_w.texi(,38) 
+test_w.texi(,39) aaf @w{ } bbb.
+test_w.texi(,40) 
+test_w.texi(,41) begin and end quotations: @w{@t{`@w{}`@dots{}'@w{}'}}.  This
+test_w.texi(,42) convention should be followed in Texinfo files.  TeX converts
+test_w.texi(,43) two single quotes to left- and right-hand doubled.
+test_w.texi(,44) 
+test_w.texi(,45) @multitable {aaaaaaaaa} {bbbbbbbbbbb}
+test_w.texi(,46) @item @w{aaaaaaaa
+test_w.texi(,47) bbbbbbbbbb}
+test_w.texi(,48) @tab gg
+test_w.texi(,49) @end multitable
+test_w.texi(,50) 
+test_w.texi(,51) @bye

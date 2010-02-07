@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 20:52+0100\n"
+"POT-Creation-Date: 2010-02-06 13:07+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Federico Bruni <brunology@gmx.com>\n"
 "Language-Team: Unknown\n"
@@ -28,7 +28,7 @@ msgid "Short Table of Contents"
 msgstr "Indice breve"
 
 #: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
-#: formats/html.init:2478
+#: formats/html.init:2482
 msgid "Footnotes"
 msgstr "Note a piè di pagina"
 
@@ -37,20 +37,20 @@ msgstr "Note a piè di pagina"
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nessun valore per `{value}'@}"
 
-#: texi2html.init:923 texi2html.init:975 formats/html.init:688
+#: texi2html.init:923 texi2html.init:975 formats/html.init:689
 msgid "Top"
 msgstr "Inizio"
 
-#: texi2html.init:924 texi2html.init:976 formats/html.init:689
+#: texi2html.init:924 texi2html.init:976 formats/html.init:690
 msgid "Contents"
 msgstr "Contenuti"
 
-#: texi2html.init:925 texi2html.init:977 formats/html.init:690
+#: texi2html.init:925 texi2html.init:977 formats/html.init:691
 msgid "Overview"
 msgstr "Panoramica"
 
 #: texi2html.init:926 texi2html.init:953 texi2html.init:978
-#: formats/html.init:691
+#: formats/html.init:692
 msgid "Index"
 msgstr "Indice"
 
@@ -67,7 +67,7 @@ msgid "Up"
 msgstr "Su"
 
 #: texi2html.init:933 texi2html.init:935 texi2html.init:985
-#: formats/html.init:698
+#: formats/html.init:699
 msgid "Next"
 msgstr "Successivo"
 
@@ -75,11 +75,11 @@ msgstr "Successivo"
 msgid "Following"
 msgstr "Seguente"
 
-#: texi2html.init:943 formats/html.init:708
+#: texi2html.init:943 formats/html.init:709
 msgid "Next file"
 msgstr "File successivo"
 
-#: texi2html.init:944 formats/html.init:709
+#: texi2html.init:944 formats/html.init:710
 msgid "Previous file"
 msgstr "File precedente"
 
@@ -123,11 +123,11 @@ msgstr "Sezione successiva sullo stesso livello"
 msgid "Up node"
 msgstr "Nodo superiore"
 
-#: texi2html.init:961 formats/html.init:700
+#: texi2html.init:961 formats/html.init:701
 msgid "Next node"
 msgstr "Nodo successivo"
 
-#: texi2html.init:962 formats/html.init:701
+#: texi2html.init:962 formats/html.init:702
 msgid "Previous node"
 msgstr "Nodo precedente"
 
@@ -175,7 +175,7 @@ msgstr "Indietro"
 msgid "FastBack"
 msgstr "Indietro veloce"
 
-#: texi2html.init:983 formats/html.init:696
+#: texi2html.init:983 formats/html.init:697
 msgid "Prev"
 msgstr "Prec."
 
@@ -237,18 +237,18 @@ msgstr ""
 "Questo documento è stato generato con @uref{{program_homepage}, @emph"
 "{{program}}}."
 
-#: texi2html.init:5205 texi2html.init:5328 formats/html.init:1575
-#: formats/html.init:1673
+#: texi2html.init:5205 texi2html.init:5328 formats/html.init:1576
+#: formats/html.init:1674
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr "{style} {number}"
 
-#: texi2html.init:5227 formats/html.init:1589
+#: texi2html.init:5227 formats/html.init:1590
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr "{style}: {caption_first_line}"
 
-#: texi2html.init:5255 formats/html.init:1606
+#: texi2html.init:5255 formats/html.init:1607
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr "{style}: {shortcaption_first_line}"
@@ -368,7 +368,7 @@ msgstr "{reference_name}"
 msgid "on @emph{{date}}"
 msgstr "il @emph{{date}}"
 
-#: texi2html.init:6788 formats/html.init:2682 maintained_extra/html32.init:172
+#: texi2html.init:6788 formats/html.init:2686 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
@@ -480,47 +480,47 @@ msgstr "vedi {title_ref}"
 msgid "See {title_ref}"
 msgstr "Vedi {title_ref}"
 
-#: formats/html.init:693
+#: formats/html.init:694
 msgid "current"
 msgstr "attuale"
 
-#: formats/html.init:697
+#: formats/html.init:698
 msgid " Up "
 msgstr " Su "
 
-#: formats/html.init:699
+#: formats/html.init:700
 msgid "Node up"
 msgstr "Nodo superiore"
 
-#: formats/html.init:702
+#: formats/html.init:703
 msgid "Following node"
 msgstr "Nodo seguente"
 
-#: formats/html.init:719
+#: formats/html.init:720
 msgid "Untitled Document"
 msgstr "Documento senza titolo"
 
-#: formats/html.init:1373
+#: formats/html.init:1374
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "  I bottoni nei pannelli di navigazione hanno il seguente significato:"
 
-#: formats/html.init:1379
+#: formats/html.init:1380
 msgid "Button"
 msgstr "Bottone"
 
-#: formats/html.init:1380
+#: formats/html.init:1381
 msgid "Name"
 msgstr "Nome"
 
-#: formats/html.init:1381
+#: formats/html.init:1382
 msgid "Go to"
 msgstr "Vai a"
 
-#: formats/html.init:1382
+#: formats/html.init:1383
 msgid "From 1.2.3 go to"
 msgstr "Da 1.2.3 vai a"
 
-#: formats/html.init:1406
+#: formats/html.init:1407
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -530,69 +530,69 @@ msgstr ""
 "{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente "
 "struttura:"
 
-#: formats/html.init:1416
+#: formats/html.init:1417
 msgid "Section One"
 msgstr "Sezione uno"
 
-#: formats/html.init:1418
+#: formats/html.init:1419
 msgid "Subsection One-One"
 msgstr "Sottosezione Uno-Uno"
 
-#: formats/html.init:1425
+#: formats/html.init:1426
 msgid "Subsection One-Two"
 msgstr "Sottosezione Uno-Due"
 
-#: formats/html.init:1427
+#: formats/html.init:1428
 msgid "Subsubsection One-Two-One"
 msgstr "Sottosottosezione Uno-Due-Uno"
 
-#: formats/html.init:1428
+#: formats/html.init:1429
 msgid "Subsubsection One-Two-Two"
 msgstr "Sottosottosezione Uno-Due-Due"
 
-#: formats/html.init:1429
+#: formats/html.init:1430
 msgid "Subsubsection One-Two-Three"
 msgstr "Sottosottosezione Uno-Due-Tre"
 
-#: formats/html.init:1431
+#: formats/html.init:1432
 msgid "Current Position"
 msgstr "Posizione Attuale"
 
-#: formats/html.init:1432
+#: formats/html.init:1433
 msgid "Subsubsection One-Two-Four"
 msgstr "Sottosottosezione Uno-Due-Quattro"
 
-#: formats/html.init:1435
+#: formats/html.init:1436
 msgid "Subsection One-Three"
 msgstr "Sottosezione Uno-Tre"
 
-#: formats/html.init:1442
+#: formats/html.init:1443
 msgid "Subsection One-Four"
 msgstr "Sottosezione Uno-Quattro"
 
-#: formats/html.init:1462
+#: formats/html.init:1463
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "Il nodo che stai cercando è {href}"
 
-#: formats/html.init:2706 formats/info.init:2762
+#: formats/html.init:2710 formats/info.init:2798
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
 
-#: formats/html.init:2723
+#: formats/html.init:2727
 msgid "Index Entry"
 msgstr "Voce dell'indice"
 
-#: formats/html.init:2723
+#: formats/html.init:2727
 msgid "Section"
 msgstr "Sezione"
 
-#: formats/html.init:2835 maintained_extra/mediawiki.init:1031
+#: formats/html.init:2839 maintained_extra/mediawiki.init:1031
 msgid "Jump to"
 msgstr "Salta a"
 
-#: formats/info.init:3079
+#: formats/info.init:3115
 msgid "(outside of any node)"
 msgstr "(fuori da qualsiasi nodo)"
 

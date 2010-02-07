@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 20:52+0100\n"
+"POT-Creation-Date: 2010-02-06 13:07+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -28,7 +28,7 @@ msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
 #: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
-#: formats/html.init:2478
+#: formats/html.init:2482
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
@@ -37,20 +37,20 @@ msgstr "Lábjegyzet"
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs értéke ennek: `{value}'@}"
 
-#: texi2html.init:923 texi2html.init:975 formats/html.init:688
+#: texi2html.init:923 texi2html.init:975 formats/html.init:689
 msgid "Top"
 msgstr "Címoldal"
 
-#: texi2html.init:924 texi2html.init:976 formats/html.init:689
+#: texi2html.init:924 texi2html.init:976 formats/html.init:690
 msgid "Contents"
 msgstr "Tartalom"
 
-#: texi2html.init:925 texi2html.init:977 formats/html.init:690
+#: texi2html.init:925 texi2html.init:977 formats/html.init:691
 msgid "Overview"
 msgstr "Áttekintés"
 
 #: texi2html.init:926 texi2html.init:953 texi2html.init:978
-#: formats/html.init:691
+#: formats/html.init:692
 msgid "Index"
 msgstr "Tárgymutató"
 
@@ -67,7 +67,7 @@ msgid "Up"
 msgstr "Fel"
 
 #: texi2html.init:933 texi2html.init:935 texi2html.init:985
-#: formats/html.init:698
+#: formats/html.init:699
 msgid "Next"
 msgstr "Következő"
 
@@ -75,11 +75,11 @@ msgstr "Következő"
 msgid "Following"
 msgstr "Következő"
 
-#: texi2html.init:943 formats/html.init:708
+#: texi2html.init:943 formats/html.init:709
 msgid "Next file"
 msgstr "Következő fájl"
 
-#: texi2html.init:944 formats/html.init:709
+#: texi2html.init:944 formats/html.init:710
 msgid "Previous file"
 msgstr "Előző fájl"
 
@@ -123,11 +123,11 @@ msgstr "Következő szakasz ugyanazon a szinten"
 msgid "Up node"
 msgstr "Szülő csomópont"
 
-#: texi2html.init:961 formats/html.init:700
+#: texi2html.init:961 formats/html.init:701
 msgid "Next node"
 msgstr "Következő csomópont"
 
-#: texi2html.init:962 formats/html.init:701
+#: texi2html.init:962 formats/html.init:702
 msgid "Previous node"
 msgstr "Előző csomópont"
 
@@ -175,7 +175,7 @@ msgstr "Vissza"
 msgid "FastBack"
 msgstr "Visszaugrás"
 
-#: texi2html.init:983 formats/html.init:696
+#: texi2html.init:983 formats/html.init:697
 msgid "Prev"
 msgstr "Előző"
 
@@ -237,18 +237,18 @@ msgstr ""
 "Ezt a dokumentumot a(z) @uref{{program_homepage}, @emph{{program}}} "
 "generálta."
 
-#: texi2html.init:5205 texi2html.init:5328 formats/html.init:1575
-#: formats/html.init:1673
+#: texi2html.init:5205 texi2html.init:5328 formats/html.init:1576
+#: formats/html.init:1674
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr "{style} {number}"
 
-#: texi2html.init:5227 formats/html.init:1589
+#: texi2html.init:5227 formats/html.init:1590
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr "{style}: {caption_first_line}"
 
-#: texi2html.init:5255 formats/html.init:1606
+#: texi2html.init:5255 formats/html.init:1607
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr "{style}: {shortcaption_first_line}"
@@ -368,7 +368,7 @@ msgstr "{reference_name}"
 msgid "on @emph{{date}}"
 msgstr "ekkor: @emph{{date}}"
 
-#: texi2html.init:6788 formats/html.init:2682 maintained_extra/html32.init:172
+#: texi2html.init:6788 formats/html.init:2686 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
@@ -482,47 +482,47 @@ msgstr "ld. {title_ref}"
 msgid "See {title_ref}"
 msgstr "Ld. {title_ref}"
 
-#: formats/html.init:693
+#: formats/html.init:694
 msgid "current"
 msgstr "aktuális"
 
-#: formats/html.init:697
+#: formats/html.init:698
 msgid " Up "
 msgstr "Fel"
 
-#: formats/html.init:699
+#: formats/html.init:700
 msgid "Node up"
 msgstr "Szülő csomópont"
 
-#: formats/html.init:702
+#: formats/html.init:703
 msgid "Following node"
 msgstr "Következő csomópont"
 
-#: formats/html.init:719
+#: formats/html.init:720
 msgid "Untitled Document"
 msgstr "Névtelen dokumentum"
 
-#: formats/html.init:1373
+#: formats/html.init:1374
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "  A navigációs panelen levő gombok jelentése a következő:"
 
-#: formats/html.init:1379
+#: formats/html.init:1380
 msgid "Button"
 msgstr "Gomb"
 
-#: formats/html.init:1380
+#: formats/html.init:1381
 msgid "Name"
 msgstr "Név"
 
-#: formats/html.init:1381
+#: formats/html.init:1382
 msgid "Go to"
 msgstr "Cél"
 
-#: formats/html.init:1382
+#: formats/html.init:1383
 msgid "From 1.2.3 go to"
 msgstr "1.2.3-ból ide jutunk"
 
-#: formats/html.init:1406
+#: formats/html.init:1407
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -531,69 +531,69 @@ msgstr ""
 "  @strong{ Példánkban } az aktuális pozíció az @strong{ 1.2.3 alalszakasz } "
 "egy olyan dokumentumban, melynek szerkezete a következő:"
 
-#: formats/html.init:1416
+#: formats/html.init:1417
 msgid "Section One"
 msgstr "szakasz"
 
-#: formats/html.init:1418
+#: formats/html.init:1419
 msgid "Subsection One-One"
 msgstr "alszakasz"
 
-#: formats/html.init:1425
+#: formats/html.init:1426
 msgid "Subsection One-Two"
 msgstr "alszakasz"
 
-#: formats/html.init:1427
+#: formats/html.init:1428
 msgid "Subsubsection One-Two-One"
 msgstr "alalszakasz"
 
-#: formats/html.init:1428
+#: formats/html.init:1429
 msgid "Subsubsection One-Two-Two"
 msgstr "alalszakasz"
 
-#: formats/html.init:1429
+#: formats/html.init:1430
 msgid "Subsubsection One-Two-Three"
 msgstr "alalszakasz"
 
-#: formats/html.init:1431
+#: formats/html.init:1432
 msgid "Current Position"
 msgstr "Aktuális pozíció"
 
-#: formats/html.init:1432
+#: formats/html.init:1433
 msgid "Subsubsection One-Two-Four"
 msgstr "alalszakasz"
 
-#: formats/html.init:1435
+#: formats/html.init:1436
 msgid "Subsection One-Three"
 msgstr "alszakasz"
 
-#: formats/html.init:1442
+#: formats/html.init:1443
 msgid "Subsection One-Four"
 msgstr "alszakasz"
 
-#: formats/html.init:1462
+#: formats/html.init:1463
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "A keresett csomópont itt található: {href}."
 
-#: formats/html.init:2706 formats/info.init:2762
+#: formats/html.init:2710 formats/info.init:2798
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
 
-#: formats/html.init:2723
+#: formats/html.init:2727
 msgid "Index Entry"
 msgstr "Tárgymutató-bejegyzés"
 
-#: formats/html.init:2723
+#: formats/html.init:2727
 msgid "Section"
 msgstr "Szakasz"
 
-#: formats/html.init:2835 maintained_extra/mediawiki.init:1031
+#: formats/html.init:2839 maintained_extra/mediawiki.init:1031
 msgid "Jump to"
 msgstr "Ugorj ide"
 
-#: formats/info.init:3079
+#: formats/info.init:3115
 msgid "(outside of any node)"
 msgstr "(bármelyik csomóponton kívül)"
 

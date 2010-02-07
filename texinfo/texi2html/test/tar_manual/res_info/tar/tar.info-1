@@ -864,8 +864,8 @@ twice, like this:
 
 Note that you must double the hyphens properly each time.
 
-   Later in the tutorial, we will give examples using `--verbose
---verbose'.
+   Later in the tutorial, we will give examples using
+`--verbose --verbose'.
 
    The full output consists of six fields:
 
@@ -1313,11 +1313,11 @@ only print `apple'.
    Because `tar' preserves paths, file names must be specified as they
 appear in the archive (i.e., relative to the directory from which the
 archive was created).  Therefore, it is essential when specifying member
-names to `tar' that you give the exact member names.  For example, `tar
---list --file=bfiles.tar birds' would produce an error message something
-like `tar: birds: Not found in archive', because there is no member
-named `birds', only one named `./birds'.  While the names `birds' and
-`./birds' name the same file, _member_ names by default are compared
+names to `tar' that you give the exact member names.  For example,
+`tar --list --file=bfiles.tar birds' would produce an error message
+something like `tar: birds: Not found in archive', because there is no
+member named `birds', only one named `./birds'.  While the names `birds'
+and `./birds' name the same file, _member_ names by default are compared
 verbatim.
 
    However, `tar --list --file=bfiles.tar baboon' would respond with
@@ -1858,10 +1858,11 @@ function; they are interchangeable.
    Short options which require arguments take their arguments
 immediately following the option, usually separated by white space.  It
 is also possible to stick the argument right after the short option
-name, using no intervening space.  For example, you might write `-f
-archive.tar' or `-farchive.tar' instead of using `--file=archive.tar'.
-Both `--file=ARCHIVE-NAME' and `-f ARCHIVE-NAME' denote the option which
-indicates a specific archive, here named `archive.tar'.
+name, using no intervening space.  For example, you might write
+`-f archive.tar' or `-farchive.tar' instead of using
+`--file=archive.tar'.  Both `--file=ARCHIVE-NAME' and `-f ARCHIVE-NAME'
+denote the option which indicates a specific archive, here named
+`archive.tar'.
 
    Short options which take optional arguments take their arguments
 immediately following the option letter, _without any intervening white
@@ -2683,8 +2684,8 @@ File: tar.info,  Node: Option Summary,  Next: Short Option Summary,  Prev: Opera
 
 `--tape-length=NUM'
 `-L NUM'
-     Specifies the length of tapes that `tar' is writing as being NUM x
-     1024 bytes long.  *Note Using Multiple Tapes::.
+     Specifies the length of tapes that `tar' is writing as being
+     NUM x 1024 bytes long.  *Note Using Multiple Tapes::.
 
 `--test-label'
      Reads the volume label.  If an argument is specified, test whether

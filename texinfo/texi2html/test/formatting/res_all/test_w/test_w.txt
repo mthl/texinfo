@@ -1,0 +1,42 @@
+Element
+*******
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
+ccc dddd.
+
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a  a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+
+
+
+ a rr   
+  ggg.
+
+AAbbb.
+
+FFdnnn.
+
+aa  f  fggg.
+
+aa2  f  f ggg2.
+
+
+aa3   f  f ggg3.
+
+
+aa4   f  f  ggg4.
+
+aa5  ggg5.
+
+aa6 ggg6.
+
+aa6 ggg6.
+
+aaf   bbb.
+
+begin and end quotations: ``...''.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled.
+
+ aaaaaaaa
+bbbbbbbbbb gg
+
