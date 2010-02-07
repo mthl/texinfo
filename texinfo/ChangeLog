@@ -1,5 +1,10 @@
 2010-02-06  Karl Berry  <karl@gnu.org>
 
+	* util/texi2dvi (run_bibtex): ensure output from all greps
+	in chain are redirected, else undefined output from a LaTeX \cite
+	shows up even with --quiet.
+	From Wybo Dekker, 06 Feb 2010 13:33:48.
+	
 	* util/texi2dvi: untabify.
 
 2010-01-07  Karl Berry  <karl@gnu.org>
