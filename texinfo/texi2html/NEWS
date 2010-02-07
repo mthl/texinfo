@@ -40,6 +40,8 @@ This file records noteworthy changes.
 
 * Still provide the default output with --macro-expand.
 
+* Handle correctly @w in info and html.
+
 * COMPATIBILITY
   -------------
 

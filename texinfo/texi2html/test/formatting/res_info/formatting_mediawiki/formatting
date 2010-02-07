@@ -183,7 +183,7 @@ but , ,
 <code>@var<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <var>&ndash;a</var>
 <code>@verb<nowiki>{</nowiki>:--a:<nowiki>}</nowiki></code> <tt>--a</tt>
 <code>@verb<nowiki>{</nowiki>:a  &lt; &amp; @ % &quot; --    b:<nowiki>}</nowiki></code> <tt>a  &lt; &amp; @ % &quot; --    b</tt>
-<code>@w<nowiki>{</nowiki>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<nowiki>}</nowiki></code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+<code>@w<nowiki>{</nowiki>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<nowiki>}</nowiki></code> a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a
 <code>@H<nowiki>{</nowiki>a<nowiki>}</nowiki></code> a''
 <code>@H<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &ndash;a''
 <code>@dotaccent<nowiki>{</nowiki>a<nowiki>}</nowiki></code> &#551;
@@ -827,7 +827,7 @@ but , ,
 <code>@var<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <var>&ndash;a</var>
 <code>@verb<nowiki>{</nowiki>:--a:<nowiki>}</nowiki></code> <tt>--a</tt>
 <code>@verb<nowiki>{</nowiki>:a  &lt; &amp; @ % &quot; --    b:<nowiki>}</nowiki></code> <tt>a  &lt; &amp; @ % &quot; --    b</tt>
-<code>@w<nowiki>{</nowiki>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<nowiki>}</nowiki></code> a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+<code>@w<nowiki>{</nowiki>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a<nowiki>}</nowiki></code> a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a&nbsp;a
 <code>@H<nowiki>{</nowiki>a<nowiki>}</nowiki></code> a''
 <code>@H<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &ndash;a''
 <code>@dotaccent<nowiki>{</nowiki>a<nowiki>}</nowiki></code> &#551;

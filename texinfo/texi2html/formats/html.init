@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.43 2010-01-23 00:46:49 pertusus Exp $
+# $Id: html.init,v 1.44 2010-02-07 17:52:54 pertusus Exp $
 
 use strict;
 
@@ -1752,8 +1752,8 @@ sub html_default_normal_text($$$$$$$;$)
 
    $text = uc($text) if (in_cmd($style_stack, 'sc'));
    $text = &$protect_text($text) unless($in_raw_text);
-#   $text =~ s/ /&nbsp;/g
-#     if (!$in_raw_text and !$in_preformatted and in_cmd($style_stack, 'w'));
+   $text =~ s/ /&nbsp;/g
+     if (!$in_raw_text and !$in_preformatted and in_cmd($style_stack, 'w'));
    if (! $in_code and !$in_preformatted)
    {
        if ($USE_ISO and !$in_raw_text)

@@ -1948,7 +1948,7 @@ baboon
 <a name="index-verbose_002c-using-with-_002d_002dlist"></a>
 <p>If you use the &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) option with
 &lsquo;<samp>--list</samp>&rsquo;, then <code>tar</code> will print out a listing
-reminiscent of &lsquo;<samp>ls -l</samp>&rsquo;, showing owner, file size, and so
+reminiscent of &lsquo;<samp>ls&nbsp;-l</samp>&rsquo;, showing owner, file size, and so
 forth.  This output is described in detail in <a href="#verbose-member-listing">verbose member listing</a>.
 </p>
 <p>If you had used &lsquo;<samp>--verbose</samp>&rsquo; (&lsquo;<samp>-v</samp>&rsquo;) mode, the example
@@ -1998,20 +1998,20 @@ etc/mail/aliases
 <a name="index-list_002c-using-with-file-name-arguments"></a>
 <p>You can specify one or more individual member names as arguments when
 using &lsquo;<samp>list</samp>&rsquo;.  In this case, <code>tar</code> will only list the
-names of members you identify.  For example, <kbd>tar --list
---file=afiles.tar apple</kbd> would only print &lsquo;<tt>apple</tt>&rsquo;.
+names of members you identify.  For example, <kbd>tar&nbsp;--list
+--file=afiles.tar&nbsp;apple</kbd> would only print &lsquo;<tt>apple</tt>&rsquo;.
 </p>
 <p>Because <code>tar</code> preserves paths, file names must be specified as
 they appear in the archive (i.e., relative to the directory from which
 the archive was created).  Therefore, it is essential when specifying
 member names to <code>tar</code> that you give the exact member names.
-For example, <kbd>tar --list --file=bfiles.tar birds</kbd> would produce an
+For example, <kbd>tar&nbsp;--list&nbsp;--file=bfiles.tar&nbsp;birds</kbd> would produce an
 error message something like &lsquo;<samp>tar: birds: Not found in archive</samp>&rsquo;,
 because there is no member named &lsquo;<tt>birds</tt>&rsquo;, only one named
 &lsquo;<tt>./birds</tt>&rsquo;.  While the names &lsquo;<tt>birds</tt>&rsquo; and &lsquo;<tt>./birds</tt>&rsquo; name
 the same file, <em>member</em> names by default are compared verbatim.
 </p>
-<p>However, <kbd>tar --list --file=bfiles.tar baboon</kbd> would respond
+<p>However, <kbd>tar&nbsp;--list&nbsp;--file=bfiles.tar&nbsp;baboon</kbd> would respond
 with &lsquo;<tt>baboon</tt>&rsquo;, because this exact member name is in the archive file
 &lsquo;<tt>bfiles.tar</tt>&rsquo;.  If you are not sure of the exact file name,
 use <em>globbing patterns</em>, for example:
@@ -2214,10 +2214,10 @@ extracted &lsquo;<samp>blues</samp>&rsquo;.  You can confirm this by running <co
 &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;).
 </p>
 <p>Remember that as with other operations, specifying the exact member
-name is important.  <kbd>tar --extract --file=bfiles.tar birds</kbd>
+name is important.  <kbd>tar&nbsp;--extract&nbsp;--file=bfiles.tar&nbsp;birds</kbd>
 will fail, because there is no member named &lsquo;<tt>birds</tt>&rsquo;.  To extract
 the member named &lsquo;<tt>./birds</tt>&rsquo;, you must specify <kbd>tar
---extract --file=bfiles.tar ./birds</kbd>.  If you don&rsquo;t remember the
+--extract&nbsp;--file=bfiles.tar&nbsp;./birds</kbd>.  If you don&rsquo;t remember the
 exact member names, use &lsquo;<samp>--list</samp>&rsquo; (&lsquo;<samp>-t</samp>&rsquo;) option
 (see section <a href="#list">How to List Archives</a>).  You can also extract those members that match a
 specific <em>globbing pattern</em>.  For example, to extract from
@@ -2407,7 +2407,7 @@ archive.  You must use the correct member names, or wildcards, in order
 to extract the files from the archive.
 </p>
 <p>If you have forgotten the correct names of the files in the archive,
-use <kbd>tar --list --verbose</kbd> to list them correctly.
+use <kbd>tar&nbsp;--list&nbsp;--verbose</kbd> to list them correctly.
 </p>
 
 
@@ -2820,7 +2820,7 @@ possible to stick the argument right after the short option name, using
 no intervening space.  For example, you might write &lsquo;<samp>-f
 archive.tar</samp>&rsquo; or &lsquo;<samp>-farchive.tar</samp>&rsquo; instead of using
 &lsquo;<samp>--file=archive.tar</samp>&rsquo;.  Both &lsquo;<samp>--file=<var>archive-name</var></samp>&rsquo; and
-&lsquo;<samp>-f <var>archive-name</var></samp>&rsquo; denote the option which indicates a
+&lsquo;<samp>-f&nbsp;<var>archive-name</var></samp>&rsquo; denote the option which indicates a
 specific archive, here named &lsquo;<tt>archive.tar</tt>&rsquo;.
 </p>
 <p>Short options which take optional arguments take their arguments
@@ -2830,7 +2830,7 @@ white space characters</em>.
 <p>Short options&rsquo; letters may be clumped together, but you are not
 required to do this (as compared to old options; see below).  When
 short options are clumped as a set, use one (single) dash for them
-all, e.g., &lsquo;<samp><code>tar</code> -cvf</samp>&rsquo;.  Only the last option in
+all, e.g., &lsquo;<samp><code>tar</code>&nbsp;-cvf</samp>&rsquo;.  Only the last option in
 such a set is allowed to have an argument<a name="DOCF2" href="#FOOT2">(2)</a>.
 </p>
 <p>When the options are separated, the argument for each option which requires
@@ -2893,10 +2893,10 @@ the argument of &lsquo;<samp>-f</samp>&rsquo;.
 </p>
 <p>On the other hand, this old style syntax makes it difficult to match
 option letters with their corresponding arguments, and is often
-confusing.  In the command &lsquo;<samp>tar cvbf 20 /dev/rmt0</samp>&rsquo;, for example,
+confusing.  In the command &lsquo;<samp>tar&nbsp;cvbf&nbsp;20&nbsp;/dev/rmt0</samp>&rsquo;, for example,
 &lsquo;<samp>20</samp>&rsquo; is the argument for &lsquo;<samp>-b</samp>&rsquo;, &lsquo;<samp>/dev/rmt0</samp>&rsquo; is the
 argument for &lsquo;<samp>-f</samp>&rsquo;, and &lsquo;<samp>-v</samp>&rsquo; does not have a corresponding
-argument.  Even using short options like in &lsquo;<samp>tar -c -v -b 20 -f
+argument.  Even using short options like in &lsquo;<samp>tar&nbsp;-c&nbsp;-v&nbsp;-b&nbsp;20&nbsp;-f
 /dev/rmt0</samp>&rsquo; is clearer, putting all arguments next to the option they
 pertain to.
 </p>
@@ -2934,7 +2934,7 @@ supports them not only for historical reasons, but also because many
 people are used to them.  For compatibility with Unix <code>tar</code>,
 the first argument is always treated as containing command and option
 letters even if it doesn&rsquo;t start with &lsquo;<samp>-</samp>&rsquo;.  Thus, &lsquo;<samp>tar c</samp>&rsquo; is
-equivalent to &lsquo;<samp>tar -c</samp>&rsquo;: both of them specify the
+equivalent to &lsquo;<samp>tar&nbsp;-c</samp>&rsquo;: both of them specify the
 &lsquo;<samp>--create</samp>&rsquo; (&lsquo;<samp>-c</samp>&rsquo;) command to create an archive.
 </p>
 <hr>
@@ -4154,7 +4154,7 @@ extraction.<a name="DOCF7" href="#FOOT7">(7)</a> For example, if archive &lsquo;
 <dt>&lsquo;<samp>-L <var>num</var></samp>&rsquo;</dt>
 <dd>
 <p>Specifies the length of tapes that <code>tar</code> is writing as being
-<var>num</var> x 1024 bytes long.  See section <a href="#Using-Multiple-Tapes">Using Multiple Tapes</a>.
+<var>num</var>&nbsp;x&nbsp;1024 bytes long.  See section <a href="#Using-Multiple-Tapes">Using Multiple Tapes</a>.
 </p>
 <p><a name="g_t_002d_002dtest_002dlabel"></a>
 <a name="index-test_002dlabel_002c-summary"></a>
@@ -4398,7 +4398,7 @@ the earlier versions of <acronym>GNU</acronym> <code>tar</code>.  In the future 
 <acronym>GNU</acronym> <code>tar</code>, indeed.  The &lsquo;<samp>--version</samp>&rsquo; option
 causes <code>tar</code> to print information about its name, version,
 origin and legal status, all on standard output, and then exit
-successfully.  For example, &lsquo;<samp>tar --version</samp>&rsquo; might print:
+successfully.  For example, &lsquo;<samp>tar&nbsp;--version</samp>&rsquo; might print:
 </p>
 <div class="smallexample">
 <pre class="smallexample">tar (GNU tar) 1.15.92
@@ -4463,11 +4463,11 @@ form.  This manual is available in a variety of forms from
 <a href="http://www.gnu.org/software/tar/manual">http://www.gnu.org/software/tar/manual</a>.  It may be printed out of the <acronym>GNU</acronym> <code>tar</code>
 distribution, provided you have TeX already installed somewhere,
 and a laser printer around.  Just configure the distribution, execute
-the command &lsquo;<samp>make dvi</samp>&rsquo;, then print &lsquo;<tt>doc/tar.dvi</tt>&rsquo; the
+the command &lsquo;<samp>make&nbsp;dvi</samp>&rsquo;, then print &lsquo;<tt>doc/tar.dvi</tt>&rsquo; the
 usual way (contact your local guru to know how).  If <acronym>GNU</acronym> <code>tar</code>
 has been conveniently installed at your place, this
 manual is also available in interactive, hypertextual form as an Info
-file.  Just call &lsquo;<samp>info tar</samp>&rsquo; or, if you do not have the
+file.  Just call &lsquo;<samp>info&nbsp;tar</samp>&rsquo; or, if you do not have the
 <code>info</code> program handy, use the Info reader provided within
 <acronym>GNU</acronym> Emacs, calling &lsquo;<samp>tar</samp>&rsquo; from the main Info menu.
 </p>
@@ -8568,7 +8568,7 @@ command &lsquo;<samp>tar -cf src.tar --exclude='*.o' src</samp>&rsquo;.
 <p>Use the &lsquo;<samp>--exclude-from</samp>&rsquo; option to read a
 list of patterns, one per line, from <var>file</var>; <code>tar</code> will
 ignore files matching those patterns.  Thus if <code>tar</code> is
-called as &lsquo;<samp>tar -c -X foo .</samp>&rsquo; and the file &lsquo;<tt>foo</tt>&rsquo; contains a
+called as &lsquo;<samp>tar&nbsp;-c&nbsp;-X&nbsp;foo&nbsp;.</samp>&rsquo; and the file &lsquo;<tt>foo</tt>&rsquo; contains a
 single line &lsquo;<tt>*.o</tt>&rsquo;, no files whose names end in &lsquo;<tt>.o</tt>&rsquo; will be
 added to the archive.
 </p>
@@ -9572,7 +9572,7 @@ This is the default.
 directory entries themselves, but does not descend on them
 recursively.  Many people use <code>find</code> for locating files they
 want to back up, and since <code>tar</code> <em>usually</em> recursively
-descends on directories, they have to use the &lsquo;<samp>-not -type d</samp>&rsquo;
+descends on directories, they have to use the &lsquo;<samp>-not&nbsp;-type&nbsp;d</samp>&rsquo;
 test in their <code>find</code> invocation (see <a href="find.html#Type">Type: (find)Type</a> section &lsquo;Type test&rsquo; in <cite>Finding Files</cite>), as they usually do not want all the files in a
 directory. They then use the &lsquo;<samp>--files-from</samp>&rsquo; option to archive
 the files located via <code>find</code>.
@@ -12901,7 +12901,7 @@ the system is aware of block size idiosyncrasies, while <acronym>GNU</acronym> <
 requires an explicit specification for the block size,
 which it cannot guess.  This yields some people to consider
 <acronym>GNU</acronym> <code>tar</code> is misbehaving, because by comparison,
-<cite>the bundle <code>tar</code> works OK</cite>.  Adding <kbd>-b 256</kbd>,
+<cite>the bundle <code>tar</code> works OK</cite>.  Adding <kbd>-b&nbsp;256</kbd>,
 for example, might resolve the problem.
 </p>
 <p>If you use a non-default blocking factor when you create an archive, you
@@ -13090,7 +13090,7 @@ low, nor it should be too high.  <code>tar</code> uses by default a blocking of
 writing to disk.  Current tape technology would easily accommodate higher
 blockings.  Sun recommends a blocking of 126 for Exabytes and 96 for DATs.
 We were told that for some DLT drives, the blocking should be a multiple
-of 4Kb, preferably 64Kb (<kbd>-b 128</kbd>) or 256 for decent performance.
+of 4Kb, preferably 64Kb (<kbd>-b&nbsp;128</kbd>) or 256 for decent performance.
 Other manufacturers may use different recommendations for the same tapes.
 This might also depends of the buffering techniques used inside modern
 tape controllers.  Some imposes a minimum blocking, or a maximum blocking.
@@ -13910,7 +13910,7 @@ as a globbing-style pattern which must match the actual magnetic
 volume label.  See section <a href="#exclude">Excluding Some Files</a>, for a precise description of how match
 is attempted<a name="DOCF22" href="#FOOT22">(22)</a>.  If the switch &lsquo;<samp>--multi-volume</samp>&rsquo; (&lsquo;<samp>-M</samp>&rsquo;) is being used,
 the volume label matcher will also suffix <var>archive-label</var> by
-&lsquo;<samp> Volume [1-9]*</samp>&rsquo; if the initial match fails, before giving
+&lsquo;<samp>&nbsp;Volume&nbsp;[1-9]*</samp>&rsquo; if the initial match fails, before giving
 up.  Since the volume numbering is automatically added in labels at
 creation time, it sounded logical to equally help the user taking care
 of it when the archive is being read.
@@ -14489,7 +14489,7 @@ particular <acronym>GNU</acronym> <code>tar</code> always issues a warning if it
 <p>The blocks may be <em>blocked</em> for physical I/O operations.
 Each record of <var>n</var> blocks (where <var>n</var> is set by the
 &lsquo;<samp>--blocking-factor=<var>512-size</var></samp>&rsquo; (&lsquo;<samp>-b <var>512-size</var></samp>&rsquo;) option to <code>tar</code>) is written with a single
-&lsquo;<samp>write ()</samp>&rsquo; operation.  On magnetic tapes, the result of
+&lsquo;<samp>write&nbsp;()</samp>&rsquo; operation.  On magnetic tapes, the result of
 such a write is a single record.  When writing an archive,
 the last record of blocks should be written at the full size, with
 blocks after the zero block containing all zeros.  When reading
@@ -17529,8 +17529,8 @@ version 1.14.
 <p>There are plans to merge the <code>cpio</code> and
 <code>tar</code> packages into a single one which would be called
 <code>paxutils</code>.  So, who knows if, one of this days, the
-&lsquo;<samp>--version</samp>&rsquo; would not output &lsquo;<samp>tar (<acronym>GNU</acronym>
-paxutils) 3.2</samp>&rsquo;
+&lsquo;<samp>--version</samp>&rsquo; would not output &lsquo;<samp>tar&nbsp;(<acronym>GNU</acronym>
+paxutils)&nbsp;3.2</samp>&rsquo;
 </p><h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
 <p>This is well described in <cite>Unix-haters
 Handbook</cite>, by Simson Garfinkel, Daniel Weise &amp; Steven Strassmann, IDG

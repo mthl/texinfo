@@ -944,8 +944,8 @@ to the end and kill the word backwards with <kbd>Meta-&lt;DEL&gt;</kbd>.)
 <a name="index-M_002dDEL-2"></a>
 <p>  <kbd>Meta-&lt;DEL&gt;</kbd> (<code>backward-kill-word</code>) kills the word before
 point.  It kills everything from point back to where <kbd>Meta-b</kbd> would
-move to.  If point is after the space in &lsquo;<samp>FOO, BAR</samp>&rsquo;, then
-&lsquo;<samp>FOO, </samp>&rsquo; is killed.   To kill just &lsquo;<samp>FOO</samp>&rsquo;, type
+move to.  If point is after the space in &lsquo;<samp>FOO,&nbsp;BAR</samp>&rsquo;, then
+&lsquo;<samp>FOO,&nbsp;</samp>&rsquo; is killed.   To kill just &lsquo;<samp>FOO</samp>&rsquo;, type
 <kbd>Meta-b Meta-d</kbd> instead of <kbd>Meta-&lt;DEL&gt;</kbd>.
 </p>
 <a name="index-transposition-1"></a>
@@ -954,7 +954,7 @@ move to.  If point is after the space in &lsquo;<samp>FOO, BAR</samp>&rsquo;, th
 <p>  <kbd>Meta-t</kbd> (<code>transpose-words</code>) exchanges the word before or
 containing point with the following word.  The delimiter characters
 between the words do not move.  For example, transposing &lsquo;<samp>FOO,
-BAR</samp>&rsquo; results in &lsquo;<samp>BAR, FOO</samp>&rsquo; rather than &lsquo;<samp>BAR FOO,</samp>&rsquo;.
+BAR</samp>&rsquo; results in &lsquo;<samp>BAR,&nbsp;FOO</samp>&rsquo; rather than &lsquo;<samp>BAR&nbsp;FOO,</samp>&rsquo;.
 See section <a href="xemacs_16.html#Transpose">Transposing Text</a>, for more on transposition and on arguments to
 transposition commands.
 </p>
@@ -1463,9 +1463,9 @@ new paragraph.
 <a name="index-set_002dfill_002dprefix"></a>
 <p>  To specify a fill prefix, move to a line that starts with the desired
 prefix, put point at the end of the prefix, and give the command
-<kbd>C-x .</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
+<kbd>C-x&nbsp;.</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
 <kbd>C-x</kbd>.  To turn off the fill prefix, specify an empty prefix: type
-<kbd>C-x .</kbd> with point at the beginning of a line.
+<kbd>C-x&nbsp;.</kbd> with point at the beginning of a line.
 </p>
 <p>  When a fill prefix is in effect, the fill commands remove the fill
 prefix from each line before filling and insert it on each line after

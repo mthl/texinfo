@@ -2,6 +2,7 @@
 
 	* formats/info.init: handle @w rightly, by considering everything
 	in @w to be a pending word, even the spaces.
+	* formats/html.init: handle @w correctly in html.
 
 2009-01-22   Patrice Dumas  <pertusus@free.fr>
 

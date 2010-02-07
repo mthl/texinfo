@@ -1095,7 +1095,7 @@ better to include too much than to leave out something important.
 </p>
 <a name="index-Patches_002c-contributing"></a>
 <p>Patches are most welcome; if possible, please make them with
-&lsquo;<samp>diff -c</samp>&rsquo; (see <a href="diffutils.html#Top">(diffutils)Top</a> section &lsquo;Overview&rsquo; in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="emacs.html#Change-Log">(emacs)Change Log</a> section &lsquo;Change Log&rsquo; in <cite>The GNU Emacs Manual</cite>).
+&lsquo;<samp>diff&nbsp;-c</samp>&rsquo; (see <a href="diffutils.html#Top">(diffutils)Top</a> section &lsquo;Overview&rsquo; in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="emacs.html#Change-Log">(emacs)Change Log</a> section &lsquo;Change Log&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>When sending patches, if possible please do not encode or split them in
 any way; it&rsquo;s much easier to deal with one plain text message, however
@@ -1542,7 +1542,7 @@ paragraph.
 
 </li><li>
 If you mark off a region of the Texinfo file with the <code>@iftex</code>
-and <code>@end iftex</code> commands, that region will appear only in
+and <code>@end&nbsp;iftex</code> commands, that region will appear only in
 the printed copy; in that region, you can use certain commands
 borrowed from plain TeX that you cannot use in Info.  Conversely,
 text surrounded by <code>@ifnottex</code> and <code>@end ifnottex</code> will
@@ -1996,7 +1996,7 @@ This is the second item.
 <a name="index-Fox_002c-Brian"></a>
 <a name="index-Berry_002c-Karl"></a>
 <p>Richard M. Stallman invented the Texinfo format, wrote the initial
-processors, and created Edition 1.0 of this manual.  Robert J.
+processors, and created Edition 1.0 of this manual.  Robert&nbsp;J.
 Chassell greatly revised and extended the manual, starting with Edition
 1.1.  Brian Fox was responsible for the standalone Texinfo distribution
 until version 3.8, and wrote the standalone <code>makeinfo</code> and
@@ -2011,7 +2011,7 @@ Texinfo 3.8 (manual edition 2.22).
 <a name="index-Weinberg_002c-Zack"></a>
 <p>Our thanks go out to all who helped improve this work, particularly the
 indefatigable Eli Zaretskii and Andreas Schwab, who have provided
-patches beyond counting.  Fran&ccedil;ois Pinard and David D. Zuhn,
+patches beyond counting.  Fran&ccedil;ois Pinard and David&nbsp;D.&nbsp;Zuhn,
 tirelessly recorded and reported mistakes and obscurities.  Zack
 Weinberg did the impossible by implementing the macro syntax in
 &lsquo;<tt>texinfo.tex</tt>&rsquo;.  Special thanks go to Melissa Weisshaus for her
@@ -2416,7 +2416,7 @@ cursor in the &lsquo;<tt>*Occur*</tt>&rsquo; buffer.
 </dl>
 
 <p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd>C-u C-c C-s</kbd>, it will list not only those lines with the
+typing <kbd>C-u&nbsp;C-c&nbsp;C-s</kbd>, it will list not only those lines with the
 @-commands for <code>@chapter</code>, <code>@section</code>, and the like, but
 also the <code>@node</code> lines.  You can use <code>texinfo-show-structure</code>
 with a prefix argument to check whether the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
@@ -2427,7 +2427,7 @@ in the structure of the current chapter.  In this case, you can mark
 off the region of the buffer that you are interested in by using the
 <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command and
 <code>texinfo-show-structure</code> will work on only that region.  To see
-the whole buffer again, use <kbd>C-x n w</kbd> (<code>widen</code>).
+the whole buffer again, use <kbd>C-x&nbsp;n&nbsp;w</kbd> (<code>widen</code>).
 (See <a href="emacs.html#Narrowing">(emacs)Narrowing</a> section &lsquo;Narrowing&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
 information about the narrowing commands.)
 </p>
@@ -6735,12 +6735,12 @@ Larger Units of Text
 @end menu
 </pre></div>
 
-<p>In a menu, every line that begins with an &lsquo;<samp>* </samp>&rsquo; is a <em>menu
+<p>In a menu, every line that begins with an &lsquo;<samp>*&nbsp;</samp>&rsquo; is a <em>menu
 entry</em>.  (Note the space after the asterisk.)  A line that does not
-start with an &lsquo;<samp>* </samp>&rsquo; may also appear in a menu.  Such a line is
+start with an &lsquo;<samp>*&nbsp;</samp>&rsquo; may also appear in a menu.  Such a line is
 not a menu entry but is a menu comment line that appears in the Info
 file.  In the example above, the line &lsquo;<samp>Larger Units of Text</samp>&rsquo; is a
-menu comment line; the two lines starting with &lsquo;<samp>* </samp>&rsquo; are menu
+menu comment line; the two lines starting with &lsquo;<samp>*&nbsp;</samp>&rsquo; are menu
 <a name="index-Spaces_002c-in-menus"></a>
 entries.  Space characters in a menu are preserved as-is; this allows
 you to format the menu as you wish.
@@ -7105,7 +7105,7 @@ references.
 </p>
 <dl compact="compact">
 <dt><code>@xref</code></dt>
-<dd><p>Used to start a sentence in the printed manual saying &lsquo;See &hellip;&rsquo;
+<dd><p>Used to start a sentence in the printed manual saying &lsquo;See&nbsp;&hellip;&rsquo;
 or an Info cross-reference saying &lsquo;<samp>*Note <var>name</var>: <var>node</var>.</samp>&rsquo;.
 </p>
 </dd>
@@ -11876,8 +11876,8 @@ the dimension within braces.  For example,
 <p>A4 paper is 8.27in wide.
 </p></blockquote>
 
-<p>Not everyone uses this style.  Some people prefer &lsquo;<samp>8.27 in.@:</samp>&rsquo;
-or &lsquo;<samp>8.27 inches</samp>&rsquo; to &lsquo;<samp>8.27@dmn{in}</samp>&rsquo; in the Texinfo file.
+<p>Not everyone uses this style.  Some people prefer &lsquo;<samp>8.27&nbsp;in.@:</samp>&rsquo;
+or &lsquo;<samp>8.27&nbsp;inches</samp>&rsquo; to &lsquo;<samp>8.27@dmn{in}</samp>&rsquo; in the Texinfo file.
 In these cases, however, the formatters may insert a line break between
 the number and the dimension, so use <code>@w</code> (see section <a href="#w"><code>@w</code>{<var>text</var>}: Prevent Line Breaks</a>).  Also, if
 you write a period after an abbreviation within a sentence, you should
@@ -18037,8 +18037,8 @@ as a bug.
 <p>Navigation bars are inserted at the start of nodes, similarly to Info
 output.  The &lsquo;<samp>--no-headers</samp>&rsquo; option will suppress this if used with
 &lsquo;<samp>--no-split</samp>&rsquo;.  Header <code>&lt;link&gt;</code> elements in split output can
-support info-like navigation with browsers like Lynx and Emacs W3
-which implement this HTML 1.0 feature.  &lsquo;<samp>@xref</samp>&rsquo; commands to
+support info-like navigation with browsers like Lynx and Emacs&nbsp;W3
+which implement this HTML&nbsp;1.0 feature.  &lsquo;<samp>@xref</samp>&rsquo; commands to
 other documents are generated assuming the other document is available
 in split HTML form, and installed in the same HTML documentation tree,
 at &lsquo;<tt>../&lt;info-document&gt;/</tt>&rsquo;.
@@ -18596,7 +18596,7 @@ information in the Info file itself.
 <a name="index-Reference-to-_0040_002dcommands"></a>
 
 <p>Here is an alphabetical list of the @-commands in Texinfo.  Square
-brackets, <tt>[</tt> <tt>]</tt>, indicate optional arguments; an ellipsis,
+brackets, <tt>[</tt>&nbsp;<tt>]</tt>, indicate optional arguments; an ellipsis,
 &lsquo;<samp>&hellip;</samp>&rsquo;, indicates repeated text.
 </p>
 <br>
@@ -21717,7 +21717,7 @@ how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 </p>
 <p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd>C-u C-c C-s</kbd>, it will list lines beginning with
+typing <kbd>C-u&nbsp;C-c&nbsp;C-s</kbd>, it will list lines beginning with
 <code>@node</code> as well as the lines beginning with the @-sign commands
 for <code>@chapter</code>, <code>@section</code>, and the like.
 </p>
@@ -22114,7 +22114,7 @@ override those two commands.
 <p>The <code>texinfo-format-region</code> and <code>texinfo-format-buffer</code>
 commands now automatically append <code>@refill</code> to the end of each
 paragraph that should be filled.  They do not append <code>@refill</code> to
-the ends of paragraphs that contain <code>@*</code> or <code>@w{ &hellip;}</code>
+the ends of paragraphs that contain <code>@*</code> or <code>@w{&nbsp;&hellip;}</code>
 and therefore do not refill or indent them.
 </p>
 
@@ -22248,8 +22248,8 @@ USA
 Telephone: +1-617-542-5942
 Fax: (including Japan) +1-617-542-2652
 Free Dial Fax (in Japan):
-      0031-13-2473 (KDD)
-      0066-3382-0158 (IDC)
+&nbsp; &nbsp; &nbsp; 0031-13-2473 (KDD)
+&nbsp; &nbsp; &nbsp; 0066-3382-0158 (IDC)
 Electronic mail: <code>gnu@gnu.org</code>
 </pre></div>
 
