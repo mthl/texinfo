@@ -625,14 +625,14 @@ sub info_default_process_line_text($$$)
 
    my $line_passed = 0;
    my $chomped_text = $text;
-   chomp($chomped_text);
+   my $end_of_line = chomp($chomped_text);
    if ($indent_length > $line_width_counter and $chomped_text ne '')
    {
       $text = ' ' x ($indent_length - $line_width_counter) . $text;
    }
    $line_width_counter += t2h_default_string_width($text);
-# FIXME this is a bug, already chomed above!
-   if (chomp($chomped_text))
+   # it seems like it never happens in the tests.
+   if ($end_of_line)
    {
       $line_passed = 1;
       $line_width_counter = 0;

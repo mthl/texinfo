@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-06 13:07+0100\n"
+"POT-Creation-Date: 2010-02-07 19:04+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -576,7 +576,7 @@ msgstr "alszakasz"
 msgid "The node you are looking for is at {href}."
 msgstr "A keresett csomópont itt található: {href}."
 
-#: formats/html.init:2710 formats/info.init:2798
+#: formats/html.init:2710 formats/info.init:2811
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -593,7 +593,7 @@ msgstr "Szakasz"
 msgid "Jump to"
 msgstr "Ugorj ide"
 
-#: formats/info.init:3115
+#: formats/info.init:3128
 msgid "(outside of any node)"
 msgstr "(bármelyik csomóponton kívül)"
 
