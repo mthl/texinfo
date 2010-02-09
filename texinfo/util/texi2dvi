@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.156 2010-02-07 00:18:44 karl Exp $
+# $Id: texi2dvi,v 1.157 2010-02-09 18:37:08 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.156 $'
+rcs_revision='$Revision: 1.157 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -1153,7 +1153,7 @@ run_index ()
 run_tex4ht ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
-    latex:*:dvi|latex:tex4ht:html)
+    latex:tex4ht:html)
       : ${TEX4HT=tex4ht} ${T4HT=t4ht}
       run "$TEX4HT" "-f/$in_noext"
       # Do not remove the / after the destdir.

@@ -1,3 +1,8 @@
+2010-02-09  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (run_tex4ht): only run tex4ht if we're outputting
+	HTML.  Report from Wybo Dekker, 08 Feb 2010 11:53:58.
+
 2010-02-06  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_bibtex): ensure output from all greps
