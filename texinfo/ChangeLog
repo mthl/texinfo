@@ -1,3 +1,10 @@
+2010-02-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\tex): call \mathactive, so that the
+	math-active ' gets plain's definition to generate a prime, instead
+	of infinitely looping on the ' character.
+	Report from Brian Gough, 11 Feb 2010 10:54:24.
+
 2010-02-09  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_tex4ht): only run tex4ht if we're outputting
