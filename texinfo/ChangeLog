@@ -1,3 +1,13 @@
+2010-02-14  Ben Pfaff  <blp@gnu.org>
+
+	* util/gendocs.sh: Use "($cmd)" in place of "$(cmd)" where
+	command substitution is not desired.
+
+2010-02-14  Ben Pfaff  <blp@gnu.org>
+
+	* util/gendocs.sh: Add "-s" option for specifying an alternate
+	Texinfo source file name.
+
 2010-02-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\tex): call \mathactive, so that the
