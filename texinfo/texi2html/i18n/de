@@ -1,3 +1,4 @@
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'de'} = {
                        '  The buttons in the navigation panels have the following meaning:' => ' Die Links in der Navigationsleiste haben die folgende Bedeutung: ',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => ' wobei das @strong{ Beispiel } annimmt, dass die aktuelle Position bei @strong{ Unterabschnitt 1-2-3 } in einem Dokument mit folgender Struktur liegt:',

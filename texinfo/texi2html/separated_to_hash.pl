@@ -44,4 +44,5 @@ while (<STDIN>)
 }
 
 $Data::Dumper::Sortkeys = 1;
+print "# Automatically generated file. Edit the .po file instead.\n";
 print "" . Data::Dumper->Dump([$LANGUAGES->{$lang}], [ "LANGUAGES->{'$lang'}" ]);

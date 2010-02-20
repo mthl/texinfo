@@ -1,3 +1,4 @@
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'fr'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  Les boutons de navigation ont la signification suivante :',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  Dans cet exemple on est @`a @strong{ Sous sous section un-deux-trois } dans un document dont la structure est :',
@@ -134,6 +135,7 @@ $LANGUAGES->{'fr'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'pt_BR'} = {
                           '  The buttons in the navigation panels have the following meaning:' => '  Os bot@~oes nos pain@\'eis de navega@,{c}@~ao possuem os seguintes significados:',
                           '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  onde o @strong{ Exemplo } assume que a posi@,{c}@~ao atual localiza-se em @strong{ Subsub@,{c}@~ao Um-Dois-Tr@^es } de um documento com a seguinte estrutura:',
@@ -270,6 +272,7 @@ $LANGUAGES->{'pt_BR'} = {
                           '{style}: {shortcaption_first_line}' => '',
                           '{title_ref}' => ''
                         };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'it'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  I bottoni nei pannelli di navigazione hanno il seguente significato:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  dove @strong{ Esempio } assume che l\'attuale posizione è alla @strong{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente struttura:',
@@ -406,6 +409,7 @@ $LANGUAGES->{'it'} = {
                        '{style}: {shortcaption_first_line}' => '{style}: {shortcaption_first_line}',
                        '{title_ref}' => '{title_ref}'
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'nl'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '',
@@ -542,6 +546,7 @@ $LANGUAGES->{'nl'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'ja'} = {
                        '  The buttons in the navigation panels have the following meaning:' => 'ナビゲーションパネル中のボタンには以下の意味があります。',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '@strong{例}では、以下に示す構造を持つ文書の@strong{1.2.3項}を現在位置に仮定しています。',
@@ -678,6 +683,7 @@ $LANGUAGES->{'ja'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'pt'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  Os bot@~oes nos pain@\'eis de navega@,{c}@~ao possuem os seguintes significados:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  onde o @strong{ Exemplo } assume que a posi@,{c}@~ao atual localiza-se em @strong{ Subsub@,{c}@~ao Um-Dois-Tr@^es } de um documento com a seguinte estrutura:',
@@ -814,6 +820,7 @@ $LANGUAGES->{'pt'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'de'} = {
                        '  The buttons in the navigation panels have the following meaning:' => ' Die Links in der Navigationsleiste haben die folgende Bedeutung: ',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => ' wobei das @strong{ Beispiel } annimmt, dass die aktuelle Position bei @strong{ Unterabschnitt 1-2-3 } in einem Dokument mit folgender Struktur liegt:',
@@ -1086,6 +1093,7 @@ $LANGUAGES->{'en'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'es'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  Los botones de los paneles de navegaci@\'on tienen el significado siguiente:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  donde el @strong{ Ejemplo } supone que la posici@\'on actual est@\'a en la @strong{ Sub-subsecci@\'on uno-dos-tres } de un documento de la estructura siguiente:',
@@ -1222,6 +1230,7 @@ $LANGUAGES->{'es'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'no'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '',
@@ -1358,6 +1367,7 @@ $LANGUAGES->{'no'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'hu'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  A navigációs panelen levő gombok jelentése a következő:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  @strong{ Példánkban } az aktuális pozíció az @strong{ 1.2.3 alalszakasz } egy olyan dokumentumban, melynek szerkezete a következő:',

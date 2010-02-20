@@ -1,3 +1,4 @@
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'it'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  I bottoni nei pannelli di navigazione hanno il seguente significato:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  dove @strong{ Esempio } assume che l\'attuale posizione è alla @strong{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente struttura:',

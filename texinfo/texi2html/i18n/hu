@@ -1,3 +1,4 @@
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'hu'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '  A navigációs panelen levő gombok jelentése a következő:',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '  @strong{ Példánkban } az aktuális pozíció az @strong{ 1.2.3 alalszakasz } egy olyan dokumentumban, melynek szerkezete a következő:',
