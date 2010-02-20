@@ -14,3 +14,4 @@
 @t2h_po_dir@maintained_extra/html32.init
 @t2h_po_dir@maintained_extra/tex4ht.init
 @t2h_po_dir@maintained_extra/mediawiki.init
+@t2h_po_dir@examples/roff.init

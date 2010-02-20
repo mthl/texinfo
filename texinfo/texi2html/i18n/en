@@ -5,6 +5,8 @@ $LANGUAGES->{'en'} = {
                        '(outside of any element)' => '',
                        '(outside of any node)' => '',
                        '@b{{quotation_arg}:} ' => '',
+                       '@center --- @emph{{author}}
+' => '',
                        '@cite{{book}}' => '',
                        '@{No value for `{value}\'@}' => '',
                        'About' => '',
@@ -92,7 +94,6 @@ $LANGUAGES->{'en'} = {
                        'Subsubsection One-Two-One' => '',
                        'Subsubsection One-Two-Three' => '',
                        'Subsubsection One-Two-Two' => '',
-                       'T2H_today' => '%s, %d %d',
                        'Table of Contents' => '',
                        'Table of contents' => '',
                        'The node you are looking for is at {href}.' => '',
@@ -120,6 +121,7 @@ $LANGUAGES->{'en'} = {
                        'see {ref}' => '',
                        'see {title_ref}' => '',
                        '{acronym_like} ({explanation})' => '',
+                       '{month} {day}, {year}' => '',
                        '{name} of {class}' => '',
                        '{name} on {class}' => '',
                        '{node_file_href}' => '',
@@ -132,7 +134,3 @@ $LANGUAGES->{'en'} = {
                        '{style}: {shortcaption_first_line}' => '',
                        '{title_ref}' => ''
                      };
-
-$T2H_OBSOLETE_STRINGS->{'en'} = {};
-
-

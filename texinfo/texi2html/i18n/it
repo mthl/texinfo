@@ -5,6 +5,8 @@ $LANGUAGES->{'it'} = {
                        '(outside of any element)' => '(fuori da qualsiasi elemento)',
                        '(outside of any node)' => '(fuori da qualsiasi nodo)',
                        '@b{{quotation_arg}:} ' => '@b{{quotation_arg}:} ',
+                       '@center --- @emph{{author}}
+' => '',
                        '@cite{{book}}' => '@cite{{book}}',
                        '@{No value for `{value}\'@}' => '@{Nessun valore per `{value}\'@}',
                        'About' => 'Informazioni',
@@ -92,7 +94,6 @@ $LANGUAGES->{'it'} = {
                        'Subsubsection One-Two-One' => 'Sottosottosezione Uno-Due-Uno',
                        'Subsubsection One-Two-Three' => 'Sottosottosezione Uno-Due-Tre',
                        'Subsubsection One-Two-Two' => 'Sottosottosezione Uno-Due-Due',
-                       'T2H_today' => '%s, %d %d',
                        'Table of Contents' => 'Indice',
                        'Table of contents' => 'Indice',
                        'The node you are looking for is at {href}.' => 'Il nodo che stai cercando è {href}',
@@ -120,6 +121,7 @@ $LANGUAGES->{'it'} = {
                        'see {ref}' => 'vedi {ref}',
                        'see {title_ref}' => 'vedi {title_ref}',
                        '{acronym_like} ({explanation})' => '{acronym_like} ({explanation})',
+                       '{month} {day}, {year}' => '',
                        '{name} of {class}' => '{name} di {class}',
                        '{name} on {class}' => '{name} in {class}',
                        '{node_file_href}' => '{node_file_href}',
@@ -132,7 +134,3 @@ $LANGUAGES->{'it'} = {
                        '{style}: {shortcaption_first_line}' => '{style}: {shortcaption_first_line}',
                        '{title_ref}' => '{title_ref}'
                      };
-
-$T2H_OBSOLETE_STRINGS->{'it'} = {};
-
-

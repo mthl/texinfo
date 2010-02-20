@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 22:06+0100\n"
+"POT-Creation-Date: 2010-02-20 14:46+0100\n"
 "PO-Revision-Date: 2008-07-20\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: Unknown\n"
@@ -20,6 +20,7 @@ msgid "About This Document"
 msgstr "A propos de ce document"
 
 #: texi2html.pl:5992 texi2html.pl:5996 texi2html.pl:6000
+#: examples/roff.init:986
 msgid "Table of Contents"
 msgstr "Table des mati@`eres"
 
@@ -602,3 +603,7 @@ msgstr ""
 #: formats/xml.init:1037
 msgid "See "
 msgstr ""
+
+#: examples/roff.init:652
+msgid "Menu:"
+msgstr "Menu@ :"

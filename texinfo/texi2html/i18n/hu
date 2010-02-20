@@ -5,6 +5,8 @@ $LANGUAGES->{'hu'} = {
                        '(outside of any element)' => '(bármelyik elemen kívül)',
                        '(outside of any node)' => '(bármelyik csomóponton kívül)',
                        '@b{{quotation_arg}:} ' => '@b{{quotation_arg}:} ',
+                       '@center --- @emph{{author}}
+' => '',
                        '@cite{{book}}' => '@cite{{book}}',
                        '@{No value for `{value}\'@}' => '@{Nincs értéke ennek: `{value}\'@}',
                        'About' => 'Súgó',
@@ -92,7 +94,6 @@ $LANGUAGES->{'hu'} = {
                        'Subsubsection One-Two-One' => 'alalszakasz',
                        'Subsubsection One-Two-Three' => 'alalszakasz',
                        'Subsubsection One-Two-Two' => 'alalszakasz',
-                       'T2H_today' => '%s, %d %d',
                        'Table of Contents' => 'Tartalomjegyzék',
                        'Table of contents' => 'Tartalomjegyzék',
                        'The node you are looking for is at {href}.' => 'A keresett csomópont itt található: {href}.',
@@ -120,6 +121,7 @@ $LANGUAGES->{'hu'} = {
                        'see {ref}' => 'ld. {ref}',
                        'see {title_ref}' => 'ld. {title_ref}',
                        '{acronym_like} ({explanation})' => '{acronym_like} ({explanation})',
+                       '{month} {day}, {year}' => '',
                        '{name} of {class}' => '{name} típusa: {class}',
                        '{name} on {class}' => '{name} ezen: {class}',
                        '{node_file_href}' => '{node_file_href}',
@@ -132,7 +134,3 @@ $LANGUAGES->{'hu'} = {
                        '{style}: {shortcaption_first_line}' => '{style}: {shortcaption_first_line}',
                        '{title_ref}' => '{title_ref}'
                      };
-
-$T2H_OBSOLETE_STRINGS->{'hu'} = {};
-
-

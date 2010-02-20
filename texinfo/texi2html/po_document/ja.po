@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 22:06+0100\n"
+"POT-Creation-Date: 2010-02-20 14:46+0100\n"
 "PO-Revision-Date: 2007-02-05\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -20,6 +20,7 @@ msgid "About This Document"
 msgstr "この文書について"
 
 #: texi2html.pl:5992 texi2html.pl:5996 texi2html.pl:6000
+#: examples/roff.init:986
 msgid "Table of Contents"
 msgstr "目次"
 
@@ -383,51 +384,51 @@ msgstr ""
 
 #: T2h_i18n.pm:296
 msgid "January"
-msgstr ""
+msgstr "1月"
 
 #: T2h_i18n.pm:297
 msgid "February"
-msgstr ""
+msgstr "2月"
 
 #: T2h_i18n.pm:298
 msgid "March"
-msgstr ""
+msgstr "3月"
 
 #: T2h_i18n.pm:299
 msgid "April"
-msgstr ""
+msgstr "4月"
 
 #: T2h_i18n.pm:300
 msgid "May"
-msgstr ""
+msgstr "5月"
 
 #: T2h_i18n.pm:301
 msgid "June"
-msgstr ""
+msgstr "6月"
 
 #: T2h_i18n.pm:302
 msgid "July"
-msgstr ""
+msgstr "7月"
 
 #: T2h_i18n.pm:303
 msgid "August"
-msgstr ""
+msgstr "8月"
 
 #: T2h_i18n.pm:304
 msgid "September"
-msgstr ""
+msgstr "9月"
 
 #: T2h_i18n.pm:305
 msgid "October"
-msgstr ""
+msgstr "10月"
 
 #: T2h_i18n.pm:306
 msgid "November"
-msgstr ""
+msgstr "11月"
 
 #: T2h_i18n.pm:307
 msgid "December"
-msgstr ""
+msgstr "12月"
 
 #: T2h_i18n.pm:320
 #, perl-brace-format
@@ -601,3 +602,7 @@ msgstr ""
 #: formats/xml.init:1037
 msgid "See "
 msgstr ""
+
+#: examples/roff.init:652
+msgid "Menu:"
+msgstr "メニュー"

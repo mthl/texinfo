@@ -170,14 +170,23 @@ texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	@cp texi2html.tmp texi2html.spec
 	-@rm texi2html.tmp
 
-i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
-                 examples/noheaders.init $(texi2html_formats)
-	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
+#i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
+#                 examples/noheaders.init $(texi2html_formats)
+#	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
 
 #i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
 
-$(i18n_files): i18n/en
-	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) update
+#$(i18n_files): i18n/en
+#	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) update
+
+$(i18n_files): po_document/texi2html_document.pot
+	cd po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+	for file in $(i18n_files); do lang=`basename $$file`; \
+		msgexec -i "$(srcdir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
+	done
+
+i18n/en: po_document/texi2html_document.pot
+	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
 
 #translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
 translations.pl: $(dist_i18n_DATA) 
