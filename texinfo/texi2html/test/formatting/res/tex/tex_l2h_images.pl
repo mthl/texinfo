@@ -4,7 +4,7 @@
 
 $key = q/{displaymath}chi^2=sum_{i=1}^Nleft(y_i-(a+bx_i)oversigma_iright)^2{displaymath};MSF=1.5;AAT/;
 $cached_env_img{$key} = q|<IMG
- WIDTH="100" HEIGHT="52" BORDER="0"
+ WIDTH="100" HEIGHT="50" BORDER="0"
  SRC="|."$dir".q|tex_l2h_img1.png"
  ALT="\begin{displaymath}\chi^2 = \sum_{i=1}^N
 \left(y_i - (a + b x_i)
@@ -12,13 +12,13 @@ $cached_env_img{$key} = q|<IMG
 
 $key = q/{x^i}over{tany};MSF=1.5;AAT/;
 $cached_env_img{$key} = q|<IMG
- WIDTH="100" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="|."$dir".q|tex_l2h_img2.png"
  ALT="${x^i}\over{\tan y}$">|; 
 
 $key = q/a@b;MSF=1.5;AAT/;
 $cached_env_img{$key} = q|<IMG
- WIDTH="100" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
  SRC="|."$dir".q|tex_l2h_img3.png"
  ALT="$a @ b$">|; 
 
@@ -30,7 +30,7 @@ $cached_env_img{$key} = q|<IMG
 
 $key = q/@code{mathcode}a<b;MSF=1.5;AAT/;
 $cached_env_img{$key} = q|<IMG
- WIDTH="100" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
  SRC="|."$dir".q|tex_l2h_img4.png"
  ALT="$@code{math code} a &lt; b$">|; 
 

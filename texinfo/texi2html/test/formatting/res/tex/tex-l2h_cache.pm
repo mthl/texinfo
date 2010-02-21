@@ -4,7 +4,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $@code{math code} a < b$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
  SRC="tex_4.png"
  ALT="$@code{math code} a &lt; b$"></SPAN>|;
 
@@ -27,7 +27,7 @@ $l2h_cache{$l2h_cache_key} = q| some
  -->
 
 <IMG
- WIDTH="100" HEIGHT="52" BORDER="0"
+ WIDTH="100" HEIGHT="50" BORDER="0"
  SRC="tex_1.png"
  ALT="\begin{displaymath}\chi^2 = \sum_{i=1}^N
 \left(y_i - (a + b x_i)
@@ -38,7 +38,7 @@ $l2h_cache{$l2h_cache_key} = q| some
 
 $l2h_cache_key = q/$a @\ b$/;
 $l2h_cache{$l2h_cache_key} = q|<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
  SRC="tex_3.png"
  ALT="$a @\ b$"></SPAN>|;
 
@@ -47,7 +47,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  ${x^i}\over{\tan y}$
  -->
 <SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
  SRC="tex_2.png"
  ALT="${x^i}\over{\tan y}$"></SPAN>|;
 

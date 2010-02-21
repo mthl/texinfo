@@ -196,7 +196,7 @@ do
       for file in "${outdir}$dir/"*.htm* "${outdir}$dir/"*-l2h_cache.pm "${outdir}$dir/"*_l2h_images.pl; do
        if [ -f "$file" ]; then
        # different rounding on different computers !
-        sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' "$file"
+        sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' "$file"
        fi
       done
       rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"
