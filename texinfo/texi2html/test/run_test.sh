@@ -193,7 +193,7 @@ do
         sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
        fi
       done
-      for file in "${outdir}$dir/"*.html "${outdir}$dir/"*-l2h_cache.pm "${outdir}$dir/"*_l2h_images.pl; do
+      for file in "${outdir}$dir/"*.htm* "${outdir}$dir/"*-l2h_cache.pm "${outdir}$dir/"*_l2h_images.pl; do
        if [ -f "$file" ]; then
        # different rounding on different computers !
         sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' "$file"
