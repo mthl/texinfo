@@ -195,7 +195,7 @@ translations.pl: $(dist_i18n_DATA)
 
 # update the po files, and install locally the .mo files for the in
 # source tests
-all-local: makeinfo.pl texi2any.pl
+check-local: makeinfo.pl texi2any.pl
 	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
 	if test '$(USE_NLS)' = 'yes'; then \
 	  rm -rf locales ; \

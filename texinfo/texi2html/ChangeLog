@@ -1,5 +1,13 @@
 2009-02-21   Patrice Dumas  <pertusus@free.fr>
 
+	* Makefile.am: regenerate the .gmo files for tests in check-local
+	not all-local.
+	* texi2html.pl: expand correctly datarootdir.
+	Bind the domains of the messages to the directory they are 
+	installed into.
+
+2009-02-21   Patrice Dumas  <pertusus@free.fr>
+
 	* configure.ac, Makefile.am: take po files from above directory
 	(where texinfo po files are) if the source wasn't configured
 	in the texi2html toplevel directory.

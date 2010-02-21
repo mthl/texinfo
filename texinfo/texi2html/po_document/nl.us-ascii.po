@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-21 01:25+0100\n"
+"POT-Creation-Date: 2010-02-21 16:17+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -15,25 +15,25 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:5991 texi2html.pl:5995 texi2html.pl:5999
+#: texi2html.pl:6007 texi2html.pl:6011 texi2html.pl:6015
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html.pl:5992 texi2html.pl:5996 texi2html.pl:6000
+#: texi2html.pl:6008 texi2html.pl:6012 texi2html.pl:6016
 #: examples/roff.init:986
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: texi2html.pl:5993 texi2html.pl:5997 texi2html.pl:6001
+#: texi2html.pl:6009 texi2html.pl:6013 texi2html.pl:6017
 msgid "Short Table of Contents"
 msgstr "Korte inhoudsopgave"
 
-#: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6546
+#: texi2html.pl:6010 texi2html.pl:6014 texi2html.pl:6018 texi2html.init:6546
 #: formats/html.init:2482
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html.pl:12541
+#: texi2html.pl:12557
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

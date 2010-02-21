@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.370 2010-01-20 16:16:40 pertusus Exp $
+# $Id: texi2html.pl,v 1.371 2010-02-21 16:05:45 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -118,7 +118,7 @@ my $THISPROG = "texi2html $THISVERSION"; # program name and version
 
 # set by configure, prefix for the sysconfdir and so on
 my $prefix = '@prefix@';
-my $datarootdir = '@datarootdir@';
+my $datarootdir;# = '@datarootdir@';
 my $sysconfdir;
 my $pkgdatadir;
 my $datadir;
@@ -133,6 +133,15 @@ if ('@sysconfdir@' ne '@' . 'sysconfdir@')
 else
 {
     $sysconfdir = "/usr/local/etc";
+}
+
+if ('@datarootdir@' ne '@' . 'datarootdir@')
+{
+    $datarootdir = eval '"@datarootdir@"';
+}
+else
+{
+    $datarootdir = "/usr/local/share";
 }
 
 if ('@datadir@' ne '@' . 'datadir@')
@@ -1930,7 +1939,7 @@ if (Texi2HTML::Config::get_conf('use_nls'))
     }
     elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes')
     {
-        unshift @INC, "$pkgdatadir/lib/libint-perl/lib";
+        unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
     }
     # gettext-like translations
     #require Locale::TextDomain;
@@ -1951,6 +1960,13 @@ if (Texi2HTML::Config::get_conf('use_nls'))
              }
         }
     }
+    else
+    { # match where gettext installs
+        Locale::Messages::bindtextdomain ($strings_textdomain, "$datadir/locale");
+    }
+    # simply bind error messages to the installation directory.
+    # Messages should be untranslated for tests.
+    Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 }
 
 sub __($)
