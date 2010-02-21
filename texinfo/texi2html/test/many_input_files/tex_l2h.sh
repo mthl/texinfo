@@ -42,6 +42,7 @@ else
   sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
    's/with LaTeX2HTML.*/with LaTeX2HTML/' "$basename/"*"_l2h.html"
   sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$basename/"*"_l2h_images.pl"  "$basename/"*"_l2h_labels.pl"
+  sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' "$basename/"*"_l2h_images.pl" "$basename/"*.html "$basename/"*-l2h_cache.pm
   rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out"
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then

@@ -9,6 +9,8 @@ dnl Disable Autoconf, Automake, and some other maintainer tools without the
 dnl --enable-maintainer-mode argument.
 AM_MAINTAINER_MODE
 
+AM_CONDITIONAL([TEXI2HTML],[true])
+
 AM_GNU_GETTEXT([external])
 dnl it is not completly clear that we need that or not, since gettext is 
 dnl not fully used.

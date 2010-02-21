@@ -957,6 +957,7 @@ $LANGUAGES->{'de'} = {
                        '{style}: {shortcaption_first_line}' => '{style}: {shortcaption_first_line}',
                        '{title_ref}' => ''
                      };
+# Automatically generated file. Edit the .po file instead.
 $LANGUAGES->{'en'} = {
                        '  The buttons in the navigation panels have the following meaning:' => '',
                        '  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:' => '',

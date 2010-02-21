@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 14:46+0100\n"
+"POT-Creation-Date: 2010-02-21 01:25+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -28,7 +28,7 @@ msgstr "Innholdsfortegnelse"
 msgid "Short Table of Contents"
 msgstr "Kort innholdsfortegnelse"
 
-#: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6523
+#: texi2html.pl:5994 texi2html.pl:5998 texi2html.pl:6002 texi2html.init:6546
 #: formats/html.init:2482
 msgid "Footnotes"
 msgstr "No translation available!"
@@ -234,148 +234,148 @@ msgid ""
 "{{program}}}."
 msgstr ""
 
-#: texi2html.init:5205 texi2html.init:5328 formats/html.init:1576
+#: texi2html.init:5228 texi2html.init:5351 formats/html.init:1576
 #: formats/html.init:1674
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr ""
 
-#: texi2html.init:5227 formats/html.init:1590
+#: texi2html.init:5250 formats/html.init:1590
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr ""
 
-#: texi2html.init:5255 formats/html.init:1607
+#: texi2html.init:5278 formats/html.init:1607
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr ""
 
-#: texi2html.init:5560 texi2html.init:5581
+#: texi2html.init:5583 texi2html.init:5604
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr ""
 
-#: texi2html.init:5564 texi2html.init:5585
+#: texi2html.init:5587 texi2html.init:5608
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr ""
 
-#: texi2html.init:5888
+#: texi2html.init:5911
 #, perl-brace-format
 msgid "see {node_file_href} section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5889
+#: texi2html.init:5912
 #, perl-brace-format
 msgid "see {node_file_href} @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5893
+#: texi2html.init:5916
 #, perl-brace-format
 msgid "see section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5894
+#: texi2html.init:5917
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5898
+#: texi2html.init:5921
 #, perl-brace-format
 msgid "see {node_file_href}"
 msgstr ""
 
-#: texi2html.init:5905
+#: texi2html.init:5928
 #, perl-brace-format
 msgid "See {node_file_href} section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5906
+#: texi2html.init:5929
 #, perl-brace-format
 msgid "See {node_file_href} @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5910
+#: texi2html.init:5933
 #, perl-brace-format
 msgid "See section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5911
+#: texi2html.init:5934
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5915
+#: texi2html.init:5938
 #, perl-brace-format
 msgid "See {node_file_href}"
 msgstr ""
 
-#: texi2html.init:5922
+#: texi2html.init:5945
 #, perl-brace-format
 msgid "{node_file_href} section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5923
+#: texi2html.init:5946
 #, perl-brace-format
 msgid "{node_file_href} @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5927
+#: texi2html.init:5950
 #, perl-brace-format
 msgid "section `{section}' in @cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5928
+#: texi2html.init:5951
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr ""
 
-#: texi2html.init:5932
+#: texi2html.init:5955
 #, perl-brace-format
 msgid "{node_file_href}"
 msgstr ""
 
-#: texi2html.init:5967
+#: texi2html.init:5990
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr ""
 
-#: texi2html.init:5968 texi2html.init:5985
+#: texi2html.init:5991 texi2html.init:6008
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr ""
 
-#: texi2html.init:5972
+#: texi2html.init:5995
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr ""
 
-#: texi2html.init:5973 texi2html.init:5989
+#: texi2html.init:5996 texi2html.init:6012
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr ""
 
-#: texi2html.init:5977 texi2html.init:5993
+#: texi2html.init:6000 texi2html.init:6016
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr ""
 
-#: texi2html.init:6611
+#: texi2html.init:6634
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr ""
 
-#: texi2html.init:6788 formats/html.init:2686 maintained_extra/html32.init:172
+#: texi2html.init:6811 formats/html.init:2686 maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
 
-#: texi2html.init:6808 formats/docbook.init:1402
+#: texi2html.init:6831 formats/docbook.init:1402
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html.init:6933
+#: texi2html.init:6956
 msgid "(outside of any element)"
 msgstr ""
 

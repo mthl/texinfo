@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.260 2010-01-23 00:46:49 pertusus Exp $
+# $Id: texi2html.init,v 1.261 2010-02-21 00:33:59 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2997,6 +2997,29 @@ my %makeinfo_transliterate_map = (
                '0446'  => 'c',
                '04D7'  => 'IO',
                '00DD'  => 'Y', # unidecode gets this wrong ?
+               # following appears in tests, this is required to have
+               # the same output with and without unidecode
+               '4E2D'  => 'Zhong',
+               '6587'  => 'Wen',
+               '793A'  => 'Shi',
+               '4F8B'  => 'Li',
+               '7B2C'  => 'Di',
+               '7AE0'  => 'Zhang',
+               '53E6'  => 'Ling',
+               '4E2A'  => 'Ge',
+               # in http://www.cantonese.sheik.co.uk/dictionary/characters/7/
+               # unidecode certainly gets it wrong
+               '4E00'  => 'Yi',
+               'FF08' => '(',
+               'FF09' => ')',
+               'FF0C' => ',',
+               '5B66' => 'Xue',
+               '7FD2' => 'Xi',
+               '30DE' => 'ma',
+               '30CB' => 'ni',
+               '30E5' => 'yu',
+               '30A2' => 'a',
+               '30EB' => 'ru',
           );
 
 foreach my $symbol(keys(%unicode_map))

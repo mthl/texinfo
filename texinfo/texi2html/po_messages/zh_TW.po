@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 14:46+0100\n"
+"POT-Creation-Date: 2010-02-21 01:26+0100\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -929,7 +929,7 @@ msgstr ""
 msgid "arguments are quoted by default"
 msgstr ""
 
-#: texi2html.init:6452 formats/docbook.init:1501 formats/html.init:2414
+#: texi2html.init:6475 formats/docbook.init:1501 formats/html.init:2414
 #: maintained_extra/mediawiki.init:1134
 #, perl-format
 msgid "Raw format %s is not converted"

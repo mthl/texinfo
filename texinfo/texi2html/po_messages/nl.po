@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 14:46+0100\n"
+"POT-Creation-Date: 2010-02-21 01:26+0100\n"
 "PO-Revision-Date: 2008-08-17 23:34+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -1054,7 +1054,7 @@ msgstr ""
 msgid "arguments are quoted by default"
 msgstr "@quote-arg is verouderd; argumenten hebben standaard aanhalingstekens"
 
-#: texi2html.init:6452 formats/docbook.init:1501 formats/html.init:2414
+#: texi2html.init:6475 formats/docbook.init:1501 formats/html.init:2414
 #: maintained_extra/mediawiki.init:1134
 #, perl-format
 msgid "Raw format %s is not converted"

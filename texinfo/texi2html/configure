@@ -607,6 +607,8 @@ GMSGFMT
 MSGFMT
 USE_NLS
 MKINSTALLDIRS
+TEXI2HTML_FALSE
+TEXI2HTML_TRUE
 MAINT
 MAINTAINER_MODE_FALSE
 MAINTAINER_MODE_TRUE
@@ -2470,6 +2472,15 @@ fi
 
   MAINT=$MAINTAINER_MODE_TRUE
 
+
+
+ if true; then
+  TEXI2HTML_TRUE=
+  TEXI2HTML_FALSE='#'
+else
+  TEXI2HTML_TRUE='#'
+  TEXI2HTML_FALSE=
+fi
 
 
 
@@ -5465,6 +5476,10 @@ fi
 
 if test -z "${MAINTAINER_MODE_TRUE}" && test -z "${MAINTAINER_MODE_FALSE}"; then
   as_fn_error "conditional \"MAINTAINER_MODE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${TEXI2HTML_TRUE}" && test -z "${TEXI2HTML_FALSE}"; then
+  as_fn_error "conditional \"TEXI2HTML\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${AMDEP_TRUE}" && test -z "${AMDEP_FALSE}"; then

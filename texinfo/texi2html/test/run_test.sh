@@ -9,6 +9,7 @@ export LANG=C
 
 res_dir=res
 out_dir=out
+outdir="$out_dir/"
 command=texi2html.pl
 diffs_dir=diffs
 
@@ -131,6 +132,7 @@ do
   if [ $one_test = 'yes' -a "z$dir" != "z$the_test" ]; then
     continue
   fi
+  export T2H_HOME="`pwd`""/$testdir/$srcdir_test/../../"
   if [ "z$dir" = 'ztexi' ]; then
     if [ $one_test = 'yes' -a "z$the_basename" != 'z' -a "z$basename" != "z$the_basename" ]; then
       continue
@@ -186,9 +188,15 @@ do
       sed -i -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' -e \
        's/with LaTeX2HTML.*/with LaTeX2HTML/' "$out_dir/$dir/"*"_l2h.html"
       # "*"_images.pl" files are not guaranteed to be present
-      for file in "$out_dir/$dir/"*"_images.pl" "$out_dir/$dir/"*"_labels.pl"; do
+      for file in "${outdir}$dir/"*"_images.pl" "${outdir}$dir/"*"_labels.pl"; do
        if [ -f "$file" ]; then
         sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file"
+       fi
+      done
+      for file in "${outdir}$dir/"*.html "${outdir}$dir/"*-l2h_cache.pm "${outdir}$dir/"*_l2h_images.pl; do
+       if [ -f "$file" ]; then
+       # different rounding on different computers !
+        sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' "$file"
        fi
       done
       rm -f "$out_dir/$dir/"*".aux"  "$out_dir/$dir/"*"_images.out"

@@ -1,6 +1,17 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = po_document po_messages . doc Tests test
+# don't install gmo files from texi2hmtl directories if in texinfo, 
+# they are also in ../po and ../po_document
+if TEXI2HTML
+po_subdirs = po_document po_messages
+po_document_dir = .
+else
+po_subdirs =
+po_document_dir = ..
+endif
+
+SUBDIRS = $(po_subdirs) . doc Tests test
+
 imagesdir = $(datadir)/texi2html/images
 i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
@@ -170,35 +181,25 @@ texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	@cp texi2html.tmp texi2html.spec
 	-@rm texi2html.tmp
 
-#i18n/en: texi2html.pl texi2html.init T2h_i18n.pm examples/roff.init \
-#                 examples/noheaders.init $(texi2html_formats)
-#	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) template $^
-
-#i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr: i18n/en
-
-#$(i18n_files): i18n/en
-#	$(PERL) manage_i18n.pl -d i18n -I . -I $(srcdir) update
-
-$(i18n_files): po_document/texi2html_document.pot
-	cd po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+$(i18n_files): $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
 	for file in $(i18n_files); do lang=`basename $$file`; \
-		msgexec -i "$(srcdir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
+		msgexec -i "$(srcdir)/$(po_document_dir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
 	done
 
-i18n/en: po_document/texi2html_document.pot
+i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
 	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
 
-#translations.pl: i18n/de i18n/nl i18n/es i18n/no i18n/pt i18n/fr i18n/en
 translations.pl: $(dist_i18n_DATA) 
 	$(PERL) manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 # update the po files, and install locally the .mo files for the in
 # source tests
 all-local: makeinfo.pl texi2any.pl
-	cd po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
 	if test '$(USE_NLS)' = 'yes'; then \
 	  rm -rf locales ; \
-	  for file in "$(srcdir)/po_document/"*.po; do \
+	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
 	    basename=`basename "$$file" .po` ; \
 	    $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
 	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
