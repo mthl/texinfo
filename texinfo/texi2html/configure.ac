@@ -41,33 +41,18 @@ AC_ARG_WITH([external-libintl-perl],
       USE_EXTERNAL_LIBINTL=yes
    fi]
 )
-
-if test z"$USE_NLS" = 'zyes'; then
-   if test $USE_EXTERNAL_LIBINTL = 'yes'; then
-      if $PERL -e "use Locale::Messages; Locale::TextDomain;" > /dev/null 2>&1;
-      then :
-      else 
-        USE_EXTERNAL_LIBINTL=no
-      fi
-   fi
-fi
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
+USE_UNICODE=unknown
 AC_ARG_WITH([encode],
     AC_HELP_STRING([--with-encode],
-           [use encode (default: detected)]),
+           [use encode (default: runtime detection)]),
     [if test $withval = 'no'; then
          USE_UNICODE=0
      else
          USE_UNICODE=1
      fi],
-    [
-     if $PERL -e "use Encode; use Unicode::Normalize;" > /dev/null 2>&1; 
-     then USE_UNICODE=1
-     else
-         USE_UNICODE=0
-     fi
-     ])
+    [])
 
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
@@ -77,34 +62,18 @@ AC_ARG_WITH([external-Unicode-EastAsianWidth],
       USE_EXTERNAL_EASTASIANWIDTH=yes
    fi]
 )
-
-if test z"$USE_UNICODE" = 'z1'; then
-   if test $USE_EXTERNAL_EASTASIANWIDTH = 'yes'; then
-      if $PERL -e "use Unicode::EastAsianWidth;" > /dev/null 2>&1;
-      then :
-      else 
-        USE_EXTERNAL_EASTASIANWIDTH=no
-      fi
-   fi
-fi
 AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 
+USE_UNIDECODE=unknown
 AC_ARG_WITH([unidecode],
     AC_HELP_STRING([--with-unidecode],
-           [use Text::Unidecode (default: detected)]),
+           [use Text::Unidecode (default: runtime detection)]),
     [if test $withval = 'no'; then
          USE_UNIDECODE=0
      else
          USE_UNIDECODE=1
      fi],
-    [
-     USE_UNIDECODE=0
-     if test $USE_UNICODE = 1; then
-        if $PERL -e "use Text::Unidecode;" > /dev/null 2>&1; 
-        then USE_UNIDECODE=1
-        fi
-     fi
-     ])
+    [])
 
 
 AC_SUBST([USE_UNICODE])

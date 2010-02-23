@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-21 16:17+0100\n"
+"POT-Creation-Date: 2010-02-23 01:06+0100\n"
 "PO-Revision-Date: 2007-02-05\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -15,25 +15,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html.pl:6007 texi2html.pl:6011 texi2html.pl:6015
+#: texi2html.pl:6027 texi2html.pl:6031 texi2html.pl:6035
 msgid "About This Document"
 msgstr "この文書について"
 
-#: texi2html.pl:6008 texi2html.pl:6012 texi2html.pl:6016
+#: texi2html.pl:6028 texi2html.pl:6032 texi2html.pl:6036
 #: examples/roff.init:986
 msgid "Table of Contents"
 msgstr "目次"
 
-#: texi2html.pl:6009 texi2html.pl:6013 texi2html.pl:6017
+#: texi2html.pl:6029 texi2html.pl:6033 texi2html.pl:6037
 msgid "Short Table of Contents"
 msgstr "簡略化した目次"
 
-#: texi2html.pl:6010 texi2html.pl:6014 texi2html.pl:6018 texi2html.init:6546
+#: texi2html.pl:6030 texi2html.pl:6034 texi2html.pl:6038 texi2html.init:6546
 #: formats/html.init:2482
 msgid "Footnotes"
 msgstr "脚注"
 
-#: texi2html.pl:12557
+#: texi2html.pl:12577
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

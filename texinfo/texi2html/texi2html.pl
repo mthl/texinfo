@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.371 2010-02-21 16:05:45 pertusus Exp $
+# $Id: texi2html.pl,v 1.372 2010-02-23 00:15:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1940,6 +1940,16 @@ if (Texi2HTML::Config::get_conf('use_nls'))
     elsif ('@USE_EXTERNAL_LIBINTL@' ne 'yes')
     {
         unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
+    }
+    else
+    {
+        eval {
+            require Locale::Messages;
+        };
+        if ($@)
+        {
+            unshift @INC, "$pkgdatadir/lib/libintl-perl/lib";
+        }
     }
     # gettext-like translations
     #require Locale::TextDomain;
@@ -4083,7 +4093,7 @@ if (!defined($Texi2HTML::Config::USE_UNICODE))
 }
 
 # no user provided nor configured, run time test
-if ($Texi2HTML::Config::USE_UNICODE eq '@' .'USE_UNICODE@')
+if ($Texi2HTML::Config::USE_UNICODE eq 'unknown' or $Texi2HTML::Config::USE_UNICODE eq '@' .'USE_UNICODE@')
 {
     eval {
         require Encode;
@@ -4119,6 +4129,16 @@ if ($Texi2HTML::Config::USE_UNICODE)
     {
         unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
     }
+    else
+    {
+        eval {
+            require Unicode::EastAsianWidth;
+        };
+        if ($@)
+        {
+            unshift @INC, "$pkgdatadir/lib/Unicode-EastAsianWidth/lib";
+        }
+    }
     # unicode east asian character width tables.
     require Unicode::EastAsianWidth;
 }
@@ -4130,7 +4150,7 @@ if (!defined($Texi2HTML::Config::USE_UNIDECODE))
 }
 
 # no user provided nor configured, run time test
-if ($Texi2HTML::Config::USE_UNIDECODE eq '@' .'USE_UNIDECODE@')
+if ($Texi2HTML::Config::USE_UNIDECODE eq 'unknown' or $Texi2HTML::Config::USE_UNIDECODE eq '@' .'USE_UNIDECODE@')
 {
     $Texi2HTML::Config::USE_UNIDECODE = 1;
     eval {
