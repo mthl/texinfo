@@ -1,3 +1,20 @@
+2010-02-21  Patrice Dumas  <pertusus@free.fr>
+
+	* po_document/: add translation of strings output in manuals
+	in this directory and support files copied for gettext.
+	* Makefile.am (SUBDIRS): add texi2html and po_document.
+	(dist-local): copy translation into texi2html directories.
+	* configure.ac (AM_INIT_AUTOMAKE): add tar-ustar because
+	there are long files in tests, and dist-zip because it was
+	done in texi2html.
+	(MKINSTALLDIRS): add since some gettext version may need it.
+	(PERL, USE_UNICODE, USE_EXTERNAL_EASTASIANWIDTH, USE_UNIDECODE,
+	USE_DATA_DUMPER, REQUIRE_DATA_DUMPER, t2h_po_dir, t2h_po_top_builddir,
+	USE_EXTERNAL_LIBINTL): add texi2html related conditionals.
+	* po/Makevars (XGETTEXT_OPTIONS): add perl keywords for texi2html
+	source files.
+	* po/POTFILES.in: add texi2html files.
+
 2010-02-14  Ben Pfaff  <blp@gnu.org>
 
 	* util/gendocs.sh: Use "($cmd)" in place of "$(cmd)" where

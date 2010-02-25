@@ -1,5 +1,5 @@
 Name: texi2html
-Version: 5.0
+Version: 4.13
 Release: 1
 # GPLv2+ is for the code
 # OFSFDL (Old FSF Documentation License) for the documentation
@@ -83,8 +83,8 @@ fi
 %dir %{_sysconfdir}/texinfo
 
 %changelog
-* Sun Sep  9 2007 Patrice Dumas <pertusus@free.fr> 5.0-1
-- update to 5.0
+* Sun Sep  9 2007 Patrice Dumas <pertusus@free.fr> 4.13-1
+- update to 4.13
 
 * Mon Nov 14 2005 Patrice Dumas <pertusus@free.fr> 1.77-1
 - cleanups

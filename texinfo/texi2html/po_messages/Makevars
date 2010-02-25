@@ -4,8 +4,8 @@
 DOMAIN = texi2html
 
 # These two variables depend on the location of this directory.
-subdir = po_messages
-top_builddir = ..
+subdir = texi2html/po_messages
+top_builddir = ../..
 
 # These options get passed to xgettext.
 XGETTEXT_OPTIONS = --language=Perl -k__ -k\$__ -k%__ -k__x -k__n:1,2 -k__nx:1,2 -k__xn:1,2 -kN__

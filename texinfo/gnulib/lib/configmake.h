@@ -23,3 +23,4 @@
 #define PKGDATADIR "/usr/local/share/texinfo"
 #define PKGINCLUDEDIR "/usr/local/include/texinfo"
 #define PKGLIBDIR "/usr/local/lib/texinfo"
+#define PKGLIBEXECDIR "/usr/local/libexec/texinfo"

@@ -4,8 +4,8 @@
 DOMAIN = texi2html_document
 
 # These two variables depend on the location of this directory.
-subdir = po_document
-top_builddir = ..
+subdir = texi2html/po_document
+top_builddir = ../..
 
 # These options get passed to xgettext.
 XGETTEXT_OPTIONS = --language=Perl --keyword=gdt --keyword=pgdt:1,2c
