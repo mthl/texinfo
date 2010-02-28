@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.372 2010-02-23 00:15:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.373 2010-02-28 22:27:38 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2935,15 +2935,6 @@ $T2H_OPTIONS -> {'ifplaintext'} =
  verbose => "expand ifplaintext sections",
 };
 
-# actually a noop, since it is not used anywhere
-$T2H_OPTIONS -> {'invisible'} =
-{
- type => '=s',
- linkage => \$Texi2HTML::Config::INVISIBLE_MARK,
- verbose => 'use text in invisble anchor',
- noHelp  => 2,
-};
-
 $T2H_OPTIONS -> {'iso'} =
 {
  type => 'iso',
@@ -3377,6 +3368,15 @@ if (defined($default_output_format))
 ## obsolete cmd line options
 ##
 my $T2H_OBSOLETE_OPTIONS;
+
+# actually a noop, since it is not used anywhere
+$T2H_OBSOLETE_OPTIONS -> {'invisible'} =
+{
+ type => '=s',
+ linkage => \$Texi2HTML::Config::INVISIBLE_MARK,
+ verbose => 'use text in invisble anchor',
+ noHelp  => 2,
+};
 
 $T2H_OBSOLETE_OPTIONS -> {'expand'} =
 {
@@ -3886,10 +3886,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2008';
       exit 0;
    };
    push @types, ('version|V', 'help|h');
-   #foreach my $key (keys(%opts))
+   #foreach my $key (sort(keys(%$opts)))
    #{
-   #   print STDERR "$key, $opts{$key}\n";
+   #   #print STDERR "$key, $opts->{$key}\n";
+   #   print "$key\n";
    #}
+   #print STDERR "@types\n";
    my $result_options = Getopt::Long::GetOptions ($opts, @types);
 }
 
