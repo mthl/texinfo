@@ -1,0 +1,12 @@
+ -- Function: f (const type& x)
+Deftypefun.
+
+ -- Function: f (const type& x)
+Defun.
+
+ -- Method on c: f (const type& x)
+Deftypemethod.
+
+ -- Method on c: f (const type& x)
+Defmethod.
+

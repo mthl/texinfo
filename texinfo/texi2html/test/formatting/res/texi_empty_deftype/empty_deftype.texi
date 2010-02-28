@@ -1,0 +1,20 @@
+\input texinfo
+@setfilename empty_deftype.info
+
+@deftypefun {} f (const type& x)
+Deftypefun.
+@end deftypefun
+
+@defun f (const type& x)
+Defun.
+@end defun
+
+@deftypemethod c {} f (const type& x)
+Deftypemethod.
+@end deftypemethod
+
+@defmethod c f (const type& x)
+Defmethod.
+@end defmethod
+
+@bye

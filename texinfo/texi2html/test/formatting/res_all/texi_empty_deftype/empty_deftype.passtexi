@@ -1,0 +1,19 @@
+empty_deftype.texi(,2) @setfilename empty_deftype.info
+empty_deftype.texi(,3) 
+empty_deftype.texi(,4) @deftypefun {} f (const type& x)
+empty_deftype.texi(,5) Deftypefun.
+empty_deftype.texi(,6) @end deftypefun
+empty_deftype.texi(,7) 
+empty_deftype.texi(,8) @defun f (const type& x)
+empty_deftype.texi(,9) Defun.
+empty_deftype.texi(,10) @end defun
+empty_deftype.texi(,11) 
+empty_deftype.texi(,12) @deftypemethod c {} f (const type& x)
+empty_deftype.texi(,13) Deftypemethod.
+empty_deftype.texi(,14) @end deftypemethod
+empty_deftype.texi(,15) 
+empty_deftype.texi(,16) @defmethod c f (const type& x)
+empty_deftype.texi(,17) Defmethod.
+empty_deftype.texi(,18) @end defmethod
+empty_deftype.texi(,19) 
+empty_deftype.texi(,20) @bye
