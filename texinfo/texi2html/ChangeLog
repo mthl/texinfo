@@ -1,3 +1,9 @@
+2009-03-01   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl, texi2html.init, formats/html.init: handle
+	@allowcodebreaks in html by enclosing the word containing - 
+	or _ in white-space:pre style. Idea from Mark Polesky.
+
 2009-02-23   Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, texi2html.pl: use more runtime detection. Report

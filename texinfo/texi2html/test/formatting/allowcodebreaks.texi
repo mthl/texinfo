@@ -1,0 +1,36 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename allowcodebreaks.info
+
+@node Top
+@top Test allowcodebreaks
+
+@macro testallowcodebreaks {nr}
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node\nr\}}
+
+@example
+@code{in-example}
+@end example
+@end macro
+
+Before first allowcodebreaks
+@testallowcodebreaks{0}
+
+@allowcodebreaks false
+After false
+@testallowcodebreaks{1}
+
+In w:
+@w{@testallowcodebreaks{w}
+}
+
+@allowcodebreaks true
+After true
+@testallowcodebreaks{2}
+
+@bye

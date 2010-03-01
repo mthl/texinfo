@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.373 2010-02-28 22:27:38 pertusus Exp $
+# $Id: texi2html.pl,v 1.374 2010-03-01 14:53:19 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -309,6 +309,7 @@ $SETCONTENTSAFTERTITLEPAGE
 $SETSHORTCONTENTSAFTERTITLEPAGE
 $KBDINPUTSTYLE
 $FRENCHSPACING
+$ALLOWCODEBREAKS
 $SETFILENAME
 $TOC_LINKS
 $L2H 
@@ -781,6 +782,7 @@ my %config_map = (
    'setshortcontentsaftertitlepage'  => \$SETSHORTCONTENTSAFTERTITLEPAGE,
    'kbdinputstyle' => \$KBDINPUTSTYLE,
    'frenchspacing' => \$FRENCHSPACING,
+   'allowcodebreaks' => \$ALLOWCODEBREAKS,
    'setfilename' => \$SETFILENAME,
    'use_nls' => \$USE_NLS,
 );
@@ -5672,7 +5674,7 @@ sub common_misc_commands($$$$)
         {
             if (($line =~ /^\s+(true)[^\w\-]/) or ($line =~ /^\s+(false)[^\w\-]/))
             {
-                $Texi2HTML::THISDOC{$command} = $1;
+                Texi2HTML::Config::set_conf($command, $1, 1);
             }
             else
             {

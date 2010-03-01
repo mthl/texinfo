@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.261 2010-02-21 00:33:59 pertusus Exp $
+# $Id: texi2html.init,v 1.262 2010-03-01 14:53:19 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -363,6 +363,9 @@ $KBDINPUTSTYLE = 'distinct';
 
 # corresponds with @frenchspacing
 $FRENCHSPACING = 'off';
+
+# correspond with @allowcodebreaks
+$ALLOWCODEBREAKS = 'true';
 
 # corresponds with @setfilename. Set with caution.
 $SETFILENAME = undef;

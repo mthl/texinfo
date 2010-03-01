@@ -52,6 +52,7 @@ texi lightweight_markups.texi
 texi punctuation_in_command.texi
 texi test_w.texi
 texi empty_deftype.texi
+texi allowcodebreaks.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -151,3 +152,4 @@ direntry_dircategory_xml direntry_dircategory.texi --init xml.init
 heading_info heading.texi --init info.init
 nested_table_info nested_table.texi --init info.init
 simple_table_info simple_table.texi --init info.init
+allowcodebreaks allowcodebreaks.texi

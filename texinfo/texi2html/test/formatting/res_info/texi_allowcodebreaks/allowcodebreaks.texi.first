@@ -1,0 +1,72 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename allowcodebreaks.info
+
+@node Top
+@top Test allowcodebreaks
+
+@macro testallowcodebreaks {nr}
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node\nr\}}
+
+@example
+@code{in-example}
+@end example
+@end macro
+
+Before first allowcodebreaks
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node0}}
+
+@example
+@code{in-example}
+@end example
+
+@allowcodebreaks false
+After false
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node1}}
+
+@example
+@code{in-example}
+@end example
+
+In w:
+@w{@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A nodew}}
+
+@example
+@code{in-example}
+@end example
+}
+
+@allowcodebreaks true
+After true
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+
+@samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node2}}
+
+@example
+@code{in-example}
+@end example
+
+@bye

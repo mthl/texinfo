@@ -1,0 +1,48 @@
+This is allowcodebreaks.info, produced by makeinfo version 4.13 from
+allowcodebreaks.texi.
+
+
+File: allowcodebreaks.info,  Node: Top,  Up: (dir)
+
+Test allowcodebreaks
+********************
+
+Before first allowcodebreaks `1aaa' `2aaa-' `-3bbb' `4aaa-bbb' `
+5aaa-bb' `6aaa-bb ' `ccc 7aaa-bbb' `ccc 8aaa-bbb ddd' `9aaa-bbb rrr_vv'
+
+   `fff-- --- minus-b aa-tte'ff_gg aar-oman anc-hor'
+
+     `in-example'
+
+   After false `1aaa' `2aaa-' `-3bbb' `4aaa-bbb' ` 5aaa-bb' `6aaa-bb '
+`ccc 7aaa-bbb' `ccc 8aaa-bbb ddd' `9aaa-bbb rrr_vv'
+
+   `fff-- --- minus-b aa-tte'ff_gg aar-oman anc-hor'
+
+     `in-example'
+
+   In w:
+`1aaa' `2aaa-' `-3bbb' `4aaa-bbb' ` 5aaa-bb' `6aaa-bb ' `ccc 7aaa-bbb' `ccc 8aaa-bbb ddd' `9aaa-bbb rrr_vv'
+
+
+   `fff-- --- minus-b aa-tte'ff_gg aar-oman anc-hor'
+
+     `in-example'
+
+   After true `1aaa' `2aaa-' `-3bbb' `4aaa-bbb' ` 5aaa-bb' `6aaa-bb '
+`ccc 7aaa-bbb' `ccc 8aaa-bbb ddd' `9aaa-bbb rrr_vv'
+
+   `fff-- --- minus-b aa-tte'ff_gg aar-oman anc-hor'
+
+     `in-example'
+
+
+
+Tag Table:
+Node: Top92
+Ref: A node0378
+Ref: A node1575
+Ref: A nodew766
+Ref: A node2963
+
+End Tag Table

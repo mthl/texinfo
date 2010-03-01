@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-23 10:21+0100\n"
+"POT-Creation-Date: 2010-03-01 00:13+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -15,219 +15,219 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6027 texi2html/texi2html.pl:6031
-#: texi2html/texi2html.pl:6035
+#: texi2html/texi2html.pl:6031 texi2html/texi2html.pl:6035
+#: texi2html/texi2html.pl:6039
 msgid "About This Document"
 msgstr "A navigációs panel használata"
 
-#: texi2html/texi2html.pl:6028 texi2html/texi2html.pl:6032
-#: texi2html/texi2html.pl:6036 texi2html/examples/roff.init:986
+#: texi2html/texi2html.pl:6032 texi2html/texi2html.pl:6036
+#: texi2html/texi2html.pl:6040 texi2html/examples/roff.init:986
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6029 texi2html/texi2html.pl:6033
-#: texi2html/texi2html.pl:6037
+#: texi2html/texi2html.pl:6033 texi2html/texi2html.pl:6037
+#: texi2html/texi2html.pl:6041
 msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6030 texi2html/texi2html.pl:6034
-#: texi2html/texi2html.pl:6038 texi2html/texi2html.init:6546
-#: texi2html/formats/html.init:2482
+#: texi2html/texi2html.pl:6034 texi2html/texi2html.pl:6038
+#: texi2html/texi2html.pl:6042 texi2html/texi2html.init:6549
+#: texi2html/formats/html.init:2509
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
-#: texi2html/texi2html.pl:12577
+#: texi2html/texi2html.pl:12581
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs értéke ennek: `{value}'@}"
 
-#: texi2html/texi2html.init:923 texi2html/texi2html.init:975
-#: texi2html/formats/html.init:689
+#: texi2html/texi2html.init:926 texi2html/texi2html.init:978
+#: texi2html/formats/html.init:690
 msgid "Top"
 msgstr "Címoldal"
 
-#: texi2html/texi2html.init:924 texi2html/texi2html.init:976
-#: texi2html/formats/html.init:690
+#: texi2html/texi2html.init:927 texi2html/texi2html.init:979
+#: texi2html/formats/html.init:691
 msgid "Contents"
 msgstr "Tartalom"
 
-#: texi2html/texi2html.init:925 texi2html/texi2html.init:977
-#: texi2html/formats/html.init:691
+#: texi2html/texi2html.init:928 texi2html/texi2html.init:980
+#: texi2html/formats/html.init:692
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: texi2html/texi2html.init:926 texi2html/texi2html.init:953
-#: texi2html/texi2html.init:978 texi2html/formats/html.init:692
+#: texi2html/texi2html.init:929 texi2html/texi2html.init:956
+#: texi2html/texi2html.init:981 texi2html/formats/html.init:693
 msgid "Index"
 msgstr "Tárgymutató"
 
-#: texi2html/texi2html.init:928
+#: texi2html/texi2html.init:931
 msgid "Current"
 msgstr "Aktuális"
 
-#: texi2html/texi2html.init:931 texi2html/texi2html.init:936
+#: texi2html/texi2html.init:934 texi2html/texi2html.init:939
 msgid "Previous"
 msgstr "Előző"
 
-#: texi2html/texi2html.init:932 texi2html/texi2html.init:934
-#: texi2html/texi2html.init:984
+#: texi2html/texi2html.init:935 texi2html/texi2html.init:937
+#: texi2html/texi2html.init:987
 msgid "Up"
 msgstr "Fel"
 
-#: texi2html/texi2html.init:933 texi2html/texi2html.init:935
-#: texi2html/texi2html.init:985 texi2html/formats/html.init:699
+#: texi2html/texi2html.init:936 texi2html/texi2html.init:938
+#: texi2html/texi2html.init:988 texi2html/formats/html.init:700
 msgid "Next"
 msgstr "Következő"
 
-#: texi2html/texi2html.init:937 texi2html/texi2html.init:989
+#: texi2html/texi2html.init:940 texi2html/texi2html.init:992
 msgid "Following"
 msgstr "Következő"
 
-#: texi2html/texi2html.init:943 texi2html/formats/html.init:709
+#: texi2html/texi2html.init:946 texi2html/formats/html.init:710
 msgid "Next file"
 msgstr "Következő fájl"
 
-#: texi2html/texi2html.init:944 texi2html/formats/html.init:710
+#: texi2html/texi2html.init:947 texi2html/formats/html.init:711
 msgid "Previous file"
 msgstr "Előző fájl"
 
-#: texi2html/texi2html.init:950
+#: texi2html/texi2html.init:953
 msgid "Cover (top) of document"
 msgstr "Dokumentum címoldala"
 
-#: texi2html/texi2html.init:951
+#: texi2html/texi2html.init:954
 msgid "Table of contents"
 msgstr "Tartalomjegyzék"
 
-#: texi2html/texi2html.init:952
+#: texi2html/texi2html.init:955
 msgid "Short table of contents"
 msgstr "Rövid tartalomjegyzék"
 
-#: texi2html/texi2html.init:954
+#: texi2html/texi2html.init:957
 msgid "Current section"
 msgstr "Aktuális szakasz"
 
-#: texi2html/texi2html.init:955
+#: texi2html/texi2html.init:958
 msgid "Previous section in reading order"
 msgstr "Előző szakasz az olvasási sorrendben"
 
-#: texi2html/texi2html.init:956
+#: texi2html/texi2html.init:959
 msgid "Beginning of this chapter or previous chapter"
 msgstr "Fejezet eleje vagy előző fejezet"
 
-#: texi2html/texi2html.init:957
+#: texi2html/texi2html.init:960
 msgid "Previous section on same level"
 msgstr "Előző szakasz ugyanazon a szinten"
 
-#: texi2html/texi2html.init:958
+#: texi2html/texi2html.init:961
 msgid "Up section"
 msgstr "Szülő szakasz"
 
-#: texi2html/texi2html.init:959
+#: texi2html/texi2html.init:962
 msgid "Next section on same level"
 msgstr "Következő szakasz ugyanazon a szinten"
 
-#: texi2html/texi2html.init:960
+#: texi2html/texi2html.init:963
 msgid "Up node"
 msgstr "Szülő csomópont"
 
-#: texi2html/texi2html.init:961 texi2html/formats/html.init:701
+#: texi2html/texi2html.init:964 texi2html/formats/html.init:702
 msgid "Next node"
 msgstr "Következő csomópont"
 
-#: texi2html/texi2html.init:962 texi2html/formats/html.init:702
+#: texi2html/texi2html.init:965 texi2html/formats/html.init:703
 msgid "Previous node"
 msgstr "Előző csomópont"
 
-#: texi2html/texi2html.init:963
+#: texi2html/texi2html.init:966
 msgid "Node following in node reading order"
 msgstr "Következő csomópont az olvasási sorrendben"
 
-#: texi2html/texi2html.init:964
+#: texi2html/texi2html.init:967
 msgid "Next section in reading order"
 msgstr "Következő szakasz az olvasási sorrendben"
 
-#: texi2html/texi2html.init:965
+#: texi2html/texi2html.init:968
 msgid "Next chapter"
 msgstr "Következő fejezet"
 
-#: texi2html/texi2html.init:966
+#: texi2html/texi2html.init:969
 msgid "About (help)"
 msgstr "Segítség a navigációhoz"
 
-#: texi2html/texi2html.init:967
+#: texi2html/texi2html.init:970
 msgid "First section in reading order"
 msgstr "Első szakasz az olvasási sorrendben"
 
-#: texi2html/texi2html.init:968
+#: texi2html/texi2html.init:971
 msgid "Last section in reading order"
 msgstr "Utolsó szakasz az olvasási sorrendben"
 
-#: texi2html/texi2html.init:969
+#: texi2html/texi2html.init:972
 msgid "Forward section in next file"
 msgstr "Következő fájl elülső szakasza"
 
-#: texi2html/texi2html.init:970
+#: texi2html/texi2html.init:973
 msgid "Back section in previous file"
 msgstr "Előző fájl hátsó szakasza"
 
-#: texi2html/texi2html.init:980
+#: texi2html/texi2html.init:983
 msgid "This"
 msgstr "Ez a(z)"
 
-#: texi2html/texi2html.init:981
+#: texi2html/texi2html.init:984
 msgid "Back"
 msgstr "Vissza"
 
-#: texi2html/texi2html.init:982
+#: texi2html/texi2html.init:985
 msgid "FastBack"
 msgstr "Visszaugrás"
 
-#: texi2html/texi2html.init:983 texi2html/formats/html.init:697
+#: texi2html/texi2html.init:986 texi2html/formats/html.init:698
 msgid "Prev"
 msgstr "Előző"
 
-#: texi2html/texi2html.init:986
+#: texi2html/texi2html.init:989
 msgid "NodeUp"
 msgstr "SzülőCsomópont"
 
-#: texi2html/texi2html.init:987
+#: texi2html/texi2html.init:990
 msgid "NodeNext"
 msgstr "KövetkezőCsomópont"
 
-#: texi2html/texi2html.init:988
+#: texi2html/texi2html.init:991
 msgid "NodePrev"
 msgstr "ElőzőCsomópont"
 
-#: texi2html/texi2html.init:990
+#: texi2html/texi2html.init:993
 msgid "Forward"
 msgstr "Előre"
 
-#: texi2html/texi2html.init:991
+#: texi2html/texi2html.init:994
 msgid "FastForward"
 msgstr "Előreugrás"
 
-#: texi2html/texi2html.init:992
+#: texi2html/texi2html.init:995
 msgid "About"
 msgstr "Súgó"
 
-#: texi2html/texi2html.init:993
+#: texi2html/texi2html.init:996
 msgid "First"
 msgstr "Első"
 
-#: texi2html/texi2html.init:994
+#: texi2html/texi2html.init:997
 msgid "Last"
 msgstr "Utolsó"
 
-#: texi2html/texi2html.init:995
+#: texi2html/texi2html.init:998
 msgid "NextFile"
 msgstr "KövetkezőFájl"
 
-#: texi2html/texi2html.init:996
+#: texi2html/texi2html.init:999
 msgid "PrevFile"
 msgstr "ElőzőFájl"
 
-#: texi2html/texi2html.init:1634
+#: texi2html/texi2html.init:1637
 #, perl-brace-format
 msgid ""
 "This document was generated on @i{{date}} using @uref{{program_homepage}, @i"
@@ -236,7 +236,7 @@ msgstr ""
 "Ezt a dokumentumot @i{{date}} napon generálta a(z) @uref{{program_homepage}, "
 "@i{{program}}}."
 
-#: texi2html/texi2html.init:1637
+#: texi2html/texi2html.init:1640
 #, perl-brace-format
 msgid ""
 "This document was generated using @uref{{program_homepage}, @emph"
@@ -245,149 +245,149 @@ msgstr ""
 "Ezt a dokumentumot a(z) @uref{{program_homepage}, @emph{{program}}} "
 "generálta."
 
-#: texi2html/texi2html.init:5228 texi2html/texi2html.init:5351
-#: texi2html/formats/html.init:1576 texi2html/formats/html.init:1674
+#: texi2html/texi2html.init:5231 texi2html/texi2html.init:5354
+#: texi2html/formats/html.init:1577 texi2html/formats/html.init:1675
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr "{style} {number}"
 
-#: texi2html/texi2html.init:5250 texi2html/formats/html.init:1590
+#: texi2html/texi2html.init:5253 texi2html/formats/html.init:1591
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr "{style}: {caption_first_line}"
 
-#: texi2html/texi2html.init:5278 texi2html/formats/html.init:1607
+#: texi2html/texi2html.init:5281 texi2html/formats/html.init:1608
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr "{style}: {shortcaption_first_line}"
 
-#: texi2html/texi2html.init:5583 texi2html/texi2html.init:5604
+#: texi2html/texi2html.init:5586 texi2html/texi2html.init:5607
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} ezen: {class}"
 
-#: texi2html/texi2html.init:5587 texi2html/texi2html.init:5608
+#: texi2html/texi2html.init:5590 texi2html/texi2html.init:5611
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} típusa: {class}"
 
-#: texi2html/texi2html.init:5911
+#: texi2html/texi2html.init:5914
 #, perl-brace-format
 msgid "see {node_file_href} section `{section}' in @cite{{book}}"
 msgstr "ld. {node_file_href} ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5912
+#: texi2html/texi2html.init:5915
 #, perl-brace-format
 msgid "see {node_file_href} @cite{{book}}"
 msgstr "ld. {node_file_href} @cite{{book}}"
 
-#: texi2html/texi2html.init:5916
+#: texi2html/texi2html.init:5919
 #, perl-brace-format
 msgid "see section `{section}' in @cite{{book}}"
 msgstr "ld. ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5917
+#: texi2html/texi2html.init:5920
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr "ld. @cite{{book}}"
 
-#: texi2html/texi2html.init:5921
+#: texi2html/texi2html.init:5924
 #, perl-brace-format
 msgid "see {node_file_href}"
 msgstr "ld. {node_file_href}"
 
-#: texi2html/texi2html.init:5928
+#: texi2html/texi2html.init:5931
 #, perl-brace-format
 msgid "See {node_file_href} section `{section}' in @cite{{book}}"
 msgstr "Ld. {node_file_href} ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5929
+#: texi2html/texi2html.init:5932
 #, perl-brace-format
 msgid "See {node_file_href} @cite{{book}}"
 msgstr "See {node_file_href} @cite{{book}}"
 
-#: texi2html/texi2html.init:5933
+#: texi2html/texi2html.init:5936
 #, perl-brace-format
 msgid "See section `{section}' in @cite{{book}}"
 msgstr "Ld. ezt a szakaszt: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5934
+#: texi2html/texi2html.init:5937
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr "Ld. @cite{{book}}"
 
-#: texi2html/texi2html.init:5938
+#: texi2html/texi2html.init:5941
 #, perl-brace-format
 msgid "See {node_file_href}"
 msgstr "Ld. {node_file_href}"
 
-#: texi2html/texi2html.init:5945
+#: texi2html/texi2html.init:5948
 #, perl-brace-format
 msgid "{node_file_href} section `{section}' in @cite{{book}}"
 msgstr "{node_file_href} szakasz: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5946
+#: texi2html/texi2html.init:5949
 #, perl-brace-format
 msgid "{node_file_href} @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}"
 
-#: texi2html/texi2html.init:5950
+#: texi2html/texi2html.init:5953
 #, perl-brace-format
 msgid "section `{section}' in @cite{{book}}"
 msgstr "szakasz: `{section}' itt: @cite{{book}}"
 
-#: texi2html/texi2html.init:5951
+#: texi2html/texi2html.init:5954
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr "@cite{{book}}"
 
-#: texi2html/texi2html.init:5955
+#: texi2html/texi2html.init:5958
 #, perl-brace-format
 msgid "{node_file_href}"
 msgstr "{node_file_href}"
 
-#: texi2html/texi2html.init:5990
+#: texi2html/texi2html.init:5993
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr "ld. ezt a szakaszt: {reference_name}"
 
-#: texi2html/texi2html.init:5991 texi2html/texi2html.init:6008
+#: texi2html/texi2html.init:5994 texi2html/texi2html.init:6011
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr "ld. {reference_name}"
 
-#: texi2html/texi2html.init:5995
+#: texi2html/texi2html.init:5998
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr "Ld. ezt a szakaszt: {reference_name}"
 
-#: texi2html/texi2html.init:5996 texi2html/texi2html.init:6012
+#: texi2html/texi2html.init:5999 texi2html/texi2html.init:6015
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr "Ld. {reference_name}"
 
-#: texi2html/texi2html.init:6000 texi2html/texi2html.init:6016
+#: texi2html/texi2html.init:6003 texi2html/texi2html.init:6019
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr "{reference_name}"
 
-#: texi2html/texi2html.init:6634
+#: texi2html/texi2html.init:6637
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr "ekkor: @emph{{date}}"
 
-#: texi2html/texi2html.init:6811 texi2html/formats/html.init:2686
+#: texi2html/texi2html.init:6814 texi2html/formats/html.init:2713
 #: texi2html/maintained_extra/html32.init:172
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
 
-#: texi2html/texi2html.init:6831 texi2html/formats/docbook.init:1402
+#: texi2html/texi2html.init:6834 texi2html/formats/docbook.init:1402
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
 
-#: texi2html/texi2html.init:6956
+#: texi2html/texi2html.init:6959
 msgid "(outside of any element)"
 msgstr "(bármelyik elemen kívül)"
 
@@ -491,47 +491,47 @@ msgstr "ld. {title_ref}"
 msgid "See {title_ref}"
 msgstr "Ld. {title_ref}"
 
-#: texi2html/formats/html.init:694
+#: texi2html/formats/html.init:695
 msgid "current"
 msgstr "aktuális"
 
-#: texi2html/formats/html.init:698
+#: texi2html/formats/html.init:699
 msgid " Up "
 msgstr "Fel"
 
-#: texi2html/formats/html.init:700
+#: texi2html/formats/html.init:701
 msgid "Node up"
 msgstr "Szülő csomópont"
 
-#: texi2html/formats/html.init:703
+#: texi2html/formats/html.init:704
 msgid "Following node"
 msgstr "Következő csomópont"
 
-#: texi2html/formats/html.init:720
+#: texi2html/formats/html.init:721
 msgid "Untitled Document"
 msgstr "Névtelen dokumentum"
 
-#: texi2html/formats/html.init:1374
+#: texi2html/formats/html.init:1375
 msgid "  The buttons in the navigation panels have the following meaning:"
 msgstr "  A navigációs panelen levő gombok jelentése a következő:"
 
-#: texi2html/formats/html.init:1380
+#: texi2html/formats/html.init:1381
 msgid "Button"
 msgstr "Gomb"
 
-#: texi2html/formats/html.init:1381
+#: texi2html/formats/html.init:1382
 msgid "Name"
 msgstr "Név"
 
-#: texi2html/formats/html.init:1382
+#: texi2html/formats/html.init:1383
 msgid "Go to"
 msgstr "Cél"
 
-#: texi2html/formats/html.init:1383
+#: texi2html/formats/html.init:1384
 msgid "From 1.2.3 go to"
 msgstr "1.2.3-ból ide jutunk"
 
-#: texi2html/formats/html.init:1407
+#: texi2html/formats/html.init:1408
 msgid ""
 "  where the @strong{ Example } assumes that the current position is at "
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
@@ -540,65 +540,65 @@ msgstr ""
 "  @strong{ Példánkban } az aktuális pozíció az @strong{ 1.2.3 alalszakasz } "
 "egy olyan dokumentumban, melynek szerkezete a következő:"
 
-#: texi2html/formats/html.init:1417
+#: texi2html/formats/html.init:1418
 msgid "Section One"
 msgstr "szakasz"
 
-#: texi2html/formats/html.init:1419
+#: texi2html/formats/html.init:1420
 msgid "Subsection One-One"
 msgstr "alszakasz"
 
-#: texi2html/formats/html.init:1426
+#: texi2html/formats/html.init:1427
 msgid "Subsection One-Two"
 msgstr "alszakasz"
 
-#: texi2html/formats/html.init:1428
+#: texi2html/formats/html.init:1429
 msgid "Subsubsection One-Two-One"
 msgstr "alalszakasz"
 
-#: texi2html/formats/html.init:1429
+#: texi2html/formats/html.init:1430
 msgid "Subsubsection One-Two-Two"
 msgstr "alalszakasz"
 
-#: texi2html/formats/html.init:1430
+#: texi2html/formats/html.init:1431
 msgid "Subsubsection One-Two-Three"
 msgstr "alalszakasz"
 
-#: texi2html/formats/html.init:1432
+#: texi2html/formats/html.init:1433
 msgid "Current Position"
 msgstr "Aktuális pozíció"
 
-#: texi2html/formats/html.init:1433
+#: texi2html/formats/html.init:1434
 msgid "Subsubsection One-Two-Four"
 msgstr "alalszakasz"
 
-#: texi2html/formats/html.init:1436
+#: texi2html/formats/html.init:1437
 msgid "Subsection One-Three"
 msgstr "alszakasz"
 
-#: texi2html/formats/html.init:1443
+#: texi2html/formats/html.init:1444
 msgid "Subsection One-Four"
 msgstr "alszakasz"
 
-#: texi2html/formats/html.init:1463
+#: texi2html/formats/html.init:1464
 #, perl-brace-format
 msgid "The node you are looking for is at {href}."
 msgstr "A keresett csomópont itt található: {href}."
 
-#: texi2html/formats/html.init:2710 texi2html/formats/info.init:2812
+#: texi2html/formats/html.init:2737 texi2html/formats/info.init:2812
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
 
-#: texi2html/formats/html.init:2727
+#: texi2html/formats/html.init:2754
 msgid "Index Entry"
 msgstr "Tárgymutató-bejegyzés"
 
-#: texi2html/formats/html.init:2727
+#: texi2html/formats/html.init:2754
 msgid "Section"
 msgstr "Szakasz"
 
-#: texi2html/formats/html.init:2839
+#: texi2html/formats/html.init:2866
 #: texi2html/maintained_extra/mediawiki.init:1031
 msgid "Jump to"
 msgstr "Ugorj ide"
