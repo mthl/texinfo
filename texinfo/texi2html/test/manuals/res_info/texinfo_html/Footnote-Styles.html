@@ -63,6 +63,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -113,10 +114,10 @@ node.  The footnote reference is actually a cross reference
 which you use to reach the footnote node.
 
 <p>The name of the node with the footnotes is constructed
-by appending &lsquo;<samp>-Footnotes</samp>&rsquo; to the name of the node
+by appending &lsquo;<samp><span class="nolinebreak">-Footnotes</span></samp>&rsquo; to the name of the node
 that contains the footnotes. (Consequently, the footnotes&rsquo;
 node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
-&lsquo;<tt>Footnotes-Footnotes</tt>&rsquo;!)  The footnotes&rsquo; node has an
+&lsquo;<tt><span class="nolinebreak">Footnotes-Footnotes</span></tt>&rsquo;!)  The footnotes&rsquo; node has an
 &lsquo;Up&rsquo; node pointer that leads back to its parent node.
 </p>
 <p>Here is how the first footnote in this manual looks after being

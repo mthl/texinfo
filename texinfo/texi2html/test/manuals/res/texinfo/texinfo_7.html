@@ -56,6 +56,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -557,11 +558,11 @@ node containing the pointer.
 <a name="index-_0040_002dcommands-in-nodename"></a>
 <a name="index-Node-name_002c-should-not-contain-_0040_002dcommands"></a>
 </li><li>
-@-commands used in node names generally confuse Info, so you
+@<span class="nolinebreak">-commands</span> used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
 escaped with a &lsquo;<samp>@</samp>&rsquo;, such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
-@-commands in node names; see <a href="texinfo_21.html#Pointer-Validation">Pointer Validation</a>.
+@<span class="nolinebreak">-commands</span> in node names; see <a href="texinfo_21.html#Pointer-Validation">Pointer Validation</a>.
 
 <p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:

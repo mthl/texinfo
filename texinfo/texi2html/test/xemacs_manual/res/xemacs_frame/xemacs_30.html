@@ -37,6 +37,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -1916,7 +1917,7 @@ is used to specify the syntactic class of opening delimiters.  Here is a
 table of syntactic classes, with the characters that specify them.
 </p>
 <dl compact="compact">
-<dt>&lsquo;<samp>-</samp>&rsquo;</dt>
+<dt>&lsquo;<samp><span class="nolinebreak">-</span></samp>&rsquo;</dt>
 <dd><p>The class of whitespace characters.  Please don&rsquo;t use the formerly
 advertised &nbsp;, which is not supported by GNU Emacs.
 </p></dd>
@@ -3919,7 +3920,7 @@ say what mode you are in.
 important to report not just the text of the error message but a backtrace
 showing how the Lisp program in Emacs arrived at the error.  To make the
 backtrace, you must execute the Lisp expression 
-<code>(setq debug-on-error&nbsp;t)</code> before the error happens (that is to
+<code>(setq <span class="nolinebreak">debug-on-error</span>&nbsp;t)</code> before the error happens (that is to
 say, you must execute that expression and then make the bug happen).  This
 causes the Lisp debugger to run (see section <a href="xemacs_25.html#Lisp-Debug">The Emacs-Lisp Debugger</a>).  The debugger&rsquo;s
 backtrace can be copied as text into the bug report.  This use of the

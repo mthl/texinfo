@@ -232,6 +232,9 @@ dl listoffloats
 h1 settitle
 table menu
 
+@code and @allowcodebreaks false: span nocodebreak
+@w and - or _ in word: span nolinebreak
+
 @dots small dots
 @endots small enddots
 @sansserif span sansserif

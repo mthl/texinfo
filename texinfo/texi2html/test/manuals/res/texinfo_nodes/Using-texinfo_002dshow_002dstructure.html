@@ -56,6 +56,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -96,7 +97,7 @@ or adding to a Texinfo file that someone else has written.
 <p>In GNU Emacs, in Texinfo mode, the <code>texinfo-show-structure</code>
 command lists all the lines that begin with the @-commands that
 specify the structure: <code>@chapter</code>, <code>@section</code>,
-<code>@appendix</code>, and so on.  With an argument (<kbd>C-u</kbd>
+<code>@appendix</code>, and so on.  With an argument (<kbd><span class="nolinebreak">C-u</span></kbd>
 as prefix argument, if interactive),
 the command also shows the <code>@node</code> lines.  The
 <code>texinfo-show-structure</code> command is bound to <kbd>C-c C-s</kbd> in
@@ -144,7 +145,7 @@ how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 </p>
 <p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd>C-u&nbsp;C-c&nbsp;C-s</kbd>, it will list lines beginning with
+typing <kbd><span class="nolinebreak">C-u</span>&nbsp;<span class="nolinebreak">C-c</span>&nbsp;<span class="nolinebreak">C-s</span></kbd>, it will list lines beginning with
 <code>@node</code> as well as the lines beginning with the @-sign commands
 for <code>@chapter</code>, <code>@section</code>, and the like.
 </p>

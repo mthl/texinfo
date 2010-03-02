@@ -37,6 +37,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -954,8 +955,7 @@ move to.  If point is after the space in &lsquo;<samp>FOO,&nbsp;BAR</samp>&rsquo
 <a name="index-transpose_002dwords-1"></a>
 <p>  <kbd>Meta-t</kbd> (<code>transpose-words</code>) exchanges the word before or
 containing point with the following word.  The delimiter characters
-between the words do not move.  For example, transposing &lsquo;<samp>FOO,
-BAR</samp>&rsquo; results in &lsquo;<samp>BAR,&nbsp;FOO</samp>&rsquo; rather than &lsquo;<samp>BAR&nbsp;FOO,</samp>&rsquo;.
+between the words do not move.  For example, transposing &lsquo;<samp>FOO,&nbsp;BAR</samp>&rsquo; results in &lsquo;<samp>BAR,&nbsp;FOO</samp>&rsquo; rather than &lsquo;<samp>BAR&nbsp;FOO,</samp>&rsquo;.
 See section <a href="xemacs_16.html#Transpose">Transposing Text</a>, for more on transposition and on arguments to
 transposition commands.
 </p>
@@ -1464,9 +1464,9 @@ new paragraph.
 <a name="index-set_002dfill_002dprefix"></a>
 <p>  To specify a fill prefix, move to a line that starts with the desired
 prefix, put point at the end of the prefix, and give the command
-<kbd>C-x&nbsp;.</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
+<kbd><span class="nolinebreak">C-x</span>&nbsp;.</kbd> (<code>set-fill-prefix</code>).  That&rsquo;s a period after the
 <kbd>C-x</kbd>.  To turn off the fill prefix, specify an empty prefix: type
-<kbd>C-x&nbsp;.</kbd> with point at the beginning of a line.
+<kbd><span class="nolinebreak">C-x</span>&nbsp;.</kbd> with point at the beginning of a line.
 </p>
 <p>  When a fill prefix is in effect, the fill commands remove the fill
 prefix from each line before filling and insert it on each line after

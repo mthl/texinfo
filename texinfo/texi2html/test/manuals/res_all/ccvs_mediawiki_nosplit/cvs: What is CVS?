@@ -70,11 +70,11 @@ on downloading <small>CVS</small> and other <small>CVS</small> topics, see:
 <div id="index-Mailing-list"></div>
 <div id="index-List_002c-mailing-list"></div>
 <div id="index-Newsgroups"></div>
-There is a mailing list, known as <code>info-cvs</code>,
+There is a mailing list, known as <code><span class="nolinebreak" style="white-space:pre">info-cvs</span></code>,
 devoted to <small>CVS</small>.  To subscribe or
 unsubscribe
 write to
-<code>info-cvs-request@gnu.org</code>.
+<code><span class="nolinebreak" style="white-space:pre">info-cvs-request</span>@gnu.org</code>.
 If you prefer a usenet group, the right
 group is <code>comp.software.config-mgmt</code> which is for
 <small>CVS</small> discussions (along with other configuration

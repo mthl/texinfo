@@ -37,6 +37,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -1234,7 +1235,7 @@ version.  This records the new version in the master file, and unlocks
 the source file so that other people can lock it and thus modify it.
 </p>
 <p>  Checkin and checkout are the basic operations of version control.  You
-can do both of them with a single Emacs command: <kbd>C-x&nbsp;C-q</kbd>
+can do both of them with a single Emacs command: <kbd><span class="nolinebreak">C-x</span>&nbsp;<span class="nolinebreak">C-q</span></kbd>
 (<code>vc-toggle-read-only</code>).
 </p>
 <p>  A <em>snapshot</em> is a coherent collection of versions of the various
@@ -1365,7 +1366,7 @@ requires confirmation with &lsquo;<samp>yes</samp>&rsquo;.
 <a name="index-vc_002dregister"></a>
 <a name="index-vc_002ddefault_002dback_002dend"></a>
 <p>  You can register the visited file for version control using
-<kbd>C-x&nbsp;v&nbsp;i</kbd> (<code>vc-register</code>).  If the variable
+<kbd><span class="nolinebreak">C-x</span>&nbsp;v&nbsp;i</kbd> (<code>vc-register</code>).  If the variable
 <code>vc-default-back-end</code> is non-<code>nil</code>, it specifies which
 version control system to use; otherwise, this uses RCS if it is
 installed on your system and SCCS if not.  After <kbd>C-x v i</kbd>,
@@ -1547,8 +1548,7 @@ messages that start with `#'.</samp>&rsquo;.  Then <kbd>C-x v a</kbd> visits
 </p>
 <p>  Normally, the log entry for file &lsquo;<tt>foo</tt>&rsquo; is displayed as &lsquo;<samp>*
 foo: <var>text of log entry</var></samp>&rsquo;.  The &lsquo;<samp>:</samp>&rsquo; after &lsquo;<tt>foo</tt>&rsquo; is omitted
-if the text of the log entry starts with &lsquo;<samp>(<var>functionname</var>):
-</samp>&rsquo;.  For example, if the log entry for &lsquo;<tt>vc.el</tt>&rsquo; is
+if the text of the log entry starts with &lsquo;<samp>(<var>functionname</var>):&nbsp;</samp>&rsquo;.  For example, if the log entry for &lsquo;<tt>vc.el</tt>&rsquo; is
 &lsquo;<samp>(vc-do-command): Check call-process status.</samp>&rsquo;, then the text in
 &lsquo;<tt>ChangeLog</tt>&rsquo; looks like this:
 </p>

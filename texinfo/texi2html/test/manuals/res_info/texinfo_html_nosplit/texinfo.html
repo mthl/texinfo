@@ -60,6 +60,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -1472,7 +1473,7 @@ better to include too much than to leave out something important.
 </p>
 <a name="index-Patches_002c-contributing"></a>
 <p>Patches are most welcome; if possible, please make them with
-&lsquo;<samp>diff&nbsp;-c</samp>&rsquo; (see <a href="diffutils.html#Top">(diffutils)Top</a> section &lsquo;Overview&rsquo; in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="emacs.html#Change-Log">(emacs)Change Log</a> section &lsquo;Change Log&rsquo; in <cite>The GNU Emacs Manual</cite>).
+&lsquo;<samp>diff&nbsp;<span class="nolinebreak">-c</span></samp>&rsquo; (see <a href="diffutils.html#Top">(diffutils)Top</a> section &lsquo;Overview&rsquo; in <cite>Comparing and Merging Files</cite>) and include &lsquo;<tt>ChangeLog</tt>&rsquo; entries (see <a href="emacs.html#Change-Log">(emacs)Change Log</a> section &lsquo;Change Log&rsquo; in <cite>The GNU Emacs Manual</cite>).
 </p>
 <p>When sending patches, if possible please do not encode or split them in
 any way; it&rsquo;s much easier to deal with one plain text message, however
@@ -2645,7 +2646,7 @@ cursor in the &lsquo;<tt>*Occur*</tt>&rsquo; buffer.
 </dl>
 
 <p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd>C-u&nbsp;C-c&nbsp;C-s</kbd>, it will list not only those lines with the
+typing <kbd><span class="nolinebreak">C-u</span>&nbsp;<span class="nolinebreak">C-c</span>&nbsp;<span class="nolinebreak">C-s</span></kbd>, it will list not only those lines with the
 @-commands for <code>@chapter</code>, <code>@section</code>, and the like, but
 also the <code>@node</code> lines.  You can use <code>texinfo-show-structure</code>
 with a prefix argument to check whether the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
@@ -2656,7 +2657,7 @@ in the structure of the current chapter.  In this case, you can mark
 off the region of the buffer that you are interested in by using the
 <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command and
 <code>texinfo-show-structure</code> will work on only that region.  To see
-the whole buffer again, use <kbd>C-x&nbsp;n&nbsp;w</kbd> (<code>widen</code>).
+the whole buffer again, use <kbd><span class="nolinebreak">C-x</span>&nbsp;n&nbsp;w</kbd> (<code>widen</code>).
 (See <a href="emacs.html#Narrowing">(emacs)Narrowing</a> section &lsquo;Narrowing&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
 information about the narrowing commands.)
 </p>
@@ -3700,7 +3701,7 @@ Previous: <a href="#settitle" accesskey="p" rel="previous">settitle</a>, Up: <a 
 <h3 class="subsection">3.2.5 End of Header</h3>
 <a name="index-End-of-header-line"></a>
 
-<p>Follow the header lines with an end-of-header line, which is a
+<p>Follow the header lines with an <span class="nolinebreak">end-of-header</span> line, which is a
 Texinfo comment that looks like this:
 </p>
 <div class="example">
@@ -5922,11 +5923,11 @@ node containing the pointer.
 <a name="index-_0040_002dcommands-in-nodename"></a>
 <a name="index-Node-name_002c-should-not-contain-_0040_002dcommands"></a>
 </li><li>
-@-commands used in node names generally confuse Info, so you
+@<span class="nolinebreak">-commands</span> used in node names generally confuse Info, so you
 should avoid them.  This includes punctuation characters that are
 escaped with a &lsquo;<samp>@</samp>&rsquo;, such as <code>@</code> and <code>{</code>.  For a few
 rare cases when this is useful, Texinfo has limited support for using
-@-commands in node names; see <a href="#Pointer-Validation">Pointer Validation</a>.
+@<span class="nolinebreak">-commands</span> in node names; see <a href="#Pointer-Validation">Pointer Validation</a>.
 
 <p>Thus, the beginning of the section called <code>@chapter</code> looks like
 this:
@@ -9286,7 +9287,7 @@ Two-column tables with highlighting.
 
 <br>
 <p>And here is a two-column table with the same items and their
-@-commands:
+@<span class="nolinebreak">-commands</span>:
 </p>
 <dl compact="compact">
 <dt><code>@itemize</code></dt>
@@ -11406,10 +11407,10 @@ node.  The footnote reference is actually a cross reference
 which you use to reach the footnote node.
 
 <p>The name of the node with the footnotes is constructed
-by appending &lsquo;<samp>-Footnotes</samp>&rsquo; to the name of the node
+by appending &lsquo;<samp><span class="nolinebreak">-Footnotes</span></samp>&rsquo; to the name of the node
 that contains the footnotes. (Consequently, the footnotes&rsquo;
 node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
-&lsquo;<tt>Footnotes-Footnotes</tt>&rsquo;!)  The footnotes&rsquo; node has an
+&lsquo;<tt><span class="nolinebreak">Footnotes-Footnotes</span></tt>&rsquo;!)  The footnotes&rsquo; node has an
 &lsquo;Up&rsquo; node pointer that leads back to its parent node.
 </p>
 <p>Here is how the first footnote in this manual looks after being
@@ -15694,8 +15695,8 @@ the original file that contains just the tag table and references to
 the files that were split off.  The split-off files are called
 <em>indirect</em> files.
 </p>
-<p>The split-off files have names that are created by appending &lsquo;<samp>-1</samp>&rsquo;,
-&lsquo;<samp>-2</samp>&rsquo;, &lsquo;<samp>-3</samp>&rsquo; and so on to the file name specified by the
+<p>The split-off files have names that are created by appending &lsquo;<samp><span class="nolinebreak">-1</span></samp>&rsquo;,
+&lsquo;<samp><span class="nolinebreak">-2</span></samp>&rsquo;, &lsquo;<samp><span class="nolinebreak">-3</span></samp>&rsquo; and so on to the file name specified by the
 <code>@setfilename</code> command.  The shortened version of the original file
 continues to have the name specified by <code>@setfilename</code>.
 </p>
@@ -18364,7 +18365,7 @@ working with just one file.
 </dl>
 
 <p>Note the use of the prefix argument in interactive use: with a regular
-prefix argument, just <kbd>C-u</kbd>, the
+prefix argument, just <kbd><span class="nolinebreak">C-u</span></kbd>, the
 <code>texinfo-multiple-files-update</code> command inserts a master menu;
 with a numeric prefix argument, such as <kbd>C-u 8</kbd>, the command
 updates <strong>every</strong> pointer and menu in <strong>all</strong> the files and then inserts a
@@ -19164,7 +19165,7 @@ or adding to a Texinfo file that someone else has written.
 <p>In GNU Emacs, in Texinfo mode, the <code>texinfo-show-structure</code>
 command lists all the lines that begin with the @-commands that
 specify the structure: <code>@chapter</code>, <code>@section</code>,
-<code>@appendix</code>, and so on.  With an argument (<kbd>C-u</kbd>
+<code>@appendix</code>, and so on.  With an argument (<kbd><span class="nolinebreak">C-u</span></kbd>
 as prefix argument, if interactive),
 the command also shows the <code>@node</code> lines.  The
 <code>texinfo-show-structure</code> command is bound to <kbd>C-c C-s</kbd> in
@@ -19212,7 +19213,7 @@ how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 </p>
 <p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd>C-u&nbsp;C-c&nbsp;C-s</kbd>, it will list lines beginning with
+typing <kbd><span class="nolinebreak">C-u</span>&nbsp;<span class="nolinebreak">C-c</span>&nbsp;<span class="nolinebreak">C-s</span></kbd>, it will list lines beginning with
 <code>@node</code> as well as the lines beginning with the @-sign commands
 for <code>@chapter</code>, <code>@section</code>, and the like.
 </p>
@@ -19641,8 +19642,8 @@ Code CD-ROM suitable for printing Texinfo manuals.  To order it, contact:
 59 Temple Place Suite 330
 Boston, MA &nbsp;&nbsp;02111-1307
 USA
-Telephone: +1-617-542-5942
-Fax: (including Japan) +1-617-542-2652
+Telephone: <span class="nolinebreak">+1-617-542-5942</span>
+Fax: (including Japan) <span class="nolinebreak">+1-617-542-2652</span>
 Free Dial Fax (in Japan):
 &nbsp; &nbsp; &nbsp; 0031-13-2473 (KDD)
 &nbsp; &nbsp; &nbsp; 0066-3382-0158 (IDC)

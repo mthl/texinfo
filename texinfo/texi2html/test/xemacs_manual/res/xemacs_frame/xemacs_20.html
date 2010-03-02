@@ -37,6 +37,7 @@ pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
 span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
 span.roman {font-family:serif; font-weight:normal}
 span.sansserif {font-family:sans-serif; font-weight:normal}
 ul.no-bullet {list-style: none}
@@ -471,9 +472,9 @@ user: font registry and so called <em>ccl-program</em>.
 </p>
 <p>Font registry is a regular expression matching the font registry field
 for this character set.  For example, both the <code>ascii</code> and
-<code>latin-iso8859-1</code> charsets use the registry <code>&quot;ISO8859-1&quot;</code>.
+<code><span class="nolinebreak">latin-iso8859-1</span></code> charsets use the registry <code>&quot;ISO8859-1&quot;</code>.
 This field is used to choose an appropriate font when the user gives a
-general font specification such as &lsquo;<samp>-*-courier-medium-r-*-140-*</samp>&rsquo;,
+general font specification such as &lsquo;<samp><span class="nolinebreak">-*-courier-medium-r-*-140-*</span></samp>&rsquo;,
 i.e. a 14-point upright medium-weight Courier font.
 </p>
 <p>You can set font registry for a charset using
@@ -481,7 +482,7 @@ i.e. a 14-point upright medium-weight Courier font.
 function takes two arguments: character set (as a symbol) and font
 registry (as a string).
 </p>
-<p>E.&nbsp;g., for Cyrillic texts Mule uses <code>cyrillic-iso8859-5</code>
+<p>E.&nbsp;g., for Cyrillic texts Mule uses <code><span class="nolinebreak">cyrillic-iso8859-5</span></code>
 charset with &lsquo;<samp>&quot;ISO8859-5&quot;</samp>&rsquo; as a default registry, and we want to
 use &lsquo;<samp>&quot;koi8-r&quot;</samp>&rsquo; instead, because fonts in that encoding are
 installed on our system.  Use:

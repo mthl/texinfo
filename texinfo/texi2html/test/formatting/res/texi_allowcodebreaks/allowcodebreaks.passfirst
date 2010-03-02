@@ -5,67 +5,72 @@ allowcodebreaks.texi(,5) @node Top
 allowcodebreaks.texi(,6) @top Test allowcodebreaks
 allowcodebreaks.texi(,7) 
 allowcodebreaks.texi(,8) @macro testallowcodebreaks {nr}
-allowcodebreaks.texi(,9) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-allowcodebreaks.texi(,10) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-allowcodebreaks.texi(,11) @code{9aaa-bbb rrr_vv}
-allowcodebreaks.texi(,12) 
-allowcodebreaks.texi(,13) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
-allowcodebreaks.texi(,14) anc-hor@anchor{A node\nr\}}
-allowcodebreaks.texi(,15) 
-allowcodebreaks.texi(,16) @example
-allowcodebreaks.texi(,17) @code{in-example}
-allowcodebreaks.texi(,18) @end example
-allowcodebreaks.texi(,19) @end macro
-allowcodebreaks.texi(,20) 
-allowcodebreaks.texi(,21) Before first allowcodebreaks
-allowcodebreaks.texi(testallowcodebreaks,22) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-allowcodebreaks.texi(testallowcodebreaks,22) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-allowcodebreaks.texi(testallowcodebreaks,22) @code{9aaa-bbb rrr_vv}
-allowcodebreaks.texi(testallowcodebreaks,22) 
-allowcodebreaks.texi(testallowcodebreaks,22) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
-allowcodebreaks.texi(testallowcodebreaks,22) anc-hor@anchor{A node0}}
-allowcodebreaks.texi(testallowcodebreaks,22) 
-allowcodebreaks.texi(testallowcodebreaks,22) @example
-allowcodebreaks.texi(testallowcodebreaks,22) @code{in-example}
-allowcodebreaks.texi(testallowcodebreaks,22) @end example
-allowcodebreaks.texi(,23) 
-allowcodebreaks.texi(,24) @allowcodebreaks false
-allowcodebreaks.texi(,25) After false
-allowcodebreaks.texi(testallowcodebreaks,26) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-allowcodebreaks.texi(testallowcodebreaks,26) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-allowcodebreaks.texi(testallowcodebreaks,26) @code{9aaa-bbb rrr_vv}
-allowcodebreaks.texi(testallowcodebreaks,26) 
-allowcodebreaks.texi(testallowcodebreaks,26) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
-allowcodebreaks.texi(testallowcodebreaks,26) anc-hor@anchor{A node1}}
-allowcodebreaks.texi(testallowcodebreaks,26) 
-allowcodebreaks.texi(testallowcodebreaks,26) @example
-allowcodebreaks.texi(testallowcodebreaks,26) @code{in-example}
-allowcodebreaks.texi(testallowcodebreaks,26) @end example
-allowcodebreaks.texi(,27) 
-allowcodebreaks.texi(,28) In w:
-allowcodebreaks.texi(testallowcodebreaks,29) @w{@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-allowcodebreaks.texi(testallowcodebreaks,29) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-allowcodebreaks.texi(testallowcodebreaks,29) @code{9aaa-bbb rrr_vv}
-allowcodebreaks.texi(testallowcodebreaks,29) 
-allowcodebreaks.texi(testallowcodebreaks,29) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
-allowcodebreaks.texi(testallowcodebreaks,29) anc-hor@anchor{A nodew}}
-allowcodebreaks.texi(testallowcodebreaks,29) 
-allowcodebreaks.texi(testallowcodebreaks,29) @example
-allowcodebreaks.texi(testallowcodebreaks,29) @code{in-example}
-allowcodebreaks.texi(testallowcodebreaks,29) @end example
-allowcodebreaks.texi(,30) }
-allowcodebreaks.texi(,31) 
-allowcodebreaks.texi(,32) @allowcodebreaks true
-allowcodebreaks.texi(,33) After true
-allowcodebreaks.texi(testallowcodebreaks,34) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-allowcodebreaks.texi(testallowcodebreaks,34) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-allowcodebreaks.texi(testallowcodebreaks,34) @code{9aaa-bbb rrr_vv}
-allowcodebreaks.texi(testallowcodebreaks,34) 
-allowcodebreaks.texi(testallowcodebreaks,34) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
-allowcodebreaks.texi(testallowcodebreaks,34) anc-hor@anchor{A node2}}
-allowcodebreaks.texi(testallowcodebreaks,34) 
-allowcodebreaks.texi(testallowcodebreaks,34) @example
-allowcodebreaks.texi(testallowcodebreaks,34) @code{in-example}
-allowcodebreaks.texi(testallowcodebreaks,34) @end example
-allowcodebreaks.texi(,35) 
-allowcodebreaks.texi(,36) @bye
+allowcodebreaks.texi(,9) Out of code --- out-of-code.
+allowcodebreaks.texi(,10) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+allowcodebreaks.texi(,11) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+allowcodebreaks.texi(,12) @code{9aaa-bbb rrr_vv}
+allowcodebreaks.texi(,13) 
+allowcodebreaks.texi(,14) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+allowcodebreaks.texi(,15) anc-hor@anchor{A node\nr\}}
+allowcodebreaks.texi(,16) 
+allowcodebreaks.texi(,17) @example
+allowcodebreaks.texi(,18) @code{in-example}
+allowcodebreaks.texi(,19) @end example
+allowcodebreaks.texi(,20) @end macro
+allowcodebreaks.texi(,21) 
+allowcodebreaks.texi(,22) Before first allowcodebreaks
+allowcodebreaks.texi(testallowcodebreaks,23) Out of code --- out-of-code.
+allowcodebreaks.texi(testallowcodebreaks,23) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+allowcodebreaks.texi(testallowcodebreaks,23) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+allowcodebreaks.texi(testallowcodebreaks,23) @code{9aaa-bbb rrr_vv}
+allowcodebreaks.texi(testallowcodebreaks,23) 
+allowcodebreaks.texi(testallowcodebreaks,23) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+allowcodebreaks.texi(testallowcodebreaks,23) anc-hor@anchor{A node0}}
+allowcodebreaks.texi(testallowcodebreaks,23) 
+allowcodebreaks.texi(testallowcodebreaks,23) @example
+allowcodebreaks.texi(testallowcodebreaks,23) @code{in-example}
+allowcodebreaks.texi(testallowcodebreaks,23) @end example
+allowcodebreaks.texi(,24) 
+allowcodebreaks.texi(,25) @allowcodebreaks false
+allowcodebreaks.texi(,26) After false
+allowcodebreaks.texi(testallowcodebreaks,27) Out of code --- out-of-code.
+allowcodebreaks.texi(testallowcodebreaks,27) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+allowcodebreaks.texi(testallowcodebreaks,27) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+allowcodebreaks.texi(testallowcodebreaks,27) @code{9aaa-bbb rrr_vv}
+allowcodebreaks.texi(testallowcodebreaks,27) 
+allowcodebreaks.texi(testallowcodebreaks,27) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+allowcodebreaks.texi(testallowcodebreaks,27) anc-hor@anchor{A node1}}
+allowcodebreaks.texi(testallowcodebreaks,27) 
+allowcodebreaks.texi(testallowcodebreaks,27) @example
+allowcodebreaks.texi(testallowcodebreaks,27) @code{in-example}
+allowcodebreaks.texi(testallowcodebreaks,27) @end example
+allowcodebreaks.texi(,28) 
+allowcodebreaks.texi(,29) In w:
+allowcodebreaks.texi(testallowcodebreaks,30) @w{Out of code --- out-of-code.
+allowcodebreaks.texi(testallowcodebreaks,30) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+allowcodebreaks.texi(testallowcodebreaks,30) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+allowcodebreaks.texi(testallowcodebreaks,30) @code{9aaa-bbb rrr_vv}
+allowcodebreaks.texi(testallowcodebreaks,30) 
+allowcodebreaks.texi(testallowcodebreaks,30) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+allowcodebreaks.texi(testallowcodebreaks,30) anc-hor@anchor{A nodew}}
+allowcodebreaks.texi(testallowcodebreaks,30) 
+allowcodebreaks.texi(testallowcodebreaks,30) @example
+allowcodebreaks.texi(testallowcodebreaks,30) @code{in-example}
+allowcodebreaks.texi(testallowcodebreaks,30) @end example
+allowcodebreaks.texi(,31) }
+allowcodebreaks.texi(,32) 
+allowcodebreaks.texi(,33) @allowcodebreaks true
+allowcodebreaks.texi(,34) After true
+allowcodebreaks.texi(testallowcodebreaks,35) Out of code --- out-of-code.
+allowcodebreaks.texi(testallowcodebreaks,35) @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+allowcodebreaks.texi(testallowcodebreaks,35) @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+allowcodebreaks.texi(testallowcodebreaks,35) @code{9aaa-bbb rrr_vv}
+allowcodebreaks.texi(testallowcodebreaks,35) 
+allowcodebreaks.texi(testallowcodebreaks,35) @samp{fff-- --- minus@minus{}b aa-tt@'eff_gg aa@r{r-oman} 
+allowcodebreaks.texi(testallowcodebreaks,35) anc-hor@anchor{A node2}}
+allowcodebreaks.texi(testallowcodebreaks,35) 
+allowcodebreaks.texi(testallowcodebreaks,35) @example
+allowcodebreaks.texi(testallowcodebreaks,35) @code{in-example}
+allowcodebreaks.texi(testallowcodebreaks,35) @end example
+allowcodebreaks.texi(,36) 
+allowcodebreaks.texi(,37) @bye

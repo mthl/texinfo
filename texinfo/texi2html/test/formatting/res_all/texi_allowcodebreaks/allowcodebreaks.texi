@@ -6,6 +6,7 @@
 @top Test allowcodebreaks
 
 @macro testallowcodebreaks {nr}
+Out of code --- out-of-code.
 @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
 @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
 @code{9aaa-bbb rrr_vv}
@@ -19,6 +20,7 @@ anc-hor@anchor{A node\nr\}}
 @end macro
 
 Before first allowcodebreaks
+Out of code --- out-of-code.
 @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
 @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
 @code{9aaa-bbb rrr_vv}
@@ -32,6 +34,7 @@ anc-hor@anchor{A node0}}
 
 @allowcodebreaks false
 After false
+Out of code --- out-of-code.
 @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
 @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
 @code{9aaa-bbb rrr_vv}
@@ -44,7 +47,8 @@ anc-hor@anchor{A node1}}
 @end example
 
 In w:
-@w{@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@w{Out of code --- out-of-code.
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
 @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
 @code{9aaa-bbb rrr_vv}
 
@@ -58,6 +62,7 @@ anc-hor@anchor{A nodew}}
 
 @allowcodebreaks true
 After true
+Out of code --- out-of-code.
 @code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
 @code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
 @code{9aaa-bbb rrr_vv}
