@@ -1,3 +1,11 @@
+2010-03-02  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\smartitaliccorrection): rename from
+	\smartitalicx.  Change calls.
+	(\dosmartslant): new macro, avoiding italic correction in \tt.
+	(\smartslanted, \smartitalic): use it.
+	Report from Mark Polesky, 1 Mar 2010 18:46:44.
+
 2010-02-21  Patrice Dumas  <pertusus@free.fr>
 
 	* po_document/: add translation of strings output in manuals
