@@ -1,6 +1,7 @@
 2010-03-07  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.tex ()
+	* doc/texinfo.tex (\var): do not call \setupmarkupstyle; it's
+	 unused, and the } interferes with the automatic italic correction.
 
 2010-03-02  Karl Berry  <karl@gnu.org>
 

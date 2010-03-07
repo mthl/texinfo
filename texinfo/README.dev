@@ -1,7 +1,7 @@
-$Id: README.dev,v 1.16 2008-11-28 01:34:36 karl Exp $
+$Id: README.dev,v 1.17 2010-03-07 18:25:29 karl Exp $
 This README.dev file describes the development environment.
 
-  Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008
+  Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008, 2010
   Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -28,10 +28,10 @@ and then
 After the initial autogen && configure, simply running make should suffice.
 
 The reason for that particular -W is that intermixing declarations with
-statementts is an easy thing to do accidentally, gcc won't warn about it
+statements is an easy thing to do accidentally, gcc won't warn about it
 by default, and other compilers that don't support it are still
 widespread.  Lots of other -W options can be useful too, and patches are
-welcome to resolve the diagnostics.  Or if you're not using gcc, of
+welcome to resolve the diagnostics.  If you're not using gcc, of
 course you shouldn't include it at all.
 
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
