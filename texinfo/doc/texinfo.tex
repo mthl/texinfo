@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2010-03-03.10}
+\def\texinfoversion{2010-03-07.08}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2537,7 +2537,7 @@ end
 
 \let\i=\smartitalic
 \let\slanted=\smartslanted
-\def\var#1{{\setupmarkupstyle{var}\smartslanted{#1}}}
+\def\var#1{\smartslanted{#1}}
 \let\dfn=\smartslanted
 \let\emph=\smartitalic
 

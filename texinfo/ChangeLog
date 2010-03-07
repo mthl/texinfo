@@ -1,3 +1,7 @@
+2010-03-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex ()
+
 2010-03-02  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\smartitaliccorrection): rename from
