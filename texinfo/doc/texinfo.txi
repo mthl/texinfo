@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.247 2010-01-04 01:29:00 karl Exp $
+@c $Id: texinfo.txi,v 1.248 2010-03-10 00:56:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5296,10 +5296,7 @@ manuals and do not appear in them.
 A node with a menu should not contain much text.  If you find yourself
 writing a lot of text before a menu, we generally recommend moving
 most of the text into a new subnode---all but a paragraph or two.
-Otherwise, a reader with a terminal that displays only a few lines may
-miss the menu and its associated text.  As a practical matter, it is
-best to locate a menu within 20 or so lines of the beginning of the
-node.
+Otherwise, it is easy for readers to miss the menu.
 
 @menu
 * Menu Location::               Menus go at the ends of short nodes.
@@ -5316,27 +5313,27 @@ node.
 @cindex Menu location
 @cindex Location of menus
 
-A menu must be located at the end of a node, without any regular text
-or additional commands between the @code{@@end menu} and the beginning
-of the next node.  (As a consequence, there may be at most one menu in
-a node.)
+There may be at most one menu in a node.  A menu is conventionally
+located at the end of a node, without any regular text or additional
+commands between the @code{@@end menu} and the beginning of the next
+node.  
 
 @cindex Info format, and menus
-This is actually a useful restriction, since a reader who uses the
-menu could easily miss any such text.  Technically, it is necessary
-because in Info format, there is no marker for the end of a menu, so
-Info-reading programs would have no way to know when the menu ends and
-normal text resumes.
+This convention is useful, since a reader who uses the menu could
+easily miss any such text.  Also, any such post-menu text will be
+considered part of the menu in Info output (which has no marker for
+the end of a menu).  Thus, a line beginning with @samp{* } will likely
+be incorrectly handled.
 
 @cindex Hierarchical documents, and menus
 Technically, menus can carry you to any node, regardless of the
 structure of the document; even to nodes in a different Info file.
-However, we do not recommend ever making use of this, because the
-@command{makeinfo} implicit pointer creation feature (@pxref{makeinfo
-Pointer Creation}) and GNU Emacs Texinfo mode updating commands work
-only to create menus of subordinate nodes in a hierarchically
-structured document.  Instead, use cross references to refer to
-arbitrary nodes.
+However, we do not recommend making use of this, because it is hard
+for readers to follow.  Also, the @command{makeinfo} implicit pointer
+creation feature (@pxref{makeinfo Pointer Creation}) and GNU Emacs
+Texinfo mode updating commands work only to create menus of
+subordinate nodes in a hierarchically structured document.  It is much
+better to use cross references to refer to arbitrary nodes.
 
 In the past, we recommended using a @samp{@@heading} command within an
 @code{@@ifinfo} conditional instead of the normal sectioning commands
@@ -5947,14 +5944,15 @@ See Section 3.1 [Tropical Storms], page 24, for more info.
 
 @noindent
 (Note that in the preceding example the closing brace is followed by a
-comma, and then by the clause, which is followed by a period.)@refill
+comma, and then by the clause, which is followed by a period.)
+
 
 @node Two Arguments
 @subsection @code{@@xref} with Two Arguments
 
 With two arguments, the second is used as the name of the Info cross
 reference, while the first is still the name of the node to which the
-cross reference points.@refill
+cross reference points.
 
 @need 750
 @noindent
@@ -5990,7 +5988,7 @@ See Section 5.2 [Electrical Effects], page 57.
 (Note that in the preceding example the closing brace is followed by a
 period; and that the node name is printed, not the cross reference name.)
 
-You can write a clause after the cross reference, like this:@refill
+You can write a clause after the cross reference, like this:
 
 @example
 @@xref@{Electrical Effects, Lightning@}, for more info.
@@ -5998,6 +5996,7 @@ You can write a clause after the cross reference, like this:@refill
 
 @noindent
 which produces
+
 @example
 *Note Lightning: Electrical Effects, for more info.
 @end example
@@ -6011,7 +6010,8 @@ See Section 5.2 [Electrical Effects], page 57, for more info.
 
 @noindent
 (Note that in the preceding example the closing brace is followed by a
-comma, and then by the clause, which is followed by a period.)@refill
+comma, and then by the clause, which is followed by a period.)
+
 
 @node Three Arguments
 @subsection @code{@@xref} with Three Arguments
@@ -6021,7 +6021,7 @@ argument should be the name of the section in the printed output, or
 else state the topic discussed by that section.  Often, you will want to
 use initial upper case letters so it will be easier to read when the
 reference is printed.  Use a third argument when the node name is
-unsuitable because of syntax or meaning.@refill
+unsuitable because of syntax or meaning.
 
 Remember to avoid placing a comma within the title or topic section of
 a cross reference, or within any other section.  The formatters divide
@@ -19318,7 +19318,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.247 2010-01-04 01:29:00 karl Exp $
+$Id: texinfo.txi,v 1.248 2010-03-10 00:56:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19397,7 +19397,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.247 2010-01-04 01:29:00 karl Exp $
+@comment $Id: texinfo.txi,v 1.248 2010-03-10 00:56:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
