@@ -1,3 +1,8 @@
+2010-03-13  Karl Berry  <karl@gnu.org>
+
+	* texi2html.pl: mention perl -x for running from the srcdir.
+	Suggestion from Patrice.
+
 2009-03-02   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/html.init: prevent breaks on - and _ in @w.

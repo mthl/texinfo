@@ -70,10 +70,11 @@ my $quoted_path_separator = quotemeta($path_separator);
 #++##########################################################################
 #
 # NOTE FOR DEBUGGING THIS SCRIPT:
-# You can run 'perl texi2html.pl' directly, provided you have the script
+# You can run 'perl -x texi2html.pl' directly, provided you have the script
 # in the same directory with, or the environment variable T2H_HOME set to
 # the directory containing, the texi2html.init, T2h_i18n.pm, translations.pl,
-# l2h.init, & T2h_l2h.pm files
+# l2h.init, & T2h_l2h.pm files.  Ditto makeinfo.pl, if you make it a
+# symlink to texi2html.pl.
 #
 #--##########################################################################
 my $T2H_HOME = defined $ENV{T2H_HOME} ? $ENV{T2H_HOME} : dirname $0;
@@ -90,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.374 2010-03-01 14:53:19 pertusus Exp $
+# $Id: texi2html.pl,v 1.375 2010-03-13 14:42:02 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
