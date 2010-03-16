@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.262 2010-03-01 14:53:19 pertusus Exp $
+# $Id: texi2html.init,v 1.263 2010-03-16 08:16:27 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -2275,7 +2275,7 @@ $texi_map{'registeredsymbol'} = 'R';
                'DH'           => '&ETH;',
                'dh'           => '&eth;',
                'TH'           => '&THORN;',
-               'th'           => '&thorn',
+               'th'           => '&thorn;',
                'l'            => '&#322;',
                'L'            => '&#321;',
                'exclamdown'   => '&iexcl;',

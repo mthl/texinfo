@@ -157,6 +157,9 @@ $things_map{'minus'} = '&minus;';
 $things_map{'point'} = '-!-';
 # FIXME &equiv;
 $things_map{'equiv'} = '==';
+# FIXME no &lsaquo; nor &rsaquo;
+$things_map{'guilsinglright'} = '&gt;';
+$things_map{'guilsinglleft'} = '&lt;';
 # The following is unneeded because normal_text is redefined.
 # FIXME it should certainly be better to leave those substitutions,
 # or even hardcodes them in normal_text.

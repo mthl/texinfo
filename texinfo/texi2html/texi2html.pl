@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.375 2010-03-13 14:42:02 karl Exp $
+# $Id: texi2html.pl,v 1.376 2010-03-16 08:16:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5287,6 +5287,7 @@ sub pass_structure($$)
                             $state->{'heading_element'} = $node_ref;
                             $state->{'current_element'} = $node_ref;
                             $state->{'node_ref'} = $node_ref;
+                            $state->{'menu_in_node'} = 0;
                             # makeinfo treats differently case variants of
                             # top in nodes and anchors and in refs commands and 
                             # refs from nodes. 
@@ -13296,6 +13297,11 @@ sub scan_structure($$$$;$)
                           line_error (sprintf(__("\@%s seen before first \@node"), $macro), $line_nr);
                           line_error (__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), $line_nr);
                        }
+                       if ($state->{'menu_in_node'})
+                       {
+                          line_error (sprintf(__("Multiple \@%s"), $macro), $line_nr);
+                       }
+                       $state->{'menu_in_node'}++;
                     }
                     $state->{$macro}++;
                     push @{$state->{'text_macro_stack'}}, $macro;

@@ -106,7 +106,7 @@ but , ,
 @DH &ETH;
 @TH &THORN;
 @dh &eth;
-@th &thorn
+@th &thorn;
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -124,8 +124,8 @@ but , ,
 @guillemetright &raquo;
 @guillemotleft &laquo;
 @guillemotright &raquo;
-@guilsinglleft &lsaquo;
-@guilsinglright &rsaquo;
+@guilsinglleft &lt;
+@guilsinglright &gt;
 @textdegree &deg;
 @euro &euro;
 @arrow &rarr;
@@ -634,7 +634,7 @@ but , ,
 @DH &ETH;
 @TH &THORN;
 @dh &eth;
-@th &thorn
+@th &thorn;
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -652,8 +652,8 @@ but , ,
 @guillemetright &raquo;
 @guillemotleft &laquo;
 @guillemotright &raquo;
-@guilsinglleft &lsaquo;
-@guilsinglright &rsaquo;
+@guilsinglleft &lt;
+@guilsinglright &gt;
 @textdegree &deg;
 @euro &euro;
 @arrow &rarr;
@@ -1158,7 +1158,7 @@ but , ,
 @DH &ETH;
 @TH &THORN;
 @dh &eth;
-@th &thorn
+@th &thorn;
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -1176,8 +1176,8 @@ but , ,
 @guillemetright &raquo;
 @guillemotleft &laquo;
 @guillemotright &raquo;
-@guilsinglleft &lsaquo;
-@guilsinglright &rsaquo;
+@guilsinglleft &lt;
+@guilsinglright &gt;
 @textdegree &deg;
 @euro &euro;
 @arrow &rarr;
@@ -1682,7 +1682,7 @@ but , ,
 @DH &ETH;
 @TH &THORN;
 @dh &eth;
-@th &thorn
+@th &thorn;
 @exclamdown &iexcl;
 @questiondown &iquest;
 @pounds &pound;
@@ -1700,8 +1700,8 @@ but , ,
 @guillemetright &raquo;
 @guillemotleft &laquo;
 @guillemotright &raquo;
-@guilsinglleft &lsaquo;
-@guilsinglright &rsaquo;
+@guilsinglleft &lt;
+@guilsinglright &gt;
 @textdegree &deg;
 @euro &euro;
 @arrow &rarr;

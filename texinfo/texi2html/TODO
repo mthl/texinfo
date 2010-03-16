@@ -288,9 +288,22 @@ function clean_antispam() {
 
 * docbook: in function no style. 
   replaceable is for @var or function argument. Only characters.
+  Maybe replaced with parameter?
 
   Instead of synopsis may use specialized synopsis, funcsynopsis/funcprototype
   for deftype*, funcdef for defffn, ooclass for object oriented.
+  deffn:
+  <funcsynopsis><funcprototype><funcdef role=...><function>d--effn_name</function></funcdef><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
+  defvr, deftypevr: varname, and type and not returnvalue
+  deftypefn: 
+  <funcsynopsis><funcprototype><funcdef role=...>type <function>d--eftypefn_name</function></funcdef><paramdef>a type<parameter>in var..</parameter></paramdef></funcprototype></funcsynopsis>
+  deftp: structname/structfield. Both contains a replaceable. Problem with
+  structfield is that there should be one by field.
+  defcv: classname + property, and category in synopsis
+  deftypecv: classname + type + property, and category in synopsis
+    fieldsynopsis?
+  defop: <classsynopsis><classsynopsisinfo>category</classsynopsisinfo><ooclass><classname>class<><><methodsynopsis><methodname><replaceable><></methodname><methodparam><parameter>...<><><>
+  deftypeop: same with type in methodparam.
 
   also informalfigure in @float
 
@@ -304,6 +317,9 @@ function clean_antispam() {
   block elent within, and it should be that way in generated output.
 
   put <title> in <articleinfo>?
+
+  what to do for guilsinglleft, guilsinglright? Currently &lt; &gt; since
+  there is no &lsaquo; nor &rsaquo;
 
 * to solve above issue (first issue), the definition arg formatted with 
   simple_format should alo be passed down
@@ -414,11 +430,6 @@ in nested table line
 * from https://savannah.gnu.org/bugs/?22696, encodings/chinese_mixed_with_en
   the info output is not good with Chinese texts only, not aligned in source
   and a mix of English and Chinese texts.
-
-* https://savannah.gnu.org/bugs/?8432 warn if multiple menus. I (pertusus)
-  think that what is more important is that the menu happens at the end of 
-  the node. This should caugth both double menus and all the other incorrect
-  cases. Also this should be an info specific message.
 
 * Maybe put a lone anchor in a <div> for strict html (Noah Slater).
 

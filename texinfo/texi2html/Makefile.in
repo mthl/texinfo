@@ -1218,13 +1218,17 @@ texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	@cp texi2html.tmp texi2html.spec
 	-@rm texi2html.tmp
 
-$(i18n_files): $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+$(po_document_dir)/po_document/$(PACKAGE)_document.pot:
 	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+
+$(i18n_files): $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+	$(MKDIR_P) i18n
 	for file in $(i18n_files); do lang=`basename $$file`; \
 		msgexec -i "$(srcdir)/$(po_document_dir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
 	done
 
 i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+	$(MKDIR_P) i18n
 	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
 
 translations.pl: $(dist_i18n_DATA) 
