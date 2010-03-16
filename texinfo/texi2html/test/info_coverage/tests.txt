@@ -53,3 +53,5 @@ kbd kbd.texi
 note_in_strong note_in_strong.texi
 simple_footnotes_no_number simple_footnotes.texi --no-number-footnotes
 simple_footnotes_no_number_separate simple_footnotes.texi --footnote-style=separate --no-number-footnotes
+split_nocopying split_nocopying.texi
+split_nocopying_split split_nocopying.texi --split-size 10

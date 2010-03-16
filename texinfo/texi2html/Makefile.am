@@ -47,7 +47,7 @@ dist_init_DATA = maintained_extra/book.init \
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
 noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
- parse_8bit_makeinfo_maps.pl
+ parse_8bit_makeinfo_maps.pl gettext_to_separated.pl
 
 # style_example.css comes from http://planet.gnu.org/~ams/style.css
 EXTRA_DIST = \

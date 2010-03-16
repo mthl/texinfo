@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-08 00:51+0100\n"
+"POT-Creation-Date: 2010-03-16 19:16+0100\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -15,28 +15,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6031 texi2html/texi2html.pl:6035
-#: texi2html/texi2html.pl:6039
+#: texi2html/texi2html.pl:6033 texi2html/texi2html.pl:6037
+#: texi2html/texi2html.pl:6041
 msgid "About This Document"
 msgstr "A navigációs panel használata"
 
-#: texi2html/texi2html.pl:6032 texi2html/texi2html.pl:6036
-#: texi2html/texi2html.pl:6040 texi2html/examples/roff.init:986
+#: texi2html/texi2html.pl:6034 texi2html/texi2html.pl:6038
+#: texi2html/texi2html.pl:6042 texi2html/examples/roff.init:986
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6033 texi2html/texi2html.pl:6037
-#: texi2html/texi2html.pl:6041
+#: texi2html/texi2html.pl:6035 texi2html/texi2html.pl:6039
+#: texi2html/texi2html.pl:6043
 msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6034 texi2html/texi2html.pl:6038
-#: texi2html/texi2html.pl:6042 texi2html/texi2html.init:6549
+#: texi2html/texi2html.pl:6036 texi2html/texi2html.pl:6040
+#: texi2html/texi2html.pl:6044 texi2html/texi2html.init:6549
 #: texi2html/formats/html.init:2515
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
-#: texi2html/texi2html.pl:12581
+#: texi2html/texi2html.pl:12583
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs értéke ennek: `{value}'@}"
@@ -382,7 +382,7 @@ msgstr "ekkor: @emph{{date}}"
 msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
 
-#: texi2html/texi2html.init:6834 texi2html/formats/docbook.init:1402
+#: texi2html/texi2html.init:6834 texi2html/formats/docbook.init:1405
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
@@ -444,49 +444,49 @@ msgstr "december"
 msgid "{month} {day}, {year}"
 msgstr ""
 
-#: texi2html/formats/docbook.init:729
+#: texi2html/formats/docbook.init:732
 #, perl-brace-format
 msgid "section `@asis{}`{section_name}'@asis{}' in @cite{{book}}"
 msgstr "szakasz: `@asis{}`{section_name}'@asis{}' itt: @cite{{book}}"
 
-#: texi2html/formats/docbook.init:733
+#: texi2html/formats/docbook.init:736
 #, perl-brace-format
 msgid "See section `@asis{}`{section_name}'@asis{}' in @cite{{book}}"
 msgstr ""
 "Ld. ezt a szakaszt: `@asis{}`{section_name}'@asis{}' itt: @cite{{book}}"
 
-#: texi2html/formats/docbook.init:737
+#: texi2html/formats/docbook.init:740
 #, perl-brace-format
 msgid "see section `@asis{}`{section_name}'@asis{}' in @cite{{book}}"
 msgstr ""
 "ld. ezt a szakaszt: `@asis{}`{section_name}'@asis{}' itt: @cite{{book}}"
 
-#: texi2html/formats/docbook.init:747
+#: texi2html/formats/docbook.init:750
 #, perl-brace-format
 msgid "{ref}"
 msgstr "{ref}"
 
-#: texi2html/formats/docbook.init:751
+#: texi2html/formats/docbook.init:754
 #, perl-brace-format
 msgid "see {ref}"
 msgstr "ld. {ref}"
 
-#: texi2html/formats/docbook.init:755
+#: texi2html/formats/docbook.init:758
 #, perl-brace-format
 msgid "See {ref}"
 msgstr "Ld. {ref}"
 
-#: texi2html/formats/docbook.init:762
+#: texi2html/formats/docbook.init:765
 #, perl-brace-format
 msgid "{title_ref}"
 msgstr "{title_ref}"
 
-#: texi2html/formats/docbook.init:766
+#: texi2html/formats/docbook.init:769
 #, perl-brace-format
 msgid "see {title_ref}"
 msgstr "ld. {title_ref}"
 
-#: texi2html/formats/docbook.init:770
+#: texi2html/formats/docbook.init:773
 #, perl-brace-format
 msgid "See {title_ref}"
 msgstr "Ld. {title_ref}"
