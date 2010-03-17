@@ -1,5 +1,5 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h,v 1.9 2008-05-10 14:39:05 gray Exp $
+   $Id: info.h,v 1.10 2010-03-17 22:01:05 pertusus Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -125,6 +125,9 @@ extern int vi_keys_p;
 
 /* Non-zero means don't remove ANSI escape sequences from man pages.  */
 extern int raw_escapes_p;
+
+/* Non-zero means don't try to be smart when searching for nodes.  */
+extern int strict_node_location_p;
 
 /* Print FORMAT with ARG1 and ARG2.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is

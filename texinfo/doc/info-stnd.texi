@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.27 2009-03-16 12:41:57 karl Exp $
+@comment $Id: info-stnd.texi,v 1.28 2010-03-17 22:01:05 pertusus Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -306,6 +306,14 @@ I/O functions for screen writes.  (By default, Info uses direct writes
 to the video memory on these systems, for faster operation and colored
 display support.)  This allows the speech synthesizers used by blind
 persons to catch the output and convert it to audible speech.
+
+@item --strict-node-location 
+This option causes Info not to search around when locating a node, and 
+instead sticks to the information provided in the tag table in the info 
+file. In general it is advisable not to use this option, since a 
+malformed info file will become useless even if it is only slightly
+incorrect. The main use for this option is to be able to check that 
+node locations are correctly setup in an info manual.
 
 @item --subnodes
 @cindex @code{--subnodes}, command line option

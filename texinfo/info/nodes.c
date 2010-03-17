@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.13 2009-01-23 09:37:40 gray Exp $
+   $Id: nodes.c,v 1.14 2010-03-17 22:01:05 pertusus Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009 Free Software Foundation, Inc.
@@ -998,10 +998,16 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 
               min = max = DEFAULT_INFO_FUDGE;
 
-              if (tag->nodestart < DEFAULT_INFO_FUDGE)
+              if (strict_node_location_p)
+                {
+                  min = 0;
+                  max = 2;
+                }
+
+              if (tag->nodestart < min)
                 min = tag->nodestart;
 
-              if (DEFAULT_INFO_FUDGE >
+              if (max >
                   (subfile->filesize - tag->nodestart))
                 max = subfile->filesize - tag->nodestart;
 

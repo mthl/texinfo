@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.33 2008-08-14 17:36:13 karl Exp $
+   $Id: info.c,v 1.34 2010-03-17 22:01:05 pertusus Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008 Free Software Foundation, Inc.
@@ -82,6 +82,9 @@ int raw_escapes_p = 1;
 /* Non-zero means print the absolute location of the file to be loaded.  */
 static int print_where_p = 0;
 
+/* Non-zero means don't try to be smart when searching for nodes.  */
+int strict_node_location_p = 0;
+
 #ifdef __MSDOS__
 /* Non-zero indicates that screen output should be made 'speech-friendly'.
    Since on MSDOS the usual behavior is to write directly to the video
@@ -113,6 +116,7 @@ static struct option long_options[] = {
   { "no-show-malformed-multibytes", 0, &show_malformed_multibyte_p, 0 },
   { "restore", 1, 0, RESTORE_OPTION },
   { "show-options", 0, 0, 'O' },
+  { "strict-node-location", 0, &strict_node_location_p, 1 },
   { "subnodes", 0, &dump_subnodes, 1 },
   { "usage", 0, 0, 'O' },
   { "version", 0, &print_version_p, 1 },
@@ -628,6 +632,7 @@ Options:\n\
 #endif
 
   puts (_("\
+      --strict-node-location   locate nodes without any searching.\n\
       --subnodes               recursively output menu items.\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
