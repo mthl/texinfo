@@ -1,5 +1,8 @@
 2010-03-17  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Copying Conditions): import better "free software"
+	description from the Emacs manual.
+
 	* doc/texinfo.txi (Info Format Specification): new appendix,
 	written by Patrice Dumas and me.
 

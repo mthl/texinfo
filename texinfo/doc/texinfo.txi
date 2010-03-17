@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
+@c $Id: texinfo.txi,v 1.251 2010-03-17 18:39:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -713,16 +713,16 @@ when it is bad, it is better than nothing.
 @unnumbered Texinfo Copying Conditions
 @cindex Copying conditions
 @cindex Conditions for copying Texinfo
+@cindex Free software
+@cindex Libre software
 
-The programs currently being distributed that relate to Texinfo include
-@code{makeinfo}, @code{info}, @code{texindex}, and @file{texinfo.tex}.
-These programs are @dfn{free}; this means that everyone is free to use
-them and free to redistribute them on a free basis.  The Texinfo-related
-programs are not in the public domain; they are copyrighted and there
-are restrictions on their distribution, but these restrictions are
-designed to permit everything that a good cooperating citizen would want
-to do.  What is not allowed is to try to prevent others from further
-sharing any version of these programs that they might get from you.
+GNU Texinfo is @dfn{free software}; this means that everyone is free
+to use it and free to redistribute it on certain conditions.  Texinfo
+is not in the public domain; it is copyrighted and there are
+restrictions on its distribution, but these restrictions are designed
+to permit everything that a good cooperating citizen would want to do.
+What is not allowed is to try to prevent others from further sharing
+any version of Texinfo that they might get from you.
 
 Specifically, we want to make sure that you have the right to give away
 copies of the programs that relate to Texinfo, that you receive source
@@ -19625,7 +19625,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
+$Id: texinfo.txi,v 1.251 2010-03-17 18:39:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19704,7 +19704,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
+@comment $Id: texinfo.txi,v 1.251 2010-03-17 18:39:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
