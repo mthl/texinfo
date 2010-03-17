@@ -1,10 +1,10 @@
-$Id: NEWS,v 1.192 2009-10-26 21:52:23 karl Exp $
+$Id: NEWS,v 1.193 2010-03-17 18:35:56 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software
-  Foundation, Inc.
+  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+  Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -46,6 +46,9 @@ one of the relevant sections:
 
 * install-info:
   . xz compression supported.
+
+* Documentation:
+  . new appendix on the Info file format.
 
 * Distribution:
   . language support for no removed/renamed to nb, per Norwegian translators.

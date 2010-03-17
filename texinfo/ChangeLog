@@ -1,5 +1,8 @@
 2010-03-17  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Info Format Specification): new appendix,
+	written by Patrice Dumas and me.
+
 	* doc/texinfo.txi (Include Files): move to near the end of the
 	main manual, instead of being an appendix.  These days, include
 	files are an important feature.  Remove @refill's.

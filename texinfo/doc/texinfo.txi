@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.249 2010-03-17 15:40:23 karl Exp $
+@c $Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -168,6 +168,7 @@ the menu lists all the lower level nodes in the document.
 * Sample Texinfo Files::          Complete examples, including full texts.
 * Headings::                      How to write page headings and footings.
 * Catching Mistakes::             How to find mistakes in formatting.
+* Info Format Specification::     Technical details of the Info file format.
 * GNU Free Documentation License::Copying this manual.
 * Command and Variable Index::    A menu containing commands and variables.
 * General Index::                 A menu covering many topics.
@@ -674,6 +675,27 @@ Finding Badly Referenced Nodes
 * Unsplit::                     How to create an unsplit file.
 * Tagifying::                   How to tagify a file.
 * Splitting::                   How to split a file manually.
+
+Info Format Specification
+
+* General: Info Format General Layout.
+* Text:    Info Format Text Constructs.
+
+Info Format General Layout
+
+* Whole:           Info Format Whole Manual.   Split vs.@: nonsplit manuals.
+* Preamble:        Info Format Preamble.
+* Indirect:        Info Format Indirect Tag Table.
+* Tag table:       Info Format Tag Table.
+* Local variables: Info Format Local Variables.
+* Regular nodes:   Info Format Regular Nodes.
+
+Info Format Text Constructs
+
+* Menu: Info Format Menu.
+* Image: Info Format Image.
+* Printindex: Info Format Printindex.
+* Cross-reference: Info Format Cross-reference.
 
 @end detailmenu
 @end menu
@@ -19603,7 +19625,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.249 2010-03-17 15:40:23 karl Exp $
+$Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19682,7 +19704,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.249 2010-03-17 15:40:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.250 2010-03-17 18:35:56 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -20872,6 +20894,447 @@ by appending @samp{-} and a number to the original file name.@refill
 
 The primary file still functions as an Info file, but it contains just
 the tag table and a directory of subfiles.@refill
+
+
+@node Info Format Specification
+@appendix Info Format Specification
+
+@cindex Info format specification
+@cindex Specification of Info format
+@cindex Definition of Info format
+
+Here we describe the technical details of the Info format.
+
+This format definition was written some 25 years after the Info format
+was first devised.  So in the event of conflicts between this
+definition and actual practice, practice wins.  It also assumes some
+general knowledge of Texinfo; it is meant to be a guide for
+implementors rather than a rigid technical standard.  We often refer
+back to other parts of this manual for examples and definitions,
+rather than redundantly spelling out every detail.
+
+In this formal description, the characters @code{<>*()|=#} are used
+for the language of the description itself.  Other characters are
+literal.  The formal constructs used are typical: @code{<...>}
+indicates a metavariable name, @samp{=} means definition, @samp{*}
+repetition, @samp{?} optional, @samp{()} grouping, @samp{|}
+alternation, @samp{#} comment.  Exception: @samp{*} at the beginning
+of a line is literal.
+
+We specify literal parentheses (those that are part of the Info
+format) with @t{<lparen>} and @t{<rparen>}, meaning the single
+characters @samp{(} and @samp{)} respectively.
+
+Finally, the two-character sequence @samp{^@var{x}} means the single
+character @samp{CTRL-@var{x}}, for any @var{x}.
+
+@menu
+* General: Info Format General Layout.
+* Text:    Info Format Text Constructs.
+@end menu
+
+
+@node Info Format General Layout
+@section Info Format General Layout
+
+This section describes the overall layout of Info manuals.
+
+@menu
+* Whole:           Info Format Whole Manual.   Split vs.@: nonsplit manuals.
+* Preamble:        Info Format Preamble.
+* Indirect:        Info Format Indirect Tag Table.
+* Tag table:       Info Format Tag Table.
+* Local variables: Info Format Local Variables.
+* Regular nodes:   Info Format Regular Nodes.
+@end menu
+
+@node Info Format Whole Manual
+@subsection Info Format: A Whole Manual
+
+@cindex Nonsplit manuals, Info format of
+@cindex Split manuals, Info format of
+@cindex Whole manual, in Info format
+
+To begin, an Info manual is either @dfn{nonsplit} (contained wholly
+within a single file) or @dfn{split} (across several files).
+
+The syntax for a nonsplit manual is:
+
+@example
+    <nonsplit info file> =
+<preamble>
+<node>*
+<tag table>
+(<local variables>)?
+@end example
+
+When split, there is a @dfn{main file}, which contains only pointers
+to the nodes given in other @dfn{subfiles}.  The main file looks
+like this:
+
+@example
+    <split info main file> =
+<preamble>
+<indirect table>
+<tag table>
+(<local variables>)?
+@end example
+
+The subfiles in a split manual have the following syntax:
+
+@example
+    <split info subfile> =
+<preamble>
+<node>* 
+@end example
+
+
+@node Info Format Preamble
+@subsection Info Format: Preamble
+
+@cindex Preamble, in Info format
+
+The @t{<preamble>} is text at the beginning of all output files.
+It is not intended to be visible by default in an Info viewer, but
+may be displayed upon user request.
+
+@example
+    <preamble> =
+<identification>       # "This is FILENAME, produced by ..."
+<copying text>         # Expansion of @@copying text.
+<dir entries>          # Derived from @@dircategory and @@direntry.
+@end example
+
+These pieces are:
+
+@table @t
+@item <identification line>
+An arbitrary string beginning the output file, followed by a blank
+line.
+
+@item <copying text>
+The expansion of a @code{@@copying} environment, if
+the manual has one (@pxref{copying}).
+
+@item <dir entries>
+The result of any @code{@@dircategory} and @code{@@direntry}
+commands present in the manual (@pxref{Installing Dir Entries}).
+
+@end table
+
+
+@node Info Format Indirect Tag Table
+@subheading Info Format: Indirect Tag Table
+
+@cindex Indirect tag table, in Info format
+
+The indirect table is written to the main file in the case of split
+output only.  It specifies the starting byte position of each split
+output file (as a decimal integer):
+
+@example
+    <indirect table> =
+^_
+Indirect:
+(<filename>: <bytepos>)*
+@end example
+
+The number of preamble bytes written to each output file are included
+in the positions.  Neither the preamble nor the size of the top-level
+output file is included.
+
+The first actual node of content will be pointed to by the first
+entry.
+
+Unfortunately, Info-creating programs such as @code{makeinfo} have not
+always implemented these rules perfectly, due to various bugs and
+oversights.  Therefore, robust Info viewers should fall back to
+searching ``nearby'' the given position for a node, instead of just
+giving up if the position is not perfectly at a node beginning.
+
+As an example, suppose split output is generated for the GDB manual.
+The top-level file @file{gdb.info} will contain something like this:
+
+@example
+^_
+Indirect:
+gdb.info-1: 1878
+gdb.info-2: 295733
+...
+@end example
+
+This tells Info viewers that the first node of the manual occurs at
+byte 1878 (i.e., after the preamble) of the file @file{gdb.info-1}.
+The first node written to @file{gdb.info-2} would start at byte 295733
+if the subsequent @file{gdb.info-*} files (not including
+@file{gdb.info} files were appended to @file{gdb.info-1}, including
+their preambles.
+
+
+@node Info Format Tag Table
+@subheading Info Format: Tag Table
+
+@cindex Tag table, in Info format
+
+The tag table specifies the starting byte position of each node and anchor
+in the file.  It is written in the main output file only, not (in the
+case of split output) any subfiles.
+ 
+@example
+    <tag table> =
+^_
+Tag Table:
+<lparen>Indirect<rparen> # this line appears in split output only
+(Node|Ref): <nodeid>^?<bytepos>
+^_
+End Tag Table
+@end example
+
+The @samp{(Indirect)} line is the next line after @samp{Tag Table:}
+in the case of split output only.  In this 
+
+Each following line defines an identifier as either an anchor or a
+node.  It is an error to define the same identifier both ways.  For
+example, @samp{Node: Top^?1647} says that the node named @samp{Top}
+starts at byte 1647 while @samp{Ref: Overview-Footnote-1^?30045} says
+that the anchor named @samp{Overview-Footnote-1} starts at byte 30045.
+
+In the case of nonsplit output, the byte positions simply refer to the
+location in the output file.  In the case of split output, the byte
+positions refer to an imaginary file created by concatenating all the
+split files (but not the top-level file).  See the previous section.
+
+Here is an example:
+
+@example
+^_
+Tag Table:
+Node: Top^_89
+Node: Ch1^_292
+^_
+End Tag Table
+@end example
+
+This specifies a manual with two nodes, `Top' and `Ch1', at byte
+positions 89 and 292 respectively.  Because the @samp{(Indirect)} line
+is not present, the manual is not split.
+
+
+@node Info Format Local Variables
+@subheading Info Format: Local Variables
+
+@cindex Local variable section, in Info format
+
+The local variables section is optional and is currently used to give the 
+encoding information.  It may be augmented in the future.
+
+@example
+    <local variables> =
+^_
+Local Variables:
+coding: <encoding>
+End:
+@end example
+
+@xref{documentencoding,, @code{@@documentencoding}}.
+
+
+@node Info Format Regular Nodes
+@subheading Info Format: Regular Nodes
+
+@cindex Info nodes, in Info format
+
+Regular nodes look like this:
+
+@example
+    <node> =
+^_
+File: <fn>, Node: <id1>, (Next: <id2>, )? (Prev: <id3>, )? Up: <id4>
+
+<general text, until the next ^_ or end-of-file>
+@end example
+
+The @code{Next} and @code{Prev} pointers are optional.  The @code{Up}
+pointer may technically also be absent, although this is most likely the
+case of a wrongly-structured Info manual.  At least one space must be
+present after each colon and comma, but any number of spaces are
+ignored.
+
+This @t{<node>} defines @t{<id1>} in @t{<fn>}, which is typically just
+@samp{manual} or perhaps @samp{manual.info}.  Each of the other
+references @t{<id2>}, @t{<id3>}, and @t{<id4>} must be defined with
+either @samp{Node} or @samp{Ref} in the @t{<tag table>}.
+
+Conventionally the nodes are arranged to form a tree, but this is not
+a requirement of the format.  Each pointer can refer to any defined
+identifier.
+
+The @t{<general text>} of the node can include the special constructs
+described next.
+
+
+@node Info Format Text Constructs
+@section Info Format Text Constructs
+
+@cindex Info format text constructs
+@cindex text constructs, Info format
+
+These special Info constructs can appear within the text of a node.
+
+@menu
+* Menu: Info Format Menu.
+* Image: Info Format Image.
+* Printindex: Info Format Printindex.
+* Cross-reference: Info Format Cross-reference.
+@end menu
+
+
+@node Info Format Menu
+@subsection Info Format: Menu
+
+@cindex Menus, in Info format
+
+Conventionally menus appear at the end of nodes, but the Info format
+places no restrictions on their location.
+
+@example
+    <menu> =
+* Menu:
+(<menu entry> | <menu comment>)*
+@end example
+
+The parts of a @t{<menu entry>} are described in @ref{Menu Parts}.
+
+A @t{<menu comment>} is any line not beginning with @samp{*} that
+appears either at the beginning of the menu or is separated from a
+menu entry by one or more blank lines.  These comments are intended to
+be displayed as part of the menu, as-is (@pxref{Writing a Menu}).
+
+
+@node Info Format Image
+@subsection Info Format: Image
+
+@cindex Images, in Info format
+
+The @code{@@image} command results in the following special directive
+within the Info file (@pxref{Images}):
+
+@example
+    <image> =
+^@@^H[image src="<image file>"
+            (text="<txt file contents>")?
+            (alt="<alt text>")?
+^@@^H]
+@end example
+
+The line breaks and indentation in this description are editorial; the
+whitespace between the different parts of the directive in Info files
+is arbitrary.
+
+In the string @t{<image file>}, @t{<txt file contents>} and @t{<alt
+text>}, @samp{"} is quoted as @samp{\"} and @samp{\} is quoted as
+@samp{\\}.  The text and alt specifications are optional.
+
+The @t{alt} value serves the same purpose as in HTML: A prose
+description of the image.  In text-only displays or speech systems,
+for example, the @t{alt} value may be used instead of displaying the
+(typically graphical) @t{<image file>}.
+
+The @t{<txt file contents>}, if present, should be taken as an ASCII
+representation of the image, and also may be used on a text-only
+display.
+
+The format does not prescribe the choice between displaying the
+@t{<image file>}, the @t{<alt text>} or @t{<txt file contents>}.
+
+
+@node Info Format Printindex
+@subsection Info Format: Printindex
+
+@cindex Indexes, in Info format
+
+Indexes in Info format are generally written as a menu
+(@pxref{Indices}), but with an additional directive at the beginning
+marking this as an index node:
+
+@example
+    <printindex> = 
+^@@^H[index^@@^H]
+* Menu:
+
+<index entry>*
+@end example
+
+The @t{<index entry>} items are similar to normal menu entries, but
+the free-format description is replaced by the line number of where
+the entries occurs in the text:
+
+@example
+    <index entry> = 
+* <entry text>: <entry node>. <lparen>line <lineno><rparen>
+@end example
+
+@noindent
+The @t{<entry text>} is the index term.  The @t{<lineno>} is an
+unsigned integer, given relative to the start of the @t{<entry node>}.
+There may be arbitrary whitespace after the colon and period, as usual
+in menus.  Here is an example:
+
+@example
+^@@^H[index^@@^H]
+* Menu:
+
+* thunder:           Weather Phenomena.             (line 5)
+@end example
+
+This means that an index entry for `thunder' appears at line 5 of the
+node `Weather Phenomena'.
+
+
+@node Info Format Cross-reference
+@subsection Info Format: Cross-reference
+
+@cindex Cross-references, in Info format
+
+A general cross reference in Info format is written as follows:
+
+@example
+    <cross-reference> =
+* (N|n)ote (<id>:: | <label>:(<lparen><infofile><rparen>)?<id>(.|,))
+@end example
+
+Whether @samp{note} or @samp{Note} is used is not significant.
+
+The @samp{<id>::} form indicates a node or anchor reference within the
+current manual.
+
+The longer form indicates a general reference, typically used to refer
+to a node or anchor in a different manual, but possibly to the current
+manual.  The @t{<label>} is descriptive text; the optional
+@samp{(<infofile>)} is the filename of the manual being referenced,
+and the @t{<id>} is the node or anchor within that manual, terminated
+by a comma or period.  That final punctuation is part of the
+surrounding sentence, and should be displayed.
+
+Here are some examples:
+
+@example
+*note GNU Free Documentation License::
+*note Tag table: Info Format Tag Table, for details.
+*Note Overview: (make)Top.
+@end example
+
+The first shows the short form, a reference to a node in the current
+manual.
+
+The second also refers to a node in the current manual, namely `Info
+Format Tag Table'; the `Tag table' before the @samp{:} is only a label
+on this particular reference.
+
+The third example refers to the node `Top' in another manual, namely
+@samp{make}, with `Overview' being the label for this cross-reference.
+
+@xref{Cross References}.
 
 
 @ignore
