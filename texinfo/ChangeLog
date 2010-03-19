@@ -1,9 +1,15 @@
+2010-03-18  Karl Berry  <karl@gnu.org>
+
+	* info/info.c,
+	* doc/info-stnd.texi: English wording.
+
 2010-03-18  Patrice Dumas  <pertusus@free.fr>
 
-	* info/nodes.c (info_node_of_file_buffer_tags), info.c, info.h,
-	doc/info-stnd.texi:
-	new switch --strict-node-location to avoid being smart when 
-	searching for nodes.
+	* info/nodes.c (info_node_of_file_buffer_tags),
+	* info.c,
+	* info.h,
+	* doc/info-stnd.texi: new switch --strict-node-location to avoid
+	being smart when searching for nodes.
 
 2010-03-17  Karl Berry  <karl@gnu.org>
 

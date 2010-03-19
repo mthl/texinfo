@@ -1,8 +1,8 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.34 2010-03-17 22:01:05 pertusus Exp $
+   $Id: info.c,v 1.35 2010-03-19 01:00:24 karl Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007, 2008 Free Software Foundation, Inc.
+   2004, 2005, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox.  */
 
 #include "info.h"
 #include "indices.h"
@@ -632,7 +632,7 @@ Options:\n\
 #endif
 
   puts (_("\
-      --strict-node-location   locate nodes without any searching.\n\
+      --strict-node-location   (for debugging) use Info file pointers as-is.\n\
       --subnodes               recursively output menu items.\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\

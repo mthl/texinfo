@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.28 2010-03-17 22:01:05 pertusus Exp $
+@comment $Id: info-stnd.texi,v 1.29 2010-03-19 01:00:18 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -18,7 +18,7 @@ a program for viewing documents in Info format (usually created from
 Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -308,12 +308,13 @@ display support.)  This allows the speech synthesizers used by blind
 persons to catch the output and convert it to audible speech.
 
 @item --strict-node-location 
-This option causes Info not to search around when locating a node, and 
-instead sticks to the information provided in the tag table in the info 
-file. In general it is advisable not to use this option, since a 
-malformed info file will become useless even if it is only slightly
-incorrect. The main use for this option is to be able to check that 
-node locations are correctly setup in an info manual.
+This option causes Info not to search ``nearby'' to locate nodes, and 
+instead strictly use the information provided in the Info 
+file.  The practical use for this option is in debugging programs
+that write Info files, to check that they are outputting the correct
+locations.  Due to various bugs and malfeasances in various Info
+writing programs over the years and versions, it is not advisable to
+ever use this option when just trying to read documentation.
 
 @item --subnodes
 @cindex @code{--subnodes}, command line option
