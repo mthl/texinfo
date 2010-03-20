@@ -30,7 +30,8 @@ use strict;
 
 $COMPLEX_FORMAT_IN_TABLE = 1;
 
-html_default_load();
+#html_default_load();
+t2h_default_load_format('html');
 
 $DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
 

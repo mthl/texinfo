@@ -12,37 +12,37 @@ documentation of all libraries of the SINGULAR distribution is
 generated automatically from their source code.
 
 More precisely, for each library,
--- the info string of the library is parsed and typeset
+- the info string of the library is parsed and typeset
 as explained in Typesetting of help strings.
 
--- the help string of each procedure listed in the PROCEDURE:
+- the help string of each procedure listed in the PROCEDURE:
 section of the library info string is parsed
 and typeset as explained in Typesetting of help strings.
 
--- the example of each procedure listed in the PROCEDURE: section of
+- the example of each procedure listed in the PROCEDURE: section of
 the library info string is computed and its output is
 included into the documentation.
 
 For a uniform look-and-feel of the library documentation, library
 developers should
--- follow the recommendation of
+- follow the recommendation of
 The help string of a library and The help string of procedures.
 
--- consult the source code of libraries like
+- consult the source code of libraries like
 template.lib (see template_lib)
 for examples on how library documentations are
 written.
 
--- make sure that each procedure listed in the PROCEDURE:
+- make sure that each procedure listed in the PROCEDURE:
 section of the library info string has a help string and an example
 section.
 
--- not use interactive functions like
+- not use interactive functions like
 pause("..") or read(""); (see read) and should limit the
 length of input lines to 60 characters in the example section of
 procedures.
 
--- carefully check the generated
+- carefully check the generated
 documentation of their libraries in its various formats using the
 lib2doc (see lib2doc) utility.
 

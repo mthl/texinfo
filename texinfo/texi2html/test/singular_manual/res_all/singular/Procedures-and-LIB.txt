@@ -16,15 +16,15 @@ milnor and tjurina
 * write your own procedures:
 (A procedure has a list of input parameters and of return values, both
 lists may be empty.)
-  --   the procedure mil which must be called with one parameter, a
+  -   the procedure mil which must be called with one parameter, a
   polynomial.
   The name g is local to the procedure and is killed automatically.
   mil returns the Milnor number (and displays a comment).
-  --   the procedure tjur where the parameters are not specified. They
+  -   the procedure tjur where the parameters are not specified. They
   are referred
   to by #[1] for the 1st, #[2] for the 2nd parameter, etc.
   tjur returns the Tjurina number (and displays a comment).
-  --   the procedure milrina which returns a list consisting of two
+  -   the procedure milrina which returns a list consisting of two
   integers,
   the Milnor and the Tjurina number.
   

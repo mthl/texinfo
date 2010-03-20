@@ -72,9 +72,9 @@ This produces:
 
 * First item.
 
--- Inner item.
+- Inner item.
 
--- Second inner item.
+- Second inner item.
 
 * Second outer item.
 

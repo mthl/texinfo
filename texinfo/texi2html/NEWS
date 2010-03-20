@@ -124,6 +124,8 @@ This file records noteworthy changes.
 * only install init files from maintained_extra/, they are considered
   to be interesting enough and maintained.
 
+* rename $Texi2HTML::THISDOC{css_lines} as $Texi2HTML::THISDOC{css_rule_lines}
+
 1.82 (2009-01-05)
 
 * NEW FEATURES

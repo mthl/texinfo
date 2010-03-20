@@ -44,7 +44,7 @@ Later
   - to open document
 
 * Document 
-  The fact that there are 3 commands that may be called.
+  The fact that there are 3 commands that may be called, and --program.
   The locations for config files and init files (including --conf-dirs).
 
   Texi2HTML::THIS_ELEMENT
@@ -60,6 +60,7 @@ Later
   $Texi2HTML::THISDOC{'simpletitle'}
   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
   $Texi2HTML::THISDOC{'filename'}->{'frame'}
+  $Texi2HTML::THISDOC{'CSS_LINES'}
 
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription

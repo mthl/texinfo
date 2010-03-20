@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.376 2010-03-16 08:16:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.377 2010-03-20 14:06:11 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -186,32 +186,15 @@ my $MIN_LEVEL = 1;
 #                                                                          #
 #---########################################################################
 
-my $my_command_name = $0;
-$my_command_name =~ s/.*\///;
-$my_command_name =~ s/\.pl$//;
-
-my $default_output_format;
+my $real_command_name = $0;
+$real_command_name =~ s/.*\///;
+$real_command_name =~ s/\.pl$//;
 
 my %command_format = (
  'texi2html' => 'html',
  'makeinfo' => 'info',
+ 'texi2any' => 'raw-text',
 );
-
-if ($command_format{$my_command_name})
-{
-   $default_output_format = $command_format{$my_command_name};
-}
-
-# This can be called from init files, mostly for formats.
-sub default_output_format()
-{
-   return $default_output_format;
-}
-
-sub default_command_name()
-{
-   return $my_command_name;
-}
 
 # Config files
 
@@ -219,24 +202,43 @@ my $i18n_dir = 'i18n'; # name of the directory containing the per language files
 my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
 
-# directories for config files
-my @texi2html_config_dirs = ('./');
-push @texi2html_config_dirs, "$ENV{'HOME'}/.$my_command_name/" if (defined($ENV{'HOME'}));
-push @texi2html_config_dirs, "$sysconfdir/$my_command_name/" if (defined($sysconfdir));
-push @texi2html_config_dirs, "$datadir/$my_command_name" if (defined($datadir));
-
 # directories for texinfo configuration files
 my @texinfo_config_dirs = ('./.texinfo/');
 push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
 push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
 push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
 
-# directories for init files
-my @texi2html_init_dirs = @texi2html_config_dirs;
-# common directories for all command names
-foreach my $texinfo_config_dir (@texinfo_config_dirs)
+my @program_config_dirs;
+my @program_init_dirs;
+
+# program name dependent initializations: config directories and default
+# format.
+sub set_config_init_dirs_output($)
 {
-   push @texi2html_init_dirs, "${texinfo_config_dir}init/";
+  my $program_name = shift;
+  if (!defined($command_format{$program_name}))
+  {
+    die sprintf(__("%s: unknown program name: %s\n"), $real_command_name, $program_name);
+  }
+  my $default_output_format = $command_format{$program_name};
+
+
+  # directories for config files
+  @program_config_dirs = ('./');
+  push @program_config_dirs, "$ENV{'HOME'}/.$program_name/" if (defined($ENV{'HOME'}));
+  push @program_config_dirs, "$sysconfdir/$program_name/" if (defined($sysconfdir));
+  push @program_config_dirs, "$datadir/$program_name" if (defined($datadir));
+
+  # directories for init files
+  @program_init_dirs = @program_config_dirs;
+  # common directories for all command names
+  foreach my $texinfo_config_dir (@texinfo_config_dirs)
+  {
+    push @program_init_dirs, "${texinfo_config_dir}init/";
+  }
+  $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT = $default_output_format;
+  $Texi2HTML::Config::COMMAND_NAME = $program_name;
+  Texi2HTML::Config::t2h_default_load_format($default_output_format, 0);
 }
 
 #+++###########################################################################
@@ -702,6 +704,7 @@ use vars qw(
   'docbook' => 'Docbook XML',
   'xml' => 'Texinfo XML',
   'plaintext' => 'plain text',
+  'raw-text' => 'raw text',
 );
 
 sub load($) 
@@ -730,9 +733,6 @@ sub load($)
     return 1;
 }
 
-$DEFAULT_OUTPUT_FORMAT = main::default_output_format();
-$OUTPUT_FORMAT = $DEFAULT_OUTPUT_FORMAT;
-$COMMAND_NAME = main::default_command_name();
 
 sub set_conf($$;$)
 {
@@ -1779,6 +1779,9 @@ sub t2h_transliterate_cross_manual_accent($$)
 
 } # end package Texi2HTML::Config
 
+# set the defaults based on real command name
+set_config_init_dirs_output($real_command_name);
+
 use vars qw(
 %value
 %alias
@@ -2309,7 +2312,7 @@ sub document_warn($);
 sub file_line_warn($$;$);
 sub cmdline_warn ($);
 
-my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $my_command_name);
+my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $real_command_name);
 
 #print STDERR "" . gdt('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
@@ -2318,7 +2321,7 @@ my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $m
 #              at first match.
 # directories: a reference on a array containing a list of directories to
 #              search the file in. default is 
-#              @Texi2HTML::Config::CONF_DIRS, @texi2html_config_dirs.
+#              @Texi2HTML::Config::CONF_DIRS, @program_config_dirs.
 sub locate_init_file($;$$)
 {
     my $file = shift;
@@ -2329,11 +2332,11 @@ sub locate_init_file($;$$)
     {
        if ($all_files)
        {
-           $directories = [ @texi2html_config_dirs ];
+           $directories = [ @program_config_dirs ];
        }
        else
        {
-           $directories = [ @Texi2HTML::Config::CONF_DIRS, @texi2html_init_dirs ];
+           $directories = [ @Texi2HTML::Config::CONF_DIRS, @program_init_dirs ];
        }
     }
 
@@ -2508,7 +2511,7 @@ sub set_footnote_style($$;$)
     }
     elsif ($from_command_line)
     {
-         die sprintf(__("%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"), $my_command_name, $value);
+         die sprintf(__("%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"), $real_command_name, $value);
          # the T2H_FAILURE_TEXT is output by getOption, seems to catch die
     }
     else
@@ -2834,7 +2837,7 @@ sub set_paragraphindent($$;$$)
    }
    elsif ($from_command_line)
    {
-       die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), $my_command_name, $value);
+       die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), $real_command_name, $value);
    }
    elsif ($pass == 1)
    {
@@ -3335,6 +3338,13 @@ $T2H_OPTIONS -> {'output-indent'} =
  verbose => 'This option used to indent XML, it is ignored'
 };
 
+$T2H_OPTIONS -> {'program'} =
+{
+ type => '=s',
+ linkage => sub {set_config_init_dirs_output($_[1]);},
+ 'verbose' => 'Call as $s, setting corresponding defaults'
+};
+
 #$T2H_OPTIONS -> {'command'} =
 #{
 # type => '=s',
@@ -3345,27 +3355,22 @@ $T2H_OPTIONS -> {'output-indent'} =
 
 foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
 {
-  next if (defined($default_output_format) and $output_format eq $default_output_format);
-  my $text_default_output_format = 'raw text';
-  $text_default_output_format = $Texi2HTML::Config::output_format_names{$default_output_format} if (defined($default_output_format) and defined($Texi2HTML::Config::output_format_names{$default_output_format}));
+  next if (defined($Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT) and $output_format eq $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT);
   $T2H_OPTIONS -> {$output_format} =
   {
     type => '',
     linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
-    verbose => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $text_default_output_format.",
+    verbose => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT}.",
   }
 }
 
-if (defined($default_output_format))
+$T2H_OPTIONS -> {$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT} =
 {
-  $T2H_OPTIONS -> {$default_output_format} =
-  {
-    type => '',
-    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
-    verbose => "output default format.",
-    noHelp => 2
-  }
-}
+  type => '',
+  linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
+  verbose => "output default format.",
+  noHelp => 2
+};
 
 ##
 ## obsolete cmd line options
@@ -3692,11 +3697,11 @@ my @makeinfo_options = ('error-limit', 'document-language',
 # 'conf-dir', 'init-file' options have to be taken into account for proper
 # functionning.
 my @basic_options = ('dump-texi', 'debug', 'test', 'conf-dir', 'init-file',
-'split');
+'split', 'program');
 
 #      --command=CMD           insert CMD in copy of input file
 my $makeinfo_help =
-sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $my_command_name) 
+sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"), $real_command_name) 
 ."\n".
 __("Translate Texinfo source documentation to various other formats, by default
 Info files suitable for reading online with Emacs or standalone GNU Info.\n") 
@@ -3830,11 +3835,8 @@ $T2H_OBSOLETE_OPTIONS->{'help'} = 0;
 $T2H_OBSOLETE_OPTIONS->{'version'} = 0;
 $T2H_OBSOLETE_OPTIONS->{'verbose'} = 0;
 
-# this is more compatible with makeinfo. But it changes how command lines
-# are parsed, for example -init file.init dodesn't work anymore.
-#Getopt::Long::Configure ("gnu_getopt");
 
-if ($my_command_name eq 'texi2html')
+if ($real_command_name eq 'texi2html')
 {
   # some older version of GetOpt::Long don't have
   # Getopt::Long::Configure("pass_through")
@@ -3862,6 +3864,8 @@ EOT
 }
 else
 {
+   # changes how command lines are parsed, for example -init file.init 
+   # doesn't work anymore.
    Getopt::Long::Configure("gnu_getopt");
    my $opts;
    my @types;
@@ -3871,12 +3875,12 @@ else
       my $primary = $key;
       $primary =~ s/\|.*//;
       next if ($primary eq 'version' or $primary eq 'help');
-      next if ($my_command_name eq 'makeinfo' and ! grep {$primary eq $_} (@makeinfo_options, @basic_options) and $primary !~ /^if/);
+      next if ($real_command_name eq 'makeinfo' and ! grep {$primary eq $_} (@makeinfo_options, @basic_options) and $primary !~ /^if/);
       $opts->{$primary} = $T2H_OPTIONS->{$key}->{'linkage'} if defined($T2H_OPTIONS->{$key}->{'linkage'});
       push @types, "$key$T2H_OPTIONS->{$key}->{'type'}";
    }
    $opts->{'version'} = sub {
-      print "$my_command_name (GNU texinfo) $THISVERSION\n\n";
+      print "$real_command_name (GNU texinfo) $THISVERSION\n\n";
 
       printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -3902,7 +3906,7 @@ if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_
 {
   if (! Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0))
   {  
-      warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), $my_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
+      warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), $real_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
   }
 }
 
@@ -9172,11 +9176,11 @@ sub check_die(;$)
    {
        if (@opened_files == 1)
        {
-           warn sprintf(__("%s: Removing output file `%s' due to errors; use --force to preserve.\n"), $my_command_name, $opened_files[0]);
+           warn sprintf(__("%s: Removing output file `%s' due to errors; use --force to preserve.\n"), $real_command_name, $opened_files[0]);
        }
        elsif (@opened_files > 1)
        {
-           warn sprintf(__("%s: Removing output files due to errors; use --force to preserve.\n"), $my_command_name);
+           warn sprintf(__("%s: Removing output files due to errors; use --force to preserve.\n"), $real_command_name);
        }
        foreach my $file (@opened_files)
        {
@@ -9245,7 +9249,7 @@ sub cmdline_warn ($)
 {
    my $text = shift;
    #chomp ($text);
-   warn sprintf(__p("command_name: warning_message", "%s: %s"), $my_command_name, $text);
+   warn sprintf(__p("command_name: warning_message", "%s: %s"), $real_command_name, $text);
 }
 
 # seems not to be used
@@ -9253,7 +9257,7 @@ sub cmdline_error ($)
 {
    my $text = shift;
    #chomp ($text);
-   warn sprintf(__p("command_name: error_message", "%s: %s"), $my_command_name, $text);
+   warn sprintf(__p("command_name: error_message", "%s: %s"), $real_command_name, $text);
 }
 
 sub document_error($;$)
@@ -16427,7 +16431,7 @@ sub collect_all_css_files()
          }
          unless (open (CSSFILE, "$css_file"))
          {
-            warn (sprintf(__("%s: could not open --css-file %s: %s\n"), $my_command_name, $css_file, $!));
+            warn (sprintf(__("%s: could not open --css-file %s: %s\n"), $real_command_name, $css_file, $!));
             next;
          }
          $css_file_fh = \*CSSFILE;
@@ -16482,7 +16486,7 @@ sub init_with_file_name($)
 my @input_files = @ARGV;
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
-die sprintf(__("%s: missing file argument.\n"), $my_command_name) .$T2H_FAILURE_TEXT unless (scalar(@input_files) >= 1);
+die sprintf(__("%s: missing file argument.\n"), $real_command_name) .$T2H_FAILURE_TEXT unless (scalar(@input_files) >= 1);
 
 my $file_number = 0;
 # main processing
@@ -16593,7 +16597,7 @@ while(@input_files)
    }
 
    # FIXME when to do that?
-   ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_lines'}) 
+   ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_rule_lines'}) 
       = collect_all_css_files();
 
    texinfo_initialization(0);
@@ -16777,7 +16781,7 @@ while(@input_files)
    &$Texi2HTML::Config::toc_body(\@sections_list);
 
    &$Texi2HTML::Config::css_lines($Texi2HTML::THISDOC{'css_import_lines'}, 
-        $Texi2HTML::THISDOC{'css_lines'});
+        $Texi2HTML::THISDOC{'css_rule_lines'});
 
 
    $global_head_num = 0;       # heading index. it is global for the main doc, 

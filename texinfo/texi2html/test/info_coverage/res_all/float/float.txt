@@ -32,7 +32,7 @@ truc
 line
 
 An itemize.
--- truc 
+- truc 
 line
 
 A ref.
@@ -62,7 +62,7 @@ A multitable.
 An index entry
 
 An itemize.
--- truc 
+- truc 
 line
 
 A ref.
@@ -156,7 +156,7 @@ A multitable 2.
 An index entry 2
 
 An itemize 2.
--- truc 2
+- truc 2
 line
 
 

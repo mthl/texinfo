@@ -47,7 +47,6 @@ sub docbook_default_load(;$)
 {
 my $from_command_line = shift;
 
-$OUTPUT_FORMAT = 'docbook';
 t2h_default_set_variables_xml();
 $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY tex "TeX">

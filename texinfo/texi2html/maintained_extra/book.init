@@ -1,6 +1,7 @@
 # This is based on the scriptbasic style
 
-html_default_load();
+#html_default_load();
+t2h_default_load_format('html');
 
 set_conf('contents', 1);
 

@@ -92,6 +92,8 @@ sub T2H_ROFF_print_Top($$)
     main::print_lines($fh, $Texi2HTML::THIS_SECTION);
 }
 
+# FIXME: use the vanilla print_misc instead, and add a
+# $heading_text
 sub T2H_ROFF_print_misc
 {
     my $fh = shift;
@@ -100,6 +102,7 @@ sub T2H_ROFF_print_misc
     &$print_misc_footer($fh);
 }
 
+# FIXME obsolete, main one is right now, need to do a heading_text
 sub T2H_ROFF_titlepage ($$$$)
 {
     my $titlepage_lines = shift;

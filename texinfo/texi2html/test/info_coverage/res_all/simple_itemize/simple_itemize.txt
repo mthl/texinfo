@@ -28,13 +28,13 @@ In second example
 quotation after a blank line
 
 An itemize
--- truc 
+- truc 
 line
 After itemize
 
 
 A nested itemize
--- truc 
+- truc 
 line
 * in nested itemize
 After inside nested itemize.

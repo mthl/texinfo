@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.263 2010-03-16 08:16:27 pertusus Exp $
+# $Id: texi2html.init,v 1.264 2010-03-20 14:06:11 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -529,6 +529,7 @@ $ICONS = 0;
 # use old framework for translations
 $I18N_PERL_HASH = 0;
 
+
 # this resets some defaults, those that are also set in formats and
 # not set in every formats.
 #
@@ -617,6 +618,13 @@ sub t2h_default_set_variables_default()
   $TOP_FILE = '';
 
   $ENABLE_ENCODING = 0;
+
+#
+# Formatting functions
+#
+# They will be reset here between formats switch
+# if they are defined in this function.
+#
 
 # these are more or less the documented vanilla versions, so they
 # are reset
@@ -742,6 +750,142 @@ delete $no_paragraph_commands{'anchor'};
 # 'listoffloats' => 1
 );
 
+}
+
+sub t2h_default_raw_text_load()
+{
+  $SPLIT = '';
+  # extension for nodes files when NODE_FILES is true
+  $NODE_FILE_EXTENSION = 'txt';	    
+
+  # extension
+  $EXTENSION = 'txt';
+  @T2H_FORMAT_EXPAND = ('plaintext');
+  $USE_TITLEPAGE_FOR_TITLE = 0;
+  $HEADERS = 0;
+  $SIMPLE_MENU = 1;
+  $INLINE_INSERTCOPYING = 0;
+  $NODE_FILENAMES = undef;
+
+  %simple_map = %default_simple_map;
+  %simple_map_pre = %simple_map;
+
+  %things_map = %default_things_map;
+  %pre_map = %things_map;
+
+  %style_map = ();
+  %style_map_pre = ();
+  t2h_default_copy_style_map (\%default_style_map, \%style_map);
+  t2h_default_copy_style_map (\%default_style_map_pre, \%style_map_pre);
+
+  # could also be t2h_default_set_iso_symbols()
+  t2h_remove_text_substitutions("'", 1, 0, 0, 1);
+  t2h_remove_text_substitutions('`', 1, 0, 0, 1);
+  $OPEN_QUOTE_SYMBOL = '`';
+  $CLOSE_QUOTE_SYMBOL = "'";
+
+  $BEFORE_OVERVIEW = "";
+  $AFTER_OVERVIEW = "";
+
+  $BEFORE_TOC_LINES = "";
+  $AFTER_TOC_LINES = "";
+
+
+  foreach my $complex_format ('example', 'smallexample', 'display',
+  'smalldisplay', 'lisp', 'smalllisp', 'format', 'smallformat',
+  'menu', 'detailmenu', 'direntry', 'menu_comment')
+  {
+    $complex_format_map{$complex_format}->{'begin'} = '';
+    $complex_format_map{$complex_format}->{'end'} = '';
+  }
+
+  %format_map = (
+#       'quotation'   =>  'blockquote',
+       # lists
+#       'itemize'     =>  'ul',
+       'enumerate'   =>  '',
+#       'multitable'  =>  'table',
+       'table'       =>  '',
+       'vtable'      =>  '',
+       'ftable'      =>  '',
+       'group'       =>  '',
+       'raggedright'       =>  '',
+#       'detailmenu'  =>  '',
+       );
+
+  #
+  # Controls the layout
+  #
+
+  $print_page_head              = \&T2H_DEFAULT_print_page_head;
+  $contents                 = \&T2H_DEFAULT_contents;
+  $shortcontents            = \&T2H_DEFAULT_shortcontents;
+  $one_section              = \&T2H_DEFAULT_one_section;
+  $print_Top                = \&T2H_DEFAULT_print_Top;
+  $print_Top_footer             = \&T2H_DEFAULT_print_Top_footer;
+  $print_misc_header            = \&T2H_DEFAULT_print_misc_header;
+  $print_misc_footer            = \&T2H_DEFAULT_print_misc_footer;
+  $print_section_footer     = \&T2H_DEFAULT_print_section_footer;
+  $print_chapter_header     = \&T2H_DEFAULT_print_chapter_header;
+  $print_section_header     = \&T2H_DEFAULT_print_section_header;
+  $print_chapter_footer     = \&T2H_DEFAULT_print_chapter_footer;
+  $print_page_foot              = \&T2H_DEFAULT_print_page_foot;
+  $print_head_navigation    = \&T2H_DEFAULT_print_head_navigation;
+  $print_foot_navigation    = \&T2H_DEFAULT_print_foot_navigation;
+  $end_section              = \&T2H_DEFAULT_end_section;
+  # changed in info
+  $print_Footnotes              = \&T2H_DEFAULT_print_Footnotes;
+  # used if split
+  $about_body                 = \&T2H_DEFAULT_about_body;
+  $print_navigation           = \&T2H_DEFAULT_print_navigation;
+
+  #
+  # Controls the formatting
+  #
+
+  $empty_line               = \&t2h_default_empty_line;
+  $anchor            = \&t2h_default_anchor;
+  $anchor_label               = \&t2h_default_anchor_label;
+  $image             = \&t2h_default_image;
+  $heading           = \&t2h_default_heading;
+  $heading_text      = \&t2h_default_heading_text;
+  $heading_text_preformatted      = \&t2h_default_heading_text_preformatted;
+  $element_label              = \&t2h_default_element_label;
+  $index_entry_label = \&t2h_default_index_entry_label;
+  #$menu_command      = \&t2h_default_menu_command;
+  $menu_link         = \&t2h_default_menu_link;
+  #$menu_description  = \&t2h_default_menu_description;
+  $paragraph         = \&t2h_default_paragraph;
+  $preformatted      = \&t2h_default_preformatted;
+  $protect_text      = \&t2h_default_protect_text;
+  $normal_text       = \&t2h_default_normal_text;
+  $acronym_like             = \&t2h_default_acronym_like;
+  $sp                = \&t2h_default_sp;
+  $quotation                = \&t2h_default_quotation;
+  $table_list        = \&t2h_default_table_list;
+  $list_item         = \&t2h_default_list_item;
+  $table_line        = \&t2h_default_table_line;
+  $table_item        = \&t2h_default_table_item;
+  $cell              = \&t2h_default_cell;
+  $row               = \&t2h_default_row;
+  $def_item          = \&t2h_default_def_item;
+  $def               = \&t2h_default_def;
+  $def_line          = \&t2h_default_def_line;
+  $cartouche         = \&t2h_default_cartouche;
+  $raw               = \&t2h_default_raw;
+  $format_list_item_texi      = \&t2h_default_format_list_item_texi;
+  $print_index       = \&t2h_default_print_index;
+  $index_summary     = \&t2h_default_index_summary;
+  $index_entry       = \&t2h_default_index_entry;
+  $index_letter      = \&t2h_default_index_letter;
+  $foot_line_and_ref = \&t2h_default_foot_line_and_ref;
+  $foot_section      = \&t2h_default_foot_section;
+  $tab_item_texi     = \&t2h_default_tab_item_texi;
+  $listoffloats             = \&t2h_default_listoffloats;
+  $listoffloats_entry       = \&t2h_default_listoffloats_entry;
+  $float                     = \&t2h_default_float;
+
+  t2h_default_set_variables_default();
 }
 
 my %things_map_xml;
@@ -1154,6 +1298,7 @@ my %t2h_default_formats_load_table = (
   'docbook' => \&docbook_default_load,
   'xml' => \&xml_default_load,
   'plaintext' => \&plaintext_default_load,
+  'raw-text' => \&t2h_default_raw_text_load,
 );
 
 sub t2h_default_load_format($;$)
@@ -1162,6 +1307,7 @@ sub t2h_default_load_format($;$)
   my $from_command_line = shift;
   if (defined($t2h_default_formats_load_table{$format}))
   {
+     $OUTPUT_FORMAT = $format;
      &{$t2h_default_formats_load_table{$format}}($from_command_line);
      $Texi2HTML::THISDOC{'format_from_command_line'} = $format if ($from_command_line);
      return 1;
@@ -1370,7 +1516,7 @@ $DATE = undef;
                                  #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script
 # $Texi2HTML::THISDOC{css_import_lines} -- ref on @import lines in css files
-# $Texi2HTML::THISDOC{css_lines}        -- ref on css rules lines
+# $Texi2HTML::THISDOC{css_rule_lines}   -- ref on css rules lines
 # other $Texi2HTML::THISDOC keys corresponds with texinfo commands, the value
 # being the command arg, for the following commands:
 # kbdinputstyle, paragraphindent, setchapternewpage, headings, footnotestyle,
@@ -1385,37 +1531,29 @@ $DATE = undef;
 #
 # $Texi2HTML::THIS_ELEMENT  holds the element reference.  
 
+# most of the functions are either reset when switching format, in 
+# t2h_default_set_variables_default, or set in format, the simplest
+# one being setup above in t2h_default_raw_text_load
+
 #
-# There are the following subs which control the layout:
+# The following generic subs control the layout:
 #
-$end_section              = \&T2H_DEFAULT_end_section;
-$one_section              = \&T2H_DEFAULT_one_section;
-$print_Top_header         = \&T2H_DEFAULT_print_Top_header;
-$print_Top_footer	      = \&T2H_DEFAULT_print_Top_footer;
-$print_Top		      = \&T2H_DEFAULT_print_Top;
+# misc element formatting functions. They are rather generic, 
+# their call is controlled by other variables (separate or not
+# footnotes, about_body, handling of table of contents...).
+# print_Footnotes is the only to be redefined, in info
 $print_Toc		      = \&T2H_DEFAULT_print_Toc;
 $print_Overview	      = \&T2H_DEFAULT_print_Overview;
-$print_Footnotes	      = \&T2H_DEFAULT_print_Footnotes;
 $print_About	      = \&T2H_DEFAULT_print_About;
-$print_misc_header	      = \&T2H_DEFAULT_print_misc_header;
-$print_misc_footer	      = \&T2H_DEFAULT_print_misc_footer;
 $print_misc		      = \&T2H_DEFAULT_print_misc;
-$print_section_footer     = \&T2H_DEFAULT_print_section_footer;
-$print_chapter_header     = \&T2H_DEFAULT_print_chapter_header;
-$print_section_header     = \&T2H_DEFAULT_print_section_header;
-$print_chapter_footer     = \&T2H_DEFAULT_print_chapter_footer;
-$print_page_head	      = \&T2H_DEFAULT_print_page_head;
-$print_page_foot	      = \&T2H_DEFAULT_print_page_foot;
-$print_head_navigation    = \&T2H_DEFAULT_print_head_navigation;
-$print_foot_navigation    = \&T2H_DEFAULT_print_foot_navigation;
+# generic enough (call print_page_head if needed)
+$print_Top_header         = \&T2H_DEFAULT_print_Top_header;
+
 $button_icon_img	      = \&T2H_DEFAULT_button_icon_img;
-$print_navigation	      = \&T2H_DEFAULT_print_navigation;
-$about_body		      = \&T2H_DEFAULT_about_body;
+# not really needed nor relevant except for html
 $print_frame              = \&T2H_DEFAULT_print_frame;
 $print_toc_frame          = \&T2H_DEFAULT_print_toc_frame;
-$toc_body                 = \&T2H_DEFAULT_toc_body;
-$contents                 = \&T2H_DEFAULT_contents;
-$shortcontents            = \&T2H_DEFAULT_shortcontents;
+# generic
 $titlepage                 = \&T2H_DEFAULT_titlepage;
 $css_lines                 = \&T2H_DEFAULT_css_lines;
 $print_redirection_page    = \&T2H_DEFAULT_print_redirection_page;
@@ -1425,7 +1563,7 @@ $program_string            = \&T2H_DEFAULT_program_string;
 $element_file_name         = \&t2h_default_element_file_name;
  
 ########################################################################
-# Layout for html for every sections
+# Layout for every sections
 #
 
 sub T2H_DEFAULT_print_section($$$$)
@@ -1447,14 +1585,10 @@ sub T2H_DEFAULT_one_section($$)
 }
 
 ###################################################################
-# Layout of top-page I recommend that you use @ifnothtml, @ifhtml,
+# Layout of top-page. It is possible to use @ifnothtml, @ifhtml,
 # @html within the Top texinfo node to specify content of top-level
 # page.
 #
-# If you enclose everything in @ifnothtml, then title, subtitle,
-# author and overview is printed
-# Texi2HTML::HREF of Next, Prev, Up, Forward, Back are not defined
-# if $T2H_SPLIT then Top page is in its own html file
 sub T2H_DEFAULT_print_Top_header($$)
 {
     my $fh = shift;
@@ -1496,7 +1630,7 @@ sub T2H_DEFAULT_print_Top($$$)
 # Layout of Toc, Overview, and Footnotes pages
 # By default, we use "normal" layout
 # Texi2HTML::HREF of Next, Prev, Up, Forward, Back, etc are not defined
-# use: my $buttons = [...] to redefine navigation buttons
+# redefine \@MISC_BUTTONS to change the navigation
 sub T2H_DEFAULT_print_Toc
 {
     return &$print_misc(@_);
@@ -1514,7 +1648,7 @@ sub T2H_DEFAULT_print_About
     return &$print_misc(@_);
 }
 
-sub T2H_DEFAULT_print_misc_header
+sub T2H_DEFAULT_print_misc_header($$$$)
 {
     my $fh = shift;
     my $buttons = shift;
@@ -1523,7 +1657,7 @@ sub T2H_DEFAULT_print_misc_header
     &$print_page_head($fh) if ($new_file);
 }
 
-sub T2H_DEFAULT_print_misc_footer
+sub T2H_DEFAULT_print_misc_footer($$$)
 {
     my $fh = shift;
     my $buttons = shift;
@@ -1570,7 +1704,7 @@ sub t2h_default_heading_text_preformatted($$$)
     return t2h_default_heading_text($command, $text, $level);
 }
 
-sub T2H_DEFAULT_print_misc
+sub T2H_DEFAULT_print_misc($$$)
 {
     my $fh = shift;
     my $new_file = shift;
@@ -1597,10 +1731,7 @@ sub T2H_DEFAULT_print_section_footer
 # SPLIT eq 'chapter'
 # chapter_header: after print_page_head, before print_section
 # chapter_footer: after print_section of last section, before print_page_foot
-#
-# If you want to get rid of navigation stuff after each section,
-# redefine print_section such that it does not call print_navigation,
-# and put print_navigation into print_chapter_header
+
 sub T2H_DEFAULT_print_chapter_header
 {
     my $fh = shift;
@@ -1684,6 +1815,8 @@ sub T2H_DEFAULT_print_foot_navigation
 # navigation panel
 #
 # how to create IMG tag
+# this is only used in html, and only if ICONS is set and the button
+# is active.
 sub T2H_DEFAULT_button_icon_img
 {
     my $button = shift;
@@ -1724,6 +1857,9 @@ sub T2H_DEFAULT_print_navigation
 # Should be improved to be more conforming to other _print* functions
 # toc_file and main_file passed as args are relative to the texinfo manual
 # location, and therefore are not used.
+
+# no-ops in the default case, doesn't really make sense if output is 
+# not html
 
 sub T2H_DEFAULT_print_frame
 {
@@ -1913,20 +2049,20 @@ sub T2H_DEFAULT_css_lines ($$)
        return;
     }
     return if ((!@$rule_lines and !@$import_lines and !keys(%css_map) and !@CSS_REFS) or $NO_CSS);
-    my $css_lines = "<style type=\"text/css\">\n<!--\n";
-    $css_lines .= join('',@$import_lines) . "\n" if (@$import_lines);
+    my $css_text = "<style type=\"text/css\">\n<!--\n";
+    $css_text .= join('',@$import_lines) . "\n" if (@$import_lines);
     foreach my $css_rule (sort(keys(%css_map)))
     {
         next unless ($css_map{$css_rule});
-        $css_lines .= "$css_rule {$css_map{$css_rule}}\n";
+        $css_text .= "$css_rule {$css_map{$css_rule}}\n";
     }
-    $css_lines .= join('',@$rule_lines) . "\n" if (@$rule_lines);
-    $css_lines .= "-->\n</style>\n";
+    $css_text .= join('',@$rule_lines) . "\n" if (@$rule_lines);
+    $css_text .= "-->\n</style>\n";
     foreach my $ref (@CSS_REFS)
     {
-        $css_lines .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
+        $css_text .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$ref\">\n";
     }
-    $Texi2HTML::THISDOC{'CSS_LINES'} = $css_lines;
+    $Texi2HTML::THISDOC{'CSS_LINES'} = $css_text;
 }
 
 ######################################################################
@@ -4616,7 +4752,8 @@ sub default_load_tex_math(;$)
        'table'        =>  {},
        'vtable'       =>  {},
        'ftable'       =>  {},
-       'itemize'      =>  { 'bullet'  => '' }
+#       'itemize'      =>  { 'bullet'  => '' }
+       'itemize'      =>  {},
        );
 
 %inter_item_commands = (
@@ -5655,7 +5792,7 @@ sub t2h_default_def($$)
 #
 # argument:
 # whole menu text.
-# not used since menu is a normal preformatted command
+# not used since menu is a normal preformatted command with SIMPLE_MENU
 sub t2h_default_menu_command($$$)
 {
     my $format = shift;
@@ -6095,6 +6232,8 @@ sub t2h_default_cell($$$$$$$$)
     return " $text";
 }
 
+# format an itemize, enumerate or @*table @item line, returning
+# a texinfo line.
 sub t2h_default_format_list_item_texi($$$$$)
 {
     my $format = shift;
@@ -6164,17 +6303,9 @@ sub t2h_default_list_item($$$$$$$$$$$$)
 
     $only_inter_item_commands = '' if (!defined($only_inter_item_commands));
 
-    $formatted_command = '' if (!defined($formatted_command) or 
-          exists($special_list_commands{$format}->{$command}));
-    my $prepend = '';
-
-    if ($formatted_command ne '')
-    {
-        $prepend = $formatted_command;
-    }
     if ($text =~ /\S/)
     {
-        return $prepend . $text;
+        return $text;
     }
     return '';
 }
@@ -6361,7 +6492,8 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
 #    my $result = '';
     my $result = &$element_label($element_id, $element, $command, $command_line);
 
-    # in the default case, print_head_navigation and print_navigation are both no-ops.
+    # in default case, print_head_navigation and print_navigation are no-ops.
+    # and $print_element_header is undef, so the following nothing.
     if ($new_element and !$one_section)
     {
        main::msg_debug ("For $element->{'texi'}, element_ref not defined", $element->{'line_nr'}) if (!defined($element->{'element_ref'}));
@@ -6378,7 +6510,8 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
                    $result .= &$print_head_navigation(undef, \@SECTION_BUTTONS, $first_in_page, $previous_is_top, $element);
                }
                else
-               { # got to do this here, as it isn't done in print_head_navigation
+               { # got to do this here, as it isn't done otherwise sinc 
+                 # print_head_navigation is not called
                     $result .= &$print_navigation(\@SECTION_BUTTONS) if (get_conf('headers') or get_conf('SPLIT') eq 'node');
                }
            }
@@ -7081,6 +7214,9 @@ sub t2h_default_colon_command($)
    return $punctuation_character;
 }
 
+# called each time a @tab or an @itemx is encountered.
+# To be noticed that there is another function better suited for 
+# formatting of an @item line: $format_list_item_texi
 sub t2h_default_tab_item_texi($$$$$$)
 {
    my $command = shift;

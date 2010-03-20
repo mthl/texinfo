@@ -261,7 +261,7 @@ something, other thing: something, other thing
 
 * b-ullet
 
--- minu-s
+- minu-s
 
  e-mph item
 
@@ -849,7 +849,7 @@ something, other thing: something, other thing
 
 * b-ullet
 
--- minu-s
+- minu-s
 
  e-mph item
 
@@ -1435,7 +1435,7 @@ something, other thing: something, other thing
 
 * b--ullet
 
--- minu--s
+- minu--s
 
  e--mph item
 

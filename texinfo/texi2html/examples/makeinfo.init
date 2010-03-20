@@ -26,7 +26,8 @@
 #
 #-##############################################################################
 
-html_default_load();
+#html_default_load();
+t2h_default_load_format('html');
 
 $TOP_FILE = 'index.html';
 

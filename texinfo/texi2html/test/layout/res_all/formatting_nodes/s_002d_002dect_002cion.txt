@@ -1,0 +1,10 @@
+1.1 A section
+=============
+
+* subsection:: 
+
+In detailmenu
+
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+

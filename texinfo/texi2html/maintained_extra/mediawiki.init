@@ -8,11 +8,13 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.5 2009-12-24 10:12:19 pertusus Exp $
+# $Id: mediawiki.init,v 1.6 2010-03-20 14:06:12 pertusus Exp $
 
 use strict;
 
-html_default_load();
+#html_default_load();
+t2h_default_load_format('html');
+
 # remark: in my tests, there was no support for mathtt in texvc
 # https://bugzilla.wikimedia.org/show_bug.cgi?id=21475
 default_load_tex_math();

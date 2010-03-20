@@ -23,14 +23,11 @@
 
 use strict;
 
-sub plaintext_default_load(;$);
-
 sub plaintext_default_load(;$)
 {
 my $from_command_line = shift;
 info_default_load();
 
-$OUTPUT_FORMAT = 'plaintext';
 $SHOW_MENU = 0;
 $OUT = '-';
 $HEADERS = 0;

@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.46 2010-03-02 16:01:46 pertusus Exp $
+# $Id: html.init,v 1.47 2010-03-20 14:06:11 pertusus Exp $
 
 use strict;
 
@@ -19,19 +19,11 @@ my $html_menu_entry_index;
 # the simple_formatted document title
 my $html_default_title;
 
-sub html_default_load(;$);
-
-if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'html')
-{
-   html_default_load();
-}
-
 # initialise the html output
 sub html_default_load(;$)
 {
 my $from_command_line = shift;
 
-$OUTPUT_FORMAT = 'html';
 t2h_default_set_variables_xml();
 
 ###############################################################
@@ -346,7 +338,7 @@ t2h_default_push_handler(\&html_default_do_title, \@command_handler_output);
                                  #      -- directory for the resulting files
 # $Texi2HTML::THISDOC{user}             -- user running the script
 # $Texi2HTML::THISDOC{css_import_lines} -- ref on @import lines in css files
-# $Texi2HTML::THISDOC{css_lines}        -- ref on css rules lines
+# $Texi2HTML::THISDOC{css_rule_lines}   -- ref on css rules lines
 # other $Texi2HTML::THISDOC keys corresponds with texinfo commands, the value
 # being the command arg, for the following commands:
 # kbdinputstyle, paragraphindent, setchapternewpage, headings, footnotestyle,
@@ -367,16 +359,12 @@ t2h_default_push_handler(\&html_default_do_title, \@command_handler_output);
 $print_section            = \&HTML_DEFAULT_print_section;
 $end_section              = \&HTML_DEFAULT_end_section;
 $one_section              = \&HTML_DEFAULT_one_section;
-$print_Top_header         = \&HTML_DEFAULT_print_Top_header;
 $print_Top_footer	      = \&HTML_DEFAULT_print_Top_footer;
 $print_Top		      = \&HTML_DEFAULT_print_Top;
-$print_Toc		      = \&HTML_DEFAULT_print_Toc;
-$print_Overview	      = \&HTML_DEFAULT_print_Overview;
-$print_Footnotes	      = \&HTML_DEFAULT_print_Footnotes;
-$print_About	      = \&HTML_DEFAULT_print_About;
+# changed in info format, but irrelevant for non-split formats
+$print_Footnotes	      = \&T2H_DEFAULT_print_Footnotes;
 $print_misc_header	      = \&HTML_DEFAULT_print_misc_header;
 $print_misc_footer	      = \&HTML_DEFAULT_print_misc_footer;
-#$print_misc		      = \&HTML_DEFAULT_print_misc;
 $print_section_footer     = \&HTML_DEFAULT_print_section_footer;
 $print_chapter_header     = \&HTML_DEFAULT_print_chapter_header;
 $print_section_header     = \&HTML_DEFAULT_print_section_header;
@@ -510,12 +498,14 @@ $style_map_pre{'click'}->{'function'} = \&t2h_default_click_pre;
 #       'detailmenu'  =>  '',
        );
 
-%special_list_commands = (
-       'table'        =>  {},
-       'vtable'       =>  {},
-       'ftable'       =>  {},
-       'itemize'      =>  { 'bullet'  => '' }
-       );
+#%special_list_commands = (
+#       'table'        =>  {},
+#       'vtable'       =>  {},
+#       'ftable'       =>  {},
+#       'itemize'      =>  { 'bullet'  => '' }
+#       );
+
+$special_list_commands{'itemize'}->{ 'bullet'}  = '';
 
 #
 # texinfo format to align attribute of paragraphs
@@ -764,12 +754,6 @@ sub HTML_DEFAULT_one_section($$)
 # @html within the Top texinfo node to specify content of top-level
 # page.
 #
-sub HTML_DEFAULT_print_Top_header($$)
-{
-    my $fh = shift;
-    my $do_page_head = shift;
-    &$print_page_head($fh) if ($do_page_head);
-}
 sub HTML_DEFAULT_print_Top_footer($$$)
 {
     my $fh = shift;
@@ -801,19 +785,7 @@ sub HTML_DEFAULT_print_Top($$$)
 # By default, we use "normal" layout
 # Texi2HTML::HREF of Next, Prev, Up, Forward, Back, etc are not defined
 # use: my $buttons = [...] to redefine navigation buttons
-sub HTML_DEFAULT_print_Toc
-{
-    return &$print_misc(@_);
-}
-sub HTML_DEFAULT_print_Overview
-{
-    return &$print_misc(@_);
-}
 sub HTML_DEFAULT_print_Footnotes
-{
-    return &$print_misc(@_);
-}
-sub HTML_DEFAULT_print_About
 {
     return &$print_misc(@_);
 }
@@ -842,18 +814,6 @@ sub HTML_DEFAULT_print_misc_footer
     }
 }
 
-sub HTML_DEFAULT_print_misc
-{
-    my $fh = shift;
-    my $new_file = shift;
-    my $misc_page = shift;
-    my $buttons = \@MISC_BUTTONS;
-    &$print_misc_header($fh, $buttons, $new_file, $misc_page);
-    #print $fh "<h1>$Texi2HTML::NAME{'This'}</h1>\n";
-    print $fh "".&$heading_text('misc heading', $Texi2HTML::NAME{This}, 1);
-    main::print_lines($fh);
-    &$print_misc_footer($fh, $buttons, $new_file);
-}
 ##################################################################
 # section_footer is only called if SPLIT eq 'section'
 # section_footer: after print_section of last section, before print_page_foot
@@ -881,7 +841,7 @@ sub HTML_DEFAULT_print_chapter_header
     my $fh = shift;
     my $element = shift;
     # nothing to do there, by default, the navigation panel 
-    # is the section navigation panel
+    # is the element navigation panel
     if (! get_conf('headers'))
     { # in this case print_navigation is called here. 
         my $buttons = \@CHAPTER_BUTTONS;
@@ -942,8 +902,8 @@ sub HTML_DEFAULT_print_page_head($)
         }
     }
     
-    my $css_lines = '';
-    $css_lines = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
+    my $css_text = '';
+    $css_text = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
     my $doctype = get_conf('doctype');
     print $fh <<EOT;
 $doctype
@@ -959,7 +919,7 @@ $description
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-${links}$css_lines
+${links}$css_text
 $EXTRA_HEAD
 </head>
 
@@ -1465,8 +1425,8 @@ sub HTML_DEFAULT_print_redirection_page()
     my $string = gdt('The node you are looking for is at {href}.',
        { 'href' => $href });
     my $doctype = get_conf('doctype');
-    my $css_lines = '';
-    $css_lines = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
+    my $css_text = '';
+    $css_text = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
     #print $fh <<EOT;
     my $result = <<EOT;
 $doctype
@@ -1484,7 +1444,7 @@ $Texi2HTML::THISDOC{'program_authors'}
 <meta name="distribution" content="global">
 <meta name="Generator" content="$Texi2HTML::THISDOC{program}">
 $encoding
-$css_lines
+$css_text
 <meta http-equiv="Refresh" content="2; url=$Texi2HTML::HREF{'This'}">
 $EXTRA_HEAD
 </head>

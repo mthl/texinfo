@@ -25,7 +25,8 @@
 
 use strict;
 
-html_default_load();
+#html_default_load();
+t2h_default_load_format('html');
 
 $TOP_NODE_FILE = undef;
 $TOP_FILE = undef;
@@ -59,7 +60,6 @@ $print_page_foot = \&chm_print_page_foot;
 $print_head_navigation = \&chm_noop;
 #$print_Top_footer = \&chm_noop;
 $print_foot_navigation = \&chm_noop;
-$print_element_header = \&chm_noop;
 
 my $default_toc_body = $toc_body;
 $toc_body = \&chm_toc_body;

@@ -1,3 +1,13 @@
+2009-03-20   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: new option --program to change defaults
+	according to that option.
+	* texi2html.init: treat raw text format as a regular
+	format, with an initialization function.
+	Don't double the prepended text in itemize if it is 
+	an @-command and don't do anything with 
+	%special_list_commands.
+
 2009-03-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: error out when there are multiple @menu in 

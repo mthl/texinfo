@@ -1,0 +1,18 @@
+1 chapter
+*********
+
+(5)
+
+* s--ect,ion:: s-ect,ion
+
+Menu comment
+"simple-double-three--four---"
+
+
+
+Footnotes
+---------
+
+(5)
+in footnote
+

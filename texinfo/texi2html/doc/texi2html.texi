@@ -4654,6 +4654,7 @@ things should be directly done in element_heading.
   %iso_symbols is unused now.
 @item change in the normal_text function reference API, now there is an 
   input variable true if in @@math.
+@item rename $Texi2HTML::THISDOC@{css_lines@} as $Texi2HTML::THISDOC@{css_rule_lines@}
 @end itemize
 @item API changes between 1.78 and 1.80: 
 @itemize @bullet

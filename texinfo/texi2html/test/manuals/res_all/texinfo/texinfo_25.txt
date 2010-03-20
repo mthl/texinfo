@@ -71,39 +71,39 @@ included files or all of them:
 M-x texinfo-multiple-files-update
 Called without any arguments:
 
--- Create or update the `Next', `Previous', and `Up' pointers of the
+- Create or update the `Next', `Previous', and `Up' pointers of the
 first @node line in each file included in an outer or overall
 Texinfo file.
 
--- Create or update the `Top' level node pointers of the outer or
+- Create or update the `Top' level node pointers of the outer or
 overall file.
 
--- Create or update a main menu in the outer file.
+- Create or update a main menu in the outer file.
 
 C-u M-x texinfo-multiple-files-update
 Called with C-u as a prefix argument:
 
--- Create or update pointers in the first @node line in each
+- Create or update pointers in the first @node line in each
 included file.
 
--- Create or update the `Top' level node pointers of the outer file.
+- Create or update the `Top' level node pointers of the outer file.
 
--- Create and insert a master menu in the outer file.  The master menu
+- Create and insert a master menu in the outer file.  The master menu
 is made from all the menus in all the included files.
 
 C-u 8 M-x texinfo-multiple-files-update
 Called with a numeric prefix argument, such as C-u 8:
 
--- Create or update all the `Next', `Previous', and `Up' pointers
+- Create or update all the `Next', `Previous', and `Up' pointers
 of all the included files.
 
--- Create or update all the menus of all the included
+- Create or update all the menus of all the included
 files.
 
--- Create or update the `Top' level node pointers of the outer or
+- Create or update the `Top' level node pointers of the outer or
 overall file.
 
--- And then create a master menu in the outer file.  This is similar to
+- And then create a master menu in the outer file.  This is similar to
 invoking texinfo-master-menu with an argument when you are
 working with just one file.
 

@@ -25,7 +25,6 @@
 # does nothing in case of info (at least in the test suite)
 
 $print_section            = \&T2H_NOHEAD_print_section;
-$print_element_header            = \&T2H_NOHEAD_noop;
 $end_section              = \&T2H_NOHEAD_end_section;
 $one_section              = \&T2H_NOHEAD_one_section;
 $print_Top_footer	      = \&T2H_NOHEAD_print_Top_footer;
@@ -94,14 +93,6 @@ sub T2H_NOHEAD_print_misc_footer
         &$print_page_foot($fh);
     }
 
-}
-sub T2H_NOHEAD_print_misc
-{
-    my $fh = shift;
-    &$print_misc_header($fh);
-    print $fh "<h1>$Texi2HTML::NAME{This}</h1>\n";
-    main::print_lines($fh);
-    &$print_misc_footer($fh);
 }
 
 sub T2H_NOHEAD_end_section($)

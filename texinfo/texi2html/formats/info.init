@@ -33,8 +33,6 @@ use strict;
 
 $Data::Dumper::Maxdepth = 25;
 
-sub info_default_load(;$);
-
 my %info_default_indented_commands;
 my %info_default_format;
 my %info_default_enable_encoding_accents;
@@ -52,15 +50,9 @@ my $info_default_listoffloat_caption_entry_length;
 my $info_default_listoffloat_append;
 my %info_default_index_entries_counts;
 
-if (defined($DEFAULT_OUTPUT_FORMAT) and $DEFAULT_OUTPUT_FORMAT eq 'info')
-{
-   info_default_load();
-}
-
 sub info_default_load(;$)
 {
 my $from_command_line = shift;
-$OUTPUT_FORMAT = 'info';
 
 t2h_default_set_variables_default();
 $USE_SECTIONS = 0;
