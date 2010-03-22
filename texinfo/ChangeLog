@@ -11,6 +11,9 @@
         (\entry): locally \let\* = \space, so explicit
 	line breaks in titles don't become line breaks in the toc's.
 	
+	(\flushright): need to \relax after glue assignment, lest
+	a following L disappear as part of filll glue.
+	
 	(\unmlevel): rename to \unnlevel.
 
 2010-03-18  Karl Berry  <karl@gnu.org>

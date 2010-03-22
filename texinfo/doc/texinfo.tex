@@ -3339,7 +3339,7 @@ end
     \begingroup
       \advance\leftskip by-\tableindent
       \advance\hsize by\tableindent
-      \advance\rightskip by0pt plus1fil
+      \advance\rightskip by0pt plus1fil\relax
       \leavevmode\unhbox0\par
     \endgroup
     %
@@ -6257,7 +6257,7 @@ end
 \envdef\flushright{%
   \let\nonarrowing = t%
   \nonfillstart
-  \advance\leftskip by 0pt plus 1fill
+  \advance\leftskip by 0pt plus 1fill\relax
   \gobble
 }
 \let\Eflushright = \afterenvbreak
@@ -6559,7 +6559,7 @@ end
     #1#2 \endheader
     % common ending:
     \interlinepenalty = 10000
-    \advance\rightskip by 0pt plus 1fil
+    \advance\rightskip by 0pt plus 1fil\relax
     \endgraf
     \nobreak\vskip -\parskip
     \penalty\defunpenalty  % signal to \startdefun and \dodefunx
