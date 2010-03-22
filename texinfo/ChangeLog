@@ -1,3 +1,18 @@
+2010-03-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\headingsoff): new macro to turn off all
+	headings/footings.
+	(\HEADINGSoff, \chapoddpage): use it.
+	
+	(\part, \partzzz): new command @part, always on an odd page.
+	(\numeralbox, \partentry, \shortpartentry): handle parts
+        in the tables of contents.
+	
+        (\entry): locally \let\* = \space, so explicit
+	line breaks in titles don't become line breaks in the toc's.
+	
+	(\unmlevel): rename to \unnlevel.
+
 2010-03-18  Karl Berry  <karl@gnu.org>
 
 	* info/info.c,
