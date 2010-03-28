@@ -87,6 +87,8 @@ part_before_section part_before_section.texi
 chapter_before_part chapter_before_part.texi
 part_before_chapter part_before_chapter.texi
 hole_in_sectionning hole_in_sectionning.texi
+section_before_top section_before_top.texi
+section_before_top_no_node section_before_top_no_node.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

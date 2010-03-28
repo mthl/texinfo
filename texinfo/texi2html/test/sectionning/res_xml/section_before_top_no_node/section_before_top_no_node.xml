@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>section_before_top_no_node.xml</setfilename>
+
+<section>
+<title>section</title>
+
+</section>
+<top>
+<title>top</title>
+
+</top>
+</texinfo>

@@ -1,0 +1,15 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename section_before_top.info
+
+@node section node,,,Top
+@section section 
+
+@node Top
+@top top
+
+@menu
+*section node::
+@end menu
+
+@bye
+

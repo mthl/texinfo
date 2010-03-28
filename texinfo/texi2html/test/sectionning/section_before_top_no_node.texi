@@ -1,0 +1,9 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename section_before_top_no_node.info
+
+@section section 
+
+@top top
+
+@bye
+

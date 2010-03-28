@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="section_before_top.xml" lang="en">
+<sect1 label="1" id="section-node">
+<title>section</title>
+
+</sect1>
+<chapter label="" xreflabel="top" id="Top">
+<title>top</title>
+
+
+</chapter>
+</book>
