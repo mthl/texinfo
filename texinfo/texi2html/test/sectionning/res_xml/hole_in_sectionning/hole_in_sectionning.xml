@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>hole_in_sectionning.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>Top</title>
+
+</top>
+<chapter>
+<title>Chapter</title>
+
+<section>
+<title>section</title>
+
+<subsubsection>
+<title>subsubsection with no subsection above</title>
+
+</subsubsection>
+<subsection>
+<title>the subsection</title>
+
+</subsection>
+</section>
+</chapter>
+</texinfo>

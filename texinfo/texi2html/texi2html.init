@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.264 2010-03-20 14:06:11 pertusus Exp $
+# $Id: texi2html.init,v 1.265 2010-03-28 09:07:14 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6472,6 +6472,12 @@ sub t2h_default_preformatted($$$$$$$$$$$$)
     return $text . "\n";
 }
 
+# $new_element is set if the element is associated with a different
+# reference element than the preceding element. This is where we
+# do the navigation. For example it could be a @node before a @section.
+#
+# The heading function is always called, though  -- in the default case
+# nodes don't lead to an outputted title.
 sub t2h_default_element_heading($$$$$$$$$$$$)
 {
     my $element = shift;

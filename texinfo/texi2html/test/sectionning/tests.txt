@@ -82,6 +82,11 @@ only_documentencoding only_documentencoding.texi
 weird_at_commands_in_nodes weird_at_commands_in_nodes.texi
 double_node_anchor_float double_node_anchor_float.texi
 empty_nodes empty_nodes.texi
+section_before_part section_before_part.texi
+part_before_section part_before_section.texi
+chapter_before_part chapter_before_part.texi
+part_before_chapter part_before_chapter.texi
+hole_in_sectionning hole_in_sectionning.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

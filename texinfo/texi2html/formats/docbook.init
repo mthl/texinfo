@@ -145,7 +145,7 @@ $special_accents{'ogonek'} = 'aeiuAEIU';
 %simple_map = %default_simple_map;
 %simple_map_pre = %simple_map;
 
-# FIXME right?
+# FIXME right? &lstrok; &Lstrok;
 $things_map{'l'} = '/l';
 $things_map{'L'} = '/L';
 $things_map{'TeX'} = '&tex;';
@@ -188,6 +188,7 @@ $no_paragraph_commands{'float'} = 0;
 
 %docbook_sections = (
   'top'  => 'chapter',
+  'part' => 'part',
   'chapter'  => 'chapter',
   'unnumbered'  => 'chapter',
   'centerchap'  => 'chapter',
@@ -672,7 +673,8 @@ sub docbook_misc_commands($$$$$)
     }
     elsif ($macro eq 'settitle')
     {
-     # FIXME to be formatted?
+     # FIXME to be formatted? Also maybe in line_command. And in html, it
+     # is handled by heading _text
        my $arg = $args->[0];
        $arg =~ s/^\s*//;
        chomp($arg);
@@ -835,35 +837,25 @@ sub docbook_close_section()
 
     if (!defined($element))
     {
-        # this doesn't work
-        #my $empty = 1;
-        #foreach my $line (@{$Texi2HTML::THIS_SECTION})
-        #{
-        #    if ($line =~ /\S/)
-        #    {
-        #        $empty = 0;
-        #        last;
-        #    }
-        #}
-        #unless ($empty)
-        #{ # FIXME is info in docbook 5.0
-        #     unshift @{$Texi2HTML::THIS_SECTION}, "<bookinfo>\n";
-        #     push @{$Texi2HTML::THIS_SECTION}, "</bookinfo>\n";
-        #}
         return '';
     }
-    my $result = '';
 
-    #return '' if ($element->{'node'});
+    my $result = '';
 
     # there is a special case for a @chapter that is a child of @top
     # but should not be considered as is, since it is also toplevel.
-    return '' if ($element->{'child'} and !$element->{'child'}->{'toplevel'});
+    # @part, however may have other toplevel elements as children.
+    return '' if ($element->{'child'} and (!$element->{'child'}->{'toplevel'} or $element->{'tag'} ne 'top'));
     $result .= '</'.docbook_element_tag($element).">\n";
 
-    return $result if ($element->{'sectionnext'} or $element->{'level'} <= 1);
     my $current = $element;
-    while ($current->{'level'} != 1 and $current->{'sectionup'} and !$current->{'sectionnext'})
+    # the second condition is such that top is closed only if it has
+    # sub-elements below chapter.
+    # the third condition is such that elements with a next element are
+    # only closed for the last element, except when the next element is 
+    # toplevel and below top, such that @top is closed before the first 
+    # @chapter if there are @section or the like below @top
+    while ($current->{'sectionup'} and !($current->{'sectionup'}->{'tag'} eq 'top' and $current->{'toplevel'}) and (!$current->{'childnext'} or ($current->{'childnext'}->{'toplevel'} and $current->{'sectionup'}->{'tag'} eq 'top')))
     {
         $current = $current->{'sectionup'};
         $result .= '</'.docbook_element_tag($current).">\n";
@@ -1386,6 +1378,7 @@ sub docbook_format($$)
     return $text if ($format_map{$name} eq '');
     if ($name eq 'copying')
     {
+        # FIXME is info in docbook 5.0
         return "<bookinfo>\n<legalnotice>\n$text</legalnotice>\n</bookinfo>\n";
     }
     return docbook_add_id($format_map{$name}).'>' .$text."</$format_map{$name}>";

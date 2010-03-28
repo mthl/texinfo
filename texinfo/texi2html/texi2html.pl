@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.377 2010-03-20 14:06:11 pertusus Exp $
+# $Id: texi2html.pl,v 1.378 2010-03-28 09:07:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2152,6 +2152,8 @@ my %level2sec;
     }
 }
 
+# out of the main hierarchy
+$reference_sec2level{'part'} = 0;
 # this are synonyms
 $reference_sec2level{'appendixsection'} = 2;
 # sec2level{'majorheading'} is also 1 and not 0
@@ -2162,7 +2164,7 @@ $reference_sec2level{'centerchap'} = 1;
 sub stop_paragraph_command($)
 {
    my $command = shift;
-   return 1 if ($Texi2HTML::Config::stop_paragraph_command{$command} or $reference_sec2level{$command});
+   return 1 if ($Texi2HTML::Config::stop_paragraph_command{$command} or defined($reference_sec2level{$command}));
 }
 
 sub set_no_line_macro($$)
@@ -4940,7 +4942,8 @@ my $document_sec_num;
 my $document_head_num;
 my $document_anchor_num;
 
-# section to level hash not taking into account raise and lower sections
+# section to level hash taking into account raise and lower sections.
+# Reset at document beginning
 my %sec2level;
 # initial state for the special regions.
 my %region_initial_state;
@@ -5846,7 +5849,7 @@ sub misc_command_structure($$$$)
         my ($sec, $level);
         while (($sec, $level) = each %sec2level)
         {
-            $sec2level{$sec} = $level - 1;
+            $sec2level{$sec} = $level - 1 if ($level > 0);
         }
         $state->{'sectionning_base'}++;
     }
@@ -6663,7 +6666,8 @@ sub rearrange_elements()
         {
              $section->{'level'} = $MAX_LEVEL;
         }
-        elsif ($level < $MIN_LEVEL and ($section->{'tag'} ne 'top'))
+        # second condition is for @top and @part
+        elsif ($level < $MIN_LEVEL and ($reference_sec2level{$section->{'tag'}} >= $MIN_LEVEL))
         {
              $section->{'level'} = $MIN_LEVEL;
         }
@@ -6758,7 +6762,7 @@ sub rearrange_elements()
         # construct the section number
         $section->{'number'} = '';
 
-        unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap' or $section->{'tag'} eq 'top')
+        unless ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap' or $section->{'tag'} eq 'top' or $section->{'tag'} eq 'part')
         { 
             my $level = $section->{'level'};
             while ($level > $toplevel)
@@ -6810,10 +6814,20 @@ sub rearrange_elements()
         {
             $section->{'sectionup'} = $previous_sections[$level];
             # 'child' is the first child. 
-            # the condition or $section->{'sectionup'}->{'child'} is for 
-            # the @top since it may already one child
-            # and no sectionprev 
-            $section->{'sectionup'}->{'child'} = $section unless ($section->{'sectionprev'} or $section->{'sectionup'}->{'child'});
+            if (!$section->{'sectionup'}->{'child'})
+            {
+                $section->{'sectionup'}->{'child'} = $section;
+            }
+            else
+            {
+                # 'childnext' is the next child of a an element. it may
+                # be different from 'sectionnext' when the elemnt are not
+                # at the same level, for example
+                # @chapter chapter
+                # @subsection subsection (certainly wrong)
+                # @section section (not next of subsection, but childnext)
+                $section->{'sectionup'}->{'section_childs'}->[-1]->{'childnext'} = $section if (defined($section->{'sectionup'}->{'section_childs'}));
+            }
             push @{$section->{'sectionup'}->{'section_childs'}}, $section;
         }
         $previous_sections[$section->{'level'}] = $section;

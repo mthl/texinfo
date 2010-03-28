@@ -16,6 +16,9 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  nodename_parentheses.texi one_element.texi empty_nodes.texi \
  weird_at_commands_in_nodes.texi double_node_anchor_float.texi \
  nodes_after_top_before_chapter.texi \
+ chapter_before_part.texi part_before_section.texi \
+ part_before_chapter.texi section_before_part.texi \
+ hole_in_sectionning.texi \
  test_directions.init tests.txt \
  res res_all res_info res_docbook res_xml res_html
 

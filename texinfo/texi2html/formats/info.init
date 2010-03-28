@@ -2383,14 +2383,14 @@ sub info_default_heading($$$$$;$$)
     {
        main::msg_debug("for $element, $element->{'texi'}, element->{'text'} not defined");
     }
+    return '' if ($element->{'tag'} eq 'part');
+
     my $text = "$element->{'text'}";
-    # to do the same than makeinfo a trailing dot in section number is removed
-    #$text =~ s/^(\w+)\. /$1 /;
     # when @top is empty, use settitle
     $text = $Texi2HTML::THISDOC{'settitle'} if (!length($text) and $element->{'tag'} eq 'top' and defined ($Texi2HTML::THISDOC{'settitle'}) and length($Texi2HTML::THISDOC{'settitle'}));
     my $result = &$heading_text ("\@$command", $text, $element->{'level'});
 
-   $result .= "\n";
+    $result .= "\n";
 
     return info_default_store_text($state, $result, $command, {'heading_command' => 1});
 }

@@ -1,0 +1,8 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename part_before_section.info
+
+@part part
+
+@section section 
+
+@bye
