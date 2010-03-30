@@ -1,3 +1,14 @@
+2010-03-30  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (input_file_name_decode): use [A-Za-z] rather than
+	[A-z], which gets "invalid range end" with new grep in
+	en_US.utf8 and other UTF-8 locales.
+	Report from Martin von Gagern, 29 Mar 2010 12:34:09.
+
+2010-03-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (part): new description for new command @part.
+
 2010-03-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\headingsoff): new macro to turn off all
