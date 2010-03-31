@@ -1,0 +1,28 @@
+contents_and_parts.texi(,2) @setfilename contents_and_parts.info
+contents_and_parts.texi(,3) 
+contents_and_parts.texi(,4) @node Top
+contents_and_parts.texi(,5) @top top
+contents_and_parts.texi(,6) 
+contents_and_parts.texi(,7) @menu
+contents_and_parts.texi(,8) * chapter 1 node::
+contents_and_parts.texi(,9) * chapter 2 node::
+contents_and_parts.texi(,10) * chapter 3 node::
+contents_and_parts.texi(,11) @end menu
+contents_and_parts.texi(,12) 
+contents_and_parts.texi(,13) @part part 1: part 1
+contents_and_parts.texi(,14) 
+contents_and_parts.texi(,15) @node chapter 1 node
+contents_and_parts.texi(,16) @chapter chapter 1
+contents_and_parts.texi(,17) 
+contents_and_parts.texi(,18) @node chapter 2 node
+contents_and_parts.texi(,19) @chapter chapter 2
+contents_and_parts.texi(,20) 
+contents_and_parts.texi(,21) @part part2: part2
+contents_and_parts.texi(,22) 
+contents_and_parts.texi(,23) @node chapter 3 node
+contents_and_parts.texi(,24) @chapter chapter 3
+contents_and_parts.texi(,25) 
+contents_and_parts.texi(,26) @contents
+contents_and_parts.texi(,27) @shortcontents
+contents_and_parts.texi(,28) 
+contents_and_parts.texi(,29) @bye

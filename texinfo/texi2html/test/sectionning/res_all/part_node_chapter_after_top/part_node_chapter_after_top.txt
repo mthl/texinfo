@@ -1,0 +1,16 @@
+top
+***
+
+* a node after part::
+* chapter::
+
+part
+****
+
+a node after part
+-----------------
+After a node after part
+
+1 chapter
+*********
+

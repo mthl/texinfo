@@ -1,0 +1,43 @@
+top
+***
+
+* chapter 1 node::
+* chapter 2 node::
+* chapter 3 node::
+
+part 1: part 1
+**************
+
+1 chapter 1
+***********
+
+2 chapter 2
+***********
+
+part2: part2
+************
+
+1 chapter 3
+***********
+
+Table of Contents
+*****************
+
+top
+part 1: part 1
+1 chapter 1
+2 chapter 2
+part2: part2
+1 chapter 3
+
+Short Table of Contents
+***********************
+
+top
+part 1: part 1
+1 chapter 1
+2 chapter 2
+part2: part2
+1 chapter 3
+
+

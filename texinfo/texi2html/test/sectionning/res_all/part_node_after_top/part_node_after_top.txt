@@ -1,0 +1,8 @@
+top
+***
+
+* part node after top::
+
+part
+****
+

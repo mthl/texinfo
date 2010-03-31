@@ -516,6 +516,7 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
  index_one_node.texi index_no_node_no_top.texi double_index_entry.texi \
  same_doc_nr_split_index_and_element.texi unknown_index_entry.texi \
  more_unknown_index_entry.texi \
+ printindex_between_part_chapter.texi \
  index_test.init no_use_titlepage_for_title.init \
  tests.txt res res_all res_info
 

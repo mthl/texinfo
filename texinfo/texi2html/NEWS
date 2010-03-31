@@ -15,7 +15,7 @@ This file records noteworthy changes.
 
 * main program handles --xml, --docbook, --info, --html and --plaintext.
 
-* Handle @DH{}, @dh{}, @TH{}, @th{}, @headitemfont, and 
+* Handle @DH{}, @dh{}, @TH{}, @th{}, @headitemfont, @part and 
   @allowcodebreaks false
 
 * Handle -o /dev/null (or NUL) like makeinfo.

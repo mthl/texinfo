@@ -1,0 +1,42 @@
+This is contents_and_parts.info, produced by makeinfo version 4.13 from
+contents_and_parts.texi.
+
+
+File: contents_and_parts.info,  Node: Top,  Next: chapter 1 node,  Up: (dir)
+
+top
+***
+
+* Menu:
+
+* chapter 1 node::
+* chapter 2 node::
+* chapter 3 node::
+
+
+File: contents_and_parts.info,  Node: chapter 1 node,  Next: chapter 2 node,  Prev: Top,  Up: Top
+
+1 chapter 1
+***********
+
+
+File: contents_and_parts.info,  Node: chapter 2 node,  Next: chapter 3 node,  Prev: chapter 1 node,  Up: Top
+
+2 chapter 2
+***********
+
+
+File: contents_and_parts.info,  Node: chapter 3 node,  Prev: chapter 2 node,  Up: Top
+
+1 chapter 3
+***********
+
+
+
+Tag Table:
+Node: Top98
+Node: chapter 1 node254
+Node: chapter 2 node380
+Node: chapter 3 node517
+
+End Tag Table

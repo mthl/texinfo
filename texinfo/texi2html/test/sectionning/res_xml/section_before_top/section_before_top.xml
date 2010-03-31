@@ -16,6 +16,7 @@
 <node>
 <nodename>Top</nodename>
 <nodenext>section node</nodenext>
+<nodeprev>section node</nodeprev>
 <nodeup>(dir)</nodeup>
 </node>
 <top>

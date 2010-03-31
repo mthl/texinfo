@@ -6,6 +6,7 @@ texi double_contents.texi
 texi double_contents_setcontentsaftertitlepage.texi
 texi no_content.texi
 texi no_content_setcatpage.texi
+texi contents_and_parts.texi
 contents_at_begin contents_at_begin.texi
 contents_at_end contents_at_end.texi
 contents_in_middle_chapter contents_in_middle_chapter.texi
@@ -35,6 +36,7 @@ no_content_setcatpage_do_contents_inline no_content_setcatpage.texi --init inlin
 double_contents_book double_contents.texi --init book.init
 double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftertitlepage.texi --init book.init
 double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi --init book.init --split chapter
+contents_and_parts contents_and_parts.texi
 
 contents_at_begin_info contents_at_begin.texi --init info.init
 contents_at_end_info contents_at_end.texi  --init info.init

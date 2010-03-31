@@ -1,0 +1,14 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename part_node_before_top.info
+
+@node part node before top, Top,,Top
+@part part
+
+@node Top
+@top top
+
+@menu
+* part node before top::
+@end menu
+
+@bye

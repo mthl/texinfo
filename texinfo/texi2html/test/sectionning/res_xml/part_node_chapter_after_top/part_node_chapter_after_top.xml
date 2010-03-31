@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>part_node_chapter_after_top.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>a node after part</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry>
+<menunode>a node after part</menunode>
+<menutitle>a node after part</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>chapter</menunode>
+<menutitle>chapter</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+<part>
+<title>part</title>
+
+<node>
+<nodename>a node after part</nodename>
+<nodenext>chapter</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<para>After a node after part
+</para>
+<node>
+<nodename>chapter</nodename>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+
+</chapter>
+</part>
+</texinfo>

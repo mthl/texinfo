@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.265 2010-03-28 09:07:14 pertusus Exp $
+# $Id: texi2html.init,v 1.266 2010-03-31 09:12:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1548,6 +1548,34 @@ $print_About	      = \&T2H_DEFAULT_print_About;
 $print_misc		      = \&T2H_DEFAULT_print_misc;
 # generic enough (call print_page_head if needed)
 $print_Top_header         = \&T2H_DEFAULT_print_Top_header;
+
+# the following are less generic, but in case a specific format
+# doesn't redefine them, the raw text functions are always defined.
+$print_page_head              = \&T2H_DEFAULT_print_page_head;
+$contents                 = \&T2H_DEFAULT_contents;
+$shortcontents            = \&T2H_DEFAULT_shortcontents;
+$one_section              = \&T2H_DEFAULT_one_section;
+$print_Top                = \&T2H_DEFAULT_print_Top;
+$print_Top_footer             = \&T2H_DEFAULT_print_Top_footer;
+$print_misc_header            = \&T2H_DEFAULT_print_misc_header;
+$print_misc_footer            = \&T2H_DEFAULT_print_misc_footer;
+$print_section_footer     = \&T2H_DEFAULT_print_section_footer;
+$print_chapter_header     = \&T2H_DEFAULT_print_chapter_header;
+$print_section_header     = \&T2H_DEFAULT_print_section_header;
+$print_chapter_footer     = \&T2H_DEFAULT_print_chapter_footer;
+$print_page_foot              = \&T2H_DEFAULT_print_page_foot;
+$print_head_navigation    = \&T2H_DEFAULT_print_head_navigation;
+$print_foot_navigation    = \&T2H_DEFAULT_print_foot_navigation;
+$end_section              = \&T2H_DEFAULT_end_section;
+# changed in info
+$print_Footnotes              = \&T2H_DEFAULT_print_Footnotes;
+# used if split
+$about_body                 = \&T2H_DEFAULT_about_body;
+$print_navigation           = \&T2H_DEFAULT_print_navigation;
+
+#
+# generic formatting functions
+#
 
 $button_icon_img	      = \&T2H_DEFAULT_button_icon_img;
 # not really needed nor relevant except for html

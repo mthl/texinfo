@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.378 2010-03-28 09:07:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.379 2010-03-31 09:12:23 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -5840,7 +5840,7 @@ sub misc_command_structure($$$$)
         my ($sec, $level);
         while (($sec, $level) = each %sec2level)
         {
-            $sec2level{$sec} = $level + 1;
+            $sec2level{$sec} = $level + 1 if ($reference_sec2level{$sec} > 0);
         }
         $state->{'sectionning_base'}--;
     }
@@ -5849,7 +5849,7 @@ sub misc_command_structure($$$$)
         my ($sec, $level);
         while (($sec, $level) = each %sec2level)
         {
-            $sec2level{$sec} = $level - 1 if ($level > 0);
+            $sec2level{$sec} = $level - 1 if ($reference_sec2level{$sec} > 0);
         }
         $state->{'sectionning_base'}++;
     }
@@ -6699,6 +6699,8 @@ sub rearrange_elements()
                                  # at the same and upper levels
     my @previous_sections = ();  # holds the ref of the previous sections
     my $previous_toplevel;
+    my @pending_parts;           # parts yet to be associated with the 
+                                 # following element
     
     foreach my $section (@sections_list)
     {
@@ -6711,6 +6713,33 @@ sub rearrange_elements()
         # associate with first node if it is a section appearing before
         # the first node
         $section->{'node_ref'} = $nodes_list[0] if ($nodes_list[0] and !$section->{'node_ref'});
+
+        # a part doesn't really make up an element, it is associated with the
+        # next sectionning element instead.
+        if ($section->{'tag'} eq 'part')
+        {
+           push @pending_parts, $section;
+        }
+        elsif (@pending_parts)
+        {
+           if ($section->{'tag'} ne 'top')
+           {
+              foreach my $part (@pending_parts)
+              {
+                 $part->{'part_section_ref'} = $section;
+                 # if a node is associated with the part, reassociate it with 
+                 # the chapter
+                 if ($part->{'with_node'} and !$section->{'with_node'})
+                 {
+                    $section->{'with_node'} = $part->{'with_node'};
+                    delete $part->{'with_node'};
+                    $section->{'with_node'}->{'with_section'} = $section;
+                 }
+              }
+           }
+           @pending_parts = ();
+        }
+
         # we track the toplevel next and previous because there is no
         # strict child parent relationship between chapters and top. Indeed
         # a chapter may appear before @top, it may be better to consider them
@@ -6723,7 +6752,12 @@ sub rearrange_elements()
                 $previous_toplevel->{'toplevelnext'} = $section;
                 $section->{'toplevelprev'} = $previous_toplevel; 
             }
-            $previous_toplevel = $section;
+            # part is not used as previous_toplevel since toplevel directions
+            # are used to move between chapters (and top)
+            $previous_toplevel = $section if ($section->{'tag'} ne 'part');
+            # In fact this is only useful for toplevel elements appearing
+            # before @top, the other have their sectionup reset up below
+            # based on the sectionning commands hierarchy.
             if (defined($section_top) and $section ne $section_top)
             {
                 $section->{'sectionup'} = $section_top;
@@ -6748,7 +6782,7 @@ sub rearrange_elements()
         {
             if ($section->{'tag'} =~ /unnumbered/ or $section->{'tag'} eq 'centerchap')
             {
-                 $previous_numbers[$section->{'level'}] = undef;
+                $previous_numbers[$section->{'level'}] = undef;
             }
             else
             {
@@ -6812,6 +6846,11 @@ sub rearrange_elements()
         }
         if (defined($previous_sections[$level]))
         {
+            # toplevel elements have already their up set to the top element,
+            # it is overwriten here for most cases -- this leads to a different
+            # sectionup if there are parts, for instance.
+            # as a side note, it is not touched upon if the element appears 
+            # before @top.
             $section->{'sectionup'} = $previous_sections[$level];
             # 'child' is the first child. 
             if (!$section->{'sectionup'}->{'child'})
@@ -6931,8 +6970,12 @@ sub rearrange_elements()
     }
 
     # nodes are attached to the section preceding them if not already 
-    # associated with a section
+    # associated with a section.
+    # a @part should never have nodes associated, if it is associated
+    # with a chapter, instead the chapter pointed on by part_section_ref is
+    # used.
     my $current_section = $sections_list[0];
+    $current_section = $current_section->{'part_section_ref'} if ($current_section and $current_section->{'part_section_ref'});
     foreach my $element (@all_elements)
     {
         if ($element->{'node'})
@@ -6951,6 +6994,7 @@ sub rearrange_elements()
         else
         {
             $current_section = $element;
+            $current_section = $element->{'part_section_ref'} if ($element->{'part_section_ref'});
         }
     }
 
@@ -7012,7 +7056,10 @@ sub rearrange_elements()
             {
                 if ($node->{'with_section'})
                 {
-                    if (defined($node->{'with_section'}->{'sectionup'}))
+                    # ignore the up if it is a @part. If the sectionning is
+                    # correct, the element is toplevel and will be handled 
+                    # by the next condition. 
+                    if ($node->{'with_section'}->{'sectionup'} and !$node->{'with_section'}->{'sectionup'}->{'part_section_ref'})
                     {
                         $node->{'nodeup'} = get_node($node->{'with_section'}->{'sectionup'});
                     }
@@ -7079,19 +7126,24 @@ sub rearrange_elements()
             if (defined($node->{'with_section'}))
             {
                 my $next;
+                my $warn_for_next_not_in_menu = 1;
                 my $section = $node->{'with_section'};
-                if (defined($section->{'sectionnext'}))
+                if ($section->{'sectionnext'})
                 {
                     $next = get_node($section->{'sectionnext'});
-                    if (defined($next) and $Texi2HTML::Config::SHOW_MENU)
-                    {
-                        line_warn (sprintf(__("No node following `%s' in menu, but `%s' follows in sectionning"), $node->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
-                        line_warn (sprintf(__("Node following `%s' in menu `%s' and in sectionning `%s' differ"), $node->{'texi'}, $node->{'menu_next'}->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) 
-                           if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
-                    }
+                }
+                # we use toplevelnext, mostly for chapters associated with 
+                # @part. But we don't want to have the @top as prev for
+                # a @chapter or the like
+                elsif ($section->{'toplevelnext'} and $section->{'toplevelnext'} ne $section_top)
+                {
+                    $next = get_node($section->{'toplevelnext'});
                 }
                 elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES) 
-                { # makeinfo don't do that
+                { # makeinfo don't do that. So this is conditionnal. 
+                  # Also no warning, because it is expected that the 
+                  # next found out with the up is not the next in menu.
+                    $warn_for_next_not_in_menu = 0;
                     while (defined($section->{'sectionup'}) and !defined($section->{'sectionnext'}))
                     {
                         $section = $section->{'sectionup'};
@@ -7100,6 +7152,12 @@ sub rearrange_elements()
                     {
                         $next = get_node($section->{'sectionnext'});
                     }
+                }
+                if (defined($next) and $Texi2HTML::Config::SHOW_MENU and $warn_for_next_not_in_menu)
+                {
+                    line_warn (sprintf(__("No node following `%s' in menu, but `%s' follows in sectionning"), $node->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
+                    line_warn (sprintf(__("Node following `%s' in menu `%s' and in sectionning `%s' differ"), $node->{'texi'}, $node->{'menu_next'}->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) 
+                       if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
                 }
                 $node->{'nodenext'} = $next;
             }
@@ -7120,9 +7178,16 @@ sub rearrange_elements()
             if (defined($node->{'with_section'}))
             {
                 my $section = $node->{'with_section'};
-                if (defined($section->{'sectionprev'}))
+                if ($section->{'sectionprev'})
                 {
                     $node->{'nodeprev'} = get_node($section->{'sectionprev'});
+                }
+                # we use toplevelprev, mostly for chapters associated with 
+                # @part. But we don't want to have the @top as prev for
+                # a @chapter or the like
+                elsif ($section->{'toplevelprev'} and $section->{'toplevelprev'} ne $section_top)
+                { 
+                    $node->{'nodeprev'} = get_node($section->{'toplevelprev'});
                 }
                 elsif ($Texi2HTML::Config::USE_UP_FOR_ADJACENT_NODES and defined($section->{'sectionup'}))
                 { # makeinfo don't do that
@@ -7284,13 +7349,23 @@ sub rearrange_elements()
         }
         else
         {
-            if ($element->{'node_ref'} and $only_nodes)
+            my $part_element = $element->{'part_section_ref'};
+            if (($element->{'node_ref'} or ($part_element and $part_element->{'node_ref'})) and $only_nodes)
             {
-                add_t2h_dependent_element ($element, $element->{'node_ref'});
+                my $element_with_node = $element;
+                $element_with_node = $part_element if ($part_element);
+                add_t2h_dependent_element ($element, $element_with_node->{'node_ref'});
             }
             elsif (!$only_nodes)
             {
-                $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
+                if ($part_element)
+                {
+                    add_t2h_dependent_element ($element, $part_element);
+                }
+                else
+                {
+                    $prev_element = add_t2h_element($element, \@elements_list, $prev_element);
+                }
             }
             else
             { # no node, and $only_nodes

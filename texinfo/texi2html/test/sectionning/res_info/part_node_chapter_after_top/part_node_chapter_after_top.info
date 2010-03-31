@@ -1,0 +1,33 @@
+This is part_node_chapter_after_top.info, produced by makeinfo version
+4.13 from part_node_chapter_after_top.texi.
+
+
+File: part_node_chapter_after_top.info,  Node: Top,  Next: a node after part,  Up: (dir)
+
+top
+***
+
+* Menu:
+
+* a node after part::
+* chapter::
+
+
+File: part_node_chapter_after_top.info,  Node: a node after part,  Next: chapter,  Prev: Top,  Up: Top
+
+After a node after part
+
+
+File: part_node_chapter_after_top.info,  Node: chapter,  Up: Top
+
+1 chapter
+*********
+
+
+
+Tag Table:
+Node: Top116
+Node: a node after part261
+Node: chapter392
+
+End Tag Table

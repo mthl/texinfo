@@ -1,0 +1,16 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename node_part_chapter_after_top.info
+
+@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+@node chapter node
+@part part
+
+@chapter chapter 
+
+@bye

@@ -1,3 +1,18 @@
+2009-03-31   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: handle part in html. 
+	@part are associated with the following sectionning command,
+	like @chapter.
+	nodes associated with @part are associated with this sectionning
+	command too. 
+	@part are not included in the toplevelnext and toplevelprev 
+	chains and these directions are used for node next and prev, 
+	bypassing @part.
+	* formats/html.init: add a rule after a @part.
+	* texi2html.init: add back some default definitions for 
+	all the layout subroutines, in case they are used in user-defined 
+	functions and not defined in the default format.
+
 2009-03-28   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/info.init, formats/docbook.init, 

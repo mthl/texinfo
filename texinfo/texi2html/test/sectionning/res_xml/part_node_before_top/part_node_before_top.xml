@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>part_node_before_top.xml</setfilename>
+
+<node>
+<nodename>part node before top</nodename>
+<nodenext>Top</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<part>
+<title>part</title>
+
+</part>
+<node>
+<nodename>Top</nodename>
+<nodenext>part node before top</nodenext>
+<nodeprev>part node before top</nodeprev>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry>
+<menunode>part node before top</menunode>
+<menutitle>part node before top</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+</texinfo>

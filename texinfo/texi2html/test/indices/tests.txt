@@ -24,6 +24,7 @@ index_special_region_no_insertcopying_html index_special_region_no_insertcopying
 index_nodes index_nodes.texi
 makeinfo_index_nodes index_nodes.texi --init makeinfo.init --init index_test.init  --split node
 printindex_between_node_section printindex_between_node_section.texi --init index_test.init --node-files
+printindex_between_part_chapter printindex_between_part_chapter.texi --init index_test.init
 index_and_node_same_name index_and_node_same_name.texi
 syncode_index_print_both syncode_index_print_both.texi
 recursive_synindex recursive_synindex.texi
