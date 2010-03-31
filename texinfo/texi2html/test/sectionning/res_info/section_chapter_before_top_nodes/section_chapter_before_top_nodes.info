@@ -1,0 +1,37 @@
+This is section_chapter_before_top_nodes.info, produced by makeinfo
+version 4.13 from section_chapter_before_top_nodes.texi.
+
+
+File: section_chapter_before_top_nodes.info,  Node: section node
+
+0.1 section
+===========
+
+
+File: section_chapter_before_top_nodes.info,  Node: chapter node,  Prev: Top,  Up: Top
+
+1 chapter
+*********
+
+* Menu:
+
+* section node::
+
+
+File: section_chapter_before_top_nodes.info,  Node: Top,  Next: chapter node,  Prev: chapter node,  Up: (dir)
+
+top
+***
+
+* Menu:
+
+* chapter node::
+
+
+
+Tag Table:
+Node: section node126
+Node: chapter node219
+Node: Top357
+
+End Tag Table

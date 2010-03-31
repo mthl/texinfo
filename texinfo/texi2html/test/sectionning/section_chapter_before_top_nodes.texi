@@ -1,0 +1,23 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename section_chapter_before_top_nodes.info
+
+@node section node
+@section section 
+
+@node chapter node
+@chapter chapter
+
+@menu
+* section node::
+@end menu
+
+@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+
+@bye

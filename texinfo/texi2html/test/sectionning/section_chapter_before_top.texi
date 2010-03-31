@@ -1,0 +1,11 @@
+\input texinfo.tex    @c -*-texinfo-*-
+
+@setfilename section_chapter_before_top.info
+
+@section section 
+
+@chapter chapter
+
+@top top
+
+@bye

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>section_chapter_before_top_nodes.xml</setfilename>
+
+<node>
+<nodename>section node</nodename>
+</node>
+<section>
+<title>section</title>
+
+</section>
+<node>
+<nodename>chapter node</nodename>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+
+<menu>
+<menuentry>
+<menunode>section node</menunode>
+<menutitle>section node</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</chapter>
+<node>
+<nodename>Top</nodename>
+<nodenext>chapter node</nodenext>
+<nodeprev>chapter node</nodeprev>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry>
+<menunode>chapter node</menunode>
+<menutitle>chapter node</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+
+</top>
+</texinfo>
