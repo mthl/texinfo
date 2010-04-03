@@ -97,6 +97,11 @@ part_node_before_top part_node_before_top.texi
 part_node_after_top part_node_after_top.texi
 section_chapter_before_top section_chapter_before_top.texi
 section_chapter_before_top_nodes section_chapter_before_top_nodes.texi
+part_node_appendix part_node_appendix.texi
+part_appendix part_appendix.texi
+part_node_part_appendix part_node_part_appendix.texi
+part_node_part_node_appendix part_node_part_node_appendix.texi
+part_node_node_part_appendix part_node_node_part_appendix.texi
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

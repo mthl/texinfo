@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.379 2010-03-31 09:12:23 pertusus Exp $
+# $Id: texi2html.pl,v 1.380 2010-04-03 20:22:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -6727,6 +6727,11 @@ sub rearrange_elements()
               foreach my $part (@pending_parts)
               {
                  $part->{'part_section_ref'} = $section;
+                 if (!$section->{'with_part'})
+                 {
+                    $section->{'with_part'} = $part;
+                    $part->{'part_with_section'} = $section;
+                 }
                  # if a node is associated with the part, reassociate it with 
                  # the chapter
                  if ($part->{'with_node'} and !$section->{'with_node'})
@@ -6777,6 +6782,7 @@ sub rearrange_elements()
             $previous_numbers[$toplevel] = 'A';
             $in_appendix = 1;
             $number_set = 1 if ($section->{'level'} <= $toplevel);
+            $section->{'appendix_beginning'} = 1;
         }
         if (!defined($previous_numbers[$section->{'level'}]) and !$number_set)
         {
@@ -6844,7 +6850,10 @@ sub rearrange_elements()
         {
             $level--;
         }
-        if (defined($previous_sections[$level]))
+        # The second conditions ensures that a @part is stopped by 
+        # the first @appendix command.
+        if (defined($previous_sections[$level]) 
+           and !($section->{'appendix_beginning'} and $previous_sections[$level]->{'tag'} eq 'part' and $previous_sections[$level]->{'part_section_ref'} ne $section))
         {
             # toplevel elements have already their up set to the top element,
             # it is overwriten here for most cases -- this leads to a different
@@ -7609,13 +7618,20 @@ sub rearrange_elements()
             push @{$cross_reference_nodes{$section->{'cross_manual_target'}}}, $texi_entry;
             $section->{'id'} = node_to_id($section->{'cross_manual_target'});
         }
-        if ($Texi2HTML::Config::USE_NODE_TARGET and $section->{'with_node'})
+    }
+    # use the associated @part as target if there is an associated part.
+    # do it separately to be sure that all the parts have an id.
+    foreach my $section (values(%sections), values(%headings))
+    {
+        my $target = $section;
+        $target = $section->{'with_part'} if ($section->{'with_part'});
+        if ($Texi2HTML::Config::USE_NODE_TARGET and $target->{'with_node'})
         {
-            $section->{'target'} = $section->{'with_node'}->{'target'};
+            $section->{'target'} = $target->{'with_node'}->{'target'};
         }
         else
         {
-            $section->{'target'} = $section->{'id'};
+            $section->{'target'} = $target->{'id'};
         }
     }
 

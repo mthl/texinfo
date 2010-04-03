@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="part_node_part_appendix.xml" lang="en">
+<chapter label="" xreflabel="top" id="Top">
+<title>top</title>
+
+
+</chapter>
+<part label="" xreflabel="Part 1">
+<title>Part 1</title>
+
+<chapter label="1" id="chapter-node">
+<title>chapter</title>
+
+</chapter>
+</part>
+<part label="" xreflabel="Part Appendix">
+<title>Part Appendix</title>
+
+<appendix label="Appendix A">
+<title>Appendix</title>
+
+</appendix>
+</part>
+</book>

@@ -1,3 +1,9 @@
+2009-04-03   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: @part is stopped by an appendix.
+	Use part as section target, if the section is associated with 
+	a part.
+
 2009-03-31   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle part in html. 

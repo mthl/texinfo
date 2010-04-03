@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>part_node_appendix.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>chapter node</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry>
+<menunode>chapter node</menunode>
+<menutitle>chapter node</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>appendix node</menunode>
+<menutitle>appendix node</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+<part>
+<title>Part 1</title>
+
+<node>
+<nodename>chapter node</nodename>
+<nodenext>appendix node</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>chapter</title>
+
+</chapter>
+</part>
+<node>
+<nodename>appendix node</nodename>
+<nodeprev>chapter node</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<appendix>
+<title>Appendix</title>
+
+</appendix>
+</texinfo>

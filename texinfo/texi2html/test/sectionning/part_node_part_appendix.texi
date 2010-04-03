@@ -1,0 +1,20 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@setfilename part_node_part_appendix.info
+
+@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+@part Part 1
+
+@node chapter node
+@chapter chapter
+
+@part Part Appendix
+
+@appendix Appendix
+
+@bye
