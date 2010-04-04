@@ -1,4 +1,4 @@
-$Id: TODO,v 1.50 2010-03-17 18:35:56 karl Exp $
+$Id: TODO,v 1.51 2010-04-04 17:51:34 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -60,7 +60,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     into M columns (see eplain).
   - support bibliographies with BibTeX (see web2c/doc for kludge prototype).
   - @flushboth to combine @flushleft and @flushright, for RFC's.
-  - @part sectioning command.
   - @exercise/@answer command for, e.g., gawk.
   - Allow @hsep/@vsep at @item, instead of just in template.
   - Support automatic line numbering of examples.
@@ -76,7 +75,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Add support for other Latin 9 (and Latin 2 and Latin 1) characters.
 
 * Makeinfo:
-  - Translation of "Appendix" etc. should depend on @doclang not $LANG.
   - Really support UTF-8 instead of just passing through the bytes.
   - lang.c setup doesn't support @v{S} (S with caron) -- no named entity.
   - Automatically do -I of directory of main source file.
@@ -173,9 +171,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - read source file (specified by new option) for @documentlanguage
     and/or @documentencoding, and change the sorting appropriately.
   From: Wojciech Polak, 26 Apr 2003 11:30:59 +0200.
-
-* texi2html:
-  - @smallquotation
 
 * Distribution:
   - generate txi-??.tex from .po's to make translators' jobs easier.

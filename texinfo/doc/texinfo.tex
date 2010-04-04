@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2010-03-21.17}
+\def\texinfoversion{2010-03-25.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2105,8 +2105,8 @@ end
 \font\reducedsy=cmsy10
 \def\reducedecsize{1000}
 
-% reset the current fonts
-\textfonts
+\textleading = 13.2pt % line spacing for 11pt CM
+\textfonts            % reset the current fonts
 \rm
 } % end of 11pt text font size definitions
 
@@ -2236,11 +2236,9 @@ end
 \font\reducedsy=cmsy9
 \def\reducedecsize{0900}
 
-% reduce space between paragraphs
-\divide\parskip by 2
-
-% reset the current fonts
-\textfonts
+\divide\parskip by 2  % reduce space between paragraphs
+\textleading = 12pt   % line spacing for 10pt CM
+\textfonts            % reset the current fonts
 \rm
 } % end of 10pt text font size definitions
 
@@ -4751,7 +4749,7 @@ end
     % When reading the text of entry, convert explicit line breaks
     % from @* into spaces.  The user might give these in long section
     % titles, for instance.
-    \let\* = \space
+    \def\*{\unskip\space\ignorespaces}%
     %
     % Swallow the left brace of the text (first parameter):
     \afterassignment\doentry

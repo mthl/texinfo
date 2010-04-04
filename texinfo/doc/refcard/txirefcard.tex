@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.10 2009-05-10 21:31:02 karl Exp $
+% $Id: txirefcard.tex,v 1.11 2010-04-04 17:51:34 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -14,7 +14,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008, 2009 Free Software Foundation, Inc.
+% Copyright 2008, 2009, 2010 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -455,11 +455,8 @@ which they conventionally appear.
 \section{Nodes}
 
 \txicmd{@node}{name, next, previous, up}{Begin a new node.  The \var{next}, \var{previous}, and \var{up} pointers are usually omitted in a normally-structured document.}
-
 \txicmd{@top}{title}{Mark the topmost \code{@node} in the file, which must be defined on the line immediately preceding \code{@top}. The \var{title} is formatted as a chapter-level heading.  The entire top node, including the \code{@node} and \code{@top} lines, are normally enclosed with \code{@ifnottex ... @end ifnottex}.}
-
 \txicmd{@anchor}{\ttbraced{\var{name}}}{Define \var{name} as the current location, for use as a cross-reference target.}
-
 \txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX. Use before \code{@setfilename}.}
 
 
@@ -467,6 +464,7 @@ which they conventionally appear.
 
 \txicmd{@lowersections}{}{Change subsequent chapters to sections, sections to subsections, and so on.}
 \txicmd{@raisesections}{}{Change subsequent sections to chapters, subsections to sections, and so on.}
+\txicmd{@part}{title}{Print part page, beginning a group of chapters; included in contents.}
 
 \subsection{Numbered, included in contents}
 
