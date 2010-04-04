@@ -1,0 +1,56 @@
+Test for bad definition commands
+********************************
+
+ -- fset: i a g
+ -- id `i' ule:
+ -- :
+ -- aaa:
+ -- :
+ -- :
+ -- truc:
+ -- truc:
+ -- :
+ -- truc: machin bidule chose and
+ -- truc: machin bidule chose and  after
+ -- truc: machin bidule chose and {
+ -- truc: machin bidule chose and { and after
+
+ -- category: name args {   more args
+deffn with {
+
+
+ -- category: name args  more args
+deffn with }
+
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- :
+
+ -- Command on com: Windowint exposeexp
+
+* Index:
+* Index:
+* expose on com: Test for bad definition commands.
+* i: Test for bad definition commands.
+* machin: Test for bad definition commands.
+* machin: Test for bad definition commands.
+* machin: Test for bad definition commands.
+* machin: Test for bad definition commands.
+* name: Test for bad definition commands.
+* name: Test for bad definition commands.
+

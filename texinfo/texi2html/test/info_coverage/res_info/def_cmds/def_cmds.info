@@ -15,17 +15,9 @@ def_cmds.texi.
  -- Command: log trap2
  -- cmde: id ule truc
  -- cmde2: id `i' ule truc
- -- id `i' ule:
- -- :
- -- aaa:
- -- :
- -- :
  -- : machin
  -- : bidule machin
  -- truc: machin
- -- truc:
- -- truc:
- -- :
  -- truc: followed by a comment
      Various deff lines
  -- truc: after a deff item
@@ -111,17 +103,9 @@ Test for definition commands
  -- Command: log trap2
  -- cmde: id ule truc
  -- cmde2: id `i' ule truc
- -- id `i' ule:
- -- :
- -- aaa:
- -- :
- -- :
  -- : machin
  -- : bidule machin
  -- truc: machin
- -- truc:
- -- truc:
- -- :
  -- truc: followed by a comment
      Various deff lines
  -- truc: after a deff item
@@ -201,17 +185,9 @@ Test for definition commands
       -- Command: log trap2
       -- cmde: id ule truc
       -- cmde2: id `i' ule truc
-      -- id `i' ule:
-      -- :
-      -- aaa:
-      -- :
-      -- :
       -- : machin
       -- : bidule machin
       -- truc: machin
-      -- truc:
-      -- truc:
-      -- :
       -- truc: followed by a comment
           Various deff lines
       -- truc: after a deff item
@@ -277,7 +253,6 @@ Test for definition commands
       -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
           d--eftypemethod
 
-
  -- Command: FORWARD--CHAR NCHARS argument2 argument3 (arg in brace,
           [something IN V--AR, in, b , comma aPREF p]) last
 
@@ -340,27 +315,9 @@ Test for definition commands
 
  -- Operation21 on ;Window: `int' ;expose type arg
 
- -- Command on `com': Window`int' exposeEXP
+ -- Command on `com': Window`int' exposeEXP name
 
  -- Function: apply function &rest arguments
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
 
  -- A1: A2 A3 A4
 
@@ -398,128 +355,134 @@ Test for definition commands
 
  -- `A1' on `A2': `A3' `A4' `A5' `A6'
 
- [index ]
-* Menu:
+ -- code then var: ret_type fun_name `A1' A2 `A3' A4
 
-* `A2':                                  Top.                 (line 277)
-* `A3':                                  Top.                 (line 285)
-* `A4' of `A2':                          Top.                 (line 297)
-* A2:                                    Top.                 (line 275)
-* A3:                                    Top.                 (line 283)
-* A3 <1>:                                Top.                 (line 291)
-* A4 of A2:                              Top.                 (line 295)
-* border-pattern:                        Top.                 (line 211)
-* border-pattern of Window:              Top.                 (line 214)
-* d-efcv_name:                           Top.                 (line  54)
-* d-efcv_name <1>:                       Top.                 (line 144)
-* d-efivar_name:                         Top.                 (line  84)
-* d-efivar_name <1>:                     Top.                 (line 174)
-* d-efopt_name:                          Top.                 (line  75)
-* d-efopt_name <1>:                      Top.                 (line 165)
-* d-eftypeivar_name of c-lass:           Top.                 (line  87)
-* d-eftypeivar_name of c-lass <1>:       Top.                 (line 177)
-* d-eftypevar_name:                      Top.                 (line  81)
-* d-eftypevar_name <1>:                  Top.                 (line 171)
-* d-eftypevr_name:                       Top.                 (line  51)
-* d-eftypevr_name <1>:                   Top.                 (line 141)
-* d-efvar_name:                          Top.                 (line  72)
-* d-efvar_name <1>:                      Top.                 (line 162)
-* d-efvr_name:                           Top.                 (line  42)
-* d-efvr_name <1>:                       Top.                 (line 132)
-* enable:                                Top.                 (line 205)
-* fill-column:                           Top.                 (line 190)
+ -- var then code: ret_type1 fun_name1 A1 `A2' A3 `A4'
 
  [index ]
 * Menu:
 
-* )expose on )Window:                    Top.                 (line 235)
-* ,expose on ,Window:                    Top.                 (line 227)
-* ;expose on ;Window:                    Top.                 (line 243)
-* ;expose on ;Window <1>:                Top.                 (line 247)
-* `A2':                                  Top.                 (line 273)
-* `A3':                                  Top.                 (line 281)
-* `A3' on `A2':                          Top.                 (line 301)
-* `A4' on `A2':                          Top.                 (line 305)
-* `int' on ):                            Top.                 (line 239)
-* `int' on ,:                            Top.                 (line 231)
-* A2:                                    Top.                 (line 271)
-* A3:                                    Top.                 (line 279)
-* A3 on A2:                              Top.                 (line 299)
-* A4 on A2:                              Top.                 (line 303)
-* after:                                 Top.                 (line  33)
-* after <1>:                             Top.                 (line 123)
-* apply:                                 Top.                 (line 251)
-* bidule machin:                         Top.                 (line  26)
-* bidule machin <1>:                     Top.                 (line 116)
+* `A2':                                  Top.                 (line 242)
+* `A3':                                  Top.                 (line 250)
+* `A4' of `A2':                          Top.                 (line 262)
+* A2:                                    Top.                 (line 240)
+* A3:                                    Top.                 (line 248)
+* A3 <1>:                                Top.                 (line 256)
+* A4 of A2:                              Top.                 (line 260)
+* border-pattern:                        Top.                 (line 194)
+* border-pattern of Window:              Top.                 (line 197)
+* d-efcv_name:                           Top.                 (line  46)
+* d-efcv_name <1>:                       Top.                 (line 128)
+* d-efivar_name:                         Top.                 (line  76)
+* d-efivar_name <1>:                     Top.                 (line 158)
+* d-efopt_name:                          Top.                 (line  67)
+* d-efopt_name <1>:                      Top.                 (line 149)
+* d-eftypeivar_name of c-lass:           Top.                 (line  79)
+* d-eftypeivar_name of c-lass <1>:       Top.                 (line 161)
+* d-eftypevar_name:                      Top.                 (line  73)
+* d-eftypevar_name <1>:                  Top.                 (line 155)
+* d-eftypevr_name:                       Top.                 (line  43)
+* d-eftypevr_name <1>:                   Top.                 (line 125)
+* d-efvar_name:                          Top.                 (line  64)
+* d-efvar_name <1>:                      Top.                 (line 146)
+* d-efvr_name:                           Top.                 (line  34)
+* d-efvr_name <1>:                       Top.                 (line 116)
+* enable:                                Top.                 (line 188)
+* fill-column:                           Top.                 (line 173)
+
+ [index ]
+* Menu:
+
+* )expose on )Window:                    Top.                 (line 218)
+* ,expose on ,Window:                    Top.                 (line 210)
+* ;expose on ;Window:                    Top.                 (line 226)
+* ;expose on ;Window <1>:                Top.                 (line 230)
+* `A2':                                  Top.                 (line 238)
+* `A3':                                  Top.                 (line 246)
+* `A3' on `A2':                          Top.                 (line 266)
+* `A4' on `A2':                          Top.                 (line 270)
+* `int' on ):                            Top.                 (line 222)
+* `int' on ,:                            Top.                 (line 214)
+* A2:                                    Top.                 (line 236)
+* A3:                                    Top.                 (line 244)
+* A3 on A2:                              Top.                 (line 264)
+* A4 on A2:                              Top.                 (line 268)
+* after:                                 Top.                 (line  25)
+* after <1>:                             Top.                 (line 107)
+* apply:                                 Top.                 (line 234)
+* bidule machin:                         Top.                 (line  21)
+* bidule machin <1>:                     Top.                 (line 103)
 * d-effn_name:                           Top.                 (line   6)
-* d-effn_name <1>:                       Top.                 (line  96)
-* d-efmac_name:                          Top.                 (line  66)
-* d-efmac_name <1>:                      Top.                 (line 156)
-* d-efmethod_name on c-lass:             Top.                 (line  90)
-* d-efmethod_name on c-lass <1>:         Top.                 (line 180)
-* d-efop_name on c-lass:                 Top.                 (line  57)
-* d-efop_name on c-lass <1>:             Top.                 (line 147)
-* d-efspec_name:                         Top.                 (line  69)
-* d-efspec_name <1>:                     Top.                 (line 159)
-* d-eftypefn_name:                       Top.                 (line  45)
-* d-eftypefn_name <1>:                   Top.                 (line 135)
-* d-eftypefun_name:                      Top.                 (line  78)
-* d-eftypefun_name <1>:                  Top.                 (line 168)
-* d-eftypemethod_name on c-lass:         Top.                 (line  93)
-* d-eftypemethod_name on c-lass <1>:     Top.                 (line 183)
-* d-eftypeop_name on c-lass:             Top.                 (line  48)
-* d-eftypeop_name on c-lass <1>:         Top.                 (line 138)
-* d-efun_name:                           Top.                 (line  63)
-* d-efun_name <1>:                       Top.                 (line 153)
+* d-effn_name <1>:                       Top.                 (line  88)
+* d-efmac_name:                          Top.                 (line  58)
+* d-efmac_name <1>:                      Top.                 (line 140)
+* d-efmethod_name on c-lass:             Top.                 (line  82)
+* d-efmethod_name on c-lass <1>:         Top.                 (line 164)
+* d-efop_name on c-lass:                 Top.                 (line  49)
+* d-efop_name on c-lass <1>:             Top.                 (line 131)
+* d-efspec_name:                         Top.                 (line  61)
+* d-efspec_name <1>:                     Top.                 (line 143)
+* d-eftypefn_name:                       Top.                 (line  37)
+* d-eftypefn_name <1>:                   Top.                 (line 119)
+* d-eftypefun_name:                      Top.                 (line  70)
+* d-eftypefun_name <1>:                  Top.                 (line 152)
+* d-eftypemethod_name on c-lass:         Top.                 (line  85)
+* d-eftypemethod_name on c-lass <1>:     Top.                 (line 167)
+* d-eftypeop_name on c-lass:             Top.                 (line  40)
+* d-eftypeop_name on c-lass <1>:         Top.                 (line 122)
+* d-efun_name:                           Top.                 (line  55)
+* d-efun_name <1>:                       Top.                 (line 137)
 * de-ffn_name:                           Top.                 (line   9)
-* de-ffn_name <1>:                       Top.                 (line  99)
-* deffn:                                 Top.                 (line  37)
-* deffn <1>:                             Top.                 (line  39)
-* deffn <2>:                             Top.                 (line 127)
-* deffn <3>:                             Top.                 (line 129)
-* deffnx:                                Top.                 (line  35)
-* deffnx <1>:                            Top.                 (line  40)
-* deffnx <2>:                            Top.                 (line 125)
-* deffnx <3>:                            Top.                 (line 130)
-* e)xpose on W)indow:                    Top.                 (line 233)
-* e,xpose on W,indow:                    Top.                 (line 225)
-* e;xpose on W;indow:                    Top.                 (line 241)
-* e;xpose on W;indow <1>:                Top.                 (line 245)
-* expose on Window:                      Top.                 (line 223)
-* expose on windows:                     Top.                 (line 217)
-* expose on `com':                       Top.                 (line 249)
-* followed:                              Top.                 (line  31)
-* followed <1>:                          Top.                 (line 121)
-* foobar:                                Top.                 (line 193)
-* foobar <1>:                            Top.                 (line 195)
-* foobug:                                Top.                 (line 200)
-* FORWARD-CHAR:                          Top.                 (line 187)
+* de-ffn_name <1>:                       Top.                 (line  91)
+* deffn:                                 Top.                 (line  29)
+* deffn <1>:                             Top.                 (line  31)
+* deffn <2>:                             Top.                 (line 111)
+* deffn <3>:                             Top.                 (line 113)
+* deffnx:                                Top.                 (line  27)
+* deffnx <1>:                            Top.                 (line  32)
+* deffnx <2>:                            Top.                 (line 109)
+* deffnx <3>:                            Top.                 (line 114)
+* e)xpose on W)indow:                    Top.                 (line 216)
+* e,xpose on W,indow:                    Top.                 (line 208)
+* e;xpose on W;indow:                    Top.                 (line 224)
+* e;xpose on W;indow <1>:                Top.                 (line 228)
+* expose on Window:                      Top.                 (line 206)
+* expose on windows:                     Top.                 (line 200)
+* expose on `com':                       Top.                 (line 232)
+* followed:                              Top.                 (line  23)
+* followed <1>:                          Top.                 (line 105)
+* foobar:                                Top.                 (line 176)
+* foobar <1>:                            Top.                 (line 178)
+* foobug:                                Top.                 (line 183)
+* FORWARD-CHAR:                          Top.                 (line 170)
+* fun_name:                              Top.                 (line 272)
+* fun_name1:                             Top.                 (line 274)
 * I:                                     Top.                 (line  13)
-* I <1>:                                 Top.                 (line 103)
+* I <1>:                                 Top.                 (line  95)
 * id ule:                                Top.                 (line  18)
-* id ule <1>:                            Top.                 (line 108)
+* id ule <1>:                            Top.                 (line 100)
 * id `i' ule:                            Top.                 (line  19)
-* id `i' ule <1>:                        Top.                 (line 109)
-* indow on W:                            Top.                 (line 220)
-* indow on W <1>:                        Top.                 (line 229)
-* indow on W <2>:                        Top.                 (line 237)
+* id `i' ule <1>:                        Top.                 (line 101)
+* indow on W:                            Top.                 (line 203)
+* indow on W <1>:                        Top.                 (line 212)
+* indow on W <2>:                        Top.                 (line 220)
 * log trap:                              Top.                 (line  15)
-* log trap <1>:                          Top.                 (line 105)
+* log trap <1>:                          Top.                 (line  97)
 * log trap1:                             Top.                 (line  16)
-* log trap1 <1>:                         Top.                 (line 106)
+* log trap1 <1>:                         Top.                 (line  98)
 * log trap2:                             Top.                 (line  17)
-* log trap2 <1>:                         Top.                 (line 107)
-* machin:                                Top.                 (line  25)
-* machin <1>:                            Top.                 (line  27)
-* machin <2>:                            Top.                 (line 115)
-* machin <3>:                            Top.                 (line 117)
-* push:                                  Top.                 (line 202)
+* log trap2 <1>:                         Top.                 (line  99)
+* machin:                                Top.                 (line  20)
+* machin <1>:                            Top.                 (line  22)
+* machin <2>:                            Top.                 (line 102)
+* machin <3>:                            Top.                 (line 104)
+* push:                                  Top.                 (line 185)
 * truc:                                  Top.                 (line  14)
-* truc <1>:                              Top.                 (line 104)
+* truc <1>:                              Top.                 (line  96)
 
 
 
 Tag Table:
-Node: Top1841
+Node: Top1772
 
 End Tag Table

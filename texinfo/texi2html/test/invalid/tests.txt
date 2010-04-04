@@ -45,6 +45,7 @@ texi author_outside_titlepage_quotation.texi
 texi verb_end_of_line.texi
 texi verb_and_char_end_of_line.texi
 texi empty_ifclear.texi
+texi def_braces_and_empty.texi
 brace_not_closed brace_not_closed.texi
 recursive_copying recursive_copying.texi
 bad_nesting bad_nesting.texi
@@ -93,3 +94,4 @@ author_outside_titlepage_quotation author_outside_titlepage_quotation.texi
 verb_end_of_line verb_end_of_line.texi
 verb_and_char_end_of_line verb_and_char_end_of_line.texi
 empty_ifclear empty_ifclear.texi
+def_braces_and_empty def_braces_and_empty.texi

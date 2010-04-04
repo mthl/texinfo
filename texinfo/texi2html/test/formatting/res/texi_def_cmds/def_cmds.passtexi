@@ -19,719 +19,597 @@ def_cmds.texi(,19) @deffnx Command { log trap1} {}
 def_cmds.texi(,20) @deffnx Command {log trap2 } {}
 def_cmds.texi(,21) @deffnx cmde @b{id ule} truc
 def_cmds.texi(,22) @deffnx cmde2 @b{id @samp{i} ule} truc
-def_cmds.texi(,23) @deffnx @b{id @samp{i} ule}    
-def_cmds.texi(,24) @deffnx 
-def_cmds.texi(,25) @deffnx aaa
-def_cmds.texi(,26) @deffnx {} {}
-def_cmds.texi(,27) @deffnx{}
-def_cmds.texi(,28) @deffnx{} machin
-def_cmds.texi(,29) @deffnx{} {bidule machin}
-def_cmds.texi(,30) @deffnx{truc} machin
-def_cmds.texi(,31) @deffnx{truc} { }
-def_cmds.texi(,32) @deffnx{truc}
-def_cmds.texi(,33) @deffnx{} {}
-def_cmds.texi(,34) @deffnx {truc} followed by a comment
-def_cmds.texi(,35) @c comment
-def_cmds.texi(,36) @ifset texi2html
-def_cmds.texi(,37) @deffnx truc machin bidule chose and }
-def_cmds.texi(,38) @deffnx truc machin bidule chose and } after
-def_cmds.texi(,39) @deffnx truc machin bidule chose and {
-def_cmds.texi(,40) @deffnx truc machin bidule chose and { and after
-def_cmds.texi(,41) @end ifset
-def_cmds.texi(,42) Various deff lines
-def_cmds.texi(,43) @deffnx {truc} after a deff item
-def_cmds.texi(,44) @c comment
-def_cmds.texi(,45) text in def item for second def item
-def_cmds.texi(,46) @deffnx {truc} deffnx before end deffn
-def_cmds.texi(,47) @end deffn
-def_cmds.texi(,48) 
-def_cmds.texi(,49) @deffn empty deffn
-def_cmds.texi(,50) @end deffn
-def_cmds.texi(,51) 
-def_cmds.texi(,52) @deffn empty deffn with deffnx
-def_cmds.texi(,53) @deffnx empty deffnx
-def_cmds.texi(,54) @end deffn
-def_cmds.texi(,55) 
-def_cmds.texi(,56) @defvr c--ategory d--efvr_name
-def_cmds.texi(,57) d--efvr
-def_cmds.texi(,58) @end defvr
-def_cmds.texi(,59) 
-def_cmds.texi(,60) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-def_cmds.texi(,61) d--eftypefn
-def_cmds.texi(,62) @end deftypefn
-def_cmds.texi(,63) 
-def_cmds.texi(,64) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-def_cmds.texi(,65) d--eftypeop
-def_cmds.texi(,66) @end deftypeop
-def_cmds.texi(,67) 
-def_cmds.texi(,68) @deftypevr c--ategory t--ype d--eftypevr_name
-def_cmds.texi(,69) d--eftypevr
-def_cmds.texi(,70) @end deftypevr
-def_cmds.texi(,71) 
-def_cmds.texi(,72) @defcv c--ategory c--lass d--efcv_name
-def_cmds.texi(,73) d--efcv
-def_cmds.texi(,74) @end defcv
-def_cmds.texi(,75) 
-def_cmds.texi(,76) @defop c--ategory c--lass d--efop_name a--rguments...
-def_cmds.texi(,77) d--efop
-def_cmds.texi(,78) @end defop
-def_cmds.texi(,79) 
-def_cmds.texi(,80) @deftp c--ategory d--eftp_name a--ttributes...
-def_cmds.texi(,81) d--eftp
-def_cmds.texi(,82) @end deftp
-def_cmds.texi(,83) 
-def_cmds.texi(,84) @defun d--efun_name a--rguments...
-def_cmds.texi(,85) d--efun
-def_cmds.texi(,86) @end defun
-def_cmds.texi(,87) 
-def_cmds.texi(,88) @defmac d--efmac_name a--rguments...
-def_cmds.texi(,89) d--efmac
-def_cmds.texi(,90) @end defmac
-def_cmds.texi(,91) 
-def_cmds.texi(,92) @defspec d--efspec_name a--rguments...
-def_cmds.texi(,93) d--efspec
-def_cmds.texi(,94) @end defspec
-def_cmds.texi(,95) 
-def_cmds.texi(,96) @defvar d--efvar_name
-def_cmds.texi(,97) d--efvar
-def_cmds.texi(,98) @end defvar
-def_cmds.texi(,99) 
-def_cmds.texi(,100) @defopt d--efopt_name
-def_cmds.texi(,101) d--efopt
-def_cmds.texi(,102) @end defopt
-def_cmds.texi(,103) 
-def_cmds.texi(,104) @deftypefun t--ype d--eftypefun_name a--rguments...
-def_cmds.texi(,105) d--eftypefun
-def_cmds.texi(,106) @end deftypefun
-def_cmds.texi(,107) 
-def_cmds.texi(,108) @deftypevar t--ype d--eftypevar_name
-def_cmds.texi(,109) d--eftypevar
-def_cmds.texi(,110) @end deftypevar
-def_cmds.texi(,111) 
-def_cmds.texi(,112) @defivar c--lass d--efivar_name
-def_cmds.texi(,113) d--efivar
-def_cmds.texi(,114) @end defivar
+def_cmds.texi(,23) @deffnx{} machin
+def_cmds.texi(,24) @deffnx{} {bidule machin}
+def_cmds.texi(,25) @deffnx{truc} machin
+def_cmds.texi(,26) @deffnx {truc} followed by a comment
+def_cmds.texi(,27) @c comment
+def_cmds.texi(,28) Various deff lines
+def_cmds.texi(,29) @deffnx {truc} after a deff item
+def_cmds.texi(,30) @c comment
+def_cmds.texi(,31) text in def item for second def item
+def_cmds.texi(,32) @deffnx {truc} deffnx before end deffn
+def_cmds.texi(,33) @end deffn
+def_cmds.texi(,34) 
+def_cmds.texi(,35) @deffn empty deffn
+def_cmds.texi(,36) @end deffn
+def_cmds.texi(,37) 
+def_cmds.texi(,38) @deffn empty deffn with deffnx
+def_cmds.texi(,39) @deffnx empty deffnx
+def_cmds.texi(,40) @end deffn
+def_cmds.texi(,41) 
+def_cmds.texi(,42) @defvr c--ategory d--efvr_name
+def_cmds.texi(,43) d--efvr
+def_cmds.texi(,44) @end defvr
+def_cmds.texi(,45) 
+def_cmds.texi(,46) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+def_cmds.texi(,47) d--eftypefn
+def_cmds.texi(,48) @end deftypefn
+def_cmds.texi(,49) 
+def_cmds.texi(,50) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+def_cmds.texi(,51) d--eftypeop
+def_cmds.texi(,52) @end deftypeop
+def_cmds.texi(,53) 
+def_cmds.texi(,54) @deftypevr c--ategory t--ype d--eftypevr_name
+def_cmds.texi(,55) d--eftypevr
+def_cmds.texi(,56) @end deftypevr
+def_cmds.texi(,57) 
+def_cmds.texi(,58) @defcv c--ategory c--lass d--efcv_name
+def_cmds.texi(,59) d--efcv
+def_cmds.texi(,60) @end defcv
+def_cmds.texi(,61) 
+def_cmds.texi(,62) @defop c--ategory c--lass d--efop_name a--rguments...
+def_cmds.texi(,63) d--efop
+def_cmds.texi(,64) @end defop
+def_cmds.texi(,65) 
+def_cmds.texi(,66) @deftp c--ategory d--eftp_name a--ttributes...
+def_cmds.texi(,67) d--eftp
+def_cmds.texi(,68) @end deftp
+def_cmds.texi(,69) 
+def_cmds.texi(,70) @defun d--efun_name a--rguments...
+def_cmds.texi(,71) d--efun
+def_cmds.texi(,72) @end defun
+def_cmds.texi(,73) 
+def_cmds.texi(,74) @defmac d--efmac_name a--rguments...
+def_cmds.texi(,75) d--efmac
+def_cmds.texi(,76) @end defmac
+def_cmds.texi(,77) 
+def_cmds.texi(,78) @defspec d--efspec_name a--rguments...
+def_cmds.texi(,79) d--efspec
+def_cmds.texi(,80) @end defspec
+def_cmds.texi(,81) 
+def_cmds.texi(,82) @defvar d--efvar_name
+def_cmds.texi(,83) d--efvar
+def_cmds.texi(,84) @end defvar
+def_cmds.texi(,85) 
+def_cmds.texi(,86) @defopt d--efopt_name
+def_cmds.texi(,87) d--efopt
+def_cmds.texi(,88) @end defopt
+def_cmds.texi(,89) 
+def_cmds.texi(,90) @deftypefun t--ype d--eftypefun_name a--rguments...
+def_cmds.texi(,91) d--eftypefun
+def_cmds.texi(,92) @end deftypefun
+def_cmds.texi(,93) 
+def_cmds.texi(,94) @deftypevar t--ype d--eftypevar_name
+def_cmds.texi(,95) d--eftypevar
+def_cmds.texi(,96) @end deftypevar
+def_cmds.texi(,97) 
+def_cmds.texi(,98) @defivar c--lass d--efivar_name
+def_cmds.texi(,99) d--efivar
+def_cmds.texi(,100) @end defivar
+def_cmds.texi(,101) 
+def_cmds.texi(,102) @deftypeivar c--lass t--ype d--eftypeivar_name
+def_cmds.texi(,103) d--eftypeivar
+def_cmds.texi(,104) @end deftypeivar
+def_cmds.texi(,105) 
+def_cmds.texi(,106) @defmethod c--lass d--efmethod_name a--rguments...
+def_cmds.texi(,107) d--efmethod
+def_cmds.texi(,108) @end defmethod
+def_cmds.texi(,109) 
+def_cmds.texi(,110) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+def_cmds.texi(,111) d--eftypemethod
+def_cmds.texi(,112) @end deftypemethod
+def_cmds.texi(,113) 
+def_cmds.texi(,114) @end macro
 def_cmds.texi(,115) 
-def_cmds.texi(,116) @deftypeivar c--lass t--ype d--eftypeivar_name
-def_cmds.texi(,117) d--eftypeivar
-def_cmds.texi(,118) @end deftypeivar
+def_cmds.texi(,116) @copying
+def_cmds.texi(mymacro,117) @deffn c--ategory d--effn_name a--rguments...
+def_cmds.texi(mymacro,117) d--effn
+def_cmds.texi(mymacro,117) @end deffn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deffn cate--gory de--ffn_name ar--guments @
+def_cmds.texi(mymacro,117)    more args @* even more so
+def_cmds.texi(mymacro,117) def--fn
+def_cmds.texi(mymacro,117) @end deffn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deffn fset @var{i} a g
+def_cmds.texi(mymacro,117) @deffnx {cmde} truc {}
+def_cmds.texi(mymacro,117) @deffnx Command {log trap} {}
+def_cmds.texi(mymacro,117) @deffnx Command { log trap1} {}  
+def_cmds.texi(mymacro,117) @deffnx Command {log trap2 } {}
+def_cmds.texi(mymacro,117) @deffnx cmde @b{id ule} truc
+def_cmds.texi(mymacro,117) @deffnx cmde2 @b{id @samp{i} ule} truc
+def_cmds.texi(mymacro,117) @deffnx{} machin
+def_cmds.texi(mymacro,117) @deffnx{} {bidule machin}
+def_cmds.texi(mymacro,117) @deffnx{truc} machin
+def_cmds.texi(mymacro,117) @deffnx {truc} followed by a comment
+def_cmds.texi(mymacro,117) @c comment
+def_cmds.texi(mymacro,117) Various deff lines
+def_cmds.texi(mymacro,117) @deffnx {truc} after a deff item
+def_cmds.texi(mymacro,117) @c comment
+def_cmds.texi(mymacro,117) text in def item for second def item
+def_cmds.texi(mymacro,117) @deffnx {truc} deffnx before end deffn
+def_cmds.texi(mymacro,117) @end deffn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deffn empty deffn
+def_cmds.texi(mymacro,117) @end deffn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deffn empty deffn with deffnx
+def_cmds.texi(mymacro,117) @deffnx empty deffnx
+def_cmds.texi(mymacro,117) @end deffn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defvr c--ategory d--efvr_name
+def_cmds.texi(mymacro,117) d--efvr
+def_cmds.texi(mymacro,117) @end defvr
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+def_cmds.texi(mymacro,117) d--eftypefn
+def_cmds.texi(mymacro,117) @end deftypefn
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+def_cmds.texi(mymacro,117) d--eftypeop
+def_cmds.texi(mymacro,117) @end deftypeop
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypevr c--ategory t--ype d--eftypevr_name
+def_cmds.texi(mymacro,117) d--eftypevr
+def_cmds.texi(mymacro,117) @end deftypevr
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defcv c--ategory c--lass d--efcv_name
+def_cmds.texi(mymacro,117) d--efcv
+def_cmds.texi(mymacro,117) @end defcv
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defop c--ategory c--lass d--efop_name a--rguments...
+def_cmds.texi(mymacro,117) d--efop
+def_cmds.texi(mymacro,117) @end defop
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftp c--ategory d--eftp_name a--ttributes...
+def_cmds.texi(mymacro,117) d--eftp
+def_cmds.texi(mymacro,117) @end deftp
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defun d--efun_name a--rguments...
+def_cmds.texi(mymacro,117) d--efun
+def_cmds.texi(mymacro,117) @end defun
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defmac d--efmac_name a--rguments...
+def_cmds.texi(mymacro,117) d--efmac
+def_cmds.texi(mymacro,117) @end defmac
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defspec d--efspec_name a--rguments...
+def_cmds.texi(mymacro,117) d--efspec
+def_cmds.texi(mymacro,117) @end defspec
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defvar d--efvar_name
+def_cmds.texi(mymacro,117) d--efvar
+def_cmds.texi(mymacro,117) @end defvar
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defopt d--efopt_name
+def_cmds.texi(mymacro,117) d--efopt
+def_cmds.texi(mymacro,117) @end defopt
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypefun t--ype d--eftypefun_name a--rguments...
+def_cmds.texi(mymacro,117) d--eftypefun
+def_cmds.texi(mymacro,117) @end deftypefun
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypevar t--ype d--eftypevar_name
+def_cmds.texi(mymacro,117) d--eftypevar
+def_cmds.texi(mymacro,117) @end deftypevar
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defivar c--lass d--efivar_name
+def_cmds.texi(mymacro,117) d--efivar
+def_cmds.texi(mymacro,117) @end defivar
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypeivar c--lass t--ype d--eftypeivar_name
+def_cmds.texi(mymacro,117) d--eftypeivar
+def_cmds.texi(mymacro,117) @end deftypeivar
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @defmethod c--lass d--efmethod_name a--rguments...
+def_cmds.texi(mymacro,117) d--efmethod
+def_cmds.texi(mymacro,117) @end defmethod
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(mymacro,117) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+def_cmds.texi(mymacro,117) d--eftypemethod
+def_cmds.texi(mymacro,117) @end deftypemethod
+def_cmds.texi(mymacro,117) 
+def_cmds.texi(,118) @end copying
 def_cmds.texi(,119) 
-def_cmds.texi(,120) @defmethod c--lass d--efmethod_name a--rguments...
-def_cmds.texi(,121) d--efmethod
-def_cmds.texi(,122) @end defmethod
-def_cmds.texi(,123) 
-def_cmds.texi(,124) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-def_cmds.texi(,125) d--eftypemethod
-def_cmds.texi(,126) @end deftypemethod
-def_cmds.texi(,127) 
-def_cmds.texi(,128) @ifset texi2html
-def_cmds.texi(,129) @deffn category name args { @
-def_cmds.texi(,130)   more args
-def_cmds.texi(,131) deffn with @{
-def_cmds.texi(,132) @end deffn 
-def_cmds.texi(,133) 
-def_cmds.texi(,134) @deffn category name args } @
-def_cmds.texi(,135)   more args
-def_cmds.texi(,136) deffn with @}
-def_cmds.texi(,137) @end deffn 
-def_cmds.texi(,138) @end ifset
+def_cmds.texi(mymacro,120) @deffn c--ategory d--effn_name a--rguments...
+def_cmds.texi(mymacro,120) d--effn
+def_cmds.texi(mymacro,120) @end deffn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deffn cate--gory de--ffn_name ar--guments @
+def_cmds.texi(mymacro,120)    more args @* even more so
+def_cmds.texi(mymacro,120) def--fn
+def_cmds.texi(mymacro,120) @end deffn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deffn fset @var{i} a g
+def_cmds.texi(mymacro,120) @deffnx {cmde} truc {}
+def_cmds.texi(mymacro,120) @deffnx Command {log trap} {}
+def_cmds.texi(mymacro,120) @deffnx Command { log trap1} {}  
+def_cmds.texi(mymacro,120) @deffnx Command {log trap2 } {}
+def_cmds.texi(mymacro,120) @deffnx cmde @b{id ule} truc
+def_cmds.texi(mymacro,120) @deffnx cmde2 @b{id @samp{i} ule} truc
+def_cmds.texi(mymacro,120) @deffnx{} machin
+def_cmds.texi(mymacro,120) @deffnx{} {bidule machin}
+def_cmds.texi(mymacro,120) @deffnx{truc} machin
+def_cmds.texi(mymacro,120) @deffnx {truc} followed by a comment
+def_cmds.texi(mymacro,120) @c comment
+def_cmds.texi(mymacro,120) Various deff lines
+def_cmds.texi(mymacro,120) @deffnx {truc} after a deff item
+def_cmds.texi(mymacro,120) @c comment
+def_cmds.texi(mymacro,120) text in def item for second def item
+def_cmds.texi(mymacro,120) @deffnx {truc} deffnx before end deffn
+def_cmds.texi(mymacro,120) @end deffn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deffn empty deffn
+def_cmds.texi(mymacro,120) @end deffn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deffn empty deffn with deffnx
+def_cmds.texi(mymacro,120) @deffnx empty deffnx
+def_cmds.texi(mymacro,120) @end deffn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defvr c--ategory d--efvr_name
+def_cmds.texi(mymacro,120) d--efvr
+def_cmds.texi(mymacro,120) @end defvr
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+def_cmds.texi(mymacro,120) d--eftypefn
+def_cmds.texi(mymacro,120) @end deftypefn
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+def_cmds.texi(mymacro,120) d--eftypeop
+def_cmds.texi(mymacro,120) @end deftypeop
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypevr c--ategory t--ype d--eftypevr_name
+def_cmds.texi(mymacro,120) d--eftypevr
+def_cmds.texi(mymacro,120) @end deftypevr
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defcv c--ategory c--lass d--efcv_name
+def_cmds.texi(mymacro,120) d--efcv
+def_cmds.texi(mymacro,120) @end defcv
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defop c--ategory c--lass d--efop_name a--rguments...
+def_cmds.texi(mymacro,120) d--efop
+def_cmds.texi(mymacro,120) @end defop
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftp c--ategory d--eftp_name a--ttributes...
+def_cmds.texi(mymacro,120) d--eftp
+def_cmds.texi(mymacro,120) @end deftp
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defun d--efun_name a--rguments...
+def_cmds.texi(mymacro,120) d--efun
+def_cmds.texi(mymacro,120) @end defun
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defmac d--efmac_name a--rguments...
+def_cmds.texi(mymacro,120) d--efmac
+def_cmds.texi(mymacro,120) @end defmac
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defspec d--efspec_name a--rguments...
+def_cmds.texi(mymacro,120) d--efspec
+def_cmds.texi(mymacro,120) @end defspec
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defvar d--efvar_name
+def_cmds.texi(mymacro,120) d--efvar
+def_cmds.texi(mymacro,120) @end defvar
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defopt d--efopt_name
+def_cmds.texi(mymacro,120) d--efopt
+def_cmds.texi(mymacro,120) @end defopt
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypefun t--ype d--eftypefun_name a--rguments...
+def_cmds.texi(mymacro,120) d--eftypefun
+def_cmds.texi(mymacro,120) @end deftypefun
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypevar t--ype d--eftypevar_name
+def_cmds.texi(mymacro,120) d--eftypevar
+def_cmds.texi(mymacro,120) @end deftypevar
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defivar c--lass d--efivar_name
+def_cmds.texi(mymacro,120) d--efivar
+def_cmds.texi(mymacro,120) @end defivar
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypeivar c--lass t--ype d--eftypeivar_name
+def_cmds.texi(mymacro,120) d--eftypeivar
+def_cmds.texi(mymacro,120) @end deftypeivar
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @defmethod c--lass d--efmethod_name a--rguments...
+def_cmds.texi(mymacro,120) d--efmethod
+def_cmds.texi(mymacro,120) @end defmethod
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(mymacro,120) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+def_cmds.texi(mymacro,120) d--eftypemethod
+def_cmds.texi(mymacro,120) @end deftypemethod
+def_cmds.texi(mymacro,120) 
+def_cmds.texi(,121) 
+def_cmds.texi(,122) @example
+def_cmds.texi(mymacro,123) @deffn c--ategory d--effn_name a--rguments...
+def_cmds.texi(mymacro,123) d--effn
+def_cmds.texi(mymacro,123) @end deffn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deffn cate--gory de--ffn_name ar--guments @
+def_cmds.texi(mymacro,123)    more args @* even more so
+def_cmds.texi(mymacro,123) def--fn
+def_cmds.texi(mymacro,123) @end deffn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deffn fset @var{i} a g
+def_cmds.texi(mymacro,123) @deffnx {cmde} truc {}
+def_cmds.texi(mymacro,123) @deffnx Command {log trap} {}
+def_cmds.texi(mymacro,123) @deffnx Command { log trap1} {}  
+def_cmds.texi(mymacro,123) @deffnx Command {log trap2 } {}
+def_cmds.texi(mymacro,123) @deffnx cmde @b{id ule} truc
+def_cmds.texi(mymacro,123) @deffnx cmde2 @b{id @samp{i} ule} truc
+def_cmds.texi(mymacro,123) @deffnx{} machin
+def_cmds.texi(mymacro,123) @deffnx{} {bidule machin}
+def_cmds.texi(mymacro,123) @deffnx{truc} machin
+def_cmds.texi(mymacro,123) @deffnx {truc} followed by a comment
+def_cmds.texi(mymacro,123) @c comment
+def_cmds.texi(mymacro,123) Various deff lines
+def_cmds.texi(mymacro,123) @deffnx {truc} after a deff item
+def_cmds.texi(mymacro,123) @c comment
+def_cmds.texi(mymacro,123) text in def item for second def item
+def_cmds.texi(mymacro,123) @deffnx {truc} deffnx before end deffn
+def_cmds.texi(mymacro,123) @end deffn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deffn empty deffn
+def_cmds.texi(mymacro,123) @end deffn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deffn empty deffn with deffnx
+def_cmds.texi(mymacro,123) @deffnx empty deffnx
+def_cmds.texi(mymacro,123) @end deffn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defvr c--ategory d--efvr_name
+def_cmds.texi(mymacro,123) d--efvr
+def_cmds.texi(mymacro,123) @end defvr
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
+def_cmds.texi(mymacro,123) d--eftypefn
+def_cmds.texi(mymacro,123) @end deftypefn
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+def_cmds.texi(mymacro,123) d--eftypeop
+def_cmds.texi(mymacro,123) @end deftypeop
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypevr c--ategory t--ype d--eftypevr_name
+def_cmds.texi(mymacro,123) d--eftypevr
+def_cmds.texi(mymacro,123) @end deftypevr
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defcv c--ategory c--lass d--efcv_name
+def_cmds.texi(mymacro,123) d--efcv
+def_cmds.texi(mymacro,123) @end defcv
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defop c--ategory c--lass d--efop_name a--rguments...
+def_cmds.texi(mymacro,123) d--efop
+def_cmds.texi(mymacro,123) @end defop
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftp c--ategory d--eftp_name a--ttributes...
+def_cmds.texi(mymacro,123) d--eftp
+def_cmds.texi(mymacro,123) @end deftp
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defun d--efun_name a--rguments...
+def_cmds.texi(mymacro,123) d--efun
+def_cmds.texi(mymacro,123) @end defun
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defmac d--efmac_name a--rguments...
+def_cmds.texi(mymacro,123) d--efmac
+def_cmds.texi(mymacro,123) @end defmac
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defspec d--efspec_name a--rguments...
+def_cmds.texi(mymacro,123) d--efspec
+def_cmds.texi(mymacro,123) @end defspec
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defvar d--efvar_name
+def_cmds.texi(mymacro,123) d--efvar
+def_cmds.texi(mymacro,123) @end defvar
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defopt d--efopt_name
+def_cmds.texi(mymacro,123) d--efopt
+def_cmds.texi(mymacro,123) @end defopt
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypefun t--ype d--eftypefun_name a--rguments...
+def_cmds.texi(mymacro,123) d--eftypefun
+def_cmds.texi(mymacro,123) @end deftypefun
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypevar t--ype d--eftypevar_name
+def_cmds.texi(mymacro,123) d--eftypevar
+def_cmds.texi(mymacro,123) @end deftypevar
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defivar c--lass d--efivar_name
+def_cmds.texi(mymacro,123) d--efivar
+def_cmds.texi(mymacro,123) @end defivar
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypeivar c--lass t--ype d--eftypeivar_name
+def_cmds.texi(mymacro,123) d--eftypeivar
+def_cmds.texi(mymacro,123) @end deftypeivar
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @defmethod c--lass d--efmethod_name a--rguments...
+def_cmds.texi(mymacro,123) d--efmethod
+def_cmds.texi(mymacro,123) @end defmethod
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(mymacro,123) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
+def_cmds.texi(mymacro,123) d--eftypemethod
+def_cmds.texi(mymacro,123) @end deftypemethod
+def_cmds.texi(mymacro,123) 
+def_cmds.texi(,124) @end example
+def_cmds.texi(,125) 
+def_cmds.texi(,126) @c deffn
+def_cmds.texi(,127) @deffn Command @var{forward--char} @var{nchars} {argument2} {argument3} @
+def_cmds.texi(,128)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,129) @end deffn
+def_cmds.texi(,130) 
+def_cmds.texi(,131) @c defvr
+def_cmds.texi(,132) @defvr Variable fill-column {argument1} {argument2} @
+def_cmds.texi(,133)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,134) @end defvr
+def_cmds.texi(,135) 
+def_cmds.texi(,136) @c deftypefn
+def_cmds.texi(,137) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
+def_cmds.texi(,138) @end deftypefn
 def_cmds.texi(,139) 
-def_cmds.texi(,140) @end macro
-def_cmds.texi(,141) 
-def_cmds.texi(,142) @copying
-def_cmds.texi(mymacro,143) @deffn c--ategory d--effn_name a--rguments...
-def_cmds.texi(mymacro,143) d--effn
-def_cmds.texi(mymacro,143) @end deffn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn cate--gory de--ffn_name ar--guments @
-def_cmds.texi(mymacro,143)    more args @* even more so
-def_cmds.texi(mymacro,143) def--fn
-def_cmds.texi(mymacro,143) @end deffn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn fset @var{i} a g
-def_cmds.texi(mymacro,143) @deffnx {cmde} truc {}
-def_cmds.texi(mymacro,143) @deffnx Command {log trap} {}
-def_cmds.texi(mymacro,143) @deffnx Command { log trap1} {}  
-def_cmds.texi(mymacro,143) @deffnx Command {log trap2 } {}
-def_cmds.texi(mymacro,143) @deffnx cmde @b{id ule} truc
-def_cmds.texi(mymacro,143) @deffnx cmde2 @b{id @samp{i} ule} truc
-def_cmds.texi(mymacro,143) @deffnx @b{id @samp{i} ule}    
-def_cmds.texi(mymacro,143) @deffnx 
-def_cmds.texi(mymacro,143) @deffnx aaa
-def_cmds.texi(mymacro,143) @deffnx {} {}
-def_cmds.texi(mymacro,143) @deffnx{}
-def_cmds.texi(mymacro,143) @deffnx{} machin
-def_cmds.texi(mymacro,143) @deffnx{} {bidule machin}
-def_cmds.texi(mymacro,143) @deffnx{truc} machin
-def_cmds.texi(mymacro,143) @deffnx{truc} { }
-def_cmds.texi(mymacro,143) @deffnx{truc}
-def_cmds.texi(mymacro,143) @deffnx{} {}
-def_cmds.texi(mymacro,143) @deffnx {truc} followed by a comment
-def_cmds.texi(mymacro,143) @c comment
-def_cmds.texi(mymacro,143) @deffnx truc machin bidule chose and }
-def_cmds.texi(mymacro,143) @deffnx truc machin bidule chose and } after
-def_cmds.texi(mymacro,143) @deffnx truc machin bidule chose and {
-def_cmds.texi(mymacro,143) @deffnx truc machin bidule chose and { and after
-def_cmds.texi(mymacro,143) Various deff lines
-def_cmds.texi(mymacro,143) @deffnx {truc} after a deff item
-def_cmds.texi(mymacro,143) @c comment
-def_cmds.texi(mymacro,143) text in def item for second def item
-def_cmds.texi(mymacro,143) @deffnx {truc} deffnx before end deffn
-def_cmds.texi(mymacro,143) @end deffn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn empty deffn
-def_cmds.texi(mymacro,143) @end deffn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn empty deffn with deffnx
-def_cmds.texi(mymacro,143) @deffnx empty deffnx
-def_cmds.texi(mymacro,143) @end deffn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defvr c--ategory d--efvr_name
-def_cmds.texi(mymacro,143) d--efvr
-def_cmds.texi(mymacro,143) @end defvr
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-def_cmds.texi(mymacro,143) d--eftypefn
-def_cmds.texi(mymacro,143) @end deftypefn
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-def_cmds.texi(mymacro,143) d--eftypeop
-def_cmds.texi(mymacro,143) @end deftypeop
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypevr c--ategory t--ype d--eftypevr_name
-def_cmds.texi(mymacro,143) d--eftypevr
-def_cmds.texi(mymacro,143) @end deftypevr
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defcv c--ategory c--lass d--efcv_name
-def_cmds.texi(mymacro,143) d--efcv
-def_cmds.texi(mymacro,143) @end defcv
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defop c--ategory c--lass d--efop_name a--rguments...
-def_cmds.texi(mymacro,143) d--efop
-def_cmds.texi(mymacro,143) @end defop
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftp c--ategory d--eftp_name a--ttributes...
-def_cmds.texi(mymacro,143) d--eftp
-def_cmds.texi(mymacro,143) @end deftp
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defun d--efun_name a--rguments...
-def_cmds.texi(mymacro,143) d--efun
-def_cmds.texi(mymacro,143) @end defun
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defmac d--efmac_name a--rguments...
-def_cmds.texi(mymacro,143) d--efmac
-def_cmds.texi(mymacro,143) @end defmac
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defspec d--efspec_name a--rguments...
-def_cmds.texi(mymacro,143) d--efspec
-def_cmds.texi(mymacro,143) @end defspec
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defvar d--efvar_name
-def_cmds.texi(mymacro,143) d--efvar
-def_cmds.texi(mymacro,143) @end defvar
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defopt d--efopt_name
-def_cmds.texi(mymacro,143) d--efopt
-def_cmds.texi(mymacro,143) @end defopt
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypefun t--ype d--eftypefun_name a--rguments...
-def_cmds.texi(mymacro,143) d--eftypefun
-def_cmds.texi(mymacro,143) @end deftypefun
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypevar t--ype d--eftypevar_name
-def_cmds.texi(mymacro,143) d--eftypevar
-def_cmds.texi(mymacro,143) @end deftypevar
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defivar c--lass d--efivar_name
-def_cmds.texi(mymacro,143) d--efivar
-def_cmds.texi(mymacro,143) @end defivar
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypeivar c--lass t--ype d--eftypeivar_name
-def_cmds.texi(mymacro,143) d--eftypeivar
-def_cmds.texi(mymacro,143) @end deftypeivar
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @defmethod c--lass d--efmethod_name a--rguments...
-def_cmds.texi(mymacro,143) d--efmethod
-def_cmds.texi(mymacro,143) @end defmethod
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-def_cmds.texi(mymacro,143) d--eftypemethod
-def_cmds.texi(mymacro,143) @end deftypemethod
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn category name args { @
-def_cmds.texi(mymacro,143)   more args
-def_cmds.texi(mymacro,143) deffn with @{
-def_cmds.texi(mymacro,143) @end deffn 
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(mymacro,143) @deffn category name args } @
-def_cmds.texi(mymacro,143)   more args
-def_cmds.texi(mymacro,143) deffn with @}
-def_cmds.texi(mymacro,143) @end deffn 
-def_cmds.texi(mymacro,143) 
-def_cmds.texi(,144) @end copying
-def_cmds.texi(,145) 
-def_cmds.texi(mymacro,146) @deffn c--ategory d--effn_name a--rguments...
-def_cmds.texi(mymacro,146) d--effn
-def_cmds.texi(mymacro,146) @end deffn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn cate--gory de--ffn_name ar--guments @
-def_cmds.texi(mymacro,146)    more args @* even more so
-def_cmds.texi(mymacro,146) def--fn
-def_cmds.texi(mymacro,146) @end deffn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn fset @var{i} a g
-def_cmds.texi(mymacro,146) @deffnx {cmde} truc {}
-def_cmds.texi(mymacro,146) @deffnx Command {log trap} {}
-def_cmds.texi(mymacro,146) @deffnx Command { log trap1} {}  
-def_cmds.texi(mymacro,146) @deffnx Command {log trap2 } {}
-def_cmds.texi(mymacro,146) @deffnx cmde @b{id ule} truc
-def_cmds.texi(mymacro,146) @deffnx cmde2 @b{id @samp{i} ule} truc
-def_cmds.texi(mymacro,146) @deffnx @b{id @samp{i} ule}    
-def_cmds.texi(mymacro,146) @deffnx 
-def_cmds.texi(mymacro,146) @deffnx aaa
-def_cmds.texi(mymacro,146) @deffnx {} {}
-def_cmds.texi(mymacro,146) @deffnx{}
-def_cmds.texi(mymacro,146) @deffnx{} machin
-def_cmds.texi(mymacro,146) @deffnx{} {bidule machin}
-def_cmds.texi(mymacro,146) @deffnx{truc} machin
-def_cmds.texi(mymacro,146) @deffnx{truc} { }
-def_cmds.texi(mymacro,146) @deffnx{truc}
-def_cmds.texi(mymacro,146) @deffnx{} {}
-def_cmds.texi(mymacro,146) @deffnx {truc} followed by a comment
-def_cmds.texi(mymacro,146) @c comment
-def_cmds.texi(mymacro,146) @deffnx truc machin bidule chose and }
-def_cmds.texi(mymacro,146) @deffnx truc machin bidule chose and } after
-def_cmds.texi(mymacro,146) @deffnx truc machin bidule chose and {
-def_cmds.texi(mymacro,146) @deffnx truc machin bidule chose and { and after
-def_cmds.texi(mymacro,146) Various deff lines
-def_cmds.texi(mymacro,146) @deffnx {truc} after a deff item
-def_cmds.texi(mymacro,146) @c comment
-def_cmds.texi(mymacro,146) text in def item for second def item
-def_cmds.texi(mymacro,146) @deffnx {truc} deffnx before end deffn
-def_cmds.texi(mymacro,146) @end deffn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn empty deffn
-def_cmds.texi(mymacro,146) @end deffn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn empty deffn with deffnx
-def_cmds.texi(mymacro,146) @deffnx empty deffnx
-def_cmds.texi(mymacro,146) @end deffn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defvr c--ategory d--efvr_name
-def_cmds.texi(mymacro,146) d--efvr
-def_cmds.texi(mymacro,146) @end defvr
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-def_cmds.texi(mymacro,146) d--eftypefn
-def_cmds.texi(mymacro,146) @end deftypefn
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-def_cmds.texi(mymacro,146) d--eftypeop
-def_cmds.texi(mymacro,146) @end deftypeop
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypevr c--ategory t--ype d--eftypevr_name
-def_cmds.texi(mymacro,146) d--eftypevr
-def_cmds.texi(mymacro,146) @end deftypevr
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defcv c--ategory c--lass d--efcv_name
-def_cmds.texi(mymacro,146) d--efcv
-def_cmds.texi(mymacro,146) @end defcv
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defop c--ategory c--lass d--efop_name a--rguments...
-def_cmds.texi(mymacro,146) d--efop
-def_cmds.texi(mymacro,146) @end defop
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftp c--ategory d--eftp_name a--ttributes...
-def_cmds.texi(mymacro,146) d--eftp
-def_cmds.texi(mymacro,146) @end deftp
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defun d--efun_name a--rguments...
-def_cmds.texi(mymacro,146) d--efun
-def_cmds.texi(mymacro,146) @end defun
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defmac d--efmac_name a--rguments...
-def_cmds.texi(mymacro,146) d--efmac
-def_cmds.texi(mymacro,146) @end defmac
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defspec d--efspec_name a--rguments...
-def_cmds.texi(mymacro,146) d--efspec
-def_cmds.texi(mymacro,146) @end defspec
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defvar d--efvar_name
-def_cmds.texi(mymacro,146) d--efvar
-def_cmds.texi(mymacro,146) @end defvar
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defopt d--efopt_name
-def_cmds.texi(mymacro,146) d--efopt
-def_cmds.texi(mymacro,146) @end defopt
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypefun t--ype d--eftypefun_name a--rguments...
-def_cmds.texi(mymacro,146) d--eftypefun
-def_cmds.texi(mymacro,146) @end deftypefun
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypevar t--ype d--eftypevar_name
-def_cmds.texi(mymacro,146) d--eftypevar
-def_cmds.texi(mymacro,146) @end deftypevar
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defivar c--lass d--efivar_name
-def_cmds.texi(mymacro,146) d--efivar
-def_cmds.texi(mymacro,146) @end defivar
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypeivar c--lass t--ype d--eftypeivar_name
-def_cmds.texi(mymacro,146) d--eftypeivar
-def_cmds.texi(mymacro,146) @end deftypeivar
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @defmethod c--lass d--efmethod_name a--rguments...
-def_cmds.texi(mymacro,146) d--efmethod
-def_cmds.texi(mymacro,146) @end defmethod
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-def_cmds.texi(mymacro,146) d--eftypemethod
-def_cmds.texi(mymacro,146) @end deftypemethod
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn category name args { @
-def_cmds.texi(mymacro,146)   more args
-def_cmds.texi(mymacro,146) deffn with @{
-def_cmds.texi(mymacro,146) @end deffn 
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(mymacro,146) @deffn category name args } @
-def_cmds.texi(mymacro,146)   more args
-def_cmds.texi(mymacro,146) deffn with @}
-def_cmds.texi(mymacro,146) @end deffn 
-def_cmds.texi(mymacro,146) 
-def_cmds.texi(,147) 
-def_cmds.texi(,148) @example
-def_cmds.texi(mymacro,149) @deffn c--ategory d--effn_name a--rguments...
-def_cmds.texi(mymacro,149) d--effn
-def_cmds.texi(mymacro,149) @end deffn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn cate--gory de--ffn_name ar--guments @
-def_cmds.texi(mymacro,149)    more args @* even more so
-def_cmds.texi(mymacro,149) def--fn
-def_cmds.texi(mymacro,149) @end deffn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn fset @var{i} a g
-def_cmds.texi(mymacro,149) @deffnx {cmde} truc {}
-def_cmds.texi(mymacro,149) @deffnx Command {log trap} {}
-def_cmds.texi(mymacro,149) @deffnx Command { log trap1} {}  
-def_cmds.texi(mymacro,149) @deffnx Command {log trap2 } {}
-def_cmds.texi(mymacro,149) @deffnx cmde @b{id ule} truc
-def_cmds.texi(mymacro,149) @deffnx cmde2 @b{id @samp{i} ule} truc
-def_cmds.texi(mymacro,149) @deffnx @b{id @samp{i} ule}    
-def_cmds.texi(mymacro,149) @deffnx 
-def_cmds.texi(mymacro,149) @deffnx aaa
-def_cmds.texi(mymacro,149) @deffnx {} {}
-def_cmds.texi(mymacro,149) @deffnx{}
-def_cmds.texi(mymacro,149) @deffnx{} machin
-def_cmds.texi(mymacro,149) @deffnx{} {bidule machin}
-def_cmds.texi(mymacro,149) @deffnx{truc} machin
-def_cmds.texi(mymacro,149) @deffnx{truc} { }
-def_cmds.texi(mymacro,149) @deffnx{truc}
-def_cmds.texi(mymacro,149) @deffnx{} {}
-def_cmds.texi(mymacro,149) @deffnx {truc} followed by a comment
-def_cmds.texi(mymacro,149) @c comment
-def_cmds.texi(mymacro,149) @deffnx truc machin bidule chose and }
-def_cmds.texi(mymacro,149) @deffnx truc machin bidule chose and } after
-def_cmds.texi(mymacro,149) @deffnx truc machin bidule chose and {
-def_cmds.texi(mymacro,149) @deffnx truc machin bidule chose and { and after
-def_cmds.texi(mymacro,149) Various deff lines
-def_cmds.texi(mymacro,149) @deffnx {truc} after a deff item
-def_cmds.texi(mymacro,149) @c comment
-def_cmds.texi(mymacro,149) text in def item for second def item
-def_cmds.texi(mymacro,149) @deffnx {truc} deffnx before end deffn
-def_cmds.texi(mymacro,149) @end deffn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn empty deffn
-def_cmds.texi(mymacro,149) @end deffn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn empty deffn with deffnx
-def_cmds.texi(mymacro,149) @deffnx empty deffnx
-def_cmds.texi(mymacro,149) @end deffn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defvr c--ategory d--efvr_name
-def_cmds.texi(mymacro,149) d--efvr
-def_cmds.texi(mymacro,149) @end defvr
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypefn c--ategory t--ype d--eftypefn_name a--rguments...
-def_cmds.texi(mymacro,149) d--eftypefn
-def_cmds.texi(mymacro,149) @end deftypefn
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypeop c--ategory c--lass t--ype d--eftypeop_name a--rguments...
-def_cmds.texi(mymacro,149) d--eftypeop
-def_cmds.texi(mymacro,149) @end deftypeop
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypevr c--ategory t--ype d--eftypevr_name
-def_cmds.texi(mymacro,149) d--eftypevr
-def_cmds.texi(mymacro,149) @end deftypevr
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defcv c--ategory c--lass d--efcv_name
-def_cmds.texi(mymacro,149) d--efcv
-def_cmds.texi(mymacro,149) @end defcv
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defop c--ategory c--lass d--efop_name a--rguments...
-def_cmds.texi(mymacro,149) d--efop
-def_cmds.texi(mymacro,149) @end defop
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftp c--ategory d--eftp_name a--ttributes...
-def_cmds.texi(mymacro,149) d--eftp
-def_cmds.texi(mymacro,149) @end deftp
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defun d--efun_name a--rguments...
-def_cmds.texi(mymacro,149) d--efun
-def_cmds.texi(mymacro,149) @end defun
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defmac d--efmac_name a--rguments...
-def_cmds.texi(mymacro,149) d--efmac
-def_cmds.texi(mymacro,149) @end defmac
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defspec d--efspec_name a--rguments...
-def_cmds.texi(mymacro,149) d--efspec
-def_cmds.texi(mymacro,149) @end defspec
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defvar d--efvar_name
-def_cmds.texi(mymacro,149) d--efvar
-def_cmds.texi(mymacro,149) @end defvar
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defopt d--efopt_name
-def_cmds.texi(mymacro,149) d--efopt
-def_cmds.texi(mymacro,149) @end defopt
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypefun t--ype d--eftypefun_name a--rguments...
-def_cmds.texi(mymacro,149) d--eftypefun
-def_cmds.texi(mymacro,149) @end deftypefun
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypevar t--ype d--eftypevar_name
-def_cmds.texi(mymacro,149) d--eftypevar
-def_cmds.texi(mymacro,149) @end deftypevar
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defivar c--lass d--efivar_name
-def_cmds.texi(mymacro,149) d--efivar
-def_cmds.texi(mymacro,149) @end defivar
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypeivar c--lass t--ype d--eftypeivar_name
-def_cmds.texi(mymacro,149) d--eftypeivar
-def_cmds.texi(mymacro,149) @end deftypeivar
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @defmethod c--lass d--efmethod_name a--rguments...
-def_cmds.texi(mymacro,149) d--efmethod
-def_cmds.texi(mymacro,149) @end defmethod
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
-def_cmds.texi(mymacro,149) d--eftypemethod
-def_cmds.texi(mymacro,149) @end deftypemethod
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn category name args { @
-def_cmds.texi(mymacro,149)   more args
-def_cmds.texi(mymacro,149) deffn with @{
-def_cmds.texi(mymacro,149) @end deffn 
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(mymacro,149) @deffn category name args } @
-def_cmds.texi(mymacro,149)   more args
-def_cmds.texi(mymacro,149) deffn with @}
-def_cmds.texi(mymacro,149) @end deffn 
-def_cmds.texi(mymacro,149) 
-def_cmds.texi(,150) @end example
-def_cmds.texi(,151) 
-def_cmds.texi(,152) @c deffn
-def_cmds.texi(,153) @deffn Command @var{forward--char} @var{nchars} {argument2} {argument3} @
-def_cmds.texi(,154)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,155) @end deffn
-def_cmds.texi(,156) 
-def_cmds.texi(,157) @c defvr
-def_cmds.texi(,158) @defvr Variable fill-column {argument1} {argument2} @
-def_cmds.texi(,159)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,160) @end defvr
-def_cmds.texi(,161) 
-def_cmds.texi(,162) @c deftypefn
-def_cmds.texi(,163) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
-def_cmds.texi(,164) @end deftypefn
+def_cmds.texi(,140) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar}) @
+def_cmds.texi(,141)         (arg in brace, {[something} @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) ct@*@* last
+def_cmds.texi(,142) @end deftypefn
+def_cmds.texi(,143) 
+def_cmds.texi(,144) @deftypefn {Library Function} int foobug {[something}
+def_cmds.texi(,145) @end deftypefn
+def_cmds.texi(,146) 
+def_cmds.texi(,147) @deftypefn stacks private push (@var{s}:in out stack; @
+def_cmds.texi(,148)                  @var{n}:in integer) ; ;barg aarg; ; end
+def_cmds.texi(,149) @end deftypefn
+def_cmds.texi(,150) 
+def_cmds.texi(,151) @c deftypevr
+def_cmds.texi(,152) @deftypevr {Global Flag} int enable @
+def_cmds.texi(,153)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,154) @end deftypevr
+def_cmds.texi(,155) 
+def_cmds.texi(,156) @c deftp
+def_cmds.texi(,157) @deftp {Data type} pair car cdr @
+def_cmds.texi(,158)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,159) @end deftp
+def_cmds.texi(,160) 
+def_cmds.texi(,161) @c defcv
+def_cmds.texi(,162) @defcv {Class Option} Window border-pattern @
+def_cmds.texi(,163)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,164) @end defcv
 def_cmds.texi(,165) 
-def_cmds.texi(,166) @deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar}) @
-def_cmds.texi(,167)         (arg in brace, {[something} @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) ct@*@* last
-def_cmds.texi(,168) @end deftypefn
-def_cmds.texi(,169) 
-def_cmds.texi(,170) @deftypefn {Library Function} int foobug {[something}
-def_cmds.texi(,171) @end deftypefn
-def_cmds.texi(,172) 
-def_cmds.texi(,173) @deftypefn stacks private push (@var{s}:in out stack; @
-def_cmds.texi(,174)                  @var{n}:in integer) ; ;barg aarg; ; end
-def_cmds.texi(,175) @end deftypefn
-def_cmds.texi(,176) 
-def_cmds.texi(,177) @c deftypevr
-def_cmds.texi(,178) @deftypevr {Global Flag} int enable @
-def_cmds.texi(,179)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,180) @end deftypevr
-def_cmds.texi(,181) 
-def_cmds.texi(,182) @c deftp
-def_cmds.texi(,183) @deftp {Data type} pair car cdr @
-def_cmds.texi(,184)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,185) @end deftp
+def_cmds.texi(,166) @c deftypecv
+def_cmds.texi(,167) @deftypecv {Class Option2} Window @code{int} border-pattern @
+def_cmds.texi(,168)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,169) @end deftypecv
+def_cmds.texi(,170) 
+def_cmds.texi(,171) @c defop
+def_cmds.texi(,172) @defop Operation windows expose @
+def_cmds.texi(,173)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,174) @end defop
+def_cmds.texi(,175) 
+def_cmds.texi(,176) @c deftypeop
+def_cmds.texi(,177) @deftypeop Operation2 W,indow @code{int} expose @
+def_cmds.texi(,178)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+def_cmds.texi(,179) @end deftypeop
+def_cmds.texi(,180) 
+def_cmds.texi(,181) @deftypeop Operation5 Window @code{int} expose type arg
+def_cmds.texi(,182) @end deftypeop
+def_cmds.texi(,183) 
+def_cmds.texi(,184) @deftypeop Operation3 {W,indow} @code{int} {e,xpose} type arg
+def_cmds.texi(,185) @end deftypeop
 def_cmds.texi(,186) 
-def_cmds.texi(,187) @c defcv
-def_cmds.texi(,188) @defcv {Class Option} Window border-pattern @
-def_cmds.texi(,189)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,190) @end defcv
-def_cmds.texi(,191) 
-def_cmds.texi(,192) @c deftypecv
-def_cmds.texi(,193) @deftypecv {Class Option2} Window @code{int} border-pattern @
-def_cmds.texi(,194)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,195) @end deftypecv
-def_cmds.texi(,196) 
-def_cmds.texi(,197) @c defop
-def_cmds.texi(,198) @defop Operation windows expose @
-def_cmds.texi(,199)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,200) @end defop
+def_cmds.texi(,187) @deftypeop Operation4 {,Window} @code{int} {,expose} type arg
+def_cmds.texi(,188) @end deftypeop
+def_cmds.texi(,189) 
+def_cmds.texi(,190) @deftypeop Operation6 W,indow @code{int} e,xpose type arg
+def_cmds.texi(,191) @end deftypeop
+def_cmds.texi(,192) 
+def_cmds.texi(,193) @deftypeop Operation7 ,Window @code{int} ,expose type arg
+def_cmds.texi(,194) @end deftypeop
+def_cmds.texi(,195) 
+def_cmds.texi(,196) @deftypeop Operation13 {W)indow} @code{int} {e)xpose} type arg
+def_cmds.texi(,197) @end deftypeop
+def_cmds.texi(,198) 
+def_cmds.texi(,199) @deftypeop Operation14 {)Window} @code{int} {)expose} type arg
+def_cmds.texi(,200) @end deftypeop
 def_cmds.texi(,201) 
-def_cmds.texi(,202) @c deftypeop
-def_cmds.texi(,203) @deftypeop Operation2 W,indow @code{int} expose @
-def_cmds.texi(,204)         (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
-def_cmds.texi(,205) @end deftypeop
-def_cmds.texi(,206) 
-def_cmds.texi(,207) @deftypeop Operation5 Window @code{int} expose type arg
-def_cmds.texi(,208) @end deftypeop
-def_cmds.texi(,209) 
-def_cmds.texi(,210) @deftypeop Operation3 {W,indow} @code{int} {e,xpose} type arg
-def_cmds.texi(,211) @end deftypeop
-def_cmds.texi(,212) 
-def_cmds.texi(,213) @deftypeop Operation4 {,Window} @code{int} {,expose} type arg
-def_cmds.texi(,214) @end deftypeop
-def_cmds.texi(,215) 
-def_cmds.texi(,216) @deftypeop Operation6 W,indow @code{int} e,xpose type arg
-def_cmds.texi(,217) @end deftypeop
-def_cmds.texi(,218) 
-def_cmds.texi(,219) @deftypeop Operation7 ,Window @code{int} ,expose type arg
-def_cmds.texi(,220) @end deftypeop
-def_cmds.texi(,221) 
-def_cmds.texi(,222) @deftypeop Operation13 {W)indow} @code{int} {e)xpose} type arg
-def_cmds.texi(,223) @end deftypeop
-def_cmds.texi(,224) 
-def_cmds.texi(,225) @deftypeop Operation14 {)Window} @code{int} {)expose} type arg
-def_cmds.texi(,226) @end deftypeop
-def_cmds.texi(,227) 
-def_cmds.texi(,228) @deftypeop Operation16 W)indow @code{int} e)xpose type arg
-def_cmds.texi(,229) @end deftypeop
-def_cmds.texi(,230) 
-def_cmds.texi(,231) @deftypeop Operation17 )Window @code{int} )expose type arg
-def_cmds.texi(,232) @end deftypeop
-def_cmds.texi(,233) 
-def_cmds.texi(,234) @deftypeop Operation18 {W;indow} @code{int} {e;xpose} type arg
-def_cmds.texi(,235) @end deftypeop
+def_cmds.texi(,202) @deftypeop Operation16 W)indow @code{int} e)xpose type arg
+def_cmds.texi(,203) @end deftypeop
+def_cmds.texi(,204) 
+def_cmds.texi(,205) @deftypeop Operation17 )Window @code{int} )expose type arg
+def_cmds.texi(,206) @end deftypeop
+def_cmds.texi(,207) 
+def_cmds.texi(,208) @deftypeop Operation18 {W;indow} @code{int} {e;xpose} type arg
+def_cmds.texi(,209) @end deftypeop
+def_cmds.texi(,210) 
+def_cmds.texi(,211) @deftypeop Operation19 {;Window} @code{int} {;expose} type arg
+def_cmds.texi(,212) @end deftypeop
+def_cmds.texi(,213) 
+def_cmds.texi(,214) @deftypeop Operation20 W;indow @code{int} e;xpose type arg
+def_cmds.texi(,215) @end deftypeop
+def_cmds.texi(,216) 
+def_cmds.texi(,217) @deftypeop Operation21 ;Window @code{int} ;expose type arg
+def_cmds.texi(,218) @end deftypeop
+def_cmds.texi(,219) 
+def_cmds.texi(,220) @deftypeop Command@code{com} {Window@code{int}} expose@var{exp} name
+def_cmds.texi(,221) @end deftypeop
+def_cmds.texi(,222) 
+def_cmds.texi(,223) @defun apply function &rest arguments
+def_cmds.texi(,224) @end defun
+def_cmds.texi(,225) 
+def_cmds.texi(,226) @c deffn
+def_cmds.texi(,227) @deffn @var{A1} @var{A2} @var{A3} @var{A4}
+def_cmds.texi(,228) @end deffn
+def_cmds.texi(,229) 
+def_cmds.texi(,230) @deffn @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,231) @end deffn
+def_cmds.texi(,232) 
+def_cmds.texi(,233) @c defvr
+def_cmds.texi(,234) @defvr @var{A1} @var{A2} @var{A3} @var{A4}
+def_cmds.texi(,235) @end defvr
 def_cmds.texi(,236) 
-def_cmds.texi(,237) @deftypeop Operation19 {;Window} @code{int} {;expose} type arg
-def_cmds.texi(,238) @end deftypeop
+def_cmds.texi(,237) @defvr @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,238) @end defvr
 def_cmds.texi(,239) 
-def_cmds.texi(,240) @deftypeop Operation20 W;indow @code{int} e;xpose type arg
-def_cmds.texi(,241) @end deftypeop
-def_cmds.texi(,242) 
-def_cmds.texi(,243) @deftypeop Operation21 ;Window @code{int} ;expose type arg
-def_cmds.texi(,244) @end deftypeop
-def_cmds.texi(,245) 
-def_cmds.texi(,246) @deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
-def_cmds.texi(,247) @end deftypeop
-def_cmds.texi(,248) 
-def_cmds.texi(,249) @defun apply function &rest arguments
-def_cmds.texi(,250) @end defun
-def_cmds.texi(,251) 
-def_cmds.texi(,252) @c deffn
-def_cmds.texi(,253) @deffn
-def_cmds.texi(,254) @end deffn
-def_cmds.texi(,255) 
-def_cmds.texi(,256) @c defvr
-def_cmds.texi(,257) @defvr
-def_cmds.texi(,258) @end defvr
-def_cmds.texi(,259) 
-def_cmds.texi(,260) @c deftypefn
-def_cmds.texi(,261) @deftypefn
-def_cmds.texi(,262) @end deftypefn
-def_cmds.texi(,263) 
-def_cmds.texi(,264) @c deftypeop
-def_cmds.texi(,265) @deftypeop
-def_cmds.texi(,266) @end deftypeop
+def_cmds.texi(,240) @c deftypefn
+def_cmds.texi(,241) @deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+def_cmds.texi(,242) @end deftypefn
+def_cmds.texi(,243) 
+def_cmds.texi(,244) @deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,245) @end deftypefn
+def_cmds.texi(,246) 
+def_cmds.texi(,247) @c deftypevr
+def_cmds.texi(,248) @deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+def_cmds.texi(,249) @end deftypevr
+def_cmds.texi(,250) 
+def_cmds.texi(,251) @deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,252) @end deftypevr
+def_cmds.texi(,253) 
+def_cmds.texi(,254) @c deftp
+def_cmds.texi(,255) @deftp @var{A1} @var{A2} @var{A3} @var{A4}
+def_cmds.texi(,256) @end deftp
+def_cmds.texi(,257) 
+def_cmds.texi(,258) @deftp @code{A1} @code{A2} @code{A3} @code{A4}
+def_cmds.texi(,259) @end deftp
+def_cmds.texi(,260) 
+def_cmds.texi(,261) @c defcv
+def_cmds.texi(,262) @defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+def_cmds.texi(,263) @end defcv
+def_cmds.texi(,264) 
+def_cmds.texi(,265) @deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,266) @end deftp
 def_cmds.texi(,267) 
-def_cmds.texi(,268) @c deftypevr
-def_cmds.texi(,269) @deftypevr
-def_cmds.texi(,270) @end deftypevr
+def_cmds.texi(,268) @c deftypecv
+def_cmds.texi(,269) @deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+def_cmds.texi(,270) @end deftypecv
 def_cmds.texi(,271) 
-def_cmds.texi(,272) @c defcv
-def_cmds.texi(,273) @defcv
-def_cmds.texi(,274) @end defcv
-def_cmds.texi(,275) 
-def_cmds.texi(,276) @c deftypecv
-def_cmds.texi(,277) @deftypecv
-def_cmds.texi(,278) @end deftypecv
-def_cmds.texi(,279) 
-def_cmds.texi(,280) @c defop
-def_cmds.texi(,281) @defop
-def_cmds.texi(,282) @end defop
-def_cmds.texi(,283) 
-def_cmds.texi(,284) @c deftp
-def_cmds.texi(,285) @deftp
-def_cmds.texi(,286) @end deftp
-def_cmds.texi(,287) 
-def_cmds.texi(,288) @c deffn
-def_cmds.texi(,289) @deffn @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,290) @end deffn
+def_cmds.texi(,272) @deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,273) @end deftypecv
+def_cmds.texi(,274) 
+def_cmds.texi(,275) @c defop
+def_cmds.texi(,276) @defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+def_cmds.texi(,277) @end defop
+def_cmds.texi(,278) 
+def_cmds.texi(,279) @defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+def_cmds.texi(,280) @end defop
+def_cmds.texi(,281) 
+def_cmds.texi(,282) @c deftypeop
+def_cmds.texi(,283) @deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+def_cmds.texi(,284) @end deftypeop
+def_cmds.texi(,285) 
+def_cmds.texi(,286) @deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+def_cmds.texi(,287) @end deftypeop
+def_cmds.texi(,288) 
+def_cmds.texi(,289) @deftypefn {code then var} {ret_type} {fun_name} @code{A1} @var{A2} @code{A3} @var{A4}
+def_cmds.texi(,290) @end deftypefn
 def_cmds.texi(,291) 
-def_cmds.texi(,292) @deffn @code{A1} @code{A2} @code{A3} @code{A4}
-def_cmds.texi(,293) @end deffn
+def_cmds.texi(,292) @deftypefn {var then code} {ret_type1} {fun_name1} @var{A1} @code{A2} @var{A3} @code{A4}
+def_cmds.texi(,293) @end deftypefn
 def_cmds.texi(,294) 
-def_cmds.texi(,295) @c defvr
-def_cmds.texi(,296) @defvr @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,297) @end defvr
-def_cmds.texi(,298) 
-def_cmds.texi(,299) @defvr @code{A1} @code{A2} @code{A3} @code{A4}
-def_cmds.texi(,300) @end defvr
-def_cmds.texi(,301) 
-def_cmds.texi(,302) @c deftypefn
-def_cmds.texi(,303) @deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,304) @end deftypefn
-def_cmds.texi(,305) 
-def_cmds.texi(,306) @deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
-def_cmds.texi(,307) @end deftypefn
-def_cmds.texi(,308) 
-def_cmds.texi(,309) @c deftypevr
-def_cmds.texi(,310) @deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,311) @end deftypevr
-def_cmds.texi(,312) 
-def_cmds.texi(,313) @deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
-def_cmds.texi(,314) @end deftypevr
-def_cmds.texi(,315) 
-def_cmds.texi(,316) @c deftp
-def_cmds.texi(,317) @deftp @var{A1} @var{A2} @var{A3} @var{A4}
-def_cmds.texi(,318) @end deftp
-def_cmds.texi(,319) 
-def_cmds.texi(,320) @deftp @code{A1} @code{A2} @code{A3} @code{A4}
-def_cmds.texi(,321) @end deftp
-def_cmds.texi(,322) 
-def_cmds.texi(,323) @c defcv
-def_cmds.texi(,324) @defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,325) @end defcv
-def_cmds.texi(,326) 
-def_cmds.texi(,327) @deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
-def_cmds.texi(,328) @end deftp
-def_cmds.texi(,329) 
-def_cmds.texi(,330) @c deftypecv
-def_cmds.texi(,331) @deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
-def_cmds.texi(,332) @end deftypecv
-def_cmds.texi(,333) 
-def_cmds.texi(,334) @deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
-def_cmds.texi(,335) @end deftypecv
-def_cmds.texi(,336) 
-def_cmds.texi(,337) @c defop
-def_cmds.texi(,338) @defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
-def_cmds.texi(,339) @end defop
-def_cmds.texi(,340) 
-def_cmds.texi(,341) @defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
-def_cmds.texi(,342) @end defop
-def_cmds.texi(,343) 
-def_cmds.texi(,344) @c deftypeop
-def_cmds.texi(,345) @deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
-def_cmds.texi(,346) @end deftypeop
-def_cmds.texi(,347) 
-def_cmds.texi(,348) @deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
-def_cmds.texi(,349) @end deftypeop
-def_cmds.texi(,350) 
-def_cmds.texi(,351) @printindex vr
-def_cmds.texi(,352) @printindex fn
-def_cmds.texi(,353) 
-def_cmds.texi(,354) @bye
+def_cmds.texi(,295) @printindex vr
+def_cmds.texi(,296) @printindex fn
+def_cmds.texi(,297) 
+def_cmds.texi(,298) @bye

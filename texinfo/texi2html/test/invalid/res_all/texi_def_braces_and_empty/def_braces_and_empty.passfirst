@@ -1,0 +1,72 @@
+def_braces_and_empty.texi(,2) @setfilename def_braces_and_empty.info
+def_braces_and_empty.texi(,3) 
+def_braces_and_empty.texi(,4) @node Top
+def_braces_and_empty.texi(,5) @top Test for bad definition commands
+def_braces_and_empty.texi(,6) 
+def_braces_and_empty.texi(,7) @deffn fset @var{i} a g
+def_braces_and_empty.texi(,8) @deffnx @b{id @samp{i} ule}    
+def_braces_and_empty.texi(,9) @deffnx 
+def_braces_and_empty.texi(,10) @deffnx aaa
+def_braces_and_empty.texi(,11) @deffnx {} {}
+def_braces_and_empty.texi(,12) @deffnx{}
+def_braces_and_empty.texi(,13) @deffnx{truc} { }
+def_braces_and_empty.texi(,14) @deffnx{truc}
+def_braces_and_empty.texi(,15) @deffnx{} {}
+def_braces_and_empty.texi(,16) @deffnx truc machin bidule chose and }
+def_braces_and_empty.texi(,17) @deffnx truc machin bidule chose and } after
+def_braces_and_empty.texi(,18) @deffnx truc machin bidule chose and {
+def_braces_and_empty.texi(,19) @deffnx truc machin bidule chose and { and after
+def_braces_and_empty.texi(,20) @end deffn
+def_braces_and_empty.texi(,21) 
+def_braces_and_empty.texi(,23) @deffn category name args {   more args
+def_braces_and_empty.texi(,24) deffn with @{
+def_braces_and_empty.texi(,25) @end deffn 
+def_braces_and_empty.texi(,26) 
+def_braces_and_empty.texi(,28) @deffn category name args }   more args
+def_braces_and_empty.texi(,29) deffn with @}
+def_braces_and_empty.texi(,30) @end deffn 
+def_braces_and_empty.texi(,31) 
+def_braces_and_empty.texi(,32) @c deffn
+def_braces_and_empty.texi(,33) @deffn
+def_braces_and_empty.texi(,34) @end deffn
+def_braces_and_empty.texi(,35) 
+def_braces_and_empty.texi(,36) @c defvr
+def_braces_and_empty.texi(,37) @defvr
+def_braces_and_empty.texi(,38) @end defvr
+def_braces_and_empty.texi(,39) 
+def_braces_and_empty.texi(,40) @c deftypefn
+def_braces_and_empty.texi(,41) @deftypefn
+def_braces_and_empty.texi(,42) @end deftypefn
+def_braces_and_empty.texi(,43) 
+def_braces_and_empty.texi(,44) @c deftypeop
+def_braces_and_empty.texi(,45) @deftypeop
+def_braces_and_empty.texi(,46) @end deftypeop
+def_braces_and_empty.texi(,47) 
+def_braces_and_empty.texi(,48) @c deftypevr
+def_braces_and_empty.texi(,49) @deftypevr
+def_braces_and_empty.texi(,50) @end deftypevr
+def_braces_and_empty.texi(,51) 
+def_braces_and_empty.texi(,52) @c defcv
+def_braces_and_empty.texi(,53) @defcv
+def_braces_and_empty.texi(,54) @end defcv
+def_braces_and_empty.texi(,55) 
+def_braces_and_empty.texi(,56) @c deftypecv
+def_braces_and_empty.texi(,57) @deftypecv
+def_braces_and_empty.texi(,58) @end deftypecv
+def_braces_and_empty.texi(,59) 
+def_braces_and_empty.texi(,60) @c defop
+def_braces_and_empty.texi(,61) @defop
+def_braces_and_empty.texi(,62) @end defop
+def_braces_and_empty.texi(,63) 
+def_braces_and_empty.texi(,64) @c deftp
+def_braces_and_empty.texi(,65) @deftp
+def_braces_and_empty.texi(,66) @end deftp
+def_braces_and_empty.texi(,67) 
+def_braces_and_empty.texi(,68) @c name is missing. This breaks texinfo.tex
+def_braces_and_empty.texi(,69) @deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+def_braces_and_empty.texi(,70) @end deftypeop
+def_braces_and_empty.texi(,71) 
+def_braces_and_empty.texi(,72) @printindex vr
+def_braces_and_empty.texi(,73) @printindex fn
+def_braces_and_empty.texi(,74) 
+def_braces_and_empty.texi(,75) @bye

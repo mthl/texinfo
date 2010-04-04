@@ -17,22 +17,10 @@ def-fn
  -- Command: log trap2
  -- cmde: id ule truc
  -- cmde2: id `i' ule truc
- -- id `i' ule:
- -- :
- -- aaa:
- -- :
- -- :
  -- : machin
  -- : bidule machin
  -- truc: machin
- -- truc:
- -- truc:
- -- :
  -- truc: followed by a comment
- -- truc: machin bidule chose and
- -- truc: machin bidule chose and  after
- -- truc: machin bidule chose and {
- -- truc: machin bidule chose and { and after
 Various deff lines
  -- truc: after a deff item
 text in def item for second def item
@@ -97,14 +85,6 @@ d-efmethod
  -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
 d-eftypemethod
 
- -- category: name args {   more args
-deffn with {
-
-
- -- category: name args  more args
-deffn with }
-
-
 
  -- c--ategory: d--effn_name a--rguments...
 d--effn
@@ -120,22 +100,10 @@ def--fn
  -- Command: log trap2
  -- cmde: id ule truc
  -- cmde2: id `i' ule truc
- -- id `i' ule:
- -- :
- -- aaa:
- -- :
- -- :
  -- : machin
  -- : bidule machin
  -- truc: machin
- -- truc:
- -- truc:
- -- :
  -- truc: followed by a comment
- -- truc: machin bidule chose and
- -- truc: machin bidule chose and  after
- -- truc: machin bidule chose and {
- -- truc: machin bidule chose and { and after
 Various deff lines
  -- truc: after a deff item
 text in def item for second def item
@@ -200,14 +168,6 @@ d--efmethod
  -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 
- -- category: name args {   more args
-deffn with {
-
-
- -- category: name args  more args
-deffn with }
-
-
 
  -- Command: forward--char nchars argument2 argument3 (arg in brace, [something in v--ar, in, b , comma apref p]) last
 
@@ -261,27 +221,9 @@ deffn with }
 
  -- Operation21 on ;Window: int ;expose type arg
 
- -- Command on com: Windowint exposeexp
+ -- Command on com: Windowint exposeexp name
 
  -- Function: apply function &rest arguments
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
-
- -- :
 
  -- A1: A2 A3 A4
 
@@ -318,6 +260,10 @@ deffn with }
  -- A1 on A2: A3 A4 A5 A6
 
  -- A1 on A2: A3 A4 A5 A6
+
+ -- code then var: ret_type fun_name A1 A2 A3 A4
+
+ -- var then code: ret_type1 fun_name1 A1 A2 A3 A4
 
 * Index:
 * A2: Test for definition commands.
@@ -408,6 +354,8 @@ deffn with }
 * foobar: Test for definition commands.
 * foobug: Test for definition commands.
 * forward-char: Test for definition commands.
+* fun_name: Test for definition commands.
+* fun_name1: Test for definition commands.
 * i: Test for definition commands.
 * i: Test for definition commands.
 * id `i' ule: Test for definition commands.
@@ -429,18 +377,6 @@ deffn with }
 * machin: Test for definition commands.
 * machin: Test for definition commands.
 * machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* machin: Test for definition commands.
-* name: Test for definition commands.
-* name: Test for definition commands.
-* name: Test for definition commands.
-* name: Test for definition commands.
 * push: Test for definition commands.
 * truc: Test for definition commands.
 * truc: Test for definition commands.

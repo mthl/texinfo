@@ -20,25 +20,11 @@ def--fn
 @deffnx Command {log trap2 } {}
 @deffnx cmde @b{id ule} truc
 @deffnx cmde2 @b{id @samp{i} ule} truc
-@deffnx @b{id @samp{i} ule}    
-@deffnx 
-@deffnx aaa
-@deffnx {} {}
-@deffnx{}
 @deffnx{} machin
 @deffnx{} {bidule machin}
 @deffnx{truc} machin
-@deffnx{truc} { }
-@deffnx{truc}
-@deffnx{} {}
 @deffnx {truc} followed by a comment
 @c comment
-@ifset texi2html
-@deffnx truc machin bidule chose and }
-@deffnx truc machin bidule chose and } after
-@deffnx truc machin bidule chose and {
-@deffnx truc machin bidule chose and { and after
-@end ifset
 Various deff lines
 @deffnx {truc} after a deff item
 @c comment
@@ -124,18 +110,6 @@ d--efmethod
 @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 @end deftypemethod
-
-@ifset texi2html
-@deffn category name args { @
-  more args
-deffn with @{
-@end deffn 
-
-@deffn category name args } @
-  more args
-deffn with @}
-@end deffn 
-@end ifset
 
 @end macro
 
@@ -156,23 +130,11 @@ def--fn
 @deffnx Command {log trap2 } {}
 @deffnx cmde @b{id ule} truc
 @deffnx cmde2 @b{id @samp{i} ule} truc
-@deffnx @b{id @samp{i} ule}    
-@deffnx 
-@deffnx aaa
-@deffnx {} {}
-@deffnx{}
 @deffnx{} machin
 @deffnx{} {bidule machin}
 @deffnx{truc} machin
-@deffnx{truc} { }
-@deffnx{truc}
-@deffnx{} {}
 @deffnx {truc} followed by a comment
 @c comment
-@deffnx truc machin bidule chose and }
-@deffnx truc machin bidule chose and } after
-@deffnx truc machin bidule chose and {
-@deffnx truc machin bidule chose and { and after
 Various deff lines
 @deffnx {truc} after a deff item
 @c comment
@@ -258,16 +220,6 @@ d--efmethod
 @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 @end deftypemethod
-
-@deffn category name args { @
-  more args
-deffn with @{
-@end deffn 
-
-@deffn category name args } @
-  more args
-deffn with @}
-@end deffn 
 
 @end copying
 
@@ -287,23 +239,11 @@ def--fn
 @deffnx Command {log trap2 } {}
 @deffnx cmde @b{id ule} truc
 @deffnx cmde2 @b{id @samp{i} ule} truc
-@deffnx @b{id @samp{i} ule}    
-@deffnx 
-@deffnx aaa
-@deffnx {} {}
-@deffnx{}
 @deffnx{} machin
 @deffnx{} {bidule machin}
 @deffnx{truc} machin
-@deffnx{truc} { }
-@deffnx{truc}
-@deffnx{} {}
 @deffnx {truc} followed by a comment
 @c comment
-@deffnx truc machin bidule chose and }
-@deffnx truc machin bidule chose and } after
-@deffnx truc machin bidule chose and {
-@deffnx truc machin bidule chose and { and after
 Various deff lines
 @deffnx {truc} after a deff item
 @c comment
@@ -389,16 +329,6 @@ d--efmethod
 @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 @end deftypemethod
-
-@deffn category name args { @
-  more args
-deffn with @{
-@end deffn 
-
-@deffn category name args } @
-  more args
-deffn with @}
-@end deffn 
 
 
 @example
@@ -418,23 +348,11 @@ def--fn
 @deffnx Command {log trap2 } {}
 @deffnx cmde @b{id ule} truc
 @deffnx cmde2 @b{id @samp{i} ule} truc
-@deffnx @b{id @samp{i} ule}    
-@deffnx 
-@deffnx aaa
-@deffnx {} {}
-@deffnx{}
 @deffnx{} machin
 @deffnx{} {bidule machin}
 @deffnx{truc} machin
-@deffnx{truc} { }
-@deffnx{truc}
-@deffnx{} {}
 @deffnx {truc} followed by a comment
 @c comment
-@deffnx truc machin bidule chose and }
-@deffnx truc machin bidule chose and } after
-@deffnx truc machin bidule chose and {
-@deffnx truc machin bidule chose and { and after
 Various deff lines
 @deffnx {truc} after a deff item
 @c comment
@@ -520,16 +438,6 @@ d--efmethod
 @deftypemethod c--lass t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 @end deftypemethod
-
-@deffn category name args { @
-  more args
-deffn with @{
-@end deffn 
-
-@deffn category name args } @
-  more args
-deffn with @}
-@end deffn 
 
 @end example
 
@@ -627,47 +535,11 @@ deffn with @}
 @deftypeop Operation21 ;Window @code{int} ;expose type arg
 @end deftypeop
 
-@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+@deftypeop Command@code{com} {Window@code{int}} expose@var{exp} name
 @end deftypeop
 
 @defun apply function &rest arguments
 @end defun
-
-@c deffn
-@deffn
-@end deffn
-
-@c defvr
-@defvr
-@end defvr
-
-@c deftypefn
-@deftypefn
-@end deftypefn
-
-@c deftypeop
-@deftypeop
-@end deftypeop
-
-@c deftypevr
-@deftypevr
-@end deftypevr
-
-@c defcv
-@defcv
-@end defcv
-
-@c deftypecv
-@deftypecv
-@end deftypecv
-
-@c defop
-@defop
-@end defop
-
-@c deftp
-@deftp
-@end deftp
 
 @c deffn
 @deffn @var{A1} @var{A2} @var{A3} @var{A4}
@@ -731,6 +603,12 @@ deffn with @}
 
 @deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
 @end deftypeop
+
+@deftypefn {code then var} {ret_type} {fun_name} @code{A1} @var{A2} @code{A3} @var{A4}
+@end deftypefn
+
+@deftypefn {var then code} {ret_type1} {fun_name1} @var{A1} @code{A2} @var{A3} @code{A4}
+@end deftypefn
 
 @printindex vr
 @printindex fn

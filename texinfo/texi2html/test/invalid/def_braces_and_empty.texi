@@ -1,0 +1,75 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename def_braces_and_empty.info
+
+@node Top
+@top Test for bad definition commands
+
+@deffn fset @var{i} a g
+@deffnx @b{id @samp{i} ule}    
+@deffnx 
+@deffnx aaa
+@deffnx {} {}
+@deffnx{}
+@deffnx{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+@end deffn
+
+@deffn category name args { @
+  more args
+deffn with @{
+@end deffn 
+
+@deffn category name args } @
+  more args
+deffn with @}
+@end deffn 
+
+@c deffn
+@deffn
+@end deffn
+
+@c defvr
+@defvr
+@end defvr
+
+@c deftypefn
+@deftypefn
+@end deftypefn
+
+@c deftypeop
+@deftypeop
+@end deftypeop
+
+@c deftypevr
+@deftypevr
+@end deftypevr
+
+@c defcv
+@defcv
+@end defcv
+
+@c deftypecv
+@deftypecv
+@end deftypecv
+
+@c defop
+@defop
+@end defop
+
+@c deftp
+@deftp
+@end deftp
+
+@c name is missing. This breaks texinfo.tex
+@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+@end deftypeop
+
+@printindex vr
+@printindex fn
+
+@bye
