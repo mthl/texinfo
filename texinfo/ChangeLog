@@ -1,13 +1,24 @@
+2010-04-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\hbadness): increase to 6666, since we've used
+	that for various GNU publications.
+
+2010-04-04  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (part): new description for new command @part.
+	* doc/refcard/txirefcard.tex: add it.
+	* util/texinfo.dtd (part): new element.
+	
+	* doc/texinfo.tex (\entry): correct redefinition of @* for toc's.
+	(\definetextfontsizexi, \definetextfontsizex): reset \textleading,
+	\parskip appropriately, call \textfonts.
+
 2010-03-30  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (input_file_name_decode): use [A-Za-z] rather than
 	[A-z], which gets "invalid range end" with new grep in
 	en_US.utf8 and other UTF-8 locales.
 	Report from Martin von Gagern, 29 Mar 2010 12:34:09.
-
-2010-03-29  Karl Berry  <karl@gnu.org>
-
-	* doc/texinfo.txi (part): new description for new command @part.
 
 2010-03-21  Karl Berry  <karl@gnu.org>
 
