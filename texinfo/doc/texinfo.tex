@@ -2715,14 +2715,13 @@ end
 % and logos.
 
 % @@ prints an @.
-\def\@{{\tt\char64}}
+\def\@{\char64 }
 
-% @comma{} to avoid , parsing problems.
-\let\comma = ,
-
-% Used to generate quoted braces.
-\def\mylbrace {{\tt\char123}}
-\def\myrbrace {{\tt\char125}}
+% Used to generate quoted braces.  Unless we're in typewriter, use
+% \ecfont because the CM text fonts do not have braces, and we don't
+% want to switch into math.
+\def\mylbrace {{\ifmonospace\else\ecfont\fi \char123}}
+\def\myrbrace {{\ifmonospace\else\ecfont\fi \char125}}
 \let\{=\mylbrace
 \let\}=\myrbrace
 \begingroup
@@ -2736,6 +2735,9 @@ end
   !gdef!lbraceatcmd[@{]%
   !gdef!rbraceatcmd[@}]%
 !endgroup
+
+% @comma{} to avoid , parsing problems.
+\let\comma = ,
 
 % Accents: @, @dotaccent @ringaccent @ubaraccent @udotaccent
 % Others are defined by plain TeX: @` @' @" @^ @~ @= @u @v @H.

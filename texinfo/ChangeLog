@@ -1,3 +1,10 @@
+2010-04-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\@): use \char64 from the current font, instead
+	of forcing typewriter.
+	(\mylbrace, \mybrace): use braces from \ecfont, ditto.
+	Suggestion from Mark Polesky, 16 Apr 2010 22:24:07.
+
 2010-04-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\hbadness): increase to 6666, since we've used
