@@ -53,6 +53,7 @@ texi punctuation_in_command.texi
 texi test_w.texi
 texi empty_deftype.texi
 texi allowcodebreaks.texi
+texi format_in_titlepage.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -153,3 +154,4 @@ heading_info heading.texi --init info.init
 nested_table_info nested_table.texi --init info.init
 simple_table_info simple_table.texi --init info.init
 allowcodebreaks allowcodebreaks.texi
+format_in_titlepage format_in_titlepage.texi

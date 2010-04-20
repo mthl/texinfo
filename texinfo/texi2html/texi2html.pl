@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.380 2010-04-03 20:22:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.381 2010-04-20 22:20:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -10149,6 +10149,7 @@ sub do_special_region_lines($;$$)
     print STDERR "# do_special_region_lines for region $region ['multiple_pass','region_pass']: ($region_initial_state{$region}->{'multiple_pass'}, $region_initial_state{$region}->{'region_pass'})" if ($T2H_DEBUG);
     if (!defined($state))
     {
+        $state = {};
         fill_state($state);
         $state->{'outside_document'} = 1;
         print STDERR " outside document\n" if ($T2H_DEBUG);
@@ -10727,12 +10728,19 @@ sub end_format($$$$$)
     return 1;
 }
 
-sub push_complex_format_style($$$)
+sub push_complex_format_style($$$$)
 {
     my $command = shift;
     my $complex_format = shift;
     my $state = shift;
+    my $line_nr = shift;
     my $class = $command;
+
+    if (!defined($state->{'preformatted_stack'}))
+    {
+       msg_debug ("'preformatted_stack' not defined in push_complex_format_style", $line_nr);
+    }
+
     $class = $complex_format->{'class'} if (defined($complex_format->{'class'}));
     my $format_style = {'pre_style' =>$complex_format->{'pre_style'}, 'class' => $class, 'command' => $command };
     if (defined($complex_format->{'style'}))
@@ -10945,7 +10953,7 @@ sub begin_format($$$$$$)
             $complex_format = $Texi2HTML::Config::complex_format_map{$macro};
         }
         my $format = { 'format' => $macro, 'text' => '', 'pre_style' => $complex_format->{'pre_style'} };
-        push_complex_format_style($macro, $complex_format, $state);
+        push_complex_format_style($macro, $complex_format, $state, $line_nr);
         push @$stack, $format;
 
         begin_paragraph($stack, $state);
@@ -11079,7 +11087,7 @@ sub begin_format($$$$$$)
         {
         # add a fake complex style in order to have a given pre style
             push_complex_format_style('menu', 
-              $Texi2HTML::Config::MENU_PRE_COMPLEX_FORMAT, $state);
+              $Texi2HTML::Config::MENU_PRE_COMPLEX_FORMAT, $state, $line_nr);
             begin_paragraph_after_command($state,$stack,$macro,$line);
         }
         else

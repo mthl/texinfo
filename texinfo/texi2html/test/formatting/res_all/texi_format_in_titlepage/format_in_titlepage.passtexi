@@ -1,0 +1,13 @@
+format_in_titlepage.texi(,2) @c %**start of header
+format_in_titlepage.texi(,3) @setfilename format_in_titlepage.info
+format_in_titlepage.texi(,4) @c %**end of header
+format_in_titlepage.texi(,5) 
+format_in_titlepage.texi(,6) @titlepage
+format_in_titlepage.texi(,7) 
+format_in_titlepage.texi(,8) @format
+format_in_titlepage.texi(,9) Published
+format_in_titlepage.texi(,10) @end format
+format_in_titlepage.texi(,11) 
+format_in_titlepage.texi(,12) @end titlepage
+format_in_titlepage.texi(,13) 
+format_in_titlepage.texi(,14) @bye
