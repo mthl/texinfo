@@ -1,3 +1,9 @@
+2010-04-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\indexdummies): define \{ and \} as before,
+	so they don't get expanded in writing the index.  Report
+	from Peter Breitenlohner.
+
 2010-04-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\@): use \char64 from the current font, instead
