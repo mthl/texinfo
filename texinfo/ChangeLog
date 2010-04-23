@@ -1,3 +1,8 @@
+2010-04-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\,, \dotaccent, \tieaccents, \ubaraccent): use
+	\ptex... now that these commands are further down in the file.
+
 2010-04-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\indexdummies): define \{ and \} as before,
