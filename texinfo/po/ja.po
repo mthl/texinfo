@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: GNU texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2008-09-18 20:38+0200\n"
-"PO-Revision-Date: 2010-04-09 19:10+0900\n"
+"PO-Revision-Date: 2010-04-24 22:47+0900\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -379,7 +379,6 @@ msgstr ""
 "  -w, --where, --location      Infoファイルの物理的位置を表示する。"
 
 #: info/info.c:636
-#, fuzzy
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -391,9 +390,9 @@ msgstr ""
 "\n"
 "最初のオプションでない引数は、それが存在した場合、開始時にメニューにな\n"
 "ります。これは INFOPATH に従って全ての `dir' ファイルが検索されます。\n"
-"If it is not present, info merges all `dir' files and shows the result.\n"
-"Any remaining arguments are treated as the names of menu\n"
-"items relative to the initial node visited."
+"もし存在しない場合は、 info は全ての `dir' ファイルを併合し、結果とし\n"
+"て表示します。残りの引数全ては参照される初期ノードの相対的なメニュー\n"
+"項目の名前として扱われます。"
 
 #: info/info.c:643
 msgid ""
@@ -1820,7 +1819,7 @@ msgstr ""
 "Texinfoホームページ: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:597
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -1853,7 +1852,7 @@ msgstr ""
 "  Emacs の内ならば、メニュー項目や相互参照を、マウスのボタン 2 をクリックして\n"
 "  選択できます。\n"
 "\n"
-"* メニュー:\n"
+"%s\n"
 
 #: install-info/install-info.c:622
 #, c-format
@@ -2322,9 +2321,9 @@ msgid "here is the previous definition of `%s'"
 msgstr "ここは、`%s' の前の定義です"
 
 #: makeinfo/macro.c:359
-#, fuzzy, c-format
+#, c-format
 msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr "マクロ展開内の \\ の後ろに \\ やパラメタ名ではなく `%s' が続いています"
+msgstr "後ろに `%s' が続くマクロ展開内でパラメータ名ではなく \\ があります"
 
 #: makeinfo/macro.c:401
 #, c-format
@@ -2383,7 +2382,7 @@ msgstr ""
 "オンラインで Emacs や単独の GNU Info で読むのに適した Info ファイルです。\n"
 
 #: makeinfo/makeinfo.c:354
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "General options:\n"
 "      --error-limit=NUM       quit after NUM errors (default %d).\n"
@@ -2398,16 +2397,17 @@ msgid ""
 msgstr ""
 "一般的なオプション:\n"
 "      --error-limit=NUM       エラーが NUM 個発生したら中止する (default %d)。\n"
+"      --document-language=STR 出力文書に対して Texinfo のキーワード翻訳に使用する\n"
+"                                ロケール (デフォルトは C)。\n"
 "      --force                 エラーが発生しても出力を保存する。\n"
-"      --help                  この使い方を表示して終了する。\n"
+"      --help                  このヘルプを表示して終了する。\n"
 "      --no-validate           ノード間相互参照の検証を抑制する。\n"
-"      --no-warn               警告を抑制する (が、エラーは表示する)。\n"
-"      --reference-limit=NUM   最大参照数 NUM に至れば警告する (default %d)。\n"
+"      --no-warn               警告を抑制する (エラーは表示する)。\n"
 "  -v, --verbose               行なわれる事を説明する。\n"
 "      --version               バージョン情報を表示して終了する。\n"
 
 #: makeinfo/makeinfo.c:369
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -2415,16 +2415,13 @@ msgid ""
 "      --xml                   output Texinfo XML rather than Info.\n"
 "      --plaintext             output plain text rather than Info.\n"
 msgstr ""
-"出力形式セクション (デフォルトでは Info を生成します):\n"
-"      --docbook             Info ではなく DocBook を出力する。\n"
-"      --html                Info ではんく HTML を出力する。\n"
-"      --no-headers          プレインテクストを出力する。Info ノード区切り子\n"
-"                              や Node: 行を抑制。--output オプションを\n"
-"                              つけないと標準出力に書き込む\n"
-"      --xml                 Info ではなく XML (TexinfoML) 形式で出力する。\n"
+"出力形式の選択 (デフォルトは Info を生成):\n"
+"      --docbook               Info ではなく Docbook XML を出力する。\n"
+"      --html                  Info ではなく HTML を出力する。\n"
+"      --xml                   Info ではなくTexinfo XML を出力する。\n"
+"      --plaintext             Info ではなくプレーンテキストを出力する。\n"
 
 #: makeinfo/makeinfo.c:377
-#, fuzzy
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -2438,16 +2435,20 @@ msgid ""
 "      --number-sections       output chapter and sectioning numbers.\n"
 "  -o, --output=FILE           output to FILE (or directory if split HTML).\n"
 msgstr ""
-"一般出力オプション:\n"
-"  -E, --macro-expand FILE   マクロ展開されたソースを FILE に出力する。\n"
-"                            @setfilename は無視される。\n"
-"      --no-split            Info や HTML の分割出力を抑制する。\n"
-"                            ただ一つの出力ファイルを生成する。\n"
-"      --number-sections     章や節の番号を出力する。\n"
-"  -o, --output=FILE         FILE へ出力する (分割 HTML の場合ディレクトリ)。\n"
+"一般的な出力オプション:\n"
+"  -E, --macro-expand=FILE     マクロ展開されたソースを FILE に出力する。\n"
+"                                @setfilename は無視する。\n"
+"      --no-headers            ノード分割を抑止する。Info 出力 (プレーンテキス\n"
+"                                トを生成する) または HTML (短い出力を生成する)\n"
+"                                からの Node: 行、およびメニューもデフォルトで\n"
+"                                標準出力に書き込まれる。\n"
+"      --no-split              Info や HTML の分割出力を抑制する。\n"
+"                                ただ一つの出力ファイルを生成する。\n"
+"      --number-sections       章や節の番号を出力する。\n"
+"  -o, --output=FILE           FILE へ出力する (分割 HTML の場合ディレクトリ)。\n"
 
 #: makeinfo/makeinfo.c:391
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
@@ -2463,17 +2464,18 @@ msgid ""
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
-"Info やプレインテクスト用オプション:\n"
-"      --enable-encoding       @documentencoding に基き、Info 出力に\n"
-"                                アクセントや特殊文字を出力する。\n"
-"      --fill-column=NUM       NUM 文字で Info 行を改行する (default %d)。\n"
+"Info およびプレーンテキストのためのオプション:\n"
+"      --disable-encoding      Info 出力に @documentencoding に基づいたアクセ\n"
+"                                ントおよび特殊文字を出力しない。\n"
+"      --enable-encoding       --disable-encoding を上書きする (デフォルト)。\n"
+"      --fill-column=NUM       Info を文字数 NUM で改行する (default %d)。\n"
 "      --footnote-style=STYLE  STYLE に基づいて Info の脚注を出力する。\n"
 "                                `separate' そのノード中に脚注を置く\n"
-"                                `end' 定義されたノードの末尾に置く (default)\n"
-"      --paragraph-indent=VAL  Info 段落を VAL 個の空白で字下げ (default %d)。\n"
-"                                VAL が `none' だと字下げせず、VAL が `asis'\n"
-"                                だと、既存の字下げをそのまま使う。\n"
-"      --split-size=NUM        Info ファイルサイズを NUM で分割 (default %d)\n"
+"                                `end' 定義されたノードの末尾に置く (デフォルト)\n"
+"      --paragraph-indent=VAL  Info 段落を VAL 個の空白で字下げする (default %d)。\n"
+"                                VAL が `none' の場合は字下げを行わない。`asis'\n"
+"                                の場合は既存の字下げを保持する。\n"
+"      --split-size=NUM        Info ファイルをサイズ NUM で分割する (default %d)。\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2485,6 +2487,13 @@ msgid ""
 "      --transliterate-file-names\n"
 "                              produce file names in ASCII transliteration.\n"
 msgstr ""
+"HTML のためのオプション:\n"
+"      --css-include=FILE      HTMLの <style> 出力内に FILEを含める。\n"
+"                                FILE に - を指定した時は標準入力から読み込む。\n"
+"      --css-ref=URL           CSS ファイルへの参照を生成する。\n"
+"      --internal-links=FILE   内部リンクの一覧を FILE に生成する。\n"
+"      --transliterate-file-names\n"
+"                              ファイル名を ASCII 文字変換して生成する。\n"
 
 #: makeinfo/makeinfo.c:419
 #, c-format
@@ -2493,9 +2502,11 @@ msgid ""
 "      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
 "                                If VAL is 0, ignorable whitespace is dropped.\n"
 msgstr ""
+"XML および Docbook のためのオプション:\n"
+"      --output-indent=VAL     XML 要素を VAL 個のスペースで字下げする (デフォルト %d)。\n"
+"                                もし VAL が 0 の場合、無視できる空白は取り除かれる。\n"
 
 #: makeinfo/makeinfo.c:426
-#, fuzzy
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2505,7 +2516,7 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "入力ファイルオプション:\n"
-"      --commands-in-node-names   ノード名中の @ コマンドを許可する。\n"
+"      --commands-in-node-names   ノード名で @ コマンドを許可する。\n"
 "  -D VAR                         変数 VAR を定義する。@set と同じ。\n"
 "  -I DIR                         @include 探索パスに DIR を追加する。\n"
 "  -P DIR                         @include 探索パスの先頭に DIR を挿入する。\n"
