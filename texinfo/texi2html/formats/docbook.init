@@ -76,6 +76,7 @@ foreach my $accent_command ('tieaccent', 'dotless', keys(%unicode_accents))
 }
 
 delete $style_map{'sc'}->{'inline_attribute'};
+# FIXME there is a code element in v4.3 
 $style_map{'code'}->{'inline_attribute'} = 'literal';
 $style_map{'strong'}->{'inline_attribute'} = 'emphasis role="bold"';
 $style_map{'kbd'}->{'inline_attribute'} = 'userinput';
@@ -124,8 +125,6 @@ foreach my $style (keys(%style_map))
 %style_map_pre = ();
 t2h_default_copy_style_map (\%style_map, \%style_map_pre);
 
-$style_map_pre{'b'}->{'inline_attribute'} = 'lineannotation';
-$style_map_pre{'i'}->{'inline_attribute'} = 'lineannotation';
 $style_map_pre{'r'}->{'inline_attribute'} = 'lineannotation';
 
 $colon_command_punctuation_characters{'.'} = '&period;';

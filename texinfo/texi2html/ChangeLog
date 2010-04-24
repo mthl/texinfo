@@ -1,3 +1,8 @@
+2009-04-24   Patrice Dumas  <pertusus@free.fr>
+
+	* formats/docbook.init: don't format @b and @i as lineannotation
+	in preformatted output, report from Per Bothner.
+
 2009-04-21   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: really initialize state when formatting special

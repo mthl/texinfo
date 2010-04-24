@@ -93,9 +93,9 @@ $no_paragraph_commands{'anchor'} = 1;
 # sc and var upcase.
 @simple_quoted_commands = ('cite', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp');
-# slanted? 
 @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'math', 'sc', 't', 'r', 
-  'slanted', 'var', 'titlefont', 'verb', 'clickstyle', 'headitemfont');
+  'slanted', 'sansserif', 'var', 'titlefont', 'verb', 'clickstyle', 
+  'headitemfont');
 @chevron_commands = ('key', 'indicateurl');
 
 %info_default_accent_commands = ();
@@ -1560,8 +1560,10 @@ sub info_default_process_content($$)
               {
                   #print STDERR "IN_PARA text\n";
                   my $new_text = $content->{'text'};
-                  # first find if within a code style command @var, @cite, @math
-                  # acceptable: asis b dfn, emph i slanted sansserif r sc strong t w
+                  # first find if in a context of no puncutation related 
+                  # modification: code style command or @var, @cite, @math
+                  # acceptable for punctuation related modifications: 
+                  # asis b dfn emph i slanted sansserif r sc strong t w
                   my $current_tested = $content;
                   my $no_punctation_munging_command;
                   while ($current_tested)
@@ -1607,7 +1609,7 @@ sub info_default_process_content($$)
                                   # commands, like anchor, index. Not sure if 
                                   # it is right or wrong.
                                   # Also a style_map command never stops
-                                  # the search, so that @emp{ or @strong{
+                                  # the search, so that @emph{ or @strong{
                                   # begin and end are not taken into account
                                   if (!defined($current_next) or (!defined($text_next)) or (defined($command_next) and $command_next eq '*') or ($text_next !~ /^[$info_default_after_punctuation_characters]*(\s*)$/ and (!defined($command_next) or !$style_map{$command_next})))
                                   {

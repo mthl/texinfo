@@ -170,6 +170,7 @@ but , ,
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@slanted{--a}</code> <slanted>&ndash;a</slanted>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
 <para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -712,6 +713,7 @@ but , ,
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@slanted{--a}</code> <slanted>&ndash;a</slanted>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
 <para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -1249,6 +1251,7 @@ but , ,
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@slanted{--a}</code> <slanted>&ndash;a</slanted>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
 <para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -1787,6 +1790,7 @@ but , ,
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@slanted{--a}</code> <slanted>&ndash;a</slanted>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
 <para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -2323,6 +2327,7 @@ but , ,
 <code>@strong{--a}</code> <strong>&ndash;a</strong>
 <code>@t{--a}</code> <tt>&ndash;a</tt>
 <code>@sansserif{--a}</code> <sansserif>&ndash;a</sansserif>
+<code>@slanted{--a}</code> <slanted>&ndash;a</slanted>
 <code>@titlefont{--a}</code> </para><titlefont>&ndash;a</titlefont>
 <para><code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>&ndash;b</urefdesc></uref>
@@ -2859,6 +2864,7 @@ but , ,
 <code>@strong{--a}</code> <strong>--a</strong>
 <code>@t{--a}</code> <tt>--a</tt>
 <code>@sansserif{--a}</code> <sansserif>--a</sansserif>
+<code>@slanted{--a}</code> <slanted>--a</slanted>
 <code>@titlefont{--a}</code> <titlefont>--a</titlefont>
 <code>@indicateurl{--a}</code> <indicateurl>--a</indicateurl>
 <code>@uref{--a,--b}</code> <uref><urefurl>--a</urefurl><urefdesc>--b</urefdesc></uref>

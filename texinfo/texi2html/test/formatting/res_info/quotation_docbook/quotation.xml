@@ -89,29 +89,29 @@ A quot---ation
 A Note
 </note>
 
-<blockquote><lineannotation>something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
+<blockquote><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </blockquote>
 
-<blockquote><lineannotation>@ at the end of line </lineannotation> A @ at the end of the @quotation line.
+<blockquote><emphasis role="bold">@ at the end of line </emphasis> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><lineannotation>@  at the end of line  :</lineannotation> A @  at the end of the @quotation line.
+<blockquote><emphasis role="bold">@  at the end of line  :</emphasis> A @  at the end of the @quotation line.
 </blockquote>
 
-<blockquote><lineannotation>something, other thing:</lineannotation> something, other thing
+<blockquote><emphasis role="bold">something, other thing:</emphasis> something, other thing
 </blockquote>
 
-<blockquote><lineannotation>Note, the note:</lineannotation> Note, the note
+<blockquote><emphasis role="bold">Note, the note:</emphasis> Note, the note
 </blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><lineannotation>Empty:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">Empty:</emphasis> </blockquote>
 
-<blockquote><lineannotation>:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">:</emphasis> </blockquote>
 
-<blockquote><lineannotation>
-:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">
+:</emphasis> </blockquote>
 </screen>
 </chapter>
 </book>

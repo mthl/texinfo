@@ -158,6 +158,7 @@ but , ,@:
 @code{@@strong@{--a@}} @strong{--a}
 @code{@@t@{--a@}} @t{--a}
 @code{@@sansserif@{--a@}} @sansserif{--a}
+@code{@@slanted@{--a@}} @slanted{--a}
 @code{@@titlefont@{--a@}} @titlefont{--a}
 @code{@@indicateurl@{--a@}} @indicateurl{--a}
 @code{@@uref@{--a,--b@}} @uref{--a,--b}

@@ -161,6 +161,7 @@ but , ,
 <literal>@strong{--a}</literal> <emphasis role="bold">&ndash;a</emphasis>
 <literal>@t{--a}</literal> <literal>&ndash;a</literal>
 <literal>@sansserif{--a}</literal> &ndash;a
+<literal>@slanted{--a}</literal> &ndash;a
 <literal>@titlefont{--a}</literal> &ndash;a
 <literal>@indicateurl{--a}</literal> <wordasword>--a</wordasword>
 <literal>@uref{--a,--b}</literal> <ulink url="--a">&ndash;b</ulink>
@@ -689,6 +690,7 @@ but , ,
 <literal>@strong{--a}</literal> <emphasis role="bold">&ndash;a</emphasis>
 <literal>@t{--a}</literal> <literal>&ndash;a</literal>
 <literal>@sansserif{--a}</literal> &ndash;a
+<literal>@slanted{--a}</literal> &ndash;a
 <literal>@titlefont{--a}</literal> &ndash;a
 <literal>@indicateurl{--a}</literal> <wordasword>--a</wordasword>
 <literal>@uref{--a,--b}</literal> <ulink url="--a">&ndash;b</ulink>
@@ -1213,6 +1215,7 @@ but , ,
 <literal>@strong{--a}</literal> <emphasis role="bold">&ndash;a</emphasis>
 <literal>@t{--a}</literal> <literal>&ndash;a</literal>
 <literal>@sansserif{--a}</literal> &ndash;a
+<literal>@slanted{--a}</literal> &ndash;a
 <literal>@titlefont{--a}</literal> &ndash;a
 <literal>@indicateurl{--a}</literal> <wordasword>--a</wordasword>
 <literal>@uref{--a,--b}</literal> <ulink url="--a">&ndash;b</ulink>
@@ -1713,7 +1716,7 @@ but , ,
 <literal>@abbr{@'E--. @comma{}A., @'Etude Autonome }</literal> <abbrev>&Eacute;--. ,A.</abbrev> (&Eacute;tude Autonome)
 <literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&Eacute;--. ,A.</abbrev>
 <literal>@asis{--a}</literal> --a
-<literal>@b{--a}</literal> <lineannotation>--a</lineannotation>
+<literal>@b{--a}</literal> <emphasis role="bold">--a</emphasis>
 <literal>@cite{--a}</literal> <citetitle>--a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
@@ -1726,7 +1729,7 @@ but , ,
 <literal>@emph{--a}</literal> <emphasis>--a</emphasis>
 <literal>@env{--a}</literal> <envar>--a</envar>
 <literal>@file{--a}</literal> <filename>--a</filename>
-<literal>@i{--a}</literal> <lineannotation>--a</lineannotation>
+<literal>@i{--a}</literal> <wordasword>--a</wordasword>
 <literal>@kbd{--a}</literal> <userinput>--a</userinput>
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> --a {\frac{1}{2}} &minus;
@@ -1737,6 +1740,7 @@ but , ,
 <literal>@strong{--a}</literal> <emphasis role="bold">--a</emphasis>
 <literal>@t{--a}</literal> <literal>--a</literal>
 <literal>@sansserif{--a}</literal> --a
+<literal>@slanted{--a}</literal> --a
 <literal>@titlefont{--a}</literal> --a
 <literal>@indicateurl{--a}</literal> <wordasword>--a</wordasword>
 <literal>@uref{--a,--b}</literal> <ulink url="--a">--b</ulink>
@@ -1823,26 +1827,26 @@ After clickstyle &rArr;
 <warning>a Warning.
 </warning>
 
-<blockquote><lineannotation>something &eacute; &tex;:</lineannotation> The something &eacute; &tex; is here.
+<blockquote><emphasis role="bold">something &eacute; &tex;:</emphasis> The something &eacute; &tex; is here.
 </blockquote>
 
-<blockquote><lineannotation>@ at the end of line </lineannotation> A @ at the end of the @quotation line.
+<blockquote><emphasis role="bold">@ at the end of line </emphasis> A @ at the end of the @quotation line.
 </blockquote>
 
-<blockquote><lineannotation>something, other thing:</lineannotation> something, other thing
+<blockquote><emphasis role="bold">something, other thing:</emphasis> something, other thing
 </blockquote>
 
-<blockquote><lineannotation>Note, the note:</lineannotation> Note, the note
+<blockquote><emphasis role="bold">Note, the note:</emphasis> Note, the note
 </blockquote>
 
 <blockquote></blockquote>
 
-<blockquote><lineannotation>Empty:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">Empty:</emphasis> </blockquote>
 
-<blockquote><lineannotation>:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">:</emphasis> </blockquote>
 
-<blockquote><lineannotation>
-:</lineannotation> </blockquote>
+<blockquote><emphasis role="bold">
+:</emphasis> </blockquote>
 
 
 <itemizedlist><listitem> i--temize
@@ -1909,8 +1913,8 @@ After clickstyle &rArr;
 <synopsis role="Command"><indexterm role="fn"><primary>log trap</primary></indexterm><function>log trap</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary> log trap1</primary></indexterm><function> log trap1</function><replaceable> </replaceable></synopsis>
 <synopsis role="Command"><indexterm role="fn"><primary>log trap2 </primary></indexterm><function>log trap2 </function><replaceable> </replaceable></synopsis>
-<synopsis role="cmde"><indexterm role="fn"><primary><lineannotation>id ule</lineannotation></primary></indexterm><function><lineannotation>id ule</lineannotation></function><replaceable> truc</replaceable></synopsis>
-<synopsis role="cmde2"><indexterm role="fn"><primary><lineannotation>id &lsquo;<literal>i</literal>&rsquo; ule</lineannotation></primary></indexterm><function><lineannotation>id &lsquo;<literal>i</literal>&rsquo; ule</lineannotation></function><replaceable> truc</replaceable></synopsis>
+<synopsis role="cmde"><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><function><emphasis role="bold">id ule</emphasis></function><replaceable> truc</replaceable></synopsis>
+<synopsis role="cmde2"><indexterm role="fn"><primary><emphasis role="bold">id &lsquo;<literal>i</literal>&rsquo; ule</emphasis></primary></indexterm><function><emphasis role="bold">id &lsquo;<literal>i</literal>&rsquo; ule</emphasis></function><replaceable> truc</replaceable></synopsis>
 <synopsis role="@b{id @samp{i} ule}"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role="aaa"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
@@ -1924,7 +1928,7 @@ After clickstyle &rArr;
 <!-- comment -->
 <synopsis role="truc"><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
 <synopsis role=""><indexterm role="fn"><primary></primary></indexterm><function></function></synopsis>
-<synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <lineannotation>f g</lineannotation></replaceable><replaceable> h i</replaceable></synopsis>
+<synopsis role="truc"><indexterm role="fn"><primary>a</primary></indexterm><function>a</function><replaceable> b</replaceable><replaceable> c</replaceable><replaceable> d</replaceable><replaceable> e</replaceable><replaceable> <emphasis role="bold">f g</emphasis></replaceable><replaceable> h i</replaceable></synopsis>
 <synopsis role="truc"><indexterm role="fn"><primary>deffnx</primary></indexterm><function>deffnx</function><replaceable> before</replaceable><replaceable> end</replaceable><replaceable> deffn</replaceable></synopsis>
 </informalfigure>
 <informalfigure><synopsis role="empty"><indexterm role="fn"><primary>deffn</primary></indexterm><function>deffn</function></synopsis>

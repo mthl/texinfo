@@ -168,6 +168,7 @@ but , ,
 <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''&ndash;a'''
 <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>&ndash;a</tt>
 <code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">&ndash;a</span>
+<code>@slanted<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <i>&ndash;a</i>
 <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> == &ndash;a ==
 
 <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
@@ -812,6 +813,7 @@ but , ,
 <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''&ndash;a'''
 <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>&ndash;a</tt>
 <code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">&ndash;a</span>
+<code>@slanted<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <i>&ndash;a</i>
 <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> == &ndash;a ==
 
 <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>&ndash;a</nowiki></code>&gt;
@@ -1461,6 +1463,7 @@ In example.
  <code>@strong<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> '''--a'''
  <code>@t<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <tt>--a</tt>
  <code>@sansserif<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <span class="sansserif" style="font-family:sans-serif; font-weight:normal">--a</span>
+ <code>@slanted<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> <i>--a</i>
  <code>@titlefont<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> --a
  <code>@indicateurl<nowiki>{</nowiki>--a<nowiki>}</nowiki></code> &lt;<code><nowiki>--a</nowiki></code>&gt;
  <code>@uref<nowiki>{</nowiki>--a,--b<nowiki>}</nowiki></code> [--a --b]
