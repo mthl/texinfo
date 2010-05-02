@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2009 Free Software Foundation, Inc.
+# Copyright (C) 2002-2010 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -26,7 +26,82 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([AC_PROG_RANLIB])
   AC_REQUIRE([AM_PROG_CC_C_O])
+  # Code from module alloca-opt:
+  # Code from module arg-nonnull:
+  # Code from module argz:
+  # Code from module c++defs:
+  # Code from module configmake:
+  # Code from module environ:
+  # Code from module errno:
+  # Code from module error:
+  # Code from module exitfail:
+  # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module getopt:
+  # Code from module getopt-gnu:
+  # Code from module getopt-posix:
+  # Code from module gettext:
+  # Code from module gettext-h:
+  # Code from module gettimeofday:
+  # Code from module havelib:
+  # Code from module include_next:
+  # Code from module inline:
+  # Code from module intprops:
+  # Code from module localcharset:
+  # Code from module lstat:
+  # Code from module malloca:
+  # Code from module mbchar:
+  # Code from module mbiter:
+  # Code from module mbrtowc:
+  # Code from module mbscasecmp:
+  # Code from module mbschr:
+  # Code from module mbsinit:
+  # Code from module mbslen:
+  # Code from module mbsncasecmp:
+  # Code from module mbsstr:
+  # Code from module mbswidth:
+  # Code from module mbuiter:
+  # Code from module memchr:
+  # Code from module memcpy:
+  # Code from module memmem:
+  # Code from module memmem-simple:
+  # Code from module memmove:
+  # Code from module mempcpy:
+  # Code from module mkstemp:
+  # Code from module multiarch:
+  # Code from module setenv:
+  # Code from module stat:
+  # Code from module stdbool:
+  # Code from module stddef:
+  # Code from module stdint:
+  # Code from module stdlib:
+  # Code from module stpcpy:
+  # Code from module strdup:
+  # Code from module streq:
+  # Code from module strerror:
+  # Code from module string:
+  # Code from module strndup:
+  # Code from module strnlen:
+  # Code from module strnlen1:
+  # Code from module strstr:
+  # Code from module strstr-simple:
+  # Code from module sys_stat:
+  # Code from module sys_time:
+  # Code from module tempname:
+  # Code from module time:
+  # Code from module unistd:
+  # Code from module unitypes:
+  # Code from module uniwidth/base:
+  # Code from module uniwidth/width:
+  # Code from module unsetenv:
+  # Code from module verify:
+  # Code from module warn-on-use:
+  # Code from module wchar:
+  # Code from module wctype:
+  # Code from module wcwidth:
+  # Code from module xalloc:
+  # Code from module xalloc-die:
+  # Code from module xsetenv:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -37,6 +112,7 @@ AC_DEFUN([gl_INIT],
   gl_cond_libtool=false
   gl_libdeps=
   gl_ltlibdeps=
+  gl_m4_base='gnulib/m4'
   m4_pushdef([AC_LIBOBJ], m4_defn([gl_LIBOBJ]))
   m4_pushdef([AC_REPLACE_FUNCS], m4_defn([gl_REPLACE_FUNCS]))
   m4_pushdef([AC_LIBSOURCES], m4_defn([gl_LIBSOURCES]))
@@ -44,88 +120,169 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gnulib/lib'
+  # Code from module alloca-opt:
   gl_FUNC_ALLOCA
+  # Code from module arg-nonnull:
+  # Code from module argz:
   gl_FUNC_ARGZ
+  # Code from module c++defs:
+  # Code from module configmake:
+  # Code from module environ:
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
+  # Code from module errno:
   gl_HEADER_ERRNO_H
+  # Code from module error:
   gl_ERROR
   m4_ifdef([AM_XGETTEXT_OPTION],
-    [AM_XGETTEXT_OPTION([--flag=error:3:c-format])
-     AM_XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
-  gl_EXITFAIL
-  gl_GETOPT
-  gl_FUNC_GETPAGESIZE
-  gl_UNISTD_MODULE_INDICATOR([getpagesize])
+    [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
+     AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  # Code from module exitfail:
+  # Code from module extensions:
+  # Code from module getopt:
+  # Code from module getopt-gnu:
+  gl_FUNC_GETOPT_GNU
+  gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
+  # Code from module getopt-posix:
+  gl_FUNC_GETOPT_POSIX
+  # Code from module gettext:
   dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
   AM_GNU_GETTEXT_VERSION([0.17])
+  # Code from module gettext-h:
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
+  # Code from module gettimeofday:
   gl_FUNC_GETTIMEOFDAY
+  gl_SYS_TIME_MODULE_INDICATOR([gettimeofday])
+  # Code from module havelib:
+  # Code from module include_next:
+  # Code from module inline:
   gl_INLINE
+  # Code from module intprops:
+  # Code from module localcharset:
   gl_LOCALCHARSET
   LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(top_builddir)/$gl_source_base\""
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
+  # Code from module lstat:
   gl_FUNC_LSTAT
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
+  # Code from module malloca:
   gl_MALLOCA
+  # Code from module mbchar:
   gl_MBCHAR
+  # Code from module mbiter:
   gl_MBITER
+  # Code from module mbrtowc:
   gl_FUNC_MBRTOWC
   gl_WCHAR_MODULE_INDICATOR([mbrtowc])
+  # Code from module mbscasecmp:
   gl_STRING_MODULE_INDICATOR([mbscasecmp])
+  # Code from module mbschr:
   gl_STRING_MODULE_INDICATOR([mbschr])
+  # Code from module mbsinit:
   gl_FUNC_MBSINIT
   gl_WCHAR_MODULE_INDICATOR([mbsinit])
+  # Code from module mbslen:
+  gl_FUNC_MBSLEN
   gl_STRING_MODULE_INDICATOR([mbslen])
+  # Code from module mbsncasecmp:
   gl_STRING_MODULE_INDICATOR([mbsncasecmp])
+  # Code from module mbsstr:
   gl_STRING_MODULE_INDICATOR([mbsstr])
+  # Code from module mbswidth:
   gl_MBSWIDTH
+  # Code from module mbuiter:
   gl_MBITER
+  # Code from module memchr:
   gl_FUNC_MEMCHR
   gl_STRING_MODULE_INDICATOR([memchr])
+  # Code from module memcpy:
   gl_FUNC_MEMCPY
+  # Code from module memmem:
   gl_FUNC_MEMMEM
+  # Code from module memmem-simple:
   gl_FUNC_MEMMEM_SIMPLE
   gl_STRING_MODULE_INDICATOR([memmem])
+  # Code from module memmove:
   gl_FUNC_MEMMOVE
+  # Code from module mempcpy:
   gl_FUNC_MEMPCPY
   gl_STRING_MODULE_INDICATOR([mempcpy])
+  # Code from module mkstemp:
   gl_FUNC_MKSTEMP
   gl_STDLIB_MODULE_INDICATOR([mkstemp])
+  # Code from module multiarch:
   gl_MULTIARCH
+  # Code from module setenv:
   gl_FUNC_SETENV
   gl_STDLIB_MODULE_INDICATOR([setenv])
+  # Code from module stat:
+  gl_FUNC_STAT
+  gl_SYS_STAT_MODULE_INDICATOR([stat])
+  # Code from module stdbool:
   AM_STDBOOL_H
+  # Code from module stddef:
+  gl_STDDEF_H
+  # Code from module stdint:
   gl_STDINT_H
+  # Code from module stdlib:
   gl_STDLIB_H
+  # Code from module stpcpy:
   gl_FUNC_STPCPY
   gl_STRING_MODULE_INDICATOR([stpcpy])
+  # Code from module strdup:
   gl_FUNC_STRDUP
   gl_STRING_MODULE_INDICATOR([strdup])
+  # Code from module streq:
+  # Code from module strerror:
   gl_FUNC_STRERROR
   gl_STRING_MODULE_INDICATOR([strerror])
+  # Code from module string:
   gl_HEADER_STRING_H
+  # Code from module strndup:
   gl_FUNC_STRNDUP
   gl_STRING_MODULE_INDICATOR([strndup])
+  # Code from module strnlen:
   gl_FUNC_STRNLEN
   gl_STRING_MODULE_INDICATOR([strnlen])
+  # Code from module strnlen1:
+  # Code from module strstr:
   gl_FUNC_STRSTR
+  # Code from module strstr-simple:
   gl_FUNC_STRSTR_SIMPLE
   gl_STRING_MODULE_INDICATOR([strstr])
+  # Code from module sys_stat:
   gl_HEADER_SYS_STAT_H
   AC_PROG_MKDIR_P
+  # Code from module sys_time:
   gl_HEADER_SYS_TIME_H
   AC_PROG_MKDIR_P
+  # Code from module tempname:
   gl_FUNC_GEN_TEMPNAME
+  # Code from module time:
+  gl_HEADER_TIME_H
+  # Code from module unistd:
   gl_UNISTD_H
+  # Code from module unitypes:
+  # Code from module uniwidth/base:
+  # Code from module uniwidth/width:
+  # Code from module unsetenv:
   gl_FUNC_UNSETENV
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
+  # Code from module verify:
+  # Code from module warn-on-use:
+  # Code from module wchar:
   gl_WCHAR_H
+  # Code from module wctype:
   gl_WCTYPE_H
+  # Code from module wcwidth:
   gl_FUNC_WCWIDTH
   gl_WCHAR_MODULE_INDICATOR([wcwidth])
+  # Code from module xalloc:
   gl_XALLOC
+  # Code from module xalloc-die:
+  # Code from module xsetenv:
+  # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
       for gl_file in ]gl_LIBSOURCES_LIST[ ; do
@@ -148,7 +305,7 @@ AC_DEFUN([gl_INIT],
     if test -n "$gl_LIBOBJS"; then
       # Remove the extension.
       sed_drop_objext='s/\.o$//;s/\.obj$//'
-      for i in `for i in $gl_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
+      for i in `for i in $gl_LIBOBJS; do echo "$i"; done | sed -e "$sed_drop_objext" | sort | uniq`; do
         gl_libobjs="$gl_libobjs $i.$ac_objext"
         gl_ltlibobjs="$gl_ltlibobjs $i.lo"
       done
@@ -165,6 +322,13 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gltests_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='tests'
+changequote(,)dnl
+  gltests_WITNESS=IN_`echo "${PACKAGE-$PACKAGE_TARNAME}" | LC_ALL=C tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ | LC_ALL=C sed -e 's/[^A-Z0-9_]/_/g'`_GNULIB_TESTS
+changequote([, ])dnl
+  AC_SUBST([gltests_WITNESS])
+  gl_module_indicator_condition=$gltests_WITNESS
+  m4_pushdef([gl_MODULE_INDICATOR_CONDITION], [$gl_module_indicator_condition])
+  m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
       for gl_file in ]gltests_LIBSOURCES_LIST[ ; do
@@ -187,7 +351,7 @@ AC_DEFUN([gl_INIT],
     if test -n "$gltests_LIBOBJS"; then
       # Remove the extension.
       sed_drop_objext='s/\.o$//;s/\.obj$//'
-      for i in `for i in $gltests_LIBOBJS; do echo "$i"; done | sed "$sed_drop_objext" | sort | uniq`; do
+      for i in `for i in $gltests_LIBOBJS; do echo "$i"; done | sed -e "$sed_drop_objext" | sort | uniq`; do
         gltests_libobjs="$gltests_libobjs $i.$ac_objext"
         gltests_ltlibobjs="$gltests_ltlibobjs $i.lo"
       done
@@ -258,8 +422,10 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
+  build-aux/arg-nonnull.h
+  build-aux/c++defs.h
   build-aux/config.rpath
-  build-aux/link-warning.h
+  build-aux/warn-on-use.h
   lib/alloca.in.h
   lib/argz.c
   lib/argz.in.h
@@ -273,7 +439,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/getopt.in.h
   lib/getopt1.c
   lib/getopt_int.h
-  lib/getpagesize.c
   lib/gettext.h
   lib/gettimeofday.c
   lib/intprops.h
@@ -306,7 +471,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/ref-add.sin
   lib/ref-del.sin
   lib/setenv.c
+  lib/stat.c
   lib/stdbool.in.h
+  lib/stddef.in.h
   lib/stdint.in.h
   lib/stdlib.in.h
   lib/stpcpy.c
@@ -325,6 +492,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/sys_time.in.h
   lib/tempname.c
   lib/tempname.h
+  lib/time.in.h
   lib/unistd.in.h
   lib/unitypes.h
   lib/uniwidth.h
@@ -344,14 +512,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/alloca.m4
   m4/argz.m4
   m4/codeset.m4
+  m4/dos.m4
   m4/eealloc.m4
   m4/environ.m4
   m4/errno_h.m4
   m4/error.m4
-  m4/exitfail.m4
   m4/extensions.m4
+  m4/fcntl-o.m4
   m4/getopt.m4
-  m4/getpagesize.m4
   m4/gettext.m4
   m4/gettimeofday.m4
   m4/glibc2.m4
@@ -383,6 +551,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbiter.m4
   m4/mbrtowc.m4
   m4/mbsinit.m4
+  m4/mbslen.m4
   m4/mbstate_t.m4
   m4/mbswidth.m4
   m4/memchr.m4
@@ -400,7 +569,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/progtest.m4
   m4/setenv.m4
   m4/size_max.m4
+  m4/stat.m4
   m4/stdbool.m4
+  m4/stddef_h.m4
   m4/stdint.m4
   m4/stdint_h.m4
   m4/stdlib_h.m4
@@ -415,12 +586,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/sys_time_h.m4
   m4/tempname.m4
   m4/threadlib.m4
+  m4/time_h.m4
   m4/uintmax_t.m4
   m4/unistd_h.m4
   m4/visibility.m4
-  m4/wchar.m4
+  m4/warn-on-use.m4
+  m4/wchar_h.m4
   m4/wchar_t.m4
-  m4/wctype.m4
+  m4/wctype_h.m4
   m4/wcwidth.m4
   m4/wint_t.m4
   m4/xalloc.m4

@@ -1,5 +1,5 @@
-# strstr.m4 serial 6
-dnl Copyright (C) 2008, 2009 Free Software Foundation, Inc.
+# strstr.m4 serial 7
+dnl Copyright (C) 2008, 2009, 2010 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -38,13 +38,13 @@ AC_DEFUN([gl_FUNC_STRSTR],
     /* Check for quadratic performance.  */
     if (haystack && needle)
       {
-	memset (haystack, 'A', 2 * m);
-	haystack[2 * m] = 'B';
-	haystack[2 * m + 1] = 0;
-	memset (needle, 'A', m);
-	needle[m] = 'B';
-	needle[m + 1] = 0;
-	result = strstr (haystack, needle);
+        memset (haystack, 'A', 2 * m);
+        haystack[2 * m] = 'B';
+        haystack[2 * m + 1] = 0;
+        memset (needle, 'A', m);
+        needle[m] = 'B';
+        needle[m + 1] = 0;
+        result = strstr (haystack, needle);
       }
     return !result;]])],
         [gl_cv_func_strstr_linear=yes], [gl_cv_func_strstr_linear=no],
@@ -71,7 +71,9 @@ AC_DEFUN([gl_FUNC_STRSTR],
       ])
     if test "$gl_cv_func_strstr_linear" != yes; then
       REPLACE_STRSTR=1
-      AC_LIBOBJ([strstr])
     fi
+  fi
+  if test $REPLACE_STRSTR = 1; then
+    AC_LIBOBJ([strstr])
   fi
 ]) # gl_FUNC_STRSTR
