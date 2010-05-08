@@ -1,3 +1,8 @@
+2010-05-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\shortpartentry): make bold, suggestion
+	from Jeanne R.
+
 2010-05-04  Jim Meyering  <meyering@redhat.com>
 
 	* util/gendocs.sh: make its "-s FILE" option more useful;
