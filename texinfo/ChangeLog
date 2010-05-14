@@ -1,5 +1,10 @@
 2010-05-14  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\makedispenvdef): rename from \makedispenv,
+	so everything ends with "def".
+	(\maketwodispenvdef): rename from \maketwodispenvs.  Change calls.
+	(\Esmallquotation): define to be the same as the real \Equotation.
+
 	* doc/texinfo.tex (\entrybreak): new non-command, to allow
 	forced line breaks in the toc (or index) separate from the
 	maintext.  For Jeanne.
