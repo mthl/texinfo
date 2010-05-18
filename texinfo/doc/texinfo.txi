@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.252 2010-04-04 17:51:34 karl Exp $
+@c $Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10360,7 +10360,7 @@ single quote, like this:
 @clear txicodequoteundirected
 
 @item @@set txicodequotebacktick
-Cause the output for the @code{`} character to be the standalone grave
+causes the output for the @code{`} character to be the standalone grave
 accent, like this:
 @set txicodequotebacktick
 @code{`}.
@@ -10368,15 +10368,13 @@ accent, like this:
 
 @end table
 
-@code{xyza`'bc}
-
 If you want these settings for only part of the document,
 @code{@@clear} will restore the normal behavior, as in
 @code{@@clear@tie{}txicodequoteundirected}.
 
-These settings affect @code{@@code}, @code{@@example}, @code{verb}, and
-@code{@@verbatim}; they do not affect @code{@@samp}.  (@xref{Useful
-Highlighting}.)
+These settings affect @code{@@code}, @code{@@example}, @code{@@samp},
+@code{verb}, and @code{@@verbatim}; they do not affect @code{@@kbd}.
+(@xref{Useful Highlighting}.)
 
 
 @node Inserting Space
@@ -17757,8 +17755,8 @@ documents and implementations are available elsewhere on the web.
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
 software has to guess whether a given manual being cross-referenced is
 available in split or monolithic form---and, inevitably, it might
-guess wrong.  However, it is possible when the referent manual itself
-is generated, it is possible to handle at least some mismatches.
+guess wrong.  However, when the referent manual itself is generated,
+it is possible to handle at least some mismatches.
 
 In the case where we assume the referent is split, but it is actually
 available in mono, the only recourse would be to generate a
@@ -19700,7 +19698,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.252 2010-04-04 17:51:34 karl Exp $
+$Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19779,7 +19777,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.252 2010-04-04 17:51:34 karl Exp $
+@comment $Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

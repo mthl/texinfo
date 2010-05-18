@@ -1,3 +1,11 @@
+2010-05-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\marksupsetuplqsamp, \marksupsetuprqsamp):
+	assign as \markupsetcodequoteleft and ...right, so they respect
+	the @txicodequote... settings.
+	Request from Mark Polesky, 13 Apr 2010 09:46:23.
+	* doc/texinfo.txi (Inserting Quote Characters): document this.
+
 2010-05-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\makedispenvdef): rename from \makedispenv,
