@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>top.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>first</nodenext>
+<nodeup></nodeup>
+</node>
+<top>
+<title>Top</title>
+
+<menu>
+<menuentry>
+<menunode>first</menunode>
+<menutitle>first</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+<node>
+<nodename>first</nodename>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>first</title>
+
+<menu>
+<!--  -->
+<menuentry>
+<menunode>second</menunode>
+<menutitle>second</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>second</nodename>
+<nodeup>first</nodeup>
+</node>
+<section>
+<title>second</title>
+</section>
+</chapter>
+</texinfo>
