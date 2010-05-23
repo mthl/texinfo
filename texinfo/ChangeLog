@@ -1,3 +1,11 @@
+2010-05-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\indexlquoteignore): new macro.
+	(\indexnofonts): call it if @set txiindexlquoteignore.
+	This is for Free Software, Free Society, 2nd ed.
+	Perhaps it should be a general feature,
+	or settable on a per-entry basis.
+
 2010-05-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\marksupsetuplqsamp, \marksupsetuprqsamp):
