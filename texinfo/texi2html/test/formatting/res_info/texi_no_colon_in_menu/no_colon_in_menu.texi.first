@@ -1,0 +1,11 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename no_colon_in_menu.info
+
+@node Top
+@top menu entry without colon
+
+@menu
+* a
+@end menu
+
+@bye

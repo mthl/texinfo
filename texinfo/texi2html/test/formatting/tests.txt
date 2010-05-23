@@ -54,6 +54,7 @@ texi test_w.texi
 texi empty_deftype.texi
 texi allowcodebreaks.texi
 texi format_in_titlepage.texi
+texi no_colon_in_menu.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -134,6 +135,7 @@ line_commands_comments_spaces line_commands_comments_spaces.texi
 punctuation_in_command punctuation_in_command.texi
 test_w test_w.texi
 empty_deftype empty_deftype.texi
+no_colon_in_menu no_colon_in_menu.texi
 
 lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
 quotation_docbook quotation.texi --docbook

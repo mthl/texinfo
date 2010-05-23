@@ -1,0 +1,10 @@
+no_colon_in_menu.texi(,2) @setfilename no_colon_in_menu.info
+no_colon_in_menu.texi(,3) 
+no_colon_in_menu.texi(,4) @node Top
+no_colon_in_menu.texi(,5) @top menu entry without colon
+no_colon_in_menu.texi(,6) 
+no_colon_in_menu.texi(,7) @menu
+no_colon_in_menu.texi(,8) * a
+no_colon_in_menu.texi(,9) @end menu
+no_colon_in_menu.texi(,10) 
+no_colon_in_menu.texi(,11) @bye

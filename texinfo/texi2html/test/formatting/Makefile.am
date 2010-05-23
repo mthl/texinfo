@@ -19,6 +19,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  line_commands_comments_spaces.texi lightweight_markups.texi \
  punctuation_in_command.texi test_w.texi empty_deftype.texi \
  allowcodebreaks.texi format_in_titlepage.texi \
+ no_colon_in_menu.texi \
  f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
  simple_menu.init weird_quotes.init redefine_need.init file.css tests.txt res \
  res_all res_info
