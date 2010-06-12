@@ -1,20 +1,27 @@
-2009-04-24   Patrice Dumas  <pertusus@free.fr>
+2010-06-12   Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.init, texi2html.pl, formats/html.init: new output
+	configuration variable, currently only used in html,
+	$DATE_IN_HEADER to have the generation date output in headers. 
+	Report from Benno Schulenberg.
+
+2010-04-24   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/docbook.init: don't format @b and @i as lineannotation
 	in preformatted output, report from Per Bothner.
 
-2009-04-21   Patrice Dumas  <pertusus@free.fr>
+2010-04-21   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: really initialize state when formatting special
 	regions outside of document.
 
-2009-04-03   Patrice Dumas  <pertusus@free.fr>
+2010-04-03   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: @part is stopped by an appendix.
 	Use part as section target, if the section is associated with 
 	a part.
 
-2009-03-31   Patrice Dumas  <pertusus@free.fr>
+2010-03-31   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: handle part in html. 
 	@part are associated with the following sectionning command,
@@ -29,7 +36,7 @@
 	all the layout subroutines, in case they are used in user-defined 
 	functions and not defined in the default format.
 
-2009-03-28   Patrice Dumas  <pertusus@free.fr>
+2010-03-28   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/info.init, formats/docbook.init, 
 	formats/xml.init: handle @part in info, xml and docbook.
@@ -39,7 +46,7 @@
 	in docbook or xml. This fixes the tree when there is first a
 	low-level element before an upper level element.
 
-2009-03-20   Patrice Dumas  <pertusus@free.fr>
+2010-03-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: new option --program to change defaults
 	according to that option.
@@ -49,7 +56,7 @@
 	an @-command and don't do anything with 
 	%special_list_commands.
 
-2009-03-16   Patrice Dumas  <pertusus@free.fr>
+2010-03-16   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: error out when there are multiple @menu in 
 	a node. Fix http://savannah.gnu.org/bugs/?8432.
@@ -66,22 +73,22 @@
 	* texi2html.pl: mention perl -x for running from the srcdir.
 	Suggestion from Patrice.
 
-2009-03-02   Patrice Dumas  <pertusus@free.fr>
+2010-03-02   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/html.init: prevent breaks on - and _ in @w.
 
-2009-03-01   Patrice Dumas  <pertusus@free.fr>
+2010-03-01   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, texi2html.init, formats/html.init: handle
 	@allowcodebreaks in html by enclosing the word containing - 
 	or _ in white-space:pre style. Idea from Mark Polesky.
 
-2009-02-23   Patrice Dumas  <pertusus@free.fr>
+2010-02-23   Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, texi2html.pl: use more runtime detection. Report
 	from Karl.
 
-2009-02-21   Patrice Dumas  <pertusus@free.fr>
+2010-02-21   Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am: regenerate the .gmo files for tests in check-local
 	not all-local.
@@ -89,29 +96,29 @@
 	Bind the domains of the messages to the directory they are 
 	installed into.
 
-2009-02-21   Patrice Dumas  <pertusus@free.fr>
+2010-02-21   Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, Makefile.am: take po files from above directory
 	(where texinfo po files are) if the source wasn't configured
 	in the texi2html toplevel directory.
 	* texi2html.init: add some unicode character transliteration
-	to get th esame test results in case unidecode is not installed.
+	to get the same test results in case unidecode is not installed.
 	* test/*: set the WIDTH in latex2html generated files to 100
 	otherwise it may be different of one unit between platforms.
 	A possible cause may be platform dependent rounding used to
 	determine the WIDTH based on image width in latex2html.
 
-2009-02-20   Patrice Dumas  <pertusus@free.fr>
+2010-02-20   Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am, i18n/*, separated_to_hash.pl, gettext_to_separated.pl:
 	generate automatically i18n hashes from po files.
 
-2009-02-07   Patrice Dumas  <pertusus@free.fr>
+2010-02-07   Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, NEWS: change the release number to 5.0, to match
 	the next texinfo release.
 
-2009-02-07   Patrice Dumas  <pertusus@free.fr>
+2010-02-07   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/info.init: handle @w rightly, by considering everything
 	in @w to be a pending word, even the spaces.
@@ -120,7 +127,7 @@
 	in the Spanish translations (Francisco Vila).
 	* *Makefile*: use automake 1.11.1.
 
-2009-01-22   Patrice Dumas  <pertusus@free.fr>
+2010-01-22   Patrice Dumas  <pertusus@free.fr>
 
 	* formats/info.init: don't munge punctuation when in code style
 	command, @dots, @var, @cite, or a simple_style command.
@@ -131,7 +138,7 @@
 	* texi2html.init: more simple_style command and @w isn't a 
 	simple_style command.
 
-2009-01-20   Patrice Dumas  <pertusus@free.fr>
+2010-01-20   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl, formats/info.init: use string width when
 	necessary, not character number. 
@@ -142,9 +149,9 @@
 	* Makefile.am, configure.ac, lib: ship Unicode::EastAsianWidth to 
 	always be able to use an internal copy.
 
-2009-01-19   Patrice Dumas  <pertusus@free.fr>
+2010-01-19   Patrice Dumas  <pertusus@free.fr>
 
-	* texi2html.pl: in get_conf take into the values in 
+	* texi2html.pl: in get_conf take into account the values in 
 	Texi2HTML::GLOBAL, this allows using get_conf sooner.
 	Runtime configuration variable, USE_NLS for nls support.
 	Prepare for character width handling with Unicode::EastAsianWidth.
@@ -152,14 +159,14 @@
 	before element names expansions.
 	* texi2html.init: use @command_handler_names to set things_map 
 	to the encoded character if ENABLE_ENCODING is set, such that
-	the encoded characters are use in node and section names.
+	the encoded characters are used in node and section names.
 	Don't call t2h_default_set_out_encoding in init_out, since it was
 	already called earlier in the main program.
 	* formats/info.init: count bytes and not characters for nodes,
 	anchor and file offsets.
 	Very partial fix of http://savannah.gnu.org/bugs/?28359.
 
-2009-01-10   Patrice Dumas  <pertusus@free.fr>
+2010-01-10   Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: don't open a paragraph when a specially handled
 	command that doesn't open a paragraph is encountered.
@@ -176,7 +183,7 @@
 	However, without the first newline, the result is right.
 	* formats/info.init: handle commands specially handled in info.
 
-2009-12-28   Patrice Dumas  <pertusus@free.fr>
+2010-12-28   Patrice Dumas  <pertusus@free.fr>
 
 	* po_document/hu.po, po_document/it.po: hungarian 
 	translation (Dénes Harmath) and italian translation 
@@ -247,7 +254,7 @@
 	@quotation and warn for author outside of @quotation and
 	@titlepage.
 	* configure.ac, Makefile.am, po_*/POTFILES.in.in, po_*/Makevars.in:
-	Add some paths set in gonfigure in POTFILES.in.in and Makevars.in 
+	Add some paths set in configure in POTFILES.in.in and Makevars.in 
 	to workaround gettext not automatically setting top_builddir.
 
 2009-11-11   Patrice Dumas  <pertusus@free.fr>

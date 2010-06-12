@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.266 2010-03-31 09:12:22 pertusus Exp $
+# $Id: texi2html.init,v 1.267 2010-06-12 10:30:08 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -340,6 +340,9 @@ $FIRSTPARAGRAPHINDENT = 'none';
 
 # simple headers formatting, not in a table and using node names.
 $HEADER_IN_TABLE = 0;
+
+# output the generation date in the header.
+$DATE_IN_HEADER = 0;
 
 # use table for indentation of complex formats
 $COMPLEX_FORMAT_IN_TABLE = 0;

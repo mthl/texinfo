@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.48 2010-03-31 09:12:23 pertusus Exp $
+# $Id: html.init,v 1.49 2010-06-12 10:30:15 pertusus Exp $
 
 use strict;
 
@@ -885,6 +885,10 @@ sub HTML_DEFAULT_print_page_head($)
          ($description ne '');
     my $encoding = '';
     $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
+    my $date = '';
+    my $today = $Texi2HTML::THISDOC{'today'};
+    $today = '' if (!defined($today));
+    $date = "\n<meta name=\"date\" content=\"$today\">" if ($DATE_IN_HEADER and $today ne '');
     my $links = '';
     if ($USE_LINKS)
     {
@@ -917,7 +921,7 @@ $description
 <meta name="keywords" content="$longtitle">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="$Texi2HTML::THISDOC{program}">
+<meta name="Generator" content="$Texi2HTML::THISDOC{program}">$date
 $encoding
 ${links}$css_text
 $EXTRA_HEAD

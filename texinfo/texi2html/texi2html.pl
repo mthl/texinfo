@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.381 2010-04-20 22:20:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.382 2010-06-12 10:30:10 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -422,6 +422,7 @@ $DATE
 $ENABLE_ENCODING_USE_ENTITY
 $PROGRAM_NAME_IN_FOOTER
 $HEADER_IN_TABLE
+$DATE_IN_HEADER
 $COMPLEX_FORMAT_IN_TABLE
 $USE_TITLEPAGE_FOR_TITLE
 $INLINE_CSS_STYLE
