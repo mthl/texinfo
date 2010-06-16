@@ -1,3 +1,10 @@
+2010-06-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\verbbox): use this for verbatim lines
+	instead of \box0, for clarity.
+	(\starttabbox): make \verbbox assignment global,
+	in case of verbatim lines starting with accents.
+
 2010-06-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\LaTeX): with 10pt running text, use
