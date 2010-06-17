@@ -1,3 +1,9 @@
+2010-06-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\setupverbatim): restore wrongly-removed
+	\leavevmode, for sake of blank lines in verbatim environments.
+	Doc tweaks.
+
 2010-06-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\verbbox): use this for verbatim lines
