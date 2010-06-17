@@ -1,3 +1,9 @@
+2010-06-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\macroargctxt): set \catcode`\\=0, as a try
+	at supporting \\ \{ \} (but not \,) in macro args.
+	Report from Ralf W, Eric B, Patrice D, 	14 Jun 2010 23:48:39.
+
 2010-06-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\setupverbatim): restore wrongly-removed
