@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.382 2010-06-12 10:30:10 pertusus Exp $
+# $Id: texi2html.pl,v 1.383 2010-06-20 20:19:17 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -218,7 +218,9 @@ sub set_config_init_dirs_output($)
   my $program_name = shift;
   if (!defined($command_format{$program_name}))
   {
-    die sprintf(__("%s: unknown program name: %s\n"), $real_command_name, $program_name);
+    # user can make any link to set $0, or use --program with an unknown name. 
+    # In that case the default is to use texi2any
+    $program_name = 'texi2any';
   }
   my $default_output_format = $command_format{$program_name};
 
