@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
+@c $Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10416,7 +10416,7 @@ exclamation mark, or colon that should not be followed by extra space.
 For example, use @code{@@:}@: after periods that end abbreviations
 which are not at the ends of sentences.
 
-Also, When a parenthetical remark in the middle of a sentence (like
+Also, when a parenthetical remark in the middle of a sentence (like
 this one!)@: ends with a period, exclamation point, or question mark,
 @code{@@:} should be used after the right parenthesis.
 
@@ -14182,11 +14182,14 @@ No arguments here.
 Passing strings containing commas as macro arguments requires special
 care, since they should be properly @dfn{quoted} to prevent
 @command{makeinfo} from confusing them with argument separators.  To
-manually quote a comma, prepend it with a backslash character, like
-this: @code{\,}.  Alternatively, use the @code{@@comma} command
-(@pxref{Inserting a Comma}).  However, to facilitate use of macros,
-@command{makeinfo} implements a set of rules called @dfn{automatic
-quoting}:
+manually quote a comma, the most reliable method is to use the
+@code{@@comma@{@}} command.  For @code{makeinfo}, you can also prepend
+a backslash character, as in @samp{\,}, but this does not work with
+@TeX{}.
+
+It's not always necessary to quote commas.  To facilitate use of
+macros, @command{makeinfo} implements a set of rules called
+@dfn{automatic quoting}:
 
 @enumerate 1
 @item If a macro takes only one argument, all commas in its invocation
@@ -14209,9 +14212,9 @@ will produce the following output
 @strong{FIXME: A nice feature, though it can be dangerous.}
 @end example
 
-And indeed, it can.  Namely, @command{makeinfo}
-does not control number of arguments passed to one-argument
-macros, so be careful when you invoke them.
+And indeed, it can.  Namely, @command{makeinfo} does not control the
+number of arguments passed to one-argument macros, so be careful when
+you invoke them.
 
 @item If a macro invocation includes another command (including a
 recursive invocation of itself), any commas in the nested command
@@ -14242,8 +14245,9 @@ treated as a part of an argument.
 @end enumerate
 
 @cindex Braces, in macro arguments
-Other characters that need to be quoted in macro arguments are
-curly braces and backslash.  For example
+@cindex Backslash, in macro arguments
+In addition to the comma, characters that need to be quoted in macro
+arguments are curly braces and backslash.  For example:
 
 @example
 @@@var{macname} @{\\\@{\@}\,@}
@@ -14251,8 +14255,12 @@ curly braces and backslash.  For example
 
 @noindent
 will pass the (almost certainly error-producing) argument
-@samp{\@{@},} to @var{macname}.  However, commas in parameters, even
-if escaped by a backslash, might cause trouble in @TeX{}.
+@samp{\@{@},} to @var{macname}.
+
+Unfortunately, this has not been reliably implemented in @TeX{}.  When
+macros are used in the argument to other commands, for example, errors
+or incorrect output (the @samp{\} ``escape'' being included
+literally) are likely to result.
 
 If the macro is defined to take a single argument, and is invoked
 without any braces, the entire rest of the line after the macro name is
@@ -17755,8 +17763,8 @@ documents and implementations are available elsewhere on the web.
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
 software has to guess whether a given manual being cross-referenced is
 available in split or monolithic form---and, inevitably, it might
-guess wrong.  However, when the referent manual itself is generated,
-it is possible to handle at least some mismatches.
+guess wrong.  However, when the referent manual is generated, it is
+possible to handle at least some mismatches.
 
 In the case where we assume the referent is split, but it is actually
 available in mono, the only recourse would be to generate a
@@ -17791,8 +17799,8 @@ Then, in the @code{<body>} tag of @file{manual.html}:
 
 Once again, this is something the software which generated the
 @emph{referent} manual has to do in advance, it's not something the
-software generating the actual cross-reference in the present manual
-can control.
+software generating the cross-reference in the present manual can
+control.
 
 Ultimately, we hope to allow for an external configuration file to
 control which manuals are available from where, and how.
@@ -19698,7 +19706,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
+$Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19777,7 +19785,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.253 2010-05-18 00:15:59 karl Exp $
+@comment $Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

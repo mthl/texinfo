@@ -1,3 +1,7 @@
+2010-06-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Invoking Macros): lament escape convention.
+
 2010-06-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\macroargctxt): set \catcode`\\=0, as a try
