@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.383 2010-06-20 20:19:17 pertusus Exp $
+# $Id: texi2html.pl,v 1.384 2010-06-21 07:03:14 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4326,7 +4326,8 @@ foreach my $file (@texinfo_htmlxref_files)
     {
         my $line = $hline;
         $line_nr++;
-        $hline =~ s/[#]\s.*//;
+        next if $hline =~ /^\s*#/;
+        #$hline =~ s/[#]\s.*//;
         $hline =~ s/^\s*//;
         next if $hline =~ /^\s*$/;
         my @htmlxref = split /\s+/, $hline;
