@@ -29,7 +29,7 @@ my $from_command_line = shift;
 info_default_load();
 
 $SHOW_MENU = 0;
-$OUT = '-';
+$OUT = '-' unless(defined($OUT) and $OUT !~ m:/$:);
 $HEADERS = 0;
 @T2H_FORMAT_EXPAND = ('plaintext');
 
