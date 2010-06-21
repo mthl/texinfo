@@ -1,4 +1,10 @@
+2010-06-21  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: 2010.
+
 2010-06-20  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh (usage): mention TEXI2HTML envvar.
 
 	* doc/texinfo.txi (Invoking Macros): lament escape convention.
 
