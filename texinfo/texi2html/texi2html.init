@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.268 2010-06-22 17:09:48 karl Exp $
+# $Id: texi2html.init,v 1.269 2010-06-22 23:25:28 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1354,6 +1354,7 @@ sub t2h_enable_encoding_load()
      {
        $t2h_enable_encoding_default_commands{'normal'}->{$key} = $things_map{$key};
        $t2h_enable_encoding_default_commands{'texi'}->{$key} = $texi_map{$key};
+       $t2h_enable_encoding_default_commands{'sorting'}->{$key} = $sorting_things_map{$key};
        $t2h_enable_encoding_default_commands{'pre'}->{$key} = $pre_map{$key};
      }
    }
@@ -1367,6 +1368,7 @@ sub t2h_enable_encoding_finish()
      {
        $things_map{$key} = $t2h_enable_encoding_default_commands{'normal'}->{$key};
        $texi_map{$key} = $t2h_enable_encoding_default_commands{'texi'}->{$key};
+       $sorting_things_map{$key} = $t2h_enable_encoding_default_commands{'sorting'}->{$key};
        $pre_map{$key} = $t2h_enable_encoding_default_commands{'pre'}->{$key}; 
      }
    }
@@ -1382,6 +1384,7 @@ sub t2h_enable_encoding_init()
       {
         $things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($things_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($sorting_things_map{$key}));
         $pre_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($pre_map{$key}));
       }
     }
@@ -1397,6 +1400,7 @@ sub t2h_enable_encoding_init()
       { # we let perl handle the conversion
         $things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($things_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($sorting_things_map{$key}));
         $pre_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($pre_map{$key}));
       }
     }
@@ -2392,15 +2396,17 @@ $after_punctuation_characters = '"\')]';
 
 # text replacing macros when texi commands are removed and plain text is 
 # produced.
-# Also used for index sorting.
 %texi_map = %default_things_map;
 
+# used for index sorting.
+%sorting_things_map = %default_things_map;
 foreach my $accent_letter ('o','O','l','L')
 {
-  $texi_map{$accent_letter} = $accent_letter;
+  $sorting_things_map{$accent_letter} = $accent_letter;
 }
-$texi_map{'copyright'} = 'C';
-$texi_map{'registeredsymbol'} = 'R';
+$sorting_things_map{'copyright'} = 'C';
+$sorting_things_map{'registeredsymbol'} = 'R';
+$sorting_things_map{'today'} = 't';
 
 %default_texi_map = %texi_map;
 

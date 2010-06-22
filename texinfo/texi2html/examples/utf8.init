@@ -42,6 +42,7 @@ foreach my $key (%things_map)
     {
         $things_map{$key} = chr(hex($unicode_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key}));
         $pre_map{$key} = chr(hex($unicode_map{$key}));
     }
 }

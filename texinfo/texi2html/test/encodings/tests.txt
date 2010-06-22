@@ -10,6 +10,7 @@ texi weird_accents.texi
 texi ogolat2.texi
 texi ogoutf.texi
 texi documentlanguage_set.texi
+texi formatting_utf8.texi
 nodetest nodetest.texi
 nodetest_chapter nodetest.texi --split chapter
 nodetest_use_nodes_no_unicode nodetest.texi --init no_unicode.init --node-files --use-nodes --split node
@@ -66,3 +67,6 @@ encoding_index-latin1 encoding_index-latin1.texi
 encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.init
 accentenc_info accentenc.texi --init info.init
 sample_utf8 sample_utf8.texi
+formatting_utf8_enable_encoding formatting_utf8.texi --enable-encoding
+encoding_index-utf8_enable_encoding encoding_index-utf8.texi --enable-encoding
+encoding_index-latin1_enable_encoding encoding_index-latin1.texi --enable-encoding

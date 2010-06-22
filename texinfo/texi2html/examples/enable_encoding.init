@@ -80,6 +80,7 @@ sub enable_encoding_init_out()
       {
         $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($sorting_things_map{$key}));
         $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
       }
     }
@@ -104,6 +105,7 @@ sub enable_encoding_init_out()
       { # we let perl handle the conversion
         $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
         $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($sorting_things_map{$key}));
         $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
       }
     }

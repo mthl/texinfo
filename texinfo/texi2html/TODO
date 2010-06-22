@@ -3,8 +3,34 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
+* variable expansion in htmlxref.cnf. syntax could be like
+var = value
+and expand ${var}
+
+* chapter and section in htmlxref.cnf
+
+* fix index entry and letter association
+
+* texi2html generates too much in cross references (report from Karl):
+
+For this xref:
+  @pxref{Internationalization,,,standards,GNU Coding Standards}
+
+makeinfo.pl generates:
+  see <(standards)Internationalization> section Internationalization in GNU
+  Coding Standards
+
+    * if there is a printed manual name, the info manual name should be
+      omitted
+    * the node should only be used if there is no section name.
+
+
 Later
 -----
+
+* test --headers --output, and the other order, especially when in 
+  info mode, such that it triggers also plaintext. Also test with 
+  directories and files.
 
 * line breaking could happen after a full width character.
 
@@ -105,6 +131,7 @@ Later
   t2h_text_substitutions
   t2h_default_set_iso_symbols
   document the math related maps, simple_map_math, math_map, style_map_math
+  document sorting_things_map
   new quotation argument
 
 * document translations, based on this mail. Also document the relevant

@@ -1,0 +1,53 @@
+top
+***
+
+
+* Index:
+* ,: top.
+* 0: top.
+* 9: top.
+* >=: top.
+* ``: top.
+* ¡: top.
+* °: top.
+* a: top.
+* A: top.
+* b: top.
+* B: top.
+* c: top.
+* d: top.
+* e: top.
+* Euro: top.
+* f: top.
+* g: top.
+* h: top.
+* i: top.
+* i i (dotless): top.
+* j: top.
+* k: top.
+* l: top.
+* /l: top.
+* /L: top.
+* m: top.
+* n: top.
+* o: top.
+* p: top.
+* q: top.
+* r: top.
+* s: top.
+* ‗: top.
+* t: top.
+* u: top.
+* v: top.
+* w: top.
+* x: top.
+* y: top.
+* z: top.
+* Æ: top.
+* י ייייי: top.
+* מ מ (dotless): top.
+* מ ממממ: top.
+* ן ןןן: top.
+* Ð: top.
+* Þ: top.
+

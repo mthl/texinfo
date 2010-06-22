@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.385 2010-06-22 17:09:48 karl Exp $
+# $Id: texi2html.pl,v 1.386 2010-06-22 23:25:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -627,6 +627,7 @@ $complex_format_map
 %pre_map
 %math_map
 %texi_map
+%sorting_things_map
 %unicode_map
 %unicode_diacritical
 %transliterate_map 
@@ -4343,7 +4344,7 @@ foreach my $file (@texinfo_htmlxref_files)
         
         if (defined($href))
         {
-            $href =~ s/\/*$// if ($split_or_mono eq 'split');
+            $href =~ s/\/*$// if ($split_or_mono ne 'mono');
             $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
         }
         else
@@ -6271,6 +6272,21 @@ sub menu_entry_texi($$$)
     $state->{'prev_menu_node'} = $node_menu_ref;
 }
 
+my @index_labels;                  # array corresponding with @?index commands
+                                   # constructed during pass_structure, used to
+                                   # put labels in pass_text
+my @unknown_index_index_entries;   # array of index entries not associated 
+                                   # with any index
+
+sub sorted_line($)
+{
+   my $line = shift;
+   $::texi_map_ref = \%Texi2HTML::Config::sorting_things_map;
+   my $result = remove_texi($line);
+   $::texi_map_ref = \%Texi2HTML::Config::texi_map;
+   return $result;
+}
+
 sub prepare_indices()
 {
     #print STDERR "Do splitting of index letters, once.\n";
@@ -6281,7 +6297,8 @@ sub prepare_indices()
         my %letters_hash;
         foreach my $index_entry (@{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}})
         {
-          my $key = $index_entry->{'key'};
+          my $key = sorted_line($index_entry->{'texi'});
+          $index_entry->{'key'} = $key;
           my $letter = uc(substr($key, 0, 1));
           push @{$letters_hash{$letter}}, $index_entry;
         }
@@ -6300,12 +6317,16 @@ sub prepare_indices()
           push @{$Texi2HTML::THISDOC{'index_letters_array'}->{$index_name}}, { 'letter' => $letter, 'entries' => \@sorted_letter_entries };
         }
     }
+
+    # generate the keys for index sorting also for the entries not
+    # associated with an index. 
+    foreach my $index_entry_without_index (@unknown_index_index_entries)
+    {
+       my $key = sorted_line($index_entry_without_index->{'texi'});
+       $index_entry_without_index->{'key'} = $key;
+    }
     Texi2HTML::Config::t2h_default_init_split_indices();
 }
-
-my @index_labels;                  # array corresponding with @?index commands
-                                   # constructed during pass_structure, used to
-                                   # put labels in pass_text
 
 # This function is used to construct link names from node names as
 # specified for texinfo
@@ -8220,12 +8241,10 @@ sub enter_index_entry($$$$$)
         line_error (sprintf(__("Entry for index `%s' outside of any node"), $index_name), $line_nr);
     }
     $entry = trim_comment_spaces ($entry, "index entry in \@$command", $line_nr);
-    # The $key is mostly usefull for alphabetical sorting.
-    # This could be done later while sorting, but it doesn't really matter
-    # since there are no error messages anyway.
-    my $key = remove_texi($entry);
-    # beware that the texinfo could be non empty, but the key be empty. So the
-    # key should be used to determine whether the entry is empty or not.
+    # beware that the texinfo could be non empty, but the no_texi be empty. 
+    # So the $no_texi should be used to determine whether the entry is 
+    # empty or not.
+    my $no_texi = remove_texi($entry);
 
     my $id;
     # don't add a specific index target if the index entry is in a special
@@ -8242,7 +8261,6 @@ sub enter_index_entry($$$$$)
     # the same.
     my $index_entry = {
            'entry'    => $entry,
-           'key'      => $key,
            'texi'     => $entry,
            'element'  => $heading_element,
            'real_element'  => $current_element,
@@ -8257,14 +8275,14 @@ sub enter_index_entry($$$$$)
     
     my $id_text = $id;
     $id_text = 'NO ID' if (!defined($id));
-    print STDERR "# in $region enter \@$command ${prefix}index($key) [$entry] with id $id_text ($index_entry)\n"
+    print STDERR "# in $region enter \@$command ${prefix}index($no_texi) [$entry] with id $id_text ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
 
     $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
        if (defined($index_name) and 
         defined($index_names{$index_name}->{'prefixes'}) and 
         $index_names{$index_name}->{'prefixes'}->{$prefix} 
-        and $key =~ /\S/);
+        and $no_texi =~ /\S/);
 
     push @$place, $index_entry;
 
@@ -8278,10 +8296,17 @@ sub enter_index_entry($$$$$)
 
     # these lists are used to retrieve index entries in pass 3
     push @{$Texi2HTML::THISDOC{'index_entries'}->{$region}->{$entry}->{'entries'}}, $index_entry;
-    # this is used for @printindex
-    push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry if (defined($index_name));
-    # this is used for targets
-    push @{$Texi2HTML::THISDOC{'index_entries_region_array'}->{$region}}, $index_entry if (defined($index_name));
+    if (defined($index_name))
+    {
+        # this is used for @printindex
+        push @{$Texi2HTML::THISDOC{'index_entries_array'}->{$index_name}}, $index_entry;
+        # this is used for targets
+        push @{$Texi2HTML::THISDOC{'index_entries_region_array'}->{$region}}, $index_entry;
+    }
+    else
+    {
+        push @unknown_index_index_entries, $index_entry;
+    }
 }
 
 # these variables are global, so great care should be taken with
@@ -16341,7 +16366,7 @@ sub do_index_entry_label($$$$;$)
           'prefix' => $prefix,
           'index_name' => $index_name,
         };
-        $entry->{'key'} = remove_texi($entry_texi);
+        $entry->{'key'} = sorted_line($entry_texi);
         $entry->{'entry'} = '@code{'.$entry->{'entry'}.'}'
             if (defined($index_name) and
              defined($index_names{$index_name}->{'prefixes'}) and
@@ -16845,6 +16870,8 @@ while(@input_files)
                                    # put labels in pass_text
                                    # right now it is only used for debugging
                                    # purposes.
+   @unknown_index_index_entries = ();  # holds index entries not associated
+                                       # with any index
    %{$Texi2HTML::THISDOC{'index_entries_array'}} = (); # holds the index 
                               # entries in order of appearance in the document
                               # for each index name.

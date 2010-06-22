@@ -1,3 +1,12 @@
+2010-06-22  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: format the key of index entries as late as possible
+	allowing for example to take into account --enable-encoding.
+	* texi2html.pl, texi2html.init: Add a new map for sorted strings, 
+	%sorting_things_map, to avoid taking into account the sorting in 
+	%texi_map. For example @copyright can now be (C) while it is C 
+	in sorting_things_map. Report by Karl.
+
 2010-06-22  Karl Berry  <karl@gnu.org>
 
 	* texi2html.pl: sectionning has one n in English.

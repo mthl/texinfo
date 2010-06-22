@@ -172,7 +172,7 @@ texinfo_14.txt#g_t_0040dots_007b_007d-_0028_2026_0029-and-_0040enddots_007b_007d
 texinfo_14.txt#g_t_0040bullet_007b_007d-_0028_2022_0029	toc	13.4.2 @bullet{} (*)
 texinfo_14.txt#Inserting-TeX-and-the-Copyright-Symbol	toc	13.5 Inserting TeX and the Copyright Symbol
 texinfo_14.txt#g_t_0040TeX_007b_007d-_0028TeX_0029	toc	13.5.1 @TeX{} (TeX)
-texinfo_14.txt#g_t_0040copyright_007b_007d-_0028_00a9_0029	toc	13.5.2 @copyright{} (C)
+texinfo_14.txt#g_t_0040copyright_007b_007d-_0028_00a9_0029	toc	13.5.2 @copyright{} ((C))
 texinfo_14.txt#g_t_0040pounds_007b_007d-_0028_00a3_0029_003a-Pounds-Sterling	toc	13.6 @pounds{} (#): Pounds Sterling
 texinfo_14.txt#g_t_0040minus_007b_007d-_0028_2212_0029_003a-Inserting-a-Minus-Sign	toc	13.7 @minus{} (-): Inserting a Minus Sign
 texinfo_14.txt#g_t_0040math_003a-Inserting-Mathematical-Expressions	toc	13.8 @math: Inserting Mathematical Expressions
