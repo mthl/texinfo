@@ -55,8 +55,7 @@ $DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://w
 @T2H_FORMAT_EXPAND = ('docbook');
 @IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
 $INLINE_INSERTCOPYING = 1;
-# this should lead to end_section being only called at the end of 
-# sectionning
+# this should lead to end_section being only called at the end of sectioning
 $USE_NODES = 0;
 $USE_SECTIONS = 1;
 

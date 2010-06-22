@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.267 2010-06-12 10:30:08 pertusus Exp $
+# $Id: texi2html.init,v 1.268 2010-06-22 17:09:48 karl Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -52,7 +52,7 @@
 # --split section|chapter|node|none
 # if $SPLIT is set to 'section' (resp. 'chapter') one html file per section 
 # (resp. chapter) is generated. If $SPLIT is set to 'node' one html file per 
-# node or sectionning element is generated. In all these cases separate pages 
+# node or sectioning element is generated. In all these cases separate pages 
 # for Top, Table of content (Toc), Overview and About are generated.
 # Otherwise a monolithic html file that contains the whole document is 
 # created.
@@ -230,7 +230,7 @@ $FRAMES = 0;
 $SHOW_MENU = 1;
 
 # --use-nodes
-# if this is set the nodes are used as sectionning elements. 
+# if this is set the nodes are used as sectioning elements. 
 # Otherwise the nodes are incorporated in sections.
 $USE_NODES = 1;
 
@@ -280,7 +280,7 @@ $DEF_TABLE = 0;
 $VERBOSE = '';
 
 # --ignore-preamble-text
-# If this is set the text before @node and sectionning commands is ignored.
+# If this is set the text before @node and sectioning commands is ignored.
 $IGNORE_PREAMBLE_TEXT = 0;
 
 # --html-xref-prefix
@@ -1495,7 +1495,7 @@ $DATE = undef;
 # Following   -- following node in node reading order, taking menu into account
 # Forward     -- next node in reading order
 # Back        -- previous node in reading order
-# Up          -- parent given by sectionning commands
+# Up          -- parent given by sectioning commands
 # FastForward -- if leave node, up and next, else next node
 # FastBackward-- if leave node, up and prev, else prev node
 #
@@ -6566,7 +6566,7 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
 # This function formats a heading for an element
 #
 # argument:
-# an element. It is a hash reference for a node or a sectionning command.
+# an element. It is a hash reference for a node or a sectioning command.
 #             it may be the wrong one in case of headings.
 # The interesting keys are:
 # 'text': the heading text
@@ -6574,7 +6574,7 @@ sub t2h_default_element_heading($$$$$$$$$$$$)
 # 'node': true if it is a node
 # 'level': level of the element. 0 for @top, 1 for chapter, heading, 
 #      appendix..., 2 for section and so on...
-# 'tag_level': the sectionning element name, raisesections and lowersections
+# 'tag_level': the sectioning element name, raisesections and lowersections
 #      taken into account
 sub t2h_default_heading($$$$$;$$)
 {

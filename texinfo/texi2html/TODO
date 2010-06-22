@@ -10,7 +10,7 @@ Later
 
 * images.texi, paragraph_in_samp.texi should be tested in xml too.
   Maybe they should be moved to coverage, and in coverage all the formats
-  should be tested like in sectionning. 
+  should be tested like in sectioning. 
 
 * invalid/caption_not_closed.texi some doubtful <p><strong></strong></p>
   appears, it is empty and it isn't clear where it comes from.
@@ -195,7 +195,7 @@ expansion (with 'keep_texi' in the state).
 
 * document the css classes:
 
-Sectionning command headings @top, @chapter, @appendix...
+Sectioning command headings @top, @chapter, @appendix...
 h? @var{command_name}
 
 for @display, @example, @smallexample...
@@ -312,7 +312,7 @@ function clean_antispam() {
 
   also use informaltable or table, for multitable?
 
-  What is before the first sectionning command is put in <bookinfo><abstract>.
+  What is before the first sectioning command is put in <bookinfo><abstract>.
 
   what about @titlefont in docbook?
 
@@ -400,7 +400,7 @@ function clean_antispam() {
   it would be logical to treat the space after the itemize mark as 
   a tie instead of a breakpoint.
 
-* in sectionning/first_section_no_node in _html, the @unnumbered is included
+* in sectioning/first_section_no_node in _html, the @unnumbered is included
   in the first node, while makeinfo outputs it before the first node, and 
   the header is only output when there is a @node.
 

@@ -6,7 +6,7 @@
 #
 # texi2html: Program to transform Texinfo documents to HTML
 #
-#    Copyright (C) 1999-2005  Patrice Dumas <pertusus@free.fr>,
+#    Copyright (C) 1999-2010  Patrice Dumas <pertusus@free.fr>,
 #                             Derek Price <derek@ximbiot.com>,
 #                             Adrian Aichner <adrian@xemacs.org>,
 #                           & others.
@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.384 2010-06-21 07:03:14 pertusus Exp $
+# $Id: texi2html.pl,v 1.385 2010-06-22 17:09:48 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -1180,7 +1180,7 @@ sub t2h_default_associate_index_element($$$$)
   # iterate over the @places of the element, which includes associated nodes,
   # associated elements, anchors, footnotes, floats, index entries, 
   # printindices (including the element command itself, be it a @node or 
-  # a sectionning @-command). 
+  # a sectioning @-command). 
   # during the iteration, split printindices that needs it, and reassociate
   # other placed elements with files and elements.
 
@@ -2124,9 +2124,9 @@ my %reference_sec2level = (
 	      'appendixsubsubsec', 4,
          );
 
-# the reverse mapping. There is an entry for each sectionning command.
+# the reverse mapping. There is an entry for each sectioning command.
 # The value is a ref on an array containing at each index the corresponding
-# sectionning command name.
+# sectioning command name.
 my %level2sec;
 {
     my $sections = [ ];
@@ -3022,7 +3022,7 @@ $T2H_OPTIONS -> {'use-nodes'} =
 {
  type => '!',
  linkage => \$Texi2HTML::Config::USE_NODES,
- verbose => 'use nodes for sectionning',
+ verbose => 'use nodes for sectioning',
 };
 
 $T2H_OPTIONS -> {'node-files'} =
@@ -3160,7 +3160,7 @@ $T2H_OPTIONS -> {'ignore-preamble-text'} =
 {
   type => '!',
   linkage => \$Texi2HTML::Config::IGNORE_PREAMBLE_TEXT,
-  verbose => 'if set, ignore the text before @node and sectionning commands',
+  verbose => 'if set, ignore the text before @node and sectioning commands',
   noHelp => 1,
 };
 
@@ -4925,7 +4925,7 @@ sub initialise_state_structure($)
     $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'direntry'} = 0;     # number of opened direntry  
-    $state->{'sectionning_base'} = 0;         # current base sectionning level
+    $state->{'sectionning_base'} = 0;         # current base sectioning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
     # seems to be only debug
     if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
@@ -4935,7 +4935,7 @@ sub initialise_state_structure($)
     }
 }
 # This is a virtual element for things appearing before @node and 
-# sectionning commands
+# sectioning commands
 my $element_before_anything;
 
 #
@@ -4963,7 +4963,7 @@ my @nodes_list;             # nodes in document reading order
                             # each member is a reference on a hash
 my @sections_list;          # sections in reading order
                             # each member is a reference on a hash
-my @all_elements;           # sectionning elements (nodes and sections)
+my @all_elements;           # sectioning elements (nodes and sections)
                             # in reading order. Each member is a reference
                             # on a hash which also appears in %nodes,
                             # @sections_list @nodes_list, @elements_list
@@ -6206,7 +6206,7 @@ sub misc_command_text($$$$$$)
     return ($remaining, $result);
 }
 
-# merge the things appearing before the first @node or sectionning command
+# merge the things appearing before the first @node or sectioning command
 # (held by element_before_anything) with the current element 
 # do that only once.
 sub merge_element_before_anything($)
@@ -6698,7 +6698,7 @@ sub rearrange_elements()
     print STDERR "# find sections structure, construct section numbers (toplevel=$toplevel)\n"
         if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     my $in_appendix = 0;
-    # these arrays have an element per sectionning level. 
+    # these arrays have an element per sectioning level. 
     my @previous_numbers = ();   # holds the number of the previous sections
                                  # at the same and upper levels
     my @previous_sections = ();  # holds the ref of the previous sections
@@ -6719,7 +6719,7 @@ sub rearrange_elements()
         $section->{'node_ref'} = $nodes_list[0] if ($nodes_list[0] and !$section->{'node_ref'});
 
         # a part doesn't really make up an element, it is associated with the
-        # next sectionning element instead.
+        # next sectioning element instead.
         if ($section->{'tag'} eq 'part')
         {
            push @pending_parts, $section;
@@ -6766,7 +6766,7 @@ sub rearrange_elements()
             $previous_toplevel = $section if ($section->{'tag'} ne 'part');
             # In fact this is only useful for toplevel elements appearing
             # before @top, the other have their sectionup reset up below
-            # based on the sectionning commands hierarchy.
+            # based on the sectioning commands hierarchy.
             if (defined($section_top) and $section ne $section_top)
             {
                 $section->{'sectionup'} = $section_top;
@@ -7047,7 +7047,7 @@ sub rearrange_elements()
         }
 
         # use values deduced from menus to complete missing up, next, prev
-        # or from sectionning commands if automatic sectionning
+        # or from sectioning commands if automatic sectioning
         if (!$node->{'nodeup'})
         {
             if (defined($node_top) and ($node eq $node_top) and $node->{'automatic_directions'})
@@ -7069,7 +7069,7 @@ sub rearrange_elements()
             {
                 if ($node->{'with_section'})
                 {
-                    # ignore the up if it is a @part. If the sectionning is
+                    # ignore the up if it is a @part. If the sectioning is
                     # correct, the element is toplevel and will be handled 
                     # by the next condition. 
                     if ($node->{'with_section'}->{'sectionup'} and !$node->{'with_section'}->{'sectionup'}->{'part_section_ref'})
@@ -7168,8 +7168,8 @@ sub rearrange_elements()
                 }
                 if (defined($next) and $Texi2HTML::Config::SHOW_MENU and $warn_for_next_not_in_menu)
                 {
-                    line_warn (sprintf(__("No node following `%s' in menu, but `%s' follows in sectionning"), $node->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
-                    line_warn (sprintf(__("Node following `%s' in menu `%s' and in sectionning `%s' differ"), $node->{'texi'}, $node->{'menu_next'}->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) 
+                    line_warn (sprintf(__("No node following `%s' in menu, but `%s' follows in sectioning"), $node->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) if (!defined($node->{'menu_next'}));
+                    line_warn (sprintf(__("Node following `%s' in menu `%s' and in sectioning `%s' differ"), $node->{'texi'}, $node->{'menu_next'}->{'texi'}, $next->{'texi'}), $node->{'line_nr'}) 
                        if (defined($node->{'menu_next'}) and $next ne $node->{'menu_next'});
                 }
                 $node->{'nodenext'} = $next;
@@ -7464,7 +7464,7 @@ sub rearrange_elements()
     print STDERR "# find fastback and fastforward\n" 
        if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $element (@elements_list)
-    { # nodes are ignored here, although their associated sectionning
+    { # nodes are ignored here, although their associated sectioning
       # command may be taken into account.
         my $up = get_top($element);
         next unless (defined($up));
@@ -7766,7 +7766,7 @@ sub rearrange_elements()
                         $element->{'file'} = $element->{'cross'} 
                          . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
                     }
-                    # The remaining case is for sectionning elements with empty
+                    # The remaining case is for sectioning elements with empty
                     # headings and no node associated. They will have a name
                     # with numbers, like "${docu_name}_$doc_nr", they may 
                     # collide with split indices names
@@ -7792,8 +7792,8 @@ sub rearrange_elements()
             do_element_targets($element);
         }
     }
-    # 'pathological' cases. No texinfo sectionning element at all or no 
-    # texi2html sectionning elements
+    # 'pathological' cases. No texinfo sectioning element at all or no 
+    # texi2html sectioning elements
     if (!@elements_list)
     {
         if (@all_elements)
@@ -16822,7 +16822,7 @@ while(@input_files)
                             # each member is a reference on a hash
    @sections_list = ();     # sections in reading order
                             # each member is a reference on a hash
-   @all_elements = ();      # sectionning elements (nodes and sections)
+   @all_elements = ();      # sectioning elements (nodes and sections)
                             # in reading order. Each member is a reference
                             # on a hash which also appears in %nodes,
                             # @sections_list @nodes_list, @elements_list

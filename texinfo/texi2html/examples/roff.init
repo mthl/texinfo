@@ -922,14 +922,14 @@ sub t2h_roff_preformatted($$$$$$$$$$)
 # This function formats a heading for an element
 #
 # argument:
-# an element. It is a hash reference for a node or a sectionning command.
+# an element. It is a hash reference for a node or a sectioning command.
 # The interesting keys are:
 # 'text': the heading text
 # 'name': the heading text without section number
 # 'node': true if it is a node
 # 'level': level of the element. 0 for @top, 1 for chapter, heading, 
 #      appendix..., 2 for section and so on...
-# 'tag_level': the sectionning element name, raisesections and lowersections
+# 'tag_level': the sectioning element name, raisesections and lowersections
 #      taken into account
 sub t2h_roff_heading($$$$$;$$)
 {

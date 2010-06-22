@@ -618,7 +618,7 @@ This file records noteworthy changes.
   cross references from other manuals (including manuals generated with 
   makeinfo --html).
 
-* With --use-nodes nodes are sectionning commands whe they are not associated
+* With --use-nodes nodes are sectioning commands whe they are not associated
   with a structuring command.
 
 * With --toc-links create links from headings to toc entries.
@@ -650,7 +650,7 @@ This file records noteworthy changes.
   the rules part after the texi2html css rules).
   The texi2html css commands may be customized too.
 
-* Text before the first @node or sectionning command is part of the first
+* Text before the first @node or sectioning command is part of the first
   section unless -ignore-preamble-text is set.
 
 * if `-' is given to the -output option, output on STDOUT.
