@@ -1,3 +1,15 @@
+2010-06-23  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (test_local): redirect output away, to avoid
+	 local: not found
+	 on Solaris 10 et al.  Report from Nelson Beebe,
+	 23 Jun 2010 16:08:07.
+
+2010-06-21  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* doc/texinfo.txi (Inserting a Comma): Quote meta-use of
+	@comma{} in running text.
+
 2010-06-21  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh: 2010.
