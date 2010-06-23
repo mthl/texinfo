@@ -3,13 +3,7 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* variable expansion in htmlxref.cnf. syntax could be like
-var = value
-and expand ${var}
-
 * chapter and section in htmlxref.cnf
-
-* fix index entry and letter association
 
 * texi2html generates too much in cross references (report from Karl):
 
@@ -24,9 +18,19 @@ makeinfo.pl generates:
       omitted
     * the node should only be used if there is no section name.
 
+* unconditionnally add a colon after index node and menu node
+  when not in texi2html mode. Report from Karl.
+
+* verify that a format option switch never overwrite previously
+  set user option switch. For example, right now, --html overrides
+  --no-split which is bad. Report from Karl.
 
 Later
 -----
+
+* have a way to know whether a description is present or not 
+  when formatting the menu_entry. This could allow not having a 
+  colon after menu_entry when there is no description.
 
 * test --headers --output, and the other order, especially when in 
   info mode, such that it triggers also plaintext. Also test with 
@@ -413,8 +417,8 @@ function clean_antispam() {
   into errors.
 
 * when determining the different letters and later sorting them, there 
-  should not be transliteration, but instead perl sorting and i18n stuff
-  should be used. Cf testcases in encoding/encoding_index*.
+  perl sorting and i18n stuff should be used at least when 
+  --enable-encoding is set. Cf testcases in encoding/encoding_index*.
   Currently, for example for encoding_index-latin1 accented letters are
   at the end. And degree is at o...
 

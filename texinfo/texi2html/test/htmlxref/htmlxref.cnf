@@ -1,4 +1,9 @@
 # a comment
   # a comment
-manual split split-dir-manual/
+
+R = split
+ _1A=dir-
+S = ${R}-${_1A}manu
+
+manual split ${S}al/
 manual mono   mono-manual.html

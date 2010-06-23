@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.386 2010-06-22 23:25:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.387 2010-06-23 19:45:08 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -4314,6 +4314,7 @@ $Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 # parse texinfo cnf file for external manual specifications. This was
 # discussed on texinfo list but not in makeinfo for now. 
 my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
+
 foreach my $file (@texinfo_htmlxref_files)
 {
     print STDERR "html refs config file: $file\n" if ($T2H_DEBUG);    
@@ -4323,6 +4324,7 @@ foreach my $file (@texinfo_htmlxref_files)
          next;
     }
     my $line_nr = 0;
+    my %variables;
     while (my $hline = <HTMLXREF>)
     {
         my $line = $hline;
@@ -4331,6 +4333,15 @@ foreach my $file (@texinfo_htmlxref_files)
         #$hline =~ s/[#]\s.*//;
         $hline =~ s/^\s*//;
         next if $hline =~ /^\s*$/;
+        if ($hline =~ s/^\s*(\w+)\s*=\s*//)
+        {
+           # handle variables
+           my $var = $1;
+           my $re = join '|', map { quotemeta $_ } keys %variables;
+           $hline =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
+           $variables{$var} = $hline;
+           next;
+        }
         my @htmlxref = split /\s+/, $hline;
         my $manual = shift @htmlxref;
         my $split_or_mono = shift @htmlxref;
@@ -4344,6 +4355,8 @@ foreach my $file (@texinfo_htmlxref_files)
         
         if (defined($href))
         {
+            my $re = join '|', map { quotemeta $_ } keys %variables;
+            $href =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
             $href =~ s/\/*$// if ($split_or_mono ne 'mono');
             $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
         }
