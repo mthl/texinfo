@@ -1,4 +1,4 @@
-$Id: TODO,v 1.51 2010-04-04 17:51:34 karl Exp $
+$Id: TODO,v 1.52 2010-06-24 17:24:05 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -124,8 +124,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     27 Feb 2006 22:55:13 +0100.
 
 * Doc:
-  - Include a complete functional summary, as in a reference card, in
-    the manual.
   - Improve the manuals, especially for makeinfo, standalone info, etc.
   - new section on doing dedication pages. See gawk.texi
     for an example of doing it in both the tex and info versions.
