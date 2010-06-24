@@ -1,4 +1,3 @@
-/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
 /* Elementary types for the GNU UniString library.
    Copyright (C) 2002, 2005-2006, 2009-2010 Free Software Foundation, Inc.
 
