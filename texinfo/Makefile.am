@@ -1,6 +1,9 @@
+# $Id: Makefile.am,v 1.27 2010-06-24 00:17:01 karl Exp $
 # Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.26 2010-02-25 08:25:55 pertusus Exp $
 # Process this file with automake to produce Makefile.in in all directories.
+#
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
