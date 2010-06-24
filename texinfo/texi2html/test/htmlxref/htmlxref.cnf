@@ -1,9 +1,15 @@
 # a comment
   # a comment
 
+var = 
 R = split
  _1A=dir-
 S = ${R}-${_1A}manu
 
-manual split ${S}al/
+manual node ${S}al${var}/
 manual mono   mono-manual.html
+manual chapter nonono=!/
+
+# bad entries
+texinfo         foo    http://whatever
+texinfo

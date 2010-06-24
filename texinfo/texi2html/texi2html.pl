@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.387 2010-06-23 19:45:08 pertusus Exp $
+# $Id: texi2html.pl,v 1.388 2010-06-24 13:19:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -203,10 +203,10 @@ my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
 
 # directories for texinfo configuration files
-my @texinfo_config_dirs = ('./.texinfo/');
-push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo/" if (defined($ENV{'HOME'}));
-push @texinfo_config_dirs, "$sysconfdir/texinfo/" if (defined($sysconfdir));
-push @texinfo_config_dirs, "$datadir/texinfo/" if (defined($datadir));
+my @texinfo_config_dirs = ('./.texinfo');
+push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo" if (defined($ENV{'HOME'}));
+push @texinfo_config_dirs, "$sysconfdir/texinfo" if (defined($sysconfdir));
+push @texinfo_config_dirs, "$datadir/texinfo" if (defined($datadir));
 
 my @program_config_dirs;
 my @program_init_dirs;
@@ -236,7 +236,7 @@ sub set_config_init_dirs_output($)
   # common directories for all command names
   foreach my $texinfo_config_dir (@texinfo_config_dirs)
   {
-    push @program_init_dirs, "${texinfo_config_dir}init/";
+    push @program_init_dirs, "${texinfo_config_dir}/init/";
   }
   $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT = $default_output_format;
   $Texi2HTML::Config::COMMAND_NAME = $program_name;
@@ -677,6 +677,7 @@ $after_punctuation_characters
 @text_substitutions_texi
 @text_substitutions_simple_format
 @text_substitutions_pre
+%htmlxref_entries
 );
 
 # deprecated
@@ -4333,7 +4334,8 @@ foreach my $file (@texinfo_htmlxref_files)
         #$hline =~ s/[#]\s.*//;
         $hline =~ s/^\s*//;
         next if $hline =~ /^\s*$/;
-        if ($hline =~ s/^\s*(\w+)\s*=\s*//)
+        chomp ($hline);
+        if ($hline =~ s/^(\w+)\s*=\s*//)
         {
            # handle variables
            my $var = $1;
@@ -4345,9 +4347,15 @@ foreach my $file (@texinfo_htmlxref_files)
         my @htmlxref = split /\s+/, $hline;
         my $manual = shift @htmlxref;
         my $split_or_mono = shift @htmlxref;
-        if (!defined($split_or_mono) or ($split_or_mono ne 'split' and $split_or_mono ne 'mono'))
+#print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
+        if (!defined($split_or_mono))
         {
-            file_line_warn("Bad line", $file, $line_nr);
+            file_line_warn(__("Missing type"), $file, $line_nr);
+            next;
+        }
+        elsif (!defined($Texi2HTML::Config::htmlxref_entries{$split_or_mono}))
+        {
+            file_line_warn(sprintf(__("Unrecognized type: %s"), $split_or_mono), $file, $line_nr);
             next;
         }
         my $href = shift @htmlxref;
@@ -4372,7 +4380,7 @@ if ($T2H_DEBUG)
 {
     foreach my $manual (keys(%{$Texi2HTML::GLOBAL{'htmlxref'}}))
     {
-         foreach my $split ('split', 'mono')
+         foreach my $split (keys(%Texi2HTML::Config::htmlxref_entries))
          {
               my $href = 'NO';
               next unless (exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split}));

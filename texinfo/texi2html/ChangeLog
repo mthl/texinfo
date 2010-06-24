@@ -2,6 +2,9 @@
 
 	* texi2html.pl: add variable substitution in htmlxref.cnf. Karl
 	idea.
+	* texi2html.init: add chapter and section possibilities for
+	split manuals. Report from Karl.
+	* po_*/*: update to a more recent gettext.
 
 2010-06-22  Patrice Dumas  <pertusus@free.fr>
 

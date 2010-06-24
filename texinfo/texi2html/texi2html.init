@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.269 2010-06-22 23:25:28 pertusus Exp $
+# $Id: texi2html.init,v 1.270 2010-06-24 13:19:33 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -5890,6 +5890,14 @@ sub t2h_default_menu_description($$$$)
     return $text;
 }
 
+%htmlxref_entries = (
+ 'node' => [ 'node', 'section', 'chapter', 'mono' ],
+ 'section' => [ 'section', 'chapter','node', 'mono' ],
+ 'chapter' => [ 'chapter', 'section', 'node', 'mono' ],
+ 'mono' => [ 'mono', 'chapter', 'section', 'node' ],
+);
+
+
 # Construct a href to an external source of information.
 # node is the node with texinfo @-commands
 # node_id is the node transliterated and transformed as explained in the
@@ -5908,9 +5916,9 @@ sub t2h_default_external_href($$$)
     $file = '' if (!defined($file));
     my $default_target_split = $Texi2HTML::THISDOC{'EXTERNAL_CROSSREF_SPLIT'};
     my $target_split;
-    my $target_mono;
-    my $href_split;
-    my $href_mono;
+    #my $target_mono;
+    #my $href_split;
+    #my $href_mono;
     if ($file ne '')
     {
          if ($NEW_CROSSREF_STYLE)
@@ -5918,38 +5926,35 @@ sub t2h_default_external_href($$$)
              $file =~ s/\.[^\.]*$//;
              $file =~ s/^.*\///;
              my $href;
+             my $document_split = get_conf('SPLIT');
+             $document_split = 'mono' if (!$document_split);
+             my $split_found;
              if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}))
              {
-                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}))
+                  foreach my $split_ordered (@{$htmlxref_entries{$document_split}})
                   {
-                       $target_split = 1;
-                       $href_split =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'split'}->{'href'};
-                  }
-                  if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}))
-                  {
-                       $target_mono = 1;
-                       $href_mono =  $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{'mono'}->{'href'};
+                        if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered}))
+                        {
+                             $split_found = $split_ordered;
+                             $href = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered}->{'href'};
+                             last;
+                        }
                   }
              }
-
-             if ((not $target_mono) and (not $target_split))
+             if (defined($split_found))
+             {
+                  $target_split = 1 unless ($split_found eq 'mono');
+             }
+             else
              { # nothing specified for that manual, use default
                   $target_split = $default_target_split;
-             }
-             elsif ($target_split and $target_mono)
-             { # depends on the splitting of the manual
-                  $target_split = get_conf('SPLIT');
-             }
-             elsif ($target_mono)
-             { # only mono specified
-                  $target_split = 0;
              }
 
              if ($target_split)
              {
-                  if (defined($href_split))
+                  if (defined($href))
                   {
-                       $file = "$href_split";
+                       $file = $href;
                   }
                   elsif (defined($EXTERNAL_DIR))
                   {
@@ -5963,9 +5968,9 @@ sub t2h_default_external_href($$$)
              }
              else
              {# target not split
-                  if (defined($href_mono))
+                  if (defined($href))
                   {
-                       $file = "$href_mono";
+                       $file = $href;
                   }
                   else
                   {
