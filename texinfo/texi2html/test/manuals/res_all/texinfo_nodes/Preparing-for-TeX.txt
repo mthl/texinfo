@@ -68,7 +68,7 @@ in the current directory, indicated by the `.', then in a
 hypothetical user's `me/mylib' directory, and finally in a system
 directory `/usr/lib/tex/macros'.
 
-Finally, you may wish to dump a `.fmt' file (see (web2c)Memory dumps section `Memory dumps' in Web2c) so that TeX can load Texinfo faster.  (The
+Finally, you may wish to dump a `.fmt' file (see Memory dumps in Web2c) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating `texinfo.tex' requires
 redumping.)  You can do this by running this command, assuming
 `epsf.tex' is findable by TeX:

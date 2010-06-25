@@ -23,7 +23,7 @@ When in doubt whether something is needed or not, include it.  It's
 better to include too much than to leave out something important.
 
 Patches are welcome; if possible, please make them with `diff
--c' (see (diff)Top section `Overview' in Comparing and Merging Files) and
-include `ChangeLog' entries (see (emacs)Change Log section `Change Log' in The GNU Emacs Manual).  Please follow the existing coding style.
+-c' (see Overview in Comparing and Merging Files) and
+include `ChangeLog' entries (see Change Log in The GNU Emacs Manual).  Please follow the existing coding style.
 
 

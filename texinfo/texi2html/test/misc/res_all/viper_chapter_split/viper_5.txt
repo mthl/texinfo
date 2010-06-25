@@ -322,7 +322,7 @@ in your `~/.viper' file.
 
 Emacs mark is referred to in the region specifiers r and R.
 See Emacs Preliminaries, and See Basics, for explanation.  Also
-see (emacs)Mark section `Mark' in The GNU Emacs manual, for an explanation of
+see Mark in The GNU Emacs manual, for an explanation of
 the Emacs mark ring.
 
 

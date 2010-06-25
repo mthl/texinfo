@@ -33,7 +33,7 @@ included in your `~/.viper' file and are found at the following URL:
 Emacs can edit several files at once.  A file in Emacs is placed in a
 buffer that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See (emacs)Dired section `Directory Editor' in The Gnu Emacs Manual, for an example.
+See Directory Editor in The Gnu Emacs Manual, for an example.
 
 A buffer has a distinguished position called the point.
 A point is always between 2 characters, and is looking at
@@ -50,7 +50,7 @@ shouldn't) happen if you restrict yourself to standard Vi keys, unless you
 modify the default editing style.  See Customization.
 
 In addition to the point, there is another distinguished buffer
-position called the mark.  See (emacs)Mark section `Mark' in The GNU Emacs manual, for more info on the mark.  The text between the point and
+position called the mark.  See Mark in The GNU Emacs manual, for more info on the mark.  The text between the point and
 the mark is called the region of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a-z, there
 is another marker called mark.  This is similar to the unnamed Vi
@@ -97,14 +97,14 @@ mode of the buffer.  If a function is bound to some key in the local
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See Major Modes: (emacs)Major Modes section `Major Modes' in The GNU Emacs Manual, for more information.
+will be executed.  See Major Modes in The GNU Emacs Manual, for more information.
 
 A buffer can also have a minor mode.  Minor modes are options that
 you can use or not.  A buffer in text-mode can have
 auto-fill-mode as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see Minor Modes: (emacs)Minor Modes section `Minor Modes' in The GNU Emacs Manual 
+more information, see Minor Modes in The GNU Emacs Manual 
 
 
 Viper is implemented as a collection of minor modes.  Different minor modes
@@ -327,7 +327,7 @@ use C-g to quit.  Similarly, C-] is used to exit
 `Recursive Edits' in Emacs for which there is no comparable Vi
 functionality and no key-binding.  Recursive edits are indicated by
 `[]' brackets framing the modes on the mode line.
-See Recursive Edit: (emacs)Recursive Edit section `Recursive Edit' in The GNU Emacs Manual.
+See Recursive Edit in The GNU Emacs Manual.
 At user level 1, C-g is bound to viper-info-on-file
 function instead.
 
@@ -366,7 +366,7 @@ Most commands, ~, [[, p, /, ..., etc., take counts.
 Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `\u', `\L',
-..., etc.  See (emacs)Regular Expressions section `Regular Expressions' in The GNU Emacs Manual, for details.
+..., etc.  See Regular Expressions in The GNU Emacs Manual, for details.
 Files specified to :e use csh regular expressions
 (globbing, wildcards, what have you).
 However, the function viper-toggle-search-style, bound to C-c /,

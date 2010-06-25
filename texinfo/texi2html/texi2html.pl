@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.388 2010-06-24 13:19:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.389 2010-06-25 22:24:06 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -11381,6 +11381,9 @@ sub do_xref($$$$)
             return '';
         }
     }
+
+    my $node_texi = $args[0];
+    $node_texi = normalise_node($node_texi);
     
     #print STDERR "XREF: (@args)\n";
     my $i;
@@ -11403,8 +11406,6 @@ sub do_xref($$$$)
         $new_state->{'remove_texi'} = $remove_texi if ($in_file_style);
     }
 
-    my $node_texi = $args[0];
-    $node_texi = normalise_node($node_texi);
 
     my ($file_texi, $file);
     if ($macro eq 'inforef')
@@ -11436,7 +11437,7 @@ sub do_xref($$$$)
     {
        $file_of_node_texi = $1;
        $file_of_node = substitute_line($file_of_node_texi, sprintf(__p("\@*ref", "\@%s node file"), $macro), $new_state);
-       $node_name = substitute_line($node_without_file_texi,  sprintf(__p("\@*ref", "\@%s node name"), $macro), $new_state);
+       $node_name = substitute_line($node_without_file_texi, sprintf(__p("\@*ref", "\@%s node name"), $macro), $new_state);
        $file_arg_or_node_texi = $file_of_node_texi if ($file_arg_or_node_texi eq '');
        $file_arg_or_node = $file_of_node if ($file_arg_or_node eq '');
        # the file argument takes precedence
@@ -11444,7 +11445,10 @@ sub do_xref($$$$)
     }
     else
     {
-        $node_name = $formatted_args[0];
+        # normalized node name
+        $new_state->{'code_style'}++;
+        $node_name = substitute_line($node_without_file_texi, sprintf(__p("\@*ref", "\@%s node name"), $macro), $new_state);
+        $new_state->{'code_style'}--;
         if (defined ($file_texi) and $file_texi ne '')
         {
             $node_and_file_texi = "($file_texi)$node_texi";
@@ -11491,16 +11495,17 @@ sub do_xref($$$$)
         {
             $node_and_file = '';
         }
-        my $section_or_node = '';
-        if ($manual ne '')
-        {
-            $section_or_node = $node_name;
-            if ($section ne '')
-            {
-                $section_or_node = $section;
-            }
-        }
-        $result = &$Texi2HTML::Config::external_ref($macro, $section_or_node, $manual, $node_and_file, $href, $cross_ref, \@args, \@formatted_args);
+        #my $section_or_node = '';
+        #if ($manual ne '')
+        #{
+        #    $section_or_node = $node_name;
+        #    if ($section ne '')
+        #    {
+        #        $section_or_node = $section;
+        #    }
+        #}
+        #$result = &$Texi2HTML::Config::external_ref($macro, $section_or_node, $manual, $node_and_file, $href, $cross_ref, \@args, \@formatted_args);
+        $result = &$Texi2HTML::Config::external_ref($macro, $section, $manual, $file_arg_or_node, $href, $cross_ref, \@args, \@formatted_args, $node_name);
     }
     else
     {
@@ -11560,7 +11565,8 @@ sub do_xref($$$$)
            }
            else
            {
-               $result = &$Texi2HTML::Config::external_ref($macro, '', '', $node_name, do_external_href($node_texi), $cross_ref, \@args, \@formatted_args);
+               #$result = &$Texi2HTML::Config::external_ref($macro, '', '', $node_name, do_external_href($node_texi), $cross_ref, \@args, \@formatted_args);
+               $result = &$Texi2HTML::Config::external_ref($macro, '', '', '', do_external_href($node_texi), $cross_ref, \@args, \@formatted_args, $node_name);
            }
         }
     }

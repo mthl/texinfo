@@ -20,7 +20,7 @@ When in doubt whether something is needed or not, include it.  It's
 better to include too much than to leave out something important.
 
 Patches are most welcome; if possible, please make them with
-`diff -c' (see (diffutils)Top section `Overview' in Comparing and Merging Files) and include `ChangeLog' entries (see (emacs)Change Log section `Change Log' in The GNU Emacs Manual).
+`diff -c' (see Overview in Comparing and Merging Files) and include `ChangeLog' entries (see Change Log in The GNU Emacs Manual).
 
 When sending patches, if possible please do not encode or split them in
 any way; it's much easier to deal with one plain text message, however

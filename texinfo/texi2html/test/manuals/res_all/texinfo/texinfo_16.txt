@@ -277,7 +277,7 @@ works like @defun.
 @defspec name arguments...
 The @defspec command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
-see (elisp)Special Forms section `Special Forms' in GNU Emacs Lisp Reference Manual.)
+see Special Forms in GNU Emacs Lisp Reference Manual.)
 @defspec is equivalent to `@deffn {Special Form}
 ...' and works like @defun.
 
@@ -341,7 +341,7 @@ name.
 @defopt name
 The @defopt command is the definition command for user
 options, i.e., variables intended for users to change according to
-taste; Emacs has many such (see (emacs)Variables section `Variables' in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
+taste; Emacs has many such (see Variables in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
 Option} ...' and works like @defvar.
 
 
@@ -702,7 +702,7 @@ commands.  The name of the function follows immediately after the
 @defun command and it is followed, on the same line, by the
 parameter list.
 
-Here is a definition from (elisp)Calling Functions section `Calling Functions' in The GNU Emacs Lisp Reference Manual.
+Here is a definition from Calling Functions in The GNU Emacs Lisp Reference Manual.
 
  -- Function: apply function &rest arguments
 apply calls function with arguments, just

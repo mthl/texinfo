@@ -28,7 +28,7 @@ the temporary buffer.
 You can parse the error messages by typing C-x `
 (next-error).  This causes Emacs to go to and position the
 cursor on the line in the Texinfo source that makeinfo thinks
-caused the error.  See (emacs)Compilation section `Running make or Compilers Generally' in The GNU Emacs Manual, for more
+caused the error.  See Running make or Compilers Generally in The GNU Emacs Manual, for more
 information about using the next-error command.
 
 In addition, you can kill the shell in which the makeinfo
@@ -61,11 +61,11 @@ For example, you could write the following in your `.emacs' file:
 
 For more information, see
 
-(emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual,
+Editing Variable Values in The GNU Emacs Manual,
 
-(emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual,
+Examining and Setting Variables in The GNU Emacs Manual,
 
-(emacs)Init File section `Init File' in The GNU Emacs Manual, and
+Init File in The GNU Emacs Manual, and
 
 Options for makeinfo.
 

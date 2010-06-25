@@ -21,7 +21,7 @@ In the Info file output, @. is equivalent to a simple
 `.'; likewise for @! and @?.
 
 The meanings of @: and @. in Texinfo are designed to
-work well with the Emacs sentence motion commands (see (emacs)Sentences section `Sentences' in The GNU Emacs Manual).
+work well with the Emacs sentence motion commands (see Sentences in The GNU Emacs Manual).
 
 Do not put braces after any of these commands.
 

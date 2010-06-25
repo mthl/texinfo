@@ -449,10 +449,10 @@ A small quot&mdash;ation
 ;<div id="index-copying-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
 : d&ndash;eftypemethod
 
-<code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@] section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
-<code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
+<code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 t&mdash;itle@] in <cite>ma&mdash;nual@</cite>.
+<code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter title] in <cite>manual</cite>
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
 
 <code>@ref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> [[#chapter|chapter]]
 <code>@xref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See section [[#chapter|chapter]].
@@ -461,53 +461,53 @@ A small quot&mdash;ation
 
 <code>@ref<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
 ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in title, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in manual name <nowiki>}</nowiki></code>
-[a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion] section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+[a comma@comma{} in file.#s_002d_002dect_002cion a comma, in title] in <cite>a , in manual name</cite>
 
 <code>@ref<nowiki>{</nowiki>chapter,cross ref name<nowiki>}</nowiki></code> [[#chapter|cross ref name]]
 <code>@ref<nowiki>{</nowiki>chapter,,title<nowiki>}</nowiki></code> [[#chapter|title]]
 <code>@ref<nowiki>{</nowiki>chapter,,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,<nowiki>}</nowiki></code> [[#chapter|title]]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+<code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter chapter] in <cite>manual</cite>
 
 
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)anode]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode (pman)cross ref name]
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)title]
 <code>@ref<nowiki>{</nowiki>(pman)anode,,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode anode] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode (pman)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode anode] in <cite>manual</cite>
 
 
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
-<code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> 
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> 
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
+<code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See &lsquo;chapter&rsquo;
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> See &lsquo;cross ref name&rsquo;
 <code>@inforef<nowiki>{</nowiki>chapter,,file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)chapter]
-<code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node cross ref name: (file name)node]
-<code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> 
-<code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> 
+<code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node (file name)cross ref name]
+<code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> See &lsquo;node&rsquo;
+<code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> See &lsquo;cross ref name&rsquo;
 <code>@inforef<nowiki>{</nowiki>node,,file name<nowiki>}</nowiki></code> See [file name.#node (file name)node]
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter cross ref name: (file name, spurious arg)chapter]
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter (file name, spurious arg)cross ref name]
 
 <code>@inforef<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
 ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file<nowiki>}</nowiki></code>
-See [a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion]
+See [a comma@comma{} in file.#s_002d_002dect_002cion (a comma, in file)a , in cross ref]
 
 
 ;&bull; a
@@ -637,28 +637,28 @@ Invalid use of @&rsquo;:<br>
 <code>@ref<nowiki>{</nowiki>node,cross ref name<nowiki>}</nowiki></code> @ref{node,cross ref name}
 <code>@ref<nowiki>{</nowiki>node,,title<nowiki>}</nowiki></code> @ref{node,,title}
 <code>@ref<nowiki>{</nowiki>node,,,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
-<code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>node,cross ref name,title,<nowiki>}</nowiki></code> @ref{node,cross ref name,title,}
-<code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
-<code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> section &lsquo;node&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
-<code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+<code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node node] in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>,cross ref name,title,<nowiki>}</nowiki></code> @ref{,cross ref name,title,}
-<code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
-<code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
-<code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)]
-<code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top (file name)] <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+<code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+<code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top] in <cite>manual</cite>
 
 <code>@inforef<nowiki>{</nowiki>,cross ref name <nowiki>}</nowiki></code> 
 <code>@inforef<nowiki>{</nowiki>,,file name<nowiki>}</nowiki></code> 
@@ -1094,10 +1094,10 @@ A small quot&mdash;ation
 ;<div id="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
 : d&ndash;eftypemethod
 
-<code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@] section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
-<code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
+<code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 t&mdash;itle@] in <cite>ma&mdash;nual@</cite>.
+<code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter title] in <cite>manual</cite>
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
 
 <code>@ref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> [[#chapter|chapter]]
 <code>@xref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See section [[#chapter|chapter]].
@@ -1106,53 +1106,53 @@ A small quot&mdash;ation
 
 <code>@ref<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
 ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in title, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in manual name <nowiki>}</nowiki></code>
-[a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion] section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+[a comma@comma{} in file.#s_002d_002dect_002cion a comma, in title] in <cite>a , in manual name</cite>
 
 <code>@ref<nowiki>{</nowiki>chapter,cross ref name<nowiki>}</nowiki></code> [[#chapter|cross ref name]]
 <code>@ref<nowiki>{</nowiki>chapter,,title<nowiki>}</nowiki></code> [[#chapter|title]]
 <code>@ref<nowiki>{</nowiki>chapter,,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,<nowiki>}</nowiki></code> [[#chapter|title]]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
-<code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+<code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter chapter] in <cite>manual</cite>
 
 
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)anode]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode (pman)cross ref name]
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)title]
 <code>@ref<nowiki>{</nowiki>(pman)anode,,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode anode] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode (pman)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode anode] in <cite>manual</cite>
 
 
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
-<code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> 
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> 
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
+<code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See &lsquo;chapter&rsquo;
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> See &lsquo;cross ref name&rsquo;
 <code>@inforef<nowiki>{</nowiki>chapter,,file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)chapter]
-<code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node cross ref name: (file name)node]
-<code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> 
-<code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> 
+<code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node (file name)cross ref name]
+<code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> See &lsquo;node&rsquo;
+<code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> See &lsquo;cross ref name&rsquo;
 <code>@inforef<nowiki>{</nowiki>node,,file name<nowiki>}</nowiki></code> See [file name.#node (file name)node]
-<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter cross ref name: (file name, spurious arg)chapter]
+<code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter (file name, spurious arg)cross ref name]
 
 <code>@inforef<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
 ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file<nowiki>}</nowiki></code>
-See [a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s&ndash;ect,ion]
+See [a comma@comma{} in file.#s_002d_002dect_002cion (a comma, in file)a , in cross ref]
 
 
 ;&bull; a
@@ -1282,28 +1282,28 @@ Invalid use of @&rsquo;:<br>
 <code>@ref<nowiki>{</nowiki>node,cross ref name<nowiki>}</nowiki></code> @ref{node,cross ref name}
 <code>@ref<nowiki>{</nowiki>node,,title<nowiki>}</nowiki></code> @ref{node,,title}
 <code>@ref<nowiki>{</nowiki>node,,,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
-<code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>node,cross ref name,title,<nowiki>}</nowiki></code> @ref{node,cross ref name,title,}
-<code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
-<code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> section &lsquo;node&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
-<code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+<code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node node] in <cite>manual</cite>
 <code>@ref<nowiki>{</nowiki>,cross ref name,title,<nowiki>}</nowiki></code> @ref{,cross ref name,title,}
-<code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
-<code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
-<code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)]
-<code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top (file name)] section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top (file name)] <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top (file name)cross ref name]
+<code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+<code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+<code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+<code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top] in <cite>manual</cite>
 
 <code>@inforef<nowiki>{</nowiki>,cross ref name <nowiki>}</nowiki></code> 
 <code>@inforef<nowiki>{</nowiki>,,file name<nowiki>}</nowiki></code> 
@@ -1744,10 +1744,10 @@ In example.
 ;<div id="index-d_002d_002deftypemethod_005fname-on-c_002d_002dlass-1"></div>Method on c--lass<nowiki>:</nowiki> <em>t--ype</em> <strong>d--eftypemethod_name</strong><em> a--rguments...</em>
  d--eftypemethod
  
- <code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 cross r---ef name@: (file n---ame@)c---hapter@] section `t---itle@' in <cite>ma---nual@</cite>.
- <code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
- <code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
- <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
+ <code>@xref<nowiki>{</nowiki>c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@<nowiki>}</nowiki></code> See [file n---ame@@.#c_002d_002d_002dhapter_0040 t---itle@] in <cite>ma---nual@</cite>.
+ <code>@ref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+ <code>@pxref<nowiki>{</nowiki>chapter, cross ref name, title, file name, manual<nowiki>}</nowiki></code> see [file name.#chapter title] in <cite>manual</cite>
+ <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
  
  <code>@ref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> [[#chapter|chapter]]
  <code>@xref<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See section [[#chapter|chapter]].
@@ -1756,53 +1756,53 @@ In example.
  
  <code>@ref<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
  ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in title, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in manual name <nowiki>}</nowiki></code>
- [a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s--ect,ion] section `a comma, in title' in <cite>a , in manual name</cite>
+ [a comma@comma{} in file.#s_002d_002dect_002cion a comma, in title] in <cite>a , in manual name</cite>
  
  <code>@ref<nowiki>{</nowiki>chapter,cross ref name<nowiki>}</nowiki></code> [[#chapter|cross ref name]]
  <code>@ref<nowiki>{</nowiki>chapter,,title<nowiki>}</nowiki></code> [[#chapter|title]]
  <code>@ref<nowiki>{</nowiki>chapter,,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
- <code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> section `chapter' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,,,,manual<nowiki>}</nowiki></code> `chapter' in <cite>manual</cite>
  <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,<nowiki>}</nowiki></code> [[#chapter|title]]
- <code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
- <code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> section `chapter' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter]
- <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter cross ref name: (file name)chapter] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter]
- <code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section `chapter' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)cross ref name]
+ <code>@ref<nowiki>{</nowiki>chapter,cross ref name,,,manual<nowiki>}</nowiki></code> `cross ref name' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+ <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,,title,file name<nowiki>}</nowiki></code> [file name.#chapter (file name)title]
+ <code>@ref<nowiki>{</nowiki>chapter,,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,,,file name,manual<nowiki>}</nowiki></code> [file name.#chapter chapter] in <cite>manual</cite>
  
  
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)anode]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name<nowiki>}</nowiki></code> [pman.#anode (pman)cross ref name]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,title<nowiki>}</nowiki></code> [pman.#anode (pman)title]
  <code>@ref<nowiki>{</nowiki>(pman)anode,,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section `anode' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section `anode' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name: (pman)anode] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode cross ref name: (file name)anode] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)anode]
- <code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode (pman)anode] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode (file name)anode] section `anode' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,,,manual<nowiki>}</nowiki></code> [pman.#anode anode] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,<nowiki>}</nowiki></code> [pman.#anode (pman)title]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#anode (file name)cross ref name]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,,,manual<nowiki>}</nowiki></code> [pman.#anode cross ref name] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,title,file name<nowiki>}</nowiki></code> [file name.#anode (file name)title]
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,title,,manual<nowiki>}</nowiki></code> [pman.#anode title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,title, file name, manual<nowiki>}</nowiki></code> [file name.#anode title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>(pman)anode,,,file name,manual<nowiki>}</nowiki></code> [file name.#anode anode] in <cite>manual</cite>
  
  
- <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter cross ref name: (file name)chapter]
- <code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> 
- <code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> 
+ <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)cross ref name]
+ <code>@inforef<nowiki>{</nowiki>chapter<nowiki>}</nowiki></code> See `chapter'
+ <code>@inforef<nowiki>{</nowiki>chapter, cross ref name<nowiki>}</nowiki></code> See `cross ref name'
  <code>@inforef<nowiki>{</nowiki>chapter,,file name<nowiki>}</nowiki></code> See [file name.#chapter (file name)chapter]
- <code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node cross ref name: (file name)node]
- <code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> 
- <code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> 
+ <code>@inforef<nowiki>{</nowiki>node, cross ref name, file name<nowiki>}</nowiki></code> See [file name.#node (file name)cross ref name]
+ <code>@inforef<nowiki>{</nowiki>node<nowiki>}</nowiki></code> See `node'
+ <code>@inforef<nowiki>{</nowiki>node, cross ref name<nowiki>}</nowiki></code> See `cross ref name'
  <code>@inforef<nowiki>{</nowiki>node,,file name<nowiki>}</nowiki></code> See [file name.#node (file name)node]
- <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter cross ref name: (file name, spurious arg)chapter]
+ <code>@inforef<nowiki>{</nowiki>chapter, cross ref name, file name, spurious arg<nowiki>}</nowiki></code> See [file name, spurious arg.#chapter (file name, spurious arg)cross ref name]
  
  <code>@inforef<nowiki>{</nowiki>s--ect@comma<nowiki>{</nowiki><nowiki>}</nowiki>ion, a @comma<nowiki>{</nowiki><nowiki>}</nowiki> in cross
  ref, a comma@comma<nowiki>{</nowiki><nowiki>}</nowiki> in file<nowiki>}</nowiki></code>
- See [a comma@comma{} in file.#s_002d_002dect_002cion a , in cross ref: (a comma, in file)s--ect,ion]
+ See [a comma@comma{} in file.#s_002d_002dect_002cion (a comma, in file)a , in cross ref]
  
  
 ;<tt>&bull; a</tt>
@@ -1931,28 +1931,28 @@ In example.
  <code>@ref<nowiki>{</nowiki>node,cross ref name<nowiki>}</nowiki></code> @ref{node,cross ref name}
  <code>@ref<nowiki>{</nowiki>node,,title<nowiki>}</nowiki></code> @ref{node,,title}
  <code>@ref<nowiki>{</nowiki>node,,,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
- <code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> section `node' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,,,,manual<nowiki>}</nowiki></code> `node' in <cite>manual</cite>
  <code>@ref<nowiki>{</nowiki>node,cross ref name,title,<nowiki>}</nowiki></code> @ref{node,cross ref name,title,}
- <code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
- <code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> section `node' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node]
- <code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node cross ref name: (file name)node] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)node]
- <code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter (file name)chapter] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node (file name)node] section `node' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#node (file name)cross ref name]
+ <code>@ref<nowiki>{</nowiki>node,cross ref name,,,manual<nowiki>}</nowiki></code> `cross ref name' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+ <code>@ref<nowiki>{</nowiki>node,cross ref name,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,,title,file name<nowiki>}</nowiki></code> [file name.#node (file name)title]
+ <code>@ref<nowiki>{</nowiki>node,,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>chapter,,title, file name, manual<nowiki>}</nowiki></code> [file name.#chapter title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,,title, file name, manual<nowiki>}</nowiki></code> [file name.#node title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>node,,,file name,manual<nowiki>}</nowiki></code> [file name.#node node] in <cite>manual</cite>
  <code>@ref<nowiki>{</nowiki>,cross ref name,title,<nowiki>}</nowiki></code> @ref{,cross ref name,title,}
- <code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
- <code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)]
- <code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top cross ref name: (file name)] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)]
- <code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top (file name)] section `title' in <cite>manual</cite>
- <code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top (file name)] <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,cross ref name,,file name<nowiki>}</nowiki></code> [file name.#Top (file name)cross ref name]
+ <code>@ref<nowiki>{</nowiki>,cross ref name,,,manual<nowiki>}</nowiki></code> `cross ref name' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,cross ref name,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+ <code>@ref<nowiki>{</nowiki>,cross ref name,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,cross ref name,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,,title,file name<nowiki>}</nowiki></code> [file name.#Top (file name)title]
+ <code>@ref<nowiki>{</nowiki>,,title,,manual<nowiki>}</nowiki></code> `title' in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,,title, file name, manual<nowiki>}</nowiki></code> [file name.#Top title] in <cite>manual</cite>
+ <code>@ref<nowiki>{</nowiki>,,,file name,manual<nowiki>}</nowiki></code> [file name.#Top] in <cite>manual</cite>
  
  <code>@inforef<nowiki>{</nowiki>,cross ref name <nowiki>}</nowiki></code> 
  <code>@inforef<nowiki>{</nowiki>,,file name<nowiki>}</nowiki></code> 

@@ -39,7 +39,7 @@ unless it is to another manual altogether, in which case the cross
 reference names that manual.
 
 In Info, a cross reference results in an entry that you can follow using
-the Info `f' command.  (See Some advanced Info commands: (info)Help-Adv.)
+the Info `f' command.  (See (info)Some advanced Info commands.)
 
 The various cross reference commands use nodes (or anchors,
 see @anchor) to define cross reference locations.

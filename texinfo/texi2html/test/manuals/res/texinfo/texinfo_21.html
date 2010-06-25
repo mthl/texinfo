@@ -682,7 +682,7 @@ the temporary buffer.
 <p>You can parse the error messages by typing <kbd>C-x `</kbd>
 (<code>next-error</code>).  This causes Emacs to go to and position the
 cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
-caused the error.  See <a href="../emacs/Compilation.html#Compilation">(emacs)Compilation</a> section &lsquo;Running <code>make</code> or Compilers Generally&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
+caused the error.  See <a href="../emacs/Compilation.html#Compilation">Running <code>make</code> or Compilers Generally</a> in <cite>The GNU Emacs Manual</cite>, for more
 information about using the <code>next-error</code> command.
 </p>
 <p>In addition, you can kill the shell in which the <code>makeinfo</code>
@@ -722,9 +722,9 @@ variable in your &lsquo;<tt>.emacs</tt>&rsquo; initialization file.
 </pre></div>
 
 <p>For more information, see<br>
-<a href="../emacs/Edit-Options.html#Edit-Options">(emacs)Edit Options</a> section &lsquo;Editing Variable Values&rsquo; in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Examining.html#Examining">(emacs)Examining</a> section &lsquo;Examining and Setting Variables&rsquo; in <cite>The GNU Emacs Manual</cite>,<br>
-<a href="../emacs/Init-File.html#Init-File">(emacs)Init File</a> section &lsquo;Init File&rsquo; in <cite>The GNU Emacs Manual</cite>, and<br>
+<a href="../emacs/Edit-Options.html#Edit-Options">Editing Variable Values</a> in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Examining.html#Examining">Examining and Setting Variables</a> in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Init-File.html#Init-File">Init File</a> in <cite>The GNU Emacs Manual</cite>, and<br>
 <a href="#makeinfo-options">Options for <code>makeinfo</code></a>.
 </p>
 <hr>
@@ -806,7 +806,7 @@ provides better error checking (see section <a href="#makeinfo-in-Emacs">Running
 
 <p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">(emacs)Command Switches</a> section &lsquo;Command Line Switches and Arguments&rsquo; in <cite>The GNU Emacs Manual</cite>.)
+including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">Command Line Switches and Arguments</a> in <cite>The GNU Emacs Manual</cite>.)
 </p>
 <p>Here is a shell command to format all the files that end in
 &lsquo;<tt>.texinfo</tt>&rsquo; in the current directory:
@@ -1020,7 +1020,7 @@ at &lsquo;<tt>../&lt;info-document&gt;/</tt>&rsquo;.
 
 <p>Info files are usually kept in the &lsquo;<tt>info</tt>&rsquo; directory.  You can read
 Info files using the standalone Info program or the Info reader built
-into Emacs.  (See <a href="../info/index.html#Top">info: (info)Top</a>, for an introduction to Info.)
+into Emacs.  (See <a href="../info/index.html#Top">(info)info</a>, for an introduction to Info.)
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Directory-File">20.2.1 The Directory File &lsquo;<tt>dir</tt>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              The top level menu for all Info files.
@@ -1424,7 +1424,7 @@ read only one Info file and write only one &lsquo;<tt>dir</tt>&rsquo; file per i
 </p>
 <a name="index-Compressed-files_002c-reading"></a>
 <a name="index-Dir-files_002c-compressed"></a>
-<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">(gzip)Invoking gzip</a> section &lsquo;Invoking gzip&rsquo; in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
+<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">Invoking gzip</a> in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
 for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
 also automatically leaves it compressed after writing any changes.
 If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to

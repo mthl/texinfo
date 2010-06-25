@@ -21,7 +21,7 @@ among other places.)
 
 The tex formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
-with any `.tex' (or similar, see (web2c)tex invocation section `tex invocation' in Web2c) extension removed, followed by the two letter names of indices.
+with any `.tex' (or similar, see tex invocation in Web2c) extension removed, followed by the two letter names of indices.
 For example, the raw index output files for the input file
 `foo.texinfo' would be `foo.cp', `foo.vr', `foo.fn',
 `foo.tp', `foo.pg' and `foo.ky'.  Those are exactly the

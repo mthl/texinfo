@@ -13,7 +13,7 @@ which are identified by their names.  The Info program displays one node
 at a time, and provides commands with which the user can move to other
 related nodes.
 
-See info: (info)Top, for more information about using Info.
+See (info)info, for more information about using Info.
 
 Each node of an Info file may have any number of child nodes that
 describe subtopics of the node's topic.  The names of child
@@ -63,11 +63,11 @@ systematically by going from node to node, or you can go to a specific
 node listed in the main menu, or you can search the index menus and then
 go directly to the node that has the information you want.  Alternatively,
 with the standalone Info program, you can specify specific menu items on
-the command line (see (info)Top section `Top' in Info).
+the command line (see Top in Info).
 
 If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit <SPC> repeatedly, or you get the whole
-file with the advanced Info command g *.  (See Advanced Info commands: (info)Expert.)
+file with the advanced Info command g *.  (See (info)Advanced Info commands.)
 
 The `dir' file in the `info' directory serves as the
 departure point for the whole Info system.  From it, you can reach the

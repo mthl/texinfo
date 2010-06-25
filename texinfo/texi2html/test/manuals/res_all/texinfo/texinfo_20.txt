@@ -67,7 +67,7 @@ among other places.)
 
 The tex formatting command outputs unsorted index files under
 names that obey a standard convention: the name of your main input file
-with any `.tex' (or similar, see (web2c)tex invocation section `tex invocation' in Web2c) extension removed, followed by the two letter names of indices.
+with any `.tex' (or similar, see tex invocation in Web2c) extension removed, followed by the two letter names of indices.
 For example, the raw index output files for the input file
 `foo.texinfo' would be `foo.cp', `foo.vr', `foo.fn',
 `foo.tp', `foo.pg' and `foo.ky'.  Those are exactly the
@@ -222,7 +222,7 @@ queues, like this:
 lpr -Qdvi -hprint.server.domain bison.dvi
 
 * Convert the DVI file to a Postscript or PCL file and send it to your
-local printer.  See (dvips)dvips invocation section `dvips invocation' in Dvips, and the man
+local printer.  See dvips invocation in Dvips, and the man
 pages for dvilj, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
 directly, just send it to the appropriate port, usually `PRN'.
@@ -336,13 +336,13 @@ tex-dvi-print-command                     "lpr -d"
 tex-show-queue-command                    "lpq"
 
 You can change the values of these variables with the M-x
-edit-options command (see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual), with the M-x set-variable command
-(see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual), or with your `.emacs' initialization file
-(see (emacs)Init File section `Init File' in The GNU Emacs Manual).
+edit-options command (see Editing Variable Values in The GNU Emacs Manual), with the M-x set-variable command
+(see Examining and Setting Variables in The GNU Emacs Manual), or with your `.emacs' initialization file
+(see Init File in The GNU Emacs Manual).
 
 Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called Customize, for changing values of user-definable variables.
-See (emacs)Easy Customization section `Easy Customization Interface' in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
+See Easy Customization Interface in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
 be found in the `Development/Docs/Texinfo' group, once you invoke
 the M-x customize command.
 
@@ -364,7 +364,7 @@ compile-command: "texi2dvi gdb.texinfo"
 End:
 
 This technique is most often used by programmers who also compile programs
-this way; see (emacs)Compilation section `Compilation' in The GNU Emacs Manual.
+this way; see Compilation in The GNU Emacs Manual.
 
 
 19.8 TeX Formatting Requirements Summary
@@ -472,7 +472,7 @@ in the current directory, indicated by the `.', then in a
 hypothetical user's `me/mylib' directory, and finally in a system
 directory `/usr/lib/tex/macros'.
 
-Finally, you may wish to dump a `.fmt' file (see (web2c)Memory dumps section `Memory dumps' in Web2c) so that TeX can load Texinfo faster.  (The
+Finally, you may wish to dump a `.fmt' file (see Memory dumps in Web2c) so that TeX can load Texinfo faster.  (The
 disadvantage is that then updating `texinfo.tex' requires
 redumping.)  You can do this by running this command, assuming
 `epsf.tex' is findable by TeX:

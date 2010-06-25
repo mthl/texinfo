@@ -7,7 +7,7 @@ kind of pointing device.  Since this is the case, GNU Info (both the
 Emacs and standalone versions) have several commands which allow you to
 move the cursor about the screen.  The notation used in this manual to
 describe keystrokes is identical to the notation used within the Emacs
-manual, and the GNU Readline manual.  See (emacs)Characters section `Character Conventions' in the GNU Emacs Manual, if you are unfamiliar with the
+manual, and the GNU Readline manual.  See Character Conventions in the GNU Emacs Manual, if you are unfamiliar with the
 notation(4).
 
 The following table lists the basic cursor movement commands in Info.
@@ -85,6 +85,6 @@ called by the names imprinted on them.
 
 (5)
 M-x is also a command; it
-invokes execute-extended-command.  See (emacs)M-x section `Executing an extended command' in the GNU Emacs Manual, for more detailed
+invokes execute-extended-command.  See Executing an extended command in the GNU Emacs Manual, for more detailed
 information.
 

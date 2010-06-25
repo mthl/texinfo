@@ -529,7 +529,7 @@ local to Viper state and the current buffer, not to the major mode.
 In such situations, the remedy is to type M-x viper-zap-local-keys.
 
 So much about Viper-specific bindings.
-See (emacs)Customization section `Customization' in The GNU Emacs Manual, and the Emacs quick reference card for the general info on key
+See Customization in The GNU Emacs Manual, and the Emacs quick reference card for the general info on key
 bindings in Emacs.
 
 
@@ -697,7 +697,7 @@ See Vi Macros, for more information on Vi macros.
 viper-heading-start
 viper-heading-end
 Regular Expressions for [[ and ]].  Note that Emacs defines
-Regexps for paragraphs and sentences.  See (emacs)Paragraphs section `Paragraphs and Sentences' in The GNU Emacs Manual, for details.
+Regexps for paragraphs and sentences.  See Paragraphs and Sentences in The GNU Emacs Manual, for details.
 M-x viper-set-expert-level
 Change your user level interactively.
 viper-smart-suffix-list  '("" "tex" "c" "cc" "el" "p")
@@ -830,7 +830,7 @@ above block should be commented out.
 
 Even though these commands are sometimes useful, they are no substitute for
 the powerful tag table facility of Emacs.  Viper's :tag command
-in a primitive interface to Emacs tags.  See Tags: (emacs)Tags section `Tags' in The Gnu Emacs Manual, for more information on tags.
+in a primitive interface to Emacs tags.  See Tags in The Gnu Emacs Manual, for more information on tags.
 
 The following two commands are normally bound to a mouse click and are part
 of Viper.  They work only if Emacs runs as an application under X
@@ -1022,7 +1022,7 @@ As if all that is not enough, Viper (through its interface to Emacs
 macros) lets the user define keyboard macros that ask for confirmation or
 even prompt the user for input and then continue.  To do this, one should
 type C-x q (for confirmation) or C-u C-x q (for prompt).
-For details, see (emacs)Kbd Macro Query section `Customization' in The GNU Emacs Manual 
+For details, see Customization in The GNU Emacs Manual 
 
 When the user finishes defining a macro (which is done by typing C-x) --
 a departure from Vi), you will be asked whether you want this

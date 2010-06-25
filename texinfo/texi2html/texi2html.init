@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.270 2010-06-24 13:19:33 pertusus Exp $
+# $Id: texi2html.init,v 1.271 2010-06-25 22:24:06 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -6066,75 +6066,106 @@ sub t2h_default_external_href($$$)
 #     pxref (reference in a parenthesis),  
 # section in the book. This might be undef.
 # book name.
-# node and file name formatted according to the convention used in info
-#     '(file)node' and no node means the Top node.
+# manual file name
 # href linking to the html page containing the referenced node. A typical
 #     use for this href is a href attribute in an <a> element
-# an optionnal cross reference name
-sub t2h_default_external_ref($$$$$$$$)
+# cross reference name
+# array of texi arguments of the reference
+# array of the formatted arguments of the reference
+# node name
+sub t2h_default_external_ref($$$$$$$$$)
 {
     my $type = shift;
     my $section = shift;
     my $book = shift;
-    my $file_node = shift;
+    my $file = shift;
+    #my $file_node = shift;
     my $href = shift;
     my $cross_ref = shift;
     my $args_texi = shift;
     my $formatted_args = shift;
+    my $node = shift;
 
-    $file_node = "$cross_ref: $file_node" if (($file_node ne '') and ($cross_ref ne ''));
-    $file_node = &$anchor('', $href, $file_node) if ($file_node ne '');
+    my $name = $section;
+    $name = $cross_ref if ($name eq '');
+    $name = $node if ($name eq '');
 
-    # Yes, this is ugly, but this helps internationalization
+    my $reference = $name;
+
+    if ($book eq '' and $file ne '')
+    {
+       $name = "($file)$name";
+    }
+    $reference = &$anchor('', $href, $name) if ($href ne '');
+
+    # Yes, this is ugly, yet this helps internationalization
     if ($type eq 'pxref')
     {
-         if (($book ne '') and ($file_node ne ''))
+         if (($book ne '') and ($href ne ''))
          {
-              return gdt('see {node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return gdt('see {node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('see {reference} in @cite{{book}}', { 'reference' => $reference, 'book' => $book },{'duplicate'=>1});
+         }
+         elsif (($book ne '') and ($reference ne ''))
+         {
+              return gdt('see `{section}\' in @cite{{book}}', { 'section' => $reference, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
-         {
-              return gdt('see section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+         { # should seldom or even never happen
               return gdt('see @cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
-         elsif ($file_node ne '')
+         elsif ($href ne '')
          {
-              return gdt('see {node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('see {reference}', { 'reference' => $reference },{'duplicate'=>1});
+         }
+         elsif ($reference ne '')
+         {
+              return gdt('see `{section}\'', { 'section' => $reference },{'duplicate'=>1});
          }
     }
     if ($type eq 'xref' or $type eq 'inforef')
     {
-         if (($book ne '') and ($file_node ne ''))
+         if (($book ne '') and ($href ne ''))
          {
-              return gdt('See {node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return gdt('See {node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('See {reference} in @cite{{book}}', { 'reference' => $reference, 'book' => $book },{'duplicate'=>1});
+         }
+         elsif (($book ne '') and ($reference ne ''))
+         {
+              return gdt('See `{section}\' in @cite{{book}}', { 'section' => $reference, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
-         {
-              return gdt('See section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+         { # should seldom or even never happen
               return gdt('See @cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
-         elsif ($file_node ne '')
+         elsif ($href ne '')
          {
-              return gdt('See {node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('See {reference}', { 'reference' => $reference },{'duplicate'=>1});
+         }
+         elsif ($reference ne '')
+         {
+              return gdt('See `{section}\'', { 'section' => $reference },{'duplicate'=>1});
          }
     }
     if ($type eq 'ref')
     {
-         if (($book ne '') and ($file_node ne ''))
+         if (($book ne '') and ($href ne ''))
          {
-              return gdt('{node_file_href} section `{section}\' in @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
-              return gdt('{node_file_href} @cite{{book}}', { 'node_file_href' => $file_node, 'book' => $book },{'duplicate'=>1});
+              return gdt('{reference} in @cite{{book}}', { 'reference' => $reference, 'book' => $book },{'duplicate'=>1});
+         }
+         elsif (($book ne '') and ($reference ne ''))
+         {
+              return gdt('`{section}\' in @cite{{book}}', { 'section' => $reference, 'book' => $book },{'duplicate'=>1});
          }
          elsif ($book ne '')
-         {
-              return gdt('section `{section}\' in @cite{{book}}', { 'book' => $book, 'section' => $section },{'duplicate'=>1}) if ($section ne '');
+         { # should seldom or even never happen
               return gdt('@cite{{book}}', { 'book' => $book },{'duplicate'=>1});
          }
-         elsif ($file_node ne '')
+         elsif ($href ne '')
          {
-              return gdt('{node_file_href}', { 'node_file_href' => $file_node },{'duplicate'=>1});
+              return gdt('{reference}', { 'reference' => $reference },{'duplicate'=>1});
+         }
+         elsif ($reference ne '')
+         {
+              return gdt('`{section}\'', { 'section' => $reference },{'duplicate'=>1});
          }
     }
     return '';

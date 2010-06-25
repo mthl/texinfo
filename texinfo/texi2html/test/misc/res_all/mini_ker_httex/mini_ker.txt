@@ -2735,7 +2735,7 @@ $(model_file): $(miniker_user_objects) $(miniker_principal_objects)
 	$(FC) $(FFLAGS) $(LDFLAGS) $^ $(LDADD) $(LIBS) -o $@
 
 In case this isn't right it may be freely changed. You should certainly 
-refer to the (make)Top section `Top' in GNU Make Manual manual to understand what
+refer to the Top in GNU Make Manual manual to understand what
 that rule exactly means and make your own.
 
 

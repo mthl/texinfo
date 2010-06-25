@@ -339,7 +339,7 @@ The copyright owner (or owners) is whoever holds legal copyright on the
 work.  In the case of works assigned to the FSF, the owner is `Free
 Software Foundation, Inc.'.
 
-See (maintain)Copyright Notices section `Copyright Notices' in GNU Maintenance Instructions, for
+See Copyright Notices in GNU Maintenance Instructions, for
 additional information.
 
 

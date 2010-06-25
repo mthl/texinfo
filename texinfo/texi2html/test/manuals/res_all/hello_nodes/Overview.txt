@@ -15,35 +15,35 @@ most manuals don't need to discuss the implementation of the programs
 they document, that is part of the goal here.
 
 First, GNU Hello follows the GNU coding standards
-(see (standards)Top section `Preface' in GNU Coding Standards) and GNU
-maintainer standards (see (maintain)Top section `Preface' in Information for GNU Maintainers).  These are the basic documents which all GNU
+(see Preface in GNU Coding Standards) and GNU
+maintainer standards (see Preface in Information for GNU Maintainers).  These are the basic documents which all GNU
 packages should adhere to.
 
 The Hello package also implements recommended development practices
 not embodied in the standards, using other GNU packages and features:
 
-* It uses Automake (see (Automake)Top section `Introduction' in GNU Automake) and
-hence also Autoconf (see (Autoconf)Top section `Introduction' in GNU Autoconf)
+* It uses Automake (see Introduction in GNU Automake) and
+hence also Autoconf (see Introduction in GNU Autoconf)
 for configuration.
 
-* It uses Gnulib (see (gnulib)Top section `Gnulib' in GNU Gnulib) to enhance
+* It uses Gnulib (see Gnulib in GNU Gnulib) to enhance
 portability and avoid duplication of common sources.
 
-* GNU Gettext (see (gettext)Top section `Introduction' in GNU Gettext) is used
+* GNU Gettext (see Introduction in GNU Gettext) is used
 for internationalization support.  Hello's greeting has been translated
 into many languages.
 
 * Internally, Hello uses the GNU getopt_long function
-(see (libc)Getopt Long Options section `Getopt Long Options' in GNU C Library) to parse options,
+(see Getopt Long Options in GNU C Library) to parse options,
 thus supporting GNU-style long options such as `--help'.
 
 * Man pages are generated with GNU help2man
-(see (help2man)Top section `Overview' in GNU help2man) from the
+(see Overview in GNU help2man) from the
 `--help' output.  This relieves the maintainers of the burden
 of maintaining man documentation separately, yet provides a reasonable
 overview for man devotees.
 
-* Finally, Texinfo (see (texinfo)Top section `Introduction' in Texinfo) is the
+* Finally, Texinfo (see Introduction in Texinfo) is the
 documentation format for this manual.  It supports output in Info,
 HTML, PDF, DVI, plain text, XML, and other formats.
 

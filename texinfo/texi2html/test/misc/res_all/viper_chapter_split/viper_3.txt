@@ -89,7 +89,7 @@ direction.
 
 Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
-to have numbered backups, etc.  For details, see (emacs)Backup section `Backup and Auto-Save' in The GNU Emacs Manual 
+to have numbered backups, etc.  For details, see Backup and Auto-Save in The GNU Emacs Manual 
 
 
 The results of the 9 previous changes are available in the 9 numeric
@@ -165,7 +165,7 @@ The last keyboard macro can also be executed using
 *, and it can be yanked into a register using @!register.
 This is useful for Emacs style keyboard macros defined using C-x(
 and C-x).  Emacs keyboard macros have more capabilities.
-See (emacs)Keyboard Macros section `Keyboard Macros' in The GNU Emacs Manual, for
+See Keyboard Macros in The GNU Emacs Manual, for
 details.
 
 Keyboard Macros allow an interesting form of Query-Replace:
@@ -211,7 +211,7 @@ cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to C-s and
 C-r.  See Customization, to find out how to change the bindings
 of C-r or C-s.
-For details, see (emacs)Incremental Search section `Incremental Search' in The GNU Emacs Manual 
+For details, see Incremental Search in The GNU Emacs Manual 
 
 
 Viper also provides a query replace function that prompts through the
@@ -244,7 +244,7 @@ Try it: it is really simple!
 It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
 Sophisticated templates can be defined using the Emacs abbreviation
-facilities.  See (emacs)Abbrevs section `Abbreviations' in The GNU Emacs Manual, for
+facilities.  See Abbreviations in The GNU Emacs Manual, for
 details.
 
 
@@ -389,7 +389,7 @@ m<
 m>
 Set mark at beginning and end of buffer, respectively.
 m,
-Jump to mark and pop mark off the ring.  See (emacs)Mark section `Mark' in The GNU Emacs Manual, for more info.
+Jump to mark and pop mark off the ring.  See Mark in The GNU Emacs Manual, for more info.
 ] register
 View contents of register
 [ textmarker

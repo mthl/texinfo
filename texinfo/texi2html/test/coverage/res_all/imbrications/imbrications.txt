@@ -37,7 +37,7 @@ text
                            
 ref with uref within:
                                                      
-cross ref with uref uref1 <href://http/myhost.com/index.html>: (info file with uref3 uref3 <href://http/myhost.com/index3.html>)node section `title with uref2 uref2 <href://http/myhost.com/index2.html>' in printed manual with uref4 uref4 <href://http/myhost.com/index4.html>
+title with uref2 uref2 <href://http/myhost.com/index2.html> in printed manual with uref4 uref4 <href://http/myhost.com/index4.html>
 
 footnote with code within:
                                                                                 

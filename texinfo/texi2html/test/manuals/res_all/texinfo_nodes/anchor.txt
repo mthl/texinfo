@@ -32,6 +32,6 @@ Spaces are always ignored after @anchor.
 Anchor names and node names may not conflict.  Anchors and nodes are
 given similar treatment in some ways; for example, the goto-node
 command in standalone Info takes either an anchor name or a node name as
-an argument.  (See (info-stnd)goto-node section `goto-node' in GNU Info.)
+an argument.  (See goto-node in GNU Info.)
 
 

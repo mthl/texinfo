@@ -43,7 +43,7 @@ queues, like this:
 lpr -Qdvi -hprint.server.domain bison.dvi
 
 * Convert the DVI file to a Postscript or PCL file and send it to your
-local printer.  See (dvips)dvips invocation section `dvips invocation' in Dvips, and the man
+local printer.  See dvips invocation in Dvips, and the man
 pages for dvilj, for detailed description of these tools.  Once
 the DVI file is converted to the format your local printer understands
 directly, just send it to the appropriate port, usually `PRN'.

@@ -119,7 +119,7 @@ Info help browsers
 
 The help browsers tkinfo, xinfo and info (so-called
 info help browsers) are based on the
-info program from the Gnu texinfo package.  See An Introduction to Info: (info)Top section `Getting started' in The Info Manual, for more
+info program from the Gnu texinfo package.  See Getting started in The Info Manual, for more
 information.
 
 For info help browsers, the online manual is decomposed into "nodes"

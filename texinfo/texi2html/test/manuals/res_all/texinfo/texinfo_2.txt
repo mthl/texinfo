@@ -43,7 +43,7 @@ When in doubt whether something is needed or not, include it.  It's
 better to include too much than to leave out something important.
 
 Patches are most welcome; if possible, please make them with
-`diff -c' (see (diffutils)Top section `Overview' in Comparing and Merging Files) and include `ChangeLog' entries (see (emacs)Change Log section `Change Log' in The GNU Emacs Manual).
+`diff -c' (see Overview in Comparing and Merging Files) and include `ChangeLog' entries (see Change Log in The GNU Emacs Manual).
 
 When sending patches, if possible please do not encode or split them in
 any way; it's much easier to deal with one plain text message, however
@@ -144,7 +144,7 @@ which are identified by their names.  The Info program displays one node
 at a time, and provides commands with which the user can move to other
 related nodes.
 
-See info: (info)Top, for more information about using Info.
+See (info)info, for more information about using Info.
 
 Each node of an Info file may have any number of child nodes that
 describe subtopics of the node's topic.  The names of child
@@ -194,11 +194,11 @@ systematically by going from node to node, or you can go to a specific
 node listed in the main menu, or you can search the index menus and then
 go directly to the node that has the information you want.  Alternatively,
 with the standalone Info program, you can specify specific menu items on
-the command line (see (info)Top section `Top' in Info).
+the command line (see Top in Info).
 
 If you want to read through an Info file in sequence, as if it were a
 printed manual, you can hit <SPC> repeatedly, or you get the whole
-file with the advanced Info command g *.  (See Advanced Info commands: (info)Expert.)
+file with the advanced Info command g *.  (See (info)Advanced Info commands.)
 
 The `dir' file in the `info' directory serves as the
 departure point for the whole Info system.  From it, you can reach the
@@ -258,7 +258,7 @@ light-hearted, young and cheery.
 TeX is freely distributable.  It is written in a superset of Pascal
 called WEB and can be compiled either in Pascal or (by using a
 conversion program that comes with the TeX distribution) in C.
-(See (emacs)TeX Mode section `TeX Mode' in The GNU Emacs Manual, for information
+(See TeX Mode in The GNU Emacs Manual, for information
 about TeX.)
 
 TeX is very powerful and has a great many features.  Because a

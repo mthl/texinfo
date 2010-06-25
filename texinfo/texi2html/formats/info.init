@@ -2822,16 +2822,17 @@ sub info_default_misc_commands($$$$$)
     return ($command, $line, undef);
 }
 
-sub info_default_external_ref($$$$$$$$)
+sub info_default_external_ref($$$$$$$$$)
 {
     my $type = shift;
     my $section = shift;
     my $book = shift;
-    my $file_node = shift;
+    my $file = shift;
     my $href = shift;
     my $cross_ref = shift;
     my $args_texi = shift;
     my $formatted_args = shift;
+    my $node = shift;
 
     return info_default_inforef($formatted_args) if ($type eq 'inforef');
     return info_default_normal_reference($type, $formatted_args);

@@ -6,7 +6,7 @@ commands.  The name of the function follows immediately after the
 @defun command and it is followed, on the same line, by the
 parameter list.
 
-Here is a definition from (elisp)Calling Functions section `Calling Functions' in The GNU Emacs Lisp Reference Manual.
+Here is a definition from Calling Functions in The GNU Emacs Lisp Reference Manual.
 
  -- Function: apply function &rest arguments
 apply calls function with arguments, just

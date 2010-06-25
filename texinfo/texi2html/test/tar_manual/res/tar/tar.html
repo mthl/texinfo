@@ -1360,7 +1360,7 @@ The full output consists of six fields:
 <ul>
 <li> File type and permissions in symbolic form.
 These are displayed in the same format as the first column of
-<code>ls -l</code> output (see <a href="fileutils.html#What-information-is-listed">format=verbose: (fileutils)What information is listed</a> section &lsquo;Verbose listing&rsquo; in <cite>GNU file utilities</cite>).
+<code>ls -l</code> output (see <a href="fileutils.html#What-information-is-listed">Verbose listing</a> in <cite>GNU file utilities</cite>).
 
 </li><li> Owner name and group separated by a slash character.
 If these data are not available (for example, when listing a &lsquo;<samp>v7</samp>&rsquo; format
@@ -5656,7 +5656,7 @@ metadata, stored in the archive.
 <var>permissions</var> for the archive members, rather than the permissions
 from the files.  <var>permissions</var> can be specified either as an octal
 number or as symbolic permissions, like with
-<code>chmod</code> (See <a href="fileutils.html#File-permissions">Permissions: (fileutils)File permissions</a> section &lsquo;File permissions&rsquo; in <cite><acronym>GNU</acronym> file utilities</cite>.  This reference
+<code>chmod</code> (See <a href="fileutils.html#File-permissions">File permissions</a> in <cite><acronym>GNU</acronym> file utilities</cite>.  This reference
 also has useful information for those not being overly familiar with
 the UNIX permission system).  Using latter syntax allows for
 more flexibility.  For example, the value &lsquo;<samp>a+rw</samp>&rsquo; adds read and write
@@ -7387,7 +7387,7 @@ is allowed in this file.  Particularly, you may wish to define
 functions within that script (e.g., see <code>RESTORE_BEGIN</code> below).
 For more information about shell script syntax, please refer to
 <a href="http://www.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#ta g_02">the definition of the Shell Command Language</a>.  See also
-<a href="bashref.html#Top">(bashref)Top</a> section &lsquo;Bash Features&rsquo; in <cite>Bash Reference Manual</cite>.
+<a href="bashref.html#Top">Bash Features</a> in <cite>Bash Reference Manual</cite>.
 </p>
 <p>The shell variables controlling behavior of <code>backup</code> and
 <code>restore</code> are described in the following subsections.
@@ -9298,7 +9298,7 @@ form:
 <p>where <var>regexp</var> is a <em>regular expression</em>, <var>replace</var> is a
 replacement for each file name part that matches <var>regexp</var>.  Both
 <var>regexp</var> and <var>replace</var> are described in detail in
-<a href="sed.html#The-_0022s_0022-Command">The &quot;s&quot; Command: (sed)The &quot;s&quot; Command</a> section &lsquo;The &lsquo;s&rsquo; Command&rsquo; in <cite>GNU sed</cite>.
+<a href="sed.html#The-_0022s_0022-Command">The &lsquo;s&rsquo; Command</a> in <cite>GNU sed</cite>.
 </p>
 <p>Supported <var>flags</var> are:
 </p>
@@ -9313,7 +9313,7 @@ just the first.
 </p>
 </dd>
 <dt>&lsquo;<samp>x</samp>&rsquo;</dt>
-<dd><p><var>regexp</var> is an <em>extended regular expression</em> (see <a href="sed.html#Extended-regexps">Extended regular expressions: (sed)Extended regexps</a> section &lsquo;Extended regular expressions&rsquo; in <cite>GNU sed</cite>).
+<dd><p><var>regexp</var> is an <em>extended regular expression</em> (see <a href="sed.html#Extended-regexps">Extended regular expressions</a> in <cite>GNU sed</cite>).
 </p>
 </dd>
 <dt>&lsquo;<samp><var>number</var></samp>&rsquo;</dt>
@@ -9569,7 +9569,7 @@ directory entries themselves, but does not descend on them
 recursively.  Many people use <code>find</code> for locating files they
 want to back up, and since <code>tar</code> <em>usually</em> recursively
 descends on directories, they have to use the &lsquo;<samp><span class="nolinebreak">-not</span>&nbsp;<span class="nolinebreak">-type</span>&nbsp;d</samp>&rsquo;
-test in their <code>find</code> invocation (see <a href="find.html#Type">Type: (find)Type</a> section &lsquo;Type test&rsquo; in <cite>Finding Files</cite>), as they usually do not want all the files in a
+test in their <code>find</code> invocation (see <a href="find.html#Type">Type test</a> in <cite>Finding Files</cite>), as they usually do not want all the files in a
 directory. They then use the &lsquo;<samp>--files-from</samp>&rsquo; option to archive
 the files located via <code>find</code>.
 </p>
@@ -10599,7 +10599,7 @@ using a non-<acronym>GNU</acronym> host that does not support the &lsquo;<samp>t
 database, you may need to use a <acronym>POSIX</acronym> rule instead.  Simple
 <acronym>POSIX</acronym> rules like &lsquo;<samp>UTC0</samp>&rsquo; specify a time zone without
 daylight saving time; other rules can specify simple daylight saving
-regimes.  See <a href="libc.html#TZ-Variable">(libc)TZ Variable</a> section &lsquo;Specifying the Time Zone with <code>TZ</code>&rsquo; in <cite>The GNU C Library</cite>.
+regimes.  See <a href="libc.html#TZ-Variable">Specifying the Time Zone with <code>TZ</code></a> in <cite>The GNU C Library</cite>.
 </p>
 <hr>
 <a name="Authors-of-get_005fdate"></a>
@@ -10968,7 +10968,7 @@ and produce uncompressed data on the standard output.
 <p>The &lsquo;<samp>--use-compress-program</samp>&rsquo; option, in particular, lets you
 implement your own filters, not necessarily dealing with
 compression/decomression.  For example, suppose you wish to implement
-PGP encryption on top of compression, using <code>gpg</code> (see <a href="gpg.html#Top">gpg: (gpg)Top</a> section &lsquo;gpg &mdash;- encryption and signing tool&rsquo; in <cite>GNU Privacy Guard Manual</cite>).  The following script does that:  
+PGP encryption on top of compression, using <code>gpg</code> (see <a href="gpg.html#Top">gpg &mdash;- encryption and signing tool</a> in <cite>GNU Privacy Guard Manual</cite>).  The following script does that:  
 </p>
 <div class="smallexample">
 <pre class="smallexample">#! /bin/sh
@@ -14142,7 +14142,7 @@ distribution tarballs.  See section <a href="#Formats">v7</a>, for the detailed 
 of this issue and its implications.
 </p>
 <p>.
-See <a href="automake.html#Options">tar-v7: (automake)Options</a> section &lsquo;Changing Automake&rsquo;s Behavior&rsquo; in <cite>GNU Automake</cite>, for a description on how to use various
+See <a href="automake.html#Options">Changing Automake&rsquo;s Behavior</a> in <cite>GNU Automake</cite>, for a description on how to use various
 archive formats with <code>automake</code>.
 </p>
 <p>Future versions of <acronym>GNU</acronym> <code>tar</code> will understand &lsquo;<samp>-o</samp>&rsquo; only as a

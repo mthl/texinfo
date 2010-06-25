@@ -859,7 +859,7 @@ global variables, data types, and anything else convenient.  Each name
 recorded is called a tag.
 
 The Ebrowse is a separate facility tailored for C++, with tags and a
-class browser.  See (ebrowse)Top section `Top' in Ebrowse User's Manual.
+class browser.  See Top in Ebrowse User's Manual.
 
 * Tag Syntax::		Tag syntax for various types of code and text files.
 * Create Tags Table::	Creating a tags table with etags.

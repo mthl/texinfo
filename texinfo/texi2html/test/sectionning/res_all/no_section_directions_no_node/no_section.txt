@@ -19,5 +19,5 @@ second node (@node second node,,top,TOP).
 
 other node
 ----------
-ref to TOP TOP.
+ref to TOP Top.
 

@@ -3,7 +3,7 @@
 
 You can format Texinfo files for Info using batch-texinfo-format
 and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (See (emacs)Command Switches section `Command Line Switches and Arguments' in The GNU Emacs Manual.)
+including a shell inside of Emacs.  (See Command Line Switches and Arguments in The GNU Emacs Manual.)
 
 Here is a shell command to format all the files that end in
 `.texinfo' in the current directory:

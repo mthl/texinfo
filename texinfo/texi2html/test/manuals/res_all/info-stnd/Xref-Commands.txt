@@ -50,7 +50,7 @@ Like `Next', `Prev', and `Up' pointers, cross references
 can point to any valid node.  They are used to refer you to a place
 where more detailed information can be found on a particular subject.
 Here is a cross reference which points to a node within the Texinfo
-documentation:  See (texinfo)xref section `Writing an Xref' in the Texinfo Manual, for more information on creating your own texinfo cross
+documentation:  See Writing an Xref in the Texinfo Manual, for more information on creating your own texinfo cross
 references.
 
 7.2 Selecting Xrefs

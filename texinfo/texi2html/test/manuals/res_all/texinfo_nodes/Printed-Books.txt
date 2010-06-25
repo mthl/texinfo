@@ -42,7 +42,7 @@ light-hearted, young and cheery.
 TeX is freely distributable.  It is written in a superset of Pascal
 called WEB and can be compiled either in Pascal or (by using a
 conversion program that comes with the TeX distribution) in C.
-(See (emacs)TeX Mode section `TeX Mode' in The GNU Emacs Manual, for information
+(See TeX Mode in The GNU Emacs Manual, for information
 about TeX.)
 
 TeX is very powerful and has a great many features.  Because a

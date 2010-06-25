@@ -457,20 +457,20 @@ with the <code>@section</code>, <code>@subheading</code>, and <code>@subsection<
 commands respectively.  If you move your cursor into the &lsquo;<samp>*Occur*</samp>&rsquo;
 window, you can position the cursor over one of the lines and use the
 <kbd>C-c C-c</kbd> command (<code>occur-mode-goto-occurrence</code>), to jump to
-the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section &lsquo;Using Occur&rsquo; in <cite>The GNU Emacs Manual</cite>, for more
+the corresponding spot in the Texinfo file.  See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">Using Occur</a> in <cite>The GNU Emacs Manual</cite>, for more
 information about <code>occur-mode-goto-occurrence</code>.
 </p>
 <p>The first line in the &lsquo;<samp>*Occur*</samp>&rsquo; window describes the <em>regular
 expression</em> specified by <var>texinfo-heading-pattern</var>.  This regular
 expression is the pattern that <code>texinfo-show-structure</code> looks for.
-See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section &lsquo;Using Regular Expressions&rsquo; in <cite>The GNU Emacs Manual</cite>,
+See <a href="../emacs/Regexps.html#Regexps">Using Regular Expressions</a> in <cite>The GNU Emacs Manual</cite>,
 for more information.
 </p>
 <p>When you invoke the <code>texinfo-show-structure</code> command, Emacs will
 display the structure of the whole buffer.  If you want to see the
 structure of just a part of the buffer, of one chapter, for example,
 use the <kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command to mark the
-region.  (See <a href="../emacs/Narrowing.html#Narrowing">(emacs)Narrowing</a> section &lsquo;Narrowing&rsquo; in <cite>The GNU Emacs Manual</cite>.)  This is
+region.  (See <a href="../emacs/Narrowing.html#Narrowing">Narrowing</a> in <cite>The GNU Emacs Manual</cite>.)  This is
 how the example used above was generated.  (To see the whole buffer
 again, use <kbd>C-x n w</kbd> (<code>widen</code>).)
 </p>
@@ -516,7 +516,7 @@ command directly.  To do this, type
 </pre></div>
 
 <p>and then, when prompted, type a <em>regexp</em>, a regular expression for
-the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">(emacs)Regexps</a> section &lsquo;Regular Expressions&rsquo; in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
+the pattern you want to match.  (See <a href="../emacs/Regexps.html#Regexps">Regular Expressions</a> in <cite>The GNU Emacs Manual</cite>.)  The <code>occur</code> command works from
 the current location of the cursor in the buffer to the end of the
 buffer.  If you want to run <code>occur</code> on the whole buffer, place
 the cursor at the beginning of the buffer.
@@ -534,7 +534,7 @@ or phrase, end the last word with a &lsquo;<samp>$</samp>&rsquo;; for example,
 all the nodes that are part of the same chapter or section and
 therefore have the same &lsquo;Up&rsquo; pointer.
 </p>
-<p>See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">(emacs)Other Repeating Search</a> section &lsquo;Using Occur&rsquo; in <cite>The GNU Emacs Manual</cite>,
+<p>See <a href="../emacs/Other-Repeating-Search.html#Other-Repeating-Search">Using Occur</a> in <cite>The GNU Emacs Manual</cite>,
 for more information.
 </p>
 <hr>

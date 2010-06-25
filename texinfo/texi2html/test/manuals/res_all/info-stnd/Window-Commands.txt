@@ -196,7 +196,7 @@ Transpose the characters at the cursor.
 
 The next group of commands deal with killing, and yanking
 text(6).   For an in depth discussion of killing and
-yanking, see (emacs)Killing section `Killing and Deleting' in the GNU Emacs Manual
+yanking, see Killing and Deleting in the GNU Emacs Manual
 
 <M-d> (echo-area-kill-word)
 <M-X>, vi-like operation

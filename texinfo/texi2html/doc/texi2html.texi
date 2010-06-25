@@ -2994,20 +2994,19 @@ The default for this function is to make a reference compatible with
 @command{makeinfo}  (@pxref{HTML Xref,,,texinfo,GNU Texinfo}).
 @end deftypefn
 
-@deftypefn {Function Reference} $text external_ref $command $section $book $node_and_file $href $cross_ref_name \@@args_texi \@@formatted_args
+@deftypefn {Function Reference} $text external_ref $command $section $book $file $href $cross_ref_name \@@args_texi \@@formatted_args $node
 This function formats a reference to an external texinfo manual.
 The @var{$command} is the ref command (@code{ref}, @code{xref} or 
 @code{pxref}, in text, at sentence beginning or in parenthesis).
 The optionnal @var{$section} argument is the section in the book and 
  @var{book} is the book title.
-@var{$node_and_file} is the node and file name formatted according to the 
-convention used in info: @samp{(file)node}. @var{$href} it an hypertextual
+@var{$node_and_file} is manual file name. @var{$href} it an hypertextual
 reference to the distant manual constructed using the above function. 
 @var{$cross_ref_name} is an optionnal cross
 reference name appearing in the reference command. 
 @var{\@@args_texi} is a reference on an array containing the @@-command
 arguments, not formatted, with @var{\@@formatted_args} contains the formatted
-@@-command arguments.
+@@-command arguments. @var{$node} is the node name, formatted.
 This function returns
 the text corresponding with the external html manual reference.
 This function returns the full formatted text of the external reference.
@@ -4654,6 +4653,8 @@ things should be directly done in element_heading.
   %iso_symbols is unused now.
 @item change in the normal_text function reference API, now there is an 
   input variable true if in @@math.
+@item change the external_ref API, fourth argument is now the file name and
+  add the node as an extra argument.
 @item rename $Texi2HTML::THISDOC@{css_lines@} as $Texi2HTML::THISDOC@{css_rule_lines@}
 @end itemize
 @item API changes between 1.78 and 1.80: 

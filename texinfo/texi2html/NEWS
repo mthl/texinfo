@@ -121,6 +121,9 @@ This file records noteworthy changes.
 * change in the normal_text function reference API, now there is an 
   input variable true if in @math.
 
+* change the external_ref API, fourth argument is now the file name and
+  add the node as an extra argument.
+
 * only install init files from maintained_extra/, they are considered
   to be interesting enough and maintained.
 

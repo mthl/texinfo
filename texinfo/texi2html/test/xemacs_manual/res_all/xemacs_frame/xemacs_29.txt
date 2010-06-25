@@ -41,7 +41,7 @@ mode is Calendar mode.
   Button2 in the calendar brings up a menu of operations on a
 particular date; Buttons3 brings up a menu of commonly used
 calendar features that are independent of any particular date.  To exit
-the calendar, type q.  See Customizing the Calendar and Diary: (lispref)Calendar section `Calendar' in The XEmacs Lisp Reference Manual, for customization
+the calendar, type q.  See Customizing the Calendar and Diary in The XEmacs Lisp Reference Manual, for customization
 information about the calendar and diary.
  
 * Calendar Motion::        Moving through the calendar; selecting a date.
@@ -1573,7 +1573,7 @@ this:
 
 Emacs matches of the diary entries with the date forms is done with the
 standard syntax table from Fundamental mode
-(see (lispref)Syntax Tables section `Syntax Tables' in XEmacs Lisp Reference Manual),
+(see Syntax Tables in XEmacs Lisp Reference Manual),
 but with the `*' changed so that it is a word constituent.
 
   The date patterns in the list must be mutually exclusive and

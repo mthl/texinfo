@@ -10,7 +10,7 @@ command directly.  To do this, type
 M-x occur
 
 and then, when prompted, type a regexp, a regular expression for
-the pattern you want to match.  (See (emacs)Regexps section `Regular Expressions' in The GNU Emacs Manual.)  The occur command works from
+the pattern you want to match.  (See Regular Expressions in The GNU Emacs Manual.)  The occur command works from
 the current location of the cursor in the buffer to the end of the
 buffer.  If you want to run occur on the whole buffer, place
 the cursor at the beginning of the buffer.
@@ -28,6 +28,6 @@ or phrase, end the last word with a `$'; for example,
 all the nodes that are part of the same chapter or section and
 therefore have the same `Up' pointer.
 
-See (emacs)Other Repeating Search section `Using Occur' in The GNU Emacs Manual,
+See Using Occur in The GNU Emacs Manual,
 for more information.
 

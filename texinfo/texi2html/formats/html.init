@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.51 2010-06-22 17:09:49 karl Exp $
+# $Id: html.init,v 1.52 2010-06-25 22:24:07 pertusus Exp $
 
 use strict;
 
@@ -1712,7 +1712,7 @@ sub html_default_protect_space_codebreak($$$$$)
       my $class = 'nolinebreak';
       $class = 'nocodebreak' if ($in_code and get_conf('allowcodebreaks') eq 'false');
       my $open = html_default_attribute_class('span', $class).'>';
-      # protect in case we are in 'w'
+      # protect spaces in the html leading attribute in case we are in 'w'
       $open =~ s/ /\x{1F}/g if ($in_w);
       $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
    }
@@ -1720,7 +1720,9 @@ sub html_default_protect_space_codebreak($$$$$)
    if ($in_w)
    {
       $text .= '&nbsp;' if (chomp($text));
+      # protect spaces within text
       $text =~ s/ /&nbsp;/g;
+      # revert protected spaces in leading html attribute
       $text =~ s/\x{1F}/ /g;
    }
    return $text;

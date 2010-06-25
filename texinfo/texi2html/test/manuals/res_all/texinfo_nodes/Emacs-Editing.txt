@@ -18,7 +18,7 @@ equivalents, such as appendices.  With this value for the page
 delimiter, you can jump from chapter title to chapter title with the
 C-x ] (forward-page) and C-x [
 (backward-page) commands and narrow to a chapter with the
-C-x p (narrow-to-page) command.  (See (emacs)Pages section `Pages' in The GNU Emacs Manual, for details about the page commands.)
+C-x p (narrow-to-page) command.  (See Pages in The GNU Emacs Manual, for details about the page commands.)
 
 You may name a Texinfo file however you wish, but the convention is to
 end a Texinfo file name with one of the extensions

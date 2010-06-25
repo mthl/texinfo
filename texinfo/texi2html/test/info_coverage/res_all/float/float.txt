@@ -283,10 +283,10 @@ And now a ref (without manual or printed manual)
 title.
 
 And now a ref (with manual without printed manual) 
-cross ref: (manual)text with a lot of features.
+(manual)title.
 
 And now a ref (without manual with a printed manual) 
-section `title' in printed manual title.
+`title' in printed manual title.
 
 A ref to float without type 1.
 

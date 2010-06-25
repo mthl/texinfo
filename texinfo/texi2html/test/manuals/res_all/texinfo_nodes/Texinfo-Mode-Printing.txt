@@ -84,13 +84,13 @@ tex-dvi-print-command                     "lpr -d"
 tex-show-queue-command                    "lpq"
 
 You can change the values of these variables with the M-x
-edit-options command (see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual), with the M-x set-variable command
-(see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual), or with your `.emacs' initialization file
-(see (emacs)Init File section `Init File' in The GNU Emacs Manual).
+edit-options command (see Editing Variable Values in The GNU Emacs Manual), with the M-x set-variable command
+(see Examining and Setting Variables in The GNU Emacs Manual), or with your `.emacs' initialization file
+(see Init File in The GNU Emacs Manual).
 
 Beginning with version 20, GNU Emacs offers a user-friendly interface,
 called Customize, for changing values of user-definable variables.
-See (emacs)Easy Customization section `Easy Customization Interface' in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
+See Easy Customization Interface in The GNU Emacs Manual, for more details about this.  The Texinfo variables can
 be found in the `Development/Docs/Texinfo' group, once you invoke
 the M-x customize command.
 

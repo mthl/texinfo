@@ -71,7 +71,7 @@ works like @defun.
 @defspec name arguments...
 The @defspec command is the definition command for special
 forms.  (In Lisp, a special form is an entity much like a function,
-see (elisp)Special Forms section `Special Forms' in GNU Emacs Lisp Reference Manual.)
+see Special Forms in GNU Emacs Lisp Reference Manual.)
 @defspec is equivalent to `@deffn {Special Form}
 ...' and works like @defun.
 

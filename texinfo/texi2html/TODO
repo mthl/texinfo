@@ -3,21 +3,6 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* chapter and section in htmlxref.cnf
-
-* texi2html generates too much in cross references (report from Karl):
-
-For this xref:
-  @pxref{Internationalization,,,standards,GNU Coding Standards}
-
-makeinfo.pl generates:
-  see <(standards)Internationalization> section Internationalization in GNU
-  Coding Standards
-
-    * if there is a printed manual name, the info manual name should be
-      omitted
-    * the node should only be used if there is no section name.
-
 * unconditionnally add a colon after index node and menu node
   when not in texi2html mode. Report from Karl.
 

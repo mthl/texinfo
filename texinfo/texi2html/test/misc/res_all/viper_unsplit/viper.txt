@@ -112,7 +112,7 @@ included in your `~/.viper' file and are found at the following URL:
 Emacs can edit several files at once.  A file in Emacs is placed in a
 buffer that usually has the same name as the file.  Buffers are also used
 for other purposes, such as shell interfaces, directory editing, etc.
-See (emacs)Dired section `Directory Editor' in The Gnu Emacs Manual, for an example.
+See Directory Editor in The Gnu Emacs Manual, for an example.
 
 A buffer has a distinguished position called the point.
 A point is always between 2 characters, and is looking at
@@ -129,7 +129,7 @@ shouldn't) happen if you restrict yourself to standard Vi keys, unless you
 modify the default editing style.  See Customization.
 
 In addition to the point, there is another distinguished buffer
-position called the mark.  See (emacs)Mark section `Mark' in The GNU Emacs manual, for more info on the mark.  The text between the point and
+position called the mark.  See Mark in The GNU Emacs manual, for more info on the mark.  The text between the point and
 the mark is called the region of the buffer.  For the Viper
 user, this simply means that in addition to the Vi textmarkers a-z, there
 is another marker called mark.  This is similar to the unnamed Vi
@@ -176,14 +176,14 @@ mode of the buffer.  If a function is bound to some key in the local
 keymap then that function will be executed when you type the key.
 If no function is bound to a key in the
 local map, however, the function bound to the key in the global map
-will be executed.  See Major Modes: (emacs)Major Modes section `Major Modes' in The GNU Emacs Manual, for more information.
+will be executed.  See Major Modes in The GNU Emacs Manual, for more information.
 
 A buffer can also have a minor mode.  Minor modes are options that
 you can use or not.  A buffer in text-mode can have
 auto-fill-mode as minor mode, which can be turned off or on at
 any time.  In Emacs, a minor mode may have it own keymap,
 which overrides the local keymap when the minor mode is turned on.  For
-more information, see Minor Modes: (emacs)Minor Modes section `Minor Modes' in The GNU Emacs Manual 
+more information, see Minor Modes in The GNU Emacs Manual 
 
 
 Viper is implemented as a collection of minor modes.  Different minor modes
@@ -406,7 +406,7 @@ use C-g to quit.  Similarly, C-] is used to exit
 `Recursive Edits' in Emacs for which there is no comparable Vi
 functionality and no key-binding.  Recursive edits are indicated by
 `[]' brackets framing the modes on the mode line.
-See Recursive Edit: (emacs)Recursive Edit section `Recursive Edit' in The GNU Emacs Manual.
+See Recursive Edit in The GNU Emacs Manual.
 At user level 1, C-g is bound to viper-info-on-file
 function instead.
 
@@ -445,7 +445,7 @@ Most commands, ~, [[, p, /, ..., etc., take counts.
 Viper uses Emacs Regular Expressions for searches.  These are a superset of
 Vi regular
 expressions, excepting the change-of-case escapes `\u', `\L',
-..., etc.  See (emacs)Regular Expressions section `Regular Expressions' in The GNU Emacs Manual, for details.
+..., etc.  See Regular Expressions in The GNU Emacs Manual, for details.
 Files specified to :e use csh regular expressions
 (globbing, wildcards, what have you).
 However, the function viper-toggle-search-style, bound to C-c /,
@@ -816,7 +816,7 @@ direction.
 
 Since the undo size is limited, Viper can create backup files and
 auto-save files.  It will normally do this automatically.  It is possible
-to have numbered backups, etc.  For details, see (emacs)Backup section `Backup and Auto-Save' in The GNU Emacs Manual 
+to have numbered backups, etc.  For details, see Backup and Auto-Save in The GNU Emacs Manual 
 
 
 The results of the 9 previous changes are available in the 9 numeric
@@ -892,7 +892,7 @@ The last keyboard macro can also be executed using
 *, and it can be yanked into a register using @!register.
 This is useful for Emacs style keyboard macros defined using C-x(
 and C-x).  Emacs keyboard macros have more capabilities.
-See (emacs)Keyboard Macros section `Keyboard Macros' in The GNU Emacs Manual, for
+See Keyboard Macros in The GNU Emacs Manual, for
 details.
 
 Keyboard Macros allow an interesting form of Query-Replace:
@@ -938,7 +938,7 @@ cursor will move to the next match.  You can snarf words from the buffer
 as you go along.  Incremental Search is normally bound to C-s and
 C-r.  See Customization, to find out how to change the bindings
 of C-r or C-s.
-For details, see (emacs)Incremental Search section `Incremental Search' in The GNU Emacs Manual 
+For details, see Incremental Search in The GNU Emacs Manual 
 
 
 Viper also provides a query replace function that prompts through the
@@ -971,7 +971,7 @@ Try it: it is really simple!
 It is possible in Emacs to define abbrevs based on the contents of the
 buffer.
 Sophisticated templates can be defined using the Emacs abbreviation
-facilities.  See (emacs)Abbrevs section `Abbreviations' in The GNU Emacs Manual, for
+facilities.  See Abbreviations in The GNU Emacs Manual, for
 details.
 
 
@@ -1116,7 +1116,7 @@ m<
 m>
 Set mark at beginning and end of buffer, respectively.
 m,
-Jump to mark and pop mark off the ring.  See (emacs)Mark section `Mark' in The GNU Emacs Manual, for more info.
+Jump to mark and pop mark off the ring.  See Mark in The GNU Emacs Manual, for more info.
 ] register
 View contents of register
 [ textmarker
@@ -1768,7 +1768,7 @@ local to Viper state and the current buffer, not to the major mode.
 In such situations, the remedy is to type M-x viper-zap-local-keys.
 
 So much about Viper-specific bindings.
-See (emacs)Customization section `Customization' in The GNU Emacs Manual, and the Emacs quick reference card for the general info on key
+See Customization in The GNU Emacs Manual, and the Emacs quick reference card for the general info on key
 bindings in Emacs.
 
 
@@ -1936,7 +1936,7 @@ See Vi Macros, for more information on Vi macros.
 viper-heading-start
 viper-heading-end
 Regular Expressions for [[ and ]].  Note that Emacs defines
-Regexps for paragraphs and sentences.  See (emacs)Paragraphs section `Paragraphs and Sentences' in The GNU Emacs Manual, for details.
+Regexps for paragraphs and sentences.  See Paragraphs and Sentences in The GNU Emacs Manual, for details.
 M-x viper-set-expert-level
 Change your user level interactively.
 viper-smart-suffix-list  '("" "tex" "c" "cc" "el" "p")
@@ -2069,7 +2069,7 @@ above block should be commented out.
 
 Even though these commands are sometimes useful, they are no substitute for
 the powerful tag table facility of Emacs.  Viper's :tag command
-in a primitive interface to Emacs tags.  See Tags: (emacs)Tags section `Tags' in The Gnu Emacs Manual, for more information on tags.
+in a primitive interface to Emacs tags.  See Tags in The Gnu Emacs Manual, for more information on tags.
 
 The following two commands are normally bound to a mouse click and are part
 of Viper.  They work only if Emacs runs as an application under X
@@ -2261,7 +2261,7 @@ As if all that is not enough, Viper (through its interface to Emacs
 macros) lets the user define keyboard macros that ask for confirmation or
 even prompt the user for input and then continue.  To do this, one should
 type C-x q (for confirmation) or C-u C-x q (for prompt).
-For details, see (emacs)Kbd Macro Query section `Customization' in The GNU Emacs Manual 
+For details, see Customization in The GNU Emacs Manual 
 
 When the user finishes defining a macro (which is done by typing C-x) --
 a departure from Vi), you will be asked whether you want this
@@ -2776,7 +2776,7 @@ in your `~/.viper' file.
 
 Emacs mark is referred to in the region specifiers r and R.
 See Emacs Preliminaries, and See Basics, for explanation.  Also
-see (emacs)Mark section `Mark' in The GNU Emacs manual, for an explanation of
+see Mark in The GNU Emacs manual, for an explanation of
 the Emacs mark ring.
 
 

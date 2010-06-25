@@ -3,7 +3,7 @@
 
 Info files are usually kept in the `info' directory.  You can read
 Info files using the standalone Info program or the Info reader built
-into Emacs.  (See info: (info)Top, for an introduction to Info.)
+into Emacs.  (See (info)info, for an introduction to Info.)
 
 * Directory File::              The top level menu for all Info files.
 * New Info File::               Listing a new Info file.

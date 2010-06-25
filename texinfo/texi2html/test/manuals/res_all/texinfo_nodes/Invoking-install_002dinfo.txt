@@ -18,7 +18,7 @@ read only one Info file and write only one `dir' file per invocation.
 If dir-file (however specified) does not exist,
 install-info creates it if possible (with no entries).
 
-If any input file is compressed with gzip (see (gzip)Invoking gzip section `Invoking gzip' in Gzip), install-info automatically uncompresses it
+If any input file is compressed with gzip (see Invoking gzip in Gzip), install-info automatically uncompresses it
 for reading.  And if dir-file is compressed, install-info
 also automatically leaves it compressed after writing any changes.
 If dir-file itself does not exist, install-info tries to

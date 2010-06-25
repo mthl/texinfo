@@ -58,7 +58,7 @@ name.
 @defopt name
 The @defopt command is the definition command for user
 options, i.e., variables intended for users to change according to
-taste; Emacs has many such (see (emacs)Variables section `Variables' in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
+taste; Emacs has many such (see Variables in The GNU Emacs Manual).  @defopt is equivalent to `@defvr {User
 Option} ...' and works like @defvar.
 
 

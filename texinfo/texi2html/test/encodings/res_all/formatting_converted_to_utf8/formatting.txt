@@ -389,10 +389,10 @@ d–efmethod
  -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
 d–eftypemethod
 
-@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See cross r—ef name@: (file n—ame@)c—hapter@ section `t—itle@' in ma—nual@.
-@ref{chapter, cross ref name, title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@pxref{chapter, cross ref name, title, file name, manual} see cross ref name: (file name)chapter section `title' in manual
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See t—itle@ in ma—nual@.
+@ref{chapter, cross ref name, title, file name, manual} title in manual
+@pxref{chapter, cross ref name, title, file name, manual} see title in manual
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
 
 @ref{chapter} chapter
 @xref{chapter} See chapter.
@@ -401,53 +401,53 @@ d–eftypemethod
 
 @ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
-a , in cross ref: (a comma, in file)s–ect,ion section `a comma, in title' in a , in manual name
+a comma, in title in a , in manual name
 
 @ref{chapter,cross ref name} cross ref name
 @ref{chapter,,title} title
 @ref{chapter,,,file name} (file name)chapter
-@ref{chapter,,,,manual} section `chapter' in manual
+@ref{chapter,,,,manual} `chapter' in manual
 @ref{chapter,cross ref name,title,} title
-@ref{chapter,cross ref name,,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,,,manual} section `chapter' in manual
-@ref{chapter,cross ref name,title,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,title,,manual} section `title' in manual
-@ref{chapter,cross ref name,title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@ref{chapter,,title,file name} (file name)chapter
-@ref{chapter,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{chapter,,,file name,manual} (file name)chapter section `chapter' in manual
+@ref{chapter,cross ref name,,file name} (file name)cross ref name
+@ref{chapter,cross ref name,,,manual} `cross ref name' in manual
+@ref{chapter,cross ref name,title,file name} (file name)title
+@ref{chapter,cross ref name,title,,manual} `title' in manual
+@ref{chapter,cross ref name,title, file name, manual} title in manual
+@ref{chapter,,title,file name} (file name)title
+@ref{chapter,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{chapter,,,file name,manual} chapter in manual
 
 
-@ref{(pman)anode,cross ref name} cross ref name: (pman)anode
-@ref{(pman)anode,,title} (pman)anode
+@ref{(pman)anode,cross ref name} (pman)cross ref name
+@ref{(pman)anode,,title} (pman)title
 @ref{(pman)anode,,,file name} (file name)anode
-@ref{(pman)anode,,,,manual} (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,} cross ref name: (pman)anode
-@ref{(pman)anode,cross ref name,,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,,,manual} cross ref name: (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,title,,manual} cross ref name: (pman)anode section `title' in manual
-@ref{(pman)anode,cross ref name,title, file name, manual} cross ref name: (file name)anode section `title' in manual
-@ref{(pman)anode,,title,file name} (file name)anode
-@ref{(pman)anode,,title,,manual} (pman)anode section `title' in manual
-@ref{(pman)anode,,title, file name, manual} (file name)anode section `title' in manual
-@ref{(pman)anode,,,file name,manual} (file name)anode section `anode' in manual
+@ref{(pman)anode,,,,manual} anode in manual
+@ref{(pman)anode,cross ref name,title,} (pman)title
+@ref{(pman)anode,cross ref name,,file name} (file name)cross ref name
+@ref{(pman)anode,cross ref name,,,manual} cross ref name in manual
+@ref{(pman)anode,cross ref name,title,file name} (file name)title
+@ref{(pman)anode,cross ref name,title,,manual} title in manual
+@ref{(pman)anode,cross ref name,title, file name, manual} title in manual
+@ref{(pman)anode,,title,file name} (file name)title
+@ref{(pman)anode,,title,,manual} title in manual
+@ref{(pman)anode,,title, file name, manual} title in manual
+@ref{(pman)anode,,,file name,manual} anode in manual
 
 
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
-@inforef{chapter} 
-@inforef{chapter, cross ref name} 
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
+@inforef{chapter} See `chapter'
+@inforef{chapter, cross ref name} See `cross ref name'
 @inforef{chapter,,file name} See (file name)chapter
-@inforef{node, cross ref name, file name} See cross ref name: (file name)node
-@inforef{node} 
-@inforef{node, cross ref name} 
+@inforef{node, cross ref name, file name} See (file name)cross ref name
+@inforef{node} See `node'
+@inforef{node, cross ref name} See `cross ref name'
 @inforef{node,,file name} See (file name)node
-@inforef{chapter, cross ref name, file name, spurious arg} See cross ref name: (file name, spurious arg)chapter
+@inforef{chapter, cross ref name, file name, spurious arg} See (file name, spurious arg)cross ref name
 
 @inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}
-See a , in cross ref: (a comma, in file)s–ect,ion
+See (a comma, in file)a , in cross ref
 
 
 • a
@@ -570,28 +570,28 @@ Various deff lines
 @ref{node,cross ref name} @ref{node,cross ref name}
 @ref{node,,title} @ref{node,,title}
 @ref{node,,,file name} (file name)node
-@ref{node,,,,manual} section `node' in manual
+@ref{node,,,,manual} `node' in manual
 @ref{node,cross ref name,title,} @ref{node,cross ref name,title,}
-@ref{node,cross ref name,,file name} cross ref name: (file name)node
-@ref{node,cross ref name,,,manual} section `node' in manual
-@ref{node,cross ref name,title,file name} cross ref name: (file name)node
-@ref{node,cross ref name,title,,manual} section `title' in manual
-@ref{node,cross ref name,title, file name, manual} cross ref name: (file name)node section `title' in manual
-@ref{node,,title,file name} (file name)node
-@ref{node,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{node,,title, file name, manual} (file name)node section `title' in manual
-@ref{node,,,file name,manual} (file name)node section `node' in manual
+@ref{node,cross ref name,,file name} (file name)cross ref name
+@ref{node,cross ref name,,,manual} `cross ref name' in manual
+@ref{node,cross ref name,title,file name} (file name)title
+@ref{node,cross ref name,title,,manual} `title' in manual
+@ref{node,cross ref name,title, file name, manual} title in manual
+@ref{node,,title,file name} (file name)title
+@ref{node,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{node,,title, file name, manual} title in manual
+@ref{node,,,file name,manual} node in manual
 @ref{,cross ref name,title,} @ref{,cross ref name,title,}
-@ref{,cross ref name,,file name} cross ref name: (file name)
-@ref{,cross ref name,,,manual} manual
-@ref{,cross ref name,title,file name} cross ref name: (file name)
-@ref{,cross ref name,title,,manual} section `title' in manual
-@ref{,cross ref name,title, file name, manual} cross ref name: (file name) section `title' in manual
-@ref{,,title,file name} (file name)
-@ref{,,title,,manual} section `title' in manual
-@ref{,,title, file name, manual} (file name) section `title' in manual
-@ref{,,,file name,manual} (file name) manual
+@ref{,cross ref name,,file name} (file name)cross ref name
+@ref{,cross ref name,,,manual} `cross ref name' in manual
+@ref{,cross ref name,title,file name} (file name)title
+@ref{,cross ref name,title,,manual} `title' in manual
+@ref{,cross ref name,title, file name, manual} title in manual
+@ref{,,title,file name} (file name)title
+@ref{,,title,,manual} `title' in manual
+@ref{,,title, file name, manual} title in manual
+@ref{,,,file name,manual}  in manual
 
 @inforef{,cross ref name } 
 @inforef{,,file name} 
@@ -978,10 +978,10 @@ d–efmethod
  -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
 d–eftypemethod
 
-@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See cross r—ef name@: (file n—ame@)c—hapter@ section `t—itle@' in ma—nual@.
-@ref{chapter, cross ref name, title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@pxref{chapter, cross ref name, title, file name, manual} see cross ref name: (file name)chapter section `title' in manual
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See t—itle@ in ma—nual@.
+@ref{chapter, cross ref name, title, file name, manual} title in manual
+@pxref{chapter, cross ref name, title, file name, manual} see title in manual
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
 
 @ref{chapter} chapter
 @xref{chapter} See chapter.
@@ -990,53 +990,53 @@ d–eftypemethod
 
 @ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
-a , in cross ref: (a comma, in file)s–ect,ion section `a comma, in title' in a , in manual name
+a comma, in title in a , in manual name
 
 @ref{chapter,cross ref name} cross ref name
 @ref{chapter,,title} title
 @ref{chapter,,,file name} (file name)chapter
-@ref{chapter,,,,manual} section `chapter' in manual
+@ref{chapter,,,,manual} `chapter' in manual
 @ref{chapter,cross ref name,title,} title
-@ref{chapter,cross ref name,,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,,,manual} section `chapter' in manual
-@ref{chapter,cross ref name,title,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,title,,manual} section `title' in manual
-@ref{chapter,cross ref name,title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@ref{chapter,,title,file name} (file name)chapter
-@ref{chapter,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{chapter,,,file name,manual} (file name)chapter section `chapter' in manual
+@ref{chapter,cross ref name,,file name} (file name)cross ref name
+@ref{chapter,cross ref name,,,manual} `cross ref name' in manual
+@ref{chapter,cross ref name,title,file name} (file name)title
+@ref{chapter,cross ref name,title,,manual} `title' in manual
+@ref{chapter,cross ref name,title, file name, manual} title in manual
+@ref{chapter,,title,file name} (file name)title
+@ref{chapter,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{chapter,,,file name,manual} chapter in manual
 
 
-@ref{(pman)anode,cross ref name} cross ref name: (pman)anode
-@ref{(pman)anode,,title} (pman)anode
+@ref{(pman)anode,cross ref name} (pman)cross ref name
+@ref{(pman)anode,,title} (pman)title
 @ref{(pman)anode,,,file name} (file name)anode
-@ref{(pman)anode,,,,manual} (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,} cross ref name: (pman)anode
-@ref{(pman)anode,cross ref name,,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,,,manual} cross ref name: (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,title,,manual} cross ref name: (pman)anode section `title' in manual
-@ref{(pman)anode,cross ref name,title, file name, manual} cross ref name: (file name)anode section `title' in manual
-@ref{(pman)anode,,title,file name} (file name)anode
-@ref{(pman)anode,,title,,manual} (pman)anode section `title' in manual
-@ref{(pman)anode,,title, file name, manual} (file name)anode section `title' in manual
-@ref{(pman)anode,,,file name,manual} (file name)anode section `anode' in manual
+@ref{(pman)anode,,,,manual} anode in manual
+@ref{(pman)anode,cross ref name,title,} (pman)title
+@ref{(pman)anode,cross ref name,,file name} (file name)cross ref name
+@ref{(pman)anode,cross ref name,,,manual} cross ref name in manual
+@ref{(pman)anode,cross ref name,title,file name} (file name)title
+@ref{(pman)anode,cross ref name,title,,manual} title in manual
+@ref{(pman)anode,cross ref name,title, file name, manual} title in manual
+@ref{(pman)anode,,title,file name} (file name)title
+@ref{(pman)anode,,title,,manual} title in manual
+@ref{(pman)anode,,title, file name, manual} title in manual
+@ref{(pman)anode,,,file name,manual} anode in manual
 
 
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
-@inforef{chapter} 
-@inforef{chapter, cross ref name} 
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
+@inforef{chapter} See `chapter'
+@inforef{chapter, cross ref name} See `cross ref name'
 @inforef{chapter,,file name} See (file name)chapter
-@inforef{node, cross ref name, file name} See cross ref name: (file name)node
-@inforef{node} 
-@inforef{node, cross ref name} 
+@inforef{node, cross ref name, file name} See (file name)cross ref name
+@inforef{node} See `node'
+@inforef{node, cross ref name} See `cross ref name'
 @inforef{node,,file name} See (file name)node
-@inforef{chapter, cross ref name, file name, spurious arg} See cross ref name: (file name, spurious arg)chapter
+@inforef{chapter, cross ref name, file name, spurious arg} See (file name, spurious arg)cross ref name
 
 @inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}
-See a , in cross ref: (a comma, in file)s–ect,ion
+See (a comma, in file)a , in cross ref
 
 
 • a
@@ -1159,28 +1159,28 @@ Various deff lines
 @ref{node,cross ref name} @ref{node,cross ref name}
 @ref{node,,title} @ref{node,,title}
 @ref{node,,,file name} (file name)node
-@ref{node,,,,manual} section `node' in manual
+@ref{node,,,,manual} `node' in manual
 @ref{node,cross ref name,title,} @ref{node,cross ref name,title,}
-@ref{node,cross ref name,,file name} cross ref name: (file name)node
-@ref{node,cross ref name,,,manual} section `node' in manual
-@ref{node,cross ref name,title,file name} cross ref name: (file name)node
-@ref{node,cross ref name,title,,manual} section `title' in manual
-@ref{node,cross ref name,title, file name, manual} cross ref name: (file name)node section `title' in manual
-@ref{node,,title,file name} (file name)node
-@ref{node,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{node,,title, file name, manual} (file name)node section `title' in manual
-@ref{node,,,file name,manual} (file name)node section `node' in manual
+@ref{node,cross ref name,,file name} (file name)cross ref name
+@ref{node,cross ref name,,,manual} `cross ref name' in manual
+@ref{node,cross ref name,title,file name} (file name)title
+@ref{node,cross ref name,title,,manual} `title' in manual
+@ref{node,cross ref name,title, file name, manual} title in manual
+@ref{node,,title,file name} (file name)title
+@ref{node,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{node,,title, file name, manual} title in manual
+@ref{node,,,file name,manual} node in manual
 @ref{,cross ref name,title,} @ref{,cross ref name,title,}
-@ref{,cross ref name,,file name} cross ref name: (file name)
-@ref{,cross ref name,,,manual} manual
-@ref{,cross ref name,title,file name} cross ref name: (file name)
-@ref{,cross ref name,title,,manual} section `title' in manual
-@ref{,cross ref name,title, file name, manual} cross ref name: (file name) section `title' in manual
-@ref{,,title,file name} (file name)
-@ref{,,title,,manual} section `title' in manual
-@ref{,,title, file name, manual} (file name) section `title' in manual
-@ref{,,,file name,manual} (file name) manual
+@ref{,cross ref name,,file name} (file name)cross ref name
+@ref{,cross ref name,,,manual} `cross ref name' in manual
+@ref{,cross ref name,title,file name} (file name)title
+@ref{,cross ref name,title,,manual} `title' in manual
+@ref{,cross ref name,title, file name, manual} title in manual
+@ref{,,title,file name} (file name)title
+@ref{,,title,,manual} `title' in manual
+@ref{,,title, file name, manual} title in manual
+@ref{,,,file name,manual}  in manual
 
 @inforef{,cross ref name } 
 @inforef{,,file name} 
@@ -1565,10 +1565,10 @@ d--efmethod
  -- Method on c--lass: t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 
-@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See cross r---ef name@: (file n---ame@)c---hapter@ section `t---itle@' in ma---nual@.
-@ref{chapter, cross ref name, title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@pxref{chapter, cross ref name, title, file name, manual} see cross ref name: (file name)chapter section `title' in manual
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} See t---itle@ in ma---nual@.
+@ref{chapter, cross ref name, title, file name, manual} title in manual
+@pxref{chapter, cross ref name, title, file name, manual} see title in manual
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
 
 @ref{chapter} chapter
 @xref{chapter} See chapter.
@@ -1577,53 +1577,53 @@ d--eftypemethod
 
 @ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
-a , in cross ref: (a comma, in file)s--ect,ion section `a comma, in title' in a , in manual name
+a comma, in title in a , in manual name
 
 @ref{chapter,cross ref name} cross ref name
 @ref{chapter,,title} title
 @ref{chapter,,,file name} (file name)chapter
-@ref{chapter,,,,manual} section `chapter' in manual
+@ref{chapter,,,,manual} `chapter' in manual
 @ref{chapter,cross ref name,title,} title
-@ref{chapter,cross ref name,,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,,,manual} section `chapter' in manual
-@ref{chapter,cross ref name,title,file name} cross ref name: (file name)chapter
-@ref{chapter,cross ref name,title,,manual} section `title' in manual
-@ref{chapter,cross ref name,title, file name, manual} cross ref name: (file name)chapter section `title' in manual
-@ref{chapter,,title,file name} (file name)chapter
-@ref{chapter,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{chapter,,,file name,manual} (file name)chapter section `chapter' in manual
+@ref{chapter,cross ref name,,file name} (file name)cross ref name
+@ref{chapter,cross ref name,,,manual} `cross ref name' in manual
+@ref{chapter,cross ref name,title,file name} (file name)title
+@ref{chapter,cross ref name,title,,manual} `title' in manual
+@ref{chapter,cross ref name,title, file name, manual} title in manual
+@ref{chapter,,title,file name} (file name)title
+@ref{chapter,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{chapter,,,file name,manual} chapter in manual
 
 
-@ref{(pman)anode,cross ref name} cross ref name: (pman)anode
-@ref{(pman)anode,,title} (pman)anode
+@ref{(pman)anode,cross ref name} (pman)cross ref name
+@ref{(pman)anode,,title} (pman)title
 @ref{(pman)anode,,,file name} (file name)anode
-@ref{(pman)anode,,,,manual} (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,} cross ref name: (pman)anode
-@ref{(pman)anode,cross ref name,,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,,,manual} cross ref name: (pman)anode section `anode' in manual
-@ref{(pman)anode,cross ref name,title,file name} cross ref name: (file name)anode
-@ref{(pman)anode,cross ref name,title,,manual} cross ref name: (pman)anode section `title' in manual
-@ref{(pman)anode,cross ref name,title, file name, manual} cross ref name: (file name)anode section `title' in manual
-@ref{(pman)anode,,title,file name} (file name)anode
-@ref{(pman)anode,,title,,manual} (pman)anode section `title' in manual
-@ref{(pman)anode,,title, file name, manual} (file name)anode section `title' in manual
-@ref{(pman)anode,,,file name,manual} (file name)anode section `anode' in manual
+@ref{(pman)anode,,,,manual} anode in manual
+@ref{(pman)anode,cross ref name,title,} (pman)title
+@ref{(pman)anode,cross ref name,,file name} (file name)cross ref name
+@ref{(pman)anode,cross ref name,,,manual} cross ref name in manual
+@ref{(pman)anode,cross ref name,title,file name} (file name)title
+@ref{(pman)anode,cross ref name,title,,manual} title in manual
+@ref{(pman)anode,cross ref name,title, file name, manual} title in manual
+@ref{(pman)anode,,title,file name} (file name)title
+@ref{(pman)anode,,title,,manual} title in manual
+@ref{(pman)anode,,title, file name, manual} title in manual
+@ref{(pman)anode,,,file name,manual} anode in manual
 
 
-@inforef{chapter, cross ref name, file name} See cross ref name: (file name)chapter
-@inforef{chapter} 
-@inforef{chapter, cross ref name} 
+@inforef{chapter, cross ref name, file name} See (file name)cross ref name
+@inforef{chapter} See `chapter'
+@inforef{chapter, cross ref name} See `cross ref name'
 @inforef{chapter,,file name} See (file name)chapter
-@inforef{node, cross ref name, file name} See cross ref name: (file name)node
-@inforef{node} 
-@inforef{node, cross ref name} 
+@inforef{node, cross ref name, file name} See (file name)cross ref name
+@inforef{node} See `node'
+@inforef{node, cross ref name} See `cross ref name'
 @inforef{node,,file name} See (file name)node
-@inforef{chapter, cross ref name, file name, spurious arg} See cross ref name: (file name, spurious arg)chapter
+@inforef{chapter, cross ref name, file name, spurious arg} See (file name, spurious arg)cross ref name
 
 @inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}
-See a , in cross ref: (a comma, in file)s--ect,ion
+See (a comma, in file)a , in cross ref
 
 
 • a
@@ -1746,28 +1746,28 @@ Various deff lines
 @ref{node,cross ref name} @ref{node,cross ref name}
 @ref{node,,title} @ref{node,,title}
 @ref{node,,,file name} (file name)node
-@ref{node,,,,manual} section `node' in manual
+@ref{node,,,,manual} `node' in manual
 @ref{node,cross ref name,title,} @ref{node,cross ref name,title,}
-@ref{node,cross ref name,,file name} cross ref name: (file name)node
-@ref{node,cross ref name,,,manual} section `node' in manual
-@ref{node,cross ref name,title,file name} cross ref name: (file name)node
-@ref{node,cross ref name,title,,manual} section `title' in manual
-@ref{node,cross ref name,title, file name, manual} cross ref name: (file name)node section `title' in manual
-@ref{node,,title,file name} (file name)node
-@ref{node,,title,,manual} section `title' in manual
-@ref{chapter,,title, file name, manual} (file name)chapter section `title' in manual
-@ref{node,,title, file name, manual} (file name)node section `title' in manual
-@ref{node,,,file name,manual} (file name)node section `node' in manual
+@ref{node,cross ref name,,file name} (file name)cross ref name
+@ref{node,cross ref name,,,manual} `cross ref name' in manual
+@ref{node,cross ref name,title,file name} (file name)title
+@ref{node,cross ref name,title,,manual} `title' in manual
+@ref{node,cross ref name,title, file name, manual} title in manual
+@ref{node,,title,file name} (file name)title
+@ref{node,,title,,manual} `title' in manual
+@ref{chapter,,title, file name, manual} title in manual
+@ref{node,,title, file name, manual} title in manual
+@ref{node,,,file name,manual} node in manual
 @ref{,cross ref name,title,} @ref{,cross ref name,title,}
-@ref{,cross ref name,,file name} cross ref name: (file name)
-@ref{,cross ref name,,,manual} manual
-@ref{,cross ref name,title,file name} cross ref name: (file name)
-@ref{,cross ref name,title,,manual} section `title' in manual
-@ref{,cross ref name,title, file name, manual} cross ref name: (file name) section `title' in manual
-@ref{,,title,file name} (file name)
-@ref{,,title,,manual} section `title' in manual
-@ref{,,title, file name, manual} (file name) section `title' in manual
-@ref{,,,file name,manual} (file name) manual
+@ref{,cross ref name,,file name} (file name)cross ref name
+@ref{,cross ref name,,,manual} `cross ref name' in manual
+@ref{,cross ref name,title,file name} (file name)title
+@ref{,cross ref name,title,,manual} `title' in manual
+@ref{,cross ref name,title, file name, manual} title in manual
+@ref{,,title,file name} (file name)title
+@ref{,,title,,manual} `title' in manual
+@ref{,,title, file name, manual} title in manual
+@ref{,,,file name,manual}  in manual
 
 @inforef{,cross ref name } 
 @inforef{,,file name} 

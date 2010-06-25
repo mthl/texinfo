@@ -1221,10 +1221,10 @@ After clickstyle &rArr;
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
 
-<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@</a> section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
+<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
 </p>
 <p><code>@ref{chapter}</code> <a href="#chapter">chapter</a>
 <code>@xref{chapter}</code> See <a href="#chapter">chapter</a>.
@@ -1233,53 +1233,53 @@ After clickstyle &rArr;
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a> section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 </p>
 <p><code>@ref{chapter,cross ref name}</code> <a href="#chapter">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="#chapter">title</a>
 <code>@ref{chapter,,,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,,,manual}</code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="#chapter">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">chapter</a> in <cite>manual</cite>
 </p>
 
-<p><code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)anode</a>
+<p><code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)title</a>
 <code>@ref{(pman)anode,,,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">(file name)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">(file name)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">anode</a> in <cite>manual</cite>
 </p>
 
-<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@inforef{chapter}</code> 
-<code>@inforef{chapter, cross ref name}</code> 
+<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@inforef{chapter}</code> See &lsquo;chapter&rsquo;
+<code>@inforef{chapter, cross ref name}</code> See &lsquo;cross ref name&rsquo;
 <code>@inforef{chapter,,file name}</code> See <a href="file name.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@inforef{node}</code> 
-<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">(file name)cross ref name</a>
+<code>@inforef{node}</code> See &lsquo;node&rsquo;
+<code>@inforef{node, cross ref name}</code> See &lsquo;cross ref name&rsquo;
 <code>@inforef{node,,file name}</code> See <a href="file name.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">cross ref name: (file name, spurious arg)chapter</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
 </p>
 <p><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a>
+See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">(a comma, in file)a , in cross ref</a>
 </p>
 
 <dl compact="compact">
@@ -1425,28 +1425,28 @@ html ''
 <code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
 <code>@ref{node,,title}</code> @ref{node,,title}
 <code>@ref{node,,,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,,,,manual}</code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
-<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">cross ref name: (file name)node</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
-<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">cross ref name: (file name)</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)</a>
-<code>@ref{,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">(file name)</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top">(file name)</a> <cite>manual</cite>
+<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top"></a> in <cite>manual</cite>
 </p>
 <p><code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 
@@ -1944,10 +1944,10 @@ After clickstyle &rArr;
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
 
-<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">cross r&mdash;ef name@: (file n&mdash;ame@)c&mdash;hapter@</a> section &lsquo;t&mdash;itle@&rsquo; in <cite>ma&mdash;nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
+<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
 </p>
 <p><code>@ref{chapter}</code> <a href="#chapter">chapter</a>
 <code>@xref{chapter}</code> See <a href="#chapter">chapter</a>.
@@ -1956,53 +1956,53 @@ After clickstyle &rArr;
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a> section &lsquo;a comma, in title&rsquo; in <cite>a , in manual name</cite>
+<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 </p>
 <p><code>@ref{chapter,cross ref name}</code> <a href="#chapter">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="#chapter">title</a>
 <code>@ref{chapter,,,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,,,manual}</code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="#chapter">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,,,manual}</code> section &lsquo;chapter&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;chapter&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">chapter</a> in <cite>manual</cite>
 </p>
 
-<p><code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)anode</a>
+<p><code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)title</a>
 <code>@ref{(pman)anode,,,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">(file name)anode</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">(file name)anode</a> section &lsquo;anode&rsquo; in <cite>manual</cite>
+<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">anode</a> in <cite>manual</cite>
 </p>
 
-<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@inforef{chapter}</code> 
-<code>@inforef{chapter, cross ref name}</code> 
+<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@inforef{chapter}</code> See &lsquo;chapter&rsquo;
+<code>@inforef{chapter, cross ref name}</code> See &lsquo;cross ref name&rsquo;
 <code>@inforef{chapter,,file name}</code> See <a href="file name.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@inforef{node}</code> 
-<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">(file name)cross ref name</a>
+<code>@inforef{node}</code> See &lsquo;node&rsquo;
+<code>@inforef{node, cross ref name}</code> See &lsquo;cross ref name&rsquo;
 <code>@inforef{node,,file name}</code> See <a href="file name.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">cross ref name: (file name, spurious arg)chapter</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
 </p>
 <p><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s&ndash;ect,ion</a>
+See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">(a comma, in file)a , in cross ref</a>
 </p>
 
 <dl compact="compact">
@@ -2148,28 +2148,28 @@ html ''
 <code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
 <code>@ref{node,,title}</code> @ref{node,,title}
 <code>@ref{node,,,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,,,,manual}</code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
-<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,,,manual}</code> section &lsquo;node&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">cross ref name: (file name)node</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">(file name)node</a> section &lsquo;node&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
-<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">cross ref name: (file name)</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)</a>
-<code>@ref{,,title,,manual}</code> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">(file name)</a> section &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top">(file name)</a> <cite>manual</cite>
+<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top"></a> in <cite>manual</cite>
 </p>
 <p><code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 
@@ -2672,10 +2672,10 @@ After clickstyle &rArr;
 <dd><pre class="example">d--eftypemethod
 </pre></dd></dl>
 <pre class="example">
-<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">cross r---ef name@: (file n---ame@)c---hapter@</a> section `t---itle@' in <cite>ma---nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
+<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="file n---ame@@.html#c_002d_002d_002dhapter_0040">t---itle@</a> in <cite>ma---nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
 
 <code>@ref{chapter}</code> <a href="#chapter">chapter</a>
 <code>@xref{chapter}</code> See <a href="#chapter">chapter</a>.
@@ -2684,53 +2684,53 @@ After clickstyle &rArr;
 
 <code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s--ect,ion</a> section `a comma, in title' in <cite>a , in manual name</cite>
+<a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 
 <code>@ref{chapter,cross ref name}</code> <a href="#chapter">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="#chapter">title</a>
 <code>@ref{chapter,,,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,,,manual}</code> section `chapter' in <cite>manual</cite>
+<code>@ref{chapter,,,,manual}</code> `chapter' in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="#chapter">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,,,manual}</code> section `chapter' in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@ref{chapter,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">cross ref name: (file name)chapter</a> section `title' in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)chapter</a>
-<code>@ref{chapter,,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section `title' in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section `chapter' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,,file name}</code> <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a href="file name.html#chapter">(file name)title</a>
+<code>@ref{chapter,,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a href="file name.html#chapter">chapter</a> in <cite>manual</cite>
 
 
-<code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)anode</a>
+<code>@ref{(pman)anode,cross ref name}</code> <a href="pman.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a href="pman.html#anode">(pman)title</a>
 <code>@ref{(pman)anode,,,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section `anode' in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section `anode' in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">cross ref name: (pman)anode</a> section `title' in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">cross ref name: (file name)anode</a> section `title' in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">(pman)anode</a> section `title' in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">(file name)anode</a> section `title' in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">(file name)anode</a> section `anode' in <cite>manual</cite>
+<code>@ref{(pman)anode,,,,manual}</code> <a href="pman.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="pman.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="file name.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="pman.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a href="file name.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a href="pman.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="file name.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a href="file name.html#anode">anode</a> in <cite>manual</cite>
 
 
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">cross ref name: (file name)chapter</a>
-<code>@inforef{chapter}</code> 
-<code>@inforef{chapter, cross ref name}</code> 
+<code>@inforef{chapter, cross ref name, file name}</code> See <a href="file name.html#chapter">(file name)cross ref name</a>
+<code>@inforef{chapter}</code> See `chapter'
+<code>@inforef{chapter, cross ref name}</code> See `cross ref name'
 <code>@inforef{chapter,,file name}</code> See <a href="file name.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@inforef{node}</code> 
-<code>@inforef{node, cross ref name}</code> 
+<code>@inforef{node, cross ref name, file name}</code> See <a href="file name.html#node">(file name)cross ref name</a>
+<code>@inforef{node}</code> See `node'
+<code>@inforef{node, cross ref name}</code> See `cross ref name'
 <code>@inforef{node,,file name}</code> See <a href="file name.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">cross ref name: (file name, spurious arg)chapter</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="file name, spurious arg.html#chapter">(file name, spurious arg)cross ref name</a>
 
 <code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">a , in cross ref: (a comma, in file)s--ect,ion</a>
+See <a href="a comma@comma{} in file.html#s_002d_002dect_002cion">(a comma, in file)a , in cross ref</a>
 
 
 </pre><dl compact="compact">
@@ -2875,28 +2875,28 @@ Invalid use of @':
 <code>@ref{node,cross ref name}</code> @ref{node,cross ref name}
 <code>@ref{node,,title}</code> @ref{node,,title}
 <code>@ref{node,,,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,,,manual}</code> section `node' in <cite>manual</cite>
+<code>@ref{node,,,,manual}</code> `node' in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> @ref{node,cross ref name,title,}
-<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,,,manual}</code> section `node' in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">cross ref name: (file name)node</a>
-<code>@ref{node,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">cross ref name: (file name)node</a> section `title' in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)node</a>
-<code>@ref{node,,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">(file name)chapter</a> section `title' in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">(file name)node</a> section `title' in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">(file name)node</a> section `node' in <cite>manual</cite>
+<code>@ref{node,cross ref name,,file name}</code> <a href="file name.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a href="file name.html#node">(file name)title</a>
+<code>@ref{node,,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a href="file name.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a href="file name.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a href="file name.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> @ref{,cross ref name,title,}
-<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,,,manual}</code> <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">cross ref name: (file name)</a>
-<code>@ref{,cross ref name,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">cross ref name: (file name)</a> section `title' in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)</a>
-<code>@ref{,,title,,manual}</code> section `title' in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">(file name)</a> section `title' in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top">(file name)</a> <cite>manual</cite>
+<code>@ref{,cross ref name,,file name}</code> <a href="file name.html#Top">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
+<code>@ref{,cross ref name,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a href="file name.html#Top">(file name)title</a>
+<code>@ref{,,title,,manual}</code> `title' in <cite>manual</cite>
+<code>@ref{,,title, file name, manual}</code> <a href="file name.html#Top">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <a href="file name.html#Top"></a> in <cite>manual</cite>
 
 <code>@inforef{,cross ref name }</code> 
 <code>@inforef{,,file name}</code> 

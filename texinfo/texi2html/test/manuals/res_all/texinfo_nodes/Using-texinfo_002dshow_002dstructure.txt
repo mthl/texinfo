@@ -36,20 +36,20 @@ with the @section, @subheading, and @subsection
 commands respectively.  If you move your cursor into the `*Occur*'
 window, you can position the cursor over one of the lines and use the
 C-c C-c command (occur-mode-goto-occurrence), to jump to
-the corresponding spot in the Texinfo file.  See (emacs)Other Repeating Search section `Using Occur' in The GNU Emacs Manual, for more
+the corresponding spot in the Texinfo file.  See Using Occur in The GNU Emacs Manual, for more
 information about occur-mode-goto-occurrence.
 
 The first line in the `*Occur*' window describes the regular
 expression specified by texinfo-heading-pattern.  This regular
 expression is the pattern that texinfo-show-structure looks for.
-See (emacs)Regexps section `Using Regular Expressions' in The GNU Emacs Manual,
+See Using Regular Expressions in The GNU Emacs Manual,
 for more information.
 
 When you invoke the texinfo-show-structure command, Emacs will
 display the structure of the whole buffer.  If you want to see the
 structure of just a part of the buffer, of one chapter, for example,
 use the C-x n n (narrow-to-region) command to mark the
-region.  (See (emacs)Narrowing section `Narrowing' in The GNU Emacs Manual.)  This is
+region.  (See Narrowing in The GNU Emacs Manual.)  This is
 how the example used above was generated.  (To see the whole buffer
 again, use C-x n w (widen).)
 

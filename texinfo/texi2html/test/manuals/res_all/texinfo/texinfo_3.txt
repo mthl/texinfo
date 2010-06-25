@@ -71,7 +71,7 @@ equivalents, such as appendices.  With this value for the page
 delimiter, you can jump from chapter title to chapter title with the
 C-x ] (forward-page) and C-x [
 (backward-page) commands and narrow to a chapter with the
-C-x p (narrow-to-page) command.  (See (emacs)Pages section `Pages' in The GNU Emacs Manual, for details about the page commands.)
+C-x p (narrow-to-page) command.  (See Pages in The GNU Emacs Manual, for details about the page commands.)
 
 You may name a Texinfo file however you wish, but the convention is to
 end a Texinfo file name with one of the extensions
@@ -246,7 +246,7 @@ off the region of the buffer that you are interested in by using the
 C-x n n (narrow-to-region) command and
 texinfo-show-structure will work on only that region.  To see
 the whole buffer again, use C-x n w (widen).
-(See (emacs)Narrowing section `Narrowing' in The GNU Emacs Manual, for more
+(See Narrowing in The GNU Emacs Manual, for more
 information about the narrowing commands.)
 
 In addition to providing the texinfo-show-structure command,
@@ -255,7 +255,7 @@ the chapter-level @-commands.  This enables you to use the C-x
 ] (forward-page) and C-x [ (backward-page)
 commands to move forward and backward by chapter, and to use the
 C-x p (narrow-to-page) command to narrow to a chapter.
-See (emacs)Pages section `Pages' in The GNU Emacs Manual, for more information
+See Pages in The GNU Emacs Manual, for more information
 about the page commands.
 
 2.4 Updating Nodes and Menus
@@ -413,7 +413,7 @@ The texinfo-column-for-description variable specifies the
 column to which menu descriptions are indented.  By default, the value
 is 32 although it is often useful to reduce it to as low as 24.  You
 can set the variable with the M-x edit-options command
-(see (emacs)Edit Options section `Editing Variable Values' in The GNU Emacs Manual) or with the M-x set-variable command (see (emacs)Examining section `Examining and Setting Variables' in The GNU Emacs Manual).
+(see Editing Variable Values in The GNU Emacs Manual) or with the M-x set-variable command (see Examining and Setting Variables in The GNU Emacs Manual).
 
 Also, the texinfo-indent-menu-description command may be used to
 indent existing menu descriptions to a specified column.  Finally, if

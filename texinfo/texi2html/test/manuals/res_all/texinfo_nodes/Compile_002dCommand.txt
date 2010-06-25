@@ -15,6 +15,6 @@ compile-command: "texi2dvi gdb.texinfo"
 End:
 
 This technique is most often used by programmers who also compile programs
-this way; see (emacs)Compilation section `Compilation' in The GNU Emacs Manual.
+this way; see Compilation in The GNU Emacs Manual.
 
 

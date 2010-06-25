@@ -100,7 +100,7 @@ Texi2html
 This Manual (Edition 0.21, last updated at
 14. August 2000) describes the texi2html Perl
 script which converters
-Texinfo (see (Texinfo)Top)
+Texinfo (see (Texinfo)Texinfo)
 into HTML.
 
 

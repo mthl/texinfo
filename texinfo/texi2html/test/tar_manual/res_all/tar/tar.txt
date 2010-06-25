@@ -812,7 +812,7 @@ The full output consists of six fields:
 
 * File type and permissions in symbolic form.
 These are displayed in the same format as the first column of
-ls -l output (see format=verbose: (fileutils)What information is listed section `Verbose listing' in GNU file utilities).
+ls -l output (see Verbose listing in GNU file utilities).
 
 * Owner name and group separated by a slash character.
 If these data are not available (for example, when listing a `v7' format
@@ -3617,7 +3617,7 @@ When adding files to an archive, tar will use
 permissions for the archive members, rather than the permissions
 from the files.  permissions can be specified either as an octal
 number or as symbolic permissions, like with
-chmod (See Permissions: (fileutils)File permissions section `File permissions' in GNU file utilities.  This reference
+chmod (See File permissions in GNU file utilities.  This reference
 also has useful information for those not being overly familiar with
 the UNIX permission system).  Using latter syntax allows for
 more flexibility.  For example, the value `a+rw' adds read and write
@@ -4596,7 +4596,7 @@ is allowed in this file.  Particularly, you may wish to define
 functions within that script (e.g., see RESTORE_BEGIN below).
 For more information about shell script syntax, please refer to
 the definition of the Shell Command Language <http://www.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#ta g_02>.  See also
-(bashref)Top section `Bash Features' in Bash Reference Manual.
+Bash Features in Bash Reference Manual.
 
 The shell variables controlling behavior of backup and
 restore are described in the following subsections.
@@ -5889,7 +5889,7 @@ s/regexp/replace/[flags]
 where regexp is a regular expression, replace is a
 replacement for each file name part that matches regexp.  Both
 regexp and replace are described in detail in
-The "s" Command: (sed)The "s" Command section `The `s' Command' in GNU sed.
+The `s' Command in GNU sed.
 
 Supported flags are:
 
@@ -5901,7 +5901,7 @@ just the first.
 Use case-insensitive matching
 
 `x'
-regexp is an extended regular expression (see Extended regular expressions: (sed)Extended regexps section `Extended regular expressions' in GNU sed).
+regexp is an extended regular expression (see Extended regular expressions in GNU sed).
 
 `number'
 Only replace the numberth match of the regexp.
@@ -6072,7 +6072,7 @@ directory entries themselves, but does not descend on them
 recursively.  Many people use find for locating files they
 want to back up, and since tar usually recursively
 descends on directories, they have to use the `-not -type d'
-test in their find invocation (see Type: (find)Type section `Type test' in Finding Files), as they usually do not want all the files in a
+test in their find invocation (see Type test in Finding Files), as they usually do not want all the files in a
 directory. They then use the `--files-from' option to archive
 the files located via find.
 
@@ -6747,7 +6747,7 @@ using a non-GNU host that does not support the `tz'
 database, you may need to use a POSIX rule instead.  Simple
 POSIX rules like `UTC0' specify a time zone without
 daylight saving time; other rules can specify simple daylight saving
-regimes.  See (libc)TZ Variable section `Specifying the Time Zone with TZ' in The GNU C Library.
+regimes.  See Specifying the Time Zone with TZ in The GNU C Library.
 
 7.10 Authors of get_date
 ========================
@@ -6989,7 +6989,7 @@ and produce uncompressed data on the standard output.
 The `--use-compress-program' option, in particular, lets you
 implement your own filters, not necessarily dealing with
 compression/decomression.  For example, suppose you wish to implement
-PGP encryption on top of compression, using gpg (see gpg: (gpg)Top section `gpg --- encryption and signing tool' in GNU Privacy Guard Manual).  The following script does that:  
+PGP encryption on top of compression, using gpg (see gpg --- encryption and signing tool in GNU Privacy Guard Manual).  The following script does that:  
 
 #! /bin/sh
 case $1 in
@@ -9220,7 +9220,7 @@ distribution tarballs.  See v7, for the detailed discussion
 of this issue and its implications.
 
 .
-See tar-v7: (automake)Options section `Changing Automake's Behavior' in GNU Automake, for a description on how to use various
+See Changing Automake's Behavior in GNU Automake, for a description on how to use various
 archive formats with automake.
 
 Future versions of GNU tar will understand `-o' only as a

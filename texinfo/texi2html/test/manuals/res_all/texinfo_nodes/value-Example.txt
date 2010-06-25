@@ -5,7 +5,7 @@ You can use the @value command to minimize the number of places
 you need to change when you record an update to a manual.  See GNU Sample Texts, for an example of this same principle can work with
 Automake distributions, and full texts.
 
-Here is an example adapted from (make)Top section `Overview' in The GNU Make Manual):
+Here is an example adapted from Overview in The GNU Make Manual):
 
 1. Set the flags:
 

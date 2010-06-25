@@ -37,7 +37,7 @@ sends it to the SINGULAR parser for interpretation
 
 When run under a Unix-like operating system and in its ASCII-terminal
 user interface,   SINGULAR tries to dynamically link at runtime
-with the GNU Readline library. See GNU Readline Library: (readline)Command Line Editing section `Command Line Editing' in The GNU Readline Library Manual, for more information. If a shared version of this library can
+with the GNU Readline library. See Command Line Editing in The GNU Readline Library Manual, for more information. If a shared version of this library can
 be found on your machine, then additional command-line editing
 features like  history completion are available.
 In particular, if SINGULAR is able to load that library and

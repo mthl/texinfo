@@ -775,16 +775,17 @@ sub docbook_any_ref($$$)
     }
 }
 
-sub docbook_external_ref($$$$$$)
+sub docbook_external_ref($$$$$$$$$)
 {
     my $type = shift;
     my $section = shift;
     my $book = shift;
-    my $file_node = shift;
+    my $file = shift;
     my $href = shift;
     my $cross_ref = shift;
     my $args_texi = shift;
     my $formatted_args = shift;
+    my $node = shift;
     
     return docbook_any_ref ($type, $formatted_args, $args_texi);
 }

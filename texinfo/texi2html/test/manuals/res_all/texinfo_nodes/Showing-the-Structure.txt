@@ -35,7 +35,7 @@ off the region of the buffer that you are interested in by using the
 C-x n n (narrow-to-region) command and
 texinfo-show-structure will work on only that region.  To see
 the whole buffer again, use C-x n w (widen).
-(See (emacs)Narrowing section `Narrowing' in The GNU Emacs Manual, for more
+(See Narrowing in The GNU Emacs Manual, for more
 information about the narrowing commands.)
 
 In addition to providing the texinfo-show-structure command,
@@ -44,6 +44,6 @@ the chapter-level @-commands.  This enables you to use the C-x
 ] (forward-page) and C-x [ (backward-page)
 commands to move forward and backward by chapter, and to use the
 C-x p (narrow-to-page) command to narrow to a chapter.
-See (emacs)Pages section `Pages' in The GNU Emacs Manual, for more information
+See Pages in The GNU Emacs Manual, for more information
 about the page commands.
 
