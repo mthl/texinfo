@@ -39,9 +39,9 @@ subdir = texi2html
 DIST_COMMON = README $(dist_i18n_DATA) $(dist_images_DATA) \
 	$(dist_init_DATA) $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/check_texinfo.pl.in $(srcdir)/manage_i18n.pl.in \
-	$(srcdir)/texi2html.pl ABOUT-NLS AUTHORS COPYING ChangeLog \
-	INSTALL NEWS TODO config.guess config.rpath config.sub \
-	install-sh mdate-sh missing mkinstalldirs
+	$(srcdir)/texi2html.pl AUTHORS COPYING ChangeLog INSTALL NEWS \
+	TODO config.guess config.rpath config.sub install-sh mdate-sh \
+	missing mkinstalldirs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \

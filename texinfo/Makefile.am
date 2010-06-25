@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.27 2010-06-24 00:17:01 karl Exp $
+# $Id: Makefile.am,v 1.28 2010-06-25 13:17:37 karl Exp $
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
@@ -79,3 +79,4 @@ po-check:
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
+

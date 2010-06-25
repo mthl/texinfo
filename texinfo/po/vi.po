@@ -7,76 +7,76 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-03-16 19:23+0100\n"
+"POT-Creation-Date: 2010-06-24 17:27-0700\n"
 "PO-Revision-Date: 2009-09-23 21:25+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: LocFactoryEditor 1.8\n"
 
-#: gnulib/lib/error.c:125
+#: gnulib/lib/error.c:181
 msgid "Unknown system error"
 msgstr "Lỗi hệ thống không rõ"
 
-#: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
-#, c-format
-msgid "%s: option `%s' is ambiguous\n"
+#: gnulib/lib/getopt.c:527 gnulib/lib/getopt.c:543
+#, fuzzy, c-format
+msgid "%s: option '%s' is ambiguous\n"
 msgstr "%s: tùy chọn « %s » là mơ hồ\n"
 
-#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
-#, c-format
-msgid "%s: option `--%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:576 gnulib/lib/getopt.c:580
+#, fuzzy, c-format
+msgid "%s: option '--%s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « --%s » không cho phép đối số\n"
 
-#: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
-#, c-format
-msgid "%s: option `%c%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:589 gnulib/lib/getopt.c:594
+#, fuzzy, c-format
+msgid "%s: option '%c%s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « %c%s » không cho phép đối số\n"
 
-#: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
-#: gnulib/lib/getopt.c:990
-#, c-format
-msgid "%s: option `%s' requires an argument\n"
+#: gnulib/lib/getopt.c:637 gnulib/lib/getopt.c:656
+#, fuzzy, c-format
+msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: tùy chọn « %s » cần đến đối số\n"
 
-#: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
-#, c-format
-msgid "%s: unrecognized option `--%s'\n"
+#: gnulib/lib/getopt.c:694 gnulib/lib/getopt.c:697
+#, fuzzy, c-format
+msgid "%s: unrecognized option '--%s'\n"
 msgstr "%s: không nhận ra tùy chọn « --%s »\n"
 
-#: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
-#, c-format
-msgid "%s: unrecognized option `%c%s'\n"
+#: gnulib/lib/getopt.c:705 gnulib/lib/getopt.c:708
+#, fuzzy, c-format
+msgid "%s: unrecognized option '%c%s'\n"
 msgstr "%s: không nhận ra tùy chọn « %c%s »\n"
 
-#: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
-#, c-format
-msgid "%s: illegal option -- %c\n"
-msgstr "%s: không cho phép tùy chọn « -- %c »\n"
-
-#: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
-#, c-format
-msgid "%s: invalid option -- %c\n"
+#: gnulib/lib/getopt.c:757 gnulib/lib/getopt.c:760
+#, fuzzy, c-format
+msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: tùy chọn không hợp lệ « -- %c »\n"
 
-#: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
-#: gnulib/lib/getopt.c:1061
-#, c-format
-msgid "%s: option requires an argument -- %c\n"
+#: gnulib/lib/getopt.c:810 gnulib/lib/getopt.c:827 gnulib/lib/getopt.c:1035
+#: gnulib/lib/getopt.c:1053
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: tùy chọn cần đến đối số « -- %c »\n"
 
-#: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
-#, c-format
-msgid "%s: option `-W %s' is ambiguous\n"
+#: gnulib/lib/getopt.c:883 gnulib/lib/getopt.c:899
+#, fuzzy, c-format
+msgid "%s: option '-W %s' is ambiguous\n"
 msgstr "%s: tùy chọn « -W %s » là mơ hồ\n"
 
-#: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
-#, c-format
-msgid "%s: option `-W %s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:923 gnulib/lib/getopt.c:941
+#, fuzzy, c-format
+msgid "%s: option '-W %s' doesn't allow an argument\n"
 msgstr "%s: tùy chọn « -W %s » không cho phép đối số\n"
+
+#: gnulib/lib/getopt.c:962 gnulib/lib/getopt.c:980
+#, fuzzy, c-format
+msgid "%s: option '-W %s' requires an argument\n"
+msgstr "%s: tùy chọn « %s » cần đến đối số\n"
 
 #: gnulib/lib/xalloc-die.c:34 gnulib/lib/xsetenv.c:37
 #, c-format
@@ -237,8 +237,8 @@ msgstr "Mục nhập chỉ mục: "
 msgid ""
 "Go to the next matching index item from the last `\\[index-search]' command"
 msgstr ""
-"Tới mục chỉ mục khớp kế tiếp từ lệnh «[index-search]» (tìm kiếm chỉ mục) cuối "
-"cùng."
+"Tới mục chỉ mục khớp kế tiếp từ lệnh «[index-search]» (tìm kiếm chỉ mục) "
+"cuối cùng."
 
 #: info/indices.c:334
 msgid "No previous index search string."
@@ -298,13 +298,13 @@ msgstr ""
 "\n"
 "* Trình đơn: nút có chỉ mục chứa « %s »:\n"
 
-#: info/info.c:275 info/infokey.c:899
+#: info/info.c:279 info/infokey.c:899
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « --help » để xem thông tin thêm.\n"
 
-#: info/info.c:294 info/infokey.c:145 install-info/install-info.c:2122
-#: makeinfo/makeinfo.c:802 util/texindex.c:295 texi2html/texi2html.pl:3881
+#: info/info.c:298 info/infokey.c:145 install-info/install-info.c:2122
+#: makeinfo/makeinfo.c:802 util/texindex.c:295 texi2html/texi2html.pl:3891
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -319,12 +319,12 @@ msgstr ""
 "Đây là phần mềm tự do : bạn có quyền thay đổi và phát hành lại nó.\n"
 "KHÔNG CÓ BẢO HÀNH GÌ CẢ, với điều kiện được pháp luật cho phép\n"
 
-#: info/info.c:506
+#: info/info.c:510
 #, c-format
 msgid "no index entries found for `%s'\n"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: info/info.c:600
+#: info/info.c:604
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -335,7 +335,7 @@ msgstr ""
 "\n"
 "Đọc tài liệu hướng dẫn theo định dạng Info.\n"
 
-#: info/info.c:606
+#: info/info.c:610
 msgid ""
 "Options:\n"
 "  -k, --apropos=STRING         look up STRING in all indices of all "
@@ -351,7 +351,7 @@ msgstr ""
 "      --dribble=TẬP_TIN       lưu các cú bấm phím vào tập tin này.\n"
 "  -f, --file=TẬP_TIN          ghi rõ tập tin Info cần thăm."
 
-#: info/info.c:613
+#: info/info.c:617
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -364,7 +364,7 @@ msgstr ""
 "tiên.\n"
 "  -o, --output=TẬP_TIN        xuất các nút đã chọn vào tập tin này."
 
-#: info/info.c:619
+#: info/info.c:623
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -376,13 +376,16 @@ msgstr ""
 "      --restore=TẬP_TIN       đọc các cú bấm phím đầu tiên từ tập tin này.\n"
 "  -O, --show-options, --usage  \tđi tới nút chứa các tùy chọn dòng lệnh."
 
-#: info/info.c:626
+#: info/info.c:630
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 "  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói"
 
-#: info/info.c:630
+#: info/info.c:634
+#, fuzzy
 msgid ""
+"      --strict-node-location   (for debugging) use Info file pointers as-"
+"is.\n"
 "      --subnodes               recursively output menu items.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
@@ -393,7 +396,7 @@ msgstr ""
 "      --version                hiển thị thông tin phiên bản rồi thoát\n"
 "  -w, --where, --location      in vị trí vật lý của tập tin Info."
 
-#: info/info.c:636
+#: info/info.c:641
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -410,7 +413,7 @@ msgstr ""
 "Bất cứ đối số còn lại nào được xử lý như tên của mục trình đơn\n"
 "tương đối với nút đầu tiên được thăm."
 
-#: info/info.c:643
+#: info/info.c:648
 msgid ""
 "\n"
 "For a summary of key bindings, type h within Info."
@@ -418,7 +421,7 @@ msgstr ""
 "\n"
 "Để xem bản tóm tắt các tổ hợp phím, hãy gõ « h » bên trong Info."
 
-#: info/info.c:646
+#: info/info.c:651
 msgid ""
 "\n"
 "Examples:\n"
@@ -445,7 +448,7 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin « ./foo.info », không tìm kiếm "
 "thư mục"
 
-#: info/info.c:657 info/infokey.c:918 makeinfo/makeinfo.c:475
+#: info/info.c:662 info/infokey.c:918 makeinfo/makeinfo.c:475
 #: util/texindex.c:259
 msgid ""
 "\n"
@@ -458,72 +461,72 @@ msgstr ""
 "và gửi câu hỏi chung, thảo luận v.v. cho <help-texinfo@gnu.org>.\n"
 "Trang chủ texinfo: <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:691
+#: info/info.c:696
 #, c-format
 msgid "Cannot find node `%s'."
 msgstr "Không tìm thấy nút thông tin « %s »."
 
-#: info/info.c:692
+#: info/info.c:697
 #, c-format
 msgid "Cannot find node `(%s)%s'."
 msgstr "Không tìm thấy nút thông tin « (%s)%s »."
 
-#: info/info.c:693
+#: info/info.c:698
 msgid "Cannot find a window!"
 msgstr "Không tìm thấy cửa sổ."
 
-#: info/info.c:694
+#: info/info.c:699
 msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện bên trong cái nút thông tin của cửa sổ này."
 
-#: info/info.c:695
+#: info/info.c:700
 msgid "Cannot delete the last window."
 msgstr "Không thể xóa cửa sổ cuối cùng."
 
-#: info/info.c:696
+#: info/info.c:701
 msgid "No menu in this node."
 msgstr "Không có trình đơn trong nút thông tin này."
 
-#: info/info.c:697
+#: info/info.c:702
 msgid "No footnotes in this node."
 msgstr "Không có cước chú trong nút thông tin này."
 
-#: info/info.c:698
+#: info/info.c:703
 msgid "No cross references in this node."
 msgstr "Không có tham chiếu chéo trong nút thông tin này."
 
-#: info/info.c:699
+#: info/info.c:704
 #, c-format
 msgid "No `%s' pointer for this node."
 msgstr "Không có con trỏ « %s » cho nút thông tin này."
 
-#: info/info.c:700
+#: info/info.c:705
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
 msgstr "Không nhận ra lệnh Info « %c »: hãy thử lệnh « ? » để xem trợ giúp."
 
-#: info/info.c:701
+#: info/info.c:706
 #, c-format
 msgid "Terminal type `%s' is not smart enough to run Info."
 msgstr "Thiết bị cuối kiểu « %s » không đủ khéo để chạy Info."
 
-#: info/info.c:702
+#: info/info.c:707
 msgid "You are already at the last page of this node."
 msgstr "Bạn ở trang cuối cùng của nút thông tin này."
 
-#: info/info.c:703
+#: info/info.c:708
 msgid "You are already at the first page of this node."
 msgstr "Bạn ở trang đầu tiên của nút thông tin này."
 
-#: info/info.c:704
+#: info/info.c:709
 msgid "Only one window."
 msgstr "Chỉ một cửa sổ."
 
-#: info/info.c:705
+#: info/info.c:710
 msgid "Resulting window would be too small."
 msgstr "Cửa sổ kết quả quá nhỏ."
 
-#: info/info.c:706
+#: info/info.c:711
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
 
@@ -1068,7 +1071,8 @@ msgstr ""
 #: info/infomap.c:999
 #, c-format
 msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr "Tập tin infokey « %s » của bạn quá cũ : hãy chạy infokey để cập nhật nó"
+msgstr ""
+"Tập tin infokey « %s » của bạn quá cũ : hãy chạy infokey để cập nhật nó"
 
 #: info/infomap.c:1015
 #, c-format
@@ -1093,7 +1097,8 @@ msgstr "Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số t
 #: info/infomap.c:1221
 msgid "Bad data in infokey file -- some var settings ignored"
 msgstr ""
-"Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số cách thiết lập « var »"
+"Gặp dữ liệu sai trong tập tin infokey nên bỏ qua một số cách thiết lập « var "
+"»"
 
 #: info/m-x.c:68
 msgid "Read the name of an Info command and describe it"
@@ -1935,7 +1940,7 @@ msgstr ""
 " --test              thu hồi nâng cấp TẬP_TIN_THƯ_MỤC.\n"
 " --version           hiển thị thông tin phiên bản rồi thoát."
 
-#: install-info/install-info.c:575 texi2html/texi2html.pl:3802
+#: install-info/install-info.c:575 texi2html/texi2html.pl:3813
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -1996,14 +2001,14 @@ msgstr "%s: tập tin rỗng"
 #: install-info/install-info.c:1067 install-info/install-info.c:1107
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr ""
-"Có « START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) mà không có « END-INFO-"
-"DIR-ENTRY » (mục nhập thư mục Info kết thúc) tương ứng"
+"Có « START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) mà không có « END-"
+"INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) tương ứng"
 
 #: install-info/install-info.c:1102
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr ""
-"Có « END-INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) mà không có « START-"
-"INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) tương ứng"
+"Có « END-INFO-DIR-ENTRY » (mục nhập thư mục Info kết thúc) mà không có « "
+"START-INFO-DIR-ENTRY » (mục nhập thư mục Info đầu) tương ứng"
 
 #: install-info/install-info.c:1967 install-info/install-info.c:1977
 #, c-format
@@ -2149,7 +2154,7 @@ msgstr ""
 msgid "%c%s is obsolete"
 msgstr "%c%s quá cũ"
 
-#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6134
+#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6159
 #, c-format, perl-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "« @sp » cần đến một đối số dương thuộc số, không phải « %s »"
@@ -2167,8 +2172,8 @@ msgstr "như thế"
 msgid "none"
 msgstr "không có"
 
-#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:5767
-#: texi2html/texi2html.pl:5778
+#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:5792
+#: texi2html/texi2html.pl:5803
 #, c-format, perl-format
 msgid "Bad argument to @%s"
 msgstr "Đối số sai tới @%s"
@@ -2177,20 +2182,20 @@ msgstr "Đối số sai tới @%s"
 msgid "insert"
 msgstr "chèn"
 
-#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5701
-#: texi2html/texi2html.pl:5926 texi2html/texi2html.pl:5954
-#: texi2html/texi2html.pl:6019 texi2html/texi2html.pl:6182
-#: texi2html/texi2html.pl:12795 texi2html/texi2html.pl:14170
+#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5726
+#: texi2html/texi2html.pl:5951 texi2html/texi2html.pl:5979
+#: texi2html/texi2html.pl:6044 texi2html/texi2html.pl:6207
+#: texi2html/texi2html.pl:12954 texi2html/texi2html.pl:14329
 #, c-format, perl-format
 msgid "Bad argument to @%s: %s"
 msgstr "Đối số sai tới @%s: %s"
 
-#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5645
+#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5670
 #, c-format, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "Mong đợi @%s bật hay tắt, không phải « %s »"
 
-#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:5977
+#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6002
 #, c-format, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Chỉ hỗ trợ @%s 10 hay 11, không phải « %s »"
@@ -2199,7 +2204,7 @@ msgstr "Chỉ hỗ trợ @%s 10 hay 11, không phải « %s »"
 msgid "Missing `}' in @def arg"
 msgstr "Thiếu « } » trong đối số xác định @def"
 
-#: makeinfo/defun.c:711 texi2html/texi2html.pl:10737
+#: makeinfo/defun.c:711 texi2html/texi2html.pl:10896
 #, c-format, perl-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "Phải bên trong môi trường « @%s » để dùng « @%s »"
@@ -2223,7 +2228,7 @@ msgstr "« %s » bị bỏ sót vì ghi ra thiết bị xuất chuẩn"
 msgid "Output buffer not empty."
 msgstr "Bộ đệm xuất không rỗng."
 
-#: makeinfo/float.c:181 texi2html/texi2html.pl:14128
+#: makeinfo/float.c:181 texi2html/texi2html.pl:14287
 #, c-format, perl-format
 msgid "Requested float type `%s' not previously used"
 msgstr "Kiểu nổi đã yêu cầu « %s » không phải được dùng trước"
@@ -2246,7 +2251,7 @@ msgstr "Không có ngoặc móc đóng cho cước chú « %s »"
 # Type: text
 # Description
 # Main menu item
-#: makeinfo/footnote.c:197 texi2html/formats/info.init:3199
+#: makeinfo/footnote.c:197 texi2html/formats/info.init:3193
 msgid "Footnote defined without parent node"
 msgstr "Cước chú đã xác định mà không có nút cha"
 
@@ -2263,7 +2268,7 @@ msgstr "Cước chú"
 msgid "%s: could not open --css-file: %s"
 msgstr "%s: không thể mở tập tin CSS « --css-file »: %s"
 
-#: makeinfo/html.c:180 texi2html/texi2html.pl:16399
+#: makeinfo/html.c:180 texi2html/texi2html.pl:16558
 #, c-format, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: tập tin CSS « --css-file » kết thúc với ghi chú"
@@ -2277,7 +2282,7 @@ msgstr "[bất thường] không có thẻ HTML cần bật"
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[bất thường] tên nút không hợp lệ: « %s »"
 
-#: makeinfo/index.c:167 texi2html/texi2html.pl:8102
+#: makeinfo/index.c:167 texi2html/texi2html.pl:8249
 #, c-format, perl-format
 msgid "Unknown index `%s'"
 msgstr "Chỉ mục lạ « %s »"
@@ -2306,13 +2311,13 @@ msgstr "(dòng)"
 msgid "(line %*d)"
 msgstr "(dòng %*d)"
 
-#: makeinfo/index.c:765 texi2html/texi2html.pl:13200
+#: makeinfo/index.c:765 texi2html/texi2html.pl:13359
 #, c-format, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Chỉ mục lạ « %s » trong @printindex"
 
-#: makeinfo/index.c:834 texi2html/texi2html.pl:8107
-#: texi2html/formats/info.init:3077
+#: makeinfo/index.c:834 texi2html/texi2html.pl:8254
+#: texi2html/formats/info.init:3071
 #, c-format, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "Mục nhập cho chỉ mục « %s » nằm ở ngoại nút nào"
@@ -2328,7 +2333,8 @@ msgstr "không cho phép @item trong đối số tới @itemize"
 #: makeinfo/insertion.c:243
 msgid "Broken-Type in insertion_type_pname"
 msgstr ""
-"« Broken-Type » (kiểu bị hỏng) trong « insertion_type_pname » (tên p kiểu chèn)"
+"« Broken-Type » (kiểu bị hỏng) trong « insertion_type_pname » (tên p kiểu "
+"chèn)"
 
 #: makeinfo/insertion.c:339
 msgid "Enumeration stack overflow"
@@ -2339,7 +2345,7 @@ msgstr "Tràn đống đếm"
 msgid "lettering overflow, restarting at %c"
 msgstr "tràn vẽ chữ, khởi chạy lại tại %c"
 
-#: makeinfo/insertion.c:640 texi2html/texi2html.pl:10877
+#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11036
 #, c-format, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s cần thiết một đối số: bộ định dạng cho %citem"
@@ -2349,13 +2355,13 @@ msgstr "%s cần thiết một đối số: bộ định dạng cho %citem"
 msgid "%cfloat environments cannot be nested"
 msgstr "Môi trường %cfloat không thể được lồng nhau"
 
-#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10422
-#: texi2html/texi2html.pl:10449 texi2html/texi2html.pl:14041
+#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10574
+#: texi2html/texi2html.pl:10601 texi2html/texi2html.pl:14200
 #, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "« @end » mong đợi « %s », còn gặp « %s »"
 
-#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:15551
+#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:15710
 #, c-format, perl-format
 msgid "No matching `%cend %s'"
 msgstr "Không có « %cend %s » tương ứng"
@@ -2369,7 +2375,7 @@ msgstr "%s cần thiết chữ hay chữ số"
 msgid "end of file inside verbatim block"
 msgstr "kết thúc tập tin bên trong khối đúng nguyên văn"
 
-#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11467
+#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11626
 #, c-format, perl-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s không có nghĩa bên ngoài môi trường « @float » (nổi)"
@@ -2378,7 +2384,7 @@ msgstr "@%s không có nghĩa bên ngoài môi trường « @float » (nổi)"
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "gặp @menu trước @node đầu thì tạo nút « Trên »"
 
-#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13298
+#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13457
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
@@ -2389,7 +2395,7 @@ msgstr ""
 msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr "gặp @detailmenu trước nút đầu thì tạo nút « Trên »"
 
-#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6065
+#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6090
 #, c-format, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
@@ -2400,9 +2406,9 @@ msgstr ""
 msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr "@%s không có nghĩa bên ngoài môi trường  « @titlepage »"
 
-#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12421
-#: texi2html/texi2html.pl:12952 texi2html/texi2html.pl:13970
-#: texi2html/texi2html.pl:13990 texi2html/texi2html.pl:14032
+#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12580
+#: texi2html/texi2html.pl:13111 texi2html/texi2html.pl:14129
+#: texi2html/texi2html.pl:14149 texi2html/texi2html.pl:14191
 #, c-format, perl-format
 msgid "Unmatched `%c%s'"
 msgstr "Chưa khớp « %c%s »"
@@ -2412,13 +2418,13 @@ msgstr "Chưa khớp « %c%s »"
 msgid "`%c%s' needs something after it"
 msgstr "« %c%s » cần gì đó theo nó"
 
-#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13537
+#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13696
 #, c-format, perl-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "Đối số sai « %s » tới « %s » nên dùng « %s »"
 
-#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14462
-#: texi2html/texi2html.pl:14475
+#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14621
+#: texi2html/texi2html.pl:14634
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s không có nghĩa bên trong khối « @%s »"
@@ -2443,7 +2449,7 @@ msgstr "không biết vùng lãnh thổ mặc định cho ngôn ngữ « %s »"
 msgid "%s is not a valid ISO 639 language code"
 msgstr "%s không phải mã ngôn ngữ kiểu ISO 639 hợp lệ"
 
-#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2534
+#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2543
 #, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "không nhận ra tên bảng mã « %s »"
@@ -2463,17 +2469,17 @@ msgstr "ký tự đã mã hóa không hợp lệ: « %s »"
 msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s mong đợi « i » hay « j » làm đối số, không phải « %c »"
 
-#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15200
+#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15359
 #, c-format, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s mong đợi một ký tự riêng lẻ « i » hay « j » làm đối số"
 
-#: makeinfo/macro.c:128 texi2html/texi2html.pl:12509
+#: makeinfo/macro.c:128 texi2html/texi2html.pl:12668
 #, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "vĩ lệnh « %s » được xác định trước"
 
-#: makeinfo/macro.c:132 texi2html/texi2html.pl:12510
+#: makeinfo/macro.c:132 texi2html/texi2html.pl:12669
 #, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "đây là lời xác định trước của « %s »"
@@ -2489,7 +2495,7 @@ msgstr ""
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "Vĩ lệnh « %s » được gọi trên dòng %d với quá nhiều đối số"
 
-#: makeinfo/macro.c:580 texi2html/texi2html.pl:15382
+#: makeinfo/macro.c:580 texi2html/texi2html.pl:15541
 #, c-format, perl-format
 msgid "%cend macro not found"
 msgstr "Không tìm thấy vĩ lệnh %cend"
@@ -2502,12 +2508,12 @@ msgstr "@allow-recursion bị phản đối; hãy sử dụng @rmacro thay thế
 msgid "@quote-arg is deprecated; arguments are quoted by default"
 msgstr "@quote-arg bị phản đối; các đối số được trích dẫn theo mặc định"
 
-#: makeinfo/macro.c:649 texi2html/texi2html.pl:10611
+#: makeinfo/macro.c:649 texi2html/texi2html.pl:10763
 #, c-format, perl-format
 msgid "mismatched @end %s with @%s"
 msgstr "khớp sai @end %s với @%s"
 
-#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9226
+#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9377
 #, c-format
 msgid "Too many errors!  Gave up.\n"
 msgstr "Quá nhiều lỗi nên thôi.\n"
@@ -2518,17 +2524,17 @@ msgid "%s:%d: warning: "
 msgstr "%s:%d: cảnh báo : "
 
 #: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
-#: texi2html/texi2html.pl:14626 texi2html/texi2html.pl:14646
+#: texi2html/texi2html.pl:14785 texi2html/texi2html.pl:14805
 #, c-format, perl-format
 msgid "Misplaced %c"
 msgstr "Định vị sai %c"
 
-#: makeinfo/makeinfo.c:344 texi2html/texi2html.pl:2312
+#: makeinfo/makeinfo.c:344 texi2html/texi2html.pl:2321
 #, c-format, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp « %s --help » để xem thông tin thêm.\n"
 
-#: makeinfo/makeinfo.c:347 texi2html/texi2html.pl:3699
+#: makeinfo/makeinfo.c:347 texi2html/texi2html.pl:3710
 #, c-format, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr ""
@@ -2536,7 +2542,7 @@ msgstr ""
 "\n"
 "[TTT\t\tTập Tin Texinfo]\n"
 
-#: makeinfo/makeinfo.c:350 texi2html/texi2html.pl:3701
+#: makeinfo/makeinfo.c:350 texi2html/texi2html.pl:3712
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2544,7 +2550,7 @@ msgstr ""
 "Dịch tài liệu nguồn Texinfo sang nhiều định dạng khác nhau, mặc định là tập "
 "tin Info thích hợp để đọc trực tuyến bằng Emacs hoặc Info GNU độc nhất.\n"
 
-#: makeinfo/makeinfo.c:354 texi2html/texi2html.pl:3704
+#: makeinfo/makeinfo.c:354 texi2html/texi2html.pl:3715
 #, c-format, perl-format
 msgid ""
 "General options:\n"
@@ -2575,7 +2581,7 @@ msgstr ""
 "      --version              hiển thị thông tin phiên bản rồi thoát (_phiên "
 "bản_)\n"
 
-#: makeinfo/makeinfo.c:369 texi2html/texi2html.pl:3715
+#: makeinfo/makeinfo.c:369 texi2html/texi2html.pl:3726
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2590,7 +2596,7 @@ msgstr ""
 "      --xml                 \txuất XML Texinfo thay cho Info.\n"
 "      --plaintext           \txuất văn bản thô thay cho Info (_nhập thô_).\n"
 
-#: makeinfo/makeinfo.c:377 texi2html/texi2html.pl:3721
+#: makeinfo/makeinfo.c:377 texi2html/texi2html.pl:3732
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -2624,23 +2630,23 @@ msgstr ""
 "  -o, --output=TẬP_TIN\txuất ra tập tin này (vào thư mục nếu\n"
 "\t\tHTML đã chia tách) (_kết xuất_).\n"
 
-#: makeinfo/makeinfo.c:391 texi2html/texi2html.pl:3733
+#: makeinfo/makeinfo.c:391 texi2html/texi2html.pl:3744
 #, c-format, perl-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
 "                                `end' to put them at the end of the node, "
 "in\n"
 "                                which they are defined (this is the "
 "default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
@@ -2652,8 +2658,8 @@ msgstr ""
 "      --enable-encoding       xuất các ký tự có dấu phụ và ký tự đặc biệt\n"
 "\t\ttrong kết xuất Info dựa vào @documentencoding.\n"
 "\t\t(_bật bảng mã_)\n"
-"      --fill-column=SỐ       ngắt các dòng Info ở số ký tự này (mặc định là %"
-"d).\n"
+"      --fill-column=SỐ       ngắt các dòng Info ở số ký tự này (mặc định là "
+"%d).\n"
 "\t\t(_tô đầy cột_)\n"
 "      --footnote-style=KIỂU_DÁNG\txuất các cước chú trong Info\n"
 "\t\ttùy theo kiểu dáng này:\n"
@@ -2668,7 +2674,7 @@ msgstr ""
 "      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc "
 "định là %d).\n"
 
-#: makeinfo/makeinfo.c:409 texi2html/texi2html.pl:3748
+#: makeinfo/makeinfo.c:409 texi2html/texi2html.pl:3759
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -2691,8 +2697,8 @@ msgstr ""
 #, c-format
 msgid ""
 "Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
-"d).\n"
+"      --output-indent=VAL     indent XML elements by VAL spaces (default "
+"%d).\n"
 "                                If VAL is 0, ignorable whitespace is "
 "dropped.\n"
 msgstr ""
@@ -2701,7 +2707,7 @@ msgstr ""
 "\t\t(mặc định là %d). Giá trị là 0 thì bỏ các khoảng trắng có thể bỏ qua.\n"
 "\t\t(_xuất thụt lề_)\n"
 
-#: makeinfo/makeinfo.c:426 texi2html/texi2html.pl:3761
+#: makeinfo/makeinfo.c:426 texi2html/texi2html.pl:3772
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  allow @ commands in node names.\n"
@@ -2719,7 +2725,7 @@ msgstr ""
 "@include.\n"
 "  -U BIẾN              \thủy xác định biến này, như bằng @clear.\n"
 
-#: makeinfo/makeinfo.c:435 texi2html/texi2html.pl:3768
+#: makeinfo/makeinfo.c:435 texi2html/texi2html.pl:3779
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2758,7 +2764,7 @@ msgstr ""
 "  Hơn nữa, đối với các tùy chọn « --no-ifĐỊNH_DẠNG », có phải xử lý văn bản "
 "@ifnotĐỊNH_DẠNG.\n"
 
-#: makeinfo/makeinfo.c:454 texi2html/texi2html.pl:3785
+#: makeinfo/makeinfo.c:454 texi2html/texi2html.pl:3796
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2773,7 +2779,7 @@ msgstr ""
 "  tạo ra nhập thô thì bật « --ifplaintext » và các điều khác bị tắt;\n"
 "  tạo ra XML thì bật « --ifxml » và các điều khác bị tắt;\n"
 
-#: makeinfo/makeinfo.c:462 texi2html/texi2html.pl:3791
+#: makeinfo/makeinfo.c:462 texi2html/texi2html.pl:3802
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -2802,7 +2808,7 @@ msgstr ""
 "  makeinfo --no-split phu.texi\n"
 "\t\tghi một tập tin Info, bất chấp kích cỡ tối đa\n"
 
-#: makeinfo/makeinfo.c:622 texi2html/texi2html.pl:3905
+#: makeinfo/makeinfo.c:622 texi2html/texi2html.pl:3915
 #, c-format, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr ""
@@ -2835,7 +2841,7 @@ msgstr "%s: không thể mở kết xuất các liên kết nội bộ « %s »"
 msgid "%s: ignoring second internal links output `%s'.\n"
 msgstr "%s: đang bỏ qua kết xuất các liên kết nội bộ thứ hai « %s ».\n"
 
-#: makeinfo/makeinfo.c:751 texi2html/texi2html.pl:2837
+#: makeinfo/makeinfo.c:751 texi2html/texi2html.pl:2846
 #, c-format, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -2845,7 +2851,7 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: makeinfo/makeinfo.c:769 texi2html/texi2html.pl:2511
+#: makeinfo/makeinfo.c:769 texi2html/texi2html.pl:2520
 #, c-format, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -2853,7 +2859,7 @@ msgstr ""
 " • separate\triêng\n"
 " • end\t\tcuốinkhông phải « %s ».\n"
 
-#: makeinfo/makeinfo.c:844 texi2html/texi2html.pl:16485
+#: makeinfo/makeinfo.c:844 texi2html/texi2html.pl:16644
 #, c-format, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
@@ -2868,7 +2874,7 @@ msgstr "Lệnh đa dòng %c%s dùng sai"
 msgid "Expected `%s'"
 msgstr "Mong đợi « %s »"
 
-#: makeinfo/makeinfo.c:1521 texi2html/texi2html.pl:4538
+#: makeinfo/makeinfo.c:1521 texi2html/texi2html.pl:4562
 #, c-format, perl-format
 msgid "Can't create directory `%s': %s"
 msgstr "Không thể tạo thư mục « %s »: %s"
@@ -2895,10 +2901,10 @@ msgstr "Đang tạo tập tin %s « %s » từ « %s ».\n"
 msgid ""
 "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
-"%s: đang gỡ bỏ tập tin xuất vĩ lệnh « %s » do lỗi; hãy dùng tùy chọn « --force "
-"» (buộc) để bảo tồn nó.\n"
+"%s: đang gỡ bỏ tập tin xuất vĩ lệnh « %s » do lỗi; hãy dùng tùy chọn « --"
+"force » (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:1799 texi2html/texi2html.pl:9175
+#: makeinfo/makeinfo.c:1799 texi2html/texi2html.pl:9326
 #, c-format, perl-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
@@ -2914,17 +2920,17 @@ msgstr ""
 "%s: đang gỡ bỏ tập tin kết xuất các liên kết nội bộ « %s » do lỗi; hãy dùng "
 "tùy chọn « --force » (buộc) để bảo tồn nó.\n"
 
-#: makeinfo/makeinfo.c:2113 texi2html/texi2html.pl:15296
+#: makeinfo/makeinfo.c:2113 texi2html/texi2html.pl:15455
 #, c-format, perl-format
 msgid "Unknown command `%s'"
 msgstr "Lệnh không rõ « %s »"
 
-#: makeinfo/makeinfo.c:2135 texi2html/texi2html.pl:14301
+#: makeinfo/makeinfo.c:2135 texi2html/texi2html.pl:14460
 #, c-format, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Dùng dấu ngoặc móc {} để đưa ra lệnh dạng đối số tới @%s"
 
-#: makeinfo/makeinfo.c:2394 texi2html/texi2html.pl:15292
+#: makeinfo/makeinfo.c:2394 texi2html/texi2html.pl:15451
 #, c-format, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s mong đợi dấu ngoặc móc {}"
@@ -2937,8 +2943,8 @@ msgstr "Chưa khớp }"
 msgid "NO_NAME!"
 msgstr "Không có tên."
 
-#: makeinfo/makeinfo.c:2476 texi2html/texi2html.pl:15579
-#: texi2html/texi2html.pl:15606
+#: makeinfo/makeinfo.c:2476 texi2html/texi2html.pl:15738
+#: texi2html/texi2html.pl:15765
 #, c-format, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s: thiếu dấu ngoặc móc đóng « } »"
@@ -2962,7 +2968,7 @@ msgstr "Tập tin @image « %s » (cho văn bản) không đọc được: %s"
 msgid "@image missing filename argument"
 msgstr "@image thiếu đối số tên tập tin"
 
-#: makeinfo/makeinfo.c:3851 texi2html/texi2html.pl:12584
+#: makeinfo/makeinfo.c:3851 texi2html/texi2html.pl:12743
 #, c-format, perl-format
 msgid "undefined flag: %s"
 msgstr "chưa xác định cờ : %s"
@@ -2972,13 +2978,13 @@ msgstr "chưa xác định cờ : %s"
 msgid "{No value for `%s'}"
 msgstr "{Không có giá trị cho « %s »}"
 
-#: makeinfo/makeinfo.c:3904 texi2html/texi2html.pl:5558
-#: texi2html/texi2html.pl:5569 texi2html/texi2html.pl:9962
+#: makeinfo/makeinfo.c:3904 texi2html/texi2html.pl:5583
+#: texi2html/texi2html.pl:5594 texi2html/texi2html.pl:10113
 #, c-format, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s cần đến tên"
 
-#: makeinfo/makeinfo.c:4010 texi2html/texi2html.pl:15374
+#: makeinfo/makeinfo.c:4010 texi2html/texi2html.pl:15533
 #, c-format, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "Đã tới kết thúc tập tin trước khi khớp @end %s"
@@ -2992,12 +2998,12 @@ msgstr "« %.40s... » quá dài để mở rộng nên chưa mở rộng"
 msgid "Missing } in @multitable template"
 msgstr "Thiếu « } » trong mẫu @multitable"
 
-#: makeinfo/multi.c:260 texi2html/texi2html.pl:10335
+#: makeinfo/multi.c:260 texi2html/texi2html.pl:10487
 #, c-format, perl-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "Đang bỏ qua văn bản rải rác « %s » sau @multitable"
 
-#: makeinfo/multi.c:400 texi2html/texi2html.pl:14555
+#: makeinfo/multi.c:400 texi2html/texi2html.pl:14714
 #, c-format, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Quá nhiều cột trong mục đa bảng (tối đà là %d)"
@@ -3007,7 +3013,7 @@ msgstr "Quá nhiều cột trong mục đa bảng (tối đà là %d)"
 msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "[bất thường] không thể chọn cột số %d trong đa bảng"
 
-#: makeinfo/multi.c:592 texi2html/texi2html.pl:14544
+#: makeinfo/multi.c:592 texi2html/texi2html.pl:14703
 msgid "ignoring @tab outside of multitable"
 msgstr "đang bỏ qua @tab bên ngoài đa bảng"
 
@@ -3080,8 +3086,8 @@ msgstr ""
 #, c-format
 msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
 msgstr ""
-"Không có gì chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng phần "
-"không đúng?)"
+"Không có gì chỉ tới trường kế tiếp của nút « %s » (có lẽ đã chia ra từng "
+"phần không đúng?)"
 
 #: makeinfo/node.c:1465
 #, c-format
@@ -3103,14 +3109,14 @@ msgstr "Nút này (%s) có Kế sai"
 msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
 msgstr "« %s » không có trường Lên (có lẽ đã chia ra từng phần không đúng?)"
 
-#: makeinfo/node.c:1605 texi2html/texi2html.pl:7021
+#: makeinfo/node.c:1605 texi2html/texi2html.pl:7133
 #, c-format, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
-"Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên của "
-"nó"
+"Nút « %s » không có mục trình đơn cho « %s », không kể nút này là đích Lên "
+"của nó"
 
-#: makeinfo/node.c:1637 texi2html/texi2html.pl:6970
+#: makeinfo/node.c:1637 texi2html/texi2html.pl:7079
 #, c-format, perl-format
 msgid "unreferenced node `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
@@ -3190,7 +3196,8 @@ msgstr "Tới kết thúc tập tin trong khi tìm dấu chấm « . » hay dấ
 #: makeinfo/xref.c:390
 #, c-format
 msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr "@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
+msgstr ""
+"@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
 
 #: makeinfo/xref.c:392
 msgid "for cross-references in parentheses, use @pxref"
@@ -3258,17 +3265,17 @@ msgstr "Không có số thứ tự trang trong %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "mục nhập %s nằm theo một mục nhập có tên phụ"
 
-#: texi2html/texi2html.pl:2421
+#: texi2html/texi2html.pl:2430
 #, fuzzy, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s không phải mã ngôn ngữ kiểu ISO 639 hợp lệ"
 
-#: texi2html/texi2html.pl:2425
+#: texi2html/texi2html.pl:2434
 #, fuzzy, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s không phải mã ngôn ngữ kiểu ISO 639 hợp lệ"
 
-#: texi2html/texi2html.pl:2516
+#: texi2html/texi2html.pl:2525
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
@@ -3276,20 +3283,20 @@ msgstr ""
 " • separate\triêng\n"
 " • end\t\tcuốinkhông phải « %s ».\n"
 
-#: texi2html/texi2html.pl:2549
+#: texi2html/texi2html.pl:2558
 msgid "Document encoding is utf8, but there is no unicode support"
 msgstr ""
 
-#: texi2html/texi2html.pl:2552
+#: texi2html/texi2html.pl:2561
 #, fuzzy, perl-format
 msgid "Encoding %s certainly poorly supported"
 msgstr "tiếc là không hỗ trợ bảng mã « %s »"
 
-#: texi2html/texi2html.pl:2675 texi2html/texi2html.pl:2679
+#: texi2html/texi2html.pl:2684 texi2html/texi2html.pl:2688
 msgid "translation"
 msgstr ""
 
-#: texi2html/texi2html.pl:2841
+#: texi2html/texi2html.pl:2850
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
@@ -3299,42 +3306,42 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: texi2html/texi2html.pl:5248
+#: texi2html/texi2html.pl:5273
 msgid "Superfluous arguments for node"
 msgstr ""
 
-#: texi2html/texi2html.pl:5256
+#: texi2html/texi2html.pl:5281
 #, fuzzy, perl-format
 msgid "Node `%s' previously defined %s"
 msgstr "Nút « %s » được xác định trước tại dòng %d"
 
-#: texi2html/texi2html.pl:5261 texi2html/texi2html.pl:12862
-#: texi2html/texi2html.pl:13367
+#: texi2html/texi2html.pl:5286 texi2html/texi2html.pl:13021
+#: texi2html/texi2html.pl:13526
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5387
+#: texi2html/texi2html.pl:5412
 #, fuzzy, perl-format
 msgid "@%s requires an argument"
 msgstr "%c%s cần đến tên"
 
-#: texi2html/texi2html.pl:5478 texi2html/texi2html.pl:15402
+#: texi2html/texi2html.pl:5503 texi2html/texi2html.pl:15561
 #, fuzzy, perl-format
 msgid "Expected @end %s"
 msgstr "Mong đợi « %s »"
 
-#: texi2html/texi2html.pl:5526
+#: texi2html/texi2html.pl:5551
 #, perl-format
 msgid "Translations for `%s' not found. Reverting to `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5581
+#: texi2html/texi2html.pl:5606
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "Dùng dấu ngoặc móc {} để đưa ra lệnh dạng đối số tới @%s"
 
-#: texi2html/texi2html.pl:5619
+#: texi2html/texi2html.pl:5644
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
@@ -3344,7 +3351,7 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: texi2html/texi2html.pl:5634
+#: texi2html/texi2html.pl:5659
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
@@ -3354,12 +3361,12 @@ msgstr ""
 " • asis\t\tnhư thế\n"
 "không phải « %s ».\n"
 
-#: texi2html/texi2html.pl:5656
+#: texi2html/texi2html.pl:5681
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5683
+#: texi2html/texi2html.pl:5708
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
@@ -3367,454 +3374,454 @@ msgstr ""
 " • separate\triêng\n"
 " • end\t\tcuốinkhông phải « %s ».\n"
 
-#: texi2html/texi2html.pl:5733
+#: texi2html/texi2html.pl:5758
 #, perl-format
 msgid "Encoding %s is not a canonical texinfo encoding"
 msgstr ""
 
-#: texi2html/texi2html.pl:5756
+#: texi2html/texi2html.pl:5781
 #, perl-format
 msgid "@%s arg must be an encoding"
 msgstr ""
 
-#: texi2html/texi2html.pl:5899
+#: texi2html/texi2html.pl:5924
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "Chỉ mục lạ « %s »"
 
-#: texi2html/texi2html.pl:5901
+#: texi2html/texi2html.pl:5926
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "Chỉ mục lạ « %s »"
 
-#: texi2html/texi2html.pl:5936
+#: texi2html/texi2html.pl:5961
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:5966
+#: texi2html/texi2html.pl:5991
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s đối số phải có kiểu số, không phải « %s ».\n"
 
-#: texi2html/texi2html.pl:6007
+#: texi2html/texi2html.pl:6032
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s đối số phải có kiểu số, không phải « %s ».\n"
 
-#: texi2html/texi2html.pl:6154
+#: texi2html/texi2html.pl:6179
 #, fuzzy, perl-format
 msgid "Cannot read %s: %s"
 msgstr "Không thể tạo thư mục « %s »: %s"
 
-#: texi2html/texi2html.pl:6177 texi2html/texi2html.pl:12790
+#: texi2html/texi2html.pl:6202 texi2html/texi2html.pl:12949
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "Không tìm thấy « %s »"
 
-#: texi2html/texi2html.pl:6337
+#: texi2html/texi2html.pl:6382
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:6895
+#: texi2html/texi2html.pl:6999
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
 
-#: texi2html/texi2html.pl:7040
+#: texi2html/texi2html.pl:7152
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: texi2html/texi2html.pl:7070
+#: texi2html/texi2html.pl:7205
 #, perl-format
-msgid "No node following `%s' in menu, but `%s' follows in sectionning"
+msgid "No node following `%s' in menu, but `%s' follows in sectioning"
 msgstr ""
 
-#: texi2html/texi2html.pl:7071
+#: texi2html/texi2html.pl:7206
 #, perl-format
-msgid "Node following `%s' in menu `%s' and in sectionning `%s' differ"
+msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: texi2html/texi2html.pl:8564
+#: texi2html/texi2html.pl:8715
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: texi2html/texi2html.pl:9179
+#: texi2html/texi2html.pl:9330
 #, fuzzy, perl-format
 msgid "%s: Removing output files due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: đang gỡ bỏ tập tin xuất « %s » do lỗi; hãy dùng tùy chọn « --force "
 "» (buộc) để bảo tồn nó.\n"
 
-#: texi2html/texi2html.pl:9318
+#: texi2html/texi2html.pl:9469
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s (via @%s)\n"
 msgstr "%s:%d: cảnh báo : "
 
-#: texi2html/texi2html.pl:9322
+#: texi2html/texi2html.pl:9473
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s\n"
 msgstr "%s:%d: cảnh báo : "
 
-#: texi2html/texi2html.pl:9355
+#: texi2html/texi2html.pl:9506
 #, perl-format
 msgid "(in %s l. %d via @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9359
+#: texi2html/texi2html.pl:9510
 #, perl-format
 msgid "(l. %d via @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9364
+#: texi2html/texi2html.pl:9515
 #, fuzzy, perl-format
 msgid "(in %s l. %d)"
 msgstr "(dòng %*d)"
 
-#: texi2html/texi2html.pl:9368
+#: texi2html/texi2html.pl:9519
 #, fuzzy, perl-format
 msgid "(l. %d)"
 msgstr "(dòng %*d)"
 
-#: texi2html/texi2html.pl:9525
+#: texi2html/texi2html.pl:9676
 #, perl-format
 msgid "Too much '}' in @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:9535
+#: texi2html/texi2html.pl:9686
 #, fuzzy, perl-format
 msgid "Missing `}' on @%s line"
 msgstr "Thiếu « } » trong đối số xác định @def"
 
-#: texi2html/texi2html.pl:9685
+#: texi2html/texi2html.pl:9836
 #, fuzzy, perl-format
 msgid "Anchor `%s' ignored in %s expanded more than once"
 msgstr "Neo « %s » và nút « %s » ánh xạ với cùng một tên tập tin"
 
-#: texi2html/texi2html.pl:10036
+#: texi2html/texi2html.pl:10187
 #, fuzzy, perl-format
 msgid "Region %s inside region %s is not allowed"
 msgstr "Không cho phép cước chú bên trong cước chú (lồng nhau)"
 
-#: texi2html/texi2html.pl:10314
+#: texi2html/texi2html.pl:10466
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:10357
+#: texi2html/texi2html.pl:10509
 #, perl-format
 msgid "Too many %s closed"
 msgstr ""
 
-#: texi2html/texi2html.pl:10427
+#: texi2html/texi2html.pl:10579
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:10587
+#: texi2html/texi2html.pl:10739
 #, fuzzy, perl-format
 msgid "Unknown format %s"
 msgstr "Lệnh không rõ « %s »"
 
-#: texi2html/texi2html.pl:10796 texi2html/texi2html.pl:11234
+#: texi2html/texi2html.pl:10955 texi2html/texi2html.pl:11393
 #, fuzzy, perl-format
 msgid "@%s (argument nr %d)"
 msgstr "Đối số sai tới @%s"
 
-#: texi2html/texi2html.pl:10880
+#: texi2html/texi2html.pl:11039
 #, perl-format
 msgid "prepended for @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:10896
+#: texi2html/texi2html.pl:11055
 #, fuzzy
 msgid "empty multitable"
 msgstr "%s: tập tin rỗng"
 
-#: texi2html/texi2html.pl:10906
+#: texi2html/texi2html.pl:11065
 #, perl-format
 msgid "@columnfraction (argument nr %d)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11088 texi2html/texi2html.pl:11102
+#: texi2html/texi2html.pl:11247 texi2html/texi2html.pl:11261
 msgid "node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11089
+#: texi2html/texi2html.pl:11248
 msgid "normalized node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11095
+#: texi2html/texi2html.pl:11254
 msgid "menu entry name"
 msgstr ""
 
-#: texi2html/texi2html.pl:11130
+#: texi2html/texi2html.pl:11289
 #, fuzzy, perl-format
 msgid "Menu reference to nonexistent node `%s'"
 msgstr "nút chưa được tham chiếu « %s »"
 
-#: texi2html/texi2html.pl:11213
+#: texi2html/texi2html.pl:11372
 #, fuzzy, perl-format
 msgid "First argument to @%s may not be empty"
 msgstr "Đối số đầu tới @inforef có lẽ không rỗng"
 
-#: texi2html/texi2html.pl:11354
+#: texi2html/texi2html.pl:11513
 #, perl-format
 msgid "@%s not in text (in anchor, node, section...)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11366 texi2html/texi2html.pl:14112
+#: texi2html/texi2html.pl:11525 texi2html/texi2html.pl:14271
 msgid "@listoffloats @float type"
 msgstr ""
 
-#: texi2html/texi2html.pl:11385
+#: texi2html/texi2html.pl:11544
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr ""
 "%s tham chiếu đến nút không tồn tại « %s » (có lẽ đã chia ra từng phần không "
 "đúng?)"
 
-#: texi2html/texi2html.pl:11525
+#: texi2html/texi2html.pl:11684
 msgid "@float style"
 msgstr ""
 
-#: texi2html/texi2html.pl:11657 texi2html/texi2html.pl:11658
+#: texi2html/texi2html.pl:11816 texi2html/texi2html.pl:11817
 msgid "@image base name"
 msgstr ""
 
-#: texi2html/texi2html.pl:11667 texi2html/texi2html.pl:11668
+#: texi2html/texi2html.pl:11826 texi2html/texi2html.pl:11827
 msgid "@image extension"
 msgstr ""
 
-#: texi2html/texi2html.pl:11675
+#: texi2html/texi2html.pl:11834
 #, fuzzy
 msgid "@image file name"
 msgstr "Không thể đọc tập tin @image « %s »: %s"
 
-#: texi2html/texi2html.pl:11697
+#: texi2html/texi2html.pl:11856
 msgid "@image alt text"
 msgstr ""
 
-#: texi2html/texi2html.pl:11780
+#: texi2html/texi2html.pl:11939
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "Vĩ lệnh « %s » được gọi trên dòng %d với quá nhiều đối số"
 
-#: texi2html/texi2html.pl:11804
+#: texi2html/texi2html.pl:11963
 #, fuzzy, perl-format
 msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
 msgstr ""
 "« \\ » trong phần mở rộng vĩ lệnh có « %s » theo sau, thay cho tên tham số"
 
-#: texi2html/texi2html.pl:11999
+#: texi2html/texi2html.pl:12158
 #, fuzzy, perl-format
 msgid "No index prefix found for @%s"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: texi2html/texi2html.pl:12481 texi2html/texi2html.pl:14242
+#: texi2html/texi2html.pl:12640 texi2html/texi2html.pl:14401
 #, fuzzy, perl-format
 msgid "@%s not allowed in argument to @%s"
 msgstr "không cho phép @item trong đối số tới @itemize"
 
-#: texi2html/texi2html.pl:12543
+#: texi2html/texi2html.pl:12702
 #, perl-format
 msgid "Macro definition without macro name: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:12596
+#: texi2html/texi2html.pl:12755
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: texi2html/texi2html.pl:12633
+#: texi2html/texi2html.pl:12792
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: texi2html/texi2html.pl:12655
+#: texi2html/texi2html.pl:12814
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: texi2html/texi2html.pl:12805
+#: texi2html/texi2html.pl:12964
 #, fuzzy, perl-format
 msgid "@%s already set"
 msgstr "Chỉ mục « %s » đã có."
 
-#: texi2html/texi2html.pl:12857
+#: texi2html/texi2html.pl:13016
 #, fuzzy, perl-format
 msgid "Anchor `%s' previously defined %s"
 msgstr "vĩ lệnh « %s » được xác định trước"
 
-#: texi2html/texi2html.pl:12893
+#: texi2html/texi2html.pl:13052
 #, fuzzy, perl-format
 msgid "No closing brace for specially handled command %s"
 msgstr "Không có ngoặc móc đóng cho cước chú « %s »"
 
-#: texi2html/texi2html.pl:13180
+#: texi2html/texi2html.pl:13339
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s quá cũ"
 
-#: texi2html/texi2html.pl:13184
+#: texi2html/texi2html.pl:13343
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s quá cũ"
 
-#: texi2html/texi2html.pl:13205
+#: texi2html/texi2html.pl:13364
 #, perl-format
 msgid "Printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13272
+#: texi2html/texi2html.pl:13431
 #, perl-format
 msgid "ignored @%s already in an @%s entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:13297 texi2html/texi2html.pl:13345
+#: texi2html/texi2html.pl:13456 texi2html/texi2html.pl:13504
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "gặp @menu trước @node đầu thì tạo nút « Trên »"
 
-#: texi2html/texi2html.pl:13302
+#: texi2html/texi2html.pl:13461
 #, perl-format
 msgid "Multiple @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13314
+#: texi2html/texi2html.pl:13473
 #, perl-format
 msgid "@%s not allowed within %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13363
+#: texi2html/texi2html.pl:13522
 #, fuzzy, perl-format
 msgid "Float label `%s' previously defined %s"
 msgstr "vĩ lệnh « %s » được xác định trước"
 
-#: texi2html/texi2html.pl:13681 texi2html/texi2html.pl:13682
-#: texi2html/texi2html.pl:13685
+#: texi2html/texi2html.pl:13840 texi2html/texi2html.pl:13841
+#: texi2html/texi2html.pl:13844
 msgid "new menu entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:13807
+#: texi2html/texi2html.pl:13966
 msgid "paragraph end"
 msgstr ""
 
-#: texi2html/texi2html.pl:14105
+#: texi2html/texi2html.pl:14264
 msgid "@listoffloats type"
 msgstr ""
 
-#: texi2html/texi2html.pl:14297
+#: texi2html/texi2html.pl:14456
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: texi2html/texi2html.pl:14319
+#: texi2html/texi2html.pl:14478
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s mong đợi dấu ngoặc móc {}"
 
-#: texi2html/texi2html.pl:14511
+#: texi2html/texi2html.pl:14670
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: texi2html/texi2html.pl:14529
+#: texi2html/texi2html.pl:14688
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: tập tin rỗng"
 
-#: texi2html/texi2html.pl:14551
+#: texi2html/texi2html.pl:14710
 #, fuzzy
 msgid "ignoring @tab in empty multitable"
 msgstr "đang bỏ qua @tab bên ngoài đa bảng"
 
-#: texi2html/texi2html.pl:14586
+#: texi2html/texi2html.pl:14745
 msgid "@center should not appear in another format"
 msgstr ""
 
-#: texi2html/texi2html.pl:14968
+#: texi2html/texi2html.pl:15127
 msgid "@tab before @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:15204
+#: texi2html/texi2html.pl:15363
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s mong đợi « i » hay « j » làm đối số, không phải « %c »"
 
-#: texi2html/texi2html.pl:15256
+#: texi2html/texi2html.pl:15415
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "Lệnh không rõ « %s »"
 
-#: texi2html/texi2html.pl:15387
+#: texi2html/texi2html.pl:15546
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s: thiếu dấu ngoặc móc đóng « } »"
 
-#: texi2html/texi2html.pl:15687
+#: texi2html/texi2html.pl:15846
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: không thể mở tập tin CSS « --css-file »: %s"
 
-#: texi2html/texi2html.pl:16164
+#: texi2html/texi2html.pl:16323
 #, perl-format
 msgid "Index entry not caught: `%s' in %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:16262
+#: texi2html/texi2html.pl:16421
 #, fuzzy, perl-format
 msgid "Empty index entry for @%s"
 msgstr "không tìm thấy gì trong chỉ mục cho « %s »\n"
 
-#: texi2html/texi2html.pl:16398
+#: texi2html/texi2html.pl:16557
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16400
+#: texi2html/texi2html.pl:16559
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16430
+#: texi2html/texi2html.pl:16589
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: không thể mở tập tin CSS « --css-file »: %s"
 
-#: texi2html/texi2html.init:6478 texi2html/formats/docbook.init:1504
-#: texi2html/formats/html.init:2447
-#: texi2html/maintained_extra/mediawiki.init:1134
+#: texi2html/texi2html.init:6654 texi2html/formats/docbook.init:1494
+#: texi2html/formats/html.init:2411
+#: texi2html/maintained_extra/mediawiki.init:1136
 #, c-format
 msgid "Raw format %s is not converted"
 msgstr ""
 
-#: texi2html/formats/docbook.init:1028 texi2html/formats/info.init:2998
-#: texi2html/formats/plaintext.init:152
+#: texi2html/formats/docbook.init:1017 texi2html/formats/info.init:2992
+#: texi2html/formats/plaintext.init:149
 #, fuzzy, c-format
 msgid "\\@image file `%s' unreadable: %s"
 msgstr "Không thể đọc tập tin @image « %s »: %s"
 
-#: texi2html/formats/docbook.init:1033 texi2html/formats/info.init:3003
-#: texi2html/formats/plaintext.init:157
+#: texi2html/formats/docbook.init:1022 texi2html/formats/info.init:2997
+#: texi2html/formats/plaintext.init:154
 #, fuzzy, c-format
 msgid "Cannot find \\@image file `%s.txt'"
 msgstr "Không tìm thấy nút thông tin « %s »."
 
-#: texi2html/formats/html.init:2584
+#: texi2html/formats/html.init:2548
 #, fuzzy, c-format
 msgid "\\@image file `%s' (for HTML) not found, using `%s'"
 msgstr "Tập tin @image « %s » (cho HTML) không đọc được: %s"
 
-#: texi2html/formats/info.init:908
+#: texi2html/formats/info.init:900
 #, c-format
 msgid "\\@%s has text but no \\@item"
 msgstr ""
 
-#: texi2html/formats/info.init:1196
+#: texi2html/formats/info.init:1188
 #, fuzzy
 msgid ""
 "\\@strong{Note...} produces a spurious cross-reference in Info; reword to "
@@ -3823,41 +3830,46 @@ msgstr ""
 "« @strong{Note...} » tạo một tham chiếu chéo giả trong Info; hãy sửa đổi để "
 "tránh nó"
 
-#: texi2html/formats/info.init:1360
+#: texi2html/formats/info.init:1352
 #, fuzzy
 msgid "`.' or `,' must follow \\@xref."
-msgstr "@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
+msgstr ""
+"@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
 
-#: texi2html/formats/info.init:1365
+#: texi2html/formats/info.init:1357
 #, fuzzy, c-format
 msgid "`.' or `,' must follow \\@xref, not %s"
-msgstr "@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
+msgstr ""
+"@%s phải có dấu chấm « . » hay dấu phẩy « , » theo sau, không phải « %c »"
 
-#: texi2html/formats/info.init:2469
+#: texi2html/formats/info.init:2463
 msgid "anchor outside of any node, it won't be registered"
 msgstr ""
 
-#: texi2html/formats/info.init:2784
+#: texi2html/formats/info.init:2778
 #, fuzzy
 msgid "\\@menu before first node"
 msgstr "gặp @menu trước @node đầu thì tạo nút « Trên »"
 
-#: texi2html/formats/info.init:2789
+#: texi2html/formats/info.init:2783
 msgid "\\@direntry after first node"
 msgstr ""
 
-#: texi2html/formats/info.init:3540
+#: texi2html/formats/info.init:3534
 msgid "float reference outside of any node, it won't be registered"
 msgstr ""
 
-#: texi2html/formats/info.init:3643
+#: texi2html/formats/info.init:3637
 msgid "\\@dircategory after first node"
 msgstr ""
 
-#: texi2html/maintained_extra/mediawiki.init:1093
+#: texi2html/maintained_extra/mediawiki.init:1095
 #, fuzzy, c-format
 msgid "\\@image file `%s' not found, using `%s'"
 msgstr "Không thể đọc tập tin @image « %s »: %s"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: không cho phép tùy chọn « -- %c »\n"
 
 #, fuzzy
 #~ msgid "Macro"
