@@ -59,7 +59,7 @@ dist_init_DATA = maintained_extra/book.init \
 texi2html_sources = texi2html_configured.pl $(texi2html_additional_scripts)
 
 noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
- parse_8bit_makeinfo_maps.pl gettext_to_separated.pl
+ parse_8bit_makeinfo_maps.pl gettext_to_separated.pl separated_to_hash.pl
 
 # style_example.css comes from http://planet.gnu.org/~ams/style.css
 EXTRA_DIST = \
@@ -180,10 +180,10 @@ dist_images_DATA = images/a_begin.png \
 	images/xy_up_gr.png
 
 texi2html.temp: $(texi2html_sources)
-	$(SHELL) $(srcdir)/buildt2h.sh $@ $(texi2html_sources)
+	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
 
 texi2html: texi2html.temp $(texi2html_formats)
-	$(SHELL) $(srcdir)/addformats.sh $@ $(texi2html_formats)
+	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
 texi2html.spec: texi2html.spec.in $(top_builddir)/configure

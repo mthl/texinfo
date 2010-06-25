@@ -57,7 +57,7 @@ all-checks: check long-check
 all-local:
 	for dir in $(htmlxref_cnf_tests); do \
 		$(mkdir_p) $$dir/.texinfo/ ; \
-		cp $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
+		${INSTALL_DATA} $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
 	done
 
 clean-local:
