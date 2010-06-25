@@ -1,3 +1,10 @@
+2010-06-25  Karl Berry  <karl@gnu.org>
+
+	* addformats.sh,
+        * buildt2h.sh: add copyright notice,
+        and insert generation identification in output.
+	* Makefile.am: add copyright notice.
+
 2010-06-23  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: add variable substitution in htmlxref.cnf. Karl

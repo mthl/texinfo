@@ -1,4 +1,16 @@
-## Process this file with automake to produce Makefile.in
+# Makefile.am for texi2html.
+# Process this file with automake to produce Makefile.in
+#
+# Copyright 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
+# 2009, 2010 Free Software Foundation, Inc.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # don't install gmo files from texi2hmtl directories if in texinfo, 
 # they are also in ../po and ../po_document
@@ -168,10 +180,10 @@ dist_images_DATA = images/a_begin.png \
 	images/xy_up_gr.png
 
 texi2html.temp: $(texi2html_sources)
-	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
+	$(SHELL) $(srcdir)/buildt2h.sh $@ $(texi2html_sources)
 
 texi2html: texi2html.temp $(texi2html_formats)
-	$(SHELL) $(srcdir)/addformats.sh $@ $^
+	$(SHELL) $(srcdir)/addformats.sh $@ $(texi2html_formats)
 	chmod a+x $@
 
 texi2html.spec: texi2html.spec.in $(top_builddir)/configure
