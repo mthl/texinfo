@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.271 2010-06-25 22:24:06 pertusus Exp $
+# $Id: texi2html.init,v 1.272 2010-06-26 09:54:22 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -568,6 +568,12 @@ sub t2h_default_set_variables_default()
 # unnumbered in menus, see UNNUMBERED_SYMBOL_IN_MENU variable)
   $MENU_SYMBOL = '*';
 
+# symbol put at the end of nodes entry in menu
+  $MENU_ENTRY_COLON = ':';
+
+# symbol put at the end of index entries
+  $INDEX_ENTRY_COLON = ':';
+
 # if set, then use node names in menu entries, instead of section names
   $NODE_NAME_IN_MENU = 1;
 
@@ -945,6 +951,8 @@ sub t2h_default_set_variables_texi2html()
   $HEADER_IN_TABLE = 1;
   $SHORT_REF = 0;
   $USE_TITLEPAGE_FOR_TITLE = 1;
+  $MENU_ENTRY_COLON = '';
+  $INDEX_ENTRY_COLON = '';
 
   $ENABLE_ENCODING_USE_ENTITY = 1;
 }

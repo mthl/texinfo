@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.389 2010-06-25 22:24:06 pertusus Exp $
+# $Id: texi2html.pl,v 1.390 2010-06-26 09:54:22 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -373,6 +373,8 @@ $ICONS
 $UNNUMBERED_SYMBOL_IN_MENU
 $SIMPLE_MENU
 $MENU_SYMBOL
+$MENU_ENTRY_COLON
+$INDEX_ENTRY_COLON
 $USE_ACCESSKEY
 $USE_REL_REV
 $USE_LINKS

@@ -1,3 +1,9 @@
+2010-06-26  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.init, formats/html.init: unconditionnally add a 
+	colon after index node and menu node when not in texi2html mode. 
+	Report from Karl.
+
 2010-06-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.init, NEWS, formats/*.init: change the external_ref 
