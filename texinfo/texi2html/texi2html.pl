@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.390 2010-06-26 09:54:22 pertusus Exp $
+# $Id: texi2html.pl,v 1.391 2010-06-27 00:16:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -13853,6 +13853,7 @@ sub scan_line($$$$;$)
             else
             {
                 # close description and comment, if they are opened.
+                #dump_stack($text, $stack, $state);
                 if (!close_menu_comment($text, $stack, $state, __("new menu entry"), $line_nr) 
                   and !close_menu_description($text, $stack, $state, __("new menu entry"), $line_nr)
                   and $state->{'preformatted'})
@@ -13860,6 +13861,7 @@ sub scan_line($$$$;$)
                     close_paragraph($text, $stack, $state, __("new menu entry"), $line_nr);
                 }
                 print STDERR "# New menu entry: $node\n" if ($T2H_DEBUG & $DEBUG_MENU);
+                #dump_stack($text, $stack, $state);
                 my $fusionned_description = 0;
                 # fusionned looks better in preformatted. But some formats
                 # want to always distinguish link and description 
@@ -13881,8 +13883,10 @@ sub scan_line($$$$;$)
              }
         }
         # we may be in a menu entry description, we close it 
-        # if there is an empty line, so the last arg is $cline
-         if (!$new_menu_entry and close_menu_description($text, $stack, $state, "end menu description", $line_nr, $cline))
+        # if there is an empty line, so the last arg is $cline.
+        # also if rght in menu we always open a menu_comment, it
+        # means that there was no menu entry seen since the menu beginning
+         if (!$new_menu_entry and (close_menu_description($text, $stack, $state, "end menu description", $line_nr, $cline) or ($stack->[-1]->{'format'} and $format_type{$stack->[-1]->{'format'}} and $format_type{$stack->[-1]->{'format'}} eq 'menu')))
          {
             if ($state->{'preformatted'})
             {
@@ -13891,7 +13895,7 @@ sub scan_line($$$$;$)
             else
             {
                # only start a menu_comment if right in menu and not in 
-               # an en format below a menu because if not right
+               # a format below a menu because if not right
                # in a menu we have no way to distinguish a menu_comment
                # and some normal text in the format.
                # also it is not started in preformatted environment
@@ -14213,8 +14217,15 @@ sub scan_line($$$$;$)
                 }
                 my $waited_format = $top_stack->{'format'};
                 $waited_format = $fake_format{$top_stack->{'format'}} if ($format_type{$top_stack->{'format'}} eq 'fake');
-                line_error (sprintf(__("`\@end' expected `%s', but saw `%s'"), $waited_format, $end_tag), $line_nr);
-                #dump_stack ($text, $stack, $state);
+                if ($end_tag ne $waited_format)
+                {
+                    line_error (sprintf(__("`\@end' expected `%s', but saw `%s'"), $waited_format, $end_tag), $line_nr);
+                }
+                else
+                {
+                    msg_debug ("\@end is $end_tag, was waiting for $top_stack->{'format'}", $line_nr);
+                    dump_stack ($text, $stack, $state);
+                }
                 close_stack($text, $stack, $state, $line_nr, $end_tag);
                 # FIXME this is too complex
                 # an empty preformatted may appear when closing things as

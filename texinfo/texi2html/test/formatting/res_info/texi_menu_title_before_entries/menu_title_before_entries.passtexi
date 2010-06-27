@@ -1,0 +1,19 @@
+menu_title_before_entries.texi(,2) @setfilename menu_title_before_entries.info
+menu_title_before_entries.texi(,3) 
+menu_title_before_entries.texi(,4) @node Top
+menu_title_before_entries.texi(,5) @top test menu title before menu entries
+menu_title_before_entries.texi(,6) 
+menu_title_before_entries.texi(,7) Text.
+menu_title_before_entries.texi(,8) 
+menu_title_before_entries.texi(,9) @menu
+menu_title_before_entries.texi(,10) Horizontal space
+menu_title_before_entries.texi(,11) * subnode::
+menu_title_before_entries.texi(,12) @end menu
+menu_title_before_entries.texi(,13) 
+menu_title_before_entries.texi(,14) 
+menu_title_before_entries.texi(,15) @node subnode
+menu_title_before_entries.texi(,16) @section hi
+menu_title_before_entries.texi(,17) 
+menu_title_before_entries.texi(,18) There.
+menu_title_before_entries.texi(,19) 
+menu_title_before_entries.texi(,20) @bye

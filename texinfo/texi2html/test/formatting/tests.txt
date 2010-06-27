@@ -55,6 +55,7 @@ texi empty_deftype.texi
 texi allowcodebreaks.texi
 texi format_in_titlepage.texi
 texi no_colon_in_menu.texi
+texi menu_title_before_entries.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -158,3 +159,5 @@ nested_table_info nested_table.texi --init info.init
 simple_table_info simple_table.texi --init info.init
 allowcodebreaks allowcodebreaks.texi
 format_in_titlepage format_in_titlepage.texi
+menu_title_before_entries menu_title_before_entries.texi
+menu_title_before_entries_xml menu_title_before_entries.texi --xml

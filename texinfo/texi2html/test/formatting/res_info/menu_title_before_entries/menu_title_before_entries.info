@@ -1,0 +1,31 @@
+This is menu_title_before_entries.info, produced by makeinfo version
+4.13 from menu_title_before_entries.texi.
+
+
+File: menu_title_before_entries.info,  Node: Top,  Next: subnode,  Up: (dir)
+
+test menu title before menu entries
+***********************************
+
+Text.
+
+* Menu:
+
+Horizontal space
+* subnode::
+
+
+File: menu_title_before_entries.info,  Node: subnode,  Prev: Top,  Up: Top
+
+1 hi
+====
+
+There.
+
+
+
+Tag Table:
+Node: Top112
+Node: subnode311
+
+End Tag Table

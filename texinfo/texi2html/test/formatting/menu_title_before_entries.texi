@@ -1,0 +1,20 @@
+\input texinfo
+@setfilename menu_title_before_entries.info
+
+@node Top
+@top test menu title before menu entries
+
+Text.
+
+@menu
+Horizontal space
+* subnode::
+@end menu
+
+
+@node subnode
+@section hi
+
+There.
+
+@bye

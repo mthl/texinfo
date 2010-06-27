@@ -7,6 +7,26 @@ Before next release
   set user option switch. For example, right now, --html overrides
   --no-split which is bad. Report from Karl.
 
+* now config variables are read-only after command line switches
+  expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
+  and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
+  $Texi2HTML::THISDOC{'VAR'} is then used in the code.
+
+  This means that, if a variable that was not autodetected becomes
+  autodetected, the code will have to switch to using 
+  $Texi2HTML::THISDOC{'VAR'} instead of $VAR. This is very bad since it
+  means API breaking.
+
+  All that is now more or less encapsulated in get_conf, but the 
+  problem remains.
+
+set_from_command_line('somevar', $value);
+set_from_document('somevar', $value);
+set_from_init_file('somevar', $value);
+get_conf('somevar');
+
+
+
 Later
 -----
 
@@ -349,19 +369,6 @@ function clean_antispam() {
 
 * in docbook, if there are 2 nodes without anything to put an id on 
   the first is forgotten. Also why no id on <para>?
-
-* now config variables are read-only after command line switches
-  expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
-  and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
-  $Texi2HTML::THISDOC{'VAR'} is then used in the code.
-
-  This means that, if a variable that was not autodetected becomes
-  autodetected, the code will have to switch to using 
-  $Texi2HTML::THISDOC{'VAR'} instead of $VAR. This is very bad since it
-  means API breaking.
-
-  All that is now more or less encapsulated in get_conf, but the 
-  problem remains.
 
 * have a special debug mode where text processing is traced. It means
   that PASS_TEXT/SCAN_TEXT is shown and substitute_line (and maybe 

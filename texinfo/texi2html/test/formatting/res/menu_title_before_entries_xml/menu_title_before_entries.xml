@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>menu_title_before_entries.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>subnode</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>test menu title before menu entries</title>
+
+<para>Text.
+</para>
+<menu>
+<para>Horizontal space
+</para><menuentry>
+<menunode>subnode</menunode>
+<menutitle>subnode</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+
+</top>
+<node>
+<nodename>subnode</nodename>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<section>
+<title>hi</title>
+
+<para>There.
+</para>
+</section>
+</texinfo>
