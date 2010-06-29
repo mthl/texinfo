@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.391 2010-06-27 00:16:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.392 2010-06-29 21:46:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -13884,10 +13884,10 @@ sub scan_line($$$$;$)
         }
         # we may be in a menu entry description, we close it 
         # if there is an empty line, so the last arg is $cline.
-        # also if rght in menu we always open a menu_comment, it
-        # means that there was no menu entry seen since the menu beginning
-         if (!$new_menu_entry and (close_menu_description($text, $stack, $state, "end menu description", $line_nr, $cline) or ($stack->[-1]->{'format'} and $format_type{$stack->[-1]->{'format'}} and $format_type{$stack->[-1]->{'format'}} eq 'menu')))
-         {
+        # also if right in menu we always open a menu_comment, it
+        # means that there was no menu entry seen since the menu beginning.
+        if (!$new_menu_entry and (close_menu_description($text, $stack, $state, "end menu description", $line_nr, $cline) or ($stack->[-1]->{'format'} and $format_type{$stack->[-1]->{'format'}} and $format_type{$stack->[-1]->{'format'}} eq 'menu')))
+        {
             if ($state->{'preformatted'})
             {
                 begin_paragraph($stack, $state);

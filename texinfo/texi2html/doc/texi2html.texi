@@ -446,7 +446,8 @@ it is detected. @command{perl} is required to rebuild the documentation
 as the @acronym{HTML} documentation is rebuild with @command{texi2html}
 itself.
 
-The translations are managed by a script @command{manage_i18n.pl}, created
+Old style translations are managed by a script @command{manage_i18n.pl}, 
+created
 by @command{./configure}. @command{manage_i18n.pl} requires 
 @code{Data::Dumper} to function normally. If this module isn't there 
 @command{./configure} detects it and @command{manage_i18n.pl} doesn't
@@ -2917,7 +2918,30 @@ document (set by @longopt{document-language}, @variable{$DOCUMENTLANGUAGE} or
 @code{@@documentlanguage}). This is the basis for internationalization
 as it allows for strings translations.
 
-The strings are found in a hash reference, @variable{$LANGUAGES}. 
+The Gettext framework is used for those strings. libintl-perl is used as 
+a gettext implementation, and more precisely the
+pure perl implementation is used, to be sure to have a consistent gettext-like
+implementation which is not the case if the system one is used. libintl-perl
+is shipped in texi2html and installed to be sure that it is available. It is
+also possible to use the system libintl (currently decided at build-time).
+
+The texi2html_document domain is used for those strings. These strings 
+are texinfo strings, which may have @@-commands, and the variable parts
+of the strings are denoted by @samp{@{arg_name@}} as is common practice for perl
+gettext. For more on internationalization, see @ref{Internationalization}.
+
+@menu
+* Old style translations::
+@end menu
+
+@node Old style translations
+@subsection Old style translations
+
+A gettext-like framework appeared in version 5.0.
+For reference the previous handling of strings (up to 1.82) 
+is still documented here.
+With that system, the strings are found in 
+a hash reference, @variable{$LANGUAGES}. 
 Each key is a language code. The associated value is also a hash
 reference. The key is an english string and the associated value
 is the string replacing the english string, if present. For example,
@@ -2933,19 +2957,18 @@ It means that whenever the string @samp{@ Up@ } is to be written
 and the language is @samp{fr}, @samp{Plus haut} is written. It is possible
 to customize the english strings by redefining the @samp{en} language hash.
 
-When a string contains a @samp{%} followed by @samp{@{} @var{name} @samp{@}}
+When a string contains a substring like @samp{@{} @var{name} @samp{@}}
 it means that the string will be expanded by @command{texi2html}. For
 example, if we have
 
 @example
 $LANGUAGES->@{'fr'@} = @{
-              'See %@{node_file_href@}' => 'Voir %@{node_file_href@}',
+              'See @{node_file_href@}' => 'Voir @{node_file_href@}',
 @};
 @end example
 
-@samp{%@{node_file_href@}} will be expanded to an href for a node in a 
-file by @command{texi2html} in the string. A @samp{%%} will be expanded
-as @samp{%}.
+@samp{@{node_file_href@}} will be expanded to an href for a node in a 
+file by @command{texi2html} in the string. 
 
 When a @code{@@documentlanguage} appears in the document and the language
 wasn't set on the command line, it may be convenient for the user to
@@ -2955,12 +2978,10 @@ reference that may be used for that, it is called each time  a
 
 @deffn {Function Reference} $translate_names
 This function is called each time @code{@@documentlanguage} is encountered
-and the language wasn't seet on the command line. It should be used
+and the language wasn't set on the command line. It should be used
 to retranslate some strings based on the new language.
 @end deffn
 
-
-For more on internationalization, see @ref{Internationalization}.
 
 @c --------------------------------------------------------
 @node References
@@ -4483,116 +4504,94 @@ with line number added by @command{texi2html}.
 @node Internationalization
 @appendix Internationalization
 
+@cindex Translation
+@cindex i18n
+
 The strings written in the document are selected based on the
 document language. This can be used to customize the strings, 
 as described in @ref{Strings}. This also enables translation of the
 strings. 
 
-@menu
-* Translating strings::
-* Adding new strings::
-@end menu
+The @code{gdt} subroutine is used for translated strings:
 
-@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node Translating strings
-@appendixsec Translating strings
+@defun {gdt} ($string, \%variables_hash, \%state)
+with @var{$string} the string to be translated, @var{\%variables_hash} a
+reference on a hash holding th evariable parts of the translated string, and 
+@var{\%state} a hash reference determining the context of expansion 
+(use the document state,
+  expansion in string, no expansion...).
+@end defun
 
-@cindex Translation
-@cindex i18n
-@vindex $LANGUAGES
-@vindex $T2H_OBSOLETE_STRINGS
-
-
-@menu
-* Supported language::
-* New language::
-@end menu
-
-@node Supported language
-@appendixsubsec Contributing to existing translations
-
-If the language is allready supported, then there will be a file 
-in the @file{i18n} directory with name the two-letter 
-ISO-639 language code. In that case you can enhance the translations by 
-editing this file. There is a @code{$LANGUAGES->@{'@var{language}'@}}
-hash in that file. The keys are the english strings, in @code{''}, the 
-values (in @code{''} after @code{=>}) are the translations.
-When a string contains a @samp{%} followed by @samp{@{} @var{name} @samp{@}}
-it means that the string will be expanded by @command{texi2html}. For
-an example, see @ref{Strings}.
-
-After that you should run the command @command{./manage_i18n.pl merge} in
-the top directory, it should merge your file with the existing files in
-@file{translations.pl}, which is incorporated to the @file{texi2html} script
-by @command{make}.
-
-@node New language
-@appendixsubsec Contributing translations to another language
-
-If the language isn't currently supported, copy the @file{en} file in 
-@file{i18n} to a file with name the two-letter ISO-639 
-language code of your language
- and then add your translations to the strings. You could also add your 
-two-letter language code in the @file{manage_i18n.pl} file in the
-@code{@@known_languages} array. 
-
-After that you should run the command 
-@command{./manage_i18n.pl update @var{lang}} and 
-@command{./manage_i18n.pl merge} in
-the top directory.
-
-Obsoleted strings are not removed from the files, they are still present
-in the @code{$T2H_OBSOLETE_STRINGS->@{'@var{language}'@}} hash in case
-the string is reused later.
-
-If you made change to strings specified in installed files
-(@pxref{Installation})
-you will have to reinstall them otherwise the installated files will 
-take precedence (@pxref{Using init files}).
-
-@c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node Adding new strings
-@appendixsec Adding new strings written to document
-
-@cindex internationalized strings
-@cindex @command{manage_i18n.pl}
-
-If you need to write strings, for example the new string @var{a string} 
-to the resulting document, call @code{&$I('a string')}. Use simple quotes.
-If you want to substitute a value in the string put 
-@code{%@{@var{string_value}@}}, in the string, and give a second argument 
-to @code{&$I}, a hash reference with key @var{string_value} and value 
-the what you want to substitute.
-Here is an example:
-
+Translated strings are texinfo strings, which may have @@-commands. 
+In translated strings, 
+ the variables parts of the string are not denoted by %s and the like, but
+  by @samp{@{arg_name@}}  (which is common for perl gettext). 
+For example, in the following, @samp{@{section@}} will be replaced by the 
+section name:
 @example
-return &$I('%@{name@} of %@{class@}', 
-       @{ 'name' => $name, 'class' => $class @});
+see @{section@}
 @end example
 
-In that case @code{%@{name@}} is substituted by @code{$name} in the translated
-string.
+  This is for 2 reasons, first changing the order of
+  printf arguments is only available since perl 5.8.0, second the order
+  of the argument may not be predictable when @-commands expansion may lead
+  to different orders depending on the output format.
 
-After that you should run the command @command{./manage_i18n.pl} in the top
-directory, to add your new strings to the template file, that is the 
-file for english and to all the files in the @file{i18n}
-directory. This is achieved with
+The expansion of those strings happens that way:
+@enumerate
+@item First the string is translated. The locale is @@documentlanguage.@@documentencoding.
+
+  If the @@documentlanguage is like ll_CC, ll_CC is tried first, and then ll.
+  If the encoding is not us-ascii, us-ascii is also tried. The idea is that
+  if there is a us-ascii encoding, it means that all the characters in the
+  charset may be expressed as @@-commands. For example there is a fr.us-ascii
+  locale that can accomodate any encoding, since all the latin1 characters
+  have associated @@-commands. For the ja translations, there is only ja.utf-8
+  since there are no @@-commands for ja letters.
+
+@item Next the args in string are protected, for example @samp{@{arg_name@}} becomes
+   @samp{@@internal_translation_open_brace@{@}arg_name@@internal_translation_close_brace@{@}} (this part is skipped if there is no expansion).
+
+@item Next the string is expanded as a texinfo string.
+   @samp{@@internal_translation_open_brace@{@}} expands as @{ and
+   @samp{@@internal_translation_close_brace@{@}} expands as @}, such 
+   that in the end
+   one still gets @samp{@{arg_name@}} within an expanded string
+   (this part is skipped if there is no expansion).
+
+@item Then the in string arguments are substituted, for example @samp{@{arg_name@}} is
+   substituted by the corresponding argument.
+@end enumerate
+
+For example, in the following @samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}}
+are the argument of the string. Since they are used in @code{@@uref}, their
+order in not predictable. The @samp{@{'duplicate'=>1@}} 
+means the the document state
+should be used when expanding the string. @samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}}
+are substituted after the expansion, which means that they
+should already be acceptable output:
 
 @example
-./manage_i18n.pl template
-./manage_i18n.pl update
+gdt('This document was generated on @@i@{@{date@}@} using @@uref@{@{program_homepage@}, @@i@{@{program@}@}@}.', @{
+           'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC@{'program_homepage'@}, 'program' => $Texi2HTML::THISDOC@{'program'@} @},@{'duplicate'=>1@});
 @end example
 
-These two commands won't work if you don't have the 
-@code{Data::Dumper} module installed.
-And to merge the new translation files in @file{translations.pl}, do
+This approach is a bit complicated, however what is interesting is that
+it allows to have translation available in different encodings for charset
+that are covered by @@-commands, and also to specify how the formatting for
+some commands is done independently of the output format but still allow it to
+be language dependent. For example, the @samp{@@pxref} string may be:
 
 @example
-./manage_i18n.pl merge
+see @{node_file_href@} section `@{section@}\' in @@cite@{@{book@}@}
 @end example
 
-All these steps may be performed by @command{make}, once the language file
-is added to @file{Makefile.am} in the @code{i18n_files} variable.
+which allows to specify a string independently of the output format but with a
+rich formatting that may be differently translated in other languages.
+
+It is also possible to use more regular %s escapes, and also avoid any
+expansion (with 'keep_texi' in the state).
+
 
 @c --------------------------------------------------------
 @node Incompatibilities
@@ -4601,10 +4600,12 @@ is added to @file{Makefile.am} in the @code{i18n_files} variable.
 @command{texi2html} has accumulated a lot of incompatibilities with previous
 versions. They are documented in the @file{NEWS} file, we discuss them
 here nevertheless. Most of the incompatibilities were introduced in 
-version 1.68. API changed also a lot between 1.78 and 1.80.
+version 1.68. API changed also a lot between 1.78 and 1.80. Between 
+1.82 and 5.0 API changed also quite a bit, and more importantly, the
+whole internationalization handling was changed.
 
 @itemize @bullet
-@item API changes between 1.82 and 1.84:
+@item API changes between 1.82 and 5.0:
 @itemize @bullet
 @item complex format handling API changed. $complex_format_map is replaced by 
   a real hash %complex_format_map and the begin and end are no more 
