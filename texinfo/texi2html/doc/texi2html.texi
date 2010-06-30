@@ -198,7 +198,7 @@ Texinfo (@pxref{Top,,Texinfo,Texinfo}) into @acronym{HTML}.
 @end ifinfo
 
 Please send bug reports concerning this manual to the Texi2HTML developement
-list @email{texi2html-bug@@nongnu.org}. Please state the exact
+list @email{bug-texinfo@@gnu.org}. Please state the exact
 version of the manual which contains the bug, as given above.
 
 @ifinfo
@@ -417,9 +417,11 @@ La@TeX{}2HTML when using @command{latex2html} to convert @code{@@tex} sections
 (@pxref{Expanding TeX regions}), install them in the package data directory
 specified to configure.  This is @file{/usr/local/share/texi2html/} by default,
 but depends on the value of the @longopt{pkgdatadir=@var{dir}} option passed to
-the @command{./configure} script. Files used for strings customization and
-internationalization are also searched for in the @file{i18n} directory
-of this directory. @xref{Using init files} for more. 
+the @command{./configure} script. 
+@c Files used for strings customization and
+@c internationalization are also searched for in the @file{i18n} directory
+@c of this directory. 
+@xref{Using init files} for more. 
 
 @node Advanced build features
 @section Advanced build features
@@ -4516,7 +4518,7 @@ The @code{gdt} subroutine is used for translated strings:
 
 @defun {gdt} ($string, \%variables_hash, \%state)
 with @var{$string} the string to be translated, @var{\%variables_hash} a
-reference on a hash holding th evariable parts of the translated string, and 
+reference on a hash holding the variable parts of the translated string, and 
 @var{\%state} a hash reference determining the context of expansion 
 (use the document state,
   expansion in string, no expansion...).

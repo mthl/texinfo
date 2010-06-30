@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.53)
-AC_INIT([texi2html], [5.0], [texi2html-bug@nongnu.org])
+AC_INIT([texi2html], [5.0], [bug-texinfo@gnu.org])
 dnl 1.9 because we need tar-ustar, and tar-ustar because we have long 
 dnl filenames for some test files
 AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2 dist-zip tar-ustar])

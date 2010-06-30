@@ -37,6 +37,7 @@ at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi --node-files --
 at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi --init no_unidecode.init --node-files --split node
 at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi --init no_unicode.init --node-files --split node
 multi_lang multi_lang.texi
+multi_lang_old_style multi_lang.texi --init old_style_i18n.init
 unknown_language unknown_language.texi
 umlaut umlaut.texi
 formatting_fr ../coverage/formatting.texi --document-language fr

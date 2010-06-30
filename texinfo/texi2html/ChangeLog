@@ -1,3 +1,9 @@
+2010-06-30  Patrice Dumas  <pertusus@free.fr>
+
+	* Makefile.am, i18n_ref: add a directory for references for i18n
+	old style files, such that everything goes well even without gettext.
+	Also add a .thl suffix to the i18n old-style files.
+
 2010-06-27  Patrice Dumas  <pertusus@free.fr>
 
 	* NEWS, README: 5.0 release.

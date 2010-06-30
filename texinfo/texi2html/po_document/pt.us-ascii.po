@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-06-29 23:21+0200\n"
+"POT-Creation-Date: 2010-06-30 21:03+0200\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -15,28 +15,28 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6068 texi2html/texi2html.pl:6072
-#: texi2html/texi2html.pl:6076
+#: texi2html/texi2html.pl:6071 texi2html/texi2html.pl:6075
+#: texi2html/texi2html.pl:6079
 msgid "About This Document"
 msgstr "Sobre Esse Documento"
 
-#: texi2html/texi2html.pl:6069 texi2html/texi2html.pl:6073
-#: texi2html/texi2html.pl:6077 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6072 texi2html/texi2html.pl:6076
+#: texi2html/texi2html.pl:6080 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "Sum@'ario"
 
-#: texi2html/texi2html.pl:6070 texi2html/texi2html.pl:6074
-#: texi2html/texi2html.pl:6078
+#: texi2html/texi2html.pl:6073 texi2html/texi2html.pl:6077
+#: texi2html/texi2html.pl:6081
 msgid "Short Table of Contents"
 msgstr "Breve Sum@'ario"
 
-#: texi2html/texi2html.pl:6071 texi2html/texi2html.pl:6075
-#: texi2html/texi2html.pl:6079 texi2html/texi2html.init:6769
+#: texi2html/texi2html.pl:6074 texi2html/texi2html.pl:6078
+#: texi2html/texi2html.pl:6082 texi2html/texi2html.init:6769
 #: texi2html/formats/html.init:2480
 msgid "Footnotes"
 msgstr "Notas de Rodap@'e"
 
-#: texi2html/texi2html.pl:12758
+#: texi2html/texi2html.pl:12761
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

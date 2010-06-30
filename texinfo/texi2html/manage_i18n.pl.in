@@ -22,8 +22,8 @@
 #
 #-##############################################################################
 
-# for file in ../i18n/*; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file`; post='.us-ascii.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/us-ascii/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
-#  for file in ../i18n/hu ../i18n/it ; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file`; post='.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/utf-8/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
+# for file in ../i18n/*; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file .thl`; post='.us-ascii.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/us-ascii/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
+#  for file in ../i18n/hu.thl ../i18n/it.thl ; do echo $file | grep -qs 'old\|CVS' && continue; bfile=`basename $file .thl`; post='.po'; msgen texi2html_document.pot > $bfile$post-1; sed -i -e 's/CHARSET/utf-8/' $bfile$post-1 ; msgfilter --keep-header -i $bfile$post-1 -o $bfile$post ../manage_i18n.pl filter -I ../ --lang $bfile;  done
 
 # remove every translations while keeping the header
 #  msgfilter --keep-header -i es.us-ascii.po 'true' > es.us-ascii.po-head
@@ -82,8 +82,7 @@ Usage:
   $command_basename [-I <dir>][-d <i18n_dir>][-o <out_dir>] update [ language... ]
   $command_basename [-I <dir>][-d <i18n_dir>][-o <result_file>] merge
 
-Default languages are files in the i18n_dir without the following extensions:
-.bak,.orig,.old,.dpkg-old,.rpmnew,.rpmsave
+Default languages are files in the i18n_dir with .thl extension.
 EOT
     print $usage_text;
     exit 0;
@@ -179,11 +178,13 @@ sub get_languages($$)
                  ! /\.(bak|orig|old|dpkg-old|rpmnew|rpmsave)$/ &&
                  ! /~$/ &&
                  ! /^#.*#$/ &&
+                 /\.thl$/ &&
                 -f $dir . '/' . $_
              } readdir DIR;
              closedir DIR;
              foreach my $language (@new_languages)
              {
+                 $language =~ s/\.thl$//;
                  push @languages, $language unless grep {$_ eq $language}
                        @languages;
              }
@@ -223,7 +224,7 @@ sub merge_i18n_files($$$)
     die "open $translation_file failed" unless (open (TRANSLATIONS, ">$translation_file"));
     foreach my $lang (@languages)
     {
-         my $file = locate_file("$i18n_dir/$lang", $directories);
+         my $file = locate_file("$i18n_dir/$lang.thl", $directories);
          next unless defined($file);
          unless (open (FILE, $file))
          {
@@ -265,7 +266,7 @@ sub get_translation_string($$$$)
     my $i18n_dir = shift;
     my $lang = shift;
     my $string_to_find = shift;
-    my $from_file = locate_file("$i18n_dir/$lang", $directories);
+    my $from_file = locate_file("$i18n_dir/$lang.thl", $directories);
 
     my ($strings, $obsolete_strings) = get_language_hashes($from_file, $lang);
 
@@ -273,7 +274,7 @@ sub get_translation_string($$$$)
     return $obsolete_strings->{$string_to_find} if (defined($obsolete_strings) and defined($obsolete_strings->{$string_to_find}));
     return undef;
 }
-        
+
 sub update_language_hash($$$)
 {
     my $from_file = shift;
@@ -356,9 +357,9 @@ sub update_i18n_files($$$$@)
         return;
     }
     
-    my $template_file = locate_file("$i18n_dir/$template_language", 
+    my $template_file = locate_file("$i18n_dir/$template_language.thl", 
          $directories);
-    die "No $i18n_dir/$template_language found\n" unless 
+    die "No $i18n_dir/$template_language.thl found\n" unless 
          (defined($template_file));
     eval { require($template_file) ;};
     if ($@)
@@ -441,8 +442,8 @@ sub update_language_file($$$$$)
     my $out_i18n_dir = shift;
     my $template_language = shift;
     my $lang = shift;
-    my $from_file = locate_file("$i18n_dir/$lang", $directories);
-    my $to_file = "$out_i18n_dir/$lang";
+    my $from_file = locate_file("$i18n_dir/$lang.thl", $directories);
+    my $to_file = "$out_i18n_dir/$lang.thl";
 
     return unless (defined($from_file));
 
@@ -558,7 +559,7 @@ sub update_template($$$$@)
         $source_strings->{$string} = $template_strings->{$string};
     }
     my $template_file = 
-        locate_file("$i18n_dir/$template_language",$directories);
+        locate_file("$i18n_dir/$template_language.thl",$directories);
     die unless (update_language_hash($template_file, 
             $template_language, $source_strings));
 	foreach my $string (keys(%$template_strings))

@@ -6,7 +6,7 @@ EXTRA_DIST = nodetest.texi nodetest_latin1.texi nodetest_utf8.texi \
  japanese.texi chinese_mixed_with_en.texi documentlanguage_set.texi \
  encoding_index-latin1.texi encoding_index.texi  encoding_index-utf8.texi \
  japanese_shift_jis.texi sample_utf8.texi formatting_utf8.texi \
- enable_encoding_no_use_entity.init \
+ enable_encoding_no_use_entity.init old_style_i18n.init \
  no_unicode.init no_unidecode.init icons.init tests.txt res res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out

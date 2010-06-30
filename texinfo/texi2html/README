@@ -162,7 +162,14 @@ Texi2html source files:
                                 used to convert maths and TeX.
 
     po_document/                Directory containing po files used for
-                                translation of strings.
+                                translation of strings. The primary source
+                                for the file are outside of texi2html,
+                                in the texinfo po_document/ directory.
+
+    po_messages/                Directory containing po files used for
+                                translation of strings. The primary source
+                                for the file are outside of texi2html,
+                                in the texinfo po/ directory.
 
     i18n/                       Directory containing one file per language
                                 with translation of strings (obsolete,
@@ -198,9 +205,7 @@ Documentation files:
 Installation files:
 
     configure                   This file creates creates a Makefile 
-                                which in turn creates an `info' or
-                                `makeinfo' executable, or a C sources
-                                distribution.
+                                which in turn creates the other files.
 
     configure.ac                This is a template for creating 
                                 `configure' using Autoconf.

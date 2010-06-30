@@ -91,7 +91,9 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.392 2010-06-29 21:46:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.393 2010-06-30 22:01:27 pertusus Exp $
+
+# FIXME. Change for texinfo, and also simplify.
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
@@ -2479,10 +2481,10 @@ sub set_document_language ($$;$)
         return 1;
     }
 
-    my @files = locate_init_file("$i18n_dir/$lang", 1);
+    my @files = locate_init_file("$i18n_dir/$lang.thl", 1);
     if (! scalar(@files) and defined($main_lang))
     {
-        @files = locate_init_file("$i18n_dir/$main_lang", 1);
+        @files = locate_init_file("$i18n_dir/$main_lang.thl", 1);
     }
 
     foreach  my $file (@files)
@@ -2586,6 +2588,14 @@ sub gdt($;$$)
     my $context = shift;
     my $state = shift;
 
+    # FIXME this should be done only once, for @documentencoding
+    my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
+    if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
+    {
+       $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
+    }
+    $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
+
     return &$I($message, $context, $state) if ($Texi2HTML::Config::I18N_PERL_HASH);
     # if set, use substitute_text instead of substitute_line
     my $allow_paragraph = $state->{'allow_paragraph'};
@@ -2607,13 +2617,6 @@ sub gdt($;$$)
 
        Locale::Messages::textdomain($strings_textdomain);
 
-       # FIXME this should be done only once, for @documentencoding
-       my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
-       if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
-       {
-           $encoding = $Texi2HTML::Config::t2h_encoding_aliases{$encoding};
-       }
-       $encoding = 'us-ascii' if (!defined($encoding) or $encoding eq '');
    
        Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding) if ($encoding ne 'us-ascii');
        Locale::Messages::bind_textdomain_filter($strings_textdomain, \&encode_i18n_string, $encoding);

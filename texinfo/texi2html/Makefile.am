@@ -25,7 +25,7 @@ endif
 SUBDIRS = $(po_subdirs) . doc Tests test
 
 imagesdir = $(datadir)/texi2html/images
-i18ndir = $(datadir)/texi2html/i18n
+#i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
 
 #
@@ -92,21 +92,22 @@ EXTRA_DIST = \
 	po_messages/Makevars.in \
 	po_messages/POTFILES.in.in \
 	po_document/Makevars.in \
-	po_document/POTFILES.in.in
+	po_document/POTFILES.in.in \
+	i18n_ref
 
-i18n_files = i18n/de \
-	i18n/es \
-	i18n/fr \
-	i18n/nl \
-	i18n/no \
-	i18n/pt \
-	i18n/pt_BR \
-	i18n/ja \
-	i18n/it \
-	i18n/hu
+#i18n_files = i18n/de \
+#	i18n/es \
+#	i18n/fr \
+#	i18n/nl \
+#	i18n/no \
+#	i18n/pt \
+#	i18n/pt_BR \
+#	i18n/ja \
+#	i18n/it \
+#	i18n/hu
 
-dist_i18n_DATA = i18n/en \
-	$(i18n_files)
+#dist_i18n_DATA = i18n/en \
+#	$(i18n_files)
 
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \
@@ -194,33 +195,55 @@ texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	-@rm texi2html.tmp
 
 $(po_document_dir)/po_document/$(PACKAGE)_document.pot:
-	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+	if test '$(USE_NLS)' = 'yes'; then \
+	  cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po; \
+	fi
 
-$(i18n_files): $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+i18n/en.thl i18n/: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
 	$(MKDIR_P) i18n
-	for file in $(i18n_files); do lang=`basename $$file`; \
-		msgexec -i "$(srcdir)/$(po_document_dir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
-	done
+	if test '$(USE_NLS)' = 'yes'; then \
+	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*".po"; do lang=`basename "$$file" .po | sed 's/\..*//'`; \
+		test "$$lang" = 'en' && continue; \
+		msgexec -i "$$file" "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > i18n/$$lang.thl; \
+	  done; \
+	  msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > i18n/en.thl; \
+	else \
+	  cp -p i18n_ref/*.thl i18n; \
+	fi
 
-i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
-	$(MKDIR_P) i18n
-	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
+i18n_ref:
+	$(MKDIR_P) i18n_ref
 
-translations.pl: $(dist_i18n_DATA) 
+# Should be done manually, otherwise it is left after make distclean
+# in a out of source build directory.
+regenerate_i18n_ref: i18n i18n_ref
+	if test '$(USE_NLS)' = 'yes'; then \
+	  cp -p i18n/*.thl i18n_ref; \
+	fi
+
+#i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+#	$(MKDIR_P) i18n
+#	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
+
+translations.pl: i18n/en.thl
 	$(PERL) manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 # update the po files, and install locally the .mo files for the in
 # source tests
 check-local: makeinfo.pl texi2any.pl
-	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
 	if test '$(USE_NLS)' = 'yes'; then \
-	  rm -rf locales ; \
-	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
-	    basename=`basename "$$file" .po` ; \
-	    $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
-	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
-	  done ; \
+	  cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po; \
 	fi
+	rm -rf locales
+	for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
+	  basename=`basename "$$file" .po` ; \
+	  $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
+	  if test '$(USE_NLS)' = 'yes'; then \
+	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
+	  else \
+	    cp -p "$(srcdir)/$(po_document_dir)/po_document/$$basename.mo" "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
+	  fi; \
+	done
 
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
@@ -231,9 +254,11 @@ clean-local:
 	-rm -f texi2html texi2html.temp
 
 distclean-local:
-	-rm -rf locales
+	-rm -rf locales i18n
 
-install-data-local:
+install-data-local: i18n
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/i18n
+	$(INSTALL_DATA) i18n/*.thl  $(DESTDIR)$(pkgdatadir)/i18n
 	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
 	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/*.pm \
@@ -247,14 +272,15 @@ install-data-local:
 	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 
 uninstall-local:
-	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
+	rm -rf $(DESTDIR)$(pkgdatadir)/lib/ $(DESTDIR)$(pkgdatadir)/i18n
 
 dist-hook:
-	rm -rf `find $(distdir)/lib  -name CVS`
+	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name CVS`
 
 ACLOCAL_AMFLAGS = -I m4
 
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \
 	po_document/Makevars \
-	po_document/POTFILES.in
+	po_document/POTFILES.in \
+	translations.pl

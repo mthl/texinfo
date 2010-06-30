@@ -50,8 +50,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = texi2html
-DIST_COMMON = README $(dist_i18n_DATA) $(dist_images_DATA) \
-	$(dist_init_DATA) $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+DIST_COMMON = README $(dist_images_DATA) $(dist_init_DATA) \
+	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/check_texinfo.pl.in $(srcdir)/manage_i18n.pl.in \
 	$(srcdir)/texi2html.pl ABOUT-NLS AUTHORS COPYING ChangeLog \
 	INSTALL NEWS TODO config.guess config.rpath config.sub \
@@ -161,8 +161,8 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" \
-	"$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(initdir)"
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(imagesdir)" \
+	"$(DESTDIR)$(initdir)"
 SCRIPTS = $(bin_SCRIPTS) $(noinst_SCRIPTS)
 SOURCES =
 DIST_SOURCES =
@@ -173,7 +173,7 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	install-pdf-recursive install-ps-recursive install-recursive \
 	installcheck-recursive installdirs-recursive pdf-recursive \
 	ps-recursive uninstall-recursive
-DATA = $(dist_i18n_DATA) $(dist_images_DATA) $(dist_init_DATA)
+DATA = $(dist_images_DATA) $(dist_init_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
@@ -742,7 +742,7 @@ top_srcdir = @top_srcdir@
 @TEXI2HTML_TRUE@po_document_dir = .
 SUBDIRS = $(po_subdirs) . doc Tests test
 imagesdir = $(datadir)/texi2html/images
-i18ndir = $(datadir)/texi2html/i18n
+#i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
 
 #
@@ -808,22 +808,23 @@ EXTRA_DIST = \
 	po_messages/Makevars.in \
 	po_messages/POTFILES.in.in \
 	po_document/Makevars.in \
-	po_document/POTFILES.in.in
+	po_document/POTFILES.in.in \
+	i18n_ref
 
-i18n_files = i18n/de \
-	i18n/es \
-	i18n/fr \
-	i18n/nl \
-	i18n/no \
-	i18n/pt \
-	i18n/pt_BR \
-	i18n/ja \
-	i18n/it \
-	i18n/hu
 
-dist_i18n_DATA = i18n/en \
-	$(i18n_files)
+#i18n_files = i18n/de \
+#	i18n/es \
+#	i18n/fr \
+#	i18n/nl \
+#	i18n/no \
+#	i18n/pt \
+#	i18n/pt_BR \
+#	i18n/ja \
+#	i18n/it \
+#	i18n/hu
 
+#dist_i18n_DATA = i18n/en \
+#	$(i18n_files)
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \
 	images/a_document.png \
@@ -899,7 +900,8 @@ ACLOCAL_AMFLAGS = -I m4
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \
 	po_document/Makevars \
-	po_document/POTFILES.in
+	po_document/POTFILES.in \
+	translations.pl
 
 all: all-recursive
 
@@ -974,26 +976,6 @@ uninstall-binSCRIPTS:
 	test -n "$$list" || exit 0; \
 	echo " ( cd '$(DESTDIR)$(bindir)' && rm -f" $$files ")"; \
 	cd "$(DESTDIR)$(bindir)" && rm -f $$files
-install-dist_i18nDATA: $(dist_i18n_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(i18ndir)" || $(MKDIR_P) "$(DESTDIR)$(i18ndir)"
-	@list='$(dist_i18n_DATA)'; test -n "$(i18ndir)" || list=; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(i18ndir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(i18ndir)" || exit $$?; \
-	done
-
-uninstall-dist_i18nDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_i18n_DATA)'; test -n "$(i18ndir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	test -n "$$files" || exit 0; \
-	echo " ( cd '$(DESTDIR)$(i18ndir)' && rm -f" $$files ")"; \
-	cd "$(DESTDIR)$(i18ndir)" && rm -f $$files
 install-dist_imagesDATA: $(dist_images_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(imagesdir)" || $(MKDIR_P) "$(DESTDIR)$(imagesdir)"
@@ -1237,7 +1219,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(DATA)
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(i18ndir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(initdir)"; do \
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(imagesdir)" "$(DESTDIR)$(initdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -1287,8 +1269,8 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-data-local install-dist_i18nDATA \
-	install-dist_imagesDATA install-dist_initDATA
+install-data-am: install-data-local install-dist_imagesDATA \
+	install-dist_initDATA
 
 install-dvi: install-dvi-recursive
 
@@ -1332,9 +1314,8 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-binSCRIPTS uninstall-dist_i18nDATA \
-	uninstall-dist_imagesDATA uninstall-dist_initDATA \
-	uninstall-local
+uninstall-am: uninstall-binSCRIPTS uninstall-dist_imagesDATA \
+	uninstall-dist_initDATA uninstall-local
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) check-am \
 	ctags-recursive install-am install-strip tags-recursive
@@ -1345,16 +1326,15 @@ uninstall-am: uninstall-binSCRIPTS uninstall-dist_i18nDATA \
 	distclean-generic distclean-local distclean-tags distdir dvi \
 	dvi-am html html-am html-local info info-am install install-am \
 	install-binSCRIPTS install-data install-data-am \
-	install-data-local install-dist_i18nDATA \
-	install-dist_imagesDATA install-dist_initDATA install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
-	installdirs-am maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-generic pdf pdf-am ps ps-am tags \
-	tags-recursive uninstall uninstall-am uninstall-binSCRIPTS \
-	uninstall-dist_i18nDATA uninstall-dist_imagesDATA \
+	install-data-local install-dist_imagesDATA \
+	install-dist_initDATA install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
+	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
+	uninstall-binSCRIPTS uninstall-dist_imagesDATA \
 	uninstall-dist_initDATA uninstall-local
 
 
@@ -1373,33 +1353,55 @@ texi2html.spec: texi2html.spec.in $(top_builddir)/configure
 	-@rm texi2html.tmp
 
 $(po_document_dir)/po_document/$(PACKAGE)_document.pot:
-	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
+	if test '$(USE_NLS)' = 'yes'; then \
+	  cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po; \
+	fi
 
-$(i18n_files): $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+i18n/en.thl i18n/: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
 	$(MKDIR_P) i18n
-	for file in $(i18n_files); do lang=`basename $$file`; \
-		msgexec -i "$(srcdir)/$(po_document_dir)/po_document/$$lang."*po "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > $$file; \
-	done
+	if test '$(USE_NLS)' = 'yes'; then \
+	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*".po"; do lang=`basename "$$file" .po | sed 's/\..*//'`; \
+		test "$$lang" = 'en' && continue; \
+		msgexec -i "$$file" "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" $$lang > i18n/$$lang.thl; \
+	  done; \
+	  msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > i18n/en.thl; \
+	else \
+	  cp -p i18n_ref/*.thl i18n; \
+	fi
 
-i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
-	$(MKDIR_P) i18n
-	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
+i18n_ref:
+	$(MKDIR_P) i18n_ref
 
-translations.pl: $(dist_i18n_DATA) 
+# Should be done manually, otherwise it is left after make distclean
+# in a out of source build directory.
+regenerate_i18n_ref: i18n i18n_ref
+	if test '$(USE_NLS)' = 'yes'; then \
+	  cp -p i18n/*.thl i18n_ref; \
+	fi
+
+#i18n/en: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
+#	$(MKDIR_P) i18n
+#	msgexec -i $< "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > $@
+
+translations.pl: i18n/en.thl
 	$(PERL) manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
 # update the po files, and install locally the .mo files for the in
 # source tests
 check-local: makeinfo.pl texi2any.pl
-	cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po
 	if test '$(USE_NLS)' = 'yes'; then \
-	  rm -rf locales ; \
-	  for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
-	    basename=`basename "$$file" .po` ; \
-	    $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
-	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
-	  done ; \
+	  cd $(po_document_dir)/po_document && $(MAKE) $(AM_MAKEFLAGS) update-po; \
 	fi
+	rm -rf locales
+	for file in "$(srcdir)/$(po_document_dir)/po_document/"*.po; do \
+	  basename=`basename "$$file" .po` ; \
+	  $(MKDIR_P) "locales/$$basename/LC_MESSAGES/" ; \
+	  if test '$(USE_NLS)' = 'yes'; then \
+	    $(MSGFMT) "$$file" -o "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
+	  else \
+	    cp -p "$(srcdir)/$(po_document_dir)/po_document/$$basename.mo" "locales/$$basename/LC_MESSAGES/texi2html_document.mo" ; \
+	  fi; \
+	done
 
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
@@ -1410,9 +1412,11 @@ clean-local:
 	-rm -f texi2html texi2html.temp
 
 distclean-local:
-	-rm -rf locales
+	-rm -rf locales i18n
 
-install-data-local:
+install-data-local: i18n
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/i18n
+	$(INSTALL_DATA) i18n/*.thl  $(DESTDIR)$(pkgdatadir)/i18n
 	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/Recode \
 	  $(DESTDIR)$(pkgdatadir)/lib/libintl-perl/lib/Locale/RecodeData
 	$(INSTALL_DATA) $(srcdir)/lib/libintl-perl/lib/Locale/*.pm \
@@ -1426,10 +1430,10 @@ install-data-local:
 	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 
 uninstall-local:
-	rm -rf $(DESTDIR)$(pkgdatadir)/lib/
+	rm -rf $(DESTDIR)$(pkgdatadir)/lib/ $(DESTDIR)$(pkgdatadir)/i18n
 
 dist-hook:
-	rm -rf `find $(distdir)/lib  -name CVS`
+	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name CVS`
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
