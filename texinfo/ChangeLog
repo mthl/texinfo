@@ -1,3 +1,9 @@
+2010-07-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (frenchspacing): no double space after
+	semicolons, just at end of sentences.
+	Report from Tim Landscheidt, help-texinfo 07 Jul 2010 22:29:55.
+
 2010-06-24  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* gnulib/m4/lib-link.m4: Upgrade to gettext-0.18.1.

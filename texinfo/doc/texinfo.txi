@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
+@c $Id: texinfo.txi,v 1.255 2010-07-12 00:34:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10325,8 +10325,8 @@ to pass an actual comma.  Here are some examples:
 @@mymac@{One argument@@comma@{@} containing a comma@}
 @end example
 
-Although @comma{} can be used nearly anywhere, there is no need for it
-anywhere except in this unusual case.
+Although @samp{@@comma@{@}} can be used nearly anywhere, there is no
+need for it anywhere except in this unusual case.
 
 
 @node Inserting Quote Characters
@@ -10555,9 +10555,9 @@ To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
 @cindex Space, after sentences
 
 In American typography, it is traditional and correct to put extra
-space at the end of a sentence, after a semi-colon, and so on.  This
-is the default in Texinfo.  In French typography (and many others),
-this extra space is wrong; all spaces are uniform.
+space at the end of a sentence.  This is the default in Texinfo.  In
+French typography (and many others), this extra space is wrong; all
+spaces are uniform.
 
 Therefore Texinfo provides the @code{@@frenchspacing} command to
 control the spacing after punctuation.  It reads the rest of the line
@@ -16564,9 +16564,9 @@ use that Emacs for anything else until the command finishes.)@refill
 
 If a Texinfo file has more than 30,000 bytes,
 @code{texinfo-format-buffer} automatically creates a tag table
-for its Info file;  @code{makeinfo} always creates a tag table.  With
+for its Info file; @code{makeinfo} always creates a tag table.  With
 a @dfn{tag table}, Info can jump to new nodes more quickly than it can
-otherwise.@refill
+otherwise.
 
 @cindex Indirect subfiles
 In addition, if the Texinfo file contains more than about 300,000
@@ -16866,7 +16866,7 @@ called @samp{(dir)Top}.
 
 @cindex Colon, last in @env{INFOPATH}
 However you set @env{INFOPATH}, if its last character is a
-colon@footnote{On MS-DOS/MS-Windows systems, use semi-colon instead.}, this
+colon@footnote{On MS-DOS/MS-Windows systems, use semicolon instead.}, this
 is replaced by the default (compiled-in) path.  This gives you a way to
 augment the default path with new directories without having to list all
 the standard places.  For example (using @code{sh} syntax):
@@ -17427,6 +17427,7 @@ in 2003--04.
 * Command Expansion: HTML Xref Command Expansion.
 * 8-bit Expansion:   HTML Xref 8-bit Character Expansion.
 * Mismatch:          HTML Xref Mismatch.
+* Configuration:     HTML Xref Configuration.
 @end menu
 
 
@@ -17806,33 +17807,114 @@ Ultimately, we hope to allow for an external configuration file to
 control which manuals are available from where, and how.
 
 
-@ignore
--- not yet --
+@node HTML Xref Configuration
+@subsection HTML Cross-reference Configuration: @file{htmlxref.cnf}
 
-external information
---------------------
+@pindex htmlxref.cnf
+@cindex HTML cross-reference configuration
+@cindex Cross-reference configuration, for HTML
+@cindex Configuration, for HTML cross-manual references
 
-The information for the reference is searched in the file
-`htmlxref.cnf' present in the following directories:
-<srcdir>/.texinfo/, ~/.texinfo/,  SYSCONFDIR/texinfo/,
-DATADIR/texinfo/
-The first match should be used.
+@command{makeinfo} reads a file named @file{htmlxref.cnf} to gather
+information for cross-references to other manuals in HTML output.  It
+is looked for in the following directories:
 
-The file is line-oriented, with the following format:
-  <manualname> <whitespace> <keyword> <whitespace> <urlprefix>
-with <keyword> being "mono" or "split". Thus
-texinfo split http://www.gnu.org/software/texinfo/manual/texinfo/html_node/
-texinfo mono http://www.gnu.org/software/texinfo/manual/texinfo/texinfo.html
+@table @file
+@item @var{srcdir}/.texinfo/
+(where @var{srcdir} is the directory with the Texinfo input file)
 
-If the keyword is 'split', that is the target is split, the urlprefix gives
-the directory and host name.
-If the keyword is 'mono', that is the target is mono, the urlprefix gives
-directory, host and file name.
+@item ~/.texinfo/
+(where @code{~} is the current user's home directory)
 
-'#' followed by a space begins comments. '#' followed by another character
-cannot begin comments as there are # in urls.
+@item @var{sysconfdir}/texinfo/
+(where @var{sysconfdir} is the system configuration directory
+specified at compile-time, e.g., @file{/usr/local/etc})
 
-@end ignore
+@item @var{datadir}/texinfo/
+(likewise specified at compile time, e.g., @file{/usr/local/share})
+@end table
+
+The first file found is used.  The Texinfo distribution includes a
+default file which handles many GNU manuals; it is installed in the
+last of the above directories, i.e.,
+@file{@var{datadir}/texinfo/htmlxref.cnf}.
+
+The file is line-oriented.  Lines consisting only of whitespace are
+ignored.  Comments are indicated with a @samp{#} at the beginning of a
+line, optionally preceded by whitespace.  Since @samp{#} can occur in
+url's (like almost any character), it does not otherwise start a
+comment.
+
+Each non-blank non-comment line must be either a @dfn{variable
+assignment} or @dfn{manual information}.
+
+A variable assignment line looks like this:
+
+@example
+@var{varname} = @var{varvalue}
+@end example
+
+Whitespace around the @samp{=} is optional and ignored.  The
+@var{varname} should consist of letters; case is significant.  The
+@var{varvalue} is an arbitrary string, continuing to the end of the
+line.  Variables are then referenced with @samp{$@{@var{varname}@}};
+variable references can occur in the @var{varvalue}.
+
+A manual information line looks like this:
+
+@example
+@var{manual} @var{keyword} @var{urlprefix}
+@end example
+
+@noindent
+with @var{manual} the short identifier for a manual, @var{keyword}
+being one of: @code{mono}, @code{node}, @code{section},
+@code{chapter}, and @var{urlprefix} described below.  Variable
+references can occur only in the @var{urlprefix}.  For example (used
+in the canonical @file{htmlxref.cnf}):
+
+@smallexample
+R = http://www.gnu.org
+RS = $@{R@}/software
+hello mono    $@{RS@}/hello/manual/hello.html
+hello node    $@{RS@}/hello/manual/html_node/
+hello section $@{RS@}/hello/manual/html_section/
+hello chapter $@{RS@}/hello/manual/html_chapter/
+@end smallexample
+
+@cindex monolithic manuals, for HTML cross-references
+If the keyword is @code{mono}, @var{urlprefix} gives the host,
+directory, and file name for @var{manual} as one monolithic file.
+
+@cindex split manuals, for HTML cross-references
+If the keyword is @code{node}, @code{section}, or @code{chapter},
+@var{urlprefix} gives the host and directory for @var{manual} split
+into nodes, sections, or chapters, respectively.
+
+When available, @command{makeinfo} will use the ``corresponding''
+value for cross-references between manuals.  That is, when generating
+monolithic output (@option{--no-split}), the @code{mono} url will be
+used, when generating output split by node, the @code{node} url will
+be used, etc.  However, if a manual is not available in that form,
+whatever is available will be used.  Here is the search order for each
+style that can be generated:
+
+@smallexample
+node    => node,    section, chapter, mono
+section => section, chapter, node,    mono
+chapter => chapter, section, node,    mono
+mono    => mono,    chapter, section, split
+@end smallexample
+
+@opindex --node-files@r{, and HTML cross-references}
+These section- and chapter-level cross-manual references can succeed
+only when the target manual was created using @option{--node-files},
+which is the default for @code{makeinfo}.
+
+If you have additions or corrections to the @file{htmlxref.cnf}
+distributed with Texinfo, please email @email{bug-texinfo@@gnu.org}.
+You can get the latest version from
+@url{http://ftpmirror.gnu.org/@/texinfo/@/htmlxref.cnf}.
 
 
 @node Command List
@@ -19706,7 +19788,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
+$Id: texinfo.txi,v 1.255 2010-07-12 00:34:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19785,7 +19867,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.254 2010-06-20 23:49:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.255 2010-07-12 00:34:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
