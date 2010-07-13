@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.53 2010-06-26 09:54:23 pertusus Exp $
+# $Id: html.init,v 1.54 2010-07-13 12:02:39 pertusus Exp $
 
 use strict;
 
@@ -29,7 +29,7 @@ t2h_default_set_variables_xml();
 ###############################################################
 # defaults
 
-$HEADERS = 1;
+set_default('HEADERS', 1);
 
 @T2H_FORMAT_EXPAND = ('html');
 
@@ -38,28 +38,24 @@ $HEADERS = 1;
 # Definition: The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">';
+set_default('DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">');
 
 # When frames are used, this SystemLiteral identifies the DTD used for
 # the file containing the frame description.
-$FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">';
-
-# if this value is true, ISO8859 characters are used for special symbols 
-# (like copyright, etc).
-$USE_ISO = 1;
+set_default('FRAMESET_DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">');
 
 # if the value is true the Texinfo menus are shown.
-$SHOW_MENU = 1;
+set_default('SHOW_MENU', 1);
 
-$SHOW_TITLE = 1;
+set_default('SHOW_TITLE', 1);
 
 # default is to use nodes only as elements.
-$USE_SECTIONS = undef;
+set_default('USE_SECTIONS', undef);
 
-$TOP_FILE = 'index.html';
+set_default('TOP_FILE', 'index.html');
 
 # file name used for Top node when NODE_FILES is true
-$TOP_NODE_FILE = 'index';
+set_default('TOP_NODE_FILE', 'index');
 
 ##############################################################################
 #
@@ -67,14 +63,14 @@ $TOP_NODE_FILE = 'index';
 #
 ##############################################################################
 
-$INLINE_INSERTCOPYING = 0;
+set_default('INLINE_INSERTCOPYING', 0);
 
 # if this variable is true, numeric entities are used when there is no
 # corresponding textual entity.
-$USE_NUMERIC_ENTITY = 1;
+set_default('USE_NUMERIC_ENTITY', 1);
 
 # if true, use the original command if the result is an entity
-$ENABLE_ENCODING_USE_ENTITY = 1;
+set_default('ENABLE_ENCODING_USE_ENTITY', 1);
 
 # used as identation for block enclosing command @example, etc
 # If not empty, must be enclosed in <td></td>
@@ -100,16 +96,16 @@ $BIG_RULE = '<hr size="6">';
 $MENU_SYMBOL = '&bull;';
 #$MENU_SYMBOL = '*';
 
-$SIMPLE_MENU = 0;
+set_default('SIMPLE_MENU', 0);
 
 # extension for nodes files when NODE_FILES is true
-$NODE_FILE_EXTENSION = 'html';	    
+set_default('NODE_FILE_EXTENSION', 'html');	    
 
 # extension
-$EXTENSION = 'html';
+set_default('EXTENSION', 'html');
 
 # default is to split the html output
-$SPLIT = 'node';
+set_default('SPLIT', 'node');
 
 # this resets all the variables to the texi2html specific values if
 # called as texi2html
@@ -157,13 +153,13 @@ $EXTRA_HEAD = '';
 
 # Specifies the minimum page length required before a navigation panel
 # is placed at the bottom of a page 
-$WORDS_IN_PAGE = 300;
+set_default('WORDS_IN_PAGE', 300);
 
 # html version for latex2html
-$L2H_HTML_VERSION = "4.0";
+set_default('L2H_HTML_VERSION', '4.0');
 
 # this is not set dynamically
-if (!$HEADER_IN_TABLE)
+if (!get_conf('HEADER_IN_TABLE'))
 {
    @SECTION_BUTTONS = ([ 'NodeNext', \&html_default_node_direction ],
          [ 'NodePrev', \&html_default_node_direction ],
@@ -174,7 +170,7 @@ if (!$HEADER_IN_TABLE)
    $BIG_RULE = $DEFAULT_RULE;
 }
 
-$ICONS = 0;
+set_default('ICONS', 0);
 
 %BUTTONS_ACCESSKEY =
 (
@@ -275,7 +271,7 @@ $AFTER_ABOUT = '';
 #
 #######################################################################
 
-$BODYTEXT = undef;
+set_default('BODYTEXT', undef);
 
 #$init_out    = \&html_default_init_out;
 $translate_names = \&html_default_translate_names;
@@ -518,7 +514,7 @@ $special_list_commands{'itemize'}->{ 'bullet'}  = '';
       );
       
 # preformatted formats formatting
-if ($COMPLEX_FORMAT_IN_TABLE)
+if (get_conf('COMPLEX_FORMAT_IN_TABLE'))
 {
    foreach my $indented_format ('example', 'display', 'lisp')
    {
@@ -658,18 +654,11 @@ sub html_default_initialize()
 }
 
 # We have to do this dynamically because of internationalization and because
-# in body $DOCUMENTLANGUAGE could be used.
+# in body ENCODING_NAME could be used.
 sub html_default_bodytext()
 {
     # Set the default body text, inserted between <body ... >
-    if (defined($BODYTEXT))
-    {
-        $Texi2HTML::THISDOC{'BODYTEXT'} = $BODYTEXT;
-    }
-    else
-    {
-        $Texi2HTML::THISDOC{'BODYTEXT'} = 'lang="' . get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
-    }
+    set_from_document('BODYTEXT',  'lang="' . get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 }
 
 sub html_default_translate_names()
@@ -731,11 +720,11 @@ sub HTML_DEFAULT_print_section
     my $buttons = \@SECTION_BUTTONS;
 
     my $nw = main::print_lines($fh);
-    if ((get_conf('SPLIT') eq 'node') && get_conf('headers'))
+    if ((get_conf('SPLIT') eq 'node') && get_conf('HEADERS'))
     {
         my $buttons = \@NODE_FOOTER_BUTTONS;
         &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE,
-          (!defined($WORDS_IN_PAGE) or (defined ($nw) and $nw >= $WORDS_IN_PAGE)),
+          (!get_conf('WORDS_IN_PAGE') or (defined ($nw) and $nw >= get_conf('WORDS_IN_PAGE'))),
           $element);
     }
 }
@@ -764,7 +753,7 @@ sub HTML_DEFAULT_print_Top_footer($$$)
     $rule = $BIG_RULE if (!$end_page);
     #print STDERR "end_page: $end_page\n";
     &$print_foot_navigation($fh, $buttons, $rule, 
-       ($end_page and (get_conf('headers') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), $element);
+       ($end_page and (get_conf('HEADERS') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), $element);
     if ($end_page)
     {
         &$print_page_foot($fh);
@@ -798,7 +787,7 @@ sub HTML_DEFAULT_print_misc_header
     my $misc_page = shift;
     &$print_page_head($fh) if ($new_file);
     print $fh "".&$misc_element_label($misc_pages_targets{$misc_page}, $misc_page);
-    &$print_head_navigation($fh, $buttons) if ($new_file or get_conf('headers'));
+    &$print_head_navigation($fh, $buttons) if ($new_file or get_conf('HEADERS'));
 }
 
 sub HTML_DEFAULT_print_misc_footer
@@ -807,7 +796,7 @@ sub HTML_DEFAULT_print_misc_footer
     my $buttons = shift;
     my $new_file = shift;
     &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE, 
-        ($new_file and (get_conf('headers') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), undef);
+        ($new_file and (get_conf('HEADERS') or (get_conf('SPLIT') and get_conf('SPLIT') ne 'node'))), undef);
     if ($new_file)
     {
         &$print_page_foot($fh);
@@ -842,11 +831,11 @@ sub HTML_DEFAULT_print_chapter_header
     my $element = shift;
     # nothing to do there, by default, the navigation panel 
     # is the element navigation panel
-    if (! get_conf('headers'))
+    if (! get_conf('HEADERS'))
     { # in this case print_navigation is called here. 
         my $buttons = \@CHAPTER_BUTTONS;
         &$print_head_navigation($fh, $buttons);
-        print $fh "\n$DEFAULT_RULE\n" unless ($VERTICAL_HEAD_NAVIGATION);
+        print $fh "\n$DEFAULT_RULE\n" unless (get_conf('VERTICAL_HEAD_NAVIGATION'));
     }
 }
 
@@ -861,7 +850,7 @@ sub HTML_DEFAULT_print_chapter_footer
 sub HTML_DEFAULT_print_section_header
 {
     # nothing to do there, by default
-    if (! get_conf('headers'))
+    if (! get_conf('HEADERS'))
     { # in this case print_navigation is called here. 
         my $fh = shift;
         my $buttons = \@SECTION_BUTTONS;
@@ -879,18 +868,18 @@ sub HTML_DEFAULT_print_page_head($)
     my $fh = shift;
     my $longtitle = $html_default_title;
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and get_conf('SPLIT') and ($html_default_title ne $Texi2HTML::SIMPLE_TEXT{'This'}));
-    my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
+    my $description = get_conf('documentdescription');
     $description = $longtitle if (!defined($description));
     $description = "<meta name=\"description\" content=\"$description\">" if
          ($description ne '');
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".get_conf('ENCODING_NAME')."\">" if (defined(get_conf('ENCODING_NAME')) and (get_conf('ENCODING_NAME') ne ''));
     my $date = '';
-    my $today = $Texi2HTML::THISDOC{'today'};
+    my $today = get_conf('today');
     $today = '' if (!defined($today));
-    $date = "\n<meta name=\"date\" content=\"$today\">" if ($DATE_IN_HEADER and $today ne '');
+    $date = "\n<meta name=\"date\" content=\"$today\">" if (get_conf('DATE_IN_HEADER') and $today ne '');
     my $links = '';
-    if ($USE_LINKS)
+    if (get_conf('USE_LINKS'))
     {
         foreach my $link (@LINKS_BUTTONS)
         {
@@ -907,12 +896,13 @@ sub HTML_DEFAULT_print_page_head($)
     }
     
     my $css_text = '';
-    $css_text = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
-    my $doctype = get_conf('doctype');
+    $css_text = get_conf('CSS_LINES') if (defined(get_conf('CSS_LINES')));
+    my $doctype = get_conf('DOCTYPE');
+    my $bodytext = get_conf('BODYTEXT');
     print $fh <<EOT;
 $doctype
 <html>
-$Texi2HTML::THISDOC{'copying_comment'}<!-- Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program}
+$Texi2HTML::THISDOC{'copying_comment'}<!-- Created on $today by $Texi2HTML::THISDOC{program}
 $Texi2HTML::THISDOC{program_authors}-->
 <head>
 <title>$longtitle</title>
@@ -927,7 +917,7 @@ ${links}$css_text
 $EXTRA_HEAD
 </head>
 
-<body $Texi2HTML::THISDOC{'BODYTEXT'}>
+<body $bodytext>
 $AFTER_BODY_OPEN
 EOT
 }
@@ -941,7 +931,7 @@ sub HTML_DEFAULT_end_section($$$)
     {
         my $rule = $BIG_RULE;
         # in that case we are almost surely at the end of the document
-        $rule = $DEFAULT_RULE if (! $MONOLITHIC);
+        $rule = $DEFAULT_RULE if (! get_conf('MONOLITHIC'));
         &$print_foot_navigation($fh, undef, $rule, 0, $element, 1);
     }
     else
@@ -954,7 +944,7 @@ sub HTML_DEFAULT_print_page_foot($)
 {
     my $fh = shift;
     my $program_text = '';
-    if ($PROGRAM_NAME_IN_FOOTER)
+    if (get_conf('PROGRAM_NAME_IN_FOOTER'))
     {
         my $program_string = &$program_string();
         $program_text = " <font size=\"-1\">
@@ -984,7 +974,7 @@ sub HTML_DEFAULT_print_head_navigation($$$$$)
     my $element = shift;
 
     my $result = '';
-    if ($VERTICAL_HEAD_NAVIGATION)
+    if (get_conf('VERTICAL_HEAD_NAVIGATION'))
     {
         $result .= <<EOT;
 <table border="0" cellpadding="0" cellspacing="0">
@@ -992,8 +982,8 @@ sub HTML_DEFAULT_print_head_navigation($$$$$)
 <td align="left">
 EOT
     }
-    $result .= &$print_navigation($buttons, $VERTICAL_HEAD_NAVIGATION);
-    if ($VERTICAL_HEAD_NAVIGATION)
+    $result .= &$print_navigation($buttons, get_conf('VERTICAL_HEAD_NAVIGATION'));
+    if (get_conf('VERTICAL_HEAD_NAVIGATION'))
     {
         $result .= <<EOT;
 </td>
@@ -1025,9 +1015,9 @@ sub HTML_DEFAULT_print_foot_navigation
              and defined($buttons));
 
     # avoid the rule if at the end of a page and there is nothing below
-    $rule = '' if (!$PROGRAM_NAME_IN_FOOTER and !$print_navigation_panel and !$maybe_in_page);
+    $rule = '' if (!get_conf('PROGRAM_NAME_IN_FOOTER') and !$print_navigation_panel and !$maybe_in_page);
 
-    if ($VERTICAL_HEAD_NAVIGATION)
+    if (get_conf('VERTICAL_HEAD_NAVIGATION'))
     {
         print $fh <<EOT;
 </td>
@@ -1095,11 +1085,11 @@ sub HTML_DEFAULT_button_formatting($$)
            if ($Texi2HTML::HREF{$button_href})
            {
                my $anchor_attributes = '';
-               if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button_href})) and ($BUTTONS_ACCESSKEY{$button_href} ne ''))
+               if (get_conf('USE_ACCESSKEY') and (defined($BUTTONS_ACCESSKEY{$button_href})) and ($BUTTONS_ACCESSKEY{$button_href} ne ''))
                {
                    $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$button_href}\"";
                }
-               if ($USE_REL_REV and (defined($BUTTONS_REL{$button_href})) and ($BUTTONS_REL{$button_href} ne ''))
+               if (get_conf('USE_REL_REV') and (defined($BUTTONS_REL{$button_href})) and ($BUTTONS_REL{$button_href} ne ''))
                {
                     $anchor_attributes .= " rel=\"$BUTTONS_REL{$button_href}\"";
                }
@@ -1124,7 +1114,7 @@ sub HTML_DEFAULT_button_formatting($$)
     elsif ($button eq ' ')
     {                       # handle space button
         $active = 
-            ($ICONS && $ACTIVE_ICONS{' '}) ?
+            (get_conf('ICONS') && $ACTIVE_ICONS{' '}) ?
                &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{' '}) :
                    $NAVIGATION_TEXT{' '};
             #next;
@@ -1133,15 +1123,15 @@ sub HTML_DEFAULT_button_formatting($$)
     {                       # button is active
         my $btitle = $BUTTONS_GOTO{$button} ?
            'title="' . $BUTTONS_GOTO{$button} . '"' : '';
-        if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$button})) and ($BUTTONS_ACCESSKEY{$button} ne ''))
+        if (get_conf('USE_ACCESSKEY') and (defined($BUTTONS_ACCESSKEY{$button})) and ($BUTTONS_ACCESSKEY{$button} ne ''))
         {
             $btitle .= " accesskey=\"$BUTTONS_ACCESSKEY{$button}\"";
         }
-        if ($USE_REL_REV and (defined($BUTTONS_REL{$button})) and ($BUTTONS_REL{$button} ne ''))
+        if (get_conf('USE_REL_REV') and (defined($BUTTONS_REL{$button})) and ($BUTTONS_REL{$button} ne ''))
         {
             $btitle .= " rel=\"$BUTTONS_REL{$button}\"";
         }
-        if ($ICONS && $ACTIVE_ICONS{$button})
+        if (get_conf('ICONS') && $ACTIVE_ICONS{$button})
         {                   # use icon
             $active = '' .
               &$anchor('',
@@ -1167,7 +1157,7 @@ sub HTML_DEFAULT_button_formatting($$)
     else
     {                       # button is passive
         $passive = 
-          $ICONS && $PASSIVE_ICONS{$button} ?
+          get_conf('ICONS') && $PASSIVE_ICONS{$button} ?
                &$button_icon_img($BUTTONS_NAME{$button},
                                  $PASSIVE_ICONS{$button},
                                  $Texi2HTML::SIMPLE_TEXT{$button}) :
@@ -1189,7 +1179,7 @@ sub HTML_DEFAULT_print_navigation($;$)
 
     my $first_button = 1;
     my $result = '';
-    if ($HEADER_IN_TABLE)
+    if (get_conf('HEADER_IN_TABLE'))
     {
         $result .= html_default_attribute_class('table', 'header').' cellpadding="1" cellspacing="1" border="0">'."\n";
         $result .= "<tr>" unless $vertical;
@@ -1200,7 +1190,7 @@ sub HTML_DEFAULT_print_navigation($;$)
     }
     for my $button (@$buttons)
     {
-        if ($HEADER_IN_TABLE)
+        if (get_conf('HEADER_IN_TABLE'))
         {
             $result .= qq{<tr valign="top" align="left">\n} if $vertical;
             $result .=  qq{<td valign="middle" align="left">};
@@ -1216,7 +1206,7 @@ sub HTML_DEFAULT_print_navigation($;$)
         }
         
         my ($active, $passive) = &$button_formatting($button, $vertical);
-        if ($HEADER_IN_TABLE)
+        if (get_conf('HEADER_IN_TABLE'))
         {
             if (defined($active))
             {
@@ -1241,7 +1231,7 @@ sub HTML_DEFAULT_print_navigation($;$)
             $first_button = 0 if ($first_button);
         }
     }
-    if ($HEADER_IN_TABLE)
+    if (get_conf('HEADER_IN_TABLE'))
     {
         $result .= "</tr>" unless $vertical;
         $result .= "</table>\n";
@@ -1260,11 +1250,11 @@ sub html_default_node_direction($)
     if ($Texi2HTML::HREF{$direction} and $Texi2HTML::NODE{$direction})
     {
          my $anchor_attributes = '';
-         if ($USE_ACCESSKEY and (defined($BUTTONS_ACCESSKEY{$direction})) and ($BUTTONS_ACCESSKEY{$direction} ne ''))
+         if (get_conf('USE_ACCESSKEY') and (defined($BUTTONS_ACCESSKEY{$direction})) and ($BUTTONS_ACCESSKEY{$direction} ne ''))
          {
               $anchor_attributes = "accesskey=\"$BUTTONS_ACCESSKEY{$direction}\"";
          }
-         if ($USE_REL_REV and (defined($BUTTONS_REL{$direction})) and ($BUTTONS_REL{$direction} ne ''))
+         if (get_conf('USE_REL_REV') and (defined($BUTTONS_REL{$direction})) and ($BUTTONS_REL{$direction} ne ''))
          {
               $anchor_attributes .= " rel=\"$BUTTONS_REL{$direction}\"";
          }
@@ -1293,8 +1283,9 @@ sub HTML_DEFAULT_print_frame
     my $main_file = shift;
     $main_file = $Texi2HTML::THISDOC{'filename'}->{'top'};
     $toc_file = $Texi2HTML::THISDOC{'filename'}->{'toc_frame'};
+    my $doctype = get_conf('FRAMESET_DOCTYPE');
     print $fh <<EOT;
-$FRAMESET_DOCTYPE
+$doctype
 <html>
 <head><title>$Texi2HTML::THISDOC{'fulltitle'}</title></head>
 <frameset cols="140,*">
@@ -1323,7 +1314,7 @@ EOT
 
 sub HTML_DEFAULT_about_body
 {
-    return undef if (!$HEADER_IN_TABLE);
+    return undef if (!get_conf('HEADER_IN_TABLE'));
     my $about = "<p>\n";
     if (ref($PRE_ABOUT) eq 'CODE')
     {
@@ -1353,7 +1344,7 @@ EOT
         next if $button eq ' ' || ref($button) eq 'CODE' || ref($button) eq 'SCALAR' || ref($button) eq 'ARRAY';
         $about .= "  <tr>\n    <td align=\"center\">";
         $about .=
-            ($ICONS && $ACTIVE_ICONS{$button} ?
+            (get_conf('ICONS') && $ACTIVE_ICONS{$button} ?
              &$button_icon_img($BUTTONS_NAME{$button}, $ACTIVE_ICONS{$button}) :
              ' [' . $NAVIGATION_TEXT{$button} . '] ');
         $about .= "</td>\n";
@@ -1421,21 +1412,22 @@ sub HTML_DEFAULT_print_redirection_page()
     #my $fh = shift;
     my $longtitle = $html_default_title;
     $longtitle .= ": $Texi2HTML::SIMPLE_TEXT{'This'}" if (defined ($Texi2HTML::SIMPLE_TEXT{'This'}) and ($Texi2HTML::SIMPLE_TEXT{'This'} !~ /^\s*$/) and ($html_default_title ne $Texi2HTML::SIMPLE_TEXT{'This'}));
-    my $description = $Texi2HTML::THISDOC{'DOCUMENT_DESCRIPTION'};
+    my $description = get_conf('documentdescription');
     $description = $longtitle if (!defined($description));
     my $encoding = '';
-    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=$Texi2HTML::THISDOC{'ENCODING_NAME'}\">" if (defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} ne ''));
+    $encoding = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".get_conf('ENCODING_NAME')."\">" if (defined(get_conf('ENCODING_NAME')) and (get_conf('ENCODING_NAME') ne ''));
     my $href = &$anchor('', $Texi2HTML::HREF{'This'}, $Texi2HTML::NAME{'This'}); 
     my $string = gdt('The node you are looking for is at {href}.',
        { 'href' => $href });
-    my $doctype = get_conf('doctype');
+    my $doctype = get_conf('DOCTYPE');
     my $css_text = '';
-    $css_text = $Texi2HTML::THISDOC{'CSS_LINES'} if (defined($Texi2HTML::THISDOC{'CSS_LINES'}));
-    #print $fh <<EOT;
+    $css_text = get_conf('CSS_LINES') if (defined(get_conf('CSS_LINES')));
+    my $today = get_conf('today');
+    my $bodytext = get_conf('BODYTEXT');
     my $result = <<EOT;
 $doctype
 <html>
-<!-- Created on $Texi2HTML::THISDOC{'today'} by $Texi2HTML::THISDOC{'program'} -->
+<!-- Created on $today by $Texi2HTML::THISDOC{'program'} -->
 <!--
 $Texi2HTML::THISDOC{'program_authors'}
 -->
@@ -1453,7 +1445,7 @@ $css_text
 $EXTRA_HEAD
 </head>
 
-<body $Texi2HTML::THISDOC{'BODYTEXT'}>
+<body $bodytext>
 $AFTER_BODY_OPEN
 <p>$string</p>
 </body>
@@ -1504,9 +1496,9 @@ sub html_default_attribute_class($$)
 {
     my $element = shift;
     my $class = shift;
-    return "<$element" if (!defined($class) or $class eq '' or $NO_CSS);
+    return "<$element" if (!defined($class) or $class eq '' or get_conf('NO_CSS'));
     my $style = '';
-    if ($INLINE_CSS_STYLE and defined($css_map{"$element.$class"}))
+    if (get_conf('INLINE_CSS_STYLE') and defined($css_map{"$element.$class"}))
     {
         $style = ' style="'.$css_map{"$element.$class"}.'"';
     }
@@ -1741,7 +1733,7 @@ sub html_default_normal_text($$$$$$$;$)
    my $state = shift;
 
   # like utf8.init
-   if ($ENABLE_ENCODING and !$ENABLE_ENCODING_USE_ENTITY and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and $Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8')
+   if (get_conf('ENABLE_ENCODING') and !get_conf('ENABLE_ENCODING_USE_ENTITY') and defined(get_conf('ENCODING_NAME')) and get_conf('ENCODING_NAME') eq 'utf-8')
    {
       my $result = &t2h_utf8_normal_text(@initial_args);
       $result = html_default_protect_space_codebreak($result, $in_raw_text, $in_preformatted, $in_code, $style_stack);
@@ -1754,7 +1746,7 @@ sub html_default_normal_text($$$$$$$;$)
    #  if (!$in_raw_text and !$in_preformatted and in_cmd($style_stack, 'w'));
    if (! $in_code and !$in_preformatted)
    {
-       if ($USE_ISO and !$in_raw_text)
+       if (get_conf('USE_ISO') and !$in_raw_text)
        {
            $text =~ s/---/\&mdash\;/g;
            $text =~ s/--/\&ndash\;/g;
@@ -1831,7 +1823,7 @@ sub html_default_anchor($;$$$)
 # argument:
 # text
 #
-# $DEF_TABLE should be used to distinguish between @def formatted as table
+# DEF_TABLE should be used to distinguish between @def formatted as table
 # and as definition lists.
 sub html_default_def_item($$$)
 {
@@ -1840,7 +1832,7 @@ sub html_default_def_item($$$)
     my $command = shift;
     if ($text =~ /\S/)
     {
-        if (! $DEF_TABLE)
+        if (! get_conf('DEF_TABLE'))
         {
             return '<dd>' . $text . '</dd>';# unless $only_inter_item_commands;
             #return $text; # invalid without dd in ul
@@ -1858,14 +1850,14 @@ sub html_default_def_item($$$)
 # argument
 # text of the whole @def, line and associated text.
 #
-# $DEF_TABLE should be used.
+# DEF_TABLE should be used.
 sub html_default_def($$)
 {
     my $text = shift;
     my $command = shift;
     if ($text =~ /\S/)
     {
-        if (! $DEF_TABLE)
+        if (! get_conf('DEF_TABLE'))
         {
             return "<dl>\n" . $text . "</dl>\n";
         }
@@ -1945,7 +1937,7 @@ sub html_default_menu_link($$$$$$$$)
         $title .= ':' if ($title ne '');
         $entry = "$MENU_SYMBOL$title$node";
     }
-    elsif ($element_name eq '' or $NODE_NAME_IN_MENU)
+    elsif ($element_name eq '' or get_conf('NODE_NAME_IN_MENU'))
     {
          if ($has_title)
          {
@@ -1964,7 +1956,7 @@ sub html_default_menu_link($$$$$$$$)
     }
     $html_menu_entry_index++;
     my $accesskey;
-    $accesskey = "accesskey=\"$html_menu_entry_index\"" if ($USE_ACCESSKEY and ($html_menu_entry_index < 10));
+    $accesskey = "accesskey=\"$html_menu_entry_index\"" if (get_conf('USE_ACCESSKEY') and ($html_menu_entry_index < 10));
     $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
 
     return $entry.$ending if ($preformatted);
@@ -2000,7 +1992,7 @@ sub html_default_menu_description($$$$)
     $in_commands = 1 if ($command_stack->[-1] and $command_stack->[-1] ne 'menu' and $command_stack->[-1] ne 'detailmenu' and $command_stack->[-1] ne 'direntry');
     return $text if ($preformatted);
     return $text."<br>" if ($in_commands);
-    if ($AVOID_MENU_REDUNDANCY)
+    if (get_conf('AVOID_MENU_REDUNDANCY'))
     {
         $text = '' if (html_simplify_text($element_text) eq html_simplify_text($text));
     }
@@ -2453,7 +2445,7 @@ sub html_default_foot_line_and_ref($$$$$$$$$)
         $document_file = $footnote_file = '';
     }
 
-    $number_in_doc = $NO_NUMBER_FOOTNOTE_SYMBOL if (!$NUMBER_FOOTNOTES);
+    $number_in_doc = $NO_NUMBER_FOOTNOTE_SYMBOL if (!get_conf('NUMBER_FOOTNOTES'));
 
     unshift (@$lines, '<h3>' . 
           &$anchor($footnote_id, $document_file . "#$place_id",
@@ -2548,7 +2540,7 @@ sub html_default_image($$$$$$$$$$$$$$$$$)
         }
         main::line_warn (sprintf(__("\@image file `%s' (for HTML) not found, using `%s'"), $base, $file), $line_nr);
     }
-    elsif (! $COMPLETE_IMAGE_PATHS)
+    elsif (! get_conf('COMPLETE_IMAGE_PATHS'))
     {
         $file = $file_name;
     }
@@ -2632,7 +2624,7 @@ sub html_default_def_line($$$$$$$$$$$$$$$$)
    $type_name = " <em>$type</em>" if ($type ne '');
    $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
    $type_name .= $arguments;
-   if (! $DEF_TABLE)
+   if (! get_conf('DEF_TABLE'))
    {
        return '<dt>'. $index_label. $category_prepared . ':' . $type_name . "</dt>\n";
    }
@@ -2773,7 +2765,7 @@ sub html_default_index_entry($$$$$$$$$$)
     if (defined($element))
     {
        my $element_set = 0;
-       if ($NODE_NAME_IN_INDEX)
+       if (get_conf('NODE_NAME_IN_INDEX'))
        {
            if ($element->{'node'})
            {
@@ -2785,7 +2777,7 @@ sub html_default_index_entry($$$$$$$$$$)
                $element_set = 1;
            }
        }
-       elsif (defined($NODE_NAME_IN_INDEX))
+       elsif (defined(get_conf('NODE_NAME_IN_INDEX')))
        {
            if (!$element->{'node'})
            {

@@ -28,26 +28,27 @@ use strict;
 #html_default_load();
 t2h_default_load_format('html');
 
-$TOP_NODE_FILE = undef;
-$TOP_FILE = undef;
+set_default('TOP_NODE_FILE', undef);
+set_default('TOP_FILE', undef);
 
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
-$SHOW_MENU = 0;
-$SPLIT = 'node';
-set_conf('contents', 1);
-$SPLIT_INDEX = undef;
-$IDX_SUMMARY = 1;
+set_default('SHOW_MENU', 0);
+set_default('SPLIT', 'node');
+set_default('contents', 1);
+set_default('SPLIT_INDEX', undef);
+set_default('IDX_SUMMARY', 1);
 
 $SMALL_RULE = '';
 $DEFAULT_RULE = '';
 $MIDDLE_RULE = '';
 $BIG_RULE = '';
 
-$DOCUMENT_DESCRIPTION = '';
-$FOOTNOTESTYLE = 'end';
+# FIXME why was documentdescription set?
+#set_from_init_file('documentdescription', '');
+set_default('footnotestyle', 'end');
 
 #FIXME remove that later
-$USE_SECTIONS = 1;
+set_default('USE_SECTIONS', 1);
 
 push @command_handler_process, \&chm_initialize_variables;
 
@@ -239,19 +240,16 @@ sub chm_initialize_variables()
 sub chm_init_out()
 {
     &$default_init_out();
-# Setting out file encoding to utf8 doesn't work. Seen on the web that 
-# htmlhelp 1.x isn't utf8 aware
-#   $Texi2HTML::THISDOC{'OUT_ENCODING'} = 'utf8';
     return if ($null_device_file{$Texi2HTML::THISDOC{'filename'}->{'top'}});
     my $hhk_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . ".hhk";
     open (IDXFILE, ">$hhk_file") or
         die "Can't open $hhk_file for writing: $!\n";
-    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
+    if (get_conf('USE_UNICODE') and get_conf('OUT_ENCODING'))
     {
-        binmode(IDXFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
+        binmode(IDXFILE, ":encoding(".get_conf('OUT_ENCODING').")");
     }
     
-    print "# writing HTML Help index in $hhk_file...\n" if $VERBOSE;
+    print "# writing HTML Help index in $hhk_file...\n" if (get_conf('VERBOSE'));
     print IDXFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
     print IDXFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
     print IDXFILE "<!-- Sitemap 1.0 -->\n</HEAD>\n<BODY>\n";
@@ -264,12 +262,12 @@ sub chm_init_out()
     print IDXFILE "</OBJECT>\n";
 
     my $hhp_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhp";
-    print "# writing HTML Help project in $hhp_file...\n" if $VERBOSE;
+    print "# writing HTML Help project in $hhp_file...\n" if (get_conf('VERBOSE'));
     open (HHPFILE, ">$hhp_file") or
         die "Can't open $hhp_file for writing: $!\n";
-    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
+    if (get_conf('USE_UNICODE') and get_conf('OUT_ENCODING'))
     {
-        binmode(HHPFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
+        binmode(HHPFILE, ":encoding(".get_conf('OUT_ENCODING').")");
     }
     my $language = $chm_languages{'en'};
     my $documentlanguage = get_conf('documentlanguage');
@@ -321,7 +319,8 @@ sub chm_noop($$)
 sub chm_text($)
 {
     my $text = shift;
-    return main::simple_format(undef,undef,'chm_text',$text);
+    my $result = main::simple_format(undef,undef,'chm_text',$text);
+    return $result;
 }
 
 my @hhc_elements;
@@ -371,7 +370,8 @@ sub chm_index_summary_file_begin($$)
     my $name = shift;
     my $is_printed = shift;
     # avoid entities in hh* files.
-    t2h_default_set_iso_symbols(0);
+    # set this unconditionally, as if it was set from the command-line.
+    t2h_default_set_iso_symbols(0,0,1);
 }
 
 # file is not closed here but in finish_out.
@@ -389,9 +389,9 @@ sub chm_finish_out()
     my $hhc_file = "$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}.hhc";
     open (HHCFILE, ">$hhc_file") or
         die "Can't open $hhc_file for writing: $!\n";
-    if ($USE_UNICODE and defined($Texi2HTML::THISDOC{'OUT_ENCODING'}) and $Texi2HTML::THISDOC{'OUT_ENCODING'} ne '')
+    if (get_conf('USE_UNICODE') and get_conf('OUT_ENCODING'))
     {
-        binmode(HHCFILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
+        binmode(HHCFILE, ":encoding(".get_conf('OUT_ENCODING').")");
     }
     
     print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
@@ -422,7 +422,7 @@ sub chm_finish_out()
             }
         }
         my $text = '';
-        if ($NUMBER_SECTIONS and defined($element->{'number'}) and $element->{'number'} ne '')
+        if (get_conf('NUMBER_SECTIONS') and defined($element->{'number'}) and $element->{'number'} ne '')
         {
              $text .= $element->{'number'} . " ";
              

@@ -218,7 +218,7 @@ sub tex4ht_process
      $tex4ht_latex_failed = 1;
      return;
   }
-  print STDERR "cwd($tex4ht_out_dir):" . Cwd::cwd() ."\n" if ($Texi2HTML::Config::VERBOSE);
+  print STDERR "cwd($tex4ht_out_dir):" . Cwd::cwd() ."\n" if (Texi2HTML::Config::get_conf('VERBOSE'));
 
   foreach my $command ('math', 'tex')
   {
@@ -280,7 +280,7 @@ sub tex4ht_process_command($)
   $options = $tex4ht_options_math if (($style eq 'math') and defined($tex4ht_options_math));
   $options = $tex4ht_options_tex if (($style eq 'tex') and defined($tex4ht_options_tex));
   my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
-  print STDERR "tex4ht command: $cmd\n" if ($Texi2HTML::Config::VERBOSE);
+  print STDERR "tex4ht command: $cmd\n" if (Texi2HTML::Config::get_conf('VERBOSE'));
   if (system($cmd))
   {
      main::document_warn ("t2h_tex4ht command: $cmd failed");
@@ -339,7 +339,7 @@ sub tex4ht_output_command($)
         }
      }
   }
-  if ($got_count != $commands{$command}->{'counter'} and ($Texi2HTML::Config::VERBOSE))
+  if ($got_count != $commands{$command}->{'counter'} and (Texi2HTML::Config::get_conf('VERBOSE')))
   {
      main::document_warn ("t2h_tex4ht: got $got_count for $commands{$command}->{'counter'} items entered");
   }
@@ -379,7 +379,7 @@ sub tex4ht_finish
   {
     $tex4ht_in_counter += $commands{$command}->{'counter'};
   }
-  if (($tex4ht_output_counter != $tex4ht_in_counter) and ($Texi2HTML::Config::VERBOSE))
+  if (($tex4ht_output_counter != $tex4ht_in_counter) and (Texi2HTML::Config::get_conf('VERBOSE')))
   {
      main::document_warn ("t2h_tex4ht: output $tex4ht_output_counter for $tex4ht_in_counter items entered");
   }

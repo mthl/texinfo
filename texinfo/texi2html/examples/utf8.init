@@ -23,8 +23,8 @@
 #    02110-1301  USA
 #
 #-##############################################################################
-$USE_ISO = 0;
-$ENCODING_NAME = 'utf-8';
+set_default('USE_ISO', 0);
+set_from_init_file('ENCODING_NAME', 'utf-8');
 
 use Encode;
 use Unicode::Normalize;

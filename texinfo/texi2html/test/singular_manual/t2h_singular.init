@@ -9,7 +9,7 @@
 
 # -prefix
 # Set the output file prefix, prepended to all .html, .png and .pl files.
-$PREFIX = 'sing';
+set_from_init_file('PREFIX', 'sing');
 
 # -expand
 # if set to "tex" (or, "info") expand @iftex and @tex (or, @ifinfo) sections
@@ -17,21 +17,21 @@ $PREFIX = 'sing';
 @EXPAND = ('html', 'tex');
 
 # if set, creates one html file per node
-$SPLIT = 'node';
+set_from_init_file('SPLIT', 'node');
 
 #if set cross-references are given without section numbers
-$SHORT_REF = 1;
+set_from_init_file('SHORT_REF', 1);
 
 # if set, chatter about what we are doing
-$VERBOSE = 1;
+set_from_init_file('VERBOSE', 1);
 
 # print index summary for 'cp' index
-$IDX_SUMMARY = 'cp';
+set_from_init_file('IDX_SUMMARY', 'cp');
 
 my $T2H_SING_base_images = '../singular_images/';
 
 # inside <BODY ..>
-$BODYTEXT = 'lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"';
+set_from_init_file('BODYTEXT','lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"');
 
 # after <BODY>
 $AFTER_BODY_OPEN = <<EOT;
@@ -46,7 +46,7 @@ $Texi2HTML::TeX4HT::STYLE='latex';
 
 # title is already in the manual
 #$print_title = \&T2H_DEFAULT_print_title;
-$SHOW_TITLE = 0;
+set_from_init_file('SHOW_TITLE', 0);
 
 # footer of top_page
 
@@ -121,9 +121,9 @@ EOT
 }
 
 # always use bottom navigation
-$WORDS_IN_PAGE = 0;
+set_default('WORDS_IN_PAGE', 0);
 
-$VERTICAL_HEAD_NAVIGATION = 1;
+set_from_init_file('VERTICAL_HEAD_NAVIGATION', 1);
 @SECTION_BUTTONS =
   (
    \&singular_banner,
@@ -137,7 +137,7 @@ $VERTICAL_HEAD_NAVIGATION = 1;
 @MISC_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 @TOP_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 
-$ICONS = 1;
+set_from_init_file('ICONS', 1);
 
 if ($T2H_BLUE_BUTTONS)
 {

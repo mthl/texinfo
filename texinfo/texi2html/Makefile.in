@@ -796,7 +796,6 @@ EXTRA_DIST = \
 	examples/makeinfo.init \
 	examples/xhtml.init \
 	examples/noheaders.init \
-	examples/inlinestyle.init \
 	examples/utf8.init \
 	examples/enable_encoding.init \
 	examples/roff.init \

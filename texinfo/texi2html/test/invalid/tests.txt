@@ -53,18 +53,18 @@ code_not_closed code_not_closed.texi
 code_not_closed_no_newline code_not_closed_no_newline.texi
 formats_not_closed formats_not_closed.texi
 commands_not_closed commands_not_closed.texi
-math_not_closed math_not_closed.texi --l2h --iftex --init l2h_tmp_dir.init
+math_not_closed math_not_closed.texi --l2h --iftex
 not_closed_in_menu not_closed_in_menu.texi
 macro_call_not_closed macro_call_not_closed.texi
 macro_def_not_closed macro_def_not_closed.texi
 ignored_not_closed ignored_not_closed.texi
 verb_not_closed verb_not_closed.texi
-tex_not_closed tex_not_closed.texi --l2h --iftex --init l2h_tmp_dir.init
+tex_not_closed tex_not_closed.texi --l2h --iftex
 html_not_closed html_not_closed.texi
 verbatim_not_closed verbatim_not_closed.texi
 copying_not_closed copying_not_closed.texi
 node_in_copying node_in_copying.texi
-tex_in_copying tex_in_copying.texi --l2h --iftex --init l2h_tmp_dir.init
+tex_in_copying tex_in_copying.texi --l2h --iftex
 titlepage_not_closed titlepage_not_closed.texi
 footnote_not_closed footnote_not_closed.texi
 caption_not_closed caption_not_closed.texi

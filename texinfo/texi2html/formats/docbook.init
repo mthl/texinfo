@@ -48,22 +48,22 @@ sub docbook_default_load(;$)
 my $from_command_line = shift;
 
 t2h_default_set_variables_xml();
-$DOCTYPE = '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+set_default('DOCTYPE', '<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
   <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
-]>';
+]>');
 @T2H_FORMAT_EXPAND = ('docbook');
 @IMAGE_EXTENSIONS = ('eps', 'gif', 'jpg', 'jpeg', 'pdf', 'png', 'svg', 'txt');
-$INLINE_INSERTCOPYING = 1;
+set_default('INLINE_INSERTCOPYING', 1);
 # this should lead to end_section being only called at the end of sectioning
-$USE_NODES = 0;
-$USE_SECTIONS = 1;
+set_default('USE_NODES', 0);
+set_default('USE_SECTIONS', 1);
 
-$SHOW_MENU = 0;
-$SHOW_TITLE = 0;
-$HEADERS = 0;
+set_default('SHOW_MENU', 0);
+set_default('SHOW_TITLE', 0);
+set_default('HEADERS', 0);
 # certainly irrelevant
-$SIMPLE_MENU = 0;
+set_default('SIMPLE_MENU', 0);
 
 t2h_default_push_handler(\&docbook_initialize_variables, \@command_handler_init);
 
@@ -363,11 +363,12 @@ sub docbook_print_page_head($)
 {
     my $fh = shift;
     my $language = get_conf('documentlanguage');
-    my $doctype = get_conf('doctype');
+    my $doctype = get_conf('DOCTYPE');
+    my $extension = get_conf('EXTENSION');
     print $fh <<EOT;
 <?xml version="1.0"?>
 $doctype
-<book id="$Texi2HTML::THISDOC{file_base_name}.$EXTENSION" lang="$language">
+<book id="$Texi2HTML::THISDOC{file_base_name}.$extension" lang="$language">
 EOT
 }
 
@@ -410,7 +411,7 @@ sub docbook_initialize_variables()
    $docbook_current_section = undef;
    @docbook_multitable_stack = ();
    @docbook_table_stack = ();
-   $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'docbook');
+   #$Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'docbook');
 }
 
 sub docbook_add_id($)
@@ -1001,9 +1002,10 @@ sub docbook_image($$$$$$$$$$$$$$$$;$)
     {
        if (open(TXT, "<$txt_path"))
        {
-          if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $USE_UNICODE)
+          my $in_encoding = get_conf('IN_ENCODING');
+          if (defined($in_encoding) and get_conf('USE_UNICODE'))
           {
-              binmode(TXT, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
+              binmode(TXT, ":encoding($in_encoding)");
           }
           $result.="<textobject><literallayout>";
           while (my $img_txt = <TXT>)

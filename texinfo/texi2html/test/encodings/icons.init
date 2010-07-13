@@ -1,9 +1,9 @@
 
-$ICONS = 1;
+set_from_init_file('ICONS', 1);
 
 
 # insert here name of icon images for buttons
-# Icons are used, if $ICONS and resp. value are set
+# Icons are used, if ICONS and resp. value are set
 %ACTIVE_ICONS =
     (
      'Top',         'a_top.png',

@@ -28,16 +28,16 @@
 
 use strict;
 
-$COMPLEX_FORMAT_IN_TABLE = 1;
+set_default('COMPLEX_FORMAT_IN_TABLE', 1);
 
 #html_default_load();
 t2h_default_load_format('html');
 
-$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">';
+set_default('DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">');
 
-$FRAMESET_DOCTYPE = $DOCTYPE;
+set_default('FRAMESET_DOCTYPE', get_conf('DOCTYPE'));
 
-$BODYTEXT = 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"';
+set_from_init_file('BODYTEXT', 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 # this controls the pre style for menus
 $MENU_PRE_STYLE = '';
 
@@ -54,24 +54,20 @@ $BEFORE_TOC_LINES = "";
 $AFTER_TOC_LINES = '';
 
 # html version for latex2html
-$L2H_HTML_VERSION = "3.2";
-
-# no class in html 32
-$NO_BULLET_LIST_ATTRIBUTE = '';
-$NO_BULLET_LIST_CLASS = '';
+set_default('L2H_HTML_VERSION', '3.2');
 
 # no css. NO_CSS also triggers no class if html_default_attribute_class
 # is used, which is the case for all the dynamically output elements.
-$NO_CSS = 1;
+set_default('NO_CSS', 1);
 
 # no accesskey in html 3.2
-$USE_ACCESSKEY = 0;
+set_default('USE_ACCESSKEY', 0);
 
 # Similar with what t2h_default_set_iso_symbols(0) does but without changing
 # all the things command, only a selected list.
-$USE_ISO = 0;
-$OPEN_QUOTE_SYMBOL = '`';
-$CLOSE_QUOTE_SYMBOL = "'";
+# USE_ISO is not needed since normal_text is redefined.
+set_default('OPEN_QUOTE_SYMBOL', '`');
+set_default('CLOSE_QUOTE_SYMBOL', "'");
 t2h_remove_text_substitutions("'", 1, 0, 0, 1);
 t2h_remove_text_substitutions('`', 1, 0, 0, 1);
 

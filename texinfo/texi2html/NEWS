@@ -1,5 +1,29 @@
 This file records noteworthy changes.
 
+X.X ()
+
+* COMPATIBILITY
+  -------------
+
+* remove completly $INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, 
+  $ENCODING, $CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS,
+  they have been obsolete, sometimes for many years.
+
+* DATE is now set as today, DOCUMENT_ENCODING as documentencoding,
+  extension as EXTENSION and DOCUMENT_DESCRIPTION as documentdescription.
+
+* Don't use perl variables for configuration variables anymore. Instead, 
+  they should be set by 
+  set_from_init_file('VARIABLE', value);
+  For example 
+    $SPLIT = 'node';
+  should be replaced by
+    set_from_init_file('SPLIT', 'node');
+
+* configuration variables are not in Texi2HTML::THISDOC directly anymore,
+  but in Texi2HTML::THISDOC{'variables'}->{$var}. they should be accessed
+  through get_conf($var).
+
 5.0 (2010-06-27)
 
 * NEW FEATURES

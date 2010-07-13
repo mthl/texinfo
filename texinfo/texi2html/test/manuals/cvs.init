@@ -6,7 +6,7 @@ $complex_format_map->{'menu_comment'} =
             'style' => 'code'
         };
 
-if ($SIMPLE_MENU)
+if (get_conf('SIMPLE_MENU'))
 {
     foreach my $format ('menu', 'detailmenu')
     {

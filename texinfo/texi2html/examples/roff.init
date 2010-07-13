@@ -24,20 +24,20 @@
 #
 #-##############################################################################
 
+# FIXME obsolete
 main::load_init_file('', 'noheaders.init');
 
-$SPLIT = 'none';
+set_default('SPLIT', 0);
 @EXPAND = ('info');
-$USE_ISO = 0;
-#$SHOW_MENU = 0;
+set_default('USE_ISO', 0);
 $SMALL_RULE = '';
 $DEFAULT_RULE = '';
 $MIDDLE_RULE = '';
 $BIG_RULE = '';
-$NODE_FILE_EXTENSION = 'roff';
-$EXTENSION = 'roff';
+set_default('NODE_FILE_EXTENSION', 'roff');
+set_default('EXTENSION', 'roff');
 $MENU_SYMBOL = '*';
-$AVOID_MENU_REDUNDANCY = 0;
+set_default('AVOID_MENU_REDUNDANCY', 0);
 
 $print_Top           = \&T2H_ROFF_print_Top;
 $print_misc		     = \&T2H_ROFF_print_misc;
@@ -58,8 +58,9 @@ sub T2H_ROFF_print_page_head
 $AFTER_BODY_OPEN
 
 EOT
+    my $today = get_conf('today');
     print $fh $Texi2HTML::THISDOC{'copying_comment'} . "\n";
-    print $fh "" . &$comment("Created on $Texi2HTML::THISDOC{today} by $Texi2HTML::THISDOC{program}\n");
+    print $fh "" . &$comment("Created on $today by $Texi2HTML::THISDOC{program}\n");
     print $fh "" . &$comment($Texi2HTML::THISDOC{program_authors});
     # FIXME this should instead be done in print_title
     print $fh ".ds St " . protect_spaces($Texi2HTML::THISDOC{'title'}) . "\n";

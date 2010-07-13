@@ -61,28 +61,28 @@ texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
 def_cmds_info def_cmds.texi --init info.init
 menus menus.texi
-menus_simple menus.texi --init simple_menu.init
+menus_simple menus.texi --set-init-var 'SIMPLE_MENU 1'
 test_menuentry test_menuentry.texi
 quotation quotation.texi
 float_with_at_commands float_with_at_commands.texi
 float_copying float_copying.texi --split chapter
 macro_in_menu macro_in_menu.texi
 ref_in_anchor ref_in_anchor.texi
-tex tex.texi --l2h --iftex --init l2h_tmp_dir.init
+tex tex.texi --l2h --iftex
 tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.init --iftex
 tex_mediawiki tex.texi --init mediawiki.init --iftex
 tex_httex_mediawiki tex.texi --html --init tex4ht.init --init mediawiki.init --iftex
-tex_l2h_mediawiki tex.texi --html --l2h --iftex --init l2h_tmp_dir.init --init mediawiki.init
+tex_l2h_mediawiki tex.texi --html --l2h --iftex --init mediawiki.init
 block_EOL block_EOL.texi
-block_EOL_tex block_EOL.texi --l2h --iftex --init l2h_tmp_dir.init
+block_EOL_tex block_EOL.texi --l2h --iftex
 detailmenus detailmenus.texi
-detailmenus_simple detailmenus.texi --init simple_menu.init
+detailmenus_simple detailmenus.texi --set-init-var 'SIMPLE_MENU 1'
 commands_in_ifset commands_in_ifset.texi
 simplest_test_prefix simplest.texi --prefix=truc
 simplest_test_prefix_info simplest.texi --info --prefix=truc
 simplest_test_css simplest.texi --css-include file.css
-simplest_test_date_in_header simplest.texi --init date_in_header.init
+simplest_test_date_in_header simplest.texi --set-init-var 'DATE_IN_HEADER 1'
 punctuation punctuation.texi
 punctuation_frenchspacing punctuation_frenchspacing.texi
 simple_punctuation simple_punctuation.texi
@@ -98,7 +98,7 @@ indicateurl_paragraph indicateurl_paragraph.texi
 complex_command_in_simple_command complex_command_in_simple_command.texi
 symbol_after_block symbol_after_block.texi
 symbol_after_command symbol_after_command.texi
-formatting_weird_quotes ../coverage/formatting.texi --init weird_quotes.init
+formatting_weird_quotes ../coverage/formatting.texi --set-init-var 'OPEN_QUOTE_SYMBOL @' --set-init-var "CLOSE_QUOTE_SYMBOL '&lsquo;"
 comments_redefine_need ../coverage/comments.texi --init redefine_need.init
 simplest_httex simplest.texi --init tex4ht.init --iftex
 html-extrali html-extrali.texi --init makeinfo.init

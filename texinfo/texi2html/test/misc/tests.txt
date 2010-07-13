@@ -7,6 +7,6 @@ verbatim_html verbatim_html.texi
 viper_unsplit viper.texi --ifinfo
 viper_chapter_split viper.texi --split chapter --ifinfo
 formatting_html32 ../coverage/formatting.texi --init html32.init
-mini_ker_l2h ../manuals/mini_ker.texi --l2h --iftex --init l2h_tmp_dir.init
+mini_ker_l2h ../manuals/mini_ker.texi --l2h --iftex
 mini_ker_httex ../manuals/mini_ker.texi --init tex4ht.init --iftex
 templates templates.texi

@@ -651,7 +651,7 @@ EXTRA_DIST = contents_at_begin.texi contents_at_end.texi \
  double_contents.texi double_contents_setcontentsaftertitlepage.texi \
  no_content.texi no_content_setcatpage.texi \
  contents_and_parts.texi \
- do_contents.init inline.init tests.txt res  res_all res_info
+ tests.txt res  res_all res_info
 
 DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
 all: all-am

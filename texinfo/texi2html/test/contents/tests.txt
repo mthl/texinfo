@@ -17,22 +17,22 @@ double_contents_chapter double_contents.texi --split chapter
 double_contents_section double_contents.texi --split section
 double_contents_nodes double_contents.texi --split node
 no_content no_content.texi
-no_content_do_contents no_content.texi --init do_contents.init
+no_content_do_contents no_content.texi --set-init-var 'contents 1'
 no_content_setcatpage no_content_setcatpage.texi
-no_content_setcatpage_do_contents no_content_setcatpage.texi --init do_contents.init
-contents_at_begin_inline contents_at_begin.texi --init inline.init
-contents_at_end_inline contents_at_end.texi --init inline.init
-contents_in_middle_chapter_inline contents_in_middle_chapter.texi --init inline.init
-contents_in_middle_section_inline contents_in_middle_section.texi --init inline.init
-double_contents_inline double_contents.texi --init inline.init
-double_contents_setcontentsaftertitlepage_inline double_contents_setcontentsaftertitlepage.texi --init inline.init
-double_contents_inline_chapter double_contents.texi --init inline.init --split chapter
-double_contents_inline_section double_contents.texi --init inline.init --split section
-double_contents_inline_nodes double_contents.texi --init inline.init --split node
-no_content_inline no_content.texi --init inline.init
-no_content_do_contents_inline no_content.texi --init inline.init --init do_contents.init
-no_content_setcatpage_inline no_content_setcatpage.texi --init inline.init
-no_content_setcatpage_do_contents_inline no_content_setcatpage.texi --init inline.init --init do_contents.init
+no_content_setcatpage_do_contents no_content_setcatpage.texi --set-init-var 'contents 1'
+contents_at_begin_inline contents_at_begin.texi --set-init-var 'INLINE_CONTENTS 1'
+contents_at_end_inline contents_at_end.texi --set-init-var 'INLINE_CONTENTS 1'
+contents_in_middle_chapter_inline contents_in_middle_chapter.texi --set-init-var 'INLINE_CONTENTS 1'
+contents_in_middle_section_inline contents_in_middle_section.texi --set-init-var 'INLINE_CONTENTS 1'
+double_contents_inline double_contents.texi --set-init-var 'INLINE_CONTENTS 1'
+double_contents_setcontentsaftertitlepage_inline double_contents_setcontentsaftertitlepage.texi --set-init-var 'INLINE_CONTENTS 1'
+double_contents_inline_chapter double_contents.texi --set-init-var 'INLINE_CONTENTS 1' --split chapter
+double_contents_inline_section double_contents.texi --set-init-var 'INLINE_CONTENTS 1' --split section
+double_contents_inline_nodes double_contents.texi --set-init-var 'INLINE_CONTENTS 1' --split node
+no_content_inline no_content.texi --set-init-var 'INLINE_CONTENTS 1'
+no_content_do_contents_inline no_content.texi --set-init-var 'INLINE_CONTENTS 1' --set-init-var 'contents 1'
+no_content_setcatpage_inline no_content_setcatpage.texi --set-init-var 'INLINE_CONTENTS 1'
+no_content_setcatpage_do_contents_inline no_content_setcatpage.texi --set-init-var 'INLINE_CONTENTS 1' --set-init-var 'contents 1'
 double_contents_book double_contents.texi --init book.init
 double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftertitlepage.texi --init book.init
 double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi --init book.init --split chapter

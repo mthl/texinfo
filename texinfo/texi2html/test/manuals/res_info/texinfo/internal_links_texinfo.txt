@@ -1015,7 +1015,7 @@ texinfo#index-TeX-input-initialization	cp	TeX input initialization
 texinfo#index-TeX_002c-how-to-obtain	cp	TeX, how to obtain
 texinfo#index-texi2dvi	cp	texi2dvi
 texinfo#index-texi2dvi-_0028shell-script_0029	cp	texi2dvi (shell script)
-texinfo_fot.info#index-texi2roff_002c-unsupported-software	cp	texi2roff, unsupported software
+texinfo#index-texi2roff_002c-unsupported-software	cp	texi2roff, unsupported software
 texinfo#index-texindex	cp	texindex
 texinfo#index-texindex-1	cp	texindex
 texinfo#index-Texinfo-commands_002c-defining-new	cp	Texinfo commands, defining new

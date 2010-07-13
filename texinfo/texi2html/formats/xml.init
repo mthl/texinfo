@@ -17,18 +17,17 @@ sub xml_default_load(;$)
 my $from_command_line = shift;
 
 t2h_default_set_variables_xml();
-$DOCTYPE = '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">';
-$SIMPLE_MENU = 0;
-$SEPARATE_DESCRIPTION = 1;
+set_default('DOCTYPE', '<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">');
+set_default('SIMPLE_MENU', 0);
+set_default('SEPARATE_DESCRIPTION', 1);
 @T2H_FORMAT_EXPAND = ('xml', 'direntry');
-$USE_ISO = 0;
-$HEADERS = 0;
-$INLINE_INSERTCOPYING = 0;
-$SHOW_MENU = 1;
-$SHOW_TITLE = 0;
-$NUMBER_SECTIONS = 0;
-$USE_NODES = 1;
-$USE_SECTIONS = 1;
+set_default('HEADERS', 0);
+set_default('INLINE_INSERTCOPYING', 0);
+set_default('SHOW_MENU', 1);
+set_default('SHOW_TITLE', 0);
+set_default('NUMBER_SECTIONS', 0);
+set_default('USE_NODES', 1);
+set_default('USE_SECTIONS', 1);
 
 t2h_default_push_handler(\&xml_init_variables, \@command_handler_init);
 
@@ -329,10 +328,10 @@ sub xml_print_page_head($)
 {
     my $fh = shift;
     my $setfilename = '';
-    $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.$EXTENSION</setfilename>" 
-        unless (defined($Texi2HTML::THISDOC{'setfilename'}) and $Texi2HTML::THISDOC{'setfilename'} ne '');
+    $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.".get_conf('EXTENSION')."</setfilename>" 
+        unless (defined(get_conf('setfilename')) and get_conf('setfilename') ne '');
     my $language = get_conf('documentlanguage');
-    my $doctype = get_conf('doctype');
+    my $doctype = get_conf('DOCTYPE');
     print $fh <<EOT;
 <?xml version="1.0"?>
 $doctype
@@ -801,7 +800,7 @@ sub xml_init_variables()
    @xml_multitable_stack = ();
    @xml_table_stack = ();
    $xml_current_section = undef;
-   $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'xml');
+   #$Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'xml');
 }
 
 # row in multitable

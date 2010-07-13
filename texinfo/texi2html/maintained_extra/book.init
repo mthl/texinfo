@@ -3,10 +3,10 @@
 #html_default_load();
 t2h_default_load_format('html');
 
-set_conf('contents', 1);
+set_default('contents', 1);
 
-$INLINE_CONTENTS = 1;
-$USE_TITLEPAGE_FOR_TITLE = 1;
+set_default('INLINE_CONTENTS', 1);
+set_default('USE_TITLEPAGE_FOR_TITLE', 1);
 
 @SECTION_BUTTONS =
     (
@@ -21,14 +21,14 @@ $USE_TITLEPAGE_FOR_TITLE = 1;
 
 @NODE_FOOTER_BUTTONS = ('Back', 'Forward');
 
-$WORDS_IN_PAGE = undef;
-$SHOW_MENU = 0;
+set_default('WORDS_IN_PAGE', undef);
+set_default('SHOW_MENU', 0);
 
 $BIG_RULE = '<hr>';
 
 #FIXME lift that constraint once it is better supported
-$USE_SECTIONS = 1;
-$USE_NODES = undef;
+set_default('USE_SECTIONS', 1);
+set_default('USE_NODES', undef);
 
 push @command_handler_init, \&book_initialize_variables;
 
@@ -118,7 +118,7 @@ sub book_element_file_name($$$)
     my $type = shift;
     my $prefix = shift;
 
-    return undef if ($NODE_FILENAMES or !get_conf('SPLIT'));
+    return undef if (get_conf('NODE_FILENAMES') or !get_conf('SPLIT'));
     return undef if (!defined($element));
    
     if (defined($previous_nr) and ($element->{'doc_nr'} == $previous_nr))
@@ -171,7 +171,7 @@ sub book_heading($$$$$$;$$)
     $class = 'node' if ($element->{'node'});
     my $result = '';
 
-    if ($TOC_LINKS and $command !~ /heading/ and defined($element->{'tocid'}))
+    if (get_conf('TOC_LINKS') and $command !~ /heading/ and defined($element->{'tocid'}))
     {
          $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
     }

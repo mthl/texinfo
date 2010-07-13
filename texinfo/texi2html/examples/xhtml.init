@@ -28,13 +28,15 @@
 # [Definition:] The SystemLiteral is called the entity's system
 # identifier. It is a URI, which may be used to retrieve the entity.
 # See http://www.xml.com/axml/target.html#NT-ExternalID
-$DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/xhtml1-transitional.dtd">';
+set_default('DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/xhtml1-transitional.dtd">');
 
-$FRAMESET_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/xhtml1-frameset.dtd">';
+set_default('FRAMESET_DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/xhtml1-frameset.dtd">');
 
 # -iso
 # if set, ISO8859 characters are used for special symbols (like copyright, etc)
-$USE_ISO = 1;
+# FIXME certainly obsoleted by t2h_default_set_iso_symbols which should 
+# certainly ba called indirectly through html_default_load
+set_default('USE_ISO', 1);
 
 # horizontal rules
 $SMALL_RULE = '<hr size="1"/>';
@@ -58,6 +60,7 @@ sub T2H_XHTML_print_page_head
     my $longtitle = "$Texi2HTML::THISDOC{'title_no_texi'}";
     $longtitle .= ": $Texi2HTML::NO_TEXI{'This'}" if exists $T2H_NO_TEXI{'This'};
     my $doctype = get_conf('doctype');
+    my $bodytext = get_conf('BODYTEXT');
     print $fh <<EOT;
 <?xml version="1.0" encoding="iso-8859-1"?>
 $doctype
@@ -77,7 +80,7 @@ $Texi2HTML::THISDOC{program_authors}
 $EXTRA_HEAD
 </head>
 
-<body $T2H_BODYTEXT>
+<body $bodytext>
 $AFTER_BODY_OPEN
 EOT
 }
@@ -105,8 +108,9 @@ sub T2H_XHTML_print_frame
     my $fh = shift;
     my $toc_file = shift;
     my $main_file = shift;
+    my $doctype = get_conf('FRAMESET_DOCTYPE');
     print $fh <<EOT;
-$FRAMESET_DOCTYPE
+$doctype
 <html>
 <head><title>$Texi2HTML::THISDOC{title}</title></head>
 <frameset cols="140,*">
@@ -178,7 +182,7 @@ sub t2h_xhtml_def_line($$$$$)
    $type_name = " $type" if ($type ne '');
    $type_name .= ' <b>' . $name . '</b>' if ($name ne '');
    $type_name .= $arguments . "\n";
-   if (! $DEF_TABLE)
+   if (! get_conf('DEF_TABLE'))
    {
        return '<dt>'. '<span style="text-decoration: underline">' . $category . ':</span>' . $type_name . $index_label . "</dt>\n";
    }

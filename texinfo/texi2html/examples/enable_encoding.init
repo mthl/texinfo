@@ -31,13 +31,6 @@
 #use Encode;
 
 use strict;
-# if true, use the original command if the result is an entity
-use vars '$ENABLE_ENCODING_USE_ENTITY';
-
-#if (!$ENABLE_ENCODING_USE_ENTITY)
-#{
-#  $USE_ISO = 0;
-#}
 
 my $enable_encoding_default_init_out = $init_out;
 $init_out = \&enable_encoding_init_out;
@@ -45,7 +38,7 @@ $init_out = \&enable_encoding_init_out;
 sub enable_encoding_is_entity($)
 {
   my $text = shift;
-  return 0 if (!$ENABLE_ENCODING_USE_ENTITY);
+  return 0 if (!get_conf('ENABLE_ENCODING_USE_ENTITY'));
   return 1 if ($text =~ /^&/ and $text =~ /;$/);
 }
 
@@ -64,9 +57,9 @@ sub enable_encoding_init_out()
 {
   &$enable_encoding_default_init_out();
   # like utf8.init
-  if ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8')
+  if (get_conf('ENCODING_NAME') eq 'utf-8')
   {
-    $normal_text       = \&t2h_utf8_normal_text unless ($ENABLE_ENCODING_USE_ENTITY);
+    $normal_text       = \&t2h_utf8_normal_text unless (get_conf('ENABLE_ENCODING_USE_ENTITY'));
     foreach my $key (keys(%unicode_accents), 'dotless')
     {
       $style_map{$key}->{'function'} = \&t2h_utf8_accent;
@@ -85,9 +78,9 @@ sub enable_encoding_init_out()
       }
     }
   }
-  elsif (exists($makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}}))
+  elsif (exists($makeinfo_encoding_to_map{get_conf('ENCODING_NAME')}))
   {
-    my $enc_map = $makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}};
+    my $enc_map = $makeinfo_encoding_to_map{get_conf('ENCODING_NAME')};
     foreach my $key (keys(%unicode_accents), 'dotless')
     {
       $enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
@@ -184,7 +177,7 @@ sub enable_encoding_accent($$$$)
         ;
   }
 
-  my $enc_map = $makeinfo_encoding_to_map{$Texi2HTML::THISDOC{'ENCODING_NAME'}};
+  my $enc_map = $makeinfo_encoding_to_map{get_conf('ENCODING_NAME')};
   my $eight_bit;
   my $result;
   # At this point we have the utf8 encoded results for the accent

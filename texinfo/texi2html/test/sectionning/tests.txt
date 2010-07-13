@@ -102,7 +102,7 @@ part_appendix part_appendix.texi
 part_node_part_appendix part_node_part_appendix.texi
 part_node_part_node_appendix part_node_part_node_appendix.texi
 part_node_node_part_appendix part_node_node_part_appendix.texi
-empty_top_node_up menu-whitespace.texi --init empty_top_node_up.init
+empty_top_node_up menu-whitespace.texi --set-init-var TOP_NODE_UP
 
 test_refs_docbook test_refs.texi --docbook
 at_commands_in_refs_info at_commands_in_refs.texi --init info.init

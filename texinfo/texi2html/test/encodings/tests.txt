@@ -13,31 +13,31 @@ texi documentlanguage_set.texi
 texi formatting_utf8.texi
 nodetest nodetest.texi
 nodetest_chapter nodetest.texi --split chapter
-nodetest_use_nodes_no_unicode nodetest.texi --init no_unicode.init --node-files --use-nodes --split node
-nodetest_use_nodes_no_unidecode nodetest.texi --init no_unidecode.init --node-files --use-nodes --split node
+nodetest_use_nodes_no_unicode nodetest.texi --set-init-var 'USE_UNICODE 0' --node-files --use-nodes --split node
+nodetest_use_nodes_no_unidecode nodetest.texi --set-init-var 'USE_UNIDECODE 0' --node-files --use-nodes --split node
 nodetest_use_nodes nodetest.texi --node-files --use-nodes --split node
-nodetest_no_unicode nodetest.texi --init no_unicode.init
+nodetest_no_unicode nodetest.texi --set-init-var 'USE_UNICODE 0'
 nodetest_utf8 nodetest_utf8.texi
 # the following is not perfect, since there is no map for  @,{@'C}
 # it isn't rightly transformed in _1e14 but in _0112_0300
-nodetest_utf8_no_unicode nodetest_utf8.texi --init no_unicode.init
+nodetest_utf8_no_unicode nodetest_utf8.texi --set-init-var 'USE_UNICODE 0'
 nodetest_utf8_use_nodes nodetest_utf8.texi --node-files --use-nodes --split node
-nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi --init no_unidecode.init --node-files --use-nodes --split node
+nodetest_utf8_use_nodes_no_unidecode nodetest_utf8.texi --set-init-var 'USE_UNIDECODE 0' --node-files --use-nodes --split node
 nodetest_to_utf8_latin1 nodetest_latin1.texi --init utf8.init
 nodetest_latin1 nodetest_latin1.texi
-nodetest_latin1_no_unicode nodetest_latin1.texi --init no_unicode.init
-nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi --init no_unicode.init --node-files --split node
+nodetest_latin1_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0'
+nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0' --node-files --split node
 nodetest_latin1_use_nodes nodetest_latin1.texi --node-files --split node
-at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi --init no_unicode.init
-at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi --init no_unidecode.init
+at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi --set-init-var 'USE_UNICODE 0'
+at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi --set-init-var 'USE_UNIDECODE 0'
 at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi --node-files --split node
-at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi --init no_unidecode.init --node-files --split node
-at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi --init no_unicode.init --node-files --split node
+at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi --set-init-var 'USE_UNIDECODE 0' --node-files --split node
+at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi --set-init-var 'USE_UNICODE 0' --node-files --split node
 at_commands_in_refs_utf8_use_nodes at_commands_in_refs_utf8.texi --node-files --split node
-at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi --init no_unidecode.init --node-files --split node
-at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi --init no_unicode.init --node-files --split node
+at_commands_in_refs_utf8_use_nodes_no_unidecode at_commands_in_refs_utf8.texi --set-init-var 'USE_UNIDECODE 0' --node-files --split node
+at_commands_in_refs_utf8_use_nodes_no_unicode at_commands_in_refs_utf8.texi --set-init-var 'USE_UNICODE 0' --node-files --split node
 multi_lang multi_lang.texi
-multi_lang_old_style multi_lang.texi --init old_style_i18n.init
+multi_lang_old_style multi_lang.texi --set-init-var 'I18N_PERL_HASH 1'
 unknown_language unknown_language.texi
 umlaut umlaut.texi
 formatting_fr ../coverage/formatting.texi --document-language fr
@@ -45,7 +45,7 @@ formatting_fr_icons ../coverage/formatting.texi --document-language fr --init ic
 formatting_converted_to_utf8 ../coverage/formatting.texi --init utf8.init
 accentenc accentenc.texi
 #accentenc_encoding accentenc.texi --init enable_encoding.init
-accentenc_encoding accentenc.texi --enable-encoding --init enable_encoding_no_use_entity.init
+accentenc_encoding accentenc.texi --enable-encoding --set-init-var 'ENABLE_ENCODING_USE_ENTITY 0' --set-init-var 'USE_ISO 0'
 accentenc_encoding_use_entity accentenc.texi --enable-encoding
 accent accent.texi
 weird_accents weird_accents.texi

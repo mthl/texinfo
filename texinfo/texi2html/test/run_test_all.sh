@@ -135,8 +135,7 @@ for command_dir in $commands; do
 done
 
 if tmp_dir=`mktemp -p /tmp -d l2h_t2h_XXXXXXXX`; then
-  echo "\$L2H_TMP = '$tmp_dir';" > l2h_tmp_dir.init
-  echo "1;" >> l2h_tmp_dir.init
+  :
 else
   exit 1
 fi
@@ -190,19 +189,21 @@ do
       # -I $testdir/$srcdir_test/ is useful when file name is found using 
       # @setfilename
       echo "$command $dir" >> $logfile
-      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --test --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --dump-texi --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --set-init-var 'TEST 1' --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var 'DUMP_TEXI 1' --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ --set-init-var 'TEST 1' --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var 'DUMP_TEXI 1' --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2"
       ret=$?
     else
       one_test_done=yes
       use_latex2html=no
       use_tex4ht=no
+      l2h_tmp_dir=
       if echo "$remaining" | grep -qs -- '-l2h'; then
         if [ "$no_latex2html" = 'yes' ]; then
           echo "S: (no latex2html) $current"
           continue 2
         fi
         use_latex2html=yes
+        l2h_tmp_dir="--set-init-var 'L2H_TMP $tmp_dir'"
       elif echo "$remaining" | grep -qs -- '-init tex4ht.init'; then
         if [ "$no_tex4ht" = 'yes' ]; then
           echo "S: (no tex4ht) $current"
@@ -223,8 +224,8 @@ do
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir" >> $logfile
-      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
-      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --test --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      echo "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var 'TEST 1' $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2" >> $logfile
+      eval "perl -w -x $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../maintained_extra --conf-dir $testdir/$srcdir_test/../../examples --conf-dir $testdir/$srcdir_test/../../formats --conf-dir $testdir/$srcdir_test/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-init-var 'TEST 1' $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       ret=$?
       rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
         ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \

@@ -11,8 +11,9 @@ sub test_misc_file_name($$$)
 
   if ($type eq 'top' or (defined($element->{'doc_nr'}) and $element->{'doc_nr'} == 2))
   {
+     my $extension = get_conf('EXTENSION');
      return "${docu_name}_abt"
-      . (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
+      . ((defined($extension)) ? ".$extension" : '');
   }
   return undef;
 }

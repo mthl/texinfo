@@ -29,50 +29,47 @@
 #html_default_load();
 t2h_default_load_format('html');
 
-$TOP_FILE = 'index.html';
+set_default('TOP_FILE', 'index.html');
 
-$SHOW_MENU = 1;
+set_default('SHOW_MENU', 1);
 
-$USE_NODES = 1;
+set_default('USE_NODES', 1);
 
-$SPLIT = 'node';
+set_default('SPLIT', 'node');
 
-$NODE_FILES = 1;
+set_default('NODE_FILES', 1);
 
-$USE_SETFILENAME = 1;
+set_default('USE_SETFILENAME', 1);
 
-# to mimic makeinfo the following have to be set 1.
-#$USE_UP_FOR_ADJACENT_NODES = 0;
+set_default('HEADERS', 1);
 
-$HEADERS = 1;
+set_default('SHORT_REF', 1);
 
-$SHORT_REF = 1;
+set_default('NODE_NAME_IN_MENU', 1);
 
-$NODE_NAME_IN_MENU = 1;
+set_default('NODE_NAME_IN_INDEX', 0);
 
-$NODE_NAME_IN_INDEX = 0;
+set_default('AVOID_MENU_REDUNDANCY', 0);
 
-$AVOID_MENU_REDUNDANCY = 0;
-
-$SPLIT_INDEX = 0;
+set_default('SPLIT_INDEX', 0);
 
 $MENU_SYMBOL = '*';
 
-$WORDS_IN_PAGE = 200;
+set_default('WORDS_IN_PAGE', 200);
 
-$FOOTNOTESTYLE = 'end';
+set_default('footnotestyle', 'end');
 
-$USE_ACCESSKEY = 1;
+set_default('USE_ACCESSKEY', 1);
 
-$USE_REL_REV = 1;
+set_default('USE_REL_REV', 1);
 
-$USE_LINKS = 1;
+set_default('USE_LINKS', 1);
 
-$INLINE_CONTENTS = 1;
+set_default('INLINE_CONTENTS', 1);
 
-$OVERVIEW_LINK_TO_TOC = 1;
+set_default('OVERVIEW_LINK_TO_TOC', 1);
 
-if ($HEADER_IN_TABLE)
+if (get_conf('HEADER_IN_TABLE'))
 {
     @SECTION_BUTTONS =
     (
@@ -259,7 +256,7 @@ sub makeinfo_like_index_entry($$$$$$$$$$)
     if (defined($element))
     {
        my $element_set = 0;
-       if ($NODE_NAME_IN_INDEX)
+       if (get_conf('NODE_NAME_IN_INDEX'))
        {
            if ($element->{'node'})
            {
@@ -271,9 +268,8 @@ sub makeinfo_like_index_entry($$$$$$$$$$)
                $element_set = 1;
            }
        }
-       elsif (defined($NODE_NAME_IN_INDEX))
+       elsif (defined(get_conf('NODE_NAME_IN_INDEX')))
        {
-
            if (!$element->{'node'})
            {
                $element_set = 1;
@@ -385,7 +381,7 @@ sub makeinfo_like_menu_link($$$$$$$)
     my $ending = shift;
     my $has_title = shift;
     $title = '' unless ($has_title);
-    if (($entry eq '') or $NODE_NAME_IN_MENU or $state->{'preformatted'})
+    if (($entry eq '') or get_conf('NODE_NAME_IN_MENU') or $state->{'preformatted'})
     {
         
         $title .= ':' if ($title ne '');
@@ -393,7 +389,7 @@ sub makeinfo_like_menu_link($$$$$$$)
     }
     $menu_entry_index++;
     my $accesskey;
-    $accesskey = "accesskey=\"$menu_entry_index\"" if ($USE_ACCESSKEY and ($menu_entry_index < 10));
+    $accesskey = "accesskey=\"$menu_entry_index\"" if (get_conf('USE_ACCESSKEY') and ($menu_entry_index < 10));
     $entry = &$anchor ('', $href, $entry, $accesskey) if (defined($href));
 #    if ($state->{'preformatted'})
 #    {

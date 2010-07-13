@@ -19,16 +19,15 @@ echo "$basename" > $logfile
 : > $stdout_file
 
 if tmp_dir=`mktemp -p /tmp -d l2h_t2h_XXXXXXXX`; then
-  echo "\$L2H_TMP = '$tmp_dir';" > l2h_tmp_dir.init
-  echo "1;" >> l2h_tmp_dir.init
+  :
 else
   exit 1
 fi
 
 [ -d $basename ] && rm -rf $basename
 mkdir $basename
-echo "perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
-perl -w -x $srcdir/../../texi2html.pl -test -init l2h_tmp_dir.init -conf-dir $srcdir/../../examples -l2h -expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
+echo "perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_TMP $tmp_dir' --conf-dir $srcdir/../../examples --l2h --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var "L2H_TMP $tmp_dir" --conf-dir $srcdir/../../examples --l2h --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
 
 return_code=0
 ret=$?

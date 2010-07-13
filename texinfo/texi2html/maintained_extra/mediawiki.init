@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.6 2010-03-20 14:06:12 pertusus Exp $
+# $Id: mediawiki.init,v 1.7 2010-07-13 12:02:41 pertusus Exp $
 
 use strict;
 
@@ -20,39 +20,36 @@ t2h_default_load_format('html');
 default_load_tex_math();
 
 # inline css style
-$INLINE_CSS_STYLE = 1;
+set_default('INLINE_CSS_STYLE', 1);
 
-$USE_SECTIONS = 1;
-$USE_NODES = undef;
+set_default('USE_SECTIONS', 1);
+set_default('USE_NODES', undef);
 
 # if this is set the sections are numbered, and section names and numbers 
 # are used in references and menus (instead of node names).
-$NUMBER_SECTIONS = 0;
+set_default('NUMBER_SECTIONS', 0);
 
 # if this is set footnotes are on a separated page. Otherwise they are at
 # the end of each file (if the document is split).
 # At the end is better for the mediawiki output which is more per page
 # oriented.
-$FOOTNOTESTYLE = 'end';
+set_default('footnotestyle', 'end');
 
 # extension
-$EXTENSION = undef;
+set_default('EXTENSION', undef);
 
 # extension for nodes files when NODE_FILES is true
-$NODE_FILE_EXTENSION = "";	    
+set_default('NODE_FILE_EXTENSION', '');	    
 
 # no title page at the beginning
-$USE_TITLEPAGE_FOR_TITLE = 0;
+set_default('USE_TITLEPAGE_FOR_TITLE', 0);
 
-# Use "title: section" name as the file name.
-#$SECTION_AS_FILE_NAME = 1;
-
-# if set and $SPLIT is set, then split index pages at the next letter
+# if set and SPLIT is set, then split index pages at the next letter
 # after they have more than that many entries
-undef $SPLIT_INDEX;
+set_default('SPLIT_INDEX', undef);
 
 # Use preformatted menus.
-$SIMPLE_MENU = 1;
+set_default('SIMPLE_MENU', 1);
 
 $DEFAULT_RULE = "\n----\n";
 
@@ -239,12 +236,12 @@ sub mediawiki_default_init_html_to_wiki
     push @html_files_from_tex, "$Texi2HTML::THISDOC{'file_base_name'}_tex4ht_tex.html";
     $tex_extension = 'tex4ht';
   }
-  elsif ($L2H)
+  elsif (get_conf('L2H'))
   {
     push @html_files_from_tex, "$Texi2HTML::THISDOC{'file_base_name'}_l2h.html";
     $tex_extension = 'l2h';
     # avoid use of the cache
-    $Texi2HTML::Config::L2H_SKIP = 0;
+    set_default('L2H_SKIP', 0);
   }
 }
 
@@ -315,7 +312,7 @@ sub mediawiki_default_html_to_wiki
         }
         #system ("cp $tmp_file $tmp_file3.save");
         my $cmd = "html2wiki --dialect MediaWiki --strip-tags '' $tmp_file > $tmp_file2";
-        print STDERR "Launching(". Cwd::cwd() ."): $cmd\n" if ($Texi2HTML::Config::VERBOSE);
+        print STDERR "Launching(". Cwd::cwd() ."): $cmd\n" if (get_conf('VERBOSE'));
         if (system ($cmd))
         {
            main::document_warn ("mediawiki_tex command failed: $cmd");
@@ -848,7 +845,7 @@ sub mediawiki_default_def_item($$$)
     my $command = shift;
     if ($text =~ /\S/)
     {
-        if (! $DEF_TABLE)
+        if (! get_conf('DEF_TABLE'))
         {
             return $text;# unless $only_inter_item_commands;
             #return $text; # invalid without dd in ul
@@ -948,7 +945,7 @@ sub mediawiki_default_def_line($$$$$$$$$$$$$$$$)
    $type_name = " <em>$type</em>" if ($type ne '');
    $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
    $type_name .= $arguments;
-   if (! $DEF_TABLE)
+   if (! get_conf('DEF_TABLE'))
    {
        return mediawiki_default_indent_string(undef,1) .';'. $index_label. $category_prepared . '<nowiki>:</nowiki>' . $type_name . "\n";
    }
@@ -967,7 +964,7 @@ sub mediawiki_default_def($$)
     my $command = shift;
     if ($text =~ /\S/)
     {
-        if (! $DEF_TABLE)
+        if (! get_conf('DEF_TABLE'))
         {
             return $text;
         }
@@ -1094,7 +1091,7 @@ sub mediawiki_default_image($$$$$$$$$$$$$$$$$)
         }
         main::line_warn (sprintf(__("\@image file `%s' not found, using `%s'"), $base, $file), $line_nr);
     }
-    elsif (! $COMPLETE_IMAGE_PATHS)
+    elsif (! get_conf('COMPLETE_IMAGE_PATHS'))
     {
         $file = $file_name;
     }

@@ -28,9 +28,10 @@ sub plaintext_default_load(;$)
 my $from_command_line = shift;
 info_default_load();
 
-$SHOW_MENU = 0;
-$OUT = '-' unless(defined($OUT) and $OUT !~ m:/$:);
-$HEADERS = 0;
+set_default('SHOW_MENU', 0);
+set_default('OUTFILE', '-');
+# unless(defined($OUT) and $OUT !~ m:/$:);
+set_default('HEADERS', 0);
 @T2H_FORMAT_EXPAND = ('plaintext');
 
 $print_page_head   = \&plaintext_default_print_page_head;
@@ -132,9 +133,10 @@ sub plaintext_default_image($$$$$$$$$$$$$$$$$)
     {
        if (open(TXT, "<$txt_path"))
        {
-          if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $USE_UNICODE)
+          my $in_encoding = get_conf('IN_ENCODING');
+          if (defined($in_encoding) and get_conf('USE_UNICODE'))
           {
-              binmode(TXT, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
+              binmode(TXT, ":encoding($in_encoding)");
           }
           $text='[' if ($in_paragraph or $preformatted);
           while (my $img_txt = <TXT>)

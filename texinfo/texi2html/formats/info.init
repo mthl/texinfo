@@ -55,26 +55,24 @@ sub info_default_load(;$)
 my $from_command_line = shift;
 
 t2h_default_set_variables_default();
-$USE_SECTIONS = 0;
-$USE_NODES = 1;
-#set_conf('SPLIT', 0, 1);
-$SPLIT = '';
+set_default('USE_SECTIONS', 0);
+set_default('USE_NODES',  1);
+set_default('SPLIT', '');
 @T2H_FORMAT_EXPAND = ('info', 'direntry');
-$EXTENSION = 'info';
-$SHOW_MENU = 1;
-$SHOW_TITLE = 0;
-$USE_SETFILENAME_EXTENSION = 1;
-$INLINE_INSERTCOPYING = 1;
-$SIMPLE_MENU = 1;
+set_default('EXTENSION', 'info');
+set_default('SHOW_MENU', 1);
+set_default('SHOW_TITLE', 0);
+set_default('USE_SETFILENAME_EXTENSION', 1);
+set_default('INLINE_INSERTCOPYING', 1);
+set_default('SIMPLE_MENU', 1);
 $MENU_SYMBOL = '*';
-$USE_ISO = 0;
-$ENABLE_ENCODING_USE_ENTITY = 0;
-$ENABLE_ENCODING = 1;
+set_default('ENABLE_ENCODING_USE_ENTITY', 0);
+set_default('ENABLE_ENCODING', 1);
 @IMAGE_EXTENSIONS = ('png', 'jpg', 'txt');
 $CAPTION_STYLE = 'asis';
-$DEFAULT_ENCODING = 'ascii';
-$HEADERS = 1;
-$INLINE_CONTENTS = 0;
+set_default('DEFAULT_ENCODING', 'ascii');
+set_default('HEADERS', 1);
+set_default('INLINE_CONTENTS', 0);
 
 
 $no_paragraph_commands{'anchor'} = 1;
@@ -215,7 +213,6 @@ $info_default_indent_length = 5;
 $info_default_index_length_to_node = 41;
 
 $info_default_listoffloat_caption_entry_length = 41;
-#$info_default_listoffloat_append = '...:    ';
 $info_default_listoffloat_append = '...';
 
 t2h_default_push_handler(\&info_default_init_accent_enable_encoding, \@command_handler_init);
@@ -333,8 +330,8 @@ sub info_default_init_variables()
    %info_default_index_entries = ();
    $info_default_footnote_index = 0;
    $info_default_current_node = undef;
-   $Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'info');
-   $FRAMES = 0 if ($OUTPUT_FORMAT eq 'info');
+   #$Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'info');
+   #$FRAMES = 0 if ($OUTPUT_FORMAT eq 'info');
 
    foreach my $command (keys (%command_handler))
    {
@@ -347,11 +344,11 @@ sub info_default_init_variables()
 }
 
 # this is put in command_handler_init such that it sets things right
-# in case $ENABLE_ENCODING is set and has lead to modification of the 
+# in case ENABLE_ENCODING is set and has lead to modification of the 
 # accent functions
 sub info_default_init_accent_enable_encoding()
 {
-   return unless ($ENABLE_ENCODING and $USE_UNICODE);
+   return unless (get_conf('ENABLE_ENCODING') and get_conf('USE_UNICODE'));
    foreach my $key (keys(%unicode_accents), 'dotless')
    {
      $info_default_enable_encoding_accents{$key} = 1;
@@ -406,7 +403,7 @@ sub info_default_accent($$$)
     my $state = shift;
 
     my $result;
-    if ($ENABLE_ENCODING and $info_default_enable_encoding_accents{$command})
+    if (get_conf('ENABLE_ENCODING') and $info_default_enable_encoding_accents{$command})
     {
         $result = &t2h_enable_encoding_normal_accent(@args);
     }
@@ -439,8 +436,8 @@ sub info_default_copying_comment($$$$)
 sub info_default_byte_count($)
 {
     my $string = shift;
-    my $out_encoding = Texi2HTML::Config::get_conf('OUT_ENCODING');
-    if ($out_encoding and lc($out_encoding) ne 'us-ascii' and $USE_UNICODE)
+    my $out_encoding = get_conf('OUT_ENCODING');
+    if ($out_encoding and lc($out_encoding) ne 'us-ascii' and get_conf('USE_UNICODE'))
     {
        return length (Encode::encode($out_encoding, $string));
     }
@@ -817,7 +814,7 @@ sub info_default_output($)
    my $info_state = shift;
    my $result = '';
    #print STDERR "Storing the stack\n";
-   print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]) if ($DEBUG);
+   print STDERR "" . Data::Dumper->Dump([$info_state->{'top'}]) if (get_conf('DEBUG'));
    my ($bytes_count, $lines_count);
    ($bytes_count, $result, $lines_count) = info_default_process_content($info_state->{'top'}, $info_state);
    $info_state->{'offset_in_file'} += $bytes_count;
@@ -849,7 +846,7 @@ sub info_default_process_content($$)
    my $in_w = 0;
    my $table_item_line = 0;
    my $in_table_item = 0;
-   my $max_column = get_conf('fillcolumn');
+   my $max_column = get_conf('FILLCOLUMN');
    my $direntry = 0;
    my $preformatted_format = 0;
    my $indent_length = 0;
@@ -870,7 +867,7 @@ sub info_default_process_content($$)
       my $indentation_done = 0;
       my $prepend_newline;
 
-      if ($DEBUG)
+      if (get_conf('DEBUG'))
       {
          my $text_item_pending = '';
          $text_item_pending = $item_pending if (defined($item_pending));
@@ -1752,7 +1749,7 @@ sub info_default_process_content($$)
          $info_state->{'blank_line'} = 0;
       }
       $text_added = "\n" . $text_added if ($prepend_newline);
-      print STDERR "TEXT_ADDED($indent_length) `$text_added'\n" if ($text_added ne '' and $DEBUG);
+      print STDERR "TEXT_ADDED($indent_length) `$text_added'\n" if ($text_added ne '' and get_conf('DEBUG'));
       #print STDERR "TEXT_ADDED($indent_length) `$text_added'\n";
       # from here, the next cmmand is available
       ($current, $index, $close) = info_default_iterator_next($current, $index, $close);
@@ -1761,7 +1758,7 @@ sub info_default_process_content($$)
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'center' 
         or $info_state->{'align_stack'}->[-1]->{'command'} eq 'flushright'));
       $info_state->{'blank_line'} = 1 if ($blank_line);
-      print STDERR "ADDING `$text_indented'\n" if ($text_indented ne '' and $DEBUG);
+      print STDERR "ADDING `$text_indented'\n" if ($text_indented ne '' and get_conf('DEBUG'));
       # only_space is set in all the conditionals
       if ($end_of_line)
       {
@@ -1897,7 +1894,7 @@ sub info_default_open_command($$;$)
 
    push @{$info_state->{'current'}->{'content'}}, $new_command;
    $info_state->{'current'} = $new_command;
-   print STDERR "TREE($info_state->{'nr'}): Opened $command\n" if ($DEBUG); 
+   print STDERR "TREE($info_state->{'nr'}): Opened $command\n" if (get_conf('DEBUG')); 
 }
 
 sub info_default_close_command($$;$$$)
@@ -1910,7 +1907,7 @@ sub info_default_close_command($$;$$$)
 
    $state = $Texi2HTML::THISDOC{'state'} if (!defined($state));
    my $info_state = info_default_get_state($state);
-   print STDERR "TREE($info_state->{'nr'}): Closing $command\n" if ($DEBUG);
+   print STDERR "TREE($info_state->{'nr'}): Closing $command\n" if (get_conf('DEBUG'));
    if (!defined($info_state->{'current'}))
    {
       print STDERR "info_state->{'current'} not defined (closing $command)\n";
@@ -1955,7 +1952,7 @@ sub info_default_store_text($$;$$)
    my $command_text = '';
    $command_text = "\[$command\]" if (defined($command));
    $command_text .= $text if (defined($text));
-   print STDERR "TREE($info_state->{'nr'}) Storing: ${command_text}\n" if ($DEBUG);
+   print STDERR "TREE($info_state->{'nr'}) Storing: ${command_text}\n" if (get_conf('DEBUG'));
    ################################## end debug
 
    $text_entries->{'text'} = $text if (defined($text));
@@ -2180,13 +2177,13 @@ sub info_default_header ()
     return $Texi2HTML::THISDOC{'info_header'} if (defined($Texi2HTML::THISDOC{'info_header'}));
 # $Texi2HTML::THISDOC{'program'}
     my $input_basename = $Texi2HTML::THISDOC{'input_file_name'};
-    $input_basename =~ s/^.*\///; # if ($TEST);
+    $input_basename =~ s/^.*\///; 
     $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
     my $output_basename = $Texi2HTML::THISDOC{'filename'}->{'top'};
     $output_basename =~ s/^.*\///;
     my $result = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename. ";
     my $dummy;
-    ($dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, {'spaces' => ''}, undef, get_conf('fillcolumn'));
+    ($dummy, $dummy, $dummy, $result) = info_default_process_para_text($result, 0, {'spaces' => ''}, undef, get_conf('FILLCOLUMN'));
     $result .= "\n\n";
     $result .= "$Texi2HTML::THISDOC{'copying_comment'}";
     if ($info_default_dir_specification)
@@ -2409,10 +2406,10 @@ sub info_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
-   # $Texi2HTML::THISDOC{'ENCODING_NAME'}) should be defined, but maybe 
-   # not when parsing commands in first or second pass, and removeing texi
+   # ENCODING_NAME should be defined, but maybe 
+   # not when parsing commands in first or second pass, and removing texi
    # like what is done for @setfilename.
-   if ($ENABLE_ENCODING and defined($Texi2HTML::THISDOC{'ENCODING_NAME'}) and ($Texi2HTML::THISDOC{'ENCODING_NAME'} eq 'utf-8') and $USE_UNICODE)
+   if (get_conf('ENABLE_ENCODING') and defined(get_conf('ENCODING_NAME')) and (get_conf('ENCODING_NAME') eq 'utf-8') and get_conf('USE_UNICODE'))
    {
       $text = &t2h_utf8_normal_text(@initial_args);
    }
@@ -2541,7 +2538,7 @@ sub info_default_print_page_foot($)
    # IN_ENCODING is the documentencoding transformed to the encoding names
    # usually seen in html. This is what the info readers should understand.
    my $coding = get_conf('IN_ENCODING');
-   $coding = get_conf('DOCUMENT_ENCODING') if (!defined($coding));
+   $coding = get_conf('documentencoding') if (!defined($coding));
    if (defined($coding))
    {
       print $fh "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
@@ -2571,7 +2568,7 @@ sub info_default_footnote_texi($$$)
        $info_default_footnote_index++;
     }
     my $footnote_number = $info_default_footnote_index;
-    $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL if (!$NUMBER_FOOTNOTES);
+    $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL if (!get_conf('NUMBER_FOOTNOTES'));
     return "($footnote_number) $text";
     #return undef;
 }
@@ -2683,8 +2680,8 @@ sub info_default_end_section($$$)
     my $state = $Texi2HTML::THISDOC{'state'};
     my $info_state = info_default_get_state ($state);
 
-    if (defined($Texi2HTML::THISDOC{'SPLIT_SIZE'}) and 
-   $info_state->{'offset_in_file'} > ($info_default_out_file_nr) * $Texi2HTML::THISDOC{'SPLIT_SIZE'})
+    if (defined(get_conf('SPLIT_SIZE')) and 
+   $info_state->{'offset_in_file'} > ($info_default_out_file_nr) * get_conf('SPLIT_SIZE'))
     {
        if ($info_default_out_file_nr == 1)
        { # push also the first node, which is always the first pending_tags
@@ -2974,9 +2971,10 @@ sub info_default_image($$$$$$$$$$$$$$$$$)
     {
        if (open(TXT, "<$txt_path"))
        {
-          if (defined($Texi2HTML::THISDOC{'IN_ENCODING'}) and $USE_UNICODE)
+          my $in_encoding = get_conf('IN_ENCODING');
+          if (defined($in_encoding) and get_conf('USE_UNICODE'))
           {
-              binmode(TXT, ":encoding($Texi2HTML::THISDOC{'IN_ENCODING'})");
+              binmode(TXT, ":encoding($in_encoding)");
           }
           $text='[' if ($in_paragraph or $preformatted);
           while (my $img_txt = <TXT>)
@@ -3139,13 +3137,13 @@ sub info_default_index_entry($$$$$$$$$$)
     my $line_nr_spaces = sprintf("%${max_len}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
     #print STDERR "GGGGGGGGGG name: $index_entry_ref->{'index_name'} max: ${max_len} line_nr: `$line_nr' line_nr_spaces `$line_nr_spaces' $line_part \n";
-    if (t2h_default_string_width($result)+t2h_default_string_width($line_part) +1 >  get_conf('fillcolumn'))
+    if (t2h_default_string_width($result)+t2h_default_string_width($line_part) +1 >  get_conf('FILLCOLUMN'))
     {
-        $result .= "\n" . ' ' x (get_conf('fillcolumn') - t2h_default_string_width($line_part)) ;
+        $result .= "\n" . ' ' x (get_conf('FILLCOLUMN') - t2h_default_string_width($line_part)) ;
     }
     else
     {
-        $result .= ' ' x (get_conf('fillcolumn') - t2h_default_string_width($line_part) - t2h_default_string_width($result));
+        $result .= ' ' x (get_conf('FILLCOLUMN') - t2h_default_string_width($line_part) - t2h_default_string_width($result));
     }
     $result .= "$line_part\n";
 
@@ -3180,7 +3178,7 @@ sub info_default_foot_line_and_ref($$$$$$$$)
     my $footnote_info_state = info_default_get_state ($footnote_state);
 
     my $footnote_text = "($info_default_footnote_index)";
-    $footnote_text = "($NO_NUMBER_FOOTNOTE_SYMBOL)" if (!$NUMBER_FOOTNOTES);
+    $footnote_text = "($NO_NUMBER_FOOTNOTE_SYMBOL)" if (!get_conf('NUMBER_FOOTNOTES'));
     my $node_name;
     $node_name = '';
     if (defined($info_default_current_node))
@@ -3457,7 +3455,7 @@ sub info_default_table_list($$$$$$$$$)
     {
        foreach my $fraction (@$columnfractions)
        {
-          push @$columnsize, int($fraction * get_conf('fillcolumn') +0.5);
+          push @$columnsize, int($fraction * get_conf('FILLCOLUMN') +0.5);
        }
     }
     else 
@@ -3581,7 +3579,7 @@ sub info_default_listoffloats_entry($$$$)
     while ($caption =~ s/^(\S+\s*)//)
     { 
         my $new_word = $1;
-        if ((t2h_default_string_width($new_word) + $width) > get_conf('fillcolumn') - 3)
+        if ((t2h_default_string_width($new_word) + $width) > get_conf('FILLCOLUMN') - 3)
         {
             $caption_entry .= $info_default_listoffloat_append;
             last;

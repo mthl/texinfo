@@ -8,7 +8,7 @@ sub toc_out_element_file_name($$$)
 
     if ($type and ($type ne 'top') and ($type ne 'toc'))
     {
-        return "$prefix.$Texi2HTML::THISDOC{'extension'}";
+        return "$prefix.".get_conf('EXTENSION');
     }
     return undef;
 }

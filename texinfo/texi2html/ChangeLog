@@ -1,3 +1,27 @@
+2010-07-05  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl, texi2html.init, formats/*: use functions to set
+	configuration variables, and not perl variables. This allows
+	for command-line options overriding defaults. Report from Karl.
+	Warn when output file is incompatible with split or format is
+	incompatible with split.
+	Associate --output with 3 variables, OUT, SUBDIR and OUTFILE.
+	OUT is the last value set, SUBDIR is set if the value is a directory
+	or ends with a /, and OUTFILE is set in the other case.
+	OUT is used if split, OUTFILE is used otherwise if set, and if 
+	not set and SUBDIR is set, the file output goes in SUBDIR.
+	New command line switch --set-init-variable to set a configuration 
+	variable from the command line.
+	DATE is now set as today, DOCUMENT_ENCODING as documentencoding,
+	extension as EXTENSION and DOCUMENT_DESCRIPTION as documentdescription.
+	put config variables out of Texi2HTML::THISDOC, in 
+	Texi2HTML::THISDOC{'variables'}->{$var}.
+	* texi2html.pl: remove obsolete stuff: 
+	$INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, $ENCODING, 
+	$CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS.
+	Remove $Texi2HTML::THISDOC{'current_language'}.
+	* examples/inlinestyle.init: remove this file, it is now built-in.
+
 2010-06-30  Patrice Dumas  <pertusus@free.fr>
 
 	* Makefile.am, i18n_ref: add a directory for references for i18n

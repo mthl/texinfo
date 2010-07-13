@@ -15,9 +15,9 @@ nodes_before_top_and_sections_monolithic nodes_before_top_and_sections.texi
 makeinfo_nodes_before_top_and_sections nodes_before_top_and_sections.texi --init makeinfo.init --init index_test.init
 nodes_before_top_and_sections_html_chapter nodes_before_top_and_sections.texi --html --split chapter
 nodes_before_top_and_sections_html_chapter_nodes nodes_before_top_and_sections.texi --html --use-nodes --node-files --split chapter
-index_special_region index_special_region.texi --split chapter --init no_use_titlepage_for_title.init
-index_special_region_no_region index_special_region_no_region.texi --split chapter --init no_use_titlepage_for_title.init
-index_special_region_no_insertcopying index_special_region_no_insertcopying.texi --split chapter --init no_use_titlepage_for_title.init
+index_special_region index_special_region.texi --split chapter --set-init-var 'USE_TITLEPAGE_FOR_TITLE 0'
+index_special_region_no_region index_special_region_no_region.texi --split chapter --set-init-var 'USE_TITLEPAGE_FOR_TITLE 0'
+index_special_region_no_insertcopying index_special_region_no_insertcopying.texi --split chapter --set-init-var 'USE_TITLEPAGE_FOR_TITLE 0'
 index_special_region_html index_special_region.texi --html --split chapter
 index_special_region_no_region_html index_special_region_no_region.texi --html --split chapter
 index_special_region_no_insertcopying_html index_special_region_no_insertcopying.texi --html --split chapter

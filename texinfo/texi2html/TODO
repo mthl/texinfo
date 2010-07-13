@@ -3,40 +3,24 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-* verify that a format option switch never overwrite previously
-  set user option switch. For example, right now, --html overrides
-  --no-split which is bad. Report from Karl.
-
-* now config variables are read-only after command line switches
-  expansion. If defined, they set $Texi2HTML::THISDOC{'VAR'}
-  and if not defined, $Texi2HTML::THISDOC{'VAR'} is autodetected.
-  $Texi2HTML::THISDOC{'VAR'} is then used in the code.
-
-  This means that, if a variable that was not autodetected becomes
-  autodetected, the code will have to switch to using 
-  $Texi2HTML::THISDOC{'VAR'} instead of $VAR. This is very bad since it
-  means API breaking.
-
-  All that is now more or less encapsulated in get_conf, but the 
-  problem remains.
-
-set_from_command_line('somevar', $value);
-set_from_document('somevar', $value);
-set_from_init_file('somevar', $value);
-get_conf('somevar');
-
-
+remove l2h_tmp_dir.init from .cvsignore
 
 Later
 -----
 
-* have a way to know whether a description is present or not 
-  when formatting the menu_entry. This could allow not having a 
-  colon after menu_entry when there is no description.
-
 * test --headers --output, and the other order, especially when in 
   info mode, such that it triggers also plaintext. Also test with 
   directories and files.
+
+* check for (both split and not split)
+
+  --out foo/ --out bar/file.html
+
+  --out foo/ --out file.html
+
+* have a way to know whether a description is present or not 
+  when formatting the menu_entry. This could allow not having a 
+  colon after menu_entry when there is no description.
 
 * line breaking could happen after a full width character.
 
@@ -387,7 +371,7 @@ in nested table line
 
 * maybe put lang= in <html> and not <body>, though I am not convinced.
 
-* $MENU_ENTRY_COLON and $INDEX_ENTRY_COLON maybe could be generalized
+* MENU_ENTRY_COLON and INDEX_ENTRY_COLON maybe could be generalized
   to other formats than html
 
 Misc info and boring stuff

@@ -964,8 +964,10 @@ to do some simple changes in variable values, however, to be able to
 really take advantage of all the features of the initialization file,
 a good knowledge of @command{perl} is required.
 
-In initialization file two kind of variables appear. These are normal
-variables (including arrays and hashes) and references on functions. 
+In initialization file three kind of variables appear. Configuration variables
+are set and accessed through specific functions. The second kind
+are normal scalar, arrays and hashes, and the third one is references 
+on functions. 
 The later permits the dynamic redefinition of functions used to produce
 the @acronym{HTML} manual. You should be able to change the value of some  
 normal variables without a deep knowledge of @command{perl}, by looking
@@ -976,7 +978,8 @@ Initialization file are loaded from the main program by
 the mean of a @code{require}, while in the @code{Texi2HTML::Config}
 namespace. This means that the namespace of the main program and
 the namespace of initialization files are distinct, which ensures
-that no name clash should happen. The variables are declared with
+that no name clash should happen. The scalars, 
+arrays and hashes are declared with
 @code{use vars}, such that it should be possible to use the 
 @code{use strict} pragma in the initialization file code.
 
@@ -991,6 +994,7 @@ that are used during a manual formatting. The handlers explained
 later can be used for that (@pxref{Bypassing normal formatting}).
 
 @menu
+* Setting and getting configuration variable value::
 * Encodings::                 Setting the encodings.
 * Redefining functions::      Function redefinition is achieved with 
                               redefinition of references on functions.
@@ -999,44 +1003,93 @@ later can be used for that (@pxref{Bypassing normal formatting}).
 @end menu
 
 @c --------------------------------------------------------
+@node Setting and getting configuration variable value
+@section Setting and getting configuration variable value
+
+Configuration variables are 
+@itemize @bullet
+@item associated with @@-commands in the document, 
+for example @code{@@documentlanguage}, 
+@item associated with 
+configuration variables that
+may also be set on the command-line, for example @code{SPLIT} which is
+associated with the @option{--split} command-line switch, 
+@item other 
+configuration variables, for example @code{NO_CSS} which may be set to 0
+in case one does not want CSS. Those configuration variables may always be set
+on the command-line, using
+@example
+--set-init-variable 'VAR_NAME value'
+@end example
+where @var{VAR_NAME} is the variable name, for example @code{SPLIT} or
+@code{NO_CSS} and @var{value} is the value of the variable. A special
+value is @samp{undef} the sets the variable to this special @command{perl}
+value.
+@end itemize
+
+To set the value of a configuration variable from an init file,
+you should use the function:
+@defun set_from_init_file ($variable_name, $variable_value)
+@var{$variable_name} is a string containing the name of the variable 
+you want to set, and @var{$variable_value} is the value you want to set.
+@var{$variable_value} may be @samp{undef}. For example
+@example
+set_from_init_file('documentlanguage', 'fr');
+@end example
+should override the @code{@@documentlanguage} from the document.
+It will be overriden by @option{--document-language} on the 
+command-line.
+
+Another example, 
+@example
+set_from_init_file('SPLIT', 'chapter');
+@end example
+should override the default splitting of the document. It will be
+overriden by the @option{--split} option on the command-line.
+
+And, as a last example, 
+@example
+set_from_init_file('NO_CSS', 1);
+@end example
+wil override the default value for @code{NO_CSS}. It will be overriden by
+@code{--set-init-variable 'NO_CSS 1'} on the command-line.
+@end defun
+
+To get the value of a variable, the function is 
+@defun get_conf ($variable_name)
+@var{$variable_name} is  the name of the variable you want to know the 
+value.
+@end defun
+
+@c --------------------------------------------------------
 @node Encodings
 @section Setting the encodings
 
 There are four encodings relevant for @command{texi2html}, they are
-associated with corresponding configuration variables. If these 
+associated with corresponding variables. If these 
 variables are defined they
-determine a corresponding value in @code{%Texi2HTML::THISDOC}
-which is otherwise autodetected:
+determine a corresponding value that may be available through 
+@code{get_conf} and are autodetected if not set:
 @enumerate 
-@item The variable @variable{$DOCUMENT_ENCODING} corresponds with 
-the document encoding.
-If defined, this variable sets 
-@variable{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}.
+@item @code{documentencoding} available through @code{get_conf} may be set.
 If not defined, the encoding appearing in @code{@@documentencoding} will
-be used to set @variable{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}.
-The @code{@@documentencoding} value appears in 
-@variable{$Texi2HTML::THISDOC@{'documentencoding'@}}.
+be used to set
 @item The texinfo files encoding.
-If @variable{$IN_ENCODING} is set, this sets 
-@variable{$Texi2HTML::THISDOC@{'IN_ENCODING'@}}.
-Otherwise, when @code{$Texi2HTML::THISDOC@{'DOCUMENT_ENCODING'@}}
-is set, @code{$Texi2HTML::THISDOC@{'IN_ENCODING'@}} is also set
+@variable{IN_ENCODING} may also be set.
+Otherwise, when @code{documentencoding}
+is set, @code{IN_ENCODING} is also set
 if the encoding is supported by perl.
 @item The out files encoding. It is associated with the variable
-@variable{$OUT_ENCODING}. If defined, 
-@variable{$Texi2HTML::THISDOC@{'OUT_ENCODING'@}} is set accordingly.
-If not defined, the value of
-@code{$Texi2HTML::THISDOC@{'ENCODING_NAME'@}} 
+@variable{OUT_ENCODING}. If not set, the value of
+@code{ENCODING_NAME} 
 or 
-@code{$Texi2HTML::THISDOC@{'IN_ENCODING'@}}
+@code{IN_ENCODING}
 is used if one of these variables is set.
 @item The encoding advertized in out files, associated with the variable
-@variable{$ENCODING_NAME}. It sets 
-@variable{$Texi2HTML::THISDOC@{'ENCODING_NAME'@}} if defined.
-
+@variable{ENCODING_NAME}. 
 If unset the value of this variable is based on the
 other ENCODING values, and if they are all undefined, the variable
-@variable{$DEFAULT_ENCODING} is used.
+@variable{DEFAULT_ENCODING} is used.
 @end enumerate
 
 The values for the encoding related variables are set in the default 
@@ -1508,9 +1561,9 @@ through @code{get_conf}:
 How the manual is split.
 @item SPLIT_SIZE
 The split size, only relevant for info output.
-@item doctype
+@item DOCTYPE
 The current doctype.
-@item headers
+@item HEADERS
 True if headers are to be output.
 @end table
 
@@ -1595,7 +1648,7 @@ reference on an array containg the line resulting from formatting
 the short table of contents, including a heading and a reference.
 @end table
 @item today
-The date. May be overriden by @code{$DATE}.
+The date. May be overriden in @variable{today}.
 @item css_import_lines
 reference on an array containing the @code{@@import} lines of 
 @acronym{CSS} files.
@@ -1878,7 +1931,7 @@ day.
 @c in the initialization file.
 
 A date is collected to be output in the footer. You can change it by 
-defining @variable{$DATE} in the initialization file.
+defining @variable{today} in the initialization file.
 
 The default functions call the function associated with 
 @variable{$print_foot_navigation} to format the navigation panel for the 
@@ -4607,6 +4660,29 @@ version 1.68. API changed also a lot between 1.78 and 1.80. Between
 whole internationalization handling was changed.
 
 @itemize @bullet
+@item API changes between 5.0 and X.X
+@itemize @bullet
+@item remove completly $INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, 
+  $ENCODING, $CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS
+  they have been obsolete, sometimes for many years.
+@item DATE is now set as today, DOCUMENT_ENCODING as documentencoding,
+  extension as EXTENSION and DOCUMENT_DESCRIPTION as documentdescription.
+@item Don't use perl variables for configuration variables anymore. Instead, 
+  they should be set by 
+  @code{set_from_init_file('VARIABLE', value);}.
+  For example 
+@example
+$SPLIT = 'node';
+@end example
+  should be replaced by
+@example
+set_from_init_file('SPLIT', 'node');
+@end example
+@item configuration variables are not in @code{Texi2HTML::THISDOC} directly 
+  anymore, but in @code{Texi2HTML::THISDOC@{'variables'@}->@{$var@}}. they 
+  should be accessed
+  through @code{get_conf($var)}.
+@end itemize
 @item API changes between 1.82 and 5.0:
 @itemize @bullet
 @item complex format handling API changed. $complex_format_map is replaced by 
