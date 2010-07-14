@@ -1,0 +1,1275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 15 Definition Commands</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 15 Definition Commands">
+<meta name="keywords" content="GNU Texinfo 4.2: 15 Definition Commands">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Definition-Commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#need" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Template" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Definition-Commands-1"></a>
+<h1 class="chapter">15 Definition Commands</h1>
+<a name="index-Definition-commands"></a>
+
+<p>The <code>@deffn</code> command and the other <em>definition commands</em>
+enable you to describe functions, variables, macros, commands, user
+options, special forms and other such artifacts in a uniform
+format.
+</p>
+<p>In the Info file, a definition causes the entity
+category&mdash;&lsquo;Function&rsquo;, &lsquo;Variable&rsquo;, or whatever&mdash;to appear at the
+beginning of the first line of the definition, followed by the
+entity&rsquo;s name and arguments.  In the printed manual, the command
+causes TeX to print the entity&rsquo;s name and its arguments on the left
+margin and print the category next to the right margin.  In both
+output formats, the body of the definition is indented.  Also, the
+name of the entity is entered into the appropriate index:
+<code>@deffn</code> enters the name into the index of functions,
+<code>@defvr</code> enters it into the index of variables, and so
+on.
+</p>
+<p>A manual need not and should not contain more than one definition for
+a given name.  An appendix containing a summary should use
+<code>@table</code> rather than the definition commands.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Def-Cmd-Template">15.1 The Template for a Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to structure a description using a
+                                  definition command.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Optional-Arguments">15.2 Optional and Repeated Arguments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to handle optional and repeated arguments.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#deffnx">15.3 Two or More &lsquo;First&rsquo; Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to group two or more &lsquo;first&rsquo; lines.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Def-Cmds-in-Detail">15.4 The Definition Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          All the definition commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Def-Cmd-Conventions">15.5 Conventions for Writing Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Conventions for writing definitions.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Sample-Function-Definition">15.6 A Sample Function Definition</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+</table>
+
+<hr>
+<a name="Def-Cmd-Template"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Optional-Arguments" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="The-Template-for-a-Definition"></a>
+<h2 class="section">15.1 The Template for a Definition</h2>
+<a name="index-Definition-template"></a>
+<a name="index-Template-for-a-definition"></a>
+
+<p>The <code>@deffn</code> command is used for definitions of entities that
+resemble functions.  To write a definition using the <code>@deffn</code>
+command, write the <code>@deffn</code> command at the beginning of a line
+and follow it on the same line by the category of the entity, the name
+of the entity itself, and its arguments (if any).  Then write the body
+of the definition on succeeding lines.  (You may embed examples in the
+body.)  Finally, end the definition with an <code>@end deffn</code> command
+written on a line of its own.  (The other definition commands follow
+the same format.)
+</p>
+<p>The template for a definition looks like this:
+</p>
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end deffn
+</pre></div>
+
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@deffn Command forward-word count
+This command moves point forward @var{count} words
+(or backward if @var{count} is negative). &hellip;
+@end deffn
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<dl>
+<dt><a name="index-forward_002dword"></a>Command: <strong>forward-word</strong><em> count</em></dt>
+<dd><p>This function moves point forward <var>count</var> words
+(or backward if <var>count</var> is negative). &hellip;
+</p></dd></dl>
+</blockquote>
+
+<p>Capitalize the category name like a title.  If the name of the
+category contains spaces, as in the phrase &lsquo;Interactive Command&rsquo;,
+write braces around it.  For example:
+</p>
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
+&hellip;
+@end deffn
+</pre></div>
+
+<p>Otherwise, the second word will be mistaken for the name of the
+entity.
+</p>
+<p>Some of the definition commands are more general than others.  The
+<code>@deffn</code> command, for example, is the general definition command
+for functions and the like&mdash;for entities that may take arguments.  When
+you use this command, you specify the category to which the entity
+belongs.  The <code>@deffn</code> command possesses three predefined,
+specialized variations, <code>@defun</code>, <code>@defmac</code>, and
+<code>@defspec</code>, that specify the category for you: &ldquo;Function&rdquo;,
+&ldquo;Macro&rdquo;, and &ldquo;Special Form&rdquo; respectively.  (In Lisp, a special form
+is an entity much like a function.)  The <code>@defvr</code> command also is
+accompanied by several predefined, specialized variations for describing
+particular kinds of variables.
+</p>
+<p>The template for a specialized definition, such as <code>@defun</code>, is
+similar to the template for a generalized definition, except that you
+do not need to specify the category:
+</p>
+<div class="example">
+<pre class="example">@defun <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defun
+</pre></div>
+
+<p>Thus,
+</p>
+<div class="example">
+<pre class="example">@defun buffer-end flag
+This function returns @code{(point-min)} if @var{flag}
+is less than 1, @code{(point-max)} otherwise.
+&hellip;
+@end defun
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<dl>
+<dt><a name="index-buffer_002dend"></a>Function: <strong>buffer-end</strong><em> flag</em></dt>
+<dd><p>This function returns <code>(point-min)</code> if <var>flag</var> is less than 1,
+<code>(point-max)</code> otherwise.  &hellip;
+</p></dd></dl>
+</blockquote>
+
+<p>See section <a href="#Sample-Function-Definition">A Sample Function Definition</a>, for a more detailed example of a function
+definition, including the use of <code>@example</code> inside the
+definition.
+</p>
+<p>The other specialized commands work like <code>@defun</code>.
+</p>
+<a name="index-Macros-in-definition-commands"></a>
+<p>Note that, due to implementation difficulties, macros are not expanded
+in <code>@deffn</code> and all the other definition commands.
+</p>
+<hr>
+<a name="Optional-Arguments"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Template" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#deffnx" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Optional-and-Repeated-Arguments"></a>
+<h2 class="section">15.2 Optional and Repeated Arguments</h2>
+<a name="index-Optional-and-repeated-arguments"></a>
+<a name="index-Repeated-and-optional-arguments"></a>
+<a name="index-Arguments_002c-repeated-and-optional"></a>
+<a name="index-Syntax_002c-optional-_0026-repeated-arguments"></a>
+<a name="index-Meta_002dsyntactic-chars-for-arguments"></a>
+
+<p>Some entities take optional or repeated arguments, which may be
+specified by a distinctive glyph that uses square brackets and
+ellipses.  For example, a special form often breaks its argument list
+into separate arguments in more complicated ways than a
+straightforward function.
+</p>
+<p>An argument enclosed within square brackets is optional.
+Thus, [<var>optional-arg</var>] means that <var>optional-arg</var> is optional.
+An argument followed by an ellipsis is optional
+and may be repeated more than once.
+Thus, <var>repeated-args</var>&hellip; stands for zero or more arguments.
+Parentheses are used when several arguments are grouped
+into additional levels of list structure in Lisp.
+</p>
+<p>Here is the <code>@defspec</code> line of an example of an imaginary
+special form:
+</p>
+<blockquote>
+<dl>
+<dt><a name="index-foobar"></a>Special Form: <strong>foobar</strong><em> (<var>var</var> [<var>from</var> <var>to</var> [<var>inc</var>]]) <var>body</var>&hellip;</em></dt>
+</dl>
+</blockquote>
+
+<p>In this example, the arguments <var>from</var> and <var>to</var> are optional,
+but must both be present or both absent.  If they are present,
+<var>inc</var> may optionally be specified as well.  These arguments are
+grouped with the argument <var>var</var> into a list, to distinguish them
+from <var>body</var>, which includes all remaining elements of the
+form.
+</p>
+<p>In a Texinfo source file, this <code>@defspec</code> line is written like
+this (except it would not be split over two lines, as it is in this
+example).
+</p>
+<div class="example">
+<pre class="example">@defspec foobar (@var{var} [@var{from} @var{to}
+     [@var{inc}]]) @var{body}@dots{}
+</pre></div>
+
+<p>The function is listed in the Command and Variable Index under
+&lsquo;<samp>foobar</samp>&rsquo;.
+</p>
+<hr>
+<a name="deffnx"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Optional-Arguments" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Two-or-More-_0060First_0027-Lines"></a>
+<h2 class="section">15.3 Two or More &lsquo;First&rsquo; Lines</h2>
+<a name="index-Two-_0060First_0027-Lines-for-_0040deffn"></a>
+<a name="index-Grouping-two-definitions-together"></a>
+<a name="index-Definitions-grouped-together"></a>
+<a name="index-deffnx"></a>
+
+<p>To create two or more &lsquo;first&rsquo; or header lines for a definition, follow
+the first <code>@deffn</code> line by a line beginning with <code>@deffnx</code>.
+The <code>@deffnx</code> command works exactly like <code>@deffn</code>
+except that it does not generate extra vertical white space between it
+and the preceding line.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
+@deffnx {Interactive Command} isearch-backward
+These two search commands are similar except &hellip;
+@end deffn
+</pre></div>
+
+<p>produces
+</p>
+<dl>
+<dt><a name="index-isearch_002dforward"></a>Interactive Command: <strong>isearch-forward</strong></dt>
+<dt><a name="index-isearch_002dbackward"></a>Interactive Command: <strong>isearch-backward</strong></dt>
+<dd><p>These two search commands are similar except &hellip;
+</p></dd></dl>
+
+<p>Each definition command has an &lsquo;x&rsquo; form: <code>@defunx</code>,
+<code>@defvrx</code>, <code>@deftypefunx</code>, etc.
+</p>
+<p>The &lsquo;x&rsquo; forms work just like <code>@itemx</code>; see <a href="Lists-and-Tables.html#itemx"><code>@itemx</code></a>.
+</p>
+<hr>
+<a name="Def-Cmds-in-Detail"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#deffnx" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Functions-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="The-Definition-Commands"></a>
+<h2 class="section">15.4 The Definition Commands</h2>
+
+<p>Texinfo provides more than a dozen definition commands, all of which
+are described in this section.
+</p>
+<p>The definition commands automatically enter the name of the entity in
+the appropriate index: for example, <code>@deffn</code>, <code>@defun</code>,
+and <code>@defmac</code> enter function names in the index of functions;
+<code>@defvr</code> and <code>@defvar</code> enter variable names in the index
+of variables.
+</p>
+<p>Although the examples that follow mostly illustrate Lisp, the commands
+can be used for other programming languages.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Functions-Commands">15.4.1 Functions and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for functions and similar entities.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Variables-Commands">15.4.2 Variables and Similar Entities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Commands for variables and similar entities.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Typed-Functions">15.4.3 Functions in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for functions in typed languages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Typed-Variables">15.4.4 Variables in Typed Languages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Commands for variables in typed languages.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Abstract-Objects">15.4.5 Object-Oriented Programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands for object-oriented programming.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Data-Types">15.4.6 Data Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  The definition command for data types.
+</td></tr>
+</table>
+
+<hr>
+<a name="Functions-Commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Functions-and-Similar-Entities"></a>
+<h3 class="subsection">15.4.1 Functions and Similar Entities</h3>
+
+<p>This section describes the commands for describing functions and similar
+entities:
+</p>
+<dl compact="compact">
+<dd><a name="index-deffn"></a>
+</dd>
+<dt><code>@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@deffn</code> command is the general definition command for
+functions, interactive commands, and similar entities that may take
+arguments.  You must choose a term to describe the category of entity
+being defined; for example, &ldquo;Function&rdquo; could be used if the entity is
+a function.  The <code>@deffn</code> command is written at the beginning of a
+line and is followed on the same line by the category of entity being
+described, the name of this particular entity, and its arguments, if
+any.  Terminate the definition with <code>@end deffn</code> on a line of its
+own.
+</p>
+<p>For example, here is a definition:
+</p>
+<div class="example">
+<pre class="example">@deffn Command forward-char nchars
+Move point forward @var{nchars} characters.
+@end deffn
+</pre></div>
+
+<p>This shows a rather terse definition for a &ldquo;command&rdquo; named
+<code>forward-char</code> with one argument, <var>nchars</var>.
+</p>
+<p><code>@deffn</code> prints argument names such as <var>nchars</var> in italics or
+upper case, as if <code>@var</code> had been used, because we think of these
+names as metasyntactic variables&mdash;they stand for the actual argument
+values.  Within the text of the description, write an argument name
+explicitly with <code>@var</code> to refer to the value of the argument.  In
+the example above, we used &lsquo;<samp>@var{nchars}</samp>&rsquo; in this way.
+</p>
+<p>The template for <code>@deffn</code> is:
+</p>
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end deffn
+</pre></div>
+
+<a name="index-defun"></a>
+</dd>
+<dt><code>@defun <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defun</code> command is the definition command for functions.
+<code>@defun</code> is equivalent to &lsquo;<samp>@deffn Function
+&hellip;</samp>&rsquo;.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@defun set symbol new-value
+Change the value of the symbol @var{symbol}
+to @var{new-value}.
+@end defun
+</pre></div>
+
+<p>shows a rather terse definition for a function <code>set</code> whose
+arguments are <var>symbol</var> and <var>new-value</var>.  The argument names on
+the <code>@defun</code> line automatically appear in italics or upper case as
+if they were enclosed in <code>@var</code>.  Terminate the definition with
+<code>@end defun</code> on a line of its own.
+</p>
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@defun <var>function-name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defun
+</pre></div>
+
+<p><code>@defun</code> creates an entry in the index of functions.
+</p>
+<a name="index-defmac"></a>
+</dd>
+<dt><code>@defmac <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defmac</code> command is the definition command for macros.
+<code>@defmac</code> is equivalent to &lsquo;<samp>@deffn Macro &hellip;</samp>&rsquo; and
+works like <code>@defun</code>.
+</p>
+<a name="index-defspec"></a>
+</dd>
+<dt><code>@defspec <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defspec</code> command is the definition command for special
+forms.  (In Lisp, a special form is an entity much like a function,
+see <a href="../elisp/Special-Forms.html#Special-Forms">Special Forms</a> in <cite>GNU Emacs Lisp Reference Manual</cite>.)
+<code>@defspec</code> is equivalent to &lsquo;<samp>@deffn {Special Form}
+&hellip;</samp>&rsquo; and works like <code>@defun</code>.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Variables-Commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Functions-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Functions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Variables-and-Similar-Entities"></a>
+<h3 class="subsection">15.4.2 Variables and Similar Entities</h3>
+
+<p>Here are the commands for defining variables and similar
+entities:
+</p>
+<dl compact="compact">
+<dd><a name="index-defvr"></a>
+</dd>
+<dt><code>@defvr <var>category</var> <var>name</var></code></dt>
+<dd><p>The <code>@defvr</code> command is a general definition command for
+something like a variable&mdash;an entity that records a value.  You must
+choose a term to describe the category of entity being defined; for
+example, &ldquo;Variable&rdquo; could be used if the entity is a variable.
+Write the <code>@defvr</code> command at the beginning of a line and
+follow it on the same line by the category of the entity and the
+name of the entity.
+</p>
+<p>Capitalize the category name like a title.  If the name of the category
+contains spaces, as in the name &ldquo;User Option&rdquo;, enclose it in braces.
+Otherwise, the second word will be mistaken for the name of the entity.
+For example,
+</p>
+<div class="example">
+<pre class="example">@defvr {User Option} fill-column
+This buffer-local variable specifies
+the maximum width of filled lines.
+&hellip;
+@end defvr
+</pre></div>
+
+<p>Terminate the definition with <code>@end defvr</code> on a line of its
+own.
+</p>
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@defvr <var>category</var> <var>name</var>
+<var>body-of-definition</var>
+@end defvr
+</pre></div>
+
+<p><code>@defvr</code> creates an entry in the index of variables for <var>name</var>.
+</p>
+<a name="index-defvar"></a>
+</dd>
+<dt><code>@defvar <var>name</var></code></dt>
+<dd><p>The <code>@defvar</code> command is the definition command for variables.
+<code>@defvar</code> is equivalent to &lsquo;<samp>@defvr Variable
+&hellip;</samp>&rsquo;.
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@defvar kill-ring
+&hellip;
+@end defvar
+</pre></div>
+
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@defvar <var>name</var>
+<var>body-of-definition</var>
+@end defvar
+</pre></div>
+
+<p><code>@defvar</code> creates an entry in the index of variables for
+<var>name</var>.
+</p>
+<a name="index-defopt"></a>
+</dd>
+<dt><code>@defopt <var>name</var></code></dt>
+<dd><a name="index-User-options_002c-marking"></a>
+<p>The <code>@defopt</code> command is the definition command for <em>user
+options</em>, i.e., variables intended for users to change according to
+taste; Emacs has many such (see <a href="../emacs/Variables.html#Variables">Variables</a> in <cite>The GNU Emacs Manual</cite>).  <code>@defopt</code> is equivalent to &lsquo;<samp>@defvr {User
+Option} &hellip;</samp>&rsquo; and works like <code>@defvar</code>.
+</p></dd>
+</dl>
+
+
+<hr>
+<a name="Typed-Functions"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Variables-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Variables" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Functions-in-Typed-Languages"></a>
+<h3 class="subsection">15.4.3 Functions in Typed Languages</h3>
+
+<p>The <code>@deftypefn</code> command and its variations are for describing
+functions in languages in which you must declare types of variables and
+functions, such as C and C++.
+</p>
+<dl compact="compact">
+<dd><a name="index-deftypefn"></a>
+</dd>
+<dt><code>@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@deftypefn</code> command is the general definition command for
+functions and similar entities that may take arguments and that are
+typed.  The <code>@deftypefn</code> command is written at the beginning of
+a line and is followed on the same line by the category of entity
+being described, the type of the returned value, the name of this
+particular entity, and its arguments, if any.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@deftypefn {Library Function} int foobar
+   (int @var{foo}, float @var{bar})
+&hellip;
+@end deftypefn
+</pre></div>
+
+<p>(where the text before the &ldquo;&hellip;&rdquo;, shown above as two lines, would
+actually be a single line in a real Texinfo file) produces the following
+in Info:
+</p>
+<div class="smallexample">
+<pre class="smallexample">-- Library Function: int foobar (int FOO, float BAR)
+&hellip;
+</pre></div>
+
+<p>This means that <code>foobar</code> is a &ldquo;library function&rdquo; that returns an
+<code>int</code>, and its arguments are <var>foo</var> (an <code>int</code>) and
+<var>bar</var> (a <code>float</code>).
+</p>
+<p>The argument names that you write in <code>@deftypefn</code> are not subject
+to an implicit <code>@var</code>&mdash;since the actual names of the arguments in
+<code>@deftypefn</code> are typically scattered among data type names and
+keywords, Texinfo cannot find them without help.  Instead, you must write
+<code>@var</code> explicitly around the argument names.  In the example
+above, the argument names are &lsquo;<samp>foo</samp>&rsquo; and &lsquo;<samp>bar</samp>&rsquo;.
+</p>
+<p>The template for <code>@deftypefn</code> is:
+</p>
+<div class="example">
+<pre class="example">@deftypefn <var>category</var> <var>data-type</var> <var>name</var> <var>arguments</var> &hellip;
+<var>body-of-description</var>
+@end deftypefn
+</pre></div>
+
+<p>Note that if the <var>category</var> or <var>data type</var> is more than one
+word then it must be enclosed in braces to make it a single argument.
+</p>
+<p>If you are describing a procedure in a language that has packages,
+such as Ada, you might consider using <code>@deftypefn</code> in a manner
+somewhat contrary to the convention described in the preceding
+paragraphs.
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@deftypefn stacks private push
+        (@var{s}:in out stack;
+        @var{n}:in integer)
+&hellip;
+@end deftypefn
+</pre></div>
+
+<p>(The <code>@deftypefn</code> arguments are shown split into three lines, but
+would be a single line in a real Texinfo file.)
+</p>
+<p>In this instance, the procedure is classified as belonging to the
+package <code>stacks</code> rather than classified as a &lsquo;procedure&rsquo; and its
+data type is described as <code>private</code>.  (The name of the procedure
+is <code>push</code>, and its arguments are <var>s</var> and <var>n</var>.)
+</p>
+<p><code>@deftypefn</code> creates an entry in the index of functions for
+<var>name</var>.
+</p>
+</dd>
+<dt><code>@deftypefun <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><a name="index-deftypefun"></a>
+<p>The <code>@deftypefun</code> command is the specialized definition command
+for functions in typed languages.  The command is equivalent to
+&lsquo;<samp>@deftypefn Function &hellip;</samp>&rsquo;.
+</p>
+<p>Thus,
+</p>
+<div class="smallexample">
+<pre class="smallexample">@deftypefun int foobar (int @var{foo}, float @var{bar})
+&hellip;
+@end deftypefun
+</pre></div>
+
+<p>produces the following in Info:
+</p>
+<div class="example">
+<pre class="example">-- Function: int foobar (int FOO, float BAR)
+&hellip;
+</pre></div>
+
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@deftypefun <var>type</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-description</var>
+@end deftypefun
+</pre></div>
+
+<p><code>@deftypefun</code> creates an entry in the index of functions for
+<var>name</var>.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<a name="Typed-Variables"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Functions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Variables-in-Typed-Languages"></a>
+<h3 class="subsection">15.4.4 Variables in Typed Languages</h3>
+
+<p>Variables in typed languages are handled in a manner similar to
+functions in typed languages.  See section <a href="#Typed-Functions">Functions in Typed Languages</a>.  The general
+definition command <code>@deftypevr</code> corresponds to
+<code>@deftypefn</code> and the specialized definition command
+<code>@deftypevar</code> corresponds to <code>@deftypefun</code>.
+</p>
+<dl compact="compact">
+<dd><a name="index-deftypevr"></a>
+</dd>
+<dt><code>@deftypevr <var>category</var> <var>data-type</var> <var>name</var></code></dt>
+<dd><p>The <code>@deftypevr</code> command is the general definition command for
+something like a variable in a typed language&mdash;an entity that records
+a value.  You must choose a term to describe the category of the
+entity being defined; for example, &ldquo;Variable&rdquo; could be used if the
+entity is a variable.
+</p>
+<p>The <code>@deftypevr</code> command is written at the beginning of a line
+and is followed on the same line by the category of the entity
+being described, the data type, and the name of this particular
+entity.
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@deftypevr {Global Flag} int enable
+&hellip;
+@end deftypevr
+</pre></div>
+
+<p>produces the following in Info:
+</p>
+<div class="example">
+<pre class="example">-- Global Flag: int enable
+&hellip;
+</pre></div>
+
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@deftypevr <var>category</var> <var>data-type</var> <var>name</var>
+<var>body-of-description</var>
+@end deftypevr
+</pre></div>
+
+<p><code>@deftypevr</code> creates an entry in the index of variables for
+<var>name</var>.
+</p>
+<a name="index-deftypevar"></a>
+</dd>
+<dt><code>@deftypevar <var>data-type</var> <var>name</var></code></dt>
+<dd><p>The <code>@deftypevar</code> command is the specialized definition command
+for variables in typed languages.  <code>@deftypevar</code> is equivalent
+to &lsquo;<samp>@deftypevr Variable &hellip;</samp>&rsquo;.
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@deftypevar int fubar
+&hellip;
+@end deftypevar
+</pre></div>
+
+<p>produces the following in Info:
+</p>
+<div class="example">
+<pre class="example">-- Variable: int fubar
+&hellip;
+</pre></div>
+
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@deftypevar <var>data-type</var> <var>name</var>
+<var>body-of-description</var>
+@end deftypevar
+</pre></div>
+
+<p><code>@deftypevar</code> creates an entry in the index of variables for
+<var>name</var>.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Abstract-Objects"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Typed-Variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-Types" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Object_002dOriented-Programming"></a>
+<h3 class="subsection">15.4.5 Object-Oriented Programming</h3>
+
+<p>Here are the commands for formatting descriptions about abstract
+objects, such as are used in object-oriented programming.  A class is
+a defined type of abstract object.  An instance of a class is a
+particular object that has the type of the class.  An instance
+variable is a variable that belongs to the class but for which each
+instance has its own value.
+</p>
+<p>In a definition, if the name of a class is truly a name defined in the
+programming system for a class, then you should write an <code>@code</code>
+around it.  Otherwise, it is printed in the usual text font.
+</p>
+<dl compact="compact">
+<dd><a name="index-defcv"></a>
+</dd>
+<dt><code>@defcv <var>category</var> <var>class</var> <var>name</var></code></dt>
+<dd><p>The <code>@defcv</code> command is the general definition command for
+variables associated with classes in object-oriented programming.  The
+<code>@defcv</code> command is followed by three arguments: the category of
+thing being defined, the class to which it belongs, and its
+name.  Thus,
+</p>
+<div class="example">
+<pre class="example">@defcv {Class Option} Window border-pattern
+&hellip;
+@end defcv
+</pre></div>
+
+<p>illustrates how you would write the first line of a definition of the
+<code>border-pattern</code> class option of the class <code>Window</code>.
+</p>
+<p>The template is:
+</p><div class="example">
+<pre class="example">@defcv <var>category</var> <var>class</var> <var>name</var>
+&hellip;
+@end defcv
+</pre></div>
+
+<p><code>@defcv</code> creates an entry in the index of variables.
+</p>
+<a name="index-defivar"></a>
+</dd>
+<dt><code>@defivar <var>class</var> <var>name</var></code></dt>
+<dd><p>The <code>@defivar</code> command is the definition command for instance
+variables in object-oriented programming.  <code>@defivar</code> is
+equivalent to &lsquo;<samp>@defcv {Instance Variable} &hellip;</samp>&rsquo;
+</p>
+<p>The template is:
+</p><div class="example">
+<pre class="example">@defivar <var>class</var> <var>instance-variable-name</var>
+<var>body-of-definition</var>
+@end defivar
+</pre></div>
+
+<p><code>@defivar</code> creates an entry in the index of variables.
+</p>
+<a name="index-deftypeivar"></a>
+</dd>
+<dt><code>@deftypeivar <var>class</var> <var>data-type</var> <var>name</var></code></dt>
+<dd><p>The <code>@deftypeivar</code> command is the definition command for typed
+instance variables in object-oriented programming.  It is similar to
+<code>@defivar</code> with the addition of the <var>data-type</var> parameter to
+specify the type of the instance variable.  <code>@deftypeivar</code> creates an
+entry in the index of variables.
+</p>
+<a name="index-defop"></a>
+</dd>
+<dt><code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defop</code> command is the general definition command for
+entities that may resemble methods in object-oriented programming.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+</p>
+<p>For example, some systems have constructs called <em>wrappers</em> that
+are associated with classes as methods are, but that act more like
+macros than like functions.  You could use <code>@defop Wrapper</code> to
+describe one of these.
+</p>
+<p>Sometimes it is useful to distinguish methods and <em>operations</em>.
+You can think of an operation as the specification for a method.
+Thus, a window system might specify that all window classes have a
+method named <code>expose</code>; we would say that this window system
+defines an <code>expose</code> operation on windows in general.  Typically,
+the operation has a name and also specifies the pattern of arguments;
+all methods that implement the operation must accept the same
+arguments, since applications that use the operation do so without
+knowing which method will implement it.
+</p>
+<p>Often it makes more sense to document operations than methods.  For
+example, window application developers need to know about the
+<code>expose</code> operation, but need not be concerned with whether a
+given class of windows has its own method to implement this operation.
+To describe this operation, you would write:
+</p>
+<div class="example">
+<pre class="example">@defop Operation windows expose
+</pre></div>
+
+<p>The <code>@defop</code> command is written at the beginning of a line and
+is followed on the same line by the overall name of the category of
+operation, the name of the class of the operation, the name of the
+operation, and its arguments, if any.
+</p>
+<p>The template is:
+</p><div class="example">
+<pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defop
+</pre></div>
+
+<p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
+<code>windows</code>&rsquo;, in the index of functions.
+</p>
+<a name="index-deftypeop"></a>
+</dd>
+<dt><code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@deftypeop</code> command is the definition command for typed
+operations in object-oriented programming.  It is similar to
+<code>@defop</code> with the addition of the <var>data-type</var> parameter to
+specify the return type of the method.  <code>@deftypeop</code> creates an
+entry in the index of functions.
+</p>
+</dd>
+<dt><code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><a name="index-defmethod"></a>
+<p>The <code>@defmethod</code> command is the definition command for methods
+in object-oriented programming.  A method is a kind of function that
+implements an operation for a particular class of objects and its
+subclasses.
+</p>
+<p><code>@defmethod</code> is equivalent to &lsquo;<samp>@defop Method &hellip;</samp>&rsquo;.
+The command is written at the beginning of a line and is followed by
+the name of the class of the method, the name of the method, and its
+arguments, if any.
+</p>
+<p>For example:
+</p><div class="example">
+<pre class="example">@defmethod <code>bar-class</code> bar-method argument
+&hellip;
+@end defmethod
+</pre></div>
+
+<p>illustrates the definition for a method called <code>bar-method</code> of
+the class <code>bar-class</code>.  The method takes an argument.
+</p>
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@defmethod <var>class</var> <var>method-name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defmethod
+</pre></div>
+
+<p><code>@defmethod</code> creates an entry, such as &lsquo;<code>bar-method</code> on
+<code>bar-class</code>&rsquo;, in the index of functions.
+</p>
+
+</dd>
+<dt><code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><a name="index-defmethod-1"></a>
+<p>The <code>@deftypemethod</code> command is the definition command for methods
+in object-oriented typed languages, such as C++ and Java.  It is similar
+to the <code>@defmethod</code> command with the addition of the
+<var>data-type</var> parameter to specify the return type of the method.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<a name="Data-Types"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmds-in-Detail" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Conventions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Data-Types-1"></a>
+<h3 class="subsection">15.4.6 Data Types</h3>
+
+<p>Here is the command for data types:
+</p>
+<dl compact="compact">
+<dd><a name="index-deftp"></a>
+</dd>
+<dt><code>@deftp <var>category</var> <var>name</var> <var>attributes</var>&hellip;</code></dt>
+<dd><p>The <code>@deftp</code> command is the generic definition command for data
+types.  The command is written at the beginning of a line and is
+followed on the same line by the category, by the name of the type
+(which is a word like <code>int</code> or <code>float</code>), and then by names of
+attributes of objects of that type.  Thus, you could use this command
+for describing <code>int</code> or <code>float</code>, in which case you could use
+<code>data type</code> as the category.  (A data type is a category of
+certain objects for purposes of deciding which operations can be
+performed on them.)
+</p>
+<p>In Lisp, for example,  <em>pair</em> names a particular data
+type, and an object of that type has two slots called the
+<small>CAR</small> and the <small>CDR</small>.  Here is how you would write the first line
+of a definition of <code>pair</code>.
+</p>
+<div class="example">
+<pre class="example">@deftp {Data type} pair car cdr
+&hellip;
+@end deftp
+</pre></div>
+
+<p>The template is:
+</p>
+<div class="example">
+<pre class="example">@deftp <var>category</var> <var>name-of-type</var> <var>attributes</var>&hellip;
+<var>body-of-definition</var>
+@end deftp
+</pre></div>
+
+<p><code>@deftp</code> creates an entry in the index of data types.
+</p></dd>
+</dl>
+
+<hr>
+<a name="Def-Cmd-Conventions"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-Types" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Sample-Function-Definition" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Conventions-for-Writing-Definitions"></a>
+<h2 class="section">15.5 Conventions for Writing Definitions</h2>
+<a name="index-Definition-conventions"></a>
+<a name="index-Conventions-for-writing-definitions"></a>
+
+<p>When you write a definition using <code>@deffn</code>, <code>@defun</code>, or
+one of the other definition commands, please take care to use
+arguments that indicate the meaning, as with the <var>count</var> argument
+to the <code>forward-word</code> function.  Also, if the name of an argument
+contains the name of a type, such as <var>integer</var>, take care that the
+argument actually is of that type.
+</p>
+<hr>
+<a name="Sample-Function-Definition"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Def-Cmd-Conventions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Definition-Commands" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="A-Sample-Function-Definition"></a>
+<h2 class="section">15.6 A Sample Function Definition</h2>
+<a name="index-Function-definitions"></a>
+<a name="index-Command-definitions"></a>
+<a name="index-Macro-definitions"></a>
+<a name="index-Sample-function-definition"></a>
+
+<p>A function definition uses the <code>@defun</code> and <code>@end defun</code>
+commands.  The name of the function follows immediately after the
+<code>@defun</code> command and it is followed, on the same line, by the
+parameter list.
+</p>
+<p>Here is a definition from <a href="../elisp/Calling-Functions.html#Calling-Functions">Calling Functions</a> in <cite>The GNU Emacs Lisp Reference Manual</cite>.
+</p>
+<blockquote>
+<dl>
+<dt><a name="index-apply"></a>Function: <strong>apply</strong><em> function &amp;rest arguments</em></dt>
+<dd><p><code>apply</code> calls <var>function</var> with <var>arguments</var>, just
+like <code>funcall</code> but with one difference: the last of
+<var>arguments</var> is a list of arguments to give to
+<var>function</var>, rather than a single argument.  We also say
+that this list is <em>appended</em> to the other arguments.
+</p>
+<p><code>apply</code> returns the result of calling <var>function</var>.
+As with <code>funcall</code>, <var>function</var> must either be a Lisp
+function or a primitive function; special forms and macros
+do not make sense in <code>apply</code>.
+</p>
+<div class="example">
+<pre class="example">(setq f 'list)
+     &rArr; list
+(apply f 'x 'y 'z)
+error--&gt; Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     &rArr; 10
+(apply '+ '(1 2 3 4))
+     &rArr; 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     &rArr; (a b c x y z)
+</pre></div>
+
+<p>An interesting example of using <code>apply</code> is found in the description
+of <code>mapcar</code>.
+</p></dd></dl>
+</blockquote>
+
+<p>In the Texinfo source file, this example looks like this:
+</p>
+<div class="example">
+<pre class="example">@defun apply function &amp;rest arguments
+@code{apply} calls @var{function} with
+@var{arguments}, just like @code{funcall} but with one
+difference: the last of @var{arguments} is a list of
+arguments to give to @var{function}, rather than a single
+argument.  We also say that this list is @dfn{appended}
+to the other arguments.
+</pre><pre class="example">
+</pre><pre class="example">@code{apply} returns the result of calling
+@var{function}.  As with @code{funcall},
+@var{function} must either be a Lisp function or a
+primitive function; special forms and macros do not make
+sense in @code{apply}.
+</pre><pre class="example">
+</pre><pre class="example">@example
+(setq f 'list)
+     @result{} list
+(apply f 'x 'y 'z)
+@error{} Wrong type argument: listp, z
+(apply '+ 1 2 '(3 4))
+     @result{} 10
+(apply '+ '(1 2 3 4))
+     @result{} 10
+
+(apply 'append '((a b c) nil (x y z) nil))
+     @result{} (a b c x y z)
+@end example
+</pre><pre class="example">
+</pre><pre class="example">An interesting example of using @code{apply} is found
+in the description of @code{mapcar}.
+@end defun
+</pre></div>
+
+<p>In this manual, this function is listed in the Command and Variable
+Index under <code>apply</code>.
+</p>
+<p>Ordinary variables and user options are described using a format like
+that for functions except that variables do not take arguments.
+</p>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Definition-Commands" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Conditionals.html#Conditionals" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

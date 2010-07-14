@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 2.3.5 Modules and their annihilator</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 2.3.5 Modules and their annihilator">
+<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.5 Modules and their annihilator">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Modules-and-their-annihilator"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Change-of-rings.html#Change-of-rings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.4 Change of rings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Resolution.html#Resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.6 Resolution" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Introduction.html#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Getting-started.html#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Modules-and-their-annihilator-1"></a>
+<h3 class="subsection">2.3.5 Modules and their annihilator</h3>
+<a name="index-Modules-and-and-their-annihilator"></a>
+
+<p>Now we shall give three more advanced examples.
+</p>
+<p><small>SINGULAR</small> is able to handle modules over all the rings,
+which can be defined as a basering. A free module of rank <code>n</code>
+is defined as follows:
+</p>
+<div class="smallexample">
+<pre class="smallexample">ring rr;
+int n = 4;
+freemodule(4);
+&rarr; _[1]=gen(1)
+&rarr; _[2]=gen(2)
+&rarr; _[3]=gen(3)
+&rarr; _[4]=gen(4)
+typeof(_);
+&rarr; module
+print(freemodule(4));
+&rarr; 1,0,0,0,
+&rarr; 0,1,0,0,
+&rarr; 0,0,1,0,
+&rarr; 0,0,0,1
+</pre></div>
+
+<p>To define a module, we give a list of vectors generating a submodule of
+a free module. Then this set of vectors may be identified with the
+columns of a matrix.  For that reason in <small>SINGULAR</small> matrices and
+modules may be interchanged. However, the representation is different
+(modules may be considered as sparse represented matrices).
+</p>
+<div class="smallexample">
+<pre class="smallexample">ring r =0,(x,y,z),dp;
+module MD = [x,0,x],[y,z,-y],[0,z,-2y];
+matrix MM = MD;
+print(MM);
+&rarr; x,y,0,
+&rarr; 0,z,z,
+&rarr; x,-y,-2y
+</pre></div>
+
+<p>However the submodule 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_10.png"
+ ALT="$MD$"></SPAN>
+ may also be considered as the module
+of relations of the factor module
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_11.png"
+ ALT="$r^3/MD$"></SPAN>.
+In this way, <small>SINGULAR</small> can treat arbitrary finitely generated modules
+over the
+basering (see <a href="Representation-of-mathematical-objects.html#Representation-of-mathematical-objects">Representation of mathematical objects</a>).
+</p>
+<p>In order to get the module of relations of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_10.png"
+ ALT="$MD$"></SPAN>
+,
+we use the command <code>syz</code>.
+</p>
+<div class="smallexample">
+<pre class="smallexample">syz(MD);
+&rarr; _[1]=x*gen(3)-x*gen(2)+y*gen(1)
+</pre></div>
+
+<p>We want to calculate, as an application, the annihilator of a given module.
+Let
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_12.png"
+ ALT="$M = r^3/U$"></SPAN>,
+where U is our defining module of relations for the module
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>.
+</p>
+<div class="smallexample">
+<pre class="smallexample">module U = [z3,xy2,x3],[yz2,1,xy5z+z3],[y2z,0,x3],[xyz+x2,y2,0],[xyz,x2y,1];
+</pre></div>
+
+<p>Then, by definition, the annihilator of M is the ideal
+<!-- MATH
+ $\hbox{ann}(M) = \{a \mid aM = 0 \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_14.png"
+ ALT="$\hbox{ann}(M) = \{a \mid aM = 0 \}$"></SPAN>
+which is by the description of M the same as
+<!-- MATH
+ $\{ a \mid ar^3 \in U \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_15.png"
+ ALT="$\{ a \mid ar^3 \in U \}$"></SPAN>.
+Hence we have to calculate the quotient
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_16.png"
+ ALT="$U \colon r^3 $"></SPAN>.
+The rank of the free module is determined by the choice of U and is the
+number of rows of the corresponding matrix. This may be determined by
+the function <code>nrows</code>. All we have to do now is the following:
+</p>
+<div class="smallexample">
+<pre class="smallexample">quotient(U,freemodule(nrows(U)));
+</pre></div>
+
+<p>The result is too big to be shown here.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Change-of-rings.html#Change-of-rings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.4 Change of rings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Resolution.html#Resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.6 Resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Introduction.html#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Getting-started.html#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

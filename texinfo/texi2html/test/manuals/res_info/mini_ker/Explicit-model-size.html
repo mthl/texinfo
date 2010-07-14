@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3.9 Entering model size explicitely</title>
+
+<meta name="description" content="Miniker 102 manual: 3.9 Entering model size explicitely">
+<meta name="keywords" content="Miniker 102 manual: 3.9 Entering model size explicitely">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Advanced-programming.html#Advanced-programming" rel="up" title="3 Advanced Miniker programming">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Observations-and-data.html#Observations-and-data" rel="previous" title="3.8 Observations and data">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Explicit-model-size"></a>
+<ul class="no-bullet"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="no-bullet"><li><a href="Advanced-programming.html#Advanced-programming">3 Advanced Miniker programming</a> </li>
+</ul></li>
+</ul>
+<div class="header">
+<p>
+[<a href="Observations-and-data.html#Data" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Size-sequence" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<a name="Entering-model-size-explicitely"></a>
+<h2 class="section">3.9 Entering model size explicitely</h2>
+<ul class="no-bullet">
+<li> <a href="#Size-sequence">3.9.1 The explicit size sequence</a> </li>
+<li> <a href="#Model-with-explicit-size">3.9.2 Entering the model equations, with explicit sizes</a> </li>
+</ul>
+
+<p>It is possible to enter the model dimensions explicitely, instead of 
+generating them automatically, as it was done previously.
+This feature is turned on by <code>sel dimetaphi</code> 
+in &lsquo;<tt>selseq.kumac</tt>&rsquo; with cmz
+and <code>dimetaphi</code> added to the <code>SEL</code> variable in 
+the &lsquo;<tt>Makefile</tt>&rsquo; with make.
+</p>
+
+<hr>
+<a name="Size-sequence"></a>
+<div class="header">
+<p>
+[<a href="#Explicit-model-size" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="#Model-with-explicit-size" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<a name="The-explicit-size-sequence"></a>
+<h3 class="subsection">3.9.1 The explicit size sequence</h3>
+
+<a name="index-dimetaphi"></a>
+<a name="index-model-size"></a>
+<a name="index-np-1"></a>
+<a name="index-mp-1"></a>
+<a name="index-maxstep"></a>
+<a name="index-dimetaphi-1"></a>
+
+<p>The dimension of the model is entered in the sequence &lsquo;<tt>dimetaphi</tt>&rsquo;,
+using the fortran <code>parameter np</code> for <code>eta(.)</code> and
+<code>mp</code> for <code>ff(.)</code>.
+For the Lotka-Volterra model, we have two cell components and only one transfer.
+</p>
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
+</pre></div>
+
+<p>You should not change the layout of the parameter statement as the 
+mortran preprocessor matches the line.
+</p>
+<p>You also have to provide other parameters even if you don&rsquo;t have any 
+use for them. If you don&rsquo;t it will trigger fortran errors.
+It includes the <code>maxstep</code> parameter that can have any value but 0,
+<code>lp</code> and <code>mobs</code> that should be 0 in the example, and  <code>nxp</code>,
+<code>nyp</code> and <code>nzp</code> that should also be 0.
+The layout is the following:
+</p>
+<div class="example">
+<pre class="example">parameter (np=2,mp=1);
+parameter (mobs=0);
+
+parameter (nxp=0,nyp=0,nzp=0);
+parameter (lp=0);
+parameter (maxstep=1);
+</pre></div>
+
+<p>If there are observations, (see <a href="Observations-and-data.html#Observations">Observations</a>), the
+size of the observation vector is set in the &lsquo;<tt>dimetaphi</tt>&rsquo; sequence
+by the <code>mobs</code> parameter. For example if there is one observation:
+</p>
+<div class="example">
+<pre class="example">parameter (mobs=1);
+</pre></div>
+
+<p>To specify parameters (see <a href="Parameters.html#Parameters">Parameters</a>), the number of such parameters 
+has to be declared in &lsquo;<tt>dimetaphi</tt>&rsquo; with the parameter <code>lp</code>. 
+Then, if there are two parameters, they are first declared with
+</p>
+<div class="example">
+<pre class="example">parameter (lp=2);
+</pre></div>
+
+<hr>
+<a name="Model-with-explicit-size"></a>
+<div class="header">
+<p>
+[<a href="#Size-sequence" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="Programming-with-cmz-directives.html#Programming-with-cmz-directives" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<a name="Entering-the-model-equations_002c-with-explicit-sizes"></a>
+<h3 class="subsection">3.9.2 Entering the model equations, with explicit sizes</h3>
+
+<a name="index-model-equations"></a>
+<a name="index-Phi_005ftef_0028_002e_0029"></a>
+<a name="index-deta_005ftef_0028_002e_0029"></a>
+<a name="index-eta_0028_002e_0029_002c-explicit-sizes"></a>
+<a name="index-ff_0028_002e_0029_002c-explicit-sizes"></a>
+
+<p>When sizes are explicit, another possibility exists for entering
+the model equations. The use of symbolic names, as described in
+<a href="A-model-description.html#Model-equations">Model equations</a> is still possible, and it also becomes possible to
+set directly the equations associated with the <code>eta(.)</code>
+and <code>ff(.)</code> vectors.
+</p>
+<p>In case the symbolic names are not used, 
+the model equations for cells and transfers are entered using a mortran macro,
+<code>f_set</code><a name="DOCF4" href="#FOOT4">(4)</a>, setting the <code>eta(.)</code> evolution with 
+<code>deta_tef(.)</code>
+and the transfer definitions <code>ff(.)</code> with <code>Phi_tef(.)</code>.
+</p>
+<dl>
+<dt><a name="index-f_005fset"></a>Macro: <strong>f_set</strong><em> Phi_tef(<var>i</var>) = f(eta(.),ff(.))</em></dt>
+<dd><p>This macro defines the transfer <var>i</var> static equation.
+<code>f</code> is a fortran 
+expression which may be function of cell state variables, 
+&lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo; and transfers 
+&lsquo;<samp>ff(1)</samp>&rsquo;&hellip;&lsquo;<samp>ff(mp)</samp>&rsquo;.
+</p></dd></dl>
+
+<p>In the case of the predator-prey model, the transfer definition for 
+      &#x03C6;meet is:
+</p><div class="example">
+<pre class="example">f_set Phi_tef(1) = eta(1)*eta(2);  
+</pre></div>
+
+<dl>
+<dt><a name="index-f_005fset-1"></a>Macro: <strong>f_set</strong><em> deta_tef(<var>i</var>) = g(eta(<var>i</var>),ff(.))</em></dt>
+<dd><p>This macro defines the cell state component <var>i</var> time evolution model. 
+<code>g</code> is a expression which may be function of cell state variables, 
+&lsquo;<samp>eta(1)</samp>&rsquo;&hellip;&lsquo;<samp>eta(np)</samp>&rsquo; and transfers 
+&lsquo;<samp>ff(1)</samp>&rsquo;&hellip;&lsquo;<samp>ff(mp)</samp>&rsquo;.
+</p></dd></dl>
+
+<p>The two cell equations of the predator-prey model are, with index 1 for the
+prey (      &#x03B7;prey) and index 2 for the predator (      &#x03B7;pred):
+</p>
+<div class="example">
+<pre class="example">f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
+</pre></div>
+
+<p>The whole model is:
+</p>
+<div class="example">
+<pre class="example">!%%%%%%%%%%%%%%%%%%%%%%
+! Transfer definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! rencontres (meeting)
+    f_set Phi_tef(1) = eta(1)*eta(2); 
+
+!%%%%%%%%%%%%%%%%%%%%%%
+! Cell definition
+!%%%%%%%%%%%%%%%%%%%%%%
+! eta(1) : prey
+! eta(2) : predator      
+
+    f_set  deta_tef(1) = apar*eta(1)-apar*ff(1);
+    f_set  deta_tef(2) = - cpar*eta(2) + cpar*ff(1);
+</pre></div>
+
+<p>The starting points for cells are entered like:
+</p><div class="example">
+<pre class="example">!     initial state
+!     -------------
+     eta(1) = 1.;
+     eta(2) = 1.;
+</pre></div>
+
+<p>If there are observations, they are entered as special transferts with
+index above <code>mp</code>, for example:
+</p>
+<div class="example">
+<pre class="example">f_set Phi_tef(mp+1) = ff(1) ;
+</pre></div>
+
+<div class="footnote">
+<hr>
+<h3>Footnotes</h3>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<p><code>fun_set</code>, or equivalently <code>f_set</code>, is a 
+general mortran macro associating a symbol with a fortran expression. 
+Here, it is the name of the symbol (<code>eta</code>) that has a particular meaning
+for the building of the model.
+</p></div>
+<hr>
+<div class="header">
+<p>
+[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

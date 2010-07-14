@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User&rsquo;s Manual: 11 Controlling the Display</title>
+
+<meta name="description" content="XEmacs User&rsquo;s Manual: 11 Controlling the Display">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: 11 Controlling the Display">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Display"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Registers.html#Registers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Registers.html#Bookmarks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Scrolling" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Controlling-the-Display"></a>
+<h1 class="chapter">11 Controlling the Display</h1>
+
+<p>  Since only part of a large buffer fits in the window, XEmacs tries to show
+the part that is likely to be interesting.  The display control commands
+allow you to specify which part of the text you want to see.
+</p>
+<dl compact="compact">
+<dt><kbd>C-l</kbd></dt>
+<dd><p>Clear frame and redisplay, scrolling the selected window to center
+point vertically within it (<code>recenter</code>).
+</p></dd>
+<dt><kbd>C-v</kbd></dt>
+<dt><kbd>pgdn</kbd></dt>
+<dt><kbd>next</kbd></dt>
+<dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
+On most X keyboards, you can get this functionality using the key
+labelled &lsquo;<samp>Page Down</samp>&rsquo;, which generates either <kbd>next</kbd> or <kbd>pgdn</kbd>.
+</p></dd>
+<dt><kbd>M-v</kbd></dt>
+<dt><kbd>pgup</kbd></dt>
+<dt><kbd>prior</kbd></dt>
+<dd><p>Scroll backward (<code>scroll-down</code>).  On most X keyboards, you can get
+this functionality using the key labelled &lsquo;<samp>Page Up</samp>&rsquo;, which
+generates either <kbd>prior</kbd> or <kbd>pgup</kbd>.
+</p></dd>
+<dt><kbd><var>arg</var> C-l</kbd></dt>
+<dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
+</p></dd>
+<dt><kbd>C-x &lt;</kbd></dt>
+<dt><kbd>C-pgdn</kbd></dt>
+<dt><kbd>C-next</kbd></dt>
+<dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
+</p></dd>
+<dt><kbd>C-x &gt;</kbd></dt>
+<dt><kbd>C-pgup</kbd></dt>
+<dt><kbd>C-prior</kbd></dt>
+<dd><p>Scroll to the right (<code>scroll-right</code>).
+</p></dd>
+<dt><kbd>C-x $</kbd></dt>
+<dd><p>Make deeply indented lines invisible (<code>set-selective-display</code>).
+</p></dd>
+</dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Scrolling">11.1 Scrolling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	           Moving text up and down in a window.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Horizontal-Scrolling">11.2 Horizontal Scrolling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Moving text left and right in a window.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Selective-Display">11.3 Selective Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Hiding lines with lots of indentation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Display-Vars">11.4 Variables Controlling Display</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Information on variables for customizing display.
+</td></tr>
+</table>
+
+<hr>
+<a name="Scrolling"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Display" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Display" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Horizontal-Scrolling" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Scrolling-1"></a>
+<h2 class="section">11.1 Scrolling</h2>
+
+<p>  If a buffer contains text that is too large to fit entirely within the
+window that is displaying the buffer, XEmacs shows a contiguous section of
+the text.  The section shown always contains point.
+</p>
+<a name="index-scrolling"></a>
+<p>  <em>Scrolling</em> means moving text up or down in the window so that
+different parts of the text are visible.  Scrolling forward means that text
+moves up, and new text appears at the bottom.  Scrolling backward moves
+text down and new text appears at the top.
+</p>
+<p>  Scrolling happens automatically if you move point past the bottom or top
+of the window.  You can also explicitly request scrolling with the commands
+in this section.
+</p>
+<dl compact="compact">
+<dt><kbd>C-l</kbd></dt>
+<dd><p>Clear frame and redisplay, scrolling the selected window to center
+point vertically within it (<code>recenter</code>).
+</p></dd>
+<dt><kbd>C-v</kbd></dt>
+<dt><kbd>pgdn</kbd></dt>
+<dt><kbd>next</kbd></dt>
+<dd><p>Scroll forward (a windowful or a specified number of lines) (<code>scroll-up</code>).
+</p></dd>
+<dt><kbd>M-v</kbd></dt>
+<dt><kbd>pgup</kbd></dt>
+<dt><kbd>prior</kbd></dt>
+<dd><p>Scroll backward (<code>scroll-down</code>).
+</p></dd>
+<dt><kbd><var>arg</var> C-l</kbd></dt>
+<dd><p>Scroll so point is on line <var>arg</var> (<code>recenter</code>).
+</p></dd>
+</dl>
+
+<a name="index-C_002dl-1"></a>
+<a name="index-recenter-1"></a>
+<p>  The most basic scrolling command is <kbd>C-l</kbd> (<code>recenter</code>) with no
+argument.  It clears the entire frame and redisplays all windows.  In
+addition, it scrolls the selected window so that point is halfway down
+from the top of the window.
+</p>
+<a name="index-C_002dv-1"></a>
+<a name="index-M_002dv-1"></a>
+<a name="index-pgup"></a>
+<a name="index-pgdn"></a>
+<a name="index-next"></a>
+<a name="index-prior"></a>
+<a name="index-scroll_002dup"></a>
+<a name="index-scroll_002ddown"></a>
+<p>  The scrolling commands <kbd>C-v</kbd> and <kbd>M-v</kbd> let you move all the text
+in the window up or down a few lines.  <kbd>C-v</kbd> (<code>scroll-up</code>) with an
+argument shows you that many more lines at the bottom of the window, moving
+the text and point up together as <kbd>C-l</kbd> might.  <kbd>C-v</kbd> with a
+negative argument shows you more lines at the top of the window.
+<kbd>Meta-v</kbd> (<code>scroll-down</code>) is like <kbd>C-v</kbd>, but moves in the
+opposite direction.
+</p>
+<a name="index-next_002dscreen_002dcontext_002dlines"></a>
+<p>  To read the buffer a windowful at a time, use <kbd>C-v</kbd> with no
+argument.  <kbd>C-v</kbd> takes the last two lines at the bottom of the
+window and puts them at the top, followed by nearly a whole windowful of
+lines not previously visible.  Point moves to the new top of the window
+if it was in the text scrolled off the top.  <kbd>M-v</kbd> with no argument
+moves backward with similar overlap.  The number of lines of overlap
+across a <kbd>C-v</kbd> or <kbd>M-v</kbd> is controlled by the variable
+<code>next-screen-context-lines</code>; by default, it is two.
+</p>
+<p>  Another way to scroll is using <kbd>C-l</kbd> with a numeric argument.
+<kbd>C-l</kbd> does not clear the frame when given an argument; it only
+scrolls the selected window.  With a positive argument <var>n</var>, <kbd>C-l</kbd>
+repositions text to put point <var>n</var> lines down from the top.  An
+argument of zero puts point on the very top line.  Point does not move
+with respect to the text; rather, the text and point move rigidly on the
+frame.  <kbd>C-l</kbd> with a negative argument puts point that many lines
+from the bottom of the window.  For example, <kbd>C-u - 1 C-l</kbd> puts
+point on the bottom line, and <kbd>C-u - 5 C-l</kbd> puts it five lines from
+the bottom.  Just <kbd>C-u</kbd> as argument, as in <kbd>C-u C-l</kbd>, scrolls
+point to the center of the frame.
+</p>
+<a name="index-scroll_002dstep"></a>
+<p>  Scrolling happens automatically if point has moved out of the visible
+portion of the text when it is time to display.  Usually scrolling is
+done  to put point vertically centered within the window.  However, if
+the variable <code>scroll-step</code> has a non-zero value, an attempt is made to
+scroll the buffer by that many lines; if that is enough to bring point back
+into visibility, that is what happens.
+</p>
+<p>  Scrolling happens automatically if point has moved out of the visible
+portion of the text when it is time to display.  Usually scrolling is
+done  to put point vertically centered within the window.  However, if
+the variable <code>scroll-step</code> has a non-zero value, an attempt is made to
+scroll the buffer by that many lines; if that is enough to bring point back
+into visibility, that is what happens.
+</p>
+<a name="index-scroll_002dconservatively"></a>
+<p>  If you set <code>scroll-step</code> to a small value because you want to use 
+arrow keys to scroll the screen without recentering, the redisplay
+preemption will likely make XEmacs keep recentering the screen when
+scrolling fast, regardless of <code>scroll-step</code>.  To prevent this, set
+<code>scroll-conservatively</code> to a small value, which will have the
+result of overriding the redisplay preemption.
+</p>
+<hr>
+<a name="Horizontal-Scrolling"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Scrolling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Display" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Selective-Display" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Horizontal-Scrolling-1"></a>
+<h2 class="section">11.2 Horizontal Scrolling</h2>
+
+<dl compact="compact">
+<dt><kbd>C-x &lt;</kbd></dt>
+<dd><p>Scroll text in current window to the left (<code>scroll-left</code>).
+</p></dd>
+<dt><kbd>C-x &gt;</kbd></dt>
+<dd><p>Scroll to the right (<code>scroll-right</code>).
+</p></dd>
+</dl>
+
+<a name="index-C_002dx-_003c"></a>
+<a name="index-C_002dx-_003e"></a>
+<a name="index-scroll_002dleft"></a>
+<a name="index-scroll_002dright"></a>
+<a name="index-horizontal-scrolling"></a>
+<p>  The text in a window can also be scrolled horizontally.  This means that
+each line of text is shifted sideways in the window, and one or more
+characters at the beginning of each line are not displayed at all.  When a
+window has been scrolled horizontally in this way, text lines are truncated
+rather than continued (see section <a href="Basic.html#Continuation-Lines">Continuation Lines</a>), with a &lsquo;<samp>$</samp>&rsquo; appearing
+in the first column when there is text truncated to the left, and in the
+last column when there is text truncated to the right.
+</p>
+<p>  The command <kbd>C-x &lt;</kbd> (<code>scroll-left</code>) scrolls the selected
+window to the left by <var>n</var> columns with argument <var>n</var>.  With no
+argument, it scrolls by almost the full width of the window (two columns
+less, to be precise).  <kbd>C-x &gt;</kbd> (<code>scroll-right</code>) scrolls
+similarly to the right.  The window cannot be scrolled any farther to
+the right once it is displaying normally (with each line starting at the
+window&rsquo;s left margin); attempting to do so has no effect.
+</p>
+<hr>
+<a name="Selective-Display"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Horizontal-Scrolling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Display" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Display-Vars" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Selective-Display-1"></a>
+<h2 class="section">11.3 Selective Display</h2>
+<a name="index-set_002dselective_002ddisplay"></a>
+<a name="index-C_002dx-_0024"></a>
+
+<p>  XEmacs can hide lines indented more than a certain number
+of columns (you specify how many columns).  This allows you  to get an
+overview of a part of a program.
+</p>
+<p>  To hide lines, type <kbd>C-x $</kbd> (<code>set-selective-display</code>) with a
+numeric argument <var>n</var>.  (See section <a href="Basic.html#Arguments">Numeric Arguments</a>, for information on giving
+the argument.)  Lines with at least <var>n</var> columns of indentation
+disappear from the screen.  The only indication of their presence are
+three dots (&lsquo;<samp>&hellip;</samp>&rsquo;), which appear at the end of each visible
+line that is followed by one or more invisible ones.
+</p>
+<p>  The invisible lines are still present in the buffer, and most editing
+commands see them as usual, so it is very easy to put point in the middle
+of invisible text.  When this happens, the cursor appears at the end of the
+previous line, after the three dots.  If point is at the end of the visible
+line, before the newline that ends it, the cursor appears before the three
+dots.
+</p>
+<p>  The commands <kbd>C-n</kbd> and <kbd>C-p</kbd> move across the invisible lines
+as if they were not there.
+</p>
+<p>  To make everything visible again, type <kbd>C-x $</kbd> with no argument.
+</p>
+<hr>
+<a name="Display-Vars"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Selective-Display" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Display" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Variables-Controlling-Display"></a>
+<h2 class="section">11.4 Variables Controlling Display</h2>
+
+<p>  This section contains information for customization only.  Beginning
+users should skip it.
+</p>
+<a name="index-no_002dredraw_002don_002dreenter"></a>
+<p>  When you reenter XEmacs after suspending, XEmacs normally clears the
+screen and redraws the entire display.  On some terminals with more than
+one page of memory, it is possible to arrange the termcap entry so that
+the &lsquo;<samp>ti</samp>&rsquo; and &lsquo;<samp>te</samp>&rsquo; strings (output to the terminal when XEmacs
+is entered and exited, respectively) switch between pages of memory so
+as to use one page for XEmacs and another page for other output.  In that
+case, you might want to set the variable <code>no-redraw-on-reenter</code> to
+non-<code>nil</code> so that XEmacs will assume, when resumed, that the screen
+page it is using still contains what XEmacs last wrote there.
+</p>
+<a name="index-echo_002dkeystrokes"></a>
+<p>  The variable <code>echo-keystrokes</code> controls the echoing of multi-character
+keys; its value is the number of seconds of pause required to cause echoing
+to start, or zero, meaning don&rsquo;t echo at all.  See section <a href="Frame.html#Echo-Area">The Echo Area</a>.
+</p>
+<a name="index-ctl_002darrow"></a>
+<p>  If the variable <code>ctl-arrow</code> is <code>nil</code>, control characters in the
+buffer are displayed with octal escape sequences, all except newline and
+tab.  If its value is <code>t</code>, then control characters will be printed 
+with an up-arrow, for example <kbd>^A</kbd>.  
+</p>
+<p>If its value is not <code>t</code> and not <code>nil</code>, then characters whose
+code is greater than 160 (that is, the space character (32) with its
+high bit set) will be assumed to be printable, and will be displayed
+without alteration.  This is the default when running under X Windows,
+since XEmacs assumes an ISO/8859-1 character set (also known as
+&ldquo;Latin1&rdquo;).  The <code>ctl-arrow</code> variable may also be set to an
+integer, in which case all characters whose codes are greater than or
+equal to that value will be assumed to be printable.
+</p>
+<p>Altering the value of <code>ctl-arrow</code> makes it local to the current
+buffer; until that time, the default value is in effect.  See section <a href="Customization.html#Locals">Local Variables</a>.
+</p>
+<a name="index-tab_002dwidth"></a>
+<p>  Normally, a tab character in the buffer is displayed as whitespace which
+extends to the next display tab stop position, and display tab stops come
+at intervals equal to eight spaces.  The number of spaces per tab is
+controlled by the variable <code>tab-width</code>, which is made local by
+changing it, just like <code>ctl-arrow</code>.  Note that how the tab character
+in the buffer is displayed has nothing to do with the definition of
+&lt;TAB&gt; as a command.
+</p>
+<a name="index-selective_002ddisplay_002dellipses"></a>
+<p>  If you set the variable <code>selective-display-ellipses</code> to <code>nil</code>,
+the three dots at the end of a line that precedes invisible
+lines do not appear.  There is no visible indication of the invisible lines.
+This variable becomes local automatically when set.
+</p>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Display" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Search.html#Search" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

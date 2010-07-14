@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.1.2 module_containment</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.1.2 module_containment">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.1.2 module_containment">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="module_005fcontainment"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="algebra_005fcontainment.html#algebra_005fcontainment" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.1.1 algebra_containment" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="inSubring.html#inSubring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.1.3 inSubring" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="algebra_005flib.html#algebra_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.1 algebra_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="module_005fcontainment-1"></a>
+<h4 class="subsubsection">D.4.1.2 module_containment</h4>
+<a name="index-module_005fcontainment"></a>
+<p>Procedure from library <code>algebra.lib</code> (see <a href="algebra_005flib.html#algebra_005flib">algebra_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>module_containment(p,P,M[,k]); p poly, P ideal, M ideal, k int
+<br> P = P[1],...,P[n] generators of a subalgebra of the basering,
+<br> M = M[1],...,M[m] generators of a module over the subalgebra K[P]
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>ncols(P) = nvars(basering), the P[i] are algebraically independent
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><div class="format">
+<pre class="format">         - k=0 (or if k is not given), an integer:
+           1    : if p is contained in the module &lt;M[1],...,M[m]&gt; over K[P]
+           0    : if p is not contained in &lt;M[1],...,M[m]&gt;
+         - k=1, a list, say l, of size 2, l[1] integer, l[2] ring:
+           l[1]=1 : if p is in &lt;M[1],...,M[m]&gt; and then the ring l[2] contains
+             the polynomial check = h(y(1),...,y(m),z(1),...,z(n)) if
+             p = h(M[1],...,M[m],P[1],...,P[n])
+           l[1]=0 : if p is in not in &lt;M[1],...,M[m]&gt;, then l[2] contains the
+             poly check = h(x,y(1),...,y(m),z(1),...,z(n)) if p satisfies
+             the nonlinear relation p = h(x,M[1],...,M[m],P[1],...,P[n]) where
+             x = x(1),...,x(n) denote the variables of the basering
+</pre></div>
+
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>the polynomial h(y(1),...,y(m),z(1),...,z(n)) if k=0, resp.
+a comment how to access the relation check if k=1, provided
+printlevel &gt;= voice+1 (default).
+</p>
+</dd>
+<dt><strong>Theory:</strong></dt>
+<dd><p>The ideal of algebraic relations of all the generators p1,...,pn,
+s1,...,st given by P and S is computed introducing new variables y(j),
+z(i) and the product order: x^a*y^b*z^c &gt; x^d*y^e*z^f if x^a &gt; x^d
+with respect to the lp ordering or else if z^c &gt; z^f with respect to
+the dp ordering or else if y^b &gt; y^e with respect to the lp ordering
+again. p reduces to a polynomial only in the y(j) and z(i), linear in
+the z(i) &lt;=&gt; p is contained in the module.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;algebra.lib&quot;;
+int p = printlevel; printlevel = 1;
+ring R=0,(x,y,z),dp;
+ideal P = x2+y2,z2,x4+y4;           //algebra generators
+ideal M = 1,x2z-1y2z,xyz,x3y-1xy3;  //module generators
+poly p1=
+x10z3-x8y2z3+2x6y4z3-2x4y6z3+x2y8z3-y10z3+x6z4+3x4y2z4+3x2y4z4+y6z4;
+module_containment(p1,P,M);
+&rarr; // y(2)*z(2)*z(3)^2+z(1)^3*z(2)^2
+&rarr; 1
+poly p2=z;
+list l = module_containment(p2,P,M,1);
+&rarr; 
+&rarr; // 'module_containment' created a ring as 2nd element of the list. The
+&rarr; // ring contains the poly check which defines the algebraic relation
+&rarr; // for p. To access to the ring and see check you must give the ring
+&rarr; // a name, e.g.:
+&rarr;      def S = l[2]; setring S; check;
+&rarr;       
+l[1];
+&rarr; 0
+def S = l[2]; setring S; check;
+&rarr; x(3)
+printlevel=p;
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="algebra_005fcontainment.html#algebra_005fcontainment" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.1.1 algebra_containment" align="middle"></a></td>
+<td valign="middle" align="left"><a href="inSubring.html#inSubring" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.1.3 inSubring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="algebra_005flib.html#algebra_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.1 algebra_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

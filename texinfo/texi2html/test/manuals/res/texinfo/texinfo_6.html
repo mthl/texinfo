@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 5 Chapter Structuring</title>
+<title>GNU Texinfo 4.2: Concept Index: N &ndash; P</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 5 Chapter Structuring">
-<meta name="keywords" content="GNU Texinfo 4.2: 5 Chapter Structuring">
+<meta name="description" content="GNU Texinfo 4.2: Concept Index: N &ndash; P">
+<meta name="keywords" content="GNU Texinfo 4.2: Concept Index: N &ndash; P">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -68,719 +68,290 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="Structuring"></a>
+<a name="index_split-5"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="texinfo_5.html#Ending-a-File" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_5.html#File-End" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Tree-Structuring" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_5.html#index_split-4" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_7.html#index_split-6" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Chapter-Structuring"></a>
-<h1 class="chapter">5 Chapter Structuring</h1>
-<a name="index-Chapter-structuring"></a>
-<a name="index-Structuring-of-chapters"></a>
-
-<p>The <em>chapter structuring</em> commands divide a document into a hierarchy of
-chapters, sections, subsections, and subsubsections.  These commands
-generate large headings; they also provide information for the table
-of contents of a printed manual (see section <a href="texinfo_5.html#Contents">Generating a Table of Contents</a>).
-</p>
-<p>The chapter structuring commands do not create an Info node structure,
-so normally you should put an <code>@node</code> command immediately before
-each chapter structuring command (see section <a href="texinfo_7.html#Nodes">Nodes</a>).  The only time you
-are likely to use the chapter structuring commands without using the
-node structuring commands is if you are writing a document that
-contains no cross references and will never be transformed into Info
-format.
-</p>
-<p>It is unlikely that you will ever write a Texinfo file that is
-intended only as an Info file and not as a printable document.  If you
-do, you might still use chapter structuring commands to create a
-heading at the top of each node&mdash;but you don&rsquo;t need to.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Tree-Structuring">5.1 Tree Structure of Sections</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            A manual is like an upside down tree &hellip;
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Structuring-Command-Types">5.2 Structuring Command Types</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   How to divide a manual into parts.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#makeinfo-top">5.3 <code>@top</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                The <code>@top</code> command, part of the &lsquo;Top&rsquo; node.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#chapter">5.4 <code>@chapter</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     
-</td></tr>
-<tr><td align="left" valign="top"><a href="#unnumbered-_0026-appendix">5.5 <code>@unnumbered</code> and <code>@appendix</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       
-</td></tr>
-<tr><td align="left" valign="top"><a href="#majorheading-_0026-chapheading">5.6 <code>@majorheading</code>, <code>@chapheading</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
-</td></tr>
-<tr><td align="left" valign="top"><a href="#section">5.7 <code>@section</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     
-</td></tr>
-<tr><td align="left" valign="top"><a href="#unnumberedsec-appendixsec-heading">5.8 <code>@unnumberedsec</code>, <code>@appendixsec</code>, <code>@heading</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
-</td></tr>
-<tr><td align="left" valign="top"><a href="#subsection">5.9 The <code>@subsection</code> Command</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
-</td></tr>
-<tr><td align="left" valign="top"><a href="#unnumberedsubsec-appendixsubsec-subheading">5.10 The <code>@subsection</code>-like Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
-</td></tr>
-<tr><td align="left" valign="top"><a href="#subsubsection">5.11 The &lsquo;subsub&rsquo; Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Commands for the lowest level sections.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Raise_002flower-sections">5.12 <code>@raisesections</code> and <code>@lowersections</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        How to change commands&rsquo; hierarchical level.
-</td></tr>
+<h1 class="unnumbered">Concept Index: N &ndash; P</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-2"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-3"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-4"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-5"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-6"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-7"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-8"><b>@</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-9"><b>\</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Names-for-indices">Names for indices</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#syncodeindex">12.4.1 <code>@syncodeindex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Names-of-index-files">Names of index files</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Format-with-tex_002ftexindex">19.2 Format with <code>tex</code> and <code>texindex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Names-recommended-for-keys">Names recommended for keys</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#key">9.1.3 <code>@key</code>{<var>key-name</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Naming-a-_0060Top_0027-Node-in-references">Naming a &lsquo;Top&rsquo; Node in references</a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#Top-Node-Naming">8.4 Naming a &lsquo;Top&rsquo; Node</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-NASA_002c-as-acronym">NASA, as acronym</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#acronym">9.1.13 <code>@acronym</code>{<var>acronym</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Navigation-links_002c-omitting">Navigation links, omitting</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Need-space-at-page-bottom">Need space at page bottom</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#need">14.7 <code>@need <var>mils</var></code>: Prevent Page Breaks</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-New-index-defining">New index defining</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#New-Indices">12.5 Defining New Indices</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-New-Info-file_002c-listing-it-in-dir-file">New Info file, listing it in &lsquo;<tt>dir</tt>&rsquo; file</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#New-Info-File">20.2.2 Listing a New Info File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-New-Texinfo-commands_002c-defining">New Texinfo commands, defining</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands">18 Defining New Texinfo Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Next-node-of-Top-node">Next node of Top node</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#First-Node">6.3.5 The First Node</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node-line-requirements">Node line requirements</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node-line-writing">Node line writing</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Writing-a-Node">6.3.2 How to Write an <code>@node</code> Line</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node-name-must-be-unique">Node name must be unique</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node-name_002c-should-not-contain-_0040_002dcommands">Node name, should not contain @-commands</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node-names_002c-choosing">Node names, choosing</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Names">6.3.1 Choosing Node and Pointer Names</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Node-separators_002c-omitting">Node separators, omitting</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Node_002c-defined">Node, defined</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#node">6.3 The <code>@node</code> Command</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Node_002c-_0060Top_0027">Node, &lsquo;Top&rsquo;</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#The-Top-Node">3.5 The &lsquo;Top&rsquo; Node and Master Menu</a></td></tr>
+<tr><td></td><td valign="top"><a href="Menus.html#index-Nodes-for-menus-are-short">Nodes for menus are short</a></td><td>&nbsp;</td><td valign="top"><a href="Menus.html#Menus-Need-Short-Nodes">Menus Need Short Nodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Menus.html#index-Nodes-in-other-Info-files">Nodes in other Info files</a></td><td>&nbsp;</td><td valign="top"><a href="Menus.html#Other-Info-Files">7.5 Referring to Other Info Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Nodes_002c-catching-mistakes">Nodes, catching mistakes</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Catching-Mistakes">Appendix F Formatting Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Nodes_002c-checking-for-badly-referenced">Nodes, checking for badly referenced</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Running-Info_002dValidate">F.5 Finding Badly Referenced Nodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Non_002dbreakable-space">Non-breakable space</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#w">14.3 <code>@w</code>{<var>text</var>}: Prevent Line Breaks</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Not-ending-a-sentence">Not ending a sentence</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Not-Ending-a-Sentence">13.2.1 Not Ending a Sentence</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-o-1">&oslash;</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-O-1">&Oslash;</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-O_0027Dea_002c-Brendan">O&rsquo;Dea, Brendan</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Using-Texinfo">1.2 Using Texinfo</a></td></tr>
+<tr><td></td><td valign="top"><a href="Obtaining-TeX.html#index-Obtaining-TeX">Obtaining TeX</a></td><td>&nbsp;</td><td valign="top"><a href="Obtaining-TeX.html#Obtaining-TeX">Appendix I How to Obtain TeX</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Occurrences_002c-listing-with-_0040occur">Occurrences, listing with <code>@occur</code></a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Using-occur">F.4 Using <code>occur</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-oe-1">&oelig;</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-OE-1">&OElig;</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Optional-and-repeated-arguments">Optional and repeated arguments</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Optional-Arguments">15.2 Optional and Repeated Arguments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Options-for-makeinfo">Options for <code>makeinfo</code></a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-Ordinary-HTML-commands_002c-using">Ordinary HTML commands, using</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Raw-Formatter-Commands">16.3 Raw Formatter Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-Ordinary-TeX-commands_002c-using">Ordinary TeX commands, using</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Raw-Formatter-Commands">16.3 Raw Formatter Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Menus.html#index-Other-Info-files_0027-nodes">Other Info files&rsquo; nodes</a></td><td>&nbsp;</td><td valign="top"><a href="Menus.html#Other-Info-Files">7.5 Referring to Other Info Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Outline-of-file-structure_002c-showing-it">Outline of file structure, showing it</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Showing-the-Structure">2.3 Showing the Section Structure of a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Output-file-splitting">Output file splitting</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Output-formats_002c-supporting-more">Output formats, supporting more</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Using-Texinfo">1.2 Using Texinfo</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Overfull-hboxes">Overfull &lsquo;<samp>hboxes</samp>&rsquo;</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Overfull-hboxes">19.10 Overfull &ldquo;hboxes&rdquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Overview-of-Texinfo">Overview of Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Overview">1 Overview of Texinfo</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Page-breaks">Page breaks</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#Breaks">14 Making and Preventing Breaks</a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Page-breaks-1">Page breaks</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#page">14.5 <code>@page</code>: Start a New Page</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Page-delimiter-in-Texinfo-mode">Page delimiter in Texinfo mode</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Showing-the-Structure">2.3 Showing the Section Structure of a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Headings.html#index-Page-headings">Page headings</a></td><td>&nbsp;</td><td valign="top"><a href="Headings.html#Headings">Appendix E Page Headings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Headings.html#index-Page-numbering">Page numbering</a></td><td>&nbsp;</td><td valign="top"><a href="Headings.html#Headings">Appendix E Page Headings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Page-sizes-for-books">Page sizes for books</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#smallbook">19.11 Printing &ldquo;Small&rdquo; Books</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Page-sizes_002c-customized">Page sizes, customized</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#pagesizes">19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-page_002ddelimiter"><code>page-delimiter</code></a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Showing-the-Structure">2.3 Showing the Section Structure of a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Pages_002c-starting-odd">Pages, starting odd</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#setchapternewpage">3.6.2 <code>@setchapternewpage</code>:</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Paper-size_002c-A4">Paper size, A4</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#A4-Paper">19.12 Printing on A4 Paper</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Paragraph-indentation-control">Paragraph indentation control</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#paragraphindent">3.6.3 Paragraph Indenting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Paragraph_002c-marking-text-within">Paragraph, marking text within</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#Marking-Text">9 Marking Words and Phrases</a></td></tr>
+<tr><td></td><td valign="top"><a href="Refilling-Paragraphs.html#index-Paragraphs_002c-filling">Paragraphs, filling</a></td><td>&nbsp;</td><td valign="top"><a href="Refilling-Paragraphs.html#Refilling-Paragraphs">Appendix G Refilling Paragraphs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Parameters-to-macros">Parameters to macros</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-Macros">18.1 Defining Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Parentheses-in-nodename">Parentheses in nodename</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Parsing-errors">Parsing errors</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-in-Emacs">20.1.5 Running <code>makeinfo</code> inside Emacs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Part-of-file-formatting-and-printing">Part of file formatting and printing</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Printing">2.6 Formatting and Printing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Parts-of-a-cross-reference">Parts of a cross reference</a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#Cross-Reference-Parts">8.2 Parts of a Cross Reference</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Parts-of-a-master-menu">Parts of a master menu</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Master-Menu-Parts">3.5.2 Parts of a Master Menu</a></td></tr>
+<tr><td></td><td valign="top"><a href="Menus.html#index-Parts-of-a-menu">Parts of a menu</a></td><td>&nbsp;</td><td valign="top"><a href="Menus.html#Menu-Parts">7.2 The Parts of a Menu</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Patches_002c-contributing">Patches, contributing</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Reporting-Bugs">1.1 Reporting Bugs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-PDF-output">PDF output</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#PDF-Output">19.15 PDF Output</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-pdfcolor_002etex_002c-installing"><code>pdfcolor.tex<span class="roman">, installing</span></code></a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Preparing-for-TeX">19.9 Preparing for TeX</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-pdftex"><code>pdftex</code></a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#PDF-Output">19.15 PDF Output</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-pdftex_002c-and-images"><code>pdftex<span class="roman">, and images</span></code></a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Period-in-nodename">Period in nodename</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Periods_002c-inserting">Periods, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Not-Ending-a-Sentence">13.2.1 Not Ending a Sentence</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Permissions-text_002c-including">Permissions text, including</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#insertcopying">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Permissions_002c-printed">Permissions, printed</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Copyright">3.4.4 Copyright Page</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Picas">Picas</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Pictures_002c-inserting">Pictures, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Pinard_002c-Francois">Pinard, Fran&ccedil;ois</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#History">1.11 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-plain-TeX">plain TeX</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Raw-Formatter-Commands">16.3 Raw Formatter Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Plain-text-output">Plain text output</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-PNG-image-format">PNG image format</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Point_002c-indicating-in-a-buffer">Point, indicating in a buffer</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Point-Glyph">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Pointer-creation-with-makeinfo">Pointer creation with <code>makeinfo</code></a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#makeinfo-Pointer-Creation">6.4 Creating Pointers with <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Pointer-validation-with-makeinfo">Pointer validation with <code>makeinfo</code></a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Pointer-Validation">20.1.4 Pointer Validation</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Pointer-validation_002c-suppressing">Pointer validation, suppressing</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Format-with-tex_002ftexindex">19.2 Format with <code>tex</code> and <code>texindex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Pointer-validation_002c-suppressing-1">Pointer validation, suppressing</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Points-_0028dimension_0029">Points (dimension)</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Predefined-indexing-commands">Predefined indexing commands</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#Indexing-Commands">12.3 Defining the Entries of an Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Predefined-names-for-indices">Predefined names for indices</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#syncodeindex">12.4.1 <code>@syncodeindex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Preparing-for-TeX">Preparing for TeX</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Preparing-for-TeX">19.9 Preparing for TeX</a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Preventing-line-and-page-breaks">Preventing line and page breaks</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#Breaks">14 Making and Preventing Breaks</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Previous-node-of-Top-node">Previous node of Top node</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#First-Node">6.3.5 The First Node</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Print-and-format-in-Texinfo-mode">Print and format in Texinfo mode</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Texinfo-Mode-Printing">19.6 Formatting and Printing in Texinfo Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Print_002c-format-from-Emacs-shell">Print, format from Emacs shell</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Within-Emacs">19.5 From an Emacs Shell</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Printed-book-and-manual-characteristics">Printed book and manual characteristics</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Printed-Books">1.4 Printed Books</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Printed-output_002c-indicating-it">Printed output, indicating it</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Print-Glyph">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Printed-permissions">Printed permissions</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Copyright">3.4.4 Copyright Page</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Printing-a-region-or-buffer">Printing a region or buffer</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Printing">2.6 Formatting and Printing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Ending-a-File.html#index-Printing-an-index">Printing an index</a></td><td>&nbsp;</td><td valign="top"><a href="Ending-a-File.html#Printing-Indices-_0026-Menus">4.1 Printing Indices and Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Printing-cropmarks">Printing cropmarks</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Cropmarks-and-Magnification">19.14 Cropmarks and Magnification</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows">Printing DVI files, on MS-DOS/MS-Windows</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Print-with-lpr">19.4 Shell Print Using <code>lpr -d</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Printing-hardcopy">Printing hardcopy</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Hardcopy">19 Formatting and Printing Hardcopy</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Problems_002c-catching">Problems, catching</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Catching-Mistakes">Appendix F Formatting Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Program-names_002c-indicating">Program names, indicating</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#command">9.1.9 <code>@command</code>{<var>command-name</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Lists-and-Tables.html#index-Prototype-row_002c-column-widths-defined-by">Prototype row, column widths defined by</a></td><td>&nbsp;</td><td valign="top"><a href="Lists-and-Tables.html#Multitable-Column-Widths">11.4.1 Multitable Column Widths</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-
-
-<hr>
-<a name="Tree-Structuring"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring-Command-Types" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Tree-Structure-of-Sections"></a>
-<h2 class="section">5.1 Tree Structure of Sections</h2>
-<a name="index-Tree-structuring"></a>
-
-<p>A Texinfo file is usually structured like a book with chapters,
-sections, subsections, and the like.  This structure can be visualized
-as a tree (or rather as an upside-down tree) with the root at the top
-and the levels corresponding to chapters, sections, subsection, and
-subsubsections.
-</p>
-<p>Here is a diagram that shows a Texinfo file with three chapters,
-each of which has two sections.
-</p>
-<div class="example">
-<pre class="example">                          Top
-                           |
-         -------------------------------------
-        |                  |                  |
-     Chapter 1          Chapter 2          Chapter 3
-        |                  |                  |
-     --------           --------           --------
-    |        |         |        |         |        |
- Section  Section   Section  Section   Section  Section
-   1.1      1.2       2.1      2.2       3.1      3.2
-
-</pre></div>
-
-<p>In a Texinfo file that has this structure, the beginning of Chapter 2
-looks like this:
-</p>
-<div class="example">
-<pre class="example">@node    Chapter 2,  Chapter 3, Chapter 1, top
-@chapter Chapter 2
-</pre></div>
-
-<p>The chapter structuring commands are described in the sections that
-follow; the <code>@node</code> and <code>@menu</code> commands are described in
-following chapters. (See section <a href="texinfo_7.html#Nodes">Nodes</a>, and see <a href="texinfo_8.html#Menus">Menus</a>.)
-</p>
-
-<hr>
-<a name="Structuring-Command-Types"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Tree-Structuring" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#makeinfo-top" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Structuring-Command-Types-1"></a>
-<h2 class="section">5.2 Structuring Command Types</h2>
-
-<p>The chapter structuring commands fall into four groups or series, each
-of which contains structuring commands corresponding to the
-hierarchical levels of chapters, sections, subsections, and
-subsubsections.
-</p>
-<p>The four groups are the <code>@chapter</code> series, the
-<code>@unnumbered</code> series, the <code>@appendix</code> series, and the
-<code>@heading</code> series.
-</p>
-<p>Each command produces titles that have a different appearance on the
-printed page or Info file; only some of the commands produce
-titles that are listed in the table of contents of a printed book or
-manual.
-</p>
-<ul>
-<li>
-The <code>@chapter</code> and <code>@appendix</code> series of commands produce
-numbered or lettered entries both in the body of a printed work and in
-its table of contents.
-
-</li><li>
-The <code>@unnumbered</code> series of commands produce unnumbered entries
-both in the body of a printed work and in its table of contents.  The
-<code>@top</code> command, which has a special use, is a member of this
-series (see section <a href="#makeinfo-top"><code>@top</code></a>).
-
-</li><li>
-The <code>@heading</code> series of commands produce unnumbered headings
-that do not appear in a table of contents.  The heading commands never
-start a new page.
-
-</li><li>
-The <code>@majorheading</code> command produces results similar to using
-the <code>@chapheading</code> command but generates a larger vertical
-whitespace before the heading.
-
-</li><li>
-When an <code>@setchapternewpage</code> command says to do so, the
-<code>@chapter</code>, <code>@unnumbered</code>, and <code>@appendix</code> commands
-start new pages in the printed manual; the <code>@heading</code> commands
-do not.
-</li></ul>
-
-<p>Here are the four groups of chapter structuring commands:
-</p>
-
-<table>
-<tr><td width="19%"></td><td width="30%"></td><td width="28%"></td><td width="22%">No new page</td></tr>
-<tr><td width="19%"><i>Numbered</i></td><td width="30%"><i>Unnumbered</i></td><td width="28%"><i>Lettered/numbered</i></td><td width="22%"><i>Unnumbered</i></td></tr>
-<tr><td width="19%">In contents</td><td width="30%">In contents</td><td width="28%">In contents</td><td width="22%">Omitted from<br>contents</td></tr>
-<tr><td width="19%"></td><td width="30%"><code>@top</code></td><td width="28%"></td><td width="22%"><code>@majorheading</code></td></tr>
-<tr><td width="19%"><code>@chapter</code></td><td width="30%"><code>@unnumbered</code></td><td width="28%"><code>@appendix</code></td><td width="22%"><code>@chapheading</code></td></tr>
-<tr><td width="19%"><code>@section</code></td><td width="30%"><code>@unnumberedsec</code></td><td width="28%"><code>@appendixsec</code></td><td width="22%"><code>@heading</code></td></tr>
-<tr><td width="19%"><code>@subsection</code></td><td width="30%"><code>@unnumberedsubsec</code></td><td width="28%"><code>@appendixsubsec</code></td><td width="22%"><code>@subheading</code></td></tr>
-<tr><td width="19%"><code>@subsubsection</code></td><td width="30%"><code>@unnumberedsubsubsec</code></td><td width="28%"><code>@appendixsubsubsec</code></td><td width="22%"><code>@subsubheading</code></td></tr>
-</table>
-
-
-<hr>
-<a name="makeinfo-top"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring-Command-Types" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#chapter" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040top"></a>
-<h2 class="section">5.3 <code>@top</code></h2>
-
-<p>The <code>@top</code> command is a special sectioning command that you use
-only after an &lsquo;<samp>@node Top</samp>&rsquo; line at the beginning of a Texinfo file.
-The <code>@top</code> command tells the <code>makeinfo</code> formatter which node
-is the &lsquo;Top&rsquo; node, so it can use it as the root of the node tree if your
-manual uses implicit pointers.  It has the same typesetting effect as
-<code>@unnumbered</code> (see section <a href="#unnumbered-_0026-appendix"><code>@unnumbered</code> and <code>@appendix</code></a>).  For detailed information, see <a href="texinfo_7.html#makeinfo-top-command">The <code>@top</code> Command</a>.
-</p>
-<p>The <code>@top</code> node and its menu (if any) is conventionally wrapped in
-an <code>@ifnottex</code> conditional so that it will appear only in Info and
-HTML output, not TeX.
-</p>
-
-<hr>
-<a name="chapter"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#makeinfo-top" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumbered-_0026-appendix" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040chapter"></a>
-<h2 class="section">5.4 <code>@chapter</code></h2>
-<a name="index-chapter"></a>
-
-<p><code>@chapter</code> identifies a chapter in the document.  Write the
-command at the beginning of a line and follow it on the same line by
-the title of the chapter.
-</p>
-<p>For example, this chapter in this manual is entitled &ldquo;Chapter
-Structuring&rdquo;; the <code>@chapter</code> line looks like this:
-</p>
-<div class="example">
-<pre class="example">@chapter Chapter Structuring
-</pre></div>
-
-<p>In TeX, the <code>@chapter</code> command creates a chapter in the
-document, specifying the chapter title.  The chapter is numbered
-automatically.
-</p>
-<p>In Info, the <code>@chapter</code> command causes the title to appear on a
-line by itself, with a line of asterisks inserted underneath.  Thus,
-in Info, the above example produces the following output:
-</p>
-<div class="example">
-<pre class="example">Chapter Structuring
-*******************
-</pre></div>
-
-<a name="index-centerchap"></a>
-<p>Texinfo also provides a command <code>@centerchap</code>, which is analogous
-to <code>@unnumbered</code>, but centers its argument in the printed output.
-This kind of stylistic choice is not usually offered by Texinfo.
-</p>
-
-<hr>
-<a name="unnumbered-_0026-appendix"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#chapter" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#majorheading-_0026-chapheading" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040unnumbered-and-_0040appendix"></a>
-<h2 class="section">5.5 <code>@unnumbered</code> and <code>@appendix</code></h2>
-<a name="index-unnumbered"></a>
-<a name="index-appendix"></a>
-
-<p>Use the <code>@unnumbered</code> command to create a chapter that appears
-in a printed manual without chapter numbers of any kind.  Use the
-<code>@appendix</code> command to create an appendix in a printed manual
-that is labelled by letter instead of by number.
-</p>
-<p>For Info file output, the <code>@unnumbered</code> and <code>@appendix</code>
-commands are equivalent to <code>@chapter</code>: the title is printed on a
-line by itself with a line of asterisks underneath.  (See section <a href="#chapter"><code>@chapter</code></a>.)
-</p>
-<p>To create an appendix or an unnumbered chapter, write an
-<code>@appendix</code> or <code>@unnumbered</code> command at the beginning of a
-line and follow it on the same line by the title, as you would if you
-were creating a chapter.
-</p>
-
-<hr>
-<a name="majorheading-_0026-chapheading"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumbered-_0026-appendix" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#section" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040majorheading_002c-_0040chapheading"></a>
-<h2 class="section">5.6 <code>@majorheading</code>, <code>@chapheading</code></h2>
-<a name="index-majorheading"></a>
-<a name="index-chapheading"></a>
-
-<p>The <code>@majorheading</code> and <code>@chapheading</code> commands put
-chapter-like headings in the body of a document.
-</p>
-<p>However, neither command causes TeX to produce a numbered heading
-or an entry in the table of contents; and neither command causes
-TeX to start a new page in a printed manual.
-</p>
-<p>In TeX, an <code>@majorheading</code> command generates a larger vertical
-whitespace before the heading than an <code>@chapheading</code> command but
-is otherwise the same.
-</p>
-<p>In Info,
-the <code>@majorheading</code> and
-<code>@chapheading</code> commands are equivalent to
-<code>@chapter</code>: the title is printed on a line by itself with a line
-of asterisks underneath.  (See section <a href="#chapter"><code>@chapter</code></a>.)
-</p>
-<hr>
-<a name="section"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#majorheading-_0026-chapheading" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumberedsec-appendixsec-heading" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040section"></a>
-<h2 class="section">5.7 <code>@section</code></h2>
-<a name="index-section"></a>
-
-<p>In a printed manual, an <code>@section</code> command identifies a
-numbered section within a chapter.  The section title appears in the
-table of contents.  In Info, an <code>@section</code> command provides a
-title for a segment of text, underlined with &lsquo;<samp>=</samp>&rsquo;.
-</p>
-<p>This section is headed with an <code>@section</code> command and looks like
-this in the Texinfo file:
-</p>
-<div class="example">
-<pre class="example">@section @code{@@section}
-</pre></div>
-
-<p>To create a section, write the <code>@section</code> command at the
-beginning of a line and follow it on the same line by the section
-title.
-</p>
-<p>Thus,
-</p>
-<div class="example">
-<pre class="example">@section This is a section
-</pre></div>
-
-<p>produces
-</p>
-<div class="example">
-<pre class="example">This is a section
-=================
-</pre></div>
-
-<p>in Info.
-</p>
-<hr>
-<a name="unnumberedsec-appendixsec-heading"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#section" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#subsection" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040unnumberedsec_002c-_0040appendixsec_002c-_0040heading"></a>
-<h2 class="section">5.8 <code>@unnumberedsec</code>, <code>@appendixsec</code>, <code>@heading</code></h2>
-<a name="index-unnumberedsec"></a>
-<a name="index-appendixsec"></a>
-<a name="index-heading"></a>
-
-<p>The <code>@unnumberedsec</code>, <code>@appendixsec</code>, and <code>@heading</code>
-commands are, respectively, the unnumbered, appendix-like, and
-heading-like equivalents of the <code>@section</code> command.
-(See section <a href="#section"><code>@section</code></a>.)
-</p>
-<dl compact="compact">
-<dt><code>@unnumberedsec</code></dt>
-<dd><p>The <code>@unnumberedsec</code> command may be used within an
-unnumbered chapter or within a regular chapter or appendix to
-provide an unnumbered section.
-</p>
-</dd>
-<dt><code>@appendixsec</code></dt>
-<dt><code>@appendixsection</code></dt>
-<dd><p><code>@appendixsection</code> is a longer spelling of the
-<code>@appendixsec</code> command; the two are synonymous.
-<a name="index-appendixsection"></a>
-</p>
-<p>Conventionally, the <code>@appendixsec</code> or <code>@appendixsection</code>
-command is used only within appendices.
-</p>
-</dd>
-<dt><code>@heading</code></dt>
-<dd><p>You may use the <code>@heading</code> command anywhere you wish for a
-section-style heading that will not appear in the table of contents.
-</p></dd>
-</dl>
-
-<hr>
-<a name="subsection"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumberedsec-appendixsec-heading" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumberedsubsec-appendixsubsec-subheading" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-_0040subsection-Command"></a>
-<h2 class="section">5.9 The <code>@subsection</code> Command</h2>
-<a name="index-subsection"></a>
-
-<p>Subsections are to sections as sections are to chapters.
-(See section <a href="#section"><code>@section</code></a>.)  In Info, subsection titles are
-underlined with &lsquo;<samp>-</samp>&rsquo;.  For example,
-</p>
-<div class="example">
-<pre class="example">@subsection This is a subsection
-</pre></div>
-
-<p>produces
-</p>
-<div class="example">
-<pre class="example">This is a subsection
---------------------
-</pre></div>
-
-<p>In a printed manual, subsections are listed in the table of contents
-and are numbered three levels deep.
-</p>
-<hr>
-<a name="unnumberedsubsec-appendixsubsec-subheading"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#subsection" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#subsubsection" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-_0040subsection_002dlike-Commands"></a>
-<h2 class="section">5.10 The <code>@subsection</code>-like Commands</h2>
-<a name="index-Subsection_002dlike-commands"></a>
-<a name="index-unnumberedsubsec"></a>
-<a name="index-appendixsubsec"></a>
-<a name="index-subheading"></a>
-
-<p>The <code>@unnumberedsubsec</code>, <code>@appendixsubsec</code>, and
-<code>@subheading</code> commands are, respectively, the unnumbered,
-appendix-like, and heading-like equivalents of the <code>@subsection</code>
-command.  (See section <a href="#subsection"><code>@subsection</code></a>.)
-</p>
-<p>In Info, the <code>@subsection</code>-like commands generate a title
-underlined with hyphens.  In a printed manual, an <code>@subheading</code>
-command produces a heading like that of a subsection except that it is
-not numbered and does not appear in the table of contents.  Similarly,
-an <code>@unnumberedsubsec</code> command produces an unnumbered heading like
-that of a subsection and an <code>@appendixsubsec</code> command produces a
-subsection-like heading labelled with a letter and numbers; both of
-these commands produce headings that appear in the table of
-contents.
-</p>
-<hr>
-<a name="subsubsection"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#unnumberedsubsec-appendixsubsec-subheading" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Raise_002flower-sections" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-_0060subsub_0027-Commands"></a>
-<h2 class="section">5.11 The &lsquo;subsub&rsquo; Commands</h2>
-<a name="index-Subsub-commands"></a>
-<a name="index-subsubsection"></a>
-<a name="index-unnumberedsubsubsec"></a>
-<a name="index-appendixsubsubsec"></a>
-<a name="index-subsubheading"></a>
-
-<p>The fourth and lowest level sectioning commands in Texinfo are the
-&lsquo;subsub&rsquo; commands.  They are:
-</p>
-<dl compact="compact">
-<dt><code>@subsubsection</code></dt>
-<dd><p>Subsubsections are to subsections as subsections are to sections.
-(See section <a href="#subsection"><code>@subsection</code></a>.)  In a printed manual,
-subsubsection titles appear in the table of contents and are numbered
-four levels deep.
-</p>
-</dd>
-<dt><code>@unnumberedsubsubsec</code></dt>
-<dd><p>Unnumbered subsubsection titles appear in the table of contents of a
-printed manual, but lack numbers.  Otherwise, unnumbered
-subsubsections are the same as subsubsections.  In Info, unnumbered
-subsubsections look exactly like ordinary subsubsections.
-</p>
-</dd>
-<dt><code>@appendixsubsubsec</code></dt>
-<dd><p>Conventionally, appendix commands are used only for appendices and are
-lettered and numbered appropriately in a printed manual.  They also
-appear in the table of contents.  In Info, appendix subsubsections look
-exactly like ordinary subsubsections.
-</p>
-</dd>
-<dt><code>@subsubheading</code></dt>
-<dd><p>The <code>@subsubheading</code> command may be used anywhere that you need
-a small heading that will not appear in the table of contents.  In
-Info, subsubheadings look exactly like ordinary subsubsection
-headings.
-</p></dd>
-</dl>
-
-<p>In Info,  &lsquo;subsub&rsquo; titles are underlined with periods.
-For example,
-</p>
-<div class="example">
-<pre class="example">@subsubsection This is a subsubsection
-</pre></div>
-
-<p>produces
-</p>
-<div class="example">
-<pre class="example">This is a subsubsection
-.......................
-</pre></div>
-
-<hr>
-<a name="Raise_002flower-sections"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#subsubsection" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Structuring" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="g_t_0040raisesections-and-_0040lowersections"></a>
-<h2 class="section">5.12 <code>@raisesections</code> and <code>@lowersections</code></h2>
-<a name="index-raisesections"></a>
-<a name="index-lowersections"></a>
-<a name="index-Raising-and-lowering-sections"></a>
-<a name="index-Sections_002c-raising-and-lowering"></a>
-
-<p>The <code>@raisesections</code> and <code>@lowersections</code> commands raise and
-lower the hierarchical level of chapters, sections, subsections and the
-like.  The <code>@raisesections</code> command changes sections to chapters,
-subsections to sections, and so on.  The <code>@lowersections</code> command
-changes chapters to sections, sections to subsections, and so on.
-</p>
-<a name="index-Include-files_002c-and-section-levels"></a>
-<p>An <code>@lowersections</code> command is useful if you wish to include text
-that is written as an outer or standalone Texinfo file in another
-Texinfo file as an inner, included file.  If you write the command at
-the beginning of the file, all your <code>@chapter</code> commands are
-formatted as if they were <code>@section</code> commands, all your
-<code>@section</code> command are formatted as if they were
-<code>@subsection</code> commands, and so on.
-</p>
-<p><code>@raisesections</code> raises a command one level in the chapter
-structuring hierarchy:
-</p>
-<div class="example">
-<pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
-
-@subsection     @section,
-@section        @chapter,
-@heading        @chapheading,
-          <span class="roman">etc.</span>
-</pre></div>
-
-<p><code>@lowersections</code> lowers a command one level in the chapter
-structuring hierarchy:
-</p>
-<div class="example">
-<pre class="example">  <span class="roman">Change</span>           <span class="roman">To</span>
-
-@chapter        @section,
-@subsection     @subsubsection,
-@heading        @subheading,
-          <span class="roman">etc.</span>
-</pre></div>
-
-<p>An <code>@raisesections</code> or <code>@lowersections</code> command changes only
-those structuring commands that follow the command in the Texinfo file.
-Write an <code>@raisesections</code> or <code>@lowersections</code> command on a
-line of its own.
-</p>
-<p>An <code>@lowersections</code> command cancels an <code>@raisesections</code>
-command, and vice versa.  Typically, the commands are used like this:
-</p>
-<div class="example">
-<pre class="example">@lowersections
-@include somefile.texi
-@raisesections
-</pre></div>
-
-<p>Without the <code>@raisesections</code>, all the subsequent sections in your
-document will be lowered.
-</p>
-<p>Repeated use of the commands continue to raise or lower the hierarchical
-level a step at a time.
-</p>
-<p>An attempt to raise above &lsquo;chapters&rsquo; reproduces chapter commands; an
-attempt to lower below &lsquo;subsubsections&rsquo; reproduces subsubsection
-commands.
-</p>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-2"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-3"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-4"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-5"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-6"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-7"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-8"><b>@</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-9"><b>\</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_3.html#index_split-2_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Structuring" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_7.html#Nodes" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

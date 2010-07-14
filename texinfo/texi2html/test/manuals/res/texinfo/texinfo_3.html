@@ -29,10 +29,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>GNU Texinfo 4.2: 2 Using Texinfo Mode</title>
+<title>GNU Texinfo 4.2: Concept Index: B &ndash; D</title>
 
-<meta name="description" content="GNU Texinfo 4.2: 2 Using Texinfo Mode">
-<meta name="keywords" content="GNU Texinfo 4.2: 2 Using Texinfo Mode">
+<meta name="description" content="GNU Texinfo 4.2: Concept Index: B &ndash; D">
+<meta name="keywords" content="GNU Texinfo 4.2: Concept Index: B &ndash; D">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -68,1140 +68,330 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="Texinfo-Mode"></a>
+<a name="index_split-2"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="texinfo_2.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_2.html#History" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Emacs-Editing" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Concept-Index.html#Concept-Index" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_4.html#index_split-3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Using-Texinfo-Mode"></a>
-<h1 class="chapter">2 Using Texinfo Mode</h1>
-<a name="index-Texinfo-mode"></a>
-<a name="index-Mode_002c-using-Texinfo"></a>
-<a name="index-GNU-Emacs"></a>
-<a name="index-Emacs"></a>
-
-<p>You may edit a Texinfo file with any text editor you choose.  A Texinfo
-file is no different from any other <small>ASCII</small> file.  However, GNU Emacs
-comes with a special mode, called Texinfo mode, that provides Emacs
-commands and tools to help ease your work.
-</p>
-<p>This chapter describes features of GNU Emacs&rsquo; Texinfo mode but not any
-features of the Texinfo formatting language.  So if you are reading this
-manual straight through from the beginning, you may want to skim through
-this chapter briefly and come back to it after reading succeeding
-chapters which describe the Texinfo formatting language in detail.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Texinfo-Mode-Overview">Texinfo Mode Overview</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How Texinfo mode can help you.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Emacs-Editing">2.1 The Usual GNU Emacs Editing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Texinfo mode adds to GNU Emacs&rsquo; general
-                                  purpose editing features.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Inserting">2.2 Inserting Frequently Used Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to insert frequently used @-commands.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Showing-the-Structure">2.3 Showing the Section Structure of a File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to show the structure of a file.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Updating-Nodes-and-Menus">2.4 Updating Nodes and Menus</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How to update or create new nodes and menus.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Info-Formatting">2.5 Formatting for Info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             How to format for Info.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Printing">2.6 Formatting and Printing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    How to format and print part or all of a file.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Texinfo-Mode-Summary">2.7 Texinfo Mode Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Summary of all the Texinfo mode commands.
-</td></tr>
+<h1 class="unnumbered">Concept Index: B &ndash; D</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-2"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-3"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-4"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-5"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-6"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-7"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-8"><b>@</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-9"><b>\</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-2_cp_letter-B">B</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-B5-paper_002c-printing-on">B5 paper, printing on</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#pagesizes">19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Backslash-in-macros">Backslash in macros</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-Macros">18.1 Defining Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Backslash_002c-and-macros">Backslash, and macros</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Invoking-Macros">18.2 Invoking Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Badly-referenced-nodes">Badly referenced nodes</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Running-Info_002dValidate">F.5 Finding Badly Referenced Nodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Bastard-title-page">Bastard title page</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#titlepage">3.4.1 <code>@titlepage</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Batch-formatting-for-Info">Batch formatting for Info</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Batch-Formatting">20.1.7 Batch Formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Beginning-a-Texinfo-file">Beginning a Texinfo file</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Beginning-a-File">3 Beginning a Texinfo File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Beginning-line-of-a-Texinfo-file">Beginning line of a Texinfo file</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#First-Line">3.2.1 The First Line of a Texinfo File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Berry_002c-Karl">Berry, Karl</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#History">1.11 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Big-points">Big points</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Black-rectangle-in-hardcopy">Black rectangle in hardcopy</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Overfull-hboxes">19.10 Overfull &ldquo;hboxes&rdquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Blank-lines">Blank lines</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#sp">14.4 <code>@sp</code> <var>n</var>: Insert Blank Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Body-of-a-macro">Body of a macro</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-Macros">18.1 Defining Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Bolio">Bolio</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#History">1.11 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Book-characteristics_002c-printed">Book characteristics, printed</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Printed-Books">1.4 Printed Books</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Book_002c-printing-small">Book, printing small</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#smallbook">19.11 Printing &ldquo;Small&rdquo; Books</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-BoTeX">BoTeX</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#History">1.11 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="Quotations-and-Examples.html#index-Box-with-rounded-corners">Box with rounded corners</a></td><td>&nbsp;</td><td valign="top"><a href="Quotations-and-Examples.html#cartouche">10.13 <code>@cartouche</code>: Rounded Rectangles Around Examples</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Box_002c-ugly-black-in-hardcopy">Box, ugly black in hardcopy</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Overfull-hboxes">19.10 Overfull &ldquo;hboxes&rdquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="Command-Syntax.html#index-Braces-and-argument-syntax">Braces and argument syntax</a></td><td>&nbsp;</td><td valign="top"><a href="Command-Syntax.html#Command-Syntax">Appendix H @-Command Syntax</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Braces_002c-in-macro-arguments">Braces, in macro arguments</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Invoking-Macros">18.2 Invoking Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Braces_002c-inserting">Braces, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Braces-Atsigns">13.1 Inserting @ and Braces</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Braces_002c-when-to-use">Braces, when to use</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Formatting-Commands">1.5 @-commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Breaks.html#index-Breaks-in-a-line">Breaks in a line</a></td><td>&nbsp;</td><td valign="top"><a href="Breaks.html#Line-Breaks">14.1 <code>@*</code>: Generate Line Breaks</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Breve-accent">Breve accent</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Buffer-formatting-and-printing">Buffer formatting and printing</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Printing">2.6 Formatting and Printing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Bugs_002c-reporting">Bugs, reporting</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Reporting-Bugs">1.1 Reporting Bugs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Bullets_002c-inserting">Bullets, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Dots-Bullets">13.4 Inserting Ellipsis and Bullets</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-2_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Case-in-node-name">Case in node name</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Case_002c-not-altering-in-_0040code">Case, not altering in <code>@code</code></a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#code">9.1.1 <code>@code</code>{<var>sample-code</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Catching-errors-with-Info-formatting">Catching errors with Info formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Debugging-with-Info">F.1 Catching Errors with Info Formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Catching-errors-with-TeX-formatting">Catching errors with TeX formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Debugging-with-TeX">F.2 Catching Errors with TeX Formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Catching-mistakes">Catching mistakes</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Catching-Mistakes">Appendix F Formatting Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Cedilla-accent">Cedilla accent</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Centimeters">Centimeters</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Structuring.html#index-Chapter-structuring">Chapter structuring</a></td><td>&nbsp;</td><td valign="top"><a href="Structuring.html#Structuring">5 Chapter Structuring</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Chapters_002c-formatting-one-at-a-time">Chapters, formatting one at a time</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Format-with-tex_002ftexindex">19.2 Format with <code>tex</code> and <code>texindex</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Characteristics_002c-printed-books-or-manuals">Characteristics, printed books or manuals</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Printed-Books">1.4 Printed Books</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Characters_002c-invalid-in-node-name">Characters, invalid in node name</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Chassell_002c-Robert-J_002e">Chassell, Robert J.</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#History">1.11 History</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Check-accent">Check accent</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Checking-for-badly-referenced-nodes">Checking for badly referenced nodes</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Running-Info_002dValidate">F.5 Finding Badly Referenced Nodes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Checklist-for-bug-reports">Checklist for bug reports</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Reporting-Bugs">1.1 Reporting Bugs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Ciceros">Ciceros</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Circumflex-accent">Circumflex accent</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-code_002c-arg-to-_0040kbdinputstyle"><code>code<span class="roman">, arg to @kbdinputstyle</span></code></a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#kbd">9.1.2 <code>@kbd</code>{<var>keyboard-characters</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Colon-in-nodename">Colon in nodename</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-colon_002c-last-in-INFOPATH">colon, last in <code>INFOPATH</code></a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Other-Info-Directories">20.2.3 Info Files in Other Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="Lists-and-Tables.html#index-Column-widths_002c-defining-for-multitables">Column widths, defining for multitables</a></td><td>&nbsp;</td><td valign="top"><a href="Lists-and-Tables.html#Multitable-Column-Widths">11.4.1 Multitable Column Widths</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Combining-indices">Combining indices</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#Combining-Indices">12.4 Combining Indices</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Comma-in-nodename">Comma in nodename</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#Node-Line-Requirements">6.3.4 <code>@node</code> Line Requirements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Comma_002c-in-macro-arguments">Comma, in macro arguments</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Invoking-Macros">18.2 Invoking Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Command-aliases">Command aliases</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#alias">18.4 &lsquo;<samp>@alias <var>new</var>=<var>existing</var></samp>&rsquo;</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Command-definitions">Command definitions</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Sample-Function-Definition">15.6 A Sample Function Definition</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Command-names_002c-indicating">Command names, indicating</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#command">9.1.9 <code>@command</code>{<var>command-name</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Command-Syntax.html#index-Command-syntax">Command syntax</a></td><td>&nbsp;</td><td valign="top"><a href="Command-Syntax.html#Command-Syntax">Appendix H @-Command Syntax</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Commands-to-insert-special-characters">Commands to insert special characters</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Braces-Atsigns">13.1 Inserting @ and Braces</a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-Commands-using-raw-HTML">Commands using raw HTML</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Raw-Formatter-Commands">16.3 Raw Formatter Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-Commands-using-raw-TeX">Commands using raw TeX</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Raw-Formatter-Commands">16.3 Raw Formatter Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Commands_002c-inserting-them">Commands, inserting them</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Inserting">2.2 Inserting Frequently Used Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Comments">Comments</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Comments">1.7 Comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Compile-command-for-formatting">Compile command for formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Compile_002dCommand">19.7 Using the Local Variables List</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Compressed-files_002c-reading">Compressed files, reading</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Invoking-install_002dinfo">20.2.5 Invoking install-info</a></td></tr>
+<tr><td></td><td valign="top"><a href="Conditionals.html#index-Conditionally-visible-text">Conditionally visible text</a></td><td>&nbsp;</td><td valign="top"><a href="Conditionals.html#Conditionals">16 Conditionally Visible Text</a></td></tr>
+<tr><td></td><td valign="top"><a href="Copying-Conditions.html#index-Conditions-for-copying-Texinfo">Conditions for copying Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Copying-Conditions.html#Copying-Conditions">Texinfo Copying Conditions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Ending-a-File.html#index-Contents_002c-after-title-page">Contents, after title page</a></td><td>&nbsp;</td><td valign="top"><a href="Ending-a-File.html#Contents">4.2 Generating a Table of Contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Ending-a-File.html#index-Contents_002c-Table-of">Contents, Table of</a></td><td>&nbsp;</td><td valign="top"><a href="Ending-a-File.html#Contents">4.2 Generating a Table of Contents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Contents_002dlike-outline-of-file-structure">Contents-like outline of file structure</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Showing-the-Structure">2.3 Showing the Section Structure of a File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Conventions-for-writing-definitions">Conventions for writing definitions</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Def-Cmd-Conventions">15.5 Conventions for Writing Definitions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Conventions_002c-syntactic">Conventions, syntactic</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Conventions">1.6 General Syntactic Conventions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Conversion_002c-from-Docbook-to-Texinfo">Conversion, from Docbook to Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Using-Texinfo">1.2 Using Texinfo</a></td></tr>
+<tr><td></td><td valign="top"><a href="Copying-Conditions.html#index-Copying-conditions">Copying conditions</a></td><td>&nbsp;</td><td valign="top"><a href="Copying-Conditions.html#Copying-Conditions">Texinfo Copying Conditions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copying-Permissions">Copying Permissions</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Document-Permissions">3.3 Document Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copying-software">Copying software</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Software-Copying-Permissions">3.7 Software Copying Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copying-text_002c-including">Copying text, including</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#insertcopying">3.3.2 <code>@insertcopying</code>: Include permissions text</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copyright-owner-for-FSF-works">Copyright owner for FSF works</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#copying">3.3.1 <code>@copying</code>: Declare copying permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copyright-page">Copyright page</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Copyright">3.4.4 Copyright Page</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copyright-page_002c-for-plain-text">Copyright page, for plain text</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Titlepage-_0026-Copyright-Page">3.4 Title and Copyright Pages</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Copyright-word_002c-always-in-English">Copyright word, always in English</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#copying">3.3.1 <code>@copying</code>: Declare copying permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Correcting-mistakes">Correcting mistakes</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Catching-Mistakes">Appendix F Formatting Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Create-nodes_002c-menus-automatically">Create nodes, menus automatically</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Updating-Nodes-and-Menus">2.4 Updating Nodes and Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Creating-an-Info-file">Creating an Info file</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Creating-an-Info-File">20.1 Creating an Info File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Creating-an-unsplit-file">Creating an unsplit file</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Unsplit">F.5.2 Creating an Unsplit File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Creating-index-entries">Creating index entries</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#Indexing-Commands">12.3 Defining the Entries of an Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Creating-pointers-with-makeinfo">Creating pointers with <code>makeinfo</code></a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#makeinfo-Pointer-Creation">6.4 Creating Pointers with <code>makeinfo</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Cropmarks-for-printing">Cropmarks for printing</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Cropmarks-and-Magnification">19.14 Cropmarks and Magnification</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-reference-parts">Cross reference parts</a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#Cross-Reference-Parts">8.2 Parts of a Cross Reference</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-references">Cross references</a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#Cross-References">8 Cross References</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-references-using-_0040inforef">Cross references using <code>@inforef</code></a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#inforef">8.7 <code>@inforef</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-references-using-_0040pxref">Cross references using <code>@pxref</code></a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#pxref">8.6 <code>@pxref</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-references-using-_0040ref">Cross references using <code>@ref</code></a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#ref">8.5 <code>@ref</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Cross-references-using-_0040xref">Cross references using <code>@xref</code></a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#xref">8.3 <code>@xref</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Nodes.html#index-Cross_002dreference-targets_002c-arbitrary">Cross-reference targets, arbitrary</a></td><td>&nbsp;</td><td valign="top"><a href="Nodes.html#anchor">6.5 <code>@anchor</code>: Defining Arbitrary Cross-reference Targets</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Custom-page-sizes">Custom page sizes</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#pagesizes">19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Customize-Emacs-package-_0028Development_002fDocs_002fTexinfo_0029">Customize Emacs package (<tt>Development/Docs/Texinfo</tt>)</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Texinfo-Mode-Printing">19.6 Formatting and Printing in Texinfo Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Customized-highlighting">Customized highlighting</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#definfoenclose">18.5 &lsquo;<samp>definfoenclose</samp>&rsquo;: Customized Highlighting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Customizing-of-TeX-for-Texinfo">Customizing of TeX for Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Preparing-for-TeX">19.9 Preparing for TeX</a></td></tr>
+<tr><td></td><td valign="top"><a href="Sample-Texinfo-Files.html#index-CVS-Id_003a-texinfo_002etxi_002cv-1_002e2-2003_002f02_002f24-18_003a17_003a06-pertusus-Exp-_0024_002c-in-Texinfo">CVS Id: texinfo.txi,v 1.2 2003/02/24 18:17:06 pertusus Exp $, in Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Sample-Texinfo-Files.html#GNU-Sample-Texts">C.2 GNU Sample Texts</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-2_cp_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Debugging-the-Texinfo-structure">Debugging the Texinfo structure</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Catching-Mistakes">Appendix F Formatting Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Debugging-with-Info-formatting">Debugging with Info formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Debugging-with-Info">F.1 Catching Errors with Info Formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Catching-Mistakes.html#index-Debugging-with-TeX-formatting">Debugging with TeX formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Catching-Mistakes.html#Debugging-with-TeX">F.2 Catching Errors with TeX Formatting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Defining-indexing-entries">Defining indexing entries</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#Indexing-Commands">12.3 Defining the Entries of an Index</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Defining-macros">Defining macros</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-Macros">18.1 Defining Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indices.html#index-Defining-new-indices">Defining new indices</a></td><td>&nbsp;</td><td valign="top"><a href="Indices.html#New-Indices">12.5 Defining New Indices</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Defining-new-Texinfo-commands">Defining new Texinfo commands</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Defining-New-Texinfo-Commands">18 Defining New Texinfo Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Definition-commands">Definition commands</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Definition-Commands">15 Definition Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Definition-conventions">Definition conventions</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Def-Cmd-Conventions">15.5 Conventions for Writing Definitions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Definition-template">Definition template</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#Def-Cmd-Template">15.1 The Template for a Definition</a></td></tr>
+<tr><td></td><td valign="top"><a href="Definition-Commands.html#index-Definitions-grouped-together">Definitions grouped together</a></td><td>&nbsp;</td><td valign="top"><a href="Definition-Commands.html#deffnx">15.3 Two or More &lsquo;First&rsquo; Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-Delimiter-character_002c-for-verbatim">Delimiter character, for verbatim</a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#verb">9.1.5 <code>@verb</code>{&lt;char&gt;<var>text</var>&lt;char&gt;}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Depth-of-text-area">Depth of text area</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#pagesizes">19.13 <code>@pagesizes</code> [<var>width</var>][, <var>height</var>]: Custom page sizes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Texinfo-Mode.html#index-Description-for-menu_002c-start">Description for menu, start</a></td><td>&nbsp;</td><td valign="top"><a href="Texinfo-Mode.html#Inserting">2.2 Inserting Frequently Used Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Description-of-document">Description of document</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#documentdescription">3.6.1 <code>@documentdescription</code>: Summary text</a></td></tr>
+<tr><td></td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#index-Details-of-macro-usage">Details of macro usage</a></td><td>&nbsp;</td><td valign="top"><a href="Defining-New-Texinfo-Commands.html#Macro-Details">18.3 Macro Details</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Didot-points">Did&ocirc;t points</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Cross-References.html#index-Different-cross-reference-commands">Different cross reference commands</a></td><td>&nbsp;</td><td valign="top"><a href="Cross-References.html#Cross-Reference-Commands">8.1 Different Cross Reference Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dimension-formatting">Dimension formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#dmn">13.2.4 <code>@dmn</code>{<var>dimension</var>}: Format a Dimension</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dimensions-and-image-sizes">Dimensions and image sizes</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-dir-directory-for-Info-installation">&lsquo;<tt>dir</tt>&rsquo; directory for Info installation</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Installing-an-Info-File">20.2 Installing an Info File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-dir-file-listing">&lsquo;<tt>dir</tt>&rsquo; file listing</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#New-Info-File">20.2.2 Listing a New Info File</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-dir-file_002c-creating-your-own">&lsquo;<tt>dir</tt>&rsquo; file, creating your own</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Other-Info-Directories">20.2.3 Info Files in Other Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-dir-files-and-Info-directories">&lsquo;<tt>dir</tt>&rsquo; files and Info directories</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Other-Info-Directories">20.2.3 Info Files in Other Directories</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-Dir-files_002c-compressed">Dir files, compressed</a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Invoking-install_002dinfo">20.2.5 Invoking install-info</a></td></tr>
+<tr><td></td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#index-dir_002c-created-by-install_002dinfo">&lsquo;<tt>dir</tt>&rsquo;, created by <code>install-info</code></a></td><td>&nbsp;</td><td valign="top"><a href="Creating-and-Installing-Info-Files.html#Invoking-install_002dinfo">20.2.5 Invoking install-info</a></td></tr>
+<tr><td></td><td valign="top"><a href="Quotations-and-Examples.html#index-Display-formatting">Display formatting</a></td><td>&nbsp;</td><td valign="top"><a href="Quotations-and-Examples.html#display">10.8 <code>@display</code> and <code>@smalldisplay</code></a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Displayed-equations">Displayed equations</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#math">13.8 <code>@math</code>: Inserting Mathematical Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Marking-Text.html#index-distinct_002c-arg-to-_0040kbdinputstyle"><code>distinct<span class="roman">, arg to @kbdinputstyle</span></code></a></td><td>&nbsp;</td><td valign="top"><a href="Marking-Text.html#kbd">9.1.2 <code>@kbd</code>{<var>keyboard-characters</var>}</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Distorting-images">Distorting images</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Images">13.11 Inserting Images</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Distribution">Distribution</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Software-Copying-Permissions">3.7 Software Copying Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Overview.html#index-Docbook_002c-converting-to-Texinfo">Docbook, converting to Texinfo</a></td><td>&nbsp;</td><td valign="top"><a href="Overview.html#Using-Texinfo">1.2 Using Texinfo</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Document-description">Document description</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#documentdescription">3.6.1 <code>@documentdescription</code>: Summary text</a></td></tr>
+<tr><td></td><td valign="top"><a href="Internationalization.html#index-Document-input-encoding">Document input encoding</a></td><td>&nbsp;</td><td valign="top"><a href="Internationalization.html#documentencoding">17.2 <code>@documentencoding <var>enc</var></code>: Set Input Encoding</a></td></tr>
+<tr><td></td><td valign="top"><a href="Internationalization.html#index-Document-language_002c-declaring">Document language, declaring</a></td><td>&nbsp;</td><td valign="top"><a href="Internationalization.html#documentlanguage">17.1 <code>@documentlanguage <var>cc</var></code>: Set the Document Language</a></td></tr>
+<tr><td></td><td valign="top"><a href="Beginning-a-File.html#index-Document-Permissions">Document Permissions</a></td><td>&nbsp;</td><td valign="top"><a href="Beginning-a-File.html#Document-Permissions">3.3 Document Permissions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dot-accent">Dot accent</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dotless-i_002c-j">Dotless i, j</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Inserting-Accents">13.3 Inserting Accents</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dots_002c-inserting">Dots, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#Dots-Bullets">13.4 Inserting Ellipsis and Bullets</a></td></tr>
+<tr><td></td><td valign="top"><a href="Insertions.html#index-Dots_002c-inserting-1">Dots, inserting</a></td><td>&nbsp;</td><td valign="top"><a href="Insertions.html#dots">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">...</small>)</a></td></tr>
+<tr><td></td><td valign="top"><a href="Menus.html#index-Double_002dcolon-menu-entries">Double-colon menu entries</a></td><td>&nbsp;</td><td valign="top"><a href="Menus.html#Less-Cluttered-Menu-Entry">7.3 Less Cluttered Menu Entry</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-Dumping-a-_002efmt-file">Dumping a .fmt file</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Preparing-for-TeX">19.9 Preparing for TeX</a></td></tr>
+<tr><td></td><td valign="top"><a href="Hardcopy.html#index-DVI-file">DVI file</a></td><td>&nbsp;</td><td valign="top"><a href="Hardcopy.html#Format-with-tex_002ftexindex">19.2 Format with <code>tex</code> and <code>texindex</code></a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-
-<a name="Texinfo-Mode-Overview"></a>
-<a name="Texinfo-Mode-Overview-1"></a>
-<h2 class="heading">Texinfo Mode Overview</h2>
-
-<p>Texinfo mode provides special features for working with Texinfo
-files.
-You can:
-</p>
-<ul>
-<li>
-Insert frequently used @-commands. 
-
-</li><li>
-Automatically create <code>@node</code> lines.
-
-</li><li>
-Show the structure of a Texinfo source file.
-
-</li><li>
-Automatically create or update the &lsquo;Next&rsquo;,
-&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of a node.
-
-</li><li>
-Automatically create or update menus.
-
-</li><li>
-Automatically create a master menu.
-
-</li><li>
-Format a part or all of a file for Info.
-
-</li><li>
-Typeset and print part or all of a file.
-</li></ul>
-
-<p>Perhaps the two most helpful features are those for inserting frequently
-used @-commands and for creating node pointers and menus.
-</p>
-<hr>
-<a name="Emacs-Editing"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Inserting" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-Usual-GNU-Emacs-Editing-Commands"></a>
-<h2 class="section">2.1 The Usual GNU Emacs Editing Commands</h2>
-
-<p>In most cases, the usual Text mode commands work the same in Texinfo
-mode as they do in Text mode.  Texinfo mode adds new editing commands
-and tools to GNU Emacs&rsquo; general purpose editing features.  The major
-difference concerns filling.  In Texinfo mode, the paragraph
-separation variable and syntax table are redefined so that Texinfo
-commands that should be on lines of their own are not inadvertently
-included in paragraphs.  Thus, the <kbd>M-q</kbd> (<code>fill-paragraph</code>)
-command will refill a paragraph but not mix an indexing command on a
-line adjacent to it into the paragraph.
-</p>
-<p>In addition, Texinfo mode sets the <code>page-delimiter</code> variable to
-the value of <code>texinfo-chapter-level-regexp</code>; by default, this is
-a regular expression matching the commands for chapters and their
-equivalents, such as appendices.  With this value for the page
-delimiter, you can jump from chapter title to chapter title with the
-<kbd>C-x ]</kbd> (<code>forward-page</code>) and <kbd>C-x [</kbd>
-(<code>backward-page</code>) commands and narrow to a chapter with the
-<kbd>C-x p</kbd> (<code>narrow-to-page</code>) command.  (See <a href="../emacs/Pages.html#Pages">Pages</a> in <cite>The GNU Emacs Manual</cite>, for details about the page commands.)
-</p>
-<p>You may name a Texinfo file however you wish, but the convention is to
-end a Texinfo file name with one of the extensions
-&lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo;, &lsquo;<tt>.txi</tt>&rsquo;, or &lsquo;<tt>.tex</tt>&rsquo;.  A longer
-extension is preferred, since it is explicit, but a shorter extension
-may be necessary for operating systems that limit the length of file
-names.  GNU Emacs automatically enters Texinfo mode when you visit a
-file with a &lsquo;<tt>.texinfo</tt>&rsquo;, &lsquo;<tt>.texi</tt>&rsquo; or &lsquo;<tt>.txi</tt>&rsquo;
-extension.  Also, Emacs switches to Texinfo mode
-when you visit a
-file that has &lsquo;<samp>-*-texinfo-*-</samp>&rsquo; in its first line.  If ever you are
-in another mode and wish to switch to Texinfo mode, type <code>M-x
-texinfo-mode</code>.
-</p>
-<p>Like all other Emacs features, you can customize or enhance Texinfo
-mode as you wish.  In particular, the keybindings are very easy to
-change.  The keybindings described here are the default or standard
-ones.
-</p>
-<hr>
-<a name="Inserting"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Emacs-Editing" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Showing-the-Structure" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Inserting-Frequently-Used-Commands"></a>
-<h2 class="section">2.2 Inserting Frequently Used Commands</h2>
-<a name="index-Inserting-frequently-used-commands"></a>
-<a name="index-Frequently-used-commands_002c-inserting"></a>
-<a name="index-Commands_002c-inserting-them"></a>
-
-<p>Texinfo mode provides commands to insert various frequently used
-@-commands into the buffer.  You can use these commands to save
-keystrokes.
-</p>
-<p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
-first letter of the @-command:
-</p>
-<dl compact="compact">
-<dt><kbd>C-c C-c c</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@code</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040code"></a>
-<p>Insert <code>@code{}</code> and put the
-cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c d</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@dfn</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040dfn"></a>
-<p>Insert <code>@dfn{}</code> and put the
-cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c e</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@end</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040end"></a>
-<p>Insert <code>@end</code> and attempt to insert the correct following word,
-such as &lsquo;<samp>example</samp>&rsquo; or &lsquo;<samp>table</samp>&rsquo;.  (This command does not handle
-nested lists correctly, but inserts the word appropriate to the
-immediately preceding list.)
-</p>
-</dd>
-<dt><kbd>C-c C-c i</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@item</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040item"></a>
-<p>Insert <code>@item</code> and put the
-cursor at the beginning of the next line.
-</p>
-</dd>
-<dt><kbd>C-c C-c k</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@kbd</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040kbd"></a>
-<p>Insert <code>@kbd{}</code> and put the
-cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c n</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@node</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040node"></a>
-<p>Insert <code>@node</code> and a comment line
-listing the sequence for the &lsquo;Next&rsquo;,
-&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; nodes.
-Leave point after the <code>@node</code>.
-</p>
-</dd>
-<dt><kbd>C-c C-c o</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@noindent</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040noindent"></a>
-<p>Insert <code>@noindent</code> and put the
-cursor at the beginning of the next line.
-</p>
-</dd>
-<dt><kbd>C-c C-c s</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@samp</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040samp"></a>
-<p>Insert <code>@samp{}</code> and put the
-cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c t</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@table</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040table"></a>
-<p>Insert <code>@table</code> followed by a &lt;SPC&gt;
-and leave the cursor after the &lt;SPC&gt;.
-</p>
-</dd>
-<dt><kbd>C-c C-c v</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@var</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040var"></a>
-<p>Insert <code>@var{}</code> and put the
-cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c x</kbd></dt>
-<dt><kbd>M-x texinfo-insert-@example</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002d_0040example"></a>
-<p>Insert <code>@example</code> and put the
-cursor at the beginning of the next line.
-</p>
-</dd>
-<dt><kbd>C-c C-c {</kbd></dt>
-<dt><kbd>M-x texinfo-insert-braces</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002dbraces"></a>
-<p>Insert <code>{}</code> and put the cursor between the braces.
-</p>
-</dd>
-<dt><kbd>C-c C-c }</kbd></dt>
-<dt><kbd>C-c C-c ]</kbd></dt>
-<dt><kbd>M-x up-list</kbd></dt>
-<dd><a name="index-up_002dlist"></a>
-<p>Move from between a pair of braces forward past the closing brace.
-Typing <kbd>C-c C-c ]</kbd> is easier than typing <kbd>C-c C-c }</kbd>, which
-is, however, more mnemonic; hence the two keybindings.  (Also, you can
-move out from between braces by typing <kbd>C-f</kbd>.)
-</p></dd>
-</dl>
-
-<p>To put a command such as <code>@code{&hellip;}</code> around an
-<em>existing</em> word, position the cursor in front of the word and type
-<kbd>C-u 1 C-c C-c c</kbd>.  This makes it easy to edit existing plain text.
-The value of the prefix argument tells Emacs how many words following
-point to include between braces&mdash;&lsquo;<samp>1</samp>&rsquo; for one word, &lsquo;<samp>2</samp>&rsquo; for
-two words, and so on.  Use a negative argument to enclose the previous
-word or words.  If you do not specify a prefix argument, Emacs inserts
-the @-command string and positions the cursor between the braces.  This
-feature works only for those @-commands that operate on a word or words
-within one line, such as <code>@kbd</code> and <code>@var</code>.
-</p>
-<p>This set of insert commands was created after analyzing the frequency
-with which different @-commands are used in the <cite>GNU Emacs
-Manual</cite> and the <cite>GDB Manual</cite>.  If you wish to add your own insert
-commands, you can bind a keyboard macro to a key, use abbreviations,
-or extend the code in &lsquo;<tt>texinfo.el</tt>&rsquo;.
-</p>
-<a name="index-texinfo_002dstart_002dmenu_002ddescription"></a>
-<a name="index-Menu-description_002c-start"></a>
-<a name="index-Description-for-menu_002c-start"></a>
-<p><kbd>C-c C-c C-d</kbd> (<code>texinfo-start-menu-description</code>) is an insert
-command that works differently from the other insert commands.  It
-inserts a node&rsquo;s section or chapter title in the space for the
-description in a menu entry line.  (A menu entry has three parts, the
-entry name, the node name, and the description.  Only the node name is
-required, but a description helps explain what the node is about.
-See section <a href="texinfo_8.html#Menu-Parts">The Parts of a Menu</a>.)
-</p>
-<p>To use <code>texinfo-start-menu-description</code>, position point in a menu
-entry line and type <kbd>C-c C-c C-d</kbd>.  The command looks for and copies
-the title that goes with the node name, and inserts the title as a
-description; it positions point at beginning of the inserted text so you
-can edit it.  The function does not insert the title if the menu entry
-line already contains a description.
-</p>
-<p>This command is only an aid to writing descriptions; it does not do the
-whole job.  You must edit the inserted text since a title tends to use
-the same words as a node name but a useful description uses different
-words.
-</p>
-<hr>
-<a name="Showing-the-Structure"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Inserting" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Nodes-and-Menus" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Showing-the-Section-Structure-of-a-File"></a>
-<h2 class="section">2.3 Showing the Section Structure of a File</h2>
-<a name="index-Showing-the-section-structure-of-a-file"></a>
-<a name="index-Section-structure-of-a-file_002c-showing-it"></a>
-<a name="index-Structure-of-a-file_002c-showing-it"></a>
-<a name="index-Outline-of-file-structure_002c-showing-it"></a>
-<a name="index-Contents_002dlike-outline-of-file-structure"></a>
-<a name="index-File-section-structure_002c-showing-it"></a>
-<a name="index-Texinfo-file-section-structure_002c-showing-it"></a>
-
-<p>You can show the section structure of a Texinfo file by using the
-<kbd>C-c C-s</kbd> command (<code>texinfo-show-structure</code>).  This command
-shows the section structure of a Texinfo file by listing the lines
-that begin with the @-commands for <code>@chapter</code>,
-<code>@section</code>, and the like.  It constructs what amounts
-to a table of contents.  These lines are displayed in another buffer
-called the &lsquo;<samp>*Occur*</samp>&rsquo; buffer.  In that buffer, you can position
-the cursor over one of the lines and use the <kbd>C-c C-c</kbd> command
-(<code>occur-mode-goto-occurrence</code>), to jump to the corresponding spot
-in the Texinfo file.
-</p>
-<dl compact="compact">
-<dt><kbd>C-c C-s</kbd></dt>
-<dt><kbd>M-x texinfo-show-structure</kbd></dt>
-<dd><a name="index-texinfo_002dshow_002dstructure"></a>
-<p>Show the <code>@chapter</code>, <code>@section</code>, and such lines of a
-Texinfo file.
-</p>
-</dd>
-<dt><kbd>C-c C-c</kbd></dt>
-<dt><kbd>M-x occur-mode-goto-occurrence</kbd></dt>
-<dd><a name="index-occur_002dmode_002dgoto_002doccurrence"></a>
-<p>Go to the line in the Texinfo file corresponding to the line under the
-cursor in the &lsquo;<tt>*Occur*</tt>&rsquo; buffer.
-</p></dd>
-</dl>
-
-<p>If you call <code>texinfo-show-structure</code> with a prefix argument by
-typing <kbd><span class="nolinebreak">C-u</span>&nbsp;<span class="nolinebreak">C-c</span>&nbsp;<span class="nolinebreak">C-s</span></kbd>, it will list not only those lines with the
-@-commands for <code>@chapter</code>, <code>@section</code>, and the like, but
-also the <code>@node</code> lines.  You can use <code>texinfo-show-structure</code>
-with a prefix argument to check whether the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
-pointers of an <code>@node</code> line are correct.
-</p>
-<p>Often, when you are working on a manual, you will be interested only
-in the structure of the current chapter.  In this case, you can mark
-off the region of the buffer that you are interested in by using the
-<kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command and
-<code>texinfo-show-structure</code> will work on only that region.  To see
-the whole buffer again, use <kbd><span class="nolinebreak">C-x</span>&nbsp;n&nbsp;w</kbd> (<code>widen</code>).
-(See <a href="../emacs/Narrowing.html#Narrowing">Narrowing</a> in <cite>The GNU Emacs Manual</cite>, for more
-information about the narrowing commands.)
-</p>
-<a name="index-page_002ddelimiter"></a>
-<a name="index-Page-delimiter-in-Texinfo-mode"></a>
-<p>In addition to providing the <code>texinfo-show-structure</code> command,
-Texinfo mode sets the value of the page delimiter variable to match
-the chapter-level @-commands.  This enables you to use the <kbd>C-x
-]</kbd> (<code>forward-page</code>) and <kbd>C-x [</kbd> (<code>backward-page</code>)
-commands to move forward and backward by chapter, and to use the
-<kbd>C-x p</kbd> (<code>narrow-to-page</code>) command to narrow to a chapter.
-See <a href="../emacs/Pages.html#Pages">Pages</a> in <cite>The GNU Emacs Manual</cite>, for more information
-about the page commands.
-</p>
-<hr>
-<a name="Updating-Nodes-and-Menus"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Showing-the-Structure" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Requirements" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Updating-Nodes-and-Menus-1"></a>
-<h2 class="section">2.4 Updating Nodes and Menus</h2>
-<a name="index-Updating-nodes-and-menus"></a>
-<a name="index-Create-nodes_002c-menus-automatically"></a>
-<a name="index-Insert-nodes_002c-menus-automatically"></a>
-<a name="index-Automatically-insert-nodes_002c-menus"></a>
-
-<p>Texinfo mode provides commands for automatically creating or updating
-menus and node pointers.  The commands are called &ldquo;update&rdquo; commands
-because their most frequent use is for updating a Texinfo file after you
-have worked on it; but you can use them to insert the &lsquo;Next&rsquo;,
-&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers into an <code>@node</code> line that has none
-and to create menus in a file that has none.
-</p>
-<p>If you do not use the updating commands, you need to write menus and
-node pointers by hand, which is a tedious task.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Updating-Commands">Updating Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Five major updating commands.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Updating-Requirements">2.4.1 Updating Requirements</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How to structure a Texinfo file for
-                                  using the updating command.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Other-Updating-Commands">2.4.2 Other Updating Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     How to indent descriptions, insert
-                                  missing nodes lines, and update
-                                  nodes in sequence.
-</td></tr>
-</table>
-
-<a name="Updating-Commands"></a>
-<a name="The-Updating-Commands"></a>
-<h3 class="subheading">The Updating Commands</h3>
-
-<p>You can use the updating commands to:
-</p>
-<ul>
-<li>
-insert or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers of a
-node,
-
-</li><li>
-insert or update the menu for a section, and
-
-</li><li>
-create a master menu for a Texinfo source file.
-</li></ul>
-
-<p>You can also use the commands to update all the nodes and menus in a
-region or in a whole Texinfo file.
-</p>
-<p>The updating commands work only with conventional Texinfo files, which
-are structured hierarchically like books.  In such files, a structuring
-command line must follow closely after each <code>@node</code> line, except
-for the &lsquo;Top&rsquo; <code>@node</code> line.  (A <em>structuring command line</em> is
-a line beginning with <code>@chapter</code>, <code>@section</code>, or other
-similar command.)
-</p>
-<p>You can write the structuring command line on the line that follows
-immediately after an <code>@node</code> line or else on the line that
-follows after a single <code>@comment</code> line or a single
-<code>@ifinfo</code> line.  You cannot interpose more than one line between
-the <code>@node</code> line and the structuring command line; and you may
-interpose only an <code>@comment</code> line or an <code>@ifinfo</code> line.
-</p>
-<p>Commands which work on a whole buffer require that the &lsquo;Top&rsquo; node be
-followed by a node with an <code>@chapter</code> or equivalent-level command.
-The menu updating commands will not create a main or master menu for a
-Texinfo file that has only <code>@chapter</code>-level nodes!  The menu
-updating commands only create menus <em>within</em> nodes for lower level
-nodes.  To create a menu of chapters, you must provide a &lsquo;Top&rsquo;
-node.
-</p>
-<p>The menu updating commands remove menu entries that refer to other Info
-files since they do not refer to nodes within the current buffer.  This
-is a deficiency.  Rather than use menu entries, you can use cross
-references to refer to other Info files.  None of the updating commands
-affect cross references.
-</p>
-<p>Texinfo mode has five updating commands that are used most often: two
-are for updating the node pointers or menu of a single node (or a
-region); two are for updating every node pointer and menu in a file;
-and one, the <code>texinfo-master-menu</code> command, is for creating a
-master menu for a complete file, and optionally, for updating every
-node and menu in the whole Texinfo file.
-</p>
-<p>The <code>texinfo-master-menu</code> command is the primary command:
-</p>
-<dl compact="compact">
-<dt><kbd>C-c C-u m</kbd></dt>
-<dt><kbd>M-x texinfo-master-menu</kbd></dt>
-<dd><a name="index-texinfo_002dmaster_002dmenu"></a>
-<p>Create or update a master menu that includes all the other menus
-(incorporating the descriptions from pre-existing menus, if
-any).
-</p>
-<p>With an argument (prefix argument, <kbd>C-u,</kbd> if interactive), first create or
-update all the nodes and all the regular menus in the buffer before
-constructing the master menu.  (See section <a href="texinfo_4.html#The-Top-Node">The Top Node and Master Menu</a>, for more about a master menu.)
-</p>
-<p>For <code>texinfo-master-menu</code> to work, the Texinfo file must have a
-&lsquo;Top&rsquo; node and at least one subsequent node.
-</p>
-<p>After extensively editing a Texinfo file, you can type the following:
-</p>
-<div class="example">
-<pre class="example">C-u M-x texinfo-master-menu
-or
-C-u C-c C-u m
-</pre></div>
-
-<p>This updates all the nodes and menus completely and all at once.
-</p></dd>
-</dl>
-
-<p>The other major updating commands do smaller jobs and are designed for
-the person who updates nodes and menus as he or she writes a Texinfo
-file.
-</p>
-<p>The commands are:
-</p>
-<dl compact="compact">
-<dt><kbd>C-c C-u C-n</kbd></dt>
-<dt><kbd>M-x texinfo-update-node</kbd></dt>
-<dd><a name="index-texinfo_002dupdate_002dnode"></a>
-<p>Insert the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers for the node that point is
-within (i.e., for the <code>@node</code> line preceding point).  If the
-<code>@node</code> line has pre-existing &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, or &lsquo;Up&rsquo;
-pointers in it, the old pointers are removed and new ones inserted.
-With an argument (prefix argument, <kbd>C-u</kbd>, if interactive), this command
-updates all <code>@node</code> lines in the region (which is the text
-between point and mark).
-</p>
-</dd>
-<dt><kbd>C-c C-u C-m</kbd></dt>
-<dt><kbd>M-x texinfo-make-menu</kbd></dt>
-<dd><a name="index-texinfo_002dmake_002dmenu"></a>
-<p>Create or update the menu in the node that point is within.
-With an argument (<kbd>C-u</kbd> as prefix argument, if
-interactive), the command makes or updates menus for the
-nodes which are either within or a part of the
-region.
-</p>
-<p>Whenever <code>texinfo-make-menu</code> updates an existing menu, the
-descriptions from that menu are incorporated into the new menu.  This
-is done by copying descriptions from the existing menu to the entries
-in the new menu that have the same node names.  If the node names are
-different, the descriptions are not copied to the new menu.
-</p>
-</dd>
-<dt><kbd>C-c C-u C-e</kbd></dt>
-<dt><kbd>M-x texinfo-every-node-update</kbd></dt>
-<dd><a name="index-texinfo_002devery_002dnode_002dupdate"></a>
-<p>Insert or update the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers for every
-node in the buffer.
-</p>
-</dd>
-<dt><kbd>C-c C-u C-a</kbd></dt>
-<dt><kbd>M-x texinfo-all-menus-update</kbd></dt>
-<dd><a name="index-texinfo_002dall_002dmenus_002dupdate"></a>
-<p>Create or update all the menus in the buffer.  With an argument
-(<kbd>C-u</kbd> as prefix argument, if interactive), first insert
-or update all the node
-pointers before working on the menus.
-</p>
-<p>If a master menu exists, the <code>texinfo-all-menus-update</code> command
-updates it; but the command does not create a new master menu if none
-already exists.  (Use the <code>texinfo-master-menu</code> command for
-that.)
-</p>
-<p>When working on a document that does not merit a master menu, you can
-type the following:
-</p>
-<div class="example">
-<pre class="example">C-u C-c C-u C-a
-or
-C-u M-x texinfo-all-menus-update
-</pre></div>
-
-<p>This updates all the nodes and menus.
-</p></dd>
-</dl>
-
-<p>The <code>texinfo-column-for-description</code> variable specifies the
-column to which menu descriptions are indented.  By default, the value
-is 32 although it is often useful to reduce it to as low as 24.  You
-can set the variable with the <kbd>M-x edit-options</kbd> command
-(see <a href="../emacs/Edit-Options.html#Edit-Options">Editing Variable Values</a> in <cite>The GNU Emacs Manual</cite>) or with the <kbd>M-x set-variable</kbd> command (see <a href="../emacs/Examining.html#Examining">Examining and Setting Variables</a> in <cite>The GNU Emacs Manual</cite>).
-</p>
-<p>Also, the <code>texinfo-indent-menu-description</code> command may be used to
-indent existing menu descriptions to a specified column.  Finally, if
-you wish, you can use the <code>texinfo-insert-node-lines</code> command to
-insert missing <code>@node</code> lines into a file.  (See section <a href="#Other-Updating-Commands">Other Updating Commands</a>, for more information.)
-</p>
-<hr>
-<a name="Updating-Requirements"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Nodes-and-Menus" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Nodes-and-Menus" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Other-Updating-Commands" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Updating-Requirements-1"></a>
-<h3 class="subsection">2.4.1 Updating Requirements</h3>
-<a name="index-Updating-requirements"></a>
-<a name="index-Requirements-for-updating-commands"></a>
-
-<p>To use the updating commands, you must organize the Texinfo file
-hierarchically with chapters, sections, subsections, and the like.
-When you construct the hierarchy of the manual, do not &lsquo;jump down&rsquo;
-more than one level at a time: you can follow the &lsquo;Top&rsquo; node with a
-chapter, but not with a section; you can follow a chapter with a
-section, but not with a subsection.  However, you may &lsquo;jump up&rsquo; any
-number of levels at one time&mdash;for example, from a subsection to a
-chapter.
-</p>
-<p>Each <code>@node</code> line, with the exception of the line for the &lsquo;Top&rsquo;
-node, must be followed by a line with a structuring command such as
-<code>@chapter</code>, <code>@section</code>, or
-<code>@unnumberedsubsec</code>.
-</p>
-<p>Each <code>@node</code> line/structuring-command line combination
-must look either like this:
-</p>
-<div class="example">
-<pre class="example">@node     Comments,  Minimum, Conventions, Overview
-@comment  node-name, next,    previous,    up
-@section Comments
-</pre></div>
-
-<p>or like this (without the <code>@comment</code> line):
-</p>
-<div class="example">
-<pre class="example">@node Comments, Minimum, Conventions, Overview
-@section Comments
-</pre></div>
-
-<p>or like this (without the explicit node pointers):
-</p>
-<div class="example">
-<pre class="example">@node Comments
-@section Comments
-</pre></div>
-
-<p>In this example, &lsquo;Comments&rsquo; is the name of both the node and the
-section.  The next node is called &lsquo;Minimum&rsquo; and the previous node is
-called &lsquo;Conventions&rsquo;.  The &lsquo;Comments&rsquo; section is within the &lsquo;Overview&rsquo;
-node, which is specified by the &lsquo;Up&rsquo; pointer.  (Instead of an
-<code>@comment</code> line, you may also write an <code>@ifinfo</code> line.)
-</p>
-<p>If a file has a &lsquo;Top&rsquo; node, it must be called &lsquo;<samp>top</samp>&rsquo; or &lsquo;<samp>Top</samp>&rsquo;
-and be the first node in the file.
-</p>
-<p>The menu updating commands create a menu of sections within a chapter,
-a menu of subsections within a section, and so on.  This means that
-you must have a &lsquo;Top&rsquo; node if you want a menu of chapters.
-</p>
-<p>Incidentally, the <code>makeinfo</code> command will create an Info file for a
-hierarchically organized Texinfo file that lacks &lsquo;Next&rsquo;, &lsquo;Previous&rsquo; and
-&lsquo;Up&rsquo; pointers.  Thus, if you can be sure that your Texinfo file will be
-formatted with <code>makeinfo</code>, you have no need for the update node
-commands.  (See section <a href="texinfo_21.html#Creating-an-Info-File">Creating an Info File</a>, for more information about
-<code>makeinfo</code>.)  However, both <code>makeinfo</code> and the
-<code>texinfo-format-&hellip;</code> commands require that you insert menus in
-the file.
-</p>
-
-<hr>
-<a name="Other-Updating-Commands"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Requirements" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Updating-Nodes-and-Menus" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Info-Formatting" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Other-Updating-Commands-1"></a>
-<h3 class="subsection">2.4.2 Other Updating Commands</h3>
-
-<p>In addition to the five major updating commands, Texinfo mode
-possesses several less frequently used updating commands:
-</p>
-<dl compact="compact">
-<dt><kbd>M-x texinfo-insert-node-lines</kbd></dt>
-<dd><a name="index-texinfo_002dinsert_002dnode_002dlines"></a>
-<p>Insert <code>@node</code> lines before the <code>@chapter</code>,
-<code>@section</code>, and other sectioning commands wherever they are
-missing throughout a region in a Texinfo file.
-</p>
-<p>With an argument (<kbd>C-u</kbd> as prefix argument, if interactive), the
-<code>texinfo-insert-node-lines</code> command not only inserts
-<code>@node</code> lines but also inserts the chapter or section titles as
-the names of the corresponding nodes.  In addition, it inserts the
-titles as node names in pre-existing <code>@node</code> lines that lack
-names.  Since node names should be more concise than section or
-chapter titles, you must manually edit node names so inserted.
-</p>
-<p>For example, the following marks a whole buffer as a region and inserts
-<code>@node</code> lines and titles throughout:
-</p>
-<div class="example">
-<pre class="example">C-x h C-u M-x texinfo-insert-node-lines
-</pre></div>
-
-<p>This command inserts titles as node names in <code>@node</code> lines; the
-<code>texinfo-start-menu-description</code> command (see section <a href="#Inserting">Inserting Frequently Used Commands</a>) inserts titles as descriptions in
-menu entries, a different action.  However, in both cases, you need to
-edit the inserted text.
-</p>
-</dd>
-<dt><kbd>M-x texinfo-multiple-files-update</kbd></dt>
-<dd><a name="index-texinfo_002dmultiple_002dfiles_002dupdate-_0028in-brief_0029"></a>
-<p>Update nodes and menus in a document built from several separate files.
-With <kbd>C-u</kbd> as a prefix argument, create and insert a master menu in
-the outer file.  With a numeric prefix argument, such as <kbd>C-u 2</kbd>, first
-update all the menus and all the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; pointers
-of all the included files before creating and inserting a master menu in
-the outer file.  The <code>texinfo-multiple-files-update</code> command is
-described in the appendix on <code>@include</code> files.
-See section <a href="texinfo_25.html#texinfo_002dmultiple_002dfiles_002dupdate"><code>texinfo-multiple-files-update</code></a>.
-</p>
-</dd>
-<dt><kbd>M-x texinfo-indent-menu-description</kbd></dt>
-<dd><a name="index-texinfo_002dindent_002dmenu_002ddescription"></a>
-<p>Indent every description in the menu following point to the specified
-column.  You can use this command to give yourself more space for
-descriptions.  With an argument (<kbd>C-u</kbd> as prefix argument, if
-interactive), the <code>texinfo-indent-menu-description</code> command indents
-every description in every menu in the region.  However, this command
-does not indent the second and subsequent lines of a multi-line
-description.
-</p>
-</dd>
-<dt><kbd>M-x texinfo-sequential-node-update</kbd></dt>
-<dd><a name="index-texinfo_002dsequential_002dnode_002dupdate"></a>
-<p>Insert the names of the nodes immediately following and preceding the
-current node as the &lsquo;Next&rsquo; or &lsquo;Previous&rsquo; pointers regardless of those
-nodes&rsquo; hierarchical level.  This means that the &lsquo;Next&rsquo; node of a
-subsection may well be the next chapter.  Sequentially ordered nodes are
-useful for novels and other documents that you read through
-sequentially.  (However, in Info, the <kbd>g *</kbd> command lets
-you look through the file sequentially, so sequentially ordered nodes
-are not strictly necessary.)  With an argument (prefix argument, if
-interactive), the <code>texinfo-sequential-node-update</code> command
-sequentially updates all the nodes in the region.
-</p></dd>
-</dl>
-
-<hr>
-<a name="Info-Formatting"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Other-Updating-Commands" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Printing" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Formatting-for-Info"></a>
-<h2 class="section">2.5 Formatting for Info</h2>
-<a name="index-Formatting-for-Info"></a>
-<a name="index-Running-an-Info-formatter"></a>
-<a name="index-Info-formatting"></a>
-
-<p>Texinfo mode provides several commands for formatting part or all of a
-Texinfo file for Info.  Often, when you are writing a document, you
-want to format only part of a file&mdash;that is, a region.
-</p>
-<p>You can use either the <code>texinfo-format-region</code> or the
-<code>makeinfo-region</code> command to format a region:
-</p>
-<dl compact="compact">
-<dd><a name="index-texinfo_002dformat_002dregion"></a>
-</dd>
-<dt><kbd>C-c C-e C-r</kbd></dt>
-<dt><kbd>M-x texinfo-format-region</kbd></dt>
-<dt><kbd>C-c C-m C-r</kbd></dt>
-<dt><kbd>M-x makeinfo-region</kbd></dt>
-<dd><p>Format the current region for Info.
-</p></dd>
-</dl>
-
-<p>You can use either the <code>texinfo-format-buffer</code> or the
-<code>makeinfo-buffer</code> command to format a whole buffer:
-</p>
-<dl compact="compact">
-<dd><a name="index-texinfo_002dformat_002dbuffer"></a>
-</dd>
-<dt><kbd>C-c C-e C-b</kbd></dt>
-<dt><kbd>M-x texinfo-format-buffer</kbd></dt>
-<dt><kbd>C-c C-m C-b</kbd></dt>
-<dt><kbd>M-x makeinfo-buffer</kbd></dt>
-<dd><p>Format the current buffer for Info.
-</p></dd>
-</dl>
-
-<p>For example, after writing a Texinfo file, you can type the following:
-</p>
-<div class="example">
-<pre class="example">C-u C-c C-u m
-or
-C-u M-x texinfo-master-menu
-</pre></div>
-
-<p>This updates all the nodes and menus.  Then type the following to create
-an Info file:
-</p>
-<div class="example">
-<pre class="example">C-c C-m C-b
-or
-M-x makeinfo-buffer
-</pre></div>
-
-<p>For TeX or the Info formatting commands to work, the file <em>must</em>
-include a line that has <code>@setfilename</code> in its header.
-</p>
-<p>See section <a href="texinfo_21.html#Creating-an-Info-File">Creating an Info File</a>, for details about Info formatting.
-</p>
-<hr>
-<a name="Printing"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Info-Formatting" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode-Summary" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Formatting-and-Printing"></a>
-<h2 class="section">2.6 Formatting and Printing</h2>
-<a name="index-Formatting-for-printing"></a>
-<a name="index-Printing-a-region-or-buffer"></a>
-<a name="index-Region-formatting-and-printing"></a>
-<a name="index-Buffer-formatting-and-printing"></a>
-<a name="index-Part-of-file-formatting-and-printing"></a>
-
-<p>Typesetting and printing a Texinfo file is a multi-step process in which
-you first create a file for printing (called a DVI file), and then
-print the file.  Optionally, you may also create indices.  To do this,
-you must run the <code>texindex</code> command after first running the
-<code>tex</code> typesetting command; and then you must run the <code>tex</code>
-command again.  Or else run the <code>texi2dvi</code> command which
-automatically creates indices as needed (see section <a href="texinfo_20.html#Format-with-texi2dvi">Format with <code>texi2dvi</code></a>).
-</p>
-<p>Often, when you are writing a document, you want to typeset and print
-only part of a file to see what it will look like.  You can use the
-<code>texinfo-tex-region</code> and related commands for this purpose.  Use
-the <code>texinfo-tex-buffer</code> command to format all of a
-buffer.
-</p>
-<dl compact="compact">
-<dt><kbd>C-c C-t C-b</kbd></dt>
-<dt><kbd>M-x texinfo-tex-buffer</kbd></dt>
-<dd><a name="index-texinfo_002dtex_002dbuffer"></a>
-<p>Run <code>texi2dvi</code> on the buffer.  In addition to running TeX on the
-buffer, this command automatically creates or updates indices as
-needed.
-</p>
-</dd>
-<dt><kbd>C-c C-t C-r</kbd></dt>
-<dt><kbd>M-x texinfo-tex-region</kbd></dt>
-<dd><a name="index-texinfo_002dtex_002dregion"></a>
-<p>Run TeX on the region.
-</p>
-</dd>
-<dt><kbd>C-c C-t C-i</kbd></dt>
-<dt><kbd>M-x texinfo-texindex</kbd></dt>
-<dd><p>Run <code>texindex</code> to sort the indices of a Texinfo file formatted with
-<code>texinfo-tex-region</code>.  The <code>texinfo-tex-region</code> command does
-not run <code>texindex</code> automatically; it only runs the <code>tex</code>
-typesetting command.  You must run the <code>texinfo-tex-region</code> command
-a second time after sorting the raw index files with the <code>texindex</code>
-command.  (Usually, you do not format an index when you format a region,
-only when you format a buffer.  Now that the <code>texi2dvi</code> command
-exists, there is little or no need for this command.)
-</p>
-</dd>
-<dt><kbd>C-c C-t C-p</kbd></dt>
-<dt><kbd>M-x texinfo-tex-print</kbd></dt>
-<dd><a name="index-texinfo_002dtex_002dprint"></a>
-<p>Print the file (or the part of the file) previously formatted with
-<code>texinfo-tex-buffer</code> or <code>texinfo-tex-region</code>.
-</p></dd>
-</dl>
-
-<p>For <code>texinfo-tex-region</code> or <code>texinfo-tex-buffer</code> to work, the
-file <em>must</em> start with a &lsquo;<samp>\input texinfo</samp>&rsquo; line and must
-include an <code>@settitle</code> line.  The file must end with <code>@bye</code>
-on a line by itself.  (When you use <code>texinfo-tex-region</code>, you must
-surround the <code>@settitle</code> line with start-of-header and
-end-of-header lines.)
-</p>
-<p>See section <a href="texinfo_20.html#Hardcopy">Formatting and Printing Hardcopy</a>, for a description of the other TeX related
-commands, such as <code>tex-show-print-queue</code>.
-</p>
-<hr>
-<a name="Texinfo-Mode-Summary"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Printing" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Texinfo-Mode-Summary-1"></a>
-<h2 class="section">2.7 Texinfo Mode Summary</h2>
-
-<p>In Texinfo mode, each set of commands has default keybindings that
-begin with the same keys.  All the commands that are custom-created
-for Texinfo mode begin with <kbd>C-c</kbd>.  The keys are somewhat
-mnemonic.
-</p>
-<a name="Insert-Commands"></a>
-<h3 class="subheading">Insert Commands</h3>
-
-<p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
-first letter of the @-command to be inserted.  (It might make more
-sense mnemonically to use <kbd>C-c C-i</kbd>, for &lsquo;custom insert&rsquo;, but
-<kbd>C-c C-c</kbd> is quick to type.)
-</p>
-<div class="example">
-<pre class="example">C-c C-c c       <span class="roman">Insert</span> &lsquo;<samp>@code</samp>&rsquo;.
-C-c C-c d       <span class="roman">Insert</span> &lsquo;<samp>@dfn</samp>&rsquo;.
-C-c C-c e       <span class="roman">Insert</span> &lsquo;<samp>@end</samp>&rsquo;.
-C-c C-c i       <span class="roman">Insert</span> &lsquo;<samp>@item</samp>&rsquo;.
-C-c C-c n       <span class="roman">Insert</span> &lsquo;<samp>@node</samp>&rsquo;.
-C-c C-c s       <span class="roman">Insert</span> &lsquo;<samp>@samp</samp>&rsquo;.
-C-c C-c v       <span class="roman">Insert</span> &lsquo;<samp>@var</samp>&rsquo;.
-C-c C-c {       <span class="roman">Insert braces.</span>
-C-c C-c ]
-C-c C-c }       <span class="roman">Move out of enclosing braces.</span>
-
-</pre><pre class="example">C-c C-c C-d     <span class="roman">Insert a node's section title</span>
-                <span class="roman">in the space for the description</span>
-                <span class="roman">in a menu entry line.</span>
-</pre></div>
-
-<a name="Show-Structure"></a>
-<h3 class="subheading">Show Structure</h3>
-
-<p>The <code>texinfo-show-structure</code> command is often used within a
-narrowed region.
-</p>
-<div class="example">
-<pre class="example">C-c C-s         <span class="roman">List all the headings.</span>
-</pre></div>
-
-<a name="The-Master-Update-Command"></a>
-<h3 class="subheading">The Master Update Command</h3>
-
-<p>The <code>texinfo-master-menu</code> command creates a master menu; and can
-be used to update every node and menu in a file as well.
-</p>
-<div class="example">
-<pre class="example">C-c C-u m
-M-x texinfo-master-menu
-                <span class="roman">Create or update a master menu.</span>
-</pre><pre class="example">
-</pre><pre class="example">C-u C-c C-u m   <span class="roman">With <kbd>C-u</kbd> as a prefix argument, first</span>
-                <span class="roman">create or update all nodes and regular</span>
-                <span class="roman">menus, and then create a master menu.</span>
-</pre></div>
-
-<a name="Update-Pointers"></a>
-<h3 class="subheading">Update Pointers</h3>
-
-<p>The update pointer commands are invoked by typing <kbd>C-c C-u</kbd> and
-then either <kbd>C-n</kbd> for <code>texinfo-update-node</code> or <kbd>C-e</kbd> for
-<code>texinfo-every-node-update</code>.
-</p>
-<div class="example">
-<pre class="example">C-c C-u C-n     <span class="roman">Update a node.</span>
-C-c C-u C-e     <span class="roman">Update every node in the buffer.</span>
-</pre></div>
-
-<a name="Update-Menus"></a>
-<h3 class="subheading">Update Menus</h3>
-
-<p>Invoke the  update menu commands by typing <kbd>C-c C-u</kbd>
-and then either <kbd>C-m</kbd> for <code>texinfo-make-menu</code> or
-<kbd>C-a</kbd> for <code>texinfo-all-menus-update</code>.  To update
-both nodes and menus at the same time, precede <kbd>C-c C-u
-C-a</kbd> with <kbd>C-u</kbd>.
-</p>
-<div class="example">
-<pre class="example">C-c C-u C-m     <span class="roman">Make or update a menu.</span>
-
-</pre><pre class="example">C-c C-u C-a     <span class="roman">Make or update all</span>
-                <span class="roman">menus in a buffer.</span>
-</pre><pre class="example">
-</pre><pre class="example">C-u C-c C-u C-a <span class="roman">With <kbd>C-u</kbd> as a prefix argument,</span>
-                <span class="roman">first create or update all nodes and</span>
-                <span class="roman">then create or update all menus.</span>
-</pre></div>
-
-<a name="Format-for-Info"></a>
-<h3 class="subheading">Format for Info</h3>
-
-<p>The Info formatting commands that are written in Emacs Lisp are
-invoked by typing <kbd>C-c C-e</kbd> and then either <kbd>C-r</kbd> for a region
-or <kbd>C-b</kbd> for the whole buffer.
-</p>
-<p>The Info formatting commands that are written in C and based on the
-<code>makeinfo</code> program are invoked by typing <kbd>C-c C-m</kbd> and then
-either <kbd>C-r</kbd> for a region or <kbd>C-b</kbd> for the whole buffer.
-</p>
-<p>Use the <code>texinfo-format&hellip;</code> commands:
-</p>
-<div class="example">
-<pre class="example">C-c C-e C-r     <span class="roman">Format the region.</span>
-C-c C-e C-b     <span class="roman">Format the buffer.</span>
-</pre></div>
-
-<p>Use <code>makeinfo</code>:
-</p>
-<div class="example">
-<pre class="example">C-c C-m C-r     <span class="roman">Format the region.</span>
-C-c C-m C-b     <span class="roman">Format the buffer.</span>
-C-c C-m C-l     <span class="roman">Recenter the <code>makeinfo</code> output buffer.</span>
-C-c C-m C-k     <span class="roman">Kill the <code>makeinfo</code> formatting job.</span>
-</pre></div>
-
-<a name="Typeset-and-Print"></a>
-<h3 class="subheading">Typeset and Print</h3>
-
-<p>The TeX typesetting and printing commands are invoked by typing
-<kbd>C-c C-t</kbd> and then another control command: <kbd>C-r</kbd> for
-<code>texinfo-tex-region</code>, <kbd>C-b</kbd> for <code>texinfo-tex-buffer</code>,
-and so on.
-</p>
-<div class="example">
-<pre class="example">C-c C-t C-r     <span class="roman">Run TeX on the region.</span>
-C-c C-t C-b     <span class="roman">Run</span> <code>texi2dvi</code> <span class="roman">on the buffer.</span>
-C-c C-t C-i     <span class="roman">Run</span> <code>texindex</code>.
-C-c C-t C-p     <span class="roman">Print the DVI file.</span>
-C-c C-t C-q     <span class="roman">Show the print queue.</span>
-C-c C-t C-d     <span class="roman">Delete a job from the print queue.</span>
-C-c C-t C-k     <span class="roman">Kill the current TeX formatting job.</span>
-C-c C-t C-x     <span class="roman">Quit a currently stopped TeX formatting job.</span>
-C-c C-t C-l     <span class="roman">Recenter the output buffer.</span>
-</pre></div>
-
-<a name="Other-Updating-Commands-2"></a>
-<h3 class="subheading">Other Updating Commands</h3>
-
-<p>The remaining updating commands do not have standard keybindings because
-they are rarely used.
-</p>
-<div class="example">
-<pre class="example">M-x texinfo-insert-node-lines
-                <span class="roman">Insert missing <code>@node</code> lines in region.</span>
-                <span class="roman">With <kbd>C-u</kbd> as a prefix argument,</span>
-                <span class="roman">use section titles as node names.</span>
-</pre><pre class="example">
-</pre><pre class="example">M-x texinfo-multiple-files-update
-                <span class="roman">Update a multi-file document.</span>
-                <span class="roman">With <kbd>C-u 2</kbd> as a prefix argument,</span>
-                <span class="roman">create or update all nodes and menus</span>
-                <span class="roman">in all included files first.</span>
-</pre><pre class="example">
-</pre><pre class="example">M-x texinfo-indent-menu-description
-                <span class="roman">Indent descriptions.</span>
-</pre><pre class="example">
-</pre><pre class="example">M-x texinfo-sequential-node-update
-                <span class="roman">Insert node pointers in strict sequence.</span>
-</pre></div>
-
-
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-2"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-3"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-4"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-5"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-6"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-7"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-8"><b>@</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_symbol-9"><b>\</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Concept-Index.html#Concept-Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_4.html#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_5.html#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_6.html#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_7.html#index_split-6_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="texinfo_8.html#index_split-7_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Texinfo-Mode" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_4.html#Beginning-a-File" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[ &gt;&gt; ]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="texinfo.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="texinfo_32.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

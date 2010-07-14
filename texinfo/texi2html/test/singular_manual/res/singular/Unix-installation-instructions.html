@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: E.3 Unix installation instructions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: E.3 Unix installation instructions">
+<meta name="keywords" content="Singular 2-0-4 Manual: E.3 Unix installation instructions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Unix-installation-instructions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Downloading-instructions.html#Downloading-instructions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: E.2 Downloading instructions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Windows-installation-instructions.html#Windows-installation-instructions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.4 Windows installation instructions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Unix-installation-instructions-1"></a>
+<h2 class="section">E.3 Unix installation instructions</h2>
+<a name="index-Unix-installation"></a>
+<a name="index-instructions_002c-Unix-installation"></a>
+<a name="index-howto_002c-install-on-Unix"></a>
+
+
+
+
+
+
+<p>To install <small>SINGULAR</small> on a
+Unix
+platform, you need the following two
+archives:
+</p><dl compact="compact">
+<dt><code>Singular-2-0-4-share.tar.gz</code></dt>
+<dd><p>contains architecture independent data like documentation and libraries
+(alternatively, you may also download
+<code>Singular-2-0-4-share.zip</code>).
+</p></dd>
+<dt><code>Singular-2-0-4-&lt;uname&gt;.tar.gz</code></dt>
+<dd><p>contains architecture dependent executables, like the <small>SINGULAR</small>
+program.
+</p></dd>
+</dl>
+<br>
+<p><code>&lt;uname&gt;</code> is a description of the processor and operating system
+for which <small>SINGULAR</small> is compiled (e.g, <code>ix86-Linux</code>). Please contact us if
+you can not find an appropriate architecture dependent archive.
+</p>
+<p>You can obtain these (and other) archives from
+</p><div class="display">
+<pre class="display"><a href="ftp://www.mathematik.uni-kl.de/pub/Math/Singular">ftp://www.mathematik.uni-kl.de/pub/Math/Singular</a>.
+</pre></div>
+
+
+<a name="To-install-SINGULAR"></a>
+<h2 class="heading">To install SINGULAR</h2>
+
+<p>Make sure that you have approximately 12MByte of free disk space and follow
+these steps.
+</p><ol>
+<li>
+Simply change to the directory in which you wish to install
+<small>SINGULAR</small> (usually wherever you install 3rd-party software), for example:
+<div class="smallexample">
+<pre class="smallexample">cd /usr/local
+or
+mkdir install;cd install 
+(you do not need root privileges in this case)
+</pre></div>
+
+<p><small>SINGULAR</small> specific subdirectories will be created in such a way
+that multiple versions and multiple architecture dependent files
+of <small>SINGULAR</small> can peaceably coexist under the same <code>/usr/local</code>
+tree.
+</p>
+</li><li>
+Unpack the archives:
+<div class="smallexample">
+<pre class="smallexample">gzip -dc &lt;path_to&gt;/Singular-2-0-4-&lt;uname&gt;.tar.gz | tar -pxf -
+gzip -dc &lt;path_to&gt;/Singular-2-0-4-share.tar.gz | tar -pxf -
+</pre></div>
+
+<p>This creates the the directory Singular/2-0-4 with 
+</p><table>
+<tr><td width="36%">(sub)directories</td><td width="64%">which contain</td></tr>
+<tr><td width="36%"><code>&lt;uname&gt;</code></td><td width="64%"><code>Singular</code> and <code>ESingular</code> executables</td></tr>
+<tr><td width="36%"><code>LIB</code></td><td width="64%"><small>SINGULAR</small> libraries (<code>*.lib</code> files)</td></tr>
+<tr><td width="36%"><code>emacs</code></td><td width="64%">files for the <small>SINGULAR</small> Emacs user interface</td></tr>
+<tr><td width="36%"><code>info</code></td><td width="64%">info files of <small>SINGULAR</small> manual</td></tr>
+<tr><td width="36%"><code>html</code></td><td width="64%">html files of <small>SINGULAR</small> manual</td></tr>
+<tr><td width="36%"><code>doc</code></td><td width="64%">miscellaneous documentation files</td></tr>
+<tr><td width="36%"><code>examples</code></td><td width="64%"><small>SINGULAR</small> examples (<code>*.sing</code> files)</td></tr>
+</table>
+
+<p>For the executable to work, the directory layout must look pretty much
+like this; the executable looks for &quot;sibling&quot; directories at run-time
+to figure out where its <small>SINGULAR</small> libraries and on-line
+documentation files are. These constraints on the local directory layout
+are necessary to avoid having to hard-code pathnames into the
+executables, or require that environment variables be set before
+running the executable. In particular, you <strong>must not move or copy</strong>
+the <small>SINGULAR</small> executables to another place, but use soft-links
+instead.
+</p></li></ol>
+
+<p>The following steps are optional:
+</p>
+<ul>
+<li>
+Arrange that typing <code>Singular</code> at the shell prompt starts up the
+installed <small>SINGULAR</small> executable.
+
+<p>If you have root permission, do:
+</p><div class="smallexample">
+<pre class="smallexample">ln -s `pwd`/Singular/2-0-4/&lt;uname&gt;/Singular  /usr/local/bin/Singular-2-0-4
+ln -s `pwd`/Singular/2-0-4/&lt;uname&gt;/ESingular  /usr/local/bin/ESingular-2-0-4
+ln -s /usr/local/bin/Singular-2-0-4 /usr/local/bin/Singular
+ln -s /usr/local/bin/ESingular-2-0-4 /usr/local/bin/ESingular
+</pre></div>
+	
+<p>Otherwise, append the directory
+<code>`pwd`/Singular/2-0-4/&lt;uname&gt;/</code> to your <code>$PATH</code>
+environment variable. For the <code>csh</code> (or, <code>tcsh</code>) shell do:
+</p><div class="smallexample">
+<pre class="smallexample">set path=(`pwd`/Singular/2-0-4/&lt;uname&gt; $path)
+</pre></div>
+<p>For the <code>bash</code> (or, <code>ksh</code>) shell do:
+</p><div class="smallexample">
+<pre class="smallexample">export PATH=`pwd`/Singular/2-0-4/&lt;uname&gt;/:$PATH
+</pre></div>
+
+<p>You also might want to adjust your personal start-up files
+(<code>~/.cshrc</code> for <code>csh</code>, <code>~/.tcshrc</code> for <code>tcsh</code>, or
+<code>~/.profile</code> for <code>bash</code>) accordingly,
+so that the <code>$PATH</code> variable is set automatically each time you login.
+</p>
+<p><strong>IMPORTANT:</strong> Do <em>never</em> move or copy the file
+<code>Singular/2-0-4/&lt;uname&gt;/Singular</code> to another
+place, but use soft-links instead.
+</p>
+</li><li>
+If you wish to use any of following features of
+<small>SINGULAR</small>, make sure that the respective programs are installed on your system:
+
+<table>
+<tr><td width="50%"><strong>Feature</strong></td><td width="50%"><strong>Requires</strong></td></tr>
+<tr><td width="50%">running <code>ESingular</code>, or <code>Singular</code> within Emacs</td><td width="50%"><a href="http://www.fsf.org/software/emacs/emacs.html">Emacs</a> version
+20 or higher, or, <a href="http://www.xemacs.org">XEmacs</a> version 20.3 or
+higher (ESingular is only included in the Linux distribution,
+on other Unix platforms you can download the
+<a href="ftp://www.mathematik.uni-kl.de/pub/Math/Singular/src/">Singular emacs lisp files</a> but we give no warranties for specific platforms).</td></tr>
+<tr><td width="50%">on-line <code>html</code> help</td><td width="50%"><a href="http://www.netscape.com">netscape</a> browser</td></tr>
+<tr><td width="50%">on-line <code>info</code> help</td><td width="50%"><a href="http://www.texinfo.org">info</a>, or
+<a href="http://math-www.uni-paderborn.de/~axel/tkinfo/">tkinfo</a> texinfo browser programs</td></tr>
+<tr><td width="50%">TAB completion and history mechanism of ASCII-terminal interface</td><td width="50%">shared <a href="ftp://ftp.de.uu.net/pub/gnu/readline/">readline</a>
+library, i.e. <code>/usr/lib/libreadline.so</code></td></tr>
+<tr><td width="50%">visualization of curves and surfaces</td><td width="50%"><a href="http://www.mathematik.uni-mainz.de/AlgebraischeGeometrie/surf/surf.shtml">surf</a>
+version 0.9 or higher (only available for Linux and Solaris).</td></tr>
+</table>
+
+<p>You may download most of these programs from
+</p><div class="display">
+<pre class="display"><a href="ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils/">ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils/</a>.
+</pre></div>
+
+</li><li> Customize the on-line help system:
+
+<p>By default, on-line help is displayed in the <code>html</code> format using
+the <code>netscape</code> program.
+</p>
+<p>However, this behavior can be customized in several ways
+using the <small>SINGULAR</small> commands <code>system(&quot;--browser&quot;,&lt;browser&gt;)</code>
+and <code>system(&quot;--allow-net&quot;, 1)</code> (or, by starting up <small>SINGULAR</small>
+with the respective command line options).
+</p>
+<p>In particular, creating the file
+<code>Singular/2-0-4/LIB/.singularrc</code> and putting the
+<small>SINGULAR</small> command
+</p><div class="smallexample">
+<pre class="smallexample">system(&quot;--allow-net&quot;, 1);
+</pre></div>
+<p>in it, allows the on-line help system to fetch its <code>html</code> pages
+from <a href="http://www.singular.uni-kl.de">Singular&rsquo;s WWW home site</a>
+in case its local html pages are not found. That is, you may delete your
+local html pages, after setting this option.
+</p>
+<p>See also
+<a href="The-online-help-system.html#The-online-help-system">The online help system</a>, <a href="Command-line-options.html#Command-line-options">Command line options</a>, and
+<a href="Startup-sequence.html#Startup-sequence">Startup sequence</a>,
+for more details on customizing the on-line help system.
+</p>
+</li><li>
+Add the line
+<div class="smallexample">
+<pre class="smallexample">* Singular:(singular.hlp).     A system for polynomial computations
+</pre></div>
+<p>to your system-wide <code>dir</code> file (usually <code>/usr/info/dir</code> or
+<code>/usr/local/info/dir</code> and  copy or soft-link the file
+<code>Singular/2-0-4/info/singular.hlp</code>
+to the directory of your <code>dir</code> file.
+<br>This assures that the
+<small>SINGULAR</small> manual can be  accessed from stand-alone texinfo
+browser programs such as <code>info</code> or <code>Emacs</code>.
+(It is not necessary for the use of the help system from within <code>Singular</code>.)
+</p></li></ul>
+
+<a name="Troubleshooting"></a>
+<h2 class="heading">Troubleshooting</h2>
+
+<ul>
+<li> General: <small>SINGULAR</small> can not find its libraries or on-line help
+<ol>
+<li>
+Make sure that you have read and/or execute permission the files and
+directories of the Singular distribution. If in doubt, <code>cd</code> to the
+directory where you unpacked <small>SINGULAR</small>, and do (as root, if
+necessary):
+<div class="smallexample">
+<pre class="smallexample">chmod -R a+rX Singular
+</pre></div>
+
+</li><li>
+Start up <small>SINGULAR</small>, and issue the command <code>system(&quot;Singular&quot;);</code>.
+If this does not return the correct and expanded location of the
+<small>SINGULAR</small> executable, then you found a bug in <small>SINGULAR</small>, which we
+ask you to report (see below).
+</li><li>
+Check whether the directories containing the libraries and on-line help
+files can be found by <small>SINGULAR</small>: If <code>$bindir</code> denotes the
+directory where the <small>SINGULAR</small> executable resides, then <small>SINGULAR</small>
+looks for library files as follows:
+<br> (0) the current directory
+<br> (1) all dirs of the environment variable SINGULARPATH
+<br> (2) <code>$bindir/LIB</code>
+<br> (3) <code>$bindir/../LIB</code>
+<br> (4) <code>/usr/local/Singular/2-0-4/LIB</code>
+<br> (4) <code>/usr/local/Singular/LIB</code>
+<br> The on-line <code>info</code> files need to be at  <code>$bindir/../info</code> and the
+<code>html</code> pages at <code>$bindir/../html</code>.
+</li></ol>
+
+<p>You can inspect the found library and <code>info</code>/<code>html</code>
+directories by starting up <small>SINGULAR</small> with the
+<code>--version</code> option, or by issuing the <small>SINGULAR</small> command
+<code>system(&quot;--version&quot;);</code>.
+</p>
+</li><li> Under SuSE-Linux, <small>ESINGULAR</small> does not display a prompt:
+<a name="index-SuSE_002c-ESingular-bug"></a>
+<a name="index-ESingular_002c-no-prompt"></a>
+<a name="index-bug_002c-ESingular"></a>
+This is due to the very restrictive access rights of <code>/dev/pty*</code> of
+the standard <a href="http:/www.suse.de">SuSE</a> distribution (starting from
+version 6.3 on). As root, do one of the following: Either
+<div class="example">
+<pre class="example">chmod 666 /dev/pty*
+</pre></div>
+<p>or,
+</p><div class="example">
+<pre class="example">chmod g+s $(which emacs)
+chgrp tty $(which emacs)
+chmod g+s $(which xemacs)
+chgrp tty $(which xemacs)
+</pre></div>
+<p>See also <a href="http://sdb.suse.de/sdb/de/html/ke_devpts-63.html">http://sdb.suse.de/sdb/de/html/ke_devpts-63.html</a> for
+details.
+</p>
+</li><li> For <code>HPUX</code> systems:
+<br>The /etc/termcap files which are pre-installed on these systems are
+broken which leads to messages like
+<div class="example">
+<pre class="example">Name collision between 9826 9836
+</pre></div>
+<p>when <small>SINGULAR</small> is started. To fix this, you can get fixed termcap
+files from <a href="ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils">ftp://www.mathematik.uni-kl.de/pub/Math/Singular/utils</a>
+by downloading the files termcap-&lt;uname-description&gt; and either
+replace your /etc/termcap file by the file found there, or view, and
+redo the respective changes by <code>diff</code>&rsquo;ing the downloaded and the
+original file.
+</p>
+</li><li> For <code>ix86-Linux</code> systems:
+<br>Due to some incompatibilities of shared libraries, the start-up of
+<small>SINGULAR</small> might fail with messages like
+<div class="example">
+<pre class="example">  Can not find shared library ...
+</pre></div>
+<p>For DEBIAN systems, try to do
+<code>ln -s /usr/lib/libncurses.so /usr/lib/libncurses.so.4</code>.
+<br>If this fails (and on other systems)
+download and install
+<code>Singular-2-0-4-ix86-Linux-static.tar.gz</code>.
+</p>
+</li><li> For <code>AIX</code> systems:
+<br>The default <code>info</code> program of the system is not GNU&rsquo;s texinfo
+browser which is used to display the on-line documentation in the
+<code>info</code> format. Therefore, the distribution of the AIX executable
+already contains the <code>info</code> browser program.
+If you remove this program, make sure that the GNU
+<code>info</code> program is executed if you call &rsquo;<code>info</code>&rsquo; from your shell.
+
+</li><li> For any other troubles:
+<br>Please send an email to <a href="mailto:singular@mathematik.uni-kl.de">singular@mathematik.uni-kl.de</a>
+and include the header which is displayed by starting up <small>SINGULAR</small>
+with the <code>-v</code> option, and a description of your machine (issue the
+command <code>uname -a</code> on your shell) in your report.
+</li></ul>
+
+
+
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Downloading-instructions.html#Downloading-instructions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: E.2 Downloading instructions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Windows-installation-instructions.html#Windows-installation-instructions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.4 Windows installation instructions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

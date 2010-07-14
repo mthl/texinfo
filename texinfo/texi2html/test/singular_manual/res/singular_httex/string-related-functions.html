@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 4.17.5 string related functions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 4.17.5 string related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.17.5 string related functions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="string-related-functions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="string-operations.html#string-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.4 string operations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="vector.html#vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18 vector" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="string.html#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="string-related-functions-1"></a>
+<h3 class="subsection">4.17.5 string related functions</h3>
+<a name="index-string-related-functions"></a>
+
+<dl compact="compact">
+<dt><code>charstr</code></dt>
+<dd><p>description of the coefficient field of a ring (see <a href="charstr.html#charstr">charstr</a>)
+</p></dd>
+<dt><code>execute</code></dt>
+<dd><p>executing string as command (see <a href="execute.html#execute">execute</a>)
+</p></dd>
+<dt><code>find</code></dt>
+<dd><p>position of a substring in a string (see <a href="find.html#find">find</a>)
+</p></dd>
+<dt><code>names</code></dt>
+<dd><p>list of strings of all user-defined variable names (see <a href="names.html#names">names</a>)
+</p></dd>
+<dt><code>nameof</code></dt>
+<dd><p>name of an object (see <a href="nameof.html#nameof">nameof</a>)
+</p></dd>
+<dt><code>option</code></dt>
+<dd><p>lists all defined options (see <a href="option.html#option">option</a>)
+</p></dd>
+<dt><code>ordstr</code></dt>
+<dd><p>monomial ordering of a ring (see <a href="ordstr.html#ordstr">ordstr</a>)
+</p></dd>
+<dt><code>parstr</code></dt>
+<dd><p>names of all ring parameters or the
+name of the n-th ring parameter (see <a href="parstr.html#parstr">parstr</a>)
+</p></dd>
+<dt><code>read</code></dt>
+<dd><p>read a file (see <a href="read.html#read">read</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>length of a string (see <a href="size.html#size">size</a>)
+</p></dd>
+<dt><code>sprintf</code></dt>
+<dd><p>string formatting (see <a href="sprintf.html#sprintf">sprintf</a>)
+</p></dd>
+<dt><code>typeof</code></dt>
+<dd><p>type of an object (see <a href="typeof.html#typeof">typeof</a>)
+</p></dd>
+<dt><code>varstr</code></dt>
+<dd><p>names of all ring variables or the
+name of the n-th ring variable (see <a href="varstr.html#varstr">varstr</a>)
+</p></dd>
+</dl>
+
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="string-operations.html#string-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.17.4 string operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="vector.html#vector" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.18 vector" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="string.html#string" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.17 string" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

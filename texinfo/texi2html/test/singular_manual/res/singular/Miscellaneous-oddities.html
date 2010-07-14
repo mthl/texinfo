@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 6.3 Miscellaneous oddities</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 6.3 Miscellaneous oddities">
+<meta name="keywords" content="Singular 2-0-4 Manual: 6.3 Miscellaneous oddities">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Miscellaneous-oddities"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Return-type-of-procedures.html#Return-type-of-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.7 Return type of procedures" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Identifier-resolution.html#Identifier-resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.4 Identifier resolution" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6 Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Miscellaneous-oddities-1"></a>
+<h2 class="section">6.3 Miscellaneous oddities</h2>
+
+<ol>
+<li> integer division
+<a name="index-integer-division"></a>
+<a name="index-div-1"></a>
+
+<p>If two numerical constants (i.e., two sequences of digits) are divided
+using the <code>/</code> operator, the surrounding whitespace determines
+which division to use: if there is no space between the constants and
+the <code>/</code> operator (e.g., &quot;3/2&quot;), both numerical constants are
+treated as of type <code>number</code> and the current ring division is
+used. If there is at least one space surrounding the <code>/</code> operator
+(e.g., &quot;3 / 2&quot;), both numerical constants are treated as of type
+<code>int</code> and an integer division is performed. To avoid confusion, use
+the <code>div</code> operator instead of <code>/</code> for integer division and an
+explicit type cast to <code>number</code> for ring division. Note, that this
+problem does only occur for divisions of numerical constants.
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=32002,x,dp;
+  3/2;    // ring division
+&rarr; -15994
+  3 / 2;  // integer division
+&rarr; 1
+  3 div 2;
+&rarr; 1
+  number(3) / number(2);
+&rarr; -15994
+  number a=3;
+  number b=2;
+  a/b;
+&rarr; -15994
+  int c=3;
+  int d=2;
+  c / d;
+&rarr; 1
+</pre></div>
+
+
+</li><li> monomials and precedence
+<a name="index-monomials-and-precedence"></a>
+
+<p>The computation of a monomial has precedence over all operators:
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y),dp;
+  2xy^2 == (2*x*y)^2;
+&rarr; 1
+  2xy^2 == 2x*y^2;
+&rarr; 0
+  2x*y^2 == 2*x * (y^2);
+&rarr; 1
+</pre></div>
+
+</li><li> meaning of <code>mult</code>
+<a name="index-mult-1"></a>
+<a name="index-degree-1"></a>
+
+<p>For an arbitrary ideal or module <code>i</code>, <code>mult(i)</code> returns the
+multiplicity of the ideal generated by the leading monomials of the
+given generators of <code>i</code>, hence depends on the monomial ordering!
+</p>
+<p>A standard mistake is to interpret <code>degree(i)</code> or <code>mult(i)</code>
+for an inhomogeneous ideal <code>i</code> as the degree of the homogenization
+or as something like the &rsquo;degree of the affine part&rsquo;. For the ordering
+<code>dp</code> (degree reverse lexicographical) the converse is true: if
+<code>i</code> is given by a standard basis, <code>mult(i)</code> is the degree of
+the homogeneous ideal obtained by homogenization of <code>i</code> and then
+putting the homogenizing variable to 0, hence it is the degree of the
+part at infinity (this can also be checked by looking at the initial
+ideal).
+</p>
+</li><li> size of ideals
+<a name="index-ideals"></a>
+<a name="index-size-1"></a>
+
+<p><code>size</code> counts the non-zero entries of an ideal or module. Use
+<code>ncols</code> to determine the actual number of entries in the ideal or module.
+</p>
+</li><li> computations in <code>qring</code>
+<a name="index-qring-1"></a>
+
+<p>In order to speed up computations in quotient rings, <small>SINGULAR</small>
+usually does not reduce polynomials w.r.t. the quotient ideal; rather
+the given representative is used as long as possible during
+computations. If it is necessary, reduction is done during standard base
+computations. To reduce a polynomial <code>f</code> by hand w.r.t. the
+current quotient ideal use the command <code>reduce(f,std(0))</code>
+(see <a href="reduce.html#reduce">reduce</a>).
+</p>
+</li><li> substring selection
+<a name="index-string-1"></a>
+
+<p>To extract substrings from a <code>string</code>, square brackets are used,
+enclosing either two comma-separated <code>int</code>s or an
+<code>intvec</code>. Although two comma-separated <code>int</code>s represent an
+<code>intvec</code>, they mean different things in substring access. Square
+brackets enclosing two <code>int</code>s (e.g. <code>s[2,6]</code>) return a
+substring where the first integer denotes the starting position and the
+second integer denotes the length of the substring. The result is
+returned as a <code>string</code>. Square brackets enclosing an <code>intvec</code>
+(e.g. <code>s[intvec(2,6)]</code>) return the characters of the string at the
+position given by the values of the <code>intvec</code>. The result is
+returned as an expression list of strings. 
+</p>
+<div class="smallexample">
+<pre class="smallexample">  string s = &quot;one-word&quot;;
+  s[2,6];     // a substring starting at the second char
+&rarr; ne-wor
+  size(_);
+&rarr; 6
+  intvec v = 2,6;
+  s[v];      // the second and the sixth char
+&rarr; n o
+  string st = s[v];  // stick together by an assignment
+  st;
+&rarr; no
+  size(_);
+&rarr; 2
+  v = 2,6,8;
+  s[v];
+&rarr; n o d
+</pre></div>
+
+
+</li></ol>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Return-type-of-procedures.html#Return-type-of-procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 6.2.7 Return type of procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Identifier-resolution.html#Identifier-resolution" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 6.4 Identifier resolution" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

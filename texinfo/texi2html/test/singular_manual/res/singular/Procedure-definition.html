@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.7.1 Procedure definition</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.7.1 Procedure definition">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.7.1 Procedure definition">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Procedure-definition"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Procedures.html#Procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7 Procedures" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Names-in-procedures.html#Names-in-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.2 Names in procedures" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Procedures.html#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Procedure-definition-1"></a>
+<h3 class="subsection">3.7.1 Procedure definition</h3>
+<a name="index-Procedure-definition"></a>
+<a name="index-procedures_002c-static"></a>
+<a name="index-static-procedures"></a>
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p>[<code>static</code>] <code>proc</code> proc_name [parameter_list]
+<br>[&quot;help_text&quot;]
+<br><code>{</code>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+   procedure_body
+<br><code>}</code>
+<br>[<code>example</code>
+<br><code>{</code>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+   sequence_of_commands;
+<br><code>}</code>]
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>defines a new function, the <code>proc</code> proc_name, with the additional
+information help_text, which is copied to the screen by
+<code>help proc_name;</code> and the <code>example</code> section
+which is executed by <code>example proc_name;</code>.
+<br> The help_text, the parameter_list, and the example section are optional.
+The default for a parameter_list is <code>(list #)</code>, see <a href="Parameter-list.html#Parameter-list">Parameter list</a>.
+The help and example sections are ignored if the procedure is defined
+interactively, i.e., if it was not loaded from a file by a LIB command
+(<a href="LIB.html#LIB">LIB</a>).
+<br> Specifying <code>static</code> in front of the proc-definition (in a library file)
+makes this procedure local to the library, i.e., accessible only for the other
+procedures in the same library, but not for the users. So there is no
+reason anymore to define a procedure within another one (it just makes
+debugging harder).
+</p></dd>
+</dl>
+
+<a name="Example-of-an-interactive-procedure-definition"></a>
+<h4 class="subsubheading">Example of an interactive procedure definition</h4>
+<div class="smallexample">
+<pre class="smallexample">  proc milnor_number (poly p)
+  {
+    ideal i= std(jacob(p));
+    int m_nr=vdim(i);
+    if (m_nr&lt;0)
+    {
+      &quot;// not an isolated singularity&quot;;
+    }
+    return(m_nr);         // the value of m_nr is returned
+  }
+  ring r1=0,(x,y,z),ds;
+  poly p=x^2+y^2+z^5;
+  milnor_number(p);
+&rarr; 4
+</pre></div>
+
+<a name="Example-of-a-procedure-definition-in-a-library"></a>
+<h4 class="subsubheading">Example of a procedure definition in a library</h4>
+<p>First, the library definition:
+</p><div class="smallexample">
+<pre class="smallexample">// Example of a user accessible procedure
+proc tab (int n)
+&quot;USAGE:    tab(n);  (n integer)
+RETURNS:  string of n space tabs
+EXAMPLE:  example tab; shows an example&quot;
+{ return(internal_tab(n)); }
+example
+{
+  &quot;EXAMPLE:&quot;; echo=2;
+  for(int n=0; n&lt;=4; n=n+1)
+  { tab(4-n)+&quot;*&quot;+tab(n)+&quot;+&quot;+tab(n)+&quot;*&quot;; }
+}
+
+// Example of a static procedure
+static proc internal_tab (int n)
+{ return(&quot; &quot;[1,n]); }
+</pre></div>
+
+<p>Now, we load the library and execute the procedures defined there:
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;sample.lib&quot;;        // load the library sample.lib
+  example tab;             // show an example
+&rarr; // proc tab from lib sample.lib
+&rarr; EXAMPLE:
+&rarr;   for(int n=0; n&lt;=4; n=n+1)
+&rarr;   { tab(4-n)+&quot;*&quot;+tab(n)+&quot;+&quot;+tab(n)+&quot;*&quot;; }
+&rarr;     *+*
+&rarr;    * + *
+&rarr;   *  +  *
+&rarr;  *   +   *
+&rarr; *    +    *
+&rarr; 
+  &quot;*&quot;+tab(3)+&quot;*&quot;;          // use the procedure tab
+&rarr; *   *
+  // the static procedure internal_tab is not accessible
+  &quot;*&quot;+internal_tab(3)+&quot;*&quot;;
+&rarr;    ? 'sample.lib::internal_tab()' is a local procedure and cannot be acce\
+   ssed by an user.
+&rarr;    ? error occurred in line 5: `  &quot;*&quot;+internal_tab(3)+&quot;*&quot;;`
+  // show the help section for tab
+  help tab;
+&rarr; // ** Could not get IdxFile. 
+&rarr; // ** Either set environment variable SINGULAR_IDX_FILE to IdxFile,
+&rarr; // ** or make sure that IdxFile is at /home/hannes/singular/2-0/doc/singu\
+   lar.idx
+&rarr; // proc tab from lib sample.lib
+&rarr; proc tab (int n)
+&rarr; USAGE:    tab(n);  (n integer)
+&rarr; RETURNS:  string of n space tabs
+&rarr; EXAMPLE:  example tab; shows an example
+</pre></div>
+
+<a name="Guidelines-for-the-help-text-of-a-procedure"></a>
+<h4 class="subsubheading">Guidelines for the help text of a procedure</h4>
+<p>There are no enforced rules on the format of the help section of a
+procedure.
+</p>
+<p>Nevertheless, we recommend that the help text of a procedure should
+contain information about the usage,
+purpose, return values and generated objects. Particular assumptions or
+limitations should be listed. It should also be mentioned if global
+objects are generated or manipulated.
+</p>
+<p>The help text of procedures contained in libraries of the
+<small>SINGULAR</small> distribution
+should furthermore comply with  certain rules as explained in
+<a href="The-help-string-of-procedures.html#The-help-string-of-procedures">The help string of procedures</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Procedures.html#Procedures" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.7 Procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Names-in-procedures.html#Names-in-procedures" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.7.2 Names in procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Procedures.html#Procedures" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.7 Procedures" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

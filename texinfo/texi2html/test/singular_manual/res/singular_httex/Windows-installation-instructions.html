@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: E.4 Windows installation instructions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: E.4 Windows installation instructions">
+<meta name="keywords" content="Singular 2-0-4 Manual: E.4 Windows installation instructions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Windows-installation-instructions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Unix-installation-instructions.html#Unix-installation-instructions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: E.3 Unix installation instructions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Macintosh-installation-instructions.html#Macintosh-installation-instructions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.5 Macintosh installation instructions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Windows-installation-instructions-1"></a>
+<h2 class="section">E.4 Windows installation instructions</h2>
+<a name="index-Windows-installation"></a>
+<a name="index-instructions_002c-Windows-installation"></a>
+<a name="index-howto_002c-install-on-Windows"></a>
+
+
+
+
+
+
+<a name="For-the-impatient_003a"></a>
+<h2 class="heading">For the impatient:</h2>
+<ul>
+<li>
+If you run Windows NT/2K/XP, make sure you are logged in with the
+<code>Administrator</code> rights.
+</li><li>
+If you have some older version of <code>Singular</code> installed, please uninstall it
+before installing <code>Singular-2-0-4</code>. It is recommended to
+install the new <code>Singular</code> in the same directory where the previous
+version was installed. Thus your existing environment will be used automatically.
+</li><li> 
+If you have <code>Cygwin</code> or <code>XEmacs</code> installed and they do not belong
+of some previous <code>Singular</code> installation,
+please read the information below.
+</li><li>
+Execute the self-extracting installation archive and
+<strong>carefully</strong> follow the instructions given there. 
+Setup will analyze your system, create the corresponding configuration
+and give you further tips on the installation process.
+</li><li>
+In case of troubles, see the installed files <code>/etc/INSTALL.txt</code>,
+<code>/etc/TROUBLESHOOTING.txt</code> or visit
+the <strong>Singular Forum</strong> at <a href="http://www.singular.uni-kl.de/forum">http://www.singular.uni-kl.de/forum</a>.
+</li></ul>
+
+
+<a name="Installation-preliminaries"></a>
+<h2 class="heading">Installation preliminaries</h2>
+
+<p>Running <code>Singular</code> on MS Windows requires that the Cygwin DLL
+(dynamically linked library) version 1.3.9 or higher is installed on your
+system (see <a href="http://sources.redhat.com/cygwin/">http://sources.redhat.com/cygwin/</a> for details about
+Cygwin). We install and configure <code>Cygwin</code> version 1.3.9 automatically, if
+the <code>BasicCygwin</code> component is selected (default setting).
+</p>
+<p>To run <code>ESingular</code> (i.e. <code>Singular</code> within its Emacs interface) on
+MS Windows requires furthermore that the <code>XEmacs</code> editor is installed on
+your system. We install and configure <code>XEmacs</code> version 21.1.13 automatically, if the <code>XEmacs</code> component is selected.
+</p>
+<a name="index-Windows-installation_002c-components"></a>
+<a name="index-Components-of-Windows-installation"></a>
+
+<p>The <code>Singular</code> installation is divided into the following
+components (you see them explicitly if you choose the Custom Setup Type
+during the installation):
+</p><dl compact="compact">
+<dt><code><strong>Program Files:</strong></code></dt>
+<dd>        <dl compact="compact">
+<dt><code>Singular</code></dt>
+<dd><p>Contains the <code>Singular</code> Program, documentation and example files.
+<br>All files of this component are installed under the directory
+<code>/usr/local/Singular/2-0-4</code>
+</p></dd>
+<dt><code>BasicCygwin</code></dt>
+<dd><p>Contains the Cygwin DLL and basic tools/programs (like <code>bash</code> or
+<code>info</code>) of the  Cygwin environment.
+<br>The Cygwin DLL and programs are installed in the directory
+<code>/bin</code>. Miscellaneous documentation and configuration files are
+installed into the directory <code>/etc</code>.
+</p></dd>
+<dt><code>XEmacs</code></dt>
+<dd><p>Contains the Cygwin port of the <code>XEmacs</code> editor (see
+<a href="http://www.xemacs.org">http://www.xemacs.org</a> for more about <code>XEmacs</code>) version 21.1.13.
+<br>All files of this component are installed under the directory
+<code>/usr/local</code>.
+</p></dd>
+<dt><code>ESingular</code></dt>
+<dd><p>Contains the <code>ESingular</code>, the most comfortable Singular interface.
+Requires <code>XEmacs</code> to run.
+        </p></dd>
+</dl>
+</dd>
+<dt><code><strong>Remark:</strong></code></dt>
+<dd><p>All essential DLLs, some programs and symbolic links are installed in the directory
+<code>/usr/local/Singular/2-0-4/ix86-Win</code>, which must be present in your <code>PATH</code> system variable.
+</p></dd>
+<dt><code><strong>Help Files:</strong></code></dt>
+<dd><dl compact="compact">
+<dt><code>WinHelp</code></dt>
+<dd><p>Contains Singular Manual, converted to Windows help format (.hlp).
+We recommend to install it, because it is small in size. Moreover,
+we set it as default help browser in all the Singular executables.
+</p></dd>
+<dt><code>HTML Help</code></dt>
+<dd><p>Contains the &quot;native&quot; Singular Manual. It&rsquo;s not included by default,
+because it is much bigger than WinHelp, though it has better typesetting
+of mathematical formulae.
+</p></dd>
+</dl>
+</dd>
+</dl>
+
+<p>The Typical Setup Type of the Singular-2-0-4-Typical.exe contains
+<code>BasicCygwin</code>, <code>Singular</code>, 
+<code>XEmacs</code>, <code>ESingular</code>, <code>WinHelp</code> and <code>HTML Help</code> 
+components. The Compact Setup Type does not contain only the <code>HTML Help</code> component.
+</p>
+<a name="Downloading-preliminaries"></a>
+<h2 class="heading">Downloading preliminaries</h2>
+
+<p>To install <code>Singular</code> on a PC running Windows 95/98/ME/NT/2K/XP, you need
+to download <strong>one</strong> of the following archive files:
+</p>
+<p>Minimal archive: <a href="Singular-2-0-4-Compact.exe">Singular-2-0-4-Compact.exe</a>      (<code>BasicCygwin</code>, <code>Singular</code>, <code>WinHelp</code> components)
+</p>
+<p>Typical archive : <a href="Singular-2-0-4-Typical.exe">Singular-2-0-4-Typical.exe</a>      (<code>BasicCygwin</code>, <code>Singular</code>, <code>XEmacs</code>, <code>ESingular</code>, <code>WinHelp</code>, <code>HTML Help</code> components)
+</p>
+<p>You can obtain these (and other) archives 
+either from the <code>WINDOWS</code> directory on the <code>Singular</code> CD or from
+</p><div class="display">
+<pre class="display"><a href="ftp://www.mathematik.uni-kl.de/pub/Math/Singular/">ftp://www.mathematik.uni-kl.de/pub/Math/Singular/</a>.
+</pre></div>
+
+
+
+<a name="Installing-Singular"></a>
+<h2 class="heading">Installing Singular</h2>
+
+<p>The recent Setup program analyzes your system, e.g. it detects
+whether Cygwin and XEmacs are present and functional. Then it gives you
+hints and/or error messages with instructions during the installation.
+</p>
+<dl compact="compact">
+<dt><code>If you have Cygwin installed</code></dt>
+<dd><p>        If the version of <code>cygwin1.dll</code> is not less than 1.3.9,
+        you will be prompted that the <code>BasicCygwin</code> component will not
+        be installed. Moreover, the existing Cygwin root directory will be proposed as
+        the default installation directory. You can accept it, then
+        <code>Singular</code> will be placed into the existing Cygwin environment.
+        If you choose another destination, <code>Singular</code> will use Cygwin
+        programs anyway. If your Cygwin has incorrect settings (like
+        inconsistent mount points among the important ones), <code>Singular</code>
+        Setup will correct them. 
+<br>      If setup could not detect <code>cygwin</code>, present in the system, you
+        can try to break the installation, start it once more, choose the
+        &quot;Custom&quot; setup type and unselect the <code>BasicCygwin</code> component.
+</p>
+</dd>
+<dt><code>If you have XEmacs installed</code></dt>
+<dd><p>        The <code>Cygwin</code> port of <code>XEmacs</code> version 21.1.13 together 
+        with the most
+        important packages is included in the distribution. The use of 
+        non-<code>Cygwin</code> ports or earlier <code>Cygwin</code> ports has some 
+        quirks and does not work 
+        properly together with <code>Singular</code> (i.e., running <code>ESingular</code> 
+        results in problems). Nevertheless, if you want to test the
+        compatibility of <code>ESingular</code> with your own <code>XEmacs</code>, just
+        de-select the XEmacs component, but leave <code>ESingular</code> selected.
+        If your <code>XEmacs</code> happens to be incompatible with ESingular, you can
+        install just the XEmacs component and use in fact two different
+        <code>XEmacs</code> programs. 
+        The setup program will search for <code>XEmacs</code> and packages 
+        in <code>&lt;TARGETDIR&gt;/usr/local/lib</code> (here <code>&lt;TARGETDIR&gt;</code> is the directory which you selected while running setup). If you have <code>Cygwin</code> and the Cygwin port of
+        <code>XEmacs</code>, you might have <code>XEmacs</code> installed there. To avoid overwriting your <code>XEmacs</code> files, setup will ask you what to do.
+</p></dd>
+</dl>
+
+
+<a name="Customizing-Singular"></a>
+<h2 class="heading">Customizing Singular</h2>
+
+<p>The following step(s) are optional:
+</p><ul>
+<li>
+To conveniently access all files on your computer, mount the drives of
+your disk(s):
+<ol>
+<li>
+Open a rxvt terminal (from Start-&gt;Programs-&gt;Singular 2.0-&gt;Tools).
+</li><li>
+For each drive (letter) issue the following command (the drive <code>C:</code>
+is used in the example):
+<div class="example">
+<pre class="example">mount -f -s -t C: /C
+</pre></div>
+</li></ol>
+<p>After mounting the drive(s) this way, you can conveniently access the
+files on a drive from the <code>bash</code> shell and from <code>XEmacs</code> using the <code>/C/</code> prefix. Otherwise, you need to type <code>/cygdrive/C</code> - that is
+the Cygwin convention. You can get more information on <code>mount</code> command by invoking <code>mount --help</code>. Command <code>umount</code> unmount the selected
+mount point.
+</p>
+
+</li><li>
+Create your personal <code>HOME</code> directory.
+<br>Various applications (e.g., <code>bash</code> or <code>XEmacs</code>) store
+user-specific configuration/customization files in the <code>HOME</code>
+directory of the current user. During the installation, the <code>HOME</code>
+directory is globally set for all users to <code>/home/Singular</code>. To
+create your individual  <code>HOME</code> directory follow these steps:
+<ol>
+<li>
+Create a directory (folder), say, <code>C:\home\MyHome</code>.
+</li><li>
+Copy all files from <code>/home/Singular</code> to <code>C:\home\MyHome</code>.
+</li><li>
+Set the <em>user</em> environment variable <code>HOME</code> to <code>C:\home\MyHome</code>:
+<br>On Windows 95/98/ME, edit the respective line the <code>AUTOEXEC.BAT</code>
+file.
+<br>On Windows NT/2K/XP add an entry in your <code>Environment</code> control
+panel.
+</li><li>
+Restart your computer (On Windows 95/98/ME).
+</li></ol>
+<p>You may furthermore examine the files copied into your <code>HOME</code>
+directory and adjust (i.e. edit) them to your personal
+preferences/needs. System-wide settings are stored in the file 
+<code>/etc/profile</code>.
+</p>
+</li></ul>
+
+<a name="Uninstalling-Singular"></a>
+<h2 class="heading">Uninstalling Singular</h2>
+
+<p>You can uninstall individual or all installed components by opening the
+<code>Software</code> shortcut of the <code>Control panel</code>. 
+Simply double-click the <code>Singular</code> item and
+follow the instructions given there.
+</p>
+
+<p>For any other troubles,
+please send an email to <a href="mailto:singular@mathematik.uni-kl.de">singular@mathematik.uni-kl.de</a>
+and include the header which is displayed by starting up <code>Singular</code>
+with the <code>-v</code> option, and a description of your machine and
+operating system.
+</p>
+
+
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Unix-installation-instructions.html#Unix-installation-instructions" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: E.3 Unix installation instructions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Macintosh-installation-instructions.html#Macintosh-installation-instructions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: E.5 Macintosh installation instructions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

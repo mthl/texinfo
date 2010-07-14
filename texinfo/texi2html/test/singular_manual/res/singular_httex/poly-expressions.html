@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 4.12.2 poly expressions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 4.12.2 poly expressions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.12.2 poly expressions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="poly-expressions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="poly-declarations.html#poly-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.1 poly declarations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="poly-operations.html#poly-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.12.3 poly operations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="poly.html#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="poly-expressions-1"></a>
+<h3 class="subsection">4.12.2 poly expressions</h3>
+<a name="index-poly-expressions"></a>
+
+<p>A poly expression is (optional parts in square brackets):
+</p><ol>
+<li>
+a monomial (there are NO spaces allowed inside a monomial)
+<div class="smallexample">
+<pre class="smallexample">  [coefficient] ring_variable [ exponent] [ring_variable [exponent] &hellip;]
+</pre></div>
+<p>monomials which contain an indexed ring variable
+must be built from <code>ring_variable</code> and <code>coefficient</code>
+with the operations <code>*</code> and <code>^</code>
+</p></li><li>
+an identifier of type poly
+</li><li>
+a function returning poly
+</li><li>
+poly expressions combined by the arithmetic operations
+<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, or <code>^</code>
+</li><li>
+an int expression (see <a href="Type-conversion-and-casting.html#Type-conversion-and-casting">Type conversion and casting</a>)
+</li><li>
+a type cast to poly
+</li></ol>
+
+<br><p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">2x, x3, 2x2y3, xyz, 2xy2; //  are monomials
+2*x, x^3, 2*x^2*y^3, x*y*z, 2*x*y^2; // are poly expressions
+2*x(1); // is a valid poly expression, but not 2x(1) (a syntax error)
+2*x^3;  // is a valid poly expression equal to 2x3 (a valid monomial)
+        // but not equal to 2x^3 which will be interpreted as (2x)^3
+        // since 2x is a monomial
+  ring r=0,(x,y),dp;
+  poly f = 10x2y3 +2x2y2-2xy+y -x+2;
+  lead(f);
+&rarr; 10x2y3
+  leadmonom(f);
+&rarr; x2y3
+  simplify(f,1);     // normalize leading coefficient
+&rarr; x2y3+1/5x2y2-1/5xy-1/10x+1/10y+1/5
+  poly g = 1/2x2 + 1/3y;
+  cleardenom(g);
+&rarr; 3x2+2y
+  int i = 102;
+  poly(i);
+&rarr; 102
+  typeof(_);
+&rarr; poly
+</pre></div>
+
+<p>See 
+<a href="Type-conversion-and-casting.html#Type-conversion-and-casting">Type conversion and casting</a>;
+<a href="ring.html#ring">ring</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="poly-declarations.html#poly-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.12.1 poly declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="poly-operations.html#poly-operations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.12.3 poly operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="poly.html#poly" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.12 poly" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

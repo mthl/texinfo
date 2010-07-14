@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.394 2010-07-13 12:02:35 pertusus Exp $
+# $Id: texi2html.pl,v 1.395 2010-07-14 08:45:56 pertusus Exp $
 
 # FIXME. Change for texinfo, and also simplify.
 
@@ -4428,6 +4428,7 @@ else
 }
 
 global_override('SPLIT_INDEX', 0) unless (get_conf('SPLIT'));
+Texi2HTML::Config::set_default('NODE_FILES', 1) if (!defined(get_conf('NODE_FILES')) and get_conf('SPLIT'));
 Texi2HTML::Config::set_default('NODE_FILENAMES', 1) if ((!defined(get_conf('NODE_FILENAMES')) and get_conf('SPLIT') eq 'node') or get_conf('NODE_FILES'));
 
 ## Something like backward compatibility. This would make sense to keep 

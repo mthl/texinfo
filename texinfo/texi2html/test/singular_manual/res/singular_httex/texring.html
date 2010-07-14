@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.8.2.11 texring</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.8.2.11 texring">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.8.2.11 texring">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="texring"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="texproc.html#texproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.10 texproc" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="rmx.html#rmx" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.12 rmx" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="latex_005flib.html#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="texring-1"></a>
+<h4 class="subsubsection">D.8.2.11 texring</h4>
+<a name="index-texring"></a>
+<p>Procedure from library <code>latex.lib</code> (see <a href="latex_005flib.html#latex_005flib">latex_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>texring(fname, r[,L]); fname string, r ring, L list
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>if <code>fname=&quot;&quot;</code>: string, the ring in TeX-typesetting;<br>
+otherwise: append this string to the file <code>&lt;fname&gt;</code> and
+return nothing.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>preceding &quot;&gt;&gt;&quot; are deleted and suffix &quot;.tex&quot; (if not given)
+is added to <code>fname</code>.<br>
+The optional list L is assumed to be a list of strings which control,
+e.g., the symbol for the field of coefficients.<br>
+For more details call <code>texdemo();</code> (generates a LaTeX2e
+file called <code>texlibdemo.tex</code> which explains all features of
+<code>texring</code>).
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;latex.lib&quot;;
+ring r0 = 0,(x,y),dp;                // char = 0, polynomial ordering
+texring(&quot;&quot;,r0);
+&rarr; $\Q[x,y]$
+//
+ring r7 =7,(x(0..2)),ds;             // char = 7, local ordering
+texring(&quot;&quot;,r7);
+&rarr; $\Z_{7}[[x_{0},x_{1},x_{2}]]$
+//
+ring r1 = 0,(x1,x2,y1,y2),wp(1,2,3,4);
+texring(&quot;&quot;,r1);
+&rarr; $\Q[x_{1},x_{2},y_{1},y_{2}]$
+//
+ring rr = real,(x),dp;               // real numbers
+texring(&quot;&quot;,rr);
+&rarr; $\R[x]$
+//
+ring rabc =(0,t1,t2,t3),(x,y),dp;    // ring with parameters
+texring(&quot;&quot;,rabc);
+&rarr; $\Q(t_{1},t_{2},t_{3})[x,y]$
+//
+ring ralg = (7,a),(x1,x2),ds;        // algebraic extension
+minpoly = a2-a+3;
+texring(&quot;&quot;,ralg);
+&rarr; $\Z_{7}(a)[[x_{1},x_{2}]]$
+texring(&quot;&quot;,ralg,&quot;mipo&quot;);
+&rarr; $\Z_{7}(a)/(a^{2}-a+3)[[x_{1},x_{2}]]$
+//
+ring r49=(49,a),x,dp;                // Galois field  
+texring(&quot;&quot;,r49);
+&rarr; $\F_{49}[x]$
+//
+setring r0;                          // quotient ring
+ideal i = x2-y3;
+qring q = std(i);
+texring(&quot;&quot;,q);
+&rarr; $\Q[x,y]/\left(y^{3}-x^{2}\right)
+&rarr; $
+//
+// ------------------ additional features -------------------
+ring r9 =0,(x(0..9)),ds;
+texring(&quot;&quot;,r9,1);
+&rarr; $\Q[[x_{0},\ldots,x_{9}]]$
+texring(&quot;&quot;,r9,&quot;C&quot;,&quot;{&quot;,&quot;^G&quot;);
+&rarr; $\C\{x_{0},x_{1},x_{2},x_{3},x_{4},x_{5},x_{6},x_{7},x_{8},x_{9}\}^G$
+//
+ring rxy = 0,(x(1..5),y(1..6)),ds;
+intvec v = 5,6;
+texring(&quot;&quot;,rxy,v);
+&rarr; $\Q[[x_{1},\ldots,x_{5},y_{1},\ldots,y_{6}]]$
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="texproc.html#texproc" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.8.2.10 texproc" align="middle"></a></td>
+<td valign="middle" align="left"><a href="rmx.html#rmx" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.8.2.12 rmx" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="latex_005flib.html#latex_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.8.2 latex_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

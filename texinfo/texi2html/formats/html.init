@@ -7,7 +7,7 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.54 2010-07-13 12:02:39 pertusus Exp $
+# $Id: html.init,v 1.55 2010-07-14 08:45:57 pertusus Exp $
 
 use strict;
 
@@ -273,7 +273,6 @@ $AFTER_ABOUT = '';
 
 set_default('BODYTEXT', undef);
 
-#$init_out    = \&html_default_init_out;
 $translate_names = \&html_default_translate_names;
 
 t2h_default_push_handler(\&html_default_initialize, \@command_handler_init);

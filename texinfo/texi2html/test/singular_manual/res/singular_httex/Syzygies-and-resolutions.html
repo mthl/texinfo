@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.3 Syzygies and resolutions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.3 Syzygies and resolutions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Syzygies-and-resolutions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Hilbert-function.html#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Characteristic-sets.html#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Syzygies-and-resolutions-1"></a>
+<h2 class="section">C.3 Syzygies and resolutions</h2>
+<a name="index-Syzygies-and-resolutions"></a>
+
+<a name="Syzygies"></a>
+<h3 class="subheading">Syzygies</h3>
+ Let
+<span 
+class="cmmi-10">R </span>be a quotient of Loc<sub><span 
+class="cmmi-7">&#x003C;</span></sub><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>] and let <span 
+class="cmmi-10">I </span>= (<span 
+class="cmmi-10">g</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,...,g</span><sub><span 
+class="cmmi-7">s</span></sub>) be a submodule of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup>. Then the <span 
+class="cmbx-10">module of</span>
+<span 
+class="cmbx-10">syzygies </span>(or <span 
+class="cmbx-10">1st syzygy module</span>, <span 
+class="cmbx-10">module of relations</span>) of <span 
+class="cmmi-10">I</span>, syz(<span 
+class="cmmi-10">I</span>), is defined to be the kernel
+of the map <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">s</span></sup> <span 
+class="cmsy-10">&#x2192; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">,</span> <span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">=1</span></sub><sup><span 
+class="cmmi-7">s</span></sup><span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">i</span></sub><img 
+src="sing_tex4ht_tex55x.png" alt="&#x21A6;&#x2192;"  class="mapsto" ><span 
+class="cmex-10">&#x2211;</span>
+    <sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">=1</span></sub><sup><span 
+class="cmmi-7">s</span></sup><span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">g</span><sub><span 
+class="cmmi-7">i</span></sub>.  
+
+<p>The <strong>k-th syzygy module</strong> is defined inductively to be the module
+of syzygies of the
+ (<span 
+class="cmmi-10">k </span><span 
+class="cmsy-10">- </span>1)-st  
+ syzygy module.
+</p>
+ Note, that the syzygy modules of <span 
+class="cmmi-10">I</span>
+depend on a choice of generators <span 
+class="cmmi-10">g</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,...,g</span><sub><span 
+class="cmmi-7">s</span></sub>. But one can show that they depend on <span 
+class="cmmi-10">I </span>uniquely up to
+direct summands.  
+
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal i=ux, vx, uy, vy;
+  print(syz(i));
+&rarr; -y,0, -v,0, 
+&rarr; 0, -y,u, 0, 
+&rarr; x, 0, 0, -v,
+&rarr; 0, x, 0, u  
+</pre></div>
+</dd>
+</dl>
+
+<a name="Free-resolutions"></a>
+<h3 class="subheading">Free resolutions</h3>
+ Let <span 
+class="cmmi-10">I </span>= (<span 
+class="cmmi-10">g</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,...,g</span><sub><span 
+class="cmmi-7">s</span></sub>) <span 
+class="cmsy-10">&#x2286; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> and <span 
+class="cmmi-10">M </span>= <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">&#x2215;I</span>. A <span 
+class="cmbx-10">free resolution of </span><span 
+class="cmmi-10">M </span>is a long exact
+
+sequence
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex56x.png" alt="        A2     A1
+...-&#x2192; F2 -&#x2192; F1 -&#x2192;  F0 -&#x2192; M - &#x2192; 0,  " class="math-display" ></center>  
+<br><p>where the columns of the matrix
+ <span 
+class="cmmi-10">A</span><sub><span 
+class="cmr-7">1</span></sub>  
+generate 
+
+<span 
+class="cmmi-10">I </span> 
+. Note, that resolutions need not to be finite (i.e., of
+finite length). The Hilbert Syzygy Theorem states, that for 
+ <span 
+class="cmmi-10">R </span>= Loc<sub><span 
+class="cmmi-7">&#x003C;</span></sub><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>]  
+there exists a (&quot;minimal&quot;) resolution of length not exceeding the number of
+variables.
+</p>
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // The matrix A_1 is given by
+  print(matrix(resI[1]));
+&rarr; vy,uy,vx,ux
+  // We see that the columns of A_1 generate I.
+  // The matrix A_2 is given by
+  print(matrix(resI[3]));
+&rarr; u, 
+&rarr; -v,
+&rarr; -x,
+&rarr; y  
+</pre></div>
+</dd>
+</dl>
+
+<a name="Betti-numbers-and-regularity"></a>
+<h3 class="subheading">Betti numbers and regularity</h3>
+<a name="index-Betti-number"></a>
+<a name="index-regularity-1"></a>
+ Let <span 
+class="cmmi-10">R </span>be a graded ring (e.g., <span 
+class="cmmi-10">R </span>= Loc<sub><span 
+class="cmmi-7">&#x003C;</span></sub><span 
+class="cmmi-10">K</span>[<span class="underline"><span 
+class="cmmi-10">x</span></span>]) and let <span 
+class="cmmi-10">I </span><span 
+class="cmsy-10">&#x2282; </span><span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> be a graded submodule.
+Let
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex57x.png" alt=" r  &#x2295;          A1 &#x2295;                  &#x2295;
+R =     R &#x22C5;ea,0&#x2190; -    R &#x22C5;ea,1 &#x2190; - ... &#x2190;-   R &#x22C5;ea,n &#x2190;- 0
+     a             a                  a  " class="math-display" ></center> be a
+minimal free resolution of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">n</span></sup><span 
+class="cmmi-10">&#x2215;I </span>considered with homogeneous maps of degree 0. Then the <span 
+class="cmbx-10">graded Betti number</span>
+<span 
+class="cmmi-10">b</span><sub><span 
+class="cmmi-7">i,j</span></sub> of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">&#x2215;I </span>is the minimal number of generators <span 
+class="cmmi-10">e</span><sub><span 
+class="cmmi-7">a,j</span></sub> in degree <span 
+class="cmmi-10">i </span>+ <span 
+class="cmmi-10">j </span>of the <span 
+class="cmmi-10">j</span>-th syzygy module of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">&#x2215;I </span>(i.e., the
+(<span 
+class="cmmi-10">j </span><span 
+class="cmsy-10">- </span>1)-st syzygy module of <span 
+class="cmmi-10">I</span>). Note, that by definition the 0-th syzygy module of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">&#x2215;I </span>is <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup> and the 1st syzygy
+module of <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">r</span></sup><span 
+class="cmmi-10">&#x2215;I </span>is <span 
+class="cmmi-10">I</span>.  
+
+<p>The <strong>regularity</strong> of 
+ <span 
+class="cmmi-10">I </span> 
+ is the smallest integer 
+ <span 
+class="cmmi-10">s </span> 
+</p>
+<p>such that
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex58x.png" alt="deg(ea,j) &#x2264; s + j - 1 for all j.  " class="math-display" ></center>  
+</p>
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // the betti number:
+  print(betti(resI), &quot;betti&quot;);
+&rarr;            0     1     2     3
+&rarr; ------------------------------
+&rarr;     0:     1     -     -     -
+&rarr;     1:     -     4     4     1
+&rarr; ------------------------------
+&rarr; total:     1     4     4     1
+  // the regularity:
+  regularity(resI);
+&rarr; 2
+</pre></div>
+</dd>
+</dl>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Hilbert-function.html#Hilbert-function" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.2 Hilbert function" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Characteristic-sets.html#Characteristic-sets" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.4 Characteristic sets" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

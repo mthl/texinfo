@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.2.2.21 timeFactorize</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2.21 timeFactorize">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2.21 timeFactorize">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="timeFactorize"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="timeStd.html#timeStd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.20 timeStd" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="factorH.html#factorH" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.22 factorH" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="general_005flib.html#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="timeFactorize-1"></a>
+<h4 class="subsubsection">D.2.2.21 timeFactorize</h4>
+<a name="index-timeFactorize"></a>
+<p>Procedure from library <code>general.lib</code> (see <a href="general_005flib.html#general_005flib">general_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>timeFactorize(p,d) poly p , integer d
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>factorize(p) if the factorization finished after d-1
+<br>seconds otherwise f is considered to be irreducible
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;general.lib&quot;;
+ring r=0,(x,y),dp;
+poly p=((x2+y3)^2+xy6)*((x3+y2)^2+x10y);
+p=p^2;
+list l=timeFactorize(p,2);
+l;
+&rarr; [1]:
+&rarr;    [1]:
+&rarr;       1
+&rarr;    [2]:
+&rarr;       x22y14+2x21y14+4x23y11+x20y14+2x25y8+4x22y11+6x24y8+4x26y5+2x18y13+\
+   x28y2+4x17y13+4x15y15+8x19y10+2x16y13+8x14y15+2x12y17+4x21y7+8x18y10+16x1\
+   6y12+4x13y15+4x11y17+12x20y7+8x18y9+16x15y12+8x13y14+2x10y17+8x22y4+24x17\
+   y9+4x15y11+x14y12+8x12y14+2x24y+16x19y6+12x14y11+2x13y12+4x11y14+4x21y3+8\
+   x16y8+4x15y9+x12y12+8x10y14+6x8y16+2x18y5+2x17y6+4x14y9+16x12y11+4x9y14+1\
+   2x7y16+4x5y18+6x16y6+8x14y8+16x11y11+24x9y13+6x6y16+8x4y18+x2y20+4x18y3+2\
+   4x13y8+12x11y10+24x8y13+16x6y15+4x3y18+2xy20+x20+16x15y5+36x10y10+8x8y12+\
+   16x5y15+4x3y17+y20+4x17y2+24x12y7+24x7y12+2x5y14+4x2y17+6x14y4+16x9y9+6x4\
+   y14+4x11y6+4x6y11+x8y8
+&rarr; [2]:
+&rarr;    1,1
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="timeStd.html#timeStd" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.2.20 timeStd" align="middle"></a></td>
+<td valign="middle" align="left"><a href="factorH.html#factorH" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.22 factorH" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="general_005flib.html#general_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.2 general_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

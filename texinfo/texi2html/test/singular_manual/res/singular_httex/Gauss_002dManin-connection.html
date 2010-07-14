@@ -1,0 +1,685 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.5 Gauss-Manin connection</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.5 Gauss-Manin connection">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.5 Gauss-Manin connection">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Gauss_002dManin-connection"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Characteristic-sets.html#Characteristic-sets" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.4 Characteristic sets" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Toric-ideals-and-integer-programming.html#Toric-ideals-and-integer-programming" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6 Toric ideals and integer programming" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Gauss_002dManin-connection-1"></a>
+<h2 class="section">C.5 Gauss-Manin connection</h2>
+<a name="index-Gauss_002dManin-connection"></a>
+
+
+ Let <span 
+class="cmmi-10">f</span>:(<span 
+class="cmmi-10">C</span><sup><span 
+class="cmmi-7">n</span><span 
+class="cmr-7">+1</span></sup><span 
+class="cmmi-10">,</span>0) <span 
+class="cmsy-10">&#x2192; </span>(<span 
+class="cmmi-10">C,</span>0) be a
+complex isolated hypersurface singularity given by a polynomial with algebraic coefficients which we also
+denote by <span 
+class="cmmi-10">f</span>. Let <span 
+class="cmmi-10">O </span>= <span 
+class="cmmi-10">C</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">0</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]<sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">x</span><sub><span 
+class="cmr-5">0</span></sub><span 
+class="cmmi-7">,</span><span 
+class="cmmi-7">&#x2026;</span><span 
+class="cmmi-7">,x</span><sub><span 
+class="cmmi-5">n</span></sub><span 
+class="cmr-7">)</span></sub> be the local ring at the origin and <span 
+class="cmmi-10">J</span><sub><span 
+class="cmmi-7">f</span></sub> the Jacobian ideal of
+<span 
+class="cmmi-10">f</span>.
+<!--l. 1589--><p class="indent" >    A <span 
+class="cmbx-10">Milnor representative </span>of <span 
+class="cmmi-10">f </span>defines a differentiable fibre bundle over the punctured disc with fibres of
+homotopy type of <span 
+class="cmmi-10">&#x03BC; n</span>-spheres. The <span 
+class="cmmi-10">n</span>-th cohomology bundle is a flat vector bundle of dimension <span 
+class="cmmi-10">n </span>and carries a
+natural flat connection with covariant derivative <span 
+class="cmmi-10">&#x2202;</span><sub><span 
+class="cmmi-7">t</span></sub>. The <span 
+class="cmbx-10">monodromy operator </span>is the action of a positively
+oriented generator of the fundamental group of the puctured disc on the Milnor fibre. Sections in the
+cohomology bundle of <span 
+class="cmbx-10">moderate growth </span>at 0 form a regular <span 
+class="cmmi-10">D </span>= <span 
+class="cmmi-10">C</span><span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">t</span><span 
+class="cmsy-10">}</span>[<span 
+class="cmmi-10">&#x2202;</span><sub><span 
+class="cmmi-7">t</span></sub>]-module <span 
+class="cmmi-10">G</span>, the <span 
+class="cmbx-10">Gauss-Manin</span>
+<span 
+class="cmbx-10">connection</span>.
+<!--l. 1594--><p class="indent" >    By integrating along flat multivalued families of cycles, one can consider fibrewise global holomorphic
+differential forms as elements of <span 
+class="cmmi-10">G</span>. This factors through an inclusion of the <span 
+class="cmbx-10">Brieskorn lattice</span>
+<span 
+class="cmmi-10">H</span>&#8220; := &#x03A9;<sub><span 
+class="cmmi-7">C</span><sup><span 
+class="cmmi-5">n</span><span 
+class="cmr-5">+1</span></sup><span 
+class="cmmi-7">,</span><span 
+class="cmr-7">0</span></sub><sup><span 
+class="cmmi-7">n</span><span 
+class="cmr-7">+1</span></sup><span 
+class="cmmi-10">&#x2215;df </span><span 
+class="cmsy-10">&#x2227; </span><span 
+class="cmmi-10">d</span>&#x03A9;<sub><span 
+class="cmmi-7">C</span><sup><span 
+class="cmmi-5">n</span><span 
+class="cmr-5">+1</span></sup><span 
+class="cmmi-7">,</span><span 
+class="cmr-7">0</span></sub><sup><span 
+class="cmmi-7">n</span><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sup> in <span 
+class="cmmi-10">G</span>.
+<!--l. 1597--><p class="indent" >    The <span 
+class="cmmi-10">D</span>-module structure defines the <span 
+class="cmbx-10">V-filtration </span><span 
+class="cmmi-10">V </span>on <span 
+class="cmmi-10">G </span>by <span 
+class="cmmi-10">V</span> <sup><span 
+class="cmmi-7">&#x03B1;</span></sup> := <span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">&#x03B2;</span><span 
+class="cmsy-7">&#x2265;</span><span 
+class="cmmi-7">&#x03B1;</span></sub><span 
+class="cmmi-10">C</span><span 
+class="cmsy-10">{</span><span 
+class="cmmi-10">t</span><span 
+class="cmsy-10">}</span><span 
+class="cmmi-10">ker</span>(<span 
+class="cmmi-10">t&#x2202;</span><sub><span 
+class="cmmi-7">t</span></sub> <span 
+class="cmsy-10">-</span><span 
+class="cmmi-10">&#x03B2;</span>)<sup><span 
+class="cmmi-7">n</span><span 
+class="cmr-7">+1</span></sup>. The Brieskorn
+lattice defines the <span 
+class="cmbx-10">Hodge filtration </span><span 
+class="cmmi-10">F </span>on <span 
+class="cmmi-10">G </span>by <span 
+class="cmmi-10">F</span><sub><span 
+class="cmmi-7">k</span></sub> = <span 
+class="cmmi-10">&#x2202;</span><sub><span 
+class="cmmi-7">t</span></sub><sup><span 
+class="cmmi-7">k</span></sup><span 
+class="cmmi-10">H</span>&#8220; which comes from the <span 
+class="cmbx-10">mixed Hodge structure </span>on
+the Milnor fibre. Note that <span 
+class="cmmi-10">F</span><sub><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmmi-10">H</span>&#8216;.
+<!--l. 1601--><p class="indent" >    The induced V-filtration on the Brieskorn lattice determines the <span 
+class="cmbx-10">singularity spectrum </span><span 
+class="cmmi-10">Sp </span>by
+<span 
+class="cmmi-10">Sp</span>(<span 
+class="cmmi-10">&#x03B1;</span>) := dim<sub><span 
+class="cmmi-7">C</span></sub><span 
+class="cmmi-10">Gr</span><sub><span 
+class="cmmi-7">V</span> </sub><sup><span 
+class="cmmi-7">&#x03B1;</span></sup><span 
+class="cmmi-10">Gr</span><sub><span 
+class="cmr-7">0</span></sub><sup><span 
+class="cmmi-7">F</span></sup><span 
+class="cmmi-10">G</span>. The spectrum consists of <span 
+class="cmmi-10">&#x03BC; </span>rational numbers <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">&#x03BC;</span></sub> such that <span 
+class="cmmi-10">e</span><sup><span 
+class="cmr-7">2</span><span 
+class="cmmi-7">&#x03C0;i&#x03B1;</span><sub><span 
+class="cmr-5">1</span></sub></sup><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,e</span><sup><span 
+class="cmr-7">2</span><span 
+class="cmmi-7">&#x03C0;i&#x03B1;</span><sub><span 
+class="cmmi-5">&#x03BC;</span></sub></sup> are
+the eigenvalues of the monodromy. These <span 
+class="cmbx-10">spectral numbers </span>lie in the open interval (<span 
+class="cmsy-10">-</span>1<span 
+class="cmmi-10">,n</span>), symmetric about the
+midpoint (<span 
+class="cmmi-10">n </span><span 
+class="cmsy-10">- </span>1)<span 
+class="cmmi-10">&#x2215;</span>2.
+
+<!--l. 1605--><p class="indent" >    The spectrum is constant under <span 
+class="cmmi-10">&#x03BC;</span>-constant deformations and has the following semicontinuity property: The
+number of spectral numbers in an interval (<span 
+class="cmmi-10">a,a </span>+ 1] of all singularities of a small deformation of <span 
+class="cmmi-10">f </span>is greater or equal
+to that of f in this interval. For semiquasihomogeneous singularities, this also holds for intervals of the form
+(<span 
+class="cmmi-10">a,a </span>+ 1).
+<!--l. 1609--><p class="indent" >    Two given isolated singularities <span 
+class="cmmi-10">f </span>and <span 
+class="cmmi-10">g </span>determine two spectra and from these spectra we get an integer. This
+integer is the maximal positive integer <span 
+class="cmmi-10">k </span>such that the semicontinuity holds for the spectrum of <span 
+class="cmmi-10">f </span>and <span 
+class="cmmi-10">k </span>times the
+spectrum of <span 
+class="cmmi-10">g</span>. These numbers give bounds for the maximal number of isolated singularities of a specific
+type on a hypersurface <span 
+class="cmmi-10">X </span><span 
+class="cmsy-10">&#x2282; </span><span 
+class="cmmi-10">P</span><sup><span 
+class="cmmi-7">n</span></sup> of degree <span 
+class="cmmi-10">d</span>: such a hypersurface has a smooth hyperplane section,
+and the complement is a small deformation of a cone over this hyperplane section. The cone itself
+being a <span 
+class="cmmi-10">&#x03BC;</span>-constant deformation of <span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">0</span></sub><sup><span 
+class="cmmi-7">d</span></sup> + <span 
+class="cmmi-10">&#x2026;</span> + <span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">n</span></sub><sup><span 
+class="cmmi-7">d</span></sup> = 0, the singularities are bounded by the spectrum of
+<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">0</span></sub><sup><span 
+class="cmmi-7">d</span></sup> + <span 
+class="cmmi-10">&#x2026;</span> + <span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">n</span></sub><sup><span 
+class="cmmi-7">d</span></sup>.
+<!--l. 1615--><p class="indent" >    Using the library <span 
+class="cmtt-10">gaussman.lib </span>one can compute the <span 
+class="cmbx-10">monodromy</span>, the V-filtration on <span 
+class="cmmi-10">H</span>&#8220;<span 
+class="cmmi-10">&#x2215;H</span>&#8216;, and the
+spectrum.  
+
+
+<p>Let us consider as an example 
+ <span 
+class="cmmi-10">f </span>= <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">5</span></sup> + <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">2</span></sup><span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">2</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">5</span></sup>  
+.
+First, we compute a matrix 
+ <span 
+class="cmmi-10">M </span> 
+ such that
+ exp(2<span 
+class="cmmi-10">&#x03C0;iM</span>)  
+is a monodromy matrix of 
+ <span 
+class="cmmi-10">f </span> 
+ and the Jordan normal form of 
+ <span 
+class="cmmi-10">M </span> 
+:
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=monodromy(f);
+  matrix M=jordanmatrix(l[1],l[2],l[3]);
+  print(M);
+&rarr; 1/2,0,  0,   0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 1,  1/2,0,   0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  7/10,0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   7/10,0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   9/10,0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   9/10,0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   1,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,11/10,0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    11/10,0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
+</pre></div>
+
+<p>Now, we compute the V-filtration on 
+ <span 
+class="cmmi-10">H</span>&#8220;<span 
+class="cmmi-10">&#x2215;H</span>&#8216;  
+ and the spectrum:
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=vfilt(f);
+  print(l[1]);
+&rarr; -1/2,
+&rarr; -3/10,
+&rarr; -1/10,
+&rarr; 0,
+&rarr; 1/10,
+&rarr; 3/10,
+&rarr; 1/2
+  print(l[2]);
+&rarr; 1,2,2,1,2,2,1
+  print(l[3]);
+&rarr; [1]:
+&rarr;    _[1]=gen(11)
+&rarr; [2]:
+&rarr;    _[1]=gen(10)
+&rarr;    _[2]=gen(6)
+&rarr; [3]:
+&rarr;    _[1]=gen(9)
+&rarr;    _[2]=gen(4)
+&rarr; [4]:
+&rarr;    _[1]=gen(5)
+&rarr; [5]:
+&rarr;    _[1]=gen(3)
+&rarr;    _[2]=gen(8)
+&rarr; [6]:
+&rarr;    _[1]=gen(2)
+&rarr;    _[2]=gen(7)
+&rarr; [7]:
+&rarr;    _[1]=gen(1)
+  print(l[4]);
+&rarr; y5,
+&rarr; y4,
+&rarr; y3,
+&rarr; y2,
+&rarr; xy,
+&rarr; y,
+&rarr; x4,
+&rarr; x3,
+&rarr; x2,
+&rarr; x,
+&rarr; 1
+</pre></div>
+<p>Here <code>l[1]</code> contains the spectral numbers, <code>l[2]</code> the corresponding multiplicities, <code>l[3]</code> a 
+ <span 
+class="cmmi-10">C </span> 
+-basis of the V-filtration on 
+ <span 
+class="cmmi-10">H</span>&#8220;<span 
+class="cmmi-10">&#x2215;H</span>&#8216;  
+ in terms of the monomial basis of
+ <span 
+class="cmmi-10">O&#x2215;J</span><sub><span 
+class="cmmi-7">f</span></sub><img 
+src="sing_tex4ht_tex62x.png" alt="~="  class="cong" ><span 
+class="cmmi-10">H</span>&#8220;<span 
+class="cmmi-10">&#x2215;H</span>&#8216;  
+in <code>l[4]</code>.
+</p>
+ If the principal
+part of <span 
+class="cmmi-10">f </span>is <span 
+class="cmmi-10">C</span>-nondegenerate, one can compute the spectrum using the library <span 
+class="cmtt-10">spectrum.lib</span>. In this case, the
+V-filtration on <span 
+class="cmmi-10">H</span>&#8220; coincides with the Newton-filtration on <span 
+class="cmmi-10">H</span>&#8220; which allows to compute the spectrum more
+efficiently.  
+
+
+<p>Let us calculate one specific example, the maximal number 
+of triple points of type
+ <span 
+class="cmmi-10">&#x1EBC;</span><sub><span 
+class="cmr-7">6</span></sub> on a surface <span 
+class="cmmi-10">X </span><span 
+class="cmsy-10">&#x2282; </span><span 
+class="cmmi-10">P</span><sup><span 
+class="cmr-7">3</span></sup>  
+of degree seven.
+This calculation can be done over the rationals.
+So choose a local ordering on 
+ <span 
+class="cmmi-10">Q</span>[<span 
+class="cmmi-10">x,y,z</span>]  
+. Here we take the
+negative degree lexicographical ordering which is denoted
+<code>ds</code> in <small>SINGULAR</small>:
+</p>
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),ds;
+LIB &quot;spectrum.lib&quot;;
+poly f=x^7+y^7+z^7;
+list s1=spectrumnd( f );
+s1;
+&rarr; [1]:
+&rarr;    _[1]=-4/7
+&rarr;    _[2]=-3/7
+&rarr;    _[3]=-2/7
+&rarr;    _[4]=-1/7
+&rarr;    _[5]=0
+&rarr;    _[6]=1/7
+&rarr;    _[7]=2/7
+&rarr;    _[8]=3/7
+&rarr;    _[9]=4/7
+&rarr;    _[10]=5/7
+&rarr;    _[11]=6/7
+&rarr;    _[12]=1
+&rarr;    _[13]=8/7
+&rarr;    _[14]=9/7
+&rarr;    _[15]=10/7
+&rarr;    _[16]=11/7
+&rarr; [2]:
+&rarr;    1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
+</pre></div>
+
+<p>The command <code>spectrumnd(f)</code> computes the spectrum of 
+ <span 
+class="cmmi-10">f </span> 
+ and
+returns a list with six entries:
+The Milnor number
+ <span 
+class="cmmi-10">&#x03BC;</span>(<span 
+class="cmmi-10">f</span>), the geometric genus <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">g</span></sub>(<span 
+class="cmmi-10">f</span>)  
+and the number of different spectrum numbers.
+The other three entries are of type <code>intvec</code>.
+They contain the numerators, denominators and
+multiplicities of the spectrum numbers. So
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">7</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">7</span></sup> + <span 
+class="cmmi-10">z</span><sup><span 
+class="cmr-7">7</span></sup> = 0  
+has Milnor number 216 and geometrical
+genus 35. Its spectrum consists of the 16 different rationals
+<br>
+
+<span 
+class="cmr-7">3</span>_
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">4</span> 
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">5</span> 
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">6</span> 
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">1</span> 
+<span 
+class="cmr-7">1</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">8</span> 
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">9</span> 
+<span 
+class="cmr-7">7</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">10</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">11</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">12</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">13</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">2</span> 
+<span 
+class="cmr-7">1</span><span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">15</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">16</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">17</span> 
+ <span 
+class="cmr-7">7</span> <span 
+class="cmmi-10">,</span> <span 
+class="cmr-7">18</span> 
+ <span 
+class="cmr-7">7</span>   
+<br>appearing with multiplicities
+<br>1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1.
+</p>
+ The singularities of type <span 
+class="cmmi-10">&#x1EBC;</span><sub><span 
+class="cmr-7">6</span></sub> form a <span 
+class="cmmi-10">&#x03BC;</span>-constant one parameter family
+given by <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">3</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">3</span></sup> + <span 
+class="cmmi-10">z</span><sup><span 
+class="cmr-7">3</span></sup> + <span 
+class="cmmi-10">&#x03BB;xyz </span>= 0<span 
+class="cmmi-10">,   &#x03BB;</span><sup><span 
+class="cmr-7">3</span></sup><span 
+class="cmmi-10">&#x2260;</span><span 
+class="cmsy-10">- </span>27.  
+<p>Therefore they have all the same spectrum, which we compute
+for 
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">3</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">3</span></sup> + <span 
+class="cmmi-10">z</span><sup><span 
+class="cmr-7">3</span></sup>.  
+</p>
+<div class="smallexample">
+<pre class="smallexample">poly g=x^3+y^3+z^3;
+list s2=spectrumnd(g);
+s2;
+&rarr; [1]:
+&rarr;    8
+&rarr; [2]:
+&rarr;    1
+&rarr; [3]:
+&rarr;    4
+&rarr; [4]:
+&rarr;    1,4,5,2
+&rarr; [5]:
+&rarr;    1,3,3,1
+&rarr; [6]:
+&rarr;    1,3,3,1
+</pre></div>
+<p>Evaluating semicontinuity is very easy:
+</p><div class="smallexample">
+<pre class="smallexample">semicont(s1,s2);
+&rarr; 18
+</pre></div>
+
+<p>This tells us that there are at most 18 singularities of type
+ <span 
+class="cmmi-10">&#x1EBC;</span><sub><span 
+class="cmr-7">6</span></sub> on a septic in <span 
+class="cmmi-10">P</span><sup><span 
+class="cmr-7">3</span></sup>. But <span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">7</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">7</span></sup> + <span 
+class="cmmi-10">z</span><sup><span 
+class="cmr-7">7</span></sup>  
+is semiquasihomogeneous (sqh), so we can also apply the stronger
+form of semicontinuity:
+</p>
+<div class="smallexample">
+<pre class="smallexample">semicontsqh(s1,s2);
+&rarr; 17
+</pre></div>
+
+<p>So in fact a septic has at most 17 triple points of type
+ <span 
+class="cmmi-10">&#x1EBC;</span><sub><span 
+class="cmr-7">6</span></sub>.  
+</p>
+<p>Note that <code>spectrumnd(f)</code> works only if 
+ <span 
+class="cmmi-10">f </span> 
+ has nondegenerate
+principal part. In fact <code>spectrumnd</code> will detect a degenerate
+principal part in many cases and print out an error message.
+However if it is known in advance that 
+ <span 
+class="cmmi-10">f </span> 
+ has nondegenerate
+principal part, then the spectrum may be computed much faster
+using <code>spectrumnd(f,1)</code>.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Characteristic-sets.html#Characteristic-sets" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.4 Characteristic sets" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Toric-ideals-and-integer-programming.html#Toric-ideals-and-integer-programming" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6 Toric ideals and integer programming" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

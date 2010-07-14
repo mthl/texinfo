@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.2 Hilbert function</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.2 Hilbert function">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.2 Hilbert function">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Hilbert-function"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Standard-bases.html#Standard-bases" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.1 Standard bases" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Syzygies-and-resolutions.html#Syzygies-and-resolutions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.3 Syzygies and resolutions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Hilbert-function-1"></a>
+<h2 class="section">C.2 Hilbert function</h2>
+<a name="index-Hilbert-function-1"></a>
+<a name="index-Hilbert-series"></a>
+Let M <!-- MATH
+ $=\bigoplus_i M_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_364.png"
+ ALT="$=\bigoplus_i M_i$"></SPAN> be a graded module over <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_365.png"
+ ALT="$K[x_1,..,x_n]$"></SPAN> with 
+respect to weights <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_366.png"
+ ALT="$(w_1,..w_n)$"></SPAN>.
+The <B>Hilbert function</B> of <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_367.png"
+ ALT="$H_M$"></SPAN>, is defined (on the integers) by
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+H_M(k) :=dim_K M_k.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="20" BORDER="0"
+ SRC="sing_368.png"
+ ALT="\begin{displaymath}H_M(k) :=dim_K M_k.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The <B>Hilbert-Poincare series</B>  of <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_13.png"
+ ALT="$M$"></SPAN> is the power series
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t) :=\sum_{i=-\infty}^\infty
+H_M(i)t^i=\sum_{i=-\infty}^\infty dim_K M_i \cdot t^i.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="50" BORDER="0"
+ SRC="sing_369.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t) :=\sum_{i=-\infty}^\infty
+H_M(i)t^i=\sum_{i=-\infty}^\infty dim_K M_i \cdot t^i.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+It turns out that <!-- MATH
+ $\hbox{HP}_M(t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_370.png"
+ ALT="$\hbox{HP}_M(t)$"></SPAN> can be written in two useful ways
+for weights <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_371.png"
+ ALT="$(1,..,1)$"></SPAN>:
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t)={Q(t)\over (1-t)^n}={P(t)\over (1-t)^{dim(M)}}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="40" BORDER="0"
+ SRC="sing_372.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t)={Q(t)\over (1-t)^n}={P(t)\over (1-t)^{dim(M)}}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_374.png"
+ ALT="$P(t)$"></SPAN> are polynomials in <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_375.png"
+ ALT="${\bf Z}[t]$"></SPAN>.
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is called the <B>first Hilbert series</B>,
+and <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_374.png"
+ ALT="$P(t)$"></SPAN> the <B>second Hilbert series</B>.
+If <!-- MATH
+ $P(t)=\sum_{k=0}^N a_k t^k$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_376.png"
+ ALT="$P(t)=\sum_{k=0}^N a_k t^k$"></SPAN>, and <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_377.png"
+ ALT="$d = dim(M)$"></SPAN>,
+then <!-- MATH
+ $H_M(s)=\sum_{k=0}^N a_k$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_378.png"
+ ALT="$H_M(s)=\sum_{k=0}^N a_k$"></SPAN> <!-- MATH
+ ${d+s-k-1}\choose{d-1}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_379.png"
+ ALT="${d+s-k-1}\choose{d-1}$"></SPAN>
+(the <B>Hilbert polynomial</B>) for <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_380.png"
+ ALT="$s \ge N$"></SPAN>.
+<br>
+<br>
+Generalizing these to quasihomogeneous modules we get
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\hbox{HP}_M(t)={Q(t)\over {\Pi_{i=1}^n(1-t^{w_i})}}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="40" BORDER="0"
+ SRC="sing_381.png"
+ ALT="\begin{displaymath}\hbox{HP}_M(t)={Q(t)\over {\Pi_{i=1}^n(1-t^{w_i})}}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is a polynomial in <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_375.png"
+ ALT="${\bf Z}[t]$"></SPAN>.
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_373.png"
+ ALT="$Q(t)$"></SPAN> is called the <B>first (weighted) Hilbert series</B> of M.
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Standard-bases.html#Standard-bases" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.1 Standard bases" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Syzygies-and-resolutions.html#Syzygies-and-resolutions" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.3 Syzygies and resolutions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

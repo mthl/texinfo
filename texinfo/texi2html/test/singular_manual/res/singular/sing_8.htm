@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 2.3.4 Change of rings</title>
+<title>Singular 2-0-4 Manual: F Index: T &ndash; V</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 2.3.4 Change of rings">
-<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.4 Change of rings">
+<meta name="description" content="Singular 2-0-4 Manual: F Index: T &ndash; V">
+<meta name="keywords" content="Singular 2-0-4 Manual: F Index: T &ndash; V">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -49,7 +49,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Change-of-rings"></a>
+<a name="index_split-7"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -61,19 +61,19 @@ ul.no-bullet {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.3 Procedures and libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#index_split-6" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: F Index: Q &ndash; S" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_9.htm#Modules-and-their-annihilator" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.5 Modules and their annihilator" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_9.htm#index_split-8" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: F Index: W &ndash; Z" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_rightdouble_na.png" border="0" alt="FastForward: F Index" align="middle"></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_up_na.png" border="0" alt="Up: E Release Notes" align="middle"></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
@@ -82,7 +82,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -90,113 +90,333 @@ ul.no-bullet {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Change-of-rings-1"></a>
-<h3 class="subsection">2.3.4 Change of rings</h3>
-<a name="index-Change-of-rings"></a>
-
-<p>To calculate the local Milnor number we have to do the calculation with the
-same commands in a ring with local ordering.
-Define the localization of the polynomial ring at the origin
-(see <a href="sing_359.htm#Polynomial-data">Polynomial data</a>, and <a href="sing_370.htm#Mathematical-background">Mathematical background</a>).
-</p>
-<div class="smallexample">
-<pre class="smallexample">ring rl = 0,(x,y,z),ds;
-</pre></div>
-
-<p>This ordering determines the standard basis which will be calculated.
-Fetch the polynomial defined in the ring <code>r</code> into this new ring,
-thus avoiding retyping the input.
-</p>
-<div class="smallexample">
-<pre class="smallexample">poly f = fetch(r,f);
-f;
-&rarr; z2+x3+y3+x3y2-x2y3
-</pre></div>
-
-<p>Instead of <code>fetch</code> we can use the function <code>imap</code>
-which is more general but less efficient.
-The most general way to fetch data from one ring to another is to use maps,
-this will be explained in <a href="sing_105.htm#map">map</a>.
-</p>
-<p>In this ring the terms are ordered by increasing exponents. The local Milnor
-number is now
-</p>
-<div class="smallexample">
-<pre class="smallexample">Milnor(f);
-&rarr; 4
-</pre></div>
-
-<p>This shows that <code>f</code> has outside the origin in affine 3-space
-singularities with local Milnor number adding up to
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_8.png"
- ALT="$12-4=8$"></SPAN>.
-Using global and local orderings as above is a convenient way to check
-whether a variety has singularities outside the origin.
-</p>
-<p>The command <code>jacob</code> applied twice gives the Hessian of <code>f</code>, a
-3x3 - matrix.
-</p>
-<div class="smallexample">
-<pre class="smallexample">matrix H = jacob(jacob(f));
-H;
-&rarr; H[1,1]=6x+6xy2-2y3
-&rarr; H[1,2]=6x2y-6xy2
-&rarr; H[1,3]=0
-&rarr; H[2,1]=6x2y-6xy2
-&rarr; H[2,2]=6y+2x3-6x2y
-&rarr; H[2,3]=0
-&rarr; H[3,1]=0
-&rarr; H[3,2]=0
-&rarr; H[3,3]=2
-</pre></div>
-
-<p>The <code>print</code> command displays the matrix in a nicer form.
-</p>
-<div class="smallexample">
-<pre class="smallexample">print(H);
-&rarr; 6x+6xy2-2y3,6x2y-6xy2,  0,
-&rarr; 6x2y-6xy2,  6y+2x3-6x2y,0,
-&rarr; 0,          0,          2
-</pre></div>
-
-<p>We may calculate the determinant and (the ideal generated by all) minors of
-a given size.
-</p>
-<div class="smallexample">
-<pre class="smallexample">det(H);
-&rarr; 72xy+24x4-72x3y+72xy3-24y4-48x4y2+64x3y3-48x2y4
-minor(H,1);  // the 1x1 - minors
-&rarr; _[1]=2
-&rarr; _[2]=6y+2x3-6x2y
-&rarr; _[3]=6x2y-6xy2
-&rarr; _[4]=6x2y-6xy2
-&rarr; _[5]=6x+6xy2-2y3
-</pre></div>
-
-<p>The algorithm of the standard basis computations may be
-affected by the command <code>option</code>. For example, a reduced standard
-basis of the ideal generated by the
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_9.png"
- ALT="$1 \times 1$"></SPAN>-minors
- of H  is obtained in the following way:
-</p><div class="smallexample">
-<pre class="smallexample">option(redSB);
-groebner(minor(H,1));
-&rarr; _[1]=1
-</pre></div>
-
-<p>This shows that 1 is contained in the ideal of the
-<SPAN CLASS="MATH"><IMG
- WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
- SRC="sing_9.png"
- ALT="$1 \times 1$"></SPAN>-minors,
-hence the corresponding variety is empty.
-</p>
-
+<h1 class="chapter">F Index: T &ndash; V</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Index.html#Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-2"><b>&quot;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-3"><b>#</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-4"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-5"><b>%</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-6"><b>&amp;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-7"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-8"><b>)</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-9"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-10"><b>+</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-11"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-12"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-13"><b>/</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-14"><b>;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-15"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-16"><b>=</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-17"><b>&gt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-18"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-19"><b>[</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-20"><b>\</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-21"><b>]</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-22"><b>^</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-23"><b>_</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-24"><b>`</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-25"><b>|</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-26"><b>~</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Index.html#Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-7_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="T1-and-T2.html#index-T1">T1</a></td><td>&nbsp;</td><td valign="top"><a href="T1-and-T2.html#T1-and-T2">A.7 T1 and T2</a></td></tr>
+<tr><td></td><td valign="top"><a href="T1-and-T2.html#index-T2">T2</a></td><td>&nbsp;</td><td valign="top"><a href="T1-and-T2.html#T1-and-T2">A.7 T1 and T2</a></td></tr>
+<tr><td></td><td valign="top"><a href="tab.html#index-tab">tab</a></td><td>&nbsp;</td><td valign="top"><a href="tab.html#tab">D.2.3.8 tab</a></td></tr>
+<tr><td></td><td valign="top"><a href="Table.html#index-Table">Table</a></td><td>&nbsp;</td><td valign="top"><a href="Table.html#Table">D.5.7.10 Table</a></td></tr>
+<tr><td></td><td valign="top"><a href="tangentcone.html#index-tangentcone">tangentcone</a></td><td>&nbsp;</td><td valign="top"><a href="tangentcone.html#tangentcone">D.5.8.18 tangentcone</a></td></tr>
+<tr><td></td><td valign="top"><a href="tau_005fes.html#index-tau_005fes">tau_es</a></td><td>&nbsp;</td><td valign="top"><a href="tau_005fes.html#tau_005fes">D.5.3.1 tau_es</a></td></tr>
+<tr><td></td><td valign="top"><a href="template_005flib.html#index-Template-for-writing-a-library">Template for writing a library</a></td><td>&nbsp;</td><td valign="top"><a href="template_005flib.html#template_005flib">3.9.6 template_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="template_005flib.html#index-template_002elib">template.lib</a></td><td>&nbsp;</td><td valign="top"><a href="template_005flib.html#template_005flib">3.9.6 template_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="template_005flib.html#index-template_002elib-1">template.lib</a></td><td>&nbsp;</td><td valign="top"><a href="template_005flib.html#template_005flib">3.9.6 template_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="template_005flib.html#index-template_005flib">template_lib</a></td><td>&nbsp;</td><td valign="top"><a href="template_005flib.html#template_005flib">3.9.6 template_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="template_005flib.html#index-template_005flib-1">template_lib</a></td><td>&nbsp;</td><td valign="top"><a href="template_005flib.html#template_005flib">3.9.6 template_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="tensor.html#index-tensor">tensor</a></td><td>&nbsp;</td><td valign="top"><a href="tensor.html#tensor">D.3.1.13 tensor</a></td></tr>
+<tr><td></td><td valign="top"><a href="tensorMod.html#index-tensorMod">tensorMod</a></td><td>&nbsp;</td><td valign="top"><a href="tensorMod.html#tensorMod">D.4.3.18 tensorMod</a></td></tr>
+<tr><td></td><td valign="top"><a href="General-definitions-for-orderings.html#index-term-orderings">term orderings</a></td><td>&nbsp;</td><td valign="top"><a href="General-definitions-for-orderings.html#General-definitions-for-orderings">B.2.2 General definitions for orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Introduction-to-orderings.html#index-term-orderings-introduction">term orderings introduction</a></td><td>&nbsp;</td><td valign="top"><a href="Introduction-to-orderings.html#Introduction-to-orderings">B.2.1 Introduction to orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="testPrimary.html#index-testPrimary">testPrimary</a></td><td>&nbsp;</td><td valign="top"><a href="testPrimary.html#testPrimary">D.4.7.6 testPrimary</a></td></tr>
+<tr><td></td><td valign="top"><a href="tex.html#index-tex">tex</a></td><td>&nbsp;</td><td valign="top"><a href="tex.html#tex">D.8.2.3 tex</a></td></tr>
+<tr><td></td><td valign="top"><a href="texdemo.html#index-texdemo">texdemo</a></td><td>&nbsp;</td><td valign="top"><a href="texdemo.html#texdemo">D.8.2.4 texdemo</a></td></tr>
+<tr><td></td><td valign="top"><a href="texfactorize.html#index-texfactorize">texfactorize</a></td><td>&nbsp;</td><td valign="top"><a href="texfactorize.html#texfactorize">D.8.2.5 texfactorize</a></td></tr>
+<tr><td></td><td valign="top"><a href="texmap.html#index-texmap">texmap</a></td><td>&nbsp;</td><td valign="top"><a href="texmap.html#texmap">D.8.2.6 texmap</a></td></tr>
+<tr><td></td><td valign="top"><a href="texname.html#index-texname">texname</a></td><td>&nbsp;</td><td valign="top"><a href="texname.html#texname">D.8.2.7 texname</a></td></tr>
+<tr><td></td><td valign="top"><a href="texobj.html#index-texobj">texobj</a></td><td>&nbsp;</td><td valign="top"><a href="texobj.html#texobj">D.8.2.8 texobj</a></td></tr>
+<tr><td></td><td valign="top"><a href="texpoly.html#index-texpoly">texpoly</a></td><td>&nbsp;</td><td valign="top"><a href="texpoly.html#texpoly">D.8.2.9 texpoly</a></td></tr>
+<tr><td></td><td valign="top"><a href="texproc.html#index-texproc">texproc</a></td><td>&nbsp;</td><td valign="top"><a href="texproc.html#texproc">D.8.2.10 texproc</a></td></tr>
+<tr><td></td><td valign="top"><a href="texring.html#index-texring">texring</a></td><td>&nbsp;</td><td valign="top"><a href="texring.html#texring">D.8.2.11 texring</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-online-help-system.html#index-The-online-help-system">The online help system</a></td><td>&nbsp;</td><td valign="top"><a href="The-online-help-system.html#The-online-help-system">3.1.3 The online help system</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-SINGULAR-language.html#index-The-SINGULAR-language">The SINGULAR language</a></td><td>&nbsp;</td><td valign="top"><a href="The-SINGULAR-language.html#The-SINGULAR-language">3.5 The SINGULAR language</a></td></tr>
+<tr><td></td><td valign="top"><a href="groebner.html#index-time-limit-on-computations">time limit on computations</a></td><td>&nbsp;</td><td valign="top"><a href="groebner.html#groebner">5.1.42 groebner</a></td></tr>
+<tr><td></td><td valign="top"><a href="timeFactorize.html#index-timeFactorize">timeFactorize</a></td><td>&nbsp;</td><td valign="top"><a href="timeFactorize.html#timeFactorize">D.2.2.21 timeFactorize</a></td></tr>
+<tr><td></td><td valign="top"><a href="timer.html#index-timer">timer</a></td><td>&nbsp;</td><td valign="top"><a href="timer.html#timer">5.3.8 timer</a></td></tr>
+<tr><td></td><td valign="top"><a href="rtimer.html#index-timer-1">timer</a></td><td>&nbsp;</td><td valign="top"><a href="rtimer.html#rtimer">5.3.10 rtimer</a></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-timer-resolution_002c-setting-the">timer resolution, setting the</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="timeStd.html#index-timeStd">timeStd</a></td><td>&nbsp;</td><td valign="top"><a href="timeStd.html#timeStd">D.2.2.20 timeStd</a></td></tr>
+<tr><td></td><td valign="top"><a href="Milnor-and-Tjurina.html#index-Tjurina">Tjurina</a></td><td>&nbsp;</td><td valign="top"><a href="Milnor-and-Tjurina.html#Milnor-and-Tjurina">A.1 Milnor and Tjurina</a></td></tr>
+<tr><td></td><td valign="top"><a href="Tjurina.html#index-Tjurina-1">Tjurina</a></td><td>&nbsp;</td><td valign="top"><a href="Tjurina.html#Tjurina">D.5.8.13 Tjurina</a></td></tr>
+<tr><td></td><td valign="top"><a href="tjurina.html#index-tjurina">tjurina</a></td><td>&nbsp;</td><td valign="top"><a href="tjurina.html#tjurina">D.5.8.14 tjurina</a></td></tr>
+<tr><td></td><td valign="top"><a href="deltaLoc.html#index-Tjurina-number">Tjurina number</a></td><td>&nbsp;</td><td valign="top"><a href="deltaLoc.html#deltaLoc">D.4.6.4 deltaLoc</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-online-help-system.html#index-tkinfo">tkinfo</a></td><td>&nbsp;</td><td valign="top"><a href="The-online-help-system.html#The-online-help-system">3.1.3 The online help system</a></td></tr>
+<tr><td></td><td valign="top"><a href="tmatrix.html#index-tmatrix">tmatrix</a></td><td>&nbsp;</td><td valign="top"><a href="tmatrix.html#tmatrix">D.5.4.12 tmatrix</a></td></tr>
+<tr><td></td><td valign="top"><a href="tolessvars.html#index-tolessvars">tolessvars</a></td><td>&nbsp;</td><td valign="top"><a href="tolessvars.html#tolessvars">D.7.1.9 tolessvars</a></td></tr>
+<tr><td></td><td valign="top"><a href="Top-20-Emacs-commands.html#index-Top-20-Emacs-commands">Top 20 Emacs commands</a></td><td>&nbsp;</td><td valign="top"><a href="Top-20-Emacs-commands.html#Top-20-Emacs-commands">3.2.6 Top 20 Emacs commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Tor.html#index-Tor">Tor</a></td><td>&nbsp;</td><td valign="top"><a href="Tor.html#Tor">D.4.3.19 Tor</a></td></tr>
+<tr><td></td><td valign="top"><a href="Toric-ideals.html#index-toric-ideals">toric ideals</a></td><td>&nbsp;</td><td valign="top"><a href="Toric-ideals.html#Toric-ideals">C.6.1 Toric ideals</a></td></tr>
+<tr><td></td><td valign="top"><a href="Toric-ideals-and-integer-programming.html#index-Toric-ideals-and-integer-programming">Toric ideals and integer programming</a></td><td>&nbsp;</td><td valign="top"><a href="Toric-ideals-and-integer-programming.html#Toric-ideals-and-integer-programming">C.6 Toric ideals and integer programming</a></td></tr>
+<tr><td></td><td valign="top"><a href="toric_005flib.html#index-toric_002elib">toric.lib</a></td><td>&nbsp;</td><td valign="top"><a href="toric_005flib.html#toric_005flib">D.4.11 toric_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="toric_005fideal.html#index-toric_005fideal">toric_ideal</a></td><td>&nbsp;</td><td valign="top"><a href="toric_005fideal.html#toric_005fideal">D.4.11.1 toric_ideal</a></td></tr>
+<tr><td></td><td valign="top"><a href="toric_005flib.html#index-toric_005flib">toric_lib</a></td><td>&nbsp;</td><td valign="top"><a href="toric_005flib.html#toric_005flib">D.4.11 toric_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="toric_005fstd.html#index-toric_005fstd">toric_std</a></td><td>&nbsp;</td><td valign="top"><a href="toric_005fstd.html#toric_005fstd">D.4.11.2 toric_std</a></td></tr>
+<tr><td></td><td valign="top"><a href="trace.html#index-trace">trace</a></td><td>&nbsp;</td><td valign="top"><a href="trace.html#trace">5.1.127 trace</a></td></tr>
+<tr><td></td><td valign="top"><a href="TRACE-var.html#index-TRACE">TRACE</a></td><td>&nbsp;</td><td valign="top"><a href="TRACE-var.html#TRACE-var">5.3.9 TRACE</a></td></tr>
+<tr><td></td><td valign="top"><a href="TransferIdeal.html#index-TransferIdeal">TransferIdeal</a></td><td>&nbsp;</td><td valign="top"><a href="TransferIdeal.html#TransferIdeal">D.6.3.15 TransferIdeal</a></td></tr>
+<tr><td></td><td valign="top"><a href="transpose.html#index-transpose">transpose</a></td><td>&nbsp;</td><td valign="top"><a href="transpose.html#transpose">5.1.128 transpose</a></td></tr>
+<tr><td></td><td valign="top"><a href="triagmatrix.html#index-triagmatrix">triagmatrix</a></td><td>&nbsp;</td><td valign="top"><a href="triagmatrix.html#triagmatrix">D.2.5.9 triagmatrix</a></td></tr>
+<tr><td></td><td valign="top"><a href="triang_005flib.html#index-triang_002elib">triang.lib</a></td><td>&nbsp;</td><td valign="top"><a href="triang_005flib.html#triang_005flib">D.7.3 triang_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangL.html#index-triangL">triangL</a></td><td>&nbsp;</td><td valign="top"><a href="triangL.html#triangL">D.7.3.1 triangL</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangLfak.html#index-triangLfak">triangLfak</a></td><td>&nbsp;</td><td valign="top"><a href="triangLfak.html#triangLfak">D.7.3.2 triangLfak</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangLf_005fsolve.html#index-triangLf_005fsolve">triangLf_solve</a></td><td>&nbsp;</td><td valign="top"><a href="triangLf_005fsolve.html#triangLf_005fsolve">D.7.2.9 triangLf_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangL_005fsolve.html#index-triangL_005fsolve">triangL_solve</a></td><td>&nbsp;</td><td valign="top"><a href="triangL_005fsolve.html#triangL_005fsolve">D.7.2.11 triangL_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangM.html#index-triangM">triangM</a></td><td>&nbsp;</td><td valign="top"><a href="triangM.html#triangM">D.7.3.3 triangM</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangMH.html#index-triangMH">triangMH</a></td><td>&nbsp;</td><td valign="top"><a href="triangMH.html#triangMH">D.7.3.4 triangMH</a></td></tr>
+<tr><td></td><td valign="top"><a href="triangM_005fsolve.html#index-triangM_005fsolve">triangM_solve</a></td><td>&nbsp;</td><td valign="top"><a href="triangM_005fsolve.html#triangM_005fsolve">D.7.2.10 triangM_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="triang_005flib.html#index-triang_005flib">triang_lib</a></td><td>&nbsp;</td><td valign="top"><a href="triang_005flib.html#triang_005flib">D.7.3 triang_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="triang_005fsolve.html#index-triang_005fsolve">triang_solve</a></td><td>&nbsp;</td><td valign="top"><a href="triang_005fsolve.html#triang_005fsolve">D.7.2.12 triang_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="Tricks-and-pitfalls.html#index-Tricks-and-pitfalls">Tricks and pitfalls</a></td><td>&nbsp;</td><td valign="top"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls">6 Tricks and pitfalls</a></td></tr>
+<tr><td></td><td valign="top"><a href="triMNewton.html#index-triMNewton">triMNewton</a></td><td>&nbsp;</td><td valign="top"><a href="triMNewton.html#triMNewton">D.7.4.2 triMNewton</a></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-tty">tty</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="type.html#index-type">type</a></td><td>&nbsp;</td><td valign="top"><a href="type.html#type">5.1.129 type</a></td></tr>
+<tr><td></td><td valign="top"><a href="Type-conversion-and-casting.html#index-Type-casting">Type casting</a></td><td>&nbsp;</td><td valign="top"><a href="Type-conversion-and-casting.html#Type-casting">Type casting</a></td></tr>
+<tr><td></td><td valign="top"><a href="Type-conversion-and-casting.html#index-Type-conversion">Type conversion</a></td><td>&nbsp;</td><td valign="top"><a href="Type-conversion-and-casting.html#Type-conversion">Type conversion</a></td></tr>
+<tr><td></td><td valign="top"><a href="typeof.html#index-typeof">typeof</a></td><td>&nbsp;</td><td valign="top"><a href="typeof.html#typeof">5.1.130 typeof</a></td></tr>
+<tr><td></td><td valign="top"><a href="Typesetting-of-help-strings.html#index-Typesetting-of-help-strings">Typesetting of help strings</a></td><td>&nbsp;</td><td valign="top"><a href="Typesetting-of-help-strings.html#Typesetting-of-help-strings">3.9.3 Typesetting of help strings</a></td></tr>
+<tr><td></td><td valign="top"><a href="T_005f1.html#index-T_005f1">T_1</a></td><td>&nbsp;</td><td valign="top"><a href="T_005f1.html#T_005f1">D.5.8.15 T_1</a></td></tr>
+<tr><td></td><td valign="top"><a href="T_005f12.html#index-T_005f12">T_12</a></td><td>&nbsp;</td><td valign="top"><a href="T_005f12.html#T_005f12">D.5.8.17 T_12</a></td></tr>
+<tr><td></td><td valign="top"><a href="T_005f2.html#index-T_005f2">T_2</a></td><td>&nbsp;</td><td valign="top"><a href="T_005f2.html#T_005f2">D.5.8.16 T_2</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-7_cp_letter-U">U</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-uname">uname</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="unitmat.html#index-unitmat">unitmat</a></td><td>&nbsp;</td><td valign="top"><a href="unitmat.html#unitmat">D.3.1.14 unitmat</a></td></tr>
+<tr><td></td><td valign="top"><a href="Unix-installation-instructions.html#index-Unix-installation">Unix installation</a></td><td>&nbsp;</td><td valign="top"><a href="Unix-installation-instructions.html#Unix-installation-instructions">E.3 Unix installation instructions</a></td></tr>
+<tr><td></td><td valign="top"><a href="def.html#index-untyped-definitions">untyped definitions</a></td><td>&nbsp;</td><td valign="top"><a href="def.html#def">4.1 def</a></td></tr>
+<tr><td></td><td valign="top"><a href="UpperMonomials.html#index-UpperMonomials">UpperMonomials</a></td><td>&nbsp;</td><td valign="top"><a href="UpperMonomials.html#UpperMonomials">D.5.7.7 UpperMonomials</a></td></tr>
+<tr><td></td><td valign="top"><a href="uressolve.html#index-uressolve">uressolve</a></td><td>&nbsp;</td><td valign="top"><a href="uressolve.html#uressolve">5.1.131 uressolve</a></td></tr>
+<tr><td></td><td valign="top"><a href="ures_005fsolve.html#index-ures_005fsolve">ures_solve</a></td><td>&nbsp;</td><td valign="top"><a href="ures_005fsolve.html#ures_005fsolve">D.7.2.3 ures_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-usage_002c-option">usage, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="Emacs-user-interface.html#index-user-interface_002c-Emacs">user interface, Emacs</a></td><td>&nbsp;</td><td valign="top"><a href="Emacs-user-interface.html#Emacs-user-interface">3.2 Emacs user interface</a></td></tr>
+<tr><td></td><td valign="top"><a href="U_005fD_005fO.html#index-U_005fD_005fO">U_D_O</a></td><td>&nbsp;</td><td valign="top"><a href="U_005fD_005fO.html#U_005fD_005fO">D.3.2.15 U_D_O</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-7_cp_letter-V">V</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="gaussman_005flib.html#index-V_002dfiltration">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="gaussman_005flib.html#gaussman_005flib">D.5.4 gaussman_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="spectrum.html#index-V_002dfiltration-1">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="spectrum.html#spectrum">D.5.4.6 spectrum</a></td></tr>
+<tr><td></td><td valign="top"><a href="sppairs.html#index-V_002dfiltration-2">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="sppairs.html#sppairs">D.5.4.7 sppairs</a></td></tr>
+<tr><td></td><td valign="top"><a href="vfilt.html#index-V_002dfiltration-3">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="vfilt.html#vfilt">D.5.4.10 vfilt</a></td></tr>
+<tr><td></td><td valign="top"><a href="vwfilt.html#index-V_002dfiltration-4">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="vwfilt.html#vwfilt">D.5.4.11 vwfilt</a></td></tr>
+<tr><td></td><td valign="top"><a href="tmatrix.html#index-V_002dfiltration-5">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="tmatrix.html#tmatrix">D.5.4.12 tmatrix</a></td></tr>
+<tr><td></td><td valign="top"><a href="endvfilt.html#index-V_002dfiltration-6">V-filtration</a></td><td>&nbsp;</td><td valign="top"><a href="endvfilt.html#endvfilt">D.5.4.13 endvfilt</a></td></tr>
+<tr><td></td><td valign="top"><a href="valvars.html#index-valvars">valvars</a></td><td>&nbsp;</td><td valign="top"><a href="valvars.html#valvars">D.7.1.14 valvars</a></td></tr>
+<tr><td></td><td valign="top"><a href="vandermonde.html#index-vandermonde">vandermonde</a></td><td>&nbsp;</td><td valign="top"><a href="vandermonde.html#vandermonde">5.1.132 vandermonde</a></td></tr>
+<tr><td></td><td valign="top"><a href="var.html#index-var">var</a></td><td>&nbsp;</td><td valign="top"><a href="var.html#var">5.1.133 var</a></td></tr>
+<tr><td></td><td valign="top"><a href="varstr.html#index-varstr">varstr</a></td><td>&nbsp;</td><td valign="top"><a href="varstr.html#varstr">5.1.134 varstr</a></td></tr>
+<tr><td></td><td valign="top"><a href="vdim.html#index-vdim">vdim</a></td><td>&nbsp;</td><td valign="top"><a href="vdim.html#vdim">5.1.135 vdim</a></td></tr>
+<tr><td></td><td valign="top"><a href="vector.html#index-vector">vector</a></td><td>&nbsp;</td><td valign="top"><a href="vector.html#vector">4.18 vector</a></td></tr>
+<tr><td></td><td valign="top"><a href="vector-declarations.html#index-vector-declarations">vector declarations</a></td><td>&nbsp;</td><td valign="top"><a href="vector-declarations.html#vector-declarations">4.18.1 vector declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="vector-expressions.html#index-vector-expressions">vector expressions</a></td><td>&nbsp;</td><td valign="top"><a href="vector-expressions.html#vector-expressions">4.18.2 vector expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="vector-operations.html#index-vector-operations">vector operations</a></td><td>&nbsp;</td><td valign="top"><a href="vector-operations.html#vector-operations">4.18.3 vector operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="vector-related-functions.html#index-vector-related-functions">vector related functions</a></td><td>&nbsp;</td><td valign="top"><a href="vector-related-functions.html#vector-related-functions">4.18.4 vector related functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="versal.html#index-versal">versal</a></td><td>&nbsp;</td><td valign="top"><a href="versal.html#versal">D.5.2.1 versal</a></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-version">version</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="Format-of-a-library.html#index-version-in-a-library">version in a library</a></td><td>&nbsp;</td><td valign="top"><a href="Format-of-a-library.html#Format-of-a-library">3.8.2 Format of a library</a></td></tr>
+<tr><td></td><td valign="top"><a href="vfilt.html#index-vfilt">vfilt</a></td><td>&nbsp;</td><td valign="top"><a href="vfilt.html#vfilt">D.5.4.10 vfilt</a></td></tr>
+<tr><td></td><td valign="top"><a href="Visualization.html#index-Visualization">Visualization</a></td><td>&nbsp;</td><td valign="top"><a href="Visualization.html#Visualization">D.8 Visualization</a></td></tr>
+<tr><td></td><td valign="top"><a href="voice.html#index-voice">voice</a></td><td>&nbsp;</td><td valign="top"><a href="voice.html#voice">5.3.11 voice</a></td></tr>
+<tr><td></td><td valign="top"><a href="vwfilt.html#index-vwfilt">vwfilt</a></td><td>&nbsp;</td><td valign="top"><a href="vwfilt.html#vwfilt">D.5.4.11 vwfilt</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Index.html#Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-2"><b>&quot;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-3"><b>#</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-4"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-5"><b>%</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-6"><b>&amp;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-7"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-8"><b>)</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-9"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-10"><b>+</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-11"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-12"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-13"><b>/</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-14"><b>;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-15"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-16"><b>=</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-17"><b>&gt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-18"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-19"><b>[</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-20"><b>\</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-21"><b>]</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-22"><b>^</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-23"><b>_</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-24"><b>`</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-25"><b>|</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-26"><b>~</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Index.html#Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_6.htm#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 </td>
 </tr>
 </table>
@@ -206,14 +426,14 @@ hence the corresponding variety is empty.
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.3 Procedures and libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_9.htm#Modules-and-their-annihilator" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.5 Modules and their annihilator" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#index_split-6" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: F Index: Q &ndash; S" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_9.htm#index_split-8" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: F Index: W &ndash; Z" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_rightdouble_na.png" border="0" alt="FastForward: F Index" align="middle"></td>
+<td valign="middle" align="left"><img src="../singular_images/a_up_na.png" border="0" alt="Up: E Release Notes" align="middle"></td>
 <td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

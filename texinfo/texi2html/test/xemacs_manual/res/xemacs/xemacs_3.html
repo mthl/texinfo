@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>XEmacs User&rsquo;s Manual: Introduction</title>
+<title>XEmacs User&rsquo;s Manual: Command and Function Index: D &ndash; E</title>
 
-<meta name="description" content="XEmacs User&rsquo;s Manual: Introduction">
-<meta name="keywords" content="XEmacs User&rsquo;s Manual: Introduction">
+<meta name="description" content="XEmacs User&rsquo;s Manual: Command and Function Index: D &ndash; E">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: Command and Function Index: D &ndash; E">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -49,87 +49,263 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="Intro"></a>
+<a name="index_split-2"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_2.html#Distrib" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_2.html#Getting-Other-Versions-of-Emacs" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-Index.html#Command-Index" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_4.html#index_split-3" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Variable-Index.html#Variable-Index" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Introduction"></a>
-<h1 class="unnumbered">Introduction</h1>
-
-<p>  You are reading about XEmacs, an incarnation of the advanced,
-self-documenting, customizable, extensible real-time display editor
-Emacs.  XEmacs provides many powerful display and user-interface
-capabilities not found in other Emacsen and is mostly upwardly
-compatible with GNU Emacs from the Free Software Foundation
-(referred to as <em>FSF Emacs</em> in this manual).  XEmacs also
-comes standard with a great number of useful packages.
-</p>
-<p>  We say that XEmacs is a <em>display</em> editor because normally the text
-being edited is visible on the screen and is updated automatically as you
-type.  See section <a href="xemacs_4.html#Frame">Display</a>.
-</p>
-<p>  We call XEmacs a <em>real-time</em> editor because the display is updated very
-frequently, usually after each character or pair of characters you
-type.  This minimizes the amount of information you must keep in your
-head as you edit.  See section <a href="xemacs_7.html#Basic">Basic Editing</a>.
-</p>
-<p>  We call XEmacs advanced because it provides facilities that go beyond
-simple insertion and deletion: filling of text; automatic indentation of
-programs; viewing two or more files at once; and dealing in terms of
-characters, words, lines, sentences, paragraphs, and pages, as well as
-expressions and comments in several different programming languages.  It is
-much easier to type one command meaning &ldquo;go to the end of the paragraph&rdquo;
-than to find that spot with simple cursor keys.
-</p>
-<p>  <em>Self-documenting</em> means that at any time you can type a special
-character, <kbd>Control-h</kbd>, to find out what your options are.  You can
-also use <kbd>C-h</kbd> to find out what a command does, or to find all the
-commands relevant to a topic.  See section <a href="xemacs_11.html#Help">Help</a>.
-</p>
-<p>  <em>Customizable</em> means you can change the definitions of XEmacs
-commands.  For example, if you use a programming language in
-which comments start with &lsquo;<samp>&lt;**</samp>&rsquo; and end with &lsquo;<samp>**&gt;</samp>&rsquo;, you can tell
-the XEmacs comment manipulation commands to use those strings
-(see section <a href="xemacs_24.html#Comments">Manipulating Comments</a>).  Another sort of customization is rearrangement of the
-command set.  For example, you can set up the four basic cursor motion
-commands (up, down, left and right) on keys in a diamond pattern on the
-keyboard if you prefer.  See section <a href="xemacs_30.html#Customization">Customization</a>.
-</p>
-<p>  <em>Extensible</em> means you can go beyond simple customization and
-write entirely new commands, programs in the Lisp language to be run by
-XEmacs&rsquo;s own Lisp interpreter.  XEmacs is an &ldquo;on-line extensible&rdquo;
-system: it is divided into many functions that call each other.  You can
-redefine any function in the middle of an editing session and replace
-any part of XEmacs without making a separate copy of all of XEmacs.  Most
-of the editing commands of XEmacs are written in Lisp; the few
-exceptions could have been written in Lisp but are written in C for
-efficiency.  Only a programmer can write an extension to XEmacs, but anybody
-can use it afterward.
-</p>
+<h1 class="unnumbered">Command and Function Index: D &ndash; E</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-2_fn_letter-D">D</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-dabbrev_002dexpand"><code>dabbrev-expand</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Dynamic-Abbrevs">23.5 Dynamic Abbrev Expansion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-debug"><code>debug</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Debug">22.5 The Emacs-Lisp Debugger</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-debug_002don_002dentry"><code>debug-on-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Debug">22.5 The Emacs-Lisp Debugger</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-default_002dvalue"><code>default-value</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Locals">27.2.4 Local Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-define_002dabbrevs"><code>define-abbrevs</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Saving-Abbrevs">23.4 Saving Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-define_002dkey"><code>define-key</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Interactive-Rebinding">27.4.2.1 Changing Key Bindings Interactively</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-define_002dkey-1"><code>define-key</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Programmatic-Rebinding">27.4.2.2 Changing Key Bindings Programmatically</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002dbackward_002dchar"><code>delete-backward-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Killing">9.4 Deletion and Killing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Fixit.html#index-delete_002dbackward_002dchar-1"><code>delete-backward-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Fixit.html#Kill-Errors">13.1 Killing Your Mistakes</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-delete_002dblank_002dlines"><code>delete-blank-lines</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Blank-Lines">4.6 Blank Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002dblank_002dlines-1"><code>delete-blank-lines</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Deletion">9.4.1 Deletion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002dchar"><code>delete-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Killing">9.4 Deletion and Killing</a></td></tr>
+<tr><td></td><td valign="top"><a href="Picture.html#index-delete_002dchar-1"><code>delete-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Picture.html#Basic-Picture">24.1 Basic Editing in Picture Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-delete_002dfile"><code>delete-file</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Misc-File-Ops">14.10 Miscellaneous File Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002dhorizontal_002dspace"><code>delete-horizontal-space</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Deletion">9.4.1 Deletion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-delete_002dhorizontal_002dspace-1"><code>delete-horizontal-space</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Indentation-Commands">19.1 Indentation Commands and Techniques</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002dindentation"><code>delete-indentation</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Deletion">9.4.1 Deletion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-delete_002dindentation-1"><code>delete-indentation</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Indentation-Commands">19.1 Indentation Commands and Techniques</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-delete_002dmatching_002dlines"><code>delete-matching-lines</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Other-Repeating-Search">12.8 Other Search-and-Loop Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Keystrokes.html#index-delete_002dmenu_002ditem"><code>delete-menu-item</code></a></td><td>&nbsp;</td><td valign="top"><a href="Keystrokes.html#Menu-Customization">2.4.8 Customizing XEmacs Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-delete_002dnon_002dmatching_002dlines"><code>delete-non-matching-lines</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Other-Repeating-Search">12.8 Other Search-and-Loop Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-delete_002dother_002dwindows"><code>delete-other-windows</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Change-Window">16.5 Deleting and Rearranging Windows</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-delete_002drectangle"><code>delete-rectangle</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Rectangles">9.8 Rectangles</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-delete_002dwindow"><code>delete-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Change-Window">16.5 Deleting and Rearranging Windows</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dbindings"><code>describe-bindings</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-describe_002dcalendar_002dmode"><code>describe-calendar-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#General-Calendar">26.1.4 Miscellaneous Calendar Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mule.html#index-describe_002dcoding_002dsystem"><code>describe-coding-system</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mule.html#Coding-Systems">17.6 Coding Systems</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dcopying"><code>describe-copying</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002ddistribution"><code>describe-distribution</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dfunction"><code>describe-function</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Name-Help">8.3 Help by Command or Variable Name</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-describe_002dfunction-1"><code>describe-function</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Documentation">21.9 Documentation Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mule.html#index-describe_002dinput_002dmethod"><code>describe-input-method</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mule.html#Select-Input-Method">17.4 Selecting an Input Method</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dkey"><code>describe-key</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Key-Help">8.2 Documentation for a Key</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dkey_002dbriefly"><code>describe-key-briefly</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Key-Help">8.2 Documentation for a Key</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mule.html#index-describe_002dlanguage_002denvironment"><code>describe-language-environment</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mule.html#Language-Environments">17.2 Language Environments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dmode"><code>describe-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dno_002dwarranty"><code>describe-no-warranty</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-describe_002dsyntax"><code>describe-syntax</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Syntax-Change">27.5.2 Altering Syntax Information</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-describe_002dvariable"><code>describe-variable</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Name-Help">8.3 Help by Command or Variable Name</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-describe_002dvariable-1"><code>describe-variable</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Documentation">21.9 Documentation Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-describe_002dvariable-2"><code>describe-variable</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Examining">27.2.1 Examining and Setting Variables</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary-1"><code>diary</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Diary-Commands">26.5.3 Commands Displaying Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002danniversary"><code>diary-anniversary</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002danniversary-1"><code>diary-anniversary</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dastro_002dday_002dnumber"><code>diary-astro-day-number</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dblock"><code>diary-block</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dcyclic"><code>diary-cyclic</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dcyclic-1"><code>diary-cyclic</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dday_002dof_002dyear"><code>diary-day-of-year</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dfloat"><code>diary-float</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dfrench_002ddate"><code>diary-french-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dhebrew_002ddate"><code>diary-hebrew-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dislamic_002ddate"><code>diary-islamic-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002diso_002ddate"><code>diary-iso-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002djulian_002ddate"><code>diary-julian-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dmail_002dentries"><code>diary-mail-entries</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Diary-Commands">26.5.3 Commands Displaying Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dmayan_002ddate"><code>diary-mayan-date</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002domer"><code>diary-omer</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dparasha"><code>diary-parasha</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dphases_002dof_002dmoon"><code>diary-phases-of-moon</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002drosh_002dhodesh"><code>diary-rosh-hodesh</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dsabbath_002dcandles"><code>diary-sabbath-candles</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dsunrise_002dsunset"><code>diary-sunrise-sunset</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-diary_002dyahrzeit"><code>diary-yahrzeit</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Sexp-Diary-Entries">26.5.8.10 Sexp Entries and the Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-diff"><code>diff</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Comparing-Files">14.8 Comparing Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-diff_002dbackup"><code>diff-backup</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Comparing-Files">14.8 Comparing Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-digit_002dargument"><code>digit-argument</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Arguments">4.9 Numeric Arguments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-dired"><code>dired</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Dired-Enter">14.9.1 Entering Dired</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-dired_002dother_002dwindow"><code>dired-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Dired-Enter">14.9.1 Entering Dired</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-dired_002dother_002dwindow-1"><code>dired-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Pop-Up-Window">16.4 Displaying in Another Window</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-disable_002dcommand"><code>disable-command</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Disabling">27.4.3 Disabling Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Keystrokes.html#index-disable_002dmenu_002ditem"><code>disable-menu-item</code></a></td><td>&nbsp;</td><td valign="top"><a href="Keystrokes.html#Menu-Customization">2.4.8 Customizing XEmacs Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-disassemble"><code>disassemble</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Compiling-Libraries">22.3.2 Compiling Libraries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Frame.html#index-display_002dtime"><code>display-time</code></a></td><td>&nbsp;</td><td valign="top"><a href="Frame.html#Mode-Line">1.3 The Mode Line</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-dissociated_002dpress"><code>dissociated-press</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Dissociated-Press">26.11 Dissociated Press</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-do_002dauto_002dsave"><code>do-auto-save</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Auto-Save-Control">14.5.2 Controlling Auto-Saving</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-doctor-1"><code>doctor</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Total-Frustration">27.12.6 Help for Total Frustration</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-down_002dlist"><code>down-list</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Lists">21.2 Lists and Sexps</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-downcase_002dregion"><code>downcase-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Case">20.7 Case Conversion Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Fixit.html#index-downcase_002dword"><code>downcase-word</code></a></td><td>&nbsp;</td><td valign="top"><a href="Fixit.html#Fixing-Case">13.3 Case Conversion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-downcase_002dword-1"><code>downcase-word</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Case">20.7 Case Conversion Commands</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-2_fn_letter-E">E</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-edit_002dabbrevs"><code>edit-abbrevs</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Editing-Abbrevs">23.3 Examining and Editing Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-edit_002dabbrevs_002dredefine"><code>edit-abbrevs-redefine</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Editing-Abbrevs">23.3 Examining and Editing Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-edit_002doptions"><code>edit-options</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Edit-Options">27.2.3 Editing Variable Values</a></td></tr>
+<tr><td></td><td valign="top"><a href="Picture.html#index-edit_002dpicture"><code>edit-picture</code></a></td><td>&nbsp;</td><td valign="top"><a href="Picture.html#Picture">24 Editing Pictures</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-edit_002dtab_002dstops"><code>edit-tab-stops</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Tab-Stops">19.2 Tab Stops</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-edit_002dtab_002dstops-1"><code>edit-tab-stops</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Text-Mode">20.1 Text Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-edit_002dtab_002dstops_002dnote_002dchanges"><code>edit-tab-stops-note-changes</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Tab-Stops">19.2 Tab Stops</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-edt_002demulation_002doff"><code>edt-emulation-off</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Emulation">26.14 Emulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-edt_002demulation_002don"><code>edt-emulation-on</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Emulation">26.14 Emulation</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-electric_002dnroff_002dmode"><code>electric-nroff-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Nroff-Mode">20.1.1 Nroff Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-emacs_002dlisp_002dmode"><code>emacs-lisp-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-emacs_002dversion"><code>emacs-version</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#How-to-Report-a-Bug">27.13.2 How to Report a Bug</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-enable_002dcommand"><code>enable-command</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Disabling">27.4.3 Disabling Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Keystrokes.html#index-enable_002dmenu_002ditem"><code>enable-menu-item</code></a></td><td>&nbsp;</td><td valign="top"><a href="Keystrokes.html#Menu-Customization">2.4.8 Customizing XEmacs Menus</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-end_002dkbd_002dmacro"><code>end-kbd-macro</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Basic-Kbd-Macro">27.3.1 Basic Use</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-end_002dof_002dbuffer"><code>end-of-buffer</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Moving-Point">4.2 Changing the Location of Point</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-end_002dof_002ddefun"><code>end-of-defun</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Defuns">21.3 Defuns</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-end_002dof_002dfortran_002dsubprogram"><code>end-of-fortran-subprogram</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Motion">21.12.1 Motion Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-end_002dof_002dline"><code>end-of-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Moving-Point">4.2 Changing the Location of Point</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-enlarge_002dwindow"><code>enlarge-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Change-Window">16.5 Deleting and Rearranging Windows</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-enlarge_002dwindow_002dhorizontally"><code>enlarge-window-horizontally</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Change-Window">16.5 Deleting and Rearranging Windows</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-european_002dcalendar"><code>european-calendar</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Date-Formats">26.5.5 Date Formats</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-eval_002dcurrent_002dbuffer"><code>eval-current-buffer</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-eval_002ddefun"><code>eval-defun</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-eval_002dexpression"><code>eval-expression</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-eval_002dlast_002dsexp"><code>eval-last-sexp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Running.html#index-eval_002dregion"><code>eval-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Running.html#Lisp-Eval">22.4 Evaluating Emacs-Lisp Expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="Mark.html#index-exchange_002dpoint_002dand_002dmark"><code>exchange-point-and-mark</code></a></td><td>&nbsp;</td><td valign="top"><a href="Mark.html#Setting-Mark">9.1.1 Setting the Mark</a></td></tr>
+<tr><td></td><td valign="top"><a href="M_002dx.html#index-execute_002dextended_002dcommand"><code>execute-extended-command</code></a></td><td>&nbsp;</td><td valign="top"><a href="M_002dx.html#M_002dx">7 Running Commands by Name</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-exit_002dcalendar"><code>exit-calendar</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#General-Calendar">26.1.4 Miscellaneous Calendar Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-exit_002drecursive_002dedit"><code>exit-recursive-edit</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Recursive-Edit">26.10 Recursive Editing Levels</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-expand_002dabbrev"><code>expand-abbrev</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Expanding-Abbrevs">23.2 Controlling Abbrev Expansion</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-expand_002dregion_002dabbrevs"><code>expand-region-abbrevs</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Expanding-Abbrevs">23.2 Controlling Abbrev Expansion</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-2_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_4.html#index_split-3_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_2.html#Distrib" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_4.html#Frame" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Variable-Index.html#Variable-Index" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

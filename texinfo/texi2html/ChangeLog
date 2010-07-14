@@ -1,5 +1,10 @@
 2010-07-05  Patrice Dumas  <pertusus@free.fr>
 
+	* texi2html.pl, texi2html.init, maintained_extra/mediawiki.init: 
+	set NODE_FILES when split.
+
+2010-07-05  Patrice Dumas  <pertusus@free.fr>
+
 	* texi2html.pl, texi2html.init, formats/*: use functions to set
 	configuration variables, and not perl variables. This allows
 	for command-line options overriding defaults. Report from Karl.

@@ -12,7 +12,7 @@ texi ifclear_in_macro.texi
 texi macro_call_in_ifset.texi
 texi ifset_in_macro.texi
 texi_ifset_defined ifset_in_macro.texi -D notes --macro-expand=@OUT_DIR@/ifset_in_macro.texi
-dumptexi_ifset_defined ifset_in_macro.texi -D notes --dump-texi
+dumptexi_ifset_defined ifset_in_macro.texi -D notes --set-init-var 'DUMP_TEXI 1'
 texi not_ifset_text.texi
 texi bib-example.texi
 texi quote-args.texi

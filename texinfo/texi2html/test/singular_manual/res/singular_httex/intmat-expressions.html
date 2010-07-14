@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 4.4.2 intmat expressions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 4.4.2 intmat expressions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.4.2 intmat expressions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="intmat-expressions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="intmat-declarations.html#intmat-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.1 intmat declarations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="intmat-type-cast.html#intmat-type-cast" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.3 intmat type cast" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="intmat.html#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="intmat-expressions-1"></a>
+<h3 class="subsection">4.4.2 intmat expressions</h3>
+<a name="index-intmat-expressions"></a>
+
+<p>An intmat expression is:
+</p><ol>
+<li>
+an identifier of type intmat
+</li><li>
+a function returning intmat
+</li><li>
+intmat operations with int (<code>+</code>, <code>-</code>, <code>*</code>, <code>div</code>, <code>%</code>)
+</li><li>
+intmat operations (<code>+</code>, <code>-</code>, <code>*</code>)
+</li><li>
+a type cast to intmat (see <a href="intmat-type-cast.html#intmat-type-cast">intmat type cast</a>)
+</li></ol>
+
+<br><p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  intmat Idm[2][2];
+  Idm +1;          // add the unit intmat
+&rarr; 1,0,
+&rarr; 0,1 
+  intmat m1[3][2] = _,1,-2;  // take entries from the last result
+  m1;
+&rarr; 1,0,
+&rarr; 0,1,
+&rarr; 1,-2 
+  intmat m2[2][3]=1,0,2,4,5,1;
+  transpose(m2);
+&rarr; 1,4,
+&rarr; 0,5,
+&rarr; 2,1 
+  intvec v1=1,2,4;
+  intvec v2=5,7,8;
+  m1=v1,v2;         // fill m1 with v1 and v2
+  m1;
+&rarr; 1,2,
+&rarr; 4,5,
+&rarr; 7,8 
+  trace(m1*m2);
+&rarr; 56
+</pre></div>
+<p>See
+<a href="Type-conversion-and-casting.html#Type-conversion-and-casting">Type conversion and casting</a>;
+<a href="number.html#number">number</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="intmat-declarations.html#intmat-declarations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.4.1 intmat declarations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="intmat-type-cast.html#intmat-type-cast" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.4.3 intmat type cast" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="intmat.html#intmat" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.4 intmat" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

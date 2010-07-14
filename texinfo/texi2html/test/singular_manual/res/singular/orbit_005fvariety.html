@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.6.1.29 orbit_variety</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.6.1.29 orbit_variety">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.6.1.29 orbit_variety">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="orbit_005fvariety"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="secondary_005fnot_005fcohen_005fmacaulay.html#secondary_005fnot_005fcohen_005fmacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.28 secondary_not_cohen_macaulay" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="relative_005forbit_005fvariety.html#relative_005forbit_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.30 relative_orbit_variety" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="finvar_005flib.html#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="orbit_005fvariety-1"></a>
+<h4 class="subsubsection">D.6.1.29 orbit_variety</h4>
+<a name="index-orbit_005fvariety"></a>
+<p>Procedure from library <code>finvar.lib</code> (see <a href="finvar_005flib.html#finvar_005flib">finvar_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>orbit_variety(F,s);
+<br>F: a 1xm &lt;matrix&gt; defining an invariant ring, s: a &lt;string&gt; giving the
+name for a new ring
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>a Groebner basis (type &lt;ideal&gt;, named G) for the ideal defining the
+orbit variety (i.e. the syzygy ideal) in the new ring (named &lsquo;s&lsquo;)
+</p>
+</dd>
+<dt><strong>Theory:</strong></dt>
+<dd><p>The ideal of algebraic relations of the invariant ring generators is
+calculated, then the variables of the original ring are eliminated and
+the polynomials that are left over define the orbit variety
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;finvar.lib&quot;;
+ring R=0,(x,y,z),dp;
+matrix F[1][7]=x2+y2,z2,x4+y4,1,x2z-1y2z,xyz,x3y-1xy3;
+string newring=&quot;E&quot;;
+orbit_variety(F,newring);
+print(G);
+&rarr; y(4)-1,
+&rarr; y(5)*y(6)-y(2)*y(7),
+&rarr; y(2)*y(3)-y(5)^2-2*y(6)^2,
+&rarr; y(1)^2*y(6)-2*y(3)*y(6)+y(5)*y(7),
+&rarr; y(1)^2*y(5)-y(3)*y(5)-2*y(6)*y(7),
+&rarr; y(1)^2*y(2)-y(2)*y(3)-2*y(6)^2,
+&rarr; y(1)^4-3*y(1)^2*y(3)+2*y(3)^2+2*y(7)^2
+basering;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 7
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    y(1) y(2) y(3) y(4) y(5) y(6) y(7) 
+&rarr; //        block   2 : ordering C
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="secondary_005fnot_005fcohen_005fmacaulay.html#secondary_005fnot_005fcohen_005fmacaulay" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.6.1.28 secondary_not_cohen_macaulay" align="middle"></a></td>
+<td valign="middle" align="left"><a href="relative_005forbit_005fvariety.html#relative_005forbit_005fvariety" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.6.1.30 relative_orbit_variety" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="finvar_005flib.html#finvar_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.6.1 finvar_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

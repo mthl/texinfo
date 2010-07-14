@@ -1,9 +1,5 @@
-2 node with printindex: P - S
-*****************************
+2 node with printindex: Z
+*************************
 * Index:
-* poncept: 3 Indices refs.
-* qoncept: 3 Indices refs.
-* roncept: 3 Indices refs.
-* roncept: 3 Indices refs.
-* rsconcept: 3 Indices refs.
-* soncept: 3 Indices refs.
+* zoncept: 3 Indices refs.
+

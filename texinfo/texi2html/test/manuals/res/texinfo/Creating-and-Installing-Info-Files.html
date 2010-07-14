@@ -1,0 +1,1547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 20 Creating and Installing Info Files</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 20 Creating and Installing Info Files">
+<meta name="keywords" content="GNU Texinfo 4.2: 20 Creating and Installing Info Files">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Creating-and-Installing-Info-Files"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Hardcopy.html#Hardcopy" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Hardcopy.html#PDF-Output" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Creating-and-Installing-Info-Files-1"></a>
+<h1 class="chapter">20 Creating and Installing Info Files</h1>
+
+<p>This chapter describes how to create and install Info files.  See section <a href="Overview.html#Info-Files">Info files</a>, for general information about the file format itself.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Creating-an-Info-File">20.1 Creating an Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Installing-an-Info-File">20.2 Installing an Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Creating-an-Info-File"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-advantages" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Creating-an-Info-File-1"></a>
+<h2 class="section">20.1 Creating an Info File</h2>
+<a name="index-Creating-an-Info-file"></a>
+<a name="index-Info_002c-creating-an-online-file"></a>
+<a name="index-Formatting-a-file-for-Info"></a>
+
+<p><code>makeinfo</code> is a program that converts a Texinfo file into an Info
+file, HTML file, or plain text.  <code>texinfo-format-region</code> and
+<code>texinfo-format-buffer</code> are GNU Emacs functions that convert
+Texinfo to Info.
+</p>
+<p>For information on installing the Info file in the Info system,
+see section <a href="#Installing-an-Info-File">Installing an Info File</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#makeinfo-advantages">20.1.1 <code>makeinfo</code> Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         <code>makeinfo</code> provides better error checking.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Invoking-makeinfo">20.1.2 Running <code>makeinfo</code> from a Shell</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to run <code>makeinfo</code> from a shell.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#makeinfo-options">20.1.3 Options for <code>makeinfo</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Specify fill-column and other options.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Pointer-Validation">20.1.4 Pointer Validation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          How to check that pointers point somewhere.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#makeinfo-in-Emacs">20.1.5 Running <code>makeinfo</code> inside Emacs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to run <code>makeinfo</code> from Emacs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#texinfo_002dformat-commands">20.1.6 The <code>texinfo-format&hellip;</code> Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Two Info formatting commands written
+                                  in Emacs Lisp are an alternative
+                                  to <code>makeinfo</code>.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Batch-Formatting">20.1.7 Batch Formatting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to format for Info in Emacs Batch mode.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Tag-and-Split-Files">20.1.8 Tag Files and Split Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How tagged and split files help Info
+                                  to run better.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#makeinfo-html">20.1.9 Generating HTML</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Generating HTML output.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="makeinfo-advantages"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Invoking-makeinfo" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="makeinfo-Preferred-1"></a>
+<h3 class="subsection">20.1.1 <code>makeinfo</code> Preferred</h3>
+
+<p>The <code>makeinfo</code> utility creates an Info file from a Texinfo source
+file more quickly than either of the Emacs formatting commands and
+provides better error messages.  We recommend it.  <code>makeinfo</code> is a
+C program that is independent of Emacs.  You do not need to run Emacs to
+use <code>makeinfo</code>, which means you can use <code>makeinfo</code> on machines
+that are too small to run Emacs.  You can run <code>makeinfo</code> in any one
+of three ways: from an operating system shell, from a shell inside
+Emacs, or by typing the <kbd>C-c C-m C-r</kbd> or the <kbd>C-c C-m C-b</kbd>
+command in Texinfo mode in Emacs.
+</p>
+
+<p>The <code>texinfo-format-region</code> and the <code>texinfo-format-buffer</code>
+commands are useful if you cannot run <code>makeinfo</code>.  Also, in some
+circumstances, they format short regions or buffers more quickly than
+<code>makeinfo</code>.
+</p>
+<hr>
+<a name="Invoking-makeinfo"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-advantages" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-options" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Running-makeinfo-from-a-Shell"></a>
+<h3 class="subsection">20.1.2 Running <code>makeinfo</code> from a Shell</h3>
+
+<p>To create an Info file from a Texinfo file, type <code>makeinfo</code>
+followed by the name of the Texinfo file.  Thus, to create the Info
+file for Bison, type the following to the shell:
+</p>
+<div class="example">
+<pre class="example">makeinfo bison.texinfo
+</pre></div>
+
+<p>(You can run a shell inside Emacs by typing <kbd>M-x shell</kbd>.)
+</p>
+<p>Sometimes you will want to specify options.  For example, if you wish
+to discover which version of <code>makeinfo</code> you are using,
+type:
+</p>
+<div class="example">
+<pre class="example">makeinfo --version
+</pre></div>
+
+<p>See section <a href="#makeinfo-options">Options for <code>makeinfo</code></a>, for more information.
+</p>
+
+<hr>
+<a name="makeinfo-options"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Invoking-makeinfo" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Pointer-Validation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Options-for-makeinfo"></a>
+<h3 class="subsection">20.1.3 Options for <code>makeinfo</code></h3>
+<a name="index-makeinfo-options"></a>
+<a name="index-Options-for-makeinfo"></a>
+
+<p>The <code>makeinfo</code> command takes a number of options.  Most often,
+options are used to set the value of the fill column and specify the
+footnote style.  Each command line option is a word preceded by
+&lsquo;<samp>--</samp>&rsquo; or a letter preceded by &lsquo;<samp>-</samp>&rsquo;.  You can use abbreviations
+for the long option names as long as they are unique.
+</p>
+<p>For example, you could use the following shell command to create an Info
+file for &lsquo;<tt>bison.texinfo</tt>&rsquo; in which each line is filled to only 68
+columns:
+</p>
+<div class="example">
+<pre class="example">makeinfo --fill-column=68 bison.texinfo
+</pre></div>
+
+<p>You can write two or more options in sequence, like this:
+</p>
+<div class="example">
+<pre class="example">makeinfo --no-split --fill-column=70 &hellip;
+</pre></div>
+
+<p>This would keep the Info file together as one possibly very long
+file and would also set the fill column to 70.
+</p>
+<p>The options are:
+</p>
+<dl compact="compact">
+<dt><code>-D <var>var</var></code></dt>
+<dd><a name="index-_002dD-var"></a>
+<p>Cause the variable <var>var</var> to be defined.  This is equivalent to
+<code>@set <var>var</var></code> in the Texinfo file (see section <a href="Conditionals.html#set-clear-value"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+</p>
+</dd>
+<dt><code>--commands-in-node-names</code></dt>
+<dd><a name="index-_002d_002dcommands_002din_002dnode_002dnames"></a>
+<p>Allow <code>@</code>-commands in node names.  This is not recommended, as it
+can probably never be implemented in TeX.  It also makes
+<code>makeinfo</code> much slower.  Also, this option is ignored when
+&lsquo;<samp>--no-validate</samp>&rsquo; is used.  See section <a href="#Pointer-Validation">Pointer Validation</a>, for more
+details.
+</p>
+</dd>
+<dt><code>--docbook</code></dt>
+<dd><a name="index-_002d_002ddocbook"></a>
+<p>Generate DocBook output rather than Info.  
+</p>
+</dd>
+<dt><code>--error-limit=<var>limit</var></code></dt>
+<dt><code>-e <var>limit</var></code></dt>
+<dd><a name="index-_002d_002derror_002dlimit_003dlimit"></a>
+<a name="index-_002de-limit"></a>
+<p>Set the maximum number of errors that <code>makeinfo</code> will report
+before exiting (on the assumption that continuing would be useless);
+default 100.
+</p>
+</dd>
+<dt><code>--fill-column=<var>width</var></code></dt>
+<dt><code>-f <var>width</var></code></dt>
+<dd><a name="index-_002d_002dfill_002dcolumn_003dwidth"></a>
+<a name="index-_002df-width"></a>
+<p>Specify the maximum number of columns in a line; this is the right-hand
+edge of a line.  Paragraphs that are filled will be filled to this
+width.  (Filling is the process of breaking up and connecting lines so
+that lines are the same length as or shorter than the number specified
+as the fill column.  Lines are broken between words.) The default value
+is 72.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--footnote-style=<var>style</var></code></dt>
+<dt><code>-s <var>style</var></code></dt>
+<dd><a name="index-_002d_002dfootnote_002dstyle_003dstyle"></a>
+<a name="index-_002ds-style"></a>
+<p>Set the footnote style to <var>style</var>, either &lsquo;<samp>end</samp>&rsquo; for the end
+node style (the default) or &lsquo;<samp>separate</samp>&rsquo; for the separate node style.
+The value set by this option overrides the value set in a Texinfo file
+by an <code>@footnotestyle</code> command (see section <a href="Insertions.html#Footnotes">Footnotes</a>).  When the
+footnote style is &lsquo;<samp>separate</samp>&rsquo;, <code>makeinfo</code> makes a new node
+containing the footnotes found in the current node.  When the footnote
+style is &lsquo;<samp>end</samp>&rsquo;, <code>makeinfo</code> places the footnote references at
+the end of the current node.  Ignored with &lsquo;<samp>--html</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--force</code></dt>
+<dt><code>-F</code></dt>
+<dd><a name="index-_002d_002dforce"></a>
+<a name="index-_002dF"></a>
+<p>Ordinarily, if the input file has errors, the output files are not
+created.  With this option, they are preserved.
+</p>
+</dd>
+<dt><code>--help</code></dt>
+<dt><code>-h</code></dt>
+<dd><a name="index-_002d_002dhelp"></a>
+<a name="index-_002dh"></a>
+<p>Print a usage message listing all available options, then exit successfully.
+</p>
+</dd>
+<dt><code>--html</code></dt>
+<dd><a name="index-_002d_002dhtml"></a>
+<p>Generate HTML output rather than Info.  See section <a href="#makeinfo-html">Generating HTML</a>.  By
+default, the HTML output is split into one output file per source node,
+and the split output is written into a subdirectory with the name of the
+top-level info file.
+</p>
+</dd>
+<dt><code>-I <var>dir</var></code></dt>
+<dd><a name="index-_002dI-dir"></a>
+<p>Append <var>dir</var> to the directory search list for finding files that
+are included using the <code>@include</code> command.  By default,
+<code>makeinfo</code> searches only the current directory.  If <var>dir</var> is
+not given, the current directory &lsquo;<tt>.</tt>&rsquo; is appended.  Note that
+<var>dir</var> can actually be a list of several directories separated by the
+usual path separator character (&lsquo;<samp>:</samp>&rsquo; on Unix, &lsquo;<samp>;</samp>&rsquo; on
+MS-DOS/MS-Windows).
+</p>
+</dd>
+<dt><code>--macro-expand=<var>file</var></code></dt>
+<dt><code>-E <var>file</var></code></dt>
+<dd><p>Output the Texinfo source with all the macros expanded to the named
+file.  Normally, the results of macro expansion are used internally by
+<code>makeinfo</code> and then discarded.  This option is used by
+<code>texi2dvi</code> if you are using an old version of &lsquo;<tt>texinfo.tex</tt>&rsquo;
+that does not support <code>@macro</code>.
+</p>
+</dd>
+<dt><code>--no-headers</code></dt>
+<dd><a name="index-_002d_002dno_002dheaders"></a>
+<a name="index-Plain-text-output"></a>
+<a name="index-ASCII-text-output"></a>
+<a name="index-Generating-plain-text-files"></a>
+<a name="index-INSTALL-file_002c-generating"></a>
+<a name="index-Node-separators_002c-omitting"></a>
+<a name="index-Menus_002c-omitting"></a>
+<p>For Info output, do not include menus or node separator lines in the
+output.  This results in a simple plain text file that you can (for
+example) send in email without complications, or include in a
+distribution (as in an &lsquo;<tt>INSTALL</tt>&rsquo; file).
+</p>
+<a name="index-Navigation-links_002c-omitting"></a>
+<p>For HTML output, likewise omit menus.  And if &lsquo;<samp>--no-split</samp>&rsquo; is also
+specified, do not include a navigation links at the top of each node
+(these are never included in the default case of split output).
+See section <a href="#makeinfo-html">Generating HTML</a>.
+</p>
+<p>In both cases, write to standard output by default (can still be
+overridden by &lsquo;<samp>-o</samp>&rsquo;).
+</p>
+</dd>
+<dt><code>--no-split</code></dt>
+<dd><a name="index-_002d_002dno_002dsplit"></a>
+<a name="index-Splitting-of-output-files"></a>
+<a name="index-Output-file-splitting"></a>
+<p>Suppress the splitting stage of <code>makeinfo</code>.  By default, large
+output files (where the size is greater than 70k bytes) are split into
+smaller subfiles.  For Info output, each one is approximately 50k bytes.
+For HTML output, each file contains one node (see section <a href="#makeinfo-html">Generating HTML</a>).
+</p>
+</dd>
+<dt><code>--no-pointer-validate</code></dt>
+<dt><code>--no-validate</code></dt>
+<dd><a name="index-_002d_002dno_002dpointer_002dvalidate"></a>
+<a name="index-_002d_002dno_002dvalidate"></a>
+<a name="index-Pointer-validation_002c-suppressing-1"></a>
+<p>Suppress the pointer-validation phase of <code>makeinfo</code>.  This can also
+be done with the <code>@novalidate</code> command (see section <a href="Hardcopy.html#Use-TeX">Use TeX</a>).  Normally, after a Texinfo file is processed, some consistency
+checks are made to ensure that cross references can be resolved, etc.
+See section <a href="#Pointer-Validation">Pointer Validation</a>.
+</p>
+</dd>
+<dt><code>--no-warn</code></dt>
+<dd><a name="index-_002d_002dno_002dwarn"></a>
+<p>Suppress warning messages (but <em>not</em> error messages).  You might
+want this if the file you are creating has examples of Texinfo cross
+references within it, and the nodes that are referenced do not actually
+exist.
+</p>
+</dd>
+<dt><code>--number-sections</code></dt>
+<dd><a name="index-_002d_002dnumber_002dsections"></a>
+<p>Output chapter, section, and appendix numbers as in printed manuals.
+</p>
+</dd>
+<dt><code>--no-number-footnotes</code></dt>
+<dd><a name="index-_002d_002dno_002dnumber_002dfootnotes"></a>
+<p>Suppress automatic footnote numbering.  By default, <code>makeinfo</code>
+numbers each footnote sequentially in a single node, resetting the
+current footnote number to 1 at the start of each node.
+</p>
+</dd>
+<dt><code>--output=<var>file</var></code></dt>
+<dt><code>-o <var>file</var></code></dt>
+<dd><a name="index-_002d_002doutput_003dfile"></a>
+<a name="index-_002do-file"></a>
+<p>Specify that the output should be directed to <var>file</var> and not to the
+file name specified in the <code>@setfilename</code> command found in the
+Texinfo source (see section <a href="Beginning-a-File.html#setfilename"><code>@setfilename</code>: Set the output file name</a>).  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output
+goes to standard output and &lsquo;<samp>--no-split</samp>&rsquo; is implied.  For split
+HTML output, <var>file</var> is the name for the directory into which all
+HTML nodes are written (see section <a href="#makeinfo-html">Generating HTML</a>).
+</p>
+</dd>
+<dt><code>-P <var>dir</var></code></dt>
+<dd><a name="index-_002dP-dir"></a>
+<p>Prepend <var>dir</var> to the directory search list for <code>@include</code>.
+If <var>dir</var> is not given, the current directory &lsquo;<tt>.</tt>&rsquo; is prepended.
+See &lsquo;<samp>-I</samp>&rsquo; for more details.
+</p>
+</dd>
+<dt><code>--paragraph-indent=<var>indent</var></code></dt>
+<dt><code>-p <var>indent</var></code></dt>
+<dd><a name="index-_002d_002dparagraph_002dindent_003dindent"></a>
+<a name="index-_002dp-indent"></a>
+<p>Set the paragraph indentation style to <var>indent</var>.  The value set by
+this option overrides the value set in a Texinfo file by an
+<code>@paragraphindent</code> command (see section <a href="Beginning-a-File.html#paragraphindent">Paragraph Indenting</a>).  The value
+of <var>indent</var> is interpreted as follows:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>asis</samp>&rsquo;</dt>
+<dd><p>Preserve any existing indentation at the starts of paragraphs.
+</p>
+</dd>
+<dt>&lsquo;<samp>0</samp>&rsquo; or &lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>Delete any existing indentation.
+</p>
+</dd>
+<dt><var>num</var></dt>
+<dd><p>Indent each paragraph by <var>num</var> spaces.
+</p></dd>
+</dl>
+
+</dd>
+<dt><code>--reference-limit=<var>limit</var></code></dt>
+<dt><code>-r <var>limit</var></code></dt>
+<dd><a name="index-_002d_002dreference_002dlimit_003dlimit"></a>
+<a name="index-_002dr-limit"></a>
+<p>Set the value of the number of references to a node that
+<code>makeinfo</code> will make without reporting a warning.  If a node has more
+than this number of references in it, <code>makeinfo</code> will make the
+references but also report a warning.  The default is 1000.
+</p>
+</dd>
+<dt><code>-U <var>var</var></code></dt>
+<dd><p>Cause <var>var</var> to be undefined.  This is equivalent to
+<code>@clear <var>var</var></code> in the Texinfo file (see section <a href="Conditionals.html#set-clear-value"><code>@set</code>, <code>@clear</code>, and <code>@value</code></a>).
+</p>
+</dd>
+<dt><code>--verbose</code></dt>
+<dd><a name="index-_002d_002dverbose"></a>
+<p>Cause <code>makeinfo</code> to display messages saying what it is doing.
+Normally, <code>makeinfo</code> only outputs messages if there are errors or
+warnings.
+</p>
+</dd>
+<dt><code>--version</code></dt>
+<dt><code>-V</code></dt>
+<dd><a name="index-_002d_002dversion"></a>
+<a name="index-_002dV"></a>
+<p>Print the version number, then exit successfully.
+</p>
+</dd>
+<dt><code>--xml</code></dt>
+<dd><a name="index-_002d_002dxml"></a>
+<p>Generate XML output rather than Info.  
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<a name="Pointer-Validation"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-options" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-in-Emacs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Pointer-Validation-1"></a>
+<h3 class="subsection">20.1.4 Pointer Validation</h3>
+<a name="index-Pointer-validation-with-makeinfo"></a>
+<a name="index-Validation-of-pointers"></a>
+
+<p>If you do not suppress pointer validation with the &lsquo;<samp>--no-validate</samp>&rsquo;
+option or the <code>@novalidate</code> command in the source file (see section <a href="Hardcopy.html#Use-TeX">Use TeX</a>), <code>makeinfo</code> will check the validity of the final
+Info file.  Mostly, this means ensuring that nodes you have referenced
+really exist.  Here is a complete list of what is checked:
+</p>
+<ol>
+<li>
+If a &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, or &lsquo;Up&rsquo; node reference is a reference to a
+node in the current file and is not an external reference such as to
+&lsquo;<tt>(dir)</tt>&rsquo;, then the referenced node must exist.
+
+</li><li>
+In every node, if the &lsquo;Previous&rsquo; node is different from the &lsquo;Up&rsquo; node,
+then the node pointed to by the &lsquo;Previous&rsquo; field must have a &lsquo;Next&rsquo;
+field which points back to this node.
+
+</li><li>
+Every node except the &lsquo;Top&rsquo; node must have an &lsquo;Up&rsquo; pointer.
+
+</li><li>
+The node referenced by an &lsquo;Up&rsquo; pointer must itself reference the current
+node through a menu item, unless the node referenced by &lsquo;Up&rsquo;
+has the form &lsquo;(<var>file</var>)&rsquo;.
+
+</li><li>
+If the &lsquo;Next&rsquo; reference of a node is not the same as the &lsquo;Next&rsquo; reference
+of the &lsquo;Up&rsquo; reference, then the node referenced by the &lsquo;Next&rsquo; pointer
+must have a &lsquo;Previous&rsquo; pointer that points back to the current node.
+This rule allows the last node in a section to point to the first node
+of the next chapter.
+
+</li><li>
+Every node except &lsquo;Top&rsquo; should be referenced by at least one other node,
+either via the &lsquo;Previous&rsquo; or &lsquo;Next&rsquo; links, or via a menu or a
+cross-reference.
+</li></ol>
+
+<a name="index-_0040_002dcommands-in-_0040node_002c-limited-support"></a>
+<p>Some Texinfo documents might fail during the validation phase because
+they use commands like <code>@value</code> and <code>@definfoenclose</code> in
+node definitions and cross-references inconsistently.  Consider the
+following example:
+</p>
+<div class="example">
+<pre class="example">@set nodename Node 1
+
+@node @value{nodename}, Node 2, Top, Top
+
+This is node 1.
+
+@node Node 2, , Node 1, Top
+
+This is node 2.
+</pre></div>
+
+<p>Here, the node &ldquo;Node 1&rdquo; was referenced both verbatim and through
+<code>@value</code>.
+</p>
+<p>By default, <code>makeinfo</code> fails such cases, because node names are not
+fully expanded until they are written to the output file.  You should
+always try to reference nodes consistently; e.g., in the above example,
+the second <code>@node</code> line should have also used <code>@value</code>.
+However, if, for some reason, you <em>must</em> reference node names
+inconsistently, and <code>makeinfo</code> fails to validate the file, you can
+use the &lsquo;<samp>--commands-in-node-names</samp>&rsquo; option to force <code>makeinfo</code>
+to perform the expensive expansion of all node names it finds in the
+document.  This might considerably slow down the program, though;
+twofold increase in conversion time was measured for large documents
+such as the Jargon file.
+</p>
+<a name="index-_0040value-in-_0040node-lines"></a>
+<p>The support for <code>@</code>-commands in <code>@node</code> directives is not
+general enough to be freely used.  For example, if the example above
+redefined <code>nodename</code> somewhere in the document, <code>makeinfo</code>
+will fail to convert it, even if invoked with the
+&lsquo;<samp>--commands-in-node-names</samp>&rsquo; option.
+</p>
+<p>&lsquo;<samp>--commands-in-node-names</samp>&rsquo; has no effect if the &lsquo;<samp>--no-validate</samp>&rsquo;
+option is given.
+</p>
+
+<hr>
+<a name="makeinfo-in-Emacs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Pointer-Validation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#texinfo_002dformat-commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Running-makeinfo-inside-Emacs"></a>
+<h3 class="subsection">20.1.5 Running <code>makeinfo</code> inside Emacs</h3>
+<a name="index-Running-makeinfo-in-Emacs"></a>
+<a name="index-makeinfo-inside-Emacs"></a>
+<a name="index-Shell_002c-running-makeinfo-in"></a>
+
+<p>You can run <code>makeinfo</code> in GNU Emacs Texinfo mode by using either the
+<code>makeinfo-region</code> or the <code>makeinfo-buffer</code> commands.  In
+Texinfo mode, the commands are bound to <kbd>C-c C-m C-r</kbd> and <kbd>C-c
+C-m C-b</kbd> by default.
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-m C-r</kbd></dt>
+<dt><kbd>M-x makeinfo-region</kbd></dt>
+<dd><p>Format the current region for Info.
+<a name="index-makeinfo_002dregion"></a>
+</p>
+</dd>
+<dt><kbd>C-c C-m C-b</kbd></dt>
+<dt><kbd>M-x makeinfo-buffer</kbd></dt>
+<dd><p>Format the current buffer for Info.
+<a name="index-makeinfo_002dbuffer"></a>
+</p></dd>
+</dl>
+
+<p>When you invoke either <code>makeinfo-region</code> or
+<code>makeinfo-buffer</code>, Emacs prompts for a file name, offering the
+name of the visited file as the default.  You can edit the default
+file name in the minibuffer if you wish, before pressing &lt;RET&gt; to
+start the <code>makeinfo</code> process.
+</p>
+<p>The Emacs <code>makeinfo-region</code> and <code>makeinfo-buffer</code> commands
+run the <code>makeinfo</code> program in a temporary shell buffer.  If
+<code>makeinfo</code> finds any errors, Emacs displays the error messages in
+the temporary buffer.
+</p>
+<a name="index-Errors_002c-parsing"></a>
+<a name="index-Parsing-errors"></a>
+<a name="index-next_002derror"></a>
+<p>You can parse the error messages by typing <kbd>C-x `</kbd>
+(<code>next-error</code>).  This causes Emacs to go to and position the
+cursor on the line in the Texinfo source that <code>makeinfo</code> thinks
+caused the error.  See <a href="../emacs/Compilation.html#Compilation">Running <code>make</code> or Compilers Generally</a> in <cite>The GNU Emacs Manual</cite>, for more
+information about using the <code>next-error</code> command.
+</p>
+<p>In addition, you can kill the shell in which the <code>makeinfo</code>
+command is running or make the shell buffer display its most recent
+output.
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-m C-k</kbd></dt>
+<dt><kbd>M-x makeinfo-kill-job</kbd></dt>
+<dd><a name="index-makeinfo_002dkill_002djob"></a>
+<p>Kill the current running <code>makeinfo</code> job
+(from <code>makeinfo-region</code> or <code>makeinfo-buffer</code>).
+</p>
+</dd>
+<dt><kbd>C-c C-m C-l</kbd></dt>
+<dt><kbd>M-x makeinfo-recenter-output-buffer</kbd></dt>
+<dd><a name="index-makeinfo_002drecenter_002doutput_002dbuffer"></a>
+<p>Redisplay the <code>makeinfo</code> shell buffer to display its most recent
+output.
+</p></dd>
+</dl>
+
+<p>(Note that the parallel commands for killing and recentering a TeX
+job are <kbd>C-c C-t C-k</kbd> and <kbd>C-c C-t C-l</kbd>.  See section <a href="Hardcopy.html#Texinfo-Mode-Printing">Formatting and Printing in Texinfo Mode</a>.)
+</p>
+<p>You can specify options for <code>makeinfo</code> by setting the
+<code>makeinfo-options</code> variable with either the <kbd>M-x
+edit-options</kbd> or the <kbd>M-x set-variable</kbd> command, or by setting the
+variable in your &lsquo;<tt>.emacs</tt>&rsquo; initialization file.
+</p>
+<p>For example, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
+</p>
+<div class="example">
+<pre class="example">(setq makeinfo-options
+      &quot;--paragraph-indent=0 --no-split
+       --fill-column=70 --verbose&quot;)
+</pre></div>
+
+<p>For more information, see<br>
+<a href="../emacs/Edit-Options.html#Edit-Options">Editing Variable Values</a> in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Examining.html#Examining">Examining and Setting Variables</a> in <cite>The GNU Emacs Manual</cite>,<br>
+<a href="../emacs/Init-File.html#Init-File">Init File</a> in <cite>The GNU Emacs Manual</cite>, and<br>
+<a href="#makeinfo-options">Options for <code>makeinfo</code></a>.
+</p>
+<hr>
+<a name="texinfo_002dformat-commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-in-Emacs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Batch-Formatting" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="The-texinfo_002dformat_2026-Commands"></a>
+<h3 class="subsection">20.1.6 The <code>texinfo-format&hellip;</code> Commands</h3>
+<a name="index-texinfo_002dformat_002dregion-1"></a>
+<a name="index-texinfo_002dformat_002dbuffer-1"></a>
+
+<p>In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
+file with the <code>texinfo-format-region</code> command.  This formats the
+current region and displays the formatted text in a temporary buffer
+called &lsquo;<samp>*Info Region*</samp>&rsquo;.
+</p>
+<p>Similarly, you can format a buffer with the
+<code>texinfo-format-buffer</code> command.  This command creates a new
+buffer and generates the Info file in it.  Typing <kbd>C-x C-s</kbd> will
+save the Info file under the name specified by the
+<code>@setfilename</code> line which must be near the beginning of the
+Texinfo file.
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-e C-r</kbd></dt>
+<dt><kbd><code>texinfo-format-region</code></kbd></dt>
+<dd><p>Format the current region for Info.
+<a name="index-texinfo_002dformat_002dregion-2"></a>
+</p>
+</dd>
+<dt><kbd>C-c C-e C-b</kbd></dt>
+<dt><kbd><code>texinfo-format-buffer</code></kbd></dt>
+<dd><p>Format the current buffer for Info.
+<a name="index-texinfo_002dformat_002dbuffer-2"></a>
+</p></dd>
+</dl>
+
+<p>The <code>texinfo-format-region</code> and <code>texinfo-format-buffer</code>
+commands provide you with some error checking, and other functions can
+provide you with further help in finding formatting errors.  These
+procedures are described in an appendix; see <a href="Catching-Mistakes.html#Catching-Mistakes">Formatting Mistakes</a>.
+However, the <code>makeinfo</code> program is often faster and
+provides better error checking (see section <a href="#makeinfo-in-Emacs">Running <code>makeinfo</code> inside Emacs</a>).
+</p>
+<hr>
+<a name="Batch-Formatting"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#texinfo_002dformat-commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Tag-and-Split-Files" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Batch-Formatting-1"></a>
+<h3 class="subsection">20.1.7 Batch Formatting</h3>
+<a name="index-Batch-formatting-for-Info"></a>
+<a name="index-Info-batch-formatting"></a>
+
+<p>You can format Texinfo files for Info using <code>batch-texinfo-format</code>
+and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
+including a shell inside of Emacs.  (See <a href="../emacs/Command-Switches.html#Command-Switches">Command Line Switches and Arguments</a> in <cite>The GNU Emacs Manual</cite>.)
+</p>
+<p>Here is a shell command to format all the files that end in
+&lsquo;<tt>.texinfo</tt>&rsquo; in the current directory:
+</p>
+<div class="example">
+<pre class="example">emacs -batch -funcall batch-texinfo-format *.texinfo
+</pre></div>
+
+<p>Emacs processes all the files listed on the command line, even if an
+error occurs while attempting to format some of them.
+</p>
+<p>Run <code>batch-texinfo-format</code> only with Emacs in Batch mode as shown;
+it is not interactive.  It kills the Batch mode Emacs on completion.
+</p>
+<p><code>batch-texinfo-format</code> is convenient if you lack <code>makeinfo</code>
+and want to format several Texinfo files at once.  When you use Batch
+mode, you create a new Emacs process.  This frees your current Emacs, so
+you can continue working in it.  (When you run
+<code>texinfo-format-region</code> or <code>texinfo-format-buffer</code>, you cannot
+use that Emacs for anything else until the command finishes.)
+</p>
+<hr>
+<a name="Tag-and-Split-Files"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Batch-Formatting" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-html" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Tag-Files-and-Split-Files"></a>
+<h3 class="subsection">20.1.8 Tag Files and Split Files</h3>
+<a name="index-Making-a-tag-table-automatically"></a>
+<a name="index-Tag-table_002c-making-automatically"></a>
+
+<p>If a Texinfo file has more than 30,000 bytes,
+<code>texinfo-format-buffer</code> automatically creates a tag table
+for its Info file;  <code>makeinfo</code> always creates a tag table.  With
+a <em>tag table</em>, Info can jump to new nodes more quickly than it can
+otherwise.
+</p>
+<a name="index-Indirect-subfiles"></a>
+<p>In addition, if the Texinfo file contains more than about 70,000
+bytes, <code>texinfo-format-buffer</code> and <code>makeinfo</code> split the
+large Info file into shorter <em>indirect</em> subfiles of about 50,000
+bytes each.  Big files are split into smaller files so that Emacs does
+not need to make a large buffer to hold the whole of a large Info
+file; instead, Emacs allocates just enough memory for the small, split-off
+file that is needed at the time.  This way, Emacs avoids wasting
+memory when you run Info.  (Before splitting was implemented, Info
+files were always kept short and <em>include files</em> were designed as
+a way to create a single, large printed manual out of the smaller Info
+files.  See section <a href="Include-Files.html#Include-Files">Include Files</a>, for more information.  Include files are
+still used for very large documents, such as <cite>The Emacs Lisp
+Reference Manual</cite>, in which each chapter is a separate file.)
+</p>
+<p>When a file is split, Info itself makes use of a shortened version of
+the original file that contains just the tag table and references to
+the files that were split off.  The split-off files are called
+<em>indirect</em> files.
+</p>
+<p>The split-off files have names that are created by appending &lsquo;<samp><span class="nolinebreak">-1</span></samp>&rsquo;,
+&lsquo;<samp><span class="nolinebreak">-2</span></samp>&rsquo;, &lsquo;<samp><span class="nolinebreak">-3</span></samp>&rsquo; and so on to the file name specified by the
+<code>@setfilename</code> command.  The shortened version of the original file
+continues to have the name specified by <code>@setfilename</code>.
+</p>
+<p>At one stage in writing this document, for example, the Info file was saved
+as the file &lsquo;<tt>test-texinfo</tt>&rsquo; and that file looked like this:
+</p>
+<div class="example">
+<pre class="example">Info file: test-texinfo,    -*-Text-*-
+produced by texinfo-format-buffer
+from file: new-texinfo-manual.texinfo
+
+^_
+Indirect:
+test-texinfo-1: 102
+test-texinfo-2: 50422
+</pre><pre class="example">test-texinfo-3: 101300
+^_^L
+Tag table:
+(Indirect)
+Node: overview^?104
+Node: info file^?1271
+</pre><pre class="example">Node: printed manual^?4853
+Node: conventions^?6855
+&hellip;
+</pre></div>
+
+<p>(But &lsquo;<tt>test-texinfo</tt>&rsquo; had far more nodes than are shown here.)  Each of
+the split-off, indirect files, &lsquo;<tt>test-texinfo-1</tt>&rsquo;,
+&lsquo;<tt>test-texinfo-2</tt>&rsquo;, and &lsquo;<tt>test-texinfo-3</tt>&rsquo;, is listed in this file
+after the line that says &lsquo;<samp>Indirect:</samp>&rsquo;.  The tag table is listed after
+the line that says &lsquo;<samp>Tag table:</samp>&rsquo;. 
+</p>
+<p>In the list of indirect files, the number following the file name
+records the cumulative number of bytes in the preceding indirect files,
+not counting the file list itself, the tag table, or the permissions
+text in each file.  In the tag table, the number following the node name
+records the location of the beginning of the node, in bytes from the
+beginning of the (unsplit) output.
+</p>
+<p>If you are using <code>texinfo-format-buffer</code> to create Info files,
+you may want to run the <code>Info-validate</code> command.  (The
+<code>makeinfo</code> command does such a good job on its own, you do not
+need <code>Info-validate</code>.)  However, you cannot run the <kbd>M-x
+Info-validate</kbd> node-checking command on indirect files.  For
+information on how to prevent files from being split and how to
+validate the structure of the nodes, see <a href="Catching-Mistakes.html#Using-Info_002dvalidate">Running <code>Info-validate</code></a>.
+</p>
+
+<hr>
+<a name="makeinfo-html"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Tag-and-Split-Files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Generating-HTML"></a>
+<h3 class="subsection">20.1.9 Generating HTML</h3>
+<a name="index-HTML"></a>
+
+<p>Besides generating output in the Info format, you can use the
+&lsquo;<samp>--html</samp>&rsquo; option to generate output in HTML format, for installation
+on a web site (for example).  By default, the HTML output is split at
+node level.
+</p>
+<p>When splitting, the HTML output files are written into a subdirectory.
+The subdirectory is named according to the name from
+<code>@setfilename</code> with any extension removed; for example, HTML
+output for <code>@setfilename emacs.info</code> would be written into a
+subdirectory named &lsquo;<samp>emacs</samp>&rsquo;.  If that directory cannot be created
+for any reason, then &lsquo;<samp>.html</samp>&rsquo; is appended to the directory name, as
+in &lsquo;<samp>emacs.html</samp>&rsquo; (this is necessary because sometimes the info file
+is named without an extension, e.g., &lsquo;<samp>texinfo</samp>&rsquo;).  If the
+&lsquo;<samp><var>name</var>.html</samp>&rsquo; directory can&rsquo;t be created either,
+<code>makeinfo</code> gives up.  In any case, the top-level output file within
+the directory is always named &lsquo;<samp>index.html</samp>&rsquo;.
+</p>
+<p>Monolithic output (<code>--no-split</code>) is named according to
+<code>@setfilename</code> or <code>--outfile</code>.  Cross-document node
+references are not supported in monolithic HTML.
+</p>
+<p>Texinfo input marked up with the <code>@ifhtml</code> command will produce
+output only with the &lsquo;<samp>--html</samp>&rsquo; option supplied.  Input marked up
+with the <code>@html</code> is passed literally to the output (suppressing
+the normal escaping of input &lsquo;<samp>&lt;</samp>&rsquo;, &lsquo;<samp>&gt;</samp>&rsquo; and &lsquo;<samp>&amp;</samp>&rsquo; characters
+which have special significance in HTML).
+</p>
+<p>The &lsquo;<samp>--footnote-style</samp>&rsquo; option is currently ignored for HTML output;
+footnotes are linked to the end of the output file.
+</p>
+<p>The HTML generated is mostly standard (i.e., HTML 2.0, RFC-1866).  The
+exception is that HTML 3.2 tables are generated from the
+<code>@multitable</code> command, but tagged to degrade as well as possible
+in browsers without table support.  The HTML 4 &lsquo;<samp>lang</samp>&rsquo; attribute on
+the &lsquo;<samp>&lt;html&gt;</samp>&rsquo; attribute is also used.  Please report output from an
+error-free run of <code>makeinfo</code> which has browser portability problems
+as a bug.
+</p>
+<p>Navigation bars are inserted at the start of nodes, similarly to Info
+output.  The &lsquo;<samp>--no-headers</samp>&rsquo; option will suppress this if used with
+&lsquo;<samp>--no-split</samp>&rsquo;.  Header <code>&lt;link&gt;</code> elements in split output can
+support info-like navigation with browsers like Lynx and Emacs&nbsp;W3
+which implement this HTML&nbsp;1.0 feature.  &lsquo;<samp>@xref</samp>&rsquo; commands to
+other documents are generated assuming the other document is available
+in split HTML form, and installed in the same HTML documentation tree,
+at &lsquo;<tt>../&lt;info-document&gt;/</tt>&rsquo;.
+</p>
+
+<hr>
+<a name="Installing-an-Info-File"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#makeinfo-html" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Directory-File" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Installing-an-Info-File-1"></a>
+<h2 class="section">20.2 Installing an Info File</h2>
+<a name="index-Installing-an-Info-file"></a>
+<a name="index-Info-file-installation"></a>
+<a name="index-dir-directory-for-Info-installation"></a>
+
+<p>Info files are usually kept in the &lsquo;<tt>info</tt>&rsquo; directory.  You can read
+Info files using the standalone Info program or the Info reader built
+into Emacs.  (See <a href="../info/index.html#Top">(info)info</a>, for an introduction to Info.)
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Directory-File">20.2.1 The Directory File &lsquo;<tt>dir</tt>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              The top level menu for all Info files.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#New-Info-File">20.2.2 Listing a New Info File</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               Listing a new Info file.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Other-Info-Directories">20.2.3 Info Files in Other Directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How to specify Info files that are
+                                  located in other directories.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Installing-Dir-Entries">20.2.4 Installing Info Directory Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How to specify what menu entry to add
+                                  to the Info directory.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Invoking-install_002dinfo">20.2.5 Invoking install-info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       <code>install-info</code> options.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Directory-File"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#New-Info-File" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="The-Directory-File-dir"></a>
+<h3 class="subsection">20.2.1 The Directory File &lsquo;<tt>dir</tt>&rsquo;</h3>
+
+<p>For Info to work, the &lsquo;<tt>info</tt>&rsquo; directory must contain a file that
+serves as a top level directory for the Info system.  By convention,
+this file is called &lsquo;<tt>dir</tt>&rsquo;.  (You can find the location of this file
+within Emacs by typing <kbd>C-h i</kbd> to enter Info and then typing
+<kbd>C-x C-f</kbd> to see the pathname to the &lsquo;<tt>info</tt>&rsquo; directory.)
+</p>
+<p>The &lsquo;<tt>dir</tt>&rsquo; file is itself an Info file.  It contains the top level
+menu for all the Info files in the system.  The menu looks like
+this:
+</p>
+<div class="example">
+<pre class="example">* Menu:
+* Info:    (info).     Documentation browsing system.
+* Emacs:   (emacs).    The extensible, self-documenting
+                       text editor.
+* Texinfo: (texinfo).  With one source file, make
+                       either a printed manual using
+                       @TeX{} or an Info file.
+&hellip;
+</pre></div>
+
+<p>Each of these menu entries points to the &lsquo;Top&rsquo; node of the Info file
+that is named in parentheses.  (The menu entry does not need to
+specify the &lsquo;Top&rsquo; node, since Info goes to the &lsquo;Top&rsquo; node if no node
+name is mentioned.  See section <a href="Menus.html#Other-Info-Files">Nodes in Other Info Files</a>.)
+</p>
+<p>Thus, the &lsquo;<samp>Info</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node of the
+&lsquo;<tt>info</tt>&rsquo; file and the &lsquo;<samp>Emacs</samp>&rsquo; entry points to the &lsquo;Top&rsquo; node
+of the &lsquo;<tt>emacs</tt>&rsquo; file.
+</p>
+<p>In each of the Info files, the &lsquo;Up&rsquo; pointer of the &lsquo;Top&rsquo; node refers
+back to the <code>dir</code> file.  For example, the line for the &lsquo;Top&rsquo;
+node of the Emacs manual looks like this in Info:
+</p>
+<div class="example">
+<pre class="example">File: emacs  Node: Top, Up: (DIR), Next: Distrib
+</pre></div>
+
+<p>In this case, the &lsquo;<tt>dir</tt>&rsquo; file name is written in upper case
+letters&mdash;it can be written in either upper or lower case.  This is not
+true in general, it is a special case for &lsquo;<tt>dir</tt>&rsquo;.
+</p>
+
+<hr>
+<a name="New-Info-File"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Directory-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-Info-Directories" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Listing-a-New-Info-File"></a>
+<h3 class="subsection">20.2.2 Listing a New Info File</h3>
+<a name="index-Adding-a-new-Info-file"></a>
+<a name="index-Listing-a-new-Info-file"></a>
+<a name="index-New-Info-file_002c-listing-it-in-dir-file"></a>
+<a name="index-Info-file_002c-listing-a-new"></a>
+<a name="index-dir-file-listing"></a>
+
+<p>To add a new Info file to your system, you must write a menu entry to
+add to the menu in the &lsquo;<tt>dir</tt>&rsquo; file in the &lsquo;<tt>info</tt>&rsquo; directory.
+For example, if you were adding documentation for GDB, you would write
+the following new entry:
+</p>
+<div class="example">
+<pre class="example">* GDB: (gdb).           The source-level C debugger.
+</pre></div>
+
+<p>The first part of the menu entry is the menu entry name, followed by a
+colon.  The second part is the name of the Info file, in parentheses,
+followed by a period.  The third part is the description.
+</p>
+<p>The name of an Info file often has a &lsquo;<tt>.info</tt>&rsquo; extension.  Thus, the
+Info file for GDB might be called either &lsquo;<tt>gdb</tt>&rsquo; or &lsquo;<tt>gdb.info</tt>&rsquo;.
+The Info reader programs automatically try the file name both with and
+without &lsquo;<tt>.info</tt>&rsquo;<a name="DOCF11" href="texinfo_fot.html#FOOT11">(11)</a>; so it is better to avoid
+clutter and not to write &lsquo;<samp>.info</samp>&rsquo; explicitly in the menu entry.  For
+example, the GDB menu entry should use just &lsquo;<samp>gdb</samp>&rsquo; for the file
+name, not &lsquo;<samp>gdb.info</samp>&rsquo;.
+</p>
+
+<hr>
+<a name="Other-Info-Directories"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#New-Info-File" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-Dir-Entries" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Info-Files-in-Other-Directories"></a>
+<h3 class="subsection">20.2.3 Info Files in Other Directories</h3>
+<a name="index-Installing-Info-in-another-directory"></a>
+<a name="index-Info-installed-in-another-directory"></a>
+<a name="index-Another-Info-directory"></a>
+<a name="index-dir-files-and-Info-directories"></a>
+
+<p>If an Info file is not in the &lsquo;<tt>info</tt>&rsquo; directory, there are three
+ways to specify its location:
+</p>
+<ol>
+<li>
+Write the pathname in the &lsquo;<tt>dir</tt>&rsquo; file as the second part of the menu.
+
+</li><li>
+If you are using Emacs, list the name of the file in a second &lsquo;<tt>dir</tt>&rsquo;
+file, in its directory; and then add the name of that directory to the
+<code>Info-directory-list</code> variable in your personal or site
+initialization file.
+
+<p>This variable tells Emacs where to look for &lsquo;<tt>dir</tt>&rsquo; files (the files
+must be named &lsquo;<tt>dir</tt>&rsquo;).  Emacs merges the files named &lsquo;<tt>dir</tt>&rsquo; from
+each of the listed directories.  (In Emacs version 18, you can set the
+<code>Info-directory</code> variable to the name of only one
+directory.)
+</p>
+</li><li>
+Specify the Info directory name in the <code>INFOPATH</code> environment
+variable in your &lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>.cshrc</tt>&rsquo; initialization file.
+(Only you and others who set this environment variable will be able to
+find Info files whose location is specified this way.)
+</li></ol>
+
+<p>For example, to reach a test file in the &lsquo;<tt>/home/bob/info</tt>&rsquo;
+directory, you could add an entry like this to the menu in the
+standard &lsquo;<tt>dir</tt>&rsquo; file:
+</p>
+<div class="example">
+<pre class="example">* Test: (/home/bob/info/info-test).  Bob's own test file.
+</pre></div>
+
+<p>In this case, the absolute file name of the &lsquo;<tt>info-test</tt>&rsquo; file is
+written as the second part of the menu entry.
+</p>
+<p>Alternatively, you could write the following in your &lsquo;<tt>.emacs</tt>&rsquo; file:
+</p>
+<a name="index-Info_002ddirectory_002dlist"></a>
+<div class="example">
+<pre class="example">(require 'info)
+(setq Info-directory-list
+  (cons (expand-file-name &quot;/home/bob/info&quot;)
+        Info-directory-list))
+</pre></div>
+
+<p>This tells Emacs to merge the system &lsquo;<tt>dir</tt>&rsquo; file with the &lsquo;<tt>dir</tt>&rsquo;
+file in &lsquo;<tt>/home/bob/info</tt>&rsquo;.  Thus, Info will list the
+&lsquo;<tt>/home/bob/info/info-test</tt>&rsquo; file as a menu entry in the
+&lsquo;<tt>/home/bob/info/dir</tt>&rsquo; file.  Emacs does the merging only when
+<kbd>M-x info</kbd> is first run, so if you want to set
+<code>Info-directory-list</code> in an Emacs session where you&rsquo;ve already run
+<code>info</code>, you must <code>(setq Info-dir-contents nil)</code> to force Emacs
+to recompose the &lsquo;<tt>dir</tt>&rsquo; file.
+</p>
+<a name="index-INFOPATH"></a>
+<p>Finally, you can tell Info where to look by setting the <code>INFOPATH</code>
+environment variable in your shell startup file, such as &lsquo;<tt>.cshrc</tt>&rsquo;,
+&lsquo;<tt>.profile</tt>&rsquo; or &lsquo;<tt>autoexec.bat</tt>&rsquo;.  If you use a Bourne-compatible
+shell such as <code>sh</code> or <code>bash</code> for your shell command
+interpreter, you set the <code>INFOPATH</code> environment variable in the
+&lsquo;<tt>.profile</tt>&rsquo; initialization file; but if you use <code>csh</code> or
+<code>tcsh</code>, you set the variable in the &lsquo;<tt>.cshrc</tt>&rsquo; initialization
+file.  On MS-DOS/MS-Windows systems, you must set <code>INFOPATH</code> in
+your &lsquo;<tt>autoexec.bat</tt>&rsquo; file or in the Registry.  Each type of shell
+uses a different syntax.
+</p>
+<ul>
+<li>
+In a &lsquo;<tt>.cshrc</tt>&rsquo; file, you could set the <code>INFOPATH</code>
+variable as follows:
+
+<div class="smallexample">
+<pre class="smallexample">setenv INFOPATH .:~/info:/usr/local/emacs/info
+</pre></div>
+
+</li><li>
+In a &lsquo;<tt>.profile</tt>&rsquo; file, you would achieve the same effect by
+writing:
+
+<div class="smallexample">
+<pre class="smallexample">INFOPATH=.:$HOME/info:/usr/local/emacs/info
+export INFOPATH
+</pre></div>
+
+</li><li>
+<a name="index-autoexec_002ebat"></a>
+In a &lsquo;<tt>autoexec.bat</tt>&rsquo; file, you write this command<a name="DOCF12" href="texinfo_fot.html#FOOT12">(12)</a>:
+
+<div class="smallexample">
+<pre class="smallexample">set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
+</pre></div>
+</li></ul>
+
+<p>The &lsquo;<samp>.</samp>&rsquo; indicates the current directory as usual.  Emacs uses the
+<code>INFOPATH</code> environment variable to initialize the value of Emacs&rsquo;s
+own <code>Info-directory-list</code> variable.  The stand-alone Info reader
+merges any files named &lsquo;<tt>dir</tt>&rsquo; in any directory listed in the
+<code>INFOPATH</code> variable into a single menu presented to you in the node
+called &lsquo;<samp>(dir)Top</samp>&rsquo;.
+</p>
+<a name="index-colon_002c-last-in-INFOPATH"></a>
+<p>However you set <code>INFOPATH</code>, if its last character is a
+colon<a name="DOCF13" href="texinfo_fot.html#FOOT13">(13)</a>, this
+is replaced by the default (compiled-in) path.  This gives you a way to
+augment the default path with new directories without having to list all
+the standard places.  For example (using <code>sh</code> syntax):
+</p>
+<div class="example">
+<pre class="example">INFOPATH=/local/info:
+export INFOPATH
+</pre></div>
+
+<p>will search &lsquo;<tt>/local/info</tt>&rsquo; first, then the standard directories.
+Leading or doubled colons are not treated specially.
+</p>
+<a name="index-dir-file_002c-creating-your-own"></a>
+<p>When you create your own &lsquo;<tt>dir</tt>&rsquo; file for use with
+<code>Info-directory-list</code> or <code>INFOPATH</code>, it&rsquo;s easiest to start by
+copying an existing &lsquo;<tt>dir</tt>&rsquo; file and replace all the text after the
+&lsquo;<samp>* Menu:</samp>&rsquo; with your desired entries.  That way, the punctuation and
+special CTRL-_ characters that Info needs will be present.
+</p>
+
+<hr>
+<a name="Installing-Dir-Entries"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Other-Info-Directories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Invoking-install_002dinfo" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Installing-Info-Directory-Files"></a>
+<h3 class="subsection">20.2.4 Installing Info Directory Files</h3>
+
+<p>When you install an Info file onto your system, you can use the program
+<code>install-info</code> to update the Info directory file &lsquo;<tt>dir</tt>&rsquo;.
+Normally the makefile for the package runs <code>install-info</code>, just
+after copying the Info file into its proper installed location.
+</p>
+<a name="index-dircategory"></a>
+<a name="index-direntry"></a>
+<p>In order for the Info file to work with <code>install-info</code>, you include
+the commands <code>@dircategory</code> and
+<code>@direntry</code>&hellip;<code>@end direntry</code> in the Texinfo source
+file.  Use <code>@direntry</code> to specify the menu entries to add to the
+Info directory file, and use <code>@dircategory</code> to specify which part
+of the Info directory to put it in.  Here is how these commands are used
+in this manual:
+</p>
+<div class="smallexample">
+<pre class="smallexample">@dircategory Texinfo documentation system
+@direntry
+* Texinfo: (texinfo).           The GNU documentation format.
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
+@end direntry
+</pre></div>
+
+<p>Here&rsquo;s what this produces in the Info file:
+</p>
+<div class="smallexample">
+<pre class="smallexample">INFO-DIR-SECTION Texinfo documentation system
+START-INFO-DIR-ENTRY
+* Texinfo: (texinfo).           The GNU documentation format.
+* install-info: (texinfo)Invoking install-info. &hellip;
+&hellip;
+END-INFO-DIR-ENTRY
+</pre></div>
+
+<p>The <code>install-info</code> program sees these lines in the Info file, and
+that is how it knows what to do.
+</p>
+<p>Always use the <code>@direntry</code> and <code>@dircategory</code> commands near
+the beginning of the Texinfo input, before the first <code>@node</code>
+command.  If you use them later on in the input, <code>install-info</code>
+will not notice them.
+</p>
+<p>If you use <code>@dircategory</code> more than once in the Texinfo source,
+each usage specifies the &lsquo;current&rsquo; category; any subsequent
+<code>@direntry</code> commands will add to that category.  
+</p>
+<p>Here are some recommended <code>@dircategory</code> categories:
+</p>
+<div class="display">
+<pre class="display">GNU packages
+GNU programming tools
+GNU programming documentation
+GNU Emacs Lisp
+GNU libraries
+TeX
+Individual utilities
+</pre></div>
+
+<p>The idea is to include the &lsquo;Invoking&rsquo; node for every program installed
+by a package under &lsquo;Individual utilities&rsquo;, and an entry for the manual
+as a whole in the appropriate other category.
+</p>
+
+<hr>
+<a name="Invoking-install_002dinfo"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-Dir-Entries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Installing-an-Info-File" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Invoking-install_002dinfo-1"></a>
+<h3 class="subsection">20.2.5 Invoking install-info</h3>
+
+<a name="index-install_002dinfo"></a>
+
+<p><code>install-info</code> inserts menu entries from an Info file into the
+top-level &lsquo;<tt>dir</tt>&rsquo; file in the Info system (see the previous sections
+for an explanation of how the &lsquo;<tt>dir</tt>&rsquo; file works).  It&rsquo;s most often
+run as part of software installation, or when constructing a &lsquo;<tt>dir</tt>&rsquo; file
+for all manuals on a system.  Synopsis:
+</p>
+<div class="example">
+<pre class="example">install-info [<var>option</var>]&hellip; [<var>info-file</var> [<var>dir-file</var>]]
+</pre></div>
+
+<p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
+(described below) that define them must be.  There are no compile-time
+defaults, and standard input is never used.  <code>install-info</code> can
+read only one Info file and write only one &lsquo;<tt>dir</tt>&rsquo; file per invocation.
+</p>
+<a name="index-dir_002c-created-by-install_002dinfo"></a>
+<p>If <var>dir-file</var> (however specified) does not exist,
+<code>install-info</code> creates it if possible (with no entries).
+</p>
+<a name="index-Compressed-files_002c-reading"></a>
+<a name="index-Dir-files_002c-compressed"></a>
+<p>If any input file is compressed with <code>gzip</code> (see <a href="../gzip/Invoking-gzip.html#Invoking-gzip">Invoking gzip</a> in <cite>Gzip</cite>), <code>install-info</code> automatically uncompresses it
+for reading.  And if <var>dir-file</var> is compressed, <code>install-info</code>
+also automatically leaves it compressed after writing any changes.
+If <var>dir-file</var> itself does not exist, <code>install-info</code> tries to
+open &lsquo;<tt><var>dir-file</var>.gz</tt>&rsquo;.
+</p>
+<p>Options:
+</p>
+<dl compact="compact">
+<dt><code>--delete</code></dt>
+<dd><a name="index-_002d_002ddelete"></a>
+<p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
+name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
+an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert any new entries.
+</p>
+</dd>
+<dt><code>--dir-file=<var>name</var></code></dt>
+<dt><code>-d <var>name</var></code></dt>
+<dd><a name="index-_002d_002ddir_002dfile_003dname"></a>
+<a name="index-_002dd-name"></a>
+<p>Specify file name of the Info directory file.  This is equivalent to
+using the <var>dir-file</var> argument.
+</p>
+</dd>
+<dt><code>--entry=<var>text</var></code></dt>
+<dt><code>-e <var>text</var></code></dt>
+<dd><a name="index-_002d_002dentry_003dtext"></a>
+<a name="index-_002de-text"></a>
+<p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
+form of an Info menu item line plus zero or more extra lines starting
+with whitespace.  If you specify more than one entry, they are all
+added.  If you don&rsquo;t specify any entries, they are determined from
+information in the Info file itself.
+</p>
+</dd>
+<dt><code>--help</code></dt>
+<dt><code>-h</code></dt>
+<dd><a name="index-_002d_002dhelp-1"></a>
+<a name="index-_002dh-1"></a>
+<p>Display a usage message listing basic usage and all available options,
+then exit successfully.
+</p>
+</dd>
+<dt><code>--info-file=<var>file</var></code></dt>
+<dt><code>-i <var>file</var></code></dt>
+<dd><a name="index-_002d_002dinfo_002dfile_003dfile"></a>
+<a name="index-_002di-file"></a>
+<p>Specify Info file to install in the directory.
+Equivalent to using the <var>info-file</var> argument.
+</p>
+</dd>
+<dt><code>--info-dir=<var>dir</var></code></dt>
+<dt><code>-D <var>dir</var></code></dt>
+<dd><a name="index-_002d_002dinfo_002ddir_003ddir"></a>
+<a name="index-_002dD-dir"></a>
+<p>Specify the directory where &lsquo;<tt>dir</tt>&rsquo; resides.
+Equivalent to &lsquo;<samp>--dir-file=<var>dir</var>/dir</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--item=<var>text</var></code></dt>
+<dd><a name="index-_002d_002ditem_003dtext"></a>
+<p>Same as &lsquo;<samp>--entry=<var>text</var></samp>&rsquo;.  An Info directory entry is actually
+a menu item.
+</p>
+</dd>
+<dt><code>--quiet</code></dt>
+<dd><a name="index-_002d_002dquiet"></a>
+<p>Suppress warnings.
+</p>
+</dd>
+<dt><code>--remove</code></dt>
+<dt><code>-r</code></dt>
+<dd><a name="index-_002d_002dremove"></a>
+<a name="index-_002dr"></a>
+<p>Same as &lsquo;<samp>--delete</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--section=<var>sec</var></code></dt>
+<dt><code>-s <var>sec</var></code></dt>
+<dd><a name="index-_002d_002dsection_003dsec"></a>
+<a name="index-_002ds-sec"></a>
+<p>Put this file&rsquo;s entries in section <var>sec</var> of the directory.  If you
+specify more than one section, all the entries are added in each of the
+sections.  If you don&rsquo;t specify any sections, they are determined from
+information in the Info file itself.
+</p>
+</dd>
+<dt><code>--version</code></dt>
+<dt><code>-V</code></dt>
+<dd><a name="index-_002d_002dversion-1"></a>
+<a name="index-_002dV-1"></a>
+<a name="index-version-number_002c-finding"></a>
+<p>Display version information and exit successfully.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Creating-and-Installing-Info-Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Command-List.html#Command-List" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

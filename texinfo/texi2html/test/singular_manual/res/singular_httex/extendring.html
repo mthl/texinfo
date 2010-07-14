@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.2.6.7 extendring</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.2.6.7 extendring">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.6.7 extendring">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="extendring"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="defringp.html#defringp" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.6 defringp" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="fetchall.html#fetchall" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.8 fetchall" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="ring_005flib.html#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="extendring-1"></a>
+<h4 class="subsubsection">D.2.6.7 extendring</h4>
+<a name="index-extendring"></a>
+<p>Procedure from library <code>ring.lib</code> (see <a href="ring_005flib.html#ring_005flib">ring_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>extendring(na,n,va,o[iv,i,r]); na,va,o=strings,
+<br>n,i=integers, r=ring, iv=intvec of positive integers or iv=0
+</p>
+</dd>
+<dt><strong>Create:</strong></dt>
+<dd><p>Define a ring with name &lsquo;na&lsquo; which extends the ring r by adding n new
+variables in front of [after, if i!=0] the old variables and make it
+the basering [default: (i,r)=(0,basering)].
+<br> &ndash; The characteristic is the characteristic of r.
+<br> &ndash; The new vars are derived from va. If va is a single letter, say
+va=&quot;T&quot;, and if n&lt;=26 then T and the following n-1 letters from
+T..Z..T (resp. T(1..n) if n&gt;26) are taken as additional variables.
+If va is a single letter followed by (, say va=&quot;x(&quot;, the new
+variables are x(1),...,x(n).
+<br> &ndash; The ordering is the product ordering between the ordering of r and
+an ordering derived from &lsquo;o&lsquo; [and iv].
+<br> - If o contains a &rsquo;c&rsquo; or a &rsquo;C&rsquo; in front resp. at the end this is
+taken for the whole ordering in front resp. at the end. If o does
+not contain a &rsquo;c&rsquo; or a &rsquo;C&rsquo; the same rule applies to ordstr(r).
+<br> - If no intvec iv is given, or if iv=0, o may be any allowed ordstr,
+like &quot;ds&quot; or &quot;dp(2),wp(1,2,3),Ds(2)&quot; or &quot;ds(a),dp(b),ls&quot; if
+a and b are globally (!) defined integers and if a+b+1&lt;=n.
+If, however, a and b are local to a proc calling extendring, the
+intvec iv must be used to let extendring know the values of a and b
+<br> - If an intvec iv !=0 is given, iv[1],iv[2],... is taken for the
+1st, 2nd,... block of o, if o contains no substring &quot;w&quot; or &quot;W&quot;
+i.e. no weighted ordering (in the above case o=&quot;ds,dp,ls&quot;
+and iv=a,b).
+<br>If o contains a weighted ordering (only one (!) weighted block is
+allowed) iv[1] is taken as size for the weight-vector, the next
+iv[1] values of iv are taken as weights and the remaining values of
+iv as block-size for the remaining non-weighted blocks.
+e.g. o=&quot;dp,ws,Dp,ds&quot;, iv=3,2,3,4,2,5 creates the ordering
+dp(2),ws(2,3,4),Dp(5),ds
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>No return value
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>This proc is useful for adding deformation parameters.
+<br>This proc uses &rsquo;execute&rsquo; or calls a procedure using &rsquo;execute&rsquo;.
+If you use it in your own proc, let the local names of your proc
+start with @ (see the file HelpForProc)
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;ring.lib&quot;;
+ring r=0,(x,y,z),ds;
+show(r);&quot;&quot;;
+&rarr; // ring: (0),(x,y,z),(ds(3),C);
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; 
+//blocksize is derived from no of vars:
+int t=5;
+extendring(&quot;R1&quot;,t,&quot;a&quot;,&quot;dp&quot;);         //t global: &quot;dp&quot; -&gt; &quot;dp(5)&quot;
+&rarr; // basering is now R1
+show(R1); &quot;&quot;;
+&rarr; // ring: (0),(a,b,c,d,e,x,y,z),(dp(5),ds(3),C);
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; 
+extendring(&quot;R2&quot;,4,&quot;T(&quot;,&quot;c,dp&quot;,1,r);    //&quot;dp&quot; -&gt; &quot;c,..,dp(4)&quot;
+&rarr; // basering is now R2
+show(R2);&quot;&quot;;
+&rarr; // ring: (0),(x,y,z,T(1),T(2),T(3),T(4)),(c,ds(3),dp(4));
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; 
+//no intvec given, blocksize given: given blocksize is used:
+extendring(&quot;R3&quot;,4,&quot;T(&quot;,&quot;dp(2)&quot;,0,r);   // &quot;dp(2)&quot; -&gt; &quot;dp(2)&quot;
+&rarr; // basering is now R3
+show(R3);&quot;&quot;;
+&rarr; // ring: (0),(T(1),T(2),T(3),T(4),x,y,z),(dp(2),ds(5),C);
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+&rarr; 
+//intvec given: weights and blocksize is derived from given intvec
+//(no specification of a blocksize in the given ordstr is allowed!)
+//if intvec does not cover all given blocks, the last block is used
+//for the remaining variables, if intvec has too many components,
+//the last ones are ignored
+intvec v=3,2,3,4,1,3;
+extendring(&quot;R4&quot;,10,&quot;A&quot;,&quot;ds,ws,Dp,dp&quot;,v,0,r);
+&rarr; // basering is now R4
+//v covers 3 blocks: v[1] (=3) : no of components of ws
+//next v[1] values (=v[2..4]) give weights
+//remaining components of v are used for the remaining blocks
+show(R4);
+&rarr; // ring: (0),(A,B,C,D,E,F,G,H,I,J,x,y,z),(ds(1),ws(2,3,4),Dp(3),dp(3),ds(\
+   3),C);
+&rarr; // minpoly = 0
+&rarr; // objects belonging to this ring:
+kill r,R1,R2,R3,R4;
+if(system(&quot;with&quot;,&quot;Namespaces&quot;)) {
+if( nameof(Current) == &quot;Ring&quot; ) {
+kill Top::R1,Top::R2,Top::R3,Top::R4;
+} else {
+kill Ring::R1,Ring::R2,Ring::R3,Ring::R4;
+}
+}
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="defringp.html#defringp" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.6.6 defringp" align="middle"></a></td>
+<td valign="middle" align="left"><a href="fetchall.html#fetchall" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.6.8 fetchall" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="ring_005flib.html#ring_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2.6 ring_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: 3.6 Rule of programming non continuous models</title>
+
+<meta name="description" content="Miniker 102 manual: 3.6 Rule of programming non continuous models">
+<meta name="keywords" content="Miniker 102 manual: 3.6 Rule of programming non continuous models">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Advanced-programming.html#Advanced-programming" rel="up" title="3 Advanced Miniker programming">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Partial-Derivatives.html#Partial-Derivatives" rel="previous" title="3.5 Partial Derivatives">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Rule-of-programming-non-continuous-models"></a>
+<ul class="no-bullet"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="no-bullet"><li><a href="Advanced-programming.html#Advanced-programming">3 Advanced Miniker programming</a> </li>
+</ul></li>
+</ul>
+<div class="header">
+<p>
+[<a href="Partial-Derivatives.html#Derivating-a-power-function" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="Parameters.html#Parameters" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<a name="Rule-of-programming-non-continuous-models-1"></a>
+<h2 class="section">3.6 Rule of programming non continuous models</h2>
+
+<p>Some models may originally be non continuous, as the ones using a Fortran instruction <code>IF</code>.
+Some may use implicitly a step function on a variable. In such cases, the model has to be
+set in a derivable form, and use a &ldquo;smooth step&rdquo; instead.
+ One should be aware of that this apparently mathematical treatment currently
+indeed leads to a physical question about the macroscopic form of a physical law.
+At a macroscipic level, a step function is usually a nonsense.
+<a name="index-Heaviside-function"></a>
+Taking
+the example of phase-change, a fluid volume does not change phase at once, and a &ldquo;smooth
+change of state&rdquo; is a correct macroscopic model.
+</p>
+<p>Miniker provides with the smooth step function 
+<em>Heavyside</em><a name="DOCF3" href="#FOOT3">(3)</a> in the Miniker &lsquo;<tt>mathlib</tt>&rsquo;:
+</p>
+<div class="example">
+<pre class="example">        Delta = -1.&quot;K&quot;;
+        A_Ice =  heavyside(&quot;in:&quot; (T_K-Tf), Delta, &quot;out:&quot; dAIce_dT);
+</pre></div>
+
+<p>in this example, <code>Tf</code> is the ice fusion-temperature, <code>A_ice</code> 
+gives the ice-fraction
+of the mesh-volume of water at temperature <code>T_k</code>. 
+The smooth-step function is a quasi
+hyperbolic tangent function of       x&#x2215;&#x0394;, 
+normalised from 0 to 1, with a maximum slope
+of 2.5, see figure <a href="#heavy">Figure 3.1</a>.
+</p>
+<div class="float"><a name="heavy"></a>
+<img src="heavyside.jpg" alt="heavyside">
+
+</div><p><strong>Figure 3.1: Heaviside function and derivative
+</strong>
+</p>
+<p>For <code>Mortran</code> to be able to symbolicaly compute the partial derivarives, the rule
+is in the table of macros as:
+</p>
+<div class="example">
+<pre class="example">&amp;'(HEAVYSIDE(#,#,#))(/#)' = '((#1)(/#4)*HEAVYDELTA(#1,#2,#3))'
+</pre></div>
+
+<p>which uses the Foratn entry point <code>HeavyDelta</code> in the Fortrsan function <code>heavyside</code>.
+</p>
+<p>Another type of problem arises when coding a  
+<code>var=min(f(x),g(x))</code> Fortran instruction.
+In such a case one does not want a derivative and one will code:
+</p>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + (1.-HeavySide(f(x)-g(x),Delta,dum)*f(x);
+</pre></div>
+
+<p>or equivalently:
+</p>
+<div class="example">
+<pre class="example">var = HeavySide(f(x)-g(x),Delta,dum)*g(x) + HeavySide(g(x)-f(x),-Delta,dum)*f(x);
+</pre></div>
+
+<p><strong>Warning</strong>: the value of the argument <var>Delta</var> is important because 
+it will fix the maximum
+slope of the function that will appear as a coefficient in the 
+Jacbian matrices.
+</p>
+<div class="footnote">
+<hr>
+<h3>Footnotes</h3>
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>This naming is a joke
+for &ldquo;Inert&rdquo; Heaviside function.
+</p></div>
+<hr>
+<div class="header">
+<p>
+[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

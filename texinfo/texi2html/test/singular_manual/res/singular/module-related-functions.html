@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 4.10.4 module related functions</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 4.10.4 module related functions">
+<meta name="keywords" content="Singular 2-0-4 Manual: 4.10.4 module related functions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="module-related-functions"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="module-operations.html#module-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.3 module operations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="number.html#number" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.11 number" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="module.html#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="module-related-functions-1"></a>
+<h3 class="subsection">4.10.4 module related functions</h3>
+<a name="index-module-related-functions"></a>
+
+<dl compact="compact">
+<dt><code>coeffs</code></dt>
+<dd><p>matrix of coefficients (see <a href="coeffs.html#coeffs">coeffs</a>)
+</p></dd>
+<dt><code>degree</code></dt>
+<dd><p>multiplicity, dimension and codimension of the module of leading terms (see <a href="degree.html#degree">degree</a>)
+</p></dd>
+<dt><code>diff</code></dt>
+<dd><p>partial derivative (see <a href="diff.html#diff">diff</a>)
+</p></dd>
+<dt><code>dim</code></dt>
+<dd><p>Krull dimension of free module over the basering modulo the module of leading terms (see <a href="dim.html#dim">dim</a>)
+</p></dd>
+<dt><code>eliminate</code></dt>
+<dd><p>elimination of variables (see <a href="eliminate.html#eliminate">eliminate</a>)
+</p></dd>
+<dt><code>freemodule</code></dt>
+<dd><p>the free module of given rank (see <a href="freemodule.html#freemodule">freemodule</a>)
+</p></dd>
+<dt><code>groebner</code></dt>
+<dd><p>Groebner basis computation (a wrapper around <code>std,stdhilb,stdfglm</code>,...)
+(see <a href="groebner.html#groebner">groebner</a>)
+</p></dd>
+<dt><code>hilb</code></dt>
+<dd><p>Hilbert function of a standard basis (see <a href="hilb.html#hilb">hilb</a>)
+</p></dd>
+<dt><code>homog</code></dt>
+<dd><p>homogenization with respect to a variable (see <a href="homog.html#homog">homog</a>)
+</p></dd>
+<dt><code>interred</code></dt>
+<dd><p>interreduction of a module (see <a href="interred.html#interred">interred</a>)
+</p></dd>
+<dt><code>intersect</code></dt>
+<dd><p>module intersection (see <a href="intersect.html#intersect">intersect</a>)
+</p></dd>
+<dt><code>jet</code></dt>
+<dd><p>Taylor series up to a given order (see <a href="jet.html#jet">jet</a>)
+</p></dd>
+<dt><code>kbase</code></dt>
+<dd><p>vector space basis of free module over the basering modulo the module of
+leading terms (see <a href="kbase.html#kbase">kbase</a>)
+</p></dd>
+<dt><code>lead</code></dt>
+<dd><p>initial module (see <a href="lead.html#lead">lead</a>)
+</p></dd>
+<dt><code>lift</code></dt>
+<dd><p>lift-matrix (see <a href="lift.html#lift">lift</a>)
+</p></dd>
+<dt><code>liftstd</code></dt>
+<dd><p>standard basis and transformation matrix computation (see <a href="liftstd.html#liftstd">liftstd</a>)
+</p></dd>
+<dt><code>lres</code></dt>
+<dd><p>free resolution (see <a href="lres.html#lres">lres</a>)
+</p></dd>
+<dt><code>minbase</code></dt>
+<dd><p>minimal generating set of a homogeneous ideal, resp. module, or an ideal, resp. module,
+over a local ring
+</p></dd>
+<dt><code>modulo</code></dt>
+<dd><p>represents
+<!-- MATH
+ $(h1+h2)/h1=h2/(h1 \cap h2)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_82.png"
+ ALT="$(h1+h2)/h1=h2/(h1 \cap h2)$"></SPAN>
+(see <a href="modulo.html#modulo">modulo</a>)
+</p></dd>
+<dt><code>mres</code></dt>
+<dd><p>minimal free resolution of an ideal resp. module w.r.t. a minimal set of generators of the given module
+(see <a href="mres.html#mres">mres</a>)
+</p></dd>
+<dt><code>mult</code></dt>
+<dd><p>multiplicity, resp. degree, of the module of leading terms (see <a href="mult.html#mult">mult</a>)
+</p></dd>
+<dt><code>ncols</code></dt>
+<dd><p>number of columns (see <a href="ncols.html#ncols">ncols</a>)
+</p></dd>
+<dt><code>nrows</code></dt>
+<dd><p>number of rows (see <a href="nrows.html#nrows">nrows</a>)
+</p></dd>
+<dt><code>print</code></dt>
+<dd><p>nice print format (see <a href="print.html#print">print</a>)
+</p></dd>
+<dt><code>prune</code></dt>
+<dd><p>minimize the embedding into a free module (see <a href="prune.html#prune">prune</a>)
+</p></dd>
+<dt><code>qhweight</code></dt>
+<dd><p>quasihomogeneous weights of an ideal, resp. module (see <a href="qhweight.html#qhweight">qhweight</a>)
+</p></dd>
+<dt><code>quotient</code></dt>
+<dd><p>module quotient (see <a href="quotient.html#quotient">quotient</a>)
+</p></dd>
+<dt><code>reduce</code></dt>
+<dd><p>normalform with respect to a standard basis (see <a href="reduce.html#reduce">reduce</a>)
+</p></dd>
+<dt><code>res</code></dt>
+<dd><p>free resolution of an ideal, resp. module, but not changing the given ideal, resp. module
+(see <a href="res.html#res">res</a>)
+</p></dd>
+<dt><code>simplify</code></dt>
+<dd><p>simplify a set of vectors (see <a href="simplify.html#simplify">simplify</a>)
+</p></dd>
+<dt><code>size</code></dt>
+<dd><p>number of non-zero generators (see <a href="size.html#size">size</a>)
+</p></dd>
+<dt><code>sortvec</code></dt>
+<dd><p>permutation for sorting ideals/modules (see <a href="sortvec.html#sortvec">sortvec</a>)
+</p></dd>
+<dt><code>sres</code></dt>
+<dd><p>free resolution of a standard basis (see <a href="sres.html#sres">sres</a>)
+</p></dd>
+<dt><code>std</code></dt>
+<dd><p>standard basis computation (see <a href="std.html#std">std</a>, <a href="liftstd.html#liftstd">liftstd</a>)
+</p></dd>
+<dt><code>subst</code></dt>
+<dd><p>substitute a ring variable (see <a href="subst.html#subst">subst</a>)
+</p></dd>
+<dt><code>syz</code></dt>
+<dd><p>computation of the first syzygy module (see <a href="syz.html#syz">syz</a>)
+</p></dd>
+<dt><code>vdim</code></dt>
+<dd><p>vector space dimension of free module over the basering modulo module
+of leading terms (see <a href="vdim.html#vdim">vdim</a>)
+</p></dd>
+<dt><code>weight</code></dt>
+<dd><p>&quot;optimal&quot; weights (see <a href="weight.html#weight">weight</a>)
+</p></dd>
+</dl>
+
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="module-operations.html#module-operations" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 4.10.3 module operations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="number.html#number" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 4.11 number" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="module.html#module" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 4.10 module" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

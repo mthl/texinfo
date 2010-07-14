@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.2.1 A quick guide to Emacs</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.2.1 A quick guide to Emacs">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.1 A quick guide to Emacs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="A-quick-guide-to-Emacs"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2 Emacs user interface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Running-SINGULAR-under-Emacs.html#Running-SINGULAR-under-Emacs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.2 Running SINGULAR under Emacs" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="A-quick-guide-to-Emacs-1"></a>
+<h3 class="subsection">3.2.1 A quick guide to Emacs</h3>
+<a name="index-Emacs_002c-overview"></a>
+<a name="index-Emacs_002c-a-quick-guide"></a>
+
+<p>This section gives a tutorial-like introduction to Emacs. Especially to
+users who are not familiar with Emacs, we recommend that they go through
+this section and try out the described features.
+</p>
+<p>Emacs commands generally involve the <code>CONTROL</code> key (sometimes
+labeled <code>CTRL</code> or <code>CTL</code>) or the <code>META</code> key.  On some
+keyboards, the <code>META</code> key is labeled <code>ALT</code> or <code>EDIT</code> or
+something else (for example, on Sun keyboards, the diamond key to the
+left of the space-bar is <code>META</code>).  If there is no <code>META</code> key,
+the <code>ESC</code> key can be used, instead.  Rather than writing out
+<code>META</code> or
+<code>CONTROL</code> each time we want to prefix a character, we will use the
+following abbreviations:
+</p>
+<table>
+<tr><td width="20%"><code>C-&lt;chr&gt;</code></td><td width="80%">means hold the <code>CONTROL</code> key while typing the character
+<code>&lt;chr&gt;</code>. Thus, <code>C-f</code> would be: hold the <code>CONTROL</code> key and
+type <code>f</code>.</td></tr>
+<tr><td width="20%"><code>M-&lt;chr&gt;</code></td><td width="80%">means hold the <code>META</code> key down while typing <code>&lt;chr&gt;</code>.  If there
+is no <code>META</code> key, type &lt;ESC&gt;, release it, then type the
+character <code>&lt;chr&gt;</code>.</td></tr>
+</table>
+
+<p>For user new to Emacs, we highly recommend that they go through the
+interactive Emacs tutorial: type <code>C-h t</code> to start it.
+</p>
+<p>For others, it is important to understand the following Emacs concepts:
+</p><dl compact="compact">
+<dt>window</dt>
+<dd><p>In Emacs terminology, a window refers to separate panes within the same
+window of the window system, and not to overlapping, separate
+windows. When using <small>SINGULAR</small> within Emacs, extra windows may appear
+which display help or output from certain commands. The most important
+window commands are:
+</p><table>
+<tr><td width="200%"><code>C-x 1</code></td><td width="30%"><code>File-&gt;Un-Split</code></td><td width="50%">Un-Split window (i.e., kill other windows)</td></tr>
+<tr><td width="200%"><code>C-x o</code></td><td width="30%"></td><td width="50%">Goto other window, i.e. move cursor into other window.</td></tr>
+</table>
+
+</dd>
+<dt>cursor and point</dt>
+<dd><p>The location of the cursor in the text is also called &quot;point&quot;.  To
+paraphrase, the cursor shows on the screen where point is located in
+the text. Here is a summary of simple cursor-moving operations:
+</p><table>
+<tr><td width="20%"><code>C-f</code></td><td width="80%">Move forward a character</td></tr>
+<tr><td width="20%"><code>C-b</code></td><td width="80%">Move backward a character</td></tr>
+<tr><td width="20%"><code>M-f</code></td><td width="80%">Move forward a word</td></tr>
+<tr><td width="20%"><code>M-b</code></td><td width="80%">Move backward a word</td></tr>
+<tr><td width="20%"><code>C-a</code></td><td width="80%">Move to the beginning of line</td></tr>
+<tr><td width="20%"><code>C-e</code></td><td width="80%">Move to the end of line</td></tr>
+</table>
+
+</dd>
+<dt>buffer</dt>
+<dd><p>Any text you see in an Emacs window is always part of some buffer. For
+example, each file you are editing with Emacs is stored inside a buffer,
+but also <small>SINGULAR</small> is running inside an Emacs buffer. Each buffer
+has a name: for example, the buffer of a file you edit usually has the
+same name as the file, <small>SINGULAR</small> is running in a buffer which has
+the name <code>*singular*</code> (or, <code>*singular&lt;2&gt;*</code>,
+<code>*singular&lt;3&gt;*</code>, etc., if you have multiple <small>SINGULAR</small>
+sessions within the same Emacs).
+</p>
+<p>When you are asked for input to an Emacs command, the cursor
+moves to the bottom line of Emacs, i.e., to a special buffer, called the
+&quot;minibuffer&quot;. Typing &lt;RETURN&gt; within the minibuffer, ends the
+input, typing &lt;SPACE&gt; within the minibuffer, lists all possible
+input values to the interactive Emacs command.
+</p>
+<p>The most important buffer commands are
+</p><table>
+<tr><td width="20%"><code>C-x b</code></td><td width="80%">Switch buffer</td></tr>
+<tr><td width="20%"><code>C-x k</code></td><td width="80%">Kill current buffer</td></tr>
+</table>
+<p>Alternatively, you can switch to or kill buffers using the <code>Buffer</code>
+menu.
+</p>
+</dd>
+<dt>Executing commands</dt>
+<dd><p>Emacs commands are executed by typing <code>M-x &lt;command-name&gt;</code>
+(remember that &lt;SPACE&gt; completes partial
+command names). Important and frequently used commands have short-cuts
+for their execution: Key bindings or even menu entries. For example, a
+file can be loaded with <code>M-x load-file</code>, or <code>C-x C-f</code>, or with
+the <code>File-&gt;Open</code> menu.
+</p>
+</dd>
+<dt>How to exit</dt>
+<dd><p>To end the Emacs (and, <small>SINGULAR</small>) session,
+type <code>C-x C-c</code> (two characters), or use the <code>File -&gt; Exit</code>
+menu.
+</p>
+</dd>
+<dt>When Emacs is hung</dt>
+<dd><p>If Emacs stops responding to your commands, you can stop it safely by
+typing <code>C-g</code>, or, if this fails, by typing <code>C-]</code>.
+</p>
+</dd>
+<dt>More help</dt>
+<dd><p>Nearly all aspects of Emacs are very well documented: type
+<code>C-h</code>  and then a character saying what kind of help you want.
+For example, typing <code>C-h i</code> enters the <code>Info</code> documentation
+browser.
+</p>
+</dd>
+<dt>Using the mouse</dt>
+<dd><p>Emacs is fully integrated with the mouse. In particular, clicking the
+right mouse button brings up a pop-up menu which usually contains a few
+commonly used commands.
+</p></dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Running-SINGULAR-under-Emacs.html#Running-SINGULAR-under-Emacs" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.2 Running SINGULAR under Emacs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

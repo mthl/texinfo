@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.3.4 isEquising</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.3.4 isEquising">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.3.4 isEquising">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="isEquising"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="esStratum.html#esStratum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.3 esStratum" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="control_005fMatrix.html#control_005fMatrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.5 control_Matrix" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="equising_005flib.html#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="isEquising-1"></a>
+<h4 class="subsubsection">D.5.3.4 isEquising</h4>
+<a name="index-isEquising"></a>
+<p>Procedure from library <code>equising.lib</code> (see <a href="equising_005flib.html#equising_005flib">equising_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>isEquising(F[,m,L]); F poly, m int, L list
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>F defines a deformation of a reduced bivariate polynomial f
+and the characteristic of the basering does not divide mult(f). <br>
+If nv is the number of variables of the basering, then the first
+nv-2 variables are the deformation parameters. <br>
+If the basering is a qring, ideal(basering) must only depend
+on the deformation parameters.
+</p>
+</dd>
+<dt><strong>Compute:</strong></dt>
+<dd><p>tests if the given family is equisingular along the trivial
+section.
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>int: 1 if the family is equisingular, 0 otherwise.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>L is supposed to be the output of reddevelop (with the given ordering
+of the variables appearing in f). <br>
+If m is given, the family is considered over A/maxideal(m). <br>
+This procedure uses <code>execute</code> or calls a procedure using
+<code>execute</code>.
+printlevel&gt;=2 displays additional information.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;equising.lib&quot;;
+ring r = 0,(a,b,x,y),ds;
+poly F = (x2+2xy+y2+x5)+ay3+bx5;
+isEquising(F);
+&rarr; 0
+ideal I = ideal(a);
+qring q = std(I);
+poly F = imap(r,F);
+isEquising(F);
+&rarr; 1
+ring rr=0,(A,B,C,x,y),ls;
+poly f=x7+y7+(x-y)^2*x2y2;
+poly F=f+A*y*diff(f,x)+B*x*diff(f,x);
+isEquising(F);  
+&rarr; 0
+isEquising(F,2);    // computation over  Q[a,b] / &lt;a,b&gt;^2
+&rarr; 1
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="esStratum.html#esStratum" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.3 esStratum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="control_005fMatrix.html#control_005fMatrix" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.5 control_Matrix" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="equising_005flib.html#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>CVS&mdash;Concurrent Versions System v4.2: Appendix D All environment variables which affect CVS</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v4.2: Appendix D All environment variables which affect CVS">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v4.2: Appendix D All environment variables which affect CVS">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Environment-variables"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Administrative-files.html#Administrative-files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Administrative-files.html#config" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Compatibility.html#Compatibility" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Compatibility.html#Compatibility" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="All-environment-variables-which-affect-CVS"></a>
+<h1 class="appendix">Appendix D All environment variables which affect CVS</h1>
+<a name="index-Environment-variables"></a>
+<a name="index-Reference-manual-for-variables"></a>
+
+<p>This is a complete list of all environment variables
+that affect <small>CVS</small>.
+</p>
+<dl compact="compact">
+<dd><a name="index-CVSIGNORE_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVSIGNORE</code></dt>
+<dd><p>A whitespace-separated list of file name patterns that
+<small>CVS</small> should ignore. See section <a href="Administrative-files.html#cvsignore">Ignoring files via cvsignore</a>.
+</p>
+<a name="index-CVSWRAPPERS_002c-environment-variable-1"></a>
+</dd>
+<dt><code>$CVSWRAPPERS</code></dt>
+<dd><p>A whitespace-separated list of file name patterns that
+<small>CVS</small> should treat as wrappers. See section <a href="Administrative-files.html#Wrappers">The cvswrappers file</a>.
+</p>
+<a name="index-CVSREAD_002c-environment-variable"></a>
+<a name="index-Read_002donly-files_002c-and-CVSREAD"></a>
+</dd>
+<dt><code>$CVSREAD</code></dt>
+<dd><p>If this is set, <code>checkout</code> and <code>update</code> will
+try hard to make the files in your working directory
+read-only.  When this is not set, the default behavior
+is to permit modification of your working files.
+</p>
+<a name="index-CVSREADONLYFS_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVSREADONLYFS</code></dt>
+<dd><p>Turns on read-only repository mode. This allows one to
+check out from a read-only repository, such as within
+an anoncvs server, or from a CDROM repository.
+</p>
+<p>It has the same effect as if the &lsquo;<samp>-R</samp>&rsquo; command-line
+option is used. This can also allow the use of
+read-only NFS repositories.
+</p>
+</dd>
+<dt><code>$CVSUMASK</code></dt>
+<dd><p>Controls permissions of files in the repository.  See
+<a href="Repository.html#File-permissions">File permissions</a>.
+</p>
+</dd>
+<dt><code>$CVSROOT</code></dt>
+<dd><p>Should contain the full pathname to the root of the <small>CVS</small>
+source repository (where the <small>RCS</small> files are
+kept).  This information must be available to <small>CVS</small> for
+most commands to execute; if <code>$CVSROOT</code> is not set,
+or if you wish to override it for one invocation, you
+can supply it on the command line: &lsquo;<samp>cvs -d cvsroot
+cvs_command&hellip;</samp>&rsquo; Once you have checked out a working
+directory, <small>CVS</small> stores the appropriate root (in
+the file &lsquo;<tt>CVS/Root</tt>&rsquo;), so normally you only need to
+worry about this when initially checking out a working
+directory.
+</p>
+</dd>
+<dt><code>$CVSEDITOR</code></dt>
+<dd><a name="index-CVSEDITOR_002c-environment-variable-1"></a>
+</dd>
+<dt><code>$EDITOR</code></dt>
+<dd><a name="index-EDITOR_002c-environment-variable-1"></a>
+</dd>
+<dt><code>$VISUAL</code></dt>
+<dd><a name="index-VISUAL_002c-environment-variable-1"></a>
+<p>Specifies the program to use for recording log messages
+during commit.  <code>$CVSEDITOR</code> overrides
+<code>$EDITOR</code>, which overrides <code>$VISUAL</code>.
+See <a href="Overview.html#Committing-your-changes">Committing your changes</a> for more or
+<a href="CVS-commands.html#Global-options">Global options</a> for alternative ways of specifying a
+log editor.
+</p>
+<a name="index-PATH_002c-environment-variable"></a>
+</dd>
+<dt><code>$PATH</code></dt>
+<dd><p>If <code>$RCSBIN</code> is not set, and no path is compiled
+into <small>CVS</small>, it will use <code>$PATH</code> to try to find all
+programs it uses.
+</p>
+<a name="index-HOME_002c-environment-variable"></a>
+</dd>
+<dt><code>$HOME</code></dt>
+<dd><a name="index-HOMEPATH_002c-environment-variable"></a>
+</dd>
+<dt><code>$HOMEPATH</code></dt>
+<dd><a name="index-HOMEDRIVE_002c-environment-variable"></a>
+</dd>
+<dt><code>$HOMEDRIVE</code></dt>
+<dd><p>Used to locate the directory where the &lsquo;<tt>.cvsrc</tt>&rsquo;
+file, and other such files, are searched.  On Unix, <small>CVS</small>
+just checks for <code>HOME</code>.  On Windows NT, the system will
+set <code>HOMEDRIVE</code>, for example to &lsquo;<samp>d:</samp>&rsquo; and <code>HOMEPATH</code>,
+for example to &lsquo;<tt>\joe</tt>&rsquo;.  On Windows 95, you&rsquo;ll
+probably need to set <code>HOMEDRIVE</code> and <code>HOMEPATH</code> yourself.
+</p>
+<a name="index-CVS_005fRSH_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_RSH</code></dt>
+<dd><p>Specifies the external program which <small>CVS</small> connects with,
+when <code>:ext:</code> access method is specified.
+see section <a href="Repository.html#Connecting-via-rsh">Connecting with rsh</a>.
+</p>
+</dd>
+<dt><code>$CVS_SERVER</code></dt>
+<dd><p>Used in client-server mode when accessing a remote
+repository using <small>RSH</small>.  It specifies the name of
+the program to start on the server side (and any
+necessary arguments) when accessing a remote repository
+using the <code>:ext:</code>, <code>:fork:</code>, or <code>:server:</code> access methods.
+The default value for <code>:ext:</code> and <code>:server:</code> is <code>cvs</code>;
+the default value for <code>:fork:</code> is the name used to run the client.
+see section <a href="Repository.html#Connecting-via-rsh">Connecting with rsh</a>
+</p>
+</dd>
+<dt><code>$CVS_PASSFILE</code></dt>
+<dd><p>Used in client-server mode when accessing the <code>cvs
+login server</code>.  Default value is &lsquo;<tt>$HOME/.cvspass</tt>&rsquo;.
+see section <a href="Repository.html#Password-authentication-client">Using the client with password authentication</a>
+</p>
+</dd>
+<dt><code>$CVS_CLIENT_PORT</code></dt>
+<dd><p>Used in client-server mode to set the port to use when accessing the server
+via Kerberos, GSSAPI, or <small>CVS</small>&rsquo;s password authentication protocol
+if the port is not specified in the CVSROOT.
+see section <a href="Repository.html#Remote-repositories">Remote repositories</a>
+</p>
+<a name="index-CVS_005fRCMD_005fPORT_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_RCMD_PORT</code></dt>
+<dd><p>Used in client-server mode.  If set, specifies the port
+number to be used when accessing the <small>RCMD</small> demon on
+the server side. (Currently not used for Unix clients).
+</p>
+<a name="index-CVS_005fCLIENT_005fLOG_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_CLIENT_LOG</code></dt>
+<dd><p>Used for debugging only in client-server
+mode.  If set, everything sent to the server is logged
+into &lsquo;<tt><code>$CVS_CLIENT_LOG</code>.in</tt>&rsquo; and everything
+sent from the server is logged into
+&lsquo;<tt><code>$CVS_CLIENT_LOG</code>.out</tt>&rsquo;.
+</p>
+<a name="index-CVS_005fSERVER_005fSLEEP_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_SERVER_SLEEP</code></dt>
+<dd><p>Used only for debugging the server side in
+client-server mode.  If set, delays the start of the
+server child process the specified amount of
+seconds so that you can attach to it with a debugger.
+</p>
+<a name="index-CVS_005fIGNORE_005fREMOTE_005fROOT_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_IGNORE_REMOTE_ROOT</code></dt>
+<dd><p>For <small>CVS</small> 1.10 and older, setting this variable
+prevents <small>CVS</small> from overwriting the &lsquo;<tt>CVS/Root</tt>&rsquo;
+file when the &lsquo;<samp>-d</samp>&rsquo; global option is specified.
+Later versions of <small>CVS</small> do not rewrite
+&lsquo;<tt>CVS/Root</tt>&rsquo;, so <code>CVS_IGNORE_REMOTE_ROOT</code> has no
+effect.
+</p>
+<a name="index-CVS_005fLOCAL_005fBRANCH_005fNUM_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_LOCAL_BRANCH_NUM</code></dt>
+<dd><p>Setting this variable allows some control over the
+branch number that is assigned. This is specifically to
+support the local commit feature of CVSup. If one sets
+<code>CVS_LOCAL_BRANCH_NUM</code> to (say) 1000 then branches
+the local repository, the revision numbers will look
+like 1.66.1000.xx. There is almost a dead-set certainty
+that there will be no conflicts with version numbers.
+</p>
+<a name="index-COMSPEC_002c-environment-variable"></a>
+</dd>
+<dt><code>$COMSPEC</code></dt>
+<dd><p>Used under OS/2 only.  It specifies the name of the
+command interpreter and defaults to <small>CMD.EXE</small>.
+</p>
+<a name="index-TMPDIR_002c-environment-variable"></a>
+</dd>
+<dt><code>$TMPDIR</code></dt>
+<dd><a name="index-TMP_002c-environment-variable"></a>
+</dd>
+<dt><code>$TMP</code></dt>
+<dd><a name="index-TEMP_002c-environment-variable"></a>
+</dd>
+<dt><code>$TEMP</code></dt>
+<dd><a name="index-Temporary-files_002c-location-of"></a>
+<p>Directory in which temporary files are located.
+The <small>CVS</small> server uses
+<code>TMPDIR</code>.  See section <a href="CVS-commands.html#Global-options">Global options</a>, for a
+description of how to specify this.
+Some parts of <small>CVS</small> will always use &lsquo;<tt>/tmp</tt>&rsquo; (via
+the <code>tmpnam</code> function provided by the system).
+</p>
+<p>On Windows NT, <code>TMP</code> is used (via the <code>_tempnam</code>
+function provided by the system).
+</p>
+<p>The <code>patch</code> program which is used by the <small>CVS</small>
+client uses <code>TMPDIR</code>, and if it is not set, uses
+&lsquo;<tt>/tmp</tt>&rsquo; (at least with GNU patch 2.1).  Note that
+if your server and client are both running <small>CVS</small>
+1.9.10 or later, <small>CVS</small> will not invoke an external
+<code>patch</code> program.
+</p>
+<a name="index-CVS_005fPID_002c-environment-variable"></a>
+</dd>
+<dt><code>$CVS_PID</code></dt>
+<dd><p>This is the process identification (aka pid) number of
+the <small>CVS</small> process. It is often useful in the
+programs and/or scripts specified by the
+&lsquo;<tt>commitinfo</tt>&rsquo;, &lsquo;<tt>verifymsg</tt>&rsquo;, &lsquo;<tt>loginfo</tt>&rsquo;
+files.
+</p></dd>
+</dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Administrative-files.html#Administrative-files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Compatibility.html#Compatibility" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

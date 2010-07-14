@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.3.2 esIdeal</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.3.2 esIdeal">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.3.2 esIdeal">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="esIdeal"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="tau_005fes.html#tau_005fes" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.1 tau_es" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="esStratum.html#esStratum" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.3 esStratum" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="equising_005flib.html#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="esIdeal-1"></a>
+<h4 class="subsubsection">D.5.3.2 esIdeal</h4>
+<a name="index-esIdeal"></a>
+<p>Procedure from library <code>equising.lib</code> (see <a href="equising_005flib.html#equising_005flib">equising_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>esIdeal(f); f poly
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>f is a reduced bivariate polynomial, the basering has precisely
+two variables, is local and no qring, and the characteristic of
+the ground field does not divide mult(f).
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>list of two ideals:
+</p><div class="format">
+<pre class="format">          _[1]:  equisingularity ideal of f (in sense of Wahl)
+          _[2]:  equisingularity ideal of f with fixed section
+</pre></div>
+
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>if some of the above condition is not satisfied then return
+value is list(0,0).
+</p>
+<a name="index-equisingularity-ideal"></a>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;equising.lib&quot;;
+ring r=0,(x,y),ds;
+poly f=x7+y7+(x-y)^2*x2y2; 
+list K=esIdeal(f);
+&rarr; polynomial is Newton degenerated !
+&rarr; 
+&rarr; // 
+&rarr; // versal deformation with triv. section
+&rarr; // =====================================
+&rarr; // 
+&rarr; // 
+&rarr; // Compute equisingular Stratum over Spec(C[t]/t^2)
+&rarr; // ================================================
+&rarr; // 
+&rarr; // finished
+&rarr; // 
+option(redSB);
+// Wahl's equisingularity ideal:
+std(K[1]);
+&rarr; _[1]=4x4y-10x2y3+6xy4+21x6+14y6
+&rarr; _[2]=4x3y2-6x2y3+2xy4+7x6
+&rarr; _[3]=x2y4-xy5
+&rarr; _[4]=x7
+&rarr; _[5]=xy6
+&rarr; _[6]=y7
+ring rr=0,(x,y),ds;
+poly f=x4+4x3y+6x2y2+4xy3+y4+2x2y15+4xy16+2y17+xy23+y24+y30+y31;
+list K=esIdeal(f);
+&rarr; polynomial is Newton degenerated !
+&rarr; 
+&rarr; // 
+&rarr; // versal deformation with triv. section
+&rarr; // =====================================
+&rarr; // 
+&rarr; // 
+&rarr; // Compute equisingular Stratum over Spec(C[t]/t^2)
+&rarr; // ================================================
+&rarr; // 
+&rarr; // finished
+&rarr; // 
+vdim(std(K[1]));
+&rarr; 68
+// the latter should be equal to: 
+tau_es(f);
+&rarr; 68
+</pre></div>
+<p><strong>See also:</strong>
+<a href="esStratum.html#esStratum">esStratum</a>;
+<a href="tau_005fes.html#tau_005fes">tau_es</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="tau_005fes.html#tau_005fes" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.3.1 tau_es" align="middle"></a></td>
+<td valign="middle" align="left"><a href="esStratum.html#esStratum" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.3.3 esStratum" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="equising_005flib.html#equising_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.3 equising_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

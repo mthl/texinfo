@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: B.2.4 Local orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.4 Local orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Local-orderings"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Global-orderings.html#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Module-orderings.html#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Monomial-orderings.html#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Local-orderings-1"></a>
+<h3 class="subsection">B.2.4 Local orderings</h3>
+<a name="index-Local-orderings"></a>
+<a name="index-orderings_002c-local"></a>
+
+<p>For ls, ds, Ds and, if the weights are positive integers, also for ws and
+Ws,  we have
+
+Loc <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>] = <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]<sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">x</span><span 
+class="cmr-7">)</span></sub>,  
+ the localization of 
+ <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span>]  
+at the maximal ideal
+ &#x00A0;(<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,...,x</span><sub><span 
+class="cmmi-7">n</span></sub>).  
+</p>
+<dl compact="compact">
+<dt>ls:</dt>
+<dd><p>negative lexicographical ordering:
+<a name="index-negative-lexicographical-ordering"></a>
+<a name="index-ls_002c-local-ordering"></a>
+<br>
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup> <span 
+class="cmsy-10">&#x21D4;&#x2203; </span>1 <span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">i </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">n </span>: <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003E; &#x03B2;</span><sub><span 
+class="cmmi-7">i</span></sub>.  
+</p></dd>
+<dt>ds:</dt>
+<dd><p>negative degree reverse lexicographical ordering:
+<a name="index-negative-degree-reverse-lexicographical-ordering"></a>
+<a name="index-ds_002c-local-ordering"></a>
+<br>
+ let
+deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> + <img 
+src="sing_tex4ht_tex28x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">, </span>then  
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup> <span 
+class="cmsy-10">&#x21D4;</span> deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) <span 
+class="cmmi-10">&#x003E;</span> deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>) or  
+<br>
+                 deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>) and
+<span 
+class="cmsy-10">&#x2203;</span><span 
+class="cmmi-10">&#x00A0;</span>1 <span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">i </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">n </span>: <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">+1</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">+1</span></sub><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003E; &#x03B2;</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">. </span> 
+</p></dd>
+<dt>Ds:</dt>
+<dd><p>negative degree lexicographical ordering:
+<a name="index-negative-degree-lexicographical-ordering"></a>
+<a name="index-Ds_002c-local-ordering"></a>
+<br>
+ let deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> + <img 
+src="sing_tex4ht_tex29x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">, </span>then  
+ <span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup> <span 
+class="cmmi-10">&#x003C; x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup> <span 
+class="cmsy-10">&#x21D4;</span> deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) <span 
+class="cmmi-10">&#x003E;</span> deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>)
+or  
+<br>
+                 deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B2;</span></sup>) and <span 
+class="cmsy-10">&#x2203;</span><span 
+class="cmmi-10">&#x00A0;</span>1 <span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">i </span><span 
+class="cmsy-10">&#x2264; </span><span 
+class="cmmi-10">n </span>: <span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sub> = <span 
+class="cmmi-10">&#x03B2;</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,&#x03B1;</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmmi-10">&#x003C; &#x03B2;</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">. </span> 
+</p></dd>
+<dt>ws:</dt>
+<dd><p>(general) weighted reverse lexicographical ordering:
+<a name="index-general-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-local-weighted-reverse-lexicographical-ordering"></a>
+<a name="index-ws_002c-local-ordering"></a>
+<br>
+ <span 
+class="cmtt-10">ws</span>(<span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>)<span 
+class="cmmi-10">, w</span><sub><span 
+class="cmr-7">1</span></sub>  
+ a nonzero integer,
+
+<span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">2</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>  
+ any integer (including 0),
+ is defined as <code>ds</code>
+ but with
+ deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = <span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> + <img 
+src="sing_tex4ht_tex30x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">. </span> 
+</p></dd>
+<dt>Ws:</dt>
+<dd><p>(general) weighted lexicographical ordering:
+<a name="index-general-weighted-lexicographical-ordering"></a>
+<a name="index-local-weighted-lexicographical-ordering"></a>
+<a name="index-Ws_002c-local-ordering"></a>
+<br>
+ <span 
+class="cmtt-10">Ws</span>(<span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>)<span 
+class="cmmi-10">, w</span><sub><span 
+class="cmr-7">1</span></sub>  
+ a nonzero integer,
+ <span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">2</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,w</span><sub><span 
+class="cmmi-7">n</span></sub>  
+ any integer (including 0),
+ is defined as <code>Ds</code>
+ but with
+ deg(<span 
+class="cmmi-10">x</span><sup><span 
+class="cmmi-7">&#x03B1;</span></sup>) = <span 
+class="cmmi-10">w</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmr-7">1</span></sub> + <img 
+src="sing_tex4ht_tex31x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="cdots" > + <span 
+class="cmmi-10">w</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">&#x03B1;</span><sub><span 
+class="cmmi-7">n</span></sub><span 
+class="cmmi-10">. </span> 
+</p></dd>
+</dl>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Global-orderings.html#Global-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.3 Global orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Module-orderings.html#Module-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.5 Module orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Monomial-orderings.html#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

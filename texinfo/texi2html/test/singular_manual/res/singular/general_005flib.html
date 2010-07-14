@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.2.2 general_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.2.2 general_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.2.2 general_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="general_005flib"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="all_005flib.html#all_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.1 all_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="A_005fZ.html#A_005fZ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.1 A_Z" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-purpose.html#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="general_005flib-1"></a>
+<h3 class="subsection">D.2.2 general_lib</h3>
+<a name="index-general_002elib"></a>
+<a name="index-general_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>general.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Elementary Computations of General Type
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="A_005fZ.html#A_005fZ">D.2.2.1 A_Z</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> string a,b,... of n comma separated letters
+</td></tr>
+<tr><td align="left" valign="top"><a href="ASCII.html#ASCII">D.2.2.2 ASCII</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> string of printable ASCII characters (number n to m)
+</td></tr>
+<tr><td align="left" valign="top"><a href="absValue.html#absValue">D.2.2.3 absValue</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> absolute value of c
+</td></tr>
+<tr><td align="left" valign="top"><a href="binomial.html#binomial">D.2.2.4 binomial</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n choose m (type int), [type string/type number]
+</td></tr>
+<tr><td align="left" valign="top"><a href="deleteSublist.html#deleteSublist">D.2.2.5 deleteSublist</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> delete entries given by iv from list l
+</td></tr>
+<tr><td align="left" valign="top"><a href="factorial.html#factorial">D.2.2.6 factorial</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n factorial (=n!) (type int), [type string/number]
+</td></tr>
+<tr><td align="left" valign="top"><a href="fibonacci.html#fibonacci">D.2.2.7 fibonacci</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> nth Fibonacci number [char p]
+</td></tr>
+<tr><td align="left" valign="top"><a href="kmemory.html#kmemory">D.2.2.8 kmemory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> active [allocated] memory in kilobyte
+</td></tr>
+<tr><td align="left" valign="top"><a href="killall.html#killall">D.2.2.9 killall</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> kill all user-defined variables
+</td></tr>
+<tr><td align="left" valign="top"><a href="number_005fe.html#number_005fe">D.2.2.10 number_e</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> compute exp(1) up to n decimal digits
+</td></tr>
+<tr><td align="left" valign="top"><a href="number_005fpi.html#number_005fpi">D.2.2.11 number_pi</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> compute pi (area of unit circle) up to n digits
+</td></tr>
+<tr><td align="left" valign="top"><a href="primes.html#primes">D.2.2.12 primes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> intvec of primes p, n&lt;=p&lt;=m
+</td></tr>
+<tr><td align="left" valign="top"><a href="product.html#product">D.2.2.13 product</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> multiply components of vector/ideal/...[indices v]
+</td></tr>
+<tr><td align="left" valign="top"><a href="sort.html#sort">D.2.2.14 sort</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sort generators according to monomial ordering
+</td></tr>
+<tr><td align="left" valign="top"><a href="sum.html#sum">D.2.2.15 sum</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> add components of vector/ideal/...[with indices v]
+</td></tr>
+<tr><td align="left" valign="top"><a href="watchdog.html#watchdog">D.2.2.16 watchdog</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> only wait for result of command cmd for i seconds
+</td></tr>
+<tr><td align="left" valign="top"><a href="which.html#which">D.2.2.17 which</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> search for command and return absolute path, if found
+</td></tr>
+<tr><td align="left" valign="top"><a href="primecoeffs.html#primecoeffs">D.2.2.18 primecoeffs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> primefactors &lt;= min(p,32003) of coeffs of J
+</td></tr>
+<tr><td align="left" valign="top"><a href="primefactors.html#primefactors">D.2.2.19 primefactors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> primefactors &lt;= min(p,32003) of n
+</td></tr>
+<tr><td align="left" valign="top"><a href="timeStd.html#timeStd">D.2.2.20 timeStd</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> std(i) if computation finished after d seconds else i
+</td></tr>
+<tr><td align="left" valign="top"><a href="timeFactorize.html#timeFactorize">D.2.2.21 timeFactorize</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> works as timeStd with factorization
+</td></tr>
+<tr><td align="left" valign="top"><a href="factorH.html#factorH">D.2.2.22 factorH</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> factorizes with good choice of principal variable
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="all_005flib.html#all_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.2.1 all_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="A_005fZ.html#A_005fZ" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.2.2.1 A_Z" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-purpose.html#General-purpose" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.2 General purpose" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

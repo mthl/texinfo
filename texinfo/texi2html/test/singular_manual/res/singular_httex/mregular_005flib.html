@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.5 mregular_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.5 mregular_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.5 mregular_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="mregular_005flib"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="getData.html#getData" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.4.20 getData" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="reg_005fCM.html#reg_005fCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.1 reg_CM" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Commutative-algebra.html#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="mregular_005flib-1"></a>
+<h3 class="subsection">D.4.5 mregular_lib</h3>
+<a name="index-mregular_002elib"></a>
+<a name="index-mregular_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>mregular.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Castelnuovo-Mumford Regularity of CM-Schemes and Curves
+</p></dd>
+<dt><strong>Authors:</strong></dt>
+<dd><p>I.Bermejo, ibermejo@ull.es
+<br> Ph.Gimenez, pgimenez@agt.uva.es
+<br> G.-M.Greuel, greuel@mathematik.uni-kl.de
+</p>
+</dd>
+<dt><strong>Overview:</strong></dt>
+<dd><p>A library for computing the Castelnuovo-Mumford regularity of a subscheme of
+the projective n-space that DOES NOT require the computation of a minimal
+graded free resolution of the saturated ideal defining the subscheme.
+The procedures are based on two papers by Isabel Bermejo and Philippe Gimenez:
+&rsquo;On Castelnuovo-Mumford regularity of projective curves&rsquo; Proc.Amer.Math.Soc.
+128(5) (2000), and &rsquo;Computing the Castelnuovo-Mumford regularity of some
+subschemes of Pn using quotients of monomial ideals&rsquo;, Proceedings of
+MEGA-2000, J. Pure Appl. Algebra (to appear).
+<br>The algorithm assumes the variables to be in Noether position.
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="reg_005fCM.html#reg_005fCM">D.4.5.1 reg_CM</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of arith. C-M subscheme V(id_sat) of Pn
+</td></tr>
+<tr><td align="left" valign="top"><a href="reg_005fcurve.html#reg_005fcurve">D.4.5.2 reg_curve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of projective curve V(id_sat) in Pn
+</td></tr>
+<tr><td align="left" valign="top"><a href="reg_005fmoncurve.html#reg_005fmoncurve">D.4.5.3 reg_moncurve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> regularity of projective monomial curve defined by li
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="getData.html#getData" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.4.20 getData" align="middle"></a></td>
+<td valign="middle" align="left"><a href="reg_005fCM.html#reg_005fCM" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.5.1 reg_CM" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Commutative-algebra.html#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

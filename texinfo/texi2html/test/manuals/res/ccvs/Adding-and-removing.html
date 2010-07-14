@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>CVS&mdash;Concurrent Versions System v4.2: 7 Adding, removing, and renaming files and directories</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v4.2: 7 Adding, removing, and renaming files and directories">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v4.2: 7 Adding, removing, and renaming files and directories">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Adding-and-removing"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Recursive-behavior.html#Recursive-behavior" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Recursive-behavior.html#Recursive-behavior" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-files" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Adding_002c-removing_002c-and-renaming-files-and-directories"></a>
+<h1 class="chapter">7 Adding, removing, and renaming files and directories</h1>
+
+<p>In the course of a project, one will often add new
+files.  Likewise with removing or renaming, or with
+directories.  The general concept to keep in mind in
+all these cases is that instead of making an
+irreversible change you want <small>CVS</small> to record the
+fact that a change has taken place, just as with
+modifying an existing file.  The exact mechanisms to do
+this in <small>CVS</small> vary depending on the situation.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Adding-files">7.1 Adding files to a directory</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Adding files
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Removing-files">7.2 Removing files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Removing-directories">7.3 Removing directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Moving-files">7.4 Moving and renaming files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top"><a href="#Moving-directories">7.5 Moving and renaming directories</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+</table>
+
+<hr>
+<a name="Adding-files"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-files" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Adding-files-to-a-directory"></a>
+<h2 class="section">7.1 Adding files to a directory</h2>
+<a name="index-Adding-files"></a>
+
+<p>To add a new file to a directory, follow these steps.
+</p>
+<ul>
+<li>
+You must have a working copy of the directory.
+See section <a href="Overview.html#Getting-the-source">Getting the source</a>.
+
+</li><li>
+Create the new file inside your working copy of the directory.
+
+</li><li>
+Use &lsquo;<samp>cvs add <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that you
+want to version control the file.  If the file contains
+binary data, specify &lsquo;<samp>-kb</samp>&rsquo; (see section <a href="Binary-files.html#Binary-files">Handling binary files</a>).
+
+</li><li>
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually check
+in the file into the repository.  Other developers
+cannot see the file until you perform this step.
+</li></ul>
+
+<p>You can also use the <code>add</code> command to add a new
+directory.
+</p>
+<p>Unlike most other commands, the <code>add</code> command is
+not recursive.  You cannot even type &lsquo;<samp>cvs add
+foo/bar</samp>&rsquo;!  Instead, you have to
+</p>
+<div class="example">
+<pre class="example">$ cd foo
+$ cvs add bar
+</pre></div>
+
+<a name="index-add-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-add"></a>Command: <strong>cvs add</strong><em> [<code>-k</code> kflag] [<code>-m</code> message] files &hellip;</em></dt>
+<dd>
+<p>Schedule <var>files</var> to be added to the repository.
+The files or directories specified with <code>add</code> must
+already exist in the current directory.  To add a whole
+new directory hierarchy to the source repository (for
+example, files received from a third-party vendor), use
+the <code>import</code> command instead.  See section <a href="CVS-commands.html#import">import&mdash;Import sources into CVS, using vendor branches</a>.
+</p>
+<p>The added files are not placed in the source repository
+until you use <code>commit</code> to make the change
+permanent.  Doing an <code>add</code> on a file that was
+removed with the <code>remove</code> command will undo the
+effect of the <code>remove</code>, unless a <code>commit</code>
+command intervened.  See section <a href="#Removing-files">Removing files</a>, for an
+example.
+</p>
+<p>The &lsquo;<samp>-k</samp>&rsquo; option specifies the default way that
+this file will be checked out; for more information see
+<a href="Keyword-substitution.html#Substitution-modes">Substitution modes</a>.
+</p>
+<p>The &lsquo;<samp>-m</samp>&rsquo; option specifies a description for the
+file.  This description appears in the history log (if
+it is enabled, see section <a href="Administrative-files.html#history-file">The history file</a>).  It will also be
+saved in the version history inside the repository when
+the file is committed.  The <code>log</code> command displays
+this description.  The description can be changed using
+&lsquo;<samp>admin -t</samp>&rsquo;.  See section <a href="CVS-commands.html#admin">admin&mdash;Administration</a>.  If you omit the
+&lsquo;<samp>-m <var>description</var></samp>&rsquo; flag, an empty string will
+be used.  You will not be prompted for a description.
+</p></dd></dl>
+
+<p>For example, the following commands add the file
+&lsquo;<tt>backend.c</tt>&rsquo; to the repository:
+</p>
+<div class="example">
+<pre class="example">$ cvs add backend.c
+$ cvs commit -m &quot;Early version. Not yet compilable.&quot; backend.c
+</pre></div>
+
+<p>When you add a file it is added only on the branch
+which you are working on (see section <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>).  You can
+later merge the additions to another branch if you want
+(see section <a href="Branching-and-merging.html#Merging-adds-and-removals">Merging can add or remove files</a>).
+</p>
+<hr>
+<a name="Removing-files"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-directories" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Removing-files-1"></a>
+<h2 class="section">7.2 Removing files</h2>
+<a name="index-Removing-files"></a>
+<a name="index-Deleting-files"></a>
+
+<p>Directories change.  New files are added, and old files
+disappear.  Still, you want to be able to retrieve an
+exact copy of old releases.
+</p>
+<p>Here is what you can do to remove a file,
+but remain able to retrieve old revisions:
+</p>
+<ul>
+<li>
+Make sure that you have not made any uncommitted
+modifications to the file.  See section <a href="Overview.html#Viewing-differences">Viewing differences</a>,
+for one way to do that.  You can also use the
+<code>status</code> or <code>update</code> command.  If you remove
+the file without committing your changes, you will of
+course not be able to retrieve the file as it was
+immediately before you deleted it.
+
+</li><li>
+Remove the file from your working copy of the directory.
+You can for instance use <code>rm</code>.
+
+</li><li>
+Use &lsquo;<samp>cvs remove <var>filename</var></samp>&rsquo; to tell <small>CVS</small> that
+you really want to delete the file.
+
+</li><li>
+Use &lsquo;<samp>cvs commit <var>filename</var></samp>&rsquo; to actually
+perform the removal of the file from the repository.
+</li></ul>
+
+<p>When you commit the removal of the file, <small>CVS</small>
+records the fact that the file no longer exists.  It is
+possible for a file to exist on only some branches and
+not on others, or to re-add another file with the same
+name later.  <small>CVS</small> will correctly create or not create
+the file, based on the &lsquo;<samp>-r</samp>&rsquo; and &lsquo;<samp>-D</samp>&rsquo; options
+specified to <code>checkout</code> or <code>update</code>.
+</p>
+<a name="index-Remove-_0028subcommand_0029"></a>
+<dl>
+<dt><a name="index-cvs-remove"></a>Command: <strong>cvs remove</strong><em> [options] files &hellip;</em></dt>
+<dd>
+<p>Schedule file(s) to be removed from the repository
+(files which have not already been removed from the
+working directory are not processed).  This command
+does not actually remove the file from the repository
+until you commit the removal.  For a full list of
+options, see <a href="Invoking-CVS.html#Invoking-CVS">Quick reference to CVS commands</a>.
+</p></dd></dl>
+
+<p>Here is an example of removing several files:
+</p>
+<div class="example">
+<pre class="example">$ cd test
+$ rm *.c
+$ cvs remove
+cvs remove: Removing .
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</pre></div>
+
+<p>As a convenience you can remove the file and <code>cvs
+remove</code> it in one step, by specifying the &lsquo;<samp>-f</samp>&rsquo;
+option.  For example, the above example could also be
+done like this:
+</p>
+<div class="example">
+<pre class="example">$ cd test
+$ cvs remove -f *.c
+cvs remove: scheduling a.c for removal
+cvs remove: scheduling b.c for removal
+cvs remove: use 'cvs commit' to remove these files permanently
+$ cvs ci -m &quot;Removed unneeded files&quot;
+cvs commit: Examining .
+cvs commit: Committing .
+</pre></div>
+
+<p>If you execute <code>remove</code> for a file, and then
+change your mind before you commit, you can undo the
+<code>remove</code> with an <code>add</code> command.
+</p>
+
+<div class="example">
+<pre class="example">$ ls
+CVS   ja.h  oj.c
+$ rm oj.c
+$ cvs remove oj.c
+cvs remove: scheduling oj.c for removal
+cvs remove: use 'cvs commit' to remove this file permanently
+$ cvs add oj.c
+U oj.c
+cvs add: oj.c, version 1.1.1.1, resurrected
+</pre></div>
+
+<p>If you realize your mistake before you run the
+<code>remove</code> command you can use <code>update</code> to
+resurrect the file:
+</p>
+<div class="example">
+<pre class="example">$ rm oj.c
+$ cvs update oj.c
+cvs update: warning: oj.c was lost
+U oj.c
+</pre></div>
+
+<p>When you remove a file it is removed only on the branch
+which you are working on (see section <a href="Branching-and-merging.html#Branching-and-merging">Branching and merging</a>).  You can
+later merge the removals to another branch if you want
+(see section <a href="Branching-and-merging.html#Merging-adds-and-removals">Merging can add or remove files</a>).
+</p>
+<hr>
+<a name="Removing-directories"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Removing-directories-1"></a>
+<h2 class="section">7.3 Removing directories</h2>
+<a name="index-Removing-directories"></a>
+<a name="index-Directories_002c-removing"></a>
+
+<p>In concept removing directories is somewhat similar to
+removing files&mdash;you want the directory to not exist in
+your current working directories, but you also want to
+be able to retrieve old releases in which the directory
+existed.
+</p>
+<p>The way that you remove a directory is to remove all
+the files in it.  You don&rsquo;t remove the directory
+itself; there is no way to do that.
+Instead you specify the &lsquo;<samp>-P</samp>&rsquo; option to
+<code>cvs update</code> or <code>cvs checkout</code>,
+which will cause <small>CVS</small> to remove empty
+directories from working directories.
+(Note that <code>cvs export</code> always removes empty directories.)
+Probably the
+best way to do this is to always specify &lsquo;<samp>-P</samp>&rsquo;; if
+you want an empty directory then put a dummy file (for
+example &lsquo;<tt>.keepme</tt>&rsquo;) in it to prevent &lsquo;<samp>-P</samp>&rsquo; from
+removing it.
+</p>
+<p>Note that &lsquo;<samp>-P</samp>&rsquo; is implied by the &lsquo;<samp>-r</samp>&rsquo; or &lsquo;<samp>-D</samp>&rsquo;
+options of <code>checkout</code>.  This way
+<small>CVS</small> will be able to correctly create the directory
+or not depending on whether the particular version you
+are checking out contains any files in that directory.
+</p>
+<hr>
+<a name="Moving-files"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Removing-directories" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Outside" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Moving-and-renaming-files"></a>
+<h2 class="section">7.4 Moving and renaming files</h2>
+<a name="index-Moving-files"></a>
+<a name="index-Renaming-files"></a>
+<a name="index-Files_002c-moving"></a>
+
+<p>Moving files to a different directory or renaming them
+is not difficult, but some of the ways in which this
+works may be non-obvious.  (Moving or renaming a
+directory is even harder.  See section <a href="#Moving-directories">Moving and renaming directories</a>.).
+</p>
+<p>The examples below assume that the file <var>old</var> is renamed to
+<var>new</var>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Outside">7.4.1 The Normal way to Rename</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                     The normal way to Rename
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Inside">7.4.2 Moving the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      A tricky, alternative way
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Rename-by-copying">7.4.3 Copying the history file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Another tricky, alternative way
+</td></tr>
+</table>
+
+<hr>
+<a name="Outside"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Inside" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="The-Normal-way-to-Rename"></a>
+<h3 class="subsection">7.4.1 The Normal way to Rename</h3>
+
+
+<p>The normal way to move a file is to copy <var>old</var> to
+<var>new</var>, and then issue the normal <small>CVS</small> commands
+to remove <var>old</var> from the repository, and add
+<var>new</var> to it.
+</p>
+<div class="example">
+<pre class="example">$ mv <var>old</var> <var>new</var>
+$ cvs remove <var>old</var>
+$ cvs add <var>new</var>
+$ cvs commit -m &quot;Renamed <var>old</var> to <var>new</var>&quot; <var>old</var> <var>new</var>
+</pre></div>
+
+<p>This is the simplest way to move a file, it is not
+error-prone, and it preserves the history of what was
+done.  Note that to access the history of the file you
+must specify the old or the new name, depending on what
+portion of the history you are accessing.  For example,
+<code>cvs log <var>old</var></code> will give the log up until the
+time of the rename.
+</p>
+<p>When <var>new</var> is committed its revision numbers will
+start again, usually at 1.1, so if that bothers you,
+use the &lsquo;<samp>-r rev</samp>&rsquo; option to commit.  For more
+information see <a href="Revisions.html#Assigning-revisions">Assigning revisions</a>.
+</p>
+<hr>
+<a name="Inside"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Outside" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Rename-by-copying" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Moving-the-history-file"></a>
+<h3 class="subsection">7.4.2 Moving the history file</h3>
+
+<p>This method is more dangerous, since it involves moving
+files inside the repository.  Read this entire section
+before trying it out!
+</p>
+<div class="example">
+<pre class="example">$ cd $CVSROOT/<var>dir</var>
+$ mv <var>old</var>,v <var>new</var>,v
+</pre></div>
+
+<p>Advantages:
+</p>
+<ul>
+<li>
+The log of changes is maintained intact.
+
+</li><li>
+The revision numbers are not affected.
+</li></ul>
+
+<p>Disadvantages:
+</p>
+<ul>
+<li>
+Old releases cannot easily be fetched from the
+repository.  (The file will show up as <var>new</var> even
+in revisions from the time before it was renamed).
+
+</li><li>
+There is no log information of when the file was renamed.
+
+</li><li>
+Nasty things might happen if someone accesses the history file
+while you are moving it.  Make sure no one else runs any of the <small>CVS</small>
+commands while you move it.
+</li></ul>
+
+<hr>
+<a name="Rename-by-copying"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inside" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-files" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Moving-directories" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Copying-the-history-file"></a>
+<h3 class="subsection">7.4.3 Copying the history file</h3>
+
+<p>This way also involves direct modifications to the
+repository.  It is safe, but not without drawbacks.
+</p>
+<div class="example">
+<pre class="example"># <span class="roman">Copy the RCS file inside the repository</span>
+$ cd $CVSROOT/<var>dir</var>
+$ cp <var>old</var>,v <var>new</var>,v
+# <span class="roman">Remove the old file</span>
+$ cd ~/<var>dir</var>
+$ rm <var>old</var>
+$ cvs remove <var>old</var>
+$ cvs commit <var>old</var>
+# <span class="roman">Remove all tags from <var>new</var></span>
+$ cvs update <var>new</var>
+$ cvs log <var>new</var>             # <span class="roman">Remember the non-branch tag names</span>
+$ cvs tag -d <var>tag1</var> <var>new</var>
+$ cvs tag -d <var>tag2</var> <var>new</var>
+&hellip;
+</pre></div>
+
+<p>By removing the tags you will be able to check out old
+revisions.
+</p>
+<p>Advantages:
+</p>
+<ul>
+<li>
+Checking out old revisions works correctly, as long as
+you use &lsquo;<samp>-r<var>tag</var></samp>&rsquo; and not &lsquo;<samp>-D<var>date</var></samp>&rsquo;
+to retrieve the revisions.
+
+</li><li>
+The log of changes is maintained intact.
+
+</li><li>
+The revision numbers are not affected.
+</li></ul>
+
+<p>Disadvantages:
+</p>
+<ul>
+<li>
+You cannot easily see the history of the file across the rename.
+
+</li></ul>
+
+<hr>
+<a name="Moving-directories"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Rename-by-copying" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Adding-and-removing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Moving-and-renaming-directories"></a>
+<h2 class="section">7.5 Moving and renaming directories</h2>
+<a name="index-Moving-directories"></a>
+<a name="index-Renaming-directories"></a>
+<a name="index-Directories_002c-moving"></a>
+
+<p>The normal way to rename or move a directory is to
+rename or move each file within it as described in
+<a href="#Outside">The Normal way to Rename</a>.  Then check out with the &lsquo;<samp>-P</samp>&rsquo;
+option, as described in <a href="#Removing-directories">Removing directories</a>.
+</p>
+<p>If you really want to hack the repository to rename or
+delete a directory in the repository, you can do it
+like this:
+</p>
+<ol>
+<li>
+Inform everyone who has a checked out copy of the directory that the
+directory will be renamed.  They should commit all
+their changes, and remove their working copies,
+before you take the steps below.
+
+</li><li>
+Rename the directory inside the repository.
+
+<div class="example">
+<pre class="example">$ cd $CVSROOT/<var>parent-dir</var>
+$ mv <var>old-dir</var> <var>new-dir</var>
+</pre></div>
+
+</li><li>
+Fix the <small>CVS</small> administrative files, if necessary (for
+instance if you renamed an entire module).
+
+</li><li>
+Tell everyone that they can check out again and continue
+working.
+
+</li></ol>
+
+<p>If someone had a working copy the <small>CVS</small> commands will
+cease to work for him, until he removes the directory
+that disappeared inside the repository.
+</p>
+<p>It is almost always better to move the files in the
+directory instead of moving the directory.  If you move the
+directory you are unlikely to be able to retrieve old
+releases correctly, since they probably depend on the
+name of the directories.
+</p>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Adding-and-removing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="History-browsing.html#History-browsing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

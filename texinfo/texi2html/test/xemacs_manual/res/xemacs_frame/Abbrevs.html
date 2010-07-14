@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User&rsquo;s Manual: 23 Abbrevs</title>
+
+<meta name="description" content="XEmacs User&rsquo;s Manual: 23 Abbrevs">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: 23 Abbrevs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Running.html#Running" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Running.html#Mule-Support-_0028mule_0029" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Abbrevs-1"></a>
+<h1 class="chapter">23 Abbrevs</h1>
+<a name="index-abbrevs"></a>
+<a name="index-expansion-_0028of-abbrevs_0029"></a>
+
+<p>  An <em>abbrev</em> is a word which <em>expands</em> into some
+different text.  Abbrevs are defined by the user to expand in specific
+ways.  For example, you might define &lsquo;<samp>foo</samp>&rsquo; as an abbrev expanding to
+&lsquo;<samp>find outer otter</samp>&rsquo;.  With this abbrev defined, you would be able to
+get &lsquo;<samp>find outer otter </samp>&rsquo; into the buffer by typing <kbd>f o o &lt;SPC&gt;</kbd>.
+</p>
+<a name="index-abbrev_002dmode"></a>
+<a name="index-abbrev_002dmode-1"></a>
+<p>  Abbrevs expand only when Abbrev mode (a minor mode) is enabled.
+Disabling Abbrev mode does not cause abbrev definitions to be discarded,
+but they do not expand until Abbrev mode is enabled again.  The command
+<kbd>M-x abbrev-mode</kbd> toggles Abbrev mode; with a numeric argument, it
+turns Abbrev mode on if the argument is positive, off otherwise.
+See section <a href="Customization.html#Minor-Modes">Minor Modes</a>.  <code>abbrev-mode</code> is also a variable; Abbrev mode is
+on when the variable is non-<code>nil</code>.  The variable <code>abbrev-mode</code>
+automatically becomes local to the current buffer when it is set.
+</p>
+<p>  Abbrev definitions can be <em>mode-specific</em>&mdash;active only in one major
+mode.  Abbrevs can also have <em>global</em> definitions that are active in
+all major modes.  The same abbrev can have a global definition and various
+mode-specific definitions for different major modes.  A mode-specific
+definition for the current major mode overrides a global definition.
+</p>
+<p> You can define Abbrevs interactively during an editing session.  You
+can also save lists of abbrev definitions in files and reload them in later
+sessions.  Some users keep extensive lists of abbrevs that they load in
+every session.
+</p>
+<p>  A second kind of abbreviation facility is called the <em>dynamic
+expansion</em>.  Dynamic abbrev expansion happens only when you give an
+explicit command and the result of the expansion depends only on the
+current contents of the buffer.  See section <a href="#Dynamic-Abbrevs">Dynamic Abbrev Expansion</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Defining-Abbrevs">23.1 Defining Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  Defining an abbrev, so it will expand when typed.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Expanding-Abbrevs">23.2 Controlling Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Controlling expansion: prefixes, canceling expansion.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Editing-Abbrevs">23.3 Examining and Editing Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Viewing or editing the entire list of defined abbrevs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Saving-Abbrevs">23.4 Saving Abbrevs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Saving the entire list of abbrevs for another session.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Dynamic-Abbrevs">23.5 Dynamic Abbrev Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Abbreviations for words already in the buffer.
+</td></tr>
+</table>
+
+<hr>
+<a name="Defining-Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Expanding-Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Defining-Abbrevs-1"></a>
+<h2 class="section">23.1 Defining Abbrevs</h2>
+
+<dl compact="compact">
+<dt><kbd>C-x a g</kbd></dt>
+<dd><p>Define an abbrev to expand into some text before point
+(<code>add-global-abbrev</code>).
+</p></dd>
+<dt><kbd>C-x a l</kbd></dt>
+<dd><p>Similar, but define an abbrev available only in the current major mode
+(<code>add-mode-abbrev</code>).
+</p></dd>
+<dt><kbd>C-x a i g</kbd></dt>
+<dd><p>Define a word in the buffer as an abbrev (<code>inverse-add-global-abbrev</code>).
+</p></dd>
+<dt><kbd>C-x a i l</kbd></dt>
+<dd><p>Define a word in the buffer as a mode-specific abbrev
+(<code>inverse-add-mode-abbrev</code>).
+</p></dd>
+<dt><kbd>M-x kill-all-abbrevs</kbd></dt>
+<dd><p>After this command, no abbrev definitions remain in effect.
+</p></dd>
+</dl>
+
+<a name="index-C_002dx-a-g"></a>
+<a name="index-add_002dglobal_002dabbrev"></a>
+<p>  The usual way to define an abbrev is to enter the text you want the
+abbrev to expand to, position point after it, and type <kbd>C-x a g</kbd>
+(<code>add-global-abbrev</code>).  This reads the abbrev itself using the
+minibuffer, and then defines it as an abbrev for one or more words
+before point.  Use a numeric argument to say how many words before point
+should be taken as the expansion.  For example, to define the abbrev
+&lsquo;<samp>foo</samp>&rsquo; as in the example above, insert the text &lsquo;<samp>find outer
+otter</samp>&rsquo;, then type <br><kbd>C-u 3 C-x a g f o o &lt;RET&gt;</kbd>.
+</p>
+<p>  An argument of zero to <kbd>C-x a g</kbd> means to use the contents of the
+region as the expansion of the abbrev being defined.
+</p>
+<a name="index-C_002dx-a-l"></a>
+<a name="index-add_002dmode_002dabbrev"></a>
+<p>  The command <kbd>C-x a l</kbd> (<code>add-mode-abbrev</code>) is similar, but
+defines a mode-specific abbrev.  Mode-specific abbrevs are active only in a
+particular major mode.  <kbd>C-x a l</kbd> defines an abbrev for the major mode
+in effect at the time <kbd>C-x a l</kbd> is typed.  The arguments work the
+same way they do for <kbd>C-x a g</kbd>.
+</p>
+<a name="index-C_002dx-a-i-g"></a>
+<a name="index-inverse_002dadd_002dglobal_002dabbrev"></a>
+<a name="index-C_002dx-a-i-l"></a>
+<a name="index-inverse_002dadd_002dmode_002dabbrev"></a>
+<p>  If the text of an abbrev you want is already in the buffer instead of
+the expansion, use command <kbd>C-x a i g</kbd> (<code>inverse-add-global-abbrev</code>)
+instead of <kbd>C-x a g</kbd>, or use <kbd>C-x a i l</kbd>
+(<code>inverse-add-mode-abbrev</code>) instead of <kbd>C-x a l</kbd>.  These commands
+are called &ldquo;inverse&rdquo; because they invert the meaning of the argument
+found in the buffer and the argument read using the minibuffer.
+</p>
+<p>  To change the definition of an abbrev, just add the new definition.  You
+will be asked to confirm if the abbrev has a prior definition.  To remove
+an abbrev definition, give a negative argument to <kbd>C-x a g</kbd> or <kbd>C-x
+a l</kbd>.  You must choose the command to specify whether to kill a global
+definition or a mode-specific definition for the current mode, since those
+two definitions are independent for one abbrev.
+</p>
+<a name="index-kill_002dall_002dabbrevs"></a>
+<p>  <kbd>M-x kill-all-abbrevs</kbd> removes all existing abbrev definitions.
+</p>
+<hr>
+<a name="Expanding-Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Defining-Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Editing-Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Controlling-Abbrev-Expansion"></a>
+<h2 class="section">23.2 Controlling Abbrev Expansion</h2>
+
+<p>  An abbrev expands whenever it is in a buffer just before point and you
+type a self-inserting punctuation character (&lt;SPC&gt;, comma,
+etc.).  Most often an abbrev is used by inserting the abbrev followed
+by punctuation.
+</p>
+<a name="index-abbrev_002dall_002dcaps"></a>
+<p>  Abbrev expansion preserves case; thus, &lsquo;<samp>foo</samp>&rsquo; expands into &lsquo;<samp>find
+outer otter</samp>&rsquo;, &lsquo;<samp>Foo</samp>&rsquo; into &lsquo;<samp>Find outer otter</samp>&rsquo;, and &lsquo;<samp>FOO</samp>&rsquo; into
+&lsquo;<samp>FIND OUTER OTTER</samp>&rsquo; or &lsquo;<samp>Find Outer Otter</samp>&rsquo; according to the
+variable <code>abbrev-all-caps</code> (a non-<code>nil</code> value chooses the first
+of the two expansions).
+</p>
+<p>   Two commands are available to control abbrev expansion:
+</p>
+<dl compact="compact">
+<dt><kbd>M-'</kbd></dt>
+<dd><p>Separate a prefix from a following abbrev to be expanded
+(<code>abbrev-prefix-mark</code>).
+</p></dd>
+<dt><kbd>C-x a e</kbd></dt>
+<dd><a name="index-expand_002dabbrev"></a>
+<p>Expand the abbrev before point (<code>expand-abbrev</code>).
+This is effective even when Abbrev mode is not enabled.
+</p></dd>
+<dt><kbd>M-x unexpand-abbrev</kbd></dt>
+<dd><p>Undo last abbrev expansion.
+</p></dd>
+<dt><kbd>M-x expand-region-abbrevs</kbd></dt>
+<dd><p>Expand some or all abbrevs found in the region.
+</p></dd>
+</dl>
+
+<a name="index-M_002d_0027"></a>
+<a name="index-abbrev_002dprefix_002dmark"></a>
+<p>  You may wish to expand an abbrev with a prefix attached.  For example,
+if &lsquo;<samp>cnst</samp>&rsquo; expands into &lsquo;<samp>construction</samp>&rsquo;, you may want to use it
+to enter &lsquo;<samp>reconstruction</samp>&rsquo;.  It does not work to type <kbd>recnst</kbd>,
+because that is not necessarily a defined abbrev.  Instead, you can use
+the command <kbd>M-'</kbd> (<code>abbrev-prefix-mark</code>) between the prefix
+&lsquo;<samp>re</samp>&rsquo; and the abbrev &lsquo;<samp>cnst</samp>&rsquo;.  First, insert &lsquo;<samp>re</samp>&rsquo;.  Then
+type <kbd>M-'</kbd>; this inserts a minus sign in the buffer to indicate that
+it has done its work.  Then insert the abbrev &lsquo;<samp>cnst</samp>&rsquo;.  The buffer
+now contains &lsquo;<samp>re-cnst</samp>&rsquo;.  Now insert a punctuation character to
+expand the abbrev &lsquo;<samp>cnst</samp>&rsquo; into &lsquo;<samp>construction</samp>&rsquo;.  The minus sign
+is deleted at this point by <kbd>M-'</kbd>.  The resulting text is the
+desired &lsquo;<samp>reconstruction</samp>&rsquo;.
+</p>
+<p>  If you actually want the text of the abbrev in the buffer, rather than
+its expansion, insert the following punctuation with <kbd>C-q</kbd>.  Thus,
+<kbd>foo C-q -</kbd> leaves &lsquo;<samp>foo-</samp>&rsquo; in the buffer.
+</p>
+<a name="index-unexpand_002dabbrev"></a>
+<p>  If you expand an abbrev by mistake, you can undo the expansion (replace
+the expansion by the original abbrev text) with <kbd>M-x unexpand-abbrev</kbd>.
+You can also use <kbd>C-_</kbd> (<code>undo</code>) to undo the expansion; but that
+will first undo the insertion of the punctuation character.
+</p>
+<a name="index-expand_002dregion_002dabbrevs"></a>
+<p>  <kbd>M-x expand-region-abbrevs</kbd> searches through the region for defined
+abbrevs, and  offers to replace each one it finds with its expansion.
+This command is useful if you have typed text using abbrevs but forgot
+to turn on Abbrev mode first.  It may also be useful together with a
+special set of abbrev definitions for making several global replacements at
+once.  The command is effective even if Abbrev mode is not enabled.
+</p>
+<hr>
+<a name="Editing-Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Expanding-Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Saving-Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Examining-and-Editing-Abbrevs"></a>
+<h2 class="section">23.3 Examining and Editing Abbrevs</h2>
+
+<dl compact="compact">
+<dt><kbd>M-x list-abbrevs</kbd></dt>
+<dd><p>Print a list of all abbrev definitions.
+</p></dd>
+<dt><kbd>M-x edit-abbrevs</kbd></dt>
+<dd><p>Edit a list of abbrevs; you can add, alter, or remove definitions.
+</p></dd>
+</dl>
+
+<a name="index-list_002dabbrevs"></a>
+<p>  The output from <kbd>M-x list-abbrevs</kbd> looks like this:
+</p>
+<div class="example">
+<pre class="example">(lisp-mode-abbrev-table)
+&quot;dk&quot;           0    &quot;define-key&quot;
+(global-abbrev-table)
+&quot;dfn&quot;          0    &quot;definition&quot;
+</pre></div>
+
+<p>(Some blank lines of no semantic significance, and some other abbrev
+tables, have been omitted.)
+</p>
+<p>  A line containing a name in parentheses is the header for abbrevs in a
+particular abbrev table; <code>global-abbrev-table</code> contains all the global
+abbrevs, and the other abbrev tables that are named after major modes
+contain the mode-specific abbrevs.
+</p>
+<p>  Within each abbrev table, each non-blank line defines one abbrev.  The
+word at the beginning is the abbrev.  The number that appears is the number
+of times the abbrev has been expanded.  Emacs keeps track of this to help
+you see which abbrevs you actually use, in case you want to eliminate
+those that you don&rsquo;t use often.  The string at the end of the line is the
+expansion.
+</p>
+<a name="index-edit_002dabbrevs"></a>
+<a name="index-C_002dc-C_002dc-_0028Edit-Abbrevs_0029"></a>
+<a name="index-edit_002dabbrevs_002dredefine"></a>
+<p>  <kbd>M-x edit-abbrevs</kbd> allows you to add, change or kill abbrev
+definitions by editing a list of them in an Emacs buffer.  The list has
+the format described above.  The buffer of abbrevs is called
+&lsquo;<samp>*Abbrevs*</samp>&rsquo;, and is in Edit-Abbrevs mode.  This mode redefines the
+key <kbd>C-c C-c</kbd> to install the abbrev definitions as specified in the
+buffer.  The  <code>edit-abbrevs-redefine</code> command does this.
+Any abbrevs not described in the buffer are eliminated when this is
+done.
+</p>
+<p>  <code>edit-abbrevs</code> is actually the same as <code>list-abbrevs</code>, except
+that it selects the buffer &lsquo;<samp>*Abbrevs*</samp>&rsquo; whereas <code>list-abbrevs</code>
+merely displays it in another window.
+</p>
+<hr>
+<a name="Saving-Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Editing-Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Dynamic-Abbrevs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Saving-Abbrevs-1"></a>
+<h2 class="section">23.4 Saving Abbrevs</h2>
+
+<p>  These commands allow you to keep abbrev definitions between editing
+sessions.
+</p>
+<dl compact="compact">
+<dt><kbd>M-x write-abbrev-file</kbd></dt>
+<dd><p>Write a file describing all defined abbrevs.
+</p></dd>
+<dt><kbd>M-x read-abbrev-file</kbd></dt>
+<dd><p>Read such an abbrev file and define abbrevs as specified there.
+</p></dd>
+<dt><kbd>M-x quietly-read-abbrev-file</kbd></dt>
+<dd><p>Similar, but do not display a message about what is going on.
+</p></dd>
+<dt><kbd>M-x define-abbrevs</kbd></dt>
+<dd><p>Define abbrevs from buffer.
+</p></dd>
+<dt><kbd>M-x insert-abbrevs</kbd></dt>
+<dd><p>Insert all abbrevs and their expansions into the buffer.
+</p></dd>
+</dl>
+
+<a name="index-write_002dabbrev_002dfile"></a>
+<p>  Use <kbd>M-x write-abbrev-file</kbd> to save abbrev definitions for use in
+a later session.  The command reads a file name using the minibuffer and
+writes a description of all current abbrev definitions into the
+specified file.  The text stored in the file looks like the output of
+<kbd>M-x list-abbrevs</kbd>.
+</p>
+
+<a name="index-read_002dabbrev_002dfile"></a>
+<a name="index-quietly_002dread_002dabbrev_002dfile"></a>
+<a name="index-abbrev_002dfile_002dname"></a>
+<p>  <kbd>M-x read-abbrev-file</kbd> prompts for a file name using the
+minibuffer and reads the specified file, defining abbrevs according to
+its contents.  <kbd>M-x quietly-read-abbrev-file</kbd> is the same but does
+not display a message in the echo area; it is actually useful primarily
+in the init file.  See section <a href="Customization.html#Init-File">The Init File</a>. If you give an empty argument to
+either of these functions, the file name Emacs uses is the value of the
+variable <code>abbrev-file-name</code>, which is by default
+<code>&quot;~/.abbrev_defs&quot;</code>.
+</p>
+<a name="index-save_002dabbrevs"></a>
+<p>  Emacs offers to save abbrevs automatically if you have changed any of
+them, whenever it offers to save all files (for <kbd>C-x s</kbd> or <kbd>C-x
+C-c</kbd>).  Set the variable <code>save-abbrevs</code> to <code>nil</code> to inhibit
+this feature.
+</p>
+<a name="index-insert_002dabbrevs"></a>
+<a name="index-define_002dabbrevs"></a>
+<p>  The commands <kbd>M-x insert-abbrevs</kbd> and <kbd>M-x define-abbrevs</kbd> are
+similar to the previous commands but work on text in an Emacs buffer.
+<kbd>M-x insert-abbrevs</kbd> inserts text into the current buffer before point,
+describing all current abbrev definitions; <kbd>M-x define-abbrevs</kbd> parses
+the entire current buffer and defines abbrevs accordingly.
+</p>
+<hr>
+<a name="Dynamic-Abbrevs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Saving-Abbrevs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbrevs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Dynamic-Abbrev-Expansion"></a>
+<h2 class="section">23.5 Dynamic Abbrev Expansion</h2>
+
+<p>  The abbrev facility described above operates automatically as you insert
+text, but all abbrevs must be defined explicitly.  By contrast,
+<em>dynamic abbrevs</em> allow the meanings of abbrevs to be determined
+automatically from the contents of the buffer, but dynamic abbrev expansion
+happens only when you request it explicitly.
+</p>
+<a name="index-M_002d_002f"></a>
+<a name="index-dabbrev_002dexpand"></a>
+<dl compact="compact">
+<dt><kbd>M-/</kbd></dt>
+<dd><p>Expand the word in the buffer before point as a <em>dynamic abbrev</em>,
+by searching in the buffer for words starting with that abbreviation
+(<code>dabbrev-expand</code>).
+</p></dd>
+</dl>
+
+<p>  For example, if the buffer contains &lsquo;<samp>does this follow </samp>&rsquo; and you type
+<kbd>f o M-/</kbd>, the effect is to insert &lsquo;<samp>follow</samp>&rsquo; because that is the
+last word in the buffer that starts with &lsquo;<samp>fo</samp>&rsquo;.  A numeric argument to
+<kbd>M-/</kbd> says to take the second, third, etc. distinct expansion found
+looking backward from point.  Repeating <kbd>M-/</kbd> searches for an
+alternative expansion by looking farther back.  After the entire buffer
+before point has been considered, the buffer after point is searched.
+</p>
+<p>  Dynamic abbrev expansion is completely independent of Abbrev mode; the
+expansion of a word with <kbd>M-/</kbd> is completely independent of whether it
+has a definition as an ordinary abbrev.
+</p>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Abbrevs" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Picture.html#Picture" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

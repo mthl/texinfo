@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.7 T1 and T2</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.7 T1 and T2">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.7 T1 and T2">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="T1-and-T2"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Parameters.html#Parameters" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.6 Parameters" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Deformations.html#Deformations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.8 Deformations" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="T1-and-T2-1"></a>
+<h2 class="section">A.7 T1 and T2</h2>
+<a name="index-T1"></a>
+<a name="index-T2"></a>
+
+
+ <span 
+class="cmmi-10">T</span><sup><span 
+class="cmr-7">1</span></sup>  
+<p>, resp. 
+ <span 
+class="cmmi-10">T</span><sup><span 
+class="cmr-7">2</span></sup>  
+, of an ideal 
+ <span 
+class="cmmi-10">j </span> 
+ usually denote the modules of
+infinitesimal deformations, resp. of obstructions.
+In <small>SINGULAR</small> there are procedures <code>T_1</code> and <code>T_2</code> in
+<code>sing.lib</code> such that
+<code>T_1(j)</code> and <code>T_2(j)</code> compute a standard basis of
+a presentation of these modules.
+If T_1 and T_2 are finite dimensional K-vector spaces (e.g., for isolated
+singularities), a basis can be computed by applying
+<code>kbase(T_1(j));</code>, resp. <code>kbase(T_2(j));</code>, the dimensions by
+applying <code>vdim</code>.
+For a complete intersection j the procedure <code>Tjurina</code> also
+computes T_1, but faster (T_2=0 in this case).
+For a non complete intersection, it is faster to use the procedure <code>T_12</code>
+instead of <code>T_1</code> and <code>T_2</code>.
+Type <code>help T_1;</code> (or <code>help T_2;</code> or <code>help T_12;</code>) to obtain
+more detailed information about these procedures.
+</p>
+<p>We give three examples, the first being a hypersurface, the second a complete
+intersection, the third no complete intersection:
+</p><ul>
+<li>
+load <code>sing.lib</code>
+</li><li>
+check whether the ideal j is a complete intersection. It is, if
+     number of variables = dimension + minimal number of generators
+</li><li>
+compute the Tjurina number
+</li><li>
+compute a vector space basis (kbase) of T_1
+</li><li>
+compute the Hilbert function of T_1
+</li><li>
+create a polynomial encoding the Hilbert series
+</li><li>
+compute the dimension of T_2
+</li></ul>
+
+<div class="smallexample">
+<pre class="smallexample">  LIB &quot;sing.lib&quot;;
+  ring R=32003,(x,y,z),ds;
+  // ---------------------------------------
+  // hypersurface case (from series T[p,q,r]):
+  int p,q,r = 3,3,4;
+  poly f = x^p+y^q+z^r+xyz;
+  tjurina(f);
+&rarr; 8
+  // Tjurina number = 8
+  kbase(Tjurina(f));
+&rarr; // Tjurina number = 8
+&rarr; _[1]=z3
+&rarr; _[2]=z2
+&rarr; _[3]=yz
+&rarr; _[4]=xz
+&rarr; _[5]=z
+&rarr; _[6]=y
+&rarr; _[7]=x
+&rarr; _[8]=1
+  // ---------------------------------------
+  // complete intersection case (from series P[k,l]):
+  int k,l =3,2;
+  ideal j=xy,x^k+y^l+z2;
+  dim(std(j));          // Krull dimension
+&rarr; 1
+  size(minbase(j));     // minimal number of generators
+&rarr; 2
+  tjurina(j);           // Tjurina number
+&rarr; 6
+  module T=Tjurina(j);
+&rarr; // Tjurina number = 6
+  kbase(T);             // a sparse output of the k-basis of T_1
+&rarr; _[1]=z*gen(1)
+&rarr; _[2]=gen(1)
+&rarr; _[3]=y*gen(2)
+&rarr; _[4]=x2*gen(2)
+&rarr; _[5]=x*gen(2)
+&rarr; _[6]=gen(2)
+  print(kbase(T));      // columns of matrix are a k-basis of T_1
+&rarr; z,1,0,0, 0,0,
+&rarr; 0,0,y,x2,x,1 
+  // ---------------------------------------
+  // general case (cone over rational normal curve of degree 4):
+  ring r1=0,(x,y,z,u,v),ds;
+  matrix m[2][4]=x,y,z,u,y,z,u,v;
+  ideal i=minor(m,2);   // 2x2 minors of matrix m
+  module M=T_1(i);       // a presentation matrix of T_1
+&rarr; // dim T_1 = 4
+  vdim(M);              // Tjurina number
+&rarr; 4
+  hilb(M);              // display of both Hilbert series
+&rarr; //         4 t^0
+&rarr; //       -20 t^1
+&rarr; //        40 t^2
+&rarr; //       -40 t^3
+&rarr; //        20 t^4
+&rarr; //        -4 t^5
+&rarr; 
+&rarr; //         4 t^0
+&rarr; // dimension (local)   = 0
+&rarr; // multiplicity = 4
+  intvec v1=hilb(M,1);  // first Hilbert series as intvec
+  intvec v2=hilb(M,2);  // second Hilbert series as intvec
+  v1;
+&rarr; 4,-20,40,-40,20,-4,0
+  v2;
+&rarr; 4,0
+  v1[3];                // 3rd coefficient of the 1st Hilbert series
+&rarr; 40
+  module N=T_2(i);
+&rarr; // dim T_2 = 3
+</pre></div>
+<div class="smallexample">
+<pre class="smallexample">// In some cases it might be useful to have a polynomial in some ring
+// encoding the Hilbert series. This polynomial can then be
+// differentiated, evaluated etc. It can be done as follows:
+ring H = 0,t,ls;
+poly h1;
+int ii;
+for (ii=1; ii&lt;=size(v1); ii=ii+1)
+{
+   h1=h1+v1[ii]*t^(ii-1);
+}
+h1;                   // 1st Hilbert series
+&rarr; 4-20t+40t2-40t3+20t4-4t5
+diff(h1,t);           // differentiate  h1
+&rarr; -20+80t-120t2+80t3-20t4
+subst(h1,t,1);        // substitute t by 1
+&rarr; 0
+
+// The procedures T_1, T_2, T_12 may be called with two arguments and then
+// they return a list with more information (type help T_1; etc.)
+// e.g., T_12(i,&lt;any&gt;); returns a list with 9 nonempty objects where
+// _[1] = std basis of T_1-module, _[2] = std basis of T_2-module,
+// _[3]= vdim of T_1, _[4]= vdim of T_2
+setring r1;           // make r1 again the basering
+list L = T_12(i,1);
+&rarr; // dim T_1  =  4
+&rarr; // dim T_2  =  3
+kbase(L[1]);          // kbase of T_1
+&rarr; _[1]=1*gen(2)
+&rarr; _[2]=1*gen(3)
+&rarr; _[3]=1*gen(6)
+&rarr; _[4]=1*gen(7)
+kbase(L[2]);          // kbase of T_2
+&rarr; _[1]=1*gen(6)
+&rarr; _[2]=1*gen(8)
+&rarr; _[3]=1*gen(9)
+L[3];                 // vdim of T_1
+&rarr; 4
+L[4];                 // vdim of T_2
+&rarr; 3
+</pre></div>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Parameters.html#Parameters" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.6 Parameters" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Deformations.html#Deformations" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.8 Deformations" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

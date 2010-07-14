@@ -62,6 +62,7 @@ set_default('USE_SECTIONS', 1);
 set_default('SHOW_MENU', 0);
 set_default('SHOW_TITLE', 0);
 set_default('HEADERS', 0);
+set_default('SPLIT', '');
 # certainly irrelevant
 set_default('SIMPLE_MENU', 0);
 

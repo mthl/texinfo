@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: C.6.4 Integer programming</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: C.6.4 Integer programming">
+<meta name="keywords" content="Singular 2-0-4 Manual: C.6.4 Integer programming">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Integer-programming"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Buchberger-algorithm.html#Buchberger-algorithm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.3 The Buchberger algorithm for toric ideals" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Relevant-References.html#Relevant-References" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.5 Relevant References" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Toric-ideals-and-integer-programming.html#Toric-ideals-and-integer-programming" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6 Toric ideals and integer programming" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+
+<a name="Integer-programming-1"></a>
+<h3 class="subsection">C.6.4 Integer programming</h3>
+<a name="index-integer-programming"></a>
+
+Let <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_219.png"
+ ALT="$A$"></SPAN> be an <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_58.png"
+ ALT="$ m \times n $"></SPAN> matrix with integral coefficients, <!-- MATH
+ $b\in
+Z\!\!\! Z^m$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_520.png"
+ ALT="$b\in
+Z\!\!\! Z^m$"></SPAN> and <!-- MATH
+ $c\in Z\!\!\! Z^n$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_521.png"
+ ALT="$c\in Z\!\!\! Z^n$"></SPAN>. The problem
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\min\{c^T x | x\in Z\!\!\! Z^n, Ax=b, x\geq 0\hbox{
+component-wise}\}
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="20" BORDER="0"
+ SRC="sing_522.png"
+ ALT="\begin{displaymath}\min\{c^T x \vert x\in Z\!\!\! Z^n, Ax=b, x\geq 0\hbox{
+component-wise}\} \end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+is called an instance of the <B>integer programming problem </B>or
+<B>IP problem. </B>
+<P>
+The IP problem is very hard; namely, it is NP-complete.
+
+<P>
+For the following discussion let <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_523.png"
+ ALT="$c\geq 0$"></SPAN> (component-wise). We
+consider <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_43.png"
+ ALT="$c$"></SPAN> as a weight vector; because of its non-negativity, <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_43.png"
+ ALT="$c$"></SPAN> can
+be refined into a monomial ordering <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_524.png"
+ ALT="$&gt;_c$"></SPAN>. It turns out that we can
+solve such an IP instance with the help of toric ideals:
+
+<P>
+First we assume that an initial solution <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_241.png"
+ ALT="$v$"></SPAN> (i.e., <!-- MATH
+ $v\in Z\!\!\!
+Z^n, v\geq 0, Av=b$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_525.png"
+ ALT="$v\in Z\!\!\!
+Z^n, v\geq 0, Av=b$"></SPAN>) is already known. We obtain the optimal solution
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_526.png"
+ ALT="$v_0$"></SPAN> (i.e., with <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_527.png"
+ ALT="$c^T v_0$"></SPAN> minimal) by the following procedure:
+
+
+<ul>
+<li> (1) Compute the toric ideal I(A) using one of the algorithms in the previous section.
+</li><li> (2) Compute the reduced Groebner basis G(c) of I(A) w.r.t. 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_524.png"
+ ALT="$&gt;_c$"></SPAN>
+.
+</li><li> (3) Reduce 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_528.png"
+ ALT="$x^v$"></SPAN>
+ modulo G(c) using the Hironaka division algorithm.
+If the result of this reduction is 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_529.png"
+ ALT="$x^(v_0)$"></SPAN>
+, then 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_526.png"
+ ALT="$v_0$"></SPAN>
+ is an optimal
+solution of the given instance.
+</li></ul>
+
+<p>If no initial solution is known, we are nevertheless able to solve the
+problem with similar techniques. For this purpose we replace our
+instance by an extended instance with the matrix used
+in the Conti-Traverso algorithm. Indeed, the Conti-Traverso
+algorithm offers the possibility to verify solvability of a given
+instance and to find an initial solution in the case of existence (but
+none of the other algorithms does!). Details can be found in [CoTr91]
+and [The99].
+</p>
+<p>An implementation of the above algorithm and some examples can be found in <a href="intprog_005flib.html#intprog_005flib">intprog_lib</a>.
+</p>
+<p>Classical methods for solving IP instances like Branch-and-Bound
+methods seem to be faster in general than the methods using toric
+ideals. But the latter have one great advantage: If one wants to solve
+various instances that differ only by the vector 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_42.png"
+ ALT="$b$"></SPAN>
+, one has to
+perform steps (1) and (2) above only once. As the running time of step (3)
+is very short, solving all the instances is not much harder than
+solving one single instance.
+</p>
+<p>For a detailed discussion see [The99].
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Buchberger-algorithm.html#Buchberger-algorithm" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: C.6.3 The Buchberger algorithm for toric ideals" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Relevant-References.html#Relevant-References" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: C.6.5 Relevant References" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Toric-ideals-and-integer-programming.html#Toric-ideals-and-integer-programming" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: C.6 Toric ideals and integer programming" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

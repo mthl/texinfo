@@ -1,0 +1,993 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User&rsquo;s Manual: Glossary</title>
+
+<meta name="description" content="XEmacs User&rsquo;s Manual: Glossary">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: Glossary">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Glossary"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Customization.html#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#How-to-Report-a-Bug" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Manifesto.html#Manifesto" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Manifesto.html#Manifesto" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Glossary-1"></a>
+<h1 class="unnumbered">Glossary</h1>
+
+<dl compact="compact">
+<dt>Abbrev</dt>
+<dd><p>An abbrev is a text string which expands into a different text string
+when present in the buffer.  For example, you might define a short
+word as an abbrev for a long phrase that you want to insert
+frequently.  See section <a href="Abbrevs.html#Abbrevs">Abbrevs</a>.
+</p>
+</dd>
+<dt>Aborting</dt>
+<dd><p>Aborting means getting out of a recursive edit (q.v.).  You can use
+the commands <kbd>C-]</kbd> and <kbd>M-x top-level</kbd> for this.
+See section <a href="Customization.html#Quitting">Quitting and Aborting</a>.
+</p>
+</dd>
+<dt>Auto Fill mode</dt>
+<dd><p>Auto Fill mode is a minor mode in which text you insert is
+automatically broken into lines of fixed width.  See section <a href="Text.html#Filling">Filling Text</a>.
+</p>
+</dd>
+<dt>Auto Saving</dt>
+<dd><p>Auto saving means that Emacs automatically stores the contents of an
+Emacs buffer in a specially-named file so the information will not be
+lost if the buffer is lost due to a system error or user error.
+See section <a href="Files.html#Auto-Save">Auto-Saving: Protection Against Disasters</a>.
+</p>
+</dd>
+<dt>Backup File</dt>
+<dd><p>A backup file records the contents that a file had before the current
+editing session.  Emacs creates backup files automatically to help you
+track down or cancel changes you later regret.  See section <a href="Files.html#Backup">Backup Files</a>.
+</p>
+</dd>
+<dt>Balance Parentheses</dt>
+<dd><p>Emacs can balance parentheses manually or automatically.  Manual
+balancing is done by the commands to move over balanced expressions
+(see section <a href="Programs.html#Lists">Lists and Sexps</a>).  Automatic balancing is done by blinking the
+parenthesis that matches one just inserted (see section <a href="Programs.html#Matching">Matching Parens</a>).
+</p>
+</dd>
+<dt>Bind</dt>
+<dd><p>To bind a key is to change its binding (q.v.).  See section <a href="Customization.html#Rebinding">Changing Key Bindings</a>.
+</p>
+</dd>
+<dt>Binding</dt>
+<dd><p>A key gets its meaning in Emacs by having a binding which is a
+command (q.v.), a Lisp function that is run when the key is typed.
+See section <a href="Keystrokes.html#Commands">Binding</a>.  Customization often involves rebinding a
+character to a different command function.  The bindings of all keys
+are recorded in the keymaps (q.v.).  See section <a href="Customization.html#Keymaps">Keymaps</a>.
+</p>
+</dd>
+<dt>Blank Lines</dt>
+<dd><p>Blank lines are lines that contain only whitespace.  Emacs has several
+commands for operating on the blank lines in a buffer.
+</p>
+</dd>
+<dt>Buffer</dt>
+<dd><p>The buffer is the basic editing unit; one buffer corresponds to one
+piece of text being edited.  You can have several buffers, but at any
+time you are editing only one, the &lsquo;selected&rsquo; buffer, though several
+buffers can be visible when you are using multiple windows.  See section <a href="Buffers.html#Buffers">Using Multiple Buffers</a>.
+</p>
+</dd>
+<dt>Buffer Selection History</dt>
+<dd><p>Emacs keeps a buffer selection history which records how recently each
+Emacs buffer was selected.  Emacs uses this list when choosing a buffer to
+select.  See section <a href="Buffers.html#Buffers">Using Multiple Buffers</a>.
+</p>
+</dd>
+<dt>C-</dt>
+<dd><p>&lsquo;<samp>C</samp>&rsquo; in the name of a character is an abbreviation for Control.
+See section <a href="Keystrokes.html#Keystrokes">C-</a>.
+</p>
+</dd>
+<dt>C-M-</dt>
+<dd><p>&lsquo;<samp>C-M-</samp>&rsquo; in the name of a character is an abbreviation for
+Control-Meta.  See section <a href="Keystrokes.html#Keystrokes">C-M-</a>.
+</p>
+</dd>
+<dt>Case Conversion</dt>
+<dd><p>Case conversion means changing text from upper case to lower case or
+vice versa.  See section <a href="Text.html#Case">Case Conversion Commands</a>, for the commands for case conversion.
+</p>
+</dd>
+<dt>Characters</dt>
+<dd><p>Characters form the contents of an Emacs buffer; also, Emacs commands
+are invoked by keys (q.v.), which are sequences of one or more
+characters.  See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>Command</dt>
+<dd><p>A command is a Lisp function specially defined to be able to serve as a
+key binding in Emacs.  When you type a key (q.v.), Emacs looks up its
+binding (q.v.) in the relevant keymaps (q.v.) to find the command to
+run.  See section <a href="Keystrokes.html#Commands">Keys and Commands</a>.
+</p>
+</dd>
+<dt>Command Name</dt>
+<dd><p>A command name is the name of a Lisp symbol which is a command
+(see section <a href="Keystrokes.html#Commands">Keys and Commands</a>).  You can invoke any command by its name using
+<kbd>M-x</kbd> (see section <a href="M_002dx.html#M_002dx">Running Commands by Name</a>).
+</p>
+</dd>
+<dt>Comments</dt>
+<dd><p>A comment is text in a program which is intended only for the people
+reading the program, and is marked specially so that it will be
+ignored when the program is loaded or compiled.  Emacs offers special
+commands for creating, aligning, and killing comments.
+See section <a href="Programs.html#Comments">Manipulating Comments</a>.
+</p>
+</dd>
+<dt>Compilation</dt>
+<dd><p>Compilation is the process of creating an executable program from
+source code.  Emacs has commands for compiling files of Emacs Lisp
+code (see section <a href="Running.html#Lisp-Libraries">Libraries of Lisp Code for Emacs</a>) and programs in C and other languages
+(see section <a href="Running.html#Compilation">Running &ldquo;make&rdquo;, or Compilers Generally</a>).
+</p>
+</dd>
+<dt>Complete Key</dt>
+<dd><p>A complete key is a character or sequence of characters which, when typed
+by the user, fully specifies one action to be performed by Emacs.  For
+example, <kbd>X</kbd> and <kbd>Control-f</kbd> and <kbd>Control-x m</kbd> are keys.  Keys
+derive their meanings from being bound (q.v.) to commands (q.v.).
+Thus, <kbd>X</kbd> is conventionally bound to a command to insert &lsquo;<samp>X</samp>&rsquo; in
+the buffer; <kbd>C-x m</kbd> is conventionally bound to a command to begin
+composing a mail message. See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>Completion</dt>
+<dd><p>When Emacs automatically fills an abbreviation for a name into the
+entire name, that process is called completion.  Completion is done for
+minibuffer (q.v.) arguments when the set of possible valid inputs is
+known; for example, on command names, buffer names, and file names.
+Completion occurs when you type &lt;TAB&gt;, &lt;SPC&gt;, or &lt;RET&gt;.
+See section <a href="Minibuffer.html#Completion">Completion</a>.
+</p>
+</dd>
+<dt>Continuation Line</dt>
+<dd><p>When a line of text is longer than the width of the frame, it
+takes up more than one screen line when displayed.  We say that the
+text line is continued, and all screen lines used for it after the
+first are called continuation lines.  See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Control-Character</dt>
+<dd><p>ASCII characters with octal codes 0 through 037, and also code 0177,
+do not have graphic images assigned to them.  These are the control
+characters.  Any control character can be typed by holding down the
+&lt;CTRL&gt; key and typing some other character; some have special keys
+on the keyboard.  &lt;RET&gt;, &lt;TAB&gt;, &lt;ESC&gt;, &lt;LFD&gt;, and
+&lt;DEL&gt; are all control characters.  See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>Copyleft</dt>
+<dd><p>A copyleft is a notice giving the public legal permission to redistribute
+a program or other work of art.  Copylefts are used by leftists to enrich
+the public just as copyrights are used by rightists to gain power over
+the public.
+</p>
+</dd>
+<dt>Current Buffer</dt>
+<dd><p>The current buffer in Emacs is the Emacs buffer on which most editing
+commands operate.  You can select any Emacs buffer as the current one.
+See section <a href="Buffers.html#Buffers">Using Multiple Buffers</a>.
+</p>
+</dd>
+<dt>Current Line</dt>
+<dd><p>The line point is on (see section <a href="Frame.html#Point">Point</a>).
+</p>
+</dd>
+<dt>Current Paragraph</dt>
+<dd><p>The paragraph that point is in.  If point is between paragraphs, the
+current paragraph is the one that follows point.  See section <a href="Text.html#Paragraphs">Paragraphs</a>.
+</p>
+</dd>
+<dt>Current Defun</dt>
+<dd><p>The defun (q.v.) that point is in.  If point is between defuns, the
+current defun is the one that follows point.  See section <a href="Programs.html#Defuns">Defuns</a>.
+</p>
+</dd>
+<dt>Cursor</dt>
+<dd><p>The cursor is the rectangle on the screen which indicates the position
+called point (q.v.) at which insertion and deletion takes place.
+The cursor is on or under the character that follows point.  Often
+people speak of &lsquo;the cursor&rsquo; when, strictly speaking, they mean
+&lsquo;point&rsquo;.  See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Customization</dt>
+<dd><p>Customization is making minor changes in the way Emacs works.  It is
+often done by setting variables (see section <a href="Customization.html#Variables">Variables</a>) or by rebinding
+keys (see section <a href="Customization.html#Keymaps">Keymaps</a>).
+</p>
+</dd>
+<dt>Default Argument</dt>
+<dd><p>The default for an argument is the value that is used if you do not
+specify one.  When Emacs prompts you in the minibuffer for an argument,
+the default argument is used if you just type &lt;RET&gt;.
+See section <a href="Minibuffer.html#Minibuffer">The Minibuffer</a>.
+</p>
+</dd>
+<dt>Default Directory</dt>
+<dd><p>When you specify a file name that does not start with &lsquo;<samp>/</samp>&rsquo; or &lsquo;<samp>~</samp>&rsquo;,
+it is interpreted relative to the current buffer&rsquo;s default directory.
+See section <a href="Minibuffer.html#Minibuffer-File">Default Directory</a>.
+</p>
+</dd>
+<dt>Defun</dt>
+<dd><p>A defun is a list at the top level of parenthesis or bracket structure
+in a program.  It is so named because most such lists in Lisp programs
+are calls to the Lisp function <code>defun</code>.  See section <a href="Programs.html#Defuns">Defuns</a>.
+</p>
+</dd>
+<dt>&lt;DEL&gt;</dt>
+<dd><p>The &lt;DEL&gt; character runs the command that deletes one character of
+text.  See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Deletion</dt>
+<dd><p>Deleting text means erasing it without saving it.  Emacs deletes text
+only when it is expected not to be worth saving (all whitespace, or
+only one character).  The alternative is killing (q.v.).
+See section <a href="Mark.html#Killing">Deletion</a>.
+</p>
+</dd>
+<dt>Deletion of Files</dt>
+<dd><p>Deleting a file means removing it from the file system.
+See section <a href="Files.html#Misc-File-Ops">Miscellaneous File Operations</a>.
+</p>
+</dd>
+<dt>Deletion of Messages</dt>
+<dd><p>Deleting a message means flagging it to be eliminated from your mail
+file.  Until the mail file is expunged, you can undo this by undeleting
+the message.
+</p>
+</dd>
+<dt>Deletion of Frames</dt>
+<dd><p>When working under the multi-frame X-based version of XEmacs,
+you can delete individual frames using the <b>Close</b> menu item from the
+<b>File</b> menu.
+</p>
+</dd>
+<dt>Deletion of Windows</dt>
+<dd><p>When you delete a subwindow of an Emacs frame, you eliminate it from
+the frame.  Other windows expand to use up the space.  The deleted
+window can never come back, but no actual text is lost.  See section <a href="Windows.html#Windows">Multiple Windows</a>.
+</p>
+</dd>
+<dt>Directory</dt>
+<dd><p>Files in the Unix file system are grouped into file directories.
+See section <a href="Files.html#ListDir">Directories</a>.
+</p>
+</dd>
+<dt>Dired</dt>
+<dd><p>Dired is the Emacs facility that displays the contents of a file
+directory and allows you to &ldquo;edit the directory&rdquo;, performing
+operations on the files in the directory.  See section <a href="Files.html#Dired">Dired, the Directory Editor</a>.
+</p>
+</dd>
+<dt>Disabled Command</dt>
+<dd><p>A disabled command is one that you may not run without special
+confirmation.  Commands are usually disabled because they are
+confusing for beginning users.  See section <a href="Customization.html#Disabling">Disabling Commands</a>.
+</p>
+</dd>
+<dt>Dribble File</dt>
+<dd><p>A file into which Emacs writes all the characters that the user types
+on the keyboard.  Dribble files are used to make a record for
+debugging Emacs bugs.  Emacs does not make a dribble file unless you
+tell it to.  See section <a href="Customization.html#Bugs">Reporting Bugs</a>.
+</p>
+</dd>
+<dt>Echo Area</dt>
+<dd><p>The area at the bottom of the Emacs frame which is used for echoing the
+arguments to commands, for asking questions, and for printing brief
+messages (including error messages).  See section <a href="Frame.html#Echo-Area">The Echo Area</a>.
+</p>
+</dd>
+<dt>Echoing</dt>
+<dd><p>Echoing refers to acknowledging the receipt of commands by displaying them
+(in the echo area).  Emacs never echoes single-character keys; longer
+keys echo only if you pause while typing them.
+</p>
+</dd>
+<dt>Error</dt>
+<dd><p>An error occurs when an Emacs command cannot execute in the current
+circumstances.  When an error occurs, execution of the command stops
+(unless the command has been programmed to do otherwise) and Emacs
+reports the error by printing an error message (q.v.).  Type-ahead
+is discarded.  Then Emacs is ready to read another editing command.
+</p>
+</dd>
+<dt>Error Messages</dt>
+<dd><p>Error messages are single lines of output printed by Emacs when the
+user asks for something impossible to do (such as killing text
+forward when point is at the end of the buffer).  They appear in the
+echo area, accompanied by a beep.
+</p>
+</dd>
+<dt>&lt;ESC&gt;</dt>
+<dd><p>&lt;ESC&gt; is a character used as a prefix for typing Meta characters on
+keyboards lacking a &lt;META&gt; key.  Unlike the &lt;META&gt; key (which,
+like the &lt;SHIFT&gt; key, is held down while another character is
+typed), the &lt;ESC&gt; key is pressed and released, and applies to the
+next character typed.
+</p>
+</dd>
+<dt>Fill Prefix</dt>
+<dd><p>The fill prefix is a string that Emacs enters at the beginning
+of each line when it performs filling.  It is not regarded as part of the
+text to be filled.  See section <a href="Text.html#Filling">Filling Text</a>.
+</p>
+</dd>
+<dt>Filling</dt>
+<dd><p>Filling text means moving text from line to line so that all the lines
+are approximately the same length.  See section <a href="Text.html#Filling">Filling Text</a>.
+</p>
+</dd>
+<dt>Frame</dt>
+<dd><p>When running Emacs on a TTY terminal, &ldquo;frame&rdquo; means the terminal&rsquo;s
+screen.  When running Emacs under X, you can have multiple frames,
+each corresponding to a top-level X window and each looking like
+the screen on a TTY.  Each frame contains one or more non-overlapping
+Emacs windows (possibly with associated scrollbars, under X), an
+echo area, and (under X) possibly a menubar, toolbar, and/or gutter.
+</p>
+</dd>
+<dt>Global</dt>
+<dd><p>Global means &lsquo;independent of the current environment; in effect
+<br>throughout Emacs&rsquo;.  It is the opposite of local (q.v.).
+Examples of the use of &lsquo;global&rsquo; appear below.
+</p>
+</dd>
+<dt>Global Abbrev</dt>
+<dd><p>A global definition of an abbrev (q.v.) is effective in all major
+modes that do not have local (q.v.) definitions for the same abbrev.
+See section <a href="Abbrevs.html#Abbrevs">Abbrevs</a>.
+</p>
+</dd>
+<dt>Global Keymap</dt>
+<dd><p>The global keymap (q.v.) contains key bindings that are in effect
+unless local key bindings in a major mode&rsquo;s local
+keymap (q.v.) override them.See section <a href="Customization.html#Keymaps">Keymaps</a>.
+</p>
+</dd>
+<dt>Global Substitution</dt>
+<dd><p>Global substitution means replacing each occurrence of one string by
+another string through a large amount of text.  See section <a href="Search.html#Replace">Replacement Commands</a>.
+</p>
+</dd>
+<dt>Global Variable</dt>
+<dd><p>The global value of a variable (q.v.) takes effect in all buffers
+that do not have their own local (q.v.) values for the variable.
+See section <a href="Customization.html#Variables">Variables</a>.
+</p>
+</dd>
+<dt>Graphic Character</dt>
+<dd><p>Graphic characters are those assigned pictorial images rather than
+just names.  All the non-Meta (q.v.) characters except for the
+Control (q.v.) character are graphic characters.  These include
+letters, digits, punctuation, and spaces; they do not include
+&lt;RET&gt; or &lt;ESC&gt;.  In Emacs, typing a graphic character inserts
+that character (in ordinary editing modes).  See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Grinding</dt>
+<dd><p>Grinding means adjusting the indentation in a program to fit the
+nesting structure.  See section <a href="Indentation.html#Indentation">Grinding</a>.
+</p>
+</dd>
+<dt>Hardcopy</dt>
+<dd><p>Hardcopy means printed output.  Emacs has commands for making printed
+listings of text in Emacs buffers.  See section <a href="Reading-Mail.html#Hardcopy">Hardcopy Output</a>.
+</p>
+</dd>
+<dt>&lt;HELP&gt;</dt>
+<dd><p>You can type &lt;HELP&gt; at any time to ask what options you have, or
+to ask what any command does.  &lt;HELP&gt; is really <kbd>Control-h</kbd>.
+See section <a href="Help.html#Help">Help</a>.
+</p>
+</dd>
+<dt>Inbox</dt>
+<dd><p>An inbox is a file in which mail is delivered by the operating system.
+Some mail handlers transfers mail from inboxes to mail files (q.v.) in
+which the mail is then stored permanently or until explicitly deleted.
+</p>
+</dd>
+<dt>Indentation</dt>
+<dd><p>Indentation means blank space at the beginning of a line.  Most
+programming languages have conventions for using indentation to
+illuminate the structure of the program, and Emacs has special
+features to help you set up the correct indentation.
+See section <a href="Indentation.html#Indentation">Indentation</a>.
+</p>
+</dd>
+<dt>Insertion</dt>
+<dd><p>Insertion means copying text into the buffer, either from the keyboard
+or from some other place in Emacs.
+</p>
+</dd>
+<dt>Justification</dt>
+<dd><p>Justification means adding extra spaces to lines of text to make them
+come exactly to a specified width.  See section <a href="Text.html#Filling">Justification</a>.
+</p>
+</dd>
+<dt>Keyboard Macros</dt>
+<dd><p>Keyboard macros are a way of defining new Emacs commands from
+sequences of existing ones, with no need to write a Lisp program.
+See section <a href="Customization.html#Keyboard-Macros">Keyboard Macros</a>.
+</p>
+</dd>
+<dt>Key</dt>
+<dd><p>A key is a sequence of characters that, when input to Emacs, specify
+or begin to specify a single action for Emacs to perform.  That is,
+the sequence is considered a single unit.  If the key is enough to
+specify one action, it is a complete key (q.v.); if it is less than
+enough, it is a prefix key (q.v.).  See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>Keymap</dt>
+<dd><p>The keymap is the data structure that records the bindings (q.v.) of
+keys to the commands that they run.  For example, the keymap binds the
+character <kbd>C-n</kbd> to the command function <code>next-line</code>.
+See section <a href="Customization.html#Keymaps">Keymaps</a>.
+</p>
+</dd>
+<dt>Kill Ring</dt>
+<dd><p>The kill ring is the place where all text you have killed recently is saved.
+You can re-insert any of the killed text still in the ring; this is
+called yanking (q.v.).  See section <a href="Mark.html#Yanking">Yanking</a>.
+</p>
+</dd>
+<dt>Killing</dt>
+<dd><p>Killing means erasing text and saving it on the kill ring so it can be
+yanked (q.v.) later.  Some other systems call this &ldquo;cutting.&rdquo;
+Most Emacs commands to erase text do killing, as opposed to deletion
+(q.v.).  See section <a href="Mark.html#Killing">Deletion and Killing</a>.
+</p>
+</dd>
+<dt>Killing Jobs</dt>
+<dd><p>Killing a job (such as, an invocation of Emacs) means making it cease
+to exist.  Any data within it, if not saved in a file, is lost.
+See section <a href="Entering-Emacs.html#Exiting">Exiting Emacs</a>.
+</p>
+</dd>
+<dt>List</dt>
+<dd><p>A list is, approximately, a text string beginning with an open
+parenthesis and ending with the matching close parenthesis.  In C mode
+and other non-Lisp modes, groupings surrounded by other kinds of matched
+delimiters appropriate to the language, such as braces, are also
+considered lists.  Emacs has special commands for many operations on
+lists.  See section <a href="Programs.html#Lists">Lists and Sexps</a>.
+</p>
+</dd>
+<dt>Local</dt>
+<dd><p>Local means &lsquo;in effect only in a particular context&rsquo;; the relevant
+kind of context is a particular function execution, a particular
+buffer, or a particular major mode.  Local is the opposite of &lsquo;global&rsquo;
+(q.v.).  Specific uses of &lsquo;local&rsquo; in Emacs terminology appear below.
+</p>
+</dd>
+<dt>Local Abbrev</dt>
+<dd><p>A local abbrev definition is effective only if a particular major mode
+is selected.  In that major mode, it overrides any global definition
+for the same abbrev.  See section <a href="Abbrevs.html#Abbrevs">Abbrevs</a>.
+</p>
+</dd>
+<dt>Local Keymap</dt>
+<dd><p>A local keymap is used in a particular major mode; the key bindings
+(q.v.) in the current local keymap override global bindings of the
+same keys.  See section <a href="Customization.html#Keymaps">Keymaps</a>.
+</p>
+</dd>
+<dt>Local Variable</dt>
+<dd><p>A local value of a variable (q.v.) applies to only one buffer.
+See section <a href="Customization.html#Locals">Local Variables</a>.
+</p>
+</dd>
+<dt>M-</dt>
+<dd><p><kbd>M-</kbd> in the name of a character is an abbreviation for &lt;META&gt;,
+one of the modifier keys that can accompany any character.
+See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>M-C-</dt>
+<dd><p>&lsquo;<samp>M-C-</samp>&rsquo; in the name of a character is an abbreviation for
+Control-Meta; it means the same thing as &lsquo;<samp>C-M-</samp>&rsquo;.  If your
+terminal lacks a real &lt;META&gt; key, you type a Control-Meta character by
+typing &lt;ESC&gt; and then typing the corresponding Control character.
+See section <a href="Keystrokes.html#Keystrokes">C-M-</a>.
+</p>
+</dd>
+<dt>M-x</dt>
+<dd><p><kbd>M-x</kbd> is the key which is used to call an Emacs command by name.
+You use it to call commands that are not bound to keys.
+See section <a href="M_002dx.html#M_002dx">Running Commands by Name</a>.
+</p>
+</dd>
+<dt>Mail</dt>
+<dd><p>Mail means messages sent from one user to another through the computer
+system, to be read at the recipient&rsquo;s convenience.  Emacs has commands for
+composing and sending mail, and for reading and editing the mail you have
+received.  See section <a href="Sending-Mail.html#Sending-Mail">Sending Mail</a>.
+</p>
+</dd>
+<dt>Major Mode</dt>
+<dd><p>The major modes are a mutually exclusive set of options each of which
+configures Emacs for editing a certain sort of text.  Ideally, each
+programming language has its own major mode.  See section <a href="Major-Modes.html#Major-Modes">Major Modes</a>.
+</p>
+</dd>
+<dt>Mark</dt>
+<dd><p>The mark points to a position in the text.  It specifies one end of the
+region (q.v.), point being the other end.  Many commands operate on
+the whole region, that is, all the text from point to the mark.
+See section <a href="Mark.html#Mark">Selecting Text</a>.
+</p>
+</dd>
+<dt>Mark Ring</dt>
+<dd><p>The mark ring is used to hold several recent previous locations of the
+mark, just in case you want to move back to them.  See section <a href="Mark.html#Mark-Ring">The Mark Ring</a>.
+</p>
+</dd>
+<dt>Message</dt>
+<dd><p>See &lsquo;mail&rsquo;.
+</p>
+</dd>
+<dt>Meta</dt>
+<dd><p>Meta is the name of a modifier bit which a command character may have.
+It is present in a character if the character is typed with the
+&lt;META&gt; key held down.  Such characters are given names that start
+with <kbd>Meta-</kbd>.  For example, <kbd>Meta-&lt;</kbd> is typed by holding down
+&lt;META&gt; and at the same time typing <kbd>&lt;</kbd> (which itself is done,
+on most terminals, by holding down &lt;SHIFT&gt; and typing <kbd>,</kbd>).
+See section <a href="Keystrokes.html#Keystrokes">Meta</a>.
+</p>
+</dd>
+<dt>Meta Character</dt>
+<dd><p>A Meta character is one whose character code includes the Meta bit.
+</p>
+</dd>
+<dt>Minibuffer</dt>
+<dd><p>The minibuffer is the window that Emacs displays inside the
+echo area (q.v.) when it prompts you for arguments to commands.
+See section <a href="Minibuffer.html#Minibuffer">The Minibuffer</a>.
+</p>
+</dd>
+<dt>Minor Mode</dt>
+<dd><p>A minor mode is an optional feature of Emacs which can be switched on
+or off independent of the major mode.  Each minor mode has a
+command to turn it on or off.  See section <a href="Customization.html#Minor-Modes">Minor Modes</a>.
+</p>
+</dd>
+<dt>Mode Line</dt>
+<dd><p>The mode line is the line at the bottom of each text window (q.v.),
+which gives status information on the buffer displayed in that window.
+See section <a href="Frame.html#Mode-Line">The Mode Line</a>.
+</p>
+</dd>
+<dt>Modified Buffer</dt>
+<dd><p>A buffer (q.v.) is modified if its text has been changed since the
+last time the buffer was saved (or since it was created, if it
+has never been saved).  See section <a href="Files.html#Saving">Saving Files</a>.
+</p>
+</dd>
+<dt>Moving Text</dt>
+<dd><p>Moving text means erasing it from one place and inserting it in
+another.  This is done by killing (q.v.) and then yanking (q.v.).
+See section <a href="Mark.html#Killing">Deletion and Killing</a>.
+</p>
+</dd>
+<dt>Named Mark</dt>
+<dd><p>A named mark is a register (q.v.) in its role of recording a
+location in text so that you can move point to that location.
+See section <a href="Registers.html#Registers">Registers</a>.
+</p>
+</dd>
+<dt>Narrowing</dt>
+<dd><p>Narrowing means creating a restriction (q.v.) that limits editing in
+the current buffer to only a part of the text in the buffer.  Text
+outside that part is inaccessible to the user until the boundaries are
+widened again, but it is still there, and saving the file saves the
+invisible text.  See section <a href="Reading-Mail.html#Narrowing">Narrowing</a>.
+</p>
+</dd>
+<dt>Newline</dt>
+<dd><p>&lt;LFD&gt; characters in the buffer terminate lines of text and are
+called newlines.  See section <a href="Keystrokes.html#Keystrokes">Newline</a>.
+</p>
+</dd>
+<dt>Numeric Argument</dt>
+<dd><p>A numeric argument is a number, specified before a command, to change
+the effect of the command.  Often the numeric argument serves as a
+repeat count.  See section <a href="Basic.html#Arguments">Numeric Arguments</a>.
+</p>
+</dd>
+<dt>Option</dt>
+<dd><p>An option is a variable (q.v.) that allows you to customize
+Emacs by giving it a new value.  See section <a href="Customization.html#Variables">Variables</a>.
+</p>
+</dd>
+<dt>Overwrite Mode</dt>
+<dd><p>Overwrite mode is a minor mode.  When it is enabled, ordinary text
+characters replace the existing text after point rather than pushing
+it to the right.  See section <a href="Customization.html#Minor-Modes">Minor Modes</a>.
+</p>
+</dd>
+<dt>Page</dt>
+<dd><p>A page is a unit of text, delimited by formfeed characters (ASCII
+Control-L, code 014) coming at the beginning of a line.  Some Emacs
+commands are provided for moving over and operating on pages.
+See section <a href="Text.html#Pages">Pages</a>.
+</p>
+</dd>
+<dt>Paragraphs</dt>
+<dd><p>Paragraphs are the medium-size unit of English text.  There are
+special Emacs commands for moving over and operating on paragraphs.
+See section <a href="Text.html#Paragraphs">Paragraphs</a>.
+</p>
+</dd>
+<dt>Parsing</dt>
+<dd><p>We say that Emacs parses words or expressions in the text being
+edited.  Really, all it knows how to do is find the other end of a
+word or expression.  See section <a href="Customization.html#Syntax">The Syntax Table</a>.
+</p>
+</dd>
+<dt>Point</dt>
+<dd><p>Point is the place in the buffer at which insertion and deletion
+occur.  Point is considered to be between two characters, not at one
+character.  The terminal&rsquo;s cursor (q.v.) indicates the location of
+point.  See section <a href="Basic.html#Basic">Point</a>.
+</p>
+</dd>
+<dt>Prefix Key</dt>
+<dd><p>A prefix key is a key (q.v.) whose sole function is to introduce a
+set of multi-character keys.  <kbd>Control-x</kbd> is an example of a prefix
+key; any two-character sequence starting with <kbd>C-x</kbd> is also
+a legitimate key.  See section <a href="Keystrokes.html#Keystrokes">Keystrokes, Key Sequences, and Key Bindings</a>.
+</p>
+</dd>
+<dt>Prompt</dt>
+<dd><p>A prompt is text printed to ask the user for input.  Printing a prompt
+is called prompting.  Emacs prompts always appear in the echo area
+(q.v.).  One kind of prompting happens when the minibuffer is used
+to read an argument (see section <a href="Minibuffer.html#Minibuffer">The Minibuffer</a>); the echoing which happens
+when you pause in the middle of typing a multi-character key is also a
+kind of prompting (see section <a href="Frame.html#Echo-Area">The Echo Area</a>).
+</p>
+</dd>
+<dt>Quitting</dt>
+<dd><p>Quitting means cancelling a partially typed command or a running
+command, using <kbd>C-g</kbd>.  See section <a href="Customization.html#Quitting">Quitting and Aborting</a>.
+</p>
+</dd>
+<dt>Quoting</dt>
+<dd><p>Quoting means depriving a character of its usual special significance.
+In Emacs this is usually done with <kbd>Control-q</kbd>.  What constitutes special
+significance depends on the context and on convention.  For example,
+an &ldquo;ordinary&rdquo; character as an Emacs command inserts itself; so in
+this context, a special character is any character that does not
+normally insert itself (such as &lt;DEL&gt;, for example), and quoting
+it makes it insert itself as if it were not special.  Not all contexts
+allow quoting.  See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Read-only Buffer</dt>
+<dd><p>A read-only buffer is one whose text you are not allowed to change.
+Normally Emacs makes buffers read-only when they contain text which
+has a special significance to Emacs, such as Dired buffers.
+Visiting a file that is write-protected also makes a read-only buffer.
+See section <a href="Buffers.html#Buffers">Using Multiple Buffers</a>.
+</p>
+</dd>
+<dt>Recursive Editing Level</dt>
+<dd><p>A recursive editing level is a state in which part of the execution of
+a command involves asking the user to edit some text.  This text may
+or may not be the same as the text to which the command was applied.
+The mode line indicates recursive editing levels with square brackets
+(&lsquo;<samp>[</samp>&rsquo; and &lsquo;<samp>]</samp>&rsquo;).  See section <a href="Reading-Mail.html#Recursive-Edit">Recursive Editing Levels</a>.
+</p>
+</dd>
+<dt>Redisplay</dt>
+<dd><p>Redisplay is the process of correcting the image on the screen to
+correspond to changes that have been made in the text being edited.
+See section <a href="Frame.html#Frame">Redisplay</a>.
+</p>
+</dd>
+<dt>Regexp</dt>
+<dd><p>See &lsquo;regular expression&rsquo;.
+</p>
+</dd>
+<dt>Region</dt>
+<dd><p>The region is the text between point (q.v.) and the mark (q.v.).
+Many commands operate on the text of the region.  See section <a href="Mark.html#Mark">Region</a>.
+</p>
+</dd>
+<dt>Registers</dt>
+<dd><p>Registers are named slots in which text or buffer positions or
+rectangles can be saved for later use.  See section <a href="Registers.html#Registers">Registers</a>.
+</p>
+</dd>
+<dt>Regular Expression</dt>
+<dd><p>A regular expression is a pattern that can match various text strings;
+for example, &lsquo;<samp>l[0-9]+</samp>&rsquo; matches &lsquo;<samp>l</samp>&rsquo; followed by one or more
+digits.  See section <a href="Search.html#Regexps">Syntax of Regular Expressions</a>.
+</p>
+</dd>
+<dt>Replacement</dt>
+<dd><p>See &lsquo;global substitution&rsquo;.
+</p>
+</dd>
+<dt>Restriction</dt>
+<dd><p>A buffer&rsquo;s restriction is the amount of text, at the beginning or the
+end of the buffer, that is temporarily invisible and inaccessible.
+Giving a buffer a nonzero amount of restriction is called narrowing
+(q.v.).  See section <a href="Reading-Mail.html#Narrowing">Narrowing</a>.
+</p>
+</dd>
+<dt>&lt;RET&gt;</dt>
+<dd><p>&lt;RET&gt; is the character than runs the command to insert a
+newline into the text.  It is also used to terminate most arguments
+read in the minibuffer (q.v.).  See section <a href="Keystrokes.html#Keystrokes">Return</a>.
+</p>
+</dd>
+<dt>Saving</dt>
+<dd><p>Saving a buffer means copying its text into the file that was visited
+(q.v.) in that buffer.  To actually change a file you have edited in
+Emacs, you have to save it.  See section <a href="Files.html#Saving">Saving Files</a>.
+</p>
+</dd>
+<dt>Scrolling</dt>
+<dd><p>Scrolling means shifting the text in the Emacs window to make a
+different part of the buffer visible.  See section <a href="Display.html#Display">Scrolling</a>.
+</p>
+</dd>
+<dt>Searching</dt>
+<dd><p>Searching means moving point to the next occurrence of a specified
+string.  See section <a href="Search.html#Search">Searching and Replacement</a>.
+</p>
+</dd>
+<dt>Selecting</dt>
+<dd><p>Selecting a buffer means making it the current (q.v.) buffer.
+See section <a href="Buffers.html#Buffers">Selecting</a>.
+</p>
+</dd>
+<dt>Self-documentation</dt>
+<dd><p>Self-documentation is the feature of Emacs which can tell you what any
+command does, or can give you a list of all commands related to a topic
+you specify.  You ask for self-documentation with the help character,
+<kbd>C-h</kbd>.  See section <a href="Help.html#Help">Help</a>.
+</p>
+</dd>
+<dt>Sentences</dt>
+<dd><p>Emacs has commands for moving by or killing by sentences.
+See section <a href="Text.html#Sentences">Sentences</a>.
+</p>
+</dd>
+<dt>Sexp</dt>
+<dd><p>An sexp (short for &lsquo;s-expression,&rsquo; itself short for &lsquo;symbolic
+expression&rsquo;) is the basic syntactic unit of Lisp
+in its textual form: either a list, or Lisp atom.  Many Emacs commands
+operate on sexps.  The term &lsquo;sexp&rsquo; is generalized to languages other
+than Lisp to mean a syntactically recognizable expression.
+See section <a href="Programs.html#Lists">Sexps</a>.
+</p>
+</dd>
+<dt>Simultaneous Editing</dt>
+<dd><p>Simultaneous editing means two users modifying the same file at once.
+If simultaneous editing is not detected, you may lose your
+work.  Emacs detects all cases of simultaneous editing and warns the
+user to investigate them.  See section <a href="Files.html#Interlocking">Simultaneous Editing</a>.
+</p>
+</dd>
+<dt>String</dt>
+<dd><p>A string is a kind of Lisp data object which contains a sequence of
+characters.  Many Emacs variables are intended to have strings as
+values.  The Lisp syntax for a string consists of the characters in
+the string with a &lsquo;<samp>&quot;</samp>&rsquo; before and another &lsquo;<samp>&quot;</samp>&rsquo; after. Write a
+&lsquo;<samp>&quot;</samp>&rsquo; that is part of the string as &lsquo;<samp>\&quot;</samp>&rsquo; and a
+&lsquo;<samp>\</samp>&rsquo; that is part of the string as &lsquo;<samp>\\</samp>&rsquo;.  You can include all
+other characters, including newline, just by writing
+them inside the string. You can also include escape sequences as in C, such as
+&lsquo;<samp>\n</samp>&rsquo; for newline or &lsquo;<samp>\241</samp>&rsquo; using an octal character code.
+</p>
+</dd>
+<dt>String Substitution</dt>
+<dd><p>See &lsquo;global substitution&rsquo;.
+</p>
+</dd>
+<dt>Syntax Table</dt>
+<dd><p>The syntax table tells Emacs which characters are part of a word,
+which characters balance each other like parentheses, etc.
+See section <a href="Customization.html#Syntax">The Syntax Table</a>.
+</p>
+</dd>
+<dt>Tag Table</dt>
+<dd><p>A tag table is a file that serves as an index to the function
+definitions in one or more other files.  See section <a href="Programs.html#Tags">Tags Tables</a>.
+</p>
+</dd>
+<dt>Termscript File</dt>
+<dd><p>A termscript file contains a record of all characters Emacs sent to
+the terminal.  It is used for tracking down bugs in Emacs redisplay.
+Emacs does not make a termscript file unless explicitly instructed to do
+so.
+See section <a href="Customization.html#Bugs">Reporting Bugs</a>.
+</p>
+</dd>
+<dt>Text</dt>
+<dd><p>Text has two meanings (see section <a href="Text.html#Text">Commands for Human Languages</a>):
+</p>
+<ul>
+<li>
+Data consisting of a sequence of characters, as opposed to binary
+numbers, images, graphics commands, executable programs, and the like.
+The contents of an Emacs buffer are always text in this sense.
+</li><li>
+Data consisting of written human language, as opposed to programs,
+or something that follows the stylistic conventions of human language.
+</li></ul>
+
+</dd>
+<dt>Top Level</dt>
+<dd><p>Top level is the normal state of Emacs, in which you are editing the
+text of the file you have visited.  You are at top level whenever you
+are not in a recursive editing level (q.v.) or the minibuffer
+(q.v.), and not in the middle of a command.  You can get back to top
+level by aborting (q.v.) and quitting (q.v.).  See section <a href="Customization.html#Quitting">Quitting and Aborting</a>.
+</p>
+</dd>
+<dt>Transposition</dt>
+<dd><p>Transposing two units of text means putting each one into the place
+formerly occupied by the other.  There are Emacs commands to transpose
+two adjacent characters, words, sexps (q.v.), or lines
+(see section <a href="Fixit.html#Transpose">Transposing Text</a>).
+</p>
+</dd>
+<dt>Truncation</dt>
+<dd><p>Truncating text lines in the display means leaving out any text on a
+line that does not fit within the right margin of the window
+displaying it.  See also &lsquo;continuation line&rsquo;.
+See section <a href="Basic.html#Basic">Basic Editing</a>.
+</p>
+</dd>
+<dt>Undoing</dt>
+<dd><p>Undoing means making your previous editing go in reverse, bringing
+back the text that existed earlier in the editing session.
+See section <a href="Undo.html#Undo">Undoing Changes</a>.
+</p>
+</dd>
+<dt>Variable</dt>
+<dd><p>A variable is Lisp object that can store an arbitrary value.  Emacs uses
+some variables for internal purposes, and has others (known as &lsquo;options&rsquo;
+(q.v.)) you can set to control the behavior of Emacs.  The variables
+used in Emacs that you are likely to be interested in are listed in the
+Variables Index of this manual.  See section <a href="Customization.html#Variables">Variables</a>, for information on
+variables.
+</p>
+</dd>
+<dt>Visiting</dt>
+<dd><p>Visiting a file means loading its contents into a buffer (q.v.)
+where they can be edited.  See section <a href="Files.html#Visiting">Visiting Files</a>.
+</p>
+</dd>
+<dt>Whitespace</dt>
+<dd><p>Whitespace is any run of consecutive formatting characters (spaces,
+tabs, newlines, and backspaces).
+</p>
+</dd>
+<dt>Widening</dt>
+<dd><p>Widening is removing any restriction (q.v.) on the current buffer;
+it is the opposite of narrowing (q.v.).  See section <a href="Reading-Mail.html#Narrowing">Narrowing</a>.
+</p>
+</dd>
+<dt>Window</dt>
+<dd><p>Emacs divides the frame into one or more windows, each of which can
+display the contents of one buffer (q.v.) at any time.
+See section <a href="Frame.html#Frame">The XEmacs Frame</a>, for basic information on how Emacs uses the frame.
+See section <a href="Windows.html#Windows">Multiple Windows</a>, for commands to control the use of windows. Note that if
+you are running Emacs under X, terminology can be confusing: Each Emacs
+frame occupies a separate X window and can, in turn, be divided into
+different subwindows.
+</p>
+</dd>
+<dt>Word Abbrev</dt>
+<dd><p>Synonymous with &lsquo;abbrev&rsquo;.
+</p>
+</dd>
+<dt>Word Search</dt>
+<dd><p>Word search is searching for a sequence of words, considering the
+punctuation between them as insignificant.  See section <a href="Search.html#Word-Search">Word Search</a>.
+</p>
+</dd>
+<dt>Yanking</dt>
+<dd><p>Yanking means reinserting text previously killed.  It can be used to
+undo a mistaken kill, or for copying or moving text.  Some other
+systems call this &ldquo;pasting&rdquo;.  See section <a href="Mark.html#Yanking">Yanking</a>.
+</p></dd>
+</dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Customization.html#Customization" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Manifesto.html#Manifesto" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -8,7 +8,7 @@
 # Load the file with command-line 
 # option -init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.7 2010-07-13 12:02:41 pertusus Exp $
+# $Id: mediawiki.init,v 1.8 2010-07-14 08:45:57 pertusus Exp $
 
 use strict;
 
@@ -25,8 +25,7 @@ set_default('INLINE_CSS_STYLE', 1);
 set_default('USE_SECTIONS', 1);
 set_default('USE_NODES', undef);
 
-# if this is set the sections are numbered, and section names and numbers 
-# are used in references and menus (instead of node names).
+# numbers are added automatically based on mediawiki markup
 set_default('NUMBER_SECTIONS', 0);
 
 # if this is set footnotes are on a separated page. Otherwise they are at
@@ -50,6 +49,10 @@ set_default('SPLIT_INDEX', undef);
 
 # Use preformatted menus.
 set_default('SIMPLE_MENU', 1);
+
+# no NODE_FILES. In fact the whole ref to external manual is broken.
+# This may be revisited later.
+set_default('NODE_FILES', 0);
 
 $DEFAULT_RULE = "\n----\n";
 

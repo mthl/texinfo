@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.9.1 ReesAlgebra</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.9.1 ReesAlgebra">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.9.1 ReesAlgebra">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="ReesAlgebra"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="reesclos_005flib.html#reesclos_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.9 reesclos_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="normalI.html#normalI" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.9.2 normalI" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="reesclos_005flib.html#reesclos_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.9 reesclos_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="ReesAlgebra-1"></a>
+<h4 class="subsubsection">D.4.9.1 ReesAlgebra</h4>
+<a name="index-ReesAlgebra"></a>
+<p>Procedure from library <code>reesclos.lib</code> (see <a href="reesclos_005flib.html#reesclos_005flib">reesclos_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>ReesAlgebra (I); I = ideal
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>The Rees algebra R[It] as an affine ring, where I is an ideal in R.
+The procedure returns a list containing two rings:
+<br>[1]: a ring, say RR; in the ring an ideal ker such that R[It]=RR/ker
+</p>
+<p>[2]: a ring, say Kxt; the basering with additional variable t
+containing an ideal mapI that defines the map RR&ndash;&gt;Kxt
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;reesclos.lib&quot;;
+ring R = 0,(x,y),dp;
+ideal I = x2,xy4,y5;
+list L = ReesAlgebra(I);
+def Rees = L[1];       // defines the ring Rees, containing the ideal ker
+setring Rees;          // passes to the ring Rees
+Rees;
+&rarr; //   characteristic : 0
+&rarr; //   number of vars : 5
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y U(1) U(2) U(3) 
+&rarr; //        block   2 : ordering C
+ker;                   // R[It] is isomorphic to Rees/ker
+&rarr; ker[1]=y*U(2)-x*U(3)
+&rarr; ker[2]=y^3*U(1)*U(3)-U(2)^2
+&rarr; ker[3]=y^4*U(1)-x*U(2)
+&rarr; ker[4]=x*y^2*U(1)*U(3)^2-U(2)^3
+&rarr; ker[5]=x^2*y*U(1)*U(3)^3-U(2)^4
+&rarr; ker[6]=x^3*U(1)*U(3)^4-U(2)^5
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="reesclos_005flib.html#reesclos_005flib" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.9 reesclos_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="normalI.html#normalI" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.9.2 normalI" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="reesclos_005flib.html#reesclos_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.9 reesclos_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

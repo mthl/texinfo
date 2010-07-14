@@ -1,9 +1,19 @@
-3 Indices refs: J - O
-*********************
+3 Indices refs: Z
+*****************
 * Index:
-* joncept: 3 Indices refs.
-* koncept: 3 Indices refs.
-* loncept: 3 Indices refs.
-* moncept: 3 Indices refs.
-* noncept: 3 Indices refs.
-* ooncept: 3 Indices refs.
+* zoncept: 3 Indices refs.
+
+3.1 node
+========
+
+A section following the indices.
+
+Table of Contents
+*****************
+
+Test for indices
+1 first node chapter, with ftable and vtable
+2 node with printindex
+3 Indices refs
+ 3.1 node
+

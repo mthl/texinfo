@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>XEmacs User&rsquo;s Manual: 15 Using Multiple Buffers</title>
+
+<meta name="description" content="XEmacs User&rsquo;s Manual: 15 Using Multiple Buffers">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: 15 Using Multiple Buffers">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Buffers"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Files.html#Files" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Files.html#Misc-File-Ops" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Select-Buffer" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Using-Multiple-Buffers"></a>
+<h1 class="chapter">15 Using Multiple Buffers</h1>
+
+<a name="index-buffers"></a>
+<p>  Text you are editing in Emacs resides in an object called a
+<em>buffer</em>.  Each time you visit a file, Emacs creates a buffer to
+hold the file&rsquo;s text.  Each time you invoke Dired, Emacs creates a buffer
+to hold the directory listing.  If you send a message with <kbd>C-x m</kbd>,
+a buffer named &lsquo;<samp>*mail*</samp>&rsquo; is used to hold the text of the message.
+When you ask for a command&rsquo;s documentation, it appears in a buffer
+called &lsquo;<samp>*Help*</samp>&rsquo;.
+</p>
+<a name="index-selected-buffer"></a>
+<a name="index-current-buffer"></a>
+<p>  At any time, one and only one buffer is <em>selected</em>.  It is also
+called the <em>current buffer</em>.  Saying a command operates on &ldquo;the
+buffer&rdquo; really means that the command operates on the selected
+buffer, as most commands do.
+</p>
+<p>  When Emacs creates multiple windows, each window has a chosen buffer which
+is displayed there, but at any time only one of the windows is selected and
+its chosen buffer is the selected buffer.  Each window&rsquo;s mode line displays
+the name of the buffer the window is displaying (see section <a href="Windows.html#Windows">Multiple Windows</a>).
+</p>
+<p>  Each buffer has a name which can be of any length but is
+case-sensitive.  You can select a buffer using its name.  Most
+buffers are created when you visit files; their names are derived from
+the files&rsquo; names.  You can also create an empty buffer with any name you
+want.  A newly started Emacs has a buffer named &lsquo;<samp>*scratch*</samp>&rsquo; which
+you can use for evaluating Lisp expressions in Emacs.
+</p>
+<p>  Each buffer records what file it is visiting, whether it is
+modified, and what major mode and minor modes are in effect in it
+(see section <a href="Major-Modes.html#Major-Modes">Major Modes</a>).  Any Emacs variable can be made <em>local to</em> a
+particular buffer, meaning its value in that buffer can be different from
+the value in other buffers.  See section <a href="Customization.html#Locals">Local Variables</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Select-Buffer">15.1 Creating and Selecting Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Creating a new buffer or reselecting an old one.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#List-Buffers">15.2 Listing Existing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Getting a list of buffers that exist.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Misc-Buffer">15.3 Miscellaneous Buffer Operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Renaming; changing read-onliness; copying text.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Kill-Buffer">15.4 Killing Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">     Killing buffers you no longer need.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Several-Buffers">15.5 Operating on Several Buffers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> How to go through the list of all buffers
+                     and operate variously on several of them.
+</td></tr>
+</table>
+
+<hr>
+<a name="Select-Buffer"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#List-Buffers" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Creating-and-Selecting-Buffers"></a>
+<h2 class="section">15.1 Creating and Selecting Buffers</h2>
+<a name="index-changing-buffers"></a>
+<a name="index-switching-buffers"></a>
+
+<dl compact="compact">
+<dt><kbd>C-x b <var>buffer</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Select or create a buffer named <var>buffer</var> (<code>switch-to-buffer</code>).
+</p></dd>
+<dt><kbd>C-x 4 b <var>buffer</var> &lt;RET&gt;</kbd></dt>
+<dd><p>Similar, but select a buffer named <var>buffer</var> in another window
+(<code>switch-to-buffer-other-window</code>).
+</p></dd>
+<dt><kbd>M-x switch-to-other-buffer <var>n</var></kbd></dt>
+<dd><p>Switch to the previous buffer.
+</p></dd>
+</dl>
+
+<a name="index-C_002dx-4-b"></a>
+<a name="index-C_002dx-5-b"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dwindow"></a>
+<a name="index-C_002dx-b"></a>
+<a name="index-switch_002dto_002dbuffer"></a>
+<a name="index-switch_002dto_002dbuffer_002dother_002dframe-1"></a>
+<p>  To select a buffer named <var>bufname</var>, type <kbd>C-x b <var>bufname</var>
+&lt;RET&gt;</kbd>.  This is the command <code>switch-to-buffer</code> with argument
+<var>bufname</var>.  You can use completion on an abbreviation for the buffer
+name you want (see section <a href="Minibuffer.html#Completion">Completion</a>).  An empty argument to <kbd>C-x b</kbd>
+specifies the most recently selected buffer that is not displayed in any
+window.
+</p>
+<p>  Most buffers are created when you visit files, or use Emacs commands
+that display text.  You can also create a buffer explicitly by typing
+<kbd>C-x b <var>bufname</var> &lt;RET&gt;</kbd>, which creates a new, empty buffer
+that is not visiting any file, and selects it for editing.  The new
+buffer&rsquo;s major mode is determined by the value of
+<code>default-major-mode</code> (see section <a href="Major-Modes.html#Major-Modes">Major Modes</a>).  Buffers not visiting
+files are usually used for making notes to yourself.  If you try to save
+one, you are asked for the file name to use.
+</p>
+<p> The function <code>switch-to-buffer-other-frame</code> is similar to
+<code>switch-to-buffer</code> except that it creates a new frame in which to
+display the selected buffer.
+</p>
+<a name="index-switch_002dto_002dother_002dbuffer"></a>
+<p>Use <kbd>M-x switch-to-other-buffer</kbd> to visit the previous buffer. If
+you supply a positive integer <var>n</var>, the <var>n</var>th most recent buffer
+is displayed. If you supply an argument of 0, the current buffer is
+moved to the bottom of the buffer stack.
+</p>
+<p>  Note that you can also use <kbd>C-x C-f</kbd> and any other command for
+visiting a file to switch buffers.  See section <a href="Files.html#Visiting">Visiting Files</a>.
+</p>
+<hr>
+<a name="List-Buffers"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Select-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Misc-Buffer" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Listing-Existing-Buffers"></a>
+<h2 class="section">15.2 Listing Existing Buffers</h2>
+
+<dl compact="compact">
+<dt><kbd>C-x C-b</kbd></dt>
+<dd><p>List the existing buffers (<code>list-buffers</code>).
+</p></dd>
+</dl>
+
+<a name="index-C_002dx-C_002db"></a>
+<a name="index-list_002dbuffers"></a>
+<p>  To print a list of all existing buffers, type <kbd>C-x C-b</kbd>.  Each
+line in the list shows one buffer&rsquo;s name, major mode, and visited file.
+A &lsquo;<samp>*</samp>&rsquo; at the beginning of a line indicates the buffer has been
+&ldquo;modified&rdquo;.  If several buffers are modified, it may be time to save
+some with <kbd>C-x s</kbd> (see section <a href="Files.html#Saving">Saving Files</a>).  A &lsquo;<samp>%</samp>&rsquo; indicates a read-only
+buffer.  A &lsquo;<samp>.</samp>&rsquo; marks the selected buffer.  Here is an example of a
+buffer list:
+</p>
+<div class="smallexample">
+<pre class="smallexample"> MR Buffer         Size  Mode           File
+ -- ------         ----  ----           ----
+.*  emacs.tex      383402 Texinfo       /u2/emacs/man/emacs.tex
+    *Help*         1287  Fundamental    
+    files.el       23076 Emacs-Lisp     /u2/emacs/lisp/files.el
+  % RMAIL          64042 RMAIL          /u/rms/RMAIL
+ *% man            747   Dired          /u2/emacs/man/
+    net.emacs      343885 Fundamental   /u/rms/net.emacs
+    fileio.c       27691 C              /u2/emacs/src/fileio.c
+    NEWS           67340 Text           /u2/emacs/etc/NEWS
+    *scratch*      0     Lisp Interaction
+</pre></div>
+
+<p>Note that the buffer &lsquo;<samp>*Help*</samp>&rsquo; was made by a help request; it is not
+visiting any file.  The buffer <code>man</code> was made by Dired on the
+directory &lsquo;<tt>/u2/emacs/man/</tt>&rsquo;.
+</p>
+<p>As you move the mouse over the &lsquo;<samp>*Buffer List*</samp>&rsquo; buffer, the lines
+are highlighted.  This visual cue indicates that clicking the right
+mouse button (<code>button3</code>) will pop up a menu of commands on the
+buffer represented by this line.  This menu duplicates most of those
+commands which are bound to keys in the &lsquo;<samp>*Buffer List*</samp>&rsquo; buffer.
+</p>
+<hr>
+<a name="Misc-Buffer"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#List-Buffers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Kill-Buffer" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Miscellaneous-Buffer-Operations"></a>
+<h2 class="section">15.3 Miscellaneous Buffer Operations</h2>
+
+<dl compact="compact">
+<dt><kbd>C-x C-q</kbd></dt>
+<dd><p>Toggle read-only status of buffer (<code>toggle-read-only</code>).
+</p></dd>
+<dt><kbd>M-x rename-buffer</kbd></dt>
+<dd><p>Change the name of the current buffer.
+</p></dd>
+<dt><kbd>M-x view-buffer</kbd></dt>
+<dd><p>Scroll through a buffer.
+</p></dd>
+</dl>
+
+<a name="index-read_002donly-buffer"></a>
+<a name="index-C_002dx-C_002dq"></a>
+<a name="index-toggle_002dread_002donly"></a>
+<a name="index-buffer_002dread_002donly"></a>
+<p>  A buffer can be <em>read-only</em>, which means that commands to change
+its text are not allowed.  Normally, read-only buffers are created by
+subsystems such as Dired and Rmail that have special commands to operate
+on the text.  Emacs also creates a read-only buffer if you
+visit a file that is protected.  To make changes in a read-only buffer,
+use the command <kbd>C-x C-q</kbd> (<code>toggle-read-only</code>).  It makes a
+read-only buffer writable, and makes a writable buffer read-only.  This
+works by setting the variable <code>buffer-read-only</code>, which has a local
+value in each buffer and makes a buffer read-only if its value is
+non-<code>nil</code>.
+</p>
+<a name="index-rename_002dbuffer"></a>
+<p>  <kbd>M-x rename-buffer</kbd> changes the name of the current buffer,
+prompting for the new name in the minibuffer.  There is no default.  If you
+specify a name that is used by a different buffer, an error is signalled and
+renaming is not done.
+</p>
+<a name="index-view_002dbuffer"></a>
+<p>  <kbd>M-x view-buffer</kbd> is similar to <kbd>M-x view-file</kbd> (see section <a href="Files.html#Misc-File-Ops">Miscellaneous File Operations</a>), but it examines an already existing Emacs buffer.  View mode
+provides convenient commands for scrolling through the buffer but not
+for changing it.  When you exit View mode, the resulting value of point
+remains in effect.
+</p>
+<p>To copy text from one buffer to another, use the commands <kbd>M-x
+append-to-buffer</kbd> and <kbd>M-x insert-buffer</kbd>.  See section <a href="Mark.html#Accumulating-Text">Accumulating Text</a>.
+</p>
+<hr>
+<a name="Kill-Buffer"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Misc-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Several-Buffers" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Killing-Buffers"></a>
+<h2 class="section">15.4 Killing Buffers</h2>
+
+<p>  After using Emacs for a while, you may accumulate a large number of
+buffers and may want to eliminate the ones you no
+longer need.  There are several commands for doing this.
+</p>
+<dl compact="compact">
+<dt><kbd>C-x k</kbd></dt>
+<dd><p>Kill a buffer, specified by name (<code>kill-buffer</code>).
+</p></dd>
+<dt><kbd>M-x kill-some-buffers</kbd></dt>
+<dd><p>Offer to kill each buffer, one by one.
+</p></dd>
+</dl>
+
+<a name="index-kill_002dbuffer"></a>
+<a name="index-kill_002dsome_002dbuffers"></a>
+<a name="index-C_002dx-k"></a>
+ 
+<p>  <kbd>C-x k</kbd> (<code>kill-buffer</code>) kills one buffer, whose name you
+specify in the minibuffer.  If you type just &lt;RET&gt; in the
+minibuffer, the default, killing the current buffer, is used.  If the
+current buffer is killed, the buffer that has been selected recently but
+does not appear in any window now is selected.  If the buffer being
+killed contains unsaved changes, you are asked to confirm with <kbd>yes</kbd>
+before the buffer is killed.
+</p>
+<p>  The command <kbd>M-x kill-some-buffers</kbd> asks about each buffer, one by
+one.  An answer of <kbd>y</kbd> means to kill the buffer.  Killing the current
+buffer or a buffer containing unsaved changes selects a new buffer or asks
+for confirmation just like <code>kill-buffer</code>.
+</p>
+<hr>
+<a name="Several-Buffers"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Kill-Buffer" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buffers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Operating-on-Several-Buffers"></a>
+<h2 class="section">15.5 Operating on Several Buffers</h2>
+<a name="index-buffer-menu"></a>
+
+<p>  The <em>buffer-menu</em> facility is like a &ldquo;Dired for buffers&rdquo;; it allows
+you to request operations on various Emacs buffers by editing a
+buffer containing a list of them.  You can save buffers, kill them
+(here called <em>deleting</em> them, for consistency with Dired), or display
+them.
+</p>
+<dl compact="compact">
+<dt><kbd>M-x buffer-menu</kbd></dt>
+<dd><p>Begin editing a buffer listing all Emacs buffers.
+</p></dd>
+</dl>
+
+<a name="index-buffer_002dmenu"></a>
+<p>  The command <code>buffer-menu</code> writes a list of all Emacs buffers into
+the buffer &lsquo;<samp>*Buffer List*</samp>&rsquo;, and selects that buffer in Buffer Menu
+mode.  The buffer is read-only.  You can only change it using the special
+commands described in this section.  Most of the commands are graphic
+characters.  You can use  Emacs cursor motion commands in the
+&lsquo;<samp>*Buffer List*</samp>&rsquo; buffer.  If the cursor is on a line describing a
+buffer, the following  special commands apply to that buffer:
+</p>
+<dl compact="compact">
+<dt><kbd>d</kbd></dt>
+<dd><p>Request to delete (kill) the buffer, then move down.  A &lsquo;<samp>D</samp>&rsquo; before
+the buffer name on a line indicates a deletion request.  Requested
+deletions actually take place when you use the <kbd>x</kbd> command.
+</p></dd>
+<dt><kbd>k</kbd></dt>
+<dd><p>Synonym for <kbd>d</kbd>.
+</p></dd>
+<dt><kbd>C-d</kbd></dt>
+<dd><p>Like <kbd>d</kbd> but move up afterwards instead of down.
+</p></dd>
+<dt><kbd>s</kbd></dt>
+<dd><p>Request to save the buffer.  An &lsquo;<samp>S</samp>&rsquo; before the buffer name on a line
+indicates the request.  Requested saves actually take place when you use
+the <kbd>x</kbd> command.  You can request both saving and deletion for the
+same buffer.
+</p></dd>
+<dt><kbd>~</kbd></dt>
+<dd><p>Mark buffer &ldquo;unmodified&rdquo;.  The command <kbd>~</kbd> does this
+immediately when typed.
+</p></dd>
+<dt><kbd>x</kbd></dt>
+<dd><p>Perform previously requested deletions and saves.
+</p></dd>
+<dt><kbd>u</kbd></dt>
+<dd><p>Remove any request made for the current line, and move down.
+</p></dd>
+<dt><kbd>&lt;DEL&gt;</kbd></dt>
+<dd><p>Move to previous line and remove any request made for that line.
+</p></dd>
+</dl>
+
+<p>  All commands that add or remove flags to request later operations
+also move down a line.  They accept a numeric argument as a repeat count,
+unless otherwise specified.
+</p>
+<p>  There are also special commands to use the buffer list to select another
+buffer, and to specify one or more other buffers for display in additional
+windows.
+</p>
+<dl compact="compact">
+<dt><kbd>1</kbd></dt>
+<dd><p>Select the buffer in a full-frame window.  This command takes effect
+immediately.
+</p></dd>
+<dt><kbd>2</kbd></dt>
+<dd><p>Immediately set up two windows, with this buffer in one and the
+buffer selected before &lsquo;<samp>*Buffer List*</samp>&rsquo; in the other.
+</p></dd>
+<dt><kbd>f</kbd></dt>
+<dd><p>Immediately select the buffer in place of the &lsquo;<samp>*Buffer List*</samp>&rsquo; buffer.
+</p></dd>
+<dt><kbd>o</kbd></dt>
+<dd><p>Immediately select the buffer in another window as if by <kbd>C-x 4 b</kbd>,
+leaving &lsquo;<samp>*Buffer List*</samp>&rsquo; visible.
+</p></dd>
+<dt><kbd>q</kbd></dt>
+<dd><p>Immediately select this buffer, and display any buffers previously
+flagged with the <kbd>m</kbd> command in other windows.  If there are no 
+buffers flagged with <kbd>m</kbd>, this command is equivalent to <kbd>1</kbd>.
+</p></dd>
+<dt><kbd>m</kbd></dt>
+<dd><p>Flag this buffer to be displayed in another window if the <kbd>q</kbd>
+command is used.  The request shows as a &lsquo;<samp>&gt;</samp>&rsquo; at the beginning of
+the line.  The same buffer may not have both a delete request and a
+display request.
+</p></dd>
+</dl>
+
+<p> Going back between a <code>buffer-menu</code> buffer and other Emacs buffers is
+easy.  You can, for example, switch from the &lsquo;<samp>*Buffer List*</samp>&rsquo;
+buffer to another Emacs buffer, and edit there.  You can then reselect the
+<code>buffer-menu</code> buffer and perform operations already
+requested, or you can kill that buffer or pay no further attention to it.
+ All that <code>buffer-menu</code> does directly is create and select a
+suitable buffer, and turn on Buffer Menu mode.  All the other
+capabilities of the buffer menu are implemented by special commands
+provided in Buffer Menu mode.  
+</p>
+<p>  The only difference between <code>buffer-menu</code> and <code>list-buffers</code> is
+that <code>buffer-menu</code> selects the &lsquo;<samp>*Buffer List*</samp>&rsquo; buffer and
+<code>list-buffers</code> does not.  If you run <code>list-buffers</code> (that is,
+type <kbd>C-x C-b</kbd>) and select the buffer list manually, you can use all
+the commands described here.
+</p>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Buffers" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Windows.html#Windows" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

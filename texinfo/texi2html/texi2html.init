@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.273 2010-07-13 12:02:35 pertusus Exp $
+# $Id: texi2html.init,v 1.274 2010-07-14 08:45:56 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -225,7 +225,7 @@ set_default('USE_NODES', 1);
 # --node-files
 # if this is set one file per node is generated, which can be a target for 
 # cross manual references.
-set_default('NODE_FILES', 0);
+set_default('NODE_FILES', undef);
 
 # --toc-links
 # if this is set, links from headings to toc entries are created.

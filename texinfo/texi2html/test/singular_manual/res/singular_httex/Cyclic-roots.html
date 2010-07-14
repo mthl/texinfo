@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.16 Cyclic roots</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.16 Cyclic roots">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Cyclic-roots"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Formatting-output.html#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="G_005fa-_002dInvariants.html#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Cyclic-roots-1"></a>
+<h2 class="section">A.16 Cyclic roots</h2>
+<a name="index-Cyclic-roots"></a>
+
+<p>We write a procedure returning a string that enables us to create
+automatically the ideal of cyclic roots over the basering with n
+variables. The procedure assumes that the variables consist of a single
+letter each (hence no indexed variables are allowed; the procedure
+<code>cyclic</code> in <code>poly.lib</code> does not have this restriction). Then
+we compute a standard basis of this ideal and some numerical
+information.  (This ideal is used as a classical benchmark for standard
+basis computations).
+</p>
+<div class="smallexample">
+<pre class="smallexample">// We call the procedure 'cyclic':
+proc cyclic (int n)
+{
+   string vs = varstr(basering)+varstr(basering);
+   int c=find(vs,&quot;,&quot;);
+   while ( c!=0 )
+   {
+      vs=vs[1,c-1]+vs[c+1,size(vs)];
+      c=find(vs,&quot;,&quot;);
+   }
+   string t,s;
+   int i,j;
+   for ( j=1; j&lt;=n-1; j=j+1 )
+   {
+      t=&quot;&quot;;
+      for ( i=1; i &lt;=n; i=i+1 )
+      {
+         t = t + vs[i,j] + &quot;+&quot;;
+      }
+      t = t[1,size(t)-1] + &quot;,&quot;+newline;
+      s=s+t;
+   }
+   s=s+vs[1,n]+&quot;-1&quot;;
+   return (s);
+}
+
+ring r=0,(a,b,c,d,e),lp;         // basering, char 0, lex ordering
+string sc=cyclic(nvars(basering));
+sc;                              // the string of the ideal
+&rarr; a+b+c+d+e,
+&rarr; ab+bc+cd+de+ea,
+&rarr; abc+bcd+cde+dea+eab,
+&rarr; abcd+bcde+cdea+deab+eabc,
+&rarr; abcde-1
+execute(&quot;ideal i=&quot;+sc+&quot;;&quot;);      // this defines the ideal of cyclic roots
+i;
+&rarr; i[1]=a+b+c+d+e
+&rarr; i[2]=ab+bc+cd+ae+de
+&rarr; i[3]=abc+bcd+abe+ade+cde
+&rarr; i[4]=abcd+abce+abde+acde+bcde
+&rarr; i[5]=abcde-1
+timer=1;
+ideal j=std(i);
+&rarr; //used time: 7.5 sec
+size(j);                         // number of elements in the std basis
+&rarr; 11
+degree(j);
+&rarr; // codimension = 5
+&rarr; // dimension   = 0
+&rarr; // degree      = 70
+</pre></div>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Formatting-output.html#Formatting-output" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.15 Formatting output" align="middle"></a></td>
+<td valign="middle" align="left"><a href="G_005fa-_002dInvariants.html#G_005fa-_002dInvariants" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.17 G_a -Invariants" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

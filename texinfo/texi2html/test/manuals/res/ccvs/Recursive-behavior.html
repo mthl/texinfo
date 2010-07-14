@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>CVS&mdash;Concurrent Versions System v4.2: 6 Recursive behavior</title>
+
+<meta name="description" content="CVS&mdash;Concurrent Versions System v4.2: 6 Recursive behavior">
+<meta name="keywords" content="CVS&mdash;Concurrent Versions System v4.2: 6 Recursive behavior">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Recursive-behavior"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Branching-and-merging.html#Branching-and-merging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Branching-and-merging.html#Merging-and-keywords" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Adding-and-removing.html#Adding-and-removing" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Adding-and-removing.html#Adding-and-removing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Recursive-behavior-1"></a>
+<h1 class="chapter">6 Recursive behavior</h1>
+<a name="index-Recursive-_0028directory-descending_0029"></a>
+<a name="index-Directory_002c-descending"></a>
+<a name="index-Descending-directories"></a>
+<a name="index-Subdirectories"></a>
+
+<p>Almost all of the subcommands of <small>CVS</small> work
+recursively when you specify a directory as an
+argument.  For instance, consider this directory
+structure:
+</p>
+<div class="example">
+<pre class="example">      <code>$HOME</code>
+        |
+        +--<tt>tc</tt>
+        |   |
+            +--<tt>CVS</tt>
+            |      (internal CVS files)
+            +--<tt>Makefile</tt>
+            +--<tt>backend.c</tt>
+            +--<tt>driver.c</tt>
+            +--<tt>frontend.c</tt>
+            +--<tt>parser.c</tt>
+            +--<tt>man</tt>
+            |    |
+            |    +--<tt>CVS</tt>
+            |    |  (internal CVS files)
+            |    +--<tt>tc.1</tt>
+            |
+            +--<tt>testing</tt>
+                 |
+                 +--<tt>CVS</tt>
+                 |  (internal CVS files)
+                 +--<tt>testpgm.t</tt>
+                 +--<tt>test2.t</tt>
+</pre></div>
+
+<p>If &lsquo;<tt>tc</tt>&rsquo; is the current working directory, the
+following is true:
+</p>
+<ul>
+<li>
+&lsquo;<samp>cvs update testing</samp>&rsquo; is equivalent to
+
+<div class="example">
+<pre class="example">cvs update testing/testpgm.t testing/test2.t
+</pre></div>
+
+</li><li>
+&lsquo;<samp>cvs update testing man</samp>&rsquo; updates all files in the
+subdirectories
+
+</li><li>
+&lsquo;<samp>cvs update .</samp>&rsquo; or just &lsquo;<samp>cvs update</samp>&rsquo; updates
+all files in the <code>tc</code> directory
+</li></ul>
+
+<p>If no arguments are given to <code>update</code> it will
+update all files in the current working directory and
+all its subdirectories.  In other words, &lsquo;<tt>.</tt>&rsquo; is a
+default argument to <code>update</code>.  This is also true
+for most of the <small>CVS</small> subcommands, not only the
+<code>update</code> command.
+</p>
+<p>The recursive behavior of the <small>CVS</small> subcommands can be
+turned off with the &lsquo;<samp>-l</samp>&rsquo; option.
+Conversely, the &lsquo;<samp>-R</samp>&rsquo; option can be used to force recursion if
+&lsquo;<samp>-l</samp>&rsquo; is specified in &lsquo;<tt>~/.cvsrc</tt>&rsquo; (see section <a href="CVS-commands.html#g_t_007e_002f_002ecvsrc">Default options and the ~/.cvsrc file</a>).
+</p>
+<div class="example">
+<pre class="example">$ cvs update -l         # <span class="roman">Don't update files in subdirectories</span>
+</pre></div>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Branching-and-merging.html#Branching-and-merging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Adding-and-removing.html#Adding-and-removing" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="cvs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

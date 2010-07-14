@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>XEmacs User&rsquo;s Manual: 1 The XEmacs Frame</title>
+<title>XEmacs User&rsquo;s Manual: Command and Function Index: F &ndash; I</title>
 
-<meta name="description" content="XEmacs User&rsquo;s Manual: 1 The XEmacs Frame">
-<meta name="keywords" content="XEmacs User&rsquo;s Manual: 1 The XEmacs Frame">
+<meta name="description" content="XEmacs User&rsquo;s Manual: Command and Function Index: F &ndash; I">
+<meta name="keywords" content="XEmacs User&rsquo;s Manual: Command and Function Index: F &ndash; I">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -49,828 +49,255 @@ ul.no-bullet {list-style: none}
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-<a name="Frame"></a>
+<a name="index_split-3"></a>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="xemacs_3.html#Intro" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_3.html#Intro" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Point" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_3.html#index_split-2" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="xemacs_5.html#index_split-4" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Variable-Index.html#Variable-Index" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="The-XEmacs-Frame"></a>
-<h1 class="chapter">1 The XEmacs Frame</h1>
-<a name="index-frame"></a>
-<a name="index-window"></a>
-<a name="index-buffer"></a>
-
-<dl compact="compact">
-<dt>Frame</dt>
-<dd><p>In many environments, such as a tty terminal, an XEmacs frame
-literally takes up the whole screen.  If you are
-running XEmacs in a multi-window system like the X Window System, the
-XEmacs frame takes up one X window.  See section <a href="#XEmacs-under-X">Using XEmacs Under the X Window System</a>, for more
-information.
-</p>
-</dd>
-<dt>Window</dt>
-<dd><p>No matter what environment you are running in, XEmacs allows you to look
-at several buffers at the same time by having several windows be part of
-the frame.  Often, the whole frame is taken up by just one window, but
-you can split the frame into two or more subwindows.  If you are
-running XEmacs under the X window system, that means you can have several
-<em>XEmacs windows</em> inside the X window that contains the XEmacs frame.
-You can even have multiple frames in different X windows, each with
-their own set of subwindows.
-</p>
-</dd>
-</dl>
-
-<p>Each XEmacs frame displays a variety of information:
-</p><ul>
-<li>
-The biggest area usually displays the text you are editing.  It may
-consist of one window or of two or more windows if you need to look at two
-buffers a the same time.
-</li><li>
-Below each text window&rsquo;s last line is a <em>mode line</em> (see section <a href="#Mode-Line">The Mode Line</a>), which describes what is going on in that window.  The mode line
-is in inverse video if the terminal supports that.  If there are several
-XEmacs windows in one frame, each window has its own mode line.
-</li><li>
-At the bottom of each XEmacs frame is the <em>echo area</em> or <em>minibuffer
-window</em>(see section <a href="#Echo-Area">The Echo Area</a>).  It is used by XEmacs to exchange information
-with the user.  There is only one echo area per XEmacs frame.
-</li><li>
-If you are running XEmacs under a graphical windowing system, a
-menu bar at the top of the frame makes shortcuts to several of the
-commands available (see section <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>).
-</li><li>
-Under a graphical windowing system, a
-toolbar at the top of the frame, just under the menu bar if it exists,
-provides &ldquo;one-touch&rdquo; shortcuts to several commands.  (Not yet
-documented.)
-</li><li>
-Under a graphical windowing system, a
-gutter at the top (under the toolbar) and/or bottom of the frame
-provides advanced GUI facilities like tab controls for rapid switching
-among related windows and progress bars for time-consuming operations
-like downloads across the Internet.  Gutters are an experimental feature
-introduced in XEmacs version 21.2.  (Not yet documented.)
-</li></ul>
-
-<p>  You can subdivide the XEmacs frame into multiple text windows, and use
-each window for a different file (see section <a href="xemacs_19.html#Windows">Multiple Windows</a>).  Multiple XEmacs
-windows are tiled vertically on the XEmacs frame.  The upper XEmacs window
-is separated from the lower window by its mode line.
-</p>
-<p>  When there are multiple, tiled XEmacs windows on a single XEmacs frame,
-the XEmacs window receiving input from the keyboard has the <em>keyboard
-focus</em> and is called the <em>selected window</em>.  The selected window
-contains the cursor, which indicates the insertion point.  If you are
-working in an environment that permits multiple XEmacs frames, and you
-move the focus from one XEmacs frame into another, the
-selected window is the one that was last selected in that frame.
-</p>
-<p>  The same text can be displayed simultaneously in several XEmacs
-windows, which can be in different XEmacs frames.  If you alter the text
-in an XEmacs buffer by editing it in one XEmacs window, the changes are
-visible in all XEmacs windows containing that buffer.
-</p>
-
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Point">1.1 Point</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        The place in the text where editing commands operate.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Echo-Area">1.2 The Echo Area</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Short messages appear at the bottom of the frame.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Mode-Line">1.3 The Mode Line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">	        Interpreting the mode line.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#GUI-Components">1.4 GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Menubar, toolbars, gutters.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#XEmacs-under-X">1.12 Using XEmacs Under the X Window System</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      Some information on using XEmacs under the X
-                        Window System.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#XEmacs-under-MS-Windows">1.13 Using XEmacs Under Microsoft Windows</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Some information on using XEmacs under
-                        Microsoft Windows.
-</td></tr>
+<h1 class="unnumbered">Command and Function Index: F &ndash; I</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_3.html#index_split-2_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_3.html#index_split-2_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-3_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-fancy_002ddiary_002ddisplay"><code>fancy-diary-display</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Fancy-Diary-Display">26.5.8.8 Fancy Diary Display</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-fill_002dindividual_002dparagraphs"><code>fill-individual-paragraphs</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Fill-Prefix">20.6.3 The Fill Prefix</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-fill_002dparagraph"><code>fill-paragraph</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Fill-Commands">20.6.2 Explicit Fill Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-fill_002dregion"><code>fill-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Fill-Commands">20.6.2 Explicit Fill Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-fill_002dregion_002das_002dparagraph"><code>fill-region-as-paragraph</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Fill-Commands">20.6.2 Explicit Fill Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dalternate_002dfile"><code>find-alternate-file</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dfile"><code>find-file</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Frame.html#index-find_002dfile_002dother_002dframe"><code>find-file-other-frame</code></a></td><td>&nbsp;</td><td valign="top"><a href="Frame.html#XEmacs-under-X">1.12 Using XEmacs Under the X Window System</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dfile_002dother_002dframe-1"><code>find-file-other-frame</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dfile_002dother_002dframe-2"><code>find-file-other-frame</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dfile_002dother_002dwindow"><code>find-file-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-find_002dfile_002dother_002dwindow-1"><code>find-file-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Pop-Up-Window">16.4 Displaying in Another Window</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-find_002dtag"><code>find-tag</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Find-Tag">21.11.5 Finding a Tag</a></td></tr>
+<tr><td></td><td valign="top"><a href="Windows.html#index-find_002dtag_002dother_002dwindow"><code>find-tag-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Windows.html#Pop-Up-Window">16.4 Displaying in Another Window</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-find_002dtag_002dother_002dwindow-1"><code>find-tag-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Find-Tag">21.11.5 Finding a Tag</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dthis_002dfile"><code>find-this-file</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-find_002dthis_002dfile_002dother_002dwindow"><code>find-this-file-other-window</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Visiting">14.2 Visiting Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-finder_002dby_002dkeyword"><code>finder-by-keyword</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Library-Keywords">8.5 Keyword Search for Lisp Libraries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dcolumn_002druler"><code>fortran-column-ruler</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Columns">21.12.4 Columns</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dcomment_002dregion"><code>fortran-comment-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Comments">21.12.3 Comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dindent_002dline"><code>fortran-indent-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#ForIndent-Commands">21.12.2.1 Fortran Indentation Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dindent_002dsubprogram"><code>fortran-indent-subprogram</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#ForIndent-Commands">21.12.2.1 Fortran Indentation Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dmode"><code>fortran-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran">21.12 Fortran Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dnext_002dstatement"><code>fortran-next-statement</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Motion">21.12.1 Motion Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dprevious_002dstatement"><code>fortran-previous-statement</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Motion">21.12.1 Motion Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dsplit_002dline"><code>fortran-split-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#ForIndent-Commands">21.12.2.1 Fortran Indentation Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-fortran_002dwindow_002dcreate"><code>fortran-window-create</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Fortran-Columns">21.12.4 Columns</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-forward_002dchar"><code>forward-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Moving-Point">4.2 Changing the Location of Point</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-forward_002dlist"><code>forward-list</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Lists">21.2 Lists and Sexps</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-forward_002dpage"><code>forward-page</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Pages">20.5 Pages</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-forward_002dparagraph"><code>forward-paragraph</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Paragraphs">20.4 Paragraphs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-forward_002dsentence"><code>forward-sentence</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Sentences">20.3 Sentences</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-forward_002dsexp"><code>forward-sexp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Lists">21.2 Lists and Sexps</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-forward_002dtext_002dline"><code>forward-text-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Nroff-Mode">20.1.1 Nroff Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-forward_002dword"><code>forward-word</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Words">20.2 Words</a></td></tr>
+<tr><td></td><td valign="top"><a href="Registers.html#index-frame_002dconfiguration_002dto_002dregister"><code>frame-configuration-to-register</code></a></td><td>&nbsp;</td><td valign="top"><a href="Registers.html#RegConfig">10.4 Saving Window Configurations in Registers</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-3_fn_letter-G">G</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-global_002dset_002dkey"><code>global-set-key</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Interactive-Rebinding">27.4.2.1 Changing Key Bindings Interactively</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-global_002dset_002dkey-1"><code>global-set-key</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Programmatic-Rebinding">27.4.2.2 Changing Key Bindings Programmatically</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-goto_002dchar"><code>goto-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Moving-Point">4.2 Changing the Location of Point</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-goto_002dline"><code>goto-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Moving-Point">4.2 Changing the Location of Point</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-3_fn_letter-H">H</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-hanoi"><code>hanoi</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Amusements">26.13 Other Amusements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-help_002dcommand"><code>help-command</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Help">8 Help</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-help_002dfor_002dhelp"><code>help-for-help</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Help">8 Help</a></td></tr>
+<tr><td></td><td valign="top"><a href="Basic.html#index-help_002dwith_002dtutorial"><code>help-with-tutorial</code></a></td><td>&nbsp;</td><td valign="top"><a href="Basic.html#Basic">4 Basic Editing Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-help_002dwith_002dtutorial-1"><code>help-with-tutorial</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-hide_002dbody"><code>hide-body</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Outline-Visibility">20.1.3.3 Outline Visibility Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-hide_002dentry"><code>hide-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Outline-Visibility">20.1.3.3 Outline Visibility Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-hide_002dleaves"><code>hide-leaves</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Outline-Visibility">20.1.3.3 Outline Visibility Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-hide_002dsubtree"><code>hide-subtree</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Outline-Visibility">20.1.3.3 Outline Visibility Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-holidays-1"><code>holidays</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Holidays">26.2.1 Holidays</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-3_fn_letter-I">I</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-include_002dother_002ddiary_002dfiles"><code>include-other-diary-files</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Included-Diary-Files">26.5.8.9 Included Diary Files</a></td></tr>
+<tr><td></td><td valign="top"><a href="Registers.html#index-increment_002dregister"><code>increment-register</code></a></td><td>&nbsp;</td><td valign="top"><a href="Registers.html#RegNumbers">10.5 Keeping Numbers in Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-indent_002dc_002dexp"><code>indent-c-exp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Multi_002dline-Indent">21.4.2 Indenting Several Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-indent_002dfor_002dcomment"><code>indent-for-comment</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Comments">21.6 Manipulating Comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-indent_002dnew_002dcomment_002dline"><code>indent-new-comment-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Multiple-Lines-of-Comments">21.6.1 Multiple Lines of Comments</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-indent_002dregion"><code>indent-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Indentation-Commands">19.1 Indentation Commands and Techniques</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-indent_002dregion-1"><code>indent-region</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Multi_002dline-Indent">21.4.2 Indenting Several Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-indent_002drelative"><code>indent-relative</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Indentation-Commands">19.1 Indentation Commands and Techniques</a></td></tr>
+<tr><td></td><td valign="top"><a href="Indentation.html#index-indent_002drigidly"><code>indent-rigidly</code></a></td><td>&nbsp;</td><td valign="top"><a href="Indentation.html#Indentation-Commands">19.1 Indentation Commands and Techniques</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-indent_002dsexp"><code>indent-sexp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Multi_002dline-Indent">21.4.2 Indenting Several Lines</a></td></tr>
+<tr><td></td><td valign="top"><a href="Text.html#index-indented_002dtext_002dmode"><code>indented-text-mode</code></a></td><td>&nbsp;</td><td valign="top"><a href="Text.html#Text-Mode">20.1 Text Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-info"><code>info</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-Info_002delisp_002dref"><code>Info-elisp-ref</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Help.html#index-Info_002dgoto_002demacs_002dcommand_002dnode"><code>Info-goto-emacs-command-node</code></a></td><td>&nbsp;</td><td valign="top"><a href="Help.html#Misc-Help">8.7 Other Help Commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-insert_002dabbrevs"><code>insert-abbrevs</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Saving-Abbrevs">23.4 Saving Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002danniversary_002ddiary_002dentry"><code>insert-anniversary-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dblock_002ddiary_002dentry"><code>insert-block-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dcyclic_002ddiary_002dentry"><code>insert-cyclic-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Special-Diary-Entries">26.5.7 Special Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002ddiary_002dentry"><code>insert-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Adding-to-Diary">26.5.6 Commands to Add to the Diary</a></td></tr>
+<tr><td></td><td valign="top"><a href="Files.html#index-insert_002dfile"><code>insert-file</code></a></td><td>&nbsp;</td><td valign="top"><a href="Files.html#Misc-File-Ops">14.10 Miscellaneous File Operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dhebrew_002ddiary_002dentry"><code>insert-hebrew-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dislamic_002ddiary_002dentry"><code>insert-islamic-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-insert_002dkbd_002dmacro"><code>insert-kbd-macro</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Save-Kbd-Macro">27.3.2 Naming and Saving Keyboard Macros</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dmonthly_002ddiary_002dentry"><code>insert-monthly-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Adding-to-Diary">26.5.6 Commands to Add to the Diary</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dmonthly_002dhebrew_002ddiary_002dentry"><code>insert-monthly-hebrew-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dmonthly_002dislamic_002ddiary_002dentry"><code>insert-monthly-islamic-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Programs.html#index-insert_002dparentheses"><code>insert-parentheses</code></a></td><td>&nbsp;</td><td valign="top"><a href="Programs.html#Balanced-Editing">21.7 Editing Without Unbalanced Parentheses</a></td></tr>
+<tr><td></td><td valign="top"><a href="Registers.html#index-insert_002dregister"><code>insert-register</code></a></td><td>&nbsp;</td><td valign="top"><a href="Registers.html#RegText">10.2 Saving Text in Registers</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dweekly_002ddiary_002dentry"><code>insert-weekly-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Adding-to-Diary">26.5.6 Commands to Add to the Diary</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dyearly_002ddiary_002dentry"><code>insert-yearly-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Adding-to-Diary">26.5.6 Commands to Add to the Diary</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dyearly_002dhebrew_002ddiary_002dentry"><code>insert-yearly-hebrew-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-insert_002dyearly_002dislamic_002ddiary_002dentry"><code>insert-yearly-islamic-diary-entry</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Hebrew_002fIslamic-Entries">26.5.8.7 Hebrew- and Islamic-Date Diary Entries</a></td></tr>
+<tr><td></td><td valign="top"><a href="M_002dx.html#index-interactive"><code>interactive</code></a></td><td>&nbsp;</td><td valign="top"><a href="M_002dx.html#M_002dx">7 Running Commands by Name</a></td></tr>
+<tr><td></td><td valign="top"><a href="Reading-Mail.html#index-interrupt_002dshell_002dsubjob"><code>interrupt-shell-subjob</code></a></td><td>&nbsp;</td><td valign="top"><a href="Reading-Mail.html#Shell-Mode">26.7.3 Shell Mode</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-inverse_002dadd_002dglobal_002dabbrev"><code>inverse-add-global-abbrev</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Defining-Abbrevs">23.1 Defining Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Abbrevs.html#index-inverse_002dadd_002dmode_002dabbrev"><code>inverse-add-mode-abbrev</code></a></td><td>&nbsp;</td><td valign="top"><a href="Abbrevs.html#Defining-Abbrevs">23.1 Defining Abbrevs</a></td></tr>
+<tr><td></td><td valign="top"><a href="Customization.html#index-invert_002dface"><code>invert-face</code></a></td><td>&nbsp;</td><td valign="top"><a href="Customization.html#Customizing-Faces-1">27.8.1 Customizing Faces</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dabort"><code>isearch-abort</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dbackward"><code>isearch-backward</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dbackward_002dregexp"><code>isearch-backward-regexp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Regexp-Search">12.4 Regular Expression Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dcomplete"><code>isearch-complete</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002ddelete_002dchar"><code>isearch-delete-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dexit"><code>isearch-exit</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dforward"><code>isearch-forward</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dforward_002dregexp"><code>isearch-forward-regexp</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Regexp-Search">12.4 Regular Expression Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dquote_002dchar"><code>isearch-quote-char</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002drepeat_002dbackward"><code>isearch-repeat-backward</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002drepeat_002dforward"><code>isearch-repeat-forward</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dring_002dadvance"><code>isearch-ring-advance</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dring_002dretreat"><code>isearch-ring-retreat</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dyank_002dline"><code>isearch-yank-line</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td></td><td valign="top"><a href="Search.html#index-isearch_002dyank_002dword"><code>isearch-yank-word</code></a></td><td>&nbsp;</td><td valign="top"><a href="Search.html#Incremental-Search">12.1 Incremental Search</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
 </table>
-
-<hr>
-<a name="Point"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Echo-Area" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Point-1"></a>
-<h2 class="section">1.1 Point</h2>
-<a name="index-point"></a>
-<a name="index-cursor"></a>
-
-<p>  When XEmacs is running, the cursor shows the location at which editing
-commands will take effect.  This location is called <em>point</em>.  You
-can use keystrokes or the mouse cursor to move point through the text
-and edit the text at different places.
-</p>
-<p>  While the cursor appears to point <var>at</var> a character, you should
-think of point as <var>between</var> two characters: it points <var>before</var>
-the character on which the cursor appears.  The exception is at the
-end of the line, where the cursor appears after the last character of
-the line.  Where the display is capable, the cursor at the end of the
-line will appear differently from a cursor over whitespace at the end
-of the line.  (In an X Windows frame, the end-of-line cursor is half
-the width of a within-line cursor.)  Sometimes people speak of &ldquo;the
-cursor&rdquo; when they mean &ldquo;point,&rdquo; or speak of commands that move
-point as &ldquo;cursor motion&rdquo; commands.
-</p>
-<p> Each XEmacs frame has only one cursor.  When output is in progress, the cursor
-must appear where the typing is being done.  This does not mean that
-point is moving.  It is only that XEmacs has no way to show you the
-location of point except when the terminal is idle.
-</p>
-<p>  If you are editing several files in XEmacs, each file has its own point
-location.  A file that is not being displayed remembers where point is.
-Point becomes visible at the correct location when you look at the file again.
-</p>
-<p>  When there are multiple text windows, each window has its own point
-location.  The cursor shows the location of point in the selected
-window.  The visible cursor also shows you which window is selected.  If
-the same buffer appears in more than one window, point can be moved in
-each window independently.
-</p>
-<p>  The term &lsquo;point&rsquo; comes from the character &lsquo;<samp>.</samp>&rsquo;, which was the
-command in TECO (the language in which the original Emacs was written)
-for accessing the value now called &lsquo;point&rsquo;.
-</p>
-<hr>
-<a name="Echo-Area"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Point" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Mode-Line" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-Echo-Area"></a>
-<h2 class="section">1.2 The Echo Area</h2>
-<a name="index-echo-area"></a>
-
-<p>  The line at the bottom of the frame (below the mode line) is the
-<em>echo area</em>.  XEmacs uses this area to communicate with the user:
-</p>
-<ul>
-<li>
-  <em>Echoing</em> means printing out the characters that the user types.  XEmacs
-never echoes single-character commands.  Multi-character commands are
-echoed only if you pause while typing them: As soon as you pause for more
-than one second in the middle of a command, all the characters of the command
-so far are echoed.  This is intended to <em>prompt</em> you for the rest of
-the command.  Once echoing has started, the rest of the command is echoed
-immediately as you type it.  This behavior is designed to give confident
-users fast response, while giving hesitant users maximum feedback.  You
-can change this behavior by setting a variable (see section <a href="xemacs_14.html#Display-Vars">Variables Controlling Display</a>).
-</li><li>
-  If you issue a command that cannot be executed, XEmacs may print an
-<em>error message</em> in the echo area.  Error messages are accompanied by
-a beep or by flashing the frame.  Any input you have typed ahead is
-thrown away when an error happens.
-</li><li>
-  Some commands print informative messages in the echo area.  These
-messages look similar to error messages, but are not announced with a
-beep and do not throw away input.  Sometimes a message tells you what the
-command has done, when this is not obvious from looking at the text being
-edited.  Sometimes the sole purpose of a command is to print a message
-giving you specific information.  For example, the command <kbd>C-x =</kbd> is
-used to print a message describing the character position of point in the
-text and its current column in the window.  Commands that take a long time
-often display messages ending in &lsquo;<samp>...</samp>&rsquo; while they are working, and
-add &lsquo;<samp>done</samp>&rsquo; at the end when they are finished.
-</li><li>
-  The echo area is also used to display the <em>minibuffer</em>, a window
-that is used for reading arguments to commands, such as the name of a
-file to be edited.  When the minibuffer is in use, the echo area displays
-with a prompt string that usually ends with a colon.  The cursor
-appears after the prompt.  You can always get out of the minibuffer by
-typing <kbd>C-g</kbd>.  See section <a href="xemacs_9.html#Minibuffer">The Minibuffer</a>.
-</li></ul>
-
-<hr>
-<a name="Mode-Line"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Echo-Area" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#GUI-Components" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-Mode-Line"></a>
-<h2 class="section">1.3 The Mode Line</h2>
-<a name="index-mode-line"></a>
-<a name="index-top-level"></a>
-
-<p>  Each text window&rsquo;s last line is a <em>mode line</em> which describes what is
-going on in that window.  When there is only one text window, the mode line
-appears right above the echo area.  The mode line is in inverse video if
-the terminal supports that, starts and ends with dashes, and contains text
-like &lsquo;<samp>XEmacs: <var>something</var></samp>&rsquo;.
-</p>
-<p>  If a mode line has something else in place of &lsquo;<samp>XEmacs:
-<var>something</var></samp>&rsquo;, the window above it is in a special subsystem
-such as Dired.  The mode line then indicates the status of the
-subsystem.
-</p>
-<p>  Normally, the mode line has the following appearance:
-</p>
-<div class="example">
-<pre class="example">--<var>ch</var>-XEmacs: <var>buf</var>      (<var>major</var> <var>minor</var>)----<var>pos</var>------
-</pre></div>
-
-<p>This gives information about the buffer being displayed in the window: the
-buffer&rsquo;s name, what major and minor modes are in use, whether the buffer&rsquo;s
-text has been changed, and how far down the buffer you are currently
-looking.
-</p>
-<p>  <var>ch</var> contains two stars (&lsquo;<samp>**</samp>&rsquo;) if the text in the buffer has been
-edited (the buffer is &ldquo;modified&rdquo;), or two dashes (&lsquo;<samp>--</samp>&rsquo;) if the
-buffer has not been edited.  Exception: for a read-only buffer, it is
-&lsquo;<samp>%%</samp>&rsquo;.
-</p>
-<p>  <var>buf</var> is the name of the window&rsquo;s chosen <em>buffer</em>.  The chosen
-buffer in the selected window (the window that the cursor is in) is also
-XEmacs&rsquo;s selected buffer, the buffer in which editing takes place.  When
-we speak of what some command does to &ldquo;the buffer&rdquo;, we mean the
-currently selected buffer.  See section <a href="xemacs_18.html#Buffers">Using Multiple Buffers</a>.
-</p>
-<p>  <var>pos</var> tells you whether there is additional text above the top of
-the screen or below the bottom.  If your file is small and it is
-completely visible on the screen, <var>pos</var> is &lsquo;<samp>All</samp>&rsquo;.  Otherwise,
-<var>pos</var> is &lsquo;<samp>Top</samp>&rsquo; if you are looking at the beginning of the file,
-&lsquo;<samp>Bot</samp>&rsquo; if you are looking at the end of the file, or
-&lsquo;<samp><var>nn</var>%</samp>&rsquo;, where <var>nn</var> is the percentage of the file above the
-top of the screen.
-</p>
-<p>  <var>major</var> is the name of the <em>major mode</em> in effect in the buffer.  At
-any time, each buffer is in one and only one major mode.
-The available major modes include Fundamental mode (the least specialized),
-Text mode, Lisp mode, and C mode.  See section <a href="xemacs_21.html#Major-Modes">Major Modes</a>, for details
-on how the modes differ and how you select one.
-</p>
-<p>  <var>minor</var> is a list of some of the <em>minor modes</em> that are turned on
-in the window&rsquo;s chosen buffer.  For example, &lsquo;<samp>Fill</samp>&rsquo; means that Auto
-Fill mode is on.  <code>Abbrev</code> means that Word Abbrev mode is on.
-<code>Ovwrt</code> means that Overwrite mode is on.  See section <a href="xemacs_30.html#Minor-Modes">Minor Modes</a>, for more
-information.  &lsquo;<samp>Narrow</samp>&rsquo; means that the buffer being displayed has
-editing restricted to only a portion of its text.  This is not really a
-minor mode, but is like one.  See section <a href="xemacs_29.html#Narrowing">Narrowing</a>.  <code>Def</code> means that a
-keyboard macro is being defined.  See section <a href="xemacs_30.html#Keyboard-Macros">Keyboard Macros</a>.
-</p>
-<p>  Some buffers display additional information after the minor modes.  For
-example, Rmail buffers display the current message number and the total
-number of messages.  Compilation buffers and Shell mode display the status
-of the subprocess.
-</p>
-<p>  If XEmacs is currently inside a recursive editing level, square
-brackets (&lsquo;<samp>[&hellip;]</samp>&rsquo;) appear around the parentheses that surround
-the modes.  If XEmacs is in one recursive editing level within another,
-double square brackets appear, and so on.  Since information on
-recursive editing applies to XEmacs in general and not to any one buffer,
-the square brackets appear in every mode line on the screen or not in
-any of them.  See section <a href="xemacs_29.html#Recursive-Edit">Recursive Editing Levels</a>.
-</p>
-<a name="index-display_002dtime"></a>
-<p>  XEmacs can optionally display the time and system load in all mode lines.
-To enable this feature, type <kbd>M-x display-time</kbd>.  The information added
-to the mode line usually appears after the file name, before the mode names
-and their parentheses.  It looks like this:
-</p>
-<div class="example">
-<pre class="example"><var>hh</var>:<var>mm</var>pm <var>l.ll</var> [<var>d</var>]
-</pre></div>
-
-<p>(Some fields may be missing if your operating system cannot support them.)
-<var>hh</var> and <var>mm</var> are the hour and minute, followed always by &lsquo;<samp>am</samp>&rsquo;
-or &lsquo;<samp>pm</samp>&rsquo;.  <var>l.ll</var> is the average number of running processes in the
-whole system recently.  <var>d</var> is an approximate index of the ratio of
-disk activity to CPU activity for all users.
-</p>
-<p>The word &lsquo;<samp>Mail</samp>&rsquo; appears after the load level if there is mail for
-you that you have not read yet.
-</p>
-<a name="index-mode_002dline_002dinverse_002dvideo"></a>
-<p>  Customization note: the variable <code>mode-line-inverse-video</code>
-controls whether the mode line is displayed in inverse video (assuming
-the terminal supports it); <code>nil</code> means no inverse video.  The
-default is <code>t</code>.  For X frames, simply set the foreground and
-background colors appropriately.
-</p>
-<hr>
-<a name="GUI-Components"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Mode-Line" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Menubar-Basics" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="GUI-Components-1"></a>
-<h2 class="section">1.4 GUI Components</h2>
-
-<p>When executed in a graphical windowing environment such as the X Window
-System or Microsoft Windows, XEmacs displays several graphical user
-interface components such as scrollbars, menubars, toolbars, and
-gutters.  By default there is a vertical scrollbar at the right of each
-frame, and at the top of the frame there is a menubar, a toolbar, and a
-gutter, in that order.  Gutters can contain any of several widgets, but
-the default configuration puts a set of &quot;notebook tabs&quot; which you can
-use as a shortcut for selecting any of several related buffers in a
-given frame.  Operating the GUI components is &quot;obvious&quot;:  click on the
-menubar to pull down a menu, on a button in the toolbar to invoke a
-function, and on a tab in the gutter to switch buffers.
-</p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top"><a href="#Menubar-Basics">1.5 The XEmacs Menubar</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses the menubar.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Scrollbar-Basics">1.6 XEmacs Scrollbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses scrollbars.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Mode-Line-Basics">1.7 XEmacs Mode Lines</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    How XEmacs uses modelines.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Toolbar-Basics">1.8 XEmacs Toolbars</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      How XEmacs uses toolbars.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Gutter-Basics">1.9 XEmacs Gutters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       How XEmacs uses gutters.
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Inhibiting">1.10 Inhibiting Display of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          What if you don&rsquo;t like GUI?
-</td></tr>
-<tr><td align="left" valign="top"><a href="#Customizing">1.11 Changing the Position, Orientation, and Appearance of GUI Components</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Position, orientation, and appearance of GUI objects.
-</td></tr>
-</table>
-
-<hr>
-<a name="Menubar-Basics"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#GUI-Components" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Scrollbar-Basics" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="The-XEmacs-Menubar"></a>
-<h2 class="section">1.5 The XEmacs Menubar</h2>
-
-<p>The XEmacs menubar is intended to be conformant to the usual conventions
-for menubars, although conformance is not yet perfect.  The menu at the
-extreme right is the &lsquo;<samp>Help</samp>&rsquo; menu, which should always be
-available.  It provides access to all the XEmacs help facilities
-available through <kbd>C-h</kbd>, as well as samples of various configuration
-files like &lsquo;<samp>~/.Xdefaults</samp>&rsquo; and &lsquo;<samp>~/.emacs</samp>&rsquo;.  At the extreme left
-is the &lsquo;<samp>Files</samp>&rsquo; menu, which provides the usual file reading,
-writing, and printing operations, as well as operations like revert
-buffer from most recent save.  The next menu from the left is the
-&lsquo;<samp>Edit</samp>&rsquo; menu, which provides the &lsquo;<samp>Undo</samp>&rsquo; operation as well as
-cutting and pasting, searching, and keyboard macro definition and
-execution.
-</p>
-<p>XEmacs provides a very dynamic environment, and the Lisp language makes
-for highly flexible applications.  The menubar reflects this: many menus
-(eg, the &lsquo;<samp>Buffers</samp>&rsquo; menu, see section <a href="xemacs_5.html#Buffers-Menu">The Buffers Menu</a>) contain items
-determined by the current state of XEmacs, and most major modes and many
-minor modes add items to menus and even whole menus to the menubar.  In
-fact, some applications like w3.el and VM provide so many menus that
-they define a whole new menubar and add a button that allows convenient
-switching between the &ldquo;XEmacs menubar&rdquo; and the &ldquo;application
-menubar&rdquo;.  Such applications normally bind themselves to a particular
-frame, and this switching only takes place on frames where such an
-application is active (ie, the current window of the frame is displaying
-a buffer in the appropriate major mode).
-</p>
-<p>Other menus which are typically available are the &lsquo;<samp>Options</samp>&rsquo;,
-&lsquo;<samp>Tools</samp>&rsquo;, &lsquo;<samp>Buffers</samp>&rsquo;, &lsquo;<samp>Apps</samp>&rsquo;, and &lsquo;<samp>Mule</samp>&rsquo; menus.  For
-detailed descriptions of these menus, <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>.  (In 21.2
-XEmacsen, the &lsquo;<samp>Mule</samp>&rsquo; menu will be moved under &lsquo;<samp>Options</samp>&rsquo;.)
-</p>
-<hr>
-<a name="Scrollbar-Basics"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Menubar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Mode-Line-Basics" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="XEmacs-Scrollbars"></a>
-<h2 class="section">1.6 XEmacs Scrollbars</h2>
-
-<p>XEmacs scrollbars provide the usual interface.  Arrow buttons at either
-end allow for line by line scrolling, including autorepeat.  Clicking in
-the scrollbar itself provides scrolling by windowsfull, depending on
-which side of the slider is clicked.  The slider itself may be dragged
-for smooth scrolling.
-</p>
-<p>The position of the slider corresponds to the position of the window in
-the buffer.  In particular, the length of the slider is proportional to
-the fraction of the buffer which appears in the window.
-</p>
-<p>The presence of the scrollbars is under control of the application or
-may be customized by the user.  By default a vertical scrollbar is
-present in all windows (except the minibuffer), and there is no
-horizontal scrollbar.
-</p>
-<hr>
-<a name="Mode-Line-Basics"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Scrollbar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Toolbar-Basics" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="XEmacs-Mode-Lines"></a>
-<h2 class="section">1.7 XEmacs Mode Lines</h2>
-
-<p>When used in a windowing system, the XEmacs modelines can be dragged
-vertically. The effect is to resize the windows above and below the
-modeline (this includes the minibuffer window).
-</p>
-<p>Additionally, a modeline can be dragged horizontally, in which case it
-scrolls its own text. This behavior is not enabled by default because it
-could be considered as disturbing when dragging vertically. When this
-behavior is enabled, the modeline&rsquo;s text can be dragged either in the
-same direction as the mouse, or in the opposite sense, making the
-modeline act as a scrollbar for its own text.
-</p>
-<p>You can select the behavior you want from the &lsquo;<samp>Display</samp>&rsquo; submenu of
-the &lsquo;<samp>Options</samp>&rsquo; menu.
-</p>
-<hr>
-<a name="Toolbar-Basics"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Mode-Line-Basics" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Gutter-Basics" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="XEmacs-Toolbars"></a>
-<h2 class="section">1.8 XEmacs Toolbars</h2>
-
-<p>XEmacs has a default toolbar which provides shortcuts for some of the
-commonly used operations (such as opening files) and applications (such
-as the Info manual reader).  Operations which require arguments will pop
-up dialogs to get them.
-</p>
-<p>The position of the default toolbar can be customized.  Also, several
-toolbars may be present simultaneously (in different positions).  VM,
-for example, provides an application toolbar which shortcuts for
-mail-specific operations like sending, saving, and deleting messages.
-</p>
-<hr>
-<a name="Gutter-Basics"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Toolbar-Basics" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Inhibiting" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="XEmacs-Gutters"></a>
-<h2 class="section">1.9 XEmacs Gutters</h2>
-
-<p>Gutters are the most flexible of the GUI components described in this
-section.  In theory, the other GUI components could be implemented by
-customizing a gutter, but in practice the other components were
-introduced earlier and have their own special implementations.  Gutters
-tend to be more transient than the other components.  Buffer tabs, for
-example, change every time the selected buffer in the frame changes.
-And for progress gauges a gutter to contain the gauge is typically
-created on the fly when needed, then destroyed when the operation whose
-staus is being displayed is completed.
-</p>
-<p>Buffer tabs, having somewhat complex behavior, deserve a closer look.
-By default, a row of buffer tabs is displayed at the top of every frame.
-(The tabs could be placed in the bottom gutter, but would be oriented
-the same way and look rather odd.  The horizontal orientation makes
-putting them in a side gutter utterly impractical.)  The buffer
-displayed in the current window of a frame can be changed to a specific
-buffer by clicking [mouse-1] on the corresponding tab in the gutter.
-</p>
-<p>Each tab contains the name of its buffer.  The tab for the current
-buffer in each frame is displayed in raised relief.  The list of buffers
-chosen for display in the buffer tab row is derived by filtering the
-buffer list (like the <code>Buffers</code> menu).  The list starts out with
-all existing buffers, with more recently selected buffers coming earlier
-in the list.
-</p>
-<p>Then &quot;uninteresting&quot; buffers, like internal XEmacs buffers, the
-<code>*Message Log*</code> buffer, and so on are deleted from the list.  Next,
-the frame&rsquo;s selected buffer is determined.  Buffers with a different
-major mode from the selected buffer are removed from the list.  Finally,
-if the list is too long, the least recently used buffers are deleted
-from the list.  By default up to 6 most recently used buffers with the
-same mode are displayed on tabs in the gutter.
-</p>
-<hr>
-<a name="Inhibiting"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Gutter-Basics" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#Customizing" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Inhibiting-Display-of-GUI-Components"></a>
-<h2 class="section">1.10 Inhibiting Display of GUI Components</h2>
-
-<p>Use of GUI facilities is a personal thing.  Almost everyone agrees that
-drawing via keyboard-based &quot;turtle graphics&quot; is acceptable to hardly
-anyone if a mouse is available, but conversely emulating a keyboard with
-a screenful of buttons is a painful experience.  But between those
-extremes the complete novice will require a fair amount of time before
-toolbars and menus become dispensable, but many an &quot;Ancien Haquer&quot; sees
-them as a complete waste of precious frame space that could be filled
-with text.
-</p>
-<p>Display of all of the GUI components created by XEmacs can be inhibited
-through the use of Customize.  Customize can be accessed through
-&lsquo;<samp>Options | Customize</samp>&rsquo; in the menu bar, or via <kbd>M-x customize</kbd>.
-Then navigate through the Customize tree to &lsquo;<samp>Emacs | Environment</samp>&rsquo;.
-Scrollbar and toolbar visibility is controlled via the &lsquo;<samp>Display</samp>&rsquo;
-group, options &lsquo;<samp>Scrollbars visible</samp>&rsquo; and  &lsquo;<samp>Toolbar visible</samp>&rsquo;
-respectively.  Gutter visibility is controlled by group &lsquo;<samp>Gutter</samp>&rsquo;,
-option &lsquo;<samp>Visible</samp>&rsquo;.
-</p>
-<p>Or they can be controlled directly by <kbd>M-x customize-variable</kbd>, by
-changing the values of the variables <code>menubar-visible-p</code>,
-<code>scrollbars-visible-p</code>, <code>toolbar-visible-p</code>, or
-<code>gutter-buffers-tab-visible-p</code> respectively.  (The strange form of
-the last variable is due to the fact that gutters are often used to
-display transient widgets like progress gauges, which you probably don&rsquo;t
-want to inhibit.  It is more likely that you want to inhibit the default
-display of the buffers tab widget, which is what that variable controls.
-This interface is subject to change depending on developer experience
-and user feedback.)
-</p>
-<p>Control of frame configuration can controlled automatically according to
-various parameters such as buffer or frame because these are
-<em>specifiers</em> <a href="../lispref/Specifiers.html#Specifiers">(lispref)Specifiers</a>.  Using these features
-requires programming in Lisp; Customize is not yet that sophisticated.
-Also, components that appear in various positions and orientations can
-have display suppressed according to position.  <kbd>C-h a visible-p</kbd>
-gives a list of variables which can be customized.  E.g., to control the
-visibility of specifically the left-side toolbar only, customize
-<code>left-toolbar-visible-p</code>.
-</p>
-<hr>
-<a name="Customizing"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Inhibiting" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#XEmacs-under-X" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Changing-the-Position_002c-Orientation_002c-and-Appearance-of-GUI-Components"></a>
-<h2 class="section">1.11 Changing the Position, Orientation, and Appearance of GUI Components</h2>
-
-<p>  #### Not documented yet.
-</p>
-<hr>
-<a name="XEmacs-under-X"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Customizing" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="#XEmacs-under-MS-Windows" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Using-XEmacs-Under-the-X-Window-System"></a>
-<h2 class="section">1.12 Using XEmacs Under the X Window System</h2>
-
-<p>XEmacs can be used with the X Window System and a window manager like
-MWM or TWM.  In that case, the X window manager opens, closes, and
-resizes XEmacs frames.  You use the window manager&rsquo;s mouse gestures to
-perform the operations.  Consult your window manager guide or reference
-manual for information on manipulating X windows.
-</p>
-<p>When you are working under X, each X window (that is, each XEmacs frame)
-has a menu bar for mouse-controlled operations (see section <a href="xemacs_5.html#Pull_002ddown-Menus">XEmacs Pull-down Menus</a>).
-</p>
-<a name="index-multi_002dframe-XEmacs"></a>
-<a name="index-make_002dframe"></a>
-<p>XEmacs under X is also a multi-frame XEmacs.  You can use the <b>New
-Frame</b> menu item from the <b>File</b> menu to create a new XEmacs frame in a
-new X window from the same process.  The different frames will share the
-same buffer list, but you can look at different buffers in the different
-frames.
-</p>
-<a name="index-find_002dfile_002dother_002dframe"></a>
-<p>The function <code>find-file-other-frame</code> is just like <code>find-file</code>,
-but creates a new frame to display the buffer in first.  This is
-normally bound to <kbd>C-x 5 C-f</kbd>, and is what the <b>Open File, New
-Frame</b> menu item does.
-</p>
-<a name="index-switch_002dto_002dbuffer_002dother_002dframe"></a>
-<p>The function <code>switch-to-buffer-other-frame</code> is just like
-<code>switch-to-buffer</code>, but creates a new frame to display the buffer
-in first.  This is normally bound to <kbd>C-x 5 b</kbd>.
-</p>
-<a name="index-default_002dframe_002dalist"></a>
-<a name="index-default_002dframe_002dplist"></a>
-<p>You can specify a different default frame size other than the one provided.
-Use the variable <code>default-frame-plist</code>, which is a plist of default
-values for frame creation other than the first one.  These may be set in
-your init file, like this:
-</p>
-<div class="example">
-<pre class="example">  (setq default-frame-plist '(width 80 height 55))
-</pre></div>
-
-<p>This variable has replaced <code>default-frame-alist</code>, which is
-considered obsolete.
-</p>
-<a name="index-x_002dframe_002ddefaults"></a>
-<p>For values specific to the first XEmacs frame, you must use X resources.
-The variable <code>x-frame-defaults</code> takes an alist of default frame
-creation parameters for X window frames.  These override what is
-specified in &lsquo;<tt>~/.Xdefaults</tt>&rsquo; but are overridden by the arguments to
-the particular call to <code>x-create-frame</code>.
-</p>
-<a name="index-create_002dframe_002dhook"></a>
-<p>When you create a new frame, the variable <code>create-frame-hook</code>
-is called with one argument, the frame just created.
-</p>
-<p>If you want to close one or more of the X windows you created using
-<b>New Frame</b>, use the <b>Delete Frame</b> menu item from the <b>File</b> menu.
-</p>
-<a name="index-frame_002dtitle_002dformat"></a>
-<a name="index-frame_002dicon_002dtitle_002dformat"></a>
-<p>If you are working with multiple frames, some special information
-applies:
-</p><ul>
-<li>
-Two variables, <code>frame-title-format</code> and
-<code>frame-icon-title-format</code> determine the title of the frame and
-the title of the icon that results if you shrink the frame.
-
-<a name="index-auto_002dlower_002dframe"></a>
-<a name="index-auto_002draise_002dframe"></a>
-</li><li>
-The variables <code>auto-lower-frame</code> and <code>auto-raise-frame</code>
-position a frame. If true, <code>auto-lower-frame</code> lowers a frame to
-the bottom when it is no longer selected. If true,
-<code>auto-raise-frame</code> raises a frame to the top when it is
-selected. Under X, most ICCCM-compliant window managers will have
-options to do this for you, but these variables are provided in case you
-are using a broken window manager.
-
-</li><li>
-There is a new frame/modeline format directive, %S, which expands to
-the name of the current frame (a frame&rsquo;s name is distinct from its
-title; the name is used for resource lookup, among other things, and the
-title is simply what appears above the window.)
-</li></ul>
-
-<hr>
-<a name="XEmacs-under-MS-Windows"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#XEmacs-under-X" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Frame" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next section in reading order"> &gt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
-</tr></table>
-<a name="Using-XEmacs-Under-Microsoft-Windows"></a>
-<h2 class="section">1.13 Using XEmacs Under Microsoft Windows</h2>
-
-<p>Use of XEmacs under MS Windows is not separately documented here, but
-most operations available under the X Window System are also available
-with MS Windows.
-</p>
-<p>Where possible, native MS Windows GUI components and capabilities are
-used in XEmacs.
-</p>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Command-Index.html#Command-and-Function-Index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_3.html#index_split-2_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_3.html#index_split-2_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-3_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_5.html#index_split-4_fn_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_6.html#index_split-5_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="xemacs_7.html#index_split-6_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 <hr>
 <table class="header" cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Frame" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_5.html#Keystrokes" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Variable-Index.html#Variable-Index" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="xemacs.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="xemacs_33.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="xemacs_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>

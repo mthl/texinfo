@@ -28,6 +28,7 @@ set_default('SHOW_TITLE', 0);
 set_default('NUMBER_SECTIONS', 0);
 set_default('USE_NODES', 1);
 set_default('USE_SECTIONS', 1);
+set_default('SPLIT', '');
 
 t2h_default_push_handler(\&xml_init_variables, \@command_handler_init);
 

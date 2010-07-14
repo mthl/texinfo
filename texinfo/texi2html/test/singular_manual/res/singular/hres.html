@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.47 hres</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.47 hres">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.47 hres">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="hres"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="homog.html#homog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.46 homog" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="imap.html#imap" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.48 imap" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="hres-1"></a>
+<h3 class="subsection">5.1.47 hres</h3>
+<a name="index-hres"></a>
+<a name="index-resolution_002c-hilbert_002ddriven"></a>
+<dl compact="compact">
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>hres (</code> ideal_expression<code>,</code> int_expression <code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>resolution
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>computes a free resolution of an ideal using the Hilbert-driven
+algorithm.
+</p>
+<p>More precisely, let R be the basering and I be the given ideal.
+Then <code>hres</code> computes a minimal free resolution of R/I
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F_1
+\buildrel{A_1}\over{\longrightarrow} R\longrightarrow R/I
+\longrightarrow 0.
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="100" HEIGHT="20" BORDER="0"
+ SRC="sing_102.png"
+ ALT="\begin{displaymath}...\longrightarrow F_2 \buildrel{A_2}\over{\longrightarrow} F...
+...}\over{\longrightarrow} R\longrightarrow R/I
+\longrightarrow 0.\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+If the int_expression k is not zero then the computation stops after
+k steps and returns a list of modules
+<!-- MATH
+ $M_i={\tt module} (A_i)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_103.png"
+ ALT="$M_i={\tt module} (A_i)$"></SPAN>, i=1..k.
+</p>
+<p><code>list L=hres(I,0);</code> returns a list L of n modules (where n is the
+number of variables of the basering) such that
+<!-- MATH
+ ${\tt L[i]}=M_i$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_104.png"
+ ALT="${\tt L[i]}=M_i$"></SPAN>
+in the above notation.
+</p></dd>
+<dt><code><strong>Note:</strong></code></dt>
+<dd><p>The ideal_expression has to be homogeneous.
+<br> Accessing single elements of a resolution may require that some partial
+computations have to be finished and may therefore take some time.
+</p></dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
+  ideal I=xz,yz,x3-y3;
+  def L=hres(I,0);
+  print(betti(L),&quot;betti&quot;);
+&rarr;            0     1     2
+&rarr; ------------------------
+&rarr;     0:     1     -     -
+&rarr;     1:     -     2     1
+&rarr;     2:     -     1     1
+&rarr; ------------------------
+&rarr; total:     1     3     2
+  L[2];     // the first syzygy module of r/I
+&rarr; _[1]=-x*gen(1)+y*gen(2)
+&rarr; _[2]=-x2*gen(2)+y2*gen(1)+z*gen(3)
+</pre></div>
+</dd>
+</dl>
+<p>See
+<a href="betti.html#betti">betti</a>;
+<a href="ideal.html#ideal">ideal</a>;
+<a href="int.html#int">int</a>;
+<a href="lres.html#lres">lres</a>;
+<a href="minres.html#minres">minres</a>;
+<a href="module.html#module">module</a>;
+<a href="mres.html#mres">mres</a>;
+<a href="res.html#res">res</a>;
+<a href="sres.html#sres">sres</a>.
+</p></td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="homog.html#homog" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.46 homog" align="middle"></a></td>
+<td valign="middle" align="left"><a href="imap.html#imap" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.48 imap" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

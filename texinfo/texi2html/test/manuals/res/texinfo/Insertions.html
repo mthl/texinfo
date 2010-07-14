@@ -1,0 +1,1771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 4.2, 28 March 2002),
+a documentation system that can produce both online information and a
+printed manual from a single source.
+
+Copyright (C) 1988, 90, 91, 92, 93, 95, 96, 97, 98, 99, 2000, 01, 02
+Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being "A GNU Manual,"
+and with the Back-Cover Texts as in (a) below.  A copy of the license is
+included in the section entitled "GNU Free Documentation License."
+
+(a) The FSF's Back-Cover Text is: "You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU Texinfo 4.2: 13 Special Insertions</title>
+
+<meta name="description" content="GNU Texinfo 4.2: 13 Special Insertions">
+<meta name="keywords" content="GNU Texinfo 4.2: 13 Special Insertions">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Insertions"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Indices.html#Indices" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Indices.html#New-Indices" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Braces-Atsigns" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Special-Insertions"></a>
+<h1 class="chapter">13 Special Insertions</h1>
+<a name="index-Inserting-special-characters-and-symbols"></a>
+<a name="index-Special-insertions"></a>
+
+<p>Texinfo provides several commands for inserting characters that have
+special meaning in Texinfo, such as braces, and for other graphic
+elements that do not correspond to simple characters you can type.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Braces-Atsigns">13.1 Inserting @ and Braces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              How to insert braces, &lsquo;<samp>@</samp>&rsquo;.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Inserting-Space">13.2 Inserting Space</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             How to insert the right amount of space
+                                  within a sentence.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Inserting-Accents">13.3 Inserting Accents</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to insert accents and special characters.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Dots-Bullets">13.4 Inserting Ellipsis and Bullets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                How to insert dots and bullets.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#TeX-and-copyright">13.5 Inserting TeX and the Copyright Symbol</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to insert the TeX logo
+                                  and the copyright symbol.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#pounds">13.6 <code>@pounds</code>{} (&pound;): Pounds Sterling</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to insert the pounds currency symbol.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#minus">13.7 <code>@minus</code>{} (-): Inserting a Minus Sign</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                       How to insert a minus sign.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#math">13.8 <code>@math</code>: Inserting Mathematical Expressions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to format a mathematical expression.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Glyphs">13.9 Glyphs for Examples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to indicate results of evaluation,
+                                  expansion of macros, errors, etc.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Footnotes">13.10 Footnotes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to include footnotes.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Images">13.11 Inserting Images</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to include graphics.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Braces-Atsigns"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-An-Atsign" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-_0040-and-Braces"></a>
+<h2 class="section">13.1 Inserting @ and Braces</h2>
+<a name="index-Inserting-_0040_002c-braces"></a>
+<a name="index-Braces_002c-inserting"></a>
+<a name="index-Special-characters_002c-commands-to-insert"></a>
+<a name="index-Commands-to-insert-special-characters"></a>
+
+<p>&lsquo;<samp>@</samp>&rsquo; and curly braces are special characters in Texinfo.  To insert
+these characters so they appear in text, you must put an &lsquo;<samp>@</samp>&rsquo; in
+front of these characters to prevent Texinfo from misinterpreting
+them.
+</p>
+<p>Do not put braces after any of these commands; they are not
+necessary.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Inserting-An-Atsign">13.1.1 Inserting &lsquo;<samp>@</samp>&rsquo; with @@</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         How to insert &lsquo;<samp>@</samp>&rsquo;.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Inserting-Braces">13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to insert &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;.
+</td></tr>
+</table>
+
+<hr>
+<a name="Inserting-An-Atsign"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Braces-Atsigns" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Braces-Atsigns" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Braces" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-_0040-with-_0040_0040"></a>
+<h3 class="subsection">13.1.1 Inserting &lsquo;<samp>@</samp>&rsquo; with @@</h3>
+<a name="index-_0040-_0028literal-_0040_0029"></a>
+
+<p><code>@@</code> stands for a single &lsquo;<samp>@</samp>&rsquo; in either printed or Info
+output.
+</p>
+<p>Do not put braces after an <code>@@</code> command.
+</p>
+
+<hr>
+<a name="Inserting-Braces"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-An-Atsign" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Braces-Atsigns" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-_007b-and-_007dwith-_0040_007b-and-_0040_007d"></a>
+<h3 class="subsection">13.1.2 Inserting &lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo;with @{ and @}</h3>
+<a name="index-_007b-_0028literal-_007b_0029"></a>
+<a name="index-_007d-_0028literal-_007d_0029"></a>
+
+<p><code>@{</code> stands for a single &lsquo;<samp>{</samp>&rsquo; in either printed or Info
+output.
+</p>
+<p><code>@}</code> stands for a single &lsquo;<samp>}</samp>&rsquo; in either printed or Info
+output.
+</p>
+<p>Do not put braces after either an <code>@{</code> or an <code>@}</code>
+command.
+</p>
+
+<hr>
+<a name="Inserting-Space"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Braces" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Not-Ending-a-Sentence" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-Space-1"></a>
+<h2 class="section">13.2 Inserting Space</h2>
+
+<a name="index-Inserting-space"></a>
+<a name="index-Spacing_002c-inserting"></a>
+<p>The following sections describe commands that control spacing of various
+kinds within and after sentences.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Not-Ending-a-Sentence">13.2.1 Not Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       Sometimes a . doesn&rsquo;t end a sentence.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Ending-a-Sentence">13.2.2 Ending a Sentence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           Sometimes it does.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Multiple-Spaces">13.2.3 Multiple Spaces</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Inserting multiple spaces.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#dmn">13.2.4 <code>@dmn</code>{<var>dimension</var>}: Format a Dimension</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         How to format a dimension.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Not-Ending-a-Sentence"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Ending-a-Sentence" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Not-Ending-a-Sentence-1"></a>
+<h3 class="subsection">13.2.1 Not Ending a Sentence</h3>
+
+<a name="index-Not-ending-a-sentence"></a>
+<a name="index-Sentence-non_002dending-punctuation"></a>
+<a name="index-Periods_002c-inserting"></a>
+<p>Depending on whether a period or exclamation point or question mark is
+inside or at the end of a sentence, less or more space is inserted after
+a period in a typeset manual.  Since it is not always possible
+to determine when a period ends a sentence and when it is used
+in an abbreviation, special commands are needed in some circumstances.
+Usually, Texinfo can guess how to handle periods, so you do not need to
+use the special commands; you just enter a period as you would if you
+were using a typewriter, which means you put two spaces after the
+period, question mark, or exclamation mark that ends a sentence.
+</p>
+<a name="index-_003ccolon_003e-_0028suppress-widening_0029"></a>
+<p>Use the <code>@:</code> command after a period, question mark,
+exclamation mark, or colon that should not be followed by extra space.
+For example, use <code>@:</code> after periods that end abbreviations
+which are not at the ends of sentences.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">The s.o.p.@: has three parts &hellip;
+The s.o.p. has three parts &hellip;
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<p>The s.o.p. has three parts &hellip;<br>
+The s.o.p. has three parts &hellip;
+</p></blockquote>
+
+<p>(Incidentally, &lsquo;<samp>s.o.p.</samp>&rsquo; is an abbreviation for &ldquo;Standard Operating
+Procedure&rdquo;.)
+</p>
+<p><code>@:</code> has no effect on the Info output.  Do not put braces after
+<code>@:</code>.
+</p>
+
+<hr>
+<a name="Ending-a-Sentence"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Not-Ending-a-Sentence" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-Spaces" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Ending-a-Sentence-1"></a>
+<h3 class="subsection">13.2.2 Ending a Sentence</h3>
+
+<a name="index-Ending-a-Sentence"></a>
+<a name="index-Sentence-ending-punctuation"></a>
+
+<a name="index-_002e--_0028end-of-sentence_0029"></a>
+<a name="index-_0021-_0028end-of-sentence_0029"></a>
+<a name="index-_003f-_0028end-of-sentence_0029"></a>
+<p>Use <code>@.</code> instead of a period, <code>@!</code> instead of an
+exclamation point, and <code>@?</code> instead of a question mark at the end
+of a sentence that ends with a single capital letter.  Otherwise, TeX
+will think the letter is an abbreviation and will not insert the correct
+end-of-sentence spacing.  Here is an example:
+</p>
+<div class="example">
+<pre class="example">Give it to M.I.B. and to M.E.W@.  Also, give it to R.J.C@.
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<p>Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.<br>
+Give it to M.I.B. and to M.E.W.  Also, give it to R.J.C.
+</p></blockquote>
+
+<p>In the Info file output, <code>@.</code> is equivalent to a simple
+&lsquo;<samp>.</samp>&rsquo;; likewise for <code>@!</code> and <code>@?</code>.
+</p>
+<p>The meanings of <code>@:</code> and <code>@.</code> in Texinfo are designed to
+work well with the Emacs sentence motion commands (see <a href="../emacs/Sentences.html#Sentences">Sentences</a> in <cite>The GNU Emacs Manual</cite>).
+</p>
+<p>Do not put braces after any of these commands.
+</p>
+
+<hr>
+<a name="Multiple-Spaces"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Ending-a-Sentence" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#dmn" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Multiple-Spaces-1"></a>
+<h3 class="subsection">13.2.3 Multiple Spaces</h3>
+
+<a name="index-Multiple-spaces"></a>
+<a name="index-Whitespace_002c-inserting"></a>
+<a name="index-Space_002c-inserting-horizontal"></a>
+<a name="index-_0028space_0029"></a>
+<a name="index-_0028tab_0029"></a>
+<a name="index-_0028newline_0029"></a>
+
+<p>Ordinarily, TeX collapses multiple whitespace characters (space, tab,
+and newline) into a single space.  Info output, on the other hand,
+preserves whitespace as you type it, except for changing a newline into
+a space; this is why it is important to put two spaces at the end of
+sentences in Texinfo documents.
+</p>
+<p>Occasionally, you may want to actually insert several consecutive
+spaces, either for purposes of example (what your program does with
+multiple spaces as input), or merely for purposes of appearance in
+headings or lists.  Texinfo supports three commands:
+<code>@<kbd>SPACE</kbd></code>, <code>@<kbd>TAB</kbd></code>, and <code>@<kbd>NL</kbd></code>, all of
+which insert a single space into the output.  (Here,
+<code>@<kbd>SPACE</kbd></code> represents an &lsquo;<samp>@</samp>&rsquo; character followed by a
+space, i.e., &lsquo;<samp>@ </samp>&rsquo;, and <kbd>TAB</kbd> and <kbd>NL</kbd> represent the tab
+character and end-of-line, i.e., when &lsquo;<samp>@</samp>&rsquo; is the last character on
+a line.)
+</p>
+<p>For example,
+</p><div class="example">
+<pre class="example">Spacey@ @ @ @
+example.
+</pre></div>
+
+<p>produces
+</p>
+<div class="example">
+<pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
+</pre></div>
+
+<p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
+<code>@multitable</code> (see section <a href="Lists-and-Tables.html#Multi_002dcolumn-Tables">Multi-column Tables</a>).
+</p>
+<p>Do not follow any of these commands with braces.
+</p>
+<p>To produce a non-breakable space, see <a href="Breaks.html#w">non-breakable space</a>.
+</p>
+
+<hr>
+<a name="dmn"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Multiple-Spaces" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Space" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Accents" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040dmn_007bdimension_007d_003a-Format-a-Dimension"></a>
+<h3 class="subsection">13.2.4 <code>@dmn</code>{<var>dimension</var>}: Format a Dimension</h3>
+<a name="index-Thin-space-between-number_002c-dimension"></a>
+<a name="index-Dimension-formatting"></a>
+<a name="index-Format-a-dimension"></a>
+<a name="index-dmn"></a>
+
+<p>At times, you may want to write &lsquo;<samp>12pt</samp>&rsquo; or
+&lsquo;<samp>8.5in</samp>&rsquo; with little or no space between the number and the
+abbreviation for the dimension.  You can use the <code>@dmn</code> command
+to do this.  On seeing the command, TeX inserts just enough space
+for proper typesetting; the Info formatting commands insert no space
+at all, since the Info file does not require it.
+</p>
+<p>To use the <code>@dmn</code> command, write the number and then follow it
+immediately, with no intervening space, by <code>@dmn</code>, and then by
+the dimension within braces.  For example,
+</p>
+<div class="example">
+<pre class="example">A4 paper is 8.27@dmn{in} wide.
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<p>A4 paper is 8.27in wide.
+</p></blockquote>
+
+<p>Not everyone uses this style.  Some people prefer &lsquo;<samp>8.27&nbsp;in.@:</samp>&rsquo;
+or &lsquo;<samp>8.27&nbsp;inches</samp>&rsquo; to &lsquo;<samp>8.27@dmn{in}</samp>&rsquo; in the Texinfo file.
+In these cases, however, the formatters may insert a line break between
+the number and the dimension, so use <code>@w</code> (see section <a href="Breaks.html#w"><code>@w</code>{<var>text</var>}: Prevent Line Breaks</a>).  Also, if
+you write a period after an abbreviation within a sentence, you should
+write &lsquo;<samp>@:</samp>&rsquo; after the period to prevent TeX from inserting extra
+whitespace, as shown here.  See section <a href="#Not-Ending-a-Sentence">Not Ending a Sentence</a>.
+</p>
+
+<hr>
+<a name="Inserting-Accents"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#dmn" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Dots-Bullets" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-Accents-1"></a>
+<h2 class="section">13.3 Inserting Accents</h2>
+
+<a name="index-Inserting-accents"></a>
+<a name="index-Accents_002c-inserting"></a>
+<a name="index-Floating-accents_002c-inserting"></a>
+
+<p>Here is a table with the commands Texinfo provides for inserting
+floating accents.  The commands with non-alphabetic names do not take
+braces around their argument (which is taken to be the next character).
+(Exception: <code>@,</code> <em>does</em> take braces around its argument.)
+This is so as to make the source as convenient to type and read as
+possible, since accented characters are very common in some languages.
+</p>
+<a name="index-_0022-_0028umlaut-accent_0029"></a>
+<a name="index-Umlaut-accent"></a>
+<a name="index-_0027-_0028umlaut-accent_0029"></a>
+<a name="index-Acute-accent"></a>
+<a name="index-_003d-_0028macron-accent_0029"></a>
+<a name="index-Macron-accent"></a>
+<a name="index-_005e-_0028circumflex-accent_0029"></a>
+<a name="index-Circumflex-accent"></a>
+<a name="index-_0060-_0028grave-accent_0029"></a>
+<a name="index-Grave-accent"></a>
+<a name="index-_007e-_0028tilde-accent_0029"></a>
+<a name="index-Tilde-accent"></a>
+<a name="index-_002c-_0028cedilla-accent_0029"></a>
+<a name="index-Cedilla-accent"></a>
+<a name="index-dotaccent"></a>
+<a name="index-Dot-accent"></a>
+<a name="index-H-_0028Hungarian-umlaut-accent_0029"></a>
+<a name="index-Hungarian-umlaut-accent"></a>
+<a name="index-ringaccent"></a>
+<a name="index-Ring-accent"></a>
+<a name="index-tieaccent"></a>
+<a name="index-Tie_002dafter-accent"></a>
+<a name="index-u-_0028breve-accent_0029"></a>
+<a name="index-Breve-accent"></a>
+<a name="index-ubaraccent"></a>
+<a name="index-Underbar-accent"></a>
+<a name="index-udotaccent"></a>
+<a name="index-Underdot-accent"></a>
+<a name="index-v-_0028check-accent_0029"></a>
+<a name="index-Check-accent"></a>
+<table>
+<tr><td>Command</td><td>Output</td><td>What</td></tr>
+<tr><td><tt>@&quot;o</tt></td><td>&ouml;</td><td>umlaut accent</td></tr>
+<tr><td><tt>@&rsquo;o</tt></td><td>&oacute;</td><td>acute accent</td></tr>
+<tr><td><tt>@,{c}</tt></td><td>&ccedil;</td><td>cedilla accent</td></tr>
+<tr><td><tt>@=o</tt></td><td>&#333;</td><td>macron/overbar accent</td></tr>
+<tr><td><tt>@^o</tt></td><td>&ocirc;</td><td>circumflex accent</td></tr>
+<tr><td><tt>@&lsquo;o</tt></td><td>&ograve;</td><td>grave accent</td></tr>
+<tr><td><tt>@~o</tt></td><td>&otilde;</td><td>tilde accent</td></tr>
+<tr><td><tt>@dotaccent{o}</tt></td><td>&#559;</td><td>overdot accent</td></tr>
+<tr><td><tt>@H{o}</tt></td><td>&#337;</td><td>long Hungarian umlaut</td></tr>
+<tr><td><tt>@ringaccent{o}</tt></td><td>o*</td><td>ring accent</td></tr>
+<tr><td><tt>@tieaccent{oo}</tt></td><td>oo[</td><td>tie-after accent</td></tr>
+<tr><td><tt>@u{o}</tt></td><td>&#335;</td><td>breve accent</td></tr>
+<tr><td><tt>@ubaraccent{o}</tt></td><td>o_</td><td>underbar accent</td></tr>
+<tr><td><tt>@udotaccent{o}</tt></td><td>&#7885;</td><td>underdot accent</td></tr>
+<tr><td><tt>@v{o}</tt></td><td>o&lt;</td><td>hacek or check accent</td></tr>
+</table>
+
+<p>This table lists the Texinfo commands for inserting other characters
+commonly used in languages other than English.
+</p>
+<a name="index-questiondown"></a>
+<a name="index-_00bf"></a>
+<a name="index-exclamdown"></a>
+<a name="index-_00a1"></a>
+<a name="index-aa"></a>
+<a name="index-aa-1"></a>
+<a name="index-AA"></a>
+<a name="index-AA-1"></a>
+<a name="index-ae"></a>
+<a name="index-ae-1"></a>
+<a name="index-AE"></a>
+<a name="index-AE-1"></a>
+<a name="index-dotless"></a>
+<a name="index-i"></a>
+<a name="index-j"></a>
+<a name="index-Dotless-i_002c-j"></a>
+<a name="index-l"></a>
+<a name="index-l-1"></a>
+<a name="index-L"></a>
+<a name="index-L-1"></a>
+<a name="index-o"></a>
+<a name="index-o-1"></a>
+<a name="index-O"></a>
+<a name="index-O-1"></a>
+<a name="index-oe"></a>
+<a name="index-oe-1"></a>
+<a name="index-OE"></a>
+<a name="index-OE-1"></a>
+<a name="index-ss"></a>
+<a name="index-ss-1"></a>
+<a name="index-Es_002dzet"></a>
+<a name="index-Sharp-S"></a>
+<a name="index-German-S"></a>
+<table>
+<tr><td><tt>@exclamdown{}</tt></td><td>&iexcl;</td><td>upside-down !</td></tr>
+<tr><td><tt>@questiondown{}</tt></td><td>&iquest;</td><td>upside-down ?</td></tr>
+<tr><td><tt>@aa{},@AA{}</tt></td><td>&aring;,&Aring;</td><td>a,A with circle</td></tr>
+<tr><td><tt>@ae{},@AE{}</tt></td><td>&aelig;,&AElig;</td><td>ae,AE ligatures</td></tr>
+<tr><td><tt>@dotless{i}</tt></td><td>i</td><td>dotless i</td></tr>
+<tr><td><tt>@dotless{j}</tt></td><td>j</td><td>dotless j</td></tr>
+<tr><td><tt>@l{},@L{}</tt></td><td>&#322;,&#321;</td><td>suppressed-L,l</td></tr>
+<tr><td><tt>@o{},@O{}</tt></td><td>&oslash;,&Oslash;</td><td>O,o with slash</td></tr>
+<tr><td><tt>@oe{},@OE{}</tt></td><td>&oelig;,&OElig;</td><td>oe,OE ligatures</td></tr>
+<tr><td><tt>@ss{}</tt></td><td>&szlig;</td><td>es-zet or sharp S</td></tr>
+</table>
+
+
+<hr>
+<a name="Dots-Bullets"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Inserting-Accents" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#dots" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-Ellipsis-and-Bullets"></a>
+<h2 class="section">13.4 Inserting Ellipsis and Bullets</h2>
+<a name="index-Dots_002c-inserting"></a>
+<a name="index-Bullets_002c-inserting"></a>
+<a name="index-Ellipsis_002c-inserting"></a>
+<a name="index-Inserting-ellipsis"></a>
+<a name="index-Inserting-dots"></a>
+<a name="index-Special-typesetting-commands"></a>
+<a name="index-Typesetting-commands-for-dots_002c-etc_002e"></a>
+
+<p>An <em>ellipsis</em> (a line of dots) is not typeset as a string of
+periods, so a special command is used for ellipsis in Texinfo.  The
+<code>@bullet</code> command is special, too.  Each of these commands is
+followed by a pair of braces, &lsquo;<samp>{}</samp>&rsquo;, without any whitespace
+between the name of the command and the braces.  (You need to use braces
+with these commands because you can use them next to other text; without
+the braces, the formatters would be confused.  See section <a href="Command-Syntax.html#Command-Syntax">@-Command Syntax</a>, for further information.)
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#dots">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">...</small>)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                        How to insert dots &hellip;
+</td></tr>
+<tr><td align="left" valign="top"><a href="#bullet">13.4.2 <code>@bullet</code>{} (&bull;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to insert a bullet.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="dots"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dots-Bullets" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dots-Bullets" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#bullet" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040dots_007b_007d-_0028_2026_0029-and-_0040enddots_007b_007d-_0028_002e_002e_002e_0029"></a>
+<h3 class="subsection">13.4.1 <code>@dots</code>{} (&hellip;) and <code>@enddots</code>{} (<small class="enddots">...</small>)</h3>
+<a name="index-dots"></a>
+<a name="index-enddots"></a>
+<a name="index-Inserting-dots-1"></a>
+<a name="index-Dots_002c-inserting-1"></a>
+
+<p>Use the <code>@dots{}</code> command to generate an ellipsis, which is
+three dots in a row, appropriately spaced, like this: &lsquo;&hellip;&rsquo;.  Do
+not simply write three periods in the input file; that would work for
+the Info file output, but would produce the wrong amount of space
+between the periods in the printed manual.
+</p>
+<p>Similarly, the <code>@enddots{}</code> command generates an
+end-of-sentence ellipsis (four dots) <small class="enddots">...</small>
+</p>
+
+
+<hr>
+<a name="bullet"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#dots" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Dots-Bullets" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#TeX-and-copyright" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040bullet_007b_007d-_0028_2022_0029"></a>
+<h3 class="subsection">13.4.2 <code>@bullet</code>{} (&bull;)</h3>
+<a name="index-bullet"></a>
+
+<p>Use the <code>@bullet{}</code> command to generate a large round dot, or
+the closest possible thing to one.  In Info, an asterisk is used.
+</p>
+<p>Here is a bullet: &bull;
+</p>
+<p>When you use <code>@bullet</code> in <code>@itemize</code>, you do not need to
+type the braces, because <code>@itemize</code> supplies them.
+(See section <a href="Lists-and-Tables.html#itemize"><code>@itemize</code></a>.)
+</p>
+
+<hr>
+<a name="TeX-and-copyright"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#bullet" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#tex" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-TeX-and-the-Copyright-Symbol"></a>
+<h2 class="section">13.5 Inserting TeX and the Copyright Symbol</h2>
+
+<p>The logo &lsquo;TeX&rsquo; is typeset in a special fashion and it needs an
+@-command.  The copyright symbol, &lsquo;&copy;&rsquo;, is also special.
+Each of these commands is followed by a pair of braces, &lsquo;<samp>{}</samp>&rsquo;,
+without any whitespace between the name of the command and the
+braces.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#tex">13.5.1 <code>@TeX</code>{} (TeX)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                         How to insert the TeX logo.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#copyright-symbol">13.5.2 <code>@copyright</code>{} (&copy;)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            How to use <code>@copyright</code>{}.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="tex"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#TeX-and-copyright" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#TeX-and-copyright" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#copyright-symbol" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040TeX_007b_007d-_0028TeX_0029"></a>
+<h3 class="subsection">13.5.1 <code>@TeX</code>{} (TeX)</h3>
+<a name="index-tex-_0028command_0029"></a>
+
+<p>Use the <code>@TeX{}</code> command to generate &lsquo;TeX&rsquo;.  In a printed
+manual, this is a special logo that is different from three ordinary
+letters.  In Info, it just looks like &lsquo;<samp>TeX</samp>&rsquo;.  The
+<code>@TeX{}</code> command is unique among Texinfo commands in that the
+&lsquo;<samp>T</samp>&rsquo; and the &lsquo;<samp>X</samp>&rsquo; are in upper case.
+</p>
+
+<hr>
+<a name="copyright-symbol"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#tex" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#TeX-and-copyright" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#pounds" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040copyright_007b_007d-_0028_00a9_0029"></a>
+<h3 class="subsection">13.5.2 <code>@copyright</code>{} (&copy;)</h3>
+<a name="index-copyright-1"></a>
+
+<p>Use the <code>@copyright{}</code> command to generate &lsquo;&copy;&rsquo;.  In
+a printed manual, this is a &lsquo;<samp>c</samp>&rsquo; inside a circle, and in Info,
+this is &lsquo;<samp>(C)</samp>&rsquo;.
+</p>
+
+<hr>
+<a name="pounds"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#copyright-symbol" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#minus" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040pounds_007b_007d-_0028_00a3_0029_003a-Pounds-Sterling"></a>
+<h2 class="section">13.6 <code>@pounds</code>{} (&pound;): Pounds Sterling</h2>
+<a name="index-pounds"></a>
+
+<p>Use the <code>@pounds{}</code> command to generate &lsquo;&pound;&rsquo;.  In a
+printed manual, this is the symbol for the currency pounds sterling.
+In Info, it is a &lsquo;<samp>#</samp>&rsquo;.  Other currency symbols are unfortunately not
+available.
+</p>
+
+<hr>
+<a name="minus"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#pounds" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#math" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040minus_007b_007d-_0028_2212_0029_003a-Inserting-a-Minus-Sign"></a>
+<h2 class="section">13.7 <code>@minus</code>{} (-): Inserting a Minus Sign</h2>
+<a name="index-minus"></a>
+
+<a name="index-em_002ddash"></a>
+<a name="index-hyphen"></a>
+<p>Use the <code>@minus{}</code> command to generate a minus sign.  In a
+fixed-width font, this is a single hyphen, but in a proportional font,
+the symbol is the customary length for a minus sign&mdash;a little longer
+than a hyphen, shorter than an em-dash:
+</p>
+<div class="display">
+<pre class="display">&lsquo;<samp>-</samp>&rsquo; is a minus sign generated with &lsquo;<samp>@minus{}</samp>&rsquo;,
+
+&lsquo;-&rsquo; is a hyphen generated with the character &lsquo;<samp>-</samp>&rsquo;,
+
+&lsquo;&mdash;&rsquo; is an em-dash for text.
+</pre></div>
+
+<p>In the fixed-width font used by Info, <code>@minus{}</code> is the same
+as a hyphen.
+</p>
+<p>You should not use <code>@minus{}</code> inside <code>@code</code> or
+<code>@example</code> because the width distinction is not made in the
+fixed-width font they use.
+</p>
+<p>When you use <code>@minus</code> to specify the mark beginning each entry in
+an itemized list, you do not need to type the braces
+(see section <a href="Lists-and-Tables.html#itemize"><code>@itemize</code></a>.)
+</p>
+
+<hr>
+<a name="math"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#minus" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040math_003a-Inserting-Mathematical-Expressions"></a>
+<h2 class="section">13.8 <code>@math</code>: Inserting Mathematical Expressions</h2>
+<a name="index-math"></a>
+<a name="index-Mathematical-expressions"></a>
+<a name="index-Formulas_002c-mathematical"></a>
+
+<p>You can write a short mathematical expression with the <code>@math</code>
+command.  Write the mathematical expression between braces, like this:
+</p>
+<div class="example">
+<pre class="example">@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+</pre></div>
+
+<p>This produces the following in Info:
+</p>
+<div class="example">
+<pre class="example">(a + b)(a + b) = a^2 + 2ab + b^2
+</pre></div>
+
+<p>Thus, the <code>@math</code> command has no effect on the Info output.
+</p>
+<p><code>@math</code> implies <code>@tex</code>.  This not only makes it possible to
+write superscripts and subscripts (as in the above example), but also
+allows you to use any of the plain TeX math control sequences.  It&rsquo;s
+conventional to use &lsquo;<samp>\</samp>&rsquo; instead of &lsquo;<samp>@</samp>&rsquo; for these commands.
+As in:
+</p><div class="example">
+<pre class="example">@math{\sin 2\pi \equiv \cos 3\pi}
+</pre></div>
+
+<p>which looks like the input in Info and HTML:
+</p><div class="example">
+<pre class="example">\sin 2\pi \equiv \cos 3\pi
+</pre></div>
+
+<a name="index-_005c-_0028literal-_005c-in-_0040math_0029"></a>
+<p>Since &lsquo;<samp>\</samp>&rsquo; is an escape character inside <code>@math</code>, you can use
+<code>@\</code> to get a literal backslash (<code>\\</code> will work in TeX,
+but you&rsquo;ll get the literal &lsquo;<samp>\\</samp>&rsquo; in Info).  <code>@\</code> is not
+defined outside of <code>@math</code>, since a &lsquo;<samp>\</samp>&rsquo; ordinarily produces a
+literal &lsquo;<samp>\</samp>&rsquo;.
+</p>
+
+<a name="index-Displayed-equations"></a>
+<a name="index-Equations_002c-displayed"></a>
+<p>For displayed equations, you must at present use TeX directly
+(see section <a href="Conditionals.html#Raw-Formatter-Commands">Raw Formatter Commands</a>).  
+</p>
+
+<hr>
+<a name="Glyphs"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#math" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs-Summary" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Glyphs-for-Examples"></a>
+<h2 class="section">13.9 Glyphs for Examples</h2>
+<a name="index-Glyphs"></a>
+<a name="index-Examples_002c-glyphs-for"></a>
+
+<p>In Texinfo, code is often illustrated in examples that are delimited
+by <code>@example</code> and <code>@end example</code>, or by <code>@lisp</code> and
+<code>@end lisp</code>.  In such examples, you can indicate the results of
+evaluation or an expansion using &lsquo;<samp>&rArr;</samp>&rsquo; or
+&lsquo;<samp>&rarr;</samp>&rsquo;.  Likewise, there are commands to insert glyphs
+to indicate
+printed output, error messages, equivalence of expressions, and the
+location of point.
+</p>
+<p>The glyph-insertion commands do not need to be used within an example, but
+most often they are.  Every  glyph-insertion command is followed by a pair of
+left- and right-hand braces.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Glyphs-Summary">13.9.1 Glyphs Summary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              
+</td></tr>
+<tr><td align="left" valign="top"><a href="#result">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                      How to show the result of expression.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#expansion">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                   How to indicate an expansion.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Print-Glyph">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to indicate printed output.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Error-Glyph">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to indicate an error message.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Equivalence">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to indicate equivalence.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Point-Glyph">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 How to indicate the location of point.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Glyphs-Summary"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#result" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Glyphs-Summary-1"></a>
+<h3 class="subsection">13.9.1 Glyphs Summary</h3>
+
+<p>Here are the different glyph commands:
+</p>
+<dl compact="compact">
+<dt>&rArr;</dt>
+<dd><p><code>@result{}</code> points to the result of an expression.
+</p>
+</dd>
+<dt>&rarr;</dt>
+<dd><p><code>@expansion{}</code> shows the results of a macro expansion.
+</p>
+</dd>
+<dt>-|</dt>
+<dd><p><code>@print{}</code> indicates printed output.
+</p>
+</dd>
+<dt>error--&gt;</dt>
+<dd><p><code>@error{}</code> indicates that the following text is an error
+message.
+</p>
+</dd>
+<dt>&equiv;</dt>
+<dd><p><code>@equiv{}</code> indicates the exact equivalence of two forms.
+</p>
+</dd>
+<dt>&lowast;</dt>
+<dd><p><code>@point{}</code> shows the location of point.
+</p></dd>
+</dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#result">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#expansion">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Print-Glyph">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Error-Glyph">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Equivalence">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Point-Glyph">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<a name="result"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs-Summary" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#expansion" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040result_007b_007d-_0028_21d2_0029_003a-Indicating-Evaluation"></a>
+<h3 class="subsection">13.9.2 <code>@result{}</code> (&rArr;): Indicating Evaluation</h3>
+<a name="index-Result-of-an-expression"></a>
+<a name="index-Indicating-evaluation"></a>
+<a name="index-Evaluation-glyph"></a>
+<a name="index-Value-of-an-expression_002c-indicating"></a>
+<a name="index-result"></a>
+
+<p>Use the <code>@result{}</code> command to indicate the result of
+evaluating an expression.
+</p>
+<p>The <code>@result{}</code> command is displayed as &lsquo;<samp>&rArr;</samp>&rsquo; in Info
+and as a double stemmed arrow in the printed output.
+</p>
+<p>Thus, the following,
+</p>
+<div class="lisp">
+<pre class="lisp">(cdr '(1 2 3))
+     &rArr; (2 3)
+</pre></div>
+
+<p>may be read as &ldquo;<code>(cdr '(1 2 3))</code> evaluates to <code>(2 3)</code>&rdquo;.
+</p>
+
+<hr>
+<a name="expansion"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#result" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Print-Glyph" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040expansion_007b_007d-_0028_2192_0029_003a-Indicating-an-Expansion"></a>
+<h3 class="subsection">13.9.3 <code>@expansion{}</code> (&rarr;): Indicating an Expansion</h3>
+<a name="index-Expansion_002c-indicating-it"></a>
+<a name="index-expansion"></a>
+
+<p>When an expression is a macro call, it expands into a new expression.
+You can indicate the result of the expansion with the
+<code>@expansion{}</code> command.
+</p>
+<p>The <code>@expansion{}</code> command is displayed as &lsquo;<samp>&rarr;</samp>&rsquo;
+in Info and as a long arrow with a flat base in the printed output.
+</p>
+<p>For example, the following
+</p>
+<div class="example">
+<pre class="example">@lisp
+(third '(a b c))
+     @expansion{} (car (cdr (cdr '(a b c))))
+     @result{} c
+@end lisp
+</pre></div>
+
+<p>produces
+</p>
+<div class="lisp">
+<pre class="lisp">(third '(a b c))
+     &rarr; (car (cdr (cdr '(a b c))))
+     &rArr; c
+</pre></div>
+
+<p>which may be read as:
+</p>
+<blockquote>
+<p><code>(third '(a b c))</code> expands to <code>(car (cdr (cdr '(a b c))))</code>;
+the result of evaluating the expression is <code>c</code>.
+</p></blockquote>
+
+<p>Often, as in this case, an example looks better if the
+<code>@expansion{}</code> and <code>@result{}</code> commands are indented
+five spaces.
+</p>
+
+<hr>
+<a name="Print-Glyph"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#expansion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Glyph" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040print_007b_007d-_0028_22a3_0029_003a-Indicating-Printed-Output"></a>
+<h3 class="subsection">13.9.4 <code>@print{}</code> (-|): Indicating Printed Output</h3>
+<a name="index-Printed-output_002c-indicating-it"></a>
+<a name="index-print"></a>
+
+<p>Sometimes an expression will print output during its execution.  You
+can indicate the printed output with the <code>@print{}</code> command.
+</p>
+<p>The <code>@print{}</code> command is displayed as &lsquo;<samp>-|</samp>&rsquo; in Info
+and similarly, as a horizontal dash butting against a vertical bar, in
+the printed output.
+</p>
+<p>In the following example, the printed text is indicated with
+&lsquo;<samp>-|</samp>&rsquo;, and the value of the expression follows on the
+last line.
+</p>
+<div class="lisp">
+<pre class="lisp">(progn (print 'foo) (print 'bar))
+     -| foo
+     -| bar
+     &rArr; bar
+</pre></div>
+
+<p>In a Texinfo source file, this example is written as follows:
+</p>
+<div class="lisp">
+<pre class="lisp">@lisp
+(progn (print 'foo) (print 'bar))
+     @print{} foo
+     @print{} bar
+     @result{} bar
+@end lisp
+</pre></div>
+
+
+<hr>
+<a name="Error-Glyph"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Print-Glyph" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Equivalence" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040error_007b_007d-_0028error_002d_002d_003e_0029_003a-Indicating-an-Error-Message"></a>
+<h3 class="subsection">13.9.5 <code>@error{}</code> (error--&gt;): Indicating an Error Message</h3>
+<a name="index-Error-message_002c-indicating-it"></a>
+<a name="index-error"></a>
+
+<p>A piece of code may cause an error when you evaluate it.  You can
+designate the error message with the <code>@error{}</code> command.
+</p>
+<p>The <code>@error{}</code> command is displayed as &lsquo;<samp>error--&gt;</samp>&rsquo; in Info
+and as the word &lsquo;error&rsquo; in a box in the printed output.
+</p>
+<p>Thus,
+</p>
+<div class="example">
+<pre class="example">@lisp
+(+ 23 'x)
+@error{} Wrong type argument: integer-or-marker-p, x
+@end lisp
+</pre></div>
+
+<p>produces
+</p>
+<div class="lisp">
+<pre class="lisp">(+ 23 'x)
+error--&gt; Wrong type argument: integer-or-marker-p, x
+</pre></div>
+
+<p>This indicates that the following error message is printed
+when you evaluate the expression:
+</p>
+<div class="lisp">
+<pre class="lisp">Wrong type argument: integer-or-marker-p, x
+</pre></div>
+
+<p>&lsquo;<samp>error--&gt;</samp>&rsquo; itself is not part of the error message.
+</p>
+
+<hr>
+<a name="Equivalence"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Glyph" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Point-Glyph" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040equiv_007b_007d-_0028_2261_0029_003a-Indicating-Equivalence"></a>
+<h3 class="subsection">13.9.6 <code>@equiv{}</code> (&equiv;): Indicating Equivalence</h3>
+<a name="index-Equivalence_002c-indicating-it"></a>
+<a name="index-equiv"></a>
+
+<p>Sometimes two expressions produce identical results.  You can indicate the
+exact equivalence of two forms with the <code>@equiv{}</code> command.
+</p>
+<p>The <code>@equiv{}</code> command is displayed as &lsquo;<samp>&equiv;</samp>&rsquo; in Info
+and as a three parallel horizontal lines in the printed output.
+</p>
+<p>Thus,
+</p>
+<div class="example">
+<pre class="example">@lisp
+(make-sparse-keymap) @equiv{} (list 'keymap)
+@end lisp
+</pre></div>
+
+<p>produces
+</p>
+<div class="lisp">
+<pre class="lisp">(make-sparse-keymap) &equiv; (list 'keymap)
+</pre></div>
+
+<p>This indicates that evaluating <code>(make-sparse-keymap)</code> produces
+identical results to evaluating <code>(list 'keymap)</code>.
+</p>
+
+<hr>
+<a name="Point-Glyph"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Equivalence" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Glyphs" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnotes" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="g_t_0040point_007b_007d-_0028_2605_0029_003a-Indicating-Point-in-a-Buffer"></a>
+<h3 class="subsection">13.9.7 <code>@point{}</code> (&lowast;): Indicating Point in a Buffer</h3>
+<a name="index-Point_002c-indicating-in-a-buffer"></a>
+<a name="index-point"></a>
+
+<p>Sometimes you need to show an example of text in an Emacs buffer.  In
+such examples, the convention is to include the entire contents of the
+buffer in question between two lines of dashes containing the buffer
+name.
+</p>
+<p>You can use the &lsquo;<samp>@point{}</samp>&rsquo; command to show the location of point
+in the text in the buffer.  (The symbol for point, of course, is not
+part of the text in the buffer; it indicates the place <em>between</em>
+two characters where point is located.)
+</p>
+<p>The <code>@point{}</code> command is displayed as &lsquo;<samp>&lowast;</samp>&rsquo; in Info
+and as a small five pointed star in the printed output.
+</p>
+<p>The following example shows the contents of buffer &lsquo;<tt>foo</tt>&rsquo; before
+and after evaluating a Lisp command to insert the word <code>changed</code>.
+</p>
+<div class="example">
+<pre class="example">---------- Buffer: foo ----------
+This is the &lowast;contents of foo.
+---------- Buffer: foo ----------
+
+</pre></div>
+
+<div class="example">
+<pre class="example">(insert &quot;changed &quot;)
+     &rArr; nil
+---------- Buffer: foo ----------
+This is the changed &lowast;contents of foo.
+---------- Buffer: foo ----------
+
+</pre></div>
+
+<p>In a Texinfo source file, the example is written like this:
+</p>
+<div class="example">
+<pre class="example">@example
+---------- Buffer: foo ----------
+This is the @point{}contents of foo.
+---------- Buffer: foo ----------
+
+(insert &quot;changed &quot;)
+     @result{} nil
+---------- Buffer: foo ----------
+This is the changed @point{}contents of foo.
+---------- Buffer: foo ----------
+@end example
+</pre></div>
+
+
+<hr>
+<a name="Footnotes"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Point-Glyph" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnote-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Footnotes-1"></a>
+<h2 class="section">13.10 Footnotes</h2>
+<a name="index-Footnotes"></a>
+<a name="index-footnote"></a>
+
+<p>A <em>footnote</em> is for a reference that documents or elucidates the
+primary text.<a name="DOCF8" href="texinfo_fot.html#FOOT8">(8)</a>
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Footnote-Commands">13.10.1 Footnote Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           How to write a footnote in Texinfo.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Footnote-Styles">13.10.2 Footnote Styles</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Controlling how footnotes appear in Info.
+</td></tr>
+</table>
+
+
+<hr>
+<a name="Footnote-Commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnotes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnotes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnote-Styles" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Footnote-Commands-1"></a>
+<h3 class="subsection">13.10.1 Footnote Commands</h3>
+
+<p>In Texinfo, footnotes are created with the <code>@footnote</code> command.
+This command is followed immediately by a left brace, then by the text
+of the footnote, and then by a terminating right brace.  Footnotes may
+be of any length (they will be broken across pages if necessary), but
+are usually short.  The template is:
+</p>
+<div class="example">
+<pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</pre></div>
+
+<p>As shown here, the <code>@footnote</code> command should come right after the
+text being footnoted, with no intervening space; otherwise, the footnote
+marker might end up starting a line.
+</p>
+<p>For example, this clause is followed by a sample footnote<a name="DOCF9" href="texinfo_fot.html#FOOT9">(9)</a>; in the Texinfo source, it looks like
+this:
+</p>
+<div class="example">
+<pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source&hellip;
+</pre></div>
+
+<p>As you can see, the source includes two punctuation marks next to each
+other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal (the
+first ends the footnote and the second belongs to the sentence being
+footnoted), so don&rsquo;t worry that it looks odd.
+</p>
+<p>In a printed manual or book, the reference mark for a footnote is a
+small, superscripted number; the text of the footnote appears at the
+bottom of the page, below a horizontal line.
+</p>
+<p>In Info, the reference mark for a footnote is a pair of parentheses
+with the footnote number between them, like this: &lsquo;<samp>(1)</samp>&rsquo;.  The
+reference mark is followed by a cross-reference link to the footnote&rsquo;s
+text.
+</p>
+<p>In the HTML output, footnote references are marked with a small,
+superscripted number which is rendered as a hypertext link to the
+footnote text.
+</p>
+<p>By the way, footnotes in the argument of an <code>@item</code> command for a
+<code>@table</code> must be on the same line as the <code>@item</code>
+(as usual).  See section <a href="Lists-and-Tables.html#Two_002dcolumn-Tables">Making a Two-column Table</a>.
+</p>
+
+<hr>
+<a name="Footnote-Styles"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnote-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnotes" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Images" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Footnote-Styles-1"></a>
+<h3 class="subsection">13.10.2 Footnote Styles</h3>
+
+<p>Info has two footnote styles, which determine where the text of the
+footnote is located:
+</p>
+<ul>
+<li><a name="index-End-node-footnote-style"></a>
+</li><li>
+In the &lsquo;End&rsquo; node style, all the footnotes for a single node
+are placed at the end of that node.  The footnotes are separated from
+the rest of the node by a line of dashes with the word
+&lsquo;<samp>Footnotes</samp>&rsquo; within it.  Each footnote begins with an
+&lsquo;<samp>(<var>n</var>)</samp>&rsquo; reference mark.
+
+<p>Here is an example of a single footnote in the end of node style:
+</p>
+<div class="example">
+<pre class="example"> --------- Footnotes ---------
+
+(1)  Here is a sample footnote.
+</pre></div>
+
+<a name="index-Separate-footnote-style"></a>
+</li><li>
+In the &lsquo;Separate&rsquo; node style, all the footnotes for a single
+node are placed in an automatically constructed node of
+their own.  In this style, a &ldquo;footnote reference&rdquo; follows
+each &lsquo;<samp>(<var>n</var>)</samp>&rsquo; reference mark in the body of the
+node.  The footnote reference is actually a cross reference
+which you use to reach the footnote node.
+
+<p>The name of the node with the footnotes is constructed
+by appending &lsquo;<samp><span class="nolinebreak">-Footnotes</span></samp>&rsquo; to the name of the node
+that contains the footnotes. (Consequently, the footnotes&rsquo;
+node for the &lsquo;<tt>Footnotes</tt>&rsquo; node is
+&lsquo;<tt><span class="nolinebreak">Footnotes-Footnotes</span></tt>&rsquo;!)  The footnotes&rsquo; node has an
+&lsquo;Up&rsquo; node pointer that leads back to its parent node.
+</p>
+<p>Here is how the first footnote in this manual looks after being
+formatted for Info in the separate node style:
+</p>
+<div class="smallexample">
+<pre class="smallexample">File: texinfo.info  Node: Overview-Footnotes, Up: Overview
+
+(1) The first syllable of &quot;Texinfo&quot; is pronounced like &quot;speck&quot;, not
+&quot;hex&quot;. &hellip;
+</pre></div>
+</li></ul>
+
+<p>A Texinfo file may be formatted into an Info file with either footnote
+style.
+</p>
+<a name="index-footnotestyle"></a>
+<p>Use the <code>@footnotestyle</code> command to specify an Info file&rsquo;s
+footnote style.  Write this command at the beginning of a line followed
+by an argument, either &lsquo;<samp>end</samp>&rsquo; for the end node style or
+&lsquo;<samp>separate</samp>&rsquo; for the separate node style.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@footnotestyle end
+</pre></div>
+<p>or
+</p><div class="example">
+<pre class="example">@footnotestyle separate
+</pre></div>
+
+<p>Write an <code>@footnotestyle</code> command before or shortly after the
+end-of-header line at the beginning of a Texinfo file.  (If you
+include the <code>@footnotestyle</code> command between the start-of-header
+and end-of-header lines, the region formatting commands will format
+footnotes as specified.)
+</p>
+<p>If you do not specify a footnote style, the formatting commands use
+their default style.  Currently, <code>texinfo-format-buffer</code> and
+<code>texinfo-format-region</code> use the &lsquo;separate&rsquo; style and
+<code>makeinfo</code> uses the &lsquo;end&rsquo; style.
+</p>
+<p>This chapter contains two footnotes.
+</p>
+
+<hr>
+<a name="Images"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Footnote-Styles" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Insertions" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Inserting-Images"></a>
+<h2 class="section">13.11 Inserting Images</h2>
+
+<a name="index-Images_002c-inserting"></a>
+<a name="index-Pictures_002c-inserting"></a>
+<a name="index-image"></a>
+
+<p>You can insert an image given in an external file with the
+<code>@image</code> command:
+</p>
+<div class="example">
+<pre class="example">@image{<var>filename</var>, <span class="roman">[</span><var>width</var><span class="roman">]</span>, <span class="roman">[</span><var>height</var><span class="roman">]</span>, <span class="roman">[</span><var>alttext</var><span class="roman">]</span>, <span class="roman">[</span><var>extension</var><span class="roman">]</span>}
+</pre></div>
+
+<a name="index-Formats-for-images"></a>
+<a name="index-Image-formats"></a>
+<p>The <var>filename</var> argument is mandatory, and must not have an
+extension, because the different processors support different formats:
+</p><ul>
+<li>
+TeX reads the file &lsquo;<tt><var>filename</var>.eps</tt>&rsquo; (Encapsulated PostScript
+format).
+</li><li>
+<a name="index-pdftex_002c-and-images"></a>
+PDFTeX reads &lsquo;<tt><var>filename</var>.pdf</tt>&rsquo; (Adobe&rsquo;s Portable Document Format).
+</li><li>
+<code>makeinfo</code> uses &lsquo;<tt><var>filename</var>.txt</tt>&rsquo; verbatim for
+Info output (more or less as if it was an <code>@example</code>).
+</li><li>
+<code>makeinfo</code>
+uses the optional fifth argument to <code>@image</code> for the extension if
+you supply it.  For example:
+
+<a name="index-XPM-image-format"></a>
+<div class="example">
+<pre class="example">@image{foo,,,,xpm}
+</pre></div>
+
+<p>will cause &lsquo;<samp>makeinfo --html</samp>&rsquo; to try &lsquo;<tt>foo.xpm</tt>&rsquo;.
+</p>
+<a name="index-GIF_002c-unsupported-due-to-patents"></a>
+<a name="index-PNG-image-format"></a>
+<a name="index-JPG-image-format"></a>
+<p>If you do not supply the optional fifth argument, &lsquo;<samp>makeinfo
+---html</samp>&rsquo; first tries &lsquo;<tt><var>filename</var>.png</tt>&rsquo;; if that does not exist,
+it tries &lsquo;<tt><var>filename</var>.jpg</tt>&rsquo;.  If that does not exist either, it
+complains.  (We cannot support GIF format directly due to software
+patents.)
+</p></li></ul>
+
+<a name="index-Width-of-images"></a>
+<a name="index-Height-of-images"></a>
+<a name="index-Aspect-ratio-of-images"></a>
+<a name="index-Distorting-images"></a>
+<p>The optional <var>width</var> and <var>height</var> arguments specify the size to
+scale the image to (they are ignored for Info output).  If neither is
+specified, the image is presented in its natural size (given in the
+file); if only one is specified, the other is scaled proportionately;
+and if both are specified, both are respected, thus possibly distorting
+the original image by changing its aspect ratio.
+</p>
+<a name="index-Dimensions-and-image-sizes"></a>
+<p>The <var>width</var> and <var>height</var> may be specified using any valid TeX
+dimension, namely:
+</p>
+<dl compact="compact">
+<dt>pt</dt>
+<dd><a name="index-Points-_0028dimension_0029"></a>
+<p>point (72.27pt = 1in)
+</p></dd>
+<dt>pc</dt>
+<dd><a name="index-Picas"></a>
+<p>pica (1pc = 12pt)
+</p></dd>
+<dt>bp</dt>
+<dd><a name="index-Big-points"></a>
+<p>big point (72bp = 1in)
+</p></dd>
+<dt>in</dt>
+<dd><a name="index-Inches"></a>
+<p>inch
+</p></dd>
+<dt>cm</dt>
+<dd><a name="index-Centimeters"></a>
+<p>centimeter (2.54cm = 1in)
+</p></dd>
+<dt>mm</dt>
+<dd><a name="index-Millimeters"></a>
+<p>millimeter (10mm = 1cm)
+</p></dd>
+<dt>dd</dt>
+<dd><a name="index-Didot-points"></a>
+<p>did&ocirc;t point (1157dd = 1238pt)
+</p></dd>
+<dt>cc</dt>
+<dd><a name="index-Ciceros"></a>
+<p>cicero (1cc = 12dd)
+</p></dd>
+<dt>sp</dt>
+<dd><a name="index-Scaled-points"></a>
+<p>scaled point (65536sp = 1pt)
+</p></dd>
+</dl>
+
+<a name="index-ridt_002eeps"></a>
+<p>For example, the following will scale a file &lsquo;<tt>ridt.eps</tt>&rsquo; to one
+inch vertically, with the width scaled proportionately:
+</p>
+<div class="example">
+<pre class="example">@image{ridt,,1in}
+</pre></div>
+
+<a name="index-epsf_002etex"></a>
+<p>For <code>@image</code> to work with TeX, the file &lsquo;<tt>epsf.tex</tt>&rsquo; must be
+installed somewhere that TeX can find it.  (The standard location is
+&lsquo;<tt><var>texmf</var>/tex/generic/dvips/epsf.tex</tt>&rsquo;, where <var>texmf</var> is a
+root of your TeX directory tree.)  This file is included in the
+Texinfo distribution and is also available from
+<a href="ftp://tug.org/tex/epsf.tex">ftp://tug.org/tex/epsf.tex</a>, among other places.
+</p>
+<p><code>@image</code> can be used within a line as well as for displayed
+figures.  Therefore, if you intend it to be displayed, be sure to leave
+a blank line before the command, or the output will run into the
+preceding text.
+</p>
+<a name="index-alt-attribute-for-images"></a>
+<a name="index-alternate-text-for-images"></a>
+<p>When producing html, <code>makeinfo</code> sets the <em>alt attribute</em> for
+inline images to the optional fourth argument to <code>@image</code>, if
+supplied.  If not supplied, <code>makeinfo</code> uses the full file name of
+the image being displayed.
+</p>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Insertions" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Breaks.html#Breaks" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Command-and-Variable-Index.html#Command-and-Variable-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="texinfo_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

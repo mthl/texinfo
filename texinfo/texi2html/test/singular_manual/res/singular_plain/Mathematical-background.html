@@ -1,0 +1,1074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: Appendix C Mathematical background</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
+<meta name="keywords" content="Singular 2-0-4 Manual: Appendix C Mathematical background">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Mathematical-background"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Polynomial-data.html#Polynomial-data" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Polynomial-data.html#Extra-weight-vector" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[ Up ]</td>
+<td valign="middle" align="left">[<a href="#Standard-bases" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Mathematical-background-1"></a>
+<h1 class="appendix">Appendix C Mathematical background</h1>
+<a name="index-Mathematical-background"></a>
+
+
+<p>This chapter introduces some of the mathematical notions and definitions used
+throughout the manual. It is mostly a collection of the
+most prominent definitions and properties. For details, please, refer to
+some articles or text books (see <a href="#References">References</a>).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Standard-bases">C.1 Standard bases</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Hilbert-function">C.2 Hilbert function</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Syzygies-and-resolutions">C.3 Syzygies and resolutions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Characteristic-sets">C.4 Characteristic sets</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Gauss_002dManin-connection">C.5 Gauss-Manin connection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Toric-ideals-and-integer-programming">C.6 Toric ideals and integer programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#References">C.7 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+<hr>
+<a name="Standard-bases"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Hilbert-function" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Standard-bases-1"></a>
+<h2 class="section">C.1 Standard bases</h2>
+<a name="index-Standard-bases"></a>
+
+<a name="Definition"></a>
+<h3 class="subheading">Definition</h3>
+
+<a name="Properties"></a>
+<h3 class="subheading">Properties</h3>
+<dl compact="compact">
+<dt>normal form:</dt>
+<dd><a name="index-Normal-form"></a>
+</dd>
+<dt>ideal membership:</dt>
+<dd><a name="index-Ideal-membership"></a>
+</dd>
+<dt>Hilbert function:</dt>
+</dl>
+
+<hr>
+<a name="Hilbert-function"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Standard-bases" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Syzygies-and-resolutions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Hilbert-function-1"></a>
+<h2 class="section">C.2 Hilbert function</h2>
+<a name="index-Hilbert-function-1"></a>
+<a name="index-Hilbert-series"></a>
+<br>
+<br>
+
+<hr>
+<a name="Syzygies-and-resolutions"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Hilbert-function" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Characteristic-sets" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Syzygies-and-resolutions-1"></a>
+<h2 class="section">C.3 Syzygies and resolutions</h2>
+<a name="index-Syzygies-and-resolutions"></a>
+
+<a name="Syzygies"></a>
+<h3 class="subheading">Syzygies</h3>
+
+<p>The <strong>k-th syzygy module</strong> is defined inductively to be the module
+of syzygies of the
+ syzygy module.
+</p>
+
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal i=ux, vx, uy, vy;
+  print(syz(i));
+&rarr; -y,0, -v,0, 
+&rarr; 0, -y,u, 0, 
+&rarr; x, 0, 0, -v,
+&rarr; 0, x, 0, u  
+</pre></div>
+</dd>
+</dl>
+
+<a name="Free-resolutions"></a>
+<h3 class="subheading">Free resolutions</h3>
+<br><p>where the columns of the matrix
+generate 
+. Note, that resolutions need not to be finite (i.e., of
+finite length). The Hilbert Syzygy Theorem states, that for 
+there exists a (&quot;minimal&quot;) resolution of length not exceeding the number of
+variables.
+</p>
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // The matrix A_1 is given by
+  print(matrix(resI[1]));
+&rarr; vy,uy,vx,ux
+  // We see that the columns of A_1 generate I.
+  // The matrix A_2 is given by
+  print(matrix(resI[3]));
+&rarr; u, 
+&rarr; -v,
+&rarr; -x,
+&rarr; y  
+</pre></div>
+</dd>
+</dl>
+
+<a name="Betti-numbers-and-regularity"></a>
+<h3 class="subheading">Betti numbers and regularity</h3>
+<a name="index-Betti-number"></a>
+<a name="index-regularity-1"></a>
+
+<p>The <strong>regularity</strong> of 
+ is the smallest integer 
+</p>
+<p>such that
+</p>
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(u,v,x,y,z),dp;
+  ideal I = ux, vx, uy, vy;
+  resolution resI = mres(I,0); resI;
+&rarr;  1      4      4      1      
+&rarr; R &lt;--  R &lt;--  R &lt;--  R
+&rarr; 
+&rarr; 0      1      2      3      
+&rarr; 
+  // the betti number:
+  print(betti(resI), &quot;betti&quot;);
+&rarr;            0     1     2     3
+&rarr; ------------------------------
+&rarr;     0:     1     -     -     -
+&rarr;     1:     -     4     4     1
+&rarr; ------------------------------
+&rarr; total:     1     4     4     1
+  // the regularity:
+  regularity(resI);
+&rarr; 2
+</pre></div>
+</dd>
+</dl>
+<hr>
+<a name="Characteristic-sets"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Syzygies-and-resolutions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Gauss_002dManin-connection" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Characteristic-sets-1"></a>
+<h2 class="section">C.4 Characteristic sets</h2>
+<a name="index-Characteristic-sets"></a>
+
+
+<dl compact="compact">
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">  ring R= 0,(x,y,z,u),dp;
+  ideal i=-3zu+y2-2x+2,
+          -3x2u-4yz-6xz+2y2+3xy,
+          -3z2u-xu+y2z+y;
+  print(char_series(i));
+&rarr; _[1,1],3x2z-y2+2yz,3x2u-3xy-2y2+2yu,
+&rarr; x,     -y+2z,      -2y2+3yu-4       
+</pre></div>
+</dd>
+</dl>
+<hr>
+<a name="Gauss_002dManin-connection"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Characteristic-sets" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Gauss_002dManin-connection-1"></a>
+<h2 class="section">C.5 Gauss-Manin connection</h2>
+<a name="index-Gauss_002dManin-connection"></a>
+
+
+
+
+<p>Let us consider as an example 
+.
+First, we compute a matrix 
+ such that
+is a monodromy matrix of 
+ and the Jordan normal form of 
+:
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=monodromy(f);
+  matrix M=jordanmatrix(l[1],l[2],l[3]);
+  print(M);
+&rarr; 1/2,0,  0,   0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 1,  1/2,0,   0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  7/10,0,   0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   7/10,0,   0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   9/10,0,   0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   9/10,0,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   1,0,    0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,11/10,0,    0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    11/10,0,    0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    13/10,0,   
+&rarr; 0,  0,  0,   0,   0,   0,   0,0,    0,    0,    13/10
+</pre></div>
+
+<p>Now, we compute the V-filtration on 
+ and the spectrum:
+</p><div class="smallexample">
+<pre class="smallexample">  LIB &quot;gaussman.lib&quot;;
+  ring R=0,(x,y),ds;
+  poly f=x5+x2y2+y5;
+  list l=vfilt(f);
+  print(l[1]);
+&rarr; -1/2,
+&rarr; -3/10,
+&rarr; -1/10,
+&rarr; 0,
+&rarr; 1/10,
+&rarr; 3/10,
+&rarr; 1/2
+  print(l[2]);
+&rarr; 1,2,2,1,2,2,1
+  print(l[3]);
+&rarr; [1]:
+&rarr;    _[1]=gen(11)
+&rarr; [2]:
+&rarr;    _[1]=gen(10)
+&rarr;    _[2]=gen(6)
+&rarr; [3]:
+&rarr;    _[1]=gen(9)
+&rarr;    _[2]=gen(4)
+&rarr; [4]:
+&rarr;    _[1]=gen(5)
+&rarr; [5]:
+&rarr;    _[1]=gen(3)
+&rarr;    _[2]=gen(8)
+&rarr; [6]:
+&rarr;    _[1]=gen(2)
+&rarr;    _[2]=gen(7)
+&rarr; [7]:
+&rarr;    _[1]=gen(1)
+  print(l[4]);
+&rarr; y5,
+&rarr; y4,
+&rarr; y3,
+&rarr; y2,
+&rarr; xy,
+&rarr; y,
+&rarr; x4,
+&rarr; x3,
+&rarr; x2,
+&rarr; x,
+&rarr; 1
+</pre></div>
+<p>Here <code>l[1]</code> contains the spectral numbers, <code>l[2]</code> the corresponding multiplicities, <code>l[3]</code> a 
+-basis of the V-filtration on 
+ in terms of the monomial basis of
+in <code>l[4]</code>.
+</p>
+
+
+<p>Let us calculate one specific example, the maximal number 
+of triple points of type
+of degree seven.
+This calculation can be done over the rationals.
+So choose a local ordering on 
+. Here we take the
+negative degree lexicographical ordering which is denoted
+<code>ds</code> in <small>SINGULAR</small>:
+</p>
+<div class="smallexample">
+<pre class="smallexample">ring r=0,(x,y,z),ds;
+LIB &quot;spectrum.lib&quot;;
+poly f=x^7+y^7+z^7;
+list s1=spectrumnd( f );
+s1;
+&rarr; [1]:
+&rarr;    _[1]=-4/7
+&rarr;    _[2]=-3/7
+&rarr;    _[3]=-2/7
+&rarr;    _[4]=-1/7
+&rarr;    _[5]=0
+&rarr;    _[6]=1/7
+&rarr;    _[7]=2/7
+&rarr;    _[8]=3/7
+&rarr;    _[9]=4/7
+&rarr;    _[10]=5/7
+&rarr;    _[11]=6/7
+&rarr;    _[12]=1
+&rarr;    _[13]=8/7
+&rarr;    _[14]=9/7
+&rarr;    _[15]=10/7
+&rarr;    _[16]=11/7
+&rarr; [2]:
+&rarr;    1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1
+</pre></div>
+
+<p>The command <code>spectrumnd(f)</code> computes the spectrum of 
+ and
+returns a list with six entries:
+The Milnor number
+and the number of different spectrum numbers.
+The other three entries are of type <code>intvec</code>.
+They contain the numerators, denominators and
+multiplicities of the spectrum numbers. So
+has Milnor number 216 and geometrical
+genus 35. Its spectrum consists of the 16 different rationals
+<br>
+<br>appearing with multiplicities
+<br>1,3,6,10,15,21,25,27,27,25,21,15,10,6,3,1.
+</p>
+<p>Therefore they have all the same spectrum, which we compute
+for 
+</p>
+<div class="smallexample">
+<pre class="smallexample">poly g=x^3+y^3+z^3;
+list s2=spectrumnd(g);
+s2;
+&rarr; [1]:
+&rarr;    8
+&rarr; [2]:
+&rarr;    1
+&rarr; [3]:
+&rarr;    4
+&rarr; [4]:
+&rarr;    1,4,5,2
+&rarr; [5]:
+&rarr;    1,3,3,1
+&rarr; [6]:
+&rarr;    1,3,3,1
+</pre></div>
+<p>Evaluating semicontinuity is very easy:
+</p><div class="smallexample">
+<pre class="smallexample">semicont(s1,s2);
+&rarr; 18
+</pre></div>
+
+<p>This tells us that there are at most 18 singularities of type
+is semiquasihomogeneous (sqh), so we can also apply the stronger
+form of semicontinuity:
+</p>
+<div class="smallexample">
+<pre class="smallexample">semicontsqh(s1,s2);
+&rarr; 17
+</pre></div>
+
+<p>So in fact a septic has at most 17 triple points of type
+</p>
+<p>Note that <code>spectrumnd(f)</code> works only if 
+ has nondegenerate
+principal part. In fact <code>spectrumnd</code> will detect a degenerate
+principal part in many cases and print out an error message.
+However if it is known in advance that 
+ has nondegenerate
+principal part, then the spectrum may be computed much faster
+using <code>spectrumnd(f,1)</code>.
+</p>
+<hr>
+<a name="Toric-ideals-and-integer-programming"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Gauss_002dManin-connection" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Toric-ideals-and-integer-programming-1"></a>
+<h2 class="section">C.6 Toric ideals and integer programming</h2>
+<a name="index-Toric-ideals-and-integer-programming"></a>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Toric-ideals">C.6.1 Toric ideals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                Definition and computation.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Integer-programming">C.6.4 Integer programming</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         An algorithm using toric ideals.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Relevant-References">C.6.5 Relevant References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Toric-ideals"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="Toric-ideals-1"></a>
+<h3 class="subsection">C.6.1 Toric ideals</h3>
+<a name="index-toric-ideals"></a>
+<a name="index-ideal_002c-toric"></a>
+
+
+
+<p>The required lattice basis can be computed using the LLL-algorithm (see <a href="#g_t_005bCoh93_005d">[Coh93]</a>). For the computation of the saturation, there are various
+possibilities described in the
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Algorithms">C.6.2 Algorithms</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">             Various algorithms for computing toric ideals.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Buchberger-algorithm">C.6.3 The Buchberger algorithm for toric ideals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   Specializing it for toric ideals.
+</td></tr>
+</table>
+
+<hr>
+<a name="Algorithms"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Conti-and-Traverso" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Algorithms-1"></a>
+<h3 class="subsection">C.6.2 Algorithms</h3>
+
+<p>The following algorithms are implemented in <a href="SINGULAR-libraries.html#toric_005flib">toric_lib</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Conti-and-Traverso">C.6.2.1 The algorithm of Conti and Traverso</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Pottier">C.6.2.2 The algorithm of Pottier</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Hosten-and-Sturmfels">C.6.2.3 The algorithm of Hosten and Sturmfels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Di-Biase-and-Urbanke">C.6.2.4 The algorithm of Di Biase and Urbanke</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Bigatti-and-La-Scala-and-Robbiano">C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Conti-and-Traverso"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Pottier" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-algorithm-of-Conti-and-Traverso"></a>
+<h4 class="subsubsection">C.6.2.1 The algorithm of Conti and Traverso</h4>
+<a name="index-Conti_002dTraverso-algorithm"></a>
+<a name="index-algorithm-of-Conti-and-Traverso"></a>
+
+
+<p>The algorithm of Conti and Traverso (see <a href="#g_t_005bCoTr91_005d">[CoTr91]</a>)
+</p>
+<p>Because of the big number of auxiliary variables needed to compute a
+toric ideal, this algorithm is rather slow in practice. However, it has
+a special importance in the application to integer programming
+(see section <a href="#Integer-programming">Integer programming</a>).
+</p>
+<hr>
+<a name="Pottier"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Conti-and-Traverso" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Hosten-and-Sturmfels" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-algorithm-of-Pottier"></a>
+<h4 class="subsubsection">C.6.2.2 The algorithm of Pottier</h4>
+<a name="index-Pottier-algorithm"></a>
+<a name="index-algorithm-of-Pottier"></a>
+
+
+<p>The algorithm of Pottier (see <a href="#g_t_005bPot94_005d">[Pot94]</a>) starts by computing a lattice
+</p>
+
+<hr>
+<a name="Hosten-and-Sturmfels"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Pottier" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Di-Biase-and-Urbanke" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-algorithm-of-Hosten-and-Sturmfels"></a>
+<h4 class="subsubsection">C.6.2.3 The algorithm of Hosten and Sturmfels</h4>
+<a name="index-Hosten_002dSturmfels-algorithm"></a>
+<a name="index-algorithm-of-Hosten-and-Sturmfels"></a>
+
+
+<p>The algorithm of Hosten and Sturmfels (see <a href="#g_t_005bHoSt95_005d">[HoSt95]</a>) allows to
+(see <a href="#g_t_005bHoSh98_005d">[HoSh98]</a>), and the single
+computations &ndash; except from the first one &ndash; show to be easy and fast in
+practice.
+</p>
+<hr>
+<a name="Di-Biase-and-Urbanke"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Hosten-and-Sturmfels" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Bigatti-and-La-Scala-and-Robbiano" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-algorithm-of-Di-Biase-and-Urbanke"></a>
+<h4 class="subsubsection">C.6.2.4 The algorithm of Di Biase and Urbanke</h4>
+<a name="index-Di-Biase_002dUrbanke-algorithm"></a>
+<a name="index-algorithm-of-Di-Biase-and-Urbanke"></a>
+
+<p>Like the algorithm of Hosten and Sturmfels, the algorithm of Di Biase
+and Urbanke (see <a href="#g_t_005bDBUr95_005d">[DBUr95]</a>) performs up
+</p>
+<hr>
+<a name="Bigatti-and-La-Scala-and-Robbiano"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Di-Biase-and-Urbanke" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Algorithms" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Buchberger-algorithm" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-algorithm-of-Bigatti_002c-La-Scala-and-Robbiano"></a>
+<h4 class="subsubsection">C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano</h4>
+<a name="index-Bigatti_002dLa-Scala_002dRobbiano-algorithm"></a>
+<a name="index-algorithm-of-Bigatti_002c-La-Scala-and-Robbiano"></a>
+
+<p>The algorithm of Bigatti, La Scala and Robbiano (see <a href="#g_t_005bBLR98_005d">[BLR98]</a>) combines the ideas of
+the algorithms of Pottier and of Hosten and Sturmfels. The
+computations are performed on a graded ideal with one auxiliary
+</p>
+<p>There is another algorithm of the authors which tries to parallelize
+the computations (but which is not implemented in this library).
+</p>
+<hr>
+<a name="Buchberger-algorithm"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Bigatti-and-La-Scala-and-Robbiano" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Integer-programming" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="The-Buchberger-algorithm-for-toric-ideals"></a>
+<h3 class="subsection">C.6.3 The Buchberger algorithm for toric ideals</h3>
+<a name="index-Buchberger-algorithm-for-toric-ideals"></a>
+
+<p>Toric ideals have a very special structure that allows us to improve
+the Buchberger algorithm in many respects: They are prime ideals and
+generated by binomials. Pottier used this fact to describe all
+operations of the Buchberger algorithm on the ideal generators in terms
+of vector additions and subtractions. Some other strategies like
+multiple reduction (see <a href="#g_t_005bCoTr91_005d">[CoTr91]</a>) or the use of bit
+vectors to represent the support of a monomial (see <a href="#g_t_005bBig97_005d">[Big97]</a>) may be
+applied to more general ideals, but show to
+be especially useful in the toric case.
+</p>
+<hr>
+<a name="Integer-programming"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Buchberger-algorithm" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Relevant-References" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+
+<a name="Integer-programming-1"></a>
+<h3 class="subsection">C.6.4 Integer programming</h3>
+<a name="index-integer-programming"></a>
+
+
+
+<ul>
+<li> (1) Compute the toric ideal I(A) using one of the algorithms in the previous section.
+</li><li> (2) Compute the reduced Groebner basis G(c) of I(A) w.r.t. 
+.
+</li><li> (3) Reduce 
+ modulo G(c) using the Hironaka division algorithm.
+If the result of this reduction is 
+, then 
+ is an optimal
+solution of the given instance.
+</li></ul>
+
+<p>If no initial solution is known, we are nevertheless able to solve the
+problem with similar techniques. For this purpose we replace our
+instance by an extended instance with the matrix used
+in the Conti-Traverso algorithm. Indeed, the Conti-Traverso
+algorithm offers the possibility to verify solvability of a given
+instance and to find an initial solution in the case of existence (but
+none of the other algorithms does!). Details can be found in [CoTr91]
+and [The99].
+</p>
+<p>An implementation of the above algorithm and some examples can be found in <a href="SINGULAR-libraries.html#intprog_005flib">intprog_lib</a>.
+</p>
+<p>Classical methods for solving IP instances like Branch-and-Bound
+methods seem to be faster in general than the methods using toric
+ideals. But the latter have one great advantage: If one wants to solve
+various instances that differ only by the vector 
+, one has to
+perform steps (1) and (2) above only once. As the running time of step (3)
+is very short, solving all the instances is not much harder than
+solving one single instance.
+</p>
+<p>For a detailed discussion see [The99].
+</p>
+<hr>
+<a name="Relevant-References"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Integer-programming" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Toric-ideals-and-integer-programming" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#References" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Relevant-References-1"></a>
+<h3 class="subsection">C.6.5 Relevant References</h3>
+
+<ul>
+<li> [Big97]  Bigatti, A.M.: <a name="g_t_005bBig97_005d"></a>
+   Computation of Hilbert-Poincare series.
+   Journal of Pure and Applied Algebra (1997) 199, 237-253
+
+</li><li> [BLR98]  Bigatti, A.M.; La Scala, R.; Robbiano, L.: <a name="g_t_005bBLR98_005d"></a>
+   Computing toric ideals.
+   Journal of Symbolic Computation (to appear)
+
+</li><li> [Coh93]  Cohen, H.: <a name="g_t_005bCoh93_005d"></a>
+   A Course in Computational Algebraic Number Theory.
+   Springer (1997)
+
+</li><li> [CoTr91]  Conti, P.; Traverso, C.: <a name="g_t_005bCoTr91_005d"></a>
+   Buchberger algorithm and integer programming.
+   Proceedings AAECC-9 (new Orleans), Springer LNCS (1991) 539,
+   130-139
+
+</li><li> [DBUr95]  Di Biase, F.; Urbanke, R.: <a name="g_t_005bDBUr95_005d"></a>
+   An algorithm to calculate the kernel of certain polynomial ring
+   homomorphisms.
+   Experimental Mathematics (1995) 4, 227-234
+
+</li><li> [HoSh98]  Hosten, S.; Shapiro, J.: <a name="g_t_005bHoSh98_005d"></a>
+   Primary decomposition of lattice basis ideals.
+   (to appear)
+
+</li><li> [HoSt95]  Hosten, S.; Sturmfels, B.: <a name="g_t_005bHoSt95_005d"></a>
+   GRIN: An implementation of Groebner bases for integer programming.
+   in Balas, E.; Clausen, J. (editors): Integer Programming and
+   Combinatorial Optimization.
+   Springer LNCS (1995) 920, 267-276
+
+</li><li> [Pot94]  Pottier, L.: <a name="g_t_005bPot94_005d"></a>
+   Groebner bases of toric ideals.
+   Rapport de recherche 2224 (1997), INRIA Sophia Antipolis
+
+</li><li> [Stu96]  Sturmfels, B.: <a name="g_t_005bStu96_005d"></a>
+   Groebner Bases and Convex Polytopes.
+   University Lecture Series, Volume 8 (1996), American Mathematical
+   Society
+
+</li><li> [The99]  Theis, C.: <a name="g_t_005bThe99_005d"></a>
+   Der Buchberger-Algorithmus fuer torische Ideale und seine Anwendung
+   in der ganzzahligen Optimierung.
+   Diplomarbeit, Universitaet des Saarlandes (1999), Saarbruecken
+   (Germany)
+
+</li></ul>
+
+<hr>
+<a name="References"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Relevant-References" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Mathematical-background" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="References-1"></a>
+<h2 class="section">C.7 References</h2>
+<a name="index-References"></a>
+
+<p>The Centre for Computer Algebra Kaiserslautern publishes a series of preprints
+which are electronically available at
+<code>http://www.mathematik.uni-kl.de/~zca/Reports_on_ca</code>.
+Other sources to check are <code>http://symbolicnet.mcs.kent.edu/</code>,
+<code>http://www.can.nl/</code>,... and the following list of books:
+</p>
+<a name="Text-books-on-computational-algebraic-geometry"></a>
+<h3 class="subheading">Text books on computational algebraic geometry</h3>
+<ul>
+<li>
+Adams, W.; Loustaunau, P.: An Introduction to Gr&ouml;bner Bases. Providence, RI,
+AMS, 1996
+
+</li><li>
+Becker, T.; Weisspfenning, V.:
+Gr&ouml;bner Bases - A Computational Approach to Commutative Algebra. Springer, 1993
+
+</li><li>
+Cohen, H.:
+A Course in Computational Algebraic Number Theory,
+Springer, 1995
+
+</li><li>
+Cox, D.; Little, J.; O&rsquo;Shea, D.:
+Ideals, Varieties and Algorithms. Springer, 1996
+
+</li><li>
+Eisenbud, D.: Commutative Algebra with a View Toward Algebraic Geometry.
+Springer, 1995
+
+</li><li>
+Greuel, G.-M.; Pfister, G.: A SINGULAR Introduction to Commuative Algebra, Springer, 2002
+
+</li><li>
+Mishra, B.: Algorithmic Algebra, Texts and Monographs in Computer Science.
+Springer, 1993
+</li><li>
+Sturmfels, B.: Algorithms in Invariant Theory. Springer 1993
+
+</li><li>
+Vasconcelos, W.: Computational Methods in Commutative Algebra and Algebraic
+Geometry. Springer, 1998
+</li></ul>
+
+<a name="Descriptions-of-algorithms"></a>
+<h3 class="subheading">Descriptions of algorithms</h3>
+<ul>
+<li>
+Bareiss, E.:
+Sylvester&rsquo;s identity and multistep integer-preserving Gaussian elimination.
+Math. Comp. 22 (1968), 565-578
+
+</li><li>
+Campillo, A.: Algebroid curves in positive characteristic. SLN 813, 1980
+
+</li><li>
+Chou, S.:
+Mechanical Geometry Theorem Proving.
+D.Reidel Publishing Company, 1988
+
+</li><li>
+Decker, W.; Greuel, G.-M.; Pfister, G.:
+Primary decomposition: algorithms and
+comparisons.  Preprint, Univ. Kaiserslautern, 1998.
+To appear in: Greuel, G.-M.; Matzat, B. H.; Hiss, G. (Eds.),
+Algorithmic Algebra and Number Theory. Springer Verlag, Heidelberg, 1998
+
+</li><li>
+Decker, W.; Greuel, G.-M.; de Jong, T.; Pfister, G.:
+The normalization: a new algorithm,
+implementation and comparisons. Preprint, Univ. Kaiserslautern, 1998
+
+</li><li>
+Decker, W.; Heydtmann, A.; Schreyer, F. O.: Generating a Noetherian Normalization of
+the Invariant Ring of a Finite Group, 1997, to appear in Journal of
+Symbolic Computation
+
+</li><li>
+J. C.; Gianni, P.; Lazard, D.; Mora, T.: Efficient computation
+of zero-dimensional
+Gr&ouml;bner bases by change of ordering. Journal of Symbolic Computation, 1989
+
+</li><li>
+Gr&auml;be, H.-G.: On factorized Gr&ouml;bner bases, Univ. Leipzig, Inst. f&uuml;r
+Informatik, 1994
+
+</li><li>
+Grassmann, H.; Greuel, G.-M.; Martin, B.; Neumann,
+W.; Pfister, G.; Pohl, W.; Sch&ouml;nemann, H.; Siebert, T.:  On an
+implementation of standard bases and syzygies in  <small>SINGULAR</small>.
+Proceedings of the Workshop  Computational Methods in Lie theory in AAECC (1995)
+
+</li><li>
+Greuel, G.-M.; Pfister, G.:
+Advances and improvements in the theory of standard bases and
+syzygies. Arch. d. Math. 63(1995)
+
+</li><li>
+Kemper; Generating Invariant Rings of Finite Groups over Arbitrary
+Fields. 1996, to appear in Journal of Symbolic Computation
+
+</li><li>
+Kemper and Steel: Some Algorithms in Invariant Theory of Finite Groups. 1997
+
+</li><li>
+Lee, H.R.; Saunders, B.D.: Fraction Free Gaussian Elimination for
+Sparse Matrices. Journal of Symbolic Computation (1995) 19, 393-402
+
+</li><li>
+Sch&ouml;nemann, H.:
+Algorithms in <small>SINGULAR</small>,
+Reports on Computer Algebra 2(1996), Kaiserslautern
+
+</li><li>
+Siebert, T.:
+On strategies and implementations for computations of free resolutions.
+Reports on Computer Algebra 8(1996), Kaiserslautern
+
+</li><li>
+Wang, D.:
+Characteristic Sets and Zero Structure of Polynomial Sets.
+Lecture Notes, RISC Linz, 1989
+</li></ul>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Mathematical-background" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Preface" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="singular_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index.html#Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="singular_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

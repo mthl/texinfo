@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.2.2 Running SINGULAR under Emacs</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.2.2 Running SINGULAR under Emacs">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.2.2 Running SINGULAR under Emacs">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Running-SINGULAR-under-Emacs"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="A-quick-guide-to-Emacs.html#A-quick-guide-to-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.1 A quick guide to Emacs" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Demo-mode.html#Demo-mode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.3 Demo mode" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Running-SINGULAR-under-Emacs-1"></a>
+<h3 class="subsection">3.2.2 Running SINGULAR under Emacs</h3>
+<a name="index-Emacs_002c-running-Singular-under"></a>
+<a name="index-Singular_002c-running-within-Emacs"></a>
+<a name="index-Running-SINGULAR-under-Emacs"></a>
+
+<p>There are two ways to start the <small>SINGULAR</small> Emacs interface: Typing
+<code>ESingular</code> instead of <code>Singular</code> on the command shell
+launches a new Emacs process, initializes the interface and runs
+<small>SINGULAR</small> within Emacs. The other way is to start the interface in
+an already running Emacs, by typing <code>M-x singular</code> inside
+Emacs. This initializes the interface and runs <small>SINGULAR</small> within
+Emacs. Both ways are described in more detail below.
+</p>
+<p>Note: To properly run the Emacs interface, several files are needed
+which usually reside in the <code>emacs</code> subdirectory of your
+<small>SINGULAR</small> distribution. This directory is called
+singular-emacs-home-directory in the following.
+</p>
+<a name="Starting-the-interface-using-ESingular"></a>
+<h3 class="subheading">Starting the interface using ESingular</h3>
+
+<p>As mentioned above, <code>ESingular</code> is an &quot;out-of-the-box&quot; solution:
+You don&rsquo;t have to add special things to your <code>.emacs</code> startup file
+to initialize the interface; everything is done for you in a special
+file called <code>.emacs-singular</code> (which comes along with the
+<small>SINGULAR</small> distribution and resides in the
+singular-emacs-home-directory) which is automatically loaded on Emacs
+startup (and the loading of the <code>.emacs</code> file is automatically
+suppressed).
+</p>
+<p>The customizable variables of the <small>SINGULAR</small> Emacs interface are set
+to defaults which give the novice user a very shell like
+feeling of the interface. Nevertheless, these default settings can be
+changed, see <a href="Customization-of-the-Emacs-interface.html#Customization-of-the-Emacs-interface">Customization of the Emacs interface</a>. Besides other
+Emacs initializations, such as fontification or blinking parentheses, a
+new menu item called <code>Singular</code> is added to the main menu,
+providing menu items for starting <small>SINGULAR</small>. On XEmacs, a button
+starting <small>SINGULAR</small> is added to the main toolbar.
+</p>
+<p>The <small>SINGULAR</small> interface is started automatically; once you see a
+buffer called <code>*singular*</code> and the <small>SINGULAR</small> prompt you are
+ready to start your <small>SINGULAR</small> session.
+</p>
+<p><code>ESingular</code> inherits all <code>Singular</code> options. For a description
+off all these options, see <a href="Command-line-options.html#Command-line-options">Command line options</a>. Additionally
+there are the following options which are special to <code>ESingular</code>:
+</p>
+<table>
+<tr><td width="30%">command-line option /
+<br>environment variable</td><td width="70%">functionality</td></tr>
+<tr><td width="30%"><code>--emacs=EMACS</code>
+<br><code>ESINGULAR_EMACS</code></td><td width="70%">Use <code>EMACS</code> as Emacs program to run the <small>SINGULAR</small> Emacs
+interface, where <code>EMACS</code> may e.g. be emacs or xemacs.</td></tr>
+<tr><td width="30%"><code>--emacs-dir=DIR</code>
+<br><code>ESINGULAR_EMACS_DIR</code></td><td width="70%">Set the singular-emacs-home-directory, which is the directory where
+singular.el can be found,  to <code>DIR</code>.</td></tr>
+<tr><td width="30%"><code>--emacs-load=FILE</code>
+<br><code>ESINGULAR_EMACS_LOAD</code></td><td width="70%">Load <code>FILE</code> on Emacs start-up, instead of the default load file.</td></tr>
+<tr><td width="30%"><code>--singular=PROG</code>
+<br><code>ESINGULAR_SINGULAR</code></td><td width="70%">Start <code>PROG</code> as <small>SINGULAR</small> program within Emacs</td></tr>
+</table>
+
+<p>Notice that values of these options can also be given by setting the
+above mentioned environment variables (where values  given as
+command-line arguments take priority over values given by environment
+variables).
+</p>
+<a name="Starting-the-interface-within-a-running-Emacs"></a>
+<h3 class="subheading">Starting the interface within a running Emacs</h3>
+
+<p>If you are a more experienced Emacs user and you already have your own
+local <code>.emacs</code> startup file, you might want to start the interface
+out of your running Emacs without using <code>ESingular</code>. For this, you
+should add the following lisp code to your <code>.emacs</code> file:
+</p>
+<div class="smallexample">
+<pre class="smallexample">(setq load-path (cons &quot;&lt;singular-emacs-home-directory&gt;&quot; load-path))
+(autoload 'singular &quot;singular&quot;
+  &quot;Start Singular using default values.&quot; t)
+(autoload 'singular-other &quot;singular&quot;
+  &quot;Ask for arguments and start Singular.&quot; t)
+</pre></div>
+
+<p>Then typing <code>M-x singular</code> in a running Emacs session initializes
+the interface in a new buffer and launches a <small>SINGULAR</small> process. The
+<small>SINGULAR</small> prompt comes up and you are ready to start your
+<small>SINGULAR</small> session.
+</p>
+<p>It is a good idea to take a look at the (well documented) file
+<code>.emacs-singular</code> in the singular-emacs-home-directory, which comes
+along with the distribution. In it you find some useful initializations
+of the <small>SINGULAR</small> interface as well as some lisp code, which, for
+example, adds a button to the XEmacs toolbar. Some of this code might be
+useful for your <code>.emacs</code> file, too. And if you are a Emacs wizard,
+it is of course a good idea to take a look at <code>singular.el</code> in the
+singular-emacs-home-directory.
+</p>
+<a name="Starting_002c-interrupting-and-stopping-SINGULAR"></a>
+<h3 class="subheading">Starting, interrupting and stopping SINGULAR</h3>
+
+<p>There are the following commands to start and stop <small>SINGULAR</small>:
+</p>
+<ul>
+<li> <code>singular-other</code> (or menu <code>Singular</code>, item
+<code>Start...</code>)
+
+<p>Starts a <small>SINGULAR</small> process and asks for the following four
+parameters in the minibuffer area:
+</p>
+<ol>
+<li>
+The Singular executable. This can either be a file name with complete
+path, e.g., <code>/local/bin/Singular</code>. Then exactly this executable is
+started. The path may contain the character <code>~</code> denoting your home
+directory. Or it can be the name of a command without path, e.g.,
+<code>Singular</code>. Then the executable is searched for in your
+<code>$PATH</code> environment variable.
+
+</li><li>
+The default working directory. This is the path to an existing
+directory, e.g., <code>~/work</code>. The current directory is set to this
+directory before <small>SINGULAR</small> is started.
+
+</li><li>
+Command line options. You can set any <small>SINGULAR</small> command line
+option (see <a href="Command-line-options.html#Command-line-options">Command line options</a>).
+
+</li><li>
+The buffer name. You can specify the name of the buffer the interface is
+running in.
+
+</li></ol>
+
+</li><li> <code>singular</code> (or menu <code>Singular</code>, item <code>Start
+default</code>)
+
+<p>Starts <small>SINGULAR</small> with default settings for the executable, the
+working directory, command line switches, and the buffer name. You can
+customize this default settings, see
+<a href="Customization-of-the-Emacs-interface.html#Customization-of-the-Emacs-interface">Customization of the Emacs interface</a>.
+</p>
+</li><li> <code>singular-exit-singular</code> (bound to <code>C-c $</code> or menu
+<code>Singular</code>, item <code>Exit</code>)
+
+<p>Kills the running <small>SINGULAR</small> process of the current
+buffer (but does not kill the buffer). Once you have killed a
+<small>SINGULAR</small> process you can start a new one in the same buffer with
+the command <code>singular</code> (or select the item <code>Start default</code> of
+the <code>Singular</code> menu).
+</p>
+</li><li> <code>singular-restart</code> (bound to <code>C-c C-r</code> or menu
+<code>Singular</code>, item <code>Restart</code>)
+
+<p>Kills the running <small>SINGULAR</small> process of the current buffer and starts
+a new process in the same buffer with exactly the same command line
+arguments as before.
+</p>
+</li><li> <code>singular-control-c</code> (bound to <code>C-c C-c</code> or menu <code>Singular</code>, item <code>Interrupt</code>)
+
+<p>Interrupt the Singular process running in the current buffer. Asks
+whether to (<code>a</code>)bort the current <small>SINGULAR</small> command,
+(<code>q</code>)uit or (<code>r</code>)estart the current <small>SINGULAR</small> process, or
+(<code>c</code>)ontinue without doing anything (default).
+</p></li></ul>
+
+<p>Whenever a <small>SINGULAR</small> process is started within the Emacs interface,
+the contents of a special startup file (by default
+<code>~/.emacs-singularrc</code>) is pasted as input to <small>SINGULAR</small> at the
+very end of the usual startup sequence (see <a href="Startup-sequence.html#Startup-sequence">Startup sequence</a>). The
+name of the startup file can be changed, see
+<a href="Customization-of-the-Emacs-interface.html#Customization-of-the-Emacs-interface">Customization of the Emacs interface</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="A-quick-guide-to-Emacs.html#A-quick-guide-to-Emacs" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.2.1 A quick guide to Emacs" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Demo-mode.html#Demo-mode" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.2.3 Demo mode" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Emacs-user-interface.html#Emacs-user-interface" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.2 Emacs user interface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

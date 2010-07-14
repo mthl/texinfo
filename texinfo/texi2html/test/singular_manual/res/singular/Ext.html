@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.3.5 Ext</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3.5 Ext">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3.5 Ext">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Ext"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Ext_005fR.html#Ext_005fR" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.4 Ext_R" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="fitting.html#fitting" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.6 fitting" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="homolog_005flib.html#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Ext-1"></a>
+<h4 class="subsubsection">D.4.3.5 Ext</h4>
+<a name="index-Ext-1"></a>
+<p>Procedure from library <code>homolog.lib</code> (see <a href="homolog_005flib.html#homolog_005flib">homolog_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>Ext(v,M,N[,any]); v int resp. intvec, M,N modules
+</p>
+</dd>
+<dt><strong>Compute:</strong></dt>
+<dd><p>A presentation of Ext^k(M&rsquo;,N&rsquo;); for k=v[1],v[2],... where
+M&rsquo;=coker(M) and N&rsquo;=coker(N). Let
+</p><div class="smallexample">
+<pre class="smallexample">       0 &lt;-- M' &lt;-- F0 &lt;-M-- F1 &lt;-- F2 &lt;--... ,   
+       0 &lt;-- N' &lt;-- G0 &lt;--N- G1
+</pre></div>
+<p>be a free resolution of M&rsquo;, resp. a presentation of N&rsquo;. Consider
+the commutative diagram
+</p><div class="smallexample">
+<pre class="smallexample">           0                  0                  0
+           |^                 |^                 |^
+   --&gt; Hom(Fk-1,N') -Ak-&gt; Hom(Fk,N') -Ak+1-&gt; Hom(Fk+1,N')
+           |^                 |^                 |^
+   --&gt; Hom(Fk-1,G0) -Ak-&gt; Hom(Fk,G0) -Ak+1-&gt; Hom(Fk+1,G0)
+                              |^                 |^
+                              |C                 |B
+                          Hom(Fk,G1) ------&gt; Hom(Fk+1,G1)
+
+      (Ak,Ak+1 induced by M and B,C induced by N).
+</pre></div>
+<p>Let K=modulo(Ak+1,B), J=module(Ak)+module(C) and Ext=modulo(K,J),
+then we have exact sequences
+</p><div class="smallexample">
+<pre class="smallexample">    R^p --K-&gt; Hom(Fk,G0) --Ak+1-&gt; Hom(Fk+1,G0)/im(B),
+
+    R^q -Ext-&gt; R^p --K-&gt; Hom(Fk,G0)/(im(Ak)+im(C)).
+</pre></div>
+<p>Hence, Ext presents Ext^k(M&rsquo;,N&rsquo;).
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>- module Ext, a presentation of Ext^k(M&rsquo;,N&rsquo;) if v is of type int<br>
+- a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.<br>
+- In case of a third argument of any type return a list l:
+</p><div class="format">
+<pre class="format">             l[1] = module Ext/list of Ext^k
+             l[2] = SB of Ext/list of SB of Ext^k
+             l[3] = matrix/list of matrices, each representing a kbase of Ext^k
+                       (if finite dimensional)
+</pre></div>
+
+</dd>
+<dt><strong>Display:</strong></dt>
+<dd><p>printlevel &gt;=0: dimension, vdim of Ext^k for each k (default).
+<br> printlevel &gt;=1: matrices Ak, Ak+1 and kbase of Ext^k in Hom(Fk,G0)
+(if finite dimensional)
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>In order to compute Ext^k(M,N) use the command Ext(k,syz(M),syz(N));
+or: list P=mres(M,2); list Q=mres(N,2); Ext(k,P[2],Q[2]);
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;homolog.lib&quot;;
+int p      = printlevel;
+printlevel = 1;
+ring r     = 0,(x,y),dp;
+ideal i    = x2-y3;
+ideal j    = x2-y5;
+list E     = Ext(0..2,i,j);    // Ext^k(r/i,r/j) for k=0,1,2 over r
+&rarr; // Computing Ext^0 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F0,G0)--&gt;Hom(F1,G0) is given by:
+&rarr; y3-x2
+&rarr; // and Hom(F-1,G0) + Hom(F0,G1)--&gt;Hom(F0,G0) is given by:
+&rarr; 0,-y5+x2
+&rarr; 
+&rarr; // dimension of Ext^0:  -1
+&rarr; 
+&rarr; // Computing Ext^1 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F1,G0)--&gt;Hom(F2,G0) is given by:
+&rarr; 0
+&rarr; // and Hom(F0,G0) + Hom(F1,G1)--&gt;Hom(F1,G0) is given by:
+&rarr; y3-x2,-y5+x2
+&rarr; 
+&rarr; // dimension of Ext^1:  0
+&rarr; // vdim of Ext^1:       10
+&rarr; 
+&rarr; // Computing Ext^2 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F2,G0)--&gt;Hom(F3,G0) is given by:
+&rarr; 1
+&rarr; // and Hom(F1,G0) + Hom(F2,G1)--&gt;Hom(F2,G0) is given by:
+&rarr; 0,-y5+x2
+&rarr; 
+&rarr; // dimension of Ext^2:  -1
+&rarr; 
+qring R    = std(i);
+ideal j    = fetch(r,j);
+module M   = [-x,y],[-y2,x];
+printlevel = 2;
+module E1  = Ext(1,M,j);       // Ext^1(R^2/M,R/j) over R=r/i
+&rarr; // Computing Ext^1 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F1,G0)--&gt;Hom(F2,G0) is given by:
+&rarr; x, -y,
+&rarr; y2,-x 
+&rarr; // and Hom(F0,G0) + Hom(F1,G1)--&gt;Hom(F1,G0) is given by:
+&rarr; x, -y,-y5+x2,0,    
+&rarr; y2,-x,0,     -y5+x2
+&rarr; 
+&rarr; // dimension of Ext^1:  -1
+&rarr; 
+list l     = Ext(4,M,M,1);     // Ext^4(R^2/M,R^2/M) over R=r/i
+&rarr; // Computing Ext^4 (help Ext; gives an explanation):
+&rarr; // Let 0&lt;--coker(M)&lt;--F0&lt;--F1&lt;--F2&lt;--... be a resolution of coker(M),
+&rarr; // and 0&lt;--coker(N)&lt;--G0&lt;--G1 a presentation of coker(N),
+&rarr; // then Hom(F4,G0)--&gt;Hom(F5,G0) is given by:
+&rarr; x, -y,0, 0, 
+&rarr; y2,-x,0, 0, 
+&rarr; 0, 0, x, -y,
+&rarr; 0, 0, y2,-x 
+&rarr; // and Hom(F3,G0) + Hom(F4,G1)--&gt;Hom(F4,G0) is given by:
+&rarr; x, -y,0, 0, -x,0, -y2,0,  
+&rarr; y2,-x,0, 0, 0, -x,0,  -y2,
+&rarr; 0, 0, x, -y,y, 0, x,  0,  
+&rarr; 0, 0, y2,-x,0, y, 0,  x   
+&rarr; 
+&rarr; // dimension of Ext^4:  0
+&rarr; // vdim of Ext^4:       2
+&rarr; 
+&rarr; // columns of matrix are kbase of Ext^4 in Hom(F4,G0)
+&rarr; 1,0,
+&rarr; 0,y,
+&rarr; 0,1,
+&rarr; 1,0 
+&rarr; 
+&rarr; // element 1 of kbase of Ext^4 in Hom(F4,G0)
+&rarr; // as matrix: F4--&gt;G0
+&rarr; 1,0,
+&rarr; 0,1 
+&rarr; // element 2 of kbase of Ext^4 in Hom(F4,G0)
+&rarr; // as matrix: F4--&gt;G0
+&rarr; 0,y,
+&rarr; 1,0 
+&rarr; 
+printlevel = p;
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Ext_005fR.html#Ext_005fR" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.3.4 Ext_R" align="middle"></a></td>
+<td valign="middle" align="left"><a href="fitting.html#fitting" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.6 fitting" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="homolog_005flib.html#homolog_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4.3 homolog_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

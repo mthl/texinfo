@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.5 hnoether_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5 hnoether_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5 hnoether_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="hnoether_005flib"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="spgamma.html#spgamma" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.23 spgamma" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="hnexpansion.html#hnexpansion" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.1 hnexpansion" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Singularities.html#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="hnoether_005flib-1"></a>
+<h3 class="subsection">D.5.5 hnoether_lib</h3>
+<a name="index-hnoether_002elib"></a>
+<a name="index-hnoether_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>hnoether.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Hamburger-Noether (Puiseux) Development
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Martin Lamm, lamm@mathematik.uni-kl.de
+</p>
+</dd>
+<dt><strong>Overview:</strong></dt>
+<dd><p>A library for computing the Hamburger-Noether, resp. Puiseux, development
+of a plane curve singularity following [Campillo, A.: Algebroid curves
+in positive characteristic, Springer LNM 813 (1980)]. <br>
+The library contains also procedures for computing the (topological)
+numerical invariants of plane curve singularities.
+</p>
+</dd>
+</dl>
+
+<p><strong>Main procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="hnexpansion.html#hnexpansion">D.5.5.1 hnexpansion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hamburger-Noether (H-N) development of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="sethnering.html#sethnering">D.5.5.2 sethnering</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> changes to the hnering created by hnexpansion
+</td></tr>
+<tr><td align="left" valign="top"><a href="develop.html#develop">D.5.5.3 develop</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> H-N development of irreducible curves
+</td></tr>
+<tr><td align="left" valign="top"><a href="extdevelop.html#extdevelop">D.5.5.4 extdevelop</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> extension of the H-N development hne of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="parametrisation.html#parametrisation">D.5.5.5 parametrisation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a parametrization of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="displayHNE.html#displayHNE">D.5.5.6 displayHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display H-N development as an ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="invariants.html#invariants">D.5.5.7 invariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> invariants of f, e.g. the characteristic exponents
+</td></tr>
+<tr><td align="left" valign="top"><a href="displayInvariants.html#displayInvariants">D.5.5.8 displayInvariants</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display invariants of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="multsequence.html#multsequence">D.5.5.9 multsequence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> sequence of multiplicities
+</td></tr>
+<tr><td align="left" valign="top"><a href="displayMultsequence.html#displayMultsequence">D.5.5.10 displayMultsequence</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> display sequence of multiplicities
+</td></tr>
+<tr><td align="left" valign="top"><a href="intersection.html#intersection">D.5.5.11 intersection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> intersection multiplicity of two curves
+</td></tr>
+<tr><td align="left" valign="top"><a href="stripHNE.html#stripHNE">D.5.5.12 stripHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> reduce amount of memory consumed by hne
+</td></tr>
+<tr><td align="left" valign="top"><a href="is_005firred.html#is_005firred">D.5.5.13 is_irred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if f is irreducible
+</td></tr>
+<tr><td align="left" valign="top"><a href="delta.html#delta">D.5.5.14 delta</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> delta invariant of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="newtonpoly.html#newtonpoly">D.5.5.15 newtonpoly</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> (local) Newton polygon of f
+</td></tr>
+<tr><td align="left" valign="top"><a href="is_005fNND.html#is_005fNND">D.5.5.16 is_NND</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if f is Newton non-degenerate
+</td></tr>
+</table></blockquote>
+<p><strong>Auxiliary procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="puiseux2generators.html#puiseux2generators">D.5.5.17 puiseux2generators</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> convert Puiseux pairs to generators of semigroup
+</td></tr>
+<tr><td align="left" valign="top"><a href="separateHNE.html#separateHNE">D.5.5.18 separateHNE</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> number of quadratic transf. needed for separation
+</td></tr>
+<tr><td align="left" valign="top"><a href="squarefree.html#squarefree">D.5.5.19 squarefree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a squarefree divisor of the poly f
+</td></tr>
+<tr><td align="left" valign="top"><a href="allsquarefree.html#allsquarefree">D.5.5.20 allsquarefree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> the maximal squarefree divisor of the poly f
+</td></tr>
+<tr><td align="left" valign="top"><a href="further_005fhn_005fproc.html#further_005fhn_005fproc">D.5.5.21 further_hn_proc</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> show further procedures useful for interactive use
+</td></tr>
+</table></blockquote>
+<a name="index-Hamburger_002dNoether-expansion"></a>
+<a name="index-Puiseux-expansion"></a>
+<a name="index-curve-singularities"></a>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="spgamma.html#spgamma" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.4.23 spgamma" align="middle"></a></td>
+<td valign="middle" align="left"><a href="hnexpansion.html#hnexpansion" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.1 hnexpansion" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Singularities.html#Singularities" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5 Singularities" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

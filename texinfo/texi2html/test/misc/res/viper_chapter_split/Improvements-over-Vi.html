@@ -1,0 +1,950 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Viper Is a Package for Emacs Rebels: 2 Improvements over Vi</title>
+
+<meta name="description" content="Viper Is a Package for Emacs Rebels: 2 Improvements over Vi">
+<meta name="keywords" content="Viper Is a Package for Emacs Rebels: 2 Improvements over Vi">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Improvements-over-Vi"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Overview.html#Overview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Overview.html#Unimplemented-Features" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[ Up ]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Improvements-over-Vi-1"></a>
+<h1 class="chapter">2 Improvements over Vi</h1>
+
+<p>Some common problems with Vi and Ex have been solved in Viper.  This
+includes better implementation of existing commands, new commands, and
+the facilities provided by Emacs.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Basics">2.1 Basics</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  Basic Viper differences, Multi-file effects.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Undo-and-Backups">2.2 Undo and Backups</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        Multiple undo, auto-save, backups and changes
+</td></tr>
+<tr><td align="left" valign="top"><a href="#History">2.3 History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                 History for Ex and Vi commands.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Macros-and-Registers">2.4 Macros and Registers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Keyboard Macros (extended &quot;.&quot;) @reg execution.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Completion">2.5 Completion</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              Filename and Command Completion for Ex.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Improved-Search">2.6 Improved Search</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         Incremental Search and Buffer Content Search.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Abbreviation-Facilities">2.7 Abbreviation Facilities</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Normal Abbrevs, Templates, and Dynamic Abbrevs.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Movement-and-Markers">2.8 Movement and Markers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Screen Editor movements, viewing textmarkers.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#New-Commands">2.9 New Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            Commands that do not exist in Vi.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Useful-Packages">2.10 Useful Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">         A Sampling of some Emacs packages, and things
+                            you should know about.
+</td></tr>
+</table>
+
+<hr>
+<a name="Basics"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Undo-and-Backups" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Basics-1"></a>
+<h2 class="section">2.1 Basics</h2>
+
+<p>The Vi command set is based on the idea of combining motion commands
+with other commands.  The motion command is used as a text region
+specifier for other commands.
+We classify motion commands into <em>point commands</em> and
+<em>line commands</em>.
+</p>
+<a name="index-point-commands"></a>
+
+<p>The point commands are:
+</p>
+<blockquote>
+<p><kbd>h</kbd>, <kbd>l</kbd>, <kbd>0</kbd>,  <kbd>$</kbd>, <kbd>w</kbd>, <kbd>W</kbd>, <kbd>b</kbd>, <kbd>B</kbd>,
+<kbd>e</kbd>, <kbd>E</kbd>, <kbd>(</kbd>, <kbd>)</kbd>, <kbd>/</kbd>, <kbd>?</kbd>, <kbd>`</kbd>, <kbd>f</kbd>,
+<kbd>F</kbd>, <kbd>t</kbd>, <kbd>T</kbd>, <kbd>%</kbd>, <kbd>;</kbd>, <kbd>,</kbd>, <kbd>^</kbd>
+</p></blockquote>
+
+<a name="index-line-commands"></a>
+
+<p>The line commands are:
+</p>
+<blockquote>
+<p><kbd>j</kbd>, <kbd>k</kbd>, <kbd>+</kbd>, <kbd>-</kbd>, <kbd>H</kbd>, <kbd>M</kbd>, <kbd>L</kbd>, <kbd>{</kbd>,
+<kbd>}</kbd>, <kbd>G</kbd>, <kbd>'</kbd>,  <kbd>[[</kbd>, <kbd>]]</kbd>, <kbd>[]</kbd>
+</p></blockquote>
+
+<a name="index-region-1"></a>
+<a name="index-region-specification"></a>
+<a name="index-expanding-_0028region_0029"></a>
+<a name="index-describing-regions"></a>
+<a name="index-movement-commands"></a>
+
+<p>If a point command is given as an argument to a modifying command, the
+region determined by the point command will be affected by the modifying
+command.  On the other hand, if a line command is given as an argument to a
+modifying command, the region determined by the line command will be
+enlarged so that it will become the smallest region properly containing the
+region and consisting of whole lines (we call this process <em>expanding
+the region</em>), and then the enlarged region will be affected by the modifying
+command.
+Text Deletion Commands (see section <a href="Commands.html#Deleting-Text">Deleting Text</a>), Change commands
+(see section <a href="Commands.html#Changing-Text">Changing Text</a>), even Shell Commands (see section <a href="Commands.html#Shell-Commands">Shell Commands</a>)
+use these commands to describe a region of text to operate on.
+Thus, type <kbd>dw</kbd> to delete a word, <kbd>&gt;}</kbd> to shift a paragraph, or
+<kbd>!'afmt</kbd> to format a region from &lsquo;<samp>point</samp>&rsquo; to textmarker
+&lsquo;<samp>a</samp>&rsquo;.
+</p>
+<a name="index-r-and-R-region-specifiers"></a>
+
+<p>Viper adds the region specifiers &lsquo;<samp>r</samp>&rsquo; and &lsquo;<samp>R</samp>&rsquo;.  Emacs has a
+special marker called <em>mark</em>.  The text-area between the current cursor
+position <em>point</em> and the <em>mark</em> is called the <em>region</em>.
+&lsquo;<samp>r</samp>&rsquo; specifies the raw region and &lsquo;<samp>R</samp>&rsquo; is the expanded region
+(i.e., the minimal contiguous chunk of full lines that contains the raw
+region).
+<kbd>dr</kbd> will now delete the region, <kbd>&gt;r</kbd> will shift it, etc.
+<kbd>r,R</kbd> are not motion commands, however.  The special mark is set by
+<kbd>m.</kbd> and other commands.  See section <a href="Commands.html#Marking">Marking</a>, for more info.
+</p>
+<p>Viper also adds counts to most commands for which it would make sense.
+</p>
+<p>In the Overview chapter, some Multiple File issues were discussed
+(see section <a href="Overview.html#Multiple-Files-in-Viper">Multiple Files in Viper</a>).  In addition to the files, Emacs has
+buffers.  These can be seen in the <kbd>:args</kbd> list and switched using
+<kbd>:next</kbd> if you type <kbd>:set ex-cycle-through-non-files t</kbd>, or
+specify <code>(setq ex-cycle-through-non-files t)</code> in your &lsquo;<tt>.viper</tt>&rsquo;
+file.  See section <a href="Customization.html#Customization">Customization</a>, for details.
+</p>
+<hr>
+<a name="Undo-and-Backups"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basics" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#History" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Undo-and-Backups-1"></a>
+<h2 class="section">2.2 Undo and Backups</h2>
+
+<a name="index-undo-1"></a>
+
+<p>Viper provides multiple undo.  The number of undo&rsquo;s and the size is limited
+by the machine.  The Viper command <kbd>u</kbd> does an undo.  Undo can be
+repeated by typing <kbd>.</kbd> (a period).  Another <kbd>u</kbd> will undo the undo,
+and further
+<kbd>.</kbd> will repeat it.  Typing <kbd>u</kbd> does the first undo, and changes the
+direction.
+</p>
+<a name="index-backup-files"></a>
+<a name="index-auto-save"></a>
+
+<p>Since the undo size is limited, Viper can create backup files and
+auto-save files.  It will normally do this automatically.  It is possible
+to have numbered backups, etc.  For details, see <a href="../emacs/Backup.html#Backup">Backup and Auto-Save</a> in <cite>The GNU Emacs Manual</cite> 
+</p>
+<a name="index-viewing-registers-and-markers"></a>
+<a name="index-registers-1"></a>
+<a name="index-markers-1"></a>
+<a name="index-textmarkers-1"></a>
+
+<p>The results of the 9 previous changes are available in the 9 numeric
+registers, as in Vi.  The extra goody is the ability to <em>view</em> these
+registers, in addition to being able to access them through <kbd>p</kbd> and
+<kbd>M-y</kbd> (See section <a href="Overview.html#Insert-State">Insert State</a>, for details.)
+The Viper command <kbd>] register</kbd> will display the contents of any
+register, numeric or alphabetical.  The related command <kbd>[ textmarker</kbd>
+will show the text around the textmarker.  &lsquo;<samp>register</samp>&rsquo; and &lsquo;<samp>textmarker</samp>&rsquo;
+can be any letters from a through z.
+</p>
+<hr>
+<a name="History"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Undo-and-Backups" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Macros-and-Registers" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="History-1"></a>
+<h2 class="section">2.3 History</h2>
+
+<a name="index-history"></a>
+<a name="index-Minibuffer-2"></a>
+
+<p>History is provided for Ex commands, Vi searches, file names, pieces of
+text inserted in earlier commands that use Insert or Replace state, and for
+destructive commands in Vi state.  These are
+useful for fixing those small typos that screw up searches and <kbd>:s</kbd>,
+and for eliminating routine associated with repeated typing of file names
+or pieces of text that need to be inserted frequently.
+At the <kbd>:</kbd> or <kbd>/</kbd> prompts in the Minibuffer, you can do the following:
+</p>
+<dl compact="compact">
+<dt><kbd>M-p and M-n</kbd></dt>
+<dd><p>To move to previous and next history items.  This causes the history
+items to appear on the command line, where you can edit them, or
+simply type Return to execute.
+</p></dd>
+<dt><kbd>M-r and M-s</kbd></dt>
+<dd><p>To search backward and forward through the history.
+</p></dd>
+<dt><kbd>&lt;RET&gt;</kbd></dt>
+<dd><p>Type &lt;RET&gt; to accept a default (which is displayed in the prompt).
+</p></dd>
+</dl>
+
+<p>The history of insertions  can be perused by
+typing <kbd>C-c M-p</kbd> and <kbd>C-c M-n</kbd> while in Insert or Replace state.
+The history of destructive Vi commands can be perused via the same keys
+when Viper is in Vi state.  See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for details.
+</p>
+<p>All Ex commands have a file history.  For instance, typing <kbd>:e</kbd>, space
+and then <kbd>M-p</kbd> will bring up the name of the previously typed file
+name.  Repeatedly typing <kbd>M-p</kbd>, <kbd>M-n</kbd>, etc., will let you browse
+through the file history.
+</p>
+<p>Similarly, commands that have to do with switching buffers
+have a buffer history, and commands that expect strings or regular
+expressions keep a history on those items.
+</p>
+<hr>
+<a name="Macros-and-Registers"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#History" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Completion" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Macros-and-Registers-1"></a>
+<h2 class="section">2.4 Macros and Registers</h2>
+
+<a name="index-keyboard-macros"></a>
+<a name="index-macros"></a>
+<a name="index-registers-2"></a>
+<a name="index-register-execution"></a>
+
+<p>Viper facilitates the use of Emacs-style keyboard macros.  <kbd>@#</kbd> will
+start a macro definition.  As you type, the commands will be executed, and
+remembered (This is called &ldquo;learn mode&rdquo; in some editors.)
+<kbd>@register</kbd> will complete the macro, putting it into &lsquo;<samp>register</samp>&rsquo;,
+where &lsquo;<samp>register</samp>&rsquo; is any character from &lsquo;<samp>a</samp>&rsquo; through &lsquo;<samp>z</samp>&rsquo;.  Then
+you can execute this macro using <kbd>@register</kbd>.  It is, of course,
+possible to yank some text into a register and execute it using
+<kbd>@register</kbd>.  Typing <kbd>@@</kbd>, <kbd>@RET</kbd>, or <kbd>@C-j</kbd> will
+execute the last macro that was executed using <kbd>@register</kbd>.
+</p>
+<p>Viper will automatically lowercase the register, so that pressing the
+<kbd>SHIFT</kbd> key for <kbd>@</kbd> will not create problems.  This is for
+<kbd>@</kbd> macros and <kbd>&quot;p</kbd> <em>only</em>.  In the case of <kbd>y</kbd>,
+<kbd>&quot;Ayy</kbd> will append to <em>register a</em>.  For <kbd>[,],',`</kbd>, it
+is an error to use a Uppercase register name.
+</p>
+<a name="index-viewing-registers-and-markers-1"></a>
+
+<p>The contents of a register can be seen by <kbd>]register</kbd>.  (<kbd>[textmarker</kbd>
+will show the contents of a textmarker).
+</p>
+<a name="index-last-keyboard-macro"></a>
+
+<p>The last keyboard macro can also be executed using
+<kbd>*</kbd>, and it can be yanked into a register using <kbd>@!register</kbd>.
+This is useful for Emacs style keyboard macros defined using <kbd>C-x(</kbd>
+and <kbd>C-x)</kbd>.  Emacs keyboard macros have more capabilities.
+See <a href="../emacs/Keyboard-Macros.html#Keyboard-Macros">Keyboard Macros</a> in <cite>The GNU Emacs Manual</cite>, for
+details.
+</p>
+<p>Keyboard Macros allow an interesting form of Query-Replace:
+<kbd>/pattern</kbd> or <kbd>n</kbd> to go to the next pattern (the query), followed by a
+Keyboard Macro execution <kbd>@@</kbd> (the replace).
+</p>
+<p>Viper also provides Vi-style macros.  See section <a href="Customization.html#Vi-Macros">Vi Macros</a>, for details.
+</p>
+
+<hr>
+<a name="Completion"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Macros-and-Registers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Improved-Search" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Completion-1"></a>
+<h2 class="section">2.5 Completion</h2>
+
+<a name="index-completion"></a>
+
+<p>Completion is done when you type &lt;TAB&gt;.  The Emacs completer does not
+grok wildcards in file names.  Once you type a wildcard, the completer will
+no longer work for that file name.  Remember that Emacs interprets a file name
+of the form <kbd>/foo//bar</kbd> as <kbd>/bar</kbd> and <kbd>/foo/~/bar</kbd> as
+<kbd>~/bar</kbd>.
+</p>
+<hr>
+<a name="Improved-Search"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Completion" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbreviation-Facilities" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Improved-Search-1"></a>
+<h2 class="section">2.6 Improved Search</h2>
+
+<a name="index-buffer-search"></a>
+<a name="index-word-search"></a>
+
+<p>Viper provides buffer search, the ability to search the buffer for a region
+under the cursor.  You have to turn this on in &lsquo;<tt>.viper</tt>&rsquo; either by calling
+</p>
+<div class="example">
+<pre class="example">(viper-buffer-search-enable)
+</pre></div>
+
+<p>or by setting <code>viper-buffer-search-char</code> to, say, <kbd>f3</kbd>:
+</p><div class="example">
+<pre class="example">(setq viper-buffer-search-char ?g)
+</pre></div>
+
+<p>If the user calls <code>viper-buffer-search-enable</code> explicitly (the first
+method), then <code>viper-buffer-search-char</code> will be set to <kbd>g</kbd>.
+Regardless of how this feature is enabled, the key
+<code>viper-buffer-search-char</code> will take movement commands, like
+<kbd>w,/,e</kbd>, to find a region and then search for the contents of that
+region.  This command is very useful for searching for variable names, etc.,
+in a program.  The search can be repeated by <kbd>n</kbd> or reversed by <kbd>N</kbd>.
+</p>
+<a name="index-incremental-search"></a>
+
+<p>Emacs provides incremental search.  As you type the string in, the
+cursor will move to the next match.  You can snarf words from the buffer
+as you go along.  Incremental Search is normally bound to <kbd>C-s</kbd> and
+<kbd>C-r</kbd>.  See section <a href="Customization.html#Customization">Customization</a>, to find out how to change the bindings
+of <kbd>C-r or C-s</kbd>.
+For details, see <a href="../emacs/Incremental-Search.html#Incremental-Search">Incremental Search</a> in <cite>The GNU Emacs Manual</cite> 
+</p>
+<a name="index-query-replace"></a>
+
+<p>Viper also provides a query replace function that prompts through the
+Minibuffer.  It is invoked by the <kbd>Q</kbd> key in Vi state.
+</p>
+<a name="index-mouse-search"></a>
+
+<p>On a window display, Viper supports mouse search, i.e., you can search for a
+word by clicking on it.  See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for details.
+</p>
+<p>Finally, on a window display, Viper highlights search patterns as it finds
+them.  This is done through what is known as <em>faces</em> in Emacs.  The
+variable that controls how search patterns are highlighted is
+<code>viper-search-face</code>.  If you don&rsquo;t want any highlighting at all, put
+</p><div class="example">
+<pre class="example">(copy-face 'default 'viper-search-face)
+</pre></div>
+<a name="index-viper_002dsearch_002dface"></a>
+<p>in &lsquo;<tt>~/.viper</tt>&rsquo;.  If you want to change how patterns are highlighted, you
+will have to change <code>viper-search-face</code> to your liking.  The easiest
+way to do this is to use Emacs customization widget, which is accessible
+from the menubar.  Viper customization group is located under the
+<em>Emulations</em> customization group, which in turn is under the
+<em>Editing</em> group (or simply by typing <kbd>:customize</kbd>).  All Viper
+faces are grouped together under Viper&rsquo;s 
+<em>Highlighting</em> group.
+</p>
+<p>Try it: it is really simple!
+</p>
+<hr>
+<a name="Abbreviation-Facilities"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improved-Search" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Movement-and-Markers" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Abbreviation-Facilities-1"></a>
+<h2 class="section">2.7 Abbreviation Facilities</h2>
+
+<a name="index-abbrevs"></a>
+
+<p>It is possible in Emacs to define abbrevs based on the contents of the
+buffer.
+Sophisticated templates can be defined using the Emacs abbreviation
+facilities.  See <a href="../emacs/Abbrevs.html#Abbrevs">Abbreviations</a> in <cite>The GNU Emacs Manual</cite>, for
+details.
+</p>
+<a name="index-dynamic-abbrevs"></a>
+
+<p>Emacs also provides Dynamic Abbreviations.  Given a partial word, Emacs
+will search the buffer to find an extension for this word.  For instance,
+one can type &lsquo;<samp>Abbreviations</samp>&rsquo; by typing &lsquo;<samp>A</samp>&rsquo;, followed by a keystroke
+that completed the &lsquo;<samp>A</samp>&rsquo; to &lsquo;<samp>Abbreviations</samp>&rsquo;.  Repeated typing
+will search further back in the buffer, so that one could get
+&lsquo;<samp>Abbrevs</samp>&rsquo; by repeating the
+keystroke, which appears earlier in the text.  Emacs binds this to
+<kbd>&lt;ESC&gt; /</kbd>, so you will have to find a key and bind the function
+<code>dabbrev-expand</code> to that key.
+Facilities like this make Vi&rsquo;s <kbd>:ab</kbd> command obsolete.
+</p>
+<hr>
+<a name="Movement-and-Markers"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abbreviation-Facilities" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#New-Commands" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Movement-and-Markers-1"></a>
+<h2 class="section">2.8 Movement and Markers</h2>
+
+<a name="index-Ex-style-motion"></a>
+<a name="index-line-editor-motion"></a>
+
+<p>Viper can be set free from the line&ndash;limited movements in Vi, such as <kbd>l</kbd>
+refusing to move beyond the line, &lt;ESC&gt; moving one character back,
+etc.  These derive from Ex, which is a line editor.  If your &lsquo;<tt>.viper</tt>&rsquo;
+contains
+</p>
+<div class="example">
+<pre class="example"><code>(setq viper-ex-style-motion nil)</code>
+</pre></div>
+
+<p>the motion will be a true screen editor motion.  One thing you must then
+watch out for is that it is possible to be on the end-of-line character.
+The keys <kbd>x</kbd> and <kbd>%</kbd> will still work correctly, i.e., as if they
+were on the last character.
+</p>
+<a name="index-viper_002dsyntax_002dpreference"></a>
+<a name="index-syntax-table"></a>
+
+<p>The word-movement commands <kbd>w</kbd>, <kbd>e</kbd>, etc., and the associated
+deletion/yanking commands, <kbd>dw</kbd>, <kbd>yw</kbd>, etc., can be made to
+understand Emacs syntax tables.  If the variable
+<code>viper-syntax-preference</code> is set to <code>strict-vi</code> then
+the meaning of <em>word</em> is the same as in
+Vi.  However, if the value is <code>reformed-vi</code> (the default) then the
+alphanumeric symbols will be those specified by the current Emacs syntax
+table (which may be different for different major modes) plus the
+underscore symbol <kbd>_</kbd>, minus some non-word symbols, like &rsquo;.;,|, etc.
+Both <code>strict-vi</code> and <code>reformed-vi</code> work close to Vi in
+traditional cases, but <code>reformed-vi</code> does a better job when editing
+text in non-Latin alphabets.
+</p>
+<p>The user can also specify the value <code>emacs</code>, which would
+make Viper use exactly the Emacs notion of word.  In particular, the
+underscore may not be part of a word.  Finally, if
+<code>viper-syntax-preference</code> is set to <code>extended</code>, Viper words would
+consist of characters that are classified as alphanumeric <em>or</em> as
+parts of symbols.  This is convenient for writing programs and in many other
+situations.
+</p>
+<p><code>viper-syntax-preference</code> is a local variable, so it can have different
+values for different major modes.  For instance, in programming modes it can
+have the value <code>extended</code>.  In text modes where words contain special
+characters, such as European (non-English) letters, Cyrillic letters, etc.,
+the value can be <code>reformed-vi</code> or <code>emacs</code>.
+</p>
+<p>Changes to <code>viper-syntax-preference</code> should be done in the hooks to
+various major modes by executing <code>viper-set-syntax-preference</code> as in
+the following example:
+</p>
+<div class="example">
+<pre class="example">(viper-set-syntax-preference nil &quot;emacs&quot;)
+</pre></div>
+
+<a name="index-viper_002dset_002dsyntax_002dpreference"></a>
+
+<p>The above discussion of the meaning of Viper&rsquo;s words concerns only Viper&rsquo;s
+movement commands.  In regular expressions, words remain the same as in
+Emacs.  That is, the expressions <code>\w</code>, <code>\&gt;</code>, <code>\&lt;</code>, etc., use
+Emacs&rsquo; idea of what is a word, and they don&rsquo;t look into the value of
+variable <code>viper-syntax-preference</code>.  This is because Viper doesn&rsquo;t change
+syntax tables in fear of upsetting the various major modes that set these
+tables.
+</p>
+<a name="index-textmarkers-2"></a>
+
+<p>Textmarkers in Viper remember the file and the position, so that you can
+switch files by simply doing <kbd>'a</kbd>.  If you set up a regimen for using
+Textmarkers, this is very useful.  Contents of textmarkers can be viewed
+by <kbd>[marker</kbd>.  (Contents of registers can be viewed by <kbd>]register</kbd>).
+</p>
+<hr>
+<a name="New-Commands"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Movement-and-Markers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Useful-Packages" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="New-Commands-1"></a>
+<h2 class="section">2.9 New Commands</h2>
+
+<p>These commands have no Vi analogs.
+</p>
+<dl compact="compact">
+<dt><kbd>C-x, C-c</kbd></dt>
+<dd><a name="index-C_002dx-1"></a>
+<a name="index-C_002dc-1"></a>
+<p>These two keys invoke many important Emacs functions.  For example, if you
+hit <kbd>C-x</kbd> followed by <kbd>2</kbd>, then the current window will be split
+into 2.  Except for novice users, <kbd>C-c</kbd> is also set to execute an Emacs
+command from the current major mode.  &lt;ESC&gt; will do the same, if you
+configure &lt;ESC&gt; as Meta by setting <code>viper-no-multiple-ESC</code> to nil
+in &lsquo;<tt>.viper</tt>&rsquo;.  See section <a href="Customization.html#Customization">Customization</a>.  <kbd>C-\</kbd> in Insert, Replace, or Vi
+states will make Emacs think <kbd>Meta</kbd> has been hit.
+</p></dd>
+<dt><kbd>\</kbd></dt>
+<dd><a name="index-_005c"></a>
+<p>Escape to Emacs to execute a single Emacs command.  For instance,
+<kbd>\ &lt;ESC&gt;</kbd> will act like a Meta key.
+</p></dd>
+<dt><kbd>Q</kbd></dt>
+<dd><a name="index-Q"></a>
+<a name="index-query-replace-1"></a>
+<p><kbd>Q</kbd> is for query replace.  By default,
+each string to be replaced is treated as a regular expression.  You can use
+<code>(setq viper-re-query-replace nil)</code> in your &lsquo;<tt>.emacs</tt>&rsquo; file to
+turn this off.  (For normal searches, <kbd>:se nomagic</kbd> will work.  Note
+that <kbd>:se nomagic</kbd> turns Regexps off completely, unlike Vi).
+</p></dd>
+<dt><kbd>v</kbd></dt>
+<dt><kbd>V</kbd></dt>
+<dt><kbd>C-v</kbd></dt>
+<dd><a name="index-v"></a>
+<a name="index-V"></a>
+<a name="index-C_002dv"></a>
+<p>These keys are used to visit files.  <kbd>v</kbd> will switch to a buffer
+visiting file whose name can be entered in the Minibuffer.  <kbd>V</kbd> is
+similar, but will use a window different from the current window.
+<kbd>C-v</kbd> is like <kbd>V</kbd>, except that a new frame (X window) will be used
+instead of a new Emacs window.
+</p></dd>
+<dt><kbd>#</kbd></dt>
+<dd><a name="index-_0023"></a>
+<p>If followed by a certain character <var>ch</var>, it becomes an operator whose
+argument is the region determined by the motion command that follows
+(indicated as &lt;move&gt;).
+Currently, <var>ch</var> can be one of <kbd>c</kbd>, <kbd>C</kbd>, <kbd>g</kbd>, <kbd>q</kbd>, and
+<kbd>s</kbd>.  For instance, <kbd>#qr</kbd> will prompt you for a string and then
+prepend this string to each line in the buffer.
+</p></dd>
+<dt><kbd># c</kbd></dt>
+<dd><a name="index-_0023c_003cmove_003e"></a>
+<a name="index-changing-case"></a>
+<p>Change upper-case characters in the region to lower-case
+(<code>downcase-region</code>).
+Emacs command <kbd>M-l</kbd> does the same for words.
+</p></dd>
+<dt><kbd># C</kbd></dt>
+<dd><a name="index-_0023C_003cmove_003e"></a>
+<p>Change lower-case characters in the region to upper-case.  For instance,
+<kbd># C 3 w</kbd> will capitalize 3 words from the current point
+(<code>upcase-region</code>).
+Emacs command <kbd>M-u</kbd> does the same for words.
+</p></dd>
+<dt><kbd># g</kbd></dt>
+<dd><a name="index-_0023g_003cmove_003e"></a>
+<p>Execute last keyboard macro for each line in the region
+(<code>viper-global-execute</code>).
+</p></dd>
+<dt><kbd># q</kbd></dt>
+<dd><a name="index-_0023q_003cmove_003e"></a>
+<p>Insert specified string at the beginning of each line in the region
+(<code>viper-quote-region</code>).  The default string is composed of the comment
+character(s) appropriate for the current major mode.
+</p></dd>
+<dt><kbd># s</kbd></dt>
+<dd><a name="index-_0023s_003cmove_003e"></a>
+<p>Check spelling of words in the region (<code>spell-region</code>).
+The function used for spelling is determined from the variable
+<code>viper-spell-function</code>.
+<a name="index-viper_002dspell_002dfunction"></a>
+</p></dd>
+<dt><kbd>*</kbd></dt>
+<dd><a name="index-_002a"></a>
+<p>Call last keyboard macro.
+</p></dd>
+<dt><kbd>m .</kbd></dt>
+<dd><p>Set mark at point and push old mark off the ring
+</p></dd>
+<dt><kbd>m&lt;</kbd></dt>
+<dt><kbd>m&gt;</kbd></dt>
+<dd><p>Set mark at beginning and end of buffer, respectively.
+</p></dd>
+<dt><kbd>m,</kbd></dt>
+<dd><p>Jump to mark and pop mark off the ring.  See <a href="../emacs/Mark.html#Mark">Mark</a> in <cite>The GNU Emacs Manual</cite>, for more info.
+</p></dd>
+<dt><kbd>] register</kbd></dt>
+<dd><a name="index-_005d_003ca_002dz_003e"></a>
+<p>View contents of register
+</p></dd>
+<dt><kbd>[ textmarker</kbd></dt>
+<dd><a name="index-_005b_003ca_002dz_003e"></a>
+<p>View filename and position of textmarker
+</p></dd>
+<dt><kbd>@#</kbd></dt>
+<dt><kbd>@register</kbd></dt>
+<dt><kbd>@!</kbd></dt>
+<dd><a name="index-_0040_0023"></a>
+<a name="index-_0040_003ca_002dz_003e"></a>
+<a name="index-_0040_0021"></a>
+<a name="index-keyboard-macros-1"></a>
+<a name="index-register-execution-1"></a>
+
+<p>Begin/end keyboard macro.  @register has a different meaning when used after
+a <kbd>@#</kbd>.  See section <a href="#Macros-and-Registers">Macros and Registers</a>, for details
+</p></dd>
+<dt><kbd>[]</kbd></dt>
+<dd><a name="index-_005b_005d"></a>
+<p>Go to end of heading.
+</p></dd>
+<dt><kbd>g &lt;<em>movement command</em>&gt;</kbd></dt>
+<dd><p>Search buffer for text delimited by movement command.  The canonical
+example is <kbd>gw</kbd> to search for the word under the cursor.
+See section <a href="#Improved-Search">Improved Search</a>, for details.
+</p></dd>
+<dt><kbd>C-g and C-]</kbd></dt>
+<dd><a name="index-C_002dg-1"></a>
+<a name="index-C_002d_005d-1"></a>
+<p>Quit and Abort Recursive edit.  These may be necessary on occasion.
+See section <a href="Overview.html#Vi-State">Vi State</a>, for a reason.
+</p></dd>
+<dt><kbd>C-c C-g</kbd></dt>
+<dd><a name="index-C_002dc-C_002dg"></a>
+<p>Hitting <kbd>C-c</kbd> followed by <kbd>C-g</kbd> will display the information on the
+current buffer.  This is the same as hitting <kbd>C-g</kbd> in Vi, but, as
+explained above, <kbd>C-g</kbd> is needed for other purposes in Emacs.
+</p></dd>
+<dt><kbd>C-c /</kbd></dt>
+<dd><a name="index-C_002dc-_002f-1"></a>
+<p>Without a prefix argument, this command toggles
+case-sensitive/case-insensitive search modes and plain vanilla/regular
+expression search.  With the prefix argument 1, i.e.,
+<kbd>1 C-c /</kbd>, this toggles case-sensitivity; with the prefix argument 2,
+toggles plain vanilla search and search using
+regular expressions.  See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for alternative ways to invoke
+this function.
+<a name="index-vanilla-search-1"></a>
+<a name="index-case_002dsensitive-search-1"></a>
+<a name="index-case_002dinsensitive-search-1"></a>
+</p>
+</dd>
+<dt><kbd>M-p and M-n</kbd></dt>
+<dd><a name="index-M_002dp"></a>
+<a name="index-M_002dn"></a>
+<p>In the Minibuffer, these commands navigate through the minibuffer
+histories, such as the history of search strings, Ex commands, etc.
+</p>
+</dd>
+<dt><kbd>C-c M-p and C-c M-n</kbd></dt>
+<dd><a name="index-C_002dc-M_002dp"></a>
+<a name="index-C_002dc-M_002dn"></a>
+<a name="index-Insertion-history"></a>
+<a name="index-Insertion-ring"></a>
+<a name="index-Command-history"></a>
+<a name="index-Command-ring"></a>
+
+<p>In Insert or Replace state, these commands let  the user
+peruse the history of insertion strings used in previous insert or replace
+commands.  Try to hit <kbd>C-c M-p</kbd> or <kbd>C-c M-n</kbd> repeatedly and see what
+happens.  See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for more.
+</p>
+<p>In Vi state, these commands let the user peruse the history of Vi-style
+destructive commands, such as <kbd>dw</kbd>, <kbd>J</kbd>, <kbd>a</kbd>, etc.
+By repeatedly typing <kbd>C-c M-p</kbd> or <kbd>C-c M-n</kbd> you will cycle Viper
+through the recent history of Vi commands, displaying the commands one by
+one.  Once
+an appropriate command is found, it can be executed by typing &lsquo;<kbd>.</kbd>&rsquo;.
+</p>
+<p>Since typing <kbd>C-c M-p</kbd> is tedious, it is more convenient to bind an
+appropriate function to a function key on the keyboard and use that key.
+See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for details.
+</p>
+</dd>
+<dt><kbd>Ex commands</kbd></dt>
+<dd><a name="index-_003aargs"></a>
+<a name="index-_003an"></a>
+<a name="index-_003apwd"></a>
+<a name="index-_003apre"></a>
+<p>The commands <kbd>:args</kbd>, <kbd>:next</kbd>, <kbd>:pre</kbd> behave
+differently.  <kbd>:pwd</kbd> exists to get current directory.
+The commands <kbd>:b</kbd> and <kbd>:B</kbd> switch buffers around.  See section <a href="Commands.html#File-and-Buffer-Handling">File and Buffer Handling</a>, for details.
+There are also the new commands <kbd>:RelatedFile</kbd> and
+<kbd>PreviousRelatedFile</kbd> (which abbreviate to <kbd>R</kbd> and <kbd>P</kbd>,
+respectively.  See section <a href="Customization.html#Viper-Specials">Viper Specials</a>, for details.
+<a name="index-_003aRelatedFile"></a>
+<a name="index-_003aPreviousRelatedFile"></a>
+</p></dd>
+</dl>
+
+<p>Apart from the new commands, many old commands have been enhanced.  Most
+notably, Vi style macros are much more powerful in Viper than in Vi.  See section <a href="Customization.html#Vi-Macros">Vi Macros</a>, for details.
+</p>
+<hr>
+<a name="Useful-Packages"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#New-Commands" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Useful-Packages-1"></a>
+<h2 class="section">2.10 Useful Packages</h2>
+
+<p>Some Emacs packages are mentioned here as an aid to the new Viper user, to
+indicate what Viper is capable of.
+A vast number comes with the standard Emacs distribution, and many more exist
+on the net and on the archives.
+</p>
+<p>This manual also mentions some Emacs features a new user
+should know about.  The details of these are found in the GNU Emacs
+Manual.
+</p>
+<p>The features first.  For details, look up the Emacs Manual.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>Make</samp>&rsquo;</dt>
+<dd><a name="index-make"></a>
+<a name="index-compiling"></a>
+
+<p>Makes and Compiles can be done from the editor.  Error messages will be
+parsed and you can move to the error lines.
+</p></dd>
+<dt>&lsquo;<samp>Shell</samp>&rsquo;</dt>
+<dd><a name="index-shell"></a>
+<a name="index-interactive-shell"></a>
+<p>You can talk to Shells from inside the editor.  Your entire shell session
+can be treated as a file.
+</p></dd>
+<dt>&lsquo;<samp>Mail</samp>&rsquo;</dt>
+<dd><a name="index-email"></a>
+<a name="index-mail"></a>
+<p>Mail can be read from and sent within the editor.  Several sophisticated
+packages exist.
+</p></dd>
+<dt>&lsquo;<samp>Language Sensitive Editing</samp>&rsquo;</dt>
+<dd><p>Editing modes are written for most computer languages in existence.  By
+controlling indentation, they catch punctuation errors.
+</p></dd>
+</dl>
+
+<p>The packages, below, represents a drop in the sea of special-purpose
+packages that come with standard distribution of Emacs.
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>Transparent FTP</samp>&rsquo;</dt>
+<dd><a name="index-transparent-ftp"></a>
+<a name="index-ange_002dftp_002eel"></a>
+<p><code>ange-ftp.el</code> can ftp from the editor to files on other machines
+transparent to the user.
+</p></dd>
+<dt>&lsquo;<samp>RCS Interfaces</samp>&rsquo;</dt>
+<dd><a name="index-version-maintenance"></a>
+<a name="index-RCS"></a>
+<a name="index-vc_002eel"></a>
+<p><code>vc.el</code> for doing RCS commands from inside the editor
+</p></dd>
+<dt>&lsquo;<samp>Directory Editor</samp>&rsquo;</dt>
+<dd><a name="index-dired"></a>
+<a name="index-dired_002eel"></a>
+<p><code>dired.el</code> for editing contents of directories and for navigating in
+the file system.
+</p></dd>
+<dt>&lsquo;<samp>Syntactic Highlighting</samp>&rsquo;</dt>
+<dd><a name="index-font_002dlock"></a>
+<a name="index-font_002dlock_002eel"></a>
+<p><code>font-lock.el</code> for automatic highlighting various parts of a buffer
+using different fonts and colors.
+</p></dd>
+<dt>&lsquo;<samp>Saving Emacs Configuration</samp>&rsquo;</dt>
+<dd><a name="index-desktop"></a>
+<a name="index-desktop_002eel"></a>
+<p><code>desktop.el</code> for saving/restoring configuration on Emacs exit/startup.
+</p></dd>
+<dt>&lsquo;<samp>Spell Checker</samp>&rsquo;</dt>
+<dd><a name="index-ispell"></a>
+<a name="index-ispell_002eel"></a>
+<p><code>ispell.el</code> for spell checking the buffer, words, regions, etc.
+</p></dd>
+<dt>&lsquo;<samp>File and Buffer Comparison</samp>&rsquo;</dt>
+<dd><a name="index-ediff"></a>
+<a name="index-ediff_002eel"></a>
+<p><code>ediff.el</code> for finding differences between files and for applying
+patches.
+</p></dd>
+</dl>
+
+<p>Emacs Lisp archives exist on
+&lsquo;<samp>archive.cis.ohio-state.edu</samp>&rsquo;
+and &lsquo;<samp>wuarchive.wustl.edu</samp>&rsquo;
+</p>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Improvements-over-Vi" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="Customization.html#Customization" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="viper_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Key-Index.html#Key-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="viper_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>a sunny day</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

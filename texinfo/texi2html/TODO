@@ -3,7 +3,12 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-remove l2h_tmp_dir.init from .cvsignore
+remove l2h_tmp_dir.init from .cvsignore and Makefile.am
+ship texi2any, makeinfo
+--node-file as default
+set texi2html specific options as obsolete
+fix comment in html with authors and address
+change licenses to be FSF + GPLv3+
 
 Later
 -----
@@ -23,6 +28,8 @@ Later
   colon after menu_entry when there is no description.
 
 * line breaking could happen after a full width character.
+  Accordingly, in japanese.texi lines are not cut right.
+
 
 * images.texi, paragraph_in_samp.texi should be tested in xml too.
   Maybe they should be moved to coverage, and in coverage all the formats
@@ -291,9 +298,9 @@ function clean_antispam() {
   error messages should appear. Indeed in the first pass the line count
   are less precise since commands are closed at the end of file, not when 
   finding a @node or @section. If error messages are done in pass_text, 
-  they won't be output when only macros are expanded, but maybe it is better
-  like that? (and in makeinfo compatibility mode, a normal processing
-  will be done with -E).
+  they won't be output when only macros are expanded, but it has to
+  be noted that a normal processing is done with -E which should mitigate
+  this issue.
 
 * @anchor{} should always ignore following whitespace (including newlines).
   Karl insists on that for backward compatibility.
@@ -338,8 +345,6 @@ function clean_antispam() {
 * in formatting/table_in_table_item.texi, some lines maybe have too much 
   leading spaces (precisely in @code in @table in @table @item, line
 in nested table line
-
-* In japanese.texi lines are not cut right.
 
 * formatting/float_copying index entries in insertcopying are not right.
   Maybe it is because they are in footnotes. Or maybe because they are
@@ -418,7 +423,7 @@ macro isn't defined.
 
 * In indices/makeinfo_index_nodes there is no elements, and thus no 
   [Index] link since it uses the index chapter (or @top), and there is 
-  no chapter not @top.
+  no chapter nor @top.
 
 * in index_split the section associated with indices is the numbered section
   not the associated node where the @cindex are. Good or bad?

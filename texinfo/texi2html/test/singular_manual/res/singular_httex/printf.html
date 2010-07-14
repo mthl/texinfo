@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.98 printf</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.98 printf">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.98 printf">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="printf"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="print.html#print" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.97 print" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="prune.html#prune" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.99 prune" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="printf-1"></a>
+<h3 class="subsection">5.1.98 printf</h3>
+<a name="index-printf"></a>
+<p>Procedure from library <code>standard.lib</code> (see <a href="standard_005flib.html#standard_005flib">standard_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Syntax:</strong></dt>
+<dd><p><code>printf (</code> string_expression <code>[,</code> any_expressions<code>] )</code>
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>none
+</p>
+</dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p><code>printf(fmt,...);</code> performs output formatting. The first
+argument is a format control string. Additional arguments may be
+required, depending on the content of the control string. A series
+of output characters is generated as directed by the control string;
+these characters are displayed (i.e., printed to standard out). <br>
+The control string <code>fmt</code> is simply text to be copied, except
+that the string may contain conversion specifications. <br>
+Do <code>help print;</code> for a listing of valid conversion
+specifications. As an addition to the conversions of <code>print</code>,
+the <code>%n</code> and <code>%2</code> conversion specification does not
+consume an additional argument, but simply generates a newline
+character.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>If one of the additional arguments is a list, then it should be
+enclosed once more into a <code>list()</code> command, since passing a
+list as an argument flattens the list by one level.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r=0,(x,y,z),dp;
+module m=[1,y],[0,x+z];
+intmat M=betti(mres(m,0));
+list l=r,m,M;
+printf(&quot;s:%s,l:%l&quot;,1,2);
+&rarr; s:1,l:int(2)
+printf(&quot;s:%s&quot;,l);
+&rarr; s:(0),(x,y,z),(dp(3),C)
+printf(&quot;s:%s&quot;,list(l));
+&rarr; s:(0),(x,y,z),(dp(3),C),y*gen(2)+gen(1),x*gen(2)+z*gen(2),1,1 
+printf(&quot;2l:%2l&quot;,list(l));
+&rarr; 2l:list(&quot;(0),(x,y,z),(dp(3),C)&quot;,
+&rarr; module(y*gen(2)+gen(1),
+&rarr; x*gen(2)+z*gen(2)),
+&rarr; intmat(intvec(1,1 ),1,2))
+&rarr; 
+printf(&quot;%p&quot;,list(l));
+&rarr; [1]:
+&rarr;    //   characteristic : 0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y z 
+&rarr; //        block   2 : ordering C
+&rarr; [2]:
+&rarr;    _[1]=y*gen(2)+gen(1)
+&rarr;    _[2]=x*gen(2)+z*gen(2)
+&rarr; [3]:
+&rarr;    1,1 
+&rarr; 
+printf(&quot;%;&quot;,list(l));
+&rarr; [1]:
+&rarr;    //   characteristic : 0
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering dp
+&rarr; //                  : names    x y z 
+&rarr; //        block   2 : ordering C
+&rarr; [2]:
+&rarr;    _[1]=y*gen(2)+gen(1)
+&rarr;    _[2]=x*gen(2)+z*gen(2)
+&rarr; [3]:
+&rarr;    1,1 
+&rarr; 
+printf(&quot;%b&quot;,M);
+&rarr;            0     1
+&rarr; ------------------
+&rarr;     0:     1     1
+&rarr; ------------------
+&rarr; total:     1     1
+&rarr; 
+</pre></div>
+<p><strong>See also:</strong>
+<a href="fprintf.html#fprintf">fprintf</a>;
+<a href="print.html#print">print</a>;
+<a href="sprintf.html#sprintf">sprintf</a>;
+<a href="string.html#string">string</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="print.html#print" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.97 print" align="middle"></a></td>
+<td valign="middle" align="left"><a href="prune.html#prune" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.99 prune" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

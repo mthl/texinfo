@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 5.1.114 simplex</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 5.1.114 simplex">
+<meta name="keywords" content="Singular 2-0-4 Manual: 5.1.114 simplex">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="simplex"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="setring.html#setring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.113 setring" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="simplify.html#simplify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.115 simplify" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="simplex-1"></a>
+<h3 class="subsection">5.1.114 simplex</h3>
+<a name="index-simplex"></a>
+<dl compact="compact">
+<dt><code><strong>Syntax:</strong></code></dt>
+<dd><p><code>simplex (</code> matrix_expression<code>,</code> int_expression<code>,</code> 
+int_expression<code>,</code> int_expression<code>,</code> int_expression<code>,</code> 
+int_expression<code>)</code>
+</p></dd>
+<dt><code><strong>Type:</strong></code></dt>
+<dd><p>list
+</p></dd>
+<dt><code><strong>Purpose:</strong></code></dt>
+<dd><p>perform the simplex algorithm for the tableau given by the input, e.g.
+M,m,n,m1,m2,m3: 
+</p>
+<dl compact="compact">
+<dt>M matrix of numbers :</dt>
+<dd><p>     first row describing the objective function (maximize problem), 
+     the remaining rows describing constraints; 
+</p></dd>
+<dt>m,n,m1,m2,m3 int :</dt>
+<dd><p>     n = number of variables; 
+     m = total number of constraints; 
+     m1 = number of &lt;=constraints (rows 2 ... m1+1 of M); 
+     m2 = number of &gt;=constraints (rows m1+2 ... m1+m2+1 of M); 
+     m3 = number of == constraints.
+</p></dd>
+</dl>
+
+
+<p>The following assumptions are made: 
+</p><dl compact="compact">
+<dt>* ground field is of type <code>(real,N)</code>, N&gt;=4;</dt>
+<dt>* the matrix M is of size m x n;</dt>
+<dt>* m=m1+m2+m3;</dt>
+<dt>* the entries M[2,1] ,..., M[m+1,1] are non-negative;</dt>
+<dt>* the variables x(i) are non-negative;</dt>
+<dt>* a row  b, a(1) ,..., a(n)  corresponds to  b+a(1)x(1)+...+a(n)x(n);</dt>
+<dt>* for a &lt;=, &gt;=, or == constraint: add &quot;in mind&quot; &gt;=0, &lt;=0, or ==0.</dt>
+</dl>
+  
+
+<p>The output is a list L with 
+</p><dl compact="compact">
+<dt>* L[1] = matrix</dt>
+<dt>* L[2] = int:</dt>
+<dd><p>    0 = finite solution found;  1 = unbounded;  -1 = no solution;  
+   -2 = error occured;
+</p></dd>
+<dt>* L[3] = intvec :</dt>
+<dd><p>   L[3][k] = number of variable which corresponds to row k+1 of L[1];             
+</p></dd>
+<dt>* L[4] = intvec :</dt>
+<dd><p>   L[4][j] = number of variable which is represented by column j+1 of L[1] 
+   (&quot;non-basis variable&quot;);
+</p></dd>
+<dt>* L[5] = int :</dt>
+<dd><p>   number of constraints (= m);
+</p></dd>
+<dt>* L[6] = int :</dt>
+<dd><p>   number of variables (= n).
+</p></dd>
+</dl>
+
+<p>The solution can be read from the first column of L[1] as is done by the 
+procedure <a href="simplexOut.html#simplexOut">simplexOut</a> in <code>solve.lib</code>. 
+</p>
+</dd>
+<dt><code><strong>Example:</strong></code></dt>
+<dd><div class="smallexample">
+<pre class="smallexample">    ring r = (real,10),(x),lp;
+
+    // consider the max. problem:
+    //
+    //    maximize  x(1) + x(2) + 3*x(3) - 0.5*x(4)
+    //
+    //  with constraints:   x(1) +          2*x(3)          &lt;= 740
+    //                             2*x(2)          - 7*x(4) &lt;=   0
+    //                               x(2) -   x(3) + 2*x(4) &gt;=   0.5
+    //                      x(1) +   x(2) +   x(3) +   x(4)  =   9
+    //
+    matrix sm[5][5]=(  0, 1, 1, 3,-0.5,
+                     740,-1, 0,-2, 0,
+                       0, 0,-2, 0, 7,
+                     0.5, 0,-1, 1,-2,
+                       9,-1,-1,-1,-1);
+
+    int n = 4;  // number of constraints
+    int m = 4;  // number of variables
+    int m1= 2;  // number of &lt;= constraints
+    int m2= 1;  // number of &gt;= constraints
+    int m3= 1;  // number of == constraints
+    simplex(sm, n, m, m1, m2, m3);
+&rarr; [1]:
+&rarr;    _[1,1]=17.025
+&rarr;    _[1,2]=-0.95
+&rarr;    _[1,3]=-0.05
+&rarr;    _[1,4]=1.95
+&rarr;    _[1,5]=-1.05
+&rarr;    _[2,1]=730.55
+&rarr;    _[2,2]=0.1
+&rarr;    _[2,3]=-0.1
+&rarr;    _[2,4]=-1.1
+&rarr;    _[2,5]=0.9
+&rarr;    _[3,1]=3.325
+&rarr;    _[3,2]=-0.35
+&rarr;    _[3,3]=-0.15
+&rarr;    _[3,4]=0.35
+&rarr;    _[3,5]=0.35
+&rarr;    _[4,1]=0.95
+&rarr;    _[4,2]=-0.1
+&rarr;    _[4,3]=0.1
+&rarr;    _[4,4]=0.1
+&rarr;    _[4,5]=0.1
+&rarr;    _[5,1]=4.725
+&rarr;    _[5,2]=-0.55
+&rarr;    _[5,3]=0.05
+&rarr;    _[5,4]=0.55
+&rarr;    _[5,5]=-0.45
+&rarr; [2]:
+&rarr;    0
+&rarr; [3]:
+&rarr;    5,2,4,3
+&rarr; [4]:
+&rarr;    1,6,8,7
+&rarr; [5]:
+&rarr;    4
+&rarr; [6]:
+&rarr;    4
+</pre></div>
+</dd>
+</dl>
+<p>See
+<a href="simplexOut.html#simplexOut">simplexOut</a>.
+</p></td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="setring.html#setring" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 5.1.113 setring" align="middle"></a></td>
+<td valign="middle" align="left"><a href="simplify.html#simplify" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 5.1.115 simplify" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions-and-system-variables.html#Functions-and-system-variables" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 5 Functions and system variables" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Tricks-and-pitfalls.html#Tricks-and-pitfalls" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 6 Tricks and pitfalls" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Functions.html#Functions" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 5.1 Functions" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

@@ -1,1902 +1,1902 @@
 key: ! (end of sentence)
-  origin_href: texinfo_14.txt#index-_0021-_0028end-of-sentence_0029
+  origin_href: Insertions.txt#index-_0021-_0028end-of-sentence_0029
   entry: ! (end of sentence)
   texi_entry: @code{! @r{(end of sentence)}}
-  element_href: texinfo_14.txt#Ending-a-Sentence
+  element_href: Insertions.txt#Ending-a-Sentence
   element_text: 13.2.2 Ending a Sentence
 key: " (umlaut accent)
-  origin_href: texinfo_14.txt#index-_0022-_0028umlaut-accent_0029
+  origin_href: Insertions.txt#index-_0022-_0028umlaut-accent_0029
   entry: " (umlaut accent)
   texi_entry: @code{" @r{(umlaut accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: ' (umlaut accent)
-  origin_href: texinfo_14.txt#index-_0027-_0028umlaut-accent_0029
+  origin_href: Insertions.txt#index-_0027-_0028umlaut-accent_0029
   entry: ' (umlaut accent)
   texi_entry: @code{' @r{(umlaut accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: (newline)
-  origin_href: texinfo_14.txt#index-_0028newline_0029
+  origin_href: Insertions.txt#index-_0028newline_0029
   entry: (newline)
   texi_entry: @code{(newline)}
-  element_href: texinfo_14.txt#Multiple-Spaces
+  element_href: Insertions.txt#Multiple-Spaces
   element_text: 13.2.3 Multiple Spaces
 key: (space)
-  origin_href: texinfo_14.txt#index-_0028space_0029
+  origin_href: Insertions.txt#index-_0028space_0029
   entry: (space)
   texi_entry: @code{(space)}
-  element_href: texinfo_14.txt#Multiple-Spaces
+  element_href: Insertions.txt#Multiple-Spaces
   element_text: 13.2.3 Multiple Spaces
 key: (tab)
-  origin_href: texinfo_14.txt#index-_0028tab_0029
+  origin_href: Insertions.txt#index-_0028tab_0029
   entry: (tab)
   texi_entry: @code{(tab)}
-  element_href: texinfo_14.txt#Multiple-Spaces
+  element_href: Insertions.txt#Multiple-Spaces
   element_text: 13.2.3 Multiple Spaces
 key: * (force line break)
-  origin_href: texinfo_15.txt#index-_002a-_0028force-line-break_0029
+  origin_href: Breaks.txt#index-_002a-_0028force-line-break_0029
   entry: * (force line break)
   texi_entry: @code{* @r{(force line break)}}
-  element_href: texinfo_15.txt#Line-Breaks
+  element_href: Breaks.txt#Line-Breaks
   element_text: 14.1 @*: Generate Line Breaks
 key: , (cedilla accent)
-  origin_href: texinfo_14.txt#index-_002c-_0028cedilla-accent_0029
+  origin_href: Insertions.txt#index-_002c-_0028cedilla-accent_0029
   entry: , (cedilla accent)
   texi_entry: @code{, @r{(cedilla accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: - (discretionary hyphen)
-  origin_href: texinfo_15.txt#index-_002d-_0028discretionary-hyphen_0029
+  origin_href: Breaks.txt#index-_002d-_0028discretionary-hyphen_0029
   entry: - (discretionary hyphen)
   texi_entry: @code{- @r{(discretionary hyphen)}}
-  element_href: texinfo_15.txt#g_t_002d-and-hyphenation
+  element_href: Breaks.txt#g_t_002d-and-hyphenation
   element_text: 14.2 @- and @hyphenation: Helping TeX hyphenate
 key: .  (end of sentence)
-  origin_href: texinfo_14.txt#index-_002e--_0028end-of-sentence_0029
+  origin_href: Insertions.txt#index-_002e--_0028end-of-sentence_0029
   entry: .  (end of sentence)
   texi_entry: @code{.  @r{(end of sentence)}}
-  element_href: texinfo_14.txt#Ending-a-Sentence
+  element_href: Insertions.txt#Ending-a-Sentence
   element_text: 13.2.2 Ending a Sentence
 key: <colon> (suppress widening)
-  origin_href: texinfo_14.txt#index-_003ccolon_003e-_0028suppress-widening_0029
+  origin_href: Insertions.txt#index-_003ccolon_003e-_0028suppress-widening_0029
   entry: <colon> (suppress widening)
   texi_entry: @code{<colon> @r{(suppress widening)}}
-  element_href: texinfo_14.txt#Not-Ending-a-Sentence
+  element_href: Insertions.txt#Not-Ending-a-Sentence
   element_text: 13.2.1 Not Ending a Sentence
 key: = (macron accent)
-  origin_href: texinfo_14.txt#index-_003d-_0028macron-accent_0029
+  origin_href: Insertions.txt#index-_003d-_0028macron-accent_0029
   entry: = (macron accent)
   texi_entry: @code{= @r{(macron accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: ? (end of sentence)
-  origin_href: texinfo_14.txt#index-_003f-_0028end-of-sentence_0029
+  origin_href: Insertions.txt#index-_003f-_0028end-of-sentence_0029
   entry: ? (end of sentence)
   texi_entry: @code{? @r{(end of sentence)}}
-  element_href: texinfo_14.txt#Ending-a-Sentence
+  element_href: Insertions.txt#Ending-a-Sentence
   element_text: 13.2.2 Ending a Sentence
 key: @ (literal @)
-  origin_href: texinfo_14.txt#index-_0040-_0028literal-_0040_0029
+  origin_href: Insertions.txt#index-_0040-_0028literal-_0040_0029
   entry: @ (literal `@')
   texi_entry: @code{@@ @r{(literal @samp{@@})}}
-  element_href: texinfo_14.txt#Inserting-An-Atsign
+  element_href: Insertions.txt#Inserting-An-Atsign
   element_text: 13.1.1 Inserting `@' with @@
 key: \ (literal \ in @math)
-  origin_href: texinfo_14.txt#index-_005c-_0028literal-_005c-in-_0040math_0029
+  origin_href: Insertions.txt#index-_005c-_0028literal-_005c-in-_0040math_0029
   entry: \ (literal \ in @math)
   texi_entry: @code{\ @r{(literal \ in @code{@@math})}}
-  element_href: texinfo_14.txt#math
+  element_href: Insertions.txt#math
   element_text: 13.8 @math: Inserting Mathematical Expressions
 key: \emergencystretch
-  origin_href: texinfo_20.txt#index-_005cemergencystretch
+  origin_href: Hardcopy.txt#index-_005cemergencystretch
   entry: \emergencystretch
   texi_entry: @code{\emergencystretch}
-  element_href: texinfo_20.txt#Overfull-hboxes
+  element_href: Hardcopy.txt#Overfull-hboxes
   element_text: 19.10 Overfull "hboxes"
 key: \input (raw TeX startup)
-  origin_href: texinfo_2.txt#index-_005cinput-_0028raw-TeX-startup_0029
+  origin_href: Overview.txt#index-_005cinput-_0028raw-TeX-startup_0029
   entry: \input (raw TeX startup)
   texi_entry: @code{\input @r{(raw @TeX{} startup)}}
-  element_href: texinfo_2.txt#Minimum
+  element_href: Overview.txt#Minimum
   element_text: 1.8 What a Texinfo File Must Have
 key: \mag (raw TeX magnification)
-  origin_href: texinfo_20.txt#index-_005cmag-_0028raw-TeX-magnification_0029
+  origin_href: Hardcopy.txt#index-_005cmag-_0028raw-TeX-magnification_0029
   entry: \mag (raw TeX magnification)
   texi_entry: @code{\mag @r{(raw @TeX{} magnification)}}
-  element_href: texinfo_20.txt#Cropmarks-and-Magnification
+  element_href: Hardcopy.txt#Cropmarks-and-Magnification
   element_text: 19.14 Cropmarks and Magnification
 key: ^ (circumflex accent)
-  origin_href: texinfo_14.txt#index-_005e-_0028circumflex-accent_0029
+  origin_href: Insertions.txt#index-_005e-_0028circumflex-accent_0029
   entry: ^ (circumflex accent)
   texi_entry: @code{^ @r{(circumflex accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: ` (grave accent)
-  origin_href: texinfo_14.txt#index-_0060-_0028grave-accent_0029
+  origin_href: Insertions.txt#index-_0060-_0028grave-accent_0029
   entry: ` (grave accent)
   texi_entry: @code{` @r{(grave accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: { (literal {)
-  origin_href: texinfo_14.txt#index-_007b-_0028literal-_007b_0029
+  origin_href: Insertions.txt#index-_007b-_0028literal-_007b_0029
   entry: { (literal `{')
   texi_entry: @code{@{ @r{(literal @samp{@{})}}
-  element_href: texinfo_14.txt#Inserting-Braces
+  element_href: Insertions.txt#Inserting-Braces
   element_text: 13.1.2 Inserting `{' and `}'with @{ and @}
 key: } (literal })
-  origin_href: texinfo_14.txt#index-_007d-_0028literal-_007d_0029
+  origin_href: Insertions.txt#index-_007d-_0028literal-_007d_0029
   entry: } (literal `}')
   texi_entry: @code{@} @r{(literal @samp{@}})}}
-  element_href: texinfo_14.txt#Inserting-Braces
+  element_href: Insertions.txt#Inserting-Braces
   element_text: 13.1.2 Inserting `{' and `}'with @{ and @}
 key: ~ (tilde accent)
-  origin_href: texinfo_14.txt#index-_007e-_0028tilde-accent_0029
+  origin_href: Insertions.txt#index-_007e-_0028tilde-accent_0029
   entry: ~ (tilde accent)
   texi_entry: @code{~ @r{(tilde accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: aa
-  origin_href: texinfo_14.txt#index-aa
+  origin_href: Insertions.txt#index-aa
   entry: aa
   texi_entry: @code{aa}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: AA
-  origin_href: texinfo_14.txt#index-AA
+  origin_href: Insertions.txt#index-AA
   entry: AA
   texi_entry: @code{AA}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: acronym
-  origin_href: texinfo_10.txt#index-acronym
+  origin_href: Marking-Text.txt#index-acronym
   entry: acronym
   texi_entry: @code{acronym}
-  element_href: texinfo_10.txt#acronym
+  element_href: Marking-Text.txt#acronym
   element_text: 9.1.13 @acronym{acronym}
 key: ae
-  origin_href: texinfo_14.txt#index-ae
+  origin_href: Insertions.txt#index-ae
   entry: ae
   texi_entry: @code{ae}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: AE
-  origin_href: texinfo_14.txt#index-AE
+  origin_href: Insertions.txt#index-AE
   entry: AE
   texi_entry: @code{AE}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: afourlatex
-  origin_href: texinfo_20.txt#index-afourlatex
+  origin_href: Hardcopy.txt#index-afourlatex
   entry: afourlatex
   texi_entry: @code{afourlatex}
-  element_href: texinfo_20.txt#A4-Paper
+  element_href: Hardcopy.txt#A4-Paper
   element_text: 19.12 Printing on A4 Paper
 key: afourpaper
-  origin_href: texinfo_20.txt#index-afourpaper
+  origin_href: Hardcopy.txt#index-afourpaper
   entry: afourpaper
   texi_entry: @code{afourpaper}
-  element_href: texinfo_20.txt#A4-Paper
+  element_href: Hardcopy.txt#A4-Paper
   element_text: 19.12 Printing on A4 Paper
 key: afourwide
-  origin_href: texinfo_20.txt#index-afourwide
+  origin_href: Hardcopy.txt#index-afourwide
   entry: afourwide
   texi_entry: @code{afourwide}
-  element_href: texinfo_20.txt#A4-Paper
+  element_href: Hardcopy.txt#A4-Paper
   element_text: 19.12 Printing on A4 Paper
 key: alias
-  origin_href: texinfo_19.txt#index-alias
+  origin_href: Defining-New-Texinfo-Commands.txt#index-alias
   entry: alias
   texi_entry: @code{alias}
-  element_href: texinfo_19.txt#alias
+  element_href: Defining-New-Texinfo-Commands.txt#alias
   element_text: 18.4 `@alias new=existing'
 key: anchor
-  origin_href: texinfo_7.txt#index-anchor
+  origin_href: Nodes.txt#index-anchor
   entry: anchor
   texi_entry: @code{anchor}
-  element_href: texinfo_7.txt#anchor
+  element_href: Nodes.txt#anchor
   element_text: 6.5 @anchor: Defining Arbitrary Cross-reference Targets
 key: appendix
-  origin_href: texinfo_6.txt#index-appendix
+  origin_href: Structuring.txt#index-appendix
   entry: appendix
   texi_entry: @code{appendix}
-  element_href: texinfo_6.txt#unnumbered-_0026-appendix
+  element_href: Structuring.txt#unnumbered-_0026-appendix
   element_text: 5.5 @unnumbered and @appendix
 key: appendixsec
-  origin_href: texinfo_6.txt#index-appendixsec
+  origin_href: Structuring.txt#index-appendixsec
   entry: appendixsec
   texi_entry: @code{appendixsec}
-  element_href: texinfo_6.txt#unnumberedsec-appendixsec-heading
+  element_href: Structuring.txt#unnumberedsec-appendixsec-heading
   element_text: 5.8 @unnumberedsec, @appendixsec, @heading
 key: appendixsection
-  origin_href: texinfo_6.txt#index-appendixsection
+  origin_href: Structuring.txt#index-appendixsection
   entry: appendixsection
   texi_entry: @code{appendixsection}
-  element_href: texinfo_6.txt#unnumberedsec-appendixsec-heading
+  element_href: Structuring.txt#unnumberedsec-appendixsec-heading
   element_text: 5.8 @unnumberedsec, @appendixsec, @heading
 key: appendixsubsec
-  origin_href: texinfo_6.txt#index-appendixsubsec
+  origin_href: Structuring.txt#index-appendixsubsec
   entry: appendixsubsec
   texi_entry: @code{appendixsubsec}
-  element_href: texinfo_6.txt#unnumberedsubsec-appendixsubsec-subheading
+  element_href: Structuring.txt#unnumberedsubsec-appendixsubsec-subheading
   element_text: 5.10 The @subsection-like Commands
 key: appendixsubsubsec
-  origin_href: texinfo_6.txt#index-appendixsubsubsec
+  origin_href: Structuring.txt#index-appendixsubsubsec
   entry: appendixsubsubsec
   texi_entry: @code{appendixsubsubsec}
-  element_href: texinfo_6.txt#subsubsection
+  element_href: Structuring.txt#subsubsection
   element_text: 5.11 The `subsub' Commands
 key: apply
-  origin_href: texinfo_16.txt#index-apply
+  origin_href: Definition-Commands.txt#index-apply
   entry: apply
   texi_entry: @code{apply}
-  element_href: texinfo_16.txt#Sample-Function-Definition
+  element_href: Definition-Commands.txt#Sample-Function-Definition
   element_text: 15.6 A Sample Function Definition
 key: asis
-  origin_href: texinfo_12.txt#index-asis
+  origin_href: Lists-and-Tables.txt#index-asis
   entry: asis
   texi_entry: @code{asis}
-  element_href: texinfo_12.txt#Using-the-_0040table-Command
+  element_href: Lists-and-Tables.txt#Using-the-_0040table-Command
   element_text: Using the @table Command
 key: author
-  origin_href: texinfo_4.txt#index-author
+  origin_href: Beginning-a-File.txt#index-author
   entry: author
   texi_entry: @code{author}
-  element_href: texinfo_4.txt#title-subtitle-author
+  element_href: Beginning-a-File.txt#title-subtitle-author
   element_text: 3.4.3 @title, @subtitle, and @author
 key: b (bold font)
-  origin_href: texinfo_10.txt#index-b-_0028bold-font_0029
+  origin_href: Marking-Text.txt#index-b-_0028bold-font_0029
   entry: b (bold font)
   texi_entry: @code{b @r{(bold font)}}
-  element_href: texinfo_10.txt#Fonts
+  element_href: Marking-Text.txt#Fonts
   element_text: 9.2.3 Fonts for Printing, Not Info
 key: buffer-end
-  origin_href: texinfo_16.txt#index-buffer_002dend
+  origin_href: Definition-Commands.txt#index-buffer_002dend
   entry: buffer-end
   texi_entry: @code{buffer-end}
-  element_href: texinfo_16.txt#Def-Cmd-Template
+  element_href: Definition-Commands.txt#Def-Cmd-Template
   element_text: 15.1 The Template for a Definition
 key: bullet
-  origin_href: texinfo_14.txt#index-bullet
+  origin_href: Insertions.txt#index-bullet
   entry: bullet
   texi_entry: @code{bullet}
-  element_href: texinfo_14.txt#bullet
+  element_href: Insertions.txt#bullet
   element_text: 13.4.2 @bullet{} (*)
 key: bye
-  origin_href: texinfo_5.txt#index-bye
+  origin_href: Ending-a-File.txt#index-bye
   entry: bye
   texi_entry: @code{bye}
-  element_href: texinfo_5.txt#Ending-a-File
+  element_href: Ending-a-File.txt#Ending-a-File
   element_text: 4 Ending a Texinfo File
 key: bye
-  origin_href: texinfo_5.txt#index-bye-1
+  origin_href: Ending-a-File.txt#index-bye-1
   entry: bye
   texi_entry: @code{bye}
-  element_href: texinfo_5.txt#File-End
+  element_href: Ending-a-File.txt#File-End
   element_text: 4.3 @bye File Ending
 key: c (comment)
-  origin_href: texinfo_2.txt#index-c-_0028comment_0029
+  origin_href: Overview.txt#index-c-_0028comment_0029
   entry: c (comment)
   texi_entry: @code{c @r{(comment)}}
-  element_href: texinfo_2.txt#Comments
+  element_href: Overview.txt#Comments
   element_text: 1.7 Comments
 key: cartouche
-  origin_href: texinfo_11.txt#index-cartouche
+  origin_href: Quotations-and-Examples.txt#index-cartouche
   entry: cartouche
   texi_entry: @code{cartouche}
-  element_href: texinfo_11.txt#cartouche
+  element_href: Quotations-and-Examples.txt#cartouche
   element_text: 10.13 @cartouche: Rounded Rectangles Around Examples
 key: center
-  origin_href: texinfo_4.txt#index-center
+  origin_href: Beginning-a-File.txt#index-center
   entry: center
   texi_entry: @code{center}
-  element_href: texinfo_4.txt#titlefont-center-sp
+  element_href: Beginning-a-File.txt#titlefont-center-sp
   element_text: 3.4.2 @titlefont, @center, and @sp
 key: centerchap
-  origin_href: texinfo_6.txt#index-centerchap
+  origin_href: Structuring.txt#index-centerchap
   entry: centerchap
   texi_entry: @code{centerchap}
-  element_href: texinfo_6.txt#chapter
+  element_href: Structuring.txt#chapter
   element_text: 5.4 @chapter
 key: chapheading
-  origin_href: texinfo_6.txt#index-chapheading
+  origin_href: Structuring.txt#index-chapheading
   entry: chapheading
   texi_entry: @code{chapheading}
-  element_href: texinfo_6.txt#majorheading-_0026-chapheading
+  element_href: Structuring.txt#majorheading-_0026-chapheading
   element_text: 5.6 @majorheading, @chapheading
 key: chapter
-  origin_href: texinfo_6.txt#index-chapter
+  origin_href: Structuring.txt#index-chapter
   entry: chapter
   texi_entry: @code{chapter}
-  element_href: texinfo_6.txt#chapter
+  element_href: Structuring.txt#chapter
   element_text: 5.4 @chapter
 key: cindex
-  origin_href: texinfo_13.txt#index-cindex
+  origin_href: Indices.txt#index-cindex
   entry: cindex
   texi_entry: @code{cindex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: cite
-  origin_href: texinfo_10.txt#index-cite
+  origin_href: Marking-Text.txt#index-cite
   entry: cite
   texi_entry: @code{cite}
-  element_href: texinfo_10.txt#cite
+  element_href: Marking-Text.txt#cite
   element_text: 9.1.12 @cite{reference}
 key: code
-  origin_href: texinfo_10.txt#index-code
+  origin_href: Marking-Text.txt#index-code
   entry: code
   texi_entry: @code{code}
-  element_href: texinfo_10.txt#code
+  element_href: Marking-Text.txt#code
   element_text: 9.1.1 @code{sample-code}
 key: columnfractions
-  origin_href: texinfo_12.txt#index-columnfractions
+  origin_href: Lists-and-Tables.txt#index-columnfractions
   entry: columnfractions
   texi_entry: @code{columnfractions}
-  element_href: texinfo_12.txt#Multitable-Column-Widths
+  element_href: Lists-and-Tables.txt#Multitable-Column-Widths
   element_text: 11.4.1 Multitable Column Widths
 key: command
-  origin_href: texinfo_10.txt#index-command
+  origin_href: Marking-Text.txt#index-command
   entry: command
   texi_entry: @code{command}
-  element_href: texinfo_10.txt#command
+  element_href: Marking-Text.txt#command
   element_text: 9.1.9 @command{command-name}
 key: comment
-  origin_href: texinfo_2.txt#index-comment
+  origin_href: Overview.txt#index-comment
   entry: comment
   texi_entry: @code{comment}
-  element_href: texinfo_2.txt#Comments
+  element_href: Overview.txt#Comments
   element_text: 1.7 Comments
 key: contents
-  origin_href: texinfo_5.txt#index-contents
+  origin_href: Ending-a-File.txt#index-contents
   entry: contents
   texi_entry: @code{contents}
-  element_href: texinfo_5.txt#Contents
+  element_href: Ending-a-File.txt#Contents
   element_text: 4.2 Generating a Table of Contents
 key: copying
-  origin_href: texinfo_4.txt#index-copying
+  origin_href: Beginning-a-File.txt#index-copying
   entry: copying
   texi_entry: @code{copying}
-  element_href: texinfo_4.txt#copying
+  element_href: Beginning-a-File.txt#copying
   element_text: 3.3.1 @copying: Declare copying permissions
 key: copyright
-  origin_href: texinfo_4.txt#index-copyright
+  origin_href: Beginning-a-File.txt#index-copyright
   entry: copyright
   texi_entry: @code{copyright}
-  element_href: texinfo_4.txt#copying
+  element_href: Beginning-a-File.txt#copying
   element_text: 3.3.1 @copying: Declare copying permissions
 key: copyright
-  origin_href: texinfo_14.txt#index-copyright-1
+  origin_href: Insertions.txt#index-copyright-1
   entry: copyright
   texi_entry: @code{copyright}
-  element_href: texinfo_14.txt#copyright-symbol
+  element_href: Insertions.txt#copyright-symbol
   element_text: 13.5.2 @copyright{} ((C))
 key: cropmarks
-  origin_href: texinfo_20.txt#index-cropmarks
+  origin_href: Hardcopy.txt#index-cropmarks
   entry: cropmarks
   texi_entry: @code{cropmarks}
-  element_href: texinfo_20.txt#Cropmarks-and-Magnification
+  element_href: Hardcopy.txt#Cropmarks-and-Magnification
   element_text: 19.14 Cropmarks and Magnification
 key: defcodeindex
-  origin_href: texinfo_13.txt#index-defcodeindex
+  origin_href: Indices.txt#index-defcodeindex
   entry: defcodeindex
   texi_entry: @code{defcodeindex}
-  element_href: texinfo_13.txt#New-Indices
+  element_href: Indices.txt#New-Indices
   element_text: 12.5 Defining New Indices
 key: defcv
-  origin_href: texinfo_16.txt#index-defcv
+  origin_href: Definition-Commands.txt#index-defcv
   entry: defcv
   texi_entry: @code{defcv}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: deffn
-  origin_href: texinfo_16.txt#index-deffn
+  origin_href: Definition-Commands.txt#index-deffn
   entry: deffn
   texi_entry: @code{deffn}
-  element_href: texinfo_16.txt#Functions-Commands
+  element_href: Definition-Commands.txt#Functions-Commands
   element_text: 15.4.1 Functions and Similar Entities
 key: deffnx
-  origin_href: texinfo_16.txt#index-deffnx
+  origin_href: Definition-Commands.txt#index-deffnx
   entry: deffnx
   texi_entry: @code{deffnx}
-  element_href: texinfo_16.txt#deffnx
+  element_href: Definition-Commands.txt#deffnx
   element_text: 15.3 Two or More `First' Lines
 key: defindex
-  origin_href: texinfo_13.txt#index-defindex
+  origin_href: Indices.txt#index-defindex
   entry: defindex
   texi_entry: @code{defindex}
-  element_href: texinfo_13.txt#New-Indices
+  element_href: Indices.txt#New-Indices
   element_text: 12.5 Defining New Indices
 key: definfoenclose
-  origin_href: texinfo_19.txt#index-definfoenclose
+  origin_href: Defining-New-Texinfo-Commands.txt#index-definfoenclose
   entry: definfoenclose
   texi_entry: @code{definfoenclose}
-  element_href: texinfo_19.txt#definfoenclose
+  element_href: Defining-New-Texinfo-Commands.txt#definfoenclose
   element_text: 18.5 `definfoenclose': Customized Highlighting
 key: defivar
-  origin_href: texinfo_16.txt#index-defivar
+  origin_href: Definition-Commands.txt#index-defivar
   entry: defivar
   texi_entry: @code{defivar}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: defmac
-  origin_href: texinfo_16.txt#index-defmac
+  origin_href: Definition-Commands.txt#index-defmac
   entry: defmac
   texi_entry: @code{defmac}
-  element_href: texinfo_16.txt#Functions-Commands
+  element_href: Definition-Commands.txt#Functions-Commands
   element_text: 15.4.1 Functions and Similar Entities
 key: defmethod
-  origin_href: texinfo_16.txt#index-defmethod
+  origin_href: Definition-Commands.txt#index-defmethod
   entry: defmethod
   texi_entry: @code{defmethod}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: defmethod
-  origin_href: texinfo_16.txt#index-defmethod-1
+  origin_href: Definition-Commands.txt#index-defmethod-1
   entry: defmethod
   texi_entry: @code{defmethod}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: defop
-  origin_href: texinfo_16.txt#index-defop
+  origin_href: Definition-Commands.txt#index-defop
   entry: defop
   texi_entry: @code{defop}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: defopt
-  origin_href: texinfo_16.txt#index-defopt
+  origin_href: Definition-Commands.txt#index-defopt
   entry: defopt
   texi_entry: @code{defopt}
-  element_href: texinfo_16.txt#Variables-Commands
+  element_href: Definition-Commands.txt#Variables-Commands
   element_text: 15.4.2 Variables and Similar Entities
 key: defspec
-  origin_href: texinfo_16.txt#index-defspec
+  origin_href: Definition-Commands.txt#index-defspec
   entry: defspec
   texi_entry: @code{defspec}
-  element_href: texinfo_16.txt#Functions-Commands
+  element_href: Definition-Commands.txt#Functions-Commands
   element_text: 15.4.1 Functions and Similar Entities
 key: deftp
-  origin_href: texinfo_16.txt#index-deftp
+  origin_href: Definition-Commands.txt#index-deftp
   entry: deftp
   texi_entry: @code{deftp}
-  element_href: texinfo_16.txt#Data-Types
+  element_href: Definition-Commands.txt#Data-Types
   element_text: 15.4.6 Data Types
 key: deftypefn
-  origin_href: texinfo_16.txt#index-deftypefn
+  origin_href: Definition-Commands.txt#index-deftypefn
   entry: deftypefn
   texi_entry: @code{deftypefn}
-  element_href: texinfo_16.txt#Typed-Functions
+  element_href: Definition-Commands.txt#Typed-Functions
   element_text: 15.4.3 Functions in Typed Languages
 key: deftypefun
-  origin_href: texinfo_16.txt#index-deftypefun
+  origin_href: Definition-Commands.txt#index-deftypefun
   entry: deftypefun
   texi_entry: @code{deftypefun}
-  element_href: texinfo_16.txt#Typed-Functions
+  element_href: Definition-Commands.txt#Typed-Functions
   element_text: 15.4.3 Functions in Typed Languages
 key: deftypeivar
-  origin_href: texinfo_16.txt#index-deftypeivar
+  origin_href: Definition-Commands.txt#index-deftypeivar
   entry: deftypeivar
   texi_entry: @code{deftypeivar}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: deftypeop
-  origin_href: texinfo_16.txt#index-deftypeop
+  origin_href: Definition-Commands.txt#index-deftypeop
   entry: deftypeop
   texi_entry: @code{deftypeop}
-  element_href: texinfo_16.txt#Abstract-Objects
+  element_href: Definition-Commands.txt#Abstract-Objects
   element_text: 15.4.5 Object-Oriented Programming
 key: deftypevar
-  origin_href: texinfo_16.txt#index-deftypevar
+  origin_href: Definition-Commands.txt#index-deftypevar
   entry: deftypevar
   texi_entry: @code{deftypevar}
-  element_href: texinfo_16.txt#Typed-Variables
+  element_href: Definition-Commands.txt#Typed-Variables
   element_text: 15.4.4 Variables in Typed Languages
 key: deftypevr
-  origin_href: texinfo_16.txt#index-deftypevr
+  origin_href: Definition-Commands.txt#index-deftypevr
   entry: deftypevr
   texi_entry: @code{deftypevr}
-  element_href: texinfo_16.txt#Typed-Variables
+  element_href: Definition-Commands.txt#Typed-Variables
   element_text: 15.4.4 Variables in Typed Languages
 key: defun
-  origin_href: texinfo_16.txt#index-defun
+  origin_href: Definition-Commands.txt#index-defun
   entry: defun
   texi_entry: @code{defun}
-  element_href: texinfo_16.txt#Functions-Commands
+  element_href: Definition-Commands.txt#Functions-Commands
   element_text: 15.4.1 Functions and Similar Entities
 key: defvar
-  origin_href: texinfo_16.txt#index-defvar
+  origin_href: Definition-Commands.txt#index-defvar
   entry: defvar
   texi_entry: @code{defvar}
-  element_href: texinfo_16.txt#Variables-Commands
+  element_href: Definition-Commands.txt#Variables-Commands
   element_text: 15.4.2 Variables and Similar Entities
 key: defvr
-  origin_href: texinfo_16.txt#index-defvr
+  origin_href: Definition-Commands.txt#index-defvr
   entry: defvr
   texi_entry: @code{defvr}
-  element_href: texinfo_16.txt#Variables-Commands
+  element_href: Definition-Commands.txt#Variables-Commands
   element_text: 15.4.2 Variables and Similar Entities
 key: dfn
-  origin_href: texinfo_10.txt#index-dfn
+  origin_href: Marking-Text.txt#index-dfn
   entry: dfn
   texi_entry: @code{dfn}
-  element_href: texinfo_10.txt#dfn
+  element_href: Marking-Text.txt#dfn
   element_text: 9.1.11 @dfn{term}
 key: dircategory
-  origin_href: texinfo_21.txt#index-dircategory
+  origin_href: Creating-and-Installing-Info-Files.txt#index-dircategory
   entry: dircategory
   texi_entry: @code{dircategory}
-  element_href: texinfo_21.txt#Installing-Dir-Entries
+  element_href: Creating-and-Installing-Info-Files.txt#Installing-Dir-Entries
   element_text: 20.2.4 Installing Info Directory Files
 key: direntry
-  origin_href: texinfo_21.txt#index-direntry
+  origin_href: Creating-and-Installing-Info-Files.txt#index-direntry
   entry: direntry
   texi_entry: @code{direntry}
-  element_href: texinfo_21.txt#Installing-Dir-Entries
+  element_href: Creating-and-Installing-Info-Files.txt#Installing-Dir-Entries
   element_text: 20.2.4 Installing Info Directory Files
 key: display
-  origin_href: texinfo_11.txt#index-display
+  origin_href: Quotations-and-Examples.txt#index-display
   entry: display
   texi_entry: @code{display}
-  element_href: texinfo_11.txt#display
+  element_href: Quotations-and-Examples.txt#display
   element_text: 10.8 @display and @smalldisplay
 key: dmn
-  origin_href: texinfo_14.txt#index-dmn
+  origin_href: Insertions.txt#index-dmn
   entry: dmn
   texi_entry: @code{dmn}
-  element_href: texinfo_14.txt#dmn
+  element_href: Insertions.txt#dmn
   element_text: 13.2.4 @dmn{dimension}: Format a Dimension
 key: documentdescription
-  origin_href: texinfo_4.txt#index-documentdescription
+  origin_href: Beginning-a-File.txt#index-documentdescription
   entry: documentdescription
   texi_entry: @code{documentdescription}
-  element_href: texinfo_4.txt#documentdescription
+  element_href: Beginning-a-File.txt#documentdescription
   element_text: 3.6.1 @documentdescription: Summary text
 key: documentencoding
-  origin_href: texinfo_18.txt#index-documentencoding
+  origin_href: Internationalization.txt#index-documentencoding
   entry: documentencoding
   texi_entry: @code{documentencoding}
-  element_href: texinfo_18.txt#documentencoding
+  element_href: Internationalization.txt#documentencoding
   element_text: 17.2 @documentencoding enc: Set Input Encoding
 key: documentlanguage
-  origin_href: texinfo_18.txt#index-documentlanguage
+  origin_href: Internationalization.txt#index-documentlanguage
   entry: documentlanguage
   texi_entry: @code{documentlanguage}
-  element_href: texinfo_18.txt#documentlanguage
+  element_href: Internationalization.txt#documentlanguage
   element_text: 17.1 @documentlanguage cc: Set the Document Language
 key: dotaccent
-  origin_href: texinfo_14.txt#index-dotaccent
+  origin_href: Insertions.txt#index-dotaccent
   entry: dotaccent
   texi_entry: @code{dotaccent}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: dotless
-  origin_href: texinfo_14.txt#index-dotless
+  origin_href: Insertions.txt#index-dotless
   entry: dotless
   texi_entry: @code{dotless}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: dots
-  origin_href: texinfo_14.txt#index-dots
+  origin_href: Insertions.txt#index-dots
   entry: dots
   texi_entry: @code{dots}
-  element_href: texinfo_14.txt#dots
+  element_href: Insertions.txt#dots
   element_text: 13.4.1 @dots{} (...) and @enddots{} (...)
 key: email
-  origin_href: texinfo_10.txt#index-email
+  origin_href: Marking-Text.txt#index-email
   entry: email
   texi_entry: @code{email}
-  element_href: texinfo_10.txt#email
+  element_href: Marking-Text.txt#email
   element_text: 9.1.15 @email{email-address[, displayed-text]}
 key: emph
-  origin_href: texinfo_10.txt#index-emph
+  origin_href: Marking-Text.txt#index-emph
   entry: emph
   texi_entry: @code{emph}
-  element_href: texinfo_10.txt#emph-_0026-strong
+  element_href: Marking-Text.txt#emph-_0026-strong
   element_text: 9.2.1 @emph{text} and @strong{text}
 key: end
-  origin_href: texinfo_11.txt#index-end
+  origin_href: Quotations-and-Examples.txt#index-end
   entry: end
   texi_entry: @code{end}
-  element_href: texinfo_11.txt#Quotations-and-Examples
+  element_href: Quotations-and-Examples.txt#Quotations-and-Examples
   element_text: 10 Quotations and Examples
 key: end
-  origin_href: texinfo_12.txt#index-end-1
+  origin_href: Lists-and-Tables.txt#index-end-1
   entry: end
   texi_entry: @code{end}
-  element_href: texinfo_12.txt#Introducing-Lists-1
+  element_href: Lists-and-Tables.txt#Introducing-Lists-1
   element_text: Introducing Lists
 key: end titlepage
-  origin_href: texinfo_4.txt#index-end-titlepage
+  origin_href: Beginning-a-File.txt#index-end-titlepage
   entry: end titlepage
   texi_entry: @code{end titlepage}
-  element_href: texinfo_4.txt#end-titlepage
+  element_href: Beginning-a-File.txt#end-titlepage
   element_text: 3.4.5 Heading Generation
 key: enddots
-  origin_href: texinfo_14.txt#index-enddots
+  origin_href: Insertions.txt#index-enddots
   entry: enddots
   texi_entry: @code{enddots}
-  element_href: texinfo_14.txt#dots
+  element_href: Insertions.txt#dots
   element_text: 13.4.1 @dots{} (...) and @enddots{} (...)
 key: enumerate
-  origin_href: texinfo_12.txt#index-enumerate
+  origin_href: Lists-and-Tables.txt#index-enumerate
   entry: enumerate
   texi_entry: @code{enumerate}
-  element_href: texinfo_12.txt#enumerate
+  element_href: Lists-and-Tables.txt#enumerate
   element_text: 11.2 @enumerate: Making a Numbered or Lettered List
 key: env
-  origin_href: texinfo_10.txt#index-env
+  origin_href: Marking-Text.txt#index-env
   entry: env
   texi_entry: @code{env}
-  element_href: texinfo_10.txt#env
+  element_href: Marking-Text.txt#env
   element_text: 9.1.7 @env{environment-variable}
 key: equiv
-  origin_href: texinfo_14.txt#index-equiv
+  origin_href: Insertions.txt#index-equiv
   entry: equiv
   texi_entry: @code{equiv}
-  element_href: texinfo_14.txt#Equivalence
+  element_href: Insertions.txt#Equivalence
   element_text: 13.9.6 @equiv{} (==): Indicating Equivalence
 key: error
-  origin_href: texinfo_14.txt#index-error
+  origin_href: Insertions.txt#index-error
   entry: error
   texi_entry: @code{error}
-  element_href: texinfo_14.txt#Error-Glyph
+  element_href: Insertions.txt#Error-Glyph
   element_text: 13.9.5 @error{} (error-->): Indicating an Error Message
 key: evenfooting
-  origin_href: texinfo_26.txt#index-evenfooting
+  origin_href: Headings.txt#index-evenfooting
   entry: evenfooting
   texi_entry: @code{evenfooting}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: evenheading
-  origin_href: texinfo_26.txt#index-evenheading
+  origin_href: Headings.txt#index-evenheading
   entry: evenheading
   texi_entry: @code{evenheading}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: everyfooting
-  origin_href: texinfo_26.txt#index-everyfooting
+  origin_href: Headings.txt#index-everyfooting
   entry: everyfooting
   texi_entry: @code{everyfooting}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: everyheading
-  origin_href: texinfo_26.txt#index-everyheading
+  origin_href: Headings.txt#index-everyheading
   entry: everyheading
   texi_entry: @code{everyheading}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: example
-  origin_href: texinfo_11.txt#index-example
+  origin_href: Quotations-and-Examples.txt#index-example
   entry: example
   texi_entry: @code{example}
-  element_href: texinfo_11.txt#example
+  element_href: Quotations-and-Examples.txt#example
   element_text: 10.3 @example: Example Text
 key: exampleindent
-  origin_href: texinfo_4.txt#index-exampleindent
+  origin_href: Beginning-a-File.txt#index-exampleindent
   entry: exampleindent
   texi_entry: @code{exampleindent}
-  element_href: texinfo_4.txt#exampleindent
+  element_href: Beginning-a-File.txt#exampleindent
   element_text: 3.6.4 @exampleindent: Environment Indenting
 key: exclamdown
-  origin_href: texinfo_14.txt#index-exclamdown
+  origin_href: Insertions.txt#index-exclamdown
   entry: exclamdown
   texi_entry: @code{exclamdown}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: exdent
-  origin_href: texinfo_11.txt#index-exdent
+  origin_href: Quotations-and-Examples.txt#index-exdent
   entry: exdent
   texi_entry: @code{exdent}
-  element_href: texinfo_11.txt#exdent
+  element_href: Quotations-and-Examples.txt#exdent
   element_text: 10.10 @exdent: Undoing a Line's Indentation
 key: expansion
-  origin_href: texinfo_14.txt#index-expansion
+  origin_href: Insertions.txt#index-expansion
   entry: expansion
   texi_entry: @code{expansion}
-  element_href: texinfo_14.txt#expansion
+  element_href: Insertions.txt#expansion
   element_text: 13.9.3 @expansion{} (==>): Indicating an Expansion
 key: file
-  origin_href: texinfo_10.txt#index-file
+  origin_href: Marking-Text.txt#index-file
   entry: file
   texi_entry: @code{file}
-  element_href: texinfo_10.txt#file
+  element_href: Marking-Text.txt#file
   element_text: 9.1.8 @file{file-name}
 key: filll TeX dimension
-  origin_href: texinfo_4.txt#index-filll-TeX-dimension
+  origin_href: Beginning-a-File.txt#index-filll-TeX-dimension
   entry: filll TeX dimension
   texi_entry: @code{filll @r{@TeX{} dimension}}
-  element_href: texinfo_4.txt#Copyright
+  element_href: Beginning-a-File.txt#Copyright
   element_text: 3.4.4 Copyright Page
 key: finalout
-  origin_href: texinfo_20.txt#index-finalout
+  origin_href: Hardcopy.txt#index-finalout
   entry: finalout
   texi_entry: @code{finalout}
-  element_href: texinfo_20.txt#Overfull-hboxes
+  element_href: Hardcopy.txt#Overfull-hboxes
   element_text: 19.10 Overfull "hboxes"
 key: findex
-  origin_href: texinfo_13.txt#index-findex
+  origin_href: Indices.txt#index-findex
   entry: findex
   texi_entry: @code{findex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: flushleft
-  origin_href: texinfo_11.txt#index-flushleft
+  origin_href: Quotations-and-Examples.txt#index-flushleft
   entry: flushleft
   texi_entry: @code{flushleft}
-  element_href: texinfo_11.txt#flushleft-_0026-flushright
+  element_href: Quotations-and-Examples.txt#flushleft-_0026-flushright
   element_text: 10.11 @flushleft and @flushright
 key: flushright
-  origin_href: texinfo_11.txt#index-flushright
+  origin_href: Quotations-and-Examples.txt#index-flushright
   entry: flushright
   texi_entry: @code{flushright}
-  element_href: texinfo_11.txt#flushleft-_0026-flushright
+  element_href: Quotations-and-Examples.txt#flushleft-_0026-flushright
   element_text: 10.11 @flushleft and @flushright
 key: foobar
-  origin_href: texinfo_16.txt#index-foobar
+  origin_href: Definition-Commands.txt#index-foobar
   entry: foobar
   texi_entry: @code{foobar}
-  element_href: texinfo_16.txt#Optional-Arguments
+  element_href: Definition-Commands.txt#Optional-Arguments
   element_text: 15.2 Optional and Repeated Arguments
 key: footnote
-  origin_href: texinfo_14.txt#index-footnote
+  origin_href: Insertions.txt#index-footnote
   entry: footnote
   texi_entry: @code{footnote}
-  element_href: texinfo_14.txt#Footnotes
+  element_href: Insertions.txt#Footnotes
   element_text: 13.10 Footnotes
 key: footnotestyle
-  origin_href: texinfo_14.txt#index-footnotestyle
+  origin_href: Insertions.txt#index-footnotestyle
   entry: footnotestyle
   texi_entry: @code{footnotestyle}
-  element_href: texinfo_14.txt#Footnote-Styles
+  element_href: Insertions.txt#Footnote-Styles
   element_text: 13.10.2 Footnote Styles
 key: format
-  origin_href: texinfo_11.txt#index-format
+  origin_href: Quotations-and-Examples.txt#index-format
   entry: format
   texi_entry: @code{format}
-  element_href: texinfo_11.txt#format
+  element_href: Quotations-and-Examples.txt#format
   element_text: 10.9 @format and @smallformat
 key: forward-word
-  origin_href: texinfo_16.txt#index-forward_002dword
+  origin_href: Definition-Commands.txt#index-forward_002dword
   entry: forward-word
   texi_entry: @code{forward-word}
-  element_href: texinfo_16.txt#Def-Cmd-Template
+  element_href: Definition-Commands.txt#Def-Cmd-Template
   element_text: 15.1 The Template for a Definition
 key: ftable
-  origin_href: texinfo_12.txt#index-ftable
+  origin_href: Lists-and-Tables.txt#index-ftable
   entry: ftable
   texi_entry: @code{ftable}
-  element_href: texinfo_12.txt#ftable-vtable
+  element_href: Lists-and-Tables.txt#ftable-vtable
   element_text: 11.3.1 @ftable and @vtable
 key: group
-  origin_href: texinfo_15.txt#index-group
+  origin_href: Breaks.txt#index-group
   entry: group
   texi_entry: @code{group}
-  element_href: texinfo_15.txt#group
+  element_href: Breaks.txt#group
   element_text: 14.6 @group: Prevent Page Breaks
 key: H (Hungarian umlaut accent)
-  origin_href: texinfo_14.txt#index-H-_0028Hungarian-umlaut-accent_0029
+  origin_href: Insertions.txt#index-H-_0028Hungarian-umlaut-accent_0029
   entry: H (Hungarian umlaut accent)
   texi_entry: @code{H @r{(Hungarian umlaut accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: hbox
-  origin_href: texinfo_20.txt#index-hbox
+  origin_href: Hardcopy.txt#index-hbox
   entry: hbox
   texi_entry: @code{hbox}
-  element_href: texinfo_20.txt#Overfull-hboxes
+  element_href: Hardcopy.txt#Overfull-hboxes
   element_text: 19.10 Overfull "hboxes"
 key: heading
-  origin_href: texinfo_6.txt#index-heading
+  origin_href: Structuring.txt#index-heading
   entry: heading
   texi_entry: @code{heading}
-  element_href: texinfo_6.txt#unnumberedsec-appendixsec-heading
+  element_href: Structuring.txt#unnumberedsec-appendixsec-heading
   element_text: 5.8 @unnumberedsec, @appendixsec, @heading
 key: headings
-  origin_href: texinfo_4.txt#index-headings
+  origin_href: Beginning-a-File.txt#index-headings
   entry: headings
   texi_entry: @code{headings}
-  element_href: texinfo_4.txt#headings-on-off
+  element_href: Beginning-a-File.txt#headings-on-off
   element_text: 3.4.6 The @headings Command
 key: headword
-  origin_href: texinfo_19.txt#index-headword
+  origin_href: Defining-New-Texinfo-Commands.txt#index-headword
   entry: headword
   texi_entry: @code{headword}
-  element_href: texinfo_19.txt#definfoenclose
+  element_href: Defining-New-Texinfo-Commands.txt#definfoenclose
   element_text: 18.5 `definfoenclose': Customized Highlighting
 key: html
-  origin_href: texinfo_17.txt#index-html
+  origin_href: Conditionals.txt#index-html
   entry: html
   texi_entry: @code{html}
-  element_href: texinfo_17.txt#Raw-Formatter-Commands
+  element_href: Conditionals.txt#Raw-Formatter-Commands
   element_text: 16.3 Raw Formatter Commands
 key: hyphenation
-  origin_href: texinfo_15.txt#index-hyphenation
+  origin_href: Breaks.txt#index-hyphenation
   entry: hyphenation
   texi_entry: @code{hyphenation}
-  element_href: texinfo_15.txt#g_t_002d-and-hyphenation
+  element_href: Breaks.txt#g_t_002d-and-hyphenation
   element_text: 14.2 @- and @hyphenation: Helping TeX hyphenate
 key: i (italic font)
-  origin_href: texinfo_10.txt#index-i-_0028italic-font_0029
+  origin_href: Marking-Text.txt#index-i-_0028italic-font_0029
   entry: i (italic font)
   texi_entry: @code{i @r{(italic font)}}
-  element_href: texinfo_10.txt#Fonts
+  element_href: Marking-Text.txt#Fonts
   element_text: 9.2.3 Fonts for Printing, Not Info
 key: ifclear
-  origin_href: texinfo_17.txt#index-ifclear
+  origin_href: Conditionals.txt#index-ifclear
   entry: ifclear
   texi_entry: @code{ifclear}
-  element_href: texinfo_17.txt#ifset-ifclear
+  element_href: Conditionals.txt#ifset-ifclear
   element_text: 16.4.2 @ifset and @ifclear
 key: ifhtml
-  origin_href: texinfo_17.txt#index-ifhtml
+  origin_href: Conditionals.txt#index-ifhtml
   entry: ifhtml
   texi_entry: @code{ifhtml}
-  element_href: texinfo_17.txt#Conditional-Commands
+  element_href: Conditionals.txt#Conditional-Commands
   element_text: 16.1 Conditional Commands
 key: ifhtml
-  origin_href: texinfo_17.txt#index-ifhtml-1
+  origin_href: Conditionals.txt#index-ifhtml-1
   entry: ifhtml
   texi_entry: @code{ifhtml}
-  element_href: texinfo_17.txt#Raw-Formatter-Commands
+  element_href: Conditionals.txt#Raw-Formatter-Commands
   element_text: 16.3 Raw Formatter Commands
 key: ifinfo
-  origin_href: texinfo_17.txt#index-ifinfo
+  origin_href: Conditionals.txt#index-ifinfo
   entry: ifinfo
   texi_entry: @code{ifinfo}
-  element_href: texinfo_17.txt#Conditional-Commands
+  element_href: Conditionals.txt#Conditional-Commands
   element_text: 16.1 Conditional Commands
 key: ifnothtml
-  origin_href: texinfo_17.txt#index-ifnothtml
+  origin_href: Conditionals.txt#index-ifnothtml
   entry: ifnothtml
   texi_entry: @code{ifnothtml}
-  element_href: texinfo_17.txt#Conditional-Not-Commands
+  element_href: Conditionals.txt#Conditional-Not-Commands
   element_text: 16.2 Conditional Not Commands
 key: ifnotinfo
-  origin_href: texinfo_17.txt#index-ifnotinfo
+  origin_href: Conditionals.txt#index-ifnotinfo
   entry: ifnotinfo
   texi_entry: @code{ifnotinfo}
-  element_href: texinfo_17.txt#Conditional-Not-Commands
+  element_href: Conditionals.txt#Conditional-Not-Commands
   element_text: 16.2 Conditional Not Commands
 key: ifnotplaintext
-  origin_href: texinfo_17.txt#index-ifnotplaintext
+  origin_href: Conditionals.txt#index-ifnotplaintext
   entry: ifnotplaintext
   texi_entry: @code{ifnotplaintext}
-  element_href: texinfo_17.txt#Conditional-Not-Commands
+  element_href: Conditionals.txt#Conditional-Not-Commands
   element_text: 16.2 Conditional Not Commands
 key: ifnottex
-  origin_href: texinfo_17.txt#index-ifnottex
+  origin_href: Conditionals.txt#index-ifnottex
   entry: ifnottex
   texi_entry: @code{ifnottex}
-  element_href: texinfo_17.txt#Conditional-Not-Commands
+  element_href: Conditionals.txt#Conditional-Not-Commands
   element_text: 16.2 Conditional Not Commands
 key: ifplaintext
-  origin_href: texinfo_17.txt#index-ifplaintext
+  origin_href: Conditionals.txt#index-ifplaintext
   entry: ifplaintext
   texi_entry: @code{ifplaintext}
-  element_href: texinfo_17.txt#Conditional-Commands
+  element_href: Conditionals.txt#Conditional-Commands
   element_text: 16.1 Conditional Commands
 key: ifset
-  origin_href: texinfo_17.txt#index-ifset
+  origin_href: Conditionals.txt#index-ifset
   entry: ifset
   texi_entry: @code{ifset}
-  element_href: texinfo_17.txt#ifset-ifclear
+  element_href: Conditionals.txt#ifset-ifclear
   element_text: 16.4.2 @ifset and @ifclear
 key: iftex
-  origin_href: texinfo_17.txt#index-iftex
+  origin_href: Conditionals.txt#index-iftex
   entry: iftex
   texi_entry: @code{iftex}
-  element_href: texinfo_17.txt#Conditional-Commands
+  element_href: Conditionals.txt#Conditional-Commands
   element_text: 16.1 Conditional Commands
 key: ignore
-  origin_href: texinfo_2.txt#index-ignore
+  origin_href: Overview.txt#index-ignore
   entry: ignore
   texi_entry: @code{ignore}
-  element_href: texinfo_2.txt#Comments
+  element_href: Overview.txt#Comments
   element_text: 1.7 Comments
 key: image
-  origin_href: texinfo_14.txt#index-image
+  origin_href: Insertions.txt#index-image
   entry: image
   texi_entry: @code{image}
-  element_href: texinfo_14.txt#Images
+  element_href: Insertions.txt#Images
   element_text: 13.11 Inserting Images
 key: include
-  origin_href: texinfo_25.txt#index-include
+  origin_href: Include-Files.txt#index-include
   entry: include
   texi_entry: @code{include}
-  element_href: texinfo_25.txt#Using-Include-Files
+  element_href: Include-Files.txt#Using-Include-Files
   element_text: D.1 How to Use Include Files
 key: Info-validate
-  origin_href: texinfo_27.txt#index-Info_002dvalidate
+  origin_href: Catching-Mistakes.txt#index-Info_002dvalidate
   entry: Info-validate
   texi_entry: @code{Info-validate}
-  element_href: texinfo_27.txt#Running-Info_002dValidate
+  element_href: Catching-Mistakes.txt#Running-Info_002dValidate
   element_text: F.5 Finding Badly Referenced Nodes
 key: inforef
-  origin_href: texinfo_9.txt#index-inforef
+  origin_href: Cross-References.txt#index-inforef
   entry: inforef
   texi_entry: @code{inforef}
-  element_href: texinfo_9.txt#inforef
+  element_href: Cross-References.txt#inforef
   element_text: 8.7 @inforef
 key: insertcopying
-  origin_href: texinfo_4.txt#index-insertcopying
+  origin_href: Beginning-a-File.txt#index-insertcopying
   entry: insertcopying
   texi_entry: @code{insertcopying}
-  element_href: texinfo_4.txt#insertcopying
+  element_href: Beginning-a-File.txt#insertcopying
   element_text: 3.3.2 @insertcopying: Include permissions text
 key: isearch-backward
-  origin_href: texinfo_16.txt#index-isearch_002dbackward
+  origin_href: Definition-Commands.txt#index-isearch_002dbackward
   entry: isearch-backward
   texi_entry: @code{isearch-backward}
-  element_href: texinfo_16.txt#deffnx
+  element_href: Definition-Commands.txt#deffnx
   element_text: 15.3 Two or More `First' Lines
 key: isearch-forward
-  origin_href: texinfo_16.txt#index-isearch_002dforward
+  origin_href: Definition-Commands.txt#index-isearch_002dforward
   entry: isearch-forward
   texi_entry: @code{isearch-forward}
-  element_href: texinfo_16.txt#deffnx
+  element_href: Definition-Commands.txt#deffnx
   element_text: 15.3 Two or More `First' Lines
 key: item
-  origin_href: texinfo_12.txt#index-item
+  origin_href: Lists-and-Tables.txt#index-item
   entry: item
   texi_entry: @code{item}
-  element_href: texinfo_12.txt#itemize
+  element_href: Lists-and-Tables.txt#itemize
   element_text: 11.1 @itemize: Making an Itemized List
 key: item
-  origin_href: texinfo_12.txt#index-item-1
+  origin_href: Lists-and-Tables.txt#index-item-1
   entry: item
   texi_entry: @code{item}
-  element_href: texinfo_12.txt#Using-the-_0040table-Command
+  element_href: Lists-and-Tables.txt#Using-the-_0040table-Command
   element_text: Using the @table Command
 key: item
-  origin_href: texinfo_12.txt#index-item-2
+  origin_href: Lists-and-Tables.txt#index-item-2
   entry: item
   texi_entry: @code{item}
-  element_href: texinfo_12.txt#Multitable-Rows
+  element_href: Lists-and-Tables.txt#Multitable-Rows
   element_text: 11.4.2 Multitable Rows
 key: itemize
-  origin_href: texinfo_12.txt#index-itemize
+  origin_href: Lists-and-Tables.txt#index-itemize
   entry: itemize
   texi_entry: @code{itemize}
-  element_href: texinfo_12.txt#itemize
+  element_href: Lists-and-Tables.txt#itemize
   element_text: 11.1 @itemize: Making an Itemized List
 key: itemx
-  origin_href: texinfo_12.txt#index-itemx
+  origin_href: Lists-and-Tables.txt#index-itemx
   entry: itemx
   texi_entry: @code{itemx}
-  element_href: texinfo_12.txt#itemx
+  element_href: Lists-and-Tables.txt#itemx
   element_text: 11.3.2 @itemx
 key: kbd
-  origin_href: texinfo_10.txt#index-kbd
+  origin_href: Marking-Text.txt#index-kbd
   entry: kbd
   texi_entry: @code{kbd}
-  element_href: texinfo_10.txt#kbd
+  element_href: Marking-Text.txt#kbd
   element_text: 9.1.2 @kbd{keyboard-characters}
 key: kbdinputstyle
-  origin_href: texinfo_10.txt#index-kbdinputstyle
+  origin_href: Marking-Text.txt#index-kbdinputstyle
   entry: kbdinputstyle
   texi_entry: @code{kbdinputstyle}
-  element_href: texinfo_10.txt#kbd
+  element_href: Marking-Text.txt#kbd
   element_text: 9.1.2 @kbd{keyboard-characters}
 key: key
-  origin_href: texinfo_10.txt#index-key
+  origin_href: Marking-Text.txt#index-key
   entry: key
   texi_entry: @code{key}
-  element_href: texinfo_10.txt#key
+  element_href: Marking-Text.txt#key
   element_text: 9.1.3 @key{key-name}
 key: kindex
-  origin_href: texinfo_13.txt#index-kindex
+  origin_href: Indices.txt#index-kindex
   entry: kindex
   texi_entry: @code{kindex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: l
-  origin_href: texinfo_14.txt#index-l
+  origin_href: Insertions.txt#index-l
   entry: l
   texi_entry: @code{l}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: L
-  origin_href: texinfo_14.txt#index-L
+  origin_href: Insertions.txt#index-L
   entry: L
   texi_entry: @code{L}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: lisp
-  origin_href: texinfo_11.txt#index-lisp
+  origin_href: Quotations-and-Examples.txt#index-lisp
   entry: lisp
   texi_entry: @code{lisp}
-  element_href: texinfo_11.txt#lisp
+  element_href: Quotations-and-Examples.txt#lisp
   element_text: 10.6 @lisp: Marking a Lisp Example
 key: lowersections
-  origin_href: texinfo_6.txt#index-lowersections
+  origin_href: Structuring.txt#index-lowersections
   entry: lowersections
   texi_entry: @code{lowersections}
-  element_href: texinfo_6.txt#Raise_002flower-sections
+  element_href: Structuring.txt#Raise_002flower-sections
   element_text: 5.12 @raisesections and @lowersections
 key: macro
-  origin_href: texinfo_19.txt#index-macro
+  origin_href: Defining-New-Texinfo-Commands.txt#index-macro
   entry: macro
   texi_entry: @code{macro}
-  element_href: texinfo_19.txt#Defining-Macros
+  element_href: Defining-New-Texinfo-Commands.txt#Defining-Macros
   element_text: 18.1 Defining Macros
 key: majorheading
-  origin_href: texinfo_6.txt#index-majorheading
+  origin_href: Structuring.txt#index-majorheading
   entry: majorheading
   texi_entry: @code{majorheading}
-  element_href: texinfo_6.txt#majorheading-_0026-chapheading
+  element_href: Structuring.txt#majorheading-_0026-chapheading
   element_text: 5.6 @majorheading, @chapheading
 key: makeinfo-buffer
-  origin_href: texinfo_21.txt#index-makeinfo_002dbuffer
+  origin_href: Creating-and-Installing-Info-Files.txt#index-makeinfo_002dbuffer
   entry: makeinfo-buffer
   texi_entry: @code{makeinfo-buffer}
-  element_href: texinfo_21.txt#makeinfo-in-Emacs
+  element_href: Creating-and-Installing-Info-Files.txt#makeinfo-in-Emacs
   element_text: 20.1.5 Running makeinfo inside Emacs
 key: makeinfo-kill-job
-  origin_href: texinfo_21.txt#index-makeinfo_002dkill_002djob
+  origin_href: Creating-and-Installing-Info-Files.txt#index-makeinfo_002dkill_002djob
   entry: makeinfo-kill-job
   texi_entry: @code{makeinfo-kill-job}
-  element_href: texinfo_21.txt#makeinfo-in-Emacs
+  element_href: Creating-and-Installing-Info-Files.txt#makeinfo-in-Emacs
   element_text: 20.1.5 Running makeinfo inside Emacs
 key: makeinfo-recenter-output-buffer
-  origin_href: texinfo_21.txt#index-makeinfo_002drecenter_002doutput_002dbuffer
+  origin_href: Creating-and-Installing-Info-Files.txt#index-makeinfo_002drecenter_002doutput_002dbuffer
   entry: makeinfo-recenter-output-buffer
   texi_entry: @code{makeinfo-recenter-output-buffer}
-  element_href: texinfo_21.txt#makeinfo-in-Emacs
+  element_href: Creating-and-Installing-Info-Files.txt#makeinfo-in-Emacs
   element_text: 20.1.5 Running makeinfo inside Emacs
 key: makeinfo-region
-  origin_href: texinfo_21.txt#index-makeinfo_002dregion
+  origin_href: Creating-and-Installing-Info-Files.txt#index-makeinfo_002dregion
   entry: makeinfo-region
   texi_entry: @code{makeinfo-region}
-  element_href: texinfo_21.txt#makeinfo-in-Emacs
+  element_href: Creating-and-Installing-Info-Files.txt#makeinfo-in-Emacs
   element_text: 20.1.5 Running makeinfo inside Emacs
 key: math
-  origin_href: texinfo_14.txt#index-math
+  origin_href: Insertions.txt#index-math
   entry: math
   texi_entry: @code{math}
-  element_href: texinfo_14.txt#math
+  element_href: Insertions.txt#math
   element_text: 13.8 @math: Inserting Mathematical Expressions
 key: menu
-  origin_href: texinfo_8.txt#index-menu
+  origin_href: Menus.txt#index-menu
   entry: menu
   texi_entry: @code{menu}
-  element_href: texinfo_8.txt#Menus
+  element_href: Menus.txt#Menus
   element_text: 7 Menus
 key: minus
-  origin_href: texinfo_14.txt#index-minus
+  origin_href: Insertions.txt#index-minus
   entry: minus
   texi_entry: @code{minus}
-  element_href: texinfo_14.txt#minus
+  element_href: Insertions.txt#minus
   element_text: 13.7 @minus{} (-): Inserting a Minus Sign
 key: multitable
-  origin_href: texinfo_12.txt#index-multitable
+  origin_href: Lists-and-Tables.txt#index-multitable
   entry: multitable
   texi_entry: @code{multitable}
-  element_href: texinfo_12.txt#Multi_002dcolumn-Tables
+  element_href: Lists-and-Tables.txt#Multi_002dcolumn-Tables
   element_text: 11.4 Multi-column Tables
 key: need
-  origin_href: texinfo_15.txt#index-need
+  origin_href: Breaks.txt#index-need
   entry: need
   texi_entry: @code{need}
-  element_href: texinfo_15.txt#need
+  element_href: Breaks.txt#need
   element_text: 14.7 @need mils: Prevent Page Breaks
 key: next-error
-  origin_href: texinfo_21.txt#index-next_002derror
+  origin_href: Creating-and-Installing-Info-Files.txt#index-next_002derror
   entry: next-error
   texi_entry: @code{next-error}
-  element_href: texinfo_21.txt#makeinfo-in-Emacs
+  element_href: Creating-and-Installing-Info-Files.txt#makeinfo-in-Emacs
   element_text: 20.1.5 Running makeinfo inside Emacs
 key: node
-  origin_href: texinfo_7.txt#index-node
+  origin_href: Nodes.txt#index-node
   entry: node
   texi_entry: @code{node}
-  element_href: texinfo_7.txt#node
+  element_href: Nodes.txt#node
   element_text: 6.3 The @node Command
 key: noindent
-  origin_href: texinfo_11.txt#index-noindent
+  origin_href: Quotations-and-Examples.txt#index-noindent
   entry: noindent
   texi_entry: @code{noindent}
-  element_href: texinfo_11.txt#noindent
+  element_href: Quotations-and-Examples.txt#noindent
   element_text: 10.12 @noindent: Omitting Indentation
 key: novalidate
-  origin_href: texinfo_20.txt#index-novalidate
+  origin_href: Hardcopy.txt#index-novalidate
   entry: novalidate
   texi_entry: @code{novalidate}
-  element_href: texinfo_20.txt#Format-with-tex_002ftexindex
+  element_href: Hardcopy.txt#Format-with-tex_002ftexindex
   element_text: 19.2 Format with tex and texindex
 key: o
-  origin_href: texinfo_14.txt#index-o
+  origin_href: Insertions.txt#index-o
   entry: o
   texi_entry: @code{o}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: O
-  origin_href: texinfo_14.txt#index-O
+  origin_href: Insertions.txt#index-O
   entry: O
   texi_entry: @code{O}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: occur
-  origin_href: texinfo_27.txt#index-occur
+  origin_href: Catching-Mistakes.txt#index-occur
   entry: occur
   texi_entry: @code{occur}
-  element_href: texinfo_27.txt#Using-occur
+  element_href: Catching-Mistakes.txt#Using-occur
   element_text: F.4 Using occur
 key: occur-mode-goto-occurrence
-  origin_href: texinfo_3.txt#index-occur_002dmode_002dgoto_002doccurrence
+  origin_href: Texinfo-Mode.txt#index-occur_002dmode_002dgoto_002doccurrence
   entry: occur-mode-goto-occurrence
   texi_entry: @code{occur-mode-goto-occurrence}
-  element_href: texinfo_3.txt#Showing-the-Structure
+  element_href: Texinfo-Mode.txt#Showing-the-Structure
   element_text: 2.3 Showing the Section Structure of a File
 key: oddfooting
-  origin_href: texinfo_26.txt#index-oddfooting
+  origin_href: Headings.txt#index-oddfooting
   entry: oddfooting
   texi_entry: @code{oddfooting}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: oddheading
-  origin_href: texinfo_26.txt#index-oddheading
+  origin_href: Headings.txt#index-oddheading
   entry: oddheading
   texi_entry: @code{oddheading}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: oe
-  origin_href: texinfo_14.txt#index-oe
+  origin_href: Insertions.txt#index-oe
   entry: oe
   texi_entry: @code{oe}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: OE
-  origin_href: texinfo_14.txt#index-OE
+  origin_href: Insertions.txt#index-OE
   entry: OE
   texi_entry: @code{OE}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: option
-  origin_href: texinfo_10.txt#index-option
+  origin_href: Marking-Text.txt#index-option
   entry: option
   texi_entry: @code{option}
-  element_href: texinfo_10.txt#option
+  element_href: Marking-Text.txt#option
   element_text: 9.1.10 @option{option-name}
 key: page
-  origin_href: texinfo_15.txt#index-page
+  origin_href: Breaks.txt#index-page
   entry: page
   texi_entry: @code{page}
-  element_href: texinfo_15.txt#page
+  element_href: Breaks.txt#page
   element_text: 14.5 @page: Start a New Page
 key: page, within @titlepage
-  origin_href: texinfo_4.txt#index-page_002c-within-_0040titlepage
+  origin_href: Beginning-a-File.txt#index-page_002c-within-_0040titlepage
   entry: page, within @titlepage
   texi_entry: @code{page@r{, within @code{@@titlepage}}}
-  element_href: texinfo_4.txt#titlepage
+  element_href: Beginning-a-File.txt#titlepage
   element_text: 3.4.1 @titlepage
 key: pagesizes
-  origin_href: texinfo_20.txt#index-pagesizes
+  origin_href: Hardcopy.txt#index-pagesizes
   entry: pagesizes
   texi_entry: @code{pagesizes}
-  element_href: texinfo_20.txt#pagesizes
+  element_href: Hardcopy.txt#pagesizes
   element_text: 19.13 @pagesizes [width][, height]: Custom page sizes
 key: paragraphindent
-  origin_href: texinfo_4.txt#index-paragraphindent
+  origin_href: Beginning-a-File.txt#index-paragraphindent
   entry: paragraphindent
   texi_entry: @code{paragraphindent}
-  element_href: texinfo_4.txt#paragraphindent
+  element_href: Beginning-a-File.txt#paragraphindent
   element_text: 3.6.3 Paragraph Indenting
 key: phoo
-  origin_href: texinfo_19.txt#index-phoo
+  origin_href: Defining-New-Texinfo-Commands.txt#index-phoo
   entry: phoo
   texi_entry: @code{phoo}
-  element_href: texinfo_19.txt#definfoenclose
+  element_href: Defining-New-Texinfo-Commands.txt#definfoenclose
   element_text: 18.5 `definfoenclose': Customized Highlighting
 key: pindex
-  origin_href: texinfo_13.txt#index-pindex
+  origin_href: Indices.txt#index-pindex
   entry: pindex
   texi_entry: @code{pindex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: point
-  origin_href: texinfo_14.txt#index-point
+  origin_href: Insertions.txt#index-point
   entry: point
   texi_entry: @code{point}
-  element_href: texinfo_14.txt#Point-Glyph
+  element_href: Insertions.txt#Point-Glyph
   element_text: 13.9.7 @point{} (-!-): Indicating Point in a Buffer
 key: pounds
-  origin_href: texinfo_14.txt#index-pounds
+  origin_href: Insertions.txt#index-pounds
   entry: pounds
   texi_entry: @code{pounds}
-  element_href: texinfo_14.txt#pounds
+  element_href: Insertions.txt#pounds
   element_text: 13.6 @pounds{} (#): Pounds Sterling
 key: print
-  origin_href: texinfo_14.txt#index-print
+  origin_href: Insertions.txt#index-print
   entry: print
   texi_entry: @code{print}
-  element_href: texinfo_14.txt#Print-Glyph
+  element_href: Insertions.txt#Print-Glyph
   element_text: 13.9.4 @print{} (-|): Indicating Printed Output
 key: printindex
-  origin_href: texinfo_5.txt#index-printindex
+  origin_href: Ending-a-File.txt#index-printindex
   entry: printindex
   texi_entry: @code{printindex}
-  element_href: texinfo_5.txt#Printing-Indices-_0026-Menus
+  element_href: Ending-a-File.txt#Printing-Indices-_0026-Menus
   element_text: 4.1 Printing Indices and Menus
 key: pxref
-  origin_href: texinfo_9.txt#index-pxref
+  origin_href: Cross-References.txt#index-pxref
   entry: pxref
   texi_entry: @code{pxref}
-  element_href: texinfo_9.txt#pxref
+  element_href: Cross-References.txt#pxref
   element_text: 8.6 @pxref
 key: questiondown
-  origin_href: texinfo_14.txt#index-questiondown
+  origin_href: Insertions.txt#index-questiondown
   entry: questiondown
   texi_entry: @code{questiondown}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: quotation
-  origin_href: texinfo_11.txt#index-quotation
+  origin_href: Quotations-and-Examples.txt#index-quotation
   entry: quotation
   texi_entry: @code{quotation}
-  element_href: texinfo_11.txt#quotation
+  element_href: Quotations-and-Examples.txt#quotation
   element_text: 10.2 @quotation
 key: r (Roman font)
-  origin_href: texinfo_10.txt#index-r-_0028Roman-font_0029
+  origin_href: Marking-Text.txt#index-r-_0028Roman-font_0029
   entry: r (Roman font)
   texi_entry: @code{r @r{(Roman font)}}
-  element_href: texinfo_10.txt#Fonts
+  element_href: Marking-Text.txt#Fonts
   element_text: 9.2.3 Fonts for Printing, Not Info
 key: raisesections
-  origin_href: texinfo_6.txt#index-raisesections
+  origin_href: Structuring.txt#index-raisesections
   entry: raisesections
   texi_entry: @code{raisesections}
-  element_href: texinfo_6.txt#Raise_002flower-sections
+  element_href: Structuring.txt#Raise_002flower-sections
   element_text: 5.12 @raisesections and @lowersections
 key: ref
-  origin_href: texinfo_9.txt#index-ref
+  origin_href: Cross-References.txt#index-ref
   entry: ref
   texi_entry: @code{ref}
-  element_href: texinfo_9.txt#ref
+  element_href: Cross-References.txt#ref
   element_text: 8.5 @ref
 key: refill
-  origin_href: texinfo_28.txt#index-refill
+  origin_href: Refilling-Paragraphs.txt#index-refill
   entry: refill
   texi_entry: @code{refill}
-  element_href: texinfo_28.txt#Refilling-Paragraphs
+  element_href: Refilling-Paragraphs.txt#Refilling-Paragraphs
   element_text: Appendix G Refilling Paragraphs
 key: result
-  origin_href: texinfo_14.txt#index-result
+  origin_href: Insertions.txt#index-result
   entry: result
   texi_entry: @code{result}
-  element_href: texinfo_14.txt#result
+  element_href: Insertions.txt#result
   element_text: 13.9.2 @result{} (=>): Indicating Evaluation
 key: ringaccent
-  origin_href: texinfo_14.txt#index-ringaccent
+  origin_href: Insertions.txt#index-ringaccent
   entry: ringaccent
   texi_entry: @code{ringaccent}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: rmacro
-  origin_href: texinfo_19.txt#index-rmacro
+  origin_href: Defining-New-Texinfo-Commands.txt#index-rmacro
   entry: rmacro
   texi_entry: @code{rmacro}
-  element_href: texinfo_19.txt#Defining-Macros
+  element_href: Defining-New-Texinfo-Commands.txt#Defining-Macros
   element_text: 18.1 Defining Macros
 key: samp
-  origin_href: texinfo_10.txt#index-samp
+  origin_href: Marking-Text.txt#index-samp
   entry: samp
   texi_entry: @code{samp}
-  element_href: texinfo_10.txt#samp
+  element_href: Marking-Text.txt#samp
   element_text: 9.1.4 @samp{text}
 key: sc (small caps font)
-  origin_href: texinfo_10.txt#index-sc-_0028small-caps-font_0029
+  origin_href: Marking-Text.txt#index-sc-_0028small-caps-font_0029
   entry: sc (small caps font)
   texi_entry: @code{sc @r{(small caps font)}}
-  element_href: texinfo_10.txt#Smallcaps
+  element_href: Marking-Text.txt#Smallcaps
   element_text: 9.2.2 @sc{text}: The Small Caps Font
 key: section
-  origin_href: texinfo_6.txt#index-section
+  origin_href: Structuring.txt#index-section
   entry: section
   texi_entry: @code{section}
-  element_href: texinfo_6.txt#section
+  element_href: Structuring.txt#section
   element_text: 5.7 @section
 key: setchapternewpage
-  origin_href: texinfo_4.txt#index-setchapternewpage
+  origin_href: Beginning-a-File.txt#index-setchapternewpage
   entry: setchapternewpage
   texi_entry: @code{setchapternewpage}
-  element_href: texinfo_4.txt#setchapternewpage
+  element_href: Beginning-a-File.txt#setchapternewpage
   element_text: 3.6.2 @setchapternewpage:
 key: setcontentsaftertitlepage
-  origin_href: texinfo_5.txt#index-setcontentsaftertitlepage
+  origin_href: Ending-a-File.txt#index-setcontentsaftertitlepage
   entry: setcontentsaftertitlepage
   texi_entry: @code{setcontentsaftertitlepage}
-  element_href: texinfo_5.txt#Contents
+  element_href: Ending-a-File.txt#Contents
   element_text: 4.2 Generating a Table of Contents
 key: setfilename
-  origin_href: texinfo_4.txt#index-setfilename
+  origin_href: Beginning-a-File.txt#index-setfilename
   entry: setfilename
   texi_entry: @code{setfilename}
-  element_href: texinfo_4.txt#setfilename
+  element_href: Beginning-a-File.txt#setfilename
   element_text: 3.2.3 @setfilename: Set the output file name
 key: setshortcontentsaftertitlepage
-  origin_href: texinfo_5.txt#index-setshortcontentsaftertitlepage
+  origin_href: Ending-a-File.txt#index-setshortcontentsaftertitlepage
   entry: setshortcontentsaftertitlepage
   texi_entry: @code{setshortcontentsaftertitlepage}
-  element_href: texinfo_5.txt#Contents
+  element_href: Ending-a-File.txt#Contents
   element_text: 4.2 Generating a Table of Contents
 key: settitle
-  origin_href: texinfo_4.txt#index-settitle
+  origin_href: Beginning-a-File.txt#index-settitle
   entry: settitle
   texi_entry: @code{settitle}
-  element_href: texinfo_4.txt#settitle
+  element_href: Beginning-a-File.txt#settitle
   element_text: 3.2.4 @settitle: Set the document title
 key: shortcontents
-  origin_href: texinfo_5.txt#index-shortcontents
+  origin_href: Ending-a-File.txt#index-shortcontents
   entry: shortcontents
   texi_entry: @code{shortcontents}
-  element_href: texinfo_5.txt#Contents
+  element_href: Ending-a-File.txt#Contents
   element_text: 4.2 Generating a Table of Contents
 key: shorttitlepage
-  origin_href: texinfo_4.txt#index-shorttitlepage
+  origin_href: Beginning-a-File.txt#index-shorttitlepage
   entry: shorttitlepage
   texi_entry: @code{shorttitlepage}
-  element_href: texinfo_4.txt#titlepage
+  element_href: Beginning-a-File.txt#titlepage
   element_text: 3.4.1 @titlepage
 key: smallbook
-  origin_href: texinfo_20.txt#index-smallbook
+  origin_href: Hardcopy.txt#index-smallbook
   entry: smallbook
   texi_entry: @code{smallbook}
-  element_href: texinfo_20.txt#smallbook
+  element_href: Hardcopy.txt#smallbook
   element_text: 19.11 Printing "Small" Books
 key: smalldisplay
-  origin_href: texinfo_11.txt#index-smalldisplay
+  origin_href: Quotations-and-Examples.txt#index-smalldisplay
   entry: smalldisplay
   texi_entry: @code{smalldisplay}
-  element_href: texinfo_11.txt#small
+  element_href: Quotations-and-Examples.txt#small
   element_text: 10.7 @small... Block Commands
 key: smalldisplay
-  origin_href: texinfo_11.txt#index-smalldisplay-1
+  origin_href: Quotations-and-Examples.txt#index-smalldisplay-1
   entry: smalldisplay
   texi_entry: @code{smalldisplay}
-  element_href: texinfo_11.txt#display
+  element_href: Quotations-and-Examples.txt#display
   element_text: 10.8 @display and @smalldisplay
 key: smallexample
-  origin_href: texinfo_11.txt#index-smallexample
+  origin_href: Quotations-and-Examples.txt#index-smallexample
   entry: smallexample
   texi_entry: @code{smallexample}
-  element_href: texinfo_11.txt#small
+  element_href: Quotations-and-Examples.txt#small
   element_text: 10.7 @small... Block Commands
 key: smallformat
-  origin_href: texinfo_11.txt#index-smallformat
+  origin_href: Quotations-and-Examples.txt#index-smallformat
   entry: smallformat
   texi_entry: @code{smallformat}
-  element_href: texinfo_11.txt#small
+  element_href: Quotations-and-Examples.txt#small
   element_text: 10.7 @small... Block Commands
 key: smallformat
-  origin_href: texinfo_11.txt#index-smallformat-1
+  origin_href: Quotations-and-Examples.txt#index-smallformat-1
   entry: smallformat
   texi_entry: @code{smallformat}
-  element_href: texinfo_11.txt#format
+  element_href: Quotations-and-Examples.txt#format
   element_text: 10.9 @format and @smallformat
 key: smalllisp
-  origin_href: texinfo_11.txt#index-smalllisp
+  origin_href: Quotations-and-Examples.txt#index-smalllisp
   entry: smalllisp
   texi_entry: @code{smalllisp}
-  element_href: texinfo_11.txt#small
+  element_href: Quotations-and-Examples.txt#small
   element_text: 10.7 @small... Block Commands
 key: sp (line spacing)
-  origin_href: texinfo_15.txt#index-sp-_0028line-spacing_0029
+  origin_href: Breaks.txt#index-sp-_0028line-spacing_0029
   entry: sp (line spacing)
   texi_entry: @code{sp @r{(line spacing)}}
-  element_href: texinfo_15.txt#sp
+  element_href: Breaks.txt#sp
   element_text: 14.4 @sp n: Insert Blank Lines
 key: sp (titlepage line spacing)
-  origin_href: texinfo_4.txt#index-sp-_0028titlepage-line-spacing_0029
+  origin_href: Beginning-a-File.txt#index-sp-_0028titlepage-line-spacing_0029
   entry: sp (titlepage line spacing)
   texi_entry: @code{sp @r{(titlepage line spacing)}}
-  element_href: texinfo_4.txt#titlefont-center-sp
+  element_href: Beginning-a-File.txt#titlefont-center-sp
   element_text: 3.4.2 @titlefont, @center, and @sp
 key: ss
-  origin_href: texinfo_14.txt#index-ss
+  origin_href: Insertions.txt#index-ss
   entry: ss
   texi_entry: @code{ss}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: strong
-  origin_href: texinfo_10.txt#index-strong
+  origin_href: Marking-Text.txt#index-strong
   entry: strong
   texi_entry: @code{strong}
-  element_href: texinfo_10.txt#emph-_0026-strong
+  element_href: Marking-Text.txt#emph-_0026-strong
   element_text: 9.2.1 @emph{text} and @strong{text}
 key: subheading
-  origin_href: texinfo_6.txt#index-subheading
+  origin_href: Structuring.txt#index-subheading
   entry: subheading
   texi_entry: @code{subheading}
-  element_href: texinfo_6.txt#unnumberedsubsec-appendixsubsec-subheading
+  element_href: Structuring.txt#unnumberedsubsec-appendixsubsec-subheading
   element_text: 5.10 The @subsection-like Commands
 key: subsection
-  origin_href: texinfo_6.txt#index-subsection
+  origin_href: Structuring.txt#index-subsection
   entry: subsection
   texi_entry: @code{subsection}
-  element_href: texinfo_6.txt#subsection
+  element_href: Structuring.txt#subsection
   element_text: 5.9 The @subsection Command
 key: subsubheading
-  origin_href: texinfo_6.txt#index-subsubheading
+  origin_href: Structuring.txt#index-subsubheading
   entry: subsubheading
   texi_entry: @code{subsubheading}
-  element_href: texinfo_6.txt#subsubsection
+  element_href: Structuring.txt#subsubsection
   element_text: 5.11 The `subsub' Commands
 key: subsubsection
-  origin_href: texinfo_6.txt#index-subsubsection
+  origin_href: Structuring.txt#index-subsubsection
   entry: subsubsection
   texi_entry: @code{subsubsection}
-  element_href: texinfo_6.txt#subsubsection
+  element_href: Structuring.txt#subsubsection
   element_text: 5.11 The `subsub' Commands
 key: subtitle
-  origin_href: texinfo_4.txt#index-subtitle
+  origin_href: Beginning-a-File.txt#index-subtitle
   entry: subtitle
   texi_entry: @code{subtitle}
-  element_href: texinfo_4.txt#title-subtitle-author
+  element_href: Beginning-a-File.txt#title-subtitle-author
   element_text: 3.4.3 @title, @subtitle, and @author
 key: summarycontents
-  origin_href: texinfo_5.txt#index-summarycontents
+  origin_href: Ending-a-File.txt#index-summarycontents
   entry: summarycontents
   texi_entry: @code{summarycontents}
-  element_href: texinfo_5.txt#Contents
+  element_href: Ending-a-File.txt#Contents
   element_text: 4.2 Generating a Table of Contents
 key: syncodeindex
-  origin_href: texinfo_13.txt#index-syncodeindex
+  origin_href: Indices.txt#index-syncodeindex
   entry: syncodeindex
   texi_entry: @code{syncodeindex}
-  element_href: texinfo_13.txt#syncodeindex
+  element_href: Indices.txt#syncodeindex
   element_text: 12.4.1 @syncodeindex
 key: syncodeindex
-  origin_href: texinfo_13.txt#index-syncodeindex-1
+  origin_href: Indices.txt#index-syncodeindex-1
   entry: syncodeindex
   texi_entry: @code{syncodeindex}
-  element_href: texinfo_13.txt#syncodeindex
+  element_href: Indices.txt#syncodeindex
   element_text: 12.4.1 @syncodeindex
 key: synindex
-  origin_href: texinfo_13.txt#index-synindex
+  origin_href: Indices.txt#index-synindex
   entry: synindex
   texi_entry: @code{synindex}
-  element_href: texinfo_13.txt#synindex
+  element_href: Indices.txt#synindex
   element_text: 12.4.2 @synindex
 key: t (typewriter font)
-  origin_href: texinfo_10.txt#index-t-_0028typewriter-font_0029
+  origin_href: Marking-Text.txt#index-t-_0028typewriter-font_0029
   entry: t (typewriter font)
   texi_entry: @code{t @r{(typewriter font)}}
-  element_href: texinfo_10.txt#Fonts
+  element_href: Marking-Text.txt#Fonts
   element_text: 9.2.3 Fonts for Printing, Not Info
 key: tab
-  origin_href: texinfo_12.txt#index-tab
+  origin_href: Lists-and-Tables.txt#index-tab
   entry: tab
   texi_entry: @code{tab}
-  element_href: texinfo_12.txt#Multitable-Rows
+  element_href: Lists-and-Tables.txt#Multitable-Rows
   element_text: 11.4.2 Multitable Rows
 key: table
-  origin_href: texinfo_12.txt#index-table
+  origin_href: Lists-and-Tables.txt#index-table
   entry: table
   texi_entry: @code{table}
-  element_href: texinfo_12.txt#Two_002dcolumn-Tables
+  element_href: Lists-and-Tables.txt#Two_002dcolumn-Tables
   element_text: 11.3 Making a Two-column Table
 key: tex
-  origin_href: texinfo_17.txt#index-tex
+  origin_href: Conditionals.txt#index-tex
   entry: tex
   texi_entry: @code{tex}
-  element_href: texinfo_17.txt#Raw-Formatter-Commands
+  element_href: Conditionals.txt#Raw-Formatter-Commands
   element_text: 16.3 Raw Formatter Commands
 key: tex (command)
-  origin_href: texinfo_14.txt#index-tex-_0028command_0029
+  origin_href: Insertions.txt#index-tex-_0028command_0029
   entry: tex (command)
   texi_entry: @code{tex (command)}
-  element_href: texinfo_14.txt#tex
+  element_href: Insertions.txt#tex
   element_text: 13.5.1 @TeX{} (TeX)
 key: texinfo-all-menus-update
-  origin_href: texinfo_3.txt#index-texinfo_002dall_002dmenus_002dupdate
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dall_002dmenus_002dupdate
   entry: texinfo-all-menus-update
   texi_entry: @code{texinfo-all-menus-update}
-  element_href: texinfo_3.txt#The-Updating-Commands
+  element_href: Texinfo-Mode.txt#The-Updating-Commands
   element_text: The Updating Commands
 key: texinfo-every-node-update
-  origin_href: texinfo_3.txt#index-texinfo_002devery_002dnode_002dupdate
+  origin_href: Texinfo-Mode.txt#index-texinfo_002devery_002dnode_002dupdate
   entry: texinfo-every-node-update
   texi_entry: @code{texinfo-every-node-update}
-  element_href: texinfo_3.txt#The-Updating-Commands
+  element_href: Texinfo-Mode.txt#The-Updating-Commands
   element_text: The Updating Commands
 key: texinfo-format-buffer
-  origin_href: texinfo_3.txt#index-texinfo_002dformat_002dbuffer
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dformat_002dbuffer
   entry: texinfo-format-buffer
   texi_entry: @code{texinfo-format-buffer}
-  element_href: texinfo_3.txt#Info-Formatting
+  element_href: Texinfo-Mode.txt#Info-Formatting
   element_text: 2.5 Formatting for Info
 key: texinfo-format-buffer
-  origin_href: texinfo_21.txt#index-texinfo_002dformat_002dbuffer-1
+  origin_href: Creating-and-Installing-Info-Files.txt#index-texinfo_002dformat_002dbuffer-1
   entry: texinfo-format-buffer
   texi_entry: @code{texinfo-format-buffer}
-  element_href: texinfo_21.txt#texinfo_002dformat-commands
+  element_href: Creating-and-Installing-Info-Files.txt#texinfo_002dformat-commands
   element_text: 20.1.6 The texinfo-format... Commands
 key: texinfo-format-buffer
-  origin_href: texinfo_21.txt#index-texinfo_002dformat_002dbuffer-2
+  origin_href: Creating-and-Installing-Info-Files.txt#index-texinfo_002dformat_002dbuffer-2
   entry: texinfo-format-buffer
   texi_entry: @code{texinfo-format-buffer}
-  element_href: texinfo_21.txt#texinfo_002dformat-commands
+  element_href: Creating-and-Installing-Info-Files.txt#texinfo_002dformat-commands
   element_text: 20.1.6 The texinfo-format... Commands
 key: texinfo-format-region
-  origin_href: texinfo_3.txt#index-texinfo_002dformat_002dregion
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dformat_002dregion
   entry: texinfo-format-region
   texi_entry: @code{texinfo-format-region}
-  element_href: texinfo_3.txt#Info-Formatting
+  element_href: Texinfo-Mode.txt#Info-Formatting
   element_text: 2.5 Formatting for Info
 key: texinfo-format-region
-  origin_href: texinfo_21.txt#index-texinfo_002dformat_002dregion-1
+  origin_href: Creating-and-Installing-Info-Files.txt#index-texinfo_002dformat_002dregion-1
   entry: texinfo-format-region
   texi_entry: @code{texinfo-format-region}
-  element_href: texinfo_21.txt#texinfo_002dformat-commands
+  element_href: Creating-and-Installing-Info-Files.txt#texinfo_002dformat-commands
   element_text: 20.1.6 The texinfo-format... Commands
 key: texinfo-format-region
-  origin_href: texinfo_21.txt#index-texinfo_002dformat_002dregion-2
+  origin_href: Creating-and-Installing-Info-Files.txt#index-texinfo_002dformat_002dregion-2
   entry: texinfo-format-region
   texi_entry: @code{texinfo-format-region}
-  element_href: texinfo_21.txt#texinfo_002dformat-commands
+  element_href: Creating-and-Installing-Info-Files.txt#texinfo_002dformat-commands
   element_text: 20.1.6 The texinfo-format... Commands
 key: texinfo-indent-menu-description
-  origin_href: texinfo_3.txt#index-texinfo_002dindent_002dmenu_002ddescription
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dindent_002dmenu_002ddescription
   entry: texinfo-indent-menu-description
   texi_entry: @code{texinfo-indent-menu-description}
-  element_href: texinfo_3.txt#Other-Updating-Commands
+  element_href: Texinfo-Mode.txt#Other-Updating-Commands
   element_text: 2.4.2 Other Updating Commands
 key: texinfo-insert-@code
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040code
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040code
   entry: texinfo-insert-@code
   texi_entry: @code{texinfo-insert-@@code}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@dfn
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040dfn
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040dfn
   entry: texinfo-insert-@dfn
   texi_entry: @code{texinfo-insert-@@dfn}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@end
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040end
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040end
   entry: texinfo-insert-@end
   texi_entry: @code{texinfo-insert-@@end}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@example
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040example
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040example
   entry: texinfo-insert-@example
   texi_entry: @code{texinfo-insert-@@example}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@item
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040item
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040item
   entry: texinfo-insert-@item
   texi_entry: @code{texinfo-insert-@@item}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@kbd
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040kbd
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040kbd
   entry: texinfo-insert-@kbd
   texi_entry: @code{texinfo-insert-@@kbd}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@node
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040node
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040node
   entry: texinfo-insert-@node
   texi_entry: @code{texinfo-insert-@@node}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@noindent
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040noindent
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040noindent
   entry: texinfo-insert-@noindent
   texi_entry: @code{texinfo-insert-@@noindent}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@samp
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040samp
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040samp
   entry: texinfo-insert-@samp
   texi_entry: @code{texinfo-insert-@@samp}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@table
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040table
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040table
   entry: texinfo-insert-@table
   texi_entry: @code{texinfo-insert-@@table}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-@var
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002d_0040var
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002d_0040var
   entry: texinfo-insert-@var
   texi_entry: @code{texinfo-insert-@@var}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-braces
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002dbraces
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002dbraces
   entry: texinfo-insert-braces
   texi_entry: @code{texinfo-insert-braces}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-insert-node-lines
-  origin_href: texinfo_3.txt#index-texinfo_002dinsert_002dnode_002dlines
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dinsert_002dnode_002dlines
   entry: texinfo-insert-node-lines
   texi_entry: @code{texinfo-insert-node-lines}
-  element_href: texinfo_3.txt#Other-Updating-Commands
+  element_href: Texinfo-Mode.txt#Other-Updating-Commands
   element_text: 2.4.2 Other Updating Commands
 key: texinfo-make-menu
-  origin_href: texinfo_3.txt#index-texinfo_002dmake_002dmenu
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dmake_002dmenu
   entry: texinfo-make-menu
   texi_entry: @code{texinfo-make-menu}
-  element_href: texinfo_3.txt#The-Updating-Commands
+  element_href: Texinfo-Mode.txt#The-Updating-Commands
   element_text: The Updating Commands
 key: texinfo-master-menu
-  origin_href: texinfo_3.txt#index-texinfo_002dmaster_002dmenu
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dmaster_002dmenu
   entry: texinfo-master-menu
   texi_entry: @code{texinfo-master-menu}
-  element_href: texinfo_3.txt#The-Updating-Commands
+  element_href: Texinfo-Mode.txt#The-Updating-Commands
   element_text: The Updating Commands
 key: texinfo-multiple-files-update
-  origin_href: texinfo_25.txt#index-texinfo_002dmultiple_002dfiles_002dupdate
+  origin_href: Include-Files.txt#index-texinfo_002dmultiple_002dfiles_002dupdate
   entry: texinfo-multiple-files-update
   texi_entry: @code{texinfo-multiple-files-update}
-  element_href: texinfo_25.txt#texinfo_002dmultiple_002dfiles_002dupdate
+  element_href: Include-Files.txt#texinfo_002dmultiple_002dfiles_002dupdate
   element_text: D.2 texinfo-multiple-files-update
 key: texinfo-multiple-files-update (in brief)
-  origin_href: texinfo_3.txt#index-texinfo_002dmultiple_002dfiles_002dupdate-_0028in-brief_0029
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dmultiple_002dfiles_002dupdate-_0028in-brief_0029
   entry: texinfo-multiple-files-update (in brief)
   texi_entry: @code{texinfo-multiple-files-update @r{(in brief)}}
-  element_href: texinfo_3.txt#Other-Updating-Commands
+  element_href: Texinfo-Mode.txt#Other-Updating-Commands
   element_text: 2.4.2 Other Updating Commands
 key: texinfo-sequential-node-update
-  origin_href: texinfo_3.txt#index-texinfo_002dsequential_002dnode_002dupdate
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dsequential_002dnode_002dupdate
   entry: texinfo-sequential-node-update
   texi_entry: @code{texinfo-sequential-node-update}
-  element_href: texinfo_3.txt#Other-Updating-Commands
+  element_href: Texinfo-Mode.txt#Other-Updating-Commands
   element_text: 2.4.2 Other Updating Commands
 key: texinfo-show-structure
-  origin_href: texinfo_3.txt#index-texinfo_002dshow_002dstructure
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dshow_002dstructure
   entry: texinfo-show-structure
   texi_entry: @code{texinfo-show-structure}
-  element_href: texinfo_3.txt#Showing-the-Structure
+  element_href: Texinfo-Mode.txt#Showing-the-Structure
   element_text: 2.3 Showing the Section Structure of a File
 key: texinfo-show-structure
-  origin_href: texinfo_27.txt#index-texinfo_002dshow_002dstructure-1
+  origin_href: Catching-Mistakes.txt#index-texinfo_002dshow_002dstructure-1
   entry: texinfo-show-structure
   texi_entry: @code{texinfo-show-structure}
-  element_href: texinfo_27.txt#Using-texinfo_002dshow_002dstructure
+  element_href: Catching-Mistakes.txt#Using-texinfo_002dshow_002dstructure
   element_text: F.3 Using texinfo-show-structure
 key: texinfo-start-menu-description
-  origin_href: texinfo_3.txt#index-texinfo_002dstart_002dmenu_002ddescription
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dstart_002dmenu_002ddescription
   entry: texinfo-start-menu-description
   texi_entry: @code{texinfo-start-menu-description}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: texinfo-tex-buffer
-  origin_href: texinfo_3.txt#index-texinfo_002dtex_002dbuffer
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dtex_002dbuffer
   entry: texinfo-tex-buffer
   texi_entry: @code{texinfo-tex-buffer}
-  element_href: texinfo_3.txt#Printing
+  element_href: Texinfo-Mode.txt#Printing
   element_text: 2.6 Formatting and Printing
 key: texinfo-tex-print
-  origin_href: texinfo_3.txt#index-texinfo_002dtex_002dprint
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dtex_002dprint
   entry: texinfo-tex-print
   texi_entry: @code{texinfo-tex-print}
-  element_href: texinfo_3.txt#Printing
+  element_href: Texinfo-Mode.txt#Printing
   element_text: 2.6 Formatting and Printing
 key: texinfo-tex-region
-  origin_href: texinfo_3.txt#index-texinfo_002dtex_002dregion
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dtex_002dregion
   entry: texinfo-tex-region
   texi_entry: @code{texinfo-tex-region}
-  element_href: texinfo_3.txt#Printing
+  element_href: Texinfo-Mode.txt#Printing
   element_text: 2.6 Formatting and Printing
 key: texinfo-update-node
-  origin_href: texinfo_3.txt#index-texinfo_002dupdate_002dnode
+  origin_href: Texinfo-Mode.txt#index-texinfo_002dupdate_002dnode
   entry: texinfo-update-node
   texi_entry: @code{texinfo-update-node}
-  element_href: texinfo_3.txt#The-Updating-Commands
+  element_href: Texinfo-Mode.txt#The-Updating-Commands
   element_text: The Updating Commands
 key: thischapter
-  origin_href: texinfo_26.txt#index-thischapter
+  origin_href: Headings.txt#index-thischapter
   entry: thischapter
   texi_entry: @code{thischapter}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: thischaptername
-  origin_href: texinfo_26.txt#index-thischaptername
+  origin_href: Headings.txt#index-thischaptername
   entry: thischaptername
   texi_entry: @code{thischaptername}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: thisfile
-  origin_href: texinfo_26.txt#index-thisfile
+  origin_href: Headings.txt#index-thisfile
   entry: thisfile
   texi_entry: @code{thisfile}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: thispage
-  origin_href: texinfo_26.txt#index-thispage
+  origin_href: Headings.txt#index-thispage
   entry: thispage
   texi_entry: @code{thispage}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: thistitle
-  origin_href: texinfo_26.txt#index-thistitle
+  origin_href: Headings.txt#index-thistitle
   entry: thistitle
   texi_entry: @code{thistitle}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: tieaccent
-  origin_href: texinfo_14.txt#index-tieaccent
+  origin_href: Insertions.txt#index-tieaccent
   entry: tieaccent
   texi_entry: @code{tieaccent}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: tindex
-  origin_href: texinfo_13.txt#index-tindex
+  origin_href: Indices.txt#index-tindex
   entry: tindex
   texi_entry: @code{tindex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: title
-  origin_href: texinfo_4.txt#index-title
+  origin_href: Beginning-a-File.txt#index-title
   entry: title
   texi_entry: @code{title}
-  element_href: texinfo_4.txt#title-subtitle-author
+  element_href: Beginning-a-File.txt#title-subtitle-author
   element_text: 3.4.3 @title, @subtitle, and @author
 key: titlefont
-  origin_href: texinfo_4.txt#index-titlefont
+  origin_href: Beginning-a-File.txt#index-titlefont
   entry: titlefont
   texi_entry: @code{titlefont}
-  element_href: texinfo_4.txt#titlefont-center-sp
+  element_href: Beginning-a-File.txt#titlefont-center-sp
   element_text: 3.4.2 @titlefont, @center, and @sp
 key: titlepage
-  origin_href: texinfo_4.txt#index-titlepage
+  origin_href: Beginning-a-File.txt#index-titlepage
   entry: titlepage
   texi_entry: @code{titlepage}
-  element_href: texinfo_4.txt#titlepage
+  element_href: Beginning-a-File.txt#titlepage
   element_text: 3.4.1 @titlepage
 key: today
-  origin_href: texinfo_26.txt#index-today
+  origin_href: Headings.txt#index-today
   entry: today
   texi_entry: @code{today}
-  element_href: texinfo_26.txt#Custom-Headings
+  element_href: Headings.txt#Custom-Headings
   element_text: E.3 How to Make Your Own Headings
 key: top
-  origin_href: texinfo_4.txt#index-top
+  origin_href: Beginning-a-File.txt#index-top
   entry: top
   texi_entry: @code{top}
-  element_href: texinfo_4.txt#The-Top-Node
+  element_href: Beginning-a-File.txt#The-Top-Node
   element_text: 3.5 The `Top' Node and Master Menu
 key: top (@-command)
-  origin_href: texinfo_7.txt#index-top-_0028_0040_002dcommand_0029
+  origin_href: Nodes.txt#index-top-_0028_0040_002dcommand_0029
   entry: top (@-command)
   texi_entry: @code{top @r{(@@-command)}}
-  element_href: texinfo_7.txt#makeinfo-top-command
+  element_href: Nodes.txt#makeinfo-top-command
   element_text: 6.3.6 The @top Sectioning Command
 key: u (breve accent)
-  origin_href: texinfo_14.txt#index-u-_0028breve-accent_0029
+  origin_href: Insertions.txt#index-u-_0028breve-accent_0029
   entry: u (breve accent)
   texi_entry: @code{u @r{(breve accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: ubaraccent
-  origin_href: texinfo_14.txt#index-ubaraccent
+  origin_href: Insertions.txt#index-ubaraccent
   entry: ubaraccent
   texi_entry: @code{ubaraccent}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: udotaccent
-  origin_href: texinfo_14.txt#index-udotaccent
+  origin_href: Insertions.txt#index-udotaccent
   entry: udotaccent
   texi_entry: @code{udotaccent}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: unmacro
-  origin_href: texinfo_19.txt#index-unmacro
+  origin_href: Defining-New-Texinfo-Commands.txt#index-unmacro
   entry: unmacro
   texi_entry: @code{unmacro}
-  element_href: texinfo_19.txt#Defining-Macros
+  element_href: Defining-New-Texinfo-Commands.txt#Defining-Macros
   element_text: 18.1 Defining Macros
 key: unnumbered
-  origin_href: texinfo_6.txt#index-unnumbered
+  origin_href: Structuring.txt#index-unnumbered
   entry: unnumbered
   texi_entry: @code{unnumbered}
-  element_href: texinfo_6.txt#unnumbered-_0026-appendix
+  element_href: Structuring.txt#unnumbered-_0026-appendix
   element_text: 5.5 @unnumbered and @appendix
 key: unnumberedsec
-  origin_href: texinfo_6.txt#index-unnumberedsec
+  origin_href: Structuring.txt#index-unnumberedsec
   entry: unnumberedsec
   texi_entry: @code{unnumberedsec}
-  element_href: texinfo_6.txt#unnumberedsec-appendixsec-heading
+  element_href: Structuring.txt#unnumberedsec-appendixsec-heading
   element_text: 5.8 @unnumberedsec, @appendixsec, @heading
 key: unnumberedsubsec
-  origin_href: texinfo_6.txt#index-unnumberedsubsec
+  origin_href: Structuring.txt#index-unnumberedsubsec
   entry: unnumberedsubsec
   texi_entry: @code{unnumberedsubsec}
-  element_href: texinfo_6.txt#unnumberedsubsec-appendixsubsec-subheading
+  element_href: Structuring.txt#unnumberedsubsec-appendixsubsec-subheading
   element_text: 5.10 The @subsection-like Commands
 key: unnumberedsubsubsec
-  origin_href: texinfo_6.txt#index-unnumberedsubsubsec
+  origin_href: Structuring.txt#index-unnumberedsubsubsec
   entry: unnumberedsubsubsec
   texi_entry: @code{unnumberedsubsubsec}
-  element_href: texinfo_6.txt#subsubsection
+  element_href: Structuring.txt#subsubsection
   element_text: 5.11 The `subsub' Commands
 key: up-list
-  origin_href: texinfo_3.txt#index-up_002dlist
+  origin_href: Texinfo-Mode.txt#index-up_002dlist
   entry: up-list
   texi_entry: @code{up-list}
-  element_href: texinfo_3.txt#Inserting
+  element_href: Texinfo-Mode.txt#Inserting
   element_text: 2.2 Inserting Frequently Used Commands
 key: uref
-  origin_href: texinfo_9.txt#index-uref
+  origin_href: Cross-References.txt#index-uref
   entry: uref
   texi_entry: @code{uref}
-  element_href: texinfo_9.txt#uref
+  element_href: Cross-References.txt#uref
   element_text: 8.8 @uref{url[, text][, replacement]}
 key: url
-  origin_href: texinfo_10.txt#index-url
+  origin_href: Marking-Text.txt#index-url
   entry: url
   texi_entry: @code{url}
-  element_href: texinfo_10.txt#url
+  element_href: Marking-Text.txt#url
   element_text: 9.1.14 @url{uniform-resource-locator}
 key: v (check accent)
-  origin_href: texinfo_14.txt#index-v-_0028check-accent_0029
+  origin_href: Insertions.txt#index-v-_0028check-accent_0029
   entry: v (check accent)
   texi_entry: @code{v @r{(check accent)}}
-  element_href: texinfo_14.txt#Inserting-Accents
+  element_href: Insertions.txt#Inserting-Accents
   element_text: 13.3 Inserting Accents
 key: value
-  origin_href: texinfo_17.txt#index-value
+  origin_href: Conditionals.txt#index-value
   entry: value
   texi_entry: @code{value}
-  element_href: texinfo_17.txt#set-value
+  element_href: Conditionals.txt#set-value
   element_text: 16.4.1 @set and @value
 key: var
-  origin_href: texinfo_10.txt#index-var
+  origin_href: Marking-Text.txt#index-var
   entry: var
   texi_entry: @code{var}
-  element_href: texinfo_10.txt#var
+  element_href: Marking-Text.txt#var
   element_text: 9.1.6 @var{metasyntactic-variable}
 key: verb
-  origin_href: texinfo_10.txt#index-verb
+  origin_href: Marking-Text.txt#index-verb
   entry: verb
   texi_entry: @code{verb}
-  element_href: texinfo_10.txt#verb
+  element_href: Marking-Text.txt#verb
   element_text: 9.1.5 @verb{<char>text<char>}
 key: verbatim
-  origin_href: texinfo_11.txt#index-verbatim
+  origin_href: Quotations-and-Examples.txt#index-verbatim
   entry: verbatim
   texi_entry: @code{verbatim}
-  element_href: texinfo_11.txt#verbatim
+  element_href: Quotations-and-Examples.txt#verbatim
   element_text: 10.4 @verbatim: Literal Text
 key: verbatiminclude
-  origin_href: texinfo_11.txt#index-verbatiminclude
+  origin_href: Quotations-and-Examples.txt#index-verbatiminclude
   entry: verbatiminclude
   texi_entry: @code{verbatiminclude}
-  element_href: texinfo_11.txt#verbatiminclude
+  element_href: Quotations-and-Examples.txt#verbatiminclude
   element_text: 10.5 @verbatiminclude file: Include a File Verbatim
 key: vindex
-  origin_href: texinfo_13.txt#index-vindex
+  origin_href: Indices.txt#index-vindex
   entry: vindex
   texi_entry: @code{vindex}
-  element_href: texinfo_13.txt#Indexing-Commands
+  element_href: Indices.txt#Indexing-Commands
   element_text: 12.3 Defining the Entries of an Index
 key: vskip TeX vertical skip
-  origin_href: texinfo_4.txt#index-vskip-TeX-vertical-skip
+  origin_href: Beginning-a-File.txt#index-vskip-TeX-vertical-skip
   entry: vskip TeX vertical skip
   texi_entry: @code{vskip @r{@TeX{} vertical skip}}
-  element_href: texinfo_4.txt#Copyright
+  element_href: Beginning-a-File.txt#Copyright
   element_text: 3.4.4 Copyright Page
 key: vtable
-  origin_href: texinfo_12.txt#index-vtable
+  origin_href: Lists-and-Tables.txt#index-vtable
   entry: vtable
   texi_entry: @code{vtable}
-  element_href: texinfo_12.txt#ftable-vtable
+  element_href: Lists-and-Tables.txt#ftable-vtable
   element_text: 11.3.1 @ftable and @vtable
 key: w (prevent line break)
-  origin_href: texinfo_15.txt#index-w-_0028prevent-line-break_0029
+  origin_href: Breaks.txt#index-w-_0028prevent-line-break_0029
   entry: w (prevent line break)
   texi_entry: @code{w @r{(prevent line break)}}
-  element_href: texinfo_15.txt#w
+  element_href: Breaks.txt#w
   element_text: 14.3 @w{text}: Prevent Line Breaks
 key: xref
-  origin_href: texinfo_9.txt#index-xref
+  origin_href: Cross-References.txt#index-xref
   entry: xref
   texi_entry: @code{xref}
-  element_href: texinfo_9.txt#xref
+  element_href: Cross-References.txt#xref
   element_text: 8.3 @xref

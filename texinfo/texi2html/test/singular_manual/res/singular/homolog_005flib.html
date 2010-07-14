@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.4.3 homolog_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.4.3 homolog_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.4.3 homolog_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="homolog_005flib"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="select1.html#select1" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.2.7 select1" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="cup.html#cup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.1 cup" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Commutative-algebra.html#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="homolog_005flib-1"></a>
+<h3 class="subsection">D.4.3 homolog_lib</h3>
+<a name="index-homolog_002elib"></a>
+<a name="index-homolog_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>homolog.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>   Procedures for Homological Algebra
+</p></dd>
+<dt><strong>Authors:</strong></dt>
+<dd><p>Gert-Martin Greuel, greuel@mathematik.uni-kl.de,
+<br> Bernd Martin, martin@math.tu-cottbus.de
+<br> Christoph Lossen, lossen@mathematik.uni-kl.de
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="cup.html#cup">D.4.3.1 cup</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> cup: Ext^1(M&rsquo;,M&rsquo;) x Ext^1() &ndash;&gt; Ext^2()
+</td></tr>
+<tr><td align="left" valign="top"><a href="cupproduct.html#cupproduct">D.4.3.2 cupproduct</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> cup: Ext^p(M&rsquo;,N&rsquo;) x Ext^q(N&rsquo;,P&rsquo;) &ndash;&gt; Ext^p+q(M&rsquo;,P&rsquo;)
+</td></tr>
+<tr><td align="left" valign="top"><a href="depth.html#depth">D.4.3.3 depth</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> depth(I,M&rsquo;), I ideal, M module, M&rsquo;=coker(M)
+</td></tr>
+<tr><td align="left" valign="top"><a href="Ext_005fR.html#Ext_005fR">D.4.3.4 Ext_R</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Ext^k(M&rsquo;,R), M module, R basering, M&rsquo;=coker(M)
+</td></tr>
+<tr><td align="left" valign="top"><a href="Ext.html#Ext">D.4.3.5 Ext</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Ext^k(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
+</td></tr>
+<tr><td align="left" valign="top"><a href="fitting.html#fitting">D.4.3.6 fitting</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n-th Fitting ideal of M&rsquo;=coker(M), M module, n int
+</td></tr>
+<tr><td align="left" valign="top"><a href="flatteningStrat.html#flatteningStrat">D.4.3.7 flatteningStrat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Flattening stratification of M&rsquo;=coker(M), M module
+</td></tr>
+<tr><td align="left" valign="top"><a href="Hom.html#Hom">D.4.3.8 Hom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
+</td></tr>
+<tr><td align="left" valign="top"><a href="homology.html#homology">D.4.3.9 homology</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ker(B)/im(A), homology of complex R^k&ndash;A-&gt;M&rsquo;&ndash;B-&gt;N&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="isCM.html#isCM">D.4.3.10 isCM</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is Cohen-Macaulay, M module
+</td></tr>
+<tr><td align="left" valign="top"><a href="isFlat.html#isFlat">D.4.3.11 isFlat</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is flat, M module
+</td></tr>
+<tr><td align="left" valign="top"><a href="isLocallyFree.html#isLocallyFree">D.4.3.12 isLocallyFree</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if coker(M) is locally free of constant rank r
+</td></tr>
+<tr><td align="left" valign="top"><a href="isReg.html#isReg">D.4.3.13 isReg</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> test if I is coker(M)-sequence, I ideal, M module
+</td></tr>
+<tr><td align="left" valign="top"><a href="kernel.html#kernel">D.4.3.14 kernel</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> ker(M&rsquo;&ndash;A-&gt;N&rsquo;) M,N modules, A matrix
+</td></tr>
+<tr><td align="left" valign="top"><a href="kohom.html#kohom">D.4.3.15 kohom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(R^k,A), A matrix over basering R
+</td></tr>
+<tr><td align="left" valign="top"><a href="kontrahom.html#kontrahom">D.4.3.16 kontrahom</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Hom(A,R^k), A matrix over basering R
+</td></tr>
+<tr><td align="left" valign="top"><a href="KoszulHomology.html#KoszulHomology">D.4.3.17 KoszulHomology</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> n-th Koszul homology H_n(I,coker(M)), I=ideal
+</td></tr>
+<tr><td align="left" valign="top"><a href="tensorMod.html#tensorMod">D.4.3.18 tensorMod</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Tensor product of modules M&rsquo;=coker(M), N&rsquo;=coker(N)
+</td></tr>
+<tr><td align="left" valign="top"><a href="Tor.html#Tor">D.4.3.19 Tor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> Tor_k(M&rsquo;,N&rsquo;), M,N modules, M&rsquo;=coker(M), N&rsquo;=coker(N)
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="select1.html#select1" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.4.2.7 select1" align="middle"></a></td>
+<td valign="middle" align="left"><a href="cup.html#cup" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.4.3.1 cup" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Commutative-algebra.html#Commutative-algebra" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.4 Commutative algebra" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

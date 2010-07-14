@@ -10,10 +10,10 @@ Maintained by: Many creative people.
 Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
-<title>Singular 2-0-4 Manual: 2.3.2 Rings and standard bases</title>
+<title>Singular 2-0-4 Manual: F Index: N &ndash; P</title>
 
-<meta name="description" content="Singular 2-0-4 Manual: 2.3.2 Rings and standard bases">
-<meta name="keywords" content="Singular 2-0-4 Manual: 2.3.2 Rings and standard bases">
+<meta name="description" content="Singular 2-0-4 Manual: F Index: N &ndash; P">
+<meta name="keywords" content="Singular 2-0-4 Manual: F Index: N &ndash; P">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html">
@@ -51,7 +51,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en"  background="../singular_images/Mybg.png">
 
-<a name="Rings-and-standard-bases"></a>
+<a name="index_split-5"></a>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr valign="top">
 <td align="left">
@@ -63,19 +63,19 @@ ul.no-bullet {list-style: none}
 </td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_5.htm#First-steps" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.1 First steps" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_5.htm#index_split-4" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: F Index: J &ndash; M" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.3 Procedures and libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#index_split-6" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: F Index: Q &ndash; S" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_rightdouble_na.png" border="0" alt="FastForward: F Index" align="middle"></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_up_na.png" border="0" alt="Up: E Release Notes" align="middle"></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
@@ -84,7 +84,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
-<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 </tr>
 <tr valign="top" align="left">
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
@@ -92,250 +92,414 @@ ul.no-bullet {list-style: none}
 </table>
 </td>
 <td align="left">
-<a name="Rings-and-standard-bases-1"></a>
-<h3 class="subsection">2.3.2 Rings and standard bases</h3>
-<a name="index-Rings-and-standard-bases"></a>
-
-<p>To calculate with objects as ideals, matrices, modules, and polynomial
-vectors, a ring has to be defined first.
-</p>
-<div class="smallexample">
-<pre class="smallexample">ring r = 0,(x,y,z),dp;
-</pre></div>
-
-<p>The definition of a ring consists of three parts: the first part
-determines the ground field, the second part determines the names of the
-ring variables, and the third part determines the monomial ordering to
-be used. So the example above declares a polynomial ring called <code>r</code>
-with a ground field of characteristic 
- 0  
- (i.e., the rational
-numbers) and ring variables called <code>x</code>, <code>y</code>, and <code>z</code>. The
-<code>dp</code> at the end means that the degree reverse lexicographical
-ordering should be used.
-</p>
-<p>Other ring declarations:
-</p>
-<dl compact="compact">
-<dt><code>ring r1=32003,(x,y,z),dp;</code></dt>
-<dd><p>characteristic 32003, variables <code>x</code>, <code>y</code>, and <code>z</code> and
-ordering <code>dp</code>.
-</p>
-</dd>
-<dt><code>ring r2=32003,(a,b,c,d),lp;</code></dt>
-<dd><p>characteristic 32003, variable names <code>a</code>, <code>b</code>, <code>c</code>,
-<code>d</code> and lexicographical ordering.
-</p>
-</dd>
-<dt><code>ring r3=7,(x(1..10)),ds;</code></dt>
-<dd><p>characteristic 7, variable names <code>x(1)</code>,&hellip;,<code>x(10)</code>, negative
-degree reverse lexicographical ordering (<code>ds</code>).
-</p>
-</dd>
-<dt><code>ring r4=(0,a),(mu,nu),lp;</code></dt>
-<dd><p>transcendental extension of 
- <span 
-class="cmmi-10">Q </span> 
- by 
- <span 
-class="cmmi-10">a </span> 
-, variable names
-<code>mu</code> and <code>nu</code>.
-</p>
-</dd>
-<dt><code>ring r5=real,(a,b),lp;</code></dt>
-<dd><p>floating point numbers (single machine precision),
-variable names <code>a</code> and <code>b</code>.
-</p>
-</dd>
-<dt><code>ring r6=(real,50),(a,b),lp;</code></dt>
-<dd><p>floating point numbers with extended precision of 50 digits,
-variable names <code>a</code> and <code>b</code>.
-</p>
-</dd>
-<dt><code>ring r7=(complex,50,i),(a,b),lp;</code></dt>
-<dd><p>complex floating point numbers with extended precision of 50 digits
-and imaginary unit <code>i</code>,
-variable names <code>a</code> and <code>b</code>.
-</p></dd>
-</dl>
-
-<p>Typing the name of a ring prints its definition. The example below
-shows that the default ring in <small>SINGULAR</small> is 
- <span 
-class="cmmi-10">Z&#x2215;</span>32003[<span 
-class="cmmi-10">x,y,z</span>]  
-</p>
-<p>with degree reverse lexicographical ordering:
-</p>
-<div class="smallexample">
-<pre class="smallexample">ring r8;
-r8;
-&rarr; //   characteristic : 32003
-&rarr; //   number of vars : 3
-&rarr; //        block   1 : ordering dp
-&rarr; //                  : names    x y z 
-&rarr; //        block   2 : ordering C
-</pre></div>
-
-<p>Defining a ring makes this ring the current active basering, so each
-ring definition above switches to a new basering. The concept of rings
-in <small>SINGULAR</small> is discussed in detail in
-<a href="sing_27.htm#Rings-and-orderings">Rings and orderings</a>.
-</p>
-<p>The basering is now <code>r8</code>. Since we want to calculate in the ring
-<code>r</code>, which we defined first, we have to switch back to it. This can
-be done using the function <code>setring</code>:
-</p>
-<div class="smallexample">
-<pre class="smallexample">setring r;
-</pre></div>
-
-<p>Once a ring is active, we can define polynomials. A monomial, say
- <span 
-class="cmmi-10">x</span><sup><span 
-class="cmr-7">3</span></sup>  
-may be entered in two ways: either using the power operator <code>^</code>,
-saying <code>x^3</code>, or in short-hand notation without operator, saying
-<code>x3</code>. Note that the short-hand notation is forbidden if the name
-of the ring variable consists of more than one character. Note, that
-<small>SINGULAR</small> always expands brackets and automatically sorts the terms
-with respect to the monomial ordering of the basering.
-</p>
-<div class="smallexample">
-<pre class="smallexample">poly f =  x3+y3+(x-y)*x2y2+z2;
-f;
-&rarr; x3y2-x2y3+x3+y3+z2
-</pre></div>
-
-<p>The command <code>size</code> determines in general the number of &rdquo;single
-entries&ldquo; in an object. In particular, for polynomials, <code>size</code>
-determines the number of monomials.
-</p>
-<div class="smallexample">
-<pre class="smallexample">size(f);
-&rarr; 5
-</pre></div>
-
-<p>A natural question is to ask if a point, e.g., <code>(x,y,z)=(1,2,0)</code>, lies
-on the variety defined by the polynomials <code>f</code> and <code>g</code>. For
-this we define an ideal generated by both polynomials, substitute the
-coordinates of the point for the ring variables, and check if the result
-is zero:
-</p>
-<div class="smallexample">
-<pre class="smallexample">poly g =  f^2 *(2x-y);
-ideal I = f,g;
-ideal J = subst(I,var(1),1);
-J = subst(J,var(2),2);
-J = subst(J,var(3),0);
-J;
-&rarr; J[1]=5
-&rarr; J[2]=0
-</pre></div>
-
-<p>Since the result is not zero, the point <code>(1,2,0)</code> does
-not lie on the variety <code>V(f,g)</code>.
-</p>
-<p>Another question is to decide whether some function vanishes on a
-variety, or in algebraic terms if a polynomial is contained in a given
-ideal. For this we calculate a standard basis using the command
-<code>groebner</code> and afterwards reduce the polynomial with respect to
-this standard basis.
-</p>
-<div class="smallexample">
-<pre class="smallexample">ideal sI = groebner(f);
-reduce(g,sI);
-&rarr; 0
-</pre></div>
-
-<p>As the result is <code>0</code> the polynomial <code>g</code> belongs to the
-ideal defined by <code>f</code>.
-</p>
-<p>The function <code>groebner</code>, like many other functions in
-<small>SINGULAR</small>, prints a protocol during calculations, if desired. The
-command <code>option(prot);</code> enables protocolling whereas
-<code>option(noprot);</code> turns it off.
-<a href="sing_243.htm#option">option</a>, explains the meaning
-of the different symbols printed during calculations.
-</p>
-<p>The command <code>kbase</code> calculates a basis of the polynomial ring
-modulo an ideal, if the quotient ring is finite dimensional.
-As an example we calculate the Milnor number of a
-hypersurface singularity in the global and local case. This is the
-vector space dimension of the polynomial ring modulo the Jacobian ideal
-in the global case resp. of the power series ring modulo the Jacobian
-ideal in the local case. See <a href="sing_333.htm#Critical-points">Critical points</a>, for a detailed
-explanation.
-</p>
-<p>The Jacobian ideal is obtained with the command <code>jacob</code>.
-</p>
-<div class="smallexample">
-<pre class="smallexample">ideal J = jacob(f);
-&rarr; // ** redefining J **
-J;
-&rarr; J[1]=3x2y2-2xy3+3x2
-&rarr; J[2]=2x3y-3x2y2+3y2
-&rarr; J[3]=2z
-</pre></div>
-
-<p><small>SINGULAR</small> prints the line <code>// ** redefining J
-**</code>. This indicates that we have previously defined a variable with name
-<code>J</code> of type ideal (see above).
-</p>
-<p>To obtain a representing set of the quotient vector space we first
-calculate a standard basis, then we apply the function <code>kbase</code> to
-this standard basis.
-</p>
-<div class="smallexample">
-<pre class="smallexample">J = groebner(J);
-ideal K = kbase(J);
-K;
-&rarr; K[1]=y4
-&rarr; K[2]=xy3
-&rarr; K[3]=y3
-&rarr; K[4]=xy2
-&rarr; K[5]=y2
-&rarr; K[6]=x2y
-&rarr; K[7]=xy
-&rarr; K[8]=y
-&rarr; K[9]=x3
-&rarr; K[10]=x2
-&rarr; K[11]=x
-&rarr; K[12]=1
-</pre></div>
-
-<p>Then
-</p>
-<div class="smallexample">
-<pre class="smallexample">size(K);
-&rarr; 12
-</pre></div>
-
-<p>gives the desired vector space dimension
- <span 
-class="cmmi-10">K</span>[<span 
-class="cmmi-10">x,y,z</span>]<span 
-class="cmmi-10">&#x2215;</span>jacob(<span 
-class="cmmi-10">f</span>).  
-As in <small>SINGULAR</small> the functions may take the input directly from
-earlier calculations, the whole sequence of commands may be written
-in one single statement.
-</p>
-<div class="smallexample">
-<pre class="smallexample">size(kbase(groebner(jacob(f))));
-&rarr; 12
-</pre></div>
-
-<p>When we are not interested in a basis of the quotient vector space, but
-only in the resulting dimension we may even use the command <code>vdim</code>
-and write:
-</p>
-<div class="smallexample">
-<pre class="smallexample">vdim(groebner(jacob(f)));
-&rarr; 12
-</pre></div>
-
+<h1 class="chapter">F Index: N &ndash; P</h1>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Index.html#Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-2"><b>&quot;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-3"><b>#</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-4"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-5"><b>%</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-6"><b>&amp;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-7"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-8"><b>)</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-9"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-10"><b>+</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-11"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-12"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-13"><b>/</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-14"><b>;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-15"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-16"><b>=</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-17"><b>&gt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-18"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-19"><b>[</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-20"><b>\</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-21"><b>]</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-22"><b>^</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-23"><b>_</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-24"><b>`</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-25"><b>|</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-26"><b>~</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Index.html#Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-N">N</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="nameof.html#index-nameof">nameof</a></td><td>&nbsp;</td><td valign="top"><a href="nameof.html#nameof">5.1.81 nameof</a></td></tr>
+<tr><td></td><td valign="top"><a href="Names.html#index-Names">Names</a></td><td>&nbsp;</td><td valign="top"><a href="Names.html#Names">3.5.3 Names</a></td></tr>
+<tr><td></td><td valign="top"><a href="names.html#index-names">names</a></td><td>&nbsp;</td><td valign="top"><a href="names.html#names">5.1.82 names</a></td></tr>
+<tr><td></td><td valign="top"><a href="Names-in-procedures.html#index-Names-in-procedures">Names in procedures</a></td><td>&nbsp;</td><td valign="top"><a href="Names-in-procedures.html#Names-in-procedures">3.7.2 Names in procedures</a></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-nblocks">nblocks</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="ncols.html#index-ncols">ncols</a></td><td>&nbsp;</td><td valign="top"><a href="ncols.html#ncols">5.1.83 ncols</a></td></tr>
+<tr><td></td><td valign="top"><a href="Local-orderings.html#index-negative-degree-lexicographical-ordering">negative degree lexicographical ordering</a></td><td>&nbsp;</td><td valign="top"><a href="Local-orderings.html#Local-orderings">B.2.4 Local orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Local-orderings.html#index-negative-degree-reverse-lexicographical-ordering">negative degree reverse lexicographical ordering</a></td><td>&nbsp;</td><td valign="top"><a href="Local-orderings.html#Local-orderings">B.2.4 Local orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Local-orderings.html#index-negative-lexicographical-ordering">negative lexicographical ordering</a></td><td>&nbsp;</td><td valign="top"><a href="Local-orderings.html#Local-orderings">B.2.4 Local orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Command-line-options.html#index-net-access">net access</a></td><td>&nbsp;</td><td valign="top"><a href="Command-line-options.html#Command-line-options">3.1.6 Command line options</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-online-help-system.html#index-netscape">netscape</a></td><td>&nbsp;</td><td valign="top"><a href="The-online-help-system.html#The-online-help-system">3.1.3 The online help system</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-online-help-system.html#index-NETSCAPE-environment-variable">NETSCAPE environment variable</a></td><td>&nbsp;</td><td valign="top"><a href="The-online-help-system.html#The-online-help-system">3.1.3 The online help system</a></td></tr>
+<tr><td></td><td valign="top"><a href="index.htm#index-Neumann_002c-Wolfgang">Neumann, Wolfgang</a></td><td>&nbsp;</td><td valign="top"><a href="index.htm#Acknowledgements">Acknowledgements</a></td></tr>
+<tr><td></td><td valign="top"><a href="string.html#index-newline">newline</a></td><td>&nbsp;</td><td valign="top"><a href="string.html#string">4.17 string</a></td></tr>
+<tr><td></td><td valign="top"><a href="News-and-changes.html#index-news">news</a></td><td>&nbsp;</td><td valign="top"><a href="News-and-changes.html#News-and-changes">E.1 News and changes</a></td></tr>
+<tr><td></td><td valign="top"><a href="is_005fNND.html#index-Newton-non_002ddegenerate">Newton non-degenerate</a></td><td>&nbsp;</td><td valign="top"><a href="is_005fNND.html#is_005fNND">D.5.5.16 is_NND</a></td></tr>
+<tr><td></td><td valign="top"><a href="newtonpoly.html#index-Newton-polygon">Newton polygon</a></td><td>&nbsp;</td><td valign="top"><a href="newtonpoly.html#newtonpoly">D.5.5.15 newtonpoly</a></td></tr>
+<tr><td></td><td valign="top"><a href="is_005fNND.html#index-Newton-polygon-1">Newton polygon</a></td><td>&nbsp;</td><td valign="top"><a href="is_005fNND.html#is_005fNND">D.5.5.16 is_NND</a></td></tr>
+<tr><td></td><td valign="top"><a href="newtonpoly.html#index-newtonpoly">newtonpoly</a></td><td>&nbsp;</td><td valign="top"><a href="newtonpoly.html#newtonpoly">D.5.5.15 newtonpoly</a></td></tr>
+<tr><td></td><td valign="top"><a href="reduce.html#index-NF">NF</a></td><td>&nbsp;</td><td valign="top"><a href="reduce.html#reduce">5.1.106 reduce</a></td></tr>
+<tr><td></td><td valign="top"><a href="nf_005ficis.html#index-nf_005ficis">nf_icis</a></td><td>&nbsp;</td><td valign="top"><a href="nf_005ficis.html#nf_005ficis">D.5.8.10 nf_icis</a></td></tr>
+<tr><td></td><td valign="top"><a href="noether.html#index-noether">noether</a></td><td>&nbsp;</td><td valign="top"><a href="noether.html#noether">5.3.5 noether</a></td></tr>
+<tr><td></td><td valign="top"><a href="noetherNormal.html#index-noetherNormal">noetherNormal</a></td><td>&nbsp;</td><td valign="top"><a href="noetherNormal.html#noetherNormal">D.4.1.9 noetherNormal</a></td></tr>
+<tr><td></td><td valign="top"><a href="Limitations.html#index-non_002denglish-special-characters">non-english special characters</a></td><td>&nbsp;</td><td valign="top"><a href="Limitations.html#Limitations">6.1 Limitations</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-none_002c-option">none, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="normal.html#index-normal">normal</a></td><td>&nbsp;</td><td valign="top"><a href="normal.html#normal">D.4.6.1 normal</a></td></tr>
+<tr><td></td><td valign="top"><a href="Standard-bases.html#index-Normal-form">Normal form</a></td><td>&nbsp;</td><td valign="top"><a href="Standard-bases.html#Properties">Properties</a></td></tr>
+<tr><td></td><td valign="top"><a href="normal_005flib.html#index-normal_002elib">normal.lib</a></td><td>&nbsp;</td><td valign="top"><a href="normal_005flib.html#normal_005flib">D.4.6 normal_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="normalform.html#index-normalform">normalform</a></td><td>&nbsp;</td><td valign="top"><a href="normalform.html#normalform">D.5.1.13 normalform</a></td></tr>
+<tr><td></td><td valign="top"><a href="normalI.html#index-normalI">normalI</a></td><td>&nbsp;</td><td valign="top"><a href="normalI.html#normalI">D.4.9.2 normalI</a></td></tr>
+<tr><td></td><td valign="top"><a href="Normalization.html#index-Normalization">Normalization</a></td><td>&nbsp;</td><td valign="top"><a href="Normalization.html#Normalization">A.22 Normalization</a></td></tr>
+<tr><td></td><td valign="top"><a href="normal.html#index-normalization">normalization</a></td><td>&nbsp;</td><td valign="top"><a href="normal.html#normal">D.4.6.1 normal</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrize.html#index-normalization-1">normalization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrize.html#parametrize">D.8.3.1 parametrize</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrizepd.html#index-normalization-2">normalization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrizepd.html#parametrizepd">D.8.3.2 parametrizepd</a></td></tr>
+<tr><td></td><td valign="top"><a href="normalize.html#index-normalize">normalize</a></td><td>&nbsp;</td><td valign="top"><a href="normalize.html#normalize">D.2.4.12 normalize</a></td></tr>
+<tr><td></td><td valign="top"><a href="normal_005flib.html#index-normal_005flib">normal_lib</a></td><td>&nbsp;</td><td valign="top"><a href="normal_005flib.html#normal_005flib">D.4.6 normal_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="boolean-operations.html#index-not">not</a></td><td>&nbsp;</td><td valign="top"><a href="boolean-operations.html#boolean-operations">4.3.6 boolean operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-notBuckets_002c-option">notBuckets, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-notRegularity_002c-option">notRegularity, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-notSugar_002c-option">notSugar, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="npars.html#index-npars">npars</a></td><td>&nbsp;</td><td valign="top"><a href="npars.html#npars">5.1.84 npars</a></td></tr>
+<tr><td></td><td valign="top"><a href="nres.html#index-nres">nres</a></td><td>&nbsp;</td><td valign="top"><a href="nres.html#nres">5.1.85 nres</a></td></tr>
+<tr><td></td><td valign="top"><a href="nrows.html#index-nrows">nrows</a></td><td>&nbsp;</td><td valign="top"><a href="nrows.html#nrows">5.1.86 nrows</a></td></tr>
+<tr><td></td><td valign="top"><a href="nselect.html#index-nselect">nselect</a></td><td>&nbsp;</td><td valign="top"><a href="nselect.html#nselect">D.4.2.4 nselect</a></td></tr>
+<tr><td></td><td valign="top"><a href="NSplaces.html#index-NSplaces">NSplaces</a></td><td>&nbsp;</td><td valign="top"><a href="NSplaces.html#NSplaces">D.9.1.2 NSplaces</a></td></tr>
+<tr><td></td><td valign="top"><a href="ntsolve_005flib.html#index-ntsolve_002elib">ntsolve.lib</a></td><td>&nbsp;</td><td valign="top"><a href="ntsolve_005flib.html#ntsolve_005flib">D.7.4 ntsolve_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="ntsolve_005flib.html#index-ntsolve_005flib">ntsolve_lib</a></td><td>&nbsp;</td><td valign="top"><a href="ntsolve_005flib.html#ntsolve_005flib">D.7.4 ntsolve_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="nt_005fsolve.html#index-nt_005fsolve">nt_solve</a></td><td>&nbsp;</td><td valign="top"><a href="nt_005fsolve.html#nt_005fsolve">D.7.4.1 nt_solve</a></td></tr>
+<tr><td></td><td valign="top"><a href="NullCone.html#index-NullCone">NullCone</a></td><td>&nbsp;</td><td valign="top"><a href="NullCone.html#NullCone">D.6.3.11 NullCone</a></td></tr>
+<tr><td></td><td valign="top"><a href="number.html#index-number">number</a></td><td>&nbsp;</td><td valign="top"><a href="number.html#number">4.11 number</a></td></tr>
+<tr><td></td><td valign="top"><a href="number-declarations.html#index-number-declarations">number declarations</a></td><td>&nbsp;</td><td valign="top"><a href="number-declarations.html#number-declarations">4.11.1 number declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="number-expressions.html#index-number-expressions">number expressions</a></td><td>&nbsp;</td><td valign="top"><a href="number-expressions.html#number-expressions">4.11.2 number expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="number-operations.html#index-number-operations">number operations</a></td><td>&nbsp;</td><td valign="top"><a href="number-operations.html#number-operations">4.11.3 number operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="number-related-functions.html#index-number-related-functions">number related functions</a></td><td>&nbsp;</td><td valign="top"><a href="number-related-functions.html#number-related-functions">4.11.4 number related functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="number_005fe.html#index-number_005fe">number_e</a></td><td>&nbsp;</td><td valign="top"><a href="number_005fe.html#number_005fe">D.2.2.10 number_e</a></td></tr>
+<tr><td></td><td valign="top"><a href="number_005fpi.html#index-number_005fpi">number_pi</a></td><td>&nbsp;</td><td valign="top"><a href="number_005fpi.html#number_005fpi">D.2.2.11 number_pi</a></td></tr>
+<tr><td></td><td valign="top"><a href="numerator.html#index-numerator">numerator</a></td><td>&nbsp;</td><td valign="top"><a href="numerator.html#numerator">D.2.4.15 numerator</a></td></tr>
+<tr><td></td><td valign="top"><a href="nvars.html#index-nvars">nvars</a></td><td>&nbsp;</td><td valign="top"><a href="nvars.html#nvars">5.1.87 nvars</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-O">O</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="Objects.html#index-Objects">Objects</a></td><td>&nbsp;</td><td valign="top"><a href="Objects.html#Objects">3.5.4 Objects</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-oldStd_002c-option">oldStd, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-online-help-system.html#index-online-help">online help</a></td><td>&nbsp;</td><td valign="top"><a href="The-online-help-system.html#The-online-help-system">3.1.3 The online help system</a></td></tr>
+<tr><td></td><td valign="top"><a href="open.html#index-open">open</a></td><td>&nbsp;</td><td valign="top"><a href="open.html#open">5.1.88 open</a></td></tr>
+<tr><td></td><td valign="top"><a href="opentex.html#index-opentex">opentex</a></td><td>&nbsp;</td><td valign="top"><a href="opentex.html#opentex">D.8.2.2 opentex</a></td></tr>
+<tr><td></td><td valign="top"><a href="tmatrix.html#index-opposite-Hodge-filtration">opposite Hodge filtration</a></td><td>&nbsp;</td><td valign="top"><a href="tmatrix.html#tmatrix">D.5.4.12 tmatrix</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-option">option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="boolean-operations.html#index-or">or</a></td><td>&nbsp;</td><td valign="top"><a href="boolean-operations.html#boolean-operations">4.3.6 boolean operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="Evaluation-of-logical-expressions.html#index-or-1">or</a></td><td>&nbsp;</td><td valign="top"><a href="Evaluation-of-logical-expressions.html#Evaluation-of-logical-expressions">6.2.2 Evaluation of logical expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="orbit_005fvariety.html#index-orbit_005fvariety">orbit_variety</a></td><td>&nbsp;</td><td valign="top"><a href="orbit_005fvariety.html#orbit_005fvariety">D.6.1.29 orbit_variety</a></td></tr>
+<tr><td></td><td valign="top"><a href="ord.html#index-ord">ord</a></td><td>&nbsp;</td><td valign="top"><a href="ord.html#ord">5.1.90 ord</a></td></tr>
+<tr><td></td><td valign="top"><a href="General-definitions-for-orderings.html#index-orderings">orderings</a></td><td>&nbsp;</td><td valign="top"><a href="General-definitions-for-orderings.html#General-definitions-for-orderings">B.2.2 General definitions for orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Introduction-to-orderings.html#index-orderings-introduction">orderings introduction</a></td><td>&nbsp;</td><td valign="top"><a href="Introduction-to-orderings.html#Introduction-to-orderings">B.2.1 Introduction to orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Extra-weight-vector.html#index-orderings_002c-a">orderings, a</a></td><td>&nbsp;</td><td valign="top"><a href="Extra-weight-vector.html#Extra-weight-vector">B.2.8 Extra weight vector</a></td></tr>
+<tr><td></td><td valign="top"><a href="Global-orderings.html#index-orderings_002c-global">orderings, global</a></td><td>&nbsp;</td><td valign="top"><a href="Global-orderings.html#Global-orderings">B.2.3 Global orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Local-orderings.html#index-orderings_002c-local">orderings, local</a></td><td>&nbsp;</td><td valign="top"><a href="Local-orderings.html#Local-orderings">B.2.4 Local orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Matrix-orderings.html#index-orderings_002c-M">orderings, M</a></td><td>&nbsp;</td><td valign="top"><a href="Matrix-orderings.html#Matrix-orderings">B.2.6 Matrix orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="Product-orderings.html#index-orderings_002c-product">orderings, product</a></td><td>&nbsp;</td><td valign="top"><a href="Product-orderings.html#Product-orderings">B.2.7 Product orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="ordstr.html#index-ordstr">ordstr</a></td><td>&nbsp;</td><td valign="top"><a href="ordstr.html#ordstr">5.1.91 ordstr</a></td></tr>
+<tr><td></td><td valign="top"><a href="ord_005ftest.html#index-ord_005ftest">ord_test</a></td><td>&nbsp;</td><td valign="top"><a href="ord_005ftest.html#ord_005ftest">D.2.6.11 ord_test</a></td></tr>
+<tr><td></td><td valign="top"><a href="orthogonalize.html#index-orthogonalize">orthogonalize</a></td><td>&nbsp;</td><td valign="top"><a href="orthogonalize.html#orthogonalize">D.3.2.5 orthogonalize</a></td></tr>
+<tr><td></td><td valign="top"><a href="outer.html#index-outer">outer</a></td><td>&nbsp;</td><td valign="top"><a href="outer.html#outer">D.3.1.8 outer</a></td></tr>
+<tr><td></td><td valign="top"><a href="Input-and-output.html#index-output">output</a></td><td>&nbsp;</td><td valign="top"><a href="Input-and-output.html#Input-and-output">3.6 Input and output</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th><a name="index_split-5_cp_letter-P">P</a></th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="par.html#index-par">par</a></td><td>&nbsp;</td><td valign="top"><a href="par.html#par">5.1.92 par</a></td></tr>
+<tr><td></td><td valign="top"><a href="Parallelization-with-MPtcp-links.html#index-Parallelization">Parallelization</a></td><td>&nbsp;</td><td valign="top"><a href="Parallelization-with-MPtcp-links.html#Parallelization-with-MPtcp-links">A.28 Parallelization with MPtcp links</a></td></tr>
+<tr><td></td><td valign="top"><a href="paramet_005flib.html#index-paramet_002elib">paramet.lib</a></td><td>&nbsp;</td><td valign="top"><a href="paramet_005flib.html#paramet_005flib">D.8.3 paramet_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="Parameter-list.html#index-Parameter-list">Parameter list</a></td><td>&nbsp;</td><td valign="top"><a href="Parameter-list.html#Parameter-list">3.7.3 Parameter list</a></td></tr>
+<tr><td></td><td valign="top"><a href="number.html#index-parameter_002c-as-numbers">parameter, as numbers</a></td><td>&nbsp;</td><td valign="top"><a href="number.html#number">4.11 number</a></td></tr>
+<tr><td></td><td valign="top"><a href="Parameters.html#index-Parameters">Parameters</a></td><td>&nbsp;</td><td valign="top"><a href="Parameters.html#Parameters">A.6 Parameters</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrisation.html#index-parametrisation">parametrisation</a></td><td>&nbsp;</td><td valign="top"><a href="parametrisation.html#parametrisation">D.5.5.5 parametrisation</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrisation.html#index-parametrization">parametrization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrisation.html#parametrisation">D.5.5.5 parametrisation</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrize.html#index-parametrization-1">parametrization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrize.html#parametrize">D.8.3.1 parametrize</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrizepd.html#index-parametrization-2">parametrization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrizepd.html#parametrizepd">D.8.3.2 parametrizepd</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrizesing.html#index-parametrization-3">parametrization</a></td><td>&nbsp;</td><td valign="top"><a href="parametrizesing.html#parametrizesing">D.8.3.3 parametrizesing</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrize.html#index-parametrize">parametrize</a></td><td>&nbsp;</td><td valign="top"><a href="parametrize.html#parametrize">D.8.3.1 parametrize</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrizepd.html#index-parametrizepd">parametrizepd</a></td><td>&nbsp;</td><td valign="top"><a href="parametrizepd.html#parametrizepd">D.8.3.2 parametrizepd</a></td></tr>
+<tr><td></td><td valign="top"><a href="parametrizesing.html#index-parametrizesing">parametrizesing</a></td><td>&nbsp;</td><td valign="top"><a href="parametrizesing.html#parametrizesing">D.8.3.3 parametrizesing</a></td></tr>
+<tr><td></td><td valign="top"><a href="paramet_005flib.html#index-paramet_005flib">paramet_lib</a></td><td>&nbsp;</td><td valign="top"><a href="paramet_005flib.html#paramet_005flib">D.8.3 paramet_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="pardeg.html#index-pardeg">pardeg</a></td><td>&nbsp;</td><td valign="top"><a href="pardeg.html#pardeg">5.1.93 pardeg</a></td></tr>
+<tr><td></td><td valign="top"><a href="parstr.html#index-parstr">parstr</a></td><td>&nbsp;</td><td valign="top"><a href="parstr.html#parstr">5.1.94 parstr</a></td></tr>
+<tr><td></td><td valign="top"><a href="partial_005fmolien.html#index-partial_005fmolien">partial_molien</a></td><td>&nbsp;</td><td valign="top"><a href="partial_005fmolien.html#partial_005fmolien">D.6.1.9 partial_molien</a></td></tr>
+<tr><td></td><td valign="top"><a href="Loading-of-a-library.html#index-path">path</a></td><td>&nbsp;</td><td valign="top"><a href="Loading-of-a-library.html#Loading-of-a-library">3.8.1 Loading of a library</a></td></tr>
+<tr><td></td><td valign="top"><a href="pause.html#index-pause">pause</a></td><td>&nbsp;</td><td valign="top"><a href="pause.html#pause">D.2.3.10 pause</a></td></tr>
+<tr><td></td><td valign="top"><a href="permcol.html#index-permcol">permcol</a></td><td>&nbsp;</td><td valign="top"><a href="permcol.html#permcol">D.3.1.21 permcol</a></td></tr>
+<tr><td></td><td valign="top"><a href="permrow.html#index-permrow">permrow</a></td><td>&nbsp;</td><td valign="top"><a href="permrow.html#permrow">D.3.1.22 permrow</a></td></tr>
+<tr><td></td><td valign="top"><a href="permute_005fL.html#index-permute_005fL">permute_L</a></td><td>&nbsp;</td><td valign="top"><a href="permute_005fL.html#permute_005fL">D.9.1.13 permute_L</a></td></tr>
+<tr><td></td><td valign="top"><a href="index.htm#index-Pfister_002c-Gerhard">Pfister, Gerhard</a></td><td>&nbsp;</td><td valign="top"><a href="index.htm#Acknowledgements">Acknowledgements</a></td></tr>
+<tr><td></td><td valign="top"><a href="system.html#index-pid">pid</a></td><td>&nbsp;</td><td valign="top"><a href="system.html#system">5.1.125 system</a></td></tr>
+<tr><td></td><td valign="top"><a href="plot.html#index-plot">plot</a></td><td>&nbsp;</td><td valign="top"><a href="plot.html#plot">D.8.4.1 plot</a></td></tr>
+<tr><td></td><td valign="top"><a href="pmat.html#index-pmat">pmat</a></td><td>&nbsp;</td><td valign="top"><a href="pmat.html#pmat">D.2.3.3 pmat</a></td></tr>
+<tr><td></td><td valign="top"><a href="index.htm#index-Pohl_002c-Wilfred">Pohl, Wilfred</a></td><td>&nbsp;</td><td valign="top"><a href="index.htm#Acknowledgements">Acknowledgements</a></td></tr>
+<tr><td></td><td valign="top"><a href="Polar-curves.html#index-Polar-curves">Polar curves</a></td><td>&nbsp;</td><td valign="top"><a href="Polar-curves.html#Polar-curves">A.13 Polar curves</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly.html#index-poly">poly</a></td><td>&nbsp;</td><td valign="top"><a href="poly.html#poly">4.12 poly</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly-declarations.html#index-poly-declarations">poly declarations</a></td><td>&nbsp;</td><td valign="top"><a href="poly-declarations.html#poly-declarations">4.12.1 poly declarations</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly-expressions.html#index-poly-expressions">poly expressions</a></td><td>&nbsp;</td><td valign="top"><a href="poly-expressions.html#poly-expressions">4.12.2 poly expressions</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly-operations.html#index-poly-operations">poly operations</a></td><td>&nbsp;</td><td valign="top"><a href="poly-operations.html#poly-operations">4.12.3 poly operations</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly-related-functions.html#index-poly-related-functions">poly related functions</a></td><td>&nbsp;</td><td valign="top"><a href="poly-related-functions.html#poly-related-functions">4.12.4 poly related functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly_005flib.html#index-poly_002elib">poly.lib</a></td><td>&nbsp;</td><td valign="top"><a href="poly_005flib.html#poly_005flib">D.2.4 poly_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="Polynomial-data.html#index-Polynomial-data">Polynomial data</a></td><td>&nbsp;</td><td valign="top"><a href="Polynomial-data.html#Polynomial-data">Appendix B Polynomial data</a></td></tr>
+<tr><td></td><td valign="top"><a href="poly_005flib.html#index-poly_005flib">poly_lib</a></td><td>&nbsp;</td><td valign="top"><a href="poly_005flib.html#poly_005flib">D.2.4 poly_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="posweight.html#index-posweight">posweight</a></td><td>&nbsp;</td><td valign="top"><a href="posweight.html#posweight">D.5.9.8 posweight</a></td></tr>
+<tr><td></td><td valign="top"><a href="pos_005fdef.html#index-pos_005fdef">pos_def</a></td><td>&nbsp;</td><td valign="top"><a href="pos_005fdef.html#pos_005fdef">D.3.2.16 pos_def</a></td></tr>
+<tr><td></td><td valign="top"><a href="Pottier.html#index-Pottier-algorithm">Pottier algorithm</a></td><td>&nbsp;</td><td valign="top"><a href="Pottier.html#Pottier">C.6.2.2 The algorithm of Pottier</a></td></tr>
+<tr><td></td><td valign="top"><a href="power.html#index-power">power</a></td><td>&nbsp;</td><td valign="top"><a href="power.html#power">D.3.1.9 power</a></td></tr>
+<tr><td></td><td valign="top"><a href="power_005fproducts.html#index-power_005fproducts">power_products</a></td><td>&nbsp;</td><td valign="top"><a href="power_005fproducts.html#power_005fproducts">D.6.1.23 power_products</a></td></tr>
+<tr><td></td><td valign="top"><a href="preComp.html#index-preComp">preComp</a></td><td>&nbsp;</td><td valign="top"><a href="preComp.html#preComp">D.4.4.11 preComp</a></td></tr>
+<tr><td></td><td valign="top"><a href="index.htm#index-Preface">Preface</a></td><td>&nbsp;</td><td valign="top"><a href="index.htm#Preface">1 Preface</a></td></tr>
+<tr><td></td><td valign="top"><a href="preimage.html#index-preimage">preimage</a></td><td>&nbsp;</td><td valign="top"><a href="preimage.html#preimage">5.1.95 preimage</a></td></tr>
+<tr><td></td><td valign="top"><a href="prepareAss.html#index-prepareAss">prepareAss</a></td><td>&nbsp;</td><td valign="top"><a href="prepareAss.html#prepareAss">D.4.7.10 prepareAss</a></td></tr>
+<tr><td></td><td valign="top"><a href="prepMat.html#index-prepMat">prepMat</a></td><td>&nbsp;</td><td valign="top"><a href="prepMat.html#prepMat">D.6.4.1 prepMat</a></td></tr>
+<tr><td></td><td valign="top"><a href="prepSV.html#index-prepSV">prepSV</a></td><td>&nbsp;</td><td valign="top"><a href="prepSV.html#prepSV">D.9.1.8 prepSV</a></td></tr>
+<tr><td></td><td valign="top"><a href="presolve_005flib.html#index-presolve_002elib">presolve.lib</a></td><td>&nbsp;</td><td valign="top"><a href="presolve_005flib.html#presolve_005flib">D.7.1 presolve_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="presolve_005flib.html#index-presolve_005flib">presolve_lib</a></td><td>&nbsp;</td><td valign="top"><a href="presolve_005flib.html#presolve_005flib">D.7.1 presolve_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="Primary-decomposition.html#index-Primary-decomposition">Primary decomposition</a></td><td>&nbsp;</td><td valign="top"><a href="Primary-decomposition.html#Primary-decomposition">A.21 Primary decomposition</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fchar0.html#index-primary_005fchar0">primary_char0</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fchar0.html#primary_005fchar0">D.6.1.13 primary_char0</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fchar0_005fno_005fmolien.html#index-primary_005fchar0_005fno_005fmolien">primary_char0_no_molien</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fchar0_005fno_005fmolien.html#primary_005fchar0_005fno_005fmolien">D.6.1.15 primary_char0_no_molien</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fchar0_005fno_005fmolien_005frandom.html#index-primary_005fchar0_005fno_005fmolien_005frandom">primary_char0_no_molien_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fchar0_005fno_005fmolien_005frandom.html#primary_005fchar0_005fno_005fmolien_005frandom">D.6.1.20 primary_char0_no_molien_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fchar0_005frandom.html#index-primary_005fchar0_005frandom">primary_char0_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fchar0_005frandom.html#primary_005fchar0_005frandom">D.6.1.18 primary_char0_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp.html#index-primary_005fcharp">primary_charp</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp.html#primary_005fcharp">D.6.1.14 primary_charp</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp_005fno_005fmolien.html#index-primary_005fcharp_005fno_005fmolien">primary_charp_no_molien</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp_005fno_005fmolien.html#primary_005fcharp_005fno_005fmolien">D.6.1.16 primary_charp_no_molien</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp_005fno_005fmolien_005frandom.html#index-primary_005fcharp_005fno_005fmolien_005frandom">primary_charp_no_molien_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp_005fno_005fmolien_005frandom.html#primary_005fcharp_005fno_005fmolien_005frandom">D.6.1.21 primary_charp_no_molien_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp_005frandom.html#index-primary_005fcharp_005frandom">primary_charp_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp_005frandom.html#primary_005fcharp_005frandom">D.6.1.19 primary_charp_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp_005fwithout.html#index-primary_005fcharp_005fwithout">primary_charp_without</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp_005fwithout.html#primary_005fcharp_005fwithout">D.6.1.17 primary_charp_without</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005fcharp_005fwithout_005frandom.html#index-primary_005fcharp_005fwithout_005frandom">primary_charp_without_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005fcharp_005fwithout_005frandom.html#primary_005fcharp_005fwithout_005frandom">D.6.1.22 primary_charp_without_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005finvariants.html#index-primary_005finvariants">primary_invariants</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005finvariants.html#primary_005finvariants">D.6.1.3 primary_invariants</a></td></tr>
+<tr><td></td><td valign="top"><a href="primary_005finvariants_005frandom.html#index-primary_005finvariants_005frandom">primary_invariants_random</a></td><td>&nbsp;</td><td valign="top"><a href="primary_005finvariants_005frandom.html#primary_005finvariants_005frandom">D.6.1.4 primary_invariants_random</a></td></tr>
+<tr><td></td><td valign="top"><a href="primdec_005flib.html#index-primdec_002elib">primdec.lib</a></td><td>&nbsp;</td><td valign="top"><a href="primdec_005flib.html#primdec_005flib">D.4.7 primdec_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="PrimdecA.html#index-PrimdecA">PrimdecA</a></td><td>&nbsp;</td><td valign="top"><a href="PrimdecA.html#PrimdecA">D.4.4.2 PrimdecA</a></td></tr>
+<tr><td></td><td valign="top"><a href="PrimdecB.html#index-PrimdecB">PrimdecB</a></td><td>&nbsp;</td><td valign="top"><a href="PrimdecB.html#PrimdecB">D.4.4.3 PrimdecB</a></td></tr>
+<tr><td></td><td valign="top"><a href="primdecGTZ.html#index-primdecGTZ">primdecGTZ</a></td><td>&nbsp;</td><td valign="top"><a href="primdecGTZ.html#primdecGTZ">D.4.7.2 primdecGTZ</a></td></tr>
+<tr><td></td><td valign="top"><a href="primdecSY.html#index-primdecSY">primdecSY</a></td><td>&nbsp;</td><td valign="top"><a href="primdecSY.html#primdecSY">D.4.7.3 primdecSY</a></td></tr>
+<tr><td></td><td valign="top"><a href="primdec_005flib.html#index-primdec_005flib">primdec_lib</a></td><td>&nbsp;</td><td valign="top"><a href="primdec_005flib.html#primdec_005flib">D.4.7 primdec_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="prime.html#index-prime">prime</a></td><td>&nbsp;</td><td valign="top"><a href="prime.html#prime">5.1.96 prime</a></td></tr>
+<tr><td></td><td valign="top"><a href="primeClosure.html#index-primeClosure">primeClosure</a></td><td>&nbsp;</td><td valign="top"><a href="primeClosure.html#primeClosure">D.4.9.3 primeClosure</a></td></tr>
+<tr><td></td><td valign="top"><a href="primecoeffs.html#index-primecoeffs">primecoeffs</a></td><td>&nbsp;</td><td valign="top"><a href="primecoeffs.html#primecoeffs">D.2.2.18 primecoeffs</a></td></tr>
+<tr><td></td><td valign="top"><a href="primefactors.html#index-primefactors">primefactors</a></td><td>&nbsp;</td><td valign="top"><a href="primefactors.html#primefactors">D.2.2.19 primefactors</a></td></tr>
+<tr><td></td><td valign="top"><a href="primes.html#index-primes">primes</a></td><td>&nbsp;</td><td valign="top"><a href="primes.html#primes">D.2.2.12 primes</a></td></tr>
+<tr><td></td><td valign="top"><a href="primitiv_005flib.html#index-primitiv_002elib">primitiv.lib</a></td><td>&nbsp;</td><td valign="top"><a href="primitiv_005flib.html#primitiv_005flib">D.4.8 primitiv_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="primitive.html#index-primitive">primitive</a></td><td>&nbsp;</td><td valign="top"><a href="primitive.html#primitive">D.4.8.1 primitive</a></td></tr>
+<tr><td></td><td valign="top"><a href="primitive.html#index-primitive-element">primitive element</a></td><td>&nbsp;</td><td valign="top"><a href="primitive.html#primitive">D.4.8.1 primitive</a></td></tr>
+<tr><td></td><td valign="top"><a href="primitive_005fextra.html#index-primitive_005fextra">primitive_extra</a></td><td>&nbsp;</td><td valign="top"><a href="primitive_005fextra.html#primitive_005fextra">D.4.8.2 primitive_extra</a></td></tr>
+<tr><td></td><td valign="top"><a href="primitiv_005flib.html#index-primitiv_005flib">primitiv_lib</a></td><td>&nbsp;</td><td valign="top"><a href="primitiv_005flib.html#primitiv_005flib">D.4.8 primitiv_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="primTest.html#index-primTest">primTest</a></td><td>&nbsp;</td><td valign="top"><a href="primTest.html#primTest">D.4.4.10 primTest</a></td></tr>
+<tr><td></td><td valign="top"><a href="print.html#index-print">print</a></td><td>&nbsp;</td><td valign="top"><a href="print.html#print">5.1.97 print</a></td></tr>
+<tr><td></td><td valign="top"><a href="printf.html#index-printf">printf</a></td><td>&nbsp;</td><td valign="top"><a href="printf.html#printf">5.1.98 printf</a></td></tr>
+<tr><td></td><td valign="top"><a href="printlevel.html#index-printlevel">printlevel</a></td><td>&nbsp;</td><td valign="top"><a href="printlevel.html#printlevel">5.3.6 printlevel</a></td></tr>
+<tr><td></td><td valign="top"><a href="proc.html#index-proc">proc</a></td><td>&nbsp;</td><td valign="top"><a href="proc.html#proc">4.13 proc</a></td></tr>
+<tr><td></td><td valign="top"><a href="proc-declaration.html#index-proc-declaration">proc declaration</a></td><td>&nbsp;</td><td valign="top"><a href="proc-declaration.html#proc-declaration">4.13.1 proc declaration</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedure-commands.html#index-Procedure-commands">Procedure commands</a></td><td>&nbsp;</td><td valign="top"><a href="Procedure-commands.html#Procedure-commands">3.7.4 Procedure commands</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedure-definition.html#index-Procedure-definition">Procedure definition</a></td><td>&nbsp;</td><td valign="top"><a href="Procedure-definition.html#Procedure-definition">3.7.1 Procedure definition</a></td></tr>
+<tr><td></td><td valign="top"><a href="mdouble.html#index-procedure_002c-ASCII-help">procedure, ASCII help</a></td><td>&nbsp;</td><td valign="top"><a href="mdouble.html#mdouble">3.9.6.1 mdouble</a></td></tr>
+<tr><td></td><td valign="top"><a href="msum.html#index-procedure_002c-ASCII_002fTexinfo-help">procedure, ASCII/Texinfo help</a></td><td>&nbsp;</td><td valign="top"><a href="msum.html#msum">3.9.6.3 msum</a></td></tr>
+<tr><td></td><td valign="top"><a href="mtripple.html#index-procedure_002c-texinfo-help">procedure, texinfo help</a></td><td>&nbsp;</td><td valign="top"><a href="mtripple.html#mtripple">3.9.6.2 mtripple</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedures.html#index-Procedures">Procedures</a></td><td>&nbsp;</td><td valign="top"><a href="Procedures.html#Procedures">3.7 Procedures</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedures-and-LIB.html#index-Procedures-and-LIB">Procedures and LIB</a></td><td>&nbsp;</td><td valign="top"><a href="Procedures-and-LIB.html#Procedures-and-LIB">A.2 Procedures and LIB</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedures-and-libraries.html#index-Procedures-and-libraries">Procedures and libraries</a></td><td>&nbsp;</td><td valign="top"><a href="Procedures-and-libraries.html#Procedures-and-libraries">2.3.3 Procedures and libraries</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedures-in-a-library.html#index-Procedures-in-a-library">Procedures in a library</a></td><td>&nbsp;</td><td valign="top"><a href="Procedures-in-a-library.html#Procedures-in-a-library">3.9.1 Procedures in a library</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-help-string-of-procedures.html#index-procedures_002c-help-string">procedures, help string</a></td><td>&nbsp;</td><td valign="top"><a href="The-help-string-of-procedures.html#The-help-string-of-procedures">3.9.5 The help string of procedures</a></td></tr>
+<tr><td></td><td valign="top"><a href="Procedure-definition.html#index-procedures_002c-static">procedures, static</a></td><td>&nbsp;</td><td valign="top"><a href="Procedure-definition.html#Procedure-definition">3.7.1 Procedure definition</a></td></tr>
+<tr><td></td><td valign="top"><a href="product.html#index-product">product</a></td><td>&nbsp;</td><td valign="top"><a href="product.html#product">D.2.2.13 product</a></td></tr>
+<tr><td></td><td valign="top"><a href="Product-orderings.html#index-Product-orderings">Product orderings</a></td><td>&nbsp;</td><td valign="top"><a href="Product-orderings.html#Product-orderings">B.2.7 Product orderings</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-progress-watch">progress watch</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="The-SINGULAR-prompt.html#index-prompt">prompt</a></td><td>&nbsp;</td><td valign="top"><a href="The-SINGULAR-prompt.html#The-SINGULAR-prompt">3.1.2 The SINGULAR prompt</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-prompt_002c-option">prompt, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-prot_002c-option">prot, option</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="option.html#index-protocoll-of-computations">protocoll of computations</a></td><td>&nbsp;</td><td valign="top"><a href="option.html#option">5.1.89 option</a></td></tr>
+<tr><td></td><td valign="top"><a href="prune.html#index-prune">prune</a></td><td>&nbsp;</td><td valign="top"><a href="prune.html#prune">5.1.99 prune</a></td></tr>
+<tr><td></td><td valign="top"><a href="hnoether_005flib.html#index-Puiseux-expansion">Puiseux expansion</a></td><td>&nbsp;</td><td valign="top"><a href="hnoether_005flib.html#hnoether_005flib">D.5.5 hnoether_lib</a></td></tr>
+<tr><td></td><td valign="top"><a href="Puiseux-pairs.html#index-Puiseux-pairs">Puiseux pairs</a></td><td>&nbsp;</td><td valign="top"><a href="Puiseux-pairs.html#Puiseux-pairs">A.20 Puiseux pairs</a></td></tr>
+<tr><td></td><td valign="top"><a href="invariants.html#index-Puiseux-pairs-1">Puiseux pairs</a></td><td>&nbsp;</td><td valign="top"><a href="invariants.html#invariants">D.5.5.7 invariants</a></td></tr>
+<tr><td></td><td valign="top"><a href="puiseux2generators.html#index-puiseux2generators">puiseux2generators</a></td><td>&nbsp;</td><td valign="top"><a href="puiseux2generators.html#puiseux2generators">D.5.5.17 puiseux2generators</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="Index.html#Index-1_cp_symbol-1"><b>!</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-2"><b>&quot;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-3"><b>#</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-4"><b>$</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-5"><b>%</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-6"><b>&amp;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-7"><b>(</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-8"><b>)</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-9"><b>*</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-10"><b>+</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-11"><b>-</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-12"><b>.</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-13"><b>/</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-14"><b>;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-15"><b>&lt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-16"><b>=</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-17"><b>&gt;</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-18"><b>?</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-19"><b>[</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-20"><b>\</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-21"><b>]</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-22"><b>^</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-23"><b>_</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-24"><b>`</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-25"><b>|</b></a>
+ &nbsp; 
+<a class="summary-letter" href="Index.html#Index-1_cp_symbol-26"><b>~</b></a>
+ &nbsp; 
+<br>
+<a class="summary-letter" href="Index.html#Index-1_cp_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_1.htm#index_split-0_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_2.htm#index_split-1_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_3.htm#index_split-2_cp_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_4.htm#index_split-3_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_5.htm#index_split-4_cp_letter-M"><b>M</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#index_split-5_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-Q"><b>Q</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_7.htm#index_split-6_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-U"><b>U</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_8.htm#index_split-7_cp_letter-V"><b>V</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-W"><b>W</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-X"><b>X</b></a>
+ &nbsp; 
+<a class="summary-letter" href="sing_9.htm#index_split-8_cp_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
 </td>
 </tr>
 </table>
@@ -345,14 +509,14 @@ and write:
     src="../singular_images/singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 </td>
-<td valign="middle" align="left"><a href="sing_5.htm#First-steps" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 2.3.1 First steps" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_7.htm#Procedures-and-libraries" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 2.3.3 Procedures and libraries" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_1.htm#Introduction" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 2 Introduction" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_11.htm#General-concepts" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 3 General concepts" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_4.htm#Getting-started" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 2.3 Getting started" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_5.htm#index_split-4" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: F Index: J &ndash; M" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_7.htm#index_split-6" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: F Index: Q &ndash; S" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><img src="../singular_images/a_rightdouble_na.png" border="0" alt="FastForward: F Index" align="middle"></td>
+<td valign="middle" align="left"><img src="../singular_images/a_up_na.png" border="0" alt="Up: E Release Notes" align="middle"></td>
 <td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
-<td valign="middle" align="left"><a href="sing_914.htm#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
 <td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
 </tr></table>
 <font size="-1">

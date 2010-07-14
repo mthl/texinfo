@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: B.2.5 Module orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: B.2.5 Module orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Module-orderings"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Local-orderings.html#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Matrix-orderings.html#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Monomial-orderings.html#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Module-orderings-1"></a>
+<h3 class="subsection">B.2.5 Module orderings</h3>
+<a name="index-Module-orderings"></a>
+
+<p><small>SINGULAR</small> offers also orderings on the set of &ldquo;monomials&rdquo;
+<!-- MATH
+ $\{ x^a e_i  \mid  a \in N^n, 1 \leq i \leq r \}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_290.png"
+ ALT="$\{ x^a e_i \mid a \in N^n, 1 \leq i \leq r \}$"></SPAN> in Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_291.png"
+ ALT="$K[x]^r$"></SPAN> = Loc
+<!-- MATH
+ $K[x]e_1 
++ \ldots +$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_292.png"
+ ALT="$K[x]e_1
++ \ldots +$"></SPAN>Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_293.png"
+ ALT="$K[x]e_r$"></SPAN>, where <!-- MATH
+ $e_1, \ldots, e_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_294.png"
+ ALT="$e_1, \ldots, e_r$"></SPAN> denote the canonical
+generators of Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_291.png"
+ ALT="$K[x]^r$"></SPAN>, the r-fold direct sum of Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN>.
+(The function <TT>gen(i)</TT> yields <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_295.png"
+ ALT="$e_i$"></SPAN>).
+</p>
+<p>We have two possibilities: either to give priority to the component of a
+vector in 
+ Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_291.png"
+ ALT="$K[x]^r$"></SPAN>
+or (which is the default in <small>SINGULAR</small>) to give priority
+to the coefficients.
+The orderings <code>(&lt;,c)</code> and <code>(&lt;,C)</code> give priority to the
+coefficients; whereas
+<code>(c,&lt;)</code> and <code>(C,&lt;)</code> give priority to the components.
+<br>Let &lt; be any of the monomial orderings of 
+Loc <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_270.png"
+ ALT="$K[x]$"></SPAN>
+as above.
+</p>
+<dl compact="compact">
+<dt>(&lt;,C):</dt>
+<dd><a name="index-C_002c-module-ordering"></a>
+<a name="index-module-ordering-C"></a>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_296.png"
+ ALT="$&lt;_m = (&lt;,C)$"></SPAN> denotes the module ordering (giving priority to the coefficients):
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow x^\alpha <
+x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_297.png"
+ ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow x^\alpha &lt;
+x^\beta$"></SPAN> or (<!-- MATH
+ $x^\alpha = x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_298.png"
+ ALT="$x^\alpha = x^\beta $"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_299.png"
+ ALT="$ i &lt; j$"></SPAN>).
+
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), ds;
+  // the same as ring r = 0, (x,y,z), (ds, C);
+  [x+y2,z3+xy];
+&rarr; x*gen(1)+xy*gen(2)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></div>
+
+</dd>
+<dt>(C,&lt;):</dt>
+<dd><SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_300.png"
+ ALT="$&lt;_m = (C, &lt;)$"></SPAN> denotes the module ordering (giving priority to the component):
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow i < j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_301.png"
+ ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow i &lt; j$"></SPAN> or (<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_302.png"
+ ALT="$
+i = j $"></SPAN> and <!-- MATH
+ $x^\alpha < x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_263.png"
+ ALT="$x^\alpha &lt; x^\beta$"></SPAN>).
+
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (C,lp);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+z3*gen(2)+x*gen(1)+y2*gen(1)
+  [x,x,x];
+&rarr; x*gen(3)+x*gen(2)+x*gen(1)
+</pre></div>
+
+</dd>
+<dt>(&lt;,c):</dt>
+<dd><a name="index-c_002c-module-ordering"></a>
+<a name="index-module-ordering-c"></a>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_303.png"
+ ALT="$&lt;_m = (&lt;,c)$"></SPAN> denotes the module ordering (giving priority to the coefficients):
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow x^\alpha <
+x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_297.png"
+ ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow x^\alpha &lt;
+x^\beta$"></SPAN> or (<!-- MATH
+ $x^\alpha = x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_298.png"
+ ALT="$x^\alpha = x^\beta $"></SPAN> and <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_304.png"
+ ALT="$ i &gt; j$"></SPAN>).
+
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (lp,c);
+  [x+y2,z3+xy];
+&rarr; xy*gen(2)+x*gen(1)+y2*gen(1)+z3*gen(2)
+  [x,x,x];
+&rarr; x*gen(1)+x*gen(2)+x*gen(3)
+</pre></div>
+
+</dd>
+<dt>(c,&lt;):</dt>
+<dd><SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_305.png"
+ ALT="$&lt;_m = (c, &lt;)$"></SPAN> denotes the module ordering (giving priority to the component):
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x^\alpha e_i <_m x^\beta e_j \Leftrightarrow i > j$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_306.png"
+ ALT="$x^\alpha e_i &lt;_m x^\beta e_j \Leftrightarrow i &gt; j$"></SPAN> or (<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_302.png"
+ ALT="$
+i = j $"></SPAN> and <!-- MATH
+ $x^\alpha < x^\beta$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_263.png"
+ ALT="$x^\alpha &lt; x^\beta$"></SPAN>).
+
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">  ring r = 0, (x,y,z), (c,lp);
+  [x+y2,z3+xy];
+&rarr; [x+y2,xy+z3]
+  [x,x,x];
+&rarr; [x,x,x]
+</pre></div>
+</dd>
+</dl>
+
+The output of a vector <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_241.png"
+ ALT="$v$"></SPAN> in <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_291.png"
+ ALT="$K[x]^r$"></SPAN> with components <!-- MATH
+ $v_1,
+\ldots, v_r$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_307.png"
+ ALT="$v_1,
+\ldots, v_r$"></SPAN> has the format <!-- MATH
+ $v_1 * gen(1) + \ldots + v_r * gen(r)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_308.png"
+ ALT="$v_1 * gen(1) + \ldots + v_r * gen(r)$"></SPAN>
+<p>(up to permutation) unless the ordering starts with <code>c</code>.
+In this case a vector is written as <!-- MATH
+ $[v_1, \ldots, v_r]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_309.png"
+ ALT="$[v_1, \ldots, v_r]$"></SPAN>.
+In all cases <small>SINGULAR</small> can read input in both formats.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Local-orderings.html#Local-orderings" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: B.2.4 Local orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Matrix-orderings.html#Matrix-orderings" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: B.2.6 Matrix orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Mathematical-background.html#Mathematical-background" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix C Mathematical background" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Monomial-orderings.html#Monomial-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: B.2 Monomial orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

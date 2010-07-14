@@ -1,0 +1,36 @@
+Garbage
+* Index:
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section1: top section.
+* truc: (outside of any element).
+* unnumbered: unnumbered.
+* unnumbered after text: unnumbered.
+
+
+unnumbered
+**********
+
+in unnumbered
+
+* Index:
+* chapter: 1 Chapter.
+* Chapter2: 1 Chapter.
+* second: 0.1 second.
+* second: 0.1 second.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section: top section.
+* top section1: top section.
+* truc: (outside of any element).

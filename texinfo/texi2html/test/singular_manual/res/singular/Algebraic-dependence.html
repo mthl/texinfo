@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.25 Algebraic dependence</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.25 Algebraic dependence">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.25 Algebraic dependence">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Algebraic-dependence"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Kernel-of-module-homomorphisms.html#Kernel-of-module-homomorphisms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.24 Kernel of module homomorphisms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Classification.html#Classification" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.26 Classification" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Algebraic-dependence-1"></a>
+<h2 class="section">A.25 Algebraic dependence</h2>
+<a name="index-Algebraic-dependence"></a>
+<p>Let
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_117.png"
+ ALT="$g$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_226.png"
+ ALT="$f_1$"></SPAN>, ..., <!-- MATH
+ $f_r\in K[x_1,\ldots,x_n]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_227.png"
+ ALT="$f_r\in K[x_1,\ldots,x_n]$"></SPAN>.
+We want to check whether
+</p><ol>
+<li>
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_226.png"
+ ALT="$f_1$"></SPAN>, ..., <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_228.png"
+ ALT="$f_r$"></SPAN>
+are algebraically dependent.
+
+<p>Let
+<!-- MATH
+ $I=\langle Y_1-f_1,\ldots,Y_r-f_r \rangle \subseteq
+K[x_1,\ldots,x_n,Y_1,\ldots,Y_r]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_229.png"
+ ALT="$I=\langle Y_1-f_1,\ldots,Y_r-f_r \rangle \subseteq
+K[x_1,\ldots,x_n,Y_1,\ldots,Y_r]$"></SPAN>.
+Then
+<!-- MATH
+ $I \cap K[Y_1,\ldots,Y_r]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_230.png"
+ ALT="$I \cap K[Y_1,\ldots,Y_r]$"></SPAN>
+are the algebraic relations between
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_226.png"
+ ALT="$f_1$"></SPAN>, ..., <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_228.png"
+ ALT="$f_r$"></SPAN>.
+</p>
+</li><li>
+<!-- MATH
+ $g \in K [f_1,\ldots,f_r]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_231.png"
+ ALT="$g \in K [f_1,\ldots,f_r]$"></SPAN>.
+
+<!-- MATH
+ $g \in K[f_1,\ldots,f_r]$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_231.png"
+ ALT="$g \in K [f_1,\ldots,f_r]$"></SPAN>
+if and only if the normal form of 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_117.png"
+ ALT="$g$"></SPAN>
+ with respect to 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="10" ALIGN="BOTTOM" BORDER="0"
+ SRC="sing_232.png"
+ ALT="$I$"></SPAN>
+ and a
+block ordering with respect to
+<!-- MATH
+ $X=(x_1,\ldots,x_n)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_233.png"
+ ALT="$X=(x_1,\ldots,x_n)$"></SPAN> and <!-- MATH
+ $Y=(Y_1,\ldots,Y_r)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_234.png"
+ ALT="$Y=(Y_1,\ldots,Y_r)$"></SPAN> with <SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="20" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_235.png"
+ ALT="$X&gt;Y$"></SPAN>
+is in 
+<SPAN CLASS="MATH"><IMG
+ WIDTH="100" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="sing_236.png"
+ ALT="$K[Y]$"></SPAN>
+.
+</li></ol>
+
+<p>Both questions can be answered using the following procedure. If the
+second argument is zero, it checks for algebraic dependence and returns
+the ideal of relations between the generators of the given ideal.
+Otherwise it checks for subring membership and returns the normal form
+of the second argument with respect to the ideal I.
+</p>
+<div class="smallexample">
+<pre class="smallexample">  proc algebraicDep(ideal J, poly g)
+  {
+    def R=basering;         // give a name to the basering
+    int n=size(J);
+    int k=nvars(R);
+    int i;
+    intvec v;
+
+    // construction of the new ring:
+
+    // construct a weight vector
+    v[n+k]=0;         // gives a zero vector of length n+k
+    for(i=1;i&lt;=k;i++)
+    {
+      v[i]=1;
+    }
+    string orde=&quot;(a(&quot;+string(v)+&quot;),dp);&quot;;
+    string ri=&quot;ring Rhelp=(&quot;+charstr(R)+&quot;),
+                          (&quot;+varstr(R)+&quot;,Y(1..&quot;+string(n)+&quot;)),&quot;+orde;
+                            // ring definition as a string
+    execute(ri);            // execution of the string
+
+    // construction of the new ideal I=(J[1]-Y(1),...,J[n]-Y(n))
+    ideal I=imap(R,J);
+    for(i=1;i&lt;=n;i++)
+    {
+      I[i]=I[i]-var(k+i);
+    }
+    poly g=imap(R,g);
+    if(g==0)
+    {
+      // construction of the ideal of relations by elimination
+      poly el=var(1);
+      for(i=2;i&lt;=k;i++)
+      {
+        el=el*var(i);
+      }
+      ideal KK=eliminate(I,el);
+      keepring(Rhelp);
+      return(KK);
+    }
+    // reduction of g with respect to I
+    ideal KK=reduce(g,std(I));
+    keepring(Rhelp);
+    return(KK);
+  }
+
+  // applications of the procedure
+  ring r=0,(x,y,z),dp;
+  ideal i=xz,yz;
+  algebraicDep(i,0);
+&rarr; _[1]=0
+  // Note: after call of algebraicDep(), the basering is Rhelp.
+  setring r; kill Rhelp;
+  ideal j=xy+z2,z2+y2,x2y2-2xy3+y4;
+  algebraicDep(j,0);
+&rarr; _[1]=Y(1)^2-2*Y(1)*Y(2)+Y(2)^2-Y(3)
+  setring r; kill Rhelp;
+  poly g=y2z2-xz;
+  algebraicDep(i,g);
+&rarr; _[1]=Y(2)^2-Y(1)
+  // this shows that g is contained in i.
+  setring r; kill Rhelp;
+  algebraicDep(j,g);
+&rarr; _[1]=-z^4+z^2*Y(2)-x*z
+  // this shows that g is contained in j.
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Kernel-of-module-homomorphisms.html#Kernel-of-module-homomorphisms" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: A.24 Kernel of module homomorphisms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Classification.html#Classification" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.26 Classification" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

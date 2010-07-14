@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: 3.3.3 Term orderings</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
+<meta name="keywords" content="Singular 2-0-4 Manual: 3.3.3 Term orderings">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Term-orderings"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-syntax-of-a-ring-declaration.html#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Implemented-algorithms.html#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Rings-and-orderings.html#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Term-orderings-1"></a>
+<h3 class="subsection">3.3.3 Term orderings</h3>
+<a name="index-Monomial-orderings_002c-Term-orderings"></a>
+
+<p>Any polynomial (resp. vector) in <small>SINGULAR</small> is ordered w.r.t. a
+term ordering (or, monomial ordering), which has to be specified
+together with the declaration of a ring. <small>SINGULAR</small> stores and
+displays a polynomial (resp. vector) w.r.t. this ordering, i.e., the
+greatest monomial (also called the leading monomial) is the first one
+appearing in the output polynomial, and the smallest monomial is the last one.
+</p>
+<p><strong>Remark:</strong> The novice user should generally use the ordering
+<code>dp</code> for computations in the polynomial ring
+
+<span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>],  
+resp.  <code>ds</code> for computations in the localization
+ Loc<sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">x</span><span 
+class="cmr-7">)</span></sub><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]).  
+For more details, see <a href="Polynomial-data.html#Polynomial-data">Polynomial data</a>.
+</p>
+<p>In a ring declaration, <small>SINGULAR</small> offers the following orderings:
+</p><ol>
+<li> Global orderings
+<dl compact="compact">
+<dt><code>lp</code></dt>
+<dd><p>lexicographical ordering
+</p>
+</dd>
+<dt><code>dp</code></dt>
+<dd><p>degree reverse lexicographical ordering
+</p>
+</dd>
+<dt><code>Dp</code></dt>
+<dd><p>degree lexicographical ordering
+</p>
+</dd>
+<dt><code>wp(</code> intvec_expression <code>)</code></dt>
+<dd><p>weighted reverse lexicographical ordering; the weight vector may
+consist of positive integers only.
+</p>
+</dd>
+<dt><code>Wp(</code> intvec_expression <code>)</code></dt>
+<dd><p>weighted lexicographical ordering; the weight vector may consist of
+positive integers only.
+</p></dd>
+</dl>
+
+<p>Global orderings are well-orderings, i.e., 
+ 1 <span 
+class="cmmi-10">&#x003C; x </span> 
+ for each ring
+variable 
+ <span 
+class="cmmi-10">x </span> 
+. They are denoted by a <code>p</code> as the second
+character in their name.
+</p>
+</li><li> Local orderings
+<dl compact="compact">
+<dt><code>ls</code></dt>
+<dd><p>negative lexicographical ordering
+</p>
+</dd>
+<dt><code>ds</code></dt>
+<dd><p>negative degree reverse lexicographical ordering
+</p>
+</dd>
+<dt><code>Ds</code></dt>
+<dd><p>negative degree lexicographical ordering
+</p>
+</dd>
+<dt><code>ws(</code> intvec_expression <code>)</code></dt>
+<dd><p>(general) weighted reverse lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+</p>
+</dd>
+<dt><code>Ws(</code> intvec_expression <code>)</code></dt>
+<dd><p>(general) weighted lexicographical ordering; the first element
+of the weight vector has to be non-zero.
+</p></dd>
+</dl>
+
+<p>Local orderings are not well-orderings. They are denoted by an <code>s</code>
+as the second character in their name.
+</p>
+</li><li> Matrix orderings
+<dl compact="compact">
+<dt><code>M(</code> intmat_expression <code>)</code></dt>
+<dd><p>intmat_expression has to be an invertible square matrix
+</p></dd>
+</dl>
+
+<p>Using matrix orderings, <small>SINGULAR</small> can compute standard bases
+w.r.t. any monomial ordering that is compatible with the natural
+semi-group structure on the monomials. In practice, the predefined global
+and local orderings together with the block orderings should be
+sufficient in most cases. These orderings are faster than their
+corresponding matrix orderings since evaluation of a matrix ordering is
+time consuming.
+</p>
+</li><li> Extra weight vector
+<dl compact="compact">
+<dt><code>a(</code> intvec_expression <code>)</code></dt>
+<dd><p>an extra weight vector <code>a(</code> intvec_expression <code>)</code> may precede
+any monomial ordering
+</p></dd>
+</dl>
+
+</li><li> Product ordering
+<dl compact="compact">
+<dt><code>(</code> ordering [ <code>(</code> int_expression <code>)</code> ]<code>,</code> &hellip; <code>)</code></dt>
+<dd><p>any of the above orderings and the extra weight vector may be combined
+to yield product or block orderings
+</p></dd>
+</dl>
+
+<p>The orderings <code>lp</code>, <code>dp</code>, <code>Dp</code>, <code>ls</code>, <code>ds</code>, and
+<code>Ds</code> may be followed by an int_expression in parentheses giving the
+size of the block. For the last block the size is calculated
+automatically. For the weighted orderings the size of the block is given
+by the size of the weight vector. The same holds analogously for matrix
+orderings.
+</p>
+</li><li> Module orderings
+<dl compact="compact">
+<dt><code>(</code> ordering<code>,</code> &hellip;<code>, C )</code></dt>
+<dt><code>(</code> ordering<code>,</code> &hellip;<code>, c )</code></dt>
+<dd><p>sort polynomial vectors by the monomial ordering first, then by
+components
+</p>
+</dd>
+<dt><code>( C,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
+<dt><code>( c,</code> ordering<code>,</code> &hellip; <code>)</code></dt>
+<dd><p>sort polynomial vectors by components first, then by the monomial
+ordering
+</p></dd>
+</dl>
+
+<p>Here a capital <code>C</code> sorts generators in ascending order, i.e.,
+<code>gen(1)</code> &lt; <code>gen(2)</code> &lt; <small class="enddots">...</small> A small <code>c</code> sorts in
+descending order, i.e., <code>gen(1)</code> &gt; <code>gen(2)</code> &gt; <small class="enddots">...</small> It is
+not necessary to specify the module ordering explicitly since <code>(</code>
+ordering<code>,</code> &hellip;<code>, C )</code> is the default.
+</p>
+<p>In fact, <code>c</code> or <code>C</code> may be specified anywhere in a product
+ordering specification, not only at its beginning or end.  All monomial
+block orderings preceding the component ordering have higher precedence,
+all monomial block orderings following after it have lower precedence.
+</p></li></ol>
+
+<p>For a mathematical description of these orderings, see
+<a href="Polynomial-data.html#Polynomial-data">Polynomial data</a>.
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="General-syntax-of-a-ring-declaration.html#General-syntax-of-a-ring-declaration" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: 3.3.2 General syntax of a ring declaration" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Implemented-algorithms.html#Implemented-algorithms" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: 3.4 Implemented algorithms" align="middle"></a></td>
+<td valign="middle" align="left"><a href="General-concepts.html#General-concepts" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: 3 General concepts" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Data-types.html#Data-types" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: 4 Data types" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Rings-and-orderings.html#Rings-and-orderings" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: 3.3 Rings and orderings" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

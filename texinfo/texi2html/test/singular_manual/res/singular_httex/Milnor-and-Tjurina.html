@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: A.1 Milnor and Tjurina</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: A.1 Milnor and Tjurina">
+<meta name="keywords" content="Singular 2-0-4 Manual: A.1 Milnor and Tjurina">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="Milnor-and-Tjurina"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Procedures-and-LIB.html#Procedures-and-LIB" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.2 Procedures and LIB" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="Milnor-and-Tjurina-1"></a>
+<h2 class="section">A.1 Milnor and Tjurina</h2>
+<a name="index-Milnor"></a>
+<a name="index-Tjurina"></a>
+
+<p>The Milnor number, resp. the Tjurina number, of a power
+series f in
+ <span 
+class="cmmi-10">K</span>[[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]]  
+is
+
+
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex16x.png" alt="milnor(f) = dimK (K [[x1,...,xn]]&#x2215;jacob(f)),  " class="math-display" ></center>
+respectively
+    <center class="math-display" >
+<img 
+src="sing_tex4ht_tex17x.png" alt="tjurina(f) = dimK (K [[x1,...,xn]]&#x2215;((f)+ jacob(f)))  " class="math-display" ></center> where
+ 
+<code>jacob(f)</code> is the ideal generated by the partials
+of <code>f</code>. <code>tjurina(f)</code> is finite, if and only if <code>f</code> has an
+isolated singularity. The same holds for <code>milnor(f)</code> if
+K has characteristic 0.
+<small>SINGULAR</small> displays -1 if the dimension is infinite.
+</p>
+<p><small>SINGULAR</small> cannot compute with infinite power series. But it can
+work in
+ Loc<sub><span 
+class="cmr-7">(</span><span 
+class="cmmi-7">x</span><span 
+class="cmr-7">)</span></sub><span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>],  
+the localization of
+ <span 
+class="cmmi-10">K</span>[<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>]  
+at the maximal ideal
+ (<span 
+class="cmmi-10">x</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">,</span><span 
+class="cmmi-10">&#x2026;</span><span 
+class="cmmi-10">,x</span><sub><span 
+class="cmmi-7">n</span></sub>).  
+To do this one has to define an
+s-ordering like ds, Ds, ls, ws, Ws or an appropriate matrix
+ordering (look at the manual to get information about the possible
+monomial orderings in <small>SINGULAR</small>, or type <code>help Monomial orderings;</code>
+to get a menu of possible orderings. For further help type, e.g.,
+<code>help local orderings;</code>).
+See <a href="Monomial-orderings.html#Monomial-orderings">Monomial orderings</a>.
+</p>
+<p>We shall show in the example below how to realize the following:
+</p><ul>
+<li>
+set option <code>prot</code> to have a short protocol during standard basis
+computation
+</li><li>
+define the ring <code>r1</code> with char 32003, variables <code>x,y,z</code>, monomial
+  ordering <code>ds</code>, series ring (i.e., K[x,y,z] localized at (x,y,z))
+</li><li>
+list the information about <code>r1</code> by typing its name
+</li><li>
+define the integers <code>a,b,c,t</code>
+</li><li>
+define a polynomial <code>f</code> (depending on <code>a,b,c,t</code>) and display it
+</li><li>
+define the jacobian ideal <code>i</code> of <code>f</code>
+</li><li>
+compute a standard basis of <code>i</code>
+</li><li>
+compute the Milnor number (=250) with <code>vdim</code> and create and display
+  a string in order to comment the result
+  (text between quotes &quot;  &quot;; is a &rsquo;string&rsquo;)
+</li><li>
+compute a standard basis of <code>i+(f)</code>
+</li><li>
+compute the Tjurina number (=195) with <code>vdim</code>
+</li><li>
+then compute the Milnor number (=248) and the Tjurina number
+(=195) for <code>t</code>=1
+</li><li>
+reset the option to <code>noprot</code>
+</li></ul>
+
+<div class="smallexample">
+<pre class="smallexample">  option(prot);
+  ring r1 = 32003,(x,y,z),ds;
+  r1;
+&rarr; //   characteristic : 32003
+&rarr; //   number of vars : 3
+&rarr; //        block   1 : ordering ds
+&rarr; //                  : names    x y z 
+&rarr; //        block   2 : ordering C
+  int a,b,c,t=11,5,3,0;
+  poly f = x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3+
+           x^(c-2)*y^c*(y^2+t*x)^2;
+  f;
+&rarr; y5+x5y2+x2y2z3+xy7+z9+x11
+  ideal i=jacob(f);
+  i;
+&rarr; i[1]=5x4y2+2xy2z3+y7+11x10
+&rarr; i[2]=5y4+2x5y+2x2yz3+7xy6
+&rarr; i[3]=3x2y2z2+9z8
+  ideal j=std(i);
+&rarr; [1023:2]7(2)s8s10s11s12s(3)s13(4)s(5)s14(6)s(7)15--.s(6)-16.-.s(5)17.s(7)\
+   s--s18(6).--19-..sH(24)20(3)...21....22....23.--24-
+&rarr; product criterion:10 chain criterion:69
+  &quot;The Milnor number of f(11,5,3) for t=0 is&quot;, vdim(j);
+&rarr; The Milnor number of f(11,5,3) for t=0 is 250
+  j=i+f;    // overwrite j
+  j=std(j);
+&rarr; [1023:2]7(3)s8(2)s10s11(3)ss12(4)s(5)s13(6)s(8)s14(9).s(10).15--sH(23)(8)\
+   ...16......17.......sH(21)(9)sH(20)16(10).17...........18.......19..----.\
+   .sH(19)
+&rarr; product criterion:10 chain criterion:53
+  vdim(j);  // compute the Tjurina number for t=0
+&rarr; 195
+  t=1;
+  f=x^a+y^b+z^(3*c)+x^(c+2)*y^(c-1)+x^(c-1)*y^(c-1)*z3
+    +x^(c-2)*y^c*(y^2+t*x)^2;
+  ideal i1=jacob(f);
+  ideal j1=std(i1);
+&rarr; [1023:2]7(2)s8s10s11s12s13(3)ss(4)s14(5)s(6)s15(7).....s(8)16.s...s(9)..1\
+   7............s18(10).....s(11)..-.19.......sH(24)(10).....20...........21\
+   ..........22.............................23..............................\
+   .24.----------.25.26
+&rarr; product criterion:11 chain criterion:83
+  &quot;The Milnor number of f(11,5,3) for t=1:&quot;,vdim(j1);
+&rarr; The Milnor number of f(11,5,3) for t=1: 248
+  vdim(std(j1+f));   // compute the Tjurina number for t=1
+&rarr; [1023:2]7(16)s8(15)s10s11ss(16)-12.s-s13s(17)s(18)s(19)-s(18).-14-s(17)-s\
+   (16)ss(17)s15(18)..-s...--.16....-.......s(16).sH(23)s(18)...17..........\
+   18.........sH(20)17(17)....................18..........19..---....-.-....\
+   .....20.-----...s17(9).........18..............19..-.......20.-......21..\
+   .......sH(19)16(5).....18......19.-----
+&rarr; product criterion:15 chain criterion:174
+&rarr; 195
+  option(noprot);
+</pre></div>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Procedures-and-LIB.html#Procedures-and-LIB" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: A.2 Procedures and LIB" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Polynomial-data.html#Polynomial-data" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: Appendix B Polynomial data" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Examples.html#Examples" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: Appendix A Examples" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

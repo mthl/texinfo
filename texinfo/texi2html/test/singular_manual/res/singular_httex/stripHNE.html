@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.5.5.12 stripHNE</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.5.5.12 stripHNE">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.5.5.12 stripHNE">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+@import "sing_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="stripHNE"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="intersection.html#intersection" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.11 intersection" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="is_005firred.html#is_005firred" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.13 is_irred" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="hnoether_005flib.html#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="stripHNE-1"></a>
+<h4 class="subsubsection">D.5.5.12 stripHNE</h4>
+<a name="index-stripHNE"></a>
+<p>Procedure from library <code>hnoether.lib</code> (see <a href="hnoether_005flib.html#hnoether_005flib">hnoether_lib</a>).
+</p>
+<dl compact="compact">
+<dt><strong>Usage:</strong></dt>
+<dd><p>stripHNE(L); L list
+</p>
+</dd>
+<dt><strong>Assume:</strong></dt>
+<dd><p>L is the output of <code>develop(f)</code>, or of
+<code>extdevelop(develop(f),n)</code>, or (one entry of) the list
+<code>hne</code> in the ring created by <code>hnexpansion(f[,&quot;ess&quot;])</code>.
+</p>
+</dd>
+<dt><strong>Return:</strong></dt>
+<dd><p>list in the same format as L, but all polynomials L[4], resp.
+L[i][4], are set to zero.
+</p>
+</dd>
+<dt><strong>Note:</strong></dt>
+<dd><p>The purpose of this procedure is to remove huge amounts of data
+no longer needed. It is useful, if one or more of the polynomials
+in L consume much memory. It is still possible to compute invariants,
+parametrizations etc. with the stripped HNE(s), but it is not possible
+to use <code>extdevelop</code> with them.
+</p>
+</dd>
+</dl>
+<p><strong>Example:</strong>
+</p><div class="smallexample">
+<pre class="smallexample">LIB &quot;hnoether.lib&quot;;
+ring r=0,(x,y),dp;
+list hne=develop(x2+y3+y4);
+hne;
+&rarr; [1]:
+&rarr;    _[1,1]=0
+&rarr;    _[1,2]=x
+&rarr;    _[2,1]=0
+&rarr;    _[2,2]=-1
+&rarr; [2]:
+&rarr;    1,-1
+&rarr; [3]:
+&rarr;    1
+&rarr; [4]:
+&rarr;    x4-2x2y+y2+y
+&rarr; [5]:
+&rarr;    1
+stripHNE(hne);
+&rarr; [1]:
+&rarr;    _[1,1]=0
+&rarr;    _[1,2]=x
+&rarr;    _[2,1]=0
+&rarr;    _[2,2]=-1
+&rarr; [2]:
+&rarr;    1,-1
+&rarr; [3]:
+&rarr;    1
+&rarr; [4]:
+&rarr;    0
+&rarr; [5]:
+&rarr;    1
+</pre></div>
+<p><strong>See also:</strong>
+<a href="develop.html#develop">develop</a>;
+<a href="extdevelop.html#extdevelop">extdevelop</a>;
+<a href="hnexpansion.html#hnexpansion">hnexpansion</a>.
+</p>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="intersection.html#intersection" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.5.5.11 intersection" align="middle"></a></td>
+<td valign="middle" align="left"><a href="is_005firred.html#is_005firred" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.5.5.13 is_irred" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="hnoether_005flib.html#hnoether_005flib" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.5.5 hnoether_lib" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>

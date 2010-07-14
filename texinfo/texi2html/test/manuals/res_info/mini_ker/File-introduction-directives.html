@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2004, 2005, 2006, 2007 Alain Lahellec
+
+Copyright (C) 2004, 2005, 2006, 2007 Patrice Dumas
+
+Copyright (C) 2004, Ste'phane Hallegatte
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover text and with no Back-Cover Text.  
+A copy of the license is included in the section entitled "GNU Free 
+Documentation License."
+
+ -->
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Miniker 102 manual: B.3 File introduction directives</title>
+
+<meta name="description" content="Miniker 102 manual: B.3 File introduction directives">
+<meta name="keywords" content="Miniker 102 manual: B.3 File introduction directives">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Miniker 102 manual">
+<link href="Concepts-index.html#Concepts-index" rel="index" title="Concepts index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="mini_ker_abt.html#SEC_About" rel="help" title="About This Document">
+<link href="Cmz-directives-reference.html#Cmz-directives-reference" rel="up" title="Appendix B Cmz directives reference">
+<link href="GNU-Free-Documentation-License.html#ADDENDUM_003a-How-to-use-this-License-for-your-documents" rel="next" title="C.1.1 ADDENDUM: How to use this License for your documents">
+<link href="Conditional-expressions.html#Conditional-expressions" rel="previous" title="B.2 Conditional expressions">
+<style type="text/css">
+<!--
+@import "mini_ker_tex4ht_math.css";
+@import "mini_ker_tex4ht_tex.css";
+
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="File-introduction-directives"></a>
+<ul class="no-bullet"><li><a href="index.html#Top">Miniker 102 manual</a> </li>
+<li><ul class="no-bullet"><li><a href="Cmz-directives-reference.html#Cmz-directives-reference">Appendix B Cmz directives reference</a> </li>
+</ul></li>
+</ul>
+<div class="header">
+<p>
+[<a href="Conditional-expressions.html#Conditional-expressions" title="Previous section in reading order" accesskey="p" rel="previous"> &lt; </a>][<a href="Conditional-directives.html#Conditional-directives" title="Next section in reading order" accesskey="n" rel="next"> &gt; </a>] &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<a name="File-introduction-directives-1"></a>
+<h2 class="appendixsec">B.3 File introduction directives</h2>
+
+<p>A file (or sequence) introduction directive appears at the beginning
+of the file. There are two different directives, one is <code>DECK</code>
+for normal files, the other is <code>KEEP</code> for include files (sequences).
+The first argument is the name of the file. The file name may not be larger
+than 32 characters and is converted to lower case in the general case.
+The optionnal following arguments may be
+of 2 type (and may be mixed, separated by &lsquo;<samp>,</samp>&rsquo;):
+</p>
+<dl compact="compact">
+<dt>conditional</dt>
+<dd><p>A conditionnal is introduced by <code>IF=</code> followed by a conditionnal 
+expression described in 
+<a href="Conditional-expressions.html#Conditional-expressions">Conditional expressions</a>. The 
+file is preprocessed if the conditionnal expression is true.
+</p></dd>
+<dt>language specification</dt>
+<dd><p>A language specification is introduced by a <code>T=</code>. The most
+common languages are &lsquo;<samp>mtn</samp>&rsquo; for the mortran, &lsquo;<samp>ftn</samp>&rsquo; for
+fortran not preprocessed, &lsquo;<samp>f77</samp>&rsquo; for preprocessed fortran,
+&lsquo;<samp>c</samp>&rsquo; for the c language and &lsquo;<samp>txt</samp>&rsquo; for text files.
+In general the language of the file determines the name of files 
+the preprocessed file is extracted to, the comment style and
+the command for inclusions.
+</p></dd>
+</dl>
+
+<p>It is a common practice to have wrong language type in <code>KEEP</code> 
+as the language may be determined from the <code>DECK</code> that include
+them with cmz, or from their file name with make. This is not recommended
+and considered a bad practice.
+</p>
+<p>Such a directive will always appear in cmz, as it is built-in. It
+is recommended to have one when using make too, even though it is not 
+required in most cases. Indeed make uses the file name directly
+and finds the language and file type by looking at the file extension.
+make should then pass the language type with a 
+<code>--lang <var>lang</var></code> command
+line switch when calling the cmz directives preprocessor.
+With make, the convention is to have &lsquo;<samp>cm</samp>&rsquo; added before the normal
+file suffix and after the &lsquo;<samp>.</samp>&rsquo;. The table <a href="Programming-with-cmz-directives.html#tab_003acmfile_005fsuffix">table 3.2</a>
+shows the matching between suffixes, file type and file language.
+</p>
+<p>For example, a file beginning with
+</p>
+<pre class="verbatim">+Deck, subroutine_foo, If=monitor&amp;-simple, T=f77. 
+</pre>
+<p>is a main preprocessed fortran file that will only be generated if
+&lsquo;<samp>monitor</samp>&rsquo; is selected and &lsquo;<samp>simple</samp>&rsquo; is not selected. The 
+file to be preprocessed by make should have the &lsquo;<samp>.cmF</samp>&rsquo; suffix,
+and be called &lsquo;<tt>subroutine_foo.cmF</tt>&rsquo;.
+</p>
+<p>A file beginning with
+</p>
+<pre class="verbatim">+KEEP,inc_common,If=monitor|interface,T=mtn
+</pre>
+<p>is an mortran include file that should be processed only if &lsquo;<samp>monitor</samp>&rsquo;
+or &lsquo;<samp>interface</samp>&rsquo; is selected. The file to be preprocessed by make
+should have the &lsquo;<samp>cmmti</samp>&rsquo; suffix and be called &lsquo;<tt>inc_common.cmmti</tt>&rsquo;.
+The resulting file when make is used will be called &lsquo;<tt>inc_common.mti</tt>&rsquo;.
+</p>
+<hr>
+<div class="header">
+<p>
+[<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concepts-index.html#Concepts-index" title="Index" rel="index">Index</a>][<a href="mini_ker_abt.html#SEC_About" title="About (help)" rel="help"> ? </a>]</p>
+</div>
+<p>
+
+
+</p>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on a sunny day by texi2html
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>Singular 2-0-4 Manual: D.7.5 zeroset_lib</title>
+
+<meta name="description" content="Singular 2-0-4 Manual: D.7.5 zeroset_lib">
+<meta name="keywords" content="Singular 2-0-4 Manual: D.7.5 zeroset_lib">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en"  background="../singular_images/Mybg.png">
+
+<a name="zeroset_005flib"></a>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr valign="top">
+<td align="left">
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr valign="top" align="left">
+<td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="triMNewton.html#triMNewton" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.2 triMNewton" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="EGCD.html#EGCD" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.1 EGCD" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Symbolic_002dnumerical-solving.html#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+</tr>
+<tr valign="top" align="left">
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr>
+</table>
+</td>
+<td align="left">
+<a name="zeroset_005flib-1"></a>
+<h3 class="subsection">D.7.5 zeroset_lib</h3>
+<a name="index-zeroset_002elib"></a>
+<a name="index-zeroset_005flib"></a>
+<dl compact="compact">
+<dt><strong>Library:</strong></dt>
+<dd><p>zeroset.lib
+</p></dd>
+<dt><strong>Purpose:</strong></dt>
+<dd><p>      Procedures For Roots and Factorization
+</p></dd>
+<dt><strong>Author:</strong></dt>
+<dd><p>Thomas Bayer, email: tbayer@mathematik.uni-kl.de
+<br>http://wwwmayr.informatik.tu-muenchen.de/personen/bayert/
+Current Adress: Institut fuer Informatik, TU Muenchen
+</p>
+</dd>
+<dt><strong>Overview:</strong></dt>
+<dd><p>Algorithms for finding the zero-set of a zero-dim. ideal in Q(a)[x_1,..,x_n],
+Roots and Factorization of univariate polynomials over Q(a)[t]
+where a is an algebraic number. Written in the frame of the
+diploma thesis (advisor: Prof. Gert-Martin Greuel) &rsquo;Computations of moduli
+spaces of semiquasihomogeneous singularities and an implementation in Singular&rsquo;.
+This library is meant as a preliminary extension of the functionality
+of Singular for univariate factorization of polynomials over simple algebraic
+extensions in characteristic 0.
+<br>Subprocedures with postfix &rsquo;Main&rsquo; require that the ring contains a variable
+&rsquo;a&rsquo; and no parameters, and the ideal &rsquo;mpoly&rsquo;, where &rsquo;minpoly&rsquo; from the
+basering is stored.
+</p>
+</dd>
+</dl>
+
+<p><strong>Procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="EGCD.html#EGCD">D.7.5.1 EGCD</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gcd over an algebraic extension field of Q
+</td></tr>
+<tr><td align="left" valign="top"><a href="Factor.html#Factor">D.7.5.2 Factor</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> factorization of f over an algebraic extension field
+</td></tr>
+<tr><td align="left" valign="top"><a href="Quotient.html#Quotient">D.7.5.3 Quotient</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> quotient q of f w.r.t. g (in f = q*g + remainder)
+</td></tr>
+<tr><td align="left" valign="top"><a href="Remainder.html#Remainder">D.7.5.4 Remainder</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> remainder of the division of f by g
+</td></tr>
+<tr><td align="left" valign="top"><a href="Roots.html#Roots">D.7.5.5 Roots</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> computes all roots of f in an extension field of Q
+</td></tr>
+<tr><td align="left" valign="top"><a href="SQFRNorm.html#SQFRNorm">D.7.5.6 SQFRNorm</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> norm of f (f must be squarefree)
+</td></tr>
+<tr><td align="left" valign="top"><a href="ZeroSet.html#ZeroSet">D.7.5.7 ZeroSet</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> zero-set of the 0-dim. ideal I
+</td></tr>
+</table></blockquote>
+<p><strong>Auxiliary procedures:</strong>
+</p><blockquote><table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="EGCDMain.html#EGCDMain">D.7.5.8 EGCDMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> gcd over an algebraic extension field of Q
+</td></tr>
+<tr><td align="left" valign="top"><a href="FactorMain.html#FactorMain">D.7.5.9 FactorMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> factorization of f over an algebraic extension field
+</td></tr>
+<tr><td align="left" valign="top"><a href="InvertNumberMain.html#InvertNumberMain">D.7.5.10 InvertNumberMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> inverts an element of an algebraic extension field
+</td></tr>
+<tr><td align="left" valign="top"><a href="QuotientMain.html#QuotientMain">D.7.5.11 QuotientMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> quotient of f w.r.t. g
+</td></tr>
+<tr><td align="left" valign="top"><a href="RemainderMain.html#RemainderMain">D.7.5.12 RemainderMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> remainder of the division of f by g
+</td></tr>
+<tr><td align="left" valign="top"><a href="RootsMain.html#RootsMain">D.7.5.13 RootsMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> computes all roots of f, might extend the ground field
+</td></tr>
+<tr><td align="left" valign="top"><a href="SQFRNormMain.html#SQFRNormMain">D.7.5.14 SQFRNormMain</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> norm of f (f must be squarefree)
+</td></tr>
+<tr><td align="left" valign="top"><a href="ContainedQ.html#ContainedQ">D.7.5.15 ContainedQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> f in data ?
+</td></tr>
+<tr><td align="left" valign="top"><a href="SameQ.html#SameQ">D.7.5.16 SameQ</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> a == b (list a,b)
+</td></tr>
+</table></blockquote>
+
+</td>
+</tr>
+</table>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">  <a href="index.htm"><img
+    src="../singular_images/singular-icon-transparent.png" width="50"
+      border="0" alt="Top"></a>
+</td>
+<td valign="middle" align="left"><a href="triMNewton.html#triMNewton" title="Previous section in reading order"><img src="../singular_images/a_left.png" border="0" alt="Back: D.7.4.2 triMNewton" align="middle"></a></td>
+<td valign="middle" align="left"><a href="EGCD.html#EGCD" title="Next section in reading order"><img src="../singular_images/a_right.png" border="0" alt="Forward: D.7.5.1 EGCD" align="middle"></a></td>
+<td valign="middle" align="left"><a href="SINGULAR-libraries.html#SINGULAR-libraries" title="Beginning of this chapter or previous chapter"><img src="../singular_images/a_leftdouble.png" border="0" alt="FastBack: Appendix D SINGULAR libraries" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Release-Notes.html#Release-Notes" title="Next chapter"><img src="../singular_images/a_rightdouble.png" border="0" alt="FastForward: E Release Notes" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Symbolic_002dnumerical-solving.html#Symbolic_002dnumerical-solving" title="Up section"><img src="../singular_images/a_up.png" border="0" alt="Up: D.7 Symbolic-numerical solving" align="middle"></a></td>
+<td valign="middle" align="left"><a href="index.htm#Preface" title="Cover (top) of document"><img src="../singular_images/a_top.png" border="0" alt="Top: 1 Preface" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_toc.htm#SEC_Contents" title="Table of contents"><img src="../singular_images/a_tableofcon.png" border="0" alt="Contents: Table of Contents" align="middle"></a></td>
+<td valign="middle" align="left"><a href="Index.html#Index" title="Index"><img src="../singular_images/a_index.png" border="0" alt="Index: F Index" align="middle"></a></td>
+<td valign="middle" align="left"><a href="sing_abt.htm#SEC_About" title="About (help)"><img src="../singular_images/a_help.png" border="0" alt="About: About This Document" align="middle"></a></td>
+</tr></table>
+<font size="-1">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; User manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version 2-0-4, October 2002,
+generated by <a href="http://www.nongnu.org/texi2html/"><i>texi2html</i></a>.
+</font>
+
+</body>
+</html>
