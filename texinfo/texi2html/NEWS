@@ -58,6 +58,8 @@ X.X ()
   holds the program and version, while $Texi2HTML::THISDOC{'program'} is only
   the program name.
 
+* remove $Texi2HTML::THISDOC{'out_dir'}.
+
 5.0 (2010-06-27)
 
 * NEW FEATURES

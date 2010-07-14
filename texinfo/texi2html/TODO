@@ -6,11 +6,13 @@ Before next release
 remove l2h_tmp_dir.init from .cvsignore and Makefile.am
 ship texi2any, makeinfo
 change licenses to be FSF + GPLv3+
-remove set_default that sets to undef in load after inspection
-verify all the THISDOC. Some should certinaly be set_from_document
 
 Later
 -----
+
+* automatic menus. 
+
+* automatic nodes, if feasible (issue of unicity, mostly).
 
 * not a priority since it involves a lot of work. It would be nice to
   have the texinfo parsing in a separate perl module (as Derek suggested).
@@ -82,6 +84,7 @@ Later
   $DATE_IN_HEADER
   $INDEX_ENTRY_COLON
   $MENU_ENTRY_COLON
+  CSS_LINES
   $Texi2HTML::THISDOC{'htmlxref'}
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
@@ -92,7 +95,6 @@ Later
   $Texi2HTML::THISDOC{'simpletitle'}
   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
   $Texi2HTML::THISDOC{'filename'}->{'frame'}
-  $Texi2HTML::THISDOC{'CSS_LINES'}
   'childnext'
 
   $empty_preformatted

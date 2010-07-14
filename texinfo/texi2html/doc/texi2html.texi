@@ -995,6 +995,9 @@ later can be used for that (@pxref{Bypassing normal formatting}).
 
 @menu
 * Setting and getting configuration variable value::
+* Global informations::       Accessing global informations, like date, 
+                              title@dots{}
+* Getting flag values::
 * Encodings::                 Setting the encodings.
 * Redefining functions::      Function redefinition is achieved with 
                               redefinition of references on functions.
@@ -1055,11 +1058,195 @@ wil override the default value for @code{NO_CSS}. It will be overriden by
 @code{--set-init-variable 'NO_CSS 1'} on the command-line.
 @end defun
 
-To get the value of a variable, the function is 
+To get the value of a variable, the function is @code{get_conf},
+in the @code{Texi2HTML::Config} namespace:
 @defun get_conf ($variable_name)
 @var{$variable_name} is  the name of the variable you want to know the 
 value.
 @end defun
+
+For example:
+
+@example
+if (get_conf('footnotestyle') eq 'separate') @{ .... @}
+@end example
+
+Currently the following information corresponding with @@-commands 
+is available through @code{get_conf}:
+everyheading, everyfooting, evenheading,
+        evenfooting, oddheading, oddfooting, headings,
+        allowcodebreaks, frenchspacing, exampleindent,
+        firstparagraphindent, paragraphindent, clickstyle,
+        documentlanguage,
+contents, shortcontents,
+        setcontentsaftertitlepage, setshortcontentsaftertitlepage,
+        footnotestyle, novalidate, kbdinputstyle, documentencoding,
+        setfilename, today, documentdescription,
+        everyheadingmarks, everyfootingmarks,
+        evenheadingmarks,oddheadingmarks,evenfootingmarks,oddfootingmarks,
+        fonttextsize, pagesizes, setchapternewpage.
+
+Information that can be set on the command line and in init files, or 
+that could be modified on a per-output file basis are also available
+through @code{get_conf} (many other undocumented values are available):
+
+@c Setting and getting configuration variable value
+@c or in an appendix since more information is required before?
+@table @code
+@item SPLIT
+How the manual is split.
+@item SPLIT_SIZE
+The split size, only relevant for info output.
+@item DOCTYPE
+The current doctype.
+@item HEADERS
+True if headers are to be output.
+@end table
+
+@c --------------------------------------------------------
+@node Global informations
+@section Accessing global informations
+
+@c FIXME this is not very well placed, it is quite general and is buried
+@c in the pages fine tuning
+The @variable{%Texi2HTML::THISDOC} hash holds some global informations:
+
+@ignore
+FIXME
+'split_level' 'variable_levels' 'variables' 'toc_file' stoc_file
+%index_letters_array
+%index_entries_array
+%index_entries_region_array
+%index_entries
+%indices_numbers
+%indices
+input_file_name
+input_file_number
+input_directory
+css_import_lines
+css_rule_lines
+do_about
+titlefont_texi
+'file_base_name' 'FH' 'state' 'format_from_command_line' 'input_directory' 'destination_directory' 'file_base_name' %filename 'dircategory_texi' 'dircategory' 'settitle_texi' 'shorttitlepage_texi' 'title_texi' settitle_line_nr shorttitlepage_line_nr title_line_nr @authors_texi @authors_line_nr @subtitles_texi @subtitles_line_nr %merged_index @defindex @defcodeindex
+command_stack top_texi fulltitle_texi simpletitle_texi
+program
+program_and_version
+program_homepage
+copying_comment
+inline_contents
+line_nr
+input_file_name
+%htmlxref
+%hyphenation
+
+author subtitle -> _texi
+
+'shorttitlepage', 'settitle', 'author',
+           'titlefont', 'subtitle', 'title', 'fulltitle', 'simpletitle'
+-> $thing, $thing _no_texi, $thing _simple_format
+@end ignore
+
+@table @code
+@item fulltitle
+title set by @code{@@settitle}. If there is no @code{@@settitle} other 
+possibilities are tried (@code{@@title}, @code{@@shorttitlepage}@dots{}).
+@item fulltitle_no_texi
+fulltitle without texi formatting
+@item fulltitle_texi
+fulltitle with texi commands
+@item title
+@c title set by @code{@@settitle}, or @code{fulltitle}.
+title set by @code{@@title}.
+@item title_no_texi
+title without texi formatting
+@item title_texi
+title with texi commands
+@item author
+Authors list set by @code{@@author}.
+@item authors
+A reference on an array containing each author set by @code{@@author}.
+@item copying_comment
+Text appearing in @code{@@copying} with all the texinfo commands removed,
+put in comments.
+@item program
+The name of the command generating the output.
+@item program_and_version
+The name and version of the command generating the output.
+@item program_homepage
+Homepage of the command generating the output..
+@item file_base_name
+base name of the texinfo manual file.
+@item filename
+This is a reference on a hash that holds the filenames for special elements.
+These files may not be used in certain cases, for example the @code{toc}
+element file name may not be relevant if table of contents is not output 
+separately.
+The keys are
+@table @code
+@item doc
+the document file if not split, if split should be the top element file. 
+@item top
+Top element file name.
+@item toc 
+Table of contents element file name.
+@item stoc
+Overview (also called short table of contents) element file name.
+@item about
+About element file name.
+@item foot
+Footnotes element file name.
+@item frame
+Main frame file.
+@item toc_frame
+Table of contents frame file name.
+@end table
+@item input_file_name
+Name of the texinfo manual file given on the command line.
+@item destination_directory
+Destination directory for the resulting files.
+@item extension
+Extension for the output files.
+@item toc_file
+The file name of the table of contents, should always be valid, even 
+when table of contents are output directly in the document.
+@item inline_contents
+A reference on a hash containing two key, one for each type of table
+of contents:
+@table @code
+@item contents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the table of contents, including a heading and a reference.
+@item shortcontents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the short table of contents, including a heading and a reference.
+@end table
+@item today
+The date. May be overriden in @variable{today}.
+@item css_import_lines
+reference on an array containing the @code{@@import} lines of 
+@acronym{CSS} files.
+@item css_lines
+reference on an array containing the normal lines of 
+@acronym{CSS} files.
+@end table
+
+@c --------------------------------------------------------
+@node Getting flag values
+@section Getting the values of flags set by @code{@@set}
+
+Flags defined by @code{@@set} may be accessed through the 
+@variable{%main::value} hash. The key is the flag name, the value is the
+flag value at the end of the document. 
+
+@comment They should now be available through get_conf
+@c Special flags are set by the main program. They correspond with a texinfo
+@c command, like @code{@@setfilename}, or @code{@@settitle}, 
+@c @code{@@author}@dots{} The corresponding flag is the command name with 
+@c @samp{_} appended, for example, @code{_titlefont} corresponds with 
+@c @code{@@titlefont}. Like other flags they are available in 
+@c @variable{%main::value}.
 
 @c --------------------------------------------------------
 @node Encodings
@@ -1182,8 +1369,10 @@ initialization files.
 * The different pages::       The different categories of pages.
 * The page layout::           The elements of a page.
 * Navigation panel::          How to change the navigation panel.
-* Program variables::         The available main program variables and some 
-                              usefull functions from the main program.
+* Variables and functions for elements::   
+                              Main program variables and some functions 
+                              from the main program usefull for elements
+                              formatting.
 * Output initialization::     Setting variables before the document
                               production but after the texinfo parsing.
 * Output finalization::       Cleaning after document generation.
@@ -1281,7 +1470,7 @@ structure defined by the section structuring commands (@code{@@chapter},
 directions are specified on node line or in menu organization).
 These items are called @dfn{element labels}. They may be associated with 
 a button (@pxref{Button specifications}), and used in the formatting functions 
-(@pxref{Program variables}).
+(@pxref{Elements hashes}).
 
 Here is the list:
 
@@ -1480,19 +1669,19 @@ Returns the formatted navigation panel in @var{$navigation_text}.
 @end deftypefn
 
 @c --------------------------------------------------------
-@node Program variables
-@section Main program variables and usefull functions
+@node Variables and functions for elements
+@section Variables and functions usefull for elements formatting
 
 In the functions 
-controlling the page layout some global variables set by the main
+controlling the page layout some variables set by the main
 program are available, with value corresponding with the current
 layout element.
 
 @menu 
 * Elements hashes::             Accessing information related with the 
                                 different elements   
-* Global informations::         Accessing global informations, like date, 
-                                title@dots{}
+* Section lines::               Accessing the line of the current 
+                                section and special sections
 * Global functions::            main program usefull functions
 @end menu
 
@@ -1520,158 +1709,8 @@ target for the section HREF, if there is a node associated to
 that section.
 
 @c -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-@node Global informations
-@subsection Accessing global informations
-
-Three kinds of global informations are available, miscalleneous global
-strings, flags set by @code{@@set} and special flags and section lines.
-
-@subsubheading Strings that can be set by some @@-commands
-@findex get_conf
-
-Some information may be set up by @@-commands, by
-a variable in the init file, and sometime on the command-line. 
-This is the case, for example, for
-@code{@@footnotestyle}, @samp{--footnote-style} and @code{$FOOTNOTESTYLE}.
-The value associated with these should be read by calling the @code{get_conf}
-function, in the @code{Texi2HTML::Config} namespace, for example:
-
-@example
-if (get_conf('footnotestyle') eq 'separate') @{ .... @}
-@end example
-
-When it exists, the associated
-variable that sets the default value have the same name, in upper case.
-Currently the following information corresponding with @@-commands 
-is available through 
-@code{get_conf}:
- kbdinputstyle, paragraphindent, setchapternewpage, headings,
- footnotestyle,
-  exampleindent, firstparagraphindent, everyheading, everyfooting,
-  evenheading, evenfooting, oddheading, oddfooting, setcontentsaftertitlepage,
- setshortcontentsaftertitlepage, frenchspacing, fillcolumn, documentlanguage,
- novalidate.
-
-Information nthat can be set on the command line and in init files, or 
-that could be modified on a per-output file basis are also available
-through @code{get_conf}:
-
-@table @code
-@item SPLIT
-How the manual is split.
-@item SPLIT_SIZE
-The split size, only relevant for info output.
-@item DOCTYPE
-The current doctype.
-@item HEADERS
-True if headers are to be output.
-@end table
-
-@subsubheading Global strings
-
-The @variable{%Texi2HTML::THISDOC} hash holds some global informations:
-
-@table @code
-@item fulltitle
-title set by @code{@@settitle}. If there is no @code{@@settitle} other 
-possibilities are tried (@code{@@title}, @code{@@shorttitlepage}@dots{}).
-@item fulltitle_no_texi
-fulltitle without texi formatting
-@item fulltitle_texi
-fulltitle with texi commands
-@item title
-@c title set by @code{@@settitle}, or @code{fulltitle}.
-title set by @code{@@title}.
-@item title_no_texi
-title without texi formatting
-@item title_texi
-title with texi commands
-@item author
-Authors list set by @code{@@author}.
-@item authors
-A reference on an array containing each author set by @code{@@author}.
-@item copying_comment
-Text appearing in @code{@@copying} with all the texinfo commands removed,
-put in comments.
-@item program
-The name and version of @command{texi2html}.
-@item program_homepage
-Homepage for @command{texi2html}.
-@item program_authors
-Authors of @command{texi2html}.
-@item file_base_name
-base name of the texinfo manual file.
-@item filename
-This is a reference on a hash that holds the filenames for special elements.
-These files may not be used in certain cases, for example the @code{toc}
-element file name may not be relevant if table of contents is not output 
-separately.
-The keys are
-@table @code
-@item doc
-the document file if not split, if split should be the top element file. 
-@item top
-Top element file name.
-@item toc 
-Table of contents element file name.
-@item stoc
-Overview (also called short table of contents) element file name.
-@item about
-About element file name.
-@item foot
-Footnotes element file name.
-@item frame
-Main frame file.
-@item toc_frame
-Table of contents frame file name.
-@end table
-@item input_file_name
-Name of the texinfo manual file given on the command line.
-@item destination_directory
-Destination directory for the resulting files.
-@item extension
-Extension for the output files.
-@item toc_file
-The file name of the table of contents, should always be valid, even 
-when table of contents are output directly in the document.
-@item inline_contents
-A reference on a hash containing two key, one for each type of table
-of contents:
-@table @code
-@item contents
-The associated value is a 
-reference on an array containg the line resulting from formatting
-the table of contents, including a heading and a reference.
-@item shortcontents
-The associated value is a 
-reference on an array containg the line resulting from formatting
-the short table of contents, including a heading and a reference.
-@end table
-@item today
-The date. May be overriden in @variable{today}.
-@item css_import_lines
-reference on an array containing the @code{@@import} lines of 
-@acronym{CSS} files.
-@item css_lines
-reference on an array containing the normal lines of 
-@acronym{CSS} files.
-@end table
-
-@subsubheading Flags
-Flags defined by @code{@@set} may be accessed through the 
-@variable{%main::value} hash. The key is the flag name, the value is the
-flag value at the end of the document. 
-
-@comment They should now be available through get_conf
-@c Special flags are set by the main program. They correspond with a texinfo
-@c command, like @code{@@setfilename}, or @code{@@settitle}, 
-@c @code{@@author}@dots{} The corresponding flag is the command name with 
-@c @samp{_} appended, for example, @code{_titlefont} corresponds with 
-@c @code{@@titlefont}. Like other flags they are available in 
-@c @variable{%main::value}.
-
-
-@subsubheading Section lines
+@node Section lines
+@subsection Section lines
 
 The following array references or arrays holds formatted lines:
 

@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.275 2010-07-14 20:22:12 pertusus Exp $
+# $Id: texi2html.init,v 1.276 2010-07-14 23:05:23 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -272,7 +272,7 @@ set_default('VERBOSE', '');
 set_default('IGNORE_PREAMBLE_TEXT', 0);
 
 # --html-xref-prefix
-# base directory for external manuals.
+# base directory for external manuals. Obsolete.
 set_default('EXTERNAL_DIR', undef);
 
 # --l2h
@@ -582,10 +582,6 @@ sub t2h_default_set_variables_default()
 # if set, then use node names in menu entries, instead of section names
   set_default('NODE_NAME_IN_MENU', 1);
 
-# if set use the node names in index entry, instead of section names
-# if not set, it is set to the same value than NODE_NAME_IN_MENU
-  set_default('NODE_NAME_IN_INDEX', undef);
-
 # if set always separate description and menu link, even in 
 # preformatted environment
   set_default('SEPARATE_DESCRIPTION', 0);
@@ -609,9 +605,6 @@ sub t2h_default_set_variables_default()
 # if set and SPLIT is set, then split index pages at the next letter
 # after they have more than that many entries
   set_default('SPLIT_INDEX', 0);
-
-# file name used for Top node when NODE_FILES is true
-  set_default('TOP_NODE_FILE', undef);
 
 # extensions used for images
   @IMAGE_EXTENSIONS = ('png','jpg', 'txt');
@@ -779,7 +772,9 @@ sub t2h_default_raw_text_load()
   set_default('HEADERS', 0);
   set_default('SIMPLE_MENU', 1);
   set_default('INLINE_INSERTCOPYING', 0);
-  set_default('NODE_FILENAMES', undef);
+  # reset here, in case it was set to something else by another
+  # format.
+  set_default('TOP_NODE_FILE', undef);
 
   %simple_map = %default_simple_map;
   %simple_map_pre = %simple_map;
@@ -1237,78 +1232,16 @@ sub t2h_default_set_iso_symbols($;$$)
 # is used in main program for dumping texi too.
 sub t2h_default_set_out_encoding()
 {
-    # $Texi2HTML::THISDOC{'*_ENCODING'} to keep code shorter
-    #my ($out_encoding, $encoding_name);
-
-    #if (defined($OUT_ENCODING))
-    #{
-    #    $out_encoding = $OUT_ENCODING;
-    #}
-
-    #if (defined($ENCODING_NAME))
-    #{
-    #    $encoding_name = $ENCODING_NAME;
-    #}
-
+    # set in reverse order of precedence, such that later setting
+    # override the first settings.
     my $out_encoding_from_documentencoding = main::encoding_alias (get_conf('documentencoding'), undef, 'determining encoding from documentencoding');
     set_from_document('OUT_ENCODING', $out_encoding_from_documentencoding) if (defined($out_encoding_from_documentencoding));
     set_from_document('OUT_ENCODING', get_conf('IN_ENCODING')) if (defined(get_conf('IN_ENCODING')));
     my $out_encoding_from_encoding_name = main::encoding_alias (get_conf('ENCODING_NAME'), undef, 'determining encoding from default encoding');
     set_from_document('OUT_ENCODING', $out_encoding_from_encoding_name) if (defined($out_encoding_from_encoding_name));
+
     main::document_warn (__("Document encoding is utf8, but there is no unicode support")) if (defined(get_conf('OUT_ENCODING')) and get_conf('OUT_ENCODING') eq 'utf-8' and !get_conf('USE_UNICODE'));
 
-    #if (!defined(get_conf('OUT_ENCODING')) and (defined(get_conf('ENCODING_NAME'))))
-    #{
-    #    my $possible_out_encoding = main::encoding_alias (get_conf('ENCODING_NAME'), undef, 'determining encoding from default encoding');
-    #    
-    #    $out_encoding = $possible_out_encoding if (defined($possible_out_encoding));
-    #}
-    #if (!defined($out_encoding) and (defined(get_conf('IN_ENCODING'))))
-    #{
-    #    $out_encoding = get_conf('IN_ENCODING');
-    #}
-    #if (!defined($out_encoding) and (defined(get_conf('documentencoding'))))
-    #{
-    #    my $possible_out_encoding = main::encoding_alias (get_conf('documentencoding'), undef, 'determining encoding from documentencoding');
-    #    $out_encoding = $possible_out_encoding if (defined($possible_out_encoding));
-    #}
-    
-
-#    if (!defined($encoding_name))
-#    {
-#         if (defined($out_encoding) and defined($perl_charset_to_html{$out_encoding}))
-#         {
-#             $encoding_name = $perl_charset_to_html{$out_encoding};
-#         }
-#         elsif (defined(get_conf('IN_ENCODING')) and defined($perl_charset_to_html{get_conf('IN_ENCODING')}))
-#         {
-#             $encoding_name = $perl_charset_to_html{get_conf('IN_ENCODING')};
-#         }
-#         elsif (defined(get_conf('documentencoding')) and defined($perl_charset_to_html{get_conf('documentencoding')}))
-#         {
-#             $encoding_name = $perl_charset_to_html{get_conf('documentencoding')};
-#         }
-#         elsif (defined($out_encoding))
-#         {
-#             $encoding_name = $out_encoding;
-#         }
-#         elsif (defined(get_conf('IN_ENCODING')))
-#         {
-#             $encoding_name = get_conf('IN_ENCODING');
-#         }
-#         elsif (defined(get_conf('documentencoding')))
-#         {
-#             $encoding_name = get_conf('documentencoding');
-#         }
-#         elsif (defined(get_conf('DEFAULT_ENCODING')) and defined($perl_charset_to_html{get_conf('DEFAULT_ENCODING')}))
-#         {
-#             $encoding_name = $perl_charset_to_html{get_conf('DEFAULT_ENCODING')};
-#         }
-#         else
-#         {
-#             $encoding_name = 'us-ascii';
-#         }
-#    }
     set_from_document('ENCODING_NAME', 'us-ascii');
     set_from_document('ENCODING_NAME', $perl_charset_to_html{get_conf('DEFAULT_ENCODING')}) if (defined(get_conf('DEFAULT_ENCODING')) and defined($perl_charset_to_html{get_conf('DEFAULT_ENCODING')}));
     set_from_document('ENCODING_NAME', get_conf('documentencoding')) if (defined(get_conf('documentencoding')));
@@ -1318,18 +1251,19 @@ sub t2h_default_set_out_encoding()
     set_from_document('ENCODING_NAME', $perl_charset_to_html{get_conf('IN_ENCODING')}) if (defined(get_conf('IN_ENCODING')) and defined($perl_charset_to_html{get_conf('IN_ENCODING')}));
     set_from_document('ENCODING_NAME', $perl_charset_to_html{get_conf('OUT_ENCODING')}) if (defined(get_conf('OUT_ENCODING')) and defined($perl_charset_to_html{get_conf('OUT_ENCODING')}));
 
-    #$Texi2HTML::THISDOC{'OUT_ENCODING'} = $out_encoding;
-    #$Texi2HTML::THISDOC{'ENCODING_NAME'} = $encoding_name;
 
-    # verbose output
-    my $out_encoding = get_conf('OUT_ENCODING');
-    $out_encoding = 'UNDEF' if (!defined($out_encoding));
-    my $in_encoding = get_conf('IN_ENCODING');
-    $in_encoding = 'UNDEF' if (!defined($in_encoding));
-    my $document_encoding = get_conf('documentencoding');
-    $document_encoding = 'UNDEF' if (!defined($document_encoding));
-    my $encoding_name = get_conf('ENCODING_NAME');
-    print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n" if (get_conf('VERBOSE'));
+    if (get_conf('VERBOSE'))
+    {
+       # verbose output
+       my $out_encoding = get_conf('OUT_ENCODING');
+       $out_encoding = 'UNDEF' if (!defined($out_encoding));
+       my $in_encoding = get_conf('IN_ENCODING');
+       $in_encoding = 'UNDEF' if (!defined($in_encoding));
+       my $document_encoding = get_conf('documentencoding');
+       $document_encoding = 'UNDEF' if (!defined($document_encoding));
+       my $encoding_name = get_conf('ENCODING_NAME');
+       print STDERR "# Encodings: doc $document_encoding, in $in_encoding out $out_encoding, name $encoding_name\n";
+    }
 }
 
 sub t2h_default_init_out()
@@ -6995,8 +6929,6 @@ sub t2h_default_index_summary_file_begin($$$)
     my $manual_name = shift;
 
     $IDXFILE = main::open_out("$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx");
-    #open(IDXFILE, ">$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx")
-    #   || die "Can't open >$Texi2HTML::THISDOC{'destination_directory'}$Texi2HTML::THISDOC{'file_base_name'}" . "_$name.idx for writing: $!\n";
 }
 
 sub t2h_default_index_summary_file_end($$$)
@@ -7350,13 +7282,11 @@ sub t2h_default_element_file_name($$$)
     my $outname;
     return unless (get_conf('USE_SETFILENAME_EXTENSION') and get_conf('PREFIX') eq '');
     my $outfile = get_conf('OUTFILE');
-    #$outname = $outfile if (defined($outfile) and $outfile ne '' and $outfile !~ /\/$/ and $Texi2HTML::THISDOC{'input_file_number'} == 0);
     $outname = $outfile if (defined($outfile) and $outfile ne '' and $Texi2HTML::THISDOC{'input_file_number'} == 0);
     if ($type eq 'doc' or !get_conf('SPLIT'))
     {
        if (defined(get_conf('setfilename')) and !defined($outname))
        {
-          #$Texi2HTML::THISDOC{'extension'} = '';
           main::document_override('EXTENSION', '');
           return get_conf('setfilename');
        }

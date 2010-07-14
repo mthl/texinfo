@@ -91,7 +91,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.397 2010-07-14 20:22:12 pertusus Exp $
+# $Id: texi2html.pl,v 1.398 2010-07-14 23:05:23 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -185,7 +185,13 @@ my @document_settable_at_commands =
 my @document_global_at_commands = ('contents', 'shortcontents', 
         'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
         'footnotestyle', 'novalidate', 'kbdinputstyle', 'documentencoding',
-        'setfilename', 'today', 'documentdescription');
+        'setfilename', 'today', 'documentdescription',
+# the following are not set to anything in the default 
+# case, and currently not used anywhere
+        'everyheadingmarks','everyfootingmarks',
+        'evenheadingmarks','oddheadingmarks','evenfootingmarks','oddfootingmarks',
+        'fonttextsize', 'pagesizes', 'setchapternewpage'
+        );
 
 my @command_line_settables = ('DEBUG', 'FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'FRAMES', 'FRAMESET_DOCTYPE', 'HEADERS', 'DOCTYPE', 'TEST', 'DUMP_TEXI', 
@@ -1097,8 +1103,6 @@ sub t2h_default_associate_index_element($$$$)
       else
       {
         $file = "${docu_name}_$t2h_default_file_number";
-        #$file .= '.' . $Texi2HTML::THISDOC{'extension'} if
-        #   (defined($Texi2HTML::THISDOC{'extension'}));
         $file .= '.' . get_conf('EXTENSION') if
            (defined(get_conf('EXTENSION')));
         $t2h_default_seen_files{$default_element_file} = $file;
@@ -1242,8 +1246,6 @@ sub t2h_default_associate_index_element($$$$)
           #file and id
           my $relative_file = $Texi2HTML::THISDOC{'file_base_name'} . '_' . $t2h_default_file_number;
           $t2h_default_file_number++;
-          #$relative_file .= '.' . $Texi2HTML::THISDOC{'extension'} if 
-          #   (defined($Texi2HTML::THISDOC{'extension'}));
           $relative_file .= '.' . get_conf('EXTENSION') if
              (defined(get_conf('EXTENSION')));
           my $id = "index_split-$t2h_default_index_id_nr";
@@ -4514,8 +4516,6 @@ sub set_docu_names($$)
    @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
    my @prependended_include_directories = ('.');
    push @prependended_include_directories, $Texi2HTML::THISDOC{'input_directory'} if ($Texi2HTML::THISDOC{'input_directory'} ne '.');
-   # as Karl said, adding the destination directory is confusing.
-   #push @prependended_include_directories, $docu_dir if ($docu_dir ne '.' and $docu_dir ne $Texi2HTML::THISDOC{'input_directory'});
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @prependended_include_directories);
    unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 # AAAA
@@ -4535,12 +4535,9 @@ sub set_docu_names($$)
    { # this overrides the setting for this file.
       if (get_conf ('SPLIT'))
       {
-          #$Texi2HTML::THISDOC{'SPLIT'} = '';
           document_override('SPLIT', '');
           document_warn(sprintf(__('Cannot split output %s'), get_conf('OUTFILE')));
       }
-      #$Texi2HTML::THISDOC{'FRAMES'} = 0;
-      #$Texi2HTML::THISDOC{'SPLIT_SIZE'} = undef;
       document_override('FRAMES', 0);
       document_override('SPLIT_SIZE', undef);
       $no_file_output = 1;
@@ -4671,10 +4668,7 @@ sub set_docu_names($$)
       }
    }
    
-   #my $docu_ext = $Texi2HTML::THISDOC{'extension'};
    my $docu_ext = get_conf('EXTENSION');
-   # out_dir is undocummented, should never be used, use destination_directory
-   $Texi2HTML::THISDOC{'out_dir'} = $docu_rdir;
 
    $Texi2HTML::THISDOC{'destination_directory'} = $docu_rdir;
    $Texi2HTML::THISDOC{'file_base_name'} = $docu_name;
@@ -5948,7 +5942,6 @@ sub misc_command_structure($$$$)
            push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
            push @{$Texi2HTML::THISDOC{"${command}s_line_nr"}}, $line_nr;
         }
-        #chomp($arg);
 
         # FIXME backward compatibility. Obsoleted in nov 2009.
         $value{"_$command"} .= $arg . "\n";
@@ -6022,7 +6015,7 @@ sub misc_command_structure($$$$)
     {
         if (($line =~ /^\s+(top)[^\w\-]/) or ($line =~ /^\s+(bottom)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{$command} = $1;
+            set_from_document($command, $1);
         }
         else
         {
@@ -6033,7 +6026,7 @@ sub misc_command_structure($$$$)
     {
         if (($line =~ /^\s+(10)[^\w\-]/) or ($line =~ /^\s+(11)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{$command} = $1;
+            set_from_document($command, $1);
         }
         else
         {
@@ -6044,7 +6037,7 @@ sub misc_command_structure($$$$)
     {
         if ($line =~ /^\s+(.*)\s*$/)
         {
-            $Texi2HTML::THISDOC{$command} = $1;
+            set_from_document($command, $1);
         }
     }
     elsif ($command eq 'footnotestyle')
@@ -6063,7 +6056,7 @@ sub misc_command_structure($$$$)
         if (($line =~ /^\s+(on)[^\w\-]/) or ($line =~ /^\s+(off)[^\w\-]/)
                 or ($line =~ /^\s+(odd)[^\w\-]/))
         {
-            $Texi2HTML::THISDOC{$command} = $1;
+            set_from_document($command, $1);
         }
         else
         {
@@ -7816,7 +7809,6 @@ sub rearrange_elements()
 
             $element->{'doc_nr'} = $doc_nr;
             $element->{'file'} = "${docu_name}_$doc_nr"
-                #. (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
                 . (defined(get_conf('EXTENSION')) ? '.'.get_conf('EXTENSION') : '');
             my $use_node_file = 0;
             if ($element eq $element_top)
@@ -7838,7 +7830,6 @@ sub rearrange_elements()
                     { # use the canonicalized/transliterated section file name.
                         $element->{'file'} = $element->{'cross'} 
                          . (defined(get_conf('EXTENSION')) ? '.'.get_conf('EXTENSION') : '');
-                         #. (defined($Texi2HTML::THISDOC{'extension'}) ? ".$Texi2HTML::THISDOC{'extension'}" : '');
                     }
                     # The remaining case is for sectioning elements with empty
                     # headings and no node associated. They will have a name
@@ -8615,6 +8606,7 @@ sub pass_text($$)
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
     $Texi2HTML::THISDOC{'program_and_version'} = $THISPROG_THISVERSION;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
+    # titles is for backard compatibility
     foreach my $command (('authors', 'subtitles', 'titles'))
     {
         $Texi2HTML::THISDOC{$command} = [];
@@ -9257,7 +9249,6 @@ sub open_out($;$)
     my $file = shift;
     my $append = shift;
     local *FILE;
-#print STDERR "open_out $file $Texi2HTML::THISDOC{'OUT_ENCODING'}\n";
     if ($file eq '-')
     {
         binmode(STDOUT, ":encoding(".get_conf('OUT_ENCODING').")") if (get_conf('OUT_ENCODING') and get_conf('USE_UNICODE'));
@@ -9280,7 +9271,6 @@ sub open_out($;$)
 	else
         {
             binmode(FILE, ':bytes');
-            #binmode(FILE, ":encoding($Texi2HTML::THISDOC{'OUT_ENCODING'})");
         }
         # FIXME is it useful when in utf8?
         binmode(FILE, ":encoding(".get_conf('OUT_ENCODING').")");
