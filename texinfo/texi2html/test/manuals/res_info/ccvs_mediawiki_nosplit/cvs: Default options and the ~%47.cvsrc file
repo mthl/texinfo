@@ -76,4 +76,4 @@ causes <small>CVS</small> to use compression level 6.
 <p>
 Next: [[cvs: Global options#Global options|Global options]], Previous: [[cvs: CVS's exit status#CVS&rsquo;s exit status|Exit status]], Up: [[cvs: Guide to CVS commands#Guide to CVS commands|CVS commands]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

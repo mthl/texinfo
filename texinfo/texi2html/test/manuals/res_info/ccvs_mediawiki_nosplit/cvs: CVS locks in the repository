@@ -89,4 +89,4 @@ further discussion/rationale.
 <p>
 Next: [[cvs: How files are stored in the CVSROOT directory#How files are stored in the CVSROOT directory|CVSROOT storage]], Previous: [[cvs: The CVS directory in the repository#The CVS directory in the repository|CVS in repository]], Up: [[cvs: How data is stored in the repository#How data is stored in the repository|Repository storage]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

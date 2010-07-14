@@ -25,4 +25,4 @@ What to do next depends on the situation at hand.
  [[cvs: Setting up the files#Setting up the files|&bull; Setting up the files]]::        Getting the files into the repository
  [[cvs: Defining the module#Defining the module|&bull; Defining the module]]::         How to make a module of the files
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

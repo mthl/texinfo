@@ -43,4 +43,4 @@ rtag</code>.  The exceptions might be cases like:
  cvs tag -r 1.4 stable backend.c
 </div>
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

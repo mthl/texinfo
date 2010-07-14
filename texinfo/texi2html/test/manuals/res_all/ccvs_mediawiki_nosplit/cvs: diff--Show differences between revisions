@@ -32,4 +32,4 @@ The exit status for diff is different than for other
  [[cvs: diff options#diff options|&bull; diff options]]::                diff options
  [[cvs: diff examples#diff examples|&bull; diff examples]]::               diff examples
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

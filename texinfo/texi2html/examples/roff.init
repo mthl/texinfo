@@ -60,8 +60,7 @@ $AFTER_BODY_OPEN
 EOT
     my $today = get_conf('today');
     print $fh $Texi2HTML::THISDOC{'copying_comment'} . "\n";
-    print $fh "" . &$comment("Created on $today by $Texi2HTML::THISDOC{program}\n");
-    print $fh "" . &$comment($Texi2HTML::THISDOC{program_authors});
+    print $fh "" . &$comment("Created by $Texi2HTML::THISDOC{'program_version'}, $Texi2HTML::THISDOC{'program_homepage'}\n");
     # FIXME this should instead be done in print_title
     print $fh ".ds St " . protect_spaces($Texi2HTML::THISDOC{'title'}) . "\n";
     print $fh '.oh \'\\\\*(St\'\'%\'' ."\n".'.eh \'%\'\'\\\\*(St\'' . "\n";

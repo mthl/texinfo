@@ -24,4 +24,4 @@ this in <small>CVS</small> vary depending on the situation.
  [[cvs: Moving and renaming files#Moving and renaming files|&bull; Moving files]]::                Moving and renaming files
  [[cvs: Moving and renaming directories#Moving and renaming directories|&bull; Moving directories]]::          Moving and renaming directories
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

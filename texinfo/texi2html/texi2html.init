@@ -13,7 +13,7 @@
 # Afterwards, load the file with command-line 
 # option --init-file <your_init_file>
 #
-# $Id: texi2html.init,v 1.274 2010-07-14 08:45:56 pertusus Exp $
+# $Id: texi2html.init,v 1.275 2010-07-14 20:22:12 pertusus Exp $
 
 ######################################################################
 # The following variables can also be set by command-line options
@@ -1522,31 +1522,23 @@ sub t2h_default_finish_out()
 # FastBackward-- if leave node, up and prev, else prev node
 #
 # Furthermore, the following global variabels are set:
-# $Texi2HTML::THISDOC{title}          -- title as set by @title...
-# $Texi2HTML::THISDOC{title_no_texi}  -- title without texi (without html elements)
-# $Texi2HTML::THISDOC{title_texi}     -- title with texinfo @-commands
-# $Texi2HTML::THISDOC{fulltitle}      -- full title as set by @title...
-# $Texi2HTML::THISDOC{subtitle}       -- subtitle as set by @subtitle
-# $Texi2HTML::THISDOC{author}         -- author as set by @author
-# $Texi2HTML::THISDOC{copying_comment}  -- text of @copying and @end copying in comment
+# $Texi2HTML::THISDOC{'title'}          -- title as set by @title...
+# $Texi2HTML::THISDOC{'title_no_texi'}  -- title without texi (without html elements)
+# $Texi2HTML::THISDOC{'title_texi'}     -- title with texinfo @-commands
+# $Texi2HTML::THISDOC{'fulltitle'}      -- full title as set by @title...
+# $Texi2HTML::THISDOC{'subtitle'}       -- subtitle as set by @subtitle
+# $Texi2HTML::THISDOC{'author'}         -- author as set by @author
+# $Texi2HTML::THISDOC{'copying_comment'}  -- text of @copying and @end copying in comment
 #
-# $Texi2HTML::THISDOC{program}          -- name and version of texi2html
-# $Texi2HTML::THISDOC{program_homepage} -- homepage for texi2html
-# $Texi2HTML::THISDOC{program_authors}  -- authors of texi2html
-# $Texi2HTML::THISDOC{today}            -- date formatted with pretty_date
-# $Texi2HTML::THISDOC{toc_file}         -- table of contents file
-# $Texi2HTML::THISDOC{file_base_name}   -- base name of the texinfo manual file
-# $Texi2HTML::THISDOC{input_file_name}  -- name of the texinfo manual file
-# $Texi2HTML::THISDOC{destination_directory}
+# $Texi2HTML::THISDOC{'program'}          -- name of program generating the output
+# $Texi2HTML::THISDOC{'program_homepage'} -- homepage of program
+# $Texi2HTML::THISDOC{'toc_file}         -- table of contents file
+# $Texi2HTML::THISDOC{'file_base_name'}   -- base name of the texinfo manual file
+# $Texi2HTML::THISDOC{'input_file_name'}  -- name of the texinfo manual file
+# $Texi2HTML::THISDOC{'destination_directory'}
                                  #      -- directory for the resulting files
-# $Texi2HTML::THISDOC{user}             -- user running the script
-# $Texi2HTML::THISDOC{css_import_lines} -- ref on @import lines in css files
-# $Texi2HTML::THISDOC{css_rule_lines}   -- ref on css rules lines
-# other $Texi2HTML::THISDOC keys corresponds with texinfo commands, the value
-# being the command arg, for the following commands:
-# kbdinputstyle, paragraphindent, setchapternewpage, headings, footnotestyle,
-# exampleindent, firstparagraphindent, everyheading, everyfooting,
-# evenheading, evenfooting, oddheading, oddfooting
+# $Texi2HTML::THISDOC{'css_import_lines'} -- ref on @import lines in css files
+# $Texi2HTML::THISDOC{'css_rule_lines'}   -- ref on css rules lines
 #
 # and pointer to arrays of lines which need to be printed by main::print_lines
 # $Texi2HTML::THIS_SECTION  -- lines of 'This' section
@@ -1819,11 +1811,11 @@ sub T2H_DEFAULT_program_string()
     if ($date ne '')
     {
         return gdt('This document was generated on @i{{date}} using @uref{{program_homepage}, @i{{program}}}.', {
-           'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program' => $Texi2HTML::THISDOC{'program'} },{'duplicate'=>1});
+           'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program' => $Texi2HTML::THISDOC{'program_and_version'} },{'duplicate'=>1});
     }
     return gdt('This document was generated using @uref{{program_homepage}, @emph{{program}}}.', {
        'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program'
-=> $Texi2HTML::THISDOC{'program'} },{'duplicate'=>1});
+=> $Texi2HTML::THISDOC{'program_and_version'} },{'duplicate'=>1});
 }
 
 sub T2H_DEFAULT_end_section($$$)

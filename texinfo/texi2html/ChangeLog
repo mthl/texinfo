@@ -1,6 +1,12 @@
 2010-07-14  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: obsolete texi2html specific options.
+	* texi2html.init, texi2html.pl, */*.init: rename 
+	$Texi2HTML::THISDOC{'program'} as 
+	$Texi2HTML::THISDOC{'program_and_version'}, and have
+	$Texi2HTML::THISDOC{'program'} hold the program name only.
+	Remove $Texi2HTML::THISDOC{'program_authors'}.
+	Simplify the comment at the beginning of html output files.
 
 2010-07-13  Patrice Dumas  <pertusus@free.fr>
 

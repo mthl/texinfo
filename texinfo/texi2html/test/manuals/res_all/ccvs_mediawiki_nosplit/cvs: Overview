@@ -22,4 +22,4 @@ certain command, you can probably skip everything here.
  [[cvs: What is CVS not?#What is CVS not?|&bull; What is CVS not?]]::            Problems CVS doesn't try to solve
  [[cvs: A sample session#A sample session|&bull; A sample session]]::            A tour of basic CVS usage
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

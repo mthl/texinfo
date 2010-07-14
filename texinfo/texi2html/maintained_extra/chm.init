@@ -251,7 +251,7 @@ sub chm_init_out()
     
     print "# writing HTML Help index in $hhk_file...\n" if (get_conf('VERBOSE'));
     print IDXFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
-    print IDXFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
+    print IDXFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{'program'}\">\n";
     print IDXFILE "<!-- Sitemap 1.0 -->\n</HEAD>\n<BODY>\n";
     print IDXFILE "<OBJECT type=\"text/site properties\">\n";
     foreach my $property (sort(keys(%hhk_global_property)))
@@ -395,7 +395,7 @@ sub chm_finish_out()
     }
     
     print HHCFILE "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n<HTML>\n";
-    print HHCFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{program}\">\n";
+    print HHCFILE "<HEAD>\n<meta name=\"GENERATOR\" content=\"$Texi2HTML::THISDOC{'program'}\">\n";
     print HHCFILE "<!-- Sitemap 1.0 -->\n</HEAD>\n<BODY>\n";
     print HHCFILE "<OBJECT type=\"text/site properties\">\n";
     foreach my $property (sort(keys(%hhc_global_property)))

@@ -54,6 +54,10 @@ X.X ()
   but in Texi2HTML::THISDOC{'variables'}->{$var}. they should be accessed
   through get_conf($var).
 
+* remove $Texi2HTML::THISDOC{'program_authors'}. $Texi2HTML::THISDOC{'program_and_version'}
+  holds the program and version, while $Texi2HTML::THISDOC{'program'} is only
+  the program name.
+
 5.0 (2010-06-27)
 
 * NEW FEATURES

@@ -41,4 +41,4 @@ As with <code>:ext:</code>, the server is called &lsquo;<code>cvs</code>&rsquo;
 by default, or the value of the <code>CVS_SERVER</code>
 environment variable.
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

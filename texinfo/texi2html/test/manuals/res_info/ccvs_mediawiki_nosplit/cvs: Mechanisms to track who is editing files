@@ -43,4 +43,4 @@ but <small>CVS</small> is not able to enforce this behavior.
 <p>
 Next: [[cvs: Choosing between reserved or unreserved checkouts#Choosing between reserved or unreserved checkouts|Choosing a model]], Previous: [[cvs: Several developers simultaneously attempting to run CVS#Several developers simultaneously attempting to run CVS|Concurrency]], Up: [[cvs: Multiple developers#Multiple developers|Multiple developers]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

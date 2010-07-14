@@ -43,4 +43,4 @@ the files that are located in other directories.
  [[cvs: rdiff options#rdiff options|&bull; rdiff options]]::               rdiff options
  [[cvs: rdiff examples#rdiff examples|&bull; rdiff examples]]::              rdiff examples
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

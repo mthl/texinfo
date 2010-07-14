@@ -369,7 +369,7 @@ sub docbook_print_page_head($)
     print $fh <<EOT;
 <?xml version="1.0"?>
 $doctype
-<book id="$Texi2HTML::THISDOC{file_base_name}.$extension" lang="$language">
+<book id="$Texi2HTML::THISDOC{'file_base_name'}.$extension" lang="$language">
 EOT
 }
 
@@ -412,7 +412,6 @@ sub docbook_initialize_variables()
    $docbook_current_section = undef;
    @docbook_multitable_stack = ();
    @docbook_table_stack = ();
-   #$Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'docbook');
 }
 
 sub docbook_add_id($)

@@ -29,4 +29,4 @@ for each file, preceded by one character indicating the status of the file:
 ;<code>L <var>file</var></code>
 : The file is a symbolic link; <code>cvs import</code> ignores symbolic links. People periodically suggest that this behavior should be changed, but if there is a consensus on what it should be changed to, it is not apparent. (Various options in the &lsquo;<tt>modules</tt>&rsquo; file can be used to recreate symbolic links on checkout, update, etc.; see [[cvs: The modules file#The modules file|modules]].)
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

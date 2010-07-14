@@ -91,27 +91,15 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.396 2010-07-14 15:42:34 pertusus Exp $
-
-# FIXME. Change for texinfo, and also simplify.
+# $Id: texi2html.pl,v 1.397 2010-07-14 20:22:12 pertusus Exp $
 
 # Homepage:
-my $T2H_HOMEPAGE = "http://www.nongnu.org/texi2html/";
-
-# Authors (appears in comments):
-my $T2H_AUTHORS = <<EOT;
-texi2html was written by: 
-            Lionel Cons <Lionel.Cons\@cern.ch> (original author)
-            Karl Berry  <karl\@freefriends.org>
-            Olaf Bachmann <obachman\@mathematik.uni-kl.de>
-            and many others.
-Maintained by: Many creative people.
-Send bugs and suggestions to <texi2html-bug\@nongnu.org>
-EOT
+my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
 
 # Version: set in configure.in
 my $THISVERSION = '@PACKAGE_VERSION@';
-my $THISPROG = "texi2html $THISVERSION"; # program name and version
+my $THISPROG = '@PACKAGE_NAME@';
+my $THISPROG_THISVERSION = "$THISPROG $THISVERSION"; # program name and version
 
 #+++########################################################################
 #                                                                          #
@@ -2562,7 +2550,6 @@ sub gdt($;$$)
     my $state = shift;
 
     # FIXME this should be done only once, for @documentencoding
-    #my $encoding = lc(Texi2HTML::Config::get_conf('DOCUMENT_ENCODING'));
     my $encoding = lc(get_conf('documentencoding'));
     if (defined($encoding) and $encoding ne '' and exists($Texi2HTML::Config::t2h_encoding_aliases{$encoding}))
     {
@@ -4325,6 +4312,7 @@ if (get_conf('TEST'))
     # to generate files similar to reference ones to be able to check for
     # real changes we use these dummy values if -test is given
     $THISPROG = 'texi2html';
+    $THISPROG_THISVERSION = 'texi2html';
     setlocale( LC_ALL, "C" );
 } 
 
@@ -8625,8 +8613,8 @@ sub pass_text($$)
     }
      
     $Texi2HTML::THISDOC{'program'} = $THISPROG;
+    $Texi2HTML::THISDOC{'program_and_version'} = $THISPROG_THISVERSION;
     $Texi2HTML::THISDOC{'program_homepage'} = $T2H_HOMEPAGE;
-    $Texi2HTML::THISDOC{'program_authors'} = $T2H_AUTHORS;
     foreach my $command (('authors', 'subtitles', 'titles'))
     {
         $Texi2HTML::THISDOC{$command} = [];

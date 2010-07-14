@@ -4714,6 +4714,9 @@ set_from_init_file('SPLIT', 'node');
   anymore, but in @code{Texi2HTML::THISDOC@{'variables'@}->@{$var@}}. they 
   should be accessed
   through @code{get_conf($var)}.
+@item remove $Texi2HTML::THISDOC@{'program_authors'@}. $Texi2HTML::THISDOC@{'program_and_version'@}
+  holds the program and version, while $Texi2HTML::THISDOC@{'program'@} is only
+  the program name.
 @end itemize
 @item API changes between 1.82 and 5.0:
 @itemize @bullet

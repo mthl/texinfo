@@ -329,7 +329,7 @@ sub xml_print_page_head($)
 {
     my $fh = shift;
     my $setfilename = '';
-    $setfilename = "<setfilename>$Texi2HTML::THISDOC{file_base_name}.".get_conf('EXTENSION')."</setfilename>" 
+    $setfilename = "<setfilename>$Texi2HTML::THISDOC{'file_base_name'}.".get_conf('EXTENSION')."</setfilename>" 
         unless (defined(get_conf('setfilename')) and get_conf('setfilename') ne '');
     my $language = get_conf('documentlanguage');
     my $doctype = get_conf('DOCTYPE');
@@ -801,7 +801,6 @@ sub xml_init_variables()
    @xml_multitable_stack = ();
    @xml_table_stack = ();
    $xml_current_section = undef;
-   #$Texi2HTML::THISDOC{'SPLIT'} = 0 if ($OUTPUT_FORMAT eq 'xml');
 }
 
 # row in multitable

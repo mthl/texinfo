@@ -110,4 +110,4 @@ Environment variables passed to administrative files are:
 <p>
 Next: [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|config]], Previous: [[cvs: The history file#The history file|history file]], Up: [[cvs: Reference manual for Administrative files#Reference manual for Administrative files|Administrative files]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

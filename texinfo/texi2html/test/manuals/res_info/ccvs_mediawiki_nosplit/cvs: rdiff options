@@ -45,4 +45,4 @@ In addition to the above, these options are available:
 ;<code>-V <var>vn</var></code>
 : Expand keywords according to the rules current in <small>RCS</small> version <var>vn</var> (the expansion format changed with <small>RCS</small> version 5).  Note that this option is no longer accepted.  <small>CVS</small> will always expand keywords the way that <small>RCS</small> version 5 does.
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

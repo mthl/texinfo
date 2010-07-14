@@ -40,4 +40,4 @@ copy the changes onto another branch.
  [[cvs: Merging can add or remove files#Merging can add or remove files|&bull; Merging adds and removals]]::   What if files are added or removed?
  [[cvs: Merging and keywords#Merging and keywords|&bull; Merging and keywords]]::        Avoiding conflicts due to keyword substitution
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

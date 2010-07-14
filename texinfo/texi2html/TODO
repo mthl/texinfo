@@ -5,11 +5,19 @@ Before next release
 
 remove l2h_tmp_dir.init from .cvsignore and Makefile.am
 ship texi2any, makeinfo
-fix comment in html with authors and address
 change licenses to be FSF + GPLv3+
+remove set_default that sets to undef in load after inspection
+verify all the THISDOC. Some should certinaly be set_from_document
 
 Later
 -----
+
+* not a priority since it involves a lot of work. It would be nice to
+  have the texinfo parsing in a separate perl module (as Derek suggested).
+  It would do a tree out of texinfo code, and also a tree of the
+  nodes/sections in a completly output independent way. This would allow
+  to bring back some info specific stuff (for info output a tree is done)
+  in the main program and have maybe something simpler.
 
 * test --headers --output, and the other order, especially when in 
   info mode, such that it triggers also plaintext. Also test with 

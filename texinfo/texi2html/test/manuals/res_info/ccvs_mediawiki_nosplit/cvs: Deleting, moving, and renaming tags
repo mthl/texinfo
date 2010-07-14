@@ -107,4 +107,4 @@ same files as the old tag.  For example:
 <p>
 Next: [[cvs: Tagging and adding and removing files#Tagging and adding and removing files|Tagging add/remove]], Previous: [[cvs: Specifying what to tag by date or revision#Specifying what to tag by date or revision|Tagging by date/tag]], Up: [[cvs: Revisions#Revisions|Revisions]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

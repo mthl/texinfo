@@ -114,4 +114,4 @@ later merge the removals to another branch if you want
 <p>
 Next: [[cvs: Removing directories#Removing directories|Removing directories]], Previous: [[cvs: Adding files to a directory#Adding files to a directory|Adding files]], Up: [[cvs: Adding, removing, and renaming files and directories#Adding, removing, and renaming files and directories|Adding and removing]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

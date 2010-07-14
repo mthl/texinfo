@@ -23,4 +23,4 @@ through the history.
  [[cvs: User-defined logging#User-defined logging|&bull; user-defined logging]]::        User-defined logging
  [[cvs: Annotate command#Annotate command|&bull; annotate]]::                    What revision modified each line of a file?
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].

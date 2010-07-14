@@ -42,4 +42,4 @@ them):
 ;<code>-m <var>message</var></code>
 : Use <var>message</var> as the log message, instead of invoking an editor.
 
-This document was generated on <i>a sunny day</i> using [http://www.nongnu.org/texi2html/ <i>texi2html</i>].
+This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
