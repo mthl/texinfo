@@ -5,6 +5,36 @@ X.X ()
 * COMPATIBILITY
   -------------
 
+* obsolete the --iso command line option.
+
+* obsolete texi2html specific variables. Here is the list with the associated
+  configuration variables that may be set instead, with --set-init-variable:
+  --toc-links               TOC_LINKS
+  --short-ext               SHORTEXTN
+  --prefix                  PREFIX
+  --short-ref               SHORT_REF
+  --idx-sum                 IDX_SUMMARY
+  --def-table               DEF_TABLE
+  --ignore-preamble-text    IGNORE_PREAMBLE_TEXT
+  --html-xref-prefix        EXTERNAL_DIR
+  --l2h                     L2H
+  --l2h-l2h                 L2H_L2H
+  --l2h-skip                L2H_SKIP
+  --l2h-tmp                 L2H_TMP
+  --l2h-file                L2H_FILE
+  --l2h-clean               L2H_CLEAN
+  --use-nodes               USE_NODES
+  --monolithic              MONOLITHIC
+  --top-file                TOP_FILE
+  --toc-file                TOC_FILE
+  --frames                  FRAMES
+  --menu                    SHOW_MENU
+  --debug                   DEBUG
+  --doctype                 DOCTYPE
+  --frameset-doctype        FRAMESET_DOCTYPE
+  --test                    TEST
+  --dump-texi               DUMP_TEXI
+
 * remove completly $INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, 
   $ENCODING, $CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS,
   they have been obsolete, sometimes for many years.

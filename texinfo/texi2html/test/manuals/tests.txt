@@ -6,13 +6,13 @@ texi hello.texi
 hello hello.texi
 hello_nodes hello.texi --split node --node-files hello.texi
 info-stnd info-stnd.texi --split chapter --node-files 
-texinfo texinfo.texi --split chapter --ifinfo --idx-sum --internal-links=@OUT_DIR@internal_links_texinfo.txt
+texinfo texinfo.texi --split chapter --ifinfo --set-init-var 'IDX_SUMMARY 1' --internal-links=@OUT_DIR@internal_links_texinfo.txt
 texinfo_nodes texinfo.texi --split node --node-files --ifinfo
 ccvs cvs.texi --split chapter --init cvs.init
 ccvs_mediawiki cvs.texi --init mediawiki.init --split chapter
 ccvs_mediawiki_nosplit cvs.texi --init mediawiki.init --init cvs.init
 ccvs_info cvs.texi --init info.init
-mini_ker mini_ker.texi --init book.init --split section --node-files --use-nodes --iftex --init mini_ker_t2h.init --init tex4ht.init
+mini_ker mini_ker.texi --init book.init --split section --node-files --set-init-var 'USE_NODES 1' --iftex --init mini_ker_t2h.init --init tex4ht.init
 texinfo_xml texinfo.texi --init xml.init
 texinfo_html texinfo.texi --html
 texinfo_html_nosplit texinfo.texi --html --no-split

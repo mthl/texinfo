@@ -1,57 +1,7 @@
-This is sing.info, produced by makeinfo version 4.13 from singular.texi.
-
-
-
-File: sing.info,  Node: secondary_char0,  Next: secondary_charp,  Prev: power_products,  Up: finvar_lib
-
-D.6.1.24 secondary_char0
-........................
-
-Procedure from library `finvar.lib' (*note finvar_lib::).
-
-*Usage:*
-     secondary_char0(P,REY,M[,v]);
-     P: a 1xn <matrix> with primary invariants, REY: a gxn <matrix>
-     representing the Reynolds operator, M: a 1x2 <matrix> giving
-     numerator and denominator of the Molien series, v: an optional
-     <int>
-
-*Assume:*
-     n is the number of variables of the basering, g the size of the
-     group, REY is the 1st return value of group_reynolds(),
-     reynolds_molien() or the second one of primary_invariants(), M the
-     return value of molien() or the second one of reynolds_molien() or
-     the third one of primary_invariants()
-
-*Return:*
-     secondary invariants of the invariant ring (type <matrix>) and
-     irreducible secondary invariants (type <matrix>)
-
-*Display:*
-     information if v does not equal 0
-
-*Theory:*
-     The secondary invariants are calculated by finding a basis (in
-     terms of monomials) of the basering modulo the primary invariants,
-     mapping those to invariants with the Reynolds operator and using
-     these images or their power products such that they are linearly
-     independent modulo the primary invariants (see paper "Some
-     Algorithms in Invariant Theory of Finite Groups" by Kemper and
-     Steel (1997)).
-
-*Example:*
-     LIB "finvar.lib";
-     ring R=0,(x,y,z),dp;
-     matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
-     list L=primary_invariants(A);
-     matrix S,IS=secondary_char0(L[1..3]);
-     print(S);
-     ==> 1,xyz,x2z-y2z,x3y-xy3
-     print(IS);
-     ==> xyz,x2z-y2z,x3y-xy3
+This is sing.htm, produced by makeinfo version 4.13 from singular.texi.
 
 
-File: sing.info,  Node: secondary_charp,  Next: secondary_no_molien,  Prev: secondary_char0,  Up: finvar_lib
+File: sing.htm,  Node: secondary_charp,  Next: secondary_no_molien,  Prev: secondary_char0,  Up: finvar_lib
 
 D.6.1.25 secondary_charp
 ........................
@@ -99,7 +49,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> xyz,x2z-y2z,x3y-xy3
 
 
-File: sing.info,  Node: secondary_no_molien,  Next: secondary_and_irreducibles_no_molien,  Prev: secondary_charp,  Up: finvar_lib
+File: sing.htm,  Node: secondary_no_molien,  Next: secondary_and_irreducibles_no_molien,  Prev: secondary_charp,  Up: finvar_lib
 
 D.6.1.26 secondary_no_molien
 ............................
@@ -143,7 +93,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> 1,xyz,x2z-y2z,x3y-xy3
 
 
-File: sing.info,  Node: secondary_and_irreducibles_no_molien,  Next: secondary_not_cohen_macaulay,  Prev: secondary_no_molien,  Up: finvar_lib
+File: sing.htm,  Node: secondary_and_irreducibles_no_molien,  Next: secondary_not_cohen_macaulay,  Prev: secondary_no_molien,  Up: finvar_lib
 
 D.6.1.27 secondary_and_irreducibles_no_molien
 .............................................
@@ -187,7 +137,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> xyz,x2z-y2z,x3y-xy3
 
 
-File: sing.info,  Node: secondary_not_cohen_macaulay,  Next: orbit_variety,  Prev: secondary_and_irreducibles_no_molien,  Up: finvar_lib
+File: sing.htm,  Node: secondary_not_cohen_macaulay,  Next: orbit_variety,  Prev: secondary_and_irreducibles_no_molien,  Up: finvar_lib
 
 D.6.1.28 secondary_not_cohen_macaulay
 .....................................
@@ -222,7 +172,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> 1
 
 
-File: sing.info,  Node: orbit_variety,  Next: relative_orbit_variety,  Prev: secondary_not_cohen_macaulay,  Up: finvar_lib
+File: sing.htm,  Node: orbit_variety,  Next: relative_orbit_variety,  Prev: secondary_not_cohen_macaulay,  Up: finvar_lib
 
 D.6.1.29 orbit_variety
 ......................
@@ -266,7 +216,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> //        block   2 : ordering C
 
 
-File: sing.info,  Node: relative_orbit_variety,  Next: image_of_variety,  Prev: orbit_variety,  Up: finvar_lib
+File: sing.htm,  Node: relative_orbit_variety,  Next: image_of_variety,  Prev: orbit_variety,  Up: finvar_lib
 
 D.6.1.30 relative_orbit_variety
 ...............................
@@ -309,7 +259,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> //        block   2 : ordering C
 
 
-File: sing.info,  Node: image_of_variety,  Prev: relative_orbit_variety,  Up: finvar_lib
+File: sing.htm,  Node: image_of_variety,  Prev: relative_orbit_variety,  Up: finvar_lib
 
 D.6.1.31 image_of_variety
 .........................
@@ -340,7 +290,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> xyz
 
 
-File: sing.info,  Node: ainvar_lib,  Next: rinvar_lib,  Prev: finvar_lib,  Up: Invariant theory
+File: sing.htm,  Node: ainvar_lib,  Next: rinvar_lib,  Prev: finvar_lib,  Up: Invariant theory
 
 D.6.2 ainvar_lib
 ----------------
@@ -369,7 +319,7 @@ D.6.2 ainvar_lib
 * sortier:: sorts generators of id by increasing leading terms
 
 
-File: sing.info,  Node: invariantRing,  Next: derivate,  Up: ainvar_lib
+File: sing.htm,  Node: invariantRing,  Next: derivate,  Up: ainvar_lib
 
 D.6.2.1 invariantRing
 .....................
@@ -447,7 +397,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
         2)*x(3)*x(5)*x(6)-2*x(2)^2*x(3)^2*x(4)*x(7)+x(1)*x(7)^2
 
 
-File: sing.info,  Node: derivate,  Next: actionIsProper,  Prev: invariantRing,  Up: ainvar_lib
+File: sing.htm,  Node: derivate,  Next: actionIsProper,  Prev: invariantRing,  Up: ainvar_lib
 
 D.6.2.2 derivate
 ................
@@ -482,7 +432,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> _[2]=6u6
 
 
-File: sing.info,  Node: actionIsProper,  Next: reduction,  Prev: derivate,  Up: ainvar_lib
+File: sing.htm,  Node: actionIsProper,  Next: reduction,  Prev: derivate,  Up: ainvar_lib
 
 D.6.2.3 actionIsProper
 ......................
@@ -521,7 +471,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> 1
 
 
-File: sing.info,  Node: reduction,  Next: completeReduction,  Prev: actionIsProper,  Up: ainvar_lib
+File: sing.htm,  Node: reduction,  Next: completeReduction,  Prev: actionIsProper,  Up: ainvar_lib
 
 D.6.2.4 reduction
 .................
@@ -557,7 +507,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> 2xyz-yzw-2xv+vw
 
 
-File: sing.info,  Node: completeReduction,  Next: localInvar,  Prev: reduction,  Up: ainvar_lib
+File: sing.htm,  Node: completeReduction,  Next: localInvar,  Prev: reduction,  Up: ainvar_lib
 
 D.6.2.5 completeReduction
 .........................
@@ -587,7 +537,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> 0
 
 
-File: sing.info,  Node: localInvar,  Next: furtherInvar,  Prev: completeReduction,  Up: ainvar_lib
+File: sing.htm,  Node: localInvar,  Next: furtherInvar,  Prev: completeReduction,  Up: ainvar_lib
 
 D.6.2.6 localInvar
 ..................
@@ -623,7 +573,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> -1/2y2+xz
 
 
-File: sing.info,  Node: furtherInvar,  Next: sortier,  Prev: localInvar,  Up: ainvar_lib
+File: sing.htm,  Node: furtherInvar,  Next: sortier,  Prev: localInvar,  Up: ainvar_lib
 
 D.6.2.7 furtherInvar
 ....................
@@ -668,7 +618,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==>    _[3]=x
 
 
-File: sing.info,  Node: sortier,  Prev: furtherInvar,  Up: ainvar_lib
+File: sing.htm,  Node: sortier,  Prev: furtherInvar,  Up: ainvar_lib
 
 D.6.2.8 sortier
 ...............
@@ -694,7 +644,7 @@ Procedure from library `ainvar.lib' (*note ainvar_lib::).
      ==> _[5]=x
 
 
-File: sing.info,  Node: rinvar_lib,  Next: stratify_lib,  Prev: ainvar_lib,  Up: Invariant theory
+File: sing.htm,  Node: rinvar_lib,  Next: stratify_lib,  Prev: ainvar_lib,  Up: Invariant theory
 
 D.6.3 rinvar_lib
 ----------------
@@ -745,7 +695,7 @@ See also:
 *See also:* *note qhmoduli_lib::; *note zeroset_lib::.
 
 
-File: sing.info,  Node: HilbertSeries,  Next: HilbertWeights,  Up: rinvar_lib
+File: sing.htm,  Node: HilbertSeries,  Next: HilbertWeights,  Up: rinvar_lib
 
 D.6.3.1 HilbertSeries
 .....................
@@ -770,7 +720,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      the hilbert-driven 'std'.
 
 
-File: sing.info,  Node: HilbertWeights,  Next: ImageVariety,  Prev: HilbertSeries,  Up: rinvar_lib
+File: sing.htm,  Node: HilbertWeights,  Next: ImageVariety,  Prev: HilbertSeries,  Up: rinvar_lib
 
 D.6.3.2 HilbertWeights
 ......................
@@ -790,7 +740,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      and contains only polynomials in t_1,...,t_m
 
 
-File: sing.info,  Node: ImageVariety,  Next: ImageGroup,  Prev: HilbertWeights,  Up: rinvar_lib
+File: sing.htm,  Node: ImageVariety,  Next: ImageGroup,  Prev: HilbertWeights,  Up: rinvar_lib
 
 D.6.3.3 ImageVariety
 ....................
@@ -828,7 +778,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> imageid[3]=Y(2)^3-Y(1)*Y(3)^2
 
 
-File: sing.info,  Node: ImageGroup,  Next: InvariantRing,  Prev: ImageVariety,  Up: rinvar_lib
+File: sing.htm,  Node: ImageGroup,  Next: InvariantRing,  Prev: ImageVariety,  Up: rinvar_lib
 
 D.6.3.4 ImageGroup
 ..................
@@ -878,7 +828,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> actionid[2]=s(2)*t(2)
 
 
-File: sing.info,  Node: InvariantRing,  Next: InvariantQ,  Prev: ImageGroup,  Up: rinvar_lib
+File: sing.htm,  Node: InvariantRing,  Next: InvariantQ,  Prev: ImageGroup,  Up: rinvar_lib
 
 D.6.3.5 InvariantRing
 .....................
@@ -922,7 +872,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> invars[5]=t(2)^12
 
 
-File: sing.info,  Node: InvariantQ,  Next: LinearizeAction,  Prev: InvariantRing,  Up: rinvar_lib
+File: sing.htm,  Node: InvariantQ,  Next: LinearizeAction,  Prev: InvariantRing,  Up: rinvar_lib
 
 D.6.3.6 InvariantQ
 ..................
@@ -950,7 +900,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      G need not be finite
 
 
-File: sing.info,  Node: LinearizeAction,  Next: LinearActionQ,  Prev: InvariantQ,  Up: rinvar_lib
+File: sing.htm,  Node: LinearizeAction,  Next: LinearActionQ,  Prev: InvariantQ,  Up: rinvar_lib
 
 D.6.3.7 LinearizeAction
 .......................
@@ -1016,7 +966,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> 1
 
 
-File: sing.info,  Node: LinearActionQ,  Next: LinearCombinationQ,  Prev: LinearizeAction,  Up: rinvar_lib
+File: sing.htm,  Node: LinearActionQ,  Next: LinearCombinationQ,  Prev: LinearizeAction,  Up: rinvar_lib
 
 D.6.3.8 LinearActionQ
 .....................
@@ -1044,7 +994,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> 0
 
 
-File: sing.info,  Node: LinearCombinationQ,  Next: MinimalDecomposition,  Prev: LinearActionQ,  Up: rinvar_lib
+File: sing.htm,  Node: LinearCombinationQ,  Next: MinimalDecomposition,  Prev: LinearActionQ,  Up: rinvar_lib
 
 D.6.3.9 LinearCombinationQ
 ..........................
@@ -1063,7 +1013,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      1 f is a linear combination
 
 
-File: sing.info,  Node: MinimalDecomposition,  Next: NullCone,  Prev: LinearCombinationQ,  Up: rinvar_lib
+File: sing.htm,  Node: MinimalDecomposition,  Next: NullCone,  Prev: LinearCombinationQ,  Up: rinvar_lib
 
 D.6.3.10 MinimalDecomposition
 .............................
@@ -1099,7 +1049,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> 0
 
 
-File: sing.info,  Node: NullCone,  Next: ReynoldsImage,  Prev: MinimalDecomposition,  Up: rinvar_lib
+File: sing.htm,  Node: NullCone,  Next: ReynoldsImage,  Prev: MinimalDecomposition,  Up: rinvar_lib
 
 D.6.3.11 NullCone
 .................
@@ -1139,7 +1089,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      ==> inv[5]=y^12
 
 
-File: sing.info,  Node: ReynoldsImage,  Next: ReynoldsOperator,  Prev: NullCone,  Up: rinvar_lib
+File: sing.htm,  Node: ReynoldsImage,  Next: ReynoldsOperator,  Prev: NullCone,  Up: rinvar_lib
 
 D.6.3.12 ReynoldsImage
 ......................
@@ -1157,7 +1107,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      poly
 
 
-File: sing.info,  Node: ReynoldsOperator,  Next: SimplifyIdeal,  Prev: ReynoldsImage,  Up: rinvar_lib
+File: sing.htm,  Node: ReynoldsOperator,  Next: SimplifyIdeal,  Prev: ReynoldsImage,  Up: rinvar_lib
 
 D.6.3.13 ReynoldsOperator
 .........................
@@ -1187,7 +1137,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      linear group action of G
 
 
-File: sing.info,  Node: SimplifyIdeal,  Next: TransferIdeal,  Prev: ReynoldsOperator,  Up: rinvar_lib
+File: sing.htm,  Node: SimplifyIdeal,  Next: TransferIdeal,  Prev: ReynoldsOperator,  Up: rinvar_lib
 
 D.6.3.14 SimplifyIdeal
 ......................
@@ -1208,7 +1158,7 @@ Procedure from library `rinvar.lib' (*note rinvar_lib::).
      _[4] list from 'elimpart'
 
 
-File: sing.info,  Node: TransferIdeal,  Prev: SimplifyIdeal,  Up: rinvar_lib
+File: sing.htm,  Node: TransferIdeal,  Prev: SimplifyIdeal,  Up: rinvar_lib
 
 D.6.3.15 TransferIdeal
 ......................
@@ -1216,7 +1166,7 @@ D.6.3.15 TransferIdeal
 Procedure from library `rinvar.lib' (*note rinvar_lib::).
 
 
-File: sing.info,  Node: stratify_lib,  Prev: rinvar_lib,  Up: Invariant theory
+File: sing.htm,  Node: stratify_lib,  Prev: rinvar_lib,  Up: Invariant theory
 
 D.6.4 stratify_lib
 ------------------
@@ -1243,7 +1193,7 @@ D.6.4 stratify_lib
 * stratify:: algorithmic stratification (main procedure)
 
 
-File: sing.info,  Node: prepMat,  Next: stratify,  Up: stratify_lib
+File: sing.htm,  Node: prepMat,  Next: stratify,  Up: stratify_lib
 
 D.6.4.1 prepMat
 ...............
@@ -1319,7 +1269,7 @@ Procedure from library `stratify.lib' (*note stratify_lib::).
      ==>       _[1,3]=t(1)
 
 
-File: sing.info,  Node: stratify,  Prev: prepMat,  Up: stratify_lib
+File: sing.htm,  Node: stratify,  Prev: prepMat,  Up: stratify_lib
 
 D.6.4.2 stratify
 ................
@@ -1397,7 +1347,7 @@ Procedure from library `stratify.lib' (*note stratify_lib::).
      ==>          t(1)
 
 
-File: sing.info,  Node: Symbolic-numerical solving,  Next: Visualization,  Prev: Invariant theory,  Up: SINGULAR libraries
+File: sing.htm,  Node: Symbolic-numerical solving,  Next: Visualization,  Prev: Invariant theory,  Up: SINGULAR libraries
 
 D.7 Symbolic-numerical solving
 ==============================
@@ -1411,7 +1361,7 @@ D.7 Symbolic-numerical solving
 * zeroset_lib:: procedures for roots and factorization
 
 
-File: sing.info,  Node: presolve_lib,  Next: solve_lib,  Prev: Symbolic-numerical solving,  Up: Symbolic-numerical solving
+File: sing.htm,  Node: presolve_lib,  Next: solve_lib,  Prev: Symbolic-numerical solving,  Up: Symbolic-numerical solving
 
 D.7.1 presolve_lib
 ------------------
@@ -1447,7 +1397,7 @@ D.7.1 presolve_lib
 * idealSplit:: intersection of the ideals has the same radical as id
 
 
-File: sing.info,  Node: degreepart,  Next: elimlinearpart,  Up: presolve_lib
+File: sing.htm,  Node: degreepart,  Next: elimlinearpart,  Up: presolve_lib
 
 D.7.1.1 degreepart
 ..................
@@ -1475,7 +1425,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> [x4,xy2,xz]
 
 
-File: sing.info,  Node: elimlinearpart,  Next: elimpart,  Prev: degreepart,  Up: presolve_lib
+File: sing.htm,  Node: elimlinearpart,  Next: elimpart,  Prev: degreepart,  Up: presolve_lib
 
 D.7.1.2 elimlinearpart
 ......................
@@ -1524,7 +1474,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==>    _[3]=z
 
 
-File: sing.info,  Node: elimpart,  Next: elimpartanyr,  Prev: elimlinearpart,  Up: presolve_lib
+File: sing.htm,  Node: elimpart,  Next: elimpartanyr,  Prev: elimlinearpart,  Up: presolve_lib
 
 D.7.1.3 elimpart
 ................
@@ -1596,7 +1546,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==>    _[3]=z
 
 
-File: sing.info,  Node: elimpartanyr,  Next: fastelim,  Prev: elimpart,  Up: presolve_lib
+File: sing.htm,  Node: elimpartanyr,  Next: fastelim,  Prev: elimpart,  Up: presolve_lib
 
 D.7.1.4 elimpartanyr
 ....................
@@ -1656,7 +1606,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==>    1
 
 
-File: sing.info,  Node: fastelim,  Next: findvars,  Prev: elimpartanyr,  Up: presolve_lib
+File: sing.htm,  Node: fastelim,  Next: findvars,  Prev: elimpartanyr,  Up: presolve_lib
 
 D.7.1.5 fastelim
 ................
@@ -1696,7 +1646,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> _[3]=e2+d2-1
 
 
-File: sing.info,  Node: findvars,  Next: hilbvec,  Prev: fastelim,  Up: presolve_lib
+File: sing.htm,  Node: findvars,  Next: hilbvec,  Prev: fastelim,  Up: presolve_lib
 
 D.7.1.6 findvars
 ................
@@ -1746,7 +1696,7 @@ id,
      ==>    1,4,6,7,10
 
 
-File: sing.info,  Node: hilbvec,  Next: linearpart,  Prev: findvars,  Up: presolve_lib
+File: sing.htm,  Node: hilbvec,  Next: linearpart,  Prev: findvars,  Up: presolve_lib
 
 D.7.1.7 hilbvec
 ...............
@@ -1775,7 +1725,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> 1,0,-7,0,20,0,-28,0,14,0,14,0,-28,0,20,0,-7,0,1,0
 
 
-File: sing.info,  Node: linearpart,  Next: tolessvars,  Prev: hilbvec,  Up: presolve_lib
+File: sing.htm,  Node: linearpart,  Next: tolessvars,  Prev: hilbvec,  Up: presolve_lib
 
 D.7.1.8 linearpart
 ..................
@@ -1801,7 +1751,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> [x,y,z]
 
 
-File: sing.info,  Node: tolessvars,  Next: solvelinearpart,  Prev: linearpart,  Up: presolve_lib
+File: sing.htm,  Node: tolessvars,  Next: solvelinearpart,  Prev: linearpart,  Up: presolve_lib
 
 D.7.1.9 tolessvars
 ..................
@@ -1860,7 +1810,7 @@ s1,s2=strings
      kill R_r;
 
 
-File: sing.info,  Node: solvelinearpart,  Next: sortandmap,  Prev: tolessvars,  Up: presolve_lib
+File: sing.htm,  Node: solvelinearpart,  Next: sortandmap,  Prev: tolessvars,  Up: presolve_lib
 
 D.7.1.10 solvelinearpart
 ........................
@@ -1914,7 +1864,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> 
 
 
-File: sing.info,  Node: sortandmap,  Next: sortvars,  Prev: solvelinearpart,  Up: presolve_lib
+File: sing.htm,  Node: sortandmap,  Next: sortvars,  Prev: solvelinearpart,  Up: presolve_lib
 
 D.7.1.11 sortandmap
 ...................
@@ -1983,7 +1933,7 @@ id=poly/ideal/vector/module,
      kill R_r;
 
 
-File: sing.info,  Node: sortvars,  Next: shortid,  Prev: sortandmap,  Up: presolve_lib
+File: sing.htm,  Node: sortvars,  Next: shortid,  Prev: sortandmap,  Up: presolve_lib
 
 D.7.1.12 sortvars
 .................
@@ -2061,7 +2011,7 @@ n1,n2,...=integers
      ==>       1,1
 
 
-File: sing.info,  Node: shortid,  Next: valvars,  Prev: sortvars,  Up: presolve_lib
+File: sing.htm,  Node: shortid,  Next: valvars,  Prev: sortvars,  Up: presolve_lib
 
 D.7.1.13 shortid
 ................
@@ -2092,7 +2042,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> _[2]=xyz-xzw-w2
 
 
-File: sing.info,  Node: valvars,  Next: idealSimplify,  Prev: shortid,  Up: presolve_lib
+File: sing.htm,  Node: valvars,  Next: idealSimplify,  Prev: shortid,  Up: presolve_lib
 
 D.7.1.14 valvars
 ................
@@ -2169,7 +2119,7 @@ id=poly/ideal/vector/module,
      ==>       0,2 
 
 
-File: sing.info,  Node: idealSimplify,  Next: idealSplit,  Prev: valvars,  Up: presolve_lib
+File: sing.htm,  Node: idealSimplify,  Next: idealSplit,  Prev: valvars,  Up: presolve_lib
 
 D.7.1.15 idealSimplify
 ......................
@@ -2202,7 +2152,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==> _[2]=0
 
 
-File: sing.info,  Node: idealSplit,  Prev: idealSimplify,  Up: presolve_lib
+File: sing.htm,  Node: idealSplit,  Prev: idealSimplify,  Up: presolve_lib
 
 D.7.1.16 idealSplit
 ...................
@@ -2340,7 +2290,7 @@ Procedure from library `presolve.lib' (*note presolve_lib::).
      ==>    _[6]=tx+bz
 
 
-File: sing.info,  Node: solve_lib,  Next: triang_lib,  Prev: presolve_lib,  Up: Symbolic-numerical solving
+File: sing.htm,  Node: solve_lib,  Next: triang_lib,  Prev: presolve_lib,  Up: Symbolic-numerical solving
 
 D.7.2 solve_lib
 ---------------
@@ -2373,7 +2323,7 @@ D.7.2 solve_lib
 * triang_solve:: find roots of given triangular system
 
 
-File: sing.info,  Node: laguerre_solve,  Next: solve,  Up: solve_lib
+File: sing.htm,  Node: laguerre_solve,  Next: solve,  Up: solve_lib
 
 D.7.2.1 laguerre_solve
 ......................
@@ -2465,7 +2415,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==> 0
 
 
-File: sing.info,  Node: solve,  Next: ures_solve,  Prev: laguerre_solve,  Up: solve_lib
+File: sing.htm,  Node: solve,  Next: ures_solve,  Prev: laguerre_solve,  Up: solve_lib
 
 D.7.2.2 solve
 .............
@@ -2583,7 +2533,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       1
 
 
-File: sing.info,  Node: ures_solve,  Next: mp_res_mat,  Prev: solve,  Up: solve_lib
+File: sing.htm,  Node: ures_solve,  Next: mp_res_mat,  Prev: solve,  Up: solve_lib
 
 D.7.2.3 ures_solve
 ..................
@@ -2670,7 +2620,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==> 0
 
 
-File: sing.info,  Node: mp_res_mat,  Next: interpolate,  Prev: ures_solve,  Up: solve_lib
+File: sing.htm,  Node: mp_res_mat,  Next: interpolate,  Prev: ures_solve,  Up: solve_lib
 
 D.7.2.4 mp_res_mat
 ..................
@@ -2755,7 +2705,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==> -7056
 
 
-File: sing.info,  Node: interpolate,  Next: fglm_solve,  Prev: mp_res_mat,  Up: solve_lib
+File: sing.htm,  Node: interpolate,  Next: fglm_solve,  Prev: mp_res_mat,  Up: solve_lib
 
 D.7.2.5 interpolate
 ...................
@@ -2796,7 +2746,7 @@ See also:
 *See also:* *note vandermonde::.
 
 
-File: sing.info,  Node: fglm_solve,  Next: lex_solve,  Prev: interpolate,  Up: solve_lib
+File: sing.htm,  Node: fglm_solve,  Next: lex_solve,  Prev: interpolate,  Up: solve_lib
 
 D.7.2.6 fglm_solve
 ..................
@@ -2851,7 +2801,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       3
 
 
-File: sing.info,  Node: lex_solve,  Next: simplexOut,  Prev: fglm_solve,  Up: solve_lib
+File: sing.htm,  Node: lex_solve,  Next: simplexOut,  Prev: fglm_solve,  Up: solve_lib
 
 D.7.2.7 lex_solve
 .................
@@ -2907,7 +2857,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       3
 
 
-File: sing.info,  Node: simplexOut,  Next: triangLf_solve,  Prev: lex_solve,  Up: solve_lib
+File: sing.htm,  Node: simplexOut,  Next: triangLf_solve,  Prev: lex_solve,  Up: solve_lib
 
 D.7.2.8 simplexOut
 ..................
@@ -2961,7 +2911,7 @@ See also:
 *See also:* *note simplex::.
 
 
-File: sing.info,  Node: triangLf_solve,  Next: triangM_solve,  Prev: simplexOut,  Up: solve_lib
+File: sing.htm,  Node: triangLf_solve,  Next: triangM_solve,  Prev: simplexOut,  Up: solve_lib
 
 D.7.2.9 triangLf_solve
 ......................
@@ -3019,7 +2969,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       -1.4142135624
 
 
-File: sing.info,  Node: triangM_solve,  Next: triangL_solve,  Prev: triangLf_solve,  Up: solve_lib
+File: sing.htm,  Node: triangM_solve,  Next: triangL_solve,  Prev: triangLf_solve,  Up: solve_lib
 
 D.7.2.10 triangM_solve
 ......................
@@ -3077,7 +3027,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       3
 
 
-File: sing.info,  Node: triangL_solve,  Next: triang_solve,  Prev: triangM_solve,  Up: solve_lib
+File: sing.htm,  Node: triangL_solve,  Next: triang_solve,  Prev: triangM_solve,  Up: solve_lib
 
 D.7.2.11 triangL_solve
 ......................
@@ -3134,7 +3084,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       3
 
 
-File: sing.info,  Node: triang_solve,  Prev: triangL_solve,  Up: solve_lib
+File: sing.htm,  Node: triang_solve,  Prev: triangL_solve,  Up: solve_lib
 
 D.7.2.12 triang_solve
 .....................
@@ -3194,7 +3144,7 @@ Procedure from library `solve.lib' (*note solve_lib::).
      ==>       -1.4142135624
 
 
-File: sing.info,  Node: triang_lib,  Next: ntsolve_lib,  Prev: solve_lib,  Up: Symbolic-numerical solving
+File: sing.htm,  Node: triang_lib,  Next: ntsolve_lib,  Prev: solve_lib,  Up: Symbolic-numerical solving
 
 D.7.3 triang_lib
 ----------------
@@ -3218,7 +3168,7 @@ D.7.3 triang_lib
 * triangMH:: Decomp. of (G) into tri. syst. with disjoint varieties.
 
 
-File: sing.info,  Node: triangL,  Next: triangLfak,  Up: triang_lib
+File: sing.htm,  Node: triangL,  Next: triangLfak,  Up: triang_lib
 
 D.7.3.1 triangL
 ...............
@@ -3246,7 +3196,7 @@ Procedure from library `triang.lib' (*note triang_lib::).
      triangL(stdfglm(cyclic(5)));
 
 
-File: sing.info,  Node: triangLfak,  Next: triangM,  Prev: triangL,  Up: triang_lib
+File: sing.htm,  Node: triangLfak,  Next: triangM,  Prev: triangL,  Up: triang_lib
 
 D.7.3.2 triangLfak
 ..................
@@ -3278,7 +3228,7 @@ Procedure from library `triang.lib' (*note triang_lib::).
      triangLfak(stdfglm(cyclic(5)));
 
 
-File: sing.info,  Node: triangM,  Next: triangMH,  Prev: triangLfak,  Up: triang_lib
+File: sing.htm,  Node: triangM,  Next: triangMH,  Prev: triangLfak,  Up: triang_lib
 
 D.7.3.3 triangM
 ...............
@@ -3309,7 +3259,7 @@ Procedure from library `triang.lib' (*note triang_lib::).
      triangM(stdfglm(cyclic(5))); //oder: triangM(stdfglm(cyclic(5)),2);
 
 
-File: sing.info,  Node: triangMH,  Prev: triangM,  Up: triang_lib
+File: sing.htm,  Node: triangMH,  Prev: triangM,  Up: triang_lib
 
 D.7.3.4 triangMH
 ................
@@ -3343,7 +3293,7 @@ Procedure from library `triang.lib' (*note triang_lib::).
      triangMH(stdfglm(cyclic(5)));
 
 
-File: sing.info,  Node: ntsolve_lib,  Next: zeroset_lib,  Prev: triang_lib,  Up: Symbolic-numerical solving
+File: sing.htm,  Node: ntsolve_lib,  Next: zeroset_lib,  Prev: triang_lib,  Up: Symbolic-numerical solving
 
 D.7.4 ntsolve_lib
 -----------------
@@ -3366,7 +3316,7 @@ D.7.4 ntsolve_lib
 * triMNewton:: find one real root for 0-dim triangular system G
 
 
-File: sing.info,  Node: nt_solve,  Next: triMNewton,  Up: ntsolve_lib
+File: sing.htm,  Node: nt_solve,  Next: triMNewton,  Up: ntsolve_lib
 
 D.7.4.1 nt_solve
 ................
@@ -3408,7 +3358,7 @@ Procedure from library `ntsolve.lib' (*note ntsolve_lib::).
      ==> sol[4]=-1.413071026406678849397999475590194239628
 
 
-File: sing.info,  Node: triMNewton,  Prev: nt_solve,  Up: ntsolve_lib
+File: sing.htm,  Node: triMNewton,  Prev: nt_solve,  Up: ntsolve_lib
 
 D.7.4.2 triMNewton
 ..................
@@ -3445,7 +3395,7 @@ gi=gi(var(n-i+1),..,var(n)),
      ==> l[3]=1
 
 
-File: sing.info,  Node: zeroset_lib,  Prev: ntsolve_lib,  Up: Symbolic-numerical solving
+File: sing.htm,  Node: zeroset_lib,  Prev: ntsolve_lib,  Up: Symbolic-numerical solving
 
 D.7.5 zeroset_lib
 -----------------
@@ -3502,7 +3452,7 @@ D.7.5 zeroset_lib
 * SameQ:: a == b (list a,b)
 
 
-File: sing.info,  Node: EGCD,  Next: Factor,  Up: zeroset_lib
+File: sing.htm,  Node: EGCD,  Next: Factor,  Up: zeroset_lib
 
 D.7.5.1 EGCD
 ............
@@ -3532,7 +3482,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> (-4a)*x-4
 
 
-File: sing.info,  Node: Factor,  Next: Quotient,  Prev: EGCD,  Up: zeroset_lib
+File: sing.htm,  Node: Factor,  Next: Quotient,  Prev: EGCD,  Up: zeroset_lib
 
 D.7.5.2 Factor
 ..............
@@ -3581,7 +3531,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> 0
 
 
-File: sing.info,  Node: Quotient,  Next: Remainder,  Prev: Factor,  Up: zeroset_lib
+File: sing.htm,  Node: Quotient,  Next: Remainder,  Prev: Factor,  Up: zeroset_lib
 
 D.7.5.3 Quotient
 ................
@@ -3620,7 +3570,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> 1
 
 
-File: sing.info,  Node: Remainder,  Next: Roots,  Prev: Quotient,  Up: zeroset_lib
+File: sing.htm,  Node: Remainder,  Next: Roots,  Prev: Quotient,  Up: zeroset_lib
 
 D.7.5.4 Remainder
 .................
@@ -3650,7 +3600,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> x-1
 
 
-File: sing.info,  Node: Roots,  Next: SQFRNorm,  Prev: Remainder,  Up: zeroset_lib
+File: sing.htm,  Node: Roots,  Next: SQFRNorm,  Prev: Remainder,  Up: zeroset_lib
 
 D.7.5.5 Roots
 .............
@@ -3711,7 +3661,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> 0
 
 
-File: sing.info,  Node: SQFRNorm,  Next: ZeroSet,  Prev: Roots,  Up: zeroset_lib
+File: sing.htm,  Node: SQFRNorm,  Next: ZeroSet,  Prev: Roots,  Up: zeroset_lib
 
 D.7.5.6 SQFRNorm
 ................
@@ -3751,7 +3701,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==>    1
 
 
-File: sing.info,  Node: ZeroSet,  Next: EGCDMain,  Prev: SQFRNorm,  Up: zeroset_lib
+File: sing.htm,  Node: ZeroSet,  Next: EGCDMain,  Prev: SQFRNorm,  Up: zeroset_lib
 
 D.7.5.7 ZeroSet
 ...............
@@ -3827,7 +3777,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      ==> _[3]=0
 
 
-File: sing.info,  Node: EGCDMain,  Next: FactorMain,  Prev: ZeroSet,  Up: zeroset_lib
+File: sing.htm,  Node: EGCDMain,  Next: FactorMain,  Prev: ZeroSet,  Up: zeroset_lib
 
 D.7.5.8 EGCDMain
 ................
@@ -3845,7 +3795,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      represents the ring Q(a)[x] together with its minimal polynomial.
 
 
-File: sing.info,  Node: FactorMain,  Next: InvertNumberMain,  Prev: EGCDMain,  Up: zeroset_lib
+File: sing.htm,  Node: FactorMain,  Next: InvertNumberMain,  Prev: EGCDMain,  Up: zeroset_lib
 
 D.7.5.9 FactorMain
 ..................
@@ -3867,7 +3817,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      defined, representing the minimal polynomial (it might be 0!).
 
 
-File: sing.info,  Node: InvertNumberMain,  Next: QuotientMain,  Prev: FactorMain,  Up: zeroset_lib
+File: sing.htm,  Node: InvertNumberMain,  Next: QuotientMain,  Prev: FactorMain,  Up: zeroset_lib
 
 D.7.5.10 InvertNumberMain
 .........................
@@ -3888,7 +3838,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      basering = Q[x_1,...,x_n,a], ideal mpoly must be defined and != 0 !
 
 
-File: sing.info,  Node: QuotientMain,  Next: RemainderMain,  Prev: InvertNumberMain,  Up: zeroset_lib
+File: sing.htm,  Node: QuotientMain,  Next: RemainderMain,  Prev: InvertNumberMain,  Up: zeroset_lib
 
 D.7.5.11 QuotientMain
 .....................
@@ -3913,7 +3863,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      represents the ring Q(a)[x] together with its minimal polynomial.
 
 
-File: sing.info,  Node: RemainderMain,  Next: RootsMain,  Prev: QuotientMain,  Up: zeroset_lib
+File: sing.htm,  Node: RemainderMain,  Next: RootsMain,  Prev: QuotientMain,  Up: zeroset_lib
 
 D.7.5.12 RemainderMain
 ......................
@@ -3934,7 +3884,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      represents the ring Q(a)[x] together with its minimal polynomial.
 
 
-File: sing.info,  Node: RootsMain,  Next: SQFRNormMain,  Prev: RemainderMain,  Up: zeroset_lib
+File: sing.htm,  Node: RootsMain,  Next: SQFRNormMain,  Prev: RemainderMain,  Up: zeroset_lib
 
 D.7.5.13 RootsMain
 ..................
@@ -3963,7 +3913,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      might change the ideal mpoly !!
 
 
-File: sing.info,  Node: SQFRNormMain,  Next: ContainedQ,  Prev: RootsMain,  Up: zeroset_lib
+File: sing.htm,  Node: SQFRNormMain,  Next: ContainedQ,  Prev: RootsMain,  Up: zeroset_lib
 
 D.7.5.14 SQFRNormMain
 .....................
@@ -3991,7 +3941,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      the norm is an element of Q[x]
 
 
-File: sing.info,  Node: ContainedQ,  Next: SameQ,  Prev: SQFRNormMain,  Up: zeroset_lib
+File: sing.htm,  Node: ContainedQ,  Next: SameQ,  Prev: SQFRNormMain,  Up: zeroset_lib
 
 D.7.5.15 ContainedQ
 ...................
@@ -4014,7 +3964,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      opt = 1 : use `SameQ' for comparing f with elements from data
 
 
-File: sing.info,  Node: SameQ,  Prev: ContainedQ,  Up: zeroset_lib
+File: sing.htm,  Node: SameQ,  Prev: ContainedQ,  Up: zeroset_lib
 
 D.7.5.16 SameQ
 ..............
@@ -4033,7 +3983,7 @@ Procedure from library `zeroset.lib' (*note zeroset_lib::).
      1 if a == b
 
 
-File: sing.info,  Node: Visualization,  Next: Coding theory,  Prev: Symbolic-numerical solving,  Up: SINGULAR libraries
+File: sing.htm,  Node: Visualization,  Next: Coding theory,  Prev: Symbolic-numerical solving,  Up: SINGULAR libraries
 
 D.8 Visualization
 =================
@@ -4046,7 +3996,7 @@ D.8 Visualization
 * surf_lib:: interface to the surf program
 
 
-File: sing.info,  Node: graphics_lib,  Next: latex_lib,  Prev: Visualization,  Up: Visualization
+File: sing.htm,  Node: graphics_lib,  Next: latex_lib,  Prev: Visualization,  Up: Visualization
 
 D.8.1 graphics_lib
 ------------------
@@ -4069,7 +4019,7 @@ D.8.1 graphics_lib
 * mplot:: Mathematica text for various plots
 
 
-File: sing.info,  Node: staircase,  Next: mathinit,  Up: graphics_lib
+File: sing.htm,  Node: staircase,  Next: mathinit,  Up: graphics_lib
 
 D.8.1.1 staircase
 .................
@@ -4102,7 +4052,7 @@ Procedure from library `graphics.lib' (*note graphics_lib::).
      // active evalutation of the cell with SHIFT RETURN
 
 
-File: sing.info,  Node: mathinit,  Next: mplot,  Prev: staircase,  Up: graphics_lib
+File: sing.htm,  Node: mathinit,  Next: mplot,  Prev: staircase,  Up: graphics_lib
 
 D.8.1.2 mathinit
 ................
@@ -4122,7 +4072,7 @@ Procedure from library `graphics.lib' (*note graphics_lib::).
      // active evalutation of the cell with SHIFT RETURN
 
 
-File: sing.info,  Node: mplot,  Prev: mathinit,  Up: graphics_lib
+File: sing.htm,  Node: mplot,  Prev: mathinit,  Up: graphics_lib
 
 D.8.1.3 mplot
 .............
@@ -4175,7 +4125,7 @@ Procedure from library `graphics.lib' (*note graphics_lib::).
      kill rr0,rr1;
 
 
-File: sing.info,  Node: latex_lib,  Next: paramet_lib,  Prev: graphics_lib,  Up: Visualization
+File: sing.htm,  Node: latex_lib,  Next: paramet_lib,  Prev: graphics_lib,  Up: Visualization
 
 D.8.2 latex_lib
 ---------------
@@ -4223,7 +4173,7 @@ D.8.2 latex_lib
        `NoDollars' (int) flag:  suppresses surrounding $ signs
 
 
-File: sing.info,  Node: closetex,  Next: opentex,  Up: latex_lib
+File: sing.htm,  Node: closetex,  Next: opentex,  Up: latex_lib
 
 D.8.2.1 closetex
 ................
@@ -4247,7 +4197,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      closetex("exmpl");
 
 
-File: sing.info,  Node: opentex,  Next: tex,  Prev: closetex,  Up: latex_lib
+File: sing.htm,  Node: opentex,  Next: tex,  Prev: closetex,  Up: latex_lib
 
 D.8.2.2 opentex
 ...............
@@ -4271,7 +4221,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      closetex("exmpl");
 
 
-File: sing.info,  Node: tex,  Next: texdemo,  Prev: opentex,  Up: latex_lib
+File: sing.htm,  Node: tex,  Next: texdemo,  Prev: opentex,  Up: latex_lib
 
 D.8.2.3 tex
 ...........
@@ -4323,7 +4273,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> 0
 
 
-File: sing.info,  Node: texdemo,  Next: texfactorize,  Prev: tex,  Up: latex_lib
+File: sing.htm,  Node: texdemo,  Next: texfactorize,  Prev: tex,  Up: latex_lib
 
 D.8.2.4 texdemo
 ...............
@@ -4341,7 +4291,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      this proc may take some time.
 
 
-File: sing.info,  Node: texfactorize,  Next: texmap,  Prev: texdemo,  Up: latex_lib
+File: sing.htm,  Node: texfactorize,  Next: texmap,  Prev: texdemo,  Up: latex_lib
 
 D.8.2.5 texfactorize
 ....................
@@ -4375,7 +4325,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> $(a+3)\cdot (x-1)\cdot (x+1)^{3}\cdot x^{9}$
 
 
-File: sing.info,  Node: texmap,  Next: texname,  Prev: texfactorize,  Up: latex_lib
+File: sing.htm,  Node: texmap,  Next: texname,  Prev: texfactorize,  Up: latex_lib
 
 D.8.2.6 texmap
 ..............
@@ -4443,7 +4393,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      if (defined(Terep)) {list TeXreplace=Terep; export TeXreplace; kill Terep;}
 
 
-File: sing.info,  Node: texname,  Next: texobj,  Prev: texmap,  Up: latex_lib
+File: sing.htm,  Node: texname,  Next: texobj,  Prev: texmap,  Up: latex_lib
 
 D.8.2.7 texname
 ...............
@@ -4499,7 +4449,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> \tilde{E}_{3}
 
 
-File: sing.info,  Node: texobj,  Next: texpoly,  Prev: texname,  Up: latex_lib
+File: sing.htm,  Node: texobj,  Next: texpoly,  Prev: texname,  Up: latex_lib
 
 D.8.2.8 texobj
 ..............
@@ -4586,7 +4536,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      if (defined(Tebra)){string TeXbrack=Tebra; export TeXbrack; kill Tebra;}
 
 
-File: sing.info,  Node: texpoly,  Next: texproc,  Prev: texobj,  Up: latex_lib
+File: sing.htm,  Node: texpoly,  Next: texproc,  Prev: texobj,  Up: latex_lib
 
 D.8.2.9 texpoly
 ...............
@@ -4626,7 +4576,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> $-\frac{2a^{2}-b^{3}+2}{a}x^{2}y^{4}z^{5}+(a^{2}+1)x+(a+1)$
 
 
-File: sing.info,  Node: texproc,  Next: texring,  Prev: texpoly,  Up: latex_lib
+File: sing.htm,  Node: texproc,  Next: texring,  Prev: texpoly,  Up: latex_lib
 
 D.8.2.10 texproc
 ................
@@ -4681,7 +4631,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      kill exp;
 
 
-File: sing.info,  Node: texring,  Next: rmx,  Prev: texproc,  Up: latex_lib
+File: sing.htm,  Node: texring,  Next: rmx,  Prev: texproc,  Up: latex_lib
 
 D.8.2.11 texring
 ................
@@ -4757,7 +4707,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> $\Q[[x_{1},\ldots,x_{5},y_{1},\ldots,y_{6}]]$
 
 
-File: sing.info,  Node: rmx,  Next: xdvi,  Prev: texring,  Up: latex_lib
+File: sing.htm,  Node: rmx,  Next: xdvi,  Prev: texring,  Up: latex_lib
 
 D.8.2.12 rmx
 ............
@@ -4811,7 +4761,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> 0
 
 
-File: sing.info,  Node: xdvi,  Prev: rmx,  Up: latex_lib
+File: sing.htm,  Node: xdvi,  Prev: rmx,  Up: latex_lib
 
 D.8.2.13 xdvi
 .............
@@ -4865,7 +4815,7 @@ Procedure from library `latex.lib' (*note latex_lib::).
      ==> 0
 
 
-File: sing.info,  Node: paramet_lib,  Next: surf_lib,  Prev: latex_lib,  Up: Visualization
+File: sing.htm,  Node: paramet_lib,  Next: surf_lib,  Prev: latex_lib,  Up: Visualization
 
 D.8.3 paramet_lib
 -----------------
@@ -4904,7 +4854,7 @@ See also:
 primdec_lib::.
 
 
-File: sing.info,  Node: parametrize,  Next: parametrizepd,  Up: paramet_lib
+File: sing.htm,  Node: parametrize,  Next: parametrizepd,  Up: paramet_lib
 
 D.8.3.1 parametrize
 ...................
@@ -4953,7 +4903,7 @@ See also:
 *note radical::.
 
 
-File: sing.info,  Node: parametrizepd,  Next: parametrizesing,  Prev: parametrize,  Up: paramet_lib
+File: sing.htm,  Node: parametrizepd,  Next: parametrizesing,  Prev: parametrize,  Up: paramet_lib
 
 D.8.3.2 parametrizepd
 .....................
@@ -5018,7 +4968,7 @@ See also:
 *See also:* *note normal::; *note parametrize::; *note primdecGTZ::.
 
 
-File: sing.info,  Node: parametrizesing,  Prev: parametrizepd,  Up: paramet_lib
+File: sing.htm,  Node: parametrizesing,  Prev: parametrizepd,  Up: paramet_lib
 
 D.8.3.3 parametrizesing
 .......................
@@ -5063,7 +5013,7 @@ See also:
 *See also:* *note develop::; *note hnexpansion::; *note hnoether_lib::.
 
 
-File: sing.info,  Node: surf_lib,  Prev: paramet_lib,  Up: Visualization
+File: sing.htm,  Node: surf_lib,  Prev: paramet_lib,  Up: Visualization
 
 D.8.4 surf_lib
 --------------
@@ -5092,7 +5042,7 @@ D.8.4 surf_lib
 * plot:: plots plane curves and surfaces
 
 
-File: sing.info,  Node: plot,  Up: surf_lib
+File: sing.htm,  Node: plot,  Up: surf_lib
 
 D.8.4.1 plot
 ............
@@ -5134,7 +5084,7 @@ Procedure from library `surf.lib' (*note surf_lib::).
      plot(z^2-x^2*y);
 
 
-File: sing.info,  Node: Coding theory,  Prev: Visualization,  Up: SINGULAR libraries
+File: sing.htm,  Node: Coding theory,  Prev: Visualization,  Up: SINGULAR libraries
 
 D.9 Coding theory
 =================
@@ -5144,7 +5094,7 @@ D.9 Coding theory
 * brnoeth_lib:: Brill-Noether algorithm, Weierstrass semigroups and AG codes
 
 
-File: sing.info,  Node: brnoeth_lib,  Up: Coding theory
+File: sing.htm,  Node: brnoeth_lib,  Up: Coding theory
 
 D.9.1 brnoeth_lib
 -----------------
@@ -5200,7 +5150,7 @@ See also:
 *See also:* *note hnoether_lib::; *note triang_lib::.
 
 
-File: sing.info,  Node: Adj_div,  Next: NSplaces,  Up: brnoeth_lib
+File: sing.htm,  Node: Adj_div,  Next: NSplaces,  Up: brnoeth_lib
 
 D.9.1.1 Adj_div
 ...............
@@ -5378,7 +5328,7 @@ See also:
 *See also:* *note NSplaces::; *note closed_points::.
 
 
-File: sing.info,  Node: NSplaces,  Next: BrillNoether,  Prev: Adj_div,  Up: brnoeth_lib
+File: sing.htm,  Node: NSplaces,  Next: BrillNoether,  Prev: Adj_div,  Up: brnoeth_lib
 
 D.9.1.2 NSplaces
 ................
@@ -5492,7 +5442,7 @@ See also:
 *See also:* *note Adj_div::; *note closed_points::.
 
 
-File: sing.info,  Node: BrillNoether,  Next: Weierstrass,  Prev: NSplaces,  Up: brnoeth_lib
+File: sing.htm,  Node: BrillNoether,  Next: Weierstrass,  Prev: NSplaces,  Up: brnoeth_lib
 
 D.9.1.3 BrillNoether
 ....................
@@ -5563,7 +5513,7 @@ See also:
 *See also:* *note Adj_div::; *note NSplaces::; *note Weierstrass::.
 
 
-File: sing.info,  Node: Weierstrass,  Next: extcurve,  Prev: BrillNoether,  Up: brnoeth_lib
+File: sing.htm,  Node: Weierstrass,  Next: extcurve,  Prev: BrillNoether,  Up: brnoeth_lib
 
 D.9.1.4 Weierstrass
 ...................
@@ -5643,7 +5593,7 @@ See also:
 *See also:* *note Adj_div::; *note BrillNoether::; *note NSplaces::.
 
 
-File: sing.info,  Node: extcurve,  Next: AGcode_L,  Prev: Weierstrass,  Up: brnoeth_lib
+File: sing.htm,  Node: extcurve,  Next: AGcode_L,  Prev: Weierstrass,  Up: brnoeth_lib
 
 D.9.1.5 extcurve
 ................
@@ -5721,7 +5671,7 @@ See also:
 *note NSplaces::; *note closed_points::.
 
 
-File: sing.info,  Node: AGcode_L,  Next: AGcode_Omega,  Prev: extcurve,  Up: brnoeth_lib
+File: sing.htm,  Node: AGcode_L,  Next: AGcode_Omega,  Prev: extcurve,  Up: brnoeth_lib
 
 D.9.1.6 AGcode_L
 ................
@@ -5788,7 +5738,7 @@ See also:
 *note extcurve::.
 
 
-File: sing.info,  Node: AGcode_Omega,  Next: prepSV,  Prev: AGcode_L,  Up: brnoeth_lib
+File: sing.htm,  Node: AGcode_Omega,  Next: prepSV,  Prev: AGcode_L,  Up: brnoeth_lib
 
 D.9.1.7 AGcode_Omega
 ....................
@@ -5855,7 +5805,7 @@ See also:
 *note extcurve::.
 
 
-File: sing.info,  Node: prepSV,  Next: decodeSV,  Prev: AGcode_Omega,  Up: brnoeth_lib
+File: sing.htm,  Node: prepSV,  Next: decodeSV,  Prev: AGcode_Omega,  Up: brnoeth_lib
 
 D.9.1.8 prepSV
 ..............
@@ -5962,7 +5912,7 @@ See also:
 *note permute_L::; *note sys_code::.
 
 
-File: sing.info,  Node: decodeSV,  Next: closed_points,  Prev: prepSV,  Up: brnoeth_lib
+File: sing.htm,  Node: decodeSV,  Next: closed_points,  Prev: prepSV,  Up: brnoeth_lib
 
 D.9.1.9 decodeSV
 ................
@@ -6028,7 +5978,7 @@ See also:
 *See also:* *note AGcode_Omega::; *note extcurve::; *note prepSV::.
 
 
-File: sing.info,  Node: closed_points,  Next: dual_code,  Prev: decodeSV,  Up: brnoeth_lib
+File: sing.htm,  Node: closed_points,  Next: dual_code,  Prev: decodeSV,  Up: brnoeth_lib
 
 D.9.1.10 closed_points
 ......................
@@ -6095,7 +6045,7 @@ See also:
 *See also:* *note triang_lib::.
 
 
-File: sing.info,  Node: dual_code,  Next: sys_code,  Prev: closed_points,  Up: brnoeth_lib
+File: sing.htm,  Node: dual_code,  Next: sys_code,  Prev: closed_points,  Up: brnoeth_lib
 
 D.9.1.11 dual_code
 ..................
@@ -6129,7 +6079,7 @@ Procedure from library `brnoeth.lib' (*note brnoeth_lib::).
      ==> 1,1,0,1,0,0,1 
 
 
-File: sing.info,  Node: sys_code,  Next: permute_L,  Prev: dual_code,  Up: brnoeth_lib
+File: sing.htm,  Node: sys_code,  Next: permute_L,  Prev: dual_code,  Up: brnoeth_lib
 
 D.9.1.12 sys_code
 .................
@@ -6190,7 +6140,7 @@ See also:
 *See also:* *note AGcode_Omega::; *note permute_L::; *note prepSV::.
 
 
-File: sing.info,  Node: permute_L,  Prev: sys_code,  Up: brnoeth_lib
+File: sing.htm,  Node: permute_L,  Prev: sys_code,  Up: brnoeth_lib
 
 D.9.1.13 permute_L
 ..................
@@ -6235,7 +6185,7 @@ See also:
 *See also:* *note AGcode_Omega::; *note prepSV::; *note sys_code::.
 
 
-File: sing.info,  Node: Release Notes,  Next: Index,  Prev: SINGULAR libraries,  Up: Top
+File: sing.htm,  Node: Release Notes,  Next: Index,  Prev: SINGULAR libraries,  Up: Top
 
 E Release Notes
 ***************
@@ -6249,7 +6199,7 @@ E Release Notes
 * Macintosh installation instructions::
 
 
-File: sing.info,  Node: News and changes,  Next: Downloading instructions,  Up: Release Notes
+File: sing.htm,  Node: News and changes,  Next: Downloading instructions,  Up: Release Notes
 
 E.1 News and changes
 ====================
@@ -6360,7 +6310,7 @@ Porting
    * Singular 2-0-2 was the last version for MacOS 9
 
 
-File: sing.info,  Node: Downloading instructions,  Next: Unix installation instructions,  Prev: News and changes,  Up: Release Notes
+File: sing.htm,  Node: Downloading instructions,  Next: Unix installation instructions,  Prev: News and changes,  Up: Release Notes
 
 E.2 Downloading instructions
 ============================
@@ -6488,7 +6438,7 @@ The SINGULAR version for Mac OS 9 is available as
 gives details on how to finish the installation.
 
 
-File: sing.info,  Node: Unix installation instructions,  Next: Windows installation instructions,  Prev: Downloading instructions,  Up: Release Notes
+File: sing.htm,  Node: Unix installation instructions,  Next: Windows installation instructions,  Prev: Downloading instructions,  Up: Release Notes
 
 E.3 Unix installation instructions
 ==================================
@@ -6738,7 +6688,7 @@ Troubleshooting
      -a' on your shell) in your report.
 
 
-File: sing.info,  Node: Windows installation instructions,  Next: Macintosh installation instructions,  Prev: Unix installation instructions,  Up: Release Notes
+File: sing.htm,  Node: Windows installation instructions,  Next: Macintosh installation instructions,  Prev: Unix installation instructions,  Up: Release Notes
 
 E.4 Windows installation instructions
 =====================================
@@ -6951,7 +6901,7 @@ displayed by starting up `Singular' with the `-v' option, and a
 description of your machine and operating system.
 
 
-File: sing.info,  Node: Macintosh installation instructions,  Prev: Windows installation instructions,  Up: Release Notes
+File: sing.htm,  Node: Macintosh installation instructions,  Prev: Windows installation instructions,  Up: Release Notes
 
 E.5 Macintosh installation instructions
 =======================================
@@ -7084,7 +7034,7 @@ displayed by starting up SINGULAR with the `-v' option, and a
 description of your machine and operating system.
 
 
-File: sing.info,  Node: Index,  Prev: Release Notes,  Up: Top
+File: sing.htm,  Node: Index,  Prev: Release Notes,  Up: Top
 
 F Index
 *******

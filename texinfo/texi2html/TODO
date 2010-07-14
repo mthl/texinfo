@@ -5,8 +5,6 @@ Before next release
 
 remove l2h_tmp_dir.init from .cvsignore and Makefile.am
 ship texi2any, makeinfo
---node-file as default
-set texi2html specific options as obsolete
 fix comment in html with authors and address
 change licenses to be FSF + GPLv3+
 

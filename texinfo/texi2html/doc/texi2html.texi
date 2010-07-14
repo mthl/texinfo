@@ -4662,6 +4662,38 @@ whole internationalization handling was changed.
 @itemize @bullet
 @item API changes between 5.0 and X.X
 @itemize @bullet
+
+@item obsolete the @option{--iso} command line option.
+
+@item obsolete texi2html specific variables. Here is the list with the associated
+  configuration variables that may be set instead, with @option{--set-init-variable}:
+@multitable {@option{--ignore-preamble-text}} {@code{IGNORE_PREAMBLE_TEXT}}
+@item  @option{--toc-links}               @tab @code{TOC_LINKS}
+@item  @option{--short-ext}               @tab @code{SHORTEXTN}
+@item  @option{--prefix}                  @tab @code{PREFIX}
+@item  @option{--short-ref}               @tab @code{SHORT_REF}
+@item  @option{--idx-sum}                 @tab @code{IDX_SUMMARY}
+@item  @option{--def-table}               @tab @code{DEF_TABLE}
+@item  @option{--ignore-preamble-text}    @tab @code{IGNORE_PREAMBLE_TEXT}
+@item  @option{--html-xref-prefix}        @tab @code{EXTERNAL_DIR}
+@item  @option{--l2h}                     @tab @code{L2H}
+@item  @option{--l2h-l2h}                 @tab @code{L2H_L2H}
+@item  @option{--l2h-skip}                @tab @code{L2H_SKIP}
+@item  @option{--l2h-tmp}                 @tab @code{L2H_TMP}
+@item  @option{--l2h-file}                @tab @code{L2H_FILE}
+@item  @option{--l2h-clean}               @tab @code{L2H_CLEAN}
+@item  @option{--use-nodes}               @tab @code{USE_NODES}
+@item  @option{--monolithic}              @tab @code{MONOLITHIC}
+@item  @option{--top-file}                @tab @code{TOP_FILE}
+@item  @option{--toc-file}                @tab @code{TOC_FILE}
+@item  @option{--frames}                  @tab @code{FRAMES}
+@item  @option{--menu}                    @tab @code{SHOW_MENU}
+@item  @option{--debug}                   @tab @code{DEBUG}
+@item  @option{--doctype}                 @tab @code{DOCTYPE}
+@item  @option{--frameset-doctype}        @tab @code{FRAMESET_DOCTYPE}
+@item  @option{--test}                    @tab @code{TEST}
+@end multitable
+
 @item remove completly $INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, 
   $ENCODING, $CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS
   they have been obsolete, sometimes for many years.

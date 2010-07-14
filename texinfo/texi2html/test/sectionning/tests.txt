@@ -14,33 +14,33 @@ makeinfo_novalidate_unsplit_node_file novalidate.texi --init makeinfo.init --spl
 # also text before first chapter is not allowed in docbook.
 first_section_no_node first_section_no_node.texi
 nodes_before_top nodes_before_top.texi
-nodes_after_top nodes_after_top.texi --use-nodes
+nodes_after_top nodes_after_top.texi --set-init-var 'USE_NODES 1'
 nodes_after_top_no_node nodes_after_top.texi
 section_nodes_before_top section_nodes_before_top.texi
 nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
 nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
-nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --use-nodes
-nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --use-nodes --split chapter
-nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --use-nodes --split chapter
+nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi --set-init-var 'USE_NODES 1'
+nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi --set-init-var 'USE_NODES 1' --split chapter
+nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi --set-init-var 'USE_NODES 1' --split chapter
 # --debug 255
 nodes_test nodes_test.texi
 no_section_no_node no_section.texi
-no_section no_section.texi --use-nodes
-no_section_directions no_section.texi --init test_directions.init --use-nodes
+no_section no_section.texi --set-init-var 'USE_NODES 1'
+no_section_directions no_section.texi --init test_directions.init --set-init-var 'USE_NODES 1'
 no_section_directions_no_node no_section.texi --init test_directions.init
 no_node no_node.texi
 no_node_directions no_node.texi --init test_directions.init
 no_node_chapter_split no_node.texi --split chapter
 no_node_no_top no_node_no_top.texi
-no_section_no_top no_section_no_top.texi --use-nodes
+no_section_no_top no_section_no_top.texi --set-init-var 'USE_NODES 1'
 no_section_no_top_no_node no_section_no_top.texi
 one_section one_section.texi
 one_node_no_node one_node.texi
-one_node one_node.texi --use-nodes
+one_node one_node.texi --set-init-var 'USE_NODES 1'
 one_node_and_section one_node_and_section.texi
 first_section_and_nodes first_section_and_nodes.texi
 double_top double_top.texi
-rec_nodes rec_nodes.texi --use-nodes
+rec_nodes rec_nodes.texi --set-init-var 'USE_NODES 1'
 rec_nodes_no_node rec_nodes.texi
 makeinfo_rec_nodes rec_nodes.texi --init makeinfo.init --no-node-files
 lower_subsub lower_subsub.texi
@@ -50,12 +50,12 @@ before_node_and_section before_node_and_section.texi
 section_before_chapter section_before_chapter.texi
 node_footnote_end node_footnote.texi --footnote-style=end
 # --debug 255
-node_footnote_use_node node_footnote.texi --use-node --node-files --footnote-style=end --split node
+node_footnote_use_node node_footnote.texi --set-init-var 'USE_NODES 1' --node-files --footnote-style=end --split node
 test_refs test_refs.texi
 test_refs_chapter test_refs.texi --split chapter
-test_refs_nodes test_refs.texi --split node --node-files --use-nodes
+test_refs_nodes test_refs.texi --split node --node-files --set-init-var 'USE_NODES 1'
 at_commands_in_refs at_commands_in_refs.texi
-equivalent_nodes equivalent_nodes.texi --use-nodes
+equivalent_nodes equivalent_nodes.texi --set-init-var 'USE_NODES 1'
 equivalent_nodes_no_node equivalent_nodes.texi
 html-top_no_Top_node html-top.texi
 menu-whitespace_plain menu-whitespace.texi

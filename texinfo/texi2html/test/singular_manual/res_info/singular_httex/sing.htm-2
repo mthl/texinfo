@@ -1,8 +1,7 @@
-This is sing.info, produced by makeinfo version 4.13 from singular.texi.
-
+This is sing.htm, produced by makeinfo version 4.13 from singular.texi.
 
 
-File: sing.info,  Node: char_series,  Next: charstr,  Prev: char,  Up: Functions
+File: sing.htm,  Node: char_series,  Next: charstr,  Prev: char,  Up: Functions
 
 5.1.5 char_series
 -----------------
@@ -34,7 +33,7 @@ See
 See *note Characteristic sets::.
 
 
-File: sing.info,  Node: charstr,  Next: cleardenom,  Prev: char_series,  Up: Functions
+File: sing.htm,  Node: charstr,  Next: cleardenom,  Prev: char_series,  Up: Functions
 
 5.1.6 charstr
 -------------
@@ -78,7 +77,7 @@ See
 See *note char::; *note ordstr::; *note ring::; *note varstr::.
 
 
-File: sing.info,  Node: cleardenom,  Next: close,  Prev: charstr,  Up: Functions
+File: sing.htm,  Node: cleardenom,  Next: close,  Prev: charstr,  Up: Functions
 
 5.1.7 cleardenom
 ----------------
@@ -105,7 +104,7 @@ File: sing.info,  Node: cleardenom,  Next: close,  Prev: charstr,  Up: Functions
           ==> x5+10x4y+40x3y2+80x2y3+80xy4+32y5
 
 
-File: sing.info,  Node: close,  Next: coef,  Prev: cleardenom,  Up: Functions
+File: sing.htm,  Node: close,  Next: coef,  Prev: cleardenom,  Up: Functions
 
 5.1.8 close
 -----------
@@ -134,7 +133,7 @@ See
 See *note link::; *note open::.
 
 
-File: sing.info,  Node: coef,  Next: coeffs,  Prev: close,  Up: Functions
+File: sing.htm,  Node: coef,  Next: coeffs,  Prev: close,  Up: Functions
 
 5.1.9 coef
 ----------
@@ -205,7 +204,7 @@ See
 See *note coeffs::.
 
 
-File: sing.info,  Node: coeffs,  Next: contract,  Prev: coef,  Up: Functions
+File: sing.htm,  Node: coeffs,  Next: contract,  Prev: coef,  Up: Functions
 
 5.1.10 coeffs
 -------------
@@ -325,7 +324,7 @@ See
 See *note coef::; *note kbase::.
 
 
-File: sing.info,  Node: contract,  Next: dbprint,  Prev: coeffs,  Up: Functions
+File: sing.htm,  Node: contract,  Next: dbprint,  Prev: coeffs,  Up: Functions
 
 5.1.11 contract
 ---------------
@@ -368,7 +367,7 @@ See
 See *note diff::.
 
 
-File: sing.info,  Node: dbprint,  Next: defined,  Prev: contract,  Up: Functions
+File: sing.htm,  Node: dbprint,  Next: defined,  Prev: contract,  Up: Functions
 
 5.1.12 dbprint
 --------------
@@ -424,7 +423,7 @@ See *note Debugging tools::; *note print::; *note printlevel::; *note
 voice::.
 
 
-File: sing.info,  Node: defined,  Next: deg,  Prev: dbprint,  Up: Functions
+File: sing.htm,  Node: defined,  Next: deg,  Prev: dbprint,  Up: Functions
 
 5.1.13 defined
 --------------
@@ -474,7 +473,7 @@ See
 See *note rvar::; *note voice::.
 
 
-File: sing.info,  Node: deg,  Next: degree,  Prev: defined,  Up: Functions
+File: sing.htm,  Node: deg,  Next: degree,  Prev: defined,  Up: Functions
 
 5.1.14 deg
 ----------
@@ -525,7 +524,7 @@ See
 See *note jet::; *note ord::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: degree,  Next: delete,  Prev: deg,  Up: Functions
+File: sing.htm,  Node: degree,  Next: delete,  Prev: deg,  Up: Functions
 
 5.1.15 degree
 -------------
@@ -570,7 +569,7 @@ See
 See *note dim::; *note ideal::; *note mult::; *note std::; *note vdim::.
 
 
-File: sing.info,  Node: delete,  Next: det,  Prev: degree,  Up: Functions
+File: sing.htm,  Node: delete,  Next: det,  Prev: degree,  Up: Functions
 
 5.1.16 delete
 -------------
@@ -610,7 +609,7 @@ See
 See *note insert::; *note list::.
 
 
-File: sing.info,  Node: det,  Next: diff,  Prev: delete,  Up: Functions
+File: sing.htm,  Node: det,  Next: diff,  Prev: delete,  Up: Functions
 
 5.1.17 det
 ----------
@@ -648,7 +647,7 @@ See
 See *note intmat::; *note matrix::; *note minor::.
 
 
-File: sing.info,  Node: diff,  Next: dim,  Prev: det,  Up: Functions
+File: sing.htm,  Node: diff,  Next: dim,  Prev: det,  Up: Functions
 
 5.1.18 diff
 -----------
@@ -710,7 +709,7 @@ See *note contract::; *note ideal::; *note jacob::; *note matrix::;
 *note module::; *note poly::; *note var::; *note vector::.
 
 
-File: sing.info,  Node: dim,  Next: division,  Prev: diff,  Up: Functions
+File: sing.htm,  Node: dim,  Next: division,  Prev: diff,  Up: Functions
 
 5.1.19 dim
 ----------
@@ -754,7 +753,7 @@ See *note degree::; *note ideal::; *note mult::; *note std::; *note
 vdim::.
 
 
-File: sing.info,  Node: division,  Next: dump,  Prev: dim,  Up: Functions
+File: sing.htm,  Node: division,  Next: dump,  Prev: dim,  Up: Functions
 
 5.1.20 division
 ---------------
@@ -832,7 +831,7 @@ See
 See *note ideal::; *note lift::; *note module::.
 
 
-File: sing.info,  Node: dump,  Next: eliminate,  Prev: division,  Up: Functions
+File: sing.htm,  Node: dump,  Next: eliminate,  Prev: division,  Up: Functions
 
 5.1.21 dump
 -----------
@@ -898,7 +897,7 @@ See
 See *note getdump::; *note link::; *note write::.
 
 
-File: sing.info,  Node: eliminate,  Next: eval,  Prev: dump,  Up: Functions
+File: sing.htm,  Node: eliminate,  Next: eval,  Prev: dump,  Up: Functions
 
 5.1.22 eliminate
 ----------------
@@ -957,7 +956,7 @@ See
 See *note hilb::; *note ideal::; *note module::; *note std::.
 
 
-File: sing.info,  Node: eval,  Next: ERROR,  Prev: eliminate,  Up: Functions
+File: sing.htm,  Node: eval,  Next: ERROR,  Prev: eliminate,  Up: Functions
 
 5.1.23 eval
 -----------
@@ -1001,7 +1000,7 @@ See
 See *note MPfile links::; *note quote::; *note write::.
 
 
-File: sing.info,  Node: ERROR,  Next: example,  Prev: eval,  Up: Functions
+File: sing.htm,  Node: ERROR,  Next: example,  Prev: eval,  Up: Functions
 
 5.1.24 ERROR
 ------------
@@ -1034,7 +1033,7 @@ File: sing.info,  Node: ERROR,  Next: example,  Prev: eval,  Up: Functions
           ==> 1
 
 
-File: sing.info,  Node: example,  Next: execute,  Prev: ERROR,  Up: Functions
+File: sing.htm,  Node: example,  Next: execute,  Prev: ERROR,  Up: Functions
 
 5.1.25 example
 --------------
@@ -1061,7 +1060,7 @@ See also:
 *See also:* *note help::.
 
 
-File: sing.info,  Node: execute,  Next: exit,  Prev: example,  Up: Functions
+File: sing.htm,  Node: execute,  Next: exit,  Prev: example,  Up: Functions
 
 5.1.26 execute
 --------------
@@ -1098,7 +1097,7 @@ File: sing.info,  Node: execute,  Next: exit,  Prev: example,  Up: Functions
           ==> k[2]=z3+22y
 
 
-File: sing.info,  Node: exit,  Next: extgcd,  Prev: execute,  Up: Functions
+File: sing.htm,  Node: exit,  Next: extgcd,  Prev: execute,  Up: Functions
 
 5.1.27 exit
 -----------
@@ -1111,7 +1110,7 @@ File: sing.info,  Node: exit,  Next: extgcd,  Prev: execute,  Up: Functions
      an interrupt.
 
 
-File: sing.info,  Node: extgcd,  Next: facstd,  Prev: exit,  Up: Functions
+File: sing.htm,  Node: extgcd,  Next: facstd,  Prev: exit,  Up: Functions
 
 5.1.28 extgcd
 -------------
@@ -1159,7 +1158,7 @@ See
 See *note gcd::; *note int::; *note poly::.
 
 
-File: sing.info,  Node: facstd,  Next: factorize,  Prev: extgcd,  Up: Functions
+File: sing.htm,  Node: facstd,  Next: factorize,  Prev: extgcd,  Up: Functions
 
 5.1.29 facstd
 -------------
@@ -1215,7 +1214,7 @@ See
 See *note ideal::; *note ring::; *note std::.
 
 
-File: sing.info,  Node: factorize,  Next: fetch,  Prev: facstd,  Up: Functions
+File: sing.htm,  Node: factorize,  Next: fetch,  Prev: facstd,  Up: Functions
 
 5.1.30 factorize
 ----------------
@@ -1276,7 +1275,7 @@ See
 See *note poly::.
 
 
-File: sing.info,  Node: fetch,  Next: fglm,  Prev: factorize,  Up: Functions
+File: sing.htm,  Node: fetch,  Next: fglm,  Prev: factorize,  Up: Functions
 
 5.1.31 fetch
 ------------
@@ -1351,7 +1350,7 @@ See
 See *note imap::; *note map::; *note qring::; *note ring::.
 
 
-File: sing.info,  Node: fglm,  Next: fglmquot,  Prev: fetch,  Up: Functions
+File: sing.htm,  Node: fglm,  Next: fglmquot,  Prev: fetch,  Up: Functions
 
 5.1.32 fglm
 -----------
@@ -1409,7 +1408,7 @@ See *note fglmquot::; *note option::; *note qring::; *note ring::; *note
 std::; *note stdfglm::; *note vdim::.
 
 
-File: sing.info,  Node: fglmquot,  Next: filecmd,  Prev: fglm,  Up: Functions
+File: sing.htm,  Node: fglmquot,  Next: filecmd,  Prev: fglm,  Up: Functions
 
 5.1.33 fglmquot
 ---------------
@@ -1458,7 +1457,7 @@ See *note fglm::; *note option::; *note quotient::; *note ring::; *note
 std::; *note vdim::.
 
 
-File: sing.info,  Node: filecmd,  Next: find,  Prev: fglmquot,  Up: Functions
+File: sing.htm,  Node: filecmd,  Next: find,  Prev: fglmquot,  Up: Functions
 
 5.1.34 files, input from
 ------------------------
@@ -1486,7 +1485,7 @@ See
 See *note execute::; *note read::.
 
 
-File: sing.info,  Node: find,  Next: finduni,  Prev: filecmd,  Up: Functions
+File: sing.htm,  Node: find,  Next: finduni,  Prev: filecmd,  Up: Functions
 
 5.1.35 find
 -----------
@@ -1525,7 +1524,7 @@ See
 See *note string::.
 
 
-File: sing.info,  Node: finduni,  Next: fprintf,  Prev: find,  Up: Functions
+File: sing.htm,  Node: finduni,  Next: fprintf,  Prev: find,  Up: Functions
 
 5.1.36 finduni
 --------------
@@ -1569,7 +1568,7 @@ See
 See *note option::; *note ring::; *note std::; *note vdim::.
 
 
-File: sing.info,  Node: fprintf,  Next: freemodule,  Prev: finduni,  Up: Functions
+File: sing.htm,  Node: fprintf,  Next: freemodule,  Prev: finduni,  Up: Functions
 
 5.1.37 fprintf
 --------------
@@ -1665,7 +1664,7 @@ See also:
 string::.
 
 
-File: sing.info,  Node: freemodule,  Next: gcd,  Prev: fprintf,  Up: Functions
+File: sing.htm,  Node: freemodule,  Next: gcd,  Prev: fprintf,  Up: Functions
 
 5.1.38 freemodule
 -----------------
@@ -1702,7 +1701,7 @@ See
 See *note gen::; *note module::.
 
 
-File: sing.info,  Node: gcd,  Next: gen,  Prev: freemodule,  Up: Functions
+File: sing.htm,  Node: gcd,  Next: gen,  Prev: freemodule,  Up: Functions
 
 5.1.39 gcd
 ----------
@@ -1745,7 +1744,7 @@ See
 See *note extgcd::; *note int::; *note number::; *note poly::.
 
 
-File: sing.info,  Node: gen,  Next: getdump,  Prev: gcd,  Up: Functions
+File: sing.htm,  Node: gen,  Next: getdump,  Prev: gcd,  Up: Functions
 
 5.1.40 gen
 ----------
@@ -1782,7 +1781,7 @@ See
 See *note freemodule::; *note int::; *note vector::.
 
 
-File: sing.info,  Node: getdump,  Next: groebner,  Prev: gen,  Up: Functions
+File: sing.htm,  Node: getdump,  Next: groebner,  Prev: gen,  Up: Functions
 
 5.1.41 getdump
 --------------
@@ -1823,7 +1822,7 @@ See
 See *note dump::; *note link::; *note read::.
 
 
-File: sing.info,  Node: groebner,  Next: help,  Prev: getdump,  Up: Functions
+File: sing.htm,  Node: groebner,  Next: help,  Prev: getdump,  Up: Functions
 
 5.1.42 groebner
 ---------------
@@ -1910,7 +1909,7 @@ See also:
 *See also:* *note std::; *note stdfglm::; *note stdhilb::.
 
 
-File: sing.info,  Node: help,  Next: highcorner,  Prev: groebner,  Up: Functions
+File: sing.htm,  Node: help,  Next: highcorner,  Prev: groebner,  Up: Functions
 
 5.1.43 help
 -----------
@@ -1985,7 +1984,7 @@ See *note Command line options::; *note Format of a library::; *note
 Procedure definition::; *note The online help system::; *note system::.
 
 
-File: sing.info,  Node: highcorner,  Next: hilb,  Prev: help,  Up: Functions
+File: sing.htm,  Node: highcorner,  Next: hilb,  Prev: help,  Up: Functions
 
 5.1.44 highcorner
 -----------------
@@ -2039,7 +2038,7 @@ See
 See *note dim::; *note std::; *note vdim::.
 
 
-File: sing.info,  Node: hilb,  Next: homog,  Prev: highcorner,  Up: Functions
+File: sing.htm,  Node: hilb,  Next: homog,  Prev: highcorner,  Up: Functions
 
 5.1.45 hilb
 -----------
@@ -2120,7 +2119,7 @@ See *note Hilbert function::; *note ideal::; *note intvec::; *note
 module::; *note std::; *note stdhilb::.
 
 
-File: sing.info,  Node: homog,  Next: hres,  Prev: hilb,  Up: Functions
+File: sing.htm,  Node: homog,  Next: hres,  Prev: hilb,  Up: Functions
 
 5.1.46 homog
 ------------
@@ -2180,7 +2179,7 @@ See
 See *note ideal::; *note module::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: hres,  Next: imap,  Prev: homog,  Up: Functions
+File: sing.htm,  Node: hres,  Next: imap,  Prev: homog,  Up: Functions
 
 5.1.47 hres
 -----------
@@ -2252,7 +2251,7 @@ See *note betti::; *note ideal::; *note int::; *note lres::; *note
 minres::; *note module::; *note mres::; *note res::; *note sres::.
 
 
-File: sing.info,  Node: imap,  Next: impart,  Prev: hres,  Up: Functions
+File: sing.htm,  Node: imap,  Next: impart,  Prev: hres,  Up: Functions
 
 5.1.48 imap
 -----------
@@ -2303,7 +2302,7 @@ See *note fetch::; *note homog::; *note map::; *note qring::; *note
 ring::.
 
 
-File: sing.info,  Node: impart,  Next: indepSet,  Prev: imap,  Up: Functions
+File: sing.htm,  Node: impart,  Next: indepSet,  Prev: imap,  Up: Functions
 
 5.1.49 impart
 -------------
@@ -2332,7 +2331,7 @@ See
 See *note repart::.
 
 
-File: sing.info,  Node: indepSet,  Next: insert,  Prev: impart,  Up: Functions
+File: sing.htm,  Node: indepSet,  Next: insert,  Prev: impart,  Up: Functions
 
 5.1.50 indepSet
 ---------------
@@ -2407,7 +2406,7 @@ See
 See *note ideal::; *note std::.
 
 
-File: sing.info,  Node: insert,  Next: interred,  Prev: indepSet,  Up: Functions
+File: sing.htm,  Node: insert,  Next: interred,  Prev: indepSet,  Up: Functions
 
 5.1.51 insert
 -------------
@@ -2451,7 +2450,7 @@ See
 See *note delete::; *note list::.
 
 
-File: sing.info,  Node: interred,  Next: intersect,  Prev: insert,  Up: Functions
+File: sing.htm,  Node: interred,  Next: intersect,  Prev: insert,  Up: Functions
 
 5.1.52 interred
 ---------------
@@ -2517,7 +2516,7 @@ See
 See *note ideal::; *note module::; *note std::.
 
 
-File: sing.info,  Node: intersect,  Next: jacob,  Prev: interred,  Up: Functions
+File: sing.htm,  Node: intersect,  Next: jacob,  Prev: interred,  Up: Functions
 
 5.1.53 intersect
 ----------------
@@ -2567,7 +2566,7 @@ See
 See *note ideal::; *note module::; *note option::.
 
 
-File: sing.info,  Node: jacob,  Next: jet,  Prev: intersect,  Up: Functions
+File: sing.htm,  Node: jacob,  Next: jet,  Prev: intersect,  Up: Functions
 
 5.1.54 jacob
 ------------
@@ -2609,7 +2608,7 @@ See
 See *note diff::; *note ideal::; *note module::; *note nvars::.
 
 
-File: sing.info,  Node: jet,  Next: kbase,  Prev: jacob,  Up: Functions
+File: sing.htm,  Node: jet,  Next: kbase,  Prev: jacob,  Up: Functions
 
 5.1.55 jet
 ----------
@@ -2700,7 +2699,7 @@ See *note deg::; *note ideal::; *note int::; *note intvec::; *note
 module::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: kbase,  Next: kill,  Prev: jet,  Up: Functions
+File: sing.htm,  Node: kbase,  Next: kill,  Prev: jet,  Up: Functions
 
 5.1.56 kbase
 ------------
@@ -2753,7 +2752,7 @@ See
 See *note ideal::; *note module::; *note vdim::.
 
 
-File: sing.info,  Node: kill,  Next: killattrib,  Prev: kbase,  Up: Functions
+File: sing.htm,  Node: kill,  Next: killattrib,  Prev: kbase,  Up: Functions
 
 5.1.57 kill
 -----------
@@ -2796,7 +2795,7 @@ See
 See *note defined::; *note general_lib::; *note names::.
 
 
-File: sing.info,  Node: killattrib,  Next: koszul,  Prev: kill,  Up: Functions
+File: sing.htm,  Node: killattrib,  Next: koszul,  Prev: kill,  Up: Functions
 
 5.1.58 killattrib
 -----------------
@@ -2830,7 +2829,7 @@ See
 See *note attrib::; *note option::.
 
 
-File: sing.info,  Node: koszul,  Next: laguerre,  Prev: killattrib,  Up: Functions
+File: sing.htm,  Node: koszul,  Next: laguerre,  Prev: killattrib,  Up: Functions
 
 5.1.59 koszul
 -------------
@@ -2886,7 +2885,7 @@ See
 See *note int::; *note matrix::.
 
 
-File: sing.info,  Node: laguerre,  Next: lead,  Prev: koszul,  Up: Functions
+File: sing.htm,  Node: laguerre,  Next: lead,  Prev: koszul,  Up: Functions
 
 5.1.60 laguerre
 ---------------
@@ -2927,7 +2926,7 @@ File: sing.info,  Node: laguerre,  Next: lead,  Prev: koszul,  Up: Functions
           ==>    0.8924637479
 
 
-File: sing.info,  Node: lead,  Next: leadcoef,  Prev: laguerre,  Up: Functions
+File: sing.htm,  Node: lead,  Next: leadcoef,  Prev: laguerre,  Up: Functions
 
 5.1.61 lead
 -----------
@@ -2984,7 +2983,7 @@ See *note ideal::; *note leadcoef::; *note leadexp::; *note leadmonom::;
 *note module::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: leadcoef,  Next: leadexp,  Prev: lead,  Up: Functions
+File: sing.htm,  Node: leadcoef,  Next: leadexp,  Prev: lead,  Up: Functions
 
 5.1.62 leadcoef
 ---------------
@@ -3026,7 +3025,7 @@ See *note lead::; *note leadexp::; *note leadmonom::; *note number::;
 *note poly::; *note vector::.
 
 
-File: sing.info,  Node: leadexp,  Next: leadmonom,  Prev: leadcoef,  Up: Functions
+File: sing.htm,  Node: leadexp,  Next: leadmonom,  Prev: leadcoef,  Up: Functions
 
 5.1.63 leadexp
 --------------
@@ -3069,7 +3068,7 @@ See *note intvec::; *note lead::; *note leadcoef::; *note leadmonom::;
 *note poly::; *note vector::.
 
 
-File: sing.info,  Node: leadmonom,  Next: LIB,  Prev: leadexp,  Up: Functions
+File: sing.htm,  Node: leadmonom,  Next: LIB,  Prev: leadexp,  Up: Functions
 
 5.1.64 leadmonom
 ----------------
@@ -3111,7 +3110,7 @@ See *note intvec::; *note lead::; *note leadcoef::; *note leadexp::;
 *note poly::; *note vector::.
 
 
-File: sing.info,  Node: LIB,  Next: lift,  Prev: leadmonom,  Up: Functions
+File: sing.htm,  Node: LIB,  Next: lift,  Prev: leadmonom,  Up: Functions
 
 5.1.65 LIB
 ----------
@@ -3171,7 +3170,7 @@ Procedures and libraries::; *note SINGULAR libraries::; *note proc::;
 *note standard_lib::; *note string::; *note system::.
 
 
-File: sing.info,  Node: lift,  Next: liftstd,  Prev: LIB,  Up: Functions
+File: sing.htm,  Node: lift,  Next: liftstd,  Prev: LIB,  Up: Functions
 
 5.1.66 lift
 -----------
@@ -3225,7 +3224,7 @@ See
 See *note division::; *note ideal::; *note module::.
 
 
-File: sing.info,  Node: liftstd,  Next: listvar,  Prev: lift,  Up: Functions
+File: sing.htm,  Node: liftstd,  Next: listvar,  Prev: lift,  Up: Functions
 
 5.1.67 liftstd
 --------------
@@ -3287,7 +3286,7 @@ See *note ideal::; *note matrix::; *note option::; *note ring::; *note
 std::.
 
 
-File: sing.info,  Node: listvar,  Next: lres,  Prev: liftstd,  Up: Functions
+File: sing.htm,  Node: listvar,  Next: lres,  Prev: liftstd,  Up: Functions
 
 5.1.68 listvar
 --------------
@@ -3384,7 +3383,7 @@ See *note Names::; *note Names in procedures::; *note defined::; *note
 names::; *note type::.
 
 
-File: sing.info,  Node: lres,  Next: maxideal,  Prev: listvar,  Up: Functions
+File: sing.htm,  Node: lres,  Next: maxideal,  Prev: listvar,  Up: Functions
 
 5.1.69 lres
 -----------
@@ -3455,7 +3454,7 @@ See *note betti::; *note hres::; *note ideal::; *note int::; *note
 minres::; *note module::; *note mres::; *note res::; *note sres::.
 
 
-File: sing.info,  Node: maxideal,  Next: memory,  Prev: lres,  Up: Functions
+File: sing.htm,  Node: maxideal,  Next: memory,  Prev: lres,  Up: Functions
 
 5.1.70 maxideal
 ---------------
@@ -3490,7 +3489,7 @@ See
 See *note ideal::; *note ring::.
 
 
-File: sing.info,  Node: memory,  Next: minbase,  Prev: maxideal,  Up: Functions
+File: sing.htm,  Node: memory,  Next: minbase,  Prev: maxideal,  Up: Functions
 
 5.1.71 memory
 -------------
@@ -3553,7 +3552,7 @@ See
 See *note option::; *note system::.
 
 
-File: sing.info,  Node: minbase,  Next: minor,  Prev: memory,  Up: Functions
+File: sing.htm,  Node: minbase,  Next: minor,  Prev: memory,  Up: Functions
 
 5.1.72 minbase
 --------------
@@ -3592,7 +3591,7 @@ See
 See *note mstd::.
 
 
-File: sing.info,  Node: minor,  Next: minres,  Prev: minbase,  Up: Functions
+File: sing.htm,  Node: minor,  Next: minres,  Prev: minbase,  Up: Functions
 
 5.1.73 minor
 ------------
@@ -3642,7 +3641,7 @@ See
 See *note det::.
 
 
-File: sing.info,  Node: minres,  Next: modulo,  Prev: minor,  Up: Functions
+File: sing.htm,  Node: minres,  Next: modulo,  Prev: minor,  Up: Functions
 
 5.1.74 minres
 -------------
@@ -3706,7 +3705,7 @@ See
 See *note mres::; *note res::; *note sres::.
 
 
-File: sing.info,  Node: modulo,  Next: monitor,  Prev: minres,  Up: Functions
+File: sing.htm,  Node: modulo,  Next: monitor,  Prev: minres,  Up: Functions
 
 5.1.75 modulo
 -------------
@@ -3765,7 +3764,7 @@ See
 See *note syz::.
 
 
-File: sing.info,  Node: monitor,  Next: mpresmat,  Prev: modulo,  Up: Functions
+File: sing.htm,  Node: monitor,  Next: mpresmat,  Prev: modulo,  Up: Functions
 
 5.1.76 monitor
 --------------
@@ -3796,7 +3795,7 @@ File: sing.info,  Node: monitor,  Next: mpresmat,  Prev: modulo,  Up: Functions
             monitor("");             // stop logging
 
 
-File: sing.info,  Node: mpresmat,  Next: mres,  Prev: monitor,  Up: Functions
+File: sing.htm,  Node: mpresmat,  Next: mres,  Prev: monitor,  Up: Functions
 
 5.1.77 mpresmat
 ---------------
@@ -3843,7 +3842,7 @@ See
 See *note uressolve::.
 
 
-File: sing.info,  Node: mres,  Next: mstd,  Prev: mpresmat,  Up: Functions
+File: sing.htm,  Node: mres,  Next: mstd,  Prev: mpresmat,  Up: Functions
 
 5.1.78 mres
 -----------
@@ -3914,7 +3913,7 @@ See *note hres::; *note ideal::; *note lres::; *note module::; *note
 res::; *note sres::.
 
 
-File: sing.info,  Node: mstd,  Next: mult,  Prev: mres,  Up: Functions
+File: sing.htm,  Node: mstd,  Next: mult,  Prev: mres,  Up: Functions
 
 5.1.79 mstd
 -----------
@@ -3975,7 +3974,7 @@ See
 See *note ideal::; *note minbase::; *note module::; *note std::.
 
 
-File: sing.info,  Node: mult,  Next: nameof,  Prev: mstd,  Up: Functions
+File: sing.htm,  Node: mult,  Next: nameof,  Prev: mstd,  Up: Functions
 
 5.1.80 mult
 -----------
@@ -4020,7 +4019,7 @@ See *note degree::; *note dim::; *note ideal::; *note std::; *note
 vdim::.
 
 
-File: sing.info,  Node: nameof,  Next: names,  Prev: mult,  Up: Functions
+File: sing.htm,  Node: nameof,  Next: names,  Prev: mult,  Up: Functions
 
 5.1.81 nameof
 -------------
@@ -4063,7 +4062,7 @@ See
 See *note names::; *note reservedName::; *note typeof::.
 
 
-File: sing.info,  Node: names,  Next: ncols,  Prev: nameof,  Up: Functions
+File: sing.htm,  Node: names,  Next: ncols,  Prev: nameof,  Up: Functions
 
 5.1.82 names
 ------------
@@ -4141,7 +4140,7 @@ See
 See *note nameof::; *note reservedName::.
 
 
-File: sing.info,  Node: ncols,  Next: npars,  Prev: names,  Up: Functions
+File: sing.htm,  Node: ncols,  Next: npars,  Prev: names,  Up: Functions
 
 5.1.83 ncols
 ------------
@@ -4185,7 +4184,7 @@ See
 See *note matrix::; *note nrows::; *note size::.
 
 
-File: sing.info,  Node: npars,  Next: nres,  Prev: ncols,  Up: Functions
+File: sing.htm,  Node: npars,  Next: nres,  Prev: ncols,  Up: Functions
 
 5.1.84 npars
 ------------
@@ -4216,7 +4215,7 @@ See
 See *note par::; *note parstr::; *note ring::.
 
 
-File: sing.info,  Node: nres,  Next: nrows,  Prev: npars,  Up: Functions
+File: sing.htm,  Node: nres,  Next: nrows,  Prev: npars,  Up: Functions
 
 5.1.85 nres
 -----------
@@ -4283,7 +4282,7 @@ See *note hres::; *note ideal::; *note lres::; *note module::; *note
 mres::; *note res::; *note resolution::; *note sres::.
 
 
-File: sing.info,  Node: nrows,  Next: nvars,  Prev: nres,  Up: Functions
+File: sing.htm,  Node: nrows,  Next: nvars,  Prev: nres,  Up: Functions
 
 5.1.86 nrows
 ------------
@@ -4334,7 +4333,7 @@ See *note gen::; *note matrix::; *note module::; *note ncols::; *note
 vector::.
 
 
-File: sing.info,  Node: nvars,  Next: open,  Prev: nrows,  Up: Functions
+File: sing.htm,  Node: nvars,  Next: open,  Prev: nrows,  Up: Functions
 
 5.1.87 nvars
 ------------
@@ -4366,7 +4365,7 @@ See
 See *note npars::; *note ring::; *note var::; *note varstr::.
 
 
-File: sing.info,  Node: open,  Next: option,  Prev: nvars,  Up: Functions
+File: sing.htm,  Node: open,  Next: option,  Prev: nvars,  Up: Functions
 
 5.1.88 open
 -----------
@@ -4395,7 +4394,7 @@ See
 See *note close::; *note link::.
 
 
-File: sing.info,  Node: option,  Next: ord,  Prev: open,  Up: Functions
+File: sing.htm,  Node: option,  Next: ord,  Prev: open,  Up: Functions
 
 5.1.89 option
 -------------
@@ -4645,7 +4644,7 @@ See
 See *note degBound::; *note multBound::; *note std::.
 
 
-File: sing.info,  Node: ord,  Next: ordstr,  Prev: option,  Up: Functions
+File: sing.htm,  Node: ord,  Next: ordstr,  Prev: option,  Up: Functions
 
 5.1.90 ord
 ----------
@@ -4691,7 +4690,7 @@ See
 See *note deg::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: ordstr,  Next: par,  Prev: ord,  Up: Functions
+File: sing.htm,  Node: ordstr,  Next: par,  Prev: ord,  Up: Functions
 
 5.1.91 ordstr
 -------------
@@ -4722,7 +4721,7 @@ See
 See *note charstr::; *note parstr::; *note ring::; *note varstr::.
 
 
-File: sing.info,  Node: par,  Next: pardeg,  Prev: ordstr,  Up: Functions
+File: sing.htm,  Node: par,  Next: pardeg,  Prev: ordstr,  Up: Functions
 
 5.1.92 par
 ----------
@@ -4761,7 +4760,7 @@ See *note char::; *note npars::; *note parstr::; *note ring::; *note
 var::.
 
 
-File: sing.info,  Node: pardeg,  Next: parstr,  Prev: par,  Up: Functions
+File: sing.htm,  Node: pardeg,  Next: parstr,  Prev: par,  Up: Functions
 
 5.1.93 pardeg
 -------------
@@ -4793,7 +4792,7 @@ See
 See *note deg::; *note number::; *note ring::; *note var::.
 
 
-File: sing.info,  Node: parstr,  Next: preimage,  Prev: pardeg,  Up: Functions
+File: sing.htm,  Node: parstr,  Next: preimage,  Prev: pardeg,  Up: Functions
 
 5.1.94 parstr
 -------------
@@ -4836,7 +4835,7 @@ See *note charstr::; *note npars::; *note ordstr::; *note par::; *note
 ring::; *note varstr::.
 
 
-File: sing.info,  Node: preimage,  Next: prime,  Prev: parstr,  Up: Functions
+File: sing.htm,  Node: preimage,  Next: prime,  Prev: parstr,  Up: Functions
 
 5.1.95 preimage
 ---------------
@@ -4887,7 +4886,7 @@ See
 See *note ideal::; *note map::; *note ring::.
 
 
-File: sing.info,  Node: prime,  Next: print,  Prev: preimage,  Up: Functions
+File: sing.htm,  Node: prime,  Next: print,  Prev: preimage,  Up: Functions
 
 5.1.96 prime
 ------------
@@ -4921,7 +4920,7 @@ See
 See *note general_lib::; *note int::.
 
 
-File: sing.info,  Node: print,  Next: printf,  Prev: prime,  Up: Functions
+File: sing.htm,  Node: print,  Next: printf,  Prev: prime,  Up: Functions
 
 5.1.97 print
 ------------
@@ -5050,7 +5049,7 @@ See *note Type conversion and casting::; *note betti::; *note dbprint::;
 string type cast::; *note type::.
 
 
-File: sing.info,  Node: printf,  Next: prune,  Prev: print,  Up: Functions
+File: sing.htm,  Node: printf,  Next: prune,  Prev: print,  Up: Functions
 
 5.1.98 printf
 -------------
@@ -5144,7 +5143,7 @@ See also:
 string::.
 
 
-File: sing.info,  Node: prune,  Next: qhweight,  Prev: printf,  Up: Functions
+File: sing.htm,  Node: prune,  Next: qhweight,  Prev: printf,  Up: Functions
 
 5.1.99 prune
 ------------
@@ -5181,7 +5180,7 @@ See
 See *note module::.
 
 
-File: sing.info,  Node: qhweight,  Next: quot,  Prev: prune,  Up: Functions
+File: sing.htm,  Node: qhweight,  Next: quot,  Prev: prune,  Up: Functions
 
 5.1.100 qhweight
 ----------------
@@ -5214,7 +5213,7 @@ See
 See *note ideal::; *note intvec::; *note weight::.
 
 
-File: sing.info,  Node: quot,  Next: quote,  Prev: qhweight,  Up: Functions
+File: sing.htm,  Node: quot,  Next: quote,  Prev: qhweight,  Up: Functions
 
 5.1.101 quot
 ------------
@@ -5305,7 +5304,7 @@ See also:
 *See also:* *note quotient::.
 
 
-File: sing.info,  Node: quote,  Next: quotient,  Prev: quot,  Up: Functions
+File: sing.htm,  Node: quote,  Next: quotient,  Prev: quot,  Up: Functions
 
 5.1.102 quote
 -------------
@@ -5353,7 +5352,7 @@ See
 See *note MPfile links::; *note eval::; *note write::.
 
 
-File: sing.info,  Node: quotient,  Next: random,  Prev: quote,  Up: Functions
+File: sing.htm,  Node: quotient,  Next: random,  Prev: quote,  Up: Functions
 
 5.1.103 quotient
 ----------------
@@ -5414,7 +5413,7 @@ See
 See *note fglmquot::; *note ideal::; *note module::.
 
 
-File: sing.info,  Node: random,  Next: read,  Prev: quotient,  Up: Functions
+File: sing.htm,  Node: random,  Next: read,  Prev: quotient,  Up: Functions
 
 5.1.104 random
 --------------
@@ -5473,7 +5472,7 @@ See *note Command line options::; *note int::; *note intmat::; *note
 system::.
 
 
-File: sing.info,  Node: read,  Next: reduce,  Prev: random,  Up: Functions
+File: sing.htm,  Node: read,  Next: reduce,  Prev: random,  Up: Functions
 
 5.1.105 read
 ------------
@@ -5530,7 +5529,7 @@ See *note execute::; *note getdump::; *note link::; *note status::;
 *note write::.
 
 
-File: sing.info,  Node: reduce,  Next: regularity,  Prev: read,  Up: Functions
+File: sing.htm,  Node: reduce,  Next: regularity,  Prev: read,  Up: Functions
 
 5.1.106 reduce
 --------------
@@ -5608,7 +5607,7 @@ See
 See *note ideal::; *note module::; *note std::; *note vector::.
 
 
-File: sing.info,  Node: regularity,  Next: repart,  Prev: reduce,  Up: Functions
+File: sing.htm,  Node: regularity,  Next: repart,  Prev: reduce,  Up: Functions
 
 5.1.107 regularity
 ------------------
@@ -5678,7 +5677,7 @@ See *note list::; *note minres::; *note mres::; *note option::; *note
 res::; *note resolution::; *note sres::.
 
 
-File: sing.info,  Node: repart,  Next: res,  Prev: regularity,  Up: Functions
+File: sing.htm,  Node: repart,  Next: res,  Prev: regularity,  Up: Functions
 
 5.1.108 repart
 --------------
@@ -5707,7 +5706,7 @@ See
 See *note impart::.
 
 
-File: sing.info,  Node: res,  Next: reservedName,  Prev: repart,  Up: Functions
+File: sing.htm,  Node: res,  Next: reservedName,  Prev: repart,  Up: Functions
 
 5.1.109 res
 -----------
@@ -5818,7 +5817,7 @@ resolution::; *note sres::.
      ==> 
 
 
-File: sing.info,  Node: reservedName,  Next: resultant,  Prev: res,  Up: Functions
+File: sing.htm,  Node: reservedName,  Next: resultant,  Prev: res,  Up: Functions
 
 5.1.110 reservedName
 --------------------
@@ -5857,7 +5856,7 @@ See
 See *note names::; *note string::.
 
 
-File: sing.info,  Node: resultant,  Next: rvar,  Prev: reservedName,  Up: Functions
+File: sing.htm,  Node: resultant,  Next: rvar,  Prev: reservedName,  Up: Functions
 
 5.1.111 resultant
 -----------------
@@ -5890,7 +5889,7 @@ See
 See *note poly::; *note ring::.
 
 
-File: sing.info,  Node: rvar,  Next: setring,  Prev: resultant,  Up: Functions
+File: sing.htm,  Node: rvar,  Next: setring,  Prev: resultant,  Up: Functions
 
 5.1.112 rvar
 ------------
@@ -5935,7 +5934,7 @@ See
 See *note defined::; *note ring::; *note var::; *note varstr::.
 
 
-File: sing.info,  Node: setring,  Next: simplex,  Prev: rvar,  Up: Functions
+File: sing.htm,  Node: setring,  Next: simplex,  Prev: rvar,  Up: Functions
 
 5.1.113 setring
 ---------------
@@ -5980,7 +5979,7 @@ See
 See *note keepring::; *note qring::; *note ring::.
 
 
-File: sing.info,  Node: simplex,  Next: simplify,  Prev: setring,  Up: Functions
+File: sing.htm,  Node: simplex,  Next: simplify,  Prev: setring,  Up: Functions
 
 5.1.114 simplex
 ---------------
@@ -6118,7 +6117,7 @@ See
 See *note simplexOut::.
 
 
-File: sing.info,  Node: simplify,  Next: size,  Prev: simplex,  Up: Functions
+File: sing.htm,  Node: simplify,  Next: size,  Prev: simplex,  Up: Functions
 
 5.1.115 simplify
 ----------------
@@ -6210,7 +6209,7 @@ See
 See *note ideal::; *note module::; *note poly::; *note vector::.
 
 
-File: sing.info,  Node: size,  Next: sortvec,  Prev: simplify,  Up: Functions
+File: sing.htm,  Node: size,  Next: sortvec,  Prev: simplify,  Up: Functions
 
 5.1.116 size
 ------------
@@ -6297,7 +6296,7 @@ See *note ideal::; *note intmat::; *note intvec::; *note module::; *note
 ncols::; *note nrows::; *note poly::; *note string::; *note vector::.
 
 
-File: sing.info,  Node: sortvec,  Next: sprintf,  Prev: size,  Up: Functions
+File: sing.htm,  Node: sortvec,  Next: sprintf,  Prev: size,  Up: Functions
 
 5.1.117 sortvec
 ---------------
@@ -6333,7 +6332,7 @@ See
 See *note general_lib::.
 
 
-File: sing.info,  Node: sprintf,  Next: sres,  Prev: sortvec,  Up: Functions
+File: sing.htm,  Node: sprintf,  Next: sres,  Prev: sortvec,  Up: Functions
 
 5.1.118 sprintf
 ---------------
@@ -6431,7 +6430,7 @@ See also:
 string::.
 
 
-File: sing.info,  Node: sres,  Next: status,  Prev: sprintf,  Up: Functions
+File: sing.htm,  Node: sres,  Next: status,  Prev: sprintf,  Up: Functions
 
 5.1.119 sres
 ------------
@@ -6523,7 +6522,7 @@ lres::; *note minres::; *note module::; *note mres::; *note res::; *note
 syz::.
 
 
-File: sing.info,  Node: status,  Next: std,  Prev: sres,  Up: Functions
+File: sing.htm,  Node: status,  Next: std,  Prev: sres,  Up: Functions
 
 5.1.120 status
 --------------
@@ -6605,7 +6604,7 @@ See
 See *note link::; *note open::; *note read::; *note write::.
 
 
-File: sing.info,  Node: std,  Next: stdfglm,  Prev: status,  Up: Functions
+File: sing.htm,  Node: std,  Next: stdfglm,  Prev: status,  Up: Functions
 
 5.1.121 std
 -----------
@@ -6701,7 +6700,7 @@ See *note facstd::; *note fglm::; *note groebner::; *note ideal::; *note
 mstd::; *note option::; *note ring::; *note stdfglm::; *note stdhilb::.
 
 
-File: sing.info,  Node: stdfglm,  Next: stdhilb,  Prev: std,  Up: Functions
+File: sing.htm,  Node: stdfglm,  Next: stdhilb,  Prev: std,  Up: Functions
 
 5.1.122 stdfglm
 ---------------
@@ -6751,7 +6750,7 @@ See also:
 stdhilb::.
 
 
-File: sing.info,  Node: stdhilb,  Next: subst,  Prev: stdfglm,  Up: Functions
+File: sing.htm,  Node: stdhilb,  Next: subst,  Prev: stdfglm,  Up: Functions
 
 5.1.123 stdhilb
 ---------------
@@ -6801,7 +6800,7 @@ See also:
 *See also:* *note groebner::; *note std::; *note stdfglm::.
 
 
-File: sing.info,  Node: subst,  Next: system,  Prev: stdhilb,  Up: Functions
+File: sing.htm,  Node: subst,  Next: system,  Prev: stdhilb,  Up: Functions
 
 5.1.124 subst
 -------------
@@ -6846,7 +6845,7 @@ See *note ideal::; *note map::; *note module::; *note poly::; *note
 vector::.
 
 
-File: sing.info,  Node: system,  Next: syz,  Prev: subst,  Up: Functions
+File: sing.htm,  Node: system,  Next: syz,  Prev: subst,  Up: Functions
 
 5.1.125 system
 --------------
@@ -6988,7 +6987,7 @@ File: sing.info,  Node: system,  Next: syz,  Prev: subst,  Up: Functions
           system("--browser", "netscape");
 
 
-File: sing.info,  Node: syz,  Next: trace,  Prev: system,  Up: Functions
+File: sing.htm,  Node: syz,  Next: trace,  Prev: system,  Up: Functions
 
 5.1.126 syz
 -----------
@@ -7027,7 +7026,7 @@ See *note hres::; *note ideal::; *note lres::; *note module::; *note
 mres::; *note nres::; *note res::; *note sres::.
 
 
-File: sing.info,  Node: trace,  Next: transpose,  Prev: syz,  Up: Functions
+File: sing.htm,  Node: trace,  Next: transpose,  Prev: syz,  Up: Functions
 
 5.1.127 trace
 -------------
@@ -7061,7 +7060,7 @@ See
 See *note intmat::; *note matrix::.
 
 
-File: sing.info,  Node: transpose,  Next: type,  Prev: trace,  Up: Functions
+File: sing.htm,  Node: transpose,  Next: type,  Prev: trace,  Up: Functions
 
 5.1.128 transpose
 -----------------
@@ -7099,7 +7098,7 @@ See
 See *note intmat::; *note matrix::; *note module::.
 
 
-File: sing.info,  Node: type,  Next: typeof,  Prev: transpose,  Up: Functions
+File: sing.htm,  Node: type,  Next: typeof,  Prev: transpose,  Up: Functions
 
 5.1.129 type
 ------------
@@ -7134,7 +7133,7 @@ See
 See *note Data types::; *note listvar::; *note print::.
 
 
-File: sing.info,  Node: typeof,  Next: uressolve,  Prev: type,  Up: Functions
+File: sing.htm,  Node: typeof,  Next: uressolve,  Prev: type,  Up: Functions
 
 5.1.130 typeof
 --------------
@@ -7192,7 +7191,7 @@ See
 See *note Data types::; *note type::.
 
 
-File: sing.info,  Node: uressolve,  Next: vandermonde,  Prev: typeof,  Up: Functions
+File: sing.htm,  Node: uressolve,  Next: vandermonde,  Prev: typeof,  Up: Functions
 
 5.1.131 uressolve
 -----------------
@@ -7248,7 +7247,7 @@ See
 See *note laguerre::; *note mpresmat::.
 
 
-File: sing.info,  Node: vandermonde,  Next: var,  Prev: uressolve,  Up: Functions
+File: sing.htm,  Node: vandermonde,  Next: var,  Prev: uressolve,  Up: Functions
 
 5.1.132 vandermonde
 -------------------
@@ -7316,7 +7315,7 @@ File: sing.info,  Node: vandermonde,  Next: var,  Prev: uressolve,  Up: Function
 See also:
 
 
-File: sing.info,  Node: var,  Next: varstr,  Prev: vandermonde,  Up: Functions
+File: sing.htm,  Node: var,  Next: varstr,  Prev: vandermonde,  Up: Functions
 
 5.1.133 var
 -----------
@@ -7347,7 +7346,7 @@ See
 See *note int::; *note nvars::; *note ring::; *note varstr::.
 
 
-File: sing.info,  Node: varstr,  Next: vdim,  Prev: var,  Up: Functions
+File: sing.htm,  Node: varstr,  Next: vdim,  Prev: var,  Up: Functions
 
 5.1.134 varstr
 --------------
@@ -7392,7 +7391,7 @@ See *note charstr::; *note int::; *note nvars::; *note ordstr::; *note
 parstr::; *note ring::; *note var::.
 
 
-File: sing.info,  Node: vdim,  Next: wedge,  Prev: varstr,  Up: Functions
+File: sing.htm,  Node: vdim,  Next: wedge,  Prev: varstr,  Up: Functions
 
 5.1.135 vdim
 ------------
@@ -7435,7 +7434,7 @@ See *note degree::; *note dim::; *note ideal::; *note kbase::; *note
 mult::; *note std::.
 
 
-File: sing.info,  Node: wedge,  Next: weight,  Prev: vdim,  Up: Functions
+File: sing.htm,  Node: wedge,  Next: weight,  Prev: vdim,  Up: Functions
 
 5.1.136 wedge
 -------------
@@ -7469,7 +7468,7 @@ See
 See *note int::; *note matrix::; *note minor::.
 
 
-File: sing.info,  Node: weight,  Next: write,  Prev: wedge,  Up: Functions
+File: sing.htm,  Node: weight,  Next: write,  Prev: wedge,  Up: Functions
 
 5.1.137 weight
 --------------
@@ -7512,7 +7511,7 @@ See
 See *note ideal::; *note intvec::; *note qhweight::.
 
 
-File: sing.info,  Node: write,  Prev: weight,  Up: Functions
+File: sing.htm,  Node: write,  Prev: weight,  Up: Functions
 
 5.1.138 write
 -------------
@@ -7590,7 +7589,7 @@ See *note Data types::; *note dump::; *note eval::; *note link::; *note
 print::; *note printf::; *note quote::; *note read::; *note short::.
 
 
-File: sing.info,  Node: Control structures,  Next: System variables,  Prev: Functions,  Up: Functions and system variables
+File: sing.htm,  Node: Control structures,  Next: System variables,  Prev: Functions,  Up: Functions and system variables
 
 5.2 Control structures
 ======================
@@ -7634,7 +7633,7 @@ semicolon at the end of the block.
           }
 
 
-File: sing.info,  Node: break,  Next: breakpoint,  Prev: Control structures,  Up: Control structures
+File: sing.htm,  Node: break,  Next: breakpoint,  Prev: Control structures,  Up: Control structures
 
 5.2.1 break
 -----------
@@ -7666,7 +7665,7 @@ See
 See *note Control structures::; *note for::; *note while::.
 
 
-File: sing.info,  Node: breakpoint,  Next: continue,  Prev: break,  Up: Control structures
+File: sing.htm,  Node: breakpoint,  Next: continue,  Prev: break,  Up: Control structures
 
 5.2.2 breakpoint
 ----------------
@@ -7700,7 +7699,7 @@ See
 See *note Source code debugger::; *note ~::.
 
 
-File: sing.info,  Node: continue,  Next: else,  Prev: breakpoint,  Up: Control structures
+File: sing.htm,  Node: continue,  Next: else,  Prev: breakpoint,  Up: Control structures
 
 5.2.3 continue
 --------------
@@ -7743,7 +7742,7 @@ See
 See *note Control structures::; *note for::; *note while::.
 
 
-File: sing.info,  Node: else,  Next: export,  Prev: continue,  Up: Control structures
+File: sing.htm,  Node: else,  Next: export,  Prev: continue,  Up: Control structures
 
 5.2.4 else
 ----------
@@ -7779,7 +7778,7 @@ See
 See *note Control structures::; *note boolean expressions::; *note if::.
 
 
-File: sing.info,  Node: export,  Next: for,  Prev: else,  Up: Control structures
+File: sing.htm,  Node: export,  Next: for,  Prev: else,  Up: Control structures
 
 5.2.5 export
 ------------
@@ -7821,7 +7820,7 @@ See
 See *note keepring::.
 
 
-File: sing.info,  Node: for,  Next: if,  Prev: export,  Up: Control structures
+File: sing.htm,  Node: for,  Next: if,  Prev: export,  Up: Control structures
 
 5.2.6 for
 ---------
@@ -7865,7 +7864,7 @@ See *note Control structures::; *note boolean expressions::; *note
 break::; *note continue::; *note if::; *note while::.
 
 
-File: sing.info,  Node: if,  Next: keepring,  Prev: for,  Up: Control structures
+File: sing.htm,  Node: if,  Next: keepring,  Prev: for,  Up: Control structures
 
 5.2.7 if
 --------
@@ -7900,7 +7899,7 @@ See *note Control structures::; *note boolean expressions::; *note
 break::; *note else::.
 
 
-File: sing.info,  Node: keepring,  Next: quit,  Prev: if,  Up: Control structures
+File: sing.htm,  Node: keepring,  Next: quit,  Prev: if,  Up: Control structures
 
 5.2.8 keepring
 --------------
@@ -7944,7 +7943,7 @@ See
 See *note ring::.
 
 
-File: sing.info,  Node: quit,  Next: return,  Prev: keepring,  Up: Control structures
+File: sing.htm,  Node: quit,  Next: return,  Prev: keepring,  Up: Control structures
 
 5.2.9 quit
 ----------
@@ -7961,7 +7960,7 @@ File: sing.info,  Node: quit,  Next: return,  Prev: keepring,  Up: Control struc
             quit;
 
 
-File: sing.info,  Node: return,  Next: while,  Prev: quit,  Up: Control structures
+File: sing.htm,  Node: return,  Next: while,  Prev: quit,  Up: Control structures
 
 5.2.10 return
 -------------
@@ -8012,7 +8011,7 @@ See
 See *note Data types::; *note proc::.
 
 
-File: sing.info,  Node: while,  Next: ~,  Prev: return,  Up: Control structures
+File: sing.htm,  Node: while,  Next: ~,  Prev: return,  Up: Control structures
 
 5.2.11 while
 ------------
@@ -8055,7 +8054,7 @@ See *note Control structures::; *note boolean expressions::; *note
 break::.
 
 
-File: sing.info,  Node: ~,  Prev: while,  Up: Control structures
+File: sing.htm,  Node: ~,  Prev: while,  Up: Control structures
 
 5.2.12 ~ (break point)
 ----------------------
@@ -8096,7 +8095,7 @@ See
 See *note Break points::.
 
 
-File: sing.info,  Node: System variables,  Prev: Control structures,  Up: Functions and system variables
+File: sing.htm,  Node: System variables,  Prev: Control structures,  Up: Functions and system variables
 
 5.3 System variables
 ====================
@@ -8119,7 +8118,7 @@ List of all system variables.
 * voice::
 
 
-File: sing.info,  Node: degBound,  Next: echo,  Prev: System variables,  Up: System variables
+File: sing.htm,  Node: degBound,  Next: echo,  Prev: System variables,  Up: System variables
 
 5.3.1 degBound
 --------------
@@ -8155,7 +8154,7 @@ See
 See *note deg::; *note int::; *note option::; *note std::.
 
 
-File: sing.info,  Node: echo,  Next: minpoly,  Prev: degBound,  Up: System variables
+File: sing.htm,  Node: echo,  Next: minpoly,  Prev: degBound,  Up: System variables
 
 5.3.2 echo
 ----------
@@ -8183,7 +8182,7 @@ See
 See *note int::; *note voice::.
 
 
-File: sing.info,  Node: minpoly,  Next: multBound,  Prev: echo,  Up: System variables
+File: sing.htm,  Node: minpoly,  Next: multBound,  Prev: echo,  Up: System variables
 
 5.3.3 minpoly
 -------------
@@ -8224,7 +8223,7 @@ See
 See *note factorize::; *note ring::.
 
 
-File: sing.info,  Node: multBound,  Next: noether,  Prev: minpoly,  Up: System variables
+File: sing.htm,  Node: multBound,  Next: noether,  Prev: minpoly,  Up: System variables
 
 5.3.4 multBound
 ---------------
@@ -8259,7 +8258,7 @@ See
 See *note int::; *note mult::; *note option::; *note std::.
 
 
-File: sing.info,  Node: noether,  Next: printlevel,  Prev: multBound,  Up: System variables
+File: sing.htm,  Node: noether,  Next: printlevel,  Prev: multBound,  Up: System variables
 
 5.3.5 noether
 -------------
@@ -8294,7 +8293,7 @@ See
 See *note poly::; *note std::.
 
 
-File: sing.info,  Node: printlevel,  Next: short,  Prev: noether,  Up: System variables
+File: sing.htm,  Node: printlevel,  Next: short,  Prev: noether,  Up: System variables
 
 5.3.6 printlevel
 ----------------
@@ -8331,7 +8330,7 @@ See
 See *note dbprint::; *note int::; *note voice::.
 
 
-File: sing.info,  Node: short,  Next: timer,  Prev: printlevel,  Up: System variables
+File: sing.htm,  Node: short,  Next: timer,  Prev: printlevel,  Up: System variables
 
 5.3.7 short
 -----------
@@ -8369,7 +8368,7 @@ See
 See *note int::.
 
 
-File: sing.info,  Node: timer,  Next: TRACE var,  Prev: short,  Up: System variables
+File: sing.htm,  Node: timer,  Next: TRACE var,  Prev: short,  Up: System variables
 
 5.3.8 timer
 -----------
@@ -8431,7 +8430,7 @@ See *note Command line options::; *note printlevel::; *note rtimer::;
 *note system::; *note voice::.
 
 
-File: sing.info,  Node: TRACE var,  Next: rtimer,  Prev: timer,  Up: System variables
+File: sing.htm,  Node: TRACE var,  Next: rtimer,  Prev: timer,  Up: System variables
 
 5.3.9 TRACE
 -----------
@@ -8478,7 +8477,7 @@ See
 See *note int::.
 
 
-File: sing.info,  Node: rtimer,  Next: voice,  Prev: TRACE var,  Up: System variables
+File: sing.htm,  Node: rtimer,  Next: voice,  Prev: TRACE var,  Up: System variables
 
 5.3.10 rtimer
 -------------
@@ -8492,7 +8491,7 @@ File: sing.info,  Node: rtimer,  Next: voice,  Prev: TRACE var,  Up: System vari
      trusted on all operating systems (including Windows95/98).
 
 
-File: sing.info,  Node: voice,  Prev: rtimer,  Up: System variables
+File: sing.htm,  Node: voice,  Prev: rtimer,  Up: System variables
 
 5.3.11 voice
 ------------
@@ -8529,7 +8528,7 @@ See
 See *note dbprint::; *note listvar::; *note printlevel::.
 
 
-File: sing.info,  Node: Tricks and pitfalls,  Next: Examples,  Prev: Functions and system variables,  Up: Top
+File: sing.htm,  Node: Tricks and pitfalls,  Next: Examples,  Prev: Functions and system variables,  Up: Top
 
 6 Tricks and pitfalls
 *********************
@@ -8542,7 +8541,7 @@ File: sing.info,  Node: Tricks and pitfalls,  Next: Examples,  Prev: Functions a
 * Identifier resolution::
 
 
-File: sing.info,  Node: Limitations,  Next: Major differences to the C programming language,  Up: Tricks and pitfalls
+File: sing.htm,  Node: Limitations,  Next: Major differences to the C programming language,  Up: Tricks and pitfalls
 
 6.1 Limitations
 ===============
@@ -8587,7 +8586,7 @@ SINGULAR has the following limitations:
      libraries or procedure definitions.
 
 
-File: sing.info,  Node: Major differences to the C programming language,  Next: Miscellaneous oddities,  Prev: Limitations,  Up: Tricks and pitfalls
+File: sing.htm,  Node: Major differences to the C programming language,  Next: Miscellaneous oddities,  Prev: Limitations,  Up: Tricks and pitfalls
 
 6.2 Major differences to the C programming language
 ===================================================
@@ -8607,7 +8606,7 @@ differences. Most notably:
 * Return type of procedures::
 
 
-File: sing.info,  Node: No rvalue of increments and assignments,  Next: Evaluation of logical expressions,  Up: Major differences to the C programming language
+File: sing.htm,  Node: No rvalue of increments and assignments,  Next: Evaluation of logical expressions,  Up: Major differences to the C programming language
 
 6.2.1 No rvalue of increments and assignments
 ---------------------------------------------
@@ -8627,7 +8626,7 @@ compound assignments like `i = j = k;' are not allowed and result in an
 error.
 
 
-File: sing.info,  Node: Evaluation of logical expressions,  Next: No case or switch statement,  Prev: No rvalue of increments and assignments,  Up: Major differences to the C programming language
+File: sing.htm,  Node: Evaluation of logical expressions,  Next: No case or switch statement,  Prev: No rvalue of increments and assignments,  Up: Major differences to the C programming language
 
 6.2.2 Evaluation of logical expressions
 ---------------------------------------
@@ -8683,7 +8682,7 @@ However, there are several short work-arounds for this problem:
      value is overwritten by its global one.
 
 
-File: sing.info,  Node: No case or switch statement,  Next: Usage of commas,  Prev: Evaluation of logical expressions,  Up: Major differences to the C programming language
+File: sing.htm,  Node: No case or switch statement,  Next: Usage of commas,  Prev: Evaluation of logical expressions,  Up: Major differences to the C programming language
 
 6.2.3 No case or switch statement
 ---------------------------------
@@ -8701,7 +8700,7 @@ can be imitated in the following way:
      }
 
 
-File: sing.info,  Node: Usage of commas,  Next: Usage of brackets,  Prev: No case or switch statement,  Up: Major differences to the C programming language
+File: sing.htm,  Node: Usage of commas,  Next: Usage of brackets,  Prev: No case or switch statement,  Up: Major differences to the C programming language
 
 6.2.4 Usage of commas
 ---------------------
@@ -8717,7 +8716,7 @@ one has to write
      for (i,j = 1,5; i<5 || j<10; i++, j++) {...}
 
 
-File: sing.info,  Node: Usage of brackets,  Next: Behavior of continue,  Prev: Usage of commas,  Up: Major differences to the C programming language
+File: sing.htm,  Node: Usage of brackets,  Next: Behavior of continue,  Prev: Usage of commas,  Up: Major differences to the C programming language
 
 6.2.5 Usage of brackets
 -----------------------
@@ -8737,7 +8736,7 @@ results in an error. Instead, it must be written as
      if (i == 1) { return (i); }
 
 
-File: sing.info,  Node: Behavior of continue,  Next: Return type of procedures,  Prev: Usage of brackets,  Up: Major differences to the C programming language
+File: sing.htm,  Node: Behavior of continue,  Next: Return type of procedures,  Prev: Usage of brackets,  Up: Major differences to the C programming language
 
 6.2.6 Behavior of continue
 --------------------------
@@ -8762,7 +8761,7 @@ the beginning of the block. Unlike the C-construct SINGULAR's `continue'
      ==> 10
 
 
-File: sing.info,  Node: Return type of procedures,  Prev: Behavior of continue,  Up: Major differences to the C programming language
+File: sing.htm,  Node: Return type of procedures,  Prev: Behavior of continue,  Up: Major differences to the C programming language
 
 6.2.7 Return type of procedures
 -------------------------------
@@ -8809,7 +8808,7 @@ On the other hand, more than one value can be returned by a single
      int i,j = tworeturn();
 
 
-File: sing.info,  Node: Miscellaneous oddities,  Next: Identifier resolution,  Prev: Major differences to the C programming language,  Up: Tricks and pitfalls
+File: sing.htm,  Node: Miscellaneous oddities,  Next: Identifier resolution,  Prev: Major differences to the C programming language,  Up: Tricks and pitfalls
 
 6.3 Miscellaneous oddities
 ==========================
@@ -8923,7 +8922,7 @@ File: sing.info,  Node: Miscellaneous oddities,  Next: Identifier resolution,  P
           ==> n o d
 
 
-File: sing.info,  Node: Identifier resolution,  Prev: Miscellaneous oddities,  Up: Tricks and pitfalls
+File: sing.htm,  Node: Identifier resolution,  Prev: Miscellaneous oddities,  Up: Tricks and pitfalls
 
 6.4 Identifier resolution
 =========================
@@ -8975,7 +8974,7 @@ variable. Otherwise, effects like the following might occur:
      ==> 2*x1
 
 
-File: sing.info,  Node: Examples,  Next: Polynomial data,  Prev: Tricks and pitfalls,  Up: Top
+File: sing.htm,  Node: Examples,  Next: Polynomial data,  Prev: Tricks and pitfalls,  Up: Top
 
 Appendix A Examples
 *******************
@@ -9014,7 +9013,7 @@ The following topics are treated:
 * Parallelization with MPtcp links::
 
 
-File: sing.info,  Node: Milnor and Tjurina,  Next: Procedures and LIB,  Prev: Examples,  Up: Examples
+File: sing.htm,  Node: Milnor and Tjurina,  Next: Procedures and LIB,  Prev: Examples,  Up: Examples
 
 A.1 Milnor and Tjurina
 ======================
@@ -9132,7 +9131,7 @@ We shall show in the example below how to realize the following:
        option(noprot);
 
 
-File: sing.info,  Node: Procedures and LIB,  Next: Critical points,  Prev: Milnor and Tjurina,  Up: Examples
+File: sing.htm,  Node: Procedures and LIB,  Next: Critical points,  Prev: Milnor and Tjurina,  Up: Examples
 
 A.2 Procedures and LIB
 ======================
@@ -9212,7 +9211,7 @@ We shall demonstrate:
      ==> 24
 
 
-File: sing.info,  Node: Critical points,  Next: Saturation,  Prev: Procedures and LIB,  Up: Examples
+File: sing.htm,  Node: Critical points,  Next: Saturation,  Prev: Procedures and LIB,  Up: Examples
 
 A.3 Critical points
 ===================
@@ -9277,7 +9276,7 @@ The following will be realized below:
        timer=0;  // reset timer
 
 
-File: sing.info,  Node: Saturation,  Next: Long coefficients,  Prev: Critical points,  Up: Examples
+File: sing.htm,  Node: Saturation,  Next: Long coefficients,  Prev: Critical points,  Up: Examples
 
 A.4 Saturation
 ==============
@@ -9334,7 +9333,7 @@ maximal ideal).
      ==> // LIB                  [0]  string standard.lib,elim.li..., 83 char(s)
 
 
-File: sing.info,  Node: Long coefficients,  Next: Parameters,  Prev: Saturation,  Up: Examples
+File: sing.htm,  Node: Long coefficients,  Next: Parameters,  Prev: Saturation,  Up: Examples
 
 A.5 Long coefficients
 =====================
@@ -9427,7 +9426,7 @@ The representation of long integers with real is demonstrated.
      ==> 40
 
 
-File: sing.info,  Node: Parameters,  Next: T1 and T2,  Prev: Long coefficients,  Up: Examples
+File: sing.htm,  Node: Parameters,  Next: T1 and T2,  Prev: Long coefficients,  Up: Examples
 
 A.6 Parameters
 ==============
@@ -9465,7 +9464,7 @@ j_0=j_t=a
      ==> 40
 
 
-File: sing.info,  Node: T1 and T2,  Next: Deformations,  Prev: Parameters,  Up: Examples
+File: sing.htm,  Node: T1 and T2,  Next: Deformations,  Prev: Parameters,  Up: Examples
 
 A.7 T1 and T2
 =============
@@ -9615,7 +9614,7 @@ complete intersection, the third no complete intersection:
      ==> 3
 
 
-File: sing.info,  Node: Deformations,  Next: Finite fields,  Prev: T1 and T2,  Up: Examples
+File: sing.htm,  Node: Deformations,  Next: Finite fields,  Prev: T1 and T2,  Up: Examples
 
 A.8 Deformations
 ================
@@ -9742,7 +9741,7 @@ miniversal deformations:
        //----------------------------------------------------
 
 
-File: sing.info,  Node: Finite fields,  Next: Elimination,  Prev: Deformations,  Up: Examples
+File: sing.htm,  Node: Finite fields,  Next: Elimination,  Prev: Deformations,  Up: Examples
 
 A.9 Finite fields
 =================
@@ -9918,7 +9917,7 @@ evaluation of many `for'-loops is not very fast):
      ==> // 72 solutions over GF(9)
 
 
-File: sing.info,  Node: Elimination,  Next: Free resolution,  Prev: Finite fields,  Up: Examples
+File: sing.htm,  Node: Elimination,  Next: Free resolution,  Prev: Finite fields,  Up: Examples
 
 A.10 Elimination
 ================
@@ -10075,7 +10074,7 @@ Let us give two examples:
      ==> j[3]=8b2d2-9acd2-9b2ce+12ac2e-2abde
 
 
-File: sing.info,  Node: Free resolution,  Next: Computation of Ext,  Prev: Elimination,  Up: Examples
+File: sing.htm,  Node: Free resolution,  Next: Computation of Ext,  Prev: Elimination,  Up: Examples
 
 A.11 Free resolution
 ====================
@@ -10246,7 +10245,7 @@ in connection with the `lres' command.
      ==> 6
 
 
-File: sing.info,  Node: Computation of Ext,  Next: Polar curves,  Prev: Free resolution,  Up: Examples
+File: sing.htm,  Node: Computation of Ext,  Next: Polar curves,  Prev: Free resolution,  Up: Examples
 
 A.12 Computation of Ext
 =======================
@@ -10415,7 +10414,7 @@ We compute
      ==> z,1
 
 
-File: sing.info,  Node: Polar curves,  Next: Depth,  Prev: Computation of Ext,  Up: Examples
+File: sing.htm,  Node: Polar curves,  Next: Depth,  Prev: Computation of Ext,  Up: Examples
 
 A.13 Polar curves
 =================
@@ -10535,7 +10534,7 @@ Now let us compute this for a family of curves.  We need the library
        // both ideals coincide
 
 
-File: sing.info,  Node: Depth,  Next: Formatting output,  Prev: Polar curves,  Up: Examples
+File: sing.htm,  Node: Depth,  Next: Formatting output,  Prev: Polar curves,  Up: Examples
 
 A.14 Depth
 ==========
@@ -10595,7 +10594,7 @@ depth(D_k(R)) >= m(m+1)/2 + m-1 could be improved.
      ==> 4
 
 
-File: sing.info,  Node: Formatting output,  Next: Cyclic roots,  Prev: Depth,  Up: Examples
+File: sing.htm,  Node: Formatting output,  Next: Cyclic roots,  Prev: Depth,  Up: Examples
 
 A.15 Formatting output
 ======================
@@ -10635,7 +10634,7 @@ computing and adding appropriate space.
      ==> n =  128
 
 
-File: sing.info,  Node: Cyclic roots,  Next: G_a -Invariants,  Prev: Formatting output,  Up: Examples
+File: sing.htm,  Node: Cyclic roots,  Next: G_a -Invariants,  Prev: Formatting output,  Up: Examples
 
 A.16 Cyclic roots
 =================
@@ -10700,7 +10699,7 @@ ideal is used as a classical benchmark for standard basis computations).
      ==> // degree      = 70
 
 
-File: sing.info,  Node: G_a -Invariants,  Next: Invariants of a finite group,  Prev: Cyclic roots,  Up: Examples
+File: sing.htm,  Node: G_a -Invariants,  Next: Invariants of a finite group,  Prev: Cyclic roots,  Up: Examples
 
 A.17 G_a -Invariants
 ====================
@@ -10744,7 +10743,7 @@ sum x(i)*d/dx(i+1).
      ==> in[6]=y2-2xz
 
 
-File: sing.info,  Node: Invariants of a finite group,  Next: Factorization,  Prev: G_a -Invariants,  Up: Examples
+File: sing.htm,  Node: Invariants of a finite group,  Next: Factorization,  Prev: G_a -Invariants,  Up: Examples
 
 A.18 Invariants of a finite group
 =================================

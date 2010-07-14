@@ -1,8 +1,7 @@
-This is sing.info, produced by makeinfo version 4.13 from singular.texi.
-
+This is sing.htm, produced by makeinfo version 4.13 from singular.texi.
 
 
-File: sing.info,  Node: Factorization,  Next: Puiseux pairs,  Prev: Invariants of a finite group,  Up: Examples
+File: sing.htm,  Node: Factorization,  Next: Puiseux pairs,  Prev: Invariants of a finite group,  Up: Examples
 
 A.19 Factorization
 ==================
@@ -44,7 +43,7 @@ Michael Messollen) which are part of the SINGULAR system.
      ==>    1,2,4
 
 
-File: sing.info,  Node: Puiseux pairs,  Next: Primary decomposition,  Prev: Factorization,  Up: Examples
+File: sing.htm,  Node: Puiseux pairs,  Next: Primary decomposition,  Prev: Factorization,  Up: Examples
 
 A.20 Puiseux pairs
 ==================
@@ -172,7 +171,7 @@ polygon of f $f$
      ==> _[2]=x5
 
 
-File: sing.info,  Node: Primary decomposition,  Next: Normalization,  Prev: Puiseux pairs,  Up: Examples
+File: sing.htm,  Node: Primary decomposition,  Next: Normalization,  Prev: Puiseux pairs,  Up: Examples
 
 A.21 Primary decomposition
 ==========================
@@ -287,7 +286,7 @@ first ideal form the corresponding primary ideal.
      ==> _[3]=AD
 
 
-File: sing.info,  Node: Normalization,  Next: Branches of an Isolated Space Curve Singularity,  Prev: Primary decomposition,  Up: Examples
+File: sing.htm,  Node: Normalization,  Next: Branches of an Isolated Space Curve Singularity,  Prev: Primary decomposition,  Up: Examples
 
 A.22 Normalization
 ==================
@@ -341,7 +340,7 @@ by the ideals `norid'.
      ==> norid[1]=0
 
 
-File: sing.info,  Node: Branches of an Isolated Space Curve Singularity,  Next: Kernel of module homomorphisms,  Prev: Normalization,  Up: Examples
+File: sing.htm,  Node: Branches of an Isolated Space Curve Singularity,  Next: Kernel of module homomorphisms,  Prev: Normalization,  Up: Examples
 
 A.23 Branches of an Isolated Space Curve Singularity
 ====================================================
@@ -489,7 +488,7 @@ over the complex numbers.
        // Our final result is therefore: 5 branches.
 
 
-File: sing.info,  Node: Kernel of module homomorphisms,  Next: Algebraic dependence,  Prev: Branches of an Isolated Space Curve Singularity,  Up: Examples
+File: sing.htm,  Node: Kernel of module homomorphisms,  Next: Algebraic dependence,  Prev: Branches of an Isolated Space Curve Singularity,  Up: Examples
 
 A.24 Kernel of module homomorphisms
 ===================================
@@ -534,7 +533,7 @@ $$
      ==> x2z-xz2,-x2z+y2z,xyz-yz2,0      
 
 
-File: sing.info,  Node: Algebraic dependence,  Next: Classification,  Prev: Kernel of module homomorphisms,  Up: Examples
+File: sing.htm,  Node: Algebraic dependence,  Next: Classification,  Prev: Kernel of module homomorphisms,  Up: Examples
 
 A.25 Algebraic dependence
 =========================
@@ -638,7 +637,7 @@ of the second argument with respect to the ideal I.
        // this shows that g is contained in j.
 
 
-File: sing.info,  Node: Classification,  Next: Fast lexicographical GB,  Prev: Algebraic dependence,  Up: Examples
+File: sing.htm,  Node: Classification,  Next: Fast lexicographical GB,  Prev: Algebraic dependence,  Up: Examples
 
 A.26 Classification
 ===================
@@ -707,7 +706,7 @@ Hilbert polynomial of the Milnor algebra is made.
         198y5z7-495/4y4z8-55y3z9-33/2y2z10-3yz11-1/4z12
 
 
-File: sing.info,  Node: Fast lexicographical GB,  Next: Parallelization with MPtcp links,  Prev: Classification,  Up: Examples
+File: sing.htm,  Node: Fast lexicographical GB,  Next: Parallelization with MPtcp links,  Prev: Classification,  Up: Examples
 
 A.27 Fast lexicographical GB
 ============================
@@ -743,7 +742,7 @@ about 10 times faster than `std'.
      ==> 1
 
 
-File: sing.info,  Node: Parallelization with MPtcp links,  Prev: Fast lexicographical GB,  Up: Examples
+File: sing.htm,  Node: Parallelization with MPtcp links,  Prev: Fast lexicographical GB,  Up: Examples
 
 A.28 Parallelization with MPtcp links
 =====================================
@@ -832,7 +831,7 @@ Some explanatory remarks are in order:
      computing.
 
 
-File: sing.info,  Node: Polynomial data,  Next: Mathematical background,  Prev: Examples,  Up: Top
+File: sing.htm,  Node: Polynomial data,  Next: Mathematical background,  Prev: Examples,  Up: Top
 
 Appendix B Polynomial data
 **************************
@@ -843,7 +842,7 @@ Appendix B Polynomial data
 * Monomial orderings::
 
 
-File: sing.info,  Node: Representation of mathematical objects,  Next: Monomial orderings,  Up: Polynomial data
+File: sing.htm,  Node: Representation of mathematical objects,  Next: Monomial orderings,  Up: Polynomial data
 
 B.1 Representation of mathematical objects
 ==========================================
@@ -955,7 +954,7 @@ computes a normal form of a polynomial f in a quotient ring (cf. *note
 reduce::).
 
 
-File: sing.info,  Node: Monomial orderings,  Prev: Representation of mathematical objects,  Up: Polynomial data
+File: sing.htm,  Node: Monomial orderings,  Prev: Representation of mathematical objects,  Up: Polynomial data
 
 B.2 Monomial orderings
 ======================
@@ -972,7 +971,7 @@ B.2 Monomial orderings
 * Extra weight vector::
 
 
-File: sing.info,  Node: Introduction to orderings,  Next: General definitions for orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Introduction to orderings,  Next: General definitions for orderings,  Up: Monomial orderings
 
 B.2.1 Introduction to orderings
 -------------------------------
@@ -997,7 +996,7 @@ need to be used. However, these orderings usually result in much less
 efficient computations.
 
 
-File: sing.info,  Node: General definitions for orderings,  Next: Global orderings,  Prev: Introduction to orderings,  Up: Monomial orderings
+File: sing.htm,  Node: General definitions for orderings,  Next: Global orderings,  Prev: Introduction to orderings,  Up: Monomial orderings
 
 B.2.2 General definitions for orderings
 ---------------------------------------
@@ -1050,7 +1049,7 @@ monomial ordering (see *note Rings and orderings::). SINGULAR offers the
 monomial orderings described in the following sections.
 
 
-File: sing.info,  Node: Global orderings,  Next: Local orderings,  Prev: General definitions for orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Global orderings,  Next: Local orderings,  Prev: General definitions for orderings,  Up: Monomial orderings
 
 B.2.3 Global orderings
 ----------------------
@@ -1115,7 +1114,7 @@ Wp:
 $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
 
 
-File: sing.info,  Node: Local orderings,  Next: Module orderings,  Prev: Global orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Local orderings,  Next: Module orderings,  Prev: Global orderings,  Up: Monomial orderings
 
 B.2.4 Local orderings
 ---------------------
@@ -1174,7 +1173,7 @@ Ws:
      deg(x^a) = w_1 a_1 + ... + w_n a_n.  $\deg(x^\alpha) = w_1 \alpha_1 + \cdots + w_n\alpha_n.$
 
 
-File: sing.info,  Node: Module orderings,  Next: Matrix orderings,  Prev: Local orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Module orderings,  Next: Matrix orderings,  Prev: Local orderings,  Up: Monomial orderings
 
 B.2.5 Module orderings
 ----------------------
@@ -1282,7 +1281,7 @@ vector is written as [v_1, ..., v_r].  In this case a vector is written as $[v_1
 In all cases SINGULAR can read input in both formats.
 
 
-File: sing.info,  Node: Matrix orderings,  Next: Product orderings,  Prev: Module orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Matrix orderings,  Next: Product orderings,  Prev: Module orderings,  Up: Monomial orderings
 
 B.2.6 Matrix orderings
 ----------------------
@@ -1535,7 +1534,7 @@ faster than the corresponding matrix orderings, since evaluating a
 matrix product is time consuming.
 
 
-File: sing.info,  Node: Product orderings,  Next: Extra weight vector,  Prev: Matrix orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Product orderings,  Next: Extra weight vector,  Prev: Matrix orderings,  Up: Monomial orderings
 
 B.2.7 Product orderings
 -----------------------
@@ -1565,7 +1564,7 @@ ordering `M(1, 2, 3, 1, 1, 1, 1, 0, 0)' on the next 3 variables, `ds' on
 the next 4 variables and `ws(1,2,3)' on the last 3 variables.
 
 
-File: sing.info,  Node: Extra weight vector,  Prev: Product orderings,  Up: Monomial orderings
+File: sing.htm,  Node: Extra weight vector,  Prev: Product orderings,  Up: Monomial orderings
 
 B.2.8 Extra weight vector
 -------------------------
@@ -1590,7 +1589,7 @@ line of weights into the ordering matrix.
      ring q = 0, (a,b,c,d),(lp(1),a(1,2,3),ds);
 
 
-File: sing.info,  Node: Mathematical background,  Next: SINGULAR libraries,  Prev: Polynomial data,  Up: Top
+File: sing.htm,  Node: Mathematical background,  Next: SINGULAR libraries,  Prev: Polynomial data,  Up: Top
 
 Appendix C Mathematical background
 **********************************
@@ -1611,7 +1610,7 @@ articles or text books (see *note References::).
 * References::
 
 
-File: sing.info,  Node: Standard bases,  Next: Hilbert function,  Up: Mathematical background
+File: sing.htm,  Node: Standard bases,  Next: Hilbert function,  Up: Mathematical background
 
 C.1 Standard bases
 ==================
@@ -1667,7 +1666,7 @@ Let \hbox{$I \subseteq K[\underline{x}]^r$} be a homogeneous module, then the Hi
      coincide.
 
 
-File: sing.info,  Node: Hilbert function,  Next: Syzygies and resolutions,  Prev: Standard bases,  Up: Mathematical background
+File: sing.htm,  Node: Hilbert function,  Next: Syzygies and resolutions,  Prev: Standard bases,  Up: Mathematical background
 
 C.2 Hilbert function
 ====================
@@ -1711,7 +1710,7 @@ where Q(t) is a polynomial in Z[t].  Q(t) is called the first (weighted)
 Hilbert series of M.
 
 
-File: sing.info,  Node: Syzygies and resolutions,  Next: Characteristic sets,  Prev: Hilbert function,  Up: Mathematical background
+File: sing.htm,  Node: Syzygies and resolutions,  Next: Characteristic sets,  Prev: Hilbert function,  Up: Mathematical background
 
 C.3 Syzygies and resolutions
 ============================
@@ -1845,7 +1844,7 @@ $$
           ==> 2
 
 
-File: sing.info,  Node: Characteristic sets,  Next: Gauss-Manin connection,  Prev: Syzygies and resolutions,  Up: Mathematical background
+File: sing.htm,  Node: Characteristic sets,  Next: Gauss-Manin connection,  Prev: Syzygies and resolutions,  Up: Mathematical background
 
 C.4 Characteristic sets
 =======================
@@ -1928,7 +1927,7 @@ series* of the ideal (G).
           ==> x,     -y+2z,      -2y2+3yu-4       
 
 
-File: sing.info,  Node: Gauss-Manin connection,  Next: Toric ideals and integer programming,  Prev: Characteristic sets,  Up: Mathematical background
+File: sing.htm,  Node: Gauss-Manin connection,  Next: Toric ideals and integer programming,  Prev: Characteristic sets,  Up: Mathematical background
 
 C.5 Gauss-Manin connection
 ==========================
@@ -2195,7 +2194,7 @@ However if it is known in advance that f $f$
 much faster using `spectrumnd(f,1)'.
 
 
-File: sing.info,  Node: Toric ideals and integer programming,  Next: References,  Prev: Gauss-Manin connection,  Up: Mathematical background
+File: sing.htm,  Node: Toric ideals and integer programming,  Next: References,  Prev: Gauss-Manin connection,  Up: Mathematical background
 
 C.6 Toric ideals and integer programming
 ========================================
@@ -2207,7 +2206,7 @@ C.6 Toric ideals and integer programming
 * Relevant References::
 
 
-File: sing.info,  Node: Toric ideals,  Next: Integer programming,  Up: Toric ideals and integer programming
+File: sing.htm,  Node: Toric ideals,  Next: Integer programming,  Up: Toric ideals and integer programming
 
 C.6.1 Toric ideals
 ------------------
@@ -2259,7 +2258,7 @@ menu entry Algorithms.
 * Buchberger algorithm::   Specializing it for toric ideals.
 
 
-File: sing.info,  Node: Algorithms,  Next: Buchberger algorithm,  Up: Toric ideals
+File: sing.htm,  Node: Algorithms,  Next: Buchberger algorithm,  Up: Toric ideals
 
 C.6.2 Algorithms
 ----------------
@@ -2275,7 +2274,7 @@ The following algorithms are implemented in *note toric_lib::.
 * Bigatti and La Scala and Robbiano::
 
 
-File: sing.info,  Node: Conti and Traverso,  Next: Pottier,  Up: Algorithms
+File: sing.htm,  Node: Conti and Traverso,  Next: Pottier,  Up: Algorithms
 
 C.6.2.1 The algorithm of Conti and Traverso
 ...........................................
@@ -2313,7 +2312,7 @@ a special importance in the application to integer programming (*note
 Integer programming::).
 
 
-File: sing.info,  Node: Pottier,  Next: Hosten and Sturmfels,  Prev: Conti and Traverso,  Up: Algorithms
+File: sing.htm,  Node: Pottier,  Next: Hosten and Sturmfels,  Prev: Conti and Traverso,  Up: Algorithms
 
 C.6.2.2 The algorithm of Pottier
 ................................
@@ -2336,7 +2335,7 @@ x(1) *...* x(n) -1 to obtain an ideal I2 in K[t,x(1),...,x(n)] from
 which one computes I(A) by elimination of t.
 
 
-File: sing.info,  Node: Hosten and Sturmfels,  Next: Di Biase and Urbanke,  Prev: Pottier,  Up: Algorithms
+File: sing.htm,  Node: Hosten and Sturmfels,  Next: Di Biase and Urbanke,  Prev: Pottier,  Up: Algorithms
 
 C.6.2.3 The algorithm of Hosten and Sturmfels
 .............................................
@@ -2396,7 +2395,7 @@ computations - except from the first one - show to be easy and fast in
 practice.
 
 
-File: sing.info,  Node: Di Biase and Urbanke,  Next: Bigatti and La Scala and Robbiano,  Prev: Hosten and Sturmfels,  Up: Algorithms
+File: sing.htm,  Node: Di Biase and Urbanke,  Next: Bigatti and La Scala and Robbiano,  Prev: Hosten and Sturmfels,  Up: Algorithms
 
 C.6.2.4 The algorithm of Di Biase and Urbanke
 .............................................
@@ -2461,7 +2460,7 @@ in x^a(j) nor in x^b(j)). Then
 is a generating set for I(A).
 
 
-File: sing.info,  Node: Bigatti and La Scala and Robbiano,  Prev: Di Biase and Urbanke,  Up: Algorithms
+File: sing.htm,  Node: Bigatti and La Scala and Robbiano,  Prev: Di Biase and Urbanke,  Up: Algorithms
 
 C.6.2.5 The algorithm of Bigatti, La Scala and Robbiano
 .......................................................
@@ -2482,7 +2481,7 @@ There is another algorithm of the authors which tries to parallelize the
 computations (but which is not implemented in this library).
 
 
-File: sing.info,  Node: Buchberger algorithm,  Prev: Algorithms,  Up: Toric ideals
+File: sing.htm,  Node: Buchberger algorithm,  Prev: Algorithms,  Up: Toric ideals
 
 C.6.3 The Buchberger algorithm for toric ideals
 -----------------------------------------------
@@ -2497,7 +2496,7 @@ represent the support of a monomial (*note [Big97]::) may be applied to
 more general ideals, but show to be especially useful in the toric case.
 
 
-File: sing.info,  Node: Integer programming,  Next: Relevant References,  Prev: Toric ideals,  Up: Toric ideals and integer programming
+File: sing.htm,  Node: Integer programming,  Next: Relevant References,  Prev: Toric ideals,  Up: Toric ideals and integer programming
 
 C.6.4 Integer programming
 -------------------------
@@ -2571,7 +2570,7 @@ harder than solving one single instance.
 For a detailed discussion see [The99].
 
 
-File: sing.info,  Node: Relevant References,  Prev: Integer programming,  Up: Toric ideals and integer programming
+File: sing.htm,  Node: Relevant References,  Prev: Integer programming,  Up: Toric ideals and integer programming
 
 C.6.5 Relevant References
 -------------------------
@@ -2614,7 +2613,7 @@ C.6.5 Relevant References
      (Germany)
 
 
-File: sing.info,  Node: References,  Prev: Toric ideals and integer programming,  Up: Mathematical background
+File: sing.htm,  Node: References,  Prev: Toric ideals and integer programming,  Up: Mathematical background
 
 C.7 References
 ==============
@@ -2716,7 +2715,7 @@ Descriptions of algorithms
      Sets.  Lecture Notes, RISC Linz, 1989
 
 
-File: sing.info,  Node: SINGULAR libraries,  Next: Release Notes,  Prev: Mathematical background,  Up: Top
+File: sing.htm,  Node: SINGULAR libraries,  Next: Release Notes,  Prev: Mathematical background,  Up: Top
 
 Appendix D SINGULAR libraries
 *****************************
@@ -2740,7 +2739,7 @@ command `LIB "all.lib";' for loading all libraries.
 * Coding theory::
 
 
-File: sing.info,  Node: standard_lib,  Next: General purpose,  Prev: SINGULAR libraries,  Up: SINGULAR libraries
+File: sing.htm,  Node: standard_lib,  Next: General purpose,  Prev: SINGULAR libraries,  Up: SINGULAR libraries
 
 D.1 standard_lib
 ================
@@ -2770,7 +2769,7 @@ unless SINGULAR is started up with the `--no-stdlib' command line option
 * printf:: displays formatted string
 
 
-File: sing.info,  Node: General purpose,  Next: Linear algebra,  Prev: standard_lib,  Up: SINGULAR libraries
+File: sing.htm,  Node: General purpose,  Next: Linear algebra,  Prev: standard_lib,  Up: SINGULAR libraries
 
 D.2 General purpose
 ===================
@@ -2785,7 +2784,7 @@ D.2 General purpose
 * ring_lib:: procedures for manipulating rings and maps
 
 
-File: sing.info,  Node: all_lib,  Next: general_lib,  Prev: General purpose,  Up: General purpose
+File: sing.htm,  Node: all_lib,  Next: general_lib,  Prev: General purpose,  Up: General purpose
 
 D.2.1 all_lib
 -------------
@@ -2842,7 +2841,7 @@ the SINGULAR distribution.
      ==> // ** loaded general.lib (1.38.2.9,2003/04/04)
 
 
-File: sing.info,  Node: general_lib,  Next: inout_lib,  Prev: all_lib,  Up: General purpose
+File: sing.htm,  Node: general_lib,  Next: inout_lib,  Prev: all_lib,  Up: General purpose
 
 D.2.2 general_lib
 -----------------
@@ -2881,7 +2880,7 @@ D.2.2 general_lib
 * factorH:: factorizes with good choice of principal variable
 
 
-File: sing.info,  Node: A_Z,  Next: ASCII,  Up: general_lib
+File: sing.htm,  Node: A_Z,  Next: ASCII,  Up: general_lib
 
 D.2.2.1 A_Z
 ...........
@@ -2916,7 +2915,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> //        block   2 : ordering C
 
 
-File: sing.info,  Node: ASCII,  Next: absValue,  Prev: A_Z,  Up: general_lib
+File: sing.htm,  Node: ASCII,  Next: absValue,  Prev: A_Z,  Up: general_lib
 
 D.2.2.2 ASCII
 .............
@@ -2957,7 +2956,7 @@ Procedure from library `general.lib' (*note general_lib::).
         ijklmnopqrstuvwxyz{|}~
 
 
-File: sing.info,  Node: absValue,  Next: binomial,  Prev: ASCII,  Up: general_lib
+File: sing.htm,  Node: absValue,  Next: binomial,  Prev: ASCII,  Up: general_lib
 
 D.2.2.3 absValue
 ................
@@ -2992,7 +2991,7 @@ See also:
 *See also:* *note boolean expressions::.
 
 
-File: sing.info,  Node: binomial,  Next: deleteSublist,  Prev: absValue,  Up: general_lib
+File: sing.htm,  Node: binomial,  Next: deleteSublist,  Prev: absValue,  Up: general_lib
 
 D.2.2.4 binomial
 ................
@@ -3038,7 +3037,7 @@ See also:
 *See also:* *note prime::.
 
 
-File: sing.info,  Node: deleteSublist,  Next: factorial,  Prev: binomial,  Up: general_lib
+File: sing.htm,  Node: deleteSublist,  Next: factorial,  Prev: binomial,  Up: general_lib
 
 D.2.2.5 deleteSublist
 .....................
@@ -3065,7 +3064,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    5
 
 
-File: sing.info,  Node: factorial,  Next: fibonacci,  Prev: deleteSublist,  Up: general_lib
+File: sing.htm,  Node: factorial,  Next: fibonacci,  Prev: deleteSublist,  Up: general_lib
 
 D.2.2.6 factorial
 .................
@@ -3100,7 +3099,7 @@ See also:
 *See also:* *note prime::.
 
 
-File: sing.info,  Node: fibonacci,  Next: kmemory,  Prev: factorial,  Up: general_lib
+File: sing.htm,  Node: fibonacci,  Next: kmemory,  Prev: factorial,  Up: general_lib
 
 D.2.2.7 fibonacci
 .................
@@ -3137,7 +3136,7 @@ See also:
 *See also:* *note prime::.
 
 
-File: sing.info,  Node: kmemory,  Next: killall,  Prev: fibonacci,  Up: general_lib
+File: sing.htm,  Node: kmemory,  Next: killall,  Prev: fibonacci,  Up: general_lib
 
 D.2.2.8 kmemory
 ...............
@@ -3170,7 +3169,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 650
 
 
-File: sing.info,  Node: killall,  Next: number_e,  Prev: kmemory,  Up: general_lib
+File: sing.htm,  Node: killall,  Next: number_e,  Prev: kmemory,  Up: general_lib
 
 D.2.2.9 killall
 ...............
@@ -3226,7 +3225,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> // LIB                  [0]  string standard.lib,general..., 74 char(s)
 
 
-File: sing.info,  Node: number_e,  Next: number_pi,  Prev: killall,  Up: general_lib
+File: sing.htm,  Node: number_e,  Next: number_pi,  Prev: killall,  Up: general_lib
 
 D.2.2.10 number_e
 .................
@@ -3258,7 +3257,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 13591409142295226176801437356763/5000000000000000000000000000000
 
 
-File: sing.info,  Node: number_pi,  Next: primes,  Prev: number_e,  Up: general_lib
+File: sing.htm,  Node: number_pi,  Next: primes,  Prev: number_e,  Up: general_lib
 
 D.2.2.11 number_pi
 ..................
@@ -3289,7 +3288,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 3.1415926536
 
 
-File: sing.info,  Node: primes,  Next: product,  Prev: number_pi,  Up: general_lib
+File: sing.htm,  Node: primes,  Next: product,  Prev: number_pi,  Up: general_lib
 
 D.2.2.12 primes
 ...............
@@ -3316,7 +3315,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 37,31,29,23,19,17,13,11,7,5,3,2
 
 
-File: sing.info,  Node: product,  Next: sort,  Prev: primes,  Up: general_lib
+File: sing.htm,  Node: product,  Next: sort,  Prev: primes,  Up: general_lib
 
 D.2.2.13 product
 ................
@@ -3364,7 +3363,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 4
 
 
-File: sing.info,  Node: sort,  Next: sum,  Prev: product,  Up: general_lib
+File: sing.htm,  Node: sort,  Next: sum,  Prev: product,  Up: general_lib
 
 D.2.2.14 sort
 .............
@@ -3441,7 +3440,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 10,9,8,7,6,5,4,3,2,1
 
 
-File: sing.info,  Node: sum,  Next: watchdog,  Prev: sort,  Up: general_lib
+File: sing.htm,  Node: sum,  Next: watchdog,  Prev: sort,  Up: general_lib
 
 D.2.2.15 sum
 ............
@@ -3483,7 +3482,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> 9
 
 
-File: sing.info,  Node: watchdog,  Next: which,  Prev: sum,  Up: general_lib
+File: sing.htm,  Node: watchdog,  Next: which,  Prev: sum,  Up: general_lib
 
 D.2.2.16 watchdog
 .................
@@ -3528,7 +3527,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    1,1,1,1,1
 
 
-File: sing.info,  Node: which,  Next: primecoeffs,  Prev: watchdog,  Up: general_lib
+File: sing.htm,  Node: which,  Next: primecoeffs,  Prev: watchdog,  Up: general_lib
 
 D.2.2.17 which
 ..............
@@ -3551,7 +3550,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> /bin/sh
 
 
-File: sing.info,  Node: primecoeffs,  Next: primefactors,  Prev: which,  Up: general_lib
+File: sing.htm,  Node: primecoeffs,  Next: primefactors,  Prev: which,  Up: general_lib
 
 D.2.2.18 primecoeffs
 ....................
@@ -3592,7 +3591,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    _[1]=1
 
 
-File: sing.info,  Node: primefactors,  Next: timeStd,  Prev: primecoeffs,  Up: general_lib
+File: sing.htm,  Node: primefactors,  Next: timeStd,  Prev: primecoeffs,  Up: general_lib
 
 D.2.2.19 primefactors
 .....................
@@ -3640,7 +3639,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    1234567891
 
 
-File: sing.info,  Node: timeStd,  Next: timeFactorize,  Prev: primefactors,  Up: general_lib
+File: sing.htm,  Node: timeStd,  Next: timeFactorize,  Prev: primefactors,  Up: general_lib
 
 D.2.2.20 timeStd
 ................
@@ -3673,7 +3672,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==> j[5]=a5b+b5c+c5d+d5e+ae5
 
 
-File: sing.info,  Node: timeFactorize,  Next: factorH,  Prev: timeStd,  Up: general_lib
+File: sing.htm,  Node: timeFactorize,  Next: factorH,  Prev: timeStd,  Up: general_lib
 
 D.2.2.21 timeFactorize
 ......................
@@ -3711,7 +3710,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    1,1
 
 
-File: sing.info,  Node: factorH,  Prev: timeFactorize,  Up: general_lib
+File: sing.htm,  Node: factorH,  Prev: timeFactorize,  Up: general_lib
 
 D.2.2.22 factorH
 ................
@@ -3745,7 +3744,7 @@ Procedure from library `general.lib' (*note general_lib::).
      ==>    1,1
 
 
-File: sing.info,  Node: inout_lib,  Next: poly_lib,  Prev: general_lib,  Up: General purpose
+File: sing.htm,  Node: inout_lib,  Next: poly_lib,  Prev: general_lib,  Up: General purpose
 
 D.2.3 inout_lib
 ---------------
@@ -3772,7 +3771,7 @@ D.2.3 inout_lib
 * pause:: stop the computation until user input
 
 
-File: sing.info,  Node: allprint,  Next: lprint,  Up: inout_lib
+File: sing.htm,  Node: allprint,  Next: lprint,  Up: inout_lib
 
 D.2.3.1 allprint
 ................
@@ -3805,7 +3804,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      kill ALLprint;
 
 
-File: sing.info,  Node: lprint,  Next: pmat,  Prev: allprint,  Up: inout_lib
+File: sing.htm,  Node: lprint,  Next: pmat,  Prev: allprint,  Up: inout_lib
 
 D.2.3.2 lprint
 ..............
@@ -3849,7 +3848,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> 0,0 
 
 
-File: sing.info,  Node: pmat,  Next: rMacaulay,  Prev: lprint,  Up: inout_lib
+File: sing.htm,  Node: pmat,  Next: rMacaulay,  Prev: lprint,  Up: inout_lib
 
 D.2.3.3 pmat
 ............
@@ -3881,7 +3880,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> z2+ y2+ yz+ 
 
 
-File: sing.info,  Node: rMacaulay,  Next: show,  Prev: pmat,  Up: inout_lib
+File: sing.htm,  Node: rMacaulay,  Next: show,  Prev: pmat,  Up: inout_lib
 
 D.2.3.4 rMacaulay
 .................
@@ -3941,7 +3940,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> 0, 0, 0, 0, e3
 
 
-File: sing.info,  Node: show,  Next: showrecursive,  Prev: rMacaulay,  Up: inout_lib
+File: sing.htm,  Node: show,  Next: showrecursive,  Prev: rMacaulay,  Up: inout_lib
 
 D.2.3.5 show
 ............
@@ -4016,7 +4015,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      // ring r; ideal i=xy,x3-y2; ring Q; show(r,"i");
 
 
-File: sing.info,  Node: showrecursive,  Next: split,  Prev: show,  Up: inout_lib
+File: sing.htm,  Node: showrecursive,  Next: split,  Prev: show,  Up: inout_lib
 
 D.2.3.6 showrecursive
 .....................
@@ -4049,7 +4048,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> (b)*x3+(c)*x2y2+(a)*x2+(d)*xy3+y
 
 
-File: sing.info,  Node: split,  Next: tab,  Prev: showrecursive,  Up: inout_lib
+File: sing.htm,  Node: split,  Next: tab,  Prev: showrecursive,  Up: inout_lib
 
 D.2.3.7 split
 .............
@@ -4079,7 +4078,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> +z4
 
 
-File: sing.info,  Node: tab,  Next: writelist,  Prev: split,  Up: inout_lib
+File: sing.htm,  Node: tab,  Next: writelist,  Prev: split,  Up: inout_lib
 
 D.2.3.8 tab
 ...........
@@ -4104,7 +4103,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      ==> *     +     *
 
 
-File: sing.info,  Node: writelist,  Next: pause,  Prev: tab,  Up: inout_lib
+File: sing.htm,  Node: writelist,  Next: pause,  Prev: tab,  Up: inout_lib
 
 D.2.3.9 writelist
 .................
@@ -4172,7 +4171,7 @@ Procedure from library `inout.lib' (*note inout_lib::).
      // must remove the just created files 'zumSpass' and 'res_list' directly
 
 
-File: sing.info,  Node: pause,  Prev: writelist,  Up: inout_lib
+File: sing.htm,  Node: pause,  Prev: writelist,  Up: inout_lib
 
 D.2.3.10 pause
 ..............
@@ -4221,7 +4220,7 @@ See also:
 *See also:* *note printlevel::; *note read::.
 
 
-File: sing.info,  Node: poly_lib,  Next: random_lib,  Prev: inout_lib,  Up: General purpose
+File: sing.htm,  Node: poly_lib,  Next: random_lib,  Prev: inout_lib,  Up: General purpose
 
 D.2.4 poly_lib
 --------------
@@ -4262,7 +4261,7 @@ D.2.4 poly_lib
 * hilbPoly:: Hilbert polynomial of basering/I
 
 
-File: sing.info,  Node: cyclic,  Next: katsura,  Up: poly_lib
+File: sing.htm,  Node: cyclic,  Next: katsura,  Up: poly_lib
 
 D.2.4.1 cyclic
 ..............
@@ -4293,7 +4292,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> _[5]=uvwxy-z5
 
 
-File: sing.info,  Node: katsura,  Next: freerank,  Prev: cyclic,  Up: poly_lib
+File: sing.htm,  Node: katsura,  Next: freerank,  Prev: cyclic,  Up: poly_lib
 
 D.2.4.2 katsura
 ...............
@@ -4334,7 +4333,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> //        block   2 : ordering C
 
 
-File: sing.info,  Node: freerank,  Next: is_homog,  Prev: katsura,  Up: poly_lib
+File: sing.htm,  Node: freerank,  Next: is_homog,  Prev: katsura,  Up: poly_lib
 
 D.2.4.3 freerank
 ................
@@ -4380,7 +4379,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 1
 
 
-File: sing.info,  Node: is_homog,  Next: is_zero,  Prev: freerank,  Up: poly_lib
+File: sing.htm,  Node: is_homog,  Next: is_zero,  Prev: freerank,  Up: poly_lib
 
 D.2.4.4 is_homog
 ................
@@ -4419,7 +4418,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 0
 
 
-File: sing.info,  Node: is_zero,  Next: lcm,  Prev: is_homog,  Up: poly_lib
+File: sing.htm,  Node: is_zero,  Next: lcm,  Prev: is_homog,  Up: poly_lib
 
 D.2.4.5 is_zero
 ...............
@@ -4451,7 +4450,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 1
 
 
-File: sing.info,  Node: lcm,  Next: maxcoef,  Prev: is_zero,  Up: poly_lib
+File: sing.htm,  Node: lcm,  Next: maxcoef,  Prev: is_zero,  Up: poly_lib
 
 D.2.4.6 lcm
 ...........
@@ -4483,7 +4482,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 60
 
 
-File: sing.info,  Node: maxcoef,  Next: maxdeg,  Prev: lcm,  Up: poly_lib
+File: sing.htm,  Node: maxcoef,  Next: maxdeg,  Prev: lcm,  Up: poly_lib
 
 D.2.4.7 maxcoef
 ...............
@@ -4509,7 +4508,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      // since i[2]=1/123456789
 
 
-File: sing.info,  Node: maxdeg,  Next: maxdeg1,  Prev: maxcoef,  Up: poly_lib
+File: sing.htm,  Node: maxdeg,  Next: maxdeg1,  Prev: maxcoef,  Up: poly_lib
 
 D.2.4.8 maxdeg
 ..............
@@ -4543,7 +4542,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> -1,6 
 
 
-File: sing.info,  Node: maxdeg1,  Next: mindeg,  Prev: maxdeg,  Up: poly_lib
+File: sing.htm,  Node: maxdeg1,  Next: mindeg,  Prev: maxdeg,  Up: poly_lib
 
 D.2.4.9 maxdeg1
 ...............
@@ -4579,7 +4578,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 18
 
 
-File: sing.info,  Node: mindeg,  Next: mindeg1,  Prev: maxdeg1,  Up: poly_lib
+File: sing.htm,  Node: mindeg,  Next: mindeg1,  Prev: maxdeg1,  Up: poly_lib
 
 D.2.4.10 mindeg
 ...............
@@ -4612,7 +4611,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> -1,4 
 
 
-File: sing.info,  Node: mindeg1,  Next: normalize,  Prev: mindeg,  Up: poly_lib
+File: sing.htm,  Node: mindeg1,  Next: normalize,  Prev: mindeg,  Up: poly_lib
 
 D.2.4.11 mindeg1
 ................
@@ -4646,7 +4645,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> -1
 
 
-File: sing.info,  Node: normalize,  Next: rad_con,  Prev: mindeg1,  Up: poly_lib
+File: sing.htm,  Node: normalize,  Next: rad_con,  Prev: mindeg1,  Up: poly_lib
 
 D.2.4.12 normalize
 ..................
@@ -4676,7 +4675,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> _[2]=[z,3/2y,1/2x]
 
 
-File: sing.info,  Node: rad_con,  Next: content,  Prev: normalize,  Up: poly_lib
+File: sing.htm,  Node: rad_con,  Next: content,  Prev: normalize,  Up: poly_lib
 
 D.2.4.13 rad_con
 ................
@@ -4703,7 +4702,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 1
 
 
-File: sing.info,  Node: content,  Next: numerator,  Prev: rad_con,  Up: poly_lib
+File: sing.htm,  Node: content,  Next: numerator,  Prev: rad_con,  Up: poly_lib
 
 D.2.4.14 content
 ................
@@ -4727,7 +4726,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> 3
 
 
-File: sing.info,  Node: numerator,  Next: denominator,  Prev: content,  Up: poly_lib
+File: sing.htm,  Node: numerator,  Next: denominator,  Prev: content,  Up: poly_lib
 
 D.2.4.15 numerator
 ..................
@@ -4757,7 +4756,7 @@ See also:
 *See also:* *note cleardenom::; *note content::; *note denominator::.
 
 
-File: sing.info,  Node: denominator,  Next: mod2id,  Prev: numerator,  Up: poly_lib
+File: sing.htm,  Node: denominator,  Next: mod2id,  Prev: numerator,  Up: poly_lib
 
 D.2.4.16 denominator
 ....................
@@ -4787,7 +4786,7 @@ See also:
 *See also:* *note cleardenom::; *note content::; *note denominator::.
 
 
-File: sing.info,  Node: mod2id,  Next: id2mod,  Prev: denominator,  Up: poly_lib
+File: sing.htm,  Node: mod2id,  Next: id2mod,  Prev: denominator,  Up: poly_lib
 
 D.2.4.17 mod2id
 ...............
@@ -4827,7 +4826,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> _[4]=e(1)*y+e(2)*x
 
 
-File: sing.info,  Node: id2mod,  Next: substitute,  Prev: mod2id,  Up: poly_lib
+File: sing.htm,  Node: id2mod,  Next: substitute,  Prev: mod2id,  Up: poly_lib
 
 D.2.4.18 id2mod
 ...............
@@ -4859,7 +4858,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> _[1]=x*gen(1)+y*gen(2)
 
 
-File: sing.info,  Node: substitute,  Next: subrInterred,  Prev: id2mod,  Up: poly_lib
+File: sing.htm,  Node: substitute,  Next: subrInterred,  Prev: id2mod,  Up: poly_lib
 
 D.2.4.19 substitute
 ...................
@@ -4898,7 +4897,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> _[2]=-5b3-5b2c+15b2+10bc-15b-5c+5
 
 
-File: sing.info,  Node: subrInterred,  Next: hilbPoly,  Prev: substitute,  Up: poly_lib
+File: sing.htm,  Node: subrInterred,  Next: hilbPoly,  Prev: substitute,  Up: poly_lib
 
 D.2.4.20 subrInterred
 .....................
@@ -4962,7 +4961,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==>    _[1,3]=x2
 
 
-File: sing.info,  Node: hilbPoly,  Prev: subrInterred,  Up: poly_lib
+File: sing.htm,  Node: hilbPoly,  Prev: subrInterred,  Up: poly_lib
 
 D.2.4.21 hilbPoly
 .................
@@ -4989,7 +4988,7 @@ Procedure from library `poly.lib' (*note poly_lib::).
      ==> -11,10
 
 
-File: sing.info,  Node: random_lib,  Next: ring_lib,  Prev: poly_lib,  Up: General purpose
+File: sing.htm,  Node: random_lib,  Next: ring_lib,  Prev: poly_lib,  Up: General purpose
 
 D.2.5 random_lib
 ----------------
@@ -5017,7 +5016,7 @@ D.2.5 random_lib
 * randomBinomial:: binomial ideal, k random generators of degree >=u
 
 
-File: sing.info,  Node: genericid,  Next: randomid,  Up: random_lib
+File: sing.htm,  Node: genericid,  Next: randomid,  Up: random_lib
 
 D.2.5.1 genericid
 .................
@@ -5052,7 +5051,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 0,      0,      0, t4
 
 
-File: sing.info,  Node: randomid,  Next: randommat,  Prev: genericid,  Up: random_lib
+File: sing.htm,  Node: randomid,  Next: randommat,  Prev: genericid,  Up: random_lib
 
 D.2.5.2 randomid
 ................
@@ -5084,7 +5083,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> [2536x-6355y,8285y2,-6355z3+2536]
 
 
-File: sing.info,  Node: randommat,  Next: sparseid,  Prev: randomid,  Up: random_lib
+File: sing.htm,  Node: randommat,  Next: sparseid,  Prev: randomid,  Up: random_lib
 
 D.2.5.3 randommat
 .................
@@ -5116,7 +5115,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 20788x-28366y-20283z,24911x-10978y+3341z,12412x+11216y+15344z 
 
 
-File: sing.info,  Node: sparseid,  Next: sparsematrix,  Prev: randommat,  Up: random_lib
+File: sing.htm,  Node: sparseid,  Next: sparsematrix,  Prev: randommat,  Up: random_lib
 
 D.2.5.4 sparseid
 ................
@@ -5144,7 +5143,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> _[3]=5a+ab+2ac2+2b3c+8abcd
 
 
-File: sing.info,  Node: sparsematrix,  Next: sparsemat,  Prev: sparseid,  Up: random_lib
+File: sing.htm,  Node: sparsematrix,  Next: sparsemat,  Prev: sparseid,  Up: random_lib
 
 D.2.5.5 sparsematrix
 ....................
@@ -5176,7 +5175,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 9a+5b+9c,2a+9d,2d    
 
 
-File: sing.info,  Node: sparsemat,  Next: sparsepoly,  Prev: sparsematrix,  Up: random_lib
+File: sing.htm,  Node: sparsemat,  Next: sparsepoly,  Prev: sparsematrix,  Up: random_lib
 
 D.2.5.6 sparsemat
 .................
@@ -5221,7 +5220,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 0,88,44,31,0 
 
 
-File: sing.info,  Node: sparsepoly,  Next: sparsetriag,  Prev: sparsemat,  Up: random_lib
+File: sing.htm,  Node: sparsepoly,  Next: sparsetriag,  Prev: sparsemat,  Up: random_lib
 
 D.2.5.7 sparsepoly
 ..................
@@ -5246,7 +5245,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 8x3z2+2y3z2+3xyz3+2xy3+yz3+xy2
 
 
-File: sing.info,  Node: sparsetriag,  Next: triagmatrix,  Prev: sparsepoly,  Up: random_lib
+File: sing.htm,  Node: sparsetriag,  Next: triagmatrix,  Prev: sparsepoly,  Up: random_lib
 
 D.2.5.8 sparsetriag
 ...................
@@ -5294,7 +5293,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 0,48,23,0,1 
 
 
-File: sing.info,  Node: triagmatrix,  Next: randomLast,  Prev: sparsetriag,  Up: random_lib
+File: sing.htm,  Node: triagmatrix,  Next: randomLast,  Prev: sparsetriag,  Up: random_lib
 
 D.2.5.9 triagmatrix
 ...................
@@ -5327,7 +5326,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> 9b+7c+4d,7b+9d,1 
 
 
-File: sing.info,  Node: randomLast,  Next: randomBinomial,  Prev: triagmatrix,  Up: random_lib
+File: sing.htm,  Node: randomLast,  Next: randomBinomial,  Prev: triagmatrix,  Up: random_lib
 
 D.2.5.10 randomLast
 ...................
@@ -5352,7 +5351,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> i[3]=-x+z
 
 
-File: sing.info,  Node: randomBinomial,  Prev: randomLast,  Up: random_lib
+File: sing.htm,  Node: randomBinomial,  Prev: randomLast,  Up: random_lib
 
 D.2.5.11 randomBinomial
 .......................
@@ -5378,7 +5377,7 @@ Procedure from library `random.lib' (*note random_lib::).
      ==> i[4]=5x3yz2+5xz5
 
 
-File: sing.info,  Node: ring_lib,  Prev: random_lib,  Up: General purpose
+File: sing.htm,  Node: ring_lib,  Prev: random_lib,  Up: General purpose
 
 D.2.6 ring_lib
 --------------
@@ -5408,7 +5407,7 @@ D.2.6 ring_lib
 * ringweights:: intvec of weights of ring variables of ring r
 
 
-File: sing.info,  Node: changechar,  Next: changeord,  Up: ring_lib
+File: sing.htm,  Node: changechar,  Next: changeord,  Up: ring_lib
 
 D.2.6.1 changechar
 ..................
@@ -5468,7 +5467,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: changeord,  Next: changevar,  Prev: changechar,  Up: ring_lib
+File: sing.htm,  Node: changeord,  Next: changevar,  Prev: changechar,  Up: ring_lib
 
 D.2.6.2 changeord
 .................
@@ -5531,7 +5530,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: changevar,  Next: defring,  Prev: changeord,  Up: ring_lib
+File: sing.htm,  Node: changevar,  Next: defring,  Prev: changeord,  Up: ring_lib
 
 D.2.6.3 changevar
 .................
@@ -5599,7 +5598,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: defring,  Next: defrings,  Prev: changevar,  Up: ring_lib
+File: sing.htm,  Node: defring,  Next: defrings,  Prev: changevar,  Up: ring_lib
 
 D.2.6.4 defring
 ...............
@@ -5659,7 +5658,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: defrings,  Next: defringp,  Prev: defring,  Up: ring_lib
+File: sing.htm,  Node: defrings,  Next: defringp,  Prev: defring,  Up: ring_lib
 
 D.2.6.5 defrings
 ................
@@ -5706,7 +5705,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: defringp,  Next: extendring,  Prev: defrings,  Up: ring_lib
+File: sing.htm,  Node: defringp,  Next: extendring,  Prev: defrings,  Up: ring_lib
 
 D.2.6.6 defringp
 ................
@@ -5753,7 +5752,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: extendring,  Next: fetchall,  Prev: defringp,  Up: ring_lib
+File: sing.htm,  Node: extendring,  Next: fetchall,  Prev: defringp,  Up: ring_lib
 
 D.2.6.7 extendring
 ..................
@@ -5861,7 +5860,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: fetchall,  Next: imapall,  Prev: extendring,  Up: ring_lib
+File: sing.htm,  Node: fetchall,  Next: imapall,  Prev: extendring,  Up: ring_lib
 
 D.2.6.8 fetchall
 ................
@@ -5908,7 +5907,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      //   kill R,S;
 
 
-File: sing.info,  Node: imapall,  Next: mapall,  Prev: fetchall,  Up: ring_lib
+File: sing.htm,  Node: imapall,  Next: mapall,  Prev: fetchall,  Up: ring_lib
 
 D.2.6.9 imapall
 ...............
@@ -5955,7 +5954,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      //   kill R,S;
 
 
-File: sing.info,  Node: mapall,  Next: ord_test,  Prev: imapall,  Up: ring_lib
+File: sing.htm,  Node: mapall,  Next: ord_test,  Prev: imapall,  Up: ring_lib
 
 D.2.6.10 mapall
 ...............
@@ -6012,7 +6011,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      //   kill R,S,T;
 
 
-File: sing.info,  Node: ord_test,  Next: ringtensor,  Prev: mapall,  Up: ring_lib
+File: sing.htm,  Node: ord_test,  Next: ringtensor,  Prev: mapall,  Up: ring_lib
 
 D.2.6.11 ord_test
 .................
@@ -6038,7 +6037,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      ==> 0
 
 
-File: sing.info,  Node: ringtensor,  Next: ringweights,  Prev: ord_test,  Up: ring_lib
+File: sing.htm,  Node: ringtensor,  Next: ringweights,  Prev: ord_test,  Up: ring_lib
 
 D.2.6.12 ringtensor
 ...................
@@ -6128,7 +6127,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      }
 
 
-File: sing.info,  Node: ringweights,  Prev: ringtensor,  Up: ring_lib
+File: sing.htm,  Node: ringweights,  Prev: ringtensor,  Up: ring_lib
 
 D.2.6.13 ringweights
 ....................
@@ -6163,7 +6162,7 @@ Procedure from library `ring.lib' (*note ring_lib::).
      ==> a(1,1,1,2,3,6,2,3,4,5),dp(10),C
 
 
-File: sing.info,  Node: Linear algebra,  Next: Commutative algebra,  Prev: General purpose,  Up: SINGULAR libraries
+File: sing.htm,  Node: Linear algebra,  Next: Commutative algebra,  Prev: General purpose,  Up: SINGULAR libraries
 
 D.3 Linear algebra
 ==================
@@ -6174,7 +6173,7 @@ D.3 Linear algebra
 * linalg_lib:: procedures for algorithmic linear algebra
 
 
-File: sing.info,  Node: matrix_lib,  Next: linalg_lib,  Prev: Linear algebra,  Up: Linear algebra
+File: sing.htm,  Node: matrix_lib,  Next: linalg_lib,  Prev: Linear algebra,  Up: Linear algebra
 
 D.3.1 matrix_lib
 ----------------
@@ -6218,7 +6217,7 @@ D.3.1 matrix_lib
 * headStand:: A[n-i+1,m-j+1]=headStand(A[i,j])
 
 
-File: sing.info,  Node: compress,  Next: concat,  Up: matrix_lib
+File: sing.htm,  Node: compress,  Next: concat,  Up: matrix_lib
 
 D.3.1.1 compress
 ................
@@ -6264,7 +6263,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 1,2,3
 
 
-File: sing.info,  Node: concat,  Next: diag,  Prev: compress,  Up: matrix_lib
+File: sing.htm,  Node: concat,  Next: diag,  Prev: compress,  Up: matrix_lib
 
 D.3.1.2 concat
 ..............
@@ -6298,7 +6297,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> x2,y2,z2,0,0,0,0,0,0 
 
 
-File: sing.info,  Node: diag,  Next: dsum,  Prev: concat,  Up: matrix_lib
+File: sing.htm,  Node: diag,  Next: dsum,  Prev: concat,  Up: matrix_lib
 
 D.3.1.3 diag
 ............
@@ -6336,7 +6335,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0,0,0,0,0,6 
 
 
-File: sing.info,  Node: dsum,  Next: flatten,  Prev: diag,  Up: matrix_lib
+File: sing.htm,  Node: dsum,  Next: flatten,  Prev: diag,  Up: matrix_lib
 
 D.3.1.4 dsum
 ............
@@ -6369,7 +6368,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0,0,0,y,z 
 
 
-File: sing.info,  Node: flatten,  Next: genericmat,  Prev: dsum,  Up: matrix_lib
+File: sing.htm,  Node: flatten,  Next: genericmat,  Prev: dsum,  Up: matrix_lib
 
 D.3.1.5 flatten
 ...............
@@ -6398,7 +6397,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> _[6]=7
 
 
-File: sing.info,  Node: genericmat,  Next: is_complex,  Prev: flatten,  Up: matrix_lib
+File: sing.htm,  Node: genericmat,  Next: is_complex,  Prev: flatten,  Up: matrix_lib
 
 D.3.1.6 genericmat
 ..................
@@ -6437,7 +6436,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 6a-5b+9c,   2a+8c+d    
 
 
-File: sing.info,  Node: is_complex,  Next: outer,  Prev: genericmat,  Up: matrix_lib
+File: sing.htm,  Node: is_complex,  Next: outer,  Prev: genericmat,  Up: matrix_lib
 
 D.3.1.7 is_complex
 ..................
@@ -6467,7 +6466,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0
 
 
-File: sing.info,  Node: outer,  Next: power,  Prev: is_complex,  Up: matrix_lib
+File: sing.htm,  Node: outer,  Next: power,  Prev: is_complex,  Up: matrix_lib
 
 D.3.1.8 outer
 .............
@@ -6501,7 +6500,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0, 7z,0, 8z,0, 9z 
 
 
-File: sing.info,  Node: power,  Next: skewmat,  Prev: outer,  Up: matrix_lib
+File: sing.htm,  Node: power,  Next: skewmat,  Prev: outer,  Up: matrix_lib
 
 D.3.1.9 power
 .............
@@ -6535,7 +6534,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 
 
 
-File: sing.info,  Node: skewmat,  Next: submat,  Prev: power,  Up: matrix_lib
+File: sing.htm,  Node: skewmat,  Next: submat,  Prev: power,  Up: matrix_lib
 
 D.3.1.10 skewmat
 ................
@@ -6578,7 +6577,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      kill R1;
 
 
-File: sing.info,  Node: submat,  Next: symmat,  Prev: skewmat,  Up: matrix_lib
+File: sing.htm,  Node: submat,  Next: symmat,  Prev: skewmat,  Up: matrix_lib
 
 D.3.1.11 submat
 ...............
@@ -6609,7 +6608,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 9,x2,y2
 
 
-File: sing.info,  Node: symmat,  Next: tensor,  Prev: submat,  Up: matrix_lib
+File: sing.htm,  Node: symmat,  Next: tensor,  Prev: submat,  Up: matrix_lib
 
 D.3.1.12 symmat
 ...............
@@ -6651,7 +6650,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      kill R1;
 
 
-File: sing.info,  Node: tensor,  Next: unitmat,  Prev: symmat,  Up: matrix_lib
+File: sing.htm,  Node: tensor,  Next: unitmat,  Prev: symmat,  Up: matrix_lib
 
 D.3.1.13 tensor
 ...............
@@ -6685,7 +6684,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0, 7z,0, 8z,0, 9z 
 
 
-File: sing.info,  Node: unitmat,  Next: gauss_col,  Prev: tensor,  Up: matrix_lib
+File: sing.htm,  Node: unitmat,  Next: gauss_col,  Prev: tensor,  Up: matrix_lib
 
 D.3.1.14 unitmat
 ................
@@ -6717,7 +6716,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0,0,0,0,1 
 
 
-File: sing.info,  Node: gauss_col,  Next: gauss_row,  Prev: unitmat,  Up: matrix_lib
+File: sing.htm,  Node: gauss_col,  Next: gauss_row,  Prev: unitmat,  Up: matrix_lib
 
 D.3.1.15 gauss_col
 ..................
@@ -6798,7 +6797,7 @@ See also:
 *See also:* *note colred::.
 
 
-File: sing.info,  Node: gauss_row,  Next: addcol,  Prev: gauss_col,  Up: matrix_lib
+File: sing.htm,  Node: gauss_row,  Next: addcol,  Prev: gauss_col,  Up: matrix_lib
 
 D.3.1.16 gauss_row
 ..................
@@ -6872,7 +6871,7 @@ See also:
 *See also:* *note rowred::.
 
 
-File: sing.info,  Node: addcol,  Next: addrow,  Prev: gauss_row,  Up: matrix_lib
+File: sing.htm,  Node: addcol,  Next: addrow,  Prev: gauss_row,  Up: matrix_lib
 
 D.3.1.17 addcol
 ...............
@@ -6899,7 +6898,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 7,7xy+8,9 
 
 
-File: sing.info,  Node: addrow,  Next: multcol,  Prev: addcol,  Up: matrix_lib
+File: sing.htm,  Node: addrow,  Next: multcol,  Prev: addcol,  Up: matrix_lib
 
 D.3.1.18 addrow
 ...............
@@ -6926,7 +6925,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> xy+7,2xy+8,3xy+9
 
 
-File: sing.info,  Node: multcol,  Next: multrow,  Prev: addrow,  Up: matrix_lib
+File: sing.htm,  Node: multcol,  Next: multrow,  Prev: addrow,  Up: matrix_lib
 
 D.3.1.19 multcol
 ................
@@ -6953,7 +6952,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 7,8xy,9 
 
 
-File: sing.info,  Node: multrow,  Next: permcol,  Prev: multcol,  Up: matrix_lib
+File: sing.htm,  Node: multrow,  Next: permcol,  Prev: multcol,  Up: matrix_lib
 
 D.3.1.20 multrow
 ................
@@ -6980,7 +6979,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 7,  8,  9   
 
 
-File: sing.info,  Node: permcol,  Next: permrow,  Prev: multrow,  Up: matrix_lib
+File: sing.htm,  Node: permcol,  Next: permrow,  Prev: multrow,  Up: matrix_lib
 
 D.3.1.21 permcol
 ................
@@ -7007,7 +7006,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 7,9,z 
 
 
-File: sing.info,  Node: permrow,  Next: rowred,  Prev: permcol,  Up: matrix_lib
+File: sing.htm,  Node: permrow,  Next: rowred,  Prev: permcol,  Up: matrix_lib
 
 D.3.1.22 permrow
 ................
@@ -7034,7 +7033,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 7,8,9 
 
 
-File: sing.info,  Node: rowred,  Next: colred,  Prev: permrow,  Up: matrix_lib
+File: sing.htm,  Node: rowred,  Next: colred,  Prev: permrow,  Up: matrix_lib
 
 D.3.1.23 rowred
 ...............
@@ -7107,7 +7106,7 @@ See also:
 *See also:* *note gauss_row::.
 
 
-File: sing.info,  Node: colred,  Next: rm_unitrow,  Prev: rowred,  Up: matrix_lib
+File: sing.htm,  Node: colred,  Next: rm_unitrow,  Prev: rowred,  Up: matrix_lib
 
 D.3.1.24 colred
 ...............
@@ -7184,7 +7183,7 @@ See also:
 *See also:* *note gauss_col::.
 
 
-File: sing.info,  Node: rm_unitrow,  Next: rm_unitcol,  Prev: colred,  Up: matrix_lib
+File: sing.htm,  Node: rm_unitrow,  Next: rm_unitcol,  Prev: colred,  Up: matrix_lib
 
 D.3.1.25 rm_unitrow
 ...................
@@ -7218,7 +7217,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 2A,B,  0 
 
 
-File: sing.info,  Node: rm_unitcol,  Next: headStand,  Prev: rm_unitrow,  Up: matrix_lib
+File: sing.htm,  Node: rm_unitcol,  Next: headStand,  Prev: rm_unitrow,  Up: matrix_lib
 
 D.3.1.26 rm_unitcol
 ...................
@@ -7248,7 +7247,7 @@ Procedure from library `matrix.lib' (*note matrix_lib::).
      ==> 0, A,  0, 0, 0  
 
 
-File: sing.info,  Node: headStand,  Prev: rm_unitcol,  Up: matrix_lib
+File: sing.htm,  Node: headStand,  Prev: rm_unitcol,  Up: matrix_lib
 
 D.3.1.27 headStand
 ..................
@@ -7256,7 +7255,7 @@ D.3.1.27 headStand
 Procedure from library `matrix.lib' (*note matrix_lib::).
 
 
-File: sing.info,  Node: linalg_lib,  Prev: matrix_lib,  Up: Linear algebra
+File: sing.htm,  Node: linalg_lib,  Prev: matrix_lib,  Up: Linear algebra
 
 D.3.2 linalg_lib
 ----------------
@@ -7301,7 +7300,7 @@ D.3.2 linalg_lib
 * jordannf:: Jordan normal form of M
 
 
-File: sing.info,  Node: inverse,  Next: inverse_B,  Up: linalg_lib
+File: sing.htm,  Node: inverse,  Next: inverse_B,  Up: linalg_lib
 
 D.3.2.1 inverse
 ...............
@@ -7350,7 +7349,7 @@ See also:
 *See also:* *note inverse_B::; *note inverse_L::.
 
 
-File: sing.info,  Node: inverse_B,  Next: inverse_L,  Prev: inverse,  Up: linalg_lib
+File: sing.htm,  Node: inverse_B,  Next: inverse_L,  Prev: inverse,  Up: linalg_lib
 
 D.3.2.2 inverse_B
 .................
@@ -7389,7 +7388,7 @@ See also:
 *See also:* *note inverse::; *note inverse_L::.
 
 
-File: sing.info,  Node: inverse_L,  Next: sym_gauss,  Prev: inverse_B,  Up: linalg_lib
+File: sing.htm,  Node: inverse_L,  Next: sym_gauss,  Prev: inverse_B,  Up: linalg_lib
 
 D.3.2.3 inverse_L
 .................
@@ -7428,7 +7427,7 @@ See also:
 *See also:* *note inverse::; *note inverse_B::.
 
 
-File: sing.info,  Node: sym_gauss,  Next: orthogonalize,  Prev: inverse_L,  Up: linalg_lib
+File: sing.htm,  Node: sym_gauss,  Next: orthogonalize,  Prev: inverse_L,  Up: linalg_lib
 
 D.3.2.4 sym_gauss
 .................
@@ -7449,7 +7448,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(sym_gauss(A));
 
 
-File: sing.info,  Node: orthogonalize,  Next: diag_test,  Prev: sym_gauss,  Up: linalg_lib
+File: sing.htm,  Node: orthogonalize,  Next: diag_test,  Prev: sym_gauss,  Up: linalg_lib
 
 D.3.2.5 orthogonalize
 .....................
@@ -7470,7 +7469,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(orthogonalize(A));
 
 
-File: sing.info,  Node: diag_test,  Next: busadj,  Prev: orthogonalize,  Up: linalg_lib
+File: sing.htm,  Node: diag_test,  Next: busadj,  Prev: orthogonalize,  Up: linalg_lib
 
 D.3.2.6 diag_test
 .................
@@ -7497,7 +7496,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      diag_test(A);
 
 
-File: sing.info,  Node: busadj,  Next: charpoly,  Prev: diag_test,  Up: linalg_lib
+File: sing.htm,  Node: busadj,  Next: charpoly,  Prev: diag_test,  Up: linalg_lib
 
 D.3.2.7 busadj
 ..............
@@ -7529,7 +7528,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(bA*(t*unitmat(2)-A));
 
 
-File: sing.info,  Node: charpoly,  Next: adjoint,  Prev: busadj,  Up: linalg_lib
+File: sing.htm,  Node: charpoly,  Next: adjoint,  Prev: busadj,  Up: linalg_lib
 
 D.3.2.8 charpoly
 ................
@@ -7555,7 +7554,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      charpoly(A,"t");
 
 
-File: sing.info,  Node: adjoint,  Next: det_B,  Prev: charpoly,  Up: linalg_lib
+File: sing.htm,  Node: adjoint,  Next: det_B,  Prev: charpoly,  Up: linalg_lib
 
 D.3.2.9 adjoint
 ...............
@@ -7581,7 +7580,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(Adj*A);
 
 
-File: sing.info,  Node: det_B,  Next: gaussred,  Prev: adjoint,  Up: linalg_lib
+File: sing.htm,  Node: det_B,  Next: gaussred,  Prev: adjoint,  Up: linalg_lib
 
 D.3.2.10 det_B
 ..............
@@ -7605,7 +7604,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      det_B(A);
 
 
-File: sing.info,  Node: gaussred,  Next: gaussred_pivot,  Prev: det_B,  Up: linalg_lib
+File: sing.htm,  Node: gaussred,  Next: gaussred_pivot,  Prev: det_B,  Up: linalg_lib
 
 D.3.2.11 gaussred
 .................
@@ -7639,7 +7638,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(Z[2]*Z[3]);     //U*S
 
 
-File: sing.info,  Node: gaussred_pivot,  Next: gauss_nf,  Prev: gaussred,  Up: linalg_lib
+File: sing.htm,  Node: gaussred_pivot,  Next: gauss_nf,  Prev: gaussred,  Up: linalg_lib
 
 D.3.2.12 gaussred_pivot
 .......................
@@ -7674,7 +7673,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(Z[2]*Z[3]);          //U*S
 
 
-File: sing.info,  Node: gauss_nf,  Next: mat_rk,  Prev: gaussred_pivot,  Up: linalg_lib
+File: sing.htm,  Node: gauss_nf,  Next: mat_rk,  Prev: gaussred_pivot,  Up: linalg_lib
 
 D.3.2.13 gauss_nf
 .................
@@ -7694,7 +7693,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(gauss_nf(A));
 
 
-File: sing.info,  Node: mat_rk,  Next: U_D_O,  Prev: gauss_nf,  Up: linalg_lib
+File: sing.htm,  Node: mat_rk,  Next: U_D_O,  Prev: gauss_nf,  Up: linalg_lib
 
 D.3.2.14 mat_rk
 ...............
@@ -7714,7 +7713,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      mat_rk(A);
 
 
-File: sing.info,  Node: U_D_O,  Next: pos_def,  Prev: mat_rk,  Up: linalg_lib
+File: sing.htm,  Node: U_D_O,  Next: pos_def,  Prev: mat_rk,  Up: linalg_lib
 
 D.3.2.15 U_D_O
 ..............
@@ -7752,7 +7751,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(Z[2]*Z[3]*Z[4]);          //U*D*O
 
 
-File: sing.info,  Node: pos_def,  Next: hessenberg,  Prev: U_D_O,  Up: linalg_lib
+File: sing.htm,  Node: pos_def,  Next: hessenberg,  Prev: U_D_O,  Up: linalg_lib
 
 D.3.2.16 pos_def
 ................
@@ -7783,7 +7782,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      pos_def(B);
 
 
-File: sing.info,  Node: hessenberg,  Next: evnf,  Prev: pos_def,  Up: linalg_lib
+File: sing.htm,  Node: hessenberg,  Next: evnf,  Prev: pos_def,  Up: linalg_lib
 
 D.3.2.17 hessenberg
 ...................
@@ -7807,7 +7806,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(hessenberg(M));
 
 
-File: sing.info,  Node: evnf,  Next: eigenvals,  Prev: hessenberg,  Up: linalg_lib
+File: sing.htm,  Node: evnf,  Next: eigenvals,  Prev: hessenberg,  Up: linalg_lib
 
 D.3.2.18 evnf
 .............
@@ -7824,7 +7823,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      order eigenvalues e with multiplicities m
 
 
-File: sing.info,  Node: eigenvals,  Next: minipoly,  Prev: evnf,  Up: linalg_lib
+File: sing.htm,  Node: eigenvals,  Next: minipoly,  Prev: evnf,  Up: linalg_lib
 
 D.3.2.19 eigenvals
 ..................
@@ -7853,7 +7852,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      eigenvals(M);
 
 
-File: sing.info,  Node: minipoly,  Next: jordan,  Prev: eigenvals,  Up: linalg_lib
+File: sing.htm,  Node: minipoly,  Next: jordan,  Prev: eigenvals,  Up: linalg_lib
 
 D.3.2.20 minipoly
 .................
@@ -7882,7 +7881,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      minipoly(M);
 
 
-File: sing.info,  Node: jordan,  Next: jordanbasis,  Prev: minipoly,  Up: linalg_lib
+File: sing.htm,  Node: jordan,  Next: jordanbasis,  Prev: minipoly,  Up: linalg_lib
 
 D.3.2.21 jordan
 ...............
@@ -7913,7 +7912,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      jordan(M);
 
 
-File: sing.info,  Node: jordanbasis,  Next: jordanmatrix,  Prev: jordan,  Up: linalg_lib
+File: sing.htm,  Node: jordanbasis,  Next: jordanmatrix,  Prev: jordan,  Up: linalg_lib
 
 D.3.2.22 jordanbasis
 ....................
@@ -7944,7 +7943,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(inverse(l[1])*M*l[1]);
 
 
-File: sing.info,  Node: jordanmatrix,  Next: jordannf,  Prev: jordanbasis,  Up: linalg_lib
+File: sing.htm,  Node: jordanmatrix,  Next: jordannf,  Prev: jordanbasis,  Up: linalg_lib
 
 D.3.2.23 jordanmatrix
 .....................
@@ -7970,7 +7969,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(jordanmatrix(e,s,m));
 
 
-File: sing.info,  Node: jordannf,  Prev: jordanmatrix,  Up: linalg_lib
+File: sing.htm,  Node: jordannf,  Prev: jordanmatrix,  Up: linalg_lib
 
 D.3.2.24 jordannf
 .................
@@ -7994,7 +7993,7 @@ Procedure from library `linalg.lib' (*note linalg_lib::).
      print(jordannf(M));
 
 
-File: sing.info,  Node: Commutative algebra,  Next: Singularities,  Prev: Linear algebra,  Up: SINGULAR libraries
+File: sing.htm,  Node: Commutative algebra,  Next: Singularities,  Prev: Linear algebra,  Up: SINGULAR libraries
 
 D.4 Commutative algebra
 =======================
@@ -8014,7 +8013,7 @@ D.4 Commutative algebra
 * toric_lib:: toric ideals
 
 
-File: sing.info,  Node: algebra_lib,  Next: elim_lib,  Prev: Commutative algebra,  Up: Commutative algebra
+File: sing.htm,  Node: algebra_lib,  Next: elim_lib,  Prev: Commutative algebra,  Up: Commutative algebra
 
 D.4.1 algebra_lib
 -----------------
@@ -8047,7 +8046,7 @@ D.4.1 algebra_lib
 * finitenessTest:: find variables which occur as pure power in lead(i)
 
 
-File: sing.info,  Node: algebra_containment,  Next: module_containment,  Up: algebra_lib
+File: sing.htm,  Node: algebra_containment,  Next: module_containment,  Up: algebra_lib
 
 D.4.1.1 algebra_containment
 ...........................
@@ -8117,7 +8116,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: module_containment,  Next: inSubring,  Prev: algebra_containment,  Up: algebra_lib
+File: sing.htm,  Node: module_containment,  Next: inSubring,  Prev: algebra_containment,  Up: algebra_lib
 
 D.4.1.2 module_containment
 ..........................
@@ -8187,7 +8186,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      printlevel=p;
 
 
-File: sing.info,  Node: inSubring,  Next: algDependent,  Prev: module_containment,  Up: algebra_lib
+File: sing.htm,  Node: inSubring,  Next: algDependent,  Prev: module_containment,  Up: algebra_lib
 
 D.4.1.3 inSubring
 .................
@@ -8222,7 +8221,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==>    y(1)*y(2)*y(3)+y(2)^2-y(0)+1
 
 
-File: sing.info,  Node: algDependent,  Next: alg_kernel,  Prev: inSubring,  Up: algebra_lib
+File: sing.htm,  Node: algDependent,  Next: alg_kernel,  Prev: inSubring,  Up: algebra_lib
 
 D.4.1.4 algDependent
 ....................
@@ -8278,7 +8277,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: alg_kernel,  Next: is_injective,  Prev: algDependent,  Up: algebra_lib
+File: sing.htm,  Node: alg_kernel,  Next: is_injective,  Prev: algDependent,  Up: algebra_lib
 
 D.4.1.5 alg_kernel
 ..................
@@ -8323,7 +8322,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==> ker[2]=c-b2+b3
 
 
-File: sing.info,  Node: is_injective,  Next: is_surjective,  Prev: alg_kernel,  Up: algebra_lib
+File: sing.htm,  Node: is_injective,  Next: is_surjective,  Prev: alg_kernel,  Up: algebra_lib
 
 D.4.1.6 is_injective
 ....................
@@ -8384,7 +8383,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==> ker[1]=y(2)^3-y(1)^2+y(3)
 
 
-File: sing.info,  Node: is_surjective,  Next: is_bijective,  Prev: is_injective,  Up: algebra_lib
+File: sing.htm,  Node: is_surjective,  Next: is_bijective,  Prev: is_injective,  Up: algebra_lib
 
 D.4.1.7 is_surjective
 .....................
@@ -8422,7 +8421,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==> 1
 
 
-File: sing.info,  Node: is_bijective,  Next: noetherNormal,  Prev: is_surjective,  Up: algebra_lib
+File: sing.htm,  Node: is_bijective,  Next: noetherNormal,  Prev: is_surjective,  Up: algebra_lib
 
 D.4.1.8 is_bijective
 ....................
@@ -8468,7 +8467,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: noetherNormal,  Next: mapIsFinite,  Prev: is_bijective,  Up: algebra_lib
+File: sing.htm,  Node: noetherNormal,  Next: mapIsFinite,  Prev: is_bijective,  Up: algebra_lib
 
 D.4.1.9 noetherNormal
 .....................
@@ -8507,7 +8506,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==>    _[2]=z
 
 
-File: sing.info,  Node: mapIsFinite,  Next: finitenessTest,  Prev: noetherNormal,  Up: algebra_lib
+File: sing.htm,  Node: mapIsFinite,  Next: finitenessTest,  Prev: noetherNormal,  Up: algebra_lib
 
 D.4.1.10 mapIsFinite
 ....................
@@ -8531,7 +8530,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==> 1
 
 
-File: sing.info,  Node: finitenessTest,  Prev: mapIsFinite,  Up: algebra_lib
+File: sing.htm,  Node: finitenessTest,  Prev: mapIsFinite,  Up: algebra_lib
 
 D.4.1.11 finitenessTest
 .......................
@@ -8598,7 +8597,7 @@ Procedure from library `algebra.lib' (*note algebra_lib::).
      ==>    _[3]=x2-z+a
 
 
-File: sing.info,  Node: elim_lib,  Next: homolog_lib,  Prev: algebra_lib,  Up: Commutative algebra
+File: sing.htm,  Node: elim_lib,  Next: homolog_lib,  Prev: algebra_lib,  Up: Commutative algebra
 
 D.4.2 elim_lib
 --------------
@@ -8622,7 +8621,7 @@ D.4.2 elim_lib
 * select1:: select generators containing one variable n...m
 
 
-File: sing.info,  Node: blowup0,  Next: elim,  Up: elim_lib
+File: sing.htm,  Node: blowup0,  Next: elim,  Up: elim_lib
 
 D.4.2.1 blowup0
 ...............
@@ -8703,7 +8702,7 @@ Procedure from library `elim.lib' (*note elim_lib::).
      kill Bl_jR, Bl_mr;
 
 
-File: sing.info,  Node: elim,  Next: elim1,  Prev: blowup0,  Up: elim_lib
+File: sing.htm,  Node: elim,  Next: elim1,  Prev: blowup0,  Up: elim_lib
 
 D.4.2.2 elim
 ............
@@ -8749,7 +8748,7 @@ See also:
 *See also:* *note elim1::; *note eliminate::.
 
 
-File: sing.info,  Node: elim1,  Next: nselect,  Prev: elim,  Up: elim_lib
+File: sing.htm,  Node: elim1,  Next: nselect,  Prev: elim,  Up: elim_lib
 
 D.4.2.3 elim1
 .............
@@ -8795,7 +8794,7 @@ See also:
 *See also:* *note elim::; *note eliminate::.
 
 
-File: sing.info,  Node: nselect,  Next: sat,  Prev: elim1,  Up: elim_lib
+File: sing.htm,  Node: nselect,  Next: sat,  Prev: elim1,  Up: elim_lib
 
 D.4.2.4 nselect
 ...............
@@ -8837,7 +8836,7 @@ See also:
 *See also:* *note select::; *note select1::.
 
 
-File: sing.info,  Node: sat,  Next: select,  Prev: nselect,  Up: elim_lib
+File: sing.htm,  Node: sat,  Next: select,  Prev: nselect,  Up: elim_lib
 
 D.4.2.5 sat
 ...........
@@ -8888,7 +8887,7 @@ Procedure from library `elim.lib' (*note elim_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: select,  Next: select1,  Prev: sat,  Up: elim_lib
+File: sing.htm,  Node: select,  Next: select1,  Prev: sat,  Up: elim_lib
 
 D.4.2.6 select
 ..............
@@ -8932,7 +8931,7 @@ See also:
 *See also:* *note nselect::; *note select1::.
 
 
-File: sing.info,  Node: select1,  Prev: select,  Up: elim_lib
+File: sing.htm,  Node: select1,  Prev: select,  Up: elim_lib
 
 D.4.2.7 select1
 ...............
@@ -8978,7 +8977,7 @@ See also:
 *See also:* *note nselect::; *note select::.
 
 
-File: sing.info,  Node: homolog_lib,  Next: mprimdec_lib,  Prev: elim_lib,  Up: Commutative algebra
+File: sing.htm,  Node: homolog_lib,  Next: mprimdec_lib,  Prev: elim_lib,  Up: Commutative algebra
 
 D.4.3 homolog_lib
 -----------------
@@ -9019,7 +9018,7 @@ D.4.3 homolog_lib
 * Tor:: Tor_k(M',N'), M,N modules, M'=coker(M), N'=coker(N)
 
 
-File: sing.info,  Node: cup,  Next: cupproduct,  Up: homolog_lib
+File: sing.htm,  Node: cup,  Next: cupproduct,  Up: homolog_lib
 
 D.4.3.1 cup
 ...........
@@ -9125,7 +9124,7 @@ product;
      printlevel = p;
 
 
-File: sing.info,  Node: cupproduct,  Next: depth,  Prev: cup,  Up: homolog_lib
+File: sing.htm,  Node: cupproduct,  Next: depth,  Prev: cup,  Up: homolog_lib
 
 D.4.3.2 cupproduct
 ..................
@@ -9339,7 +9338,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: depth,  Next: Ext_R,  Prev: cupproduct,  Up: homolog_lib
+File: sing.htm,  Node: depth,  Next: Ext_R,  Prev: cupproduct,  Up: homolog_lib
 
 D.4.3.3 depth
 .............
@@ -9381,7 +9380,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 1
 
 
-File: sing.info,  Node: Ext_R,  Next: Ext,  Prev: depth,  Up: homolog_lib
+File: sing.htm,  Node: Ext_R,  Next: Ext,  Prev: depth,  Up: homolog_lib
 
 D.4.3.4 Ext_R
 .............
@@ -9489,6 +9488,158 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> -z,
      ==> 0, 
      ==> 0  
+     ==> 
+     printlevel = p;
+
+
+File: sing.htm,  Node: Ext,  Next: fitting,  Prev: Ext_R,  Up: homolog_lib
+
+D.4.3.5 Ext
+...........
+
+Procedure from library `homolog.lib' (*note homolog_lib::).
+
+*Usage:*
+     Ext(v,M,N[,any]); v int resp. intvec, M,N modules
+
+*Compute:*
+     A presentation of Ext^k(M',N'); for k=v[1],v[2],... where
+     M'=coker(M) and N'=coker(N). Let
+
+                 0 <-- M' <-- F0 <-M-- F1 <-- F2 <--... ,   
+                 0 <-- N' <-- G0 <--N- G1
+
+     be a free resolution of M', resp. a presentation of N'. Consider
+     the commutative diagram
+
+                     0                  0                  0
+                     |^                 |^                 |^
+             --> Hom(Fk-1,N') -Ak-> Hom(Fk,N') -Ak+1-> Hom(Fk+1,N')
+                     |^                 |^                 |^
+             --> Hom(Fk-1,G0) -Ak-> Hom(Fk,G0) -Ak+1-> Hom(Fk+1,G0)
+                                        |^                 |^
+                                        |C                 |B
+                                    Hom(Fk,G1) ------> Hom(Fk+1,G1)
+
+                (Ak,Ak+1 induced by M and B,C induced by N).
+
+     Let K=modulo(Ak+1,B), J=module(Ak)+module(C) and Ext=modulo(K,J),
+     then we have exact sequences
+
+              R^p --K-> Hom(Fk,G0) --Ak+1-> Hom(Fk+1,G0)/im(B),
+
+              R^q -Ext-> R^p --K-> Hom(Fk,G0)/(im(Ak)+im(C)).
+
+     Hence, Ext presents Ext^k(M',N').
+
+*Return:*
+     - module Ext, a presentation of Ext^k(M',N') if v is of type int
+     - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.
+     - In case of a third argument of any type return a list l:
+
+                  l[1] = module Ext/list of Ext^k
+                  l[2] = SB of Ext/list of SB of Ext^k
+                  l[3] = matrix/list of matrices, each representing a kbase of Ext^k
+                            (if finite dimensional)
+
+*Display:*
+     printlevel >=0: dimension, vdim of Ext^k for each k (default).
+     printlevel >=1: matrices Ak, Ak+1 and kbase of Ext^k in Hom(Fk,G0)
+     (if finite dimensional)
+
+*Note:*
+     In order to compute Ext^k(M,N) use the command
+     Ext(k,syz(M),syz(N)); or: list P=mres(M,2); list Q=mres(N,2);
+     Ext(k,P[2],Q[2]);
+
+*Example:*
+     LIB "homolog.lib";
+     int p      = printlevel;
+     printlevel = 1;
+     ring r     = 0,(x,y),dp;
+     ideal i    = x2-y3;
+     ideal j    = x2-y5;
+     list E     = Ext(0..2,i,j);    // Ext^k(r/i,r/j) for k=0,1,2 over r
+     ==> // Computing Ext^0 (help Ext; gives an explanation):
+     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+     ==> // then Hom(F0,G0)-->Hom(F1,G0) is given by:
+     ==> y3-x2
+     ==> // and Hom(F-1,G0) + Hom(F0,G1)-->Hom(F0,G0) is given by:
+     ==> 0,-y5+x2
+     ==> 
+     ==> // dimension of Ext^0:  -1
+     ==> 
+     ==> // Computing Ext^1 (help Ext; gives an explanation):
+     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+     ==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
+     ==> 0
+     ==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
+     ==> y3-x2,-y5+x2
+     ==> 
+     ==> // dimension of Ext^1:  0
+     ==> // vdim of Ext^1:       10
+     ==> 
+     ==> // Computing Ext^2 (help Ext; gives an explanation):
+     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+     ==> // then Hom(F2,G0)-->Hom(F3,G0) is given by:
+     ==> 1
+     ==> // and Hom(F1,G0) + Hom(F2,G1)-->Hom(F2,G0) is given by:
+     ==> 0,-y5+x2
+     ==> 
+     ==> // dimension of Ext^2:  -1
+     ==> 
+     qring R    = std(i);
+     ideal j    = fetch(r,j);
+     module M   = [-x,y],[-y2,x];
+     printlevel = 2;
+     module E1  = Ext(1,M,j);       // Ext^1(R^2/M,R/j) over R=r/i
+     ==> // Computing Ext^1 (help Ext; gives an explanation):
+     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+     ==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
+     ==> x, -y,
+     ==> y2,-x 
+     ==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
+     ==> x, -y,-y5+x2,0,    
+     ==> y2,-x,0,     -y5+x2
+     ==> 
+     ==> // dimension of Ext^1:  -1
+     ==> 
+     list l     = Ext(4,M,M,1);     // Ext^4(R^2/M,R^2/M) over R=r/i
+     ==> // Computing Ext^4 (help Ext; gives an explanation):
+     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
+     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
+     ==> // then Hom(F4,G0)-->Hom(F5,G0) is given by:
+     ==> x, -y,0, 0, 
+     ==> y2,-x,0, 0, 
+     ==> 0, 0, x, -y,
+     ==> 0, 0, y2,-x 
+     ==> // and Hom(F3,G0) + Hom(F4,G1)-->Hom(F4,G0) is given by:
+     ==> x, -y,0, 0, -x,0, -y2,0,  
+     ==> y2,-x,0, 0, 0, -x,0,  -y2,
+     ==> 0, 0, x, -y,y, 0, x,  0,  
+     ==> 0, 0, y2,-x,0, y, 0,  x   
+     ==> 
+     ==> // dimension of Ext^4:  0
+     ==> // vdim of Ext^4:       2
+     ==> 
+     ==> // columns of matrix are kbase of Ext^4 in Hom(F4,G0)
+     ==> 1,0,
+     ==> 0,y,
+     ==> 0,1,
+     ==> 1,0 
+     ==> 
+     ==> // element 1 of kbase of Ext^4 in Hom(F4,G0)
+     ==> // as matrix: F4-->G0
+     ==> 1,0,
+     ==> 0,1 
+     ==> // element 2 of kbase of Ext^4 in Hom(F4,G0)
+     ==> // as matrix: F4-->G0
+     ==> 0,y,
+     ==> 1,0 
      ==> 
      printlevel = p;
 

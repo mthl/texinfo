@@ -2,17 +2,25 @@
 <div id="Tests"></div>
 == Tests ==
 
-Now tex on the same line <pre class="tex"> some
-$$ \chi^2 = \sum_{i=1}^N
+Now tex on the same line 
+some
+<br />
+<div class="mathdisplay" align="CENTER"><!-- MATH
+\begin{displaymath}
+\chi^2 = \sum_{i=1}^N
 \left(y_i - (a + b x_i)
-\over \sigma_i\right)^2 $$
-</pre> bidule
+\over \sigma_i\right)^2
+\end{displaymath}
+-->[[Image:tex_1.png|179px|\begin{displaymath}\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 \end{displaymath}]]</div>
+<br clear="ALL" /> bidule
 Some text one the line following @end tex
 
 Now tex on the following line, valid fot tex (with @end tex on a line).
-<pre class="tex"> some
-tex \TeX 
-</pre>
+some
+tex <span class="logo-TeX">T<small>E</small>X</span>
+
 Same that @html (but empty following line not ignored).
 
 Test of @math

@@ -197,7 +197,14 @@ do
       use_latex2html=no
       use_tex4ht=no
       l2h_tmp_dir=
+      maybe_use_latex2html=no
       if echo "$remaining" | grep -qs -- '-l2h'; then
+        maybe_use_latex2html=yes
+      fi
+      if echo "$remaining" | grep -qs -- 'L2H 1'; then
+        maybe_use_latex2html=yes
+      fi
+      if [ $maybe_use_latex2html = 'yes' ]; then
         if [ "$no_latex2html" = 'yes' ]; then
           echo "S: (no latex2html) $current"
           continue 2

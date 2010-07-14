@@ -1,160 +1,7 @@
-This is sing.info, produced by makeinfo version 4.13 from singular.texi.
-
-
-
-File: sing.info,  Node: Ext,  Next: fitting,  Prev: Ext_R,  Up: homolog_lib
-
-D.4.3.5 Ext
-...........
-
-Procedure from library `homolog.lib' (*note homolog_lib::).
-
-*Usage:*
-     Ext(v,M,N[,any]); v int resp. intvec, M,N modules
-
-*Compute:*
-     A presentation of Ext^k(M',N'); for k=v[1],v[2],... where
-     M'=coker(M) and N'=coker(N). Let
-
-                 0 <-- M' <-- F0 <-M-- F1 <-- F2 <--... ,   
-                 0 <-- N' <-- G0 <--N- G1
-
-     be a free resolution of M', resp. a presentation of N'. Consider
-     the commutative diagram
-
-                     0                  0                  0
-                     |^                 |^                 |^
-             --> Hom(Fk-1,N') -Ak-> Hom(Fk,N') -Ak+1-> Hom(Fk+1,N')
-                     |^                 |^                 |^
-             --> Hom(Fk-1,G0) -Ak-> Hom(Fk,G0) -Ak+1-> Hom(Fk+1,G0)
-                                        |^                 |^
-                                        |C                 |B
-                                    Hom(Fk,G1) ------> Hom(Fk+1,G1)
-
-                (Ak,Ak+1 induced by M and B,C induced by N).
-
-     Let K=modulo(Ak+1,B), J=module(Ak)+module(C) and Ext=modulo(K,J),
-     then we have exact sequences
-
-              R^p --K-> Hom(Fk,G0) --Ak+1-> Hom(Fk+1,G0)/im(B),
-
-              R^q -Ext-> R^p --K-> Hom(Fk,G0)/(im(Ak)+im(C)).
-
-     Hence, Ext presents Ext^k(M',N').
-
-*Return:*
-     - module Ext, a presentation of Ext^k(M',N') if v is of type int
-     - a list of Ext^k (k=v[1],v[2],...) if v is of type intvec.
-     - In case of a third argument of any type return a list l:
-
-                  l[1] = module Ext/list of Ext^k
-                  l[2] = SB of Ext/list of SB of Ext^k
-                  l[3] = matrix/list of matrices, each representing a kbase of Ext^k
-                            (if finite dimensional)
-
-*Display:*
-     printlevel >=0: dimension, vdim of Ext^k for each k (default).
-     printlevel >=1: matrices Ak, Ak+1 and kbase of Ext^k in Hom(Fk,G0)
-     (if finite dimensional)
-
-*Note:*
-     In order to compute Ext^k(M,N) use the command
-     Ext(k,syz(M),syz(N)); or: list P=mres(M,2); list Q=mres(N,2);
-     Ext(k,P[2],Q[2]);
-
-*Example:*
-     LIB "homolog.lib";
-     int p      = printlevel;
-     printlevel = 1;
-     ring r     = 0,(x,y),dp;
-     ideal i    = x2-y3;
-     ideal j    = x2-y5;
-     list E     = Ext(0..2,i,j);    // Ext^k(r/i,r/j) for k=0,1,2 over r
-     ==> // Computing Ext^0 (help Ext; gives an explanation):
-     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
-     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
-     ==> // then Hom(F0,G0)-->Hom(F1,G0) is given by:
-     ==> y3-x2
-     ==> // and Hom(F-1,G0) + Hom(F0,G1)-->Hom(F0,G0) is given by:
-     ==> 0,-y5+x2
-     ==> 
-     ==> // dimension of Ext^0:  -1
-     ==> 
-     ==> // Computing Ext^1 (help Ext; gives an explanation):
-     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
-     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
-     ==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
-     ==> 0
-     ==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
-     ==> y3-x2,-y5+x2
-     ==> 
-     ==> // dimension of Ext^1:  0
-     ==> // vdim of Ext^1:       10
-     ==> 
-     ==> // Computing Ext^2 (help Ext; gives an explanation):
-     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
-     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
-     ==> // then Hom(F2,G0)-->Hom(F3,G0) is given by:
-     ==> 1
-     ==> // and Hom(F1,G0) + Hom(F2,G1)-->Hom(F2,G0) is given by:
-     ==> 0,-y5+x2
-     ==> 
-     ==> // dimension of Ext^2:  -1
-     ==> 
-     qring R    = std(i);
-     ideal j    = fetch(r,j);
-     module M   = [-x,y],[-y2,x];
-     printlevel = 2;
-     module E1  = Ext(1,M,j);       // Ext^1(R^2/M,R/j) over R=r/i
-     ==> // Computing Ext^1 (help Ext; gives an explanation):
-     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
-     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
-     ==> // then Hom(F1,G0)-->Hom(F2,G0) is given by:
-     ==> x, -y,
-     ==> y2,-x 
-     ==> // and Hom(F0,G0) + Hom(F1,G1)-->Hom(F1,G0) is given by:
-     ==> x, -y,-y5+x2,0,    
-     ==> y2,-x,0,     -y5+x2
-     ==> 
-     ==> // dimension of Ext^1:  -1
-     ==> 
-     list l     = Ext(4,M,M,1);     // Ext^4(R^2/M,R^2/M) over R=r/i
-     ==> // Computing Ext^4 (help Ext; gives an explanation):
-     ==> // Let 0<--coker(M)<--F0<--F1<--F2<--... be a resolution of coker(M),
-     ==> // and 0<--coker(N)<--G0<--G1 a presentation of coker(N),
-     ==> // then Hom(F4,G0)-->Hom(F5,G0) is given by:
-     ==> x, -y,0, 0, 
-     ==> y2,-x,0, 0, 
-     ==> 0, 0, x, -y,
-     ==> 0, 0, y2,-x 
-     ==> // and Hom(F3,G0) + Hom(F4,G1)-->Hom(F4,G0) is given by:
-     ==> x, -y,0, 0, -x,0, -y2,0,  
-     ==> y2,-x,0, 0, 0, -x,0,  -y2,
-     ==> 0, 0, x, -y,y, 0, x,  0,  
-     ==> 0, 0, y2,-x,0, y, 0,  x   
-     ==> 
-     ==> // dimension of Ext^4:  0
-     ==> // vdim of Ext^4:       2
-     ==> 
-     ==> // columns of matrix are kbase of Ext^4 in Hom(F4,G0)
-     ==> 1,0,
-     ==> 0,y,
-     ==> 0,1,
-     ==> 1,0 
-     ==> 
-     ==> // element 1 of kbase of Ext^4 in Hom(F4,G0)
-     ==> // as matrix: F4-->G0
-     ==> 1,0,
-     ==> 0,1 
-     ==> // element 2 of kbase of Ext^4 in Hom(F4,G0)
-     ==> // as matrix: F4-->G0
-     ==> 0,y,
-     ==> 1,0 
-     ==> 
-     printlevel = p;
+This is sing.htm, produced by makeinfo version 4.13 from singular.texi.
 
 
-File: sing.info,  Node: fitting,  Next: flatteningStrat,  Prev: Ext,  Up: homolog_lib
+File: sing.htm,  Node: fitting,  Next: flatteningStrat,  Prev: Ext,  Up: homolog_lib
 
 D.4.3.6 fitting
 ...............
@@ -193,7 +40,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> _[1]=1
 
 
-File: sing.info,  Node: flatteningStrat,  Next: Hom,  Prev: fitting,  Up: homolog_lib
+File: sing.htm,  Node: flatteningStrat,  Next: Hom,  Prev: fitting,  Up: homolog_lib
 
 D.4.3.7 flatteningStrat
 .......................
@@ -236,7 +83,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==>    _[5]=x(0)
 
 
-File: sing.info,  Node: Hom,  Next: homology,  Prev: flatteningStrat,  Up: homolog_lib
+File: sing.htm,  Node: Hom,  Next: homology,  Prev: flatteningStrat,  Up: homolog_lib
 
 D.4.3.8 Hom
 ...........
@@ -382,7 +229,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: homology,  Next: isCM,  Prev: Hom,  Up: homolog_lib
+File: sing.htm,  Node: homology,  Next: isCM,  Prev: Hom,  Up: homolog_lib
 
 D.4.3.9 homology
 ................
@@ -441,7 +288,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> _[1]=gen(1)
 
 
-File: sing.info,  Node: isCM,  Next: isFlat,  Prev: homology,  Up: homolog_lib
+File: sing.htm,  Node: isCM,  Next: isFlat,  Prev: homology,  Up: homolog_lib
 
 D.4.3.10 isCM
 .............
@@ -469,7 +316,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 1
 
 
-File: sing.info,  Node: isFlat,  Next: isLocallyFree,  Prev: isCM,  Up: homolog_lib
+File: sing.htm,  Node: isFlat,  Next: isLocallyFree,  Prev: isCM,  Up: homolog_lib
 
 D.4.3.11 isFlat
 ...............
@@ -504,7 +351,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0
 
 
-File: sing.info,  Node: isLocallyFree,  Next: isReg,  Prev: isFlat,  Up: homolog_lib
+File: sing.htm,  Node: isLocallyFree,  Next: isReg,  Prev: isFlat,  Up: homolog_lib
 
 D.4.3.12 isLocallyFree
 ......................
@@ -532,7 +379,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0
 
 
-File: sing.info,  Node: isReg,  Next: kernel,  Prev: isLocallyFree,  Up: homolog_lib
+File: sing.htm,  Node: isReg,  Next: kernel,  Prev: isLocallyFree,  Up: homolog_lib
 
 D.4.3.13 isReg
 ..............
@@ -561,7 +408,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 1
 
 
-File: sing.info,  Node: kernel,  Next: kohom,  Prev: isReg,  Up: homolog_lib
+File: sing.htm,  Node: kernel,  Next: kohom,  Prev: isReg,  Up: homolog_lib
 
 D.4.3.14 kernel
 ...............
@@ -607,7 +454,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0,z,0,y,0,x 
 
 
-File: sing.info,  Node: kohom,  Next: kontrahom,  Prev: kernel,  Up: homolog_lib
+File: sing.htm,  Node: kohom,  Next: kontrahom,  Prev: kernel,  Up: homolog_lib
 
 D.4.3.15 kohom
 ..............
@@ -635,7 +482,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0,0,z,0, 0, 77,0, 0, 33
 
 
-File: sing.info,  Node: kontrahom,  Next: KoszulHomology,  Prev: kohom,  Up: homolog_lib
+File: sing.htm,  Node: kontrahom,  Next: KoszulHomology,  Prev: kohom,  Up: homolog_lib
 
 D.4.3.16 kontrahom
 ..................
@@ -666,7 +513,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0,0, 0,0, 5,33 
 
 
-File: sing.info,  Node: KoszulHomology,  Next: tensorMod,  Prev: kontrahom,  Up: homolog_lib
+File: sing.htm,  Node: KoszulHomology,  Next: tensorMod,  Prev: kontrahom,  Up: homolog_lib
 
 D.4.3.17 KoszulHomology
 .......................
@@ -708,7 +555,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> _[1]=0
 
 
-File: sing.info,  Node: tensorMod,  Next: Tor,  Prev: KoszulHomology,  Up: homolog_lib
+File: sing.htm,  Node: tensorMod,  Next: Tor,  Prev: KoszulHomology,  Up: homolog_lib
 
 D.4.3.18 tensorMod
 ..................
@@ -750,7 +597,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      ==> 0,0,0,0,0,z,0,7,0,8,0,9 
 
 
-File: sing.info,  Node: Tor,  Prev: tensorMod,  Up: homolog_lib
+File: sing.htm,  Node: Tor,  Prev: tensorMod,  Up: homolog_lib
 
 D.4.3.19 Tor
 ............
@@ -884,7 +731,7 @@ Procedure from library `homolog.lib' (*note homolog_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: mprimdec_lib,  Next: mregular_lib,  Prev: homolog_lib,  Up: Commutative algebra
+File: sing.htm,  Node: mprimdec_lib,  Next: mregular_lib,  Prev: homolog_lib,  Up: Commutative algebra
 
 D.4.4 mprimdec_lib
 ------------------
@@ -930,7 +777,7 @@ D.4.4 mprimdec_lib
 * getData:: extracts oldData and computes the remaining data
 
 
-File: sing.info,  Node: separator,  Next: PrimdecA,  Up: mprimdec_lib
+File: sing.htm,  Node: separator,  Next: PrimdecA,  Up: mprimdec_lib
 
 D.4.4.1 separator
 .................
@@ -960,7 +807,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>    y
 
 
-File: sing.info,  Node: PrimdecA,  Next: PrimdecB,  Prev: separator,  Up: mprimdec_lib
+File: sing.htm,  Node: PrimdecA,  Next: PrimdecB,  Prev: separator,  Up: mprimdec_lib
 
 D.4.4.2 PrimdecA
 ................
@@ -1008,7 +855,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[2]=x
 
 
-File: sing.info,  Node: PrimdecB,  Next: modDec,  Prev: PrimdecA,  Up: mprimdec_lib
+File: sing.htm,  Node: PrimdecB,  Next: modDec,  Prev: PrimdecA,  Up: mprimdec_lib
 
 D.4.4.3 PrimdecB
 ................
@@ -1058,7 +905,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[3]=x
 
 
-File: sing.info,  Node: modDec,  Next: zeroMod,  Prev: PrimdecB,  Up: mprimdec_lib
+File: sing.htm,  Node: modDec,  Next: zeroMod,  Prev: PrimdecB,  Up: mprimdec_lib
 
 D.4.4.4 modDec
 ..............
@@ -1096,7 +943,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=x
 
 
-File: sing.info,  Node: zeroMod,  Next: GTZmod,  Prev: modDec,  Up: mprimdec_lib
+File: sing.htm,  Node: zeroMod,  Next: GTZmod,  Prev: modDec,  Up: mprimdec_lib
 
 D.4.4.5 zeroMod
 ...............
@@ -1146,7 +993,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=z+1
 
 
-File: sing.info,  Node: GTZmod,  Next: dec1var,  Prev: zeroMod,  Up: mprimdec_lib
+File: sing.htm,  Node: GTZmod,  Next: dec1var,  Prev: zeroMod,  Up: mprimdec_lib
 
 D.4.4.6 GTZmod
 ..............
@@ -1188,7 +1035,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=x
 
 
-File: sing.info,  Node: dec1var,  Next: annil,  Prev: GTZmod,  Up: mprimdec_lib
+File: sing.htm,  Node: dec1var,  Next: annil,  Prev: GTZmod,  Up: mprimdec_lib
 
 D.4.4.7 dec1var
 ...............
@@ -1236,7 +1083,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=z+1
 
 
-File: sing.info,  Node: annil,  Next: splitting,  Prev: dec1var,  Up: mprimdec_lib
+File: sing.htm,  Node: annil,  Next: splitting,  Prev: dec1var,  Up: mprimdec_lib
 
 D.4.4.8 annil
 .............
@@ -1262,7 +1109,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> ann[1]=xy
 
 
-File: sing.info,  Node: splitting,  Next: primTest,  Prev: annil,  Up: mprimdec_lib
+File: sing.htm,  Node: splitting,  Next: primTest,  Prev: annil,  Up: mprimdec_lib
 
 D.4.4.9 splitting
 .................
@@ -1320,7 +1167,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> check[2]=z*gen(1)
 
 
-File: sing.info,  Node: primTest,  Next: preComp,  Prev: splitting,  Up: mprimdec_lib
+File: sing.htm,  Node: primTest,  Next: preComp,  Prev: splitting,  Up: mprimdec_lib
 
 D.4.4.10 primTest
 .................
@@ -1354,7 +1201,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> primId[3]=z
 
 
-File: sing.info,  Node: preComp,  Next: indSet,  Prev: primTest,  Up: mprimdec_lib
+File: sing.htm,  Node: preComp,  Next: indSet,  Prev: primTest,  Up: mprimdec_lib
 
 D.4.4.11 preComp
 ................
@@ -1407,7 +1254,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> check[2]=z*gen(2)+gen(2)
 
 
-File: sing.info,  Node: indSet,  Next: GTZopt,  Prev: preComp,  Up: mprimdec_lib
+File: sing.htm,  Node: indSet,  Next: GTZopt,  Prev: preComp,  Up: mprimdec_lib
 
 D.4.4.12 indSet
 ...............
@@ -1466,7 +1313,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>          4
 
 
-File: sing.info,  Node: GTZopt,  Next: zeroOpt,  Prev: indSet,  Up: mprimdec_lib
+File: sing.htm,  Node: GTZopt,  Next: zeroOpt,  Prev: indSet,  Up: mprimdec_lib
 
 D.4.4.13 GTZopt
 ...............
@@ -1507,7 +1354,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=x
 
 
-File: sing.info,  Node: zeroOpt,  Next: clrSBmod,  Prev: GTZopt,  Up: mprimdec_lib
+File: sing.htm,  Node: zeroOpt,  Next: clrSBmod,  Prev: GTZopt,  Up: mprimdec_lib
 
 D.4.4.14 zeroOpt
 ................
@@ -1556,7 +1403,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>       _[1]=z+1
 
 
-File: sing.info,  Node: clrSBmod,  Next: minSatMod,  Prev: zeroOpt,  Up: mprimdec_lib
+File: sing.htm,  Node: clrSBmod,  Next: minSatMod,  Prev: zeroOpt,  Up: mprimdec_lib
 
 D.4.4.15 clrSBmod
 .................
@@ -1579,7 +1426,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> N2[2]=(b)*x*gen(1)
 
 
-File: sing.info,  Node: minSatMod,  Next: specialModulesEqual,  Prev: clrSBmod,  Up: mprimdec_lib
+File: sing.htm,  Node: minSatMod,  Next: specialModulesEqual,  Prev: clrSBmod,  Up: mprimdec_lib
 
 D.4.4.16 minSatMod
 ..................
@@ -1607,7 +1454,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==>    y
 
 
-File: sing.info,  Node: specialModulesEqual,  Next: stdModulesEqual,  Prev: minSatMod,  Up: mprimdec_lib
+File: sing.htm,  Node: specialModulesEqual,  Next: stdModulesEqual,  Prev: minSatMod,  Up: mprimdec_lib
 
 D.4.4.17 specialModulesEqual
 ............................
@@ -1637,7 +1484,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> 1
 
 
-File: sing.info,  Node: stdModulesEqual,  Next: modulesEqual,  Prev: specialModulesEqual,  Up: mprimdec_lib
+File: sing.htm,  Node: stdModulesEqual,  Next: modulesEqual,  Prev: specialModulesEqual,  Up: mprimdec_lib
 
 D.4.4.18 stdModulesEqual
 ........................
@@ -1666,7 +1513,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> 1
 
 
-File: sing.info,  Node: modulesEqual,  Next: getData,  Prev: stdModulesEqual,  Up: mprimdec_lib
+File: sing.htm,  Node: modulesEqual,  Next: getData,  Prev: stdModulesEqual,  Up: mprimdec_lib
 
 D.4.4.19 modulesEqual
 .....................
@@ -1695,7 +1542,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> 1
 
 
-File: sing.info,  Node: getData,  Prev: modulesEqual,  Up: mprimdec_lib
+File: sing.htm,  Node: getData,  Prev: modulesEqual,  Up: mprimdec_lib
 
 D.4.4.20 getData
 ................
@@ -1750,7 +1597,7 @@ Procedure from library `mprimdec.lib' (*note mprimdec_lib::).
      ==> 1
 
 
-File: sing.info,  Node: mregular_lib,  Next: normal_lib,  Prev: mprimdec_lib,  Up: Commutative algebra
+File: sing.htm,  Node: mregular_lib,  Next: normal_lib,  Prev: mprimdec_lib,  Up: Commutative algebra
 
 D.4.5 mregular_lib
 ------------------
@@ -1788,7 +1635,7 @@ D.4.5 mregular_lib
 * reg_moncurve:: regularity of projective monomial curve defined by li
 
 
-File: sing.info,  Node: reg_CM,  Next: reg_curve,  Up: mregular_lib
+File: sing.htm,  Node: reg_CM,  Next: reg_curve,  Up: mregular_lib
 
 D.4.5.1 reg_CM
 ..............
@@ -1835,7 +1682,7 @@ Procedure from library `mregular.lib' (*note mregular_lib::).
      ==> 2
 
 
-File: sing.info,  Node: reg_curve,  Next: reg_moncurve,  Prev: reg_CM,  Up: mregular_lib
+File: sing.htm,  Node: reg_curve,  Next: reg_moncurve,  Prev: reg_CM,  Up: mregular_lib
 
 D.4.5.2 reg_curve
 .................
@@ -1894,7 +1741,7 @@ Procedure from library `mregular.lib' (*note mregular_lib::).
      ==> 93
 
 
-File: sing.info,  Node: reg_moncurve,  Prev: reg_curve,  Up: mregular_lib
+File: sing.htm,  Node: reg_moncurve,  Prev: reg_curve,  Up: mregular_lib
 
 D.4.5.3 reg_moncurve
 ....................
@@ -1947,7 +1794,7 @@ Procedure from library `mregular.lib' (*note mregular_lib::).
      ==> 3
 
 
-File: sing.info,  Node: normal_lib,  Next: primdec_lib,  Prev: mregular_lib,  Up: Commutative algebra
+File: sing.htm,  Node: normal_lib,  Next: primdec_lib,  Prev: mregular_lib,  Up: Commutative algebra
 
 D.4.6 normal_lib
 ----------------
@@ -1977,7 +1824,7 @@ D.4.6 normal_lib
 * deltaLoc:: (sum of) delta invariant(s) at conjugated singular points
 
 
-File: sing.info,  Node: normal,  Next: HomJJ,  Up: normal_lib
+File: sing.htm,  Node: normal,  Next: HomJJ,  Up: normal_lib
 
 D.4.6.1 normal
 ..............
@@ -2060,7 +1907,7 @@ Procedure from library `normal.lib' (*note normal_lib::).
      ==> 3
 
 
-File: sing.info,  Node: HomJJ,  Next: genus,  Prev: normal,  Up: normal_lib
+File: sing.htm,  Node: HomJJ,  Next: genus,  Prev: normal,  Up: normal_lib
 
 D.4.6.2 HomJJ
 .............
@@ -2117,7 +1964,7 @@ Procedure from library `normal.lib' (*note normal_lib::).
      ==> psi[2]=T(1)^3
 
 
-File: sing.info,  Node: genus,  Next: deltaLoc,  Prev: HomJJ,  Up: normal_lib
+File: sing.htm,  Node: genus,  Next: deltaLoc,  Prev: HomJJ,  Up: normal_lib
 
 D.4.6.3 genus
 .............
@@ -2146,7 +1993,7 @@ Procedure from library `normal.lib' (*note normal_lib::).
      ==> 0
 
 
-File: sing.info,  Node: deltaLoc,  Prev: genus,  Up: normal_lib
+File: sing.htm,  Node: deltaLoc,  Prev: genus,  Up: normal_lib
 
 D.4.6.4 deltaLoc
 ................
@@ -2244,7 +2091,7 @@ See also:
 *See also:* *note delta::; *note tjurina::.
 
 
-File: sing.info,  Node: primdec_lib,  Next: primitiv_lib,  Prev: normal_lib,  Up: Commutative algebra
+File: sing.htm,  Node: primdec_lib,  Next: primitiv_lib,  Prev: normal_lib,  Up: Commutative algebra
 
 D.4.7 primdec_lib
 -----------------
@@ -2292,7 +2139,7 @@ D.4.7 primdec_lib
 * zerodec:: zerodimensional decomposition via Monico
 
 
-File: sing.info,  Node: Ann,  Next: primdecGTZ,  Up: primdec_lib
+File: sing.htm,  Node: Ann,  Next: primdecGTZ,  Up: primdec_lib
 
 D.4.7.1 Ann
 ...........
@@ -2300,7 +2147,7 @@ D.4.7.1 Ann
 Procedure from library `primdec.lib' (*note primdec_lib::).
 
 
-File: sing.info,  Node: primdecGTZ,  Next: primdecSY,  Prev: Ann,  Up: primdec_lib
+File: sing.htm,  Node: primdecGTZ,  Next: primdecSY,  Prev: Ann,  Up: primdec_lib
 
 D.4.7.2 primdecGTZ
 ..................
@@ -2346,7 +2193,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>       _[2]=y-z2
 
 
-File: sing.info,  Node: primdecSY,  Next: minAssGTZ,  Prev: primdecGTZ,  Up: primdec_lib
+File: sing.htm,  Node: primdecSY,  Next: minAssGTZ,  Prev: primdecGTZ,  Up: primdec_lib
 
 D.4.7.3 primdecSY
 .................
@@ -2394,7 +2241,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>       _[2]=y+1
 
 
-File: sing.info,  Node: minAssGTZ,  Next: minAssChar,  Prev: primdecSY,  Up: primdec_lib
+File: sing.htm,  Node: minAssGTZ,  Next: minAssChar,  Prev: primdecSY,  Up: primdec_lib
 
 D.4.7.4 minAssGTZ
 .................
@@ -2428,7 +2275,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>    _[2]=-z2+y
 
 
-File: sing.info,  Node: minAssChar,  Next: testPrimary,  Prev: minAssGTZ,  Up: primdec_lib
+File: sing.htm,  Node: minAssChar,  Next: testPrimary,  Prev: minAssGTZ,  Up: primdec_lib
 
 D.4.7.5 minAssChar
 ..................
@@ -2465,7 +2312,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>    _[3]=y2+2z
 
 
-File: sing.info,  Node: testPrimary,  Next: radical,  Prev: minAssChar,  Up: primdec_lib
+File: sing.htm,  Node: testPrimary,  Next: radical,  Prev: minAssChar,  Up: primdec_lib
 
 D.4.7.6 testPrimary
 ...................
@@ -2492,7 +2339,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> 1
 
 
-File: sing.info,  Node: radical,  Next: radicalEHV,  Prev: testPrimary,  Up: primdec_lib
+File: sing.htm,  Node: radical,  Next: radicalEHV,  Prev: testPrimary,  Up: primdec_lib
 
 D.4.7.7 radical
 ...............
@@ -2521,7 +2368,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> pr[2]=y2z+yz+2y+2
 
 
-File: sing.info,  Node: radicalEHV,  Next: equiRadical,  Prev: radical,  Up: primdec_lib
+File: sing.htm,  Node: radicalEHV,  Next: equiRadical,  Prev: radical,  Up: primdec_lib
 
 D.4.7.8 radicalEHV
 ..................
@@ -2553,7 +2400,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> pr[3]=y3+y2+2yz+2z
 
 
-File: sing.info,  Node: equiRadical,  Next: prepareAss,  Prev: radicalEHV,  Up: primdec_lib
+File: sing.htm,  Node: equiRadical,  Next: prepareAss,  Prev: radicalEHV,  Up: primdec_lib
 
 D.4.7.9 equiRadical
 ...................
@@ -2582,7 +2429,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> pr[2]=y2z+yz+2y+2
 
 
-File: sing.info,  Node: prepareAss,  Next: equidim,  Prev: equiRadical,  Up: primdec_lib
+File: sing.htm,  Node: prepareAss,  Next: equidim,  Prev: equiRadical,  Up: primdec_lib
 
 D.4.7.10 prepareAss
 ...................
@@ -2611,7 +2458,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>    _[2]=y2z+yz+2y+2
 
 
-File: sing.info,  Node: equidim,  Next: equidimMax,  Prev: prepareAss,  Up: primdec_lib
+File: sing.htm,  Node: equidim,  Next: equidimMax,  Prev: prepareAss,  Up: primdec_lib
 
 D.4.7.11 equidim
 ................
@@ -2651,7 +2498,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>    _[1]=z
 
 
-File: sing.info,  Node: equidimMax,  Next: equidimMaxEHV,  Prev: equidim,  Up: primdec_lib
+File: sing.htm,  Node: equidimMax,  Next: equidimMaxEHV,  Prev: equidim,  Up: primdec_lib
 
 D.4.7.12 equidimMax
 ...................
@@ -2672,7 +2519,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> _[1]=z
 
 
-File: sing.info,  Node: equidimMaxEHV,  Next: zerodec,  Prev: equidimMax,  Up: primdec_lib
+File: sing.htm,  Node: equidimMaxEHV,  Next: zerodec,  Prev: equidimMax,  Up: primdec_lib
 
 D.4.7.13 equidimMaxEHV
 ......................
@@ -2696,7 +2543,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==> _[1]=z
 
 
-File: sing.info,  Node: zerodec,  Prev: equidimMaxEHV,  Up: primdec_lib
+File: sing.htm,  Node: zerodec,  Prev: equidimMaxEHV,  Up: primdec_lib
 
 D.4.7.14 zerodec
 ................
@@ -2736,7 +2583,7 @@ Procedure from library `primdec.lib' (*note primdec_lib::).
      ==>    _[3]=x2-2
 
 
-File: sing.info,  Node: primitiv_lib,  Next: reesclos_lib,  Prev: primdec_lib,  Up: Commutative algebra
+File: sing.htm,  Node: primitiv_lib,  Next: reesclos_lib,  Prev: primdec_lib,  Up: Commutative algebra
 
 D.4.8 primitiv_lib
 ------------------
@@ -2759,7 +2606,7 @@ D.4.8 primitiv_lib
 * splitring:: define ring extension with name R and switch to it
 
 
-File: sing.info,  Node: primitive,  Next: primitive_extra,  Up: primitiv_lib
+File: sing.htm,  Node: primitive,  Next: primitive_extra,  Up: primitiv_lib
 
 D.4.8.1 primitive
 .................
@@ -2822,7 +2669,7 @@ See also:
 *See also:* *note primitive_extra::.
 
 
-File: sing.info,  Node: primitive_extra,  Next: splitring,  Prev: primitive,  Up: primitiv_lib
+File: sing.htm,  Node: primitive_extra,  Next: splitring,  Prev: primitive,  Up: primitiv_lib
 
 D.4.8.2 primitive_extra
 .......................
@@ -2886,7 +2733,7 @@ Procedure from library `primitiv.lib' (*note primitiv_lib::).
      ==>    1,1,1,1
 
 
-File: sing.info,  Node: splitring,  Prev: primitive_extra,  Up: primitiv_lib
+File: sing.htm,  Node: splitring,  Prev: primitive_extra,  Up: primitiv_lib
 
 D.4.8.3 splitring
 .................
@@ -2944,7 +2791,7 @@ Procedure from library `primitiv.lib' (*note primitiv_lib::).
      kill r1; kill r2;
 
 
-File: sing.info,  Node: reesclos_lib,  Next: intprog_lib,  Prev: primitiv_lib,  Up: Commutative algebra
+File: sing.htm,  Node: reesclos_lib,  Next: intprog_lib,  Prev: primitiv_lib,  Up: Commutative algebra
 
 D.4.9 reesclos_lib
 ------------------
@@ -2982,7 +2829,7 @@ D.4.9 reesclos_lib
 * closureFrac:: computes fractions representing elements of R^=L[n]
 
 
-File: sing.info,  Node: ReesAlgebra,  Next: normalI,  Up: reesclos_lib
+File: sing.htm,  Node: ReesAlgebra,  Next: normalI,  Up: reesclos_lib
 
 D.4.9.1 ReesAlgebra
 ...................
@@ -3023,7 +2870,7 @@ Procedure from library `reesclos.lib' (*note reesclos_lib::).
      ==> ker[6]=x^3*U(1)*U(3)^4-U(2)^5
 
 
-File: sing.info,  Node: normalI,  Next: primeClosure,  Prev: ReesAlgebra,  Up: reesclos_lib
+File: sing.htm,  Node: normalI,  Next: primeClosure,  Prev: ReesAlgebra,  Up: reesclos_lib
 
 D.4.9.2 normalI
 ...............
@@ -3059,7 +2906,7 @@ Procedure from library `reesclos.lib' (*note reesclos_lib::).
      ==>    _[3]=-xy3
 
 
-File: sing.info,  Node: primeClosure,  Next: closureRingtower,  Prev: normalI,  Up: reesclos_lib
+File: sing.htm,  Node: primeClosure,  Next: closureRingtower,  Prev: normalI,  Up: reesclos_lib
 
 D.4.9.3 primeClosure
 ....................
@@ -3131,7 +2978,7 @@ Procedure from library `reesclos.lib' (*note reesclos_lib::).
      ==> ker[12]=T(2)^2*T(6)^2-T(1)^2*T(6)*T(7)
 
 
-File: sing.info,  Node: closureRingtower,  Next: closureFrac,  Prev: primeClosure,  Up: reesclos_lib
+File: sing.htm,  Node: closureRingtower,  Next: closureFrac,  Prev: primeClosure,  Up: reesclos_lib
 
 D.4.9.4 closureRingtower
 ........................
@@ -3167,7 +3014,7 @@ Procedure from library `reesclos.lib' (*note reesclos_lib::).
      ==> //        block   3 : ordering C
 
 
-File: sing.info,  Node: closureFrac,  Prev: closureRingtower,  Up: reesclos_lib
+File: sing.htm,  Node: closureFrac,  Prev: closureRingtower,  Up: reesclos_lib
 
 D.4.9.5 closureFrac
 ...................
@@ -3204,7 +3051,7 @@ Procedure from library `reesclos.lib' (*note reesclos_lib::).
      ==>    y
 
 
-File: sing.info,  Node: intprog_lib,  Next: toric_lib,  Prev: reesclos_lib,  Up: Commutative algebra
+File: sing.htm,  Node: intprog_lib,  Next: toric_lib,  Prev: reesclos_lib,  Up: Commutative algebra
 
 D.4.10 intprog_lib
 ------------------
@@ -3225,7 +3072,7 @@ D.4.10 intprog_lib
 * solve_IP:: procedures for solving Integer Programming problems
 
 
-File: sing.info,  Node: solve_IP,  Up: intprog_lib
+File: sing.htm,  Node: solve_IP,  Up: intprog_lib
 
 D.4.10.1 solve_IP
 .................
@@ -3355,7 +3202,7 @@ See also:
 toric_lib::.
 
 
-File: sing.info,  Node: toric_lib,  Prev: intprog_lib,  Up: Commutative algebra
+File: sing.htm,  Node: toric_lib,  Prev: intprog_lib,  Up: Commutative algebra
 
 D.4.11 toric_lib
 ----------------
@@ -3377,7 +3224,7 @@ D.4.11 toric_lib
 * toric_std:: standard basis of I by a specialized Buchberger algorithm
 
 
-File: sing.info,  Node: toric_ideal,  Next: toric_std,  Up: toric_lib
+File: sing.htm,  Node: toric_ideal,  Next: toric_std,  Up: toric_lib
 
 D.4.11.1 toric_ideal
 ....................
@@ -3448,7 +3295,7 @@ See also:
 toric_lib::; *note toric_std::.
 
 
-File: sing.info,  Node: toric_std,  Prev: toric_ideal,  Up: toric_lib
+File: sing.htm,  Node: toric_std,  Prev: toric_ideal,  Up: toric_lib
 
 D.4.11.2 toric_std
 ..................
@@ -3525,7 +3372,7 @@ See also:
 toric_ideal::; *note toric_lib::.
 
 
-File: sing.info,  Node: Singularities,  Next: Invariant theory,  Prev: Commutative algebra,  Up: SINGULAR libraries
+File: sing.htm,  Node: Singularities,  Next: Invariant theory,  Prev: Commutative algebra,  Up: SINGULAR libraries
 
 D.5 Singularities
 =================
@@ -3544,7 +3391,7 @@ D.5 Singularities
 * spectrum_lib:: procedures for computing singularity spectra
 
 
-File: sing.info,  Node: classify_lib,  Next: deform_lib,  Prev: Singularities,  Up: Singularities
+File: sing.htm,  Node: classify_lib,  Next: deform_lib,  Prev: Singularities,  Up: Singularities
 
 D.5.1 classify_lib
 ------------------
@@ -3584,7 +3431,7 @@ D.5.1 classify_lib
 * debug_log:: print trace and debugging information w.r.t level>@DeBug
 
 
-File: sing.info,  Node: basicinvariants,  Next: classify,  Up: classify_lib
+File: sing.htm,  Node: basicinvariants,  Next: classify,  Up: classify_lib
 
 D.5.1.1 basicinvariants
 .......................
@@ -3608,7 +3455,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> 5,4,2
 
 
-File: sing.info,  Node: classify,  Next: corank,  Prev: basicinvariants,  Up: classify_lib
+File: sing.htm,  Node: classify,  Next: corank,  Prev: basicinvariants,  Up: classify_lib
 
 D.5.1.2 classify
 ................
@@ -3701,7 +3548,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> 2z2+x2y+y3
 
 
-File: sing.info,  Node: corank,  Next: Hcode,  Prev: classify,  Up: classify_lib
+File: sing.htm,  Node: corank,  Next: Hcode,  Prev: classify,  Up: classify_lib
 
 D.5.1.3 corank
 ..............
@@ -3726,7 +3573,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> 2
 
 
-File: sing.info,  Node: Hcode,  Next: init_debug,  Prev: corank,  Up: classify_lib
+File: sing.htm,  Node: Hcode,  Next: init_debug,  Prev: corank,  Up: classify_lib
 
 D.5.1.4 Hcode
 .............
@@ -3750,7 +3597,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> 1,1,1,7,1,1,1
 
 
-File: sing.info,  Node: init_debug,  Next: internalfunctions,  Prev: Hcode,  Up: classify_lib
+File: sing.htm,  Node: init_debug,  Next: internalfunctions,  Prev: Hcode,  Up: classify_lib
 
 D.5.1.5 init_debug
 ..................
@@ -3786,7 +3633,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> Debugging switched off.
 
 
-File: sing.info,  Node: internalfunctions,  Next: milnorcode,  Prev: init_debug,  Up: classify_lib
+File: sing.htm,  Node: internalfunctions,  Next: milnorcode,  Prev: init_debug,  Up: classify_lib
 
 D.5.1.6 internalfunctions
 .........................
@@ -3862,7 +3709,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==>   
 
 
-File: sing.info,  Node: milnorcode,  Next: morsesplit,  Prev: internalfunctions,  Up: classify_lib
+File: sing.htm,  Node: milnorcode,  Next: morsesplit,  Prev: internalfunctions,  Up: classify_lib
 
 D.5.1.7 milnorcode
 ..................
@@ -3887,7 +3734,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> 1,0,1,0,2,0,0,1,0
 
 
-File: sing.info,  Node: morsesplit,  Next: quickclass,  Prev: milnorcode,  Up: classify_lib
+File: sing.htm,  Node: morsesplit,  Next: quickclass,  Prev: milnorcode,  Up: classify_lib
 
 D.5.1.8 morsesplit
 ..................
@@ -3917,7 +3764,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> -x3+3/2xy2+1/2x3y-1/16x2y2+3x2y3
 
 
-File: sing.info,  Node: quickclass,  Next: singularity,  Prev: morsesplit,  Up: classify_lib
+File: sing.htm,  Node: quickclass,  Next: singularity,  Prev: morsesplit,  Up: classify_lib
 
 D.5.1.9 quickclass
 ..................
@@ -3945,7 +3792,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> z2+x2y+y3
 
 
-File: sing.info,  Node: singularity,  Next: swap,  Prev: quickclass,  Up: classify_lib
+File: sing.htm,  Node: singularity,  Next: swap,  Prev: quickclass,  Up: classify_lib
 
 D.5.1.10 singularity
 ....................
@@ -3990,7 +3837,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==>    2
 
 
-File: sing.info,  Node: swap,  Next: A_L,  Prev: singularity,  Up: classify_lib
+File: sing.htm,  Node: swap,  Next: A_L,  Prev: singularity,  Up: classify_lib
 
 D.5.1.11 swap
 .............
@@ -4009,7 +3856,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> variable2 variable1
 
 
-File: sing.info,  Node: A_L,  Next: normalform,  Prev: swap,  Up: classify_lib
+File: sing.htm,  Node: A_L,  Next: normalform,  Prev: swap,  Up: classify_lib
 
 D.5.1.12 A_L
 ............
@@ -4042,7 +3889,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> c2+a3+ab5+b8
 
 
-File: sing.info,  Node: normalform,  Next: debug_log,  Prev: A_L,  Up: classify_lib
+File: sing.htm,  Node: normalform,  Next: debug_log,  Prev: A_L,  Up: classify_lib
 
 D.5.1.13 normalform
 ...................
@@ -4062,7 +3909,7 @@ Procedure from library `classify.lib' (*note classify_lib::).
      ==> c2+a3+ab5+b8
 
 
-File: sing.info,  Node: debug_log,  Prev: normalform,  Up: classify_lib
+File: sing.htm,  Node: debug_log,  Prev: normalform,  Up: classify_lib
 
 D.5.1.14 debug_log
 ..................
@@ -4103,7 +3950,7 @@ See also:
 *See also:* *note init_debug::.
 
 
-File: sing.info,  Node: deform_lib,  Next: equising_lib,  Prev: classify_lib,  Up: Singularities
+File: sing.htm,  Node: deform_lib,  Next: equising_lib,  Prev: classify_lib,  Up: Singularities
 
 D.5.2 deform_lib
 ----------------
@@ -4128,7 +3975,7 @@ D.5.2 deform_lib
 * kill_rings:: kills the exported rings from above
 
 
-File: sing.info,  Node: versal,  Next: mod_versal,  Up: deform_lib
+File: sing.htm,  Node: versal,  Next: mod_versal,  Up: deform_lib
 
 D.5.2.1 versal
 ..............
@@ -4207,7 +4054,7 @@ Procedure from library `deform.lib' (*note deform_lib::).
      ==> 
 
 
-File: sing.info,  Node: mod_versal,  Next: lift_kbase,  Prev: versal,  Up: deform_lib
+File: sing.htm,  Node: mod_versal,  Next: lift_kbase,  Prev: versal,  Up: deform_lib
 
 D.5.2.2 mod_versal
 ..................
@@ -4290,7 +4137,7 @@ Procedure from library `deform.lib' (*note deform_lib::).
      kill Px,Qx,So;
 
 
-File: sing.info,  Node: lift_kbase,  Next: lift_rel_kb,  Prev: mod_versal,  Up: deform_lib
+File: sing.htm,  Node: lift_kbase,  Next: lift_rel_kb,  Prev: mod_versal,  Up: deform_lib
 
 D.5.2.3 lift_kbase
 ..................
@@ -4342,7 +4189,7 @@ Procedure from library `deform.lib' (*note deform_lib::).
      ==> _[2,2]=0
 
 
-File: sing.info,  Node: lift_rel_kb,  Next: kill_rings,  Prev: lift_kbase,  Up: deform_lib
+File: sing.htm,  Node: lift_rel_kb,  Next: kill_rings,  Prev: lift_kbase,  Up: deform_lib
 
 D.5.2.4 lift_rel_kb
 ...................
@@ -4387,7 +4234,7 @@ Procedure from library `deform.lib' (*note deform_lib::).
      ==> 0,0 
 
 
-File: sing.info,  Node: kill_rings,  Prev: lift_rel_kb,  Up: deform_lib
+File: sing.htm,  Node: kill_rings,  Prev: lift_rel_kb,  Up: deform_lib
 
 D.5.2.5 kill_rings
 ..................
@@ -4402,7 +4249,7 @@ Procedure from library `deform.lib' (*note deform_lib::).
      and 'mod_versal' with optional prefix 'string'
 
 
-File: sing.info,  Node: equising_lib,  Next: gaussman_lib,  Prev: deform_lib,  Up: Singularities
+File: sing.htm,  Node: equising_lib,  Next: gaussman_lib,  Prev: deform_lib,  Up: Singularities
 
 D.5.3 equising_lib
 ------------------
@@ -4433,7 +4280,7 @@ D.5.3 equising_lib
 * control_Matrix:: computes list of blowing-up data
 
 
-File: sing.info,  Node: tau_es,  Next: esIdeal,  Up: equising_lib
+File: sing.htm,  Node: tau_es,  Next: esIdeal,  Up: equising_lib
 
 D.5.3.1 tau_es
 ..............
@@ -4473,7 +4320,7 @@ See also:
 *See also:* *note esIdeal::; *note invariants::; *note tjurina::.
 
 
-File: sing.info,  Node: esIdeal,  Next: esStratum,  Prev: tau_es,  Up: equising_lib
+File: sing.htm,  Node: esIdeal,  Next: esStratum,  Prev: tau_es,  Up: equising_lib
 
 D.5.3.2 esIdeal
 ...............
@@ -4554,7 +4401,7 @@ See also:
 *See also:* *note esStratum::; *note tau_es::.
 
 
-File: sing.info,  Node: esStratum,  Next: isEquising,  Prev: esIdeal,  Up: equising_lib
+File: sing.htm,  Node: esStratum,  Next: isEquising,  Prev: esIdeal,  Up: equising_lib
 
 D.5.3.3 esStratum
 .................
@@ -4674,7 +4521,7 @@ See also:
 *See also:* *note esIdeal::; *note isEquising::.
 
 
-File: sing.info,  Node: isEquising,  Next: control_Matrix,  Prev: esStratum,  Up: equising_lib
+File: sing.htm,  Node: isEquising,  Next: control_Matrix,  Prev: esStratum,  Up: equising_lib
 
 D.5.3.4 isEquising
 ..................
@@ -4726,7 +4573,7 @@ Procedure from library `equising.lib' (*note equising_lib::).
      ==> 1
 
 
-File: sing.info,  Node: control_Matrix,  Prev: isEquising,  Up: equising_lib
+File: sing.htm,  Node: control_Matrix,  Prev: isEquising,  Up: equising_lib
 
 D.5.3.5 control_Matrix
 ......................
@@ -4769,7 +4616,7 @@ See also:
 *See also:* *note multsequence::.
 
 
-File: sing.info,  Node: gaussman_lib,  Next: hnoether_lib,  Prev: equising_lib,  Up: Singularities
+File: sing.htm,  Node: gaussman_lib,  Next: hnoether_lib,  Prev: equising_lib,  Up: Singularities
 
 D.5.4 gaussman_lib
 ------------------
@@ -4824,7 +4671,7 @@ See also:
 *See also:* *note mondromy_lib::; *note spectrum_lib::.
 
 
-File: sing.info,  Node: gmsring,  Next: gmsnf,  Up: gaussman_lib
+File: sing.htm,  Node: gmsring,  Next: gmsnf,  Up: gaussman_lib
 
 D.5.4.1 gmsring
 ...............
@@ -4886,7 +4733,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 1
 
 
-File: sing.info,  Node: gmsnf,  Next: gmscoeffs,  Prev: gmsring,  Up: gaussman_lib
+File: sing.htm,  Node: gmsnf,  Next: gmscoeffs,  Prev: gmsring,  Up: gaussman_lib
 
 D.5.4.2 gmsnf
 .............
@@ -4925,7 +4772,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 1/2s
 
 
-File: sing.info,  Node: gmscoeffs,  Next: bernstein,  Prev: gmsnf,  Up: gaussman_lib
+File: sing.htm,  Node: gmscoeffs,  Next: bernstein,  Prev: gmsnf,  Up: gaussman_lib
 
 D.5.4.3 gmscoeffs
 .................
@@ -4994,7 +4841,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 1/2s
 
 
-File: sing.info,  Node: bernstein,  Next: monodromy,  Prev: gmscoeffs,  Up: gaussman_lib
+File: sing.htm,  Node: bernstein,  Next: monodromy,  Prev: gmscoeffs,  Up: gaussman_lib
 
 D.5.4.4 bernstein
 .................
@@ -5030,7 +4877,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==>    2,1,1,2,1,1
 
 
-File: sing.info,  Node: monodromy,  Next: spectrum,  Prev: bernstein,  Up: gaussman_lib
+File: sing.htm,  Node: monodromy,  Next: spectrum,  Prev: bernstein,  Up: gaussman_lib
 
 D.5.4.5 monodromy
 .................
@@ -5080,7 +4927,7 @@ See also:
 *See also:* *note linalg_lib::; *note mondromy_lib::.
 
 
-File: sing.info,  Node: spectrum,  Next: sppairs,  Prev: monodromy,  Up: gaussman_lib
+File: sing.htm,  Node: spectrum,  Next: sppairs,  Prev: monodromy,  Up: gaussman_lib
 
 D.5.4.6 spectrum
 ................
@@ -5117,7 +4964,7 @@ See also:
 *See also:* *note spectrum_lib::.
 
 
-File: sing.info,  Node: sppairs,  Next: spnf,  Prev: spectrum,  Up: gaussman_lib
+File: sing.htm,  Node: sppairs,  Next: spnf,  Prev: spectrum,  Up: gaussman_lib
 
 D.5.4.7 sppairs
 ...............
@@ -5157,7 +5004,7 @@ See also:
 *See also:* *note spectrum_lib::.
 
 
-File: sing.info,  Node: spnf,  Next: sppnf,  Prev: sppairs,  Up: gaussman_lib
+File: sing.htm,  Node: spnf,  Next: sppnf,  Prev: sppairs,  Up: gaussman_lib
 
 D.5.4.8 spnf
 ............
@@ -5171,7 +5018,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      order (a[i][,V[i]]) with multiplicity m[i] lexicographically
 
 
-File: sing.info,  Node: sppnf,  Next: vfilt,  Prev: spnf,  Up: gaussman_lib
+File: sing.htm,  Node: sppnf,  Next: vfilt,  Prev: spnf,  Up: gaussman_lib
 
 D.5.4.9 sppnf
 .............
@@ -5185,7 +5032,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      order (a[i][,w[i]][,V[i]]) with multiplicity m[i] lexicographically
 
 
-File: sing.info,  Node: vfilt,  Next: vwfilt,  Prev: sppnf,  Up: gaussman_lib
+File: sing.htm,  Node: vfilt,  Next: vwfilt,  Prev: sppnf,  Up: gaussman_lib
 
 D.5.4.10 vfilt
 ..............
@@ -5271,7 +5118,7 @@ See also:
 *See also:* *note spectrum_lib::.
 
 
-File: sing.info,  Node: vwfilt,  Next: tmatrix,  Prev: vfilt,  Up: gaussman_lib
+File: sing.htm,  Node: vwfilt,  Next: tmatrix,  Prev: vfilt,  Up: gaussman_lib
 
 D.5.4.11 vwfilt
 ...............
@@ -5361,7 +5208,7 @@ See also:
 *See also:* *note spectrum_lib::.
 
 
-File: sing.info,  Node: tmatrix,  Next: endvfilt,  Prev: vwfilt,  Up: gaussman_lib
+File: sing.htm,  Node: tmatrix,  Next: endvfilt,  Prev: vwfilt,  Up: gaussman_lib
 
 D.5.4.12 tmatrix
 ................
@@ -5437,7 +5284,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 1
 
 
-File: sing.info,  Node: endvfilt,  Next: spprint,  Prev: tmatrix,  Up: gaussman_lib
+File: sing.htm,  Node: endvfilt,  Next: spprint,  Prev: tmatrix,  Up: gaussman_lib
 
 D.5.4.13 endvfilt
 .................
@@ -5515,7 +5362,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==>    _[4]=10y6+25x3y4
 
 
-File: sing.info,  Node: spprint,  Next: sppprint,  Prev: endvfilt,  Up: gaussman_lib
+File: sing.htm,  Node: spprint,  Next: sppprint,  Prev: endvfilt,  Up: gaussman_lib
 
 D.5.4.14 spprint
 ................
@@ -5536,7 +5383,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> (-1/2,1),(-3/10,2),(-1/10,2),(0,1),(1/10,2),(3/10,2),(1/2,1)
 
 
-File: sing.info,  Node: sppprint,  Next: spadd,  Prev: spprint,  Up: gaussman_lib
+File: sing.htm,  Node: sppprint,  Next: spadd,  Prev: spprint,  Up: gaussman_lib
 
 D.5.4.15 sppprint
 .................
@@ -5558,7 +5405,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
         ,2),((1/2,0),1)
 
 
-File: sing.info,  Node: spadd,  Next: spsub,  Prev: sppprint,  Up: gaussman_lib
+File: sing.htm,  Node: spadd,  Next: spsub,  Prev: sppprint,  Up: gaussman_lib
 
 D.5.4.16 spadd
 ..............
@@ -5585,7 +5432,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
         2,1)
 
 
-File: sing.info,  Node: spsub,  Next: spmul,  Prev: spadd,  Up: gaussman_lib
+File: sing.htm,  Node: spsub,  Next: spmul,  Prev: spadd,  Up: gaussman_lib
 
 D.5.4.17 spsub
 ..............
@@ -5612,7 +5459,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
         1/2,1)
 
 
-File: sing.info,  Node: spmul,  Next: spissemicont,  Prev: spsub,  Up: gaussman_lib
+File: sing.htm,  Node: spmul,  Next: spissemicont,  Prev: spsub,  Up: gaussman_lib
 
 D.5.4.18 spmul
 ..............
@@ -5643,7 +5490,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> (-1/3,2),(-1/6,1),(0,4),(1/6,1),(1/3,2)
 
 
-File: sing.info,  Node: spissemicont,  Next: spsemicont,  Prev: spmul,  Up: gaussman_lib
+File: sing.htm,  Node: spissemicont,  Next: spsemicont,  Prev: spmul,  Up: gaussman_lib
 
 D.5.4.19 spissemicont
 .....................
@@ -5674,7 +5521,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 0
 
 
-File: sing.info,  Node: spsemicont,  Next: spmilnor,  Prev: spissemicont,  Up: gaussman_lib
+File: sing.htm,  Node: spsemicont,  Next: spmilnor,  Prev: spissemicont,  Up: gaussman_lib
 
 D.5.4.20 spsemicont
 ...................
@@ -5718,7 +5565,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 0
 
 
-File: sing.info,  Node: spmilnor,  Next: spgeomgenus,  Prev: spsemicont,  Up: gaussman_lib
+File: sing.htm,  Node: spmilnor,  Next: spgeomgenus,  Prev: spsemicont,  Up: gaussman_lib
 
 D.5.4.21 spmilnor
 .................
@@ -5741,7 +5588,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 11
 
 
-File: sing.info,  Node: spgeomgenus,  Next: spgamma,  Prev: spmilnor,  Up: gaussman_lib
+File: sing.htm,  Node: spgeomgenus,  Next: spgamma,  Prev: spmilnor,  Up: gaussman_lib
 
 D.5.4.22 spgeomgenus
 ....................
@@ -5764,7 +5611,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 6
 
 
-File: sing.info,  Node: spgamma,  Prev: spgeomgenus,  Up: gaussman_lib
+File: sing.htm,  Node: spgamma,  Prev: spgeomgenus,  Up: gaussman_lib
 
 D.5.4.23 spgamma
 ................
@@ -5787,7 +5634,7 @@ Procedure from library `gaussman.lib' (*note gaussman_lib::).
      ==> 1/240
 
 
-File: sing.info,  Node: hnoether_lib,  Next: mondromy_lib,  Prev: gaussman_lib,  Up: Singularities
+File: sing.htm,  Node: hnoether_lib,  Next: mondromy_lib,  Prev: gaussman_lib,  Up: Singularities
 
 D.5.5 hnoether_lib
 ------------------
@@ -5841,7 +5688,7 @@ D.5.5 hnoether_lib
 * further_hn_proc:: show further procedures useful for interactive use
 
 
-File: sing.info,  Node: hnexpansion,  Next: sethnering,  Up: hnoether_lib
+File: sing.htm,  Node: hnexpansion,  Next: sethnering,  Up: hnoether_lib
 
 D.5.5.1 hnexpansion
 ...................
@@ -5999,7 +5846,7 @@ See also:
 *note parametrisation::.
 
 
-File: sing.info,  Node: sethnering,  Next: develop,  Prev: hnexpansion,  Up: hnoether_lib
+File: sing.htm,  Node: sethnering,  Next: develop,  Prev: hnexpansion,  Up: hnoether_lib
 
 D.5.5.2 sethnering
 ..................
@@ -6063,7 +5910,7 @@ See also:
 *See also:* *note hnexpansion::.
 
 
-File: sing.info,  Node: develop,  Next: extdevelop,  Prev: sethnering,  Up: hnoether_lib
+File: sing.htm,  Node: develop,  Next: extdevelop,  Prev: sethnering,  Up: hnoether_lib
 
 D.5.5.3 develop
 ...............
@@ -6169,7 +6016,7 @@ See also:
 *See also:* *note displayHNE::; *note extdevelop::; *note hnexpansion::.
 
 
-File: sing.info,  Node: extdevelop,  Next: parametrisation,  Prev: develop,  Up: hnoether_lib
+File: sing.htm,  Node: extdevelop,  Next: parametrisation,  Prev: develop,  Up: hnoether_lib
 
 D.5.5.4 extdevelop
 ..................
@@ -6256,7 +6103,7 @@ See also:
 parametrisation::.
 
 
-File: sing.info,  Node: parametrisation,  Next: displayHNE,  Prev: extdevelop,  Up: hnoether_lib
+File: sing.htm,  Node: parametrisation,  Next: displayHNE,  Prev: extdevelop,  Up: hnoether_lib
 
 D.5.5.5 parametrisation
 .......................
@@ -6359,7 +6206,7 @@ See also:
 *See also:* *note develop::; *note extdevelop::.
 
 
-File: sing.info,  Node: displayHNE,  Next: invariants,  Prev: parametrisation,  Up: hnoether_lib
+File: sing.htm,  Node: displayHNE,  Next: invariants,  Prev: parametrisation,  Up: hnoether_lib
 
 D.5.5.6 displayHNE
 ..................
@@ -6419,7 +6266,7 @@ See also:
 *See also:* *note develop::; *note hnexpansion::.
 
 
-File: sing.info,  Node: invariants,  Next: displayInvariants,  Prev: displayHNE,  Up: hnoether_lib
+File: sing.htm,  Node: invariants,  Next: displayInvariants,  Prev: displayHNE,  Up: hnoether_lib
 
 D.5.5.7 invariants
 ..................
@@ -6523,7 +6370,7 @@ See also:
 intersection::; *note multsequence::.
 
 
-File: sing.info,  Node: displayInvariants,  Next: multsequence,  Prev: invariants,  Up: hnoether_lib
+File: sing.htm,  Node: displayInvariants,  Next: multsequence,  Prev: invariants,  Up: hnoether_lib
 
 D.5.5.8 displayInvariants
 .........................
@@ -6575,7 +6422,7 @@ See also:
 *note invariants::.
 
 
-File: sing.info,  Node: multsequence,  Next: displayMultsequence,  Prev: displayInvariants,  Up: hnoether_lib
+File: sing.htm,  Node: multsequence,  Next: displayMultsequence,  Prev: displayInvariants,  Up: hnoether_lib
 
 D.5.5.9 multsequence
 ....................
@@ -6682,7 +6529,7 @@ See also:
 hnexpansion::; *note separateHNE::.
 
 
-File: sing.info,  Node: displayMultsequence,  Next: intersection,  Prev: multsequence,  Up: hnoether_lib
+File: sing.htm,  Node: displayMultsequence,  Next: intersection,  Prev: multsequence,  Up: hnoether_lib
 
 D.5.5.10 displayMultsequence
 ............................
@@ -6750,7 +6597,7 @@ See also:
 *note separateHNE::.
 
 
-File: sing.info,  Node: intersection,  Next: stripHNE,  Prev: displayMultsequence,  Up: hnoether_lib
+File: sing.htm,  Node: intersection,  Next: stripHNE,  Prev: displayMultsequence,  Up: hnoether_lib
 
 D.5.5.11 intersection
 .....................
@@ -6788,7 +6635,7 @@ See also:
 *See also:* *note displayInvariants::; *note hnexpansion::.
 
 
-File: sing.info,  Node: stripHNE,  Next: is_irred,  Prev: intersection,  Up: hnoether_lib
+File: sing.htm,  Node: stripHNE,  Next: is_irred,  Prev: intersection,  Up: hnoether_lib
 
 D.5.5.12 stripHNE
 .................
@@ -6857,7 +6704,7 @@ See also:
 *See also:* *note develop::; *note extdevelop::; *note hnexpansion::.
 
 
-File: sing.info,  Node: is_irred,  Next: delta,  Prev: stripHNE,  Up: hnoether_lib
+File: sing.htm,  Node: is_irred,  Next: delta,  Prev: stripHNE,  Up: hnoether_lib
 
 D.5.5.13 is_irred
 .................
@@ -6893,7 +6740,7 @@ Procedure from library `hnoether.lib' (*note hnoether_lib::).
      ==> 0
 
 
-File: sing.info,  Node: delta,  Next: newtonpoly,  Prev: is_irred,  Up: hnoether_lib
+File: sing.htm,  Node: delta,  Next: newtonpoly,  Prev: is_irred,  Up: hnoether_lib
 
 D.5.5.14 delta
 ..............
@@ -6937,7 +6784,7 @@ See also:
 *See also:* *note deltaLoc::; *note invariants::.
 
 
-File: sing.info,  Node: newtonpoly,  Next: is_NND,  Prev: delta,  Up: hnoether_lib
+File: sing.htm,  Node: newtonpoly,  Next: is_NND,  Prev: delta,  Up: hnoether_lib
 
 D.5.5.15 newtonpoly
 ...................
@@ -6973,7 +6820,7 @@ Procedure from library `hnoether.lib' (*note hnoether_lib::).
      ==>    5,0
 
 
-File: sing.info,  Node: is_NND,  Next: puiseux2generators,  Prev: newtonpoly,  Up: hnoether_lib
+File: sing.htm,  Node: is_NND,  Next: puiseux2generators,  Prev: newtonpoly,  Up: hnoether_lib
 
 D.5.5.16 is_NND
 ...............
@@ -7015,7 +6862,7 @@ See also:
 *See also:* *note newtonpoly::.
 
 
-File: sing.info,  Node: puiseux2generators,  Next: separateHNE,  Prev: is_NND,  Up: hnoether_lib
+File: sing.htm,  Node: puiseux2generators,  Next: separateHNE,  Prev: is_NND,  Up: hnoether_lib
 
 D.5.5.17 puiseux2generators
 ...........................
@@ -7046,7 +6893,7 @@ See also:
 *See also:* *note invariants::.
 
 
-File: sing.info,  Node: separateHNE,  Next: squarefree,  Prev: puiseux2generators,  Up: hnoether_lib
+File: sing.htm,  Node: separateHNE,  Next: squarefree,  Prev: puiseux2generators,  Up: hnoether_lib
 
 D.5.5.18 separateHNE
 ....................
@@ -7090,7 +6937,7 @@ See also:
 hnexpansion::; *note multsequence::.
 
 
-File: sing.info,  Node: squarefree,  Next: allsquarefree,  Prev: separateHNE,  Up: hnoether_lib
+File: sing.htm,  Node: squarefree,  Next: allsquarefree,  Prev: separateHNE,  Up: hnoether_lib
 
 D.5.5.19 squarefree
 ...................
@@ -7129,7 +6976,7 @@ See also:
 *See also:* *note allsquarefree::.
 
 
-File: sing.info,  Node: allsquarefree,  Next: further_hn_proc,  Prev: squarefree,  Up: hnoether_lib
+File: sing.htm,  Node: allsquarefree,  Next: further_hn_proc,  Prev: squarefree,  Up: hnoether_lib
 
 D.5.5.20 allsquarefree
 ......................
@@ -7167,7 +7014,7 @@ See also:
 *See also:* *note squarefree::.
 
 
-File: sing.info,  Node: further_hn_proc,  Prev: allsquarefree,  Up: hnoether_lib
+File: sing.htm,  Node: further_hn_proc,  Prev: allsquarefree,  Up: hnoether_lib
 
 D.5.5.21 further_hn_proc
 ........................
@@ -7208,7 +7055,7 @@ Procedure from library `hnoether.lib' (*note hnoether_lib::).
      ==>  referencepoly(D);   a polynomial f s.t. D is the Newton diagram of f
 
 
-File: sing.info,  Node: mondromy_lib,  Next: qhmoduli_lib,  Prev: hnoether_lib,  Up: Singularities
+File: sing.htm,  Node: mondromy_lib,  Next: qhmoduli_lib,  Prev: hnoether_lib,  Up: Singularities
 
 D.5.6 mondromy_lib
 ------------------
@@ -7249,7 +7096,7 @@ See also:
 *See also:* *note gaussman_lib::.
 
 
-File: sing.info,  Node: detadj,  Next: invunit,  Up: mondromy_lib
+File: sing.htm,  Node: detadj,  Next: invunit,  Up: mondromy_lib
 
 D.5.6.1 detadj
 ..............
@@ -7284,7 +7131,7 @@ Procedure from library `mondromy.lib' (*note mondromy_lib::).
      ==> -x2-1,1    
 
 
-File: sing.info,  Node: invunit,  Next: jacoblift,  Prev: detadj,  Up: mondromy_lib
+File: sing.htm,  Node: invunit,  Next: jacoblift,  Prev: detadj,  Up: mondromy_lib
 
 D.5.6.2 invunit
 ...............
@@ -7311,7 +7158,7 @@ Procedure from library `mondromy.lib' (*note mondromy_lib::).
      ==> 1/8x2y8-1/16x9+1/4x4y4+1/8x6-1/4xy4-1/4x3+1/2
 
 
-File: sing.info,  Node: jacoblift,  Next: monodromyB,  Prev: invunit,  Up: mondromy_lib
+File: sing.htm,  Node: jacoblift,  Next: monodromyB,  Prev: invunit,  Up: mondromy_lib
 
 D.5.6.3 jacoblift
 .................
@@ -7347,7 +7194,7 @@ Procedure from library `mondromy.lib' (*note mondromy_lib::).
      ==>    1-9x2y2
 
 
-File: sing.info,  Node: monodromyB,  Next: H2basis,  Prev: jacoblift,  Up: mondromy_lib
+File: sing.htm,  Node: monodromyB,  Next: H2basis,  Prev: jacoblift,  Up: mondromy_lib
 
 D.5.6.4 monodromyB
 ..................
@@ -7393,7 +7240,7 @@ Procedure from library `mondromy.lib' (*note mondromy_lib::).
      ==> 0,  0,  0,0,  0,  0,0,   0,0,   0,  0,  9/44, -3/44    
 
 
-File: sing.info,  Node: H2basis,  Prev: monodromyB,  Up: mondromy_lib
+File: sing.htm,  Node: H2basis,  Prev: monodromyB,  Up: mondromy_lib
 
 D.5.6.5 H2basis
 ...............
@@ -7450,7 +7297,7 @@ Procedure from library `mondromy.lib' (*note mondromy_lib::).
      ==>    1
 
 
-File: sing.info,  Node: qhmoduli_lib,  Next: sing_lib,  Prev: mondromy_lib,  Up: Singularities
+File: sing.htm,  Node: qhmoduli_lib,  Next: sing_lib,  Prev: mondromy_lib,  Up: Singularities
 
 D.5.7 qhmoduli_lib
 ------------------
@@ -7480,7 +7327,7 @@ D.5.7 qhmoduli_lib
 * Table:: list, i-th entry is cmd(i), lb <= i <= ub
 
 
-File: sing.info,  Node: ArnoldAction,  Next: ModEqn,  Up: qhmoduli_lib
+File: sing.htm,  Node: ArnoldAction,  Next: ModEqn,  Up: qhmoduli_lib
 
 D.5.7.1 ArnoldAction
 ....................
@@ -7523,7 +7370,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      ==> stabid[6]=-s(1)^2*s(3)+s(3)^5
 
 
-File: sing.info,  Node: ModEqn,  Next: QuotientEquations,  Prev: ArnoldAction,  Up: qhmoduli_lib
+File: sing.htm,  Node: ModEqn,  Next: QuotientEquations,  Prev: ArnoldAction,  Up: qhmoduli_lib
 
 D.5.7.2 ModEqn
 ..............
@@ -7573,7 +7420,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      ==> modid[10]=Y(2)^2-Y(1)*Y(3)
 
 
-File: sing.info,  Node: QuotientEquations,  Next: StabEqn,  Prev: ModEqn,  Up: qhmoduli_lib
+File: sing.htm,  Node: QuotientEquations,  Next: StabEqn,  Prev: ModEqn,  Up: qhmoduli_lib
 
 D.5.7.3 QuotientEquations
 .........................
@@ -7606,7 +7453,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      To combine options, add their value, default: opt =3.
 
 
-File: sing.info,  Node: StabEqn,  Next: StabEqnId,  Prev: QuotientEquations,  Up: qhmoduli_lib
+File: sing.htm,  Node: StabEqn,  Next: StabEqnId,  Prev: QuotientEquations,  Up: qhmoduli_lib
 
 D.5.7.4 StabEqn
 ...............
@@ -7648,7 +7495,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      ==> actionid[3]=s(2)*y+s(3)*z
 
 
-File: sing.info,  Node: StabEqnId,  Next: StabOrder,  Prev: StabEqn,  Up: qhmoduli_lib
+File: sing.htm,  Node: StabEqnId,  Next: StabOrder,  Prev: StabEqn,  Up: qhmoduli_lib
 
 D.5.7.5 StabEqnId
 .................
@@ -7696,7 +7543,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      ==> actionid[3]=s(3)*z
 
 
-File: sing.info,  Node: StabOrder,  Next: UpperMonomials,  Prev: StabEqnId,  Up: qhmoduli_lib
+File: sing.htm,  Node: StabOrder,  Next: UpperMonomials,  Prev: StabEqnId,  Up: qhmoduli_lib
 
 D.5.7.6 StabOrder
 .................
@@ -7719,7 +7566,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      varSubsList
 
 
-File: sing.info,  Node: UpperMonomials,  Next: Max,  Prev: StabOrder,  Up: qhmoduli_lib
+File: sing.htm,  Node: UpperMonomials,  Next: Max,  Prev: StabOrder,  Up: qhmoduli_lib
 
 D.5.7.7 UpperMonomials
 ......................
@@ -7748,7 +7595,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      ==> _[3]=x2y2
 
 
-File: sing.info,  Node: Max,  Next: Min,  Prev: UpperMonomials,  Up: qhmoduli_lib
+File: sing.htm,  Node: Max,  Next: Min,  Prev: UpperMonomials,  Up: qhmoduli_lib
 
 D.5.7.8 Max
 ...........
@@ -7768,7 +7615,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      'data' contains only integers and is not empty
 
 
-File: sing.info,  Node: Min,  Next: Table,  Prev: Max,  Up: qhmoduli_lib
+File: sing.htm,  Node: Min,  Next: Table,  Prev: Max,  Up: qhmoduli_lib
 
 D.5.7.9 Min
 ...........
@@ -7788,7 +7635,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      'data' contains only integers and is not empty
 
 
-File: sing.info,  Node: Table,  Prev: Min,  Up: qhmoduli_lib
+File: sing.htm,  Node: Table,  Prev: Min,  Up: qhmoduli_lib
 
 D.5.7.10 Table
 ..............
@@ -7805,7 +7652,7 @@ Procedure from library `qhmoduli.lib' (*note qhmoduli_lib::).
      list
 
 
-File: sing.info,  Node: sing_lib,  Next: spcurve_lib,  Prev: qhmoduli_lib,  Up: Singularities
+File: sing.htm,  Node: sing_lib,  Next: spcurve_lib,  Prev: qhmoduli_lib,  Up: Singularities
 
 D.5.8 sing_lib
 --------------
@@ -7844,7 +7691,7 @@ D.5.8 sing_lib
 * tangentcone:: compute tangent cone of id
 
 
-File: sing.info,  Node: deform,  Next: dim_slocus,  Up: sing_lib
+File: sing.htm,  Node: deform,  Next: dim_slocus,  Up: sing_lib
 
 D.5.8.1 deform
 ..............
@@ -7870,7 +7717,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> xy3,y3,xy2,y2,xy,y,x,1
 
 
-File: sing.info,  Node: dim_slocus,  Next: is_active,  Prev: deform,  Up: sing_lib
+File: sing.htm,  Node: dim_slocus,  Next: is_active,  Prev: deform,  Up: sing_lib
 
 D.5.8.2 dim_slocus
 ..................
@@ -7891,7 +7738,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> 0
 
 
-File: sing.info,  Node: is_active,  Next: is_ci,  Prev: dim_slocus,  Up: sing_lib
+File: sing.htm,  Node: is_active,  Next: is_ci,  Prev: dim_slocus,  Up: sing_lib
 
 D.5.8.3 is_active
 .................
@@ -7925,7 +7772,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> 0
 
 
-File: sing.info,  Node: is_ci,  Next: is_is,  Prev: is_active,  Up: sing_lib
+File: sing.htm,  Node: is_ci,  Next: is_is,  Prev: is_active,  Up: sing_lib
 
 D.5.8.4 is_ci
 .............
@@ -7963,7 +7810,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: is_is,  Next: is_reg,  Prev: is_ci,  Up: sing_lib
+File: sing.htm,  Node: is_is,  Next: is_reg,  Prev: is_ci,  Up: sing_lib
 
 D.5.8.5 is_is
 .............
@@ -8000,7 +7847,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: is_reg,  Next: is_regs,  Prev: is_is,  Up: sing_lib
+File: sing.htm,  Node: is_reg,  Next: is_regs,  Prev: is_is,  Up: sing_lib
 
 D.5.8.6 is_reg
 ..............
@@ -8029,7 +7876,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> 0
 
 
-File: sing.info,  Node: is_regs,  Next: locstd,  Prev: is_reg,  Up: sing_lib
+File: sing.htm,  Node: is_regs,  Next: locstd,  Prev: is_reg,  Up: sing_lib
 
 D.5.8.7 is_regs
 ...............
@@ -8071,7 +7918,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: locstd,  Next: milnor,  Prev: is_regs,  Up: sing_lib
+File: sing.htm,  Node: locstd,  Next: milnor,  Prev: is_regs,  Up: sing_lib
 
 D.5.8.8 locstd
 ..............
@@ -8118,7 +7965,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> _[18]=2x2+y3+z7
 
 
-File: sing.info,  Node: milnor,  Next: nf_icis,  Prev: locstd,  Up: sing_lib
+File: sing.htm,  Node: milnor,  Next: nf_icis,  Prev: locstd,  Up: sing_lib
 
 D.5.8.9 milnor
 ..............
@@ -8151,7 +7998,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: nf_icis,  Next: slocus,  Prev: milnor,  Up: sing_lib
+File: sing.htm,  Node: nf_icis,  Next: slocus,  Prev: milnor,  Up: sing_lib
 
 D.5.8.10 nf_icis
 ................
@@ -8196,7 +8043,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: slocus,  Next: qhspectrum,  Prev: nf_icis,  Up: sing_lib
+File: sing.htm,  Node: slocus,  Next: qhspectrum,  Prev: nf_icis,  Up: sing_lib
 
 D.5.8.11 slocus
 ...............
@@ -8221,7 +8068,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> _[5]=y2
 
 
-File: sing.info,  Node: qhspectrum,  Next: Tjurina,  Prev: slocus,  Up: sing_lib
+File: sing.htm,  Node: qhspectrum,  Next: Tjurina,  Prev: slocus,  Up: sing_lib
 
 D.5.8.12 qhspectrum
 ...................
@@ -8257,7 +8104,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      // 1/30,7/30,11/30,13/30,17/30,19/30,23/30,29/30
 
 
-File: sing.info,  Node: Tjurina,  Next: tjurina,  Prev: qhspectrum,  Up: sing_lib
+File: sing.htm,  Node: Tjurina,  Next: tjurina,  Prev: qhspectrum,  Up: sing_lib
 
 D.5.8.13 Tjurina
 ................
@@ -8353,7 +8200,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: tjurina,  Next: T_1,  Prev: Tjurina,  Up: sing_lib
+File: sing.htm,  Node: tjurina,  Next: T_1,  Prev: Tjurina,  Up: sing_lib
 
 D.5.8.14 tjurina
 ................
@@ -8380,7 +8227,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> 5
 
 
-File: sing.info,  Node: T_1,  Next: T_2,  Prev: tjurina,  Up: sing_lib
+File: sing.htm,  Node: T_1,  Next: T_2,  Prev: tjurina,  Up: sing_lib
 
 D.5.8.15 T_1
 ............
@@ -8451,7 +8298,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: T_2,  Next: T_12,  Prev: T_1,  Up: sing_lib
+File: sing.htm,  Node: T_2,  Next: T_12,  Prev: T_1,  Up: sing_lib
 
 D.5.8.16 T_2
 ............
@@ -8517,7 +8364,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: T_12,  Next: tangentcone,  Prev: T_2,  Up: sing_lib
+File: sing.htm,  Node: T_12,  Next: tangentcone,  Prev: T_2,  Up: sing_lib
 
 D.5.8.17 T_12
 .............
@@ -8570,7 +8417,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      printlevel = p;
 
 
-File: sing.info,  Node: tangentcone,  Prev: T_12,  Up: sing_lib
+File: sing.htm,  Node: tangentcone,  Prev: T_12,  Up: sing_lib
 
 D.5.8.18 tangentcone
 ....................
@@ -8599,7 +8446,7 @@ Procedure from library `sing.lib' (*note sing_lib::).
      ==> _[5]=35z6
 
 
-File: sing.info,  Node: spcurve_lib,  Next: spectrum_lib,  Prev: sing_lib,  Up: Singularities
+File: sing.htm,  Node: spcurve_lib,  Next: spectrum_lib,  Prev: sing_lib,  Up: Singularities
 
 D.5.9 spcurve_lib
 -----------------
@@ -8628,7 +8475,7 @@ D.5.9 spcurve_lib
 * KSpencerKernel:: kernel of the Kodaira-Spencer map
 
 
-File: sing.info,  Node: isCMcod2,  Next: CMtype,  Up: spcurve_lib
+File: sing.htm,  Node: isCMcod2,  Next: CMtype,  Up: spcurve_lib
 
 D.5.9.1 isCMcod2
 ................
@@ -8652,7 +8499,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> 0, z   
 
 
-File: sing.info,  Node: CMtype,  Next: matrixT1,  Prev: isCMcod2,  Up: spcurve_lib
+File: sing.htm,  Node: CMtype,  Next: matrixT1,  Prev: isCMcod2,  Up: spcurve_lib
 
 D.5.9.2 CMtype
 ..............
@@ -8674,7 +8521,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> 2
 
 
-File: sing.info,  Node: matrixT1,  Next: semiCMcod2,  Prev: CMtype,  Up: spcurve_lib
+File: sing.htm,  Node: matrixT1,  Next: semiCMcod2,  Prev: CMtype,  Up: spcurve_lib
 
 D.5.9.3 matrixT1
 ................
@@ -8726,7 +8573,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==>    _[16]=x(1)*gen(5)
 
 
-File: sing.info,  Node: semiCMcod2,  Next: discr,  Prev: matrixT1,  Up: spcurve_lib
+File: sing.htm,  Node: semiCMcod2,  Next: discr,  Prev: matrixT1,  Up: spcurve_lib
 
 D.5.9.4 semiCMcod2
 ..................
@@ -8763,7 +8610,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> _[3]=-x(2)*A(1)-x(3)*A(2)+x(2)*x(3)
 
 
-File: sing.info,  Node: discr,  Next: qhmatrix,  Prev: semiCMcod2,  Up: spcurve_lib
+File: sing.htm,  Node: discr,  Next: qhmatrix,  Prev: semiCMcod2,  Up: spcurve_lib
 
 D.5.9.5 discr
 .............
@@ -8803,7 +8650,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> _[1]=A(1)*A(2)*A(3)
 
 
-File: sing.info,  Node: qhmatrix,  Next: relweight,  Prev: discr,  Up: spcurve_lib
+File: sing.htm,  Node: qhmatrix,  Next: relweight,  Prev: discr,  Up: spcurve_lib
 
 D.5.9.6 qhmatrix
 ................
@@ -8837,7 +8684,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> x3, y
 
 
-File: sing.info,  Node: relweight,  Next: posweight,  Prev: qhmatrix,  Up: spcurve_lib
+File: sing.htm,  Node: relweight,  Next: posweight,  Prev: qhmatrix,  Up: spcurve_lib
 
 D.5.9.7 relweight
 .................
@@ -8863,7 +8710,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> 2
 
 
-File: sing.info,  Node: posweight,  Next: KSpencerKernel,  Prev: relweight,  Up: spcurve_lib
+File: sing.htm,  Node: posweight,  Next: KSpencerKernel,  Prev: relweight,  Up: spcurve_lib
 
 D.5.9.8 posweight
 .................
@@ -8909,7 +8756,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> 3,1
 
 
-File: sing.info,  Node: KSpencerKernel,  Prev: posweight,  Up: spcurve_lib
+File: sing.htm,  Node: KSpencerKernel,  Prev: posweight,  Up: spcurve_lib
 
 D.5.9.9 KSpencerKernel
 ......................
@@ -8977,7 +8824,7 @@ Procedure from library `spcurve.lib' (*note spcurve_lib::).
      ==> //        block   3 : ordering C
 
 
-File: sing.info,  Node: spectrum_lib,  Prev: spcurve_lib,  Up: Singularities
+File: sing.htm,  Node: spectrum_lib,  Prev: spcurve_lib,  Up: Singularities
 
 D.5.10 spectrum_lib
 -------------------
@@ -8998,7 +8845,7 @@ D.5.10 spectrum_lib
 * spectrumnd:: spectrum of nondegenerate isolated singularity f
 
 
-File: sing.info,  Node: spectrumnd,  Up: spectrum_lib
+File: sing.htm,  Node: spectrumnd,  Up: spectrum_lib
 
 D.5.10.1 spectrumnd
 ...................
@@ -9213,7 +9060,7 @@ Procedure from library `spectrum.lib' (*note spectrum_lib::).
         ,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 
-File: sing.info,  Node: Invariant theory,  Next: Symbolic-numerical solving,  Prev: Singularities,  Up: SINGULAR libraries
+File: sing.htm,  Node: Invariant theory,  Next: Symbolic-numerical solving,  Prev: Singularities,  Up: SINGULAR libraries
 
 D.6 Invariant theory
 ====================
@@ -9226,7 +9073,7 @@ D.6 Invariant theory
 * stratify_lib:: algorithmic stratification by the Greuel-Pfister algorithm
 
 
-File: sing.info,  Node: finvar_lib,  Next: ainvar_lib,  Prev: Invariant theory,  Up: Invariant theory
+File: sing.htm,  Node: finvar_lib,  Next: ainvar_lib,  Prev: Invariant theory,  Up: Invariant theory
 
 D.6.1 finvar_lib
 ----------------
@@ -9287,7 +9134,7 @@ D.6.1 finvar_lib
 * image_of_variety:: ideal of the image of a variety
 
 
-File: sing.info,  Node: invariant_ring,  Next: invariant_ring_random,  Up: finvar_lib
+File: sing.htm,  Node: invariant_ring,  Next: invariant_ring_random,  Up: finvar_lib
 
 D.6.1.1 invariant_ring
 ......................
@@ -9353,7 +9200,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> xyz,x2z-y2z,x3y-xy3
 
 
-File: sing.info,  Node: invariant_ring_random,  Next: primary_invariants,  Prev: invariant_ring,  Up: finvar_lib
+File: sing.htm,  Node: invariant_ring_random,  Next: primary_invariants,  Prev: invariant_ring,  Up: finvar_lib
 
 D.6.1.2 invariant_ring_random
 .............................
@@ -9411,7 +9258,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> xyz,x2z-y2z,x3y-xy3
 
 
-File: sing.info,  Node: primary_invariants,  Next: primary_invariants_random,  Prev: invariant_ring_random,  Up: finvar_lib
+File: sing.htm,  Node: primary_invariants,  Next: primary_invariants_random,  Prev: invariant_ring_random,  Up: finvar_lib
 
 D.6.1.3 primary_invariants
 ..........................
@@ -9466,7 +9313,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x2y2
 
 
-File: sing.info,  Node: primary_invariants_random,  Next: cyclotomic,  Prev: primary_invariants,  Up: finvar_lib
+File: sing.htm,  Node: primary_invariants_random,  Next: cyclotomic,  Prev: primary_invariants,  Up: finvar_lib
 
 D.6.1.4 primary_invariants_random
 .................................
@@ -9522,7 +9369,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x4+y4-z4
 
 
-File: sing.info,  Node: cyclotomic,  Next: group_reynolds,  Prev: primary_invariants_random,  Up: finvar_lib
+File: sing.htm,  Node: cyclotomic,  Next: group_reynolds,  Prev: primary_invariants_random,  Up: finvar_lib
 
 D.6.1.5 cyclotomic
 ..................
@@ -9547,7 +9394,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> x20+x15+x10+x5+1
 
 
-File: sing.info,  Node: group_reynolds,  Next: molien,  Prev: cyclotomic,  Up: finvar_lib
+File: sing.htm,  Node: group_reynolds,  Next: molien,  Prev: cyclotomic,  Up: finvar_lib
 
 D.6.1.6 group_reynolds
 ......................
@@ -9610,7 +9457,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> 0,0,1 
 
 
-File: sing.info,  Node: molien,  Next: reynolds_molien,  Prev: group_reynolds,  Up: finvar_lib
+File: sing.htm,  Node: molien,  Next: reynolds_molien,  Prev: group_reynolds,  Up: finvar_lib
 
 D.6.1.7 molien
 ..............
@@ -9679,7 +9526,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      kill alksdfjlaskdjf;
 
 
-File: sing.info,  Node: reynolds_molien,  Next: partial_molien,  Prev: molien,  Up: finvar_lib
+File: sing.htm,  Node: reynolds_molien,  Next: partial_molien,  Prev: molien,  Up: finvar_lib
 
 D.6.1.8 reynolds_molien
 .......................
@@ -9765,7 +9612,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      kill Qadjoint;
 
 
-File: sing.info,  Node: partial_molien,  Next: evaluate_reynolds,  Prev: reynolds_molien,  Up: finvar_lib
+File: sing.htm,  Node: partial_molien,  Next: evaluate_reynolds,  Prev: reynolds_molien,  Up: finvar_lib
 
 D.6.1.9 partial_molien
 ......................
@@ -9812,7 +9659,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> 18x10+12x9+13x8+8x7+8x6
 
 
-File: sing.info,  Node: evaluate_reynolds,  Next: invariant_basis,  Prev: partial_molien,  Up: finvar_lib
+File: sing.htm,  Node: evaluate_reynolds,  Next: invariant_basis,  Prev: partial_molien,  Up: finvar_lib
 
 D.6.1.10 evaluate_reynolds
 ..........................
@@ -9852,7 +9699,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2
 
 
-File: sing.info,  Node: invariant_basis,  Next: invariant_basis_reynolds,  Prev: evaluate_reynolds,  Up: finvar_lib
+File: sing.htm,  Node: invariant_basis,  Next: invariant_basis_reynolds,  Prev: evaluate_reynolds,  Up: finvar_lib
 
 D.6.1.11 invariant_basis
 ........................
@@ -9882,7 +9729,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2
 
 
-File: sing.info,  Node: invariant_basis_reynolds,  Next: primary_char0,  Prev: invariant_basis,  Up: finvar_lib
+File: sing.htm,  Node: invariant_basis_reynolds,  Next: primary_char0,  Prev: invariant_basis,  Up: finvar_lib
 
 D.6.1.12 invariant_basis_reynolds
 .................................
@@ -9931,7 +9778,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> x6+y6
 
 
-File: sing.info,  Node: primary_char0,  Next: primary_charp,  Prev: invariant_basis_reynolds,  Up: finvar_lib
+File: sing.htm,  Node: primary_char0,  Next: primary_charp,  Prev: invariant_basis_reynolds,  Up: finvar_lib
 
 D.6.1.13 primary_char0
 ......................
@@ -9971,7 +9818,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x2y2
 
 
-File: sing.info,  Node: primary_charp,  Next: primary_char0_no_molien,  Prev: primary_char0,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp,  Next: primary_char0_no_molien,  Prev: primary_char0,  Up: finvar_lib
 
 D.6.1.14 primary_charp
 ......................
@@ -10017,7 +9864,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x2y2
 
 
-File: sing.info,  Node: primary_char0_no_molien,  Next: primary_charp_no_molien,  Prev: primary_charp,  Up: finvar_lib
+File: sing.htm,  Node: primary_char0_no_molien,  Next: primary_charp_no_molien,  Prev: primary_charp,  Up: finvar_lib
 
 D.6.1.15 primary_char0_no_molien
 ................................
@@ -10058,7 +9905,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x2y2
 
 
-File: sing.info,  Node: primary_charp_no_molien,  Next: primary_charp_without,  Prev: primary_char0_no_molien,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp_no_molien,  Next: primary_charp_without,  Prev: primary_char0_no_molien,  Up: finvar_lib
 
 D.6.1.16 primary_charp_no_molien
 ................................
@@ -10099,7 +9946,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x2y2
 
 
-File: sing.info,  Node: primary_charp_without,  Next: primary_char0_random,  Prev: primary_charp_no_molien,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp_without,  Next: primary_char0_random,  Prev: primary_charp_no_molien,  Up: finvar_lib
 
 D.6.1.17 primary_charp_without
 ..............................
@@ -10135,7 +9982,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> x+y,z,xy
 
 
-File: sing.info,  Node: primary_char0_random,  Next: primary_charp_random,  Prev: primary_charp_without,  Up: finvar_lib
+File: sing.htm,  Node: primary_char0_random,  Next: primary_charp_random,  Prev: primary_charp_without,  Up: finvar_lib
 
 D.6.1.18 primary_char0_random
 .............................
@@ -10178,7 +10025,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x4+y4-z4
 
 
-File: sing.info,  Node: primary_charp_random,  Next: primary_char0_no_molien_random,  Prev: primary_char0_random,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp_random,  Next: primary_char0_no_molien_random,  Prev: primary_char0_random,  Up: finvar_lib
 
 D.6.1.19 primary_charp_random
 .............................
@@ -10226,7 +10073,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x4+y4-z4
 
 
-File: sing.info,  Node: primary_char0_no_molien_random,  Next: primary_charp_no_molien_random,  Prev: primary_charp_random,  Up: finvar_lib
+File: sing.htm,  Node: primary_char0_no_molien_random,  Next: primary_charp_no_molien_random,  Prev: primary_charp_random,  Up: finvar_lib
 
 D.6.1.20 primary_char0_no_molien_random
 .......................................
@@ -10269,7 +10116,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x4+y4-z4
 
 
-File: sing.info,  Node: primary_charp_no_molien_random,  Next: primary_charp_without_random,  Prev: primary_char0_no_molien_random,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp_no_molien_random,  Next: primary_charp_without_random,  Prev: primary_char0_no_molien_random,  Up: finvar_lib
 
 D.6.1.21 primary_charp_no_molien_random
 .......................................
@@ -10312,7 +10159,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> z2,x2+y2,x4+y4-z4
 
 
-File: sing.info,  Node: primary_charp_without_random,  Next: power_products,  Prev: primary_charp_no_molien_random,  Up: finvar_lib
+File: sing.htm,  Node: primary_charp_without_random,  Next: power_products,  Prev: primary_charp_no_molien_random,  Up: finvar_lib
 
 D.6.1.22 primary_charp_without_random
 .....................................
@@ -10349,7 +10196,7 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==> x+y,z,xy
 
 
-File: sing.info,  Node: power_products,  Next: secondary_char0,  Prev: primary_charp_without_random,  Up: finvar_lib
+File: sing.htm,  Node: power_products,  Next: secondary_char0,  Prev: primary_charp_without_random,  Up: finvar_lib
 
 D.6.1.23 power_products
 .......................
@@ -10381,4 +10228,53 @@ Procedure from library `finvar.lib' (*note finvar_lib::).
      ==>      0
      ==>      0
      ==>      0
+
+
+File: sing.htm,  Node: secondary_char0,  Next: secondary_charp,  Prev: power_products,  Up: finvar_lib
+
+D.6.1.24 secondary_char0
+........................
+
+Procedure from library `finvar.lib' (*note finvar_lib::).
+
+*Usage:*
+     secondary_char0(P,REY,M[,v]);
+     P: a 1xn <matrix> with primary invariants, REY: a gxn <matrix>
+     representing the Reynolds operator, M: a 1x2 <matrix> giving
+     numerator and denominator of the Molien series, v: an optional
+     <int>
+
+*Assume:*
+     n is the number of variables of the basering, g the size of the
+     group, REY is the 1st return value of group_reynolds(),
+     reynolds_molien() or the second one of primary_invariants(), M the
+     return value of molien() or the second one of reynolds_molien() or
+     the third one of primary_invariants()
+
+*Return:*
+     secondary invariants of the invariant ring (type <matrix>) and
+     irreducible secondary invariants (type <matrix>)
+
+*Display:*
+     information if v does not equal 0
+
+*Theory:*
+     The secondary invariants are calculated by finding a basis (in
+     terms of monomials) of the basering modulo the primary invariants,
+     mapping those to invariants with the Reynolds operator and using
+     these images or their power products such that they are linearly
+     independent modulo the primary invariants (see paper "Some
+     Algorithms in Invariant Theory of Finite Groups" by Kemper and
+     Steel (1997)).
+
+*Example:*
+     LIB "finvar.lib";
+     ring R=0,(x,y,z),dp;
+     matrix A[3][3]=0,1,0,-1,0,0,0,0,-1;
+     list L=primary_invariants(A);
+     matrix S,IS=secondary_char0(L[1..3]);
+     print(S);
+     ==> 1,xyz,x2z-y2z,x3y-xy3
+     print(IS);
+     ==> xyz,x2z-y2z,x3y-xy3
 

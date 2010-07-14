@@ -6,7 +6,7 @@ texi float_with_at_commands.texi
 texi float_copying.texi
 texi macro_in_menu.texi
 texi ref_in_anchor.texi
-texi tex.texi --l2h --iftex
+texi tex.texi --set-init-var 'L2H 1' --iftex
 texi block_EOL.texi
 texi detailmenus.texi
 texi commands_in_ifset.texi
@@ -68,19 +68,19 @@ float_with_at_commands float_with_at_commands.texi
 float_copying float_copying.texi --split chapter
 macro_in_menu macro_in_menu.texi
 ref_in_anchor ref_in_anchor.texi
-tex tex.texi --l2h --iftex
+tex tex.texi --set-init-var 'L2H 1' --iftex
 tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.init --iftex
 tex_mediawiki tex.texi --init mediawiki.init --iftex
 tex_httex_mediawiki tex.texi --html --init tex4ht.init --init mediawiki.init --iftex
-tex_l2h_mediawiki tex.texi --html --l2h --iftex --init mediawiki.init
+tex_l2h_mediawiki tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.init
 block_EOL block_EOL.texi
-block_EOL_tex block_EOL.texi --l2h --iftex
+block_EOL_tex block_EOL.texi --set-init-var 'L2H 1' --iftex
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --set-init-var 'SIMPLE_MENU 1'
 commands_in_ifset commands_in_ifset.texi
-simplest_test_prefix simplest.texi --prefix=truc
-simplest_test_prefix_info simplest.texi --info --prefix=truc
+simplest_test_prefix simplest.texi --set-init-var 'PREFIX truc'
+simplest_test_prefix_info simplest.texi --info --set-init-var 'PREFIX truc'
 simplest_test_css simplest.texi --css-include file.css
 simplest_test_date_in_header simplest.texi --set-init-var 'DATE_IN_HEADER 1'
 punctuation punctuation.texi
@@ -147,7 +147,7 @@ kbdinputstyle_info kbdinputstyle.texi --init info.init
 simple_images_info simple_images.texi --init info.init
 nested_formats_info nested_formats.texi --init info.init
 formatting_html ../coverage/formatting.texi --html --no-split
-formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --top-file=index.html
+formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --set-init-var 'TOP_FILE index.html'
 formatting_info ../coverage/formatting.texi --init info.init -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
 formatting_mediawiki ../coverage/formatting.texi --init mediawiki.init
