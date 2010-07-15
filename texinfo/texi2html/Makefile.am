@@ -33,7 +33,7 @@ initdir = $(datadir)/texinfo/init
 # in the top-level distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
-bin_SCRIPTS = texi2html
+bin_SCRIPTS = texi2any
 texi2html_additional_scripts = \
 	MySimple.pm \
 	T2h_i18n.pm \
@@ -182,7 +182,7 @@ dist_images_DATA = images/a_begin.png \
 texi2html.temp: $(texi2html_sources)
 	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
 
-texi2html: texi2html.temp $(texi2html_formats)
+texi2any: texi2html.temp $(texi2html_formats)
 	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
@@ -247,10 +247,10 @@ check-local: makeinfo.pl texi2any.pl
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
 
-html-local: texi2html
+makeinfo texi2html:
+	-$(LN_S) $(srcdir)/texi2any $@
 
-clean-local:
-	-rm -f texi2html texi2html.temp
+html-local: texi2html
 
 distclean-local:
 	-rm -rf locales i18n
@@ -272,11 +272,20 @@ install-data-local: i18n
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/ $(DESTDIR)$(pkgdatadir)/i18n
+	rm -f $(DESTDIR)$(bindir)/texi2html
+	rm -f $(DESTDIR)$(bindir)/makeinfo
+
+install-exec-hook:
+	-$(LN_S) texi2any $(DESTDIR)$(bindir)/texi2html
+	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:
 	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name CVS`
 
 ACLOCAL_AMFLAGS = -I m4
+
+CLEANFILES = texi2html texi2html.temp texi2any makeinfo \
+	texi2any.pl makeinfo.pl
 
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \

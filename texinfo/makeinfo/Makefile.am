@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.10 2010-06-24 00:17:02 karl Exp $
+# $Id: Makefile.am,v 1.11 2010-07-15 15:20:28 pertusus Exp $
 # Makefile.am for texinfo/makeinfo.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -13,7 +13,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-bin_PROGRAMS = makeinfo
+noinst_PROGRAMS = makeinfo
 
 localedir = $(datadir)/locale
 AM_CPPFLAGS = 					\

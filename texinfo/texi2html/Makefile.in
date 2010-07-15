@@ -749,7 +749,7 @@ initdir = $(datadir)/texinfo/init
 # This is to prevent texinfo.tex from being included
 # in the top-level distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
-bin_SCRIPTS = texi2html
+bin_SCRIPTS = texi2any
 texi2html_additional_scripts = \
 	MySimple.pm \
 	T2h_i18n.pm \
@@ -896,6 +896,9 @@ dist_images_DATA = images/a_begin.png \
 	images/xy_up_gr.png
 
 ACLOCAL_AMFLAGS = -I m4
+CLEANFILES = texi2html texi2html.temp texi2any makeinfo \
+	texi2any.pl makeinfo.pl
+
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \
 	po_document/Makevars \
@@ -1238,6 +1241,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -1249,7 +1253,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-recursive
 
-clean-am: clean-generic clean-local mostlyclean-am
+clean-am: clean-generic mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -f Makefile
@@ -1276,7 +1280,8 @@ install-dvi: install-dvi-recursive
 install-dvi-am:
 
 install-exec-am: install-binSCRIPTS
-
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) install-exec-hook
 install-html: install-html-recursive
 
 install-html-am:
@@ -1317,20 +1322,21 @@ uninstall-am: uninstall-binSCRIPTS uninstall-dist_imagesDATA \
 	uninstall-dist_initDATA uninstall-local
 
 .MAKE: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) check-am \
-	ctags-recursive install-am install-strip tags-recursive
+	ctags-recursive install-am install-exec-am install-strip \
+	tags-recursive
 
 .PHONY: $(RECURSIVE_CLEAN_TARGETS) $(RECURSIVE_TARGETS) CTAGS GTAGS \
 	all all-am check check-am check-local clean clean-generic \
-	clean-local ctags ctags-recursive dist-hook distclean \
-	distclean-generic distclean-local distclean-tags distdir dvi \
-	dvi-am html html-am html-local info info-am install install-am \
-	install-binSCRIPTS install-data install-data-am \
-	install-data-local install-dist_imagesDATA \
-	install-dist_initDATA install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
+	ctags ctags-recursive dist-hook distclean distclean-generic \
+	distclean-local distclean-tags distdir dvi dvi-am html html-am \
+	html-local info info-am install install-am install-binSCRIPTS \
+	install-data install-data-am install-data-local \
+	install-dist_imagesDATA install-dist_initDATA install-dvi \
+	install-dvi-am install-exec install-exec-am install-exec-hook \
+	install-html install-html-am install-info install-info-am \
+	install-man install-pdf install-pdf-am install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
 	pdf-am ps ps-am tags tags-recursive uninstall uninstall-am \
 	uninstall-binSCRIPTS uninstall-dist_imagesDATA \
@@ -1340,7 +1346,7 @@ uninstall-am: uninstall-binSCRIPTS uninstall-dist_imagesDATA \
 texi2html.temp: $(texi2html_sources)
 	$(SHELL) $(srcdir)/buildt2h.sh $@ $^
 
-texi2html: texi2html.temp $(texi2html_formats)
+texi2any: texi2html.temp $(texi2html_formats)
 	$(SHELL) $(srcdir)/addformats.sh $@ $^
 	chmod a+x $@
 
@@ -1405,10 +1411,10 @@ check-local: makeinfo.pl texi2any.pl
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
 
-html-local: texi2html
+makeinfo texi2html:
+	-$(LN_S) $(srcdir)/texi2any $@
 
-clean-local:
-	-rm -f texi2html texi2html.temp
+html-local: texi2html
 
 distclean-local:
 	-rm -rf locales i18n
@@ -1430,6 +1436,12 @@ install-data-local: i18n
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/ $(DESTDIR)$(pkgdatadir)/i18n
+	rm -f $(DESTDIR)$(bindir)/texi2html
+	rm -f $(DESTDIR)$(bindir)/makeinfo
+
+install-exec-hook:
+	-$(LN_S) texi2any $(DESTDIR)$(bindir)/texi2html
+	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
 
 dist-hook:
 	rm -rf `find $(distdir)/lib $(distdir)/i18n_ref -name CVS`
