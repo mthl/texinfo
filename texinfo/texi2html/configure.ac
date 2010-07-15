@@ -13,8 +13,8 @@ AM_CONDITIONAL([TEXI2HTML],[true])
 
 AM_GNU_GETTEXT([external])
 dnl it is not completly clear that we need that or not, since gettext is 
-dnl not fully used.
-AM_GNU_GETTEXT_VERSION([0.14])
+dnl not fully used. Set to 0.18.1 to match the version in texinfo.
+AM_GNU_GETTEXT_VERSION([0.18.1])
 
 dnl Misc variable settings
 PACKAGE_DATE=`${SHELL} "$srcdir"/mdate-sh "$srcdir"/configure.ac`
