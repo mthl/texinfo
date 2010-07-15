@@ -29,7 +29,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  test_directions.init tests.txt \
  res res_all res_info res_docbook res_xml res_html
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info out_docbook out_xml out_html diffs

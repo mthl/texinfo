@@ -652,7 +652,7 @@ EXTRA_DIST = $(TESTS) indices_res index_split_res tex_l2h_res tex_t4ht_res
 TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
 #TESTS = tex_l2h.sh tex_t4ht.sh
 test_dirs = indices index_split tex_l2h tex_t4ht
-DISTCLEANFILES = l2h_tmp_dir.init *.log *.out
+DISTCLEANFILES = *.log *.out
 all: all-am
 
 .SUFFIXES:

@@ -21,7 +21,7 @@ copy-tests:
 		fi; \
 	done
 
-DISTCLEANFILES = l2h_tmp_dir.init *.log *.out
+DISTCLEANFILES = *.log *.out
 
 distclean-local:
 	rm -rf diffs $(test_dirs)

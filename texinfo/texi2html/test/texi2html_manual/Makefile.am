@@ -3,7 +3,7 @@ custpage.texi  initfile.texi  reference.texi  version.texi \
 custhtml-header.htmltexi \
  tests.txt res
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs

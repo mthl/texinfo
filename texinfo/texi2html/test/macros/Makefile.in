@@ -666,7 +666,7 @@ EXTRA_DIST = macros.texi simple_macro.texi nested_macro_calls.texi \
  incl-incl.txi included_file_with_setfilename.texi \
  tests.txt res res_all res_info
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 all: all-am
 
 .SUFFIXES:

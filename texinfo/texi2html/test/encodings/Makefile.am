@@ -8,7 +8,7 @@ EXTRA_DIST = nodetest.texi nodetest_latin1.texi nodetest_utf8.texi \
  japanese_shift_jis.texi sample_utf8.texi formatting_utf8.texi \
  icons.init tests.txt res res_all res_info
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs

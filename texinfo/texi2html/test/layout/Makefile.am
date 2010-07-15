@@ -3,7 +3,7 @@ EXTRA_DIST = no_monolithic.texi navigation.texi formatting_regions.texi \
  ignore_and_comments_output.init \
  tests.txt res res_all res_info
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs

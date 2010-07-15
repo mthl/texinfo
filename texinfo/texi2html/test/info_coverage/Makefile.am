@@ -20,7 +20,7 @@ note_in_strong.texi split_nocopying.texi \
  f--ile""\.png f--ile""\.txt this_is_a_long_unknown_file.png \
  verb.txt tests.txt res res_all res_info
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs

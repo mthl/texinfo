@@ -2,7 +2,7 @@ EXTRA_DIST = cvs.texi info-stnd.texi texinfo.texi mini_ker.texi \
  version-stnd.texi version.texi fdl.texi hello.texi fdl-hello.texi \
  mini_ker_t2h.init cvs.init tests.txt res res_all res_info
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs

@@ -3,7 +3,6 @@ This file contains a list of things yet to be done (see also in doc/TODO):
 Before next release
 -------------------
 
-remove l2h_tmp_dir.init from .cvsignore and Makefile.am
 ship texi2any, makeinfo
 
 Later

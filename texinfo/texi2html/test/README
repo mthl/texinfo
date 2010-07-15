@@ -110,8 +110,7 @@ Misc
 
 For the tests that use latex2html, to avoid the test failing if there is 
 a dot in the cwd, mktemp is used to create a temporary directory, hopefully
-in /tmp, and the directory can be passed through the l2h_tmp_dir.init 
-file, generated automatically in every test directory.
+in /tmp, and the directory is passed through on the command line.
 
 A common .texi file should be in the top-level directory (there is such an
 example with coverage_macro.texi). Currently there is no support for common

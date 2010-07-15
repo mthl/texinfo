@@ -10,7 +10,7 @@ display.texi   indent.texi    mouse.texi       regs.texi      xemacs.texi  \
  tests.txt 
 #res
 
-DISTCLEANFILES = l2h_tmp_dir.init tests.log tests.out
+DISTCLEANFILES = tests.log tests.out
 
 distclean-local:
 	rm -rf out out_all out_info diffs
