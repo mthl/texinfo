@@ -5,53 +5,34 @@
 # This is now directly handled in the main program. It is, however different
 # from the main program implementation snce this init file is much more
 # intrusive (for example it wouldn't work with info, but it would work 
-# better for a simple output format when entities are not used)
+# better for a simple output format when entities are not used).
 #
-#    Copyright (C) 2008  Patrice Dumas <pertusus@free.fr>
+#    Copyright (C) 2008 Free Software Foundation, Inc.
 #
-#    This program is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation; either version 2 of the License, or
-#    (at your option) any later version.
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program; if not, write to the Free Software
-#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-#    02110-1301  USA
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Originally written by Patrice Dumas.
 #
 #-##############################################################################
-
-
-# for debugging printouts
-#use Encode;
 
 use strict;
 
 my $enable_encoding_default_init_out = $init_out;
 $init_out = \&enable_encoding_init_out;
 
-sub enable_encoding_is_entity($)
-{
-  my $text = shift;
-  return 0 if (!get_conf('ENABLE_ENCODING_USE_ENTITY'));
-  return 1 if ($text =~ /^&/ and $text =~ /;$/);
-}
-
-push @command_handler_process, \&enable_encoding_initialize_variables;
-
-my @enable_encoding_accents_stack;
-
-sub enable_encoding_initialize_variables()
-{
-  @enable_encoding_accents_stack = ();
-}
-
-my %enable_encoding_default_accent;
+# badly interact with --enable-encoding support in info.init
+set_from_init_file('ENABLE_ENCODING', 0);
 
 sub enable_encoding_init_out()
 {
@@ -71,10 +52,10 @@ sub enable_encoding_init_out()
     {
       if (exists($unicode_map{$key}) and ($unicode_map{$key} ne ''))
       {
-        $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
-        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
-        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($sorting_things_map{$key}));
-        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
+        $things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($things_map{$key}));
+        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($sorting_things_map{$key}));
+        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($pre_map{$key}));
       }
     }
   }
@@ -83,12 +64,12 @@ sub enable_encoding_init_out()
     my $enc_map = $makeinfo_encoding_to_map{get_conf('ENCODING_NAME')};
     foreach my $key (keys(%unicode_accents), 'dotless')
     {
-      $enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
-      $enable_encoding_default_accent{'texi'}->{$key} = $style_map_texi{$key}->{'function'};
-      $enable_encoding_default_accent{'pre'}->{$key} = $style_map_pre{$key}->{'function'};
-      $style_map{$key}->{'function'} = \&enable_encoding_normal_accent;
-      $style_map_texi{$key}->{'function'} = \&enable_encoding_texi_accent;
-      $style_map_pre{$key}->{'function'} = \&enable_encoding_pre_accent;
+      $t2h_enable_encoding_default_accent{'normal'}->{$key} = $style_map{$key}->{'function'};
+      $t2h_enable_encoding_default_accent{'texi'}->{$key} = $style_map_texi{$key}->{'function'};
+      $t2h_enable_encoding_default_accent{'pre'}->{$key} = $style_map_pre{$key}->{'function'};
+      $style_map{$key}->{'function'} = \&t2h_enable_encoding_normal_accent;
+      $style_map_texi{$key}->{'function'} = \&t2h_enable_encoding_texi_accent;
+      $style_map_pre{$key}->{'function'} = \&t2h_enable_encoding_pre_accent;
     }
 
     foreach my $key (%things_map)
@@ -96,154 +77,13 @@ sub enable_encoding_init_out()
       if (exists($unicode_map{$key}) and ($unicode_map{$key} ne '') and 
         exists($makeinfo_unicode_to_eight_bit{$enc_map}->{$unicode_map{$key}}))
       { # we let perl handle the conversion
-        $things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($things_map{$key}));
-        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($texi_map{$key}));
-        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($sorting_things_map{$key}));
-        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (enable_encoding_is_entity($pre_map{$key}));
+        $things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($things_map{$key}));
+        $texi_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($texi_map{$key}));
+        $sorting_things_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($sorting_things_map{$key}));
+        $pre_map{$key} = chr(hex($unicode_map{$key})) unless (t2h_encoding_is_entity($pre_map{$key}));
       }
     }
   }
-}
-
-sub enable_encoding_normal_accent($$$)
-{
-  return enable_encoding_accent ('normal', @_);
-}
-sub enable_encoding_texi_accent($$$)
-{
-  return enable_encoding_accent ('texi', @_);
-}
-sub enable_encoding_pre_accent($$$)
-{
-  return enable_encoding_accent ('pre', @_);
-}
-
-sub enable_encoding_accent($$$$)
-{
-  my $in = shift;
-  my @other_args = @_;
-
-  my $accent = shift;
-  my $args = shift;
-  my $style_stack = shift;
-  my $text = $args->[0];
-
-#print STDERR "enable_encoding_accent called($in) $accent (@$style_stack)\n";
-
-  if (scalar(@enable_encoding_accents_stack)) 
-  {
-    # in that case, we already have a result ready that corresponds with the
-    # formatting of a part of the stack mapped to 
-    # enable_encoding_accents_stack, so it is emptied and the innermost
-    # $text is returned as is, such that the unmodified already formatted 
-    # innermost formatted accented text is returned.
-
-    #print STDERR " doing nothing, still in stack (@enable_encoding_accents_stack), accent: $accent";
-    my $stack_accent = shift @enable_encoding_accents_stack;
-    #print STDERR " stack_accent $stack_accent\n";
-    return $text;
-  }
-
-  # in that case there is no enable_encoding_accents_stack, so we are 
-  # at the closing of the innermost accented command. We will try to format 
-  # all the stack in reverse(@$style_stack) that coresponds with 
-  # accent commands
-  my @accents_stack = ();
-  my @styles = reverse(@$style_stack);
-
-  # accents are formatted and the intermediate results are kept, such
-  # that we can return the maximum of multiaccented letters that can be
-  # rendered with a given eight bit formatting.
-
-  # first put the letter in the stack
-  my @utf8_partial_results = { 'result' => $text, 
-      'accents_stack' => [ @accents_stack ]};
-
-  # then the accent that is associated with the function call
-  my $current_accent = t2h_utf8_accent($accent,[$text],$style_stack);
-  @accents_stack = ($accent);
-  push @utf8_partial_results, { 'result' => $current_accent,
-       'accents_stack' => [ @accents_stack ]};
-
-  # and then all the other accents on the stack
-  while (scalar(@styles) and (defined($unicode_accents{$styles[0]}) or $styles[0] eq 'dotless'))
-  {
-    my $next_style = shift @styles;
-    my @new_stack = reverse(@styles);
-    $current_accent = t2h_utf8_accent($next_style,[$current_accent],\@new_stack);
-    push @accents_stack, $next_style;
-    push @utf8_partial_results, { 'result' => $current_accent,
-       'accents_stack' => [ @accents_stack ]}
-        ;
-  }
-
-  my $enc_map = $makeinfo_encoding_to_map{get_conf('ENCODING_NAME')};
-  my $eight_bit;
-  my $result;
-  # At this point we have the utf8 encoded results for the accent
-  # commands stack, with all the intermediate results.
-  # For each one we'll check if it is possible to encode it in the 
-  # current eight bit output encoding table
-  foreach my $partial_result (@utf8_partial_results)
-  {
-    my $char = $partial_result->{'result'};
-    my $new_eight_bit = '';
-    my $new_codepoint;
-   
-    if (ord($char) <= 128)
-    {
-      $new_eight_bit =  uc(sprintf("%02x",ord($char)));
-      $new_codepoint = uc(sprintf("%04x",ord($char)));
-    }
-    elsif (ord($char) <= hex(0xFFFF))
-    {
-      $new_codepoint = uc(sprintf("%04x",ord($char)));
-      if (exists($makeinfo_unicode_to_eight_bit{$enc_map}->{$new_codepoint}))
-      {
-         $new_eight_bit = $makeinfo_unicode_to_eight_bit{$enc_map}->{$new_codepoint};
-      }
-    }
-    #my $eight_bit_txt = 'undef';
-    #$eight_bit_txt = $eight_bit if (defined($eight_bit));
-    #print STDERR "" . Encode::encode('utf8', "$char") . " (@{$partial_result->{'accents_stack'}}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
-    # no corresponding eight bit character found
-    last if ($new_eight_bit eq '');
-
-    # in that case, the new eight bit character is the same than the one 
-    # found with one less character (and it isnt a @dotless{i}). It may
-    # mean 2 things
-    # -> there are 2 characters in accent. This could happen, for example
-    #    if an accent that cannot be rendered is found and it leads to 
-    #    appending or prepending a character. For example this happens for
-    #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
-    #    ñ,
-    #    In nthat case, the additional utf8 accent is prepended, which 
-    #    means that it is composed with the , and leaves ñ untouched. 
-    # -> ord(char) leads to the same for the more inner character.
-    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
-    #    the same than ord(a̲).
-    last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit) 
-       and !($partial_result->{'accents_stack'}[0] eq 'dotless' and $char eq 'i')));
-    $result = $partial_result;
-    $eight_bit = $new_eight_bit;
-  }
-  if (defined($result) and scalar(@{$result->{'accents_stack'}}))
-  {
-     # we got a result, return it and put in enable_encoding_accents_stack
-     # the stack of accent commands that were processed. They wont be used
-     # further, but only unshifted.
-
-  #print STDERR "Result: ".Encode::encode('utf8', $result->{'result'}) ." '$eight_bit' (@{$result->{'accents_stack'}})\n" if defined($result);
-     @enable_encoding_accents_stack = @{$result->{'accents_stack'}};
-     # remove the first, it is the accent being processed
-     shift @enable_encoding_accents_stack;
-     # it should be noted that we return the 'utf8' accent (which is really
-     # a codepoint, and not the eight bit representation, we leave the 
-     # conversion to perl, which should handle it fine
-     return $result->{'result'};
-  }
-  
-  return &{$enable_encoding_default_accent{$in}->{$accent}}(@other_args);
 }
 
 1;

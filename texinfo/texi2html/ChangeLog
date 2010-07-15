@@ -1,3 +1,11 @@
+2010-07-15  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl, *.pm, texi2html.init, check_texinfo.pl.in, 
+	manage_i18n.pl.in, */*.init, doc/texi2html.texi: update 
+	license notices to GPLv3. Cleanup a bit the copyright
+	years and mark explicitly the public domain files.
+	* examples/noheaders.init: don't duplicate texi2html.init.
+
 2010-07-14  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: obsolete texi2html specific options.

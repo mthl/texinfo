@@ -1,4 +1,12 @@
-# This is based on the scriptbasic style
+# A style that tries to be analogous with a book, in HTML.
+#
+# This file is in the public domain. Thus it may easily be used as an 
+# example for further customizations.
+#
+# Originally written by Patrice Dumas in 2004.
+# Modified in 2007, 2008.
+#
+# This style is based on the scriptbasic style.
 
 #html_default_load();
 t2h_default_load_format('html');

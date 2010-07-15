@@ -4,31 +4,30 @@
 'ig 00 ';
 #+##############################################################################
 #
-# texi2html: Program to transform Texinfo documents to HTML
+# texi2html: Parse and transform Texinfo documents
 #
-#    Copyright (C) 1999-2010  Patrice Dumas <pertusus@free.fr>,
-#                             Derek Price <derek@ximbiot.com>,
-#                             Adrian Aichner <adrian@xemacs.org>,
-#                           & others.
+# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
+# 2009, 2010 Free Software Foundation, Inc.
 #
-#    This program is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation; either version 2 of the License, or
-#    (at your option) any later version.
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program; if not, write to the Free Software
-#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-#    02110-1301  USA
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 #
 # Some error messages come from texinfo (makeinfo), so copyright holder 
 # is the FSF or the individual who wrote them. All come from before the 
 # switch of texinfo to GPLv3+.
+#
+# Originally written by Lionel Cons.
 #
 #-##############################################################################
 # The man page for this program is included at the end of this file and can be
@@ -91,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.398 2010-07-14 23:05:23 pertusus Exp $
+# $Id: texi2html.pl,v 1.399 2010-07-15 12:26:58 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";

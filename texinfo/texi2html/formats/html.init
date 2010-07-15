@@ -7,7 +7,13 @@
 # A copy of this file is pasted into the beginning of texi2html by
 # running './configure'.
 #
-# $Id: html.init,v 1.56 2010-07-14 20:22:13 pertusus Exp $
+# This file is in the public domain. Thus it may easily be used as an 
+# example for further customizations.
+#
+# Taken from texi2html.init in 2009.
+# Originally written by Olaf Bachmann.
+#
+# $Id: html.init,v 1.57 2010-07-15 12:27:00 pertusus Exp $
 
 use strict;
 

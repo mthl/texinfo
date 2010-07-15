@@ -5,10 +5,15 @@
 # Override values for various customizable procedures are set in this file
 # in such a way as to create text suitable for pasting into a MediaWiki.
 #
-# Load the file with command-line 
-# option -init-file mediawiki.init
+# Load the file with command-line option: --init-file mediawiki.init
 #
-# $Id: mediawiki.init,v 1.8 2010-07-14 08:45:57 pertusus Exp $
+# This file is in the public domain. Thus it may easily be used as an 
+# example for further customizations.
+#
+# Originally written by Derek Price in 2005.
+# Modified in 2008 and 2009.
+#
+# $Id: mediawiki.init,v 1.9 2010-07-15 12:27:00 pertusus Exp $
 
 use strict;
 

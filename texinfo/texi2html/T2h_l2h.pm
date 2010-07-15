@@ -2,25 +2,23 @@
 #
 # T2h_l2h.pm: interface to LaTeX2HTML
 #
-#    Copyright (C) 1999-2005  Patrice Dumas <pertusus@free.fr>,
-#                             Derek Price <derek@ximbiot.com>,
-#                             Adrian Aichner <adrian@xemacs.org>,
-#                           & others.
+#    Copyright (C) 1999, 2000, 2003, 2005, 2006, 2009 Free Software Foundation, Inc.
 #
-#    This program is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation; either version 2 of the License, or
-#    (at your option) any later version.
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program; if not, write to the Free Software
-#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-#    02110-1301  USA
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# This code was taken from the main texi2html file in 2006.
+# Certainly originally written by Olaf Bachmann.
 #
 #-##############################################################################
 
@@ -146,7 +144,7 @@ sub init()
     $l2h_html_file = "$docu_rdir${l2h_name}.html";
     $l2h_prefix = "${l2h_name}_";
     $debug = $Texi2HTML::THISDOC{'debug_l2h'};
-    $verbose = $Texi2HTML::Config::VERBOSE;
+    $verbose = Texi2HTML::Config::get_conf('VERBOSE');
 
     unless (Texi2HTML::Config::get_conf('L2H_SKIP'))
     {
@@ -340,7 +338,7 @@ sub change_image_file_names($)
         unless ($dest)
         {
             my $ext = '';
-            if ($src =~ /.*\.(.*)$/ and (!defined($Texi2HTML::THISDOC{'extension'}) or $1 ne $Texi2HTML::THISDOC{'extension'}))
+            if ($src =~ /.*\.(.*)$/ and (!defined(Texi2HTML::Config::get_conf('EXTENSION')) or $1 ne Texi2HTML::Config::get_conf('EXTENSION')))
             {
                 $ext = ".$1";
             }

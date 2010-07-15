@@ -1,4 +1,11 @@
 # vim: set filetype=perl: 
+# 
+# Convert to texinfo xml.
+# 
+# This file is in the public domain. Thus it may easily be used as an 
+# example for further customizations.
+#
+# Originally written by Patrice Dumas in 2009.
 
 use strict;
 

@@ -4,21 +4,28 @@
 @setfilename texi2html.info
 
 @copying
+@ignore
+This are the notices before inclusion in texinfo
 @multitable @columnfractions .12 .88
 @item Portions of @command{texi2html}
 @item @tab Copyright @copyright{} 1999, 2000 Lionel Cons@*
 @item @tab Copyright @copyright{} 1999, 2000 Karl Berry@*
 @item @tab Copyright @copyright{} 1999, 2000 Olaf Bachmann@*
-@item @tab Copyright @copyright{} 2002, 2003, 2004, 2005, 2006, 2007 Patrice Dumas@*
-@item @tab Copyright @copyright{} 2001, 2002, 2003, 2004, 2005, 2006 Derek Price@*
+@item @tab Copyright @copyright{} 2000, 2001 Adrian Aichner@*
+@item @tab Copyright @copyright{} 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Patrice Dumas@*
+@item @tab Copyright @copyright{} 2001, 2002, 2003, 2004, 2005, 2007, 2008 Derek Price@*
 @item @tab Copyright @copyright{} many others.@*
 @item @tab
 @item @tab
 @item Portions of this manual
 @item @tab Copyright @copyright{} 1999, 2000 Karl Heinz Marbaise (manual)@*
 @item @tab Copyright @copyright{} 2003, 2007 Derek Price (manual)@*
-@item @tab Copyright @copyright{} 2003, 2004, 2005, 2006, 2007 Patrice Dumas (manual)@*
+@item @tab Copyright @copyright{} 2003, 2004, 2005, 2006, 2007, 2009, 2010 Patrice Dumas (manual)@*
 @end multitable
+@end ignore
+
+Copyright @copyright{} 1999, 2000, 2003, 2004, 2005, 2006, 2007, 2009, 2010 
+Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim
 copies of this manual provided the copyright notice and
@@ -48,31 +55,6 @@ by the Free Software Foundation.
 @c   Patrice Dumas
 @c   Derek Price
 @end copying
-
-@c The following is the Texi2HTML program license, not the manual
-@c license. The manual license is stated above.
-@c
-@c --------------------------------------------------------
-@c    This file is part of the Texi2HTML distribution.
-@c
-@c    Texi2HTML is free software; you can redistribute it
-@c    and/or modify it under the terms of the GNU General Public
-@c    License as published by the Free Software Foundation;
-@c    either version 2 of the License, or (at your option) any
-@c    later version.
-@c
-@c    Texi2HTML is distributed in the hope that it will be
-@c    useful, but WITHOUT ANY WARRANTY; without even the implied
-@c    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-@c    PURPOSE.  See the GNU General Public License for more
-@c    details.
-@c
-@c    You should have received a copy of the GNU General
-@c    Public License along with this program; if not, write to
-@c    the Free Software Foundation, Inc., 59 Temple Place, Suite
-@c    330, Boston, MA  02110-1301  USA
-@c
-@c --------------------------------------------------------
 
 @c --------------------------------------------------------
 @c Get the version of the script and the last update time
