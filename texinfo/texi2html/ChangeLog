@@ -8,6 +8,8 @@
 	* texi2html.pl, texi2html.init, formats/html.init: do redirection 
 	files for renamed nodes (in %renamed_nodes), configuration 
 	variable RENAMED_NODES_REDIRECTIONS set in html only.
+	* texi2html.pl: don't show menu with --no-headers as said in the
+	makeinfo documentation.
 
 2010-07-15  Patrice Dumas  <pertusus@free.fr>
 

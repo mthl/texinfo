@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.402 2010-07-17 09:46:26 pertusus Exp $
+# $Id: texi2html.pl,v 1.403 2010-07-17 11:08:41 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2974,6 +2974,7 @@ $T2H_OPTIONS -> {'headers'} =
  type => '!',
  linkage => sub {
     set_from_cmdline('HEADERS', $_[1]);
+    set_from_cmdline('SHOW_MENU', $_[1]);
     Texi2HTML::Config::t2h_default_load_format('plaintext', 1)
         if (!$_[1] and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
  },
@@ -3732,6 +3733,10 @@ $makeinfo_help .= sprintf(__("General options:
       --help                  display this help and exit.
       --no-validate           suppress node cross-reference validation.
       --no-warn               suppress warnings (but not errors).
+      --conf-dir=DIR          search also for initialization files in DIR.
+      --init-file=FILE        load FILE to modify the default behaviour.
+      --set-init-variable VAR=VALUE
+                                set the configuration variable VAR to VALUE.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
 ."\n";
@@ -3747,11 +3752,16 @@ $makeinfo_help .= __("General output options:
       --no-headers            suppress node separators, Node: lines, and menus
                                 from Info output (thus producing plain text)
                                 or from HTML (thus producing shorter output);
-                                also, write to standard output by default.
+                                also, write to standard output by default if
+                                producing Info.
+      --split=SPLIT           split at SPLIT, where SPLIT may be chapter, 
+                                section or node if output supports splitting.
       --no-split              suppress the splitting of Info or HTML output,
                                 generate only one output file.
       --number-sections       output chapter and sectioning numbers.
-  -o, --output=FILE           output to FILE (or directory if split HTML).\n")
+  -o, --output=FILE           output to FILE (or directory if split).
+                                If not split and FILE is a directory, put the
+                                resulting files in FILE.\n")
 ."\n";
 $makeinfo_help .= sprintf(__("Options for Info and plain text:
       --disable-encoding      do not output accented and special characters
@@ -3774,15 +3784,18 @@ $makeinfo_help .= __("Options for HTML:
       --css-ref=URL           generate reference to a CSS file.
       --internal-links=FILE   produce list of internal links in FILE.
       --transliterate-file-names
-                              produce file names in ASCII transliteration.\n")
+                              produce file names in ASCII transliteration.
+      --node-files            produce redirection files for nodes and 
+                                anchors. Default is set only if split.\n")
 ."\n";
 # This is ignored, so remove it from help
 #Options for XML and Docbook:
 #      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
 #                                If VAL is 0, ignorable whitespace is dropped.
+# Always set and ignored
+#      --commands-in-node-names  allow \@ commands in node names.
 #
 $makeinfo_help .= __("Input file options:
-      --commands-in-node-names  allow \@ commands in node names.
   -D VAR                        define the variable VAR, as with \@set.
   -I DIR                        append DIR to the \@include search path.
   -P DIR                        prepend DIR to the \@include search path.

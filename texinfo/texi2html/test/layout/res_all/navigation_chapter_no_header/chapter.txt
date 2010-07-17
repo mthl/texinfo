@@ -1,7 +1,6 @@
 1 First chapter
 ***************
 
-* section::
 
 1.1 Section in chapter
 ======================
@@ -33,7 +32,6 @@ AAAA
 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b  b b b b b bb b b b b b b  bb  b bb.
 
-* subsection::
 
 1.1.1 Sub section in section
 ----------------------------

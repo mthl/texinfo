@@ -1,5 +1,4 @@
 File used for navigation testing
 ********************************
 
-* chapter::
 

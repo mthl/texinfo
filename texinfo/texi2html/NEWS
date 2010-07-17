@@ -5,6 +5,8 @@ X.X ()
 * COMPATIBILITY
   -------------
 
+* don't show menu with --no-headers as said in the makeinfo documentation.
+
 * obsolete the --iso command line option.
 
 * obsolete texi2html specific variables. Here is the list with the associated

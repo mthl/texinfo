@@ -1,11 +1,6 @@
 Top section
 ***********
 
-* chapter::               chapter
-
-Menu comment
-
-* description:chapter2.   Chapter 2
 
 
 
