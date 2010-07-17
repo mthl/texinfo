@@ -1,3 +1,9 @@
+2010-07-18  Patrice Dumas  <pertusus@free.fr>
+
+	* Makefile.am: modify on the fly $(PACKAGE)_document.pot to set
+	the charset to ascii and not CHARSET since msgexec doesn't like
+	this anymore.
+
 2010-07-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: accept --set-init-var VAR=VALUE syntax. Karl
