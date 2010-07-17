@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.400 2010-07-17 00:11:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.401 2010-07-17 07:57:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -4593,7 +4593,31 @@ sub set_docu_names($$)
             }
             else
             {
-               document_error (sprintf(__("Can't create directory `%s': %s"), $docu_rdir, $!), 1);
+               my $original_rdir = $docu_rdir;
+               # as explained in the doc, retry with the extension appended.
+               # this is dubious practice, but workaround extension-less info
+               # files
+               if (get_conf('SPLIT') and get_conf('EXTENSION') and get_conf('EXTENSION') ne '')
+               {
+                  $docu_rdir =~ s/\/*$//;
+                  $docu_rdir .= '.' . get_conf('EXTENSION') . '/';
+                  if (! -d $docu_rdir)
+                  {
+                     if ( mkdir($docu_rdir, oct(755)))
+                     {
+                        print STDERR "# created directory $docu_rdir\n" if ($T2H_VERBOSE);
+                        push @created_directories, $docu_rdir;
+                     }
+                     else
+                     {
+                        document_error (sprintf(__("Can't create directories `%s' or `%s': %s"), $original_rdir, $docu_rdir, $!), 1);
+                     }
+                  }
+               }
+               else
+               {
+                   document_error (sprintf(__("Can't create directory `%s': %s"), $docu_rdir, $!), 1);
+               }
             }
         }
         print STDERR "# putting result files into directory $docu_rdir\n" if ($T2H_VERBOSE);

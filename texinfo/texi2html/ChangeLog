@@ -1,3 +1,9 @@
+2010-07-18  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: for split documents, append the extension to
+	the out directory, and try with the new directory, if the normal
+	one cannot be used.
+
 2010-07-17  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: accept --set-init-var VAR=VALUE syntax. Karl
