@@ -1,3 +1,8 @@
+2010-07-16  Patrice Dumas  <pertusus@free.fr>
+
+	* makeinfo/Makefile.am (noinst_PROGRAMS): no more installation
+	of C makeinfo via bin_PROGRAMS.
+
 2010-07-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (frenchspacing): no double space after
