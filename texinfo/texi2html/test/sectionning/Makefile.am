@@ -26,7 +26,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  section_chapter_before_top_nodes.texi section_chapter_before_top.texi \
  part_node_appendix.texi part_appendix.texi part_node_part_appendix.texi \
  part_node_part_node_appendix.texi part_node_node_part_appendix.texi \
- test_directions.init tests.txt \
+ test_directions.init test_renamed_nodes.init tests.txt \
  res res_all res_info res_docbook res_xml res_html
 
 DISTCLEANFILES = tests.log tests.out

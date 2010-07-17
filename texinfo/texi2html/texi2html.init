@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.277 2010-07-15 12:26:58 pertusus Exp $
+# $Id: texi2html.init,v 1.278 2010-07-17 09:46:26 pertusus Exp $
 
 
 ##################################################################
@@ -567,6 +567,9 @@ sub t2h_default_set_variables_default()
 # if set, output the contents where the command is located
 # This is ignored if set*contentsaftertitlepage is set
   set_default('INLINE_CONTENTS', 1);
+
+# if set, do redirection files for renamed nodes
+  set_default('RENAMED_NODES_REDIRECTIONS', undef);
 
 # symbol put at the beginning of nodes entry in menu (and optionnaly of 
 # unnumbered in menus, see UNNUMBERED_SYMBOL_IN_MENU variable)

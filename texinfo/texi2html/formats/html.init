@@ -13,7 +13,7 @@
 # Taken from texi2html.init in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.init,v 1.57 2010-07-15 12:27:00 pertusus Exp $
+# $Id: html.init,v 1.58 2010-07-17 09:46:26 pertusus Exp $
 
 use strict;
 
@@ -77,6 +77,9 @@ set_default('USE_NUMERIC_ENTITY', 1);
 
 # if true, use the original command if the result is an entity
 set_default('ENABLE_ENCODING_USE_ENTITY', 1);
+
+# if set, do redirection files for renamed nodes
+set_default('RENAMED_NODES_REDIRECTIONS', 1);
 
 # used as identation for block enclosing command @example, etc
 # If not empty, must be enclosed in <td></td>

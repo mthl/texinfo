@@ -1,0 +1,10 @@
+
+%renamed_nodes = (
+ 'old node' => 'node',
+ 'old strong @strong{node}' => '@strong{node}',
+ 'Top' => 'node',
+ 'ToP' => 'node',
+ 'old non existing' => 'non existing file',
+ '@strong{}' => 'node',
+);
+ 

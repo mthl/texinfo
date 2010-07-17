@@ -6,57 +6,6 @@ Before next release
 Later
 -----
 
-* do redirection file for renamed nodes.
-%renamed_nodes = (
-  'Old name' => 'New name',
-);
-
-foreach my $old_node_name (keys(%renamed_nodes))
-{
-my $new_node_name = $renamed_nodes{$old_node_name};
-$old_node_name = normalise_node($old_node_name);
-$new_node_name = normalise_node($new_node_name);
-
-if (!defined($nodes{$new_node_name}))
-{
-  error msg $new_node_name to be renamed as not found
-}
-
-my $old_node->{'texi'} = $old_node_name;
-should do 'cross_manual_file' and 'cross_manual_target'
-then
-do_node_target_file($old_node, '');
-
-to determine the file name. 
-Then use something like do_node_files:
-my $new_node =  $nodes{$new_node_name};
-my $file = "${docu_rdir}$old_node->{'node_file'}";
-$Texi2HTML::NODE{'This'} = $new_node->{'text'};
-$Texi2HTML::NO_TEXI{'This'} = $new_node->{''no_texi'};
-        $Texi2HTML::SIMPLE_TEXT{'This'} = $new_node->{'simple_format'};
-        $Texi2HTML::NAME{'This'} = $new_node->{'text'};
-        my $href_file = $new_node->{'file'};
-        if (!defined($href_file))
-        {
-           if (Texi2HTML::Config::get_conf('novalidate'))
-           {
-               $href_file = '';
-           }
-           else
-           {
-               msg_debug ("Undefined file for `$new_node->{'texi'}' in do_node_files for renamed nodes");
-           }
-        }
-        $Texi2HTML::HREF{'This'} = "$href_file#$new_node->{'id'}";
-        my $redirect = &$Texi2HTML::Config::print_redirection_page ();
-        if (defined($redirect))
-        {
-           my $NODEFILE = open_out ($file);
-           print $NODEFILE "$redirect";
-           close $NODEFILE || document_error ("Can't close $file: $!", 1);
-        }
-
-
 * automatic menus. 
 
 * automatic nodes, if feasible (issue of unicity, mostly).
@@ -146,6 +95,7 @@ $Texi2HTML::NO_TEXI{'This'} = $new_node->{''no_texi'};
   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
   $Texi2HTML::THISDOC{'filename'}->{'frame'}
   'childnext'
+  %renamed_nodes
 
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription

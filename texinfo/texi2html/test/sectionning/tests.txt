@@ -57,6 +57,7 @@ test_refs_nodes test_refs.texi --split node --node-files --set-init-var 'USE_NOD
 at_commands_in_refs at_commands_in_refs.texi
 equivalent_nodes equivalent_nodes.texi --set-init-var 'USE_NODES 1'
 equivalent_nodes_no_node equivalent_nodes.texi
+equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
 html-top_no_Top_node html-top.texi
 menu-whitespace_plain menu-whitespace.texi
 menu-whitespace menu-whitespace.texi --init makeinfo.init

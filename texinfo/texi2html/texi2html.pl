@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.401 2010-07-17 07:57:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.402 2010-07-17 09:46:26 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -220,7 +220,7 @@ my @variable_settables = ('SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
   'COMPLETE_IMAGE_PATHS', 'USE_NODE_TARGET', 'NEW_CROSSREF_STYLE',
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
-  'CSS_LINES');
+  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS');
 
 foreach my $var (@document_settable_at_commands, @command_line_settables,
          @document_global_at_commands, @variable_settables)
@@ -607,6 +607,7 @@ $after_punctuation_characters
 @text_substitutions_simple_format
 @text_substitutions_pre
 %htmlxref_entries
+%renamed_nodes
 );
 
 # deprecated
@@ -6618,6 +6619,22 @@ sub equivalent_nodes($)
     return @equivalent_nodes;
 }
 
+sub find_equivalent_node($)
+{
+    my $name = shift;
+    my @equivalent_nodes = equivalent_nodes($name);
+    my $node_seen;
+    foreach my $equivalent_node (@equivalent_nodes)
+    {
+       if ($nodes{$equivalent_node}->{'seen'})
+       {
+           $node_seen = $equivalent_node;
+           last;
+       }
+    }
+    return $node_seen;
+}
+
 sub do_place_target_file($$$)
 {
    my $place = shift;
@@ -7051,16 +7068,7 @@ sub rearrange_elements()
             if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
             {
                 line_error (sprintf(__("%s reference to nonexistent `%s'"),$direction_texts{$direction}, $node->{$direction}), $node->{'line_nr'}); # for `$node->{'texi'}'"
-                my @equivalent_nodes = equivalent_nodes($node->{$direction});
-                my $node_seen;
-                foreach my $equivalent_node (@equivalent_nodes)
-                {
-                    if ($nodes{$equivalent_node}->{'seen'})
-                    {
-                        $node_seen = $equivalent_node;
-                        last;
-                    }
-                }
+                my $node_seen = find_equivalent_node($node->{$direction});
                 if (defined($node_seen))
                 {
                     document_warn ("---> but equivalent node `$node_seen' found");
@@ -9204,6 +9212,71 @@ sub do_node_files()
     }
 }
 
+# do redirection files for renamed nodes
+sub do_renamed_node_files()
+{
+    foreach my $old_node_name (keys(%Texi2HTML::Config::renamed_nodes))
+    {
+        my $new_node_name = $Texi2HTML::Config::renamed_nodes{$old_node_name};
+        $old_node_name = normalise_node($old_node_name);
+        $new_node_name = normalise_node($new_node_name);
+        my $new_node_equivalent_name = find_equivalent_node($new_node_name);
+
+        my ($node_id, $old_node_file);
+        if (get_conf('TRANSLITERATE_FILE_NAMES'))
+        {
+            ($node_id, $old_node_file) = cross_manual_line($old_node_name,1);
+        }
+        else
+        {
+            $old_node_file = cross_manual_line($old_node_name);
+        }
+        my $file = "${docu_rdir}$old_node_file";
+        $file .= '.'.get_conf('NODE_FILE_EXTENSION') if (defined(get_conf('NODE_FILE_EXTENSION')));
+
+        if (!defined($old_node_file) or $old_node_file eq '')
+        {
+            document_error(sprintf(__("File empty for renamed node `%s'"), $old_node_name));
+        }
+        elsif (!defined($new_node_equivalent_name))
+        {
+            document_error(sprintf(__("Node to be renamed as, `%s' not found"), $new_node_name));
+        }
+        elsif (defined($nodes{$old_node_name}))
+        {
+            document_error(sprintf(__("Node `%s' that is to be renamed exists "), $old_node_name));
+        }
+        else
+        {
+            my $new_node = $nodes{$new_node_equivalent_name};
+            $Texi2HTML::NODE{'This'} = $new_node->{'text'};
+            $Texi2HTML::NO_TEXI{'This'} = $new_node->{'no_texi'};
+            $Texi2HTML::SIMPLE_TEXT{'This'} = $new_node->{'simple_format'};
+            $Texi2HTML::NAME{'This'} = $new_node->{'text'};
+            my $href_file = $new_node->{'file'};
+            if (!defined($href_file))
+            {
+                if (Texi2HTML::Config::get_conf('novalidate'))
+                {
+                    $href_file = '';
+                }
+                else
+                {
+                    msg_debug ("Undefined file for `$new_node->{'texi'}' in do_node_files for renamed nodes");
+                }
+            }
+            $Texi2HTML::HREF{'This'} = "$href_file#$new_node->{'id'}";
+            my $redirect = &$Texi2HTML::Config::print_redirection_page ();
+            if (defined($redirect))
+            {
+                my $NODEFILE = open_out ($file);
+                print $NODEFILE "$redirect";
+                close $NODEFILE || document_error ("Can't close $file: $!", 1);
+            }
+        }
+    }
+}
+
 #+++############################################################################
 #                                                                              #
 # Low level functions                                                          #
@@ -9999,11 +10072,11 @@ sub do_external_href($)
     {
          if (exists($nodes{$texi_node}) and ($nodes{$texi_node}->{'cross_manual_target'})) 
          {
-               $node_id = $nodes{$texi_node}->{'cross_manual_target'};
-               if (get_conf('TRANSLITERATE_FILE_NAMES'))
-               {
-                   $node_file = $nodes{$texi_node}->{'cross_manual_file'};
-               }
+              $node_id = $nodes{$texi_node}->{'cross_manual_target'};
+              if (get_conf('TRANSLITERATE_FILE_NAMES'))
+              {
+                  $node_file = $nodes{$texi_node}->{'cross_manual_file'};
+              }
          }
          else 
          {
@@ -11336,16 +11409,7 @@ sub do_menu_link($$$)
         {
             line_error (sprintf(__("Menu reference to nonexistent node `%s'"), $node_name), $line_nr);
             # try to find an equivalent node
-            my @equivalent_nodes = equivalent_nodes($node_name);
-            my $node_seen;
-            foreach my $equivalent_node (@equivalent_nodes)
-            {
-                if ($nodes{$equivalent_node}->{'seen'})
-                {
-                    $node_seen = $equivalent_node;
-                    last;
-                }
-            }
+            my $node_seen = find_equivalent_node($node_name);
             if (defined($node_seen))
             {
                 document_warn("---> but equivalent node `$node_seen' found");
@@ -17046,6 +17110,7 @@ while(@input_files)
       close ($FH);
    }
    do_node_files() if (get_conf('NODE_FILES'));
+   do_renamed_node_files() if (get_conf('RENAMED_NODES_REDIRECTIONS'));
 #l2h_FinishFromHtml() if (get_conf('L2H'));
 #l2h_Finish() if(get_conf('L2H'));
 #Texi2HTML::LaTeX2HTML::finish();
