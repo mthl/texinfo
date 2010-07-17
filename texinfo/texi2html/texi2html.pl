@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.399 2010-07-15 12:26:58 pertusus Exp $
+# $Id: texi2html.pl,v 1.400 2010-07-17 00:11:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3053,7 +3053,7 @@ $T2H_OPTIONS -> {'set-init-variable'} =
 {
  type => '=s',
  linkage => sub { my $var_val = $_[1];
-  if ($var_val =~ s/^(\w+)\s*//)
+  if ($var_val =~ s/^(\w+)\s*=?\s*//)
   {
     my $var = $1;
     my $value = $var_val;

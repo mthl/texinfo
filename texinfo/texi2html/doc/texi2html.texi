@@ -1006,6 +1006,11 @@ on the command-line, using
 @example
 --set-init-variable 'VAR_NAME value'
 @end example
+or
+@example
+--set-init-variable VAR_NAME=value
+@end example
+
 where @var{VAR_NAME} is the variable name, for example @code{SPLIT} or
 @code{NO_CSS} and @var{value} is the value of the variable. A special
 value is @samp{undef} the sets the variable to this special @command{perl}
