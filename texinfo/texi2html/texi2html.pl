@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.404 2010-07-18 10:47:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.405 2010-07-18 23:06:37 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -192,18 +192,23 @@ my @document_global_at_commands = ('contents', 'shortcontents',
         'fonttextsize', 'pagesizes', 'setchapternewpage'
         );
 
-my @command_line_settables = ('DEBUG', 'FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
-  'FRAMES', 'FRAMESET_DOCTYPE', 'HEADERS', 'DOCTYPE', 'TEST', 'DUMP_TEXI', 
-  'MACRO_EXPAND', 'TOP_FILE', 'TOC_FILE', 'SHOW_MENU', 'NUMBER_SECTIONS', 
-  'NUMBER_FOOTNOTES', 'USE_NODES', 'NODE_FILES', 'TOC_LINKS', 'SHORTEXTN', 
-  'PREFIX', 'NO_WARN', 'SHORT_REF', 'IDX_SUMMARY', 'DEF_TABLE', 'VERBOSE', 
-  'L2H', 'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
+my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
+  'HEADERS', 
+  'MACRO_EXPAND', 'NUMBER_SECTIONS', 
+  'NUMBER_FOOTNOTES', 'NODE_FILES', 
+  'NO_WARN', 'VERBOSE', 
+  'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
   'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT', 'MONOLITHIC',  
-  'L2H_L2H', 'L2H_SKIP', 'L2H_TMP', 'L2H_FILE', 'L2H_CLEAN', 
-  'L2H_HTML_VERSION', 'IGNORE_PREAMBLE_TEXT', 'EXTERNAL_DIR', 'USE_ISO');
+);
 
 # FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
-my @variable_settables = ('SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
+my @variable_settables = (
+  'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
+  'TOP_FILE', 'TOC_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
+  'PREFIX', 'SHORT_REF', 'IDX_SUMMARY', 'DEF_TABLE', 'L2H', 'MONOLITHIC',
+  'L2H_L2H', 'L2H_SKIP', 'L2H_TMP', 'L2H_FILE', 'L2H_CLEAN', 
+  'L2H_HTML_VERSION', 'IGNORE_PREAMBLE_TEXT', 'EXTERNAL_DIR', 'USE_ISO',
+  'SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
   'VERTICAL_HEAD_NAVIGATION', 'INLINE_CONTENTS', 'NODE_FILE_EXTENSION',
   'NO_CSS', 'INLINE_CSS_STYLE', 'USE_SECTIONS', 'USE_TITLEPAGE_FOR_TITLE',
   'SIMPLE_MENU', 'EXTENSION', 'INLINE_INSERTCOPYING', 'USE_NUMERIC_ENTITY',
@@ -220,7 +225,7 @@ my @variable_settables = ('SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
   'COMPLETE_IMAGE_PATHS', 'USE_NODE_TARGET', 'NEW_CROSSREF_STYLE',
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
-  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS');
+  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE');
 
 foreach my $var (@document_settable_at_commands, @command_line_settables,
          @document_global_at_commands, @variable_settables)
@@ -3225,6 +3230,9 @@ $T2H_OBSOLETE_OPTIONS -> {'short-ext'} =
  noHelp  => 1,
 };
 
+# FIXME this is not that helpful as a message, as reported by
+# Jens Schleusener one could imagine that absolute paths are 
+# accepted.
 $T2H_OBSOLETE_OPTIONS -> {'prefix'} =
 {
  type => '=s',
@@ -16766,6 +16774,66 @@ sub collect_all_css_files()
    return (\@css_import_lines, \@css_rule_lines);
 }
 
+sub collect_renamed_nodes()
+{
+   # try to set the default if the file exists.
+   if (-f $Texi2HTML::THISDOC{'file_base_name'} . '-noderename.cnf')
+   {
+       set_from_document ('RENAMED_NODES_FILE', $Texi2HTML::THISDOC{'file_base_name'} . '-noderename.cnf');
+   }
+       
+   if (defined(get_conf('RENAMED_NODES_FILE')))
+   {
+      my $renamed_nodes_file = get_conf('RENAMED_NODES_FILE');
+      if (open(RENAMEDFILE, "<$renamed_nodes_file"))
+      {
+          my $in_encoding = get_conf('IN_ENCODING');
+          if (defined($in_encoding) and get_conf('USE_UNICODE'))
+          {
+              binmode(RENAMEDFILE, ":encoding($in_encoding)");
+          }
+          my $renamd_nodes_line_nr = 0;
+          my @old_names = ();
+          while (<RENAMEDFILE>)
+          {
+              $renamd_nodes_line_nr++;
+              next unless (/\S/);
+              next if (/^\s*\@c/);
+              if (s/^\s*\@\@\{\}\s+(\S)/$1/)
+              {
+                 chomp;
+                 if (scalar(@old_names))
+                 {
+                     foreach my $old_node_name (@old_names)
+                     {
+                         $Texi2HTML::Config::renamed_nodes{$old_node_name} = normalise_node($_);
+                     }
+                     @old_names = ();
+                 }
+                 else
+                 {
+                     warn (sprintf(__("%s:%d: no node to be renamed\n"), $renamed_nodes_file, $renamd_nodes_line_nr));
+                 }
+              }
+              else
+              {
+                  chomp;
+                  push @old_names, normalise_node($_);
+              }
+          }
+          if (scalar(@old_names))
+          {
+              warn (sprintf(__("%s:%d: nodes without a new name at the end of file\n"), $renamed_nodes_file, $renamd_nodes_line_nr));
+          }
+          close(RENAMEDFILE);
+      }
+      else
+      {
+          warn (sprintf(__("Cannot read %s: %s"), $renamed_nodes_file, $!));
+      }
+   }
+}
+
 sub init_with_file_name($)
 {
    my $base_file = shift;
@@ -16926,6 +16994,9 @@ while(@input_files)
 
    $global_pass = '1 expand macros';
    Texi2HTML::Config::t2h_default_set_out_encoding();
+
+   collect_renamed_nodes() if (get_conf('RENAMED_NODES_REDIRECTIONS'));
+
    dump_texi($texi_lines, 'texi', $lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
    if (defined(get_conf('MACRO_EXPAND')))
    {

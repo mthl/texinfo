@@ -59,8 +59,10 @@ all-local:
 		$(mkdir_p) $$dir/.texinfo/ ; \
 		${INSTALL_DATA} $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
 	done
+	${INSTALL_DATA} $(srcdir)/sectionning/renamednodes.cnf-ref sectionning/equivalent_nodes-noderename.cnf
 
 clean-local:
 	for dir in $(htmlxref_cnf_tests); do \
 		rm -rf $$dir/.texinfo/ ; \
 	done
+	rm -f sectionning/equivalent_nodes-noderename.cnf

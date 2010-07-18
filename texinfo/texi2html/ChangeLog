@@ -1,3 +1,14 @@
+2010-07-19  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html.pl: do redirection files for renamed nodes, using 
+	%Texi2HTML::Config::renamed_nodes, completed by what is specified
+	in RENAMED_NODES_FILE with default for RENAMED_NODES_FILE being
+	<file_base_name>-noderename.cnf. In RENAMED_NODES_FILE comments
+	are like texinfo comments, they begin with @c. Old node name are
+	gathered on non empty lines and corresponding new node files
+	follow, preceded by @@{}. Based on an idea of Karl.
+	* Makefile.am: texi2any is created in the build directory.
+
 2010-07-18  Karl Berry  <karl@gnu.org>
 
 	* AUTHORS: merge into texinfo/AUTHORS.

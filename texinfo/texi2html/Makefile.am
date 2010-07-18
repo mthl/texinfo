@@ -254,7 +254,7 @@ makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
 
 makeinfo texi2html:
-	-$(LN_S) $(srcdir)/texi2any $@
+	-$(LN_S) texi2any $@
 
 html-local: texi2html
 

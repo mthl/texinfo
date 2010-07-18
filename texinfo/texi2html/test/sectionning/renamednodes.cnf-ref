@@ -1,0 +1,9 @@
+ @c a comment
+
+
+ old strong  @strong{node}
+ @@{} @strong{node}
+
+@@{} error here
+
+some node an error too
