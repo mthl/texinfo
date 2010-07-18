@@ -1,4 +1,4 @@
-$Id: TODO,v 1.52 2010-06-24 17:24:05 karl Exp $
+$Id: TODO,v 1.53 2010-07-18 18:49:02 karl Exp $
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
@@ -52,6 +52,7 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Allow @end (and other?) commands to be indented in the source.
 
 * Language:
+  - generalize @vtable/@htable to any defined index.
   - @else for the @if... conditionals.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
   - Allow subitems and `see' and `see also' in indices.

@@ -1,4 +1,4 @@
-$Id: README,v 1.17 2010-03-07 18:25:29 karl Exp $
+$Id: README,v 1.18 2010-07-18 18:49:02 karl Exp $
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
@@ -98,15 +98,23 @@ Printing related files:
                                 producing an indexed DVI file using
                                 TeX and texindex. 
 
-Source files for standalone C programs: 
-  ./lib
-  ./makeinfo
-  ./info
+Source directories: 
+  djgpp/                        Support for compiling under DJGPP.
+  gnulib/                       Support files from Gnulib.
+  info/                         Standalone Info reader.
+  install-info/                 Maintain the Info dir file.
+  lib/                          Support files.
+  texi2html/                    Includes makeinfo and texi2any.
 
-Installation files:
-    Makefile.am                 What Automake uses to make a Makefile.in.
-    Makefile.in                 What `configure' uses to make a Makefile,
-                                created by Automake.
-    configure.ac		What Autoconf uses to create `configure'.
-    configure                   Configuration script for local conditions,
-                                created by Autoconf.
+Translation support:
+  po                            Strings of the programs.
+  po_document                   Strings in generated Texinfo documents.
+
+Installation support:
+  Makefile.am                   Read by Automake to create a Makefile.in.
+  Makefile.in                   Read by configure to make a Makefile,
+                                  created by Automake.
+  configure.ac		        Read by Autoconf to create `configure'.
+  configure                     Configuration script for local conditions,
+                                  created by Autoconf.
+  build-aux/                    Common files.
