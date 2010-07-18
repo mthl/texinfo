@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>other_at_comands_in_nodes_refs.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext> { }</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>Top</title>
+
+<menu>
+<menuentry>
+<menunode> { }</menunode>
+<menutitle> { }</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</menunode>
+<menutitle>&space; &space; &eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</menunode>
+<menutitle>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>== error--&gt; &euro; &iexcl; ==&gt; &minus;</menunode>
+<menutitle>== error--&gt; &euro; &iexcl; ==&gt; &minus;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&ge; &le; &rarr;</menunode>
+<menutitle>&ge; &le; &rarr;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</menunode>
+<menutitle>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&rArr; &deg; a&nbsp;b a sunny day &aring;</menunode>
+<menutitle>&rArr; &deg; a&nbsp;b a sunny day &aring;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</menunode>
+<menutitle>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</menunode>
+<menutitle>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>`` '' --- --</menunode>
+<menutitle>&ldquo; &rdquo; &mdash; &ndash;</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></menunode>
+<menutitle><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></menunode>
+<menutitle><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></menunode>
+<menutitle><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></menunode>
+<menutitle><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image>  <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><verb> @ {} . </verb></menunode>
+<menutitle><verb> @ {} . </verb></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></menunode>
+<menutitle><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></menunode>
+<menutitle><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><sansserif>sansserif</sansserif> <slanted>slanted</slanted></menunode>
+<menutitle><sansserif>sansserif</sansserif> <slanted>slanted</slanted></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><indicateurl>indicateurl</indicateurl></menunode>
+<menutitle><indicateurl>indicateurl</indicateurl></menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+<node>
+<nodename> { }</nodename>
+<nodenext>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</nodenext>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title> { }</title>
+
+</chapter>
+<node>
+<nodename>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</nodename>
+<nodenext>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</nodenext>
+<nodeprev> { }</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</title>
+
+</chapter>
+<node>
+<nodename>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</nodename>
+<nodenext>== error--&gt; &euro; &iexcl; ==&gt; &minus;</nodenext>
+<nodeprev>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</title>
+
+</chapter>
+<node>
+<nodename>== error--&gt; &euro; &iexcl; ==&gt; &minus;</nodename>
+<nodenext>&ge; &le; &rarr;</nodenext>
+<nodeprev>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>== error--&gt; &euro; &iexcl; ==&gt; &minus;</title>
+
+</chapter>
+<node>
+<nodename>&ge; &le; &rarr;</nodename>
+<nodenext>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</nodenext>
+<nodeprev>== error--&gt; &euro; &iexcl; ==&gt; &minus;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&ge; &le; &rarr;</title>
+
+</chapter>
+<node>
+<nodename>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</nodename>
+<nodenext>&rArr; &deg; a&nbsp;b a sunny day &aring;</nodenext>
+<nodeprev>&ge; &le; &rarr;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</title>
+
+</chapter>
+<node>
+<nodename>&rArr; &deg; a&nbsp;b a sunny day &aring;</nodename>
+<nodenext>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodenext>
+<nodeprev>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&rArr; &deg; a&nbsp;b a sunny day &aring;</title>
+
+</chapter>
+<node>
+<nodename>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodename>
+<nodenext>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodenext>
+<nodeprev>&rArr; &deg; a&nbsp;b a sunny day &aring;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</title>
+
+</chapter>
+<node>
+<nodename>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodename>
+<nodenext>`` '' --- --</nodenext>
+<nodeprev>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</title>
+
+</chapter>
+<node>
+<nodename>`` '' --- --</nodename>
+<nodenext><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodenext>
+<nodeprev>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>&ldquo; &rdquo; &mdash; &ndash;</title>
+
+</chapter>
+<node>
+<nodename><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodename>
+<nodenext><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></nodenext>
+<nodeprev>`` '' --- --</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></title>
+
+</chapter>
+<node>
+<nodename><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></nodename>
+<nodenext><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></nodenext>
+<nodeprev><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></title>
+
+</chapter>
+<node>
+<nodename><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></nodename>
+<nodenext><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></nodenext>
+<nodeprev><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></title>
+
+</chapter>
+<node>
+<nodename><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></nodename>
+<nodenext><verb> @ {} . </verb></nodenext>
+<nodeprev><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></title>
+
+</chapter>
+<node>
+<nodename><verb> @ {} . </verb></nodename>
+<nodenext><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodenext>
+<nodeprev><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><verb> @ {} . </verb></title>
+
+</chapter>
+<node>
+<nodename><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodename>
+<nodenext><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodenext>
+<nodeprev><verb> @ {} . </verb></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></title>
+
+</chapter>
+<node>
+<nodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodename>
+<nodenext><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodenext>
+<nodeprev><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></title>
+
+</chapter>
+<node>
+<nodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodename>
+<nodenext><indicateurl>indicateurl</indicateurl></nodenext>
+<nodeprev><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><sansserif>sansserif</sansserif> <slanted>slanted</slanted></title>
+
+</chapter>
+<node>
+<nodename><indicateurl>indicateurl</indicateurl></nodename>
+<nodeprev><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><indicateurl>indicateurl</indicateurl></title>
+
+<para><xref><xrefnodename> { }</xrefnodename></xref>
+</para>
+<para><xref><xrefnodename>&space;&space;&eosexcl; &linebreak; &eosperiod;  &period; &eosquest; @</xrefnodename></xref>
+<xref><xrefnodename>&latex; &tex; &bullet; , &copyright; &dots; &enddots;</xrefnodename></xref>
+<xref><xrefnodename>== error--&gt; &euro; &iexcl; ==&gt; &minus;</xrefnodename></xref>
+</para>
+<para><xref><xrefnodename>&ge; &le; &rarr;</xrefnodename></xref>
+</para>
+<para><xref><xrefnodename>&ordf; &ordm; -!- &pound; -| &iquest; &registered;</xrefnodename></xref>
+<xref><xrefnodename>&rArr; &deg; a&nbsp;b a sunny day &aring;</xrefnodename></xref>
+<xref><xrefnodename>&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</xrefnodename></xref>
+<xref><xrefnodename>&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</xrefnodename></xref>
+<xref><xrefnodename>`` '' --- --</xrefnodename></xref>
+<xref><xrefnodename><acronym><acronymword>AAA</acronymword><acronymdesc>fff</acronymdesc></acronym> <acronym><acronymword>AAA</acronymword></acronym> <acronym><acronymword>BBB</acronymword></acronym></xrefnodename></xref>
+<xref><xrefnodename><abbrev><abbrevword>CCC</abbrevword><abbrevdesc>rrr</abbrevdesc></abbrev> <abbrev><abbrevword>CCC</abbrevword></abbrev> <abbrev><abbrevword>DDD</abbrevword></abbrev></xrefnodename></xref>
+<xref><xrefnodename><email><emailaddress>someone@somewher</emailaddress><emailname>the someone</emailname></email> <email><emailaddress>no_explain@there</emailaddress></email></xrefnodename></xref>
+<xref><xrefnodename><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></xrefnodename></xref>
+<xref><xrefnodename><verb> @ {} . </verb></xrefnodename></xref>
+<xref><xrefnodename><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></xrefnodename></xref>
+<xref><xrefnodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></xrefnodename></xref>
+<xref><xrefnodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></xrefnodename></xref>
+<xref><xrefnodename><indicateurl>indicateurl</indicateurl></xrefnodename></xref>
+</para>
+</chapter>
+</texinfo>

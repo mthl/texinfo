@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="other_at_comands_in_nodes_refs.xml" lang="en">
+<chapter label="" xreflabel="Top" id="Top">
+<title>Top</title>
+
+
+</chapter>
+<chapter label="1" id="-{-}">
+<title> { }</title>
+
+</chapter>
+<chapter label="2" id="--!---.--&amp;period;-?-@">
+<title>  ! 
+ .  &period; ? @</title>
+
+</chapter>
+<chapter label="3" id="LaTeX-TeX-*-,-(C)-...-...">
+<title>&latex; &tex; &bull; , &copy; &hellip; &hellip;.</title>
+
+</chapter>
+<chapter label="4" id="==-error--&gt;-Euro-!-==&gt;--">
+<title>== error--&gt; &euro; &iexcl; &rarr; &minus;</title>
+
+</chapter>
+<chapter label="5" id="&gt;=-&lt;=--&gt;">
+<title>&ge; &le; &rarr;</title>
+
+</chapter>
+<chapter label="6" id="a-o--!--#--|-?-(R)">
+<title>&ordf; &ordm; -!- &pound; -| &iquest; &reg;</title>
+
+</chapter>
+<chapter label="7" id="=&gt;-o-a-b-a-sunny-day-aa">
+<title>&rArr; &deg; a&nbsp;b a sunny day &aring;</title>
+
+</chapter>
+<chapter label="8" id="``-''-`-'-,,-,">
+<title>&ldquo; &rdquo; &lsquo; &rsquo; &ldquor; &lsquor;</title>
+
+</chapter>
+<chapter label="9" id="&lt;&lt;-&gt;&gt;-&lt;&lt;-&gt;&gt;-&lt;-&gt;">
+<title>&laquo; &raquo; &laquo; &raquo; &lt; &gt;</title>
+
+</chapter>
+<chapter label="10" id="``-''-------">
+<title>&ldquo; &rdquo; &mdash; &ndash;</title>
+
+</chapter>
+<chapter label="11">
+<title><acronym>AAA</acronym> (fff) <acronym>AAA</acronym> <acronym>BBB</acronym></title>
+
+</chapter>
+<chapter label="12">
+<title><abbrev>CCC</abbrev> (rrr) <abbrev>CCC</abbrev> <abbrev>DDD</abbrev></title>
+
+</chapter>
+<chapter label="13">
+<title><ulink url="mailto:someone@somewher"> the someone</ulink> <email>no_explain@there</email></title>
+
+</chapter>
+<chapter label="14">
+<title><informalfigure><mediaobject><imageobject><imagedata fileref="f--ile1.jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure> <informalfigure><mediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject></mediaobject></informalfigure></title>
+
+</chapter>
+<chapter label="15" id="-@-{}-.-">
+<title> @ {} . </title>
+
+</chapter>
+<chapter label="16">
+<title><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> in r sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <wordasword>i</wordasword></title>
+
+</chapter>
+<chapter label="17">
+<title><envar>env</envar> <literal>code</literal> <option>option</option> &lsquo;<literal>samp</literal>&rsquo; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput> 8.27in</title>
+
+</chapter>
+<chapter label="18" id="sansserif-slanted">
+<title>sansserif slanted</title>
+
+</chapter>
+<chapter label="19">
+<title><wordasword>indicateurl</wordasword></title>
+
+<para><xref linkend="-{-}"></xref>
+</para>
+<para><xref linkend="--!---.--&amp;period;-?-@"></xref>
+<xref linkend="LaTeX-TeX-*-,-(C)-...-..."></xref>
+<xref linkend="==-error--&gt;-Euro-!-==&gt;--"></xref>
+</para>
+<para><xref linkend="&gt;=-&lt;=--&gt;"></xref>
+</para>
+<para><xref linkend="a-o--!--#--|-?-(R)"></xref>
+<xref linkend="=&gt;-o-a-b-a-sunny-day-aa"></xref>
+<xref linkend="``-''-`-'-,,-,"></xref>
+<xref linkend="&lt;&lt;-&gt;&gt;-&lt;&lt;-&gt;&gt;-&lt;-&gt;"></xref>
+<xref linkend="``-''-------"></xref>
+<xref linkend="AAA-AAA-BBB"></xref>
+<xref linkend="CCC-CCC-DDD"></xref>
+<xref linkend="the-someone-no_explain@there"></xref>
+<xref linkend="f--ile1-f--ile"></xref>
+<xref linkend="-@-{}-.-"></xref>
+<xref linkend="cite-asis-in-@w-b-in-r-sc-str-t-var-dfn-i"></xref>
+<xref linkend="env-code-option-samp-command-file-C-x-ESC-8.27in"></xref>
+<xref linkend="sansserif-slanted"></xref>
+<xref linkend="indicateurl"></xref>
+</para>
+</chapter>
+</book>

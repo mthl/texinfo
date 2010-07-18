@@ -55,6 +55,7 @@ test_refs test_refs.texi
 test_refs_chapter test_refs.texi --split chapter
 test_refs_nodes test_refs.texi --split node --node-files --set-init-var 'USE_NODES 1'
 at_commands_in_refs at_commands_in_refs.texi
+other_at_comands_in_nodes_refs other_at_comands_in_nodes_refs.texi
 equivalent_nodes equivalent_nodes.texi --set-init-var 'USE_NODES 1'
 equivalent_nodes_no_node equivalent_nodes.texi
 equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init

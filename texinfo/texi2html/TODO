@@ -459,6 +459,18 @@ the use of non 8 bit representation of characters.
 
 * empty lines in @hyphenation are not valid for texi2dvi
 
+* @-commands in @node, @ref and @chapter for texi2dvi:
+  No @<SPC> @<TAB> at the end of a @node line. But ok in @ref and @anchor and 
+  within the line.
+
+  @} @{ @- not ok in @anchor, @node, @ref.
+  @geq{} @leq{} @arrow{} not ok in @anchor, @node, @ref.
+  @abbr @image @verb not ok in @chapter and @ref.
+  @env @code @option @samp @command @file @indicateurl @kbd @key @sansserif 
+    @slanted 8.27@dmn{in} not ok in @ref
+  @indicateurl not ok in @chapter.
+
+
 * in indices/index_special_region.texi, there is the error message
 index_special_region.texi:8: Anchor `Copying information' previously defined (l. 8)
 This is right since it is used in @insertcopying a lot, but it looks

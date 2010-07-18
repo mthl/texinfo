@@ -1,0 +1,106 @@
+Top
+***
+
+*  { }::
+*     ! 
+ .  . ? @::
+* LaTeX TeX * , (C) ... ...::
+* == error--> Euro ! ==> -::
+* >= <= ->::
+* a o -!- # -| ? (R)::
+* => o a b a sunny day aa::
+* `` '' ` ' ,, ,::
+* << >> << >> < >::
+* `` '' --- --::
+* AAA (fff) AAA BBB::
+* CCC (rrr) CCC DDD::
+* the someone <mailto:someone@somewher> <mailto:no_explain@there>::
+* [ f--ile1.txt ]  [ f--ile.e--xt: alt ]::
+*  @ {} . ::
+* cite asis in @w b in r SC str t var dfn i::
+* env code `option' `samp' command `file' C-x <ESC> 8.27in::
+* sansserif slanted::
+* <indicateurl>::
+
+1  { }
+******
+
+2   ! 
+ .  . ? @
+****************
+
+3 LaTeX TeX * , (C) ... ...
+***************************
+
+4 == error--> Euro ! ==> -
+**************************
+
+5 >= <= ->
+**********
+
+6 a o -!- # -| ? (R)
+********************
+
+7 => o a b a sunny day aa
+*************************
+
+8 `` '' ` ' ,, ,
+****************
+
+9 << >> << >> < >
+*****************
+
+10 " " -- -
+***********
+
+11 AAA (fff) AAA BBB
+********************
+
+12 CCC (rrr) CCC DDD
+********************
+
+13 the someone <mailto:someone@somewher> <mailto:no_explain@there>
+******************************************************************
+
+14 [ f--ile1.txt ] [ f--ile.e--xt: alt ]
+****************************************
+
+15  @ {} . 
+***********
+
+16 cite asis in @w b in r SC str t var dfn i
+********************************************
+
+17 env code `option' `samp' command `file' C-x <ESC> 8.27in
+***********************************************************
+
+18 sansserif slanted
+********************
+
+19 <indicateurl>
+****************
+
+ { }
+
+  ! 
+ .  . ? @
+LaTeX TeX * , (C) ... ...
+== error--> Euro ! ==> -
+
+>= <= ->
+
+a o -!- # -| ? (R)
+=> o a b a sunny day aa
+`` '' ` ' ,, ,
+<< >> << >> < >
+`` '' --- --
+AAA (fff) AAA BBB
+CCC (rrr) CCC DDD
+the someone <mailto:someone@somewher> <mailto:no_explain@there>
+[ f--ile1.txt ] [ f--ile.e--xt: alt ]
+ @ {} . 
+cite asis in @w b in r SC str t var dfn i
+env code `option' `samp' command `file' C-x <ESC> 8.27in
+sansserif slanted
+<indicateurl>
+

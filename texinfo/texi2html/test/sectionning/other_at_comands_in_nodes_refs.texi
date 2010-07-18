@@ -1,0 +1,136 @@
+\input texinfo   @c -*-texinfo-*-
+@comment %**start of header
+@setfilename other_at_comands_in_nodes_refs.info
+
+@node Top
+@top Top
+
+@menu
+* @- @{ @}::
+* @  @	 @! @* @. @: .@: @? @@::
+* @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}::
+* @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}::
+* @geq{} @leq{} @arrow{}::
+* @ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}::
+* @result{} @textdegree{} a@tie{}b @today{} @aa{}::
+* @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}::
+* @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}::
+* `` '' --- --::
+* @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}::
+* @abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}::
+* @email{someone@@somewher, the someone} @email{no_explain@@there}::
+* @image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}::
+* @verb{. @ {} . .}::
+* @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}::
+* @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}::
+* @sansserif{sansserif} @slanted{slanted}::
+* @indicateurl{indicateurl}::
+@end menu
+
+@ifnottex
+@node @- @{ @}
+@end ifnottex
+@chapter @- @{ @}
+
+@node @  @	 @! @* @. @: .@: @? @@
+@chapter @  @	 @! @* @. @: .@: @? @@
+
+@node @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}
+@chapter @LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}
+
+@node @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}
+@chapter @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}
+
+@ifnottex
+@node @geq{} @leq{} @arrow{}
+@end ifnottex
+@chapter @geq{} @leq{} @arrow{}
+
+@node @ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}
+@chapter @ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}
+
+@node @result{} @textdegree{} a@tie{}b @today{} @aa{}
+@chapter @result{} @textdegree{} a@tie{}b @today{} @aa{}
+
+@node @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
+@chapter @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
+
+@node @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}
+@chapter @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}
+
+@node `` '' --- --
+@chapter `` '' --- --
+
+@node @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}
+@chapter @acronym{AAA, fff} @acronym{AAA} @acronym{BBB}
+
+@node @abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}
+@ifnottex
+@chapter @abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}
+@end ifnottex
+
+@node @email{someone@@somewher, the someone} @email{no_explain@@there}
+@chapter @email{someone@@somewher, the someone} @email{no_explain@@there}
+
+@node @image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}
+@ifnottex
+@chapter @image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}
+@end ifnottex
+
+@node @verb{. @ {} . .}
+@ifnottex
+@chapter @verb{. @ {} . .}
+@end ifnottex
+
+@node @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}
+@chapter @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}
+
+@ifnottex
+@node @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}
+@end ifnottex
+@chapter @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}
+
+@ifnottex
+@node @sansserif{sansserif} @slanted{slanted}
+@end ifnottex
+@chapter @sansserif{sansserif} @slanted{slanted}
+
+@ifnottex
+@node @indicateurl{indicateurl}
+@chapter @indicateurl{indicateurl}
+@end ifnottex
+
+@ifnottex
+@ref{@- @{ @}}
+@end ifnottex
+
+@ref{@  @	 @! @* @. @: .@: @? @@}
+@ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
+@ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
+
+@ifnottex
+@ref{@geq{} @leq{} @arrow{}}
+@end ifnottex
+
+@ref{@ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}}
+@ref{@result{} @textdegree{} a@tie{}b @today{} @aa{}}
+@ref{@quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}}
+@ref{@guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}}
+@ref{`` '' --- --}
+@ref{@acronym{AAA, fff} @acronym{AAA} @acronym{BBB}}
+@ifnottex
+@ref{@abbr{CCC, rrr} @abbr{CCC} @abbr{DDD}}
+@end ifnottex
+@ref{@email{someone@@somewher, the someone} @email{no_explain@@there}}
+@ifnottex
+@ref{@image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}}
+@ref{@verb{. @ {} . .}}
+@end ifnottex
+@ref{@cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}}
+@ifnottex
+@ref{@env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}}
+@ref{@sansserif{sansserif} @slanted{slanted}}
+@ref{@indicateurl{indicateurl}}
+@end ifnottex
+
+@bye

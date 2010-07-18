@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.278 2010-07-17 09:46:26 pertusus Exp $
+# $Id: texi2html.init,v 1.279 2010-07-18 15:25:06 pertusus Exp $
 
 
 ##################################################################
@@ -4287,8 +4287,6 @@ sub t2h_default_email($$)
     $mail = main::normalise_space($mail);
     if (defined($text))
     {
-       #$text =~ s/^\s*//;
-       #$text =~ s/^\s*$//;
         $text = main::normalise_space($text);
     }
     my $mailto = '';
@@ -4356,6 +4354,10 @@ sub t2h_default_no_texi_email
     my $mail = shift @$args;
     my $text = shift @$args;
     $mail = main::normalise_space($mail);
+    if (defined($text))
+    {
+        $text = main::normalise_space($text);
+    }
     return $text if (defined($text) and ($text ne ''));
     return $mail;
 }
