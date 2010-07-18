@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.256 2010-07-17 21:35:18 pertusus Exp $
+@c $Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16006,6 +16006,13 @@ The options are:
 Cause the variable @var{var} to be defined.  This is equivalent to
 @code{@@set @var{var}} in the Texinfo file (@pxref{set clear value}).
 
+@item --commands-in-node-names
+@opindex --commands-in-node-names
+This command used to ensure that @code{@@}-commands in node names were
+expanded through all the document, especially @code{@@value}. This is now
+done by default, though @@-commands in node names are still not officially
+part of the Texinfo language.
+
 @item --conf-dir=@var{dir}
 @opindex --conf-dir=@var{dir}
 Append @var{dir} to the directory search list for finding customization
@@ -19848,7 +19855,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.256 2010-07-17 21:35:18 pertusus Exp $
+$Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19927,7 +19934,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.256 2010-07-17 21:35:18 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

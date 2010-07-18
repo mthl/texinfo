@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.403 2010-07-17 11:08:41 pertusus Exp $
+# $Id: texi2html.pl,v 1.404 2010-07-18 10:47:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3788,7 +3788,10 @@ $makeinfo_help .= __("Options for HTML:
       --node-files            produce redirection files for nodes and 
                                 anchors. Default is set only if split.\n")
 ."\n";
-# This is ignored, so remove it from help
+$makeinfo_help .= __("Options for XML and Docbook:
+      --output-indent=VAL     this does nothing, retained for compatibility.\n")
+."\n";
+# This is ignored
 #Options for XML and Docbook:
 #      --output-indent=VAL     indent XML elements by VAL spaces (default 2).
 #                                If VAL is 0, ignorable whitespace is dropped.
@@ -3796,6 +3799,7 @@ $makeinfo_help .= __("Options for HTML:
 #      --commands-in-node-names  allow \@ commands in node names.
 #
 $makeinfo_help .= __("Input file options:
+      --commands-in-node-names  this does nothing, retained for compatibility.
   -D VAR                        define the variable VAR, as with \@set.
   -I DIR                        append DIR to the \@include search path.
   -P DIR                        prepend DIR to the \@include search path.
