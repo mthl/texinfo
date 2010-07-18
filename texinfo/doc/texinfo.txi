@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
+@c $Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -160,6 +160,7 @@ the menu lists all the lower level nodes in the document.
 * Defining New Texinfo Commands:: User-defined macros and aliases.
 * Include Files::                 How to incorporate other Texinfo files.
 * Hardcopy::                            Output for paper, with @TeX{}.
+* Generic converter texi2any/makeinfo:: The all purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 
@@ -599,6 +600,13 @@ Formatting and Printing Hardcopy
 * PDF Output::                  Portable Document Format output.
 * Obtaining TeX::               How to Obtain @TeX{}.
 
+Generic converter texi2any/makeinfo
+
+* Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
+                                from a shell.
+* Pointer Validation::          How to check that pointers point somewhere.
+* Configuration variables::     Description of configuration variables.
+
 Creating and Installing Info Files
 
 * Creating an Info File::
@@ -607,9 +615,6 @@ Creating and Installing Info Files
 Creating an Info File
 
 * makeinfo advantages::         @code{makeinfo} provides better error checking.
-* Invoking makeinfo::           How to run @code{makeinfo} from a shell.
-* makeinfo options::            Specify fill-column and other options.
-* Pointer Validation::          How to check that pointers point somewhere.
 * makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
 * texinfo-format commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
@@ -15883,97 +15888,82 @@ Electronic mail: @code{gnu@@gnu.org}
 Many other @TeX{} distributions are available; see
 @uref{http://tug.org/}.
 
+@node Generic converter texi2any/makeinfo
+@chapter A generic converter for Texinfo: @command{texi2any}/@command{makeinfo}
 
-@node Creating and Installing Info Files
-@chapter Creating and Installing Info Files
+@command{texi2any} is a generic converter for Texinfo that can produce
+different output formats and is highly customizable. 
+By default, the formats that may be produced are 
+Info (with @option{--info}), HTML (with
+@option{--html}), plain text (with @option{--plaintext}), Docbook 
+(with @option{--docbook}), Texinfo XML (with @option{--xml}). 
+@command{makeinfo} is an alias of @command{texi2any}, and using this command
+is the same as using @code{texi2any --info}.
 
-This chapter describes how to create and install Info files.  @xref{Info
-Files}, for general information about the file format itself.
+Without any command line option, @command{texi2any} generates raw text with
+minimal formatting, well suited for customization. It is not advised to
+use this output format to generate documents, however, since it is 
+very basic. You should produce plain text instead, with 
+@option{--plaintext}.
+
+Beside those default formats, with @command{texi2any} some important
+aspects of the result may be specified via command line options,
+and configuration files provide an even finer degree of control
+over the final output, allowing most every aspect of the final output not
+specified in the Texinfo input file to be specified.  Configuration files are
+written in @command{perl}, like the main program, and anything which may be
+specified on the command line may also be specified within a configuration
+file.
 
 @menu
-* Creating an Info File::
-* Installing an Info File::
-@end menu
-
-
-@node Creating an Info File
-@section Creating an Info File
-@cindex Creating an Info file
-@cindex Info, creating an online file
-@cindex Formatting a file for Info
-
-@code{makeinfo} is a program that converts a Texinfo file into an Info
-file, HTML file, or plain text.  @code{texinfo-format-region} and
-@code{texinfo-format-buffer} are GNU Emacs functions that convert
-Texinfo to Info.
-
-For information on installing the Info file in the Info system,
-@pxref{Installing an Info File}.
-
-@menu
-* makeinfo advantages::         @code{makeinfo} provides better error checking.
-* Invoking makeinfo::           How to run @code{makeinfo} from a shell.
-* makeinfo options::            Specify fill-column and other options.
+* Invoking texi2any::           How to run @command{texi2any} or @command{makeinfo} 
+                                from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
-* texinfo-format commands::     Two Info formatting commands written
-                                 in Emacs Lisp are an alternative
-                                 to @code{makeinfo}.
-* Batch Formatting::            How to format for Info in Emacs Batch mode.
-* Tag and Split Files::         How tagged and split files help Info
-                                 to run better.
+* Configuration variables::     Description of configuration variables.
 @end menu
 
-
-@node makeinfo advantages
-@subsection @code{makeinfo} Preferred
-
-The @code{makeinfo} utility creates an Info file from a Texinfo source
-file more quickly than either of the Emacs formatting commands and
-provides better error messages.  We recommend it.  @code{makeinfo} is a
-C program that is independent of Emacs.  You do not need to run Emacs to
-use @code{makeinfo}, which means you can use @code{makeinfo} on machines
-that are too small to run Emacs.  You can run @code{makeinfo} in any one
-of three ways: from an operating system shell, from a shell inside
-Emacs, or by typing the @kbd{C-c C-m C-r} or the @kbd{C-c C-m C-b}
-command in Texinfo mode in Emacs.
-
-The @code{texinfo-format-region} and the @code{texinfo-format-buffer}
-commands are useful if you cannot run @code{makeinfo}.  Also, in some
-circumstances, they format short regions or buffers more quickly than
-@code{makeinfo}.
-
-
-@node Invoking makeinfo
-@subsection Running @code{makeinfo} from a Shell
+@node Invoking texi2any
+@section Running @command{texi2any}/@code{makeinfo} from a Shell
 @pindex makeinfo
+@pindex texi2any
 
-To create an Info file from a Texinfo file, invoke @command{makeinfo}
-followed by the name of the Texinfo file.  Thus, to create the Info
-file for Bison, type the following to the shell:
+To process a Texinfo file, invoke @command{texi2any} or 
+@command{makeinfo} followed by the 
+name of the Texinfo file.  Also select the format you want to output
+with the appropriate command line option (default is Info for 
+@command{makeinfo}).  Thus, to create the Info file for Bison, type 
+the following to the shell:
+
+@example
+texi2any --info bison.texinfo
+@end example
+
+or
 
 @example
 makeinfo bison.texinfo
 @end example
 
-(You can run a shell inside Emacs by typing @kbd{M-x shell}.)
 
-@command{makeinfo} has many options to control its actions and output;
-see the next section.
+@c FIXME is it relevant here?
+@c (You can run a shell inside Emacs by typing @kbd{M-x shell}.)
+
+@c @command{makeinfo} has many options to control its actions and output;
+@c see the next section.
 
 You can give @command{makeinfo} more than one input file name; each is
 processed in turn.  If an input file name is @samp{-}, or no input
 file names are given at all, standard input is read.
 
-
-@node makeinfo options
-@subsection Options for @code{makeinfo}
+@anchor{makeinfo options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 
-The @command{makeinfo} program accepts many options.  Perhaps the most
+The @command{texi2any}/@command{makeinfo} programs accept 
+many options.  Perhaps the most
 commonly needed are those that change the output format.  By default,
-@command{makeinfo} outputs Info files.
+@command{makeinfo} outputs Info files, while @command{texi2any} outputs
+raw text with minimal formatting.
 
 Each command line option is a word preceded by @samp{--} or a letter
 preceded by @samp{-}.  You can use abbreviations for the long option
@@ -16125,10 +16115,19 @@ Print a usage message listing all available options, then exit successfully.
 
 @item --html
 @opindex --html
-Generate HTML output rather than Info.  @xref{Generating HTML}.  By
+Generate HTML output.  @xref{Generating HTML}.  By
 default, the HTML output is split into one output file per Texinfo
 source node, and the split output is written into a subdirectory with
 the name of the top-level info file.
+
+@item --info
+@opindex --info
+Generate Info output.  By default, if the output file contains more 
+than about 300,000 bytes, the large Info output file is split 
+into shorter @dfn{indirect} subfiles of about 300,000 bytes each.  
+The name of the output file and of the indirect subfiles is 
+determined by @code{@@setfilename} (@pxref{setfilename}).  
+@xref{Tag and Split Files}.
 
 @item -I @var{dir}
 @opindex -I @var{dir}
@@ -16407,14 +16406,14 @@ If not set, Info output is the default.
 
 
 @node Pointer Validation
-@subsection Pointer Validation
+@section Pointer Validation
 @cindex Pointer validation with @code{makeinfo}
 @cindex Validation of pointers
 
 If you do not suppress pointer validation with the @samp{--no-validate}
 option or the @code{@@novalidate} command in the source file (@pxref{Use
-TeX,,Use @TeX{}}), @code{makeinfo} will check the validity of the final
-Info file.  Mostly, this means ensuring that nodes you have referenced
+TeX,,Use @TeX{}}), @code{makeinfo} will check the validity of the
+Texinfo file.  Mostly, this means ensuring that nodes you have referenced
 really exist.  Here is a complete list of what is checked:
 
 @enumerate
@@ -16448,6 +16447,421 @@ Every node except `Top' should be referenced by at least one other node,
 either via the `Previous' or `Next' links, or via a menu or a
 cross-reference.@refill
 @end enumerate
+
+@node Configuration variables
+@section Configuration variables
+
+Many aspects of the behaviour and output may be modified by modifying 
+configuration variables. 
+The Configuration variables are either
+@itemize @bullet
+@item associated with @@-commands in the document,
+for example @code{@@documentlanguage},
+@item associated with 
+configuration variables that
+may also be set on the command-line, for example @code{SPLIT} which is
+associated with the @option{--split} command-line switch,
+@item other 
+configuration variables, for example @code{NO_CSS} which may be set to 0
+in case one does not want CSS. Those configuration variables may always be set
+on the command-line, using
+@example
+--set-init-variable 'VAR_NAME value'
+@end example
+or
+@example
+--set-init-variable VAR_NAME=value
+@end example
+
+where @var{VAR_NAME} is the variable name, for example @code{SPLIT} or
+@code{NO_CSS}, and @var{value} is the value of the variable. A special
+value is @samp{undef} the sets the variable to this special @command{perl}
+value.
+@end itemize
+
+The list of configuration variables associated with @@-commands is
+in @ref{Configuration variables for @@-commands}, the list and mapping
+of configuration variables associated with command line options is at 
+@ref{Configuration variables and options}.
+
+The other configuration variables are:
+
+@vtable @code
+@item DEBUG
+The integer value specifies what kind of debugging output is generated.
+It is a bitmask. Setting it to 255 ensures having all the debugging
+set.
+@item FRAMES
+For HTML. If set, a file describing the frame layout is generated, 
+together with a file with the short table of contents.
+@item DOCTYPE
+For HTML, XML, Docbook.
+The SystemLiteral, the entity's system identifier.  It is a URI, which 
+may be used to retrieve the entity, and it identifies the canonical DTD 
+for the document.
+@item FRAMESET_DOCTYPE
+For HTML.  Same as DOCTYPE, but for the file containing the frame description.
+@item TEST
+If this value is true, some variables which should be dynamically generated
+(the date, the program name, the version) are set to fixed and given values. 
+This is usefull in case the resulting manual is compared with a reference. 
+For example this is used in the tests.
+@item DUMP_TEXI
+Mainly useful for debugging.  If set, the result of the first pass is
+put in @file{<document name>.passtexi}, the result of the second pass is 
+put in @file{<document name>.passfirst}.
+@item TOP_FILE
+This file name may be used for the top-level file.  The extension is set 
+appropriately, if necessary. This is used to override the default, and is, in
+general only taken into account when split.
+@item TOC_FILE
+This file name is used for the table of contents.  The extension is set 
+appropriately, if necessary.  It is only used if split and 
+@code{INLINE_CONTENTS} is not set.  Default is @file{<document name>_toc.html}.
+@item SHOW_MENU
+If set, the Texinfo menus are shown.  It is set in all the formats, for 
+exmaple it is true for HTML (except if @option{--no-headers} is used),
+Info and XML, but not for Docbook.
+@item USE_NODES
+Use nodes preferentially to decide where elements are separated.
+@item USE_SECTIONS
+Use sectionning @@-commands preferentially to decide where elements are 
+separated.
+@item TOC_LINKS
+For HTML. If set links from headings to toc entries are created.
+@item SHORTEXTN
+The default extension is set to @samp{.htm}.
+@item PREFIX
+This set the output file prefix, that may be prepended to some output 
+files.  In the default case it is set by @code{@@setfilename} or from
+the input file (@pxref{setfilename}).  How this value is used depends
+on the value of other configuration variables or command line options,
+like split, @code{NODE_FILENAMES}.
+@item SHORT_REF
+For HTML.  If this is set internal cross-references are given without the 
+@samp{section} word, even if the target of the reference is a section.
+@item IDX_SUMMARY
+If set, for each @code{@@printindex}, a file @file{<document name>_<index name>.idx}
+is created which contains lines of the form
+@example
+@var{key} @var{reference}
+@end example
+sorted alphabetically (case matters).
+@item DEF_TABLE
+For HTML.  If this is set a table construction for @code{@@deffn} and similar
+@@-commands is used (looking more like @TeX{} output), instead of 
+definition lists.
+@item L2H
+For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
+and @code{@@tex} sections.  Best used with @option{--iftex}.
+@item L2H_L2H
+Program invoked as @command{latex2html} if @code{L2H} is set.
+@item L2H_SKIP
+Relevant only is @code{L2H} is set. 
+If this is set the actual call to @command{latex2html} is skipped. 
+The previously generated content is reused, instead.
+If set to 0, the cache is not used.
+If undef the cache is used for as many @TeX{} fragments as possible
+and for the remaining the command is run.
+@item L2H_TMP
+Relevant only is @code{L2H} is set.  Set the directory used for temporary 
+files. The path leading to this directory may not contain a dot 
+@samp{.} otherwise, @command{latex2html} will fail (because of dvips).
+@item L2H_FILE
+Relevant only is @code{L2H} is set. 
+If set, this file is sued as @command{latex2html} init file.
+@item L2H_CLEAN
+Relevant only is @code{L2H} is set. 
+if this is set the intermediate files generated in relation with
+@code{L2H} with @command{latex2html} are cleaned.
+@item L2H_HTML_VERSION
+Relevant only is @code{L2H} is set.
+The HTML version used in the @command{latex2html} call.
+@item MONOLITHIC
+For HTML.  Output only one file including the table of content. 
+It only makes sense when not split, and it is set in the default case.
+@item IGNORE_PREAMBLE_TEXT
+If this is set the text before @@node and sectioning commands is ignored.
+This is a backward compatibility configuration variable you certainly 
+shouldn't use.
+@item EXTERNAL_DIR
+For HTML.
+Base directory for external manuals. You shouldn't use this variable,
+but instead use the mechanism described in @ref{HTML Xref Configuration}.
+@item USE_ISO
+For HTML.
+Use entities for doubled single-quote characters (@pxref{Inserting Quotation Marks}, @samp{---} and @samp{--} 
+(@pxref{Conventions, General Syntactic Conventions}).
+@item SPLIT_INDEX
+For HTML.
+If set, document is split, and a @code{@@printindex} happens in a sectionning 
+element at the level of splitting, then split index pages at the next letter
+after they have more than that many entries. If set to 0, no index splitting.
+@item IN_ENCODING
+Input file encoding using perl encoding names. Set according to 
+@code{@@documentencoding}.
+@item USE_NLS
+If set use Native Language Support support fully. In the default case, 
+this is determined automatically at buildtime or at runtime.
+@item VERTICAL_HEAD_NAVIGATION
+For HTML.  
+If set, a vertical navigation panel is used.
+@item INLINE_CONTENTS
+If set, output the contents where the @code{@@contents} and similar 
+@@-commands are located. Ignored if @code{@@set*contentsaftertitlepage}
+is set.
+@item NODE_FILE_EXTENSION
+Extension for node files if @code{NODE_FILENAMES} is set.
+@item NO_CSS
+For HTML.
+Do not use CSS (@pxref{HTML CSS}).
+@item INLINE_CSS_STYLE
+For HTML.
+Put CSS directly in HTML elements and not at the beginning of the file.
+@item USE_TITLEPAGE_FOR_TITLE
+Use the full @code{@@titlepage} as title, not a simple title.
+@item SIMPLE_MENU
+If set use simply a preformatted style for the menu, instead of breaking 
+down the different parts of the menu. @xref{Menu Parts}.
+@item EXTENSION
+Extension added to the output file.
+@item INLINE_INSERTCOPYING
+If set @code{@@insertcopying} is replaced by the @code{@@copying}
+content as if @code{@@insertcopying} was a user defined macro.
+@item USE_NUMERIC_ENTITY
+For in XML, HTML.
+If set, use numeric entity when there is no corresponding textual entity.
+@item I18N_PERL_HASH
+If set use the old system for the translation of strings output by 
+the program in the document.
+@item ENABLE_ENCODING_USE_ENTITY
+For HTMl and XML.
+If @option{--enable-encoding} is set, but there is an entity corresponding
+with the letter or the symbol being output, prefer the entity.
+@item ICONS
+For HTML.  Use icons for the navigation panel.
+@item USE_UNICODE
+Use perl support for unicode. This is automatically detected.
+@item USE_UNIDECODE
+Use the @code{Text::Unidecode} perl module to transliterate more characters.
+This is automatically detected.
+@item DATE_IN_HEADER
+For HTML.
+Put the document generation date in the header.
+@item OPEN_QUOTE_SYMBOL
+When an opening quote is needed, use the corresponding character.
+@item CLOSE_QUOTE_SYMBOL
+When a closing quote is needed, use the corresponding character.
+@item TOP_NODE_UP
+Up node for the Top node. Default is @samp{(dir)}.
+@item TOP_NODE_FILE
+File used for the Top node, if @code{NODE_FILENAMES} is set.
+@item TOP_NODE_FILE_TARGET
+File used for Top node in cross-reference.
+@item SHOW_TITLE
+For HTML.
+If set, output the title at the beginning of the document.
+@item WORDS_IN_PAGE
+For HTML split at node.
+Specifies the approximate
+minimum page length required before a navigation panel
+is placed at the bottom of a page.
+@item HEADER_IN_TABLE
+For HTML.
+Use simple headers formatting, not in a table and using node names.
+@item USE_ACCESSKEY
+For HTML.
+Use accesskey in cross-references.
+@item USE_REL_REV
+For HTML.
+Use @code{rel} in cross-references.
+@item USE_LINKS
+For HTML.
+generate @code{<link>} elements in HTML @code{<head>}.
+@item OVERVIEW_LINK_TO_TOC
+If set the cross-refeerences in Overview link to the corresponding 
+Table of Contents entry.
+@item AVOID_MENU_REDUNDANCY
+if set and menu entry equals menu description, then do not print 
+menu description.
+@item NODE_NAME_IN_MENU
+If set, use node names in menu entries, otherwise prefer section names.
+@item NODE_NAME_IN_INDEX
+If set, use node names in index entries, otherwise prefer section names.
+@item USE_SETFILENAME
+If set, use @code{@@setfilename} to set document name, otherwise base the 
+document name only on th einput file name. @xref{setfilename}.
+@item USE_SETFILENAME_EXTENSION
+Default for Info, not for other output.
+If set use what @code{@@setfilename} gives for the output file name, 
+including th eextension. You should not need to set this variable.
+@item COMPLEX_FORMAT_IN_TABLE
+For HTML.
+If set, use table for indentation of complex formats.
+@item USE_UP_FOR_ADJACENT_NODES
+If set, try up sections to complete node directions.
+@c @item TOP_HEADING_AT_BEGINNING
+@item SEPARATE_DESCRIPTION
+If set, always separate menu description and menu link, even in 
+preformatted environment.
+@item IGNORE_BEFORE_SETFILENAME
+If set, begin outputting at @code{@@setfilename}, if @code{@@setfilename}
+is present.
+@item COMPLETE_IMAGE_PATHS
+If set, the image files are completed to be relative from the
+document directory, to the source manual directory and then to
+the image.
+@item USE_NODE_TARGET
+If set, use the node associated with a section for section target in
+cross-references.
+@item NEW_CROSSREF_STYLE
+If unset use an old cross-reference schenm. This is a backward compatibility
+setting, you should certainly never unset this variable.
+@item PROGRAM_NAME_IN_FOOTER
+For HTML.
+If set, output the program name and misc information in the pages footers.
+@item NODE_FILENAMES
+If set, node names are used to construct file names. In the 
+default case, it is set if split at node, or @code{NODE_FILES} is set
+and document is split.
+@item DEFAULT_ENCODING
+The default out file encoding. Currently @samp{utf8} or @samp{ascii} for Info.
+@item OUT_ENCODING
+Output files encoding using perl encoding name. In the default
+case set auotmatically based on @code{@@documentencoding}.
+@item ENCODING_NAME
+Output document encoding. In the default case set automatically
+based on @code{@@documentencoding}. This encoding name is
+the classical charset name in HTML.
+@item EXTERNAL_CROSSREF_SPLIT
+For cross-references to other manuals, this determines if the other
+manual is considered to be split or monolithic. In the default case
+set based on @code{SPLIT}. @xref{HTML Xref}. @xref{HTML Xref Configuration}.
+@item BODYTEXT
+For HTML.  The text appearing in @code{<body>}.  Set automatically
+taking into account the document language in the default case.
+@item CSS_LINES
+Lines of CSS, automatically determined in the default 
+case.  @xref{HTML CSS}.
+@item RENAMED_NODES_REDIRECTIONS
+If set do redirection files for renamed nodes. Set for HTML in the
+default case.
+@item RENAMED_NODES_FILE
+Use the value for the renamed nodes description file. If not set, the 
+file is @file{<input_file_basename>-noderename.cnf}.
+@end vtable
+
+@menu
+* Configuration variables for @@-commands::   configuration variables
+                                associated with @@-commands.
+* Configuration variables and options::      correspondence between 
+                                configuration variables and command line
+                                options. 
+@end menu
+
+@node Configuration variables for @@-commands
+@subsection Configuration variables for @@-commands
+
+Configuration variables with the same name than @@-commands are associated
+with the following @@-commands:
+
+@example
+@@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading 
+@@oddfooting @@headings @@allowcodebreaks @@frenchspacing @@exampleindent
+@@firstparagraphindent @@paragraphindent @@clickstyle @@documentlanguage 
+@@contents @@shortcontents @@setcontentsaftertitlepage 
+@@setshortcontentsaftertitlepage @@footnotestyle @@novalidate 
+@@kbdinputstyle @@documentencoding @@setfilename @@today 
+@@documentdescription @@everyheadingmarks @@everyfootingmarks 
+@@evenheadingmarks @@oddheadingmarks @@evenfootingmarks @@oddfootingmarks 
+@@fonttextsize @@pagesizes @@setchapternewpage
+@end example
+
+@node Configuration variables and options
+@subsection Configuration variables and options
+
+The following table describes the association of command-line options and
+variables. For the meaning of the options, @ref{Invoking texi2any}.
+
+@multitable @columnfractions 0.5 0.5
+@headitem option @tab variable
+@item @option{--enable-encoding} @tab @code{ENABLE_ENCODING}
+@item @option{--document-language} @tab @code{documentlanguage}
+@item @option{--error-limit} @tab @code{ERROR_LIMIT}
+@item @option{--fill-column} @tab @code{FILLCOLUMN}
+@item @option{--footnote-style} @tab @code{footnotestyle}
+@item @option{--force} @tab @code{FORCE}
+@item @option{--internal-links} @tab @code{INTERNAL_LINKS}
+@item @option{--macro-expand} @tab @code{MACRO_EXPAND}
+@item @option{--headers} @tab @code{HEADERS} and @code{SHOW_MENU}
+@item @option{--no-warn} @tab @code{NO_WARN}
+@item @option{--no-validate} @tab @code{novalidate}
+@item @option{--number-footnotes} @tab @code{NUMBER_FOOTNOTES}
+@item @option{--number-sections} @tab @code{NUMBER_SECTIONS}
+@item @option{--node-files} @tab @code{NODE_FILES}
+@item @option{--output} @tab @code{OUT}, @code{OUTFILE} and @code{SUBDIR}
+@item @option{--paragraph-indent} @tab @code{paragraphindent}
+@item @option{--split} @tab @code{SPLIT}
+@item @option{--split-size} @tab @code{SPLIT_SIZE}
+@item @option{--verbose} @tab @code{VERBOSE}
+@end multitable
+
+@node Creating and Installing Info Files
+@chapter Creating and Installing Info Files
+
+This chapter describes how to create and install Info files.  @xref{Info
+Files}, for general information about the file format itself.
+
+@menu
+* Creating an Info File::
+* Installing an Info File::
+@end menu
+
+
+@node Creating an Info File
+@section Creating an Info File
+@cindex Creating an Info file
+@cindex Info, creating an online file
+@cindex Formatting a file for Info
+
+@code{makeinfo} is a program that converts a Texinfo file into an Info
+file, HTML file, or plain text.  @code{texinfo-format-region} and
+@code{texinfo-format-buffer} are GNU Emacs functions that convert
+Texinfo to Info.
+
+For information on installing the Info file in the Info system,
+@pxref{Installing an Info File}.
+
+@menu
+* makeinfo advantages::         @code{makeinfo} provides better error checking.
+* makeinfo in Emacs::           How to run @code{makeinfo} from Emacs.
+* texinfo-format commands::     Two Info formatting commands written
+                                 in Emacs Lisp are an alternative
+                                 to @code{makeinfo}.
+* Batch Formatting::            How to format for Info in Emacs Batch mode.
+* Tag and Split Files::         How tagged and split files help Info
+                                 to run better.
+@end menu
+
+
+@node makeinfo advantages
+@subsection @code{makeinfo} Preferred
+
+The @code{makeinfo} utility creates an Info file from a Texinfo source
+file more quickly than either of the Emacs formatting commands and
+provides better error messages.  We recommend it.  @code{makeinfo} is a
+C program that is independent of Emacs.  You do not need to run Emacs to
+use @code{makeinfo}, which means you can use @code{makeinfo} on machines
+that are too small to run Emacs.  You can run @code{makeinfo} in any one
+of three ways: from an operating system shell, from a shell inside
+Emacs, or by typing the @kbd{C-c C-m C-r} or the @kbd{C-c C-m C-b}
+command in Texinfo mode in Emacs.
+
+The @code{texinfo-format-region} and the @code{texinfo-format-buffer}
+commands are useful if you cannot run @code{makeinfo}.  Also, in some
+circumstances, they format short regions or buffers more quickly than
+@code{makeinfo}.
+
 
 @node makeinfo in Emacs
 @subsection Running @code{makeinfo} Within Emacs
@@ -17694,8 +18108,8 @@ Then, for the following commands, the command name and braces are removed,
 the text of the argument is recursively transformed:
 @example
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
-@@emph @@env @@file @@indicateurl @@kbd @@key
-@@samp @@sc @@slanted @@strong @@t @@var @@w
+@@emph @@env @@file @@i @@indicateurl @@kbd @@key
+@@samp @@sansserif @@sc @@slanted @@strong @@t @@var @@w
 @end example
 
 @noindent For @code{@@sc}, any letters are capitalized.
@@ -19855,7 +20269,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
+$Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -19934,7 +20348,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.257 2010-07-18 10:47:08 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

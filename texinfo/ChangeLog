@@ -1,3 +1,11 @@
+2010-07-19  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Generic converter texi2any/makeinfo): add a
+	chapter for texi2any/makeinfo. Merge Invoking makeinfo and
+	makeinfo options and put it in the chapter as Invoking texi2any, 
+	together with Pointer Validation and the description of 
+	texi2any Configuration variables.
+
 2010-07-18  Karl Berry  <karl@gnu.org>
 
 	* AUTHORS, 
