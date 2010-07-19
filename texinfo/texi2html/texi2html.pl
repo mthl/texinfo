@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.406 2010-07-19 18:28:10 karl Exp $
+# $Id: texi2html.pl,v 1.407 2010-07-19 23:48:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -1239,7 +1239,7 @@ sub t2h_default_associate_index_element($$$$)
                  $element->{'texi'},
                  $element->{'number'},
                  $first_letter, $last_letter);
-            $name = main::substitute_line($index_heading_texi, sprintf(__p("\@sectionning_command index page","\@%s index page"), $element->{'tag'}));
+            $name = main::substitute_line($index_heading_texi, sprintf(__p("\@sectioning_command index page","\@%s index page"), $element->{'tag'}));
             $simple = main::simple_format(undef,undef,"simple_format \@$element->{'tag'} index page", $index_heading_texi);
           }
           else
@@ -5024,7 +5024,7 @@ sub initialise_state_structure($)
     $state->{'menu'} = 0;           # number of opened menus
     $state->{'detailmenu'} = 0;     # number of opened detailed menus      
     $state->{'direntry'} = 0;     # number of opened direntry  
-    $state->{'sectionning_base'} = 0;         # current base sectioning level
+    $state->{'sectioning_base'} = 0;         # current base sectioning level
     $state->{'table_stack'} = [ "no table" ]; # a stack of opened tables/lists
     # seems to be only debug
     if (exists($state->{'region_lines'}) and !defined($state->{'region_lines'}))
@@ -5941,7 +5941,7 @@ sub misc_command_structure($$$$)
         {
             $sec2level{$sec} = $level + 1 if ($reference_sec2level{$sec} > 0);
         }
-        $state->{'sectionning_base'}--;
+        $state->{'sectioning_base'}--;
     }
     elsif ($command eq 'raisesections')
     {
@@ -5950,7 +5950,7 @@ sub misc_command_structure($$$$)
         {
             $sec2level{$sec} = $level - 1 if ($reference_sec2level{$sec} > 0);
         }
-        $state->{'sectionning_base'}++;
+        $state->{'sectioning_base'}++;
     }
     elsif (($command eq 'contents') or ($command eq 'summarycontents') or ($command eq 'shortcontents'))
     {

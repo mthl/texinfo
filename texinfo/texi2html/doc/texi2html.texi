@@ -3721,7 +3721,7 @@ appearing on the line, and @var{$unformatted_line} is the line,
 unformatted.
 @end deftypefn
 
-Additionally, for @code{@@node} and sectionning @@-commands the formatting
+Additionally, for @code{@@node} and sectioning @@-commands the formatting
 of the label, navigation panel and heading is controlled by:
 @deftypefn {Function Reference} $element_heagin_text element_heading \%element_reference $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading $first_in_page $is_top $previous_is_top $unformatted_line $element_id $new_element
 @var{\%element_reference} is the same as above. @var{$command} is the heading @@-command.

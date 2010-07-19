@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
+@c $Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16352,11 +16352,11 @@ should be split, with @var{split}. The possible values are:
 
 @table @samp
 @item chapter
-The resulting manual is split at @code{@@chapter} and other sectionning
+The resulting manual is split at @code{@@chapter} and other sectioning
 @@-commands at this level.
 
 @item section
-The resulting manual is split at @code{@@section} and other sectionning
+The resulting manual is split at @code{@@section} and other sectioning
 @@-commands at this level.
 
 @item node
@@ -16528,7 +16528,7 @@ Info and XML, but not for Docbook.
 @item USE_NODES
 Use nodes preferentially to decide where elements are separated.
 @item USE_SECTIONS
-Use sectionning @@-commands preferentially to decide where elements are 
+Use sectioning @@-commands preferentially to decide where elements are 
 separated.
 @item TOC_LINKS
 For HTML. If set links from headings to toc entries are created.
@@ -16597,7 +16597,7 @@ Use entities for doubled single-quote characters (@pxref{Inserting Quotation Mar
 (@pxref{Conventions, General Syntactic Conventions}).
 @item SPLIT_INDEX
 For HTML.
-If set, document is split, and a @code{@@printindex} happens in a sectionning 
+If set, document is split, and a @code{@@printindex} happens in a sectioning 
 element at the level of splitting, then split index pages at the next letter
 after they have more than that many entries. If set to 0, no index splitting.
 @item IN_ENCODING
@@ -17763,7 +17763,7 @@ file.
 
 It is also possible to split at chapter or section with @option{--split}.
 In that case, the file names are constructed after the name of the 
-node associated with the sectionning command.  Also, unless
+node associated with the sectioning command.  Also, unless
 @option{--no-node-file} is used a redirection file is output for
 every node in order to allow for cross-references to that manual
 (@pxref{HTML Xref}).
@@ -20331,7 +20331,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
+$Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -20410,7 +20410,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
+@comment $Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

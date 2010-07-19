@@ -74,8 +74,8 @@ So, for example
 
 a_test manual.texi
 
-specifies that the results of processing manual.texi are put in the a_test
-directory.
+specifies that for the a_test test, the file manual.texi is processed and
+results are put are put in the a_test directory.
 
 a_test_split_chapter manual.texi --split chapter
 

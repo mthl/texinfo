@@ -6099,7 +6099,7 @@ test "x$enable_multiplatform" = xyes \
 && bindir="$bindir/$host"
 
 
-ac_config_files="$ac_config_files po_messages/Makefile.in po_document/Makefile.in po_messages/POTFILES.in po_document/POTFILES.in po_messages/Makevars po_document/Makevars Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/info_coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectionning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile test/path_separator"
+ac_config_files="$ac_config_files po_messages/Makefile.in po_document/Makefile.in po_messages/POTFILES.in po_document/POTFILES.in po_messages/Makevars po_document/Makevars Makefile Tests/Makefile test/Makefile test/contents/Makefile test/coverage/Makefile test/info_coverage/Makefile test/formatting/Makefile test/indices/Makefile test/invalid/Makefile test/misc/Makefile test/encodings/Makefile test/macros/Makefile test/manuals/Makefile test/nested_formats/Makefile test/sectioning/Makefile test/htmlxref/Makefile test/htmlxref-only_mono/Makefile test/htmlxref-only_split/Makefile test/xemacs_manual/Makefile test/texi2html_manual/Makefile test/tar_manual/Makefile test/singular_manual/Makefile test/layout/Makefile test/many_input_files/Makefile doc/Makefile test/path_separator"
 
 
 ac_config_files="$ac_config_files texi2html_configured.pl:texi2html.pl"
@@ -6873,7 +6873,7 @@ do
     "test/macros/Makefile") CONFIG_FILES="$CONFIG_FILES test/macros/Makefile" ;;
     "test/manuals/Makefile") CONFIG_FILES="$CONFIG_FILES test/manuals/Makefile" ;;
     "test/nested_formats/Makefile") CONFIG_FILES="$CONFIG_FILES test/nested_formats/Makefile" ;;
-    "test/sectionning/Makefile") CONFIG_FILES="$CONFIG_FILES test/sectionning/Makefile" ;;
+    "test/sectioning/Makefile") CONFIG_FILES="$CONFIG_FILES test/sectioning/Makefile" ;;
     "test/htmlxref/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref/Makefile" ;;
     "test/htmlxref-only_mono/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref-only_mono/Makefile" ;;
     "test/htmlxref-only_split/Makefile") CONFIG_FILES="$CONFIG_FILES test/htmlxref-only_split/Makefile" ;;

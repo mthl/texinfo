@@ -1,2 +1,2 @@
-htmlxref ../sectionning/test_refs.texi
-htmlxref_nodes ../sectionning/test_refs.texi --split node --set-init-var 'USE_NODES 1' --node-files
+htmlxref ../sectioning/test_refs.texi
+htmlxref_nodes ../sectioning/test_refs.texi --split node --set-init-var 'USE_NODES 1' --node-files

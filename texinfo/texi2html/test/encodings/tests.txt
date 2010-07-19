@@ -28,8 +28,8 @@ nodetest_latin1 nodetest_latin1.texi
 nodetest_latin1_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0'
 nodetest_latin1_use_nodes_no_unicode nodetest_latin1.texi --set-init-var 'USE_UNICODE 0' --node-files --split node
 nodetest_latin1_use_nodes nodetest_latin1.texi --node-files --split node
-at_commands_in_refs_no_unicode ../sectionning/at_commands_in_refs.texi --set-init-var 'USE_UNICODE 0'
-at_commands_in_refs_no_unidecode ../sectionning/at_commands_in_refs.texi --set-init-var 'USE_UNIDECODE 0'
+at_commands_in_refs_no_unicode ../sectioning/at_commands_in_refs.texi --set-init-var 'USE_UNICODE 0'
+at_commands_in_refs_no_unidecode ../sectioning/at_commands_in_refs.texi --set-init-var 'USE_UNIDECODE 0'
 at_commands_in_refs_latin1_use_nodes at_commands_in_refs_latin1.texi --node-files --split node
 at_commands_in_refs_latin1_use_nodes_no_unidecode at_commands_in_refs_latin1.texi --set-init-var 'USE_UNIDECODE 0' --node-files --split node
 at_commands_in_refs_latin1_use_nodes_no_unicode at_commands_in_refs_latin1.texi --set-init-var 'USE_UNICODE 0' --node-files --split node

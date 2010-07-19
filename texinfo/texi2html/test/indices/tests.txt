@@ -7,8 +7,8 @@ makeinfo_index_split index_split.texi --init makeinfo.init --init index_test.ini
 index_no_node index_no_node.texi --split chapter --init index_test.init
 makeinfo_nodes_before_top nodes_before_top.texi --init makeinfo.init --init index_test.init --split node --no-node-files
 nodes_before_top nodes_before_top.texi --set-init-var 'USE_NODES 1' --init index_test.init --split chapter
-# there is no sectionning command in nodes_before_top.texi, so when called as
-# texi2html there is nothing split, including indices. 
+# there is no sectioning command in nodes_before_top.texi, so when called as
+# texi2html there is nothing split, including indices. 
 nodes_before_top_no_nodes nodes_before_top.texi --init index_test.init --split chapter
 nodes_before_top_and_sections nodes_before_top_and_sections.texi --init index_test.init --split chapter
 nodes_before_top_and_sections_monolithic nodes_before_top_and_sections.texi

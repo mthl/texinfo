@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.96 2010-06-25 13:17:37 karl Exp $
+# $Id: configure.ac,v 1.97 2010-07-19 23:48:17 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -364,7 +364,7 @@ AC_CONFIG_FILES([\
   texi2html/test/macros/Makefile \
   texi2html/test/manuals/Makefile \
   texi2html/test/nested_formats/Makefile \
-  texi2html/test/sectionning/Makefile \
+  texi2html/test/sectioning/Makefile \
   texi2html/test/htmlxref/Makefile \
   texi2html/test/htmlxref-only_mono/Makefile \
   texi2html/test/htmlxref-only_split/Makefile \

@@ -152,7 +152,7 @@ AC_CONFIG_FILES([ po_messages/Makefile.in po_document/Makefile.in \
                  test/macros/Makefile \
                  test/manuals/Makefile \
                  test/nested_formats/Makefile \
-                 test/sectionning/Makefile \
+                 test/sectioning/Makefile \
                  test/htmlxref/Makefile \
                  test/htmlxref-only_mono/Makefile \
                  test/htmlxref-only_split/Makefile \

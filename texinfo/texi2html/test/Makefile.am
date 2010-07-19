@@ -1,7 +1,7 @@
 EXTRA_DIST = run_test.sh run_test_all.sh tests.sh $(TESTS) long_tests \
  coverage_macro.texi
 base_tests = \
- macros sectionning formatting coverage info_coverage encodings indices \
+ macros sectioning formatting coverage info_coverage encodings indices \
  layout nested_formats contents \
  $(htmlxref_cnf_tests) invalid
 long_tests = \
@@ -59,10 +59,10 @@ all-local:
 		$(mkdir_p) $$dir/.texinfo/ ; \
 		${INSTALL_DATA} $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
 	done
-	${INSTALL_DATA} $(srcdir)/sectionning/renamednodes.cnf-ref sectionning/equivalent_nodes-noderename.cnf
+	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref sectioning/equivalent_nodes-noderename.cnf
 
 clean-local:
 	for dir in $(htmlxref_cnf_tests); do \
 		rm -rf $$dir/.texinfo/ ; \
 	done
-	rm -f sectionning/equivalent_nodes-noderename.cnf
+	rm -f sectioning/equivalent_nodes-noderename.cnf

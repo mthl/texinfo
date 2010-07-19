@@ -76,7 +76,7 @@ Don't show the Texinfo menus; by default they are shown.
 Don't number the sections.
 .TP
 .B \-\-use\-nodes
-Use nodes for sectionning.
+Use nodes for sectioning.
 .TP
 .B \-\-prefix
 Use as prefix for output files, instead of basename.
