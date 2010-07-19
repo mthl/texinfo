@@ -1,3 +1,8 @@
+2010-07-19  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Xref Link Preservation): new node
+	about the MANUAL-noderename.cnf file.
+
 2010-07-19  Patrice Dumas  <pertusus@free.fr>
 
 	* doc/texinfo.txi (Generic converter texi2any/makeinfo): add a

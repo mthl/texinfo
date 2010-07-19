@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
+@c $Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -605,7 +605,7 @@ Generic converter texi2any/makeinfo
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* Configuration variables::     Description of configuration variables.
+* makeinfo Configuration Variables:: Description of configuration variables.
 
 Creating and Installing Info Files
 
@@ -647,6 +647,8 @@ HTML Cross-references
 * Command Expansion: HTML Xref Command Expansion.
 * 8-bit Expansion:   HTML Xref 8-bit Character Expansion.
 * Mismatch:          HTML Xref Mismatch.
+* Configuration:     HTML Xref Configuration.      htmlxref.cnf.
+* Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
 
 @@-Command List
 
@@ -15919,7 +15921,7 @@ file.
 * Invoking texi2any::           How to run @command{texi2any} or @command{makeinfo} 
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* Configuration variables::     Description of configuration variables.
+* makeinfo Configuration Variables:: Description of configuration variables.
 @end menu
 
 @node Invoking texi2any
@@ -16448,8 +16450,9 @@ either via the `Previous' or `Next' links, or via a menu or a
 cross-reference.@refill
 @end enumerate
 
-@node Configuration variables
-@section Configuration variables
+
+@node makeinfo Configuration Variables
+@section @code{makeinfo} Configuration Variables
 
 Many aspects of the behaviour and output may be modified by modifying 
 configuration variables. 
@@ -16724,31 +16727,42 @@ If set, output the program name and misc information in the pages footers.
 If set, node names are used to construct file names. In the 
 default case, it is set if split at node, or @code{NODE_FILES} is set
 and document is split.
+
 @item DEFAULT_ENCODING
-The default out file encoding. Currently @samp{utf8} or @samp{ascii} for Info.
+The default out file encoding.  Currently @samp{utf8} or @samp{ascii} for Info.
+
 @item OUT_ENCODING
-Output files encoding using perl encoding name. In the default
+Output files encoding using perl encoding name.  In the default
 case set auotmatically based on @code{@@documentencoding}.
+
 @item ENCODING_NAME
 Output document encoding. In the default case set automatically
 based on @code{@@documentencoding}. This encoding name is
 the classical charset name in HTML.
+
 @item EXTERNAL_CROSSREF_SPLIT
 For cross-references to other manuals, this determines if the other
-manual is considered to be split or monolithic. In the default case
-set based on @code{SPLIT}. @xref{HTML Xref}. @xref{HTML Xref Configuration}.
+manual is considered to be split or monolithic.  In the default case
+set based on @code{SPLIT}. @xref{HTML Xref}, and see @ref{HTML Xref
+Configuration}.
+
 @item BODYTEXT
 For HTML.  The text appearing in @code{<body>}.  Set automatically
 taking into account the document language in the default case.
+
 @item CSS_LINES
 Lines of CSS, automatically determined in the default 
-case.  @xref{HTML CSS}.
+case.   @xref{HTML CSS}.
+
 @item RENAMED_NODES_REDIRECTIONS
-If set do redirection files for renamed nodes. Set for HTML in the
+If set do redirection files for renamed nodes.  Set for HTML in the
 default case.
+
 @item RENAMED_NODES_FILE
-Use the value for the renamed nodes description file. If not set, the 
-file is @file{<input_file_basename>-noderename.cnf}.
+Use the value for the renamed nodes description file.  If not set, the 
+file is @file{<input_file_basename>-noderename.cnf}.  @xref{HTML Xref
+Link Preservation}.
+
 @end vtable
 
 @menu
@@ -17911,7 +17925,8 @@ in 2003--04.
 * Command Expansion: HTML Xref Command Expansion.
 * 8-bit Expansion:   HTML Xref 8-bit Character Expansion.
 * Mismatch:          HTML Xref Mismatch.
-* Configuration:     HTML Xref Configuration.
+* Configuration:     HTML Xref Configuration.      htmlxref.cnf.
+* Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
 @end menu
 
 
@@ -18375,10 +18390,10 @@ into nodes, sections, or chapters, respectively.
 When available, @command{makeinfo} will use the ``corresponding''
 value for cross-references between manuals.  That is, when generating
 monolithic output (@option{--no-split}), the @code{mono} url will be
-used, when generating output split by node, the @code{node} url will
-be used, etc.  However, if a manual is not available in that form,
-whatever is available will be used.  Here is the search order for each
-style that can be generated:
+used, when generating output that is split by node, the @code{node}
+url will be used, etc.  However, if a manual is not available in that
+form, whatever is available will be used.  Here is the search order
+for each style that can be generated:
 
 @smallexample
 node    => node,    section, chapter, mono
@@ -18390,12 +18405,59 @@ mono    => mono,    chapter, section, split
 @opindex --node-files@r{, and HTML cross-references}
 These section- and chapter-level cross-manual references can succeed
 only when the target manual was created using @option{--node-files},
-which is the default for @code{makeinfo}.
+which is the default.
 
 If you have additions or corrections to the @file{htmlxref.cnf}
 distributed with Texinfo, please email @email{bug-texinfo@@gnu.org}.
 You can get the latest version from
 @url{http://ftpmirror.gnu.org/@/texinfo/@/htmlxref.cnf}.
+
+
+@node HTML Xref Link Preservation
+@subsection HTML Cross-reference Link Preservation: @var{manual}@file{-noderename.cnf}
+
+@pindex noderename.cnf
+@pindex @var{manual}-noderename.cnf
+@cindex HTML cross-reference link preservation
+@cindex Preserving HTML links to old nodes
+@cindex Old nodes, preserving links to
+@cindex Renaming nodes, and preserving links
+@cindex Links, preserving to renamed nodes
+
+Occasionally changes in a program require removing (or renaming) nodes
+in the manual in order to have the best documentation.  Given the
+nature of the web, however, links may exist anywhere to any such
+removed node (renaming appears the same as removal for this purpose),
+and it's not ideal for those links to simply break.
+
+Therefore, Texinfo provides a way for manual authors to specify old
+node names and the new nodes to which the old names should be
+redirected, via the file @var{manual}@file{-noderename.cnf}, where
+@var{manual} is the base name of the manual.  For example, the manual
+@file{texinfo.txi} would be supplemented by a file
+@file{texinfo-noderename}.cnf.  (This name can be overridden by
+setting the @file{RENAMED_NODES_FILE} configuration variable;
+@pxref{makeinfo Configuration Variables}).
+
+The file is read in pairs of lines, as follows:
+
+@example
+@var{old-node-name}
+@@@@@{@} @var{new-node-name}
+@end example
+
+The usual conversion from Texinfo node names to HTML names is applied;
+see this entire section for details (@pxref{HTML Xref}).  The unusual
+@samp{@@@@@{@}} separator is used because it is not a valid Texinfo
+construct, so can't appear in the node names.
+
+The effect is that @command{makeinfo} generates a redirect from
+@var{old-node-name} to @var{new-node-name} when producing HTML output.
+Thus, external links to the old node will not simply break.
+
+Lines consisting only of whitespace are ignored.  Comments are
+indicated with a @samp{@@c} at the beginning of a line, optionally
+preceded by whitespace.
 
 
 @node Command List
@@ -20269,7 +20331,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
+$Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -20348,7 +20410,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.258 2010-07-18 23:01:02 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.259 2010-07-19 18:28:10 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

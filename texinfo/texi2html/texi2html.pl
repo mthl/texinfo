@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.405 2010-07-18 23:06:37 pertusus Exp $
+# $Id: texi2html.pl,v 1.406 2010-07-19 18:28:10 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -16798,7 +16798,7 @@ sub collect_renamed_nodes()
           {
               $renamd_nodes_line_nr++;
               next unless (/\S/);
-              next if (/^\s*\@c/);
+              next if (/^\s*\@c\b/);
               if (s/^\s*\@\@\{\}\s+(\S)/$1/)
               {
                  chomp;

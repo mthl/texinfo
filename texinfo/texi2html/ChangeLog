@@ -1,3 +1,8 @@
+2010-07-19  Karl Berry  <karl@gnu.org>
+
+	* texi2html.pl (collect_renamed_nodes): comments begin with @c\b,
+	not just @c.
+
 2010-07-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html.pl: do redirection files for renamed nodes, using 
