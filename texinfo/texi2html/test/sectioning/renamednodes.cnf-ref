@@ -1,6 +1,7 @@
  @c a comment
 
 
+@code{a node beginning with @@c}
  old strong  @strong{node}
  @@{} @strong{node}
 
