@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="hole_in_sectioning.xml" lang="en">
+<chapter label="" xreflabel="Top" id="Top">
+<title>Top</title>
+
+</chapter>
+<chapter label="1">
+<title>Chapter</title>
+
+<sect1 label="1.1">
+<title>section</title>
+
+<sect3 label="1.1.0.1">
+<title>subsubsection with no subsection above</title>
+
+</sect3>
+<sect2 label="1.1.1">
+<title>the subsection</title>
+
+</sect2>
+</sect1>
+</chapter>
+</book>

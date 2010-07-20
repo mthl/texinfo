@@ -102,7 +102,7 @@ File: nodetest_latin1.info,  Node: Ä,  Up: Umlaut
 1.7 Ä
 =====
 
-Now a ref to a node without sectionning command, no text (*note no
+Now a ref to a node without sectioning command, no text (*note no
 section::).  With text (*note but a text: no section.).
 
 
@@ -675,82 +675,82 @@ Node: ö1107
 Node: ü1265
 Node: ÿ1375
 Node: Ä1481
-Node: Ë1671
-Node: Ï1737
-Node: Ö1803
-Node: Ü1871
-Node: ss1939
-Node: no section2010
-Node: acute accent2116
-Node: a'2396
-Node: é2504
-Node: i'2576
-Node: o'2651
-Node: u'2726
-Node: y'2801
-Node: A'2876
-Node: E'2951
-Node: I'3026
-Node: O'3101
-Node: U'3178
-Node: Y'3255
-Node: grave accent3409
-Node: à3708
-Node: è3780
-Node: i`3852
-Node: with brace i`3927
-Node: with dotless i`4013
-Node: o`4101
-Node: ù4176
-Node: A`4248
-Node: E`4323
-Node: I`4398
-Node: O`4475
-Node: U`4552
-Node: circumflex accent4629
-Node: â4878
-Node: ê4955
-Node: î5032
-Node: ô5109
-Node: û5186
-Node: Â5263
-Node: Ê5340
-Node: Î5417
-Node: Ô5494
-Node: Û5571
-Node: tilde accent5650
-Node: a~5834
-Node: n~5909
-Node: o~5984
-Node: A~6059
-Node: O~6134
-Ref: x-spot6224
-Ref: é-o6263
-Node: cedilla accent6266
-Node: ç6412
-Node: C,6486
-Node: rest6563
-Node: aa6982
-Node: ae7049
-Node: oe7116
-Node: AA7183
-Node: AE7250
-Node: OE7317
-Node: /l7384
-Node: /o7451
-Node: /L7518
-Node: /O7585
-Node: a''7654
-Node: a(7726
-Node: a<7795
-Node: .a7864
-Node: a.7951
-Node: a*8037
-Node: a[8106
-Node: a_8175
-Node: i8244
-Node: j8310
-Node: ,8518
+Node: Ë1670
+Node: Ï1736
+Node: Ö1802
+Node: Ü1870
+Node: ss1938
+Node: no section2009
+Node: acute accent2115
+Node: a'2395
+Node: é2503
+Node: i'2575
+Node: o'2650
+Node: u'2725
+Node: y'2800
+Node: A'2875
+Node: E'2950
+Node: I'3025
+Node: O'3100
+Node: U'3177
+Node: Y'3254
+Node: grave accent3408
+Node: à3707
+Node: è3779
+Node: i`3851
+Node: with brace i`3926
+Node: with dotless i`4012
+Node: o`4100
+Node: ù4175
+Node: A`4247
+Node: E`4322
+Node: I`4397
+Node: O`4474
+Node: U`4551
+Node: circumflex accent4628
+Node: â4877
+Node: ê4954
+Node: î5031
+Node: ô5108
+Node: û5185
+Node: Â5262
+Node: Ê5339
+Node: Î5416
+Node: Ô5493
+Node: Û5570
+Node: tilde accent5649
+Node: a~5833
+Node: n~5908
+Node: o~5983
+Node: A~6058
+Node: O~6133
+Ref: x-spot6223
+Ref: é-o6262
+Node: cedilla accent6265
+Node: ç6411
+Node: C,6485
+Node: rest6562
+Node: aa6981
+Node: ae7048
+Node: oe7115
+Node: AA7182
+Node: AE7249
+Node: OE7316
+Node: /l7383
+Node: /o7450
+Node: /L7517
+Node: /O7584
+Node: a''7653
+Node: a(7725
+Node: a<7794
+Node: .a7863
+Node: a.7950
+Node: a*8036
+Node: a[8105
+Node: a_8174
+Node: i8243
+Node: j8309
+Node: ,8517
 
 End Tag Table
 

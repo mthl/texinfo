@@ -75,7 +75,7 @@ nodetest.texi(,75)
 nodetest.texi(,76) @node @"A,,,Umlaut
 nodetest.texi(,77) @section @"A
 nodetest.texi(,78) 
-nodetest.texi(,79) Now a ref to a node without sectionning command, 
+nodetest.texi(,79) Now a ref to a node without sectioning command, 
 nodetest.texi(,80) no text (@pxref{no section, , }).
 nodetest.texi(,81) With text (@pxref{no section, ,but a text }).
 nodetest.texi(,82) 

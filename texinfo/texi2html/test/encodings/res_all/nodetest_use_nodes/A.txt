@@ -1,7 +1,7 @@
 1.9 A"
 ======
 
-Now a ref to a node without sectionning command, 
+Now a ref to a node without sectioning command, 
 no text (see no section).
 With text (see but a text).
 

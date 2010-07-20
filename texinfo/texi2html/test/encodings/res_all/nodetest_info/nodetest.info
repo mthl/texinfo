@@ -117,7 +117,7 @@ File: nodetest.info,  Node: A",  Up: Umlaut
 1.9 A"
 ======
 
-Now a ref to a node without sectionning command, no text (*note no
+Now a ref to a node without sectioning command, no text (*note no
 section::).  With text (*note but a text: no section.).
 
 
@@ -788,95 +788,95 @@ Node: o"1378
 Node: u"1534
 Node: y"1640
 Node: A"1744
-Node: E"1930
-Node: I"1994
-Node: O"2058
-Node: U"2122
-Node: ss2186
-Node: no section2250
-Node: acute accent2349
-Node: a'2624
-Node: e'2725
-Node: i'2793
-Node: o'2861
-Node: u'2929
-Node: y'2997
-Node: A'3065
-Node: E'3133
-Node: I'3201
-Node: O'3269
-Node: U'3339
-Node: Y'3409
-Node: grave accent3560
-Node: a`3858
-Node: e`3926
-Node: i`3994
-Node: with brace i`4062
-Node: with dotless i`4141
-Node: o`4222
-Node: u`4290
-Node: A`4358
-Node: E`4426
-Node: I`4494
-Node: O`4564
-Node: U`4634
-Node: circumflex accent4704
-Node: a^5017
-Node: e^5090
-Node: i^5163
-Node: with brace i^5236
-Node: with dotless i^5333
-Node: o^5442
-Node: u^5515
-Node: A^5588
-Node: E^5661
-Node: I^5734
-Node: O^5809
-Node: U^5884
-Node: tilde accent5959
-Node: a~6136
-Node: n~6204
-Node: o~6272
-Node: A~6340
-Node: O~6408
-Ref: x-spot6491
-Ref: e'-o6530
-Node: ogonek accent6533
-Node: a;6783
-Node: e;6852
-Node: i;6921
-Node: o;6990
-Node: u;7059
-Node: A;7128
-Node: E;7197
-Node: I;7266
-Node: O;7335
-Node: U;7404
-Node: cedilla accent7475
-Node: c,7645
-Node: C,7715
-Node: c, no brace7785
-Node: rest7882
-Node: aa8294
-Node: ae8354
-Node: oe8414
-Node: AA8474
-Node: AE8534
-Node: OE8594
-Node: /l8654
-Node: /o8714
-Node: /L8774
-Node: /O8834
-Node: a''8896
-Node: a(8961
-Node: a<9023
-Node: .a9085
-Node: a.9165
-Node: a*9244
-Node: a[9306
-Node: a_9368
-Node: i9430
-Node: j9489
-Node: ,9690
+Node: E"1929
+Node: I"1993
+Node: O"2057
+Node: U"2121
+Node: ss2185
+Node: no section2249
+Node: acute accent2348
+Node: a'2623
+Node: e'2724
+Node: i'2792
+Node: o'2860
+Node: u'2928
+Node: y'2996
+Node: A'3064
+Node: E'3132
+Node: I'3200
+Node: O'3268
+Node: U'3338
+Node: Y'3408
+Node: grave accent3559
+Node: a`3857
+Node: e`3925
+Node: i`3993
+Node: with brace i`4061
+Node: with dotless i`4140
+Node: o`4221
+Node: u`4289
+Node: A`4357
+Node: E`4425
+Node: I`4493
+Node: O`4563
+Node: U`4633
+Node: circumflex accent4703
+Node: a^5016
+Node: e^5089
+Node: i^5162
+Node: with brace i^5235
+Node: with dotless i^5332
+Node: o^5441
+Node: u^5514
+Node: A^5587
+Node: E^5660
+Node: I^5733
+Node: O^5808
+Node: U^5883
+Node: tilde accent5958
+Node: a~6135
+Node: n~6203
+Node: o~6271
+Node: A~6339
+Node: O~6407
+Ref: x-spot6490
+Ref: e'-o6529
+Node: ogonek accent6532
+Node: a;6782
+Node: e;6851
+Node: i;6920
+Node: o;6989
+Node: u;7058
+Node: A;7127
+Node: E;7196
+Node: I;7265
+Node: O;7334
+Node: U;7403
+Node: cedilla accent7474
+Node: c,7644
+Node: C,7714
+Node: c, no brace7784
+Node: rest7881
+Node: aa8293
+Node: ae8353
+Node: oe8413
+Node: AA8473
+Node: AE8533
+Node: OE8593
+Node: /l8653
+Node: /o8713
+Node: /L8773
+Node: /O8833
+Node: a''8895
+Node: a(8960
+Node: a<9022
+Node: .a9084
+Node: a.9164
+Node: a*9243
+Node: a[9305
+Node: a_9367
+Node: i9429
+Node: j9488
+Node: ,9689
 
 End Tag Table

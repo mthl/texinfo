@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+<setfilename>sectioning.xml</setfilename>
+<node>
+<nodename>Top</nodename>
+<nodenext>First node</nodenext>
+<nodeprev>(dir)</nodeprev>
+</node>
+<top>
+<title></title>
+<menu>
+<menuentry>
+<menunode>First node</menunode>
+<menutitle>First node</menutitle>
+<menucomment>    node 1
+  explaination no heading ?
+* and here ?
+With command &icirc; and
+a <cite>me</cite>.
+</menucomment>
+</menuentry>
+<para>heading
+</para><menuentry>
+<menunode>between node</menunode>
+<menutitle>between node</menutitle>
+<menucomment> 
+node in between
+</menucomment>
+</menuentry>
+<para>heading 
+or not ?
+</para><menuentry>
+<menunode>Second node</menunode>
+<menutitle>Second node</menutitle>
+<menucomment>   node 2
+</menucomment>
+</menuentry>
+<para>heading with spaces around
+</para>
+<menuentry>
+<menunode>Third node unnumbered</menunode>
+<menutitle>Third node unnumbered</menutitle>
+<menucomment> unnumbered in Top menu
+</menucomment>
+</menuentry><menuentry>
+<menunode>Last node no description</menunode>
+<menutitle>Last node no description</menutitle>
+<menucomment>
+</menucomment>
+</menuentry>
+<para>description here
+</para>
+</menu>
+
+</top>
+<node>
+<nodename>First node</nodename>
+<nodeprev>Top</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>first node chapter</title>
+
+<para>first node chapter text
+</para><menu>
+<menuentry>
+<menunode>unnumbered</menunode>
+<menutitle>unnumbered</menutitle>
+<menucomment> un
+</menucomment>
+</menuentry><menuentry>
+<menunode>unnumbered2</menunode>
+<menutitle>unnumbered2</menutitle>
+<menucomment> un2
+</menucomment>
+</menuentry><menuentry>
+<menunode>numbered</menunode>
+<menutitle>numbered</menutitle>
+<menucomment> nu
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>unnumbered</nodename>
+<nodenext>unnumbered2</nodenext>
+<nodeup>First node</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumbered section</title>
+
+<menu>
+<menuentry>
+<menunode>unnumbered sub</menunode>
+<menutitle>unnumbered sub</menutitle>
+<menucomment> un
+</menucomment>
+</menuentry><menuentry>
+<menunode>numbered sub</menunode>
+<menutitle>numbered sub</menutitle>
+<menucomment> nu
+</menucomment>
+</menuentry><menuentry>
+<menunode>unnumbered sub2</menunode>
+<menutitle>unnumbered sub2</menutitle>
+<menucomment> un2
+</menucomment>
+</menuentry><menuentry>
+<menunode>numbered sub2</menunode>
+<menutitle>numbered sub2</menutitle>
+<menucomment> nu2
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>unnumbered sub</nodename>
+<nodenext>numbered sub</nodenext>
+<nodeup>unnumbered</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub</nodename>
+<nodenext>unnumbered sub2</nodenext>
+<nodeprev>unnumbered sub</nodeprev>
+<nodeup>unnumbered</nodeup>
+</node>
+<subsection>
+<title>numbered subsection</title>
+
+</subsection>
+<node>
+<nodename>unnumbered sub2</nodename>
+<nodenext>numbered sub2</nodenext>
+<nodeprev>numbered sub</nodeprev>
+<nodeup>unnumbered</nodeup>
+</node>
+<unnumberedsubsec>
+<title>unnumbered subsection2</title>
+
+</unnumberedsubsec>
+<node>
+<nodename>numbered sub2</nodename>
+<nodeprev>unnumbered sub2</nodeprev>
+<nodeup>unnumbered</nodeup>
+</node>
+<subsection>
+<title>numbered subsection2</title>
+
+</subsection>
+</unnumberedsec>
+<node>
+<nodename>unnumbered2</nodename>
+<nodenext>numbered</nodenext>
+<nodeprev>unnumbered</nodeprev>
+<nodeup>First node</nodeup>
+</node>
+<unnumberedsec>
+<title>unnumbered section2</title>
+
+<menu>
+<menuentry>
+<menunode>numbered sub3</menunode>
+<menutitle>numbered sub3</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>numbered sub3</nodename>
+<nodeup>unnumbered2</nodeup>
+</node>
+<subsection>
+<title>numbered subsection3</title>
+
+
+</subsection>
+</unnumberedsec>
+<node>
+<nodename>numbered</nodename>
+<nodeprev>unnumbered2</nodeprev>
+<nodeup>First node</nodeup>
+</node>
+<section>
+<title>numbered section</title>
+
+</section>
+</chapter>
+<node>
+<nodename>between node</nodename>
+<nodeup>Top</nodeup>
+</node>
+
+<para>between node, node without sectioning node
+</para>
+<node>
+<nodename>Second node</nodename>
+<nodenext>Third node unnumbered</nodenext>
+<nodeup>Top</nodeup>
+</node>
+
+<para>Second node text
+</para>
+<chapter>
+<title>second node chapter</title>
+
+<para>second node chapter text.
+</para>
+</chapter>
+<node>
+<nodename>Third node unnumbered</nodename>
+<nodeprev>Second node</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<unnumbered>
+<title>unnumbered chapter</title>
+
+<para>unnumbered chapter text.
+</para>
+
+</unnumbered>
+<node>
+<nodename>Last node no description</nodename>
+<nodeprev>Third node unnumbered</nodeprev>
+<nodeup>Top</nodeup>
+</node>
+
+<contents></contents>
+</texinfo>

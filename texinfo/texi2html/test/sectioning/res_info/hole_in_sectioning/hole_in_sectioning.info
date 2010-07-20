@@ -1,0 +1,27 @@
+This is hole_in_sectioning.info, produced by makeinfo version 4.13 from
+hole_in_sectioning.texi.
+
+
+File: hole_in_sectioning.info,  Node: Top,  Up: (dir)
+
+Top
+***
+
+1 Chapter
+*********
+
+1.1 section
+===========
+
+1.1.0.1 subsubsection with no subsection above
+..............................................
+
+1.1.1 the subsection
+--------------------
+
+
+
+Tag Table:
+Node: Top98
+
+End Tag Table

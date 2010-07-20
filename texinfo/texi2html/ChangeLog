@@ -807,7 +807,7 @@
 	* texi2html.pl, formats/xml.init: remove spaces in front of nodes
 	and titles in menus.
 	* formats/xml.init: node elements are stand-alone.
-	Sectionning elements follow the tree organization of the 
+	Sectioning elements follow the tree organization of the 
 	document.
 	* test/*: use newer latex2html in debian (2008 version).
 

@@ -76,7 +76,7 @@ This is a ref to a node (@pxref{@'U, ,@'U}).
 @node @"A,,,Umlaut
 @section @"A
 
-Now a ref to a node without sectionning command, 
+Now a ref to a node without sectioning command, 
 no text (@pxref{no section, , }).
 With text (@pxref{no section, ,but a text }).
 

@@ -63,7 +63,7 @@ nodetest_latin1.texi(,63)
 nodetest_latin1.texi(,64) @node Ä,,,Umlaut
 nodetest_latin1.texi(,65) @section Ä
 nodetest_latin1.texi(,66) 
-nodetest_latin1.texi(,67) Now a ref to a node without sectionning command, 
+nodetest_latin1.texi(,67) Now a ref to a node without sectioning command, 
 nodetest_latin1.texi(,68) no text (@pxref{no section, , }).
 nodetest_latin1.texi(,69) With text (@pxref{no section, ,but a text }).
 nodetest_latin1.texi(,70) 

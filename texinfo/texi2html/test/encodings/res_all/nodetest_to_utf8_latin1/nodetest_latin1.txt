@@ -53,7 +53,7 @@ This is a ref to a node (see à).
 1.7 Ä
 =====
 
-Now a ref to a node without sectionning command, 
+Now a ref to a node without sectioning command, 
 no text (see no section).
 With text (see but a text).
 

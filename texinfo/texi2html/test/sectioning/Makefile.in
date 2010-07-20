@@ -648,7 +648,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
+EXTRA_DIST = sectioning.texi novalidate.texi first_section_no_node.texi \
  nodes_before_top.texi nodes_after_top.texi section_nodes_before_top.texi \
  nodes_after_top_before_section.texi nodes_test.texi no_section.texi \
  no_node.texi no_section_no_top.texi one_section.texi one_node.texi \
@@ -668,7 +668,7 @@ EXTRA_DIST = sectionning.texi novalidate.texi first_section_no_node.texi \
  nodes_after_top_before_chapter.texi \
  chapter_before_part.texi part_before_section.texi \
  part_before_chapter.texi section_before_part.texi \
- hole_in_sectionning.texi section_before_top_no_node.texi \
+ hole_in_sectioning.texi section_before_top_no_node.texi \
  section_before_top.texi \
  part_chapter_after_top.texi part_node_chapter_after_top.texi \
  node_part_chapter_after_top.texi node_part_chapter_after_chapter.texi \
