@@ -9,6 +9,9 @@ Top
 * >= <= ->::
 * a o -!- # -| ? (R)::
 * => o a b a sunny day aa::
+* AA ae oe AE OE /o /O ss /l /L D d TH th::
+* a" e~ i^ a^ a` e' c, e= e* e'' e;::
+* e. e( e_ .e e< j ee[::
 * `` '' ` ' ,, ,::
 * << >> << >> < >::
 * `` '' --- --::
@@ -44,40 +47,49 @@ Top
 7 => o a b a sunny day aa
 *************************
 
-8 `` '' ` ' ,, ,
-****************
+8 AA ae oe AE OE /o /O ss /l /L D d TH th
+*****************************************
 
-9 << >> << >> < >
+9 a" e~ i^ a^ a` e' c, e= e* e'' e;
+***********************************
+
+10 e. e( e_ .e e< j ee[
+***********************
+
+11 `` '' ` ' ,, ,
 *****************
 
-10 " " -- -
+12 << >> << >> < >
+******************
+
+13 " " -- -
 ***********
 
-11 AAA (fff) AAA BBB
+14 AAA (fff) AAA BBB
 ********************
 
-12 CCC (rrr) CCC DDD
+15 CCC (rrr) CCC DDD
 ********************
 
-13 the someone <mailto:someone@somewher> <mailto:no_explain@there>
+16 the someone <mailto:someone@somewher> <mailto:no_explain@there>
 ******************************************************************
 
-14 [ f--ile1.txt ] [ f--ile.e--xt: alt ]
+17 [ f--ile1.txt ] [ f--ile.e--xt: alt ]
 ****************************************
 
-15  @ {} . 
+18  @ {} . 
 ***********
 
-16 cite asis in @w b in r SC str t var dfn i
+19 cite asis in @w b in r SC str t var dfn i
 ********************************************
 
-17 env code `option' `samp' command `file' C-x <ESC> 8.27in
+20 env code `option' `samp' command `file' C-x <ESC> 8.27in
 ***********************************************************
 
-18 sansserif slanted
+21 sansserif slanted
 ********************
 
-19 <indicateurl>
+22 <indicateurl>
 ****************
 
  { }
@@ -91,6 +103,9 @@ LaTeX TeX * , (C) ... ...
 
 a o -!- # -| ? (R)
 => o a b a sunny day aa
+AA ae oe AE OE /o /O ss /l /L D d TH th
+a" e~ i^ a^ a` e' c, e= e* e'' e;
+e. e( e_ .e e< j ee[
 `` '' ` ' ,, ,
 << >> << >> < >
 `` '' --- --

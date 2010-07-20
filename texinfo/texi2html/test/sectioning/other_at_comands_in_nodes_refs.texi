@@ -13,6 +13,9 @@
 * @geq{} @leq{} @arrow{}::
 * @ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}::
 * @result{} @textdegree{} a@tie{}b @today{} @aa{}::
+* @AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{}::
+* @"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}::
+* @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}::
 * @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}::
 * @guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}::
 * `` '' --- --::
@@ -51,6 +54,15 @@
 
 @node @result{} @textdegree{} a@tie{}b @today{} @aa{}
 @chapter @result{} @textdegree{} a@tie{}b @today{} @aa{}
+
+@node @AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{} 
+@chapter @AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{} 
+
+@node @"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}
+@chapter  @"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}
+
+@node @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}
+@chapter @dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}
 
 @node @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
 @chapter @quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}
@@ -114,6 +126,9 @@
 
 @ref{@ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}}
 @ref{@result{} @textdegree{} a@tie{}b @today{} @aa{}}
+@ref{@AA{} @ae{} @oe{} @AE{} @OE{} @o{} @O{} @ss{} @l{} @L{} @DH{} @dh{} @TH{} @th{}}
+@ref{@"{a} @~{e} @^{@dotless{i}} @^{a} @`{a} @'e @,{c} @={e} @ringaccent{e} @H{e} @ogonek{e}}
+@ref{@dotaccent{e} @u{e} @ubaraccent{e} @udotaccent{e} @v{e} @dotless{j} @tieaccent{ee}}
 @ref{@quotedblleft{} @quotedblright{} @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{}}
 @ref{@guillemetleft{} @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{} @guilsinglright{}}
 @ref{`` '' --- --}
