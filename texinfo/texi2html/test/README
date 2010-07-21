@@ -1,6 +1,14 @@
+texinfo/texi2html/tests/README
+
+  Copyright (C) 2010 Free Software Foundation, Inc.
+
+  Copying and distribution of this file, with or without modification,
+  are permitted in any medium without royalty provided the copyright
+  notice and this notice are preserved.
+
+
 Prerequisites
 =============
-
 To run this testsuite, sed (with -i), awk, diff, mktemp are used. To 
 find the same results, tex4ht, latex2HTML, html2wiki, perl with unicode 
 support and the Text::Unidecode perl module have to be installed (with their 
@@ -12,7 +20,6 @@ corresponding tests are skipped.
 
 Running the testsuite
 =====================
-
 This testsuite can be run 
 
 * using the makefile rules: check for the base tests, long-check for 
@@ -29,6 +36,7 @@ $ ../run_test_all.sh
 * by going in one directory and running one specific test, like
 $ cd formatting
 $ ../run_test_all.sh quotes
+(see below for info on how test names are specified).
 
 The test results are in the out directories; the reference results are
 in res directories; there are 3 out and res directories, out/ and res/
@@ -45,8 +53,8 @@ is printed. If there are no reference to compare with,
 is printed.
 
 If a whole directory check run using './tests.sh all' had no failure, 
-the directory name is printed followed by a 0, it is followed 
-by a 1 if there was some failure.
+the directory name is printed followed by a 0; it is followed 
+by a 1 if there was a failure.
 
 The test results are in a directory below the out directories. This 
 directory name can be considered as the test name. Let's call it a_test
@@ -61,21 +69,20 @@ the copy-tests make target.
 
 Tests specification
 ===================
+Test runs are driven by the content of the tests.txt file. It is a line
+oriented file. A # starts a comment. Each line describes a test.  The
+first word on the line is the test name which corresponds also with the
+resulting directory (what we called a_test above).  It is followed by
+the source manual name. The source manual name has to have the .texi
+extension. Optionnally additional arguments can be given on the
+remaining of the line.
 
-The tests ran are driven by the content of the tests.txt file. It is a 
-line oriented file. A # starts a comment. Each line describes a test. 
-The first word on the line is the test name which corresponds also with 
-the resulting directory (we called it a_test in the previous examples). 
-It is followed by the source manual name. The source manual name has to 
-have the .texi extension. Optionnally additional arguments can be given 
-on the remaining of the line.
-
-So, for example
+So, for example, the line
 
 a_test manual.texi
 
 specifies that for the a_test test, the file manual.texi is processed and
-results are put are put in the a_test directory.
+results are put are put in the a_test directory.  The line:
 
 a_test_split_chapter manual.texi --split chapter
 
@@ -83,9 +90,9 @@ specifies that the results of the processing of manual.texi with additional
 command line arguments --split chapter will be in the a_test_split_chapter
 directory.
 
-Using 'texi' as the test name is special. In that case the directory name 
+Using "texi" as the test name is special. In that case the directory name 
 is constructed by appending _ followed by the manual name without the .texi
-extension to 'texi'. And the result is not processed normally, but instead
+extension to "texi". And the result is not processed normally, but instead
 macros are expanded and regions that are not processed removed and the 
 result is put in a file with the same name than the manual. Similar result 
 files but with include file, macro and line number informations are put in 
@@ -94,24 +101,26 @@ precisely, the .passtexi file corresponds with the texi after the first
 pass and the .passfirst file corresponds with the result after the second 
 pass.
 
-So, for example, if 
+So, for example, the tests.txt line 
 
 texi manual.texi
 
-appears in the tests.txt file, in the directory out/texi_manual the file 
-manual.texi will have macros expanded and ignored regions removed, and the
-files manual.passtexi and manual.passfirst will contain the additionaly
-include file and line number informations corresponding with the texinfo
-at the end of the first and second pass.
+results in the following: in the directory out/texi_manual the file
+manual.texi will have macros expanded and ignored regions removed, and
+the files manual.passtexi and manual.passfirst will contain the
+additional include file and line number informations corresponding with
+the texinfo at the end of the first and second pass.
 
 
-Misc
-====
-
+LaTeX2html
+==========
 For the tests that use latex2html, to avoid the test failing if there is 
 a dot in the cwd, mktemp is used to create a temporary directory, hopefully
 in /tmp, and the directory is passed through on the command line.
 
+
+Common .texi
+============
 A common .texi file should be in the top-level directory (there is such an
 example with coverage_macro.texi). Currently there is no support for common
 init file, but it could be added easily.
