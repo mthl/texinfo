@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
+@c $Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2908,11 +2908,14 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @cindex Texinfo requires @code{@@setfilename}
 
 In order to serve as the primary input file for either @code{makeinfo}
-or @TeX{}, a Texinfo file must contain a line that looks like this:
+or @TeX{}, a Texinfo file should contain a line that looks like this:
 
 @example
 @@setfilename @var{info-file-name}
 @end example
+
+It is required for @TeX{}, and very strongly recommended for
+@code{makeinfo}.
 
 Write the @code{@@setfilename} command at the beginning of a line and
 follow it on the same line by the Info file name.  Do not write anything
@@ -2954,19 +2957,19 @@ When producing HTML output, @code{makeinfo} will replace any extension
 with @samp{html}, or add @samp{.html} if the given name has no
 extension.
 
-If there is no @code{@@setfilename}, the output file to be generated
-is based on the input file name. First any extension 
-in @code{.texi}, @code{.tex}, @code{.txi} or @code{.texinfo} is removed 
-from the input file and then the output format specific extension is 
-added (@code{.html} when generating HTML, @code{.info} when generating
-Info, @enddots{}).
-
 @pindex texinfo.cnf
 The @code{@@setfilename} line produces no output when you typeset a
 manual with @TeX{}, but it is nevertheless essential: it opens the
 index, cross-reference, and other auxiliary files used by Texinfo, and
 also reads @file{texinfo.cnf} if that file is present on your system
 (@pxref{Preparing for TeX,, Preparing for @TeX{}}).
+
+If there is no @code{@@setfilename} line, @code{makeinfo} (but not
+@TeX{}) uses the input file name to determine the output name: first,
+any of the extensions @code{.texi}, @code{.tex}, @code{.txi} or
+@code{.texinfo} is removed from the input file name; then, the
+output format specific extension is added---@code{.html} when
+generating HTML, @code{.info} when generating Info, @enddots{}
 
 
 @node settitle
@@ -5186,9 +5189,6 @@ But the corresponding node name lacks the commas and the @@'s:
 @smallexample
 unnumberedsec appendixsec heading
 @end smallexample
-
-If you really want a comma in a node name, you can use @code{@@comma@{@}}.
-@xref{Inserting a Comma}.
 
 @cindex Case in node name
 @item
@@ -16005,30 +16005,40 @@ expanded through all the document, especially @code{@@value}. This is now
 done by default, though @@-commands in node names are still not officially
 part of the Texinfo language.
 
-@item --conf-dir=@var{dir}
-@opindex --conf-dir=@var{dir}
-Append @var{dir} to the directory search list for finding customization
-files that may be loaded with @option{--init-file}. By default the following 
-directories are searched, in that order (with @var{program_name} the 
-name of the program invoked on the command line):
+@item --conf-dir=@var{path}
+@opindex --conf-dir=@var{path}
+Append @var{path} to the directory search list for finding
+customization files that may be loaded with @option{--init-file} (see
+below).  By default the following directories are searched, in this
+order (where @var{prog} is the name of the program invoked on the
+command line):
 
 @enumerate
 @item The current directory @file{.};
-@item @file{$HOME/.program_name} where @env{$HOME} is the user home directory;
-@item @file{sysconfdir/program_name} where @file{sysconfdir} is the directory
-for local configuration, determined at build time;
-@item @file{datadir/program_name} where @file{datadir} is the directory
-for data, determined at build time;
+
+@item @file{$HOME/.@var{prog}}, where @env{$HOME} is the user home directory;
+
+@item @file{@var{sysconfdir}/@var{prog}}, where @var{sysconfdir} is
+the system directory for host-specific configuration, determined at
+build time (@code{/usr/local/etc} by default);
+
+@item @file{@var{datadir}/@var{prog}} where @var{datadir} is the
+system directory for data files, determined at build time
+(@code{/usr/local/share} by default);
+
 @item the directory @file{.texinfo/init} in the current directory;
+
 @item @file{$HOME/.texinfo/init} where @env{$HOME} is the user home directory;
-@item @file{sysconfdir/texinfo/init} with  @file{sysconfdir} as above;
-@item @file{datadir/texinfo/init} with  @file{datadir} as above.
+
+@item @file{@var{sysconfdir}/texinfo/init} with @var{sysconfdir} as above;
+
+@item @file{@var{datadir}/texinfo/init} with @var{datadir} as above.
+
 @end enumerate
 
-Note that
-@var{dir} can actually be a list of several directories separated by the
-usual path separator character (@samp{:} on Unix, @samp{;} on
-MS-DOS/MS-Windows).
+@var{path} can be a single directory, or a list of several directories
+separated by the usual path separator character (@samp{:} on GNU and
+Unix systems, @samp{;} on MS-DOS/MS-Windows).
 
 @item --css-include=@var{file}
 @opindex --css-include
@@ -20331,7 +20341,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
+$Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -20410,7 +20420,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.260 2010-07-19 23:48:17 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

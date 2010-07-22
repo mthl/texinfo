@@ -1,3 +1,7 @@
+2010-07-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Invoking texi2any) <--conf-dir>: reformat.
+
 2010-07-19  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/test/sectionning: rename to sectioning.
