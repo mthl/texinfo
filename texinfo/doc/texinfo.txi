@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
+@c $Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -163,6 +163,7 @@ the menu lists all the lower level nodes in the document.
 * Generic converter texi2any/makeinfo:: The all purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
+* texi2any output customization:: Fine tuning with initialization files.
 
 * Command List::                  All the Texinfo @@-commands.
 * Tips::                          Hints on how to write a Texinfo document.
@@ -649,6 +650,21 @@ HTML Cross-references
 * Mismatch:          HTML Xref Mismatch.
 * Configuration:     HTML Xref Configuration.      htmlxref.cnf.
 * Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
+
+texi2any output customization
+
+* Loading initialization files::      Initialization files search paths.
+* Initialization files basics::       General informations on initialization 
+                                      files.
+* Elements::                          The main division of output document.
+* Function prototypes::               Conventions used in that manual for 
+                                      function reference prototypes display.
+* Initializing and finalizing::       Preparing and finalizing the output.
+* Special elements::                  Customizing special elements text and 
+                                      layout.
+* File and target names::
+* External index files::
+* Customizing CSS::
 
 @@-Command List
 
@@ -15910,11 +15926,11 @@ very basic. You should produce plain text instead, with
 
 Beside those default formats, with @command{texi2any} some important
 aspects of the result may be specified via command line options,
-and configuration files provide an even finer degree of control
+and initialization files provide an even finer degree of control
 over the final output, allowing most every aspect of the final output not
-specified in the Texinfo input file to be specified.  Configuration files are
+specified in the Texinfo input file to be specified.  Initialization files are
 written in @command{perl}, like the main program, and anything which may be
-specified on the command line may also be specified within a configuration
+specified on the command line may also be specified within a initialization
 file.
 
 @menu
@@ -16009,32 +16025,8 @@ part of the Texinfo language.
 @opindex --conf-dir=@var{path}
 Append @var{path} to the directory search list for finding
 customization files that may be loaded with @option{--init-file} (see
-below).  By default the following directories are searched, in this
-order (where @var{prog} is the name of the program invoked on the
-command line):
-
-@enumerate
-@item The current directory @file{.};
-
-@item @file{$HOME/.@var{prog}}, where @env{$HOME} is the user home directory;
-
-@item @file{@var{sysconfdir}/@var{prog}}, where @var{sysconfdir} is
-the system directory for host-specific configuration, determined at
-build time (@code{/usr/local/etc} by default);
-
-@item @file{@var{datadir}/@var{prog}} where @var{datadir} is the
-system directory for data files, determined at build time
-(@code{/usr/local/share} by default);
-
-@item the directory @file{.texinfo/init} in the current directory;
-
-@item @file{$HOME/.texinfo/init} where @env{$HOME} is the user home directory;
-
-@item @file{@var{sysconfdir}/texinfo/init} with @var{sysconfdir} as above;
-
-@item @file{@var{datadir}/texinfo/init} with @var{datadir} as above.
-
-@end enumerate
+below).  
+@xref{Loading initialization files}.
 
 @var{path} can be a single directory, or a list of several directories
 separated by the usual path separator character (@samp{:} on GNU and
@@ -16172,9 +16164,10 @@ format.  For instance, if @option{--iftex} is specified, then
 @opindex --init-file=@var{file}
 Load @var{file} code to modify the behaviour and output of the generated
 manual. @option{--conf-dir} may be used to add a directory to the list
-of directories where customization files are searched for. It is customary
-to use the @code{.init} extension with customization files, but it is 
+of directories where initialization files are searched for. It is customary
+to use the @code{.init} extension with initialization files, but it is 
 not enforced by anything, and the @var{file} file name is taken literally.
+@xref{Loading initialization files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
@@ -16341,7 +16334,8 @@ output by default---can be overridden with @option{-o}.
 Set the value of the configuration variable @var{var} to be @var{value}.
 Many aspects of the behaviour and output may be modified by modifying 
 configuration variables. This allows to go beyond what can be set in
-the document by @@-commands and with command line switches.
+the document by @@-commands and with command line switches. 
+@xref{makeinfo Configuration Variables}.
 
 @item --split=@var{split}
 @itemx --no-split
@@ -16349,6 +16343,7 @@ the document by @@-commands and with command line switches.
 @opindex --no-split
 @cindex Splitting of output files
 @cindex Output file splitting
+@anchor{Splitting output}
 
 When generating Info, @option{--no-split} suppress the splitting stage 
 of @code{makeinfo}.  By default, large
@@ -16470,9 +16465,8 @@ The Configuration variables are either
 @itemize @bullet
 @item associated with @@-commands in the document,
 for example @code{@@documentlanguage},
-@item associated with 
-configuration variables that
-may also be set on the command-line, for example @code{SPLIT} which is
+@item associated with command-line options, for example the configuration
+variable @code{SPLIT} is
 associated with the @option{--split} command-line switch,
 @item other 
 configuration variables, for example @code{NO_CSS} which may be set to 0
@@ -16533,7 +16527,7 @@ appropriately, if necessary.  It is only used if split and
 @code{INLINE_CONTENTS} is not set.  Default is @file{<document name>_toc.html}.
 @item SHOW_MENU
 If set, the Texinfo menus are shown.  It is set in all the formats, for 
-exmaple it is true for HTML (except if @option{--no-headers} is used),
+example it is set for HTML (except if @option{--no-headers} is used),
 Info and XML, but not for Docbook.
 @item USE_NODES
 Use nodes preferentially to decide where elements are separated.
@@ -16692,7 +16686,7 @@ Use @code{rel} in cross-references.
 For HTML.
 generate @code{<link>} elements in HTML @code{<head>}.
 @item OVERVIEW_LINK_TO_TOC
-If set the cross-refeerences in Overview link to the corresponding 
+If set the cross-references in Overview link to the corresponding 
 Table of Contents entry.
 @item AVOID_MENU_REDUNDANCY
 if set and menu entry equals menu description, then do not print 
@@ -16703,11 +16697,11 @@ If set, use node names in menu entries, otherwise prefer section names.
 If set, use node names in index entries, otherwise prefer section names.
 @item USE_SETFILENAME
 If set, use @code{@@setfilename} to set document name, otherwise base the 
-document name only on th einput file name. @xref{setfilename}.
+document name only on the input file name.  @xref{setfilename}.
 @item USE_SETFILENAME_EXTENSION
 Default for Info, not for other output.
 If set use what @code{@@setfilename} gives for the output file name, 
-including th eextension. You should not need to set this variable.
+including the extension.  You should not need to set this variable.
 @item COMPLEX_FORMAT_IN_TABLE
 For HTML.
 If set, use table for indentation of complex formats.
@@ -16728,7 +16722,7 @@ the image.
 If set, use the node associated with a section for section target in
 cross-references.
 @item NEW_CROSSREF_STYLE
-If unset use an old cross-reference schenm. This is a backward compatibility
+If unset use an old cross-reference schema.  This is a backward compatibility
 setting, you should certainly never unset this variable.
 @item PROGRAM_NAME_IN_FOOTER
 For HTML.
@@ -18309,9 +18303,6 @@ Once again, this is something the software which generated the
 software generating the cross-reference in the present manual can
 control.
 
-Ultimately, we hope to allow for an external configuration file to
-control which manuals are available from where, and how.
-
 
 @node HTML Xref Configuration
 @subsection HTML Cross-reference Configuration: @file{htmlxref.cnf}
@@ -18468,6 +18459,1457 @@ Thus, external links to the old node will not simply break.
 Lines consisting only of whitespace are ignored.  Comments are
 indicated with a @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
+
+@node texi2any output customization
+@chapter Controlling the @command{texi2any} output
+
+
+
+@menu
+* Loading initialization files::      Initialization files search paths.
+* Initialization files basics::       General informations on initialization 
+                                      files.
+* Elements::                          The main division of output document.
+* Function prototypes::               Conventions used in that manual for 
+                                      function reference prototypes display.
+* Initializing and finalizing::       Preparing and finalizing the output.
+* Navigation panel customization::
+* Page layout customization::
+* Special elements::                  Customizing special elements text and 
+                                      layout.
+* File and target names::
+* External index files::
+* Customizing CSS::
+@end menu
+
+@node Loading initialization files
+@section Loading initialization files and search paths
+
+It is possible to load initialization files to modify almost every
+aspect of output formatting.  The program loads initialization files
+named @file{Config} each time it is run.  Those files are looked for
+in the following directories (where @var{prog} is the name of the 
+program invoked on the command line, normally @code{makeinfo} 
+or @code{texi2any}):
+
+@table @file
+@item ./
+(the current directory)
+
+@item ~/.@var{prog}/
+(where @code{~} is the current user's home directory)
+
+@item @var{sysconfdir}/@var{prog}/
+(where @var{sysconfdir} is the system configuration directory
+specified at compile-time, e.g., @file{/usr/local/etc})
+
+@item @var{datadir}/@var{prog}/
+(likewise specified at compile time, e.g., @file{/usr/local/share})
+@end table
+
+All the files found are used, in that order. 
+
+The most common way to load initialization files is to use the 
+@option{--init-file} option to specify the file to be loaded.  The 
+initialization files are looked for
+in for in the same directories than @file{Config} files, and also
+in additional directories (the same that are used 
+for @ref{HTML Xref Configuration} in the @file{init/} subdirectory).  
+By default the following directories are searched, in this
+order (where @var{prog} is the name of the program invoked on the
+command line) the first file found is used:
+
+@enumerate
+@item The current directory @file{.};
+
+@item @file{$HOME/.@var{prog}}, where @env{$HOME} is the user home directory;
+
+@item @file{@var{sysconfdir}/@var{prog}}, where @var{sysconfdir} is
+the system directory for host-specific configuration, determined at
+build time (@code{/usr/local/etc} by default);
+
+@item @file{@var{datadir}/@var{prog}} where @var{datadir} is the
+system directory for data files, determined at build time
+(@code{/usr/local/share} by default);
+
+@item the directory @file{.texinfo/init} in the current directory;
+
+@item @file{$HOME/.texinfo/init} where @env{$HOME} is the user home directory;
+
+@item @file{@var{sysconfdir}/texinfo/init} with @var{sysconfdir} as above;
+
+@item @file{@var{datadir}/texinfo/init} with @var{datadir} as above.
+
+@end enumerate
+
+Additional directories may be appended with @option{--conf-dir}.
+
+
+@node Initialization files basics
+@section General informations on initialization files
+
+Initialization files are @command{perl} files, read as explained
+in @ref{Loading initialization files}. 
+A good source of inspiration could be the initialization files provided
+in the Texinfo distribution.  They all have @samp{.init} extension.
+The @file{texi2html.init} file is used to set all the defaults, and,
+although quite large is an interesting source of examples.
+Simpler initialization files are installed in the default case, they may
+also be interesting starting points.
+
+In initialization file three kind of variables appear.
+@table @asis
+@item configuration variables
+Those variables, described in @ref{makeinfo Configuration Variables}
+are set and accessed through specific functions in initialization files.
+@item scalar, arrays and hashes
+Normal perl variable. The order of loading of initialization
+files and of command-line options processing may be important when 
+they are modified,
+later changes modifying former changes.
+@item references on functions
+This allows a dynamical redefinition of functions used to produce
+the output.
+@end table
+
+Initialization file are loaded from the main program by
+the mean of a @code{require}, while in the @code{Texi2HTML::Config}
+namespace. This means that the namespace of the main program and
+the namespace of initialization files are distinct, which ensures
+that no name clash should happen.  The scalars,
+arrays and hashes are declared with
+@code{use vars}, such that it should be possible to use the
+@code{use strict} pragma in the initialization file code.
+
+To avoid messing with the variables in the @code{main} namespace
+all the global variables which could be of use in the init files
+are in the @code{Texi2HTML} namespace.  Notice that the functions
+of the main program are still in the @code{main} namespace.
+
+Since the program can proceed more than one file on the
+command line, you should make sure that you initialize the variables
+that are used during a manual formatting.  It is possible to call
+functions at different stages for that 
+use (@pxref{Calling functions at different stages}).
+
+@menu
+* Setting and getting configuration variable value::
+* Global informations::       Accessing global informations, like date, 
+                              title@dots{}
+* Getting flag values::
+* Encodings::                 Setting the encodings.
+* Redefining functions::      Function redefinition is achieved with 
+                              redefinition of references on functions.
+* Calling functions at different stages::
+@end menu
+
+
+@node Setting and getting configuration variable value
+@subsection Setting and getting configuration variable value
+
+To set the value of a configuration variable from an initialization file,
+you should use the function:
+@defun set_from_init_file ($variable_name, $variable_value)
+@var{$variable_name} is a string containing the name of the variable 
+you want to set, and @var{$variable_value} is the value you want to set.
+@var{$variable_value} may be @samp{undef}.  For example
+@example
+set_from_init_file('documentlanguage', 'fr');
+@end example
+should override the @code{@@documentlanguage} from the document.
+It will be overriden by @option{--document-language} on the 
+command-line.
+
+Another example, 
+@example
+set_from_init_file('SPLIT', 'chapter');
+@end example
+should override the default splitting of the document.  It will be
+overriden by the @option{--split} option on the command-line.
+
+And, as a last example, 
+@example
+set_from_init_file('NO_CSS', 1);
+@end example
+wil override the default value for @code{NO_CSS}.  It will be overriden by
+@code{--set-init-variable NO_CSS=1} on the command-line.
+@end defun
+
+To get the value of a variable, the function is @code{get_conf},
+in the @code{Texi2HTML::Config} namespace:
+@defun get_conf ($variable_name)
+@var{$variable_name} is  the name of the variable you want to know the 
+value.
+@end defun
+
+For example:
+
+@example
+if (get_conf('footnotestyle') eq 'separate') @{ .... @}
+@end example
+
+The list of configuration variables associated with @@-commands is
+in @ref{Configuration variables for @@-commands}, the list and mapping
+of configuration variables associated with command line options is at 
+@ref{Configuration variables and options}.
+
+@node Global informations
+@subsection Accessing global informations
+
+The @code{%Texi2HTML::THISDOC} hash holds some global informations:
+
+@ignore
+FIXME
+'split_level' 'variable_levels' 'variables' 'toc_file' stoc_file
+%index_letters_array
+%index_entries_array
+%index_entries_region_array
+%index_entries
+%indices_numbers
+%indices
+input_file_name
+input_file_number
+input_directory
+css_import_lines
+css_rule_lines
+do_about
+titlefont_texi
+'file_base_name' 'FH' 'state' 'format_from_command_line' 'input_directory' 'destination_directory' 'file_base_name' %filename 'dircategory_texi' 'dircategory' 'settitle_texi' 'shorttitlepage_texi' 'title_texi' settitle_line_nr shorttitlepage_line_nr title_line_nr @authors_texi @authors_line_nr @subtitles_texi @subtitles_line_nr %merged_index @defindex @defcodeindex
+command_stack top_texi fulltitle_texi simpletitle_texi
+program
+program_and_version
+program_homepage
+copying_comment
+inline_contents
+line_nr
+input_file_name
+%htmlxref
+%hyphenation
+
+author subtitle -> _texi
+
+'shorttitlepage', 'settitle', 'author',
+           'titlefont', 'subtitle', 'title', 'fulltitle', 'simpletitle'
+-> $thing, $thing _no_texi, $thing _simple_format
+@end ignore
+
+@table @code
+@item fulltitle
+title set by @code{@@settitle}.  If there is no @code{@@settitle} other 
+possibilities are tried (@code{@@title}, @code{@@shorttitlepage}@dots{}).
+@item fulltitle_no_texi
+fulltitle without texi formatting
+@item fulltitle_texi
+fulltitle with texi commands
+@item title
+title set by @code{@@title}.
+@item title_no_texi
+title without texi formatting
+@item title_texi
+title with texi commands
+@item author
+Authors list set by @code{@@author}.
+@item authors
+A reference on an array containing each author set by @code{@@author}.
+@item copying_comment
+Text appearing in @code{@@copying} with all the texinfo commands removed,
+put in comments.
+@item program
+The name of the command generating the output.
+@item program_and_version
+The name and version of the command generating the output.
+@item program_homepage
+Homepage of the command generating the output..
+@item file_base_name
+base name of the texinfo manual file.
+@item filename
+This is a reference on a hash that holds the filenames for special elements.
+These files may not be used in certain cases, for example the @code{toc}
+element file name may not be relevant if table of contents is not output 
+separately.
+The keys are
+@table @code
+@item doc
+the document file if not split, if split should be the top element file. 
+@item top
+Top element file name.
+@item toc 
+Table of contents element file name.
+@item stoc
+Overview (also called short table of contents) element file name.
+@item about
+About element file name.
+@item foot
+Footnotes element file name.
+@item frame
+Main frame file.
+@item toc_frame
+Table of contents frame file name.
+@end table
+@item input_file_name
+Name of the texinfo manual file given on the command line.
+@item destination_directory
+Destination directory for the resulting files.
+@item extension
+Extension for the output files.
+@item toc_file
+The file name of the table of contents, should always be valid, even 
+when table of contents are output directly in the document.
+@item inline_contents
+A reference on a hash containing two key, one for each type of table
+of contents:
+@table @code
+@item contents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the table of contents, including a heading and a reference.
+@item shortcontents
+The associated value is a 
+reference on an array containg the line resulting from formatting
+the short table of contents, including a heading and a reference.
+@end table
+@item css_import_lines
+reference on an array containing the @code{@@import} lines of 
+@acronym{CSS} files. @xref{HTML CSS}.
+@item css_lines
+reference on an array containing the normal lines of 
+@acronym{CSS} files. @xref{HTML CSS}.
+@end table
+
+
+@node Getting flag values
+@subsection Getting the values of flags set by @code{@@set}
+
+Flags defined by @code{@@set} may be accessed through the 
+@code{%main::value} hash.  The key is the flag name, the value is the
+flag value. 
+
+
+@node Encodings
+@subsection Setting the encodings
+
+There are four relevant encodings variables, they are autodetected
+if not set:
+@table @code
+@item documentencoding
+This configuration variable may be set, if not defined, the encoding 
+appearing in @code{@@documentencoding} will be used.
+@item IN_ENCODING
+The texinfo files encoding, may also be set.
+Otherwise, when @code{documentencoding}
+is set, @code{IN_ENCODING} is also set
+if the encoding is supported by perl.
+@item OUT_ENCODING
+The out files encoding.  If not set, the value of
+@code{ENCODING_NAME} 
+or 
+@code{IN_ENCODING}
+is used if one of these variables is set.
+@item ENCODING_NAME
+The encoding advertized in out files.
+If unset the value of this variable is based on the
+other ENCODING values, and if they are all undefined, the variable
+@code{DEFAULT_ENCODING} is used. 
+@end table
+
+The values for the encoding related variables are set in the default 
+@code{init_out} function reference (@pxref{Output initialization}).
+
+In general the @code{documentencoding} and @code{IN_ENCODING} are
+set to the right values. @code{OUT_ENCODING} is also rightly set
+according to @code{ENCODING_NAME}. 
+To force a given encoding for the output, the
+@code{ENCODING_NAME} value may be set.  The current default output encoding
+is UTF-8. 
+
+
+@node Redefining functions
+@subsection Redefining functions in initialization files
+
+To redefine a function you must replace the corresponding funtion
+reference with a reference on your function. 
+Thus you should write your function, give it a name you
+are certain it is unique in the @code{Texi2HTML::Config} namespace,
+and override the value of the function reference with your own 
+function reference.  When another function from the main program
+(or from another functions of a initialization file) calls the reference,
+your function will be used. 
+
+For example the function
+reference corresponding with the function called when doing an
+anchor is called @code{$anchor}.  Thus if you want to override the
+corresponding function
+you could write:
+
+@example
+# override the function reference
+$anchor = \&my_own_function;
+
+# the function reference now refers to
+sub my_own_function @{
+# process arguments and return an html anchor
+@}
+@end example
+
+
+@node Calling functions at different stages
+@subsection Calling functions at different stages
+
+Arbitrary user defined functions may be called between the 
+different Texinfo parsing and outputting passes.  This could be used, for
+example, to initialize variables before collecting the @@-commands and their
+text, expanding them between the collecting and expansion phase and doing
+some cleaning after the expansion pass. 
+
+There are five places for user defined functions, associated with arrays.
+The function references in these arrays are called one after another.
+The arrays correspond with the different stages:
+@vtable @code
+@item @@command_handler_setup
+The function references in that array are called before anything is done, 
+including collecting the output file names.  The input file names directory
+are available.
+@item @@command_handler_init
+The function references in that array are called as soon as the file names are 
+known. It may be at different moments, before processing anything, right after
+@@sefilename, or at the end of the first pass (after @@macro and @@include
+expansions).
+At that time the information available is essentially the file names.
+@item @@command_handler_names
+The function references in that array are called right after the collecting
+pass.  At that time all the special @@-commands  
+have been collected as explained above but no output has been produced,
+the element (node and section) names hasn't been processed and expanded.
+@item @@command_handler_process
+The function references in that array are called after the element names 
+have been processed, but before the main output initialization.
+@item @@command_handler_output
+The function references in that array are called rigth before the 
+main output processing, so that more informations are available,
+like the title.
+@item @@command_handler_finish
+he function references in that array are called after the end of the
+output generation.
+@end vtable 
+
+Here is an example of these arrays use:
+
+@example
+push @@command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
+push @@command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
+push @@command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
+@end example
+
+
+@node Elements
+@section Elements and associated informations
+
+@menu
+* The different elements::
+* Elements informations::
+* Elements lines::
+@end menu
+
+@node The different elements
+@subsection The different elements
+
+The main division of output document is the @dfn{element}.  Their
+association with output files is determined by the split options.
+@xref{Splitting output}.
+The elements are:
+
+@c The association of nodes with pages is
+@c determined by the splitting of the document. @xref{Splitting output}.
+@table @emph
+@item Normal elements
+These are normal sections and nodes.  In general nodes are associated 
+with the following sectioning command and a sectioning command is associated
+with the previous node and they both together make up
+the element.  Either the node or the sectioning command is considered to 
+be the main element component, depending on the value of 
+@code{USE_NODES} and @code{USE_SECTIONS}.  For example, if output 
+is Info, the nodes are the elements, if output is Docbook, sectioning commands
+are the main element component, and if output is HTML both cases may happen.  
+@xref{Two Paths}.
+@item Top element
+The top element is the higher element in the document structure.
+If there is a @code{@@top} section it is the element associated with
+that section. Otherwise it is the element associated with the 
+@code{@@node Top}.  If there is no @code{@@node Top} the first element 
+is the top element.
+
+The top element may be formatted differently from normal elements if there
+is a @code{@@top} section or the @code{@@node Top} is not associated 
+with a sectioning command.
+@item Misc elements
+These elements are associated with different files if the document is split.
+And also if @code{MONOLITHIC} is not set.
+There are four misc elements:
+@enumerate
+@item Table of contents
+@item Short table of contents, also called Overview
+@item Footnotes page
+@item About page
+@end enumerate
+
+The @emph{About page} shouldn't be present for documents consisting
+in only one sectioning element, or for documents unsplit and without
+navigation information.  When generating HTML, 
+the @emph{Footnote page} should only
+be present if the footnotes appear on a separated page,
+(@pxref{Footnote Styles}) however a footnote element is present if
+the document isn't split.  The @emph{Table of contents} should only
+be formatted if @code{@@contents} is present in the document.
+Similarly the @emph{Overview} should only appear if @code{@@shortcontents}
+or @code{@@summarycontents} is present.  Corresponding configuration variables,
+@code{contents} and @code{shortcontents} may be set to trigger the 
+output of a @emph{Table of contents} or @emph{Overview}.  
+The Table of contents and 
+the Overview may also be directly included within the document, not
+as separate pages, in case @code{INLINECONTENTS} is set 
+(@pxref{Contents and Overview text}).
+
+
+It is common not to have anything by normal elements, especially in 
+case of non split output.  In case of HTML output, special element may
+be present.
+@end table
+
+The main component of elements are sections if @code{USE_SECTIONS} is set,
+or @code{USE_NODES} is set to 0, and, conversely, are nodes if 
+@code{USE_NODES} is set or @code{USE_SECTIONS} is 0.  If those configuration
+variables are undefined, heuristics are used, influenced by the presence of
+nodes or sectionning elements in the document, if there are no nodes, 
+sectioning elements are preferred and the reverse is true if there are no
+sectioning commands.
+ 
+When sectioning commands are the main components of elements, 
+nodes not directly associated with a sectioning command are 
+associated with the following sectioning command, 
+and sectioning commands without nodes constitute an element.
+Conversely, when nodes are the main component of elements,
+sectioning commands not associated with nodes are associated with the
+previous node, and lone nodes are elements.
+
+
+@node Elements informations
+@subsection Elements informations
+
+
+The following items are associated with elements.  Each of these
+is associated with a name and a reference to the 
+element they represent, when such an element exists. 
+The element is either a global element (for example the first element)
+or an element relative to the current
+element (for example the next element).  The relative elements are 
+found with respect with the document
+structure defined by the section structuring commands (@code{@@chapter}, 
+@code{@@unnumbered}@dots{}) or by the nodes (in that case the node 
+directions are specified on node line or in menu organization), as explained
+above (@pxref{Two Paths}).
+These items are called @dfn{element labels}.  They may be associated with 
+a button (@pxref{Button specifications}), and used in the formatting functions 
+(@pxref{Elements informations}).
+
+Here is the list:
+
+@table @emph
+@item @samp{@ }
+An empty button
+@item Top
+Top element. The associated name is @code{TOP_HEADING} if that variable is 
+defined. This variable is not set by default.
+@item Contents
+Table of contents
+@item About
+About (help) page
+@item Overview
+Overview, short table of contents
+@item First
+First element in reading order
+@item Last
+Last element in reading order
+@item Index
+The first chapter with @code{@@printindex}. The associated name 
+is  @code{$INDEX_CHAPTER}, if the variable is set. This variable is not set
+by default.
+@item This
+The current element
+@item Back
+Preceding element in reading order
+@item FastBack
+Beginning of this chapter or previous chapter if the element is a chapter
+@item Prev
+Previous section on the same level 
+@item NodePrev
+Previous node
+@item Forward 
+Next element in reading order
+@item FastForward
+Next chapter
+@item Next
+Next section on the same level
+@item NodeNext
+Next node
+@item Following
+Next node in node reading order
+@item Up
+Up section
+@item NodeUp
+Up node
+@item FileNext
+Forward element first in the next page (or file)
+@item FilePrev
+Backward element first in the previous page (or file)
+@end table
+
+
+The element labels may also be accessed when formatting elements.
+Four hashes are available, with key the elements items, and values:
+
+@vtable @code
+@item %Texi2HTML::NAME
+The formatted element name
+@item %Texi2HTML::HREF
+The element hypertext reference
+@item %Texi2HTML::NODE
+The element node name
+@item %Texi2HTML::NO_TEXI
+The element name after removal of texi commands
+@end vtable
+
+For example @code{$Texi2HTML::NAME@{'Back'@}} is the name of the
+previous element in reading order.
+
+
+@node Elements lines
+@subsection Elements lines
+
+The following array references or arrays holds formatted lines:
+
+@vtable @code
+@item $Texi2HTML::THIS_SECTION
+Lines of the current element.
+@item $Texi2HTML::OVERVIEW
+Lines of short table of contents. @xref{Contents and Overview text}.
+@item $Texi2HTML::TOC_LINES
+Lines of table of contents. @xref{Contents and Overview text}.
+@item $Texi2HTML::TITLEPAGE
+The title page formatted. @xref{Title page}.
+@end vtable
+
+
+@node Function prototypes
+@section Conventions used for function prototypes
+
+As the functions are defined by a reference name, we will always
+use the reference name in function prototypes.  For the function arguments
+we will use @code{\@@array} for a reference on an array and similarly
+@code{\%hash} for a reference on a hash.
+
+Thus, the prototype for the function associated with the function
+reference @samp{$formatting_function} will be:
+
+@deftypefn {Function Reference} $text formatting_function $arg1 \@@arg2
+@code{formatting_function} takes as first argument @var{$arg2},
+as second argument a reference on an array @var{\@@arg2}
+and returns the formatted text @var{$text}.
+@end deftypefn
+
+To redefined the corresponding function, you should write:
+
+@example
+$formatting_function = \&my_formatting_function;
+
+sub my_formatting_function($ $)
+@{
+    my $arg1 = shift;
+    my $arg2 = shift;
+    # prepare $formatted_text
+    .....
+    return $formatted_text;
+@}
+@end example
+
+@node Initializing and finalizing
+@section Preparing and finalizing the output
+
+@anchor{Output initialization}
+@cindex Preparing the output
+
+After the texinfo file has been parsed, some information is available
+which can be used to modify some variables and prepare the outputting.
+For example the document language, the document encoding, 
+values set with @code{@@set} or @code{@@setfilename} and other similar 
+@@-commands are not known before the texinfo parsing. 
+
+The following function reference may be redefined to be called after 
+texinfo processing and before document generation:
+
+@deffn {Function Reference} init_out
+This function perform the initialization of variables and any other
+task before document outputting. 
+@end deffn
+
+In the default case, the hashes 
+@code{%BUTTONS_NAME}  (@pxref{Button specifications}),   
+@code{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
+Indeed the initialization of these variables is dependent upon 
+the document language selection.  Similarly the encoding variables are set
+based on the information now available (@pxref{Encodings}).
+When generating HTML, aditionally, the @code{%NAVIGATION_TEXT}
+hash is initialized.
+
+To perform the default initializations and also add more code, you could
+do as in the following example (save the default function reference and call 
+it in your own function):
+
+@example
+my $default_init_out = $init_out;
+$init_out = \&makeinfo_like_init_out;
+sub makeinfo_like_init_out() 
+@{
+   &$default_init_out();
+   $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
+@}
+@end example
+
+@anchor{Output finalization}
+@cindex Finalizing the output
+
+If you want to do some cleaning after the document was generated (close
+files, write at the end of files and so on), the following function 
+reference may be redefined:
+
+@deffn {Function Reference} finish_out
+This function is called after the document generation.
+@end deffn
+
+The default is to do nothing.
+
+These function references are mostly redundant with the handlers described 
+in @ref{Calling functions at different stages}.
+
+@node Navigation panel customization
+@section Customization of the navigation panels buttons
+
+A lot of customization of the navigation panel may be achieved
+with variables redefinition, especially special arrays.
+The configuration variables @code{VERTICAL_HEAD_NAVIGATION}, @code{ICONS},
+@code{HEADERS}, @code{HEADER_IN_TABLE}, @code{USE_ACCESSKEY} and
+@code{USE_REL_REV}
+may be used to change the the navigation panel formatting.
+@xref{makeinfo Configuration Variables}.
+In case it isn't enough, it is also possible to redefine the function 
+doing the navigation panel formatting.
+
+@menu 
+* Button specifications::
+* Panel formatting function::
+@end menu
+
+
+@node Button specifications
+@subsection Specifying the buttons formatting
+
+Several arrays and hashes enable a precise control on the buttons and 
+their display. 
+The following arrays determine the buttons present in navigation panels:
+
+@vtable @code
+@item @@SECTION_BUTTONS
+This array is used for the navigation panel buttons present at the begining
+of sectioning elements. If split at node or section they are also used 
+at the page footer, and in the case of section navigation at the page header.
+@item @@SECTION_FOOTER_BUTTONS
+@itemx @@NODE_FOOTER_BUTTONS
+This array is used for the navigation panel buttons present at the footer
+of pages when split at node or at section. 
+
+If @code{WORDS_IN_PAGE} is set and the output is split at nodes, these 
+buttons are only present if there are more than @code{WORDS_IN_PAGE}
+words in the sectioning element text.  This counting is very rough and include
+punctuation marks, html elements, numbers.  The default is to include the
+buttons after 300 words.
+@item @@CHAPTER_BUTTONS
+This array is used for the buttons appearing at the page footer if split at 
+chapter, and at the page header if split at chapter and there is no section
+navigation.
+@item @@MISC_BUTTONS
+These buttons appear at the beginning of special and sections  
+and at the end of these section pages if the output is split.
+@item @@LINKS_BUTTONS
+These are used for @code{<link>} elements if they are output in the
+headers.
+@end vtable
+
+The array specify the buttons displayed in navigation panels, 
+and how the button is displayed.
+Each element is associated with
+a button of the navigation panel from left to right.
+The signification of the array element value is the following:
+
+@table @emph
+@item reference on a function
+The function is called with argument a boolean true if the navigation 
+panel should be vertical.  Should return the formatted button text.
+@item reference on a scalar
+The scalar value is printed. For some possibly
+usefull scalars, @ref{Elements informations}.
+@item reference on an array
+In this case the first array element should be a reference on text and the 
+second element an element label.  In that case a link to the 
+element associated with the element label with the scalar value
+text is generated.
+
+For example if the buttons array element is
+@example
+[ 'Next', \$Texi2HTML::NODE@{Next@} ] 
+@end example
+
+@vindex %NAVIGATION_TEXT
+The button will be a link to the next section with text 
+@code{$Texi2HTML::NODE@{Next@}}.
+@item element label
+If icons are not used, the button is a link to the corresponding
+element which text is defined by the value associated with the 
+element label in the @code{%NAVIGATION_TEXT} hash, surrounded
+by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
+no @samp{[} and @samp{]}. 
+The element of the @code{%NAVIGATION_TEXT} hash are defined 
+dynamically, in the @code{init_out} function reference
+(@pxref{Output initialization}).
+
+@vindex %ACTIVE_ICONS
+@vindex %BUTTONS_NAME
+@vindex %PASSIVE_ICONS
+@vindex %NAVIGATION_TEXT
+If icons are used, the button is an image with file determined by
+the value associated with the element label in the @code{%ACTIVE_ICONS}
+hash if the the link really leads to an element, or in the @code{%PASSIVE_ICONS}
+hash if there is no element to link to.  Of course if there is a link to the 
+element the icon links to that element.  The button name and 
+the button description are used in HTML attributes to have a textual 
+description of the icon.  The corresponding strings are in 
+@code{%BUTTONS_NAME} for the button name and @code{%NAVIGATION_TEXT}
+for the description.
+@end table
+
+@vindex %BUTTONS_ACCESSKEY
+If the configuration variable @code{USE_ACCESSKEY} is set, 
+the @code{accesskey} attribute is used in navigation.  In that case 
+the @code{%BUTTONS_ACCESSKEY} hash is used for the access key.
+
+@vindex %BUTTONS_REL
+Similarly, if the @code{USE_REL_REV} configuration variable is set, 
+the @code{rel} attribute is used in navigation.  In that case 
+the @code{%BUTTONS_REL} hash is used for the @code{rel} attribute.
+
+
+@node Panel formatting function
+@subsection Changing the navigation panel formatting
+
+If you are not satisfied with this scheme, it is possible to
+control exactly the formatting of navigation panels by redefining a function 
+reference.  The function controlling the display of navigation panel is 
+associated with the following function reference:
+
+@deftypefn {Function Reference} $navigation_text print_navigation \@@buttons $vertical
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for that navigation panel.  @var{$vertical} is true if the 
+navigation panel should be vertical.
+Returns the formatted navigation panel in @var{$navigation_text}.
+@end deftypefn
+
+
+@node Page layout customization
+@section Page and file layout customization
+
+@menu
+* Customizing file header::
+* Customizing the section layout::
+* Customizing file footers::
+@end menu
+
+@node Customizing file header
+@subsection Customizing file header 
+
+The default functions call the function associated with 
+@code{$print_head_navigation} to format the navigation panel for the 
+page header.  Thus you can control parts of the formatting by
+redefining the function reference.
+
+@deffn {Function Reference} print_head_navigation $filehandle \@@buttons
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel. 
+@end deffn
+
+If you want even more control, you can have full control over the page header 
+formatting by redefining three function references.  The function associated
+with @code{$print_page_head} is called for all the pages, and after that,
+the function associated with @code{$print_chapter_header} is called
+if the document is split at chapters, or the function associated with
+@code{$print_section_header} is called if the document is split at sections.
+
+@deffn {Function Reference} print_page_head $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function should print the page head, including the @code{<body>}
+element.
+@end deffn
+
+@deffn {Function Reference} print_chapter_header $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at chapters, after 
+@code{print_page_head}.
+@end deffn
+
+@deffn {Function Reference} print_section_header $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at sections, after 
+@code{print_page_head}.
+@end deffn
+
+@vindex $EXTRA_HEAD
+@vindex $AFTER_BODY_OPEN
+In HTML,
+it is possible to add lines to the text within the @code{<head>} 
+@acronym{HTML} elements, by defining the variable @code{$EXTRA_HEAD}.
+Similarly it is possible to add text just after the @code{<body>} 
+element with the variable @code{$AFTER_BODY_OPEN}.
+These variables are empty by default.
+A date is output in header
+if @code{DATE_IN_HEADER} is set.
+Also, the description from @code{@@documentdescription} (or set as
+a configuration variable) is used in the 
+header (@pxref{documentdescription}).
+
+The @code{<body>} element attributes may be set by defining the
+configuration variable @code{BODYTEXT}.  
+In the default case, the encoding name @code{ENCODING_NAME} is used.
+If the variable is not defined,
+it is automatically determined 
+@xref{Encodings}.
+
+@vindex @@LINKS_BUTTONS
+@vindex %BUTTONS_REL
+@code{<link>} element are used in the header if @code{USE_LINKS}
+is set.  @code{@@LINKS_BUTTONS} determines which links are used.
+@code{%BUTTONS_REL} determines the link type associated with the
+@code{rel} attribute.
+
+@node Customizing the section layout
+@subsection Customizing the section layout
+
+The functions associated with the following function references are used for 
+the formatting of sections:
+
+@deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$first_in_page} is true if this section is the first section in the page.
+@var{$previous_is_top} is true if this section is the section following the 
+Top section.
+This function should print the current section contents.
+@end deffn
+
+@deffn {Function Reference} end_section $filehandle $last_element_or_before_top
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$last_element_or_before_top} is true if this section precedes the top 
+element or is the last one in page, or before the special elements.
+@end deffn
+
+@node Customizing file footers
+@subsection Customizing the file footers
+
+
+The default functions call the function associated with 
+@code{$print_foot_navigation} to format the navigation panel for the 
+page footer.  Thus you can control parts of the formatting by
+redefining the function reference.
+
+@deffn {Function Reference} print_foot_navigation $filehandle \@@buttons
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel. 
+@end deffn
+
+If you want even more control, you can have more control over the page footer 
+formatting by redefining three function references.
+The function associated with @code{$print_chapter_footer} is called
+if the document is split at chapters, or the function associated with
+@code{$print_section_footer} is called if the document is split at sections.
+After that the function associated with @code{$print_page_foot} is called.
+
+@deffn {Function Reference} print_page_foot $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function should print the page foot, including the @code{</body>}
+element.
+@end deffn
+
+@deffn {Function Reference} print_chapter_footer $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at chapters, before 
+@code{print_page_foot}.
+@end deffn
+
+@deffn {Function Reference} print_section_footer $filehandle
+@var{$filehandle} is the opened filehandle the function should write to.
+This function is called if the document is split at sections, before
+@code{print_page_foot}.
+@end deffn
+
+@vindex $PRE_BODY_CLOSE
+In HTML, it is possible to add text just before the @code{</body>} 
+element with the variable @code{$PRE_BODY_CLOSE}.  Nothing is added
+by default.  If @code{PROGRAM_NAME_IN_FOOTER} is set, the date and the 
+program name that generated the output manual is output in the footer.
+
+@node Special elements
+@section Customizing the special elements pages and files
+
+@menu
+* Special elements content::
+* Special elements layout::
+@end menu
+
+@node Special elements content
+@subsection Customizing the content of the special elements pages
+
+The label for the special elements, except for the Top element
+is formatted according to the function reference @code{$misc_element_label}:
+
+@deftypefn {Function Reference} $misc_element_label misc_element_label $identifier $page_name
+@var{$identifier} is the identifier associated with the special element.
+@var{$page_name} is the special element name.  It should return a label that
+can be used for references to the special element.
+@end deftypefn
+
+@menu
+* Top element text::
+* Contents and Overview text::
+* Footnotes text::
+* About text::
+* Title page::
+@end menu
+
+@node Top element text
+@subsubsection Top element text formatting
+
+The top element formatting is controlled by three function which also
+controls the layout of the top element page or section.  The associated
+function references are:
+
+@deffn {Function Reference} print_Top_header $filehandle $begin_page
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$begin_page} is true if the element is the first in a page.
+This function should begin the Top element.  At the time this function 
+is called, the top element text has not been parsed.
+@end deffn
+
+@deffn {Function Reference} print_Top $filehandle $has_top_heading
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$has_top_heading} is true if there is a @code{@@heading} command or
+@code{@@titlefont} command appearing in the Top element text.
+This function should be used to format the Top element text and navigation
+panel.
+@end deffn
+
+@deffn {Function Reference} print_Top_footer $filehandle $end_page
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{$end_page} is true if the element is the last in a page.
+This function should end the Top element. 
+@end deffn
+
+@node Contents and Overview text
+@subsubsection Table of contents and Short table of contents
+
+Two possibilities exist for the formatting of table of contents (and 
+short table of contents).  In the default case, the table of contents 
+are in separate elements, at the end of the document if the document 
+is unsplit or in separate files.  This makes sense when 
+menus are used for navigation.  Another mode may be selected by
+setting @code{INLINE_CONTENTS}.  In that case the table of contents
+are not output as separate elements but are instead output where the 
+corresponding @@-command, for example @code{@@contents},
+is set.  This behaviour is more consistent with @command{texi2dvi}. 
+If @code{@@setcontentsaftertitlepage} appears in the document,
+and even if @code{INLINE_CONTENTS} is set, the table of contents are 
+merged in the title (which isn't output in the default case, see 
+@ref{Title page}).
+
+Several variables may be used to control the formatting of table of contents 
+and short table of contents:
+
+@vtable @code
+@item $BEFORE_OVERVIEW
+The variable value is inserted before the short table of contents text.
+@item $AFTER_OVERVIEW
+The variable value is inserted after the short table of contents text.
+@item $BEFORE_TOC_LINES
+The variable value is inserted before the table of contents text.
+@item $AFTER_TOC_LINES
+The variable value is inserted after the table of contents text.
+@item $NO_BULLET_LIST_STYLE
+For HTML.
+This should contain a CSS style used for the list style when there
+is no bullet.
+@item $NO_BULLET_LIST_CLASS
+This should contain the class assocciated with the $NO_BULLET_LIST_STYLE 
+css style.
+@item $NO_BULLET_LIST_ATTRIBUTE
+This should contain an attribute text used for the list element when there
+is no bullet.  For example it is used in the tables of if they are 
+formatted with a list.
+@end vtable
+
+More control on the table of contents and short table of contents formatting
+may be achieved by redefining a function with the following associated 
+function reference:
+
+@deffn {Function Reference} toc_body \@@elements 
+@var{\@@elements} is an array reference contining informations about
+all the elements of the document.  Each of the entry of this array is an hash
+reference which entries correspond with different informations
+about the element.  Interesting keys have the following meaning:
+
+@table @code
+@item top
+true if the element is the top element,
+@item index_page
+true if the element is an index page added because of index splitting,
+@item toc_level
+level of the element in the table of content.  Highest level
+is 1 for the top element and for chapters, appendix and so on,
+2 for section, unnumberedsec and so on...
+@item tocid
+label used for reference linking to the element in table of
+contents,
+@item file 
+the file containing the element, usefull to do href to that file
+in case the document is split,
+@item text
+text of the element, with section number,
+@item name
+text of the element, without section number.
+@end table
+
+This function doesn't return anything but should fill the array corresponding
+with the @code{$Texi2HTML::TOC_LINES} and @code{$Texi2HTML::OVERVIEW} 
+references with the table of contents and short table of contents.  
+@xref{Elements lines}.
+
+@end deffn
+
+Another function reference is used to add a heading and a reference, to
+be used with @code{INLINE_CONTENTS} or merged in the title.  Its output
+is not used when the table of contents are separate elements.
+
+@deftypefn {Function Reference} \@@inline_contents_lines inline_contents $filehandle $command $element
+This function reference returns a reference on an array holding 
+the lines containing the contents, heading and reference.
+@var{$filehandle} is a reference on the currently opened file if
+the function is called because a @code{@@contents} or
+@code{@@shortcontents} command was encountered, it is undef otherwise.
+@var{$command} is either @samp{contents} or @samp{shortcontents}.
+@var{$element} is a hash reference containing informations about the
+table of contents context.  Relevant keys are:
+@table @code
+@item target
+The identifier associated with the table of contents, used for example
+to do references to the table of contents using href in @acronym{HTML}.
+@item id
+The identifier associated with the element, used to do labels. In 
+general the same than the @code{target}, but not necessarily.
+@item file
+The file name containing the table of contents.
+@end table
+
+@end deftypefn
+
+@node Footnotes text
+@subsubsection Formatting of footnotes text
+
+The footnotes text is already formatting when @code{@@footnote} commands
+are expanded. 
+@c FIXME readd when it is added
+@c @xref{Footnotes customization}.
+
+@node About text
+@subsubsection Formatting of about text
+
+The default about element contains an explaination of the buttons used
+in the document (@code{@@SECTION_BUTTONS}, @ref{Button specifications}) and 
+an example locating the buttons targets in an example.
+The formatting of this text may be influenced by the following 
+hashes and variables:
+
+@table @code
+@item $PRE_ABOUT 
+@itemx $AFTER_ABOUT
+This variable may be a scalar or a function reference. 
+If it is a scalar, the value is used.
+If this is a function reference it is expanded and the returned text is
+used. The text is added before or after the main about text.
+@item %BUTTONS_GOTO
+
+The keys of this hash are element labels (@pxref{Elements informations}).  
+The value is the text associated with the element label in the about text.
+In the default case, the element of the hash are defined dynamically in 
+that the @code{init_out} function reference (@pxref{Output initialization}).
+
+
+@item %BUTTONS_EXAMPLE
+
+The keys of this hash are  element labels (@pxref{Elements informations}). 
+The value is the text associated with the element label in the about 
+example, typically a section number.
+
+@end table
+
+If this is not enough and you want to control exactly the formatting of
+the about text, you can redefine the function associated with the following 
+function reference:
+
+@deftypefn {Function Reference} $about_text print_about
+This function should return the about text.
+@end deftypefn
+
+@node Title page
+@subsubsection Formatting of title page
+
+@vindex $Texi2HTML::TITLEPAGE
+The title page is first formatted using the text appearing in 
+the @code{@@titlepage} section, and put in @code{$Texi2HTML::TITLEPAGE}
+(@pxref{Elements lines}).  More formatting can be done using the following
+function reference:
+
+@deffn {Function Reference} titlepage 
+This function should complete @code{$Texi2HTML::TITLEPAGE}.
+@end deffn
+
+In the default case, in this function the title is output if 
+there is no titlepage, the table of contents and short
+table of contents are also added if they are to be output and 
+@code{@@setcontentsaftertitlepage}
+or @code{@@setshortcontentsaftertitlepage} appear in the document
+(@pxref{Contents and Overview text}).
+
+The resulting title page output is used in the document if 
+@code{USE_TITLEPAGE_FOR_TITLE} and @code{SHOW_TITLE} are set.
+
+@node Special elements layout
+@subsection Customizing the layout of the special element pages
+
+The formatting of each of the special pages, or section in case 
+the document is not split, is controlled by a function.
+The associated function reference is called accordingly:
+
+@ftable @code
+@item print_Top
+@item print_Top_header
+@item print_Top_footer
+Formatting of top element page or section. It is also used for the formatting
+of the top element text (@pxref{Top element text}).
+@item print_Toc
+Formatting of table of contents page or section.
+@item print_Overview
+Formatting of short table of contents page or section.
+@item print_About
+Formatting of about (help) page or section.
+@item print_Footnotes
+Formatting of footnotes section or page in case footnotes are on a 
+separated page or the document is not split.
+@end ftable
+
+In the default case, @code{$print_Top} calls @code{$print_Top_header} for
+the header and @code{$print_Top_footer} for the footer of top element.
+All the other function call @code{$print_misc} which in turn calls
+@code{$print_misc_header} for the headers and @code{$print_misc_footer} 
+for the footers.
+
+@node File and target names
+@section Customizing the file and target names
+
+@subheading File names
+
+It is possible to specify the file names with more control than with the
+command line options (@option{--output}). The configuration variables
+@code{PREFIX}, @code{TOP_FILE} and @code{TOC_FILE} may be used. 
+The extension may also be overriden by the configuration variable 
+@code{EXTENSION}
+value.  The variable should be @code{undef} if no extension is
+to be added.
+
+Two function references enable 
+further customization.  One is especially usefull in case 
+@code{NODE_FILES} is true
+and it is used to customize the node file name. 
+
+@deftypefn {Function Reference} $node_file node_file_name \%node
+@var{\%node} is a hash reference with the following interesting keys (there
+are much more keys):
+@table @code
+@item texi
+The texinfo node name.
+@item with_section
+True if associated with a section.
+@end table
+The result is the node file name @var{$node_file}.
+@end deftypefn
+
+The other is used to
+customize the file names associated with each element, and the 
+name of the file associated with the special elements. 
+@xref{The different elements}.
+
+@deftypefn {Function Reference} $file element_file_name \%element $type $docu_name
+@var{\%element} is undefined for the special elements (about, overview, 
+table of contents, footnotes).
+Otherwise it is a hash reference with the following interesting keys (there
+are much more keys):
+@table @code
+@item texi
+The texinfo element name.
+@item number
+The number associated with a section.
+@item doc_nr
+A number incremented whenever a new file should begin, based on how the 
+document is split (@pxref{Splitting output}).
+@item text
+The element text.
+@item name
+The element text without section number.
+@end table
+@var{$type} is empty for normal elements. 
+For the top element it is @samp{top}, for the table of contents it 
+is @samp{toc}, for the overview it is @samp{stoc}, for the
+footnotes it is @samp{foot} and for about is @samp{about}.  If 
+frames are used with @code{FRAMES}, the function reference
+is also called for @samp{frame}, the frame file name, and 
+@samp{toc_frame} the table of content frame file name.
+@var{$docu_name} is the basename of the texinfo manual.
+The result is the element or special element file name.
+@end deftypefn
+
+@subheading target names
+
+Similarly target and id may be set.  The @dfn{id} is placed where the 
+item is located, the @dfn{target} is used to construct references to
+that item. In general they should be equal, but not always, for example
+in the default case, the target for a section is the node id.
+The following function reference, is
+for target items (nodes, anchors, floats):
+
+@deftypefn {Function Reference} {($target,$id)} node_target_name \%node, $default_target, $default_id
+@var{\%node} is the same as in the @code{node_file_name} function reference
+above.
+@var{$default_target} is the target already set (it is also 
+in @code{$node->@{'target'@}}), and @var{$default_id} is similarly
+the id already set.
+@end deftypefn
+
+For element (@pxref{The different elements}), the function 
+reference is:
+
+@deftypefn {Function Reference} {($target,$id)} element_target_name \%element, $default_target, $default_id
+the @var{\%element} is the same than in @code{element_file_name}, and
+@var{$default_target} and @var{$default_id} are the target and id already set.
+@end deftypefn
+
+Placed items 
+(floats, footnotes, index entries, anchors, contents,
+shortcontents and headings)
+file and target may also be set.  In the default case, they should 
+be rightly set, so be careful when changing them.  The following 
+function reference can be used:
+
+@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item, \%element, $default_target, $default_id, $default_file, $context
+@var{\%placed_item} is a hash reference describing the placed item,
+in the same vein than above.
+the @var{\%element} is the same than in @code{element_file_name}, 
+corresponding with the element containing the placed item.
+@var{$default_file}, @var{default_id} and
+@var{$default_target} are the file, id and target already set.
+@var{$context} describes the context, it is empty in the normal cases, 
+and can also be set to @samp{footnotes} if in footnotes, or to
+@samp{no_associated_element} if the placed item is out of any element
+(typically in @code{@@titlepage}, @code{@@copying}).
+@end deftypefn
+
+@vindex %misc_pages_targets
+For special elements, the @code{%misc_pages_targets} hash is 
+used to set the target and id.  The possibilities for the keys 
+are @samp{Overview}, @samp{Contents}, @samp{Footnotes} and @samp{About}.
+
+
+@node External index files
+@section Generation of external files for index entries
+
+@c FIXME Here? of after Index list?
+@c Within the document, @code{@@printindex} commands are expanded as explained
+@c in @ref{Index list}.  
+In case you want to do something special with index 
+entries, outside of the document, you should first set the configuration 
+variable @code{IDX_SUMMARY} true.  After that some function reference 
+will be called for each non empty index.  For each index there are 3 
+function references, one called for initialization, one called for each 
+index entry and the last one called for finalization.
+
+@deffn {Function Reference} index_summary_file_begin $index_name $is_printed $manual_name
+@var{$index_name} is the two letters name for the index.  This function
+is called for each index appearing in the document, before 
+@code{index_summary_file_entry}.
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
+@end deffn
+
+@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed $manual_name
+This function is called for each entry of an index. @var{index_name} is the
+name of the index. @var{$entry_text} is the entry in plain text,
+@var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
+entry with texinfo commands. @var{$entry_reference} is the reference placed 
+at the index entry place, in the form @samp{file#id}.
+@var{$entry_element_header} is the formatted header of the element containing 
+the index entry. @var{entry_element_header} is the reference to the
+beginning of the element containing the index entry, in the form
+@samp{file#id}. 
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
+@end deffn
+
+@deffn {Function Reference} index_summary_file_end $index_name $is_printed $manual_name
+@var{$index_name} is the two letters name for the index.  This function
+is called for each index appearing in the document, after
+@code{index_summary_file_entry}.
+@var{$is_printed} is true if there is a @code{@@printindex} for that index.
+@var{$manual_name} is the manual basename.
+@end deffn
+
+@node Customizing CSS
+@section Customizing the CSS lines
+
+@cindex @acronym{CSS}
+
+The @code{NO_CSS} configuration option turns CSS support off.
+Instead of CSS lines output at the document beginning, they may be added
+to each of the HTML attributes, if @code{INLINE_CSS} is set.
+The configuration variable variable holds the CSS
+specification lines in case CSS is not inline.
+@vindex %css_map
+It is possible to modify the CSS lines by modifying
+the entries or adding to the @code{%css_map} hash.  Each key is a CSS
+selector, the corresponding value is a style string.
+
+It is also possible to change completely the way @code{CSS_LINES}
+are generated by redefining the following function reference:
+
+@deffn {Function Reference} css_lines \@@import_lines \@@rule_lines
+This function should be used to set the variable 
+@code{CSS_LINES}.
+@var{\@@import_lines} are the @code{@@import} lines of the 
+files specified with @option{--include-css}, 
+and @var{\@@rule_lines} are the css commands lines of these files.
+@end deffn
 
 
 @node Command List
@@ -20341,7 +21783,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
+$Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -20420,7 +21862,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.261 2010-07-22 00:39:49 karl Exp $
+@comment $Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
