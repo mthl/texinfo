@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
+@c $Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -2980,12 +2980,18 @@ index, cross-reference, and other auxiliary files used by Texinfo, and
 also reads @file{texinfo.cnf} if that file is present on your system
 (@pxref{Preparing for TeX,, Preparing for @TeX{}}).
 
-If there is no @code{@@setfilename} line, @code{makeinfo} (but not
-@TeX{}) uses the input file name to determine the output name: first,
-any of the extensions @code{.texi}, @code{.tex}, @code{.txi} or
-@code{.texinfo} is removed from the input file name; then, the
-output format specific extension is added---@code{.html} when
-generating HTML, @code{.info} when generating Info, @enddots{}
+If there is no @code{@@setfilename} line, @code{makeinfo} uses the
+input file name to determine the output name: first, any of the
+extensions @code{.texi}, @code{.tex}, @code{.txi} or @code{.texinfo}
+is removed from the input file name; then, the output format specific
+extension is added---@code{.html} when generating HTML, @code{.info}
+when generating Info, @enddots{}
+
+@TeX{} determines the output file name similarly in the absence of
+@code{@@setfilename}, but you should not attempt to process a Texinfo
+file without @code{@@setfilename} with @TeX{}, as just described.
+
+See also the @option{--output} option in @ref{Invoking texi2any}.
 
 
 @node settitle
@@ -16100,9 +16106,9 @@ containing the footnotes found in the current node.  When the footnote
 style is @samp{end}, @code{makeinfo} places the footnote references at
 the end of the current node.  
 
-In HTML, when the footnote style is @samp{end} footnotes are put at
-the end of the file.  If set to @samp{separate} they are in a separate 
-file if split.
+In HTML, when the footnote style is @samp{end}, or if the output is
+not split, footnotes are put at the end of the output.  If set to
+@samp{separate}, and the output is split, they are placed in a separate file.
 
 @item --force
 @itemx -F
@@ -16162,12 +16168,12 @@ format.  For instance, if @option{--iftex} is specified, then
 
 @item --init-file=@var{file}
 @opindex --init-file=@var{file}
-Load @var{file} code to modify the behaviour and output of the generated
-manual. @option{--conf-dir} may be used to add a directory to the list
-of directories where initialization files are searched for. It is customary
-to use the @code{.init} extension with initialization files, but it is 
-not enforced by anything, and the @var{file} file name is taken literally.
-@xref{Loading initialization files}.
+Load @var{file} as code to modify the behavior and output of the
+generated manual.  It is customary to use the @code{.init} extension
+for these customization files, but that is not enforced by anything;
+the @var{file} name is taken literally.  @option{--conf-dir}, see
+above, may be used to add to the list of directories in which these
+customization files are searched for.  @xref{Loading initialization files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
@@ -16190,17 +16196,19 @@ file.  Normally, the results of macro expansion are used internally by
 @cindex Node separators, omitting
 @cindex Generating plain text files
 @cindex Menus, omitting
+Do not include menus or node separator lines in the output.
 
-Do not include menus or node separator lines in the output.  If generating
-Info, in addition, this is the same as using @option{--plaintext}, 
-resulting in a  simple plain text file, ignoring @code{@@setfilename} 
-and writing to standard output by default---can be overridden with @option{-o}.
+If generating Info, this is the same as using @option{--plaintext},
+resulting in a simple plain text file.  Furthermore,
+@code{@@setfilename} is ignored, and output is to standard output
+unless overridden with @option{-o}.  (This behavior is for backward
+compatibility.)
 
 @cindex Navigation links, omitting
-For HTML output, likewise omit menus.  If split, output navigation links only
-at the beginning of files.  And if @samp{--no-split} is
-specified, do not include a navigation links at the top of each node.
-@xref{Generating HTML}.
+For HTML output, also omit menus.  If output is split, output
+navigation links only at the beginning of each file, while if output
+is not split, do not include a navigation links at the top of each
+node.  @xref{Generating HTML}.
 
 @item --no-ifdocbook
 @opindex --no-ifdocbook
@@ -16250,15 +16258,17 @@ Suppress warning messages (but @emph{not} error messages).
 @itemx --no-node-files
 @opindex --node-files
 @opindex --no-node-files
-When generating HTML, produce redirection files for nodes and anchors
-that are not already in the file with name corresponding to the node or
-anchor name (@pxref{HTML Xref Node Name Expansion}). In the default case 
-it is set if the manual is split.
+When generating HTML, produce redirection files for anchors, and for
+nodes that are not already output with the name corresponding to the
+node name (@pxref{HTML Xref Node Name Expansion}).  This is set by
+default if the output is split.  This option makes it possible for
+section- and chapter-level cross-manual references to succeeed
+(@pxref{HTML Xref Configuration}).
 
-If @option{--no-split} is set, @option{--node-files} can ensure that 
-redirection files are done. If split at chapter or sections, 
-@option{--no-node-files} suppress the output of the redirection files.
-@xref{Generating HTML}.
+If the output is not split, @option{--node-files} enables the creation
+of the redirection files.  @option{--no-node-files} suppress the
+output of any redirection files.  @xref{Generating HTML}.  This option
+has no effect with any output format other than HTML.
 
 @item --number-sections
 @opindex --number-sections
@@ -16270,21 +16280,26 @@ manuals.
 @itemx -o @var{file}
 @opindex --output=@var{file}
 @opindex -o @var{file}
-Specify that the output should be directed to @var{file} and not to the
-file name specified in the @code{@@setfilename} command found in the
-Texinfo source (@pxref{setfilename}) nor to the output file based on the
-input file name.
+Specify that the output should be directed to @var{file}.  This
+overrides any file name specified in a @code{@@setfilename} command
+found in the Texinfo source.  If neither @code{@@setfilename} nor this
+option are specified, the input file name is used to determine the
+output name.  @xref{setfilename,,@code{@@setfilename}}.
 
-If @var{file} is @samp{-}, output
-goes to standard output and @samp{--no-split} is implied.  
+If @var{file} is @samp{-}, output goes to standard output and
+@samp{--no-split} is implied.
 
-If @var{file}
-is a directory or ends with a @samp{/} the usual rules are used to determine
-the file name (use @code{@@setfilename} or the input file name) but the 
-resulting files are output in the @var{file} directory.  
+If @var{file} is a directory or ends with a @samp{/} the usual rules
+are used to determine the actual output file name (use
+@code{@@setfilename} or the input file name) but these files are are
+written to the @var{file} directory.  For example, @samp{makeinfo -o
+bar/ foo.texi}, with or without @option{--no-split}, will write
+@file{bar/foo.info}, and possibly other files under @file{bar/}.
 
-When generating HTML, if output is split, @var{file} is 
-the name for the directory into which all files are written.  
+When generating HTML, if output is split, @var{file} is used as the
+name for the directory into which all files are written.  For example,
+@samp{makeinfo -o bar --html foo.texi} will write 
+@file{bar/index.html}, among other files.
 
 @item -P @var{dir}
 @opindex -P @var{dir}
@@ -18406,7 +18421,7 @@ mono    => mono,    chapter, section, split
 @opindex --node-files@r{, and HTML cross-references}
 These section- and chapter-level cross-manual references can succeed
 only when the target manual was created using @option{--node-files},
-which is the default.
+which is the default for split output.
 
 If you have additions or corrections to the @file{htmlxref.cnf}
 distributed with Texinfo, please email @email{bug-texinfo@@gnu.org}.
@@ -21783,7 +21798,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
+$Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21862,7 +21877,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.262 2010-07-23 06:36:58 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
