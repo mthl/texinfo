@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-07-18 18:41+0200\n"
+"POT-Creation-Date: 2010-07-20 16:15+0200\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6133 texi2html/texi2html.pl:6137
-#: texi2html/texi2html.pl:6141
+#: texi2html/texi2html.pl:6138 texi2html/texi2html.pl:6142
+#: texi2html/texi2html.pl:6146
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html/texi2html.pl:6134 texi2html/texi2html.pl:6138
-#: texi2html/texi2html.pl:6142 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6139 texi2html/texi2html.pl:6143
+#: texi2html/texi2html.pl:6147 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: texi2html/texi2html.pl:6135 texi2html/texi2html.pl:6139
-#: texi2html/texi2html.pl:6143
+#: texi2html/texi2html.pl:6140 texi2html/texi2html.pl:6144
+#: texi2html/texi2html.pl:6148
 msgid "Short Table of Contents"
 msgstr "Korte inhoudsopgave"
 
-#: texi2html/texi2html.pl:6136 texi2html/texi2html.pl:6140
-#: texi2html/texi2html.pl:6144 texi2html/texi2html.init:6704
+#: texi2html/texi2html.pl:6141 texi2html/texi2html.pl:6145
+#: texi2html/texi2html.pl:6149 texi2html/texi2html.init:6704
 #: texi2html/formats/html.init:2411
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html/texi2html.pl:12880
+#: texi2html/texi2html.pl:12885
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

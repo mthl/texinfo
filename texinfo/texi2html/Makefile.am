@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# don't install gmo files from texi2hmtl directories if in texinfo, 
+# don't install gmo files from texi2html directories if in texinfo, 
 # they are also in ../po and ../po_document
 if TEXI2HTML
 po_subdirs = po_document po_messages
@@ -70,7 +70,6 @@ EXTRA_DIST = \
 	$(noinst_SCRIPTS) \
 	missing-texi2html \
 	texi2html.pl \
-	texi2html.spec \
 	texi2html.spec.in \
 	texi2html.pl \
 	regenerate_documentlanguages.pl \
@@ -93,20 +92,6 @@ EXTRA_DIST = \
 	po_document/Makevars.in \
 	po_document/POTFILES.in.in \
 	i18n_ref
-
-#i18n_files = i18n/de \
-#	i18n/es \
-#	i18n/fr \
-#	i18n/nl \
-#	i18n/no \
-#	i18n/pt \
-#	i18n/pt_BR \
-#	i18n/ja \
-#	i18n/it \
-#	i18n/hu
-
-#dist_i18n_DATA = i18n/en \
-#	$(i18n_files)
 
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \

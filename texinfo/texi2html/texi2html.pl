@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.407 2010-07-19 23:48:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.408 2010-07-23 07:01:33 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -7469,7 +7469,6 @@ sub rearrange_elements()
             if ($element->{'section_ref'} and ($only_sections or (!$only_nodes and $element->{'with_section'})))
             {
                 add_t2h_dependent_element ($element, $element->{'section_ref'});
-                #$element->{'toc_level'} = $element->{'section_ref'}->{'toc_level'};
             }
             elsif (!$only_sections)
             {

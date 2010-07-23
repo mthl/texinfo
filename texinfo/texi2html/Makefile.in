@@ -54,8 +54,7 @@ DIST_COMMON = README $(dist_images_DATA) $(dist_init_DATA) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/check_texinfo.pl.in $(srcdir)/manage_i18n.pl.in \
 	$(srcdir)/texi2html.pl ABOUT-NLS AUTHORS COPYING ChangeLog \
-	INSTALL NEWS TODO config.guess config.rpath config.sub \
-	install-sh mdate-sh missing mkinstalldirs
+	NEWS TODO config.sub
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \
@@ -737,7 +736,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @TEXI2HTML_FALSE@po_subdirs = 
 
-# don't install gmo files from texi2hmtl directories if in texinfo, 
+# don't install gmo files from texi2html directories if in texinfo, 
 # they are also in ../po and ../po_document
 @TEXI2HTML_TRUE@po_subdirs = po_document po_messages
 @TEXI2HTML_FALSE@po_document_dir = ..
@@ -788,7 +787,6 @@ EXTRA_DIST = \
 	$(noinst_SCRIPTS) \
 	missing-texi2html \
 	texi2html.pl \
-	texi2html.spec \
 	texi2html.spec.in \
 	texi2html.pl \
 	regenerate_documentlanguages.pl \
@@ -812,20 +810,6 @@ EXTRA_DIST = \
 	po_document/POTFILES.in.in \
 	i18n_ref
 
-
-#i18n_files = i18n/de \
-#	i18n/es \
-#	i18n/fr \
-#	i18n/nl \
-#	i18n/no \
-#	i18n/pt \
-#	i18n/pt_BR \
-#	i18n/ja \
-#	i18n/it \
-#	i18n/hu
-
-#dist_i18n_DATA = i18n/en \
-#	$(i18n_files)
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \
 	images/a_document.png \

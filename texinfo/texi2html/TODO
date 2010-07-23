@@ -37,6 +37,8 @@ Later
 * line breaking could happen after a full width character.
   Accordingly, in japanese.texi lines are not cut right.
 
+* warn in all formats for @comma in node and error if in Info.
+  Also many characters (. : ...) break menu entry parsing in Info files.
 
 * images.texi, paragraph_in_samp.texi should be tested in xml too.
   Maybe they should be moved to coverage, and in coverage all the formats
