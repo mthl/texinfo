@@ -1,5 +1,9 @@
 2010-07-23  Patrice Dumas  <pertusus@free.fr>
 
+	* texi2html/Tests: remove this unused directory tree.
+
+2010-07-23  Patrice Dumas  <pertusus@free.fr>
+
 	* doc/texinfo.txi (texi2any output customization): add the
 	general informations about initialization files and the document
 	layout.

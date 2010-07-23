@@ -22,7 +22,7 @@ po_subdirs =
 po_document_dir = ..
 endif
 
-SUBDIRS = $(po_subdirs) . doc Tests test
+SUBDIRS = $(po_subdirs) . doc test
 
 imagesdir = $(datadir)/texi2html/images
 #i18ndir = $(datadir)/texi2html/i18n

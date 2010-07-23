@@ -54,7 +54,7 @@ DIST_COMMON = README $(dist_images_DATA) $(dist_init_DATA) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/check_texinfo.pl.in $(srcdir)/manage_i18n.pl.in \
 	$(srcdir)/texi2html.pl ABOUT-NLS AUTHORS COPYING ChangeLog \
-	INSTALL NEWS TODO config.guess config.rpath install-sh missing
+	NEWS TODO config.rpath
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \
@@ -180,7 +180,7 @@ AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
 	distdir
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = po_document po_messages . doc Tests test
+DIST_SUBDIRS = po_document po_messages . doc test
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
   dir0=`pwd`; \
@@ -741,7 +741,7 @@ top_srcdir = @top_srcdir@
 @TEXI2HTML_TRUE@po_subdirs = po_document po_messages
 @TEXI2HTML_FALSE@po_document_dir = ..
 @TEXI2HTML_TRUE@po_document_dir = .
-SUBDIRS = $(po_subdirs) . doc Tests test
+SUBDIRS = $(po_subdirs) . doc test
 imagesdir = $(datadir)/texi2html/images
 #i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init

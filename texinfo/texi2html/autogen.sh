@@ -3,10 +3,13 @@
 
 test -f Makefile.am || cd "`dirname \"$0\"`"
 
-autopoint -f
-cp po/* po_messages
-cp po/* po_document
-rm -rf po
+#autopoint -f
+#cp po/* po_messages
+#cp po/* po_document
+#rm -rf po
+
+gettextize -f --po-dir=po_messages
+gettextize -f --po-dir=po_document
 
 # Create `aclocal.m4'.
 mkdir -p m4
@@ -14,7 +17,7 @@ aclocal -I m4
 
 # Create `Makefile.in' from `Makefile.am', and symlink `install-sh',
 # `missing' and `mkinstalldirs' from /usr/share/automake.
-automake --add-missing 
+automake --add-missing -c
 
 # Create `configure' from `configure.in'.
 autoconf

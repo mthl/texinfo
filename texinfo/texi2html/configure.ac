@@ -139,7 +139,6 @@ AC_CONFIG_FILES([ po_messages/Makefile.in po_document/Makefile.in \
                  po_messages/Makevars \
                  po_document/Makevars \
                  Makefile \
-                 Tests/Makefile \
                  test/Makefile \
                  test/contents/Makefile \
                  test/coverage/Makefile \

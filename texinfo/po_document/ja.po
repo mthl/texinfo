@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-07-18 12:20+0200\n"
+"POT-Creation-Date: 2010-07-20 01:23+0200\n"
 "PO-Revision-Date: 2007-02-05\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6130 texi2html/texi2html.pl:6134
-#: texi2html/texi2html.pl:6138
+#: texi2html/texi2html.pl:6138 texi2html/texi2html.pl:6142
+#: texi2html/texi2html.pl:6146
 msgid "About This Document"
 msgstr "この文書について"
 
-#: texi2html/texi2html.pl:6131 texi2html/texi2html.pl:6135
-#: texi2html/texi2html.pl:6139 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6139 texi2html/texi2html.pl:6143
+#: texi2html/texi2html.pl:6147 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "目次"
 
-#: texi2html/texi2html.pl:6132 texi2html/texi2html.pl:6136
-#: texi2html/texi2html.pl:6140
+#: texi2html/texi2html.pl:6140 texi2html/texi2html.pl:6144
+#: texi2html/texi2html.pl:6148
 msgid "Short Table of Contents"
 msgstr "簡略化した目次"
 
-#: texi2html/texi2html.pl:6133 texi2html/texi2html.pl:6137
-#: texi2html/texi2html.pl:6141 texi2html/texi2html.init:6702
+#: texi2html/texi2html.pl:6141 texi2html/texi2html.pl:6145
+#: texi2html/texi2html.pl:6149 texi2html/texi2html.init:6704
 #: texi2html/formats/html.init:2411
 msgid "Footnotes"
 msgstr "脚注"
 
-#: texi2html/texi2html.pl:12877
+#: texi2html/texi2html.pl:12885
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -245,149 +245,149 @@ msgid ""
 msgstr ""
 "この文書は@uref{{program_homepage}, @emph{{program}}}を用いて生成されました。"
 
-#: texi2html/texi2html.init:5346 texi2html/texi2html.init:5469
+#: texi2html/texi2html.init:5348 texi2html/texi2html.init:5471
 #: texi2html/formats/html.init:1473 texi2html/formats/html.init:1571
 #, perl-brace-format
 msgid "{style} {number}"
 msgstr ""
 
-#: texi2html/texi2html.init:5368 texi2html/formats/html.init:1487
+#: texi2html/texi2html.init:5370 texi2html/formats/html.init:1487
 #, perl-brace-format
 msgid "{style}: {caption_first_line}"
 msgstr ""
 
-#: texi2html/texi2html.init:5396 texi2html/formats/html.init:1504
+#: texi2html/texi2html.init:5398 texi2html/formats/html.init:1504
 #, perl-brace-format
 msgid "{style}: {shortcaption_first_line}"
 msgstr ""
 
-#: texi2html/texi2html.init:5701 texi2html/texi2html.init:5722
+#: texi2html/texi2html.init:5703 texi2html/texi2html.init:5724
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr ""
 
-#: texi2html/texi2html.init:5705 texi2html/texi2html.init:5726
+#: texi2html/texi2html.init:5707 texi2html/texi2html.init:5728
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr ""
 
-#: texi2html/texi2html.init:6047
+#: texi2html/texi2html.init:6049
 #, fuzzy, perl-brace-format
 msgid "see {reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.init:6051
+#: texi2html/texi2html.init:6053
 #, fuzzy, perl-brace-format
 msgid "see `{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.init:6055
+#: texi2html/texi2html.init:6057
 #, perl-brace-format
 msgid "see @cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.init:6059
+#: texi2html/texi2html.init:6061
 #, fuzzy, perl-brace-format
 msgid "see {reference}"
 msgstr "{node_file_href}参照"
 
-#: texi2html/texi2html.init:6063
+#: texi2html/texi2html.init:6065
 #, perl-brace-format
 msgid "see `{section}'"
 msgstr ""
 
-#: texi2html/texi2html.init:6070
+#: texi2html/texi2html.init:6072
 #, fuzzy, perl-brace-format
 msgid "See {reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.init:6074
+#: texi2html/texi2html.init:6076
 #, fuzzy, perl-brace-format
 msgid "See `{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.init:6078
+#: texi2html/texi2html.init:6080
 #, perl-brace-format
 msgid "See @cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.init:6082
+#: texi2html/texi2html.init:6084
 #, perl-brace-format
 msgid "See {reference}"
 msgstr ""
 
-#: texi2html/texi2html.init:6086
+#: texi2html/texi2html.init:6088
 #, fuzzy, perl-brace-format
 msgid "See `{section}'"
 msgstr "項"
 
-#: texi2html/texi2html.init:6093
+#: texi2html/texi2html.init:6095
 #, fuzzy, perl-brace-format
 msgid "{reference} in @cite{{book}}"
 msgstr "{node_file_href} @cite{{book}}参照"
 
-#: texi2html/texi2html.init:6097
+#: texi2html/texi2html.init:6099
 #, fuzzy, perl-brace-format
 msgid "`{section}' in @cite{{book}}"
 msgstr "@cite{{book}}の `{section}' "
 
-#: texi2html/texi2html.init:6101
+#: texi2html/texi2html.init:6103
 #, perl-brace-format
 msgid "@cite{{book}}"
 msgstr ""
 
-#: texi2html/texi2html.init:6105
+#: texi2html/texi2html.init:6107
 #, perl-brace-format
 msgid "{reference}"
 msgstr ""
 
-#: texi2html/texi2html.init:6109
+#: texi2html/texi2html.init:6111
 #, fuzzy, perl-brace-format
 msgid "`{section}'"
 msgstr "項"
 
-#: texi2html/texi2html.init:6144
+#: texi2html/texi2html.init:6146
 #, perl-brace-format
 msgid "see section {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.init:6145 texi2html/texi2html.init:6162
+#: texi2html/texi2html.init:6147 texi2html/texi2html.init:6164
 #, perl-brace-format
 msgid "see {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.init:6149
+#: texi2html/texi2html.init:6151
 #, perl-brace-format
 msgid "See section {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.init:6150 texi2html/texi2html.init:6166
+#: texi2html/texi2html.init:6152 texi2html/texi2html.init:6168
 #, perl-brace-format
 msgid "See {reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.init:6154 texi2html/texi2html.init:6170
+#: texi2html/texi2html.init:6156 texi2html/texi2html.init:6172
 #, perl-brace-format
 msgid "{reference_name}"
 msgstr ""
 
-#: texi2html/texi2html.init:6790
+#: texi2html/texi2html.init:6792
 #, perl-brace-format
 msgid "on @emph{{date}}"
 msgstr "@emph{{date}}"
 
-#: texi2html/texi2html.init:6965 texi2html/formats/html.init:2615
+#: texi2html/texi2html.init:6967 texi2html/formats/html.init:2615
 #: texi2html/maintained_extra/html32.init:165
 #, perl-brace-format
 msgid "{acronym_like} ({explanation})"
 msgstr ""
 
-#: texi2html/texi2html.init:6985 texi2html/formats/docbook.init:1398
+#: texi2html/texi2html.init:6987 texi2html/formats/docbook.init:1398
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
 
-#: texi2html/texi2html.init:7110
+#: texi2html/texi2html.init:7112
 msgid "(outside of any element)"
 msgstr ""
 

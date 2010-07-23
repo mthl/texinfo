@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-07-18 12:20+0200\n"
+"POT-Creation-Date: 2010-07-20 16:20+0200\n"
 "PO-Revision-Date: 2008-09-04 23:50+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -303,7 +303,7 @@ msgid "Try --help for more information.\n"
 msgstr "Pruebe la opción `--help' para obtener más información.\n"
 
 #: info/info.c:298 info/infokey.c:145 install-info/install-info.c:2122
-#: makeinfo/makeinfo.c:802 util/texindex.c:295 texi2html/texi2html.pl:3922
+#: makeinfo/makeinfo.c:802 util/texindex.c:295 texi2html/texi2html.pl:3930
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -2008,7 +2008,7 @@ msgstr ""
 "FICHERO_ÍNDICE.\n"
 " --version         mostrar información sobre la versión de esta programa."
 
-#: install-info/install-info.c:575 texi2html/texi2html.pl:3842
+#: install-info/install-info.c:575 texi2html/texi2html.pl:3850
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -2231,7 +2231,7 @@ msgstr ""
 msgid "%c%s is obsolete"
 msgstr "%c%s es una sintaxis ya obsoleta"
 
-#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6231
+#: makeinfo/cmds.c:1620 texi2html/texi2html.pl:6239
 #, c-format, perl-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp requiere un argumento numérico positivo, no `%s'"
@@ -2249,8 +2249,8 @@ msgstr "asis"
 msgid "none"
 msgstr "none"
 
-#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:5865
-#: texi2html/texi2html.pl:5876
+#: makeinfo/cmds.c:2057 texi2html/texi2html.pl:5873
+#: texi2html/texi2html.pl:5884
 #, c-format, perl-format
 msgid "Bad argument to @%s"
 msgstr "Argumento erróneo para @%s"
@@ -2259,20 +2259,20 @@ msgstr "Argumento erróneo para @%s"
 msgid "insert"
 msgstr "insert"
 
-#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5804
-#: texi2html/texi2html.pl:6023 texi2html/texi2html.pl:6051
-#: texi2html/texi2html.pl:6116 texi2html/texi2html.pl:6279
-#: texi2html/texi2html.pl:13089 texi2html/texi2html.pl:14475
+#: makeinfo/cmds.c:2087 texi2html/texi2html.pl:5812
+#: texi2html/texi2html.pl:6031 texi2html/texi2html.pl:6059
+#: texi2html/texi2html.pl:6124 texi2html/texi2html.pl:6287
+#: texi2html/texi2html.pl:13097 texi2html/texi2html.pl:14483
 #, c-format, perl-format
 msgid "Bad argument to @%s: %s"
 msgstr "Argumento erróneo para @%s: %s"
 
-#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5748
+#: makeinfo/cmds.c:2170 texi2html/texi2html.pl:5756
 #, c-format, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "Se esperaba leer @%s \"on\" u \"off\", no `%s'"
 
-#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6074
+#: makeinfo/cmds.c:2190 texi2html/texi2html.pl:6082
 #, c-format, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Sólo @%s 10 or 11 está soportado, no `%s'"
@@ -2281,7 +2281,7 @@ msgstr "Sólo @%s 10 or 11 está soportado, no `%s'"
 msgid "Missing `}' in @def arg"
 msgstr "La construcción `@def arg' necesita de un símbolo `}' al final"
 
-#: makeinfo/defun.c:711 texi2html/texi2html.pl:11034
+#: makeinfo/defun.c:711 texi2html/texi2html.pl:11042
 #, c-format, perl-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "Debe estar bajo la influencia del entorno `@%s' para poder usar `@%s'"
@@ -2307,7 +2307,7 @@ msgstr ""
 msgid "Output buffer not empty."
 msgstr "El acumulador (buffer) de salida no está vacío."
 
-#: makeinfo/float.c:181 texi2html/texi2html.pl:14433
+#: makeinfo/float.c:181 texi2html/texi2html.pl:14441
 #, c-format, perl-format
 msgid "Requested float type `%s' not previously used"
 msgstr "El tipo de construccion `float' `%s' no ha sido usado previamente"
@@ -2344,7 +2344,7 @@ msgstr "Notas a pie de página"
 msgid "%s: could not open --css-file: %s"
 msgstr "%s: no se pudo abrir --css-file: %s"
 
-#: makeinfo/html.c:180 texi2html/texi2html.pl:16704
+#: makeinfo/html.c:180 texi2html/texi2html.pl:16712
 #, c-format, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-file finaliza con un comentario"
@@ -2358,7 +2358,7 @@ msgstr "[inesperado] no etiqueta `html' que procesar"
 msgid "[unexpected] invalid node name: `%s'"
 msgstr "[inesperado] el nombre de nodo `%s' es inválido"
 
-#: makeinfo/index.c:167 texi2html/texi2html.pl:8328
+#: makeinfo/index.c:167 texi2html/texi2html.pl:8336
 #, c-format, perl-format
 msgid "Unknown index `%s'"
 msgstr "Índice desconocido `%s'"
@@ -2387,12 +2387,12 @@ msgstr "(línea )"
 msgid "(line %*d)"
 msgstr "(línea %*d)"
 
-#: makeinfo/index.c:765 texi2html/texi2html.pl:13494
+#: makeinfo/index.c:765 texi2html/texi2html.pl:13502
 #, c-format, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "Índice desconocido `%s' en `@printindex'"
 
-#: makeinfo/index.c:834 texi2html/texi2html.pl:8333
+#: makeinfo/index.c:834 texi2html/texi2html.pl:8341
 #: texi2html/formats/info.init:3072
 #, c-format, perl-format
 msgid "Entry for index `%s' outside of any node"
@@ -2420,7 +2420,7 @@ msgid "lettering overflow, restarting at %c"
 msgstr ""
 "desbordamiento por tamaño de palabra, comenzando de nuevo en el carácter %c"
 
-#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11174
+#: makeinfo/insertion.c:640 texi2html/texi2html.pl:11182
 #, c-format, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "`%s' requiere un argumento: el procesador de formato para %citem"
@@ -2430,13 +2430,13 @@ msgstr "`%s' requiere un argumento: el procesador de formato para %citem"
 msgid "%cfloat environments cannot be nested"
 msgstr "entornos `%cfloat' no pueden ser anidados"
 
-#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10712
-#: texi2html/texi2html.pl:10739 texi2html/texi2html.pl:14341
+#: makeinfo/insertion.c:1006 texi2html/texi2html.pl:10720
+#: texi2html/texi2html.pl:10747 texi2html/texi2html.pl:14349
 #, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "Se esperaba ver `@end' `%s', pero se ha leído `%s'"
 
-#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:15856
+#: makeinfo/insertion.c:1382 texi2html/texi2html.pl:15864
 #, c-format, perl-format
 msgid "No matching `%cend %s'"
 msgstr "No hay constancia de final de bloque `%cend %s'"
@@ -2450,7 +2450,7 @@ msgstr "%s require una letra o número"
 msgid "end of file inside verbatim block"
 msgstr "fin de fichero sobre bloque de texto literal"
 
-#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11761
+#: makeinfo/insertion.c:1975 texi2html/texi2html.pl:11769
 #, c-format, perl-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "@%s carece de sentido si se da fuera de entornos como `@float'"
@@ -2459,7 +2459,7 @@ msgstr "@%s carece de sentido si se da fuera de entornos como `@float'"
 msgid "@menu seen before first @node, creating `Top' node"
 msgstr "`@menu' ha sido leído antes que `@node', se creará un nodo `Top'"
 
-#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13592
+#: makeinfo/insertion.c:2012 texi2html/texi2html.pl:13600
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
@@ -2471,7 +2471,7 @@ msgid "@detailmenu seen before first node, creating `Top' node"
 msgstr ""
 "`@detailmenu' ha sido leído antes que nodo alguno, se creará un nodo `Top'"
 
-#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6162
+#: makeinfo/insertion.c:2099 texi2html/texi2html.pl:6170
 #, c-format, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
@@ -2484,9 +2484,9 @@ msgid "@%s not meaningful outside `@titlepage' environment"
 msgstr ""
 "@%s carece de sentido fuera de influencias de entornos como `@titlepage'"
 
-#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12715
-#: texi2html/texi2html.pl:13246 texi2html/texi2html.pl:14268
-#: texi2html/texi2html.pl:14288 texi2html/texi2html.pl:14330
+#: makeinfo/insertion.c:2144 texi2html/texi2html.pl:12723
+#: texi2html/texi2html.pl:13254 texi2html/texi2html.pl:14276
+#: texi2html/texi2html.pl:14296 texi2html/texi2html.pl:14338
 #, c-format, perl-format
 msgid "Unmatched `%c%s'"
 msgstr "Final de bloque inexistente (`%c%s')"
@@ -2496,13 +2496,13 @@ msgstr "Final de bloque inexistente (`%c%s')"
 msgid "`%c%s' needs something after it"
 msgstr "`%c%s' necesita de algún argumento tras su declaración"
 
-#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13831
+#: makeinfo/insertion.c:2155 texi2html/texi2html.pl:13839
 #, c-format, perl-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "`%s' no es un argumento correcto para `@%s', se usará `%s'"
 
-#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14767
-#: texi2html/texi2html.pl:14780
+#: makeinfo/insertion.c:2252 texi2html/texi2html.pl:14775
+#: texi2html/texi2html.pl:14788
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' carece de sentido bajo la influencia de un bloque `@%s'"
@@ -2528,7 +2528,7 @@ msgid "%s is not a valid ISO 639 language code"
 msgstr ""
 "`%s' no es válido como código de lenguaje alguno que cumpla con ISO 639"
 
-#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2512
+#: makeinfo/lang.c:1399 texi2html/texi2html.pl:2517
 #, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "`%s' no se corresponde con ningún tipo de codificación conocido"
@@ -2549,17 +2549,17 @@ msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgstr ""
 "el uso de `%c%s' presupone como siguientes argumentos `i' o `j', no `%c'"
 
-#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15505
+#: makeinfo/lang.c:1804 texi2html/texi2html.pl:15513
 #, c-format, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "el uso `%c%s' presupone como argumentos los caracteres `i' o `j'"
 
-#: makeinfo/macro.c:128 texi2html/texi2html.pl:12803
+#: makeinfo/macro.c:128 texi2html/texi2html.pl:12811
 #, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "el macro `%s' ya ha sido definido en este documento"
 
-#: makeinfo/macro.c:132 texi2html/texi2html.pl:12804
+#: makeinfo/macro.c:132 texi2html/texi2html.pl:12812
 #, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "la definición previa de `%s' se encuentra aquí"
@@ -2576,7 +2576,7 @@ msgstr ""
 msgid "Macro `%s' called on line %d with too many args"
 msgstr "La llamada al macro `%s' en la línea %d contiene demasiados argumentos"
 
-#: makeinfo/macro.c:580 texi2html/texi2html.pl:15687
+#: makeinfo/macro.c:580 texi2html/texi2html.pl:15695
 #, c-format, perl-format
 msgid "%cend macro not found"
 msgstr "no se encontró declaración de final de macro (`%cend')"
@@ -2593,12 +2593,12 @@ msgstr ""
 "`@quote-arg' consta como una primitiva obsoleta; sus argumentos son "
 "entrecomillados por defecto"
 
-#: makeinfo/macro.c:649 texi2html/texi2html.pl:10901
+#: makeinfo/macro.c:649 texi2html/texi2html.pl:10909
 #, c-format, perl-format
 msgid "mismatched @end %s with @%s"
 msgstr "se esperaba leer `@end %s' pero se ha leído `@%s'"
 
-#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9515
+#: makeinfo/makeinfo.c:188 texi2html/texi2html.pl:9523
 #, c-format
 msgid "Too many errors!  Gave up.\n"
 msgstr ""
@@ -2610,22 +2610,22 @@ msgid "%s:%d: warning: "
 msgstr "%s:%d: precaución: "
 
 #: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2340
-#: texi2html/texi2html.pl:14931 texi2html/texi2html.pl:14951
+#: texi2html/texi2html.pl:14939 texi2html/texi2html.pl:14959
 #, c-format, perl-format
 msgid "Misplaced %c"
 msgstr "Carácter `%c' fuera de lugar"
 
-#: makeinfo/makeinfo.c:344 texi2html/texi2html.pl:2305
+#: makeinfo/makeinfo.c:344 texi2html/texi2html.pl:2310
 #, c-format, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Pruebe `%s --help' para obtener más información.\n"
 
-#: makeinfo/makeinfo.c:347 texi2html/texi2html.pl:3723
+#: makeinfo/makeinfo.c:347 texi2html/texi2html.pl:3731
 #, c-format, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Uso: %s [OPCIÓN]... FICHERO-TEXINFO...\n"
 
-#: makeinfo/makeinfo.c:350 texi2html/texi2html.pl:3725
+#: makeinfo/makeinfo.c:350 texi2html/texi2html.pl:3733
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -2671,7 +2671,7 @@ msgstr ""
 "      --version               mostrar información sobre la versión de esta\n"
 "                                aplicación informática.\n"
 
-#: makeinfo/makeinfo.c:369 texi2html/texi2html.pl:3743
+#: makeinfo/makeinfo.c:369 texi2html/texi2html.pl:3751
 #, no-wrap
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -2726,7 +2726,7 @@ msgstr ""
 "HTML\n"
 "                               en modo multi-documento/multi-página).\n"
 
-#: makeinfo/makeinfo.c:391 texi2html/texi2html.pl:3766
+#: makeinfo/makeinfo.c:391 texi2html/texi2html.pl:3774
 #, c-format, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -2849,7 +2849,7 @@ msgstr ""
 "                                  propio documento mediante el uso de\n"
 "                                  `@clear VARIABLE'.\n"
 
-#: makeinfo/makeinfo.c:435 texi2html/texi2html.pl:3808
+#: makeinfo/makeinfo.c:435 texi2html/texi2html.pl:3816
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -2894,7 +2894,7 @@ msgstr ""
 "  También, para las opciones de tipo --no-ifFORMATO, procesar "
 "`@ifnotFORMATO'.\n"
 
-#: makeinfo/makeinfo.c:454 texi2html/texi2html.pl:3825
+#: makeinfo/makeinfo.c:454 texi2html/texi2html.pl:3833
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -2910,7 +2910,7 @@ msgstr ""
 "no;\n"
 "  si este es XML, --ifxml estará activo, mientras el resto no;\n"
 
-#: makeinfo/makeinfo.c:462 texi2html/texi2html.pl:3831
+#: makeinfo/makeinfo.c:462 texi2html/texi2html.pl:3839
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -2976,7 +2976,7 @@ msgstr ""
 "un\n"
 "                                         mismo fichero.\n"
 
-#: makeinfo/makeinfo.c:622 texi2html/texi2html.pl:3946
+#: makeinfo/makeinfo.c:622 texi2html/texi2html.pl:3954
 #, c-format, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: Ignorando valor desconocido de TEXINFO_OUTPUT_FORMAT (`%s').\n"
@@ -3007,20 +3007,20 @@ msgstr "%s: no se pudo abrir el fichero `%s' para los enlaces internos"
 msgid "%s: ignoring second internal links output `%s'.\n"
 msgstr "%s: ignorando el segundo argumento `%s' para los enlaces internos.\n"
 
-#: makeinfo/makeinfo.c:751 texi2html/texi2html.pl:2843
+#: makeinfo/makeinfo.c:751 texi2html/texi2html.pl:2848
 #, c-format, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no `"
 "%s'.\n"
 
-#: makeinfo/makeinfo.c:769 texi2html/texi2html.pl:2486
+#: makeinfo/makeinfo.c:769 texi2html/texi2html.pl:2491
 #, c-format, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: `--footnote-style' toma como argumentos `separate' o `end', no `%s'.\n"
 
-#: makeinfo/makeinfo.c:844 texi2html/texi2html.pl:16790
+#: makeinfo/makeinfo.c:844 texi2html/texi2html.pl:16858
 #, c-format, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: se necesita nombre de fichero que procesar.\n"
@@ -3035,7 +3035,7 @@ msgstr "Comentario multi-línea `%c%s' usado inapropiadamente"
 msgid "Expected `%s'"
 msgstr "Se esperaba `%s'"
 
-#: makeinfo/makeinfo.c:1521 texi2html/texi2html.pl:4637
+#: makeinfo/makeinfo.c:1521 texi2html/texi2html.pl:4645
 #, c-format, perl-format
 msgid "Can't create directory `%s': %s"
 msgstr "No se pudo crear el directorio `%s': %s"
@@ -3065,7 +3065,7 @@ msgstr ""
 "%s: El fichero de expansión de macros `%s' será borrado debido a la cantidad "
 "de errores encontrados; use `--force' para preservar el mismo.\n"
 
-#: makeinfo/makeinfo.c:1799 texi2html/texi2html.pl:9464
+#: makeinfo/makeinfo.c:1799 texi2html/texi2html.pl:9472
 #, c-format, perl-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr ""
@@ -3081,17 +3081,17 @@ msgstr ""
 "%s: El fichero de enlaces internos `%s' será borrado debido a la cantidad de "
 "errores encontrados; use `--force' para preservar el mismo.\n"
 
-#: makeinfo/makeinfo.c:2113 texi2html/texi2html.pl:15601
+#: makeinfo/makeinfo.c:2113 texi2html/texi2html.pl:15609
 #, c-format, perl-format
 msgid "Unknown command `%s'"
 msgstr "Comando desconocido `%s'"
 
-#: makeinfo/makeinfo.c:2135 texi2html/texi2html.pl:14606
+#: makeinfo/makeinfo.c:2135 texi2html/texi2html.pl:14614
 #, c-format, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "Use llaves para suplir un comando como argumento a @%s"
 
-#: makeinfo/makeinfo.c:2394 texi2html/texi2html.pl:15597
+#: makeinfo/makeinfo.c:2394 texi2html/texi2html.pl:15605
 #, c-format, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s se esperaban llaves"
@@ -3104,8 +3104,8 @@ msgstr "`}' desemparejada"
 msgid "NO_NAME!"
 msgstr "NO SE ENCONTRO FUNCIÓN!"
 
-#: makeinfo/makeinfo.c:2476 texi2html/texi2html.pl:15884
-#: texi2html/texi2html.pl:15911
+#: makeinfo/makeinfo.c:2476 texi2html/texi2html.pl:15892
+#: texi2html/texi2html.pl:15919
 #, c-format, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s se esperaba leer `}'"
@@ -3130,7 +3130,7 @@ msgstr ""
 msgid "@image missing filename argument"
 msgstr "la primitiva `@image' carece de referencia a fichero alguno"
 
-#: makeinfo/makeinfo.c:3851 texi2html/texi2html.pl:12878
+#: makeinfo/makeinfo.c:3851 texi2html/texi2html.pl:12886
 #, c-format, perl-format
 msgid "undefined flag: %s"
 msgstr "etiqueta indefinida: %s"
@@ -3140,13 +3140,13 @@ msgstr "etiqueta indefinida: %s"
 msgid "{No value for `%s'}"
 msgstr "{No se ha especificado un valor para `%s'}"
 
-#: makeinfo/makeinfo.c:3904 texi2html/texi2html.pl:5661
-#: texi2html/texi2html.pl:5672 texi2html/texi2html.pl:10251
+#: makeinfo/makeinfo.c:3904 texi2html/texi2html.pl:5669
+#: texi2html/texi2html.pl:5680 texi2html/texi2html.pl:10259
 #, c-format, perl-format
 msgid "%c%s requires a name"
 msgstr "la construcción `%c%s' requiere un nombre"
 
-#: makeinfo/makeinfo.c:4010 texi2html/texi2html.pl:15679
+#: makeinfo/makeinfo.c:4010 texi2html/texi2html.pl:15687
 #, c-format, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr ""
@@ -3162,12 +3162,12 @@ msgstr "`%.40s...' es demasiado largo para su expansión; no será expandido"
 msgid "Missing } in @multitable template"
 msgstr "Se esperaba leer `}' en la plantilla `@multitable'"
 
-#: makeinfo/multi.c:260 texi2html/texi2html.pl:10625
+#: makeinfo/multi.c:260 texi2html/texi2html.pl:10633
 #, c-format, perl-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "ignorando texto incoherente `%s' después de `@multitable'"
 
-#: makeinfo/multi.c:400 texi2html/texi2html.pl:14860
+#: makeinfo/multi.c:400 texi2html/texi2html.pl:14868
 #, c-format, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "Demasiadas columnas para el elemento multi-tabla (max %d)"
@@ -3177,7 +3177,7 @@ msgstr "Demasiadas columnas para el elemento multi-tabla (max %d)"
 msgid "[unexpected] cannot select column #%d in multitable"
 msgstr "[inesperado] no se pudo seleccionar la columna #%d en la multi-tabla"
 
-#: makeinfo/multi.c:592 texi2html/texi2html.pl:14849
+#: makeinfo/multi.c:592 texi2html/texi2html.pl:14857
 msgid "ignoring @tab outside of multitable"
 msgstr "ignorando `@tab' no influenciado por el entorno `multitable'"
 
@@ -3277,14 +3277,14 @@ msgstr ""
 "`%s' no contiene referencia a `Up', quizás debido a un seccionado incorrecto "
 "del documento"
 
-#: makeinfo/node.c:1605 texi2html/texi2html.pl:7212
+#: makeinfo/node.c:1605 texi2html/texi2html.pl:7220
 #, c-format, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr ""
 "El nodo `%s' carece de elemento de menú alguno para `%s' aunque consta como "
 "destino para `Up'"
 
-#: makeinfo/node.c:1637 texi2html/texi2html.pl:7158
+#: makeinfo/node.c:1637 texi2html/texi2html.pl:7166
 #, c-format, perl-format
 msgid "unreferenced node `%s'"
 msgstr "Nodo `%s' no referenciado"
@@ -3433,41 +3433,41 @@ msgstr "No hay constancia de número de página en %s"
 msgid "entry %s follows an entry with a secondary name"
 msgstr "la entrada %s sigue un elemento con nombre secundario"
 
-#: texi2html/texi2html.pl:2412
+#: texi2html/texi2html.pl:2417
 #, fuzzy, perl-format
 msgid "%s is not a valid language code"
 msgstr ""
 "`%s' no es válido como código de lenguaje alguno que cumpla con ISO 639"
 
-#: texi2html/texi2html.pl:2416
+#: texi2html/texi2html.pl:2421
 #, fuzzy, perl-format
 msgid "%s is not a valid region code"
 msgstr ""
 "`%s' no es válido como código de lenguaje alguno que cumpla con ISO 639"
 
-#: texi2html/texi2html.pl:2491
+#: texi2html/texi2html.pl:2496
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: `--footnote-style' toma como argumentos `separate' o `end', no `%s'.\n"
 
-#: texi2html/texi2html.pl:2529
+#: texi2html/texi2html.pl:2534
 #, fuzzy, perl-format
 msgid "Encoding %s certainly poorly supported"
 msgstr "lo sentimos, el tipo de codificación `%s' no está soportado"
 
-#: texi2html/texi2html.pl:2653 texi2html/texi2html.pl:2657
+#: texi2html/texi2html.pl:2658 texi2html/texi2html.pl:2662
 msgid "translation"
 msgstr ""
 
-#: texi2html/texi2html.pl:2847
+#: texi2html/texi2html.pl:2852
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no `"
 "%s'.\n"
 
-#: texi2html/texi2html.pl:3728
+#: texi2html/texi2html.pl:3736
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3508,7 +3508,7 @@ msgstr ""
 "      --version               mostrar información sobre la versión de esta\n"
 "                                aplicación informática.\n"
 
-#: texi2html/texi2html.pl:3749
+#: texi2html/texi2html.pl:3757
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3557,7 +3557,7 @@ msgstr ""
 "HTML\n"
 "                               en modo multi-documento/multi-página).\n"
 
-#: texi2html/texi2html.pl:3781
+#: texi2html/texi2html.pl:3789
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -3581,14 +3581,14 @@ msgstr ""
 "                              producir nombres de ficheros en formato "
 "ASCII.\n"
 
-#: texi2html/texi2html.pl:3791
+#: texi2html/texi2html.pl:3799
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     this does nothing, retained for "
 "compatibility.\n"
 msgstr ""
 
-#: texi2html/texi2html.pl:3801
+#: texi2html/texi2html.pl:3809
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3621,541 +3621,551 @@ msgstr ""
 "                                  propio documento mediante el uso de\n"
 "                                  `@clear VARIABLE'.\n"
 
-#: texi2html/texi2html.pl:4378
+#: texi2html/texi2html.pl:4386
 msgid "Missing type"
 msgstr ""
 
-#: texi2html/texi2html.pl:4383
+#: texi2html/texi2html.pl:4391
 #, fuzzy, perl-format
 msgid "Unrecognized type: %s"
 msgstr "%s: opción desconocida `--%s'\n"
 
-#: texi2html/texi2html.pl:4460
+#: texi2html/texi2html.pl:4468
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:4556
+#: texi2html/texi2html.pl:4564
 #, fuzzy, perl-format
 msgid "Cannot split output %s"
 msgstr "no se pudo crear el fichero `%s'"
 
-#: texi2html/texi2html.pl:4631
+#: texi2html/texi2html.pl:4639
 #, fuzzy, perl-format
 msgid "Can't create directories `%s' or `%s': %s"
 msgstr "No se pudo crear el directorio `%s': %s"
 
-#: texi2html/texi2html.pl:4656
+#: texi2html/texi2html.pl:4664
 msgid "current directory not writable"
 msgstr ""
 
-#: texi2html/texi2html.pl:4660
+#: texi2html/texi2html.pl:4668
 #, fuzzy, perl-format
 msgid "%s not writable"
 msgstr "%s: fichero vacío"
 
-#: texi2html/texi2html.pl:5350
+#: texi2html/texi2html.pl:5358
 msgid "Superfluous arguments for node"
 msgstr ""
 
-#: texi2html/texi2html.pl:5358
+#: texi2html/texi2html.pl:5366
 #, fuzzy, perl-format
 msgid "Node `%s' previously defined %s"
 msgstr "El nodo `%s' ha sido definido previamente en la línea %d"
 
-#: texi2html/texi2html.pl:5363 texi2html/texi2html.pl:13156
-#: texi2html/texi2html.pl:13661
+#: texi2html/texi2html.pl:5371 texi2html/texi2html.pl:13164
+#: texi2html/texi2html.pl:13669
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5489
+#: texi2html/texi2html.pl:5497
 #, fuzzy, perl-format
 msgid "@%s requires an argument"
 msgstr "la construcción `%c%s' requiere un nombre"
 
-#: texi2html/texi2html.pl:5580 texi2html/texi2html.pl:15707
+#: texi2html/texi2html.pl:5588 texi2html/texi2html.pl:15715
 #, fuzzy, perl-format
 msgid "Expected @end %s"
 msgstr "Se esperaba `%s'"
 
-#: texi2html/texi2html.pl:5629
+#: texi2html/texi2html.pl:5637
 #, perl-format
 msgid "Translations for `%s' not found. Reverting to `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5684
+#: texi2html/texi2html.pl:5692
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "Use llaves para suplir un comando como argumento a @%s"
 
-#: texi2html/texi2html.pl:5722
+#: texi2html/texi2html.pl:5730
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no `"
 "%s'.\n"
 
-#: texi2html/texi2html.pl:5737
+#: texi2html/texi2html.pl:5745
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no `"
 "%s'.\n"
 
-#: texi2html/texi2html.pl:5759
+#: texi2html/texi2html.pl:5767
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5786
+#: texi2html/texi2html.pl:5794
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: `--footnote-style' toma como argumentos `separate' o `end', no `%s'.\n"
 
-#: texi2html/texi2html.pl:5835
+#: texi2html/texi2html.pl:5843
 #, perl-format
 msgid "Encoding %s is not a canonical texinfo encoding"
 msgstr ""
 
-#: texi2html/texi2html.pl:5854
+#: texi2html/texi2html.pl:5862
 #, perl-format
 msgid "@%s arg must be an encoding"
 msgstr ""
 
-#: texi2html/texi2html.pl:5996
+#: texi2html/texi2html.pl:6004
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "Índice desconocido `%s'"
 
-#: texi2html/texi2html.pl:5998
+#: texi2html/texi2html.pl:6006
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "Índice desconocido `%s'"
 
-#: texi2html/texi2html.pl:6033
+#: texi2html/texi2html.pl:6041
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:6063
+#: texi2html/texi2html.pl:6071
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: argumento de %s debe ser numérico, así que `%s' no es válido.\n"
 
-#: texi2html/texi2html.pl:6104
+#: texi2html/texi2html.pl:6112
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: argumento de %s debe ser numérico, así que `%s' no es válido.\n"
 
-#: texi2html/texi2html.pl:6251
+#: texi2html/texi2html.pl:6259 texi2html/texi2html.pl:16832
 #, fuzzy, perl-format
 msgid "Cannot read %s: %s"
 msgstr "No se pudo crear el directorio `%s': %s"
 
-#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:13084
+#: texi2html/texi2html.pl:6282 texi2html/texi2html.pl:13092
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "No se encontró `%s'."
 
-#: texi2html/texi2html.pl:6454
+#: texi2html/texi2html.pl:6462
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:7087
+#: texi2html/texi2html.pl:7095
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "Nodo `%s' no referenciado"
 
-#: texi2html/texi2html.pl:7231
+#: texi2html/texi2html.pl:7239
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: texi2html/texi2html.pl:7284
+#: texi2html/texi2html.pl:7292
 #, perl-format
 msgid "No node following `%s' in menu, but `%s' follows in sectioning"
 msgstr ""
 
-#: texi2html/texi2html.pl:7285
+#: texi2html/texi2html.pl:7293
 #, perl-format
 msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: texi2html/texi2html.pl:8790
+#: texi2html/texi2html.pl:8798
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: texi2html/texi2html.pl:9256
+#: texi2html/texi2html.pl:9264
 #, fuzzy, perl-format
 msgid "File empty for renamed node `%s'"
 msgstr "Nodo `%s' no referenciado"
 
-#: texi2html/texi2html.pl:9260
+#: texi2html/texi2html.pl:9268
 #, perl-format
 msgid "Node to be renamed as, `%s' not found"
 msgstr ""
 
-#: texi2html/texi2html.pl:9264
+#: texi2html/texi2html.pl:9272
 #, fuzzy, perl-format
 msgid "Node `%s' that is to be renamed exists "
 msgstr "Ya existe un índice llamado `%s'"
 
-#: texi2html/texi2html.pl:9468
+#: texi2html/texi2html.pl:9476
 #, fuzzy, perl-format
 msgid "%s: Removing output files due to errors; use --force to preserve.\n"
 msgstr ""
 "%s: El fichero `%s' será borrado debido a la cantidad de errores "
 "encontrados; use `--force' para preservar el mismo.\n"
 
-#: texi2html/texi2html.pl:9607
+#: texi2html/texi2html.pl:9615
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s (via @%s)\n"
 msgstr "%s:%d: precaución: "
 
-#: texi2html/texi2html.pl:9611
+#: texi2html/texi2html.pl:9619
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s\n"
 msgstr "%s:%d: precaución: "
 
-#: texi2html/texi2html.pl:9644
+#: texi2html/texi2html.pl:9652
 #, perl-format
 msgid "(in %s l. %d via @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9648
+#: texi2html/texi2html.pl:9656
 #, perl-format
 msgid "(l. %d via @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9653
+#: texi2html/texi2html.pl:9661
 #, fuzzy, perl-format
 msgid "(in %s l. %d)"
 msgstr "(línea %*d)"
 
-#: texi2html/texi2html.pl:9657
+#: texi2html/texi2html.pl:9665
 #, fuzzy, perl-format
 msgid "(l. %d)"
 msgstr "(línea %*d)"
 
-#: texi2html/texi2html.pl:9814
+#: texi2html/texi2html.pl:9822
 #, perl-format
 msgid "Too much '}' in @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:9824
+#: texi2html/texi2html.pl:9832
 #, fuzzy, perl-format
 msgid "Missing `}' on @%s line"
 msgstr "La construcción `@def arg' necesita de un símbolo `}' al final"
 
-#: texi2html/texi2html.pl:9974
+#: texi2html/texi2html.pl:9982
 #, fuzzy, perl-format
 msgid "Anchor `%s' ignored in %s expanded more than once"
 msgstr "El enlace `%s' y el nodo `%s' apuntan al mismo fichero"
 
-#: texi2html/texi2html.pl:10325
+#: texi2html/texi2html.pl:10333
 #, fuzzy, perl-format
 msgid "Region %s inside region %s is not allowed"
 msgstr "No está permitido anidar notas a pie de página en sí mismas"
 
-#: texi2html/texi2html.pl:10604
+#: texi2html/texi2html.pl:10612
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:10647
+#: texi2html/texi2html.pl:10655
 #, perl-format
 msgid "Too many %s closed"
 msgstr ""
 
-#: texi2html/texi2html.pl:10717
+#: texi2html/texi2html.pl:10725
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:10877
+#: texi2html/texi2html.pl:10885
 #, fuzzy, perl-format
 msgid "Unknown format %s"
 msgstr "Comando desconocido `%s'"
 
-#: texi2html/texi2html.pl:11093 texi2html/texi2html.pl:11525
+#: texi2html/texi2html.pl:11101 texi2html/texi2html.pl:11533
 #, fuzzy, perl-format
 msgid "@%s (argument nr %d)"
 msgstr "Argumento erróneo para @%s"
 
-#: texi2html/texi2html.pl:11177
+#: texi2html/texi2html.pl:11185
 #, perl-format
 msgid "prepended for @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:11193
+#: texi2html/texi2html.pl:11201
 #, fuzzy
 msgid "empty multitable"
 msgstr "%s: fichero vacío"
 
-#: texi2html/texi2html.pl:11203
+#: texi2html/texi2html.pl:11211
 #, perl-format
 msgid "@columnfraction (argument nr %d)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11385 texi2html/texi2html.pl:11399
+#: texi2html/texi2html.pl:11393 texi2html/texi2html.pl:11407
 msgid "node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11386
+#: texi2html/texi2html.pl:11394
 msgid "normalized node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11392
+#: texi2html/texi2html.pl:11400
 msgid "menu entry name"
 msgstr ""
 
-#: texi2html/texi2html.pl:11427
+#: texi2html/texi2html.pl:11435
 #, fuzzy, perl-format
 msgid "Menu reference to nonexistent node `%s'"
 msgstr "Nodo `%s' no referenciado"
 
-#: texi2html/texi2html.pl:11501
+#: texi2html/texi2html.pl:11509
 #, fuzzy, perl-format
 msgid "First argument to @%s may not be empty"
 msgstr "El primer argumento de `@inforef' siempre debería estar presente"
 
-#: texi2html/texi2html.pl:11647
+#: texi2html/texi2html.pl:11655
 #, perl-format
 msgid "@%s not in text (in anchor, node, section...)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11659 texi2html/texi2html.pl:14417
+#: texi2html/texi2html.pl:11667 texi2html/texi2html.pl:14425
 msgid "@listoffloats @float type"
 msgstr ""
 
-#: texi2html/texi2html.pl:11678
+#: texi2html/texi2html.pl:11686
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr ""
 "`%s' hace referencia a un nodo inexistente (`%s'), quizás debido a un "
 "seccionado incorrecto del documento"
 
-#: texi2html/texi2html.pl:11819
+#: texi2html/texi2html.pl:11827
 msgid "@float style"
 msgstr ""
 
-#: texi2html/texi2html.pl:11951 texi2html/texi2html.pl:11952
+#: texi2html/texi2html.pl:11959 texi2html/texi2html.pl:11960
 msgid "@image base name"
 msgstr ""
 
-#: texi2html/texi2html.pl:11961 texi2html/texi2html.pl:11962
+#: texi2html/texi2html.pl:11969 texi2html/texi2html.pl:11970
 msgid "@image extension"
 msgstr ""
 
-#: texi2html/texi2html.pl:11969
+#: texi2html/texi2html.pl:11977
 #, fuzzy
 msgid "@image file name"
 msgstr "El fichero de imagen `%s' no es accesible: %s"
 
-#: texi2html/texi2html.pl:11991
+#: texi2html/texi2html.pl:11999
 msgid "@image alt text"
 msgstr ""
 
-#: texi2html/texi2html.pl:12074
+#: texi2html/texi2html.pl:12082
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "La llamada al macro `%s' en la línea %d contiene demasiados argumentos"
 
-#: texi2html/texi2html.pl:12098
+#: texi2html/texi2html.pl:12106
 #, fuzzy, perl-format
 msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
 msgstr ""
 "\\ fue leído durante la expansión del macro seguido de `%s' en vez de por un "
 "parámetro válido"
 
-#: texi2html/texi2html.pl:12293
+#: texi2html/texi2html.pl:12301
 #, fuzzy, perl-format
 msgid "No index prefix found for @%s"
 msgstr ""
 "No se encontraron entradas de índice que concuerden con la palabra `%s'\n"
 
-#: texi2html/texi2html.pl:12775 texi2html/texi2html.pl:14547
+#: texi2html/texi2html.pl:12783 texi2html/texi2html.pl:14555
 #, fuzzy, perl-format
 msgid "@%s not allowed in argument to @%s"
 msgstr "el uso de `@item' no está permitido como argumento de `@itemize'"
 
-#: texi2html/texi2html.pl:12837
+#: texi2html/texi2html.pl:12845
 #, perl-format
 msgid "Macro definition without macro name: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:12890
+#: texi2html/texi2html.pl:12898
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: texi2html/texi2html.pl:12927
+#: texi2html/texi2html.pl:12935
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: texi2html/texi2html.pl:12949
+#: texi2html/texi2html.pl:12957
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: texi2html/texi2html.pl:13099
+#: texi2html/texi2html.pl:13107
 #, fuzzy, perl-format
 msgid "@%s already set"
 msgstr "Ya existe un índice llamado `%s'"
 
-#: texi2html/texi2html.pl:13151
+#: texi2html/texi2html.pl:13159
 #, fuzzy, perl-format
 msgid "Anchor `%s' previously defined %s"
 msgstr "el macro `%s' ya ha sido definido en este documento"
 
-#: texi2html/texi2html.pl:13187
+#: texi2html/texi2html.pl:13195
 #, fuzzy, perl-format
 msgid "No closing brace for specially handled command %s"
 msgstr "No se han cerrado llaves para la nota de pie de página `%s'"
 
-#: texi2html/texi2html.pl:13474
+#: texi2html/texi2html.pl:13482
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s es una sintaxis ya obsoleta"
 
-#: texi2html/texi2html.pl:13478
+#: texi2html/texi2html.pl:13486
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s es una sintaxis ya obsoleta"
 
-#: texi2html/texi2html.pl:13499
+#: texi2html/texi2html.pl:13507
 #, perl-format
 msgid "Printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13566
+#: texi2html/texi2html.pl:13574
 #, perl-format
 msgid "ignored @%s already in an @%s entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:13591 texi2html/texi2html.pl:13639
+#: texi2html/texi2html.pl:13599 texi2html/texi2html.pl:13647
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "`@menu' ha sido leído antes que `@node', se creará un nodo `Top'"
 
-#: texi2html/texi2html.pl:13596
+#: texi2html/texi2html.pl:13604
 #, perl-format
 msgid "Multiple @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13608
+#: texi2html/texi2html.pl:13616
 #, perl-format
 msgid "@%s not allowed within %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13657
+#: texi2html/texi2html.pl:13665
 #, fuzzy, perl-format
 msgid "Float label `%s' previously defined %s"
 msgstr "el macro `%s' ya ha sido definido en este documento"
 
-#: texi2html/texi2html.pl:13976 texi2html/texi2html.pl:13977
-#: texi2html/texi2html.pl:13980
+#: texi2html/texi2html.pl:13984 texi2html/texi2html.pl:13985
+#: texi2html/texi2html.pl:13988
 msgid "new menu entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:14105
+#: texi2html/texi2html.pl:14113
 msgid "paragraph end"
 msgstr ""
 
-#: texi2html/texi2html.pl:14410
+#: texi2html/texi2html.pl:14418
 msgid "@listoffloats type"
 msgstr ""
 
-#: texi2html/texi2html.pl:14602
+#: texi2html/texi2html.pl:14610
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: texi2html/texi2html.pl:14624
+#: texi2html/texi2html.pl:14632
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s se esperaban llaves"
 
-#: texi2html/texi2html.pl:14816
+#: texi2html/texi2html.pl:14824
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: texi2html/texi2html.pl:14834
+#: texi2html/texi2html.pl:14842
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: fichero vacío"
 
-#: texi2html/texi2html.pl:14856
+#: texi2html/texi2html.pl:14864
 #, fuzzy
 msgid "ignoring @tab in empty multitable"
 msgstr "ignorando `@tab' no influenciado por el entorno `multitable'"
 
-#: texi2html/texi2html.pl:14891
+#: texi2html/texi2html.pl:14899
 msgid "@center should not appear in another format"
 msgstr ""
 
-#: texi2html/texi2html.pl:15273
+#: texi2html/texi2html.pl:15281
 msgid "@tab before @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:15509
+#: texi2html/texi2html.pl:15517
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr ""
 "el uso de `%c%s' presupone como siguientes argumentos `i' o `j', no `%c'"
 
-#: texi2html/texi2html.pl:15561
+#: texi2html/texi2html.pl:15569
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "Comando desconocido `%s'"
 
-#: texi2html/texi2html.pl:15692
+#: texi2html/texi2html.pl:15700
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s se esperaba leer `}'"
 
-#: texi2html/texi2html.pl:15992
+#: texi2html/texi2html.pl:16000
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: no se pudo abrir --css-file: %s"
 
-#: texi2html/texi2html.pl:16469
+#: texi2html/texi2html.pl:16477
 #, perl-format
 msgid "Index entry not caught: `%s' in %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:16567
+#: texi2html/texi2html.pl:16575
 #, fuzzy, perl-format
 msgid "Empty index entry for @%s"
 msgstr ""
 "No se encontraron entradas de índice que concuerden con la palabra `%s'\n"
 
-#: texi2html/texi2html.pl:16703
+#: texi2html/texi2html.pl:16711
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16705
+#: texi2html/texi2html.pl:16713
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16735
+#: texi2html/texi2html.pl:16743
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: no se pudo abrir --css-file: %s"
+
+#: texi2html/texi2html.pl:16815
+#, perl-format
+msgid "%s:%d: no node to be renamed\n"
+msgstr ""
+
+#: texi2html/texi2html.pl:16826
+#, perl-format
+msgid "%s:%d: nodes without a new name at the end of file\n"
+msgstr ""
 
 #: texi2html/texi2html.init:1245
 msgid "Document encoding is utf8, but there is no unicode support"
 msgstr ""
 
-#: texi2html/texi2html.init:6631 texi2html/formats/docbook.init:1497
+#: texi2html/texi2html.init:6633 texi2html/formats/docbook.init:1497
 #: texi2html/formats/html.init:2343
 #: texi2html/maintained_extra/mediawiki.init:1141
 #, c-format

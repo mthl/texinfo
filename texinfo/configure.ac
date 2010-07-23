@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.97 2010-07-19 23:48:17 pertusus Exp $
+# $Id: configure.ac,v 1.98 2010-07-23 18:21:19 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -351,7 +351,6 @@ AC_CONFIG_FILES([\
   texi2html/po_messages/Makefile.in
   texi2html/po_document/Makefile.in
   texi2html/Makefile \
-  texi2html/Tests/Makefile \
   texi2html/test/Makefile \
   texi2html/test/contents/Makefile \
   texi2html/test/coverage/Makefile \
