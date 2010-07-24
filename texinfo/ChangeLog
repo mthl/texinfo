@@ -1,3 +1,11 @@
+2010-07-24  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/texinfo.txi (Initialization files basics): merge `Function 
+	prototypes' node.
+	Put 'Initializing and finalizing' below 'Initialization files 
+	basics'.
+	Add the information about @-commands formatting.
+
 2010-07-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (setfilename): more about TeX behavior.

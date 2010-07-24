@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-07-20 16:15+0200\n"
+"POT-Creation-Date: 2010-07-23 20:31+0200\n"
 "PO-Revision-Date: 2008-03-19\n"
 "Last-Translator: Reinhold Kainhofer <reinhold@kainhofer.com>\n"
 "Language-Team: Unknown\n"
@@ -37,7 +37,7 @@ msgstr "Kurzes Inhaltsverzeichnis"
 msgid "Footnotes"
 msgstr "Fu@ss{}noten"
 
-#: texi2html/texi2html.pl:12885
+#: texi2html/texi2html.pl:12884
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

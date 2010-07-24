@@ -77,15 +77,10 @@ Later
 
 * Document 
   The fact that there are 3 commands that may be called, and --program.
-  The locations for config files and init files (including --conf-dirs).
 
   Texi2HTML::THIS_ELEMENT
-  $NEW_CROSSREF_STYLE, $EXTERNAL_CROSSREF_SPLIT, $INLINE_INSERTCOPYING
-  $OVERVIEW_LINK_TO_TOC
-  $DATE_IN_HEADER
   $INDEX_ENTRY_COLON
   $MENU_ENTRY_COLON
-  CSS_LINES
   $Texi2HTML::THISDOC{'htmlxref'}
   $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
@@ -97,7 +92,6 @@ Later
   $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
   $Texi2HTML::THISDOC{'filename'}->{'frame'}
   'childnext'
-  %renamed_nodes
 
   $empty_preformatted
   $copying_comment, $titlepage better and $documentdescription
@@ -119,18 +113,11 @@ Later
   new arguments of index_entry_label
   new arguments of index_entry
   new argument of style
-  NODE_FILENAMES
   $Texi2HTML::THISDOC{'format_from_command_line'}
   language_codes
   region_codes
-  $PROGRAM_NAME_IN_FOOTER
-  $HEADER_IN_TABLE
   button_formatting
   TOP_BUTTONS
-  USE_TITLEPAGE_FOR_TITLE
-  SHOW_TITLE
-  NO_CSS
-  INLINE_CSS_STYLE
   print_redirection_page?
   new argument of menu_link
   @command_handler_output
