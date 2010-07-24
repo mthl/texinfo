@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
+@c $Id: texinfo.txi,v 1.264 2010-07-24 12:59:48 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16335,52 +16335,50 @@ Indent each paragraph by @var{num} spaces.
 @cindex @file{INSTALL} file, generating
 @cindex Node separators, omitting
 @cindex Menus, omitting
-Output a plain text file, do not include menus or node 
-separator lines in the output.  This results in a
-simple plain text file that you can (for example) send in email
-without complications, or include in a distribution (as in an
-@file{INSTALL} file).
+Output a plain text file: do not include menus or node separator lines
+in the output.  This results in a straightforward plain text file that
+you can (for example) send in email without complications, or include
+in a distribution (for example, an @file{INSTALL} file).
 
-Ignore @code{@@setfilename} and write to standard
-output by default---can be overridden with @option{-o}.
+With this option, @code{@@setfilename} is ignored and the output goes
+to standard output by default; this can be overridden with @option{-o}.
 
 @item --set-init-variable @var{var}=@var{value}
 @opindex --set-init-variable @var{var}=@var{value}
-Set the value of the configuration variable @var{var} to be @var{value}.
-Many aspects of the behaviour and output may be modified by modifying 
-configuration variables. This allows to go beyond what can be set in
-the document by @@-commands and with command line switches. 
-@xref{makeinfo Configuration Variables}.
+Set the configuration variable @var{var} to @var{value}.  Many aspects
+of the behavior and output may be modified by modifying configuration
+variables, beyond what can be set in the document by @@-commands and
+with other command line switches.  @xref{makeinfo Configuration
+Variables}.
 
-@item --split=@var{split}
+@item --split=@var{how}
 @itemx --no-split
-@opindex --split=@var{split}
+@opindex --split=@var{how}
 @opindex --no-split
 @cindex Splitting of output files
 @cindex Output file splitting
 @anchor{Splitting output}
+@c
+When generating Info, by default large output files are split into
+smaller subfiles, of approximately 300k bytes.  When generating HTML,
+by default each output file contains one node (@pxref{Generating
+HTML}).  @option{--no-split} suppresses this splitting of the output.
 
-When generating Info, @option{--no-split} suppress the splitting stage 
-of @code{makeinfo}.  By default, large
-output files (where the size is greater than 70k bytes) are split into
-smaller subfiles.  For Info output, each one is approximately 50k bytes.
-
-For HTML output, each file contains one node (@pxref{Generating HTML})
-in the default case. With @option{--no-split} the output is not split.
-@option{--split} may be used to specify at which level the resulting document
-should be split, with @var{split}. The possible values are:
+On the other hand, @option{--split=@var{how}} may be used to specify
+at which level the resulting document should be split.  The possible
+values for @var{how} are:
 
 @table @samp
 @item chapter
-The resulting manual is split at @code{@@chapter} and other sectioning
-@@-commands at this level.
+The output is split at @code{@@chapter} and other sectioning
+@@-commands at this level (@code{@@appendix}, etc.).
 
 @item section
-The resulting manual is split at @code{@@section} and other sectioning
+The output is split at @code{@@section} and other sectioning
 @@-commands at this level.
 
 @item node
-The manual is split at every node.  This is the default.
+The output is split at every node.  This is the default.
 @end table
 
 @item --split-size=@var{num}
@@ -16462,19 +16460,19 @@ If the `Next' reference of a node is not the same as the `Next' reference
 of the `Up' reference, then the node referenced by the `Next' pointer
 must have a `Previous' pointer that points back to the current node.
 This rule allows the last node in a section to point to the first node
-of the next chapter.@refill
+of the next chapter.
 
 @item
 Every node except `Top' should be referenced by at least one other node,
 either via the `Previous' or `Next' links, or via a menu or a
-cross-reference.@refill
+cross-reference.
 @end enumerate
 
 
 @node makeinfo Configuration Variables
 @section @code{makeinfo} Configuration Variables
 
-Many aspects of the behaviour and output may be modified by modifying 
+Many aspects of the behavior and output may be modified by modifying 
 configuration variables. 
 The Configuration variables are either
 @itemize @bullet
@@ -17740,26 +17738,27 @@ footnotes are always linked to the end of the output file.
 
 @cindex Navigation bar, in HTML output
 By default, a navigation bar is inserted at the start of each node,
-analogous to Info output.  If the @samp{--no-headers} option is used, 
-navigation bar is only inserted at the beginning of split files.  Header 
-@code{<link>} elements in
-split output can support info-like navigation with browsers like Lynx
-and @w{Emacs W3} which implement this HTML@tie{}1.0 feature.
+analogous to Info output.  If the @samp{--no-headers} option is used,
+the navigation bar is only inserted at the beginning of split files.
+Header @code{<link>} elements in split output can support Info-like
+navigation with browsers like Lynx and @w{Emacs W3} which implement
+this HTML@tie{}1.0 feature.
 
 @cindex HTML output, browser compatibility of
-The HTML generated is standard HTML@tie{}4. It also tries to be as
-much as possible compatible with former standards
-(i.e., HTML@tie{}2.0, RFC-1866).
-One exception is that HTML@tie{}3.2 tables are generated from the
-@code{@@multitable} command, but tagged to degrade as well as possible
-in browsers without table support.  The HTML@tie{}4 @samp{lang}
-attribute on the @samp{<html>} attribute is also used.  And entities 
-that are not in the HTML@tie{}3.2 standard are also used.  (Please report
-output from an error-free run of @code{makeinfo} which has browser
-portability problems as a bug.)
+The HTML generated is standard HTML@tie{}4.  It also tries to be as
+compatible as possible with earlier standards (e.g., HTML@tie{}2.0,
+RFC-1866).  Some minor exceptions: 1)@tie{}HTML@tie{}3.2 tables are
+generated for the @code{@@multitable} command (@pxref{Multi-column
+Tables}), but they should degrade reasonably in browsers without table
+support; 2)@tie{}The HTML@tie{}4 @samp{lang} attribute on the
+@samp{<html>} attribute is used; 3)@tie{} Entities that are not in the
+HTML@tie{}3.2 standard are also used.
 
-It is possible to output strict HTML@tie{}3.2 output by loading the
-@file{html32.init} initialization file.
+It is possible to output strict HTML@tie{}3.2 output by using
+@samp{--init-file=html32.init} (@pxref{Invoking texi2any}).
+
+Please report output from an error-free run of @code{makeinfo} which
+has browser portability problems as a bug (@pxref{Reporting Bugs}).
 
 
 @node HTML Splitting
@@ -17767,44 +17766,46 @@ It is possible to output strict HTML@tie{}3.2 output by loading the
 @cindex Split HTML output
 @cindex HTML output, split
 
-When splitting output at nodes (which is the default), @command{makeinfo}
-writes HTML output into (generally) one output file per Texinfo source
-@code{@@node}.
+When splitting output at nodes (which is the default),
+@command{makeinfo} writes HTML output into essentially one output file
+per Texinfo source @code{@@node}.
 
 The output file name is the node name with special characters replaced
-by @samp{-}'s, so it can work as a filename.  In the unusual case of
-two different nodes having the same name after this treatment, they
+by @samp{-}'s, so that it can work as a filename.  In the unusual case
+of two different nodes having the same name after this treatment, they
 are written consecutively to the same file, with HTML anchors so each
-can be referred to separately.  If @command{makeinfo} is run on a
+can be referred to independently.  If @command{makeinfo} is run on a
 system which does not distinguish case in filenames, nodes which are
-the same except for case will also be folded into the same output
-file.
+the same except for case (e.g., @samp{index} and @samp{Index}) will
+also be folded into the same output file with anchors.
 
-It is also possible to split at chapter or section with @option{--split}.
-In that case, the file names are constructed after the name of the 
-node associated with the sectioning command.  Also, unless
-@option{--no-node-file} is used a redirection file is output for
-every node in order to allow for cross-references to that manual
-(@pxref{HTML Xref}).
+It is also possible to split at chapters or sections with
+@option{--split} (@pxref{Invoking texi2any}).  In that case, the file
+names are constructed after the name of the node associated with the
+relevant sectioning command.  Also, unless @option{--no-node-files} is
+specified, a redirection file is output for every node in order to
+more reliably support cross-references to that manual (@pxref{HTML
+Xref}).
 
 When splitting, the HTML output files are written into a subdirectory,
 with the name chosen as follows:
+
 @enumerate
 @item
 @command{makeinfo} first tries the subdirectory with the base name
 from @code{@@setfilename} (that is, any extension is removed).  For
 example, HTML output for @code{@@setfilename gcc.info} would be
-written into a subdirectory named @samp{gcc}.
+written into a subdirectory named @samp{gcc/}.
 
 @item
 If that directory cannot be created for any reason, then
 @command{makeinfo} tries appending @samp{.html} to the directory name.
 For example, output for @code{@@setfilename texinfo} would be written
-to @samp{texinfo.html}.
+to @samp{texinfo.html/}.
 
 @item
-If the @samp{@var{name}.html} directory can't be
-created either, @code{makeinfo} gives up.
+If the @samp{@var{name}.html} directory can't be created either,
+@code{makeinfo} gives up.
 
 @end enumerate
 
@@ -17814,7 +17815,8 @@ is always named @samp{index.html}.
 Monolithic output (@code{--no-split}) is named according to
 @code{@@setfilename} (with any @samp{.info} extension is replaced with
 @samp{.html}), @code{--output} (the argument is used literally), or
-based on the input file name if there is no @code{@@setfilename}.
+based on the input file name as a last resort (@pxref{setfilename}).
+
 
 @node HTML CSS
 @section HTML CSS
@@ -17903,7 +17905,6 @@ specifications, the @samp{@@import}'s are included first, then
 @item Any @@-directive other than @samp{@@import} and @samp{@@charset}
 is treated as a CSS declaration, meaning @command{makeinfo} includes
 its default CSS and then the rest of the file.
-
 @end itemize
 
 If the CSS file is malformed or erroneous, @command{makeinfo}'s output
@@ -18127,11 +18128,11 @@ system.
 @subsection HTML Cross-reference Command Expansion
 @cindex HTML cross-reference command expansion
 
-In standard Texinfo, node names may not contain @@-commands.
+In standard Texinfo, node names may not contain @@-commands. xxx
 @command{makeinfo} supports @@-commands in node names, but @TeX{}
-might not. Therefore, even if @command{makeinfo} implements
-this part of the HTML cross-reference algorithm, you should still
-avoid using @@-commands in node names.
+might not. Therefore, even if @command{makeinfo} implements this part
+of the HTML cross-reference algorithm, you should still avoid using
+@@-commands in node names.
 
 First, comments are removed.
 
@@ -18994,7 +18995,7 @@ The main component of elements are sections if @code{USE_SECTIONS} is set,
 or @code{USE_NODES} is set to 0, and, conversely, are nodes if 
 @code{USE_NODES} is set or @code{USE_SECTIONS} is 0.  If those configuration
 variables are undefined, heuristics are used, influenced by the presence of
-nodes or sectionning elements in the document, if there are no nodes, 
+nodes or sectioning elements in the document, if there are no nodes, 
 sectioning elements are preferred and the reverse is true if there are no
 sectioning commands.
  
@@ -19546,7 +19547,7 @@ menus are used for navigation.  Another mode may be selected by
 setting @code{INLINE_CONTENTS}.  In that case the table of contents
 are not output as separate elements but are instead output where the 
 corresponding @@-command, for example @code{@@contents},
-is set.  This behaviour is more consistent with @command{texi2dvi}. 
+is set.  This behavior is more consistent with @command{texi2dvi}. 
 If @code{@@setcontentsaftertitlepage} appears in the document,
 and even if @code{INLINE_CONTENTS} is set, the table of contents are 
 merged in the title (which isn't output in the default case, see 
@@ -21798,7 +21799,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
+$Id: texinfo.txi,v 1.264 2010-07-24 12:59:48 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -21877,7 +21878,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.263 2010-07-23 18:47:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.264 2010-07-24 12:59:48 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
