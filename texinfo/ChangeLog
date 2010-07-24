@@ -1,7 +1,13 @@
 2010-07-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (setfilename): more about TeX behavior.
-	(Invoking texi2any): English, examples, minor details.
+	(Invoking texi2any),
+	(Pointer Validation),
+	(HTML Splitting),
+	(HTML Xref Command Expansion),
+	(The different elements),
+	(Contents and Overview text):
+	English, examples, minor details.
 
 2010-07-23  Patrice Dumas  <pertusus@free.fr>
 
