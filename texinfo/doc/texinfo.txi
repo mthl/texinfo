@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.265 2010-07-24 21:14:38 pertusus Exp $
+@c $Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -160,7 +160,7 @@ the menu lists all the lower level nodes in the document.
 * Defining New Texinfo Commands:: User-defined macros and aliases.
 * Include Files::                 How to incorporate other Texinfo files.
 * Hardcopy::                            Output for paper, with @TeX{}.
-* Generic converter texi2any/makeinfo:: The all purpose converter.
+* Generic translator texi2any/makeinfo:: The all purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 * texi2any output customization:: Fine tuning with initialization files.
@@ -601,7 +601,7 @@ Formatting and Printing Hardcopy
 * PDF Output::                  Portable Document Format output.
 * Obtaining TeX::               How to Obtain @TeX{}.
 
-Generic converter texi2any/makeinfo
+Generic translator texi2any/makeinfo
 
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
@@ -3212,7 +3212,7 @@ text of the copying permissions that appears in the printed manual.
 You may wish to include titlepage-like information for plain text
 output.  Simply place any such leading material between
 @code{@@ifplaintext} and @code{@@end ifplaintext}; @command{makeinfo}
-includes this when writing plain text (@samp{--plaintext}), along with
+includes this when generating plain text (@samp{--plaintext}), along with
 an @code{@@insertcopying}.
 
 @menu
@@ -5184,9 +5184,9 @@ A pointer name must be the name of a node.
 The node to which a pointer points may come before or after the
 node containing the pointer.
 
+@item
 @cindex @@-commands in nodename
 @cindex Node name, should not contain @@-commands
-@item
 @@-commands in node names are not allowed.  This includes punctuation
 characters that are escaped with a @samp{@@}, such as @code{@@} and
 @code{@{}, and accent commands such as @samp{@@'}.  Perhaps
@@ -15918,32 +15918,44 @@ Electronic mail: @code{gnu@@gnu.org}
 Many other @TeX{} distributions are available; see
 @uref{http://tug.org/}.
 
-@node Generic converter texi2any/makeinfo
-@chapter A generic converter for Texinfo: @command{texi2any}/@command{makeinfo}
 
-@command{texi2any} is a generic converter for Texinfo that can produce
-different output formats and is highly customizable. 
-By default, the formats that may be produced are 
-Info (with @option{--info}), HTML (with
-@option{--html}), plain text (with @option{--plaintext}), Docbook 
-(with @option{--docbook}), Texinfo XML (with @option{--xml}). 
-@command{makeinfo} is an alias of @command{texi2any}, and using this command
-is the same as using @code{texi2any --info}.
+@node Generic translator texi2any/makeinfo
+@chapter A generic translator for Texinfo: @command{texi2any}/@command{makeinfo}
 
-Without any command line option, @command{texi2any} generates raw text with
-minimal formatting, well suited for customization. It is not advised to
-use this output format to generate documents, however, since it is 
-very basic. You should produce plain text instead, with 
+@command{texi2any} is a generic translator for Texinfo that can
+produce different output formats and is highly customizable.  By
+default, the formats that may be produced are:
+
+@table @asis
+@item Info (with @option{--info}),
+
+@item HTML (with @option{--html}),
+
+@item plain text (with @option{--plaintext}),
+
+@item Docbook (with @option{--docbook}),
+
+@item Texinfo XML (with @option{--xml}).
+@end table
+
+@command{makeinfo} is an alias of @command{texi2any}, and using this
+command is the same as using @code{texi2any --info}.
+
+Without any command line option, @command{texi2any} generates raw text
+with minimal formatting, which may be suitable for further processing.
+We do not recommend using this output format for actual documentation,
+since it is so basic.  Instead, produce plain text with
 @option{--plaintext}.
 
-Beside those default formats, with @command{texi2any} some important
-aspects of the result may be specified via command line options,
-and initialization files provide an even finer degree of control
-over the final output, allowing most every aspect of the final output not
-specified in the Texinfo input file to be specified.  Initialization files are
-written in @command{perl}, like the main program, and anything which may be
-specified on the command line may also be specified within a initialization
-file.
+Beside these default formats, command line options to
+@command{texi2any} can determine important aspects of the output.
+Beyond that, initialization files provide an even finer degree of
+control over the final output, including nearly every aspect not
+specified in the Texinfo input file.  Initialization files are written
+in Perl, like the main program, and anything which may be specified on
+the command line may also be specified within a initialization file.
+
+The rest of this chapter gives further details on the program.
 
 @menu
 * Invoking texi2any::           How to run @command{texi2any} or @command{makeinfo} 
@@ -15951,6 +15963,7 @@ file.
 * Pointer Validation::          How to check that pointers point somewhere.
 * makeinfo Configuration Variables:: Description of configuration variables.
 @end menu
+
 
 @node Invoking texi2any
 @section Running @command{texi2any}/@code{makeinfo} from a Shell
@@ -23674,7 +23687,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.265 2010-07-24 21:14:38 pertusus Exp $
+$Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23753,7 +23766,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.265 2010-07-24 21:14:38 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
