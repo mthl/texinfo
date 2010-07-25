@@ -1,5 +1,11 @@
 2010-07-25  Patrice Dumas  <pertusus@free.fr>
 
+	* texi2html/doc/texi2html.texi: reduce the texi2html manual 
+	to the minimum. Keep history, differences with texi2any and
+	the list of incompatibilities with past versions.
+
+2010-07-25  Patrice Dumas  <pertusus@free.fr>
+
 	* doc/texinfo.txi (Internationalization of strings): add this node
 	describing the internationalization of strings output in texi2any.
 
