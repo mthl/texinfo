@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.280 2010-07-25 17:35:50 pertusus Exp $
+# $Id: texi2html.init,v 1.281 2010-07-25 21:47:28 pertusus Exp $
 
 
 ##################################################################
@@ -1747,7 +1747,7 @@ sub T2H_DEFAULT_program_string()
     $date = '' if (!defined($date));
     if ($date ne '')
     {
-        return gdt('This document was generated on @i{{date}} using @uref{{program_homepage}, @i{{program}}}.', {
+        return gdt('This document was generated on @emph{{date}} using @uref{{program_homepage}, @emph{{program}}}.', {
            'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC{'program_homepage'}, 'program' => $Texi2HTML::THISDOC{'program_and_version'} },{'duplicate'=>1});
     }
     return gdt('This document was generated using @uref{{program_homepage}, @emph{{program}}}.', {

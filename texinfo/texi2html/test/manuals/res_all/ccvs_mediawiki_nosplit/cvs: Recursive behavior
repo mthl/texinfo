@@ -76,4 +76,4 @@ Conversely, the &lsquo;<code>-R</code>&rsquo; option can be used to force recurs
  $ cvs update -l         # <span class="roman" style="font-family:serif; font-weight:normal">Don't update files in subdirectories</span>
 </div>
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

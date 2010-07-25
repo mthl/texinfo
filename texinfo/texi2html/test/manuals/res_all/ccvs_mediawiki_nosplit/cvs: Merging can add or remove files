@@ -39,4 +39,4 @@ a static tag has been attached to a dead revision manually.  Use the branch tag
 to merge all changes from the branch or use two static tags as merge endpoints
 to be sure that all intended changes are propagated in the merge.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

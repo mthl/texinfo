@@ -22,4 +22,4 @@ including both text files and binary images.
  [[cvs: The issues with binary files#The issues with binary files|&bull; Binary why]]::     More details on issues with binary files
  [[cvs: How to store binary files#How to store binary files|&bull; Binary howto]]::   How to store them
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

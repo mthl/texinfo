@@ -44,4 +44,4 @@ In addition, these options (that are common to
 : Only useful together with &lsquo;<code>-d <var>dir</var></code>&rsquo;. See [[cvs: checkout options#checkout options|checkout options]], for complete details on how <small>CVS</small> handles this flag.
 
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

@@ -19,4 +19,4 @@ Next: [[lightweight_markups: other chapter#other chapter|other chapter]], Previo
 
 [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#anchor-_005b_005b-_007b_007b|anchor <nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>]]
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

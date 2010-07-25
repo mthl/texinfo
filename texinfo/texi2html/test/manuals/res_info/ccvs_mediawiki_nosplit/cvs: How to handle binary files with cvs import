@@ -12,4 +12,4 @@ Next: [[cvs: How to handle keyword substitution with cvs import#How to handle ke
 Use the &lsquo;<code>-k</code>&rsquo; wrapper option to tell import which
 files are binary.  See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

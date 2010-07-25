@@ -34,4 +34,4 @@ file, which defines the modules inside the repository.
  [[cvs: Expansions in administrative files#Expansions in administrative files|&bull; Variables]]::                   Various variables are expanded
  [[cvs: The CVSROOT%47config configuration file#The CVSROOT/config configuration file|&bull; config]]::                      Miscellaneous CVS configuration
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

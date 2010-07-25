@@ -1,5 +1,10 @@
 2010-07-25  Patrice Dumas  <pertusus@free.fr>
 
+	* texi2html/texi2html.init (program_string): use @emph instead
+	of @i in the program string.
+
+2010-07-25  Patrice Dumas  <pertusus@free.fr>
+
 	* texi2html/doc/texi2html.texi: reduce the texi2html manual 
 	to the minimum. Keep history, differences with texi2any and
 	the list of incompatibilities with past versions.

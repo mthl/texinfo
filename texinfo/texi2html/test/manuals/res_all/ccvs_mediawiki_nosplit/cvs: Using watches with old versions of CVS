@@ -30,4 +30,4 @@ you cannot upgrade, use the <code>watch off</code> and
 that will restore the repository to a state which
 <small>CVS</small> 1.6 can cope with.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

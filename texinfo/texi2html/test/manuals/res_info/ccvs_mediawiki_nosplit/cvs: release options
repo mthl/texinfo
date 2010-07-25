@@ -16,4 +16,4 @@ The <code>release</code> command supports one command option:
 
 : '''WARNING:  The <code>release</code> command deletes all directories and files recursively.  This has the very serious side-effect that any directory that you have created inside your checked-out sources, and not added to the repository (using the <code>add</code> command; see [[cvs: Adding files to a directory#Adding files to a directory|Adding files]]) will be silently deleted&mdash;even if it is non-empty!'''
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

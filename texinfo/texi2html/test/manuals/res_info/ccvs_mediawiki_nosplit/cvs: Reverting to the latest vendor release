@@ -25,4 +25,4 @@ you would type:
 You must specify the &lsquo;<code>-bWDIFF</code>&rsquo; without any space
 after the &lsquo;<code>-b</code>&rsquo;.  See [[cvs: admin options#admin options|admin options]].
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

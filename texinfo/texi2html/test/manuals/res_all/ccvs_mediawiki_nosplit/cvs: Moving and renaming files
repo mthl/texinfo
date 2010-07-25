@@ -24,4 +24,4 @@ The examples below assume that the file <var>old</var> is renamed to
  [[cvs: Moving the history file#Moving the history file|&bull; Inside]]::                      A tricky, alternative way
  [[cvs: Copying the history file#Copying the history file|&bull; Rename by copying]]::           Another tricky, alternative way
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

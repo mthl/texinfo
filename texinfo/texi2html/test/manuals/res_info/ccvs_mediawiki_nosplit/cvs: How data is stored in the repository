@@ -31,4 +31,4 @@ the file permissions appropriate for the repository.
  [[cvs: CVS locks in the repository#CVS locks in the repository|&bull; Locks]]::                       CVS locks control concurrent accesses
  [[cvs: How files are stored in the CVSROOT directory#How files are stored in the CVSROOT directory|&bull; CVSROOT storage]]::             A few things about CVSROOT are different
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

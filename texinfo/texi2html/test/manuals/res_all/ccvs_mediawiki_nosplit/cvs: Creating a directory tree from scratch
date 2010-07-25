@@ -33,4 +33,4 @@ as they appear.
 Check that the permissions <small>CVS</small> sets on the
 directories inside <code>$CVSROOT</code> are reasonable.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

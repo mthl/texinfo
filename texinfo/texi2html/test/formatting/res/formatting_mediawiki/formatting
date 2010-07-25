@@ -2949,7 +2949,7 @@ tp
 == About This Document ==
 
 <p>
-  This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+  This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -3051,4 +3051,4 @@ tp
 
 ----
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

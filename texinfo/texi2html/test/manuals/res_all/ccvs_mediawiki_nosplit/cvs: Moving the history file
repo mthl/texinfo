@@ -37,4 +37,4 @@ Disadvantages:
 
 * Nasty things might happen if someone accesses the history file while you are moving it.  Make sure no one else runs any of the <small>CVS</small> commands while you move it.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

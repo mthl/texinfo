@@ -18,4 +18,4 @@ above categories.  They are in no particular order.
 
 * If you are running <small>CVS</small> 1.9.18 or older, and <code>cvs update</code> finds a conflict and tries to merge, as described in [[cvs: Conflicts example#Conflicts example|Conflicts example]], but doesn&rsquo;t tell you there were conflicts, then you may have an old version of <small>RCS</small>.  The easiest solution probably is to upgrade to a current version of <small>CVS</small>, which does not rely on external <small>RCS</small> programs.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

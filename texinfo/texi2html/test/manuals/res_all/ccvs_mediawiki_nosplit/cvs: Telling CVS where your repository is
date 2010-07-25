@@ -57,4 +57,4 @@ override the <code>$CVSROOT</code> environment variable.  If
 former is used.  Of course, for proper operation they
 should be two ways of referring to the same repository.
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

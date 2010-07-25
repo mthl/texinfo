@@ -23,4 +23,4 @@ Next: [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em stro
 <p>
 Next: [[lightweight_markups: [[ {{template}} }}}[ : ''em '''strong ''''' em strong ''[[link]]''#[[ {{template}} }}}[ : &rsquo;&rsquo;em &rsquo;&rsquo;&rsquo;strong &rsquo;&rsquo;&rsquo;&rsquo;&rsquo; em strong &rsquo;&rsquo;[[link]]&rsquo;&rsquo;|<nowiki>[[</nowiki> <nowiki>{</nowiki><nowiki>{</nowiki>template<nowiki>}</nowiki><nowiki>}</nowiki> <nowiki>}</nowiki><nowiki>}</nowiki><nowiki>}</nowiki><nowiki>[</nowiki> <tt>:</tt> <code><nowiki>''</nowiki>em <nowiki>'''</nowiki>strong <nowiki>'''''</nowiki> em strong <nowiki>''[[</nowiki>link<nowiki>]]''</nowiki></code>]], Up: [../dir/index.#Top (dir)] &nbsp; </p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

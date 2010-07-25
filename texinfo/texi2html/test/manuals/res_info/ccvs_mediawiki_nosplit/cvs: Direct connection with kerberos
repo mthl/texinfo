@@ -65,4 +65,4 @@ connection via rsh; this version will not do so.
 <p>
 Next: [[cvs: Connecting with fork#Connecting with fork|Connecting via fork]], Previous: [[cvs: Direct connection with GSSAPI#Direct connection with GSSAPI|GSSAPI authenticated]], Up: [[cvs: Remote repositories#Remote repositories|Remote repositories]] &nbsp; |[[cvs: Index#SEC_Contents|Contents]]||[[cvs: Index#Index|Index]]|</p>
 </div>
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

@@ -35,4 +35,4 @@ start again, usually at 1.1, so if that bothers you,
 use the &lsquo;<code>-r rev</code>&rsquo; option to commit.  For more
 information see [[cvs: Assigning revisions#Assigning revisions|Assigning revisions]].
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

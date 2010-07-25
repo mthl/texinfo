@@ -15,4 +15,4 @@ To look through the log messages which have been
 specified for every revision which has been committed,
 use the <code>cvs log</code> command (see [[cvs: log--Print out log information for files#log&mdash;Print out log information for files|log]]).
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

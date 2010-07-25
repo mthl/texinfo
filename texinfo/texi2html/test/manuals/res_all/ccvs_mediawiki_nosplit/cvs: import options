@@ -33,4 +33,4 @@ There are the following additional special options.
 
 : <var>spec</var> can be a file name pattern of the same type that you can specify in the &lsquo;<tt>.cvswrappers</tt>&rsquo; file. See [[cvs: The cvswrappers file#The cvswrappers file|Wrappers]].
 
-This document was generated on <i>a sunny day</i> using [http://www.gnu.org/software/texinfo/ <i>texi2html</i>].
+This document was generated on ''a sunny day'' using [http://www.gnu.org/software/texinfo/ ''texi2html''].

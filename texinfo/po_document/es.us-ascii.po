@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-07-25 18:11+0200\n"
+"POT-Creation-Date: 2010-07-25 21:20+0200\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -229,10 +229,10 @@ msgid "PrevFile"
 msgstr "ArchivoAnt"
 
 #: texi2html/texi2html.init:1750
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid ""
-"This document was generated on @i{{date}} using @uref{{program_homepage}, @i"
-"{{program}}}."
+"This document was generated on @emph{{date}} using @uref{{program_homepage}, "
+"@emph{{program}}}."
 msgstr ""
 "Este documento se gener@'o el @i{{date}} utilizando @uref"
 "{{program_homepage}, @i{{program}}}."
