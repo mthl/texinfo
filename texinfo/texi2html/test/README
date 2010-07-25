@@ -1,10 +1,15 @@
+$Id: README,v 1.9 2010-07-25 00:14:28 karl Exp $
 texinfo/texi2html/tests/README
 
   Copyright (C) 2010 Free Software Foundation, Inc.
 
-  Copying and distribution of this file, with or without modification,
-  are permitted in any medium without royalty provided the copyright
-  notice and this notice are preserved.
+  Copying and distribution of this README file, with or without
+  modification, are permitted in any medium without royalty provided the
+  copyright notice and this notice are preserved.
+
+Files anywhere within the test/ subdirectory which have no other
+copyright notice are hereby placed in the public domain.
+
 
 
 Prerequisites
