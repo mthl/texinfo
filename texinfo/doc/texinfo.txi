@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
+@c $Id: texinfo.txi,v 1.268 2010-07-25 21:38:15 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18678,6 +18678,7 @@ use (@pxref{Calling functions at different stages}).
 * Customizing generalized block command opening:: 
 * Four contexts::             Four different contexts for command expansion: 
                               normal text, preformatted text, strings and math.
+* Internationalization of strings::
 @end menu
 
 
@@ -19196,6 +19197,120 @@ typically without any element when producing HTML or XML.
 @item math context
 Currently in @code{@@math}.
 @end table
+
+@node Internationalization of strings
+@subsection Internationalization of strings output in the document
+
+@cindex i18n
+
+@command{texi2any} writes some strings in the generated document at
+various places, at the page footers, on the help page, for special
+section headings, buttons alt text and so on.
+The string chosen depends on the value of the configuration variable
+@code{documentlanguage} at the time of the string output.
+
+The Gettext framework is used for those strings.  libintl-perl is used as
+a gettext implementation for the string output, and more precisely the
+pure perl implementation is used, to be sure to have a consistent gettext-like
+implementation which may not the case if the system gettext is used.  
+libintl-perl is shipped in texi2html and installed to be sure that it 
+is available.  It is also possible to use the system gettext (currently 
+decided at build-time).  The @samp{texifo_document} domain is used for the 
+strings. 
+
+The @code{gdt} subroutine is used for translated strings:
+
+@defun {gdt} ($string, \%variables_hash, \%state)
+with @var{$string} the string to be translated, @var{\%variables_hash} a
+reference on a hash holding the variable parts of the translated string, and 
+@var{\%state} a hash reference determining the context of expansion 
+(use the document state, expansion in string, no expansion...).
+@end defun
+
+Translated strings are Texinfo strings, which may have @@-commands.
+In translated strings, the variables parts of the string are not denoted 
+by %s and the like, but by @samp{@{arg_name@}} (which is common for gettext
+in Perl and is fully supported in GNU gettext, @ref{perl-format,,Perl Format Strings,gettext,GNU gettext tools}).
+For example, in the following, @samp{@{section@}} will be replaced by the 
+section name:
+@example
+see @{section@}
+@end example
+
+The use of the perl brace format strings is done for two reasons, first 
+changing the order of printf arguments is only available since perl 5.8.0, 
+second, and more importantly, the order of the argument may not be 
+predictable when @@-commands expansion may lead to different orders 
+depending on the output format.
+
+The expansion of those strings happens that way:
+@enumerate
+@item First the string is translated.  The locale 
+is @@documentlanguage.@@documentencoding.
+
+If the @@documentlanguage is like ll_CC, ll_CC is tried first, and then ll.
+If the encoding is not us-ascii, us-ascii is also tried.  The idea is that
+if there is a us-ascii encoding, it means that all the characters in the
+charset may be expressed as @@-commands.   For example there is a fr.us-ascii
+locale that can accomodate any encoding, since all the latin1 characters
+have associated @@-commands.  For the ja translations, there is only ja.utf-8
+since there are no @@-commands for ja letters.
+
+@item Next the args in string are protected, for example @samp{@{arg_name@}} 
+becomes
+@samp{@@internal_translation_open_brace@{@}arg_name@@internal_translation_close_brace@{@}} (this part is skipped if there is no expansion).
+
+@item Next the string is expanded as a texinfo string.
+@samp{@@internal_translation_open_brace@{@}} expands as @{ and
+@samp{@@internal_translation_close_brace@{@}} expands as @}, such 
+that in the end one still gets @samp{@{arg_name@}} within an expanded 
+string (this part is skipped if there is no expansion).
+
+@item Then the in string arguments are substituted, for 
+example @samp{@{arg_name@}} is substituted by the corresponding argument.
+@end enumerate
+
+For example, in the following @samp{@{date@}}, @samp{@{program_homepage@}} 
+and @samp{@{program@}} are the argument of the string.  Since they are used 
+in @code{@@uref}, their order in not predictable.  The @samp{@{'duplicate'=>1@}}
+means the the document state should be used when expanding the string. 
+@samp{@{date@}}, @samp{@{program_homepage@}} and @samp{@{program@}}
+are substituted after the expansion, which means that they
+should already be acceptable output:
+
+@example
+gdt('This document was generated on @@emph@{@{date@}@} using @@uref@{@{program_homepage@}, @@emph@{@{program@}@}@}.', @{
+           'date' => $date, 'program_homepage' => $Texi2HTML::THISDOC@{'program_homepage'@}, 'program' => $Texi2HTML::THISDOC@{'program_and_version'@} @},@{'duplicate'=>1@});
+@end example
+
+This approach is a bit complicated, however what is interesting is that
+it allows to have translation available in different encodings for charset
+that are covered by @@-commands, and also to specify how the formatting for
+some commands is done independently of the output format but still allow it to
+be language dependent.  For example, the @samp{@@pxref} string may be:
+
+@example
+see @{node_file_href@} section `@{section@}\' in @@cite@{@{book@}@}
+@end example
+
+which allows to specify a string independently of the output format but with a
+rich formatting that may be differently translated in other languages.
+
+It is also possible to use more regular %s escapes, and also avoid any
+expansion (with @code{keep_texi} in the state).
+
+When a @code{@@documentlanguage} appears in the document and the language
+was not set on the command line, it may be convenient for the user to
+redefine some variables based on the new language.  There is a function
+reference that may be used for that, it is called each time  a
+@code{@@documentlanguage} is encountered:
+
+@deffn {Function Reference} $translate_names
+This function is called each time @code{@@documentlanguage} is encountered
+and the language was not set on the command line.  It should be used
+to retranslate some strings based on the new language.
+@end deffn
+
 
 @node Elements
 @section Elements and associated informations
@@ -24063,7 +24178,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
+$Id: texinfo.txi,v 1.268 2010-07-25 21:38:15 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24142,7 +24257,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.268 2010-07-25 21:38:15 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

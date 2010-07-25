@@ -1,5 +1,10 @@
 2010-07-25  Patrice Dumas  <pertusus@free.fr>
 
+	* doc/texinfo.txi (Internationalization of strings): add this node
+	describing the internationalization of strings output in texi2any.
+
+2010-07-25  Patrice Dumas  <pertusus@free.fr>
+
 	* doc/texinfo.txi: update the documentation of texi2any 
 	customization to match the current state of the code.
 
