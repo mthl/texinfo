@@ -78,57 +78,28 @@ Later
 * Document 
   The fact that there are 3 commands that may be called, and --program.
 
-  Texi2HTML::THIS_ELEMENT
-  $INDEX_ENTRY_COLON
-  $MENU_ENTRY_COLON
   $Texi2HTML::THISDOC{'htmlxref'}
-  $Texi2HTML::THISDOC{macro name}
   $Texi2HTML::THISDOC{'hyphenation'}
   $Texi2HTML::THISDOC{'do_about'}
   $Texi2HTML::THISDOC{'split_level'}
   $Texi2HTML::THISDOC{'line_nr'}
-  $Texi2HTML::THISDOC{'input_directory'}
-  $Texi2HTML::THISDOC{'simpletitle'}
-  $Texi2HTML::THISDOC{'filename'}->{'toc_frame'}
-  $Texi2HTML::THISDOC{'filename'}->{'frame'}
+  $Texi2HTML::THISDOC{'format_from_command_line'}
+  Cf the comment in the manual.
+
+  Texi2HTML::THIS_ELEMENT
+  $INDEX_ENTRY_COLON
+  $MENU_ENTRY_COLON
   'childnext'
 
-  $empty_preformatted
-  $copying_comment, $titlepage better and $documentdescription
-  $program_string, $footnote_texi
-  $heading arguments and the whole heading and heading_element relationship
-  $begin_paragraph_texi $tab_item_texi $begin_style_texi
-  $begin_special_region $end_special_region $simple_command $thing_command
-  Also element formatting documentation, especially print_foot_navigation
-  is not up to date.
-  new arguments and return args of index_summary_letter
-  new argument of def
-  new argument of def_item
-  new arguments of list_item
-  new argument of inline_content
-  $shortcontents and $contents
-  $misc_command_line
-  new argument of printindex
-  new arguments of $unknown_style
-  new arguments of index_entry_label
-  new arguments of index_entry
-  new argument of style
-  $Texi2HTML::THISDOC{'format_from_command_line'}
+  Maybe document the following, maybe not:
   language_codes
   region_codes
-  button_formatting
-  TOP_BUTTONS
-  print_redirection_page?
-  new argument of menu_link
-  @command_handler_output
+  print_redirection_page
   t2h_add_text_substitutions, t2h_remove_text_substitutions,
   @text_substitutions_normal, @text_substitutions_texi,
   @text_substitutions_simple_format, @text_substitutions_pre and
   t2h_text_substitutions
   t2h_default_set_iso_symbols
-  document the math related maps, simple_map_math, math_map, style_map_math
-  document sorting_things_map
-  new quotation argument
 
 * Use omhelp latex parser and mathml generator for both xhtml and 
   docbook
@@ -138,8 +109,6 @@ Later
   with fontfamily=helvetica, fontsize=\small commandchars=\\\{\}
 
 * %f$x (index in printf) appeared in perl 5.8.0, 18 jul 2002
-
-* document the new $image arguments/API
 
 * document the css classes:
 

@@ -13,7 +13,7 @@
 # Taken from texi2html.init in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.init,v 1.58 2010-07-17 09:46:26 pertusus Exp $
+# $Id: html.init,v 1.59 2010-07-25 17:35:50 pertusus Exp $
 
 use strict;
 
@@ -767,7 +767,7 @@ sub HTML_DEFAULT_print_section_footer
 # If you want to get rid of navigation stuff after each section,
 # redefine print_section such that it does not call print_navigation,
 # and put print_navigation into print_chapter_header
-sub HTML_DEFAULT_print_chapter_header
+sub HTML_DEFAULT_print_chapter_header($$)
 {
     my $fh = shift;
     my $element = shift;
@@ -781,7 +781,7 @@ sub HTML_DEFAULT_print_chapter_header
     }
 }
 
-sub HTML_DEFAULT_print_chapter_footer
+sub HTML_DEFAULT_print_chapter_footer($$)
 {
     my $fh = shift;
     my $element = shift;
@@ -789,12 +789,13 @@ sub HTML_DEFAULT_print_chapter_footer
     &$print_foot_navigation($fh, $buttons, $DEFAULT_RULE, 1, $element);
 }
 
-sub HTML_DEFAULT_print_section_header
+sub HTML_DEFAULT_print_section_header($$)
 {
+    my $fh = shift;
+    my $element = shift;
     # nothing to do there, by default
     if (! get_conf('HEADERS'))
     { # in this case print_navigation is called here. 
-        my $fh = shift;
         my $buttons = \@SECTION_BUTTONS;
         &$print_head_navigation($fh, $buttons); 
     }
@@ -940,7 +941,7 @@ EOT
     return $result;
 }
 
-sub HTML_DEFAULT_print_foot_navigation
+sub HTML_DEFAULT_print_foot_navigation($$$$$;$)
 {
     my $fh = shift;
     my $buttons = shift;

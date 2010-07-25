@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.279 2010-07-18 15:25:06 pertusus Exp $
+# $Id: texi2html.init,v 1.280 2010-07-25 17:35:50 pertusus Exp $
 
 
 ##################################################################
@@ -1713,21 +1713,22 @@ sub T2H_DEFAULT_print_section_footer
 # chapter_header: after print_page_head, before print_section
 # chapter_footer: after print_section of last section, before print_page_foot
 
-sub T2H_DEFAULT_print_chapter_header
+sub T2H_DEFAULT_print_chapter_header($$)
 {
     my $fh = shift;
     my $element = shift;
 }
 
-sub T2H_DEFAULT_print_chapter_footer
+sub T2H_DEFAULT_print_chapter_footer($$)
 {
     my $fh = shift;
     my $element = shift;
 }
 
-sub T2H_DEFAULT_print_section_header
+sub T2H_DEFAULT_print_section_header($$)
 {
     my $fh = shift;
+    my $element = shift;
 }
 
 
@@ -1780,13 +1781,14 @@ sub T2H_DEFAULT_print_head_navigation($$$$$)
     return '';
 }
 
-sub T2H_DEFAULT_print_foot_navigation
+sub T2H_DEFAULT_print_foot_navigation($$$$$;$)
 {
     my $fh = shift;
     my $buttons = shift;
     my $rule = shift;
     my $print_navigation_panel = shift;
     my $element = shift;
+    my $maybe_in_page = shift;
 
     $rule = '' if (!defined($rule));
     print $fh "$rule\n" if ($rule ne '');

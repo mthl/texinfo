@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.408 2010-07-23 07:01:33 pertusus Exp $
+# $Id: texi2html.pl,v 1.409 2010-07-25 17:35:50 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -5985,15 +5985,14 @@ sub misc_command_structure($$$$)
     elsif (grep {$_ eq $command} ('author','subtitle'))
     {
         my $arg = trim_comment_spaces($line, "\@$command");
-        $Texi2HTML::THISDOC{$command . '_texi'} .= $arg . "\n";
         if ($state->{'region'} and $state->{'region'} eq 'titlepage')
         {
+           $Texi2HTML::THISDOC{$command . '_texi'} .= $arg . "\n";
            push @{$Texi2HTML::THISDOC{"${command}s_texi"}}, $arg;
            push @{$Texi2HTML::THISDOC{"${command}s_line_nr"}}, $line_nr;
+           # FIXME backward compatibility. Obsoleted in nov 2009.
+           $value{"_$command"} .= $arg . "\n";
         }
-
-        # FIXME backward compatibility. Obsoleted in nov 2009.
-        $value{"_$command"} .= $arg . "\n";
     }
     elsif ($command eq 'synindex' || $command eq 'syncodeindex')
     {
@@ -6148,6 +6147,7 @@ sub set_special_names()
     $Texi2HTML::SIMPLE_TEXT{'Overview'} = gdt('Short Table of Contents', {}, {'simple_format' => 1});
     $Texi2HTML::SIMPLE_TEXT{'Footnotes'} = gdt('Footnotes', {},{'simple_format' => 1});
 }
+
 
 sub enter_author_command($$$$$$)
 {
@@ -6670,7 +6670,7 @@ sub do_place_target_file($$$)
    $place->{'target'} = $element->{'target'} unless defined($place->{'target'});
    if (defined($Texi2HTML::Config::placed_target_file_name))
    {
-      my ($target, $id, $file) = &$Texi2HTML::Config::placed_target_file_name($place,$element,$place->{'target'}, $place->{'id'}, $place->{'file'},$context);
+      my ($target, $id, $file) = &$Texi2HTML::Config::placed_target_file_name($place, $element, $place->{'target'}, $place->{'id'}, $place->{'file'}, $context);
       $place->{'target'} = $target if (defined($target));
       $place->{'file'} = $file if (defined($file));
       $place->{'id'} = $id if (defined($id));
@@ -6685,7 +6685,7 @@ sub do_node_target_file($$)
     $node->{'node_file'} = $node_file if (defined($node_file));
     if (defined($Texi2HTML::Config::node_target_name))
     {
-        my ($target,$id) = &$Texi2HTML::Config::node_target_name($node,$node->{'target'},$node->{'id'}, $type_of_node);
+        my ($target,$id) = &$Texi2HTML::Config::node_target_name($node, $node->{'target'}, $node->{'id'}, $type_of_node);
         $node->{'target'} = $target if (defined($target));
         $node->{'id'} = $id if (defined($id));
     }
@@ -11623,15 +11623,6 @@ sub do_xref($$$$)
         {
             $node_and_file = '';
         }
-        #my $section_or_node = '';
-        #if ($manual ne '')
-        #{
-        #    $section_or_node = $node_name;
-        #    if ($section ne '')
-        #    {
-        #        $section_or_node = $section;
-        #    }
-        #}
         #$result = &$Texi2HTML::Config::external_ref($macro, $section_or_node, $manual, $node_and_file, $href, $cross_ref, \@args, \@formatted_args);
         $result = &$Texi2HTML::Config::external_ref($macro, $section, $manual, $file_arg_or_node, $href, $cross_ref, \@args, \@formatted_args, $node_name);
     }
@@ -15551,7 +15542,7 @@ sub do_style_command($$$$$$$$)
     }
     # Unknown macro
     my $result = '';
-    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text,$state,$no_close, $no_open);
+    my ($done, $result_text, $message) = &$Texi2HTML::Config::unknown_style($macro, $text, $state, $no_close, $no_open);
     if ($done)
     {
         line_warn($message, $line_nr) if (defined($message));
@@ -16575,7 +16566,7 @@ sub do_index_entry_label($$$$;$)
     }
     my $formatted_entry = substitute_line($entry->{'entry'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state),$entry->{'line_nr'});
     my $formatted_entry_reference = substitute_line($entry->{'texi'}, "\@$command", prepare_state_multiple_pass("${command}_index", $state));
-    return ($entry, $formatted_entry, &$Texi2HTML::Config::index_entry_label ($entry->{'id'}, $state->{'preformatted'}, $formatted_entry, 
+    return ($entry, $formatted_entry, &$Texi2HTML::Config::index_entry_label($entry->{'id'}, $state->{'preformatted'}, $formatted_entry, 
       $index_name,
        $command, $entry->{'texi'}, $formatted_entry_reference, 
        (!$entry->{'seen_in_output'} and defined($entry->{'region'})),$entry)); 

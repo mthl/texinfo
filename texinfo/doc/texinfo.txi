@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
+@c $Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18674,9 +18674,10 @@ use (@pxref{Calling functions at different stages}).
 * Initializing and finalizing::    Preparing and finalizing the output.
 * Calling functions at different stages::
 * External formatting of commands::
+* Program string customization::
 * Customizing generalized block command opening:: 
-* Three contexts::            Three different contexts for command expansion: 
-                              normal text, preformatted text and strings.
+* Four contexts::             Four different contexts for command expansion: 
+                              normal text, preformatted text, strings and math.
 @end menu
 
 
@@ -18732,70 +18733,86 @@ of configuration variables associated with command line options is at
 @node Global informations
 @subsection Accessing global informations
 
-The @code{%Texi2HTML::THISDOC} hash holds some global informations:
-
 @ignore
-FIXME
-'split_level' 'variable_levels' 'variables' 'toc_file' stoc_file
-%index_letters_array
-%index_entries_array
-%index_entries_region_array
-%index_entries
-%indices_numbers
-%indices
-input_file_name
-input_file_number
-input_directory
-css_import_lines
-css_rule_lines
+FIXME those are still undocumented
+'split_level' 
+'variable_levels' 'variables'
 do_about
-titlefont_texi
-'file_base_name' 'FH' 'state' 'format_from_command_line' 'input_directory' 'destination_directory' 'file_base_name' %filename 'dircategory_texi' 'dircategory' 'settitle_texi' 'shorttitlepage_texi' 'title_texi' settitle_line_nr shorttitlepage_line_nr title_line_nr @authors_texi @authors_line_nr @subtitles_texi @subtitles_line_nr %merged_index @defindex @defcodeindex
-command_stack top_texi fulltitle_texi simpletitle_texi
-program
-program_and_version
-program_homepage
-copying_comment
-inline_contents
+'FH' 'state' 'format_from_command_line'
+command_stack
 line_nr
-input_file_name
 %htmlxref
 %hyphenation
-
-author subtitle -> _texi
-
-'shorttitlepage', 'settitle', 'author',
-           'titlefont', 'subtitle', 'title', 'fulltitle', 'simpletitle'
--> $thing, $thing _no_texi, $thing _simple_format
 @end ignore
 
+For title related @@-commands, like @code{@@title}, @code{@@titlefont},
+@code{@@author}, @code{@@top} some information is available, with diverse 
+formatting.
+@code{@@author} and @code{@@subtitle} are multiline title related commands,
+since they may appear more than once.  Multiline title related commands
+are associated with strings that are constructed by concatenating all
+the command occurences.  They are also associated with arrays, and the
+name of the arrays is constructed by prepending a @samp{s} to the command
+name, like @code{authors}.
+
+Some information is also deduced from the title commands. @dfn{simpletitle}
+which is simply @code{@@settitle} or @code{@@shorttitlepage}, and 
+@dfn{fulltitle} which is constructed by trying all the title related commands
+including @code{@@top} and @code{@@titlefont} in the top element.
+
+The information associated with @code{@@top}, 
+@code{@@title}, @code{@@settitle},
+@code{@@shorttitlepage}, @code{@@author}, @code{@@subtitle}, 
+@code{simpletitle} and @code{fulltitle} are associated
+with the following keys in the @code{%Texi2HTML::THISDOC} hash, where
+@var{command} is the title @@-command:
+
 @table @code
-@item fulltitle
-title set by @code{@@settitle}.  If there is no @code{@@settitle} other 
-possibilities are tried (@code{@@title}, @code{@@shorttitlepage}@dots{}).
-@item fulltitle_no_texi
-fulltitle without texi formatting
-@item fulltitle_texi
-fulltitle with texi commands
-@item title
-title set by @code{@@title}.
-@item title_no_texi
-title without texi formatting
-@item title_texi
-title with texi commands
-@item author
-Authors list set by @code{@@author}.
-@item authors
-A reference on an array containing each author set by @code{@@author}.
+@item @var{command}
+The corresponding text formatted.
+@item @var{command}_texi
+The original Texinfo code.
+@item @var{command}_line_nr
+An opaque structure corresponding with the line where the @@-comand appeared.
+Not available for @code{@@titlefont}, multiline title related commands
+and deduced informations.
+@item @var{command}_no_texi
+The text formatted as simple plain text.
+@item @var{command}_simple_format
+The text formatted as a string without formatting elements (@pxref{Four contexts}).
+@end table
+
+For multiline commands, the following array references are associated
+with the following keys in the @code{%Texi2HTML::THISDOC} hash, where
+@var{command} is the title @@-command:
+
+@table @code
+@item @var{command}s
+Reference on an array containing all lines set by @code{@@@var{command}}, 
+formatted.
+@item @var{command}s_texi 
+Reference on an array containing all the original Texinfo lines.
+@item @var{command}s_line_nr
+Reference on an array of opaque structures corresponding with the 
+line where the @@-comand lines appeared.
+@end table
+
+The @code{%Texi2HTML::THISDOC} hash holds other global informations:
+
+@table @code
 @item copying_comment
 Text appearing in @code{@@copying} with all the texinfo commands removed,
 put in comments.
+@item dircategory_texi
+The Texinfo dircategory argument.
+@item dircategory
+Formatted dircategory argument.
 @item program
 The name of the command generating the output.
 @item program_and_version
 The name and version of the command generating the output.
 @item program_homepage
-Homepage of the command generating the output..
+Homepage of the command generating the output.
 @item file_base_name
 base name of the texinfo manual file.
 @item filename
@@ -18823,14 +18840,18 @@ Main frame file.
 Table of contents frame file name.
 @end table
 @item input_file_name
-Name of the texinfo manual file given on the command line.
+Name of the Texinfo manual file given on the command line.
+@item input_file_number
+Number of the Texinfo manual file given on the command line being
+processed.
+@item input_directory
+Path to the directory containing the Texinfo manual being processed.
 @item destination_directory
 Destination directory for the resulting files.
-@item extension
-Extension for the output files.
 @item toc_file
-The file name of the table of contents, should always be valid, even 
-when table of contents are output directly in the document.
+The file name of the table of contents.
+@item stoc_file
+The file name of the Overview (short table of contents).
 @item inline_contents
 A reference on a hash containing two key, one for each type of table
 of contents:
@@ -18844,10 +18865,29 @@ The associated value is a
 reference on an array containg the line resulting from formatting
 the short table of contents, including a heading and a reference.
 @end table
+@item index_letters_array
+@itemx index_entries_array
+@itemx index_entries_region_array
+@itemx index_entries
+@itemx indices_numbers
+@itemx indices
+references on hashes holding informations about the index entries
+and whole indices.
+@item defindex 
+@itemx defcodeindex
+References on array holding the corresponding @@-command 
+arguments
+@item synindex
+@itemx syncodeindex
+Reference on arrays containing array reference with two elements, 
+the two arguments of the @@-command.
+@item merged_index 
+reference on a hash whose keys are the index names merged in
+the values.
 @item css_import_lines
 reference on an array containing the @code{@@import} lines of 
 @acronym{CSS} files. @xref{HTML CSS}.
-@item css_lines
+@item css_rule_lines
 reference on an array containing the normal lines of 
 @acronym{CSS} files. @xref{HTML CSS}.
 @end table
@@ -19101,6 +19141,19 @@ hash containing many informations about the context. @var{$text} should be
 empty. @var{$result} is the expanded resulting text.
 @end deftypefn
 
+@node Program string customization
+@subsection Program string customization
+
+There is a function reference that may be used to construct a string 
+advertizing the program used to generate the manual. It may 
+be used in the About element, and in the footers if
+@code{PROGRAM_NAME_IN_FOOTER} is set.
+
+@deftypefn {Function Reference} $program_string_formatted program_string
+This function reference should return the formatted program
+string.
+@end deftypefn
+
 @node Customizing generalized block command opening
 @subsection Customizing generalized block command opening
 
@@ -19113,7 +19166,7 @@ and @code{@@html}).
 @deftypefn {Function Reference} $line begin_format_texi $command $line \%state
 The @var{$command} is the format command, the @var{$line} is the 
 line following the @@-command, @var{\%state} is a reference on
-a hash containing many formatting information. It can modify the 
+a hash containing many formatting information.  It can modify the 
 line and return something else.
 
 In the default case, it is used to keep track of the multitable nesting.
@@ -19121,10 +19174,10 @@ As a consequence, it is linked with the multitable formating.
 @xref{Multitable formatting}.
 @end deftypefn
 
-@node Three contexts
-@subsection Three contexts for expansions: preformatted, normal and string
+@node Four contexts
+@subsection Four contexts for expansions: preformatted, normal, string and math
 
-There are three contexts of interest:
+There are four contexts of interest:
 @table @emph 
 @item normal context
 In paragraphs, index entries, tables...
@@ -19137,7 +19190,11 @@ The preformatted regions are usually
 rendered in @code{<pre>} elements in @acronym{HTML}.
 @item string context
 The string context occurs when rendering strings without formatting elements,
-in comments or titles for example.
+in comments or titles for example. There are in fact two string contexts,
+one that produces plain text, the other allow for limited formatting,
+typically without any element when producing HTML or XML.
+@item math context
+Currently in @code{@@math}.
 @end table
 
 @node Elements
@@ -19269,8 +19326,8 @@ First element in reading order
 @item Last
 Last element in reading order
 @item Index
-The first chapter with @code{@@printindex}. The associated name 
-is  @code{$INDEX_CHAPTER}, if the variable is set. This variable is not set
+The first chapter with @code{@@printindex}.  The associated name 
+is @code{$INDEX_CHAPTER}, if the variable is set.  This variable is not set
 by default.
 @item This
 The current element
@@ -19334,12 +19391,12 @@ Lines of short table of contents. @xref{Contents and Overview text}.
 @item $Texi2HTML::TOC_LINES
 Lines of table of contents. @xref{Contents and Overview text}.
 @item $Texi2HTML::TITLEPAGE
-The title page formatted. @xref{Title page}.
+The title page formatted. @xref{Title page text}.
 @end vtable
 
 
 @node Navigation panel customization
-@section Customization of the navigation panels buttons
+@section Customization of the navigation panels
 
 A lot of customization of the navigation panel may be achieved
 with variables redefinition, especially special arrays.
@@ -19389,6 +19446,8 @@ and at the end of these section pages if the output is split.
 @item @@LINKS_BUTTONS
 These are used for @code{<link>} elements if they are output in the
 headers.
+@item @@TOP_BUTTONS
+This array is used for the top element buttons (@pxref{The different elements}).
 @end vtable
 
 The array specify the buttons displayed in navigation panels, 
@@ -19464,11 +19523,58 @@ associated with the following function reference:
 
 @deftypefn {Function Reference} $navigation_text print_navigation \@@buttons $vertical
 @var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for that navigation panel.  @var{$vertical} is true if the 
-navigation panel should be vertical.
+the buttons for that navigation panel.  
+@var{$vertical} is true if the navigation panel should be vertical.
 Returns the formatted navigation panel in @var{$navigation_text}.
 @end deftypefn
 
+You may also only redefine the function reference @code{button_formatting}
+that does the formatting of one button:
+@deftypefn {Function Reference} $formatted_button button_formatting $button $vertical
+@var{$button} hold the specification of the button as explained above.
+@var{$vertical} is true if the navigation panel should be vertical.
+@end deftypefn
+
+The default functions call the function associated with 
+@code{$print_head_navigation} to format the navigation panel for the 
+page header.  Thus you can control parts of the formatting by
+redefining the function reference.  This function reference 
+does nothing except for HTML.
+
+@deftypefn {Function Reference} $page_head print_head_navigation $filehandle \@@buttons $first_in_page $previous_is_top \%element
+@var{$filehandle} is the opened filehandle the function should write to,
+if defined. If not defined the function should return the formatted
+page head.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel. 
+@var{$first_in_page} should be set if this is the first navigation
+panel in the page.
+@var{$previous_is_top} is true if the previous element is the top
+element.
+@var{\%element} is a reference on a hash holding informations about
+the element.
+@end deftypefn
+
+Similarly, the default functions call the function associated with 
+@code{$print_foot_navigation} to format the navigation panel for the 
+page footer, in HTML, the only format with page footers in the
+default case.  Thus you can control parts of the formatting by
+redefining the function reference.
+
+@deffn {Function Reference} print_foot_navigation $filehandle \@@buttons $rule $print_navigation_panel \%element $maybe_in_page
+@var{$filehandle} is the opened filehandle the function should write to.
+@var{\@@buttons} is an array reference which should hold the specification of 
+the buttons for the navigation panel.
+@var{rule} is a rule that may be used to separate the navigation panel
+from the preceding text.
+@var{$print_navigation_panel} is a boolean that say wether it would make
+sense to print the navigation panel itself.
+@var{\%element} is a reference on a hash holding informations about
+the element being finished.
+@var{$maybe_in_page} is set if called between regular elements and top or 
+between regular elements and special elements, that is, not at
+the end of a file.
+@end deffn
 
 @node Page layout customization
 @section Page and file layout customization
@@ -19482,38 +19588,29 @@ Returns the formatted navigation panel in @var{$navigation_text}.
 @node Customizing file header
 @subsection Customizing file header 
 
-The default functions call the function associated with 
-@code{$print_head_navigation} to format the navigation panel for the 
-page header.  Thus you can control parts of the formatting by
-redefining the function reference.
-
-@deffn {Function Reference} print_head_navigation $filehandle \@@buttons
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for the navigation panel. 
-@end deffn
-
-If you want even more control, you can have full control over the page header 
+You can have full control over the file header 
 formatting by redefining three function references.  The function associated
 with @code{$print_page_head} is called for all the pages, and after that,
 the function associated with @code{$print_chapter_header} is called
 if the document is split at chapters, or the function associated with
 @code{$print_section_header} is called if the document is split at sections.
 
-@deffn {Function Reference} print_page_head $filehandle
+@deftypefn {Function Reference} print_page_head $filehandle
 @var{$filehandle} is the opened filehandle the function should write to.
-This function should print the page head, including the @code{<body>}
+In HTML, this function should print the page head, including the @code{<body>}
 element.
-@end deffn
+@end deftypefn
 
-@deffn {Function Reference} print_chapter_header $filehandle
+@deffn {Function Reference} print_chapter_header $filehandle \%element
 @var{$filehandle} is the opened filehandle the function should write to.
+@var{\%element} is a reference on a hash holding informations about the element.
 This function is called if the document is split at chapters, after 
 @code{print_page_head}.
 @end deffn
 
-@deffn {Function Reference} print_section_header $filehandle
+@deffn {Function Reference} print_section_header $filehandle \%element
 @var{$filehandle} is the opened filehandle the function should write to.
+@var{\%element} is a reference on a hash holding informations about the element.
 This function is called if the document is split at sections, after 
 @code{print_page_head}.
 @end deffn
@@ -19552,36 +19649,26 @@ is set.  @code{@@LINKS_BUTTONS} determines which links are used.
 The functions associated with the following function references are used for 
 the formatting of sections:
 
-@deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top
+@deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 @var{$first_in_page} is true if this section is the first section in the page.
 @var{$previous_is_top} is true if this section is the section following the 
 Top section.
+@var{\%element} is a reference on a hash holding informations about the element.
 This function should print the current section contents.
 @end deffn
 
-@deffn {Function Reference} end_section $filehandle $last_element_or_before_top
+@deffn {Function Reference} end_section $filehandle $last_element_or_before_top \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 @var{$last_element_or_before_top} is true if this section precedes the top 
 element or is the last one in page, or before the special elements.
+@var{\%element} is a reference on a hash holding informations about the element.
 @end deffn
 
 @node Customizing file footers
 @subsection Customizing the file footers
 
-
-The default functions call the function associated with 
-@code{$print_foot_navigation} to format the navigation panel for the 
-page footer.  Thus you can control parts of the formatting by
-redefining the function reference.
-
-@deffn {Function Reference} print_foot_navigation $filehandle \@@buttons
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for the navigation panel. 
-@end deffn
-
-If you want even more control, you can have more control over the page footer 
+You can have full control over the file footer 
 formatting by redefining three function references.
 The function associated with @code{$print_chapter_footer} is called
 if the document is split at chapters, or the function associated with
@@ -19594,16 +19681,18 @@ This function should print the page foot, including the @code{</body>}
 element.
 @end deffn
 
-@deffn {Function Reference} print_chapter_footer $filehandle
+@deffn {Function Reference} print_chapter_footer $filehandle \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 This function is called if the document is split at chapters, before 
 @code{print_page_foot}.
+@var{\%element} is a reference on a hash holding informations about the element.
 @end deffn
 
-@deffn {Function Reference} print_section_footer $filehandle
+@deffn {Function Reference} print_section_footer $filehandle \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 This function is called if the document is split at sections, before
 @code{print_page_foot}.
+@var{\%element} is a reference on a hash holding informations about the element.
 @end deffn
 
 @vindex $PRE_BODY_CLOSE
@@ -19637,7 +19726,7 @@ can be used for references to the special element.
 * Contents and Overview text::
 * Footnotes text::
 * About text::
-* Title page::
+* Title page text::
 @end menu
 
 @node Top element text
@@ -19654,17 +19743,19 @@ This function should begin the Top element.  At the time this function
 is called, the top element text has not been parsed.
 @end deffn
 
-@deffn {Function Reference} print_Top $filehandle $has_top_heading
+@deffn {Function Reference} print_Top $filehandle $has_top_heading \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 @var{$has_top_heading} is true if there is a @code{@@heading} command or
 @code{@@titlefont} command appearing in the Top element text.
+@var{\%element} is a reference on a hash holding informations about the element.
 This function should be used to format the Top element text and navigation
 panel.
 @end deffn
 
-@deffn {Function Reference} print_Top_footer $filehandle $end_page
+@deffn {Function Reference} print_Top_footer $filehandle $end_page \%element
 @var{$filehandle} is the opened filehandle the function should write to.
 @var{$end_page} is true if the element is the last in a page.
+@var{\%element} is a reference on a hash holding informations about the element.
 This function should end the Top element. 
 @end deffn
 
@@ -19672,18 +19763,19 @@ This function should end the Top element.
 @subsubsection Table of contents and Short table of contents
 
 Two possibilities exist for the formatting of table of contents (and 
-short table of contents).  In the default case, the table of contents 
-are in separate elements, at the end of the document if the document 
-is unsplit or in separate files.  This makes sense when 
-menus are used for navigation.  Another mode may be selected by
-setting @code{INLINE_CONTENTS}.  In that case the table of contents
+short table of contents).  In the default case @code{INLINE_CONTENTS}
+is set, in that case the table of contents
 are not output as separate elements but are instead output where the 
 corresponding @@-command, for example @code{@@contents},
-is set.  This behavior is more consistent with @command{texi2dvi}. 
+is set.  This behavior is consistent with @command{texi2dvi}.
+If @code{INLINE_CONTENTS} is not set,  the table of contents 
+are in separate elements, at the end of the document if the document 
+is unsplit or in separate files.  This makes sense when
+menus are used for navigation.
 If @code{@@setcontentsaftertitlepage} appears in the document,
 and even if @code{INLINE_CONTENTS} is set, the table of contents are 
 merged in the title (which isn't output in the default case, see 
-@ref{Title page}).
+@ref{Title page text}).
 
 Several variables may be used to control the formatting of table of contents 
 and short table of contents:
@@ -19748,19 +19840,39 @@ references with the table of contents and short table of contents.
 
 @end deffn
 
+In the default case, this function reference calls two specialized
+function reference, one for contents and the other for shortcontents.
+
+@deftypefn {Function Reference} \@@contents_lines contents \@@elements $contents_file
+@var{\@@elements} is an array reference contining informations about
+all the elements of the document, as above.
+@var{$contents_file} is the name of the file containing the table of
+contents.
+This function should return the formatted table of contents lines.
+@end deftypefn
+
+@deftypefn {Function Reference} \@@shortcontents_lines shortcontents \@@elements $shortcontents_file
+@var{\@@elements} is an array reference contining informations about
+all the elements of the document, as above.
+@var{$shortcontents_file} is the name of the file containing the table of
+contents.
+This function should return the formatted overview (short table of contents) lines.
+@end deftypefn
+
 Another function reference is used to add a heading and a reference, to
 be used with @code{INLINE_CONTENTS} or merged in the title.  Its output
 is not used when the table of contents are separate elements.
 
-@deftypefn {Function Reference} \@@inline_contents_lines inline_contents $filehandle $command $element
+@deftypefn {Function Reference} \@@inline_contents_lines inline_contents $filehandle $command \%element \@@elements
 This function reference returns a reference on an array holding 
 the lines containing the contents, heading and reference.
 @var{$filehandle} is a reference on the currently opened file if
 the function is called because a @code{@@contents} or
 @code{@@shortcontents} command was encountered, it is undef otherwise.
 @var{$command} is either @samp{contents} or @samp{shortcontents}.
-@var{$element} is a hash reference containing informations about the
-table of contents context.  Relevant keys are:
+@var{\%element} is a reference on a hash holding informations about the element
+where the contents appeared.
+Relevant keys are:
 @table @code
 @item target
 The identifier associated with the table of contents, used for example
@@ -19771,7 +19883,8 @@ general the same than the @code{target}, but not necessarily.
 @item file
 The file name containing the table of contents.
 @end table
-
+@var{\@@elements} is an array reference contining informations about
+all the elements of the document, as above.
 @end deftypefn
 
 @node Footnotes text
@@ -19817,11 +19930,11 @@ If this is not enough and you want to control exactly the formatting of
 the about text, you can redefine the function associated with the following 
 function reference:
 
-@deftypefn {Function Reference} $about_text print_about
+@deftypefn {Function Reference} $about_text about_body
 This function should return the about text.
 @end deftypefn
 
-@node Title page
+@node Title page text
 @subsubsection Formatting of title page
 
 @vindex $Texi2HTML::TITLEPAGE
@@ -19830,7 +19943,13 @@ the @code{@@titlepage} section, and put in @code{$Texi2HTML::TITLEPAGE}
 (@pxref{Elements lines}).  More formatting can be done using the following
 function reference:
 
-@deffn {Function Reference} titlepage 
+@deffn {Function Reference} titlepage \@@titlepage_lines $text $comment $simple_text
+@var{\@@titlepage_lines} is an array containing the Texinfo lines in @code{@@titlepage}.
+@var{$text} is the text appearing in @code{@@titlepage}, formatted.
+@var{$comment} is the text with texi removed, should be very simple
+text.  
+@var{$simple_text} is the text formatted in string context
+with minimal formatting but no elements.
 This function should complete @code{$Texi2HTML::TITLEPAGE}.
 @end deffn
 
@@ -19892,7 +20011,7 @@ further customization.  One is especially usefull in case
 @code{NODE_FILES} is true
 and it is used to customize the node file name. 
 
-@deftypefn {Function Reference} $node_file node_file_name \%node
+@deftypefn {Function Reference} $node_file node_file_name \%node $type
 @var{\%node} is a hash reference with the following interesting keys (there
 are much more keys):
 @table @code
@@ -19901,6 +20020,7 @@ The texinfo node name.
 @item with_section
 True if associated with a section.
 @end table
+@var{$type} is @code{top} if the node is the top node.
 The result is the node file name @var{$node_file}.
 @end deftypefn
 
@@ -19951,18 +20071,19 @@ in the default case, the target for a section is the node id.
 The following function reference, is
 for target items (nodes, anchors, floats):
 
-@deftypefn {Function Reference} {($target,$id)} node_target_name \%node, $default_target, $default_id
+@deftypefn {Function Reference} {($target,$id)} node_target_name \%node $default_target $default_id $type
 @var{\%node} is the same as in the @code{node_file_name} function reference
 above.
 @var{$default_target} is the target already set (it is also 
 in @code{$node->@{'target'@}}), and @var{$default_id} is similarly
 the id already set.
+@var{$type} is @code{top} if the node is the top node.
 @end deftypefn
 
 For element (@pxref{The different elements}), the function 
 reference is:
 
-@deftypefn {Function Reference} {($target,$id)} element_target_name \%element, $default_target, $default_id
+@deftypefn {Function Reference} {($target,$id)} element_target_name \%element $default_target $default_id
 the @var{\%element} is the same than in @code{element_file_name}, and
 @var{$default_target} and @var{$default_id} are the target and id already set.
 @end deftypefn
@@ -19974,7 +20095,7 @@ file and target may also be set.  In the default case, they should
 be rightly set, so be careful when changing them.  The following 
 function reference can be used:
 
-@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item, \%element, $default_target, $default_id, $default_file, $context
+@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item \%element $default_target $default_id $default_file $context
 @var{\%placed_item} is a hash reference describing the placed item,
 in the same vein than above.
 the @var{\%element} is the same than in @code{element_file_name}, 
@@ -19995,10 +20116,24 @@ are @samp{Overview}, @samp{Contents}, @samp{Footnotes} and @samp{About}.
 @node Headings formatting
 @section Customizing headings formatting
 
-A function controls the formatting of sectioning element headings, 
-with the corresponding function reference:
-@deftypefn {Function Reference} $heading_text heading \%element_reference
-The @var{\%element_reference} is a reference on a hash corresponding
+A function reference may be used to do the formatting
+of the heading text (in general changing font and underlining):
+@deftypefn {Function Reference} $heading_text_formatted heading_text $command $text $level
+@var{$command} is the @@-command name associated with the heading.
+@var{$text} is the heading @@-command argument, formatted.
+@var{$level} is the level of the heading in the document tree.
+@end deftypefn
+@findex heading_text_preformatted
+A similar function reference is available for preformatted context,
+@code{heading_text_preformatted}.
+
+A function controls the formatting of element headings, @code{heading}.  
+In the default case it mainly determines if the @code{heading_text} function
+reference should be called for this element, for example it is
+common not to output any heading text for a node, only
+for associated sectioning elements (@pxref{Two Paths}). 
+@deftypefn {Function Reference} $heading_text heading \%element $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading
+The @var{\%element} is a reference on a hash corresponding
 with the sectioning element.  The following keys are of interest:
 @table @code
 @item text
@@ -20008,7 +20143,7 @@ The heading text without section number
 @item node
 true if the sectioning element is a node without associated structuring command
 @item level
-The level of the element in the document tree. @samp{0} is for @code{@@top},
+The level of the element in the document tree.  @samp{0} is for @code{@@top},
 @samp{1} for @code{@@chapter} and so on
 @item tag_level
 the sectioning element name, with @code{@@raisesections} and 
@@ -20016,6 +20151,13 @@ the sectioning element name, with @code{@@raisesections} and
 @item top
 true if it is the top element
 @end table
+@var{$command} is the 
+heading @@-command.  @var{$command_texi_arg} is the argument of the 
+@@-command, unformatted.  @var{$formatted_arg} is is the argument of the 
+@@-command, formatted.  @var{$in_preformatted} is true if in preformatted 
+environment.  @var{$one_section} is true if there is only one 
+section.  @var{$element_heading} is set if the heading is the main component
+of the element.
 @end deftypefn
 
 It is also possible to customize the heading text with section number
@@ -20031,22 +20173,25 @@ texinfo text corresponding with the numbered heading.
 The label associated with the heading that can appear before the 
 heading itself and even before the navigation panel is customized with the
 following function reference:
-@deftypefn {Function Reference} $element_label element_label $identifier \%element_reference $command $unformatted_line
+@deftypefn {Function Reference} $element_label element_label $identifier \%element $command $unformatted_line
 @var{$identifier} is the identifier associated with the heading.
-@var{\%element_reference} is the same as above.  @var{$command} is 
+@var{\%element} is the same as above.  @var{$command} is 
 the @@-command appearing on the line, and @var{$unformatted_line} is 
 the line, unformatted.
 @end deftypefn
 
 Additionally, for @code{@@node} and sectioning @@-commands the formatting
 of the label, navigation panel and heading is controlled by:
-@deftypefn {Function Reference} $element_heagin_text element_heading \%element_reference $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading $first_in_page $is_top $previous_is_top $unformatted_line $element_id $new_element
-@var{\%element_reference} is the same as above.  @var{$command} is the 
+@deftypefn {Function Reference} $element_heading_text element_heading \%element $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading $first_in_page $is_top $previous_is_top $unformatted_line $element_id $new_element
+@var{\%element} is the same as above.
+@var{$command} is the 
 heading @@-command.  @var{$command_texi_arg} is the argument of the 
 @@-command, unformatted.  @var{$formatted_arg} is is the argument of the 
 @@-command, formatted.  @var{$in_preformatted} is true if in preformatted 
 environment.  @var{$one_section} is true if there is only one 
-section. @var{$first_in_page} is true if this is the first heading in a page.
+section.  @var{$element_heading} is set if the heading is the main component
+of the element.
+@var{$first_in_page} is true if this is the first heading in a page.
 @var{$is_top} is true if the heading is considered as a top element heading.
 @var{$previous_is_top} is true if the previous helement was a top element.
 @var{$unformatted_line} holds the whole line, unformatted.  @var{$element_id}
@@ -20076,12 +20221,14 @@ the commands with lettered characters and braces
 but whose braces should be empty, like @code{@@TeX@{@}}, or some commands
 associated with accentted letters like @code{@@AA@{@}}. 
 
-Each of these categories of commands have three associated hashes, one 
+Each of these categories of commands have associated hashes,
 for normal
-context, the other for preformatted context and the last in strings. 
-(@pxref{Three contexts}).  The 
+context, for preformatted context for strings and math. 
+(@pxref{Four contexts}).  The 
 keys of the hashes are the 
 command names, the associated value is the text replacing the command.
+In math context if a command is not a key of these hashes, the 
+defaults for this command are used.
 
 @vindex %simple_map
 @vindex %simple_map_pre
@@ -20089,11 +20236,15 @@ command names, the associated value is the text replacing the command.
 @vindex %things_map
 @vindex %pre_map
 @vindex %texi_map
+@vindex %simple_map_math
+@vindex %math_map
 The hashes are:
-@multitable {one nonlettered character} {normal text} {preformatted text} {string}
-@item command type @tab normal text @tab preformatted text @tab string
-@item one nonlettered character @tab @code{%simple_map} @tab @code{%simple_map_pre} @tab @code{%simple_map_texi}
-@item nothing in braces @tab @code{%things_map} @tab @code{%pre_map} @tab @code{%texi_map}
+@multitable {preformatted text} {one nonlettered character} {nothing in braces}
+@headitem command type @tab one nonlettered character @tab nothing in braces
+@item normal text @tab @code{%simple_map} @tab @code{%things_map}
+@item preformatted text @tab @code{%simple_map_pre} @tab @code{%pre_map}
+@item string @tab @code{%simple_map_texi} @tab @code{%texi_map}
+@item math @tab @code{%simple_map_math} @tab @code{%math_map}
 @end multitable
 
 To change the formatting of these commands, just change the
@@ -20104,6 +20255,40 @@ in normal and preformatted context, write in your init file:
 $simple_map@{'-'@} = '&shy;';
 $simple_map_pre@{'-'@} = '&shy;';
 @end example
+
+A special hash is used preferentially when sorting indices, 
+overriding @code{%texi_map} entries, @code{%sorting_things_map}.
+
+For a better control, function references are available,
+although they are not used in string context.
+@code{simple_command} is for one nonlettered character
+@@-command formatting:
+@deftypefn {Function Reference} $formatted_command simple_command $command $in_preformatted $in_math $line_nr \%state
+@var{$command} is the @@-command name.
+@var{$in_preformatted} is true if in preformatted region.
+@var{$in_math} is true if in math.
+@var{$line_nr}
+An opaque structure containing the information about the line number of the 
+@@-command.
+@var{\%state} holds informations about the current context. 
+@end deftypefn
+
+For @@-commands without argument in brace, @code{thing_command}
+may be redefined:
+
+@deftypefn {Function Reference} $formatted_command thing_command $command $text $in_preformatted $in_math $line_nr \%state
+@var{$command} is the @@-command name.
+@var{$text} is the formatted text appearing in the @@-command. It is invalid Texinfo to have
+something else than an empty string.
+@var{$in_preformatted} is true if in preformatted region.
+@var{$in_math} is true if in math.
+@var{$line_nr}
+An opaque structure containing the information about the line number of the 
+@@-command.
+@var{\%state} holds informations about the current context. 
+@end deftypefn
+
+
 
 @node Formatting of @@<colon>
 @subsection Formatting of a punctuation character associated with @code{@@:}
@@ -20131,14 +20316,29 @@ command. In the default case the associated value in
 @vindex %style_map
 @vindex %style_map_pre
 @vindex %style_map_texi
+@vindex %style_map_math
 The formatting of the output produced by font and indicatric 
 commands (@code{@@tt}, @code{@@code}, @code{@@titlefont}), the accentuation related
 commands taking argument (@code{@@'}, @code{@@udotaccent}, @code{@@dotless})
 and miscalleneous commands (@code{@@email}, @code{@@verb}, @code{@@w}, 
-@code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by two hash in the
+@code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by hashes in the
 default case, 
 @code{%style_map} for normal context, @code{%style_map_pre} for
-preformatted context and @code{%style_map_texi} in string context (@pxref{Three contexts}).
+preformatted context and @code{%style_map_texi} in string context (@pxref{Four contexts}).
+In math context, @code{%style_map_math} is tried first and, if not found,
+other hashes are used.
+
+If defined, a function reference is called for the @@-command opening:
+
+@deffn {Function Reference} begin_style_texi $command \%state \@@stack $real_style_or_accent $remove_texi
+@var{$command} is the @@-command name. 
+@var{\%state} holds informations about the current context. 
+@var{\@@stack} is an opaque variable.
+@var{$real_style_or_accent} is set if the command is an accent or is a
+marking of font command.
+@var{$remove_texi} is set if in a context where output is some simple
+text.
+@end deffn
 
 The key of the hashes are the command names.
 @c There are two possibilities for
@@ -20160,8 +20360,9 @@ The nonlettered accent commands which following character is considered
 to be the argument (like in @code{@@`a}) should be keys of the
 hash @code{%accent_map} hash, even if no value is associated.
 @item
-@c FIXME document this in a more general way
-@code{@@math} is handled differently if La@TeX{}2HTML is used.
+Command with braces may be handled differently, as described in
+@ref{External formatting of commands}, this is used 
+for @code{@@math} if La@TeX{}2HTML is used, for example.
 @end itemize
 
 @menu
@@ -20283,6 +20484,10 @@ An opaque structure containing the information about the line number of the
 @@-command. It can be used to call @code{main::line_error} or
 @code{main::line_warn} with first argument a message, and second argument 
 @code{$line_nr}. 
+@item $line_numbers
+A reference on an array containing the lines numbers (the same opaque 
+structure as above)
+of the lines spawn by the @@-command.
 @end table
 @end table
 
@@ -20292,7 +20497,7 @@ An opaque structure containing the information about the line number of the
 If you don't like this scheme, it is possible to change how those commands
 are processed by redefining the following function reference:
 
-@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $command_stack
+@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $command_stack \@@line_numbers
 @var{$command} is the @@-command, @var{$style} is the value associated with 
 the @var{$command} in the @code{%style_map}, @code{%style_map_pre} 
 or @code{%style_map_texi} hashes.
@@ -20315,7 +20520,8 @@ of the @@-command.
 @var{$command_stack}
 is a reference on an array containing the name of the @@-commands containing 
 the @@-command being formatted.
-
+@var{\@@line_numbers} is a reference on an array containing the lines numbers
+of the lines spawn by the @@-command.
 @end deftypefn
 
 @node Formatting special simple commands
@@ -20325,16 +20531,10 @@ The formatting of special simple commands is controlled by functions.  To
 customize the output, the corresponding function references should be
 redefined. All these functions return a formatted text.
 
-@quotation Warning
-This description is wrong. The API is still moving, so don't count on it.
-Verify, they are more than one label function.
-@end quotation
-
-
 The formatting of anchors is controlled by @code{$anchor_label}.
 
 @deftypefn {Function Reference} $anchor_label anchor_label $identifier $anchor
-@var{$identifier} is the anchor identifier, @var{$anchor}is the @code{@@anchor}
+@var{$identifier} is the anchor identifier, @var{$anchor} is the @code{@@anchor}
 argument.
 @end deftypefn
 
@@ -20363,25 +20563,25 @@ is to modify the @code{@@IMAGE_EXTENSIONS} array, which holds a list of
 filename extensions for image files. It is also possible to redefine
 the function used to determine the filename of the image:
 
-@quotation Warning
-This description is wrong. The API is still moving, so don't count on it.
-@end quotation
-
-@deftypefn {Function Reference} $filename image_files $basename $extension
+@deftypefn {Function Reference} $filename image_files $basename $extension $texi_base $texi_extension
 @var{$basename} is the first @code{@@image} argument, @var{$extension}
-is the corresponding @code{@@image} argument.  This function reference 
-should return an array of image filenames without path that the main 
+is the corresponding @code{@@image} argument, both are formatted.  
+Similarly @var{$texi_base} is the first @code{@@image} argument 
+without formatting, and @var{$texi_extension} is the extension, unformatted.
+This function reference 
+should return an array of array references, each array reference holding
+a formatted and an unformatted image filenames without path that the main 
 program should look for.
 @end deftypefn
 
 Last, it is possible to control 
 the formatting of @code{@@image} by redefining:
-@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_relative_path
+@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_relative_path $in_paragraph \@@file_locations $base_simple_format $extension_simple_format $file_name_simple_format $line_nr
 @var{$file_path} is the image file name with the path from the output directory
 to the source manual directory prepended, @var{$basename}  
 the file name without extension (the first @code{@@image} argument). 
 @var{$preformatted} is true if the image 
-appears in preformatted text. @var{$file_name} is the file name without path 
+appears in preformatted text.  @var{$file_name} is the file name without path 
 but with extension. @var{$alt_text} is the alternate text, it may be 
 undefined. @var{$width} and @var{$height} are the corresponding arguments 
 of @code{@@image}, @var{$raw_alt} is the unmodified alt argument of 
@@ -20390,6 +20590,17 @@ of @code{@@image}, @var{$raw_alt} is the unmodified alt argument of
 @var{$working_dir} is the path to working dir relative to the output
 directory. @var{$file_relative_path} is the file name relative to the 
 @var{$working_dir}.
+@var{$in_paragraph} is true if in paragraphs.
+@var{\@@file_locations} is a reference on an array which itself holds a reference on an 
+array with 3 elements: the file name array reference as returned by @code{image_files},
+the image location if it was found, or undef, and the file name formatted using
+a simple formatting in string context.
+@var{$base_simple_format} is the @var{$basename} formatted with a simple format.
+@var{$extension_simple_format} is the @var{$extension} formatted with a simple format.
+@var{$file_name_simple_format} is the @var{$file_name} formatted with a simple format.
+@var{$line_nr}
+is an opaque structure containing the information about the line number of the 
+@@-command. 
 @end deftypefn
 
 The formatting of @code{@@sp} is controlled by:
@@ -20436,7 +20647,7 @@ is true if in a preformatted environemnt, and @var{$in_code} is true
 if in a special command like @code{@@code}, @code{@@env} where
 @samp{---}, @samp{--}, @samp{``} and @samp{''} should be left as is.  
 @var{$in_math} is true if in @code{@@math}.
-@var{$in_simple} is true if in string context.
+@var{$in_simple} is true if in string context with minimal formatting.
  @var{$command_stack} is an array containing the name of the 
 formatting @@-command that enclose the text.  
 
@@ -20505,19 +20716,14 @@ The references are produced with two function references, one for the
 hypertextual reference construction, the other for the full reference to 
 external manual. 
 
-@quotation Warning
-FIXME
-Out of date!
-@end quotation
-
 @deftypefn {Function Reference} $href external_href $node $node_identifier $xml_node_identifier $manual_file_name
 @var{$node} is the node name, with @@-commands. @var{$node_identifer} is the
 node name mapped to an identifier acceptable as a file name. 
 @var{$xml_node_identifier} is the
 node name mapped to an identifier acceptable as an @acronym{XML} identifier.
 Those identifiers are built as explained in @ref{HTML Xref,,,texinfo,GNU Texinfo},
-thus allowing for cross references to external manuals. @var{$file} is the
-manual or file name of the external reference. This function should return an
+thus allowing for cross references to external manuals.  @var{$file} is the
+manual or file name of the external reference.  This function should return an
 href leading to the external manual.
 
 In HTML, the default for this function is to make a reference compatible with 
@@ -20525,18 +20731,18 @@ In HTML, the default for this function is to make a reference compatible with
 @end deftypefn
 
 @deftypefn {Function Reference} $text external_ref $command $section $book $file $href $cross_ref_name \@@args_texi \@@formatted_args $node
-This function formats a reference to an external texinfo manual.
-The @var{$command} is the ref command (@code{ref}, @code{xref} or 
-@code{pxref}, in text, at sentence beginning or in parenthesis).
+This function formats a reference to an external Texinfo manual.
+The @var{$command} is the reference command (@code{ref}, @code{xref},
+@code{pxref} or @code{inforef}).
 The optionnal @var{$section} argument is the section in the book and 
- @var{book} is the book title.
-@var{$node_and_file} is manual file name. @var{$href} it an hypertextual
+@var{book} is the book title.
+@var{$node_and_file} is the manual file name.  @var{$href} is an hypertextual
 reference to the distant manual constructed using the above function. 
 @var{$cross_ref_name} is an optionnal cross
 reference name appearing in the reference command. 
 @var{\@@args_texi} is a reference on an array containing the @@-command
 arguments, not formatted, with @var{\@@formatted_args} contains the formatted
-@@-command arguments. @var{$node} is the node name, formatted.
+@@-command arguments.  @var{$node} is the node name, formatted.
 This function returns
 the text corresponding with the external html manual reference.
 This function returns the full formatted text of the external reference.
@@ -20545,26 +20751,23 @@ This function returns the full formatted text of the external reference.
 @node Formatting a reference within a manual
 @subsection Formatting a reference within a manual
 
-@quotation Warning
-FIXME
-Out of date!
-@end quotation
-
 A function reference is available for internal references.
 
-@deftypefn {Function Reference} $text internal_ref $command $href $short_name $name $is_section \@@args_texi \@@formatted_args
+@deftypefn {Function Reference} $text internal_ref $command $href $short_name $name $is_section \@@args_texi \@@formatted_args \%element
 This function formats a reference to a node in the current manual.
-The @var{$command} is the ref command (@code{ref}, @code{xref} or 
-@code{pxref}, in text, at sentence beginning or in parenthesis).
+The @var{$command} is the ref command (@code{ref}, @code{xref},
+@code{pxref} or @code{inforef}).
 @var{$href} it an hypertextual reference linking to the corresponding
-node or section. @var{$short_name} and @var{$name} hold the text for the 
+node or section.  @var{$short_name} and @var{$name} hold the text for the 
 reference but @var{$short_name} can be the node name which is assumed to 
 be shorter than the section name.
 @var{$is_section} is a boolean true if the reference is a reference to a 
-section. 
+sectioning element. 
 @var{\@@args_texi} is a reference on an array containing the @@-command
 arguments, not formatted, with @var{\@@formatted_args} contains the formatted
 @@-command arguments.
+@var{\%element} is a reference on a hash holding informations about
+the element target of the reference.
 This function returns the full formatted text of the internal 
 reference.
 @end deftypefn
@@ -20576,6 +20779,21 @@ Each footnote is associated with a footnote entry.  Several footnote entries
 are grouped in a footnote section.  When a footnote appears, two things must
 be formatted: in the main text the place where the footnote appear
 and the footnote text. 
+
+It is possible to replace the footnote with some text before formatting the
+footnote. The following function reference, if not undef is used:
+
+@deftypefn {Function Reference} $added_text footnote_texi $footnote_text \%state \@@command_stack
+@var{$footnote_text} is the footnote text.
+@var{\%state} holds informations about the context at the footnote
+place in the main document.  For example, 
+@code{\%state->@{'outside_document'@}} or @code{\%state->@{'multiple_pass'@}}
+could be used.
+@var{\@@command_stack} is an array containing the commands enclosing
+the footnote.
+@end deftypefn
+
+
 
 Two functions, with corresponding function references control the formatting
 of the footnotes:
@@ -20734,17 +20952,42 @@ can return a string which will be prepended to the quotation text.
 
 The whole quotation is formatted by:
 
-@deftypefn {Function Reference} $quotation quotation $command $quotation_text $argument_text $argument_text_texi
+@deftypefn {Function Reference} $quotation quotation $command $quotation_text $argument_text $argument_text_texi \@@quote_authors
 @var{$command} is the @@-command.
 @var{$quotation_text} is the quotation text, formatted, with the text 
 prepended by the function above.  @var{$argument_text} is the argument 
 of the @code{@@quotation}, formatted.  @var{$argument_text_texi} is the argument
 of the @code{@@quotation}, simply formatted.
+@var{\@@quote_authors} is a reference on an array holding information 
+about the @code{@@author} command arguments appearing within the 
+@code{@@quotation}.  Each of the array element is a reference on a 
+hash with the following keys:
+@table @code
+@item author_texi
+Texinfo code of this @code{@@author} line.
+@item author_text
+Formatted argument of the @code{@@author} line.
+@end table
 @end deftypefn
 
 @node Paragraph and preformatted region
 @section Formatting of paragraph and preformatted regions
 
+
+@c FIXME not sure that it is stable enough to be documented?
+If defined, the following function reference is called at the paragraph
+opening:
+
+@deffn {Function Reference} begin_paragraph_texi $paragraph_or_preformatted \@@paragraph_at_commands $context_command \%state \@@stack
+@var{$paragraph_or_preformatted} is @samp{paragraph} when opening a paragraph,
+or @samp{preformatted} at the beginning of a preformatted region.
+@var{\@@paragraph_at_commands} is a reference on an array containing the
+listof th ecommands with brace opened outside of the paragraph or 
+preformatted.  @var{$context_command} is a reference on a structure describing
+in what generalized block @@-command we are.
+@var{\%state} holds informations about the current context. 
+@var{\@@stack} is an opaque variable.
+@end deffn
 
 @menu
 * Paragraph and preformatted formatting::
@@ -20823,6 +21066,15 @@ format command.
 If the @var{$format} is an enumerate, @var{$item_number} is the number of 
 the item in the list, @var{$enumerate_style} is the argument of the enumerate,
 @var{$number} is the number or letter corresponding with this item. 
+@end deftypefn
+
+A special function reference is called instead if the preformatted
+is empty and the function reference is defined:
+
+@deftypefn {Function Reference} $preformatted_text empty_preformatted $text
+@var{$text} is the text of th epreformatted which should contain only
+spaces.  The function refernece should return the formatted text for 
+this empty preformatted region.
 @end deftypefn
 
 @node Avoiding paragraphs
@@ -20905,6 +21157,22 @@ and we have the following @code{@@itemize}:
 
 then @code{@@bullet} will not be applied to @code{an item}.
 
+Every time a @code{@@tab} or an @code{@@item} is encountered, the following 
+function reference is called, if defined:
+@deftypefn {Function Reference} $result_line tab_item_texi $command \@@command_stack \@@stack \%state $line $line_nr
+@var{$command} is the command name.
+@var{\@@command_stack} is an array with all the @@-commands opened, latest
+on top.
+@var{\@@stack} is an opaque variable.
+@var{\%state} holds informations about the current context. 
+@var{$line} is the line appearing after the command.
+@var{$line_nr}
+is an opaque structure containing the information about the line number of the 
+@@-command. 
+The function returns the line that may be further processed.
+@end deftypefn
+
+
 More control of the text before formatting of the line or the item is 
 achieved with the following function reference:
 
@@ -20925,9 +21193,9 @@ function references:
 @table @strong
 @item lists
 The items of lists are formatted using the following function reference:
-@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command $item_number $enumerate_style $number $prepended_texi $prepended_formatted
+@deftypefn {Function Reference} $list_item list_item $text $format $command $formatted_command $item_number $enumerate_style $number $prepended_texi $prepended_formatted $only_inter_item_commands $before_items $item_command
 This function formats the text between @code{@@item} commands.  @var{$text} 
-is the text corresponding with the item. @var{$format} is the type of format,
+is the text corresponding with the item.  @var{$format} is the type of format,
 @samp{itemize} or @samp{enumerate}.  @var{$command} is the formatting command
 given in argument to @code{@@itemize}, @var{$formatted_command} is this command
 formatted if it is a leading command, like @code{@@minus}.
@@ -20940,6 +21208,21 @@ If the @var{$format} is an itemize, @var{$prepended_texi} is the text that
 appeared on the itemize line, maybe after the formatting command
 (if any), and @var{$prepended_formatted} is the corresponding text, 
 formatted.
+
+@var{$only_inter_item_commands} is true if there are only @@-commands 
+that are not considered as the item argument in the item, like
+index entries.
+@var{$before_items} is set if there is in fact no leading @code{@@item}
+for the text, as it may happen for some text following the @var{$format} 
+@@-command, as in 
+
+@example
+@@table @@asis
+Tex before items.
+
+@end example
+@var{$item_command} is the item command name.
+
 @end deftypefn
 
 @item two column tables
@@ -20949,7 +21232,7 @@ one for the first line located on the @code{@@item} line corresponding
 with the first column, the other for the text appearing on the
 following lines, corresponding with the second column text.
 
-@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command $command_stack $item_command $formatted_index_entry
+@deftypefn {Function Reference} $table_item table_item $item_text $index_label_text $format $command \@@command_stack $item_command $formatted_index_entry
 This function is used to format the text on the @code{@@item} line.
 @var{$item_text} is the text line.  In case there is an index entry 
 associated with the @code{@@item} (as with @code{@@ftable} and 
@@ -20958,7 +21241,7 @@ the place where an index entry appears.  @xref{Index entry place formatting}.
 @var{$format} is the type of format,
 @samp{table}, @samp{ftable} or @samp{vtable}.  @var{$command} is the formatting command
 given in argument to the table format command.
-@var{$command_stack} is an array with all the @@-commands opened, latest
+@var{\@@command_stack} is an array with all the @@-commands opened, latest
 on top.
 @var{$item_command} is the item command, @samp{@@item} or @samp{@@itemx}.
 @var{$formatted_index_entry} is the index entry formatted.
@@ -21195,14 +21478,19 @@ unmodified definition @@-command.
 @end deftypefn
 
 @item definition text
-@deftypefn {Function Reference} $definition_text def_item $text
+@deftypefn {Function Reference} $definition_text def_item $text $only_inter_item_commands $command
 This function formats the definition text, @var{$text}.
+@var{$only_inter_item_commands} is true if there are only @@-commands 
+that are not considered as the definition argument in the definition
+text, like index entries.
+@var{$command} is the definition @@-command.
 @end deftypefn
 
 @item the whole definition
-@deftypefn {Function Reference} $definition def $text
+@deftypefn {Function Reference} $definition def $text $command
 This function formats the whole definition.  The definition line and text 
 formatted by the above functions are in @var{$text}.
+@var{$command} is the definition @@-command.
 @end deftypefn
 
 @end table
@@ -21262,21 +21550,23 @@ This can be avoided with the configuration variable
 
 Two function references are associated with the formatting of the 
 different parts of a menu:
-@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending $has_name $command_stack $preformatted
+@deftypefn {Function Reference} $link menu_link $section \%state $href $node $name $ending $has_name \@@command_stack $preformatted $node_normalized_formatted
 @var{$section} is the section name corresponding with the link, @var{$href}
-is the link hypertextual reference. @var{$href} may be absent.  @var{\%state}
-holds informations about the current context. 
+is the link hypertextual reference. @var{$href} may be absent.  
+@var{\%state} holds informations about the current context. 
 @var{$node} is the node name, @var{$name} is the
 name of the node.  @var{$ending} is the text ending the link entry, 
 in general @samp{::} followed by some spaces.
 @var{$has_name} is true if the entry has an explicit name, otherwise
 @var{$name} has been constructed using the formatted node name.
-@var{$command_stack} is an array containing the commands enclosing
+@var{\@@command_stack} is an array containing the commands enclosing
 the menu link.  It is used in the default case to detect if the 
 menu link is right in the @command{@@menu} or not, since if it is not 
 right below the menu the formatting is simpler.
 @var{$preformatted} is true if in preformatted context.
-@xref{Three contexts}. 
+@xref{Four contexts}. 
+@var{$node_normalized_formatted} is the node with spaces normalized
+and formatted.
 @end deftypefn
 
 This command is not called if @code{SIMPLE_MENU} is set.
@@ -21396,7 +21686,7 @@ references.  Their formatting
 is controlled by the function associated with the following function 
 reference:
 
-@deftypefn {Function Reference} $target index_entry_label $identifier $preformatted $entry $index_name  $index_command $texi_entry $formatted_entry
+@deftypefn {Function Reference} $target index_entry_label $identifier $preformatted $entry $index_name $index_command $texi_entry $formatted_entry $in_region_not_in_output \%index_entry
 @var{$identifier} should be used to create
 a target for links (typically associated with a name or id 
 attribute in @acronym{HTML}).
@@ -21406,6 +21696,11 @@ attribute in @acronym{HTML}).
 may be a index command like @code{@@cindex}, but also a definition or 
 a table.  @var{$texi_entry} is the index entry with @@-commands, and 
 @var{$formatted_entry} the entry formatted.
+@var{$in_region_not_in_output} is set if the index entry appears in a region
+formatting (for example @code{@@titlepage}) and not in the
+output document.
+@var{\%index_entry} is a reference on a hash holding informations about
+the index entry.
 @end deftypefn
 
 Regular index entries are (like @code{@@cindex}) are 
@@ -21426,10 +21721,12 @@ with the possibility of index pages split accross files. This system may be
 completly bypassed by redefining the function reference that is called when
 @code{@@printindex} is encountered:
 
-@deftypefn {Function Reference} $index_text printindex $index_name
+@deftypefn {Function Reference} $index_text printindex $index_name \%printindex
 @var{$index_name} is the index name appearing on the 
-@code{@@printindex} line. The index formatted should be returned
-by this function reference.
+@code{@@printindex} line. 
+@var{\%printindex} is a reference on a hash holding informations
+on the index.
+The index formatted should be returned by this function reference.
 @end deftypefn
 
 If the default index formatting is used, there are still possibilities
@@ -21451,14 +21748,20 @@ function references:
 
 @table @emph
 @item formatting of a letter in a summary
-@deftypefn {Function Reference} $letter summary_letter $letter $file $identifier
+@deftypefn {Function Reference} {($result_letter, $identifier, $is_symbol)} summary_letter $letter $file $identifier $index_element_id $number $index_element $index_name
 This function is used to format a letter appearing in a summary, refering
 to a letter entry in the index list.
 @var{$letter} is the letter.  @var{$file} is the file name where the letter
 entry appears.  More precisely, it is empty when the letter entry is on the 
 same page than the summary, it contains the file name when the index page
 is split accross page.  @var{$identifier} is an identifier for the target 
-letter entry. 
+letter entry.  @var{$index_element_id} is the identifier associated with the
+element holding the letter.  @var{$number} and @var{$index_element} are 
+not specified.  @var{$index_name} is the name of the index.
+The function returns the resulting letter @var{$result_letter}, an
+identifier for the letter @var{$identifier}, to be used in anchors, for example
+and @code{$is_symbol} should be true if the letter is not a regular letter
+but a symbol.
 @end deftypefn
 
 @item formatting of a summary
@@ -21468,11 +21771,20 @@ formatted summary letters, formatted with the above function.
 @end deftypefn
 
 @item formatting of an index entry
-@deftypefn {Function Reference} $entry index_entry $entry_href $entry_text $section_href $section_heading
+@deftypefn {Function Reference} $entry index_entry $entry_href $entry_text $element_href $element_heading $entry_file $element_file $entry_target $entry_element_target $in_region_not_in_output \%index_entry
 @var{$entry_href} is a reference to the place where the index entry 
-appeared, @var{$entry_text} is the corresponding text.  @var{$section_href}
-is a reference to the beginning of the sectioning element containing 
-the index entry, @var{$section_heading} is the heading of the element.
+appeared, @var{$entry_text} is the corresponding text.  @var{$element_href}
+is a reference to the beginning of the element containing 
+the index entry, @var{$element_heading} is the heading of the element.
+@var{$entry_file} is the file where the index entry appear, while 
+@var{$element_file} is the file of the element.  @var{$entry_target} is the
+target of the index entry, @var{$entry_element_target} is the
+element target.
+@var{$in_region_not_in_output} is set if the index entry appears in a region
+formatting (for example @code{@@titlepage}) and not in the
+output document.
+@var{\%index_entry} is a reference on a hash holding informations about
+the index entry.
 @end deftypefn
 
 @item formatting of letter entry
@@ -21642,14 +21954,60 @@ Special regions @code{@@titlepage}, @code{@@documentdescription} and
 default case. They can be kept if the value associated with the @@-command
 in the @code{%region_formats_kept} hash is true.
 
+The following function reference is called when starting the
+formatting of a special region, if defined:
+
+@deffn {Function Reference} begin_special_region $region_name \%state \@@region_lines
+@var{$region_name} is the region name.
+@var{\%state} holds informations about the context of the region formatting. 
+@var{\@@region_lines} holds the region lines.
+@end deffn
+
+The following function reference is called when ending the formatting 
+of the special region, if defined:
+
+@deftypefn {Function Reference} $formatting_result end_special_region $region_name \%state $formatted_region
+@var{$region_name} is the region name.
+@var{\%state} holds informations about the context of the region formatting. 
+@var{$formatted_region} is the result of the region formatting.
+The function reference returns the result of the region formatting, after
+possibly modifying it.
+@end deftypefn
+
 The @code{@@insertcopying} @@-command is formatted by 
 @deftypefn {Function Reference} $insertcopying insertcopying $text $comment $simple_text
 @var{$text} is the text appearing in @code{@@copying}, formatted.
 @var{$comment} is the text with texi removed, should be very simple
-text. @var{$simple_text} is the text formatted in string context.
+text. 
+@var{$simple_text} is the text formatted in string context
+with minimal formatting but no elements.
 @end deftypefn
 
-The title page handling is described in @ref{Title page}.
+The copying commane that is to be used at the beginning of output
+files is formatted by
+@deftypefn {Function Reference} $copying_comment_formatted copying_coment \@@copying_lines $text $comment $simple_text
+@var{\@@copying_lines} is an array containing the Texinfo lines in @code{@@copying}.
+@var{$text} is the text appearing in @code{@@copying}, formatted.
+@var{$comment} is the text with texi removed, should be very simple
+text.
+@var{$simple_text} is the text formatted in string context
+with minimal formatting but no elements.
+@end deftypefn
+
+@code{@@documentdescription} is handled by the following function
+reference, that should set the configuration variable @code{documentdescription}:
+
+@deffn {Function Reference} documentdescription \@@documentdescription_lines $text $comment $simple_text
+@var{\@@documentdescription_lines} is an array containing the Texinfo lines in @code{@@documentdescription}.
+@var{$text} is the text appearing in @code{@@documentdescription}, formatted.
+@var{$comment} is the text with texi removed, should be very simple
+text.
+@var{$simple_text} is the text formatted in string context
+with minimal formatting but no elements.
+@end deffn
+
+
+The title page handling is described in @ref{Title page text}.
 
 @node Other and unknown commands
 @section Customizing other commands, and unknown commands 
@@ -21714,6 +22072,19 @@ If @code{keep} is true for @code{@@verbatiminclude} the default
 action for this macro is not done.
 @end table
 
+These commands are processed by the @code{misc_command_line} function
+reference.  This is somehow redundant with @ref{Formatting of simple line commands}.
+
+@deftypefn {Function Reference} {($command, $line, $result)} misc_command_line $command $line \@@args \@@stack \%state
+@var{$command} is the @@-command name.  @var{$line} is what the main program
+would leave on the line.  @var{\@@args} holds the @@-command arguments.
+@var{\@@stack} is an opaque variable.
+@var{\%state} holds informations about the current context. 
+The result is the @@-command that should be considered in the
+main program, the line that should be processed further and 
+the result of the command formatting.
+@end deftypefn
+
 
 Commands which do not appear in the hashes 
 @code{%simple_map}, @code{%simple_map_pre},
@@ -21738,10 +22109,14 @@ nor in @code{%style_map}, @code{%style_map_pre} and
 @code{%style_map_texi} are processed 
 by the following function reference
 
-@deftypefn {Function Reference} {($result, $result_text, $message)} unknown_style $command $text
+@deftypefn {Function Reference} {($result, $result_text, $message)} unknown_style $command $text \%state $no_close $no_open
 @var{$command} is the @@-command, @var{$text} is the text appearing within 
-the braces (allready formatted).  @var{$result} is a boolean.  If it is true 
-then the other return
+the braces (allready formatted).  
+@var{\%state} holds informations about the current context. 
+If @var{$text} is split in paragraphs each paragraph is passed through
+the function, and @var{$no_close} is true if it is not the last paragraph,
+while @var{$no_open} is true if it is not the first paragraph.
+@var{$result} is a boolean.  If it is true then the other return
 values are taken into account otherwise the default actions are
 used.  In case @var{$result} is true, @var{$result_text} is the resulting
 formatted text
@@ -21767,15 +22142,16 @@ is called for each index appearing in the document, before
 @var{$manual_name} is the manual basename.
 @end deffn
 
-@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference  $entry_element_header $is_printed $manual_name
+@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference $entry_element_header $is_printed $manual_name
 This function is called for each entry of an index. @var{index_name} is the
 name of the index. @var{$entry_text} is the entry in plain text,
 @var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
 entry with texinfo commands. @var{$entry_reference} is the reference placed 
 at the index entry place, in the form @samp{file#id}.
-@var{$entry_element_header} is the formatted header of the element containing 
-the index entry. @var{entry_element_header} is the reference to the
+@var{$entry_element_reference} is the reference to the
 beginning of the element containing the index entry, in the form
+@var{$entry_element_header} is the formatted header of the element containing 
+the index entry. 
 @samp{file#id}. 
 @var{$is_printed} is true if there is a @code{@@printindex} for that index.
 @var{$manual_name} is the manual basename.
@@ -23687,7 +24063,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
+$Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23766,7 +24142,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.266 2010-07-25 00:24:53 karl Exp $
+@comment $Id: texinfo.txi,v 1.267 2010-07-25 17:35:49 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
