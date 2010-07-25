@@ -1,3 +1,10 @@
+2010-07-26  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/doc/: merge the texi2html manual in the texinfo
+	manual, remove the manual and the directory.
+	* doc/texinfo.txi (Texi2HTML): add informations taken from
+	the Texi2HTML manual with a bit more history.
+
 2010-07-25  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.init (program_string): use @emph instead

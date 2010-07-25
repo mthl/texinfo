@@ -1,4 +1,0 @@
-@set UPDATED 25 July 2010
-@set UPDATED-MONTH July 2010
-@set EDITION 4.13
-@set VERSION 4.13

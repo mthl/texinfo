@@ -161,7 +161,6 @@ AC_CONFIG_FILES([ po_messages/Makefile.in po_document/Makefile.in \
                  test/singular_manual/Makefile \
                  test/layout/Makefile \
                  test/many_input_files/Makefile \
-                 doc/Makefile \
                  test/path_separator
                  ])
 

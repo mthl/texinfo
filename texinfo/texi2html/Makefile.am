@@ -22,16 +22,11 @@ po_subdirs =
 po_document_dir = ..
 endif
 
-SUBDIRS = $(po_subdirs) . doc test
+SUBDIRS = $(po_subdirs) . test
 
 imagesdir = $(datadir)/texi2html/images
 #i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
-
-#
-# This is to prevent texinfo.tex from being included
-# in the top-level distribution directory.
-TEXINFO_TEX = doc/texinfo.tex
 
 bin_SCRIPTS = texi2any
 texi2html_additional_scripts = \

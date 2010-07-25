@@ -179,7 +179,7 @@ AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
 	distdir
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = po_document po_messages . doc test
+DIST_SUBDIRS = po_document po_messages . test
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
   dir0=`pwd`; \
@@ -740,15 +740,10 @@ top_srcdir = @top_srcdir@
 @TEXI2HTML_TRUE@po_subdirs = po_document po_messages
 @TEXI2HTML_FALSE@po_document_dir = ..
 @TEXI2HTML_TRUE@po_document_dir = .
-SUBDIRS = $(po_subdirs) . doc test
+SUBDIRS = $(po_subdirs) . test
 imagesdir = $(datadir)/texi2html/images
 #i18ndir = $(datadir)/texi2html/i18n
 initdir = $(datadir)/texinfo/init
-
-#
-# This is to prevent texinfo.tex from being included
-# in the top-level distribution directory.
-TEXINFO_TEX = doc/texinfo.tex
 bin_SCRIPTS = texi2any
 texi2html_additional_scripts = \
 	MySimple.pm \

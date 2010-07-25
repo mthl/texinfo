@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.98 2010-07-23 18:21:19 pertusus Exp $
+# $Id: configure.ac,v 1.99 2010-07-25 23:17:48 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -373,7 +373,6 @@ AC_CONFIG_FILES([\
   texi2html/test/singular_manual/Makefile \
   texi2html/test/layout/Makefile \
   texi2html/test/many_input_files/Makefile \
-  texi2html/doc/Makefile \
   texi2html/test/path_separator
 ])
 
