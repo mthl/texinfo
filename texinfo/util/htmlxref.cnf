@@ -1,0 +1,63 @@
+# htmlxref.cnf - reference file for Texinfo files on the web.
+htmlxrefversion=2010-07-25.16; # UTC
+
+# Copyright 2010 Free Software Foundation, Inc.
+# 
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.
+#
+# The latest version of this file is available at
+# http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
+#
+# Maintainers: for information on putting manuals on the web, including
+# automatically generating all the useful formats, see
+# http://www.gnu.org/prep/maintain/html_node/Manuals-on-Web-Pages.html.
+ 
+# shorten references to manuals on www.gnu.org.
+R = http://www.gnu.org
+RS = ${R}/software
+
+autoconf	mono	${RS}/autoconf/manual/autoconf.html
+autoconf	node	${RS}/autoconf/manual/html_node/
+
+automake	mono	${RS}/automake/manual/automake.html
+automake	node	${RS}/automake/manual/html_node/
+
+cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
+
+#cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
+
+elisp		mono	${RS}/emacs/manual/html_mono/elisp.html
+elisp		node	${RS}/emacs/manual/html_node/
+
+emacs		mono	${RS}/emacs/manual/html_mono/emacs.html
+emacs		node	${RS}/emacs/manual/html_node/
+
+emms		node	${RS}/emms/manual/
+
+gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
+gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
+gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
+gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
+gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
+libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
+
+libextractor	mono	${RS}/libextractor/extractor.html
+
+maintain	mono	${R}/prep/maintain/maintain.html
+maintain	node	${R}/prep/maintain/html_node/
+
+standards	mono	${R}/prep/standards/standards.html
+standards	node	${R}/prep/standards/html_node/
+
+texinfo		mono	${RS}/texinfo/manual/texinfo/texinfo.html
+texinfo		node	${RS}/texinfo/manual/texinfo/html_node/
+
+# Local Variables:
+# eval: (add-hook 'write-file-hooks 'time-stamp)
+# time-stamp-start: "htmlxrefversion="
+# time-stamp-format: "%:y-%02m-%02d.%02H"
+# time-stamp-time-zone: "UTC"
+# time-stamp-end: "; # UTC"
+# End:

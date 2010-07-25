@@ -53,8 +53,7 @@ subdir = texi2html
 DIST_COMMON = README $(dist_images_DATA) $(dist_init_DATA) \
 	$(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	$(srcdir)/check_texinfo.pl.in $(srcdir)/manage_i18n.pl.in \
-	$(srcdir)/texi2html.pl ABOUT-NLS AUTHORS COPYING ChangeLog \
-	NEWS TODO config.rpath
+	$(srcdir)/texi2html.pl COPYING ChangeLog NEWS TODO
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \

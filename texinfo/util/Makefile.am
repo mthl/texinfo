@@ -1,4 +1,4 @@
-# $Id: Makefile.am,v 1.36 2010-06-24 00:17:02 karl Exp $
+# $Id: Makefile.am,v 1.37 2010-07-25 16:59:42 karl Exp $
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
@@ -28,7 +28,7 @@ AM_CPPFLAGS = 					\
   -DLOCALEDIR=\"$(localedir)\"
 LDADD = ../lib/libtxi.a $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
-dist_pkgdata_DATA = texinfo.dtd texinfo.xsl
+dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd texinfo.xsl
 pkgdata_DATA = texinfo.cat
 
 # we don't actually use version.texi in the rule, but it's one way of
