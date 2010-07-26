@@ -1,3 +1,8 @@
+2010-07-25  Karl Berry  <karl@gnu.org>
+
+	* texi2html.init (ERROR_LIMIT),
+	* texi2html.pl (error-limit): set to 100.
+
 2010-07-19  Karl Berry  <karl@gnu.org>
 
 	* texi2html.pl (collect_renamed_nodes): comments begin with @c\b,

@@ -1,5 +1,5 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-07-25.16; # UTC
+htmlxrefversion=2010-07-26.21; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -24,6 +24,8 @@ autoconf	node	${RS}/autoconf/manual/html_node/
 automake	mono	${RS}/automake/manual/automake.html
 automake	node	${RS}/automake/manual/html_node/
 
+bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
+
 cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
 
 #cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
@@ -35,6 +37,9 @@ emacs		mono	${RS}/emacs/manual/html_mono/emacs.html
 emacs		node	${RS}/emacs/manual/html_node/
 
 emms		node	${RS}/emms/manual/
+
+gcal		mono	${RS}/gcal/manual/gcal.html
+gcal		node	${RS}/gcal/manual/html_node/
 
 gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
 gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
