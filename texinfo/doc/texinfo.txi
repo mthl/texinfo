@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
+@c $Id: texinfo.txi,v 1.271 2010-07-26 18:19:53 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16493,6 +16493,7 @@ cross-reference.
 @node makeinfo Configuration Variables
 @section @code{makeinfo} Configuration Variables
 
+
 Many aspects of the behavior and output may be modified by modifying 
 configuration variables. 
 The Configuration variables are either
@@ -16519,6 +16520,11 @@ where @var{VAR_NAME} is the variable name, for example @code{SPLIT} or
 value is @samp{undef} the sets the variable to this special @command{perl}
 value.
 @end itemize
+
+@quotation Warning
+The configuration variable names and meaning may change for each Texinfo 
+release.  We try to avoid incompatible changes, but it is not a priority.
+@end quotation
 
 The list of configuration variables associated with @@-commands is
 in @ref{Configuration variables for @@-commands}, the list and mapping
@@ -18501,6 +18507,14 @@ preceded by whitespace.
 @chapter Controlling the @command{texi2any} output
 
 
+@quotation Warning
+All the informations, except those about command-line options and
+search directories (@pxref{Loading initialization files}) may become 
+obsolete for the next Texinfo release.  Right now, the ``API'' 
+described in this chapter is immature, badly designed and incomplete,
+so we want to keep all the possibilities open.  Of course we try to
+avoid doing incompatible changes, but it is not a priority.
+@end quotation
 
 @menu
 * Loading initialization files::      Initialization files search paths.
@@ -24180,7 +24194,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
+$Id: texinfo.txi,v 1.271 2010-07-26 18:19:53 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24259,7 +24273,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.271 2010-07-26 18:19:53 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

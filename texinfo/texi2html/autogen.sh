@@ -8,8 +8,8 @@ test -f Makefile.am || cd "`dirname \"$0\"`"
 #cp po/* po_document
 #rm -rf po
 
-gettextize -f --po-dir=po_messages
-gettextize -f --po-dir=po_document
+gettextize -f --no-changelog --po-dir=po_messages
+gettextize -f --no-changelog --po-dir=po_document
 
 # Create `aclocal.m4'.
 mkdir -p m4
