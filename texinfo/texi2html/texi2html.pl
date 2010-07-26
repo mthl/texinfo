@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.409 2010-07-25 17:35:50 pertusus Exp $
+# $Id: texi2html.pl,v 1.410 2010-07-26 00:08:57 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3099,7 +3099,7 @@ $T2H_OPTIONS -> {'error-limit|e'} =
 {
  type => '=i',
  linkage => sub {set_from_cmdline('ERROR_LIMIT', $_[1]);},
- verbose => 'quit after NUM errors (default 1000).',
+ verbose => 'quit after NUM errors (default 100).',
 };
 
 $T2H_OPTIONS -> {'split-size'} =
