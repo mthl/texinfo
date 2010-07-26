@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.269 2010-07-25 23:17:49 pertusus Exp $
+@c $Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9711,14 +9711,14 @@ any other sort of output.
 @findex footnote
 
 A @dfn{footnote} is for a reference that documents or elucidates the
-primary text.@footnote{A footnote should complement or expand upon
-the primary text, but a reader should not need to read a footnote to
+primary text.@footnote{A footnote should complement or expand upon the
+primary text, but a reader should not need to read a footnote to
 understand the primary text.  For a thorough discussion of footnotes,
 see @cite{The Chicago Manual of Style}, which is published by the
 University of Chicago Press.}  Footnotes are distracting; use them
-sparingly, if at all.  Standard bibliographical references are better
-placed in a bibliography at the end of a document than in footnotes
-throughout.
+sparingly at most, and it is best to avoid them completely.  Standard
+bibliographical references are better placed in a bibliography at the
+end of a document instead of in footnotes throughout.
 
 @menu
 * Footnote Commands::           How to write a footnote in Texinfo.
@@ -9770,9 +9770,9 @@ In the HTML output, footnote references are marked with a small,
 superscripted number which is rendered as a hypertext link to the
 footnote text.
 
-By the way, footnotes in the argument of an @code{@@item} command for a
-@code{@@table} must be on the same line as the @code{@@item}
-(as usual).  @xref{Two-column Tables}.
+By the way, footnotes in the argument of an @code{@@item} command for
+a @code{@@table} must be on the same line as the @code{@@item} (as
+usual).  @xref{Two-column Tables}.
 
 
 @node Footnote Styles
@@ -9784,15 +9784,16 @@ footnote is located:
 @itemize @bullet
 @cindex @samp{@r{End}} node footnote style
 @item
-In the `End' node style, all the footnotes for a single node
-are placed at the end of that node.  The footnotes are separated from
-the rest of the node by a line of dashes with the word
-@samp{Footnotes} within it.  Each footnote begins with an
-@samp{(@var{n})} reference mark.
+In the `End' node style, all the footnotes for a single node are
+placed at the end of that node.  The footnotes are separated from the
+rest of the node by a line of dashes with the word @samp{Footnotes}
+within it.  Each footnote begins with an @samp{(@var{n})} reference
+mark.
 
 @need 700
 @noindent
-Here is an example of a single footnote in the end of node style:@refill
+Here is an example of the Info output for a single footnote in the
+end-of-node style:
 
 @example
 @group
@@ -9855,16 +9856,15 @@ or
 @end example
 
 Write an @code{@@footnotestyle} command before or shortly after the
-end-of-header line at the beginning of a Texinfo file.  (If you
-include the @code{@@footnotestyle} command between the start-of-header
-and end-of-header lines, the region formatting commands will format
-footnotes as specified.)@refill
+end-of-header line at the beginning of a Texinfo file.  (You should
+include any @code{@@footnotestyle} command between the start-of-header
+and end-of-header lines, so the region formatting commands will format
+footnotes as specified.)
 
-If you do not specify a footnote style, the formatting commands use
-their default style.  Currently, @code{texinfo-format-buffer} and
-@code{texinfo-format-region} use the `separate' style and
-@code{makeinfo} uses the `end' style.
-
+In HTML, when the footnote style is @samp{end}, or if the output is
+not split, footnotes are put at the end of the output.  If set to
+@samp{separate}, and the output is split, they are placed in a
+separate file.
 
 @node Indices
 @chapter Indices
@@ -15977,47 +15977,38 @@ The rest of this chapter gives further details on the program.
 @pindex makeinfo
 @pindex texi2any
 
-To process a Texinfo file, invoke @command{texi2any} or 
-@command{makeinfo} followed by the 
-name of the Texinfo file.  Also select the format you want to output
-with the appropriate command line option (default is Info for 
-@command{makeinfo}).  Thus, to create the Info file for Bison, type 
-the following to the shell:
+To process a Texinfo file, invoke @command{texi2any} or
+@command{makeinfo} followed by the name of the Texinfo file.  Also
+select the format you want to output with the appropriate command line
+option (default is Info for @command{makeinfo}).  Thus, to create the
+Info file for Bison, type one of the following to the shell:
 
 @example
 texi2any --info bison.texinfo
 @end example
 
-or
+@noindent or
 
 @example
 makeinfo bison.texinfo
 @end example
 
-
-@c FIXME is it relevant here?
-@c (You can run a shell inside Emacs by typing @kbd{M-x shell}.)
-
-@c @command{makeinfo} has many options to control its actions and output;
-@c see the next section.
-
-You can give @command{makeinfo} more than one input file name; each is
-processed in turn.  If an input file name is @samp{-}, or no input
-file names are given at all, standard input is read.
+You can specify more than one input file name; each is processed in
+turn.  If an input file name is @samp{-}, or no input file names at
+all are given, standard input is read.
 
 @anchor{makeinfo options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 
-The @command{texi2any}/@command{makeinfo} programs accept 
-many options.  Perhaps the most
-commonly needed are those that change the output format.  By default,
-@command{makeinfo} outputs Info files, while @command{texi2any} outputs
-raw text with minimal formatting.
+The @command{texi2any}/@command{makeinfo} programs accept many
+options.  Perhaps the most basic are those that change the output
+format.  By default, @command{makeinfo} outputs Info files, while
+@command{texi2any} outputs raw text with minimal formatting.
 
-Each command line option is a word preceded by @samp{--} or a letter
-preceded by @samp{-}.  You can use abbreviations for the long option
-names as long as they are unique.
+Each command line option is either a long name preceded by @samp{--}
+or a single letter preceded by @samp{-}.  You can use abbreviations
+for the long option names as long as they are unique.
 
 For example, you could use the following shell command to create an Info
 file for @file{bison.texinfo} in which each line is filled to only 68
@@ -16027,7 +16018,7 @@ columns:
 makeinfo --fill-column=68 bison.texinfo
 @end example
 
-You can write two or more options in sequence, like this:@refill
+You can write two or more options in sequence, like this:
 
 @example
 makeinfo --no-split --fill-column=70 @dots{}
@@ -16041,41 +16032,40 @@ The options are:
 
 @table @code
 
-@item -D @var{var}
-@opindex -D @var{var}
-Cause the variable @var{var} to be defined.  This is equivalent to
-@code{@@set @var{var}} in the Texinfo file (@pxref{set clear value}).
-
 @item --commands-in-node-names
 @opindex --commands-in-node-names
-This command used to ensure that @code{@@}-commands in node names were
-expanded through all the document, especially @code{@@value}. This is now
-done by default, though @@-commands in node names are still not officially
-part of the Texinfo language.
+This option now does nothing, but remains for compatibility.  (It used
+to ensure that @code{@@}-commands in node names were expanded
+throughout the document, especially @code{@@value}.  This is now done
+by default.)
 
 @item --conf-dir=@var{path}
 @opindex --conf-dir=@var{path}
-Append @var{path} to the directory search list for finding
+Prepend @var{path} to the directory search list for finding
 customization files that may be loaded with @option{--init-file} (see
-below).  
+below).  @var{path} can be a single directory, or a list of several
+directories separated by the usual path separator character (@samp{:}
+on GNU and Unix systems, @samp{;} on MS-DOS/MS-Windows).
 @xref{Loading initialization files}.
-
-@var{path} can be a single directory, or a list of several directories
-separated by the usual path separator character (@samp{:} on GNU and
-Unix systems, @samp{;} on MS-DOS/MS-Windows).
 
 @item --css-include=@var{file}
 @opindex --css-include
-Include the contents of @var{file}, which should contain cascading
-style sheets specifications, in the @samp{<style>} block of the HTML
-output.  @xref{HTML CSS}.  If @var{file} is @samp{-}, read standard
-input.
+When producing HTML, literally include the contents of @var{file},
+which should contain W3C cascading style sheets specifications, in the
+@samp{<style>} block of the HTML output.  If @var{file} is @samp{-},
+read standard input.  @xref{HTML CSS}.
 
 @item --css-ref=@var{url}
 @opindex --css-ref
-In HTML mode, add a @samp{<link>} tag to the HTML output which
-references a cascading style sheet at @var{url}. This allows using
+When producing HTML, add a @samp{<link>} tag to the output which
+references a cascading style sheet at @var{url}.  This allows using
 standalone style sheets.
+
+@item -D @var{var}
+@opindex -D @var{var}
+Cause the Texinfo variable @var{var} to be defined.  This is
+equivalent to @code{@@set @var{var}} in the Texinfo file (@pxref{set
+clear value}).
 
 @item --disable-encoding
 @itemx --enable-encoding
@@ -16090,51 +16080,52 @@ Accents}.
 
 @item --docbook
 @opindex --docbook
-Generate Docbook output rather than Info.
+Generate Docbook output.
 
 @item --document-language=@var{lang}
 @opindex --document-language
-@vindex LANG
 Use @var{lang} to translate Texinfo keywords which end up in the
 output document.  The default is the locale specified by the
-@code{@@documentlanguage} command if there is one
+@code{@@documentlanguage} command if there is one, otherwise English
 (@pxref{documentlanguage}).
 
 @item --error-limit=@var{limit}
 @itemx -e @var{limit}
 @opindex --error-limit=@var{limit}
 @opindex -e @var{limit}
-Set the maximum number of errors that @code{makeinfo} will report
-before exiting (on the assumption that continuing would be useless);
-default 100.
+Specify the maximum number of errors to report before aborting (on the
+assumption that continuing would be useless); default 100.
 
 @item --fill-column=@var{width}
 @itemx -f @var{width}
 @opindex --fill-column=@var{width}
 @opindex -f @var{width}
-Specify the maximum number of columns in a line; this is the right-hand
-edge of a line.  Paragraphs that are filled will be filled to this
-width.  (Filling is the process of breaking up and connecting lines so
-that lines are the same length as or shorter than the number specified
-as the fill column.  Lines are broken between words.) The default value
-is 72.  Only useful when generating Info.
+Specify the maximum number of columns in a line; this is the
+right-hand edge of a line.  Paragraphs that are filled will be filled
+to this width.  (Filling is the process of breaking up and connecting
+lines so that lines are the same length as or shorter than the number
+specified as the fill column.  Lines are broken between words.) The
+default value is 72.
 
 @item --footnote-style=@var{style}
 @itemx -s @var{style}
 @opindex --footnote-style=@var{style}
 @opindex -s @var{style}
-Set the footnote style to @var{style}, either @samp{end} for the end
-node style (the default) or @samp{separate} for the separate node style.
-The value set by this option overrides the value set in a Texinfo file
-by an @code{@@footnotestyle} command (@pxref{Footnotes}).  When the
-footnote style is @samp{separate}, @code{makeinfo} makes a new node
-containing the footnotes found in the current node.  When the footnote
-style is @samp{end}, @code{makeinfo} places the footnote references at
-the end of the current node.  
+Set the footnote style to @var{style}: either @samp{end} for the end
+node style (the default) or @samp{separate} for the separate node
+style.  The value set by this option overrides the value set in a
+Texinfo file by an @code{@@footnotestyle} command (@pxref{Footnote
+Styles}).
+
+When the footnote style is @samp{separate}, @code{makeinfo} makes a
+new node containing the footnotes found in the current node.  When the
+footnote style is @samp{end}, @code{makeinfo} places the footnote
+references at the end of the current node.
 
 In HTML, when the footnote style is @samp{end}, or if the output is
 not split, footnotes are put at the end of the output.  If set to
-@samp{separate}, and the output is split, they are placed in a separate file.
+@samp{separate}, and the output is split, they are placed in a
+separate file.
 
 @item --force
 @itemx -F
@@ -16147,23 +16138,14 @@ created.  With this option, they are preserved.
 @itemx -h
 @opindex --help
 @opindex -h
-Print a usage message listing all available options, then exit successfully.
+Print a usage message listing available options, then exit successfully.
 
 @item --html
 @opindex --html
-Generate HTML output.  @xref{Generating HTML}.  By
-default, the HTML output is split into one output file per Texinfo
-source node, and the split output is written into a subdirectory with
-the name of the top-level info file.
-
-@item --info
-@opindex --info
-Generate Info output.  By default, if the output file contains more 
-than about 300,000 bytes, the large Info output file is split 
-into shorter @dfn{indirect} subfiles of about 300,000 bytes each.  
-The name of the output file and of the indirect subfiles is 
-determined by @code{@@setfilename} (@pxref{setfilename}).  
-@xref{Tag and Split Files}.
+Generate HTML output.  By default, the HTML output is split into one
+output file per Texinfo source node, and the split output is written
+into a subdirectory based on the name of the top-level Info file.
+@xref{Generating HTML}.
 
 @item -I @var{dir}
 @opindex -I @var{dir}
@@ -16187,26 +16169,39 @@ MS-DOS/MS-Windows).
 @opindex --iftex
 @itemx --ifxml
 @opindex --ifxml
-For the specified format, process @samp{@@if@var{format}} and
-@samp{@@@var{format}} commands even if not generating the given output
+For the given format, process @samp{@@if@var{format}} and
+@samp{@@@var{format}} commands, and do not process
+@samp{@@ifnot@var{format}}, even if not generating the given output
 format.  For instance, if @option{--iftex} is specified, then
-@samp{@@iftex} and @samp{@@tex} blocks will be read.
+@samp{@@iftex} and @samp{@@tex} blocks will be read, and
+@samp{@@ifnottex} blocks will be ignored, even if @TeX{} is not being
+run.
+
+@item --info
+@opindex --info
+Generate Info output.  By default, if the output file contains more
+than about 300,000 bytes, it is split into shorter @dfn{indirect}
+subfiles of about that size.  The name of the output file and of the
+indirect subfiles is determined by @code{@@setfilename}
+(@pxref{setfilename}).  @xref{Tag and Split Files}.
 
 @item --init-file=@var{file}
 @opindex --init-file=@var{file}
 Load @var{file} as code to modify the behavior and output of the
 generated manual.  It is customary to use the @code{.init} extension
 for these customization files, but that is not enforced by anything;
-the @var{file} name is taken literally.  @option{--conf-dir}, see
-above, may be used to add to the list of directories in which these
-customization files are searched for.  @xref{Loading initialization files}.
+the @var{file} name is taken literally.  @option{--conf-dir} (see
+above) may be used to add to the list of directories in which these
+customization files are searched for.  @xref{Loading initialization
+files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
 In HTML mode, output a tab separated file containing three columns:
 the internal link to an indexed item or item in the table of contents,
-the name of the index (or "toc") in which it occurs, and the term
-which was indexed or entered.
+the name of the index (or table of contents) in which it occurs, and
+the term which was indexed or entered.  This can be useful for
+post-processors.
 
 @item --macro-expand=@var{file}
 @itemx -E @var{file}
@@ -16214,7 +16209,7 @@ which was indexed or entered.
 @opindex -E @var{file}
 Output the Texinfo source with all the macros expanded to the named
 file.  Normally, the results of macro expansion are used internally by
-@code{makeinfo} and then discarded.  This option is used by
+@code{makeinfo} and then discarded.  This option can be used by
 @command{texi2dvi}.
 
 @item --no-headers
@@ -16224,17 +16219,17 @@ file.  Normally, the results of macro expansion are used internally by
 @cindex Menus, omitting
 Do not include menus or node separator lines in the output.
 
-If generating Info, this is the same as using @option{--plaintext},
+When generating Info, this is the same as using @option{--plaintext},
 resulting in a simple plain text file.  Furthermore,
 @code{@@setfilename} is ignored, and output is to standard output
 unless overridden with @option{-o}.  (This behavior is for backward
 compatibility.)
 
 @cindex Navigation links, omitting
-For HTML output, also omit menus.  If output is split, output
-navigation links only at the beginning of each file, while if output
-is not split, do not include a navigation links at the top of each
-node.  @xref{Generating HTML}.
+When generating HTML, and output is split, also output navigation
+links only at the beginning of each file.  If output is not split, do
+not include navigation links at the top of each node at all.
+@xref{Generating HTML}.
 
 @item --no-ifdocbook
 @opindex --no-ifdocbook
@@ -16248,22 +16243,27 @@ node.  @xref{Generating HTML}.
 @opindex --no-iftex
 @itemx --no-ifxml
 @opindex --no-ifxml
-Do not process @samp{@@if@var{format}} and @samp{@@@var{format}}
-commands, and do process @samp{@@ifnot@var{format}}, even if
-generating the given format.  For instance, if @option{--no-ifhtml} is
-specified, then @samp{@@ifhtml} and @samp{@@html} blocks will not be
-read, and @samp{@@ifnothtml} blocks will be.
+For the given format, do not process @samp{@@if@var{format}} and
+@samp{@@@var{format}} commands, and do process
+@samp{@@ifnot@var{format}}, even if generating the given format.  For
+instance, if @option{--no-ifhtml} is specified, then @samp{@@ifhtml}
+and @samp{@@html} blocks will not be read, and @samp{@@ifnothtml}
+blocks will be.
 
 @item --no-number-footnotes
 @opindex --no-number-footnotes
-Suppress automatic footnote numbering.  By default, @code{makeinfo}
-numbers each footnote sequentially in a single node, resetting the
-current footnote number to 1 at the start of each node.
+Suppress automatic footnote numbering.  By default, footnotes are
+numbered sequentially within a node, i.e., the current footnote number
+is reset to 1 at the start of each node.
 
 @item --no-number-sections
+@itemx --number-sections
 @opindex --no-number-sections
-Do not output chapter, section, and appendix numbers.
-You need to specify this if your manual is not hierarchically-structured.
+@opindex --number-sections
+With @option{--number_sections} (the default), output chapter,
+section, and appendix numbers as in printed manuals.  This works only
+with hierarchically-structured manuals.  You should specify
+@code{--no-number-sections} if your manual is not normally structured.
 
 @item --no-pointer-validate
 @itemx --no-validate
@@ -16278,29 +16278,24 @@ references can be resolved, etc.  @xref{Pointer Validation}.
 
 @item --no-warn
 @opindex --no-warn
-Suppress warning messages (but @emph{not} error messages).
+Suppress warning messages (but not error messages).
 
 @item --node-files
 @itemx --no-node-files
 @opindex --node-files
 @opindex --no-node-files
-When generating HTML, produce redirection files for anchors, and for
+When generating HTML, create redirection files for anchors and for any
 nodes that are not already output with the name corresponding to the
-node name (@pxref{HTML Xref Node Name Expansion}).  This is set by
-default if the output is split.  This option makes it possible for
-section- and chapter-level cross-manual references to succeeed
-(@pxref{HTML Xref Configuration}).
+node name (@pxref{HTML Xref Node Name Expansion}).  This option makes
+it possible for section- and chapter-level cross-manual references to
+succeed (@pxref{HTML Xref Configuration}).
 
-If the output is not split, @option{--node-files} enables the creation
-of the redirection files.  @option{--no-node-files} suppress the
-output of any redirection files.  @xref{Generating HTML}.  This option
-has no effect with any output format other than HTML.
-
-@item --number-sections
-@opindex --number-sections
-Output chapter, section, and appendix numbers as in printed manuals.
-This is the default.  It works only with hierarchically-structured
-manuals.
+This is set by default if the output is split.  If the output is not
+split, @option{--node-files} enables the creation of the redirection
+files, in addition to the monolithic main output file.
+@option{--no-node-files} suppresses the creation of redirection files
+in any case.  This option has no effect with any output format other
+than HTML.  @xref{Generating HTML}.
 
 @item --output=@var{file}
 @itemx -o @var{file}
@@ -18439,10 +18434,10 @@ form, whatever is available will be used.  Here is the search order
 for each style that can be generated:
 
 @smallexample
-node    => node,    section, chapter, mono
-section => section, chapter, node,    mono
-chapter => chapter, section, node,    mono
-mono    => mono,    chapter, section, split
+node    @result{} node,    section, chapter, mono
+section @result{} section, chapter, node,    mono
+chapter @result{} chapter, section, node,    mono
+mono    @result{} mono,    chapter, section, split
 @end smallexample
 
 @opindex --node-files@r{, and HTML cross-references}
@@ -24185,7 +24180,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.269 2010-07-25 23:17:49 pertusus Exp $
+$Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24264,7 +24259,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.269 2010-07-25 23:17:49 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.270 2010-07-26 00:34:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
