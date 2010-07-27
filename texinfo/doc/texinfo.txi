@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.272 2010-07-26 23:04:50 pertusus Exp $
+@c $Id: texinfo.txi,v 1.273 2010-07-27 23:39:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -163,7 +163,7 @@ the menu lists all the lower level nodes in the document.
 * Generic translator texi2any/makeinfo:: The all purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
-* texi2any output customization:: Fine tuning with initialization files.
+* texi2any Output Customization:: Fine tuning with initialization files.
 
 * Command List::                  All the Texinfo @@-commands.
 * Tips::                          Hints on how to write a Texinfo document.
@@ -652,7 +652,7 @@ HTML Cross-references
 * Configuration:     HTML Xref Configuration.      htmlxref.cnf.
 * Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
 
-texi2any output customization
+texi2any Output Customization
 
 * Loading initialization files::      Initialization files search paths.
 * Initialization files basics::       General informations on initialization 
@@ -16495,8 +16495,9 @@ cross-reference.
 
 @cartouche
 @quotation Warning
-The configuration variable names and meaning may change for each Texinfo 
-release.  We try to avoid incompatible changes, but it is not a priority.
+These configuration variable names and meanings may change in any
+Texinfo release.  We try to avoid incompatible changes, but we cannot
+promise.
 @end quotation
 @end cartouche
 
@@ -18504,18 +18505,19 @@ Lines consisting only of whitespace are ignored.  Comments are
 indicated with a @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
 
-@node texi2any output customization
-@chapter Controlling the @command{texi2any} output
 
+@node texi2any Output Customization
+@chapter @command{texi2any} Output Customization
 
 @cartouche
 @quotation Warning
-All the informations, except those about command-line options and
-search directories (@pxref{Loading initialization files}) may become 
-obsolete for the next Texinfo release.  Right now, the ``API'' 
-described in this chapter is immature, badly designed and incomplete,
-so we want to keep all the possibilities open.  Of course we try to
-avoid doing incompatible changes, but it is not a priority.
+All of this information, with the exception of that about command-line
+options and search directories (@pxref{Loading initialization files})
+may become obsolete in a future Texinfo release.  Right now, the
+``API'' described in this chapter is immature, badly designed and
+incomplete, so we must keep open the possibility of incompatible,
+possibly major, changes.  Of course we try to avoid incompatible
+changes, but it is not a promise.
 @end quotation
 @end cartouche
 
@@ -24197,7 +24199,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.272 2010-07-26 23:04:50 pertusus Exp $
+$Id: texinfo.txi,v 1.273 2010-07-27 23:39:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24276,7 +24278,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.272 2010-07-26 23:04:50 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.273 2010-07-27 23:39:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

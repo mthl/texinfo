@@ -1,3 +1,8 @@
+2010-07-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (texiany Output Customization, makeinfo
+	Configuration Variables): slightly reword incompatibility warnings.
+
 2010-07-27  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.pl: use the actual values for defaults
