@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.410 2010-07-26 00:08:57 karl Exp $
+# $Id: texi2html.pl,v 1.411 2010-07-27 07:31:09 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3099,21 +3099,21 @@ $T2H_OPTIONS -> {'error-limit|e'} =
 {
  type => '=i',
  linkage => sub {set_from_cmdline('ERROR_LIMIT', $_[1]);},
- verbose => 'quit after NUM errors (default 100).',
+ verbose => 'quit after NUM errors (default '.get_conf('ERROR_LIMIT').').',
 };
 
 $T2H_OPTIONS -> {'split-size'} =
 {
  type => '=s',
  linkage => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
- verbose => 'split Info files at size s (default 300000).',
+ verbose => 'split Info files at size s (default '.get_conf('SPLIT_SIZE').').',
 };
 
 $T2H_OPTIONS -> {'paragraph-indent|p'} =
 {
  type => '=s',
  linkage => sub {set_paragraphindent($_[1], 1);},
- 'verbose' => "indent Info paragraphs by VAL spaces (default 3).
+ 'verbose' => "indent Info paragraphs by VAL spaces (default ".get_conf('paragraphindent').").
                               If VAL is `none', do not indent; if VAL is
                                 `asis', preserve existing indentation.",
 };
