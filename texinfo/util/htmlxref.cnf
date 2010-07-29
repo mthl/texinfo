@@ -1,5 +1,5 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-07-26.21; # UTC
+htmlxrefversion=2010-07-29.00; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -47,6 +47,8 @@ gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
 gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
 gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
 libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
+
+gnuschool	mono	${RS}/gnuschool/gnuschool.html
 
 libextractor	mono	${RS}/libextractor/extractor.html
 
