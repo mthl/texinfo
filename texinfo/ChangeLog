@@ -1,3 +1,7 @@
+2010-07-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Internationalization of strings): edit node.
+
 2010-07-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (texiany Output Customization, makeinfo

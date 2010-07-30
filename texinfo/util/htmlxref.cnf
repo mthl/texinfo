@@ -1,5 +1,5 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-07-29.00; # UTC
+htmlxrefversion=2010-07-30.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -17,6 +17,10 @@ htmlxrefversion=2010-07-29.00; # UTC
 # shorten references to manuals on www.gnu.org.
 R = http://www.gnu.org
 RS = ${R}/software
+
+anubis		chapter	${RS}/anubis/manual/html_chapter/
+anubis		section	${RS}/anubis/manual/html_section/
+anubis		node	${RS}/anubis/manual/html_node/
 
 autoconf	mono	${RS}/autoconf/manual/autoconf.html
 autoconf	node	${RS}/autoconf/manual/html_node/
@@ -48,12 +52,26 @@ gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
 gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
 libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
 
+gnus		mono	${RS}/emacs/manual/html_node/mh-e/
+gnus		node	${RS}/emacs/manual/html_mono/mh-e.html
+
 gnuschool	mono	${RS}/gnuschool/gnuschool.html
+
+gtypist		mono	${RS}/gtypist/doc/
 
 libextractor	mono	${RS}/libextractor/extractor.html
 
+mailutils	mono	${RS}/mailutils/manual/mailutils.html
+mailutils	node	${RS}/mailutils/manual/html_node/
+
 maintain	mono	${R}/prep/maintain/maintain.html
 maintain	node	${R}/prep/maintain/html_node/
+
+mdk		mono	${RS}/mdk/manual/mdk.html
+mdk		node	${RS}/mdk/manual/html_node/
+
+mh-e		mono	${RS}/emacs/manual/html_node/mh-e/
+mh-e		node	${RS}/emacs/manual/html_mono/mh-e.html
 
 standards	mono	${R}/prep/standards/standards.html
 standards	node	${R}/prep/standards/html_node/
