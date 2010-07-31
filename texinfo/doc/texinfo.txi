@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.274 2010-07-30 18:47:40 karl Exp $
+@c $Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -23275,6 +23275,7 @@ Follow command with a punctuation mark.  Only the first argument is
 mandatory.  @xref{ref, , @code{@@ref}}.
 
 @item @@refill
+@findex refill
 This command used to refill and indent the paragraph after all the
 other processing has been done.  It is no longer needed, since all
 formatters now automatically refill as needed, but you may still see
@@ -24228,7 +24229,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.274 2010-07-30 18:47:40 karl Exp $
+$Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24307,7 +24308,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.274 2010-07-30 18:47:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -25975,7 +25976,7 @@ Indirect:
 (<filename>: <bytepos>)*
 @end example
 
-The number of preamble bytes written to each output file are included
+The number of preamble bytes written to each output file is included
 in the positions.  Neither the preamble nor the size of the top-level
 output file is included.
 
@@ -26030,10 +26031,11 @@ The @samp{(Indirect)} line is the next line after @samp{Tag Table:}
 in the case of split output only.  In this 
 
 Each following line defines an identifier as either an anchor or a
-node.  It is an error to define the same identifier both ways.  For
-example, @samp{Node: Top^?1647} says that the node named @samp{Top}
-starts at byte 1647 while @samp{Ref: Overview-Footnote-1^?30045} says
-that the anchor named @samp{Overview-Footnote-1} starts at byte 30045.
+node, as specific.  It is an error to define the same identifier both
+ways.  For example, @samp{Node: Top^?1647} says that the node named
+@samp{Top} starts at byte 1647 while @samp{Ref:
+Overview-Footnote-1^?30045} says that the anchor named
+@samp{Overview-Footnote-1} starts at byte 30045.
 
 In the case of nonsplit output, the byte positions simply refer to the
 location in the output file.  In the case of split output, the byte
@@ -26096,14 +26098,18 @@ case of a wrongly-structured Info manual.  At least one space must be
 present after each colon and comma, but any number of spaces are
 ignored.
 
-This @t{<node>} defines @t{<id1>} in @t{<fn>}, which is typically just
-@samp{manual} or perhaps @samp{manual.info}.  Each of the other
-references @t{<id2>}, @t{<id3>}, and @t{<id4>} must be defined with
-either @samp{Node} or @samp{Ref} in the @t{<tag table>}.
+This @t{<node>} defines @t{<id1>} in file @t{<fn>}, which is typically
+just @samp{manualname} or perhaps @samp{manualname.info}.  Each of the
+other references @t{<id2>}, @t{<id3>}, and @t{<id4>} must be defined
+with either @samp{Node} or @samp{Ref} in the @t{<tag table>}.
 
 Conventionally the nodes are arranged to form a tree, but this is not
 a requirement of the format.  Each pointer can refer to any defined
 identifier.
+
+Identifiers cannot include periods, commas, colons or parentheses
+(including @@-commands which produce any of these); these can confuse 
+Info readers.  @xref{Node Line Requirements}.
 
 The @t{<general text>} of the node can include the special constructs
 described next.
@@ -26273,536 +26279,530 @@ The third example refers to the node `Top' in another manual, namely
 @xref{Cross References}.
 
 
-@ignore
-The simple description in the command summary seems sufficient to me
-these days, so ignore this appendix.  --karl, 13mar04.
-
-@node Refilling Paragraphs
-@appendix Refilling Paragraphs
-@cindex Refilling paragraphs
-@cindex Filling paragraphs
-@cindex Paragraphs, filling
-@findex refill
-
-The @code{@@refill} command refills and, optionally, indents the first
-line of a paragraph.@footnote{Perhaps the command should have been
-called the @code{@@refillandindent} command, but @code{@@refill} is
-shorter and the name was chosen before indenting was possible.} The
-@code{@@refill} command is no longer important, but we describe it here
-because you once needed it.  You will see it in many old Texinfo
-files.@refill
-
-Without refilling, paragraphs containing long @@-constructs may look
-bad after formatting because the formatter removes @@-commands and
-shortens some lines more than others.  In the past, neither the
-@code{texinfo-format-region} command nor the
-@code{texinfo-format-buffer} command refilled paragraphs
-automatically.  The @code{@@refill} command had to be written at the
-end of every paragraph to cause these formatters to fill them.  (Both
-@TeX{} and @code{makeinfo} have always refilled paragraphs
-automatically.)  Now, all the Info formatters automatically fill and
-indent those paragraphs that need to be filled and indented.@refill
-
-The @code{@@refill} command causes @code{texinfo-format-region} and
-@code{texinfo-format-buffer} to refill a paragraph in the Info file
-@emph{after} all the other processing has been done.  For this reason,
-you can not use @code{@@refill} with a paragraph containing either
-@code{@@*} or @code{@@w@{ @dots{} @}} since the refilling action will
-override those two commands.@refill
-
-The @code{texinfo-format-region} and @code{texinfo-format-buffer}
-commands now automatically append @code{@@refill} to the end of each
-paragraph that should be filled.  They do not append @code{@@refill} to
-the ends of paragraphs that contain @code{@@*} or @w{@code{@@w@{ @dots{}@}}}
-and therefore do not refill or indent them.@refill
-
-@end ignore
+@c The simple description in the command summary seems sufficient to me
+@c these days, so ignore this appendix.  --karl, 13mar04.
+@c 
+@c @node Refilling Paragraphs
+@c @appendix Refilling Paragraphs
+@c @cindex Refilling paragraphs
+@c @cindex Filling paragraphs
+@c @cindex Paragraphs, filling
+@c @findex refill
+@c 
+@c The @code{@@refill} command refills and, optionally, indents the first
+@c line of a paragraph.@footnote{Perhaps the command should have been
+@c called the @code{@@refillandindent} command, but @code{@@refill} is
+@c shorter and the name was chosen before indenting was possible.} The
+@c @code{@@refill} command is no longer important, but we describe it here
+@c because you once needed it.  You will see it in many old Texinfo
+@c files.@refill
+@c 
+@c Without refilling, paragraphs containing long @@-constructs may look
+@c bad after formatting because the formatter removes @@-commands and
+@c shortens some lines more than others.  In the past, neither the
+@c @code{texinfo-format-region} command nor the
+@c @code{texinfo-format-buffer} command refilled paragraphs
+@c automatically.  The @code{@@refill} command had to be written at the
+@c end of every paragraph to cause these formatters to fill them.  (Both
+@c @TeX{} and @code{makeinfo} have always refilled paragraphs
+@c automatically.)  Now, all the Info formatters automatically fill and
+@c indent those paragraphs that need to be filled and indented.@refill
+@c 
+@c The @code{@@refill} command causes @code{texinfo-format-region} and
+@c @code{texinfo-format-buffer} to refill a paragraph in the Info file
+@c @emph{after} all the other processing has been done.  For this reason,
+@c you can not use @code{@@refill} with a paragraph containing either
+@c @code{@@*} or @code{@@w@{ @dots{} @}} since the refilling action will
+@c override those two commands.@refill
+@c 
+@c The @code{texinfo-format-region} and @code{texinfo-format-buffer}
+@c commands now automatically append @code{@@refill} to the end of each
+@c paragraph that should be filled.  They do not append @code{@@refill} to
+@c the ends of paragraphs that contain @code{@@*} or @w{@code{@@w@{ @dots{}@}}}
+@c and therefore do not refill or indent them.@refill
 
 
 @c These are no longer ``new'', and the explanations
-@c are all given elsewhere anyway, I think.  --karl, 25apr97.
-@c So ignore the entire appendix.
-@ignore
+@c are all given elsewhere anyway.  So ignore the entire appendix.
+@c --karl, 25apr97.
 @c node New Features, Command and Variable Index, Obtaining TeX, Top
 @c appendix Second Edition Features
 
-@tex
-% Widen the space for the first column so three control-character
-% strings fit in the first column.  Switched back to default .8in
-% value at end of chapter.
-\global\tableindent=1.0in
-@end tex
-
-The second edition of the Texinfo manual describes more than 20 new
-Texinfo mode commands and more than 50 previously undocumented Texinfo
-@@-commands.  This edition is more than twice the length of the first
-edition.@refill
-
-Here is a brief description of the new commands.@refill
-
-@c menu
-* New Texinfo Mode Commands::   The updating commands are especially useful.
-* New Commands::                Many newly described @@-commands.
-@c end menu
-
-@c node New Texinfo Mode Commands, New Commands, Obtaining TeX, Obtaining TeX
-@c appendixsec New Texinfo Mode Commands
-
-Texinfo mode provides commands and features especially designed for
-working with Texinfo files.  More than 20 new commands have been
-added, including commands for automatically creating and updating
-both nodes and menus.  This is a tedious task when done by hand.@refill
-
-The keybindings are intended to be somewhat mnemonic.@refill
-
-@c subheading Update all nodes and menus
-
-The @code{texinfo-master-menu} command is the primary command:
-
-@table @kbd
-@item C-c C-u m
-@itemx M-x texinfo-master-menu
-Create or update a master menu.
-With @kbd{C-u} as a prefix argument,
-first create or update all nodes
-and regular menus.
-@end table
-
-@c subheading Update Pointers
-
-@noindent
-Create or update `Next', `Previous', and `Up' node pointers.@refill
-
-@noindent
-@xref{Updating Nodes and Menus}.
-
-@table @kbd
-@item C-c C-u C-n
-@itemx M-x texinfo-update-node
-Update a node.
-
-@item C-c C-u C-e
-@itemx M-x texinfo-every-node-update
-Update every node in the buffer.
-@end table
-
-@c subheading Update Menus
-
-@noindent
-Create or update menus.@refill
-
-@noindent
-@xref{Updating Nodes and Menus}.
-
-@table @kbd
-@item C-c C-u C-m
-@itemx M-x texinfo-make-menu
-Make or update a menu.
-
-@item C-c C-u C-a
-@itemx M-x texinfo-all-menus-update
-Make or update all the menus in a buffer.
-With @kbd{C-u} as a prefix argument,
-first update all the nodes.
-@end table
-
-@c subheading Insert Title as Description
-
-@noindent
-Insert a node's chapter or section title in the space for the
-description in a menu entry line; position point so you can edit the
-insert.  (This command works somewhat differently than the other
-insertion commands, which insert only a predefined string.)@refill
-
-@noindent
-@xref{Inserting, Inserting Frequently Used Commands}.
-
-@table @kbd
-@item C-c C-c C-d
-Insert title.
-@end table
-
-@c subheading Format for Info
-
-@noindent
-Provide keybindings both for the Info formatting commands that are
-written in Emacs Lisp and for @code{makeinfo} that is written in
-C.@refill
-
-@noindent
-@xref{Info Formatting}.
-
-@noindent
-Use the Emacs lisp @code{texinfo-format@dots{}} commands:
-
-@table @kbd
-@item C-c C-e C-r
-Format the region.
-
-@item C-c C-e C-b
-Format the buffer.
-@end table
-
-@noindent
-Use @code{makeinfo}:
-
-@table @kbd
-@item C-c C-m C-r
-Format the region.
-
-@item C-c C-m C-b
-Format the buffer.
-
-@item C-c C-m C-l
-Recenter the @code{makeinfo} output buffer.
-
-@item C-c C-m C-k
-Kill the @code{makeinfo} formatting job.
-@end table
-
-@c subheading Typeset and Print
-
-@noindent
-Typeset and print Texinfo documents from within Emacs.
-
-@noindent
-@xref{Printing}.
-
-@table @kbd
-@item C-c C-t C-b
-Run @code{texi2dvi} on the buffer.
-
-@item C-c C-t C-r
-Run @TeX{} on the region.
-
-@item C-c C-t C-i
-Run @code{texindex}.
-
-@item C-c C-t C-p
-Print the DVI file.
-
-@item C-c C-t C-q
-Show the print queue.
-
-@item C-c C-t C-d
-Delete a job from the print queue.
-
-@item C-c C-t C-k
-Kill the current @TeX{} formatting job.
-
-@item C-c C-t C-x
-Quit a currently stopped @TeX{} formatting job.
-
-@item C-c C-t C-l
-Recenter the output buffer.
-@end table
-
-@c subheading Other Updating Commands
-
-@noindent
-The ``other updating commands'' do not have standard keybindings because
-they are used less frequently.@refill
-
-@noindent
-@xref{Other Updating Commands}.
-
-@table @kbd
-@item M-x texinfo-insert-node-lines
-Insert missing @code{@@node} lines using
-section titles as node names.
-
-@item M-x texinfo-multiple-files-update
-Update a multi-file document.
-With a numeric prefix, such as @kbd{C-u 8},
-update  @strong{every} pointer and
-menu in @strong{all} the files and
-then insert a master menu.
-
-@item M-x texinfo-indent-menu-description
-Indent descriptions in menus.
-
-@item M-x texinfo-sequential-node-update
-Insert node pointers in strict sequence.
-@end table
-
-@c no.de New Commands,  , New Texinfo Mode Commands, Obtaining TeX
-@c appendix.sec New Texinfo @@-Commands
-
-The second edition of the Texinfo manual describes more than 50
-commands that were not described in the first edition.  A third or so
-of these commands existed in Texinfo but were not documented in the
-manual; the others are new.  Here is a listing, with brief
-descriptions of them:@refill
-
-@c subheading Indexing
-
-@noindent
-Create your own index, and merge indices.@refill
-
-@noindent
-@xref{Indices}.
-
-@table @kbd
-@item @@defindex @var{index-name}
-Define a new index and its indexing command.
-See also the @code{@@defcodeindex} command.
-
-@c written verbosely to avoid overfull hbox
-@item @@synindex @var{from-index} @var{into-index}
-Merge the @var{from-index} index into the @var{into-index} index.
-See also the @code{@@syncodeindex} command.
-@end table
-
-@c subheading Definitions
-
-@noindent
-Describe functions, variables, macros,
-commands, user options, special forms, and other such artifacts in a
-uniform format.@refill
-
-@noindent
-@xref{Definition Commands}.
-
-@table @kbd
-@item @@deffn @var{category} @var{name} @var{arguments}@dots{}
-Format a description for functions, interactive
-commands, and similar entities.
-
-@item @@defvr, @@defop, @dots{}
-15 other related commands.
-@end table
-
-@c subheading Glyphs
-
-@noindent
-Indicate the results of evaluation, expansion,
-printed output, an error message, equivalence of expressions, and the
-location of point.@refill
-
-@noindent
-@xref{Glyphs}.
-
-@table @kbd
-@item @@equiv@{@}
-@itemx @equiv{}
-Equivalence:
-
-@item @@error@{@}
-@itemx @error{}
-Error message
-
-@item @@expansion@{@}
-@itemx @expansion{}
-Macro expansion
-
-@item @@point@{@}
-@itemx @point{}
-Position of point
-
-@item @@print@{@}
-@itemx @print{}
-Printed output
-
-@item @@result@{@}
-@itemx @result{}
-Result of an expression
-@end table
-
-@c subheading Page Headings
-
-@noindent
-Customize page headings.
-
-@noindent
-@xref{Headings}.
-
-@table @kbd
-@item @@headings @var{on-off-single-double}
-Headings on or off, single, or double-sided.
-
-@item @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
-Footings for even-numbered (left-hand) pages.
-
-@item @@evenheading, @@everyheading, @@oddheading, @dots{}
-Five other related commands.
-
-@item @@thischapter
-Insert name of chapter and chapter number.
-
-@item @@thischaptername, @@thisfile, @@thistitle, @@thispage
-Related commands.
-@end table
-
-@c subheading Formatting
-
-@noindent
-Format blocks of text.
-
-@noindent
-@xref{Quotations and Examples}, and@*
-@ref{Lists and Tables, , Making Lists and Tables}.
-
-@table @kbd
-@item @@cartouche
-Draw rounded box surrounding text (no effect in Info).
-
-@item @@enumerate @var{optional-arg}
-Enumerate a list with letters or numbers.
-
-@item @@exdent @var{line-of-text}
-Remove indentation.
-
-@item @@flushleft
-Left justify.
-
-@item @@flushright
-Right justify.
-
-@item @@format
-Do not narrow nor change font.
-
-@item @@ftable @var{formatting-command}
-@itemx @@vtable @var{formatting-command}
-Two-column table with indexing.
-
-@item @@lisp
-For an example of Lisp code.
-
-@item @@smallexample
-@itemx @@smalllisp
-Like @@table and @@lisp, but for (originally) @@smallbook.
-@end table
-
-@c subheading Conditionals
-
-@noindent
-Conditionally format text.
-
-@noindent
-@xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.@refill
-
-@table @kbd
-@item @@set @var{flag} [@var{string}]
-Set a flag.  Optionally, set value
-of @var{flag} to @var{string}.
-
-@item @@clear @var{flag}
-Clear a flag.
-
-@item @@value@{@var{flag}@}
-Replace with value to which @var{flag} is set.
-
-@item @@ifset @var{flag}
-Format, if @var{flag} is set.
-
-@item @@ifclear @var{flag}
-Ignore, if @var{flag} is set.
-@end table
-
-@c subheading @@heading series for Titles
-
-@noindent
-Produce unnumbered headings that do not appear in a table of contents.
-
-@noindent
-@xref{Structuring}.
-
-@table @kbd
-@item @@heading @var{title}
-Unnumbered section-like heading not listed
-in the table of contents of a printed manual.
-
-@item @@chapheading, @@majorheading, @@c subheading, @@subsubheading
-Related commands.
-@end table
-
-@need 1000
-@c subheading Font commands
-
-@need 1000
-@noindent
-@xref{Smallcaps}, and @*
-@ref{Fonts}.
-
-@table @kbd
-@item @@r@{@var{text}@}
-Print in roman font.
-
-@item @@sc@{@var{text}@}
-Print in @sc{small caps} font.
-@end table
-
-@c subheading Miscellaneous
-
-@noindent
-See @ref{title subtitle author, , @code{@@title} @code{@@subtitle} and @code{@@author} Commands},@*
-see @ref{Customized Highlighting},@*
-see @ref{Overfull hboxes},@*
-see @ref{Footnotes},@*
-see @ref{dmn, , Format a Dimension},@*
-see @ref{Raise/lower sections, , @code{@@raisesections} and @code{@@lowersections}},@*
-see @ref{math, , @code{@@math}: Inserting Mathematical Expressions}.@*
-see @ref{minus, , Inserting a Minus Sign},@*
-see @ref{paragraphindent, , Paragraph Indenting},@*
-see @ref{Cross Reference Commands},@*
-see @ref{title subtitle author, , @code{@@title} @code{@@subtitle} and @code{@@author}}, and@*
-see @ref{Custom Headings, , How to Make Your Own Headings}.
-
-@table @kbd
-@item @@author @var{author}
-Typeset author's name.
-
-@c @item @@definfoenclose @var{new-command}, @var{before}, @var{after},
-@c Define a highlighting command for Info.  (Info only.)
-
-@item @@finalout
-Produce cleaner printed output.
-
-@item @@footnotestyle @var{end-or-separate}
-Specify footnote style, either @samp{end} or @samp{separate}.
-@xref{Footnote Styles}.
-
-@item @@dmn@{@var{dimension}@}
-Format a dimension.
-
-@item @@global@@let@var{new-cmd}=@var{existing-cmd}
-Define a highlighting command for @TeX{}. (@TeX{} only.)
-
-@item @@lowersections
-Reduce hierarchical level of sectioning commands.
-
-@item @@math@{@var{mathematical-expression}@}
-Format a mathematical expression.
-
-@item @@minus@{@}
-Generate a minus sign.
-
-@item @@paragraphindent @var{asis-or-number}
-Specify amount of paragraph indentation.
-
-@item @@raisesections
-Raise hierarchical level of sectioning commands.
-
-@item @@ref@{@var{node-name}, @r{[}@var{entry}@r{]}, @r{[}@var{topic-or-title}@r{]}, @r{[}@var{info-file}@r{]}, @r{[}@var{manual}@r{]}@}
-Make a reference.  In the printed manual, the
-reference does not start with the word `see'.
-
-@item @@title @var{title}
-Typeset @var{title} in the alternative
-title page format.
-
-@item @@subtitle @var{subtitle}
-Typeset @var{subtitle} in the alternative
-title page format.
-
-@item @@today@{@}
-Insert the current date.
-@end table
-@tex
-% Switch width of first column of tables back to default value
-\global\tableindent=.8in
-@end tex
-@end ignore
+@c @tex
+@c % Widen the space for the first column so three control-character %
+@c strings fit in the first column.  Switched back to default .8in %
+@c value at end of chapter.  \global\tableindent=1.0in
+@c @end tex
+@c 
+@c The second edition of the Texinfo manual describes more than 20 new
+@c Texinfo mode commands and more than 50 previously undocumented Texinfo
+@c @@-commands.  This edition is more than twice the length of the first
+@c edition.@refill
+@c 
+@c Here is a brief description of the new commands.@refill
+@c 
+@c @c menu
+@c * New Texinfo Mode Commands::   The updating commands are especially useful.
+@c * New Commands::                Many newly described @@-commands.
+@c @c end menu
+@c 
+@c @c node New Texinfo Mode Commands, New Commands, Obtaining TeX, Obtaining TeX
+@c @c appendixsec New Texinfo Mode Commands
+@c 
+@c Texinfo mode provides commands and features especially designed for
+@c working with Texinfo files.  More than 20 new commands have been
+@c added, including commands for automatically creating and updating
+@c both nodes and menus.  This is a tedious task when done by hand.@refill
+@c 
+@c The keybindings are intended to be somewhat mnemonic.@refill
+@c 
+@c @c subheading Update all nodes and menus
+@c 
+@c The @code{texinfo-master-menu} command is the primary command:
+@c 
+@c @table @kbd
+@c @item C-c C-u m
+@c @itemx M-x texinfo-master-menu
+@c Create or update a master menu.
+@c With @kbd{C-u} as a prefix argument,
+@c first create or update all nodes
+@c and regular menus.
+@c @end table
+@c 
+@c @c subheading Update Pointers
+@c 
+@c @noindent
+@c Create or update `Next', `Previous', and `Up' node pointers.@refill
+@c 
+@c @noindent
+@c @xref{Updating Nodes and Menus}.
+@c 
+@c @table @kbd
+@c @item C-c C-u C-n
+@c @itemx M-x texinfo-update-node
+@c Update a node.
+@c 
+@c @item C-c C-u C-e
+@c @itemx M-x texinfo-every-node-update
+@c Update every node in the buffer.
+@c @end table
+@c 
+@c @c subheading Update Menus
+@c 
+@c @noindent
+@c Create or update menus.@refill
+@c 
+@c @noindent
+@c @xref{Updating Nodes and Menus}.
+@c 
+@c @table @kbd
+@c @item C-c C-u C-m
+@c @itemx M-x texinfo-make-menu
+@c Make or update a menu.
+@c 
+@c @item C-c C-u C-a
+@c @itemx M-x texinfo-all-menus-update
+@c Make or update all the menus in a buffer.
+@c With @kbd{C-u} as a prefix argument,
+@c first update all the nodes.
+@c @end table
+@c 
+@c @c subheading Insert Title as Description
+@c 
+@c @noindent
+@c Insert a node's chapter or section title in the space for the
+@c description in a menu entry line; position point so you can edit the
+@c insert.  (This command works somewhat differently than the other
+@c insertion commands, which insert only a predefined string.)@refill
+@c 
+@c @noindent
+@c @xref{Inserting, Inserting Frequently Used Commands}.
+@c 
+@c @table @kbd
+@c @item C-c C-c C-d
+@c Insert title.
+@c @end table
+@c 
+@c @c subheading Format for Info
+@c 
+@c @noindent
+@c Provide keybindings both for the Info formatting commands that are
+@c written in Emacs Lisp and for @code{makeinfo} that is written in
+@c C.@refill
+@c 
+@c @noindent
+@c @xref{Info Formatting}.
+@c 
+@c @noindent
+@c Use the Emacs lisp @code{texinfo-format@dots{}} commands:
+@c 
+@c @table @kbd
+@c @item C-c C-e C-r
+@c Format the region.
+@c 
+@c @item C-c C-e C-b
+@c Format the buffer.
+@c @end table
+@c 
+@c @noindent
+@c Use @code{makeinfo}:
+@c 
+@c @table @kbd
+@c @item C-c C-m C-r
+@c Format the region.
+@c 
+@c @item C-c C-m C-b
+@c Format the buffer.
+@c 
+@c @item C-c C-m C-l
+@c Recenter the @code{makeinfo} output buffer.
+@c 
+@c @item C-c C-m C-k
+@c Kill the @code{makeinfo} formatting job.
+@c @end table
+@c 
+@c @c subheading Typeset and Print
+@c 
+@c @noindent
+@c Typeset and print Texinfo documents from within Emacs.
+@c 
+@c @noindent
+@c @xref{Printing}.
+@c 
+@c @table @kbd
+@c @item C-c C-t C-b
+@c Run @code{texi2dvi} on the buffer.
+@c 
+@c @item C-c C-t C-r
+@c Run @TeX{} on the region.
+@c 
+@c @item C-c C-t C-i
+@c Run @code{texindex}.
+@c 
+@c @item C-c C-t C-p
+@c Print the DVI file.
+@c 
+@c @item C-c C-t C-q
+@c Show the print queue.
+@c 
+@c @item C-c C-t C-d
+@c Delete a job from the print queue.
+@c 
+@c @item C-c C-t C-k
+@c Kill the current @TeX{} formatting job.
+@c 
+@c @item C-c C-t C-x
+@c Quit a currently stopped @TeX{} formatting job.
+@c 
+@c @item C-c C-t C-l
+@c Recenter the output buffer.
+@c @end table
+@c 
+@c @c subheading Other Updating Commands
+@c 
+@c @noindent
+@c The ``other updating commands'' do not have standard keybindings because
+@c they are used less frequently.@refill
+@c 
+@c @noindent
+@c @xref{Other Updating Commands}.
+@c 
+@c @table @kbd
+@c @item M-x texinfo-insert-node-lines
+@c Insert missing @code{@@node} lines using
+@c section titles as node names.
+@c 
+@c @item M-x texinfo-multiple-files-update
+@c Update a multi-file document.
+@c With a numeric prefix, such as @kbd{C-u 8},
+@c update  @strong{every} pointer and
+@c menu in @strong{all} the files and
+@c then insert a master menu.
+@c 
+@c @item M-x texinfo-indent-menu-description
+@c Indent descriptions in menus.
+@c 
+@c @item M-x texinfo-sequential-node-update
+@c Insert node pointers in strict sequence.
+@c @end table
+@c 
+@c @c no.de New Commands,  , New Texinfo Mode Commands, Obtaining TeX
+@c @c appendix.sec New Texinfo @@-Commands
+@c 
+@c The second edition of the Texinfo manual describes more than 50
+@c commands that were not described in the first edition.  A third or so
+@c of these commands existed in Texinfo but were not documented in the
+@c manual; the others are new.  Here is a listing, with brief
+@c descriptions of them:@refill
+@c 
+@c @c subheading Indexing
+@c 
+@c @noindent
+@c Create your own index, and merge indices.@refill
+@c 
+@c @noindent
+@c @xref{Indices}.
+@c 
+@c @table @kbd
+@c @item @@defindex @var{index-name}
+@c Define a new index and its indexing command.
+@c See also the @code{@@defcodeindex} command.
+@c 
+@c @c written verbosely to avoid overfull hbox
+@c @item @@synindex @var{from-index} @var{into-index}
+@c Merge the @var{from-index} index into the @var{into-index} index.
+@c See also the @code{@@syncodeindex} command.
+@c @end table
+@c 
+@c @c subheading Definitions
+@c 
+@c @noindent
+@c Describe functions, variables, macros,
+@c commands, user options, special forms, and other such artifacts in a
+@c uniform format.@refill
+@c 
+@c @noindent
+@c @xref{Definition Commands}.
+@c 
+@c @table @kbd
+@c @item @@deffn @var{category} @var{name} @var{arguments}@dots{}
+@c Format a description for functions, interactive
+@c commands, and similar entities.
+@c 
+@c @item @@defvr, @@defop, @dots{}
+@c 15 other related commands.
+@c @end table
+@c 
+@c @c subheading Glyphs
+@c 
+@c @noindent
+@c Indicate the results of evaluation, expansion,
+@c printed output, an error message, equivalence of expressions, and the
+@c location of point.@refill
+@c 
+@c @noindent
+@c @xref{Glyphs}.
+@c 
+@c @table @kbd
+@c @item @@equiv@{@}
+@c @itemx @equiv{}
+@c Equivalence:
+@c 
+@c @item @@error@{@}
+@c @itemx @error{}
+@c Error message
+@c 
+@c @item @@expansion@{@}
+@c @itemx @expansion{}
+@c Macro expansion
+@c 
+@c @item @@point@{@}
+@c @itemx @point{}
+@c Position of point
+@c 
+@c @item @@print@{@}
+@c @itemx @print{}
+@c Printed output
+@c 
+@c @item @@result@{@}
+@c @itemx @result{}
+@c Result of an expression
+@c @end table
+@c 
+@c @c subheading Page Headings
+@c 
+@c @noindent
+@c Customize page headings.
+@c 
+@c @noindent
+@c @xref{Headings}.
+@c 
+@c @table @kbd
+@c @item @@headings @var{on-off-single-double}
+@c Headings on or off, single, or double-sided.
+@c 
+@c @item @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
+@c Footings for even-numbered (left-hand) pages.
+@c 
+@c @item @@evenheading, @@everyheading, @@oddheading, @dots{}
+@c Five other related commands.
+@c 
+@c @item @@thischapter
+@c Insert name of chapter and chapter number.
+@c 
+@c @item @@thischaptername, @@thisfile, @@thistitle, @@thispage
+@c Related commands.
+@c @end table
+@c 
+@c @c subheading Formatting
+@c 
+@c @noindent
+@c Format blocks of text.
+@c 
+@c @noindent
+@c @xref{Quotations and Examples}, and@*
+@c @ref{Lists and Tables, , Making Lists and Tables}.
+@c 
+@c @table @kbd
+@c @item @@cartouche
+@c Draw rounded box surrounding text (no effect in Info).
+@c 
+@c @item @@enumerate @var{optional-arg}
+@c Enumerate a list with letters or numbers.
+@c 
+@c @item @@exdent @var{line-of-text}
+@c Remove indentation.
+@c 
+@c @item @@flushleft
+@c Left justify.
+@c 
+@c @item @@flushright
+@c Right justify.
+@c 
+@c @item @@format
+@c Do not narrow nor change font.
+@c 
+@c @item @@ftable @var{formatting-command}
+@c @itemx @@vtable @var{formatting-command}
+@c Two-column table with indexing.
+@c 
+@c @item @@lisp
+@c For an example of Lisp code.
+@c 
+@c @item @@smallexample
+@c @itemx @@smalllisp
+@c Like @@table and @@lisp, but for (originally) @@smallbook.
+@c @end table
+@c 
+@c @c subheading Conditionals
+@c 
+@c @noindent
+@c Conditionally format text.
+@c 
+@c @noindent
+@c @xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.@refill
+@c 
+@c @table @kbd
+@c @item @@set @var{flag} [@var{string}]
+@c Set a flag.  Optionally, set value
+@c of @var{flag} to @var{string}.
+@c 
+@c @item @@clear @var{flag}
+@c Clear a flag.
+@c 
+@c @item @@value@{@var{flag}@}
+@c Replace with value to which @var{flag} is set.
+@c 
+@c @item @@ifset @var{flag}
+@c Format, if @var{flag} is set.
+@c 
+@c @item @@ifclear @var{flag}
+@c Ignore, if @var{flag} is set.
+@c @end table
+@c 
+@c @c subheading @@heading series for Titles
+@c 
+@c @noindent
+@c Produce unnumbered headings that do not appear in a table of contents.
+@c 
+@c @noindent
+@c @xref{Structuring}.
+@c 
+@c @table @kbd
+@c @item @@heading @var{title}
+@c Unnumbered section-like heading not listed
+@c in the table of contents of a printed manual.
+@c 
+@c @item @@chapheading, @@majorheading, @@c subheading, @@subsubheading
+@c Related commands.
+@c @end table
+@c 
+@c @need 1000
+@c @c subheading Font commands
+@c 
+@c @need 1000
+@c @noindent
+@c @xref{Smallcaps}, and @*
+@c @ref{Fonts}.
+@c 
+@c @table @kbd
+@c @item @@r@{@var{text}@}
+@c Print in roman font.
+@c 
+@c @item @@sc@{@var{text}@}
+@c Print in @sc{small caps} font.
+@c @end table
+@c 
+@c @c subheading Miscellaneous
+@c 
+@c @noindent
+@c See @ref{title subtitle author, , @code{@@title} @code{@@subtitle} and @code{@@author} Commands},@*
+@c see @ref{Customized Highlighting},@*
+@c see @ref{Overfull hboxes},@*
+@c see @ref{Footnotes},@*
+@c see @ref{dmn, , Format a Dimension},@*
+@c see @ref{Raise/lower sections, , @code{@@raisesections} and @code{@@lowersections}},@*
+@c see @ref{math, , @code{@@math}: Inserting Mathematical Expressions}.@*
+@c see @ref{minus, , Inserting a Minus Sign},@*
+@c see @ref{paragraphindent, , Paragraph Indenting},@*
+@c see @ref{Cross Reference Commands},@*
+@c see @ref{title subtitle author, , @code{@@title} @code{@@subtitle} and @code{@@author}}, and@*
+@c see @ref{Custom Headings, , How to Make Your Own Headings}.
+@c 
+@c @table @kbd
+@c @item @@author @var{author}
+@c Typeset author's name.
+@c 
+@c @c @item @@definfoenclose @var{new-command}, @var{before}, @var{after},
+@c @c Define a highlighting command for Info.  (Info only.)
+@c 
+@c @item @@finalout
+@c Produce cleaner printed output.
+@c 
+@c @item @@footnotestyle @var{end-or-separate}
+@c Specify footnote style, either @samp{end} or @samp{separate}.
+@c @xref{Footnote Styles}.
+@c 
+@c @item @@dmn@{@var{dimension}@}
+@c Format a dimension.
+@c 
+@c @item @@global@@let@var{new-cmd}=@var{existing-cmd}
+@c Define a highlighting command for @TeX{}. (@TeX{} only.)
+@c 
+@c @item @@lowersections
+@c Reduce hierarchical level of sectioning commands.
+@c 
+@c @item @@math@{@var{mathematical-expression}@}
+@c Format a mathematical expression.
+@c 
+@c @item @@minus@{@}
+@c Generate a minus sign.
+@c 
+@c @item @@paragraphindent @var{asis-or-number}
+@c Specify amount of paragraph indentation.
+@c 
+@c @item @@raisesections
+@c Raise hierarchical level of sectioning commands.
+@c 
+@c @item @@ref@{@var{node-name}, @r{[}@var{entry}@r{]}, @r{[}@var{topic-or-title}@r{]}, @r{[}@var{info-file}@r{]}, @r{[}@var{manual}@r{]}@}
+@c Make a reference.  In the printed manual, the
+@c reference does not start with the word `see'.
+@c 
+@c @item @@title @var{title}
+@c Typeset @var{title} in the alternative
+@c title page format.
+@c 
+@c @item @@subtitle @var{subtitle}
+@c Typeset @var{subtitle} in the alternative
+@c title page format.
+@c 
+@c @item @@today@{@}
+@c Insert the current date.
+@c @end table
+@c @tex
+@c % Switch width of first column of tables back to default value
+@c \global\tableindent=.8in
+@c @end tex
 
 
 @node GNU Free Documentation License

@@ -1,6 +1,9 @@
 2010-07-30  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (Internationalization of strings): edit node.
+	* doc/texinfo.txi (Internationalization of Strings): edit node,
+	including re-capitalization.
+	(Info Format Regular Nodes): mention that periods, etc., cannot be
+	used in Info identifiers.
 
 2010-07-27  Karl Berry  <karl@gnu.org>
 
