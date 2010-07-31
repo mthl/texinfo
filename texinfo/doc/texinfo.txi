@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
+@c $Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19237,7 +19237,7 @@ Texinfo command interface).
 
 @pindex libintl-perl Gettext implementation
 The Gettext framework is used for those strings (@pxref{Top,,,
-@code{gettext}, Gettext}).  The @code{libintl-perl} package is used as
+gettext, Gettext}).  The @code{libintl-perl} package is used as
 the @code{gettext} implementation; more specifically, the pure Perl
 implementation is used, so Texinfo can support consistent behavior
 across all platforms and installations, which would not otherwise be
@@ -24229,7 +24229,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
+$Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24308,7 +24308,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.275 2010-07-31 00:56:01 karl Exp $
+@comment $Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
