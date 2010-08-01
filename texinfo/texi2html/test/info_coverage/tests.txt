@@ -55,3 +55,5 @@ simple_footnotes_no_number simple_footnotes.texi --no-number-footnotes
 simple_footnotes_no_number_separate simple_footnotes.texi --footnote-style=separate --no-number-footnotes
 split_nocopying split_nocopying.texi
 split_nocopying_split split_nocopying.texi --split-size 10
+# FIXME /dev/null not portable
+split_nocopying_split_dev_null split_nocopying.texi --split-size 1 -o /dev/null

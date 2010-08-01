@@ -7,6 +7,8 @@ hello hello.texi
 hello_nodes hello.texi --split node --node-files hello.texi
 info-stnd info-stnd.texi --split chapter --node-files 
 texinfo texinfo.texi --split chapter --ifinfo --set-init-var 'IDX_SUMMARY 1' --internal-links=@OUT_DIR@internal_links_texinfo.txt
+# FIXME /dev/null not portable
+texinfo_info_dev_null texinfo.texi --info -o /dev/null
 texinfo_nodes texinfo.texi --split node --node-files --ifinfo
 ccvs cvs.texi --split chapter --init cvs.init
 ccvs_mediawiki cvs.texi --init mediawiki.init --split chapter

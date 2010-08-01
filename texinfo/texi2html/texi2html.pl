@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.411 2010-07-27 07:31:09 pertusus Exp $
+# $Id: texi2html.pl,v 1.412 2010-08-01 22:06:48 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -686,31 +686,52 @@ sub set_variable($$$;$)
        warn (sprintf('Unknown variable %s', $var));
        return 0;
    }
-   #print STDERR "$var".(main::var_to_str($level)).": ".main::var_to_str($value)." not_global $not_global\n";
+   #print STDERR "$var(".(main::var_to_str($level))."): ".main::var_to_str($value)." not_global $not_global\n";
    if (!defined($level) or $level <= $ref_level)
    {
       $Texi2HTML::THISDOC{'variable_levels'}->{$var} = $level if (defined($level));
       if ($not_global)
       {
-         if (!defined($value))
-         {
-             delete $Texi2HTML::THISDOC{'variables'}->{$var};
-         }
-         else
-         {
-             $Texi2HTML::THISDOC{'variables'}->{$var} = $value;
-         }
+         $Texi2HTML::THISDOC{'variables'}->{$var} = $value;
       }
       else
       {
-         if (!defined($value))
-         {
-             delete $Texi2HTML::GLOBAL{'variables'}->{$var};
-         }
-         else
-         {
-             $Texi2HTML::GLOBAL{'variables'}->{$var} = $value;
-         }
+         $Texi2HTML::GLOBAL{'variables'}->{$var} = $value;
+         $Texi2HTML::GLOBAL{'variable_levels'}->{$var} = $level if (defined($level));
+      }
+      return 1;
+   }
+   return 0;
+}
+
+# var: variable name
+# level: priority level. If undef, it means reusing the current level
+# not_global: only for the current document
+sub unset_variable($$;$)
+{
+   my $var = shift;
+   my $level = shift;
+   my $not_global = shift;
+   $not_global = 0 if (!$not_global);
+   my $ref_level = $Texi2HTML::GLOBAL{'variable_levels'}->{$var};
+   if (!defined($ref_level))
+   {
+       # issue with Locale::Messages::dpgettext not already defined
+       #main::msg_warn(sprintf('Unknown variable %s', $var));
+       warn (sprintf('Unknown variable %s', $var));
+       return 0;
+   }
+   #print STDERR "$var(".(main::var_to_str($level))."): ".main::var_to_str($value)." not_global $not_global\n";
+   if (!defined($level) or $level <= $ref_level)
+   {
+      $Texi2HTML::THISDOC{'variable_levels'}->{$var} = $level if (defined($level));
+      if ($not_global)
+      {
+         delete($Texi2HTML::THISDOC{'variables'}->{$var});
+      }
+      else
+      {
+         delete($Texi2HTML::GLOBAL{'variables'}->{$var});
          $Texi2HTML::GLOBAL{'variable_levels'}->{$var} = $level if (defined($level));
       }
       return 1;
@@ -745,18 +766,23 @@ sub set_from_document($$)
 sub get_conf($)
 {
    my $name = shift;
-   my $ref_level = $Texi2HTML::GLOBAL{'variable_levels'}->{$name};
-   if (!defined($ref_level))
-   { 
-       warn (sprintf('get_conf: Unknown variable %s', $name));
-       return undef;
+   if (defined($Texi2HTML::GLOBAL{'variable_levels'}->{$name}))
+   { # notice the exists, and not defined. Such that undef is a 
+     # value like any other possible value.
+      if (exists($Texi2HTML::THISDOC{'variables'}->{$name}))
+      {
+         return $Texi2HTML::THISDOC{'variables'}->{$name};
+      }
+      else
+      { # may be undef
+         return $Texi2HTML::GLOBAL{'variables'}->{$name};
+      }
    }
-   return $Texi2HTML::THISDOC{'variables'}->{$name} if (defined($Texi2HTML::THISDOC{'variables'}->{$name}));
-   return $Texi2HTML::GLOBAL{'variables'}->{$name} if (defined($Texi2HTML::GLOBAL{'variables'}->{$name}));
-   #print STDERR "No value for $name\n";
-   # there is no default value for many @-commmands, like headings....
-   #print STDERR "Unknown conf string: $name\n";
-   return undef;
+   else 
+   { # no i18n since it may not be set up already (?)
+      warn (sprintf('get_conf: Unknown variable %s', $name));
+      return undef;
+   }
 }
 
 # manage expanded sections
@@ -1912,6 +1938,13 @@ sub set_from_document($$)
    my $value = shift;
    my $level = 5;
    return Texi2HTML::Config::set_variable($var, $value, $level, 1);
+}
+
+sub unset_from_document($)
+{
+   my $var = shift;
+   my $level = 5;
+   return Texi2HTML::Config::unset_variable($var, $level, 1);
 }
 
 Texi2HTML::Config::set_default('USE_NLS', ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/));
@@ -3122,7 +3155,7 @@ $T2H_OPTIONS -> {'fill-column|f'} =
 {
  type => '=i',
  linkage => sub {set_from_cmdline('FILLCOLUMN',$_[1]);},
- 'verbose' => "break Info lines at NUM characters (default 72).",
+ 'verbose' => "break Info lines at NUM characters (default ".get_conf('FILLCOLUMN').")",
 };
 
 $T2H_OPTIONS -> {'enable-encoding'} =
@@ -4896,7 +4929,7 @@ sub texinfo_initialization($)
 
     foreach my $init_mac (@document_settable_at_commands)
     {
-        set_from_document($init_mac, undef);
+        unset_from_document($init_mac);
     }
 }
 

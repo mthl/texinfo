@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.282 2010-07-26 00:08:57 karl Exp $
+# $Id: texi2html.init,v 1.283 2010-08-01 22:06:48 pertusus Exp $
 
 
 ##################################################################
@@ -3355,20 +3355,22 @@ sub t2h_default_select_substitution($$$)
    my $in_preformatted = shift;
    my $in_simple = shift;
    
-   my $substitutions = \@text_substitutions_normal;
    if ($in_raw_text)
    {
-      $substitutions = \@text_substitutions_texi;
+      return \@text_substitutions_texi;
    }
    elsif ($in_simple)
    {
-      $substitutions = \@text_substitutions_simple_format;
+      return \@text_substitutions_simple_format;
    }
    elsif ($in_preformatted)
    {
-      $substitutions = \@text_substitutions_pre;
+      return \@text_substitutions_pre;
    }
-   return $substitutions;
+   else
+   {
+      return \@text_substitutions_normal;
+   }
 }
 
 sub t2h_text_substitutions($$$$)

@@ -1,3 +1,16 @@
+2010-08-01  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.pl (set_variable),
+	(get_conf): accept an undef value as a regular value.
+	(unset_variable),
+	(unset_from_document): unset a variable by removing the 
+	corresponding key from the hash.  Replaces set_variable($var, undef)
+	now that undef is a regular value.  Done for a report from Karl.
+	* texi2html/texi2html.init (t2h_default_select_substitution):
+	Simplify.
+	* texi2html/test/run_test*.sh: set --error-limit=1000 to avoid
+	failing tests because of the default error limit.
+
 2010-07-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Internationalization of Strings): edit node,

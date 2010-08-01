@@ -6,6 +6,12 @@ Before next release
 Later
 -----
 
+Profiling example:
+
+perl -w -x -d:NYTProf  ../../texi2html.pl texinfo.texi
+nytprofhtml
+firefox nytprof/index.html
+
 * automatic menus. 
 
 * automatic nodes, if feasible (issue of unicity, mostly).
