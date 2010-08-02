@@ -1,5 +1,5 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-08-01.16; # UTC
+htmlxrefversion=2010-08-02.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -13,20 +13,26 @@ htmlxrefversion=2010-08-01.16; # UTC
 # Maintainers: for information on putting manuals on the web, including
 # automatically generating all the useful formats, see
 # http://www.gnu.org/prep/maintain/html_node/Manuals-on-Web-Pages.html.
+#
+# All the manuals in this file should follow the naming convention for
+# nodes described at
+# http://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Xref.html
+# (otherwise cross-references fail).  This is what makeinfo and
+# texi2html implement.
  
 # shorten references to manuals on www.gnu.org.
-R = http://www.gnu.org
-RS = ${R}/software
+G = http://www.gnu.org
+GS = ${G}/software
 
-anubis		chapter	${RS}/anubis/manual/html_chapter/
-anubis		section	${RS}/anubis/manual/html_section/
-anubis		node	${RS}/anubis/manual/html_node/
+anubis		chapter	${GS}/anubis/manual/html_chapter/
+anubis		section	${GS}/anubis/manual/html_section/
+anubis		node	${GS}/anubis/manual/html_node/
 
-autoconf	mono	${RS}/autoconf/manual/autoconf.html
-autoconf	node	${RS}/autoconf/manual/html_node/
+autoconf	mono	${GS}/autoconf/manual/autoconf.html
+autoconf	node	${GS}/autoconf/manual/html_node/
 
-automake	mono	${RS}/automake/manual/automake.html
-automake	node	${RS}/automake/manual/html_node/
+automake	mono	${GS}/automake/manual/automake.html
+automake	node	${GS}/automake/manual/html_node/
 
 bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
@@ -34,16 +40,16 @@ cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
 
 #cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
 
-elisp		mono	${RS}/emacs/manual/html_mono/elisp.html
-elisp		node	${RS}/emacs/manual/html_node/
+elisp		mono	${GS}/emacs/manual/html_mono/elisp.html
+elisp		node	${GS}/emacs/manual/html_node/
 
-emacs		mono	${RS}/emacs/manual/html_mono/emacs.html
-emacs		node	${RS}/emacs/manual/html_node/
+emacs		mono	${GS}/emacs/manual/html_mono/emacs.html
+emacs		node	${GS}/emacs/manual/html_node/
 
-emms		node	${RS}/emms/manual/
+emms		node	${GS}/emms/manual/
 
-gcal		mono	${RS}/gcal/manual/gcal.html
-gcal		node	${RS}/gcal/manual/html_node/
+gcal		mono	${GS}/gcal/manual/gcal.html
+gcal		node	${GS}/gcal/manual/html_node/
 
 gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
 gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
@@ -52,38 +58,43 @@ gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
 gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
 libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
 
-gnubg		mono	${RS}/gnubg/manual/gnubg.html
-gnubg		node	${RS}/gnubg/manual/html_node/
+gnubg		mono	${GS}/gnubg/manual/gnubg.html
+gnubg		node	${GS}/gnubg/manual/html_node/
 
-gnubik		mono	${RS}/gnubik/manual/gnubik.html
-gnubik		node	${RS}/gnubik/manual/html_node/
+gnubik		mono	${GS}/gnubik/manual/gnubik.html
+gnubik		node	${GS}/gnubik/manual/html_node/
 
-gnus		mono	${RS}/emacs/manual/html_node/mh-e/
-gnus		node	${RS}/emacs/manual/html_mono/mh-e.html
+gnus		mono	${GS}/emacs/manual/html_node/mh-e/
+gnus		node	${GS}/emacs/manual/html_mono/mh-e.html
 
-gnuschool	mono	${RS}/gnuschool/gnuschool.html
+gnuschool	mono	${GS}/gnuschool/gnuschool.html
 
-gtypist		mono	${RS}/gtypist/doc/
+gtypist		mono	${GS}/gtypist/doc/
 
-libextractor	mono	${RS}/libextractor/extractor.html
+libextractor	mono	${GS}/libextractor/extractor.html
 
-mailutils	mono	${RS}/mailutils/manual/mailutils.html
-mailutils	node	${RS}/mailutils/manual/html_node/
+liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
+liquidwar6	node	${GS}/liquidwar6/manual/html_node/
 
-maintain	mono	${R}/prep/maintain/maintain.html
-maintain	node	${R}/prep/maintain/html_node/
+mailutils	mono	${GS}/mailutils/manual/mailutils.html
+mailutils	node	${GS}/mailutils/manual/html_node/
 
-mdk		mono	${RS}/mdk/manual/mdk.html
-mdk		node	${RS}/mdk/manual/html_node/
+maintain	mono	${G}/prep/maintain/maintain.html
+maintain	node	${G}/prep/maintain/html_node/
 
-mh-e		mono	${RS}/emacs/manual/html_node/mh-e/
-mh-e		node	${RS}/emacs/manual/html_mono/mh-e.html
+mdk		mono	${GS}/mdk/manual/mdk.html
+mdk		node	${GS}/mdk/manual/html_node/
 
-standards	mono	${R}/prep/standards/standards.html
-standards	node	${R}/prep/standards/html_node/
+mh-e		mono	${GS}/emacs/manual/html_node/mh-e/
+mh-e		node	${GS}/emacs/manual/html_mono/mh-e.html
 
-texinfo		mono	${RS}/texinfo/manual/texinfo/texinfo.html
-texinfo		node	${RS}/texinfo/manual/texinfo/html_node/
+motti		node	${GS}/motti/manual/
+
+standards	mono	${G}/prep/standards/standards.html
+standards	node	${G}/prep/standards/html_node/
+
+texinfo		mono	${GS}/texinfo/manual/texinfo/texinfo.html
+texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
 
 # Local Variables:
 # eval: (add-hook 'write-file-hooks 'time-stamp)

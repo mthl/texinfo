@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
+@c $Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -655,8 +655,7 @@ HTML Cross-references
 texi2any Output Customization
 
 * Loading Initialization Files::   Initialization files and their search paths.
-* Initialization files basics::       General informations on initialization 
-                                      files.
+* Initialization File Basics::     General information on init files.
 * Elements::                          The main division of output document.
 * Special elements::                  Customizing special elements text and 
                                       layout.
@@ -18417,12 +18416,12 @@ references can occur only in the @var{urlprefix}.  For example (used
 in the canonical @file{htmlxref.cnf}):
 
 @smallexample
-R = http://www.gnu.org
-RS = $@{R@}/software
-hello mono    $@{RS@}/hello/manual/hello.html
-hello node    $@{RS@}/hello/manual/html_node/
-hello section $@{RS@}/hello/manual/html_section/
-hello chapter $@{RS@}/hello/manual/html_chapter/
+G = http://www.gnu.org
+GS = $@{G@}/software
+hello mono    $@{GS@}/hello/manual/hello.html
+hello node    $@{GS@}/hello/manual/html_node/
+hello section $@{GS@}/hello/manual/html_section/
+hello chapter $@{GS@}/hello/manual/html_chapter/
 @end smallexample
 
 @cindex monolithic manuals, for HTML cross-references
@@ -18524,8 +18523,7 @@ changes, but it is not a promise.
 
 @menu
 * Loading Initialization Files::   Initialization files and their search paths.
-* Initialization files basics::       General informations on initialization 
-                                      files.
+* Initialization File Basics::     General information on init files.
 * Elements::                          The main division of output document.
 * Navigation panel customization::
 * Page layout customization::
@@ -18606,80 +18604,87 @@ Additional directories may be prepended to the list with the
 @option{--conf-dir} option.
 
 
-@node Initialization files basics
-@section General informations on initialization files
+@node Initialization File Basics
+@section Initialization File Basics
 
-Initialization files are Perl source.
-A good source of inspiration could be the initialization files provided
-in the Texinfo distribution.  They all have @samp{.init} extension.
-The @file{texi2html.init} file is used to set all the defaults, and,
-although quite large is an interesting source of examples.
-Simpler initialization files are installed in the default case, they may
-also be interesting starting points.
+@cindex Initialization file basics
 
-In initialization file three kind of variables appear.
+Initialization files are written in Perl, and by convention have
+extension @file{.init}.  Many initialization files are included in the
+Texinfo distribution, and can serve as a good model for writing your
+own.  In particular, the @file{texi2html.init} file is used to set all
+the defaults for Texinfo.  Although it is large, it contains many
+useful examples of settings.  Smaller examples include
+@file{utf8.init}, @file{html32.init}, and plenty more.
+
+We divide the kinds of variables that can appear in initialization
+files into three general categories:
+
 @table @asis
 @item configuration variables
-Those variables, described in @ref{makeinfo Configuration Variables}
-are set and accessed through specific functions in initialization files.
-@item scalar, arrays and hashes
-Normal perl variable. The order of loading of initialization
-files and of command-line options processing may be important when 
-they are modified,
-later changes modifying former changes.
-@item references on functions
-This allows a dynamical redefinition of functions used to produce
-the output.
+Configuration variables are set and accessed through specific
+functions in initialization files (@pxref{makeinfo Configuration
+Variables})
 
-As the functions are defined by a reference name, we will always
-use the reference name in function prototypes.  For the function arguments
-we will use @code{\@@array} for a reference on an array and similarly
-@code{\%hash} for a reference on a hash.
+@item scalars, lists and hashes
+Normal Perl variables.  The order of loading of initialization files
+and of command-line options is important: later changes override
+earlier ones.
 
-Thus, the prototype for the function associated with the function
-reference @samp{$formatting_function} will be:
+@item function references
+These allow dynamic redefinition of functions used to produce output.
+
+As such functions are defined by a reference name, we will always use
+the reference name in function prototypes.  For the function arguments
+we will use @code{\@@array} for a reference to a list and
+@code{\%hash} for a reference to a hash.
+
+To illustrate these conventions, here is the prototype for the
+function associated with a function reference
+@samp{$formatting_function}:
 
 @deftypefn {Function Reference} $text formatting_function $arg1 \@@arg2
-@code{formatting_function} takes as first argument @var{$arg2},
-as second argument a reference on an array @var{\@@arg2}
+@code{formatting_function} has a first argument @var{$arg1},
+a second argument a reference to an array @var{\@@arg2},
 and returns the formatted text @var{$text}.
 @end deftypefn
 
-To redefined the corresponding function, you should write:
+To redefine this function, you would write:
 
 @example
 $formatting_function = \&my_formatting_function;
-
 sub my_formatting_function($ $)
 @{
-    my $arg1 = shift;
-    my $arg2 = shift;
-    # prepare $formatted_text
-    .....
-    return $formatted_text;
+  my $arg1 = shift;
+  my $arg2 = shift;
+  # prepare $formatted_text
+  ...
+  return $formatted_text;
 @}
 @end example
 @end table
 
-Initialization file are loaded from the main program by
-the mean of a @code{require}, while in the @code{Texi2HTML::Config}
-namespace. This means that the namespace of the main program and
-the namespace of initialization files are distinct, which ensures
-that no name clash should happen.  The scalars,
-arrays and hashes are declared with
-@code{use vars}, such that it should be possible to use the
-@code{use strict} pragma in the initialization file code.
+@vindex Texi2HTML::Config @r{namespace}
+Initialization file are loaded from the main program via a
+@code{require} call in the @code{Texi2HTML::Config} namespace. This
+means that the namespace of the main program and the namespace of
+initialization files are distinct, which minimizes the chance of a
+name clash.  The standard scalars, arrays and hashes are declared with
+@code{use vars}, so that it should be possible to use the @code{use
+strict} pragma in initialization files.
 
-To avoid messing with the variables in the @code{main} namespace
-all the global variables which could be of use in the init files
-are in the @code{Texi2HTML} namespace.  Notice that the functions
-of the main program are still in the @code{main} namespace.
+@vindex Texi2HTML @r{namespace}
+@vindex main @r{namespace}
+To avoid accidentally altering the variables in the @code{main}
+namespace, all the global variables which could be of use in the init
+files are available in the @code{Texi2HTML} namespace.  For
+convenience, the functions of the main program, however, are still in
+the @code{main} namespace.
 
-Since the program can proceed more than one file on the
-command line, you should make sure that you initialize the variables
-that are used during a manual formatting.  It is possible to call
-functions at different stages for that 
-use (@pxref{Calling functions at different stages}).
+Since the program can process more than one file on the command line,
+you must ensure that you properly initialize the variables used during
+formatting.  It is possible to call functions at different stages to
+help with that (@pxref{Calling functions at different stages}).
 
 @menu
 * Setting and getting configuration variable value::
@@ -24227,7 +24232,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
+$Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24306,7 +24311,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
+@comment $Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
