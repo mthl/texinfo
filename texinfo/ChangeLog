@@ -1,3 +1,7 @@
+2010-08-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Loading Initialization Files): capitalize+edit.
+
 2010-08-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.pl (set_variable),

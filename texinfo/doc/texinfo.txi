@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
+@c $Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -654,7 +654,7 @@ HTML Cross-references
 
 texi2any Output Customization
 
-* Loading initialization files::      Initialization files search paths.
+* Loading Initialization Files::   Initialization files and their search paths.
 * Initialization files basics::       General informations on initialization 
                                       files.
 * Elements::                          The main division of output document.
@@ -16046,7 +16046,7 @@ customization files that may be loaded with @option{--init-file} (see
 below).  @var{path} can be a single directory, or a list of several
 directories separated by the usual path separator character (@samp{:}
 on GNU and Unix systems, @samp{;} on MS-DOS/MS-Windows).
-@xref{Loading initialization files}.
+@xref{Loading Initialization Files}.
 
 @item --css-include=@var{file}
 @opindex --css-include
@@ -16192,8 +16192,8 @@ generated manual.  It is customary to use the @code{.init} extension
 for these customization files, but that is not enforced by anything;
 the @var{file} name is taken literally.  @option{--conf-dir} (see
 above) may be used to add to the list of directories in which these
-customization files are searched for.  @xref{Loading initialization
-files}.
+customization files are searched for.  @xref{Loading Initialization
+Files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
@@ -17737,10 +17737,9 @@ Display version information and exit successfully.
 @option{--html} option, it will generate HTML, for web browsers and
 other programs.  This chapter gives some details on such HTML output.
 
-
-@command{makeinfo} can also write in XML and Docbook format, but we do
-not as yet describe these further.  @xref{Output Formats}, for a brief
-overview of all the output formats.
+@command{makeinfo} can also produce output in XML and Docbook formats,
+but we do not as yet describe these in detail.  @xref{Output Formats},
+for a brief overview of all the output formats.
 
 @menu
 * HTML Translation::       Details of the HTML output.
@@ -17761,10 +17760,6 @@ output (i.e., suppressing the normal escaping of input @samp{<},
 @samp{>} and @samp{&} characters which have special significance in
 HTML).  @xref{Conditional Commands}.
 
-@opindex --footnote-style@r{, ignored in HTML output}
-The @option{--footnote-style} option is currently ignored for HTML output;
-footnotes are always linked to the end of the output file.
-
 @cindex Navigation bar, in HTML output
 By default, a navigation bar is inserted at the start of each node,
 analogous to Info output.  If the @samp{--no-headers} option is used,
@@ -17772,6 +17767,12 @@ the navigation bar is only inserted at the beginning of split files.
 Header @code{<link>} elements in split output can support Info-like
 navigation with browsers like Lynx and @w{Emacs W3} which implement
 this HTML@tie{}1.0 feature.
+
+@cindex Footnote styles, in HTML
+In HTML, when the footnote style is @samp{end}, or if the output is
+not split, footnotes are put at the end of the output.  If set to
+@samp{separate}, and the output is split, they are placed in a
+separate file.  @xref{Footnote Styles}.
 
 @cindex HTML output, browser compatibility of
 The HTML generated is standard HTML@tie{}4.  It also tries to be as
@@ -17783,8 +17784,8 @@ support; 2)@tie{}The HTML@tie{}4 @samp{lang} attribute on the
 @samp{<html>} attribute is used; 3)@tie{} Entities that are not in the
 HTML@tie{}3.2 standard are also used.
 
-It is possible to output strict HTML@tie{}3.2 output by using
-@samp{--init-file=html32.init} (@pxref{Invoking texi2any}).
+Using @samp{--init-file=html32.init} produces strict HTML@tie{}3.2
+output (@pxref{Invoking texi2any}).
 
 Please report output from an error-free run of @code{makeinfo} which
 has browser portability problems as a bug (@pxref{Reporting Bugs}).
@@ -18438,8 +18439,8 @@ value for cross-references between manuals.  That is, when generating
 monolithic output (@option{--no-split}), the @code{mono} url will be
 used, when generating output that is split by node, the @code{node}
 url will be used, etc.  However, if a manual is not available in that
-form, whatever is available will be used.  Here is the search order
-for each style that can be generated:
+form, anything that is available can be used.  Here is the search
+order for each style:
 
 @smallexample
 node    @result{} node,    section, chapter, mono
@@ -18450,8 +18451,8 @@ mono    @result{} mono,    chapter, section, split
 
 @opindex --node-files@r{, and HTML cross-references}
 These section- and chapter-level cross-manual references can succeed
-only when the target manual was created using @option{--node-files},
-which is the default for split output.
+only when the target manual was created using @option{--node-files};
+this is the default for split output.
 
 If you have additions or corrections to the @file{htmlxref.cnf}
 distributed with Texinfo, please email @email{bug-texinfo@@gnu.org}.
@@ -18512,7 +18513,7 @@ preceded by whitespace.
 @cartouche
 @quotation Warning
 All of this information, with the exception of that about command-line
-options and search directories (@pxref{Loading initialization files})
+options and search directories (@pxref{Loading Initialization Files})
 may become obsolete in a future Texinfo release.  Right now, the
 ``API'' described in this chapter is immature, badly designed and
 incomplete, so we must keep open the possibility of incompatible,
@@ -18522,7 +18523,7 @@ changes, but it is not a promise.
 @end cartouche
 
 @menu
-* Loading initialization files::      Initialization files search paths.
+* Loading Initialization Files::   Initialization files and their search paths.
 * Initialization files basics::       General informations on initialization 
                                       files.
 * Elements::                          The main division of output document.
@@ -18544,7 +18545,7 @@ changes, but it is not a promise.
 * Customizing CSS::
 @end menu
 
-@node Loading initialization files
+@node Loading Initialization Files
 @section Loading initialization files and search paths
 
 It is possible to load initialization files to modify almost every
@@ -18569,49 +18570,46 @@ specified at compile-time, e.g., @file{/usr/local/etc})
 (likewise specified at compile time, e.g., @file{/usr/local/share})
 @end table
 
-All the files found are used, in that order. 
+All @file{Config} files found are used, in the above order. 
 
-The most common way to load initialization files is to use the 
-@option{--init-file} option to specify the file to be loaded.  The 
-initialization files are looked for
-in for in the same directories than @file{Config} files, and also
-in additional directories (the same that are used 
-for @ref{HTML Xref Configuration} in the @file{init/} subdirectory).  
-By default the following directories are searched, in this
-order (where @var{prog} is the name of the program invoked on the
-command line) the first file found is used:
+The most common way to load an initialization file is with the
+@option{--init-file} option, explicitly specifying the file to be
+loaded.  By default the following directories are searched, in the
+following order, where @var{prog} is the name of the program invoked
+on the command line (@command{makeinfo}, @command{texi2any}, etc.).
+The first file found is used:
 
 @enumerate
-@item The current directory @file{.};
+@item The current directory @file{./};
 
-@item @file{$HOME/.@var{prog}}, where @env{$HOME} is the user home directory;
+@item @file{~/.@var{prog}/}
+(where @code{~} is the current user's home directory)
 
-@item @file{@var{sysconfdir}/@var{prog}}, where @var{sysconfdir} is
-the system directory for host-specific configuration, determined at
-build time (@code{/usr/local/etc} by default);
+@item @file{@var{sysconfdir}/@var{prog}/}
+(where @var{sysconfdir} is the system configuration directory
+specified at compile-time, e.g., @file{/usr/local/etc})
 
-@item @file{@var{datadir}/@var{prog}} where @var{datadir} is the
-system directory for data files, determined at build time
-(@code{/usr/local/share} by default);
+@item @file{@var{datadir}/@var{prog}/}
+(likewise specified at compile time, e.g., @file{/usr/local/share})
 
-@item the directory @file{.texinfo/init} in the current directory;
+@item @file{./.texinfo/init/} under the current directory;
 
-@item @file{$HOME/.texinfo/init} where @env{$HOME} is the user home directory;
+@item @file{~/.texinfo/init/} under the current home directory;
 
-@item @file{@var{sysconfdir}/texinfo/init} with @var{sysconfdir} as above;
+@item @file{@var{sysconfdir}/texinfo/init/} with @var{sysconfdir} as above;
 
-@item @file{@var{datadir}/texinfo/init} with @var{datadir} as above.
+@item @file{@var{datadir}/texinfo/init/} with @var{datadir} as above.
 
 @end enumerate
 
-Additional directories may be appended with @option{--conf-dir}.
+Additional directories may be prepended to the list with the
+@option{--conf-dir} option.
 
 
 @node Initialization files basics
 @section General informations on initialization files
 
-Initialization files are @command{perl} files, read as explained
-in @ref{Loading initialization files}. 
+Initialization files are Perl source.
 A good source of inspiration could be the initialization files provided
 in the Texinfo distribution.  They all have @samp{.init} extension.
 The @file{texi2html.init} file is used to set all the defaults, and,
@@ -24229,7 +24227,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
+$Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24308,7 +24306,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.276 2010-07-31 14:25:20 karl Exp $
+@comment $Id: texinfo.txi,v 1.277 2010-08-02 00:43:56 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,5 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-07-31.23; # UTC
+htmlxrefversion=2010-08-01.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -54,6 +54,9 @@ libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
 
 gnubg		mono	${RS}/gnubg/manual/gnubg.html
 gnubg		node	${RS}/gnubg/manual/html_node/
+
+gnubik		mono	${RS}/gnubik/manual/gnubik.html
+gnubik		node	${RS}/gnubik/manual/html_node/
 
 gnus		mono	${RS}/emacs/manual/html_node/mh-e/
 gnus		node	${RS}/emacs/manual/html_mono/mh-e.html

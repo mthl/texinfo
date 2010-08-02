@@ -1,4 +1,4 @@
-$Id: NEWS,v 1.196 2010-07-25 00:24:52 karl Exp $
+$Id: NEWS,v 1.197 2010-08-02 00:43:56 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
@@ -25,16 +25,17 @@ one of the relevant sections:
 
 * Language:
   . new command @part for a group of chapters.
-  . new environments @smallquotation and @raggedright.
+  . new environments @raggedright and @smallquotation.
   . new command @headitemfont for the sake of template rows.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
 * texi2html:
-  . new program, replacing and upward-compatible with makeinfo,
-    with many additional features.  Cross-manual references are now
-    fully supported, for one.  See texi2html/NEWS for its own changes.    
+  . new program, replacing and upward-compatible with makeinfo, much
+    slower, but with many additional features.  Cross-manual references
+    are now fully supported, for one.  See xxx in the manual for more
+    about this reimplementation.
 
 * texinfo.tex:
   . support some per-language hyphenation, when the underlying TeX
