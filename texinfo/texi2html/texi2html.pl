@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.412 2010-08-01 22:06:48 pertusus Exp $
+# $Id: texi2html.pl,v 1.413 2010-08-03 00:46:26 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2896,203 +2896,203 @@ sub set_paragraphindent($$;$$)
 my $T2H_OPTIONS;
 $T2H_OPTIONS -> {'macro-expand|E'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('MACRO_EXPAND', $_[1]);},
- verbose => 'output macro expanded source in <file>',
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('MACRO_EXPAND', $_[1]);},
+ 'verbose' => 'output macro expanded source in <file>',
 };
 
 $T2H_OPTIONS -> {'ifhtml'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('html', $_[1]); },
- verbose => "expand ifhtml and html sections",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('html', $_[1]); },
+ 'verbose' => "expand ifhtml and html sections",
 };
 
 $T2H_OPTIONS -> {'ifinfo'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('info', $_[1]); },
- verbose => "expand ifinfo",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('info', $_[1]); },
+ 'verbose' => "expand ifinfo",
 };
 
 $T2H_OPTIONS -> {'ifxml'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('xml', $_[1]); },
- verbose => "expand ifxml and xml sections",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('xml', $_[1]); },
+ 'verbose' => "expand ifxml and xml sections",
 };
 
 $T2H_OPTIONS -> {'ifdocbook'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('docbook', $_[1]); },
- verbose => "expand ifdocbook and docbook sections",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('docbook', $_[1]); },
+ 'verbose' => "expand ifdocbook and docbook sections",
 };
 
 $T2H_OPTIONS -> {'iftex'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('tex', $_[1]); },
- verbose => "expand iftex and tex sections",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('tex', $_[1]); },
+ 'verbose' => "expand iftex and tex sections",
 };
 
 $T2H_OPTIONS -> {'ifplaintext'} =
 {
- type => '!',
- linkage => sub { Texi2HTML::Config::set_expansion('plaintext', $_[1]); },
- verbose => "expand ifplaintext sections",
+ 'type' => '!',
+ 'linkage' => sub { Texi2HTML::Config::set_expansion('plaintext', $_[1]); },
+ 'verbose' => "expand ifplaintext sections",
 };
 
 $T2H_OPTIONS -> {'I'} =
 {
- type => '=s',
- linkage => \@Texi2HTML::Config::INCLUDE_DIRS,
- verbose => 'append $s to the @include search path',
+ 'type' => '=s',
+ 'linkage' => \@Texi2HTML::Config::INCLUDE_DIRS,
+ 'verbose' => 'append $s to the @include search path',
 };
 
 $T2H_OPTIONS -> {'conf-dir'} =
 {
- type => '=s',
- linkage => \@Texi2HTML::Config::CONF_DIRS,
- verbose => 'append $s to the init file directories',
+ 'type' => '=s',
+ 'linkage' => \@Texi2HTML::Config::CONF_DIRS,
+ 'verbose' => 'append $s to the init file directories',
 };
 
 $T2H_OPTIONS -> {'P'} =
 {
- type => '=s',
- linkage => sub {unshift (@Texi2HTML::Config::PREPEND_DIRS, $_[1]);},
- verbose => 'prepend $s to the @include search path',
+ 'type' => '=s',
+ 'linkage' => sub {unshift (@Texi2HTML::Config::PREPEND_DIRS, $_[1]);},
+ 'verbose' => 'prepend $s to the @include search path',
 };
 
 $T2H_OPTIONS -> {'number-sections'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('NUMBER_SECTIONS', $_[1]);},
- verbose => 'output chapter and sectioning numbers.',
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('NUMBER_SECTIONS', $_[1]);},
+ 'verbose' => 'output chapter and sectioning numbers.',
 };
 
 $T2H_OPTIONS -> {'number-footnotes'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('NUMBER_FOOTNOTES', $_[1]);},
- verbose => 'output footnote numbers.',
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('NUMBER_FOOTNOTES', $_[1]);},
+ 'verbose' => 'output footnote numbers.',
 };
 
 $T2H_OPTIONS -> {'node-files'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('NODE_FILES', $_[1]);},
- verbose => 'produce one file per node for cross references'
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('NODE_FILES', $_[1]);},
+ 'verbose' => 'produce one file per node for cross references'
 };
 
 $T2H_OPTIONS -> {'footnote-style|s'} =
 {
- type => '=s',
- linkage => sub {set_footnote_style ($_[1], 1);},
- verbose => 'output footnotes separate|end',
+ 'type' => '=s',
+ 'linkage' => sub {set_footnote_style ($_[1], 1);},
+ 'verbose' => 'output footnotes separate|end',
 };
 
 $T2H_OPTIONS -> {'split'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('SPLIT', $_[1])},
- verbose => 'split document on section|chapter|node else no splitting',
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('SPLIT', $_[1])},
+ 'verbose' => 'split document on section|chapter|node else no splitting',
 };
 
 $T2H_OPTIONS -> {'no-split'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SPLIT', ''); set_from_cmdline('SPLIT_SIZE', undef);},
- verbose => 'no splitting of document',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SPLIT', ''); set_from_cmdline('SPLIT_SIZE', undef);},
+ 'verbose' => 'no splitting of document',
+ 'noHelp' => 1,
 };
 
 $T2H_OPTIONS -> {'headers'} =
 {
- type => '!',
- linkage => sub {
+ 'type' => '!',
+ 'linkage' => sub {
     set_from_cmdline('HEADERS', $_[1]);
     set_from_cmdline('SHOW_MENU', $_[1]);
     Texi2HTML::Config::t2h_default_load_format('plaintext', 1)
         if (!$_[1] and defined($Texi2HTML::Config::OUTPUT_FORMAT) and $Texi2HTML::Config::OUTPUT_FORMAT eq 'info');
  },
- verbose => 'output navigation headers for each section',
+ 'verbose' => 'output navigation headers for each section',
 };
 
 $T2H_OPTIONS -> {'subdir'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('SUBDIR', $_[1]);},
- verbose => 'put files in directory $s, not $cwd',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('SUBDIR', $_[1]);},
+ 'verbose' => 'put files in directory $s, not $cwd',
+ 'noHelp' => 1,
 };
 
 $T2H_OPTIONS -> {'output|out|o'} =
 {
- type => '=s',
- linkage => sub {set_output($_[1], 1);},
- verbose => 'output goes to $s (directory if split)',
+ 'type' => '=s',
+ 'linkage' => sub {set_output($_[1], 1);},
+ 'verbose' => 'output goes to $s (directory if split)',
 };
 
 $T2H_OPTIONS -> {'no-validate|no-pointer-validate'} = 
 {
- type => '',
- linkage => sub {set_from_cmdline('novalidate',$_[1])},
- verbose => 'suppress node cross-reference validation',
+ 'type' => '',
+ 'linkage' => sub {set_from_cmdline('novalidate',$_[1])},
+ 'verbose' => 'suppress node cross-reference validation',
 };
 
 $T2H_OPTIONS -> {'no-warn'} =
 {
- type => '',
- linkage => sub {set_from_cmdline('NO_WARN', $_[1]);},
- verbose => 'suppress warnings (but not errors).'
+ 'type' => '',
+ 'linkage' => sub {set_from_cmdline('NO_WARN', $_[1]);},
+ 'verbose' => 'suppress warnings (but not errors).'
 };
 
 $T2H_OPTIONS -> {'verbose'} = 0;
 $T2H_OPTIONS -> {'verbose|v'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('VERBOSE', $_[1]);},
- verbose => 'print progress info to stdout',
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('VERBOSE', $_[1]);},
+ 'verbose' => 'print progress info to stdout',
 };
 
 $T2H_OPTIONS -> {'document-language'} =
 {
- type => '=s',
- linkage => sub {
+ 'type' => '=s',
+ 'linkage' => sub {
         warn_unknown_language ($_[1]);
         set_from_cmdline('documentlanguage', $_[1])
     },
- verbose => 'use $s as document language',
+ 'verbose' => 'use $s as document language',
 };
 
 $T2H_OPTIONS -> {'D'} =
 {
- type => '=s',
- linkage => sub {$value_initial{$_[1]} = 1;},
- verbose => 'equivalent to Texinfo "@set $s 1"',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {$value_initial{$_[1]} = 1;},
+ 'verbose' => 'equivalent to Texinfo "@set $s 1"',
+ 'noHelp' => 1,
 };
 
 $T2H_OPTIONS -> {'U'} =
 {
- type => '=s',
- linkage => sub {delete $value_initial{$_[1]};},
- verbose => 'equivalent to Texinfo "@clear $s"',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {delete $value_initial{$_[1]};},
+ 'verbose' => 'equivalent to Texinfo "@clear $s"',
+ 'noHelp' => 1,
 };
 
 $T2H_OPTIONS -> {'init-file'} =
 {
- type => '=s',
- linkage => \&load_init_file,
- verbose => 'load init file $s'
+ 'type' => '=s',
+ 'linkage' => \&load_init_file,
+ 'verbose' => 'load init file $s'
 };
 
 $T2H_OPTIONS -> {'set-init-variable'} = 
 {
- type => '=s',
- linkage => sub { my $var_val = $_[1];
+ 'type' => '=s',
+ 'linkage' => sub { my $var_val = $_[1];
   if ($var_val =~ s/^(\w+)\s*=?\s*//)
   {
     my $var = $1;
@@ -3104,48 +3104,48 @@ $T2H_OPTIONS -> {'set-init-variable'} =
     set_from_cmdline ($var, $value);
   }
  },
- verbose => 'set an init file variable to a value'
+ 'verbose' => 'set an init file variable to a value'
 };
 
 $T2H_OPTIONS -> {'css-include'} =
 {
- type => '=s',
- linkage => \@Texi2HTML::Config::CSS_FILES,
- verbose => 'use css file $s'
+ 'type' => '=s',
+ 'linkage' => \@Texi2HTML::Config::CSS_FILES,
+ 'verbose' => 'use css file $s'
 };
 
 $T2H_OPTIONS -> {'css-ref'} =
 {
- type => '=s',
- linkage => \@Texi2HTML::Config::CSS_REFS,
- verbose => 'generate reference to the CSS URL $s'
+ 'type' => '=s',
+ 'linkage' => \@Texi2HTML::Config::CSS_REFS,
+ 'verbose' => 'generate reference to the CSS URL $s'
 };
 
 $T2H_OPTIONS -> {'transliterate-file-names'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('TRANSLITERATE_FILE_NAMES', $_[1]);},
- verbose => 'produce file names in ASCII transliteration',
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('TRANSLITERATE_FILE_NAMES', $_[1]);},
+ 'verbose' => 'produce file names in ASCII transliteration',
 };
 
 $T2H_OPTIONS -> {'error-limit|e'} =
 {
- type => '=i',
- linkage => sub {set_from_cmdline('ERROR_LIMIT', $_[1]);},
- verbose => 'quit after NUM errors (default '.get_conf('ERROR_LIMIT').').',
+ 'type' => '=i',
+ 'linkage' => sub {set_from_cmdline('ERROR_LIMIT', $_[1]);},
+ 'verbose' => 'quit after NUM errors (default '.get_conf('ERROR_LIMIT').').',
 };
 
 $T2H_OPTIONS -> {'split-size'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
- verbose => 'split Info files at size s (default '.get_conf('SPLIT_SIZE').').',
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
+ 'verbose' => 'split Info files at size s (default '.get_conf('SPLIT_SIZE').').',
 };
 
 $T2H_OPTIONS -> {'paragraph-indent|p'} =
 {
- type => '=s',
- linkage => sub {set_paragraphindent($_[1], 1);},
+ 'type' => '=s',
+ 'linkage' => sub {set_paragraphindent($_[1], 1);},
  'verbose' => "indent Info paragraphs by VAL spaces (default ".get_conf('paragraphindent').").
                               If VAL is `none', do not indent; if VAL is
                                 `asis', preserve existing indentation.",
@@ -3153,65 +3153,65 @@ $T2H_OPTIONS -> {'paragraph-indent|p'} =
 
 $T2H_OPTIONS -> {'fill-column|f'} =
 {
- type => '=i',
- linkage => sub {set_from_cmdline('FILLCOLUMN',$_[1]);},
+ 'type' => '=i',
+ 'linkage' => sub {set_from_cmdline('FILLCOLUMN',$_[1]);},
  'verbose' => "break Info lines at NUM characters (default ".get_conf('FILLCOLUMN').")",
 };
 
 $T2H_OPTIONS -> {'enable-encoding'} =
 {
- type => '',
- linkage => sub {set_from_cmdline('ENABLE_ENCODING', $_[1]);},
- verbose => 'override --disable-encoding (default in Info).',
+ 'type' => '',
+ 'linkage' => sub {set_from_cmdline('ENABLE_ENCODING', $_[1]);},
+ 'verbose' => 'override --disable-encoding (default in Info).',
 };
 
 $T2H_OPTIONS -> {'disable-encoding'} =
 {
- type => '',
- linkage => sub {set_from_cmdline('ENABLE_ENCODING', 0);},
- verbose => 'do not output accented and special characters
+ 'type' => '',
+ 'linkage' => sub {set_from_cmdline('ENABLE_ENCODING', 0);},
+ 'verbose' => 'do not output accented and special characters
                                 in Info output based on @documentencoding.',
 };
 
 $T2H_OPTIONS -> {'internal-links'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('INTERNAL_LINKS', $_[1]);},
- verbose => 'produce list of internal links in FILE.'
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('INTERNAL_LINKS', $_[1]);},
+ 'verbose' => 'produce list of internal links in FILE.'
 };
 
 $T2H_OPTIONS -> {'force|F'} = 
-{ type => '!',
- linkage => sub {set_from_cmdline('FORCE', $_[1]);},
- verbose => 'preserve output even if errors.'
+{ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('FORCE', $_[1]);},
+ 'verbose' => 'preserve output even if errors.'
 };
 
 $T2H_OPTIONS -> {'commands-in-node-names'} =
 {
- type => '!',
- verbose => 'Always set',
- noHelp => 1
+ 'type' => '!',
+ 'verbose' => 'Always set',
+ 'noHelp' => 1
 };
 
 $T2H_OPTIONS -> {'output-indent'} = 
 {
- type => '=i',
- verbose => 'This option used to indent XML, it is ignored',
- noHelp => 1
+ 'type' => '=i',
+ 'verbose' => 'This option used to indent XML, it is ignored',
+ 'noHelp' => 1
 };
 
 $T2H_OPTIONS -> {'program'} =
 {
- type => '=s',
- linkage => sub {set_config_init_dirs_output($_[1]);},
+ 'type' => '=s',
+ 'linkage' => sub {set_config_init_dirs_output($_[1]);},
  'verbose' => 'Call as $s, setting corresponding defaults'
 };
 
 #$T2H_OPTIONS -> {'command'} =
 #{
-# type => '=s',
-# linkage => \@Texi2HTML::Config::COMMANDS,
-# verbose => 'insert CMD in copy of input file'
+# 'type' => '=s',
+# 'linkage' => \@Texi2HTML::Config::COMMANDS,
+# 'verbose' => 'insert CMD in copy of input file'
 #};
 
 
@@ -3220,18 +3220,18 @@ foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
   next if (defined($Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT) and $output_format eq $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT);
   $T2H_OPTIONS -> {$output_format} =
   {
-    type => '',
-    linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
-    verbose => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT}.",
+    'type' => '',
+    'linkage' => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
+    'verbose' => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT}.",
   }
 }
 
 $T2H_OPTIONS -> {$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT} =
 {
-  type => '',
-  linkage => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
-  verbose => "output default format.",
-  noHelp => 2
+  'type' => '',
+  'linkage' => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
+  'verbose' => "output default format.",
+  'noHelp' => 2
 };
 
 ##
@@ -3242,25 +3242,25 @@ my $T2H_OBSOLETE_OPTIONS;
 # actually a noop, since it is not used anywhere
 $T2H_OBSOLETE_OPTIONS -> {'invisible'} =
 {
- type => '=s',
- verbose => 'Not used',
- noHelp  => 2,
+ 'type' => '=s',
+ 'verbose' => 'Not used',
+ 'noHelp' => 2,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'toc-links'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('TOC_LINKS', $_[1]);},
- verbose => 'create links from headings to toc entries',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('TOC_LINKS', $_[1]);},
+ 'verbose' => 'create links from headings to toc entries',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'short-ext'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SHORTEXTN', $_[1]);},
- verbose => 'use "htm" extension for output HTML files',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SHORTEXTN', $_[1]);},
+ 'verbose' => 'use "htm" extension for output HTML files',
+ 'noHelp' => 1,
 };
 
 # FIXME this is not that helpful as a message, as reported by
@@ -3268,450 +3268,450 @@ $T2H_OBSOLETE_OPTIONS -> {'short-ext'} =
 # accepted.
 $T2H_OBSOLETE_OPTIONS -> {'prefix'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('PREFIX', $_[1]);},
- verbose => 'use as prefix for output files, instead of <docname>',
- noHelp  => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('PREFIX', $_[1]);},
+ 'verbose' => 'use as prefix for output files, instead of <docname>',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'short-ref'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SHORT_REF', $_[1]);},
- verbose => 'if set, references are without section numbers',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SHORT_REF', $_[1]);},
+ 'verbose' => 'if set, references are without section numbers',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'idx-sum'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('IDX_SUMMARY', $_[1]);},
- verbose => 'if set, also output index summary',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('IDX_SUMMARY', $_[1]);},
+ 'verbose' => 'if set, also output index summary',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'def-table'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('DEF_TABLE', $_[1]);},
- verbose => 'if set, \@def.. are converted using tables.',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('DEF_TABLE', $_[1]);},
+ 'verbose' => 'if set, \@def.. are converted using tables.',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'ignore-preamble-text'} =
 {
-  type => '!',
-  linkage => sub {set_from_cmdline('IGNORE_PREAMBLE_TEXT', $_[1]);},
-  verbose => 'if set, ignore the text before @node and sectioning commands',
-  noHelp => 1,
+  'type' => '!',
+  'linkage' => sub {set_from_cmdline('IGNORE_PREAMBLE_TEXT', $_[1]);},
+  'verbose' => 'if set, ignore the text before @node and sectioning commands',
+  'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'html-xref-prefix'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('EXTERNAL_DIR', $_[1]);},
- verbose => '$s is the base dir for external manual references',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('EXTERNAL_DIR', $_[1]);},
+ 'verbose' => '$s is the base dir for external manual references',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('L2H', $_[1]);},
- verbose => 'if set, uses latex2html for @math and @tex',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('L2H', $_[1]);},
+ 'verbose' => 'if set, uses latex2html for @math and @tex',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h-l2h'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('L2H_L2H', $_[1]);},
- verbose => 'program to use for latex2html translation',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('L2H_L2H', $_[1]);},
+ 'verbose' => 'program to use for latex2html translation',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h-skip'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('L2H_SKIP', $_[1]);},
- verbose => 'if set, tries to reuse previously latex2html output',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('L2H_SKIP', $_[1]);},
+ 'verbose' => 'if set, tries to reuse previously latex2html output',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h-tmp'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('L2H_TMP', $_[1]);},
- verbose => 'if set, uses $s as temporary latex2html directory',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('L2H_TMP', $_[1]);},
+ 'verbose' => 'if set, uses $s as temporary latex2html directory',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h-file'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('L2H_FILE', $_[1]);},
- verbose => 'if set, uses $s as latex2html init file',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('L2H_FILE', $_[1]);},
+ 'verbose' => 'if set, uses $s as latex2html init file',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'l2h-clean'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('L2H_CLEAN', $_[1]);},
- verbose => 'if set, do not keep intermediate latex2html files for later reuse',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('L2H_CLEAN', $_[1]);},
+ 'verbose' => 'if set, do not keep intermediate latex2html files for later reuse',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'use-nodes'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('USE_NODES', $_[1]);},
- verbose => 'use nodes for sectioning',
- noHelp  => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('USE_NODES', $_[1]);},
+ 'verbose' => 'use nodes for sectioning',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'monolithic'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('MONOLITHIC', $_[1]);},
- verbose => 'output only one file including ToC, About...',
- noHelp => 1
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('MONOLITHIC', $_[1]);},
+ 'verbose' => 'output only one file including ToC, About...',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'top-file'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('TOP_FILE', $_[1]);},
- verbose => 'use $s as top file, instead of <docname>.html',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('TOP_FILE', $_[1]);},
+ 'verbose' => 'use $s as top file, instead of <docname>.html',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'toc-file'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('TOC_FILE', $_[1]);},
- verbose => 'use $s as ToC file, instead of <docname>_toc.html',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('TOC_FILE', $_[1]);},
+ 'verbose' => 'use $s as ToC file, instead of <docname>_toc.html',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'frames'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('FRAMES', $_[1])},
- verbose => 'output files which use HTML 4.0 frames (experimental)',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('FRAMES', $_[1])},
+ 'verbose' => 'output files which use HTML 4.0 frames (experimental)',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'menu'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SHOW_MENU', $_[1]);},
- verbose => 'output Texinfo menus',
- noHelp => 1,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SHOW_MENU', $_[1]);},
+ 'verbose' => 'output Texinfo menus',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'iso'} =
 {
- type => 'iso',
- linkage => sub {Texi2HTML::Config::t2h_default_set_iso_symbols ($_[1], 1);},
- verbose => 'if set, entities are used for special symbols (like copyright, etc...) and quotes',
- noHelp => 1,
+ 'type' => 'iso',
+ 'linkage' => sub {Texi2HTML::Config::t2h_default_set_iso_symbols ($_[1], 1);},
+ 'verbose' => 'if set, entities are used for special symbols (like copyright, etc...) and quotes',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'debug'} =
 {
- type => '=i',
- linkage => sub {set_from_cmdline('DEBUG', $_[1])},
- verbose => 'output HTML with debuging information',
- noHelp => 1,
+ 'type' => '=i',
+ 'linkage' => sub {set_from_cmdline('DEBUG', $_[1])},
+ 'verbose' => 'output HTML with debuging information',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'doctype'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('DOCTYPE', $_[1]);},
- verbose => 'document type which is output in header of HTML files',
- noHelp => 1
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('DOCTYPE', $_[1]);},
+ 'verbose' => 'document type which is output in header of HTML files',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'frameset-doctype'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('FRAMESET_DOCTYPE', $_[1]);},
- verbose => 'document type for HTML frameset documents',
- noHelp => 1
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('FRAMESET_DOCTYPE', $_[1]);},
+ 'verbose' => 'document type for HTML frameset documents',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'test'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('TEST', $_[1]);},
- verbose => 'use predefined information to avoid differences with reference files',
- noHelp => 1
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('TEST', $_[1]);},
+ 'verbose' => 'use predefined information to avoid differences with reference files',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'dump-texi'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('DUMP_TEXI', $_[1]);},
- verbose => 'dump the output of first pass into a file with extension passfirst and exit',
- noHelp => 1
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('DUMP_TEXI', $_[1]);},
+ 'verbose' => 'dump the output of first pass into a file with extension passfirst and exit',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'expand'} =
 {
- type => '=s',
- linkage => sub {Texi2HTML::Config::set_expansion($_[1], 1);},
- verbose => 'Expand <s> section of texinfo source',
- noHelp => 1,
+ 'type' => '=s',
+ 'linkage' => sub {Texi2HTML::Config::set_expansion($_[1], 1);},
+ 'verbose' => 'Expand <s> section of texinfo source',
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'no-expand'} =
 {
- type => '=s',
- linkage => sub {Texi2HTML::Config::set_expansion ($_[1], 0);},
- verbose => 'Don\'t expand the given section of texinfo source',
+ 'type' => '=s',
+ 'linkage' => sub {Texi2HTML::Config::set_expansion ($_[1], 0);},
+ 'verbose' => 'Don\'t expand the given section of texinfo source',
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'noexpand'} = 
 {
- type => '=s',
- linkage => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'linkage'},
- verbose => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'verbose'},
- noHelp  => 1,
+ 'type' => '=s',
+ 'linkage' => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'linkage'},
+ 'verbose' => $T2H_OBSOLETE_OPTIONS->{'no-expand'}->{'verbose'},
+ 'noHelp' => 1,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'out-file'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT', '');},
- verbose => 'if set, all HTML output goes into file $s, obsoleted by "-output" with different semantics',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT', '');},
+ 'verbose' => 'if set, all HTML output goes into file $s, obsoleted by "-output" with different semantics',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'lang'} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('documentlanguage', $_[1])},
- verbose => 'obsolete, use "--document-language" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('documentlanguage', $_[1])},
+ 'verbose' => 'obsolete, use "--document-language" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'separated-footnotes'} =
 {
- type => '!',
- linkage => sub {my $style = 'separate'; $style = 'end' if !$_[1]; set_footnote_style ($style, 1);},
- verbose => 'obsolete, use "--footnote-style" instead',
- noHelp => 2
+ 'type' => '!',
+ 'linkage' => sub {my $style = 'separate'; $style = 'end' if !$_[1]; set_footnote_style ($style, 1);},
+ 'verbose' => 'obsolete, use "--footnote-style" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'Verbose'} =
 {
- type => '!',
+ 'type' => '!',
  linkage=> sub {set_from_cmdline('VERBOSE', $_[1]);},
- verbose => 'obsolete, use "--verbose" instead',
- noHelp => 2
+ 'verbose' => 'obsolete, use "--verbose" instead',
+ 'noHelp' => 2
 };
 
 
 $T2H_OBSOLETE_OPTIONS -> {init_file} =
 {
- type => '=s',
- linkage => \&load_init_file,
- verbose => 'obsolete, use "-init-file" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => \&load_init_file,
+ 'verbose' => 'obsolete, use "-init-file" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {l2h_clean} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('L2H_CLEAN', $_[1]);},
- verbose => 'obsolete, use "-l2h-clean" instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('L2H_CLEAN', $_[1]);},
+ 'verbose' => 'obsolete, use "-l2h-clean" instead',
+ 'noHelp' => 2,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {l2h_l2h} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('L2H_L2H', $_[1]);},
- verbose => 'obsolete, use "-l2h-l2h" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('L2H_L2H', $_[1]);},
+ 'verbose' => 'obsolete, use "-l2h-l2h" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {l2h_skip} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('L2H_SKIP', $_[1]);},
- verbose => 'obsolete, use "-l2h-skip" instead',
- noHelp => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('L2H_SKIP', $_[1]);},
+ 'verbose' => 'obsolete, use "-l2h-skip" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {l2h_tmp} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('L2H_TMP', $_[1]);},
- verbose => 'obsolete, use "-l2h-tmp" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('L2H_TMP', $_[1]);},
+ 'verbose' => 'obsolete, use "-l2h-tmp" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {out_file} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT', '');},
- verbose => 'obsolete, use "-out-file" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT', '');},
+ 'verbose' => 'obsolete, use "-out-file" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {short_ref} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SHORT_REF', $_[1]);},
- verbose => 'obsolete, use "-short-ref" instead',
- noHelp => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SHORT_REF', $_[1]);},
+ 'verbose' => 'obsolete, use "-short-ref" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {idx_sum} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('IDX_SUMMARY', $_[1]);},
- verbose => 'obsolete, use "-idx-sum" instead',
- noHelp  => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('IDX_SUMMARY', $_[1]);},
+ 'verbose' => 'obsolete, use "-idx-sum" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {def_table} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('DEF_TABLE', $_[1]);},
- verbose => 'obsolete, use "-def-table" instead',
- noHelp  => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('DEF_TABLE', $_[1]);},
+ 'verbose' => 'obsolete, use "-def-table" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {short_ext} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('SHORTEXTN', $_[1]);},
- verbose => 'obsolete, use "-short-ext" instead',
- noHelp  => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('SHORTEXTN', $_[1]);},
+ 'verbose' => 'obsolete, use "-short-ext" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {sec_nav} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('HEADERS', $_[1]);},
- verbose => 'obsolete, use "-headers" instead',
- noHelp  => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('HEADERS', $_[1]);},
+ 'verbose' => 'obsolete, use "-headers" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {'sec-nav'} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('HEADERS', $_[1]);},
- verbose => 'obsolete, use "--header" instead',
- noHelp  => 2
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('HEADERS', $_[1]);},
+ 'verbose' => 'obsolete, use "--header" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {top_file} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('TOP_FILE', $_[1]);},
- verbose => 'obsolete, use "-top-file" instead',
- noHelp  => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('TOP_FILE', $_[1]);},
+ 'verbose' => 'obsolete, use "-top-file" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {toc_file} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('TOC_FILE', $_[1]);},
- verbose => 'obsolete, use "-toc-file" instead',
- noHelp  => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('TOC_FILE', $_[1]);},
+ 'verbose' => 'obsolete, use "-toc-file" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {glossary} =
 {
- type => '!',
- verbose => "this does nothing",
- noHelp  => 2,
+ 'type' => '!',
+ 'verbose' => "this does nothing",
+ 'noHelp' => 2,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {check} =
 {
- type => '!',
- linkage => sub {exit 0;},
- verbose => "exit without doing anything",
- noHelp  => 2,
+ 'type' => '!',
+ 'linkage' => sub {exit 0;},
+ 'verbose' => "exit without doing anything",
+ 'noHelp' => 2,
 };
 
 $T2H_OBSOLETE_OPTIONS -> {dump_texi} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('DUMP_TEXI', $_[1]);},
- verbose => 'obsolete, use "-dump-texi" instead',
- noHelp => 1
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('DUMP_TEXI', $_[1]);},
+ 'verbose' => 'obsolete, use "-dump-texi" instead',
+ 'noHelp' => 1
 };
 
 $T2H_OBSOLETE_OPTIONS -> {frameset_doctype} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('FRAMESET_DOCTYPE', $_[1]);},
- verbose => 'obsolete, use "-frameset-doctype" instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('FRAMESET_DOCTYPE', $_[1]);},
+ 'verbose' => 'obsolete, use "-frameset-doctype" instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {use_acc} =
 {
- type => '!',
- verbose => 'obsolete, set to true unconditionnaly',
- noHelp => 2
+ 'type' => '!',
+ 'verbose' => 'obsolete, set to true unconditionnaly',
+ 'noHelp' => 2
 };
 $T2H_OBSOLETE_OPTIONS -> {expandinfo} =
 {
- type => '!',
- linkage => sub {push @Texi2HTML::Config::EXPAND, 'info';},
- verbose => 'obsolete, use "--ifinfo" instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub {push @Texi2HTML::Config::EXPAND, 'info';},
+ 'verbose' => 'obsolete, use "--ifinfo" instead',
+ 'noHelp' => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {expandtex} =
 {
- type => '!',
- linkage => sub {push @Texi2HTML::Config::EXPAND, 'tex';},
- verbose => 'obsolete, use "--iftex" instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub {push @Texi2HTML::Config::EXPAND, 'tex';},
+ 'verbose' => 'obsolete, use "--iftex" instead',
+ 'noHelp' => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {split_node} =
 {
- type => '!',
- linkage => sub{set_from_cmdline('SPLIT', 'section');},
- verbose => 'obsolete, use "-split section" instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub{set_from_cmdline('SPLIT', 'section');},
+ 'verbose' => 'obsolete, use "-split section" instead',
+ 'noHelp' => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {split_chapter} =
 {
- type => '!',
- linkage => sub{set_from_cmdline('SPLIT', 'chapter');},
- verbose => 'obsolete, use "-split chapter" instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub{set_from_cmdline('SPLIT', 'chapter');},
+ 'verbose' => 'obsolete, use "-split chapter" instead',
+ 'noHelp' => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {no_verbose} =
 {
- type => '!',
- linkage => sub{set_from_cmdline('VERBOSE', 0);},
- verbose => 'obsolete, use -noverbose instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub{set_from_cmdline('VERBOSE', 0);},
+ 'verbose' => 'obsolete, use -noverbose instead',
+ 'noHelp' => 2,
 };
 $T2H_OBSOLETE_OPTIONS -> {output_file} =
 {
- type => '=s',
- linkage => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT','');},
- verbose => 'obsolete, use --out-file instead',
- noHelp => 2
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('OUTFILE', $_[1]); set_from_cmdline('SPLIT','');},
+ 'verbose' => 'obsolete, use --out-file instead',
+ 'noHelp' => 2
 };
 
 $T2H_OBSOLETE_OPTIONS -> {section_navigation} =
 {
- type => '!',
- linkage => sub {set_from_cmdline('HEADERS', $_[1]);},
- verbose => 'obsolete, use --sec-nav instead',
- noHelp => 2,
+ 'type' => '!',
+ 'linkage' => sub {set_from_cmdline('HEADERS', $_[1]);},
+ 'verbose' => 'obsolete, use --sec-nav instead',
+ 'noHelp' => 2,
 };
 
 # read initialzation from $sysconfdir/texi2htmlrc or $HOME/.texi2htmlrc

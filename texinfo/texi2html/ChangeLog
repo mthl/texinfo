@@ -1,3 +1,8 @@
+2010-08-02  Karl Berry  <karl@gnu.org>
+
+	* texi2html.pl (T2H_OBSOLETE_OPTIONS): 'quote' key names,
+	for our preferred style.  (Many unquoted remain, though.)
+
 2010-07-25  Karl Berry  <karl@gnu.org>
 
 	* texi2html.init (ERROR_LIMIT),
