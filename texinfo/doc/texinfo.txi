@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
+@c $Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18688,7 +18688,7 @@ formatting.  It is possible to call functions at different stages to
 help with that (@pxref{Calling functions at different stages}).
 
 @menu
-* Setting/getting configuration variables::
+* Setting and Getting Configuration Variables::
 * Global informations::       Accessing global informations, like date, 
                               title@dots{}
 * Getting flag values::
@@ -18710,7 +18710,7 @@ help with that (@pxref{Calling functions at different stages}).
 @node Setting and Getting Configuration Variables
 @subsection Setting and Getting Configuration Variables
 
-@cindex Configuration variables, setting/getting
+@cindex Configuration variables, setting and getting
 
 The basic operations on configuration variables are to set and
 retrieve their values.
@@ -24251,7 +24251,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
+$Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24330,7 +24330,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
+@comment $Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
