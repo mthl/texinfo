@@ -1,5 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
-htmlxrefversion=2010-08-02.18; # UTC
+
+htmlxrefversion=2010-08-03.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -9,6 +10,8 @@ htmlxrefversion=2010-08-02.18; # UTC
 #
 # The latest version of this file is available at
 # http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
+# Email corrections or additions to bug-texinfo@gnu.org.
+# The goal is for it to list all relevant GNU manuals, at least.
 #
 # Maintainers: for information on putting manuals on the web, including
 # automatically generating all the useful formats, see
@@ -23,6 +26,9 @@ htmlxrefversion=2010-08-02.18; # UTC
 # shorten references to manuals on www.gnu.org.
 G = http://www.gnu.org
 GS = ${G}/software
+
+3dldf		mono	${GS}/3dldf/manual/user_ref/3DLDF.html
+3dldf		node	${GS}/3dldf/manual/user_ref/
 
 anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/

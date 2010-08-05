@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
+@c $Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -656,7 +656,7 @@ texi2any Output Customization
 
 * Loading Initialization Files::   Initialization files and their search paths.
 * Initialization File Basics::     General information on init files.
-* Elements::                          The main division of output document.
+* Output Elements::                The main unit of output documents.
 * Special elements::                  Customizing special elements text and 
                                       layout.
 * File and target names::
@@ -18524,7 +18524,7 @@ changes, but it is not a promise.
 @menu
 * Loading Initialization Files::   Initialization files and their search paths.
 * Initialization File Basics::     General information on init files.
-* Elements::                          The main division of output document.
+* Output Elements::                The main unit of output documents.
 * Navigation panel customization::
 * Page layout customization::
 * Special elements::                  Customizing special elements text and 
@@ -18608,6 +18608,7 @@ Additional directories may be prepended to the list with the
 @section Initialization File Basics
 
 @cindex Initialization file basics
+@cindex Perl, used for initialization files
 
 Initialization files are written in Perl, and by convention have
 extension @file{.init}.  Many initialization files are included in the
@@ -18687,7 +18688,7 @@ formatting.  It is possible to call functions at different stages to
 help with that (@pxref{Calling functions at different stages}).
 
 @menu
-* Setting and getting configuration variable value::
+* Setting/getting configuration variables::
 * Global informations::       Accessing global informations, like date, 
                               title@dots{}
 * Getting flag values::
@@ -18706,54 +18707,69 @@ help with that (@pxref{Calling functions at different stages}).
 @end menu
 
 
-@node Setting and getting configuration variable value
-@subsection Setting and getting configuration variable value
+@node Setting and Getting Configuration Variables
+@subsection Setting and Getting Configuration Variables
+
+@cindex Configuration variables, setting/getting
+
+The basic operations on configuration variables are to set and
+retrieve their values.
 
 To set the value of a configuration variable from an initialization file,
-you should use the function:
+you should use @code{set_from_init_file}:
+
 @defun set_from_init_file ($variable_name, $variable_value)
-@var{$variable_name} is a string containing the name of the variable 
-you want to set, and @var{$variable_value} is the value you want to set.
-@var{$variable_value} may be @samp{undef}.  For example
+@var{$variable_name} is a string containing the name of the variable
+you want to set, and @var{$variable_value} is the value to which you
+want to set it.  @var{$variable_value} may be @samp{undef}.
+@end defun
+
+For example,
+
 @example
 set_from_init_file('documentlanguage', 'fr');
 @end example
-should override the @code{@@documentlanguage} from the document.
-It will be overriden by @option{--document-language} on the 
-command-line.
 
-Another example, 
+@noindent overrides the @code{@@documentlanguage} from the
+document.  It would be overridden by @option{--document-language} on
+the command line.
+
+Another example:
+
 @example
 set_from_init_file('SPLIT', 'chapter');
 @end example
-should override the default splitting of the document.  It will be
-overriden by the @option{--split} option on the command-line.
 
-And, as a last example, 
+@noindent overrides the default splitting of the document.  It would be
+overridden by @option{--split} on the command line.
+
+A final example:
+
 @example
 set_from_init_file('NO_CSS', 1);
 @end example
-wil override the default value for @code{NO_CSS}.  It will be overriden by
-@code{--set-init-variable NO_CSS=1} on the command-line.
-@end defun
 
-To get the value of a variable, the function is @code{get_conf},
-in the @code{Texi2HTML::Config} namespace:
+@noindent overrides the default value for @code{NO_CSS}.  It would be
+overridden by @code{--set-init-variable NO_CSS=1} on the command line.
+
+To get the value of a variable, the function is @code{get_conf}:
+
 @defun get_conf ($variable_name)
-@var{$variable_name} is  the name of the variable you want to know the 
-value.
+@var{$variable_name} is the name of the variable; its value (possibly
+@code{undef}) is returned.
 @end defun
 
 For example:
 
 @example
-if (get_conf('footnotestyle') eq 'separate') @{ .... @}
+if (get_conf('footnotestyle') eq 'separate') @{ ... @}
 @end example
 
-The list of configuration variables associated with @@-commands is
-in @ref{Configuration variables for @@-commands}, the list and mapping
-of configuration variables associated with command line options is at 
-@ref{Configuration variables and options}.
+For the configuration variables associated with @@-commands, see
+@ref{Configuration variables for @@-commands}.  For the configuration
+variables associated with command line options, see @ref{Configuration
+variables and options}.
+
 
 @node Global informations
 @subsection Accessing global informations
@@ -19365,8 +19381,16 @@ should be used to retranslate strings based on the new language.
 @end deffn
 
 
-@node Elements
-@section Elements and associated informations
+@node Output Elements
+@section Output Elements
+
+@cindex Output elements
+@cindex Elements, main division of output documents
+
+We will call the main unit of output documents an @dfn{element}.  An
+element's association with output files is determined by the split
+options (@pxref{Splitting output}).  This section describes what they
+are and details for customization.
 
 @menu
 * The different elements::
@@ -19377,13 +19401,8 @@ should be used to retranslate strings based on the new language.
 @node The different elements
 @subsection The different elements
 
-The main division of output document is the @dfn{element}.  Their
-association with output files is determined by the split options.
-@xref{Splitting output}.
 The elements are:
 
-@c The association of nodes with pages is
-@c determined by the splitting of the document. @xref{Splitting output}.
 @table @emph
 @item Normal elements
 These are normal sections and nodes.  In general nodes are associated 
@@ -24232,7 +24251,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
+$Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24311,7 +24330,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.278 2010-08-02 18:28:27 karl Exp $
+@comment $Id: texinfo.txi,v 1.279 2010-08-05 00:09:06 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
