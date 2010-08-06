@@ -1,3 +1,8 @@
+2010-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/Makefile.am: generate AUTHORS based on texinfo AUTHORS
+	and copy config.rpath. 
+
 2010-08-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Loading Init Files),

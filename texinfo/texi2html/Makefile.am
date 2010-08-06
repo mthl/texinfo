@@ -20,6 +20,13 @@ po_document_dir = .
 else
 po_subdirs =
 po_document_dir = ..
+
+config.rpath: $(srcdir)/../build-aux/config.rpath
+	${INSTALL_DATA} $(srcdir)/../build-aux/config.rpath config.rpath
+
+AUTHORS: $(srcdir)/../AUTHORS
+	(echo "Below is a copy of the texinfo AUTHORS file, listing texi2html authors"; echo) \
+	   | cat - $(srcdir)/../AUTHORS > $@
 endif
 
 SUBDIRS = $(po_subdirs) . test
@@ -60,8 +67,9 @@ noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
 EXTRA_DIST = \
 	configure.ac \
 	config.rpath \
-	MySimple.pod \
 	autogen.sh \
+	AUTHORS \
+	MySimple.pod \
 	$(noinst_SCRIPTS) \
 	missing-texi2html \
 	texi2html.pl \
@@ -233,7 +241,7 @@ check-local: makeinfo.pl texi2any.pl
 makeinfo.pl texi2any.pl:
 	-$(LN_S) $(srcdir)/texi2html.pl $@
 
-makeinfo texi2html:
+makeinfo texi2html: texi2any
 	-$(LN_S) texi2any $@
 
 html-local: texi2html
