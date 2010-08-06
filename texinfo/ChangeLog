@@ -7,6 +7,8 @@
 	* texi2html/texi2html.init, texi2html/T2h_l2h.pm: no default 
 	initialization file for latex2html.  Don't use locate_init_file to 
 	find the initialization file.
+	* texi2html/texi2html.pl: search in ./ and ./.program_name for init
+	files and htmlxref.cnf files.  Report from Karl.
 
 2010-08-05  Karl Berry  <karl@gnu.org>
 

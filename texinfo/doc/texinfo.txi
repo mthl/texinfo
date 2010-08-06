@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
+@c $Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18361,8 +18361,11 @@ information for cross-references to other manuals in HTML output.  It
 is looked for in the following directories:
 
 @table @file
-@item @var{srcdir}/.texinfo/
-(where @var{srcdir} is the directory with the Texinfo input file)
+@item ./
+(the current directory)
+
+@item ./.texinfo/
+(under the current directory)
 
 @item ~/.texinfo/
 (where @code{~} is the current user's home directory)
@@ -18563,6 +18566,9 @@ the command line, normally @code{makeinfo} or @code{texi2any}):
 @item ./
 (the current directory)
 
+@item ./.@var{prog}/
+(under the current directory)
+
 @item ~/.@var{prog}/
 (where @code{~} is the current user's home directory)
 
@@ -18586,6 +18592,8 @@ The first file found is used:
 
 @enumerate
 @item The current directory @file{./};
+
+@item @file{./.@var{prog}/} under the current directory;
 
 @item @file{~/.@var{prog}/}
 (where @code{~} is the current user's home directory)
@@ -24279,7 +24287,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
+$Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24358,7 +24366,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

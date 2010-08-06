@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.414 2010-08-06 14:17:29 pertusus Exp $
+# $Id: texi2html.pl,v 1.415 2010-08-06 22:58:20 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -256,10 +256,11 @@ my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
 
 # directories for texinfo configuration files
-my @texinfo_config_dirs = ('./.texinfo');
-push @texinfo_config_dirs, "$ENV{'HOME'}/.texinfo" if (defined($ENV{'HOME'}));
-push @texinfo_config_dirs, "$sysconfdir/texinfo" if (defined($sysconfdir));
-push @texinfo_config_dirs, "$datadir/texinfo" if (defined($datadir));
+my @language_config_dirs = ('./.texinfo');
+push @language_config_dirs, "$ENV{'HOME'}/.texinfo" if (defined($ENV{'HOME'}));
+push @language_config_dirs, "$sysconfdir/texinfo" if (defined($sysconfdir));
+push @language_config_dirs, "$datadir/texinfo" if (defined($datadir));
+my @texinfo_config_dirs = ('.', @language_config_dirs);
 
 my @program_config_dirs;
 my @program_init_dirs;
@@ -279,17 +280,17 @@ sub set_config_init_dirs_output($)
 
 
   # directories for config files
-  @program_config_dirs = ('./');
-  push @program_config_dirs, "$ENV{'HOME'}/.$program_name/" if (defined($ENV{'HOME'}));
-  push @program_config_dirs, "$sysconfdir/$program_name/" if (defined($sysconfdir));
+  @program_config_dirs = ('.', "./.$program_name");
+  push @program_config_dirs, "$ENV{'HOME'}/.$program_name" if (defined($ENV{'HOME'}));
+  push @program_config_dirs, "$sysconfdir/$program_name" if (defined($sysconfdir));
   push @program_config_dirs, "$datadir/$program_name" if (defined($datadir));
 
   # directories for init files
   @program_init_dirs = @program_config_dirs;
   # common directories for all command names
-  foreach my $texinfo_config_dir (@texinfo_config_dirs)
+  foreach my $texinfo_config_dir (@language_config_dirs)
   {
-    push @program_init_dirs, "${texinfo_config_dir}/init/";
+    push @program_init_dirs, "${texinfo_config_dir}/init";
   }
   $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT = $default_output_format;
   $Texi2HTML::Config::COMMAND_NAME = $program_name;
@@ -2345,11 +2346,10 @@ my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $r
 #print STDERR "" . gdt('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
 
 # file:        file name to locate. It can be a file path.
+# directories: a reference on a array containing a list of directories to
+#              search the file in. 
 # all_files:   if true collect all the files with that name, otherwise stop
 #              at first match.
-# directories: a reference on a array containing a list of directories to
-#              search the file in. default is 
-#              @Texi2HTML::Config::CONF_DIRS, @program_config_dirs.
 sub locate_init_file($$$)
 {
     my $file = shift;
