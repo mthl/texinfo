@@ -1,3 +1,9 @@
+2010-08-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Loading Init Files),
+	(Init File Basics): shorten names.
+	(Init File Variables, Init File Variables): split off from Basics.
+
 2010-08-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Setting and Getting Configuration Variables):

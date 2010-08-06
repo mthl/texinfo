@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
+@c $Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -654,8 +654,8 @@ HTML Cross-references
 
 texi2any Output Customization
 
-* Loading Initialization Files::   Initialization files and their search paths.
-* Initialization File Basics::     General information on init files.
+* Loading Init Files::   Initialization files and their search paths.
+* Init File Basics::     General information on init files.
 * Output Elements::                The main unit of output documents.
 * Special elements::                  Customizing special elements text and 
                                       layout.
@@ -16045,7 +16045,7 @@ customization files that may be loaded with @option{--init-file} (see
 below).  @var{path} can be a single directory, or a list of several
 directories separated by the usual path separator character (@samp{:}
 on GNU and Unix systems, @samp{;} on MS-DOS/MS-Windows).
-@xref{Loading Initialization Files}.
+@xref{Loading Init Files}.
 
 @item --css-include=@var{file}
 @opindex --css-include
@@ -16191,8 +16191,7 @@ generated manual.  It is customary to use the @code{.init} extension
 for these customization files, but that is not enforced by anything;
 the @var{file} name is taken literally.  @option{--conf-dir} (see
 above) may be used to add to the list of directories in which these
-customization files are searched for.  @xref{Loading Initialization
-Files}.
+customization files are searched for.  @xref{Loading Init Files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
@@ -18511,19 +18510,19 @@ preceded by whitespace.
 
 @cartouche
 @quotation Warning
-All of this information, with the exception of that about command-line
-options and search directories (@pxref{Loading Initialization Files})
-may become obsolete in a future Texinfo release.  Right now, the
-``API'' described in this chapter is immature, badly designed and
-incomplete, so we must keep open the possibility of incompatible,
-possibly major, changes.  Of course we try to avoid incompatible
-changes, but it is not a promise.
+All of this information, with the exception of command-line options
+and search directories (@pxref{Loading Init Files}), may become
+obsolete in a future Texinfo release.  Right now, the ``API''
+described in this chapter is immature, badly designed and incomplete,
+so we must keep open the possibility of incompatible, possibly major,
+changes.  Of course we try to avoid incompatible changes, but it is
+not a promise.
 @end quotation
 @end cartouche
 
 @menu
-* Loading Initialization Files::   Initialization files and their search paths.
-* Initialization File Basics::     General information on init files.
+* Loading Init Files::             Initialization files and their search paths.
+* Init File Basics::               General information on init files.
 * Output Elements::                The main unit of output documents.
 * Navigation panel customization::
 * Page layout customization::
@@ -18543,15 +18542,22 @@ changes, but it is not a promise.
 * Customizing CSS::
 @end menu
 
-@node Loading Initialization Files
-@section Loading initialization files and search paths
 
-It is possible to load initialization files to modify almost every
-aspect of output formatting.  The program loads initialization files
-named @file{Config} each time it is run.  Those files are looked for
-in the following directories (where @var{prog} is the name of the 
-program invoked on the command line, normally @code{makeinfo} 
-or @code{texi2any}):
+@node Loading Init Files
+@section Loading Initialization Files and Search Paths
+
+@cindex Loading init files
+@cindex Initialization files, loading
+@cindex Search paths, for initialization files
+
+@pindex Config @r{init files loaded}
+
+It is possible to load so-called @dfn{initialization files}, or
+@dfn{init files} for short, to modify almost every aspect of output
+formatting.  The program loads init files named @file{Config} each
+time it is run.  Those files are looked for in the following
+directories (where @var{prog} is the name of the program invoked on
+the command line, normally @code{makeinfo} or @code{texi2any}):
 
 @table @file
 @item ./
@@ -18570,8 +18576,9 @@ specified at compile-time, e.g., @file{/usr/local/etc})
 
 All @file{Config} files found are used, in the above order. 
 
-The most common way to load an initialization file is with the
-@option{--init-file} option, explicitly specifying the file to be
+@opindex --init-file
+However, the most common way to load an initialization file is with
+the @option{--init-file} option, explicitly specifying the file to be
 loaded.  By default the following directories are searched, in the
 following order, where @var{prog} is the name of the program invoked
 on the command line (@command{makeinfo}, @command{texi2any}, etc.).
@@ -18604,35 +18611,66 @@ Additional directories may be prepended to the list with the
 @option{--conf-dir} option.
 
 
-@node Initialization File Basics
-@section Initialization File Basics
+@node Init File Basics
+@section Init File Basics
 
-@cindex Initialization file basics
-@cindex Perl, used for initialization files
+@cindex Init file basics
+@cindex Perl, language for init files
 
-Initialization files are written in Perl, and by convention have
-extension @file{.init}.  Many initialization files are included in the
-Texinfo distribution, and can serve as a good model for writing your
-own.  In particular, the @file{texi2html.init} file is used to set all
-the defaults for Texinfo.  Although it is large, it contains many
-useful examples of settings.  Smaller examples include
-@file{utf8.init}, @file{html32.init}, and plenty more.
+Init files are written in Perl, and by convention have extension
+@file{.init}.  Several init files are included in the Texinfo
+distribution (some are crucial components of the program), and can
+serve as a good model for writing your own.  In particular, the
+@file{texi2html.init} file is used to set all the defaults for
+Texinfo.  Although it is large, it contains many useful examples of
+settings.  Smaller examples include @file{utf8.init},
+@file{html32.init}, and plenty more.
+
+@menu
+* Init File Variables::  Configuration & other variables, function references.
+* Init File Namespaces:: @code{Texi2HTML::Config}, @code{Texi2HTML}, and @code{main}.
+* Setting and Getting Configuration Variables::
+* Init File Global Information::  Accessing the document title, etc.
+* Getting flag values::
+* Encodings::                 Setting the encodings.
+* Redefining functions::      Function redefinition is achieved with 
+                              redefinition of references on functions.
+* Three passes::              @command{texi2any} process texinfo in 3 passes.
+* Initializing and finalizing::    Preparing and finalizing the output.
+* Calling functions at different stages::
+* External formatting of commands::
+* Program string customization::
+* Customizing generalized block command opening:: 
+* Four contexts::             Four different contexts for command expansion: 
+                              normal text, preformatted text, strings and math.
+* Internationalization of Strings::
+@end menu
+
+
+@node Init File Variables
+@subsection Init File Variables
+
+@cindex Initialization file variables
+@cindex Variables, in initialization files
 
 We divide the kinds of variables that can appear in initialization
 files into three general categories:
 
 @table @asis
 @item configuration variables
+@cindex Configuration variables
 Configuration variables are set and accessed through specific
 functions in initialization files (@pxref{makeinfo Configuration
-Variables})
+Variables}).
 
 @item scalars, lists and hashes
+@cindex Perl variables
 Normal Perl variables.  The order of loading of initialization files
 and of command-line options is important: later changes override
 earlier ones.
 
 @item function references
+@cindex Function references
 These allow dynamic redefinition of functions used to produce output.
 
 As such functions are defined by a reference name, we will always use
@@ -18665,46 +18703,36 @@ sub my_formatting_function($ $)
 @end example
 @end table
 
-@vindex Texi2HTML::Config @r{namespace}
-Initialization file are loaded from the main program via a
-@code{require} call in the @code{Texi2HTML::Config} namespace. This
-means that the namespace of the main program and the namespace of
-initialization files are distinct, which minimizes the chance of a
-name clash.  The standard scalars, arrays and hashes are declared with
-@code{use vars}, so that it should be possible to use the @code{use
-strict} pragma in initialization files.
-
-@vindex Texi2HTML @r{namespace}
-@vindex main @r{namespace}
-To avoid accidentally altering the variables in the @code{main}
-namespace, all the global variables which could be of use in the init
-files are available in the @code{Texi2HTML} namespace.  For
-convenience, the functions of the main program, however, are still in
-the @code{main} namespace.
-
 Since the program can process more than one file on the command line,
 you must ensure that you properly initialize the variables used during
 formatting.  It is possible to call functions at different stages to
 help with that (@pxref{Calling functions at different stages}).
 
-@menu
-* Setting and Getting Configuration Variables::
-* Global informations::       Accessing global informations, like date, 
-                              title@dots{}
-* Getting flag values::
-* Encodings::                 Setting the encodings.
-* Redefining functions::      Function redefinition is achieved with 
-                              redefinition of references on functions.
-* Three passes::              @command{texi2any} process texinfo in 3 passes.
-* Initializing and finalizing::    Preparing and finalizing the output.
-* Calling functions at different stages::
-* External formatting of commands::
-* Program string customization::
-* Customizing generalized block command opening:: 
-* Four contexts::             Four different contexts for command expansion: 
-                              normal text, preformatted text, strings and math.
-* Internationalization of Strings::
-@end menu
+
+@node Init File Namespaces
+@subsection Init File Namespaces
+
+@cindex Init file namespaces
+@cindex Namespaces, for init files
+@cindex Perl namespaces, for init files
+
+@vindex Texi2HTML::Config @r{namespace}
+Initialization file are loaded from the main program via a
+@code{require} call in the @code{Texi2HTML::Config} namespace.  This
+means that the namespace of the main program and the namespace of
+initialization files are distinct, which minimizes the chance of a
+name clash.  The program's own variables are declared with @code{use
+vars}, so that it should be possible to use the @code{use strict}
+pragma in initialization files.
+
+@vindex Texi2HTML @r{namespace}
+@vindex main @r{namespace}
+To avoid accidentally altering the variables in the @code{main}
+namespace, all the global variables which could be of use in init
+files are available in the @code{Texi2HTML} namespace.
+
+The functions of the main program, however, are still in the
+@code{main} namespace.
 
 
 @node Setting and Getting Configuration Variables
@@ -18771,8 +18799,8 @@ variables associated with command line options, see @ref{Configuration
 variables and options}.
 
 
-@node Global informations
-@subsection Accessing global informations
+@node Init File Global Information
+@subsection Init File: Global Information
 
 @ignore
 FIXME those are still undocumented
@@ -24251,7 +24279,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
+$Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24330,7 +24358,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.280 2010-08-05 13:53:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -25906,6 +25934,7 @@ This section describes the overall layout of Info manuals.
 * Local variables: Info Format Local Variables.
 * Regular nodes:   Info Format Regular Nodes.
 @end menu
+
 
 @node Info Format Whole Manual
 @subsection Info Format: A Whole Manual
