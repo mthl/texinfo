@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.413 2010-08-03 00:46:26 karl Exp $
+# $Id: texi2html.pl,v 1.414 2010-08-06 14:17:29 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2350,23 +2350,11 @@ my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $r
 # directories: a reference on a array containing a list of directories to
 #              search the file in. default is 
 #              @Texi2HTML::Config::CONF_DIRS, @program_config_dirs.
-sub locate_init_file($;$$)
+sub locate_init_file($$$)
 {
     my $file = shift;
-    my $all_files = shift;
     my $directories = shift;
-
-    if (!defined($directories))
-    {
-       if ($all_files)
-       {
-           $directories = [ @program_config_dirs ];
-       }
-       else
-       {
-           $directories = [ @Texi2HTML::Config::CONF_DIRS, @program_init_dirs ];
-       }
-    }
+    my $all_files = shift;
 
     if ($file =~ /^\//)
     {
@@ -2399,8 +2387,8 @@ sub load_init_file
     shift;
     # second argument is value of options
     my $init_file = shift;
-    my $file;
-    if ($file = locate_init_file($init_file))
+    my $file = locate_init_file($init_file, [ @Texi2HTML::Config::CONF_DIRS, @program_init_dirs ], 0);
+    if ($file)
     {
         print STDERR "# reading initialization file from $file\n"
             if ($T2H_VERBOSE);
@@ -2478,10 +2466,10 @@ sub set_document_language ($;$)
         push @langs, $main_lang;
     }
 
-    my @files = locate_init_file("$i18n_dir/$lang.thl", 1);
+    my @files = locate_init_file("$i18n_dir/$lang.thl", \@program_config_dirs, 1);
     if (! scalar(@files) and defined($main_lang))
     {
-        @files = locate_init_file("$i18n_dir/$main_lang.thl", 1);
+        @files = locate_init_file("$i18n_dir/$main_lang.thl", \@program_config_dirs, 1);
     }
 
     foreach  my $file (@files)
@@ -3731,7 +3719,7 @@ foreach my $i (@rc_files)
 }
 
 # read initialization files
-foreach my $file (locate_init_file($conf_file_name, 1))
+foreach my $file (locate_init_file($conf_file_name, \@program_config_dirs, 1))
 {
     print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
     Texi2HTML::Config::load($file);
@@ -4380,7 +4368,7 @@ $Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
 # parse texinfo cnf file for external manual specifications. This was
 # discussed on texinfo list but not in makeinfo for now. 
-my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, 1, \@texinfo_config_dirs);
+my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, \@texinfo_config_dirs, 1);
 
 foreach my $file (@texinfo_htmlxref_files)
 {

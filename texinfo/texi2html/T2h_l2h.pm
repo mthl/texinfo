@@ -280,8 +280,9 @@ sub to_html()
 
     $call = Texi2HTML::Config::get_conf('L2H_L2H');
     # use init file, if specified
-    my $init_file = main::locate_init_file(Texi2HTML::Config::get_conf('L2H_FILE'));
-    $call = $call . " -init_file " . $init_file if ($init_file);
+    #my $init_file = main::locate_init_file(Texi2HTML::Config::get_conf('L2H_FILE'));
+    my $init_file = Texi2HTML::Config::get_conf('L2H_FILE');
+    $call = $call . " -init_file " . $init_file if (defined($init_file) and $init_file ne '' and -f $init_file and -r $init_file);
     # set output dir
     $call .=  (($docu_rdir ne '') ? " -dir $docu_rdir" : " -no_subdir");
     # use l2h_tmp, if specified

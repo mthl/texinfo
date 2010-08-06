@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
+@c $Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -24279,7 +24279,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
+$Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24358,7 +24358,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.281 2010-08-06 00:51:39 karl Exp $
+@comment $Id: texinfo.txi,v 1.282 2010-08-06 14:17:23 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -25621,6 +25621,10 @@ changed.
 @itemize @bullet
 @item API changes between 5.0 and later versions
 @itemize @bullet
+
+@item no default initialization file for latex2html.  ALso don't search in 
+directories for the latex2html initialization file, simply use the file 
+given in argument.
 
 @item  don't show menu with @option{--no-headers} as said in the makeinfo documentation.
 
