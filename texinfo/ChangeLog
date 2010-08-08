@@ -1,3 +1,13 @@
+2010-08-08  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/indices.c (index_partial): New static variable.
+	(index_entry_matches): New static function.
+	(info_next_index_match): Use index_entry_matches to find
+	exact matches. When exact matches are exhausted, look for
+	partial matches, starting from the beginning of the index.
+	When looking for partial matches, take care not to return
+	previous exact matches. 
+
 2010-08-08  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.init, texi2html/texi2html.pl (do_text):
