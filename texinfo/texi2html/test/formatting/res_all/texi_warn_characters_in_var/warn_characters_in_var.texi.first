@@ -1,0 +1,25 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename warn_characters_in_var.info
+
+@node Top
+@top Test characters in @@var
+
+@var{aaa}. @var{dlksfjf ) }. @var{(fdfdsfsd}. @var{sqdq,qdsdsq}.
+
+@var{dsfsdf
+
+sdfsdf ]
+}
+
+@var{somethingf  @c ]
+vvar}.
+
+@var{AA@,c @u{r}}.
+
+AAA@footnote{jdhfmqsdf
+dsf
+ds @var{rrrr , azeeaz}
+end footnote}
+
+@bye

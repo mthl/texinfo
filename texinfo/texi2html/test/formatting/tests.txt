@@ -56,6 +56,7 @@ texi allowcodebreaks.texi
 texi format_in_titlepage.texi
 texi no_colon_in_menu.texi
 texi menu_title_before_entries.texi
+texi warn_characters_in_var.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
@@ -138,6 +139,7 @@ punctuation_in_command punctuation_in_command.texi
 test_w test_w.texi
 empty_deftype empty_deftype.texi
 no_colon_in_menu no_colon_in_menu.texi
+warn_characters_in_var warn_characters_in_var.texi
 
 lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
 quotation_docbook quotation.texi --docbook

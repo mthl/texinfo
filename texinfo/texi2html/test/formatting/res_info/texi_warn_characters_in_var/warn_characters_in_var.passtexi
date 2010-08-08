@@ -1,0 +1,24 @@
+warn_characters_in_var.texi(,2) 
+warn_characters_in_var.texi(,3) @setfilename warn_characters_in_var.info
+warn_characters_in_var.texi(,4) 
+warn_characters_in_var.texi(,5) @node Top
+warn_characters_in_var.texi(,6) @top Test characters in @@var
+warn_characters_in_var.texi(,7) 
+warn_characters_in_var.texi(,8) @var{aaa}. @var{dlksfjf ) }. @var{(fdfdsfsd}. @var{sqdq,qdsdsq}.
+warn_characters_in_var.texi(,9) 
+warn_characters_in_var.texi(,10) @var{dsfsdf
+warn_characters_in_var.texi(,11) 
+warn_characters_in_var.texi(,12) sdfsdf ]
+warn_characters_in_var.texi(,13) }
+warn_characters_in_var.texi(,14) 
+warn_characters_in_var.texi(,15) @var{somethingf  @c ]
+warn_characters_in_var.texi(,16) vvar}.
+warn_characters_in_var.texi(,17) 
+warn_characters_in_var.texi(,18) @var{AA@,c @u{r}}.
+warn_characters_in_var.texi(,19) 
+warn_characters_in_var.texi(,20) AAA@footnote{jdhfmqsdf
+warn_characters_in_var.texi(,21) dsf
+warn_characters_in_var.texi(,22) ds @var{rrrr , azeeaz}
+warn_characters_in_var.texi(,23) end footnote}
+warn_characters_in_var.texi(,24) 
+warn_characters_in_var.texi(,25) @bye

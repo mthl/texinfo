@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.284 2010-08-06 14:17:28 pertusus Exp $
+# $Id: texi2html.init,v 1.285 2010-08-08 11:36:04 pertusus Exp $
 
 
 ##################################################################
@@ -4806,6 +4806,8 @@ $complex_format_map{'menu_comment'}->{'class'} = 'menu-comment';
 $def_always_delimiters = "()[]";
 $def_in_type_delimiters = ",;";
 $def_argument_separator_delimiters = "()[],";
+
+$warn_var_character_quoted = quotemeta("()[],");
 
 # basic x commands
 foreach my $key (keys(%def_map))

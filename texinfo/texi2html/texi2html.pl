@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.415 2010-08-06 22:58:20 pertusus Exp $
+# $Id: texi2html.pl,v 1.416 2010-08-08 11:36:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -591,6 +591,7 @@ $complex_format_map
 $def_always_delimiters
 $def_in_type_delimiters
 $def_argument_separator_delimiters
+$warn_var_character_quoted
 %colon_command_punctuation_characters
 $punctuation_characters
 $after_punctuation_characters
@@ -11322,6 +11323,10 @@ sub do_text($;$)
     {
         $preformatted_style = $state->{'preformatted_stack'}->[-1]->{'style'};
     }
+    if (Texi2HTML::Config::in_cmd($state->{'command_stack'}, 'var') and $text =~ /([$Texi2HTML::Config::warn_var_character_quoted])/)
+    {
+        line_warn (sprintf(__("unlikely character %c in \@var"), ord($1)), $Texi2HTML::THISDOC{'line_nr'});
+    }
     return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'}, $state->{'math_style'}, $state->{'simple_format'},$state->{'command_stack'}, $state));
 }
 
@@ -15578,10 +15583,10 @@ sub do_style_command($$$$$$$$)
         { # we warn only if no_open is true, i.e. it is the first time we 
           # close the macro for a multiline macro
             line_error (sprintf(__("Unknown command with braces `\@%s'"), $macro), $line_nr);
-            $result = do_text("\@$macro") . "{";
+            $result = do_text("\@${macro}{");
         }
         $result .= $text;
-        $result .= '}' unless ($no_close);
+        $result .= do_text('}') unless ($no_close);
     }
     return $result;
 }
