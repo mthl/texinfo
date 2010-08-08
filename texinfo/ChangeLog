@@ -2,6 +2,8 @@
 
 	* texi2html/texi2html.init, texi2html/texi2html.pl (do_text):
 	warn if [](), appears inside @var. Report from Karl.
+	* texi2html/texi2html.pl: accept a --reference-limit=N option
+	for backward reference with makeinfo.
 
 2010-08-06  Patrice Dumas  <pertusus@free.fr>
 

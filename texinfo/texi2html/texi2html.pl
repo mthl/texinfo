@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.416 2010-08-08 11:36:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.417 2010-08-08 14:46:49 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3008,14 +3008,6 @@ $T2H_OPTIONS -> {'headers'} =
  'verbose' => 'output navigation headers for each section',
 };
 
-$T2H_OPTIONS -> {'subdir'} =
-{
- 'type' => '=s',
- 'linkage' => sub {set_from_cmdline('SUBDIR', $_[1]);},
- 'verbose' => 'put files in directory $s, not $cwd',
- 'noHelp' => 1,
-};
-
 $T2H_OPTIONS -> {'output|out|o'} =
 {
  'type' => '=s',
@@ -3196,6 +3188,13 @@ $T2H_OPTIONS -> {'program'} =
  'verbose' => 'Call as $s, setting corresponding defaults'
 };
 
+$T2H_OPTIONS -> {'reference-limit' } =
+{
+ 'type' => '=i',
+ 'verbose' => 'Does nothing, retained for backward compatibility',
+ 'noHelp' => 2
+};
+
 #$T2H_OPTIONS -> {'command'} =
 #{
 # 'type' => '=s',
@@ -3213,7 +3212,7 @@ foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
     'linkage' => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
     'verbose' => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT}.",
   }
-}
+};
 
 $T2H_OPTIONS -> {$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT} =
 {
@@ -3227,6 +3226,14 @@ $T2H_OPTIONS -> {$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT} =
 ## obsolete cmd line options
 ##
 my $T2H_OBSOLETE_OPTIONS;
+
+$T2H_OBSOLETE_OPTIONS -> {'subdir'} =
+{
+ 'type' => '=s',
+ 'linkage' => sub {set_from_cmdline('SUBDIR', $_[1]);},
+ 'verbose' => 'put files in directory $s, not $cwd',
+ 'noHelp' => 1,
+};
 
 # actually a noop, since it is not used anywhere
 $T2H_OBSOLETE_OPTIONS -> {'invisible'} =
