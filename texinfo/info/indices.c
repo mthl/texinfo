@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.11 2008-06-11 09:55:42 gray Exp $
+   $Id: indices.c,v 1.12 2010-08-08 16:59:04 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -31,6 +31,8 @@ static REFERENCE **index_index = NULL;
 
 /* The offset of the most recently selected index element. */
 static int index_offset = 0;
+/* Whether we are doing partial index search */
+static int index_partial = 0;
 
 /* Variable which holds the last string searched for. */
 static char *index_search = NULL;
@@ -259,8 +261,11 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
         index_offset = i;
       }
     else
-      index_offset = -1;
-
+      {
+	index_offset = -1;
+	index_partial = 0;
+      }
+    
     old_offset = index_offset;
 
     /* The "last" string searched for is this one. */
@@ -320,13 +325,39 @@ index_entry_exists (WINDOW *window, char *string)
   return 1;
 }
 
+/* Return true if ENT->label matches "S( <[0-9]+>)?", where S stands
+   for the first LEN characters from STR. */
+static int
+index_entry_matches (REFERENCE *ent, const char *str, size_t len)
+{
+  char *p;
+  
+  if (strncmp (ent->label, str, len))
+    return 0;
+  p = ent->label + len;
+  if (!*p)
+    return 1;
+  if (p[0] == ' ' && p[1] == '<')
+    {
+      for (p += 2; *p; p++)
+	{
+	  if (p[0] == '>' && p[1] == 0)
+	    return 1;
+	  else if (!isdigit (*p))
+	    return 0;
+	}
+    }
+  return 0;
+}
+
 DECLARE_INFO_COMMAND (info_next_index_match,
  _("Go to the next matching index item from the last `\\[index-search]' command"))
 {
   register int i;
   int partial, dir;
   NODE *node;
-
+  size_t search_len;
+  
   /* If there is no previous search string, the user hasn't built an index
      yet. */
   if (!index_search)
@@ -349,28 +380,43 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   else
     dir = 1;
 
-  /* Search for the next occurence of index_search.  First try to find
-     an exact match. */
+  /* Search for the next occurence of index_search. */
   partial = 0;
+  search_len = strlen (index_search);
 
-  for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
-    if (strcmp (index_search, index_index[i]->label) == 0)
-      break;
-
-  /* If that failed, look for the next substring match. */
-  if ((i < 0) || (!index_index[i]))
+  if (!index_partial)
     {
+      /* First try to find an exact match. */
       for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
-        if (string_in_line (index_search, index_index[i]->label) != -1)
-          break;
+	if (index_entry_matches (index_index[i], index_search, search_len))
+	  break;
 
-      if ((i > -1) && (index_index[i]))
-        partial = string_in_line (index_search, index_index[i]->label);
+      /* If that failed, look for the next substring match. */
+      if ((i < 0) || (!index_index[i]))
+	{
+	  index_offset = 0;
+	  index_partial = 1;
+	}
     }
 
+  if (index_partial)
+    {
+      /* When looking for substrings, take care not to return previous exact
+	 matches. */
+      for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
+        if (!index_entry_matches (index_index[i], index_search, search_len) &&
+	    string_in_line (index_search, index_index[i]->label) != -1)
+	  {
+	    partial = 1;
+	    break;
+	  }
+    }
+  index_partial = partial;
+  
   /* If that failed, print an error. */
   if ((i < 0) || (!index_index[i]))
     {
+      index_offset = 0;
       info_error (_("No %sindex entries containing `%s'."),
                   index_offset > 0 ? (char *) _("more ") : "", index_search);
       return;
