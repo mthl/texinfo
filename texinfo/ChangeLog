@@ -1,3 +1,8 @@
+2010-08-09  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.pl (pass_texi): add line numbers when adding
+	text to close @-commands at the end of the first pass.
+
 2010-08-08  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/indices.c (index_partial): New static variable.

@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.417 2010-08-08 14:46:49 pertusus Exp $
+# $Id: texi2html.pl,v 1.418 2010-08-09 07:27:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -4968,6 +4968,7 @@ sub pass_texi($)
     my $state = {};
                                 # holds the informations about the context
                                 # to pass it down to the functions
+    # FIXME not used, to be used after @setfilename use is clearer
     my @command_line_lines = @Texi2HTML::Config::COMMANDS;
     initialise_state_texi($state);
     my $texi_line_number;
@@ -5033,7 +5034,16 @@ sub pass_texi($)
     # close stack at the end of pass texi
     #print STDERR "close stack at the end of pass texi\n";
     close_stack_texi(\$text, \@stack, $state, $texi_line_number);
-    push @lines, split_lines($text);
+    my @end_lines = split_lines($text);
+    #push @lines, split_lines($text);
+    foreach my $line (split_lines($text))
+    {
+       push @lines, $line;
+       $texi_line_number->{'line_nr'}++;
+       push (@lines_numbers, { 'file_name' => $texi_line_number->{'file_name'},
+           'line_nr' => $texi_line_number->{'line_nr'},
+            'macro' => __(' end of file') });
+    }
     print STDERR "# end of pass texi\n" if $T2H_VERBOSE;
     return (\@lines, \@first_lines, \@lines_numbers);
 }
@@ -8808,7 +8818,7 @@ sub pass_text($$)
         }
         $line_nr = shift (@$doc_numbers);
         $Texi2HTML::THISDOC{'line_nr'} = $line_nr;
-        print STDERR "BUG: line_nr not defined in pass_text. cline: $cline" if (!defined($cline));
+        print STDERR "BUG: line_nr not defined in pass_text. cline: $cline" if (!defined($line_nr));
 	#dump_stack(\$text, \@stack, \%state);
 
         # make sure the current state from here is $Texi2HTML::THIS_ELEMENT

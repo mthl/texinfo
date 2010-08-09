@@ -3,4 +3,4 @@ tex_not_closed.texi(,3) @node Top
 tex_not_closed.texi(,4) 
 tex_not_closed.texi(,5) texte
 tex_not_closed.texi(,6) 
-no file(,) @special_tex_1{}
+tex_not_closed.texi( end of file,11) @special_tex_1{}
