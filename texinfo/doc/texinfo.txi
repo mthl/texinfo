@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
+@c $Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19421,49 +19421,67 @@ should be used to retranslate strings based on the new language.
 @section Output Elements
 
 @cindex Output elements
-@cindex Elements, main division of output documents
+@cindex Elements, main unit of output documents
 
-We will call the main unit of output documents an @dfn{element}.  An
-element's association with output files is determined by the split
-options (@pxref{Splitting output}).  This section describes what they
-are and details for customization.
+We will call the main unit of output documents an @dfn{element}
+(nodes, to a first approximation).  An element's association with
+output files is determined by the split options (@pxref{Splitting
+output}).  This section describes precisely how elements work, with
+details for customization.
 
 @menu
-* The different elements::
+* Output Elements Defined::
 * Elements informations::
 * Elements lines::
 @end menu
 
-@node The different elements
-@subsection The different elements
 
-The elements are:
+@node Output Elements Defined
+@subsection Output Elements Defined
+
+@cindex Output elements, defined
+
+The output elements are:
 
 @table @emph
 @item Normal elements
-These are normal sections and nodes.  In general nodes are associated 
-with the following sectioning command and a sectioning command is associated
-with the previous node and they both together make up
-the element.  Either the node or the sectioning command is considered to 
-be the main element component, depending on the value of 
-@code{USE_NODES} and @code{USE_SECTIONS}.  For example, if output 
-is Info, the nodes are the elements, if output is Docbook, sectioning commands
-are the main element component, and if output is HTML both cases may happen.  
-@xref{Two Paths}.
-@item Top element
-The top element is the higher element in the document structure.
-If there is a @code{@@top} section it is the element associated with
-that section. Otherwise it is the element associated with the 
-@code{@@node Top}.  If there is no @code{@@node Top} the first element 
-is the top element.
+@cindex Normal elements
+These are normal sections and nodes.  Usually a node is associated
+with a following sectioning command, while a sectioning command is
+associated with a previous node; they both together make up the
+element.  Either the node or the sectioning command is considered to
+be the main element component, depending on the values of the
+configuration variables @code{USE_NODES} and @code{USE_SECTIONS}
+(@pxref{makeinfo Configuration Variables}).
 
-The top element may be formatted differently from normal elements if there
-is a @code{@@top} section or the @code{@@node Top} is not associated 
-with a sectioning command.
-@item Misc elements
-These elements are associated with different files if the document is split.
-And also if @code{MONOLITHIC} is not set.
-There are four misc elements:
+For example, when generating Info, the nodes are the elements; when
+generating Docbook, sectioning commands are the main element
+component; and when generating HTML, either case may happen
+(@pxref{Two Paths}).
+
+@item Top element
+@cindex Top element
+The top element is the highest element in the document structure.  If
+the document has a @code{@@top} section (@pxref{makeinfo top}), it is
+the element associated with that section; otherwise, it is the element
+associated with the document's @code{@@node Top} (@pxref{The Top
+Node}).  If by chance there is no @code{@@node Top}, the first element
+in the document is the top element.
+
+The top element may end up formatted differently from normal elements
+if there is a @code{@@top} section or the @code{@@node Top} is not
+associated with a sectioning command.
+
+@item Miscellaneous elements
+@cindex Table of contents, output element
+@cindex Short table of contents, output element
+@cindex Overview, output element
+@cindex Footnotes, output element
+@cindex About page, output element
+The remaining elements are associated with different files if the
+document is split, and also if @code{MONOLITHIC} is not set.  There
+are four such miscellaneous elements:
+
 @enumerate
 @item Table of contents
 @item Short table of contents, also called Overview
@@ -19471,44 +19489,53 @@ There are four misc elements:
 @item About page
 @end enumerate
 
-The @emph{About page} shouldn't be present for documents consisting
-in only one sectioning element, or for documents unsplit and without
-navigation information.  When generating HTML, 
-the @emph{Footnote page} should only
-be present if the footnotes appear on a separated page,
-(@pxref{Footnote Styles}) however a footnote element is present if
-the document isn't split.  The @emph{Table of contents} should only
-be formatted if @code{@@contents} is present in the document.
-Similarly the @emph{Overview} should only appear if @code{@@shortcontents}
-or @code{@@summarycontents} is present.  Corresponding configuration variables,
-@code{contents} and @code{shortcontents} may be set to trigger the 
-output of a @emph{Table of contents} or @emph{Overview}.  
-The Table of contents and 
-the Overview may also be directly included within the document, not
-as separate pages, in case @code{INLINECONTENTS} is set 
-(@pxref{Contents and Overview text}).
+More details:
 
+@itemize
+@item The @emph{Table of contents} should only be formatted if
+@code{@@contents} is present in the document.
 
-It is common not to have anything by normal elements, especially in 
-case of non split output.  In case of HTML output, special element may
-be present.
+@item Similarly the @emph{Overview} should only appear if
+@code{@@shortcontents} or @code{@@summarycontents} is present.  
+
+@item The configuration variables @code{contents} and
+@code{shortcontents} may be set to trigger the output of the
+respective elements.
+
+@item If @code{INLINECONTENTS} is set, the @emph{Table of contents} and
+@emph{Overview} elements are directly included within the document,
+rather than as separate pages (@pxref{Contents and Overview text}).
+
+@item When generating HTML, the @emph{Footnotes page} should only
+be present if the footnotes appear on a separate page (@pxref{Footnote
+Styles}).  However, a footnote element is present if the document is
+not split.
+
+@item The @emph{About page} shouldn't be present for documents
+consisting of only one sectioning element, or for monolithic documents
+without navigation information.
+
+@end itemize
 @end table
 
-The main component of elements are sections if @code{USE_SECTIONS} is set,
-or @code{USE_NODES} is set to 0, and, conversely, are nodes if 
-@code{USE_NODES} is set or @code{USE_SECTIONS} is 0.  If those configuration
-variables are undefined, heuristics are used, influenced by the presence of
-nodes or sectioning elements in the document, if there are no nodes, 
-sectioning elements are preferred and the reverse is true if there are no
-sectioning commands.
+It is common not to have anything but normal elements, especially in
+case of monolithic output.  In the case of HTML output, special
+elements may be present.
+
+The main component of elements is sections if @code{USE_SECTIONS} is
+set or @code{USE_NODES} is set to 0; conversely, the main component is
+nodes if @code{USE_NODES} is set or @code{USE_SECTIONS} is 0.  If both
+configuration variables are undefined, heuristics are used, influenced
+by the presence of nodes or sectioning elements in the document: if
+there are no nodes, sectioning elements are preferred and vice versa.
  
-When sectioning commands are the main components of elements, 
-nodes not directly associated with a sectioning command are 
-associated with the following sectioning command, 
-and sectioning commands without nodes constitute an element.
-Conversely, when nodes are the main component of elements,
-sectioning commands not associated with nodes are associated with the
-previous node, and lone nodes are elements.
+When sections are the main components of elements, ``isolated'' nodes
+not directly associated with a sectioning command are associated with
+the following sectioning command, while sectioning commands without
+nodes constitute an element.  Conversely, when nodes are the main
+components of elements, isolated sections not associated with nodes
+are associated with the previous node, and isolated nodes are
+elements.
 
 
 @node Elements informations
@@ -19670,7 +19697,8 @@ and at the end of these section pages if the output is split.
 These are used for @code{<link>} elements if they are output in the
 headers.
 @item @@TOP_BUTTONS
-This array is used for the top element buttons (@pxref{The different elements}).
+This array is used for the top element buttons (@pxref{Output Elements
+Defined}).
 @end vtable
 
 The array specify the buttons displayed in navigation panels, 
@@ -20250,7 +20278,7 @@ The result is the node file name @var{$node_file}.
 The other is used to
 customize the file names associated with each element, and the 
 name of the file associated with the special elements. 
-@xref{The different elements}.
+@xref{Output Elements Defined}.
 
 @deftypefn {Function Reference} $file element_file_name \%element $type $docu_name
 @var{\%element} is undefined for the special elements (about, overview, 
@@ -20303,7 +20331,7 @@ the id already set.
 @var{$type} is @code{top} if the node is the top node.
 @end deftypefn
 
-For element (@pxref{The different elements}), the function 
+For element (@pxref{Output Elements Defined}), the function 
 reference is:
 
 @deftypefn {Function Reference} {($target,$id)} element_target_name \%element $default_target $default_id
@@ -24287,7 +24315,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
+$Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24366,7 +24394,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.283 2010-08-06 22:58:19 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
