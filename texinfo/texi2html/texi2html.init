@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.285 2010-08-08 11:36:04 pertusus Exp $
+# $Id: texi2html.init,v 1.286 2010-08-10 06:41:20 pertusus Exp $
 
 
 ##################################################################
@@ -4932,8 +4932,6 @@ foreach my $key (keys(%def_map))
         # miscalleneous
         'verbatiminclude'=> {'skip' => 'line'},
         'documentencoding' => {'arg' => 1, 'skip' => 'line'}, 
-        # ???
-        'filbreak' => {},
         # obsolete @-commands. Remove spaces and end of lines after the 
         # commands? If no, they can lead to empty lines
         'quote-arg' => {'skip' => 'line'},
@@ -5007,8 +5005,6 @@ my %misc_command_old = (
         # miscalleneous
         'verbatiminclude', 'line',
         'documentencoding', 'arg1',
-        # ???
-        'filbreak', 1,
      );
 
 # The command_handler arrays are for commands formatted externally.
