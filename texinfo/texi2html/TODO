@@ -29,6 +29,9 @@ firefox nytprof/index.html
   to bring back some info specific stuff (for info output a tree is done)
   in the main program and have maybe something simpler.
 
+  Also remove all the modification of the texinfo.  Instead modify the
+  generated tree.
+
 * test --headers --output, and the other order, especially when in 
   info mode, such that it triggers also plaintext. Also test with 
   directories and files.
@@ -45,6 +48,14 @@ firefox nytprof/index.html
 * have a way to know whether a description is present or not 
   when formatting the menu_entry. This could allow not having a 
   colon after menu_entry when there is no description.
+
+* call a specific function reference to format the @author for
+  a quotation?
+
+* test a mix of misc commands that should be at the begining of a line
+  and those that don't need to (comment c sp refill noindent indent).
+  Test a misc command that should be at the begining of a line followed
+  by another one.  And also mix with other type of command.
 
 * line breaking could happen after a full width character.
   Accordingly, in japanese.texi lines are not cut right.

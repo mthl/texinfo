@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<para>before setfilename <setfilename>text_before_node_command.xml</setfilename>
+</para>
+<para>before title <booktitle>the title</booktitle>
+</para>
+<node>
+<nodename>Top</nodename>
+<nodenext>LD Version Scripts</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<chapter>
+<title>test text before a node</title>
+
+<menu>
+<menuentry>
+<menunode>LD Version Scripts</menunode>
+<menutitle>LD Version Scripts</menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>ttt</menunode>
+<menutitle>ttt</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<para>i@node LD Version Scripts
+&mdash; </para>@chapter LD Version Scripts
+
+<para>ddd <contents></contents>
+</para>
+<quotation>
+<para>aaa <author>quotation author</author>
+quotation
+</para></quotation>
+
+</chapter>
+<node>
+<nodename>ttt</nodename>
+<nodeprev>Top</nodeprev>
+</node>
+<chapter>
+<title>ttt chap</title>
+
+<shortcontents></shortcontents>
+
+</chapter>
+</texinfo>

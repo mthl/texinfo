@@ -912,6 +912,7 @@ sub info_default_process_content($$)
                  $followed_by_blank_line = 1 if (defined($text_next) and $text_next =~ /^\s*$/);
               }
           }
+
           if ($info_default_indented_commands{$content->{'command'}})
           {
               $indent_level--;
@@ -1217,7 +1218,7 @@ sub info_default_process_content($$)
                   my $index_line_nr = $all_line_passed + $info_state->{'line_count'};
                   if ($info_state->{'blank_line'} and $content->{'index_command'} =~ /index$/)
                   {
-                     my ($current_next, $index_next, $close_nex) = info_default_iterator_next($current, $index, $close);
+                     my ($current_next, $index_next, $close_next) = info_default_iterator_next($current, $index, $close);
                      $index_line_nr-- if (!defined($current_next));
                   }
                   elsif ($content->{'index_command'} =~ /^[vf]table$/)
@@ -3371,8 +3372,7 @@ sub info_default_tab_item_texi($$$$$$)
    {
        info_default_open_command ($state, $command, {'format_name' => $format});
    }
-   # this should have already been done for @item when the line
-   # is modified by the @-command and so on.
+   # this allows removing blank space in front of the item or tab argument
    return $line;
 }
 

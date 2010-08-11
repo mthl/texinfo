@@ -1,0 +1,25 @@
+before setfilename 
+before title 
+1 test text before a node
+*************************
+
+* LD Version Scripts::
+* ttt::
+
+i@node LD Version Scripts
+-- @chapter LD Version Scripts
+
+ddd 
+
+aaa quotation
+
+2 ttt chap
+**********
+
+Short Table of Contents
+***********************
+
+1 test text before a node
+2 ttt chap
+
+

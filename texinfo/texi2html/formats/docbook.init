@@ -661,6 +661,7 @@ sub docbook_misc_commands($$$$$)
     my $state = shift;
 #print STDERR "$macro $line";
 #print STDERR "ARGS @$args\n" if defined ($args);
+    #my $result_text = undef;
     my $result_text = undef;
     if ($macro eq 'c' or $macro eq 'comment' and scalar(@$args))
     {

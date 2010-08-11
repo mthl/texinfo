@@ -1,0 +1,39 @@
+This is text_before_node_command.info, produced by makeinfo version 4.13
+from text_before_line_command.texi.
+
+before setfilename
+
+   before title
+
+
+File: text_before_node_command.info,  Node: Top,  Next: LD Version Scripts,  Up: (dir)
+
+1 test text before a node
+*************************
+
+* Menu:
+
+* LD Version Scripts::
+* ttt::
+
+   i LD Version Scripts --
+@chapter LD Version Scripts
+
+   ddd
+
+     aaa quotation
+                             -- _quotation author_
+
+
+File: text_before_node_command.info,  Node: ttt,  Prev: Top
+
+2 ttt chap
+**********
+
+
+
+Tag Table:
+Node: Top147
+Node: ttt458
+
+End Tag Table

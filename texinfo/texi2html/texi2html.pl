@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.418 2010-08-09 07:27:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.419 2010-08-11 12:46:07 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2213,9 +2213,23 @@ foreach my $no_line_macro ('alias', 'macro', 'unmacro', 'rmacro',
     set_no_line_macro($no_line_macro, 1);
 }
 
+# holds all the @-commands that should be at the beginning of a line
+my %begin_line_command = ();
+
+foreach my $command ('node', 'end')
+{
+   $begin_line_command{$command} = $command;
+}
+
 foreach my $key (keys(%Texi2HTML::Config::misc_command), keys(%reference_sec2level))
 {
     set_no_line_macro($key, 1);
+    $begin_line_command{$key} = $key;
+}
+
+foreach my $misc_not_begin_line('comment', 'c', 'sp', 'refill', 'noindent', 'indent')
+{
+   delete $begin_line_command{$misc_not_begin_line};
 }
 
 # a hash associating a format @thing / @end thing with the type of the format
@@ -2279,6 +2293,11 @@ foreach my $macro (keys(%Texi2HTML::Config::format_in_paragraph))
    set_no_line_macro("end $macro", 1);
 }
 
+foreach my $format (keys(%format_type))
+{
+    $begin_line_command{$format} = $format_type{$format};
+}
+
 # fake format at the bottom of the stack
 $format_type{'noformat'} = '';
 
@@ -2302,6 +2321,12 @@ foreach my $key (keys(%fake_format))
 
 # raw formats which are expanded especially
 my @raw_regions = ('html', 'tex', 'xml', 'docbook');
+
+foreach my $format (keys(%Texi2HTML::Config::texi_formats_map), @raw_regions)
+{
+    $begin_line_command{$format} = $format;
+}
+
 foreach my $format (keys(%Texi2HTML::Config::texi_formats_map))
 {
     push @raw_regions, $format if ($Texi2HTML::Config::texi_formats_map{$format} eq 'raw');
@@ -5815,9 +5840,6 @@ sub common_misc_commands($$$$)
           # well defined in html, however...
           # @thisfile is the @include file. Should be in $line_nr.
 
-          # Also if that command appears in the texi, the error message is 
-          # Unknown command `@evenheading'
-          # It could be better.
             my $arg = $line;
             $arg =~ s/^\s+//;
             set_from_document($command, $arg);
@@ -6196,18 +6218,18 @@ sub enter_author_command($$$$$$)
     my $stack = shift;
     my $state = shift;
     my $line_nr = shift;
+
     $texi = trim_comment_spaces($texi, "\@$command");
-    if ($command eq 'author')
+    $text = substitute_line($texi, "\@$command", duplicate_formatting_state($state)) if (!defined($text));
+
+    my $top_format = top_stack($stack, 2);
+    if (defined($top_format) and $format_type{$top_format->{'format'}} eq 'quotation')
     {
-        my $top_format = top_stack($stack, 2);
-        if (defined($top_format) and $format_type{$top_format->{'format'}} eq 'quotation')
-        {
-            push @{$top_format->{'quote_authors'}}, {'author_texi' => $texi, 'author_text' => $text};
-        }
-        elsif (!$state->{'region'} or $state->{'region'} ne 'titlepage')
-        {
-            line_warn (sprintf(__("\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"), $command), $line_nr);
-        }
+       push @{$top_format->{'quote_authors'}}, {'author_texi' => $texi, 'author_text' => $text};
+    }
+    elsif (!$state->{'region'} or $state->{'region'} ne 'titlepage')
+    {
+        line_warn (sprintf(__("\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"), $command), $line_nr);
     }
 }
 
@@ -6249,7 +6271,7 @@ sub misc_command_text($$$$$$)
         ($command, $line, $result) = &$Texi2HTML::Config::misc_command_line($command, $line, $args, $stack, $state);
     }
 
-    enter_author_command ($command, $line, $result, $stack, $state, $line_nr);
+    enter_author_command ($command, $line, $result, $stack, $state, $line_nr) if ($command eq 'author');
 
     # for error messages
     my $cline = $line;
@@ -14064,24 +14086,26 @@ sub scan_line($$$$;$)
         }
     }
 
+    my $first_command_on_line;
+    my $commands_count = -1;
     unless ($state->{'raw'} or $state->{'verb'} or $state->{'keep_texi'})
     {
     # first the line commands are taken into account
-        my $next_command = next_tag($cline);
-        if (defined($next_command) and defined($Texi2HTML::Config::line_command_map{$next_command}))
+        $first_command_on_line = next_tag($cline);
+        if (defined($first_command_on_line) and defined($Texi2HTML::Config::line_command_map{$first_command_on_line}))
         {
-            close_paragraph($text, $stack, $state, "\@$next_command", $line_nr, 1) if (stop_paragraph_command($next_command));
+            close_paragraph($text, $stack, $state, "\@$first_command_on_line", $line_nr, 1) if (stop_paragraph_command($first_command_on_line));
             my $arg_texi = $cline;
-            $arg_texi =~ s/^\s*\@$next_command\s*//;
-            $arg_texi = trim_comment_spaces ($arg_texi, "\@$next_command", $line_nr);
-            my $arg_line = substitute_line($arg_texi, "\@$next_command", duplicate_formatting_state($state));
-            add_prev ($text, $stack, &$Texi2HTML::Config::line_command($next_command, $arg_line, $arg_texi, $state));
-            enter_author_command ($next_command, $arg_texi, $arg_line, $stack, $state, $line_nr);
+            $arg_texi =~ s/^\s*\@$first_command_on_line\s*//;
+            $arg_texi = trim_comment_spaces ($arg_texi, "\@$first_command_on_line", $line_nr);
+            my $arg_line = substitute_line($arg_texi, "\@$first_command_on_line", duplicate_formatting_state($state));
+            add_prev ($text, $stack, &$Texi2HTML::Config::line_command($first_command_on_line, $arg_line, $arg_texi, $state));
+            enter_author_command ($first_command_on_line, $arg_texi, $arg_line, $stack, $state, $line_nr) if ($first_command_on_line eq 'author');
             return '';
         }
-        elsif (defined($next_command) and ($next_command eq 'contents') or ($next_command eq 'summarycontents') or ($next_command eq 'shortcontents'))
+        elsif (defined($first_command_on_line) and ($first_command_on_line eq 'contents') or ($first_command_on_line eq 'summarycontents') or ($first_command_on_line eq 'shortcontents'))
         {
-            my $element_tag = $next_command;
+            my $element_tag = $first_command_on_line;
             $element_tag = 'shortcontents' if ($element_tag ne 'contents');
             # at that point the content_element is defined for sure since
             # we already saw the tag
@@ -14091,7 +14115,7 @@ sub scan_line($$$$;$)
                 my $toc_lines = &$Texi2HTML::Config::inline_contents($Texi2HTML::THISDOC{'FH'}, $element_tag, $content_element, \@sections_list);
                 add_prev ($text, $stack, join('',@$toc_lines)) if (defined($toc_lines));
             }
-            return '' unless (exists($Texi2HTML::Config::misc_command{$next_command}) and $Texi2HTML::Config::misc_command{$next_command}->{'keep'});
+            return '' unless (exists($Texi2HTML::Config::misc_command{$first_command_on_line}) and $Texi2HTML::Config::misc_command{$first_command_on_line}->{'keep'});
         }
 
     # The commands to ignore are ignored now in case after ignoring them
@@ -14104,6 +14128,9 @@ sub scan_line($$$$;$)
             close_paragraph($text, $stack, $state, "\@$next_tag", $line_nr, 1) if (stop_paragraph_command($next_tag));
             if (defined($next_tag) and defined($Texi2HTML::Config::misc_command{$next_tag}) and !$Texi2HTML::Config::misc_command{$next_tag}->{'keep'})
             {
+                $commands_count++;
+                # FIXME reenable when it is possible
+                #line_warn (sprintf(__('%s should only appear at the begining of a line'), $next_tag), $line_nr) if ($commands_count and $begin_line_command{$next_tag});
                 $cline =~ s/^(\s*)\@$next_tag//;
                 #$leading_spaces .= $1;
                 add_prev ($text, $stack, do_text($1, $state));
@@ -14280,6 +14307,7 @@ sub scan_line($$$$;$)
         # macro_regexp
         if ($cline =~ s/^([^{}@]*)\@end\s+([a-zA-Z][\w-]*)//)
         {
+            $commands_count++;
             my $end_tag = $2;
             my $prev_text = $1;
             if ($state->{'keep_texi'})
@@ -14296,6 +14324,9 @@ sub scan_line($$$$;$)
             add_prev($text, $stack, do_text($prev_text, $state));
 	    #print STDERR "END_MACRO $end_tag\n";
 	    #dump_stack ($text, $stack, $state);
+
+            # FIXME reenable when it is possible
+            #line_warn (sprintf(__('%s should only appear at the begining of a line'), 'end'), $line_nr) if ($commands_count or !$first_command_on_line);
 
             # First we test if the stack is not empty.
             # Then we test if the end tag is a format tag.
@@ -14415,6 +14446,7 @@ sub scan_line($$$$;$)
         {
             my $before_macro = $1;
             my $macro = $2;
+            $commands_count++;
             $macro = $alias{$macro} if (exists($alias{$macro}));
             my $punct;
             if (!$state->{'keep_texi'} and $macro eq ':' and $before_macro =~ /(.)$/ and $Texi2HTML::Config::colon_command_punctuation_characters{$1})
@@ -14427,6 +14459,8 @@ sub scan_line($$$$;$)
 	    #print STDERR "MACRO $macro\n";
 	    #print STDERR "LINE $cline";
 	    #dump_stack ($text, $stack, $state);
+            # FIXME reenable when it is possible
+            #line_warn (sprintf(__('%s should only appear at the begining of a line'), $macro), $line_nr) if ($begin_line_command{$macro} and ($commands_count or !$first_command_on_line) and !$state->{'keep_texi'});
 
             close_paragraph($text, $stack, $state, "\@$macro", $line_nr, 1) if (stop_paragraph_command($macro) and !$state->{'keep_texi'});
 
@@ -14714,7 +14748,7 @@ sub scan_line($$$$;$)
                      add_prev($text, $stack, &$Texi2HTML::Config::def_line_no_texi($category, $name, $type, $arguments));
                      return;
                 }
-                elsif (defined($sec2level{$macro}))
+                elsif (defined($sec2level{$macro}) and $macro =~ /heading/)
                 { #FIXME  there is certainly more intelligent stuff to do
                     my $num;
                     if ($state->{'region'})
@@ -14737,7 +14771,7 @@ sub scan_line($$$$;$)
             }
 
             # handle the other macros, we are in the context of normal text
-            if (defined($sec2level{$macro}))
+            if (defined($sec2level{$macro}) and $macro =~ /heading/)
             {
                  #dump_stack($text, $stack, $state);
                  my $num;
@@ -14757,8 +14791,7 @@ sub scan_line($$$$;$)
                  add_prev($text, $stack, &$Texi2HTML::Config::heading($heading_element, $macro, $cline, substitute_line($cline, "\@$macro"), $state->{'preformatted'}));
                  return;
             }
-
-            if (index_command_prefix($macro) ne '')
+            elsif (index_command_prefix($macro) ne '')
             {
                 my $index_name = index_command_prefix($macro);
                 my $entry_texi = trim_comment_spaces($cline, "\@$macro", $line_nr);
@@ -14779,7 +14812,7 @@ sub scan_line($$$$;$)
                 # on the next line, though.
                 return;
             }
-            if ($macro eq 'insertcopying')
+            elsif ($macro eq 'insertcopying')
             {
                 #close_paragraph($text, $stack, $state, $line_nr);
                 add_prev($text, $stack, do_insertcopying($state, $line_nr));
@@ -14787,7 +14820,7 @@ sub scan_line($$$$;$)
                 begin_paragraph ($stack, $state) if ($state->{'preformatted'});
                 return;
             }
-            if ($macro =~ /^itemx?$/o or ($macro eq 'headitem'))
+            elsif ($macro =~ /^itemx?$/o or ($macro eq 'headitem'))
             {
 		    #print STDERR "ITEM: $cline";
 		    #dump_stack($text, $stack, $state);
@@ -14878,7 +14911,7 @@ sub scan_line($$$$;$)
                 next;
             }
 
-            if ($macro eq 'tab')
+            elsif ($macro eq 'tab')
             {
                 abort_empty_preformatted($stack, $state);
                 # FIXME let the user be able not to close the paragraph?
@@ -14913,7 +14946,7 @@ sub scan_line($$$$;$)
                 next;
             }
             # Macro opening a format (table, list, deff, example...)
-            if ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
+            elsif ($format_type{$macro} and ($format_type{$macro} ne 'fake'))
             {
                 my $ignore_center = 0;
                 # @center is forbidden in @-command with braces, @*table
@@ -15316,7 +15349,6 @@ sub add_cell($$$$)
 
     if ($format->{'cell'} <= $format->{'max_columns'})
     {
-        #print STDERR "ADD_CELL, really, really\n";
         add_prev($text, $stack, &$Texi2HTML::Config::cell($cell->{'text'}, $row->{'item_cmd'}, $format->{'columnfractions'}, $format->{'prototype_row'}, $format->{'prototype_lengths'}, $format->{'max_columns'}, $cell->{'only_inter_commands'}, $format->{'first'}));
     }
     $format->{'cell'}++;
@@ -15636,6 +15668,10 @@ sub do_unknown($$$$$$$)
          if ($Texi2HTML::Config::style_map{$macro})
          {
              line_error (sprintf(__("%c%s expected braces"), ord('@'), $macro), $line_nr);
+         }
+         elsif ($begin_line_command{$macro})
+         {
+             line_error (sprintf(__("Unexpected command `%s' here"), $macro), $line_nr);
          }
          else
          {

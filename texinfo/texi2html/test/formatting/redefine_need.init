@@ -1,3 +1,5 @@
+# test that @need is redefined, and evenheading is kept ans leads to
+# an error message.
 
 $misc_command{'need'}->{'keep'} = 1;
 $misc_command{'evenheading'}->{'keep'} = 1;

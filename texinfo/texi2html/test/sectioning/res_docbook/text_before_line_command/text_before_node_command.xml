@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="text_before_node_command.xml" lang="en">
+<para>before setfilename </para>
+<para>before title </para>
+<chapter label="1" id="Top">
+<title>test text before a node</title>
+
+
+<para>i@node LD Version Scripts
+&mdash; </para>@chapter LD Version Scripts
+
+<para>ddd 
+</para>
+<blockquote><attribution>quotation author</attribution>
+<para>aaa quotation
+</para></blockquote>
+
+</chapter>
+<chapter label="2" id="ttt">
+<title>ttt chap</title>
+
+
+</chapter>
+</book>

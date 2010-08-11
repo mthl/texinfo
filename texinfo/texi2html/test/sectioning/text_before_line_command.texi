@@ -1,0 +1,30 @@
+\input texinfo @c -*-texinfo-*-
+
+before setfilename @setfilename text_before_node_command.info
+
+before title @title the title
+
+@node Top
+@chapter test text before a node
+
+@menu
+* LD Version Scripts::
+* ttt::
+@end menu
+
+i@node LD Version Scripts
+--- @chapter LD Version Scripts
+
+ddd @contents
+
+@quotation
+aaa @author quotation author
+quotation
+@end quotation
+
+@node ttt
+@chapter ttt chap
+
+@shortcontents
+
+@bye
