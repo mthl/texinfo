@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
+@c $Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19673,7 +19673,7 @@ The following arrays determine the buttons present in navigation panels:
 
 @vtable @code
 @item @@SECTION_BUTTONS
-This array is used for the navigation panel buttons present at the begining
+This array is used for the navigation panel buttons present at the beginning
 of sectioning elements. If split at node or section they are also used 
 at the page footer, and in the case of section navigation at the page header.
 @item @@SECTION_FOOTER_BUTTONS
@@ -24315,7 +24315,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
+$Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24394,7 +24394,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.284 2010-08-10 00:25:44 karl Exp $
+@comment $Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

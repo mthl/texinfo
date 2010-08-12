@@ -222,6 +222,8 @@ regenerate_i18n_ref: i18n i18n_ref
 translations.pl: i18n/en.thl
 	$(PERL) manage_i18n.pl -d i18n -o $@ -I . -I $(srcdir) merge
 
+all-local: makeinfo.pl texi2any.pl
+
 # update the po files, and install locally the .mo files for the in
 # source tests
 check-local: makeinfo.pl texi2any.pl

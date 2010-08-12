@@ -12,7 +12,7 @@
 <top>
 <title>Test floats</title>
 
-<para>A list of floats at the begining.
+<para>A list of floats at the beginning.
 </para><listoffloats type="Text"></listoffloats>
 <para>After the listoffloats.
 </para>

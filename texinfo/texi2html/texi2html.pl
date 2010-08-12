@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.421 2010-08-12 22:30:57 pertusus Exp $
+# $Id: texi2html.pl,v 1.422 2010-08-12 23:07:30 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -11366,10 +11366,12 @@ sub do_text($;$)
     {
         $preformatted_style = $state->{'preformatted_stack'}->[-1]->{'style'};
     }
-    if (Texi2HTML::Config::in_cmd($state->{'command_stack'}, 'var') and $text =~ /([$Texi2HTML::Config::warn_var_character_quoted])/)
-    {
-        line_warn (sprintf(__("unlikely character %c in \@var"), ord($1)), $Texi2HTML::THISDOC{'line_nr'});
-    }
+    # disabled since it is too expensive (because do_text is
+    # called often) for a warning which rather questionable anyway.
+    #if (Texi2HTML::Config::in_cmd($state->{'command_stack'}, 'var') and $text =~ /([$Texi2HTML::Config::warn_var_character_quoted])/)
+    #{
+    #    line_warn (sprintf(__("unlikely character %c in \@var"), ord($1)), $Texi2HTML::THISDOC{'line_nr'});
+    #}
     return (&$Texi2HTML::Config::normal_text($text, $remove_texi, $preformatted_style, $state->{'code_style'}, $state->{'math_style'}, $state->{'simple_format'},$state->{'command_stack'}, $state));
 }
 
@@ -14134,7 +14136,7 @@ sub scan_line($$$$;$)
             {
                 $commands_count++;
                 # FIXME reenable when it is possible
-                #line_warn (sprintf(__('%s should only appear at the begining of a line'), $next_tag), $line_nr) if ($commands_count and $begin_line_command{$next_tag});
+                #line_warn (sprintf(__('%s must only appear at the beginning of a line'), $next_tag), $line_nr) if ($commands_count and $begin_line_command{$next_tag});
                 $cline =~ s/^(\s*)\@$next_tag//;
                 #$leading_spaces .= $1;
                 add_prev ($text, $stack, do_text($1, $state));
@@ -14330,7 +14332,7 @@ sub scan_line($$$$;$)
 	    #dump_stack ($text, $stack, $state);
 
             # FIXME reenable when it is possible
-            #line_warn (sprintf(__('%s should only appear at the begining of a line'), 'end'), $line_nr) if ($commands_count or !$first_command_on_line);
+            #line_warn (sprintf(__('%s must only appear at the beginning of a line'), 'end'), $line_nr) if ($commands_count or !$first_command_on_line);
 
             # First we test if the stack is not empty.
             # Then we test if the end tag is a format tag.
@@ -14464,7 +14466,7 @@ sub scan_line($$$$;$)
 	    #print STDERR "LINE $cline";
 	    #dump_stack ($text, $stack, $state);
             # FIXME reenable when it is possible
-            #line_warn (sprintf(__('%s should only appear at the begining of a line'), $macro), $line_nr) if ($begin_line_command{$macro} and ($commands_count or !$first_command_on_line) and !$state->{'keep_texi'});
+            #line_warn (sprintf(__('%s must only appear at the beginning of a line'), $macro), $line_nr) if ($begin_line_command{$macro} and ($commands_count or !$first_command_on_line) and !$state->{'keep_texi'});
 
             close_paragraph($text, $stack, $state, "\@$macro", $line_nr, 1) if (stop_paragraph_command($macro) and !$state->{'keep_texi'});
 

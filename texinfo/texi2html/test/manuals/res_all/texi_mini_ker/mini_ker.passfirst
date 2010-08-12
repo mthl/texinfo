@@ -920,7 +920,7 @@ mini_ker.texi(,1063)
 mini_ker.texi(,1064) Other @samp{.data} files will be described later.
 mini_ker.texi(,1065) 
 mini_ker.texi(,1066) @c FIXME already said
-mini_ker.texi(,1067) @c At the begining of a run, the help file @file{Model.hlp} is generated for
+mini_ker.texi(,1067) @c At the beginning of a run, the help file @file{Model.hlp} is generated for
 mini_ker.texi(,1068) @c global checkiing of the model. In the example, it is:
 mini_ker.texi(,1069) 
 mini_ker.texi(,1070) @c @example

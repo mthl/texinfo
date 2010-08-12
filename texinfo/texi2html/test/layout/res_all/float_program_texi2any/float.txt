@@ -1,7 +1,7 @@
 Test floats
 ***********
 
-A list of floats at the begining.
+A list of floats at the beginning.
 * List of Text:
 * Text 1: TeX and te'i^<an_url> AND it is @verb  a word !@ AE.
 * Text 1.1: Text in chapter

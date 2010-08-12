@@ -5,7 +5,7 @@
 @node Top
 @top Test floats
 
-A list of floats at the begining.
+A list of floats at the beginning.
 @listoffloats Text
 
 After the listoffloats.

@@ -4,7 +4,7 @@ float.texi(,4)
 float.texi(,5) @node Top
 float.texi(,6) @top Test floats
 float.texi(,7) 
-float.texi(,8) A list of floats at the begining.
+float.texi(,8) A list of floats at the beginning.
 float.texi(,9) @listoffloats Text
 float.texi(,10) 
 float.texi(,11) After the listoffloats.

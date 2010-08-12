@@ -949,7 +949,7 @@ tangent linear system analysis}. It is not used in the solving process.
 Other @samp{.data} files will be described later.
 
 @c FIXME already said
-@c At the begining of a run, the help file @file{Model.hlp} is generated for
+@c At the beginning of a run, the help file @file{Model.hlp} is generated for
 @c global checkiing of the model. In the example, it is:
 
 @c @example

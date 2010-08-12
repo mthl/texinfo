@@ -2,6 +2,9 @@
 
 	* texi2html/texi2html.pl (close_stack): more precise error
 	message when closing @verb.  Karl report.
+	* texi2html/texi2html.pl (do_text): disable the warning about
+	unlikely character in @var. It is too expensive (because do_text 
+	is called often) for a warning which rather questionable anyway.
 
 2010-08-12  Patrice Dumas  <pertusus@free.fr>
 
