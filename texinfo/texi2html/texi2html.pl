@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.422 2010-08-12 23:07:30 pertusus Exp $
+# $Id: texi2html.pl,v 1.423 2010-08-12 23:17:04 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3752,7 +3752,7 @@ foreach my $i (@rc_files)
 }
 
 # read initialization files
-foreach my $file (locate_init_file($conf_file_name, \@program_config_dirs, 1))
+foreach my $file (locate_init_file($conf_file_name, [ reverse(@program_config_dirs) ], 1))
 {
     print STDERR "# reading initialization file from $file\n" if ($T2H_VERBOSE);
     Texi2HTML::Config::load($file);

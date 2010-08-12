@@ -8,6 +8,9 @@
 	* texi2ht/texi2html.init (t2h_default_external_href): an
 	empty entry in htmlxref causes the corresponding possibility
 	being ignored.
+	* texi2html/texi2html.pl: reverse the order of directories where
+	Config files are looked for, such that the last called are the
+	preferred ones, allowing to override what was set before.
 
 2010-08-12  Patrice Dumas  <pertusus@free.fr>
 
