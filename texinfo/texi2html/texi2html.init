@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.286 2010-08-10 06:41:20 pertusus Exp $
+# $Id: texi2html.init,v 1.287 2010-08-12 22:05:18 pertusus Exp $
 
 
 ##################################################################
@@ -5878,12 +5878,12 @@ sub t2h_default_external_href($$$)
              {
                   foreach my $split_ordered (@{$htmlxref_entries{$document_split}})
                   {
-                        if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered}))
-                        {
-                             $split_found = $split_ordered;
-                             $href = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered}->{'href'};
-                             last;
-                        }
+                       if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered}))
+                       {
+                            $split_found = $split_ordered;
+                            $href = $Texi2HTML::THISDOC{'htmlxref'}->{$file}->{$split_ordered};
+                            last;
+                       }
                   }
              }
              if (defined($split_found))

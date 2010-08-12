@@ -56,13 +56,18 @@ all-checks: check long-check
 # this is in order to have the files in .texinfo in the build dir
 all-local:
 	for dir in $(htmlxref_cnf_tests); do \
-		$(mkdir_p) $$dir/.texinfo/ ; \
-		${INSTALL_DATA} $(srcdir)/$$dir/htmlxref.cnf $$dir/.texinfo/ ; \
+		if [ -f "$(srcdir)/$$dir/htmlxref.cnf-texinfo" ]; then \
+			$(mkdir_p) $$dir/.texinfo/ ; \
+			${INSTALL_DATA} "$(srcdir)/$$dir/htmlxref.cnf-texinfo" $$dir/.texinfo/ ; \
+		fi; \
+		if [ -f $(srcdir)/$$dir/htmlxref.cnf-ref ]; then \
+			${INSTALL_DATA} "$(srcdir)/$$dir/htmlxref.cnf-ref" $$dir/htmlxref.cnf ; \
+		fi; \
 	done
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref sectioning/equivalent_nodes-noderename.cnf
 
 clean-local:
 	for dir in $(htmlxref_cnf_tests); do \
-		rm -rf $$dir/.texinfo/ ; \
+		rm -rf $$dir/.texinfo/ $$dir/htmlxref.cnf ; \
 	done
 	rm -f sectioning/equivalent_nodes-noderename.cnf

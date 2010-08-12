@@ -94,7 +94,8 @@ EXTRA_DIST = \
 	po_messages/POTFILES.in.in \
 	po_document/Makevars.in \
 	po_document/POTFILES.in.in \
-	i18n_ref
+	i18n_ref \
+	translations.pl
 
 dist_images_DATA = images/a_begin.png \
 	images/a_begin_na.png \
@@ -284,5 +285,4 @@ CLEANFILES = texi2html texi2html.temp texi2any makeinfo \
 DISTCLEANFILES = po_messages/Makevars \
 	po_messages/POTFILES.in \
 	po_document/Makevars \
-	po_document/POTFILES.in \
-	translations.pl
+	po_document/POTFILES.in

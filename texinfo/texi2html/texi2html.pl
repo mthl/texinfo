@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.419 2010-08-11 12:46:07 pertusus Exp $
+# $Id: texi2html.pl,v 1.420 2010-08-12 22:05:18 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -4399,70 +4399,74 @@ if (get_conf('TEST'))
 
 $Texi2HTML::GLOBAL{'debug_l2h'} = 1 if ($T2H_DEBUG & $DEBUG_L2H);
 
-# parse texinfo cnf file for external manual specifications. This was
-# discussed on texinfo list but not in makeinfo for now. 
-my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, \@texinfo_config_dirs, 1);
-
-foreach my $file (@texinfo_htmlxref_files)
+# parse texinfo cnf file for external manual specifications.
+sub prepare_htmlxref($)
 {
-    print STDERR "html refs config file: $file\n" if ($T2H_DEBUG);    
-    unless (open (HTMLXREF, $file))
+    my $input_directory = shift; 
+    my @htmlxref_dirs = @language_config_dirs;
+    if ($input_directory ne '.' and $input_directory ne '')
     {
-         document_warn("Cannot open html refs config file ${file}: $!");
-         next;
+        unshift @htmlxref_dirs, $input_directory;
     }
-    my $line_nr = 0;
-    my %variables;
-    while (my $hline = <HTMLXREF>)
+    unshift @htmlxref_dirs, '.';
+    my @texinfo_htmlxref_files = locate_init_file ($texinfo_htmlxref, \@htmlxref_dirs, 1);
+    foreach my $file (@texinfo_htmlxref_files)
     {
-        my $line = $hline;
-        $line_nr++;
-        next if $hline =~ /^\s*#/;
-        #$hline =~ s/[#]\s.*//;
-        $hline =~ s/^\s*//;
-        next if $hline =~ /^\s*$/;
-        chomp ($hline);
-        if ($hline =~ s/^(\w+)\s*=\s*//)
+        print STDERR "html refs config file: $file\n" if ($T2H_DEBUG);    
+        unless (open (HTMLXREF, $file))
         {
-           # handle variables
-           my $var = $1;
-           my $re = join '|', map { quotemeta $_ } keys %variables;
-           $hline =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
-           $variables{$var} = $hline;
-           next;
-        }
-        my @htmlxref = split /\s+/, $hline;
-        my $manual = shift @htmlxref;
-        my $split_or_mono = shift @htmlxref;
-#print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
-        if (!defined($split_or_mono))
-        {
-            file_line_warn(__("Missing type"), $file, $line_nr);
+            document_warn("Cannot open html refs config file ${file}: $!");
             next;
         }
-        elsif (!defined($Texi2HTML::Config::htmlxref_entries{$split_or_mono}))
+        my $line_nr = 0;
+        my %variables;
+        while (my $hline = <HTMLXREF>)
         {
-            file_line_warn(sprintf(__("Unrecognized type: %s"), $split_or_mono), $file, $line_nr);
-            next;
+            my $line = $hline;
+            $line_nr++;
+            next if $hline =~ /^\s*#/;
+            #$hline =~ s/[#]\s.*//;
+            $hline =~ s/^\s*//;
+            next if $hline =~ /^\s*$/;
+            chomp ($hline);
+            if ($hline =~ s/^(\w+)\s*=\s*//)
+            {
+               # handle variables
+               my $var = $1;
+               my $re = join '|', map { quotemeta $_ } keys %variables;
+               $hline =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
+               $variables{$var} = $hline;
+               next;
+            }
+            my @htmlxref = split /\s+/, $hline;
+            my $manual = shift @htmlxref;
+            my $split_or_mono = shift @htmlxref;
+    #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
+            if (!defined($split_or_mono))
+            {
+                file_line_warn(__("Missing type"), $file, $line_nr);
+                next;
+            }
+            elsif (!defined($Texi2HTML::Config::htmlxref_entries{$split_or_mono}))
+            {
+                file_line_warn(sprintf(__("Unrecognized type: %s"), $split_or_mono), $file, $line_nr);
+                next;
+            }
+            my $href = shift @htmlxref;
+            next if (exists($Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono}));
+            
+            if (defined($href))
+            { # substitute 'variables'
+                my $re = join '|', map { quotemeta $_ } keys %variables;
+                $href =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
+                $href =~ s/\/*$// if ($split_or_mono ne 'mono');
+            }
+            $Texi2HTML::THISDOC{'htmlxref'}->{$manual}->{$split_or_mono} = $href;
         }
-        my $href = shift @htmlxref;
-        next if (exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}) and exists($Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'}));
-        
-        if (defined($href))
-        {
-            my $re = join '|', map { quotemeta $_ } keys %variables;
-            $href =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} : "\${$1}"/ge;
-            $href =~ s/\/*$// if ($split_or_mono ne 'mono');
-            $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono}->{'href'} = $href;
-        }
-        else
-        {
-            $Texi2HTML::GLOBAL{'htmlxref'}->{$manual}->{$split_or_mono} = {};
-        }
+        close (HTMLXREF);
     }
-    close (HTMLXREF);
 }
-
+    
 if ($T2H_DEBUG)
 {
     foreach my $manual (keys(%{$Texi2HTML::GLOBAL{'htmlxref'}}))
@@ -16966,6 +16970,8 @@ while(@input_files)
    {
       $Texi2HTML::THISDOC{'input_directory'} = $1;
    }
+
+   prepare_htmlxref($Texi2HTML::THISDOC{'input_directory'});
 
    my $input_file_base = $input_file_name;
    $input_file_base =~ s/\.te?x(i|info)?$//;
