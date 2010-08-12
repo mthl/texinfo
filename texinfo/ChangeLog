@@ -5,6 +5,9 @@
 	* texi2html/texi2html.pl (do_text): disable the warning about
 	unlikely character in @var. It is too expensive (because do_text 
 	is called often) for a warning which rather questionable anyway.
+	* texi2ht/texi2html.init (t2h_default_external_href): an
+	empty entry in htmlxref causes the corresponding possibility
+	being ignored.
 
 2010-08-12  Patrice Dumas  <pertusus@free.fr>
 
