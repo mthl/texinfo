@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.420 2010-08-12 22:05:18 pertusus Exp $
+# $Id: texi2html.pl,v 1.421 2010-08-12 22:30:57 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -15962,7 +15962,16 @@ sub close_stack($$$$;$)
             # use the beginning of the @-command for the error message
             # line number if available.
             $located_line_nr = $stack->[$stack_level]->{'line_nr'} if (defined($stack->[$stack_level]->{'line_nr'}));
-            line_error (sprintf(__("%c%s missing close brace"), ord('@'), $style), $located_line_nr);
+            # $state->{'verb'} may not be defined if the @verb{ opening 
+            # is followed by an end of line.
+            if ($style eq 'verb' and defined($state->{'verb'}))
+            {
+               line_error (sprintf(__("\@%s missing closing delimiter sequence: %s}"), $style, $state->{'verb'}), $located_line_nr);
+            }
+            else
+            {
+               line_error (sprintf(__("%c%s missing close brace"), ord('@'), $style), $located_line_nr);
+            }
             my ($result, $command) = close_style_command($text, $stack, $state, $line_nr, '');
 
             add_prev($text, $stack, $result) if (defined($result));
