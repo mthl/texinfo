@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
+@c $Id: texinfo.txi,v 1.286 2010-08-13 00:21:02 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18378,10 +18378,10 @@ specified at compile-time, e.g., @file{/usr/local/etc})
 (likewise specified at compile time, e.g., @file{/usr/local/share})
 @end table
 
-The first file found is used.  The Texinfo distribution includes a
-default file which handles many GNU manuals; it is installed in the
-last of the above directories, i.e.,
-@file{@var{datadir}/texinfo/htmlxref.cnf}.
+All files found are used, with earlier entries overriding later ones.
+The Texinfo distribution includes a default file which handles many
+GNU manuals; it is installed in the last of the above directories,
+i.e., @file{@var{datadir}/texinfo/htmlxref.cnf}.
 
 The file is line-oriented.  Lines consisting only of whitespace are
 ignored.  Comments are indicated with a @samp{#} at the beginning of a
@@ -18555,32 +18555,34 @@ not a promise.
 
 @pindex Config @r{init files loaded}
 
-It is possible to load so-called @dfn{initialization files}, or
-@dfn{init files} for short, to modify almost every aspect of output
-formatting.  The program loads init files named @file{Config} each
-time it is run.  Those files are looked for in the following
-directories (where @var{prog} is the name of the program invoked on
-the command line, normally @code{makeinfo} or @code{texi2any}):
+You can write so-called @dfn{initialization files}, or @dfn{init
+files} for short, to modify almost every aspect of output formatting.
+The program loads init files named @file{Config} each time it is run.
+Those files are looked for in the following directories (where
+@var{prog} is the name of the program invoked on the command line,
+normally @code{makeinfo} or @code{texi2any}):
 
 @table @file
-@item ./
-(the current directory)
-
-@item ./.@var{prog}/
-(under the current directory)
-
-@item ~/.@var{prog}/
-(where @code{~} is the current user's home directory)
+@item @var{datadir}/@var{prog}/
+(likewise specified at compile time, e.g., @file{/usr/local/share})
 
 @item @var{sysconfdir}/@var{prog}/
 (where @var{sysconfdir} is the system configuration directory
 specified at compile-time, e.g., @file{/usr/local/etc})
 
-@item @var{datadir}/@var{prog}/
-(likewise specified at compile time, e.g., @file{/usr/local/share})
+@item ~/.@var{prog}/
+(where @code{~} is the current user's home directory)
+
+@item ./.@var{prog}/
+(under the current directory)
+
+@item ./
+(the current directory)
 @end table
 
-All @file{Config} files found are used, in the above order. 
+All @file{Config} files found are loaded, in the above order.  Thus,
+@file{./Config} can override entries in, say,
+@file{/usr/local/share/makeinfo/Config}.
 
 @opindex --init-file
 However, the most common way to load an initialization file is with
@@ -18588,7 +18590,7 @@ the @option{--init-file} option, explicitly specifying the file to be
 loaded.  By default the following directories are searched, in the
 following order, where @var{prog} is the name of the program invoked
 on the command line (@command{makeinfo}, @command{texi2any}, etc.).
-The first file found is used:
+Only the first file found is used:
 
 @enumerate
 @item The current directory @file{./};
@@ -18596,14 +18598,15 @@ The first file found is used:
 @item @file{./.@var{prog}/} under the current directory;
 
 @item @file{~/.@var{prog}/}
-(where @code{~} is the current user's home directory)
+where @code{~} is the current user's home directory;
 
 @item @file{@var{sysconfdir}/@var{prog}/}
-(where @var{sysconfdir} is the system configuration directory
-specified at compile-time, e.g., @file{/usr/local/etc})
+where @var{sysconfdir} is the system configuration directory
+specified at compile-time, e.g., @file{/usr/local/etc};
 
 @item @file{@var{datadir}/@var{prog}/}
-(likewise specified at compile time, e.g., @file{/usr/local/share})
+Where @var{datadir} is the system data directory likewise specified at
+compile time, e.g., @file{/usr/local/share};
 
 @item @file{./.texinfo/init/} under the current directory;
 
@@ -18612,11 +18615,10 @@ specified at compile-time, e.g., @file{/usr/local/etc})
 @item @file{@var{sysconfdir}/texinfo/init/} with @var{sysconfdir} as above;
 
 @item @file{@var{datadir}/texinfo/init/} with @var{datadir} as above.
-
 @end enumerate
 
 Additional directories may be prepended to the list with the
-@option{--conf-dir} option.
+@option{--conf-dir} option (@pxref{Invoking texi2any}).
 
 
 @node Init File Basics
@@ -18810,17 +18812,17 @@ variables and options}.
 @node Init File Global Information
 @subsection Init File: Global Information
 
-@ignore
-FIXME those are still undocumented
-'split_level' 
-'variable_levels' 'variables'
-do_about
-'FH' 'state' 'format_from_command_line'
-command_stack
-line_nr
-%htmlxref
-%hyphenation
-@end ignore
+@c @ignore
+@c FIXME those are still undocumented
+@c 'split_level' 
+@c 'variable_levels' 'variables'
+@c do_about
+@c 'FH' 'state' 'format_from_command_line'
+@c command_stack
+@c line_nr
+@c %htmlxref
+@c %hyphenation
+@c @end ignore
 
 For title related @@-commands, like @code{@@title}, @code{@@titlefont},
 @code{@@author}, @code{@@top} some information is available, with diverse 
@@ -24315,7 +24317,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
+$Id: texinfo.txi,v 1.286 2010-08-13 00:21:02 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24394,7 +24396,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.285 2010-08-12 23:07:29 pertusus Exp $
+@comment $Id: texinfo.txi,v 1.286 2010-08-13 00:21:02 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
