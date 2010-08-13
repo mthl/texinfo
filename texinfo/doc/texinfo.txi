@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.287 2010-08-13 23:33:24 karl Exp $
+@c $Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18565,11 +18565,11 @@ normally @code{makeinfo} or @code{texi2any}):
 
 @table @file
 @item @var{datadir}/@var{prog}/
-(likewise specified at compile time, e.g., @file{/usr/local/share})
+(where @var{datadir} is the system data directory specified at
+compile-time, e.g., @file{/usr/local/share})
 
 @item @var{sysconfdir}/@var{prog}/
-(where @var{sysconfdir} is the system configuration directory
-specified at compile-time, e.g., @file{/usr/local/etc})
+(likewise specified at compile time, e.g., @file{/usr/local/etc})
 
 @item ~/.@var{prog}/
 (where @code{~} is the current user's home directory)
@@ -24366,7 +24366,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.287 2010-08-13 23:33:24 karl Exp $
+$Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24445,7 +24445,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.287 2010-08-13 23:33:24 karl Exp $
+@comment $Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
