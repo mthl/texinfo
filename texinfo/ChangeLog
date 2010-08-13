@@ -1,3 +1,7 @@
+2010-08-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Init File Global Information): edit.
+
 2010-08-12  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Loading Init Files),
