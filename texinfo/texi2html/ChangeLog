@@ -1,3 +1,8 @@
+2010-08-13  Karl Berry  <karl@gnu.org>
+
+	* manage_i18n.pl (merge_i18n_files): output 1; at end of output.
+	Also close output and warn if failure.
+
 2010-08-02  Karl Berry  <karl@gnu.org>
 
 	* texi2html.pl (T2H_OBSOLETE_OPTIONS): 'quote' key names,
