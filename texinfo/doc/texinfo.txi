@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
+@c $Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16311,7 +16311,7 @@ If @var{file} is @samp{-}, output goes to standard output and
 
 If @var{file} is a directory or ends with a @samp{/} the usual rules
 are used to determine the actual output file name (use
-@code{@@setfilename} or the input file name) but these files are are
+@code{@@setfilename} or the input file name) but these files are
 written to the @var{file} directory.  For example, @samp{makeinfo -o
 bar/ foo.texi}, with or without @option{--no-split}, will write
 @file{bar/foo.info}, and possibly other files under @file{bar/}.
@@ -18641,8 +18641,7 @@ settings.  Smaller examples include @file{utf8.init},
 * Init File Variables::  Configuration & other variables, function references.
 * Init File Namespaces:: @code{Texi2HTML::Config}, @code{Texi2HTML}, and @code{main}.
 * Setting and Getting Configuration Variables::
-* Init File Global Information::  Accessing the document title, etc.
-* Getting flag values::
+* Init File Global Information::  Accessing the document title, file name, etc.
 * Encodings::                 Setting the encodings.
 * Redefining functions::      Function redefinition is achieved with 
                               redefinition of references on functions.
@@ -18811,7 +18810,7 @@ variables and options}.
 
 
 @node Init File Global Information
-@subsection Init File: Global Information
+@subsection Init File Global Information
 
 @cindex Init files, and global information
 @cindex Global information, in init files
@@ -18955,7 +18954,7 @@ Home page of the command generating the output.
 
 @end table
 
-Here are entries for various global document information:
+Here are entries for other global document information:
 
 @table @code
 @item copying_comment
@@ -18991,7 +18990,7 @@ The file name of the table of contents.
 
 @end table
 
-Finally, here are index-related entries:
+Here are index-related entries:
 
 @table @code
 @item defindex 
@@ -19020,13 +19019,13 @@ the two arguments of @code{@@synindex}
 
 @end table
 
-
-@node Getting flag values
-@subsection Getting the values of flags set by @code{@@set}
-
-Flags defined by @code{@@set} may be accessed through the 
-@code{%main::value} hash.  The key is the flag name, the value is the
-flag value. 
+@cindex Init file flag values
+@cindex Flag values, in init files
+@cindex @code{@@set} values, in init files
+@vindex %main::value
+Finally, flags defined with @code{@@set} (@pxref{set value})
+may be accessed through the @code{%main::value} hash.  The key is the
+flag name, and the value is the flag value.
 
 
 @node Encodings
@@ -24366,7 +24365,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
+$Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24445,7 +24444,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.288 2010-08-13 23:35:11 karl Exp $
+@comment $Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
