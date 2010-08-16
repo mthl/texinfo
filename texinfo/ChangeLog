@@ -1,5 +1,8 @@
 2010-08-16  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\commondummiesnofonts): handle \sansserif,
+	\slanted, \dmn, \indicateurl (so they work in node/chapter names now).
+
 	* doc/texinfo.txi (Other Info Directories): update Emacs example
 	and text in general.  Avoid footnotes.
 	Report from Rob Dickens, 13 Aug 2010 14:30:54.
