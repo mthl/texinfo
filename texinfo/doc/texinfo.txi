@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
+@c $Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18640,11 +18640,10 @@ settings.  Smaller examples include @file{utf8.init},
 @menu
 * Init File Variables::  Configuration & other variables, function references.
 * Init File Namespaces:: @code{Texi2HTML::Config}, @code{Texi2HTML}, and @code{main}.
+* Init File Functions::  Redefining functions through references.
 * Setting and Getting Configuration Variables::
 * Init File Global Information::  Accessing the document title, file name, etc.
-* Encodings::                 Setting the encodings.
-* Redefining functions::      Function redefinition is achieved with 
-                              redefinition of references on functions.
+* Init File Encodings::           Overriding input and output encodings.
 * Three passes::              @command{texi2any} process texinfo in 3 passes.
 * Initializing and finalizing::    Preparing and finalizing the output.
 * Calling functions at different stages::
@@ -18743,6 +18742,34 @@ files are available in the @code{Texi2HTML} namespace.
 
 The functions of the main program, however, are still in the
 @code{main} namespace.
+
+
+@node Init File Functions
+@subsection Init File Functions
+
+@cindex Init file functions
+@cindex Functions, overriding in init files
+@cindex Overriding functions in init files
+To redefine a function you must replace the appropriate function
+reference with a reference to your function: write your function, give
+it a name you ensure is unique in the @code{Texi2HTML::Config}
+namespace, and then override the value of the function reference with
+your own.  When another function from the main program (or anywhere
+else) calls the reference, your function will be used.
+
+For example, the function reference to the function called when
+handling an anchor is called @code{$anchor}.  Thus, to override the
+corresponding function you could write:
+
+@example
+# define the function to do the work:
+sub my_anchor_fn @{
+# process arguments, return an html anchor
+@}
+
+# override the function reference:
+$anchor = \&my_anchor_fn;
+@end example
 
 
 @node Setting and Getting Configuration Variables
@@ -19028,71 +19055,46 @@ may be accessed through the @code{%main::value} hash.  The key is the
 flag name, and the value is the flag value.
 
 
-@node Encodings
-@subsection Setting the encodings
+@node Init File Encodings
+@subsection Init File Encodings
 
-There are four relevant encodings variables, they are autodetected
+@cindex Init file encodings
+@cindex Encodings, in init files
+
+There are four encoding-related variables, which are autodetected
 if not set:
-@table @code
+
+@vtable @code
 @item documentencoding
-This configuration variable may be set, if not defined, the encoding 
-appearing in @code{@@documentencoding} will be used.
+This configuration variable may be set, overriding any encoding
+set by @code{@@documentencoding} (@pxref{documentencoding,,
+@code{@@documentencoding}}).
+
 @item IN_ENCODING
-The texinfo files encoding, may also be set.
-Otherwise, when @code{documentencoding}
-is set, @code{IN_ENCODING} is also set
-if the encoding is supported by perl.
-@item OUT_ENCODING
-The out files encoding.  If not set, the value of
-@code{ENCODING_NAME} 
-or 
-@code{IN_ENCODING}
-is used if one of these variables is set.
+The encoding of the Texinfo files may be set independently with this
+variable.  If not, then when @code{documentencoding} is set,
+@code{IN_ENCODING} is also set if the encoding is supported by Perl.
+
 @item ENCODING_NAME
-The encoding advertized in out files.
-If unset the value of this variable is based on the
-other ENCODING values, and if they are all undefined, the variable
-@code{DEFAULT_ENCODING} is used. 
-@end table
+The encoding advertised in output files.  If not set, the value of
+this variable is based on the other ENCODING values, and if they are
+all undefined, the variable @code{DEFAULT_ENCODING} is used.
 
-The values for the encoding related variables are set in the default 
+@item OUT_ENCODING
+The encoding of the output files.  If not set, the value of
+@code{ENCODING_NAME} or @code{IN_ENCODING} is used if one of these
+variables is set.
+
+@end vtable
+
+In general, the @code{documentencoding} and @code{IN_ENCODING} are set
+to the appropriate values with no need to override.
+@code{OUT_ENCODING} is set according to @code{ENCODING_NAME}.  To
+force a given encoding for the output, it's best to set
+@code{ENCODING_NAME}.  The current default output encoding is UTF-8.
+
+The values for the encoding related variables are set in the default
 @code{init_out} function reference (@pxref{Output initialization}).
-
-In general the @code{documentencoding} and @code{IN_ENCODING} are
-set to the right values. @code{OUT_ENCODING} is also rightly set
-according to @code{ENCODING_NAME}. 
-To force a given encoding for the output, the
-@code{ENCODING_NAME} value may be set.  The current default output encoding
-is UTF-8. 
-
-
-@node Redefining functions
-@subsection Redefining functions in initialization files
-
-To redefine a function you must replace the corresponding funtion
-reference with a reference on your function. 
-Thus you should write your function, give it a name you
-are certain it is unique in the @code{Texi2HTML::Config} namespace,
-and override the value of the function reference with your own 
-function reference.  When another function from the main program
-(or from another functions of a initialization file) calls the reference,
-your function will be used. 
-
-For example the function
-reference corresponding with the function called when doing an
-anchor is called @code{$anchor}.  Thus if you want to override the
-corresponding function
-you could write:
-
-@example
-# override the function reference
-$anchor = \&my_own_function;
-
-# the function reference now refers to
-sub my_own_function @{
-# process arguments and return an html anchor
-@}
-@end example
 
 
 @node Three passes
@@ -19131,7 +19133,7 @@ In the default case, the hashes
 @code{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
 Indeed the initialization of these variables is dependent upon 
 the document language selection.  Similarly the encoding variables are set
-based on the information now available (@pxref{Encodings}).
+based on the information now available (@pxref{Init File Encodings}).
 When generating HTML, aditionally, the @code{%NAVIGATION_TEXT}
 hash is initialized.
 
@@ -19164,6 +19166,7 @@ The default is to do nothing.
 
 These function references are mostly redundant with the handlers described 
 in @ref{Calling functions at different stages}.
+
 
 @node Calling functions at different stages
 @subsection Calling functions at different stages
@@ -19935,7 +19938,7 @@ configuration variable @code{BODYTEXT}.
 In the default case, the encoding name @code{ENCODING_NAME} is used.
 If the variable is not defined,
 it is automatically determined 
-@xref{Encodings}.
+(@pxref{Init File Encodings}).
 
 @vindex @@LINKS_BUTTONS
 @vindex %BUTTONS_REL
@@ -24365,7 +24368,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
+$Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24444,7 +24447,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.289 2010-08-14 23:59:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
