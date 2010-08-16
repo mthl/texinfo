@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
+@c $Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15568,7 +15568,7 @@ set TEXINPUTS=.;d:/home/me/mylib;c:
 
 @noindent
 It is customary for DOS/Windows users to put such commands in the
-@file{autoexec.bat} file, or in the Windows Registry.
+@file{autoexec.bat} file, or in the Windows registry.
 
 @noindent
 These settings would cause @TeX{} to look for @file{\input} file first
@@ -17285,11 +17285,17 @@ name, not @samp{gdb.info}.
 @cindex @file{dir} files and Info directories
 
 If an Info file is not in the @file{info} directory, there are three
-ways to specify its location:@refill
+ways to specify its location:
 
 @enumerate
 @item
 Write the pathname in the @file{dir} file as the second part of the menu.
+
+@item
+Specify the Info directory name in the @code{INFOPATH} environment
+variable in your @file{.profile} or @file{.cshrc} initialization file.
+(Only you and others who set this environment variable will be able to
+find Info files whose location is specified this way.)
 
 @item
 If you are using Emacs, list the name of the file in a second @file{dir}
@@ -17301,18 +17307,12 @@ This variable tells Emacs where to look for @file{dir} files (the files
 must be named @file{dir}).  Emacs merges the files named @file{dir} from
 each of the listed directories.  (In Emacs version 18, you can set the
 @code{Info-directory} variable to the name of only one
-directory.)@refill
-
-@item
-Specify the Info directory name in the @code{INFOPATH} environment
-variable in your @file{.profile} or @file{.cshrc} initialization file.
-(Only you and others who set this environment variable will be able to
-find Info files whose location is specified this way.)
+directory.)
 @end enumerate
 
 For example, to reach a test file in the @file{/home/bob/info}
 directory, you could add an entry like this to the menu in the
-standard @file{dir} file:@refill
+standard @file{dir} file:
 
 @example
 * Test: (/home/bob/info/info-test).  Bob's own test file.
@@ -17320,54 +17320,35 @@ standard @file{dir} file:@refill
 
 @noindent
 In this case, the absolute file name of the @file{info-test} file is
-written as the second part of the menu entry.@refill
-
-Alternatively, you could write the following in your @file{.emacs} file:
-
-@vindex Info-directory-list
-@example
-@group
-(require 'info)
-(setq Info-directory-list
- (cons (expand-file-name "/home/bob/info")
-       Info-directory-list))
-@end group
-@end example
-
-This tells Emacs to merge the system @file{dir} file with the @file{dir}
-file in @file{/home/bob/info}.  Thus, Info will list the
-@file{/home/bob/info/info-test} file as a menu entry in the
-@file{/home/bob/info/dir} file.  Emacs does the merging only when
-@kbd{M-x info} is first run, so if you want to set
-@code{Info-directory-list} in an Emacs session where you've already run
-@code{info}, you must @code{(setq Info-dir-contents nil)} to force Emacs
-to recompose the @file{dir} file.
+written as the second part of the menu entry.
 
 @vindex INFOPATH
 @cindex Environment variable @code{INFOPATH}
-Finally, you can tell Info where to look by setting the @code{INFOPATH}
-environment variable in your shell startup file, such as @file{.cshrc},
-@file{.profile} or @file{autoexec.bat}.  If you use a Bourne-compatible
-shell such as @code{sh} or @code{bash} for your shell command
-interpreter, you set the @code{INFOPATH} environment variable in the
-@file{.profile} initialization file; but if you use @code{csh} or
-@code{tcsh}, you set the variable in the @file{.cshrc} initialization
-file.  On MS-DOS/MS-Windows systems, you must set @code{INFOPATH} in
-your @file{autoexec.bat} file or in the Registry.  Each type of shell
-uses a different syntax.
+If you don't want to edit the system @file{dir} file, you can tell
+Info where to look by setting the @code{INFOPATH} environment variable
+in your shell startup file.  This works with both the Emacs and
+standalone Info readers.
+
+Specifically, if you use a Bourne-compatible shell such as @code{sh}
+or @code{bash} for your shell command interpreter, you set the
+@code{INFOPATH} environment variable in the @file{.profile}
+initialization file; but if you use @code{csh} or @code{tcsh}, you set
+the variable in the @file{.cshrc} initialization file.  On
+MS-DOS/MS-Windows systems, you must set @code{INFOPATH} in your
+@file{autoexec.bat} file or in the registry.  Each type of shell uses
+a different syntax.
 
 @itemize @bullet
 @item
 In a @file{.cshrc} file, you could set the @code{INFOPATH}
-variable as follows:@refill
+variable as follows:
 
 @smallexample
 setenv INFOPATH .:~/info:/usr/local/emacs/info
 @end smallexample
 
 @item
-In a @file{.profile} file, you would achieve the same effect by
-writing:@refill
+In a @file{.profile} file, you would achieve the same effect by writing:
 
 @smallexample
 INFOPATH=.:$HOME/info:/usr/local/emacs/info
@@ -17376,9 +17357,9 @@ export INFOPATH
 
 @item
 @pindex autoexec.bat
-In a @file{autoexec.bat} file, you write this command@footnote{Note the
+In a @file{autoexec.bat} file, you write this command (note the
 use of @samp{;} as the directory separator, and a different syntax for
-using values of other environment variables.}:
+using values of other environment variables):
 
 @smallexample
 set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
@@ -17394,19 +17375,19 @@ merges any files named @file{dir} in any directory listed in the
 called @samp{(dir)Top}.
 
 @cindex Colon, last in @env{INFOPATH}
-However you set @env{INFOPATH}, if its last character is a
-colon@footnote{On MS-DOS/MS-Windows systems, use semicolon instead.}, this
-is replaced by the default (compiled-in) path.  This gives you a way to
-augment the default path with new directories without having to list all
-the standard places.  For example (using @code{sh} syntax):
+However you set @env{INFOPATH}, if its last character is a colon (on
+MS-DOS/MS-Windows systems, use a semicolon instead), this is replaced
+by the default (compiled-in) path.  This gives you a way to augment
+the default path with new directories without having to list all the
+standard places.  For example (using @code{sh} syntax):
 
 @example
-INFOPATH=/local/info:
+INFOPATH=/home/bob/info:
 export INFOPATH
 @end example
 
 @noindent
-will search @file{/local/info} first, then the standard directories.
+will search @file{/home/bob/info} first, then the standard directories.
 Leading or doubled colons are not treated specially.
 
 @cindex @file{dir} file, creating your own
@@ -17415,6 +17396,15 @@ When you create your own @file{dir} file for use with
 copying an existing @file{dir} file and replace all the text after the
 @samp{* Menu:} with your desired entries.  That way, the punctuation and
 special CTRL-_ characters that Info needs will be present.
+
+As one final alternative, which works only with Emacs Info, you can
+change the @code{Info-directory-list} variable.  For example:
+
+@example
+(add-hook 'Info-mode-hook '(lambda ()
+	     (add-to-list 'Info-directory-list
+			  (expand-file-name "~/info"))))
+@end example
 
 
 @node Installing Dir Entries
@@ -24368,7 +24358,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
+$Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24447,7 +24437,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.290 2010-08-16 00:10:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

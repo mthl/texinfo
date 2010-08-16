@@ -1,3 +1,9 @@
+2010-08-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Info Directories): update Emacs example
+	and text in general.  Avoid footnotes.
+	Report from Rob Dickens, 13 Aug 2010 14:30:54.
+
 2010-08-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\refX): use \the\toks to avoid full expansion
