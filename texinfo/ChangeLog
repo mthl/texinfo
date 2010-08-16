@@ -1,5 +1,8 @@
 2010-08-15  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\refX): use \the\toks to avoid full expansion
+	of possibly-complex cross-reference name, a la @chapter, etc.
+
 	* doc/texinfo.txi (Init File Encodings),
 	 (Init File Functions): rename+edit.
 
