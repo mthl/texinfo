@@ -109,8 +109,13 @@
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
-<menunode><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></menunode>
-<menutitle><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></menutitle>
+<menunode><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></menunode>
+<menutitle><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode>8.27<dmn>in</dmn></menunode>
+<menutitle>8.27<dmn>in</dmn></menutitle>
 <menucomment>
 </menucomment>
 </menuentry><menuentry>
@@ -121,6 +126,11 @@
 </menuentry><menuentry>
 <menunode><indicateurl>indicateurl</indicateurl></menunode>
 <menutitle><indicateurl>indicateurl</indicateurl></menutitle>
+<menucomment>
+</menucomment>
+</menuentry><menuentry>
+<menunode><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></menunode>
+<menutitle><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></menutitle>
 <menucomment>
 </menucomment>
 </menuentry></menu>
@@ -308,7 +318,7 @@
 </chapter>
 <node>
 <nodename><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodename>
-<nodenext><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodenext>
+<nodenext><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodenext>
 <nodeprev><verb> @ {} . </verb></nodeprev>
 <nodeup>Top</nodeup>
 </node>
@@ -317,19 +327,29 @@
 
 </chapter>
 <node>
-<nodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodename>
-<nodenext><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodenext>
+<nodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodename>
+<nodenext>8.27<dmn>in</dmn></nodenext>
 <nodeprev><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></nodeprev>
 <nodeup>Top</nodeup>
 </node>
 <chapter>
-<title><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></title>
+<title><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></title>
+
+</chapter>
+<node>
+<nodename>8.27<dmn>in</dmn></nodename>
+<nodenext><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodenext>
+<nodeprev><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title>8.27<dmn>in</dmn></title>
 
 </chapter>
 <node>
 <nodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodename>
 <nodenext><indicateurl>indicateurl</indicateurl></nodenext>
-<nodeprev><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></nodeprev>
+<nodeprev>8.27<dmn>in</dmn></nodeprev>
 <nodeup>Top</nodeup>
 </node>
 <chapter>
@@ -338,11 +358,21 @@
 </chapter>
 <node>
 <nodename><indicateurl>indicateurl</indicateurl></nodename>
+<nodenext><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></nodenext>
 <nodeprev><sansserif>sansserif</sansserif> <slanted>slanted</slanted></nodeprev>
 <nodeup>Top</nodeup>
 </node>
 <chapter>
 <title><indicateurl>indicateurl</indicateurl></title>
+
+</chapter>
+<node>
+<nodename><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></nodename>
+<nodeprev><indicateurl>indicateurl</indicateurl></nodeprev>
+<nodeup>Top</nodeup>
+</node>
+<chapter>
+<title><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></title>
 
 <para><xref><xrefnodename> { }</xrefnodename></xref>
 </para>
@@ -366,9 +396,11 @@
 <xref><xrefnodename><image width="" height="" name="f--ile1" extension=""><alttext></alttext></image> <image width="aze" height="az" name="f--ile" extension="e--xt"><alttext>alt</alttext></image></xrefnodename></xref>
 <xref><xrefnodename><verb> @ {} . </verb></xrefnodename></xref>
 <xref><xrefnodename><cite>cite asis</cite> in @w <b>b</b><!-- /@w --> <r>in r</r> <sc>sc</sc> <strong>str</strong> <tt>t</tt> <var>var</var> <dfn>dfn</dfn> <i>i</i></xrefnodename></xref>
-<xref><xrefnodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd> 8.27<dmn>in</dmn></xrefnodename></xref>
+<xref><xrefnodename><env>env</env> <code>code</code> <option>option</option> <samp>samp</samp> <command>command</command> <file>file</file> <kbd>C-x <key>ESC</key></kbd></xrefnodename></xref>
+<xref><xrefnodename>8.27<dmn>in</dmn></xrefnodename></xref>
 <xref><xrefnodename><sansserif>sansserif</sansserif> <slanted>slanted</slanted></xrefnodename></xref>
 <xref><xrefnodename><indicateurl>indicateurl</indicateurl></xrefnodename></xref>
+<xref><xrefnodename><uref><urefurl>http://somewhere_aaa</urefurl></uref> <uref><urefurl>url</urefurl><urefdesc>text</urefdesc></uref> <uref><urefurl>/man.cgi/1/ls</urefurl><urefreplacement>ls</urefreplacement></uref></xrefnodename></xref>
 </para>
 </chapter>
 </texinfo>

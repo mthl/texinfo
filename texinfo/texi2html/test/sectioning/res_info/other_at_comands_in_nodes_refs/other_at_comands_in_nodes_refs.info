@@ -29,9 +29,11 @@ Top
 *   ::
 *  @ {} . ::
 * `cite asis' in @w b in r SC *str* t VAR "dfn" i::
-* `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in::
+* `env' `code' `option' `samp' `command' `file' `C-x <ESC>'::
+* 8.27in::
 * sansserif slanted::
 * <indicateurl>::
+* `http://somewhere_aaa' text (url) ls::
 
 
 File: other_at_comands_in_nodes_refs.info,  Node:  { },  Next:   ! 
@@ -146,28 +148,40 @@ File: other_at_comands_in_nodes_refs.info,  Node:  @ {} . ,  Next: `cite asis' i
 ***********
 
 
-File: other_at_comands_in_nodes_refs.info,  Node: `cite asis' in @w b in r SC *str* t VAR "dfn" i,  Next: `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in,  Prev:  @ {} . ,  Up: Top
+File: other_at_comands_in_nodes_refs.info,  Node: `cite asis' in @w b in r SC *str* t VAR "dfn" i,  Next: `env' `code' `option' `samp' `command' `file' `C-x <ESC>',  Prev:  @ {} . ,  Up: Top
 
 19 `cite asis' in @w b in r SC *str* t VAR "dfn" i
 **************************************************
 
 
-File: other_at_comands_in_nodes_refs.info,  Node: `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in,  Next: sansserif slanted,  Prev: `cite asis' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
+File: other_at_comands_in_nodes_refs.info,  Node: `env' `code' `option' `samp' `command' `file' `C-x <ESC>',  Next: 8.27in,  Prev: `cite asis' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
 
-20 `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in
-*******************************************************************
+20 `env' `code' `option' `samp' `command' `file' `C-x <ESC>'
+************************************************************
 
 
-File: other_at_comands_in_nodes_refs.info,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in,  Up: Top
+File: other_at_comands_in_nodes_refs.info,  Node: 8.27in,  Next: sansserif slanted,  Prev: `env' `code' `option' `samp' `command' `file' `C-x <ESC>',  Up: Top
 
-21 sansserif slanted
+21 8.27in
+*********
+
+
+File: other_at_comands_in_nodes_refs.info,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: 8.27in,  Up: Top
+
+22 sansserif slanted
 ********************
 
 
-File: other_at_comands_in_nodes_refs.info,  Node: <indicateurl>,  Prev: sansserif slanted,  Up: Top
+File: other_at_comands_in_nodes_refs.info,  Node: <indicateurl>,  Next: `http://somewhere_aaa' text (url) ls,  Prev: sansserif slanted,  Up: Top
 
-22 <indicateurl>
+23 <indicateurl>
 ****************
+
+
+File: other_at_comands_in_nodes_refs.info,  Node: `http://somewhere_aaa' text (url) ls,  Prev: <indicateurl>,  Up: Top
+
+24 `http://somewhere_aaa' text (url) ls
+***************************************
 
 *note  { }::
 
@@ -184,35 +198,37 @@ e'' e;:: *note e. e( e_ .e e< j ee[:: *note `` '' ` ' ,, ,:: *note << >>
 (rrr) CCC DDD:: *note the someone <someone@somewher>
 <no_explain@there>:: *note :: *note  @ {} . :: *note `cite asis' in @w b
 in r SC *str* t VAR "dfn" i:: *note `env' `code' `option' `samp'
-`command' `file' `C-x <ESC>' 8.27in:: *note sansserif slanted:: *note
-<indicateurl>::
+`command' `file' `C-x <ESC>':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note `http://somewhere_aaa' text (url) ls::
 
 
 
 Tag Table:
 Node: Top122
-Node:  { }818
+Node:  { }863
 Node:   ! 
- .  . ? @936
-Node: LaTeX TeX * , (C) ... ...1096
-Node: == error--> Euro ! ==> -1298
-Node: >= <= ->1492
-Node: a o -!- # -| ? (R)1647
-Node: => o a b a sunny day aa1821
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th2036
-Node: a" e~ i^ a^ a` e' c, e= e* e'' e;2298
-Node: e. e( e_ .e e< j ee[2545
-Node: `` '' ` ' ,, ,2743
-Node: << >> << >> < >2911
-Node: `` '' --- --3073
-Node: AAA (fff) AAA BBB3224
-Node: CCC (rrr) CCC DDD3395
-Node: the someone <someone@somewher> <no_explain@there>3603
-Node:  3859
-Node:  @ {} . 4010
-Node: `cite asis' in @w b in r SC *str* t VAR "dfn" i4173
-Node: `env' `code' `option' `samp' `command' `file' `C-x <ESC>' 8.27in4477
-Node: sansserif slanted4824
-Node: <indicateurl>5043
+ .  . ? @981
+Node: LaTeX TeX * , (C) ... ...1141
+Node: == error--> Euro ! ==> -1343
+Node: >= <= ->1537
+Node: a o -!- # -| ? (R)1692
+Node: => o a b a sunny day aa1866
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th2081
+Node: a" e~ i^ a^ a` e' c, e= e* e'' e;2343
+Node: e. e( e_ .e e< j ee[2590
+Node: `` '' ` ' ,, ,2788
+Node: << >> << >> < >2956
+Node: `` '' --- --3118
+Node: AAA (fff) AAA BBB3269
+Node: CCC (rrr) CCC DDD3440
+Node: the someone <someone@somewher> <no_explain@there>3648
+Node:  3904
+Node:  @ {} . 4055
+Node: `cite asis' in @w b in r SC *str* t VAR "dfn" i4218
+Node: `env' `code' `option' `samp' `command' `file' `C-x <ESC>'4515
+Node: 8.27in4830
+Node: sansserif slanted5013
+Node: <indicateurl>5174
+Node: `http://somewhere_aaa' text (url) ls5357
 
 End Tag Table

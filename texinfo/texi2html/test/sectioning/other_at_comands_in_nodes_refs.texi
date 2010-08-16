@@ -25,9 +25,11 @@
 * @image{f--ile1}  @image{f--ile,aze,az,alt,e--xt}::
 * @verb{. @ {} . .}::
 * @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}::
-* @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}::
+* @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}}::
+* 8.27@dmn{in}::
 * @sansserif{sansserif} @slanted{slanted}::
 * @indicateurl{indicateurl}::
+* @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}::
 @end menu
 
 @ifnottex
@@ -97,10 +99,13 @@
 @node @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}
 @chapter @cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}
 
+@node @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}}
+@chapter @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}}
+
 @ifnottex
-@node @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}
+@node 8.27@dmn{in}
 @end ifnottex
-@chapter @env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}
+@chapter 8.27@dmn{in}
 
 @ifnottex
 @node @sansserif{sansserif} @slanted{slanted}
@@ -111,6 +116,9 @@
 @node @indicateurl{indicateurl}
 @chapter @indicateurl{indicateurl}
 @end ifnottex
+
+@node @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
+@chapter @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
 
 @ifnottex
 @ref{@- @{ @}}
@@ -142,10 +150,12 @@
 @ref{@verb{. @ {} . .}}
 @end ifnottex
 @ref{@cite{cite @asis{asis}} @w{in @@w @b{b}} @r{in r} @sc{sc} @strong{str} @t{t} @var{var} @dfn{dfn} @i{i}}
+@ref{@env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}}}
 @ifnottex
-@ref{@env{env} @code{code} @option{option} @samp{samp} @command{command} @file{file} @kbd{C-x @key{ESC}} 8.27@dmn{in}}
+@ref{8.27@dmn{in}}
 @ref{@sansserif{sansserif} @slanted{slanted}}
 @ref{@indicateurl{indicateurl}}
 @end ifnottex
+@ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye

@@ -21,9 +21,11 @@ Top
 * [ f--ile1.txt ]  [ f--ile.e--xt: alt ]::
 *  @ {} . ::
 * cite asis in @w b in r SC str t var dfn i::
-* env code `option' `samp' command `file' C-x <ESC> 8.27in::
+* env code `option' `samp' command `file' C-x <ESC>::
+* 8.27in::
 * sansserif slanted::
 * <indicateurl>::
+* <http://somewhere_aaa> text <url> ls </man.cgi/1/ls>::
 
 1  { }
 ******
@@ -83,14 +85,20 @@ Top
 19 cite asis in @w b in r SC str t var dfn i
 ********************************************
 
-20 env code `option' `samp' command `file' C-x <ESC> 8.27in
-***********************************************************
+20 env code `option' `samp' command `file' C-x <ESC>
+****************************************************
 
-21 sansserif slanted
+21 8.27in
+*********
+
+22 sansserif slanted
 ********************
 
-22 <indicateurl>
+23 <indicateurl>
 ****************
+
+24 <http://somewhere_aaa> text <url> ls </man.cgi/1/ls>
+*******************************************************
 
  { }
 
@@ -115,7 +123,9 @@ the someone <mailto:someone@somewher> <mailto:no_explain@there>
 [ f--ile1.txt ] [ f--ile.e--xt: alt ]
  @ {} . 
 cite asis in @w b in r SC str t var dfn i
-env code `option' `samp' command `file' C-x <ESC> 8.27in
+env code `option' `samp' command `file' C-x <ESC>
+8.27in
 sansserif slanted
 <indicateurl>
+<http://somewhere_aaa> text <url> ls </man.cgi/1/ls>
 

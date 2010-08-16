@@ -87,15 +87,23 @@
 
 </chapter>
 <chapter label="20">
-<title><envar>env</envar> <literal>code</literal> <option>option</option> &lsquo;<literal>samp</literal>&rsquo; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput> 8.27in</title>
+<title><envar>env</envar> <literal>code</literal> <option>option</option> &lsquo;<literal>samp</literal>&rsquo; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput></title>
 
 </chapter>
-<chapter label="21" id="sansserif-slanted">
+<chapter label="21" id="8.27in">
+<title>8.27in</title>
+
+</chapter>
+<chapter label="22" id="sansserif-slanted">
 <title>sansserif slanted</title>
 
 </chapter>
-<chapter label="22">
+<chapter label="23">
 <title><wordasword>indicateurl</wordasword></title>
+
+</chapter>
+<chapter label="24">
+<title><ulink url="http://somewhere_aaa">http://somewhere_aaa</ulink> <ulink url="url">text</ulink> <ulink url="/man.cgi/1/ls">ls</ulink></title>
 
 <para><xref linkend="-{-}"></xref>
 </para>
@@ -119,9 +127,11 @@
 <xref linkend="f--ile1-f--ile"></xref>
 <xref linkend="-@-{}-.-"></xref>
 <xref linkend="cite-asis-in-@w-b-in-r-sc-str-t-var-dfn-i"></xref>
-<xref linkend="env-code-option-samp-command-file-C-x-ESC-8.27in"></xref>
+<xref linkend="env-code-option-samp-command-file-C-x-ESC"></xref>
+<xref linkend="8.27in"></xref>
 <xref linkend="sansserif-slanted"></xref>
 <xref linkend="indicateurl"></xref>
+<xref linkend="http://somewhere_aaa-url,-text-/man.cgi/1/ls,,ls"></xref>
 </para>
 </chapter>
 </book>
