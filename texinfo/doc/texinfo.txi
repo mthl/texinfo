@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
+@c $Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18635,7 +18635,7 @@ settings.  Smaller examples include @file{utf8.init},
 * Init File Global Information::  Accessing the document title, file name, etc.
 * Init File Encodings::           Overriding input and output encodings.
 * texi2any's Three Passes::       @command{texi2any} works in three passes.
-* Calling functions at different stages::
+* Init File Calling at Different Stages::  Calling functions at various times.
 * External formatting of commands::
 * Program string customization::
 * Customizing generalized block command opening:: 
@@ -18704,7 +18704,7 @@ sub my_formatting_function($ $)
 Since the program can process more than one file on the command line,
 you must ensure that you properly initialize the variables used during
 formatting.  It is possible to call functions at different stages to
-help with that (@pxref{Calling functions at different stages}).
+help with that (@pxref{Init File Calling at Different Stages}).
 
 
 @node Init File Namespaces
@@ -19157,56 +19157,66 @@ This function is called after the document generation.
 The default is to do nothing.
 
 These function references are mostly redundant with the handlers described 
-in the next section (@pxref{Calling functions at different stages}).
+in the next section (@pxref{Init File Calling at Different Stages}).
 
 
-@node Calling functions at different stages
-@subsection Calling functions at different stages
+@node Init File Calling at Different Stages
+@subsection Init File Calling at Different Stages
 
-Arbitrary user defined functions may be called between the 
-different Texinfo parsing and outputting passes.  This could be used, for
-example, to initialize variables before collecting the @@-commands and their
-text, expanding them between the collecting and expansion phase and doing
-some cleaning after the expansion pass. 
+@cindex Init file calling functions at different stages
+@cindex Calling functions at different stages
+@cindex Functions, calling at different stages
 
-There are five places for user defined functions, associated with arrays.
-The function references in these arrays are called one after another.
-The arrays correspond with the different stages:
+Arbitrary user-defined functions may be called between the different
+Texinfo parsing and outputting passes (see previous section).  This
+could be used, for example, to initialize variables before collecting
+the @@-commands and their text, expanding them between the collecting
+and expansion phase and doing clean-up after the expansion pass.
+
+There are five places for user defined functions, each associated with
+an array.  The function references in each array are called one after
+another.  The arrays correspond with the different stages:
+
 @vtable @code
 @item @@command_handler_setup
-The function references in that array are called before anything is done, 
-including collecting the output file names.  The input file names directory
-are available.
+Called before anything is done, including collecting the output file
+names.  The input file names' directories are available.
+
 @item @@command_handler_init
-The function references in that array are called as soon as the file names are 
-known. It may be at different moments, before processing anything, right after
-@@sefilename, or at the end of the first pass (after @@macro and @@include
-expansions).
-At that time the information available is essentially the file names.
+Called as soon as the input file names are known.  It may be at
+different moments: before processing anything, right after
+@code{@@setfilename}, or at the end of pass@tie{0} (after
+@code{@@macro} and @code{@@include} expansions).  At that time the
+information available is essentially just the input file names.
+
 @item @@command_handler_names
-The function references in that array are called right after the collecting
-pass.  At that time all the special @@-commands  
-have been collected as explained above but no output has been produced,
-the element (node and section) names hasn't been processed and expanded.
+Called right after pass@tie{}1, the main input collection.  At that
+time all the special @@-commands have been collected as explained
+above, but no output has been produced, and the element (node and
+section) names have not been processed.
+
 @item @@command_handler_process
-The function references in that array are called after the element names 
-have been processed, but before the main output initialization.
+Called after the element names have been processed, but
+before the main output initialization.
+
 @item @@command_handler_output
-The function references in that array are called rigth before the 
-main output processing, so that more informations are available,
-like the title.
+Called right before the main output processing, so that more
+information is available, such as the title (@pxref{Init File Global
+Information}).
+
 @item @@command_handler_finish
-he function references in that array are called after the end of the
-output generation.
+Called after output generation is finished.
 @end vtable 
 
-Here is an example of these arrays use:
+Because these are arrays, you should use @code{push} to add your
+functions to them, like this:
 
 @example
-push @@command_handler_init, \&Texi2HTML::LaTeX2HTML::init;
-push @@command_handler_process, \&Texi2HTML::LaTeX2HTML::latex2html;
-push @@command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
+push (@@command_handler_init, \&my_init);
+push (@@command_handler_process, \&my_process);
+push (@@command_handler_finish, \&my_finish);
 @end example
+
 
 @node External formatting of commands
 @subsection External formatting of commands
@@ -24362,7 +24372,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
+$Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24441,7 +24451,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
