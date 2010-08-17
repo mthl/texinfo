@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
+@c $Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18634,8 +18634,7 @@ settings.  Smaller examples include @file{utf8.init},
 * Setting and Getting Configuration Variables::
 * Init File Global Information::  Accessing the document title, file name, etc.
 * Init File Encodings::           Overriding input and output encodings.
-* Three passes::              @command{texi2any} process texinfo in 3 passes.
-* Initializing and finalizing::    Preparing and finalizing the output.
+* texi2any's Three Passes::       @command{texi2any} works in three passes.
 * Calling functions at different stages::
 * External formatting of commands::
 * Program string customization::
@@ -18752,13 +18751,13 @@ handling an anchor is called @code{$anchor}.  Thus, to override the
 corresponding function you could write:
 
 @example
+# override the function reference:
+$anchor = \&my_anchor_fn;
+
 # define the function to do the work:
 sub my_anchor_fn @{
 # process arguments, return an html anchor
 @}
-
-# override the function reference:
-$anchor = \&my_anchor_fn;
 @end example
 
 
@@ -19081,60 +19080,63 @@ In general, the @code{documentencoding} and @code{IN_ENCODING} are set
 to the appropriate values with no need to override.
 @code{OUT_ENCODING} is set according to @code{ENCODING_NAME}.  To
 force a given encoding for the output, it's best to set
-@code{ENCODING_NAME}.  The current default output encoding is UTF-8.
+@code{ENCODING_NAME}.  The default output encoding for Info is ASCII,
+and for other formats is UTF-8.
 
 The values for the encoding related variables are set in the default
 @code{init_out} function reference (@pxref{Output initialization}).
 
 
-@node Three passes
-@subsection Three passes: macro expansion, document structure and output
+@node texi2any's Three Passes
+@subsection @code{texi2any}'s Three Passes: Macro expansion, document structure and output
 
-There are three passes for @command{texi2any}. During 
-pass 0, the @code{@@macro} are 
-expanded, in pass 1 the document structure is gathered and in pass 2
-the result is output. In most cases you shouldn't care about
-it, as almost all of the output customization is done in pass 2.
-Only if you want to do something before the pass 2 should you care,
-see just below.
+@cindex @code{texi2any's} three passes
+@cindex Passes, of @code{texi2any}
+@cindex Three passes, of @code{texi2any}
 
-@node Initializing and finalizing
-@subsection Preparing and finalizing the output
+@command{texi2any} operates in three passes to transform the original
+input to the final output.  In pass@tie{}0, the @code{@@macro} calls
+are expanded; in pass@tie{}1, the document structure is gathered; and
+in pass@tie{}2 the result is output.  In most cases this organization
+does not matter, as output customization is almost always done in
+pass@tie{}2.  Only if you want to do something during an earlier pass
+do you need to consider this, as explained below.
+
+After the Texinfo input file has been parsed, some information is
+available which can be used to modify some variables and prepare for
+the output.  For example, even such basic things as the document
+language, the document encoding, values set with @code{@@set} or
+@code{@@setfilename}, etc., cannot be known before the Texinfo
+parsing.
 
 @anchor{Output initialization}
-@cindex Preparing the output
-
-After the texinfo file has been parsed, some information is available
-which can be used to modify some variables and prepare the outputting.
-For example the document language, the document encoding, 
-values set with @code{@@set} or @code{@@setfilename} and other similar 
-@@-commands are not known before the texinfo parsing. 
-
+@cindex Output initialization
+@cindex Initialization of output
 The following function reference may be redefined to be called after 
-texinfo processing and before document generation:
+Texinfo processing and before document generation, i.e., for output
+initialization:
 
 @deffn {Function Reference} init_out
-This function perform the initialization of variables and any other
-task before document outputting. 
+This function performs the initialization of variables and other
+tasks before document output.
 @end deffn
 
-In the default case, the hashes 
-@code{%BUTTONS_NAME}  (@pxref{Button specifications}),   
-@code{%BUTTONS_GOTO} (@pxref{About text}) are initialized.
-Indeed the initialization of these variables is dependent upon 
-the document language selection.  Similarly the encoding variables are set
-based on the information now available (@pxref{Init File Encodings}).
-When generating HTML, aditionally, the @code{%NAVIGATION_TEXT}
-hash is initialized.
+By default, the hashes @code{%BUTTONS_NAME} (@pxref{Button
+specifications}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
+initialized.  The initialization of these variables depends on the
+document language.  Similarly, the encoding variables are set based on
+the information now available (@pxref{Init File Encodings}).  When
+generating HTML, aditionally, the @code{%NAVIGATION_TEXT} hash is
+initialized.
 
-To perform the default initializations and also add more code, you could
-do as in the following example (save the default function reference and call 
-it in your own function):
+To perform the default initializations, which are almost surely
+desired, and also add more code, the best way is to save the default
+function reference and then call it in your new function, like this:
 
 @example
 my $default_init_out = $init_out;
-$init_out = \&makeinfo_like_init_out;
-sub makeinfo_like_init_out() 
+$init_out = \&my_init_out;
+sub my_init_out() 
 @{
    &$default_init_out();
    $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
@@ -19142,11 +19144,11 @@ sub makeinfo_like_init_out()
 @end example
 
 @anchor{Output finalization}
-@cindex Finalizing the output
-
-If you want to do some cleaning after the document was generated (close
-files, write at the end of files and so on), the following function 
-reference may be redefined:
+@cindex Output finalization
+@cindex Finalization of output
+At the other end of things, if you want to do some clean-up after the
+document was generated (write at the end of the output files, issue
+messages, @dots{}), the following function reference may be redefined:
 
 @deffn {Function Reference} finish_out
 This function is called after the document generation.
@@ -19155,7 +19157,7 @@ This function is called after the document generation.
 The default is to do nothing.
 
 These function references are mostly redundant with the handlers described 
-in @ref{Calling functions at different stages}.
+in the next section (@pxref{Calling functions at different stages}).
 
 
 @node Calling functions at different stages
@@ -19209,12 +19211,13 @@ push @@command_handler_finish, \&Texi2HTML::LaTeX2HTML::finish;
 @node External formatting of commands
 @subsection External formatting of commands
 
-It is possible to bypass completely the normal formatting of @@-commands 
-with braces and the block commands holding raw input
-(@code{@@html}, @code{@@tex}, @code{@@xml}@dots{} regions). 
-In that case the @@-commands and the text within 
-are passed to a user defined function early, right after the document structure determination, in pass 1 (@pxref{Three passes}).
-Another user defined function is called during the output expansion phase.
+It is possible to bypass completely the normal formatting of
+@@-commands with braces and the block commands holding raw input
+(@code{@@html}, @code{@@tex}, @code{@@xml}@dots{} regions).  In that
+case the @@-commands and the text within are passed to a user defined
+function early, right after the document structure determination, in
+pass 1 (@pxref{texi2any's Three Passes}).  Another user defined
+function is called during the output expansion phase.
 
 @vindex %command_handler
 The @@-commands that are keys of the @code{%command_handler} hash 
@@ -22388,14 +22391,15 @@ or that appear in
 following function reference:
 
 @deftypefn {Function Reference} {($result_line, $result, $result_text, $message)} unknown $command $line $pass
-@var{$command} is the @@-command, @var{$line} is the line following the 
-@var{$command}. @var{$pass} is the pass of texi2html (@pxref{Three passes}). 
-@var{$result} is a boolean.  If it is true then the other return
-values are taken into account otherwise the default actions are
-used. In case @var{$result} is true, @var{$result_line} is the new line 
-to be processed further, @var{$result_text} is the resulting formatted text 
-and @var{$message}, if defined is a message outputted to the output
-with line number added by @command{texi2any}.
+@var{$command} is the @@-command, @var{$line} is the line following
+the @var{$command}. @var{$pass} is the pass of texi2html
+(@pxref{texi2any's Three Passes}).  @var{$result} is a boolean.  If it
+is true then the other return values are taken into account otherwise
+the default actions are used. In case @var{$result} is true,
+@var{$result_line} is the new line to be processed further,
+@var{$result_text} is the resulting formatted text and @var{$message},
+if defined is a message outputted to the output with line number added
+by @command{texi2any}.
 @end deftypefn
 
 Commands with braces not specified above 
@@ -24358,7 +24362,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
+$Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24437,7 +24441,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.291 2010-08-16 23:14:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.292 2010-08-17 00:15:54 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
