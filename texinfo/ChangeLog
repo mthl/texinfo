@@ -1,5 +1,8 @@
 2010-08-17  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\commondummies),
+	(\indexnofonts): handle @- @{ @} @arrow @geq @leq.
+
 	* doc/texinfo.txi (Init File Calling at Different Stages): edit.
 
 2010-08-16  Karl Berry  <karl@gnu.org>
