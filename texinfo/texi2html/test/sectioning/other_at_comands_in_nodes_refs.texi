@@ -32,9 +32,7 @@
 * @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}::
 @end menu
 
-@ifnottex
 @node @- @{ @}
-@end ifnottex
 @chapter @- @{ @}
 
 @node @  @	 @! @* @. @: .@: @? @@
@@ -46,9 +44,7 @@
 @node @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}
 @chapter @equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}
 
-@ifnottex
 @node @geq{} @leq{} @arrow{}
-@end ifnottex
 @chapter @geq{} @leq{} @arrow{}
 
 @node @ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}
@@ -114,17 +110,13 @@
 @node @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
 @chapter @url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}
 
-@ifnottex
 @ref{@- @{ @}}
-@end ifnottex
 
 @ref{@  @	 @! @* @. @: .@: @? @@}
 @ref{@LaTeX{} @TeX{} @bullet{} @comma{} @copyright{} @dots{} @enddots{}}
 @ref{@equiv{} @error{} @euro{} @exclamdown{} @expansion{} @minus{}}
 
-@ifnottex
 @ref{@geq{} @leq{} @arrow{}}
-@end ifnottex
 
 @ref{@ordf{} @ordm{} @point{} @pounds{} @print{} @questiondown{} @registeredsymbol{}}
 @ref{@result{} @textdegree{} a@tie{}b @today{} @aa{}}
