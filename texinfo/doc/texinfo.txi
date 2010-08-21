@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
+@c $Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18636,7 +18636,7 @@ settings.  Smaller examples include @file{utf8.init},
 * Init File Encodings::           Overriding input and output encodings.
 * texi2any's Three Passes::       @command{texi2any} works in three passes.
 * Init File Calling at Different Stages::  Calling functions at various times.
-* External formatting of commands::
+* Init File Formatting of Commands:: Overriding default formatting completely.
 * Program string customization::
 * Customizing generalized block command opening:: 
 * Four contexts::             Four different contexts for command expansion: 
@@ -19209,70 +19209,82 @@ Called after output generation is finished.
 @end vtable 
 
 Because these are arrays, you should use @code{push} to add your
-functions to them, like this:
+functions to them, like this (a real example from the @LaTeX{}2HTML
+support):
 
 @example
-push (@@command_handler_init, \&my_init);
-push (@@command_handler_process, \&my_process);
-push (@@command_handler_finish, \&my_finish);
+push (@@command_handler_init,
+      \&Texi2HTML::LaTeX2HTML::init);
+push (@@command_handler_process,
+      \&Texi2HTML::LaTeX2HTML::latex2html);
+push (@@command_handler_finish,
+      \&Texi2HTML::LaTeX2HTML::finish);
 @end example
 
+For a real-life example, see the @LaTeX{}2HTML support.
 
-@node External formatting of commands
-@subsection External formatting of commands
+
+@node Init File Formatting of Commands
+@subsection Init File Formatting of Commands
+
+@cindex Init file formatting of commands
+@cindex Formatting of commands, in init file
+@cindex Commands, custom formatting
 
 It is possible to bypass completely the normal formatting of
-@@-commands with braces and the block commands holding raw input
-(@code{@@html}, @code{@@tex}, @code{@@xml}@dots{} regions).  In that
-case the @@-commands and the text within are passed to a user defined
-function early, right after the document structure determination, in
-pass 1 (@pxref{texi2any's Three Passes}).  Another user defined
-function is called during the output expansion phase.
+@@-commands with braces and the block commands of ``raw'' input such
+as @code{@@html} and @code{@@tex} (@pxref{Raw Formatter Commands}).
+In these cases the @@-commands and the text within are passed to a
+user-defined function early, right after the document structure
+determination of pass@tie{}1 (@pxref{texi2any's Three Passes}).
+Another user-defined function is called during the output expansion
+phase.
 
 @vindex %command_handler
-The @@-commands that are keys of the @code{%command_handler} hash 
-are collected when determining the document structure 
-pass and expanded in the expansion
-pass using user defined functions. The associated value is a reference on
-a hash used to specify the user defined function references. 
-The key of the hash reference are @code{'init'} for the function
-reference called during the first pass, and @code{'expand'}
-during the expansion pass. Here is an example for an @@-command with
-braces, @code{math}, used for an expansion using @LaTeX{}toHTML:
+These user-defined functions are specified as values in the
+@code{%command_handler} hash, with the key being the command to
+override.  The associated value is itself a hash reference, whose keys
+can be @code{'init'} for the function reference called during the
+first pass, and @code{'expand'} during the expansion pass.
+
+Here is an example for an @@-command with braces, @code{math}, used
+for in the @LaTeX{}toHTML support:
 
 @example
 $command_handler@{'math'@} =
-     @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
-       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
-     @};
+  @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
+     'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+  @};
 @end example
 
-
-And an example for a raw region @@-command:
+@cindex Raw region, overriding formatting of
+Handling a raw region @@-command is the same:
 
 @example
 $command_handler@{'tex'@} =
-     @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
-       'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
-     @};
+  @{ 'init' => \&Texi2HTML::LaTeX2HTML::to_latex,
+     'expand' => \&Texi2HTML::LaTeX2HTML::do_tex
+@};
 @end example
 
-The function references are called like:
+These function references are called as follows, respectively:
 
 @deftypefn {Function Reference} $status $command_handler@{'$command'@}->@{'init'@} $command $text $count
-@var{$command} is the @@-command name, @var{$text} is the text appearing 
-within the @@-command. @var{$count} is a counter counting how many times
-this @@-command appeared. @var{$status} is a boolean which should be true if 
-the collecting was succesfull. If false the @@-command and the text is 
-discarded.
+@var{$command} is the @@-command name, @var{$text} is the text
+appearing within the @@-command, and @var{$count} counts how many
+times this @@-command has appeared.  @var{$status} is a boolean to return,
+true if the collection was succesful.  If it is false, the @@-command
+and the text are discarded.
 @end deftypefn
 
 @deftypefn {Function Reference} $result $command_handler@{'$command'@}->@{'expand'@} $command $count $state $text
-@var{$command} is the @@-command name, @var{$count} is a counter counting 
-how many times this @@-command appeared. @var{$state} is a reference on a 
-hash containing many informations about the context. @var{$text} should be
-empty. @var{$result} is the expanded resulting text.
+@var{$command} is the @@-command name, @var{$count} counts how many
+times this @@-command has appeared, and @var{$state} is a hash
+reference containing detailed information about the context;
+@var{$text} should be empty.  @var{$result} is the expanded resulting
+text.
 @end deftypefn
+
 
 @node Program string customization
 @subsection Program string customization
@@ -20668,7 +20680,7 @@ to be the argument (like in @code{@@`a}) should be keys of the
 hash @code{%accent_map} hash, even if no value is associated.
 @item
 Command with braces may be handled differently, as described in
-@ref{External formatting of commands}, this is used 
+@ref{Init File Formatting of Commands}, this is used 
 for @code{@@math} if La@TeX{}2HTML is used, for example.
 @end itemize
 
@@ -21236,7 +21248,7 @@ the text is the content of the @code{@@verbatiminclude} file argument.
 @end deftypefn
 
 If La@TeX{}2HTML is used, @code{@@tex} regions are handled differently,
-(@pxref{External formatting of commands}).
+(@pxref{Init File Formatting of Commands}).
 
 The @code{@@cartouche} command formatting is controlled by the
 function reference:
@@ -24372,7 +24384,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
+$Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24451,7 +24463,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.293 2010-08-17 18:45:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
