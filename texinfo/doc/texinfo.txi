@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
+@c $Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18637,7 +18637,6 @@ settings.  Smaller examples include @file{utf8.init},
 * texi2any's Three Passes::       @command{texi2any} works in three passes.
 * Init File Calling at Different Stages::  Calling functions at various times.
 * Init File Formatting of Commands:: Overriding default formatting completely.
-* Program string customization::
 * Customizing generalized block command opening:: 
 * Four contexts::             Four different contexts for command expansion: 
                               normal text, preformatted text, strings and math.
@@ -18828,9 +18827,6 @@ variables and options}.
 @node Init File Global Information
 @subsection Init File Global Information
 
-@cindex Init files, and global information
-@cindex Global information, in init files
-
 @c @ignore
 @c FIXME those are still undocumented
 @c 'split_level' 
@@ -18843,9 +18839,28 @@ variables and options}.
 @c %hyphenation
 @c @end ignore
 
+@cindex Init files, and global information
+@cindex Global information, in init files
+
+Much global information about the document is available as the basis
+for customization in init files.
+
+@menu
+* Title String Variables::           @code{@@author}, @code{@@title}, etc.
+* Command Line String Variables::    Input and output file names, etc.
+* Global Document String Variables:: @code{@@copying}, CSS, TOC, etc.
+* Index String Variables::           @code{defindex}, @code{@@synindex}, etc.
+* Program String Customization::     For the About element and footers.
+@end menu
+
+@node Title String Variables
+@subsubsection Title String Variables
+
+@cindex Title string variables
+
 For title-related @@-commands, such as @code{@@title},
-@code{@@titlefont}, @code{@@author}, and @code{@@top}, some
-information is available, with diverse formatting.
+@code{@@titlefont}, and @code{@@author}, a variety of information is
+available, with diverse formatting.
 
 @code{@@author} and @code{@@subtitle} are multiline title-related
 commands, since they may appear more than once.  Multiline
@@ -18868,16 +18883,11 @@ associated with the following keys in the @code{%Texi2HTML::THISDOC}
 hash, where @var{command} is the title @@-command:
 
 @table @code
-@item @var{command}
-The corresponding text formatted.
-
 @item @var{command}_texi
 The original Texinfo code.
 
-@item @var{command}_line_nr
-An opaque structure corresponding with the line where the @@-comand
-appeared.  Not available for @code{@@titlefont}, multiline
-title-related commands and derived information.
+@item @var{command}
+The corresponding text formatted.
 
 @item @var{command}_no_texi
 The text formatted as simple plain text.
@@ -18885,6 +18895,11 @@ The text formatted as simple plain text.
 @item @var{command}_simple_format
 The text formatted as a string without formatting elements
 (@pxref{Four contexts}).
+
+@item @var{command}_line_nr
+An opaque structure corresponding with the line where the @@-comand
+appeared.  Not available for @code{@@titlefont}, multiline
+title-related commands and derived information.
 
 @end table
 
@@ -18906,8 +18921,14 @@ line where the @@-command lines appeared.
 
 @end table
 
-The @code{%Texi2HTML::THISDOC} hash holds other global information.
-Here are some entries related to the command-line processing:
+
+@node Command Line String Variables
+@subsubsection Command Line String Variables
+
+@cindex Command-line string variables
+
+These entries in the @code{%Texi2HTML::THISDOC} hash are related to
+the command-line processing:
 
 @table @code
 @item destination_directory
@@ -18970,7 +18991,14 @@ Home page of the command generating the output.
 
 @end table
 
-Here are entries for other global document information:
+
+@node Global Document String Variables
+@subsubsection Global Document String Variables
+
+@cindex Global document strings
+
+These entries in the @code{%Texi2HTML::THISDOC} hash provide other
+global document information.
 
 @table @code
 @item copying_comment
@@ -19006,7 +19034,14 @@ The file name of the table of contents.
 
 @end table
 
-Here are index-related entries:
+
+@node Index String Variables
+@subsubsection Index String Variables
+
+@cindex Index strings
+
+These entries in the @code{%Texi2HTML::THISDOC} hash provide other
+index-related information.
 
 @table @code
 @item defindex 
@@ -19034,6 +19069,25 @@ the two arguments of @code{@@synindex}
 (@pxref{synindex,,@code{@@synindex}}).
 
 @end table
+
+
+@node Program String Customization
+@subsubsection Program String Customization
+
+@cindex Program string customization
+@cindex Customization of program string
+@vindex PROGRAM_NAME_IN_FOOTER
+
+The following function reference may be used to construct a string
+advertising the program used to generate the output.  It may be used
+in the @code{About} element, and in the footers if
+@code{PROGRAM_NAME_IN_FOOTER} is set.
+
+@deftypefn {Function Reference} $program_string_formatted program_string
+This function reference should return the formatted program
+string.
+@end deftypefn
+
 
 @cindex Init file flag values
 @cindex Flag values, in init files
@@ -19285,19 +19339,6 @@ reference containing detailed information about the context;
 text.
 @end deftypefn
 
-
-@node Program string customization
-@subsection Program string customization
-
-There is a function reference that may be used to construct a string 
-advertizing the program used to generate the manual. It may 
-be used in the About element, and in the footers if
-@code{PROGRAM_NAME_IN_FOOTER} is set.
-
-@deftypefn {Function Reference} $program_string_formatted program_string
-This function reference should return the formatted program
-string.
-@end deftypefn
 
 @node Customizing generalized block command opening
 @subsection Customizing generalized block command opening
@@ -24384,7 +24425,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
+$Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24463,7 +24504,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.294 2010-08-21 16:26:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
