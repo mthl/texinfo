@@ -1,5 +1,7 @@
 2010-08-25  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.txi (Init File General Block Commands): edit.
+
 	* doc/texinfo.txi (Init File Global Information): split into subnodes,
 	and merge in `Program String Customization'.
 

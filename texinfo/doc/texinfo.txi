@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
+@c $Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15997,7 +15997,7 @@ You can specify more than one input file name; each is processed in
 turn.  If an input file name is @samp{-}, or no input file names at
 all are given, standard input is read.
 
-@anchor{makeinfo options}
+@anchor{makeinfo Options}
 @cindex @code{makeinfo} options
 @cindex Options for @code{makeinfo}
 
@@ -16377,7 +16377,7 @@ Variables}.
 @opindex --no-split
 @cindex Splitting of output files
 @cindex Output file splitting
-@anchor{Splitting output}
+@anchor{Splitting Output}
 @c
 When generating Info, by default large output files are split into
 smaller subfiles, of approximately 300k bytes.  When generating HTML,
@@ -17003,7 +17003,7 @@ For example, you could write the following in your @file{.emacs} file:@refill
 @end example
 
 @noindent
-@c If you write these three cross references using xref, you see
+@c Writing these three cross references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
 For more information, see @ref{makeinfo options, , Options for
@@ -17016,8 +17016,9 @@ For more information, see@*
 @ref{Easy Customization, , Easy Customization Interface, emacs, The GNU Emacs Manual},@*
 @ref{Examining, , Examining and Setting Variables, emacs, The GNU Emacs Manual},@*
 @ref{Init File, , , emacs, The GNU Emacs Manual}, and@*
-@ref{makeinfo options, , Options for @code{makeinfo}}.
+@ref{makeinfo Options}.
 @end ifnottex
+
 
 @node texinfo-format commands
 @subsection The @code{texinfo-format@dots{}} Commands
@@ -17025,7 +17026,7 @@ For more information, see@*
 In GNU Emacs in Texinfo mode, you can format part or all of a Texinfo
 file with the @code{texinfo-format-region} command.  This formats the
 current region and displays the formatted text in a temporary buffer
-called @samp{*Info Region*}.@refill
+called @samp{*Info Region*}.
 
 Similarly, you can format a buffer with the
 @code{texinfo-format-buffer} command.  This command creates a new
@@ -18632,12 +18633,12 @@ settings.  Smaller examples include @file{utf8.init},
 * Init File Namespaces:: @code{Texi2HTML::Config}, @code{Texi2HTML}, and @code{main}.
 * Init File Functions::  Redefining functions through references.
 * Setting and Getting Configuration Variables::
-* Init File Global Information::  Accessing the document title, file name, etc.
-* Init File Encodings::           Overriding input and output encodings.
-* texi2any's Three Passes::       @command{texi2any} works in three passes.
-* Init File Calling at Different Stages::  Calling functions at various times.
+* Init File Global Information::    Accessing document title, file name, etc.
+* Init File Encodings::             Overriding input and output encodings.
+* texi2any's Three Passes::         @command{texi2any} works in three stages.
+* Init File Calling at Different Stages:: Calling functions at various times.
 * Init File Formatting of Commands:: Overriding default formatting completely.
-* Customizing generalized block command opening:: 
+* Init File General Block Commands:: Customizing usual environments.
 * Four contexts::             Four different contexts for command expansion: 
                               normal text, preformatted text, strings and math.
 * Internationalization of Strings::
@@ -18850,6 +18851,7 @@ for customization in init files.
 * Command Line String Variables::    Input and output file names, etc.
 * Global Document String Variables:: @code{@@copying}, CSS, TOC, etc.
 * Index String Variables::           @code{defindex}, @code{@@synindex}, etc.
+* Init File Flag Values::            @code{@@set} values.
 * Program String Customization::     For the About element and footers.
 @end menu
 
@@ -19071,6 +19073,19 @@ the two arguments of @code{@@synindex}
 @end table
 
 
+@node Init File Flag Values
+@subsubsection Init File Flag Values
+
+@cindex Init file flag values
+@cindex Flag values, in init files
+@cindex @code{@@set} values, in init files
+@vindex %main::value
+
+Flags defined with @code{@@set} (@pxref{set value})
+may be accessed through the @code{%main::value} hash.  The key is the
+flag name, and the value is the flag value.
+
+
 @node Program String Customization
 @subsubsection Program String Customization
 
@@ -19087,15 +19102,6 @@ in the @code{About} element, and in the footers if
 This function reference should return the formatted program
 string.
 @end deftypefn
-
-
-@cindex Init file flag values
-@cindex Flag values, in init files
-@cindex @code{@@set} values, in init files
-@vindex %main::value
-Finally, flags defined with @code{@@set} (@pxref{set value})
-may be accessed through the @code{%main::value} hash.  The key is the
-flag name, and the value is the flag value.
 
 
 @node Init File Encodings
@@ -19138,7 +19144,7 @@ force a given encoding for the output, it's best to set
 and for other formats is UTF-8.
 
 The values for the encoding related variables are set in the default
-@code{init_out} function reference (@pxref{Output initialization}).
+@code{init_out} function reference (@pxref{Output Initialization}).
 
 
 @node texi2any's Three Passes
@@ -19163,7 +19169,7 @@ language, the document encoding, values set with @code{@@set} or
 @code{@@setfilename}, etc., cannot be known before the Texinfo
 parsing.
 
-@anchor{Output initialization}
+@anchor{Output Initialization}
 @cindex Output initialization
 @cindex Initialization of output
 The following function reference may be redefined to be called after 
@@ -19197,7 +19203,7 @@ sub my_init_out()
 @}
 @end example
 
-@anchor{Output finalization}
+@anchor{Output Finalization}
 @cindex Output finalization
 @cindex Finalization of output
 At the other end of things, if you want to do some clean-up after the
@@ -19331,34 +19337,38 @@ true if the collection was succesful.  If it is false, the @@-command
 and the text are discarded.
 @end deftypefn
 
-@deftypefn {Function Reference} $result $command_handler@{'$command'@}->@{'expand'@} $command $count $state $text
+@deftypefn {Function Reference} $result $command_handler@{'$command'@}->@{'expand'@} $command $count \%state $text
 @var{$command} is the @@-command name, @var{$count} counts how many
-times this @@-command has appeared, and @var{$state} is a hash
-reference containing detailed information about the context;
-@var{$text} should be empty.  @var{$result} is the expanded resulting
-text.
+times this @@-command has appeared, and @var{\%state} is a hash
+reference with detailed context information; @var{$text} should be
+empty.  @var{$result} is the expanded resulting text.
 @end deftypefn
 
 
-@node Customizing generalized block command opening
-@subsection Customizing generalized block command opening
+@node Init File General Block Commands
+@subsection Init File General Block Commands
 
-A  generalized block
- @@-command is any @@-command that ends with a @code{@@end} except 
-@@-commands that only select if the input is processed (like 
-@code{@@ignore} or @code{@@ifhtml}) or raw @@-commands (like @code{@@verbatim}
-and @code{@@html}).
+@cindex Init file general block commands
+@cindex General block commands, in init files
+@cindex Block commands, in init files
+
+A @dfn{general block @code{@@}-command} is any @code{@@}-command which
+is paired with an @code{@@end @var{cmdname}}, with the exception of
+those @code{@@}-commands selecting whether input is processed (such as
+@code{@@ignore} and @code{@@ifhtml}) and ``raw'' @code{@@}-commands
+(such as @code{@@verbatim} and @code{@@html}).
 
 @deftypefn {Function Reference} $line begin_format_texi $command $line \%state
-The @var{$command} is the format command, the @var{$line} is the 
-line following the @@-command, @var{\%state} is a reference on
-a hash containing many formatting information.  It can modify the 
-line and return something else.
-
-In the default case, it is used to keep track of the multitable nesting.
-As a consequence, it is linked with the multitable formating. 
-@xref{Multitable formatting}.
+@var{$command} is the format command, @var{$line} is the rest of the
+line following the @code{@@}-command, and @var{\%state} is a hash
+reference with detailed context information.  The function can modify
+@code{$line} and return something else.
 @end deftypefn
+
+By default, this is used to keep track of multitable nesting, and so
+it is linked with multitable formating (@pxref{Multitable
+Formatting}).
+
 
 @node Four contexts
 @subsection Four contexts for expansions: preformatted, normal, string and math
@@ -19535,7 +19545,7 @@ should be used to retranslate strings based on the new language.
 We will call the main unit of output documents an @dfn{element}
 (nodes, to a first approximation).  An element's association with
 output files is determined by the split options (@pxref{Splitting
-output}).  This section describes precisely how elements work, with
+Output}).  This section describes precisely how elements work, with
 details for customization.
 
 @menu
@@ -19845,7 +19855,7 @@ by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
 no @samp{[} and @samp{]}. 
 The element of the @code{%NAVIGATION_TEXT} hash are defined 
 dynamically, in the @code{init_out} function reference
-(@pxref{Output initialization}).
+(@pxref{Output Initialization}).
 
 @vindex %ACTIVE_ICONS
 @vindex %BUTTONS_NAME
@@ -20275,7 +20285,7 @@ used. The text is added before or after the main about text.
 The keys of this hash are element labels (@pxref{Elements informations}).  
 The value is the text associated with the element label in the about text.
 In the default case, the element of the hash are defined dynamically in 
-that the @code{init_out} function reference (@pxref{Output initialization}).
+that the @code{init_out} function reference (@pxref{Output Initialization}).
 
 
 @item %BUTTONS_EXAMPLE
@@ -20401,7 +20411,7 @@ The texinfo element name.
 The number associated with a section.
 @item doc_nr
 A number incremented whenever a new file should begin, based on how the 
-document is split (@pxref{Splitting output}).
+document is split (@pxref{Splitting Output}).
 @item text
 The element text.
 @item name
@@ -20752,7 +20762,7 @@ following meaning:
 
 @table @samp
 @item args
-@anchor{Reference hash args}
+@anchor{Reference Hash Args}
 The value associated is a reference on an array.  Each element of the array
 defines how the arguments (separated by @samp{,} in the texinfo code) for 
 the @@-command should be 
@@ -20865,7 +20875,7 @@ The @var{$text} is the text appearing within the @@-command braces.
 @var{args} is a reference on an array contening the command arguments 
 formatted according to the same conventions than with the reference hash style
 (provided the value associated with the @@-command is a hash reference with a
-@var{$arg} key as described in @ref{Reference hash args}).
+@var{$arg} key as described in @ref{Reference Hash Args}).
 If @var{$text} is split in paragraphs each paragraph is passed through
 the function, and @var{$no_close} is true if it is not the last paragraph,
 while @var{$no_open} is true if it is not the first paragraph.
@@ -21613,7 +21623,7 @@ the @code{@@item} line. @var{$text} is the corresponding text.
 @end deftypefn
 
 @item multitable
-@anchor{Multitable formatting}
+@anchor{Multitable Formatting}
 The multitable elements formatting is controlled by the functions associated
 with two function references.  One for a cell, and the other for a row.
 
@@ -21638,15 +21648,14 @@ the row text, with cells allready formatted with the @code{$cell}
 function reference. @var{$item_command}, @var{\@@columnfractions}, 
 @var{\@@prototype_row}, @var{\@@prototype_lengths}
 and @var{$column_number} are the same than in the function reference above.
-
 @end deftypefn
+
 @end table
 
-In the default case, this function is interlinked with 
-@code{$begin_format_texi} (@pxref{Customizing generalized block command opening})
-and @code{@@multitable} formatting
-since a stack of possible nested 
-multitables is kept to know the cell number.
+By default, this function is interlinked with
+@code{$begin_format_texi} (@pxref{Init File General Block Commands})
+and @code{@@multitable} formatting since a stack of possibly nested
+multitables is stored in order to know the cell number.
 
 
 @node Whole table and list formatting
@@ -24425,7 +24434,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
+$Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24504,7 +24513,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.295 2010-08-25 18:49:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
