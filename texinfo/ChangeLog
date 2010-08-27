@@ -1,3 +1,7 @@
+2010-08-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: Systematize use of @@ vs. @code{@@}.
+
 2010-08-25  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Init File General Block Commands): edit.

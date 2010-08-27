@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
+@c $Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -11261,7 +11261,7 @@ command.  Write the mathematical expression between braces, like this:
 @end example
 
 The @code{@@math} command has no special effect on the Info and HTML
-output.  @command{makeinfo} expands any @code{@@}-commands as usual,
+output.  @command{makeinfo} expands any @@-commands as usual,
 but it does not try to produce good mathematical formatting in any
 way.
 
@@ -12321,11 +12321,12 @@ As you can see, the continued lines are combined, as if they had been
 typed on one source line.
 
 Although this example only shows a one-line continuation,
-continuations may extend over any number of lines; simply put an
-@code{@@} at the end of each line to be continued.
+continuations may extend over any number of lines, in the same way;
+put an @code{@@} at the end of each line to be continued.
 
-The @code{@@} character does not have to be the last character on the
-physical line: whitespace is allowed (and ignored) afterwards.
+Technically, the @code{@@} character does not have to be the last
+character on the physical line: whitespace is allowed (and ignored)
+afterwards.
 
 @cindex Whitespace, collapsed around continuations
 @cindex Collapsing whitespace around continuations
@@ -12341,13 +12342,13 @@ around a continuation inside braces.  For example:
 @end example
 
 @noindent The output (not shown) has excess space between `Category'
-and `Name'.  In this case, simply elide any unwanted whitespace in
+and `Name'.  In this case, simply elide the unwanted whitespace in
 your input, or put the continuation @code{@@} outside braces.
 
-@code{@@} does not (currently) function as a continuation character in
-@emph{any} other context.  Ordinarily, @samp{@@} followed by a
-whitespace character (space, tab, newline) produces a normal interword
-space (@pxref{Multiple Spaces}).
+@code{@@} does not function as a continuation character in @emph{any}
+other context.  Ordinarily, @samp{@@} followed by a whitespace
+character (space, tab, newline) produces a normal interword space
+(@pxref{Multiple Spaces}).
 
 
 @node Optional Arguments
@@ -16035,9 +16036,8 @@ The options are:
 @item --commands-in-node-names
 @opindex --commands-in-node-names
 This option now does nothing, but remains for compatibility.  (It used
-to ensure that @code{@@}-commands in node names were expanded
-throughout the document, especially @code{@@value}.  This is now done
-by default.)
+to ensure that @@-commands in node names were expanded throughout the
+document, especially @code{@@value}.  This is now done by default.)
 
 @item --conf-dir=@var{path}
 @opindex --conf-dir=@var{path}
@@ -19329,7 +19329,8 @@ $command_handler@{'tex'@} =
 
 These function references are called as follows, respectively:
 
-@deftypefn {Function Reference} $status $command_handler@{'$command'@}->@{'init'@} $command $text $count
+@deftypefn {Function Reference} $status @
+           $command_handler@{'$command'@}->@{'init'@} $command $text $count
 @var{$command} is the @@-command name, @var{$text} is the text
 appearing within the @@-command, and @var{$count} counts how many
 times this @@-command has appeared.  @var{$status} is a boolean to return,
@@ -19337,7 +19338,8 @@ true if the collection was succesful.  If it is false, the @@-command
 and the text are discarded.
 @end deftypefn
 
-@deftypefn {Function Reference} $result $command_handler@{'$command'@}->@{'expand'@} $command $count \%state $text
+@deftypefn {Function Reference} $result @
+     $command_handler@{'$command'@}->@{'expand'@} $command $count \%state $text
 @var{$command} is the @@-command name, @var{$count} counts how many
 times this @@-command has appeared, and @var{\%state} is a hash
 reference with detailed context information; @var{$text} should be
@@ -19352,16 +19354,16 @@ empty.  @var{$result} is the expanded resulting text.
 @cindex General block commands, in init files
 @cindex Block commands, in init files
 
-A @dfn{general block @code{@@}-command} is any @code{@@}-command which
-is paired with an @code{@@end @var{cmdname}}, with the exception of
-those @code{@@}-commands selecting whether input is processed (such as
-@code{@@ignore} and @code{@@ifhtml}) and ``raw'' @code{@@}-commands
-(such as @code{@@verbatim} and @code{@@html}).
+A @dfn{general block @@-command} is any @@-command which is paired
+with an @code{@@end @var{cmdname}}, with the exception of those
+@@-commands selecting whether input is processed (such as
+@code{@@ignore} and @code{@@ifhtml}) and ``raw'' @@-commands (such as
+@code{@@verbatim} and @code{@@html}).
 
 @deftypefn {Function Reference} $line begin_format_texi $command $line \%state
 @var{$command} is the format command, @var{$line} is the rest of the
-line following the @code{@@}-command, and @var{\%state} is a hash
-reference with detailed context information.  The function can modify
+line following the @@-command, and @var{\%state} is a hash reference
+with detailed context information.  The function can modify
 @code{$line} and return something else.
 @end deftypefn
 
@@ -23264,10 +23266,10 @@ manual.  @xref{inforef, , Cross references using
 @item \input @var{macro-definitions-file}
 Use the specified macro definitions file.  This command is used only
 in the first line of a Texinfo file to cause @TeX{} to make use of the
-@file{texinfo} macro definitions file.  The backslash in @code{\input}
-is used instead of an @code{@@} because @TeX{} does not
-recognize @code{@@} until after it has read the definitions file.
-@xref{Texinfo File Header}.
+@file{texinfo} macro definitions file.  The @code{\} in @code{\input}
+is used instead of an @code{@@} because @TeX{} does not recognize
+@code{@@} until after it has read the definitions file.  @xref{Texinfo
+File Header}.
 
 @item @@item
 Indicate the beginning of a marked paragraph for @code{@@itemize} and
@@ -24434,7 +24436,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
+$Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24513,7 +24515,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.296 2010-08-26 00:49:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
