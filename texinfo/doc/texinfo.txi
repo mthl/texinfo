@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
+@c $Id: texinfo.txi,v 1.298 2010-08-28 16:30:26 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -160,7 +160,7 @@ the menu lists all the lower level nodes in the document.
 * Defining New Texinfo Commands:: User-defined macros and aliases.
 * Include Files::                 How to incorporate other Texinfo files.
 * Hardcopy::                            Output for paper, with @TeX{}.
-* Generic translator texi2any/makeinfo:: The all purpose converter.
+* Generic Translator texi2any/makeinfo:: The all purpose converter.
 * Creating and Installing Info Files::  Details on Info output.
 * Generating HTML::               Details on HTML output.
 * texi2any Output Customization:: Fine tuning with initialization files.
@@ -602,7 +602,7 @@ Formatting and Printing Hardcopy
 * PDF Output::                  Portable Document Format output.
 * Obtaining TeX::               How to Obtain @TeX{}.
 
-Generic translator texi2any/makeinfo
+Generic Translator texi2any/makeinfo
 
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
@@ -2931,7 +2931,7 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 
 
 @node setfilename
-@subsection @code{@@setfilename}: Set the output file name
+@subsection @code{@@setfilename}: Set the Output File Name
 @findex setfilename
 @cindex Texinfo requires @code{@@setfilename}
 
@@ -3007,7 +3007,7 @@ See also the @option{--output} option in @ref{Invoking texi2any}.
 
 
 @node settitle
-@subsection @code{@@settitle}: Set the document title
+@subsection @code{@@settitle}: Set the Document Title
 @findex settitle
 
 In order to be made into a printed manual, a Texinfo file must contain
@@ -8021,7 +8021,7 @@ Examples}.
 
 
 @node quotation
-@section @code{@@quotation}: Block quotations
+@section @code{@@quotation}: Block Quotations
 @cindex Quotations
 @findex quotation
 
@@ -10598,7 +10598,7 @@ To produce a non-breakable space, see @ref{tie, @code{@@tie}}.
 
 
 @node frenchspacing
-@subsection @code{@@frenchspacing} @var{val}: Control sentence spacing
+@subsection @code{@@frenchspacing} @var{val}: Control Sentence Spacing
 @findex frenchspacing
 @cindex French spacing
 @cindex Sentences, spacing after
@@ -11220,7 +11220,7 @@ an itemized list, you do not need to type the braces
 
 
 @node geq leq
-@section @code{@@geq@{@}} (@geq{}) and @code{@@leq@{@}} (@leq{}): Inserting relations
+@section @code{@@geq@{@}} (@geq{}) and @code{@@leq@{@}} (@leq{}): Inserting Relations
 @findex geq
 @findex leq
 
@@ -15927,8 +15927,8 @@ Many other @TeX{} distributions are available; see
 @uref{http://tug.org/}.
 
 
-@node Generic translator texi2any/makeinfo
-@chapter A generic translator for Texinfo: @command{texi2any}/@command{makeinfo}
+@node Generic Translator texi2any/makeinfo
+@chapter A Generic Translator for Texinfo: @command{texi2any}/@command{makeinfo}
 
 @command{texi2any} is a generic translator for Texinfo that can
 produce different output formats and is highly customizable.  By
@@ -18635,12 +18635,11 @@ settings.  Smaller examples include @file{utf8.init},
 * Setting and Getting Configuration Variables::
 * Init File Global Information::    Accessing document title, file name, etc.
 * Init File Encodings::             Overriding input and output encodings.
-* texi2any's Three Passes::         @command{texi2any} works in three stages.
+* texi2any's Three Passes::         Macro expansion, document structure, output
 * Init File Calling at Different Stages:: Calling functions at various times.
 * Init File Formatting of Commands:: Overriding default formatting completely.
 * Init File General Block Commands:: Customizing usual environments.
-* Four contexts::             Four different contexts for command expansion: 
-                              normal text, preformatted text, strings and math.
+* Init File Expansion Contexts::     Normal, preformatted, string, math.
 * Internationalization of Strings::
 @end menu
 
@@ -18896,7 +18895,7 @@ The text formatted as simple plain text.
 
 @item @var{command}_simple_format
 The text formatted as a string without formatting elements
-(@pxref{Four contexts}).
+(@pxref{Init File Expansion Contexts}).
 
 @item @var{command}_line_nr
 An opaque structure corresponding with the line where the @@-comand
@@ -19148,7 +19147,7 @@ The values for the encoding related variables are set in the default
 
 
 @node texi2any's Three Passes
-@subsection @code{texi2any}'s Three Passes: Macro expansion, document structure and output
+@subsection @code{texi2any}'s Three Passes: Macro Expansion, Document Structure, Output
 
 @cindex @code{texi2any's} three passes
 @cindex Passes, of @code{texi2any}
@@ -19372,8 +19371,8 @@ it is linked with multitable formating (@pxref{Multitable
 Formatting}).
 
 
-@node Four contexts
-@subsection Four contexts for expansions: preformatted, normal, string and math
+@node Init File Expansion Contexts
+@subsection Init File Expansion Contexts: Normal, Preformatted, String, Math
 
 There are four contexts of interest:
 @table @emph 
@@ -20596,7 +20595,7 @@ associated with accentted letters like @code{@@AA@{@}}.
 Each of these categories of commands have associated hashes,
 for normal
 context, for preformatted context for strings and math. 
-(@pxref{Four contexts}).  The 
+(@pxref{Init File Expansion Contexts}).  The 
 keys of the hashes are the 
 command names, the associated value is the text replacing the command.
 In math context if a command is not a key of these hashes, the 
@@ -20696,7 +20695,8 @@ and miscalleneous commands (@code{@@email}, @code{@@verb}, @code{@@w},
 @code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by hashes in the
 default case, 
 @code{%style_map} for normal context, @code{%style_map_pre} for
-preformatted context and @code{%style_map_texi} in string context (@pxref{Four contexts}).
+preformatted context and @code{%style_map_texi} in string context
+(@pxref{Init File Expansion Contexts}).
 In math context, @code{%style_map_math} is tried first and, if not found,
 other hashes are used.
 
@@ -21935,7 +21935,7 @@ the menu link.  It is used in the default case to detect if the
 menu link is right in the @command{@@menu} or not, since if it is not 
 right below the menu the formatting is simpler.
 @var{$preformatted} is true if in preformatted context.
-@xref{Four contexts}. 
+@xref{Init File Expansion Contexts}. 
 @var{$node_normalized_formatted} is the node with spaces normalized
 and formatted.
 @end deftypefn
@@ -24436,7 +24436,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
+$Id: texinfo.txi,v 1.298 2010-08-28 16:30:26 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24515,7 +24515,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.297 2010-08-27 00:10:08 karl Exp $
+@comment $Id: texinfo.txi,v 1.298 2010-08-28 16:30:26 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

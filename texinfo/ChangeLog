@@ -1,3 +1,8 @@
+2010-08-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: consistently capitalize after colons in
+	@section, etc.
+
 2010-08-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: Systematize use of @@ vs. @code{@@}.
