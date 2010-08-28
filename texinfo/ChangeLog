@@ -1,3 +1,7 @@
+2010-08-28  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* doc/texinfo.txi (Indexing Commands): Fix typo.
+
 2010-08-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: consistently capitalize after colons in
