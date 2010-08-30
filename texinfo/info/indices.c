@@ -1,5 +1,5 @@
 /* indices.c -- deal with an Info file index.
-   $Id: indices.c,v 1.12 2010-08-08 16:59:04 gray Exp $
+   $Id: indices.c,v 1.13 2010-08-30 16:18:48 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -194,6 +194,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
      index for, build and remember an index now. */
   fb = file_buffer_of_window (window);
   if (!initial_index_filename ||
+      !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
       info_free_references (index_index);
@@ -292,8 +293,9 @@ index_entry_exists (WINDOW *window, char *string)
     return 0;
 
   fb = file_buffer_of_window (window);
-  if (!initial_index_filename
-      || (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
+  if (!initial_index_filename ||
+      !fb ||
+      (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
       info_free_references (index_index);
       index_index = info_indices_of_file_buffer (fb);
