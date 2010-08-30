@@ -1,3 +1,9 @@
+2010-08-30  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	* info/indices.c (do_info_index_search, index_entry_exists): Check
+	for NULL return from file_buffer_of_window.  Patch proposed by
+	Vitezslav Crhonek <vcrhonek@redhat.com>.
+
 2010-08-28  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* doc/texinfo.txi (Indexing Commands): Fix typo.
