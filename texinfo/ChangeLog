@@ -1,3 +1,7 @@
+2010-09-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Init File Expansion Contexts): edit.
+
 2010-08-30  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	* info/indices.c (do_info_index_search, index_entry_exists): Check
