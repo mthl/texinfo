@@ -1,3 +1,7 @@
+2010-09-06  Roland Kaufmann  <roland.kaufmann@gmail.com>  (tiny change)
+
+	* util/texi2dvi: new option --shell-escape.
+
 2010-09-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Init File Expansion Contexts): edit.

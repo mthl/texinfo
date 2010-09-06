@@ -1,6 +1,6 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
-# $Id: texi2dvi,v 1.159 2010-06-23 23:07:22 karl Exp $
+# $Id: texi2dvi,v 1.160 2010-09-06 22:11:06 karl Exp $
 #
 # Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002, 2003,
 # 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ unset RUNNING_KSH
 set -e
 
 # This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision: 1.159 $'
+rcs_revision='$Revision: 1.160 $'
 rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | sed -e 's!.*/!!'`
 
@@ -58,6 +58,7 @@ quiet=false     # let the tools' message be displayed
 recode=false
 set_language=
 src_specials=
+shell_escape=
 latex2html=hevea  # or set to tex4ht
 textra=         # Extra TeX commands to insert in the input file.
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
@@ -331,6 +332,7 @@ TeX tuning:
       --no-line-error        do not pass --file-line-error to TeX
   -r, --recode               call recode before TeX to translate input
       --recode-from=ENC      recode from ENC to the @documentencoding
+      --shell-escape         pass --shell-escape to TeX
       --src-specials         pass --src-specials to TeX
   -t, --command=CMD          insert CMD in copy of input file
    or --texinfo=CMD          multiple values accumulate
@@ -986,6 +988,9 @@ run_tex ()
   # Tell TeX to make source specials (for backtracking from output to
   # source, given a sufficiently smart editor), if specified.
   test -n "$src_specials" && cmd="$cmd $src_specials"
+
+  # Tell TeX to allow running external executables
+  test -n "$shell_escape" && cmd="$cmd $shell_escape"
 
   # Tell TeX to be batch if requested.
   if $batch; then
@@ -1699,6 +1704,7 @@ while test x"$1" != x"$arg_sep"; do
     -r | --recode) recode=true;;
     --recode-from) shift; recode=true; recode_from="$1";;
     --src-specials) src_specials=--src-specials;;
+    --shell-escape) shell_escape=--shell-escape;;  
     --tex4ht) latex2html=tex4ht;;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | sed 's/\\\\/\\\\\\\\/g'`;;
