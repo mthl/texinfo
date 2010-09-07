@@ -1,5 +1,12 @@
 2010-09-06  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\dosmartslant): localize font switch to \ttsl.
+	Report from Bruno Haible, 29 Aug 2010 15:46:01.
+
+	* doc/texinfo.tex (\lattwochardefs): define \ed and \ee using
+	\dotless{i} rather than \i.  Report from Andrei Kholodnyi,
+	3 Sep 2010 20:14:42.	
+
 	* doc/texinfo.txi (Internationalization of Strings): edit.
 
 2010-09-06  Roland Kaufmann  <roland.kaufmann@gmail.com>  (tiny change)
