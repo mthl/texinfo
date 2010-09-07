@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-09-06.16; # UTC
+htmlxrefversion=2010-09-07.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -64,6 +64,9 @@ gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
 gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
 libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
 
+gettext		mono	${GS}/gettext/manual/gettext.html
+gettext		node	${GS}/gettext/manual/html_node/
+
 gnubg		mono	${GS}/gnubg/manual/gnubg.html
 gnubg		node	${GS}/gnubg/manual/html_node/
 
@@ -103,6 +106,8 @@ mh-e		node	${GS}/emacs/manual/html_mono/mh-e.html
 motti		node	${GS}/motti/manual/
 
 ocrad		mono	${GS}/ocrad/manual/ocrad_manual.html
+
+recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 
 standards	mono	${G}/prep/standards/standards.html
 standards	node	${G}/prep/standards/html_node/

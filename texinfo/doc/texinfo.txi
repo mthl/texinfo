@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.301 2010-09-06 23:44:26 karl Exp $
+@c $Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19556,16 +19556,15 @@ retranslate strings based on the new language.
 @cindex Output elements
 @cindex Elements, main unit of output documents
 
-We will call the main unit of output documents an @dfn{element}
-(nodes, to a first approximation).  An element's association with
-output files is determined by the split options (@pxref{Splitting
-Output}).  This section describes precisely how elements work, with
-details for customization.
+We will call the main unit of output documents an @dfn{element}.  An
+element's association with output files is determined by the split
+options (@pxref{Splitting Output}).  This section describes precisely
+how these output elements work, with details for customization.
 
 @menu
-* Output Elements Defined::
-* Elements informations::
-* Elements lines::
+* Defined: Output Elements Defined.
+* Labels: Output Element Labels.
+* Lines: Elements lines.
 @end menu
 
 
@@ -19598,8 +19597,8 @@ The top element is the highest element in the document structure.  If
 the document has a @code{@@top} section (@pxref{makeinfo top}), it is
 the element associated with that section; otherwise, it is the element
 associated with the document's @code{@@node Top} (@pxref{The Top
-Node}).  If by chance there is no @code{@@node Top}, the first element
-in the document is the top element.
+Node}).  If there is no @code{@@node Top}, the first element in the
+document is the top element.
 
 The top element may end up formatted differently from normal elements
 if there is a @code{@@top} section or the @code{@@node Top} is not
@@ -19652,8 +19651,8 @@ without navigation information.
 @end table
 
 It is common not to have anything but normal elements, especially in
-case of monolithic output.  In the case of HTML output, special
-elements may be present.
+case of monolithic output.  It is usually with HTML output that
+special elements may be present.
 
 The main component of elements is sections if @code{USE_SECTIONS} is
 set or @code{USE_NODES} is set to 0; conversely, the main component is
@@ -19671,75 +19670,98 @@ are associated with the previous node, and isolated nodes are
 elements.
 
 
-@node Elements informations
-@subsection Elements informations
+@node Output Element Labels
+@subsection Output Element Labels
 
+@cindex Output element labels
+@cindex Element labels
 
-The following items are associated with elements.  Each of these
-is associated with a name and a reference to the 
-element they represent, when such an element exists. 
-The element is either a global element (for example the first element)
-or an element relative to the current
-element (for example the next element).  The relative elements are 
-found with respect with the document
-structure defined by the section structuring commands (@code{@@chapter}, 
-@code{@@unnumbered}@dots{}) or by the nodes (in that case the node 
-directions are specified on node line or in menu organization), as explained
-above (@pxref{Two Paths}).
-These items are called @dfn{element labels}.  They may be associated with 
-a button (@pxref{Button specifications}), and used in the formatting functions 
-(@pxref{Elements informations}).
+A variety of data items, called @dfn{element labels}, are associated
+with elements.  They may be used in the formatting functions, and/or
+associated with a button (@pxref{Button specifications}).
 
-Here is the list:
+Each element label has a name and a reference to the element they
+represent, when such an element exists.  The element is either a
+global element (for example, the first element) or relative to the
+current element (for example, the next element).  Such relative
+elements are determined with respect to the document structure defined
+by the section structuring commands (@code{@@chapter},
+@code{@@unnumbered}@dots{}) or by the nodes if the node pointers are
+specified on @code{@@node} lines or in menus, as explained above
+(@pxref{Two Paths}).
+
+Here is the list of element labels:
 
 @table @emph
 @item @samp{@ }
-An empty button
+An empty button.
+
 @item Top
-Top element. The associated name is @code{TOP_HEADING} if that variable is 
-defined. This variable is not set by default.
-@item Contents
-Table of contents
+Top element.  The associated name is @code{$TOP_HEADING} if that variable is 
+defined.  This variable is not set by default.
+
 @item About
-About (help) page
+About (help) page.
+
+@item Contents
+Table of contents.
+
 @item Overview
-Overview, short table of contents
-@item First
-First element in reading order
-@item Last
-Last element in reading order
+Overview: short table of contents.
+
 @item Index
-The first chapter with @code{@@printindex}.  The associated name 
-is @code{$INDEX_CHAPTER}, if the variable is set.  This variable is not set
-by default.
+The first chapter with @code{@@printindex}.  The associated name is
+@code{$INDEX_CHAPTER}, if the variable is set.  This variable is not
+set by default.
+
 @item This
-The current element
-@item Back
-Preceding element in reading order
-@item FastBack
-Beginning of this chapter or previous chapter if the element is a chapter
-@item Prev
-Previous section on the same level 
-@item NodePrev
-Previous node
+The current element.
+
 @item Forward 
-Next element in reading order
+Next element in reading order.
+
+@item First
+First element in reading order.
+
+@item Last
+Last element in reading order.
+
+@item Back
+Previous element in reading order.
+
 @item FastForward
-Next chapter
+Next chapter.
+
+@item FastBack
+Beginning of this chapter, or previous chapter if the element is a chapter.
+
 @item Next
-Next section on the same level
-@item NodeNext
-Next node
-@item Following
-Next node in node reading order
+Next section at the same level.
+
+@item Prev
+Previous section at the same level.
+
 @item Up
-Up section
+Up section.
+
+@item NodeNext
+Next node.
+
+@item Following
+Next node in node reading order.
+
+@item NodePrev
+Previous node.
+
 @item NodeUp
-Up node
-@item FileNext
-Forward element first in the next page (or file)
-@item FilePrev
-Backward element first in the previous page (or file)
+Up node.
+
+@item NextFile
+Forward element first in the next page (or file).
+
+@item PrevFile
+Backward element first in the previous page (or file).
+
 @end table
 
 
@@ -19845,8 +19867,9 @@ The signification of the array element value is the following:
 The function is called with argument a boolean true if the navigation 
 panel should be vertical.  Should return the formatted button text.
 @item reference on a scalar
-The scalar value is printed. For some possibly
-usefull scalars, @ref{Elements informations}.
+The scalar value is printed. For some possibly useful scalars,
+@ref{Output Element Labels}.
+
 @item reference on an array
 In this case the first array element should be a reference on text and the 
 second element an element label.  In that case a link to the 
@@ -20296,17 +20319,17 @@ If this is a function reference it is expanded and the returned text is
 used. The text is added before or after the main about text.
 @item %BUTTONS_GOTO
 
-The keys of this hash are element labels (@pxref{Elements informations}).  
-The value is the text associated with the element label in the about text.
-In the default case, the element of the hash are defined dynamically in 
-that the @code{init_out} function reference (@pxref{Output Initialization}).
+The keys of this hash are element labels (@pxref{Output Element
+Labels}).  The value is the text associated with the element label in
+the about text.  In the default case, the element of the hash are
+defined dynamically in that the @code{init_out} function reference
+(@pxref{Output Initialization}).
 
 
 @item %BUTTONS_EXAMPLE
-
-The keys of this hash are  element labels (@pxref{Elements informations}). 
-The value is the text associated with the element label in the about 
-example, typically a section number.
+The keys of this hash are element labels (@pxref{Output Element
+Labels}).  The value is the text associated with the element label in
+the about example, typically a section number.
 
 @end table
 
@@ -24449,7 +24472,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.301 2010-09-06 23:44:26 karl Exp $
+$Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24528,7 +24551,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.301 2010-09-06 23:44:26 karl Exp $
+@comment $Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
