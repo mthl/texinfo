@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
+@c $Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19564,7 +19564,7 @@ how these output elements work, with details for customization.
 @menu
 * Defined: Output Elements Defined.
 * Labels: Output Element Labels.
-* Lines: Elements lines.
+* Lines: Output Element Lines.
 @end menu
 
 
@@ -19764,39 +19764,52 @@ Backward element first in the previous page (or file).
 
 @end table
 
-
 The element labels may also be accessed when formatting elements.
-Four hashes are available, with key the elements items, and values:
+Four hashes are available, with their keys being the elements items,
+and their values as follows:
 
 @vtable @code
 @item %Texi2HTML::NAME
-The formatted element name
+The formatted element name.
+
 @item %Texi2HTML::HREF
-The element hypertext reference
+The element hypertext reference.
+
 @item %Texi2HTML::NODE
-The element node name
+The element node name.
+
 @item %Texi2HTML::NO_TEXI
-The element name after removal of texi commands
+The element name after removal of texi commands.
+
 @end vtable
 
-For example @code{$Texi2HTML::NAME@{'Back'@}} is the name of the
+For example, @code{$Texi2HTML::NAME@{'Back'@}} is the name of the
 previous element in reading order.
 
 
-@node Elements lines
-@subsection Elements lines
+@node Output Element Lines
+@subsection Output Element Lines
 
-The following array references or arrays holds formatted lines:
+@cindex Output elements lines
+@cindex Formatted lines, of output elements
+
+The following array references holds formatted lines relating to
+various output elements.
 
 @vtable @code
+@item $Texi2HTML::OVERVIEW
+Lines of the short table of contents.  @xref{Contents and Overview
+text}.
+
 @item $Texi2HTML::THIS_SECTION
 Lines of the current element.
-@item $Texi2HTML::OVERVIEW
-Lines of short table of contents. @xref{Contents and Overview text}.
-@item $Texi2HTML::TOC_LINES
-Lines of table of contents. @xref{Contents and Overview text}.
+
 @item $Texi2HTML::TITLEPAGE
-The title page formatted. @xref{Title page text}.
+The title page formatted.  @xref{Title page text}.
+
+@item $Texi2HTML::TOC_LINES
+Lines of table of contents.  @xref{Contents and Overview text}.
+
 @end vtable
 
 
@@ -20240,10 +20253,10 @@ text of the element, with section number,
 text of the element, without section number.
 @end table
 
-This function doesn't return anything but should fill the array corresponding
-with the @code{$Texi2HTML::TOC_LINES} and @code{$Texi2HTML::OVERVIEW} 
-references with the table of contents and short table of contents.  
-@xref{Elements lines}.
+This function doesn't return anything but should fill the array
+corresponding with the @code{$Texi2HTML::TOC_LINES} and
+@code{$Texi2HTML::OVERVIEW} references with the table of contents and
+short table of contents.  @xref{Output Element Lines}.
 
 @end deffn
 
@@ -20325,7 +20338,6 @@ the about text.  In the default case, the element of the hash are
 defined dynamically in that the @code{init_out} function reference
 (@pxref{Output Initialization}).
 
-
 @item %BUTTONS_EXAMPLE
 The keys of this hash are element labels (@pxref{Output Element
 Labels}).  The value is the text associated with the element label in
@@ -20345,10 +20357,10 @@ This function should return the about text.
 @subsubsection Formatting of title page
 
 @vindex $Texi2HTML::TITLEPAGE
-The title page is first formatted using the text appearing in 
-the @code{@@titlepage} section, and put in @code{$Texi2HTML::TITLEPAGE}
-(@pxref{Elements lines}).  More formatting can be done using the following
-function reference:
+The title page is first formatted using the text appearing in the
+@code{@@titlepage} section, and put in @code{$Texi2HTML::TITLEPAGE}
+(@pxref{Output Element Lines}).  More formatting can be done using the
+following function reference:
 
 @deffn {Function Reference} titlepage \@@titlepage_lines $text $comment $simple_text
 @var{\@@titlepage_lines} is an array containing the Texinfo lines in @code{@@titlepage}.
@@ -24472,7 +24484,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
+$Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24551,7 +24563,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.302 2010-09-07 18:51:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
