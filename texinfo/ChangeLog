@@ -2,6 +2,8 @@
 
 	* doc/texinfo.txi (Output Element Lines),
 	(Navigation Button Specification): rename + edit.
+	(verb): mention that the delimiter character can appear inside the
+	argument.
 
 2010-09-07  Karl Berry  <karl@gnu.org>
 
