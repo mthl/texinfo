@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
+@c $Id: texinfo.txi,v 1.304 2010-09-08 22:42:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18519,7 +18519,7 @@ not a promise.
 * Loading Init Files::             Initialization files and their search paths.
 * Init File Basics::               General information on init files.
 * Output Elements::                The main unit of output documents.
-* Navigation panel customization::
+* Navigation Panel Customization:: Customizing navigation buttons and more.
 * Page layout customization::
 * Special elements::                  Customizing special elements text and 
                                       layout.
@@ -19180,8 +19180,8 @@ This function performs the initialization of variables and other
 tasks before document output.
 @end deffn
 
-By default, the hashes @code{%BUTTONS_NAME} (@pxref{Button
-specifications}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
+By default, the hashes @code{%BUTTONS_NAME} (@pxref{Navigation Button
+Specification}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
 initialized.  The initialization of these variables depends on the
 document language.  Similarly, the encoding variables are set based on
 the information now available (@pxref{Init File Encodings}).  When
@@ -19678,7 +19678,7 @@ elements.
 
 A variety of data items, called @dfn{element labels}, are associated
 with elements.  They may be used in the formatting functions, and/or
-associated with a button (@pxref{Button specifications}).
+associated with a button (@pxref{Navigation Button Specification}).
 
 Each element label has a name and a reference to the element they
 represent, when such an element exists.  The element is either a
@@ -19813,124 +19813,146 @@ Lines of table of contents.  @xref{Contents and Overview text}.
 @end vtable
 
 
-@node Navigation panel customization
-@section Customization of the navigation panels
+@node Navigation Panel Customization
+@section Navigation Panel Customization
 
-A lot of customization of the navigation panel may be achieved
-with variables redefinition, especially special arrays.
-The configuration variables @code{VERTICAL_HEAD_NAVIGATION}, @code{ICONS},
-@code{HEADERS}, @code{HEADER_IN_TABLE}, @code{USE_ACCESSKEY} and
-@code{USE_REL_REV}
+@cindex Customization, of navigation panel
+@cindex Navigation panel, customization of
+
+The @dfn{navigation panel} is the line of links (and labels) that
+typically appears at the top of each node, so that users can easily
+get to the next node, the table of contents, and so on.  It can be
+customized extensively.
+
+Considerable customization can done with straightforward variable
+assignments, especially special arrays.  The configuration variables
+@code{VERTICAL_HEAD_NAVIGATION}, @code{ICONS}, @code{HEADERS},
+@code{HEADER_IN_TABLE}, @code{USE_ACCESSKEY} and @code{USE_REL_REV}
 may be used to change the the navigation panel formatting.
 @xref{makeinfo Configuration Variables}.
-In case it isn't enough, it is also possible to redefine the function 
-doing the navigation panel formatting.
+
+In the unusual case that this isn't enough, it is also possible to
+redefine the function doing the navigation panel formatting.
 
 @menu 
-* Button specifications::
+* Button: Navigation Button Specification.
 * Panel formatting function::
 @end menu
 
 
-@node Button specifications
-@subsection Specifying the buttons formatting
+@node Navigation Button Specification
+@subsection Navigation Button Specification
 
-Several arrays and hashes enable a precise control on the buttons and 
-their display. 
-The following arrays determine the buttons present in navigation panels:
+@cindex Navigation button specification
+@cindex Button specification, navigation
+Several arrays and hashes enable precise control over the navigation
+panel buttons and their display.  The following arrays determine the
+buttons present in the various navigation panels:
 
 @vtable @code
 @item @@SECTION_BUTTONS
-This array is used for the navigation panel buttons present at the beginning
-of sectioning elements. If split at node or section they are also used 
-at the page footer, and in the case of section navigation at the page header.
+Specifies the navigation panel buttons present at the beginning of
+sectioning elements.  If the output is split at nodes or sections,
+they are also used at the page footer, and in the case of section
+navigation being enabled, at the page header.
+
 @item @@SECTION_FOOTER_BUTTONS
 @itemx @@NODE_FOOTER_BUTTONS
-This array is used for the navigation panel buttons present at the footer
-of pages when split at node or at section. 
+These arrays specify the navigation panel buttons present in the page
+footer when the output is split at sections or nodes, respectively.
 
-If @code{WORDS_IN_PAGE} is set and the output is split at nodes, these 
-buttons are only present if there are more than @code{WORDS_IN_PAGE}
-words in the sectioning element text.  This counting is very rough and include
-punctuation marks, html elements, numbers.  The default is to include the
-buttons after 300 words.
+@vindex WORDS_IN_PAGE
+If @code{WORDS_IN_PAGE} is set and the output is split at nodes, these
+buttons are only included if the sectioning element text has more than
+@code{WORDS_IN_PAGE} words.  The word counting is only approximate and
+includes punctuation marks, html elements, numbers.  The default is to
+include the buttons for elements larger than 300 words.
+
 @item @@CHAPTER_BUTTONS
-This array is used for the buttons appearing at the page footer if split at 
-chapter, and at the page header if split at chapter and there is no section
-navigation.
+Specifies the buttons appearing at the page footer if split at
+chapters, and at the page header if split at chapters and there is no
+section navigation.
+
 @item @@MISC_BUTTONS
-These buttons appear at the beginning of special and sections  
-and at the end of these section pages if the output is split.
+Specifies the buttons appearing at the beginning of special elements
+and, if the output is split, at the end of such elements.
+
 @item @@LINKS_BUTTONS
-These are used for @code{<link>} elements if they are output in the
-headers.
+Used for @code{<link>} elements if they are output in the headers.
+
 @item @@TOP_BUTTONS
-This array is used for the top element buttons (@pxref{Output Elements
+Specifies the buttons used in the top element (@pxref{Output Elements
 Defined}).
 @end vtable
 
-The array specify the buttons displayed in navigation panels, 
-and how the button is displayed.
-Each element is associated with
-a button of the navigation panel from left to right.
-The signification of the array element value is the following:
+Each array specifies which buttons are included, and how they are
+displayed.  Each array element is associated with a button of the
+navigation panel from left to right.  The meaning of the array element
+values is the following:
 
 @table @emph
-@item reference on a function
-The function is called with argument a boolean true if the navigation 
-panel should be vertical.  Should return the formatted button text.
-@item reference on a scalar
-The scalar value is printed. For some possibly useful scalars,
-@ref{Output Element Labels}.
+@item function reference
+The function is called with one boolean argument, true if the
+navigation panel should be vertical.  Should return the formatted
+button text.
 
-@item reference on an array
-In this case the first array element should be a reference on text and the 
-second element an element label.  In that case a link to the 
-element associated with the element label with the scalar value
-text is generated.
+@item scalar reference
+The scalar value is printed.  @xref{Output Element Labels}, for some
+scalars that may be useful here.
 
-For example if the buttons array element is
+@item array reference
+Here, the first array element should be a reference to a text string
+and the second element an element label.  A link to the element
+associated with the element label with the given text is generated.
+
+For example, if the button array element is
 @example
 [ 'Next', \$Texi2HTML::NODE@{Next@} ] 
 @end example
 
-@vindex %NAVIGATION_TEXT
-The button will be a link to the next section with text 
+@noindent
+Then the button will be a link to the next section with text
 @code{$Texi2HTML::NODE@{Next@}}.
+
 @item element label
+@vindex %NAVIGATION_TEXT
+@vindex init_out
 If icons are not used, the button is a link to the corresponding
-element which text is defined by the value associated with the 
-element label in the @code{%NAVIGATION_TEXT} hash, surrounded
-by @samp{[} and @samp{]}. If the element label is @samp{ }, there is
-no @samp{[} and @samp{]}. 
-The element of the @code{%NAVIGATION_TEXT} hash are defined 
-dynamically, in the @code{init_out} function reference
+element whose text is defined by the value associated with the element
+label in the @code{%NAVIGATION_TEXT} hash, surrounded by @samp{[} and
+@samp{]}. If the element label is @samp{ }, the @samp{[} and @samp{]}
+are omitted.  The elements of the @code{%NAVIGATION_TEXT} hash are
+defined dynamically, in the @code{init_out} function reference
 (@pxref{Output Initialization}).
 
 @vindex %ACTIVE_ICONS
 @vindex %BUTTONS_NAME
 @vindex %PASSIVE_ICONS
 @vindex %NAVIGATION_TEXT
-If icons are used, the button is an image with file determined by
-the value associated with the element label in the @code{%ACTIVE_ICONS}
-hash if the the link really leads to an element, or in the @code{%PASSIVE_ICONS}
-hash if there is no element to link to.  Of course if there is a link to the 
-element the icon links to that element.  The button name and 
-the button description are used in HTML attributes to have a textual 
-description of the icon.  The corresponding strings are in 
-@code{%BUTTONS_NAME} for the button name and @code{%NAVIGATION_TEXT}
-for the description.
+@cindex Icons, in navigation buttons
+If icons are used, the button is an image whose file is determined by
+the value associated with the element label in the
+@code{%ACTIVE_ICONS} hash if the link leads to an element, or in the
+@code{%PASSIVE_ICONS} hash if there is no element to link to.  If
+there is a link to the element, the icon links to that element.  The
+button name and button description are given as HTML attributes to
+have a textual description of the icon.  The corresponding strings are
+in @code{%BUTTONS_NAME} for the button name and
+@code{%NAVIGATION_TEXT} for the description.
 @end table
 
 @vindex %BUTTONS_ACCESSKEY
-If the configuration variable @code{USE_ACCESSKEY} is set, 
-the @code{accesskey} attribute is used in navigation.  In that case 
-the @code{%BUTTONS_ACCESSKEY} hash is used for the access key.
+@cindex @code{accesskey} navigation
+If the configuration variable @code{USE_ACCESSKEY} is set, the
+@code{accesskey} attribute is used in navigation.  The
+@code{%BUTTONS_ACCESSKEY} hash is then used for the @code{accesskey}
+attributes.
 
 @vindex %BUTTONS_REL
-Similarly, if the @code{USE_REL_REV} configuration variable is set, 
-the @code{rel} attribute is used in navigation.  In that case 
-the @code{%BUTTONS_REL} hash is used for the @code{rel} attribute.
+@cindex @code{rel} navigation
+Similarly, if the @code{USE_REL_REV} configuration variable is set,
+the @code{rel} attribute is used in navigation.  In that case the
+@code{%BUTTONS_REL} hash is used for the @code{rel} attribute.
 
 
 @node Panel formatting function
@@ -20318,10 +20340,10 @@ are expanded.
 @subsubsection Formatting of about text
 
 The default about element contains an explaination of the buttons used
-in the document (@code{@@SECTION_BUTTONS}, @ref{Button specifications}) and 
-an example locating the buttons targets in an example.
-The formatting of this text may be influenced by the following 
-hashes and variables:
+in the document (@code{@@SECTION_BUTTONS}, @ref{Navigation Button
+Specification}) and an example locating the buttons targets in an
+example.  The formatting of this text may be influenced by the
+following hashes and variables:
 
 @table @code
 @item $PRE_ABOUT 
@@ -24484,7 +24506,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
+$Id: texinfo.txi,v 1.304 2010-09-08 22:42:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24563,7 +24585,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.303 2010-09-08 15:05:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.304 2010-09-08 22:42:56 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
