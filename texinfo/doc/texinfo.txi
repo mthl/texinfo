@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.305 2010-09-08 23:57:52 karl Exp $
+@c $Id: texinfo.txi,v 1.306 2010-09-10 00:28:24 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18518,6 +18518,10 @@ not a promise.
 @end quotation
 @end cartouche
 
+This chapter describes how to customize virtually every aspect of the
+@command{texi2any} HTML output.  (Other output formats have no useful
+customization possibilities.)
+
 @menu
 * Loading Init Files::             Initialization files and their search paths.
 * Init File Basics::               General information on init files.
@@ -19183,8 +19187,8 @@ This function performs the initialization of variables and other
 tasks before document output.
 @end deffn
 
-By default, the hashes @code{%BUTTONS_NAME} (@pxref{Navigation Button
-Specification}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
+By default, the hashes @code{%BUTTONS_NAME} (@pxref{Navigation Panel
+Button Specification}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
 initialized.  The initialization of these variables depends on the
 document language.  Similarly, the encoding variables are set based on
 the information now available (@pxref{Init File Encodings}).  When
@@ -19681,7 +19685,7 @@ elements.
 
 A variety of data items, called @dfn{element labels}, are associated
 with elements.  They may be used in the formatting functions, and/or
-associated with a button (@pxref{Navigation Button Specification}).
+associated with a button (@pxref{Navigation Panel Button Specification}).
 
 Each element label has a name and a reference to the element they
 represent, when such an element exists.  The element is either a
@@ -19838,16 +19842,17 @@ In the unusual case that this isn't enough, it is also possible to
 redefine the function doing the navigation panel formatting.
 
 @menu 
-* Button: Navigation Button Specification.
-* Panel formatting function::
+* Buttons: Navigation Panel Button Specification.
+* Functions: Navigation Panel Formatting Functions.
 @end menu
 
 
-@node Navigation Button Specification
-@subsection Navigation Button Specification
+@node Navigation Panel Button Specification
+@subsection Navigation Panel Button Specification
 
-@cindex Navigation button specification
-@cindex Button specification, navigation
+@cindex Navigation panel button specification
+@cindex Button specification, navigation panel
+
 Several arrays and hashes enable precise control over the navigation
 panel buttons and their display.  The following arrays determine the
 buttons present in the various navigation panels:
@@ -19958,67 +19963,81 @@ the @code{rel} attribute is used in navigation.  In that case the
 @code{%BUTTONS_REL} hash is used for the @code{rel} attribute.
 
 
-@node Panel formatting function
-@subsection Changing the navigation panel formatting
+@node Navigation Panel Formatting Functions
+@subsection Navigation Panel Formatting Functions
 
-If you are not satisfied with this scheme, it is possible to
-control exactly the formatting of navigation panels by redefining a function 
-reference.  The function controlling the display of navigation panel is 
-associated with the following function reference:
+@cindex Navigation panel formatting functions
+@cindex Formatting functions, for navigation panel
 
-@deftypefn {Function Reference} $navigation_text print_navigation \@@buttons $vertical
-@var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for that navigation panel.  
-@var{$vertical} is true if the navigation panel should be vertical.
-Returns the formatted navigation panel in @var{$navigation_text}.
+In the unusual event that your needs are not met by changing the
+navigation buttons (see the previous section), you can completely
+control the formatting of navigation panels by redefining function
+references.
+
+
+The overall display of navigation panels is controlled via this
+function reference, @code{print_navigation}:
+
+@deftypefn {Function Reference} $navigation_text print_navigation @
+           \@@buttons $vertical
+@var{\@@buttons} is an array reference holding the specification of
+the buttons for that navigation panel.  @var{$vertical} is true if the
+navigation panel should be vertical.  Returns the formatted navigation
+panel in @var{$navigation_text}.
 @end deftypefn
 
-You may also only redefine the function reference @code{button_formatting}
-that does the formatting of one button:
-@deftypefn {Function Reference} $formatted_button button_formatting $button $vertical
-@var{$button} hold the specification of the button as explained above.
-@var{$vertical} is true if the navigation panel should be vertical.
+The function reference @code{button_formatting} does the formatting of
+one button:
+
+@deftypefn {Function Reference} $formatted_button button_formatting @
+           $button $vertical
+@var{$button} holds the specification of the button as explained
+above.  @var{$vertical} is true if the navigation panel should be
+vertical.  Returns the formatted result in @var{$formatted_button}.
 @end deftypefn
 
-The default functions call the function associated with 
-@code{$print_head_navigation} to format the navigation panel for the 
-page header.  Thus you can control parts of the formatting by
-redefining the function reference.  This function reference 
-does nothing except for HTML.
+By default, the function associated with @code{$print_head_navigation}
+formats the navigation panel for the page header. 
 
-@deftypefn {Function Reference} $page_head print_head_navigation $filehandle \@@buttons $first_in_page $previous_is_top \%element
-@var{$filehandle} is the opened filehandle the function should write to,
-if defined. If not defined the function should return the formatted
-page head.
-@var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for the navigation panel. 
-@var{$first_in_page} should be set if this is the first navigation
+@deftypefn {Function Reference} $page_head print_head_navigation @
+           $filehandle \@@buttons $first_in_page $previous_is_top \%element
+@itemize @bullet
+@item @var{$filehandle} is the opened filehandle the function should
+write to, if defined.  If not defined the function should return the
+formatted page header as a string.
+
+@item @var{\@@buttons} is an array reference holding the specification
+of the buttons for the navigation panel.
+
+@item @var{$first_in_page} should be set if this is the first navigation
 panel in the page.
-@var{$previous_is_top} is true if the previous element is the top
-element.
-@var{\%element} is a reference on a hash holding informations about
+
+@item @var{$previous_is_top} is true if the previous element is the
+top element.
+
+@item @var{\%element} is a hash reference with information about
 the element.
+@end itemize
 @end deftypefn
 
-Similarly, the default functions call the function associated with 
-@code{$print_foot_navigation} to format the navigation panel for the 
-page footer, in HTML, the only format with page footers in the
-default case.  Thus you can control parts of the formatting by
-redefining the function reference.
+Similarly, the function associated with @code{$print_foot_navigation}
+formats the navigation panel for the page footer.
 
-@deffn {Function Reference} print_foot_navigation $filehandle \@@buttons $rule $print_navigation_panel \%element $maybe_in_page
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{\@@buttons} is an array reference which should hold the specification of 
-the buttons for the navigation panel.
-@var{rule} is a rule that may be used to separate the navigation panel
+@deffn {Function Reference} print_foot_navigation @
+  $filehandle \@@buttons $rule $print_navigation_panel \%element $maybe_in_page
+@itemize @bullet
+@item @var{$filehandle}, @var{\@@buttons}, and @var{\%element} are as above.
+
+@item @var{$rule} is a rule that may be used to separate the navigation panel
 from the preceding text.
-@var{$print_navigation_panel} is a boolean that say wether it would make
-sense to print the navigation panel itself.
-@var{\%element} is a reference on a hash holding informations about
-the element being finished.
-@var{$maybe_in_page} is set if called between regular elements and top or 
-between regular elements and special elements, that is, not at
-the end of a file.
+
+@item @var{$print_navigation_panel} is a boolean specifying
+whether the navigation panel itself should be printed.
+
+@item @var{$maybe_in_page} is set if the present footer is between
+regular elements and the top, or between regular elements and special
+elements, that is, not at the end of a file.
+@end itemize
 @end deffn
 
 @node Page layout customization
@@ -20343,7 +20362,7 @@ are expanded.
 @subsubsection Formatting of about text
 
 The default about element contains an explaination of the buttons used
-in the document (@code{@@SECTION_BUTTONS}, @ref{Navigation Button
+in the document (@code{@@SECTION_BUTTONS}, @ref{Navigation Panel Button
 Specification}) and an example locating the buttons targets in an
 example.  The formatting of this text may be influenced by the
 following hashes and variables:
@@ -24509,7 +24528,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.305 2010-09-08 23:57:52 karl Exp $
+$Id: texinfo.txi,v 1.306 2010-09-10 00:28:24 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24588,7 +24607,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.305 2010-09-08 23:57:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.306 2010-09-10 00:28:24 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

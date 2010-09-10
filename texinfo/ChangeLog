@@ -1,3 +1,7 @@
+2010-09-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Navigation Panel Formatting Functions): rename+edit.
+
 2010-09-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Element Lines),
