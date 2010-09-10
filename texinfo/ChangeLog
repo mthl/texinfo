@@ -1,3 +1,8 @@
+2010-09-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Output Element Labels): add Section*,
+	rm File*, etc., per Patrice.
+
 2010-09-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Navigation Panel Formatting Functions): rename+edit.

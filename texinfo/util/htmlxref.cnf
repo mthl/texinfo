@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-09-07.17; # UTC
+htmlxrefversion=2010-09-09.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -88,6 +88,8 @@ jwhois		node	${GS}/jwhois/manual/html_node/
 
 libextractor	mono	${GS}/libextractor/extractor.html
 
+libmatheval	mono	${GS}/libmatheval/matheval.html
+
 liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
 liquidwar6	node	${GS}/liquidwar6/manual/html_node/
 
@@ -106,6 +108,9 @@ mh-e		node	${GS}/emacs/manual/html_mono/mh-e.html
 motti		node	${GS}/motti/manual/
 
 ocrad		mono	${GS}/ocrad/manual/ocrad_manual.html
+
+pspp		mono	${GS}/pspp/manual/pspp.html
+pspp		node	${GS}/pspp/manual/html_node/
 
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 
