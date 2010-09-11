@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
+@c $Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20055,20 +20055,20 @@ unrelated to the headings and ``footings'' produced in @TeX{} output;
 @pxref{Headings,, Page Headings}.)
 
 @menu
-* Headers:  Customizing Page Headers.
-* Sections: Customizing the section layout.
+* Headers:  Customizing HTML Page Headers.
+* Sections: Customizing HTML Section Layout.
 * Footers:  Customizing file footers.
 @end menu
 
 
-@node Customizing Page Headers
-@subsection Customizing Page Headers
+@node Customizing HTML Page Headers
+@subsection Customizing HTML Page Headers
 
 @cindex Customizing HTML page headers
 @cindex Page headers, customizing in HTML
 
 The three following function references give full control over the
-page header formatting done at the top of each output file.  The
+page header formatting done at the top of each HTML output file.  The
 @code{$print_page_head} function is called for all pages.  After that,
 the @code{$print_chapter_header} function is called if the output is
 split at chapters, or the @code{$print_section_header} function if the
@@ -20131,27 +20131,40 @@ the @code{rel} attribute.  @xref{Navigation Panel Button
 Specification}.
 
 
-@node Customizing the section layout
-@subsection Customizing the section layout
+@node Customizing HTML Section Layout
+@subsection Customizing HTML Section Layout
 
-The functions associated with the following function references are used for 
-the formatting of sections:
+The following function references are used for the formatting of
+sections in HTML output:
 
-@deffn {Function Reference} print_section $filehandle $first_in_page $previous_is_top \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{$first_in_page} is true if this section is the first section in the page.
-@var{$previous_is_top} is true if this section is the section following the 
-Top section.
-@var{\%element} is a reference on a hash holding informations about the element.
-This function should print the current section contents.
+@deffn {Function Reference} print_section $filehandle @
+       $first_in_page $previous_is_top \%element
+@table @var
+@item $filehandle
+is the opened filehandle to which the function should write.
+
+@item $first_in_page
+is true if this section is the first section in the page.
+
+@item $previous_is_top
+is true if this section is the section following the top section.
+
+@item \%element
+is a hash reference with information about the element.
+@end table
+
+The function should print the current section contents.
 @end deffn
 
-@deffn {Function Reference} end_section $filehandle $last_element_or_before_top \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{$last_element_or_before_top} is true if this section precedes the top 
-element or is the last one in page, or before the special elements.
-@var{\%element} is a reference on a hash holding informations about the element.
+@deffn {Function Reference} end_section $filehandle @
+       $last_element_or_before_top \%element
+@var{$filehandle} and @var{\%element} are as above.
+
+@var{$last_element_or_before_top} is true if this section precedes the
+top element or is the last one in page, or before the special
+elements.
 @end deffn
+
 
 @node Customizing file footers
 @subsection Customizing the file footers
@@ -24552,7 +24565,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
+$Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24631,7 +24644,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
