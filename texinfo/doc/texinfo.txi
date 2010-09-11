@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.307 2010-09-10 23:20:43 karl Exp $
+@c $Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18519,17 +18519,16 @@ not a promise.
 @end cartouche
 
 This chapter describes how to customize virtually every aspect of the
-@command{texi2any} HTML output.  (Other output formats have no useful
-customization possibilities.)
+@command{texi2any} HTML output.  (Other output formats have no
+particularly useful customization possibilities.)
 
 @menu
 * Loading Init Files::             Initialization files and their search paths.
-* Init File Basics::               General information on init files.
+* Init File Basics::               What init files can contain and do.
 * Output Elements::                The main unit of output documents.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
-* Page layout customization::
-* Special elements::                  Customizing special elements text and 
-                                      layout.
+* HTML Page Layout Customization:: Customizing page headers, footers, sections.
+* Special elements::               Customizing special elements.
 * File and target names::
 * Headings formatting::
 * Formatting insertions text and simple commands::
@@ -19981,7 +19980,6 @@ navigation buttons (see the previous section), you can completely
 control the formatting of navigation panels by redefining function
 references.
 
-
 The overall display of navigation panels is controlled via this
 function reference, @code{print_navigation}:
 
@@ -20047,72 +20045,91 @@ elements, that is, not at the end of a file.
 @end itemize
 @end deffn
 
-@node Page layout customization
-@section Page and file layout customization
+
+@node HTML Page Layout Customization
+@section HTML Page Layout Customization
+
+@command{texi2any} provides for customization of the HTML page
+headers, footers, and the section layout in between.  (These are
+unrelated to the headings and ``footings'' produced in @TeX{} output;
+@pxref{Headings,, Page Headings}.)
 
 @menu
-* Customizing file header::
-* Customizing the section layout::
-* Customizing file footers::
+* Headers:  Customizing Page Headers.
+* Sections: Customizing the section layout.
+* Footers:  Customizing file footers.
 @end menu
 
-@node Customizing file header
-@subsection Customizing file header 
 
-You can have full control over the file header 
-formatting by redefining three function references.  The function associated
-with @code{$print_page_head} is called for all the pages, and after that,
-the function associated with @code{$print_chapter_header} is called
-if the document is split at chapters, or the function associated with
-@code{$print_section_header} is called if the document is split at sections.
+@node Customizing Page Headers
+@subsection Customizing Page Headers
+
+@cindex Customizing HTML page headers
+@cindex Page headers, customizing in HTML
+
+The three following function references give full control over the
+page header formatting done at the top of each output file.  The
+@code{$print_page_head} function is called for all pages.  After that,
+the @code{$print_chapter_header} function is called if the output is
+split at chapters, or the @code{$print_section_header} function if the
+document is split at sections.
 
 @deftypefn {Function Reference} print_page_head $filehandle
-@var{$filehandle} is the opened filehandle the function should write to.
-In HTML, this function should print the page head, including the @code{<body>}
-element.
+@cindex @code{<body> element}, outputting
+@var{$filehandle} is the opened filehandle to which the function
+should write.  This function should print the page header, in HTML,
+including the @code{<body>} element.
 @end deftypefn
 
 @deffn {Function Reference} print_chapter_header $filehandle \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{\%element} is a reference on a hash holding informations about the element.
-This function is called if the document is split at chapters, after 
-@code{print_page_head}.
+@var{$filehandle} is the opened filehandle to which the function
+should write.  @var{\%element} is a hash reference with information
+about the element.  This function is called if the output is split
+at chapters, after @code{$print_page_head}.
 @end deffn
 
 @deffn {Function Reference} print_section_header $filehandle \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{\%element} is a reference on a hash holding informations about the element.
-This function is called if the document is split at sections, after 
+@var{$filehandle} and @var{\%element} are as above.  This function is
+called if the output is split at sections, after
 @code{print_page_head}.
 @end deffn
 
 @vindex $EXTRA_HEAD
 @vindex $AFTER_BODY_OPEN
-In HTML,
-it is possible to add lines to the text within the @code{<head>} 
-@acronym{HTML} elements, by defining the variable @code{$EXTRA_HEAD}.
-Similarly it is possible to add text just after the @code{<body>} 
-element with the variable @code{$AFTER_BODY_OPEN}.
+@cindex @code{<head>}, adding to
+Defining the variable @code{$EXTRA_HEAD} adds lines to the text within
+the @code{<head>} HTML element.  Similarly, defining
+@code{$AFTER_BODY_OPEN} adds lines just after @code{<body>} is output.
 These variables are empty by default.
-A date is output in header
-if @code{DATE_IN_HEADER} is set.
-Also, the description from @code{@@documentdescription} (or set as
-a configuration variable) is used in the 
-header (@pxref{documentdescription}).
 
+@vindex $BODYTEXT
+@cindex @code{<body>}, attributes of
 The @code{<body>} element attributes may be set by defining the
-configuration variable @code{BODYTEXT}.  
-In the default case, the encoding name @code{ENCODING_NAME} is used.
-If the variable is not defined,
-it is automatically determined 
+configuration variable @code{$BODYTEXT}.
+
+@vindex $ENCODING_NAME
+@cindex Encoding, in HTML output
+By default, the encoding name from @code{$ENCODING_NAME} is used.  If
+this variable is not defined, it is automatically determined
 (@pxref{Init File Encodings}).
+
+@vindex $DATE_IN_HEADER
+@cindex Date, in header
+A date is output in the header if @code{$DATE_IN_HEADER} is set.
+
+@cindex Document description, in HTML output
+The description from @code{@@documentdescription} (or a value set as a
+configuration variable) is used in the header
+(@pxref{documentdescription}).
 
 @vindex @@LINKS_BUTTONS
 @vindex %BUTTONS_REL
-@code{<link>} element are used in the header if @code{USE_LINKS}
-is set.  @code{@@LINKS_BUTTONS} determines which links are used.
-@code{%BUTTONS_REL} determines the link type associated with the
-@code{rel} attribute.
+@code{<link>} elements are used in the header if @code{$USE_LINKS} is
+set, in which case @code{@@LINKS_BUTTONS} determines which links are
+used and @code{%BUTTONS_REL} determines the link type associated with
+the @code{rel} attribute.  @xref{Navigation Panel Button
+Specification}.
+
 
 @node Customizing the section layout
 @subsection Customizing the section layout
@@ -24535,7 +24552,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.307 2010-09-10 23:20:43 karl Exp $
+$Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24614,7 +24631,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.307 2010-09-10 23:20:43 karl Exp $
+@comment $Id: texinfo.txi,v 1.308 2010-09-11 00:40:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -24769,8 +24786,10 @@ notice and this notice are preserved.
 
 Most printed manuals contain headings along the top of every page
 except the title and copyright pages.  Some manuals also contain
-footings.  (Headings and footings have no meaning to Info, which is
-not paginated.)@refill
+footings.  HTML output also supports something like these, but in a
+completely different way: @pxref{HTML Page Layout Customization}.
+Headings and footings have no meaning in Info or the other output
+formats.
 
 @menu
 * Headings Introduced::         Conventions for using page headings.
@@ -24918,8 +24937,8 @@ Specify the double-sided heading format, with chapters on new pages.@refill
 @noindent
 Texinfo lacks an @code{@@setchapternewpage even} command.@refill
 
+
 @node Custom Headings
-@comment  node-name,  next,  previous,  up
 @section How to Make Your Own Headings
 
 You can use the standard headings provided with Texinfo or specify
@@ -24930,7 +24949,7 @@ Texinfo provides six commands for specifying headings and
 footings:
 @itemize @bullet
 @item
-@code{@@everyheading} @code{@@everyfooting} generate page headers and
+@code{@@everyheading} and @code{@@everyfooting} generate page headers and
 footers that are the same for both even- and odd-numbered pages.
 @item
 @code{@@evenheading} and @code{@@evenfooting} command generate headers
@@ -24941,10 +24960,9 @@ for odd-numbered (right-hand) pages.
 @end itemize
 
 Write custom heading specifications in the Texinfo file immediately
-after the @code{@@end titlepage} command.
-You must cancel the predefined heading commands with the
-@code{@@headings off} command before defining your own
-specifications.
+after the @code{@@end titlepage} command.  You must cancel the
+predefined heading commands with the @code{@@headings off} command
+before defining your own specifications.
 
 @need 1000
 Here is how to tell @TeX{} to place the chapter name at the left, the
@@ -24964,11 +24982,10 @@ part from the right part by inserting @samp{@@|} between parts.
 Otherwise, the specification command will not be able to tell where
 the text for one part ends and the next part begins.
 
-Each part can contain text or @@-commands.  The text
-is printed as if the part were within an ordinary paragraph in the
-body of the page.  The @@-commands replace
-themselves with the page number, date, chapter name, or
-whatever.
+Each part can contain text or @@-commands.  The text is printed as if
+the part were within an ordinary paragraph in the body of the page.
+The @@-commands replace themselves with the page number, date, chapter
+name, or whatever.
 
 @need 950
 Here are the six heading and footing commands:

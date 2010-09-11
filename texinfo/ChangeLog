@@ -2,6 +2,7 @@
 
 	* doc/texinfo.txi (Output Element Labels): add Section*,
 	rm File*, etc., per Patrice.
+	(Customizing Page Headers): rename + edit.
 
 2010-09-09  Karl Berry  <karl@gnu.org>
 
