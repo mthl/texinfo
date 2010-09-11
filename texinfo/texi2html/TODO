@@ -9,6 +9,11 @@ rm -f ABOUT-NLS INSTALL aclocal.m4 config.guess config.sub configure install-sh 
 Before next release
 -------------------
 
+with --quiet/--silent silence tex4ht and latex2html by redirecting to 
+/dev/null.
+
+Rename Following NodeForward and add NodeBack.
+
 Later
 -----
 
@@ -35,9 +40,6 @@ firefox nytprof/index.html
 * test --headers --output, and the other order, especially when in 
   info mode, such that it triggers also plaintext. Also test with 
   directories and files.
-
-* add --pdf --dvi that would trigger texi2dvi to be called. Karl should
-  say how to match the options.
 
 * check for (both split and not split)
 

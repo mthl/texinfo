@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.288 2010-08-12 23:12:50 pertusus Exp $
+# $Id: texi2html.init,v 1.289 2010-09-11 17:12:53 pertusus Exp $
 
 
 ##################################################################
@@ -142,6 +142,15 @@ set_default('NO_WARN', 0);
 
 # --number-footnotes
 set_default('NUMBER_FOOTNOTES', 1);
+
+# --batch
+set_default('BATCH', 0);
+
+# --silent/--quiet
+set_default('SILENT', 0);
+
+# --Xopt
+@TEXI2DVI_ARGUMENTS = ();
 
 # not in makeinfo but in texi2dvi
 # --command
@@ -536,6 +545,8 @@ set_default('ICONS', 0);
 # use old framework for translations
 set_default('I18N_PERL_HASH', 0);
 
+# command name to invoke when used as a texi2dvi wrapper
+set_default('TEXI2DVI', 'texi2dvi');
 
 # this resets some defaults, those that are also set in formats and
 # not set in every formats.
@@ -1070,6 +1081,12 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp')
   $null_device_file{'NUL'} = 1;
 }
 
+%texi2dvi_formats = (
+ 'dvi' => 1,
+ 'pdf' => 1,
+ 'ps' => 1
+);
+
 $finish_out    = \&t2h_default_finish_out;
 $translate_names = \&t2h_default_translate_names;
 
@@ -1295,10 +1312,10 @@ sub t2h_default_load_format($;$)
 {
   my $format = shift;
   my $from_command_line = shift;
-  if (defined($t2h_default_formats_load_table{$format}))
+  if (defined($t2h_default_formats_load_table{$format}) or $texi2dvi_formats{$format})
   {
      $OUTPUT_FORMAT = $format;
-     &{$t2h_default_formats_load_table{$format}}($from_command_line);
+     &{$t2h_default_formats_load_table{$format}}($from_command_line) unless ($texi2dvi_formats{$format});
      $Texi2HTML::THISDOC{'format_from_command_line'} = $format if ($from_command_line);
      return 1;
   }
@@ -4837,8 +4854,10 @@ foreach my $key (keys(%def_map))
 %misc_command = (
         'bye' => {'skip' => 'line'}, # no arg
         # set, clear
-        'set' => {'skip' => 'line'}, # special arg
-        'clear' => {'skip' => 'line'}, # special arg
+        #'set' => {'skip' => 'line'}, # special arg
+        'set' => {'arg' => 'line'}, # special arg
+        #'clear' => {'skip' => 'line'}, # special arg
+        'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
         'alias' => {'args' => 3, 'skip' => 'line'}, # special arg
         # comments
         'comment' => {'arg' => 'line'},
@@ -4852,9 +4871,8 @@ foreach my $key (keys(%def_map))
         'summarycontents'=> {}, # no arg
         'setcontentsaftertitlepage' => {}, # no arg
         'setshortcontentsaftertitlepage' => {}, # no arg
-#        'detailmenu' => {'skip' => 'whitespace'}, # no arg
-#        'end detailmenu' => {'skip' => 'whitespace'}, # no arg
-        'clickstyle' => {'skip' => 'line'}, # arg should be an @-command
+        #'clickstyle' => {'skip' => 'line'}, # arg should be an @-command
+        'clickstyle' => {'arg' => 'line'}, # arg should be an @-command
         # in preamble
         'novalidate' => {}, # no arg
         'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
@@ -4930,7 +4948,7 @@ foreach my $key (keys(%def_map))
         'vskip' => {'arg' => 'line'}, # arg line in TeX
         'cropmarks' => {}, # no arg
         # miscalleneous
-        'verbatiminclude'=> {'skip' => 'line'},
+        'verbatiminclude'=> {'arg' => 'line'},
         'documentencoding' => {'arg' => 1, 'skip' => 'line'}, 
         # obsolete @-commands. Remove spaces and end of lines after the 
         # commands? If no, they can lead to empty lines
@@ -5144,15 +5162,29 @@ sub t2h_default_preserve_misc_command($$)
         my $arg_nr = $misc_command{$macro}->{'arg'};
         while ($arg_nr)
         {
-            $line =~ s/(\s+\S*)//o;
-            my $argument = $1;
-            if (defined($argument))
+            if ($line =~ s/^(\s+)(\S*)//o)
             {
-                $text .= $argument;
-                push @$args, $argument;
+                $text .= $1.$2;
+                my $argument = $2;
+                push @$args, $argument if ($argument ne '');
+            }
+            else
+            {
+                last;
             }
             $arg_nr--;
         }
+#        while ($arg_nr)
+#        {
+#            $line =~ s/(\s+\S*)//o;
+#            my $argument = $1;
+#            if (defined($argument))
+#            {
+#                $text .= $argument;
+#                push @$args, $argument;
+#            }
+#            $arg_nr--;
+#        }
     }
    
     if ($macro eq 'bye')
@@ -5164,7 +5196,7 @@ sub t2h_default_preserve_misc_command($$)
     {
         if ($line =~ /^\s*$/o)
         {
-            $line =~ s/([ \t]*)//o;
+            $line =~ s/^([ \t]*)//o;
             $text .= $1;
         }
     }
@@ -5183,12 +5215,12 @@ sub t2h_default_preserve_misc_command($$)
     }
     elsif ($skip_spec eq 'whitespace')
     {
-        $line =~ s/(\s*)//o;
+        $line =~ s/^(\s*)//o;
         $text .=  $1;
     }
     elsif ($skip_spec eq 'space')
     {
-        $line =~ s/([ \t]*)//o;
+        $line =~ s/^([ \t]*)//o;
         $text .= $1;
     }
     $line = '' if (!defined($line));

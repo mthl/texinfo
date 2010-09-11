@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.423 2010-08-12 23:17:04 pertusus Exp $
+# $Id: texi2html.pl,v 1.424 2010-09-11 17:12:53 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -198,7 +198,8 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'NUMBER_FOOTNOTES', 'NODE_FILES', 
   'NO_WARN', 'VERBOSE', 
   'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
-  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT', 'MONOLITHIC',  
+  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT', 'MONOLITHIC', 
+  'BATCH', 'SILENT' 
 );
 
 # FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
@@ -225,7 +226,8 @@ my @variable_settables = (
   'COMPLETE_IMAGE_PATHS', 'USE_NODE_TARGET', 'NEW_CROSSREF_STYLE',
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
-  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE');
+  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
+  'TEXI2DVI');
 
 foreach my $var (@document_settable_at_commands, @command_line_settables,
          @document_global_at_commands, @variable_settables)
@@ -375,6 +377,7 @@ $AFTER_TOC_LINES
 @LINKS_BUTTONS
 @IMAGE_EXTENSIONS
 @INPUT_FILE_SUFFIXES
+@TEXI2DVI_ARGUMENTS
 );
 
 # I18n
@@ -641,6 +644,9 @@ use vars qw(
   'xml' => 'Texinfo XML',
   'plaintext' => 'plain text',
   'raw-text' => 'raw text',
+  'dvi' => 'DVI',
+  'pdf' => 'Pdf',
+  'ps' => 'Postscript'
 );
 
 sub load($) 
@@ -1905,6 +1911,7 @@ my $WORDS_IN_PAGE;
 
 package main;
 
+# functions related with configuration variables.
 
 sub get_conf($)
 {
@@ -1949,11 +1956,11 @@ sub unset_from_document($)
    return Texi2HTML::Config::unset_variable($var, $level, 1);
 }
 
-Texi2HTML::Config::set_default('USE_NLS', ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/));
-
 # prepare the gettext-like framework. To be noted that Locales::TextDomain
 # canot be used, since it cannot be used dynamically through a reuires.
 # Fortunately, Locales::TextDomain is a thin layer above Locales::Messages.
+
+Texi2HTML::Config::set_default('USE_NLS', ('@USE_NLS@' eq 'yes' or $0 =~ /\.pl$/));
 
 my $strings_textdomain = '@PACKAGE@' . '_document';
 $strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
@@ -2362,6 +2369,19 @@ foreach my $complex_format (keys(%Texi2HTML::Config::complex_format_map))
 my $T2H_VERBOSE;
 my $T2H_DEBUG;
 
+#
+# %value hold texinfo variables, see also -D, -U, @set and @clear.
+# we predefine html (the output format) and texi2html (the translator)
+# it is initialized with %value_initial at the beginning of the 
+# document parsing and filled and emptied as @set and @clear are 
+# encountered
+# FIXME remove html
+my %value_initial = 
+      (
+         # 'html' => 1,
+          'texi2html' => $THISVERSION,
+      );
+
 sub line_warn($$);
 sub document_warn($);
 sub file_line_warn($$;$);
@@ -2370,6 +2390,15 @@ sub cmdline_warn ($);
 my $T2H_FAILURE_TEXT = sprintf(__("Try `%s --help' for more information.\n"), $real_command_name);
 
 #print STDERR "" . gdt('test i18n: \' , \a \\ %% %{unknown}a %known % %{known}  \\', { 'known' => 'a known string', 'no' => 'nope'}); exit 0;
+
+sub add_to_texi2dvi_args($;$)
+{
+  my $option = shift;
+  my $value = shift;
+  #print STDERR "$option $value\n";
+  push @Texi2HTML::Config::TEXI2DVI_ARGUMENTS, $option;
+  push @Texi2HTML::Config::TEXI2DVI_ARGUMENTS, $value if (defined($value));
+}
 
 # file:        file name to locate. It can be a file path.
 # directories: a reference on a array containing a list of directories to
@@ -2544,6 +2573,60 @@ sub set_footnote_style($$;$)
     }
 }
 
+sub set_output($;$)
+{
+   my $output = shift;
+   my $from_command_line = shift;
+   my $var = 'OUTFILE';
+   if ($output =~ m:/$: or -d $output)
+   {
+      $var = 'SUBDIR';
+   }
+   if ($from_command_line)
+   {
+      set_from_cmdline($var, $output);
+      set_from_cmdline('OUT', $output);
+      add_to_texi2dvi_args('-o', $output);
+   }
+   else
+   {
+      set_default($var, $output);
+      if (set_default('OUT', $output))
+      {
+         add_to_texi2dvi_args('-o', $output);
+      }
+   }
+}
+
+# used both for command line and @-command argument checking
+sub set_paragraphindent($$;$$)
+{
+   my $value = shift;
+   my $from_command_line = shift;
+   my $line_nr = shift;
+   my $pass = shift;
+   my $command = 'paragraphindent';
+
+   if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis')
+   {
+       if ($from_command_line)
+       {
+          set_from_cmdline($command, $value)
+       }
+       else
+       {
+           set_from_document($command, $value)
+       }
+   }
+   elsif ($from_command_line)
+   {
+       die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), $real_command_name, $value);
+   }
+   elsif ($pass == 1)
+   {
+       line_error (sprintf(__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $value), $line_nr);
+   }
+}
 
 # find the encoding alias.
 # with encoding support (USE_UNICODE), may return undef if no alias was found.
@@ -2720,31 +2803,6 @@ sub gdt($;$$)
     return $result;
 }
 
-my %nodes;             # nodes hash. The key is the texi node name
-my %cross_reference_nodes;  # normalized node names arrays
-
-#
-# %value hold texinfo variables, see also -D, -U, @set and @clear.
-# we predefine html (the output format) and texi2html (the translator)
-# it is initialized with %value_initial at the beginning of the 
-# document parsing and filled and emptied as @set and @clear are 
-# encountered
-my %value_initial = 
-      (
-          'html' => 1,
-          'texi2html' => $THISVERSION,
-      );
-
-#
-# _foo: internal variables to track @foo
-#
-foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
-	 '_settitle', '_titlefont')
-{
-    $value_initial{$key} = '';            # prevent -w warnings
-}
-
-
 sub unicode_to_protected($)
 {
     my $text = shift;
@@ -2849,57 +2907,6 @@ sub unicode_to_transliterate($)
     return $result;
 }
 
-sub set_output($;$)
-{
-   my $output = shift;
-   my $from_command_line = shift;
-   my $var = 'OUTFILE';
-   if ($output =~ m:/$: or -d $output)
-   {
-      $var = 'SUBDIR';
-   }
-   if ($from_command_line)
-   {
-      set_from_cmdline($var, $output);
-      set_from_cmdline('OUT', $output);
-   }
-   else
-   {
-      set_default($var, $output);
-      set_default('OUT', $output);
-   }
-}
-
-# used both for command line and @-command argument checking
-sub set_paragraphindent($$;$$)
-{
-   my $value = shift;
-   my $from_command_line = shift;
-   my $line_nr = shift;
-   my $pass = shift;
-   my $command = 'paragraphindent';
-
-   if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis')
-   {
-       if ($from_command_line)
-       {
-          set_from_cmdline($command, $value)
-       }
-       else
-       {
-           set_from_document($command, $value)
-       }
-   }
-   elsif ($from_command_line)
-   {
-       die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), $real_command_name, $value);
-   }
-   elsif ($pass == 1)
-   {
-       line_error (sprintf(__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $value), $line_nr);
-   }
-}
-
 # T2H_OPTIONS is a hash whose keys are the (long) names of valid
 # command-line options and whose values are a hash with the following keys:
 # type    ==> one of !|=i|:i|=s|:s (see Getopt::Long for more info)
@@ -2908,10 +2915,11 @@ sub set_paragraphindent($$;$$)
 # noHelp  ==> if 1 -> for "not so important options": only print description on -h 1
 #                2 -> for obsolete options: only print description on -h 2
 my $T2H_OPTIONS;
+
 $T2H_OPTIONS -> {'macro-expand|E'} =
 {
  'type' => '=s',
- 'linkage' => sub {set_from_cmdline('MACRO_EXPAND', $_[1]);},
+ 'linkage' => sub {set_from_cmdline('MACRO_EXPAND', $_[1]); add_to_texi2dvi_args('-E'); },
  'verbose' => 'output macro expanded source in <file>',
 };
 
@@ -2960,7 +2968,7 @@ $T2H_OPTIONS -> {'ifplaintext'} =
 $T2H_OPTIONS -> {'I'} =
 {
  'type' => '=s',
- 'linkage' => \@Texi2HTML::Config::INCLUDE_DIRS,
+ 'linkage' => sub { add_to_texi2dvi_args('-'.$_[0], $_[1]); push @Texi2HTML::Config::INCLUDE_DIRS, $_[1] },
  'verbose' => 'append $s to the @include search path',
 };
 
@@ -3058,7 +3066,7 @@ $T2H_OPTIONS -> {'verbose'} = 0;
 $T2H_OPTIONS -> {'verbose|v'} =
 {
  'type' => '!',
- 'linkage' => sub {set_from_cmdline('VERBOSE', $_[1]);},
+ 'linkage' => sub {set_from_cmdline('VERBOSE', $_[1]); add_to_texi2dvi_args('--verbose'); },
  'verbose' => 'print progress info to stdout',
 };
 
@@ -3227,14 +3235,46 @@ $T2H_OPTIONS -> {'reference-limit' } =
 # 'verbose' => 'insert CMD in copy of input file'
 #};
 
+$T2H_OPTIONS -> {'Xopt'} =
+{
+ 'type' => '=s',
+ 'linkage' => \@Texi2HTML::Config::TEXI2DVI_ARGUMENTS,
+ 'verbose' => 'pass argument to the dvi/pdf converter.',
+};
+
+$T2H_OPTIONS -> {'batch'} = 
+{
+  'type' => '',
+  'linkage' => sub {set_from_cmdline('BATCH', $_[1]); add_to_texi2dvi_args('--'.$_[0]);},
+  'noHelp' => 2
+};
+
+$T2H_OPTIONS -> {'silent|quiet'} = 
+{
+  'type' => '',
+  'linkage' => sub {set_from_cmdline('SILENT', $_[1]); add_to_texi2dvi_args('--'.$_[0]);},
+  'noHelp' => 2
+};
+
+my $call_texi2dvi = 0;
 
 foreach my $output_format (keys(%Texi2HTML::Config::output_format_names))
 {
   next if (defined($Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT) and $output_format eq $Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT);
+  my $linkage;
+  if ($Texi2HTML::Config::texi2dvi_formats{$output_format})
+  {
+    $linkage = sub {add_to_texi2dvi_args('--'.$_[0]); $call_texi2dvi = 1;
+                   Texi2HTML::Config::t2h_default_load_format($_[0], 1);};
+  }
+  else
+  {
+    $linkage = sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);};
+  }
   $T2H_OPTIONS -> {$output_format} =
   {
     'type' => '',
-    'linkage' => sub {Texi2HTML::Config::t2h_default_load_format($_[0], 1);},
+    'linkage' => $linkage,
     'verbose' => "output $Texi2HTML::Config::output_format_names{$output_format} rather than $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT}.",
   }
 };
@@ -3246,6 +3286,15 @@ $T2H_OPTIONS -> {$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT} =
   'verbose' => "output default format.",
   'noHelp' => 2
 };
+
+$T2H_OPTIONS -> {'debug'} =
+{
+ 'type' => '=i',
+ 'linkage' => sub {set_from_cmdline('DEBUG', $_[1]), add_to_texi2dvi_args('--'.$_[0]); },
+ 'verbose' => 'output debuging information',
+ 'noHelp' => 1,
+};
+
 
 ##
 ## obsolete cmd line options
@@ -3436,14 +3485,6 @@ $T2H_OBSOLETE_OPTIONS -> {'iso'} =
  'type' => 'iso',
  'linkage' => sub {Texi2HTML::Config::t2h_default_set_iso_symbols ($_[1], 1);},
  'verbose' => 'if set, entities are used for special symbols (like copyright, etc...) and quotes',
- 'noHelp' => 1,
-};
-
-$T2H_OBSOLETE_OPTIONS -> {'debug'} =
-{
- 'type' => '=i',
- 'linkage' => sub {set_from_cmdline('DEBUG', $_[1])},
- 'verbose' => 'output HTML with debuging information',
  'noHelp' => 1,
 };
 
@@ -4003,6 +4044,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"), '2008';
 
 if (! $Texi2HTML::THISDOC{'format_from_command_line'} and defined($ENV{'TEXINFO_OUTPUT_FORMAT'}) and $ENV{'TEXINFO_OUTPUT_FORMAT'} ne '')
 {
+  if ($Texi2HTML::Config::texi2dvi_formats{$ENV{'TEXINFO_OUTPUT_FORMAT'}})
+  {
+      add_to_texi2dvi_args("--$ENV{'TEXINFO_OUTPUT_FORMAT'}");
+      $call_texi2dvi = 1;
+  }
+
   if (! Texi2HTML::Config::t2h_default_load_format($ENV{'TEXINFO_OUTPUT_FORMAT'}, 0))
   {  
       warn sprintf(__("%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"), $real_command_name, $ENV{'TEXINFO_OUTPUT_FORMAT'});
@@ -4033,6 +4080,16 @@ if ($progdir && ($progdir ne './'))
 	print STDERR "# reading extensions from $extensions\n" if $T2H_VERBOSE;
 	require($extensions);
     }
+}
+
+if ($call_texi2dvi)
+{
+  if (defined(get_conf('OUT')) and @ARGV > 1)
+  {
+    die sprintf(__('when generating %s, only one input FILE may be specified with -o'), $Texi2HTML::Config::output_format_names{$Texi2HTML::Config::DEFAULT_OUTPUT_FORMAT});
+  }
+  print STDERR "".join('|', (get_conf('TEXI2DVI'), @Texi2HTML::Config::TEXI2DVI_ARGUMENTS, @ARGV)) ."\n" if ($T2H_DEBUG or $T2H_VERBOSE);
+  exec { get_conf('TEXI2DVI') } (@Texi2HTML::Config::TEXI2DVI_ARGUMENTS, @ARGV);
 }
 
 
@@ -5124,6 +5181,19 @@ my %region_line_nrs;
 # This is a place for index entries, anchors and so on appearing in 
 # copying or documentdescription
 my $no_element_associated_place;
+
+my %nodes;             # nodes hash. The key is the texi node name
+my %cross_reference_nodes;  # normalized node names arrays
+
+#
+# _foo: internal variables to track @foo
+# obsolete
+foreach my $key ('_author', '_title', '_subtitle', '_shorttitlepage',
+	 '_settitle', '_titlefont')
+{
+    $value_initial{$key} = '';            # prevent -w warnings
+}
+
 
 
 my @nodes_list;             # nodes in document reading order

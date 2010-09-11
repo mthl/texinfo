@@ -1,3 +1,12 @@
+2010-09-11  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.init (%misc_command, t2h_default_preserve_misc_command):
+	set args instead of skip when a line is in fact the misc
+	@-command argument.
+	* texi2html/texi2html.pl (add_to_texi2dvi_args), 
+	texi2html/texi2html.init: call texi2dvi for pdf, dvi and ps output, 
+	add command line options for texi2dvi and pass some existing options.
+
 2010-09-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Output Element Labels): add Section*,
@@ -116,7 +125,7 @@
 	* texi2html/texi2html.pl (do_text): disable the warning about
 	unlikely character in @var. It is too expensive (because do_text 
 	is called often) for a warning which rather questionable anyway.
-	* texi2ht/texi2html.init (t2h_default_external_href): an
+	* texi2html/texi2html.init (t2h_default_external_href): an
 	empty entry in htmlxref causes the corresponding possibility
 	being ignored.
 	* texi2html/texi2html.pl: reverse the order of directories where
