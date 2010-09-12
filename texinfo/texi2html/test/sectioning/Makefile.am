@@ -27,6 +27,7 @@ EXTRA_DIST = sectioning.texi novalidate.texi first_section_no_node.texi \
  part_node_appendix.texi part_appendix.texi part_node_part_appendix.texi \
  part_node_part_node_appendix.texi part_node_node_part_appendix.texi \
  other_at_comands_in_nodes_refs.texi text_before_line_command.texi \
+ loop_nodes.texi \
  test_directions.init test_renamed_nodes.init tests.txt renamednodes.cnf-ref \
  res res_all res_info res_docbook res_xml res_html
 

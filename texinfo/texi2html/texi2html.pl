@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.424 2010-09-11 17:12:53 pertusus Exp $
+# $Id: texi2html.pl,v 1.425 2010-09-12 20:06:11 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -1338,11 +1338,12 @@ sub t2h_default_index_rearrange_directions()
         }
         $current_element->{'Forward'} = $new_element;
         $new_element->{'Back'} = $current_element;
-        if ($current_element->{'Following'})
+        if ($current_element->{'NodeForward'})
         {
-#print STDERR "F: C($current_element): $current_element->{'texi'}, N($new_element): $new_element->{'texi'} -- C->F: $current_element->{'Following'}->{'texi'}\n";
-          $new_element->{'Following'} = $current_element->{'Following'};
-          $current_element->{'Following'} = $new_element;
+#print STDERR "F: C($current_element): $current_element->{'texi'}, N($new_element): $new_element->{'texi'} -- C->F: $current_element->{'NodeForward'}->{'texi'}\n";
+          $new_element->{'NodeForward'} = $current_element->{'NodeForward'};
+          $current_element->{'NodeForward'} = $new_element;
+          $new_element->{'NodeBack'} = $current_element;
         }
         foreach my $key ('FastForward', 'FastBack', 'Up', 'tag_level', 'tag',
             'level', 'node')
@@ -2101,8 +2102,8 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
 
 my @element_directions = ('Up', 'Forward', 'Back', 'Next', 'Prev', 
 'SectionNext', 'SectionPrev', 'SectionUp', 'FastForward', 'FastBack', 
-'This', 'NodeUp', 'NodePrev', 'NodeNext', 'Following', 'NextFile', 'PrevFile',
-'ToplevelNext', 'ToplevelPrev');
+'This', 'NodeUp', 'NodePrev', 'NodeNext', 'NodeForward', 'NodeBack',
+'NextFile', 'PrevFile', 'ToplevelNext', 'ToplevelPrev');
 $::simple_map_ref = \%Texi2HTML::Config::simple_map;
 $::simple_map_math_ref = \%Texi2HTML::Config::simple_map_math;
 #$::simple_map_pre_ref = \%Texi2HTML::Config::simple_map_pre;
@@ -7353,7 +7354,6 @@ sub rearrange_elements()
             unless (defined($node->{'menu_up_hash'}) and ($node->{'menu_up_hash'}->{$node->{'nodeup'}->{'texi'}}))
             {
                 line_error(sprintf(__("Node `%s' lacks menu item for `%s' despite being its Up target"), $node->{'nodeup'}->{'texi'}, $node->{'texi'}), $node->{'nodeup'}->{'line_nr'}) if (get_conf('SHOW_MENU'));
-                push @{$node->{'up_not_in_menu'}}, $node->{'nodeup'}->{'texi'};
             }
         }
         # check that the up is in one of the menus
@@ -7474,56 +7474,42 @@ sub rearrange_elements()
             }
         }
     
-        # the following node is the node following in node reading order
+        # the nodeforward node is the node following in node reading order
         # it is thus first the child, else the next, else the next following
         # the up
         if ($node->{'menu_child'})
         {
-            $node->{'following'} = $node->{'menu_child'};
+            $node->{'nodeforward'} = $node->{'menu_child'};
         }
         elsif ($node->{'automatic_directions'} and defined($node->{'with_section'}) and defined($node->{'with_section'}->{'child'}))
         {
-            $node->{'following'} = get_node($node->{'with_section'}->{'child'});
+            $node->{'nodeforward'} = get_node($node->{'with_section'}->{'child'});
         }
         elsif (defined($node->{'nodenext'}))
         {
-            $node->{'following'} = $node->{'nodenext'};
+            $node->{'nodeforward'} = $node->{'nodenext'};
         }
 	else
         {
             my $up = $node->{'nodeup'};
-            # in order to avoid infinite recursion in case the up node is the 
-            # node itself we use the up node as following when there isn't 
-            # a correct menu structure, here and also below.
-            $node->{'following'} = $up if (defined($up) and grep {$_ eq $up->{'texi'}} @{$node->{'up_not_in_menu'}});
-            while ((!defined($node->{'following'})) and (defined($up)))
+            my @up_list = ($node);
+            # the condition with the up_list avoids infinite loops
+            # the last condition stops when the Top node is reached.
+            while (defined($up) and not (grep {$up eq $_} @up_list or (($node_top) and ($up eq $node_top))))
             {
-                if (($node_top) and ($up eq $node_top))
-                { # if we are at Top, Top is following 
-                    $node->{'following'} = $node_top;
-                    $up = undef;
-                }
-                if (defined($up->{'nodenext'}))
-                {
-                    $node->{'following'} = $up->{'nodenext'};
-                }
-                elsif (defined($up->{'nodeup'}))
-                {
-                    if (! grep { $_ eq $up->{'nodeup'}->{'texi'} } @{$node->{'up_not_in_menu'}}) 
-                    { 
-                        $up = $up->{'nodeup'};
-                    }
-                    else
-                    { # in that case we can go into a infinite loop
-                        $node->{'following'} = $up->{'nodeup'};
-                    }
-                }
-                else
-                {
-                    $up = undef;
-                }
+               if (defined($up->{'nodenext'}))
+               {
+                   $node->{'nodeforward'} = $up->{'nodenext'};
+                   last;
+               }
+               push @up_list, $up;
+               $up = $up->{'nodeup'};
             }
         }
+
+        $node->{'nodeforward'}->{'nodeback'} = $node
+          if ($node->{'nodeforward'} and not $node->{'nodeforward'}->{'nodeback'});
+
         # copy the direction of the associated section.
         if (defined($node->{'with_section'}))
         {
@@ -7576,7 +7562,8 @@ sub rearrange_elements()
             $section->{'menu_child'} = $section->{'with_node'}->{'menu_child'};
             $section->{'menu_up'} = $section->{'with_node'}->{'menu_up'};
             $section->{'nodeup'} = $section->{'with_node'}->{'nodeup'};
-            $section->{'following'} = $section->{'with_node'}->{'following'};
+            $section->{'nodeforward'} = $section->{'with_node'}->{'nodeforward'};
+            $section->{'nodeback'} = $section->{'with_node'}->{'nodeback'};
         }
     }
 
@@ -8237,7 +8224,8 @@ sub rearrange_elements()
 	print STDERR "  t_p: $element->{'toplevelprev'}->{'texi'}\n" if (defined($element->{'toplevelprev'}));
         print STDERR "  n_u: $element->{'nodeup'}->{'texi'}\n" if (defined($element->{'nodeup'}));
         print STDERR "  f: $element->{'forward'}->{'texi'}\n" if (defined($element->{'forward'}));
-        print STDERR "  follow: $element->{'following'}->{'texi'}\n" if (defined($element->{'following'}));
+        print STDERR "  n_f: $element->{'nodeforward'}->{'texi'}\n" if (defined($element->{'nodeforward'}));
+        print STDERR "  n_b: $element->{'nodeback'}->{'texi'}\n" if (defined($element->{'nodeback'}));
 	print STDERR "  m_p: $element->{'menu_prev'}->{'texi'}\n" if (defined($element->{'menu_prev'}));
 	print STDERR "  m_n: $element->{'menu_next'}->{'texi'}\n" if (defined($element->{'menu_next'}));
 	print STDERR "  m_u: $element->{'menu_up'}->{'texi'}\n" if (defined($element->{'menu_up'}));

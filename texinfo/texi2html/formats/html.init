@@ -13,7 +13,7 @@
 # Taken from texi2html.init in 2009.
 # Originally written by Olaf Bachmann.
 #
-# $Id: html.init,v 1.59 2010-07-25 17:35:50 pertusus Exp $
+# $Id: html.init,v 1.60 2010-09-12 20:06:13 pertusus Exp $
 
 use strict;
 
@@ -196,7 +196,8 @@ set_default('ICONS', 0);
  'NodeUp',      'u',
  'NodeNext',    'n',
  'NodePrev',    'p',
- 'Following',   '',
+ 'NodeForward', '',
+ 'NodeBack',    '',
  'Forward',     'n',
  'FastForward', '',
  'About' ,      '',
@@ -222,7 +223,8 @@ set_default('ICONS', 0);
  'NodeUp',      'up',
  'NodeNext',    'next',
  'NodePrev',    'previous',
- 'Following',   '',
+ 'NodeForward', '',
+ 'NodeBack',    '',
  'Forward',     'next',
  'FastForward', '',
  'About' ,      'help',
@@ -260,7 +262,8 @@ $AFTER_ABOUT = '';
      'NodeUp',      '1.2',
      'NodeNext',    '1.2.4',
      'NodePrev',    '1.2.2',
-     'Following',   '1.2.4',
+     'NodeForward', '1.2.4',
+     'NodeBack',    '1.2.2',
      'Forward',     '1.2.4',
      'FastForward', '2',
      'About',       ' &nbsp; ',
@@ -623,7 +626,8 @@ sub html_default_translate_names()
      'NodeUp',      gdt('Node up'),
      'NodeNext',    gdt('Next node'),
      'NodePrev',    gdt('Previous node'),
-     'Following',   gdt('Following node'),
+     'NodeForward', gdt('Forward node'),
+     'NodeBack',    gdt('Back node'),
      'Forward',     ' &gt; ',
      'FastForward', ' &gt;&gt; ',
      'About',       ' ? ',

@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.289 2010-09-11 17:12:53 pertusus Exp $
+# $Id: texi2html.init,v 1.290 2010-09-12 20:06:11 pertusus Exp $
 
 
 ##################################################################
@@ -1025,7 +1025,8 @@ sub t2h_default_set_variables_texi2html()
      'NodeUp',      '',
      'NodeNext',    '',
      'NodePrev',    '',
-     'Following',   '',
+     'NodeForward', '',
+     'NodeBack',    '',
      'Forward',     '',
      'FastForward', '',
      'About' ,      '',
@@ -1052,7 +1053,8 @@ sub t2h_default_set_variables_texi2html()
      'NodeUp',      '',
      'NodeNext',    '',
      'NodePrev',    '',
-     'Following',   '',
+     'NodeForward', '',
+     'NodeBack',    '',
      'Forward',     '',
      'FastForward', '',
      'About',       '',
@@ -1110,7 +1112,8 @@ sub t2h_default_translate_names()
      'NodeUp',      gdt('Up'),
      'NodeNext',    gdt('Next'),
      'NodePrev',    gdt('Previous'),
-     'Following',   gdt('Following'),
+     'NodeForward', gdt('Forward node'),
+     'NodeBack',    gdt('Back node'),
      'Forward',     ' > ',
      'FastForward', ' >> ',
      'About',       ' ? ',
@@ -1136,7 +1139,8 @@ sub t2h_default_translate_names()
      'NodeUp',      gdt('Up node'),
      'NodeNext',    gdt('Next node'),
      'NodePrev',    gdt('Previous node'),
-     'Following',   gdt('Node following in node reading order'),
+     'NodeForward', gdt('Next node in node reading order'),
+     'NodeBack',    gdt('Previous node in node reading order'),
      'Forward',     gdt('Next section in reading order'),
      'FastForward', gdt('Next chapter'),
      'About' ,      gdt('About (help)'),
@@ -1162,7 +1166,8 @@ sub t2h_default_translate_names()
      'NodeUp',      gdt('NodeUp'),
      'NodeNext',    gdt('NodeNext'),
      'NodePrev',    gdt('NodePrev'),
-     'Following',   gdt('Following'),
+     'NodeForward', gdt('NodeForward'),
+     'NodeBack',    gdt('NodeBack'),
      'Forward',     gdt('Forward'),
      'FastForward', gdt('FastForward'),
      'About',       gdt('About'),
@@ -1467,12 +1472,13 @@ sub t2h_default_finish_out()
 # Next        -- next element of texinfo
 # Prev        -- previous element of texinfo
 # NodeUp      -- up node of texinfo
-# Following   -- following node in node reading order, taking menu into account
+# NodeForward -- next node in node reading order, taking menu into account
+# NodeBack    -- previous node in node reading order, taking menu into account
 # Forward     -- next node in reading order
 # Back        -- previous node in reading order
 # Up          -- parent given by sectioning commands
 # FastForward -- if leave node, up and next, else next node
-# FastBackward-- if leave node, up and prev, else prev node
+# FastBack    -- if leave node, up and prev, else prev node
 #
 # Furthermore, the following global variabels are set:
 # $Texi2HTML::THISDOC{'title'}          -- title as set by @title...
@@ -2089,7 +2095,8 @@ $AFTER_ABOUT = '';
      'NodeUp',      '1.2',
      'NodeNext',    '1.2.4',
      'NodePrev',    '1.2.2',
-     'Following',   '1.2.4',
+     'NodeForward', '1.2.4',
+     'NodeBack',    '1.2.2',
      'Forward',     '1.2.4',
      'FastForward', '2',
      'About',       ' ',

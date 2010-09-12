@@ -1,0 +1,26 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename loop_nodes.info
+
+@node Top
+@top top
+
+@menu
+* node up::
+@end menu
+
+@node node up,,,node down
+
+@menu
+* node middle::
+@end menu
+
+@node node middle,,,node up
+
+@menu
+* node down::
+@end menu
+
+@node node down
+
+@bye

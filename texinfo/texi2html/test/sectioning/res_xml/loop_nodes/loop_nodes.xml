@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V4.12//EN" "http://www.gnu.org/software/texinfo/dtd/4.12/texinfo.dtd">
+<texinfo xml:lang="en">
+
+<setfilename>loop_nodes.xml</setfilename>
+
+<node>
+<nodename>Top</nodename>
+<nodenext>node up</nodenext>
+<nodeup>(dir)</nodeup>
+</node>
+<top>
+<title>top</title>
+
+<menu>
+<menuentry>
+<menunode>node up</menunode>
+<menutitle>node up</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+</top>
+<node>
+<nodename>node up</nodename>
+<nodeprev>Top</nodeprev>
+<nodeup>node down</nodeup>
+</node>
+
+<menu>
+<menuentry>
+<menunode>node middle</menunode>
+<menutitle>node middle</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>node middle</nodename>
+<nodeup>node up</nodeup>
+</node>
+
+<menu>
+<menuentry>
+<menunode>node down</menunode>
+<menutitle>node down</menutitle>
+<menucomment>
+</menucomment>
+</menuentry></menu>
+
+<node>
+<nodename>node down</nodename>
+<nodeup>node middle</nodeup>
+</node>
+
+</texinfo>

@@ -73,7 +73,7 @@ if (get_conf('HEADER_IN_TABLE'))
 {
     @SECTION_BUTTONS =
     (
-     \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'Following'
+     \"node: ", \$Texi2HTML::NODE{This}, [ 'NodeNext', \$Texi2HTML::NODE{NodeNext} ] , \",", [ 'NodePrev', \$Texi2HTML::NODE{NodePrev} ], \",", [ 'NodeUp', \$Texi2HTML::NODE{NodeUp} ], 'NodeForward'
     );
 
     @TOP_BUTTONS = @SECTION_BUTTONS;
@@ -97,7 +97,7 @@ $init_out = \&makeinfo_like_init_out;
 sub makeinfo_like_init_out()
 {
    &$default_init_out();
-   $NAVIGATION_TEXT{'Following'} = ' &gt; ';
+   $NAVIGATION_TEXT{'NodeForward'} = ' &gt; ';
 }
 
 # FIXME: images not in paragraphs are in <div class="block-image">

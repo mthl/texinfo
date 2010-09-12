@@ -4798,7 +4798,7 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  SRC="sing_291.png"
  ALT="$K[x]^r$"></SPAN> = Loc
 <!-- MATH
- $K[x]e_1 
+ $K[x]e_1
 + \ldots +$
  -->
 <SPAN CLASS="MATH"><IMG

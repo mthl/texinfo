@@ -3,7 +3,7 @@
 
 foreach my $direction (('Up', 'Forward', 'Back', 'Next',
                         'Prev', 'FastForward', 'FastBack', 'This', 'NodeUp',
-                        'NodePrev', 'NodeNext', 'Following' ))
+                        'NodePrev', 'NodeNext', 'NodeForward', NodeBack ))
 #                        'NodePrev', 'NodeNext', 'ToplevelPrev', 'ToplevelNext',  'Following' ))
 
 {
