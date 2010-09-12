@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
+@c $Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19204,7 +19204,7 @@ $init_out = \&my_init_out;
 sub my_init_out() 
 @{
    &$default_init_out();
-   $NAVIGATION_TEXT@{'Following'@} = ' &gt; ';
+   $NAVIGATION_TEXT@{'NodeForward'@} = ' &gt; ';
 @}
 @end example
 
@@ -19766,8 +19766,11 @@ Up in section reading order.
 @item NodeNext
 Next node.
 
-@item Following
+@item NodeForward
 Next node in node reading order.
+
+@item NodeBack
+Previous node in node reading order.
 
 @item NodePrev
 Previous node.
@@ -20057,7 +20060,7 @@ unrelated to the headings and ``footings'' produced in @TeX{} output;
 @menu
 * Headers:  Customizing HTML Page Headers.
 * Sections: Customizing HTML Section Layout.
-* Footers:  Customizing file footers.
+* Footers:  Customizing HTML Page Footers.
 @end menu
 
 
@@ -20065,17 +20068,17 @@ unrelated to the headings and ``footings'' produced in @TeX{} output;
 @subsection Customizing HTML Page Headers
 
 @cindex Customizing HTML page headers
-@cindex Page headers, customizing in HTML
+@cindex Headers, customizing for HTML
 
-The three following function references give full control over the
+The following three function references give full control over the
 page header formatting done at the top of each HTML output file.  The
 @code{$print_page_head} function is called for all pages.  After that,
 the @code{$print_chapter_header} function is called if the output is
 split at chapters, or the @code{$print_section_header} function if the
-document is split at sections.
+split at sections.
 
 @deftypefn {Function Reference} print_page_head $filehandle
-@cindex @code{<body> element}, outputting
+@cindex @code{<body> tag, outputting
 @var{$filehandle} is the opened filehandle to which the function
 should write.  This function should print the page header, in HTML,
 including the @code{<body>} element.
@@ -20091,15 +20094,15 @@ at chapters, after @code{$print_page_head}.
 @deffn {Function Reference} print_section_header $filehandle \%element
 @var{$filehandle} and @var{\%element} are as above.  This function is
 called if the output is split at sections, after
-@code{print_page_head}.
+@code{$print_page_head}.
 @end deffn
 
 @vindex $EXTRA_HEAD
 @vindex $AFTER_BODY_OPEN
 @cindex @code{<head>}, adding to
-Defining the variable @code{$EXTRA_HEAD} adds lines to the text within
-the @code{<head>} HTML element.  Similarly, defining
-@code{$AFTER_BODY_OPEN} adds lines just after @code{<body>} is output.
+You can define the variable @code{$EXTRA_HEAD} to add text within the
+@code{<head>} HTML element.  Similarly, the value of
+@code{$AFTER_BODY_OPEN} is added just after @code{<body>} is output.
 These variables are empty by default.
 
 @vindex $BODYTEXT
@@ -20134,6 +20137,9 @@ Specification}.
 @node Customizing HTML Section Layout
 @subsection Customizing HTML Section Layout
 
+@cindex Customizing HTML section layout
+@cindex Section layout, customizing for HTML
+
 The following function references are used for the formatting of
 sections in HTML output:
 
@@ -20166,41 +20172,47 @@ elements.
 @end deffn
 
 
-@node Customizing file footers
-@subsection Customizing the file footers
+@node Customizing HTML Page Footers
+@subsection Customizing HTML Page Footers
 
-You can have full control over the file footer 
-formatting by redefining three function references.
-The function associated with @code{$print_chapter_footer} is called
-if the document is split at chapters, or the function associated with
-@code{$print_section_footer} is called if the document is split at sections.
-After that the function associated with @code{$print_page_foot} is called.
+@cindex Customizing HTML page footers
+@cindex Footer, customizing for HTML
+
+The following function references give full control over the page
+footer formatting done at the bottom of each HTML output file.  The
+@code{$print_chapter_footer} function is called if the output is split
+at chapters, or the @code{$print_section_footer} footer is called if
+split at sections.  After that, the @code{$print_page_foot} function
+is called.
 
 @deffn {Function Reference} print_page_foot $filehandle
-@var{$filehandle} is the opened filehandle the function should write to.
-This function should print the page foot, including the @code{</body>}
-element.
+@cindex @code{</body>} tag, outputting
+@var{$filehandle} is the opened filehandle to which the function
+should write.  This function should print the page footer, including
+the @code{</body>} element.
 @end deffn
 
 @deffn {Function Reference} print_chapter_footer $filehandle \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-This function is called if the document is split at chapters, before 
-@code{print_page_foot}.
-@var{\%element} is a reference on a hash holding informations about the element.
+@var{$filehandle} is the opened filehandle to which the function
+should write.  @var{\%element} is a reference on a hash holding
+informations about the element.  This function is called if the
+output is split at chapters, before @code{$print_page_foot}.
 @end deffn
 
 @deffn {Function Reference} print_section_footer $filehandle \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-This function is called if the document is split at sections, before
-@code{print_page_foot}.
-@var{\%element} is a reference on a hash holding informations about the element.
+@var{$filehandle} and @var{\%element} are as above.
+This function is called if the output is split at sections, before
+@code{$print_page_foot}.
 @end deffn
 
 @vindex $PRE_BODY_CLOSE
-In HTML, it is possible to add text just before the @code{</body>} 
-element with the variable @code{$PRE_BODY_CLOSE}.  Nothing is added
-by default.  If @code{PROGRAM_NAME_IN_FOOTER} is set, the date and the 
-program name that generated the output manual is output in the footer.
+You can define the variable @code{$PRE_BODY_CLOSE} to add text just
+before the HTML @code{</body>} element.  Nothing is added by default.
+
+@vindex $PROGRAM_NAME_IN_FOOTER
+If @code{$PROGRAM_NAME_IN_FOOTER} is set, the date and name of the
+program that generated the output are output in the footer.
+
 
 @node Special elements
 @section Customizing the special elements pages and files
@@ -24565,7 +24577,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
+$Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24644,7 +24656,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.309 2010-09-11 23:59:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
