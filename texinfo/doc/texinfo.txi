@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
+@c $Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20078,7 +20078,7 @@ split at chapters, or the @code{$print_section_header} function if the
 split at sections.
 
 @deftypefn {Function Reference} print_page_head $filehandle
-@cindex @code{<body> tag, outputting
+@cindex @code{<body>} tag, outputting
 @var{$filehandle} is the opened filehandle to which the function
 should write.  This function should print the page header, in HTML,
 including the @code{<body>} element.
@@ -24577,7 +24577,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
+$Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24656,7 +24656,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.310 2010-09-12 23:32:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
