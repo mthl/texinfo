@@ -1,6 +1,8 @@
 2010-09-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customizing HTML Special Elements): rename+intro.
+	Remove @comments with node pointers, since we don't need or want to
+	specify pointers at all these days and years.
 
 2010-09-11  Karl Berry  <karl@gnu.org>
 

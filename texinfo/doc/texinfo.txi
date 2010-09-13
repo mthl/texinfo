@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
+@c $Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1855,7 +1855,6 @@ change.  The keybindings described here are the default or standard
 ones.@refill
 
 @node Inserting
-@comment  node-name,  next,  previous,  up
 @section Inserting Frequently Used Commands
 @cindex Inserting frequently used commands
 @cindex Frequently used commands, inserting
@@ -1997,7 +1996,6 @@ the same words as a node name but a useful description uses different
 words.@refill
 
 @node Showing the Structure
-@comment  node-name,  next,  previous,  up
 @section Showing the Section Structure of a File
 @cindex Showing the section structure of a file
 @cindex Section structure of a file, showing it
@@ -2060,7 +2058,6 @@ commands to move forward and backward by chapter, and to use the
 about the page commands.@refill
 
 @node Updating Nodes and Menus
-@comment  node-name,  next,  previous,  up
 @section Updating Nodes and Menus
 @cindex Updating nodes and menus
 @cindex Create nodes, menus automatically
@@ -2393,7 +2390,6 @@ sequentially updates all the nodes in the region.@refill
 @end table
 
 @node Info Formatting
-@comment  node-name,  next,  previous,  up
 @section Formatting for Info
 @cindex Formatting for Info
 @cindex Running an Info formatter
@@ -2516,7 +2512,6 @@ end-of-header lines.)@refill
 commands, such as @code{tex-show-print-queue}.@refill
 
 @node Texinfo Mode Summary
-@comment  node-name,  next,  previous,  up
 @section Texinfo Mode Summary
 
 In Texinfo mode, each set of commands has default keybindings that
@@ -5649,7 +5644,6 @@ Since no file name is specified with either @samp{Files} or
 (@pxref{Other Info Files, , Referring to Other Info Files}).@refill
 
 @node Other Info Files
-@comment  node-name,  next,  previous,  up
 @section Referring to Other Info Files
 @cindex Referring to other Info files
 @cindex Nodes in other Info files
@@ -5779,7 +5773,6 @@ references.@refill
 
 @need 800
 @node Cross Reference Commands
-@comment  node-name,  next,  previous,  up
 @section Different Cross Reference Commands
 @cindex Different cross reference commands
 
@@ -5811,7 +5804,6 @@ manuals for which there is no corresponding Info file and, therefore,
 no node to which to point.   @xref{cite, , @code{@@cite}}.)@refill
 
 @node Cross Reference Parts
-@comment  node-name,  next,  previous,  up
 @section Parts of a Cross Reference
 @cindex Cross reference parts
 @cindex Parts of a cross reference
@@ -5927,7 +5919,6 @@ write @code{@@xref} at the beginning of a sentence; write
 @code{@@pxref} only within parentheses, and so on.@refill
 
 @node xref
-@comment  node-name,  next,  previous,  up
 @section @code{@@xref}
 @findex xref
 @cindex Cross references using @code{@@xref}
@@ -7431,7 +7422,6 @@ In tables, putting options inside @code{@@code} produces a
 more pleasing effect.
 
 @node dfn
-@comment  node-name,  next,  previous,  up
 @subsection @code{@@dfn}@{@var{term}@}
 @findex dfn
 
@@ -7461,7 +7451,6 @@ information of a definition---it should make the meaning clear.
 
 @ignore
 @c node ctrl, , cite, Indicating
-@comment  node-name,  next,  previous,  up
 @c subsection @code{@@ctrl}@{@var{ctrl-char}@}
 @findex ctrl
 
@@ -12011,7 +12000,6 @@ The @code{@@sp} command is most often used in the title page.@refill
 
 @ignore
 @c node br, page, sp, Breaks
-@comment  node-name,  next,  previous,  up
 @c section @code{@@br}: Generate Paragraph Breaks
 @findex br @r{(paragraph breaks)}
 @cindex Paragraph breaks
@@ -12063,7 +12051,6 @@ page.
 
 
 @node group
-@comment  node-name,  next,  previous,  up
 @section @code{@@group}: Prevent Page Breaks
 @cindex Group (hold text together vertically)
 @cindex Holding text together vertically
@@ -12120,7 +12107,6 @@ considerable text.  It is a good rule of thumb to look for a missing
 @TeX{}.@refill
 
 @node need
-@comment  node-name,  next,  previous,  up
 @section @code{@@need @var{mils}}: Prevent Page Breaks
 @cindex Need space at page bottom
 @findex need
@@ -17040,7 +17026,6 @@ However, the @code{makeinfo} program is often faster and
 provides better error checking (@pxref{makeinfo in Emacs}).@refill
 
 @node Batch Formatting
-@comment  node-name,  next,  previous,  up
 @subsection Batch Formatting
 @cindex Batch formatting for Info
 @cindex Info batch formatting
@@ -17072,7 +17057,6 @@ you can continue working in it.  (When you run
 use that Emacs for anything else until the command finishes.)@refill
 
 @node Tag and Split Files
-@comment  node-name,  next,  previous,  up
 @subsection Tag Files and Split Files
 @cindex Making a tag table automatically
 @cindex Tag table, making automatically
@@ -24563,7 +24547,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
+$Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24642,7 +24626,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -24912,7 +24896,6 @@ and a colon.  This makes it easier to keep track of where you are in the
 manual.@refill
 
 @node Heading Choice
-@comment  node-name,  next,  previous,  up
 @section Specifying the Type of Heading
 
 @TeX{} does not begin to generate page headings for a standard Texinfo
@@ -25193,7 +25176,6 @@ cannot use @code{makeinfo}, or your problem is very puzzling, then you
 may want to use the tools described in this appendix.@refill
 
 @node Debugging with Info
-@comment  node-name,  next,  previous,  up
 @section Catching Errors with Info Formatting
 @cindex Catching errors with Info formatting
 @cindex Debugging with Info formatting
@@ -25380,7 +25362,6 @@ Manual}, for more information.@refill
 @end ignore
 
 @node Debugging with TeX
-@comment  node-name,  next,  previous,  up
 @section Catching Errors with @TeX{} Formatting
 @cindex Catching errors with @TeX{} formatting
 @cindex Debugging with @TeX{} formatting
@@ -25509,7 +25490,6 @@ instead of @samp{@@}; and in this circumstance, you are working
 directly with @TeX{}, not with Texinfo.)@refill
 
 @node Using texinfo-show-structure
-@comment  node-name,  next,  previous,  up
 @section Using @code{texinfo-show-structure}
 @cindex Showing the structure of a file
 @findex texinfo-show-structure
@@ -25581,7 +25561,6 @@ the list in the @samp{*Occur*} window; and if you have mis-named a node
 or left out a section, you can correct the mistake.@refill
 
 @node Using occur
-@comment  node-name,  next,  previous,  up
 @section Using @code{occur}
 @cindex Occurrences, listing with @code{@@occur}
 @findex occur
@@ -25621,7 +25600,6 @@ therefore have the same `Up' pointer.@refill
 for more information.@refill
 
 @node Running Info-Validate
-@comment  node-name,  next,  previous,  up
 @section Finding Badly Referenced Nodes
 @findex Info-validate
 @cindex Nodes, checking for badly referenced
@@ -25708,7 +25686,6 @@ argument so that it does not split the Info file; and you must create a
 tag table for the unsplit file.
 
 @node Unsplit
-@comment  node-name,  next,  previous,  up
 @subsection Creating an Unsplit File
 @cindex Creating an unsplit file
 @cindex Unsplit file creation
@@ -25783,7 +25760,6 @@ tag table and split the file automatically, or you can make the tag
 table and split the file manually.@refill
 
 @node Splitting
-@comment  node-name,  next,  previous,  up
 @subsection Splitting a File Manually
 @cindex Splitting an Info file manually
 @cindex Info file, splitting manually
