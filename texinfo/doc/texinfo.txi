@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
+@c $Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -653,24 +653,6 @@ HTML Cross-references
 * Preserving links:  HTML Xref Link Preservation.  MANUAL-noderename.cnf.
 
 texi2any Output Customization
-
-* Loading Init Files::   Initialization files and their search paths.
-* Init File Basics::     General information on init files.
-* Output Elements::                The main unit of output documents.
-* Special elements::                  Customizing special elements text and 
-                                      layout.
-* File and target names::
-* Headings formatting::
-* Formatting insertions text and simple commands::
-* References and footnotes formatting::
-* Block commands formatting::
-* Paragraph and preformatted region::
-* Lists tables and definitions formatting::
-* Menus indices and floats formatting::
-* Handling special regions::
-* Other and unknown commands::
-* External index files::
-* Customizing CSS::
 
 @@-Command List
 
@@ -18527,8 +18509,8 @@ particularly useful customization possibilities.)
 * Init File Basics::               What init files can contain and do.
 * Output Elements::                The main unit of output documents.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
-* HTML Page Layout Customization:: Customizing page headers, footers, sections.
-* Special elements::               Customizing special elements.
+* Customizing HTML Page Layout::   Customizing page headers, footers, sections.
+* Customizing HTML Special Elements::
 * File and target names::
 * Headings formatting::
 * Formatting insertions text and simple commands::
@@ -20049,8 +20031,8 @@ elements, that is, not at the end of a file.
 @end deffn
 
 
-@node HTML Page Layout Customization
-@section HTML Page Layout Customization
+@node Customizing HTML Page Layout
+@section Customizing HTML Page Layout
 
 @command{texi2any} provides for customization of the HTML page
 headers, footers, and the section layout in between.  (These are
@@ -20214,8 +20196,12 @@ If @code{$PROGRAM_NAME_IN_FOOTER} is set, the date and name of the
 program that generated the output are output in the footer.
 
 
-@node Special elements
-@section Customizing the special elements pages and files
+@node Customizing HTML Special Elements
+@section Customizing HTML Special Elements
+
+Various function references allow you to customize both the content
+and layout of the HTML output of the special elements (@pxref{Output
+Elements Defined}).
 
 @menu
 * Special elements content::
@@ -24577,7 +24563,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
+$Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24656,7 +24642,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.311 2010-09-13 14:26:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.312 2010-09-13 19:08:07 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -24812,7 +24798,7 @@ notice and this notice are preserved.
 Most printed manuals contain headings along the top of every page
 except the title and copyright pages.  Some manuals also contain
 footings.  HTML output also supports something like these, but in a
-completely different way: @pxref{HTML Page Layout Customization}.
+completely different way: @pxref{Customizing HTML Page Layout}.
 Headings and footings have no meaning in Info or the other output
 formats.
 
@@ -24829,12 +24815,12 @@ formats.
 Texinfo provides standard page heading formats for manuals that are
 printed on one side of each sheet of paper and for manuals that are
 printed on both sides of the paper.  Typically, you will use these
-formats, but you can specify your own format if you wish.@refill
+formats, but you can specify your own format if you wish.
 
 In addition, you can specify whether chapters should begin on a new
 page, or merely continue the same page as the previous chapter; and if
 chapters begin on new pages, you can specify whether they must be
-odd-numbered pages.@refill
+odd-numbered pages.
 
 By convention, a book is printed on both sides of each sheet of paper.
 When you open a book, the right-hand page is odd-numbered, and
@@ -24843,12 +24829,12 @@ left blank if necessary.  Reports, however, are often printed on just
 one side of paper, and chapters begin on a fresh page immediately
 following the end of the preceding chapter.  In short or informal
 reports, chapters often do not begin on a new page at all, but are
-separated from the preceding text by a small amount of whitespace.@refill
+separated from the preceding text by a small amount of whitespace.
 
 The @code{@@setchapternewpage} command controls whether chapters begin
 on new pages, and whether one of the standard heading formats is used.
 In addition, Texinfo has several heading and footing commands that you
-can use to generate your own heading and footing formats.@refill
+can use to generate your own heading and footing formats.
 
 In Texinfo, headings and footings are single lines at the tops and
 bottoms of pages; you cannot create multiline headings or footings.
@@ -24856,10 +24842,10 @@ Each header or footer line is divided into three parts: a left part, a
 middle part, and a right part.  Any part, or a whole line, may be left
 blank.  Text for the left part of a header or footer line is set
 flushleft; text for the middle part is centered; and, text for the
-right part is set flushright.@refill
+right part is set flushright.
+
 
 @node Heading Format
-@comment  node-name,  next,  previous,  up
 @section Standard Heading Formats
 
 Texinfo provides two standard heading formats, one for manuals printed

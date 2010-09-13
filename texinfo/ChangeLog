@@ -1,3 +1,7 @@
+2010-09-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customizing HTML Special Elements): rename+intro.
+
 2010-09-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customizing HTML Page Footers): rename + edit.
