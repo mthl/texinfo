@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
+@c $Id: texinfo.txi,v 1.314 2010-09-14 00:14:00 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16836,6 +16836,7 @@ variables. For the meaning of the options, @ref{Invoking texi2any}.
 @item @option{--verbose} @tab @code{VERBOSE}
 @end multitable
 
+
 @node Creating and Installing Info Files
 @chapter Creating and Installing Info Files
 
@@ -18485,8 +18486,10 @@ not a promise.
 @end cartouche
 
 This chapter describes how to customize virtually every aspect of the
-@command{texi2any} HTML output.  (Other output formats have no
-particularly useful customization possibilities.)
+@command{texi2any} HTML output.  Although some of the features here
+can technically be used with other output formats, it's not especially
+useful to do so, so we'll write the documentation as if HTML were the
+target format.
 
 @menu
 * Loading Init Files::             Initialization files and their search paths.
@@ -20071,14 +20074,14 @@ You can define the variable @code{$EXTRA_HEAD} to add text within the
 @code{$AFTER_BODY_OPEN} is added just after @code{<body>} is output.
 These variables are empty by default.
 
-@vindex $BODYTEXT
+@vindex BODYTEXT
 @cindex @code{<body>}, attributes of
 The @code{<body>} element attributes may be set by defining the
-configuration variable @code{$BODYTEXT}.
+configuration variable @code{BODYTEXT}.
 
-@vindex $ENCODING_NAME
+@vindex ENCODING_NAME
 @cindex Encoding, in HTML output
-By default, the encoding name from @code{$ENCODING_NAME} is used.  If
+By default, the encoding name from @code{ENCODING_NAME} is used.  If
 this variable is not defined, it is automatically determined
 (@pxref{Init File Encodings}).
 
@@ -24547,7 +24550,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
+$Id: texinfo.txi,v 1.314 2010-09-14 00:14:00 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24626,7 +24629,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.313 2010-09-13 19:11:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.314 2010-09-14 00:14:00 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
