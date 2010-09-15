@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.425 2010-09-12 20:06:11 pertusus Exp $
+# $Id: texi2html.pl,v 1.426 2010-09-15 22:39:25 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -9734,7 +9734,7 @@ sub line_warn($$)
     $file =~ s/^.*\/// if (get_conf('TEST'));
     if ($line_number->{'macro'} ne '')
     {
-        warn sprintf(__("%s:%d: warning: %s (via \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
+        warn sprintf(__("%s:%d: warning: %s (possibly involving \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
     }
     else
     {
@@ -9752,7 +9752,7 @@ sub line_error($$)
        my $file = $line_number->{'file_name'};
        $file =~ s/^.*\/// if (get_conf('TEST'));
        my $macro_text = '';
-       $macro_text = " (via \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
+       $macro_text = " (possibly involving \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
        warn "$file:$line_number->{'line_nr'}: $text$macro_text\n";
        check_die();
     }
@@ -9771,11 +9771,11 @@ sub format_line_number(;$)
     {
         if ($print_filename)
         {
-            return sprintf(__("(in %s l. %d via \@%s)"), $line_number->{'file_name'}, $line_number->{'line_nr'}, $line_number->{'macro'});
+            return sprintf(__("(in %s l. %d possibly involving \@%s)"), $line_number->{'file_name'}, $line_number->{'line_nr'}, $line_number->{'macro'});
         }
         else
         {
-            return sprintf(__("(l. %d via \@%s)"), $line_number->{'line_nr'}, $line_number->{'macro'});
+            return sprintf(__("(l. %d possibly involving \@%s)"), $line_number->{'line_nr'}, $line_number->{'macro'});
         }
     }
     elsif ($print_filename)

@@ -19,6 +19,10 @@ perl -w -x -d:NYTProf  ../../texi2html.pl texinfo.texi
 nytprofhtml
 firefox nytprof/index.html
 
+* the real macro that lead to the expanded text where an error is found
+  cannot be determined since there is one information for one line, even
+  if there were more than one macro expanded on the line.
+
 * automatic menus. 
 
 * automatic nodes, if feasible (issue of unicity, mostly).
