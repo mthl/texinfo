@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.315 2010-09-14 22:13:35 karl Exp $
+@c $Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18498,7 +18498,7 @@ target format.
 * Output Elements::                The main unit of output documents.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
 * Customizing HTML Page Layout::   Customizing page headers, footers, sections.
-* Customizing HTML Special Elements::
+* Customizing Special Elements::
 * File and target names::
 * Headings formatting::
 * Formatting insertions text and simple commands::
@@ -20184,29 +20184,39 @@ If @code{$PROGRAM_NAME_IN_FOOTER} is set, the date and name of the
 program that generated the output are output in the footer.
 
 
-@node Customizing HTML Special Elements
-@section Customizing HTML Special Elements
+@node Customizing Special Elements
+@section Customizing Special Elements
 
 Various function references allow you to customize both the content
 and layout of the HTML output of the special elements (@pxref{Output
 Elements Defined}).
 
 @menu
-* Special elements content::
-* Special elements layout::
+* Content: Customizing Content of Special Elements.
+* Layout: Customizing Layout of Special Elements.
 @end menu
 
-@node Special elements content
-@subsection Customizing the content of the special elements pages
 
-The label for the special elements, except for the Top element
-is formatted according to the function reference @code{$misc_element_label}:
+@node Customizing Content of Special Elements
+@subsection Customizing Content of Special Elements
 
-@deftypefn {Function Reference} $misc_element_label misc_element_label $identifier $page_name
-@var{$identifier} is the identifier associated with the special element.
-@var{$page_name} is the special element name.  It should return a label that
-can be used for references to the special element.
+@cindex Customizing special elements content
+@cindex Special elements content, customizing
+@cindex Content of special elements, customizing
+
+The label for the special elements (@pxref{Output Elements Defined}),
+except for the top element, is formatted according to the function
+reference @code{$misc_element_label}:
+
+@deftypefn {Function Reference} $misc_element_label misc_element_label @
+           $identifier $page_name
+@var{$identifier} is the identifier associated with the special
+element.  @var{$page_name} is the special element name.  The function
+should return a label that can be used for references to the special
+element.
 @end deftypefn
+
+The following sections describe the details for each special element.
 
 @menu
 * Top element text::
@@ -20215,6 +20225,7 @@ can be used for references to the special element.
 * About text::
 * Title page text::
 @end menu
+
 
 @node Top element text
 @subsubsection Top element text formatting
@@ -20449,35 +20460,46 @@ or @code{@@setshortcontentsaftertitlepage} appear in the document
 The resulting title page output is used in the document if 
 @code{USE_TITLEPAGE_FOR_TITLE} and @code{SHOW_TITLE} are set.
 
-@node Special elements layout
-@subsection Customizing the layout of the special element pages
 
-The formatting of each of the special pages, or section in case 
-the document is not split, is controlled by a function.
-The associated function reference is called accordingly:
+@node Customizing Layout of Special Elements
+@subsection Customizing Layout of Special Elements
+
+@cindex Customizing special elements layout
+@cindex Special elements layout, customizing
+@cindex Layout of special elements, customizing
+
+The formatting of each of the special elements is controlled by a
+function, as listed in the following table:
 
 @ftable @code
 @item print_Top
 @item print_Top_header
 @item print_Top_footer
-Formatting of top element page or section. It is also used for the formatting
-of the top element text (@pxref{Top element text}).
+Formatting of the top element.  It is also used for the formatting of
+the top element text (@pxref{Top element text}).
+
 @item print_Toc
-Formatting of table of contents page or section.
+Formatting of the table of contents element.
+
 @item print_Overview
-Formatting of short table of contents page or section.
+Formatting of the short table of contents element.
+
 @item print_About
-Formatting of about (help) page or section.
+Formatting of about (help) element.
+
 @item print_Footnotes
-Formatting of footnotes section or page in case footnotes are on a 
-separated page or the document is not split.
+Formatting of the footnote elements.
 @end ftable
 
-In the default case, @code{$print_Top} calls @code{$print_Top_header} for
-the header and @code{$print_Top_footer} for the footer of top element.
-All the other function call @code{$print_misc} which in turn calls
-@code{$print_misc_header} for the headers and @code{$print_misc_footer} 
-for the footers.
+@findex print_misc
+@findex print_misc_header
+@findex print_misc_footer
+In the default case, @code{$print_Top} calls @code{$print_Top_header}
+for the header and @code{$print_Top_footer} for the footer of top
+element.  All the other function call @code{$print_misc} which in turn
+calls @code{$print_misc_header} for the headers and
+@code{$print_misc_footer} for the footers.
+
 
 @node File and target names
 @section Customizing the file and target names
@@ -21310,9 +21332,9 @@ to the footnote entry.
 @end deftypefn
 
 The following function is only used when footnotes are at the bottom
-of a page and the document is split. 
-For customization of the footnotes page in case they are on a separated 
-page or section, @ref{Special elements layout}.  The footnotes location 
+of a page and the document is split.  For customization of the
+footnotes page in case they are on a separated page or section,
+@ref{Customizing Layout of Special Elements}.  The footnotes location
 is determined by @code{footnotestyle}.
 
 @deffn {Function Reference} foot_section \@@footnotes_lines
@@ -24551,7 +24573,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.315 2010-09-14 22:13:35 karl Exp $
+$Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24630,7 +24652,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.315 2010-09-14 22:13:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
