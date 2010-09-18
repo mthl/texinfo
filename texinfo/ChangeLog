@@ -1,3 +1,8 @@
+2010-09-18  Jaakko Hollmén  <Jaakko.Hollmen@tkk.fi>
+
+	* texi2html/examples/texinfo-bright-colors.css, texi2html/Makefile.am:
+	New css file with bright and contrasting colors.
+
 2010-09-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customizing {Layout,Content} of Special Elements):

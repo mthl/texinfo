@@ -64,6 +64,7 @@ noinst_SCRIPTS = manage_i18n.pl buildt2h.sh addformats.sh \
  parse_8bit_makeinfo_maps.pl gettext_to_separated.pl separated_to_hash.pl
 
 # style_example.css comes from http://planet.gnu.org/~ams/style.css
+# texinfo-bright-colors.css from http://hollmen.net/texinfo/ by Jaakko Hollmén
 EXTRA_DIST = \
 	configure.ac \
 	config.rpath \
@@ -89,6 +90,7 @@ EXTRA_DIST = \
 	examples/bib-example.texi \
 	examples/glossary.texi \
 	examples/style_example.css \
+	examples/texinfo-bright-colors.css \
 	lib \
 	po_messages/Makevars.in \
 	po_messages/POTFILES.in.in \
