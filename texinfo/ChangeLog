@@ -1,3 +1,7 @@
+2010-09-19  Karl Berry  <karl@gnu.org>
+
+	* texi2html/texi2html.pl (makeinfo_help): tweak formatting/wording.
+
 2010-09-18  Jaakko Hollmén  <Jaakko.Hollmen@tkk.fi>
 
 	* texi2html/examples/texinfo-bright-colors.css, texi2html/Makefile.am:

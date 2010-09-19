@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.426 2010-09-15 22:39:25 pertusus Exp $
+# $Id: texi2html.pl,v 1.427 2010-09-19 18:42:43 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -3839,8 +3839,7 @@ $makeinfo_help .= sprintf(__("General options:
       --no-warn               suppress warnings (but not errors).
       --conf-dir=DIR          search also for initialization files in DIR.
       --init-file=FILE        load FILE to modify the default behaviour.
-      --set-init-variable VAR=VALUE
-                                set the configuration variable VAR to VALUE.
+      --set-init-variable VAR=VAL  set configuration variable VAR to VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
 ."\n";
@@ -3893,7 +3892,7 @@ $makeinfo_help .= __("Options for HTML:
                                 anchors. Default is set only if split.\n")
 ."\n";
 $makeinfo_help .= __("Options for XML and Docbook:
-      --output-indent=VAL     this does nothing, retained for compatibility.\n")
+      --output-indent=VAL     does nothing, retained for compatibility.\n")
 ."\n";
 # This is ignored
 #Options for XML and Docbook:
@@ -3903,7 +3902,7 @@ $makeinfo_help .= __("Options for XML and Docbook:
 #      --commands-in-node-names  allow \@ commands in node names.
 #
 $makeinfo_help .= __("Input file options:
-      --commands-in-node-names  this does nothing, retained for compatibility.
+      --commands-in-node-names  does nothing, retained for compatibility.
   -D VAR                        define the variable VAR, as with \@set.
   -I DIR                        append DIR to the \@include search path.
   -P DIR                        prepend DIR to the \@include search path.
