@@ -1,3 +1,8 @@
+2010-09-20  Eric Blake  <address@hidden>
+
+        * util/gendocs.sh: Allow spaces in outdir, do not include
+	full pathname in archive.
+
 2010-09-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Top Element Customization, Contents and
