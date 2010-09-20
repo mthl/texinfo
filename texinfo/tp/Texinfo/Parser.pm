@@ -64,7 +64,7 @@ sub __($$)
 }
 
 my %default_configuration = (
-  'error' => 'generate',
+  'error' => 'generate', # 
   'force' => 0,
   'no_warn' => 0,
   'error_limit' => 100,
@@ -486,28 +486,26 @@ sub _check_errors($)
 
 sub _line_error($$$)
 {
-    my $parser = shift;
-    my $text = shift;
-    chomp ($text);
-    my $line_number = shift;
-    if (defined($line_number))
-    {
-       my $file = $line_number->{'file_name'};
-       $file =~ s/^.*\/// if ($parser->{'test'});
-       my $macro_text = '';
-       $macro_text = " (possibly involving \@$line_number->{'macro'})" if ($line_number->{'macro'} ne '');
-       my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
-       if ($parser->{'error'} eq 'generate')
-       {
-          warn "$error_text";
-          return 1 unless ($parser->{'force'});
-       }
-       else
-       {
-          return $error_text unless ($parser->{'force'});
-       }
+  my $parser = shift;
+  my $text = shift;
+  chomp ($text);
+  my $line_number = shift;
+  if (defined($line_number)) {
+    my $file = $line_number->{'file_name'};
+    $file =~ s/^.*\/// if ($parser->{'test'});
+    my $macro_text = '';
+    $macro_text = " (possibly involving \@$line_number->{'macro'})" 
+       if ($line_number->{'macro'} ne '');
+    my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
+    if ($parser->{'error'} eq 'generate') {
+      warn "$error_text";
+      return 1 unless ($parser->{'force'});
     }
-    return (_check_errors($parser));
+    else {
+      return $error_text unless ($parser->{'force'});
+    }
+  }
+  return (_check_errors($parser));
 }
 
 sub _parse_macro_command($$)
@@ -515,13 +513,15 @@ sub _parse_macro_command($$)
   my $line = shift;
   my $parent = shift;
   my $macro;
-  if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/)
-  {
-     my $macro_arg_name = $1;
-     my $macro_arg_args = $2;
-     $macro = { 'cmdname' => 'macro', 'parent' => $parent, 'contents' => [] };
-     $macro->{'args'} = [ { 'type' => 'macro_arg_name', 'text' =>  $macro_arg_name, 'parent' => $macro },
-                        { 'type' => 'macro_arg_args', 'text' => $macro_arg_args, 'parent' => $macro} ];
+  if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
+    my $macro_arg_name = $1;
+    my $macro_arg_args = $2;
+    $macro = { 'cmdname' => 'macro', 'parent' => $parent, 'contents' => [] };
+    $macro->{'args'} = [ 
+      { 'type' => 'macro_arg_name', 'text' => $macro_arg_name, 
+          'parent' => $macro },
+      { 'type' => 'macro_arg_args', 'text' => $macro_arg_args, 
+          'parent' => $macro} ];
   }
   return $macro;
 }
@@ -531,9 +531,9 @@ sub _merge_text ($$) {
   my $text = shift;
   #if (@{$current->{'contents'}} and exists($current->{'contents'}->[-1]->{'text'}) and !$current->{'contents'}->[-1]->{'type'} and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
   if ($current->{'contents'} and @{$current->{'contents'}} and
-   exists($current->{'contents'}->[-1]->{'text'}) and 
+    exists($current->{'contents'}->[-1]->{'text'}) and 
 #   !$current->{'contents'}->[-1]->{'type'} and 
-   $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+    $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
   }
   else {
@@ -580,372 +580,342 @@ sub _internal_parse_text($$;$$)
   my $line_index = 1;
 
   while (@$text) {
-     my $new_text = shift @$text;
-     # FIXME error? Or accept? Or nothing special?
-     #next if ($new_text = '');
+    my $new_text = shift @$text;
+    # FIXME error? Or accept? Or nothing special?
+    #next if ($new_text = '');
 
-     $new_line .= $new_text;
-     my $line_nr = shift @$line_nr;
+    $new_line .= $new_text;
+    my $line_nr = shift @$line_nr;
 
-     my $chomped_text = $new_text;
-     if (@$text and !chomp($chomped_text)) {
-        next; 
-     }
+    my $chomped_text = $new_text;
+    if (@$text and !chomp($chomped_text)) {
+      next; 
+    }
      
-     my $line = $new_line;
-     $new_line = '';
-     $line_index++;
+    my $line = $new_line;
+    $new_line = '';
+    $line_index++;
 
-     if ($self->{'debug'})
-     {
-       print STDERR "NEW LINE; $line";
-       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
-     }
-     # to determine if it is a menu entry, check ^*, and if set, add
-     # : to the separators list.
+    if ($self->{'debug'}) {
+      print STDERR "NEW LINE; $line";
+      print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+    }
+    # to determine if it is a menu entry, check ^*, and if set, add
+    # : to the separators list.
 
-     if ($in_menu)
-     {
-        if ($line =~ s/^(\*\s+)//)
-        {
-           my $leading_text = $1;
-           $maybe_menu_entry = ':';
-           #push @separators, ':';
-           push @{$current->{'contents'}}, 
-                          { 'type' => 'menu_entry',
-                              'args' => [ { 'type' => 'menu_entry_leading_text',
-                                            'text' => $leading_text } ]
-                           };
+    if ($in_menu) {
+      if ($line =~ s/^(\*\s+)//) {
+        my $leading_text = $1;
+        $maybe_menu_entry = ':';
+        #push @separators, ':';
+        push @{$current->{'contents'}}, 
+            { 'type' => 'menu_entry',
+              'args' => [ { 'type' => 'menu_entry_leading_text',
+                            'text' => $leading_text } ]
+            };
+      }
+    }
+
+    while (1) {
+      if ($current->{'cmdname'} and 
+            $block_commands{$current->{'cmdname'}} and 
+            ($block_commands{$current->{'cmdname'}} eq 'raw')) {
+        # special case for macro that may be nested
+        my $macro;
+        if ($current->{'cmdname'} eq 'macro' and $line =~ /^\s*\@macro\s+/) {
+          my $mline = $line;
+          $mline =~ s/\s*\@macro//;
+          $macro = _parse_macro_command ($mline, $current);
         }
-     }
-
-     while (1)
-     {
-        if ($current->{'cmdname'} and $block_commands{$current->{'cmdname'}} and ($block_commands{$current->{'cmdname'}} eq 'raw'))
-        {
-           # special case for macro that may be nested
-           my $macro;
-           if ($current->{'cmdname'} eq 'macro' and $line =~ /^\s*\@macro\s+/)
-           {
-               my $mline = $line;
-               $mline =~ s/\s*\@macro//;
-               $macro = _parse_macro_command ($mline, $current);
-           }
-           if ($macro)
-           {
-               push @{$current->{'contents'}}, $macro;
-               $current = $current->{'contents'}->[-1];
-               last;
-           }
-           elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'}))
-           {
-               $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
-               push @{$current->{'contents'}}, { 'text' => $1, 'type' => 'raw', 'parent' => $current } if ($1 ne '');
-               $current = $current->{'parent'};
-               last unless ($line =~ /\S/);
-           }
-           else
-           {
-               push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw', 'parent' => $current };
-               last;
-           }
+        if ($macro) {
+          push @{$current->{'contents'}}, $macro;
+          $current = $current->{'contents'}->[-1];
+          last;
         }
-        elsif ($current->{'type'} and $current->{'parent'}->{'cmdname'} and $current->{'parent'}->{'cmdname'} eq 'verb')
-        { # type should be 'brace_command_arg'
-           my $char = quotemeta($current->{'type'});
-           if ($line =~ s/^(.*?)$char\}/\}/)
-           {
-               push @{$current->{'contents'}}, { 'text' => $1, 'type' => 'raw', 'parent' => $current } if ($1 ne '');
+        elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
+          $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
+          push @{$current->{'contents'}}, 
+            { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
+              if ($1 ne '');
+          $current = $current->{'parent'};
+          last unless ($line =~ /\S/);
+        }
+        else {
+          push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw', 'parent' => $current };
+          last;
+        }
+      }
+      elsif ($current->{'type'} and $current->{'parent'}->{'cmdname'} and 
+            $current->{'parent'}->{'cmdname'} eq 'verb') { 
+             # type should be 'brace_command_arg'
+        my $char = quotemeta($current->{'type'});
+        if ($line =~ s/^(.*?)$char\}/\}/) {
+          push @{$current->{'contents'}}, 
+              { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
+                if ($1 ne '');
                
-           }
-           else
-           {
-               push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw', 'parent' => $current };
-               last;
-           }
         }
-        $line =~ s/^([^{}@,]*)//;
-        _merge_text ($current, $1) if ($1 ne '');
+        else {
+          push @{$current->{'contents'}}, 
+             { 'text' => $line, 'type' => 'raw', 'parent' => $current };
+          last;
+        }
+      }
+      $line =~ s/^([^{}@,]*)//;
+      _merge_text ($current, $1) if ($1 ne '');
         
-        # separators: $maybe_menu_entry$command_comma$maybe_menu_name
-        if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//)
-        {
-           my $end_command = $1;
-           print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
-           # close paragraph
-           # close other @-commands with braces
-           # check that the format is right
+      # separators: $maybe_menu_entry$command_comma$maybe_menu_name
+      if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//) {
+        my $end_command = $1;
+        print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
+        # close paragraph
+        # close other @-commands with braces
+        # check that the format is right
 
-           # end format
-           $current = $current->{'parent'};
-           last unless ($line =~ /\S/);
+        # end format
+        $current = $current->{'parent'};
+        last unless ($line =~ /\S/);
+      }
+      elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
+               or $line =~ s/^\@([a-zA-Z][\w-]*)//o) {
+        my $command = $1;
+        $command = $self->{'aliases'}->{$command} 
+           if (exists($self->{'aliases'}->{$command}));
+        print STDERR "COMMAND $command\n" if ($self->{'debug'});
+        if (defined($deprecated_commands{$command})) {
+          if ($deprecated_commands{$command} eq '') {
+            _line_warn($self, sprintf($self->__("%c%s is obsolete."), 
+                                ord('@'), $command), $line_nr);
+          }
+          else {
+            _line_warn($self, sprintf($self->__("%c%s is obsolete; %s"),
+                   ord('@'), $command, 
+                   $self->__($deprecated_commands{$command})), $line_nr);
+          }
         }
-        elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o or $line =~ s/^\@([a-zA-Z][\w-]*)//o)
-        {
-           my $command = $1;
-           $command = $self->{'aliases'}->{$command} if (exists($self->{'aliases'}->{$command}));
-           print STDERR "COMMAND $command\n" if ($self->{'debug'});
-           if (defined($deprecated_commands{$command}))
-           {
-              if ($deprecated_commands{$command} eq '')
-              {
-                 _line_warn($self, sprintf($self->__("%c%s is obsolete."), ord('@'), $command), $line_nr);
-              }
-              else
-              {
-                 _line_warn($self, sprintf($self->__("%c%s is obsolete; %s"),ord('@'), $command, $self->__($deprecated_commands{$command})), $line_nr);
-              }
-           }
-           if (defined($self->{'misc_commands'}->{$command}))
-           {
-              my ($args, $line_arg, $error);
-              ($line, $args, $line_arg, $error) = $self->_parse_misc_command($line, $command, $line_nr);
-              return $error if ($error);
-              push @{$current->{'contents'}},  { 'cmdname' => $command, 'parent' => $current };
+        if (defined($self->{'misc_commands'}->{$command})) {
+          my ($args, $line_arg, $error);
+          ($line, $args, $line_arg, $error) 
+             = $self->_parse_misc_command($line, $command, $line_nr);
+          return $error if ($error);
+          push @{$current->{'contents'}}, 
+            { 'cmdname' => $command, 'parent' => $current };
               
-              foreach my $arg (@$args)
-              {
-                 push @{$current->{'contents'}->[-1]->{'args'}},
-                    { 'type' => 'misc_arg', 'text' => $arg, 'parent' => $current->{'contents'}->[-1] };
-              }
-              if (defined($line_arg))
-              {
-                 $line = $line_arg;
-                 $current = $current->{'contents'}->[-1];
-                 $current->{'args'} = [  { 'type' => 'misc_line_arg', 'contents' => [], 'parent' => $current } ];
-                 # @node is the only misc command with args separated with comma
-                 $current->{'remaining_args'} = 4 if ($command eq 'node');
-                 $current = $current->{'args'}->[-1];
-              }
-              # FIXME @tab and @item, special case for @item(x) in @table...
-           }
-           elsif (exists($block_commands{$command}))
-           {
-              my $macro;
-              if ($command eq 'macro')
-              {
-                $macro = _parse_macro_command ($line, $current);
-              }
-              if ($macro)
-              {
-                 push @{$current->{'contents'}}, $macro;
-                 $current = $current->{'contents'}->[-1];
-                 last;
-              }
-              else
-              {
-                 $line =~ s/\s*//;
-                 push @{$current->{'contents'}}, { 'cmdname' => $command, 'parent' => $current };
-                 $current = $current->{'contents'}->[-1];
-                 if ($block_commands{$command} and $block_commands{$command} =~ /^\d+$/) {
-                    $current->{'args'} = [ { 'type' => 'block_line_arg', 'contents' => [], 'parent' => $current } ];
-                    $current->{'remaining_args'} = $block_commands{$command} -1;
-                    $current = $current->{'args'}->[-1];
-                 }
-                 elsif ($command eq 'multitable') {
-                    if ($line =~ s/^\@columnfractions\s+//)
-                    { # both a cmdname and block_line_arg
-                       $current->{'args'} = [ { 'cmdname' => 'columnfractions', 'type' => 'block_line_arg', 'parent' => $current, 'contents' => [] } ];
-                       $current = $current->{'args'}->[-1];
-                    }
-                 }
-                 else
-                 {
-                    last unless ($line =~ /\S/);
-                 }
-              }
-              # FIXME multitable and deff*
-           }
-           elsif ($line =~ s/^{// and (defined($brace_commands{$command}) or defined($accent_commands{$command})))
-           {
-               push @{$current->{'contents'}}, { 'cmdname' => $command, 'parent' => $current };
-               $current = $current->{'contents'}->[-1];
-               if ($command eq 'verb')
-               {
-                   if ($line =~ /^$/)
-                   {
-                        my $error = _line_error ($self, sprintf($self->__("\@%s without associated character"), $command), $line_nr);
-                        return $error if ($error);
-                   }
-                   else
-                   {
-                       $line =~ s/^(.)//;
-                       $current->{'type'} = $1;
-                   }
-               }
-               if ($brace_commands{$command} or $accent_commands{$command})
-               {
-                 $current->{'args'} = [ { 'type' => 'brace_command_arg', 'parent' => $current, 'contents' => [] } ];
-                 if ($brace_commands{$command})
-                 {
-                    $current->{'remaining_args'} = $brace_commands{$command} -1;
-                 }
-                 $current = $current->{'args'}->[-1];
-               }
-           }
-           elsif ($accent_commands{$command}) {
-              if ($command =~ /^[a-zA-Z]/) {
-                  $line =~ s/^\s*//;
-              }
-              elsif ($line =~ /^\s/) {
-                  _line_warn ($self, sprintf($self->__("Accent command `\@%s' must not be followed by whitespace"), $command), $line_nr);
-              }
-              if ($line =~ /^\@/) {
-                my $error = _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
-                return $error if ($error);
-              }
-              if ($line =~ s/^(\S)//o) {
-                my $accent = { 'cmdname' => $command, 'parent' => $current };
-                $accent->{'args'} = [ { 'text' => $1, 'parent' => $accent } ];
-                push @{$current->{'contents'}}, $accent;
-              }
-              else { # The accent is at end of line
-                # FIXME warn? And test case? Maybe this is catched 
-                # above, by "Accent command `@%s' must not be followed by whitespace"
-                # for commands with letter.
-                push @{$current->{'contents'}}, { 'text' => $command, 'parent' => $current };
-              }
-           }
-           elsif ($no_brace_commands{$command})
-           {
-              push @{$current->{'contents'}}, { 'cmdname' => $command, 'parent' => $current };
-           }
-           else
-           {
-              # unknown
-           }
+          foreach my $arg (@$args) {
+            push @{$current->{'contents'}->[-1]->{'args'}},
+              { 'type' => 'misc_arg', 'text' => $arg, 
+                'parent' => $current->{'contents'}->[-1] };
+          }
+          if (defined($line_arg)) {
+            $line = $line_arg;
+            $current = $current->{'contents'}->[-1];
+            $current->{'args'} = [ { 'type' => 'misc_line_arg', 
+                                     'contents' => [], 
+                                     'parent' => $current } ];
+            # @node is the only misc command with args separated with comma
+            # FIXME a 4 lingering here deep into the code may not
+            # be very wise...
+            $current->{'remaining_args'} = 4 if ($command eq 'node');
+            $current = $current->{'args'}->[-1];
+          }
+          # FIXME @tab and @item, special case for @item(x) in @table...
         }
-        elsif ($line =~ s/^([{}@,])//)
-        {
-           my $separator = $1;
-           print STDERR "SEPARATOR: $separator\n" if ($self->{'debug'});
-           if ($separator eq '@')
-           {
-              my $error = _line_error ($self, $self->__("Unexpected \@"), $line_nr);
+        elsif (exists($block_commands{$command})) {
+          my $macro;
+          if ($command eq 'macro') {
+            $macro = _parse_macro_command ($line, $current);
+          }
+          if ($macro) {
+            push @{$current->{'contents'}}, $macro;
+            $current = $current->{'contents'}->[-1];
+            last;
+          }
+          else {
+            $line =~ s/\s*//;
+            push @{$current->{'contents'}}, { 'cmdname' => $command, 
+                                              'parent' => $current };
+            $current = $current->{'contents'}->[-1];
+            if ($block_commands{$command} and 
+                $block_commands{$command} =~ /^\d+$/) {
+              $current->{'args'} = [ { 'type' => 'block_line_arg', 'contents' => [], 'parent' => $current } ];
+              $current->{'remaining_args'} = $block_commands{$command} -1;
+              $current = $current->{'args'}->[-1];
+            }
+            elsif ($command eq 'multitable') {
+              if ($line =~ s/^\@columnfractions\s+//) { 
+                # both a cmdname and block_line_arg
+                $current->{'args'} = [ { 'cmdname' => 'columnfractions', 
+                                         'type' => 'block_line_arg', 
+                                         'parent' => $current, 
+                                         'contents' => [] } ];
+                $current = $current->{'args'}->[-1];
+              }
+            }
+            else {
+              last unless ($line =~ /\S/);
+            }
+          }
+          # FIXME multitable and deff*
+        }
+        elsif ($line =~ s/^{// and (defined($brace_commands{$command}) or defined($accent_commands{$command}))) {
+          push @{$current->{'contents'}}, { 'cmdname' => $command, 
+                                            'parent' => $current };
+          $current = $current->{'contents'}->[-1];
+          if ($command eq 'verb') {
+            if ($line =~ /^$/) {
+              my $error = _line_error ($self, sprintf($self->__("\@%s without associated character"), $command), $line_nr);
               return $error if ($error);
-           }
-           elsif ($separator eq '{')
-           {
-              if ($current->{'cmdname'} and ($block_commands{$current->{'cmdname'}} eq 'multitable' or $block_commands{$current->{'cmdname'}} eq 'bracketed'))
-              {
-                 push @{$current->{'args'}}, { 'type' => 'bracketed', 'contents' => [], 'parent' => $current };
-                 $current = $current->{'args'}->[-1];
-              }
-              else
-              {
-                 my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('{')), $line_nr);
-                 return $error if ($error);
-              }
-           }
-           elsif ($separator eq '}')
-           { 
-              # FIXME use parents
-              if ($current->{'type'} and ($current->{'type'} eq 'bracketed' or $current->{'type'} eq 'brace_command_arg'))
-              {
-                 $current = $current->{'parent'};
-              }
-              else
-              {
-                 my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('}')), $line_nr);
-                 return $error if ($error);
-              }
-           }
-           elsif ($separator eq ',')
-           {
-              if ($current->{'parent'}->{'remaining_args'})
-              {
-                 $line =~ s/^\s*//;
-                 my $type = $current->{'type'};
-                 $current = $current->{'parent'};
-                 $current->{'remaining_args'}--;
-                 push @{$current->{'args'}}, { 'type' => $type, 'parent' => $current, 'contents' => [] };
-                 $current = $current->{'args'}->[-1];
-              }
-              else {
-                _merge_text ($current, ',');
-              }
-           }
+            }
+            else {
+              $line =~ s/^(.)//;
+              $current->{'type'} = $1;
+            }
+          }
+          if ($brace_commands{$command} or $accent_commands{$command}) {
+            $current->{'args'} = [ { 'type' => 'brace_command_arg', 
+                                     'parent' => $current, 
+                                     'contents' => [] } ];
+            if ($brace_commands{$command}) {
+              $current->{'remaining_args'} = $brace_commands{$command} -1;
+            }
+            $current = $current->{'args'}->[-1];
+          }
         }
-        else
-        {
-           {
-             #local $Data::Dumper::Maxdepth = 5;
-             #local $Data::Dumper::Indent= 1;
-             #local $Data::Dumper::Terse = 1;
-             #print STDERR "END LINE: ".Data::Dumper->Dump([$current]) if ($self->{'debug'})
-             if ($self->{'debug'})
-             {
-               print STDERR "END LINE: ";
-               print STDERR "type : $current->{'type'}, " if ($current->{'type'});
-               print STDERR "cmdname : $current->{'cmdname'}, " if ($current->{'cmdname'});
-               print STDERR "\n";
-             }
-           }
-           if ($line ne '')
-           {
-              die "Remaining line: $line\n";
-           }
-           if ($current->{'type'} and ($current->{'type'} eq 'block_line_arg' or $current->{'type'} eq 'misc_line_arg'))
-           {
-              if ($current->{'cmdname'} and $current->{'cmdname'} eq 'columnfractions')
-              { # the columnfraction content should be text only, maybe followed by a comment
-                #print STDERR "COLUMNFRACTIONS: ".Data::Dumper->Dump([$current], ['$columnfractions']) if ($self->{'debug'});
-                my @fractions;
-                my $other_contents;
-                if (!@{$current->{'contents'}})
-                {
-                  my $error = _line_error ($self, sprintf($self->__("Empty \@%s"), $current->{'cmdname'}), $line_nr);
+        elsif ($accent_commands{$command}) {
+          if ($command =~ /^[a-zA-Z]/) {
+            $line =~ s/^\s*//;
+          }
+          elsif ($line =~ /^\s/) {
+            _line_warn ($self, sprintf($self->__("Accent command `\@%s' must not be followed by whitespace"), $command), $line_nr);
+          }
+          if ($line =~ /^\@/) {
+            my $error = _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
+            return $error if ($error);
+          }
+          if ($line =~ s/^(\S)//o) {
+            my $accent = { 'cmdname' => $command, 'parent' => $current };
+            $accent->{'args'} = [ { 'text' => $1, 'parent' => $accent } ];
+            push @{$current->{'contents'}}, $accent;
+          }
+          else { # The accent is at end of line
+            # FIXME warn? And test case? Maybe this is catched 
+            # above, by "Accent command `@%s' must not be followed by
+            # whitespace for commands with letter.
+            push @{$current->{'contents'}}, { 'text' => $command, 'parent' => $current };
+          }
+        }
+        elsif ($no_brace_commands{$command}) {
+          push @{$current->{'contents'}}, { 'cmdname' => $command, 'parent' => $current };
+        }
+        else {
+          # unknown
+        }
+      }
+      elsif ($line =~ s/^([{}@,])//) {
+        my $separator = $1;
+        print STDERR "SEPARATOR: $separator\n" if ($self->{'debug'});
+        if ($separator eq '@') {
+          my $error = _line_error ($self, $self->__("Unexpected \@"), $line_nr);
+          return $error if ($error);
+        }
+        elsif ($separator eq '{') {
+          if ($current->{'cmdname'} and 
+               ($block_commands{$current->{'cmdname'}} eq 'multitable' or $block_commands{$current->{'cmdname'}} eq 'bracketed')) {
+            push @{$current->{'args'}}, { 'type' => 'bracketed', 'contents' => [], 'parent' => $current };
+            $current = $current->{'args'}->[-1];
+          }
+          else {
+            my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('{')), $line_nr);
+            return $error if ($error);
+          }
+        }
+        elsif ($separator eq '}') { 
+          # FIXME use parents
+          if ($current->{'type'} and ($current->{'type'} eq 'bracketed' or $current->{'type'} eq 'brace_command_arg')) {
+             $current = $current->{'parent'};
+          }
+          else {
+            my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('}')), $line_nr);
+            return $error if ($error);
+          }
+        }
+        elsif ($separator eq ',') {
+          if ($current->{'parent'}->{'remaining_args'}) {
+            $line =~ s/^\s*//;
+            my $type = $current->{'type'};
+            $current = $current->{'parent'};
+            $current->{'remaining_args'}--;
+            push @{$current->{'args'}}, { 'type' => $type, 'parent' => $current, 'contents' => [] };
+            $current = $current->{'args'}->[-1];
+          }
+          else {
+            _merge_text ($current, ',');
+          }
+        }
+      }
+      else {
+        if ($self->{'debug'}) {
+          print STDERR "END LINE: ";
+          print STDERR "type : $current->{'type'}, " if ($current->{'type'});
+          print STDERR "cmdname : $current->{'cmdname'}, " if ($current->{'cmdname'});
+          print STDERR "\n";
+        }
+        if ($line ne '') {
+          die "Remaining line: $line\n";
+        }
+        if ($current->{'type'} and ($current->{'type'} eq 'block_line_arg' or $current->{'type'} eq 'misc_line_arg')) {
+          if ($current->{'cmdname'} and $current->{'cmdname'} eq 'columnfractions') { 
+            # the columnfraction content should be text only, maybe followed by a comment
+            #print STDERR "COLUMNFRACTIONS: ".Data::Dumper->Dump([$current], ['$columnfractions']) if ($self->{'debug'});
+            my @fractions;
+            my $other_contents;
+            if (!@{$current->{'contents'}}) {
+              my $error = _line_error ($self, sprintf($self->__("Empty \@%s"), $current->{'cmdname'}), $line_nr);
+              return $error if ($error);
+            }
+            elsif (!defined($current->{'contents'}->[0]->{'text'})) {
+              my $error = _line_error ($self, sprintf($self->__("\@%s accepts only fractions as argument"), $current->{'cmdname'}), $line_nr);
+              return $error if ($error);
+              $other_contents = $current->{'contents'};
+            }
+            else {
+              my $fraction_argument = shift @{$current->{'contents'}};
+              # verify that the only remaining argument is a comment
+              if (@{$current->{'contents'}} and (!$current->{'contents'}->[0]->{'cmdname'} 
+                   or ($current->{'contents'}->[0]->{'cmdname'} ne 'c' and $current->{'contents'}->[0]->{'cmdname'} ne 'comment'))) {
+                _line_warn ($self, sprintf($self->__("Unexpected argument on \@%s line: %s"), 
+                            $current->{'cmdname'}, 
+                            tree_to_texi( { $current->{'contents'} })), $line_nr);
+              }
+              $other_contents = $current->{'contents'};
+              # now parse the fractions
+              my @possible_fractions = split /\s+/, $fraction_argument->{'text'};
+              foreach my $fraction (@possible_fractions) {
+                if ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/) {
+                  push @fractions, $fraction;
+                }
+                else {
+                  my $error = _line_error ($self, sprintf($self->__("column fraction not a number: %s"), $fraction), $line_nr);
                   return $error if ($error);
                 }
-                elsif (!defined($current->{'contents'}->[0]->{'text'}))
-                {
-                  my $error = _line_error ($self, sprintf($self->__("\@%s accepts only fractions as argument"), $current->{'cmdname'}), $line_nr);
-                  return $error if ($error);
-                  $other_contents = $current->{'contents'};
-                }
-                else
-                {
-                  my $fraction_argument = shift @{$current->{'contents'}};
-                  # verify that the only remaining argument is a comment
-                  if (@{$current->{'contents'}} and (!$current->{'contents'}->[0]->{'cmdname'} 
-                      or ($current->{'contents'}->[0]->{'cmdname'} ne 'c' and $current->{'contents'}->[0]->{'cmdname'} ne 'comment')))
-                  {
-                     _line_warn ($self, sprintf($self->__("Unexpected argument on \@%s line: %s"), $current->{'cmdname'}, tree_to_texi( { $current->{'contents'} })), $line_nr);
-                  }
-                  $other_contents = $current->{'contents'};
-                  # now parse the fractions
-                  my @possible_fractions = split /\s+/, $fraction_argument->{'text'};
-                  foreach my $fraction (@possible_fractions)
-                  {
-                     if ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/)
-                     {
-                       push @fractions, $fraction;
-                     }
-                     else
-                     {
-                        my $error = _line_error ($self, sprintf($self->__("column fraction not a number: %s"), $fraction), $line_nr);
-                        return $error if ($error);
-                     }
-                  }
-                }
-                $current = $current->{'parent'};
-                $current->{'args'} = [ { 'cmdname' => 'columnfractions', 'parent' => $current } ];
-                foreach my $content (@$other_contents)
-                {
-                   $content->{'parent'} = $current;
-                   push @{$current->{'args'}}, $content;
-                }
-                $current = $current->{'args'}->[0];
-                foreach my $fraction (@fractions)
-                {
-                   push @{$current->{'args'}}, { 'type' => 'fraction', 'text' => $fraction, 'parent' => $current };
-                }
               }
-              $current = $current->{'parent'};
-           }
-           last;
+            }
+            $current = $current->{'parent'};
+            $current->{'args'} = [ { 'cmdname' => 'columnfractions', 'parent' => $current } ];
+            foreach my $content (@$other_contents) {
+              $content->{'parent'} = $current;
+              push @{$current->{'args'}}, $content;
+            }
+            $current = $current->{'args'}->[0];
+            foreach my $fraction (@fractions) {
+              push @{$current->{'args'}}, { 'type' => 'fraction', 'text' => $fraction, 'parent' => $current };
+            }
+          }
+          $current = $current->{'parent'};
         }
-     }
+        last;
+      }
+    }
   }
   return $root;
 }

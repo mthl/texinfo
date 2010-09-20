@@ -35,7 +35,7 @@ sub try_test($$$)
     print STDERR "--> $test_name\n".tree_to_texi($result)."\n";
   }
   else {
-    ok (Data::Compare::Compare($result, $check), $test_name);
+    ok (Data::Compare::Compare($result, $check, { 'ignore_hash_keys' => [qw(parent)] }), $test_name);
   }
   #exit;
 }
