@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
+@c $Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19,8 +19,10 @@
 @include version.texi
 @settitle GNU Texinfo @value{VERSION}
 
-@c Define a new index for options.
+@c Define new indices for Texinfo commands and options.
+@defcodeindex txicmd
 @defcodeindex op
+
 @c Put everything except function (command, in this case) names in one
 @c index (arbitrarily chosen to be the concept index).
 @syncodeindex op cp
@@ -17829,19 +17831,23 @@ pre.smalldisplay @{ font-family:inherit; font-size:smaller @}
 @end example
 
 A full explanation of CSS is (far) beyond this manual; please see the
-reference above.  In brief, however, this specification tells the web
-browser to use a `smaller' font size for @code{@@smalldisplay} text,
-and to use the `inherited' font (generally a regular roman typeface)
-for both @code{@@smalldisplay} and @code{@@display}.  By default, the
-HTML @samp{<pre>} command uses a monospaced font.
+reference above.  In brief, however, the above tells the web browser
+to use a `smaller' font size for @code{@@smalldisplay} text, and to
+use the `inherited' font (generally a regular roman typeface) for both
+@code{@@smalldisplay} and @code{@@display}.  By default, the HTML
+@samp{<pre>} command uses a monospaced font.
 
 You can influence the CSS in the HTML output with two
 @command{makeinfo} options: @option{--css-include=@var{file}} and
 @option{--css-ref=@var{url}}.
 
+@pindex texinfo-bright-colors.css
+@cindex Visualizing Texinfo CSS
 The option @option{--css-ref=@var{url}} adds to each output HTML file
 a @samp{<link>} tag referencing a CSS at the given @var{url}. This
-allows using external style sheets.
+allows using external style sheets.  You may find the file
+@file{texi2html/examples/texinfo-bright-colors.css} useful for
+visualizing the CSS elements in Texinfo output.
 
 The option @option{--css-include=@var{file}} includes the contents
 @var{file} in the HTML output, as you might expect.  However, the
@@ -19612,7 +19618,8 @@ respective elements.
 
 @item If @code{INLINECONTENTS} is set, the @emph{Table of contents} and
 @emph{Overview} elements are directly included within the document,
-rather than as separate pages (@pxref{Contents and Overview text}).
+rather than as separate pages (@pxref{Contents and Overview Elements
+Customization}).
 
 @item When generating HTML, the @emph{Footnotes page} should only
 be present if the footnotes appear on a separate page (@pxref{Footnote
@@ -19785,7 +19792,7 @@ various output elements.
 @vtable @code
 @item $Texi2HTML::OVERVIEW
 Lines of the short table of contents.  @xref{Contents and Overview
-text}.
+Elements Customization}.
 
 @item $Texi2HTML::THIS_SECTION
 Lines of the current element.
@@ -19794,7 +19801,8 @@ Lines of the current element.
 The title page formatted.  @xref{Title page text}.
 
 @item $Texi2HTML::TOC_LINES
-Lines of table of contents.  @xref{Contents and Overview text}.
+Lines of table of contents.  @xref{Contents and Overview Elements
+Customization}.
 
 @end vtable
 
@@ -20164,8 +20172,8 @@ the @code{</body>} element.
 
 @deffn {Function Reference} print_chapter_footer $filehandle \%element
 @var{$filehandle} is the opened filehandle to which the function
-should write.  @var{\%element} is a reference on a hash holding
-informations about the element.  This function is called if the
+should write.  @var{\%element} is a reference to a hash with
+information about the element.  This function is called if the
 output is split at chapters, before @code{$print_page_foot}.
 @end deffn
 
@@ -20219,171 +20227,201 @@ element.
 The following sections describe the details for each special element.
 
 @menu
-* Top element text::
-* Contents and Overview text::
+* Top Element Customization::
+* Contents and Overview Elements Customization::
 * Footnotes text::
 * About text::
 * Title page text::
 @end menu
 
 
-@node Top element text
-@subsubsection Top element text formatting
+@node Top Element Customization
+@subsubsection Top Element Customization
 
-The top element formatting is controlled by three function which also
+@cindex Customization of top element
+@cindex Top element, customizing
+
+The top element formatting is controlled by three functions which also
 controls the layout of the top element page or section.  The associated
 function references are:
 
 @deffn {Function Reference} print_Top_header $filehandle $begin_page
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{$begin_page} is true if the element is the first in a page.
-This function should begin the Top element.  At the time this function 
-is called, the top element text has not been parsed.
+@var{$filehandle} is the opened filehandle to which the function
+should write.  @var{$begin_page} is true if the element is the first
+in a page.  This function should begin the top element.  At the time
+this function is called, the top element text has not been parsed.
 @end deffn
 
 @deffn {Function Reference} print_Top $filehandle $has_top_heading \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{$has_top_heading} is true if there is a @code{@@heading} command or
-@code{@@titlefont} command appearing in the Top element text.
-@var{\%element} is a reference on a hash holding informations about the element.
-This function should be used to format the Top element text and navigation
-panel.
+@var{$filehandle} is the opened filehandle to which the function
+should write.  @var{$has_top_heading} is true if there is a
+@code{@@heading} command or @code{@@titlefont} command appearing in
+the top element text. @var{\%element} is a hash reference with
+information about the element.  This function should be used to format
+the top element text and navigation panel.
 @end deffn
 
 @deffn {Function Reference} print_Top_footer $filehandle $end_page \%element
-@var{$filehandle} is the opened filehandle the function should write to.
-@var{$end_page} is true if the element is the last in a page.
-@var{\%element} is a reference on a hash holding informations about the element.
-This function should end the Top element. 
+@var{$filehandle} and @var{\%element} are as above.  @var{$end_page}
+is true if the element is the last in a page.  This function should
+end the top element.
 @end deffn
 
-@node Contents and Overview text
-@subsubsection Table of contents and Short table of contents
 
-Two possibilities exist for the formatting of table of contents (and 
-short table of contents).  In the default case @code{INLINE_CONTENTS}
-is set, in that case the table of contents
-are not output as separate elements but are instead output where the 
-corresponding @@-command, for example @code{@@contents},
-is set.  This behavior is consistent with @command{texi2dvi}.
-If @code{INLINE_CONTENTS} is not set,  the table of contents 
-are in separate elements, at the end of the document if the document 
-is unsplit or in separate files.  This makes sense when
-menus are used for navigation.
-If @code{@@setcontentsaftertitlepage} appears in the document,
-and even if @code{INLINE_CONTENTS} is set, the table of contents are 
-merged in the title (which isn't output in the default case, see 
-@ref{Title page text}).
+@node Contents and Overview Elements Customization
+@subsubsection Contents and Overview Elements Customization
 
-Several variables may be used to control the formatting of table of contents 
-and short table of contents:
+@cindex Customization of tables of contents elements
+@cindex Contents, customizing elements
+@cindex Short table of contents element, customizing
+@cindex Overview element, customizing
+
+To begin with, the table of contents and short table of contents can
+be made to appear at either the beginning (the default) or end of the
+document.
+
+@vindex INLINE_CONTENTS
+By default, the configuration variable
+@code{INLINE_CONTENTS} is set, specifying that the tables of contents
+are not output as separate elements but instead where the
+corresponding @@-command, for example @code{@@contents}, is set.  This
+behavior is consistent with @command{texi2dvi}.
+
+If @code{INLINE_CONTENTS} is not set, the tables of contents are
+output in separate elements, either at the end of the document if the
+output is unsplit or in separate files if not.  This makes sense
+when menus are used for navigation.
+
+@txicmdindex @@setcontentsaftertitlepage @r{and HTML output}
+If @code{@@setcontentsaftertitlepage} appears in the document, even if
+@code{INLINE_CONTENTS} is set, the tables of contents are merged into
+the title materia, which in turn is not output by default;
+@pxref{Title page text}.
+
+Next, the following variables allow for some useful control of the
+formatting of table of contents and short table of contents:
 
 @vtable @code
-@item $BEFORE_OVERVIEW
-The variable value is inserted before the short table of contents text.
-@item $AFTER_OVERVIEW
-The variable value is inserted after the short table of contents text.
 @item $BEFORE_TOC_LINES
-The variable value is inserted before the table of contents text.
+Inserted before the table of contents text.
+
 @item $AFTER_TOC_LINES
-The variable value is inserted after the table of contents text.
+Inserted after the table of contents text.
+
+@item $BEFORE_OVERVIEW
+Inserted before the short table of contents text.
+
+@item $AFTER_OVERVIEW
+Inserted after the short table of contents text.
+
 @item $NO_BULLET_LIST_STYLE
-For HTML.
-This should contain a CSS style used for the list style when there
+Expected to contain the CSS style used for the list style when there
 is no bullet.
+
 @item $NO_BULLET_LIST_CLASS
-This should contain the class assocciated with the $NO_BULLET_LIST_STYLE 
-css style.
+Used for the class associated with the $NO_BULLET_LIST_STYLE CSS
+style.
+
 @item $NO_BULLET_LIST_ATTRIBUTE
-This should contain an attribute text used for the list element when there
-is no bullet.  For example it is used in the tables of if they are 
-formatted with a list.
+Used as attribute text for the list element when there is no bullet.
+It is used in the tables of contents if they are formatted as a list.
 @end vtable
 
-More control on the table of contents and short table of contents formatting
-may be achieved by redefining a function with the following associated 
-function reference:
+Finally, the following function reference provides even more control
+over the table of contents and short table of contents formatting
+reference:
 
 @deffn {Function Reference} toc_body \@@elements 
-@var{\@@elements} is an array reference contining informations about
-all the elements of the document.  Each of the entry of this array is an hash
-reference which entries correspond with different informations
-about the element.  Interesting keys have the following meaning:
+@var{\@@elements} is an array reference containing information about
+all the elements of the document.  Each entry of this array is a hash
+reference, useful keys of which are as follows:
 
 @table @code
 @item top
-true if the element is the top element,
+True if the element is the top element.
+
 @item index_page
-true if the element is an index page added because of index splitting,
+True if the element is an index page added because of index splitting.
+
 @item toc_level
-level of the element in the table of content.  Highest level
-is 1 for the top element and for chapters, appendix and so on,
-2 for section, unnumberedsec and so on...
+Level of the element in the table of contents: highest level
+is 1 for the top element and for chapters, appendices, etc.,
+2 for sections, unnumbered sections, etc.
+
 @item tocid
-label used for reference linking to the element in table of
-contents,
+Label to be used for references linking to this element within the
+table of contents.
+
 @item file 
-the file containing the element, usefull to do href to that file
-in case the document is split,
+The file containing the element, part of the link if the output is
+split.
+
 @item text
-text of the element, with section number,
+Text of the element, with section number,
+
 @item name
-text of the element, without section number.
+Text of the element, without section number.
 @end table
 
-This function doesn't return anything but should fill the array
-corresponding with the @code{$Texi2HTML::TOC_LINES} and
-@code{$Texi2HTML::OVERVIEW} references with the table of contents and
-short table of contents.  @xref{Output Element Lines}.
-
+@vindex $Texi2HTML::TOC_LINES
+@vindex $Texi2HTML::OVERVIEW
+This function doesn't return anything.  Instead, it should fill the
+array corresponding to the @code{$Texi2HTML::TOC_LINES} and
+@code{$Texi2HTML::OVERVIEW} references with the text for the
+respective tables of contents.  @xref{Output Element Lines}.
 @end deffn
 
-In the default case, this function reference calls two specialized
-function reference, one for contents and the other for shortcontents.
+By default, @code{$toc_body} calls two specialized function
+references, one for the contents and the other for the short contents.
 
-@deftypefn {Function Reference} \@@contents_lines contents \@@elements $contents_file
-@var{\@@elements} is an array reference contining informations about
-all the elements of the document, as above.
+@deftypefn {Function Reference} \@@contents_lines contents @
+           \@@elements $contents_file
+@var{\@@elements} is an array reference as above.
 @var{$contents_file} is the name of the file containing the table of
-contents.
-This function should return the formatted table of contents lines.
+contents.  This function should return the formatted table of contents
+lines.
 @end deftypefn
 
-@deftypefn {Function Reference} \@@shortcontents_lines shortcontents \@@elements $shortcontents_file
-@var{\@@elements} is an array reference contining informations about
-all the elements of the document, as above.
-@var{$shortcontents_file} is the name of the file containing the table of
-contents.
-This function should return the formatted overview (short table of contents) lines.
+@deftypefn {Function Reference} \@@shortcontents_lines shortcontents @
+           \@@elements $shortcontents_file
+@var{\@@elements} is an array reference as above.
+@var{$shortcontents_file} is the name of the file containing the table
+of contents.  This function should return the formatted overview
+(short table of contents) lines.
 @end deftypefn
 
-Another function reference is used to add a heading and a reference, to
-be used with @code{INLINE_CONTENTS} or merged in the title.  Its output
-is not used when the table of contents are separate elements.
+Another function reference is used to add a heading and a reference,
+to be used with @code{INLINE_CONTENTS} or merged into the title
+material.  Its output is not used when the tables of contents are
+separate elements.
 
-@deftypefn {Function Reference} \@@inline_contents_lines inline_contents $filehandle $command \%element \@@elements
-This function reference returns a reference on an array holding 
-the lines containing the contents, heading and reference.
-@var{$filehandle} is a reference on the currently opened file if
-the function is called because a @code{@@contents} or
-@code{@@shortcontents} command was encountered, it is undef otherwise.
-@var{$command} is either @samp{contents} or @samp{shortcontents}.
-@var{\%element} is a reference on a hash holding informations about the element
-where the contents appeared.
+@deftypefn {Function Reference} \@@inline_contents_lines inline_contents @
+           $filehandle $command \%element \@@elements
+Return a reference to an array holding the lines containing the
+contents, heading and reference.  @var{$filehandle} is a reference to
+the currently opened file if the function is called because a
+@code{@@contents} or @code{@@shortcontents} command was encountered,
+and @code{undef} otherwise.  @var{$command} is either @samp{contents}
+or @samp{shortcontents}.  @var{\%element} is a reference to a hash
+holding information about the element where the contents appeared.
 Relevant keys are:
+
 @table @code
 @item target
-The identifier associated with the table of contents, used for example
-to do references to the table of contents using href in @acronym{HTML}.
+The identifier associated with the table of contents, used
+to link to the table of contents.
+
 @item id
-The identifier associated with the element, used to do labels. In 
-general the same than the @code{target}, but not necessarily.
+The identifier associated with the element, used to do labels.
+Usually but not necessarily the same as @code{target}.
+
 @item file
 The file name containing the table of contents.
 @end table
-@var{\@@elements} is an array reference contining informations about
-all the elements of the document, as above.
+
+@var{\@@elements} is an array reference as above.
 @end deftypefn
+
 
 @node Footnotes text
 @subsubsection Formatting of footnotes text
@@ -20455,7 +20493,7 @@ there is no titlepage, the table of contents and short
 table of contents are also added if they are to be output and 
 @code{@@setcontentsaftertitlepage}
 or @code{@@setshortcontentsaftertitlepage} appear in the document
-(@pxref{Contents and Overview text}).
+(@pxref{Contents and Overview Elements Customization}).
 
 The resulting title page output is used in the document if 
 @code{USE_TITLEPAGE_FOR_TITLE} and @code{SHOW_TITLE} are set.
@@ -20476,7 +20514,7 @@ function, as listed in the following table:
 @item print_Top_header
 @item print_Top_footer
 Formatting of the top element.  It is also used for the formatting of
-the top element text (@pxref{Top element text}).
+the top element text (@pxref{Top Element Customization}).
 
 @item print_Toc
 Formatting of the table of contents element.
@@ -20496,8 +20534,8 @@ Formatting of the footnote elements.
 @findex print_misc_footer
 In the default case, @code{$print_Top} calls @code{$print_Top_header}
 for the header and @code{$print_Top_footer} for the footer of top
-element.  All the other function call @code{$print_misc} which in turn
-calls @code{$print_misc_header} for the headers and
+element.  All the other functions call @code{$print_misc} which in
+turn calls @code{$print_misc_header} for the headers and
 @code{$print_misc_footer} for the footers.
 
 
@@ -24573,7 +24611,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
+$Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24652,7 +24690,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.316 2010-09-16 23:51:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

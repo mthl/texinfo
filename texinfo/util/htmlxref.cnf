@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-09-09.18; # UTC
+htmlxrefversion=2010-09-19.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -37,8 +37,15 @@ anubis		node	${GS}/anubis/manual/html_node/
 autoconf	mono	${GS}/autoconf/manual/autoconf.html
 autoconf	node	${GS}/autoconf/manual/html_node/
 
+autogen		mono	${GS}/autogen/manual/html_mono/autogen.html
+autogen		chapter	${GS}/autogen/manual/html_chapter/
+autogen		node	${GS}/autoconf/manual/html_node/
+
 automake	mono	${GS}/automake/manual/automake.html
 automake	node	${GS}/automake/manual/html_node/
+
+bash		mono	${GS}/bash/manual/bash.html
+bash		node	${GS}/bash/manual/html_node/
 
 bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
@@ -54,18 +61,23 @@ emacs		node	${GS}/emacs/manual/html_node/
 
 emms		node	${GS}/emms/manual/
 
+gama		mono	${GS}/gama/manual/gama.html
+gama		node	${GS}/gama/manual/html_node/
+
 gcal		mono	${GS}/gcal/manual/gcal.html
 gcal		node	${GS}/gcal/manual/html_node/
 
 gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
-gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
-gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
-gnat_rm		node	http://gcc.gnu.org/onlinedocs/gnat_rm/
-gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
-libgomp		node	http://gcc.gnu.org/onlinedocs/libgomp/
+ gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
+ gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
+ gnat_rm	node	http://gcc.gnu.org/onlinedocs/gnat_rm/
+ gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
+ libgomp	node	http://gcc.gnu.org/onlinedocs/libgomp/
 
 gettext		mono	${GS}/gettext/manual/gettext.html
 gettext		node	${GS}/gettext/manual/html_node/
+
+gnu-crypt	node	${GS}/gnu-crypto/manual/
 
 gnubg		mono	${GS}/gnubg/manual/gnubg.html
 gnubg		node	${GS}/gnubg/manual/html_node/
@@ -73,12 +85,22 @@ gnubg		node	${GS}/gnubg/manual/html_node/
 gnubik		mono	${GS}/gnubik/manual/gnubik.html
 gnubik		node	${GS}/gnubik/manual/html_node/
 
-gnus		mono	${GS}/emacs/manual/html_node/mh-e/
+GNUPG = http://www.gnupg.org/documentation/manuals
+gnupg		node	${GNUPG}/gnupg/
+ dirmngr	node	${GNUPG}/dirmngr/
+ gcrypt		node	${GNUPG}/gcrypt/
+ ksba		node	${GNUPG}/ksba/
+ assuan		node	${GNUPG}/assuan/
+ gpgme		node	${GNUPG}/gpgme/
+
 gnus		node	${GS}/emacs/manual/html_mono/mh-e.html
 
 gnuschool	mono	${GS}/gnuschool/gnuschool.html
 
 gtypist		mono	${GS}/gtypist/doc/
+
+gv		mono	${GS}/gv/manual/gv.html
+gv		node	${GS}/gv/manual/html_node/
 
 inetutils	mono	${GS}/inetutils/manual/inetutils.html
 inetutils	node	${GS}/inetutils/manual/html_node/
@@ -117,8 +139,13 @@ recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 standards	mono	${G}/prep/standards/standards.html
 standards	node	${G}/prep/standards/html_node/
 
+swbis		mono	${GS}/swbis/manual.html
+
 texinfo		mono	${GS}/texinfo/manual/texinfo/texinfo.html
 texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
+
+units		mono	${GS}/units/manual/units.html
+units		node	${GS}/units/manual/html_node/
 
 wget		mono	${GS}/wget/manual/wget.html
 wget		node	${GS}/wget/manual/html_node/
