@@ -1,7 +1,7 @@
 #use strict;
 
 use Test::More;
-BEGIN { plan tests => 1 };
+BEGIN { plan tests => 8 };
 use Texinfo::Parser qw(:all);
 use Data::Dumper;
 use Data::Compare;

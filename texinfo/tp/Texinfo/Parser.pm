@@ -1,7 +1,7 @@
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-# 2009, 2010 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 
+# 2010 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -361,10 +361,10 @@ $root_commands{'node'} = 1;
 # deep copy of a structure
 sub _deep_copy ($)
 {
-    my $struct = shift;
-    my $string = Data::Dumper->Dump([$struct], ['struct']);
-    eval $string;
-    return $struct;
+  my $struct = shift;
+  my $string = Data::Dumper->Dump([$struct], ['struct']);
+  eval $string;
+  return $struct;
 }
 
 # initialize a parser
@@ -378,56 +378,48 @@ sub parser($;$)
   $parser->{'gettext'} = $default_configuration{'gettext'};
 
   # called not object-oriented
-  if (ref($class) eq 'HASH')
-  {
+  if (ref($class) eq 'HASH') {
     #print STDERR "Not oo\n"
     $conf = $class;
     bless $parser;
   }
-  elsif (ref($class))
-  { # called on an existing parser, interpreted as a duplication
-     my $old_parser = $class;
-     $class = ref($class);
-     $parser = _deep_copy($old_parser);
-     $parser->{'gettext'} = $old_parser->{'gettext'};
-     bless $parser, $class;
-     $conf = shift;
+  elsif (ref($class)) { 
+    # called on an existing parser, interpreted as a duplication
+    my $old_parser = $class;
+    $class = ref($class);
+    $parser = _deep_copy($old_parser);
+    $parser->{'gettext'} = $old_parser->{'gettext'};
+    bless $parser, $class;
+    $conf = shift;
   }
-  else
-  {
-     bless $parser, $class;
-     $conf = shift;
+  else {
+    bless $parser, $class;
+    $conf = shift;
   }
-  if (defined($conf))
-  {
-     foreach my $key (keys(%$conf))
-     {
-       if (exists($default_configuration{$key}))
-       {
-           if (ref($conf->{$key}) ne 'CODE')
-           {
-              $parser->{$key} = _deep_copy($conf->{$key});
-           }
-           else
-           {
-              $parser->{$key} = $conf->{$key};
-           }
-           $parser->{'no_warn'} = 1 if ($key eq 'error' and $conf->{$key} ne 'generate' and !exists($conf->{'no_warn'}));
-           if ($key eq 'test' and $conf->{$key})
-           {
-              $parser->{'force'} = 1;
-              $parser->{'error_limit'} = 1000;
-           }
-       }
-       else
-       {
-          warn "$key not a possible configuration in Texinfo::Parser::parser\n";
-       }
-     }
+  if (defined($conf)) {
+    foreach my $key (keys(%$conf)) {
+      if (exists($default_configuration{$key})) {
+        if (ref($conf->{$key}) ne 'CODE') {
+          $parser->{$key} = _deep_copy($conf->{$key});
+        }
+        else {
+          $parser->{$key} = $conf->{$key};
+        }
+       $parser->{'no_warn'} = 1 if 
+          ($key eq 'error' and $conf->{$key} ne 'generate' 
+             and !exists($conf->{'no_warn'}));
+        if ($key eq 'test' and $conf->{$key}) {
+          $parser->{'force'} = 1;
+          $parser->{'error_limit'} = 1000;
+        }
+      }
+      else {
+        warn "$key not a possible configuration in Texinfo::Parser::parser\n";
+      }
+    }
   }
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
-  foreach my $name (@{$parser->{'indices'}}, @default_index_names)
-  {
+  foreach my $name (@{$parser->{'indices'}}, @default_index_names) {
     $parser->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
   }
   return $parser;
@@ -438,16 +430,13 @@ sub parse_texi_text($$;$)
   my $self = shift;
   my $text = shift;
   my $lines_nr = shift;
-  if (!ref($text))
-  {
+  if (!ref($text)) {
     $text = [ map {$_."\n"} split /\n/, $text ];
   }
-  if (defined($lines_nr) and !ref($lines_nr))
-  {
+  if (defined($lines_nr) and !ref($lines_nr)) {
     my $first_line = $lines_nr;
     $lines_nr = [];
-    foreach my $index(0..scalar(@$text)-1)
-    {
+    foreach my $index(0..scalar(@$text)-1) {
        $lines_nr->[$index] = { 'line_nr' => ($index+$first_line), 'file_name' => '', 'macro' => '' };
     }
   }
@@ -466,36 +455,33 @@ sub tree_to_texi ($);
 
 sub _line_warn($$$)
 {
-    my $parser = shift;
-    return if ($parser->{'no_warn'});
-    my $text = shift;
-    chomp ($text);
-    my $line_number = shift;
-    return if (!defined($line_number));
-    my $file = $line_number->{'file_name'};
-    # otherwise out of source build fail since the file names are different
-    $file =~ s/^.*\/// if ($parser->{'test'});
-    if ($line_number->{'macro'} ne '')
-    {
-        warn sprintf($parser->__("%s:%d: warning: %s (possibly involving \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
-    }
-    else
-    {
-        warn sprintf($parser->__("%s:%d: warning: %s\n"), $file, $line_number->{'line_nr'}, $text);
-    }
+  my $parser = shift;
+  return if ($parser->{'no_warn'});
+  my $text = shift;
+  chomp ($text);
+  my $line_number = shift;
+  return if (!defined($line_number));
+  my $file = $line_number->{'file_name'};
+  # otherwise out of source build fail since the file names are different
+  $file =~ s/^.*\/// if ($parser->{'test'});
+  if ($line_number->{'macro'} ne '') {
+     warn sprintf($parser->__("%s:%d: warning: %s (possibly involving \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
+  }
+  else {
+    warn sprintf($parser->__("%s:%d: warning: %s\n"), $file, $line_number->{'line_nr'}, $text);
+  }
 }
 
 my $error_nrs = 0;
 sub _check_errors($)
 {
-   my $parser = shift;
-   $error_nrs ++;
-   if ($error_nrs >= $parser->{'error_limit'})
-   {
-      warn $parser->__("Too many errors!  Gave up.\n") if ($parser->{'error'} eq 'generate');
-      return 1;
-   }
-   return 0;
+  my $parser = shift;
+  $error_nrs ++;
+  if ($error_nrs >= $parser->{'error_limit'}) {
+    warn $parser->__("Too many errors!  Gave up.\n") if ($parser->{'error'} eq 'generate');
+    return 1;
+  }
+  return 0;
 }
 
 sub _line_error($$$)
@@ -540,6 +526,21 @@ sub _parse_macro_command($$)
   return $macro;
 }
 
+sub _merge_text ($$) {
+  my $current = shift;
+  my $text = shift;
+  #if (@{$current->{'contents'}} and exists($current->{'contents'}->[-1]->{'text'}) and !$current->{'contents'}->[-1]->{'type'} and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+  if ($current->{'contents'} and @{$current->{'contents'}} and
+   exists($current->{'contents'}->[-1]->{'text'}) and 
+#   !$current->{'contents'}->[-1]->{'type'} and 
+   $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+    $current->{'contents'}->[-1]->{'text'} .= $text;
+  }
+  else {
+    push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
+  }
+}
+
 #c 'menu_entry'
 # t 'menu_entry_leading_text'
 #
@@ -575,8 +576,10 @@ sub _internal_parse_text($$;$$)
   my $root = { 'contents' => [] };
   my $current = $root;
 
-  while (@$text)
-  {
+  # This holds the line number.  Similar with line_nr, but simpler.
+  my $line_index = 1;
+
+  while (@$text) {
      my $new_text = shift @$text;
      # FIXME error? Or accept? Or nothing special?
      #next if ($new_text = '');
@@ -585,13 +588,13 @@ sub _internal_parse_text($$;$$)
      my $line_nr = shift @$line_nr;
 
      my $chomped_text = $new_text;
-     if (@$text and !chomp($chomped_text))
-     {
+     if (@$text and !chomp($chomped_text)) {
         next; 
      }
      
      my $line = $new_line;
      $new_line = '';
+     $line_index++;
 
      if ($self->{'debug'})
      {
@@ -637,13 +640,13 @@ sub _internal_parse_text($$;$$)
            elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'}))
            {
                $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
-               push @{$current->{'contents'}}, { 'text' => $1, 'type' => 'raw' } if ($1 ne '');
+               push @{$current->{'contents'}}, { 'text' => $1, 'type' => 'raw', 'parent' => $current } if ($1 ne '');
                $current = $current->{'parent'};
                last unless ($line =~ /\S/);
            }
            else
            {
-               push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw' };
+               push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw', 'parent' => $current };
                last;
            }
         }
@@ -662,7 +665,7 @@ sub _internal_parse_text($$;$$)
            }
         }
         $line =~ s/^([^{}@,]*)//;
-        push @{$current->{'contents'}}, { 'text' => $1, 'parent' => $current } if ($1 ne '');
+        _merge_text ($current, $1) if ($1 ne '');
         
         # separators: $maybe_menu_entry$command_comma$maybe_menu_name
         if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//)
@@ -734,14 +737,12 @@ sub _internal_parse_text($$;$$)
                  $line =~ s/\s*//;
                  push @{$current->{'contents'}}, { 'cmdname' => $command, 'parent' => $current };
                  $current = $current->{'contents'}->[-1];
-                 if ($block_commands{$command} and $block_commands{$command} =~ /^\d+$/)
-                 {
+                 if ($block_commands{$command} and $block_commands{$command} =~ /^\d+$/) {
                     $current->{'args'} = [ { 'type' => 'block_line_arg', 'contents' => [], 'parent' => $current } ];
                     $current->{'remaining_args'} = $block_commands{$command} -1;
                     $current = $current->{'args'}->[-1];
                  }
-                 elsif ($command eq 'multitable')
-                 {
+                 elsif ($command eq 'multitable') {
                     if ($line =~ s/^\@columnfractions\s+//)
                     { # both a cmdname and block_line_arg
                        $current->{'args'} = [ { 'cmdname' => 'columnfractions', 'type' => 'block_line_arg', 'parent' => $current, 'contents' => [] } ];
@@ -782,34 +783,28 @@ sub _internal_parse_text($$;$$)
                  $current = $current->{'args'}->[-1];
                }
            }
-           elsif ($accent_commands{$command})
-           {
-                if ($command =~ /^[a-zA-Z]/)
-                {
-                    $line =~ s/^\s*//;
-                }
-                elsif ($line =~ /^\s/)
-                {
-                    _line_warn ($self, sprintf($self->__("Accent command `\@%s' must not be followed by whitespace"), $command), $line_nr);
-                }
-                if ($line =~ /^\@/)
-                {
-                    my $error = _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
-                    return $error if ($error);
-                }
-                if ($line =~ s/^(\S)//o)
-                {
-                    my $accent = { 'cmdname' => $command, 'parent' => $current };
-                    $accent->{'args'} = [ { 'text' => $1, 'parent' => $accent } ];
-                    push @{$current->{'contents'}}, $accent;
-                }
-                else
-                { # The accent is at end of line
-                    # FIXME warn? And test case? Maybe this is catched 
-                    # above, by "Accent command `@%s' must not be followed by whitespace"
-                    # for commands with letter.
-                    push @{$current->{'contents'}}, { 'text' => $command, 'parent' => $current };
-                }
+           elsif ($accent_commands{$command}) {
+              if ($command =~ /^[a-zA-Z]/) {
+                  $line =~ s/^\s*//;
+              }
+              elsif ($line =~ /^\s/) {
+                  _line_warn ($self, sprintf($self->__("Accent command `\@%s' must not be followed by whitespace"), $command), $line_nr);
+              }
+              if ($line =~ /^\@/) {
+                my $error = _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
+                return $error if ($error);
+              }
+              if ($line =~ s/^(\S)//o) {
+                my $accent = { 'cmdname' => $command, 'parent' => $current };
+                $accent->{'args'} = [ { 'text' => $1, 'parent' => $accent } ];
+                push @{$current->{'contents'}}, $accent;
+              }
+              else { # The accent is at end of line
+                # FIXME warn? And test case? Maybe this is catched 
+                # above, by "Accent command `@%s' must not be followed by whitespace"
+                # for commands with letter.
+                push @{$current->{'contents'}}, { 'text' => $command, 'parent' => $current };
+              }
            }
            elsif ($no_brace_commands{$command})
            {
@@ -866,9 +861,8 @@ sub _internal_parse_text($$;$$)
                  push @{$current->{'args'}}, { 'type' => $type, 'parent' => $current, 'contents' => [] };
                  $current = $current->{'args'}->[-1];
               }
-              else
-              { # FIXME merge with previous text if possible
-                push @{$current->{'contents'}}, { 'text' => ',', 'parent' => $current };
+              else {
+                _merge_text ($current, ',');
               }
            }
         }
@@ -964,28 +958,22 @@ sub tree_to_texi ($)
   #print STDERR "$root ";
   #print STDERR "$root->{'type'}" if (defined($root->{'type'}));
   #print STDERR "\n";
-  if (defined($root->{'text'}))
-  {
+  if (defined($root->{'text'})) {
     $result .= $root->{'text'};
   }
-  else
-  {
-    if ($root->{'cmdname'})
-    {
+  else {
+    if ($root->{'cmdname'}) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root);
     }
     #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
-    if (defined($root->{'contents'}))
-    {
+    if (defined($root->{'contents'})) {
       die "bad contents type(".ref($root->{'contents'}).") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
-      foreach my $child (@{$root->{'contents'}})
-      {
+      foreach my $child (@{$root->{'contents'}}) {
         $result .= tree_to_texi($child);
       }
     }
-    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}})))
-    {
+    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
       $result .= '@end '.$root->{'cmdname'} ."\n"; # ."\n"?
     }
   }
@@ -993,61 +981,49 @@ sub tree_to_texi ($)
   return $result;
 }
 
-sub _expand_cmd_args_to_texi ($)
-{
+sub _expand_cmd_args_to_texi ($) {
   my $cmd = shift;
   my $result = '@'.$cmd->{'cmdname'};
   #print STDERR "Expand $result\n";
   my $cmd_with_braces = 1 if (defined($brace_commands{$cmd->{'cmdname'}}) or defined($accent_commands{$cmd->{'cmdname'}}));
   $result .= '{' if ($cmd_with_braces);
-  if ($cmd->{'cmdname'} eq 'verb')
-  {
+  if ($cmd->{'cmdname'} eq 'verb') {
      $result .= $cmd->{'type'}.$cmd->{'args'}->[0]->{'text'}.$cmd->{'type'};
   }
   # must be before the next condition
-  elsif ($block_commands{$cmd->{'cmdname'}} and ($block_commands{$cmd->{'cmdname'}} eq 'bracketed' or $block_commands{$cmd->{'cmdname'}} eq 'multitable'))
-  {
-     foreach my $arg (@{$cmd->{'args'}})
-     {
+  elsif ($block_commands{$cmd->{'cmdname'}} and ($block_commands{$cmd->{'cmdname'}} eq 'bracketed' or $block_commands{$cmd->{'cmdname'}} eq 'multitable')) {
+     foreach my $arg (@{$cmd->{'args'}}) {
         my $arg_expanded = tree_to_texi ($arg);
         $arg_expanded = '{'.$arg_expanded.'}' if ($arg->{'type'} and $arg->{'type'} eq 'bracketed');
         $result .= ' '.$arg_expanded;
      }
   }
   elsif (($cmd_with_braces or ($block_commands{$cmd->{'cmdname'}} and $block_commands{$cmd->{'cmdname'}} ne 'raw')) 
-      and defined($cmd->{'args'}))
-  {
+      and defined($cmd->{'args'})) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n" if (ref($cmd->{'args'}) ne 'ARRAY');
-    foreach my $arg (@{$cmd->{'args'}})
-    {
+    foreach my $arg (@{$cmd->{'args'}}) {
        $result .= tree_to_texi ($arg) . ', ';
     }
     $result =~ s/, $//;
   }
-  elsif ($cmd->{'cmdname'} eq 'macro')
-  {
-     $result .= ' ' .$cmd->{'args'}->[0]->{'text'}. ' '.$cmd->{'args'}->[1]->{'text'};
+  elsif ($cmd->{'cmdname'} eq 'macro') {
+    $result .= ' ' .$cmd->{'args'}->[0]->{'text'}. ' '.$cmd->{'args'}->[1]->{'text'};
   }
-  elsif (defined($cmd->{'args'}))
-  {
-     #print STDERR "".Data::Dumper->Dump([$cmd]);
-     foreach my $arg (@{$cmd->{'args'}})
-     {
-       
-        $result .= ' ' unless ($cmd->{'cmdname'} eq 'c' or $cmd->{'cmdname'} eq 'comment');
-        $result .= tree_to_texi ($arg);
-     }
-     #die "Shouldn't have args: $cmd->{'cmdname'}\n";
+  elsif (defined($cmd->{'args'})) {
+    #print STDERR "".Data::Dumper->Dump([$cmd]);
+    foreach my $arg (@{$cmd->{'args'}}) {
+      $result .= ' ' unless ($cmd->{'cmdname'} eq 'c' or $cmd->{'cmdname'} eq 'comment');
+      $result .= tree_to_texi ($arg);
+    }
+    #die "Shouldn't have args: $cmd->{'cmdname'}\n";
   }
-  if ($cmd_with_braces)
-  {
-     $result .= '}';
+  if ($cmd_with_braces) {
+    $result .= '}';
   }
-  elsif (defined($block_commands{$cmd->{'cmdname'}}))
-  {
-     # there is an end of line if there is a comment, for example
-     chomp($result);
-     $result .= "\n";
+  elsif (defined($block_commands{$cmd->{'cmdname'}})) {
+    # there is an end of line if there is a comment, for example
+    chomp($result);
+    $result .= "\n";
   }
   #print STDERR "Result: $result\n";
   return $result;
@@ -1056,128 +1032,104 @@ sub _expand_cmd_args_to_texi ($)
 # return the line after preserving things according to misc_commands map.
 sub _parse_misc_command($$$$)
 {
-    my $self = shift;
-    my $line = shift;
-    my $command = shift;
-    my $line_nr = shift;
-    my $args = [];
-    my $line_arg;
-    my $skip_spec = '';
-    my $arg_spec = '';
+  my $self = shift;
+  my $line = shift;
+  my $command = shift;
+  my $line_nr = shift;
+  my $args = [];
+  my $line_arg;
+  my $skip_spec = '';
+  my $arg_spec = '';
 
 #print STDERR "HHHHHHHHH $line $command\n";
-    $skip_spec = $self->{'misc_commands'}->{$command}->{'skip'}
-        if (defined($self->{'misc_commands'}->{'skip'}));
-    $arg_spec = $misc_commands{$command}->{'arg'}
-        if (defined($misc_commands{$command}->{'arg'}));
+  $skip_spec = $self->{'misc_commands'}->{$command}->{'skip'}
+    if (defined($self->{'misc_commands'}->{'skip'}));
+  $arg_spec = $misc_commands{$command}->{'arg'}
+    if (defined($misc_commands{$command}->{'arg'}));
 
-    if ($command eq 'alias')
-    {
-       if ($line =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//)
-       {
-          $self->{'aliases'}->{$2} = $4;
-          $args = [$2, $4];
-       }
-       else
-       {
-          my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s"), $command), $line_nr);
-          return ('', '', '', $error);
-       }
+  if ($command eq 'alias') {
+    if ($line =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//) {
+      $self->{'aliases'}->{$2} = $4;
+      $args = [$2, $4];
     }
-    elsif ($command eq 'definfoenclose')
-    {
-       if ($line =~ s/^\s+([a-z][\w\-]*)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//)
-       {
-          $args = [$1, $2, $3 ];
-          $self->{'info_enclose'}->{$1} = [ $2, $3 ];
-       }
-       else
-       {
-          my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s"), $command), $line_nr);
-          return ('', '', '', $error);
-       } # FIXME warn about garbage remaining on the line?
+    else {
+      my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s"), $command), $line_nr);
+      return ('', '', '', $error);
     }
-    elsif ($command eq 'set')
-    {
-      if ($line =~ /^(\s+)([\w\-]+)(\s+)(.*)$/)
-      {
-        $args = [$2, $4];
-      }
-      else
-      {
-        my $error = _line_error ($self, sprintf($self->__("%c%s requires a name"), ord('@'), $command), $line_nr);
+  }
+  elsif ($command eq 'definfoenclose') {
+    if ($line =~ s/^\s+([a-z][\w\-]*)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//) {
+      $args = [$1, $2, $3 ];
+      $self->{'info_enclose'}->{$1} = [ $2, $3 ];
+    }
+    else {
+      my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s"), $command), $line_nr);
+      return ('', '', '', $error);
+    } # FIXME warn about garbage remaining on the line?
+  }
+  elsif ($command eq 'set') {
+    if ($line =~ /^(\s+)([\w\-]+)(\s+)(.*)$/) {
+      $args = [$2, $4];
+    }
+    else {
+      my $error = _line_error ($self, sprintf($self->__("%c%s requires a name"), ord('@'), $command), $line_nr);
+      return ('', '', '', $error);
+    }
+    $line = '';
+  }
+  elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
+    if ($line =~ s/^\s+(\w+)\s*//) {
+      my $name = $1;
+      if ($forbidden_index_name{$name}) {
+        my $error = _line_error($self, sprintf($self->__("Reserved index name %s"),$name), $line_nr);
         return ('', '', '', $error);
       }
-      $line = '';
+      else {
+        $self->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
+      }
     }
-    elsif ($command eq 'defindex' || $command eq 'defcodeindex')
-    {
-        if ($line =~ s/^\s+(\w+)\s*//)
-        {
-            my $name = $1;
-            if ($forbidden_index_name{$name})
-            {
-                my $error = _line_error($self, sprintf($self->__("Reserved index name %s"),$name), $line_nr);
-                return ('', '', '', $error);
-            }
-            else
-            {
-                $self->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
-            }
-        }
-        else
-        {
-            my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
-            return ('', '', '', $error);
-        }
+    else {
+      my $error = _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+      return ('', '', '', $error);
     }
-    elsif ($arg_spec eq 'line' or $arg_spec eq 'lineraw')
-    {
-        $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
-        $args = [ $line ];
-        if ($arg_spec eq 'line')
-        {
-           $line_arg = $line;
-        }
-        else
-        {
-           $args = [ $line ];
-        }
-        $line = '';
+  }
+  elsif ($arg_spec eq 'line' or $arg_spec eq 'lineraw') {
+    $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
+    $args = [ $line ];
+    if ($arg_spec eq 'line') {
+      $line_arg = $line;
     }
-    elsif ($arg_spec)
-    {
-        my $arg_nr = $misc_commands{$command}->{'arg'};
-        while ($arg_nr)
-        {
-            if ($line =~ s/^(\s+)(\S*)//o)
-            {
-                my $argument = $2;
-                push @$args, $argument if ($argument ne '');
-            }
-            else
-            {
-                last;
-            }
-            $arg_nr--;
-        }
+    else {
+      $args = [ $line ];
     }
+    $line = '';
+  }
+  elsif ($arg_spec) {
+    my $arg_nr = $misc_commands{$command}->{'arg'};
+    while ($arg_nr) {
+      if ($line =~ s/^(\s+)(\S*)//o) {
+        my $argument = $2;
+        push @$args, $argument if ($argument ne '');
+      }
+      else {
+        last;
+      }
+      $arg_nr--;
+    }
+  }
 
-    if ($skip_spec eq 'line')
-    {
-        $line = '';
-    }
-    elsif ($skip_spec eq 'whitespace')
-    {
-        $line =~ s/^(\s*)//o;
-    }
-    elsif ($skip_spec eq 'space')
-    {
-        $line =~ s/^([ \t]*)//o;
-    }
-    # FIXME is the following useful?
-    $line = '' if (!defined($line));
-    return ($line, $args, $line_arg, '');
+  if ($skip_spec eq 'line') {
+    $line = '';
+  }
+  elsif ($skip_spec eq 'whitespace') {
+    $line =~ s/^(\s*)//o;
+  }
+  elsif ($skip_spec eq 'space') {
+    $line =~ s/^([ \t]*)//o;
+  }
+  # FIXME is the following useful?
+  $line = '' if (!defined($line));
+  return ($line, $args, $line_arg, '');
 }
 
 
