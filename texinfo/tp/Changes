@@ -1,0 +1,6 @@
+Revision history for Perl extension Texinfo::Parser.
+
+0.01  Sat Sep  4 13:51:26 2010
+	- original version; created by h2xs 1.23 with options
+		-A -X -c -b 5.4.5 -n Texinfo::Parser
+

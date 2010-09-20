@@ -1,0 +1,4 @@
+In a first step, close when the the command to be closed is at the 
+top of the tree, not when it should be closed theoretically.
+Then it could be possible to come back to the place where the command
+should be closed and give an error message.
