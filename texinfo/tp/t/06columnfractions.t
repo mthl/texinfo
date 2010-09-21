@@ -6,7 +6,7 @@ use Test::More;
 require 't/test_utils.pl';
 
 my $generate;
-# $generate = 1;
+ $generate = 1;
 
 my @test_cases = (
 [ 'good', '@multitable @columnfractions 0.4 .6 5.

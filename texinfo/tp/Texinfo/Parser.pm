@@ -42,6 +42,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   tree_to_texi      
   parse_texi_text
   parse_texi_line
+  tree
+  errors
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -64,7 +66,7 @@ sub __($$)
 }
 
 my %default_configuration = (
-  'error' => 'generate', # 
+  'error' => 'generate', # the contrary could be 'return'
   'force' => 0,
   'no_warn' => 0,
   'error_limit' => 100,
@@ -349,8 +351,7 @@ foreach my $sectioning_command (
               'majorheading',
               'chapheading',
               'centerchap'
-)
-{
+) {
   $misc_commands{$sectioning_command} = { 'arg' => 'line' };
   $root_commands{$sectioning_command} = 1 unless ($sectioning_command =~ /heading/)
 }
@@ -405,12 +406,10 @@ sub parser($;$)
         else {
           $parser->{$key} = $conf->{$key};
         }
-       $parser->{'no_warn'} = 1 if 
-          ($key eq 'error' and $conf->{$key} ne 'generate' 
-             and !exists($conf->{'no_warn'}));
         if ($key eq 'test' and $conf->{$key}) {
           $parser->{'force'} = 1;
           $parser->{'error_limit'} = 1000;
+          $parser->{'error'} = 'return';
         }
       }
       else {
@@ -422,6 +421,7 @@ sub parser($;$)
   foreach my $name (@{$parser->{'indices'}}, @default_index_names) {
     $parser->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
   }
+  $parser->{'errors_warnings'} = [];
   return $parser;
 }
 
@@ -451,6 +451,19 @@ sub parse_texi_line($$;$)
 
 sub tree_to_texi ($);
 
+sub tree ($)
+{
+  my $self = shift;
+  return $self->{'tree'};
+}
+
+sub errors ($)
+{
+  my $self = shift;
+  return $self->{'errors_warnings'};
+}
+
+
 # internal sub
 
 sub _line_warn($$$)
@@ -464,11 +477,20 @@ sub _line_warn($$$)
   my $file = $line_number->{'file_name'};
   # otherwise out of source build fail since the file names are different
   $file =~ s/^.*\/// if ($parser->{'test'});
+  my $warn_line;
   if ($line_number->{'macro'} ne '') {
-     warn sprintf($parser->__("%s:%d: warning: %s (possibly involving \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
+     $warn_line = sprintf($parser->__("%s:%d: warning: %s (possibly involving \@%s)\n"), $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
   }
   else {
-    warn sprintf($parser->__("%s:%d: warning: %s\n"), $file, $line_number->{'line_nr'}, $text);
+    $warn_line = sprintf($parser->__("%s:%d: warning: %s\n"), $file, $line_number->{'line_nr'}, $text);
+  }
+  if ($parser->{'generate'})
+  {
+    warn $warn_line;
+  }
+  else
+  {
+    push @{$parser->{'errors_warnings'}}, { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line, %{$line_number} };
   }
 }
 
@@ -499,11 +521,11 @@ sub _line_error($$$)
     my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
     if ($parser->{'error'} eq 'generate') {
       warn "$error_text";
-      return 1 unless ($parser->{'force'});
     }
     else {
-      return $error_text unless ($parser->{'force'});
+      push @{$parser->{'errors_warnings'}}, { 'type' => 'error', 'text' => $text, 'error_line' => $error_text, %{$line_number} };
     }
+    return 1 unless ($parser->{'force'});
   }
   return (_check_errors($parser));
 }
@@ -526,7 +548,8 @@ sub _parse_macro_command($$)
   return $macro;
 }
 
-sub _merge_text ($$) {
+sub _merge_text ($$)
+{
   my $current = shift;
   my $text = shift;
   #if (@{$current->{'contents'}} and exists($current->{'contents'}->[-1]->{'text'}) and !$current->{'contents'}->[-1]->{'type'} and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
@@ -574,6 +597,7 @@ sub _internal_parse_text($$;$$)
   my $maybe_menu_entry;
 
   my $root = { 'contents' => [] };
+  $self->{'tree'} = $root;
   my $current = $root;
 
   # This holds the line number.  Similar with line_nr, but simpler.
@@ -661,7 +685,7 @@ sub _internal_parse_text($$;$$)
           last;
         }
       }
-      $line =~ s/^([^{}@,]*)//;
+      $line =~ s/^([^{}@,:\t.]*)//;
       _merge_text ($current, $1) if ($1 ne '');
         
       # separators: $maybe_menu_entry$command_comma$maybe_menu_name
@@ -697,7 +721,7 @@ sub _internal_parse_text($$;$$)
           my ($args, $line_arg, $error);
           ($line, $args, $line_arg, $error) 
              = $self->_parse_misc_command($line, $command, $line_nr);
-          return $error if ($error);
+          return undef if ($error);
           push @{$current->{'contents'}}, 
             { 'cmdname' => $command, 'parent' => $current };
               
@@ -763,8 +787,7 @@ sub _internal_parse_text($$;$$)
           $current = $current->{'contents'}->[-1];
           if ($command eq 'verb') {
             if ($line =~ /^$/) {
-              my $error = _line_error ($self, sprintf($self->__("\@%s without associated character"), $command), $line_nr);
-              return $error if ($error);
+              return undef if (_line_error ($self, sprintf($self->__("\@%s without associated character"), $command), $line_nr));
             }
             else {
               $line =~ s/^(.)//;
@@ -789,8 +812,7 @@ sub _internal_parse_text($$;$$)
             _line_warn ($self, sprintf($self->__("Accent command `\@%s' must not be followed by whitespace"), $command), $line_nr);
           }
           if ($line =~ /^\@/) {
-            my $error = _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
-            return $error if ($error);
+            return undef if _line_error ($self, sprintf($self->__("Use braces to give a command as an argument to \@%s"), $command), $line_nr);
           }
           if ($line =~ s/^(\S)//o) {
             my $accent = { 'cmdname' => $command, 'parent' => $current };
@@ -811,12 +833,11 @@ sub _internal_parse_text($$;$$)
           # unknown
         }
       }
-      elsif ($line =~ s/^([{}@,])//) {
+      elsif ($line =~ s/^([{}@,:\t.])//) {
         my $separator = $1;
         print STDERR "SEPARATOR: $separator\n" if ($self->{'debug'});
         if ($separator eq '@') {
-          my $error = _line_error ($self, $self->__("Unexpected \@"), $line_nr);
-          return $error if ($error);
+          return undef if _line_error ($self, $self->__("Unexpected \@"), $line_nr);
         }
         elsif ($separator eq '{') {
           if ($current->{'cmdname'} and 
@@ -825,8 +846,7 @@ sub _internal_parse_text($$;$$)
             $current = $current->{'args'}->[-1];
           }
           else {
-            my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('{')), $line_nr);
-            return $error if ($error);
+            return undef if _line_error ($self, sprintf($self->__("Misplaced %c"), ord('{')), $line_nr);
           }
         }
         elsif ($separator eq '}') { 
@@ -835,22 +855,27 @@ sub _internal_parse_text($$;$$)
              $current = $current->{'parent'};
           }
           else {
-            my $error = _line_error ($self, sprintf($self->__("Misplaced %c"), ord('}')), $line_nr);
-            return $error if ($error);
+            return undef if _line_error ($self, sprintf($self->__("Misplaced %c"), ord('}')), $line_nr);
           }
         }
-        elsif ($separator eq ',') {
-          if ($current->{'parent'}->{'remaining_args'}) {
-            $line =~ s/^\s*//;
-            my $type = $current->{'type'};
-            $current = $current->{'parent'};
-            $current->{'remaining_args'}--;
-            push @{$current->{'args'}}, { 'type' => $type, 'parent' => $current, 'contents' => [] };
-            $current = $current->{'args'}->[-1];
-          }
-          else {
-            _merge_text ($current, ',');
-          }
+        elsif ($separator eq ',' and $current->{'parent'}->{'remaining_args'}) {
+          $line =~ s/^\s*//;
+          my $type = $current->{'type'};
+          $current = $current->{'parent'};
+          $current->{'remaining_args'}--;
+          push @{$current->{'args'}}, { 'type' => $type, 'parent' => $current, 'contents' => [] };
+          $current = $current->{'args'}->[-1];
+        }
+        # menu node if there is a :
+        # . must be followed by a space to stop the node name.
+        # cf texi2htmll.pl l 13425
+        elsif ($separator =~ /[,\t.]/ and $current->{'type'} eq 'FIXME') {
+        }
+        # menu node
+        elsif ($separator eq ':' and $current->{'type'} eq 'FIXME') {
+        }
+        else {
+          _merge_text ($current, $separator);
         }
       }
       else {
@@ -870,12 +895,10 @@ sub _internal_parse_text($$;$$)
             my @fractions;
             my $other_contents;
             if (!@{$current->{'contents'}}) {
-              my $error = _line_error ($self, sprintf($self->__("Empty \@%s"), $current->{'cmdname'}), $line_nr);
-              return $error if ($error);
+              return undef if _line_error ($self, sprintf($self->__("Empty \@%s"), $current->{'cmdname'}), $line_nr);
             }
             elsif (!defined($current->{'contents'}->[0]->{'text'})) {
-              my $error = _line_error ($self, sprintf($self->__("\@%s accepts only fractions as argument"), $current->{'cmdname'}), $line_nr);
-              return $error if ($error);
+              return undef if _line_error ($self, sprintf($self->__("\@%s accepts only fractions as argument"), $current->{'cmdname'}), $line_nr);
               $other_contents = $current->{'contents'};
             }
             else {
@@ -895,8 +918,7 @@ sub _internal_parse_text($$;$$)
                   push @fractions, $fraction;
                 }
                 else {
-                  my $error = _line_error ($self, sprintf($self->__("column fraction not a number: %s"), $fraction), $line_nr);
-                  return $error if ($error);
+                  return undef if _line_error ($self, sprintf($self->__("column fraction not a number: %s"), $fraction), $line_nr);
                 }
               }
             }

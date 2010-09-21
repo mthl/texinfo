@@ -1,7 +1,6 @@
-use vars qw(%result_texts);
+use vars qw(%result_texts %result_trees %result_errors);
 
-use vars qw(%result_trees);
-
+################ good
 $result_trees{'good'} = {
                           'contents' => [
                                           {
@@ -43,6 +42,10 @@ $result_texts{'good'} = '@multitable @columnfractions 0.4 .6 5.
 @end multitable
 ';
 
+$result_errors{'good'} = [];
+
+
+################ good_comment
 $result_trees{'good_comment'} = {
                                   'contents' => [
                                                   {
@@ -98,6 +101,10 @@ $result_texts{'good_comment'} = '@multitable @columnfractions 0.4 .6 5. @c comme
 @end multitable
 ';
 
+$result_errors{'good_comment'} = [];
+
+
+################ good_space_comment
 $result_trees{'good_space_comment'} = {
                                         'contents' => [
                                                         {
@@ -147,6 +154,10 @@ $result_texts{'good_space_comment'} = '@multitable @columnfractions 0 1 @c space
 @end multitable
 ';
 
+$result_errors{'good_space_comment'} = [];
+
+
+################ not_fraction
 $result_trees{'not_fraction'} = {
                                   'contents' => [
                                                   {
@@ -168,6 +179,20 @@ $result_texts{'not_fraction'} = '@multitable @columnfractions
 @end multitable
 ';
 
+$result_errors{'not_fraction'} = [
+                                   {
+                                     'error_line' => ':1: column fraction not a number: aaa
+',
+                                     'file_name' => '',
+                                     'line_nr' => 1,
+                                     'macro' => '',
+                                     'text' => 'column fraction not a number: aaa',
+                                     'type' => 'error'
+                                   }
+                                 ];
+
+
+################ empty
 $result_trees{'empty'} = {
                            'contents' => [
                                            {
@@ -189,6 +214,20 @@ $result_texts{'empty'} = '@multitable @columnfractions
 @end multitable
 ';
 
+$result_errors{'empty'} = [
+                            {
+                              'error_line' => ':1: Empty @columnfractions
+',
+                              'file_name' => '',
+                              'line_nr' => 1,
+                              'macro' => '',
+                              'text' => 'Empty @columnfractions',
+                              'type' => 'error'
+                            }
+                          ];
+
+
+################ empty_comment
 $result_trees{'empty_comment'} = {
                                    'contents' => [
                                                    {
@@ -224,6 +263,20 @@ $result_texts{'empty_comment'} = '@multitable @columnfractions @c
 @end multitable
 ';
 
+$result_errors{'empty_comment'} = [
+                                    {
+                                      'error_line' => ':1: @columnfractions accepts only fractions as argument
+',
+                                      'file_name' => '',
+                                      'line_nr' => 1,
+                                      'macro' => '',
+                                      'text' => '@columnfractions accepts only fractions as argument',
+                                      'type' => 'error'
+                                    }
+                                  ];
+
+
+################ wrong_command
 $result_trees{'wrong_command'} = {
                                    'contents' => [
                                                    {
@@ -275,6 +328,9 @@ $result_trees{'wrong_command'}{'contents'}[0]{'parent'} = $result_trees{'wrong_c
 $result_texts{'wrong_command'} = '@multitable @columnfractions@b{3.4} 
 @end multitable
 ';
+
+$result_errors{'wrong_command'} = [];
+
 
 
 1;
