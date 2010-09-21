@@ -466,6 +466,29 @@ sub errors ($)
 
 # internal sub
 
+sub _print_current($)
+{
+  my $current = shift;
+  my $type = '';
+  my $cmd = '';
+  my $parent_string = '';
+  $type = "($current->{'type'})" if (defined($current->{'type'}));
+  $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
+  if ($current->{'parent'}) {
+    my $parent = $current->{'parent'};
+    my $parent_cmd = '';
+    my $parent_type = '';
+    $parent_cmd = "\@$parent->{'cmdname'}" if (defined($parent->{'cmdname'}));
+    $parent_type = "($parent->{'type'})" if (defined($parent->{'type'}));
+    $parent_string = " <- $parent_cmd$parent_type\n";
+  }
+  my $args = '';
+  my $contents = '';
+  $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
+  $contents = "contents(".scalar(@{$current->{'contents'}}).')' if $current->{'contents'};
+  print STDERR "$cmd$type : $args $contents\n$parent_string";
+}
+
 sub _line_warn($$$)
 {
   my $parser = shift;
@@ -851,8 +874,13 @@ sub _internal_parse_text($$;$$)
         }
         elsif ($separator eq '}') { 
           # FIXME use parents
-          if ($current->{'type'} and ($current->{'type'} eq 'bracketed' or $current->{'type'} eq 'brace_command_arg')) {
+          #_print_current ($current);
+          if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
+          }
+          elsif ($current->{'type'} and ($current->{'type'} eq 'brace_command_arg')) {
+             # first is the command.
+             $current = $current->{'parent'}->{'parent'};
           }
           else {
             return undef if _line_error ($self, sprintf($self->__("Misplaced %c"), ord('}')), $line_nr);
