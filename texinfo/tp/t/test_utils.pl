@@ -27,7 +27,7 @@ sub new_test ($;$)
   return $test;
 }
 
-sub test($$$$) 
+sub test($$) 
 {
   my $self = shift;
   my $test_case = shift;
