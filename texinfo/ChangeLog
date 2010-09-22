@@ -1,3 +1,8 @@
+2010-09-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Footnotes text): merge into upper section.
+	(About text): rename+edit.
+
 2010-09-20  Eric Blake  <address@hidden>
 
         * util/gendocs.sh: Allow spaces in outdir, do not include

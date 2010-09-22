@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
+@c $Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19163,12 +19163,12 @@ tasks before document output.
 @end deffn
 
 By default, the hashes @code{%BUTTONS_NAME} (@pxref{Navigation Panel
-Button Specification}), @code{%BUTTONS_GOTO} (@pxref{About text}) are
-initialized.  The initialization of these variables depends on the
-document language.  Similarly, the encoding variables are set based on
-the information now available (@pxref{Init File Encodings}).  When
-generating HTML, aditionally, the @code{%NAVIGATION_TEXT} hash is
-initialized.
+Button Specification}) and @code{%BUTTONS_GOTO} (@pxref{About Element
+Customization}) are initialized.  The initialization of these
+variables depends on the document language.  Similarly, the encoding
+variables are set based on the information now available (@pxref{Init
+File Encodings}).  When generating HTML, aditionally, the
+@code{%NAVIGATION_TEXT} hash is initialized.
 
 To perform the default initializations, which are almost surely
 desired, and also add more code, the best way is to save the default
@@ -19189,7 +19189,7 @@ sub my_init_out()
 @cindex Finalization of output
 At the other end of things, if you want to do some clean-up after the
 document was generated (write at the end of the output files, issue
-messages, @dots{}), the following function reference may be redefined:
+messages, @dots{}), the following function reference may be overridden:
 
 @deffn {Function Reference} finish_out
 This function is called after the document generation.
@@ -20224,13 +20224,14 @@ should return a label that can be used for references to the special
 element.
 @end deftypefn
 
-The following sections describe the details for each special element.
+The following sections describe the details for each special element
+except footnotes, which are formatted when the @code{@@footnote}
+command is expanded (@pxref{Footnotes formatting}).
 
 @menu
 * Top Element Customization::
 * Contents and Overview Elements Customization::
-* Footnotes text::
-* About text::
+* About Element Customization::
 * Title page text::
 @end menu
 
@@ -20423,51 +20424,51 @@ The file name containing the table of contents.
 @end deftypefn
 
 
-@node Footnotes text
-@subsubsection Formatting of footnotes text
+@node About Element Customization
+@subsubsection About Element Customization
 
-The footnotes text is already formatting when @code{@@footnote} commands
-are expanded. 
-@xref{Footnotes formatting}.
+@cindex Customization of about element
+@cindex About element, customizing
 
-@node About text
-@subsubsection Formatting of about text
-
-The default about element contains an explaination of the buttons used
-in the document (@code{@@SECTION_BUTTONS}, @ref{Navigation Panel Button
-Specification}) and an example locating the buttons targets in an
-example.  The formatting of this text may be influenced by the
-following hashes and variables:
+The default About element has an explanation of the buttons used in
+the document (controlled by @code{@@SECTION_BUTTONS};
+@pxref{Navigation Panel Button Specification}) and an example showing
+the button targets.  The formatting of this text may be influenced by
+the following:
 
 @table @code
 @item $PRE_ABOUT 
 @itemx $AFTER_ABOUT
-This variable may be a scalar or a function reference. 
-If it is a scalar, the value is used.
-If this is a function reference it is expanded and the returned text is
-used. The text is added before or after the main about text.
-@item %BUTTONS_GOTO
+@vindex $PRE_ABOUT
+@vindex $AFTER_ABOUT
+Each of these variables may be a scalar or a function reference.  If a
+scalar, the value is used.  If a function reference, it is called and
+the returned text is used.  The text is added before or after the main
+About text, respectively.
 
+@item %BUTTONS_GOTO
+@vindex %BUTTONS_GOTO
 The keys of this hash are element labels (@pxref{Output Element
-Labels}).  The value is the text associated with the element label in
-the about text.  In the default case, the element of the hash are
-defined dynamically in that the @code{init_out} function reference
+Labels}), and the values are the text associated with each element
+label in the About text.  By default, the elements of the hash are
+defined dynamically in the @code{init_out} function reference
 (@pxref{Output Initialization}).
 
 @item %BUTTONS_EXAMPLE
-The keys of this hash are element labels (@pxref{Output Element
-Labels}).  The value is the text associated with the element label in
-the about example, typically a section number.
+@vindex %BUTTONS_EXAMPLE
+Like @code{%BUTTONS_GOTO}, except the values are the text from the
+About example, typically a section number.
 
 @end table
 
-If this is not enough and you want to control exactly the formatting of
-the about text, you can redefine the function associated with the following 
-function reference:
+If the above is not enough and you want to control exactly the
+formatting of the about text, the following function reference may be
+overridden:
 
 @deftypefn {Function Reference} $about_text about_body
-This function should return the about text.
+This function returns the about text.
 @end deftypefn
+
 
 @node Title page text
 @subsubsection Formatting of title page
@@ -24611,7 +24612,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
+$Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24690,7 +24691,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.317 2010-09-20 16:30:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
