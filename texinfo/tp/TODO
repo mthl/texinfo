@@ -2,3 +2,11 @@ In a first step, close when the the command to be closed is at the
 top of the tree, not when it should be closed theoretically.
 Then it could be possible to come back to the place where the command
 should be closed and give an error message.
+
+Karl idea to keep the information on the exact location of the @mymacro:
+(pertusus had the same idea).
+here's a crazy idea that just popped into my head: what if we kept track
+of column numbers as well as line numbers?  Then whether the macro was
+involved would be a matter of checking if the column number was < or >
+the place where the error occurred.
+

@@ -98,11 +98,13 @@ foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol
 foreach my $accent_command ('"','~','^','`',"'",',','=')
 {
   $accent_commands{$accent_command} = 0;
+  $brace_commands{$accent_command} = 1;
 }
 
 foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotaccent','v','ogonek')
 {
   $accent_commands{$accent_command} = 1;
+  $brace_commands{$accent_command} = 1;
 }
 
 foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key','math','option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','footnote','shortcaption','caption','dotless')
@@ -168,7 +170,8 @@ foreach my $block_command(
 }
 
 # macro is special
-foreach my $raw_command ('html', 'tex', 'xml', 'docbook', 'verbatim', 'ignore', 'macro')
+foreach my $raw_command ('html', 'tex', 'xml', 'docbook', 'verbatim', 
+                         'ignore', 'macro')
 {
   $block_commands{$raw_command} = 'raw';
 }
@@ -358,6 +361,36 @@ foreach my $sectioning_command (
 
 $root_commands{'node'} = 1;
 
+my %default_no_paragraph_commands;
+my %begin_line_commands;
+
+foreach my $command ('node', 'end') {
+   $begin_line_commands{$command} = $command;
+}
+
+foreach my $no_paragraph_command ('unmacro', 'rmacro',
+          'titlefont', 'include', 
+          '*', 'caption', 'shortcaption',
+          'image') {
+  $default_no_paragraph_commands{$no_paragraph_command} = 1;
+}
+
+foreach my $no_paragraph_command (keys(%misc_commands)) {
+  $default_no_paragraph_commands{$no_paragraph_command} = 1;
+  $begin_line_commands{$no_paragraph_command} = 1;
+}
+
+foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
+                                'noindent', 'indent') {
+  delete $begin_line_commands{$misc_not_begin_line};
+}
+
+foreach my $block_command (keys(%block_commands)) {
+  $begin_line_commands{$block_command} = 1;
+  $default_no_paragraph_commands{$block_command} = 1;
+  $default_no_paragraph_commands{'end '.$block_command} = 1;
+}
+
 
 # deep copy of a structure
 sub _deep_copy ($)
@@ -418,8 +451,10 @@ sub parser($;$)
     }
   }
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
+  $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   foreach my $name (@{$parser->{'indices'}}, @default_index_names) {
     $parser->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
+    $parser->{'no_paragraph_commands'}->{$name.'index'} = 1;
   }
   $parser->{'errors_warnings'} = [];
   return $parser;
@@ -466,6 +501,7 @@ sub errors ($)
 
 # internal sub
 
+# for debugging
 sub _print_current($)
 {
   my $current = shift;
@@ -571,20 +607,114 @@ sub _parse_macro_command($$)
   return $macro;
 }
 
-sub _merge_text ($$)
+sub _begin_paragraph ($$)
 {
+  my $self = shift;
+  my $current = shift;
+
+  if ((!$current->{'type'} or $current->{'type'} eq 'container') 
+      and $self->{'context'}->[-1] eq '') {
+    push @{$current->{'contents'}}, 
+            { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
+    $current = $current->{'contents'}->[-1];
+    print STDERR "PARAGRAPH\n" if ($self->{'debug'});
+    return $current;
+  }
+  return 0;
+}
+
+sub _end_brace_command($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+
+  my $located_line_nr = $line_nr;
+  # use the beginning of the @-command for the error message
+  # line number if available.
+  $located_line_nr = $current->{'parent'}->{'line_nr'}
+    if ($current->{'parent'}->{'line_nr'});
+  my $error = _line_error ($self, sprintf($self->__("%c%s missing close brace"), ord('@'), $current->{'parent'}->{'cmdname'}), $located_line_nr);
+  $current = $current->{'parent'}->{'parent'};
+  return ($current, $error);
+}
+
+sub _end_paragraph ($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+
+  while ($current->{'type'} and $current->{'type'} eq 'brace_command_arg') {
+    my $error;
+    ($current, $error) = _end_brace_command($self, $current, $line_nr);
+    return ($current, $error) if ($error);
+  }
+  if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
+    print STDERR "CLOSE PARA\n" if ($self->{'debug'});
+    $current = $current->{'parent'};
+  }
+  return ($current, 0);
+}
+
+# a command arg means closing until that command is found
+# no command arg means closing until the root or a root_command
+# is found.
+sub _end_block_command($$$;$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $command = shift;
+
+  my $error;
+  ($current, $error) = _end_paragraph($self, $current, $line_nr);
+  return ($current, $error) if ($error);
+
+  while (!($command and $current->{'cmdname'} and $current->{'cmdname'} eq $command) 
+         and $current->{'parent'} and 
+         !($current->{'cmdname'} and ($root_commands{$current->{'cmdname'}} or 
+                                     ($command and $current->{'parent'}->{'cmdname'} and $current->{'parent'}->{'cmdname'} eq 'footnote')))) {
+    if ($current->{'cmdname'} and exists($block_commands{$current->{'cmdname'}})) {
+      my $error = $self->_line_error (sprintf($self->__("No matching `%cend %s'"), ord('@'), $current->{'cmdname'}), $line_nr);
+      $current = $current->{'parent'};
+    }
+    elsif ($current->{'parent'}->{'cmdname'} and $current->{'parent'}->{'cmdname'} eq 'footnote') {
+      ($current, $error) = _end_brace_command($self, $current, $line_nr);
+    }
+    else { # silently close containers and @-commands without @end
+      $current = $current->{'parent'};
+    }
+    return ($current, $error) if ($error);
+    ($current, $error) = _end_paragraph($self, $current, $line_nr);
+    return ($current, $error) if ($error);
+  }
+  $current = $current->{'parent'} if ($command and $current->{'cmdname'} and $current->{'cmdname'} eq $command);
+  return ($current, 0);
+}
+
+# begin paragraph if needed.  If not try to merge with the previous
+# content if it is also some text.
+sub _merge_text ($$$)
+{
+  my $self = shift;
   my $current = shift;
   my $text = shift;
-  #if (@{$current->{'contents'}} and exists($current->{'contents'}->[-1]->{'text'}) and !$current->{'contents'}->[-1]->{'type'} and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
-  if ($current->{'contents'} and @{$current->{'contents'}} and
+
+  my $paragraph = _begin_paragraph($self, $current);
+
+  if (!$paragraph and 
+    $current->{'contents'} and @{$current->{'contents'}} and
     exists($current->{'contents'}->[-1]->{'text'}) and 
 #   !$current->{'contents'}->[-1]->{'type'} and 
     $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
   }
   else {
+    $current = $paragraph if ($paragraph);
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
   }
+  return $current;
 }
 
 #c 'menu_entry'
@@ -601,6 +731,11 @@ sub _merge_text ($$)
 #c 'block_line_arg'
 #
 #c 'brace_command_arg'
+#
+#c 'container'   FIXME what comes after @*table, @itemize, @enumerate before
+#                an @item
+#
+#c 'paragraph'
 #
 #special for @verb, type is the character
 
@@ -621,6 +756,7 @@ sub _internal_parse_text($$;$$)
 
   my $root = { 'contents' => [] };
   $self->{'tree'} = $root;
+  $self->{'context'} = [ '' ];
   my $current = $root;
 
   # This holds the line number.  Similar with line_nr, but simpler.
@@ -644,8 +780,29 @@ sub _internal_parse_text($$;$$)
     $line_index++;
 
     if ($self->{'debug'}) {
-      print STDERR "NEW LINE; $line";
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+      print STDERR "NEW LINE: $line";
+    }
+
+    if ($line !~ /\S/ and not 
+        # raw format or verb
+        ($current->{'cmdname'} and
+          (
+           ($block_commands{$current->{'cmdname'}} and 
+            $block_commands{$current->{'cmdname'}} eq 'raw')
+          or 
+           ($current->{'type'} and $current->{'parent'}->{'cmdname'} and 
+            $current->{'parent'}->{'cmdname'} eq 'verb')
+          ))
+        and $self->{'context'}->[-1] eq '') {
+      print STDERR "EMPTY LINE\n" if ($self->{'debug'});
+      my $error;
+      ($current, $error) = _end_paragraph($self, $current, $line_nr);
+      return undef if ($error);
+      push @{$current->{'contents'}}, { 'type' => 'normal_line', 
+                                        'text' => $line,
+                                        'parent' => $current };
+      next;
     }
     # to determine if it is a menu entry, check ^*, and if set, add
     # : to the separators list.
@@ -709,18 +866,15 @@ sub _internal_parse_text($$;$$)
         }
       }
       $line =~ s/^([^{}@,:\t.]*)//;
-      _merge_text ($current, $1) if ($1 ne '');
+      $current = _merge_text ($self, $current, $1) if ($1 ne '');
         
       # separators: $maybe_menu_entry$command_comma$maybe_menu_name
       if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//) {
         my $end_command = $1;
         print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
-        # close paragraph
-        # close other @-commands with braces
-        # check that the format is right
-
-        # end format
-        $current = $current->{'parent'};
+        my $error;
+        ($current, $error) = _end_block_command($self, $current, $line_nr, $end_command);
+        return undef if ($error);
         last unless ($line =~ /\S/);
       }
       elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
@@ -729,6 +883,10 @@ sub _internal_parse_text($$;$$)
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
+        unless ($self->{'no_paragraph_commands'}->{$command}) {
+          my $paragraph = _begin_paragraph($self, $current);
+          $current = $paragraph if ($paragraph);
+        }
         if (defined($deprecated_commands{$command})) {
           if ($deprecated_commands{$command} eq '') {
             _line_warn($self, sprintf($self->__("%c%s is obsolete."), 
@@ -741,6 +899,11 @@ sub _internal_parse_text($$;$$)
           }
         }
         if (defined($self->{'misc_commands'}->{$command})) {
+          if ($root_commands{$command}) {
+            my $error;
+            ($current, $error) = _end_block_command($self, $current, $line_nr);
+            return undef if ($error);
+          }
           my ($args, $line_arg, $error);
           ($line, $args, $line_arg, $error) 
              = $self->_parse_misc_command($line, $command, $line_nr);
@@ -778,6 +941,9 @@ sub _internal_parse_text($$;$$)
             last;
           }
           else {
+            my $error;
+            ($current, $error) = _end_paragraph($self, $current, $line_nr);
+            return undef if ($error);
             $line =~ s/\s*//;
             push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                               'parent' => $current };
@@ -804,7 +970,7 @@ sub _internal_parse_text($$;$$)
           }
           # FIXME multitable and deff*
         }
-        elsif ($line =~ s/^{// and (defined($brace_commands{$command}) or defined($accent_commands{$command}))) {
+        elsif ($line =~ s/^{// and (defined($brace_commands{$command}))) {
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current };
           $current = $current->{'contents'}->[-1];
@@ -817,14 +983,17 @@ sub _internal_parse_text($$;$$)
               $current->{'type'} = $1;
             }
           }
-          if ($brace_commands{$command} or $accent_commands{$command}) {
-            $current->{'args'} = [ { 'type' => 'brace_command_arg', 
-                                     'parent' => $current, 
+          if ($brace_commands{$command}) {
+            $current->{'args'} = [ { 'parent' => $current, 
                                      'contents' => [] } ];
             if ($brace_commands{$command}) {
               $current->{'remaining_args'} = $brace_commands{$command} -1;
             }
             $current = $current->{'args'}->[-1];
+            # no type for footnote, such that it appears as a container
+            # that holds paragraphs
+            $current->{'type'} = 'brace_command_arg'
+                       unless ('command' eq 'footnote');
           }
         }
         elsif ($accent_commands{$command}) {
@@ -878,8 +1047,10 @@ sub _internal_parse_text($$;$$)
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
           }
-          elsif ($current->{'type'} and ($current->{'type'} eq 'brace_command_arg')) {
-             # first is the command.
+          elsif ($current->{'parent'} and 
+                 $current->{'parent'}->{'cmdname'} and 
+                 $brace_commands{$current->{'parent'}->{'cmdname'}}) {
+             # first is the arg.
              $current = $current->{'parent'}->{'parent'};
           }
           else {
@@ -903,15 +1074,12 @@ sub _internal_parse_text($$;$$)
         elsif ($separator eq ':' and $current->{'type'} eq 'FIXME') {
         }
         else {
-          _merge_text ($current, $separator);
+          $current = _merge_text ($self, $current, $separator);
         }
       }
       else {
         if ($self->{'debug'}) {
-          print STDERR "END LINE: ";
-          print STDERR "type : $current->{'type'}, " if ($current->{'type'});
-          print STDERR "cmdname : $current->{'cmdname'}, " if ($current->{'cmdname'});
-          print STDERR "\n";
+          print STDERR "END LINE: ". _print_current($current)."\n";
         }
         if ($line ne '') {
           die "Remaining line: $line\n";
@@ -967,6 +1135,9 @@ sub _internal_parse_text($$;$$)
       }
     }
   }
+  my $error;
+  ($current, $error) = _end_block_command($self, $current, $line_nr);
+  return undef if ($error);
   return $root;
 }
 
@@ -1005,7 +1176,7 @@ sub _expand_cmd_args_to_texi ($) {
   my $cmd = shift;
   my $result = '@'.$cmd->{'cmdname'};
   #print STDERR "Expand $result\n";
-  my $cmd_with_braces = 1 if (defined($brace_commands{$cmd->{'cmdname'}}) or defined($accent_commands{$cmd->{'cmdname'}}));
+  my $cmd_with_braces = 1 if (defined($brace_commands{$cmd->{'cmdname'}}));
   $result .= '{' if ($cmd_with_braces);
   if ($cmd->{'cmdname'} eq 'verb') {
      $result .= $cmd->{'type'}.$cmd->{'args'}->[0]->{'text'}.$cmd->{'type'};

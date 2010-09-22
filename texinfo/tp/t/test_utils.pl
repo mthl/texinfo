@@ -6,12 +6,14 @@ use Data::Compare;
 
 use vars qw(%result_texts %result_trees %result_errors);
 
-sub new_test ($;$)
+sub new_test ($;$$)
 {
   my $name = shift;
   my $generate = shift;
+  my $debug = shift;
   my $file = "t/results/$name.pl";
-  my $test = {'name' => $name, 'generate' => $generate, 'file' => $file};
+  my $test = {'name' => $name, 'generate' => $generate, 
+              'file' => $file, 'debug' => $debug};
   
   if ($generate) {
     local *FH;
@@ -34,8 +36,8 @@ sub test($$)
   my $test_name = shift @$test_case;
   my $test_text = shift @$test_case;
 
-  my $parser = Texinfo::Parser->parser({'test' => 1});
-  #my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => 1});
+  my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'}});
+  print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result =  $parser->parse_texi_text($test_text, 1);
   $result = $parser->tree () if (!$result);
 
