@@ -1,11 +1,14 @@
 use strict;
 
+use Test::More;
 use Texinfo::Parser qw(:all);
 use Data::Dumper;
 use Data::Compare;
 use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texts %result_trees %result_errors);
+
+ok(1);
 
 our $arg_generate;
 our $arg_debug;
@@ -100,15 +103,15 @@ sub run_test_case($$;$$$)
     }
   }
 
+  foreach my $test_case (@$ran_tests) {
+    $test->test($test_case);
+  }
   if ($generate) {
     plan tests => 1;
   } else {
     plan tests => (1 + scalar(@$ran_tests) * 3);
   }
 
-  foreach my $test_case (@$ran_tests) {
-    $test->test($test_case);
-  }
 
   $test->end_test();
 }

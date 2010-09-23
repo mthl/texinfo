@@ -33,5 +33,3 @@ our ($arg_test_case, $arg_generate, $arg_debug);
 
 run_test_case ('paragraph', \@test_cases, $arg_test_case, 
    $arg_generate, $arg_debug);
-
-ok(1);
