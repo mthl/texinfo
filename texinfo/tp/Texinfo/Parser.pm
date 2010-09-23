@@ -126,10 +126,15 @@ foreach my $five_arg_command('xref','ref','pxref','inforef','image') {
 # Commands that enclose full texts
 my %context_brace_commands;
 foreach my $context_brace_command ('footnote', 'caption', 'shortcaption') {
-  $context_brace_commands{$context_brace_command} = '';
+  $context_brace_commands{$context_brace_command} = $context_brace_command;
 }
 
 $context_brace_commands{'math'} = 'math';
+
+my %no_paragraph_contexts;
+foreach my $no_paragraph_context ('math', 'preformatted', 'menu') {
+  $no_paragraph_contexts{$no_paragraph_context} = 1;
+};
 
 # commands delimiting blocks, typically with an @end.
 # Value is either the number of arguments on the line separated by
@@ -526,7 +531,7 @@ sub _print_current($)
   $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
   $contents = "contents(".scalar(@{$current->{'contents'}}).')'
     if $current->{'contents'};
-  print STDERR "$cmd$type : $args $contents\n$parent_string";
+  return "$cmd$type : $args $contents\n$parent_string";
 }
 
 sub _line_warn($$$)
@@ -542,7 +547,7 @@ sub _line_warn($$$)
   $file =~ s/^.*\/// if ($parser->{'test'});
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
-     $warn_line = sprintf($parser->__(
+    $warn_line = sprintf($parser->__(
                              "%s:%d: warning: %s (possibly involving \@%s)\n"),
              $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
   } else {
@@ -552,6 +557,7 @@ sub _line_warn($$$)
   if ($parser->{'generate'}) {
     warn $warn_line;
   } else {
+    warn $warn_line if ($parser->{'debug'});
     push @{$parser->{'errors_warnings'}},
          { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line,
            %{$line_number} };
@@ -587,6 +593,7 @@ sub _line_error($$$)
     if ($parser->{'error'} eq 'generate') {
       warn "$error_text";
     } else {
+      warn "$error_text" if ($parser->{'debug'});
       push @{$parser->{'errors_warnings'}},
            { 'type' => 'error', 'text' => $text, 'error_line' => $error_text,
              %{$line_number} };
@@ -620,7 +627,7 @@ sub _begin_paragraph ($$)
   my $current = shift;
 
   if ((!$current->{'type'} or $current->{'type'} eq 'container') 
-      and $self->{'context'}->[-1] eq '') {
+      and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
@@ -686,13 +693,15 @@ sub _end_block_command($$$;$)
          # stop if at the root
          and $current->{'parent'}
      # stop if in a root command 
-     # or in a context_brace_commands and searching for a specific end block command.  
-     # This second condition means that a footnote is not closed when looking for 
-     # the end of a block command, but is closed when completly closing the stack.
+     # or in a context_brace_commands and searching for a specific 
+     # end block command.  
+     # This second condition means that a footnote is not closed when 
+     # looking for the end of a block command, but is closed when 
+     # completly closing the stack.
          and !($current->{'cmdname'}
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
-                       and $current->{'parent'}->{'cmdname'} eq 'footnote')))){
+                       and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
     if ($current->{'cmdname'}
         and exists($block_commands{$current->{'cmdname'}})) {
       my $error = $self->_line_error(
@@ -734,12 +743,12 @@ sub _merge_text ($$$)
 #   !$current->{'contents'}->[-1]->{'type'} and 
     $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
-    print STDERR "MERGED TEXT: $text\n" if ($self->{'debug'});
+    print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
   }
   else {
     $current = $paragraph if ($paragraph);
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
-    print STDERR "NEW TEXT: $text\n" if ($self->{'debug'});
+    print STDERR "NEW TEXT: $text|||\n" if ($self->{'debug'});
   }
   return $current;
 }
@@ -771,7 +780,7 @@ sub _internal_parse_text($$;$$)
 {
   my $self = shift;
   my $text = shift;
-  my $line_nr = shift;
+  my $lines_array = shift;
   my $no_para = shift;
 
   # FIXME find on the tree
@@ -781,11 +790,12 @@ sub _internal_parse_text($$;$$)
 
   my $root = { 'contents' => [] };
   $self->{'tree'} = $root;
-  $self->{'context'} = [ '' ];
+  $self->{'context'} = [ '_root' ];
   my $current = $root;
 
   # This holds the line number.  Similar with line_nr, but simpler.
   my $line_index = 1;
+  my $line_nr;
 
   while (@$text) {
     my $new_text = shift @$text;
@@ -793,7 +803,7 @@ sub _internal_parse_text($$;$$)
     #next if ($new_text = '');
 
     $new_line .= $new_text;
-    my $line_nr = shift @$line_nr;
+    $line_nr = shift @$lines_array;
 
     my $chomped_text = $new_text;
     if (@$text and !chomp($chomped_text)) {
@@ -805,8 +815,12 @@ sub _internal_parse_text($$;$$)
     $line_index++;
 
     if ($self->{'debug'}) {
+      $current->{'HERE !!!!'} = 1;
+      local $Data::Dumper::Indent = 1;
+      local $Data::Dumper::Purity = 1;
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
       print STDERR "NEW LINE: $line";
+      delete $current->{'HERE !!!!'};
     }
 
     if ($line !~ /\S/ and not 
@@ -820,7 +834,7 @@ sub _internal_parse_text($$;$$)
             and $current->{'parent'}->{'cmdname'} eq 'verb')
           ))
         # not in math or preformatted
-        and $self->{'context'}->[-1] eq '') {
+        and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
       print STDERR "EMPTY LINE\n" if ($self->{'debug'});
       my $error;
       ($current, $error) = _end_paragraph($self, $current, $line_nr);
@@ -955,8 +969,7 @@ sub _internal_parse_text($$;$$)
             $current = $current->{'args'}->[-1];
           }
           # FIXME @tab and @item, special case for @item(x) in @table...
-        }
-        elsif (exists($block_commands{$command})) {
+        } elsif (exists($block_commands{$command})) {
           my $macro;
           if ($command eq 'macro') {
             $macro = _parse_macro_command ($line, $current);
@@ -965,8 +978,7 @@ sub _internal_parse_text($$;$$)
             push @{$current->{'contents'}}, $macro;
             $current = $current->{'contents'}->[-1];
             last;
-          }
-          else {
+          } else {
             my $error;
             ($current, $error) = _end_paragraph($self, $current, $line_nr);
             return undef if ($error);
@@ -1018,20 +1030,20 @@ sub _internal_parse_text($$;$$)
           if ($brace_commands{$command}) {
             $current->{'args'} = [ { 'parent' => $current, 
                                      'contents' => [] } ];
-            if ($brace_commands{$command}) {
-              $current->{'remaining_args'} = $brace_commands{$command} -1;
-            }
+            $current->{'remaining_args'} = $brace_commands{$command} -1;
             $current = $current->{'args'}->[-1];
             # no type for footnote, such that it appears as a container
             # that holds paragraphs
-            if (exists($context_brace_commands{$command})) {
-               push @{$self->{'context'}}, $context_brace_commands{$command}
+            if ($context_brace_commands{$command}) {
+               push @{$self->{'context'}}, $command;
             }
             else {
                $current->{'type'} = 'brace_command_arg';
             }
+            print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining $current->{'parent'}->{'remaining_args'} "
+               .($current->{'type'} ? $current->{'type'} : '')."\n"
+              if ($self->{'debug'});
           }
-
         } elsif ($accent_commands{$command}) {
           if ($command =~ /^[a-zA-Z]/) {
             $line =~ s/^\s*//;
@@ -1098,10 +1110,25 @@ sub _internal_parse_text($$;$$)
           } elsif ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
                    and $brace_commands{$current->{'parent'}->{'cmdname'}}) {
-             pop @{$self->{'context'}} if (exists ($context_brace_commands{$current->{'parent'}->{'cmdname'}}));
+             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
+               pop @{$self->{'context'}};
+             }
              # first is the arg.
+             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
              $current = $current->{'parent'}->{'parent'};
-
+          } elsif ($context_brace_commands{$self->{'context'}->[-1]}) {
+             my $error;
+             ($current, $error) = _end_paragraph($self, $current, $line_nr);
+             return undef if ($error);
+             if ($current->{'parent'}
+                   and $current->{'parent'}->{'cmdname'}
+                   and $brace_commands{$current->{'parent'}->{'cmdname'}}
+                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
+                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context'}->[-1]) {
+               pop @{$self->{'context'}};
+               print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+               $current = $current->{'parent'}->{'parent'};
+            }
           } else {
             return undef
               if _line_error ($self, sprintf($self->__("Misplaced %c"),
