@@ -107,29 +107,33 @@ foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotac
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key','math','option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','footnote','shortcaption','caption','dotless')
-{
+foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key','math','option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','footnote','shortcaption','caption','dotless') {
   $brace_commands{$one_arg_command} = 1;
 }
 
-foreach my $two_arg_command('email','acronym','abbr')
-{
+foreach my $two_arg_command('email','acronym','abbr') {
   $brace_commands{$two_arg_command} = 2;
 }
 
-foreach my $three_arg_command('uref','url','inforef')
-{
+foreach my $three_arg_command('uref','url','inforef') {
   $brace_commands{$three_arg_command} = 3;
 }
 
-foreach my $five_arg_command('xref','ref','pxref','inforef','image')
-{
+foreach my $five_arg_command('xref','ref','pxref','inforef','image') {
   $brace_commands{$five_arg_command} = 5;
 }
 
+# Commands that enclose full texts
+my %context_brace_commands;
+foreach my $context_brace_command ('footnote', 'caption', 'shortcaption') {
+  $context_brace_commands{$context_brace_command} = '';
+}
+
+$context_brace_commands{'math'} = 'math';
+
 # commands delimiting blocks, typically with an @end.
 # Value is either the number of arguments on the line separated by
-# commas or the type of command, 'raw', 'bracketed' or 'multitable'.
+# commas or the type of command, 'raw', 'def' or 'multitable'.
 my %block_commands;
 foreach my $bracketed_line_argument_command(#'multitable',
   'deffn',
@@ -154,8 +158,8 @@ foreach my $bracketed_line_argument_command(#'multitable',
   'deftypemethod'
 )
 {
-  $block_commands{$bracketed_line_argument_command} = 'bracketed';
-  $block_commands{$bracketed_line_argument_command.'x'} = 'bracketed';
+  $block_commands{$bracketed_line_argument_command} = 'def';
+  $block_commands{$bracketed_line_argument_command.'x'} = 'def';
 }
 
 $block_commands{'multitable'} = 'multitable';
@@ -626,7 +630,7 @@ sub _begin_paragraph ($$)
   return 0;
 }
 
-sub _end_brace_command($$$)
+sub _close_brace_command($$$)
 {
   my $self = shift;
   my $current = shift;
@@ -652,7 +656,7 @@ sub _end_paragraph ($$$)
 
   while ($current->{'type'} and $current->{'type'} eq 'brace_command_arg') {
     my $error;
-    ($current, $error) = _end_brace_command($self, $current, $line_nr);
+    ($current, $error) = _close_brace_command($self, $current, $line_nr);
     return ($current, $error) if ($error);
   }
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
@@ -676,9 +680,15 @@ sub _end_block_command($$$;$)
   ($current, $error) = _end_paragraph($self, $current, $line_nr);
   return ($current, $error) if ($error);
 
+        # stop if the command is found
   while (!($command and $current->{'cmdname'}
            and $current->{'cmdname'} eq $command) 
+         # stop if at the root
          and $current->{'parent'}
+     # stop if in a root command 
+     # or in a context_brace_commands and searching for a specific end block command.  
+     # This second condition means that a footnote is not closed when looking for 
+     # the end of a block command, but is closed when completly closing the stack.
          and !($current->{'cmdname'}
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
@@ -689,11 +699,10 @@ sub _end_block_command($$$;$)
                            sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
       $current = $current->{'parent'};
-
     } elsif ($current->{'parent'}->{'cmdname'}
-             and $current->{'parent'}->{'cmdname'} eq 'footnote') {
-      ($current, $error) = _end_brace_command($self, $current, $line_nr);
-
+             and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
+      ($current, $error) = _close_brace_command($self, $current, $line_nr);
+      pop @{$self->{'context'}};
     } else { # silently close containers and @-commands without @end
       $current = $current->{'parent'};
     }
@@ -768,9 +777,7 @@ sub _internal_parse_text($$;$$)
   # FIXME find on the tree
   my $in_menu;
   my $in_deff_line;
-  #my @separators;
   my $new_line = '';
-  my $maybe_menu_entry;
 
   my $root = { 'contents' => [] };
   $self->{'tree'} = $root;
@@ -812,6 +819,7 @@ sub _internal_parse_text($$;$$)
            ($current->{'type'} and $current->{'parent'}->{'cmdname'}
             and $current->{'parent'}->{'cmdname'} eq 'verb')
           ))
+        # not in math or preformatted
         and $self->{'context'}->[-1] eq '') {
       print STDERR "EMPTY LINE\n" if ($self->{'debug'});
       my $error;
@@ -828,7 +836,6 @@ sub _internal_parse_text($$;$$)
     if ($in_menu) {
       if ($line =~ s/^(\*\s+)//) {
         my $leading_text = $1;
-        $maybe_menu_entry = ':';
         #push @separators, ':';
         push @{$current->{'contents'}}, 
             { 'type' => 'menu_entry',
@@ -839,6 +846,7 @@ sub _internal_parse_text($$;$$)
     }
 
     while (1) {
+      # in a raw block command
       if ($current->{'cmdname'} and 
             $block_commands{$current->{'cmdname'}} and 
             ($block_commands{$current->{'cmdname'}} eq 'raw')) {
@@ -863,11 +871,13 @@ sub _internal_parse_text($$;$$)
           last unless ($line =~ /\S/);
         }
         else {
-          push @{$current->{'contents'}}, { 'text' => $line, 'type' => 'raw', 'parent' => $current };
+          push @{$current->{'contents'}}, 
+             { 'text' => $line, 'type' => 'raw', 'parent' => $current };
           last;
         }
       }
-      elsif ($current->{'type'} and $current->{'parent'}->{'cmdname'}
+      # in @verb
+      elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
              and $current->{'parent'}->{'cmdname'} eq 'verb') { 
              # type should be 'brace_command_arg'
         my $char = quotemeta($current->{'type'});
@@ -875,7 +885,6 @@ sub _internal_parse_text($$;$$)
           push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
                 if ($1 ne '');
-               
         } else {
           push @{$current->{'contents'}}, 
              { 'text' => $line, 'type' => 'raw', 'parent' => $current };
@@ -885,7 +894,6 @@ sub _internal_parse_text($$;$$)
       $line =~ s/^([^{}@,:\t.]*)//;
       $current = _merge_text ($self, $current, $1) if ($1 ne '');
         
-      # separators: $maybe_menu_entry$command_comma$maybe_menu_name
       if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//) {
         my $end_command = $1;
         print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
@@ -997,6 +1005,7 @@ sub _internal_parse_text($$;$$)
           $current = $current->{'contents'}->[-1];
           if ($command eq 'verb') {
             if ($line =~ /^$/) {
+              $current->{'type'} = '';
               return undef
                 if (_line_error ($self, sprintf($self->
                 __("\@%s without associated character"), $command), $line_nr));
@@ -1015,8 +1024,12 @@ sub _internal_parse_text($$;$$)
             $current = $current->{'args'}->[-1];
             # no type for footnote, such that it appears as a container
             # that holds paragraphs
-            $current->{'type'} = 'brace_command_arg'
-                       unless ('command' eq 'footnote');
+            if (exists($context_brace_commands{$command})) {
+               push @{$self->{'context'}}, $context_brace_commands{$command}
+            }
+            else {
+               $current->{'type'} = 'brace_command_arg';
+            }
           }
 
         } elsif ($accent_commands{$command}) {
@@ -1065,7 +1078,7 @@ sub _internal_parse_text($$;$$)
         } elsif ($separator eq '{') {
           if ($current->{'cmdname'}
               and ($block_commands{$current->{'cmdname'}} eq 'multitable'
-                   or $block_commands{$current->{'cmdname'}} eq 'bracketed')) {
+                   or $block_commands{$current->{'cmdname'}} eq 'def')) {
             push @{$current->{'args'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
@@ -1082,10 +1095,10 @@ sub _internal_parse_text($$;$$)
           #_print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
-
           } elsif ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
                    and $brace_commands{$current->{'parent'}->{'cmdname'}}) {
+             pop @{$self->{'context'}} if (exists ($context_brace_commands{$current->{'parent'}->{'cmdname'}}));
              # first is the arg.
              $current = $current->{'parent'}->{'parent'};
 
@@ -1242,7 +1255,7 @@ sub _expand_cmd_args_to_texi ($) {
   }
   # must be before the next condition
   elsif ($block_commands{$cmd->{'cmdname'}}
-         and ($block_commands{$cmd->{'cmdname'}} eq 'bracketed'
+         and ($block_commands{$cmd->{'cmdname'}} eq 'def'
               or $block_commands{$cmd->{'cmdname'}} eq 'multitable')) {
      foreach my $arg (@{$cmd->{'args'}}) {
         my $arg_expanded = tree_to_texi ($arg);
