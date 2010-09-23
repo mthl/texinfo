@@ -3,8 +3,17 @@ use strict;
 use Texinfo::Parser qw(:all);
 use Data::Dumper;
 use Data::Compare;
+use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texts %result_trees %result_errors);
+
+our $arg_generate;
+our $arg_debug;
+
+Getopt::Long::Configure("gnu_getopt");
+GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug);
+
+our $arg_test_case = shift @ARGV;
 
 sub new_test ($;$$)
 {
@@ -69,6 +78,39 @@ sub end_test($)
     print $FH "\n1;\n";
     close ($self->{'fh'});
   }
+}
+
+sub run_test_case($$;$$$)
+{
+  my $name = shift;
+  my $test_cases = shift;
+  my $test_case_name = shift;
+  my $generate = shift;
+  my $debug = shift;
+
+  my $test = new_test($name, $generate, $debug);
+  my $ran_tests = $test_cases;
+  if (defined($test_case_name)) {
+    if ($test_case_name =~ /^\d+$/) {
+      $ran_tests = [ $test_cases->[$test_case_name-1] ];
+    } else {
+      foreach my $test_case (@$test_cases) {
+        $ran_tests = [ $test_case ] if ($test_case->[0] eq $test_case_name);
+      }
+    }
+  }
+
+  if ($generate) {
+    plan tests => 1;
+  } else {
+    plan tests => (1 + scalar(@$ran_tests) * 3);
+  }
+
+  foreach my $test_case (@$ran_tests) {
+    $test->test($test_case);
+  }
+
+  $test->end_test();
 }
 
 1;

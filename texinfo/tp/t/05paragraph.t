@@ -5,11 +5,6 @@ use Test::More;
 
 require 't/test_utils.pl';
 
-my $generate;
-# $generate = 1;
-my $debug;
-# $debug = 1;
-
 my @test_cases = (
 [ 'text', 'text' ],
 [ 'text comment', 'text@c comment' ],
@@ -34,21 +29,9 @@ text l 2
 ']
 );
 
-# following may be cut and paste.
+our ($arg_test_case, $arg_generate, $arg_debug);
 
-if ($generate) {
-  plan tests => 1;
-}
-else {
-  plan tests => (1 + scalar(@test_cases) * 3);
-}
+run_test_case ('paragraph', \@test_cases, $arg_test_case, 
+   $arg_generate, $arg_debug);
 
 ok(1);
-
-my $test = new_test('paragraph', $generate, $debug);
-
-foreach my $test_case (@test_cases) {
-  $test->test($test_case);
-}
-
-$test->end_test();
