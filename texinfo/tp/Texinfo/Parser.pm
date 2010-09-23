@@ -466,7 +466,9 @@ sub parse_texi_text($$;$)
   my $text = shift;
   my $lines_nr = shift;
   if (!ref($text)) {
-    $text = [ map {$_."\n"} split /\n/, $text ];
+    my $chomped = chomp($text);
+    $text = [ map {$_."\n"} split (/\n/, $text, -1) ];
+    chomp($text->[-1]) unless ($chomped);
   }
   if (defined($lines_nr) and !ref($lines_nr)) {
     my $first_line = $lines_nr;
@@ -701,7 +703,7 @@ sub _merge_text ($$$)
   my $current = shift;
   my $text = shift;
 
-  my $paragraph = _begin_paragraph($self, $current);
+  my $paragraph = _begin_paragraph($self, $current) if ($text =~ /\S/);
 
   if (!$paragraph and 
     $current->{'contents'} and @{$current->{'contents'}} and
@@ -709,10 +711,12 @@ sub _merge_text ($$$)
 #   !$current->{'contents'}->[-1]->{'type'} and 
     $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
+    print STDERR "MERGED TEXT: $text\n" if ($self->{'debug'});
   }
   else {
     $current = $paragraph if ($paragraph);
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
+    print STDERR "NEW TEXT: $text\n" if ($self->{'debug'});
   }
   return $current;
 }

@@ -16,12 +16,14 @@ my @test_cases = (
 [ 'text space comment', ' text  @c space comment' ],
 [ 'text line', '
 text
+
 '],
 [ 'comment between text', 'text
 @c comment
 end para' ],
 [ 'two lines','text l 1
-text l 2'],
+text l 2
+'],
 [ 'no paragraph commands', '@*
 @titlefont{title font}
 @image{aa,bb,cc,dd,ee}

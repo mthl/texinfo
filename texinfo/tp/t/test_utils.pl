@@ -43,7 +43,8 @@ sub test($$)
 
   if ($self->{'generate'}) {
     local $Data::Dumper::Purity = 1;
-    $Data::Dumper::Sortkeys = 1;
+    local $Data::Dumper::Sortkeys = 1;
+    local $Data::Dumper::Indent = 1;
     my $FH = $self->{'fh'};
     print $FH "################ $test_name\n";
     print $FH "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
