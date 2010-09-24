@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
+@c $Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19798,7 +19798,7 @@ Elements Customization}.
 Lines of the current element.
 
 @item $Texi2HTML::TITLEPAGE
-The title page formatted.  @xref{Title page text}.
+The title page formatted.  @xref{HTML Title Page Customization}.
 
 @item $Texi2HTML::TOC_LINES
 Lines of table of contents.  @xref{Contents and Overview Elements
@@ -20232,7 +20232,7 @@ command is expanded (@pxref{Footnotes formatting}).
 * Top Element Customization::
 * Contents and Overview Elements Customization::
 * About Element Customization::
-* Title page text::
+* HTML Title Page Customization::
 @end menu
 
 
@@ -20296,8 +20296,8 @@ when menus are used for navigation.
 @txicmdindex @@setcontentsaftertitlepage @r{and HTML output}
 If @code{@@setcontentsaftertitlepage} appears in the document, even if
 @code{INLINE_CONTENTS} is set, the tables of contents are merged into
-the title materia, which in turn is not output by default;
-@pxref{Title page text}.
+the title material, which in turn is not output by default;
+@pxref{HTML Title Page Customization}.
 
 Next, the following variables allow for some useful control of the
 formatting of table of contents and short table of contents:
@@ -20470,33 +20470,36 @@ This function returns the about text.
 @end deftypefn
 
 
-@node Title page text
-@subsubsection Formatting of title page
+@node HTML Title Page Customization
+@subsubsection HTML Title Page Customization
 
 @vindex $Texi2HTML::TITLEPAGE
-The title page is first formatted using the text appearing in the
-@code{@@titlepage} section, and put in @code{$Texi2HTML::TITLEPAGE}
-(@pxref{Output Element Lines}).  More formatting can be done using the
-following function reference:
+The HTML title page is first formatted using the text appearing in the
+@code{@@titlepage} section, and put in the
+@code{$Texi2HTML::TITLEPAGE} array reference (@pxref{Output Element
+Lines}).  More formatting can be done using the following function
+reference:
 
-@deffn {Function Reference} titlepage \@@titlepage_lines $text $comment $simple_text
-@var{\@@titlepage_lines} is an array containing the Texinfo lines in @code{@@titlepage}.
-@var{$text} is the text appearing in @code{@@titlepage}, formatted.
-@var{$comment} is the text with texi removed, should be very simple
-text.  
-@var{$simple_text} is the text formatted in string context
-with minimal formatting but no elements.
-This function should complete @code{$Texi2HTML::TITLEPAGE}.
+@deffn {Function Reference} titlepage \@@titlepage_lines @
+       $text $comment $simple_text
+@var{\@@titlepage_lines} is an array containing the Texinfo lines in
+@code{@@titlepage}.  @var{$text} is the text appearing in
+@code{@@titlepage}, formatted.  @var{$comment} is the text with
+Texinfo markup removed, thus should be simple plain text.
+@var{$simple_text} is the text formatted in a string context with
+minimal formatting but no elements.  This function should complete
+@code{$Texi2HTML::TITLEPAGE}.
 @end deffn
 
-In the default case, in this function the title is output if 
-there is no titlepage, the table of contents and short
-table of contents are also added if they are to be output and 
-@code{@@setcontentsaftertitlepage}
-or @code{@@setshortcontentsaftertitlepage} appear in the document
+By default, this function outputs the title if there is no title page,
+and adds the table of contents and short table of contents if they are
+to be output and @code{@@setcontentsaftertitlepage} or
+@code{@@setshortcontentsaftertitlepage} appear in the document
 (@pxref{Contents and Overview Elements Customization}).
 
-The resulting title page output is used in the document if 
+@vindex USE_TITLEPAGE_FOR_TITLE
+@vindex SHOW_TITLE
+The resulting title page output is used in the document if
 @code{USE_TITLEPAGE_FOR_TITLE} and @code{SHOW_TITLE} are set.
 
 
@@ -22553,8 +22556,9 @@ text.
 with minimal formatting but no elements.
 @end deffn
 
+@xref{HTML Title Page Customization}, for specifics about the title
+page handling.
 
-The title page handling is described in @ref{Title page text}.
 
 @node Other and unknown commands
 @section Customizing other commands, and unknown commands 
@@ -24612,7 +24616,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
+$Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24691,7 +24695,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.318 2010-09-22 00:52:09 karl Exp $
+@comment $Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

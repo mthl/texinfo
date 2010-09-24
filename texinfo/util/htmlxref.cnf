@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-09-19.18; # UTC
+htmlxrefversion=2010-09-24.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -47,9 +47,25 @@ automake	node	${GS}/automake/manual/html_node/
 bash		mono	${GS}/bash/manual/bash.html
 bash		node	${GS}/bash/manual/html_node/
 
+BINU = http://sourceware.org/binutils/docs
+binutils	node	${BINU}/binutils/
+ as		node	${BINU}/as/
+ bfd		node	${BINU}/bfd/
+ gprof		node	${BINU}/gprof/
+ ld		node	${BINU}/ld/
+
+bison		mono	${GS}/bison/manual/bison.html
+bison		node	${GS}/bison/manual/html_node/
+
 bpel2owfn	mono	http://www.gnu.org/software/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
-cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
+cflow		mono	${GS}/cflow/manual/cflow
+cflow		node	${GS}/cflow/manual/html_node/
+
+coreutils	mono	${GS}/coreutils/manual/coreutils
+coreutils	node	${GS}/coreutils/manual/html_node/
+
+cssc		node	${GS}/cssc/manual/
 
 #cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
 
@@ -68,6 +84,7 @@ gcal		mono	${GS}/gcal/manual/gcal.html
 gcal		node	${GS}/gcal/manual/html_node/
 
 gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
+ cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
  gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
  gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
  gnat_rm	node	http://gcc.gnu.org/onlinedocs/gnat_rm/
