@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
+@c $Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10905,11 +10905,12 @@ Both distributions include installation instructions.
 @cindex Left quotation marks
 @cindex Right quotation marks
 @findex quotedblleft
-@cindex ``
+@cindex `@w{}`
 @findex quoteleft
 @cindex `
+@cindex " (undirected double quote character)
 @findex quotedblright
-@cindex ''
+@cindex '@w{}'
 @findex quoteright
 @cindex '
 @cindex Double low-9 quotation mark
@@ -13979,7 +13980,7 @@ This is the commonly used encoding for the Ukrainian language.
 
 Specifying an encoding @var{enc} has the following effects:
 
-@opindex --enable-encoding
+@opindex --enable-encoding@r{, and Local Variables}
 @cindex Local Variables: section, for encoding
 @cindex Info output, and encoding
 In Info output, unless the option @option{--disable-encoding} is given
@@ -19943,7 +19944,7 @@ If the configuration variable @code{USE_ACCESSKEY} is set, the
 @code{%BUTTONS_ACCESSKEY} hash is then used for the @code{accesskey}
 attributes.
 
-@vindex %BUTTONS_REL
+@vindex %BUTTONS_REL@r{, for navigation}
 @cindex @code{rel} navigation
 Similarly, if the @code{USE_REL_REV} configuration variable is set,
 the @code{rel} attribute is used in navigation.  In that case the
@@ -20104,7 +20105,7 @@ configuration variable) is used in the header
 (@pxref{documentdescription}).
 
 @vindex @@LINKS_BUTTONS
-@vindex %BUTTONS_REL
+@vindex %BUTTONS_REL@r{, in customization}
 @code{<link>} elements are used in the header if @code{$USE_LINKS} is
 set, in which case @code{@@LINKS_BUTTONS} determines which links are
 used and @code{%BUTTONS_REL} determines the link type associated with
@@ -20364,8 +20365,8 @@ Text of the element, with section number,
 Text of the element, without section number.
 @end table
 
-@vindex $Texi2HTML::TOC_LINES
-@vindex $Texi2HTML::OVERVIEW
+@vindex $Texi2HTML::TOC_LINES@r{, in customization}
+@vindex $Texi2HTML::OVERVIEW@r{, in customization}
 This function doesn't return anything.  Instead, it should fill the
 array corresponding to the @code{$Texi2HTML::TOC_LINES} and
 @code{$Texi2HTML::OVERVIEW} references with the text for the
@@ -24616,7 +24617,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
+$Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24695,7 +24696,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.319 2010-09-24 17:24:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
