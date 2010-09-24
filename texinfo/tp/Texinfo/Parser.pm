@@ -825,14 +825,13 @@ sub _internal_parse_text($$;$$)
 
     if ($line !~ /\S/ and not 
         # raw format or verb
-        ($current->{'cmdname'} and
-          (
-           ($block_commands{$current->{'cmdname'}}
+          (($current->{'cmdname'}
+           and $block_commands{$current->{'cmdname'}}
             and $block_commands{$current->{'cmdname'}} eq 'raw')
           or 
-           ($current->{'type'} and $current->{'parent'}->{'cmdname'}
+           ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
             and $current->{'parent'}->{'cmdname'} eq 'verb')
-          ))
+          )
         # not in math or preformatted
         and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
       print STDERR "EMPTY LINE\n" if ($self->{'debug'});
@@ -875,33 +874,32 @@ sub _internal_parse_text($$;$$)
           push @{$current->{'contents'}}, $macro;
           $current = $current->{'contents'}->[-1];
           last;
-        }
-        elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
+        } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
           $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
           push @{$current->{'contents'}}, 
             { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
               if ($1 ne '');
           $current = $current->{'parent'};
           last unless ($line =~ /\S/);
-        }
-        else {
+        } else {
           push @{$current->{'contents'}}, 
              { 'text' => $line, 'type' => 'raw', 'parent' => $current };
           last;
         }
-      }
       # in @verb
-      elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+      } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
              and $current->{'parent'}->{'cmdname'} eq 'verb') { 
              # type should be 'brace_command_arg'
-        my $char = quotemeta($current->{'type'});
+        my $char = quotemeta($current->{'parent'}->{'type'});
         if ($line =~ s/^(.*?)$char\}/\}/) {
           push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
                 if ($1 ne '');
+          print STDERR "END VERB\n" if ($self->{'debug'});
         } else {
           push @{$current->{'contents'}}, 
              { 'text' => $line, 'type' => 'raw', 'parent' => $current };
+          print STDERR "LINE VERB: $line" if ($self->{'debug'});
           last;
         }
       }
@@ -1021,8 +1019,7 @@ sub _internal_parse_text($$;$$)
               return undef
                 if (_line_error ($self, sprintf($self->
                 __("\@%s without associated character"), $command), $line_nr));
-            }
-            else {
+            } else {
               $line =~ s/^(.)//;
               $current->{'type'} = $1;
             }
@@ -1155,8 +1152,7 @@ sub _internal_parse_text($$;$$)
         } else {
           $current = _merge_text ($self, $current, $separator);
         }
-      }
-      else {
+      } else {
         if ($self->{'debug'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
@@ -1249,8 +1245,7 @@ sub tree_to_texi ($)
   #print STDERR "\n";
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};
-  }
-  else {
+  } else {
     if ($root->{'cmdname'}) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root);
@@ -1278,10 +1273,10 @@ sub _expand_cmd_args_to_texi ($) {
   my $cmd_with_braces = 1 if (defined($brace_commands{$cmd->{'cmdname'}}));
   $result .= '{' if ($cmd_with_braces);
   if ($cmd->{'cmdname'} eq 'verb') {
-     $result .= $cmd->{'type'}.$cmd->{'args'}->[0]->{'text'}.$cmd->{'type'};
+     $result .= $cmd->{'type'};
   }
   # must be before the next condition
-  elsif ($block_commands{$cmd->{'cmdname'}}
+  if ($block_commands{$cmd->{'cmdname'}}
          and ($block_commands{$cmd->{'cmdname'}} eq 'def'
               or $block_commands{$cmd->{'cmdname'}} eq 'multitable')) {
      foreach my $arg (@{$cmd->{'args'}}) {
@@ -1300,12 +1295,10 @@ sub _expand_cmd_args_to_texi ($) {
        $result .= tree_to_texi ($arg) . ', ';
     }
     $result =~ s/, $//;
-  }
-  elsif ($cmd->{'cmdname'} eq 'macro') {
+  } elsif ($cmd->{'cmdname'} eq 'macro') {
     $result .= ' ' .$cmd->{'args'}->[0]->{'text'}. ' '
                . $cmd->{'args'}->[1]->{'text'};
-  }
-  elsif (defined($cmd->{'args'})) {
+  } elsif (defined($cmd->{'args'})) {
     #print STDERR "".Data::Dumper->Dump([$cmd]);
     foreach my $arg (@{$cmd->{'args'}}) {
       $result .= ' '
@@ -1313,6 +1306,9 @@ sub _expand_cmd_args_to_texi ($) {
       $result .= tree_to_texi ($arg);
     }
     #die "Shouldn't have args: $cmd->{'cmdname'}\n";
+  }
+  if ($cmd->{'cmdname'} eq 'verb') {
+     $result .= $cmd->{'type'};
   }
   if ($cmd_with_braces) {
     $result .= '}';

@@ -31,5 +31,5 @@ text l 2
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_test_case ('paragraph', \@test_cases, $arg_test_case, 
+run_all ('paragraph', \@test_cases, $arg_test_case, 
    $arg_generate, $arg_debug);

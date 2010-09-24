@@ -83,7 +83,7 @@ sub end_test($)
   }
 }
 
-sub run_test_case($$;$$$)
+sub run_all($$;$$$)
 {
   my $name = shift;
   my $test_cases = shift;

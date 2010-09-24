@@ -41,6 +41,6 @@ in verbatim2
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_test_case ('raw', \@test_cases, $arg_test_case,
+run_all ('raw', \@test_cases, $arg_test_case,
    $arg_generate, $arg_debug);
 
