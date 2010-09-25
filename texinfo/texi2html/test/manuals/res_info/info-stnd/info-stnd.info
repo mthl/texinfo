@@ -2350,7 +2350,7 @@ Appendix B Index
 * list-visited-nodes:                    Node Commands.       (line 174)
 * local printer device:                  Printing Nodes.      (line  18)
 * m:                                     Selecting Xrefs.     (line  25)
-* M-:                                    Miscellaneous Commands.
+* M--:                                   Miscellaneous Commands.
                                                               (line  68)
 * M-$, vi-like operation:                The Echo Area.       (line  31)
 * M-0 ... M-9:                           Miscellaneous Commands.

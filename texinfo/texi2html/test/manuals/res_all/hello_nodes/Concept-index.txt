@@ -3,16 +3,16 @@ Concept index
 
 * Index:
 * -g: 3 Invoking hello.
-* -greeting: 3 Invoking hello.
+* --greeting: 3 Invoking hello.
 * -h: 3 Invoking hello.
-* -help: 1 Overview.
-* -help: 3 Invoking hello.
+* --help: 1 Overview.
+* --help: 3 Invoking hello.
 * -n: 3 Invoking hello.
-* -next-generation: 3 Invoking hello.
+* --next-generation: 3 Invoking hello.
 * -t: 3 Invoking hello.
-* -traditional: 3 Invoking hello.
+* --traditional: 3 Invoking hello.
 * -v: 3 Invoking hello.
-* -version: 3 Invoking hello.
+* --version: 3 Invoking hello.
 * authors: 1 Overview.
 * Autoconf: 1 Overview.
 * Automake: 1 Overview.

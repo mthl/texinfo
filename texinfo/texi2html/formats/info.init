@@ -3091,7 +3091,9 @@ sub info_default_index_entry($$$$$$$$$$)
     #return '' if ($index_entry_ref->{'hidden'});
     #return '' if (!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
     return '' if ($in_region_not_in_output);
-    $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
+    my $state = {};
+    $state = { 'code_style' => 1 } if ($index_entry_ref->{'in_code'});
+    $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex", $state);
     return '' if ($entry =~ /^\s*$/);
 
     my $entry_nr = '';

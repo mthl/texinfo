@@ -1808,12 +1808,12 @@ fn
 * Index:
 * .: Top section.
 * ?: Top section.
-* –foption: Top section.
-* –foption: Top section.
-* –foption: Top section.
-* “: Top section.
-* “: Top section.
-* “: Top section.
+* --foption: Top section.
+* --foption: Top section.
+* --foption: Top section.
+* ``: Top section.
+* ``: Top section.
+* ``: Top section.
 * a: Top section.
 * a: Top section.
 * a: Top section.
@@ -1842,39 +1842,39 @@ fn
 * deffnx: Top section.
 * deffnx: Top section.
 * deffnx: Top section.
-* de–ffn_name: Top section.
-* de–ffn_name: Top section.
-* de–ffn_name: Top section.
-* d–effn_name: Top section.
-* d–effn_name: Top section.
-* d–effn_name: Top section.
-* d–efmac_name: Top section.
-* d–efmac_name: Top section.
-* d–efmac_name: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efspec_name: Top section.
-* d–efspec_name: Top section.
-* d–efspec_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–efun_name: Top section.
-* d–efun_name: Top section.
-* d–efun_name: Top section.
+* de--ffn_name: Top section.
+* de--ffn_name: Top section.
+* de--ffn_name: Top section.
+* d--effn_name: Top section.
+* d--effn_name: Top section.
+* d--effn_name: Top section.
+* d--efmac_name: Top section.
+* d--efmac_name: Top section.
+* d--efmac_name: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efspec_name: Top section.
+* d--efspec_name: Top section.
+* d--efspec_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--efun_name: Top section.
+* d--efun_name: Top section.
+* d--efun_name: Top section.
 * followed: Top section.
 * followed: Top section.
 * followed: Top section.
@@ -1926,8 +1926,8 @@ fn
 * truc: Top section.
 * truc: Top section.
 * truc: Top section.
-* t–ruc: Top section.
-* T–ruc: Top section.
+* t--ruc: Top section.
+* T--ruc: Top section.
 
 vr
 * Index:
@@ -1937,30 +1937,30 @@ vr
 * b: Top section.
 * b: Top section.
 * b: Top section.
-* d–efcv_name: Top section.
-* d–efcv_name: Top section.
-* d–efcv_name: Top section.
-* d–efivar_name: Top section.
-* d–efivar_name: Top section.
-* d–efivar_name: Top section.
-* d–efopt_name: Top section.
-* d–efopt_name: Top section.
-* d–efopt_name: Top section.
-* d–eftypeivar_name of c–lass: Top section.
-* d–eftypeivar_name of c–lass: Top section.
-* d–eftypeivar_name of c–lass: Top section.
-* d–eftypevar_name: Top section.
-* d–eftypevar_name: Top section.
-* d–eftypevar_name: Top section.
-* d–eftypevr_name: Top section.
-* d–eftypevr_name: Top section.
-* d–eftypevr_name: Top section.
-* d–efvar_name: Top section.
-* d–efvar_name: Top section.
-* d–efvar_name: Top section.
-* d–efvr_name: Top section.
-* d–efvr_name: Top section.
-* d–efvr_name: Top section.
+* d--efcv_name: Top section.
+* d--efcv_name: Top section.
+* d--efcv_name: Top section.
+* d--efivar_name: Top section.
+* d--efivar_name: Top section.
+* d--efivar_name: Top section.
+* d--efopt_name: Top section.
+* d--efopt_name: Top section.
+* d--efopt_name: Top section.
+* d--eftypeivar_name of c--lass: Top section.
+* d--eftypeivar_name of c--lass: Top section.
+* d--eftypeivar_name of c--lass: Top section.
+* d--eftypevar_name: Top section.
+* d--eftypevar_name: Top section.
+* d--eftypevar_name: Top section.
+* d--eftypevr_name: Top section.
+* d--eftypevr_name: Top section.
+* d--eftypevr_name: Top section.
+* d--efvar_name: Top section.
+* d--efvar_name: Top section.
+* d--efvar_name: Top section.
+* d--efvr_name: Top section.
+* d--efvr_name: Top section.
+* d--efvr_name: Top section.
 
 ky
 
@@ -1968,9 +1968,9 @@ pg
 
 tp
 * Index:
-* d–eftp_name: Top section.
-* d–eftp_name: Top section.
-* d–eftp_name: Top section.
+* d--eftp_name: Top section.
+* d--eftp_name: Top section.
+* d--eftp_name: Top section.
 
 
 
@@ -2039,12 +2039,12 @@ chapter 2
 * Index:
 * .: Top section.
 * ?: Top section.
-* –foption: Top section.
-* –foption: Top section.
-* –foption: Top section.
-* “: Top section.
-* “: Top section.
-* “: Top section.
+* --foption: Top section.
+* --foption: Top section.
+* --foption: Top section.
+* ``: Top section.
+* ``: Top section.
+* ``: Top section.
 * a: Top section.
 * a: Top section.
 * a: Top section.
@@ -2073,39 +2073,39 @@ chapter 2
 * deffnx: Top section.
 * deffnx: Top section.
 * deffnx: Top section.
-* de–ffn_name: Top section.
-* de–ffn_name: Top section.
-* de–ffn_name: Top section.
-* d–effn_name: Top section.
-* d–effn_name: Top section.
-* d–effn_name: Top section.
-* d–efmac_name: Top section.
-* d–efmac_name: Top section.
-* d–efmac_name: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efmethod_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efop_name on c–lass: Top section.
-* d–efspec_name: Top section.
-* d–efspec_name: Top section.
-* d–efspec_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefn_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypefun_name: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypemethod_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–eftypeop_name on c–lass: Top section.
-* d–efun_name: Top section.
-* d–efun_name: Top section.
-* d–efun_name: Top section.
+* de--ffn_name: Top section.
+* de--ffn_name: Top section.
+* de--ffn_name: Top section.
+* d--effn_name: Top section.
+* d--effn_name: Top section.
+* d--effn_name: Top section.
+* d--efmac_name: Top section.
+* d--efmac_name: Top section.
+* d--efmac_name: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efmethod_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efop_name on c--lass: Top section.
+* d--efspec_name: Top section.
+* d--efspec_name: Top section.
+* d--efspec_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefn_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypefun_name: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypemethod_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--eftypeop_name on c--lass: Top section.
+* d--efun_name: Top section.
+* d--efun_name: Top section.
+* d--efun_name: Top section.
 * followed: Top section.
 * followed: Top section.
 * followed: Top section.
@@ -2157,8 +2157,8 @@ chapter 2
 * truc: Top section.
 * truc: Top section.
 * truc: Top section.
-* t–ruc: Top section.
-* T–ruc: Top section.
+* t--ruc: Top section.
+* T--ruc: Top section.
 
 Table of Contents
 *****************

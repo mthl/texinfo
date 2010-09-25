@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.290 2010-09-12 20:06:11 pertusus Exp $
+# $Id: texi2html.init,v 1.291 2010-09-25 14:34:31 pertusus Exp $
 
 
 ##################################################################
@@ -7110,7 +7110,9 @@ sub t2h_default_index_entry($$$$$$$$$$)
     
     return '' if ($in_region_not_in_output);
     #!$index_entry_ref->{'seen_in_output'} and defined($index_entry_ref->{'region'}));
-    $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex");
+    my $state = {};
+    $state = { 'code_style' => 1 } if ($index_entry_ref->{'in_code'});
+    $entry = main::substitute_line($index_entry_ref->{'texi'}, "index entry in \@printindex", $state);
     return '' if ($entry =~ /^\s*$/);
 
     my $real_element_text;

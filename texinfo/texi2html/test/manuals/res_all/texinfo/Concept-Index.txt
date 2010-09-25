@@ -5,58 +5,58 @@ Concept Index
 * !: 13.3 Inserting Accents.
 * $: C.2 GNU Sample Texts.
 * (dir) as Up node of Top node: 6.3.5 The First Node.
-* -commands-in-node-names: 20.1.3 Options for makeinfo.
+* --commands-in-node-names: 20.1.3 Options for makeinfo.
 * -D dir: 20.2.5 Invoking install-info.
 * -d name: 20.2.5 Invoking install-info.
 * -D var: 20.1.3 Options for makeinfo.
-* -delete: 20.2.5 Invoking install-info.
-* -dir-file=name: 20.2.5 Invoking install-info.
-* -docbook: 20.1.3 Options for makeinfo.
+* --delete: 20.2.5 Invoking install-info.
+* --dir-file=name: 20.2.5 Invoking install-info.
+* --docbook: 20.1.3 Options for makeinfo.
 * -e limit: 20.1.3 Options for makeinfo.
 * -e text: 20.2.5 Invoking install-info.
-* -entry=text: 20.2.5 Invoking install-info.
-* -error-limit=limit: 20.1.3 Options for makeinfo.
+* --entry=text: 20.2.5 Invoking install-info.
+* --error-limit=limit: 20.1.3 Options for makeinfo.
 * -F: 20.1.3 Options for makeinfo.
 * -f width: 20.1.3 Options for makeinfo.
-* -fill-column=width: 20.1.3 Options for makeinfo.
-* -footnote-style=style: 20.1.3 Options for makeinfo.
-* -force: 20.1.3 Options for makeinfo.
+* --fill-column=width: 20.1.3 Options for makeinfo.
+* --footnote-style=style: 20.1.3 Options for makeinfo.
+* --force: 20.1.3 Options for makeinfo.
 * -h: 20.1.3 Options for makeinfo.
 * -h: 20.2.5 Invoking install-info.
-* -help: 20.1.3 Options for makeinfo.
-* -help: 20.2.5 Invoking install-info.
-* -html: 20.1.3 Options for makeinfo.
+* --help: 20.1.3 Options for makeinfo.
+* --help: 20.2.5 Invoking install-info.
+* --html: 20.1.3 Options for makeinfo.
 * -I dir: 20.1.3 Options for makeinfo.
 * -i file: 20.2.5 Invoking install-info.
-* -info-dir=dir: 20.2.5 Invoking install-info.
-* -info-file=file: 20.2.5 Invoking install-info.
-* -item=text: 20.2.5 Invoking install-info.
-* -no-headers: 20.1.3 Options for makeinfo.
-* -no-number-footnotes: 20.1.3 Options for makeinfo.
-* -no-pointer-validate: 20.1.3 Options for makeinfo.
-* -no-split: 20.1.3 Options for makeinfo.
-* -no-validate: 20.1.3 Options for makeinfo.
-* -no-warn: 20.1.3 Options for makeinfo.
-* -number-sections: 20.1.3 Options for makeinfo.
+* --info-dir=dir: 20.2.5 Invoking install-info.
+* --info-file=file: 20.2.5 Invoking install-info.
+* --item=text: 20.2.5 Invoking install-info.
+* --no-headers: 20.1.3 Options for makeinfo.
+* --no-number-footnotes: 20.1.3 Options for makeinfo.
+* --no-pointer-validate: 20.1.3 Options for makeinfo.
+* --no-split: 20.1.3 Options for makeinfo.
+* --no-validate: 20.1.3 Options for makeinfo.
+* --no-warn: 20.1.3 Options for makeinfo.
+* --number-sections: 20.1.3 Options for makeinfo.
 * -o file: 20.1.3 Options for makeinfo.
-* -output=file: 20.1.3 Options for makeinfo.
+* --output=file: 20.1.3 Options for makeinfo.
 * -P dir: 20.1.3 Options for makeinfo.
 * -p indent: 20.1.3 Options for makeinfo.
-* -paragraph-indent=indent: 20.1.3 Options for makeinfo.
-* -quiet: 20.2.5 Invoking install-info.
+* --paragraph-indent=indent: 20.1.3 Options for makeinfo.
+* --quiet: 20.2.5 Invoking install-info.
 * -r: 20.2.5 Invoking install-info.
 * -r limit: 20.1.3 Options for makeinfo.
-* -reference-limit=limit: 20.1.3 Options for makeinfo.
-* -remove: 20.2.5 Invoking install-info.
+* --reference-limit=limit: 20.1.3 Options for makeinfo.
+* --remove: 20.2.5 Invoking install-info.
 * -s sec: 20.2.5 Invoking install-info.
 * -s style: 20.1.3 Options for makeinfo.
-* -section=sec: 20.2.5 Invoking install-info.
+* --section=sec: 20.2.5 Invoking install-info.
 * -V: 20.1.3 Options for makeinfo.
 * -V: 20.2.5 Invoking install-info.
-* -verbose: 20.1.3 Options for makeinfo.
-* -version: 20.1.3 Options for makeinfo.
-* -version: 20.2.5 Invoking install-info.
-* -xml: 20.1.3 Options for makeinfo.
+* --verbose: 20.1.3 Options for makeinfo.
+* --version: 20.1.3 Options for makeinfo.
+* --version: 20.2.5 Invoking install-info.
+* --xml: 20.1.3 Options for makeinfo.
 * .cshrc initialization file: 19.9 Preparing for TeX.
 * .profile initialization file: 19.9 Preparing for TeX.
 * <meta> HTML tag, and document description: 3.6.1 @documentdescription: Summary text.

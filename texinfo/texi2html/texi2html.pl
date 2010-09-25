@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.427 2010-09-19 18:42:43 karl Exp $
+# $Id: texi2html.pl,v 1.428 2010-09-25 14:34:32 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -8483,6 +8483,7 @@ sub enter_index_entry($$$$$)
     my $index_entry = {
            'entry'    => $entry,
            'texi'     => $entry,
+           'in_code'  => 0,
            'element'  => $heading_element,
            'real_element'  => $current_element,
            'prefix'   => $prefix,
@@ -8499,11 +8500,14 @@ sub enter_index_entry($$$$$)
     print STDERR "# in $region enter \@$command ${prefix}index($no_texi) [$entry] with id $id_text ($index_entry)\n"
         if ($T2H_DEBUG & $DEBUG_INDEX);
 
-    $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}'
+    
+    $index_entry->{'in_code'} = 1
        if (defined($index_name) and 
         defined($index_names{$index_name}->{'prefixes'}) and 
         $index_names{$index_name}->{'prefixes'}->{$prefix} 
         and $no_texi =~ /\S/);
+    $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}' 
+        if ($index_entry->{'in_code'});
 
     push @$place, $index_entry;
 

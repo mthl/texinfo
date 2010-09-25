@@ -1,0 +1,19 @@
+\input texinfo
+@setfilename syncodeindex_to_plain.info
+
+@syncodeindex ky cp
+
+@node Top
+
+@kindex --k1
+@vindex --v
+@cindex --c
+
+cp index.
+@printindex cp
+
+vr index.
+@printindex vr
+
+@bye
+

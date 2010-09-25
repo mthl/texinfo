@@ -275,22 +275,22 @@ d--eftypemethod
 * A4 of A2: Test for definition commands.
 * border-pattern: Test for definition commands.
 * border-pattern of Window: Test for definition commands.
-* d-efcv_name: Test for definition commands.
-* d-efcv_name: Test for definition commands.
-* d-efivar_name: Test for definition commands.
-* d-efivar_name: Test for definition commands.
-* d-efopt_name: Test for definition commands.
-* d-efopt_name: Test for definition commands.
-* d-eftypeivar_name of c-lass: Test for definition commands.
-* d-eftypeivar_name of c-lass: Test for definition commands.
-* d-eftypevar_name: Test for definition commands.
-* d-eftypevar_name: Test for definition commands.
-* d-eftypevr_name: Test for definition commands.
-* d-eftypevr_name: Test for definition commands.
-* d-efvar_name: Test for definition commands.
-* d-efvar_name: Test for definition commands.
-* d-efvr_name: Test for definition commands.
-* d-efvr_name: Test for definition commands.
+* d--efcv_name: Test for definition commands.
+* d--efcv_name: Test for definition commands.
+* d--efivar_name: Test for definition commands.
+* d--efivar_name: Test for definition commands.
+* d--efopt_name: Test for definition commands.
+* d--efopt_name: Test for definition commands.
+* d--eftypeivar_name of c--lass: Test for definition commands.
+* d--eftypeivar_name of c--lass: Test for definition commands.
+* d--eftypevar_name: Test for definition commands.
+* d--eftypevar_name: Test for definition commands.
+* d--eftypevr_name: Test for definition commands.
+* d--eftypevr_name: Test for definition commands.
+* d--efvar_name: Test for definition commands.
+* d--efvar_name: Test for definition commands.
+* d--efvr_name: Test for definition commands.
+* d--efvr_name: Test for definition commands.
 * enable: Test for definition commands.
 * fill-column: Test for definition commands.
 * Index:
@@ -311,28 +311,28 @@ d--eftypemethod
 * apply: Test for definition commands.
 * bidule machin: Test for definition commands.
 * bidule machin: Test for definition commands.
-* d-effn_name: Test for definition commands.
-* d-effn_name: Test for definition commands.
-* d-efmac_name: Test for definition commands.
-* d-efmac_name: Test for definition commands.
-* d-efmethod_name on c-lass: Test for definition commands.
-* d-efmethod_name on c-lass: Test for definition commands.
-* d-efop_name on c-lass: Test for definition commands.
-* d-efop_name on c-lass: Test for definition commands.
-* d-efspec_name: Test for definition commands.
-* d-efspec_name: Test for definition commands.
-* d-eftypefn_name: Test for definition commands.
-* d-eftypefn_name: Test for definition commands.
-* d-eftypefun_name: Test for definition commands.
-* d-eftypefun_name: Test for definition commands.
-* d-eftypemethod_name on c-lass: Test for definition commands.
-* d-eftypemethod_name on c-lass: Test for definition commands.
-* d-eftypeop_name on c-lass: Test for definition commands.
-* d-eftypeop_name on c-lass: Test for definition commands.
-* d-efun_name: Test for definition commands.
-* d-efun_name: Test for definition commands.
-* de-ffn_name: Test for definition commands.
-* de-ffn_name: Test for definition commands.
+* d--effn_name: Test for definition commands.
+* d--effn_name: Test for definition commands.
+* d--efmac_name: Test for definition commands.
+* d--efmac_name: Test for definition commands.
+* d--efmethod_name on c--lass: Test for definition commands.
+* d--efmethod_name on c--lass: Test for definition commands.
+* d--efop_name on c--lass: Test for definition commands.
+* d--efop_name on c--lass: Test for definition commands.
+* d--efspec_name: Test for definition commands.
+* d--efspec_name: Test for definition commands.
+* d--eftypefn_name: Test for definition commands.
+* d--eftypefn_name: Test for definition commands.
+* d--eftypefun_name: Test for definition commands.
+* d--eftypefun_name: Test for definition commands.
+* d--eftypemethod_name on c--lass: Test for definition commands.
+* d--eftypemethod_name on c--lass: Test for definition commands.
+* d--eftypeop_name on c--lass: Test for definition commands.
+* d--eftypeop_name on c--lass: Test for definition commands.
+* d--efun_name: Test for definition commands.
+* d--efun_name: Test for definition commands.
+* de--ffn_name: Test for definition commands.
+* de--ffn_name: Test for definition commands.
 * deffn: Test for definition commands.
 * deffn: Test for definition commands.
 * deffn: Test for definition commands.
@@ -353,7 +353,7 @@ d--eftypemethod
 * foobar: Test for definition commands.
 * foobar: Test for definition commands.
 * foobug: Test for definition commands.
-* forward-char: Test for definition commands.
+* forward--char: Test for definition commands.
 * fun_name: Test for definition commands.
 * fun_name1: Test for definition commands.
 * i: Test for definition commands.
