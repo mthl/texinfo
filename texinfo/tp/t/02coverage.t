@@ -58,8 +58,6 @@ In table
 
 @end vtable
 '],
-);
-my @todo = (
 ['multitable','
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab
@@ -74,6 +72,8 @@ my @todo = (
 @item truc @tab bidule
 @end multitable
 '],
+);
+my @todo = (
 ['preformatted','
 @example
 e--xample  some

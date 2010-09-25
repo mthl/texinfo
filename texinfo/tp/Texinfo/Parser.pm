@@ -1056,10 +1056,10 @@ sub _internal_parse_text($$;$$)
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                 'parent' => $row };
                     $current = $row->{'contents'}->[-1];
-                    print STDERR "TAB\n";
+                    print STDERR "TAB\n" if ($self->{'debug'});
                   }
                 } else {
-                  print STDERR "ROW\n";
+                  print STDERR "ROW\n" if ($self->{'debug'});
                   my $row = { 'type' => 'row', 'contents' => [],
                               'special' => { 'cell_number' => 1 },
                               'parent' => $parent };
@@ -1230,14 +1230,14 @@ sub _internal_parse_text($$;$$)
           return undef if _line_error ($self,
                                        $self->__("Unexpected \@"), $line_nr);
         } elsif ($separator eq '{') {
-          if ($current->{'cmdname'}
-              and ($block_commands{$current->{'cmdname'}} eq 'multitable'
-                   or $block_commands{$current->{'cmdname'}} eq 'def')) {
-            push @{$current->{'args'}},
+          if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+              and ($block_commands{$current->{'parent'}->{'cmdname'}} eq 'multitable'
+                   or $block_commands{$current->{'parent'}->{'cmdname'}} eq 'def')) {
+            push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
-            $current = $current->{'args'}->[-1];
-
+            $current = $current->{'contents'}->[-1];
+            print STDERR "BRACKETED\n" if ($self->{'debug'});
           } else {
             return undef
               if _line_error ($self, sprintf($self->__("Misplaced %c"),
@@ -1367,7 +1367,49 @@ sub _internal_parse_text($$;$$)
                    { 'type' => 'fraction', 'text' => $fraction,
                      'parent' => $current };
             }
-          }
+          } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+                     and $current->{'parent'}->{'cmdname'} eq 'multitable') {
+            my $line_arg = $current;
+            my @rows;
+            my @other_contents;
+            # rearrange the row specifications as args, which mostly 
+            # implies splitting non-bracketed text and reparenting.
+            foreach my $content (@{$current->{'contents'}}) {
+              if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
+                $content->{'parent'} = $current->{'parent'};
+                push @rows, $content;
+              } elsif ($content->{'text'}) {
+                if ($content->{'text'} =~ /\S/) {
+                  foreach my $raw_spec(split /\s+/, $content->{'text'}) {
+                    push @rows, { 'text' => $raw_spec, 
+                                  'parent' => $current->{'parent'},
+                                  'type' => 'row_specification' };
+                  }
+                }
+              } else {
+                if (!$content->{'cmdname'}) { 
+                  _line_warn ($self, sprintf($self->
+                         __("Unexpected argument on \@%s line: %s"), 
+                         $current->{'cmdname'}, 
+                         tree_to_texi( { $content->{'contents'} })), $line_nr);
+                  push @other_contents, $content;
+                } elsif ($content->{'cmdname'} eq 'c' 
+                       and $content->{'cmdname'} eq 'comment') {
+                  push @other_contents, $content;
+                } else {
+                  push @rows, $content;
+                }
+                $content->{'parent'} = $current->{'parent'};
+              }
+            }
+            
+            $current = $current->{'parent'};
+            $current->{'special'}->{'max_columns'} = scalar(@rows);
+            $current->{'args'} = \@rows;
+            $current->{'contents'} = \@other_contents;
+            # this is in order to have $current->{'parent'} being the multitable
+            $current = $line_arg;
+          }      
           $current = $current->{'parent'};
           if ($current->{'cmdname'} 
                 and $block_item_commands{$current->{'cmdname'}}) {
@@ -1377,6 +1419,7 @@ sub _internal_parse_text($$;$$)
           }
         } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
+          # first parent is the @command, second is the parent
           $current = $current->{'parent'}->{'parent'};
         }
         last;
@@ -1404,6 +1447,7 @@ sub tree_to_texi ($)
       #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root);
     }
+    $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
     #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
     if (defined($root->{'contents'})) {
       die "bad contents type(" . ref($root->{'contents'})
@@ -1412,6 +1456,7 @@ sub tree_to_texi ($)
         $result .= tree_to_texi($child);
       }
     }
+    $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
     if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
       $result .= '@end '.$root->{'cmdname'} ."\n"; # ."\n"?
     }
@@ -1430,8 +1475,8 @@ sub _expand_cmd_args_to_texi ($) {
               or $block_commands{$cmd->{'cmdname'}} eq 'multitable')) {
      foreach my $arg (@{$cmd->{'args'}}) {
         my $arg_expanded = tree_to_texi ($arg);
-        $arg_expanded = '{'.$arg_expanded.'}'
-          if ($arg->{'type'} and $arg->{'type'} eq 'bracketed');
+#        $arg_expanded = '{'.$arg_expanded.'}'
+#          if ($arg->{'type'} and $arg->{'type'} eq 'bracketed');
         $result .= ' '.$arg_expanded;
      }
   } elsif ($block_commands{$cmd->{'cmdname'}}
