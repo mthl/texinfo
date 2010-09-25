@@ -11,7 +11,7 @@ $manual_tree = { 'cmdname' => 'multitable',
                                {'cmdname' => 'b',
                                 'args' => [
                                             {
-                                              'type' => 'cmdarg',
+                                              'type' => 'brace_command_arg',
                                               'contents' => [
                                                             { 'text' => 'rr' }
                                                          ]
@@ -34,10 +34,13 @@ $manual_tree = { 'cmdname' => 'multitable',
                                'contents' => [
                                                 { 'text' => "title" },
                                                 { 'cmdname' => 'verb',
-                                                  'args' => [
-                                                               { 'text' => ' in verb } ',
-                                                                 'type' => 'raw' }
-                                                            ],
+                                                  'args' => [ {
+                                                               'contents' => [
+                                                                  { 'text' => ' in verb } ',
+                                                                    'type' => 'raw' }
+                                                                ],
+                                                                'type' => 'brace_command_arg',
+                                                            } ],
                                                   'type' => ':'
                                                 },
                                                 { 'cmdname' => '@'},
