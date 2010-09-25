@@ -1,6 +1,7 @@
 2010-09-24  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.txi (HTML Title Page Customization): rename+edit.
+	* doc/texinfo.txi (HTML Title Page Customization),
+	(Customizing Output File Names): rename+edit.
 	Avoid some duplicated index entries.
 
 2010-09-21  Karl Berry  <karl@gnu.org>

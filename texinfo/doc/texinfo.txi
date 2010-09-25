@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
+@c $Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18444,9 +18444,9 @@ You can get the latest version from
 
 Occasionally changes in a program require removing (or renaming) nodes
 in the manual in order to have the best documentation.  Given the
-nature of the web, however, links may exist anywhere to any such
-removed node (renaming appears the same as removal for this purpose),
-and it's not ideal for those links to simply break.
+nature of the web, however, links may exist anywhere to such a removed
+node (renaming appears the same as removal for this purpose), and it's
+not ideal for those links to simply break.
 
 Therefore, Texinfo provides a way for manual authors to specify old
 node names and the new nodes to which the old names should be
@@ -18471,7 +18471,7 @@ construct, so can't appear in the node names.
 
 The effect is that @command{makeinfo} generates a redirect from
 @var{old-node-name} to @var{new-node-name} when producing HTML output.
-Thus, external links to the old node will not simply break.
+Thus, external links to the old node are preserved.
 
 Lines consisting only of whitespace are ignored.  Comments are
 indicated with a @samp{@@c} at the beginning of a line, optionally
@@ -18506,7 +18506,7 @@ target format.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
 * Customizing HTML Page Layout::   Customizing page headers, footers, sections.
 * Customizing Special Elements::
-* File and target names::
+* Customizing Output-Related Names::
 * Headings formatting::
 * Formatting insertions text and simple commands::
 * References and footnotes formatting::
@@ -18655,8 +18655,9 @@ These allow dynamic redefinition of functions used to produce output.
 
 As such functions are defined by a reference name, we will always use
 the reference name in function prototypes.  For the function arguments
-we will use @code{\@@array} for a reference to a list and
-@code{\%hash} for a reference to a hash.
+we will use @code{\@@array} to indicate a reference to an array
+(a.k.a.@: list, in Perl terminology) and @code{\%hash} for a reference
+to a hash.
 
 To illustrate these conventions, here is the prototype for the
 function associated with a function reference
@@ -20346,9 +20347,9 @@ True if the element is the top element.
 True if the element is an index page added because of index splitting.
 
 @item toc_level
-Level of the element in the table of contents: highest level
-is 1 for the top element and for chapters, appendices, etc.,
-2 for sections, unnumbered sections, etc.
+Level of the element in the table of contents: the highest level is 1
+for the top element and for chapters, appendices, etc., 2 for
+sections, unnumbered sections, etc., and so on.
 
 @item tocid
 Label to be used for references linking to this element within the
@@ -20544,74 +20545,93 @@ turn calls @code{$print_misc_header} for the headers and
 @code{$print_misc_footer} for the footers.
 
 
-@node File and target names
-@section Customizing the file and target names
+@node Customizing Output-Related Names
+@section Customizing Output-Related Names
 
-@subheading File names
+It is possible to control both output file names and target
+identifiers in detail.
 
-It is possible to specify the file names with more control than with the
-command line options (@option{--output}). The configuration variables
-@code{PREFIX}, @code{TOP_FILE} and @code{TOC_FILE} may be used. 
-The extension may also be overriden by the configuration variable 
-@code{EXTENSION}
-value.  The variable should be @code{undef} if no extension is
-to be added.
+@menu
+* Customizing Output File Names::
+@end menu
 
-Two function references enable 
-further customization.  One is especially usefull in case 
-@code{NODE_FILES} is true
-and it is used to customize the node file name. 
+@node Customizing Output File Names
+@subsection Customizing Output File Names
+
+@cindex Customizing output file names
+@cindex Output file names, customizing
+
+@vindex PREFIX
+@vindex TOP_FILE
+@vindex TOC_FILE
+@vindex EXTENSION
+It is possible to specify the output file names with more control than
+merely the command line option @option{--output} (@pxref{Invoking
+texi2any}): the configuration variables @code{PREFIX}, @code{TOP_FILE}
+and @code{TOC_FILE} may be used.  The extension may also be overriden
+by the configuration variable @code{EXTENSION} value.  The variable
+should be @code{undef} if no extension is to be added.  
+
+@vindex NODE_FILES
+Two function references enable further customization.  The first,
+@code{node_file_name}, is especially useful when @code{NODE_FILES} is
+true; it is used to customize the node file name.
 
 @deftypefn {Function Reference} $node_file node_file_name \%node $type
-@var{\%node} is a hash reference with the following interesting keys (there
-are much more keys):
-@table @code
-@item texi
-The texinfo node name.
-@item with_section
-True if associated with a section.
-@end table
-@var{$type} is @code{top} if the node is the top node.
-The result is the node file name @var{$node_file}.
+@var{\%node} is a hash reference with the following interesting keys
+(there are many others): the string @code{texi}, for the Texinfo node
+name, and the boolean @code{with_section}, true if associated with a
+section.  @var{$type} is @code{top} if the node is the top element.
+The function should return the node file name (@var{$node_file}).
 @end deftypefn
 
-The other is used to
-customize the file names associated with each element, and the 
-name of the file associated with the special elements. 
-@xref{Output Elements Defined}.
+The other function reference, @code{element_file_name}, is used to
+customize the file names associated with each element, and the name of
+the file associated with the special elements (@pxref{Output Elements
+Defined}).
 
-@deftypefn {Function Reference} $file element_file_name \%element $type $docu_name
-@var{\%element} is undefined for the special elements (about, overview, 
-table of contents, footnotes).
-Otherwise it is a hash reference with the following interesting keys (there
-are much more keys):
+@deftypefn {Function Reference} $file element_file_name @
+           \%element $type $txi_file_name
+@var{\%element} is undefined for the special elements (@pxref{Output
+Elements Defined}), Otherwise, it is a hash reference with the
+following interesting keys (there are many others):
 @table @code
 @item texi
-The texinfo element name.
+The Texinfo element name.
+
 @item number
 The number associated with a section.
+
 @item doc_nr
 A number incremented whenever a new file should begin, based on how the 
 document is split (@pxref{Splitting Output}).
+
 @item text
 The element text.
+
 @item name
 The element text without section number.
 @end table
-@var{$type} is empty for normal elements. 
-For the top element it is @samp{top}, for the table of contents it 
-is @samp{toc}, for the overview it is @samp{stoc}, for the
-footnotes it is @samp{foot} and for about is @samp{about}.  If 
-frames are used with @code{FRAMES}, the function reference
-is also called for @samp{frame}, the frame file name, and 
-@samp{toc_frame} the table of content frame file name.
-@var{$docu_name} is the basename of the texinfo manual.
-The result is the element or special element file name.
+
+@var{$type} is empty for normal elements.  For the top element it is
+@samp{top}; for the table of contents it is @samp{toc}; for the
+overview it is @samp{stoc}; for footnotes it is @samp{foot}; and for
+the about element it is @samp{about}.
+
+@vindex FRAMES@r{, customizing output names of}
+If frames are used, due to the @code{FRAMES} configuration variable,
+the function reference is also called for @samp{frame}, the frame file
+name, and @samp{toc_frame}, the table of contents frame file name.
+
+@var{$txi_file_name} is the basename of the Texinfo manual.
+
+The function should return the file name for the element (@var{$file}).
 @end deftypefn
 
 @vindex %renamed_nodes
-It is also possible to specify renamed node names in @code{%renamed_nodes}.
-They will be processed as explained in @ref{HTML Xref Link Preservation}.
+It is also possible to specify renamed node names in
+@code{%renamed_nodes}.  They are processed as explained in
+@ref{HTML Xref Link Preservation}.
 
 @subheading target names
 
@@ -24617,7 +24637,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
+$Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24696,7 +24716,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.320 2010-09-24 18:48:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
