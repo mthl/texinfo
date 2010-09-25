@@ -30,8 +30,6 @@ foreach my $test_case (@test_cases) {
   $test->test($test_case);
 }
 
-$test->end_test();
-
 if ($arg_generate) {
   plan tests => 2;
 }

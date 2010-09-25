@@ -6,7 +6,7 @@ my @test_cases = (
 ['simple', '@b{in  b}.'],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}}'],
-['too much args', '@abbr{AZE, A truc Z b, E eep}'],
+['too_much_args', '@abbr{AZE, A truc Z b, E eep}'],
 ['footnote', 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.']

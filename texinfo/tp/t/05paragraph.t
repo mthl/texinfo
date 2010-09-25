@@ -7,23 +7,23 @@ require 't/test_utils.pl';
 
 my @test_cases = (
 [ 'text', 'text' ],
-[ 'text comment', 'text@c comment' ],
-[ 'text space comment', ' text  @c space comment' ],
-[ 'text line', '
+[ 'text_comment', 'text@c comment' ],
+[ 'text_space_comment', ' text  @c space comment' ],
+[ 'text_line', '
 text
 
 '],
-[ 'comment between text', 'text
+[ 'comment_between_text', 'text
 @c comment
 end para' ],
-[ 'two lines','text l 1
+[ 'two_lines','text l 1
 text l 2
 '],
-[ 'no paragraph commands', '@*
+[ 'no_paragraph_commands', '@*
 @titlefont{title font}
 @image{aa,bb,cc,dd,ee}
 '],
-[ 'paragraph command','@@
+[ 'paragraph_command','@@
 
 @b{aaa}.
 ']

@@ -37,7 +37,6 @@ In table
 in caption}
 @end float
 
-@itemize ddd
 @itemize +
 @item i--tem +
 @end itemize

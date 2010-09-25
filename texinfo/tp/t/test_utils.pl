@@ -23,19 +23,11 @@ sub new_test ($;$$)
   my $name = shift;
   my $generate = shift;
   my $debug = shift;
-  my $file = "t/results/$name.pl";
   my $test = {'name' => $name, 'generate' => $generate, 
-              'file' => $file, 'debug' => $debug};
+              'debug' => $debug};
   
   if ($generate) {
-    local *FH;
-    open (*FH, ">$file") or die "Open $file: $!\n";
-    $test->{'fh'} = *FH;
-    my $FH = $test->{'fh'};
-    print $FH 'use vars qw(%result_texts %result_trees %result_errors);'."\n\n";
-  }
-  else {
-    require "$file";
+    mkdir "t/results/$name" if (! -d "t/results/$name");
   }
   bless $test;
   return $test;
@@ -53,34 +45,31 @@ sub test($$)
   my $result =  $parser->parse_texi_text($test_text, 1);
   $result = $parser->tree () if (!$result);
 
+  my $file = "t/results/$self->{'name'}/$test_name.pl";
+
   if ($self->{'generate'}) {
     local $Data::Dumper::Purity = 1;
     local $Data::Dumper::Sortkeys = 1;
     local $Data::Dumper::Indent = 1;
-    my $FH = $self->{'fh'};
-    print $FH "################ $test_name\n";
-    print $FH "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
-    print $FH "\n".'$result_texts{\''.$test_name.'\'} = \''.tree_to_texi($result)."';\n\n";
-    print $FH "".Data::Dumper->Dump([$parser->errors()], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+
+    open (OUT, ">$file") or die "Open $file: $!\n";
+    print OUT 'use vars qw(%result_texts %result_trees %result_errors);'."\n\n";
+
+    my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
+    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.tree_to_texi($result)."';\n\n";
+    $out_result .= "".Data::Dumper->Dump([$parser->errors()], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+    print OUT $out_result;
+    close (OUT);
     
     print STDERR "--> $test_name\n".tree_to_texi($result)."\n";
   }
   else {
+    require $file;
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent)] }), $test_name.' tree' );
     ok (Data::Compare::Compare($parser->errors(), $result_errors{$test_name}), $test_name.' errors' );
     is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
   }
   #exit;
-}
-
-sub end_test($)
-{
-  my $self = shift;
-  if ($self->{'generate'}) {
-    my $FH = $self->{'fh'};
-    print $FH "\n1;\n";
-    close ($self->{'fh'});
-  }
 }
 
 sub run_all($$;$$$)
@@ -112,8 +101,6 @@ sub run_all($$;$$$)
     plan tests => (1 + scalar(@$ran_tests) * 3);
   }
 
-
-  $test->end_test();
 }
 
 1;

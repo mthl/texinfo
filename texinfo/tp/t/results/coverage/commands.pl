@@ -1,6 +1,5 @@
 use vars qw(%result_texts %result_trees %result_errors);
 
-################ commands
 $result_trees{'commands'} = {
   'contents' => [
     {
@@ -288,5 +287,3 @@ $result_texts{'commands'} = '@@ @TeX{} @
 $result_errors{'commands'} = [];
 
 
-
-1;

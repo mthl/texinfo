@@ -79,8 +79,7 @@ my %default_configuration = (
 my %no_brace_commands;             # commands never taking braces
 
 foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
-                              '?','.','@','}','{',)
-{
+                              '?','.','@','}','{',) {
   $no_brace_commands{$no_brace_command} = 1;
 }
 
@@ -90,19 +89,16 @@ my %brace_commands;
 # accent commands. They may be called with and without braces.
 my %accent_commands;
 
-foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol','dots','enddots','equiv','error','expansion','arrow','minus','point','print','result','today','aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th','exclamdown','questiondown','pounds','ordf','ordm','comma','euro','geq','leq','tie','textdegree','quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase','quotesinglbase','guillemetleft','guillemetright','guillemotleft','guillemotright','guilsinglleft','guilsinglright')
-{
+foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol','dots','enddots','equiv','error','expansion','arrow','minus','point','print','result','today','aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th','exclamdown','questiondown','pounds','ordf','ordm','comma','euro','geq','leq','tie','textdegree','quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase','quotesinglbase','guillemetleft','guillemetright','guillemotleft','guillemotright','guilsinglleft','guilsinglright') {
   $brace_commands{$no_arg_command} = 0;
 }
 
-foreach my $accent_command ('"','~','^','`',"'",',','=')
-{
+foreach my $accent_command ('"','~','^','`',"'",',','=') {
   $accent_commands{$accent_command} = 1;
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotaccent','v','ogonek')
-{
+foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotaccent','v','ogonek') {
   $accent_commands{$accent_command} = 1;
   $brace_commands{$accent_command} = 1;
 }
@@ -161,8 +157,7 @@ foreach my $bracketed_line_argument_command(#'multitable',
   'deftypeivar',
   'defmethod',
   'deftypemethod'
-)
-{
+) {
   $block_commands{$bracketed_line_argument_command} = 'def';
   $block_commands{$bracketed_line_argument_command.'x'} = 'def';
 }
@@ -174,8 +169,7 @@ foreach my $block_command(
   'cartouche', 'group', 'raggedright', 'flushleft', 'flushright',
   'titlepage', 'copying', 'documentdescription',
   'example', 'smallexample', 'display', 'smalldisplay', 'lisp',
-  'smalllisp', 'format', 'smallformat')
-{
+  'smalllisp', 'format', 'smallformat') {
   $block_commands{$block_command} = 0;
 }
 
@@ -229,8 +223,7 @@ foreach my $name(keys(%index_names)) {
 }
 
 foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
-   'log','aux','dvi','texi','txi','texinfo','tex','bib')
-{
+   'log','aux','dvi','texi','txi','texinfo','tex','bib') {
   $forbidden_index_name{$other_forbidden_index_name} = 1;
 }
 

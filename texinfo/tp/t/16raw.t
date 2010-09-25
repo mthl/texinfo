@@ -5,7 +5,7 @@ use Test::More;
 require 't/test_utils.pl';
 
 my @test_cases = (
-[ 'nested macros', '@macro truc   { arg,  ex}
+[ 'nested_macros', '@macro truc   { arg,  ex}
 in macro \arg\
 @macro othermacro 
 other macro
@@ -13,7 +13,7 @@ other macro
 @macro
 @end macro
 '],
-['misc raw','
+['misc_raw','
 @html 
 in html @end html
 
@@ -25,7 +25,7 @@ in verbatim
 in verbatim2
 @end verbatim
 '],
-['misc raw comments','
+['misc_raw_comments','
 @html @c comment space
 in html @end html@c comment no space
 
