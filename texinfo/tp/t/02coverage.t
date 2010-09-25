@@ -72,23 +72,23 @@ In table
 @item truc @tab bidule
 @end multitable
 '],
-);
-my @todo = (
 ['preformatted','
 @example
-e--xample  some
+e--xample  some  
 
    text
 @end example
 
 @format
-@vtable code
+@vtable @code
 @item item in table in format
 
 in table in format
 @end vtable
 @end format
 '],
+);
+my @todo = (
 ['def','
 @deffn c--ategory d--effn_name a--rguments...
 d--effn
