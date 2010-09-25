@@ -27,6 +27,7 @@ $result_trees{'good'} = {
         }
       ],
       'cmdname' => 'multitable',
+      'contents' => [],
       'parent' => {},
       'special' => {
         'max_columns' => 3

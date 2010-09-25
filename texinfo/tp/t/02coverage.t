@@ -11,8 +11,6 @@ my @test_cases = (
 
 @majorheading majorheading @b{in b}
 '],
-);
-my @todo = (
 ['block_commands','
 @group
 in group
@@ -25,18 +23,14 @@ in quotation
 @float a float, b float
 In float
 
-@table asis
-@item table item
-@itemx table itemx
-
-In table
-@end table
 
 @caption{in caption
 
 in caption}
 @end float
-
+'],);
+my @todo = (
+['item_container','
 @itemize +
 @item i--tem +
 @end itemize
@@ -45,7 +39,16 @@ in caption}
 @item
  b--ullet
 @end itemize
+'],
+['table','
+@table asis
+@item table item
+@itemx table itemx
 
+In table
+@end table
+'],
+['multitable','
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab

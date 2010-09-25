@@ -167,10 +167,16 @@ $block_commands{'multitable'} = 'multitable';
 foreach my $block_command(
   'menu', 'detailmenu', 'direntry',
   'cartouche', 'group', 'raggedright', 'flushleft', 'flushright',
-  'titlepage', 'copying', 'documentdescription',
+  'titlepage', 'copying', 'documentdescription') {
+  $block_commands{$block_command} = 0;
+}
+
+my %preformatted_commands;
+foreach my $preformatted_command(
   'example', 'smallexample', 'display', 'smalldisplay', 'lisp',
   'smalllisp', 'format', 'smallformat') {
-  $block_commands{$block_command} = 0;
+  $block_commands{$preformatted_command} = 0;
+  $preformatted_commands{$preformatted_command} = 1;
 }
 
 # macro is special
@@ -711,6 +717,7 @@ sub _end_block_command($$$;$)
       my $error = $self->_line_error(
                            sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
+      pop @{$self->{'context'}} if ($preformatted_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
     } elsif ($current->{'parent'}->{'cmdname'}
              and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
@@ -725,9 +732,11 @@ sub _end_block_command($$$;$)
     return ($current, $error) if ($error);
   }
 
-  $current = $current->{'parent'}
-    if ($command and $current->{'cmdname'}
-        and $current->{'cmdname'} eq $command);
+  if ($command and $current->{'cmdname'} 
+    and $current->{'cmdname'} eq $command) {
+    pop @{$self->{'context'}} if ($preformatted_commands{$current->{'cmdname'}});
+    $current = $current->{'parent'}
+  }
   return ($current, 0);
 }
 
@@ -1005,14 +1014,16 @@ sub _internal_parse_text($$;$$)
                     'contents' => [] };
                 $current = $parent->{'contents'}->[-1];
               } else {
-                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                return undef if $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
               }
             # *table
             } elsif ($parent = _item_line_parent($current)) {
               if ($command eq 'item' or $command eq 'itemx') {
+                push @{$current->{'contents'}}, 
+                  { 'cmdname' => $command, 'parent' => $current };
                 $line_arg = $line;
               } else {
-                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                return undef if $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
               }
             # multitable
             } elsif ($parent = _item_multitable_parent($current)) {
@@ -1043,12 +1054,12 @@ sub _internal_parse_text($$;$$)
                   $current = $row->{'contents'}->[-1];
                 }
               } else {
-                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                return undef if $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
               }
             } elsif ($command eq 'tab') {
-              $self->line_error($self->__("ignoring \@tab outside of multitable"), $line_nr);
+              return undef if $self->_line_error($self->__("ignoring \@tab outside of multitable"), $line_nr);
             } else {
-              $self->line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
+              return undef if $self->_line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
             }
           } else {
             push @{$current->{'contents'}}, 
@@ -1087,7 +1098,8 @@ sub _internal_parse_text($$;$$)
             return undef if ($error);
             $line =~ s/\s*//;
             push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                              'parent' => $current };
+                                              'parent' => $current,
+                                              'contents' => [] };
             $current = $current->{'contents'}->[-1];
             if ($block_commands{$command} and 
                 $block_commands{$command} =~ /^\d+$/) {
@@ -1118,6 +1130,8 @@ sub _internal_parse_text($$;$$)
                                          'contents' => [] } ];
                 $current = $current->{'args'}->[-1];
                 #push @{$self->{'context'}}, 'def';
+            } elsif ($preformatted_commands{$command}) {
+              push @{$self->{'context'}}, 'preformatted';
             } else {
               last unless ($line =~ /\S/);
             }
@@ -1142,8 +1156,7 @@ sub _internal_parse_text($$;$$)
                                    'contents' => [] } ];
           $current->{'remaining_args'} = $brace_commands{$command} -1 if ($brace_commands{$command});
           $current = $current->{'args'}->[-1];
-          # no type for footnote, such that it appears as a container
-          # that holds paragraphs
+          # FIXME don't use type to distinguish context_brace_commands.
           if ($context_brace_commands{$command}) {
             push @{$self->{'context'}}, $command;
           } else {
@@ -1404,6 +1417,7 @@ sub _expand_cmd_args_to_texi ($) {
             and defined($cmd->{'args'})) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
+    $result .= ' ';
     foreach my $arg (@{$cmd->{'args'}}) {
        $result .= tree_to_texi ($arg) . ', ';
     }

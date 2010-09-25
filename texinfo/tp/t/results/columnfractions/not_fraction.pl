@@ -10,6 +10,7 @@ $result_trees{'not_fraction'} = {
         }
       ],
       'cmdname' => 'multitable',
+      'contents' => [],
       'parent' => {},
       'special' => {
         'max_columns' => 0

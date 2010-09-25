@@ -32,6 +32,7 @@ $result_trees{'wrong_command'} = {
         }
       ],
       'cmdname' => 'multitable',
+      'contents' => [],
       'parent' => {},
       'special' => {
         'max_columns' => 0

@@ -10,6 +10,7 @@ $result_trees{'empty'} = {
         }
       ],
       'cmdname' => 'multitable',
+      'contents' => [],
       'parent' => {},
       'special' => {
         'max_columns' => 0
