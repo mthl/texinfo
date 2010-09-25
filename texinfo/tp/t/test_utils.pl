@@ -46,13 +46,17 @@ sub test($$)
   $result = $parser->tree () if (!$result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
+  my $new_file = $file.'.new';
 
-  if ($self->{'generate'}) {
+  {
     local $Data::Dumper::Purity = 1;
     local $Data::Dumper::Sortkeys = 1;
     local $Data::Dumper::Indent = 1;
 
-    open (OUT, ">$file") or die "Open $file: $!\n";
+    my $out_file = $new_file;
+    $out_file = $file if ($self->{'generate'});
+
+    open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     print OUT 'use vars qw(%result_texts %result_trees %result_errors);'."\n\n";
 
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
@@ -61,9 +65,9 @@ sub test($$)
     print OUT $out_result;
     close (OUT);
     
-    print STDERR "--> $test_name\n".tree_to_texi($result)."\n";
-  }
-  else {
+    print STDERR "--> $test_name\n".tree_to_texi($result)."\n" if ($self->{'generate'});
+  } 
+  if (!$self->{'generate'}) {
     require $file;
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent)] }), $test_name.' tree' );
     ok (Data::Compare::Compare($parser->errors(), $result_errors{$test_name}), $test_name.' errors' );

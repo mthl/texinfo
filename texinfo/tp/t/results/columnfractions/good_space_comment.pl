@@ -34,7 +34,10 @@ $result_trees{'good_space_comment'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'max_columns' => 2
+      }
     }
   ]
 };

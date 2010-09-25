@@ -32,7 +32,10 @@ $result_trees{'wrong_command'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'max_columns' => 0
+      }
     }
   ]
 };

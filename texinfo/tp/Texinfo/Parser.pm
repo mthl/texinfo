@@ -757,7 +757,7 @@ sub _merge_text ($$$)
   return $current;
 }
 
-sub _item_container($)
+sub _item_container_parent($)
 {
   my $current = shift;
   if (($current->{'cmdname'} and $current->{'cmdname'} eq 'item' 
@@ -769,7 +769,7 @@ sub _item_container($)
   return undef;
 }
 
-sub _item_line($)
+sub _item_line_parent($)
 {
   my $current = shift;
   if (($current->{'cmdname'} and $current->{'cmdname'} eq 'item'
@@ -782,7 +782,7 @@ sub _item_line($)
   return undef;
 }
 
-sub _item_multitable($)
+sub _item_multitable_parent($)
 {
   my $current = shift;
   if (($current->{'cmdname'} and $current->{'cmdname'} eq 'headitem'
@@ -960,8 +960,7 @@ sub _internal_parse_text($$;$$)
                                                 $end_command);
         return undef if ($error);
         last unless ($line =~ /\S/);
-      }
-      elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
+      } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@([a-zA-Z][\w-]*)//o) {
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
@@ -975,8 +974,7 @@ sub _internal_parse_text($$;$$)
           if ($deprecated_commands{$command} eq '') {
             _line_warn($self, sprintf($self->__("%c%s is obsolete."), 
                                 ord('@'), $command), $line_nr);
-          }
-          else {
+          } else {
             _line_warn($self, sprintf($self->__("%c%s is obsolete; %s"),
                    ord('@'), $command, 
                    $self->__($deprecated_commands{$command})), $line_nr);
@@ -992,19 +990,75 @@ sub _internal_parse_text($$;$$)
           ($line, $args, $line_arg, $error) 
              = $self->_parse_misc_command($line, $command, $line_nr);
           return undef if ($error);
-          push @{$current->{'contents'}}, 
-            { 'cmdname' => $command, 'parent' => $current };
-              
-          foreach my $arg (@$args) {
-            push @{$current->{'contents'}->[-1]->{'args'}},
-              { 'type' => 'misc_arg', 'text' => $arg, 
-                'parent' => $current->{'contents'}->[-1] };
-          }
+
           if ($command eq 'item' or $command eq 'itemx' 
                or $command eq 'headitem' or $command eq 'tab') {
             my $error;
             ($current, $error) = _end_paragraph($self, $current, $line_nr);
             return undef if ($error);
+            my $parent;
+            # itemize or enumerate
+            if ($parent = _item_container_parent($current)) {
+              if ($command eq 'item') {
+                push @{$parent->{'contents'}},
+                  { 'cmdname' => $command, 'parent' => $parent, 
+                    'contents' => [] };
+                $current = $parent->{'contents'}->[-1];
+              } else {
+                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+              }
+            # *table
+            } elsif ($parent = _item_line_parent($current)) {
+              if ($command eq 'item' or $command eq 'itemx') {
+                $line_arg = $line;
+              } else {
+                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+              }
+            # multitable
+            } elsif ($parent = _item_multitable_parent($current)) {
+              if ($command eq 'item' or $command eq 'headitem'
+                   or $command eq 'tab') {
+                if (!$parent->{'special'}->{'max_columns'}) {
+                  $self->_line_warn (sprintf($self->__("\@%s in empty multitable"), $command), $line_nr);
+                } elsif ($command eq 'tab') {
+                  my $row = $parent->{'contents'}->[-1];
+                  die if (!$row->{'type'});
+                  if ($row->{'type'} eq 'container') {
+                    $self->_line_warn($self->__("\@tab before \@item"), $line_nr);
+                  } elsif ($row->{'special'}->{'cell_number'} > $parent->{'special'}->{'max_columns'}) {
+                    return undef if $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'special'}->{'max_columns'}), $line_nr);
+                  } else {
+                    $row->{'special'}->{'cell_number'}++;
+                    push @{$row->{'contents'}}, { 'cmdname' => $command,
+                                                'parent' => $row };
+                    $current = $row->{'contents'}->[-1];
+                  }
+                } else {
+                  my $row = { 'type' => 'row', 'contents' => [],
+                              'special' => { 'cell_number' => 1 },
+                              'parent' => $parent };
+                  push @{$parent->{'contents'}}, $row;
+                  push @{$row->{'contents'}}, { 'cmdname' => $command,
+                                                'parent' => $row };
+                  $current = $row->{'contents'}->[-1];
+                }
+              } else {
+                $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+              }
+            } elsif ($command eq 'tab') {
+              $self->line_error($self->__("ignoring \@tab outside of multitable"), $line_nr);
+            } else {
+              $self->line_error (sprintf($self->__("\@%s outside of table or list"), $command), $line_nr);
+            }
+          } else {
+            push @{$current->{'contents'}}, 
+              { 'cmdname' => $command, 'parent' => $current };
+              
+            foreach my $arg (@$args) {
+              push @{$current->{'contents'}->[-1]->{'args'}},
+                { 'type' => 'misc_arg', 'text' => $arg, 
+                  'parent' => $current->{'contents'}->[-1] };
+            }
           }
           if (defined($line_arg)) {
             $line = $line_arg;
@@ -1018,7 +1072,6 @@ sub _internal_parse_text($$;$$)
             $current->{'remaining_args'} = 4 if ($command eq 'node');
             $current = $current->{'args'}->[-1];
           }
-          # FIXME @tab and @item, special case for @item(x) in @table...
         } elsif (exists($block_commands{$command})) {
           my $macro;
           if ($command eq 'macro') {
@@ -1044,8 +1097,7 @@ sub _internal_parse_text($$;$$)
                  'parent' => $current } ];
               $current->{'remaining_args'} = $block_commands{$command} -1;
               $current = $current->{'args'}->[-1];
-            }
-            elsif ($command eq 'multitable') {
+            } elsif ($command eq 'multitable') {
               if ($line =~ s/^\@columnfractions\s+//) { 
                 # both a cmdname and block_line_arg
                 $current->{'args'} = [ { 'cmdname' => 'columnfractions', 
@@ -1053,15 +1105,25 @@ sub _internal_parse_text($$;$$)
                                          'parent' => $current, 
                                          'contents' => [] } ];
                 $current = $current->{'args'}->[-1];
+              } else {
+                $current->{'sepcial'}->{'max_columns'} = 0;
+                $current->{'args'} = [ { 'type' => 'block_line_arg',
+                                         'parent' => $current, 
+                                         'contents' => [] } ];
+                $current = $current->{'args'}->[-1];
               }
-            }
-            else {
+            } elsif ($block_commands{$command} eq 'def') {
+                $current->{'args'} = [ { 'type' => 'block_line_arg',
+                                         'parent' => $current, 
+                                         'contents' => [] } ];
+                $current = $current->{'args'}->[-1];
+                #push @{$self->{'context'}}, 'def';
+            } else {
               last unless ($line =~ /\S/);
             }
           }
           # FIXME multitable and deff*
-        }
-        elsif ($line =~ s/^{// and (defined($brace_commands{$command}))) {
+        } elsif ($line =~ s/^{// and (defined($brace_commands{$command}))) {
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current };
           $current = $current->{'contents'}->[-1];
@@ -1084,8 +1146,7 @@ sub _internal_parse_text($$;$$)
           # that holds paragraphs
           if ($context_brace_commands{$command}) {
             push @{$self->{'context'}}, $command;
-          }
-          else {
+          } else {
             $current->{'type'} = 'brace_command_arg';
           }
           print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining $current->{'parent'}->{'remaining_args'} "
@@ -1267,6 +1328,7 @@ sub _internal_parse_text($$;$$)
               }
             }
             $current = $current->{'parent'};
+            $current->{'special'}->{'max_columns'} = scalar(@fractions);
             $current->{'args'} = [ { 'cmdname' => 'columnfractions',
                                      'parent' => $current } ];
             foreach my $content (@$other_contents) {

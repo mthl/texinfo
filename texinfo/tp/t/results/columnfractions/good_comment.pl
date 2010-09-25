@@ -39,7 +39,10 @@ $result_trees{'good_comment'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'max_columns' => 3
+      }
     }
   ]
 };

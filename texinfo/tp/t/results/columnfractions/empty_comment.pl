@@ -22,7 +22,10 @@ $result_trees{'empty_comment'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'max_columns' => 0
+      }
     }
   ]
 };
