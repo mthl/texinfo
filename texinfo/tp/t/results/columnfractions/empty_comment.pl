@@ -22,7 +22,13 @@ $result_trees{'empty_comment'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 0
@@ -33,6 +39,7 @@ $result_trees{'empty_comment'} = {
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[1];
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0];
+$result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'parent'} = $result_trees{'empty_comment'};
 
 $result_texts{'empty_comment'} = '@multitable @columnfractions @c

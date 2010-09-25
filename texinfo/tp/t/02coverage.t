@@ -28,18 +28,20 @@ In float
 
 in caption}
 @end float
-'],);
-my @todo = (
+'],
 ['item_container','
 @itemize +
 @item i--tem +
 @end itemize
-
-@itemize @bullet
-@item
- b--ullet
-@end itemize
-'],
+']
+#
+#@itemize @bullet
+#@item
+# b--ullet
+#@end itemize
+#'],
+);
+my @todo = (
 ['table','
 @table asis
 @item table item

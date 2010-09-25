@@ -10,7 +10,13 @@ $result_trees{'not_fraction'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 0
@@ -19,6 +25,7 @@ $result_trees{'not_fraction'} = {
   ]
 };
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'parent'} = $result_trees{'not_fraction'};
 
 $result_texts{'not_fraction'} = '@multitable @columnfractions

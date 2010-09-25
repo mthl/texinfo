@@ -39,7 +39,13 @@ $result_trees{'good_comment'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 3
@@ -53,6 +59,7 @@ $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'args'}[2]{'parent'} = $
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[1]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[1];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'parent'} = $result_trees{'good_comment'};
 
 $result_texts{'good_comment'} = '@multitable @columnfractions 0.4 .6 5. @c comment

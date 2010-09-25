@@ -136,6 +136,9 @@ foreach my $no_paragraph_context ('math', 'preformatted', 'menu') {
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.
 my %block_commands;
+
+# commands that have a possible content before an item
+my %block_item_commands;
 foreach my $bracketed_line_argument_command(#'multitable',
   'deffn',
   'defvr',
@@ -163,6 +166,7 @@ foreach my $bracketed_line_argument_command(#'multitable',
 }
 
 $block_commands{'multitable'} = 'multitable';
+$block_item_commands{'multitable'} = 1;
 
 foreach my $block_command(
   'menu', 'detailmenu', 'direntry',
@@ -189,7 +193,11 @@ foreach my $raw_command ('html', 'tex', 'xml', 'docbook', 'verbatim',
 foreach my $block_command_one_arg('table', 'ftable', 'vtable',
   'itemize', 'enumerate', 'quotation', 'small_quotation') {
   $block_commands{$block_command_one_arg} = 1;
+  $block_item_commands{$block_command_one_arg} = 1 
+    unless ($block_command_one_arg =~ /quotation/);
 }
+
+
 
 $block_commands{'float'} = 2;
 
@@ -634,7 +642,7 @@ sub _begin_paragraph ($$)
   my $self = shift;
   my $current = shift;
 
-  if ((!$current->{'type'} or $current->{'type'} eq 'container') 
+  if ((!$current->{'type'} or $current->{'type'} eq 'before_item') 
       and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
@@ -769,8 +777,8 @@ sub _merge_text ($$$)
 sub _item_container_parent($)
 {
   my $current = shift;
-  if (($current->{'cmdname'} and $current->{'cmdname'} eq 'item' 
-       or $current->{'type'} and $current->{'type'} eq 'container')
+  if ((($current->{'cmdname'} and $current->{'cmdname'} eq 'item')
+       or ($current->{'type'} and $current->{'type'} eq 'before_item'))
       and ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
         and $item_container_commands{$current->{'parent'}->{'cmdname'}})) {
     return ($current->{'parent'});
@@ -783,7 +791,7 @@ sub _item_line_parent($)
   my $current = shift;
   if (($current->{'cmdname'} and $current->{'cmdname'} eq 'item'
        or $current->{'cmdname'} eq 'itemx'
-        or $current->{'type'} and $current->{'type'} eq 'container')
+        or $current->{'type'} and $current->{'type'} eq 'before_item')
       and ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
         and $item_line_commands{$current->{'parent'}->{'cmdname'}})) {
     return ($current->{'parent'});
@@ -798,7 +806,7 @@ sub _item_multitable_parent($)
        or $current->{'cmdname'} eq 'item' or $current->{'cmdname'} eq 'tab')
       and $current->{'parent'} and $current->{'parent'}->{'parent'}) {
     $current = $current->{'parent'}->{'parent'};
-  } elsif ($current->{'type'} and $current->{'type'} eq 'container'
+  } elsif ($current->{'type'} and $current->{'type'} eq 'before_item'
             and $current->{'parent'}) {
     $current = $current->{'parent'};
   }
@@ -823,7 +831,7 @@ sub _item_multitable_parent($)
 #
 #c 'brace_command_arg'
 #
-#c 'container'   FIXME what comes after @*table, @itemize, @enumerate before
+#c 'before_item'   FIXME what comes after @*table, @itemize, @enumerate before
 #                an @item
 #
 #c 'paragraph'
@@ -1009,6 +1017,7 @@ sub _internal_parse_text($$;$$)
             # itemize or enumerate
             if ($parent = _item_container_parent($current)) {
               if ($command eq 'item') {
+                print STDERR "ITEM_CONTAINER\n" if ($self->{'debug'});
                 push @{$parent->{'contents'}},
                   { 'cmdname' => $command, 'parent' => $parent, 
                     'contents' => [] };
@@ -1019,6 +1028,7 @@ sub _internal_parse_text($$;$$)
             # *table
             } elsif ($parent = _item_line_parent($current)) {
               if ($command eq 'item' or $command eq 'itemx') {
+                print STDERR "ITEM_LINE\n";
                 push @{$current->{'contents'}}, 
                   { 'cmdname' => $command, 'parent' => $current };
                 $line_arg = $line;
@@ -1034,7 +1044,7 @@ sub _internal_parse_text($$;$$)
                 } elsif ($command eq 'tab') {
                   my $row = $parent->{'contents'}->[-1];
                   die if (!$row->{'type'});
-                  if ($row->{'type'} eq 'container') {
+                  if ($row->{'type'} eq 'before_item') {
                     $self->_line_warn($self->__("\@tab before \@item"), $line_nr);
                   } elsif ($row->{'special'}->{'cell_number'} > $parent->{'special'}->{'max_columns'}) {
                     return undef if $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'special'}->{'max_columns'}), $line_nr);
@@ -1043,8 +1053,10 @@ sub _internal_parse_text($$;$$)
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                 'parent' => $row };
                     $current = $row->{'contents'}->[-1];
+                    print STDERR "TAB\n";
                   }
                 } else {
+                  print STDERR "ROW\n";
                   my $row = { 'type' => 'row', 'contents' => [],
                               'special' => { 'cell_number' => 1 },
                               'parent' => $parent };
@@ -1101,38 +1113,27 @@ sub _internal_parse_text($$;$$)
                                               'parent' => $current,
                                               'contents' => [] };
             $current = $current->{'contents'}->[-1];
-            if ($block_commands{$command} and 
-                $block_commands{$command} =~ /^\d+$/) {
+            my $arg_number = $block_commands{$command}
+              if ($block_commands{$command} 
+                  and $block_commands{$command} =~ /^\d+$/);
+            if ($arg_number
+                or ($command eq 'multitable') 
+                or ($block_commands{$command} eq 'def')) {
               $current->{'args'} = [ {
                  'type' => 'block_line_arg',
                  'contents' => [],
                  'parent' => $current } ];
-              $current->{'remaining_args'} = $block_commands{$command} -1;
+              $current->{'remaining_args'} = $arg_number -1 if ($arg_number);
               $current = $current->{'args'}->[-1];
-            } elsif ($command eq 'multitable') {
-              if ($line =~ s/^\@columnfractions\s+//) { 
-                # both a cmdname and block_line_arg
-                $current->{'args'} = [ { 'cmdname' => 'columnfractions', 
-                                         'type' => 'block_line_arg', 
-                                         'parent' => $current, 
-                                         'contents' => [] } ];
-                $current = $current->{'args'}->[-1];
-              } else {
-                $current->{'sepcial'}->{'max_columns'} = 0;
-                $current->{'args'} = [ { 'type' => 'block_line_arg',
-                                         'parent' => $current, 
-                                         'contents' => [] } ];
-                $current = $current->{'args'}->[-1];
+              if ($command eq 'multitable' 
+                    and $line =~ s/^\@columnfractions\s+//) {
+                # both an argument and an @-command
+                $current->{'cmdname'} = 'columnfractions';
               }
-            } elsif ($block_commands{$command} eq 'def') {
-                $current->{'args'} = [ { 'type' => 'block_line_arg',
-                                         'parent' => $current, 
-                                         'contents' => [] } ];
-                $current = $current->{'args'}->[-1];
-                #push @{$self->{'context'}}, 'def';
-            } elsif ($preformatted_commands{$command}) {
-              push @{$self->{'context'}}, 'preformatted';
+              #push @{$self->{'context'}}, 'def' if ($block_commands{$command} eq 'def');
             } else {
+              push @{$self->{'context'}}, 'preformatted' 
+                if ($preformatted_commands{$command});
               last unless ($line =~ /\S/);
             }
           }
@@ -1356,6 +1357,12 @@ sub _internal_parse_text($$;$$)
             }
           }
           $current = $current->{'parent'};
+          if ($current->{'cmdname'} 
+                and $block_item_commands{$current->{'cmdname'}}) {
+            push @{$current->{'contents'}}, { 'type' => 'before_item',
+               'contents' => [], 'parent', $current };
+            $current = $current->{'contents'}->[-1];
+          }
         }
         last;
       }
@@ -1453,6 +1460,10 @@ sub _expand_cmd_args_to_texi ($) {
     }
     #die "Shouldn't have args: $cmd->{'cmdname'}\n";
     $result .= '}' if ($braces);
+  } elsif ($misc_commands{$cmd->{'cmdname'}}
+      and $misc_commands{$cmd->{'cmdname'}}->{'skip'}
+      and $misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'space') {
+    $result .= ' ';
   }
   if (defined($block_commands{$cmd->{'cmdname'}})) {
     # there is an end of line if there is a comment, for example
@@ -1475,11 +1486,11 @@ sub _parse_misc_command($$$$)
   my $skip_spec = '';
   my $arg_spec = '';
 
-#print STDERR "HHHHHHHHH $line $command\n";
   $skip_spec = $self->{'misc_commands'}->{$command}->{'skip'}
-    if (defined($self->{'misc_commands'}->{'skip'}));
-  $arg_spec = $misc_commands{$command}->{'arg'}
-    if (defined($misc_commands{$command}->{'arg'}));
+    if (defined($self->{'misc_commands'}->{$command}->{'skip'}));
+  $arg_spec = $self->{'misc_commands'}->{$command}->{'arg'}
+    if (defined($self->{'misc_commands'}->{$command}->{'arg'}));
+#print STDERR "HHHHHHHHH $line $command arg_spec $arg_spec skip_spec $skip_spec\n";
 
   if ($command eq 'alias') {
     if ($line =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//) {

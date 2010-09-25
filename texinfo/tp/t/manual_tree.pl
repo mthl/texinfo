@@ -67,7 +67,7 @@ $manual_tree = { 'cmdname' => 'multitable',
 
 $manual_tree_result = '@multitable {aaaa} {xx@b{rr}} ccc
 title@verb{: in verb } :}@@.
-@item
+@item 
 @end multitable
 ';
 

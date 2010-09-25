@@ -27,7 +27,13 @@ $result_trees{'good'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 3
@@ -39,6 +45,7 @@ $result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[0]{'parent'} = $result_t
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[1]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[2]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'parent'} = $result_trees{'good'};
 
 $result_texts{'good'} = '@multitable @columnfractions 0.4 .6 5.

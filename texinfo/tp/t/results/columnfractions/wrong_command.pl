@@ -32,7 +32,13 @@ $result_trees{'wrong_command'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 0
@@ -45,6 +51,7 @@ $result_trees{'wrong_command'}{'contents'}[0]{'args'}[1]{'args'}[0]{'contents'}[
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[1]{'args'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[1];
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
 $result_trees{'wrong_command'}{'contents'}[0]{'parent'} = $result_trees{'wrong_command'};
 
 $result_texts{'wrong_command'} = '@multitable @columnfractions @b{3.4}  

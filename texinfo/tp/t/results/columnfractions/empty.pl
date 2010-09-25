@@ -10,7 +10,13 @@ $result_trees{'empty'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'contents' => [],
+          'parent' => {},
+          'type' => 'before_item'
+        }
+      ],
       'parent' => {},
       'special' => {
         'max_columns' => 0
@@ -19,6 +25,7 @@ $result_trees{'empty'} = {
   ]
 };
 $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0];
+$result_trees{'empty'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0];
 $result_trees{'empty'}{'contents'}[0]{'parent'} = $result_trees{'empty'};
 
 $result_texts{'empty'} = '@multitable @columnfractions
