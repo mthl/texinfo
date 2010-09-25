@@ -232,7 +232,7 @@ my %index_names = (
 foreach my $name(keys(%index_names)) {
   foreach my $prefix (keys %{$index_names{$name}->{'prefixes'}}) {
     $forbidden_index_name{$prefix} = 1;
-    push @default_index_names, $name;
+    push @default_index_names, $prefix;
   }
 }
 
@@ -789,21 +789,23 @@ sub _item_container_parent($)
 sub _item_line_parent($)
 {
   my $current = shift;
-  if (($current->{'cmdname'} and $current->{'cmdname'} eq 'item'
-       or $current->{'cmdname'} eq 'itemx'
-        or $current->{'type'} and $current->{'type'} eq 'before_item')
-      and ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-        and $item_line_commands{$current->{'parent'}->{'cmdname'}})) {
-    return ($current->{'parent'});
+  if ($current->{'cmdname'} and ($current->{'cmdname'} eq 'item'
+       or $current->{'cmdname'} eq 'itemx')) {
+      $current = $current->{'parent'}->{'parent'};
+  } elsif ($current->{'type'} and $current->{'type'} eq 'before_item'
+            and $current->{'parent'}) {
+    $current = $current->{'parent'};
   }
+  return $current if ($current->{'cmdname'} 
+                       and $item_line_commands{$current->{'cmdname'}});
   return undef;
 }
 
 sub _item_multitable_parent($)
 {
   my $current = shift;
-  if (($current->{'cmdname'} and $current->{'cmdname'} eq 'headitem'
-       or $current->{'cmdname'} eq 'item' or $current->{'cmdname'} eq 'tab')
+  if (($current->{'cmdname'} and ($current->{'cmdname'} eq 'headitem'
+       or $current->{'cmdname'} eq 'item' or $current->{'cmdname'} eq 'tab'))
       and $current->{'parent'} and $current->{'parent'}->{'parent'}) {
     $current = $current->{'parent'}->{'parent'};
   } elsif ($current->{'type'} and $current->{'type'} eq 'before_item'
@@ -1028,7 +1030,8 @@ sub _internal_parse_text($$;$$)
             # *table
             } elsif ($parent = _item_line_parent($current)) {
               if ($command eq 'item' or $command eq 'itemx') {
-                print STDERR "ITEM_LINE\n";
+                print STDERR "ITEM_LINE\n" if ($self->{'debug'});
+                $current = $parent;
                 push @{$current->{'contents'}}, 
                   { 'cmdname' => $command, 'parent' => $current };
                 $line_arg = $line;
@@ -1163,8 +1166,8 @@ sub _internal_parse_text($$;$$)
           } else {
             $current->{'type'} = 'brace_command_arg';
           }
-          print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining $current->{'parent'}->{'remaining_args'} "
-            .($current->{'type'} ? $current->{'type'} : '')."\n"
+          print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
+            .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
              if ($self->{'debug'});
         } elsif ($accent_commands{$command}) {
           if ($command =~ /^[a-zA-Z]/) {
@@ -1203,9 +1206,19 @@ sub _internal_parse_text($$;$$)
                { 'cmdname' => $command, 'parent' => $current };
 
         } elsif(exists $brace_commands{$command}) {
-          return undef if 
-            _line_error ($self,
-               sprintf($self->__("\@%s expected braces"), $command), $line_nr);
+          # special case of a command as argument of *table or itemize
+          if ($current->{'parent'} and 
+            ($current->{'parent'}->{'cmdname'} eq 'itemize'
+             or $block_item_commands{$current->{'parent'}->{'cmdname'}})
+             and (scalar(@{$current->{'contents'}}) == 0)) {
+            push @{$current->{'contents'}}, {'cmdname' => $command,
+                              'parent' => $current,
+                              'type' => 'command_as_argument'};
+          } else {
+            return undef if 
+              _line_error ($self,
+                 sprintf($self->__("\@%s expected braces"), $command), $line_nr);
+          }
         } else {
           # unknown
         }
@@ -1292,8 +1305,7 @@ sub _internal_parse_text($$;$$)
           die "Remaining line: $line\n";
         }
         if ($current->{'type'}
-            and ($current->{'type'} eq 'block_line_arg'
-                 or $current->{'type'} eq 'misc_line_arg')) {
+            and $current->{'type'} eq 'block_line_arg') {
           if ($current->{'cmdname'}
               and $current->{'cmdname'} eq 'columnfractions') { 
             # the columnfraction content should be text only, maybe
@@ -1363,6 +1375,9 @@ sub _internal_parse_text($$;$$)
                'contents' => [], 'parent', $current };
             $current = $current->{'contents'}->[-1];
           }
+        } elsif ($current->{'type'} 
+           and $current->{'type'} eq 'misc_line_arg') {
+          $current = $current->{'parent'}->{'parent'};
         }
         last;
       }

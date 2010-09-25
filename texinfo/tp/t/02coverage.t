@@ -33,23 +33,33 @@ in caption}
 @itemize +
 @item i--tem +
 @end itemize
-']
-#
-#@itemize @bullet
-#@item
-# b--ullet
-#@end itemize
-#'],
-);
-my @todo = (
+
+@itemize @bullet
+@item
+ b--ullet
+@end itemize
+'],
 ['table','
-@table asis
+@table @asis
 @item table item
 @itemx table itemx
 
 In table
 @end table
+
+@vtable @samp@c samp
+@c after vtable
+@cindex index entry
+
+@item vtable item
+@c after item
+@kindex key
+@itemx itemx vtable @comment comment in itemx line
+
+@end vtable
 '],
+);
+my @todo = (
 ['multitable','
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab

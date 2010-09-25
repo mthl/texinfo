@@ -160,30 +160,36 @@ $result_trees{'commands'} = {
       'type' => 'normal_line'
     },
     {
-      'contents' => [
+      'args' => [
         {
-          'parent' => {},
-          'text' => ' index entry in text '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'index entry in text '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'LaTeX',
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'LaTeX',
-          'parent' => {}
-        },
-        {
           'parent' => {},
-          'text' => '
-'
+          'type' => 'misc_line_arg'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'cmdname' => 'cindex',
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -261,10 +267,11 @@ $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_tre
 $result_trees{'commands'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[1]{'parent'} = $result_trees{'commands'};
-$result_trees{'commands'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2];
-$result_trees{'commands'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[2];
-$result_trees{'commands'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[2];
+$result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
+$result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
+$result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
+$result_trees{'commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2];
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0];
@@ -279,7 +286,7 @@ $result_texts{'commands'} = '@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
 @email{a, b}
 
- index entry in text @LaTeX{}
+@cindex index entry in text @LaTeX{}
 
 @majorheading majorheading @b{in b}
 ';
