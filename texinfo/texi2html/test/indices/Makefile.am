@@ -7,8 +7,8 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
  syncode_index_print_both.texi index_entry_in_footnote.texi \
  index_one_node.texi index_no_node_no_top.texi double_index_entry.texi \
  same_doc_nr_split_index_and_element.texi unknown_index_entry.texi \
- more_unknown_index_entry.texi \
- printindex_between_part_chapter.texi \
+ more_unknown_index_entry.texi printindex_between_part_chapter.texi \
+ syncodeindex_to_plain.texi \
  index_test.init \
  tests.txt res res_all res_info
 
