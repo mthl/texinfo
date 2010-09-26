@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
+@c $Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -4992,7 +4992,7 @@ Requirements}).  The subsequent arguments are the names of the `Next',
 your Texinfo document is hierarchically organized (@pxref{makeinfo
 Pointer Creation}).
 
-@opindex accesskey@r{, in HTML output}
+@opindex accesskey@r{, in HTML output of nodes}
 Whether the node pointers are specified implicitly or explicitly, the
 HTML output from @command{makeinfo} for each node includes links to
 the `Next', `Previous', and `Up' nodes.  The HTML also uses the
@@ -5494,7 +5494,7 @@ menu comment line; the two lines starting with @w{@samp{* }} are menu
 entries.  Space characters in a menu are preserved as-is; this allows
 you to format the menu as you wish.
 
-@opindex accesskey@r{, in HTML output}
+@opindex accesskey@r{, in HTML output of menus}
 In the HTML output from @command{makeinfo}, the @code{accesskey}
 attribute is used with the values @samp{1}@dots{}@samp{9} for the
 first nine entries.  This allows people using web browsers to follow
@@ -15076,7 +15076,7 @@ MS-DOS and perhaps in other circumstances, you may need to run @samp{sh
 texi2dvi foo.texi} instead of relying on the operating system to invoke
 the shell on the @samp{texi2dvi} script.
 
-@opindex --command @r{(@command{texi2dvi})}
+@opindex --command@r{, for @command{texi2dvi}}
 One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
 This inserts @var{cmd} on a line by itself after the
 @code{@@setfilename} in a temporary copy of the input file before
@@ -15087,7 +15087,7 @@ formats, such as @code{@@smallbook} (@pxref{smallbook}),
 (You can also do this on a site-wide basis with @file{texinfo.cnf};
 @pxref{Preparing for TeX,,Preparing for @TeX{}}).
 
-@opindex --pdf @r{(@command{texi2dvi})}
+@opindex --pdf@r{, for @command{texi2dvi}}
 With the @option{--pdf} option, @command{texi2dvi} produces PDF output
 instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
 instead of @command{tex}.  Alternatively, the command
@@ -15100,7 +15100,7 @@ convenience to AUC-@TeX{} users, since the latter merely prepends
 @command{texi2dvi} can also be used to process @LaTeX{} files; simply
 run @samp{texi2dvi filename.ext}.
 
-@opindex --language @r{(@command{texi2dvi})}
+@opindex --language@r{, for @command{texi2dvi}}
 Normally @command{texi2dvi} is able to guess the input file language
 by its contents and file name suffix. If, however, it fails to do so
 you can specify the input language using
@@ -15113,7 +15113,7 @@ required, and the DVI (or PDF) output is identical, but they simplify
 the @TeX{} programming in some cases, and provide additional tracing
 information when debugging @file{texinfo.tex}.
 
-@opindex --translate-file @r{(@command{texi2dvi})}
+@opindex --translate-file@r{, for @command{texi2dvi}}
 Several options are provided for handling documents, written in
 character sets other than ASCII. The
 @option{--translate-file=@var{file}} option instructs
@@ -15122,7 +15122,7 @@ set using @dfn{translation file} @var{file} (@pxref{TCX files, TCX
 files, TCX files: Character translations, web2c, Web2c: A @TeX{}
 implementation}).
 
-@opindex --recode @r{(@command{texi2dvi})}
+@opindex --recode@r{, for @command{texi2dvi}}
 The options @option{--recode} and @option{--recode-from=@var{enc}}
 allow conversion of an input document before running @TeX{}. The
 @option{--recode} option recodes the document from encoding specified
@@ -15130,7 +15130,7 @@ by @samp{@@documentencoding} command
 (@pxref{documentencoding,,@code{documentencoding}}) to plain 7-bit
 @samp{texinfo} encoding.
 
-@opindex --recode-from @r{(@command{texi2dvi})}
+@opindex --recode-from@r{, for @command{texi2dvi}}
 The option @option{--recode-from=@var{enc}} recodes the document from
 @var{enc} encoding to the encoding specified by
 @samp{@@documentencoding}. This is useful, for example, if the
@@ -16111,7 +16111,7 @@ created.  With this option, they are preserved.
 
 @item --help
 @itemx -h
-@opindex --help
+@opindex --help@r{, for @command{texi2any}}
 @opindex -h
 Print a usage message listing available options, then exit successfully.
 
@@ -16397,7 +16397,7 @@ warnings.
 
 @item --version
 @itemx -V
-@opindex --version
+@opindex --version@r{, for @command{texi2any}}
 @opindex -V
 Print the version number, then exit successfully.
 
@@ -17513,21 +17513,22 @@ order.
 Options:
 
 @table @code
-@item --add-once
+@item --add-once@r{, for @command{install-info}}
 Specifies that the entry or entries will only be put into a single section.
 
 @item --align=@var{column}
-@opindex --align=@var{column}
+@opindex --align=@var{column}@r{, for @command{install-info}}
 Specifies the column that the second and subsequent lines of menu entry's
 description will be formatted to begin at.  The default for this option is
 @samp{35}.  It is used in conjunction with the @samp{--max-width} option.
 @var{column} starts counting at 1.
 
 @item --append-new-sections
+@item --append-new-sections{, for @command{install-info}}
 Instead of alphabetizing new sections, place them at the end of the DIR file.
 
 @item --calign=@var{column}
-@opindex --calign=@var{column}
+@opindex --calign=@var{column}@r{, for @command{install-info}}
 Specifies the column that the first line of menu entry's description will
 be formatted to begin at.  The default for this option is @samp{33}.  It is
 used in conjunction with the @samp{--max-width} option.
@@ -17536,33 +17537,33 @@ will start on the following line.
 @var{column} starts counting at 1.
 
 @item --debug
-@opindex --debug
+@opindex --debug@r{, for @command{install-info}}
 Report what is being done.
 
 @item --delete
-@opindex --delete
+@opindex --delete@r{, for @command{install-info}}
 Delete the entries in @var{info-file} from @var{dir-file}.  The file
 name in the entry in @var{dir-file} must be @var{info-file} (except for
 an optional @samp{.info} in either one).  Don't insert any new entries.
 Any empty sections that result from the removal are also removed.
 
 @item --description=@var{text}
-@opindex --description=@var{text}
+@opindex --description=@var{text}@r{, for @command{install-info}}
 Specify the explanatory portion of the menu entry.  If you don't specify
 a description (either via @samp{--entry}, @samp{--item} or this option),
 the description is taken from the Info file itself.
 
 @item --dir-file=@var{name}
-@opindex --dir-file=@var{name}
+@opindex --dir-file=@var{name}@r{, for @command{install-info}}
 Specify file name of the Info directory file.  This is equivalent to
 using the @var{dir-file} argument.
 
 @item --dry-run
-@opindex --dry-run
+@opindex --dry-run@r{, for @command{install-info}}
 Same as @samp{--test}.
 
 @item --entry=@var{text}
-@opindex --entry=@var{text}
+@opindex --entry=@var{text}@r{, for @command{install-info}}
 Insert @var{text} as an Info directory entry; @var{text} should have the
 form of an Info menu item line plus zero or more extra lines starting
 with whitespace.  If you specify more than one entry, they are all
@@ -17570,49 +17571,49 @@ added.  If you don't specify any entries, they are determined from
 information in the Info file itself.
 
 @item --help
-@opindex --help
+@opindex --help@r{, for @command{texindex}}
 Display a usage message with basic usage and all available options,
 then exit successfully.
 
 @item --info-file=@var{file}
-@opindex --info-file=@var{file}
+@opindex --info-file=@var{file}@r{, for @command{install-info}}
 Specify Info file to install in the directory.  This is
 equivalent to using the @var{info-file} argument.
 
 @item --info-dir=@var{dir}
-@opindex --info-dir=@var{dir}
+@opindex --info-dir=@var{dir}@r{, for @command{install-info}}
 Specify the directory where the directory file @file{dir} resides.
 Equivalent to @samp{--dir-file=@var{dir}/dir}.
 
 @item --infodir=@var{dir}
-@opindex --infodir=@var{dir}
+@opindex --infodir=@var{dir}@r{, for @command{install-info}}
 Same as @samp{--info-dir}.
 
 @item --item=@var{text}
-@opindex --item=@var{text}
+@opindex --item=@var{text}@r{, for @command{install-info}}
 Same as @samp{--entry=@var{text}}.  An Info directory entry is actually
 a menu item.
 
 @item --keep-old
-@opindex --keep-old
+@opindex --keep-old@r{, for @command{install-info}}
 Do not replace pre-existing menu entries.  When @samp{--remove} is specified,
 this option means that empty sections are not removed.
 
 @item --max-width=@var{column}
-@opindex --max-width=@var{column}
+@opindex --max-width=@var{column}@r{, for @command{install-info}}
 Specifies the column that the menu entry's description will be word-wrapped
 at.  @var{column} starts counting at 1.
 
 @item --maxwidth=@var{column}
-@opindex --maxwidth=@var{column}
+@opindex --maxwidth=@var{column}@r{, for @command{install-info}}
 Same as @samp{--max-width}.
 
 @item --menuentry=@var{text}
-@opindex --menuentry=@var{text}
+@opindex --menuentry=@var{text}@r{, for @command{install-info}}
 Same as @samp{--name}.
 
 @item --name=@var{text}
-@opindex --name=@var{text}
+@opindex --name=@var{text}@r{, for @command{install-info}}
 Specify the name portion of the menu entry.  If the @var{text} does
 not start with an asterisk @samp{*}, it is presumed to be the text
 after the @samp{*} and before the parentheses that specify the Info
@@ -17624,27 +17625,27 @@ Info file itself.  If the Info does not contain the name, the basename
 of the Info file is used.
 
 @item --no-indent
-@opindex --no-indent
+@opindex --no-indent@r{, for @command{install-info}}
 Suppress formatting of new entries into the @file{dir} file.
 
 @item --quiet
-@opindex --quiet
 @itemx --silent
-@opindex --silent
+@opindex --quiet@r{, for @command{install-info}}
+@opindex --silent@r{, for @command{install-info}}
 Suppress warnings, etc., for silent operation.
 
 @item --remove
-@opindex --remove
+@opindex --remove@r{, for @command{install-info}}
 Same as @samp{--delete}.
 
 @item --remove-exactly
-@opindex --remove-exactly
+@opindex --remove-exactly@r{, for @command{install-info}}
 Also like @samp{--delete}, but only entries if the Info file name
 matches exactly; @code{.info} and/or @code{.gz} suffixes are
 @emph{not} ignored.
 
 @item --section=@var{sec}
-@opindex --section=@var{sec}
+@opindex --section=@var{sec}@r{, for @command{install-info}}
 Put this file's entries in section @var{sec} of the directory.  If you
 specify more than one section, all the entries are added in each of the
 sections.  If you don't specify any sections, they are determined from
@@ -17652,7 +17653,7 @@ information in the Info file itself.  If the Info file doesn't specify
 a section, the menu entries are put into the Miscellaneous section.
 
 @item --section @var{regex} @var{sec}
-@opindex --section @var{regex} @var{sec}
+@opindex --section @var{regex} @var{sec}@r{, for @command{install-info}}
 Same as @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
 
 @code{install-info} tries to detect when this alternate syntax is used,
@@ -17662,31 +17663,33 @@ but does not always guess correctly.  Here is the heuristic that
 @item
 If the second argument to @code{--section} starts with a hyphen, the
 original syntax is presumed.
+
 @item
 If the second argument to @code{--section} is a file that can be
 opened, the original syntax is presumed.
+
 @item
 Otherwise the alternate syntax is used.
 @end enumerate
 
-When heuristic fails because your section title starts with a hyphen, or it
-happens to be a filename that can be opened, the syntax should be changed
-to @samp{--regex=@var{regex} --section=@var{sec} --add-once}.
-
+When the heuristic fails because your section title starts with a
+hyphen, or it happens to be a filename that can be opened, the syntax
+should be changed to @samp{--regex=@var{regex} --section=@var{sec}
+--add-once}.
 
 @item --regex=@var{regex}
-@opindex  --regex=@var{regex}
+@opindex  --regex=@var{regex}@r{, for @command{install-info}}
 Put this file's entries into any section that matches @var{regex}.  If
 more than one section matches, all of the entries are added in each of the
 sections.  Specify @var{regex} using basic regular expression syntax, more
 or less as used with @command{grep}, for example.
 
 @item --test
-@opindex --test
+@opindex --test@r{, for @command{install-info}}
 Suppress updating of the directory file.
 
 @item --version
-@opindex --version
+@opindex --version@r{, for @command{install-info}}
 @cindex Version number, for install-info
 Display version information and exit successfully.
 
@@ -20085,7 +20088,7 @@ You can define the variable @code{$EXTRA_HEAD} to add text within the
 @code{$AFTER_BODY_OPEN} is added just after @code{<body>} is output.
 These variables are empty by default.
 
-@vindex BODYTEXT
+@vindex BODYTEXT@r{, in customization}
 @cindex @code{<body>}, attributes of
 The @code{<body>} element attributes may be set by defining the
 configuration variable @code{BODYTEXT}.
@@ -20105,7 +20108,7 @@ The description from @code{@@documentdescription} (or a value set as a
 configuration variable) is used in the header
 (@pxref{documentdescription}).
 
-@vindex @@LINKS_BUTTONS
+@vindex @@LINKS_BUTTONS@r{, in customization}
 @vindex %BUTTONS_REL@r{, in customization}
 @code{<link>} elements are used in the header if @code{$USE_LINKS} is
 set, in which case @code{@@LINKS_BUTTONS} determines which links are
@@ -24637,7 +24640,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
+$Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24716,7 +24719,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.321 2010-09-25 00:52:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
