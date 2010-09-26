@@ -87,10 +87,8 @@ in table in format
 @end vtable
 @end format
 '],
-);
-my @todo = (
 ['def','
-@deffn c--ategory d--effn_name a--rguments...
+@deffn {c--ategory} d--effn_name a--rguments...
 d--effn
 @end deffn
 
@@ -124,5 +122,3 @@ our ($arg_test_case, $arg_generate, $arg_debug);
 
 run_all ('coverage', \@test_cases, $arg_test_case,
    $arg_generate, $arg_debug);
-
-1;

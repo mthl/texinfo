@@ -4,6 +4,9 @@ use Test::More;
 use Texinfo::Parser qw(:all);
 use Data::Dumper;
 use Data::Compare;
+#use Data::Diff;
+#use Data::Transformer;
+#use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texts %result_trees %result_errors);
@@ -17,6 +20,9 @@ Getopt::Long::Configure("gnu_getopt");
 GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug);
 
 our $arg_test_case = shift @ARGV;
+
+#my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
+#my $transformer = Data::Transformer->new('hash'=>$remove_parent);
 
 sub new_test ($;$$)
 {
@@ -43,7 +49,6 @@ sub test($$)
   my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'}});
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result =  $parser->parse_texi_text($test_text, 1);
-  $result = $parser->tree () if (!$result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';
@@ -59,6 +64,7 @@ sub test($$)
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     print OUT 'use vars qw(%result_texts %result_trees %result_errors);'."\n\n";
 
+    #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.tree_to_texi($result)."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$parser->errors()], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
@@ -69,7 +75,24 @@ sub test($$)
   } 
   if (!$self->{'generate'}) {
     require $file;
+
+    #$transformer->traverse($result_trees{$test_name});
+    #$transformer->traverse($result);
+    {
+      #local $Data::Dumper::Purity = 1;
+      local $Data::Dumper::Sortkeys = 1;
+      local $Data::Dumper::Indent = 1;
+      #if (!Struct::Compare::compare($result, $result_trees{$test_name})) {
+      #  print STDERR "".Data::Dumper->Dump([$result],['$new']);
+      #  print STDERR "".Data::Dumper->Dump([$result_trees{$test_name}], ['$ref']);
+      #}
+
+      #my $diff = Data::Diff->new($result, $result_trees{$test_name});
+      #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
+    }
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent)] }), $test_name.' tree' );
+    #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
+    #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($parser->errors(), $result_errors{$test_name}), $test_name.' errors' );
     is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
   }

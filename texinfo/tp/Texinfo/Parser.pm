@@ -83,6 +83,120 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
   $no_brace_commands{$no_brace_command} = 1;
 }
 
+# commands taking a line as argument or no argument.
+# sectioning commands and def* commands are added below.
+# index commands are added dynamically.
+my %misc_commands = (
+  'node' => {'arg' => 'line'}, # special arg
+  'bye' => {'skip' => 'line'}, # no arg
+  # set, clear
+  'set' => {'arg' => 'lineraw'}, # special arg
+  'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
+  # comments
+  'comment' => {'arg' => 'lineraw'},
+  'c' => {'arg' => 'lineraw'},
+  # special
+  'definfoenclose' => {'arg' => 'special'},
+  'alias' => {'args' => 'special'}, 
+  # file names
+  'setfilename' => {'arg' => 'line'},
+  'verbatiminclude'=> {'arg' => 'line'},
+
+  'raisesections' => {'skip' => 'line'},  # no arg
+  'lowersections' => {'skip' => 'line'}, # no arg
+  'contents' => {}, # no arg
+  'shortcontents' => {}, # no arg
+  'summarycontents'=> {}, # no arg
+  'insertcopying'=> {}, # no arg
+  'clickstyle' => {'arg' => 1}, # arg should be an @-command
+  # more relevant in preamble
+  'documentencoding' => {'arg' => 1, 'skip' => 'line'},
+  'setcontentsaftertitlepage' => {}, # no arg
+  'setshortcontentsaftertitlepage' => {}, # no arg
+  'novalidate' => {}, # no arg
+  'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
+                   # with direntry is significant
+  'pagesizes' => {'arg' => 'line'}, # can have 2 args 
+                           # or one? 200mm,150mm 11.5in
+  'finalout' => {'skip' => 'line'}, # no arg
+  'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
+                       # or a number and forbids anything else on the line
+  'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
+  'frenchspacing' => {'arg' => 1, 'skip' => 'line'}, # on off
+                                 # not so sure about 'skip' => 'line'
+  'fonttextsize' => {'arg' => 1}, # 10 11
+  'allowcodebreaks' => {'arg' => 1, 'skip' => 'line'}, # false or true
+  'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
+  'footnotestyle'=> {'skip' => 'line', 'arg' => 1}, # end and separate
+                           # and nothing else on the line
+  'afourpaper' => {'skip' => 'line'}, # no arg
+  'afivepaper' => {'skip' => 'line'}, # no arg
+  'afourlatex' => {'skip' => 'line'}, # no arg
+  'afourwide' => {'skip' => 'line'}, # no arg
+  'headings'=> {'skip' => 'line', 'arg' => 1},
+              #off on single double singleafter doubleafter
+              # interacts with setchapternewpage
+  'setchapternewpage' => {'skip' => 'line', 'arg' => 1}, # off on odd
+  # FIXME for the following the @this* commands are not defined. Also
+  # @value and maybe macro invocations may also be delayed.
+  'everyheading' => {'arg' => 'line'}, # @*heading @*footing use @|
+  'everyfooting' => {'arg' => 'line'}, # + @thispage @thissectionname @thissectionnum
+  'evenheading' => {'arg' => 'line'},  # @thissection @thischaptername @thischapternum 
+  'evenfooting' => {'arg' => 'line'},  # @thischapter @thistitle @thisfile
+  'oddheading' => {'arg' => 'line'},
+  'oddfooting' => {'arg' => 'line'},
+  'smallbook' => {'skip' => 'line'}, # no arg
+  'syncodeindex' => {'skip' => 'line', 'arg' => 2},
+                    # args are index identifiers
+  'synindex' => {'skip' => 'line', 'arg' => 2},
+  'defindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
+  'defcodeindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
+  'documentlanguage' => {'skip' => 'line', 'arg' => 1},
+                                                 # language code arg
+  'kbdinputstyle' => {'skip' => 'whitespace', 'arg' => 1}, # code 
+                                                  #example distinct
+  'everyheadingmarks' => {'skip' => 'line', 'arg' => 1}, # top bottom
+  'everyfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  'evenheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  'oddheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  'evenfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  'oddfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  # not valid for info (should be in @iftex)
+  'cropmarks' => {}, # no arg
+
+  # formatting
+  'center' => {'arg' => 'line'},
+  'printindex' => {'arg' => 1, 'skip' => 'line'},
+  'listoffloats' => {'arg' => 'line'},
+  # especially in titlepage
+  'shorttitle' => {'arg' => 'line'},
+  'shorttitlepage' => {'arg' => 'line'},
+  'settitle' => {'arg' => 'line'},
+  'author' => {'arg' => 'line'},
+  'subtitle' => {'arg' => 'line'},
+  'title' => {'arg' => 'line'},
+  'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
+                              # at the end of line or a numerical arg
+  'page' => {}, # no arg (pagebreak)
+  'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
+  # formatting
+  'noindent' => {'skip' => 'whitespace'}, # no arg
+  'indent' => {'skip' => 'whitespace'},
+  'exdent' => {'skip' => 'space'},
+  'headitem' => {'skip' => 'space'},
+  'item' => {'skip' => 'space'}, # or line, depending on the context
+  'itemx' => {'skip' => 'space'},
+  'tab' => {'skip' => 'space'}, 
+  # not valid for info (should be in @iftex)
+  'vskip' => {'arg' => 'lineraw'}, # arg line in TeX
+  # obsolete @-commands.
+  'refill' => {}, # no arg (obsolete, to be ignored)
+  # Remove spaces and end of lines after the 
+  # commands? If no, they can lead to empty lines
+  'quote-arg' => {'skip' => 'line'},
+  'allow-recursion' => {'skip' => 'line'},
+);
+
 # command with braces. value is the max number of arguments.
 my %brace_commands;    
 
@@ -139,7 +253,9 @@ my %block_commands;
 
 # commands that have a possible content before an item
 my %block_item_commands;
-foreach my $bracketed_line_argument_command(#'multitable',
+
+my %def_commands;
+foreach my $def_command(
   'deffn',
   'defvr',
   'deftypefn',
@@ -161,8 +277,11 @@ foreach my $bracketed_line_argument_command(#'multitable',
   'defmethod',
   'deftypemethod'
 ) {
-  $block_commands{$bracketed_line_argument_command} = 'def';
-  $block_commands{$bracketed_line_argument_command.'x'} = 'def';
+  $block_commands{$def_command} = 'def';
+  $misc_commands{$def_command.'x'} = {'arg' => 'line'};
+  $def_commands{$def_command} = 1;
+  $def_commands{$def_command.'x'} = 1;
+  $def_commands{'line_'.$def_command} = 1;
 }
 
 $block_commands{'multitable'} = 'multitable';
@@ -241,114 +360,6 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
   $forbidden_index_name{$other_forbidden_index_name} = 1;
 }
 
-my %misc_commands = (
-  'node' => {'arg' => 'line'}, # special arg
-  'bye' => {'skip' => 'line'}, # no arg
-  # set, clear
-  'set' => {'arg' => 'lineraw'}, # special arg
-  'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
-  # comments
-  'comment' => {'arg' => 'lineraw'},
-  'c' => {'arg' => 'lineraw'},
-  # special
-  'definfoenclose' => {'arg' => 'special'},
-  'alias' => {'args' => 'special'}, 
-  # file names
-  'setfilename' => {'arg' => 'line'},
-  'verbatiminclude'=> {'arg' => 'line'},
-
-  'raisesections' => {'skip' => 'line'},  # no arg
-  'lowersections' => {'skip' => 'line'}, # no arg
-  'contents' => {}, # no arg
-  'shortcontents' => {}, # no arg
-  'summarycontents'=> {}, # no arg
-  'insertcopying'=> {}, # no arg
-  'clickstyle' => {'arg' => 1}, # arg should be an @-command
-  # more relevant in preamble
-  'documentencoding' => {'arg' => 1, 'skip' => 'line'},
-  'setcontentsaftertitlepage' => {}, # no arg
-  'setshortcontentsaftertitlepage' => {}, # no arg
-  'novalidate' => {}, # no arg
-  'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
-                   # with direntry is significant
-  'pagesizes' => {'skip' => 'line', 'arg' => 'line'}, # can have 2 args 
-                           # or one? 200mm,150mm 11.5in
-  'finalout' => {'skip' => 'line'}, # no arg
-  'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
-                       # or a number and forbids anything else on the line
-  'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
-  'frenchspacing' => {'arg' => 1, 'skip' => 'line'}, # on off
-                                 # not so sure about 'skip' => 'line'
-  'fonttextsize' => {'arg' => 1}, # 10 11
-  'allowcodebreaks' => {'arg' => 1, 'skip' => 'line'}, # false or true
-  'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
-  'footnotestyle'=> {'skip' => 'line', 'arg' => 1}, # end and separate
-                           # and nothing else on the line
-  'afourpaper' => {'skip' => 'line'}, # no arg
-  'afivepaper' => {'skip' => 'line'}, # no arg
-  'afourlatex' => {'skip' => 'line'}, # no arg
-  'afourwide' => {'skip' => 'line'}, # no arg
-  'headings'=> {'skip' => 'line', 'arg' => 1},
-              #off on single double singleafter doubleafter
-              # interacts with setchapternewpage
-  'setchapternewpage' => {'skip' => 'line', 'arg' => 1}, # off on odd
-  'everyheading' => {'arg' => 'line'}, # @*heading @*footing use @|
-  'everyfooting' => {'arg' => 'line'}, # + @thispage @thissectionname @thissectionnum
-  'evenheading' => {'arg' => 'line'},  # @thissection @thischaptername @thischapternum 
-  'evenfooting' => {'arg' => 'line'},  # @thischapter @thistitle @thisfile
-  'oddheading' => {'arg' => 'line'},
-  'oddfooting' => {'arg' => 'line'},
-  'smallbook' => {'skip' => 'line'}, # no arg
-  'syncodeindex' => {'skip' => 'line', 'arg' => 2},
-                    # args are index identifiers
-  'synindex' => {'skip' => 'line', 'arg' => 2},
-  'defindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
-  'defcodeindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
-  'documentlanguage' => {'skip' => 'line', 'arg' => 1},
-                                                 # language code arg
-  'kbdinputstyle' => {'skip' => 'whitespace', 'arg' => 1}, # code 
-                                                  #example distinct
-  'everyheadingmarks' => {'skip' => 'line', 'arg' => 1}, # top bottom
-  'everyfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'evenheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'oddheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'evenfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'oddfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  # not valid for info (should be in @iftex)
-  'cropmarks' => {}, # no arg
-
-  # formatting
-  'center' => {'arg' => 'line'},
-  'printindex' => {'arg' => 1, 'skip' => 'line'},
-  'listoffloats' => {'arg' => 'line'},
-  # especially in titlepage
-  'shorttitle' => {'arg' => 'line'},
-  'shorttitlepage' => {'arg' => 'line'},
-  'settitle' => {'arg' => 'line'},
-  'author' => {'arg' => 'line'},
-  'subtitle' => {'arg' => 'line'},
-  'title' => {'arg' => 'line'},
-  'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
-                              # at the end of line or a numerical arg
-  'page' => {}, # no arg (pagebreak)
-  'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
-  # formatting
-  'noindent' => {'skip' => 'whitespace'}, # no arg
-  'indent' => {'skip' => 'whitespace'},
-  'exdent' => {'skip' => 'space'},
-  'headitem' => {'skip' => 'space'},
-  'item' => {'skip' => 'space'}, # or line, depending on the context
-  'itemx' => {'skip' => 'space'},
-  'tab' => {'skip' => 'space'}, 
-  # not valid for info (should be in @iftex)
-  'vskip' => {'arg' => 'lineraw'}, # arg line in TeX
-  # obsolete @-commands.
-  'refill' => {}, # no arg (obsolete, to be ignored)
-  # Remove spaces and end of lines after the 
-  # commands? If no, they can lead to empty lines
-  'quote-arg' => {'skip' => 'line'},
-  'allow-recursion' => {'skip' => 'line'},
-);
 
 # commands that should only appear at the root level and contain up to
 # the next root command
@@ -1094,6 +1105,17 @@ sub _internal_parse_text($$;$$)
           } else {
             push @{$current->{'contents'}}, 
               { 'cmdname' => $command, 'parent' => $current };
+
+            if ($def_commands{$command}) {
+              my $base_command = $command;
+              $base_command =~ s/x$//;
+              if (!$current->{'cmdname'} 
+                   or $current->{'cmdname'} ne $base_command) {
+                return undef if $self->_line_error(sprintf($self->__("Must be in `\@%s' environment to use `\@%s'"), $base_command, $command), $line_nr);
+              }
+              push @{$self->{'context'}}, 'def';
+              $current->{'contents'}->[-1]->{'type'} = "line_$base_command";
+            }
               
             foreach my $arg (@$args) {
               push @{$current->{'contents'}->[-1]->{'args'}},
@@ -1127,16 +1149,32 @@ sub _internal_parse_text($$;$$)
             ($current, $error) = _end_paragraph($self, $current, $line_nr);
             return undef if ($error);
             $line =~ s/\s*//;
-            push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                              'parent' => $current,
-                                              'contents' => [] };
+            # the def command holds a line_def* which corresponds with the
+            # definition line.  This allows to have a treatement similar
+            # with def*x.
+            if ($def_commands{$command}) {
+              push @{$self->{'context'}}, 'def';
+              push @{$current->{'contents'}}, { 
+                                                'parent' => $current,
+                                                'cmdname' => $command,
+                                                'contents' => [] };
+              $current = $current->{'contents'}->[-1];
+              push @{$current->{'contents'}}, { 
+                                                'type' => "line_$command",
+                                                'parent' => $current,
+                                                };
+            } else {
+              push @{$current->{'contents'}}, { 'cmdname' => $command, 
+                                                'parent' => $current,
+                                                'contents' => [] };
+            }
             $current = $current->{'contents'}->[-1];
             my $arg_number = $block_commands{$command}
               if ($block_commands{$command} 
                   and $block_commands{$command} =~ /^\d+$/);
             if ($arg_number
-                or ($command eq 'multitable') 
-                or ($block_commands{$command} eq 'def')) {
+                or $command eq 'multitable'
+                or $def_commands{$command}) {
               $current->{'args'} = [ {
                  'type' => 'block_line_arg',
                  'contents' => [],
@@ -1148,8 +1186,6 @@ sub _internal_parse_text($$;$$)
                 # both an argument and an @-command
                 $current->{'cmdname'} = 'columnfractions';
               }
-              push @{$self->{'context'}}, 'def' 
-                  if ($block_commands{$command} eq 'def');
             } else {
               push @{$self->{'context'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
@@ -1245,9 +1281,11 @@ sub _internal_parse_text($$;$$)
           return undef if _line_error ($self,
                                        $self->__("Unexpected \@"), $line_nr);
         } elsif ($separator eq '{') {
-          if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-              and ($block_commands{$current->{'parent'}->{'cmdname'}} eq 'multitable'
-                   or $block_commands{$current->{'parent'}->{'cmdname'}} eq 'def')) {
+          if ($current->{'parent'} 
+              and (($current->{'parent'}->{'cmdname'}
+                     and $current->{'parent'}->{'cmdname'} eq 'multitable')
+                   or ($current->{'parent'}->{'type'} 
+                       and $def_commands{$current->{'parent'}->{'type'}}))) {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
@@ -1273,6 +1311,7 @@ sub _internal_parse_text($$;$$)
              # first is the arg.
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
              $current = $current->{'parent'}->{'parent'};
+          # footnote caption closing
           } elsif ($context_brace_commands{$self->{'context'}->[-1]}) {
              my $error;
              ($current, $error) = _end_paragraph($self, $current, $line_nr);
@@ -1319,8 +1358,18 @@ sub _internal_parse_text($$;$$)
         if ($line ne '') {
           die "Remaining line: $line\n";
         }
-        if ($current->{'type'}
+        # def line
+        if ($current->{'parent'}
+             and $current->{'parent'}->{'type'}
+                    and $def_commands{$current->{'parent'}->{'type'}}) {
+            my $def_context = pop @{$self->{'context'}};
+            die "BUG: def_context $def_context "._print_current($current) 
+               if ($def_context ne 'def');
+            $current = $current->{'parent'}->{'parent'};
+        # other block command lines
+        } elsif ($current->{'type'}
             and $current->{'type'} eq 'block_line_arg') {
+          # @multitable @columnfractions
           if ($current->{'cmdname'}
               and $current->{'cmdname'} eq 'columnfractions') { 
             # the columnfraction content should be text only, maybe
@@ -1382,6 +1431,7 @@ sub _internal_parse_text($$;$$)
                    { 'type' => 'fraction', 'text' => $fraction,
                      'parent' => $current };
             }
+          # @multitable args
           } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
                      and $current->{'parent'}->{'cmdname'} eq 'multitable') {
             my $line_arg = $current;
@@ -1428,10 +1478,6 @@ sub _internal_parse_text($$;$$)
             # this is in order to have $current->{'parent'} being the multitable
             
             $current = $line_arg;
-          } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-                   and $brace_commands{$current->{'parent'}->{'cmdname'}}
-                   and $brace_commands{$current->{'parent'}->{'cmdname'}} eq 'def') {
-            pop @{$self->{'context'}};
           }
           $current = $current->{'parent'};
           if ($current->{'cmdname'} 
@@ -1440,6 +1486,7 @@ sub _internal_parse_text($$;$$)
                'contents' => [], 'parent', $current };
             $current = $current->{'contents'}->[-1];
           }
+        # misc command line arguments
         } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
           # first parent is the @command, second is the parent
@@ -1466,7 +1513,8 @@ sub tree_to_texi ($)
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};
   } else {
-    if ($root->{'cmdname'}) {
+    if ($root->{'cmdname'} 
+       or ($root->{'type'} and $def_commands{$root->{'type'}})) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root);
     }
@@ -1490,20 +1538,22 @@ sub tree_to_texi ($)
 
 sub _expand_cmd_args_to_texi ($) {
   my $cmd = shift;
-  my $result = '@'.$cmd->{'cmdname'};
+  my $cmdname = $cmd->{'cmdname'};
+  $cmdname = '' if (!$cmd->{'cmdname'} 
+                     and $cmd->{'type'} and $def_commands{$cmd->{'type'}});
+  my $result = '@'.$cmdname if ($cmdname);
   #print STDERR "Expand $result\n";
   # must be before the next condition
-  if ($block_commands{$cmd->{'cmdname'}}
-         and ($block_commands{$cmd->{'cmdname'}} eq 'def'
-              or $block_commands{$cmd->{'cmdname'}} eq 'multitable')) {
+  if ($block_commands{$cmdname}
+         and ($def_commands{$cmdname}
+              or $block_commands{$cmdname} eq 'multitable')
+         and $cmd->{'args'}) {
      foreach my $arg (@{$cmd->{'args'}}) {
         my $arg_expanded = tree_to_texi ($arg);
-#        $arg_expanded = '{'.$arg_expanded.'}'
-#          if ($arg->{'type'} and $arg->{'type'} eq 'bracketed');
         $result .= ' '.$arg_expanded;
      }
-  } elsif ($block_commands{$cmd->{'cmdname'}}
-            and $block_commands{$cmd->{'cmdname'}} ne 'raw'
+  } elsif ($block_commands{$cmdname}
+            and $block_commands{$cmdname} ne 'raw'
             and defined($cmd->{'args'})) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
@@ -1512,52 +1562,52 @@ sub _expand_cmd_args_to_texi ($) {
        $result .= tree_to_texi ($arg) . ', ';
     }
     $result =~ s/, $//;
-  } elsif ($cmd->{'cmdname'} eq 'macro') {
+  } elsif ($cmdname eq 'macro') {
     $result .= ' ' .$cmd->{'args'}->[0]->{'text'}. ' '
                . $cmd->{'args'}->[1]->{'text'};
   } elsif (defined($cmd->{'args'})) {
     my $braces;
     $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
                     and $cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                    or ($context_brace_commands{$cmd->{'cmdname'}}));
+                    or ($context_brace_commands{$cmdname}));
     $result .= '{' if ($braces);
     $result .= ' ' if ($cmd->{'args'}->[0]->{'type'} 
                        and $cmd->{'args'}->[0]->{'type'} eq 'space_command_arg');
-    if ($cmd->{'cmdname'} eq 'verb') {
+    if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
     }
     #print STDERR "".Data::Dumper->Dump([$cmd]);
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmd->{'cmdname'}})) {
+      if (exists($brace_commands{$cmdname})) {
         $result .= ', ' if ($arg_nr);
         $arg_nr++;
       } else {
         $result .= ' '
-          unless ($cmd->{'cmdname'} eq 'c' or $cmd->{'cmdname'} eq 'comment');
+          unless ($cmdname eq 'c' or $cmdname eq 'comment');
       }
       $result .= tree_to_texi ($arg);
     }
-    if ($cmd->{'cmdname'} eq 'verb') {
+    if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
     }
-    #die "Shouldn't have args: $cmd->{'cmdname'}\n";
+    #die "Shouldn't have args: $cmdname\n";
     $result .= '}' if ($braces);
-  } elsif ($misc_commands{$cmd->{'cmdname'}}
-      and $misc_commands{$cmd->{'cmdname'}}->{'skip'}) {
-    if ($misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'space') {
+  } elsif ($misc_commands{$cmdname}
+      and $misc_commands{$cmdname}->{'skip'}) {
+    if ($misc_commands{$cmdname}->{'skip'} eq 'space') {
       $result .= ' ';
     }
   }
-  if ($misc_commands{$cmd->{'cmdname'}}
-      and $misc_commands{$cmd->{'cmdname'}}->{'skip'}
-      and $misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'line') {
+  if ($misc_commands{$cmdname}
+      and $misc_commands{$cmdname}->{'skip'}
+      and $misc_commands{$cmdname}->{'skip'} eq 'line') {
     $result .="\n";
   }
-  if (defined($block_commands{$cmd->{'cmdname'}})) {
+  if (defined($block_commands{$cmdname})) {
     # there is an end of line if there is a comment, for example
     chomp($result);
-    $result .= "\n";
+    $result .= "\n" unless ($def_commands{$cmdname});
   }
   #print STDERR "Result: $result\n";
   return $result;
