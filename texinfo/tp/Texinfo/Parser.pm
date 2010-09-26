@@ -413,6 +413,13 @@ foreach my $block_command (keys(%block_commands)) {
   $default_no_paragraph_commands{'end '.$block_command} = 1;
 }
 
+my %close_paragraph_commands;
+foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
+  'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem', 
+  'printindex', 'listoffloats') {
+  $close_paragraph_commands{$close_paragraph_command} = 1;
+}
+
 
 # deep copy of a structure
 sub _deep_copy ($)
@@ -985,10 +992,6 @@ sub _internal_parse_text($$;$$)
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
-        unless ($self->{'no_paragraph_commands'}->{$command}) {
-          my $paragraph = _begin_paragraph($self, $current);
-          $current = $paragraph if ($paragraph);
-        }
         if (defined($deprecated_commands{$command})) {
           if ($deprecated_commands{$command} eq '') {
             _line_warn($self, sprintf($self->__("%c%s is obsolete."), 
@@ -999,12 +1002,27 @@ sub _internal_parse_text($$;$$)
                    $self->__($deprecated_commands{$command})), $line_nr);
           }
         }
+
+        last if ($self->{'context'}->[-1] eq 'def' and $command eq "\n");
+
+        unless ($self->{'no_paragraph_commands'}->{$command}) {
+          my $paragraph = _begin_paragraph($self, $current);
+          $current = $paragraph if ($paragraph);
+        }
+
+        if ($close_paragraph_commands{$command}) {
+          my $error;
+          ($current, $error) = _end_paragraph($self, $current, $line_nr);
+          return undef if ($error);
+        }
+
         if (defined($self->{'misc_commands'}->{$command})) {
           if ($root_commands{$command}) {
             my $error;
             ($current, $error) = _end_block_command($self, $current, $line_nr);
             return undef if ($error);
           }
+            
           my ($args, $line_arg, $error);
           ($line, $args, $line_arg, $error) 
              = $self->_parse_misc_command($line, $command, $line_nr);
@@ -1012,9 +1030,6 @@ sub _internal_parse_text($$;$$)
 
           if ($command eq 'item' or $command eq 'itemx' 
                or $command eq 'headitem' or $command eq 'tab') {
-            my $error;
-            ($current, $error) = _end_paragraph($self, $current, $line_nr);
-            return undef if ($error);
             my $parent;
             # itemize or enumerate
             if ($parent = _item_container_parent($current)) {
@@ -1133,14 +1148,14 @@ sub _internal_parse_text($$;$$)
                 # both an argument and an @-command
                 $current->{'cmdname'} = 'columnfractions';
               }
-              #push @{$self->{'context'}}, 'def' if ($block_commands{$command} eq 'def');
+              push @{$self->{'context'}}, 'def' 
+                  if ($block_commands{$command} eq 'def');
             } else {
               push @{$self->{'context'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
               last unless ($line =~ /\S/);
             }
           }
-          # FIXME multitable and deff*
         } elsif ($line =~ s/^{// and (defined($brace_commands{$command}))) {
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current };
@@ -1370,20 +1385,20 @@ sub _internal_parse_text($$;$$)
           } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
                      and $current->{'parent'}->{'cmdname'} eq 'multitable') {
             my $line_arg = $current;
-            my @rows;
+            my @prototype_rows;
             my @other_contents;
             # rearrange the row specifications as args, which mostly 
             # implies splitting non-bracketed text and reparenting.
             foreach my $content (@{$current->{'contents'}}) {
               if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
                 $content->{'parent'} = $current->{'parent'};
-                push @rows, $content;
+                push @prototype_rows, $content;
               } elsif ($content->{'text'}) {
                 if ($content->{'text'} =~ /\S/) {
-                  foreach my $raw_spec(split /\s+/, $content->{'text'}) {
-                    push @rows, { 'text' => $raw_spec, 
+                  foreach my $prototype(split /\s+/, $content->{'text'}) {
+                    push @prototype_rows, { 'text' => $prototype, 
                                   'parent' => $current->{'parent'},
-                                  'type' => 'row_specification' };
+                                  'type' => 'row_prototype' };
                   }
                 }
               } else {
@@ -1397,19 +1412,27 @@ sub _internal_parse_text($$;$$)
                        and $content->{'cmdname'} eq 'comment') {
                   push @other_contents, $content;
                 } else {
-                  push @rows, $content;
+                  push @prototype_rows, $content;
                 }
                 $content->{'parent'} = $current->{'parent'};
               }
             }
             
             $current = $current->{'parent'};
-            $current->{'special'}->{'max_columns'} = scalar(@rows);
-            $current->{'args'} = \@rows;
+            $current->{'special'}->{'max_columns'} = scalar(@prototype_rows);
+            if (!scalar(@prototype_rows)) {
+              $self->_line_warn ($self->__("empty multitable"), $line_nr);
+            }
+            $current->{'args'} = \@prototype_rows;
             $current->{'contents'} = \@other_contents;
             # this is in order to have $current->{'parent'} being the multitable
+            
             $current = $line_arg;
-          }      
+          } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+                   and $brace_commands{$current->{'parent'}->{'cmdname'}}
+                   and $brace_commands{$current->{'parent'}->{'cmdname'}} eq 'def') {
+            pop @{$self->{'context'}};
+          }
           $current = $current->{'parent'};
           if ($current->{'cmdname'} 
                 and $block_item_commands{$current->{'cmdname'}}) {
@@ -1521,9 +1544,15 @@ sub _expand_cmd_args_to_texi ($) {
     #die "Shouldn't have args: $cmd->{'cmdname'}\n";
     $result .= '}' if ($braces);
   } elsif ($misc_commands{$cmd->{'cmdname'}}
+      and $misc_commands{$cmd->{'cmdname'}}->{'skip'}) {
+    if ($misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'space') {
+      $result .= ' ';
+    }
+  }
+  if ($misc_commands{$cmd->{'cmdname'}}
       and $misc_commands{$cmd->{'cmdname'}}->{'skip'}
-      and $misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'space') {
-    $result .= ' ';
+      and $misc_commands{$cmd->{'cmdname'}}->{'skip'} eq 'line') {
+    $result .="\n";
   }
   if (defined($block_commands{$cmd->{'cmdname'}})) {
     # there is an end of line if there is a comment, for example
@@ -1610,7 +1639,7 @@ sub _parse_misc_command($$$$)
     $line = '';
 
   } elsif ($arg_spec) {
-    my $arg_nr = $misc_commands{$command}->{'arg'};
+    my $arg_nr = $arg_spec;
     while ($arg_nr) {
       if ($line =~ s/^(\s+)(\S*)//o) {
         my $argument = $2;

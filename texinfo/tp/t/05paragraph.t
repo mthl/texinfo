@@ -26,7 +26,13 @@ text l 2
 [ 'paragraph_command','@@
 
 @b{aaa}.
-']
+'],
+['close_paragraph_command',
+'para @titlefont{in titlefont} after titlefont.
+
+p before sp
+@sp 4
+inew p after sp']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
