@@ -246,6 +246,11 @@ foreach my $no_paragraph_context ('math', 'preformatted', 'menu') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
 
+my %menu_commands;
+foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
+  $menu_commands{$menu_command} = 1;
+};
+
 # commands delimiting blocks, typically with an @end.
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.
@@ -743,7 +748,9 @@ sub _end_block_command($$$;$)
       my $error = $self->_line_error(
                            sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
-      pop @{$self->{'context'}} if ($preformatted_commands{$current->{'cmdname'}});
+      pop @{$self->{'context'}} if 
+         ($preformatted_commands{$current->{'cmdname'}}
+           or $menu_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
     } elsif ($current->{'parent'}->{'cmdname'}
              and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
@@ -760,7 +767,9 @@ sub _end_block_command($$$;$)
 
   if ($command and $current->{'cmdname'} 
     and $current->{'cmdname'} eq $command) {
-    pop @{$self->{'context'}} if ($preformatted_commands{$current->{'cmdname'}});
+    pop @{$self->{'context'}} if 
+       ($preformatted_commands{$current->{'cmdname'}} 
+         or $menu_commands{$current->{'cmdname'}});
     $current = $current->{'parent'}
   }
   return ($current, 0);
@@ -851,10 +860,12 @@ sub _item_multitable_parent($)
 #
 #c 'brace_command_arg'
 #
-#c 'before_item'   FIXME what comes after @*table, @itemize, @enumerate before
+#c 'before_item'   what comes after @*table, @itemize, @enumerate before
 #                an @item
 #
 #c 'paragraph'
+#
+#a 'line_def*'
 #
 #special for @verb, type is the character
 
@@ -898,11 +909,11 @@ sub _internal_parse_text($$;$$)
     $line_index++;
 
     if ($self->{'debug'}) {
-      $current->{'HERE !!!!'} = 1;
+      $current->{'HERE !!!!'} = 1; # marks where we are in the tree
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
-      print STDERR "NEW LINE: $line";
+      print STDERR "NEW LINE($self->{'context'}->[-1]): $line";
       delete $current->{'HERE !!!!'};
     }
 
@@ -925,19 +936,43 @@ sub _internal_parse_text($$;$$)
                                         'text' => $line,
                                         'parent' => $current };
       next;
-    }
-    # to determine if it is a menu entry, check ^*, and if set, add
-    # : to the separators list.
-
-    if ($in_menu) {
+    } elsif ($line !~ /\S/ and $current->{'type'} 
+               and $current->{'type'} eq 'menu_entry_description') {
+      # first parent is menu_entry
+      $current = $current->{'parent'}->{'parent'};
+      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
+                                        'text' => $line,
+                                        'parent' => $current };
+      push @{$current->{'contents'}}, { 'type' => 'menu_comment',
+                                        'parent' => $current,
+                                        'contents' => [] };
+      $current = $current->{'contents'}->[-1];
+      next;
+    } elsif ($current->{'type'} 
+              and ($current->{'type'} eq 'menu_comment'
+                    or $current->{'type'} eq 'menu_entry_description')) {
       if ($line =~ s/^(\*\s+)//) {
+        print STDERR "MENU ENTRY\n" if ($self->{'debug'});
         my $leading_text = $1;
-        #push @separators, ':';
-        push @{$current->{'contents'}}, 
-            { 'type' => 'menu_entry',
-              'args' => [ { 'type' => 'menu_entry_leading_text',
-                            'text' => $leading_text } ]
-            };
+        if ($current->{'type'} eq 'menu_comment') {
+          my $menu = $current->{'parent'};
+          pop @{$menu->{'contents'}} if (!@{$current->{'contents'}});
+          $current = $menu;
+        } else {
+          # first parent is menu_entry
+          $current = $current->{'parent'}->{'parent'};
+        }
+        push @{$current->{'contents'}}, { 'type' => 'menu_entry',
+                                          'parent' => $current,
+                                        };
+        $current = $current->{'contents'}->[-1];
+        $current->{'args'} = [ { 'type' => 'menu_entry_leading_text',
+                                 'text' => $leading_text,
+                                 'parent' => $current },
+                               { 'type' => 'menu_entry_name',
+                                 'contents' => [],
+                                 'parent' => $current } ];
+        $current = $current->{'args'}->[-1];
       }
     }
 
@@ -1189,6 +1224,13 @@ sub _internal_parse_text($$;$$)
             } else {
               push @{$self->{'context'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
+              if ($menu_commands{$command}) {
+                push @{$current->{'contents'}}, {'type' => 'menu_comment',
+                                                 'parent' => $current,
+                                                 'contents' => [] };
+                push @{$self->{'context'}}, 'menu';
+                $current = $current->{'contents'}->[-1];
+              }
               last unless ($line =~ /\S/);
             }
           }
@@ -1340,14 +1382,51 @@ sub _internal_parse_text($$;$$)
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
           $current = $current->{'args'}->[-1];
         }
-        # menu node if there is a :
-        # . must be followed by a space to stop the node name.
-        # cf texi2html.pl l 13425
-        elsif ($separator =~ /[,\t.]/ and $current->{'type'} eq 'FIXME') {
-
-        # menu node
-        } elsif ($separator eq ':' and $current->{'type'} eq 'FIXME') {
-
+        # end of menu node (. must be followed by a space to stop the node).
+        elsif ($separator =~ /[,\t.]/ and $current->{'type'}
+               and $current->{'type'} eq 'menu_entry_node') {
+          if ($separator eq '.' and $line =~ /^\S/) {
+            $current = _merge_text ($self, $current, $separator);
+          } else {
+            $line =~ s/^(\s*)//;
+            $separator .= $1;
+            $current = $current->{'parent'};
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
+                                 'text' => $separator,
+                                 'parent' => $current };
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                          'contents' => [],
+                                          'parent' => $current };
+            $current = $current->{'args'}->[-1];
+          }
+        # end of menu_entry_name
+        } elsif ($separator eq ':' and $current->{'type'} 
+                 and $current->{'type'} eq 'menu_entry_name') {
+          # menu node. Transform the menu_entry_name in to a node, add the
+          # separator and open a description
+          if ($line =~ s/^(:\s*)//) {
+            $separator .= $1;
+            $current->{'type'} = 'menu_entry_node';
+            $current = $current->{'parent'};
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
+                                 'text' => $separator,
+                                 'parent' => $current };
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                          'contents' => [],
+                                          'parent' => $current };
+          # end of the menu_entry_name, open the menu_entry_node.
+          } else {
+            $line =~ s/^(\s*)//;
+            $separator .= $1;
+            $current = $current->{'parent'};
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
+                                 'text' => $separator,
+                                 'parent' => $current };
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_node',
+                                          'contents' => [],
+                                          'parent' => $current };
+          }
+          $current = $current->{'args'}->[-1];
         } else {
           $current = _merge_text ($self, $current, $separator);
         }
@@ -1358,8 +1437,66 @@ sub _internal_parse_text($$;$$)
         if ($line ne '') {
           die "Remaining line: $line\n";
         }
+        if ($current->{'type'} 
+             and ($current->{'type'} eq 'menu_entry_name'
+                  or $current->{'type'} eq 'menu_entry_node')) {
+          my $empty_menu_entry_node = 0;
+          my $end_comment;
+          if ($current->{'type'} eq 'menu_entry_node') {
+            if (@{$current->{'contents'}} 
+                and $current->{'contents'}->[-1]->{'cmdname'}
+                and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c' 
+                    or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+              $end_comment = pop @{$current->{'contents'}};
+            }
+            if (!@{$current->{'contents'}}) {
+              $empty_menu_entry_node = 1;
+              push @{$current->{'contents'}}, $end_comment if ($end_comment);
+            }
+          }
+          # we abort the menu entry if there is no node name
+          if ($empty_menu_entry_node 
+               or $current->{'type'} eq 'menu_entry_node') {
+            my $menu = $current->{'parent'}->{'parent'};
+            my $menu_entry = pop @{$menu->{'contents'}};
+            if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
+                and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
+              $current = $menu->{'contents'}->[-1];
+            } else {
+              push @{$menu->{'contents'}}, {'type' => 'menu_comment',
+                                             'parent' => $menu,
+                                             'contents' => [] };
+              $current = $menu->{'contents'}->[-1];
+            }
+            while (@{$menu_entry->{'args'}}) {
+              my $arg = shift @{$menu_entry->{'args'}};
+              if (defined($arg->{'text'})) {
+                delete $arg->{'type'};
+                $arg->{'parent'} = $current;
+                push @{$current->{'contents'}}, $arg; 
+              } else {
+                while (@{$arg->{'contents'}}) {
+                  my $content = shift @{$arg->{'contents'}};
+                  $content->{'parent'} = $current;
+                  push @{$current->{'contents'}}, $content;
+                  $arg = undef;
+                }
+              }
+            }
+            $menu_entry = undef;
+          } else {
+            my $current = $current->{'parent'};
+            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                          'contents' => [],
+                                          'parent' => $current };
+            $current = $current->{'args'}->[-1];
+            if (defined($end_comment)) {
+              $end_comment->{'parent'} = $current;
+              push @{$current->{'contents'}}, $end_comment;
+            }
+          }
         # def line
-        if ($current->{'parent'}
+        } elsif ($current->{'parent'}
              and $current->{'parent'}->{'type'}
                     and $def_commands{$current->{'parent'}->{'type'}}) {
             my $def_context = pop @{$self->{'context'}};
@@ -1514,7 +1651,9 @@ sub tree_to_texi ($)
     $result .= $root->{'text'};
   } else {
     if ($root->{'cmdname'} 
-       or ($root->{'type'} and $def_commands{$root->{'type'}})) {
+       or ($root->{'type'} and ($def_commands{$root->{'type'}}
+                                or $root->{'type'} eq 'menu_entry'
+                                or $root->{'type'} eq 'menu_comment'))) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root);
     }
@@ -1539,9 +1678,9 @@ sub tree_to_texi ($)
 sub _expand_cmd_args_to_texi ($) {
   my $cmd = shift;
   my $cmdname = $cmd->{'cmdname'};
-  $cmdname = '' if (!$cmd->{'cmdname'} 
-                     and $cmd->{'type'} and $def_commands{$cmd->{'type'}});
-  my $result = '@'.$cmdname if ($cmdname);
+  $cmdname = '' if (!$cmd->{'cmdname'}); 
+  my $result = '';
+  $result = '@'.$cmdname if ($cmdname);
   #print STDERR "Expand $result\n";
   # must be before the next condition
   if ($block_commands{$cmdname}
@@ -1584,7 +1723,9 @@ sub _expand_cmd_args_to_texi ($) {
         $arg_nr++;
       } else {
         $result .= ' '
-          unless ($cmdname eq 'c' or $cmdname eq 'comment');
+          unless ($cmdname eq 'c' or $cmdname eq 'comment' 
+                  or $cmd->{'type'} and ($cmd->{'type'} eq 'menu_entry'
+                                         or $cmd->{'type'} eq 'menu_comment'));
       }
       $result .= tree_to_texi ($arg);
     }
