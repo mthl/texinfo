@@ -952,7 +952,7 @@ sub _internal_parse_text($$;$$)
               and ($current->{'type'} eq 'menu_comment'
                     or $current->{'type'} eq 'menu_entry_description')) {
       if ($line =~ s/^(\*\s+)//) {
-        print STDERR "MENU ENTRY\n" if ($self->{'debug'});
+        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
         my $leading_text = $1;
         if ($current->{'type'} eq 'menu_comment') {
           my $menu = $current->{'parent'};
@@ -1390,6 +1390,7 @@ sub _internal_parse_text($$;$$)
           } else {
             $line =~ s/^(\s*)//;
             $separator .= $1;
+            print STDERR "MENU NODE $separator\n" if ($self->{'debug'});
             $current = $current->{'parent'};
             push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
                                  'text' => $separator,
@@ -1406,6 +1407,7 @@ sub _internal_parse_text($$;$$)
           # separator and open a description
           if ($line =~ s/^(:\s*)//) {
             $separator .= $1;
+            print STDERR "MENU ENTRY $separator\n" if ($self->{'debug'});
             $current->{'type'} = 'menu_entry_node';
             $current = $current->{'parent'};
             push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
@@ -1456,7 +1458,8 @@ sub _internal_parse_text($$;$$)
           }
           # we abort the menu entry if there is no node name
           if ($empty_menu_entry_node 
-               or $current->{'type'} eq 'menu_entry_node') {
+               or $current->{'type'} eq 'menu_entry_name') {
+            print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'debug'});
             my $menu = $current->{'parent'}->{'parent'};
             my $menu_entry = pop @{$menu->{'contents'}};
             if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
@@ -1471,21 +1474,26 @@ sub _internal_parse_text($$;$$)
             while (@{$menu_entry->{'args'}}) {
               my $arg = shift @{$menu_entry->{'args'}};
               if (defined($arg->{'text'})) {
-                delete $arg->{'type'};
-                $arg->{'parent'} = $current;
-                push @{$current->{'contents'}}, $arg; 
+                $current = _merge_text ($self, $current, $arg->{'text'});
               } else {
                 while (@{$arg->{'contents'}}) {
                   my $content = shift @{$arg->{'contents'}};
-                  $content->{'parent'} = $current;
-                  push @{$current->{'contents'}}, $content;
-                  $arg = undef;
+                  if (defined($content->{'text'})) {
+                    $current = _merge_text ($self, $current, 
+                                                $content->{'text'});
+                    $content = undef;
+                  } else {
+                    $content->{'parent'} = $current;
+                    push @{$current->{'contents'}}, $content;
+                  }
                 }
               }
+              $arg = undef;
             }
             $menu_entry = undef;
           } else {
-            my $current = $current->{'parent'};
+            print STDERR "MENU ENTRY END LINE\n" if ($self->{'debug'});
+            $current = $current->{'parent'};
             push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                           'contents' => [],
                                           'parent' => $current };
