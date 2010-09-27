@@ -49,6 +49,7 @@ sub test($$)
   my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'}});
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result =  $parser->parse_texi_text($test_text, 1);
+  my ($errors, $error_nrs) = $parser->errors();
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';
@@ -67,7 +68,7 @@ sub test($$)
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.tree_to_texi($result)."';\n\n";
-    $out_result .= "".Data::Dumper->Dump([$parser->errors()], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+    $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
     print OUT $out_result;
     close (OUT);
     
@@ -93,7 +94,7 @@ sub test($$)
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent)] }), $test_name.' tree' );
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
-    ok (Data::Compare::Compare($parser->errors(), $result_errors{$test_name}), $test_name.' errors' );
+    ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
     is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
   }
   #exit;
