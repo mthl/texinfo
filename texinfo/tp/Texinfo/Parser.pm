@@ -254,6 +254,9 @@ my %block_commands;
 # commands that have a possible content before an item
 my %block_item_commands;
 
+# commands that forces closing an opened paragraph.
+my %close_paragraph_commands;
+
 my %def_commands;
 foreach my $def_command(
   'deffn',
@@ -420,9 +423,11 @@ foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill',
 foreach my $block_command (keys(%block_commands)) {
   $begin_line_commands{$block_command} = 1;
   $default_no_paragraph_commands{$block_command} = 1;
+  $close_paragraph_commands{$block_command} = 1 
+     unless ($block_commands{$block_command} eq 'raw');
 }
+$close_paragraph_commands{'verbatim'} = 1;
 
-my %close_paragraph_commands;
 foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem', 
   'printindex', 'listoffloats') {
@@ -1126,7 +1131,6 @@ sub _internal_parse_text($$;$$)
             $current = $current->{'contents'}->[-1];
             last;
           } else {
-            $current = _end_paragraph($self, $current, $line_nr);
             $line =~ s/\s*//;
             # the def command holds a line_def* which corresponds with the
             # definition line.  This allows to have a treatement similar

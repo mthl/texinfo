@@ -37,6 +37,27 @@ in verbatim @c in verbatim
 in verbatim2
 @end verbatim
 '],
+['raw_in_para',
+'para
+@verbatim
+in verbatim
+@end verbatim
+
+para b html
+@html
+in html
+@end html
+in para
+
+para b tex
+@tex
+in tex1
+
+in tex2
+@end tex
+
+End.
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
