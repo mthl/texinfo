@@ -11,7 +11,12 @@ $result_trees{'nested_macros'} = {
         },
         {
           'parent' => {},
-          'text' => '{ arg,  ex}',
+          'text' => 'arg',
+          'type' => 'macro_arg_args'
+        },
+        {
+          'parent' => {},
+          'text' => 'ex',
           'type' => 'macro_arg_args'
         }
       ],
@@ -29,11 +34,6 @@ $result_trees{'nested_macros'} = {
               'parent' => {},
               'text' => 'othermacro',
               'type' => 'macro_arg_name'
-            },
-            {
-              'parent' => {},
-              'text' => '',
-              'type' => 'macro_arg_args'
             }
           ],
           'cmdname' => 'macro',
@@ -45,7 +45,11 @@ $result_trees{'nested_macros'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'macro_line' => ' othermacro 
+'
+          }
         },
         {
           'parent' => {},
@@ -54,21 +58,31 @@ $result_trees{'nested_macros'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'macro_line' => ' truc   { arg,  ex}
+',
+        'macrobody' => 'in macro \\arg\\
+@macro othermacro 
+other macro
+@end macro
+@macro
+'
+      }
     }
   ]
 };
 $result_trees{'nested_macros'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
+$result_trees{'nested_macros'}{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_macros'}{'contents'}[0];
 $result_trees{'nested_macros'}{'contents'}[0]{'parent'} = $result_trees{'nested_macros'};
 
-$result_texts{'nested_macros'} = '@macro truc { arg,  ex}
+$result_texts{'nested_macros'} = '@macro truc   { arg,  ex}
 in macro \arg\
 @macro othermacro 
 other macro

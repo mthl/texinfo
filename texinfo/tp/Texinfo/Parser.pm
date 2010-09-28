@@ -90,6 +90,7 @@ my %misc_commands = (
   'set' => {'arg' => 'special'}, # special arg
   #'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
   'clear' => {'arg' => 'special'}, # special arg
+  'unmacro' => {'arg' => 1}, 
   # comments
   'comment' => {'arg' => 'lineraw'},
   'c' => {'arg' => 'lineraw'},
@@ -309,7 +310,7 @@ foreach my $preformatted_command(
 
 # macro is special
 foreach my $raw_command ('html', 'tex', 'xml', 'docbook', 'verbatim', 
-                         'ignore', 'macro') {
+                         'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
 }
 
@@ -612,20 +613,45 @@ sub _line_error($$$)
   $parser->{'error_nrs'}++;
 }
 
-sub _parse_macro_command($$)
+sub _parse_macro_command($$$$$;$)
 {
+  my $self = shift;
+  my $command = shift;
   my $line = shift;
   my $parent = shift;
+  my $line_nr = shift;
+  my $top_level = shift;
   my $macro;
-  if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
+  #if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
+  if ($line =~ /^\s+([\w\-]+)\s*(.*)/) {
     my $macro_arg_name = $1;
-    my $macro_arg_args = $2;
-    $macro = { 'cmdname' => 'macro', 'parent' => $parent, 'contents' => [] };
+    my $args_def = $2;
+    my @args;
+
+    if ($args_def =~ s/^\s*{\s*(.*?)\s*}\s*//) {
+      @args = split(/\s*,\s*/ , $1);
+    }
+ 
+    if ($args_def =~ /^\s*[^\@]/ and $top_level) {
+      $self->_line_error(sprintf($self->__("Bad syntax for \@%s"), $command));
+    }
+
+    $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
+               'special' => {'macro_line' => $line} };
     $macro->{'args'} = [ 
       { 'type' => 'macro_arg_name', 'text' => $macro_arg_name, 
-          'parent' => $macro },
-      { 'type' => 'macro_arg_args', 'text' => $macro_arg_args, 
-          'parent' => $macro} ];
+          'parent' => $macro } ];
+    foreach my $formal_arg (@args) {
+      push @{$macro->{'args'}}, 
+        { 'type' => 'macro_arg_args', 'text' => $formal_arg, 
+          'parent' => $macro};
+      $self->_line_error(sprintf($self->__("Bad \@$command formal argument: %s"),
+                                           $formal_arg), $line_nr)
+            if ($formal_arg !~ /^[\w\-]+$/ and $top_level);
+    }
+  } elsif ($top_level) {
+    _line_error ($self, sprintf($self->
+                    __("%c%s requires a name"), ord('@'), $command), $line_nr);
   }
   return $macro;
 }
@@ -943,20 +969,33 @@ sub _internal_parse_text($$;$$)
             ($block_commands{$current->{'cmdname'}} eq 'raw')) {
         # special case for macro that may be nested
         my $macro;
-        if ($current->{'cmdname'} eq 'macro' and $line =~ /^\s*\@macro\s+/) {
+        if (($current->{'cmdname'} eq 'macro' 
+              or $current->{'cmdname'} eq 'rmacro') 
+             and $line =~ /^\s*\@r?macro\s+/) {
           my $mline = $line;
-          $mline =~ s/\s*\@macro//;
-          $macro = _parse_macro_command ($mline, $current);
+          $mline =~ s/\s*\@(r?macro)//;
+          $macro = _parse_macro_command ($self, $1, $mline, $current, $line_nr);
         }
         if ($macro) {
           push @{$current->{'contents'}}, $macro;
           $current = $current->{'contents'}->[-1];
           last;
         } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
+          my $end_command = $2;
           $line =~ s/^(.*?)(\@end\s$current->{'cmdname'})//;
           push @{$current->{'contents'}}, 
             { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
               if ($1 ne '');
+          # store toplevel macro specification
+          if (($end_command eq 'macro' or $end_command eq 'rmacro') 
+               and (! $current->{'parent'} 
+                    or !$current->{'parent'}->{'cmdname'} 
+                    or ($current->{'parent'}->{'cmdname'} ne 'macro'
+                        and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
+            $current->{'special'}->{'macrobody'} = 
+               tree_to_texi({ 'contents' => $current->{'contents'} });
+            $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
+          }
           $current = $current->{'parent'};
           last unless ($line =~ /\S/);
         } else {
@@ -1145,8 +1184,9 @@ sub _internal_parse_text($$;$$)
           }
         } elsif (exists($block_commands{$command})) {
           my $macro;
-          if ($command eq 'macro') {
-            $macro = _parse_macro_command ($line, $current);
+          if ($command eq 'macro' or $command eq 'rmacro') {
+            $macro = _parse_macro_command ($self, $command, $line, 
+              $current, $line_nr, 1);
           }
           if ($macro) {
             push @{$current->{'contents'}}, $macro;
@@ -1666,9 +1706,18 @@ sub _expand_cmd_args_to_texi ($) {
        $result .= tree_to_texi ($arg) . ', ';
     }
     $result =~ s/, $//;
-  } elsif ($cmdname eq 'macro') {
-    $result .= ' ' .$cmd->{'args'}->[0]->{'text'}. ' '
-               . $cmd->{'args'}->[1]->{'text'};
+  } elsif ($cmdname eq 'macro' or $cmdname eq 'rmacro') {
+   # my @args = @{$cmd->{'args'}};
+   # my $name = shift @args;
+   # $result .= ' ' .$name->{'text'};
+   # if (@args) {
+   #   $result .= ' {';
+   #   foreach my $arg (@args) {
+   #     $result .= $arg->{'text'} .', ';
+   #   }
+   #   $result =~ s/, $//;
+   #   $result .= '}';
+    $result .= $cmd->{'special'}->{'macro_line'};
   } elsif (defined($cmd->{'args'})) {
     my $braces;
     $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
@@ -1775,6 +1824,14 @@ sub _parse_misc_command($$$$)
     if ($line =~ /^(\s+)([\w\-]+)/) {
       $args = [$2];
       delete $self->{'values'}->{$2};
+    } else {
+      _line_error ($self, sprintf($self->
+                    __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    }
+  } elsif ($command eq 'unmacro') {
+    if ($line =~ /^(\s+)([\w\-]+)/) {
+      $args = [$2];
+      delete $self->{'macros'}->{$2};
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
