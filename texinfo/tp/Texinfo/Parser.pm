@@ -68,7 +68,9 @@ my %default_configuration = (
   'debug' => 0,
   'gettext' => sub {return $_[0];},
   'aliases' => {},
-  'indices' => []
+  'indices' => [],
+  'values' => {},
+  'macros' => {}
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -85,8 +87,9 @@ my %misc_commands = (
   'node' => {'arg' => 'line'}, # special arg
   'bye' => {'skip' => 'line'}, # no arg
   # set, clear
-  'set' => {'arg' => 'lineraw'}, # special arg
-  'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
+  'set' => {'arg' => 'special'}, # special arg
+  #'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
+  'clear' => {'arg' => 'special'}, # special arg
   # comments
   'comment' => {'arg' => 'lineraw'},
   'c' => {'arg' => 'lineraw'},
@@ -284,7 +287,6 @@ foreach my $def_command(
   $misc_commands{$def_command.'x'} = {'arg' => 'line'};
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
-  $def_commands{'line_'.$def_command} = 1;
 }
 
 $block_commands{'multitable'} = 'multitable';
@@ -825,7 +827,7 @@ sub _item_multitable_parent($)
 #
 #c 'paragraph'
 #
-#a 'line_def*'
+#a 'def_line'
 #
 #special for @verb, type is the character
 
@@ -1100,7 +1102,7 @@ sub _internal_parse_text($$;$$)
                 $self->_line_error(sprintf($self->__("Must be in `\@%s' environment to use `\@%s'"), $base_command, $command), $line_nr);
               }
               push @{$self->{'context'}}, 'def';
-              $current->{'contents'}->[-1]->{'type'} = "line_$base_command";
+              $current->{'contents'}->[-1]->{'type'} = 'def_line';
             }
               
             foreach my $arg (@$args) {
@@ -1143,7 +1145,7 @@ sub _internal_parse_text($$;$$)
                                                 'contents' => [] };
               $current = $current->{'contents'}->[-1];
               push @{$current->{'contents'}}, { 
-                                                'type' => "line_$command",
+                                                'type' => 'def_line',
                                                 'parent' => $current,
                                                 };
             } else {
@@ -1271,7 +1273,7 @@ sub _internal_parse_text($$;$$)
               and (($current->{'parent'}->{'cmdname'}
                      and $current->{'parent'}->{'cmdname'} eq 'multitable')
                    or ($current->{'parent'}->{'type'} 
-                       and $def_commands{$current->{'parent'}->{'type'}}))) {
+                       and $current->{'parent'}->{'type'} eq 'def_line'))) {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
@@ -1446,7 +1448,7 @@ sub _internal_parse_text($$;$$)
         # def line
         } elsif ($current->{'parent'}
              and $current->{'parent'}->{'type'}
-                    and $def_commands{$current->{'parent'}->{'type'}}) {
+                    and $current->{'parent'}->{'type'} eq 'def_line') {
             my $def_context = pop @{$self->{'context'}};
             die "BUG: def_context $def_context "._print_current($current) 
                if ($def_context ne 'def');
@@ -1594,7 +1596,7 @@ sub tree_to_texi ($)
     $result .= $root->{'text'};
   } else {
     if ($root->{'cmdname'} 
-       or ($root->{'type'} and ($def_commands{$root->{'type'}}
+       or ($root->{'type'} and ($root->{'type'} eq 'def_line'
                                 or $root->{'type'} eq 'menu_entry'
                                 or $root->{'type'} eq 'menu_comment'))) {
       #print STDERR "cmd: $root->{'cmdname'}\n";
@@ -1736,12 +1738,20 @@ sub _parse_misc_command($$$$)
   } elsif ($command eq 'set') {
     if ($line =~ /^(\s+)([\w\-]+)(\s+)(.*)$/) {
       $args = [$2, $4];
+      $self->{'values'}->{$2} = $4;
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
     }
     $line = '';
-
+  } elsif ($command eq 'clear') {
+    if ($line =~ /^(\s+)([\w\-]+)/) {
+      $args = [$2];
+      delete $self->{'values'}->{$2};
+    } else {
+      _line_error ($self, sprintf($self->
+                    __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
     if ($line =~ s/^\s+(\w+)\s*//) {
       my $name = $1;

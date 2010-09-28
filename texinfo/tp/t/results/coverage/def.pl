@@ -36,7 +36,7 @@ $result_trees{'def'} = {
             }
           ],
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'contents' => [
@@ -84,7 +84,7 @@ $result_trees{'def'} = {
             }
           ],
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'contents' => [
@@ -145,7 +145,7 @@ $result_trees{'def'} = {
             }
           ],
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -182,7 +182,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -223,7 +223,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -264,7 +264,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -305,7 +305,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -344,7 +344,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -404,7 +404,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -427,7 +427,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -464,7 +464,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -492,7 +492,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -520,7 +520,7 @@ $result_trees{'def'} = {
           ],
           'cmdname' => 'deffnx',
           'parent' => {},
-          'type' => 'line_deffn'
+          'type' => 'def_line'
         },
         {
           'args' => [
@@ -567,7 +567,7 @@ $result_trees{'def'} = {
               ],
               'cmdname' => 'deffnx',
               'parent' => {},
-              'type' => 'line_deffn'
+              'type' => 'def_line'
             },
             {
               'args' => [
@@ -612,7 +612,7 @@ $result_trees{'def'} = {
               ],
               'cmdname' => 'deffnx',
               'parent' => {},
-              'type' => 'line_deffn'
+              'type' => 'def_line'
             }
           ],
           'parent' => {},
