@@ -7,17 +7,17 @@ $result_trees{'nested_macros'} = {
         {
           'parent' => {},
           'text' => 'truc',
-          'type' => 'macro_arg_name'
+          'type' => 'macro_name'
         },
         {
           'parent' => {},
           'text' => 'arg',
-          'type' => 'macro_arg_args'
+          'type' => 'macro_arg'
         },
         {
           'parent' => {},
           'text' => 'ex',
-          'type' => 'macro_arg_args'
+          'type' => 'macro_arg'
         }
       ],
       'cmdname' => 'macro',
@@ -33,7 +33,7 @@ $result_trees{'nested_macros'} = {
             {
               'parent' => {},
               'text' => 'othermacro',
-              'type' => 'macro_arg_name'
+              'type' => 'macro_name'
             }
           ],
           'cmdname' => 'macro',
@@ -52,10 +52,13 @@ $result_trees{'nested_macros'} = {
           }
         },
         {
+          'cmdname' => 'macro',
+          'contents' => [],
           'parent' => {},
-          'text' => '@macro
-',
-          'type' => 'raw'
+          'special' => {
+            'macro_line' => '
+'
+          }
         }
       ],
       'parent' => {},
@@ -67,6 +70,7 @@ $result_trees{'nested_macros'} = {
 other macro
 @end macro
 @macro
+@end macro
 '
       }
     }
@@ -88,6 +92,7 @@ in macro \arg\
 other macro
 @end macro
 @macro
+@end macro
 @end macro
 ';
 

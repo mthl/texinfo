@@ -12,6 +12,7 @@ other macro
 @end macro
 @macro
 @end macro
+@end macro
 '],
 ['misc_raw','
 @html 

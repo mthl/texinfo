@@ -621,10 +621,11 @@ sub _parse_macro_command($$$$$;$)
   my $parent = shift;
   my $line_nr = shift;
   my $top_level = shift;
-  my $macro;
+  my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
+               'special' => {'macro_line' => $line} };
   #if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
   if ($line =~ /^\s+([\w\-]+)\s*(.*)/) {
-    my $macro_arg_name = $1;
+    my $macro_name = $1;
     my $args_def = $2;
     my @args;
 
@@ -633,18 +634,18 @@ sub _parse_macro_command($$$$$;$)
     }
  
     if ($args_def =~ /^\s*[^\@]/ and $top_level) {
-      $self->_line_error(sprintf($self->__("Bad syntax for \@%s"), $command));
+      $self->_line_error(sprintf($self->__("Bad syntax for \@%s"), $command),
+                         $line_nr);
     }
+    print STDERR "MACRO \@$command $macro_name\n" if ($self->{'debug'});
 
-    $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
-               'special' => {'macro_line' => $line} };
     $macro->{'args'} = [ 
-      { 'type' => 'macro_arg_name', 'text' => $macro_arg_name, 
+      { 'type' => 'macro_name', 'text' => $macro_name, 
           'parent' => $macro } ];
     foreach my $formal_arg (@args) {
       push @{$macro->{'args'}}, 
-        { 'type' => 'macro_arg_args', 'text' => $formal_arg, 
-          'parent' => $macro};
+        { 'type' => 'macro_arg', 'text' => $formal_arg, 
+          'parent' => $macro} if ($formal_arg ne '');
       $self->_line_error(sprintf($self->__("Bad \@$command formal argument: %s"),
                                            $formal_arg), $line_nr)
             if ($formal_arg !~ /^[\w\-]+$/ and $top_level);
@@ -968,15 +969,13 @@ sub _internal_parse_text($$;$$)
             $block_commands{$current->{'cmdname'}} and 
             ($block_commands{$current->{'cmdname'}} eq 'raw')) {
         # special case for macro that may be nested
-        my $macro;
         if (($current->{'cmdname'} eq 'macro' 
               or $current->{'cmdname'} eq 'rmacro') 
              and $line =~ /^\s*\@r?macro\s+/) {
           my $mline = $line;
           $mline =~ s/\s*\@(r?macro)//;
-          $macro = _parse_macro_command ($self, $1, $mline, $current, $line_nr);
-        }
-        if ($macro) {
+          my $macro = _parse_macro_command ($self, $1, $mline, 
+                                              $current, $line_nr);
           push @{$current->{'contents'}}, $macro;
           $current = $current->{'contents'}->[-1];
           last;
@@ -994,7 +993,9 @@ sub _internal_parse_text($$;$$)
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
             $current->{'special'}->{'macrobody'} = 
                tree_to_texi({ 'contents' => $current->{'contents'} });
-            $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
+            if ($current->{'args'} and $current->{'args'}->[0]) {
+              $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
+            }
           }
           $current = $current->{'parent'};
           last unless ($line =~ /\S/);
@@ -1183,12 +1184,9 @@ sub _internal_parse_text($$;$$)
             $current = $current->{'args'}->[-1];
           }
         } elsif (exists($block_commands{$command})) {
-          my $macro;
           if ($command eq 'macro' or $command eq 'rmacro') {
-            $macro = _parse_macro_command ($self, $command, $line, 
-              $current, $line_nr, 1);
-          }
-          if ($macro) {
+            my $macro = _parse_macro_command ($self, $command, $line, 
+                                 $current, $line_nr, 1);
             push @{$current->{'contents'}}, $macro;
             $current = $current->{'contents'}->[-1];
             last;
