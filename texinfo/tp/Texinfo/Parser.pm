@@ -996,6 +996,25 @@ sub _internal_parse_text($$;$$)
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
+
+        if ($command eq 'value') {
+          if ($line =~ s/^{([\w\-]+)}//) {
+            my $value = $1;
+            if (exists($self->{'values'}->{$value})) {
+              $line = $self->{'values'}->{$value} . $line;
+            } else {
+              # caller should expand something along 
+              # gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
+              push @{$current->{'contents'}}, { 'cmdname' => 'value',
+                                                'type' => $value };
+              _line_warn ($self, 
+                  sprintf($self->__("undefined flag: %s"), $value), $line_nr);
+            }
+          } else {
+            _line_error ($self, $self->__("Bad syntax for \@value"), $line_nr);
+          }
+        }
+
         if (defined($deprecated_commands{$command})) {
           if ($deprecated_commands{$command} eq '') {
             _line_warn($self, sprintf($self->__("%c%s is obsolete."), 
@@ -1023,8 +1042,8 @@ sub _internal_parse_text($$;$$)
             $current = _end_block_command($self, $current, $line_nr);
           }
             
-          my ($args, $line_arg);
-          ($line, $args, $line_arg) 
+          my ($args, $line_arg, $special);
+          ($line, $args, $line_arg, $special) 
              = $self->_parse_misc_command($line, $command, $line_nr);
 
           if ($command eq 'item' or $command eq 'itemx' 
@@ -1093,7 +1112,8 @@ sub _internal_parse_text($$;$$)
           } else {
             push @{$current->{'contents'}}, 
               { 'cmdname' => $command, 'parent' => $current };
-
+            $current->{'contents'}->[-1]->{'special'} = $special 
+                                              if (defined($special));
             if ($def_commands{$command}) {
               my $base_command = $command;
               $base_command =~ s/x$//;
@@ -1695,6 +1715,11 @@ sub _expand_cmd_args_to_texi ($) {
     chomp($result);
     $result .= "\n" unless ($def_commands{$cmdname});
   }
+  $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
+#  $result .= $cmd->{'special'}->{'arg'} if ($misc_commands{$cmdname} 
+#     and $cmd->{'special'} and $cmd->{'special'}->{'arg'});
+  $result .= "\n" if ($misc_commands{$cmdname} 
+      and $cmd->{'special'} and $cmd->{'special'}->{'arg'});
   #print STDERR "Result: $result\n";
   return $result;
 }
@@ -1710,6 +1735,7 @@ sub _parse_misc_command($$$$)
   my $line_arg;
   my $skip_spec = '';
   my $arg_spec = '';
+  my $special;
 
   $skip_spec = $self->{'misc_commands'}->{$command}->{'skip'}
     if (defined($self->{'misc_commands'}->{$command}->{'skip'}));
@@ -1742,6 +1768,7 @@ sub _parse_misc_command($$$$)
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
+      $special = { 'arg' => $line };
     }
     $line = '';
   } elsif ($command eq 'clear') {
@@ -1801,7 +1828,7 @@ sub _parse_misc_command($$$$)
   }
   # FIXME is the following useful?
   $line = '' if (!defined($line));
-  return ($line, $args, $line_arg, '');
+  return ($line, $args, $line_arg, $special);
 }
 
 1;
