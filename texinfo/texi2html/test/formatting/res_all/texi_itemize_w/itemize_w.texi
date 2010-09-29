@@ -1,0 +1,12 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename itemize_w.info
+@node Top
+@top Top section
+
+@itemize @w{}
+@item @option{--build=} platform on which the program is compiled,
+@item @option{--host=} platform on which the program runs,
+@item @option{--target=} target platform on which the program is processed.
+@end itemize
+
+@bye

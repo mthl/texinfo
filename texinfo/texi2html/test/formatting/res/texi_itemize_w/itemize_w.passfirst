@@ -1,0 +1,11 @@
+itemize_w.texi(,2) @setfilename itemize_w.info
+itemize_w.texi(,3) @node Top
+itemize_w.texi(,4) @top Top section
+itemize_w.texi(,5) 
+itemize_w.texi(,6) @itemize @w{}
+itemize_w.texi(,7) @item @option{--build=} platform on which the program is compiled,
+itemize_w.texi(,8) @item @option{--host=} platform on which the program runs,
+itemize_w.texi(,9) @item @option{--target=} target platform on which the program is processed.
+itemize_w.texi(,10) @end itemize
+itemize_w.texi(,11) 
+itemize_w.texi(,12) @bye

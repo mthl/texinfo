@@ -20,7 +20,7 @@ EXTRA_DIST = def_cmds.texi menus.texi quotation.texi \
  punctuation_in_command.texi test_w.texi empty_deftype.texi \
  allowcodebreaks.texi format_in_titlepage.texi \
  no_colon_in_menu.texi menu_title_before_entries.texi \
- warn_characters_in_var.texi \
+ warn_characters_in_var.texi itemize_w.texi \
  f--ile.gif f--ile.jpeg f--ile.png f---ile.gr--a f--ile.jpg f--ile.txt \
  redefine_need.init \
  file.css tests.txt res \

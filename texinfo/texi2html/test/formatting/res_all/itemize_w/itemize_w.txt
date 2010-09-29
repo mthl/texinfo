@@ -1,0 +1,7 @@
+Top section
+***********
+
+ `--build=' platform on which the program is compiled,
+ `--host=' platform on which the program runs,
+ `--target=' target platform on which the program is processed.
+

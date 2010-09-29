@@ -1,0 +1,21 @@
+This is itemize_w.info, produced by makeinfo version 4.13 from
+itemize_w.texi.
+
+
+File: itemize_w.info,  Node: Top,  Up: (dir)
+
+Top section
+***********
+
+   `--build=' platform on which the program is compiled,
+
+   `--host=' platform on which the program runs,
+
+   `--target=' target platform on which the program is processed.
+
+
+
+Tag Table:
+Node: Top80
+
+End Tag Table
