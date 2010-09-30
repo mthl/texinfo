@@ -67,6 +67,7 @@ my %default_configuration = (
   'test' => 0,
   'debug' => 0,
   'gettext' => sub {return $_[0];},
+  'context' => '_root',
   'aliases' => {},
   'indices' => [],
   'values' => {},
@@ -498,6 +499,7 @@ sub parser($;$)
   }
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
+  $parser->{'context_stack'} = [ $parser->{'context'} ];
   return $parser;
 }
 
@@ -665,7 +667,7 @@ sub _begin_paragraph ($$)
   my $current = shift;
 
   if ((!$current->{'type'} or $current->{'type'} eq 'before_item') 
-      and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
+      and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
@@ -741,14 +743,14 @@ sub _end_block_command($$$;$)
         and exists($block_commands{$current->{'cmdname'}})) {
       $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
-      pop @{$self->{'context'}} if 
+      pop @{$self->{'context_stack'}} if 
          ($preformatted_commands{$current->{'cmdname'}}
            or $menu_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
     } elsif ($current->{'parent'}->{'cmdname'}
              and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
       $current = _close_brace_command($self, $current, $line_nr);
-      pop @{$self->{'context'}};
+      pop @{$self->{'context_stack'}};
     } else { # silently close containers and @-commands without @end
       $current = $current->{'parent'};
     }
@@ -758,7 +760,7 @@ sub _end_block_command($$$;$)
 
   if ($command and $current->{'cmdname'} 
     and $current->{'cmdname'} eq $command) {
-    pop @{$self->{'context'}} if 
+    pop @{$self->{'context_stack'}} if 
        ($preformatted_commands{$current->{'cmdname'}} 
          or $menu_commands{$current->{'cmdname'}});
     $current = $current->{'parent'}
@@ -880,8 +882,13 @@ sub _expand_macro_arguments($$$$$$)
       $arguments->[-1] .= $1;
       if ($separator eq '\\') {
         if ($line =~ s/^(.)//) {
-          $arguments->[-1] .= $1;
-          print STDERR "MACRO ARG: $separator: $1\n" if ($self->{'debug'});
+          my $protected_char = $1;
+          if ($protected_char !~ /[\\{},]/) {
+            $arguments->[-1] .= '\\';
+          }
+          $arguments->[-1] .= $protected_char;
+          
+          print STDERR "MACRO ARG: $separator: $protected_char\n" if ($self->{'debug'});
         } else {
           $arguments->[-1] .= '\\';
           print STDERR "MACRO ARG: $separator\n" if ($self->{'debug'});
@@ -920,16 +927,43 @@ sub _expand_macro_arguments($$$$$$)
   return ($arguments, $line, $line_nr);
 }
 
-sub _expand_macro_body($$$$$$$) {
+sub _expand_macro_body($$$$) {
   my $self = shift;
   my $macro = shift;
-  my $arguments = shift;
-  my $line = shift;
+  my $args = shift;
   my $line_nr = shift;
-  my $text = shift;
-  my $lines_array = shift;
 
-  return ($line, $line_nr);
+  my $macrobody = $macro->{'special'}->{'macrobody'};
+  my $args_total = scalar(@{$macro->{'args'}}) -1;
+  my $args_index = $macro->{'special'}->{'args_index'};
+
+  my $i;
+  for ($i=0; $i<=$args_total; $i++) {
+    $args->[$i] = "" unless (defined($args->[$i]));
+  }
+#  line_error (sprintf(__("Macro `%s' called with too many args"), $name), $line_nr) if (defined($args->[$i + 1]));
+
+  my $result = '';
+  while ($macrobody ne '') {
+    if ($macrobody =~ s/^([^\\]*)\\//o) {
+      $result .= $1;
+      if ($macrobody =~ s/^\\//) {
+        $result .= '\\';
+      } elsif ($macrobody =~ s/^([^\\]*)\\//) {
+        my $arg = $1;
+        if (defined($args_index->{$arg})) {
+          $result .= $args->[$args_index->{$arg}];
+        } else {
+          _line_error ($self, sprintf($self->__("\\ in macro expansion followed `%s' instead of parameter name or \\"), $arg), $line_nr);
+          $result .= '\\' . $arg;
+        }
+      }
+      next;
+    }
+    $result .= $macrobody;
+    last;
+  }
+  return $result;
 }
 
 #c 'menu_entry'
@@ -967,7 +1001,6 @@ sub _internal_parse_text($$;$$)
 
   my $root = { 'contents' => [] };
   $self->{'tree'} = $root;
-  $self->{'context'} = [ '_root' ];
   my $current = $root;
 
   my $line_nr;
@@ -982,7 +1015,7 @@ sub _internal_parse_text($$;$$)
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
-      print STDERR "NEW LINE($self->{'context'}->[-1]): $line";
+      print STDERR "NEW LINE($self->{'context_stack'}->[-1]): $line";
       delete $current->{'HERE !!!!'};
     }
 
@@ -996,7 +1029,7 @@ sub _internal_parse_text($$;$$)
             and $current->{'parent'}->{'cmdname'} eq 'verb')
           )
         # not in math or preformatted
-        and !$no_paragraph_contexts{$self->{'context'}->[-1]}) {
+        and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
       print STDERR "EMPTY LINE\n" if ($self->{'debug'});
       $current = _end_paragraph($self, $current, $line_nr);
       push @{$current->{'contents'}}, { 'type' => 'normal_line', 
@@ -1131,10 +1164,11 @@ sub _internal_parse_text($$;$$)
             $arguments = [$line];
             $line = "\n";
           } 
-          ($line, $line_nr) = _expand_macro_body ($self, 
-                                $expanded_macro, $arguments, 
-                                $line, $line_nr,
-                                $text, $lines_array);
+          my $expanded = _expand_macro_body ($self, $expanded_macro, 
+                                     $arguments, $line_nr);
+          print STDERR "MACROBODY: $expanded".'||||||'."\n" 
+             if ($self->{'debug'}); 
+          
           next;
         }
 
@@ -1167,7 +1201,7 @@ sub _internal_parse_text($$;$$)
           }
         }
 
-        last if ($self->{'context'}->[-1] eq 'def' and $command eq "\n");
+        last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
 
         unless ($self->{'no_paragraph_commands'}->{$command}) {
           my $paragraph = _begin_paragraph($self, $current);
@@ -1262,7 +1296,7 @@ sub _internal_parse_text($$;$$)
                    or $current->{'cmdname'} ne $base_command) {
                 $self->_line_error(sprintf($self->__("Must be in `\@%s' environment to use `\@%s'"), $base_command, $command), $line_nr);
               }
-              push @{$self->{'context'}}, 'def';
+              push @{$self->{'context_stack'}}, 'def';
               $current->{'contents'}->[-1]->{'type'} = 'def_line';
             }
               
@@ -1300,7 +1334,7 @@ sub _internal_parse_text($$;$$)
             # definition line.  This allows to have a treatement similar
             # with def*x.
             if ($def_commands{$command}) {
-              push @{$self->{'context'}}, 'def';
+              push @{$self->{'context_stack'}}, 'def';
               push @{$current->{'contents'}}, { 
                                                 'parent' => $current,
                                                 'cmdname' => $command,
@@ -1334,13 +1368,13 @@ sub _internal_parse_text($$;$$)
                 $current->{'cmdname'} = 'columnfractions';
               }
             } else {
-              push @{$self->{'context'}}, 'preformatted' 
+              push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
               if ($menu_commands{$command}) {
                 push @{$current->{'contents'}}, {'type' => 'menu_comment',
                                                  'parent' => $current,
                                                  'contents' => [] };
-                push @{$self->{'context'}}, 'menu';
+                push @{$self->{'context_stack'}}, 'menu';
                 $current = $current->{'contents'}->[-1];
               }
               last unless ($line =~ /\S/);
@@ -1366,7 +1400,7 @@ sub _internal_parse_text($$;$$)
           $current = $current->{'args'}->[-1];
           # FIXME don't use type to distinguish context_brace_commands.
           if ($context_brace_commands{$command}) {
-            push @{$self->{'context'}}, $command;
+            push @{$self->{'context_stack'}}, $command;
           } else {
             $current->{'type'} = 'brace_command_arg';
           }
@@ -1455,20 +1489,20 @@ sub _internal_parse_text($$;$$)
                    and $current->{'parent'}->{'cmdname'}
                    and exists $brace_commands{$current->{'parent'}->{'cmdname'}}) {
              if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-               pop @{$self->{'context'}};
+               pop @{$self->{'context_stack'}};
              }
              # first is the arg.
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
              $current = $current->{'parent'}->{'parent'};
           # footnote caption closing
-          } elsif ($context_brace_commands{$self->{'context'}->[-1]}) {
+          } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
              $current = _end_paragraph($self, $current, $line_nr);
              if ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
                    and $brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
-                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context'}->[-1]) {
-               pop @{$self->{'context'}};
+                   and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context_stack'}->[-1]) {
+               pop @{$self->{'context_stack'}};
                print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
                $current = $current->{'parent'}->{'parent'};
             }
@@ -1611,7 +1645,7 @@ sub _internal_parse_text($$;$$)
         } elsif ($current->{'parent'}
              and $current->{'parent'}->{'type'}
                     and $current->{'parent'}->{'type'} eq 'def_line') {
-            my $def_context = pop @{$self->{'context'}};
+            my $def_context = pop @{$self->{'context_stack'}};
             die "BUG: def_context $def_context "._print_current($current) 
                if ($def_context ne 'def');
             $current = $current->{'parent'}->{'parent'};

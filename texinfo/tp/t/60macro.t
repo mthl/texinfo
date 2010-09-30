@@ -45,7 +45,7 @@ in macro foo
 @end macro
 @end macro
 '],
-['macro_epansion','
+['macro_expansion','
 @macro macro1 {arg1, arg2 }
 result of a macro with \arg1\ and 
 @verbatim
