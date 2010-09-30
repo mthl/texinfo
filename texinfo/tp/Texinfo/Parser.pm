@@ -40,7 +40,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parser
   tree_to_texi      
   parse_texi_text
-  parse_texi_line
   errors
 ) ] );
 
@@ -503,31 +502,51 @@ sub parser($;$)
   return $parser;
 }
 
+sub _text_to_lines($)
+{
+  my $text = shift;
+  my $chomped = chomp($text);
+  my $lines = [ map {$_."\n"} split (/\n/, $text, -1) ];
+  chomp($lines->[-1]) unless ($chomped);
+  return $lines;
+}
+
+sub _complete_line_nr($$;$$$)
+{
+  my $lines = shift;
+  my $first_line = shift;
+  my $file = shift;
+  my $macro = shift;
+  my $fixed_line_number = shift;
+  $macro = '' if (!defined($macro));
+  $file = '' if (!defined($file));
+  my $lines_nr;
+
+  my $line_index = $first_line;
+  if (defined($first_line)) {
+    $lines_nr = [];
+    foreach my $index(0..scalar(@$lines)-1) {
+       $line_index = $index+$first_line if (!$fixed_line_number);
+       
+       $lines_nr->[$index] = { 'line_nr' => $line_index,
+                                'file_name' => $file, 'macro' => $macro };
+    }
+  }
+  return $lines_nr;
+}
+
 sub parse_texi_text($$;$)
 {
   my $self = shift;
   my $text = shift;
   my $lines_nr = shift;
   if (!ref($text)) {
-    my $chomped = chomp($text);
-    $text = [ map {$_."\n"} split (/\n/, $text, -1) ];
-    chomp($text->[-1]) unless ($chomped);
+    $text = _text_to_lines($text);
   }
   if (defined($lines_nr) and !ref($lines_nr)) {
-    my $first_line = $lines_nr;
-    $lines_nr = [];
-    foreach my $index(0..scalar(@$text)-1) {
-       $lines_nr->[$index] = { 'line_nr' => ($index+$first_line),
-                                'file_name' => '', 'macro' => '' };
-    }
+    $lines_nr = _complete_line_nr($text, $lines_nr);
   }
   return $self->_internal_parse_text($text, $lines_nr);
-}
-
-sub parse_texi_line($$;$)
-{
-  my $self = shift;
-  return $self->_internal_parse_text([$_[0]], [$_[1]], 1);
 }
 
 sub tree_to_texi ($);
@@ -1168,7 +1187,20 @@ sub _internal_parse_text($$;$$)
                                      $arguments, $line_nr);
           print STDERR "MACROBODY: $expanded".'||||||'."\n" 
              if ($self->{'debug'}); 
-          
+          my $expanded_lines = _text_to_lines($expanded);
+          $expanded_lines = [''] if !(@$expanded_lines);
+          print STDERR "1MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
+                                       ."\nEND LINES\n" if ($self->{'debug'});
+          chomp ($expanded_lines->[-1]);
+          my $new_lines_nr = _complete_line_nr($expanded_lines, 
+                              $line_nr->{'line_nr'}, $line_nr->{'file_name'},
+                              $expanded_macro->{'args'}->[0]->{'text'}, 1);
+          unshift @$text, $line;
+          unshift @$lines_array, $line_nr;
+          $line = shift @$expanded_lines;
+          $line_nr = shift @$new_lines_nr;
+          unshift @$text, @$expanded_lines;
+          unshift @$lines_array, @$new_lines_nr;
           next;
         }
 
