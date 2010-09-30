@@ -620,7 +620,6 @@ sub _parse_macro_command($$$$$;$)
   my $line = shift;
   my $parent = shift;
   my $line_nr = shift;
-  my $top_level = shift;
   my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
                'special' => {'macro_line' => $line} };
   #if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
@@ -633,7 +632,7 @@ sub _parse_macro_command($$$$$;$)
       @args = split(/\s*,\s*/ , $1);
     }
  
-    if ($args_def =~ /^\s*[^\@]/ and $top_level) {
+    if ($args_def =~ /^\s*[^\@]/) {
       $self->_line_error(sprintf($self->__("Bad syntax for \@%s"), $command),
                          $line_nr);
     }
@@ -642,15 +641,18 @@ sub _parse_macro_command($$$$$;$)
     $macro->{'args'} = [ 
       { 'type' => 'macro_name', 'text' => $macro_name, 
           'parent' => $macro } ];
+    my $index = 0;
     foreach my $formal_arg (@args) {
       push @{$macro->{'args'}}, 
         { 'type' => 'macro_arg', 'text' => $formal_arg, 
-          'parent' => $macro} if ($formal_arg ne '');
-      $self->_line_error(sprintf($self->__("Bad \@$command formal argument: %s"),
+          'parent' => $macro};
+      $self->_line_error(sprintf($self->__("Bad or empty \@$command formal argument: %s"),
                                            $formal_arg), $line_nr)
-            if ($formal_arg !~ /^[\w\-]+$/ and $top_level);
+            if ($formal_arg !~ /^[\w\-]+$/);
+      $macro->{'special'}->{'args_index'}->{$formal_arg} = $index;
+      $index++;
     }
-  } elsif ($top_level) {
+  } else {
     _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
   }
@@ -833,6 +835,103 @@ sub _item_multitable_parent($)
   return undef;
 }
 
+sub _new_line ($$)
+{
+  my $text = shift;
+  my $lines_array = shift;
+  my $new_line = '';
+  my $line_nr;
+
+  while (@$text) {
+    my $new_text = shift @$text;
+    # FIXME error? Or accept? Or nothing special?
+    #next if ($new_text = '');
+
+    $new_line .= $new_text;
+    $line_nr = shift @$lines_array;
+
+    my $chomped_text = $new_text;
+    if (@$text and !chomp($chomped_text)) {
+      next; 
+    }
+    last;
+  }
+  return ($new_line, $line_nr);
+}
+
+sub _expand_macro_arguments($$$$$$)
+{
+  my $self = shift;
+  my $macro = shift;
+  my $line = shift;
+  my $line_nr = shift;
+  my $text = shift;
+  my $lines_array = shift;
+  my $braces_level = 1;
+  my $arguments = [ '' ];
+  my $arg_nr = 0;
+  my $args_total = scalar(@{$macro->{'args'}}) -1;
+
+  my $line_nr_orig = $line_nr;
+
+  while (1) {
+    if ($line =~ s/([^\\{},]*)([\\{},])//) {
+      my $separator = $2;
+      $arguments->[-1] .= $1;
+      if ($separator eq '\\') {
+        if ($line =~ s/^(.)//) {
+          $arguments->[-1] .= $1;
+          print STDERR "MACRO ARG: $separator: $1\n" if ($self->{'debug'});
+        } else {
+          $arguments->[-1] .= '\\';
+          print STDERR "MACRO ARG: $separator\n" if ($self->{'debug'});
+        }
+      } elsif ($separator eq ',') {
+        if (scalar(@$arguments) < $args_total and $braces_level == 1) {
+          push @$arguments, '';
+          $line =~ s/^\s*//;
+          print STDERR "MACRO NEW ARG\n" if ($self->{'debug'});
+        } else {
+          $arguments->[-1] .= ',';
+        }
+      } elsif ($separator eq '}') {
+        $braces_level--;
+        last if ($braces_level == 0);
+        $arguments->[-1] .= $separator;
+      } elsif ($separator eq '{') {
+        $braces_level++;
+        $arguments->[-1] .= $separator;
+      }
+    } else {
+      print STDERR "MACRO ARG end of line\n" if ($self->{'debug'});
+      $arguments->[-1] .= $line;
+
+      if (@$text) {
+        ($line, $line_nr) = _new_line($text, $lines_array);
+      } else {
+        _line_error ($self, sprintf($self->__("\@%s missing close brace"), 
+           $macro->{'args'}->[0]->{'text'}), $line_nr_orig);
+        return ($arguments, "\n", $line_nr);
+      }
+    }
+  }
+  print STDERR "END MACRO ARGS EXPANSION(".scalar(@$arguments)."): ".
+                  join("|\n", @$arguments) ."|\n" if ($self->{'debug'});
+  return ($arguments, $line, $line_nr);
+}
+
+sub _expand_macro_body($$$$$$$) {
+  my $self = shift;
+  my $macro = shift;
+  my $arguments = shift;
+  my $line = shift;
+  my $line_nr = shift;
+  my $text = shift;
+  my $lines_array = shift;
+
+  return ($line, $line_nr);
+}
+
 #c 'menu_entry'
 #c 'menu_entry'
 # t 'menu_entry_leading_text'
@@ -866,36 +965,17 @@ sub _internal_parse_text($$;$$)
   my $lines_array = shift;
   my $no_para = shift;
 
-  # FIXME find on the tree
-  my $in_menu;
-  my $in_deff_line;
-  my $new_line = '';
-
   my $root = { 'contents' => [] };
   $self->{'tree'} = $root;
   $self->{'context'} = [ '_root' ];
   my $current = $root;
 
-  # This holds the line number.  Similar with line_nr, but simpler.
-  my $line_index = 1;
   my $line_nr;
-
+  
+ NEXT_LINE:
   while (@$text) {
-    my $new_text = shift @$text;
-    # FIXME error? Or accept? Or nothing special?
-    #next if ($new_text = '');
-
-    $new_line .= $new_text;
-    $line_nr = shift @$lines_array;
-
-    my $chomped_text = $new_text;
-    if (@$text and !chomp($chomped_text)) {
-      next; 
-    }
-     
-    my $line = $new_line;
-    $new_line = '';
-    $line_index++;
+    my $line;
+    ($line, $line_nr) = _new_line($text, $lines_array);
 
     if ($self->{'debug'}) {
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
@@ -972,11 +1052,11 @@ sub _internal_parse_text($$;$$)
         if (($current->{'cmdname'} eq 'macro' 
               or $current->{'cmdname'} eq 'rmacro') 
              and $line =~ /^\s*\@r?macro\s+/) {
-          my $mline = $line;
-          $mline =~ s/\s*\@(r?macro)//;
-          my $macro = _parse_macro_command ($self, $1, $mline, 
-                                              $current, $line_nr);
-          push @{$current->{'contents'}}, $macro;
+          $line =~ s/\s*\@(r?macro)//;
+          push @{$current->{'contents'}}, { 'cmdname' => $1,
+                                            'parent' => $current,
+                                            'contents' => [],
+                         'special' => {'macro_line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
         } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
@@ -1036,6 +1116,27 @@ sub _internal_parse_text($$;$$)
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
+
+        if ($self->{'macros'}->{$command}) {
+          my $expanded_macro = $self->{'macros'}->{$command};
+          my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
+          my $arguments = [];
+          if ($line =~ s/^\s*{\s*//) { # macro with args
+            ($arguments, $line, $line_nr) = 
+              _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr,
+                                       $text, $lines_array);
+          } elsif (($args_number >= 2) or ($args_number <1)) {
+            _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
+          } else {
+            $arguments = [$line];
+            $line = "\n";
+          } 
+          ($line, $line_nr) = _expand_macro_body ($self, 
+                                $expanded_macro, $arguments, 
+                                $line, $line_nr,
+                                $text, $lines_array);
+          next;
+        }
 
         if ($command eq 'value') {
           if ($line =~ s/^{([\w\-]+)}//) {
@@ -1183,10 +1284,13 @@ sub _internal_parse_text($$;$$)
             $current->{'remaining_args'} = 4 if ($command eq 'node');
             $current = $current->{'args'}->[-1];
           }
+
+          last NEXT_LINE if ($command eq 'bye');
+
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
             my $macro = _parse_macro_command ($self, $command, $line, 
-                                 $current, $line_nr, 1);
+                                 $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
             $current = $current->{'contents'}->[-1];
             last;
@@ -1645,7 +1749,9 @@ sub _internal_parse_text($$;$$)
 sub tree_to_texi ($)
 {
   my $root = shift;
-  die "bad root type (".ref($root).") $root\n" if (ref($root) ne 'HASH');
+  die "tree_to_texi: root undef\n" if (!defined($root));
+  die "tree_to_texi: bad root type (".ref($root).") $root\n" 
+     if (ref($root) ne 'HASH');
   my $result = '';
   #print STDERR "$root ";
   #print STDERR "$root->{'type'}" if (defined($root->{'type'}));

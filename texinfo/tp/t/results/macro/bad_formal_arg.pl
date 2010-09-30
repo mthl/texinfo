@@ -17,6 +17,11 @@ $result_trees{'bad_formal_arg'} = {
         },
         {
           'parent' => {},
+          'text' => '',
+          'type' => 'macro_arg'
+        },
+        {
+          'parent' => {},
           'text' => 'not_empty',
           'type' => 'macro_arg'
         }
@@ -32,6 +37,10 @@ $result_trees{'bad_formal_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'args_index' => {
+          '' => 0,
+          'not_empty' => 1
+        },
         'macro_line' => ' bad  { , not_empty}
 ',
         'macrobody' => 'in bad macro
@@ -73,6 +82,10 @@ $result_trees{'bad_formal_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'args_index' => {
+          'first' => 0,
+          'in 2arg' => 1
+        },
         'macro_line' => ' bad_space{first, in 2arg}
 ',
         'macrobody' => 'bad space
@@ -107,18 +120,6 @@ $result_trees{'bad_formal_arg'} = {
           'type' => 'raw'
         },
         {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => 'foo',
-              'type' => 'macro_name'
-            },
-            {
-              'parent' => {},
-              'text' => '? aaa',
-              'type' => 'macro_arg'
-            }
-          ],
           'cmdname' => 'macro',
           'contents' => [
             {
@@ -137,6 +138,9 @@ $result_trees{'bad_formal_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'args_index' => {
+          ':::' => 0
+        },
         'macro_line' => ' bar {:::}
 ',
         'macrobody' => 'in bar
@@ -151,6 +155,7 @@ in macro foo
 $result_trees{'bad_formal_arg'}{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
+$result_trees{'bad_formal_arg'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'bad_formal_arg'};
@@ -163,8 +168,6 @@ $result_trees{'bad_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'bad_fo
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5];
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1];
-$result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'bad_formal_arg'}{'contents'}[5];
 $result_trees{'bad_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'bad_formal_arg'};
@@ -188,30 +191,30 @@ in macro foo
 
 $result_errors{'bad_formal_arg'} = [
   {
-    'error_line' => ':2: Bad @macro formal argument: 
+    'error_line' => ':2: Bad or empty @macro formal argument: 
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Bad @macro formal argument: ',
+    'text' => 'Bad or empty @macro formal argument: ',
     'type' => 'error'
   },
   {
-    'error_line' => ':6: Bad @macro formal argument: in 2arg
+    'error_line' => ':6: Bad or empty @macro formal argument: in 2arg
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'Bad @macro formal argument: in 2arg',
+    'text' => 'Bad or empty @macro formal argument: in 2arg',
     'type' => 'error'
   },
   {
-    'error_line' => ':10: Bad @macro formal argument: :::
+    'error_line' => ':10: Bad or empty @macro formal argument: :::
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'Bad @macro formal argument: :::',
+    'text' => 'Bad or empty @macro formal argument: :::',
     'type' => 'error'
   }
 ];

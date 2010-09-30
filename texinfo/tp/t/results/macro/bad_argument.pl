@@ -81,6 +81,9 @@ $result_trees{'bad_argument'} = {
       ],
       'parent' => {},
       'special' => {
+        'args_index' => {
+          'ggg' => 0
+        },
         'macro_line' => ' after-name {ggg} more
 ',
         'macrobody' => 'in macro
