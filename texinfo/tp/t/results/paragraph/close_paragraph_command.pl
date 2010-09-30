@@ -60,9 +60,15 @@ $result_trees{'close_paragraph_command'} = {
     {
       'args' => [
         {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => '4
+'
+            }
+          ],
           'parent' => {},
-          'text' => '4',
-          'type' => 'misc_arg'
+          'type' => 'misc_line_arg'
         }
       ],
       'cmdname' => 'sp',
@@ -90,6 +96,7 @@ $result_trees{'close_paragraph_command'}{'contents'}[2]{'parent'} = $result_tree
 $result_trees{'close_paragraph_command'}{'contents'}[3]{'parent'} = $result_trees{'close_paragraph_command'};
 $result_trees{'close_paragraph_command'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[4];
 $result_trees{'close_paragraph_command'}{'contents'}[4]{'parent'} = $result_trees{'close_paragraph_command'};
+$result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0];
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[5];
 $result_trees{'close_paragraph_command'}{'contents'}[5]{'parent'} = $result_trees{'close_paragraph_command'};
 $result_trees{'close_paragraph_command'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[6];

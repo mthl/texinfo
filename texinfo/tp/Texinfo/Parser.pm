@@ -90,13 +90,13 @@ my %misc_commands = (
   'set' => {'arg' => 'special'}, # special arg
   #'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
   'clear' => {'arg' => 'special'}, # special arg
-  'unmacro' => {'arg' => 1}, 
+  'unmacro' => {'arg' => 'special'}, 
   # comments
   'comment' => {'arg' => 'lineraw'},
   'c' => {'arg' => 'lineraw'},
   # special
-  'definfoenclose' => {'arg' => 'special'},
-  'alias' => {'args' => 'special'}, 
+  'definfoenclose' => {'arg' => 5, 'skip' => 'line'},
+  'alias' => {'arg' => '3', 'skip' => 'line'}, 
   # file names
   'setfilename' => {'arg' => 'line'},
   'verbatiminclude'=> {'arg' => 'line'},
@@ -107,12 +107,13 @@ my %misc_commands = (
   'shortcontents' => {}, # no arg
   'summarycontents'=> {}, # no arg
   'insertcopying'=> {}, # no arg
-  'clickstyle' => {'arg' => 1}, # arg should be an @-command
+  'clickstyle' => {'arg' => 'special'}, # arg should be an @-command
   # more relevant in preamble
-  'documentencoding' => {'arg' => 1, 'skip' => 'line'},
-  'setcontentsaftertitlepage' => {}, # no arg
-  'setshortcontentsaftertitlepage' => {}, # no arg
-  'novalidate' => {}, # no arg
+  #'documentencoding' => {'arg' => 1, 'skip' => 'line'},
+  'documentencoding' => {'arg' => 'line'},
+  'setcontentsaftertitlepage' => {'skip' => 'line'}, # no arg
+  'setshortcontentsaftertitlepage' => {'skip' => 'line'}, # no arg
+  'novalidate' => {'skip' => 'line'}, # no arg
   'dircategory'=> {'arg' => 'line'}, # line. Position with regard 
                    # with direntry is significant
   'pagesizes' => {'arg' => 'line'}, # can have 2 args 
@@ -123,7 +124,7 @@ my %misc_commands = (
   'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
   'frenchspacing' => {'arg' => 1, 'skip' => 'line'}, # on off
                                  # not so sure about 'skip' => 'line'
-  'fonttextsize' => {'arg' => 1}, # 10 11
+  'fonttextsize' => {'arg' => 1, 'skip' => 'line'}, # 10 11
   'allowcodebreaks' => {'arg' => 1, 'skip' => 'line'}, # false or true
   'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
   'footnotestyle'=> {'skip' => 'line', 'arg' => 1}, # end and separate
@@ -138,34 +139,37 @@ my %misc_commands = (
   'setchapternewpage' => {'skip' => 'line', 'arg' => 1}, # off on odd
   # FIXME for the following the @this* commands are not defined. Also
   # @value and maybe macro invocations may also be delayed.
-  'everyheading' => {'arg' => 'line'}, # @*heading @*footing use @|
-  'everyfooting' => {'arg' => 'line'}, # + @thispage @thissectionname @thissectionnum
-  'evenheading' => {'arg' => 'line'},  # @thissection @thischaptername @thischapternum 
-  'evenfooting' => {'arg' => 'line'},  # @thischapter @thistitle @thisfile
-  'oddheading' => {'arg' => 'line'},
-  'oddfooting' => {'arg' => 'line'},
+  'everyheading' => {'arg' => 'lineraw'}, # @*heading @*footing use @|
+  'everyfooting' => {'arg' => 'lineraw'}, # + @thispage @thissectionname @thissectionnum
+  'evenheading' => {'arg' => 'lineraw'},  # @thissection @thischaptername @thischapternum 
+  'evenfooting' => {'arg' => 'lineraw'},  # @thischapter @thistitle @thisfile
+  'oddheading' => {'arg' => 'lineraw'},
+  'oddfooting' => {'arg' => 'lineraw'},
   'smallbook' => {'skip' => 'line'}, # no arg
   'syncodeindex' => {'skip' => 'line', 'arg' => 2},
                     # args are index identifiers
   'synindex' => {'skip' => 'line', 'arg' => 2},
-  'defindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
-  'defcodeindex' => {'skip' => 'line', 'arg' => 'special'}, # one identifier arg
-  'documentlanguage' => {'skip' => 'line', 'arg' => 1},
+  'defindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
+  'defcodeindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
+  #'documentlanguage' => {'skip' => 'line', 'arg' => 1},
+  'documentlanguage' => {'arg' => 'line'},
                                                  # language code arg
-  'kbdinputstyle' => {'skip' => 'whitespace', 'arg' => 1}, # code 
+  'kbdinputstyle' => {'skip' => 'line', 'arg' => 1}, # code 
                                                   #example distinct
   'everyheadingmarks' => {'skip' => 'line', 'arg' => 1}, # top bottom
-  'everyfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'evenheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'oddheadingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'evenfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
-  'oddfootingmarks' => {'skip' => 'whitespace', 'arg' => 1},
+  'everyfootingmarks' => {'skip' => 'line', 'arg' => 1},
+  'evenheadingmarks' => {'skip' => 'line', 'arg' => 1},
+  'oddheadingmarks' => {'skip' => 'line', 'arg' => 1},
+  'evenfootingmarks' => {'skip' => 'line', 'arg' => 1},
+  'oddfootingmarks' => {'skip' => 'line', 'arg' => 1},
   # not valid for info (should be in @iftex)
-  'cropmarks' => {}, # no arg
+  'cropmarks' => {'skip' => 'line'}, # no arg
 
   # formatting
   'center' => {'arg' => 'line'},
-  'printindex' => {'arg' => 1, 'skip' => 'line'},
+  # FIXME, line or arg? Verify the index exists?
+  'printindex' => {'arg' => 'line'},
+  #'printindex' => {'arg' => 1, 'skip' => 'line'},
   'listoffloats' => {'arg' => 'line'},
   # especially in titlepage
   'shorttitle' => {'arg' => 'line'},
@@ -174,9 +178,10 @@ my %misc_commands = (
   'author' => {'arg' => 'line'},
   'subtitle' => {'arg' => 'line'},
   'title' => {'arg' => 'line'},
-  'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
+  #'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
+  'sp' => {'arg' => 'line'}, # no arg 
                               # at the end of line or a numerical arg
-  'page' => {}, # no arg (pagebreak)
+  'page' => {'skip' => 'line'}, # no arg (pagebreak)
   'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
   # formatting
   'noindent' => {'skip' => 'whitespace'}, # no arg
@@ -1189,7 +1194,7 @@ sub _internal_parse_text($$;$$)
              if ($self->{'debug'}); 
           my $expanded_lines = _text_to_lines($expanded);
           $expanded_lines = [''] if !(@$expanded_lines);
-          print STDERR "1MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
+          print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
                                        ."\nEND LINES\n" if ($self->{'debug'});
           chomp ($expanded_lines->[-1]);
           my $new_lines_nr = _complete_line_nr($expanded_lines, 
@@ -1802,7 +1807,20 @@ sub _internal_parse_text($$;$$)
         } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
           # first parent is the @command, second is the parent
-          $current = $current->{'parent'}->{'parent'};
+          $current = $current->{'parent'};
+          print STDERR "MISC END \@$current->{'cmdname'}\n" if ($self->{'debug'});
+          if ($self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'}
+              and $self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'} =~ /^\d$/) {
+            my $args = _parse_line_command_args ($self, $current, $line_nr);
+            $current->{'special'}->{'line_args'} = $current->{'args'};
+            $current->{'args'} = [];
+            foreach my $arg (@$args) {
+              push @{$current->{'args'}},
+                { 'type' => 'misc_arg', 'text' => $arg, 
+                  'parent' => $current };
+            }
+          }
+          $current = $current->{'parent'};
         }
         last;
       }
@@ -1962,25 +1980,8 @@ sub _parse_misc_command($$$$)
     if (defined($self->{'misc_commands'}->{$command}->{'arg'}));
 #print STDERR "HHHHHHHHH $line $command arg_spec $arg_spec skip_spec $skip_spec\n";
 
-  if ($command eq 'alias') {
-    if ($line =~ s/(\s+)([a-zA-Z][\w-]*)(\s*=\s*)([a-zA-Z][\w-]*)(\s*)//) {
-      $self->{'aliases'}->{$2} = $4;
-      $args = [$2, $4];
-    } else {
-      _line_error ($self, sprintf($self->
-                              __("Bad argument to \@%s"), $command), $line_nr);
-    }
 
-  } elsif ($command eq 'definfoenclose') {
-    if ($line =~ s/^\s+([a-z][\w\-]*)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//) {
-      $args = [$1, $2, $3 ];
-      $self->{'info_enclose'}->{$1} = [ $2, $3 ];
-    } else {
-      _line_error ($self, sprintf($self->
-                              __("Bad argument to \@%s"), $command), $line_nr);
-    } # FIXME warn about garbage remaining on the line?
-
-  } elsif ($command eq 'set') {
+  if ($command eq 'set') {
     if ($line =~ /^(\s+)([\w\-]+)(\s+)(.*)$/) {
       $args = [$2, $4];
       $self->{'values'}->{$2} = $4;
@@ -2006,24 +2007,16 @@ sub _parse_misc_command($$$$)
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
     }
-  } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
-    if ($line =~ s/^\s+(\w+)\s*//) {
-      my $name = $1;
-      if ($forbidden_index_name{$name}) {
-        _line_error($self, sprintf($self->
-                                __("Reserved index name %s"),$name), $line_nr);
-      } else {
-        $self->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
-      }
+  } elsif ($command eq 'clickstyle') {
+    if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//) {
+      $args = [$1];
     } else {
-      _line_error ($self, sprintf($self->
-                   __("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+      _line_error ($self, sprintf($self->__("\@%s should only accept a \@-command as argument, not `%s'"), $command, $line), $line_nr);
     }
-
-  } elsif ($arg_spec eq 'line' or $arg_spec eq 'lineraw') {
+  } elsif ($arg_spec eq 'line' or $arg_spec eq 'lineraw' or $arg_spec) {
     $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
     $args = [ $line ];
-    if ($arg_spec eq 'line') {
+    if ($arg_spec ne 'lineraw') {
       $line_arg = $line;
     }
     else {
@@ -2031,18 +2024,18 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
 
-  } elsif ($arg_spec) {
-    my $arg_nr = $arg_spec;
-    while ($arg_nr) {
-      if ($line =~ s/^(\s+)(\S*)//o) {
-        my $argument = $2;
-        push @$args, $argument if ($argument ne '');
-      } else {
-        last;
-      }
-      $arg_nr--;
-    }
-  }
+  } #elsif ($arg_spec) {
+    #my $arg_nr = $arg_spec;
+    #while ($arg_nr) {
+    #  if ($line =~ s/^(\s+)(\S*)//o) {
+    #    my $argument = $2;
+    #    push @$args, $argument if ($argument ne '');
+    #  } else {
+    #    last;
+    #  }
+    #  $arg_nr--;
+    #}
+  #}
 
   if ($skip_spec eq 'line') {
     $line = '';
@@ -2056,6 +2049,180 @@ sub _parse_misc_command($$$$)
   # FIXME is the following useful?
   $line = '' if (!defined($line));
   return ($line, $args, $line_arg, $special);
+}
+
+sub _parse_line_command_args($$$)
+{
+  my $self = shift;
+  my $line_command = shift;
+  my $line_nr = shift;
+
+  my $args;
+
+  my $command = $line_command->{'cmdname'};
+  my $arg = $line_command->{'args'}->[0];
+
+  print STDERR "MISC ARGS \@$command\n" if ($self->{'debug'});
+
+  if (! @{$arg->{'contents'}} 
+       or ($arg->{'contents'}->[0]->{'cmdname'} 
+            and ($arg->{'contents'}->[0]->{'cmdname'} eq 'c' 
+                 or $arg->{'contents'}->[0]->{'cmdname'} eq 'comment'))) {
+    _line_error ($self, sprintf($self->__("\@%s missing argument"), 
+       $command), $line_nr);
+    return undef;
+  }
+
+  if (@{$arg->{'contents'}} > 2 or (@{$arg->{'contents'}} == 2
+         and (!$arg->{'contents'}->[1]->{'cmdname'} 
+              or $arg->{'contents'}->[1]->{'cmdname'} ne 'c' 
+              or $arg->{'contents'}->[1]->{'cmdname'} ne 'comment'))
+         or (!defined($arg->{'contents'}->[0]->{'text'}))) {
+    _line_error ($self, sprintf($self->__("Bad argument to \@s"),
+       $command), $line_nr);
+  }
+  return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
+  
+  my $line = $arg->{'contents'}->[0]->{'text'};  
+
+  if ($command eq 'alias') {
+    if ($line =~ s/^([\w-]+)(\s*=\s*)([\w-]+)(\s*)//) {
+      $self->{'aliases'}->{$1} = $3;
+      $args = [$2, $4];
+    } else {
+      _line_error ($self, sprintf($self->
+                              __("Bad argument to \@%s"), $command), $line_nr);
+    }
+
+  } elsif ($command eq 'definfoenclose') {
+    if ($line =~ s/^([\w\-]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//) {
+      $args = [$1, $2, $3 ];
+      $self->{'info_enclose'}->{$1} = [ $2, $3 ];
+    } else {
+      _line_error ($self, sprintf($self->
+                              __("Bad argument to \@%s"), $command), $line_nr);
+    }
+  } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
+    if ($line =~ /^(\w+)\s*/) {
+      my $name = $1;
+      if ($forbidden_index_name{$name}) {
+        _line_error($self, sprintf($self->
+                                __("Reserved index name %s"),$name), $line_nr);
+      } else {
+        $args = [$name];
+        $self->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
+      }
+    } else {
+      _line_error ($self, sprintf($self->
+                   __("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'synindex' || $command eq 'syncodeindex') {
+    if ($line =~ /^(\w+)\s+(\w+)/) {
+      my $index_from = $1;
+      my $index_to = $2;
+      _line_error ($self, sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
+        unless $self->{'misc_commands'}->{$index_from.'index'};
+      _line_error ($self, sprintf($self->__("Unknown to index name `%s' in \@%s"), $index_to, $command), $line_nr)
+        unless $self->{'misc_commands'}->{$index_to.'index'};
+      if ($self->{'misc_commands'}->{$index_from.'index'} 
+           and $self->{'misc_commands'}->{$index_to.'index'}) {
+        $args = [$index_from, $index_to];
+      }
+    } else {
+      _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+    }
+  } elsif (grep {$_ eq $command} ('everyheadingmarks', 'everyfootingmarks',
+                                  'evenheadingmarks', 'oddheadingmarks',
+                                  'evenfootingmarks', 'oddfootingmarks')) {
+    if (($line =~ /^(top)[^\w\-]/) or ($line =~ /^(bottom)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@%s arg must be `top' or `bottom', not `%s'"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'fonttextsize') {
+    if (($line =~ /^(10)[^\w\-]/) or ($line =~ /^(11)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("Only \@%s 10 or 11 is supported, not `%s'"),$command, $line), $line_nr);
+    }
+  } elsif ($command eq 'footnotestyle') {
+    if ($line =~ /^([a-z]+)[^\w\-]/ and ($1 eq 'separate' or $1 eq 'end')) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@%s arg must be `separate' or `end', not `%s'"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'setchapternewpage') {
+    if (($line =~ /^(on)[^\w\-]/) or ($line =~ /^(off)[^\w\-]/)
+       or ($line =~ /^(odd)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@%s arg must be `on', `off' or `odd', not `%s'"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'need') { # only a warning
+    if (($line =~ /^([0-9]+(\.[0-9]*)?)[^\w\-]/) or
+             ($line =~ /^(\.[0-9]+)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'paragraphindent') {
+    if ($line =~ /^([\w\-]+)[^\w\-]/) {
+      my $value = $1;
+      if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis') {
+        $args = [$1];
+      } else {
+        _line_error ($self, sprintf($self->__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $value), $line_nr);
+      } 
+    } else {
+      _line_error ($self, sprintf($self->__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $line), $line_nr);
+    }
+  } elsif ($command eq 'firstparagraphindent') {
+    if (($line =~ /^(none)[^\w\-]/) or ($line =~ /^(insert)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@firstparagraphindent arg must be `none' or `insert', not `%s'"), $line), $line_nr);
+    }
+  } elsif ($command eq 'exampleindent') {
+    if ($line =~ /^([0-9]+)/) {
+      $args = [$1];
+    } elsif ($line =~ /^(asis)[^\w\-]/) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@exampleindent arg must be numeric/`asis', not `%s'"), $line), $line_nr);
+    }
+  } elsif ($command eq 'frenchspacing') {
+    if (($line =~ /^(on)[^\w\-]/) or ($line =~ /^(off)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("Expected \@%s on or off, not `%s'"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'kbdinputstyle') {
+    if ($line =~ /^([a-z]+)/ and ($1 eq 'code' or $1 eq 'example' or $1 eq 'distinct')) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"), $line), $line_nr);
+    }
+  } elsif ($command eq 'allowcodebreaks') {
+    if (($line =~ /^(true)[^\w\-]/) or ($line =~ /^(false)[^\w\-]/)) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@allowcodebreaks arg must be `true' or `false', not `%s'"), $line), $line_nr);
+    }
+  } elsif ($command eq 'headings') {
+    my $valid_arg = 0;
+    foreach my $possible_arg ('off','on','single','double',
+                               'singleafter','doubleafter') {
+      if ($line =~ /^($possible_arg)[^\w\-]/) {
+        $args = [$1];
+        $valid_arg = 1;
+        last;
+      }
+    }
+    unless ($valid_arg) {
+      _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+    }
+  }
+  return $args;
 }
 
 1;
