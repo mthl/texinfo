@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
+@c $Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -15837,7 +15837,7 @@ PostScript language.  Related links:
 
 @itemize
 @item
-GNU GV, a @uref{http://www.foolabs.com/xpdf/, Ghostscript-based PDF
+GNU GV, a @uref{http://www.gnu.org/software/gv/, Ghostscript-based PDF
 reader}.  (It can also preview PostScript documents.)
 
 @item
@@ -17513,7 +17513,8 @@ order.
 Options:
 
 @table @code
-@item --add-once@r{, for @command{install-info}}
+@item --add-once
+@opindex --add-once@r{, for @command{install-info}}
 Specifies that the entry or entries will only be put into a single section.
 
 @item --align=@var{column}
@@ -17524,7 +17525,7 @@ description will be formatted to begin at.  The default for this option is
 @var{column} starts counting at 1.
 
 @item --append-new-sections
-@item --append-new-sections{, for @command{install-info}}
+@opindex --append-new-sections@r{, for @command{install-info}}
 Instead of alphabetizing new sections, place them at the end of the DIR file.
 
 @item --calign=@var{column}
@@ -24640,7 +24641,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
+$Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24719,7 +24720,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.322 2010-09-26 18:37:43 karl Exp $
+@comment $Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
