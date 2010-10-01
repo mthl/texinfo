@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
+@c $Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20556,7 +20556,8 @@ It is possible to control both output file names and target
 identifiers in detail.
 
 @menu
-* Customizing Output File Names::
+* File: Customizing Output File Names.
+* Target: Customizing Output Target Names.
 @end menu
 
 @node Customizing Output File Names
@@ -20632,61 +20633,73 @@ name, and @samp{toc_frame}, the table of contents frame file name.
 The function should return the file name for the element (@var{$file}).
 @end deftypefn
 
-@vindex %renamed_nodes
-It is also possible to specify renamed node names in
-@code{%renamed_nodes}.  They are processed as explained in
-@ref{HTML Xref Link Preservation}.
+@c xx vindex %renamed_nodes
+@c xx It is also possible to specify renamed node names in
+@c xx @code{%renamed_nodes}.  They are processed as explained in
+@c xx @ref{HTML Xref Link Preservation}.
 
-@subheading target names
+@node Customizing Output Target Names
+@subsection Customizing Output Target Names
 
-Similarly target and id may be set.  The @dfn{id} is placed where the 
-item is located, the @dfn{target} is used to construct references to
-that item. In general they should be equal, but not always, for example
-in the default case, the target for a section is the node id.
-The following function reference, is
-for target items (nodes, anchors, floats):
+@cindex Customizing output target names
+@cindex Target names, customizing
+@cindex Id names, customizing
 
-@deftypefn {Function Reference} {($target,$id)} node_target_name \%node $default_target $default_id $type
-@var{\%node} is the same as in the @code{node_file_name} function reference
-above.
-@var{$default_target} is the target already set (it is also 
-in @code{$node->@{'target'@}}), and @var{$default_id} is similarly
-the id already set.
-@var{$type} is @code{top} if the node is the top node.
+Similar to file names, so-called target and id names may be set.  The
+@dfn{id} is placed where the item is located, while the @dfn{target}
+is used to construct references to that item.  Usually, these should
+be the same.
+
+@c xx, but not always, for example in the default case, the
+@c xx target for a section is the node id.
+
+The following function reference is for target items (nodes, anchors,
+floats):
+
+@deftypefn {Function Reference} {($target,$id)} node_target_name @
+           \%node $default_target $default_id $type
+@var{\%node} is the same as in the @code{node_file_name} function
+reference in the previous section.  @var{$default_target} is the
+target that has been already set (it is also in
+@code{$node->@{'target'@}}), and @var{$default_id} is, similarly, the
+id already set.  @var{$type} is @code{top} if the node is the top
+node.  The function should return a two-element list of the target and
+id names.
 @end deftypefn
 
-For element (@pxref{Output Elements Defined}), the function 
+For elements (@pxref{Output Elements Defined}), the function 
 reference is:
 
-@deftypefn {Function Reference} {($target,$id)} element_target_name \%element $default_target $default_id
-the @var{\%element} is the same than in @code{element_file_name}, and
-@var{$default_target} and @var{$default_id} are the target and id already set.
+@deftypefn {Function Reference} {($target,$id)} element_target_name @
+           \%element $default_target $default_id
+@var{\%element} is the same as in @code{element_file_name} in the
+previous section, and @var{$default_target}, @var{$default_id}, and
+the return value, are as above.
 @end deftypefn
 
-Placed items 
-(floats, footnotes, index entries, anchors, contents,
-shortcontents and headings)
-file and target may also be set.  In the default case, they should 
-be rightly set, so be careful when changing them.  The following 
-function reference can be used:
+The file, target, and id of ``placed'' items, namely floats,
+footnotes, index entries, anchors, contents, shortcontents and
+headings, may also be set, although the default should be suitable.
+Nevertheless, the following function reference can be used:
 
-@deftypefn {Function Reference} {($target, $id, $file)} placed_target_file_name \%placed_item \%element $default_target $default_id $default_file $context
-@var{\%placed_item} is a hash reference describing the placed item,
-in the same vein than above.
-the @var{\%element} is the same than in @code{element_file_name}, 
-corresponding with the element containing the placed item.
-@var{$default_file}, @var{default_id} and
-@var{$default_target} are the file, id and target already set.
-@var{$context} describes the context, it is empty in the normal cases, 
-and can also be set to @samp{footnotes} if in footnotes, or to
-@samp{no_associated_element} if the placed item is out of any element
-(typically in @code{@@titlepage}, @code{@@copying}).
+@deftypefn {Function Reference} {($target, $id, $file)} @
+           placed_target_file_name \%placed_item \%element @
+           $default_target $default_id $default_file $context
+
+@var{\%placed_item} is a hash reference describing the placed item, as
+in the above, likewise @var{\%element}.  @var{$default_file},
+@var{default_id} and @var{$default_target} are the file, id and target
+already set.  @var{$context} describes the context; this is set to
+@samp{footnotes} if in footnotes, to @samp{no_associated_element} if
+the placed item is outside of any element (e.g., @code{@@titlepage},
+@code{@@copying}), and is otherwise empty.
 @end deftypefn
 
 @vindex %misc_pages_targets
-For special elements, the @code{%misc_pages_targets} hash is 
-used to set the target and id.  The possibilities for the keys 
-are @samp{Overview}, @samp{Contents}, @samp{Footnotes} and @samp{About}.
+For special elements, the @code{%misc_pages_targets} hash is used to
+set the target and id.  The possibilities for the keys are
+@samp{Overview}, @samp{Contents}, @samp{Footnotes} and @samp{About}.
+
 
 @node Headings formatting
 @section Customizing headings formatting
@@ -24641,7 +24654,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
+$Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24720,7 +24733,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.323 2010-10-01 14:45:29 karl Exp $
+@comment $Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

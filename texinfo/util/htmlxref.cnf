@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-09-24.16; # UTC
+htmlxrefversion=2010-10-01.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -69,13 +69,100 @@ cssc		node	${GS}/cssc/manual/
 
 #cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
 
-elisp		mono	${GS}/emacs/manual/html_mono/elisp.html
-elisp		node	${GS}/emacs/manual/html_node/
+ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
 
 emacs		mono	${GS}/emacs/manual/html_mono/emacs.html
 emacs		node	${GS}/emacs/manual/html_node/
+ #
+ ada-mode	mono	${GS}/emacs/manual/html_mono/ada-mode.html
+ ada-mode	node	${GS}/emacs/manual/html_node/ada-mode/
+ #
+ autotype	mono	${GS}/emacs/manual/html_mono/autotype.html
+ autotype	node	${GS}/emacs/manual/html_node/autotype/
+ #
+ ccmode		mono	${GS}/emacs/manual/html_mono/ccmode.html
+ ccmode		node	${GS}/emacs/manual/html_node/ccmode/
+ #
+ cl		mono	${GS}/emacs/manual/html_mono/cl.html
+ cl		node	${GS}/emacs/manual/html_node/cl/
+ #
+ ebrowse	mono	${GS}/emacs/manual/html_mono/ebrowse.html
+ ebrowse	node	${GS}/emacs/manual/html_node/ebrowse/
+ #
+ ediff		mono	${GS}/emacs/manual/html_mono/ediff.html
+ ediff		node	${GS}/emacs/manual/html_node/ediff/
+ #
+ eieio		mono	${GS}/emacs/manual/html_mono/eieio.html
+ eieio		node	${GS}/emacs/manual/html_node/eieio/
+ #
+ elisp		mono	${GS}/emacs/manual/html_mono/elisp.html
+ elisp		node	${GS}/emacs/manual/html_node/elisp/
+ #
+ epa		mono	${GS}/emacs/manual/html_mono/epa.html
+ epa		node	${GS}/emacs/manual/html_node/epa/
+ #
+ erc		mono	${GS}/emacs/manual/html_mono/erc.html
+ erc		node	${GS}/emacs/manual/html_node/erc/
+ #
+ dired-x	mono	${GS}/emacs/manual/html_mono/dired-x.html
+ dired-x	node	${GS}/emacs/manual/html_node/dired-x/
+ #
+ eshell		mono	${GS}/emacs/manual/html_mono/eshell.html
+ eshell		node	${GS}/emacs/manual/html_node/eshell/
+ #
+ flymake	mono	${GS}/emacs/manual/html_mono/flymake.html
+ flymake	node	${GS}/emacs/manual/html_node/flymake/
+ #
+ gnus		mono	${GS}/emacs/manual/html_mono/gnus.html
+ gnus		node	${GS}/emacs/manual/html_node/gnus/
+ #
+ idlwave	mono	${GS}/emacs/manual/html_mono/idlwave.html
+ idlwave	node	${GS}/emacs/manual/html_node/idlwave/
+ #
+ message	mono	${GS}/emacs/manual/html_mono/message.html
+ message	node	${GS}/emacs/manual/html_node/message/
+ #
+ mh-e		mono	${GS}/emacs/manual/html_mono/mh-e.html
+ mh-e		node	${GS}/emacs/manual/html_node/mh-e/
+ #
+ nxml-mode	mono	${GS}/emacs/manual/html_mono/nxml-mode.html
+ nxml-mode	node	${GS}/emacs/manual/html_node/nxml-mode/
+ #
+ org		mono	${GS}/emacs/manual/html_mono/org.html
+ org		node	${GS}/emacs/manual/html_node/org/
+ #
+ pcl-cvs	mono	${GS}/emacs/manual/html_mono/pcl-cvs.html
+ pcl-cvs	node	${GS}/emacs/manual/html_node/pcl-cvs/
+ #
+ rcirc		mono	${GS}/emacs/manual/html_mono/rcirc.html
+ rcirc		node	${GS}/emacs/manual/html_node/rcirc/
+ #
+ semantic	mono	${GS}/emacs/manual/html_mono/semantic.html
+ semantic	node	${GS}/emacs/manual/html_node/semantic/
+ #
+ smtp		mono	${GS}/emacs/manual/html_mono/smtp.html
+ smtp		node	${GS}/emacs/manual/html_node/smtp/
+ #
+ speedbar	mono	${GS}/emacs/manual/html_mono/speedbar.html
+ speedbar	node	${GS}/emacs/manual/html_node/speedbar/
+ #
+ tramp		mono	${GS}/emacs/manual/html_mono/tramp.html
+ tramp		node	${GS}/emacs/manual/html_node/tramp/
+ #
+ vip		mono	${GS}/emacs/manual/html_mono/vip.html
+ vip		node	${GS}/emacs/manual/html_node/vip/
+ #
+ viper		mono	${GS}/emacs/manual/html_mono/viper.html
+ viper		node	${GS}/emacs/manual/html_node/viper/
+ #
+ woman		mono	${GS}/emacs/manual/html_mono/woman.html
+ woman		node	${GS}/emacs/manual/html_node/woman/
+ # (end emacs manuals)
 
 emms		node	${GS}/emms/manual/
+
+findutils	mono	${GS}/findutils/manual/html_mono/find.html
+findutils	node	${GS}/findutils/manual/html_mono/find_html
 
 gama		mono	${GS}/gama/manual/gama.html
 gama		node	${GS}/gama/manual/html_node/
@@ -91,8 +178,19 @@ gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
  gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
  libgomp	node	http://gcc.gnu.org/onlinedocs/libgomp/
 
+GDB = http://sourceware.org/gdb/current/onlinedocs
+gdb		node	${GDB}/gdb/
+ gdbint		node	${GDB}/gdbint/
+ stabs		node	${GDB}/stabs/
+
 gettext		mono	${GS}/gettext/manual/gettext.html
 gettext		node	${GS}/gettext/manual/html_node/
+
+gforth		node	http://www.complang.tuwien.ac.at/forth/gforth/Docs-html/
+
+global		mono	${GS}/global/manual/global.html
+
+gnu-arch	node	${GS}/gnu-arch/tutorial/
 
 gnu-crypt	node	${GS}/gnu-crypto/manual/
 
@@ -102,6 +200,9 @@ gnubg		node	${GS}/gnubg/manual/html_node/
 gnubik		mono	${GS}/gnubik/manual/gnubik.html
 gnubik		node	${GS}/gnubik/manual/html_node/
 
+gnulib		mono	${GS}/gnulib/manual/gnulib.html
+gnulib		node	${GS}/gnulib/manual/html_node/
+
 GNUPG = http://www.gnupg.org/documentation/manuals
 gnupg		node	${GNUPG}/gnupg/
  dirmngr	node	${GNUPG}/dirmngr/
@@ -110,9 +211,10 @@ gnupg		node	${GNUPG}/gnupg/
  assuan		node	${GNUPG}/assuan/
  gpgme		node	${GNUPG}/gpgme/
 
-gnus		node	${GS}/emacs/manual/html_mono/mh-e.html
-
 gnuschool	mono	${GS}/gnuschool/gnuschool.html
+
+gperf		mono	${GS}/gperf/manual/gperf.html
+gperf		node	${GS}/gperf/manual/html_node/
 
 gtypist		mono	${GS}/gtypist/doc/
 
@@ -141,12 +243,11 @@ maintain	node	${G}/prep/maintain/html_node/
 mdk		mono	${GS}/mdk/manual/mdk.html
 mdk		node	${GS}/mdk/manual/html_node/
 
-mh-e		mono	${GS}/emacs/manual/html_node/mh-e/
-mh-e		node	${GS}/emacs/manual/html_mono/mh-e.html
-
 motti		node	${GS}/motti/manual/
 
 ocrad		mono	${GS}/ocrad/manual/ocrad_manual.html
+
+pascal		mono	http://www.gnu-pascal.de/gpc/
 
 pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/
@@ -160,6 +261,12 @@ swbis		mono	${GS}/swbis/manual.html
 
 texinfo		mono	${GS}/texinfo/manual/texinfo/texinfo.html
 texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
+ #
+ info		mono	${GS}/texinfo/manual/info/info.html
+ info		node	${GS}/texinfo/manual/info/html_node/
+ #
+ info-stnd	mono	${GS}/texinfo/manual/info-stnd/info-stnd.html
+ info-stnd	node	${GS}/texinfo/manual/info-stnd/html_node/
 
 units		mono	${GS}/units/manual/units.html
 units		node	${GS}/units/manual/html_node/

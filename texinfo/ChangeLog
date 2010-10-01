@@ -1,6 +1,11 @@
+2010-10-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customizing Output Target Names): rename+edit.
+
 2010-09-26  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: Avoid more duplicated index entries.
+	(PDF Output): correct link for GNU GV.
 
 2010-09-25  Patrice Dumas  <pertusus@free.fr>
 
