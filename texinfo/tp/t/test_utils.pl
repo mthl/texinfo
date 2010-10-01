@@ -95,7 +95,8 @@ sub test($$)
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
-    is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
+    ok (tree_to_texi($result) eq $result_texts{$test_name}, $test_name.' text' );
+    #is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
   }
   #exit;
 }

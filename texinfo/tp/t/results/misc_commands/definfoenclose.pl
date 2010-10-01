@@ -1,0 +1,291 @@
+use vars qw(%result_texts %result_trees %result_errors);
+
+$result_trees{'definfoenclose'} = {
+  'contents' => [
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'definfoenclose phoo,//,\\  '
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'phoo,//,\\
+'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'definfoenclose',
+          'parent' => {},
+          'special' => {
+            'misc_args' => [
+              'phoo',
+              '//',
+              '\\'
+            ]
+          }
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'bar
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'definfoenclose phi,:,:  '
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'phi,:,:
+'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'definfoenclose',
+          'parent' => {},
+          'special' => {
+            'misc_args' => [
+              'phi',
+              ':',
+              ':'
+            ]
+          }
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'bar
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'very strong'
+                }
+              ],
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'strong',
+          'parent' => {},
+          'remaining_args' => 0
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'strong,(strong:,:)
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'definfoenclose',
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'strong',
+          '(strong:',
+          ':)'
+        ]
+      }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'normal_line'
+    },
+    {
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' is it really strong? '
+                }
+              ],
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'strong',
+          'parent' => {},
+          'remaining_args' => 0
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    }
+  ]
+};
+$result_trees{'definfoenclose'}{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[3];
+$result_trees{'definfoenclose'}{'contents'}[3]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[4]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5];
+$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0];
+$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1];
+$result_trees{'definfoenclose'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[5];
+$result_trees{'definfoenclose'}{'contents'}[5]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[6]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[7];
+$result_trees{'definfoenclose'}{'contents'}[7]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[8]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0];
+$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0];
+$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9];
+$result_trees{'definfoenclose'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[9];
+$result_trees{'definfoenclose'}{'contents'}[9]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[10]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0];
+$result_trees{'definfoenclose'}{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[11];
+$result_trees{'definfoenclose'}{'contents'}[11]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[12]{'parent'} = $result_trees{'definfoenclose'};
+$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0];
+$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0];
+$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13];
+$result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13];
+$result_trees{'definfoenclose'}{'contents'}[13]{'parent'} = $result_trees{'definfoenclose'};
+
+$result_texts{'definfoenclose'} = '
+definfoenclose phoo,//,\  @definfoenclose phoo,//,\
+
+bar
+
+definfoenclose phi,:,:  @definfoenclose phi,:,:
+
+bar
+
+@strong{very strong}
+
+@definfoenclose strong,(strong:,:)
+
+@strong{ is it really strong? }
+';
+
+$result_errors{'definfoenclose'} = [
+  {
+    'error_line' => ':4: Misplaced }
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Misplaced }',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':8: Misplaced }
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'Misplaced }',
+    'type' => 'error'
+  }
+];
+
+

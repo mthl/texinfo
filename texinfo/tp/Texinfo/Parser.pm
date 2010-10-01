@@ -95,8 +95,8 @@ my %misc_commands = (
   'comment' => {'arg' => 'lineraw'},
   'c' => {'arg' => 'lineraw'},
   # special
-  'definfoenclose' => {'arg' => 5, 'skip' => 'line'},
-  'alias' => {'arg' => '3', 'skip' => 'line'}, 
+  'definfoenclose' => {'arg' => 5},
+  'alias' => {'arg' => '3'}, 
   # file names
   'setfilename' => {'arg' => 'line'},
   'verbatiminclude'=> {'arg' => 'line'},
@@ -119,24 +119,24 @@ my %misc_commands = (
   'pagesizes' => {'arg' => 'line'}, # can have 2 args 
                            # or one? 200mm,150mm 11.5in
   'finalout' => {'skip' => 'line'}, # no arg
-  'paragraphindent' => {'skip' => 'line', 'arg' => 1}, # arg none asis 
+  'paragraphindent' => {'arg' => 1}, # arg none asis 
                        # or a number and forbids anything else on the line
-  'firstparagraphindent' => {'skip' => 'line', 'arg' => 1}, # none insert
-  'frenchspacing' => {'arg' => 1, 'skip' => 'line'}, # on off
+  'firstparagraphindent' => {'arg' => 1}, # none insert
+  'frenchspacing' => {'arg' => 1}, # on off
                                  # not so sure about 'skip' => 'line'
-  'fonttextsize' => {'arg' => 1, 'skip' => 'line'}, # 10 11
-  'allowcodebreaks' => {'arg' => 1, 'skip' => 'line'}, # false or true
-  'exampleindent' => {'skip' => 'line', 'arg' => 1}, # asis or a number
-  'footnotestyle'=> {'skip' => 'line', 'arg' => 1}, # end and separate
+  'fonttextsize' => {'arg' => 1}, # 10 11
+  'allowcodebreaks' => {'arg' => 1}, # false or true
+  'exampleindent' => {'arg' => 1}, # asis or a number
+  'footnotestyle'=> {'arg' => 1}, # end and separate
                            # and nothing else on the line
   'afourpaper' => {'skip' => 'line'}, # no arg
   'afivepaper' => {'skip' => 'line'}, # no arg
   'afourlatex' => {'skip' => 'line'}, # no arg
   'afourwide' => {'skip' => 'line'}, # no arg
-  'headings'=> {'skip' => 'line', 'arg' => 1},
+  'headings'=> {'arg' => 1},
               #off on single double singleafter doubleafter
               # interacts with setchapternewpage
-  'setchapternewpage' => {'skip' => 'line', 'arg' => 1}, # off on odd
+  'setchapternewpage' => {'arg' => 1}, # off on odd
   # FIXME for the following the @this* commands are not defined. Also
   # @value and maybe macro invocations may also be delayed.
   'everyheading' => {'arg' => 'lineraw'}, # @*heading @*footing use @|
@@ -146,22 +146,22 @@ my %misc_commands = (
   'oddheading' => {'arg' => 'lineraw'},
   'oddfooting' => {'arg' => 'lineraw'},
   'smallbook' => {'skip' => 'line'}, # no arg
-  'syncodeindex' => {'skip' => 'line', 'arg' => 2},
+  'syncodeindex' => {'arg' => 2},
                     # args are index identifiers
-  'synindex' => {'skip' => 'line', 'arg' => 2},
-  'defindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
-  'defcodeindex' => {'skip' => 'line', 'arg' => 1}, # one identifier arg
+  'synindex' => {'arg' => 2},
+  'defindex' => {'arg' => 1}, # one identifier arg
+  'defcodeindex' => {'arg' => 1}, # one identifier arg
   #'documentlanguage' => {'skip' => 'line', 'arg' => 1},
   'documentlanguage' => {'arg' => 'line'},
                                                  # language code arg
-  'kbdinputstyle' => {'skip' => 'line', 'arg' => 1}, # code 
+  'kbdinputstyle' => {'arg' => 1}, # code 
                                                   #example distinct
-  'everyheadingmarks' => {'skip' => 'line', 'arg' => 1}, # top bottom
-  'everyfootingmarks' => {'skip' => 'line', 'arg' => 1},
-  'evenheadingmarks' => {'skip' => 'line', 'arg' => 1},
-  'oddheadingmarks' => {'skip' => 'line', 'arg' => 1},
-  'evenfootingmarks' => {'skip' => 'line', 'arg' => 1},
-  'oddfootingmarks' => {'skip' => 'line', 'arg' => 1},
+  'everyheadingmarks' => {'arg' => 1}, # top bottom
+  'everyfootingmarks' => {'arg' => 1},
+  'evenheadingmarks' => {'arg' => 1},
+  'oddheadingmarks' => {'arg' => 1},
+  'evenfootingmarks' => {'arg' => 1},
+  'oddfootingmarks' => {'arg' => 1},
   # not valid for info (should be in @iftex)
   'cropmarks' => {'skip' => 'line'}, # no arg
 
@@ -182,7 +182,7 @@ my %misc_commands = (
   'sp' => {'arg' => 'line'}, # no arg 
                               # at the end of line or a numerical arg
   'page' => {'skip' => 'line'}, # no arg (pagebreak)
-  'need' => {'skip' => 'line', 'arg' => 1}, # one numerical/real arg
+  'need' => {'arg' => 1}, # one numerical/real arg
   # formatting
   'noindent' => {'skip' => 'whitespace'}, # no arg
   'indent' => {'skip' => 'whitespace'},
@@ -1326,6 +1326,7 @@ sub _internal_parse_text($$;$$)
               { 'cmdname' => $command, 'parent' => $current };
             $current->{'contents'}->[-1]->{'special'} = $special 
                                               if (defined($special));
+            # def*x
             if ($def_commands{$command}) {
               my $base_command = $command;
               $base_command =~ s/x$//;
@@ -1812,13 +1813,7 @@ sub _internal_parse_text($$;$$)
           if ($self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'}
               and $self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'} =~ /^\d$/) {
             my $args = _parse_line_command_args ($self, $current, $line_nr);
-            $current->{'special'}->{'line_args'} = $current->{'args'};
-            $current->{'args'} = [];
-            foreach my $arg (@$args) {
-              push @{$current->{'args'}},
-                { 'type' => 'misc_arg', 'text' => $arg, 
-                  'parent' => $current };
-            }
+            $current->{'special'}->{'misc_args'} = $args if (defined($args));
           }
           $current = $current->{'parent'};
         }
@@ -2009,13 +2004,14 @@ sub _parse_misc_command($$$$)
     }
   } elsif ($command eq 'clickstyle') {
     if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//) {
-      $args = [$1];
+      $args = ['@'.$1];
+      _line_warn ($self, sprintf($self->__("Remaining argument on \@%s line: %s"), $command, $line), $line_nr) if ($line);
     } else {
       _line_error ($self, sprintf($self->__("\@%s should only accept a \@-command as argument, not `%s'"), $command, $line), $line_nr);
     }
-  } elsif ($arg_spec eq 'line' or $arg_spec eq 'lineraw' or $arg_spec) {
+  } elsif ($arg_spec) {
     $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
-    $args = [ $line ];
+    #$args = [ $line ];
     if ($arg_spec ne 'lineraw') {
       $line_arg = $line;
     }
@@ -2023,19 +2019,7 @@ sub _parse_misc_command($$$$)
       $args = [ $line ];
     }
     $line = '';
-
-  } #elsif ($arg_spec) {
-    #my $arg_nr = $arg_spec;
-    #while ($arg_nr) {
-    #  if ($line =~ s/^(\s+)(\S*)//o) {
-    #    my $argument = $2;
-    #    push @$args, $argument if ($argument ne '');
-    #  } else {
-    #    last;
-    #  }
-    #  $arg_nr--;
-    #}
-  #}
+  } 
 
   if ($skip_spec eq 'line') {
     $line = '';
