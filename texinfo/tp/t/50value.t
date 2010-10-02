@@ -18,7 +18,13 @@ my @test_cases = (
 @value{gurgl
 
 @value{unknown}
-']
+'],
+['value_zero',
+'@set zero 0
+Value
+@value{zero}'
+]
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

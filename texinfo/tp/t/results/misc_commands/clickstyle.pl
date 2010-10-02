@@ -58,6 +58,7 @@ $result_trees{'clickstyle'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_tr
 $result_trees{'clickstyle'}{'contents'}[2]{'parent'} = $result_trees{'clickstyle'};
 
 $result_texts{'clickstyle'} = '@clickstyle @result
+
 A @click{} (result).
 ';
 

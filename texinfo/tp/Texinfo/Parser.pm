@@ -1185,6 +1185,8 @@ sub _internal_parse_text($$;$$)
           } elsif (($args_number >= 2) or ($args_number <1)) {
             _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
           } else {
+            $line =~ s/^\s*// if ($line =~ /\S/);
+            chomp $line;
             $arguments = [$line];
             $line = "\n";
           } 
@@ -1519,7 +1521,6 @@ sub _internal_parse_text($$;$$)
           }
 
         } elsif ($separator eq '}') { 
-          # FIXME use parents
           #_print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
@@ -1938,8 +1939,10 @@ sub _expand_cmd_args_to_texi ($) {
     }
   }
   if ($misc_commands{$cmdname}
-      and $misc_commands{$cmdname}->{'skip'}
-      and $misc_commands{$cmdname}->{'skip'} eq 'line') {
+      and (($misc_commands{$cmdname}->{'skip'}
+             and $misc_commands{$cmdname}->{'skip'} eq 'line')
+           or ($misc_commands{$cmdname}->{'arg'}
+              and $misc_commands{$cmdname}->{'arg'} eq 'special'))) { 
     $result .="\n";
   }
   if (defined($block_commands{$cmdname})) {
@@ -1948,10 +1951,6 @@ sub _expand_cmd_args_to_texi ($) {
     $result .= "\n" unless ($def_commands{$cmdname});
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-#  $result .= $cmd->{'special'}->{'arg'} if ($misc_commands{$cmdname} 
-#     and $cmd->{'special'} and $cmd->{'special'}->{'arg'});
-  $result .= "\n" if ($misc_commands{$cmdname} 
-      and $cmd->{'special'} and $cmd->{'special'}->{'arg'});
   #print STDERR "Result: $result\n";
   return $result;
 }
@@ -1983,6 +1982,7 @@ sub _parse_misc_command($$$$)
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
+      chomp $line;
       $special = { 'arg' => $line };
     }
     $line = '';
@@ -2009,6 +2009,7 @@ sub _parse_misc_command($$$$)
     } else {
       _line_error ($self, sprintf($self->__("\@%s should only accept a \@-command as argument, not `%s'"), $command, $line), $line_nr);
     }
+    $line = '';
   } elsif ($arg_spec) {
     $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
     #$args = [ $line ];

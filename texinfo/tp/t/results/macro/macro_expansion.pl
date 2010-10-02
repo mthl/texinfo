@@ -469,9 +469,9 @@ $result_trees{'macro_expansion'}{'contents'}[31]{'parent'} = $result_trees{'macr
 
 $result_texts{'macro_expansion'} = '
 @macro macro1 {arg1, arg2 }
-result of a macro with \arg1\ and 
+result of a macro with \\arg1\\ and 
 @verbatim
-\arg2\
+\\arg2\\
 @end verbatim
 @end macro
 
@@ -507,7 +507,7 @@ recursive call. result of a macro with first arg and
 
 protect stuff. result of a macro with first , arg and 
 @verbatim
-{} \ 
+{} \\ 
 @end verbatim
 .
 

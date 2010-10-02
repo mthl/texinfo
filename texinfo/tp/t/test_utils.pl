@@ -67,7 +67,9 @@ sub test($$)
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
-    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.tree_to_texi($result)."';\n\n";
+    my $perl_string_result = tree_to_texi($result);
+    $perl_string_result =~ s/\\/\\\\/g;
+    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
     print OUT $out_result;
     close (OUT);
@@ -129,7 +131,6 @@ sub run_all($$;$$$)
   } else {
     plan tests => (1 + scalar(@$ran_tests) * 3);
   }
-
 }
 
 1;

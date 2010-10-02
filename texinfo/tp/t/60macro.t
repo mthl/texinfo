@@ -76,8 +76,60 @@ foo
 @end macro
 
 call @foo{ something
+'],
+['expand_two_same',
+'@macro macro2 { arg }
+With a doubles arg \arg\ and re \arg\
+
+@end macro
+Call macro2
+@macro2 { a simple @code{
+arg}
+}
+Call macro2 with 2 args
+@macro2 { arg with comma , here }
+'],
+['macro_zero',
+'@macro zero
+0
+@end macro
+
+Macro
+@zero{}
+'],
+['protect_in_body',
+'@macro macro1 { arg1 , arg2 }
+result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+@end macro
+
+the @macro1 { @samp{f\irst arg}, second arg } after macro.
+'],
+['protect_in_body_one_arg',
+'@macro macro1 { arg1 , arg2 }
+result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+@end macro
+
+@macro1 { @samp{f\irst arg}}
+'],
+['protect_in_body_line_arg',
+'@macro macro1 { arg1 , arg2 }
+result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+@end macro
+
+@macro1 @samp{f\irst arg}, second arg
+'],
+['protect_comma_macro_line',
+'@macro macro2 { arg }
+we get \arg\ and another \arg\
+and another one on another line \arg\
+
+and a last in another paragraph
+@end macro
+
+@macro2  arg,  comma \,
 ']
 );
+
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 

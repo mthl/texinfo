@@ -12,32 +12,28 @@ $result_trees{'bad_syntax'} = {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => '
-'
+        'arg' => ''
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' 
-'
+        'arg' => ' '
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' ?
-'
+        'arg' => ' ?'
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' :-/ hey!
-'
+        'arg' => ' :-/ hey!'
       }
     },
     {
