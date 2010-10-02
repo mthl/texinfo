@@ -84,6 +84,7 @@ Text line after the sp followed by a sp @sp 1
 Text line after the text line followed by the sp.
 @ifnottex
 @sp 2 a number after sp
+@end ifnottex
 '],
 ['clickstyle',
 '@clickstyle @result

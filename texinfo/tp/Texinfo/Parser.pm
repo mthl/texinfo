@@ -70,7 +70,8 @@ my %default_configuration = (
   'aliases' => {},
   'indices' => [],
   'values' => {},
-  'macros' => {}
+  'macros' => {},
+  'expanded_formats', []
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -255,7 +256,7 @@ foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
   $menu_commands{$menu_command} = 1;
 };
 
-# commands delimiting blocks, typically with an @end.
+# commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.
 my %block_commands;
@@ -313,11 +314,20 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
+my @out_formats = ('html', 'tex', 'xml', 'docbook');
 # macro is special
-foreach my $raw_command ('html', 'tex', 'xml', 'docbook', 'verbatim', 
+foreach my $raw_command (@out_formats, 'verbatim', 
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
 }
+
+foreach my $command (@out_formats, 'info', 'plaintext') {
+  $block_commands{'if' . $command} = 'conditional';
+  $block_commands{'ifnot' . $command} = 'conditional';
+}
+
+$block_commands{'ifset'} = 'conditional';
+$block_commands{'ifclear'} = 'conditional';
 
 # 'macro' ?
 foreach my $block_command_one_arg('table', 'ftable', 'vtable',
@@ -432,7 +442,8 @@ foreach my $block_command (keys(%block_commands)) {
   $begin_line_commands{$block_command} = 1;
   $default_no_paragraph_commands{$block_command} = 1;
   $close_paragraph_commands{$block_command} = 1 
-     unless ($block_commands{$block_command} eq 'raw');
+     unless ($block_commands{$block_command} eq 'raw' or 
+             $block_commands{$block_command} eq 'conditional');
 }
 $close_paragraph_commands{'verbatim'} = 1;
 
@@ -504,6 +515,9 @@ sub parser($;$)
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
   $parser->{'context_stack'} = [ $parser->{'context'} ];
+  foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {
+    $parser->{'expanded_formats_hash'}->{$expanded_format} = 1;
+  }
   return $parser;
 }
 
@@ -1029,6 +1043,8 @@ sub _internal_parse_text($$;$$)
   $self->{'tree'} = $root;
   my $current = $root;
 
+  $self->{'conditionals_stack'} = [];
+
   my $line_nr;
   
  NEXT_LINE:
@@ -1049,7 +1065,8 @@ sub _internal_parse_text($$;$$)
         # raw format or verb
           (($current->{'cmdname'}
            and $block_commands{$current->{'cmdname'}}
-            and $block_commands{$current->{'cmdname'}} eq 'raw')
+            and ($block_commands{$current->{'cmdname'}} eq 'raw'
+                 or $block_commands{$current->{'cmdname'}} eq 'conditional'))
           or 
            ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
             and $current->{'parent'}->{'cmdname'} eq 'verb')
@@ -1103,10 +1120,11 @@ sub _internal_parse_text($$;$$)
     }
 
     while (1) {
-      # in a raw block command
+      # in a raw or ignored conditional block command
       if ($current->{'cmdname'} and 
             $block_commands{$current->{'cmdname'}} and 
-            ($block_commands{$current->{'cmdname'}} eq 'raw')) {
+            ($block_commands{$current->{'cmdname'}} eq 'raw'
+             or $block_commands{$current->{'cmdname'}} eq 'conditional')) {
         # special case for macro that may be nested
         if (($current->{'cmdname'} eq 'macro' 
               or $current->{'cmdname'} eq 'rmacro') 
@@ -1116,6 +1134,16 @@ sub _internal_parse_text($$;$$)
                                             'parent' => $current,
                                             'contents' => [],
                          'special' => {'macro_line' => $line }};
+          $current = $current->{'contents'}->[-1];
+          last;
+        } elsif (($current->{'cmdname'} eq 'ifclear' 
+                  or $current->{'cmdname'} eq 'ifset')
+                and $line =~ /^\s*\@$current->{'cmdname'}/) {
+          $line =~ s/\s*\@($current->{'cmdname'})//;
+          push @{$current->{'contents'}}, { 'cmdname' => $1,
+                                            'parent' => $current,
+                                            'contents' => [],
+                         'special' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
         } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
@@ -1137,6 +1165,9 @@ sub _internal_parse_text($$;$$)
             }
           }
           $current = $current->{'parent'};
+          # don't store ignored @if*
+          pop @{$current->{'contents'}} 
+            if ($block_commands{$end_command} eq 'conditional');
           last unless ($line =~ /\S/);
         } else {
           push @{$current->{'contents'}}, 
@@ -1166,6 +1197,22 @@ sub _internal_parse_text($$;$$)
       if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//) {
         my $end_command = $1;
         print STDERR "END $end_command\n" if ($self->{'debug'});
+        if (!exists $block_commands{$end_command}) {
+          _line_warn ($self, 
+            sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
+          $current = _merge_text ($self, $current, "\@end $end_command");
+          last;
+        }
+        if ($block_commands{$end_command} eq 'conditional') {
+          if (@{$self->{'conditionals_stack'}} 
+              and $self->{'conditionals_stack'}->[-1] eq $end_command) {
+            pop @{$self->{'conditionals_stack'}};
+          } else {
+            _line_error ($self, 
+                   sprintf($self->__("Unmatched `%c%s'"), ord('@'), 'end'), $line_nr);
+          }
+          last;
+        }
         $current = _end_block_command($self, $current, $line_nr,
                                                 $end_command);
         last unless ($line =~ /\S/);
@@ -1368,6 +1415,34 @@ sub _internal_parse_text($$;$$)
                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
             $current = $current->{'contents'}->[-1];
+            last;
+          } elsif ($block_commands{$command} eq 'conditional') {
+            my $ifvalue_true = 0;
+            if ($command eq 'ifclear' or $command eq 'ifset') {
+              if ($line =~ /^\s+([\w\-]+)/) {
+                my $name = $2;
+                if ((exists($self->{'values'}->{'name'}) and $command eq 'ifset')
+                    or (!exists($self->{'values'}->{'name'}) 
+                         and $command eq 'ifclear')) {
+                  $ifvalue_true = 1;
+                }
+              } else {
+                _line_error ($self, sprintf($self->__("%c%s requires a name"), ord('@'), $command), $line_nr);
+              }
+            } elsif ($command =~ /^ifnot(.*)/) {
+              $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1});
+            } else {
+              die unless ($command =~ /^if(.*)/);
+              $ifvalue_true = 1 if ($self->{'expanded_formats_hash'}->{$1});
+            }
+            if ($ifvalue_true) {
+              push @{$self->{'conditionals_stack'}}, $command;
+            } else {
+              push @{$current->{'contents'}}, { 'cmdname' => $command, 
+                                                'parent' => $current,
+                                                'contents' => [] };
+              $current = $current->{'contents'}->[-1];
+            }
             last;
           } else {
             $line =~ s/\s*//;
@@ -1822,6 +1897,10 @@ sub _internal_parse_text($$;$$)
         last;
       }
     }
+  }
+  while (@{$self->{'conditionals_stack'}}) { 
+    my $end_conditional = pop @{$self->{'conditionals_stack'}};
+    _line_error ($self, sprintf($self->__("Expected \@end %s"), $end_conditional), $line_nr);
   }
   $current = _end_block_command($self, $current, $line_nr);
   return $root;

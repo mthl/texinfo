@@ -90,7 +90,7 @@ call on the line. @macro1 my arg.
 
 recursive call. @macro1{first arg, @macro1{nested second arg}}.
 
-protect stuff. @macro1{first \, arg, \{\} \\\\ }.
+protect stuff. @macro1{first \\, arg, \\{\\} \\\\ }.
 
 multi-line arg. @macro1{arg 1
 
@@ -129,7 +129,7 @@ Macro
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 @end macro
 
-the @macro1 { @samp{f\irst arg}, second arg } after macro.
+the @macro1 { @samp{f\\irst arg}, second arg } after macro.
 '],
 ['protect_in_body_one_arg',
 '@macro macro1 { arg1 , arg2 }
@@ -143,17 +143,128 @@ result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 @end macro
 
-@macro1 @samp{f\irst arg}, second arg
+@macro1 @samp{f\\irst arg}, second arg
 '],
 ['protect_comma_macro_line',
 '@macro macro2 { arg }
-we get \arg\ and another \arg\
-and another one on another line \arg\
+we get \\arg\\ and another \\arg\\
+and another one on another line \\arg\\
 
 and a last in another paragraph
 @end macro
 
-@macro2  arg,  comma \,
+@macro2  arg,  comma \\,
+'],
+['nested_macro_call',
+'@macro machin{}
+(machin)
+@end macro
+
+@macro truc{}
+@machin{}
+
+@end macro
+
+Before @truc{} after truc.
+'],
+['two_macros_on_a_line',
+'@macro mymacro
+in mymacro
+@end macro
+
+@macro mymacro_with_args{arg}
+in with args
+now the arg \\arg\\
+after
+@end macro
+
+
+@@mymacro@{@} @@mymacro@{@}
+@mymacro{} @mymacro{}
+
+@@mymacro @@mymacro@{@}
+@mymacro @mymacro{}
+
+@@mymacro@{@} @@mymacro
+@mymacro{} @mymacro
+
+with args
+@mymacro_with_args {an
+arg
+
+in macro} @mymacro{}
+'],
+['macro_in_macro_arg','
+@macro macro1
+a, @macro2
+@end macro
+
+@macro macro2{arg}
+hello \arg\ after arg
+@end macro
+
+@macro macro3{text, arg}
+\text\
+&&&& \arg\
+@end macro
+
+@macro3{@macro1{}text for macro2}
+'],
+['macro_in_macro_arg_simpler',
+'@macro macro11
+a, macro2
+@end macro
+
+@macro macro3{text, arg}
+\text\
+&&&& \arg\
+@end macro
+
+@macro3{@macro11{}text for macro2}
+'],
+['complex_argument',
+'@macro macro2{arg}
+coucou \arg\ after arg
+@end macro
+
+@macro macro4 {}
+1
+2
+3
+4
+@end macro
+
+@macro macro3{text, arg}
+\text\
+&&&& \arg\
+@end macro
+
+@macro3{@verb{% @macro2 %}
+@c @macro4
+@pagesizes 4 @macro4{}
+@headings doubleafter @macro4{}
+@verbatim
+@macro2
+@end verbatim
+@ignore
+@macro4
+@end ignore
+@macro macro7 {truc}
+@emph{\\\\truc\\\\}
+@end macro
+macro7 defined
+@ifinfo
+@macro4
+@end ifinfo
+@iftex
+@macro2{aa\\,bb}
+@end iftex
+@macro4{}
+}
+
+Call macro7
+@macro7{aaa}
+
 ']
 );
 

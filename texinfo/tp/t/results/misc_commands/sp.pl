@@ -85,11 +85,6 @@ $result_trees{'sp'} = {
           'parent' => {},
           'text' => 'Text line after the text line followed by the sp.
 '
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
         }
       ],
       'parent' => {},
@@ -129,7 +124,6 @@ $result_trees{'sp'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result
 $result_trees{'sp'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[5];
 $result_trees{'sp'}{'contents'}[5]{'parent'} = $result_trees{'sp'};
 $result_trees{'sp'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[6];
-$result_trees{'sp'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'sp'}{'contents'}[6];
 $result_trees{'sp'}{'contents'}[6]{'parent'} = $result_trees{'sp'};
 $result_trees{'sp'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[7]{'args'}[0];
 $result_trees{'sp'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[7];
@@ -140,7 +134,6 @@ Text line followed on the same line and another below @sp 1
 @sp 2
 Text line after the sp followed by a sp @sp 1
 Text line after the text line followed by the sp.
-
 @sp 2 a number after sp
 ';
 
