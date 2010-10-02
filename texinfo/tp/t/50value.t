@@ -23,8 +23,12 @@ my @test_cases = (
 '@set zero 0
 Value
 @value{zero}'
-]
+],
+['empty_set',
+'@set myspace
 
+1 @value{myspace} 1
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

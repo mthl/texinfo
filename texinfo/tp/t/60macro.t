@@ -45,6 +45,20 @@ in macro foo
 @end macro
 @end macro
 '],
+['macro_no_arg_expansion',
+'@macro test1
+res1
+@end macro
+
+@test1{} abc
+'],
+['macro_no_arg_bad_expansion',
+'@macro test1
+res1
+@end macro
+
+@test1 abc
+'],
 ['macro_expansion','
 @macro macro1 {arg1, arg2 }
 result of a macro with \arg1\ and 

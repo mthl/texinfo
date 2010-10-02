@@ -1976,9 +1976,11 @@ sub _parse_misc_command($$$$)
 
 
   if ($command eq 'set') {
-    if ($line =~ /^(\s+)([\w\-]+)(\s+)(.*)$/) {
-      $args = [$2, $4];
-      $self->{'values'}->{$2} = $4;
+    if ($line =~ /^\s+([\w\-]+)\s*(.*?)\s*$/) {
+      my $name = $1;
+      my $arg = $2;
+      $args = [$name, $arg];
+      $self->{'values'}->{$name} = $arg;
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
