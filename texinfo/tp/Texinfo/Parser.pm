@@ -510,8 +510,10 @@ sub parser($;$)
 sub _text_to_lines($)
 {
   my $text = shift;
+  die if (!defined($text));
   my $chomped = chomp($text);
   my $lines = [ map {$_."\n"} split (/\n/, $text, -1) ];
+  $lines = [''] if (!@$lines);
   chomp($lines->[-1]) unless ($chomped);
   return $lines;
 }
@@ -1195,7 +1197,6 @@ sub _internal_parse_text($$;$$)
           print STDERR "MACROBODY: $expanded".'||||||'."\n" 
              if ($self->{'debug'}); 
           my $expanded_lines = _text_to_lines($expanded);
-          $expanded_lines = [''] if !(@$expanded_lines);
           print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
                                        ."\nEND LINES\n" if ($self->{'debug'});
           chomp ($expanded_lines->[-1]);

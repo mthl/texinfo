@@ -13,6 +13,19 @@ in foo
 @macro bar
 in bar
 @end macro'],
+['text_before_after',
+'before @macro mymacro
+in macro
+@end macro after
+'],
+['no_macrobody',
+'@macro no_macrobody {arg}
+@end macro
+
+@no_macrobody line arg
+
+@no_macrobody{arg brace}.
+'],
 ['empty_end','@macro foo {aaa, }
 in foo
 @end macro'],
