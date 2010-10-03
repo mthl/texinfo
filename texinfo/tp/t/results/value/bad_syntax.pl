@@ -64,15 +64,9 @@ $result_trees{'bad_syntax'} = {
       'type' => 'unknown'
     },
     {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
       'parent' => {},
-      'type' => 'paragraph'
+      'text' => '
+'
     }
   ]
 };
@@ -85,7 +79,6 @@ $result_trees{'bad_syntax'}{'contents'}[5]{'parent'} = $result_trees{'bad_syntax
 $result_trees{'bad_syntax'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[6];
 $result_trees{'bad_syntax'}{'contents'}[6]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[7]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[9];
 $result_trees{'bad_syntax'}{'contents'}[9]{'parent'} = $result_trees{'bad_syntax'};
 
 $result_texts{'bad_syntax'} = '
@@ -143,6 +136,15 @@ $result_errors{'bad_syntax'} = [
     'line_nr' => 7,
     'macro' => '',
     'text' => 'Bad syntax for @value',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':7: Misplaced {
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Misplaced {',
     'type' => 'error'
   },
   {

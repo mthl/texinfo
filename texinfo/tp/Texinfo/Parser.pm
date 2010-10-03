@@ -1277,6 +1277,7 @@ sub _internal_parse_text($$;$$)
           } else {
             _line_error ($self, $self->__("Bad syntax for \@value"), $line_nr);
           }
+          next;
         }
 
         if (defined($deprecated_commands{$command})) {
@@ -1290,6 +1291,8 @@ sub _internal_parse_text($$;$$)
           }
         }
 
+        # special case with @ followed by a newline protecting end of lines
+        # in @def*
         last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
 
         unless ($self->{'no_paragraph_commands'}->{$command}) {
@@ -1301,6 +1304,7 @@ sub _internal_parse_text($$;$$)
           $current = _end_paragraph($self, $current, $line_nr);
         }
 
+        # commands without braces and not block commands, ie no  @end
         if (defined($self->{'misc_commands'}->{$command})) {
           if ($root_commands{$command}) {
             $current = _end_block_command($self, $current, $line_nr);
@@ -1396,6 +1400,9 @@ sub _internal_parse_text($$;$$)
                   'parent' => $current->{'contents'}->[-1] };
             }
           }
+
+          # a container for what is on the @-command line, considered to
+          # be the @-command argument
           if (defined($line_arg)) {
             $line = $line_arg;
             $current = $current->{'contents'}->[-1];
@@ -1411,6 +1418,7 @@ sub _internal_parse_text($$;$$)
 
           last NEXT_LINE if ($command eq 'bye');
 
+        # @-command with matching @end
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
             my $macro = _parse_macro_command ($self, $command, $line, 
@@ -1501,7 +1509,8 @@ sub _internal_parse_text($$;$$)
               last unless ($line =~ /\S/);
             }
           }
-        } elsif ($line =~ s/^{// and (defined($brace_commands{$command}))) {
+        } elsif ($line =~ s/^{// and (defined($brace_commands{$command})
+               or defined($self->{'definfoenclose'}->{$command}))) {
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current };
           $current = $current->{'contents'}->[-1];
@@ -1517,7 +1526,15 @@ sub _internal_parse_text($$;$$)
           }
           $current->{'args'} = [ { 'parent' => $current, 
                                    'contents' => [] } ];
-          $current->{'remaining_args'} = $brace_commands{$command} -1 if ($brace_commands{$command});
+          $current->{'remaining_args'} = $brace_commands{$command} -1 
+                                             if ($brace_commands{$command});
+          if ($self->{'definfoenclose'}->{$command}) {
+            $current->{'type'} = 'definfoenclose_command';
+            $current->{'special'} = { 
+                 'begin' => $self->{'definfoenclose'}->{$command}->[0], 
+                 'end' => $self->{'definfoenclose'}->{$command}->[1] };
+            $current->{'remaining_args'} = 0;
+          }
           $current = $current->{'args'}->[-1];
           # FIXME don't use type to distinguish context_brace_commands.
           if ($context_brace_commands{$command}) {
@@ -1576,8 +1593,12 @@ sub _internal_parse_text($$;$$)
             _line_error ($self,
                sprintf($self->__("\@%s expected braces"), $command), $line_nr);
           }
+        } elsif (defined($self->{'definfoenclose'}->{$command})) {
+          _line_error ($self, sprintf($self->__("%c%s expected braces"), 
+                                       ord('@'), $command), $line_nr);
         } else {
-          # unknown
+          _line_error ($self, sprintf($self->__("Unknown command `%s'"), 
+                                                      $command), $line_nr);
         }
 
       } elsif ($line =~ s/^([{}@,:\t.])//) {
@@ -1602,12 +1623,13 @@ sub _internal_parse_text($$;$$)
           }
 
         } elsif ($separator eq '}') { 
-          #_print_current ($current);
+          #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
           } elsif ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
-                   and exists $brace_commands{$current->{'parent'}->{'cmdname'}}) {
+                   and (exists $brace_commands{$current->{'parent'}->{'cmdname'}}
+                         or $self->{'definfoenclose'}->{$current->{'parent'}->{'cmdname'}})) {
              if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
                pop @{$self->{'context_stack'}};
              }
@@ -2001,7 +2023,8 @@ sub _expand_cmd_args_to_texi ($) {
     #print STDERR "".Data::Dumper->Dump([$cmd]);
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmdname})) {
+      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
+                    and $cmd->{'type'} eq 'definfoenclose_command')) {
         $result .= ', ' if ($arg_nr);
         $arg_nr++;
       } else {
@@ -2174,7 +2197,8 @@ sub _parse_line_command_args($$$)
   } elsif ($command eq 'definfoenclose') {
     if ($line =~ s/^([\w\-]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//) {
       $args = [$1, $2, $3 ];
-      $self->{'info_enclose'}->{$1} = [ $2, $3 ];
+      $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
+      print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'debug'});
     } else {
       _line_error ($self, sprintf($self->
                               __("Bad argument to \@%s"), $command), $line_nr);
