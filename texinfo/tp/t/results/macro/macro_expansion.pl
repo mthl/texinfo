@@ -118,46 +118,6 @@ $result_trees{'macro_expansion'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => '3 simple args. result of a macro with one  and 
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'cmdname' => 'verbatim',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'two, three
-',
-          'type' => 'raw'
-        }
-      ],
-      'parent' => {}
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
           'text' => 'comma in command. result of a macro with aaa '
         },
         {
@@ -417,6 +377,10 @@ $result_trees{'macro_expansion'}{'contents'}[5]{'contents'}[0]{'parent'} = $resu
 $result_trees{'macro_expansion'}{'contents'}[5]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[6]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[7];
+$result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[1]{'args'}[0];
+$result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[1];
+$result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[7];
+$result_trees{'macro_expansion'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[7];
 $result_trees{'macro_expansion'}{'contents'}[7]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[8];
 $result_trees{'macro_expansion'}{'contents'}[8]{'parent'} = $result_trees{'macro_expansion'};
@@ -424,10 +388,6 @@ $result_trees{'macro_expansion'}{'contents'}[9]{'contents'}[0]{'parent'} = $resu
 $result_trees{'macro_expansion'}{'contents'}[9]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[10]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[11];
-$result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[1]{'args'}[0];
-$result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[1];
-$result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[11];
-$result_trees{'macro_expansion'}{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[11];
 $result_trees{'macro_expansion'}{'contents'}[11]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[12];
 $result_trees{'macro_expansion'}{'contents'}[12]{'parent'} = $result_trees{'macro_expansion'};
@@ -450,22 +410,15 @@ $result_trees{'macro_expansion'}{'contents'}[21]{'parent'} = $result_trees{'macr
 $result_trees{'macro_expansion'}{'contents'}[22]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[23]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[23];
 $result_trees{'macro_expansion'}{'contents'}[23]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[24];
 $result_trees{'macro_expansion'}{'contents'}[24]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[25]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[25];
 $result_trees{'macro_expansion'}{'contents'}[25]{'parent'} = $result_trees{'macro_expansion'};
+$result_trees{'macro_expansion'}{'contents'}[26]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[26];
+$result_trees{'macro_expansion'}{'contents'}[26]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[26];
+$result_trees{'macro_expansion'}{'contents'}[26]{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[26];
 $result_trees{'macro_expansion'}{'contents'}[26]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[27]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[27];
 $result_trees{'macro_expansion'}{'contents'}[27]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[28]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[29]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[29];
-$result_trees{'macro_expansion'}{'contents'}[29]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[30]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[30];
-$result_trees{'macro_expansion'}{'contents'}[30]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[30];
-$result_trees{'macro_expansion'}{'contents'}[30]{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[30];
-$result_trees{'macro_expansion'}{'contents'}[30]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[31]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[31];
-$result_trees{'macro_expansion'}{'contents'}[31]{'parent'} = $result_trees{'macro_expansion'};
 
 $result_texts{'macro_expansion'} = '
 @macro macro1 {arg1, arg2 }
@@ -478,12 +431,6 @@ result of a macro with \\arg1\\ and
 2 simple args. result of a macro with first arg and 
 @verbatim
 second arg
-@end verbatim
-.
-
-3 simple args. result of a macro with one  and 
-@verbatim
-two, three
 @end verbatim
 .
 
@@ -523,10 +470,10 @@ arg3
 
 $result_errors{'macro_expansion'} = [
   {
-    'error_line' => ':15: warning: @macro1 defined with zero or more than one argument should be invoked with {}
+    'error_line' => ':13: warning: @macro1 defined with zero or more than one argument should be invoked with {}
 ',
     'file_name' => '',
-    'line_nr' => 15,
+    'line_nr' => 13,
     'macro' => '',
     'text' => '@macro1 defined with zero or more than one argument should be invoked with {}',
     'type' => 'warning'

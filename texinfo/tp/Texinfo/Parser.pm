@@ -1057,7 +1057,9 @@ sub _internal_parse_text($$;$$)
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
       print STDERR "".Data::Dumper->Dump([$root], ['$root']);
-      print STDERR "NEW LINE($self->{'context_stack'}->[-1]): $line";
+      my $line_text = '';
+      $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
+      print STDERR "NEW LINE($self->{'context_stack'}->[-1]:@{$self->{'conditionals_stack'}}:$line_text): $line";
       delete $current->{'HERE !!!!'};
     }
 
@@ -1420,20 +1422,23 @@ sub _internal_parse_text($$;$$)
             my $ifvalue_true = 0;
             if ($command eq 'ifclear' or $command eq 'ifset') {
               if ($line =~ /^\s+([\w\-]+)/) {
-                my $name = $2;
-                if ((exists($self->{'values'}->{'name'}) and $command eq 'ifset')
-                    or (!exists($self->{'values'}->{'name'}) 
+                my $name = $1;
+                if ((exists($self->{'values'}->{$name}) and $command eq 'ifset')
+                    or (!exists($self->{'values'}->{$name}) 
                          and $command eq 'ifclear')) {
                   $ifvalue_true = 1;
                 }
+                print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'debug'});
               } else {
                 _line_error ($self, sprintf($self->__("%c%s requires a name"), ord('@'), $command), $line_nr);
               }
             } elsif ($command =~ /^ifnot(.*)/) {
               $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1});
+              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
             } else {
               die unless ($command =~ /^if(.*)/);
               $ifvalue_true = 1 if ($self->{'expanded_formats_hash'}->{$1});
+              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
             }
             if ($ifvalue_true) {
               push @{$self->{'conditionals_stack'}}, $command;
@@ -2069,21 +2074,26 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
   } elsif ($command eq 'clear') {
-    if ($line =~ /^(\s+)([\w\-]+)/) {
-      $args = [$2];
-      delete $self->{'values'}->{$2};
+    if ($line =~ /^\s+([\w\-]+)/) {
+      $args = [$1];
+      delete $self->{'values'}->{$1};
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
+      chomp $line;
+      $special = { 'arg' => $line };
     }
+    $line = '';
   } elsif ($command eq 'unmacro') {
-    if ($line =~ /^(\s+)([\w\-]+)/) {
-      $args = [$2];
-      delete $self->{'macros'}->{$2};
+    if ($line =~ /^\s+([\w\-]+)/) {
+      $args = [$1];
+      delete $self->{'macros'}->{$1};
+      print STDERR "UNMACRO $1\n" if ($self->{'debug'});
     } else {
       _line_error ($self, sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
     }
+    $line = '';
   } elsif ($command eq 'clickstyle') {
     if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//) {
       $args = ['@'.$1];

@@ -72,6 +72,14 @@ res1
 
 @test1 abc
 '],
+['too_much_args',
+'@macro twoargs {first, second}
+first arg: \first\
+second arg: \second\
+@end macro
+
+@twoargs{one, two, three}.
+'],
 ['macro_expansion','
 @macro macro1 {arg1, arg2 }
 result of a macro with \arg1\ and 
@@ -82,15 +90,13 @@ result of a macro with \arg1\ and
 
 2 simple args. @macro1 {first arg, second arg}.
 
-3 simple args. @macro1{one , two, three}.
-
 comma in command. @macro1{aaa @samp{a macro , } bbb}.
 
 call on the line. @macro1 my arg.
 
 recursive call. @macro1{first arg, @macro1{nested second arg}}.
 
-protect stuff. @macro1{first \\, arg, \\{\\} \\\\ }.
+protect stuff. @macro1{first \, arg, \{\} \\\\ }.
 
 multi-line arg. @macro1{arg 1
 
@@ -126,34 +132,34 @@ Macro
 '],
 ['protect_in_body',
 '@macro macro1 { arg1 , arg2 }
-result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
-the @macro1 { @samp{f\\irst arg}, second arg } after macro.
+the @macro1 { @samp{f\irst arg}, second arg } after macro.
 '],
 ['protect_in_body_one_arg',
 '@macro macro1 { arg1 , arg2 }
-result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
 @macro1 { @samp{f\irst arg}}
 '],
 ['protect_in_body_line_arg',
 '@macro macro1 { arg1 , arg2 }
-result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
+result: @emph{\arg1\} protected \\\\ -> \\\\arg1\\\\ @emph{\arg2\}
 @end macro
 
-@macro1 @samp{f\\irst arg}, second arg
+@macro1 @samp{f\irst arg}, second arg
 '],
 ['protect_comma_macro_line',
 '@macro macro2 { arg }
-we get \\arg\\ and another \\arg\\
-and another one on another line \\arg\\
+we get \arg\ and another \arg\
+and another one on another line \arg\
 
 and a last in another paragraph
 @end macro
 
-@macro2  arg,  comma \\,
+@macro2  arg,  comma \,
 '],
 ['nested_macro_call',
 '@macro machin{}
@@ -174,7 +180,7 @@ in mymacro
 
 @macro mymacro_with_args{arg}
 in with args
-now the arg \\arg\\
+now the arg \arg\
 after
 @end macro
 
@@ -257,7 +263,7 @@ macro7 defined
 @macro4
 @end ifinfo
 @iftex
-@macro2{aa\\,bb}
+@macro2{aa\,bb}
 @end iftex
 @macro4{}
 }
@@ -265,6 +271,130 @@ macro7 defined
 Call macro7
 @macro7{aaa}
 
+'],
+['expansion_order',
+'@macro bidule{arg}
+@machin{}
+@end macro
+
+@macro machin
+\\\\arg\\\\
+
+@end macro
+
+@bidule{ab}
+'],
+['ifclear_in_macro',
+'@macro note {arg}
+@ifclear notes 
+\arg\
+@end ifclear
+@end macro
+
+@note{
+arg
+}
+'],
+['macro_in_ifset',
+'@macro macro1 {arg}
+@end ifset
+@end macro
+
+@ifset a
+@macro1
+in ifset
+@end ifset
+'],
+['macro_in_ifset_end_in_arg',
+'@macro macro1 {arg}
+@end ifset
+@end macro
+
+@ifset a
+@macro1{
+@end ifset
+}
+in ifset
+@end ifset
+'],
+['ifset_in_macro',
+'@macro note {arg}
+@ifset notes 
+\arg\
+@end ifset
+@end macro
+
+@note{
+arg
+}
+'],
+['ifset_in_macro_set',
+'@macro note {arg}
+@ifset notes 
+\arg\
+@end ifset
+@end macro
+
+@note{
+arg
+}
+', {'values' => {'notes' => 1}}],
+# unmacro is required for C makeinfo to avoid a warning.
+# texi2dvi breaks.
+['arg_body_expansion_order',
+'
+@macro othermacro
+initial
+@end macro
+
+@macro redefineothermacro {arg}
+@unmacro othermacro
+@macro othermacro
+different
+@end macro
+\arg\
+@end macro
+
+@redefineothermacro{@othermacro{}}
+']
+);
+
+my @todo =(
+['glossary',
+'@macro glossarytext
+@table @asis
+@end macro
+
+@macro glossary
+@glossarytext{}
+@end table
+
+@end macro
+
+@macro gentry {id, name, text}
+@ifhtml
+@ref{\id\,\name\}
+@end ifhtml
+@ifnothtml
+\name\ (@pxref{\id\})
+@end ifnothtml
+@unmacro expandglossary
+@macro expandglossary{glossary}
+@unmacro glossarytext
+@macro glossarytext
+\\\\glossary\\\\
+@item \name\ @anchor{\id\}
+\text\
+@end macro
+@end macro
+@expandglossary {@glossarytext{}}
+
+@end macro
+
+The @gentry{id1, name1, text1\, arg1 } is used in many cases while
+@gentry{id2, name2, text2} is quite specific
+
+@glossary{}
 ']
 );
 

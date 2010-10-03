@@ -18,8 +18,5 @@ values and user defined macro expansion in line @-commands, line
 
 Test @set with an argument but no space following it. In ifset tests.
 
-test something @macro
-qsmlsmqldk
-@end macro sqjsqdlkjhdsq
-
+parse @sp a bit more.
 

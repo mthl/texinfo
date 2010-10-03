@@ -15,9 +15,11 @@ ok(1);
 
 our $arg_generate;
 our $arg_debug;
+our $arg_complete;
 
 Getopt::Long::Configure("gnu_getopt");
-GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug);
+GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug, 
+           'c|complete' => \$arg_complete);
 
 our $arg_test_case = shift @ARGV;
 
@@ -45,8 +47,11 @@ sub test($$)
   my $test_case = shift;
   my $test_name = shift @$test_case;
   my $test_text = shift @$test_case;
+  my $parser_options = shift @$test_case;
+  $parser_options = {} if (!defined($parser_options));
 
-  my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'}});
+  my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'},
+                                       %$parser_options});
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result =  $parser->parse_texi_text($test_text, 1);
   my ($errors, $error_nrs) = $parser->errors();
@@ -124,13 +129,45 @@ sub run_all($$;$$$)
   }
 
   foreach my $test_case (@$ran_tests) {
-    $test->test($test_case);
+    if ($arg_complete) {
+      $test->output_texi_file($test_case)
+    } else {
+      $test->test($test_case);
+    }
   }
-  if ($generate) {
+  if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
     plan tests => (1 + scalar(@$ran_tests) * 3);
   }
+}
+
+sub output_texi_file($)
+{
+  my $self = shift;
+  my $test_case = shift;
+  my $test_name = shift @$test_case;
+  my $test_text = shift @$test_case;
+
+  my $dir = "texi/$self->{'name'}/";
+  mkdir "texi/" or die 
+     unless (-d "texi/");
+  mkdir $dir or die 
+     unless (-d $dir);
+  my $file = "${dir}$test_name.texi";
+  open (OUTFILE, ">$file") or die ("Open $file: $!\n");
+  print OUTFILE "\\input texinfo \@c -*-texinfo-*-
+
+\@setfilename $test_name.info
+
+\@node Top
+
+\@top $test_name
+
+$test_text
+
+\@bye\n";
+  close (OUTFILE);
 }
 
 1;
