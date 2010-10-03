@@ -103,6 +103,21 @@ multi-line arg. @macro1{arg 1
 now, arg3
 
 }.'],
+['implicit_quoting_one_arg',
+'
+@macro FIXME{a}
+@strong{FIXME: \a\}
+@end macro
+
+@FIXME{Many arguments, separated by commas, are processed here}
+'],
+['implicit_quoting_recursion',
+'@rmacro cat{a,b}
+\a\\\\b\
+@end rmacro
+
+@cat{@cat{@cat{@cat{@cat{@cat{na, to}, po}, co}, tu}, oto},tam}
+'],
 ['arg_not_closed',
 '@macro foo {arg}
 foo
@@ -227,6 +242,20 @@ a, macro2
 @end macro
 
 @macro3{@macro11{}text for macro2}
+'],
+['macro_in_brace_command',
+'@macro foo
+foo-expansion
+@end macro
+
+@macro bar
+bar-expansion
+@end macro
+
+@itemize @bullet
+@item @email{@foo{}@@@bar{}},
+  also helped.
+@end itemize
 '],
 ['complex_argument',
 '@macro macro2{arg}

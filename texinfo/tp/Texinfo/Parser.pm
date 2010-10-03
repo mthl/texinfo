@@ -1218,8 +1218,9 @@ sub _internal_parse_text($$;$$)
         $current = _end_block_command($self, $current, $line_nr,
                                                 $end_command);
         last unless ($line =~ /\S/);
+        # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
-               or $line =~ s/^\@([a-zA-Z][\w-]*)//o) {
+               or $line =~ s/^\@(\w[\w-]*)//o) {
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
@@ -1429,6 +1430,7 @@ sub _internal_parse_text($$;$$)
           } elsif ($block_commands{$command} eq 'conditional') {
             my $ifvalue_true = 0;
             if ($command eq 'ifclear' or $command eq 'ifset') {
+              # REVALUE
               if ($line =~ /^\s+([\w\-]+)/) {
                 my $name = $1;
                 if ((exists($self->{'values'}->{$name}) and $command eq 'ifset')
@@ -1987,8 +1989,9 @@ sub _expand_cmd_args_to_texi ($) {
         my $arg_expanded = tree_to_texi ($arg);
         $result .= ' '.$arg_expanded;
      }
-  } elsif ($block_commands{$cmdname}
-            and $block_commands{$cmdname} ne 'raw'
+  } elsif ((($block_commands{$cmdname}
+              and $block_commands{$cmdname} ne 'raw')
+                or $cmdname eq 'node')
             and defined($cmd->{'args'})) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
@@ -2084,6 +2087,7 @@ sub _parse_misc_command($$$$)
 
 
   if ($command eq 'set') {
+    # REVALUE
     if ($line =~ /^\s+([\w\-]+)\s*(.*?)\s*$/) {
       my $name = $1;
       my $arg = $2;
@@ -2097,6 +2101,7 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
   } elsif ($command eq 'clear') {
+    # REVALUE
     if ($line =~ /^\s+([\w\-]+)/) {
       $args = [$1];
       delete $self->{'values'}->{$1};
@@ -2108,7 +2113,8 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
   } elsif ($command eq 'unmacro') {
-    if ($line =~ /^\s+([\w\-]+)/) {
+    # REMACRO
+    if ($line =~ /^\s+(\w[\w\-]*)/) {
       $args = [$1];
       delete $self->{'macros'}->{$1};
       print STDERR "UNMACRO $1\n" if ($self->{'debug'});
@@ -2118,7 +2124,8 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
   } elsif ($command eq 'clickstyle') {
-    if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//) {
+    # REMACRO
+    if ($line =~ s/^\s+@(\w[\w\-]*)({})?\s*//) {
       $args = ['@'.$1];
       _line_warn ($self, sprintf($self->__("Remaining argument on \@%s line: %s"), $command, $line), $line_nr) if ($line);
     } else {
@@ -2162,7 +2169,22 @@ sub _parse_line_command_args($$$)
   my $command = $line_command->{'cmdname'};
   my $arg = $line_command->{'args'}->[0];
 
-  print STDERR "MISC ARGS \@$command\n" if ($self->{'debug'});
+  if ($self->{'debug'}) {
+    print STDERR "MISC ARGS \@$command\n";
+    if (@{$arg->{'contents'}}) {
+      my $idx = 0;
+      foreach my $content (@{$arg->{'contents'}}) {
+        my $name = '';
+        $name = '@' . $content->{'cmdname'} if ($content->{'cmdname'});
+        my $type = ', t: ';
+        $type .= $content->{'type'} if ($content->{'type'});
+        my $text = ', ';
+        $type .= $content->{'text'} if ($content->{'text'});
+        print STDERR "   -> $idx $name $type $text\n";
+        $idx++;
+      }
+    }
+  }
 
   if (! @{$arg->{'contents'}} 
        or ($arg->{'contents'}->[0]->{'cmdname'} 
@@ -2175,10 +2197,10 @@ sub _parse_line_command_args($$$)
 
   if (@{$arg->{'contents'}} > 2 or (@{$arg->{'contents'}} == 2
          and (!$arg->{'contents'}->[1]->{'cmdname'} 
-              or $arg->{'contents'}->[1]->{'cmdname'} ne 'c' 
-              or $arg->{'contents'}->[1]->{'cmdname'} ne 'comment'))
+              or ($arg->{'contents'}->[1]->{'cmdname'} ne 'c' 
+                  and $arg->{'contents'}->[1]->{'cmdname'} ne 'comment')))
          or (!defined($arg->{'contents'}->[0]->{'text'}))) {
-    _line_error ($self, sprintf($self->__("Bad argument to \@s"),
+    _line_error ($self, sprintf($self->__("Bad argument to \@%s"),
        $command), $line_nr);
   }
   return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
@@ -2186,16 +2208,18 @@ sub _parse_line_command_args($$$)
   my $line = $arg->{'contents'}->[0]->{'text'};  
 
   if ($command eq 'alias') {
-    if ($line =~ s/^([\w-]+)(\s*=\s*)([\w-]+)(\s*)//) {
+    # REMACRO
+    if ($line =~ s/^(\w[\w-]*)(\s*=\s*)(\w[\w-]*)(\s*)//) {
       $self->{'aliases'}->{$1} = $3;
-      $args = [$2, $4];
+      $args = [$1, $3];
     } else {
       _line_error ($self, sprintf($self->
                               __("Bad argument to \@%s"), $command), $line_nr);
     }
 
   } elsif ($command eq 'definfoenclose') {
-    if ($line =~ s/^([\w\-]+)\s*,\s*([^\s]+)\s*,\s*([^\s]+)//) {
+    # REMACRO
+    if ($line =~ s/^(\w[\w\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)//) {
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'debug'});
@@ -2204,7 +2228,8 @@ sub _parse_line_command_args($$$)
                               __("Bad argument to \@%s"), $command), $line_nr);
     }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
-    if ($line =~ /^(\w+)\s*/) {
+    # REMACRO
+    if ($line =~ /^(\w[\w\-]*)\s*/) {
       my $name = $1;
       if ($forbidden_index_name{$name}) {
         _line_error($self, sprintf($self->
@@ -2218,7 +2243,8 @@ sub _parse_line_command_args($$$)
                    __("Bad argument to \@%s: %s"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'synindex' || $command eq 'syncodeindex') {
-    if ($line =~ /^(\w+)\s+(\w+)/) {
+    # REMACRO
+    if ($line =~ /^(\w[\w\-]*)\s+(\w[\w\-]*)/) {
       my $index_from = $1;
       my $index_to = $2;
       _line_error ($self, sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)

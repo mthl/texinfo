@@ -20,3 +20,9 @@ Test @set with an argument but no space following it. In ifset tests.
 
 parse @sp a bit more.
 
+tests in test/macros
+glossary.texi
+
+bib-example.texi (big test)
+macro-at.texi (the macro part is already done)
+include_macro.texi
