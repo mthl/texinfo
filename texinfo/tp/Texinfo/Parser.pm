@@ -1219,7 +1219,8 @@ sub _internal_parse_text($$;$$)
         } elsif ($accent_commands{$current->{'cmdname'}}) {
           if ($line =~ /^\s/ and $line !~ /^\n/) {
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
-              $line =~ s/^\s+//;
+              # could also be \s+ but then it may swallow end of line
+              $line =~ s/^\s//;
             } else {
               _line_warn ($self, sprintf($self->
                 __("Accent command `\@%s' must not be followed by whitespace"),

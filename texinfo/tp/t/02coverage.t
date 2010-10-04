@@ -16,9 +16,12 @@ my @test_cases = (
 
 accent at end of line @ringaccent
 accent at end of line and spaces @ringaccent  
+accent followed by @@ @ringaccent@.
 
 accent character with spaces @~ following.
 accent character at end of line @~
+accent character followed by @@ @~@.
+
 
 '],
 ['block_commands','
