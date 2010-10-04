@@ -1175,10 +1175,10 @@ sub _internal_parse_text($$;$$)
              { 'text' => $line, 'type' => 'raw', 'parent' => $current };
           last;
         }
-      # in @verb
+      # in @verb. type should be 'brace_command_arg'
       } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
              and $current->{'parent'}->{'cmdname'} eq 'verb') { 
-             # type should be 'brace_command_arg'
+        # collect the first character if not already done
         if (!defined($current->{'parent'}->{'type'})) {
           if ($line =~ /^$/) {
             $current->{'parent'}->{'type'} = '';
@@ -1207,10 +1207,21 @@ sub _internal_parse_text($$;$$)
            (defined($brace_commands{$current->{'cmdname'}}) or 
              $self->{'definfoenclose'}->{$current->{'cmdname'}})
            and $line !~ /^{/) {
-            _line_error ($self,
-               sprintf($self->__("\@%s expected braces"), 
-                             $current->{'cmdname'}), $line_nr);
-        $current = $current->{'parent'};
+        # special case for @-command as argument of @itemize or @*table.
+        if ($current->{'parent'} and $current->{'parent'}->{'parent'} 
+            and $current->{'parent'}->{'parent'}->{'cmdname'} and
+           ($current->{'parent'}->{'parent'}->{'cmdname'} eq 'itemize'
+             or $item_line_commands{$current->{'parent'}->{'parent'}->{'cmdname'}})
+             and (scalar(@{$current->{'parent'}->{'contents'}}) == 1)) {
+          delete $current->{'contents'};
+          $current->{'type'} = 'command_as_argument';
+          $current = $current->{'parent'};
+        } else {
+          _line_error ($self,
+             sprintf($self->__("\@%s expected braces"), 
+                           $current->{'cmdname'}), $line_nr);
+          $current = $current->{'parent'};
+        }
       }
       if ($line =~ s/^([^{}@,:\t.]+)//) {
         my $new_text = $1;
@@ -1536,11 +1547,8 @@ sub _internal_parse_text($$;$$)
               last unless ($line =~ /\S/);
             }
           }
-        #} elsif ($line =~ s/^{// and (defined($brace_commands{$command})
-        #       or defined($self->{'definfoenclose'}->{$command}))) {
         } elsif (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command})) {
-
           if ($accent_commands{$command} and $line !~ /^{/) {
             if ($command =~ /^[a-zA-Z]/) {
               $line =~ s/^\s*//;
@@ -1574,16 +1582,6 @@ sub _internal_parse_text($$;$$)
             next;
           }
           
-          # special case of a command as argument of *table or itemize
-          if ($current->{'parent'} and $current->{'parent'}->{'cmdname'} and
-            ($current->{'parent'}->{'cmdname'} eq 'itemize'
-             or $item_line_commands{$current->{'parent'}->{'cmdname'}})
-             and (scalar(@{$current->{'contents'}}) == 0)
-             and  $line !~ /^{/) {
-            push @{$current->{'contents'}}, {'cmdname' => $command,
-                              'parent' => $current,
-                              'type' => 'command_as_argument'};
-          } else {
             push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                               'parent' => $current, 
                                               'contents' => [] };
@@ -1593,20 +1591,10 @@ sub _internal_parse_text($$;$$)
               $current->{'special'} = { 
                    'begin' => $self->{'definfoenclose'}->{$command}->[0], 
                    'end' => $self->{'definfoenclose'}->{$command}->[1] };
-            }
           }
         } elsif ($no_brace_commands{$command}) {
           push @{$current->{'contents'}},
-               { 'cmdname' => $command, 'parent' => $current };
-
-        #} elsif(exists $brace_commands{$command}) {
-        #  } else {
-        #    _line_error ($self,
-        #       sprintf($self->__("\@%s expected braces"), $command), $line_nr);
-        #  }
-        #} elsif (defined($self->{'definfoenclose'}->{$command})) {
-        #  _line_error ($self, sprintf($self->__("%c%s expected braces"), 
-        #                               ord('@'), $command), $line_nr);
+                 { 'cmdname' => $command, 'parent' => $current };
         } else {
           _line_error ($self, sprintf($self->__("Unknown command `%s'"), 
                                                       $command), $line_nr);
