@@ -336,6 +336,7 @@ $result_trees{'value_in_node'} = {
             }
           ],
           'cmdname' => 'xref',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 4
         },

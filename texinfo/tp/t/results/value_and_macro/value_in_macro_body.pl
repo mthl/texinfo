@@ -83,6 +83,7 @@ $result_trees{'value_in_macro_body'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         }

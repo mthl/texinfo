@@ -1195,31 +1195,8 @@ sub _internal_parse_text($$;$$)
       }
       $line =~ s/^([^{}@,:\t.]*)//;
       $current = _merge_text ($self, $current, $1) if ($1 ne '');
-        
-      if ($line =~ s/^\@end\s+([a-zA-Z][\w-]*)//) {
-        my $end_command = $1;
-        print STDERR "END $end_command\n" if ($self->{'debug'});
-        if (!exists $block_commands{$end_command}) {
-          _line_warn ($self, 
-            sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
-          $current = _merge_text ($self, $current, "\@end $end_command");
-          last;
-        }
-        if ($block_commands{$end_command} eq 'conditional') {
-          if (@{$self->{'conditionals_stack'}} 
-              and $self->{'conditionals_stack'}->[-1] eq $end_command) {
-            pop @{$self->{'conditionals_stack'}};
-          } else {
-            _line_error ($self, 
-                   sprintf($self->__("Unmatched `%c%s'"), ord('@'), 'end'), $line_nr);
-          }
-          last;
-        }
-        $current = _end_block_command($self, $current, $line_nr,
-                                                $end_command);
-        last unless ($line =~ /\S/);
         # REMACRO
-      } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
+      if ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@(\w[\w-]*)//o) {
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
@@ -1292,6 +1269,33 @@ sub _internal_parse_text($$;$$)
           }
         }
 
+        if ($command eq 'end') {
+          if ($line =~ s/^\s+(\w[\w-]*)//) {
+            my $end_command = $1;
+            print STDERR "END $end_command\n" if ($self->{'debug'});
+            if (!exists $block_commands{$end_command}) {
+              _line_warn ($self, 
+                sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
+              $current = _merge_text ($self, $current, "\@end $end_command");
+              last;
+            }
+            if ($block_commands{$end_command} eq 'conditional') {
+              if (@{$self->{'conditionals_stack'}} 
+                  and $self->{'conditionals_stack'}->[-1] eq $end_command) {
+                pop @{$self->{'conditionals_stack'}};
+              } else {
+                _line_error ($self, 
+                  sprintf($self->__("Unmatched `%c%s'"), 
+                       ord('@'), 'end'), $line_nr);
+              }
+              last;
+            }
+            $current = _end_block_command($self, $current, $line_nr,
+                                                $end_command);
+          }
+          last unless ($line =~ /\S/);
+          next;
+        }
         # special case with @ followed by a newline protecting end of lines
         # in @def*
         last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
@@ -1513,8 +1517,11 @@ sub _internal_parse_text($$;$$)
           }
         } elsif ($line =~ s/^{// and (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command}))) {
+        #} elsif (defined($brace_commands{$command})
+        #       or defined($self->{'definfoenclose'}->{$command})) {
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                            'parent' => $current };
+                                            'parent' => $current, 
+                                            'contents' => [] };
           $current = $current->{'contents'}->[-1];
           if ($command eq 'verb') {
             if ($line =~ /^$/) {
@@ -2237,6 +2244,7 @@ sub _parse_line_command_args($$$)
       } else {
         $args = [$name];
         $self->{'misc_commands'}->{$name.'index'} = { 'arg' => 'line' };
+        $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
       }
     } else {
       _line_error ($self, sprintf($self->

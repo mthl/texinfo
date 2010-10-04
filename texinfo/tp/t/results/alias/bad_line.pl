@@ -59,6 +59,7 @@ $result_trees{'bad_line'} = {
                 }
               ],
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },

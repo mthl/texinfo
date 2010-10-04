@@ -89,6 +89,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

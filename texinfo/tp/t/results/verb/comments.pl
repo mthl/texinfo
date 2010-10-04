@@ -25,6 +25,7 @@ $result_trees{'comments'} = {
             }
           ],
           'cmdname' => 'verb',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'type' => 'a'
@@ -72,6 +73,7 @@ $result_trees{'comments'} = {
             }
           ],
           'cmdname' => 'verb',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'type' => ','

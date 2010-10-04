@@ -27,6 +27,7 @@ $result_trees{'nested'} = {
                     }
                   ],
                   'cmdname' => 'verb',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0,
                   'type' => '/'
@@ -41,6 +42,7 @@ $result_trees{'nested'} = {
             }
           ],
           'cmdname' => 'b',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         }

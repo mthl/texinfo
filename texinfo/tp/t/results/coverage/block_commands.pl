@@ -153,6 +153,7 @@ $result_trees{'block_commands'} = {
             }
           ],
           'cmdname' => 'caption',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

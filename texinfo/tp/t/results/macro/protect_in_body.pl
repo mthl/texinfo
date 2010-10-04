@@ -71,6 +71,7 @@ $result_trees{'protect_in_body'} = {
                     }
                   ],
                   'cmdname' => 'samp',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 }
@@ -80,6 +81,7 @@ $result_trees{'protect_in_body'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -101,6 +103,7 @@ $result_trees{'protect_in_body'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

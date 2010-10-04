@@ -41,6 +41,7 @@ $result_trees{'end_of_line'} = {
             }
           ],
           'cmdname' => 'verb',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'type' => ''

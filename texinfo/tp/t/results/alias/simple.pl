@@ -91,6 +91,7 @@ $result_trees{'simple'} = {
             }
           ],
           'cmdname' => 'code',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -130,6 +131,7 @@ $result_trees{'simple'} = {
             }
           ],
           'cmdname' => 'verb',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'type' => '!'

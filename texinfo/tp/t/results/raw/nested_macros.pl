@@ -83,7 +83,7 @@ $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[2]{'parent'} = $result
 $result_trees{'nested_macros'}{'contents'}[0]{'parent'} = $result_trees{'nested_macros'};
 
 $result_texts{'nested_macros'} = '@macro truc   { arg,  ex}
-in macro \arg\
+in macro \\arg\\
 @macro othermacro 
 other macro
 @end macro

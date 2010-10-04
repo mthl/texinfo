@@ -62,6 +62,7 @@ $result_trees{'protect_in_body_line_arg'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -78,6 +79,7 @@ $result_trees{'protect_in_body_line_arg'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -99,6 +101,7 @@ $result_trees{'protect_in_body_line_arg'} = {
             }
           ],
           'cmdname' => 'samp',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

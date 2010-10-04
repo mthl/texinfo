@@ -28,6 +28,7 @@ $result_trees{'too_much_args'} = {
             }
           ],
           'cmdname' => 'abbr',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         }

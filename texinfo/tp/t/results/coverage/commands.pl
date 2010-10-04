@@ -21,6 +21,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => 'TeX',
+          'contents' => [],
           'parent' => {}
         },
         {
@@ -64,6 +65,7 @@ $result_trees{'commands'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 }
@@ -73,6 +75,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => '^',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -94,6 +97,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -141,6 +145,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => 'email',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -176,6 +181,7 @@ $result_trees{'commands'} = {
                 }
               ],
               'cmdname' => 'LaTeX',
+              'contents' => [],
               'parent' => {}
             },
             {
@@ -219,6 +225,7 @@ $result_trees{'commands'} = {
                 }
               ],
               'cmdname' => 'b',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },

@@ -89,6 +89,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -105,6 +106,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
             }
           ],
           'cmdname' => 'emph',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         }

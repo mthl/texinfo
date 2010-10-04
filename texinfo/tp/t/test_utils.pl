@@ -74,6 +74,7 @@ sub test($$)
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     my $perl_string_result = tree_to_texi($result);
     $perl_string_result =~ s/\\/\\\\/g;
+    $perl_string_result =~ s/'/\\'/g;
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
     print OUT $out_result;

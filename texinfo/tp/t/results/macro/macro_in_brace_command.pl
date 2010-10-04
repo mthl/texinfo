@@ -117,6 +117,7 @@ $result_trees{'macro_in_brace_command'} = {
                     }
                   ],
                   'cmdname' => 'email',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 1
                 },

@@ -63,6 +63,7 @@ $result_trees{'implicit_quoting_one_arg'} = {
             }
           ],
           'cmdname' => 'strong',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         }

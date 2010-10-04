@@ -15,6 +15,7 @@ $result_trees{'w_argument'} = {
                 }
               ],
               'cmdname' => 'w',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },
@@ -54,6 +55,7 @@ $result_trees{'w_argument'} = {
                     }
                   ],
                   'cmdname' => 'option',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 },
@@ -88,6 +90,7 @@ $result_trees{'w_argument'} = {
                     }
                   ],
                   'cmdname' => 'option',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 },

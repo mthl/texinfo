@@ -30,6 +30,7 @@ $result_trees{'nested_args'} = {
                     }
                   ],
                   'cmdname' => 'samp',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 }
@@ -57,6 +58,7 @@ $result_trees{'nested_args'} = {
                     }
                   ],
                   'cmdname' => 'b',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 }
@@ -66,6 +68,7 @@ $result_trees{'nested_args'} = {
             }
           ],
           'cmdname' => 'xref',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 3
         }

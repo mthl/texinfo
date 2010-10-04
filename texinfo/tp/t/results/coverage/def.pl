@@ -131,6 +131,7 @@ $result_trees{'def'} = {
                     }
                   ],
                   'cmdname' => 'var',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 },
@@ -329,6 +330,7 @@ $result_trees{'def'} = {
                     }
                   ],
                   'cmdname' => 'b',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 },
@@ -376,6 +378,7 @@ $result_trees{'def'} = {
                             }
                           ],
                           'cmdname' => 'samp',
+                          'contents' => [],
                           'parent' => {},
                           'remaining_args' => 0
                         },
@@ -389,6 +392,7 @@ $result_trees{'def'} = {
                     }
                   ],
                   'cmdname' => 'b',
+                  'contents' => [],
                   'parent' => {},
                   'remaining_args' => 0
                 },

@@ -26,6 +26,7 @@ $result_trees{'close_paragraph_command'} = {
         }
       ],
       'cmdname' => 'titlefont',
+      'contents' => [],
       'parent' => {},
       'remaining_args' => 0
     },

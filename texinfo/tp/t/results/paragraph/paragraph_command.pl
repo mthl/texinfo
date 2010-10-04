@@ -39,6 +39,7 @@ $result_trees{'paragraph_command'} = {
             }
           ],
           'cmdname' => 'b',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

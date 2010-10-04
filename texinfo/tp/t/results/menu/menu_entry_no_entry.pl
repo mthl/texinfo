@@ -67,6 +67,7 @@ $result_trees{'menu_entry_no_entry'} = {
                 }
               ],
               'cmdname' => 'b',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },
@@ -93,6 +94,7 @@ $result_trees{'menu_entry_no_entry'} = {
                 }
               ],
               'cmdname' => 'b',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },

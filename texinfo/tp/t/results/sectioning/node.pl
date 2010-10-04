@@ -256,6 +256,7 @@ $result_trees{'node'} = {
                 }
               ],
               'cmdname' => 'comma',
+              'contents' => [],
               'parent' => {}
             },
             {
@@ -302,6 +303,7 @@ $result_trees{'node'} = {
                 }
               ],
               'cmdname' => 'strong',
+              'contents' => [],
               'parent' => {},
               'remaining_args' => 0
             },

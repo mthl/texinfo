@@ -133,6 +133,18 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 '],
 ['bad',
 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
+'],
+['index_entries',
+'@cindex cindex entry
+
+@defindex truc
+
+@trucindex index truc
+'],
+['command_line_in_paragraph',
+'documentlanguage on its line
+@documentlanguage  en  
+line following documentlanguage
 ']
 );
 

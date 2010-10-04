@@ -64,6 +64,7 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'phoo',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'special' => {
@@ -143,6 +144,7 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'phi',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'special' => {
@@ -182,6 +184,7 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'strong',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -246,6 +249,7 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'strong',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'special' => {

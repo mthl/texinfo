@@ -22,6 +22,7 @@ $result_trees{'wrong_command'} = {
             }
           ],
           'cmdname' => 'b',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

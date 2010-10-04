@@ -18,6 +18,7 @@ $result_trees{'simple'} = {
             }
           ],
           'cmdname' => 'b',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

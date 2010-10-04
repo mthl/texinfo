@@ -64,6 +64,87 @@ Value
 
 @node BarFoo, , @value{a--foo}, (dir)
 @chapter bar
+'],
+['value_in_line_commands',
+'@set cp cp
+@set fn fn
+@set syncodeindex_command @syncodeindex
+
+@syncodeindex @value{cp} @value{fn}
+@value{syncodeindex_command} cp fn
+
+@set en en
+@set documentlanguage_command @documentlanguage
+
+documentlanguage @documentlanguage  @value{en}
+
+documentlanguage on its line
+@value{documentlanguage_command}  en
+line following documentlanguage
+
+@set truc truc
+
+definedx truc
+@defindex @value{truc}
+after
+
+@set trucindex_command @trucindex
+
+@value{trucindex_command} index truc
+
+@set codeidx codeidx
+
+@defcodeindex @value{codeidx}
+
+@set defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
+
+@codeidxindex @value{defcodeindex_entry}
+
+@cindex cindex entry
+
+@syncodeindex ky pg
+
+@kindex @value{truc} kindex
+@pindex pindex @value{codeidx}
+
+@synindex truc cp
+
+@defindex abc
+@defindex defg
+
+@synindex abc defg
+@synindex defg ky
+
+@defgindex defg index entry
+
+@abcindex abc index entry
+
+pg
+@printindex pg
+
+ky
+@printindex ky
+
+truc
+@printindex truc
+
+value truc
+@printindex @value{truc}
+
+cp
+@printindex cp
+
+value cp
+@printindex @value{cp}
+
+defg
+@printindex defg
+
+abc
+@printindex abc
+
+fn
+@printindex fn
 ']
 );
 

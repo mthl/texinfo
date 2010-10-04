@@ -134,6 +134,7 @@ $result_trees{'macro_expansion'} = {
             }
           ],
           'cmdname' => 'samp',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

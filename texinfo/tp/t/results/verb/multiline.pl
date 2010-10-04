@@ -32,6 +32,7 @@ $result_trees{'multiline'} = {
             }
           ],
           'cmdname' => 'verb',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0,
           'type' => '@'

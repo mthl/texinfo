@@ -40,6 +40,7 @@ $result_trees{'invalid_clickstyle'} = {
             }
           ],
           'cmdname' => 'click',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -90,6 +91,7 @@ $result_trees{'invalid_clickstyle'} = {
             }
           ],
           'cmdname' => 'click',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
@@ -133,6 +135,7 @@ $result_trees{'invalid_clickstyle'} = {
             }
           ],
           'cmdname' => 'click',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },

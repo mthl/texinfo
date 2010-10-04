@@ -26,3 +26,6 @@ glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
 include_macro.texi
+
+stopped at  include-value.texi
+(not done)

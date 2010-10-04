@@ -34,6 +34,7 @@ $result_trees{'clickstyle'} = {
             }
           ],
           'cmdname' => 'click',
+          'contents' => [],
           'parent' => {},
           'remaining_args' => 0
         },
