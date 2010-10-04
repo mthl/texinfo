@@ -1179,6 +1179,16 @@ sub _internal_parse_text($$;$$)
       } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
              and $current->{'parent'}->{'cmdname'} eq 'verb') { 
              # type should be 'brace_command_arg'
+        if (!defined($current->{'parent'}->{'type'})) {
+          if ($line =~ /^$/) {
+            $current->{'parent'}->{'type'} = '';
+            _line_error ($self, sprintf($self->
+                __("\@%s without associated character"), 'verb'), $line_nr);
+          } else {
+            $line =~ s/^(.)//;
+            $current->{'parent'}->{'type'} = $1;
+          }
+        }
         my $char = quotemeta($current->{'parent'}->{'type'});
         if ($line =~ s/^(.*?)$char\}/\}/) {
           push @{$current->{'contents'}}, 
@@ -1612,16 +1622,6 @@ sub _internal_parse_text($$;$$)
                and (defined($brace_commands{$current->{'cmdname'}})
                      or $self->{'definfoenclose'}->{$current->{'cmdname'}})) {
             my $command = $current->{'cmdname'};
-            if ($command eq 'verb') {
-              if ($line =~ /^$/) {
-                $current->{'type'} = '';
-                _line_error ($self, sprintf($self->
-                  __("\@%s without associated character"), $command), $line_nr);
-              } else {
-                $line =~ s/^(.)//;
-                $current->{'type'} = $1;
-              }
-            }
             $current->{'args'} = [ { 'parent' => $current,
                                    'contents' => [] } ];
             $current->{'remaining_args'} = $brace_commands{$command} -1
