@@ -11,6 +11,16 @@ my @test_cases = (
 
 @majorheading majorheading @b{in b}
 '],
+['accents',
+'@ringaccent    a
+
+accent at end of line @ringaccent
+accent at end of line and spaces @ringaccent  
+
+accent character with spaces @~ following.
+accent character at end of line @~
+
+'],
 ['block_commands','
 @group
 in group

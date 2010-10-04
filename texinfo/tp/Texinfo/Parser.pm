@@ -1216,6 +1216,39 @@ sub _internal_parse_text($$;$$)
           delete $current->{'contents'};
           $current->{'type'} = 'command_as_argument';
           $current = $current->{'parent'};
+        } elsif ($accent_commands{$current->{'cmdname'}}) {
+          if ($line =~ /^\s/ and $line !~ /^\n/) {
+            if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
+              $line =~ s/^\s+//;
+            } else {
+              _line_warn ($self, sprintf($self->
+                __("Accent command `\@%s' must not be followed by whitespace"),
+                $current->{'cmdname'}), $line_nr);
+              $current = $current->{'parent'};
+            }
+          } elsif ($line =~ /^\@/) {
+            _line_error ($self, sprintf($self->
+                 __("Use braces to give a command as an argument to \@%s"),
+                 $current->{'cmdname'}), $line_nr);
+            $current = $current->{'parent'};
+          } elsif ($line =~ s/^(.)//o) {
+            print STDERR "ACCENT \@$current->{'cmdname'}\n" 
+              if ($self->{'debug'});
+            $current->{'args'} = [ { 'text' => $1, 'parent' => $current } ];
+            if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
+              $current->{'args'}->[-1]->{'type'} = 'space_command_arg';
+            }
+            delete $current->{'contents'};
+            $current = $current->{'parent'};
+          } else { # The accent is at end of line
+            # whitespace for commands with letter.
+            print STDERR "STRANGE ACC \@$current->{'cmdname'}\n" if ($self->{'debug'});
+            _line_warn ($self, sprintf($self->
+               __("Accent command `\@%s' must not be followed by new line"),
+               $current->{'cmdname'}), $line_nr);
+            $current = $current->{'parent'};
+          }
+          next;
         } else {
           _line_error ($self,
              sprintf($self->__("\@%s expected braces"), 
@@ -1549,38 +1582,6 @@ sub _internal_parse_text($$;$$)
           }
         } elsif (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command})) {
-          if ($accent_commands{$command} and $line !~ /^{/) {
-            if ($command =~ /^[a-zA-Z]/) {
-              $line =~ s/^\s*//;
-            } elsif ($line =~ /^\s/) {
-              _line_warn ($self, sprintf($self->
-                __("Accent command `\@%s' must not be followed by whitespace"),
-                $command), $line_nr);
-            }
-            if ($line =~ /^\@/) {
-              _line_error ($self, sprintf($self->
-                     __("Use braces to give a command as an argument to \@%s"),
-                     $command), $line_nr);
-            }
-            if ($line =~ s/^(\S)//o) {
-              print STDERR "ACCENT \@$command\n" if ($self->{'debug'});
-              my $accent = { 'cmdname' => $command, 'parent' => $current };
-              $accent->{'args'} = [ { 'text' => $1, 'parent' => $accent } ];
-              if ($command =~ /^[a-zA-Z]/) {
-                $accent->{'args'}->[-1]->{'type'} = 'space_command_arg';
-              }
-              push @{$current->{'contents'}}, $accent;
-
-            } else { # The accent is at end of line
-              # FIXME warn? And test case? Maybe this is catched 
-              # above, by "Accent command `@%s' must not be followed by
-              # whitespace for commands with letter.
-              print STDERR "STRANGE ACC \@$command\n" if ($self->{'debug'});
-              push @{$current->{'contents'}},
-                   { 'text' => $command, 'parent' => $current };
-            }
-            next;
-          }
           
             push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                               'parent' => $current, 
