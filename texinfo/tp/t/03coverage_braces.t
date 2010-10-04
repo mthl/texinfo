@@ -9,7 +9,8 @@ my @test_cases = (
 ['too_much_args', '@abbr{AZE, A truc Z b, E eep}'],
 ['footnote', 'text@footnote{in footnote.
 
-@r{in footnote r}. } after footnote.']
+@r{in footnote r}. } after footnote.'],
+['no_brace', '@TeX and @code code']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
