@@ -134,7 +134,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'a, hello  after arg'
+          'text' => 'a, hello text for macro2 after arg'
         }
       ],
       'parent' => {},
@@ -148,11 +148,6 @@ $result_trees{'macro_in_macro_arg'} = {
     },
     {
       'contents' => [
-        {
-          'parent' => {},
-          'text' => 'text for macro2
-'
-        },
         {
           'parent' => {},
           'text' => '&&&& 
@@ -185,7 +180,6 @@ $result_trees{'macro_in_macro_arg'}{'contents'}[7]{'contents'}[0]{'parent'} = $r
 $result_trees{'macro_in_macro_arg'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_macro_arg'};
 $result_trees{'macro_in_macro_arg'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_macro_arg'};
 $result_trees{'macro_in_macro_arg'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[9];
-$result_trees{'macro_in_macro_arg'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[9];
 $result_trees{'macro_in_macro_arg'}{'contents'}[9]{'parent'} = $result_trees{'macro_in_macro_arg'};
 
 $result_texts{'macro_in_macro_arg'} = '
@@ -202,8 +196,7 @@ hello \\arg\\ after arg
 &&&& \\arg\\
 @end macro
 
-a, hello  after arg
-text for macro2
+a, hello text for macro2 after arg
 &&&& 
 ';
 

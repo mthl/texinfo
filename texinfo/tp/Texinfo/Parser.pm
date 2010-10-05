@@ -1202,10 +1202,61 @@ sub _internal_parse_text($$;$$)
           last;
         }
       }
-      
-      if ($current->{'cmdname'} and 
-           (defined($brace_commands{$current->{'cmdname'}}) or 
-             $self->{'definfoenclose'}->{$current->{'cmdname'}})
+
+      # handle user defined macros before anything else since
+      # their expansion may lead to changes in the line
+      # REMACRO
+      if ($line =~ /^\@(\w[\w-]*)/ 
+                and ($self->{'macros'}->{$1} 
+                     or (exists $self->{'aliases'}->{$1} and 
+                       $self->{'macros'}->{$self->{'aliases'}->{$1}}))) {
+        $line =~ s/^\@(\w[\w-]*)//o;
+        my $command = $1;
+        $command = $self->{'aliases'}->{$command} 
+           if (exists($self->{'aliases'}->{$command}));
+
+        my $expanded_macro = $self->{'macros'}->{$command};
+        my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
+        my $arguments = [];
+        if ($line =~ s/^\s*{\s*//) { # macro with args
+          ($arguments, $line, $line_nr) = 
+            _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr,
+                                     $text, $lines_array);
+        } elsif (($args_number >= 2) or ($args_number <1)) {
+          _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
+        } else {
+          if ($line !~ /\n/ and @$text) {
+            ($line, $line_nr) = _new_line($text, $lines_array);
+          }
+          $line =~ s/^\s*// if ($line =~ /\S/);
+          chomp $line;
+          $arguments = [$line];
+          $line = "\n";
+        } 
+        my $expanded = _expand_macro_body ($self, $expanded_macro, 
+                                   $arguments, $line_nr);
+        print STDERR "MACROBODY: $expanded".'||||||'."\n" 
+           if ($self->{'debug'}); 
+        my $expanded_lines = _text_to_lines($expanded);
+        print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
+                                     ."\nEND LINES\n" if ($self->{'debug'});
+        chomp ($expanded_lines->[-1]);
+        my $new_lines_nr = _complete_line_nr($expanded_lines, 
+                            $line_nr->{'line_nr'}, $line_nr->{'file_name'},
+                            $expanded_macro->{'args'}->[0]->{'text'}, 1);
+        unshift @$text, $line;
+        unshift @$lines_array, $line_nr;
+        $line = shift @$expanded_lines;
+        $line_nr = shift @$new_lines_nr;
+        unshift @$text, @$expanded_lines;
+        unshift @$lines_array, @$new_lines_nr;
+        # REMACRO
+      # Now handle all the cases that may lead to command closing
+      # or following character association with an @-command, especially
+      # accent command.
+      } elsif ($current->{'cmdname'} and 
+          (defined($brace_commands{$current->{'cmdname'}}) or 
+            $self->{'definfoenclose'}->{$current->{'cmdname'}})
            and $line !~ /^{/) {
         # special case for @-command as argument of @itemize or @*table.
         if ($current->{'parent'} and $current->{'parent'}->{'parent'} 
@@ -1227,10 +1278,10 @@ sub _internal_parse_text($$;$$)
                 $current->{'cmdname'}), $line_nr);
               $current = $current->{'parent'};
             }
-          } elsif ($line =~ /^\@/) {
+         } elsif ($line =~ /^\@/) {
             _line_error ($self, sprintf($self->
-                 __("Use braces to give a command as an argument to \@%s"),
-                 $current->{'cmdname'}), $line_nr);
+              __("Use braces to give a command as an argument to \@%s"),
+                $current->{'cmdname'}), $line_nr);
             $current = $current->{'parent'};
           } elsif ($line =~ s/^(.)//o) {
             print STDERR "ACCENT \@$current->{'cmdname'}\n" 
@@ -1256,12 +1307,6 @@ sub _internal_parse_text($$;$$)
                            $current->{'cmdname'}), $line_nr);
           $current = $current->{'parent'};
         }
-      }
-      if ($line =~ s/^([^{}@,:\t.]+)//) {
-        my $new_text = $1;
-        $current = _merge_text ($self, $current, $new_text);
-        
-        # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@(\w[\w-]*)//o) {
         my $command = $1;
@@ -1269,41 +1314,6 @@ sub _internal_parse_text($$;$$)
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
 
-        if ($self->{'macros'}->{$command}) {
-          my $expanded_macro = $self->{'macros'}->{$command};
-          my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
-          my $arguments = [];
-          if ($line =~ s/^\s*{\s*//) { # macro with args
-            ($arguments, $line, $line_nr) = 
-              _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr,
-                                       $text, $lines_array);
-          } elsif (($args_number >= 2) or ($args_number <1)) {
-            _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
-          } else {
-            $line =~ s/^\s*// if ($line =~ /\S/);
-            chomp $line;
-            $arguments = [$line];
-            $line = "\n";
-          } 
-          my $expanded = _expand_macro_body ($self, $expanded_macro, 
-                                     $arguments, $line_nr);
-          print STDERR "MACROBODY: $expanded".'||||||'."\n" 
-             if ($self->{'debug'}); 
-          my $expanded_lines = _text_to_lines($expanded);
-          print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
-                                       ."\nEND LINES\n" if ($self->{'debug'});
-          chomp ($expanded_lines->[-1]);
-          my $new_lines_nr = _complete_line_nr($expanded_lines, 
-                              $line_nr->{'line_nr'}, $line_nr->{'file_name'},
-                              $expanded_macro->{'args'}->[0]->{'text'}, 1);
-          unshift @$text, $line;
-          unshift @$lines_array, $line_nr;
-          $line = shift @$expanded_lines;
-          $line_nr = shift @$new_lines_nr;
-          unshift @$text, @$expanded_lines;
-          unshift @$lines_array, @$new_lines_nr;
-          next;
-        }
 
         if ($command eq 'value') {
           if ($line =~ s/^{([\w\-]+)}//) {
@@ -1734,12 +1744,28 @@ sub _internal_parse_text($$;$$)
         } else {
           $current = _merge_text ($self, $current, $separator);
         }
+      # Misc text
+      } elsif ($line =~ s/^([^{}@,:\t.\n]+)//) {
+        my $new_text = $1;
+        $current = _merge_text ($self, $current, $new_text);
       } else {
         if ($self->{'debug'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
-        if ($line ne '') {
-          die "Remaining line: $line\n";
+        if ($line ne "\n" 
+            and !($line eq '')) {
+          #  and !($current->{'contents'} and @{$current->{'contents'}} 
+          #         and $current->{'contents'}->[-1] 
+          #         and $current->{'contents'}->[-1]->{'cmdname'}
+          #         and $current->{'contents'}->[-1]->{'cmdname'} eq "\n"
+          #         and $line eq ''
+          #       )
+          #  and !($line eq '' and !scalar(@$text))) {
+          _line_warn ($self, "BUG spurious suff on line. Remaining text: @$text", $line_nr);
+          die "Remaining line: |$line|\n";
+        }
+        if ($line =~ s/^(\n)//) {
+          $current = _merge_text ($self, $current, $1);
         }
         if ($current->{'type'} 
              and ($current->{'type'} eq 'menu_entry_name'

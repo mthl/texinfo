@@ -10,6 +10,16 @@ my @test_cases = (
 @item @option{--build=} platform on which the program is compiled,
 @item @option{--target=} target platform on which the program is processed.
 @end itemize
+'],
+# unclear that these are valid constructs...
+['accent_argument',
+'@itemize @~@comment
+@item item
+@end itemize
+
+@itemize @~
+@item item
+@end itemize
 ']
 );
 
