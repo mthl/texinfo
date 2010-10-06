@@ -19,12 +19,12 @@ in macro
 @end macro after
 '],
 ['no_macrobody',
-'@macro no_macrobody {arg}
+'@macro no-macrobody {arg}
 @end macro
 
-@no_macrobody line arg
+@no-macrobody line arg
 
-@no_macrobody{arg brace}.
+@no-macrobody{arg brace}.
 '],
 ['empty_end','@macro foo {aaa, }
 in foo
@@ -47,7 +47,7 @@ in macro
 in bad macro
 @end macro
 
-@macro bad_space{first, in 2arg}
+@macro bad-space{first, in 2arg}
 bad space
 @end macro
 
@@ -193,7 +193,7 @@ Before @truc{} after truc.
 in mymacro
 @end macro
 
-@macro mymacro_with_args{arg}
+@macro mymacro-with-args{arg}
 in with args
 now the arg \arg\
 after
@@ -210,7 +210,7 @@ after
 @mymacro{} @mymacro
 
 with args
-@mymacro_with_args {an
+@mymacro-with-args {an
 arg
 
 in macro} @mymacro{}
@@ -395,24 +395,24 @@ cp
 @macro fn 
 fn
 @end macro
-@macro syncodeindex_command 
+@macro syncodeindex-command 
 @syncodeindex
 @end macro
 
 @syncodeindex @cp{} @fn{}
-@syncodeindex_command{} cp fn
+@syncodeindex-command{} cp fn
 
 @macro en 
 en
 @end macro
-@macro documentlanguage_command 
+@macro documentlanguage-command 
 @documentlanguage
 @end macro
 
 documentlanguage @documentlanguage  @en{}
 
 documentlanguage on its line
-@documentlanguage_command{}  en
+@documentlanguage-command{}  en
 line following documentlanguage
 
 @macro truc 
@@ -423,11 +423,11 @@ definedx truc
 @defindex @truc{}
 after
 
-@macro trucindex_command 
+@macro trucindex-command 
 @trucindex
 @end macro
 
-@trucindex_command{} index truc
+@trucindex-command{} index truc
 
 @macro codeidx 
 codeidx
@@ -435,11 +435,11 @@ codeidx
 
 @defcodeindex @codeidx{}
 
-@macro defcodeindex_entry 
+@macro defcodeindex-entry 
 a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 
-@codeidxindex @defcodeindex_entry{}
+@codeidxindex @defcodeindex-entry{}
 
 @cindex cindex entry
 

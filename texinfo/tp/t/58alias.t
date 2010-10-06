@@ -8,11 +8,11 @@ my @test_cases = (
 [ 'simple',
 '@alias myalias = code
 
-@alias o-ther_alias=verb @c comment
+@alias o-theralias=verb @c comment
 
 Should be code: @myalias{code}
 
-Should be verb: @o-ther_alias{!verb!}
+Should be verb: @o-theralias{!verb!}
 
 @table @myalias
 @item table item (code)
@@ -20,9 +20,9 @@ Should be verb: @o-ther_alias{!verb!}
 '],
 ['bad_line',
 '
-@alias garbage_on_line =cmd garbage
+@alias garbage-on-line =cmd garbage
 
-@alias garbage_on_line =cmd @code{in code}
+@alias garbage-on-line =cmd @code{in code}
 ']
 );
 

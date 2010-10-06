@@ -665,8 +665,8 @@ sub _parse_macro_command($$$$$;$)
   my $line_nr = shift;
   my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
                'special' => {'macro_line' => $line} };
-  #if ($line =~ /^\s+(\w[\w-]*)\s*(.*)/) {
-  if ($line =~ /^\s+([\w\-]+)\s*(.*)/) {
+  # REMACRO
+  if ($line =~ /^\s+([[:alnum:]][[:alnum:]-]*)\s*(.*)/) {
     my $macro_name = $1;
     my $args_def = $2;
     my @args;
@@ -1378,11 +1378,11 @@ sub _internal_parse_text($$;$$)
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
       # REMACRO
-      if ($line =~ /^\@(\w[\w-]*)/ 
+      if ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)/ 
                 and ($self->{'macros'}->{$1} 
                      or (exists $self->{'aliases'}->{$1} and 
                        $self->{'macros'}->{$self->{'aliases'}->{$1}}))) {
-        $line =~ s/^\@(\w[\w-]*)//o;
+        $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o;
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
@@ -1483,8 +1483,9 @@ sub _internal_parse_text($$;$$)
                            $current->{'cmdname'}), $line_nr);
           $current = $current->{'parent'};
         }
+        # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
-               or $line =~ s/^\@(\w[\w-]*)//o) {
+               or $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o) {
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
@@ -1522,7 +1523,8 @@ sub _internal_parse_text($$;$$)
         }
 
         if ($command eq 'end') {
-          if ($line =~ s/^\s+(\w[\w-]*)//) {
+          # REMACRO
+          if ($line =~ s/^\s+([[:alnum:]][[:alnum:]-]*)//) {
             my $end_command = $1;
             print STDERR "END $end_command\n" if ($self->{'debug'});
             if (!exists $block_commands{$end_command}) {
@@ -2141,7 +2143,7 @@ sub _parse_misc_command($$$$)
     $line = '';
   } elsif ($command eq 'unmacro') {
     # REMACRO
-    if ($line =~ /^\s+(\w[\w\-]*)/) {
+    if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
       $args = [$1];
       delete $self->{'macros'}->{$1};
       print STDERR "UNMACRO $1\n" if ($self->{'debug'});
@@ -2152,7 +2154,7 @@ sub _parse_misc_command($$$$)
     $line = '';
   } elsif ($command eq 'clickstyle') {
     # REMACRO
-    if ($line =~ s/^\s+@(\w[\w\-]*)({})?\s*//) {
+    if ($line =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*//) {
       $args = ['@'.$1];
       _line_warn ($self, sprintf($self->__("Remaining argument on \@%s line: %s"), $command, $line), $line_nr) if ($line);
     } else {
@@ -2237,7 +2239,7 @@ sub _parse_line_command_args($$$)
 
   if ($command eq 'alias') {
     # REMACRO
-    if ($line =~ s/^(\w[\w-]*)(\s*=\s*)(\w[\w-]*)(\s*)//) {
+    if ($line =~ s/^([[:alnum:]][[:alnum:]-]*)(\s*=\s*)([[:alnum:]][[:alnum:]-]*)(\s*)//) {
       $self->{'aliases'}->{$1} = $3;
       $args = [$1, $3];
     } else {
@@ -2247,7 +2249,7 @@ sub _parse_line_command_args($$$)
 
   } elsif ($command eq 'definfoenclose') {
     # REMACRO
-    if ($line =~ s/^(\w[\w\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)//) {
+    if ($line =~ s/^([[:alnum:]][[:alnum:]\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)//) {
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'debug'});
@@ -2273,7 +2275,7 @@ sub _parse_line_command_args($$$)
     }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
     # REMACRO
-    if ($line =~ /^(\w[\w\-]*)\s*/) {
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s*/) {
       my $name = $1;
       if ($forbidden_index_name{$name}) {
         _line_error($self, sprintf($self->
@@ -2289,7 +2291,7 @@ sub _parse_line_command_args($$$)
     }
   } elsif ($command eq 'synindex' || $command eq 'syncodeindex') {
     # REMACRO
-    if ($line =~ /^(\w[\w\-]*)\s+(\w[\w\-]*)/) {
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s+([[:alnum:]][[:alnum:]\-]*)/) {
       my $index_from = $1;
       my $index_to = $2;
       _line_error ($self, sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)

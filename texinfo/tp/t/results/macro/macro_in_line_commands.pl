@@ -56,7 +56,7 @@ $result_trees{'macro_in_line_commands'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'syncodeindex_command',
+          'text' => 'syncodeindex-command',
           'type' => 'macro_name'
         }
       ],
@@ -71,7 +71,7 @@ $result_trees{'macro_in_line_commands'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' syncodeindex_command 
+        'macro_line' => ' syncodeindex-command 
 ',
         'macrobody' => '@syncodeindex
 '
@@ -164,7 +164,7 @@ $result_trees{'macro_in_line_commands'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'documentlanguage_command',
+          'text' => 'documentlanguage-command',
           'type' => 'macro_name'
         }
       ],
@@ -179,7 +179,7 @@ $result_trees{'macro_in_line_commands'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' documentlanguage_command 
+        'macro_line' => ' documentlanguage-command 
 ',
         'macrobody' => '@documentlanguage
 '
@@ -342,7 +342,7 @@ $result_trees{'macro_in_line_commands'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'trucindex_command',
+          'text' => 'trucindex-command',
           'type' => 'macro_name'
         }
       ],
@@ -357,7 +357,7 @@ $result_trees{'macro_in_line_commands'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' trucindex_command 
+        'macro_line' => ' trucindex-command 
 ',
         'macrobody' => '@trucindex
 '
@@ -455,7 +455,7 @@ $result_trees{'macro_in_line_commands'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'defcodeindex_entry',
+          'text' => 'defcodeindex-entry',
           'type' => 'macro_name'
         }
       ],
@@ -470,7 +470,7 @@ $result_trees{'macro_in_line_commands'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' defcodeindex_entry 
+        'macro_line' => ' defcodeindex-entry 
 ',
         'macrobody' => 'a @var{index entry} t@\'e @^{@dotless{i}}
 '
@@ -1334,7 +1334,7 @@ cp
 @macro fn 
 fn
 @end macro
-@macro syncodeindex_command 
+@macro syncodeindex-command 
 @syncodeindex
 @end macro
 
@@ -1344,7 +1344,7 @@ fn
 @macro en 
 en
 @end macro
-@macro documentlanguage_command 
+@macro documentlanguage-command 
 @documentlanguage
 @end macro
 
@@ -1362,7 +1362,7 @@ definedx truc
 @defindex truc
 after
 
-@macro trucindex_command 
+@macro trucindex-command 
 @trucindex
 @end macro
 
@@ -1374,7 +1374,7 @@ codeidx
 
 @defcodeindex codeidx
 
-@macro defcodeindex_entry 
+@macro defcodeindex-entry 
 a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 

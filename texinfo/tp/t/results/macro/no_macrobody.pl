@@ -6,7 +6,7 @@ $result_trees{'no_macrobody'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'no_macrobody',
+          'text' => 'no-macrobody',
           'type' => 'macro_name'
         },
         {
@@ -22,7 +22,7 @@ $result_trees{'no_macrobody'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' no_macrobody {arg}
+        'macro_line' => ' no-macrobody {arg}
 ',
         'macrobody' => ''
       }
@@ -66,7 +66,7 @@ $result_trees{'no_macrobody'}{'contents'}[3]{'parent'} = $result_trees{'no_macro
 $result_trees{'no_macrobody'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[4];
 $result_trees{'no_macrobody'}{'contents'}[4]{'parent'} = $result_trees{'no_macrobody'};
 
-$result_texts{'no_macrobody'} = '@macro no_macrobody {arg}
+$result_texts{'no_macrobody'} = '@macro no-macrobody {arg}
 @end macro
 
 

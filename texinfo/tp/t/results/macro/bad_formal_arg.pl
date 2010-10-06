@@ -57,7 +57,7 @@ $result_trees{'bad_formal_arg'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'bad_space',
+          'text' => 'bad-space',
           'type' => 'macro_name'
         },
         {
@@ -86,7 +86,7 @@ $result_trees{'bad_formal_arg'} = {
           'first' => 0,
           'in 2arg' => 1
         },
-        'macro_line' => ' bad_space{first, in 2arg}
+        'macro_line' => ' bad-space{first, in 2arg}
 ',
         'macrobody' => 'bad space
 '
@@ -177,7 +177,7 @@ $result_texts{'bad_formal_arg'} = '
 in bad macro
 @end macro
 
-@macro bad_space{first, in 2arg}
+@macro bad-space{first, in 2arg}
 bad space
 @end macro
 

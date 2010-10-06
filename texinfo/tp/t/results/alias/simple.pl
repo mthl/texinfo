@@ -37,7 +37,7 @@ $result_trees{'simple'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'o-ther_alias=verb '
+              'text' => 'o-theralias=verb '
             },
             {
               'args' => [
@@ -60,7 +60,7 @@ $result_trees{'simple'} = {
       'parent' => {},
       'special' => {
         'misc_args' => [
-          'o-ther_alias',
+          'o-theralias',
           'verb'
         ]
       }
@@ -235,7 +235,7 @@ $result_trees{'simple'}{'contents'}[8]{'parent'} = $result_trees{'simple'};
 
 $result_texts{'simple'} = '@alias myalias = code
 
-@alias o-ther_alias=verb @c comment
+@alias o-theralias=verb @c comment
 
 Should be code: @code{code}
 

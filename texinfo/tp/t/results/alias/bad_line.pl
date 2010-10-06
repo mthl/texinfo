@@ -14,7 +14,7 @@ $result_trees{'bad_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'garbage_on_line =cmd garbage
+              'text' => 'garbage-on-line =cmd garbage
 '
             }
           ],
@@ -26,7 +26,7 @@ $result_trees{'bad_line'} = {
       'parent' => {},
       'special' => {
         'misc_args' => [
-          'garbage_on_line',
+          'garbage-on-line',
           'cmd'
         ]
       }
@@ -43,7 +43,7 @@ $result_trees{'bad_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'garbage_on_line =cmd '
+              'text' => 'garbage-on-line =cmd '
             },
             {
               'args' => [
@@ -77,7 +77,7 @@ $result_trees{'bad_line'} = {
       'parent' => {},
       'special' => {
         'misc_args' => [
-          'garbage_on_line',
+          'garbage-on-line',
           'cmd'
         ]
       }
@@ -98,9 +98,9 @@ $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'b
 $result_trees{'bad_line'}{'contents'}[3]{'parent'} = $result_trees{'bad_line'};
 
 $result_texts{'bad_line'} = '
-@alias garbage_on_line =cmd garbage
+@alias garbage-on-line =cmd garbage
 
-@alias garbage_on_line =cmd @code{in code}
+@alias garbage-on-line =cmd @code{in code}
 ';
 
 $result_errors{'bad_line'} = [

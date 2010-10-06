@@ -37,7 +37,7 @@ $result_trees{'two_macros_on_a_line'} = {
       'args' => [
         {
           'parent' => {},
-          'text' => 'mymacro_with_args',
+          'text' => 'mymacro-with-args',
           'type' => 'macro_name'
         },
         {
@@ -72,7 +72,7 @@ $result_trees{'two_macros_on_a_line'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' mymacro_with_args{arg}
+        'macro_line' => ' mymacro-with-args{arg}
 ',
         'macrobody' => 'in with args
 now the arg \\arg\\
@@ -351,7 +351,7 @@ $result_texts{'two_macros_on_a_line'} = '@macro mymacro
 in mymacro
 @end macro
 
-@macro mymacro_with_args{arg}
+@macro mymacro-with-args{arg}
 in with args
 now the arg \\arg\\
 after
