@@ -86,16 +86,15 @@ $result_trees{'value_in_macro_body'} = {
           'contents' => [],
           'parent' => {},
           'remaining_args' => 0
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
     }
   ]
 };
@@ -112,8 +111,8 @@ $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[0]{'parent'} = $
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1];
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4];
+$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4];
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_body'};
-$result_trees{'value_in_macro_body'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_body'};
 
 $result_texts{'value_in_macro_body'} = '@set bodyarg \\arg\\
 

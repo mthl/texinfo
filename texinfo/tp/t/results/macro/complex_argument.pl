@@ -392,16 +392,15 @@ $result_trees{'complex_argument'} = {
           'contents' => [],
           'parent' => {},
           'remaining_args' => 0
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
     },
     {
       'parent' => {},
@@ -471,9 +470,9 @@ $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[0]{'parent'} = $re
 $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[1];
 $result_trees{'complex_argument'}{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14];
+$result_trees{'complex_argument'}{'contents'}[14]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[14];
 $result_trees{'complex_argument'}{'contents'}[14]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[15]{'parent'} = $result_trees{'complex_argument'};
-$result_trees{'complex_argument'}{'contents'}[16]{'parent'} = $result_trees{'complex_argument'};
 
 $result_texts{'complex_argument'} = '@macro macro2{arg}
 coucou \\arg\\ after arg

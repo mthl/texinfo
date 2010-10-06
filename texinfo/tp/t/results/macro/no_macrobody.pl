@@ -36,8 +36,7 @@ $result_trees{'no_macrobody'} = {
     {
       'parent' => {},
       'text' => '
-',
-      'type' => 'normal_line'
+'
     },
     {
       'parent' => {},

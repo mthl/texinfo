@@ -5,37 +5,45 @@ $result_trees{'good_comment'} = {
     {
       'args' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'parent' => {},
-              'text' => '0.4',
-              'type' => 'fraction'
-            },
-            {
-              'parent' => {},
-              'text' => '.6',
-              'type' => 'fraction'
-            },
-            {
-              'parent' => {},
-              'text' => '5.',
-              'type' => 'fraction'
-            }
-          ],
-          'cmdname' => 'columnfractions',
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '0.4 .6 5.'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => ' comment
 ',
-              'type' => 'misc_arg'
+                          'type' => 'misc_arg'
+                        }
+                      ],
+                      'cmdname' => 'c',
+                      'parent' => {}
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'columnfractions',
+              'parent' => {},
+              'special' => {
+                'misc_args' => [
+                  '0.4',
+                  '.6',
+                  '5.'
+                ]
+              }
             }
           ],
-          'cmdname' => 'c',
-          'parent' => {}
+          'parent' => {},
+          'type' => 'block_line_arg'
         }
       ],
       'cmdname' => 'multitable',
@@ -53,16 +61,16 @@ $result_trees{'good_comment'} = {
     }
   ]
 };
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'args'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'args'}[2]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[1]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[1];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'parent'} = $result_trees{'good_comment'};
 
-$result_texts{'good_comment'} = '@multitable @columnfractions 0.4 .6 5. @c comment
+$result_texts{'good_comment'} = '@multitable @columnfractions 0.4 .6 5.@c comment
 @end multitable
 ';
 

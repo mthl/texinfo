@@ -386,6 +386,8 @@ different
 
 @redefineothermacro{@othermacro{}}
 '],
+# FIXME this tests much more than macro, but also index related stuff.
+# This part should certainly be elsewhere.
 ['macro_in_line_commands',
 '@macro cp
 cp

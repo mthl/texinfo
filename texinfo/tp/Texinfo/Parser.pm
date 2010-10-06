@@ -98,6 +98,8 @@ my %misc_commands = (
   # special
   'definfoenclose' => {'arg' => 5},
   'alias' => {'arg' => '3'}, 
+  # number of arguments is not known in advance.
+  'columnfractions' => {'arg' => '1'}, 
   # file names
   'setfilename' => {'arg' => 'line'},
   'verbatiminclude'=> {'arg' => 'line'},
@@ -433,7 +435,7 @@ foreach my $no_paragraph_command (keys(%misc_commands)) {
 }
 
 foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
-                                'noindent', 'indent') {
+                                'noindent', 'indent', 'columnfractions') {
   delete $begin_line_commands{$misc_not_begin_line};
 }
 
@@ -885,8 +887,10 @@ sub _new_line ($$)
 
   while (@$text) {
     my $new_text = shift @$text;
-    # FIXME error? Or accept? Or nothing special?
-    #next if ($new_text = '');
+    # This may happen with user defined macro, although it is unclear in
+    # which case. Example in macro/expansion_order
+    #next if ($new_text eq '');
+    #die if ($new_text eq '');
 
     $new_line .= $new_text;
     $line_nr = shift @$lines_array;
@@ -1005,6 +1009,174 @@ sub _expand_macro_body($$$$) {
   return $result;
 }
 
+sub _end_line($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  if ($current->{'type'} 
+    and ($current->{'type'} eq 'menu_entry_name'
+     or $current->{'type'} eq 'menu_entry_node')) {
+    my $empty_menu_entry_node = 0;
+    my $end_comment;
+    if ($current->{'type'} eq 'menu_entry_node') {
+      if (@{$current->{'contents'}} 
+          and $current->{'contents'}->[-1]->{'cmdname'}
+          and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c' 
+            or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+        $end_comment = pop @{$current->{'contents'}};
+      }
+      if (!@{$current->{'contents'}}) {
+        $empty_menu_entry_node = 1;
+        push @{$current->{'contents'}}, $end_comment if ($end_comment);
+      }
+    }
+    # we abort the menu entry if there is no node name
+    if ($empty_menu_entry_node 
+          or $current->{'type'} eq 'menu_entry_name') {
+      print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'debug'});
+      my $menu = $current->{'parent'}->{'parent'};
+      my $menu_entry = pop @{$menu->{'contents'}};
+      if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
+         and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
+        $current = $menu->{'contents'}->[-1];
+      } else {
+        push @{$menu->{'contents'}}, {'type' => 'menu_comment',
+                                    'parent' => $menu,
+                                    'contents' => [] };
+        $current = $menu->{'contents'}->[-1];
+      }
+      while (@{$menu_entry->{'args'}}) {
+        my $arg = shift @{$menu_entry->{'args'}};
+        if (defined($arg->{'text'})) {
+          $current = _merge_text ($self, $current, $arg->{'text'});
+        } else {
+          while (@{$arg->{'contents'}}) {
+            my $content = shift @{$arg->{'contents'}};
+            if (defined($content->{'text'})) {
+              $current = _merge_text ($self, $current, 
+                                    $content->{'text'});
+              $content = undef;
+            } else {
+              $content->{'parent'} = $current;
+              push @{$current->{'contents'}}, $content;
+            }
+          }
+        }
+        $arg = undef;
+      }
+      $menu_entry = undef;
+    } else {
+      print STDERR "MENU ENTRY END LINE\n" if ($self->{'debug'});
+      $current = $current->{'parent'};
+      push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                  'contents' => [],
+                                          'parent' => $current };
+      $current = $current->{'args'}->[-1];
+      if (defined($end_comment)) {
+        $end_comment->{'parent'} = $current;
+        push @{$current->{'contents'}}, $end_comment;
+      }
+    }
+  # def line
+  } elsif ($current->{'parent'}
+            and $current->{'parent'}->{'type'}
+            and $current->{'parent'}->{'type'} eq 'def_line') {
+    my $def_context = pop @{$self->{'context_stack'}};
+    die "BUG: def_context $def_context "._print_current($current) 
+      if ($def_context ne 'def');
+    $current = $current->{'parent'}->{'parent'};
+    # other block command lines
+  } elsif ($current->{'type'}
+            and $current->{'type'} eq 'block_line_arg') {
+    # @multitable args
+    if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+               and $current->{'parent'}->{'cmdname'} eq 'multitable') {
+      my $line_arg = $current;
+      my @prototype_rows;
+      my @other_contents;
+      # rearrange the row specifications as args, which mostly 
+      # implies splitting non-bracketed text and reparenting.
+      foreach my $content (@{$current->{'contents'}}) {
+        if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
+          $content->{'parent'} = $current->{'parent'};
+          push @prototype_rows, $content;
+        } elsif ($content->{'text'}) {
+          if ($content->{'text'} =~ /\S/) {
+            foreach my $prototype(split /\s+/, $content->{'text'}) {
+              push @prototype_rows, { 'text' => $prototype, 
+                            'parent' => $current->{'parent'},
+                            'type' => 'row_prototype' };
+            }
+          }
+        } else {
+          if (!$content->{'cmdname'}) { 
+            _line_warn ($self, sprintf($self->
+                   __("Unexpected argument on \@%s line: %s"), 
+                   $current->{'cmdname'}, 
+                   tree_to_texi( { $content->{'contents'} })), $line_nr);
+            push @other_contents, $content;
+          } elsif ($content->{'cmdname'} eq 'c' 
+                 and $content->{'cmdname'} eq 'comment') {
+            push @other_contents, $content;
+          } else {
+            push @prototype_rows, $content;
+          }
+          $content->{'parent'} = $current->{'parent'};
+        }
+      }
+      
+      $current = $current->{'parent'};
+      $current->{'special'}->{'max_columns'} = scalar(@prototype_rows);
+      if (!scalar(@prototype_rows)) {
+        $self->_line_warn ($self->__("empty multitable"), $line_nr);
+      }
+      $current->{'args'} = \@prototype_rows;
+      $current->{'contents'} = \@other_contents;
+      # this is in order to have $current->{'parent'} being the multitable
+      
+      $current = $line_arg;
+    }
+    $current = $current->{'parent'};
+    if ($current->{'cmdname'} 
+          and $block_item_commands{$current->{'cmdname'}}) {
+      push @{$current->{'contents'}}, { 'type' => 'before_item',
+         'contents' => [], 'parent', $current };
+      $current = $current->{'contents'}->[-1];
+    }
+  # misc command line arguments
+  } elsif ($current->{'type'} 
+     and $current->{'type'} eq 'misc_line_arg') {
+    # first parent is the @command, second is the parent
+    $current = $current->{'parent'};
+    my $misc_cmd = $current;
+    my $command = $current->{'cmdname'};
+    print STDERR "MISC END \@$current->{'cmdname'}\n" if ($self->{'debug'});
+    if ($self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'}
+        and $self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'} =~ /^\d$/) {
+      my $args = _parse_line_command_args ($self, $current, $line_nr);
+      $current->{'special'}->{'misc_args'} = $args if (defined($args));
+    }
+    $current = $current->{'parent'};
+    if ($command eq 'columnfractions') {
+      # in a multitable, we are in a block_line_arg
+      if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 
+                   or $current->{'parent'}->{'cmdname'} ne 'multitable') {
+        # FIXME error message
+      } else {
+        $current = $current->{'parent'};
+        $current->{'special'}->{'max_columns'} = 0;
+        $current->{'special'}->{'max_columns'} = 
+            scalar(@{$misc_cmd->{'special'}->{'misc_args'}})
+              if (defined($misc_cmd->{'special'}->{'misc_args'}));
+        push @{$current->{'contents'}}, { 'type' => 'before_item',
+           'contents' => [], 'parent', $current };
+        $current = $current->{'contents'}->[-1];
+      }
+    }
+  }
+  return $current;
+}
 #c 'menu_entry'
 #c 'menu_entry'
 # t 'menu_entry_leading_text'
@@ -1237,10 +1409,14 @@ sub _internal_parse_text($$;$$)
                                    $arguments, $line_nr);
         print STDERR "MACROBODY: $expanded".'||||||'."\n" 
            if ($self->{'debug'}); 
+        # empty result.  It is ignored here.
+        next if ($expanded eq '');
         my $expanded_lines = _text_to_lines($expanded);
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
-                                     ."\nEND LINES\n" if ($self->{'debug'});
+                                     ."|\nEND LINES\n" if ($self->{'debug'});
         chomp ($expanded_lines->[-1]);
+        pop @$expanded_lines if ($expanded_lines->[-1] eq '');
+        next if (!@$expanded_lines);
         my $new_lines_nr = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);
@@ -1495,6 +1671,9 @@ sub _internal_parse_text($$;$$)
             # be very wise...
             $current->{'remaining_args'} = 4 if ($command eq 'node');
             $current = $current->{'args'}->[-1];
+          } elsif ($line eq '') {
+            $current = _end_line($self, $current, $line_nr);
+            last;
           }
 
           last NEXT_LINE if ($command eq 'bye');
@@ -1573,11 +1752,6 @@ sub _internal_parse_text($$;$$)
                  'parent' => $current } ];
               $current->{'remaining_args'} = $arg_number -1 if ($arg_number);
               $current = $current->{'args'}->[-1];
-              if ($command eq 'multitable' 
-                    and $line =~ s/^\@columnfractions\s+//) {
-                # both an argument and an @-command
-                $current->{'cmdname'} = 'columnfractions';
-              }
             } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
@@ -1607,6 +1781,10 @@ sub _internal_parse_text($$;$$)
         } elsif ($no_brace_commands{$command}) {
           push @{$current->{'contents'}},
                  { 'cmdname' => $command, 'parent' => $current };
+          if ($command eq "\n") {
+            $current = _end_line($self, $current, $line_nr);
+            last;
+          }
         } else {
           _line_error ($self, sprintf($self->__("Unknown command `%s'"), 
                                                       $command), $line_nr);
@@ -1711,6 +1889,10 @@ sub _internal_parse_text($$;$$)
                                           'contents' => [],
                                           'parent' => $current };
             $current = $current->{'args'}->[-1];
+            if ($line eq '') {
+              $current = _end_line($self, $current, $line_nr);
+              last;
+            }
           }
         # end of menu_entry_name
         } elsif ($separator eq ':' and $current->{'type'} 
@@ -1741,6 +1923,10 @@ sub _internal_parse_text($$;$$)
                                           'parent' => $current };
           }
           $current = $current->{'args'}->[-1];
+          if ($line eq '') {
+            $current = _end_line($self, $current, $line_nr);
+            last;
+          }
         } else {
           $current = _merge_text ($self, $current, $separator);
         }
@@ -1752,223 +1938,18 @@ sub _internal_parse_text($$;$$)
         if ($self->{'debug'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
-        if ($line ne "\n" 
-            and !($line eq '')) {
-          #  and !($current->{'contents'} and @{$current->{'contents'}} 
-          #         and $current->{'contents'}->[-1] 
-          #         and $current->{'contents'}->[-1]->{'cmdname'}
-          #         and $current->{'contents'}->[-1]->{'cmdname'} eq "\n"
-          #         and $line eq ''
-          #       )
-          #  and !($line eq '' and !scalar(@$text))) {
-          _line_warn ($self, "BUG spurious suff on line. Remaining text: @$text", $line_nr);
-          die "Remaining line: |$line|\n";
+        if ($line ne "\n" and scalar(@$text)) {
+          die "Remaining line: |$line|\n" if ($line ne '');
+          print STDERR "END OF TEXT not at end of line/text\n" 
+            if ($self->{'debug'});
+          $line = shift @$text;
+          $line_nr = shift @$lines_array;
+          next;
         }
         if ($line =~ s/^(\n)//) {
           $current = _merge_text ($self, $current, $1);
         }
-        if ($current->{'type'} 
-             and ($current->{'type'} eq 'menu_entry_name'
-                  or $current->{'type'} eq 'menu_entry_node')) {
-          my $empty_menu_entry_node = 0;
-          my $end_comment;
-          if ($current->{'type'} eq 'menu_entry_node') {
-            if (@{$current->{'contents'}} 
-                and $current->{'contents'}->[-1]->{'cmdname'}
-                and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c' 
-                    or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-              $end_comment = pop @{$current->{'contents'}};
-            }
-            if (!@{$current->{'contents'}}) {
-              $empty_menu_entry_node = 1;
-              push @{$current->{'contents'}}, $end_comment if ($end_comment);
-            }
-          }
-          # we abort the menu entry if there is no node name
-          if ($empty_menu_entry_node 
-               or $current->{'type'} eq 'menu_entry_name') {
-            print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'debug'});
-            my $menu = $current->{'parent'}->{'parent'};
-            my $menu_entry = pop @{$menu->{'contents'}};
-            if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
-                and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
-              $current = $menu->{'contents'}->[-1];
-            } else {
-              push @{$menu->{'contents'}}, {'type' => 'menu_comment',
-                                             'parent' => $menu,
-                                             'contents' => [] };
-              $current = $menu->{'contents'}->[-1];
-            }
-            while (@{$menu_entry->{'args'}}) {
-              my $arg = shift @{$menu_entry->{'args'}};
-              if (defined($arg->{'text'})) {
-                $current = _merge_text ($self, $current, $arg->{'text'});
-              } else {
-                while (@{$arg->{'contents'}}) {
-                  my $content = shift @{$arg->{'contents'}};
-                  if (defined($content->{'text'})) {
-                    $current = _merge_text ($self, $current, 
-                                                $content->{'text'});
-                    $content = undef;
-                  } else {
-                    $content->{'parent'} = $current;
-                    push @{$current->{'contents'}}, $content;
-                  }
-                }
-              }
-              $arg = undef;
-            }
-            $menu_entry = undef;
-          } else {
-            print STDERR "MENU ENTRY END LINE\n" if ($self->{'debug'});
-            $current = $current->{'parent'};
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                          'contents' => [],
-                                          'parent' => $current };
-            $current = $current->{'args'}->[-1];
-            if (defined($end_comment)) {
-              $end_comment->{'parent'} = $current;
-              push @{$current->{'contents'}}, $end_comment;
-            }
-          }
-        # def line
-        } elsif ($current->{'parent'}
-             and $current->{'parent'}->{'type'}
-                    and $current->{'parent'}->{'type'} eq 'def_line') {
-            my $def_context = pop @{$self->{'context_stack'}};
-            die "BUG: def_context $def_context "._print_current($current) 
-               if ($def_context ne 'def');
-            $current = $current->{'parent'}->{'parent'};
-        # other block command lines
-        } elsif ($current->{'type'}
-            and $current->{'type'} eq 'block_line_arg') {
-          # @multitable @columnfractions
-          if ($current->{'cmdname'}
-              and $current->{'cmdname'} eq 'columnfractions') { 
-            # the columnfraction content should be text only, maybe
-            # followed by a comment.
-            #print STDERR "COLUMNFRACTIONS: ".Data::Dumper->Dump([$current], ['$columnfractions']) if ($self->{'debug'});
-            my @fractions;
-            my $other_contents;
-            if (!@{$current->{'contents'}}) {
-              _line_error ($self, sprintf($self->__("Empty \@%s"),
-                                $current->{'cmdname'}), $line_nr);
-
-            } elsif (!defined($current->{'contents'}->[0]->{'text'})) {
-              _line_error ($self, sprintf($self->
-                                 __("\@%s accepts only fractions as argument"),
-                                 $current->{'cmdname'}), $line_nr);
-              $other_contents = $current->{'contents'};
-
-            } else {
-              my $fraction_argument = shift @{$current->{'contents'}};
-              # verify that the only remaining argument is a comment
-              if (@{$current->{'contents'}}
-                  and (!$current->{'contents'}->[0]->{'cmdname'} 
-                       or ($current->{'contents'}->[0]->{'cmdname'} ne 'c'
-                           and $current->{'contents'}->[0]->{'cmdname'}
-                               ne 'comment'))) {
-                _line_warn ($self, sprintf($self->
-                         __("Unexpected argument on \@%s line: %s"), 
-                         $current->{'cmdname'}, 
-                         tree_to_texi( { $current->{'contents'} })), $line_nr);
-              }
-              $other_contents = $current->{'contents'};
-              # now parse the fractions
-              my @possible_fractions = split (/\s+/,
-                                              $fraction_argument->{'text'});
-              foreach my $fraction (@possible_fractions) {
-                if ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/) {
-                  push @fractions, $fraction;
-                } else {
-                  _line_error ($self, sprintf($self->
-                                        __("column fraction not a number: %s"),
-                                        $fraction), $line_nr);
-                }
-              }
-            }
-            $current = $current->{'parent'};
-            $current->{'special'}->{'max_columns'} = scalar(@fractions);
-            $current->{'args'} = [ { 'cmdname' => 'columnfractions',
-                                     'parent' => $current } ];
-            foreach my $content (@$other_contents) {
-              $content->{'parent'} = $current;
-              push @{$current->{'args'}}, $content;
-            }
-            $current = $current->{'args'}->[0];
-            foreach my $fraction (@fractions) {
-              push @{$current->{'args'}},
-                   { 'type' => 'fraction', 'text' => $fraction,
-                     'parent' => $current };
-            }
-          # @multitable args
-          } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-                     and $current->{'parent'}->{'cmdname'} eq 'multitable') {
-            my $line_arg = $current;
-            my @prototype_rows;
-            my @other_contents;
-            # rearrange the row specifications as args, which mostly 
-            # implies splitting non-bracketed text and reparenting.
-            foreach my $content (@{$current->{'contents'}}) {
-              if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
-                $content->{'parent'} = $current->{'parent'};
-                push @prototype_rows, $content;
-              } elsif ($content->{'text'}) {
-                if ($content->{'text'} =~ /\S/) {
-                  foreach my $prototype(split /\s+/, $content->{'text'}) {
-                    push @prototype_rows, { 'text' => $prototype, 
-                                  'parent' => $current->{'parent'},
-                                  'type' => 'row_prototype' };
-                  }
-                }
-              } else {
-                if (!$content->{'cmdname'}) { 
-                  _line_warn ($self, sprintf($self->
-                         __("Unexpected argument on \@%s line: %s"), 
-                         $current->{'cmdname'}, 
-                         tree_to_texi( { $content->{'contents'} })), $line_nr);
-                  push @other_contents, $content;
-                } elsif ($content->{'cmdname'} eq 'c' 
-                       and $content->{'cmdname'} eq 'comment') {
-                  push @other_contents, $content;
-                } else {
-                  push @prototype_rows, $content;
-                }
-                $content->{'parent'} = $current->{'parent'};
-              }
-            }
-            
-            $current = $current->{'parent'};
-            $current->{'special'}->{'max_columns'} = scalar(@prototype_rows);
-            if (!scalar(@prototype_rows)) {
-              $self->_line_warn ($self->__("empty multitable"), $line_nr);
-            }
-            $current->{'args'} = \@prototype_rows;
-            $current->{'contents'} = \@other_contents;
-            # this is in order to have $current->{'parent'} being the multitable
-            
-            $current = $line_arg;
-          }
-          $current = $current->{'parent'};
-          if ($current->{'cmdname'} 
-                and $block_item_commands{$current->{'cmdname'}}) {
-            push @{$current->{'contents'}}, { 'type' => 'before_item',
-               'contents' => [], 'parent', $current };
-            $current = $current->{'contents'}->[-1];
-          }
-        # misc command line arguments
-        } elsif ($current->{'type'} 
-           and $current->{'type'} eq 'misc_line_arg') {
-          # first parent is the @command, second is the parent
-          $current = $current->{'parent'};
-          print STDERR "MISC END \@$current->{'cmdname'}\n" if ($self->{'debug'});
-          if ($self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'}
-              and $self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'} =~ /^\d$/) {
-            my $args = _parse_line_command_args ($self, $current, $line_nr);
-            $current->{'special'}->{'misc_args'} = $args if (defined($args));
-          }
-          $current = $current->{'parent'};
-        }
+        $current = _end_line($self, $current, $line_nr);
         last;
       }
     }
@@ -2252,6 +2233,7 @@ sub _parse_line_command_args($$$)
   return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
   
   my $line = $arg->{'contents'}->[0]->{'text'};  
+  $line =~ s/^[ \t]*//;
 
   if ($command eq 'alias') {
     # REMACRO
@@ -2272,6 +2254,22 @@ sub _parse_line_command_args($$$)
     } else {
       _line_error ($self, sprintf($self->
                               __("Bad argument to \@%s"), $command), $line_nr);
+    }
+  } elsif ($command eq 'columnfractions') {
+    my @possible_fractions = split (/\s+/, $line);
+    if (!@possible_fractions) {
+      _line_error ($self, sprintf($self->__("Empty \@%s"), $command), 
+                             $line_nr);
+    } else {
+      foreach my $fraction (@possible_fractions) {
+        if ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/) {
+          push @$args, $fraction;
+        } else {
+          _line_error ($self, sprintf($self->
+                              __("column fraction not a number: %s"),
+                              $fraction), $line_nr);
+        }
+      }
     }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
     # REMACRO

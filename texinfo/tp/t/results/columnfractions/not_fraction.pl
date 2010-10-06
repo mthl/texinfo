@@ -5,8 +5,28 @@ $result_trees{'not_fraction'} = {
     {
       'args' => [
         {
-          'cmdname' => 'columnfractions',
-          'parent' => {}
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'aaa
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'columnfractions',
+              'parent' => {},
+              'special' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'block_line_arg'
         }
       ],
       'cmdname' => 'multitable',
@@ -24,11 +44,14 @@ $result_trees{'not_fraction'} = {
     }
   ]
 };
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'parent'} = $result_trees{'not_fraction'};
 
-$result_texts{'not_fraction'} = '@multitable @columnfractions
+$result_texts{'not_fraction'} = '@multitable @columnfractions aaa
 @end multitable
 ';
 

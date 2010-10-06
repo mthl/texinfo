@@ -11,20 +11,33 @@ $result_trees{'multitable'} = {
     {
       'args' => [
         {
-          'args' => [
+          'contents' => [
             {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '6 7
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'columnfractions',
               'parent' => {},
-              'text' => '6',
-              'type' => 'fraction'
-            },
-            {
-              'parent' => {},
-              'text' => '7',
-              'type' => 'fraction'
+              'special' => {
+                'misc_args' => [
+                  '6',
+                  '7'
+                ]
+              }
             }
           ],
-          'cmdname' => 'columnfractions',
-          'parent' => {}
+          'parent' => {},
+          'type' => 'block_line_arg'
         }
       ],
       'cmdname' => 'multitable',
@@ -308,8 +321,9 @@ $result_trees{'multitable'} = {
   ]
 };
 $result_trees{'multitable'}{'contents'}[0]{'parent'} = $result_trees{'multitable'};
-$result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];
-$result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'args'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0];

@@ -45,17 +45,12 @@ $result_trees{'arg_not_closed'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'call foo'
+          'text' => 'call foo
+'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
     }
   ]
 };
@@ -66,7 +61,6 @@ $result_trees{'arg_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'arg_no
 $result_trees{'arg_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'arg_not_closed'};
 $result_trees{'arg_not_closed'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[2];
 $result_trees{'arg_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'arg_not_closed'};
-$result_trees{'arg_not_closed'}{'contents'}[3]{'parent'} = $result_trees{'arg_not_closed'};
 
 $result_texts{'arg_not_closed'} = '@macro foo {arg}
 foo

@@ -109,16 +109,15 @@ $result_trees{'comma_value_in_macro_arg'} = {
           'contents' => [],
           'parent' => {},
           'remaining_args' => 0
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
     }
   ]
 };
@@ -139,8 +138,8 @@ $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[1]{'parent'
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[4];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[3];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[4];
+$result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[4];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[4]{'parent'} = $result_trees{'comma_value_in_macro_arg'};
-$result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'parent'} = $result_trees{'comma_value_in_macro_arg'};
 
 $result_texts{'comma_value_in_macro_arg'} = '@set comma ,
 

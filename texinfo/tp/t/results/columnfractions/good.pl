@@ -5,25 +5,34 @@ $result_trees{'good'} = {
     {
       'args' => [
         {
-          'args' => [
+          'contents' => [
             {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '0.4 .6 5.
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'columnfractions',
               'parent' => {},
-              'text' => '0.4',
-              'type' => 'fraction'
-            },
-            {
-              'parent' => {},
-              'text' => '.6',
-              'type' => 'fraction'
-            },
-            {
-              'parent' => {},
-              'text' => '5.',
-              'type' => 'fraction'
+              'special' => {
+                'misc_args' => [
+                  '0.4',
+                  '.6',
+                  '5.'
+                ]
+              }
             }
           ],
-          'cmdname' => 'columnfractions',
-          'parent' => {}
+          'parent' => {},
+          'type' => 'block_line_arg'
         }
       ],
       'cmdname' => 'multitable',
@@ -41,9 +50,9 @@ $result_trees{'good'} = {
     }
   ]
 };
-$result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
-$result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[1]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
-$result_trees{'good'}{'contents'}[0]{'args'}[0]{'args'}[2]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
+$result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'parent'} = $result_trees{'good'};

@@ -144,17 +144,12 @@ different
       'contents' => [
         {
           'parent' => {},
-          'text' => 'different'
+          'text' => 'different
+'
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'normal_line'
     }
   ]
 };
@@ -178,7 +173,6 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[6]{'contents'}[0]{'parent'
 $result_trees{'arg_body_expansion_order'}{'contents'}[6]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[7];
 $result_trees{'arg_body_expansion_order'}{'contents'}[7]{'parent'} = $result_trees{'arg_body_expansion_order'};
-$result_trees{'arg_body_expansion_order'}{'contents'}[8]{'parent'} = $result_trees{'arg_body_expansion_order'};
 
 $result_texts{'arg_body_expansion_order'} = '
 @macro othermacro
