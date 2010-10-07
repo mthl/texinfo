@@ -916,6 +916,7 @@ sub _expand_macro_arguments($$$$$$)
   my $arguments = [ '' ];
   my $arg_nr = 0;
   my $args_total = scalar(@{$macro->{'args'}}) -1;
+  my $name = $macro->{'args'}->[0]->{'text'};
 
   my $line_nr_orig = $line_nr;
 
@@ -937,10 +938,19 @@ sub _expand_macro_arguments($$$$$$)
           print STDERR "MACRO ARG: $separator\n" if ($self->{'debug'});
         }
       } elsif ($separator eq ',') {
-        if (scalar(@$arguments) < $args_total and $braces_level == 1) {
-          push @$arguments, '';
-          $line =~ s/^\s*//;
-          print STDERR "MACRO NEW ARG\n" if ($self->{'debug'});
+        if ($braces_level == 1) {
+          if (scalar(@$arguments) < $args_total) {
+            push @$arguments, '';
+            $line =~ s/^\s*//;
+            print STDERR "MACRO NEW ARG\n" if ($self->{'debug'});
+          } else {
+            # implicit quoting when there is one argument.
+            if ($args_total != 1) {
+              _line_error ($self, sprintf($self->__("Macro `%s' called with too many args"), 
+                                $name), $line_nr);
+            }
+            $arguments->[-1] .= ',';
+          }
         } else {
           $arguments->[-1] .= ',';
         }
@@ -960,10 +970,14 @@ sub _expand_macro_arguments($$$$$$)
         ($line, $line_nr) = _new_line($text, $lines_array);
       } else {
         _line_error ($self, sprintf($self->__("\@%s missing close brace"), 
-           $macro->{'args'}->[0]->{'text'}), $line_nr_orig);
+           $name), $line_nr_orig);
         return ($arguments, "\n", $line_nr);
       }
     }
+  }
+  if ($args_total == 0 and $arguments->[0] =~ /\S/) {
+    _line_error ($self, sprintf($self->__("Macro `%s' declared without argument called with an argument"), 
+                                $name), $line_nr);
   }
   print STDERR "END MACRO ARGS EXPANSION(".scalar(@$arguments)."): ".
                   join("|\n", @$arguments) ."|\n" if ($self->{'debug'});

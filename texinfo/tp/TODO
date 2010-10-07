@@ -13,8 +13,6 @@ the place where the error occurred.
 
 test invalid, especially commands not closed/bad nesting
 test root_commands, like nodes and sections
-values and user defined macro expansion in line @-commands, line
-@-commands argument checking.
 
 Test @set with an argument but no space following it. In ifset tests.
 
