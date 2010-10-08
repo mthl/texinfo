@@ -1,3 +1,10 @@
+2010-10-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Defining Macros),
+	(alias),
+	(set value): more precisely document naming recommendations
+	and requirements.
+
 2010-10-07  Sergey Poznyakoff  <gray@mirddin.farlep.net>
 
 	* info/nodes.c (info_node_of_file_buffer_tags): Check if

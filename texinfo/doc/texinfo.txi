@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
+@c $Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -7380,7 +7380,7 @@ the @file{/usr/local/emacs/lisp} directory.
 @cindex Command names, indicating
 @cindex Program names, indicating
 
-Use the @code{@@commannd} command to indicate command names, such as
+Use the @code{@@command} command to indicate command names, such as
 @command{ls} or @command{cc}.
 
 @code{@@command} is equivalent to @code{@@code} in its effects.
@@ -10180,7 +10180,7 @@ this:
 @@defindex @var{name}
 @end example
 
-The name of an index should be a two letter word, such as @samp{au}.
+The name of an index should be a two-letter word, such as @samp{au}.
 For example:
 
 @example
@@ -13546,7 +13546,8 @@ is ignored.  If @var{flag} is clear, text through the following
 You use the @code{@@set} command to specify a value for a flag, which
 is later expanded by the @code{@@value} command.
 
-A @dfn{flag} (aka @dfn{variable}) is an identifier.  It is best to use
+A @dfn{flag} (aka @dfn{variable}) is an identifier consisting of
+alphanumerics, @samp{-}, and @samp{_}.  However, it is best to use
 only letters and numerals in a flag name, not @samp{-} or
 @samp{_}---they will work in some contexts, but not all, due to
 limitations in @TeX{}.
@@ -14091,10 +14092,10 @@ arguments supplied when the macro is subsequently used in the document
 For a macro to work consistently with @TeX{}, @var{macroname} must
 consist entirely of letters: no digits, hyphens, underscores, or other
 special characters.  So, we recommend using only letters.  However,
-@command{makeinfo} will accept anything except @samp{@{@}_^=};
-@samp{_} and @samp{^} are excluded so that macros can be called in
-@code{@@math} mode without a following space
-(@pxref{math,,@code{@@math}}).
+@command{makeinfo} will accept anything consisting of alphanumerics,
+and (except as the first character) @samp{-}.  The @samp{_} character
+is excluded so that macros can be called inside @code{@@math} without
+a following space (@pxref{math,,@code{@@math}}).
 
 If a macro needs no parameters, you can define it either with an empty
 list (@samp{@@macro foo @{@}}) or with no braces at all (@samp{@@macro
@@ -14490,9 +14491,14 @@ in the Jargon File!)
 
 Aliases must not be recursive, directly or indirectly.
 
-It is not advisable to redefine any @TeX{} primitive, plain, or
+It is not advisable to redefine any @TeX{} primitive, plain @TeX{}, or
 Texinfo command name as an alias.  Unfortunately this is a very large
-set of names, and the possible resulting errors are completely random.
+set of names, and the possible resulting errors from @TeX{} are
+completely unpredictable.
+
+@command{makeinfo} will accept anything for an alias name consisting
+of alphanumerics, @samp{_}, and (except as the first character)
+@samp{-}.
 
 
 @node definfoenclose
@@ -24654,7 +24660,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
+$Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24733,7 +24739,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.324 2010-10-01 18:05:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
