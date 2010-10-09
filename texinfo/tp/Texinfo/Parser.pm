@@ -1564,10 +1564,12 @@ sub _internal_parse_text($$;$$)
                                  'contents' => [],
                                  'parent' => $current } ];
         $current = $current->{'args'}->[-1];
+      # * folllowed by something else than a space.
       } elsif (@{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
-               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
-        print STDERR "ABORT MENU STAR\n" if ($self->{'debug'});
+               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star'
+               and $line ne '') {
+        print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'debug'});
         delete $current->{'contents'}->[-1]->{'type'};
         # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
