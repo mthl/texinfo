@@ -200,6 +200,25 @@ a word
 
 @space{} text after space.
 '],
+['macro_in_menu',
+'@macro star
+* 
+@end macro
+
+@macro spaces
+  
+@end macro
+
+@macro two-colon
+::
+@end macro
+
+@menu
+@star{}menu entry@two-colon{} description
+@spaces{}
+menu comment
+@end menu
+'],
 ['nested_macro_call',
 '@macro machin{}
 (machin)

@@ -1070,15 +1070,25 @@ sub _end_line($$$)
   if ($current->{'contents'} and @{$current->{'contents'}} 
       and $current->{'contents'}->[-1]->{'type'} 
       and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
-    my $empty_line;
     print STDERR "END EMPTY LINE\n" if ($self->{'debug'});
     if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
-      $empty_line = pop @{$current->{'contents'}};
-    }
-    $current = _end_paragraph($self, $current, $line_nr);
-    if ($empty_line) {
+      my $empty_line = pop @{$current->{'contents'}};
+      $current = _end_paragraph($self, $current, $line_nr);
       push @{$current->{'contents'}}, $empty_line;
       $empty_line->{'parent'} = $current;
+    } elsif ($current->{'type'} 
+               and $current->{'type'} eq 'menu_entry_description') {
+      # first parent is menu_entry
+      my $empty_line = pop @{$current->{'contents'}};
+      $current = $current->{'parent'}->{'parent'};
+      
+      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
+                                        'text' => $empty_line->{'text'},
+                                        'parent' => $current };
+      push @{$current->{'contents'}}, { 'type' => 'menu_comment',
+                                        'parent' => $current,
+                                        'contents' => [] };
+      $current = $current->{'contents'}->[-1];
     }
   } elsif ($current->{'type'} 
     and ($current->{'type'} eq 'menu_entry_name'
@@ -1310,29 +1320,20 @@ sub _internal_parse_text($$;$$)
            ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
             and $current->{'parent'}->{'cmdname'} eq 'verb')
           )
-        # not in math or preformatted or def line
-        and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
+        # not def line
+        and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "EMPTY LINE or COMMAND\n" if ($self->{'debug'});
       $line =~ s/([ \t]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
-    } elsif ($line !~ /\S/ and $current->{'type'} 
-               and $current->{'type'} eq 'menu_entry_description') {
-      # first parent is menu_entry
-      $current = $current->{'parent'}->{'parent'};
-      push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
-                                        'text' => $line,
-                                        'parent' => $current };
-      push @{$current->{'contents'}}, { 'type' => 'menu_comment',
-                                        'parent' => $current,
-                                        'contents' => [] };
-      $current = $current->{'contents'}->[-1];
-      next;
-    } elsif ($current->{'type'} 
-              and ($current->{'type'} eq 'menu_comment'
-                    or $current->{'type'} eq 'menu_entry_description')) {
+    }
+
+    if ($current->{'type'} 
+        and ($current->{'type'} eq 'menu_comment'
+             or $current->{'type'} eq 'menu_entry_description')) {
       if ($line =~ s/^(\*\s+)//) {
+        _abort_empty_line ($self, $current);
         print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
         my $leading_text = $1;
         if ($current->{'type'} eq 'menu_comment') {
