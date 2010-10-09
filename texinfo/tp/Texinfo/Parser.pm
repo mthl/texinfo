@@ -1417,6 +1417,13 @@ sub _internal_parse_text($$;$$)
         }
       }
 
+      if ($line eq '' and scalar(@$text))
+      {
+        print STDERR "END OF TEXT not at end of line/text\n" 
+          if ($self->{'debug'});
+        $line = shift @$text;
+        $line_nr = shift @$lines_array;
+      }
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
       # REMACRO
@@ -1567,8 +1574,7 @@ sub _internal_parse_text($$;$$)
       # * folllowed by something else than a space.
       } elsif (@{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
-               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star'
-               and $line ne '') {
+               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
         print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'debug'});
         delete $current->{'contents'}->[-1]->{'type'};
         # REMACRO
@@ -2032,16 +2038,10 @@ sub _internal_parse_text($$;$$)
         if ($self->{'debug'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
-        if ($line ne "\n" and scalar(@$text)) {
-          die "Remaining line: |$line|\n" if ($line ne '');
-          print STDERR "END OF TEXT not at end of line/text\n" 
-            if ($self->{'debug'});
-          $line = shift @$text;
-          $line_nr = shift @$lines_array;
-          next;
-        }
         if ($line =~ s/^(\n)//) {
           $current = _merge_text ($self, $current, $1);
+        } else {
+          die if (scalar(@$text));
         }
         $current = _end_line($self, $current, $line_nr);
         last;
