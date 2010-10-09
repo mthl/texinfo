@@ -29,6 +29,13 @@ Value
 
 1 @value{myspace} 1
 '],
+['empty_value_in_line',
+'@set myspace
+
+1 
+@value{myspace} 
+1
+'],
 ['value_in_node',
 '@set node1 Node 1
 

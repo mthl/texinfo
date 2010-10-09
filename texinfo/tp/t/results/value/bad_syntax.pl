@@ -60,6 +60,11 @@ $result_trees{'bad_syntax'} = {
       'type' => 'normal_line'
     },
     {
+      'parent' => {},
+      'text' => '',
+      'type' => 'normal_line'
+    },
+    {
       'cmdname' => 'value',
       'type' => 'unknown'
     },
@@ -79,7 +84,8 @@ $result_trees{'bad_syntax'}{'contents'}[5]{'parent'} = $result_trees{'bad_syntax
 $result_trees{'bad_syntax'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[6];
 $result_trees{'bad_syntax'}{'contents'}[6]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[7]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[9]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[8]{'parent'} = $result_trees{'bad_syntax'};
+$result_trees{'bad_syntax'}{'contents'}[10]{'parent'} = $result_trees{'bad_syntax'};
 
 $result_texts{'bad_syntax'} = '
 @set

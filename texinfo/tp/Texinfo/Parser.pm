@@ -589,8 +589,10 @@ sub _print_current($)
   my $type = '';
   my $cmd = '';
   my $parent_string = '';
+  my $text = '';
   $type = "($current->{'type'})" if (defined($current->{'type'}));
   $cmd = "\@$current->{'cmdname'}" if (defined($current->{'cmdname'}));
+  $text = "[text: $current->{'text'}]" if (defined($current->{'text'}));
   if ($current->{'parent'}) {
     my $parent = $current->{'parent'};
     my $parent_cmd = '';
@@ -604,7 +606,7 @@ sub _print_current($)
   $args = "args(".scalar(@{$current->{'args'}}).')' if $current->{'args'};
   $contents = "contents(".scalar(@{$current->{'contents'}}).')'
     if $current->{'contents'};
-  return "$cmd$type : $args $contents\n$parent_string";
+  return "$cmd$type : $args $text $contents\n$parent_string";
 }
 
 sub _line_warn($$$)
@@ -817,7 +819,12 @@ sub _merge_text ($$$)
   my $current = shift;
   my $text = shift;
 
-  my $paragraph = _begin_paragraph($self, $current) if ($text =~ /\S/);
+  my $paragraph;
+
+  if ($text =~ /\S/) {
+    _abort_empty_line ($self, $current);
+    $paragraph = _begin_paragraph($self, $current);
+  }
 
   if (!$paragraph and 
     $current->{'contents'} and @{$current->{'contents'}} and
@@ -1023,12 +1030,46 @@ sub _expand_macro_body($$$$) {
   return $result;
 }
 
+sub _abort_empty_line($$)
+{
+  my $self = shift;
+  my $current = shift;
+#print STDERR "abort? "._print_current($current);
+#print STDERR "$current->{'contents'}->[-1]";
+#print STDERR "Last content: "._print_current($current->{'contents'}->[-1]);
+  if ($current->{'contents'} and @{$current->{'contents'}} 
+       and $current->{'contents'}->[-1]->{'type'}
+       and $current->{'contents'}->[-1]->{'type'} eq 'normal_line'
+       and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+    print STDERR "ABORT EMPTY\n" if ($self->{'debug'});
+    if ($current->{'contents'}->[-1]->{'text'} eq '') {
+      pop @{$current->{'contents'}} 
+    } else {
+      delete $current->{'contents'}->[-1]->{'type'};
+    }
+  }
+}
+
 sub _end_line($$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
-  if ($current->{'type'} 
+
+  if ($current->{'contents'} and @{$current->{'contents'}} 
+      and $current->{'contents'}->[-1]->{'type'} 
+      and $current->{'contents'}->[-1]->{'type'} eq 'normal_line') {
+    my $empty_line;
+    print STDERR "END EMPTY LINE\n" if ($self->{'debug'});
+    if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
+      $empty_line = pop @{$current->{'contents'}};
+    }
+    $current = _end_paragraph($self, $current, $line_nr);
+    if ($empty_line) {
+      push @{$current->{'contents'}}, $empty_line;
+      $empty_line->{'parent'} = $current;
+    }
+  } elsif ($current->{'type'} 
     and ($current->{'type'} eq 'menu_entry_name'
      or $current->{'type'} eq 'menu_entry_node')) {
     my $empty_menu_entry_node = 0;
@@ -1248,7 +1289,7 @@ sub _internal_parse_text($$;$$)
       delete $current->{'HERE !!!!'};
     }
 
-    if ($line !~ /\S/ and not 
+    if (($line !~ /\S/ or $line =~ /^\s*\@/) and not 
         # raw format or verb
           (($current->{'cmdname'}
            and $block_commands{$current->{'cmdname'}}
@@ -1260,12 +1301,18 @@ sub _internal_parse_text($$;$$)
           )
         # not in math or preformatted
         and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
-      print STDERR "EMPTY LINE\n" if ($self->{'debug'});
-      $current = _end_paragraph($self, $current, $line_nr);
+      print STDERR "EMPTY LINE or COMMAND\n" if ($self->{'debug'});
+      if ($line !~ /\S/ and $line =~ /\n/) {
+        $current = _end_paragraph($self, $current, $line_nr);
+      }
+      my $empty_line = $line;
+      if ($line =~ s/^(\s*)\@/\@/) {
+        $empty_line = $1;
+      }
       push @{$current->{'contents'}}, { 'type' => 'normal_line', 
-                                        'text' => $line,
+                                        'text' => $empty_line,
                                         'parent' => $current };
-      next;
+      next if ($line !~ /\S/ and $line =~ /\n/);
     } elsif ($line !~ /\S/ and $current->{'type'} 
                and $current->{'type'} eq 'menu_entry_description') {
       # first parent is menu_entry
@@ -1535,6 +1582,8 @@ sub _internal_parse_text($$;$$)
                    $self->__($deprecated_commands{$command})), $line_nr);
           }
         }
+
+        _abort_empty_line ($self, $current);
 
         if ($command eq 'end') {
           # REMACRO
