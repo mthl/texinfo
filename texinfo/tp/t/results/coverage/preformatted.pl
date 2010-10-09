@@ -6,7 +6,7 @@ $result_trees{'preformatted'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'example',
@@ -33,7 +33,7 @@ $result_trees{'preformatted'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'format',

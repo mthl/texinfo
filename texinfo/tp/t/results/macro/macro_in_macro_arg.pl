@@ -6,7 +6,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -37,7 +37,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -76,7 +76,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -128,7 +128,7 @@ $result_trees{'macro_in_macro_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

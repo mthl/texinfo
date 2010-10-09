@@ -27,7 +27,7 @@ $result_trees{'footnote'} = {
                   'parent' => {},
                   'text' => '
 ',
-                  'type' => 'normal_line'
+                  'type' => 'empty_line'
                 },
                 {
                   'contents' => [

@@ -39,13 +39,13 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

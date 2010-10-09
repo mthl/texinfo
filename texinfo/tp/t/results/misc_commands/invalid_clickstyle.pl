@@ -6,7 +6,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -23,7 +23,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -57,7 +57,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -74,7 +74,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -108,7 +108,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'clickstyle',
@@ -118,7 +118,7 @@ $result_trees{'invalid_clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

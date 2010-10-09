@@ -6,7 +6,7 @@ $result_trees{'item_container'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -54,7 +54,7 @@ $result_trees{'item_container'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [

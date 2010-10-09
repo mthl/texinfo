@@ -1051,7 +1051,7 @@ sub _abort_empty_line($$)
   my $current = shift;
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
-       and $current->{'contents'}->[-1]->{'type'} eq 'normal_line') {
+       and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
     print STDERR "ABORT EMPTY\n" if ($self->{'debug'});
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
@@ -1069,7 +1069,7 @@ sub _end_line($$$)
 
   if ($current->{'contents'} and @{$current->{'contents'}} 
       and $current->{'contents'}->[-1]->{'type'} 
-      and $current->{'contents'}->[-1]->{'type'} eq 'normal_line') {
+      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
     my $empty_line;
     print STDERR "END EMPTY LINE\n" if ($self->{'debug'});
     if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
@@ -1314,7 +1314,7 @@ sub _internal_parse_text($$;$$)
         and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
       print STDERR "EMPTY LINE or COMMAND\n" if ($self->{'debug'});
       $line =~ s/([ \t]*)//;
-      push @{$current->{'contents'}}, { 'type' => 'normal_line', 
+      push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
     } elsif ($line !~ /\S/ and $current->{'type'} 

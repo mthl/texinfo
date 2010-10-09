@@ -31,7 +31,7 @@ $result_trees{'macro_zero'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

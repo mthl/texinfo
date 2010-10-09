@@ -6,7 +6,7 @@ $result_trees{'sp'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

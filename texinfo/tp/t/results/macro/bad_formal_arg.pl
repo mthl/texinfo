@@ -6,7 +6,7 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -51,7 +51,7 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -96,7 +96,7 @@ $result_trees{'bad_formal_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [

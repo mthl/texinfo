@@ -60,7 +60,7 @@ $result_trees{'accent_argument'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [

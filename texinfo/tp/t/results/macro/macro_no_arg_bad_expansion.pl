@@ -31,7 +31,7 @@ $result_trees{'macro_no_arg_bad_expansion'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

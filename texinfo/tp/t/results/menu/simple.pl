@@ -6,7 +6,7 @@ $result_trees{'simple'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'menu',

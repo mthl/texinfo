@@ -6,7 +6,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -46,7 +46,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -86,7 +86,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -126,7 +126,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -166,7 +166,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -201,7 +201,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -231,7 +231,7 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

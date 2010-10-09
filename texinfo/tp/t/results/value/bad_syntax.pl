@@ -6,7 +6,7 @@ $result_trees{'bad_syntax'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'set',
@@ -40,7 +40,7 @@ $result_trees{'bad_syntax'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -57,12 +57,12 @@ $result_trees{'bad_syntax'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'parent' => {},
       'text' => '',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'value',

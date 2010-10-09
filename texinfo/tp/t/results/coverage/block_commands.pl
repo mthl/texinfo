@@ -6,7 +6,7 @@ $result_trees{'block_commands'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'group',
@@ -29,7 +29,7 @@ $result_trees{'block_commands'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -66,7 +66,7 @@ $result_trees{'block_commands'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -109,13 +109,13 @@ $result_trees{'block_commands'} = {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'normal_line'
+          'type' => 'empty_line'
         },
         {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'normal_line'
+          'type' => 'empty_line'
         },
         {
           'args' => [
@@ -136,7 +136,7 @@ $result_trees{'block_commands'} = {
                   'parent' => {},
                   'text' => '
 ',
-                  'type' => 'normal_line'
+                  'type' => 'empty_line'
                 },
                 {
                   'contents' => [

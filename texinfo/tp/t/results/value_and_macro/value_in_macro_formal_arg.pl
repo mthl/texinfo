@@ -22,7 +22,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -67,7 +67,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

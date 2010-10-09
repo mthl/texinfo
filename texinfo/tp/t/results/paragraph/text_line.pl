@@ -6,7 +6,7 @@ $result_trees{'text_line'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -23,7 +23,7 @@ $result_trees{'text_line'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     }
   ]
 };

@@ -39,7 +39,7 @@ $result_trees{'arg_not_closed'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

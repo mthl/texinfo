@@ -6,7 +6,7 @@ $result_trees{'misc_raw'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'html',
@@ -23,7 +23,7 @@ $result_trees{'misc_raw'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'tex',
@@ -41,7 +41,7 @@ $result_trees{'misc_raw'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'verbatim',

@@ -45,7 +45,7 @@ $result_trees{'implicit_quoting_recursion'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

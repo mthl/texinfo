@@ -6,7 +6,7 @@ $result_trees{'table'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -72,7 +72,7 @@ $result_trees{'table'} = {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'normal_line'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
@@ -93,7 +93,7 @@ $result_trees{'table'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -158,7 +158,7 @@ $result_trees{'table'} = {
               'parent' => {},
               'text' => '
 ',
-              'type' => 'normal_line'
+              'type' => 'empty_line'
             }
           ],
           'parent' => {},
@@ -242,7 +242,7 @@ $result_trees{'table'} = {
           'parent' => {},
           'text' => '
 ',
-          'type' => 'normal_line'
+          'type' => 'empty_line'
         }
       ],
       'parent' => {},

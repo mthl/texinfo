@@ -21,7 +21,7 @@ $result_trees{'paragraph_command'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

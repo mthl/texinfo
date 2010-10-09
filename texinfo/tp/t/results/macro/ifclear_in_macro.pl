@@ -53,7 +53,7 @@ $result_trees{'ifclear_in_macro'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -70,7 +70,7 @@ $result_trees{'ifclear_in_macro'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     }
   ]
 };

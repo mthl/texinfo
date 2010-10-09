@@ -31,7 +31,7 @@ $result_trees{'zero_argument'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [

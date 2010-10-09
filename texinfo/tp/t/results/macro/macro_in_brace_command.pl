@@ -31,7 +31,7 @@ $result_trees{'macro_in_brace_command'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -62,7 +62,7 @@ $result_trees{'macro_in_brace_command'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [

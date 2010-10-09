@@ -17,7 +17,7 @@ $result_trees{'clickstyle'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

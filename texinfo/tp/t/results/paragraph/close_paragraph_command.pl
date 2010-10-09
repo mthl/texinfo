@@ -45,7 +45,7 @@ $result_trees{'close_paragraph_command'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

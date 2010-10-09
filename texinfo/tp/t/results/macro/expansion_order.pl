@@ -39,7 +39,7 @@ $result_trees{'expansion_order'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'args' => [
@@ -77,7 +77,7 @@ $result_trees{'expansion_order'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -94,7 +94,7 @@ $result_trees{'expansion_order'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     }
   ]
 };

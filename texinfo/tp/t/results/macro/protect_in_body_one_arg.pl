@@ -45,7 +45,7 @@ $result_trees{'protect_in_body_one_arg'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [

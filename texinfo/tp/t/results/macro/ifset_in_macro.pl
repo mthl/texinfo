@@ -53,7 +53,7 @@ $result_trees{'ifset_in_macro'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     }
   ]
 };

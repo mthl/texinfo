@@ -24,7 +24,7 @@ $result_trees{'nested_ignore'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'ignore',
@@ -48,7 +48,7 @@ $result_trees{'nested_ignore'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'cmdname' => 'ignore',

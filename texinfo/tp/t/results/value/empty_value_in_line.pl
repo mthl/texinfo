@@ -22,7 +22,7 @@ $result_trees{'empty_value_in_line'} = {
       'parent' => {},
       'text' => '
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -39,7 +39,7 @@ $result_trees{'empty_value_in_line'} = {
       'parent' => {},
       'text' => ' 
 ',
-      'type' => 'normal_line'
+      'type' => 'empty_line'
     },
     {
       'contents' => [
