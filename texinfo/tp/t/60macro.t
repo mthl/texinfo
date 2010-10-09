@@ -29,7 +29,7 @@ in macro
 ['empty_end','@macro foo {aaa, }
 in foo
 @end macro'],
-[ 'bad_argument', '@macro
+['bad_argument', '@macro
 in macro
 @end macro
 
@@ -201,7 +201,12 @@ a word
 @space{} text after space.
 '],
 ['macro_in_menu',
-'@macro star
+'
+@macro star
+*
+@end macro
+
+@macro star-spaces
 * 
 @end macro
 
@@ -209,14 +214,21 @@ a word
   
 @end macro
 
+@macro space
+ 
+@end macro
+
 @macro two-colon
 ::
 @end macro
 
 @menu
-@star{}menu entry@two-colon{} description
+@star-spaces{}menu entry@two-colon{} description
 @spaces{}
 menu comment
+@star{} node::
+@star{}@space{}other node::
+* 3rd node: entry.@space{}description
 @end menu
 '],
 ['nested_macro_call',

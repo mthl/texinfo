@@ -1102,7 +1102,11 @@ sub _end_line($$$)
             or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
         $end_comment = pop @{$current->{'contents'}};
       }
-      if (!@{$current->{'contents'}}) {
+      if (!@{$current->{'contents'}} 
+           # empty if only the end of line or spaces
+           or (@{$current->{'contents'}} == 1 
+               and defined($current->{'contents'}->[-1]->{'text'})
+               and $current->{'contents'}->[-1]->{'text'} !~ /\S/)) {
         $empty_menu_entry_node = 1;
         push @{$current->{'contents'}}, $end_comment if ($end_comment);
       }
@@ -1322,41 +1326,13 @@ sub _internal_parse_text($$;$$)
           )
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
-      print STDERR "EMPTY LINE or COMMAND\n" if ($self->{'debug'});
+      print STDERR "BEGIN LINE\n" if ($self->{'debug'});
       $line =~ s/([ \t]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
     }
 
-    if ($current->{'type'} 
-        and ($current->{'type'} eq 'menu_comment'
-             or $current->{'type'} eq 'menu_entry_description')) {
-      if ($line =~ s/^(\*\s+)//) {
-        _abort_empty_line ($self, $current);
-        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
-        my $leading_text = $1;
-        if ($current->{'type'} eq 'menu_comment') {
-          my $menu = $current->{'parent'};
-          pop @{$menu->{'contents'}} if (!@{$current->{'contents'}});
-          $current = $menu;
-        } else {
-          # first parent is menu_entry
-          $current = $current->{'parent'}->{'parent'};
-        }
-        push @{$current->{'contents'}}, { 'type' => 'menu_entry',
-                                          'parent' => $current,
-                                        };
-        $current = $current->{'contents'}->[-1];
-        $current->{'args'} = [ { 'type' => 'menu_entry_leading_text',
-                                 'text' => $leading_text,
-                                 'parent' => $current },
-                               { 'type' => 'menu_entry_name',
-                                 'contents' => [],
-                                 'parent' => $current } ];
-        $current = $current->{'args'}->[-1];
-      }
-    }
 
     while (1) {
       # in a raw or ignored conditional block command
@@ -1549,6 +1525,50 @@ sub _internal_parse_text($$;$$)
                            $current->{'cmdname'}), $line_nr);
           $current = $current->{'parent'};
         }
+      # maybe a menu entry beginning
+      } elsif ($line =~ /^\*/ and $current->{'type'}
+                and ($current->{'type'} eq 'menu_comment'
+                    or $current->{'type'} eq 'menu_entry_description')
+                and @{$current->{'contents'}} 
+                and $current->{'contents'}->[-1]->{'type'}
+                and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
+                and $current->{'contents'}->[-1]->{'text'} eq '') {
+        print STDERR "MENU STAR\n" if ($self->{'debug'});
+        _abort_empty_line ($self, $current);
+        $line =~ s/^\*//;
+        push @{$current->{'contents'}}, { 'type' => 'menu_star',
+                                          'text' => '*' };
+      } elsif ($line =~ /^\s+/ and @{$current->{'contents'}} 
+               and $current->{'contents'}->[-1]->{'type'}
+               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
+        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
+        pop @{$current->{'contents'}};
+        $line =~ s/^(\s+)//;
+        my $leading_text = '*' . $1;
+        if ($current->{'type'} eq 'menu_comment') {
+          my $menu = $current->{'parent'};
+          pop @{$menu->{'contents'}} if (!@{$current->{'contents'}});
+          $current = $menu;
+        } else {
+          # first parent is menu_entry
+          $current = $current->{'parent'}->{'parent'};
+        }
+        push @{$current->{'contents'}}, { 'type' => 'menu_entry',
+                                          'parent' => $current,
+                                        };
+        $current = $current->{'contents'}->[-1];
+        $current->{'args'} = [ { 'type' => 'menu_entry_leading_text',
+                                 'text' => $leading_text,
+                                 'parent' => $current },
+                               { 'type' => 'menu_entry_name',
+                                 'contents' => [],
+                                 'parent' => $current } ];
+        $current = $current->{'args'}->[-1];
+      } elsif (@{$current->{'contents'}} 
+               and $current->{'contents'}->[-1]->{'type'}
+               and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
+        print STDERR "ABORT MENU STAR\n" if ($self->{'debug'});
+        delete $current->{'contents'}->[-1]->{'type'};
         # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o) {
@@ -1984,7 +2004,7 @@ sub _internal_parse_text($$;$$)
                                           'parent' => $current };
           # end of the menu_entry_name, open the menu_entry_node.
           } else {
-            $line =~ s/^(\s*)//;
+            $line =~ s/^([ \t]*)//;
             $separator .= $1;
             $current = $current->{'parent'};
             push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',

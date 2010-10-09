@@ -19,7 +19,8 @@ $result_trees{'preformatted'} = {
         {
           'parent' => {},
           'text' => '
-'
+',
+          'type' => 'empty_line'
         },
         {
           'parent' => {},
@@ -84,7 +85,8 @@ $result_trees{'preformatted'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'empty_line'
             },
             {
               'parent' => {},
