@@ -249,7 +249,7 @@ foreach my $context_brace_command ('footnote', 'caption', 'shortcaption') {
 $context_brace_commands{'math'} = 'math';
 
 my %no_paragraph_contexts;
-foreach my $no_paragraph_context ('math', 'preformatted', 'menu') {
+foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
 
@@ -711,9 +711,21 @@ sub _begin_paragraph ($$)
 
   if ((!$current->{'type'} or $current->{'type'} eq 'before_item') 
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
+    my $previous_empty_text;
+    die "BUG: contents undef "._print_current($current) 
+       if (!defined($current->{'contents'}));
+    if (@{$current->{'contents'}} 
+         and defined($current->{'contents'}->[-1]->{'text'})
+         and $current->{'contents'}->[-1]->{'text'} !~ /[\S\n]/) {
+      $previous_empty_text = pop @{$current->{'contents'}};
+    }
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
+    if ($previous_empty_text) {
+      push @{$current->{'contents'}}, $previous_empty_text;
+      $previous_empty_text->{'parent'} = $current;
+    }
     print STDERR "PARAGRAPH\n" if ($self->{'debug'});
     return $current;
   }
@@ -821,21 +833,24 @@ sub _merge_text ($$$)
 
   my $paragraph;
 
+  # FIXME put leading spaces in preceding empty_line (which will be aborted
+  #       as an empty line, but still be there) instead of merging?
+  # this would requires also a change in _begin_paragraph.
   if ($text =~ /\S/) {
     _abort_empty_line ($self, $current);
     $paragraph = _begin_paragraph($self, $current);
+    $current = $paragraph if ($paragraph);
   }
 
-  if (!$paragraph and 
-    $current->{'contents'} and @{$current->{'contents'}} and
+  die "BUG: No contents in _merge_text "._print_current($current) 
+          if (!defined($current->{'contents'}));
+  if (@{$current->{'contents'}} and
     exists($current->{'contents'}->[-1]->{'text'}) and 
-#   !$current->{'contents'}->[-1]->{'type'} and 
     $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
     print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
   }
   else {
-    $current = $paragraph if ($paragraph);
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
     print STDERR "NEW TEXT: $text|||\n" if ($self->{'debug'});
   }
@@ -1034,13 +1049,9 @@ sub _abort_empty_line($$)
 {
   my $self = shift;
   my $current = shift;
-#print STDERR "abort? "._print_current($current);
-#print STDERR "$current->{'contents'}->[-1]";
-#print STDERR "Last content: "._print_current($current->{'contents'}->[-1]);
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
-       and $current->{'contents'}->[-1]->{'type'} eq 'normal_line'
-       and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+       and $current->{'contents'}->[-1]->{'type'} eq 'normal_line') {
     print STDERR "ABORT EMPTY\n" if ($self->{'debug'});
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
@@ -1289,7 +1300,7 @@ sub _internal_parse_text($$;$$)
       delete $current->{'HERE !!!!'};
     }
 
-    if (($line !~ /\S/ or $line =~ /^\s*\@/) and not 
+    if (not 
         # raw format or verb
           (($current->{'cmdname'}
            and $block_commands{$current->{'cmdname'}}
@@ -1299,20 +1310,13 @@ sub _internal_parse_text($$;$$)
            ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
             and $current->{'parent'}->{'cmdname'} eq 'verb')
           )
-        # not in math or preformatted
+        # not in math or preformatted or def line
         and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
       print STDERR "EMPTY LINE or COMMAND\n" if ($self->{'debug'});
-      if ($line !~ /\S/ and $line =~ /\n/) {
-        $current = _end_paragraph($self, $current, $line_nr);
-      }
-      my $empty_line = $line;
-      if ($line =~ s/^(\s*)\@/\@/) {
-        $empty_line = $1;
-      }
+      $line =~ s/([ \t]*)//;
       push @{$current->{'contents'}}, { 'type' => 'normal_line', 
-                                        'text' => $empty_line,
+                                        'text' => $1,
                                         'parent' => $current };
-      next if ($line !~ /\S/ and $line =~ /\n/);
     } elsif ($line !~ /\S/ and $current->{'type'} 
                and $current->{'type'} eq 'menu_entry_description') {
       # first parent is menu_entry
@@ -1677,7 +1681,8 @@ sub _internal_parse_text($$;$$)
                   } else {
                     $row->{'special'}->{'cell_number'}++;
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
-                                                'parent' => $row };
+                                                'parent' => $row,
+                                                'contents' => [] };
                     $current = $row->{'contents'}->[-1];
                     print STDERR "TAB\n" if ($self->{'debug'});
                   }
@@ -1688,7 +1693,8 @@ sub _internal_parse_text($$;$$)
                               'parent' => $parent };
                   push @{$parent->{'contents'}}, $row;
                   push @{$row->{'contents'}}, { 'cmdname' => $command,
-                                                'parent' => $row };
+                                                'parent' => $row,
+                                                'contents' => [] };
                   $current = $row->{'contents'}->[-1];
                 }
               } else {

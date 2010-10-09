@@ -176,6 +176,30 @@ and a last in another paragraph
 
 @macro2  arg,  comma \,
 '],
+['paragraph_and_macro',
+'@macro empty
+@end macro
+
+@macro space
+   
+@end macro
+
+@macro word
+a word
+@end macro
+
+@empty{}
+
+  @empty{}  
+
+@empty{} text after empty.
+
+@space{}
+
+  @space{}  
+
+@space{} text after space.
+'],
 ['nested_macro_call',
 '@macro machin{}
 (machin)
