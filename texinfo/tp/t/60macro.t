@@ -222,12 +222,17 @@ a word
 ::
 @end macro
 
+@macro colon
+:
+@end macro
+
 @menu
 @star-spaces{}menu entry@two-colon{} description
 @spaces{}
 menu comment
 @star{} node::
 @star{}@space{}other node::
+* node colon macro@colon{}@colon{}@space{}description
 * 3rd node: entry.@space{}description
 @end menu
 '],
