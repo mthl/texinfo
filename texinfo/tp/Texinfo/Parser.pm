@@ -1545,7 +1545,8 @@ sub _internal_parse_text($$;$$)
         $line =~ s/^\*//;
         push @{$current->{'contents'}}, { 'type' => 'menu_star',
                                           'text' => '*' };
-      } elsif ($line =~ /^\s+/ and @{$current->{'contents'}} 
+      } elsif ($line =~ /^\s+/ and $current->{'contents'} 
+               and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
         print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
@@ -1571,12 +1572,56 @@ sub _internal_parse_text($$;$$)
                                  'contents' => [],
                                  'parent' => $current } ];
         $current = $current->{'args'}->[-1];
-      # * folllowed by something else than a space.
-      } elsif (@{$current->{'contents'}} 
+      # * followed by something else than a space.
+      } elsif ($current->{'contents'} and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
         print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'debug'});
         delete $current->{'contents'}->[-1]->{'type'};
+      # after a separator in menu
+      } elsif ($current->{'args'} and @{$current->{'args'}} 
+               and $current->{'args'}->[-1]->{'type'}
+               and $current->{'args'}->[-1]->{'type'} eq 'menu_entry_separator') {
+        my $separator = $current->{'args'}->[-1]->{'text'};
+        # separator is ::, we let it be in order to collect spaces below
+        if ($separator eq ':' and $line =~ s/^(:)//) {
+          $current->{'args'}->[-1]->{'text'} .= $1;
+        # a . not followed by a space.  Not a separator.
+        } elsif ($separator eq '.' and $line =~ /^\S/) {
+          pop @{$current->{'args'}};
+          $current = $current->{'args'}->[-1];
+          $current = _merge_text ($self, $current, $separator);
+        # here we collect spaces following separators.
+        } elsif ($line =~ s/^([^\S\n]+)//) {
+          # FIXME a trailing end of line could be considered to be part
+          # of the separator. Right now it is part of the description,
+          # since it is catched (in the next while) just  below
+          $current->{'args'}->[-1]->{'text'} .= $1;
+        # now handle the menu part that was closed
+        } elsif ($separator =~ /^::/) {
+          print STDERR "MENU NODE no entry $separator\n" if ($self->{'debug'});
+          # it was previously registered as menu_entry_name, it is 
+          # changed to node
+          $current->{'args'}->[-2]->{'type'} = 'menu_entry_node';
+          push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                        'contents' => [],
+                                        'parent' => $current };
+          $current = $current->{'args'}->[-1];
+        # end of the menu entry name  
+        } elsif ($separator =~ /^:/) {
+          print STDERR "MENU ENTRY $separator\n" if ($self->{'debug'});
+          push @{$current->{'args'}}, { 'type' => 'menu_entry_node',
+                                        'contents' => [],
+                                        'parent' => $current };
+          $current = $current->{'args'}->[-1];
+        # anything else is the end of the menu node following a menu_entry_name
+        } else {
+          print STDERR "MENU NODE $separator\n" if ($self->{'debug'});
+          push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
+                                        'contents' => [],
+                                        'parent' => $current };
+          $current = $current->{'args'}->[-1];
+        }
         # REMACRO
       } elsif ($line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o 
                or $line =~ s/^\@([[:alnum:]][[:alnum:]-]*)//o) {
@@ -1964,6 +2009,7 @@ sub _internal_parse_text($$;$$)
           }
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
+          # FIXME this won't work if there is a user macro 
           $line =~ s/^\s*//;
           my $type = $current->{'type'};
           $current = $current->{'parent'};
@@ -1971,69 +2017,23 @@ sub _internal_parse_text($$;$$)
           push @{$current->{'args'}},
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
           $current = $current->{'args'}->[-1];
-        }
         # end of menu node (. must be followed by a space to stop the node).
-        elsif ($separator =~ /[,\t.]/ and $current->{'type'}
-               and $current->{'type'} eq 'menu_entry_node') {
-          if ($separator eq '.' and $line =~ /^\S/) {
-            $current = _merge_text ($self, $current, $separator);
-          } else {
-            $line =~ s/^(\s*)//;
-            $separator .= $1;
-            print STDERR "MENU NODE $separator\n" if ($self->{'debug'});
-            $current = $current->{'parent'};
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
+        } elsif (($separator =~ /[,\t.]/ and $current->{'type'}
+               and $current->{'type'} eq 'menu_entry_node')
+               or ($separator eq ':' and $current->{'type'}
+                 and $current->{'type'} eq 'menu_entry_name')) {
+          $current = $current->{'parent'};
+          push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
                                  'text' => $separator,
                                  'parent' => $current };
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                          'contents' => [],
-                                          'parent' => $current };
-            $current = $current->{'args'}->[-1];
-            if ($line eq '') {
-              $current = _end_line($self, $current, $line_nr);
-              last;
-            }
-          }
-        # end of menu_entry_name
-        } elsif ($separator eq ':' and $current->{'type'} 
-                 and $current->{'type'} eq 'menu_entry_name') {
-          # menu node. Transform the menu_entry_name in to a node, add the
-          # separator and open a description
-          if ($line =~ s/^(:\s*)//) {
-            $separator .= $1;
-            print STDERR "MENU ENTRY $separator\n" if ($self->{'debug'});
-            $current->{'type'} = 'menu_entry_node';
-            $current = $current->{'parent'};
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
-                                 'text' => $separator,
-                                 'parent' => $current };
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                          'contents' => [],
-                                          'parent' => $current };
-          # end of the menu_entry_name, open the menu_entry_node.
-          } else {
-            $line =~ s/^([ \t]*)//;
-            $separator .= $1;
-            $current = $current->{'parent'};
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
-                                 'text' => $separator,
-                                 'parent' => $current };
-            push @{$current->{'args'}}, { 'type' => 'menu_entry_node',
-                                          'contents' => [],
-                                          'parent' => $current };
-          }
-          $current = $current->{'args'}->[-1];
-          if ($line eq '') {
-            $current = _end_line($self, $current, $line_nr);
-            last;
-          }
         } else {
           $current = _merge_text ($self, $current, $separator);
         }
-      # Misc text
+      # Misc text except end of line
       } elsif ($line =~ s/^([^{}@,:\t.\n]+)//) {
         my $new_text = $1;
         $current = _merge_text ($self, $current, $new_text);
+      # end of line
       } else {
         if ($self->{'debug'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";

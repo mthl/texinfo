@@ -185,14 +185,14 @@ $result_trees{'macro_in_menu'} = {
             },
             {
               'parent' => {},
-              'text' => '::',
+              'text' => ':: ',
               'type' => 'menu_entry_separator'
             },
             {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' description
+                  'text' => 'description
 '
                 }
               ],
@@ -239,12 +239,17 @@ $result_trees{'macro_in_menu'} = {
             },
             {
               'parent' => {},
-              'text' => '::
-',
+              'text' => '::',
               'type' => 'menu_entry_separator'
             },
             {
-              'contents' => [],
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
+'
+                }
+              ],
               'parent' => {},
               'type' => 'menu_entry_description'
             }
@@ -271,12 +276,17 @@ $result_trees{'macro_in_menu'} = {
             },
             {
               'parent' => {},
-              'text' => '::
-',
+              'text' => '::',
               'type' => 'menu_entry_separator'
             },
             {
-              'contents' => [],
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
+'
+                }
+              ],
               'parent' => {},
               'type' => 'menu_entry_description'
             }
@@ -310,15 +320,25 @@ $result_trees{'macro_in_menu'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'entry. description
-'
+                  'text' => 'entry'
                 }
               ],
               'parent' => {},
               'type' => 'menu_entry_node'
             },
             {
-              'contents' => [],
+              'parent' => {},
+              'text' => '. ',
+              'type' => 'menu_entry_separator'
+            },
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'description
+'
+                }
+              ],
               'parent' => {},
               'type' => 'menu_entry_description'
             }
@@ -366,12 +386,14 @@ $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[0]{'parent
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[1];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[2]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3];
+$result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[3];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'args'}[3]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[3]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[1];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4];
+$result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[3];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'args'}[3]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[4]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5];
@@ -381,6 +403,8 @@ $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[2]{'parent
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[3];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[3]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[4]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5];
+$result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[5]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[5];
+$result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'args'}[5]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'contents'}[5]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[11];
 $result_trees{'macro_in_menu'}{'contents'}[11]{'parent'} = $result_trees{'macro_in_menu'};
 
