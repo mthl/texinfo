@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
+@c $Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18515,9 +18515,9 @@ target format.
 * Output Elements::                The main unit of output documents.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
 * Customizing HTML Page Layout::   Customizing page headers, footers, sections.
-* Customizing Special Elements::
-* Customizing Output-Related Names::
-* Headings formatting::
+* Customizing Special Elements::      The top, toc, about, etc., elements.
+* Customizing Output-Related Names::  File names and target names.
+* Customizing HTML Headings::
 * Formatting insertions text and simple commands::
 * References and footnotes formatting::
 * Block commands formatting::
@@ -20137,16 +20137,16 @@ sections in HTML output:
        $first_in_page $previous_is_top \%element
 @table @var
 @item $filehandle
-is the opened filehandle to which the function should write.
+The opened filehandle to which the function should write.
 
 @item $first_in_page
-is true if this section is the first section in the page.
+True if this section is the first section in the page.
 
 @item $previous_is_top
-is true if this section is the section following the top section.
+True if this section is the section following the top section.
 
 @item \%element
-is a hash reference with information about the element.
+A hash reference with information about the element.
 @end table
 
 The function should print the current section contents.
@@ -20155,7 +20155,6 @@ The function should print the current section contents.
 @deffn {Function Reference} end_section $filehandle @
        $last_element_or_before_top \%element
 @var{$filehandle} and @var{\%element} are as above.
-
 @var{$last_element_or_before_top} is true if this section precedes the
 top element or is the last one in page, or before the special
 elements.
@@ -20573,15 +20572,23 @@ identifiers in detail.
 @cindex Output file names, customizing
 
 @vindex PREFIX
-@vindex TOP_FILE
-@vindex TOC_FILE
+@vindex SUBDIR
 @vindex EXTENSION
 It is possible to specify the output file names with more control than
 merely the command line option @option{--output} (@pxref{Invoking
-texi2any}): the configuration variables @code{PREFIX}, @code{TOP_FILE}
-and @code{TOC_FILE} may be used.  The extension may also be overriden
-by the configuration variable @code{EXTENSION} value.  The variable
-should be @code{undef} if no extension is to be added.  
+texi2any}). The @code{PREFIX} configuration variable overrides the
+base name of the file given by @code{@@setfilename} or the file name
+and should not contain any directory components.  To alter
+intermediate directories, use the @code{SUBDIR} configuration
+variable.  Finally, The extension may also be overriden by the
+configuration variable @code{EXTENSION}.  This variable should be
+@code{undef} if no extension is to be added.
+
+@vindex TOP_FILE
+@vindex TOC_FILE
+Furthermore, the configuration variables @code{TOP_FILE} and
+@code{TOC_FILE} override the output file name for the top and contents
+elements.
 
 @vindex NODE_FILES
 Two function references enable further customization.  The first,
@@ -20639,10 +20646,6 @@ name, and @samp{toc_frame}, the table of contents frame file name.
 The function should return the file name for the element (@var{$file}).
 @end deftypefn
 
-@c xx vindex %renamed_nodes
-@c xx It is also possible to specify renamed node names in
-@c xx @code{%renamed_nodes}.  They are processed as explained in
-@c xx @ref{HTML Xref Link Preservation}.
 
 @node Customizing Output Target Names
 @subsection Customizing Output Target Names
@@ -20707,92 +20710,140 @@ set the target and id.  The possibilities for the keys are
 @samp{Overview}, @samp{Contents}, @samp{Footnotes} and @samp{About}.
 
 
-@node Headings formatting
-@section Customizing headings formatting
+@node Customizing HTML Headings
+@section Customizing HTML Headings
 
-A function reference may be used to do the formatting
-of the heading text (in general changing font and underlining):
-@deftypefn {Function Reference} $heading_text_formatted heading_text $command $text $level
+@cindex Headings, customizing HTML
+
+A function reference may be defined to do the formatting of the heading
+text (usually changing font and underlining):
+
+@deftypefn {Function Reference} $heading_text_formatted heading_text @
+           $command $text $level
 @var{$command} is the @@-command name associated with the heading.
 @var{$text} is the heading @@-command argument, formatted.
 @var{$level} is the level of the heading in the document tree.
 @end deftypefn
+
 @findex heading_text_preformatted
 A similar function reference is available for preformatted context,
 @code{heading_text_preformatted}.
 
-A function controls the formatting of element headings, @code{heading}.  
-In the default case it mainly determines if the @code{heading_text} function
-reference should be called for this element, for example it is
-common not to output any heading text for a node, only
-for associated sectioning elements (@pxref{Two Paths}). 
-@deftypefn {Function Reference} $heading_text heading \%element $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading
-The @var{\%element} is a reference on a hash corresponding
-with the sectioning element.  The following keys are of interest:
+A function controls the formatting of element headings,
+@code{heading}.  By default its main job is to determine whether the
+@code{heading_text} function reference should be called.  Normally,
+heading text is not output for a node on its, only for any associated
+sectioning element (@pxref{Two Paths}).
+
+@deftypefn {Function Reference} $heading_text heading \%element $command @
+           $command_texi_arg $formatted_arg $in_preformatted $one_section @
+           $element_heading
+
+@table @var
+@item \%element
+A hash reference representing the sectioning element.  The
+following keys are of interest:
+
 @table @code
 @item text
-The heading text
+The heading text.
+
 @item text_nonumber
-The heading text without section number
+The heading text without section number.
+
 @item node
-true if the sectioning element is a node without associated structuring command
+True if the sectioning element is a node without an associated
+structuring command.
+
 @item level
-The level of the element in the document tree.  @samp{0} is for @code{@@top},
-@samp{1} for @code{@@chapter} and so on
+The level of the element in the document tree: @samp{0} for
+@code{@@top}, @samp{1} for @code{@@chapter}, and so on.
+
 @item tag_level
-the sectioning element name, with @code{@@raisesections} and 
-@code{@@lowersections} taken into account
+The sectioning element name, with @code{@@raisesections} and 
+@code{@@lowersections} taken into account.
+
 @item top
-true if it is the top element
+True if it is the top element.
 @end table
-@var{$command} is the 
-heading @@-command.  @var{$command_texi_arg} is the argument of the 
-@@-command, unformatted.  @var{$formatted_arg} is is the argument of the 
-@@-command, formatted.  @var{$in_preformatted} is true if in preformatted 
-environment.  @var{$one_section} is true if there is only one 
-section.  @var{$element_heading} is set if the heading is the main component
-of the element.
+
+@item $command
+The heading @@-command.
+
+@item $command_texi_arg
+The argument of the @@-command, unformatted.
+
+@item $formatted_arg
+The argument of the @@-command, formatted.
+
+@item $in_preformatted
+True if in preformatted environment.
+
+@item $one_section
+True if there is only one section.
+
+@item $element_heading
+True if the heading is the main component of the element.
+@end table
 @end deftypefn
 
 It is also possible to customize the heading text with section number
-with the following function reference (called for headings and nodes):
-@deftypefn {Function Reference} $result_texi heading_texi $heading_command $heading $number
-@var{$heading_command} is the sectioning @@-command of that heading. 
-@var{$heading} is the texinfo for that heading.  @var{$number} is the
-heading number classicaly computed with dots between numbers, and
-letters for top level appendix numbering.  This function should return the 
-texinfo text corresponding with the numbered heading.
+with this function reference (called for headings and nodes):
+
+@deftypefn {Function Reference} $result_texi heading_texi @
+           $heading_command $heading $number
+@var{$heading_command} is the sectioning @@-command of that heading.
+@var{$heading} is the Texinfo input for that heading.  @var{$number}
+is the heading number classically-computed with dots between numbers,
+and letters for top-level appendix numbering.  This function should
+return the Texinfo text corresponding with the numbered heading.
 @end deftypefn
 
-The label associated with the heading that can appear before the 
-heading itself and even before the navigation panel is customized with the
-following function reference:
-@deftypefn {Function Reference} $element_label element_label $identifier \%element $command $unformatted_line
+The label associated with the heading that can appear before the
+heading itself and even before the navigation panel can be customized
+with this function reference:
+
+@deftypefn {Function Reference} $element_label element_label @
+           $identifier \%element $command $unformatted_line
 @var{$identifier} is the identifier associated with the heading.
-@var{\%element} is the same as above.  @var{$command} is 
-the @@-command appearing on the line, and @var{$unformatted_line} is 
-the line, unformatted.
+@var{\%element} is the same as above.  @var{$command} is the
+@@-command appearing on the line, and @var{$unformatted_line} is the
+line, unformatted.
 @end deftypefn
 
-Additionally, for @code{@@node} and sectioning @@-commands the formatting
-of the label, navigation panel and heading is controlled by:
-@deftypefn {Function Reference} $element_heading_text element_heading \%element $command $command_texi_arg $formatted_arg $in_preformatted $one_section $element_heading $first_in_page $is_top $previous_is_top $unformatted_line $element_id $new_element
-@var{\%element} is the same as above.
-@var{$command} is the 
-heading @@-command.  @var{$command_texi_arg} is the argument of the 
-@@-command, unformatted.  @var{$formatted_arg} is is the argument of the 
-@@-command, formatted.  @var{$in_preformatted} is true if in preformatted 
-environment.  @var{$one_section} is true if there is only one 
-section.  @var{$element_heading} is set if the heading is the main component
-of the element.
-@var{$first_in_page} is true if this is the first heading in a page.
-@var{$is_top} is true if the heading is considered as a top element heading.
-@var{$previous_is_top} is true if the previous helement was a top element.
-@var{$unformatted_line} holds the whole line, unformatted.  @var{$element_id}
-is the id of the heading.  @var{$new_element} is true if the heading is 
-the first of an element.
-@end deftypefn
+Additionally, for @code{@@node} and sectioning @@-commands, the
+formatting of the label, navigation panel and heading is controlled
+by:
 
+@deftypefn {Function Reference} $element_heading_text element_heading @
+           \%element $command $command_texi_arg $formatted_arg @
+           $in_preformatted $one_section $element_heading $first_in_page @
+           $is_top $previous_is_top $unformatted_line $element_id $new_element
+
+@var{\%element}, @var{$command}, @var{$command_texi_arg},
+@var{$formatted_arg}, @var{$in_preformatted}, @var{$one_section}, and
+@var{$element_heading} are as above.  For the rest:
+
+@table @var
+@item $first_in_page
+True if this is the first heading in a page.
+
+@item $is_top
+True if the heading is considered as a top element heading.
+
+@item $previous_is_top
+True if the previous element was a top element.
+
+@item $unformatted_line
+Holds the whole line, unformatted.
+
+@item $element_id
+The id of the heading.
+
+@item $new_element
+True if the heading is the first of an element.
+@end table
+@end deftypefn
 
 
 @node Formatting insertions text and simple commands
@@ -24660,7 +24711,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
+$Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24739,7 +24790,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
+@comment $Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

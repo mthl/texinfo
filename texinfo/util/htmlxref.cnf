@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-01.17; # UTC
+htmlxrefversion=2010-10-10.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -217,6 +217,31 @@ gperf		mono	${GS}/gperf/manual/gperf.html
 gperf		node	${GS}/gperf/manual/html_node/
 
 gtypist		mono	${GS}/gtypist/doc/
+
+guile		mono	${GS}/guile/manual/guile.html
+guile		node	${GS}/guile/manual/html_node/
+
+GUILE_GNOME = ${GS}/software/guile-gnome/docs
+#guile-gnome
+ gobject 	node	${GUILE_GNOME}/gobject/html/
+ glib		node	${GUILE_GNOME}/glib/html/
+ atk		node	${GUILE_GNOME}/atk/html/
+ pango		node	${GUILE_GNOME}/pango/html/
+ pangocairo	node	${GUILE_GNOME}/pangocairo/html/
+ gdk		node	${GUILE_GNOME}/gdk/html/
+ gtk		node	${GUILE_GNOME}/gtk/html/
+ libglade	node	${GUILE_GNOME}/libglade/html/
+ gnome-vfs	node	${GUILE_GNOME}/gnome-vfs/html/
+ libgnomecanvas	node	${GUILE_GNOME}/libgnomecanvas/html/
+ gconf		node	${GUILE_GNOME}/gconf/html/
+ libgnome	node	${GUILE_GNOME}/libgnome/html/
+ libgnomeui	node	${GUILE_GNOME}/libgnomeui/html/
+ corba		node	${GUILE_GNOME}/corba/html/
+ clutter	node	${GUILE_GNOME}/clutter/html/
+ clutter-glx	node	${GUILE_GNOME}/clutter-glx/html/
+
+guile-rpc	mono	${GS}/guile-rpc/manual/guile-rpc.html
+guile-rpc	node	${GS}/guile-rpc/manual/html_node/
 
 gv		mono	${GS}/gv/manual/gv.html
 gv		node	${GS}/gv/manual/html_node/

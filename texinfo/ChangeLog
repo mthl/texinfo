@@ -1,3 +1,9 @@
+2010-10-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customizing Output File Names): further
+	attempts at clarifying the config vars for output file names.
+	(Customizing HTML Headings): rename+edit.
+
 2010-10-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Defining Macros),
