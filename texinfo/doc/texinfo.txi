@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
+@c $Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14496,9 +14496,9 @@ Texinfo command name as an alias.  Unfortunately this is a very large
 set of names, and the possible resulting errors from @TeX{} are
 completely unpredictable.
 
-@command{makeinfo} will accept anything for an alias name consisting
-of alphanumerics, @samp{_}, and (except as the first character)
-@samp{-}.
+@command{makeinfo} will accept the same identifiers for alias as it
+does for macro names, that is, alphanumerics and (except as the first
+character) @samp{-}.
 
 
 @node definfoenclose
@@ -24660,7 +24660,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
+$Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24739,7 +24739,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.325 2010-10-08 23:28:29 karl Exp $
+@comment $Id: texinfo.txi,v 1.326 2010-10-10 00:11:03 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
