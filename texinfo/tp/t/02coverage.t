@@ -71,6 +71,11 @@ In table
 
 @end vtable
 '],
+['table_command_comment',
+'@table @code@c in comment
+@item item
+@end table'
+],
 ['multitable','
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab

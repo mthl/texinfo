@@ -72,6 +72,11 @@ Value
 @node BarFoo, , @value{a--foo}, (dir)
 @chapter bar
 '],
+['value_after_accent',
+'@set a_letter a
+@ringaccent @value{a_letter}
+@~@value{a_letter}'
+],
 ['value_in_line_commands',
 '@set cp cp
 @set fn fn

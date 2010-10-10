@@ -103,6 +103,7 @@ my %misc_commands = (
   # file names
   'setfilename' => {'arg' => 'line'},
   'verbatiminclude'=> {'arg' => 'line'},
+  'include'=> {'arg' => 'line'},
 
   'raisesections' => {'skip' => 'line'},  # no arg
   'lowersections' => {'skip' => 'line'}, # no arg
@@ -424,8 +425,8 @@ foreach my $command ('node', 'end') {
   $begin_line_commands{$command} = $command;
 }
 
-foreach my $no_paragraph_command ('unmacro', 'rmacro', 'titlefont', 'include', 
-          '*', 'caption', 'shortcaption', 'image') {
+foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption', 
+          'image', '*') {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
 }
 
@@ -522,17 +523,22 @@ sub parser($;$)
   return $parser;
 }
 
+# split a scalar text in an array lines.
 sub _text_to_lines($)
 {
   my $text = shift;
   die if (!defined($text));
-  my $chomped = chomp($text);
+  my $had_final_end_line = chomp($text);
   my $lines = [ map {$_."\n"} split (/\n/, $text, -1) ];
   $lines = [''] if (!@$lines);
-  chomp($lines->[-1]) unless ($chomped);
+  chomp($lines->[-1]) unless ($had_final_end_line);
   return $lines;
 }
 
+# construct a line numbers array matching a lines array, based on information
+# supplied.
+# If $fixed_line_number is set the line number is not increased, otherwise
+# it is increased, beginning at $first_line.
 sub _complete_line_nr($$;$$$)
 {
   my $lines = shift;
@@ -540,23 +546,24 @@ sub _complete_line_nr($$;$$$)
   my $file = shift;
   my $macro = shift;
   my $fixed_line_number = shift;
+
+  return if (!defined($first_line));
+
   $macro = '' if (!defined($macro));
   $file = '' if (!defined($file));
   my $lines_nr;
 
   my $line_index = $first_line;
-  if (defined($first_line)) {
-    $lines_nr = [];
-    foreach my $index(0..scalar(@$lines)-1) {
-       $line_index = $index+$first_line if (!$fixed_line_number);
-       
-       $lines_nr->[$index] = { 'line_nr' => $line_index,
-                                'file_name' => $file, 'macro' => $macro };
-    }
+  $lines_nr = [];
+  foreach my $index(0..scalar(@$lines)-1) {
+     $line_index = $index+$first_line if (!$fixed_line_number);
+     $lines_nr->[$index] = { 'line_nr' => $line_index,
+                              'file_name' => $file, 'macro' => $macro };
   }
   return $lines_nr;
 }
 
+# The main entry point
 sub parse_texi_text($$;$)
 {
   my $self = shift;
@@ -609,6 +616,7 @@ sub _print_current($)
   return "$cmd$type : $args $text $contents\n$parent_string";
 }
 
+# format a line warning
 sub _line_warn($$$)
 {
   my $parser = shift;
@@ -634,9 +642,7 @@ sub _line_warn($$$)
          %{$line_number} };
 }
 
-#  if ($error_nrs >= $parser->{'error_limit'}) {
-#    warn $parser->__("Too many errors!  Gave up.\n")
-
+# format a line error
 sub _line_error($$$)
 {
   my $parser = shift;
@@ -658,6 +664,7 @@ sub _line_error($$$)
   $parser->{'error_nrs'}++;
 }
 
+# parse a macro line
 sub _parse_macro_command($$$$$;$)
 {
   my $self = shift;
@@ -704,6 +711,7 @@ sub _parse_macro_command($$$$$;$)
   return $macro;
 }
 
+# start a paragraph if in a context where paragraphs are to be started.
 sub _begin_paragraph ($$)
 {
   my $self = shift;
@@ -736,6 +744,8 @@ sub _begin_paragraph ($$)
   return 0;
 }
 
+# currently doesn't do much more than
+# return $_[0]->{'parent'}->{'parent'}
 sub _close_brace_command($$$)
 {
   my $self = shift;
@@ -753,6 +763,8 @@ sub _close_brace_command($$$)
   return $current;
 }
 
+# close brace commands, that don't set a new context (ie @caption, @footnote)
+# and then the paragraph
 sub _end_paragraph ($$$)
 {
   my $self = shift;
@@ -810,11 +822,12 @@ sub _end_block_command($$$;$)
              and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
       $current = _close_brace_command($self, $current, $line_nr);
       pop @{$self->{'context_stack'}};
-    } else { # silently close containers and @-commands without @end
+    } else { # silently close containers and @-commands without brace nor @end
       $current = $current->{'parent'};
     }
 
-    $current = _end_paragraph($self, $current, $line_nr);
+    # FIXME could there still be a paragraph to close?
+    #$current = _end_paragraph($self, $current, $line_nr);
   }
 
   if ($command and $current->{'cmdname'} 
@@ -866,6 +879,7 @@ sub _merge_text ($$$)
   return $current;
 }
 
+# return the parent if in a item_container command, itemize or enumerate
 sub _item_container_parent($)
 {
   my $current = shift;
@@ -878,6 +892,7 @@ sub _item_container_parent($)
   return undef;
 }
 
+# return the parent if in a item_line command, @*table
 sub _item_line_parent($)
 {
   my $current = shift;
@@ -893,6 +908,7 @@ sub _item_line_parent($)
   return undef;
 }
 
+# return the parent if in a multitable
 sub _item_multitable_parent($)
 {
   my $current = shift;
@@ -909,6 +925,7 @@ sub _item_multitable_parent($)
   return undef;
 }
 
+# collect text and line numbers until an end of line is found.
 sub _new_line ($$)
 {
   my $text = shift;
@@ -918,10 +935,6 @@ sub _new_line ($$)
 
   while (@$text) {
     my $new_text = shift @$text;
-    # This may happen with user defined macro, although it is unclear in
-    # which case. Example in macro/expansion_order
-    #next if ($new_text eq '');
-    #die if ($new_text eq '');
 
     $new_line .= $new_text;
     $line_nr = shift @$lines_array;
@@ -1054,6 +1067,9 @@ sub _expand_macro_body($$$$) {
   return $result;
 }
 
+# each time a new line appeared, a container is opened to hold the text
+# consisting only of spaces.  This container is removed here, typically
+# this is called when non-space happens on a line.
 sub _abort_empty_line($$;$)
 {
   my $self = shift;
@@ -1075,12 +1091,14 @@ sub _abort_empty_line($$;$)
   return 0;
 }
 
+# close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
 
+  # a line consisting only of spaces.
   if ($current->{'contents'} and @{$current->{'contents'}} 
       and $current->{'contents'}->[-1]->{'type'} 
       and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
@@ -1104,6 +1122,8 @@ sub _end_line($$$)
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
     }
+
+  # end of a menu line.
   } elsif ($current->{'type'} 
     and ($current->{'type'} eq 'menu_entry_name'
      or $current->{'type'} eq 'menu_entry_node')) {
@@ -1164,14 +1184,14 @@ sub _end_line($$$)
       print STDERR "MENU ENTRY END LINE\n" if ($self->{'debug'});
       $current = $current->{'parent'};
       push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
-                                  'contents' => [],
-                                          'parent' => $current };
+                                  'contents' => [], 'parent' => $current };
       $current = $current->{'args'}->[-1];
       if (defined($end_comment)) {
         $end_comment->{'parent'} = $current;
         push @{$current->{'contents'}}, $end_comment;
       }
     }
+
   # def line
   } elsif ($current->{'parent'}
             and $current->{'parent'}->{'type'}
@@ -1180,7 +1200,8 @@ sub _end_line($$$)
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
     $current = $current->{'parent'}->{'parent'};
-    # other block command lines
+
+  # other block command lines
   } elsif ($current->{'type'}
             and $current->{'type'} eq 'block_line_arg') {
     # @multitable args
@@ -1238,6 +1259,7 @@ sub _end_line($$$)
          'contents' => [], 'parent', $current };
       $current = $current->{'contents'}->[-1];
     }
+
   # misc command line arguments
   } elsif ($current->{'type'} 
      and $current->{'type'} eq 'misc_line_arg') {
@@ -1252,6 +1274,7 @@ sub _end_line($$$)
       $current->{'special'}->{'misc_args'} = $args if (defined($args));
     }
     $current = $current->{'parent'};
+    # columnfractions 
     if ($command eq 'columnfractions') {
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 
@@ -1271,6 +1294,8 @@ sub _end_line($$$)
   }
   return $current;
 }
+
+# the different types
 #c 'menu_entry'
 #c 'menu_entry'
 # t 'menu_entry_leading_text'
@@ -1305,7 +1330,6 @@ sub _internal_parse_text($$;$$)
   my $no_para = shift;
 
   my $root = { 'contents' => [] };
-  $self->{'tree'} = $root;
   my $current = $root;
 
   $self->{'conditionals_stack'} = [];
@@ -1341,7 +1365,7 @@ sub _internal_parse_text($$;$$)
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'debug'});
-      $line =~ s/([ \t]*)//;
+      $line =~ s/([^\S\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
@@ -1354,7 +1378,7 @@ sub _internal_parse_text($$;$$)
             $block_commands{$current->{'cmdname'}} and 
             ($block_commands{$current->{'cmdname'}} eq 'raw'
              or $block_commands{$current->{'cmdname'}} eq 'conditional')) {
-        # special case for macro that may be nested
+        # r?macro may be nested
         if (($current->{'cmdname'} eq 'macro' 
               or $current->{'cmdname'} eq 'rmacro') 
              and $line =~ /^\s*\@r?macro\s+/) {
@@ -1365,6 +1389,7 @@ sub _internal_parse_text($$;$$)
                          'special' => {'macro_line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
+        # ifclear/ifset may be nested
         } elsif (($current->{'cmdname'} eq 'ifclear' 
                   or $current->{'cmdname'} eq 'ifset')
                 and $line =~ /^\s*\@$current->{'cmdname'}/) {
@@ -1401,6 +1426,12 @@ sub _internal_parse_text($$;$$)
             ($line, $line_nr) = _new_line($text, $lines_array)
                if (@$text);
           }
+          # FIXME the following last is meant to have the end of line ignored
+          # if there are only spaces after a @end command.
+          # However if a user macro is being expanded, the text and the
+          # end of line following on the line may be in a different 
+          # text unit. Moreover, user-defined macros may follow oon the
+          # line and lead to spaces only.
           last unless ($line =~ /\S/);
         } else {
           push @{$current->{'contents'}}, 
@@ -1436,7 +1467,7 @@ sub _internal_parse_text($$;$$)
       }
 
       # this mostly happens in the following cases:
-      #   after the expansion of a user defined macro
+      #   after expansion of user defined macro that doesn't end with EOL
       #   after a protection of @\n in @def* line
       while ($line eq '')
       {
@@ -1446,11 +1477,13 @@ sub _internal_parse_text($$;$$)
           $line = shift @$text;
           $line_nr = shift @$lines_array;
         } else {
+          # end of the document
           $current = _end_line($self, $current, $line_nr);
           $current = _end_block_command($self, $current, $line_nr);
           return $root;
         }
       }
+
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
       # REMACRO
@@ -1502,10 +1535,14 @@ sub _internal_parse_text($$;$$)
         $line_nr = shift @$new_lines_nr;
         unshift @$text, @$expanded_lines;
         unshift @$lines_array, @$new_lines_nr;
-        # REMACRO
+
       # Now handle all the cases that may lead to command closing
       # or following character association with an @-command, especially
-      # accent command.
+      # accent command, that is handle @-command with braces that don't
+      # always need a brace.
+
+      # The condition below is only caught right after command opening,
+      # otherwise we are in the 'args' and not right in the command container.
       } elsif ($current->{'cmdname'} and 
           (defined($brace_commands{$current->{'cmdname'}}) or 
             $self->{'definfoenclose'}->{$current->{'cmdname'}})
@@ -1519,11 +1556,11 @@ sub _internal_parse_text($$;$$)
           delete $current->{'contents'};
           $current->{'type'} = 'command_as_argument';
           $current = $current->{'parent'};
+        # now accent commands
         } elsif ($accent_commands{$current->{'cmdname'}}) {
-          if ($line =~ /^\s/ and $line !~ /^\n/) {
+          if ($line =~ /^[^\S\n]/) {
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
-              # could also be \s+ but then it may swallow end of line
-              $line =~ s/^\s//;
+              $line =~ s/^[^\S\n]+//;
             } else {
               _line_warn ($self, sprintf($self->
                 __("Accent command `\@%s' must not be followed by whitespace"),
@@ -1559,7 +1596,7 @@ sub _internal_parse_text($$;$$)
                            $current->{'cmdname'}), $line_nr);
           $current = $current->{'parent'};
         }
-      # maybe a menu entry beginning
+      # maybe a menu entry beginning: a * at the beginning of a menu line
       } elsif ($line =~ /^\*/ and $current->{'type'}
                 and ($current->{'type'} eq 'menu_comment'
                     or $current->{'type'} eq 'menu_entry_description')
@@ -1572,11 +1609,13 @@ sub _internal_parse_text($$;$$)
         $line =~ s/^\*//;
         push @{$current->{'contents'}}, { 'type' => 'menu_star',
                                           'text' => '*' };
+      # a space after a * at the beginning of a menu line
       } elsif ($line =~ /^\s+/ and $current->{'contents'} 
                and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
         print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
+        # this is the menu star collected previously
         pop @{$current->{'contents'}};
         $line =~ s/^(\s+)//;
         my $leading_text = '*' . $1;
@@ -1657,7 +1696,6 @@ sub _internal_parse_text($$;$$)
            if (exists($self->{'aliases'}->{$command}));
         print STDERR "COMMAND $command\n" if ($self->{'debug'});
 
-
         if ($command eq 'value') {
           if ($line =~ s/^{([\w\-]+)}//) {
             my $value = $1;
@@ -1734,7 +1772,7 @@ sub _internal_parse_text($$;$$)
           $current = _end_paragraph($self, $current, $line_nr);
         }
 
-        # commands without braces and not block commands, ie no  @end
+        # commands without braces and not block commands, ie no @end
         if (defined($self->{'misc_commands'}->{$command})) {
           if ($root_commands{$command}) {
             $current = _end_block_command($self, $current, $line_nr);
@@ -1892,8 +1930,11 @@ sub _internal_parse_text($$;$$)
                                                 'contents' => [] };
               $current = $current->{'contents'}->[-1];
             }
+            # FIXME ignore what is remaining on the line, to eat 
+            # the end of line?
             last;
           } else {
+            # FIXME this won't work with macro expanded
             $line =~ s/\s*//;
             # the def command holds a line_def* which corresponds with the
             # definition line.  This allows to have a treatement similar
@@ -1937,6 +1978,7 @@ sub _internal_parse_text($$;$$)
                 push @{$self->{'context_stack'}}, 'menu';
                 $current = $current->{'contents'}->[-1];
               }
+              # FIXME still problematic with user defined macros
               last unless ($line =~ /\S/);
             }
           }
@@ -2086,6 +2128,7 @@ sub _internal_parse_text($$;$$)
   return $root;
 }
 
+# expand a tree to the corresponding texinfo.
 sub tree_to_texi ($)
 {
   my $root = shift;
@@ -2124,6 +2167,7 @@ sub tree_to_texi ($)
   return $result;
 }
 
+# expand a command argument as texinfo.
 sub _expand_cmd_args_to_texi ($) {
   my $cmd = shift;
   my $cmdname = $cmd->{'cmdname'};
@@ -2217,7 +2261,8 @@ sub _expand_cmd_args_to_texi ($) {
   return $result;
 }
 
-# return the line after preserving things according to misc_commands map.
+# parse special line @-commands, unmacro, set, clear, clickstyle.
+# Also remove spaces or ignore text, as specified in the misc_commands hash.
 sub _parse_misc_command($$$$)
 {
   my $self = shift;
@@ -2235,7 +2280,6 @@ sub _parse_misc_command($$$$)
   $arg_spec = $self->{'misc_commands'}->{$command}->{'arg'}
     if (defined($self->{'misc_commands'}->{$command}->{'arg'}));
 #print STDERR "HHHHHHHHH $line $command arg_spec $arg_spec skip_spec $skip_spec\n";
-
 
   if ($command eq 'set') {
     # REVALUE
@@ -2284,7 +2328,7 @@ sub _parse_misc_command($$$$)
     }
     $line = '';
   } elsif ($arg_spec) {
-    $line =~ s/^[ \t]*// unless ($command eq 'c' or $command eq 'comment');
+    $line =~ s/^[^\S\n]*// unless ($command eq 'c' or $command eq 'comment');
     #$args = [ $line ];
     if ($arg_spec ne 'lineraw') {
       $line_arg = $line;
@@ -2298,17 +2342,19 @@ sub _parse_misc_command($$$$)
   if ($skip_spec eq 'line') {
     $line = '';
   }
+  # FIXME if there are user defined macros, some space may still be there.
   elsif ($skip_spec eq 'whitespace') {
     $line =~ s/^(\s*)//o;
   }
   elsif ($skip_spec eq 'space') {
-    $line =~ s/^([ \t]*)//o;
+    $line =~ s/^([^\S\n]*)//o;
   }
-  # FIXME is the following useful?
-  $line = '' if (!defined($line));
   return ($line, $args, $line_arg, $special);
 }
 
+# at the end of a @-command line with arguments, parse the resulting 
+# text, to collect aliases, definfoenclose and collect errors on 
+# wrong arguments.
 sub _parse_line_command_args($$$)
 {
   my $self = shift;
@@ -2357,7 +2403,7 @@ sub _parse_line_command_args($$$)
   return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
   
   my $line = $arg->{'contents'}->[0]->{'text'};  
-  $line =~ s/^[ \t]*//;
+  $line =~ s/^[^\S\n]*//;
 
   if ($command eq 'alias') {
     # REMACRO

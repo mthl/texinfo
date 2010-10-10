@@ -13,6 +13,8 @@ the place where the error occurred.
 
 test invalid, especially commands not closed/bad nesting
 test root_commands, like nodes and sections
+Test for @columnfractions in a random place and something like
+@multitable aaa @columnfractions 0.3 0.7
 
 parse @sp a bit more.
 

@@ -200,6 +200,22 @@ a word
 
 @space{} text after space.
 '],
+['macro_in_end_argument',
+'@macro a-cartouche
+cartouche
+@end macro
+
+@cartouche
+@end @a-cartouche{}
+'],
+['macro_for_end',
+'@macro my-end
+@end
+@end macro
+
+@cartouche
+@my-end{} cartouche
+'],
 ['macro_in_menu',
 '
 @macro star

@@ -66,6 +66,14 @@ new comment
 * a: (f)b3c.c,    d@c c
 @end menu
 '],
+['bad_beginning',
+'@menu
+*   
+*
+*something::
+*@code{in code}::
+@end menu'
+]
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
