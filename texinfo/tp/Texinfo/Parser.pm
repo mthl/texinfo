@@ -1300,8 +1300,8 @@ sub _internal_parse_text($$;$$)
   
  NEXT_LINE:
   while (@$text) {
-    my $line;
-    ($line, $line_nr) = _new_line($text, $lines_array);
+    my $line = shift @$text;
+    $line_nr = shift @$lines_array;
 
     if ($self->{'debug'}) {
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
@@ -1381,8 +1381,12 @@ sub _internal_parse_text($$;$$)
           }
           $current = $current->{'parent'};
           # don't store ignored @if*
-          pop @{$current->{'contents'}} 
-            if ($block_commands{$end_command} eq 'conditional');
+          if ($block_commands{$end_command} eq 'conditional') {
+            pop @{$current->{'contents'}};
+            # Ignore until end of line
+            ($line, $line_nr) = _new_line($text, $lines_array)
+               if (@$text);
+          }
           last unless ($line =~ /\S/);
         } else {
           push @{$current->{'contents'}}, 
@@ -1417,12 +1421,21 @@ sub _internal_parse_text($$;$$)
         }
       }
 
-      if ($line eq '' and scalar(@$text))
+      # this mostly happens in the following cases:
+      #   after the expansion of a user defined macro
+      #   after a protection of @\n in @def* line
+      while ($line eq '')
       {
-        print STDERR "END OF TEXT not at end of line/text\n" 
+        print STDERR "END OF TEXT not at end of line (remaining ".scalar(@$text).")\n" 
           if ($self->{'debug'});
-        $line = shift @$text;
-        $line_nr = shift @$lines_array;
+        if (scalar(@$text)) {
+          $line = shift @$text;
+          $line_nr = shift @$lines_array;
+        } else {
+          $current = _end_line($self, $current, $line_nr);
+          $current = _end_block_command($self, $current, $line_nr);
+          return $root;
+        }
       }
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
@@ -1678,6 +1691,9 @@ sub _internal_parse_text($$;$$)
               if (@{$self->{'conditionals_stack'}} 
                   and $self->{'conditionals_stack'}->[-1] eq $end_command) {
                 pop @{$self->{'conditionals_stack'}};
+                # Ignore until end of line
+                ($line, $line_nr) = _new_line($text, $lines_array)
+                  if (@$text);
               } else {
                 _line_error ($self, 
                   sprintf($self->__("Unmatched `%c%s'"), 
@@ -2041,7 +2057,7 @@ sub _internal_parse_text($$;$$)
         if ($line =~ s/^(\n)//) {
           $current = _merge_text ($self, $current, $1);
         } else {
-          die if (scalar(@$text));
+          die "BUG: text remaining (@$text) and `$line'\n" if (scalar(@$text));
         }
         $current = _end_line($self, $current, $line_nr);
         last;
