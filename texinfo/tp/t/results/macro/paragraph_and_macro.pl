@@ -112,10 +112,14 @@ $result_trees{'paragraph_and_macro'} = {
       'type' => 'empty_line'
     },
     {
+      'parent' => {},
+      'text' => ' '
+    },
+    {
       'contents' => [
         {
           'parent' => {},
-          'text' => ' text after empty.
+          'text' => 'text after empty.
 '
         }
       ],
@@ -153,10 +157,14 @@ $result_trees{'paragraph_and_macro'} = {
       'type' => 'empty_line'
     },
     {
+      'parent' => {},
+      'text' => '    '
+    },
+    {
       'contents' => [
         {
           'parent' => {},
-          'text' => '    text after space.
+          'text' => 'text after space.
 '
         }
       ],
@@ -180,15 +188,17 @@ $result_trees{'paragraph_and_macro'}{'contents'}[6]{'parent'} = $result_trees{'p
 $result_trees{'paragraph_and_macro'}{'contents'}[7]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[8]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[9]{'parent'} = $result_trees{'paragraph_and_macro'};
-$result_trees{'paragraph_and_macro'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[10];
 $result_trees{'paragraph_and_macro'}{'contents'}[10]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[11];
 $result_trees{'paragraph_and_macro'}{'contents'}[11]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[12]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[13]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[14]{'parent'} = $result_trees{'paragraph_and_macro'};
 $result_trees{'paragraph_and_macro'}{'contents'}[15]{'parent'} = $result_trees{'paragraph_and_macro'};
-$result_trees{'paragraph_and_macro'}{'contents'}[16]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[16];
 $result_trees{'paragraph_and_macro'}{'contents'}[16]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[17]{'parent'} = $result_trees{'paragraph_and_macro'};
+$result_trees{'paragraph_and_macro'}{'contents'}[18]{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[18];
+$result_trees{'paragraph_and_macro'}{'contents'}[18]{'parent'} = $result_trees{'paragraph_and_macro'};
 
 $result_texts{'paragraph_and_macro'} = '@macro empty
 @end macro

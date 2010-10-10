@@ -711,21 +711,25 @@ sub _begin_paragraph ($$)
 
   if ((!$current->{'type'} or $current->{'type'} eq 'before_item') 
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
-    my $previous_empty_text;
     die "BUG: contents undef "._print_current($current) 
        if (!defined($current->{'contents'}));
-    if (@{$current->{'contents'}} 
-         and defined($current->{'contents'}->[-1]->{'text'})
-         and $current->{'contents'}->[-1]->{'text'} !~ /[\S\n]/) {
-      $previous_empty_text = pop @{$current->{'contents'}};
-    }
+
+    # The code in comments takes a preceding empty line and put it in 
+    # the paragraph.
+
+    #my $previous_empty_text;
+    #if (@{$current->{'contents'}} 
+    #     and defined($current->{'contents'}->[-1]->{'text'})
+    #     and $current->{'contents'}->[-1]->{'text'} !~ /[\S\n]/) {
+    #  $previous_empty_text = pop @{$current->{'contents'}};
+    #}
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
-    if ($previous_empty_text) {
-      push @{$current->{'contents'}}, $previous_empty_text;
-      $previous_empty_text->{'parent'} = $current;
-    }
+    #if ($previous_empty_text) {
+    #  push @{$current->{'contents'}}, $previous_empty_text;
+    #  $previous_empty_text->{'parent'} = $current;
+    #}
     print STDERR "PARAGRAPH\n" if ($self->{'debug'});
     return $current;
   }
@@ -833,11 +837,16 @@ sub _merge_text ($$$)
 
   my $paragraph;
 
-  # FIXME put leading spaces in preceding empty_line (which will be aborted
-  #       as an empty line, but still be there) instead of merging?
-  # this would requires also a change in _begin_paragraph.
   if ($text =~ /\S/) {
-    _abort_empty_line ($self, $current);
+    my $leading_spaces;
+    if ($text =~ /^(\s+)/) {
+      $leading_spaces = $1;
+    }
+    # Change this if you don't want to have preceding space added to
+    # the text out of the paragraph
+    if (_abort_empty_line ($self, $current, $leading_spaces)) {
+      $text =~ s/^(\s+)//;
+    }
     $paragraph = _begin_paragraph($self, $current);
     $current = $paragraph if ($paragraph);
   }
@@ -1045,20 +1054,25 @@ sub _expand_macro_body($$$$) {
   return $result;
 }
 
-sub _abort_empty_line($$)
+sub _abort_empty_line($$;$)
 {
   my $self = shift;
   my $current = shift;
+  my $additional_text = shift;
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
        and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
     print STDERR "ABORT EMPTY\n" if ($self->{'debug'});
+    $current->{'contents'}->[-1]->{'text'} .= $additional_text
+      if (defined($additional_text));
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
     } else {
       delete $current->{'contents'}->[-1]->{'type'};
     }
+    return 1;
   }
+  return 0;
 }
 
 sub _end_line($$$)
