@@ -27,7 +27,21 @@ Flag a is set.
 @end ifclear
 @ifclear
 @end ignore
-']
+'],
+['empty_set_in_ifset',
+'@set a
+
+@ifset a
+a is set to:|@value{a}|.
+@end ifset'
+],
+['empty_set_in_ifclear',
+'@set a
+
+@ifclear a
+a is set to:|@value{a}|.
+@end ifclear'
+]
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
