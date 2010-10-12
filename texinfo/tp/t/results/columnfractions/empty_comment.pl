@@ -16,7 +16,8 @@ $result_trees{'empty_comment'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' '
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
                     },
                     {
                       'args' => [
@@ -80,12 +81,12 @@ $result_texts{'empty_comment'} = '@multitable @columnfractions @c
 
 $result_errors{'empty_comment'} = [
   {
-    'error_line' => ':1: Empty @columnfractions
+    'error_line' => ':1: @columnfractions missing argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Empty @columnfractions',
+    'text' => '@columnfractions missing argument',
     'type' => 'error'
   }
 ];

@@ -21,18 +21,24 @@ my @test_cases = (
 );
 
 our $arg_generate;
+our $arg_test_case;
+our $arg_debug;
 
 ok(1);
 
-my $test = new_test('columnfractions', $arg_generate);
+my $test = new_test('columnfractions', $arg_generate, $arg_debug);
+
+my @done_tests;
 
 foreach my $test_case (@test_cases) {
+  next if ($arg_test_case and $arg_test_case ne $test_case->[0]);
   $test->test($test_case);
+  push @done_tests, $test_case;
 }
 
 if ($arg_generate) {
   plan tests => 2;
 }
 else {
-  plan tests => (2 + scalar(@test_cases) * 3);
+  plan tests => (2 + scalar(@done_tests) * 3);
 }

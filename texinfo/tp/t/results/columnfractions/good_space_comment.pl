@@ -16,7 +16,12 @@ $result_trees{'good_space_comment'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' 0 1  '
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '0 1  '
                     },
                     {
                       'args' => [
@@ -71,8 +76,9 @@ $result_trees{'good_space_comment'} = {
 };
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0];

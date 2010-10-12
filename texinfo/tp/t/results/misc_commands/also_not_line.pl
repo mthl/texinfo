@@ -210,7 +210,12 @@ $result_trees{'also_not_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' special
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'special
 '
             }
           ],
@@ -337,6 +342,7 @@ $result_trees{'also_not_line'}{'contents'}[15]{'contents'}[7]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[15]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[16]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0];
+$result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0];
 $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[17];
 $result_trees{'also_not_line'}{'contents'}[17]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[18]{'parent'} = $result_trees{'also_not_line'};

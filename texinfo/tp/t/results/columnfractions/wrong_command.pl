@@ -16,7 +16,8 @@ $result_trees{'wrong_command'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' '
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
                     },
                     {
                       'args' => [
@@ -99,15 +100,6 @@ $result_errors{'wrong_command'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'Bad argument to @columnfractions',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':1: Empty @columnfractions
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'Empty @columnfractions',
     'type' => 'error'
   }
 ];

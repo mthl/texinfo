@@ -44,7 +44,12 @@ $result_trees{'table'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' table item
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'table item
 '
                 }
               ],
@@ -61,7 +66,12 @@ $result_trees{'table'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' table itemx
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'table itemx
 '
                 }
               ],
@@ -157,7 +167,12 @@ $result_trees{'table'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' index entry
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'index entry
 '
                     }
                   ],
@@ -184,7 +199,12 @@ $result_trees{'table'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' vtable item
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'vtable item
 '
                 }
               ],
@@ -213,7 +233,12 @@ $result_trees{'table'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' key
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'key
 '
                 }
               ],
@@ -230,7 +255,12 @@ $result_trees{'table'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' itemx vtable '
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'itemx vtable '
                 },
                 {
                   'args' => [
@@ -277,9 +307,11 @@ $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $res
 $result_trees{'table'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'table'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'table'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'table'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[2];
 $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'table'}{'contents'}[1];
@@ -296,21 +328,25 @@ $result_trees{'table'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'tabl
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[1]{'args'}[0];
+$result_trees{'table'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[1];
 $result_trees{'table'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[2];
 $result_trees{'table'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[3]{'args'}[0];
+$result_trees{'table'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[3]{'args'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[3];
 $result_trees{'table'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0];
-$result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0];
+$result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[2];
+$result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0];
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table'}{'contents'}[4];

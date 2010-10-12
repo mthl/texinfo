@@ -1134,17 +1134,6 @@ sub _end_line($$$)
       $current = $current->{'contents'}->[-1];
     }
 
-  } elsif ($current->{'contents'} and @{$current->{'contents'}}
-      and $current->{'contents'}->[-1]->{'type'}
-      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
-    # empty line after a @menu. Reparent to the menu
-    if ($current->{'type'} 
-        and $current->{'type'} eq 'menu_comment') {
-      print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'debug'});
-      my $empty_line = pop @{$current->{'contents'}};
-      $empty_line->{'parent'} = $current->{'parent'};
-      unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
-    }
   # end of a menu line.
   } elsif ($current->{'type'} 
     and ($current->{'type'} eq 'menu_entry_name'
@@ -1272,7 +1261,7 @@ sub _end_line($$$)
 
   # misc command line arguments
   } elsif ($current->{'type'} 
-     and $current->{'type'} eq 'misc_line_arg') {
+           and $current->{'type'} eq 'misc_line_arg') {
     # first parent is the @command, second is the parent
     $current = $current->{'parent'};
     my $misc_cmd = $current;
@@ -1300,6 +1289,19 @@ sub _end_line($$$)
            'contents' => [], 'parent', $current };
         $current = $current->{'contents'}->[-1];
       }
+    }
+   # do that last in order to have the line processed if one of the above
+   # case is also set.
+  } elsif ($current->{'contents'} and @{$current->{'contents'}}
+      and $current->{'contents'}->[-1]->{'type'}
+      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
+    # empty line after a @menu. Reparent to the menu
+    if ($current->{'type'} 
+        and $current->{'type'} eq 'menu_comment') {
+      print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'debug'});
+      my $empty_line = pop @{$current->{'contents'}};
+      $empty_line->{'parent'} = $current->{'parent'};
+      unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
     }
   }
   return $current;
@@ -1924,6 +1926,7 @@ sub _internal_parse_text($$;$$)
             # be very wise...
             $current->{'remaining_args'} = 4 if ($command eq 'node');
             $current = $current->{'args'}->[-1];
+            $line = _start_empty_line_after_command($line, $current);
           } elsif ($line eq '') {
             $current = _end_line($self, $current, $line_nr);
             last;
@@ -2158,6 +2161,7 @@ sub _internal_parse_text($$;$$)
         } else {
           die "BUG: text remaining (@$text) and `$line'\n" if (scalar(@$text));
         }
+        #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
         $current = _end_line($self, $current, $line_nr);
         last;
       }
@@ -2386,27 +2390,31 @@ sub _parse_line_command_args($$$)
     }
   }
 
-  if (! @{$arg->{'contents'}} 
-       or ($arg->{'contents'}->[0]->{'cmdname'} 
-            and ($arg->{'contents'}->[0]->{'cmdname'} eq 'c' 
-                 or $arg->{'contents'}->[0]->{'cmdname'} eq 'comment'))) {
+  my @contents = @{$arg->{'contents'}};
+  shift @contents 
+    if ($contents[0] and $contents[0]->{'type'}
+       and ($contents[0]->{'type'} eq 'empty_line_after_command'
+            or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
+  if (! @contents 
+       or ($contents[0]->{'cmdname'} 
+            and ($contents[0]->{'cmdname'} eq 'c' 
+                 or $contents[0]->{'cmdname'} eq 'comment'))) {
     _line_error ($self, sprintf($self->__("\@%s missing argument"), 
        $command), $line_nr);
     return undef;
   }
 
-  if (@{$arg->{'contents'}} > 2 or (@{$arg->{'contents'}} == 2
-         and (!$arg->{'contents'}->[1]->{'cmdname'} 
-              or ($arg->{'contents'}->[1]->{'cmdname'} ne 'c' 
-                  and $arg->{'contents'}->[1]->{'cmdname'} ne 'comment')))
-         or (!defined($arg->{'contents'}->[0]->{'text'}))) {
+  if (@{contents} > 2 or (@{contents} == 2
+         and (!$contents[1]->{'cmdname'} 
+              or ($contents[1]->{'cmdname'} ne 'c' 
+                  and $contents[1]->{'cmdname'} ne 'comment')))
+         or (!defined($contents[0]->{'text'}))) {
     _line_error ($self, sprintf($self->__("Bad argument to \@%s"),
        $command), $line_nr);
   }
-  return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
+  return undef if (!defined($contents[0]->{'text'}));
   
-  my $line = $arg->{'contents'}->[0]->{'text'};  
-  $line =~ s/^[^\S\n]*//;
+  my $line = $contents[0]->{'text'};  
 
   if ($command eq 'alias') {
     # REMACRO

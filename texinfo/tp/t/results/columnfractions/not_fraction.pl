@@ -16,7 +16,12 @@ $result_trees{'not_fraction'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' aaa
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'aaa
 '
                     }
                   ],
@@ -55,6 +60,7 @@ $result_trees{'not_fraction'} = {
 };
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];

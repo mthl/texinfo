@@ -10,8 +10,6 @@ of column numbers as well as line numbers?  Then whether the macro was
 involved would be a matter of checking if the column number was < or >
 the place where the error occurred.
 
-Spaces are now kept with the command args.  This is bad in most
-cases.  They should be taken out as special content.
 
 test invalid, especially commands not closed/bad nesting
 test root_commands, like nodes and sections

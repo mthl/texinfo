@@ -14,7 +14,12 @@ $result_trees{'bad'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' wrong arg on line following kbdinputstyle
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'wrong arg on line following kbdinputstyle
 '
                 }
               ],
@@ -33,6 +38,7 @@ $result_trees{'bad'} = {
 };
 $result_trees{'bad'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0];
 $result_trees{'bad'}{'contents'}[0]{'parent'} = $result_trees{'bad'};

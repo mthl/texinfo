@@ -17,7 +17,8 @@ $result_trees{'empty'} = {
                     {
                       'parent' => {},
                       'text' => ' 
-'
+',
+                      'type' => 'empty_line_after_command'
                     }
                   ],
                   'parent' => {},
@@ -67,12 +68,12 @@ $result_texts{'empty'} = '@multitable @columnfractions
 
 $result_errors{'empty'} = [
   {
-    'error_line' => ':1: Empty @columnfractions
+    'error_line' => ':1: @columnfractions missing argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Empty @columnfractions',
+    'text' => '@columnfractions missing argument',
     'type' => 'error'
   }
 ];
