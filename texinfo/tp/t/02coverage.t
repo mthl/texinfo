@@ -24,6 +24,20 @@ accent character followed by @@ @~@.
 
 
 '],
+['math',
+'Simple math
+@math{{x^i}\over{\tan y}}
+
+Math with @@-command
+@math{@code{math code} a < b}
+
+Complex
+@math{ \underline{@code{math \hbox{ code }}} @\i \sum_{i}{\underline{f}}}
+
+@@\ outside of math
+@\
+
+'],
 ['block_commands','
 @group
 in group

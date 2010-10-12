@@ -77,7 +77,7 @@ my %default_configuration = (
 my %no_brace_commands;             # commands never taking braces
 
 foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
-                              '?','.','@','}','{',) {
+                              '?','.','@','}','{','\\') {
   $no_brace_commands{$no_brace_command} = 1;
 }
 
@@ -225,8 +225,15 @@ foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotac
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key','math','option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','footnote','shortcaption','caption','dotless') {
+foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key',,'option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','dotless') {
   $brace_commands{$one_arg_command} = 1;
+}
+
+# Commands that enclose full texts
+my %context_brace_commands;
+foreach my $context_brace_command ('footnote', 'caption', 'shortcaption', 'math') {
+  $context_brace_commands{$context_brace_command} = $context_brace_command;
+  $brace_commands{$context_brace_command} = 1;
 }
 
 foreach my $two_arg_command('email','acronym','abbr') {
@@ -240,14 +247,6 @@ foreach my $three_arg_command('uref','url','inforef') {
 foreach my $five_arg_command('xref','ref','pxref','inforef','image') {
   $brace_commands{$five_arg_command} = 5;
 }
-
-# Commands that enclose full texts
-my %context_brace_commands;
-foreach my $context_brace_command ('footnote', 'caption', 'shortcaption') {
-  $context_brace_commands{$context_brace_command} = $context_brace_command;
-}
-
-$context_brace_commands{'math'} = 'math';
 
 my %no_paragraph_contexts;
 foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
@@ -2044,6 +2043,11 @@ sub _internal_parse_text($$;$$)
         } elsif ($no_brace_commands{$command}) {
           push @{$current->{'contents'}},
                  { 'cmdname' => $command, 'parent' => $current };
+          # FIXME generalize?
+          if ($command eq '\\' and $self->{'context_stack'}->[-1] ne 'math') {
+            _line_warn  ($self, sprintf($self->__("\@%s should only appear in math context"), 
+                                        $command), $line_nr);
+          }
           if ($command eq "\n") {
             $current = _end_line($self, $current, $line_nr);
             last;
@@ -2071,7 +2075,6 @@ sub _internal_parse_text($$;$$)
               $current->{'remaining_args'} = 0;
             }
             $current = $current->{'args'}->[-1];
-            # FIXME don't use type to distinguish context_brace_commands.
             if ($context_brace_commands{$command}) {
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
             } else {
@@ -2080,11 +2083,12 @@ sub _internal_parse_text($$;$$)
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
                if ($self->{'debug'});
-          } elsif ($current->{'parent'} 
-              and (($current->{'parent'}->{'cmdname'}
-                     and $current->{'parent'}->{'cmdname'} eq 'multitable')
-                   or ($current->{'parent'}->{'type'} 
-                       and $current->{'parent'}->{'type'} eq 'def_line'))) {
+          } elsif (($current->{'parent'} 
+                    and (($current->{'parent'}->{'cmdname'}
+                          and $current->{'parent'}->{'cmdname'} eq 'multitable')
+                         or ($current->{'parent'}->{'type'} 
+                             and $current->{'parent'}->{'type'} eq 'def_line')))
+                   or $self->{'context_stack'}->[-1] eq 'math') {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
