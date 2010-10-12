@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
+@c $Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18518,7 +18518,7 @@ target format.
 * Customizing Special Elements::      The top, toc, about, etc., elements.
 * Customizing Output-Related Names::  File names and target names.
 * Customizing HTML Headings::
-* Formatting insertions text and simple commands::
+* Customizing HTML Basic Commands::
 * References and footnotes formatting::
 * Block commands formatting::
 * Paragraph and preformatted region::
@@ -19369,6 +19369,8 @@ Formatting}).
 @subsection Init File Expansion Contexts: Normal, Preformatted, String, Math
 
 @cindex Init file expansion contexts
+@cindex Expansion contexts, for init files
+@cindex Contexts for expansion in init files
 
 There are four expansion contexts of interest:
 
@@ -20819,7 +20821,6 @@ by:
            \%element $command $command_texi_arg $formatted_arg @
            $in_preformatted $one_section $element_heading $first_in_page @
            $is_top $previous_is_top $unformatted_line $element_id $new_element
-
 @var{\%element}, @var{$command}, @var{$command_texi_arg},
 @var{$formatted_arg}, @var{$in_preformatted}, @var{$one_section}, and
 @var{$element_heading} are as above.  For the rest:
@@ -20846,11 +20847,14 @@ True if the heading is the first of an element.
 @end deftypefn
 
 
-@node Formatting insertions text and simple commands
-@section Formatting insertions, text and simple commands
+@node Customizing HTML Basic Commands
+@section Customizing HTML Basic Commands
+
+This section describes customizing the HTML output for the basic
+Texinfo commands used within the running text.
 
 @menu
-* Formatting commands without arguments::
+* Customizing HTML Commands Without Arguments::
 * Formatting of @@<colon>::
 * Formatting of style and accents::
 * Formatting special simple commands::
@@ -20858,81 +20862,80 @@ True if the heading is the first of an element.
 * Formatting of simple line commands::
 @end menu
 
-@node Formatting commands without arguments
-@subsection Customizing the formatting of commands without argument
+@node Customizing HTML Commands Without Arguments
+@subsection Customizing HTML Commands Without Arguments
 
-This includes the commands whose name is a nonletter character like @code{@@@@}, 
-the commands with lettered characters and braces
-but whose braces should be empty, like @code{@@TeX@{@}}, or some commands
-associated with accentted letters like @code{@@AA@{@}}. 
+@cindex Customizing HTML for commands without arguments
+@cindex Commands without arguments, customizing HTML for
+@cindex Insertion commands, customizing HTML
 
-Each of these categories of commands have associated hashes,
-for normal
-context, for preformatted context for strings and math. 
-(@pxref{Init File Expansion Contexts}).  The 
-keys of the hashes are the 
-command names, the associated value is the text replacing the command.
-In math context if a command is not a key of these hashes, the 
-defaults for this command are used.
+These commands include those whose names are a single nonletter
+character, such as @code{@@@@}, and those with a normal alphabetic
+name but whose braces should be empty, such as @code{@@TeX@{@}} and
+@code{@@AA@{@}}.
+
+Each of these categories of commands have associated hashes for each
+expansion context: normal, preformatted, string, and math (@pxref{Init
+File Expansion Contexts}).  The keys of each hash are the command
+names, the associated value is the text replacing the command.  In
+math context, if a command is not a key of these hashes, the defaults
+for the command are used.
 
 @vindex %simple_map
-@vindex %simple_map_pre
-@vindex simple_map_texi
 @vindex %things_map
+@vindex %simple_map_pre
 @vindex %pre_map
+@vindex %simple_map_texi
 @vindex %texi_map
 @vindex %simple_map_math
 @vindex %math_map
 The hashes are:
-@multitable {preformatted text} {one nonlettered character} {nothing in braces}
-@headitem command type @tab one nonlettered character @tab nothing in braces
-@item normal text @tab @code{%simple_map} @tab @code{%things_map}
-@item preformatted text @tab @code{%simple_map_pre} @tab @code{%pre_map}
-@item string @tab @code{%simple_map_texi} @tab @code{%texi_map}
-@item math @tab @code{%simple_map_math} @tab @code{%math_map}
+
+@multitable {preformatted} {one nonlettered character} {empty braces}
+@headitem command type @tab one nonlettered character @tab empty braces
+@item normal       @tab @code{%simple_map}      @tab @code{%things_map}
+@item preformatted @tab @code{%simple_map_pre}  @tab @code{%pre_map}
+@item string       @tab @code{%simple_map_texi} @tab @code{%texi_map}
+@item math         @tab @code{%simple_map_math} @tab @code{%math_map}
 @end multitable
 
-To change the formatting of these commands, just change the
-value. For example, if you want @code{&shy;} to be outputted for @code{@@-}
-in normal and preformatted context, write in your init file:
+To change the formatting of a command, change the associated value in
+the desired hash.  For example, if you want @code{&shy;} to be output
+for @code{@@-} in normal and preformatted context, write this in your
+init file:
 
 @example
 $simple_map@{'-'@} = '&shy;';
 $simple_map_pre@{'-'@} = '&shy;';
 @end example
 
-A special hash is used preferentially when sorting indices, 
-overriding @code{%texi_map} entries, @code{%sorting_things_map}.
+@vindex %sorting_things_map
+An additional hash is used preferentially when sorting indices,
+overriding @code{%texi_map} entries: @code{%sorting_things_map}.
 
-For a better control, function references are available,
-although they are not used in string context.
-@code{simple_command} is for one nonlettered character
-@@-command formatting:
-@deftypefn {Function Reference} $formatted_command simple_command $command $in_preformatted $in_math $line_nr \%state
-@var{$command} is the @@-command name.
-@var{$in_preformatted} is true if in preformatted region.
-@var{$in_math} is true if in math.
-@var{$line_nr}
-An opaque structure containing the information about the line number of the 
-@@-command.
-@var{\%state} holds informations about the current context. 
+For better control, function references are available, although they
+are not used in string context.  @code{simple_command} is for
+formatting of the single-nonletter @@-commands:
+
+@deftypefn {Function Reference} $formatted_command simple_command
+           @ $command $in_preformatted $in_math $line_nr \%state
+@var{$command} is the @@-command name.  @var{$in_preformatted} is true
+if in a preformatted region.  @var{$in_math} is true if in math.
+@var{$line_nr} is an opaque structure containing information about the
+line number of the @@-command.  @var{\%state} holds information about
+the current context.
 @end deftypefn
 
-For @@-commands without argument in brace, @code{thing_command}
-may be redefined:
+For @@-commands with empty brace arguments, @code{thing_command} may
+be redefined:
 
-@deftypefn {Function Reference} $formatted_command thing_command $command $text $in_preformatted $in_math $line_nr \%state
-@var{$command} is the @@-command name.
-@var{$text} is the formatted text appearing in the @@-command. It is invalid Texinfo to have
-something else than an empty string.
-@var{$in_preformatted} is true if in preformatted region.
-@var{$in_math} is true if in math.
-@var{$line_nr}
-An opaque structure containing the information about the line number of the 
-@@-command.
-@var{\%state} holds informations about the current context. 
+@deftypefn {Function Reference} $formatted_command thing_command
+           @ $command $text $in_preformatted $in_math $line_nr \%state
+@var{$text} is the formatted text appearing in the @@-command.  It is
+invalid Texinfo to have anything other than the empty string there.
+@var{$command}, @var{$in_preformatted}, @var{$in_math},
+@var{$line_nr}, and @var{\%state} are as above.
 @end deftypefn
-
 
 
 @node Formatting of @@<colon>
@@ -24711,7 +24714,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
+$Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24790,7 +24793,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.327 2010-10-10 18:01:25 karl Exp $
+@comment $Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
