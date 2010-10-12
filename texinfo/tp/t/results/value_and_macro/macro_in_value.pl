@@ -33,13 +33,19 @@ $result_trees{'macro_in_value'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' ab
+        'arg_line' => ' ab
 ',
         'macrobody' => 'a
 
 b
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -61,7 +67,11 @@ b
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' flagab @ab
+'
+      }
     },
     {
       'parent' => {},
@@ -105,15 +115,16 @@ $result_trees{'macro_in_value'}{'contents'}[0]{'contents'}[1]{'parent'} = $resul
 $result_trees{'macro_in_value'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[0];
 $result_trees{'macro_in_value'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'};
 $result_trees{'macro_in_value'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_value'};
-$result_trees{'macro_in_value'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[2];
-$result_trees{'macro_in_value'}{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[2];
 $result_trees{'macro_in_value'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_value'};
+$result_trees{'macro_in_value'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[3];
+$result_trees{'macro_in_value'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[3];
 $result_trees{'macro_in_value'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_value'};
-$result_trees{'macro_in_value'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[4];
 $result_trees{'macro_in_value'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_value'};
+$result_trees{'macro_in_value'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[5];
 $result_trees{'macro_in_value'}{'contents'}[5]{'parent'} = $result_trees{'macro_in_value'};
-$result_trees{'macro_in_value'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[6];
 $result_trees{'macro_in_value'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_value'};
+$result_trees{'macro_in_value'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[7];
+$result_trees{'macro_in_value'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_value'};
 
 $result_texts{'macro_in_value'} = '@macro ab
 a

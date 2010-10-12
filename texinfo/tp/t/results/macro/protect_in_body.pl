@@ -31,15 +31,21 @@ $result_trees{'protect_in_body'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro1 { arg1 , arg2 }
+',
         'args_index' => {
           'arg1' => 0,
           'arg2' => 1
         },
-        'macro_line' => ' macro1 { arg1 , arg2 }
-',
         'macrobody' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -124,18 +130,19 @@ $result_trees{'protect_in_body'}{'contents'}[0]{'args'}[2]{'parent'} = $result_t
 $result_trees{'protect_in_body'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[0];
 $result_trees{'protect_in_body'}{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'};
 $result_trees{'protect_in_body'}{'contents'}[1]{'parent'} = $result_trees{'protect_in_body'};
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[3];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2];
-$result_trees{'protect_in_body'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[2];
 $result_trees{'protect_in_body'}{'contents'}[2]{'parent'} = $result_trees{'protect_in_body'};
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'};
 
 $result_texts{'protect_in_body'} = '@macro macro1 { arg1 , arg2 }
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}

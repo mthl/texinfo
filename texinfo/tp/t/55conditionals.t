@@ -41,7 +41,24 @@ a is set to:|@value{a}|.
 @ifclear a
 a is set to:|@value{a}|.
 @end ifclear'
-]
+],
+['consecutive_conditionals',
+'@ifinfo
+in ifinfo
+@end ifinfo
+@iftex
+in iftex
+@end iftex
+
+@set b
+
+@ifclear b
+in ifclear
+@end ifclear
+@ifset a
+in ifset
+@end ifset
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

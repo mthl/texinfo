@@ -16,7 +16,11 @@ $result_trees{'value_in_macro_body'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' bodyarg \\arg\\ 
+'
+      }
     },
     {
       'parent' => {},
@@ -48,14 +52,20 @@ $result_trees{'value_in_macro_body'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' testvaluebody { arg }
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' testvaluebody { arg }
-',
         'macrobody' => 'result: @emph{\\@value{bodyarg}\\  }
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -107,14 +117,15 @@ $result_trees{'value_in_macro_body'}{'contents'}[2]{'args'}[1]{'parent'} = $resu
 $result_trees{'value_in_macro_body'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[2];
 $result_trees{'value_in_macro_body'}{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_body'};
 $result_trees{'value_in_macro_body'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_body'};
-$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4];
-$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1];
-$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4];
-$result_trees{'value_in_macro_body'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[4];
 $result_trees{'value_in_macro_body'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_body'};
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5];
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[1]{'args'}[0];
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[1];
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5];
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[5];
+$result_trees{'value_in_macro_body'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_body'};
 
-$result_texts{'value_in_macro_body'} = '@set bodyarg \\arg\\
+$result_texts{'value_in_macro_body'} = '@set bodyarg \\arg\\ 
 
 @macro testvaluebody { arg }
 result: @emph{\\@value{bodyarg}\\  }

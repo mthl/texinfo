@@ -38,16 +38,22 @@ $result_trees{'ifclear_in_macro'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' note {arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' note {arg}
-',
         'macrobody' => '@ifclear notes 
 \\arg\\
 @end ifclear
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -81,9 +87,10 @@ $result_trees{'ifclear_in_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $res
 $result_trees{'ifclear_in_macro'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[0];
 $result_trees{'ifclear_in_macro'}{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_macro'};
 $result_trees{'ifclear_in_macro'}{'contents'}[1]{'parent'} = $result_trees{'ifclear_in_macro'};
-$result_trees{'ifclear_in_macro'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[2];
 $result_trees{'ifclear_in_macro'}{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_macro'};
+$result_trees{'ifclear_in_macro'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_macro'}{'contents'}[3];
 $result_trees{'ifclear_in_macro'}{'contents'}[3]{'parent'} = $result_trees{'ifclear_in_macro'};
+$result_trees{'ifclear_in_macro'}{'contents'}[4]{'parent'} = $result_trees{'ifclear_in_macro'};
 
 $result_texts{'ifclear_in_macro'} = '@macro note {arg}
 @ifclear notes 

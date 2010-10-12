@@ -7,12 +7,16 @@ $result_trees{'not_fraction'} = {
         {
           'contents' => [
             {
+              'parent' => {},
+              'text' => ' '
+            },
+            {
               'args' => [
                 {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'aaa
+                      'text' => ' aaa
 '
                     }
                   ],
@@ -41,19 +45,25 @@ $result_trees{'not_fraction'} = {
       'special' => {
         'max_columns' => 0
       }
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line_after_command'
     }
   ]
 };
-$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_fraction'}{'contents'}[0];
 $result_trees{'not_fraction'}{'contents'}[0]{'parent'} = $result_trees{'not_fraction'};
+$result_trees{'not_fraction'}{'contents'}[1]{'parent'} = $result_trees{'not_fraction'};
 
 $result_texts{'not_fraction'} = '@multitable @columnfractions aaa
-@end multitable
-';
+@end multitable';
 
 $result_errors{'not_fraction'} = [
   {

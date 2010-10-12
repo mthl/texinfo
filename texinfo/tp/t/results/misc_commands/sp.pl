@@ -24,7 +24,7 @@ $result_trees{'sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '1
+              'text' => ' 1
 '
             }
           ],
@@ -41,7 +41,7 @@ $result_trees{'sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '2
+              'text' => ' 2
 '
             }
           ],
@@ -68,7 +68,7 @@ $result_trees{'sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '1
+              'text' => ' 1
 '
             }
           ],
@@ -96,7 +96,7 @@ $result_trees{'sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '2 a number after sp
+              'text' => ' 2 a number after sp
 '
             }
           ],

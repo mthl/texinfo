@@ -1,10 +1,14 @@
 $manual_tree = { 'cmdname' => 'multitable',
   'args' => [
+        { 'type' => 'block_line_arg',
+          'contents' => [
+             { 'text' => ' ' },
              { 'type' => 'bracketed',
                'contents' => [
                                {'text' => 'aaaa'},
                             ]
              },
+             { 'text' => ' ' },
              { 'type' => 'bracketed',
                'contents' => [
                                {'text' => 'xx'},
@@ -20,12 +24,9 @@ $manual_tree = { 'cmdname' => 'multitable',
                                }
                             ]
              },
-             { 'type' => 'line',
-               'contents' => [
-                               {'text' => 'ccc'},
-                            ]
-             },
+             {'text' => " ccc\n"},
           ],
+       } ],
   'extra' => { 'number_of_columns' => 3 },
   'contents' => [
            { 'type' => 'multitable_title',
@@ -57,18 +58,18 @@ $manual_tree = { 'cmdname' => 'multitable',
                                 'type' => 'multitable_cell',
                                 'extra' => {'col_number' => 1,
                                             'row_number' => 1},
-                                'contents' => [ {'text' => "\n" } ]
+                                'contents' => [ {'text' => " \n" } ]
                               }
                            ]
            }
 
   ]
+  
 };
 
 $manual_tree_result = '@multitable {aaaa} {xx@b{rr}} ccc
 title@verb{: in verb } :}@@.
 @item 
-@end multitable
-';
+@end multitable';
 
 1;

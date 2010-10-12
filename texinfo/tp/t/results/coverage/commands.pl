@@ -114,7 +114,10 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => 'ringaccent',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'spaces' => ' '
+          }
         },
         {
           'parent' => {},
@@ -170,7 +173,7 @@ $result_trees{'commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'index entry in text '
+              'text' => ' index entry in text '
             },
             {
               'args' => [
@@ -209,7 +212,7 @@ $result_trees{'commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'majorheading '
+              'text' => ' majorheading '
             },
             {
               'args' => [

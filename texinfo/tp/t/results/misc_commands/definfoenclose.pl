@@ -20,7 +20,7 @@ $result_trees{'definfoenclose'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'phoo,//,\\
+                  'text' => ' phoo,//,\\
 '
                 }
               ],
@@ -100,7 +100,7 @@ $result_trees{'definfoenclose'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'phi,:,:
+                  'text' => ' phi,:,:
 '
                 }
               ],
@@ -209,7 +209,7 @@ $result_trees{'definfoenclose'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'strong,(strong:,:)
+              'text' => ' strong,(strong:,:)
 '
             }
           ],

@@ -12,28 +12,32 @@ $result_trees{'bad_syntax'} = {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ''
+        'arg_line' => '
+'
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' '
+        'arg_line' => ' 
+'
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' ?'
+        'arg_line' => ' ?
+'
       }
     },
     {
       'cmdname' => 'set',
       'parent' => {},
       'special' => {
-        'arg' => ' :-/ hey!'
+        'arg_line' => ' :-/ hey!
+'
       }
     },
     {
@@ -89,9 +93,9 @@ $result_trees{'bad_syntax'}{'contents'}[10]{'parent'} = $result_trees{'bad_synta
 
 $result_texts{'bad_syntax'} = '
 @set
-@set
-@set
-@set
+@set 
+@set ?
+@set :-/ hey!
 
 gurgl
 

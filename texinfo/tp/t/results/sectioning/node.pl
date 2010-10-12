@@ -14,7 +14,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'one arg 
+              'text' => ' one arg 
 '
             }
           ],
@@ -32,7 +32,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => ' one arg'
             }
           ],
           'parent' => {},
@@ -60,7 +60,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => ' one arg'
             }
           ],
           'parent' => {},
@@ -98,7 +98,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => ' one arg'
             }
           ],
           'parent' => {},
@@ -146,7 +146,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => ' one arg'
             }
           ],
           'parent' => {},
@@ -210,7 +210,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'comment '
+              'text' => ' comment '
             },
             {
               'args' => [
@@ -245,7 +245,7 @@ $result_trees{'node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'arg1 '
+              'text' => ' arg1 '
             },
             {
               'args' => [

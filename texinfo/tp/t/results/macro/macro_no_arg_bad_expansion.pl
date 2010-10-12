@@ -21,11 +21,17 @@ $result_trees{'macro_no_arg_bad_expansion'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' test1
+        'arg_line' => ' test1
 ',
         'macrobody' => 'res1
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -50,8 +56,9 @@ $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0]{'args'}[0]{'parent'} 
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0];
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'};
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[1]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'};
-$result_trees{'macro_no_arg_bad_expansion'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[2];
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[2]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'};
+$result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3];
+$result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'};
 
 $result_texts{'macro_no_arg_bad_expansion'} = '@macro test1
 res1

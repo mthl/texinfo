@@ -16,7 +16,11 @@ $result_trees{'value_node_directions'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' a--foo bar
+'
+      }
     },
     {
       'parent' => {},
@@ -30,7 +34,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'Top'
+              'text' => ' Top'
             }
           ],
           'parent' => {},
@@ -78,7 +82,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'Var bar
+              'text' => ' Var bar
 '
             }
           ],
@@ -112,7 +116,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'bar'
+              'text' => ' bar'
             }
           ],
           'parent' => {},
@@ -160,7 +164,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'BarFoo
+              'text' => ' BarFoo
 '
             }
           ],
@@ -183,7 +187,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'BarFoo'
+              'text' => ' BarFoo'
             }
           ],
           'parent' => {},
@@ -226,7 +230,7 @@ $result_trees{'value_node_directions'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'bar
+              'text' => ' bar
 '
             }
           ],

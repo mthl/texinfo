@@ -19,13 +19,19 @@ $result_trees{'no_macrobody'} = {
       'contents' => [],
       'parent' => {},
       'special' => {
+        'arg_line' => ' no-macrobody {arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' no-macrobody {arg}
-',
         'macrobody' => ''
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -64,8 +70,9 @@ $result_trees{'no_macrobody'}{'contents'}[0]{'parent'} = $result_trees{'no_macro
 $result_trees{'no_macrobody'}{'contents'}[1]{'parent'} = $result_trees{'no_macrobody'};
 $result_trees{'no_macrobody'}{'contents'}[2]{'parent'} = $result_trees{'no_macrobody'};
 $result_trees{'no_macrobody'}{'contents'}[3]{'parent'} = $result_trees{'no_macrobody'};
-$result_trees{'no_macrobody'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[4];
 $result_trees{'no_macrobody'}{'contents'}[4]{'parent'} = $result_trees{'no_macrobody'};
+$result_trees{'no_macrobody'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[5];
+$result_trees{'no_macrobody'}{'contents'}[5]{'parent'} = $result_trees{'no_macrobody'};
 
 $result_texts{'no_macrobody'} = '@macro no-macrobody {arg}
 @end macro

@@ -27,7 +27,7 @@ $result_trees{'text_before_after'} = {
           ],
           'parent' => {},
           'special' => {
-            'macro_line' => ' mymacro
+            'arg_line' => ' mymacro
 ',
             'macrobody' => 'in macro
 '
@@ -53,8 +53,7 @@ $result_trees{'text_before_after'}{'contents'}[0]{'parent'} = $result_trees{'tex
 
 $result_texts{'text_before_after'} = 'before @macro mymacro
 in macro
-@end macro
- after
+@end macro after
 ';
 
 $result_errors{'text_before_after'} = [];

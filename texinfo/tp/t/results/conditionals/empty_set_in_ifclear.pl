@@ -16,7 +16,11 @@ $result_trees{'empty_set_in_ifclear'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' a
+'
+      }
     },
     {
       'parent' => {},
@@ -31,7 +35,7 @@ $result_trees{'empty_set_in_ifclear'}{'contents'}[0]{'args'}[1]{'parent'} = $res
 $result_trees{'empty_set_in_ifclear'}{'contents'}[0]{'parent'} = $result_trees{'empty_set_in_ifclear'};
 $result_trees{'empty_set_in_ifclear'}{'contents'}[1]{'parent'} = $result_trees{'empty_set_in_ifclear'};
 
-$result_texts{'empty_set_in_ifclear'} = '@set a 
+$result_texts{'empty_set_in_ifclear'} = '@set a
 
 ';
 

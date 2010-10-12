@@ -18,12 +18,24 @@ $result_trees{'raw_in_para'} = {
       'contents' => [
         {
           'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
+        {
+          'parent' => {},
           'text' => 'in verbatim
 ',
           'type' => 'raw'
         }
       ],
       'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -43,12 +55,24 @@ $result_trees{'raw_in_para'} = {
           'contents' => [
             {
               'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            },
+            {
+              'parent' => {},
               'text' => 'in html
 ',
               'type' => 'raw'
             }
           ],
           'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -77,6 +101,12 @@ $result_trees{'raw_in_para'} = {
           'contents' => [
             {
               'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line_after_command'
+            },
+            {
+              'parent' => {},
               'text' => 'in tex1
 ',
               'type' => 'raw'
@@ -95,6 +125,12 @@ $result_trees{'raw_in_para'} = {
             }
           ],
           'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
         }
       ],
       'parent' => {},
@@ -122,23 +158,29 @@ $result_trees{'raw_in_para'} = {
 $result_trees{'raw_in_para'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[0];
 $result_trees{'raw_in_para'}{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'};
 $result_trees{'raw_in_para'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[1];
 $result_trees{'raw_in_para'}{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'};
 $result_trees{'raw_in_para'}{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'};
-$result_trees{'raw_in_para'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[3];
-$result_trees{'raw_in_para'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_para'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[3];
-$result_trees{'raw_in_para'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[3];
 $result_trees{'raw_in_para'}{'contents'}[3]{'parent'} = $result_trees{'raw_in_para'};
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4];
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4];
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4];
+$result_trees{'raw_in_para'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[4];
 $result_trees{'raw_in_para'}{'contents'}[4]{'parent'} = $result_trees{'raw_in_para'};
-$result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[5];
-$result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1];
-$result_trees{'raw_in_para'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[5];
 $result_trees{'raw_in_para'}{'contents'}[5]{'parent'} = $result_trees{'raw_in_para'};
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6];
+$result_trees{'raw_in_para'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[6];
 $result_trees{'raw_in_para'}{'contents'}[6]{'parent'} = $result_trees{'raw_in_para'};
-$result_trees{'raw_in_para'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[7];
 $result_trees{'raw_in_para'}{'contents'}[7]{'parent'} = $result_trees{'raw_in_para'};
+$result_trees{'raw_in_para'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[8];
+$result_trees{'raw_in_para'}{'contents'}[8]{'parent'} = $result_trees{'raw_in_para'};
 
 $result_texts{'raw_in_para'} = 'para
 @verbatim

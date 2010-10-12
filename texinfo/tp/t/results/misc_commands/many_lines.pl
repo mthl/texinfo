@@ -14,7 +14,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '200mm,150mm following '
+                  'text' => ' 200mm,150mm following '
                 },
                 {
                   'cmdname' => '@',
@@ -59,7 +59,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'on line following headings
+                  'text' => ' on line following headings
 '
                 }
               ],
@@ -83,7 +83,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following oddfooting
+              'text' => ' on line following oddfooting
 ',
               'type' => 'misc_arg'
             }
@@ -99,7 +99,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following everyheading
+              'text' => ' on line following everyheading
 ',
               'type' => 'misc_arg'
             }
@@ -115,7 +115,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following everyfooting
+              'text' => ' on line following everyfooting
 ',
               'type' => 'misc_arg'
             }
@@ -131,7 +131,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following evenheading
+              'text' => ' on line following evenheading
 ',
               'type' => 'misc_arg'
             }
@@ -147,7 +147,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following evenfooting
+              'text' => ' on line following evenfooting
 ',
               'type' => 'misc_arg'
             }
@@ -163,7 +163,7 @@ $result_trees{'many_lines'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => 'on line following
+              'text' => ' on line following
 ',
               'type' => 'misc_arg'
             }
@@ -181,7 +181,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '0.1 on line following
+                  'text' => ' 0.1 on line following
 '
                 }
               ],
@@ -207,7 +207,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '0.1
+                  'text' => ' 0.1
 '
                 }
               ],
@@ -233,7 +233,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'on line following setchapternewpage
+                  'text' => ' on line following setchapternewpage
 '
                 }
               ],
@@ -275,7 +275,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'code something
+                  'text' => ' code something
 '
                 }
               ],
@@ -325,7 +325,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'asis
+                  'text' => ' asis
 '
                 }
               ],
@@ -351,7 +351,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '0
+                  'text' => ' 0
 '
                 }
               ],
@@ -377,7 +377,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'none
+                  'text' => ' none
 '
                 }
               ],
@@ -403,7 +403,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '4
+                  'text' => ' 4
 '
                 }
               ],
@@ -429,7 +429,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'none
+                  'text' => ' none
 '
                 }
               ],
@@ -455,7 +455,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '6 on line following exampleindent
+                  'text' => ' 6 on line following exampleindent
 '
                 }
               ],
@@ -481,7 +481,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '6
+                  'text' => ' 6
 '
                 }
               ],
@@ -507,7 +507,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'end 
+                  'text' => ' end 
 '
                 }
               ],
@@ -533,7 +533,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'separate 
+                  'text' => ' separate 
 '
                 }
               ],
@@ -559,7 +559,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'US-ascii encoding name
+                  'text' => ' US-ascii encoding name
 '
                 }
               ],
@@ -576,7 +576,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'ISO-8859-1
+                  'text' => ' ISO-8859-1
 '
                 }
               ],
@@ -597,7 +597,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'on
+                  'text' => ' on
 '
                 }
               ],
@@ -623,7 +623,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'off
+                  'text' => ' off
 '
                 }
               ],
@@ -649,7 +649,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '10
+                  'text' => ' 10
 '
                 }
               ],
@@ -675,7 +675,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'bottom on line following everyheadingmarks
+                  'text' => ' bottom on line following everyheadingmarks
 '
                 }
               ],
@@ -697,7 +697,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'false
+                  'text' => ' false
 '
                 }
               ],
@@ -719,7 +719,7 @@ $result_trees{'many_lines'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'true
+                  'text' => ' true
 '
                 }
               ],

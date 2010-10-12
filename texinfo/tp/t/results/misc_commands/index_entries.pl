@@ -8,7 +8,7 @@ $result_trees{'index_entries'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cindex entry
+              'text' => ' cindex entry
 '
             }
           ],
@@ -31,7 +31,7 @@ $result_trees{'index_entries'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc
+              'text' => ' truc
 '
             }
           ],
@@ -59,7 +59,7 @@ $result_trees{'index_entries'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'index truc
+              'text' => ' index truc
 '
             }
           ],

@@ -8,7 +8,7 @@ $result_trees{'simple'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'idx'
+              'text' => ' idx'
             }
           ],
           'parent' => {},

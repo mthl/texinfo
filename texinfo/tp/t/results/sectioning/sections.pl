@@ -8,7 +8,7 @@ $result_trees{'sections'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'a chapter
+              'text' => ' a chapter
 '
             }
           ],

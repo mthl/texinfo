@@ -26,14 +26,20 @@ $result_trees{'expansion_order'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' bidule{arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' bidule{arg}
-',
         'macrobody' => '@machin{}
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -66,12 +72,18 @@ $result_trees{'expansion_order'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' machin
+        'arg_line' => ' machin
 ',
         'macrobody' => '\\\\arg\\\\
 
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -103,14 +115,16 @@ $result_trees{'expansion_order'}{'contents'}[0]{'args'}[1]{'parent'} = $result_t
 $result_trees{'expansion_order'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[0];
 $result_trees{'expansion_order'}{'contents'}[0]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[1]{'parent'} = $result_trees{'expansion_order'};
-$result_trees{'expansion_order'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[2];
-$result_trees{'expansion_order'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[2];
-$result_trees{'expansion_order'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'expansion_order'}{'contents'}[2];
 $result_trees{'expansion_order'}{'contents'}[2]{'parent'} = $result_trees{'expansion_order'};
+$result_trees{'expansion_order'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
+$result_trees{'expansion_order'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
+$result_trees{'expansion_order'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'expansion_order'}{'contents'}[3];
 $result_trees{'expansion_order'}{'contents'}[3]{'parent'} = $result_trees{'expansion_order'};
-$result_trees{'expansion_order'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[4];
 $result_trees{'expansion_order'}{'contents'}[4]{'parent'} = $result_trees{'expansion_order'};
 $result_trees{'expansion_order'}{'contents'}[5]{'parent'} = $result_trees{'expansion_order'};
+$result_trees{'expansion_order'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'expansion_order'}{'contents'}[6];
+$result_trees{'expansion_order'}{'contents'}[6]{'parent'} = $result_trees{'expansion_order'};
+$result_trees{'expansion_order'}{'contents'}[7]{'parent'} = $result_trees{'expansion_order'};
 
 $result_texts{'expansion_order'} = '@macro bidule{arg}
 @machin{}

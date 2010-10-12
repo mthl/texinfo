@@ -26,14 +26,19 @@ $result_trees{'empty_end'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' foo {aaa, }
+',
         'args_index' => {
           'aaa' => 0
         },
-        'macro_line' => ' foo {aaa, }
-',
         'macrobody' => 'in foo
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line_after_command'
     }
   ]
 };
@@ -41,11 +46,11 @@ $result_trees{'empty_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'
 $result_trees{'empty_end'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'empty_end'}{'contents'}[0];
 $result_trees{'empty_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_end'}{'contents'}[0];
 $result_trees{'empty_end'}{'contents'}[0]{'parent'} = $result_trees{'empty_end'};
+$result_trees{'empty_end'}{'contents'}[1]{'parent'} = $result_trees{'empty_end'};
 
 $result_texts{'empty_end'} = '@macro foo {aaa, }
 in foo
-@end macro
-';
+@end macro';
 
 $result_errors{'empty_end'} = [];
 

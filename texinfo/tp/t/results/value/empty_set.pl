@@ -16,7 +16,11 @@ $result_trees{'empty_set'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' myspace
+'
+      }
     },
     {
       'parent' => {},
@@ -44,7 +48,7 @@ $result_trees{'empty_set'}{'contents'}[1]{'parent'} = $result_trees{'empty_set'}
 $result_trees{'empty_set'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_set'}{'contents'}[2];
 $result_trees{'empty_set'}{'contents'}[2]{'parent'} = $result_trees{'empty_set'};
 
-$result_texts{'empty_set'} = '@set myspace 
+$result_texts{'empty_set'} = '@set myspace
 
 1  1
 ';

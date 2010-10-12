@@ -64,7 +64,7 @@ $result_trees{'close_paragraph_command'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '4
+              'text' => ' 4
 '
             }
           ],

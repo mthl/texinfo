@@ -27,11 +27,17 @@ $result_trees{'arg_body_expansion_order'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' othermacro
+        'arg_line' => ' othermacro
 ',
         'macrobody' => 'initial
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -72,9 +78,15 @@ $result_trees{'arg_body_expansion_order'} = {
           ],
           'parent' => {},
           'special' => {
-            'macro_line' => ' othermacro
+            'arg_line' => ' othermacro
 '
           }
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -85,11 +97,11 @@ $result_trees{'arg_body_expansion_order'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' redefineothermacro {arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' redefineothermacro {arg}
-',
         'macrobody' => '@unmacro othermacro
 @macro othermacro
 different
@@ -97,6 +109,12 @@ different
 \\arg\\
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -113,7 +131,11 @@ different
         }
       ],
       'cmdname' => 'unmacro',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' othermacro
+'
+      }
     },
     {
       'args' => [
@@ -134,11 +156,17 @@ different
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' othermacro
+        'arg_line' => ' othermacro
 ',
         'macrobody' => 'different
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'contents' => [
@@ -158,21 +186,25 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'args'}[0]{'parent'} = 
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[1];
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[2]{'parent'} = $result_trees{'arg_body_expansion_order'};
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3];
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3];
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3];
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3]{'contents'}[1];
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3];
-$result_trees{'arg_body_expansion_order'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[3];
 $result_trees{'arg_body_expansion_order'}{'contents'}[3]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
+$result_trees{'arg_body_expansion_order'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[4];
 $result_trees{'arg_body_expansion_order'}{'contents'}[4]{'parent'} = $result_trees{'arg_body_expansion_order'};
-$result_trees{'arg_body_expansion_order'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[5];
 $result_trees{'arg_body_expansion_order'}{'contents'}[5]{'parent'} = $result_trees{'arg_body_expansion_order'};
-$result_trees{'arg_body_expansion_order'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[6];
-$result_trees{'arg_body_expansion_order'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[6];
 $result_trees{'arg_body_expansion_order'}{'contents'}[6]{'parent'} = $result_trees{'arg_body_expansion_order'};
-$result_trees{'arg_body_expansion_order'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[7];
+$result_trees{'arg_body_expansion_order'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[7];
 $result_trees{'arg_body_expansion_order'}{'contents'}[7]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[8];
+$result_trees{'arg_body_expansion_order'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[8];
+$result_trees{'arg_body_expansion_order'}{'contents'}[8]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[9]{'parent'} = $result_trees{'arg_body_expansion_order'};
+$result_trees{'arg_body_expansion_order'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[10];
+$result_trees{'arg_body_expansion_order'}{'contents'}[10]{'parent'} = $result_trees{'arg_body_expansion_order'};
 
 $result_texts{'arg_body_expansion_order'} = '
 @macro othermacro

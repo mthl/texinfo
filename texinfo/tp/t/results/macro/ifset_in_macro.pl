@@ -38,16 +38,22 @@ $result_trees{'ifset_in_macro'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' note {arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' note {arg}
-',
         'macrobody' => '@ifset notes 
 \\arg\\
 @end ifset
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -64,6 +70,7 @@ $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[1]{'parent'} = $resul
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro'}{'contents'}[0];
 $result_trees{'ifset_in_macro'}{'contents'}[0]{'parent'} = $result_trees{'ifset_in_macro'};
 $result_trees{'ifset_in_macro'}{'contents'}[1]{'parent'} = $result_trees{'ifset_in_macro'};
+$result_trees{'ifset_in_macro'}{'contents'}[2]{'parent'} = $result_trees{'ifset_in_macro'};
 
 $result_texts{'ifset_in_macro'} = '@macro note {arg}
 @ifset notes 

@@ -7,12 +7,16 @@ $result_trees{'empty'} = {
         {
           'contents' => [
             {
+              'parent' => {},
+              'text' => ' '
+            },
+            {
               'args' => [
                 {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => '
+                      'text' => ' 
 '
                     }
                   ],
@@ -41,19 +45,25 @@ $result_trees{'empty'} = {
       'special' => {
         'max_columns' => 0
       }
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line_after_command'
     }
   ]
 };
-$result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0];
+$result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'empty'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0];
 $result_trees{'empty'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty'}{'contents'}[0];
 $result_trees{'empty'}{'contents'}[0]{'parent'} = $result_trees{'empty'};
+$result_trees{'empty'}{'contents'}[1]{'parent'} = $result_trees{'empty'};
 
 $result_texts{'empty'} = '@multitable @columnfractions 
-@end multitable
-';
+@end multitable';
 
 $result_errors{'empty'} = [
   {

@@ -14,7 +14,7 @@ $result_trees{'bad'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'wrong arg on line following kbdinputstyle
+                  'text' => ' wrong arg on line following kbdinputstyle
 '
                 }
               ],

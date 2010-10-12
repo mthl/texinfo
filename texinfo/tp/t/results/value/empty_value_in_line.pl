@@ -16,7 +16,11 @@ $result_trees{'empty_value_in_line'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' myspace
+'
+      }
     },
     {
       'parent' => {},
@@ -64,7 +68,7 @@ $result_trees{'empty_value_in_line'}{'contents'}[3]{'parent'} = $result_trees{'e
 $result_trees{'empty_value_in_line'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'empty_value_in_line'}{'contents'}[4];
 $result_trees{'empty_value_in_line'}{'contents'}[4]{'parent'} = $result_trees{'empty_value_in_line'};
 
-$result_texts{'empty_value_in_line'} = '@set myspace 
+$result_texts{'empty_value_in_line'} = '@set myspace
 
 1 
  

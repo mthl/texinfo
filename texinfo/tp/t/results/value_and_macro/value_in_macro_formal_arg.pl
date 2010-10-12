@@ -16,7 +16,11 @@ $result_trees{'value_in_macro_formal_arg'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' argument arg 
+'
+      }
     },
     {
       'parent' => {},
@@ -53,15 +57,21 @@ $result_trees{'value_in_macro_formal_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' testvalue { arg , the@value{argument} }
+',
         'args_index' => {
           'arg' => 0,
           'the@value{argument' => 1
         },
-        'macro_line' => ' testvalue { arg , the@value{argument} }
-',
         'macrobody' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -114,14 +124,15 @@ $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[2]{'parent'} =
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[4];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[1];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[4];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[4];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 
-$result_texts{'value_in_macro_formal_arg'} = '@set argument arg
+$result_texts{'value_in_macro_formal_arg'} = '@set argument arg 
 
 @macro testvalue { arg , the@value{argument} }
 result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\

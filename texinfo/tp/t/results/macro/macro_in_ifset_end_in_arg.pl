@@ -26,14 +26,20 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro1 {arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' macro1 {arg}
-',
         'macrobody' => '@end ifset
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -44,7 +50,8 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
     {
       'parent' => {},
       'text' => '
-'
+',
+      'type' => 'empty_line'
     },
     {
       'contents' => [
@@ -65,8 +72,9 @@ $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[0]{'contents'}[0]{'parent
 $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'};
 $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'};
 $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'};
-$result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[3];
 $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'};
+$result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[4];
+$result_trees{'macro_in_ifset_end_in_arg'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_ifset_end_in_arg'};
 
 $result_texts{'macro_in_ifset_end_in_arg'} = '@macro macro1 {arg}
 @end ifset

@@ -40,7 +40,7 @@ $result_trees{'also_not_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'refill '
+          'text' => ' refill '
         },
         {
           'cmdname' => 'refill',
@@ -69,12 +69,17 @@ $result_trees{'also_not_line'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'noindent at beginning of line
+          'text' => '     noindent at beginning of line
 '
         },
         {
           'cmdname' => 'noindent',
           'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '  
+'
         },
         {
           'parent' => {},
@@ -91,7 +96,7 @@ $result_trees{'also_not_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'noindent after space at beginning of line
+          'text' => '    noindent after space at beginning of line
 '
         }
       ],
@@ -149,7 +154,7 @@ $result_trees{'also_not_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'refill '
+          'text' => '    refill '
         },
         {
           'cmdname' => 'refill',
@@ -184,7 +189,7 @@ $result_trees{'also_not_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'special
+              'text' => ' special
 '
             }
           ],
@@ -216,7 +221,7 @@ $result_trees{'also_not_line'} = {
           'args' => [
             {
               'parent' => {},
-              'text' => '
+              'text' => ' 
 ',
               'type' => 'misc_arg'
             }
@@ -254,7 +259,7 @@ $result_trees{'also_not_line'} = {
         },
         {
           'parent' => {},
-          'text' => 'line after exdent
+          'text' => ' line after exdent
 '
         }
       ],
@@ -282,6 +287,7 @@ $result_trees{'also_not_line'}{'contents'}[7]{'contents'}[2]{'parent'} = $result
 $result_trees{'also_not_line'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'also_not_line'}{'contents'}[7];
 $result_trees{'also_not_line'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'also_not_line'}{'contents'}[7];
 $result_trees{'also_not_line'}{'contents'}[7]{'contents'}[5]{'parent'} = $result_trees{'also_not_line'}{'contents'}[7];
+$result_trees{'also_not_line'}{'contents'}[7]{'contents'}[6]{'parent'} = $result_trees{'also_not_line'}{'contents'}[7];
 $result_trees{'also_not_line'}{'contents'}[7]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[8]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[9]{'parent'} = $result_trees{'also_not_line'};
@@ -320,17 +326,18 @@ $result_trees{'also_not_line'}{'contents'}[20]{'parent'} = $result_trees{'also_n
 $result_texts{'also_not_line'} = '
 
 page @page
-noindent @noindentrefill @refill something
+noindent @noindent refill @refill something
 
-@noindentnoindent at beginning of line
-@noindentnoindent on the preceding line
-  @noindentnoindent after space at beginning of line
+@noindent     noindent at beginning of line
+@noindent  
+noindent on the preceding line
+  @noindent    noindent after space at beginning of line
 @page
 @page
 After page on its own line.
 
 page @page
-noindent @noindentrefill @refill 
+noindent @noindent    refill @refill 
 novalidate @novalidate
 
 @subheading special

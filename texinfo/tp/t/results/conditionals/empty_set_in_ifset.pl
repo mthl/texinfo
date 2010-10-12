@@ -16,7 +16,11 @@ $result_trees{'empty_set_in_ifset'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' a
+'
+      }
     },
     {
       'parent' => {},
@@ -44,7 +48,7 @@ $result_trees{'empty_set_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'em
 $result_trees{'empty_set_in_ifset'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_set_in_ifset'}{'contents'}[2];
 $result_trees{'empty_set_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'empty_set_in_ifset'};
 
-$result_texts{'empty_set_in_ifset'} = '@set a 
+$result_texts{'empty_set_in_ifset'} = '@set a
 
 a is set to:||.
 ';

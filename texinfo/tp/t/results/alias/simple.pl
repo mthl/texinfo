@@ -8,7 +8,7 @@ $result_trees{'simple'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'myalias = code
+              'text' => ' myalias = code
 '
             }
           ],
@@ -37,7 +37,7 @@ $result_trees{'simple'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'o-theralias=verb '
+              'text' => ' o-theralias=verb '
             },
             {
               'args' => [
@@ -156,6 +156,10 @@ $result_trees{'simple'} = {
         {
           'contents' => [
             {
+              'parent' => {},
+              'text' => ' '
+            },
+            {
               'cmdname' => 'code',
               'parent' => {},
               'type' => 'command_as_argument'
@@ -183,7 +187,7 @@ $result_trees{'simple'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'table item (code)
+                  'text' => ' table item (code)
 '
                 }
               ],
@@ -197,6 +201,12 @@ $result_trees{'simple'} = {
       ],
       'parent' => {},
       'remaining_args' => 0
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     }
   ]
 };
@@ -226,12 +236,14 @@ $result_trees{'simple'}{'contents'}[6]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[7]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'args'}[0];
 $result_trees{'simple'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'args'}[0];
+$result_trees{'simple'}{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'args'}[0];
 $result_trees{'simple'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[8];
 $result_trees{'simple'}{'contents'}[8]{'parent'} = $result_trees{'simple'};
+$result_trees{'simple'}{'contents'}[9]{'parent'} = $result_trees{'simple'};
 
 $result_texts{'simple'} = '@alias myalias = code
 

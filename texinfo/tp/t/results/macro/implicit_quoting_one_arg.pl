@@ -32,14 +32,20 @@ $result_trees{'implicit_quoting_one_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' FIXME{a}
+',
         'args_index' => {
           'a' => 0
         },
-        'macro_line' => ' FIXME{a}
-',
         'macrobody' => '@strong{FIXME: \\a\\}
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -84,11 +90,12 @@ $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[1]{'parent'} = 
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[2]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
-$result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[0]{'args'}[0];
-$result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[0];
-$result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[3];
-$result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[3];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[3]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0];
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4];
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4];
+$result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 
 $result_texts{'implicit_quoting_one_arg'} = '
 @macro FIXME{a}

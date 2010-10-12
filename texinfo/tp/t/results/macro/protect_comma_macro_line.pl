@@ -44,17 +44,23 @@ $result_trees{'protect_comma_macro_line'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro2 { arg }
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' macro2 { arg }
-',
         'macrobody' => 'we get \\arg\\ and another \\arg\\
 and another one on another line \\arg\\
 
 and a last in another paragraph
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -105,12 +111,13 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[2]{'parent'
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'};
 $result_trees{'protect_comma_macro_line'}{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'};
-$result_trees{'protect_comma_macro_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[2];
-$result_trees{'protect_comma_macro_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[2];
 $result_trees{'protect_comma_macro_line'}{'contents'}[2]{'parent'} = $result_trees{'protect_comma_macro_line'};
+$result_trees{'protect_comma_macro_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[3];
+$result_trees{'protect_comma_macro_line'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[3];
 $result_trees{'protect_comma_macro_line'}{'contents'}[3]{'parent'} = $result_trees{'protect_comma_macro_line'};
-$result_trees{'protect_comma_macro_line'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[4];
 $result_trees{'protect_comma_macro_line'}{'contents'}[4]{'parent'} = $result_trees{'protect_comma_macro_line'};
+$result_trees{'protect_comma_macro_line'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[5];
+$result_trees{'protect_comma_macro_line'}{'contents'}[5]{'parent'} = $result_trees{'protect_comma_macro_line'};
 
 $result_texts{'protect_comma_macro_line'} = '@macro macro2 { arg }
 we get \\arg\\ and another \\arg\\

@@ -31,15 +31,21 @@ $result_trees{'implicit_quoting_recursion'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' cat{a,b}
+',
         'args_index' => {
           'a' => 0,
           'b' => 1
         },
-        'macro_line' => ' cat{a,b}
-',
         'macrobody' => '\\a\\\\b\\
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -66,8 +72,9 @@ $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'args'}[2]{'parent'} 
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[0];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'};
 $result_trees{'implicit_quoting_recursion'}{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_recursion'};
-$result_trees{'implicit_quoting_recursion'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[2];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[2]{'parent'} = $result_trees{'implicit_quoting_recursion'};
+$result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[3];
+$result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'parent'} = $result_trees{'implicit_quoting_recursion'};
 
 $result_texts{'implicit_quoting_recursion'} = '@rmacro cat{a,b}
 \\a\\\\b\\

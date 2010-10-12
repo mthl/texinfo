@@ -32,15 +32,21 @@ $result_trees{'expand_two_same'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro2 { arg }
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' macro2 { arg }
-',
         'macrobody' => 'With a doubles arg \\arg\\ and re \\arg\\
 
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'contents' => [
@@ -158,26 +164,27 @@ $result_trees{'expand_two_same'}{'contents'}[0]{'args'}[1]{'parent'} = $result_t
 $result_trees{'expand_two_same'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
 $result_trees{'expand_two_same'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
 $result_trees{'expand_two_same'}{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'};
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'args'}[0];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'args'}[0];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
-$result_trees{'expand_two_same'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[1];
 $result_trees{'expand_two_same'}{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'};
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
+$result_trees{'expand_two_same'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[2];
 $result_trees{'expand_two_same'}{'contents'}[2]{'parent'} = $result_trees{'expand_two_same'};
 $result_trees{'expand_two_same'}{'contents'}[3]{'parent'} = $result_trees{'expand_two_same'};
-$result_trees{'expand_two_same'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[4];
-$result_trees{'expand_two_same'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[4];
 $result_trees{'expand_two_same'}{'contents'}[4]{'parent'} = $result_trees{'expand_two_same'};
+$result_trees{'expand_two_same'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[5];
+$result_trees{'expand_two_same'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[5];
 $result_trees{'expand_two_same'}{'contents'}[5]{'parent'} = $result_trees{'expand_two_same'};
+$result_trees{'expand_two_same'}{'contents'}[6]{'parent'} = $result_trees{'expand_two_same'};
 
 $result_texts{'expand_two_same'} = '@macro macro2 { arg }
 With a doubles arg \\arg\\ and re \\arg\\

@@ -14,7 +14,7 @@ $result_trees{'bad_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'garbage-on-line =cmd garbage
+              'text' => ' garbage-on-line =cmd garbage
 '
             }
           ],
@@ -43,7 +43,7 @@ $result_trees{'bad_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'garbage-on-line =cmd '
+              'text' => ' garbage-on-line =cmd '
             },
             {
               'args' => [

@@ -17,7 +17,11 @@ $result_trees{'invalid_clickstyle'} = {
         }
       ],
       'cmdname' => 'clickstyle',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' @result on the same line
+'
+      }
     },
     {
       'parent' => {},
@@ -68,7 +72,11 @@ $result_trees{'invalid_clickstyle'} = {
         }
       ],
       'cmdname' => 'clickstyle',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' @nocmd
+'
+      }
     },
     {
       'parent' => {},
@@ -112,7 +120,11 @@ $result_trees{'invalid_clickstyle'} = {
     },
     {
       'cmdname' => 'clickstyle',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' something
+'
+      }
     },
     {
       'parent' => {},
@@ -178,7 +190,7 @@ $result_trees{'invalid_clickstyle'}{'contents'}[11]{'contents'}[2]{'parent'} = $
 $result_trees{'invalid_clickstyle'}{'contents'}[11]{'parent'} = $result_trees{'invalid_clickstyle'};
 
 $result_texts{'invalid_clickstyle'} = '
-@clickstyle @result
+@clickstyle @result on the same line
 
 A @click{} (result on the same line).
 
@@ -186,7 +198,7 @@ A @click{} (result on the same line).
 
 A @click{} (nocmd).
 
-@clickstyle
+@clickstyle something
 
 A @click{} (something).
 ';

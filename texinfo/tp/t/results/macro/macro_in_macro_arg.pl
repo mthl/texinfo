@@ -27,11 +27,17 @@ $result_trees{'macro_in_macro_arg'} = {
       ],
       'parent' => {},
       'special' => {
-        'macro_line' => ' macro1
+        'arg_line' => ' macro1
 ',
         'macrobody' => 'a, @macro2
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -63,14 +69,20 @@ $result_trees{'macro_in_macro_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro2{arg}
+',
         'args_index' => {
           'arg' => 0
         },
-        'macro_line' => ' macro2{arg}
-',
         'macrobody' => 'hello \\arg\\ after arg
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -113,16 +125,22 @@ $result_trees{'macro_in_macro_arg'} = {
       ],
       'parent' => {},
       'special' => {
+        'arg_line' => ' macro3{text, arg}
+',
         'args_index' => {
           'arg' => 1,
           'text' => 0
         },
-        'macro_line' => ' macro3{text, arg}
-',
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
       }
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -153,21 +171,24 @@ $result_trees{'macro_in_macro_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $resul
 $result_trees{'macro_in_macro_arg'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[1];
 $result_trees{'macro_in_macro_arg'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'};
 $result_trees{'macro_in_macro_arg'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_macro_arg'};
-$result_trees{'macro_in_macro_arg'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[3];
-$result_trees{'macro_in_macro_arg'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[3];
-$result_trees{'macro_in_macro_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[3];
 $result_trees{'macro_in_macro_arg'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_macro_arg'};
+$result_trees{'macro_in_macro_arg'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[4];
+$result_trees{'macro_in_macro_arg'}{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[4];
+$result_trees{'macro_in_macro_arg'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[4];
 $result_trees{'macro_in_macro_arg'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_macro_arg'};
-$result_trees{'macro_in_macro_arg'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[5];
-$result_trees{'macro_in_macro_arg'}{'contents'}[5]{'args'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[5];
-$result_trees{'macro_in_macro_arg'}{'contents'}[5]{'args'}[2]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[5];
-$result_trees{'macro_in_macro_arg'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[5];
-$result_trees{'macro_in_macro_arg'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[5];
 $result_trees{'macro_in_macro_arg'}{'contents'}[5]{'parent'} = $result_trees{'macro_in_macro_arg'};
 $result_trees{'macro_in_macro_arg'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_macro_arg'};
+$result_trees{'macro_in_macro_arg'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[7];
+$result_trees{'macro_in_macro_arg'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[7];
+$result_trees{'macro_in_macro_arg'}{'contents'}[7]{'args'}[2]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[7];
 $result_trees{'macro_in_macro_arg'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[7];
 $result_trees{'macro_in_macro_arg'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[7];
 $result_trees{'macro_in_macro_arg'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_macro_arg'};
+$result_trees{'macro_in_macro_arg'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_macro_arg'};
+$result_trees{'macro_in_macro_arg'}{'contents'}[9]{'parent'} = $result_trees{'macro_in_macro_arg'};
+$result_trees{'macro_in_macro_arg'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[10];
+$result_trees{'macro_in_macro_arg'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'macro_in_macro_arg'}{'contents'}[10];
+$result_trees{'macro_in_macro_arg'}{'contents'}[10]{'parent'} = $result_trees{'macro_in_macro_arg'};
 
 $result_texts{'macro_in_macro_arg'} = '
 @macro macro1

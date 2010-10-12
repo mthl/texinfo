@@ -16,7 +16,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' cp cp
+'
+      }
     },
     {
       'args' => [
@@ -32,7 +36,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' fn fn
+'
+      }
     },
     {
       'args' => [
@@ -48,7 +56,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' syncodeindex_command @syncodeindex
+'
+      }
     },
     {
       'parent' => {},
@@ -62,7 +74,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cp fn
+              'text' => ' cp fn
 '
             }
           ],
@@ -85,7 +97,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cp fn
+              'text' => ' cp fn
 '
             }
           ],
@@ -122,7 +134,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' en en
+'
+      }
     },
     {
       'args' => [
@@ -138,7 +154,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' documentlanguage_command @documentlanguage
+'
+      }
     },
     {
       'parent' => {},
@@ -158,7 +178,7 @@ $result_trees{'value_in_line_commands'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'en
+                  'text' => '  en
 '
                 }
               ],
@@ -192,7 +212,7 @@ $result_trees{'value_in_line_commands'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'en
+                  'text' => '  en
 '
                 }
               ],
@@ -232,7 +252,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' truc truc
+'
+      }
     },
     {
       'parent' => {},
@@ -253,7 +277,7 @@ $result_trees{'value_in_line_commands'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'truc
+                  'text' => ' truc
 '
                 }
               ],
@@ -298,7 +322,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' trucindex_command @trucindex
+'
+      }
     },
     {
       'parent' => {},
@@ -312,7 +340,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'index truc
+              'text' => ' index truc
 '
             }
           ],
@@ -343,7 +371,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' codeidx codeidx
+'
+      }
     },
     {
       'parent' => {},
@@ -357,7 +389,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'codeidx
+              'text' => ' codeidx
 '
             }
           ],
@@ -393,7 +425,11 @@ $result_trees{'value_in_line_commands'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'arg_line' => ' defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
+'
+      }
     },
     {
       'parent' => {},
@@ -407,7 +443,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'a '
+              'text' => ' a '
             },
             {
               'args' => [
@@ -502,7 +538,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cindex entry
+              'text' => ' cindex entry
 '
             }
           ],
@@ -525,7 +561,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'ky pg
+              'text' => ' ky pg
 '
             }
           ],
@@ -554,7 +590,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc kindex
+              'text' => ' truc kindex
 '
             }
           ],
@@ -571,7 +607,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'pindex codeidx
+              'text' => ' pindex codeidx
 '
             }
           ],
@@ -594,7 +630,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc cp
+              'text' => ' truc cp
 '
             }
           ],
@@ -623,7 +659,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'abc
+              'text' => ' abc
 '
             }
           ],
@@ -645,7 +681,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'defg
+              'text' => ' defg
 '
             }
           ],
@@ -673,7 +709,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'abc defg
+              'text' => ' abc defg
 '
             }
           ],
@@ -696,7 +732,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'defg ky
+              'text' => ' defg ky
 '
             }
           ],
@@ -725,7 +761,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'defg index entry
+              'text' => ' defg index entry
 '
             }
           ],
@@ -748,7 +784,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'abc index entry
+              'text' => ' abc index entry
 '
             }
           ],
@@ -782,7 +818,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'pg
+              'text' => ' pg
 '
             }
           ],
@@ -816,7 +852,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'ky
+              'text' => ' ky
 '
             }
           ],
@@ -850,7 +886,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc
+              'text' => ' truc
 '
             }
           ],
@@ -884,7 +920,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'truc
+              'text' => ' truc
 '
             }
           ],
@@ -918,7 +954,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cp
+              'text' => ' cp
 '
             }
           ],
@@ -952,7 +988,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'cp
+              'text' => ' cp
 '
             }
           ],
@@ -986,7 +1022,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'defg
+              'text' => ' defg
 '
             }
           ],
@@ -1020,7 +1056,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'abc
+              'text' => ' abc
 '
             }
           ],
@@ -1054,7 +1090,7 @@ $result_trees{'value_in_line_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'fn
+              'text' => ' fn
 '
             }
           ],
@@ -1257,10 +1293,10 @@ $result_texts{'value_in_line_commands'} = '@set cp cp
 @set en en
 @set documentlanguage_command @documentlanguage
 
-documentlanguage @documentlanguage en
+documentlanguage @documentlanguage  en
 
 documentlanguage on its line
-@documentlanguage en
+@documentlanguage  en
 line following documentlanguage
 
 @set truc truc

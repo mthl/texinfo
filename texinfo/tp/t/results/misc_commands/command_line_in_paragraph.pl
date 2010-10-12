@@ -15,7 +15,7 @@ $result_trees{'command_line_in_paragraph'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'en  
+                  'text' => '  en  
 '
                 }
               ],
@@ -45,7 +45,7 @@ $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[2]{'parent
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'};
 
 $result_texts{'command_line_in_paragraph'} = 'documentlanguage on its line
-@documentlanguage en  
+@documentlanguage  en  
 line following documentlanguage
 ';
 
