@@ -216,6 +216,21 @@ cartouche
 @cartouche
 @my-end{} cartouche
 '],
+['complete_macro_for_end',
+'@macro the-end
+@end cartouche
+@end macro
+
+@cartouche
+@the-end{}'],
+['space_macro_after_end',
+'@macro spaces
+  
+@end macro
+
+@html
+in html
+@end html @spaces{}'],
 ['macro_in_menu',
 '
 @macro star
@@ -263,6 +278,22 @@ menu comment
 @end macro
 
 Before @truc{} after truc.
+'],
+['macro_in_accent',
+'@macro a-letter
+a
+@end macro
+
+@macro space
+  
+@end macro
+
+@ringaccent @a-letter{}.
+@ringaccent@a-letter{}.
+@~@a-letter{}.
+@~{@a-letter{}}.
+
+@ringaccent@space{}@a-letter{}.
 '],
 ['two_macros_on_a_line',
 '@macro mymacro
