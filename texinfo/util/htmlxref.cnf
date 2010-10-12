@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-11.18; # UTC
+htmlxrefversion=2010-10-12.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -222,7 +222,6 @@ guile		mono	${GS}/guile/manual/guile.html
 guile		node	${GS}/guile/manual/html_node/
 
 GUILE_GNOME = ${GS}/software/guile-gnome/docs
-#guile-gnome
  gobject 	node	${GUILE_GNOME}/gobject/html/
  glib		node	${GUILE_GNOME}/glib/html/
  atk		node	${GUILE_GNOME}/atk/html/
@@ -271,8 +270,17 @@ mailutils	node	${GS}/mailutils/manual/html_node/
 maintain	mono	${G}/prep/maintain/maintain.html
 maintain	node	${G}/prep/maintain/html_node/
 
+make		mono	${GS}/make/manual/make.html
+make		node	${GS}/make/manual/html_node/
+
 mdk		mono	${GS}/mdk/manual/mdk.html
 mdk		node	${GS}/mdk/manual/html_node/
+
+MIT_SCHEME = http://www.gnu.org/software/mit-scheme/documentation
+ mit-scheme-ref	  node	${MIT_SCHEME}/mit-scheme-ref/
+ mit-scheme-user  node	${MIT_SCHEME}/mit-scheme-user/
+ sos		  node	${MIT_SCHEME}/sos/
+ mit-scheme-imail node	${MIT_SCHEME}/mit-scheme-imail/
 
 motti		node	${GS}/motti/manual/
 

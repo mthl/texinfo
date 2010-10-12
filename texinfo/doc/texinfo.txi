@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
+@c $Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20854,13 +20854,14 @@ This section describes customizing the HTML output for the basic
 Texinfo commands used within the running text.
 
 @menu
-* Customizing HTML Commands Without Arguments::
-* Formatting of @@<colon>::
+* Argless: Customizing HTML Commands Without Arguments.
+* At-Colon: Customizing HTML After At-Colon.
 * Formatting of style and accents::
 * Formatting special simple commands::
 * Formatting characters and text::
 * Formatting of simple line commands::
 @end menu
+
 
 @node Customizing HTML Commands Without Arguments
 @subsection Customizing HTML Commands Without Arguments
@@ -20938,25 +20939,27 @@ invalid Texinfo to have anything other than the empty string there.
 @end deftypefn
 
 
-@node Formatting of @@<colon>
-@subsection Formatting of a punctuation character associated with @code{@@:}
+@node Customizing HTML After At-Colon
+@subsection Customizing HTML After @code{@@:}
 
 @vindex %colon_command_punctuation_characters
-The formatting of a punctuation character followed by @code{@@:} is determined
-by the hash @code{%colon_command_punctuation_characters}.  If a @code{@@:}
-command is preceded by a character in th is hash, it is replaced by the 
-associated value.  In the default case, the associated value is also the 
-character, so this leave the punctuation character unmodified.
+The formatting of a punctuation character followed by @code{@@:} is
+determined by the hash @code{%colon_command_punctuation_characters}.
+If a @code{@@:} command is preceded by a character in this hash, it is
+replaced by the associated value.  By default, the associated value is
+also the character, so this leaves the punctuation character
+unmodified.
 
 The following function reference may be redefined to handle characters
 that are in @code{%colon_command_punctuation_characters}:
 
-@deftypefn {Function Reference} $punctuation $colon_command $character
-The @var{$character} is a character appearing in 
-@code{%colon_command_punctuation_characters} and preceding a @code{@@:} 
-command. In the default case the associated value in
+@deftypefn {Function Reference} $punctuation colon_command $character
+@var{$character} is a character appearing in
+@code{%colon_command_punctuation_characters} and preceding an
+@code{@@:} command.  By default, the associated value in
 @code{%colon_command_punctuation_characters} is returned.
 @end deftypefn
+
 
 @node Formatting of style and accents
 @subsection Customizing accent, style and other simple commands with braces
@@ -24714,7 +24717,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
+$Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24793,7 +24796,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.328 2010-10-12 00:23:59 karl Exp $
+@comment $Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
