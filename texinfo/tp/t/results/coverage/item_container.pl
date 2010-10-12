@@ -33,10 +33,15 @@ $result_trees{'item_container'} = {
           'cmdname' => 'item',
           'contents' => [
             {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' i--tem +
+                  'text' => 'i--tem +
 '
                 }
               ],
@@ -98,7 +103,8 @@ $result_trees{'item_container'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'empty_line_after_command'
             },
             {
               'parent' => {},
@@ -134,8 +140,9 @@ $result_trees{'item_container'}{'contents'}[0]{'parent'} = $result_trees{'item_c
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'args'}[0];
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1];
-$result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'contents'}[1];
+$result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'item_container'}{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[1]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[2]{'parent'} = $result_trees{'item_container'};

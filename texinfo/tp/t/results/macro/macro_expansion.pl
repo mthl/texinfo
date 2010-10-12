@@ -225,7 +225,8 @@ $result_trees{'macro_expansion'} = {
     },
     {
       'parent' => {},
-      'text' => ' '
+      'text' => ' ',
+      'type' => 'empty_spaces_after_command'
     },
     {
       'contents' => [

@@ -67,7 +67,8 @@ $result_trees{'misc_raw_comments'} = {
     },
     {
       'parent' => {},
-      'text' => '    '
+      'text' => '    ',
+      'type' => 'empty_spaces_after_command'
     },
     {
       'args' => [

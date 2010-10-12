@@ -35,7 +35,12 @@ $result_trees{'text_before_after'} = {
         },
         {
           'parent' => {},
-          'text' => ' after
+          'text' => ' ',
+          'type' => 'empty_spaces_after_command'
+        },
+        {
+          'parent' => {},
+          'text' => 'after
 '
         }
       ],
@@ -49,6 +54,7 @@ $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'par
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
 $result_trees{'text_before_after'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
+$result_trees{'text_before_after'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'text_before_after'}{'contents'}[0];
 $result_trees{'text_before_after'}{'contents'}[0]{'parent'} = $result_trees{'text_before_after'};
 
 $result_texts{'text_before_after'} = 'before @macro mymacro

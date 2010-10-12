@@ -111,7 +111,8 @@ $result_trees{'macro_in_brace_command'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'contents' => [

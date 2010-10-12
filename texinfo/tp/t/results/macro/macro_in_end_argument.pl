@@ -50,7 +50,8 @@ $result_trees{'macro_in_end_argument'} = {
         },
         {
           'parent' => {},
-          'text' => ' '
+          'text' => ' ',
+          'type' => 'empty_spaces_after_command'
         },
         {
           'contents' => [

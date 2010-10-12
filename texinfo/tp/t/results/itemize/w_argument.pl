@@ -45,7 +45,8 @@ $result_trees{'w_argument'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'contents' => [
@@ -84,7 +85,8 @@ $result_trees{'w_argument'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'contents' => [

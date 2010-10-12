@@ -850,25 +850,33 @@ sub _merge_text ($$$)
 
   my $paragraph;
 
+  my $no_merge_with_empty_line_after_command = 0;
   if ($text =~ /\S/) {
     my $leading_spaces;
     if ($text =~ /^(\s+)/) {
       $leading_spaces = $1;
     }
+    if ($current->{'contents'} and @{$current->{'contents'}}
+      and $current->{'contents'}->[-1]->{'type'}
+      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
+      $no_merge_with_empty_line_after_command = 1;
+    }
     # Change this if you don't want to have preceding space added to
     # the text out of the paragraph
     if (_abort_empty_line ($self, $current, $leading_spaces)) {
       $text =~ s/^(\s+)//;
-    }
+    } 
+
     $paragraph = _begin_paragraph($self, $current);
     $current = $paragraph if ($paragraph);
   }
 
   die "BUG: No contents in _merge_text "._print_current($current) 
           if (!defined($current->{'contents'}));
-  if (@{$current->{'contents'}} and
-    exists($current->{'contents'}->[-1]->{'text'}) and 
-    $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
+  if (@{$current->{'contents'}} 
+      and exists($current->{'contents'}->[-1]->{'text'}) 
+      and $current->{'contents'}->[-1]->{'text'} !~ /\n/
+      and !$no_merge_with_empty_line_after_command) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
     print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
   }
@@ -1075,17 +1083,19 @@ sub _abort_empty_line($$;$)
   my $self = shift;
   my $current = shift;
   my $additional_text = shift;
+  $additional_text = '' if (!defined($additional_text));
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
-       and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' or
+       and (($current->{'contents'}->[-1]->{'type'} eq 'empty_line')  or
         $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command')) {
-    print STDERR "ABORT EMPTY\n" if ($self->{'debug'});
-    $current->{'contents'}->[-1]->{'text'} .= $additional_text
-      if (defined($additional_text));
+    print STDERR "ABORT EMPTY additional text $additional_text, current $current->{'contents'}->[-1]->{'text'}|)\n" if ($self->{'debug'});
+    $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
-    } else {
+    } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
       delete $current->{'contents'}->[-1]->{'type'};
+    } else {
+      $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_after_command';
     }
     return 1;
   }
@@ -1295,6 +1305,16 @@ sub _end_line($$$)
   return $current;
 }
 
+sub _start_empty_line_after_command($$) {
+  my $line = shift;
+  my $current = shift;
+  $line =~ s/^([^\S\n]*)//;
+  push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
+                                    'text' => $1,
+                                    'parent' => $current };
+  return $line;
+}
+
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -1433,12 +1453,8 @@ sub _internal_parse_text($$;$$)
             print STDERR "CLOSED conditional $end_command\n" if ($self->{'debug'});
             last;
           } else {
-            $line =~ s/^([^\S\n]*)//;
             print STDERR "CLOSED raw $end_command\n" if ($self->{'debug'});
-            push @{$current->{'contents'}}, 
-               { 'type' => 'empty_line_after_command',
-                 'text' => $1,
-                 'parent' => $current };
+            $line = _start_empty_line_after_command($line, $current);
           }
         } else {
           if (@{$current->{'contents'}} 
@@ -1780,12 +1796,7 @@ sub _internal_parse_text($$;$$)
             $current = _end_block_command($self, $current, $line_nr,
                                                 $end_command);
           }
-          $line =~ s/^([^\S\n]*)//;
-          push @{$current->{'contents'}}, 
-             { 'type' => 'empty_line_after_command',
-               'text' => $1,
-               'parent' => $current };
-          #last unless ($line =~ /\S/);
+          $line = _start_empty_line_after_command($line, $current);
           next;
         }
         # special case with @ followed by a newline protecting end of lines
@@ -1810,7 +1821,6 @@ sub _internal_parse_text($$;$$)
           my ($args, $line_arg, $special);
           ($line, $args, $line_arg, $special) 
              = $self->_parse_misc_command($line, $command, $line_nr);
-          
 
           if ($command eq 'item' or $command eq 'itemx' 
                or $command eq 'headitem' or $command eq 'tab') {
@@ -1917,13 +1927,9 @@ sub _internal_parse_text($$;$$)
           } elsif ($line eq '') {
             $current = _end_line($self, $current, $line_nr);
             last;
-          } elsif ($self->{'misc_commands'}->{'skip'} 
-                   and $self->{'misc_commands'}->{'skip'} eq 'space') {
-            $line =~ s/^([^\S\n]*)//;
-            push @{$current->{'contents'}}, 
-              { 'type' => 'empty_line_after_command',
-                'text' => $1,
-                'parent' => $current };
+          } elsif ($self->{'misc_commands'}->{$command}->{'skip'} 
+                   and $self->{'misc_commands'}->{$command}->{'skip'} eq 'space') {
+            $line = _start_empty_line_after_command($line, $current);
           }
 
           last NEXT_LINE if ($command eq 'bye');
@@ -2016,12 +2022,7 @@ sub _internal_parse_text($$;$$)
                 $current = $current->{'contents'}->[-1];
               }
               
-              $line =~ s/^([^\S\n]*)//;
-              push @{$current->{'contents'}}, 
-                { 'type' => 'empty_line_after_command',
-                  'text' => $1,
-                  'parent' => $current };
-              #last unless ($line =~ /\S/);
+              $line = _start_empty_line_after_command($line, $current);
             }
           }
         } elsif (defined($brace_commands{$command})
