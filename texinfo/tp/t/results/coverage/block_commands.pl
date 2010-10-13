@@ -101,6 +101,10 @@ $result_trees{'block_commands'} = {
         {
           'contents' => [
             {
+              'text' => ' ',
+              'type' => 'empty_spaces_before_argument'
+            },
+            {
               'parent' => {},
               'text' => 'b float
 '
@@ -208,7 +212,7 @@ $result_trees{'block_commands'}{'contents'}[5]{'parent'} = $result_trees{'block_
 $result_trees{'block_commands'}{'contents'}[6]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
-$result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1];
+$result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];

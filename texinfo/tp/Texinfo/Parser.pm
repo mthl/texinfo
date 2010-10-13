@@ -849,7 +849,7 @@ sub _merge_text ($$$)
 
   my $paragraph;
 
-  my $no_merge_with_empty_line_after_command = 0;
+  my $no_merge_with_following_text = 0;
   if ($text =~ /\S/) {
     my $leading_spaces;
     if ($text =~ /^(\s+)/) {
@@ -857,8 +857,9 @@ sub _merge_text ($$$)
     }
     if ($current->{'contents'} and @{$current->{'contents'}}
       and $current->{'contents'}->[-1]->{'type'}
-      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
-      $no_merge_with_empty_line_after_command = 1;
+      and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
+         or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument')) {
+      $no_merge_with_following_text = 1;
     }
     # Change this if you don't want to have preceding space added to
     # the text out of the paragraph
@@ -875,7 +876,7 @@ sub _merge_text ($$$)
   if (@{$current->{'contents'}} 
       and exists($current->{'contents'}->[-1]->{'text'}) 
       and $current->{'contents'}->[-1]->{'text'} !~ /\n/
-      and !$no_merge_with_empty_line_after_command) {
+      and !$no_merge_with_following_text) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
     print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
   }
@@ -1085,15 +1086,16 @@ sub _abort_empty_line($$;$)
   $additional_text = '' if (!defined($additional_text));
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
-       and (($current->{'contents'}->[-1]->{'type'} eq 'empty_line')  or
-        $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command')) {
+       and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
+           or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
+           or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command')) {
     print STDERR "ABORT EMPTY additional text $additional_text, current $current->{'contents'}->[-1]->{'text'}|)\n" if ($self->{'debug'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
       delete $current->{'contents'}->[-1]->{'type'};
-    } else {
+    } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
       $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_after_command';
     }
     return 1;
@@ -1979,8 +1981,6 @@ sub _internal_parse_text($$;$$)
             # the end of line?
             last;
           } else {
-            # FIXME this won't work with macro expanded
-          #  $line =~ s/\s*//;
             # the def command holds a line_def* which corresponds with the
             # definition line.  This allows to have a treatement similar
             # with def*x.
@@ -2079,6 +2079,9 @@ sub _internal_parse_text($$;$$)
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
             } else {
               $current->{'type'} = 'brace_command_arg';
+              push @{$current->{'contents'}}, 
+                 {'type' => 'empty_spaces_before_argument',
+                  'text' => '' } unless ($current->{'parent'}->{'cmdname'} eq 'verb');
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
@@ -2112,6 +2115,7 @@ sub _internal_parse_text($$;$$)
              }
              # first is the arg.
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+             _abort_empty_line ($self, $current);
              $current = $current->{'parent'}->{'parent'};
           # footnote caption closing
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
@@ -2131,14 +2135,16 @@ sub _internal_parse_text($$;$$)
           }
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
-          # FIXME this won't work if there is a user macro 
-          $line =~ s/^\s*//;
           my $type = $current->{'type'};
+          _abort_empty_line ($self, $current);
           $current = $current->{'parent'};
           $current->{'remaining_args'}--;
           push @{$current->{'args'}},
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
           $current = $current->{'args'}->[-1];
+          push @{$current->{'contents'}}, 
+                 {'type' => 'empty_spaces_before_argument',
+                  'text' => '' };                          
         # end of menu node (. must be followed by a space to stop the node).
         } elsif (($separator =~ /[,\t.]/ and $current->{'type'}
                and $current->{'type'} eq 'menu_entry_node')
@@ -2243,9 +2249,9 @@ sub _expand_cmd_args_to_texi ($) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
     foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= tree_to_texi ($arg) . ', ';
+       $result .= tree_to_texi ($arg) . ',';
     }
-    $result =~ s/, $//;
+    $result =~ s/,$//;
   } elsif (defined($cmd->{'args'})) {
     my $braces;
     $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
@@ -2263,7 +2269,7 @@ sub _expand_cmd_args_to_texi ($) {
     foreach my $arg (@{$cmd->{'args'}}) {
       if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
                     and $cmd->{'type'} eq 'definfoenclose_command')) {
-        $result .= ', ' if ($arg_nr);
+        $result .= ',' if ($arg_nr);
         $arg_nr++;
       }
       $result .= tree_to_texi ($arg);
