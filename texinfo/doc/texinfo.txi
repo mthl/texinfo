@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
+@c $Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -8758,7 +8758,7 @@ character in the Info file.  (When you write the mark command such as
 
 Write the text of the indented paragraphs themselves after the
 @code{@@itemize}, up to another line that says @code{@@end
-itemize}.@refill
+itemize}.
 
 @findex item
 At the beginning of each paragraph for which a mark in the margin is
@@ -20854,21 +20854,21 @@ This section describes customizing the HTML output for the basic
 Texinfo commands used within the running text.
 
 @menu
-* Argless: Customizing HTML Commands Without Arguments.
-* At-Colon: Customizing HTML After At-Colon.
-* Formatting of style and accents::
+* Argless: Customizing HTML for Commands Without Arguments.
+* @@-Colon: Customizing HTML After @@-Colon.
+* Simple: Customizing HTML for Simple Commands.
 * Formatting special simple commands::
 * Formatting characters and text::
 * Formatting of simple line commands::
 @end menu
 
 
-@node Customizing HTML Commands Without Arguments
-@subsection Customizing HTML Commands Without Arguments
+@node Customizing HTML for Commands Without Arguments
+@subsection Customizing HTML for Commands Without Arguments
 
 @cindex Customizing HTML for commands without arguments
 @cindex Commands without arguments, customizing HTML for
-@cindex Insertion commands, customizing HTML
+@cindex Insertion commands, customizing HTML for
 
 These commands include those whose names are a single nonletter
 character, such as @code{@@@@}, and those with a normal alphabetic
@@ -20939,8 +20939,12 @@ invalid Texinfo to have anything other than the empty string there.
 @end deftypefn
 
 
-@node Customizing HTML After At-Colon
-@subsection Customizing HTML After @code{@@:}
+@node Customizing HTML After @@-Colon
+@subsection Customizing HTML After @@-Colon
+
+@cindex Customizing HTML after @code{@@:}
+@cindex Punctuation after @code{@@:}, customizing HTML for
+@cindex Sentence punctuation, customizing HTML for
 
 @vindex %colon_command_punctuation_characters
 The formatting of a punctuation character followed by @code{@@:} is
@@ -20961,61 +20965,75 @@ that are in @code{%colon_command_punctuation_characters}:
 @end deftypefn
 
 
-@node Formatting of style and accents
-@subsection Customizing accent, style and other simple commands with braces
+@node Customizing HTML for Simple Commands
+@subsection Customizing HTML for Simple Commands
+
+@cindex Customizing HTML for simple commands
+@cindex Simple commands, customizing HTML for
+@cindex Style commands, customizing HTML for
+@cindex Accent commands, customizing HTML for
 
 @vindex %style_map
 @vindex %style_map_pre
 @vindex %style_map_texi
 @vindex %style_map_math
-The formatting of the output produced by font and indicatric 
-commands (@code{@@tt}, @code{@@code}, @code{@@titlefont}), the accentuation related
-commands taking argument (@code{@@'}, @code{@@udotaccent}, @code{@@dotless})
-and miscalleneous commands (@code{@@email}, @code{@@verb}, @code{@@w}, 
-@code{@@uref}, @code{@@math}, @code{@@asis}) is controlled by hashes in the
-default case, 
-@code{%style_map} for normal context, @code{%style_map_pre} for
-preformatted context and @code{%style_map_texi} in string context
-(@pxref{Init File Expansion Contexts}).
-In math context, @code{%style_map_math} is tried first and, if not found,
-other hashes are used.
+The formatting of the output produced by ``indicator'' and font
+commands (e.g., @code{@@code}, @code{@@t}, @code{@@titlefont}), the
+accent-related commands with arguments (e.g., @code{@@'},
+@code{@@udotaccent}, @code{@@dotless}) and other simple commands with
+arguments (e.g., @code{@@w}, @code{@@uref}, @code{@@math},
+@code{@@asis}) is controlled by the following hashes by default
+(@pxref{Init File Expansion Contexts}):
+
+@table @code
+@item %style_map
+in normal context.
+
+@item %style_map_pre
+in preformatted context.
+
+@item %style_map_texi
+in string context.  
+
+@item %style_map_math
+preferentially in math context, falling back to other hashes if not found.
+@end table
 
 If defined, a function reference is called for the @@-command opening:
 
-@deffn {Function Reference} begin_style_texi $command \%state \@@stack $real_style_or_accent $remove_texi
-@var{$command} is the @@-command name. 
-@var{\%state} holds informations about the current context. 
-@var{\@@stack} is an opaque variable.
-@var{$real_style_or_accent} is set if the command is an accent or is a
-marking of font command.
-@var{$remove_texi} is set if in a context where output is some simple
-text.
+@deffn {Function Reference} begin_style_texi $command \%state \@@stack @
+       $real_style_or_accent $remove_texi
+@table @var
+@item $command
+The @@-command name. 
+
+@item \%state
+Information about the current context. 
+
+@item \@@stack
+An opaque variable.
+
+@item $real_style_or_accent
+Set if the command is an accent or a font command.
+
+@item $remove_texi
+Set if in a context where output is simple text.
+@end table
 @end deffn
 
-The key of the hashes are the command names.
-@c There are two possibilities for
-@c the values corresponding with two interfaces. 
-The values may be strings or 
-hash references.
-@c and you can chose the interface depending on the one you prefer. 
-The interface with hash reference is the only one described in this
-manual, the other is mostly retained for backward compatibility.
-If you don't like these interfaces you
-can define your own.
+The key of the hashes are the command names.  The values may be
+strings or hash references.  The hash reference interface is the only
+one described in this manual, the other is retained primarily for
+backward compatibility.  
 
-Some remarks are in order:
-
-@itemize
-@item 
 @vindex %accent_map
-The nonlettered accent commands which following character is considered
-to be the argument (like in @code{@@`a}) should be keys of the
-hash @code{%accent_map} hash, even if no value is associated.
-@item
-Command with braces may be handled differently, as described in
-@ref{Init File Formatting of Commands}, this is used 
-for @code{@@math} if La@TeX{}2HTML is used, for example.
-@end itemize
+The nonlettered accent commands where the following character is
+considered to be the argument (e.g., @code{@@`a}) should be keys of
+the hash @code{%accent_map} hash, even if no value is associated.
+
+Command with braces may be handled differently; @pxref{Init File
+Formatting of Commands}.  For example, this is used for @code{@@math}
+if @LaTeX{}2HTML is used.
 
 @menu
 * Hash reference interface::
@@ -24717,7 +24735,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
+$Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24796,7 +24814,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.329 2010-10-12 19:32:44 karl Exp $
+@comment $Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

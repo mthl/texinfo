@@ -1,3 +1,8 @@
+2010-10-13  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customizing HTML for Simple Commands): rename+edit.
+	(Customizing HTML After @@-Colon): Try using @-command in node name.
+
 2010-10-12  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* util/texi2dvi (run_index): Separate `local' statement from
