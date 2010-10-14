@@ -42,6 +42,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parse_texi_text
   errors
 ) ] );
+#  parse_file
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
@@ -550,16 +551,16 @@ sub _complete_line_nr($$;$$$)
 
   $macro = '' if (!defined($macro));
   $file = '' if (!defined($file));
-  my $lines_nr;
+  my $new_lines = [];
 
   my $line_index = $first_line;
-  $lines_nr = [];
   foreach my $index(0..scalar(@$lines)-1) {
      $line_index = $index+$first_line if (!$fixed_line_number);
-     $lines_nr->[$index] = { 'line_nr' => $line_index,
-                              'file_name' => $file, 'macro' => $macro };
+     $new_lines->[$index] = [ $lines->[$index],  
+                            { 'line_nr' => $line_index,
+                              'file_name' => $file, 'macro' => $macro } ];
   }
-  return $lines_nr;
+  return $new_lines;
 }
 
 # The main entry point
@@ -568,13 +569,24 @@ sub parse_texi_text($$;$)
   my $self = shift;
   my $text = shift;
   my $lines_nr = shift;
+
+  return undef if (!defined($text));
+
+  my $lines_array = [];
   if (!ref($text)) {
     $text = _text_to_lines($text);
   }
-  if (defined($lines_nr) and !ref($lines_nr)) {
-    $lines_nr = _complete_line_nr($text, $lines_nr);
+  $lines_nr = [] if (!defined($lines_nr));
+  if (!ref($lines_nr)) {
+    $lines_array = _complete_line_nr($text, $lines_nr);
+  } else {
+    while (@$text) {
+      my $line_nr = shift @$lines_nr;
+      my $line = shift @$text;
+      push @$lines_array, [$line, $line_nr];
+    }
   }
-  return $self->_internal_parse_text($text, $lines_nr);
+  return $self->_internal_parse_text($lines_array);
 }
 
 sub tree_to_texi ($);
@@ -933,37 +945,48 @@ sub _item_multitable_parent($)
   return undef;
 }
 
+sub _next_text($$)
+{
+  my $text = shift;
+  my $line_nr = shift;
+  
+  my $new_text = shift @$text;
+  if (defined($new_text)) {
+    return ($new_text->[0], $new_text->[1]);
+  }
+  return (undef, $line_nr);
+}
+
 # collect text and line numbers until an end of line is found.
 sub _new_line ($$)
 {
   my $text = shift;
-  my $lines_array = shift;
+  my $line_nr = shift;
   my $new_line = '';
-  my $line_nr;
 
-  while (@$text) {
-    my $new_text = shift @$text;
+  while (1) {
+    my $new_text;
+    ($new_text, $line_nr) = _next_text($text, $line_nr);
+    if (!defined($new_text)) {
+      $new_line = undef if ($new_line eq '');
+      last;
+    }
 
     $new_line .= $new_text;
-    $line_nr = shift @$lines_array;
 
     my $chomped_text = $new_text;
-    if (@$text and !chomp($chomped_text)) {
-      next; 
-    }
-    last;
+    last if chomp($chomped_text);
   }
   return ($new_line, $line_nr);
 }
 
-sub _expand_macro_arguments($$$$$$)
+sub _expand_macro_arguments($$$$$)
 {
   my $self = shift;
   my $macro = shift;
   my $line = shift;
   my $line_nr = shift;
   my $text = shift;
-  my $lines_array = shift;
   my $braces_level = 1;
   my $arguments = [ '' ];
   my $arg_nr = 0;
@@ -1018,9 +1041,8 @@ sub _expand_macro_arguments($$$$$$)
       print STDERR "MACRO ARG end of line\n" if ($self->{'debug'});
       $arguments->[-1] .= $line;
 
-      if (@$text) {
-        ($line, $line_nr) = _new_line($text, $lines_array);
-      } else {
+      ($line, $line_nr) = _new_line($text, $line_nr);
+      if (!defined($line)) {
         _line_error ($self, sprintf($self->__("\@%s missing close brace"), 
            $name), $line_nr_orig);
         return ($arguments, "\n", $line_nr);
@@ -1345,11 +1367,10 @@ sub _start_empty_line_after_command($$) {
 #special for @verb, type is the character
 
 # the main subroutine
-sub _internal_parse_text($$;$$)
+sub _internal_parse_text($$;$)
 {
   my $self = shift;
   my $text = shift;
-  my $lines_array = shift;
   my $no_para = shift;
 
   my $root = { 'contents' => [] };
@@ -1360,9 +1381,10 @@ sub _internal_parse_text($$;$$)
   my $line_nr;
   
  NEXT_LINE:
-  while (@$text) {
-    my $line = shift @$text;
-    $line_nr = shift @$lines_array;
+  while (1) {
+    my $line;
+    ($line, $line_nr) = _next_text($text, $line_nr);
+    last if (!defined($line));
 
     if ($self->{'debug'}) {
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
@@ -1449,8 +1471,8 @@ sub _internal_parse_text($$;$$)
               if (!defined($conditional->{'cmdname'}
                   or $conditional->{'cmdname'} ne $end_command));
             # Ignore until end of line
-            if (@$text and $line !~ /\n/) {
-              ($line, $line_nr) = _new_line($text, $lines_array);
+            if ($line !~ /\n/) {
+              ($line, $line_nr) = _new_line($text, $line_nr);
               print STDERR "IGNORE CLOSE line: $line" if ($self->{'debug'});
             }
             print STDERR "CLOSED conditional $end_command\n" if ($self->{'debug'});
@@ -1507,10 +1529,8 @@ sub _internal_parse_text($$;$$)
       {
         print STDERR "END OF TEXT not at end of line (remaining ".scalar(@$text).")\n" 
           if ($self->{'debug'});
-        if (scalar(@$text)) {
-          $line = shift @$text;
-          $line_nr = shift @$lines_array;
-        } else {
+        ($line, $line_nr) = _next_text($text, $line_nr);
+        if (!defined($line)) {
           # end of the document
           $current = _end_line($self, $current, $line_nr);
           $current = _end_block_command($self, $current, $line_nr);
@@ -1536,17 +1556,18 @@ sub _internal_parse_text($$;$$)
         if ($line =~ s/^\s*{\s*//) { # macro with args
           ($arguments, $line, $line_nr) = 
             _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr,
-                                     $text, $lines_array);
+                                     $text);#, $lines_array);
         } elsif (($args_number >= 2) or ($args_number <1)) {
           _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
         } else {
-          if ($line !~ /\n/ and @$text) {
-            ($line, $line_nr) = _new_line($text, $lines_array);
+          if ($line !~ /\n/) {
+            ($line, $line_nr) = _new_line($text, $line_nr);
+            $line = '' if (!defined($line));
           }
           $line =~ s/^\s*// if ($line =~ /\S/);
-          chomp $line;
+          my $has_end_of_line = chomp $line;
           $arguments = [$line];
-          $line = "\n";
+          $line = "\n" if ($has_end_of_line);
         } 
         my $expanded = _expand_macro_body ($self, $expanded_macro, 
                                    $arguments, $line_nr);
@@ -1560,15 +1581,12 @@ sub _internal_parse_text($$;$$)
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
                                      ."|\nEND LINES\n" if ($self->{'debug'});
         next if (!@$expanded_lines);
-        my $new_lines_nr = _complete_line_nr($expanded_lines, 
+        my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);
-        unshift @$text, $line;
-        unshift @$lines_array, $line_nr;
-        $line = shift @$expanded_lines;
-        $line_nr = shift @$new_lines_nr;
-        unshift @$text, @$expanded_lines;
-        unshift @$lines_array, @$new_lines_nr;
+        unshift @$text, [$line, $line_nr];
+        ($line, $line_nr) = _next_text($new_lines, $line_nr);
+        unshift @$text, @$new_lines;
 
       # Now handle all the cases that may lead to command closing
       # or following character association with an @-command, especially
@@ -1787,8 +1805,7 @@ sub _internal_parse_text($$;$$)
                   and $self->{'conditionals_stack'}->[-1] eq $end_command) {
                 pop @{$self->{'conditionals_stack'}};
                 # Ignore until end of line
-                ($line, $line_nr) = _new_line($text, $lines_array)
-                  if (@$text);
+                ($line, $line_nr) = _new_line($text, $line_nr);
               } else {
                 _line_error ($self, 
                   sprintf($self->__("Unmatched `%c%s'"), 
