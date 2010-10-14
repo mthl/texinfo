@@ -1,3 +1,7 @@
+2010-10-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Hash Interface for HTML Customization): rename+edit.
+
 2010-10-13  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customizing HTML for Simple Commands): rename+edit.

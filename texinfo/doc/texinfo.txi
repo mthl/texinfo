@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
+@c $Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20987,19 +20987,19 @@ arguments (e.g., @code{@@w}, @code{@@uref}, @code{@@math},
 
 @table @code
 @item %style_map
-in normal context.
+In normal context.
 
 @item %style_map_pre
-in preformatted context.
+In preformatted context.
 
 @item %style_map_texi
-in string context.  
+In string context.  
 
 @item %style_map_math
-preferentially in math context, falling back to other hashes if not found.
+Preferentially in math context, falling back to other hashes if not found.
 @end table
 
-If defined, a function reference is called for the @@-command opening:
+If defined, a function reference is called at the @@-command opening:
 
 @deffn {Function Reference} begin_style_texi $command \%state \@@stack @
        $real_style_or_accent $remove_texi
@@ -21021,145 +21021,154 @@ Set if in a context where output is simple text.
 @end table
 @end deffn
 
-The key of the hashes are the command names.  The values may be
-strings or hash references.  The hash reference interface is the only
-one described in this manual, the other is retained primarily for
-backward compatibility.  
-
 @vindex %accent_map
-The nonlettered accent commands where the following character is
-considered to be the argument (e.g., @code{@@`a}) should be keys of
-the hash @code{%accent_map} hash, even if no value is associated.
+The nonlettered accent commands where the following character is taken
+as the argument (e.g., @code{@@`a}) should be keys of the
+@code{%accent_map} hash, even if no value is associated.
 
 Command with braces may be handled differently; @pxref{Init File
 Formatting of Commands}.  For example, this is used for @code{@@math}
 if @LaTeX{}2HTML is used.
 
+The key of the hashes are the command names.  The values may be
+strings or hash references.  The hash reference interface is the only
+one described in this manual, the other is retained primarily for
+backward compatibility.  You can also define your own interface.
+
 @menu
-* Hash reference interface::
+* Hash Interface for HTML Customization::
 * Define your own interface::
 @end menu
 
-@node Hash reference interface
-@subsubsection An interface for commands formatting with a hash reference
 
-The key of the hashes are the command names. The value determine how the command argument
-is formatted. This value is a reference on a hash. In this hash each key 
-corresponds with a type of information for the formatting, and the value is 
-the corresponding information. For example, in 
+@node Hash Interface for HTML Customization
+@subsubsection Hash Interface for HTML Customization
+
+@cindex Hash interface for HTML customization
+The keys of the hashes given above are Texinfo command names.  The
+values determine how the command argument is formatted.  Each value is
+a hash reference.  In this value hash, each key corresponds with a
+type of information for formatting, and the value is the corresponding
+data.
+
+Here's an example:
 
 @example
-$style_map@{'command'@} = @{ 'args' => ['code'], 'inline_attribute' => 'code'@};
+$style_map@{'command'@} = @{
+  'args' => ['code'],
+  'inline_attribute' => 'code',
+@};
 @end example
 
-the arguments for @code{@@command} are interpreted as specified by 
-the values associated with the @samp{args} key while the inline_attribute 
-associated 
-with that command is @samp{code}.
+Here, the arguments for @code{@@command} are interpreted as specified
+by the values associated with the @samp{args} key, namely a code
+argument; and the @code{inline_attribute} associated with that command
+is @samp{<code>}.
 
-The following keys in the hashes associated with each command have the
-following meaning:
+Here is a list of the possible keys in the value hashes:
 
 @table @samp
 @item args
 @anchor{Reference Hash Args}
-The value associated is a reference on an array.  Each element of the array
-defines how the arguments (separated by @samp{,} in the texinfo code) for 
-the @@-command should be 
-formatted.  The possibilities are 
+The value associated is an array reference.  Each element of the array
+defines how the corresponding argument (separated by @samp{,} in the
+Texinfo input) for the @@-command should be formatted.  The
+possibilities are:
+
 @table @code
 @item normal
 for normal text,
+
 @item code
-for text with @samp{---}, @samp{--}, @samp{''} and  @samp{``} kept as is,
+for text where @samp{---}, @samp{--}, @samp{''}, and @samp{``} should
+be kept as-is, and
+
 @item keep
-if the texinfo should be kept as is, without interpretation of the @@-commands.
+if the input should be kept entirely as-is, with no interpretation of
+any @@-commands.
 @end table
 
-For example, we have
+The default is @samp{['normal']} for one normally-interpreted argument.
+
+For example, we specify
+
 @example 
 $style_map@{'email'@}->@{'args'@} = ['code', 'normal'];
 @end example
 
-because @samp{---}, @samp{--}, @samp{''} and  @samp{``} should be kept as is in
-the first argument of @code{@@email}.
-
-The default is @samp{['normal']}.
+because @samp{---}, @samp{--}, @samp{''} and @samp{``} should be kept
+as-is in the first argument of @code{@@email}
+(@pxref{email,, @code{@@email}}).
 
 @item attribute
-
-If the associated value is a word, it is considered to be an @acronym{XML} 
+If the associated value is a word, it is considered to be an XML
 element name, and the argument is enclosed between the element opening
 and the element closing. For example, if the value is @code{elem}, the
-resulting @acronym{HTML} is @code{<elem>@var{arg}</elem>}.
+resulting HTML is @code{<elem>@var{arg}</elem>}.
 
-If the text is a word followed by some text,
-the word and is interpreted as above, and the
-text is considered to be the attributes text of the element. 
-Thus @code{elem class="elem"} leads to 
-@code{<elem class="elem">@var{arg}</elem>}.
-This works only if there is only one argument. 
+If the text is a word followed by some text, the word is interpreted
+as above, and the text is considered to be the attributes text of the
+element.  Thus @code{elem class="elem"} leads to @code{<elem
+class="elem">@var{arg}</elem>}.  This only works if there is only one
+argument.
 
 @item inline_attribute
-Like an attribute, except that it is closed at each paragraph end
-and reopened at each beginning of paragraph.  This is in fact more
-used than @samp{attribute} since it allows to have well formed
-@acronym{HTML}/@acronym{XML}.
+Like @code{attribute}, except that it is closed at each paragraph end
+and reopened at each beginning of paragraph.  This is more often used
+than @samp{attribute} since it allows to have well-formed HTML and
+XML.
 
 @item inline_begin
-
-The associated value is added in front of the text 
-and each time a paragraph is restarted while
-within the command.
+The associated value is added in front of the text and each time a
+paragraph is restarted while within the command.
 
 @item inline_end
-
-The associated value is added after the text and each time 
-a paragraph is ended while within the command.
+The associated value is added after the text and each time a paragraph
+is ended while within the command.
 
 @item begin
-
 The associated value is added in front of the text.
 
-@item begin
-
+@item end
 The associated value is added after the text. 
 
 @item quotes
-
-If the corresponding value is true, the result is 
-enclosed in quotes associated with configuration variables
-@code{OPEN_QUOTE_SYMBOL} and 
-@code{CLOSE_QUOTE_SYMBOL}, with defaults 
-@samp{`} and @samp{'} aslo dependent on the output format.
+If the corresponding value is true, the result is enclosed in quotes
+associated with configuration variables @code{OPEN_QUOTE_SYMBOL} and
+@code{CLOSE_QUOTE_SYMBOL}; the defaults depend on the output format
+but fall back to @samp{`} and @samp{'}.
 
 @item function 
-
-The corresponding value should be a function reference. The corresponding
-function is called with the following arguments:
+The corresponding value should be a function reference, which is
+called with the following arguments:
 
 @table @code
 @item $command
-The @@-command name
+The @@-command name.
+
 @item $args
-A reference on an array containing the arguments of the @@-command.
+An array reference containing the arguments of the @@-command.
+
 @item $command_stack
-A reference on an array containing the name of the @@-commands containing 
-the @@-command being formatted, latest on top.
+An array reference with the names of the @@-commands containing the
+@@-command being formatted, latest on top.
+
 @item $state
-A reference on a hash containing a lot of informations about the context
-of the @@-command.
+A hash reference containing information about the context of the
+@@-command.
+
 @item $line_nr
-An opaque structure containing the information about the line number of the 
-@@-command. It can be used to call @code{main::line_error} or
-@code{main::line_warn} with first argument a message, and second argument 
-@code{$line_nr}. 
+An opaque structure containing the information about the line number
+of the @@-command.  It can be used to call @code{main::line_error} or
+@code{main::line_warn} with the first argument being the message, and
+the second argument @code{$line_nr}.
+
 @item $line_numbers
-A reference on an array containing the lines numbers (the same opaque 
-structure as above)
-of the lines spawn by the @@-command.
+An array reference containing the line numbers (the same opaque
+structure as above) of the lines produced by the @@-command.
 @end table
 @end table
+
 
 @node Define your own interface
 @subsubsection Defining the style and indicatric commands interface
@@ -21193,6 +21202,7 @@ the @@-command being formatted.
 @var{\@@line_numbers} is a reference on an array containing the lines numbers
 of the lines spawn by the @@-command.
 @end deftypefn
+
 
 @node Formatting special simple commands
 @subsection Formatting of anchors, images and spaces
@@ -24735,7 +24745,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
+$Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24814,7 +24824,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.330 2010-10-13 20:25:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
