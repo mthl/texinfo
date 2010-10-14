@@ -586,7 +586,7 @@ sub parse_texi_text($$;$)
       push @$lines_array, [$line, $line_nr];
     }
   }
-  return $self->_internal_parse_text($lines_array);
+  return $self->_internal_parse_text([{'pending' => $lines_array}]);
 }
 
 sub tree_to_texi ($);
@@ -947,13 +947,26 @@ sub _item_multitable_parent($)
 
 sub _next_text($$)
 {
-  my $text = shift;
+  my $input = shift;
   my $line_nr = shift;
-  
-  my $new_text = shift @$text;
-  if (defined($new_text)) {
-    return ($new_text->[0], $new_text->[1]);
+ 
+  while (@$input) {
+    my $current = $input->[0];
+    if (@{$current->{'pending'}}) {
+      my $new_text = shift @{$current->{'pending'}};
+      return ($new_text->[0], $new_text->[1]);
+    } elsif ($current->{'fh'}) {
+      my $fh = $current->{'fh'};
+      my $line = <$fh>;
+      if (defined($line)) {
+        $current->{'line_nr'} ++;
+        return ($line, {'line_nr' => $current->{'line_nr'}, 
+                        'file_name' => $current->{'name'}});
+      }
+    }
+    shift(@$input);
   }
+
   return (undef, $line_nr);
 }
 
@@ -1584,9 +1597,10 @@ sub _internal_parse_text($$;$)
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);
-        unshift @$text, [$line, $line_nr];
-        ($line, $line_nr) = _next_text($new_lines, $line_nr);
-        unshift @$text, @$new_lines;
+        unshift @{$text->[0]->{'pending'}}, [$line, $line_nr];
+        my $new_text = shift @$new_lines;
+        ($line, $line_nr) = ($new_text->[0], $new_text->[1]);
+        unshift @{$text->[0]->{'pending'}}, @$new_lines;
 
       # Now handle all the cases that may lead to command closing
       # or following character association with an @-command, especially
