@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-14.17; # UTC
+htmlxrefversion=2010-10-15.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -43,6 +43,8 @@ autogen		node	${GS}/autoconf/manual/html_node/
 
 automake	mono	${GS}/automake/manual/automake.html
 automake	node	${GS}/automake/manual/html_node/
+
+avl		node	http://www.stanford.edu/~blp/avl/libavl.html/
 
 bash		mono	${GS}/bash/manual/bash.html
 bash		node	${GS}/bash/manual/html_node/
@@ -297,6 +299,11 @@ recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
 
 screen		mono	${GS}/screen/manual/screen.html
 screen		node	${GS}/screen/manual/html_node/
+
+# can't use mono files since they have generic names
+smalltalk	node	${GS}/smalltalk/manual/html_node/
+smalltalk-base	node	${GS}/smalltalk/manual-base/html_node/
+smalltalk-libs	node	${GS}/smalltalk/manual-libs/html_node/
 
 standards	mono	${G}/prep/standards/standards.html
 standards	node	${G}/prep/standards/html_node/

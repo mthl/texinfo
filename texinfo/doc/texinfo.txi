@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
+@c $Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21036,15 +21036,17 @@ one described in this manual, the other is retained primarily for
 backward compatibility.  You can also define your own interface.
 
 @menu
-* Hash Interface for HTML Customization::
-* Define your own interface::
+* Hash Interface for Simple HTML Customization::
+* Custom Interface for Simple HTML Customization::
 @end menu
 
 
-@node Hash Interface for HTML Customization
-@subsubsection Hash Interface for HTML Customization
+@node Hash Interface for Simple HTML Customization
+@subsubsection Hash Interface for Simple HTML Customization
 
-@cindex Hash interface for HTML customization
+@cindex Hash interface for simple HTML customization
+@cindex Interface for simple HTML customization, hash
+
 The keys of the hashes given above are Texinfo command names.  The
 values determine how the command argument is formatted.  Each value is
 a hash reference.  In this value hash, each key corresponds with a
@@ -21146,61 +21148,71 @@ called with the following arguments:
 @item $command
 The @@-command name.
 
-@item $args
+@item \@@args
 An array reference containing the arguments of the @@-command.
 
-@item $command_stack
+@item \@@command_stack
 An array reference with the names of the @@-commands containing the
 @@-command being formatted, latest on top.
 
-@item $state
-A hash reference containing information about the context of the
-@@-command.
+@item \%state
+A hash reference containing context information.
 
 @item $line_nr
-An opaque structure containing the information about the line number
-of the @@-command.  It can be used to call @code{main::line_error} or
+An opaque structure containing line number information for the
+@@-command.  It can be used to call @code{main::line_error} or
 @code{main::line_warn} with the first argument being the message, and
 the second argument @code{$line_nr}.
 
-@item $line_numbers
+@item \@@line_numbers
 An array reference containing the line numbers (the same opaque
 structure as above) of the lines produced by the @@-command.
 @end table
 @end table
 
 
-@node Define your own interface
-@subsubsection Defining the style and indicatric commands interface
+@node Custom Interface for Simple HTML Customization
+@subsubsection Custom Interface for Simple HTML Customization
 
-If you don't like this scheme, it is possible to change how those commands
+@cindex Custom interface for simple HTML customization
+@cindex Interface for simple HTML customization, custom
+
+If you don't like the hash interface described in the previous
+section, it is possible to change how the ``simple'' Texinfo commands
 are processed by redefining the following function reference:
 
-@deftypefn {Function Reference} $resulting_text style $style $command $text $args $no_close $no_open $line_nr $state $command_stack \@@line_numbers
-@var{$command} is the @@-command, @var{$style} is the value associated with 
-the @var{$command} in the @code{%style_map}, @code{%style_map_pre} 
-or @code{%style_map_texi} hashes.
-The @var{$text} is the text appearing within the @@-command braces.
-@var{args} is a reference on an array contening the command arguments 
-formatted according to the same conventions than with the reference hash style
-(provided the value associated with the @@-command is a hash reference with a
-@var{$arg} key as described in @ref{Reference Hash Args}).
-If @var{$text} is split in paragraphs each paragraph is passed through
-the function, and @var{$no_close} is true if it is not the last paragraph,
-while @var{$no_open} is true if it is not the first paragraph.
-@var{$line_nr}
-is an opaque structure containing the information about the line number of the 
-@@-command. It can be used to call @code{main::echo_error} or
-@code{main::echo_warning} with first argument a message, and second argument 
-@code{$line_nr}.
-@var{$state}
-is a reference on a hash containing a lot of informations about the context
-of the @@-command.
-@var{$command_stack}
-is a reference on an array containing the name of the @@-commands containing 
-the @@-command being formatted.
-@var{\@@line_numbers} is a reference on an array containing the lines numbers
-of the lines spawn by the @@-command.
+@deftypefn {Function Reference} $resulting_text style $style $command $text @
+        $args $no_close $no_open $line_nr $state $command_stack \@@line_numbers
+@table @var
+@item $command
+The @@-command
+
+@item $style
+The value associated with the @var{$command} in the @code{%style_map},
+@code{%style_map_pre} or @code{%style_map_texi} hashes.
+
+@item $text
+The argument text appearing within the @@-command braces.
+
+@item $args
+Array reference containing the command arguments, formatted according
+to the same conventions as the hash reference style (provided that the
+value associated with the @@-command is a hash reference with an
+@var{$arg} key; @pxref{Reference Hash Args}).
+
+@item $no_close
+@itemx $no_open
+If @var{$text} is split into paragraphs, each paragraph is passed
+through the function, and @var{$no_close} is true if this is not the
+last paragraph, while @var{$no_open} is true if this is not the first
+paragraph.
+
+@item $line_nr
+@itemx $state
+@itemx $command_stack
+@itemx \@@line_numbers
+See the previous section.
+@end table
 @end deftypefn
 
 
@@ -24745,7 +24757,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
+$Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24824,7 +24836,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.331 2010-10-14 18:54:32 karl Exp $
+@comment $Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
