@@ -147,6 +147,100 @@ Various deff lines
 text in def item for second def item
 @deffnx {truc} deffnx before end deffn
 @end deffn
+'],
+['nested_block_commands',
+'@group
+In group
+@quotation
+in quotation
+@end quotation
+@end group
+
+@group
+@quotation
+in quotation
+@end quotation
+@end group
+
+@group
+In group
+@quotation
+in quotation
+@end quotation
+after quotation
+@end group
+
+@group
+
+In group sp b
+@quotation
+in quotation
+@end quotation
+@end group
+
+@group
+
+In group sp b a
+
+@quotation
+in quotation
+@end quotation
+@end group
+
+@group
+In group sp a
+
+@quotation
+in quotation
+@end quotation
+@end group
+
+@group
+@quotation
+
+in quotation sp b
+@end quotation
+@end group
+
+@group
+@quotation
+
+in quotation sp b a
+
+@end quotation
+@end group
+
+@group
+@quotation
+in quotation sp a
+
+@end quotation
+@end group
+
+@group
+@quotation
+in quotation
+@end quotation
+
+After quotation sp b
+@end group
+
+@group
+@quotation
+in quotation
+@end quotation
+After quotation sp a
+
+@end group
+
+@group
+@quotation
+in quotation
+@end quotation
+
+After quotation sp b a
+
+@end group
 ']
 );
 

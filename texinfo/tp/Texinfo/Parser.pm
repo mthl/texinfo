@@ -1198,6 +1198,7 @@ sub _end_line($$$)
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
+      print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'debug'});
     }
 
   # end of a menu line.
@@ -1236,6 +1237,7 @@ sub _end_line($$$)
                                     'parent' => $menu,
                                     'contents' => [] };
         $current = $menu->{'contents'}->[-1];
+        print STDERR "THEN MENU_COMMENT OPEN\n" if ($self->{'debug'});
       }
       while (@{$menu_entry->{'args'}}) {
         my $arg = shift @{$menu_entry->{'args'}};
@@ -2050,6 +2052,17 @@ sub _internal_parse_text($$;$)
             # the end of line?
             last;
           } else {
+            # a menu command closes a menu_comment, but not the other
+            # block commands. This won't catch menu commands buried in 
+            # other formats (that are incorrect anyway).
+            if ($menu_commands{$command} and $current->{'type'} 
+                   and $current->{'type'} eq 'menu_comment') {
+              $current = $current->{'parent'};
+              # don't keep empty menu_comment
+              if (!@{$current->{'contents'}->[-1]->{'contents'}}) {
+                pop @{$current->{'contents'}};
+              }
+            }
             # the def command holds a line_def* which corresponds with the
             # definition line.  This allows to have a treatement similar
             # with def*x.
@@ -2091,6 +2104,7 @@ sub _internal_parse_text($$;$)
                                                  'contents' => [] };
                 push @{$self->{'context_stack'}}, 'menu';
                 $current = $current->{'contents'}->[-1];
+                print STDERR "MENU_COMMENT OPEN\n" if ($self->{'debug'});
               }
               
               $line = _start_empty_line_after_command($line, $current);
