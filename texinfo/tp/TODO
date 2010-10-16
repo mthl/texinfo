@@ -23,12 +23,14 @@ Test for @columnfractions in a random place and something like
 
 parse @sp a bit more.
 
-tests in test/macros
-glossary.texi
+t/results/macro/macro_in_misc_commands.pl
+some spaces are not counted as empty_spaces_after_command.
 
+tests in test/macros, not incorporated
+glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
 include_macro.texi
+include-value.texi
 
-stopped at  include-value.texi
-(not done)
+todo: macro_in_pass_texi_commands

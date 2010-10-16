@@ -507,7 +507,7 @@ different
 '],
 # FIXME this tests much more than macro, but also index related stuff.
 # This part should certainly be elsewhere.
-['macro_in_line_commands',
+['macro_in_index_commands',
 '@macro cp
 cp
 @end macro
@@ -605,6 +605,220 @@ abc
 
 fn
 @printindex fn
+'],
+['macro_in_misc_commands',
+'@macro text 
+atext
+@end macro
+
+@macro Top
+Top
+@end macro
+
+@node @Top{}
+@top top @text{}
+@subheading Comment like: @text{}
+
+Text line followed by a comment on the same line and another below @c comment @text{}
+@c comment @text{}
+
+@macro pagesizes-arg
+200mm,150mm
+@end macro
+
+@macro afourpaper-macro 
+@afourpaper
+@end macro
+
+@pagesizes @pagesizes-arg{}
+@afourpaper-macro{}
+@headings on line following headings @text{}
+@oddfooting some text ignored @text{}
+@everyheading on line following everyheading @text{}
+
+@macro need-arg
+0.1
+@end macro
+
+@need @need-arg{}
+
+@macro raisesections-macro 
+@raisesections
+@end macro
+@raisesections-macro{}
+@macro lowersections-macro 
+@lowersections
+@end macro
+@lowersections-macro{}
+
+@@definfoenclose phoo,//,\\\\  @definfoenclose phoo,//,\\\\
+
+@phoo{bar}
+
+@macro definfoenclose-name 
+phi
+@end macro
+@definfoenclose @definfoenclose-name{},:,:
+
+@phi{bar}
+
+@macro strong-macro 
+@strong
+@end macro
+@macro strong-name 
+strong
+@end macro
+
+@strong-macro{}{very strong}
+
+@definfoenclose @strong-name{},(@strong-name{}:,:)
+
+@strong-macro{}{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@macro kbdinputstyle-arg 
+code
+@end macro
+@kbdinputstyle @kbdinputstyle-arg{}
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+@macro asis-arg 
+asis
+@end macro
+@macro zero 
+0
+@end macro
+@macro none-arg 
+none
+@end macro
+@macro four 
+4
+@end macro
+@macro six 
+6
+@end macro
+
+@paragraphindent @asis-arg{}
+@paragraphindent @zero{}
+@paragraphindent @none-arg{}
+@paragraphindent @four{}
+@firstparagraphindent @none-arg{}
+@exampleindent @six{}
+
+@macro end-arg 
+end
+@end macro
+@macro separate-arg 
+separate 
+@end macro
+@footnotestyle @end-arg{}
+@footnotestyle @separate-arg{}
+
+@macro latin1 
+ISO-8859-1
+@end macro
+@documentencoding @latin1{}
+
+@macro on-arg 
+on
+@end macro
+@macro off-arg 
+off
+@end macro
+@frenchspacing @on-arg{}
+@frenchspacing @off-arg{}
+
+@c accepts 10 or 11
+@macro ten 
+10
+@end macro
+@fonttextsize @ten{}
+@c accept false or true
+@macro false-arg 
+false
+@end macro
+@macro true-arg
+true
+@end macro
+@allowcodebreaks @false-arg{}
+
+@allowcodebreaks @true-arg{}
+
+@macro page-macro 
+@page
+@end macro
+@macro noindent-macro 
+@noindent
+@end macro
+@macro refill-macro 
+@refill
+@end macro
+
+@@page @page-macro{} @@noindent @noindent-macro{} @@refill @refill-macro{} something
+
+@noindent-macro{}     noindent at beginning of line
+@noindent-macro{}
+noindent on the preceding line
+  @noindent-macro{}    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on its own line.
+
+@@page @page-macro{}   @@noindent @noindent-macro{}    @@refill @refill-macro{}
+
+@macro contents-macro 
+@contents
+@end macro
+@contents-macro{}
+
+@vskip @atext{}
+
+@macro cropmarks-macro
+@cropmarks
+@end macro
+@cropmarks-macro{}
+
+@macro exdent-macro 
+@exdent
+@end macro
+@exdent-macro{} line after exdent
+
+@macro two 
+2
+@end macro
+@sp @two{}
+
+@macro result-macro 
+@result
+@end macro
+
+@clickstyle @result-macro{}
+
+@menu
+* node @text{}::
+@end menu
+
+@node node @text{}
+@chapter chapter
+
+@contents-macro{}
+
+@macro shortcontents-macro 
+@shortcontents
+@end macro
+@shortcontents-macro{}
+
+@macro bye-macro
+@bye
+@end macro
+
+@bye-macro{}
 ']
 );
 

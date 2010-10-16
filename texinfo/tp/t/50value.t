@@ -77,22 +77,13 @@ Value
 @ringaccent @value{a_letter}
 @~@value{a_letter}'
 ],
-['value_in_line_commands',
+['value_in_index_commands',
 '@set cp cp
 @set fn fn
 @set syncodeindex_command @syncodeindex
 
 @syncodeindex @value{cp} @value{fn}
 @value{syncodeindex_command} cp fn
-
-@set en en
-@set documentlanguage_command @documentlanguage
-
-documentlanguage @documentlanguage  @value{en}
-
-documentlanguage on its line
-@value{documentlanguage_command}  en
-line following documentlanguage
 
 @set truc truc
 
@@ -157,7 +148,160 @@ abc
 
 fn
 @printindex fn
-']
+'],
+['value_in_misc_commands',
+'@set text atext
+
+@node Top
+@top top @value{text}
+@subheading Comment like: @value{text}
+
+Text line followed by a comment on the same line and another below @c comment @value{text}
+@c comment @value{text}
+
+@set pagesizes_arg 200mm,150mm
+@set afourpaper_macro @afourpaper
+
+@ifnottex
+@pagesizes @value{pagesizes_arg}
+@end ifnottex
+@value{afourpaper_macro}
+@headings on line following headings @value{text}
+@oddfooting some text ignored @value{text}
+@everyheading on line following everyheading @value{text}
+
+@set need_arg 0.1
+
+@ifnottex
+@need @value{need_arg}
+@end ifnottex
+
+@set raisesections_macro @raisesections
+@value{raisesections_macro}
+@set lowersections_macro @lowersections
+@value{lowersections_macro}
+
+@c tex error: Use of \ doesn\'t match its definition.
+@ifnottex
+@@definfoenclose phoo,//,\\\\  @definfoenclose phoo,//,\\\\
+
+@phoo{bar}
+@end ifnottex
+
+@set definfoenclose_name phi
+@definfoenclose @value{definfoenclose_name},:,:
+
+@phi{bar}
+
+@set strong_macro @strong
+@set strong_name strong
+
+@value{strong_macro}{very strong}
+
+@definfoenclose @value{strong_name},(@value{strong_name}:,:)
+
+@value{strong_macro}{ is it really strong? }
+
+@kbd{something before kbdinputstyle}
+
+@set kbdinputstyle_arg code
+@kbdinputstyle @value{kbdinputstyle_arg}
+
+@kbd{truc}
+
+@example
+@kbd{example}
+@end example
+
+@set asis_arg asis
+@set zero 0
+@set none_arg none
+@set four 4
+@set six 6
+
+@paragraphindent @value{asis_arg}
+@paragraphindent @value{zero}
+@paragraphindent @value{none_arg}
+@paragraphindent @value{four}
+@firstparagraphindent @value{none_arg}
+@exampleindent @value{six}
+
+@set end_arg end
+@set separate_arg separate 
+@footnotestyle @value{end_arg}
+@footnotestyle @value{separate_arg}
+
+@set latin1 ISO-8859-1
+@documentencoding @value{latin1}
+
+@set en en
+@set documentlanguage_command @documentlanguage
+
+documentlanguage @documentlanguage  @value{en}
+
+documentlanguage on its line
+@value{documentlanguage_command}  en
+line following documentlanguage
+
+@set on_arg on
+@set off_arg off
+@frenchspacing @value{on_arg}
+@frenchspacing @value{off_arg}
+
+@c accepts 10 or 11
+@set ten 10
+@fonttextsize @value{ten}
+
+@c accept false or true
+@c makeinfo don\'t care about the arg and remove the remaining of the line
+@set false_arg false
+@set true_arg true
+@allowcodebreaks @value{false_arg}
+
+@allowcodebreaks @value{true_arg}
+
+@set page_macro @page
+@set noindent_macro @noindent
+@set refill_macro @refill
+
+@@page @value{page_macro} @@noindent @value{noindent_macro} @@refill @value{refill_macro} something
+
+@value{noindent_macro}     noindent at beginning of line
+@value{noindent_macro}
+noindent on the preceding line
+  @value{noindent_macro}    noindent after space at beginning of line
+@page         page at beginning of line
+@page
+After page on it\'s own line.
+
+@@page @value{page_macro}   @@noindent @value{noindent_macro}    @@refill @value{refill_macro}
+
+@set contents_macro @contents
+@value{contents_macro}
+
+@vskip @value{text}
+
+@set cropmarks_command @cropmarks
+@cropmarks_command
+
+@set exdent_macro @exdent
+@value{exdent_macro} line after exdent
+
+@set two 2
+@sp @value{two}
+
+@set result_macro @result
+
+@clickstyle @value{result_macro}
+
+@value{contents_macro}
+
+@set shortcontents_macro @shortcontents
+@value{shortcontents_macro}
+
+@set bye_macro @bye
+
+@value{bye_macro}']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
