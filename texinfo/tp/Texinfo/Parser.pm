@@ -40,9 +40,9 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parser
   tree_to_texi      
   parse_texi_text
+  parse_texi_file
   errors
 ) ] );
-#  parse_file
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
@@ -221,7 +221,8 @@ foreach my $accent_command ('"','~','^','`',"'",',','=') {
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent','udotaccent','v','ogonek') {
+foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent',
+                           'udotaccent','v','ogonek','tieaccent') {
   $accent_commands{$accent_command} = 1;
   $brace_commands{$accent_command} = 1;
 }
@@ -587,6 +588,34 @@ sub parse_texi_text($$;$)
     }
   }
   return $self->_internal_parse_text([{'pending' => $lines_array}]);
+}
+
+sub parse_texi_file ($$)
+{
+  my $self = shift;
+  my $file_name = shift;
+  # FIXME error message
+  local *FILE;
+  open (*FILE, $file_name) or return undef;
+  my $line_nr = 0;
+  my $line;
+  my @first_lines;
+  while ($line = <FILE>) {
+    $line_nr++;
+    $line =~ s/\x{7F}.*\s*//;
+    if ($line =~ /^ *\\input/ or $line =~ /^\s*$/) {
+      push @first_lines, $line;
+    } else {
+      last;
+    }
+  }
+  return $self->_internal_parse_text([{
+       'pending' => [ [$line, { 'line_nr' => $line_nr,
+                      'file_name' => $file_name, 'macro' => '' }] ],
+       'name' => $file_name,
+       'line_nr' => $line_nr,
+       'fh' => \*FILE
+        }], \@first_lines);
 }
 
 sub tree_to_texi ($);
@@ -961,7 +990,8 @@ sub _next_text($$)
       if (defined($line)) {
         $current->{'line_nr'} ++;
         return ($line, {'line_nr' => $current->{'line_nr'}, 
-                        'file_name' => $current->{'name'}});
+                        'file_name' => $current->{'name'},
+                        'macro' => ''});
       }
     }
     shift(@$input);
@@ -1384,10 +1414,16 @@ sub _internal_parse_text($$;$)
 {
   my $self = shift;
   my $text = shift;
-  my $no_para = shift;
+  my $first_lines = shift;
 
   my $root = { 'contents' => [] };
   my $current = $root;
+  if ($first_lines) {
+    foreach my $line (@$first_lines) {
+      push @{$current->{'contents'}}, { 'text' => $line,
+                                        'type' => 'preamble' };
+    }
+  }
 
   $self->{'conditionals_stack'} = [];
 
@@ -1807,19 +1843,21 @@ sub _internal_parse_text($$;$)
           # REMACRO
           if ($line =~ s/^\s+([[:alnum:]][[:alnum:]-]*)//) {
             my $end_command = $1;
-            print STDERR "END $end_command\n" if ($self->{'debug'});
             if (!exists $block_commands{$end_command}) {
               _line_warn ($self, 
                 sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
               $current = _merge_text ($self, $current, "\@end $end_command");
               last;
             }
+            print STDERR "END BLOCK $end_command\n" if ($self->{'debug'});
             if ($block_commands{$end_command} eq 'conditional') {
               if (@{$self->{'conditionals_stack'}} 
                   and $self->{'conditionals_stack'}->[-1] eq $end_command) {
                 pop @{$self->{'conditionals_stack'}};
                 # Ignore until end of line
-                ($line, $line_nr) = _new_line($text, $line_nr);
+                if ($line !~ /\n/) {
+                  ($line, $line_nr) = _new_line($text, $line_nr);
+                }
               } else {
                 _line_error ($self, 
                   sprintf($self->__("Unmatched `%c%s'"), 
