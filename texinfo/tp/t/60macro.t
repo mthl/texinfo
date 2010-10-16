@@ -72,6 +72,12 @@ res1
 
 @test1 abc
 '],
+['macro_one_arg_end_of_file',
+'@macro one-arg{arg}
+Arg \arg\.
+@end macro
+
+@one-arg'],
 ['too_much_args',
 '@macro twoargs {first, second}
 first arg: \first\
@@ -125,6 +131,12 @@ foo
 
 call @foo{ something
 '],
+['macro_not_closed',
+'@macro name
+in macro
+'],
+['macro_no_argument',
+'@macro'],
 ['expand_two_same',
 '@macro macro2 { arg }
 With a doubles arg \arg\ and re \arg\
