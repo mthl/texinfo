@@ -21,6 +21,12 @@ test root_commands, like nodes and sections
 Test for @columnfractions in a random place and something like
 @multitable aaa @columnfractions 0.3 0.7
 
+'@macro one-arg{arg}
+Arg \arg\.
+@end macro
+
+@macro'
+
 parse @sp a bit more.
 
 tests in test/macros

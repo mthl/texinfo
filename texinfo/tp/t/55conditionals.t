@@ -58,7 +58,13 @@ in ifclear
 @ifset a
 in ifset
 @end ifset
-']
+'],
+['ifnot_format_conditional',
+'@ifnottex
+not tex
+@end ifnottex
+
+After.']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

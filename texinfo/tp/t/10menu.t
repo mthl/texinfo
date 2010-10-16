@@ -33,16 +33,6 @@ new comment
 * (f) a4 ::   @c c
 @end menu
 '],
-['menu_entry_no_entry',
-'@menu
-* a1:
-* a2:  
-* a1c:@c c
-* a2c:  @c c
-* a4@b{a}: 
-* a5@b{b}: @c c
-@end menu
-'],
 ['menu_entry_name',
 '@menu
 * a: (f)b
@@ -64,6 +54,26 @@ new comment
 * a: (f)b1c.c,@c c
 * a: (f)b2c.c,     @c c
 * a: (f)b3c.c,    d@c c
+@end menu
+'],
+['detailmenu',
+'
+@menu
+* Copying Conditions::          Your rights.
+
+@detailmenu
+* detailmenu::
+@end detailmenu
+@end menu
+'],
+['menu_entry_no_entry',
+'@menu
+* a1:
+* a2:  
+* a1c:@c c
+* a2c:  @c c
+* a4@b{a}: 
+* a5@b{b}: @c c
 @end menu
 '],
 ['bad_beginning',
