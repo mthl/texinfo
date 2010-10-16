@@ -78,7 +78,12 @@ $result_trees{'close_paragraph_command'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '4'
+        ]
+      }
     },
     {
       'contents' => [

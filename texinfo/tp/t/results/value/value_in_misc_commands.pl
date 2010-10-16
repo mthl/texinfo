@@ -2115,7 +2115,12 @@ $result_trees{'value_in_misc_commands'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '2'
+        ]
+      }
     },
     {
       'parent' => {},

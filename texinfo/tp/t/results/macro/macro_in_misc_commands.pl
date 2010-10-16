@@ -2441,7 +2441,12 @@ $result_trees{'macro_in_misc_commands'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '2'
+        ]
+      }
     },
     {
       'parent' => {},

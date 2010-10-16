@@ -183,9 +183,7 @@ my %misc_commands = (
   'author' => {'arg' => 'line'},
   'subtitle' => {'arg' => 'line'},
   'title' => {'arg' => 'line'},
-  #'sp' => {'skip' => 'line', 'arg' => 1}, # no arg 
-  'sp' => {'arg' => 'line'}, # no arg 
-                              # at the end of line or a numerical arg
+  'sp' => {'arg' => 1}, # numerical arg
   'page' => {'skip' => 'line'}, # no arg (pagebreak)
   'need' => {'arg' => 1}, # one numerical/real arg
   # formatting
@@ -216,12 +214,8 @@ foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol
   $brace_commands{$no_arg_command} = 0;
 }
 
-foreach my $accent_command ('"','~','^','`',"'",',','=') {
-  $accent_commands{$accent_command} = 1;
-  $brace_commands{$accent_command} = 1;
-}
-
-foreach my $accent_command('ringaccent','H','dotaccent','u','ubaraccent',
+foreach my $accent_command ('"','~','^','`',"'",',','=',
+                           'ringaccent','H','dotaccent','u','ubaraccent',
                            'udotaccent','v','ogonek','tieaccent') {
   $accent_commands{$accent_command} = 1;
   $brace_commands{$accent_command} = 1;
@@ -2544,6 +2538,12 @@ sub _parse_line_command_args($$$)
                               $fraction), $line_nr);
         }
       }
+    }
+  } elsif ($command eq 'sp') {
+    if ($line =~ /^([0-9]+)/) {
+      $args = [$1];
+    } else {
+      _line_error ($self, sprintf($self->__("\@sp arg must be numeric, not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
     # REMACRO

@@ -38,7 +38,12 @@ $result_trees{'sp'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '1'
+        ]
+      }
     },
     {
       'args' => [
@@ -60,7 +65,12 @@ $result_trees{'sp'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '2'
+        ]
+      }
     },
     {
       'contents' => [
@@ -92,7 +102,12 @@ $result_trees{'sp'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '1'
+        ]
+      }
     },
     {
       'contents' => [
@@ -125,7 +140,12 @@ $result_trees{'sp'} = {
         }
       ],
       'cmdname' => 'sp',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          '2'
+        ]
+      }
     }
   ]
 };

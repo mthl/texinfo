@@ -21,8 +21,6 @@ test root_commands, like nodes and sections
 Test for @columnfractions in a random place and something like
 @multitable aaa @columnfractions 0.3 0.7
 
-parse @sp a bit more.
-
 t/results/macro/macro_in_misc_commands.pl
 some spaces are not counted as empty_spaces_after_command.
 
