@@ -1277,6 +1277,7 @@ sub _end_line($$$)
   # other block command lines
   } elsif ($current->{'type'}
             and $current->{'type'} eq 'block_line_arg') {
+    my $empty_text;
     # @multitable args
     if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
@@ -1312,8 +1313,24 @@ sub _end_line($$$)
         $self->_line_warn ($self->__("empty multitable"), $line_nr);
       }
       $multitable->{'special'}->{'prototypes'} = \@prototype_row;
+
+    # don't consider empty argument of block @-commands as arguments, 
+    # but instead consider them as empty_line_after_command  
+    } elsif (@{$current->{'parent'}->{'args'}} == 1 
+             and @{$current->{'contents'}} == 1
+             and defined $current->{'contents'}->[0]->{'text'}
+             and $current->{'contents'}->[0]->{'text'} !~ /\S/) {
+      $empty_text = $current->{'contents'}->[0];
     }
     $current = $current->{'parent'};
+    if (defined($empty_text)) {
+      delete $current->{'args'};
+      if ($empty_text->{'text'} ne '') {
+        push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
+                                          'text' => $empty_text->{'text'},
+                                          'parent' => $current };
+      }
+    }
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
       push @{$current->{'contents'}}, { 'type' => 'before_item',
