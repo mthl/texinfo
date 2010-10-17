@@ -11,7 +11,7 @@ use File::Basename;
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
-use vars qw(%result_texis %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors);
 
 ok(1);
 
@@ -84,7 +84,7 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
-    print OUT 'use vars qw(%result_texis %result_trees %result_errors);'."\n\n";
+    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);

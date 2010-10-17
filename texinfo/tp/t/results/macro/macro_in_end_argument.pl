@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors);
 
 $result_trees{'macro_in_end_argument'} = {
   'contents' => [

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors);
 
 $result_trees{'expand_two_same'} = {
   'contents' => [
