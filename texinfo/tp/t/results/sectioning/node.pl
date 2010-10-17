@@ -497,6 +497,12 @@ $result_texis{'node'} = '
 @node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
 ';
 
+
+$result_texts{'node'} = '
+
+
+';
+
 $result_errors{'node'} = [];
 
 

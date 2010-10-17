@@ -41,6 +41,11 @@ $result_texis{'ifnot_format_conditional'} = 'not tex
 
 After.';
 
+
+$result_texts{'ifnot_format_conditional'} = 'not tex
+
+After.';
+
 $result_errors{'ifnot_format_conditional'} = [];
 
 

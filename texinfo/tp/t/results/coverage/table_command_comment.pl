@@ -89,6 +89,10 @@ $result_texis{'table_command_comment'} = '@table @code@c in comment
 @item item
 @end table';
 
+
+$result_texts{'table_command_comment'} = 'item
+';
+
 $result_errors{'table_command_comment'} = [];
 
 

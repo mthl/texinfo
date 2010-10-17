@@ -34,6 +34,10 @@ $result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
 $result_texis{'sections'} = '@chapter a chapter
 ';
 
+
+$result_texts{'sections'} = 'a chapter
+';
+
 $result_errors{'sections'} = [];
 
 

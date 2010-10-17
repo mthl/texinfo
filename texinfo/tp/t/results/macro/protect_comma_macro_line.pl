@@ -132,6 +132,14 @@ and another one on another line arg,  comma \\,
 and a last in another paragraph
 ';
 
+
+$result_texts{'protect_comma_macro_line'} = '
+we get arg,  comma \\, and another arg,  comma \\,
+and another one on another line arg,  comma \\,
+
+and a last in another paragraph
+';
+
 $result_errors{'protect_comma_macro_line'} = [];
 
 

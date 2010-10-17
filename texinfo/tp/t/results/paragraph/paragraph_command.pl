@@ -69,6 +69,12 @@ $result_texis{'paragraph_command'} = '@@
 @b{aaa}.
 ';
 
+
+$result_texts{'paragraph_command'} = '@
+
+aaa.
+';
+
 $result_errors{'paragraph_command'} = [];
 
 

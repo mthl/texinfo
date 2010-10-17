@@ -84,6 +84,12 @@ $result_texis{'macro_in_ifset_end_in_arg'} = '@macro macro1 {arg}
 in ifset
 ';
 
+
+$result_texts{'macro_in_ifset_end_in_arg'} = '
+
+in ifset
+';
+
 $result_errors{'macro_in_ifset_end_in_arg'} = [
   {
     'error_line' => ':8: Misplaced }

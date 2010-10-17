@@ -138,6 +138,11 @@ in macro
 @end macro
 ';
 
+
+$result_texts{'bad_argument'} = '
+
+';
+
 $result_errors{'bad_argument'} = [
   {
     'error_line' => ':1: @macro requires a name

@@ -145,6 +145,11 @@ result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 result: @emph{@samp{f\\irst arg}} protected \\ -> \\arg1\\ @emph{}
 ';
 
+
+$result_texts{'protect_in_body_one_arg'} = '
+result: f\\irst arg protected \\ -> \\arg1\\ 
+';
+
 $result_errors{'protect_in_body_one_arg'} = [];
 
 

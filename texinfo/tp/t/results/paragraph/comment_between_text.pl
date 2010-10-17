@@ -41,6 +41,10 @@ $result_texis{'comment_between_text'} = 'text
 @c comment
 end para';
 
+
+$result_texts{'comment_between_text'} = 'text
+end para';
+
 $result_errors{'comment_between_text'} = [];
 
 

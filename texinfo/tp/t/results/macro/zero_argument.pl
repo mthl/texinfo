@@ -89,6 +89,10 @@ in foo
 in bar
 @end macro';
 
+
+$result_texts{'zero_argument'} = '
+';
+
 $result_errors{'zero_argument'} = [];
 
 

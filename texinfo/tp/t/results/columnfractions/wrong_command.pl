@@ -92,6 +92,9 @@ $result_trees{'wrong_command'}{'contents'}[1]{'parent'} = $result_trees{'wrong_c
 $result_texis{'wrong_command'} = '@multitable @columnfractions @b{3.4} 
 @end multitable';
 
+
+$result_texts{'wrong_command'} = '';
+
 $result_errors{'wrong_command'} = [
   {
     'error_line' => ':1: Bad argument to @columnfractions

@@ -67,6 +67,11 @@ res1
 res1 abc
 ';
 
+
+$result_texts{'macro_no_arg_expansion'} = '
+res1 abc
+';
+
 $result_errors{'macro_no_arg_expansion'} = [];
 
 

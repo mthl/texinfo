@@ -46,6 +46,9 @@ $result_trees{'bad'}{'contents'}[0]{'parent'} = $result_trees{'bad'};
 $result_texis{'bad'} = 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 ';
 
+
+$result_texts{'bad'} = 'kbdinputstyle ';
+
 $result_errors{'bad'} = [
   {
     'error_line' => ':1: @kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `wrong arg on line following kbdinputstyle

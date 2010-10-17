@@ -171,6 +171,13 @@ $result_texis{'item_container'} = '
 @end itemize
 ';
 
+
+$result_texts{'item_container'} = '
+i--tem +
+
+ b--ullet
+';
+
 $result_errors{'item_container'} = [];
 
 

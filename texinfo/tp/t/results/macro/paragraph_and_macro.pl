@@ -245,6 +245,23 @@ a word
     text after space.
 ';
 
+
+$result_texts{'paragraph_and_macro'} = '
+
+
+
+
+    
+
+ text after empty.
+
+   
+
+       
+
+    text after space.
+';
+
 $result_errors{'paragraph_and_macro'} = [];
 
 

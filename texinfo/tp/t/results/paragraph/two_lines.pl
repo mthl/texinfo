@@ -28,6 +28,11 @@ $result_texis{'two_lines'} = 'text l 1
 text l 2
 ';
 
+
+$result_texts{'two_lines'} = 'text l 1
+text l 2
+';
+
 $result_errors{'two_lines'} = [];
 
 

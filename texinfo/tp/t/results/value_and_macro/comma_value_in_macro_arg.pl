@@ -161,6 +161,12 @@ result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 result: @emph{arg1 , arg2 } protected \\ -> \\arg1\\ @emph{}
 ';
 
+
+$result_texts{'comma_value_in_macro_arg'} = '
+
+result: arg1 , arg2  protected \\ -> \\arg1\\ 
+';
+
 $result_errors{'comma_value_in_macro_arg'} = [];
 
 

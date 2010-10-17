@@ -55,6 +55,11 @@ $result_texis{'command_line_in_paragraph'} = 'documentlanguage on its line
 line following documentlanguage
 ';
 
+
+$result_texts{'command_line_in_paragraph'} = 'documentlanguage on its line
+line following documentlanguage
+';
+
 $result_errors{'command_line_in_paragraph'} = [];
 
 

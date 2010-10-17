@@ -139,6 +139,14 @@ flagab: a
 b
 ';
 
+
+$result_texts{'macro_in_value'} = '
+
+flagab: a
+
+b
+';
+
 $result_errors{'macro_in_value'} = [
   {
     'error_line' => ':9: warning: @ab defined with zero or more than one argument should be invoked with {}

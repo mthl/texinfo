@@ -175,6 +175,12 @@ $result_texis{'accent_argument'} = '@itemize @~@comment
 @end itemize
 ';
 
+
+$result_texts{'accent_argument'} = 'item
+
+item
+';
+
 $result_errors{'accent_argument'} = [];
 
 

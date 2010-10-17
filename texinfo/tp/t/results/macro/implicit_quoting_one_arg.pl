@@ -105,6 +105,12 @@ $result_texis{'implicit_quoting_one_arg'} = '
 @strong{FIXME: Many arguments, separated by commas, are processed here}
 ';
 
+
+$result_texts{'implicit_quoting_one_arg'} = '
+
+FIXME: Many arguments, separated by commas, are processed here
+';
+
 $result_errors{'implicit_quoting_one_arg'} = [];
 
 

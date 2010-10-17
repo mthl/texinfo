@@ -247,6 +247,9 @@ $result_texis{'menu_entry_node_comments'} = '@menu
 @end menu
 ';
 
+
+$result_texts{'menu_entry_node_comments'} = '* (f)a1c::* (f)a2c::  * (f)a3c::         d* (f) a4 ::   ';
+
 $result_errors{'menu_entry_node_comments'} = [];
 
 

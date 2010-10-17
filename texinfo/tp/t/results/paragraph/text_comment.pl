@@ -32,6 +32,9 @@ $result_trees{'text_comment'}{'contents'}[0]{'parent'} = $result_trees{'text_com
 
 $result_texis{'text_comment'} = 'text@c comment';
 
+
+$result_texts{'text_comment'} = 'text';
+
 $result_errors{'text_comment'} = [];
 
 

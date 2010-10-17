@@ -518,6 +518,37 @@ arg3
 
 @end verbatim.';
 
+
+$result_texts{'macro_expansion'} = '
+
+2 simple args. result of a macro with first arg and 
+second arg
+.
+
+comma in command. result of a macro with aaa a macro ,  bbb and 
+
+.
+
+call on the line. result of a macro with  and 
+
+my arg.
+
+recursive call. result of a macro with first arg and 
+@macro1{nested second arg}
+.
+
+protect stuff. result of a macro with first , arg and 
+{} \\ 
+.
+
+multi-line arg. result of a macro with arg 1
+
+now and 
+arg3
+
+
+.';
+
 $result_errors{'macro_expansion'} = [
   {
     'error_line' => ':13: warning: @macro1 defined with zero or more than one argument should be invoked with {}

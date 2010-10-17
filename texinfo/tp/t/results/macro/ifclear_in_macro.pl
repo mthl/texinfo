@@ -102,6 +102,12 @@ arg
 
 ';
 
+
+$result_texts{'ifclear_in_macro'} = '
+arg
+
+';
+
 $result_errors{'ifclear_in_macro'} = [];
 
 

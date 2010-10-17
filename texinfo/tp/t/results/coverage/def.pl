@@ -869,6 +869,16 @@ text in def item for second def item
 @end deffn
 ';
 
+
+$result_texts{'def'} = '
+d--effn
+
+def--fn
+
+Various deff lines
+text in def item for second def item
+';
+
 $result_errors{'def'} = [
   {
     'error_line' => ':24: Must be in `@deffn\' environment to use `@deffnx\'

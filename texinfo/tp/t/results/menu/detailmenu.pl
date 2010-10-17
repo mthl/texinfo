@@ -159,6 +159,13 @@ $result_texis{'detailmenu'} = '
 @end menu
 ';
 
+
+$result_texts{'detailmenu'} = '
+* Copying Conditions::          Your rights.
+
+* detailmenu::
+';
+
 $result_errors{'detailmenu'} = [];
 
 

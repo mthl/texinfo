@@ -16,6 +16,9 @@ $result_trees{'macro_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'mac
 
 $result_texis{'macro_no_argument'} = '@macro@end macro';
 
+
+$result_texts{'macro_no_argument'} = '';
+
 $result_errors{'macro_no_argument'} = [
   {
     'error_line' => ':1: @macro requires a name

@@ -99,6 +99,12 @@ first arg: one
 second arg: two, three.
 ';
 
+
+$result_texts{'too_much_args'} = '
+first arg: one
+second arg: two, three.
+';
+
 $result_errors{'too_much_args'} = [
   {
     'error_line' => ':6: Macro `twoargs\' called with too many args

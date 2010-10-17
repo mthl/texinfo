@@ -149,6 +149,11 @@ result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 result: @emph{} protected \\ -> \\arg1\\ @emph{} @samp{f\\irst arg}, second arg
 ';
 
+
+$result_texts{'protect_in_body_line_arg'} = '
+result:  protected \\ -> \\arg1\\  f\\irst arg, second arg
+';
+
 $result_errors{'protect_in_body_line_arg'} = [
   {
     'error_line' => ':5: warning: @macro1 defined with zero or more than one argument should be invoked with {}

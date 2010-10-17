@@ -234,6 +234,17 @@ a
 @ringaccent  a.
 ';
 
+
+$result_texts{'macro_in_accent'} = '
+
+a*.
+a*.
+a~.
+a~.
+
+a*.
+';
+
 $result_errors{'macro_in_accent'} = [];
 
 

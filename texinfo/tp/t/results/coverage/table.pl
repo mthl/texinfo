@@ -373,6 +373,19 @@ In table
 @end vtable
 ';
 
+
+$result_texts{'table'} = '
+table item
+table itemx
+
+In table
+
+
+vtable item
+itemx vtable 
+
+';
+
 $result_errors{'table'} = [];
 
 

@@ -63,6 +63,9 @@ $result_trees{'nested'}{'contents'}[0]{'parent'} = $result_trees{'nested'};
 
 $result_texis{'nested'} = '@b{in b @verb{/ in verb { } /} in b end}';
 
+
+$result_texts{'nested'} = 'in b  in verb { }  in b end';
+
 $result_errors{'nested'} = [];
 
 

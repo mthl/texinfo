@@ -181,6 +181,17 @@ Text line after the text line followed by the sp.
 @sp 2 a number after sp
 ';
 
+
+$result_texts{'sp'} = '
+Text line followed on the same line and another below 
+
+
+Text line after the sp followed by a sp 
+Text line after the text line followed by the sp.
+
+
+';
+
 $result_errors{'sp'} = [];
 
 

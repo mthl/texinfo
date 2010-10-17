@@ -501,6 +501,16 @@ $result_texis{'multitable'} = '
 @end multitable
 ';
 
+
+$result_texts{'multitable'} = '
+mu--ltitable headitem another tab
+mu--ltitable item multitable tab
+mu--ltitable item 2 multitable tab 2
+lone mu--ltitable item
+
+truc bidule
+';
+
 $result_errors{'multitable'} = [];
 
 

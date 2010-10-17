@@ -129,6 +129,13 @@ Before (machin)
  after truc.
 ';
 
+
+$result_texts{'nested_macro_call'} = '
+
+Before (machin)
+ after truc.
+';
+
 $result_errors{'nested_macro_call'} = [];
 
 

@@ -71,6 +71,9 @@ $result_trees{'not_fraction'}{'contents'}[1]{'parent'} = $result_trees{'not_frac
 $result_texis{'not_fraction'} = '@multitable @columnfractions aaa
 @end multitable';
 
+
+$result_texts{'not_fraction'} = '';
+
 $result_errors{'not_fraction'} = [
   {
     'error_line' => ':1: column fraction not a number: aaa

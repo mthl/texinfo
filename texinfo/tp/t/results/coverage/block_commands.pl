@@ -248,6 +248,20 @@ in caption}
 @end float
 ';
 
+
+$result_texts{'block_commands'} = '
+in group
+
+ warning
+
+in quotation
+
+In float
+
+
+
+';
+
 $result_errors{'block_commands'} = [];
 
 

@@ -3378,6 +3378,83 @@ After page on its own line.
 
 ';
 
+
+$result_texts{'macro_in_misc_commands'} = '
+
+top atext
+Comment like: atext
+
+Text line followed by a comment on the same line and another below 
+
+
+
+
+
+
+
+
+
+@definfoenclose phoo,//,\\\\  
+bar
+
+
+bar
+
+
+very strong
+
+
+ is it really strong? 
+
+something before kbdinputstyle
+
+
+truc
+
+example
+
+
+
+
+
+
+
+
+
+@page  @noindent  @refill  something
+
+     noindent at beginning of line
+
+noindent on the preceding line
+      noindent after space at beginning of line
+After page on its own line.
+
+@page    @noindent     @refill 
+
+
+
+
+
+
+ line after exdent
+
+
+
+
+
+
+* node atext::
+
+chapter
+
+
+
+
+
+
+
+';
+
 $result_errors{'macro_in_misc_commands'} = [];
 
 

@@ -373,6 +373,16 @@ bar
 @chapter bar
 ';
 
+
+$result_texts{'value_node_directions'} = '
+Var bar
+bar
+
+BarFoo
+
+bar
+';
+
 $result_errors{'value_node_directions'} = [];
 
 

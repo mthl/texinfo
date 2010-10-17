@@ -213,6 +213,13 @@ bar-expansion
 @end itemize
 ';
 
+
+$result_texts{'macro_in_brace_command'} = '
+
+foo-expansion@bar-expansion,
+  also helped.
+';
+
 $result_errors{'macro_in_brace_command'} = [];
 
 

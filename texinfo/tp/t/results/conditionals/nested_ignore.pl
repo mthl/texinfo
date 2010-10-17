@@ -140,6 +140,11 @@ $result_texis{'nested_ignore'} = '@ignore
 @end ignore
 ';
 
+
+$result_texts{'nested_ignore'} = '
+
+';
+
 $result_errors{'nested_ignore'} = [];
 
 

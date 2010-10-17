@@ -102,6 +102,14 @@ gurgl
 @value{unknown}
 ';
 
+
+$result_texts{'bad_syntax'} = '
+
+gurgl
+
+
+';
+
 $result_errors{'bad_syntax'} = [
   {
     'error_line' => ':2: @set requires a name

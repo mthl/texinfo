@@ -50,6 +50,10 @@ $result_texis{'value_zero'} = '@set zero 0
 Value
 0';
 
+
+$result_texts{'value_zero'} = 'Value
+0';
+
 $result_errors{'value_zero'} = [];
 
 

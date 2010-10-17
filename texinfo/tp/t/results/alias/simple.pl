@@ -276,6 +276,16 @@ Should be verb: @verb{!verb!}
 @end table
 ';
 
+
+$result_texts{'simple'} = '
+
+Should be code: code
+
+Should be verb: verb
+
+table item (code)
+';
+
 $result_errors{'simple'} = [];
 
 

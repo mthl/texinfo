@@ -123,6 +123,13 @@ $result_texis{'no_paragraph_commands'} = '@*
 @image{aa,bb,cc,dd,ee}
 ';
 
+
+$result_texts{'no_paragraph_commands'} = '
+
+title font
+aa
+';
+
 $result_errors{'no_paragraph_commands'} = [];
 
 

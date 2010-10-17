@@ -6,6 +6,9 @@ $result_trees{'not_set'} = {
 
 $result_texis{'not_set'} = '';
 
+
+$result_texts{'not_set'} = '';
+
 $result_errors{'not_set'} = [];
 
 

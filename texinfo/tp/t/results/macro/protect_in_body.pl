@@ -151,6 +151,11 @@ result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 the result: @emph{@samp{f\\irst arg}} protected \\ -> \\arg1\\ @emph{second arg } after macro.
 ';
 
+
+$result_texts{'protect_in_body'} = '
+the result: f\\irst arg protected \\ -> \\arg1\\ second arg  after macro.
+';
+
 $result_errors{'protect_in_body'} = [];
 
 

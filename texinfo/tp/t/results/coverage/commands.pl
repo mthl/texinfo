@@ -317,6 +317,14 @@ $result_texis{'commands'} = '@@ @TeX{} @
 @majorheading majorheading @b{in b}
 ';
 
+
+$result_texts{'commands'} = '@ TeX  e" i^ a~ a*
+b
+
+
+majorheading in b
+';
+
 $result_errors{'commands'} = [];
 
 

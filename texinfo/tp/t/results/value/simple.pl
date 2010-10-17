@@ -92,6 +92,10 @@ $result_texis{'simple'} = '@set a-_5b the value @b{b} @c comment
 the value @b{b} @c comment After value.
 ';
 
+
+$result_texts{'simple'} = '
+the value b ';
+
 $result_errors{'simple'} = [];
 
 

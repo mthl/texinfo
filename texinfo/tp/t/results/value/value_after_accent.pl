@@ -65,6 +65,10 @@ $result_texis{'value_after_accent'} = '@set a_letter a
 @ringaccenta
 @~a';
 
+
+$result_texts{'value_after_accent'} = 'a
+a';
+
 $result_errors{'value_after_accent'} = [
   {
     'error_line' => ':2: Use braces to give a command as an argument to @ringaccent

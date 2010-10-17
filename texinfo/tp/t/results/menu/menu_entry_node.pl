@@ -225,6 +225,13 @@ $result_texis{'menu_entry_node'} = '@menu
 @end menu
 ';
 
+
+$result_texts{'menu_entry_node'} = '* (f)a1::
+* (f)a2::  
+* (f)a3::         d
+* (f)@a:: 
+';
+
 $result_errors{'menu_entry_node'} = [];
 
 

@@ -89,6 +89,9 @@ $result_trees{'good_space_comment'}{'contents'}[1]{'parent'} = $result_trees{'go
 $result_texis{'good_space_comment'} = '@multitable @columnfractions 0 1  @c space comment
 @end multitable';
 
+
+$result_texts{'good_space_comment'} = '';
+
 $result_errors{'good_space_comment'} = [];
 
 

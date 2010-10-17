@@ -1373,6 +1373,46 @@ fn
 @printindex fn
 ';
 
+
+$result_texts{'value_in_index_commands'} = '
+
+
+definedx truc
+after
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pg
+
+ky
+
+truc
+
+value truc
+
+cp
+
+value cp
+
+defg
+
+abc
+
+fn
+';
+
 $result_errors{'value_in_index_commands'} = [];
 
 

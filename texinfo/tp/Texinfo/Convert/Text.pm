@@ -146,7 +146,7 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
 
 # node?
 my %kept_misc_commands;
-foreach my $command ('sp', 'center',
+foreach my $command ('sp', 'center', 'item', 'itemx', 'tab', 'headitem',
     'top',
     'chapter',
     'unnumbered',
@@ -191,7 +191,7 @@ sub ascii_accents($$)
 }
 
 my %ignored_types;
-foreach my $type ('empty_line_after_command') {
+foreach my $type ('empty_line_after_command', 'empty_spaces_after_command') {
   $ignored_types{$type} = 1;
 }
 
@@ -213,6 +213,13 @@ sub convert($;$)
   my $state = shift;
   
   $state = {} if (!defined($state));
+
+  if (0) {
+    print STDERR "root\n";
+    print STDERR "  Command: $root->{'cmdname'}\n" if ($root->{'cmdname'});
+    print STDERR "  Type: $root->{'type'}\n" if ($root->{'type'});
+    print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
+  }
 
   return '' if (($root->{'type'} and $ignored_types{$root->{'type'}})
      or ($root->{'cmdname'} 
@@ -248,16 +255,35 @@ sub convert($;$)
       return $text if (defined($text) and ($text ne ''));
       return $mail;
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
-           and $root->{'args'}->[0]->{'type'}
-           and $root->{'args'}->[0]->{'type'} eq 'brace_command_argument') {
+           and (($root->{'args'}->[0]->{'type'}
+                and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')
+                or $root->{'cmdname'} eq 'math')) {
       return convert($root->{'args'}->[0]);
-    }
     # block commands
-    if (($root->{'cmdname'} eq 'quotation'
+    } elsif (($root->{'cmdname'} eq 'quotation'
           or $root->{'cmdname'} eq 'smallquotation')) {
       if ($root->{'args'}) {
         $result = convert($root->{'args'}->[0]) ."\n";
       }
+    } elsif ($kept_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
+      if ($root->{'cmdname'} eq 'sp') {
+        if ($root->{'special'} and $root->{'special'}->{'misc_args'}
+            and $root->{'special'}->{'misc_args'}->[0]) {
+          # this useless copy avoids perl changing the type to integer!
+          my $sp_nr = $root->{'special'}->{'misc_args'}->[0];
+          $result = "\n" x $sp_nr;
+        }
+      } else {
+        $result = convert($root->{'args'}->[0]);
+        # we always want an end of line even if is was eaten by a 
+        chomp ($result);
+        $result .= "\n";
+      }
+    }
+  }
+  if ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
+    foreach my $arg (@{$root->{'args'}}) {
+      $result .= convert($arg);
     }
   }
   if ($root->{'contents'}) {
@@ -275,6 +301,8 @@ sub convert($;$)
       $result .= convert($content, $convert_state);
     }
   }
+  $result = '{'.$result.'}' 
+     if ($root->{'type'} and $root->{'type'} eq 'bracketed');
   return $result;
 }
 

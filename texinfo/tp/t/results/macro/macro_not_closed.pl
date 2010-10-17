@@ -35,6 +35,9 @@ $result_texis{'macro_not_closed'} = '@macro name
 in macro
 @end macro';
 
+
+$result_texts{'macro_not_closed'} = '';
+
 $result_errors{'macro_not_closed'} = [
   {
     'error_line' => ':2: No matching `@end macro\'

@@ -141,6 +141,12 @@ result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argu
 result: @emph{macro_arg1} the \\the thearg \\thearg with value \\thearg
 ';
 
+
+$result_texts{'value_in_macro_formal_arg'} = '
+
+result: macro_arg1 the \\the thearg \\thearg with value \\thearg
+';
+
 $result_errors{'value_in_macro_formal_arg'} = [
   {
     'error_line' => ':3: Bad syntax for @macro

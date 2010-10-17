@@ -92,7 +92,11 @@ sub test($$)
     my $perl_string_result = $texi_string_result;
     $perl_string_result =~ s/\\/\\\\/g;
     $perl_string_result =~ s/'/\\'/g;
+    my $perl_string_converted_text = $converted_text;
+    $perl_string_converted_text =~ s/\\/\\\\/g;
+    $perl_string_converted_text =~ s/'/\\'/g;
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
+    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
     print OUT $out_result;
     close (OUT);
@@ -126,7 +130,8 @@ sub test($$)
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
-    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' text' );
+    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi' );
+    ok ($converted_text eq $result_texts{$test_name}, $test_name.' text' );
     #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text' );
   }
   #exit;
@@ -162,7 +167,7 @@ sub run_all($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-    plan tests => (1 + scalar(@$ran_tests) * 3);
+    plan tests => (1 + scalar(@$ran_tests) * 4);
   }
 }
 
@@ -193,7 +198,7 @@ sub run_all_files($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-     plan tests => (1 + scalar(@$ran_tests) * 3);
+     plan tests => (1 + scalar(@$ran_tests) * 4);
   }
 }
 

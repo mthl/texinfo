@@ -390,6 +390,28 @@ in macro
 after in mymacro
 ';
 
+
+$result_texts{'two_macros_on_a_line'} = '
+
+
+@mymacro{} @mymacro{}
+in mymacro in mymacro
+
+@mymacro @mymacro{}
+in mymacro in mymacro
+
+@mymacro{} @mymacro
+in mymacro in mymacro
+
+with args
+in with args
+now the arg an
+arg
+
+in macro
+after in mymacro
+';
+
 $result_errors{'two_macros_on_a_line'} = [
   {
     'error_line' => ':16: warning: @mymacro defined with zero or more than one argument should be invoked with {}

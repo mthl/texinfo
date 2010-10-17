@@ -349,6 +349,20 @@ new comment
 @end menu
 ';
 
+
+$result_texts{'simple'} = '
+comment
+* menu entry name : node.    description
+* node name::                description new
+* other entry: node,    
+* last::
+                 description next line
+                 still description
+
+new comment
+* last node entry ::
+';
+
 $result_errors{'simple'} = [];
 
 

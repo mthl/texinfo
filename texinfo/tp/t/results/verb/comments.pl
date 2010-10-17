@@ -121,6 +121,11 @@ in a verb a}@c comment
 
 something @verb{, in verb,} @c other comment';
 
+
+$result_texts{'comments'} = ' comment @c comment
+in a verb 
+something  in verb ';
+
 $result_errors{'comments'} = [];
 
 

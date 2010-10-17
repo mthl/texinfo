@@ -2769,6 +2769,75 @@ After page on it\'s own line.
 @bye
 ';
 
+
+$result_texts{'value_in_misc_commands'} = '
+top atext
+Comment like: atext
+
+Text line followed by a comment on the same line and another below 
+
+
+
+
+
+@definfoenclose phoo,//,\\\\  
+bar
+
+
+bar
+
+
+very strong
+
+
+ is it really strong? 
+
+something before kbdinputstyle
+
+
+truc
+
+example
+
+
+
+
+
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+
+
+
+
+
+@page 
+noindent at beginning of line
+noindent on the preceding line
+  noindent after space at beginning of line
+After page on it\'s own line.
+
+@page 
+
+
+
+
+line after exdent
+
+
+
+
+
+
+
+
+
+
+
+';
+
 $result_errors{'value_in_misc_commands'} = [
   {
     'error_line' => ':143: warning: Remaining argument on @clickstyle line: {result_macro}

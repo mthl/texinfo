@@ -71,6 +71,12 @@ $result_texis{'end_of_line'} = 'verb at end of line @verb{
 @{ in verb at end of line @c comment
 and now end}after end.';
 
+
+$result_texts{'end_of_line'} = 'verb at end of line 
+
+@{ in verb at end of line @c comment
+and now endafter end.';
+
 $result_errors{'end_of_line'} = [
   {
     'error_line' => ':1: @verb without associated character

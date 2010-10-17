@@ -224,6 +224,20 @@ accent character followed by @@ @~@.
 
 ';
 
+
+$result_texts{'accents'} = 'a*
+
+accent at end of line 
+accent at end of line and spaces 
+accent followed by @ .
+
+accent character with spaces  following.
+accent character at end of line 
+accent character followed by @ .
+
+
+';
+
 $result_errors{'accents'} = [
   {
     'error_line' => ':3: warning: Accent command `@ringaccent\' must not be followed by new line

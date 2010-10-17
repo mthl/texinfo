@@ -77,6 +77,9 @@ $result_trees{'good'}{'contents'}[1]{'parent'} = $result_trees{'good'};
 $result_texis{'good'} = '@multitable @columnfractions 0.4 .6 5.
 @end multitable';
 
+
+$result_texts{'good'} = '';
+
 $result_errors{'good'} = [];
 
 

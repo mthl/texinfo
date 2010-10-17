@@ -75,6 +75,13 @@ $result_texis{'empty_value_in_line'} = '@set myspace
 1
 ';
 
+
+$result_texts{'empty_value_in_line'} = '
+1 
+ 
+1
+';
+
 $result_errors{'empty_value_in_line'} = [];
 
 

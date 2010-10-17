@@ -90,6 +90,9 @@ $result_trees{'good_comment'}{'contents'}[1]{'parent'} = $result_trees{'good_com
 $result_texis{'good_comment'} = '@multitable @columnfractions 0.4 .6 5.@c comment
 @end multitable';
 
+
+$result_texts{'good_comment'} = '';
+
 $result_errors{'good_comment'} = [];
 
 

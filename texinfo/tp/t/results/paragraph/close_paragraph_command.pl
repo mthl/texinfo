@@ -120,6 +120,16 @@ p before sp
 @sp 4
 inew p after sp';
 
+
+$result_texts{'close_paragraph_command'} = 'para in titlefont after titlefont.
+
+p before sp
+
+
+
+
+inew p after sp';
+
 $result_errors{'close_paragraph_command'} = [];
 
 

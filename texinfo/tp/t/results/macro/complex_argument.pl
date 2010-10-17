@@ -590,6 +590,31 @@ Call macro7
 
 ';
 
+
+$result_texts{'complex_argument'} = '
+
+
+ @macro2 
+2
+3
+4
+2
+3
+4
+@macro2
+macro7 defined
+1
+2
+3
+4
+
+&&&& 
+
+Call macro7
+aaa
+
+';
+
 $result_errors{'complex_argument'} = [];
 
 

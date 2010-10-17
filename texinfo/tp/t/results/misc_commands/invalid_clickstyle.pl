@@ -203,6 +203,18 @@ A @click{} (nocmd).
 A @click{} (something).
 ';
 
+
+$result_texts{'invalid_clickstyle'} = '
+
+A  (result on the same line).
+
+
+A  (nocmd).
+
+
+A  (something).
+';
+
 $result_errors{'invalid_clickstyle'} = [
   {
     'error_line' => ':2: warning: Remaining argument on @clickstyle line: on the same line

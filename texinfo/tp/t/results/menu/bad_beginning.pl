@@ -85,6 +85,13 @@ $result_texis{'bad_beginning'} = '@menu
 *@code{in code}::
 @end menu';
 
+
+$result_texts{'bad_beginning'} = '*   
+*
+*something::
+*in code::
+';
+
 $result_errors{'bad_beginning'} = [];
 
 

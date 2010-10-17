@@ -386,6 +386,25 @@ cropmarks @cropmarks
 exdent @exdent line after exdent
 ';
 
+
+$result_texts{'also_not_line'} = '
+
+page noindent refill  something
+
+noindent at beginning of line
+noindent on the preceding line
+  noindent after space at beginning of line
+After page on its own line.
+
+page noindent refill  
+novalidate 
+special
+
+Only valid between iftex:
+vskip cropmarks 
+exdent line after exdent
+';
+
 $result_errors{'also_not_line'} = [];
 
 

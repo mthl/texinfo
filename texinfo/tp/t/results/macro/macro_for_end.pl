@@ -88,6 +88,11 @@ $result_texis{'macro_for_end'} = '@macro my-end
  cartouche
 @end cartouche';
 
+
+$result_texts{'macro_for_end'} = '
+cartouche
+';
+
 $result_errors{'macro_for_end'} = [
   {
     'error_line' => ':6: No matching `@end cartouche\'

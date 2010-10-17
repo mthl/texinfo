@@ -208,6 +208,15 @@ a, hello text for macro2 after arg
 &&&& 
 ';
 
+
+$result_texts{'macro_in_macro_arg'} = '
+
+
+
+a, hello text for macro2 after arg
+&&&& 
+';
+
 $result_errors{'macro_in_macro_arg'} = [];
 
 

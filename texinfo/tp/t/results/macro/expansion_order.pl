@@ -139,6 +139,13 @@ $result_texis{'expansion_order'} = '@macro bidule{arg}
 
 ';
 
+
+$result_texts{'expansion_order'} = '
+
+\\arg\\
+
+';
+
 $result_errors{'expansion_order'} = [];
 
 

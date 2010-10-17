@@ -348,6 +348,20 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 @strong{ is it really strong? }
 ';
 
+
+$result_texts{'definfoenclose'} = '
+definfoenclose phoo,//,\\  
+bar
+
+definfoenclose phi,:,:  
+bar
+
+very strong
+
+
+ is it really strong? 
+';
+
 $result_errors{'definfoenclose'} = [];
 
 

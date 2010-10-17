@@ -52,6 +52,9 @@ $result_texis{'empty_end'} = '@macro foo {aaa, }
 in foo
 @end macro';
 
+
+$result_texts{'empty_end'} = '';
+
 $result_errors{'empty_end'} = [];
 
 

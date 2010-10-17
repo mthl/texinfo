@@ -339,6 +339,21 @@ Complex
 
 ';
 
+
+$result_texts{'math'} = 'Simple math
+{x^i}\\over{\\tan y}
+
+Math with @-command
+math code a < b
+
+Complex
+ \\underline{math \\hbox{ code }} i \\sum_{i}{\\underline{f}}
+
+@\\ outside of math
+
+
+';
+
 $result_errors{'math'} = [
   {
     'error_line' => ':11: warning: @\\ should only appear in math context

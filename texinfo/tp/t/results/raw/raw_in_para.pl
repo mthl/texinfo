@@ -203,6 +203,18 @@ in tex2
 End.
 ';
 
+
+$result_texts{'raw_in_para'} = 'para
+in verbatim
+
+para b html
+in para
+
+para b tex
+
+End.
+';
+
 $result_errors{'raw_in_para'} = [];
 
 

@@ -217,6 +217,12 @@ in macro foo
 @end macro
 ';
 
+
+$result_texts{'bad_formal_arg'} = '
+
+
+';
+
 $result_errors{'bad_formal_arg'} = [
   {
     'error_line' => ':2: Bad or empty @macro formal argument: 

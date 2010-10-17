@@ -79,6 +79,9 @@ $result_trees{'empty_comment'}{'contents'}[1]{'parent'} = $result_trees{'empty_c
 $result_texis{'empty_comment'} = '@multitable @columnfractions @c
 @end multitable';
 
+
+$result_texts{'empty_comment'} = '';
+
 $result_errors{'empty_comment'} = [
   {
     'error_line' => ':1: @columnfractions missing argument

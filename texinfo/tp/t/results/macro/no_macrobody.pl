@@ -82,6 +82,13 @@ $result_texis{'no_macrobody'} = '@macro no-macrobody {arg}
 .
 ';
 
+
+$result_texts{'no_macrobody'} = '
+
+
+.
+';
+
 $result_errors{'no_macrobody'} = [];
 
 

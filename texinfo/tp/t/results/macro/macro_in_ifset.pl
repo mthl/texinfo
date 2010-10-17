@@ -62,6 +62,10 @@ $result_texis{'macro_in_ifset'} = '@macro macro1 {arg}
 
 ';
 
+
+$result_texts{'macro_in_ifset'} = '
+';
+
 $result_errors{'macro_in_ifset'} = [];
 
 

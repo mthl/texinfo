@@ -109,6 +109,11 @@ $result_texis{'index_entries'} = '@cindex cindex entry
 @trucindex index truc
 ';
 
+
+$result_texts{'index_entries'} = '
+
+';
+
 $result_errors{'index_entries'} = [];
 
 

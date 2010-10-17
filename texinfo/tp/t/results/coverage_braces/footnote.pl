@@ -94,6 +94,9 @@ $result_texis{'footnote'} = 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.';
 
+
+$result_texts{'footnote'} = 'text after footnote.';
+
 $result_errors{'footnote'} = [];
 
 

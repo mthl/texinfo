@@ -115,6 +115,11 @@ $result_texis{'bad_line'} = '
 @alias garbage-on-line =cmd @code{in code}
 ';
 
+
+$result_texts{'bad_line'} = '
+
+';
+
 $result_errors{'bad_line'} = [
   {
     'error_line' => ':4: Bad argument to @alias

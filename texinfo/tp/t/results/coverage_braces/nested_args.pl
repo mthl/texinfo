@@ -98,6 +98,9 @@ $result_trees{'nested_args'}{'contents'}[0]{'parent'} = $result_trees{'nested_ar
 
 $result_texis{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}}';
 
+
+$result_texts{'nested_args'} = '';
+
 $result_errors{'nested_args'} = [];
 
 

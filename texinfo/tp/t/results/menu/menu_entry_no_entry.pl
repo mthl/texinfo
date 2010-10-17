@@ -170,6 +170,12 @@ $result_texis{'menu_entry_no_entry'} = '@menu
 @end menu
 ';
 
+
+$result_texts{'menu_entry_no_entry'} = '* a1:
+* a2:  
+* a1c:* a2c:  * a4a: 
+* a5b: ';
+
 $result_errors{'menu_entry_no_entry'} = [];
 
 

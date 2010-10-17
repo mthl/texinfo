@@ -579,6 +579,23 @@ menu comment
 @end menu
 ';
 
+
+$result_texts{'macro_in_menu'} = '
+
+
+
+
+
+
+* menu entry:: description
+  
+menu comment
+* node::
+* other node::
+* node colon macro:: description
+* 3rd node: entry. description
+';
+
 $result_errors{'macro_in_menu'} = [];
 
 

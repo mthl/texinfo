@@ -74,6 +74,12 @@ Macro
 0
 ';
 
+
+$result_texts{'macro_zero'} = '
+Macro
+0
+';
+
 $result_errors{'macro_zero'} = [];
 
 

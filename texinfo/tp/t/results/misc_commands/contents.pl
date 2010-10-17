@@ -153,6 +153,18 @@ shortcontents @shortcontents eol
 summarycontents @summarycontents line following summarycontents
 ';
 
+
+$result_texts{'contents'} = '
+first @contents  line following first content
+second @contents  line following second content
+Third content on the following line on his own
+
+Line following contents
+shortcontents  eol
+shortcontents  eol
+summarycontents  line following summarycontents
+';
+
 $result_errors{'contents'} = [];
 
 

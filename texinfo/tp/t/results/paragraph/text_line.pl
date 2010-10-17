@@ -37,6 +37,12 @@ text
 
 ';
 
+
+$result_texts{'text_line'} = '
+text
+
+';
+
 $result_errors{'text_line'} = [];
 
 

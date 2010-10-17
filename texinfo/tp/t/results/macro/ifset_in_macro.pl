@@ -80,6 +80,10 @@ $result_texis{'ifset_in_macro'} = '@macro note {arg}
 
 ';
 
+
+$result_texts{'ifset_in_macro'} = '
+';
+
 $result_errors{'ifset_in_macro'} = [];
 
 

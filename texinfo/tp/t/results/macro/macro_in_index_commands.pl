@@ -1658,6 +1658,51 @@ fn
 @printindex fn
 ';
 
+
+$result_texts{'macro_in_index_commands'} = '
+
+
+documentlanguage 
+documentlanguage on its line
+line following documentlanguage
+
+
+definedx truc
+after
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pg
+
+ky
+
+truc
+
+value truc
+
+cp
+
+value cp
+
+defg
+
+abc
+
+fn
+';
+
 $result_errors{'macro_in_index_commands'} = [];
 
 

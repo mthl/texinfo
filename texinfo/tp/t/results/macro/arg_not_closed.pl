@@ -76,6 +76,11 @@ foo
 call foo
 ';
 
+
+$result_texts{'arg_not_closed'} = '
+call foo
+';
+
 $result_errors{'arg_not_closed'} = [
   {
     'error_line' => ':5: @foo missing close brace

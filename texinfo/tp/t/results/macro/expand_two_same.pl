@@ -200,6 +200,19 @@ With a doubles arg arg with comma , here  and re arg with comma , here
 
 ';
 
+
+$result_texts{'expand_two_same'} = 'Call macro2
+With a doubles arg a simple 
+arg
+ and re a simple 
+arg
+
+
+Call macro2 with 2 args
+With a doubles arg arg with comma , here  and re arg with comma , here 
+
+';
+
 $result_errors{'expand_two_same'} = [];
 
 

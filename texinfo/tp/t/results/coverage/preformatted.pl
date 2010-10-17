@@ -182,6 +182,17 @@ in table in format
 @end format
 ';
 
+
+$result_texts{'preformatted'} = '
+e--xample  some  
+
+   text
+
+item in table in format
+
+in table in format
+';
+
 $result_errors{'preformatted'} = [];
 
 

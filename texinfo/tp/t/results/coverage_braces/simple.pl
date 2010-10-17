@@ -40,6 +40,9 @@ $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@b{in  b}.';
 
+
+$result_texts{'simple'} = 'in  b.';
+
 $result_errors{'simple'} = [];
 
 

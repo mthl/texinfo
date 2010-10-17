@@ -145,6 +145,13 @@ a, macro2text for macro2
 &&&& 
 ';
 
+
+$result_texts{'macro_in_macro_arg_simpler'} = '
+
+a, macro2text for macro2
+&&&& 
+';
+
 $result_errors{'macro_in_macro_arg_simpler'} = [];
 
 

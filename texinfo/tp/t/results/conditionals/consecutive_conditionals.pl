@@ -47,6 +47,11 @@ $result_texis{'consecutive_conditionals'} = '
 
 ';
 
+
+$result_texts{'consecutive_conditionals'} = '
+
+';
+
 $result_errors{'consecutive_conditionals'} = [];
 
 

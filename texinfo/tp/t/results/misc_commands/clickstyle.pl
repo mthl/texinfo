@@ -67,6 +67,11 @@ $result_texis{'clickstyle'} = '@clickstyle @result
 A @click{} (result).
 ';
 
+
+$result_texts{'clickstyle'} = '
+A  (result).
+';
+
 $result_errors{'clickstyle'} = [];
 
 

@@ -82,6 +82,10 @@ $result_texis{'space_macro_after_end'} = '@macro spaces
 in html
 @end html   ';
 
+
+$result_texts{'space_macro_after_end'} = '
+';
+
 $result_errors{'space_macro_after_end'} = [];
 
 

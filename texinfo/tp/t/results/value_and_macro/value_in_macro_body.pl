@@ -134,6 +134,12 @@ result: @emph{\\@value{bodyarg}\\  }
 result: @emph{\\\\arg\\  }
 ';
 
+
+$result_texts{'value_in_macro_body'} = '
+
+result: \\\\arg\\  
+';
+
 $result_errors{'value_in_macro_body'} = [
   {
     'error_line' => ':7: \\ in macro expansion followed `@value{bodyarg}\' instead of parameter name or \\

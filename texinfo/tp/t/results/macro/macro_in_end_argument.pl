@@ -88,6 +88,11 @@ cartouche
  cartouche
 @end cartouche';
 
+
+$result_texts{'macro_in_end_argument'} = '
+cartouche
+';
+
 $result_errors{'macro_in_end_argument'} = [
   {
     'error_line' => ':6: No matching `@end cartouche\'

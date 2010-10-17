@@ -62,6 +62,10 @@ in macro
 @end macro after
 ';
 
+
+$result_texts{'text_before_after'} = 'before after
+';
+
 $result_errors{'text_before_after'} = [];
 
 

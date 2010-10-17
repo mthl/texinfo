@@ -83,6 +83,11 @@ $result_texis{'implicit_quoting_recursion'} = '@rmacro cat{a,b}
 natopocotuototam
 ';
 
+
+$result_texts{'implicit_quoting_recursion'} = '
+natopocotuototam
+';
+
 $result_errors{'implicit_quoting_recursion'} = [];
 
 

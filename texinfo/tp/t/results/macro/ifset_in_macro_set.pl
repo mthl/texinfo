@@ -102,6 +102,12 @@ arg
 
 ';
 
+
+$result_texts{'ifset_in_macro_set'} = '
+arg
+
+';
+
 $result_errors{'ifset_in_macro_set'} = [];
 
 

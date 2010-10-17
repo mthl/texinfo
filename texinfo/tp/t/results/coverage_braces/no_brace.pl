@@ -36,6 +36,9 @@ $result_trees{'no_brace'}{'contents'}[0]{'parent'} = $result_trees{'no_brace'};
 
 $result_texis{'no_brace'} = '@TeX and @code code';
 
+
+$result_texts{'no_brace'} = 'TeX and  code';
+
 $result_errors{'no_brace'} = [
   {
     'error_line' => ':1: @TeX expected braces

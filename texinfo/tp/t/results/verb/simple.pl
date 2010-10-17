@@ -37,6 +37,9 @@ $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@verb{.  }   .  .}';
 
+
+$result_texts{'simple'} = '  }   .  ';
+
 $result_errors{'simple'} = [];
 
 

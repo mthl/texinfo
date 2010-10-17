@@ -53,6 +53,11 @@ $result_texis{'empty_set'} = '@set myspace
 1  1
 ';
 
+
+$result_texts{'empty_set'} = '
+1  1
+';
+
 $result_errors{'empty_set'} = [];
 
 

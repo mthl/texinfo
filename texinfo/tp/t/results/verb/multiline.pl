@@ -60,6 +60,12 @@ qdsqsddqsdsq
 
 @}after verb.';
 
+
+$result_texts{'multiline'} = '
+qdsqsddqsdsq
+
+after verb.';
+
 $result_errors{'multiline'} = [];
 
 

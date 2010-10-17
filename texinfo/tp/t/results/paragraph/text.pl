@@ -19,6 +19,9 @@ $result_trees{'text'}{'contents'}[0]{'parent'} = $result_trees{'text'};
 
 $result_texis{'text'} = 'text';
 
+
+$result_texts{'text'} = 'text';
+
 $result_errors{'text'} = [];
 
 
