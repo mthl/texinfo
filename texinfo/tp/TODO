@@ -22,9 +22,7 @@ test root_commands, like nodes and sections
 Error message if block or line misc at-command on a 
 block command or misc @-command line
 
-t/results/macro/macro_in_misc_commands.pl
-some spaces are not counted as empty_spaces_after_command.
-
+Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
 

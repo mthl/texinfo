@@ -307,6 +307,13 @@ a
 
 @ringaccent@space{}@a-letter{}.
 '],
+['macro_for_ignored_line_command',
+'@macro page-macro
+@page
+@end macro
+
+@page-macro{} on the line
+'],
 ['two_macros_on_a_line',
 '@macro mymacro
 in mymacro
@@ -760,17 +767,19 @@ true
 @refill
 @end macro
 
-@@page @page-macro{} @@noindent @noindent-macro{} @@refill @refill-macro{} something
+@@page @page-macro{} on page line
+@@noindent @noindent-macro{} @@refill @refill-macro{} something
 
 @noindent-macro{}     noindent at beginning of line
 @noindent-macro{}
 noindent on the preceding line
   @noindent-macro{}    noindent after space at beginning of line
-@page         page at beginning of line
-@page
+@page-macro{}         page at beginning of line
+@page-macro{}
 After page on its own line.
 
-@@page @page-macro{}   @@noindent @noindent-macro{}    @@refill @refill-macro{}
+@@page @page-macro{}
+two spaces   @@noindent @noindent-macro{}    @@refill @refill-macro{}
 
 @macro contents-macro 
 @contents
