@@ -32,7 +32,5 @@ tests in test/macros, not incorporated
 glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
-include_macro.texi
-include-value.texi
 
 todo: macro_in_pass_texi_commands
