@@ -63,7 +63,8 @@ $result_trees{'preformatted'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' '
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
                 },
                 {
                   'cmdname' => 'code',

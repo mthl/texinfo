@@ -43,8 +43,7 @@ $result_trees{'bad_syntax'} = {
     {
       'parent' => {},
       'text' => '
-',
-      'type' => 'empty_line'
+'
     },
     {
       'contents' => [

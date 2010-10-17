@@ -8,7 +8,8 @@ $result_trees{'not_fraction'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'args' => [

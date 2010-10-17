@@ -167,7 +167,8 @@ $result_trees{'simple'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => 'code',

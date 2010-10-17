@@ -50,8 +50,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
     {
       'parent' => {},
       'text' => '
-',
-      'type' => 'empty_line'
+'
     },
     {
       'contents' => [

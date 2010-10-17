@@ -439,12 +439,18 @@ foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill',
   delete $begin_line_commands{$misc_not_begin_line};
 }
 
+my %block_arg_commands;
 foreach my $block_command (keys(%block_commands)) {
   $begin_line_commands{$block_command} = 1;
   $default_no_paragraph_commands{$block_command} = 1;
   $close_paragraph_commands{$block_command} = 1 
      unless ($block_commands{$block_command} eq 'raw' or 
              $block_commands{$block_command} eq 'conditional');
+  $block_arg_commands{$block_command} = 1 
+    if ($block_command eq 'multitable' 
+        or $def_commands{$block_command}
+        or ($block_commands{$block_command} 
+            and $block_commands{$block_command} =~ /^\d+$/));
 }
 $close_paragraph_commands{'verbatim'} = 1;
 
@@ -1319,22 +1325,18 @@ sub _end_line($$$)
       }
       $multitable->{'special'}->{'prototypes'} = \@prototype_row;
 
-    # don't consider empty argument of block @-commands as arguments, 
-    # but instead consider them as empty_line_after_command  
-    } elsif (@{$current->{'parent'}->{'args'}} == 1 
-             and @{$current->{'contents'}} == 1
-             and defined $current->{'contents'}->[0]->{'text'}
-             and $current->{'contents'}->[0]->{'text'} !~ /\S/) {
-      $empty_text = $current->{'contents'}->[0];
     }
     $current = $current->{'parent'};
-    if (defined($empty_text)) {
+    # don't consider empty argument of block @-commands as argument,
+    # reparent them as contents
+    if ($current->{'args'}->[0]->{'contents'}->[0] 
+         and $current->{'args'}->[0]->{'contents'}->[0]->{'type'}
+         and $current->{'args'}->[0]->{'contents'}->[0]->{'type'} eq 'empty_line_after_command')
+    {
+      my $empty_text = $current->{'args'}->[0]->{'contents'}->[0];
+      $empty_text->{'parent'} = $current;
+      unshift @{$current->{'contents'}}, $empty_text;
       delete $current->{'args'};
-      if ($empty_text->{'text'} ne '') {
-        push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
-                                          'text' => $empty_text->{'text'},
-                                          'parent' => $current };
-      }
     }
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
@@ -2157,17 +2159,14 @@ sub _internal_parse_text($$;$)
                                                 'contents' => [] };
             }
             $current = $current->{'contents'}->[-1];
-            my $arg_number = $block_commands{$command}
-              if ($block_commands{$command} 
-                  and $block_commands{$command} =~ /^\d+$/);
-            if ($arg_number
-                or $command eq 'multitable'
-                or $def_commands{$command}) {
+            if ($block_arg_commands{$command}) {
               $current->{'args'} = [ {
                  'type' => 'block_line_arg',
                  'contents' => [],
                  'parent' => $current } ];
-              $current->{'remaining_args'} = $arg_number -1 if ($arg_number);
+              
+              $current->{'remaining_args'} = $block_commands{$command} -1 
+                if ($block_commands{$command} =~ /^\d+$/);
               $current = $current->{'args'}->[-1];
             } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
@@ -2181,8 +2180,8 @@ sub _internal_parse_text($$;$)
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'debug'});
               }
               
-              $line = _start_empty_line_after_command($line, $current);
             }
+            $line = _start_empty_line_after_command($line, $current);
           }
         } elsif (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command})) {
@@ -2223,6 +2222,7 @@ sub _internal_parse_text($$;$)
         if ($separator eq '@') {
           _line_error ($self, $self->__("Unexpected \@"), $line_nr);
         } elsif ($separator eq '{') {
+          _abort_empty_line ($self, $current);
           if ($current->{'cmdname'} 
                and (defined($brace_commands{$current->{'cmdname'}})
                      or $self->{'definfoenclose'}->{$current->{'cmdname'}})) {
@@ -2262,7 +2262,8 @@ sub _internal_parse_text($$;$)
                                              ord('{')), $line_nr);
           }
 
-        } elsif ($separator eq '}') { 
+        } elsif ($separator eq '}') {
+          _abort_empty_line ($self, $current);
           #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
@@ -2275,7 +2276,6 @@ sub _internal_parse_text($$;$)
              }
              # first is the arg.
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
-             _abort_empty_line ($self, $current);
              $current = $current->{'parent'}->{'parent'};
           # footnote caption closing
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
@@ -2295,8 +2295,8 @@ sub _internal_parse_text($$;$)
           }
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
-          my $type = $current->{'type'};
           _abort_empty_line ($self, $current);
+          my $type = $current->{'type'};
           $current = $current->{'parent'};
           $current->{'remaining_args'}--;
           push @{$current->{'args'}},

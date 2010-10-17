@@ -8,7 +8,8 @@ $result_trees{'accent_argument'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => '~',
@@ -83,7 +84,8 @@ $result_trees{'accent_argument'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => '~',

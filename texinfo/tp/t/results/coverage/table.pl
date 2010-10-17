@@ -14,7 +14,8 @@ $result_trees{'table'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => 'asis',
@@ -121,7 +122,8 @@ $result_trees{'table'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => 'samp',

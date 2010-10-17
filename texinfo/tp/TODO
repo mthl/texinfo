@@ -25,9 +25,6 @@ block command or misc @-command line
 t/results/macro/macro_in_misc_commands.pl
 some spaces are not counted as empty_spaces_after_command.
 
-@quotation/float argument leading spaces should be in 
-empty_spaces_after_command.
-
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
 

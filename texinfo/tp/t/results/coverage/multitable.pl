@@ -14,7 +14,8 @@ $result_trees{'multitable'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'args' => [
@@ -301,7 +302,8 @@ $result_trees{'multitable'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'contents' => [

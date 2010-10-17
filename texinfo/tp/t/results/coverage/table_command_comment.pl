@@ -8,7 +8,8 @@ $result_trees{'table_command_comment'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
             },
             {
               'cmdname' => 'code',

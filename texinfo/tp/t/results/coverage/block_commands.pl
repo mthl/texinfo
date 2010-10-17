@@ -49,7 +49,12 @@ $result_trees{'block_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' warning
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'warning
 '
             }
           ],
@@ -92,7 +97,12 @@ $result_trees{'block_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' a float'
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'a float'
             }
           ],
           'parent' => {},
@@ -204,6 +214,7 @@ $result_trees{'block_commands'}{'contents'}[1]{'parent'} = $result_trees{'block_
 $result_trees{'block_commands'}{'contents'}[2]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[3]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'args'}[0];
+$result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4];
 $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0];
 $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4];
@@ -211,6 +222,7 @@ $result_trees{'block_commands'}{'contents'}[4]{'parent'} = $result_trees{'block_
 $result_trees{'block_commands'}{'contents'}[5]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[6]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0];
+$result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
@@ -252,7 +264,7 @@ in caption}
 $result_texts{'block_commands'} = '
 in group
 
- warning
+warning
 
 in quotation
 
