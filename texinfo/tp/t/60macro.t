@@ -72,6 +72,25 @@ res1
 
 @test1 abc
 '],
+['empty_macro',
+'@macro foo
+@end macro
+
+@foo
+
+@foo{}
+'],
+['empty_macro_in_text_no_arg',
+'@macro texnl{}
+@end macro
+
+ This.@texnl  It.
+
+@macro texnl2
+@end macro
+
+This 2 see.@texnl2  A.
+'],
 ['macro_one_arg_end_of_file',
 '@macro one-arg{arg}
 Arg \arg\.
@@ -726,11 +745,6 @@ separate
 @end macro
 @footnotestyle @end-arg{}
 @footnotestyle @separate-arg{}
-
-@macro latin1 
-ISO-8859-1
-@end macro
-@documentencoding @latin1{}
 
 @macro on-arg 
 on

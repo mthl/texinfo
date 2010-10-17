@@ -37,6 +37,76 @@ test-var verbatiminclude: @verbatiminclude @value{test-var}i
 test_var include: @include i@value{test_var}i
 
 test_var verbatiminclude: @verbatiminclude i@value{test_var}i
+'],
+['macro_in_early_commands',
+'@macro begin-file
+macro_in_pass
+@end macro
+@macro end-file-name {ext}
+texi_commands.\ext\
+@end macro
+
+@setfilename @begin-file{}@end-file-name{info}
+
+@macro latin1 
+ISO-8859-1
+@end macro
+
+@macro documentencoding-command
+@documentencoding
+@end macro
+
+@documentencoding-command @latin1{}
+
+@macro multiinclude
+macro_included.texi
+@include inc_file.texi
+@end macro
+
+@node Top
+@top top
+
+@include @multiinclude
+
+@themacro{}
+
+macro_in_pass_texi_commands@{info@}
+@end-file-name{info}
+'],
+['macro_and_commands_in_early_commands',
+'@macro begin-file
+macro_i--n_pass@@
+@end macro
+
+@setfilename @begin-file{}texi_commands.info
+
+@macro latin1 
+ISO-8859-1@@
+@end macro
+
+@documentencoding @latin1{}
+
+@macro multiinclude
+macro_included.texi
+@include inc_@@f--ile.texi
+@end macro
+
+@node Top
+@top top
+
+@include @multiinclude
+
+@themacro{}
+
+@verbatiminclude inc_@@f--ile.texi
+'],
+['test_paths',
+'@include inc_file.texi
+
+@include ./t/include/inc_file.texi
+
+@@include dot path.
+@include ./inc_file.texi 
 ']
 );
 

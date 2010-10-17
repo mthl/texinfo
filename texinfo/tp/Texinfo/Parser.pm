@@ -1410,7 +1410,7 @@ sub _end_line_and_include_file ($$$$)
     chomp($filename);
     my $file;
     if ($filename =~ m,^(/|\./|\.\./),) {
-      $file = $filename if (-e $file and -r $file);
+      $file = $filename if (-e $filename and -r $filename);
     } else {
       foreach my $dir (@{$self->{'include_directories'}}) {
         $file = "$dir/$filename" if (-e "$dir/$filename" and -r "$dir/$filename");
