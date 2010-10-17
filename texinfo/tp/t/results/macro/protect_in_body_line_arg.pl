@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'protect_in_body_line_arg'} = {
   'contents' => [
@@ -142,7 +142,7 @@ $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'contents'}[5]{'parent'
 $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'contents'}[6]{'parent'} = $result_trees{'protect_in_body_line_arg'}{'contents'}[3];
 $result_trees{'protect_in_body_line_arg'}{'contents'}[3]{'parent'} = $result_trees{'protect_in_body_line_arg'};
 
-$result_texts{'protect_in_body_line_arg'} = '@macro macro1 { arg1 , arg2 }
+$result_texis{'protect_in_body_line_arg'} = '@macro macro1 { arg1 , arg2 }
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 @end macro
 

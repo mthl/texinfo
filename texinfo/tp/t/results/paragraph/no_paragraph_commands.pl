@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'no_paragraph_commands'} = {
   'contents' => [
@@ -118,7 +118,7 @@ $result_trees{'no_paragraph_commands'}{'contents'}[4]{'args'}[4]{'parent'} = $re
 $result_trees{'no_paragraph_commands'}{'contents'}[4]{'parent'} = $result_trees{'no_paragraph_commands'};
 $result_trees{'no_paragraph_commands'}{'contents'}[5]{'parent'} = $result_trees{'no_paragraph_commands'};
 
-$result_texts{'no_paragraph_commands'} = '@*
+$result_texis{'no_paragraph_commands'} = '@*
 @titlefont{title font}
 @image{aa,bb,cc,dd,ee}
 ';

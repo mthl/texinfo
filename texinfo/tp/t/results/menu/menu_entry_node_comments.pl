@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'menu_entry_node_comments'} = {
   'contents' => [
@@ -239,7 +239,7 @@ $result_trees{'menu_entry_node_comments'}{'contents'}[0]{'contents'}[4]{'parent'
 $result_trees{'menu_entry_node_comments'}{'contents'}[0]{'parent'} = $result_trees{'menu_entry_node_comments'};
 $result_trees{'menu_entry_node_comments'}{'contents'}[1]{'parent'} = $result_trees{'menu_entry_node_comments'};
 
-$result_texts{'menu_entry_node_comments'} = '@menu
+$result_texis{'menu_entry_node_comments'} = '@menu
 * (f)a1c::@c c
 * (f)a2c::  @c c
 * (f)a3c::         d@c c

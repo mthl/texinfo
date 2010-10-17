@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'commands'} = {
   'contents' => [
@@ -308,7 +308,7 @@ $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4];
 $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 
-$result_texts{'commands'} = '@@ @TeX{} @
+$result_texis{'commands'} = '@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
 @email{a, b}
 

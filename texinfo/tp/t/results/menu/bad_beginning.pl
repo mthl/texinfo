@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad_beginning'} = {
   'contents' => [
@@ -78,7 +78,7 @@ $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'parent'} = $result
 $result_trees{'bad_beginning'}{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'};
 $result_trees{'bad_beginning'}{'contents'}[1]{'parent'} = $result_trees{'bad_beginning'};
 
-$result_texts{'bad_beginning'} = '@menu
+$result_texis{'bad_beginning'} = '@menu
 *   
 *
 *something::

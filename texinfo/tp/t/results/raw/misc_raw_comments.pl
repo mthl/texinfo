@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'misc_raw_comments'} = {
   'contents' => [
@@ -141,7 +141,7 @@ $result_trees{'misc_raw_comments'}{'contents'}[8]{'contents'}[2]{'parent'} = $re
 $result_trees{'misc_raw_comments'}{'contents'}[8]{'parent'} = $result_trees{'misc_raw_comments'};
 $result_trees{'misc_raw_comments'}{'contents'}[9]{'parent'} = $result_trees{'misc_raw_comments'};
 
-$result_texts{'misc_raw_comments'} = '
+$result_texis{'misc_raw_comments'} = '
 @html @c comment space
 in html @end html@c comment no space
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad_syntax'} = {
   'contents' => [
@@ -91,7 +91,7 @@ $result_trees{'bad_syntax'}{'contents'}[7]{'parent'} = $result_trees{'bad_syntax
 $result_trees{'bad_syntax'}{'contents'}[8]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[10]{'parent'} = $result_trees{'bad_syntax'};
 
-$result_texts{'bad_syntax'} = '
+$result_texis{'bad_syntax'} = '
 @set
 @set 
 @set ?

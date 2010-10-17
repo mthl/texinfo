@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_in_value'} = {
   'contents' => [
@@ -126,7 +126,7 @@ $result_trees{'macro_in_value'}{'contents'}[6]{'parent'} = $result_trees{'macro_
 $result_trees{'macro_in_value'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_in_value'}{'contents'}[7];
 $result_trees{'macro_in_value'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_value'};
 
-$result_texts{'macro_in_value'} = '@macro ab
+$result_texis{'macro_in_value'} = '@macro ab
 a
 
 b

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'def'} = {
   'contents' => [
@@ -840,7 +840,7 @@ $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'parent'} = $result_trees{'d
 $result_trees{'def'}{'contents'}[7]{'parent'} = $result_trees{'def'};
 $result_trees{'def'}{'contents'}[8]{'parent'} = $result_trees{'def'};
 
-$result_texts{'def'} = '
+$result_texis{'def'} = '
 @deffn {c--ategory} d--effn_name a--rguments...
 d--effn
 @end deffn

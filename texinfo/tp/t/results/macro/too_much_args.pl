@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'too_much_args'} = {
   'contents' => [
@@ -90,7 +90,7 @@ $result_trees{'too_much_args'}{'contents'}[3]{'contents'}[0]{'parent'} = $result
 $result_trees{'too_much_args'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'too_much_args'}{'contents'}[3];
 $result_trees{'too_much_args'}{'contents'}[3]{'parent'} = $result_trees{'too_much_args'};
 
-$result_texts{'too_much_args'} = '@macro twoargs {first, second}
+$result_texis{'too_much_args'} = '@macro twoargs {first, second}
 first arg: \\first\\
 second arg: \\second\\
 @end macro

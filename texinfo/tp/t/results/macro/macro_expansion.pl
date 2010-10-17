@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_expansion'} = {
   'contents' => [
@@ -476,7 +476,7 @@ $result_trees{'macro_expansion'}{'contents'}[28]{'parent'} = $result_trees{'macr
 $result_trees{'macro_expansion'}{'contents'}[29]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[29];
 $result_trees{'macro_expansion'}{'contents'}[29]{'parent'} = $result_trees{'macro_expansion'};
 
-$result_texts{'macro_expansion'} = '
+$result_texis{'macro_expansion'} = '
 @macro macro1 {arg1, arg2 }
 result of a macro with \\arg1\\ and 
 @verbatim

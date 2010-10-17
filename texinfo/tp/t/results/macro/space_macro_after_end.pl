@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'space_macro_after_end'} = {
   'contents' => [
@@ -74,7 +74,7 @@ $result_trees{'space_macro_after_end'}{'contents'}[3]{'contents'}[1]{'parent'} =
 $result_trees{'space_macro_after_end'}{'contents'}[3]{'parent'} = $result_trees{'space_macro_after_end'};
 $result_trees{'space_macro_after_end'}{'contents'}[4]{'parent'} = $result_trees{'space_macro_after_end'};
 
-$result_texts{'space_macro_after_end'} = '@macro spaces
+$result_texis{'space_macro_after_end'} = '@macro spaces
   
 @end macro
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'misc_raw'} = {
   'contents' => [
@@ -115,7 +115,7 @@ $result_trees{'misc_raw'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_tree
 $result_trees{'misc_raw'}{'contents'}[7]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[8]{'parent'} = $result_trees{'misc_raw'};
 
-$result_texts{'misc_raw'} = '
+$result_texis{'misc_raw'} = '
 @html 
 in html @end html
 

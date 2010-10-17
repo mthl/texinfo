@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'complete_macro_for_end'} = {
   'contents' => [
@@ -67,7 +67,7 @@ $result_trees{'complete_macro_for_end'}{'contents'}[3]{'contents'}[0]{'parent'} 
 $result_trees{'complete_macro_for_end'}{'contents'}[3]{'parent'} = $result_trees{'complete_macro_for_end'};
 $result_trees{'complete_macro_for_end'}{'contents'}[4]{'parent'} = $result_trees{'complete_macro_for_end'};
 
-$result_texts{'complete_macro_for_end'} = '@macro the-end
+$result_texis{'complete_macro_for_end'} = '@macro the-end
 @end cartouche
 @end macro
 

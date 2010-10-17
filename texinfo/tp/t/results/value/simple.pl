@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'simple'} = {
   'contents' => [
@@ -87,7 +87,7 @@ $result_trees{'simple'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $re
 $result_trees{'simple'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[2];
 $result_trees{'simple'}{'contents'}[2]{'parent'} = $result_trees{'simple'};
 
-$result_texts{'simple'} = '@set a-_5b the value @b{b} @c comment
+$result_texis{'simple'} = '@set a-_5b the value @b{b} @c comment
 
 the value @b{b} @c comment After value.
 ';

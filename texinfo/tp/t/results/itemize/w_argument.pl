@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'w_argument'} = {
   'contents' => [
@@ -155,7 +155,7 @@ $result_trees{'w_argument'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_tr
 $result_trees{'w_argument'}{'contents'}[0]{'parent'} = $result_trees{'w_argument'};
 $result_trees{'w_argument'}{'contents'}[1]{'parent'} = $result_trees{'w_argument'};
 
-$result_texts{'w_argument'} = '@itemize @w{}
+$result_texis{'w_argument'} = '@itemize @w{}
 @item @option{--build=} platform on which the program is compiled,
 @item @option{--target=} target platform on which the program is processed.
 @end itemize

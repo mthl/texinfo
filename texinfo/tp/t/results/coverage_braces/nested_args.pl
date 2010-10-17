@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'nested_args'} = {
   'contents' => [
@@ -96,7 +96,7 @@ $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} 
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_args'}{'contents'}[0];
 $result_trees{'nested_args'}{'contents'}[0]{'parent'} = $result_trees{'nested_args'};
 
-$result_texts{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}}';
+$result_texis{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}}';
 
 $result_errors{'nested_args'} = [];
 

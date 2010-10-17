@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_after_accent'} = {
   'contents' => [
@@ -61,7 +61,7 @@ $result_trees{'value_after_accent'}{'contents'}[1]{'contents'}[2]{'parent'} = $r
 $result_trees{'value_after_accent'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'value_after_accent'}{'contents'}[1];
 $result_trees{'value_after_accent'}{'contents'}[1]{'parent'} = $result_trees{'value_after_accent'};
 
-$result_texts{'value_after_accent'} = '@set a_letter a
+$result_texis{'value_after_accent'} = '@set a_letter a
 @ringaccenta
 @~a';
 

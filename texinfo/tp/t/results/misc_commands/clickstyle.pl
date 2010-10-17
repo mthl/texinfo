@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'clickstyle'} = {
   'contents' => [
@@ -62,7 +62,7 @@ $result_trees{'clickstyle'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_tr
 $result_trees{'clickstyle'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'clickstyle'}{'contents'}[2];
 $result_trees{'clickstyle'}{'contents'}[2]{'parent'} = $result_trees{'clickstyle'};
 
-$result_texts{'clickstyle'} = '@clickstyle @result
+$result_texis{'clickstyle'} = '@clickstyle @result
 
 A @click{} (result).
 ';

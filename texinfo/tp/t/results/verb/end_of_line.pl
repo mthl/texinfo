@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'end_of_line'} = {
   'contents' => [
@@ -66,7 +66,7 @@ $result_trees{'end_of_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_t
 $result_trees{'end_of_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'end_of_line'}{'contents'}[0];
 $result_trees{'end_of_line'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line'};
 
-$result_texts{'end_of_line'} = 'verb at end of line @verb{
+$result_texis{'end_of_line'} = 'verb at end of line @verb{
 
 @{ in verb at end of line @c comment
 and now end}after end.';

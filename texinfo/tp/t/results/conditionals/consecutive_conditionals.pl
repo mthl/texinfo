@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'consecutive_conditionals'} = {
   'contents' => [
@@ -42,7 +42,7 @@ $result_trees{'consecutive_conditionals'}{'contents'}[1]{'args'}[1]{'parent'} = 
 $result_trees{'consecutive_conditionals'}{'contents'}[1]{'parent'} = $result_trees{'consecutive_conditionals'};
 $result_trees{'consecutive_conditionals'}{'contents'}[2]{'parent'} = $result_trees{'consecutive_conditionals'};
 
-$result_texts{'consecutive_conditionals'} = '
+$result_texis{'consecutive_conditionals'} = '
 @set b
 
 ';

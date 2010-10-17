@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'text_space_comment'} = {
   'contents' => [
@@ -35,7 +35,7 @@ $result_trees{'text_space_comment'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'pa
 $result_trees{'text_space_comment'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'text_space_comment'}{'contents'}[1];
 $result_trees{'text_space_comment'}{'contents'}[1]{'parent'} = $result_trees{'text_space_comment'};
 
-$result_texts{'text_space_comment'} = ' text  @c space comment';
+$result_texis{'text_space_comment'} = ' text  @c space comment';
 
 $result_errors{'text_space_comment'} = [];
 

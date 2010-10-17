@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'protect_comma_macro_line'} = {
   'contents' => [
@@ -119,7 +119,7 @@ $result_trees{'protect_comma_macro_line'}{'contents'}[4]{'parent'} = $result_tre
 $result_trees{'protect_comma_macro_line'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[5];
 $result_trees{'protect_comma_macro_line'}{'contents'}[5]{'parent'} = $result_trees{'protect_comma_macro_line'};
 
-$result_texts{'protect_comma_macro_line'} = '@macro macro2 { arg }
+$result_texis{'protect_comma_macro_line'} = '@macro macro2 { arg }
 we get \\arg\\ and another \\arg\\
 and another one on another line \\arg\\
 

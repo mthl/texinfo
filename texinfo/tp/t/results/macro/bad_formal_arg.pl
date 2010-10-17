@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad_formal_arg'} = {
   'contents' => [
@@ -200,7 +200,7 @@ $result_trees{'bad_formal_arg'}{'contents'}[7]{'contents'}[2]{'parent'} = $resul
 $result_trees{'bad_formal_arg'}{'contents'}[7]{'parent'} = $result_trees{'bad_formal_arg'};
 $result_trees{'bad_formal_arg'}{'contents'}[8]{'parent'} = $result_trees{'bad_formal_arg'};
 
-$result_texts{'bad_formal_arg'} = '
+$result_texis{'bad_formal_arg'} = '
 @macro bad  { , not_empty}
 in bad macro
 @end macro

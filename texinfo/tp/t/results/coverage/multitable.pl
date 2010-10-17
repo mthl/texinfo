@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'multitable'} = {
   'contents' => [
@@ -486,7 +486,7 @@ $result_trees{'multitable'}{'contents'}[4]{'special'}{'prototypes'}[0] = $result
 $result_trees{'multitable'}{'contents'}[4]{'special'}{'prototypes'}[1] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable'}{'contents'}[5]{'parent'} = $result_trees{'multitable'};
 
-$result_texts{'multitable'} = '
+$result_texis{'multitable'} = '
 @multitable @columnfractions 6 7
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab

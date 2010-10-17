@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'definfoenclose'} = {
   'contents' => [
@@ -332,7 +332,7 @@ $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[0]{'parent'} = $resu
 $result_trees{'definfoenclose'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[13];
 $result_trees{'definfoenclose'}{'contents'}[13]{'parent'} = $result_trees{'definfoenclose'};
 
-$result_texts{'definfoenclose'} = '
+$result_texis{'definfoenclose'} = '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
 
 @phoo{bar}

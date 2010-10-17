@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'node'} = {
   'contents' => [
@@ -485,7 +485,7 @@ $result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[3]{'parent'} = $resu
 $result_trees{'node'}{'contents'}[9]{'args'}[2]{'parent'} = $result_trees{'node'}{'contents'}[9];
 $result_trees{'node'}{'contents'}[9]{'parent'} = $result_trees{'node'};
 
-$result_texts{'node'} = '
+$result_texis{'node'} = '
 @node one arg 
 @node one arg, two arg
 @node one arg, two arg, three arg

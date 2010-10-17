@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'empty_set_in_ifclear'} = {
   'contents' => [
@@ -35,7 +35,7 @@ $result_trees{'empty_set_in_ifclear'}{'contents'}[0]{'args'}[1]{'parent'} = $res
 $result_trees{'empty_set_in_ifclear'}{'contents'}[0]{'parent'} = $result_trees{'empty_set_in_ifclear'};
 $result_trees{'empty_set_in_ifclear'}{'contents'}[1]{'parent'} = $result_trees{'empty_set_in_ifclear'};
 
-$result_texts{'empty_set_in_ifclear'} = '@set a
+$result_texis{'empty_set_in_ifclear'} = '@set a
 
 ';
 

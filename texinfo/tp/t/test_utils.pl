@@ -2,6 +2,7 @@ use strict;
 
 use Test::More;
 use Texinfo::Parser qw(:all);
+use Texinfo::Convert::Text;
 use Data::Dumper;
 use Data::Compare;
 use File::Basename;
@@ -10,7 +11,7 @@ use File::Basename;
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 ok(1);
 
@@ -69,6 +70,7 @@ sub test($$)
   }
 
   my ($errors, $error_nrs) = $parser->errors();
+  my $converted_text = Texinfo::Convert::Text::convert($result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';
@@ -82,7 +84,7 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
-    print OUT 'use vars qw(%result_texts %result_trees %result_errors);'."\n\n";
+    print OUT 'use vars qw(%result_texis %result_trees %result_errors);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
@@ -90,7 +92,7 @@ sub test($$)
     my $perl_string_result = $texi_string_result;
     $perl_string_result =~ s/\\/\\\\/g;
     $perl_string_result =~ s/'/\\'/g;
-    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
+    $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
     print OUT $out_result;
     close (OUT);
@@ -124,8 +126,8 @@ sub test($$)
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
-    ok (tree_to_texi($result) eq $result_texts{$test_name}, $test_name.' text' );
-    #is (tree_to_texi($result), $result_texts{$test_name}, $test_name.' text' );
+    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' text' );
+    #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text' );
   }
   #exit;
 }

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_zero'} = {
   'contents' => [
@@ -66,7 +66,7 @@ $result_trees{'macro_zero'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'macro_zero'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_zero'}{'contents'}[3];
 $result_trees{'macro_zero'}{'contents'}[3]{'parent'} = $result_trees{'macro_zero'};
 
-$result_texts{'macro_zero'} = '@macro zero
+$result_texis{'macro_zero'} = '@macro zero
 0
 @end macro
 

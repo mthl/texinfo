@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'implicit_quoting_one_arg'} = {
   'contents' => [
@@ -97,7 +97,7 @@ $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[0]{'parent'
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[4];
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[4]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 
-$result_texts{'implicit_quoting_one_arg'} = '
+$result_texis{'implicit_quoting_one_arg'} = '
 @macro FIXME{a}
 @strong{FIXME: \\a\\}
 @end macro

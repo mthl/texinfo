@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'footnote'} = {
   'contents' => [
@@ -90,7 +90,7 @@ $result_trees{'footnote'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_tree
 $result_trees{'footnote'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'footnote'}{'contents'}[0];
 $result_trees{'footnote'}{'contents'}[0]{'parent'} = $result_trees{'footnote'};
 
-$result_texts{'footnote'} = 'text@footnote{in footnote.
+$result_texis{'footnote'} = 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.';
 

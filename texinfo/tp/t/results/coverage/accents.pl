@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'accents'} = {
   'contents' => [
@@ -211,7 +211,7 @@ $result_trees{'accents'}{'contents'}[4]{'parent'} = $result_trees{'accents'};
 $result_trees{'accents'}{'contents'}[5]{'parent'} = $result_trees{'accents'};
 $result_trees{'accents'}{'contents'}[6]{'parent'} = $result_trees{'accents'};
 
-$result_texts{'accents'} = '@ringaccent    a
+$result_texis{'accents'} = '@ringaccent    a
 
 accent at end of line @ringaccent
 accent at end of line and spaces @ringaccent

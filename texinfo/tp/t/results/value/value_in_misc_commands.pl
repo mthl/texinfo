@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_in_misc_commands'} = {
   'contents' => [
@@ -2621,7 +2621,7 @@ $result_trees{'value_in_misc_commands'}{'contents'}[145]{'parent'} = $result_tre
 $result_trees{'value_in_misc_commands'}{'contents'}[146]{'parent'} = $result_trees{'value_in_misc_commands'};
 $result_trees{'value_in_misc_commands'}{'contents'}[147]{'parent'} = $result_trees{'value_in_misc_commands'};
 
-$result_texts{'value_in_misc_commands'} = '@set text atext
+$result_texis{'value_in_misc_commands'} = '@set text atext
 
 @node Top
 @top top atext

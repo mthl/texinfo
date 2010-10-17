@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'paragraph_command'} = {
   'contents' => [
@@ -64,7 +64,7 @@ $result_trees{'paragraph_command'}{'contents'}[2]{'contents'}[0]{'parent'} = $re
 $result_trees{'paragraph_command'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[2];
 $result_trees{'paragraph_command'}{'contents'}[2]{'parent'} = $result_trees{'paragraph_command'};
 
-$result_texts{'paragraph_command'} = '@@
+$result_texis{'paragraph_command'} = '@@
 
 @b{aaa}.
 ';

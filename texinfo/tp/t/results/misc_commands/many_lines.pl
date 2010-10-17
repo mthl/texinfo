@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'many_lines'} = {
   'contents' => [
@@ -1080,7 +1080,7 @@ $result_trees{'many_lines'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_tr
 $result_trees{'many_lines'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'many_lines'}{'contents'}[4];
 $result_trees{'many_lines'}{'contents'}[4]{'parent'} = $result_trees{'many_lines'};
 
-$result_texts{'many_lines'} = 'pagesizes @pagesizes 200mm,150mm following @@pagesizes arg
+$result_texis{'many_lines'} = 'pagesizes @pagesizes 200mm,150mm following @@pagesizes arg
 afourpaper @afourpaper
 smallbook @smallbook
 headings @headings on line following headings

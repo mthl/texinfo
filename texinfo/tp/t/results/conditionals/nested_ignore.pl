@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'nested_ignore'} = {
   'contents' => [
@@ -124,7 +124,7 @@ $result_trees{'nested_ignore'}{'contents'}[6]{'contents'}[2]{'parent'} = $result
 $result_trees{'nested_ignore'}{'contents'}[6]{'parent'} = $result_trees{'nested_ignore'};
 $result_trees{'nested_ignore'}{'contents'}[7]{'parent'} = $result_trees{'nested_ignore'};
 
-$result_texts{'nested_ignore'} = '@ignore
+$result_texis{'nested_ignore'} = '@ignore
 @ignore
 
 @end ignore

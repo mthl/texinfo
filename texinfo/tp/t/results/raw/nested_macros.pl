@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'nested_macros'} = {
   'contents' => [
@@ -103,7 +103,7 @@ $result_trees{'nested_macros'}{'contents'}[0]{'contents'}[4]{'parent'} = $result
 $result_trees{'nested_macros'}{'contents'}[0]{'parent'} = $result_trees{'nested_macros'};
 $result_trees{'nested_macros'}{'contents'}[1]{'parent'} = $result_trees{'nested_macros'};
 
-$result_texts{'nested_macros'} = '@macro truc   { arg,  ex}
+$result_texis{'nested_macros'} = '@macro truc   { arg,  ex}
 in macro \\arg\\
 @macro othermacro 
 other macro

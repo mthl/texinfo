@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'expand_two_same'} = {
   'contents' => [
@@ -184,7 +184,7 @@ $result_trees{'expand_two_same'}{'contents'}[5]{'contents'}[1]{'parent'} = $resu
 $result_trees{'expand_two_same'}{'contents'}[5]{'parent'} = $result_trees{'expand_two_same'};
 $result_trees{'expand_two_same'}{'contents'}[6]{'parent'} = $result_trees{'expand_two_same'};
 
-$result_texts{'expand_two_same'} = '@macro macro2 { arg }
+$result_texis{'expand_two_same'} = '@macro macro2 { arg }
 With a doubles arg \\arg\\ and re \\arg\\
 
 @end macro

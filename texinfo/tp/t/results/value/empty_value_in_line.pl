@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'empty_value_in_line'} = {
   'contents' => [
@@ -68,7 +68,7 @@ $result_trees{'empty_value_in_line'}{'contents'}[3]{'parent'} = $result_trees{'e
 $result_trees{'empty_value_in_line'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'empty_value_in_line'}{'contents'}[4];
 $result_trees{'empty_value_in_line'}{'contents'}[4]{'parent'} = $result_trees{'empty_value_in_line'};
 
-$result_texts{'empty_value_in_line'} = '@set myspace
+$result_texis{'empty_value_in_line'} = '@set myspace
 
 1 
  

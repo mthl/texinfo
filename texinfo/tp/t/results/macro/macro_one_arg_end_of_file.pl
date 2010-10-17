@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_one_arg_end_of_file'} = {
   'contents' => [
@@ -68,7 +68,7 @@ $result_trees{'macro_one_arg_end_of_file'}{'contents'}[2]{'parent'} = $result_tr
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3];
 $result_trees{'macro_one_arg_end_of_file'}{'contents'}[3]{'parent'} = $result_trees{'macro_one_arg_end_of_file'};
 
-$result_texts{'macro_one_arg_end_of_file'} = '@macro one-arg{arg}
+$result_texis{'macro_one_arg_end_of_file'} = '@macro one-arg{arg}
 Arg \\arg\\.
 @end macro
 

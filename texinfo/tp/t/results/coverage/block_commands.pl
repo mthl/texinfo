@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'block_commands'} = {
   'contents' => [
@@ -229,7 +229,7 @@ $result_trees{'block_commands'}{'contents'}[7]{'contents'}[4]{'parent'} = $resul
 $result_trees{'block_commands'}{'contents'}[7]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[8]{'parent'} = $result_trees{'block_commands'};
 
-$result_texts{'block_commands'} = '
+$result_texis{'block_commands'} = '
 @group
 in group
 @end group

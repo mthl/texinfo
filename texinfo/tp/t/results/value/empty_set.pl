@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'empty_set'} = {
   'contents' => [
@@ -48,7 +48,7 @@ $result_trees{'empty_set'}{'contents'}[1]{'parent'} = $result_trees{'empty_set'}
 $result_trees{'empty_set'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_set'}{'contents'}[2];
 $result_trees{'empty_set'}{'contents'}[2]{'parent'} = $result_trees{'empty_set'};
 
-$result_texts{'empty_set'} = '@set myspace
+$result_texis{'empty_set'} = '@set myspace
 
 1  1
 ';

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'accent_argument'} = {
   'contents' => [
@@ -166,7 +166,7 @@ $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[1]{'parent'} = $resu
 $result_trees{'accent_argument'}{'contents'}[3]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[4]{'parent'} = $result_trees{'accent_argument'};
 
-$result_texts{'accent_argument'} = '@itemize @~@comment
+$result_texis{'accent_argument'} = '@itemize @~@comment
 @item item
 @end itemize
 

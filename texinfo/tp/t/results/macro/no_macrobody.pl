@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'no_macrobody'} = {
   'contents' => [
@@ -74,7 +74,7 @@ $result_trees{'no_macrobody'}{'contents'}[4]{'parent'} = $result_trees{'no_macro
 $result_trees{'no_macrobody'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'no_macrobody'}{'contents'}[5];
 $result_trees{'no_macrobody'}{'contents'}[5]{'parent'} = $result_trees{'no_macrobody'};
 
-$result_texts{'no_macrobody'} = '@macro no-macrobody {arg}
+$result_texis{'no_macrobody'} = '@macro no-macrobody {arg}
 @end macro
 
 

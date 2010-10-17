@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'detailmenu'} = {
   'contents' => [
@@ -149,7 +149,7 @@ $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_tr
 $result_trees{'detailmenu'}{'contents'}[1]{'parent'} = $result_trees{'detailmenu'};
 $result_trees{'detailmenu'}{'contents'}[2]{'parent'} = $result_trees{'detailmenu'};
 
-$result_texts{'detailmenu'} = '
+$result_texis{'detailmenu'} = '
 @menu
 * Copying Conditions::          Your rights.
 

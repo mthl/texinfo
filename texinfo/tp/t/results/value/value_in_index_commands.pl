@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_in_index_commands'} = {
   'contents' => [
@@ -1301,7 +1301,7 @@ $result_trees{'value_in_index_commands'}{'contents'}[67]{'args'}[0]{'contents'}[
 $result_trees{'value_in_index_commands'}{'contents'}[67]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[67];
 $result_trees{'value_in_index_commands'}{'contents'}[67]{'parent'} = $result_trees{'value_in_index_commands'};
 
-$result_texts{'value_in_index_commands'} = '@set cp cp
+$result_texis{'value_in_index_commands'} = '@set cp cp
 @set fn fn
 @set syncodeindex_command @syncodeindex
 

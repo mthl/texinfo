@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'preformatted'} = {
   'contents' => [
@@ -166,7 +166,7 @@ $result_trees{'preformatted'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_
 $result_trees{'preformatted'}{'contents'}[4]{'parent'} = $result_trees{'preformatted'};
 $result_trees{'preformatted'}{'contents'}[5]{'parent'} = $result_trees{'preformatted'};
 
-$result_texts{'preformatted'} = '
+$result_texis{'preformatted'} = '
 @example
 e--xample  some  
 

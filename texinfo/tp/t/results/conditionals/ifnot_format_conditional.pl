@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'ifnot_format_conditional'} = {
   'contents' => [
@@ -37,7 +37,7 @@ $result_trees{'ifnot_format_conditional'}{'contents'}[1]{'parent'} = $result_tre
 $result_trees{'ifnot_format_conditional'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ifnot_format_conditional'}{'contents'}[2];
 $result_trees{'ifnot_format_conditional'}{'contents'}[2]{'parent'} = $result_trees{'ifnot_format_conditional'};
 
-$result_texts{'ifnot_format_conditional'} = 'not tex
+$result_texis{'ifnot_format_conditional'} = 'not tex
 
 After.';
 

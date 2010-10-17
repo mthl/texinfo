@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'arg_body_expansion_order'} = {
   'contents' => [
@@ -206,7 +206,7 @@ $result_trees{'arg_body_expansion_order'}{'contents'}[9]{'parent'} = $result_tre
 $result_trees{'arg_body_expansion_order'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[10];
 $result_trees{'arg_body_expansion_order'}{'contents'}[10]{'parent'} = $result_trees{'arg_body_expansion_order'};
 
-$result_texts{'arg_body_expansion_order'} = '
+$result_texis{'arg_body_expansion_order'} = '
 @macro othermacro
 initial
 @end macro

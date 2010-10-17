@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad_line'} = {
   'contents' => [
@@ -109,7 +109,7 @@ $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $
 $result_trees{'bad_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[3];
 $result_trees{'bad_line'}{'contents'}[3]{'parent'} = $result_trees{'bad_line'};
 
-$result_texts{'bad_line'} = '
+$result_texis{'bad_line'} = '
 @alias garbage-on-line =cmd garbage
 
 @alias garbage-on-line =cmd @code{in code}

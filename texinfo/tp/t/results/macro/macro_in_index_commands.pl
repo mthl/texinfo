@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_in_index_commands'} = {
   'contents' => [
@@ -1559,7 +1559,7 @@ $result_trees{'macro_in_index_commands'}{'contents'}[83]{'args'}[0]{'contents'}[
 $result_trees{'macro_in_index_commands'}{'contents'}[83]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[83];
 $result_trees{'macro_in_index_commands'}{'contents'}[83]{'parent'} = $result_trees{'macro_in_index_commands'};
 
-$result_texts{'macro_in_index_commands'} = '@macro cp
+$result_texis{'macro_in_index_commands'} = '@macro cp
 cp
 @end macro
 @macro fn 

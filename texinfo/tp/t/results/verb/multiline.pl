@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'multiline'} = {
   'contents' => [
@@ -55,7 +55,7 @@ $result_trees{'multiline'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'multiline'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiline'}{'contents'}[0];
 $result_trees{'multiline'}{'contents'}[0]{'parent'} = $result_trees{'multiline'};
 
-$result_texts{'multiline'} = '@verb{@
+$result_texis{'multiline'} = '@verb{@
 qdsqsddqsdsq
 
 @}after verb.';

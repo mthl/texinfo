@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'sp'} = {
   'contents' => [
@@ -173,7 +173,7 @@ $result_trees{'sp'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result
 $result_trees{'sp'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[7];
 $result_trees{'sp'}{'contents'}[7]{'parent'} = $result_trees{'sp'};
 
-$result_texts{'sp'} = '
+$result_texis{'sp'} = '
 Text line followed on the same line and another below @sp 1
 @sp 2
 Text line after the sp followed by a sp @sp 1

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad'} = {
   'contents' => [
@@ -43,7 +43,7 @@ $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $resul
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0];
 $result_trees{'bad'}{'contents'}[0]{'parent'} = $result_trees{'bad'};
 
-$result_texts{'bad'} = 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
+$result_texis{'bad'} = 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 ';
 
 $result_errors{'bad'} = [

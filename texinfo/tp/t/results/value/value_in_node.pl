@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_in_node'} = {
   'contents' => [
@@ -526,7 +526,7 @@ $result_trees{'value_in_node'}{'contents'}[18]{'contents'}[0]{'parent'} = $resul
 $result_trees{'value_in_node'}{'contents'}[18]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[18];
 $result_trees{'value_in_node'}{'contents'}[18]{'parent'} = $result_trees{'value_in_node'};
 
-$result_texts{'value_in_node'} = '@set node1 Node 1
+$result_texis{'value_in_node'} = '@set node1 Node 1
 
 @node Top, (dir), (dir), (dir)
 @top Expansion in Node Names

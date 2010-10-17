@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_in_ifset'} = {
   'contents' => [
@@ -56,7 +56,7 @@ $result_trees{'macro_in_ifset'}{'contents'}[0]{'parent'} = $result_trees{'macro_
 $result_trees{'macro_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset'};
 $result_trees{'macro_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset'};
 
-$result_texts{'macro_in_ifset'} = '@macro macro1 {arg}
+$result_texis{'macro_in_ifset'} = '@macro macro1 {arg}
 @end ifset
 @end macro
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_in_macro_formal_arg'} = {
   'contents' => [
@@ -132,7 +132,7 @@ $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'parent
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 
-$result_texts{'value_in_macro_formal_arg'} = '@set argument arg 
+$result_texis{'value_in_macro_formal_arg'} = '@set argument arg 
 
 @macro testvalue { arg , the@value{argument} }
 result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\

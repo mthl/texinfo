@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'math'} = {
   'contents' => [
@@ -325,7 +325,7 @@ $result_trees{'math'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'m
 $result_trees{'math'}{'contents'}[6]{'parent'} = $result_trees{'math'};
 $result_trees{'math'}{'contents'}[7]{'parent'} = $result_trees{'math'};
 
-$result_texts{'math'} = 'Simple math
+$result_texis{'math'} = 'Simple math
 @math{{x^i}\\over{\\tan y}}
 
 Math with @@-command

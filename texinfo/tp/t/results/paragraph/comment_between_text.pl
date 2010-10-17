@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'comment_between_text'} = {
   'contents' => [
@@ -37,7 +37,7 @@ $result_trees{'comment_between_text'}{'contents'}[0]{'contents'}[1]{'parent'} = 
 $result_trees{'comment_between_text'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_between_text'}{'contents'}[0];
 $result_trees{'comment_between_text'}{'contents'}[0]{'parent'} = $result_trees{'comment_between_text'};
 
-$result_texts{'comment_between_text'} = 'text
+$result_texis{'comment_between_text'} = 'text
 @c comment
 end para';
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'implicit_quoting_recursion'} = {
   'contents' => [
@@ -76,7 +76,7 @@ $result_trees{'implicit_quoting_recursion'}{'contents'}[2]{'parent'} = $result_t
 $result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_recursion'}{'contents'}[3];
 $result_trees{'implicit_quoting_recursion'}{'contents'}[3]{'parent'} = $result_trees{'implicit_quoting_recursion'};
 
-$result_texts{'implicit_quoting_recursion'} = '@rmacro cat{a,b}
+$result_texis{'implicit_quoting_recursion'} = '@rmacro cat{a,b}
 \\a\\\\b\\
 @end rmacro
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'value_node_directions'} = {
   'contents' => [
@@ -360,7 +360,7 @@ $result_trees{'value_node_directions'}{'contents'}[10]{'args'}[0]{'contents'}[1]
 $result_trees{'value_node_directions'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[10];
 $result_trees{'value_node_directions'}{'contents'}[10]{'parent'} = $result_trees{'value_node_directions'};
 
-$result_texts{'value_node_directions'} = '@set a--foo bar
+$result_texis{'value_node_directions'} = '@set a--foo bar
 
 @node Top, bar, (dir), (dir)
 @top Var bar

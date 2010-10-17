@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'invalid_clickstyle'} = {
   'contents' => [
@@ -189,7 +189,7 @@ $result_trees{'invalid_clickstyle'}{'contents'}[11]{'contents'}[1]{'parent'} = $
 $result_trees{'invalid_clickstyle'}{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'invalid_clickstyle'}{'contents'}[11];
 $result_trees{'invalid_clickstyle'}{'contents'}[11]{'parent'} = $result_trees{'invalid_clickstyle'};
 
-$result_texts{'invalid_clickstyle'} = '
+$result_texis{'invalid_clickstyle'} = '
 @clickstyle @result on the same line
 
 A @click{} (result on the same line).

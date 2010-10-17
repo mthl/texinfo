@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'nested_block_commands'} = {
   'contents' => [
@@ -955,7 +955,7 @@ $result_trees{'nested_block_commands'}{'contents'}[33]{'contents'}[5]{'parent'} 
 $result_trees{'nested_block_commands'}{'contents'}[33]{'parent'} = $result_trees{'nested_block_commands'};
 $result_trees{'nested_block_commands'}{'contents'}[34]{'parent'} = $result_trees{'nested_block_commands'};
 
-$result_texts{'nested_block_commands'} = '@group
+$result_texis{'nested_block_commands'} = '@group
 In group
 @quotation
 in quotation

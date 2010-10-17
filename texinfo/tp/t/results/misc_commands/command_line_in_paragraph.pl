@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'command_line_in_paragraph'} = {
   'contents' => [
@@ -50,7 +50,7 @@ $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'parent
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'};
 
-$result_texts{'command_line_in_paragraph'} = 'documentlanguage on its line
+$result_texis{'command_line_in_paragraph'} = 'documentlanguage on its line
 @documentlanguage  en  
 line following documentlanguage
 ';

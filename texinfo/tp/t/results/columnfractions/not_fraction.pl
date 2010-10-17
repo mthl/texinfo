@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'not_fraction'} = {
   'contents' => [
@@ -68,7 +68,7 @@ $result_trees{'not_fraction'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_
 $result_trees{'not_fraction'}{'contents'}[0]{'parent'} = $result_trees{'not_fraction'};
 $result_trees{'not_fraction'}{'contents'}[1]{'parent'} = $result_trees{'not_fraction'};
 
-$result_texts{'not_fraction'} = '@multitable @columnfractions aaa
+$result_texis{'not_fraction'} = '@multitable @columnfractions aaa
 @end multitable';
 
 $result_errors{'not_fraction'} = [

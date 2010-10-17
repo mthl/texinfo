@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'nested'} = {
   'contents' => [
@@ -61,7 +61,7 @@ $result_trees{'nested'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $re
 $result_trees{'nested'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0];
 $result_trees{'nested'}{'contents'}[0]{'parent'} = $result_trees{'nested'};
 
-$result_texts{'nested'} = '@b{in b @verb{/ in verb { } /} in b end}';
+$result_texis{'nested'} = '@b{in b @verb{/ in verb { } /} in b end}';
 
 $result_errors{'nested'} = [];
 

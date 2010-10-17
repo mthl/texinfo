@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_in_accent'} = {
   'contents' => [
@@ -218,7 +218,7 @@ $result_trees{'macro_in_accent'}{'contents'}[8]{'contents'}[0]{'parent'} = $resu
 $result_trees{'macro_in_accent'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'macro_in_accent'}{'contents'}[8];
 $result_trees{'macro_in_accent'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_accent'};
 
-$result_texts{'macro_in_accent'} = '@macro a-letter
+$result_texis{'macro_in_accent'} = '@macro a-letter
 a
 @end macro
 

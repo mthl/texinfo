@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'complex_argument'} = {
   'contents' => [
@@ -542,7 +542,7 @@ $result_trees{'complex_argument'}{'contents'}[20]{'contents'}[2]{'parent'} = $re
 $result_trees{'complex_argument'}{'contents'}[20]{'parent'} = $result_trees{'complex_argument'};
 $result_trees{'complex_argument'}{'contents'}[21]{'parent'} = $result_trees{'complex_argument'};
 
-$result_texts{'complex_argument'} = '@macro macro2{arg}
+$result_texis{'complex_argument'} = '@macro macro2{arg}
 coucou \\arg\\ after arg
 @end macro
 

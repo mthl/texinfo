@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'close_paragraph_command'} = {
   'contents' => [
@@ -114,7 +114,7 @@ $result_trees{'close_paragraph_command'}{'contents'}[5]{'parent'} = $result_tree
 $result_trees{'close_paragraph_command'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[6];
 $result_trees{'close_paragraph_command'}{'contents'}[6]{'parent'} = $result_trees{'close_paragraph_command'};
 
-$result_texts{'close_paragraph_command'} = 'para @titlefont{in titlefont} after titlefont.
+$result_texis{'close_paragraph_command'} = 'para @titlefont{in titlefont} after titlefont.
 
 p before sp
 @sp 4

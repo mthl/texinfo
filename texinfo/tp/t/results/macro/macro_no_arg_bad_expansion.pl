@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'macro_no_arg_bad_expansion'} = {
   'contents' => [
@@ -60,7 +60,7 @@ $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[2]{'parent'} = $result_t
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3];
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[3]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'};
 
-$result_texts{'macro_no_arg_bad_expansion'} = '@macro test1
+$result_texis{'macro_no_arg_bad_expansion'} = '@macro test1
 res1
 @end macro
 

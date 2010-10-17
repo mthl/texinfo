@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'empty_set_in_ifset'} = {
   'contents' => [
@@ -48,7 +48,7 @@ $result_trees{'empty_set_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'em
 $result_trees{'empty_set_in_ifset'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_set_in_ifset'}{'contents'}[2];
 $result_trees{'empty_set_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'empty_set_in_ifset'};
 
-$result_texts{'empty_set_in_ifset'} = '@set a
+$result_texis{'empty_set_in_ifset'} = '@set a
 
 a is set to:||.
 ';

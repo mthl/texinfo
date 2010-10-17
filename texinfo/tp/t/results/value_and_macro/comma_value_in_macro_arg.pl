@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'comma_value_in_macro_arg'} = {
   'contents' => [
@@ -152,7 +152,7 @@ $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[3]{'parent'
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[4]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'parent'} = $result_trees{'comma_value_in_macro_arg'};
 
-$result_texts{'comma_value_in_macro_arg'} = '@set comma ,
+$result_texis{'comma_value_in_macro_arg'} = '@set comma ,
 
 @macro macro1 { arg1 , arg2 }
 result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}

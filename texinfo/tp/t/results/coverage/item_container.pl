@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'item_container'} = {
   'contents' => [
@@ -160,7 +160,7 @@ $result_trees{'item_container'}{'contents'}[4]{'contents'}[1]{'parent'} = $resul
 $result_trees{'item_container'}{'contents'}[4]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[5]{'parent'} = $result_trees{'item_container'};
 
-$result_texts{'item_container'} = '
+$result_texis{'item_container'} = '
 @itemize +
 @item i--tem +
 @end itemize

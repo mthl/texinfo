@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'bad_argument'} = {
   'contents' => [
@@ -125,7 +125,7 @@ $result_trees{'bad_argument'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_
 $result_trees{'bad_argument'}{'contents'}[6]{'parent'} = $result_trees{'bad_argument'};
 $result_trees{'bad_argument'}{'contents'}[7]{'parent'} = $result_trees{'bad_argument'};
 
-$result_texts{'bad_argument'} = '@macro
+$result_texis{'bad_argument'} = '@macro
 in macro
 @end macro
 

@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'two_macros_on_a_line'} = {
   'contents' => [
@@ -361,7 +361,7 @@ $result_trees{'two_macros_on_a_line'}{'contents'}[15]{'contents'}[0]{'parent'} =
 $result_trees{'two_macros_on_a_line'}{'contents'}[15]{'contents'}[1]{'parent'} = $result_trees{'two_macros_on_a_line'}{'contents'}[15];
 $result_trees{'two_macros_on_a_line'}{'contents'}[15]{'parent'} = $result_trees{'two_macros_on_a_line'};
 
-$result_texts{'two_macros_on_a_line'} = '@macro mymacro
+$result_texis{'two_macros_on_a_line'} = '@macro mymacro
 in mymacro
 @end macro
 

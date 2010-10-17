@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'arg_not_closed'} = {
   'contents' => [
@@ -69,7 +69,7 @@ $result_trees{'arg_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'arg_no
 $result_trees{'arg_not_closed'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'arg_not_closed'}{'contents'}[3];
 $result_trees{'arg_not_closed'}{'contents'}[3]{'parent'} = $result_trees{'arg_not_closed'};
 
-$result_texts{'arg_not_closed'} = '@macro foo {arg}
+$result_texis{'arg_not_closed'} = '@macro foo {arg}
 foo
 @end macro
 

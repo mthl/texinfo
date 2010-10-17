@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'ifset_in_macro_set'} = {
   'contents' => [
@@ -92,7 +92,7 @@ $result_trees{'ifset_in_macro_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $r
 $result_trees{'ifset_in_macro_set'}{'contents'}[3]{'parent'} = $result_trees{'ifset_in_macro_set'};
 $result_trees{'ifset_in_macro_set'}{'contents'}[4]{'parent'} = $result_trees{'ifset_in_macro_set'};
 
-$result_texts{'ifset_in_macro_set'} = '@macro note {arg}
+$result_texis{'ifset_in_macro_set'} = '@macro note {arg}
 @ifset notes 
 \\arg\\
 @end ifset

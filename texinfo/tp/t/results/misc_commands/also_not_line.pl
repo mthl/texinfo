@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'also_not_line'} = {
   'contents' => [
@@ -360,7 +360,7 @@ $result_trees{'also_not_line'}{'contents'}[21]{'contents'}[2]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[21]{'contents'}[3]{'parent'} = $result_trees{'also_not_line'}{'contents'}[21];
 $result_trees{'also_not_line'}{'contents'}[21]{'parent'} = $result_trees{'also_not_line'};
 
-$result_texts{'also_not_line'} = '
+$result_texis{'also_not_line'} = '
 
 page @page
 noindent @noindent refill @refill something

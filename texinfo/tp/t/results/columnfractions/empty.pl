@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'empty'} = {
   'contents' => [
@@ -63,7 +63,7 @@ $result_trees{'empty'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'
 $result_trees{'empty'}{'contents'}[0]{'parent'} = $result_trees{'empty'};
 $result_trees{'empty'}{'contents'}[1]{'parent'} = $result_trees{'empty'};
 
-$result_texts{'empty'} = '@multitable @columnfractions 
+$result_texis{'empty'} = '@multitable @columnfractions 
 @end multitable';
 
 $result_errors{'empty'} = [

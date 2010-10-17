@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'raw_in_para'} = {
   'contents' => [
@@ -182,7 +182,7 @@ $result_trees{'raw_in_para'}{'contents'}[7]{'parent'} = $result_trees{'raw_in_pa
 $result_trees{'raw_in_para'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[8];
 $result_trees{'raw_in_para'}{'contents'}[8]{'parent'} = $result_trees{'raw_in_para'};
 
-$result_texts{'raw_in_para'} = 'para
+$result_texis{'raw_in_para'} = 'para
 @verbatim
 in verbatim
 @end verbatim

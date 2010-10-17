@@ -1,4 +1,4 @@
-use vars qw(%result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_trees %result_errors);
 
 $result_trees{'comments'} = {
   'contents' => [
@@ -116,7 +116,7 @@ $result_trees{'comments'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $
 $result_trees{'comments'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'comments'}{'contents'}[2];
 $result_trees{'comments'}{'contents'}[2]{'parent'} = $result_trees{'comments'};
 
-$result_texts{'comments'} = '@verb{a comment @c comment
+$result_texis{'comments'} = '@verb{a comment @c comment
 in a verb a}@c comment
 
 something @verb{, in verb,} @c other comment';
