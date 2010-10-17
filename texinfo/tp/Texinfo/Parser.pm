@@ -75,7 +75,8 @@ my %default_configuration = (
   'values' => {},
   'macros' => {},
   'expanded_formats' => [],
-  'include_directories' => [ '.' ]
+  'include_directories' => [ '.' ],
+  'clickstyle' => 'arrow'
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -213,7 +214,7 @@ my %brace_commands;
 # accent commands. They may be called with and without braces.
 my %accent_commands;
 
-foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol','dots','enddots','equiv','error','expansion','arrow','minus','point','print','result','today','aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th','exclamdown','questiondown','pounds','ordf','ordm','comma','euro','geq','leq','tie','textdegree','quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase','quotesinglbase','guillemetleft','guillemetright','guillemotleft','guillemotright','guilsinglleft','guilsinglright') {
+foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol','dots','enddots','equiv','error','expansion','arrow','minus','point','print','result','today','aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th','exclamdown','questiondown','pounds','ordf','ordm','comma','euro','geq','leq','tie','textdegree','quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase','quotesinglbase','guillemetleft','guillemetright','guillemotleft','guillemotright','guilsinglleft','guilsinglright','click') {
   $brace_commands{$no_arg_command} = 0;
 }
 
@@ -224,7 +225,7 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence','click','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key',,'option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','dotless') {
+foreach my $one_arg_command ('asis','b','cite','clicksequence','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key',,'option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','dotless') {
   $brace_commands{$one_arg_command} = 1;
 }
 
@@ -2189,6 +2190,9 @@ sub _internal_parse_text($$;$)
                                               'parent' => $current, 
                                               'contents' => [] };
             $current = $current->{'contents'}->[-1];
+            if ($command eq 'click') {
+              $current->{'special'}->{'clickstyle'} = $self->{'clickstyle'};
+            }
             if ($self->{'definfoenclose'}->{$command}) {
               $current->{'type'} = 'definfoenclose_command';
               $current->{'special'} = { 
@@ -2501,6 +2505,7 @@ sub _parse_misc_command($$$$)
     # REMACRO
     if ($line =~ /^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*/) {
       $args = ['@'.$1];
+      $self->{'clickstyle'} = $1;
       my $remaining = $line;
       $remaining =~ s/^\s+@([[:alnum:]][[:alnum:]\-]*)({})?\s*//;
       _line_warn ($self, sprintf($self->__("Remaining argument on \@%s line: %s"), $command, $remaining), $line_nr) if ($remaining);

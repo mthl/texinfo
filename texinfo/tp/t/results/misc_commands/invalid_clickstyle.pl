@@ -46,7 +46,9 @@ $result_trees{'invalid_clickstyle'} = {
           'cmdname' => 'click',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0
+          'special' => {
+            'clickstyle' => 'result'
+          }
         },
         {
           'parent' => {},
@@ -101,7 +103,9 @@ $result_trees{'invalid_clickstyle'} = {
           'cmdname' => 'click',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0
+          'special' => {
+            'clickstyle' => 'nocmd'
+          }
         },
         {
           'parent' => {},
@@ -149,7 +153,9 @@ $result_trees{'invalid_clickstyle'} = {
           'cmdname' => 'click',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0
+          'special' => {
+            'clickstyle' => 'nocmd'
+          }
         },
         {
           'parent' => {},
@@ -206,7 +212,7 @@ A @click{} (something).
 
 $result_texts{'invalid_clickstyle'} = '
 
-A  (result on the same line).
+A => (result on the same line).
 
 
 A  (nocmd).

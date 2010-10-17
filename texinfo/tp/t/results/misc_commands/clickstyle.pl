@@ -40,7 +40,9 @@ $result_trees{'clickstyle'} = {
           'cmdname' => 'click',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0
+          'special' => {
+            'clickstyle' => 'result'
+          }
         },
         {
           'parent' => {},
@@ -69,7 +71,7 @@ A @click{} (result).
 
 
 $result_texts{'clickstyle'} = '
-A  (result).
+A => (result).
 ';
 
 $result_errors{'clickstyle'} = [];

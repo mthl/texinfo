@@ -5,6 +5,7 @@ require 't/test_utils.pl';
 my @test_cases = (
 ['commands','@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
+@clicksequence{File @click{} Open}@.
 @email{a, b}
 
 @cindex index entry in text @LaTeX{}

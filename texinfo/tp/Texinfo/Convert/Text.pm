@@ -120,6 +120,7 @@ my %brace_no_arg_commands = (
                'guillemotright'          => '>>',
                'guilsinglleft'          => '<',
                'guilsinglright'          => '>',
+               'click'                => '', # specially treated
 );
 
 my %no_brace_commands = (
@@ -239,10 +240,15 @@ sub convert($;$)
     $result =~ s/^\s*// if ($state->{'trim_begin_space'});
   }
   if ($root->{'cmdname'}) {
-    if ($no_brace_commands{$root->{'cmdname'}}) {
+    my $command = $root->{'cmdname'};
+    if (defined($no_brace_commands{$root->{'cmdname'}})) {
       return $no_brace_commands{$root->{'cmdname'}};
-    } elsif ($brace_no_arg_commands{$root->{'cmdname'}}) {
-      return $brace_no_arg_commands{$root->{'cmdname'}};
+    } elsif (defined($brace_no_arg_commands{$root->{'cmdname'}})) {
+      $command = $root->{'special'}->{'clickstyle'}
+         if ($root->{'special'}
+          and defined($root->{'special'}->{'clickstyle'})
+          and defined($brace_no_arg_commands{$root->{'special'}->{'clickstyle'}}));
+      return $brace_no_arg_commands{$command};
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});

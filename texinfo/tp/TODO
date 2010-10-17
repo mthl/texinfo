@@ -30,8 +30,6 @@ empty_spaces_after_command.
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
 
-click should have a special arg, what command should be used.
-
 use definfoenclose information in Convert::Text?
 
 tests in test/macros, not incorporated
