@@ -23,6 +23,8 @@ package Texinfo::Parser;
 
 use 5.00405;
 use Data::Dumper;
+# to expand file names in @include
+use Texinfo::Convert::Text;
 use strict;
 
 require Exporter;
@@ -72,7 +74,8 @@ my %default_configuration = (
   'indices' => [],
   'values' => {},
   'macros' => {},
-  'expanded_formats', []
+  'expanded_formats' => [],
+  'include_directories' => [ '.' ]
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -588,13 +591,13 @@ sub parse_texi_file ($$)
 {
   my $self = shift;
   my $file_name = shift;
+  my $filehandle = do { local *FH };
   # FIXME error message
-  local *FILE;
-  open (*FILE, $file_name) or return undef;
+  open ($filehandle, $file_name) or return undef;
   my $line_nr = 0;
   my $line;
   my @first_lines;
-  while ($line = <FILE>) {
+  while ($line = <$filehandle>) {
     $line_nr++;
     $line =~ s/\x{7F}.*\s*//;
     if ($line =~ /^ *\\input/ or $line =~ /^\s*$/) {
@@ -608,7 +611,7 @@ sub parse_texi_file ($$)
                       'file_name' => $file_name, 'macro' => '' }] ],
        'name' => $file_name,
        'line_nr' => $line_nr,
-       'fh' => \*FILE
+       'fh' => $filehandle
         }], \@first_lines);
 }
 
@@ -982,7 +985,8 @@ sub _next_text($$)
       my $fh = $current->{'fh'};
       my $line = <$fh>;
       if (defined($line)) {
-        $current->{'line_nr'} ++;
+        $line =~ s/\x{7F}.*\s*//;
+        $current->{'line_nr'}++;
         return ($line, {'line_nr' => $current->{'line_nr'}, 
                         'file_name' => $current->{'name'},
                         'macro' => ''});
@@ -1345,9 +1349,9 @@ sub _end_line($$$)
     $current = $current->{'parent'};
     my $misc_cmd = $current;
     my $command = $current->{'cmdname'};
-    print STDERR "MISC END \@$current->{'cmdname'}\n" if ($self->{'debug'});
-    if ($self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'}
-        and $self->{'misc_commands'}->{$current->{'cmdname'}}->{'arg'} =~ /^\d$/) {
+    print STDERR "MISC END \@$command\n" if ($self->{'debug'});
+    if ($self->{'misc_commands'}->{$command}->{'arg'}
+        and $self->{'misc_commands'}->{$command}->{'arg'} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
       $current->{'special'}->{'misc_args'} = $args if (defined($args));
     }
@@ -1384,6 +1388,59 @@ sub _end_line($$$)
     }
   }
   return $current;
+}
+
+sub _end_line_and_include_file ($$$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $input = shift;
+
+  my $included_file = 0;
+
+  if ($current->{'type'} and $current->{'type'} eq 'misc_line_arg'
+    and $current->{'parent'}->{'cmdname'} 
+    and $current->{'parent'}->{'cmdname'} eq 'include') {
+    my $filename = Texinfo::Convert::Text::convert ($current);
+    chomp($filename);
+    my $file;
+    if ($filename =~ m,^(/|\./|\.\./),) {
+      $file = $filename if (-e $file and -r $file);
+    } else {
+      foreach my $dir (@{$self->{'include_directories'}}) {
+        $file = "$dir/$filename" if (-e "$dir/$filename" and -r "$dir/$filename");
+        last if (defined($file));
+      }
+    }
+    if (defined($file)) {
+      my $filehandle = do { local *FH };
+      if (open ($filehandle, $file)) {
+        $included_file = 1;
+        print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
+        $included_file = 1;
+        unshift @$input, { 
+          'name' => $file,
+          'line_nr' => 1,
+          'pending' => [],
+          'fh' => $filehandle };
+      } else {
+        _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
+           'include', $filename, $!), $line_nr);
+      }
+    } else {
+      _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
+         'include', $filename), $line_nr);
+    }
+  }
+  if ($included_file) {
+    # remove completly the include file command
+    $current = $current->{'parent'}->{'parent'};
+    pop @{$current->{'contents'}};
+  } else {
+    $current = _end_line ($self, $current, $line_nr);
+  }
+  return ($current, $included_file);
 }
 
 sub _start_empty_line_after_command($$) {
@@ -1593,10 +1650,14 @@ sub _internal_parse_text($$;$)
           if ($self->{'debug'});
         ($line, $line_nr) = _next_text($text, $line_nr);
         if (!defined($line)) {
-          # end of the document
-          $current = _end_line($self, $current, $line_nr);
-          $current = _end_block_command($self, $current, $line_nr);
-          return $root;
+          # end of the file
+          my $included_file;
+          ($current, $included_file) = 
+            _end_line_and_include_file ($self, $current, $line_nr, $text);
+          if (!$included_file) {
+            $current = _end_block_command($self, $current, $line_nr);
+            return $root;
+          }
         }
       }
 
@@ -2266,7 +2327,9 @@ sub _internal_parse_text($$;$)
           die "BUG: text remaining (@$text) and `$line'\n" if (scalar(@$text));
         }
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
-        $current = _end_line($self, $current, $line_nr);
+        my $included_file;
+        ($current, $included_file) = 
+            _end_line_and_include_file ($self, $current, $line_nr, $text);
         last;
       }
     }

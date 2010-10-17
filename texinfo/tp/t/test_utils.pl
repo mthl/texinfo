@@ -59,7 +59,9 @@ sub test($$)
     $test_name = basename($test_case, '.texi');
   }
 
-  my $parser = Texinfo::Parser->parser({'test' => 1, 'debug' => $self->{'debug'},
+  my $parser = Texinfo::Parser->parser({'test' => 1,
+                                        'include_directories' => ['t/include/'],
+                                        'debug' => $self->{'debug'},
                                        %$parser_options});
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result;

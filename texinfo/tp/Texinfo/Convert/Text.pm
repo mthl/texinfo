@@ -43,6 +43,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
+# this is in fact not needed for 'footnote', 'shortcaption', 'caption'
+# since they have no brace_command_arg below.
 my %ignored_brace_commands;
 foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
    'footnote', 'shortcaption', 'caption', 'hyphenation') {
@@ -172,6 +174,10 @@ foreach my $command ('sp', 'center', 'item', 'itemx', 'tab', 'headitem',
   $kept_misc_commands{$command} = 1;
 }
  
+my %ignored_types;
+foreach my $type ('empty_line_after_command', 'empty_spaces_after_command') {
+  $ignored_types{$type} = 1;
+}
 
 sub ascii_accents($$)
 {
@@ -188,11 +194,6 @@ sub ascii_accents($$)
   return $text . '<' if ($accent eq 'v');
   return $text . ';' if ($accent eq 'ogonek');
   return $text . $accent;
-}
-
-my %ignored_types;
-foreach my $type ('empty_line_after_command', 'empty_spaces_after_command') {
-  $ignored_types{$type} = 1;
 }
 
 sub _normalise_space($)
@@ -225,6 +226,7 @@ sub convert($;$)
      or ($root->{'cmdname'} 
         and ($ignored_brace_commands{$root->{'cmdname'}} 
            or $ignored_block_commands{$root->{'cmdname'}}
+             # here ignore most of the misc commands
            or ($root->{'args'} and $root->{'args'}->[0] 
                and $root->{'args'}->[0]->{'type'} 
                and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
