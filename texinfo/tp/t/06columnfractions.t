@@ -17,6 +17,9 @@ my @test_cases = (
 [ 'empty_comment', '@multitable @columnfractions @c
 @end multitable' ],
 [ 'wrong_command', '@multitable @columnfractions @b{3.4} 
+@end multitable' ],
+[ 'out_of_multitable', '@columnfractions 0.6 0.4 aaa' ],
+[ 'something_before_columnfractions', '@multitable aaa @columnfractions 0.3 0.7
 @end multitable' ]
 );
 

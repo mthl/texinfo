@@ -1362,7 +1362,8 @@ sub _end_line($$$)
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 
                    or $current->{'parent'}->{'cmdname'} ne 'multitable') {
-        # FIXME error message
+        _line_error ($self, sprintf($self->__("\@%s only meaningful on a \@multitable line"), 
+           $command), $line_nr);
       } else {
         $current = $current->{'parent'};
         $current->{'special'}->{'max_columns'} = 0;

@@ -130,6 +130,52 @@ $result_trees{'commands'} = {
               'contents' => [
                 {
                   'parent' => {},
+                  'text' => 'File '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [],
+                      'parent' => {},
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'click',
+                  'contents' => [],
+                  'parent' => {},
+                  'special' => {
+                    'clickstyle' => 'arrow'
+                  }
+                },
+                {
+                  'parent' => {},
+                  'text' => ' Open'
+                }
+              ],
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'clicksequence',
+          'contents' => [],
+          'parent' => {},
+          'remaining_args' => 0
+        },
+        {
+          'cmdname' => '.',
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '
+'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
                   'text' => 'a'
                 }
               ],
@@ -284,11 +330,19 @@ $result_trees{'commands'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = 
 $result_trees{'commands'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13];
-$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[1];
-$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[1]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
@@ -310,6 +364,7 @@ $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 
 $result_texis{'commands'} = '@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
+@clicksequence{File @click{} Open}@.
 @email{a, b}
 
 @cindex index entry in text @LaTeX{}
@@ -319,6 +374,7 @@ $result_texis{'commands'} = '@@ @TeX{} @
 
 
 $result_texts{'commands'} = '@ TeX  e" i^ a~ a*
+File -> Open.
 b
 
 

@@ -18,8 +18,9 @@ Following should be an error:
 
 test invalid, especially commands not closed/bad nesting
 test root_commands, like nodes and sections
-Test for @columnfractions in a random place and something like
-@multitable aaa @columnfractions 0.3 0.7
+
+Error message if block or line misc at-command on a 
+block command or misc @-command line
 
 t/results/macro/macro_in_misc_commands.pl
 some spaces are not counted as empty_spaces_after_command.
