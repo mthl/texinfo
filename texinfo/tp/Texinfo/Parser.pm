@@ -471,7 +471,7 @@ sub _deep_copy ($)
 }
 
 # initialize a parser
-sub parser($;$)
+sub parser(;$$)
 {
   my $class = shift;
   my $conf;
@@ -495,8 +495,11 @@ sub parser($;$)
     bless $parser, $class;
     $conf = shift;
 
-  } else {
+  } elsif (defined($class)) {
     bless $parser, $class;
+    $conf = shift;
+  } else {
+    bless $parser;
     $conf = shift;
   }
 
@@ -766,22 +769,9 @@ sub _begin_paragraph ($$)
     die "BUG: contents undef "._print_current($current) 
        if (!defined($current->{'contents'}));
 
-    # The code in comments takes a preceding empty line and put it in 
-    # the paragraph.
-
-    #my $previous_empty_text;
-    #if (@{$current->{'contents'}} 
-    #     and defined($current->{'contents'}->[-1]->{'text'})
-    #     and $current->{'contents'}->[-1]->{'text'} !~ /[\S\n]/) {
-    #  $previous_empty_text = pop @{$current->{'contents'}};
-    #}
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];
-    #if ($previous_empty_text) {
-    #  push @{$current->{'contents'}}, $previous_empty_text;
-    #  $previous_empty_text->{'parent'} = $current;
-    #}
     print STDERR "PARAGRAPH\n" if ($self->{'debug'});
     return $current;
   }
