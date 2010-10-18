@@ -298,18 +298,6 @@ menu comment
 * 3rd node: entry.@space{}description
 @end menu
 '],
-['nested_macro_call',
-'@macro machin{}
-(machin)
-@end macro
-
-@macro truc{}
-@machin{}
-
-@end macro
-
-Before @truc{} after truc.
-'],
 ['macro_in_accent',
 '@macro a-letter
 a
@@ -332,6 +320,18 @@ a
 @end macro
 
 @page-macro{} on the line
+'],
+['nested_macro_call',
+'@macro machin{}
+(machin)
+@end macro
+
+@macro truc{}
+@machin{}
+
+@end macro
+
+Before @truc{} after truc.
 '],
 ['two_macros_on_a_line',
 '@macro mymacro
@@ -359,6 +359,18 @@ with args
 arg
 
 in macro} @mymacro{}
+'],
+['simple_imbricated_macro',
+'@macro truc {}
+truc.
+@macro bidule {}
+bidule.
+@end macro
+@end macro
+
+@truc{}
+
+@bidule{}
 '],
 ['macro_in_macro_arg','
 @macro macro1

@@ -10,7 +10,12 @@ my @test_cases = (
 ['footnote', 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.'],
-['no_brace', '@TeX and @code code']
+['no_brace', '@TeX and @code code'],
+['space_in_footnote','text@footnote{ in footnote.}'],
+['footnote_ending_on_empty_line','text@footnote{ in footnote.
+
+}'],
+['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

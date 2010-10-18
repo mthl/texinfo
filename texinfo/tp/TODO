@@ -33,4 +33,19 @@ glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
 
-todo: macro_in_pass_texi_commands
+from test_paths.texi
+@image{formatting/f--ile}
+
+@@image dot.
+@image{./formatting/f--ile}
+
+@@image dot parent.
+@image{../test/formatting/f--ile}
+
+@verbatiminclude formatting/simplest.texi
+
+@@verbatiminclude dot.
+@verbatiminclude ./formatting/simplest.texi
+
+
+todo: setfilename_comment.texi (but done for @include)

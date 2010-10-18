@@ -58,8 +58,13 @@ $result_trees{'test_paths'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => './inc_file.texi 
-'
+                  'text' => './inc_file.texi'
+                },
+                {
+                  'parent' => {},
+                  'text' => ' 
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -85,6 +90,7 @@ $result_trees{'test_paths'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'parent'} = $result_trees{'test_paths'};
@@ -107,12 +113,12 @@ In included file.
 
 $result_errors{'test_paths'} = [
   {
-    'error_line' => ':6: @include: Cannot find ./inc_file.texi 
+    'error_line' => ':6: @include: Cannot find ./inc_file.texi
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@include: Cannot find ./inc_file.texi ',
+    'text' => '@include: Cannot find ./inc_file.texi',
     'type' => 'error'
   }
 ];

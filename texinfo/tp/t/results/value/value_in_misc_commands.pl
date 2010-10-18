@@ -702,12 +702,8 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => ' ',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
                   'parent' => {},
-                  'text' => 'is it really strong? '
+                  'text' => ' is it really strong? '
                 }
               ],
               'parent' => {},
@@ -2368,7 +2364,7 @@ $result_trees{'value_in_misc_commands'}{'contents'}[41]{'args'}[0]{'contents'}[1
 $result_trees{'value_in_misc_commands'}{'contents'}[41]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[41];
 $result_trees{'value_in_misc_commands'}{'contents'}[41]{'parent'} = $result_trees{'value_in_misc_commands'};
 $result_trees{'value_in_misc_commands'}{'contents'}[42]{'parent'} = $result_trees{'value_in_misc_commands'};
-$result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'args'}[0];
+$result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'args'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[43];
 $result_trees{'value_in_misc_commands'}{'contents'}[43]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[43];

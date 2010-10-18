@@ -1173,6 +1173,36 @@ sub _abort_empty_line($$;$)
   return 0;
 }
 
+sub _isolate_last_space($$)
+{
+  my $self = shift;
+  my $current = shift;
+  if ($current->{'contents'} and @{$current->{'contents'}}) {
+    my $index = -1;
+    $index = -2 
+      if (scalar(@{$current->{'contents'}}) > 1 
+        and $current->{'contents'}->[-1]->{'cmdname'}
+        and $self->{'misc_commands'}->{$current->{'contents'}->[-1]->{'cmdname'}});
+    if (defined($current->{'contents'}->[$index]->{'text'}) 
+        and !$current->{'contents'}->[$index]->{'type'}
+        and $current->{'contents'}->[$index]->{'text'} =~ /\s+$/) {
+      if ($current->{'contents'}->[$index]->{'text'} !~ /\S/) {
+        $current->{'contents'}->[$index]->{'type'} = 'spaces_at_end';
+      } else {
+        $current->{'contents'}->[$index]->{'text'} =~ s/(\s+)$//;
+        my $spaces = $1;
+        my $new_spaces = { 'text' => $spaces, 'parent' => $current,
+                           'type' => 'spaces_at_end' };
+        if ($index == -1) {
+          push @{$current->{'contents'}}, $new_spaces;
+        } else {
+          splice (@{$current->{'contents'}}, $index+1, 0, $new_spaces);
+        }
+      }
+    }
+  }
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$)
 {
@@ -1406,6 +1436,7 @@ sub _end_line_and_include_file ($$$$)
   if ($current->{'type'} and $current->{'type'} eq 'misc_line_arg'
     and $current->{'parent'}->{'cmdname'} 
     and $current->{'parent'}->{'cmdname'} eq 'include') {
+    $self->_isolate_last_space($current);
     my $filename = Texinfo::Convert::Text::convert ($current);
     chomp($filename);
     my $file;
@@ -1997,7 +2028,9 @@ sub _internal_parse_text($$;$)
                 { 'type' => 'misc_arg', 'text' => $arg, 
                   'parent' => $current->{'contents'}->[-1] };
             }
-            $current = _end_line($self, $current, $line_nr);
+            my $included_file;
+            ($current, $included_file) = 
+              _end_line_and_include_file ($self, $current, $line_nr, $text);
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
@@ -2222,7 +2255,9 @@ sub _internal_parse_text($$;$)
                                         $command), $line_nr);
           }
           if ($command eq "\n") {
-            $current = _end_line($self, $current, $line_nr);
+            my $included_file;
+            ($current, $included_file) = 
+              _end_line_and_include_file ($self, $current, $line_nr, $text);
             last;
           }
         } else {
@@ -2251,11 +2286,17 @@ sub _internal_parse_text($$;$)
             $current = $current->{'args'}->[-1];
             if ($context_brace_commands{$command}) {
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
+              $line =~ s/([^\S\n]*)//;
+              push @{$current->{'contents'}}, { 'type' => 'empty_line', 
+                                        'text' => $1,
+                                        'parent' => $current };
             } else {
               $current->{'type'} = 'brace_command_arg';
               push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
-                  'text' => '' } unless ($current->{'parent'}->{'cmdname'} eq 'verb');
+                  'text' => '' } 
+                      if ($brace_commands{$current->{'parent'}->{'cmdname'}}
+                           and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
@@ -2281,18 +2322,25 @@ sub _internal_parse_text($$;$)
           #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
              $current = $current->{'parent'};
+           # the following will not happen for footnote if there is 
+           # a paragraph withing the footnote
           } elsif ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
                    and (exists $brace_commands{$current->{'parent'}->{'cmdname'}}
                          or $self->{'definfoenclose'}->{$current->{'parent'}->{'cmdname'}})) {
+             # for math
              if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
                pop @{$self->{'context_stack'}};
              }
              # first is the arg.
+             $self->_isolate_last_space($current) 
+               if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
+                   and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
              $current = $current->{'parent'}->{'parent'};
-          # footnote caption closing
+          # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
+             # closing the context under broader situations
              $current = _end_paragraph($self, $current, $line_nr);
              if ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
@@ -2310,6 +2358,7 @@ sub _internal_parse_text($$;$)
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
           _abort_empty_line ($self, $current);
+          $self->_isolate_last_space($current);
           my $type = $current->{'type'};
           $current = $current->{'parent'};
           $current->{'remaining_args'}--;

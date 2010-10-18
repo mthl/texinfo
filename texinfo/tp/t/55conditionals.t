@@ -64,7 +64,42 @@ in ifset
 not tex
 @end ifnottex
 
-After.']
+After.'],
+['many_conditionals',
+'@html
+This is html text.
+@end html
+
+@ifhtml
+This is ifhtml text.
+@end ifhtml
+
+@ifnothtml
+This is ifnothtml text.
+@end ifnothtml
+
+
+@ifinfo
+This is ifinfo text.
+@end ifinfo
+
+@ifnotinfo
+This is ifnotinfo text.
+@end ifnotinfo
+
+
+@tex
+This is tex text.
+@end tex
+
+@iftex
+This is iftex text.
+@end iftex
+
+@ifnottex
+This is ifnottex text.
+@end ifnottex
+', { 'expanded_formats' => ['info', 'html'] }]
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

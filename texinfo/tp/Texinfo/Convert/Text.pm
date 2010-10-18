@@ -176,7 +176,9 @@ foreach my $command ('sp', 'center', 'item', 'itemx', 'tab', 'headitem',
 }
  
 my %ignored_types;
-foreach my $type ('empty_line_after_command', 'empty_spaces_after_command') {
+foreach my $type ('empty_line_after_command', 
+            'empty_spaces_after_command', 'spaces_at_end',
+            'empty_spaces_before_argument') {
   $ignored_types{$type} = 1;
 }
 
@@ -207,14 +209,11 @@ sub _normalise_space($)
   return $text;
 }
 
-sub convert($;$);
+sub convert($);
 
-sub convert($;$)
+sub convert($)
 {
   my $root = shift;
-  my $state = shift;
-  
-  $state = {} if (!defined($state));
 
   if (0) {
     print STDERR "root\n";
@@ -236,8 +235,6 @@ sub convert($;$)
   my $result = '';
   if (defined($root->{'text'})) {
     $result = $root->{'text'};
-    $result =~ s/\s*$// if ($state->{'trim_end_space'});
-    $result =~ s/^\s*// if ($state->{'trim_begin_space'});
   }
   if ($root->{'cmdname'}) {
     my $command = $root->{'cmdname'};
@@ -254,7 +251,7 @@ sub convert($;$)
       return '' if (!$root->{'args'});
       return ascii_accents(convert($root->{'args'}->[0]), $root->{'cmdname'});
     } elsif ($root->{'cmdname'} eq 'image') {
-      return convert($root->{'args'}->[0], {'trim_around_spaces' => 1});
+      return convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {
       my $mail = _normalise_space(convert($root->{'args'}->[0]));
       my $text;
@@ -295,18 +292,8 @@ sub convert($;$)
     }
   }
   if ($root->{'contents'}) {
-    my $content_nr = 0;
     foreach my $content (@{$root->{'contents'}}) {
-      $content_nr++;
-      my $convert_state = {};
-      if ($state->{'trim_around_spaces'}) {
-        if ($content_nr == 1) {
-          $convert_state = {'trim_begin_space' => 1};
-        } elsif ($content_nr == scalar(@{$root->{'contents'}})) {
-          $convert_state = {'trim_end_space' => 1};
-        }
-      }
-      $result .= convert($content, $convert_state);
+      $result .= convert($content);
     }
   }
   $result = '{'.$result.'}' 

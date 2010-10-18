@@ -107,7 +107,22 @@ macro_included.texi
 
 @@include dot path.
 @include ./inc_file.texi 
-']
+'],
+['include_comment',
+'@include inc_file.texi@c comment'],
+['include_space_comment',
+'@include inc_file.texi @c comment'],
+['include_space',
+'@include inc_file.texi  
+'],
+['double_include',
+'
+@include inc_file.texi @include inc_file.texi
+'],
+['include_at_end_line',
+'@include inc_file.texi@
+
+After.']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
