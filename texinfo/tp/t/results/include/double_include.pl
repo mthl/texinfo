@@ -54,6 +54,15 @@ $result_texts{'double_include'} = '
 
 $result_errors{'double_include'} = [
   {
+    'error_line' => ':2: warning: @include should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@include should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'inc_file.texi:2: @include: Cannot find inc_file.texi In included file.
 ',
     'file_name' => 't/include//inc_file.texi',

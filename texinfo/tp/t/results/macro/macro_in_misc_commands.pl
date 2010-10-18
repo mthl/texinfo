@@ -3325,6 +3325,34 @@ chapter
 
 ';
 
-$result_errors{'macro_in_misc_commands'} = [];
+$result_errors{'macro_in_misc_commands'} = [
+  {
+    'error_line' => ':45: warning: @definfoenclose should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 45,
+    'macro' => '',
+    'text' => '@definfoenclose should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':149: warning: @page should only appear at a line beginning (possibly involving @page-macro)
+',
+    'file_name' => '',
+    'line_nr' => 149,
+    'macro' => 'page-macro',
+    'text' => '@page should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':160: warning: @page should only appear at a line beginning (possibly involving @page-macro)
+',
+    'file_name' => '',
+    'line_nr' => 160,
+    'macro' => 'page-macro',
+    'text' => '@page should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 

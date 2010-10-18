@@ -15,7 +15,6 @@ Following should be an error:
 @heading A heading
 @end example
 
-
 test invalid, especially commands not closed/bad nesting
 test root_commands, like nodes and sections
 

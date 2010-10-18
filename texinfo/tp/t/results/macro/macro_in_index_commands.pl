@@ -1703,6 +1703,16 @@ abc
 fn
 ';
 
-$result_errors{'macro_in_index_commands'} = [];
+$result_errors{'macro_in_index_commands'} = [
+  {
+    'error_line' => ':21: warning: @documentlanguage should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => '@documentlanguage should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 

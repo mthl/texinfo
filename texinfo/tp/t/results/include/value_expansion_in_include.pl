@@ -488,6 +488,34 @@ test_var include: This is the included file (include-value2.txi).
 
 test_var verbatiminclude: ';
 
-$result_errors{'value_expansion_in_include'} = [];
+$result_errors{'value_expansion_in_include'} = [
+  {
+    'error_line' => ':12: warning: @include should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@include should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':17: warning: @include should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => '@include should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':22: warning: @include should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => '@include should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 

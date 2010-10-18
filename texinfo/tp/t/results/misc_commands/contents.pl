@@ -165,6 +165,52 @@ shortcontents  eol
 summarycontents  line following summarycontents
 ';
 
-$result_errors{'contents'} = [];
+$result_errors{'contents'} = [
+  {
+    'error_line' => ':2: warning: @contents should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@contents should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: @contents should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@contents should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':7: warning: @shortcontents should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => '@shortcontents should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: warning: @shortcontents should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@shortcontents should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @summarycontents should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@summarycontents should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 

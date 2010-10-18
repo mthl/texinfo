@@ -90,122 +90,118 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
 # sectioning commands and def* commands are added below.
 # index commands are added dynamically.
 my %misc_commands = (
-  'node' => 'line', # special arg
-  'bye' => 'skipline', # no arg
+  'node'             => 'line', # special arg
+  'bye'              => 'skipline', # no arg
   # set, clear
-  'set' => 'special', # special arg
-  #'clear' => {'arg' => 1, 'skip' => 'line'}, # special arg
-  'clear' => 'special', # special arg
-  'unmacro' => 'special', 
+  'set'              => 'special', # special arg
+  'clear'            => 'special', # special arg
+  'unmacro'          => 'special', 
   # comments
-  'comment' => 'lineraw',
-  'c' => 'lineraw',
+  'comment'          => 'lineraw',
+  'c'                => 'lineraw',
   # special
-  'definfoenclose' => 5,
-  'alias' => 3, 
+  'definfoenclose'   => 5,
+  'alias'            => 3, 
   # number of arguments is not known in advance.
-  'columnfractions' => 1, 
+  'columnfractions'  => 1, 
   # file names
-  'setfilename' => 'line',
-  'verbatiminclude'=> 'line',
-  'include'=> 'line',
+  'setfilename'      => 'line',
+  'verbatiminclude'  => 'line',
+  'include'          => 'line',
 
-  'raisesections' => 'skipline',  # no arg
-  'lowersections' => 'skipline', # no arg
-  'contents' => 'noarg', # no arg
-  'shortcontents' => 'noarg', # no arg
-  'summarycontents'=> 'noarg', # no arg
-  'insertcopying'=> 'noarg', # no arg
-  'clickstyle' => 'special', # arg should be an @-command
+  'raisesections'    => 'skipline',  # no arg
+  'lowersections'    => 'skipline', # no arg
+  'contents'         => 'noarg', # no arg
+  'shortcontents'    => 'noarg', # no arg
+  'summarycontents'  => 'noarg', # no arg
+  'insertcopying'    => 'noarg', # no arg
+  'clickstyle'       => 'special', # arg should be an @-command
   # more relevant in preamble
-  #'documentencoding' => {'arg' => 1, 'skip' => 'line'},
-  'documentencoding' => 'line',
+  'documentencoding'  => 'line', # or 1?
   'setcontentsaftertitlepage' => 'skipline', # no arg
   'setshortcontentsaftertitlepage' => 'skipline', # no arg
-  'novalidate' => 'skipline', # no arg
-  'dircategory'=> 'line', # line. Position with regard 
-                   # with direntry is significant
-  'pagesizes' => 'line', # can have 2 args 
+  'novalidate'        => 'skipline', # no arg
+  'dircategory'       => 'line', # line. Position with regard 
+                                 # with direntry is significant
+  'pagesizes'         => 'line', # can have 2 args 
                            # or one? 200mm,150mm 11.5in
-  'finalout' => 'skipline', # no arg
-  'paragraphindent' =>  1, # arg none asis 
+  'finalout'          => 'skipline', # no arg
+  'paragraphindent'   => 1, # arg none asis 
                        # or a number and forbids anything else on the line
   'firstparagraphindent' => 1, # none insert
-  'frenchspacing' => => 1, # on off
-                                 # not so sure about 'skip' => 'line'
-  'fonttextsize' => 1, # 10 11
-  'allowcodebreaks' => 1, # false or true
-  'exampleindent' => 1, # asis or a number
-  'footnotestyle'=> 1, # end and separate
-                           # and nothing else on the line
-  'afourpaper' => 'skipline', # no arg
-  'afivepaper' => 'skipline', # no arg
-  'afourlatex' => 'skipline', # no arg
-  'afourwide' => 'skipline', # no arg
-  'headings'=> 1,
-              #off on single double singleafter doubleafter
-              # interacts with setchapternewpage
+  'frenchspacing'     => 1, # on off
+  'fonttextsize'      => 1, # 10 11
+  'allowcodebreaks'   => 1, # false or true
+  'exampleindent'     => 1, # asis or a number
+  'footnotestyle'     => 1, # end and separate, nothing else on the line
+  'afourpaper'        => 'skipline', # no arg
+  'afivepaper'        => 'skipline', # no arg
+  'afourlatex'        => 'skipline', # no arg
+  'afourwide'         => 'skipline', # no arg
+  'headings'          => 1, #off on single double singleafter doubleafter
+                            # interacts with setchapternewpage
   'setchapternewpage' => 1, # off on odd
+
   # FIXME for the following the @this* commands are not defined. Also
   # @value and maybe macro invocations may also be delayed.
   'everyheading' => 'lineraw', # @*heading @*footing use @|
   'everyfooting' => 'lineraw', # + @thispage @thissectionname @thissectionnum
-  'evenheading' => 'lineraw',  # @thissection @thischaptername @thischapternum 
-  'evenfooting' => 'lineraw',  # @thischapter @thistitle @thisfile
-  'oddheading' => 'lineraw',
-  'oddfooting' => 'lineraw',
-  'smallbook' => 'skipline', # no arg
+  'evenheading'  => 'lineraw',  # @thissection @thischaptername @thischapternum 
+  'evenfooting'  => 'lineraw',  # @thischapter @thistitle @thisfile
+  'oddheading'   => 'lineraw',
+  'oddfooting'   => 'lineraw',
+  'smallbook'    => 'skipline', # no arg
   'syncodeindex' => 2,
                     # args are index identifiers
-  'synindex' => 2,
-  'defindex' => 1, # one identifier arg
+  'synindex'     => 2,
+  'defindex'     => 1, # one identifier arg
   'defcodeindex' => 1, # one identifier arg
   #'documentlanguage' => {'skip' => 'line', 'arg' => 1},
-  'documentlanguage' => 'line',
+  'documentlanguage'  => 'line',
                                                  # language code arg
-  'kbdinputstyle' => 1, # code 
+  'kbdinputstyle'     => 1, # code 
                                                   #example distinct
   'everyheadingmarks' => 1, # top bottom
   'everyfootingmarks' => 1,
-  'evenheadingmarks' => 1,
-  'oddheadingmarks' => 1,
-  'evenfootingmarks' => 1,
-  'oddfootingmarks' => 1,
+  'evenheadingmarks'  => 1,
+  'oddheadingmarks'   => 1,
+  'evenfootingmarks'  => 1,
+  'oddfootingmarks'   => 1,
   # not valid for info (should be in @iftex)
-  'cropmarks' => 'skipline', # no arg
+  'cropmarks'         => 'skipline', # no arg
 
   # formatting
-  'center' => 'line',
+  'center'            => 'line',
   # FIXME, line or arg? Verify the index exists?
-  'printindex' => 'line',
+  'printindex'        => 'line',
   #'printindex' => {'arg' => 1, 'skip' => 'line'},
-  'listoffloats' => 'line',
+  'listoffloats'      => 'line',
   # especially in titlepage
-  'shorttitle' => 'line',
-  'shorttitlepage' => 'line',
-  'settitle' => 'line',
-  'author' => 'line',
-  'subtitle' => 'line',
-  'title' => 'line',
-  'sp' => 1, # numerical arg
-  'page' => 'skipline', # no arg (pagebreak)
-  'need' => 1, # one numerical/real arg
+  'shorttitle'        => 'line',
+  'shorttitlepage'    => 'line',
+  'settitle'          => 'line',
+  'author'            => 'line',
+  'subtitle'          => 'line',
+  'title'             => 'line',
+  'sp'                => 1, # numerical arg
+  'page'              => 'skipline', # no arg (pagebreak)
+  'need'              => 1, # one numerical/real arg
   # formatting
-  'noindent' => 'skipspace', # no arg
-  'indent' => 'skipspace',
-  'exdent' => 'skipspace',
-  'headitem' => 'skipspace',
-  'item' => 'skipspace', # or line, depending on the context
-  'itemx' => 'skipspace',
-  'tab' => 'skipspace', 
+  'noindent'          => 'skipspace', # no arg
+  'indent'            => 'skipspace',
+  'exdent'            => 'skipspace',
+  'headitem'          => 'skipspace',
+  'item'              => 'skipspace', # or line, depending on the context
+  'itemx'             => 'skipspace',
+  'tab'               => 'skipspace', 
   # not valid for info (should be in @iftex)
-  'vskip' => 'lineraw', # arg line in TeX
+  'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
-  'refill' => 'noarg', # no arg (obsolete, to be ignored)
+  'refill'            => 'noarg', # no arg (obsolete, to be ignored)
   # Remove spaces and end of lines after the 
   # commands? If no, they can lead to empty lines
-  'quote-arg' => 'skipline',
-  'allow-recursion' => 'skipline',
+  'quote-arg'         => 'skipline',
+  'allow-recursion'   => 'skipline',
 );
 
 # command with braces. value is the max number of arguments.
@@ -434,8 +430,12 @@ foreach my $no_paragraph_command (keys(%misc_commands)) {
   $begin_line_commands{$no_paragraph_command} = 1;
 }
 
+# verbatiminclude is not said to begin at the beginning of the line
+# in the manual
 foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
-                                'noindent', 'indent', 'columnfractions') {
+                                'noindent', 'indent', 'columnfractions',
+                                'tab', 'item', 'headitem', 'verbatiminclude',
+                                'vskip') {
   delete $begin_line_commands{$misc_not_begin_line};
 }
 
@@ -1946,7 +1946,11 @@ sub _internal_parse_text($$;$)
           }
         }
 
-        _abort_empty_line ($self, $current);
+        if (not _abort_empty_line ($self, $current) 
+               and $begin_line_commands{$command}) {
+          _line_warn($self, sprintf($self->__("\@%s should only appear at a line beginning"), 
+                                     $command), $line_nr);
+        }
 
         if ($command eq 'end') {
           # REMACRO

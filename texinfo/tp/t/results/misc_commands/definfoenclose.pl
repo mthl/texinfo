@@ -358,6 +358,25 @@ very strong
  is it really strong? 
 ';
 
-$result_errors{'definfoenclose'} = [];
+$result_errors{'definfoenclose'} = [
+  {
+    'error_line' => ':2: warning: @definfoenclose should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@definfoenclose should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: @definfoenclose should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@definfoenclose should only appear at a line beginning',
+    'type' => 'warning'
+  }
+];
 
 
