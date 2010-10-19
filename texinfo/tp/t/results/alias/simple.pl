@@ -13,8 +13,13 @@ $result_trees{'simple'} = {
             },
             {
               'parent' => {},
-              'text' => 'myalias = code
-'
+              'text' => 'myalias = code'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -47,7 +52,12 @@ $result_trees{'simple'} = {
             },
             {
               'parent' => {},
-              'text' => 'o-theralias=verb '
+              'text' => 'o-theralias=verb'
+            },
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'spaces_at_end'
             },
             {
               'args' => [
@@ -203,8 +213,13 @@ $result_trees{'simple'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'table item (code)
-'
+                  'text' => 'table item (code)'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -228,13 +243,15 @@ $result_trees{'simple'} = {
 };
 $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];
+$result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[1]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
-$result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
+$result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2];
 $result_trees{'simple'}{'contents'}[2]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[3]{'parent'} = $result_trees{'simple'};
@@ -259,6 +276,7 @@ $result_trees{'simple'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'sim
 $result_trees{'simple'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0];
+$result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[8]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[8];
 $result_trees{'simple'}{'contents'}[8]{'parent'} = $result_trees{'simple'};

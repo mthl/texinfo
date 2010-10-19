@@ -213,8 +213,13 @@ $result_trees{'complex_argument'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => '4 1
-'
+                  'text' => '4 1'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -250,8 +255,13 @@ $result_trees{'complex_argument'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'doubleafter 1
-'
+                  'text' => 'doubleafter 1'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -259,12 +269,7 @@ $result_trees{'complex_argument'} = {
             }
           ],
           'cmdname' => 'headings',
-          'parent' => {},
-          'special' => {
-            'misc_args' => [
-              'doubleafter'
-            ]
-          }
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -498,6 +503,7 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'pare
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
+$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[4]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
@@ -505,6 +511,7 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[5]{'parent'} = $res
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[6]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
+$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[7]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[8]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
@@ -615,6 +622,16 @@ aaa
 
 ';
 
-$result_errors{'complex_argument'} = [];
+$result_errors{'complex_argument'} = [
+  {
+    'error_line' => ':38: Bad argument to @headings: doubleafter 1 (possibly involving @macro4)
+',
+    'file_name' => '',
+    'line_nr' => 38,
+    'macro' => 'macro4',
+    'text' => 'Bad argument to @headings: doubleafter 1',
+    'type' => 'error'
+  }
+];
 
 

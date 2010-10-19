@@ -26,8 +26,13 @@ $result_trees{'something_before_columnfractions'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => '0.3 0.7
-'
+                      'text' => '0.3 0.7'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ],
                   'parent' => {},
@@ -72,6 +77,7 @@ $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'con
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0];

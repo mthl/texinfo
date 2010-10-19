@@ -1365,6 +1365,7 @@ sub _end_line($$$)
   # misc command line arguments
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
+    $self->_isolate_last_space($current);
     # first parent is the @command, second is the parent
     $current = $current->{'parent'};
     my $misc_cmd = $current;
@@ -2595,21 +2596,26 @@ sub _parse_line_command_args($$$)
     if ($contents[0] and $contents[0]->{'type'}
        and ($contents[0]->{'type'} eq 'empty_line_after_command'
             or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
-  if (! @contents 
-       or ($contents[0]->{'cmdname'} 
-            and ($contents[0]->{'cmdname'} eq 'c' 
-                 or $contents[0]->{'cmdname'} eq 'comment'))) {
+
+  if (@contents and $contents[-1]->{'cmdname'} 
+      and ($contents[-1]->{'cmdname'} eq 'c' 
+           or $contents[-1]->{'cmdname'} eq 'comment')) {
+    pop @contents;
+  }
+  if (@contents and $contents[-1]->{'type'} 
+      and $contents[-1]->{'type'} eq 'spaces_at_end') {
+    pop @contents;
+  }
+  
+  if (! @contents) {
     _line_error ($self, sprintf($self->__("\@%s missing argument"), 
        $command), $line_nr);
     return undef;
   }
 
-  if (@{contents} > 2 or (@{contents} == 2
-         and (!$contents[1]->{'cmdname'} 
-              or ($contents[1]->{'cmdname'} ne 'c' 
-                  and $contents[1]->{'cmdname'} ne 'comment')))
+  if (@contents > 1
          or (!defined($contents[0]->{'text'}))) {
-    _line_error ($self, sprintf($self->__("Bad argument to \@%s"),
+    _line_error ($self, sprintf($self->__("Superfluous argument to \@%s"),
        $command), $line_nr);
   }
   return undef if (!defined($contents[0]->{'text'}));
@@ -2618,17 +2624,17 @@ sub _parse_line_command_args($$$)
 
   if ($command eq 'alias') {
     # REMACRO
-    if ($line =~ s/^([[:alnum:]][[:alnum:]-]*)(\s*=\s*)([[:alnum:]][[:alnum:]-]*)(\s*)//) {
+    if ($line =~ s/^([[:alnum:]][[:alnum:]-]*)(\s*=\s*)([[:alnum:]][[:alnum:]-]*)$//) {
       $self->{'aliases'}->{$1} = $3;
       $args = [$1, $3];
     } else {
       _line_error ($self, sprintf($self->
-                              __("Bad argument to \@%s"), $command), $line_nr);
+                             __("Bad argument to \@%s"), $command), $line_nr);
     }
 
   } elsif ($command eq 'definfoenclose') {
     # REMACRO
-    if ($line =~ s/^([[:alnum:]][[:alnum:]\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)//) {
+    if ($line =~ s/^([[:alnum:]][[:alnum:]\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)$//) {
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'debug'});
@@ -2653,14 +2659,14 @@ sub _parse_line_command_args($$$)
       }
     }
   } elsif ($command eq 'sp') {
-    if ($line =~ /^([0-9]+)/) {
+    if ($line =~ /^([0-9]+)$/) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@sp arg must be numeric, not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'defindex' || $command eq 'defcodeindex') {
     # REMACRO
-    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s*/) {
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)$/) {
       my $name = $1;
       if ($forbidden_index_name{$name}) {
         _line_error($self, sprintf($self->
@@ -2676,7 +2682,7 @@ sub _parse_line_command_args($$$)
     }
   } elsif ($command eq 'synindex' || $command eq 'syncodeindex') {
     # REMACRO
-    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s+([[:alnum:]][[:alnum:]\-]*)/) {
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s+([[:alnum:]][[:alnum:]\-]*)$/) {
       my $index_from = $1;
       my $index_to = $2;
       _line_error ($self, sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
@@ -2692,7 +2698,7 @@ sub _parse_line_command_args($$$)
     }
   } elsif ($command eq 'printindex') {
     # REMACRO
-    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s*/) {
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)$/) {
       my $name = $1;
       $args = [$name];
     } else {
@@ -2702,39 +2708,39 @@ sub _parse_line_command_args($$$)
   } elsif (grep {$_ eq $command} ('everyheadingmarks', 'everyfootingmarks',
                                   'evenheadingmarks', 'oddheadingmarks',
                                   'evenfootingmarks', 'oddfootingmarks')) {
-    if (($line =~ /^(top)[^\w\-]/) or ($line =~ /^(bottom)[^\w\-]/)) {
+    if (($line =~ /^(top)$/) or ($line =~ /^(bottom)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@%s arg must be `top' or `bottom', not `%s'"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'fonttextsize') {
-    if (($line =~ /^(10)[^\w\-]/) or ($line =~ /^(11)[^\w\-]/)) {
+    if (($line =~ /^(10)$/) or ($line =~ /^(11)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("Only \@%s 10 or 11 is supported, not `%s'"),$command, $line), $line_nr);
     }
   } elsif ($command eq 'footnotestyle') {
-    if ($line =~ /^([a-z]+)[^\w\-]/ and ($1 eq 'separate' or $1 eq 'end')) {
+    if ($line =~ /^([a-z]+)$/ and ($1 eq 'separate' or $1 eq 'end')) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@%s arg must be `separate' or `end', not `%s'"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'setchapternewpage') {
-    if (($line =~ /^(on)[^\w\-]/) or ($line =~ /^(off)[^\w\-]/)
-       or ($line =~ /^(odd)[^\w\-]/)) {
+    if (($line =~ /^(on)$/) or ($line =~ /^(off)$/)
+       or ($line =~ /^(odd)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@%s arg must be `on', `off' or `odd', not `%s'"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'need') { # only a warning
-    if (($line =~ /^([0-9]+(\.[0-9]*)?)[^\w\-]/) or
-             ($line =~ /^(\.[0-9]+)[^\w\-]/)) {
+    if (($line =~ /^([0-9]+(\.[0-9]*)?)$/) or
+             ($line =~ /^(\.[0-9]+)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'paragraphindent') {
-    if ($line =~ /^([\w\-]+)[^\w\-]/) {
+    if ($line =~ /^([\w\-]+)$/) {
       my $value = $1;
       if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis') {
         $args = [$1];
@@ -2745,7 +2751,7 @@ sub _parse_line_command_args($$$)
       _line_error ($self, sprintf($self->__("\@paragraphindent arg must be numeric/`none'/`asis', not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'firstparagraphindent') {
-    if (($line =~ /^(none)[^\w\-]/) or ($line =~ /^(insert)[^\w\-]/)) {
+    if (($line =~ /^(none)$/) or ($line =~ /^(insert)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@firstparagraphindent arg must be `none' or `insert', not `%s'"), $line), $line_nr);
@@ -2753,25 +2759,25 @@ sub _parse_line_command_args($$$)
   } elsif ($command eq 'exampleindent') {
     if ($line =~ /^([0-9]+)/) {
       $args = [$1];
-    } elsif ($line =~ /^(asis)[^\w\-]/) {
+    } elsif ($line =~ /^(asis)$/) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@exampleindent arg must be numeric/`asis', not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'frenchspacing') {
-    if (($line =~ /^(on)[^\w\-]/) or ($line =~ /^(off)[^\w\-]/)) {
+    if (($line =~ /^(on)$/) or ($line =~ /^(off)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("Expected \@%s on or off, not `%s'"), $command, $line), $line_nr);
     }
   } elsif ($command eq 'kbdinputstyle') {
-    if ($line =~ /^([a-z]+)/ and ($1 eq 'code' or $1 eq 'example' or $1 eq 'distinct')) {
+    if ($line =~ /^([a-z]+)$/ and ($1 eq 'code' or $1 eq 'example' or $1 eq 'distinct')) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'allowcodebreaks') {
-    if (($line =~ /^(true)[^\w\-]/) or ($line =~ /^(false)[^\w\-]/)) {
+    if (($line =~ /^(true)$/) or ($line =~ /^(false)$/)) {
       $args = [$1];
     } else {
       _line_error ($self, sprintf($self->__("\@allowcodebreaks arg must be `true' or `false', not `%s'"), $line), $line_nr);
@@ -2780,7 +2786,7 @@ sub _parse_line_command_args($$$)
     my $valid_arg = 0;
     foreach my $possible_arg ('off','on','single','double',
                                'singleafter','doubleafter') {
-      if ($line =~ /^($possible_arg)[^\w\-]/) {
+      if ($line =~ /^($possible_arg)$/) {
         $args = [$1];
         $valid_arg = 1;
         last;

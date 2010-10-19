@@ -245,7 +245,8 @@ $result_trees{'commands'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -295,7 +296,8 @@ $result_trees{'commands'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

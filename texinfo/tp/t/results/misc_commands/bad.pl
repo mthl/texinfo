@@ -19,8 +19,13 @@ $result_trees{'bad'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'wrong arg on line following kbdinputstyle
-'
+                  'text' => 'wrong arg on line following kbdinputstyle'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -39,6 +44,7 @@ $result_trees{'bad'} = {
 $result_trees{'bad'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0];
 $result_trees{'bad'}{'contents'}[0]{'parent'} = $result_trees{'bad'};
@@ -60,14 +66,12 @@ $result_errors{'bad'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `wrong arg on line following kbdinputstyle
-\'
+    'error_line' => ':1: @kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `wrong arg on line following kbdinputstyle\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `wrong arg on line following kbdinputstyle
-\'',
+    'text' => '@kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `wrong arg on line following kbdinputstyle\'',
     'type' => 'error'
   }
 ];

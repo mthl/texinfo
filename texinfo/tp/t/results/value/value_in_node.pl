@@ -81,8 +81,13 @@ $result_trees{'value_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => '(dir)
-'
+              'text' => '(dir)'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -104,8 +109,13 @@ $result_trees{'value_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => 'Expansion in Node Names
-'
+              'text' => 'Expansion in Node Names'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -226,8 +236,13 @@ $result_trees{'value_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => 'Top
-'
+              'text' => 'Top'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -249,8 +264,13 @@ $result_trees{'value_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => 'Chapter 1
-'
+              'text' => 'Chapter 1'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -402,8 +422,13 @@ $result_trees{'value_in_node'} = {
             },
             {
               'parent' => {},
-              'text' => 'Node 1
-'
+              'text' => 'Node 1'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -463,10 +488,12 @@ $result_trees{'value_in_node'}{'contents'}[2]{'args'}[1]{'parent'} = $result_tre
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[2];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[3];
+$result_trees{'value_in_node'}{'contents'}[2]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[3];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2];
 $result_trees{'value_in_node'}{'contents'}[2]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0];
+$result_trees{'value_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[3];
 $result_trees{'value_in_node'}{'contents'}[3]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[4]{'parent'} = $result_trees{'value_in_node'};
@@ -488,10 +515,12 @@ $result_trees{'value_in_node'}{'contents'}[8]{'args'}[1]{'parent'} = $result_tre
 $result_trees{'value_in_node'}{'contents'}[8]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[8]{'args'}[2];
 $result_trees{'value_in_node'}{'contents'}[8]{'args'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[8];
 $result_trees{'value_in_node'}{'contents'}[8]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[8]{'args'}[3];
+$result_trees{'value_in_node'}{'contents'}[8]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[8]{'args'}[3];
 $result_trees{'value_in_node'}{'contents'}[8]{'args'}[3]{'parent'} = $result_trees{'value_in_node'}{'contents'}[8];
 $result_trees{'value_in_node'}{'contents'}[8]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0];
+$result_trees{'value_in_node'}{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[9];
 $result_trees{'value_in_node'}{'contents'}[9]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[10]{'parent'} = $result_trees{'value_in_node'};
@@ -517,6 +546,7 @@ $result_trees{'value_in_node'}{'contents'}[16]{'args'}[1]{'parent'} = $result_tr
 $result_trees{'value_in_node'}{'contents'}[16]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[16]{'args'}[2];
 $result_trees{'value_in_node'}{'contents'}[16]{'args'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[16];
 $result_trees{'value_in_node'}{'contents'}[16]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[16]{'args'}[3];
+$result_trees{'value_in_node'}{'contents'}[16]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[16]{'args'}[3];
 $result_trees{'value_in_node'}{'contents'}[16]{'args'}[3]{'parent'} = $result_trees{'value_in_node'}{'contents'}[16];
 $result_trees{'value_in_node'}{'contents'}[16]{'parent'} = $result_trees{'value_in_node'};
 $result_trees{'value_in_node'}{'contents'}[17]{'parent'} = $result_trees{'value_in_node'};

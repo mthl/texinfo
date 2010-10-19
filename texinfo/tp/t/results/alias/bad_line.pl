@@ -19,8 +19,13 @@ $result_trees{'bad_line'} = {
             },
             {
               'parent' => {},
-              'text' => 'garbage-on-line =cmd garbage
-'
+              'text' => 'garbage-on-line =cmd garbage'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -28,13 +33,7 @@ $result_trees{'bad_line'} = {
         }
       ],
       'cmdname' => 'alias',
-      'parent' => {},
-      'special' => {
-        'misc_args' => [
-          'garbage-on-line',
-          'cmd'
-        ]
-      }
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -76,7 +75,8 @@ $result_trees{'bad_line'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -84,19 +84,14 @@ $result_trees{'bad_line'} = {
         }
       ],
       'cmdname' => 'alias',
-      'parent' => {},
-      'special' => {
-        'misc_args' => [
-          'garbage-on-line',
-          'cmd'
-        ]
-      }
+      'parent' => {}
     }
   ]
 };
 $result_trees{'bad_line'}{'contents'}[0]{'parent'} = $result_trees{'bad_line'};
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
+$result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[1];
 $result_trees{'bad_line'}{'contents'}[1]{'parent'} = $result_trees{'bad_line'};
 $result_trees{'bad_line'}{'contents'}[2]{'parent'} = $result_trees{'bad_line'};
@@ -121,6 +116,24 @@ $result_texts{'bad_line'} = '
 ';
 
 $result_errors{'bad_line'} = [
+  {
+    'error_line' => ':2: Bad argument to @alias
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Bad argument to @alias',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':4: Superfluous argument to @alias
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Superfluous argument to @alias',
+    'type' => 'error'
+  },
   {
     'error_line' => ':4: Bad argument to @alias
 ',

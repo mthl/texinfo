@@ -41,7 +41,8 @@ $result_trees{'wrong_command'} = {
                     {
                       'parent' => {},
                       'text' => ' 
-'
+',
+                      'type' => 'spaces_at_end'
                     }
                   ],
                   'parent' => {},
@@ -98,12 +99,12 @@ $result_texts{'wrong_command'} = '';
 
 $result_errors{'wrong_command'} = [
   {
-    'error_line' => ':1: Bad argument to @columnfractions
+    'error_line' => ':1: Superfluous argument to @columnfractions
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'Bad argument to @columnfractions',
+    'text' => 'Superfluous argument to @columnfractions',
     'type' => 'error'
   }
 ];
