@@ -90,8 +90,8 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
 # sectioning commands and def* commands are added below.
 # index commands are added dynamically.
 my %misc_commands = (
-  'node'             => 'line', # special arg
-  'bye'              => 'skipline', # no arg
+  'node'              => 'line', # special arg
+  'bye'               => 'skipline', # no arg
   # set, clear
   'set'               => 'special', # special arg
   'clear'             => 'special', # special arg
@@ -111,9 +111,9 @@ my %misc_commands = (
 
   'raisesections'     => 'skipline',  # no arg
   'lowersections'     => 'skipline', # no arg
-  'contents'          => 'noarg', # no arg
-  'shortcontents'     => 'noarg', # no arg
-  'summarycontents'   => 'noarg', # no arg
+  'contents'          => 'skipline', # no arg
+  'shortcontents'     => 'skipline', # no arg
+  'summarycontents'   => 'skipline', # no arg
   'insertcopying'     => 'noarg', # no arg
   'clickstyle'        => 'special', # arg should be an @-command
   # more relevant in preamble
