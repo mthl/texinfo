@@ -1197,6 +1197,8 @@ sub _end_line($$$)
   my $current = shift;
   my $line_nr = shift;
 
+  my $included_file = 0;
+
   # a line consisting only of spaces.
   if ($current->{'contents'} and @{$current->{'contents'}} 
       and $current->{'contents'}->[-1]->{'type'} 
@@ -1366,6 +1368,7 @@ sub _end_line($$$)
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
     $self->_isolate_last_space($current);
+
     # first parent is the @command, second is the parent
     $current = $current->{'parent'};
     my $misc_cmd = $current;
@@ -1375,8 +1378,50 @@ sub _end_line($$$)
         and $self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
       $current->{'special'}->{'misc_args'} = $args if (defined($args));
+    } elsif ($self->{'misc_commands'}->{$command}
+        and $self->{'misc_commands'}->{$command} eq 'text') {
+      if (!$current->{'args'} or !@{$current->{'args'}}) {
+        _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
+           $command), $line_nr);
+      } else {
+        my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
+        if ($command eq 'include') {
+          my $file;
+          if ($text =~ m,^(/|\./|\.\./),) {
+            $file = $text if (-e $text and -r $text);
+          } else {
+            foreach my $dir (@{$self->{'include_directories'}}) {
+              $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
+              last if (defined($file));
+            }
+          }
+          if (defined($file)) {
+            my $filehandle = do { local *FH };
+            if (open ($filehandle, $file)) {
+              $included_file = 1;
+              print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
+              $included_file = 1;
+              unshift @{$self->{'input'}}, { 
+                'name' => $file,
+                'line_nr' => 1,
+                'pending' => [],
+                'fh' => $filehandle };
+            } else {
+              _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
+                 $command, $text, $!), $line_nr);
+            }
+          } else {
+            _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
+               $command, $text), $line_nr);
+          }
+        }
+      }
     }
     $current = $current->{'parent'};
+    if ($included_file) {
+      # remove completly the include file command
+      pop @{$current->{'contents'}};
+    }
     # columnfractions 
     if ($command eq 'columnfractions') {
       # in a multitable, we are in a block_line_arg
@@ -1408,59 +1453,6 @@ sub _end_line($$$)
       $empty_line->{'parent'} = $current->{'parent'};
       unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
     }
-  }
-  return $current;
-}
-
-sub _end_line_and_include_file ($$$)
-{
-  my $self = shift;
-  my $current = shift;
-  my $line_nr = shift;
-
-  my $included_file = 0;
-
-  if ($current->{'type'} and $current->{'type'} eq 'misc_line_arg'
-    and $current->{'parent'}->{'cmdname'} 
-    and $current->{'parent'}->{'cmdname'} eq 'include') {
-    $self->_isolate_last_space($current);
-    my $filename = Texinfo::Convert::Text::convert ($current);
-    chomp($filename);
-    my $file;
-    if ($filename =~ m,^(/|\./|\.\./),) {
-      $file = $filename if (-e $filename and -r $filename);
-    } else {
-      foreach my $dir (@{$self->{'include_directories'}}) {
-        $file = "$dir/$filename" if (-e "$dir/$filename" and -r "$dir/$filename");
-        last if (defined($file));
-      }
-    }
-    if (defined($file)) {
-      my $filehandle = do { local *FH };
-      if (open ($filehandle, $file)) {
-        $included_file = 1;
-        print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
-        $included_file = 1;
-        unshift @{$self->{'input'}}, { 
-          'name' => $file,
-          'line_nr' => 1,
-          'pending' => [],
-          'fh' => $filehandle };
-      } else {
-        _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
-           'include', $filename, $!), $line_nr);
-      }
-    } else {
-      _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
-         'include', $filename), $line_nr);
-    }
-  }
-  if ($included_file) {
-    # remove completly the include file command
-    $current = $current->{'parent'}->{'parent'};
-    pop @{$current->{'contents'}};
-  } else {
-    $current = _end_line ($self, $current, $line_nr);
   }
   return ($current, $included_file);
 }
@@ -1674,7 +1666,7 @@ sub _parse_texi($$;$)
           # end of the file
           my $included_file;
           ($current, $included_file) = 
-            _end_line_and_include_file ($self, $current, $line_nr);
+            _end_line ($self, $current, $line_nr);
           if (!$included_file) {
             $current = _end_block_command($self, $current, $line_nr);
             return $root;
@@ -2019,7 +2011,7 @@ sub _parse_texi($$;$)
             }
             my $included_file;
             ($current, $included_file) = 
-              _end_line_and_include_file ($self, $current, $line_nr);
+              _end_line ($self, $current, $line_nr);
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
@@ -2246,7 +2238,7 @@ sub _parse_texi($$;$)
           if ($command eq "\n") {
             my $included_file;
             ($current, $included_file) = 
-              _end_line_and_include_file ($self, $current, $line_nr);
+              _end_line ($self, $current, $line_nr);
             last;
           }
         } else {
@@ -2386,7 +2378,7 @@ sub _parse_texi($$;$)
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
         my $included_file;
         ($current, $included_file) = 
-            _end_line_and_include_file ($self, $current, $line_nr);
+            _end_line ($self, $current, $line_nr);
         last;
       }
     }
