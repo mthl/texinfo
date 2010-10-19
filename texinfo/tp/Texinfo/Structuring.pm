@@ -71,7 +71,7 @@ sub _next_content($)
     while ($current->{'parent'} and !$current->{'parent'}->{'next'}) {
       $current = $current->{'parent'};
     }
-    if ($current->{'parent'}->{'next'}) {
+    if ($current->{'parent'} and $current->{'parent'}->{'next'}) {
       $current = $current->{'parent'}->{'next'}
     } else {
       $current = undef;

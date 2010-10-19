@@ -799,7 +799,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'pg'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -838,7 +843,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'ky'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -877,7 +887,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'truc'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -916,7 +931,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'truc'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -955,7 +975,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'cp'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -994,7 +1019,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'cp'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -1033,7 +1063,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'defg'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -1072,7 +1107,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'abc'
+        ]
+      }
     },
     {
       'parent' => {},
@@ -1111,7 +1151,12 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'misc_args' => [
+          'fn'
+        ]
+      }
     }
   ]
 };

@@ -93,35 +93,35 @@ my %misc_commands = (
   'node'             => 'line', # special arg
   'bye'              => 'skipline', # no arg
   # set, clear
-  'set'              => 'special', # special arg
-  'clear'            => 'special', # special arg
-  'unmacro'          => 'special', 
+  'set'               => 'special', # special arg
+  'clear'             => 'special', # special arg
+  'unmacro'           => 'special', 
   # comments
-  'comment'          => 'lineraw',
-  'c'                => 'lineraw',
+  'comment'           => 'lineraw',
+  'c'                 => 'lineraw',
   # special
-  'definfoenclose'   => 5,
-  'alias'            => 3, 
+  'definfoenclose'    => 5,
+  'alias'             => 3, 
   # number of arguments is not known in advance.
-  'columnfractions'  => 1, 
+  'columnfractions'   => 1, 
   # file names
-  'setfilename'      => 'line',
-  'verbatiminclude'  => 'line',
-  'include'          => 'line',
+  'setfilename'       => 'text',
+  'verbatiminclude'   => 'text',
+  'include'           => 'text',
 
-  'raisesections'    => 'skipline',  # no arg
-  'lowersections'    => 'skipline', # no arg
-  'contents'         => 'noarg', # no arg
-  'shortcontents'    => 'noarg', # no arg
-  'summarycontents'  => 'noarg', # no arg
-  'insertcopying'    => 'noarg', # no arg
-  'clickstyle'       => 'special', # arg should be an @-command
+  'raisesections'     => 'skipline',  # no arg
+  'lowersections'     => 'skipline', # no arg
+  'contents'          => 'noarg', # no arg
+  'shortcontents'     => 'noarg', # no arg
+  'summarycontents'   => 'noarg', # no arg
+  'insertcopying'     => 'noarg', # no arg
+  'clickstyle'        => 'special', # arg should be an @-command
   # more relevant in preamble
-  'documentencoding'  => 'line', # or 1?
-  'setcontentsaftertitlepage' => 'skipline', # no arg
+  'setcontentsaftertitlepage'      => 'skipline', # no arg
   'setshortcontentsaftertitlepage' => 'skipline', # no arg
+  'documentencoding'  => 'text', # or 1?
   'novalidate'        => 'skipline', # no arg
-  'dircategory'       => 'line', # line. Position with regard 
+  'dircategory'       => 'text', # line. Position with regard 
                                  # with direntry is significant
   'pagesizes'         => 'line', # can have 2 args 
                            # or one? 200mm,150mm 11.5in
@@ -156,11 +156,8 @@ my %misc_commands = (
   'synindex'     => 2,
   'defindex'     => 1, # one identifier arg
   'defcodeindex' => 1, # one identifier arg
-  #'documentlanguage' => {'skip' => 'line', 'arg' => 1},
-  'documentlanguage'  => 'line',
-                                                 # language code arg
-  'kbdinputstyle'     => 1, # code 
-                                                  #example distinct
+  'documentlanguage'  => 'text',     # language code arg
+  'kbdinputstyle'     => 1,          # code example distinct
   'everyheadingmarks' => 1, # top bottom
   'everyfootingmarks' => 1,
   'evenheadingmarks'  => 1,
@@ -172,9 +169,8 @@ my %misc_commands = (
 
   # formatting
   'center'            => 'line',
-  # FIXME, line or arg? Verify the index exists?
-  'printindex'        => 'line',
-  #'printindex' => {'arg' => 1, 'skip' => 'line'},
+  # FIXME Verify the index exists?
+  'printindex'        => 1,
   'listoffloats'      => 'line',
   # especially in titlepage
   'shorttitle'        => 'line',
@@ -2695,6 +2691,15 @@ sub _parse_line_command_args($$$)
       }
     } else {
       _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+    }
+  } elsif ($command eq 'printindex') {
+    # REMACRO
+    if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)\s*/) {
+      my $name = $1;
+      $args = [$name];
+    } else {
+      _line_error ($self, sprintf($self->
+                   __("Bad argument to \@%s: %s"), $command, $line), $line_nr);
     }
   } elsif (grep {$_ eq $command} ('everyheadingmarks', 'everyfootingmarks',
                                   'evenheadingmarks', 'oddheadingmarks',

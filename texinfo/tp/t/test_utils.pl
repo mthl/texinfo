@@ -43,6 +43,9 @@ sub new_test ($;$$)
   return $test;
 }
 
+sub filter_keys { [grep {$_ ne 'next'} ( sort keys %{$_[0]} )] }
+#sub filter_keys { [grep {$_ ne 'parent' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
+
 sub test($$) 
 {
   my $self = shift;
@@ -70,6 +73,8 @@ sub test($$)
   } else {
     $result = $parser->parse_texi_file($test_case);
   }
+#use Texinfo::Structuring;
+#Texinfo::Structuring::collect_structure($result);
 
   my ($errors, $error_nrs) = $parser->errors();
   my $converted_text = Texinfo::Convert::Text::convert($result);
@@ -79,7 +84,7 @@ sub test($$)
 
   {
     local $Data::Dumper::Purity = 1;
-    local $Data::Dumper::Sortkeys = 1;
+    local $Data::Dumper::Sortkeys = \&filter_keys;
     local $Data::Dumper::Indent = 1;
 
     my $out_file = $new_file;
@@ -116,10 +121,10 @@ sub test($$)
 
     #$transformer->traverse($result_trees{$test_name});
     #$transformer->traverse($result);
-    {
+    #{
       #local $Data::Dumper::Purity = 1;
-      local $Data::Dumper::Sortkeys = 1;
-      local $Data::Dumper::Indent = 1;
+      #local $Data::Dumper::Sortkeys = 1;
+      #local $Data::Dumper::Indent = 1;
       #if (!Struct::Compare::compare($result, $result_trees{$test_name})) {
       #  print STDERR "".Data::Dumper->Dump([$result],['$new']);
       #  print STDERR "".Data::Dumper->Dump([$result_trees{$test_name}], ['$ref']);
@@ -127,8 +132,8 @@ sub test($$)
 
       #my $diff = Data::Diff->new($result, $result_trees{$test_name});
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
-    }
-    ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent)] }), $test_name.' tree' );
+    #}
+    ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent next)] }), $test_name.' tree' );
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
