@@ -590,7 +590,8 @@ sub parse_texi_text($$;$)
       push @$lines_array, [$line, $line_nr];
     }
   }
-  return $self->_internal_parse_text([{'pending' => $lines_array}]);
+  $self->{'input'} = [{'pending' => $lines_array}];
+  return $self->_parse_texi();
 }
 
 sub parse_texi_file ($$)
@@ -612,13 +613,14 @@ sub parse_texi_file ($$)
       last;
     }
   }
-  return $self->_internal_parse_text([{
+  $self->{'input'} = [{
        'pending' => [ [$line, { 'line_nr' => $line_nr,
                       'file_name' => $file_name, 'macro' => '' }] ],
        'name' => $file_name,
        'line_nr' => $line_nr,
        'fh' => $filehandle
-        }], \@first_lines);
+        }];
+  return $self->_parse_texi(\@first_lines);
 }
 
 sub tree_to_texi ($);
@@ -966,11 +968,11 @@ sub _item_multitable_parent($)
 
 sub _next_text($$)
 {
-  my $input = shift;
+  my $self = shift;
   my $line_nr = shift;
  
-  while (@$input) {
-    my $current = $input->[0];
+  while (@{$self->{'input'}}) {
+    my $current = $self->{'input'}->[0];
     if (@{$current->{'pending'}}) {
       my $new_text = shift @{$current->{'pending'}};
       return ($new_text->[0], $new_text->[1]);
@@ -985,7 +987,7 @@ sub _next_text($$)
                         'macro' => ''});
       }
     }
-    shift(@$input);
+    shift(@{$self->{'input'}});
   }
 
   return (undef, $line_nr);
@@ -994,13 +996,13 @@ sub _next_text($$)
 # collect text and line numbers until an end of line is found.
 sub _new_line ($$)
 {
-  my $text = shift;
+  my $self = shift;
   my $line_nr = shift;
   my $new_line = '';
 
   while (1) {
     my $new_text;
-    ($new_text, $line_nr) = _next_text($text, $line_nr);
+    ($new_text, $line_nr) = _next_text($self, $line_nr);
     if (!defined($new_text)) {
       $new_line = undef if ($new_line eq '');
       last;
@@ -1014,13 +1016,12 @@ sub _new_line ($$)
   return ($new_line, $line_nr);
 }
 
-sub _expand_macro_arguments($$$$$)
+sub _expand_macro_arguments($$$$)
 {
   my $self = shift;
   my $macro = shift;
   my $line = shift;
   my $line_nr = shift;
-  my $text = shift;
   my $braces_level = 1;
   my $arguments = [ '' ];
   my $arg_nr = 0;
@@ -1075,7 +1076,7 @@ sub _expand_macro_arguments($$$$$)
       print STDERR "MACRO ARG end of line\n" if ($self->{'debug'});
       $arguments->[-1] .= $line;
 
-      ($line, $line_nr) = _new_line($text, $line_nr);
+      ($line, $line_nr) = _new_line($self, $line_nr);
       if (!defined($line)) {
         _line_error ($self, sprintf($self->__("\@%s missing close brace"), 
            $name), $line_nr_orig);
@@ -1410,12 +1411,11 @@ sub _end_line($$$)
   return $current;
 }
 
-sub _end_line_and_include_file ($$$$)
+sub _end_line_and_include_file ($$$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
-  my $input = shift;
 
   my $included_file = 0;
 
@@ -1440,7 +1440,7 @@ sub _end_line_and_include_file ($$$$)
         $included_file = 1;
         print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
         $included_file = 1;
-        unshift @$input, { 
+        unshift @{$self->{'input'}}, { 
           'name' => $file,
           'line_nr' => 1,
           'pending' => [],
@@ -1501,10 +1501,9 @@ sub _start_empty_line_after_command($$) {
 #special for @verb, type is the character
 
 # the main subroutine
-sub _internal_parse_text($$;$)
+sub _parse_texi($$;$)
 {
   my $self = shift;
-  my $text = shift;
   my $first_lines = shift;
 
   my $root = { 'contents' => [] };
@@ -1523,7 +1522,7 @@ sub _internal_parse_text($$;$)
  NEXT_LINE:
   while (1) {
     my $line;
-    ($line, $line_nr) = _next_text($text, $line_nr);
+    ($line, $line_nr) = _next_text($self, $line_nr);
     last if (!defined($line));
 
     if ($self->{'debug'}) {
@@ -1612,7 +1611,7 @@ sub _internal_parse_text($$;$)
                   or $conditional->{'cmdname'} ne $end_command));
             # Ignore until end of line
             if ($line !~ /\n/) {
-              ($line, $line_nr) = _new_line($text, $line_nr);
+              ($line, $line_nr) = _new_line($self, $line_nr);
               print STDERR "IGNORE CLOSE line: $line" if ($self->{'debug'});
             }
             print STDERR "CLOSED conditional $end_command\n" if ($self->{'debug'});
@@ -1667,14 +1666,14 @@ sub _internal_parse_text($$;$)
       #   after a protection of @\n in @def* line
       while ($line eq '')
       {
-        print STDERR "END OF TEXT not at end of line (remaining ".scalar(@$text).")\n" 
+        print STDERR "END OF TEXT not at end of line\n"
           if ($self->{'debug'});
-        ($line, $line_nr) = _next_text($text, $line_nr);
+        ($line, $line_nr) = _next_text($self, $line_nr);
         if (!defined($line)) {
           # end of the file
           my $included_file;
           ($current, $included_file) = 
-            _end_line_and_include_file ($self, $current, $line_nr, $text);
+            _end_line_and_include_file ($self, $current, $line_nr);
           if (!$included_file) {
             $current = _end_block_command($self, $current, $line_nr);
             return $root;
@@ -1699,13 +1698,12 @@ sub _internal_parse_text($$;$)
         my $arguments = [];
         if ($line =~ s/^\s*{\s*//) { # macro with args
           ($arguments, $line, $line_nr) = 
-            _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr,
-                                     $text);#, $lines_array);
+            _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr);
         } elsif (($args_number >= 2) or ($args_number <1)) {
           _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
         } else {
           if ($line !~ /\n/) {
-            ($line, $line_nr) = _new_line($text, $line_nr);
+            ($line, $line_nr) = _new_line($self, $line_nr);
             $line = '' if (!defined($line));
           }
           $line =~ s/^\s*// if ($line =~ /\S/);
@@ -1728,10 +1726,10 @@ sub _internal_parse_text($$;$)
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);
-        unshift @{$text->[0]->{'pending'}}, [$line, $line_nr];
+        unshift @{$self->{'input'}->[0]->{'pending'}}, [$line, $line_nr];
         my $new_text = shift @$new_lines;
         ($line, $line_nr) = ($new_text->[0], $new_text->[1]);
-        unshift @{$text->[0]->{'pending'}}, @$new_lines;
+        unshift @{$self->{'input'}->[0]->{'pending'}}, @$new_lines;
 
       # Now handle all the cases that may lead to command closing
       # or following character association with an @-command, especially
@@ -1955,7 +1953,7 @@ sub _internal_parse_text($$;$)
                 pop @{$self->{'conditionals_stack'}};
                 # Ignore until end of line
                 if ($line !~ /\n/) {
-                  ($line, $line_nr) = _new_line($text, $line_nr);
+                  ($line, $line_nr) = _new_line($self, $line_nr);
                 }
               } else {
                 _line_error ($self, 
@@ -2000,7 +1998,7 @@ sub _internal_parse_text($$;$)
                    or $arg_spec eq 'special') {
             # complete the line if there was a user macro expansion
             if ($line !~ /\n/) {
-              my ($new_line, $new_line_nr) = _new_line($text, $line_nr);
+              my ($new_line, $new_line_nr) = _new_line($self, $line_nr);
               $line .= $new_line if (defined($new_line));
             }
             push @{$current->{'contents'}}, {'cmdname' => $command,
@@ -2020,7 +2018,7 @@ sub _internal_parse_text($$;$)
             }
             my $included_file;
             ($current, $included_file) = 
-              _end_line_and_include_file ($self, $current, $line_nr, $text);
+              _end_line_and_include_file ($self, $current, $line_nr);
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
@@ -2247,7 +2245,7 @@ sub _internal_parse_text($$;$)
           if ($command eq "\n") {
             my $included_file;
             ($current, $included_file) = 
-              _end_line_and_include_file ($self, $current, $line_nr, $text);
+              _end_line_and_include_file ($self, $current, $line_nr);
             last;
           }
         } else {
@@ -2382,12 +2380,12 @@ sub _internal_parse_text($$;$)
         if ($line =~ s/^(\n)//) {
           $current = _merge_text ($self, $current, $1);
         } else {
-          die "BUG: text remaining (@$text) and `$line'\n" if (scalar(@$text));
+          die "BUG: text remaining and `$line'\n" if (scalar(@{$self->{'input'}}));
         }
         #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
         my $included_file;
         ($current, $included_file) = 
-            _end_line_and_include_file ($self, $current, $line_nr, $text);
+            _end_line_and_include_file ($self, $current, $line_nr);
         last;
       }
     }
