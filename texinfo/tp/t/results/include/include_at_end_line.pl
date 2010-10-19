@@ -26,7 +26,10 @@ $result_trees{'include_at_end_line'} = {
         }
       ],
       'cmdname' => 'include',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'inc_file.texi '
+      }
     },
     {
       'parent' => {},

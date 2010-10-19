@@ -272,7 +272,10 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'en'
+          }
         }
       ],
       'parent' => {},
@@ -316,7 +319,10 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'en'
+          }
         },
         {
           'parent' => {},

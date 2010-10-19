@@ -1409,7 +1409,10 @@ $result_trees{'value_in_misc_commands'} = {
         }
       ],
       'cmdname' => 'documentencoding',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'ISO-8859-1'
+      }
     },
     {
       'parent' => {},
@@ -1494,7 +1497,10 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'en'
+          }
         }
       ],
       'parent' => {},
@@ -1538,7 +1544,10 @@ $result_trees{'value_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'en'
+          }
         },
         {
           'parent' => {},

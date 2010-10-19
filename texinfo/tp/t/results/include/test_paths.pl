@@ -72,7 +72,10 @@ $result_trees{'test_paths'} = {
             }
           ],
           'cmdname' => 'include',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => './inc_file.texi'
+          }
         }
       ],
       'parent' => {},

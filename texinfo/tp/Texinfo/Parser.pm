@@ -1385,6 +1385,7 @@ sub _end_line($$$)
            $command), $line_nr);
       } else {
         my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
+        $current->{'special'}->{'text_arg'} = $text;
         if ($command eq 'include') {
           my $file;
           if ($text =~ m,^(/|\./|\.\./),) {

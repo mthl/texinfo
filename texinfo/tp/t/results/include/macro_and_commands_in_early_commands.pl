@@ -72,7 +72,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'macro_i--n_pass@texi_commands.info'
+      }
     },
     {
       'parent' => {},
@@ -146,7 +149,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       ],
       'cmdname' => 'documentencoding',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'ISO-8859-1@'
+      }
     },
     {
       'parent' => {},
@@ -357,7 +363,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       ],
       'cmdname' => 'verbatiminclude',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'inc_@f--ile.texi'
+      }
     }
   ]
 };

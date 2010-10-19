@@ -708,7 +708,10 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'documentencoding',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'US-ascii encoding name'
+          }
         },
         {
           'args' => [
@@ -735,7 +738,10 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'documentencoding',
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'text_arg' => 'ISO-8859-1'
+          }
         },
         {
           'parent' => {},

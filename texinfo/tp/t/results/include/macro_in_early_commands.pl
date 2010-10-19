@@ -103,7 +103,10 @@ $result_trees{'macro_in_early_commands'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'macro_in_passtexi_commands.info'
+      }
     },
     {
       'parent' => {},
@@ -210,7 +213,10 @@ $result_trees{'macro_in_early_commands'} = {
         }
       ],
       'cmdname' => 'documentencoding',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'ISO-8859-1'
+      }
     },
     {
       'parent' => {},

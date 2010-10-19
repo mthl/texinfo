@@ -33,7 +33,10 @@ $result_trees{'double_include'} = {
         }
       ],
       'cmdname' => 'include',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'inc_file.texi In included file.'
+      }
     }
   ]
 };

@@ -218,7 +218,10 @@ $result_trees{'value_expansion_in_include'} = {
         }
       ],
       'cmdname' => 'verbatiminclude',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'incl-incl.txi'
+      }
     },
     {
       'parent' => {},
@@ -306,7 +309,10 @@ $result_trees{'value_expansion_in_include'} = {
         }
       ],
       'cmdname' => 'verbatiminclude',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'incl-incl.txi'
+      }
     },
     {
       'parent' => {},
@@ -394,7 +400,10 @@ $result_trees{'value_expansion_in_include'} = {
         }
       ],
       'cmdname' => 'verbatiminclude',
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'text_arg' => 'incl-incl.txi'
+      }
     }
   ]
 };
