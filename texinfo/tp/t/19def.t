@@ -124,6 +124,158 @@ Deftypemethod.
 @defmethod c f (const type& x)
 Defmethod.
 @end defmethod
+'],
+['all_commands_delimiters',
+'@deffn Command @var{forward--char} @var{nchars} {argument2} {argument3} @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deffn
+
+@defvr Variable fill-column {argument1} {argument2} @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defvr
+
+@deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar})
+@end deftypefn
+
+@deftypefn {Library Function} int foobar (int @var{foo}, float @var{bar}) @
+        (arg in brace, {[something} @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) ct@*@* last
+@end deftypefn
+
+@deftypefn {Library Function} int foobug {[something}
+@end deftypefn
+
+@deftypefn stacks private push (@var{s}:in out stack; @
+                 @var{n}:in integer) ; ;barg aarg; ; end
+@end deftypefn
+
+@deftypevr {Global Flag} int enable @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypevr
+
+@deftp {Data type} pair car cdr @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftp
+
+@defcv {Class Option} Window border-pattern @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defcv
+
+@deftypecv {Class Option2} Window @code{int} border-pattern @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypecv
+
+@defop Operation windows expose @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end defop
+
+@deftypeop Operation2 W,indow @code{int} expose @
+        (arg in brace, [something @var{in v--ar}, @b{in, b} {, comma} a@var{pref} p]) last
+@end deftypeop
+
+@deftypeop Operation5 Window @code{int} expose type arg
+@end deftypeop
+
+@deftypeop Operation3 {W,indow} @code{int} {e,xpose} type arg
+@end deftypeop
+
+@deftypeop Operation4 {,Window} @code{int} {,expose} type arg
+@end deftypeop
+
+@deftypeop Operation6 W,indow @code{int} e,xpose type arg
+@end deftypeop
+
+@deftypeop Operation7 ,Window @code{int} ,expose type arg
+@end deftypeop
+
+@deftypeop Operation13 {W)indow} @code{int} {e)xpose} type arg
+@end deftypeop
+
+@deftypeop Operation14 {)Window} @code{int} {)expose} type arg
+@end deftypeop
+
+@deftypeop Operation16 W)indow @code{int} e)xpose type arg
+@end deftypeop
+
+@deftypeop Operation17 )Window @code{int} )expose type arg
+@end deftypeop
+
+@deftypeop Operation18 {W;indow} @code{int} {e;xpose} type arg
+@end deftypeop
+
+@deftypeop Operation19 {;Window} @code{int} {;expose} type arg
+@end deftypeop
+
+@deftypeop Operation20 W;indow @code{int} e;xpose type arg
+@end deftypeop
+
+@deftypeop Operation21 ;Window @code{int} ;expose type arg
+@end deftypeop
+
+@deftypeop Command@code{com} {Window@code{int}} expose@var{exp} name
+@end deftypeop
+
+@defun apply function &rest arguments
+@end defun
+
+@deffn @var{A1} @var{A2} @var{A3} @var{A4}
+@end deffn
+
+@deffn @code{A1} @code{A2} @code{A3} @code{A4}
+@end deffn
+
+@defvr @var{A1} @var{A2} @var{A3} @var{A4}
+@end defvr
+
+@defvr @code{A1} @code{A2} @code{A3} @code{A4}
+@end defvr
+
+@deftypefn @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypefn
+
+@deftypefn @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftypefn
+
+@deftypevr @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end deftypevr
+
+@deftypevr @code{A1} @t{A2} @code{A3} @code{A4} @code{A5}
+@end deftypevr
+
+@deftp @var{A1} @var{A2} @var{A3} @var{A4}
+@end deftp
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4}
+@end deftp
+
+@defcv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defcv
+
+@deftp @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end deftp
+
+@deftypecv @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypecv
+
+@deftypecv @code{A1} @code{A2} @option{A3} @code{A4} @code{A5} @code{A6}
+@end deftypecv
+
+@defop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5}
+@end defop
+
+@defop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5}
+@end defop
+
+@deftypeop @var{A1} @var{A2} @var{A3} @var{A4} @var{A5} @var{A6}
+@end deftypeop
+
+@deftypeop @code{A1} @code{A2} @code{A3} @code{A4} @code{A5} @code{A6}
+@end deftypeop
+
+@deftypefn {code then var} {ret_type} {fun_name} @code{A1} @var{A2} @code{A3} @var{A4}
+@end deftypefn
+
+@deftypefn {var then code} {ret_type1} {fun_name1} @var{A1} @code{A2} @var{A3} @code{A4}
+@end deftypefn
 ']
 );
 

@@ -52,3 +52,4 @@ done:
 formatting/def_end_of_line.texi
 formatting/def_end_of_line_footnote.texi
 formatting/empty_deftype.texi
+formatting/def_cmds.texi (but printindex not tested)
