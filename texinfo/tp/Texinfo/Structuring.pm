@@ -52,6 +52,15 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
   $types_to_enter{$type_to_enter} = 1;
 }
 
+# anchor may appear in @center? @item/x?
+# going in node, sectioning 
+# not going in: pagesizes listoffloats shorttitle shorttitlepage 
+#               settitle author subtitle title
+# index entries
+# footnote? section node
+# float printindex contents shortcontents
+# anchor
+
 sub _next_content($)
 {
   my $current = shift;

@@ -144,18 +144,17 @@ my %misc_commands = (
 
   # FIXME for the following the @this* commands are not defined. Also
   # @value and maybe macro invocations may also be delayed.
-  'everyheading' => 'lineraw', # @*heading @*footing use @|
-  'everyfooting' => 'lineraw', # + @thispage @thissectionname @thissectionnum
-  'evenheading'  => 'lineraw',  # @thissection @thischaptername @thischapternum 
-  'evenfooting'  => 'lineraw',  # @thischapter @thistitle @thisfile
-  'oddheading'   => 'lineraw',
-  'oddfooting'   => 'lineraw',
-  'smallbook'    => 'skipline', # no arg
-  'syncodeindex' => 2,
-                    # args are index identifiers
-  'synindex'     => 2,
-  'defindex'     => 1, # one identifier arg
-  'defcodeindex' => 1, # one identifier arg
+  'everyheading'      => 'lineraw',  # @*heading @*footing use @|
+  'everyfooting'      => 'lineraw',  # + @thispage @thissectionname
+  'evenheading'       => 'lineraw',  # @thissectionnum @thissection
+  'evenfooting'       => 'lineraw',  # @thischaptername @thischapternum
+  'oddheading'        => 'lineraw',  # @thischapter @thistitle @thisfile
+  'oddfooting'        => 'lineraw',
+  'smallbook'         => 'skipline', # no arg
+  'syncodeindex'      => 2,   # args are index identifiers
+  'synindex'          => 2,
+  'defindex'          => 1, # one identifier arg
+  'defcodeindex'      => 1, # one identifier arg
   'documentlanguage'  => 'text',     # language code arg
   'kbdinputstyle'     => 1,          # code example distinct
   'everyheadingmarks' => 1, # top bottom
@@ -193,7 +192,7 @@ my %misc_commands = (
   # not valid for info (should be in @iftex)
   'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
-  'refill'            => 'noarg', # no arg (obsolete, to be ignored)
+  'refill'            => 'noarg',   # no arg (obsolete, to be ignored)
   # Remove spaces and end of lines after the 
   # commands? If no, they can lead to empty lines
   'quote-arg'         => 'skipline',
@@ -261,34 +260,74 @@ my %block_item_commands;
 # commands that forces closing an opened paragraph.
 my %close_paragraph_commands;
 
+my %index_type_def = (
+ 'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
+ 'v' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
+ 't' => ['deftp']
+);
+
+my %def_index_type;
+foreach my $index_type (keys %index_type_def) {
+  foreach my $def (@{$index_type_def{$index_type}}) {
+    $def_index_type{$def} = $index_type;
+  }
+}
+
+my %def_map = (
+    # basic commands
+    'deffn', [ 'category', 'name', 'arg' ],
+    'defvr', [  'category', 'name' ],
+    'deftypefn', [ 'category', 'type', 'name', 'argtype' ],
+    'deftypeop', [ 'category', 'class' , 'type', 'name', 'argtype' ],
+    'deftypevr', [ 'category', 'type', 'name' ],
+    'defcv', [ 'category', 'class' , 'name' ],
+    'deftypecv', [ 'category', 'class' , 'type', 'name' ],
+    'defop', [ 'category', 'class' , 'name', 'arg' ],
+    'deftp', [ 'category', 'name', 'argtype' ],
+    # shortcuts
+    # FIXME i18n
+    'defun', {'deffn' => 'Function'},
+    'defmac', {'deffn' => 'Macro'},
+    'defspec', {'deffn' => '{Special Form}'},
+    'defvar', {'defvr' => 'Variable'},
+    'defopt', {'defvr' => '{User Option}'},
+    'deftypefun', {'deftypefn' => '{Function}'},
+    'deftypevar', {'deftypevr' => 'Variable'},
+    'defivar', {'defcv' => '{Instance Variable}'},
+    'deftypeivar', {'deftypecv' => '{Instance Variable}'},
+    'defmethod', {'defop' => 'Method'},
+    'deftypemethod', {'deftypeop' => 'Method'},
+         );
+
 my %def_commands;
-foreach my $def_command(
-  'deffn',
-  'defvr',
-  'deftypefn',
-  'deftypeop',
-  'deftypevr',
-  'defcv',
-  'deftypecv',
-  'defop',
-  'deftp',
-  'defun',
-  'defmac',
-  'defspec',
-  'defvar',
-  'defopt',
-  'deftypefun',
-  'deftypevar',
-  'defivar',
-  'deftypeivar',
-  'defmethod',
-  'deftypemethod'
-) {
+my %def_aliases;
+my %def_prepended_content;
+foreach my $def_command(keys %def_map) {
   $block_commands{$def_command} = 'def';
   $misc_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
+  # prepare what will be prepended when the def command is an alias
+  if (ref($def_map{$def_command}) eq 'HASH') {
+    my ($real_command) = keys (%{$def_map{$def_command}});
+    $def_aliases{$def_command} = $real_command;
+    my $prepended = $def_map{$def_command}->{$real_command};
+    if ($prepended =~ /^\{/) {
+      my $text = $prepended;
+      $text =~ s/\{([^\}]+)\}/$1/;
+      my $bracketed = { 'type' => 'bracketed'};
+      $bracketed->{'contents'} = [ { 'parent' => $bracketed,
+                                     'text' => $text } ];
+      $def_prepended_content{$def_command} = [$bracketed];
+    } else {
+      $def_prepended_content{$def_command} = [{ 'text' => $prepended }];
+    }
+    push @{$def_prepended_content{$def_command}}, { 'text' => ' ' };
+  }
 }
+
+#print STDERR "".Data::Dumper->Dump([\%def_aliases]);
+#print STDERR "".Data::Dumper->Dump([\%def_prepended_content]);
 
 $block_commands{'multitable'} = 'multitable';
 $block_item_commands{'multitable'} = 1;
@@ -341,6 +380,11 @@ foreach my $item_container_command ('itemize', 'enumerate') {
 my %item_line_commands;
 foreach my $item_line_command ('table', 'ftable', 'vtable') {
   $item_line_commands{$item_line_command} = 1;
+}
+
+my %type_with_paragraph;
+foreach my $type ('before_item', 'text_root') {
+  $type_with_paragraph{$type} = 1;
 }
 
 my %deprecated_commands = (
@@ -762,7 +806,7 @@ sub _begin_paragraph ($$)
   my $self = shift;
   my $current = shift;
 
-  if ((!$current->{'type'} or $current->{'type'} eq 'before_item') 
+  if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
     die "BUG: contents undef "._print_current($current) 
        if (!defined($current->{'contents'}));
@@ -1190,6 +1234,108 @@ sub _isolate_last_space($$)
   }
 }
 
+sub _next_bracketed_or_word($)
+{
+  my $contents = shift;
+  return undef if (!scalar(@{$contents}));
+  my $spaces;
+  $spaces = shift @{$contents} if (defined($contents->[0]->{'text'}) and 
+                                     $contents->[0]->{'text'} !~ /\S/);
+  $spaces = undef if (!$spaces->{'text'});
+  $spaces->{'type'} = 'spaces' if (defined($spaces));
+  return undef if (!scalar(@{$contents}));
+
+  #print STDERR "BEFORE PROCESSING ".tree_to_texi({'contents' => $contents});
+  if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
+    #print STDERR "Return bracketed\n";
+    return ($spaces, shift @{$contents});
+  } elsif ($contents->[0]->{'cmdname'}) {
+    #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
+    return ($spaces, shift @{$contents});
+  } else {
+    # we don't want to change the initial contents, so first we copy
+    #print STDERR "Process $contents->[0]->{'text'}\n";
+    $contents->[0]->{'text'} =~ s/^(\s*)//;
+    my $space_text = $1;
+    $spaces = {'text' => $space_text, 'type' => 'spaces'} if ($space_text);
+    $contents->[0]->{'text'} =~ s/^(\S+)//;
+    shift @{$contents} if ($contents->[0]->{'text'} eq '');
+    return ($spaces, {'text' => $1});
+  }
+}
+
+sub _parse_def ($$)
+{
+  my $command = shift;
+  my $contents = shift;
+  
+  my @contents = @$contents;
+  shift @contents if ($contents[0] and $contents[0]->{'type'}
+                    and $contents[0]->{'type'} eq 'empty_spaces_after_command');
+  if ($def_aliases{$command}) {
+    unshift @contents, @{$def_prepended_content{$command}};
+    $command = $def_aliases{$command};
+  }
+  foreach (my $i = 0; $i < scalar(@contents); $i++) {
+    # copy, to avoid changing the original
+    $contents[$i] = {'text' => $contents[$i]->{'text'}} 
+       if (defined($contents[$i]->{'text'}));
+  }
+  my @result;
+  my @args = @{$def_map{$command}};
+  my $arg_type;
+  $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
+  foreach my $arg (@args) {
+    #print STDERR "$command $arg"._print_current($contents[0]);
+    #foreach my $content (@contents) {print STDERR " "._print_current($content)};
+    #print STDERR " contents ->".tree_to_texi ({'contents' => \@contents});
+    my ($spaces, $next) = _next_bracketed_or_word(\@contents);
+    last if (!defined($next));
+    #print STDERR "NEXT ".tree_to_texi($next)."\n";
+    push @result, ['spaces', $spaces] if (defined($spaces));
+    push @result, [$arg, $next];
+  }
+  my @args_results;
+  if ($arg_type) {
+    while (@contents) {
+      my ($spaces, $next) = _next_bracketed_or_word(\@contents);
+      push @args_results, ['spaces', $spaces] if (defined($spaces));
+      last if (!defined($next));
+      if (defined($next->{'text'})) {
+        while (1) {
+          if ($next->{'text'} =~ s/^([^\[\](),]+)//) {
+            push @args_results, ['arg', {'text' => $1}];
+          } elsif ($next->{'text'} =~ s/^([\[\](),])//) {
+            push @args_results, ['delimiter', 
+                        {'text' => $1, 'type' => 'delimiter'}];
+          } else {
+            last;
+          }
+        }
+      } else {
+        push @args_results, [ 'arg', $next ];
+      }
+    }
+    if ($arg_type eq 'argtype') {
+      my $next_is_type = 1;
+      foreach my $arg(@args_results) {
+        if ($arg->[0] eq 'spaces') {
+        } elsif ($arg->[0] eq 'delimiter') {
+          $next_is_type = 1;
+        } elsif ($arg->[1]->{'cmdname'} and $arg->[1]->{'cmdname'} ne 'code') {
+          $next_is_type = 1;
+        } elsif ($next_is_type) {
+          $arg->[0] = 'typearg';
+          $next_is_type = 0;
+        } else {
+          $next_is_type = 1;
+        }
+      }
+    }
+  }
+  return [@result, @args_results];
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$)
 {
@@ -1302,6 +1448,10 @@ sub _end_line($$$)
     my $def_context = pop @{$self->{'context_stack'}};
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
+    my $arguments = _parse_def ($current->{'parent'}->{'special'}->{'def_command'}, 
+                                $current->{'contents'});
+    $current->{'parent'}->{'special'}->{'def_args'} = $arguments 
+       if scalar(@$arguments);
     $current = $current->{'parent'}->{'parent'};
 
   # other block command lines
@@ -1500,6 +1650,7 @@ sub _parse_texi($$;$)
   my $self = shift;
   my $first_lines = shift;
 
+  #my $root = { 'contents' => [], 'type' => 'text_root' };
   my $root = { 'contents' => [] };
   my $current = $root;
   if ($first_lines) {
@@ -2097,6 +2248,8 @@ sub _parse_texi($$;$)
                 }
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
+                $current->{'contents'}->[-1]->{'special'} = 
+                   {'def_command' => $base_command};
               }
             }
             # a container for what is on the @-command line, considered to
@@ -2181,6 +2334,8 @@ sub _parse_texi($$;$)
               push @{$current->{'contents'}}, { 
                                                 'type' => 'def_line',
                                                 'parent' => $current,
+                                                'special' => 
+                                                  {'def_command' => $command}
                                                 };
             } else {
               push @{$current->{'contents'}}, { 'cmdname' => $command, 
@@ -2251,6 +2406,8 @@ sub _parse_texi($$;$)
         my $separator = $1;
         print STDERR "SEPARATOR: $separator\n" if ($self->{'debug'});
         if ($separator eq '@') {
+          # this may happen with a @ at the very end of a file, therefore
+          # not followed by anything.
           _line_error ($self, $self->__("Unexpected \@"), $line_nr);
         } elsif ($separator eq '{') {
           _abort_empty_line ($self, $current);
