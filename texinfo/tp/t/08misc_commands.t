@@ -91,6 +91,13 @@ Text line after the text line followed by the sp.
 
 A @click{} (result).
 '],
+['setfilename',
+'@setfilename file_comment@c comment
+@setfilename file_and_spaces   
+@setfilename file_space_comment @c comment
+@setfilename @ @verb{: name :}@ 
+
+'],
 ['invalid_clickstyle',
 '
 @clickstyle @result on the same line
