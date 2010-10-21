@@ -48,7 +48,8 @@ $result_trees{'command_line_in_paragraph'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0];
 $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_line_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0];

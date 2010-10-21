@@ -43,7 +43,6 @@ $result_trees{'end_of_line'} = {
           'cmdname' => 'verb',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'type' => ''
         },
         {
@@ -54,7 +53,8 @@ $result_trees{'end_of_line'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'end_of_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line'}{'contents'}[0];
 $result_trees{'end_of_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];

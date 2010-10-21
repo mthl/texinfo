@@ -72,7 +72,8 @@ $result_trees{'end_of_line_protect_at_end'} = {
       ],
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'};
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0];

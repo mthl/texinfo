@@ -19,7 +19,13 @@ my @test_cases = (
 '],
 ['sections',
 '@chapter a chapter
+'],
+['a_comma_after_node',
+'@node Commands, Requirements, Nodes and Menus
+
+A comma in text, end.
 ']
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

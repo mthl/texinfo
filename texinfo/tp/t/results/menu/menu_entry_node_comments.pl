@@ -200,7 +200,8 @@ $result_trees{'menu_entry_node_comments'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'menu_entry_node_comments'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_entry_node_comments'}{'contents'}[0];
 $result_trees{'menu_entry_node_comments'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'menu_entry_node_comments'}{'contents'}[0]{'contents'}[1];

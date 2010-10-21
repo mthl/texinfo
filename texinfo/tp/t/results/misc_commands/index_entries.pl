@@ -100,7 +100,8 @@ $result_trees{'index_entries'} = {
       'cmdname' => 'trucindex',
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'index_entries'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries'}{'contents'}[0]{'args'}[0];
 $result_trees{'index_entries'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'index_entries'}{'contents'}[0]{'args'}[0];

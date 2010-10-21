@@ -26,7 +26,8 @@ $result_trees{'no_brace'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];

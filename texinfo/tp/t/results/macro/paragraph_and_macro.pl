@@ -189,7 +189,8 @@ $result_trees{'paragraph_and_macro'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'paragraph_and_macro'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'paragraph_and_macro'}{'contents'}[0];
 $result_trees{'paragraph_and_macro'}{'contents'}[0]{'parent'} = $result_trees{'paragraph_and_macro'};

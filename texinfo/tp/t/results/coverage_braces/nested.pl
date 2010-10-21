@@ -31,8 +31,7 @@ $result_trees{'nested'} = {
                   ],
                   'cmdname' => 'key',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -41,8 +40,7 @@ $result_trees{'nested'} = {
           ],
           'cmdname' => 'kbd',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -52,7 +50,8 @@ $result_trees{'nested'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'nested'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0];
 $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested'}{'contents'}[0]{'contents'}[1]{'args'}[0];

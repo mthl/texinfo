@@ -465,7 +465,8 @@ $result_trees{'macro_in_menu'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_in_menu'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'};
 $result_trees{'macro_in_menu'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[1];

@@ -397,8 +397,7 @@ $result_trees{'value_in_index_commands'} = {
               ],
               'cmdname' => 'var',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -437,8 +436,7 @@ $result_trees{'value_in_index_commands'} = {
                       ],
                       'cmdname' => 'dotless',
                       'contents' => [],
-                      'parent' => {},
-                      'remaining_args' => 0
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -447,8 +445,7 @@ $result_trees{'value_in_index_commands'} = {
               ],
               'cmdname' => '^',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -1284,7 +1281,8 @@ $result_trees{'value_in_index_commands'} = {
         ]
       }
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'value_in_index_commands'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[0];

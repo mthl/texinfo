@@ -27,7 +27,8 @@ $result_trees{'text_space_comment'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'text_space_comment'}{'contents'}[0]{'parent'} = $result_trees{'text_space_comment'};
 $result_trees{'text_space_comment'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_space_comment'}{'contents'}[1];

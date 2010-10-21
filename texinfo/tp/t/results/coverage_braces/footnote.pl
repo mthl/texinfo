@@ -46,8 +46,7 @@ $result_trees{'footnote'} = {
                       ],
                       'cmdname' => 'r',
                       'contents' => [],
-                      'parent' => {},
-                      'remaining_args' => 0
+                      'parent' => {}
                     },
                     {
                       'parent' => {},
@@ -63,8 +62,7 @@ $result_trees{'footnote'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -74,7 +72,8 @@ $result_trees{'footnote'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'footnote'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote'}{'contents'}[0];
 $result_trees{'footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];

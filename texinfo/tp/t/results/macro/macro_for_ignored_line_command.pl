@@ -43,7 +43,8 @@ $result_trees{'macro_for_ignored_line_command'} = {
       'cmdname' => 'page',
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];

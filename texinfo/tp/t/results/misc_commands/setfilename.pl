@@ -139,7 +139,6 @@ $result_trees{'setfilename'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'parent' => {},
-              'remaining_args' => 0,
               'type' => ':'
             },
             {
@@ -169,7 +168,8 @@ $result_trees{'setfilename'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0];

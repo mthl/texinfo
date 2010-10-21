@@ -101,7 +101,8 @@ and a last in another paragraph
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];
 $result_trees{'protect_comma_macro_line'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'protect_comma_macro_line'}{'contents'}[0];

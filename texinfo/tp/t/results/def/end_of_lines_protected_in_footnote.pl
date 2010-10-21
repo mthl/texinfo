@@ -242,8 +242,7 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -254,7 +253,8 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0];

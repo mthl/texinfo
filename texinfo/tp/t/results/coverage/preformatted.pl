@@ -127,8 +127,7 @@ $result_trees{'preformatted'} = {
 '
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -145,7 +144,8 @@ $result_trees{'preformatted'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'preformatted'}{'contents'}[0]{'parent'} = $result_trees{'preformatted'};
 $result_trees{'preformatted'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[1];

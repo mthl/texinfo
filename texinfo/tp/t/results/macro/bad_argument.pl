@@ -108,7 +108,8 @@ $result_trees{'bad_argument'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'bad_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_argument'}{'contents'}[0];
 $result_trees{'bad_argument'}{'contents'}[0]{'parent'} = $result_trees{'bad_argument'};

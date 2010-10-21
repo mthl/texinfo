@@ -70,8 +70,7 @@ $result_trees{'implicit_quoting_one_arg'} = {
           ],
           'cmdname' => 'strong',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -82,7 +81,8 @@ $result_trees{'implicit_quoting_one_arg'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'};
 $result_trees{'implicit_quoting_one_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'implicit_quoting_one_arg'}{'contents'}[1];

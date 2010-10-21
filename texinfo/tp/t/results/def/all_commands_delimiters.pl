@@ -33,8 +33,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -55,8 +54,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -105,8 +103,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -127,8 +124,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -163,8 +159,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -478,8 +473,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -500,8 +494,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -536,8 +529,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -632,8 +624,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -654,8 +645,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -830,8 +820,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -852,8 +841,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -888,8 +876,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -910,8 +897,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -946,8 +932,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1416,8 +1401,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1438,8 +1422,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1699,8 +1682,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1721,8 +1703,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1757,8 +1738,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1864,8 +1844,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1886,8 +1865,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1922,8 +1900,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2212,8 +2189,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2234,8 +2210,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2270,8 +2245,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2377,8 +2351,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2399,8 +2372,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2421,8 +2393,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2457,8 +2428,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2565,8 +2535,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2587,8 +2556,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2623,8 +2591,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2892,8 +2859,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2914,8 +2880,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2936,8 +2901,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2972,8 +2936,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3252,8 +3215,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3402,8 +3364,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3562,8 +3523,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3708,8 +3668,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3844,8 +3803,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -3994,8 +3952,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4154,8 +4111,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4300,8 +4256,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4436,8 +4391,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4586,8 +4540,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4746,8 +4699,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -4892,8 +4844,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5028,8 +4979,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5164,8 +5114,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5192,8 +5141,7 @@ $result_trees{'all_commands_delimiters'} = {
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
-                      'parent' => {},
-                      'remaining_args' => 0
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -5218,8 +5166,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5435,8 +5382,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5457,8 +5403,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5479,8 +5424,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5501,8 +5445,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5601,8 +5544,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5623,8 +5565,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5645,8 +5586,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5667,8 +5607,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5767,8 +5706,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5789,8 +5727,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5811,8 +5748,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5833,8 +5769,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5911,8 +5846,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5933,8 +5867,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5955,8 +5888,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -5977,8 +5909,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6055,8 +5986,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6077,8 +6007,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6099,8 +6028,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6121,8 +6049,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6143,8 +6070,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6254,8 +6180,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6276,8 +6201,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6298,8 +6222,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6320,8 +6243,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6342,8 +6264,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6453,8 +6374,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6475,8 +6395,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6497,8 +6416,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6519,8 +6437,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6541,8 +6458,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6630,8 +6546,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6652,8 +6567,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 't',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6674,8 +6588,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6696,8 +6609,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6718,8 +6630,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6807,8 +6718,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6829,8 +6739,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6851,8 +6760,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6873,8 +6781,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6973,8 +6880,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -6995,8 +6901,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7017,8 +6922,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7039,8 +6943,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7139,8 +7042,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7161,8 +7063,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7183,8 +7084,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7205,8 +7105,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7227,8 +7126,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7316,8 +7214,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7338,8 +7235,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7360,8 +7256,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7382,8 +7277,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7404,8 +7298,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7515,8 +7408,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7537,8 +7429,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7559,8 +7450,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7581,8 +7471,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7603,8 +7492,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7625,8 +7513,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7725,8 +7612,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7747,8 +7633,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7769,8 +7654,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'option',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7791,8 +7675,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7813,8 +7696,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7835,8 +7717,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7935,8 +7816,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7957,8 +7837,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -7979,8 +7858,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8001,8 +7879,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8023,8 +7900,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8134,8 +8010,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8156,8 +8031,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8178,8 +8052,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8200,8 +8073,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8222,8 +8094,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8333,8 +8204,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8355,8 +8225,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8377,8 +8246,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8399,8 +8267,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8421,8 +8288,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8443,8 +8309,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8565,8 +8430,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8587,8 +8451,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8609,8 +8472,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8631,8 +8493,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8653,8 +8514,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8675,8 +8535,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8839,8 +8698,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8861,8 +8719,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8883,8 +8740,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -8905,8 +8761,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -9080,8 +8935,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -9102,8 +8956,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -9124,8 +8977,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -9146,8 +8998,7 @@ $result_trees{'all_commands_delimiters'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -9246,7 +9097,8 @@ $result_trees{'all_commands_delimiters'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'all_commands_delimiters'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[0]{'contents'}[0]{'args'}[0];

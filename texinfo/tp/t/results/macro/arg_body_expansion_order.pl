@@ -179,7 +179,8 @@ different
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'arg_body_expansion_order'}{'contents'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'};
 $result_trees{'arg_body_expansion_order'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'arg_body_expansion_order'}{'contents'}[1];

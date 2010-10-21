@@ -124,7 +124,8 @@ $result_trees{'detailmenu'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'detailmenu'}{'contents'}[0]{'parent'} = $result_trees{'detailmenu'};
 $result_trees{'detailmenu'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'detailmenu'}{'contents'}[1];

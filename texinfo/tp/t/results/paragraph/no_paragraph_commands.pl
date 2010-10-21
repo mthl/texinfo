@@ -26,8 +26,7 @@ $result_trees{'no_paragraph_commands'} = {
       ],
       'cmdname' => 'titlefont',
       'contents' => [],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -89,15 +88,15 @@ $result_trees{'no_paragraph_commands'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
       'text' => '
 '
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'no_paragraph_commands'}{'contents'}[0]{'parent'} = $result_trees{'no_paragraph_commands'};
 $result_trees{'no_paragraph_commands'}{'contents'}[1]{'parent'} = $result_trees{'no_paragraph_commands'};

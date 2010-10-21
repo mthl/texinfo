@@ -39,7 +39,8 @@ $result_trees{'empty_set_in_ifset'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'empty_set_in_ifset'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_set_in_ifset'}{'contents'}[0];
 $result_trees{'empty_set_in_ifset'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'empty_set_in_ifset'}{'contents'}[0];

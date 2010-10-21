@@ -29,7 +29,8 @@ $result_trees{'ifnot_format_conditional'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'ifnot_format_conditional'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ifnot_format_conditional'}{'contents'}[0];
 $result_trees{'ifnot_format_conditional'}{'contents'}[0]{'parent'} = $result_trees{'ifnot_format_conditional'};

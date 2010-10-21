@@ -111,8 +111,7 @@ $result_trees{'table'} = {
           'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -321,8 +320,7 @@ $result_trees{'table'} = {
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -330,7 +328,8 @@ $result_trees{'table'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'table'}{'contents'}[0]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'args'}[0];

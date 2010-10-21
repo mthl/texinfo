@@ -151,6 +151,7 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
 # node?
 my %kept_misc_commands;
 foreach my $command ('sp', 'center', 'item', 'itemx', 'tab', 'headitem',
+    'node',
     'top',
     'chapter',
     'unnumbered',
@@ -279,7 +280,7 @@ sub convert($)
           my $sp_nr = $root->{'special'}->{'misc_args'}->[0];
           $result = "\n" x $sp_nr;
         }
-      } else {
+      } elsif ($root->{'cmdname'} ne 'node') {
         $result = convert($root->{'args'}->[0]);
         # we always want an end of line even if is was eaten by a 
         chomp ($result);

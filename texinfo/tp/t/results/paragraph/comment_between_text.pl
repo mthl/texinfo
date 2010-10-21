@@ -29,7 +29,8 @@ $result_trees{'comment_between_text'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'comment_between_text'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_between_text'}{'contents'}[0];
 $result_trees{'comment_between_text'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_between_text'}{'contents'}[0]{'contents'}[1];

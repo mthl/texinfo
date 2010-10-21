@@ -37,7 +37,8 @@ $result_trees{'value_zero'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'value_zero'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_zero'}{'contents'}[0];
 $result_trees{'value_zero'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'value_zero'}{'contents'}[0];

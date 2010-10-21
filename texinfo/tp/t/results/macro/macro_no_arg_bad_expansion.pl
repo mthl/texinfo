@@ -50,7 +50,8 @@ $result_trees{'macro_no_arg_bad_expansion'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0];
 $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_no_arg_bad_expansion'}{'contents'}[0];

@@ -3,10 +3,15 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors);
 $result_trees{'node'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
 ',
-      'type' => 'empty_line'
+          'type' => 'empty_line'
+        }
+      ],
+      'type' => 'text_root'
     },
     {
       'args' => [
@@ -33,8 +38,8 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 4
+      'contents' => [],
+      'parent' => {}
     },
     {
       'args' => [
@@ -75,64 +80,8 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 3
-    },
-    {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => 'one arg'
-            }
-          ],
-          'parent' => {},
-          'type' => 'misc_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
-              'text' => 'two arg'
-            }
-          ],
-          'parent' => {},
-          'type' => 'misc_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
-              'text' => 'three arg'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
-            }
-          ],
-          'parent' => {},
-          'type' => 'misc_line_arg'
-        }
-      ],
-      'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 2
+      'contents' => [],
+      'parent' => {}
     },
     {
       'args' => [
@@ -174,20 +123,6 @@ $result_trees{'node'} = {
             {
               'parent' => {},
               'text' => 'three arg'
-            }
-          ],
-          'parent' => {},
-          'type' => 'misc_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
-              'text' => 'four arg'
             },
             {
               'parent' => {},
@@ -201,8 +136,8 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 1
+      'contents' => [],
+      'parent' => {}
     },
     {
       'args' => [
@@ -258,20 +193,6 @@ $result_trees{'node'} = {
             {
               'parent' => {},
               'text' => 'four arg'
-            }
-          ],
-          'parent' => {},
-          'type' => 'misc_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            },
-            {
-              'parent' => {},
-              'text' => 'five arg'
             },
             {
               'parent' => {},
@@ -285,14 +206,85 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 0
+      'contents' => [],
+      'parent' => {}
     },
     {
-      'parent' => {},
-      'text' => '
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'one arg'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        },
+        {
+          'contents' => [
+            {
+              'text' => ' ',
+              'type' => 'empty_spaces_before_argument'
+            },
+            {
+              'parent' => {},
+              'text' => 'two arg'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        },
+        {
+          'contents' => [
+            {
+              'text' => ' ',
+              'type' => 'empty_spaces_before_argument'
+            },
+            {
+              'parent' => {},
+              'text' => 'three arg'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        },
+        {
+          'contents' => [
+            {
+              'text' => ' ',
+              'type' => 'empty_spaces_before_argument'
+            },
+            {
+              'parent' => {},
+              'text' => 'four arg five arg'
+            },
+            {
+              'parent' => {},
+              'text' => '
 ',
-      'type' => 'empty_line'
+              'type' => 'spaces_at_end'
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'parent' => {}
     },
     {
       'args' => [
@@ -330,14 +322,15 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 4
-    },
-    {
-      'parent' => {},
-      'text' => '
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
 ',
-      'type' => 'empty_line'
+          'type' => 'empty_line'
+        }
+      ],
+      'parent' => {}
     },
     {
       'args' => [
@@ -417,8 +410,7 @@ $result_trees{'node'} = {
               ],
               'cmdname' => 'strong',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -443,12 +435,13 @@ $result_trees{'node'} = {
         }
       ],
       'cmdname' => 'node',
-      'parent' => {},
-      'remaining_args' => 2
+      'contents' => [],
+      'parent' => {}
     }
-  ]
+  ],
+  'type' => 'document_root'
 };
-$result_trees{'node'}{'contents'}[0]{'parent'} = $result_trees{'node'};
+$result_trees{'node'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[0];
 $result_trees{'node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[1]{'args'}[0];
 $result_trees{'node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[1]{'args'}[0];
 $result_trees{'node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[1]{'args'}[0];
@@ -489,45 +482,43 @@ $result_trees{'node'}{'contents'}[5]{'args'}[1]{'parent'} = $result_trees{'node'
 $result_trees{'node'}{'contents'}[5]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[5]{'args'}[2];
 $result_trees{'node'}{'contents'}[5]{'args'}[2]{'parent'} = $result_trees{'node'}{'contents'}[5];
 $result_trees{'node'}{'contents'}[5]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[5]{'args'}[3];
+$result_trees{'node'}{'contents'}[5]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[5]{'args'}[3];
 $result_trees{'node'}{'contents'}[5]{'args'}[3]{'parent'} = $result_trees{'node'}{'contents'}[5];
-$result_trees{'node'}{'contents'}[5]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[5]{'args'}[4];
-$result_trees{'node'}{'contents'}[5]{'args'}[4]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[5]{'args'}[4];
-$result_trees{'node'}{'contents'}[5]{'args'}[4]{'parent'} = $result_trees{'node'}{'contents'}[5];
+$result_trees{'node'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[5];
 $result_trees{'node'}{'contents'}[5]{'parent'} = $result_trees{'node'};
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[6]{'args'}[0];
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[6]{'args'}[0];
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[6]{'args'}[0];
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[3];
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[6]{'args'}[0];
+$result_trees{'node'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[6];
+$result_trees{'node'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[6];
 $result_trees{'node'}{'contents'}[6]{'parent'} = $result_trees{'node'};
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
+$result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[2];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
-$result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[3];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[0];
 $result_trees{'node'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7];
+$result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1];
+$result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1];
+$result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[1];
+$result_trees{'node'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'node'}{'contents'}[7];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[3];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[7]{'args'}[2];
+$result_trees{'node'}{'contents'}[7]{'args'}[2]{'parent'} = $result_trees{'node'}{'contents'}[7];
 $result_trees{'node'}{'contents'}[7]{'parent'} = $result_trees{'node'};
-$result_trees{'node'}{'contents'}[8]{'parent'} = $result_trees{'node'};
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[0];
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[0];
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[2];
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[0];
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[0];
-$result_trees{'node'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9];
-$result_trees{'node'}{'contents'}[9]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[1]{'contents'}[1];
-$result_trees{'node'}{'contents'}[9]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[1];
-$result_trees{'node'}{'contents'}[9]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[1];
-$result_trees{'node'}{'contents'}[9]{'args'}[1]{'parent'} = $result_trees{'node'}{'contents'}[9];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[1];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[2]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[3];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'contents'}[3]{'parent'} = $result_trees{'node'}{'contents'}[9]{'args'}[2];
-$result_trees{'node'}{'contents'}[9]{'args'}[2]{'parent'} = $result_trees{'node'}{'contents'}[9];
-$result_trees{'node'}{'contents'}[9]{'parent'} = $result_trees{'node'};
 
 $result_texis{'node'} = '
 @node one arg 
 @node one arg, two arg
 @node one arg, two arg, three arg
 @node one arg, two arg, three arg, four arg
-@node one arg, two arg, three arg, four arg, five arg
+@node one arg, two arg, three arg, four arg five arg
 
 @node comment @comment
 
@@ -540,6 +531,16 @@ $result_texts{'node'} = '
 
 ';
 
-$result_errors{'node'} = [];
+$result_errors{'node'} = [
+  {
+    'error_line' => ':6: warning: Superfluous arguments for node
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Superfluous arguments for node',
+    'type' => 'warning'
+  }
+];
 
 

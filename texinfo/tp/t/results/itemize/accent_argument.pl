@@ -63,8 +63,7 @@ $result_trees{'accent_argument'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -132,8 +131,7 @@ $result_trees{'accent_argument'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -141,7 +139,8 @@ $result_trees{'accent_argument'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0];

@@ -78,7 +78,8 @@ $result_trees{'ifset_in_macro_set'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];
 $result_trees{'ifset_in_macro_set'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ifset_in_macro_set'}{'contents'}[0];

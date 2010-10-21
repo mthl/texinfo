@@ -80,8 +80,7 @@ $result_trees{'space_in_image'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'contents' => [
@@ -113,8 +112,7 @@ $result_trees{'space_in_image'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 4
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -124,7 +122,8 @@ $result_trees{'space_in_image'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[0]{'args'}[0];

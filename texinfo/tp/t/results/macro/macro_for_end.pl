@@ -67,7 +67,8 @@ $result_trees{'macro_for_end'} = {
       ],
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_for_end'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[0];
 $result_trees{'macro_for_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_for_end'}{'contents'}[0];

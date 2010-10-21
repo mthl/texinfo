@@ -383,7 +383,7 @@ foreach my $item_line_command ('table', 'ftable', 'vtable') {
 }
 
 my %type_with_paragraph;
-foreach my $type ('before_item', 'text_root') {
+foreach my $type ('before_item', 'text_root', 'document_root') {
   $type_with_paragraph{$type} = 1;
 }
 
@@ -1496,6 +1496,7 @@ sub _end_line($$$)
 
     }
     $current = $current->{'parent'};
+    delete $current->{'remaining_args'};
     # don't consider empty argument of block @-commands as argument,
     # reparent them as contents
     if ($current->{'args'}->[0]->{'contents'}->[0] 
@@ -1572,9 +1573,8 @@ sub _end_line($$$)
     if ($included_file) {
       # remove completly the include file command
       pop @{$current->{'contents'}};
-    }
     # columnfractions 
-    if ($command eq 'columnfractions') {
+    } elsif ($command eq 'columnfractions') {
       # in a multitable, we are in a block_line_arg
       if (!$current->{'parent'} or !$current->{'parent'}->{'cmdname'} 
                    or $current->{'parent'}->{'cmdname'} ne 'multitable') {
@@ -1590,6 +1590,11 @@ sub _end_line($$$)
            'contents' => [], 'parent', $current };
         $current = $current->{'contents'}->[-1];
       }
+    } elsif ($root_commands{$command}) {
+      #delete $current->{'contents'}->[-1]->{'remaining_args'};
+      $current = $current->{'contents'}->[-1];
+      delete $current->{'remaining_args'};
+      $current->{'contents'} = [];
     }
    # do that last in order to have the line processed if one of the above
    # case is also set.
@@ -1650,8 +1655,7 @@ sub _parse_texi($$;$)
   my $self = shift;
   my $first_lines = shift;
 
-  #my $root = { 'contents' => [], 'type' => 'text_root' };
-  my $root = { 'contents' => [] };
+  my $root = { 'contents' => [], 'type' => 'text_root' };
   my $current = $root;
   if ($first_lines) {
     foreach my $line (@$first_lines) {
@@ -2128,8 +2132,18 @@ sub _parse_texi($$;$)
 
         # commands without braces and not block commands, ie no @end
         if (defined($self->{'misc_commands'}->{$command})) {
-          if ($root_commands{$command}) {
+          if ($root_commands{$command} or $command eq 'bye') {
             $current = _end_block_command($self, $current, $line_nr);
+            # root_level commands leads to starting setting a new root
+            # for the whole document and stuffing the preceding text
+            # as the first content, this is done only once.
+            if ($command ne 'bye' and $current->{'type'} 
+                 and $current->{'type'} eq 'text_root') {
+              $root = { 'type' => 'document_root', 'contents' => [$current] };
+              $current = $root;
+            } else {
+              $current = $current->{'parent'};
+            }
           }
 
           # noarg skipline skipspace line lineraw /^\d$/
@@ -2262,7 +2276,7 @@ sub _parse_texi($$;$)
               # @node is the only misc command with args separated with comma
               # FIXME a 4 lingering here deep into the code may not
               # be very wise...
-              $current->{'remaining_args'} = 4 if ($command eq 'node');
+              $current->{'remaining_args'} = 3 if ($command eq 'node');
               $current = $current->{'args'}->[-1];
             }
             $line = _start_empty_line_after_command($line, $current);
@@ -2350,7 +2364,8 @@ sub _parse_texi($$;$)
                  'parent' => $current } ];
               
               $current->{'remaining_args'} = $block_commands{$command} -1 
-                if ($block_commands{$command} =~ /^\d+$/);
+                if ($block_commands{$command} =~ /^\d+$/ 
+                    and $block_commands{$command} -1);
               $current = $current->{'args'}->[-1];
             } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
@@ -2418,7 +2433,7 @@ sub _parse_texi($$;$)
             $current->{'args'} = [ { 'parent' => $current,
                                    'contents' => [] } ];
             $current->{'remaining_args'} = $brace_commands{$command} -1
-                                             if ($brace_commands{$command});
+                  if ($brace_commands{$command} and $brace_commands{$command} -1);
             if ($self->{'definfoenclose'}->{$command}) {
               $current->{'remaining_args'} = 0;
             }
@@ -2476,6 +2491,7 @@ sub _parse_texi($$;$)
                if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
                    and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+             delete $current->{'parent'}->{'remaining_args'};
              $current = $current->{'parent'}->{'parent'};
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
@@ -2507,6 +2523,11 @@ sub _parse_texi($$;$)
           push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '' };                          
+        } elsif ($separator eq ',' and $current->{'type'}
+            and $current->{'type'} eq 'misc_line_arg'
+            and $current->{'parent'}->{'cmdname'} 
+            and $current->{'parent'}->{'cmdname'} eq 'node') {
+          _line_warn($self, $self->__("Superfluous arguments for node"), $line_nr);
         # end of menu node (. must be followed by a space to stop the node).
         } elsif (($separator =~ /[,\t.]/ and $current->{'type'}
                and $current->{'type'} eq 'menu_entry_node')

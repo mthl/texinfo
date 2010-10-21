@@ -74,8 +74,7 @@ $result_trees{'menu_entry_no_entry'} = {
               ],
               'cmdname' => 'b',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -101,8 +100,7 @@ $result_trees{'menu_entry_no_entry'} = {
               ],
               'cmdname' => 'b',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -133,7 +131,8 @@ $result_trees{'menu_entry_no_entry'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0];
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1];

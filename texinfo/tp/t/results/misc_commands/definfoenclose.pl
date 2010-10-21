@@ -76,7 +76,6 @@ $result_trees{'definfoenclose'} = {
           'cmdname' => 'phoo',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'special' => {
             'begin' => '//',
             'end' => '\\'
@@ -166,7 +165,6 @@ $result_trees{'definfoenclose'} = {
           'cmdname' => 'phi',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'special' => {
             'begin' => ':',
             'end' => ':'
@@ -205,8 +203,7 @@ $result_trees{'definfoenclose'} = {
           ],
           'cmdname' => 'strong',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -281,7 +278,6 @@ $result_trees{'definfoenclose'} = {
           'cmdname' => 'strong',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'special' => {
             'begin' => '(strong:',
             'end' => ':)'
@@ -297,7 +293,8 @@ $result_trees{'definfoenclose'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'definfoenclose'}{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'};
 $result_trees{'definfoenclose'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose'}{'contents'}[1];

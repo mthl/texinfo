@@ -79,8 +79,7 @@ $result_trees{'expand_two_same'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -111,8 +110,7 @@ $result_trees{'expand_two_same'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -157,7 +155,8 @@ $result_trees{'expand_two_same'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'expand_two_same'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];
 $result_trees{'expand_two_same'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'expand_two_same'}{'contents'}[0];

@@ -34,7 +34,6 @@ $result_trees{'multiline'} = {
           'cmdname' => 'verb',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'type' => '@'
         },
         {
@@ -45,7 +44,8 @@ $result_trees{'multiline'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'multiline'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiline'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'multiline'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiline'}{'contents'}[0]{'contents'}[0]{'args'}[0];

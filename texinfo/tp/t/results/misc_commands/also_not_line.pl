@@ -302,7 +302,8 @@ $result_trees{'also_not_line'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'also_not_line'}{'contents'}[0]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[1]{'parent'} = $result_trees{'also_not_line'};

@@ -49,7 +49,8 @@ $result_trees{'empty_macro'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'empty_macro'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_macro'}{'contents'}[0];
 $result_trees{'empty_macro'}{'contents'}[0]{'parent'} = $result_trees{'empty_macro'};

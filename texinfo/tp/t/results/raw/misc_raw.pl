@@ -96,7 +96,8 @@ $result_trees{'misc_raw'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'misc_raw'}{'contents'}[0]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];

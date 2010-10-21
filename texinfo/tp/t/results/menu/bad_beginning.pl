@@ -45,8 +45,7 @@ $result_trees{'bad_beginning'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -65,7 +64,8 @@ $result_trees{'bad_beginning'} = {
       'text' => '',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0];
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1];

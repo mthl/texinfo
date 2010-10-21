@@ -153,7 +153,8 @@ $result_trees{'raw_in_para'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'raw_in_para'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'}{'contents'}[0];
 $result_trees{'raw_in_para'}{'contents'}[0]{'parent'} = $result_trees{'raw_in_para'};

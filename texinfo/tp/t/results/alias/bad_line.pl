@@ -69,8 +69,7 @@ $result_trees{'bad_line'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -86,7 +85,8 @@ $result_trees{'bad_line'} = {
       'cmdname' => 'alias',
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'bad_line'}{'contents'}[0]{'parent'} = $result_trees{'bad_line'};
 $result_trees{'bad_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_line'}{'contents'}[1]{'args'}[0];

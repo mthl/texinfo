@@ -112,8 +112,7 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -153,7 +152,6 @@ $result_trees{'simple'} = {
           'cmdname' => 'verb',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'type' => '!'
         },
         {
@@ -230,8 +228,7 @@ $result_trees{'simple'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -239,7 +236,8 @@ $result_trees{'simple'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];

@@ -23,7 +23,8 @@ $result_trees{'text_comment'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'text_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_comment'}{'contents'}[0];
 $result_trees{'text_comment'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_comment'}{'contents'}[0]{'contents'}[1];

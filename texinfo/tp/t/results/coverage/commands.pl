@@ -66,8 +66,7 @@ $result_trees{'commands'} = {
                   ],
                   'cmdname' => 'dotless',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -76,8 +75,7 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => '^',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -98,8 +96,7 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => '~',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -158,8 +155,7 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => 'clicksequence',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'cmdname' => '.',
@@ -199,8 +195,7 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => 'email',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -290,8 +285,7 @@ $result_trees{'commands'} = {
               ],
               'cmdname' => 'b',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -307,7 +301,8 @@ $result_trees{'commands'} = {
       'cmdname' => 'majorheading',
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0];

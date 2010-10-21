@@ -34,7 +34,8 @@ $result_trees{'consecutive_conditionals'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'consecutive_conditionals'}{'contents'}[0]{'parent'} = $result_trees{'consecutive_conditionals'};
 $result_trees{'consecutive_conditionals'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'consecutive_conditionals'}{'contents'}[1];

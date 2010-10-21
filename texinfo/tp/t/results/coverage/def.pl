@@ -307,8 +307,7 @@ $result_trees{'def'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -711,8 +710,7 @@ $result_trees{'def'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -799,8 +797,7 @@ $result_trees{'def'} = {
                           ],
                           'cmdname' => 'samp',
                           'contents' => [],
-                          'parent' => {},
-                          'remaining_args' => 0
+                          'parent' => {}
                         },
                         {
                           'parent' => {},
@@ -813,8 +810,7 @@ $result_trees{'def'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -1348,7 +1344,8 @@ $result_trees{'def'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'def'}{'contents'}[0]{'parent'} = $result_trees{'def'};
 $result_trees{'def'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[1]{'contents'}[0]{'args'}[0];

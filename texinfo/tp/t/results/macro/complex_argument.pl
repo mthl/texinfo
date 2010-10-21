@@ -182,7 +182,6 @@ $result_trees{'complex_argument'} = {
           'cmdname' => 'verb',
           'contents' => [],
           'parent' => {},
-          'remaining_args' => 0,
           'type' => '%'
         },
         {
@@ -453,8 +452,7 @@ $result_trees{'complex_argument'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -471,7 +469,8 @@ $result_trees{'complex_argument'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'complex_argument'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[0];
 $result_trees{'complex_argument'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'complex_argument'}{'contents'}[0];

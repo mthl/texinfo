@@ -279,7 +279,8 @@ $result_trees{'simple'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[1];

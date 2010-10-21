@@ -10,7 +10,8 @@ $result_trees{'macro_no_argument'} = {
         'arg_line' => ''
       }
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'macro_no_argument'};
 

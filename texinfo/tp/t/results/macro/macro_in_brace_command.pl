@@ -140,8 +140,7 @@ $result_trees{'macro_in_brace_command'} = {
                   ],
                   'cmdname' => 'email',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 1
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -161,8 +160,7 @@ $result_trees{'macro_in_brace_command'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -170,7 +168,8 @@ $result_trees{'macro_in_brace_command'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_in_brace_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[0];

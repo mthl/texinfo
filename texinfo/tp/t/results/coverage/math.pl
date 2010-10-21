@@ -43,8 +43,7 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -95,8 +94,7 @@ $result_trees{'math'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -108,8 +106,7 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -168,8 +165,7 @@ $result_trees{'math'} = {
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
-                      'parent' => {},
-                      'remaining_args' => 0
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -223,8 +219,7 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -271,7 +266,8 @@ $result_trees{'math'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'math'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];

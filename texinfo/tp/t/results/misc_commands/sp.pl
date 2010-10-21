@@ -162,7 +162,8 @@ $result_trees{'sp'} = {
       'cmdname' => 'sp',
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'sp'}{'contents'}[0]{'parent'} = $result_trees{'sp'};
 $result_trees{'sp'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'sp'}{'contents'}[1];

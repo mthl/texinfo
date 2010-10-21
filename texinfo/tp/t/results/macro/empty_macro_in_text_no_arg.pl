@@ -92,7 +92,8 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0];
 $result_trees{'empty_macro_in_text_no_arg'}{'contents'}[0]{'parent'} = $result_trees{'empty_macro_in_text_no_arg'};

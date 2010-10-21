@@ -147,8 +147,7 @@ $result_trees{'macro_expansion'} = {
           ],
           'cmdname' => 'samp',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -405,7 +404,8 @@ $result_trees{'macro_expansion'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_expansion'}{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];

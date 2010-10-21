@@ -31,8 +31,7 @@ $result_trees{'nested_args'} = {
                   ],
                   'cmdname' => 'samp',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -63,8 +62,7 @@ $result_trees{'nested_args'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -73,14 +71,14 @@ $result_trees{'nested_args'} = {
           ],
           'cmdname' => 'xref',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 3
+          'parent' => {}
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0];

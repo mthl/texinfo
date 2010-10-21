@@ -1,7 +1,8 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors);
 
 $result_trees{'not_set'} = {
-  'contents' => []
+  'contents' => [],
+  'type' => 'text_root'
 };
 
 $result_texis{'not_set'} = '';

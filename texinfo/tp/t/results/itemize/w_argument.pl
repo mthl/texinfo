@@ -21,8 +21,7 @@ $result_trees{'w_argument'} = {
               ],
               'cmdname' => 'w',
               'contents' => [],
-              'parent' => {},
-              'remaining_args' => 0
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -66,8 +65,7 @@ $result_trees{'w_argument'} = {
                   ],
                   'cmdname' => 'option',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -106,8 +104,7 @@ $result_trees{'w_argument'} = {
                   ],
                   'cmdname' => 'option',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -122,8 +119,7 @@ $result_trees{'w_argument'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -131,7 +127,8 @@ $result_trees{'w_argument'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'w_argument'}{'contents'}[0]{'args'}[0];
 $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'w_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1];

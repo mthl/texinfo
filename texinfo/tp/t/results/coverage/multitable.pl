@@ -424,7 +424,8 @@ $result_trees{'multitable'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'multitable'}{'contents'}[0]{'parent'} = $result_trees{'multitable'};
 $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0];

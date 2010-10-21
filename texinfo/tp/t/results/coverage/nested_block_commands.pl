@@ -43,8 +43,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -97,8 +96,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -162,8 +160,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -244,8 +241,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -321,8 +317,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -392,8 +387,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -452,8 +446,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -518,8 +511,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'empty_line'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -578,8 +570,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'empty_line'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -632,8 +623,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -703,8 +693,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -774,8 +763,7 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -815,7 +803,8 @@ $result_trees{'nested_block_commands'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'nested_block_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_block_commands'}{'contents'}[0];
 $result_trees{'nested_block_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_block_commands'}{'contents'}[0]{'contents'}[1];

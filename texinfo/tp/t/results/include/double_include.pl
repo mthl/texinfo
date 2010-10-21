@@ -38,7 +38,8 @@ $result_trees{'double_include'} = {
         'text_arg' => 'inc_file.texi In included file.'
       }
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'double_include'}{'contents'}[0]{'parent'} = $result_trees{'double_include'};
 $result_trees{'double_include'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_include'}{'contents'}[1]{'args'}[0];

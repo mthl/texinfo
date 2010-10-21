@@ -76,7 +76,8 @@ $result_trees{'bad_syntax'} = {
       'text' => '
 '
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'bad_syntax'}{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'};
 $result_trees{'bad_syntax'}{'contents'}[1]{'parent'} = $result_trees{'bad_syntax'};

@@ -3,6 +3,10 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors);
 $result_trees{'sections'} = {
   'contents' => [
     {
+      'contents' => [],
+      'type' => 'text_root'
+    },
+    {
       'args' => [
         {
           'contents' => [
@@ -27,15 +31,17 @@ $result_trees{'sections'} = {
         }
       ],
       'cmdname' => 'chapter',
+      'contents' => [],
       'parent' => {}
     }
-  ]
+  ],
+  'type' => 'document_root'
 };
-$result_trees{'sections'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[0]{'args'}[0];
-$result_trees{'sections'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[0]{'args'}[0];
-$result_trees{'sections'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sections'}{'contents'}[0]{'args'}[0];
-$result_trees{'sections'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[0];
-$result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
+$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
+$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
+$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
+$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1];
+$result_trees{'sections'}{'contents'}[1]{'parent'} = $result_trees{'sections'};
 
 $result_texis{'sections'} = '@chapter a chapter
 ';

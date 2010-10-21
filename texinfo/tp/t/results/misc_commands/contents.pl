@@ -84,7 +84,8 @@ $result_trees{'contents'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'contents'}{'contents'}[0]{'parent'} = $result_trees{'contents'};
 $result_trees{'contents'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[1];

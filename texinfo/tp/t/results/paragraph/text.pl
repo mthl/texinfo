@@ -12,7 +12,8 @@ $result_trees{'text'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'text'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text'}{'contents'}[0];
 $result_trees{'text'}{'contents'}[0]{'parent'} = $result_trees{'text'};

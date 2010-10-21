@@ -78,8 +78,7 @@ $result_trees{'protect_in_body_one_arg'} = {
                   ],
                   'cmdname' => 'samp',
                   'contents' => [],
-                  'parent' => {},
-                  'remaining_args' => 0
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -88,8 +87,7 @@ $result_trees{'protect_in_body_one_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -105,8 +103,7 @@ $result_trees{'protect_in_body_one_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -117,7 +114,8 @@ $result_trees{'protect_in_body_one_arg'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];
 $result_trees{'protect_in_body_one_arg'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'protect_in_body_one_arg'}{'contents'}[0];

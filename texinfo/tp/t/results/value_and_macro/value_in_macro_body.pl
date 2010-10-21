@@ -94,8 +94,7 @@ $result_trees{'value_in_macro_body'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -106,7 +105,8 @@ $result_trees{'value_in_macro_body'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'value_in_macro_body'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[0];
 $result_trees{'value_in_macro_body'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'value_in_macro_body'}{'contents'}[0];

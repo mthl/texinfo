@@ -27,8 +27,7 @@ $result_trees{'close_paragraph_command'} = {
       ],
       'cmdname' => 'titlefont',
       'contents' => [],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'contents' => [
@@ -100,7 +99,8 @@ $result_trees{'close_paragraph_command'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'close_paragraph_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'}{'contents'}[0];
 $result_trees{'close_paragraph_command'}{'contents'}[0]{'parent'} = $result_trees{'close_paragraph_command'};

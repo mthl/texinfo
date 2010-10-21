@@ -25,7 +25,8 @@ $result_trees{'macro_not_closed'} = {
 '
       }
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'macro_not_closed'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_not_closed'}{'contents'}[0];
 $result_trees{'macro_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_not_closed'}{'contents'}[0];

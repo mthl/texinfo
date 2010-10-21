@@ -25,7 +25,8 @@ $result_trees{'text_line'} = {
 ',
       'type' => 'empty_line'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'text_line'}{'contents'}[0]{'parent'} = $result_trees{'text_line'};
 $result_trees{'text_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_line'}{'contents'}[1];

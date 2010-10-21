@@ -57,8 +57,7 @@ $result_trees{'item_container'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -131,8 +130,7 @@ $result_trees{'item_container'} = {
           'parent' => {}
         }
       ],
-      'parent' => {},
-      'remaining_args' => 0
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -140,7 +138,8 @@ $result_trees{'item_container'} = {
 ',
       'type' => 'empty_line_after_command'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'item_container'}{'contents'}[0]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'args'}[0];

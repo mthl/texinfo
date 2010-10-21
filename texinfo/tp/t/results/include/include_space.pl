@@ -13,7 +13,8 @@ $result_trees{'include_space'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'include_space'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_space'}{'contents'}[0];
 $result_trees{'include_space'}{'contents'}[0]{'parent'} = $result_trees{'include_space'};

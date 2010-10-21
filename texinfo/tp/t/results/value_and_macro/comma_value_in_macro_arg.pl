@@ -100,8 +100,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -117,8 +116,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -129,7 +127,8 @@ $result_trees{'comma_value_in_macro_arg'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[0];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[0];

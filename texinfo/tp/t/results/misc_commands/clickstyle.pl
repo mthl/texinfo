@@ -53,7 +53,8 @@ $result_trees{'clickstyle'} = {
       'parent' => {},
       'type' => 'paragraph'
     }
-  ]
+  ],
+  'type' => 'text_root'
 };
 $result_trees{'clickstyle'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'clickstyle'}{'contents'}[0];
 $result_trees{'clickstyle'}{'contents'}[0]{'parent'} = $result_trees{'clickstyle'};
