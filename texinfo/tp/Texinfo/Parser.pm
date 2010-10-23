@@ -564,13 +564,13 @@ foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref',
 
 # commands that accept full text, but no block or top-level commands
 my %full_text_commands;
-foreach my $brace_command (keys (%brace_commands)) {  
-  if ($brace_commands{$brace_command} == 1 
-      and (!$simple_text_commands{$brace_command} 
-           and !$context_brace_commands{$brace_command})) {
-    $full_text_commands{$brace_command} = 1;
-  }
-}
+#foreach my $brace_command (keys (%brace_commands)) {  
+#  if ($brace_commands{$brace_command} == 1 
+#      and (!$simple_text_commands{$brace_command} 
+#           and !$context_brace_commands{$brace_command})) {
+#    $full_text_commands{$brace_command} = 1;
+#  }
+#}
 $full_text_commands{'center'} = 1;
 $full_text_commands{'exdent'} = 1;
 

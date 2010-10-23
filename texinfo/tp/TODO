@@ -17,6 +17,8 @@ Following should be an error:
 
 test invalid, especially commands not closed/bad nesting
 
+in t/57invalid_nestings.t in_table, no warning for bad stuff on @item line.
+
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 
