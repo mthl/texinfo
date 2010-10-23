@@ -910,11 +910,11 @@ sub _close_brace_command($$$)
   my $located_line_nr = $line_nr;
   # use the beginning of the @-command for the error message
   # line number if available. FIXME. not implemented
-  $located_line_nr = $current->{'parent'}->{'line_nr'}
-    if ($current->{'parent'}->{'line_nr'});
+  $located_line_nr = $current->{'line_nr'}
+    if ($current->{'line_nr'});
   _line_error ($self, sprintf($self->__("%c%s missing close brace"),
-               ord('@'), $current->{'parent'}->{'cmdname'}), $located_line_nr);
-  $current = $current->{'parent'}->{'parent'};
+               ord('@'), $current->{'cmdname'}), $located_line_nr);
+  $current = $current->{'parent'};
   return $current;
 }
 
@@ -929,7 +929,7 @@ sub _end_paragraph ($$$)
   while ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
           and exists $brace_commands{$current->{'parent'}->{'cmdname'}}
           and !exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-    $current = _close_brace_command($self, $current, $line_nr);
+    $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
   }
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
     print STDERR "CLOSE PARA\n" if ($self->{'debug'});
@@ -980,9 +980,15 @@ sub _end_block_command($$$;$)
       $current = $current->{'parent'};
     } elsif ($current->{'parent'}->{'cmdname'}
              and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-      $current = _close_brace_command($self, $current, $line_nr);
+      $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
       pop @{$self->{'context_stack'}};
-    } else { # silently close containers and @-commands without brace nor @end
+    } else { 
+      if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
+        # FIXME record the line number in the braccketed and use it
+        _line_error ($self, sprintf($self->__("Misplaced %c"),
+                                             ord('{')), $line_nr);
+      }
+      # silently close containers and @-commands without brace nor @end
       $current = $current->{'parent'};
     }
 
@@ -1424,6 +1430,36 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
+sub _close_current($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+
+  if ($current->{'cmdname'}) {
+    if (exists($brace_commands{$current->{'cmdname'}})) {
+      $current = _close_brace_command($self, $current, $line_nr);
+    } else {
+      _line_error($self, sprintf($self->__("Closing \@%s"), 
+                                $current->{'cmdname'}), $line_nr);
+      $current = $current->{'parent'};
+    }
+  } elsif ($current->{'type'}) {
+    if ($current->{'type'} eq 'bracketed') {
+    # FIXME record the line number in the braccketed and use it
+      _line_error ($self, sprintf($self->__("Misplaced %c"),
+                                             ord('{')), $line_nr);
+      $current = $current->{'parent'};
+    } else {
+      $current = $current->{'parent'} if ($current->{'parent'});
+    }
+  } else {
+    $current = $current->{'parent'} if ($current->{'parent'});
+    print STDERR "Where am I?"._print_current($current);
+  }
+  return $current;
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -1431,6 +1467,8 @@ sub _end_line($$$)
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+
+  my $current_old = $current;
 
   my $included_file = 0;
 
@@ -1718,23 +1756,26 @@ sub _end_line($$$)
     print STDERR "Still opened line command $self->{'context_stack'}->[-1]:"._print_current($current) 
       if ($self->{'debug'});
     if ($self->{'context_stack'}->[-1] eq 'def') {
-      while ($current->{'parent'} and !($current->{'parent'}->{'parent'}
-            and $current->{'parent'}->{'parent'}->{'type'}
-            and $current->{'parent'}->{'parent'}->{'type'} eq 'def_line')) {
-        _line_error($self, sprintf($self->__("Closing \@%s"), 
-                                  $current->{'cmdname'}), $line_nr)
-          if (exists $current->{'cmdname'});
-        $current = $current->{'parent'};
+      while ($current->{'parent'} and !($current->{'parent'}->{'type'}
+            and $current->{'parent'}->{'type'} eq 'def_line')) {
+        $current = $self->_close_current($current, $line_nr);
       }
     } else {
       while ($current->{'parent'} and !($current->{'type'}
              and ($current->{'type'} eq 'brace_line_arg'
                   or $current->{'type'} eq 'misc_line_arg'))) {
-        _line_error($self, sprintf($self->__("Closing \@%s"), 
-                                  $current->{'cmdname'}), $line_nr)
-          if (exists $current->{'cmdname'});
-        $current = $current->{'parent'};
+        $current = $self->_close_current($current, $line_nr);
       }
+    }
+    if ($current eq $current_old) {
+      my $indent = '- ';
+      print STDERR "$indent"._print_current($current);
+      while ($current->{'parent'}) {
+        $indent = '-'.$indent;
+        $current = $current->{'parent'};
+        print STDERR "$indent"._print_current($current);
+      }
+      die "BUG: didn't go up (infinite loop)\n" 
     }
 
     my $other_included_file = 0;

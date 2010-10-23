@@ -28,6 +28,9 @@ dotless:
 no warning in 
 t/25regions.t double_copying
 
+no warning in
+t/19def.t empty_def_arguments
+
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
@@ -74,3 +77,4 @@ invalid/commands_not_closed.texi (but maybe still things to test)
 invalid/command_without_open_brace.texi
 invalid/copying_not_closed.texi
 invalid/def_bad_defx_command.texi
+invalid/def_braces_and_empty.texi

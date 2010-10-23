@@ -563,12 +563,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: Closing @code
+    'error_line' => ':11: @code missing close brace
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'Closing @code',
+    'text' => '@code missing close brace',
     'type' => 'error'
   },
   {
@@ -590,12 +590,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: Closing @code
+    'error_line' => ':15: @code missing close brace
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'Closing @code',
+    'text' => '@code missing close brace',
     'type' => 'error'
   },
   {

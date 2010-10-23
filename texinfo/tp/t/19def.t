@@ -303,6 +303,81 @@ Defmethod.
 
 @deftypefn {var then code} {ret_type1} {fun_name1} @var{A1} @code{A2} @var{A3} @code{A4}
 @end deftypefn
+'],
+['wrong_braces_simple',
+'@deffn truc machin bidule chose and }
+@end deffn
+
+@deffn truc machin bidule chose and } after
+@end deffn
+
+@deffn truc machin bidule chose and {
+@end deffn
+
+@deffn truc machin bidule chose and { and after
+@end deffn
+
+@deffn a b c d e
+@deffnx truc machin bidule chose and }
+@deffnx truc machin bidule chose and } after
+@deffnx truc machin bidule chose and {
+@deffnx truc machin bidule chose and { and after
+@end deffn
+'],
+['wrong_braces_with_end_of_lines',
+'@deffn category name args { @
+  more args
+deffn with @{
+@end deffn 
+
+@deffn category name args } @
+  more args
+deffn with @}
+@end deffn 
+'],
+['empty_def_arguments',
+'@deffn fset @var{i} a g
+@deffnx @b{id @samp{i} ule}    
+@deffnx 
+@deffnx aaa
+@deffnx {} {}
+@deffnx{}
+@deffnx{truc} { }
+@deffnx{truc}
+@deffnx{} {}
+@end deffn
+'],
+['all_empty_def',
+'@deffn
+@end deffn
+
+@defvr
+@end defvr
+
+@deftypefn
+@end deftypefn
+
+@deftypeop
+@end deftypeop
+
+@deftypevr
+@end deftypevr
+
+@defcv
+@end defcv
+
+@deftypecv
+@end deftypecv
+
+@defop
+@end defop
+
+@deftp
+@end deftp
+'],
+['empty_deftypeop_name',
+'@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
+@end deftypeop
 ']
 );
 
