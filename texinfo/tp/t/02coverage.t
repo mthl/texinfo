@@ -23,7 +23,8 @@ accent character with spaces @~ following.
 accent character at end of line @~
 accent character followed by @@ @~@.
 
-
+With @@:
+@ringaccent @@. @^@@.
 '],
 ['math',
 'Simple math

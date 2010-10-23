@@ -169,10 +169,53 @@ $result_trees{'accents'} = {
       'type' => 'empty_line'
     },
     {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'With '
+        },
+        {
+          'cmdname' => '@',
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => ':
+'
+        },
+        {
+          'cmdname' => 'ringaccent',
+          'contents' => [],
+          'parent' => {},
+          'special' => {
+            'spaces' => ' '
+          }
+        },
+        {
+          'cmdname' => '@',
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '. '
+        },
+        {
+          'cmdname' => '^',
+          'contents' => [],
+          'parent' => {}
+        },
+        {
+          'cmdname' => '@',
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '.
+'
+        }
+      ],
       'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
+      'type' => 'paragraph'
     }
   ],
   'type' => 'text_root'
@@ -210,6 +253,15 @@ $result_trees{'accents'}{'contents'}[4]{'contents'}[10]{'parent'} = $result_tree
 $result_trees{'accents'}{'contents'}[4]{'contents'}[11]{'parent'} = $result_trees{'accents'}{'contents'}[4];
 $result_trees{'accents'}{'contents'}[4]{'parent'} = $result_trees{'accents'};
 $result_trees{'accents'}{'contents'}[5]{'parent'} = $result_trees{'accents'};
+$result_trees{'accents'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[4]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[5]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[6]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[7]{'parent'} = $result_trees{'accents'}{'contents'}[6];
+$result_trees{'accents'}{'contents'}[6]{'contents'}[8]{'parent'} = $result_trees{'accents'}{'contents'}[6];
 $result_trees{'accents'}{'contents'}[6]{'parent'} = $result_trees{'accents'};
 
 $result_texis{'accents'} = '@ringaccent    a
@@ -222,7 +274,8 @@ accent character with spaces @~ following.
 accent character at end of line @~
 accent character followed by @@ @~@.
 
-
+With @@:
+@ringaccent@@. @^@@.
 ';
 
 
@@ -236,7 +289,8 @@ accent character with spaces  following.
 accent character at end of line 
 accent character followed by @ .
 
-
+With @:
+@. @.
 ';
 
 $result_errors{'accents'} = [
@@ -292,6 +346,24 @@ $result_errors{'accents'} = [
     'line_nr' => 9,
     'macro' => '',
     'text' => 'Use braces to give a command as an argument to @~',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':12: Use braces to give a command as an argument to @ringaccent
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => 'Use braces to give a command as an argument to @ringaccent',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':12: Use braces to give a command as an argument to @^
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => 'Use braces to give a command as an argument to @^',
     'type' => 'error'
   }
 ];

@@ -204,6 +204,195 @@ $result_trees{'center'} = {
       'text' => '
 ',
       'type' => 'empty_line_after_command'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'parent' => {},
+              'text' => 'center'
+            },
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'spaces_at_end'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'second center'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'center',
+              'parent' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'center',
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'in code in center
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'contents' => [],
+              'parent' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'center',
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => '
+'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'in code in center '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'parent' => {},
+                              'text' => ' ',
+                              'type' => 'empty_spaces_after_command'
+                            },
+                            {
+                              'parent' => {},
+                              'text' => 'center in code in center'
+                            },
+                            {
+                              'parent' => {},
+                              'text' => '
+',
+                              'type' => 'spaces_at_end'
+                            }
+                          ],
+                          'parent' => {},
+                          'type' => 'misc_line_arg'
+                        }
+                      ],
+                      'cmdname' => 'center',
+                      'parent' => {}
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'contents' => [],
+              'parent' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'misc_line_arg'
+        }
+      ],
+      'cmdname' => 'center',
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => '
+'
     }
   ],
   'type' => 'text_root'
@@ -245,6 +434,40 @@ $result_trees{'center'}{'contents'}[4]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[5];
 $result_trees{'center'}{'contents'}[5]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[6]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[7]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'center'}{'contents'}[8]{'args'}[0];
+$result_trees{'center'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[8];
+$result_trees{'center'}{'contents'}[8]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[9]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[10]{'args'}[0];
+$result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[10]{'args'}[0];
+$result_trees{'center'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[10];
+$result_trees{'center'}{'contents'}[10]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[11]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[12]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[13]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14];
+$result_trees{'center'}{'contents'}[14]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[15]{'parent'} = $result_trees{'center'};
+$result_trees{'center'}{'contents'}[16]{'parent'} = $result_trees{'center'};
 
 $result_texis{'center'} = '@center @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote}
 
@@ -252,6 +475,16 @@ $result_texis{'center'} = '@center @indent @titlefont{in titlefont} @anchor{in a
 
 @center @quotation
 @end quotationin quotation
+
+
+@center center @center second center
+
+@center @code{in code in center
+}
+
+
+@center @code{in code in center @center center in code in center
+}
 
 ';
 
@@ -262,6 +495,16 @@ center
 
 
 in quotation
+
+centersecond center
+
+in code in center
+
+
+
+in code in center center in code in center
+
+
 ';
 
 $result_errors{'center'} = [
@@ -299,6 +542,69 @@ $result_errors{'center'} = [
     'line_nr' => 7,
     'macro' => '',
     'text' => 'Unmatched `@end quotation\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':9: warning: @center should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@center should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: @center should not appear in @center
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@center should not appear in @center',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':11: Closing @code
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Closing @code',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':13: Misplaced }
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'Misplaced }',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':15: warning: @center should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@center should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':15: Closing @code
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => 'Closing @code',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':17: Misplaced }
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'Misplaced }',
     'type' => 'error'
   }
 ];

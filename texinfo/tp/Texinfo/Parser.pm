@@ -967,8 +967,13 @@ sub _end_block_command($$$;$)
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
     if ($current->{'cmdname'}
         and exists($block_commands{$current->{'cmdname'}})) {
-      $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
+      if (defined($command)) {
+        $self->_line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
+                                   $current->{'cmdname'}, $command), $line_nr);
+      } else {
+        $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
                                    ord('@'), $current->{'cmdname'}), $line_nr);
+      }
       pop @{$self->{'context_stack'}} if 
          ($preformatted_commands{$current->{'cmdname'}}
            or $menu_commands{$current->{'cmdname'}});

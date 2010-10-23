@@ -46,6 +46,16 @@ in item@footnote{footnote in item}
 @center @quotation
 in quotation
 @end quotation
+
+@center center @center second center
+
+@center @code{in code in center
+
+}
+
+@center @code{in code in center @center center in code in center
+
+}
 '],
 ['accents',
 'Valid
@@ -53,6 +63,43 @@ in quotation
 
 Invalid
 @~{@code{a}}.  @^{@anchor{truc}}.
+'],
+['block_not_matching',
+'@quotation
+A quotation
+@end cartouche
+
+@deffn {Function Reference} print_navigation $filehandle
+Text
+@end deftypefun
+
+@table
+@item item
+line
+@end vtable
+
+@table @emph
+@item ref
+@example
+example
+@end display
+@end table
+
+@group
+in group
+@end table
+
+@group
+in group 2
+@end cartouche
+
+@cartouche
+cartouche
+@end group
+
+@cartouche
+carouche
+@end float
 ']
 );
 
