@@ -20,7 +20,16 @@ $result_trees{'no_brace'} = {
         },
         {
           'parent' => {},
-          'text' => ' code'
+          'text' => ' code and '
+        },
+        {
+          'cmdname' => 'footnote',
+          'contents' => [],
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => ' footnote '
         }
       ],
       'parent' => {},
@@ -33,12 +42,14 @@ $result_trees{'no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_tree
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
+$result_trees{'no_brace'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
+$result_trees{'no_brace'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'no_brace'}{'contents'}[0];
 $result_trees{'no_brace'}{'contents'}[0]{'parent'} = $result_trees{'no_brace'};
 
-$result_texis{'no_brace'} = '@TeX and @code code';
+$result_texis{'no_brace'} = '@TeX and @code code and @footnote footnote ';
 
 
-$result_texts{'no_brace'} = 'TeX and  code';
+$result_texts{'no_brace'} = 'TeX and  code and  footnote ';
 
 $result_errors{'no_brace'} = [
   {
@@ -57,6 +68,15 @@ $result_errors{'no_brace'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@code expected braces',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: @footnote expected braces
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@footnote expected braces',
     'type' => 'error'
   }
 ];

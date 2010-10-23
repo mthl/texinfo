@@ -1120,216 +1120,211 @@ $result_trees{'def'} = {
           'parent' => {}
         },
         {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'truc'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'bracketed'
+                },
+                {
+                  'parent' => {},
+                  'text' => ' after a deff item
+'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'deffnx',
+          'parent' => {},
+          'special' => {
+            'def_args' => [
+              [
+                'category',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'name',
+                {
+                  'text' => 'after'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'a'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'deff'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'item'
+                }
+              ]
+            ],
+            'def_command' => 'deffn'
+          },
+          'type' => 'def_line'
+        },
+        {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' comment
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'truc'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'bracketed'
+                },
+                {
+                  'parent' => {},
+                  'text' => ' deffnx before end deffn
+'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'deffnx',
+          'parent' => {},
+          'special' => {
+            'def_args' => [
+              [
+                'category',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'name',
+                {
+                  'text' => 'deffnx'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'before'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'end'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'deffn'
+                }
+              ]
+            ],
+            'def_command' => 'deffn'
+          },
+          'type' => 'def_line'
+        },
+        {
           'contents' => [
             {
               'parent' => {},
               'text' => 'Various deff lines
 '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'truc'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'bracketed'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => ' after a deff item
-'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'misc_line_arg'
-                }
-              ],
-              'cmdname' => 'deffnx',
-              'parent' => {},
-              'special' => {
-                'def_args' => [
-                  [
-                    'category',
-                    {}
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'name',
-                    {
-                      'text' => 'after'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'a'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'deff'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'item'
-                    }
-                  ]
-                ],
-                'def_command' => 'deffn'
-              },
-              'type' => 'def_line'
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => 'text in def item for second def item
-'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'truc'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'bracketed'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => ' deffnx before end deffn
-'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'misc_line_arg'
-                }
-              ],
-              'cmdname' => 'deffnx',
-              'parent' => {},
-              'special' => {
-                'def_args' => [
-                  [
-                    'category',
-                    {}
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'name',
-                    {
-                      'text' => 'deffnx'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'before'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'end'
-                    }
-                  ],
-                  [
-                    'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
-                  ],
-                  [
-                    'arg',
-                    {
-                      'text' => 'deffn'
-                    }
-                  ]
-                ],
-                'def_command' => 'deffn'
-              },
-              'type' => 'def_line'
             }
           ],
           'parent' => {},
@@ -1475,25 +1470,24 @@ $result_trees{'def'}{'contents'}[7]{'contents'}[10]{'parent'} = $result_trees{'d
 $result_trees{'def'}{'contents'}[7]{'contents'}[10]{'special'}{'def_args'}[0][1] = $result_trees{'def'}{'contents'}[7]{'contents'}[10]{'args'}[0]{'contents'}[1];
 $result_trees{'def'}{'contents'}[7]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[11];
 $result_trees{'def'}{'contents'}[7]{'contents'}[11]{'parent'} = $result_trees{'def'}{'contents'}[7];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'special'}{'def_args'}[0][1] = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[2];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[3]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
-$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'special'}{'def_args'}[0][1] = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[12];
 $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'parent'} = $result_trees{'def'}{'contents'}[7];
+$result_trees{'def'}{'contents'}[7]{'contents'}[12]{'special'}{'def_args'}[0][1] = $result_trees{'def'}{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[1];
+$result_trees{'def'}{'contents'}[7]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[13];
+$result_trees{'def'}{'contents'}[7]{'contents'}[13]{'parent'} = $result_trees{'def'}{'contents'}[7];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[14];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'parent'} = $result_trees{'def'}{'contents'}[7];
+$result_trees{'def'}{'contents'}[7]{'contents'}[14]{'special'}{'def_args'}[0][1] = $result_trees{'def'}{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'def'}{'contents'}[7]{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'def'}{'contents'}[7]{'contents'}[15];
+$result_trees{'def'}{'contents'}[7]{'contents'}[15]{'parent'} = $result_trees{'def'}{'contents'}[7];
 $result_trees{'def'}{'contents'}[7]{'parent'} = $result_trees{'def'};
 $result_trees{'def'}{'contents'}[8]{'parent'} = $result_trees{'def'};
 
@@ -1518,11 +1512,10 @@ def--fn
 @deffnx{truc} machin
 @deffnx {truc} followed by a comment
 @c comment
-Various deff lines
 @deffnx {truc} after a deff item
 @c comment
-text in def item for second def item
 @deffnx {truc} deffnx before end deffn
+Various deff lines
 @end deffn
 ';
 
@@ -1533,28 +1526,8 @@ d--effn
 def--fn
 
 Various deff lines
-text in def item for second def item
 ';
 
-$result_errors{'def'} = [
-  {
-    'error_line' => ':24: Must be in `@deffn\' environment to use `@deffnx\'
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'Must be in `@deffn\' environment to use `@deffnx\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':27: Must be in `@deffn\' environment to use `@deffnx\'
-',
-    'file_name' => '',
-    'line_nr' => 27,
-    'macro' => '',
-    'text' => 'Must be in `@deffn\' environment to use `@deffnx\'',
-    'type' => 'error'
-  }
-];
+$result_errors{'def'} = [];
 
 

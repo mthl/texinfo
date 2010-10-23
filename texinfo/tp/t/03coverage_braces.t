@@ -10,7 +10,12 @@ my @test_cases = (
 ['footnote', 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.'],
-['no_brace', '@TeX and @code code'],
+['no_brace', '@TeX and @code code and @footnote footnote '],
+['no_brace_space_end_line',
+'@code {c}.
+
+@code
+Arg.'],
 ['space_in_footnote','text@footnote{ in footnote.}'],
 ['footnote_ending_on_empty_line','text@footnote{ in footnote.
 
@@ -31,8 +36,21 @@ as much as possible is closed in order to find the @@float beginning.
 
 @bye
 '],
-['code_not_closed','@code{in code']
+['code_not_closed','@code{in code'],
+['empty_line_in_anchor',
+'@anchor{an
 
+anchor}
+'],
+['anchor_not_closed',
+'@anchor{my anchor
+
+'],
+['footnote_not_closed',
+'AAA@footnote{ in footnote
+
+Second paragraph.
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

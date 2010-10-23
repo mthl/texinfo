@@ -157,11 +157,10 @@ def--fn
 @deffnx{truc} machin
 @deffnx {truc} followed by a comment
 @c comment
-Various deff lines
 @deffnx {truc} after a deff item
 @c comment
-text in def item for second def item
 @deffnx {truc} deffnx before end deffn
+Various deff lines
 @end deffn
 '],
 ['nested_block_commands',

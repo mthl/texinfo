@@ -2419,9 +2419,21 @@ sub _parse_texi($$;$)
               if ($def_commands{$command}) {
                 my $base_command = $command;
                 $base_command =~ s/x$//;
+                # check that the def*x is first after @def*, no paragraph
+                # in-between.
+                my $after_paragraph = 0;
+                if ($current->{'contents'}) {
+                  foreach my $content (@{$current->{'contents'}}) {
+                    if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
+                      $after_paragraph = 1;
+                      last;
+                    }
+                  }
+                }
                 if (!$current->{'cmdname'} 
-                     or $current->{'cmdname'} ne $base_command) {
-                  $self->_line_error(sprintf($self->__("Must be in `\@%s' environment to use `\@%s'"), $base_command, $command), $line_nr);
+                     or $current->{'cmdname'} ne $base_command
+                     or $after_paragraph) {
+                  $self->_line_error(sprintf($self->__("Must be after `\@%s' to use `\@%s'"), $base_command, $command), $line_nr);
                 }
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';

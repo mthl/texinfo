@@ -92,6 +92,35 @@ deffn
 @deffnx empty deffnx
 @end deffn
 '],
+['def_defx_mismatch',
+'@defun {my def} args @var{arg} @dots{}
+@deffnx {type} {name} and now the args
+
+In defun.
+
+@end defun
+'],
+['defx_after_comment',
+'@deffn fset @var{i} a g
+@c comment
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_after_text',
+'@deffn fset @var{i} a g
+Text in deffn
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_after_empty_line',
+'@deffn fset @var{i} a g
+
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_after_paragraph_end',
+'@deffn fset @var{i} a g
+Text in paragraph.
+
+@deffnx {truc} bidulr machin...
+@end deffn'],
 ['end_of_line_protect_at_end',
 '
 @deffn category2 deffn_name2 arguments2 @'],
