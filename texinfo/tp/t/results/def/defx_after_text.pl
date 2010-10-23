@@ -213,7 +213,9 @@ Text in deffn
 @end deffn';
 
 
-$result_texts{'defx_after_text'} = 'Text in deffn
+$result_texts{'defx_after_text'} = 'fset i a g
+Text in deffn
+truc bidulr machin...
 ';
 
 $result_errors{'defx_after_text'} = [

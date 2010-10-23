@@ -227,7 +227,10 @@ $result_texis{'empty_def_command'} = '@deffn empty deffn
 ';
 
 
-$result_texts{'empty_def_command'} = '
+$result_texts{'empty_def_command'} = 'empty deffn
+
+empty deffn with deffnx
+empty deffnx
 ';
 
 $result_errors{'empty_def_command'} = [];

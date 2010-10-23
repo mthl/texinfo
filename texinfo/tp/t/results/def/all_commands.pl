@@ -1932,40 +1932,58 @@ d--eftypemethod
 ';
 
 
-$result_texts{'all_commands'} = 'd--efvr
+$result_texts{'all_commands'} = 'c--ategory d--efvr_name
+d--efvr
 
+c--ategory t--ype d--eftypefn_name a--rguments...
 d--eftypefn
 
+c--ategory c--lass t--ype d--eftypeop_name a--rguments...
 d--eftypeop
 
+c--ategory t--ype d--eftypevr_name
 d--eftypevr
 
+c--ategory c--lass d--efcv_name
 d--efcv
 
+c--ategory c--lass d--efop_name a--rguments...
 d--efop
 
+c--ategory d--eftp_name a--ttributes...
 d--eftp
 
+d--efun_name a--rguments...
 d--efun
 
+d--efmac_name a--rguments...
 d--efmac
 
+d--efspec_name a--rguments...
 d--efspec
 
+d--efvar_name
 d--efvar
 
+d--efopt_name
 d--efopt
 
+t--ype d--eftypefun_name a--rguments...
 d--eftypefun
 
+t--ype d--eftypevar_name
 d--eftypevar
 
+c--lass d--efivar_name
 d--efivar
 
+c--lass t--ype d--eftypeivar_name
 d--eftypeivar
 
+c--lass d--efmethod_name a--rguments...
 d--efmethod
 
+c--lass t--ype d--eftypemethod_name a--rguments...
 d--eftypemethod
 ';
 

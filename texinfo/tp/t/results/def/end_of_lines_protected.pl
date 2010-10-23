@@ -243,7 +243,8 @@ deffn
 ';
 
 
-$result_texts{'end_of_lines_protected'} = 'deffn
+$result_texts{'end_of_lines_protected'} = 'category deffn_name arguments    more args   with end of line within with 3 @ @ one last arg
+deffn
 ';
 
 $result_errors{'end_of_lines_protected'} = [];

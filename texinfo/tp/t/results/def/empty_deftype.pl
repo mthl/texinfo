@@ -639,12 +639,16 @@ Defmethod.
 ';
 
 
-$result_texts{'empty_deftype'} = 'Deftypefun.
+$result_texts{'empty_deftype'} = ' f (const type& x)
+Deftypefun.
 
+f (const type& x)
 Defun.
 
+c  f (const type& x)
 Deftypemethod.
 
+c f (const type& x)
 Defmethod.
 ';
 

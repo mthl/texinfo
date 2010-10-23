@@ -1521,10 +1521,26 @@ Various deff lines
 
 
 $result_texts{'def'} = '
+c--ategory d--effn_name a--rguments...
 d--effn
 
+cate--gory de--ffn_name ar--guments    more args 
+ even more so
 def--fn
 
+fset i a g
+cmde truc 
+Command log trap 
+Command  log trap1   
+Command log trap2  
+cmde id ule truc
+cmde2 id i ule truc
+ machin
+ bidule machin
+truc machin
+truc followed by a comment
+truc after a deff item
+truc deffnx before end deffn
 Various deff lines
 ';
 

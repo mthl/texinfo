@@ -222,18 +222,21 @@ sub convert($)
     print STDERR "  Command: $root->{'cmdname'}\n" if ($root->{'cmdname'});
     print STDERR "  Type: $root->{'type'}\n" if ($root->{'type'});
     print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
+    #print STDERR "  Special def_command: $root->{'special'}->{'def_command'}\n"
+    #  if (defined($root->{'special'}) and $root->{'special'}->{'def_command'});
   }
 
-  return '' if (($root->{'type'} and $ignored_types{$root->{'type'}})
-     or ($root->{'cmdname'} 
-        and ($ignored_brace_commands{$root->{'cmdname'}} 
-           or $ignored_block_commands{$root->{'cmdname'}}
+  return '' if (!($root->{'type'} and $root->{'type'} eq 'def_line')
+     and (($root->{'type'} and $ignored_types{$root->{'type'}})
+          or ($root->{'cmdname'} 
+             and ($ignored_brace_commands{$root->{'cmdname'}} 
+                 or $ignored_block_commands{$root->{'cmdname'}}
              # here ignore most of the misc commands
-           or ($root->{'args'} and $root->{'args'}->[0] 
-               and $root->{'args'}->[0]->{'type'} 
-               and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
-                    or $root->{'args'}->[0]->{'type'} eq 'misc_arg') 
-               and !$kept_misc_commands{$root->{'cmdname'}}))));
+                 or ($root->{'args'} and $root->{'args'}->[0] 
+                     and $root->{'args'}->[0]->{'type'} 
+                     and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
+                         or $root->{'args'}->[0]->{'type'} eq 'misc_arg') 
+                     and !$kept_misc_commands{$root->{'cmdname'}})))));
   my $result = '';
   if (defined($root->{'text'})) {
     $result = $root->{'text'};
@@ -288,7 +291,10 @@ sub convert($)
       }
     }
   }
-  if ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
+  if ($root->{'type'} and $root->{'type'} eq 'def_line') {
+    #print STDERR "$root->{'special'}->{'def_command'}\n";
+    $result = convert($root->{'args'}->[0]) if ($root->{'args'});
+  } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
       $result .= convert($arg);
     }
@@ -299,7 +305,10 @@ sub convert($)
     }
   }
   $result = '{'.$result.'}' 
-     if ($root->{'type'} and $root->{'type'} eq 'bracketed');
+     if ($root->{'type'} and $root->{'type'} eq 'bracketed'
+         and (!$root->{'parent'}->{'type'} or
+              ($root->{'parent'}->{'type'} ne 'block_line_arg'
+               and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
   return $result;
 }
 
