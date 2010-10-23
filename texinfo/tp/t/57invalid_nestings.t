@@ -100,7 +100,56 @@ cartouche
 @cartouche
 carouche
 @end float
+'],
+['bad_style_nesting',
+'@code{
+@quotation
+in quotation}
+@end quotation
+'],
+['bad_tab_nesting',
+'@multitable {truc} {bidule}
+@item truc
+@code{@tab bidule}
+@end multitable
+'],
+['style_not_closed_no_newline_root_commands',
+'@node Top
+
+@menu
+* chapter::
+@end menu
+
+@code{not closed
+@node chapter
+@chapter chapter
+
+@code{still not closed
+@bye
+'],
+['style_not_closed_root_commands',
+'@node Top
+
+@menu
+* chapter::
+@end menu
+
+@code{not closed
+
+@node chapter
+@chapter chapter
+
+@code{still not closed
+
+@bye
+'],
+['style_not_closed_before_first_node',
+'@code{in code
+
+@node Top
+In node
 ']
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

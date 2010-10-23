@@ -1,7 +1,4 @@
-#use strict;
-
-use Test::More;
-#BEGIN { plan tests => 8 };
+use strict;
 
 require 't/test_utils.pl';
 
@@ -32,7 +29,18 @@ text l 2
 
 p before sp
 @sp 4
-inew p after sp']
+inew p after sp'],
+['paragraph_in_style_command',
+'a 2 paragraphs sample @samp{in first paragraph
+
+in second}.
+
+a 3 paragraphs sample @samp{in first paragraph
+
+in second
+
+in third}.
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

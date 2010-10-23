@@ -15,7 +15,24 @@ my @test_cases = (
 ['footnote_ending_on_empty_line','text@footnote{ in footnote.
 
 }'],
-['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.']
+['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
+['unmatched_brace','@samp{Closing} @samp{ @} without opening macro }.}'],
+['brace_opened_no_command','anchor{truc@} @anchor{truc}.
+@bye'],
+['caption_not_closed',
+'@float Text
+
+@caption{Not closed caption
+
+The caption is closed as soon as @@end float is encountered, since
+as much as possible is closed in order to find the @@float beginning.
+
+@end float
+
+@bye
+'],
+['code_not_closed','@code{in code']
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

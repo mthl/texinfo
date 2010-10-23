@@ -1,7 +1,5 @@
 use strict;
 
-use Test::More;
-
 require 't/test_utils.pl';
 
 my @test_cases = (

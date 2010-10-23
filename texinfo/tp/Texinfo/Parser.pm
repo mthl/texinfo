@@ -1458,6 +1458,10 @@ sub _end_line($$$)
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
       print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'debug'});
+    } elsif (!$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
+            # FIXME remove this if an empty line in a brace command
+            # is acceptable
+      $current = _end_paragraph($self, $current, $line_nr);
     }
 
   # end of a menu line.
