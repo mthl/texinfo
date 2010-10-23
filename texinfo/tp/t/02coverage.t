@@ -26,6 +26,20 @@ accent character followed by @@ @~@.
 With @@:
 @ringaccent @@. @^@@.
 '],
+['accent_no_closed',
+'@~{e'],
+['accent_no_closed_newline',
+'@~{e
+
+'],
+['accent_no_closed_paragraph',
+'@~{e
+
+other para.
+'],
+['accent_no_closed_comment',
+'@~{e @c comment
+'],
 ['math',
 'Simple math
 @math{{x^i}\over{\tan y}}
