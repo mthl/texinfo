@@ -97,7 +97,22 @@ This is iftex text.
 @ifnottex
 This is ifnottex text.
 @end ifnottex
-', { 'expanded_formats' => ['info', 'html'] }]
+', { 'expanded_formats' => ['info', 'html'] }],
+['empty_ifclear',
+'@ifclear
+
+Something
+
+@end ifclear
+'],
+['empty_ifset',
+'@ifset
+
+Something
+
+@end ifset
+'],
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

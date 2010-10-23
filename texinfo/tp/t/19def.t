@@ -378,6 +378,20 @@ deffn with @}
 ['empty_deftypeop_name',
 '@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
 @end deftypeop
+'],
+['double_command',
+'@deffn func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
+aaa
+@end deffn
+
+@deffn func aaaa args  @defvr c--ategory d--efvr_name
+bbb
+@end deffn
+'],
+['not_closed',
+'@deffn truc bidule machin
+@deffnx truc chose args
+@defvar type1 var bidule
 ']
 );
 

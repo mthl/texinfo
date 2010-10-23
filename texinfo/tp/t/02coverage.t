@@ -256,6 +256,16 @@ in quotation
 After quotation sp b a
 
 @end group
+'],
+['flushright_not_closed',
+'@flushright
+
+text flushed right
+'],
+['group_not_closed',
+'@group
+
+text in group
 ']
 );
 

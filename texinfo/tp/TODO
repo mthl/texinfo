@@ -31,6 +31,11 @@ t/25regions.t double_copying
 no warning in
 t/19def.t empty_def_arguments
 
+missing test:
+an end table without correspondiing opening part
+@end table
+
+
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
@@ -78,3 +83,7 @@ invalid/command_without_open_brace.texi
 invalid/copying_not_closed.texi
 invalid/def_bad_defx_command.texi
 invalid/def_braces_and_empty.texi
+invalid/def_cmd_dble.texi
+invalid/empty_ifclear.texi
+invalid/footnote_not_closed.texi
+invalid/formats_not_closed.texi

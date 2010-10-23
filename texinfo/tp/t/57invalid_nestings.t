@@ -148,8 +148,22 @@ in quotation}
 
 @node Top
 In node
-']
+'],
+['formats_not_closed_in_example',
+'@example
 
+@table @minus
+@item item
+table line
+
+Some text.
+@enumerate
+
+@item first item
+@item an item
+
+@end example
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
