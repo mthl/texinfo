@@ -67,6 +67,15 @@ $result_errors{'double_include'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':2: warning: @include should not appear in @include
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@include should not appear in @include',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'inc_file.texi:2: @include: Cannot find inc_file.texi In included file.
 ',
     'file_name' => 't/include//inc_file.texi',

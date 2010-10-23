@@ -16,10 +16,12 @@ Following should be an error:
 @end example
 
 test invalid, especially commands not closed/bad nesting
-test root_commands, like nodes and sections
 
-Error message if block or line misc at-command on a 
-block command or misc @-command line
+in hyphenation: only text and accent commands, and should
+only appear in toplevel
+
+dotless:
+"%c%s expects `i' or `j' as argument, not `%s'"
 
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 

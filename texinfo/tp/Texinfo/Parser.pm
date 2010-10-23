@@ -205,18 +205,30 @@ my %brace_commands;
 # accent commands. They may be called with and without braces.
 my %accent_commands;
 
-foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright','registeredsymbol','dots','enddots','equiv','error','expansion','arrow','minus','point','print','result','today','aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th','exclamdown','questiondown','pounds','ordf','ordm','comma','euro','geq','leq','tie','textdegree','quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase','quotesinglbase','guillemetleft','guillemetright','guillemotleft','guillemotright','guilsinglleft','guilsinglright','click') {
+foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright',
+  'registeredsymbol','dots','enddots','equiv','error','expansion','arrow',
+  'minus','point','print','result','today',
+  'aa','AA','ae','oe','AE','OE','o','O','ss','l','L','DH','dh','TH','th',
+  'exclamdown','questiondown','pounds','ordf','ordm','comma','euro',
+  'geq','leq','tie','textdegree','click',
+  'quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase',
+  'quotesinglbase','guillemetleft','guillemetright','guillemotleft',
+  'guillemotright','guilsinglleft','guilsinglright') {
   $brace_commands{$no_arg_command} = 0;
 }
 
 foreach my $accent_command ('"','~','^','`',"'",',','=',
                            'ringaccent','H','dotaccent','u','ubaraccent',
-                           'udotaccent','v','ogonek','tieaccent') {
+                           'udotaccent','v','ogonek','tieaccent', 'dotless') {
   $accent_commands{$accent_command} = 1;
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence','code','command','ctrl','dfn','dmn','emph','env','file','headitemfont','i','slanted','sansserif','kbd','key',,'option','r','samp','sc','strong','t','indicateurl','var','verb','titlefont','w','hyphenation','anchor','dotless') {
+foreach my $one_arg_command ('asis','b','cite','clicksequence','code',
+  'command','ctrl','dfn','dmn','emph','env','file','headitemfont',
+  'i','slanted','sansserif','kbd','key','option','r','samp','sc','strong',
+  't','var', 'w', 'verb',  'indicateurl',
+  'titlefont','hyphenation','anchor') {
   $brace_commands{$one_arg_command} = 1;
 }
 
@@ -235,7 +247,7 @@ foreach my $three_arg_command('uref','url','inforef') {
   $brace_commands{$three_arg_command} = 3;
 }
 
-foreach my $five_arg_command('xref','ref','pxref','inforef','image') {
+foreach my $five_arg_command('xref','ref','pxref','image') {
   $brace_commands{$five_arg_command} = 5;
 }
 
@@ -248,6 +260,7 @@ my %menu_commands;
 foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
   $menu_commands{$menu_command} = 1;
 };
+
 
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
@@ -500,6 +513,68 @@ foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 
+# commands that may appear in accents
+my %in_accent_commands = (%no_brace_commands, %accent_commands);
+foreach my $brace_command(keys(%brace_commands)) {
+  $in_accent_commands{$brace_command} = 1 if (!$brace_commands{$brace_command});
+}
+
+# commands that may appear in texts arguments
+my %in_full_text_commands = %no_brace_commands;
+foreach my $command (keys(%brace_commands)) {
+  $in_full_text_commands{$command} = 1;
+}
+foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
+                                       'indent', 'columnfractions') {
+  $in_full_text_commands{$misc_command_in_full_text} = 1;
+}
+delete $in_full_text_commands{'caption'};
+delete $in_full_text_commands{'shortcaption'};
+foreach my $block_command (keys(%block_commands)) {
+  $in_full_text_commands{$block_command} = 1 
+    if ($block_commands{$block_command} eq 'conditional');
+}
+
+# commands that may happen in simple text arguments
+my %in_simple_text_commands = %in_full_text_commands;
+foreach my $not_in_simple_text_command('noindent', 'indent', 
+                                       'titlefont', 'anchor', 'footnote',
+                                       'xref','ref','pxref', 'inforef') {
+  delete $in_simple_text_commands{$not_in_simple_text_command};
+}
+
+# commands that only accept simple text as argument in any context.
+# index entry commands are dynamically added.
+my %simple_text_commands;
+foreach my $misc_command(keys(%misc_commands)) {
+  if ($misc_commands{$misc_command} =~ /^\d+$/ 
+      or ($misc_commands{$misc_command} eq 'line' and !$root_commands{$misc_command})
+      or $misc_commands{$misc_command} eq 'text') {
+    $simple_text_commands{$misc_command} = 1;
+  }
+}
+delete $simple_text_commands{'center'};
+delete $simple_text_commands{'exdent'};
+foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref', 
+                     'inforef', 'shortcaption', 'math', 'indicateurl',
+                     'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
+                     'dmn', 'ctrl') {
+  $simple_text_commands{$command} = 1;
+}
+
+# commands that accept full text, but no block or top-level commands
+my %full_text_commands;
+foreach my $brace_command (keys (%brace_commands)) {  
+  if ($brace_commands{$brace_command} == 1 
+      and (!$simple_text_commands{$brace_command} 
+           and !$context_brace_commands{$brace_command})) {
+    $full_text_commands{$brace_command} = 1;
+  }
+}
+$full_text_commands{'center'} = 1;
+$full_text_commands{'exdent'} = 1;
+
+
 
 # deep copy of a structure
 sub _deep_copy ($)
@@ -557,10 +632,12 @@ sub parser(;$$)
     }
   }
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
+  $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   foreach my $name (@{$parser->{'indices'}}, @default_index_names) {
     $parser->{'misc_commands'}->{$name.'index'} = 'line';
     $parser->{'no_paragraph_commands'}->{$name.'index'} = 1;
+    $parser->{'simple_text_commands'}->{$name.'index'} = 1;
   }
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
@@ -2085,6 +2162,38 @@ sub _parse_texi($$;$)
                                      $command), $line_nr);
         }
 
+        if ($current->{'parent'}) { 
+          if ($current->{'parent'}->{'cmdname'}) {
+            if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
+              and !$in_accent_commands{$command}) {
+              _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
+                                     $command, $current->{'parent'}->{'cmdname'}),
+                           $line_nr);
+            } elsif ((!$in_simple_text_commands{$command}
+                      and ($self->{'simple_text_commands'}->{$current->{'parent'}->{'cmdname'}}
+                           # following conditions arise because we distinguish
+                           # the line arg which are restricted, and the 
+                           # contents where any command may happen.
+                           or ($current->{'type'}
+                               and $current->{'type'} eq 'block_line_arg')
+                           or ($current->{'type'} 
+                               and $current->{'type'} eq 'misc_line_arg'
+                               and $root_commands{$current->{'parent'}->{'cmdname'}})))
+                     or ($full_text_commands{$current->{'parent'}->{'cmdname'}}
+                      and !$in_full_text_commands{$command})) {
+              _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
+                                     $command, $current->{'parent'}->{'cmdname'}),
+                           $line_nr);
+            }
+          } elsif ($current->{'parent'}->{'type'}
+                    and $current->{'parent'}->{'type'} eq 'def_line'
+                    and !$in_simple_text_commands{$command}) {
+              _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
+                                     $command, $current->{'parent'}->{'parent'}->{'cmdname'}),
+                           $line_nr);
+          }
+        }
+
         if ($command eq 'end') {
           # REMACRO
           if ($line =~ s/^\s+([[:alnum:]][[:alnum:]-]*)//) {
@@ -2846,6 +2955,7 @@ sub _parse_line_command_args($$$)
         $args = [$name];
         $self->{'misc_commands'}->{$name.'index'} = 'line';
         $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
+        $self->{'simple_text_commands'}->{$name.'index'} = 1;
       }
     } else {
       _line_error ($self, sprintf($self->
