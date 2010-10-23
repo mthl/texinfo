@@ -20,6 +20,16 @@ my @test_cases = (
 @itemize @~
 @item item
 @end itemize
+'],
+['not_closed_item',
+'@itemize
+@item in item
+'],
+['not_closed_itemize',
+'@itemize
+'],
+['lone_end_itemize',
+'@end itemize
 ']
 );
 

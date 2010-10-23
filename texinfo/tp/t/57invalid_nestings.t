@@ -27,8 +27,32 @@ in ifinfo
 in item@footnote{footnote in item}
 @end table
 '],
+['on_itemize_line',
+'@itemize @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
+@item in item.
+@end itemize
+
+@itemize on line @item in item
+@end itemize
+'],
 ['on_index_entry_line',
 '@cindex @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
+'],
+['center',
+'@center @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote}
+
+@center center @cindex cindex
+
+@center @quotation
+in quotation
+@end quotation
+'],
+['accents',
+'Valid
+@~{@TeX{}}. @~{@@}.
+
+Invalid
+@~{@code{a}}.  @^{@anchor{truc}}.
 ']
 );
 

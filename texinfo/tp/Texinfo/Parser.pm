@@ -518,6 +518,8 @@ my %in_accent_commands = (%no_brace_commands, %accent_commands);
 foreach my $brace_command(keys(%brace_commands)) {
   $in_accent_commands{$brace_command} = 1 if (!$brace_commands{$brace_command});
 }
+$in_accent_commands{'c'} = 1;
+$in_accent_commands{'comment'} = 1;
 
 # commands that may appear in texts arguments
 my %in_full_text_commands = %no_brace_commands;
@@ -989,6 +991,10 @@ sub _end_block_command($$$;$)
        ($preformatted_commands{$current->{'cmdname'}} 
          or $menu_commands{$current->{'cmdname'}});
     $current = $current->{'parent'}
+  } elsif ($command) {
+    _line_error ($self, 
+                sprintf($self->__("Unmatched `%c%s'"), 
+                       ord('@'), "end $command"), $line_nr);
   }
   return $current;
 }
@@ -1414,6 +1420,7 @@ sub _parse_def ($$)
 }
 
 # close constructs and do stuff at end of line (or end of the document)
+sub _end_line($$$);
 sub _end_line($$$)
 {
   my $self = shift;
@@ -1535,6 +1542,9 @@ sub _end_line($$$)
   } elsif ($current->{'type'}
             and $current->{'type'} eq 'block_line_arg') {
     my $empty_text;
+    my $context = pop @{$self->{'context_stack'}};
+    print STDERR "BUG: $context in block_line_arg ne line\n" 
+       if ($context ne 'line');
     # @multitable args
     if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
@@ -1595,6 +1605,9 @@ sub _end_line($$$)
   # misc command line arguments
   } elsif ($current->{'type'} 
            and $current->{'type'} eq 'misc_line_arg') {
+    my $context = pop @{$self->{'context_stack'}};
+    print STDERR "BUG: $context in misc_line_arg ne line\n" 
+       if ($context ne 'line');
     $self->_isolate_last_space($current);
 
     # first parent is the @command, second is the parent
@@ -1658,6 +1671,10 @@ sub _end_line($$$)
         _line_error ($self, sprintf($self->__("\@%s only meaningful on a \@multitable line"), 
            $command), $line_nr);
       } else {
+        # This is the multitable block_line_arg line context
+        my $context = pop @{$self->{'context_stack'}};
+          print STDERR "BUG: $context in misc_line_arg ne line\n" 
+        if ($context ne 'line');
         $current = $current->{'parent'};
         $current->{'special'}->{'max_columns'} = 0;
         $current->{'special'}->{'max_columns'} = 
@@ -1686,6 +1703,34 @@ sub _end_line($$$)
       $empty_line->{'parent'} = $current->{'parent'};
       unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
     }
+  } 
+  if ($self->{'context_stack'}->[-1] eq 'line' 
+            or $self->{'context_stack'}->[-1] eq 'def') {
+    print STDERR "Still opened line command $self->{'context_stack'}->[-1]:"._print_current($current) 
+      if ($self->{'debug'});
+    if ($self->{'context_stack'}->[-1] eq 'def') {
+      while ($current->{'parent'} and !($current->{'parent'}->{'parent'}
+            and $current->{'parent'}->{'parent'}->{'type'}
+            and $current->{'parent'}->{'parent'}->{'type'} eq 'def_line')) {
+        _line_error($self, sprintf($self->__("Closing \@%s"), 
+                                  $current->{'cmdname'}), $line_nr)
+          if (exists $current->{'cmdname'});
+        $current = $current->{'parent'};
+      }
+    } else {
+      while ($current->{'parent'} and !($current->{'type'}
+             and ($current->{'type'} eq 'brace_line_arg'
+                  or $current->{'type'} eq 'misc_line_arg'))) {
+        _line_error($self, sprintf($self->__("Closing \@%s"), 
+                                  $current->{'cmdname'}), $line_nr)
+          if (exists $current->{'cmdname'});
+        $current = $current->{'parent'};
+      }
+    }
+
+    my $other_included_file = 0;
+    ($current, $other_included_file) = $self->_end_line($current, $line_nr);
+    $included_file = $included_file + $other_included_file;
   }
   return ($current, $included_file);
 }
@@ -2387,6 +2432,8 @@ sub _parse_texi($$;$)
               # be very wise...
               $current->{'remaining_args'} = 3 if ($command eq 'node');
               $current = $current->{'args'}->[-1];
+              push @{$self->{'context_stack'}}, 'line' 
+                unless ($def_commands{$command});
             }
             $line = _start_empty_line_after_command($line, $current);
           }
@@ -2476,6 +2523,8 @@ sub _parse_texi($$;$)
                 if ($block_commands{$command} =~ /^\d+$/ 
                     and $block_commands{$command} -1);
               $current = $current->{'args'}->[-1];
+              push @{$self->{'context_stack'}}, 'line' 
+                unless ($def_commands{$command});
             } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});

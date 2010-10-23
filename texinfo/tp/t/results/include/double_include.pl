@@ -9,51 +9,38 @@ $result_trees{'double_include'} = {
       'type' => 'empty_line'
     },
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => 'inc_file.texi In included file.'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
-            }
-          ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'text' => 'In included file.
+'
+        },
+        {
+          'parent' => {},
+          'text' => 'In included file.
+'
         }
       ],
-      'cmdname' => 'include',
       'parent' => {},
-      'special' => {
-        'text_arg' => 'inc_file.texi In included file.'
-      }
+      'type' => 'paragraph'
     }
   ],
   'type' => 'text_root'
 };
 $result_trees{'double_include'}{'contents'}[0]{'parent'} = $result_trees{'double_include'};
-$result_trees{'double_include'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_include'}{'contents'}[1]{'args'}[0];
-$result_trees{'double_include'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_include'}{'contents'}[1]{'args'}[0];
-$result_trees{'double_include'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_include'}{'contents'}[1]{'args'}[0];
-$result_trees{'double_include'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_include'}{'contents'}[1];
+$result_trees{'double_include'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_include'}{'contents'}[1];
+$result_trees{'double_include'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_include'}{'contents'}[1];
 $result_trees{'double_include'}{'contents'}[1]{'parent'} = $result_trees{'double_include'};
 
 $result_texis{'double_include'} = '
-@include inc_file.texi In included file.
+In included file.
+In included file.
 ';
 
 
 $result_texts{'double_include'} = '
+In included file.
+In included file.
 ';
 
 $result_errors{'double_include'} = [
@@ -74,15 +61,6 @@ $result_errors{'double_include'} = [
     'macro' => '',
     'text' => '@include should not appear in @include',
     'type' => 'warning'
-  },
-  {
-    'error_line' => 'inc_file.texi:2: @include: Cannot find inc_file.texi In included file.
-',
-    'file_name' => 't/include//inc_file.texi',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@include: Cannot find inc_file.texi In included file.',
-    'type' => 'error'
   }
 ];
 
