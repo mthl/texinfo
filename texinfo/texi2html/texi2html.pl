@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.428 2010-09-25 14:34:32 pertusus Exp $
+# $Id: texi2html.pl,v 1.429 2010-10-24 17:51:44 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -2063,17 +2063,17 @@ my $I = \&Texi2HTML::I18n::get_string;
 
 %index_names =
 (
- 'cp' => { 'prefixes' => {'cp' => 0,'c' => 0}},
- 'fn' => { 'prefixes' => {'fn' => 1, 'f' => 1}},
- 'vr' => { 'prefixes' => {'vr' => 1, 'v' => 1}},
- 'ky' => { 'prefixes' => {'ky' => 1, 'k' => 1}},
- 'pg' => { 'prefixes' => {'pg' => 1, 'p' => 1}},
- 'tp' => { 'prefixes' => {'tp' => 1, 't' => 1}}
+ 'cp' => {'cp' => 0,'c' => 0},
+ 'fn' => {'fn' => 1, 'f' => 1},
+ 'vr' => {'vr' => 1, 'v' => 1},
+ 'ky' => {'ky' => 1, 'k' => 1},
+ 'pg' => {'pg' => 1, 'p' => 1},
+ 'tp' => {'tp' => 1, 't' => 1}
 );
 
 foreach my $name(keys(%index_names))
 {
-    foreach my $prefix (keys %{$index_names{$name}->{'prefixes'}})
+    foreach my $prefix (keys %{$index_names{$name}})
     {
         $forbidden_index_name{$prefix} = 1;
         $index_prefix_to_name{$prefix} = $name;
@@ -6150,9 +6150,9 @@ sub misc_command_structure($$$$)
                 }
                 if ($current_to ne $index_from)
                 {
-                    foreach my $prefix (keys(%{$index_names{$index_from}->{'prefixes'}}))
+                    foreach my $prefix (keys(%{$index_names{$index_from}}))
                     {
-                        $index_names{$current_to}->{'prefixes'}->{$prefix} = $in_code;
+                        $index_names{$current_to}->{$prefix} = $in_code;
                         $index_prefix_to_name{$prefix} = $current_to;
                     }
                     $Texi2HTML::THISDOC{'merged_index'}->{$index_from} = $current_to;
@@ -6183,7 +6183,7 @@ sub misc_command_structure($$$$)
                 #{
                 #    line_error(sprintf(__("Index `%s' already exists"),$name), $line_nr);
                 #}
-                $index_names{$name}->{'prefixes'}->{$name} = $in_code;
+                $index_names{$name}->{$name} = $in_code;
                 $index_prefix_to_name{$name} = $name;
                 push @{$Texi2HTML::THISDOC{$command}}, $name;
             }
@@ -8503,8 +8503,8 @@ sub enter_index_entry($$$$$)
     
     $index_entry->{'in_code'} = 1
        if (defined($index_name) and 
-        defined($index_names{$index_name}->{'prefixes'}) and 
-        $index_names{$index_name}->{'prefixes'}->{$prefix} 
+        defined($index_names{$index_name}) and 
+        $index_names{$index_name}->{$prefix} 
         and $no_texi =~ /\S/);
     $index_entry->{'entry'} = '@code{'.$index_entry->{'entry'}.'}' 
         if ($index_entry->{'in_code'});
@@ -16681,8 +16681,8 @@ sub do_index_entry_label($$$$;$)
         $entry->{'key'} = sorted_line($entry_texi);
         $entry->{'entry'} = '@code{'.$entry->{'entry'}.'}'
             if (defined($index_name) and
-             defined($index_names{$index_name}->{'prefixes'}) and
-             $index_names{$index_name}->{'prefixes'}->{$prefix}
+             defined($index_names{$index_name}) and
+             $index_names{$index_name}->{$prefix}
              and $entry->{'key'} =~ /\S/);
     }
 

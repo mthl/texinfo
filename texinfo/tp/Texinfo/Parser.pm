@@ -79,7 +79,8 @@ my %default_configuration = (
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
   'clickstyle' => 'arrow',
-  'sections_level' => 0
+  'sections_level' => 0,
+  'merged_indices' => {}
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -411,21 +412,21 @@ my %deprecated_commands = (
 );
 
 my %forbidden_index_name = ();
-my @default_index_names;
+my @default_index_prefixes;
 
 my %index_names = (
- 'cp' => { 'prefixes' => {'cp' => 0,'c' => 0}},
- 'fn' => { 'prefixes' => {'fn' => 1, 'f' => 1}},
- 'vr' => { 'prefixes' => {'vr' => 1, 'v' => 1}},
- 'ky' => { 'prefixes' => {'ky' => 1, 'k' => 1}},
- 'pg' => { 'prefixes' => {'pg' => 1, 'p' => 1}},
- 'tp' => { 'prefixes' => {'tp' => 1, 't' => 1}}
+ 'cp' => {'cp' => 0,'c' => 0},
+ 'fn' => {'fn' => 1, 'f' => 1},
+ 'vr' => {'vr' => 1, 'v' => 1},
+ 'ky' => {'ky' => 1, 'k' => 1},
+ 'pg' => {'pg' => 1, 'p' => 1},
+ 'tp' => {'tp' => 1, 't' => 1}
 );
 
 foreach my $name(keys(%index_names)) {
-  foreach my $prefix (keys %{$index_names{$name}->{'prefixes'}}) {
+  foreach my $prefix (keys %{$index_names{$name}}) {
     $forbidden_index_name{$prefix} = 1;
-    push @default_index_names, $prefix;
+    push @default_index_prefixes, $prefix;
   }
 }
 
@@ -679,7 +680,7 @@ sub parser(;$$)
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
   $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
-  foreach my $name (@{$parser->{'indices'}}, @default_index_names) {
+  foreach my $name (@{$parser->{'indices'}}, @default_index_prefixes) {
     $parser->{'misc_commands'}->{$name.'index'} = 'line';
     $parser->{'no_paragraph_commands'}->{$name.'index'} = 1;
     $parser->{'simple_text_commands'}->{$name.'index'} = 1;

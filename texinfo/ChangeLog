@@ -1,3 +1,8 @@
+2010-10-24  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.pl (%index_names): remove the 'prefixes' key, 
+	it isn't useful.
+
 2010-10-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Custom Interface for Simple HTML Customization):

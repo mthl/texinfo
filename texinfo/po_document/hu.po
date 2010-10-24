@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-09-15 21:12+0200\n"
+"POT-Creation-Date: 2010-10-24 18:43+0200\n"
 "PO-Revision-Date: 2009-12-27 22:02+0100\n"
 "Last-Translator: Harmath Dénes <harmathdenes@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6273 texi2html/texi2html.pl:6277
-#: texi2html/texi2html.pl:6281
+#: texi2html/texi2html.pl:6272 texi2html/texi2html.pl:6276
+#: texi2html/texi2html.pl:6280
 msgid "About This Document"
 msgstr "A navigációs panel használata"
 
-#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:6278
-#: texi2html/texi2html.pl:6282 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6273 texi2html/texi2html.pl:6277
+#: texi2html/texi2html.pl:6281 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6275 texi2html/texi2html.pl:6279
-#: texi2html/texi2html.pl:6283
+#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:6278
+#: texi2html/texi2html.pl:6282
 msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
-#: texi2html/texi2html.pl:6276 texi2html/texi2html.pl:6280
-#: texi2html/texi2html.pl:6284 texi2html/texi2html.init:6745
+#: texi2html/texi2html.pl:6275 texi2html/texi2html.pl:6279
+#: texi2html/texi2html.pl:6283 texi2html/texi2html.init:6745
 #: texi2html/formats/html.init:2416
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
-#: texi2html/texi2html.pl:13004
+#: texi2html/texi2html.pl:13007
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr "@{Nincs értéke ennek: `{value}'@}"
@@ -410,7 +410,7 @@ msgstr "{acronym_like} ({explanation})"
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
 
-#: texi2html/texi2html.init:7153
+#: texi2html/texi2html.init:7155
 msgid "(outside of any element)"
 msgstr "(bármelyik elemen kívül)"
 
@@ -622,7 +622,7 @@ msgstr "Szakasz"
 msgid "Jump to"
 msgstr "Ugorj ide"
 
-#: texi2html/formats/info.init:3125
+#: texi2html/formats/info.init:3127
 msgid "(outside of any node)"
 msgstr "(bármelyik csomóponton kívül)"
 
