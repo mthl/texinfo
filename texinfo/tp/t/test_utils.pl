@@ -69,6 +69,9 @@ sub test($$)
   # take the initial values to record only if there is something new
   my ($initial_index_names, $initial_merged_indices) 
     = $parser->indices_information();
+  # do a copy to compare the values and not the references
+  $initial_index_names = { %{$initial_index_names} };
+  $initial_merged_indices = { %{$initial_merged_indices} };
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result;
   if (ref($test_case) eq 'ARRAY') {

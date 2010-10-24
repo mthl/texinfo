@@ -1610,7 +1610,61 @@ fn
 $result_errors{'value_in_index_commands'} = [];
 
 
-$result_indices{'value_in_index_commands'} = undef;
+$result_indices{'value_in_index_commands'} = {
+  'index_names' => {
+    'abc' => {
+      'abc' => 0
+    },
+    'codeidx' => {
+      'codeidx' => 1
+    },
+    'cp' => {
+      'c' => 0,
+      'cp' => 0
+    },
+    'defg' => {
+      'abc' => 0,
+      'defg' => 0
+    },
+    'fn' => {
+      'c' => 1,
+      'cp' => 1,
+      'f' => 1,
+      'fn' => 1,
+      'truc' => 0
+    },
+    'ky' => {
+      'k' => 1,
+      'ky' => 1
+    },
+    'pg' => {
+      'abc' => 0,
+      'defg' => 0,
+      'k' => 1,
+      'ky' => 1,
+      'p' => 1,
+      'pg' => 1
+    },
+    'tp' => {
+      't' => 1,
+      'tp' => 1
+    },
+    'truc' => {
+      'truc' => 0
+    },
+    'vr' => {
+      'v' => 1,
+      'vr' => 1
+    }
+  },
+  'merged_indices' => {
+    'abc' => 'defg',
+    'cp' => 'fn',
+    'defg' => 'pg',
+    'ky' => 'pg',
+    'truc' => 'fn'
+  }
+};
 
 
 1;

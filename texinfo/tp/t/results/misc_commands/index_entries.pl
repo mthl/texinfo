@@ -136,7 +136,37 @@ $result_texts{'index_entries'} = '
 $result_errors{'index_entries'} = [];
 
 
-$result_indices{'index_entries'} = undef;
+$result_indices{'index_entries'} = {
+  'index_names' => {
+    'cp' => {
+      'c' => 0,
+      'cp' => 0
+    },
+    'fn' => {
+      'f' => 1,
+      'fn' => 1
+    },
+    'ky' => {
+      'k' => 1,
+      'ky' => 1
+    },
+    'pg' => {
+      'p' => 1,
+      'pg' => 1
+    },
+    'tp' => {
+      't' => 1,
+      'tp' => 1
+    },
+    'truc' => {
+      'truc' => 0
+    },
+    'vr' => {
+      'v' => 1,
+      'vr' => 1
+    }
+  }
+};
 
 
 1;
