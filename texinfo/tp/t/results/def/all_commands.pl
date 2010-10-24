@@ -1111,13 +1111,7 @@ $result_trees{'all_commands'} = {
               [
                 'category',
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'Function'
-                    }
-                  ],
-                  'type' => 'bracketed'
+                  'text' => 'Function'
                 }
               ],
               [
@@ -1805,7 +1799,6 @@ $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'args'}[0]{'content
 $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0];
 $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[36];
-$result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'special'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[36]{'contents'}[0]{'special'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[36]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[36]{'contents'}[1];
 $result_trees{'all_commands'}{'contents'}[36]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[36];
 $result_trees{'all_commands'}{'contents'}[36]{'parent'} = $result_trees{'all_commands'};

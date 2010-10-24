@@ -307,7 +307,7 @@ my %def_map = (
     'defspec', {'deffn' => '{Special Form}'},
     'defvar', {'defvr' => 'Variable'},
     'defopt', {'defvr' => '{User Option}'},
-    'deftypefun', {'deftypefn' => '{Function}'},
+    'deftypefun', {'deftypefn' => 'Function'},
     'deftypevar', {'deftypevr' => 'Variable'},
     'defivar', {'defcv' => '{Instance Variable}'},
     'deftypeivar', {'deftypecv' => '{Instance Variable}'},
@@ -323,6 +323,7 @@ foreach my $def_command(keys %def_map) {
   $misc_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
+
   # prepare what will be prepended when the def command is an alias
   if (ref($def_map{$def_command}) eq 'HASH') {
     my ($real_command) = keys (%{$def_map{$def_command}});
@@ -1037,9 +1038,6 @@ sub _end_block_command($$$;$)
       # silently close containers and @-commands without brace nor @end
       $current = $current->{'parent'};
     }
-
-    # FIXME could there still be a paragraph to close?
-    #$current = _end_paragraph($self, $current, $line_nr);
   }
 
   if ($command and $current->{'cmdname'} 
@@ -2583,7 +2581,7 @@ sub _parse_texi($$;$)
                                       'contents' => [], 
                                       'parent' => $current } ];
               # @node is the only misc command with args separated with comma
-              # FIXME a 4 lingering here deep into the code may not
+              # FIXME a 3 lingering here deep into the code may not
               # be very wise...
               $current->{'remaining_args'} = 3 if ($command eq 'node');
               $current = $current->{'args'}->[-1];
