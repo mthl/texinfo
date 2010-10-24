@@ -912,8 +912,12 @@ sub _close_brace_command($$$)
   # line number if available. FIXME. not implemented
   $located_line_nr = $current->{'line_nr'}
     if ($current->{'line_nr'});
-  _line_error ($self, sprintf($self->__("%c%s missing close brace"),
-               ord('@'), $current->{'cmdname'}), $located_line_nr);
+  if ($current->{'cmdname'} ne 'verb' or $current->{'type'} eq '') {
+    _line_error ($self, sprintf($self->__("%c%s missing close brace"),
+                 ord('@'), $current->{'cmdname'}), $located_line_nr);
+  } else {
+    _line_error ($self, sprintf($self->__("\@%s missing closing delimiter sequence: %s}"), $current->{'cmdname'}, $current->{'type'}), $located_line_nr);
+  }
   $current = $current->{'parent'};
   return $current;
 }

@@ -258,7 +258,17 @@ In copying.
 @end copying
 
 @insertcopying
-']
+'],
+['unclosed_verb_on_misc_line',
+'@setfilename name @verb{file.texi'],
+['unclosed_verb_on_section_line',
+'@section in section @verb{Truc
+
+Now text.
+'],
+['unclosed_verb_end_of_line_on_misc_line',
+'@setfilename name @verb{
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

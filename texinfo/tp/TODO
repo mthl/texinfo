@@ -106,4 +106,8 @@ invalid/style_not_closed_in_table_line.texi
 invalid/tab_in_index.texi                  (but not the printindex)
 invalid/tex_not_closed.texi
 invalid/titlepage_not_closed.texi
-
+invalid/unclosed_verb_line_commands.texi   (but the result is different since
+                                            ignored until end of file).
+invalid/verb_and_char_end_of_line.texi
+invalid/verb_end_of_line.texi
+invalid/verb_not_closed.texi
