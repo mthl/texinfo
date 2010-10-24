@@ -53,7 +53,20 @@ Second paragraph.
 '],
 ['math_not_closed','@math{\delta + 2'],
 ['math_bracketed_not_closed','@math{{x^i}\over{\tan '],
-['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}']
+['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}'],
+['unknown_command_with_braces',
+'Unknown thing @thing{}
+
+Unknown macro @unknown{ first paragraph
+
+second paragraph}
+
+@unknown2{ first paragraph
+
+second paragraph
+
+third}
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

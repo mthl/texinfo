@@ -15,8 +15,6 @@ Following should be an error:
 @heading A heading
 @end example
 
-test invalid, especially commands not closed/bad nesting
-
 test empty line in block or brace command in menu description.
 
 in t/57invalid_nestings.t in_table, no warning for bad stuff on @item line.
@@ -64,6 +62,14 @@ from test_paths.texi:
 @@verbatiminclude dot.
 @verbatiminclude ./formatting/simplest.texi
 
+tests in test/invalid, not incorporated
+author_outside_titlepage_quotation.texi
+bad_documentencoding.texi
+direntry_dircategory_after_first_node.texi
+double_top_section.texi
+error_in_footnote_caption.texi
+tex_in_copying.texi               (this is not invalid)
+
 done:
 formatting/def_end_of_line.texi
 formatting/def_end_of_line_footnote.texi
@@ -100,7 +106,7 @@ invalid/multitable_too_much_col.texi
 invalid/node_in_copying.texi
 invalid/node_too_much_arguments.texi
 invalid/not_closed_in_menu.texi
-invalid/recursive_copying.texi
+invalid/recursive_copying.texi             (but not the expansion)
 invalid/style_not_closed_in_cartouche.texi
 invalid/style_not_closed_in_table_line.texi
 invalid/tab_in_index.texi                  (but not the printindex)
@@ -108,6 +114,8 @@ invalid/tex_not_closed.texi
 invalid/titlepage_not_closed.texi
 invalid/unclosed_verb_line_commands.texi   (but the result is different since
                                             ignored until end of file).
+invalid/unknown_command_with_braces.texi
 invalid/verb_and_char_end_of_line.texi
 invalid/verb_end_of_line.texi
 invalid/verb_not_closed.texi
+invalid/verbatim_not_closed.texi

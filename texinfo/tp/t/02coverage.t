@@ -266,6 +266,10 @@ text flushed right
 '@group
 
 text in group
+'],
+['unknown_commands',
+'@unknwon
+@#
 ']
 );
 

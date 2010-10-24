@@ -67,6 +67,14 @@ This is some html
 '@tex
 
 This is some \LaTeX{}
+'],
+['verbatim_not_closed',
+'@verbatim
+
+some verbatim @
+
+@macro
+
 ']
 );
 
