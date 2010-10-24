@@ -412,7 +412,6 @@ my %deprecated_commands = (
 );
 
 my %forbidden_index_name = ();
-my @default_index_prefixes;
 
 my %index_names = (
  'cp' => {'cp' => 0,'c' => 0},
@@ -426,7 +425,6 @@ my %index_names = (
 foreach my $name(keys(%index_names)) {
   foreach my $prefix (keys %{$index_names{$name}}) {
     $forbidden_index_name{$prefix} = 1;
-    push @default_index_prefixes, $prefix;
   }
 }
 
@@ -631,6 +629,17 @@ sub _deep_copy ($)
   return $struct;
 }
 
+sub _enter_index_commands ($$)
+{
+  my $self = shift;
+  my $index_name = shift;
+  foreach my $prefix (keys (%{$self->{'index_names'}->{$index_name}})) {
+    $self->{'misc_commands'}->{$prefix.'index'} = 'line';
+    $self->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
+    $self->{'simple_text_commands'}->{$prefix.'index'} = 1;
+  }
+}
+
 # initialize a parser
 sub parser(;$$)
 {
@@ -680,10 +689,17 @@ sub parser(;$$)
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
   $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
-  foreach my $name (@{$parser->{'indices'}}, @default_index_prefixes) {
-    $parser->{'misc_commands'}->{$name.'index'} = 'line';
-    $parser->{'no_paragraph_commands'}->{$name.'index'} = 1;
-    $parser->{'simple_text_commands'}->{$name.'index'} = 1;
+  $parser->{'index_names'} = _deep_copy (\%index_names);
+  if (ref($parser->{'indices'}) eq 'HASH') {
+    %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
+                                   %{$parser->{'indices'}});
+  } else {
+    foreach my $name (@{$parser->{'indices'}}) {
+      $parser->{'index_names'}->{$name} = {$name => 0};
+    }
+  }
+  foreach my $index (keys (%{$parser->{'index_names'}})) {
+    $parser->_enter_index_commands($index);
   }
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
@@ -3052,10 +3068,11 @@ sub _parse_line_command_args($$$)
         _line_error($self, sprintf($self->
                                 __("Reserved index name %s"),$name), $line_nr);
       } else {
+        my $in_code = 0;
+        $in_code = 1 if ($command eq 'defcodeindex');
         $args = [$name];
-        $self->{'misc_commands'}->{$name.'index'} = 'line';
-        $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
-        $self->{'simple_text_commands'}->{$name.'index'} = 1;
+        $self->{'index_names'}->{$name} = {$name => $in_code};
+        $self->_enter_index_commands($name);
       }
     } else {
       _line_error ($self, sprintf($self->
@@ -3067,12 +3084,26 @@ sub _parse_line_command_args($$$)
       my $index_from = $1;
       my $index_to = $2;
       _line_error ($self, sprintf($self->__("Unknown from index `%s' in \@%s"), $index_from, $command), $line_nr)
-        unless $self->{'misc_commands'}->{$index_from.'index'};
+        unless $self->{'index_names'}->{$index_from};
       _line_error ($self, sprintf($self->__("Unknown to index name `%s' in \@%s"), $index_to, $command), $line_nr)
-        unless $self->{'misc_commands'}->{$index_to.'index'};
-      if ($self->{'misc_commands'}->{$index_from.'index'} 
-           and $self->{'misc_commands'}->{$index_to.'index'}) {
+        unless $self->{'index_names'}->{$index_to};
+      if ($self->{'index_names'}->{$index_from} 
+           and $self->{'index_names'}->{$index_to}) {
         $args = [$index_from, $index_to];
+        my $current_to = $index_to;
+        # find the merged indices recursively avoiding loops
+        while ($current_to ne $index_from 
+               and $self->{'merged_indices'}->{$current_to}) {
+          $current_to = $self->{'merged_indices'}->{$current_to};
+        }
+        if ($current_to ne $index_from) {
+          my $in_code = 0;
+          $in_code = 1 if ($command eq 'syncodeindex');
+          $self->{'merged_indices'}->{$index_from} = $current_to;
+          foreach my $prefix (keys(%{$self->{'index_names'}->{$index_from}})) {
+            $self->{'index_names'}->{$current_to}->{$prefix} = $in_code;
+          }
+        }
       }
     } else {
       _line_error ($self, sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
