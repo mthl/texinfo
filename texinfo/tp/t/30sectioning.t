@@ -22,6 +22,44 @@ my @test_cases = (
 '@node Commands, Requirements, Nodes and Menus
 
 A comma in text, end.
+'],
+['raiselowersections',
+'\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top
+@menu
+* Chapter::
+* Second chapter::
+@end menu
+
+@node Chapter
+@chapter Chapter
+
+@menu
+@ifclear include
+* Chapter in included file::
+@end ifclear
+@end menu
+
+@set do-top
+
+@lowersections
+
+@ifclear include
+@include section_file.texi
+@end ifclear
+@raisesections
+
+@clear do-top
+
+@node Second chapter
+@chapter Second chapter
+
+Second chapter
+
+@contents
+@bye
 ']
 
 );

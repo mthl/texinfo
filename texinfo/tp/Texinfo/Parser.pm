@@ -76,7 +76,8 @@ my %default_configuration = (
   'macros' => {},
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
-  'clickstyle' => 'arrow'
+  'clickstyle' => 'arrow',
+  'sections_level' => 0
 );
 
 my %no_brace_commands;             # commands never taking braces
@@ -2386,6 +2387,11 @@ sub _parse_texi($$;$)
             my $included_file;
             ($current, $included_file) = 
               _end_line ($self, $current, $line_nr);
+            if ($command eq 'raisesections') {
+              $self->{'sections_level'}++;
+            } elsif ($command eq 'lowersections') {
+              $self->{'sections_level'}--;
+            }
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
@@ -2460,6 +2466,11 @@ sub _parse_texi($$;$)
 
               push @{$current->{'contents'}}, 
                 { 'cmdname' => $command, 'parent' => $current };
+              if ($self->{'sections_level'} and $root_commands{$command}
+                   and $command ne 'node') {
+                $current->{'contents'}->[-1]->{'special'}->{'sections_level'}
+                  = $self->{'sections_level'};
+              }
               # def*x
               if ($def_commands{$command}) {
                 my $base_command = $command;
