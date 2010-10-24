@@ -874,7 +874,7 @@ sub _line_error($$$)
   $parser->{'error_nrs'}++;
 }
 
-# parse a macro line
+# parse a @macro line
 sub _parse_macro_command($$$$$;$)
 {
   my $self = shift;
@@ -942,7 +942,7 @@ sub _begin_paragraph ($$)
 }
 
 # currently doesn't do much more than
-# return $_[0]->{'parent'}->{'parent'}
+# return $_[1]->{'parent'}
 sub _close_brace_command($$$)
 {
   my $self = shift;
@@ -984,7 +984,7 @@ sub _end_paragraph ($$$)
   return $current;
 }
 
-# a command arg means closing until that command is found
+# a command arg means closing until that command is found.
 # no command arg means closing until the root or a root_command
 # is found.
 sub _end_block_command($$$;$)
@@ -1150,6 +1150,8 @@ sub _item_multitable_parent($)
   return undef;
 }
 
+# returns next text fragment, be it pending from a macro expansion or 
+# text or file
 sub _next_text($$)
 {
   my $self = shift;
@@ -1344,6 +1346,7 @@ sub _abort_empty_line($$;$)
   return 0;
 }
 
+# isolate last space in a command to help expansion disregard unuseful spaces.
 sub _isolate_last_space($$)
 {
   my $self = shift;
@@ -1374,6 +1377,7 @@ sub _isolate_last_space($$)
   }
 }
 
+# used for definition line parsing
 sub _next_bracketed_or_word($)
 {
   my $contents = shift;
@@ -1404,6 +1408,7 @@ sub _next_bracketed_or_word($)
   }
 }
 
+# definition line parsing
 sub _parse_def ($$)
 {
   my $command = shift;
@@ -1476,6 +1481,7 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
+# close the current command, with error pessages and give the parent.
 sub _close_current($$$)
 {
   my $self = shift;
@@ -1820,7 +1826,10 @@ sub _end_line($$$)
       $empty_line->{'parent'} = $current->{'parent'};
       unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
     }
-  } 
+  }
+
+  # this happens if there is a nesting of line @-commands on a line.
+  # they are reprocessed here.
   if ($self->{'context_stack'}->[-1] eq 'line' 
             or $self->{'context_stack'}->[-1] eq 'def') {
     print STDERR "Still opened line command $self->{'context_stack'}->[-1]:"._print_current($current) 
@@ -1837,6 +1846,8 @@ sub _end_line($$$)
         $current = $self->_close_current($current, $line_nr);
       }
     }
+
+    # check for infinite loop bugs...
     if ($current eq $current_old) {
       my $indent = '- ';
       print STDERR "$indent"._print_current($current);
@@ -2327,6 +2338,8 @@ sub _parse_texi($$;$)
                                      $command), $line_nr);
         }
 
+        # error messages for forbidden constructs, like @node in @r, 
+        # block command on line command, @xref in @anchor or node...
         if ($current->{'parent'}) { 
           if ($current->{'parent'}->{'cmdname'}) {
             if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
@@ -2870,109 +2883,6 @@ sub _parse_texi($$;$)
   return $root;
 }
 
-# expand a tree to the corresponding texinfo.
-sub tree_to_texi ($)
-{
-  my $root = shift;
-  die "tree_to_texi: root undef\n" if (!defined($root));
-  die "tree_to_texi: bad root type (".ref($root).") $root\n" 
-     if (ref($root) ne 'HASH');
-  my $result = '';
-  #print STDERR "$root ";
-  #print STDERR "$root->{'type'}" if (defined($root->{'type'}));
-  #print STDERR "\n";
-  if (defined($root->{'text'})) {
-    $result .= $root->{'text'};
-  } else {
-    if ($root->{'cmdname'} 
-       or ($root->{'type'} and ($root->{'type'} eq 'def_line'
-                                or $root->{'type'} eq 'menu_entry'
-                                or $root->{'type'} eq 'menu_comment'))) {
-      #print STDERR "cmd: $root->{'cmdname'}\n";
-      $result .= _expand_cmd_args_to_texi($root);
-    }
-    $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
-    if (defined($root->{'contents'})) {
-      die "bad contents type(" . ref($root->{'contents'})
-          . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
-      foreach my $child (@{$root->{'contents'}}) {
-        $result .= tree_to_texi($child);
-      }
-    }
-    $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
-      $result .= '@end '.$root->{'cmdname'};
-    }
-  }
-  #print STDERR "tree_to_texi result: $result\n";
-  return $result;
-}
-
-# expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi ($) {
-  my $cmd = shift;
-  my $cmdname = $cmd->{'cmdname'};
-  $cmdname = '' if (!$cmd->{'cmdname'}); 
-  my $result = '';
-  $result = '@'.$cmdname if ($cmdname);
-  #print STDERR "Expand $result\n";
-  # must be before the next condition
-  if ($block_commands{$cmdname}
-         and ($def_commands{$cmdname}
-              or $block_commands{$cmdname} eq 'multitable')
-         and $cmd->{'args'}) {
-     foreach my $arg (@{$cmd->{'args'}}) {
-        my $arg_expanded = tree_to_texi ($arg);
-        $result .= $arg_expanded;
-    }
-  } elsif (($cmd->{'special'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
-           and defined($cmd->{'special'}->{'arg_line'})) {
-    $result .= $cmd->{'special'}->{'arg_line'};
-  } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
-            and defined($cmd->{'args'})) {
-    die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
-      if (ref($cmd->{'args'}) ne 'ARRAY');
-    foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= tree_to_texi ($arg) . ',';
-    }
-    $result =~ s/,$//;
-  } elsif (defined($cmd->{'args'})) {
-    my $braces;
-    $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
-                    and $cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                    or ($context_brace_commands{$cmdname}));
-    $result .= '{' if ($braces);
-    if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
-    }
-    if ($cmd->{'special'} and exists ($cmd->{'special'}->{'spaces'})) {
-       $result .= $cmd->{'special'}->{'spaces'};
-    }
-    #print STDERR "".Data::Dumper->Dump([$cmd]);
-    my $arg_nr = 0;
-    foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
-                    and $cmd->{'type'} eq 'definfoenclose_command')) {
-        $result .= ',' if ($arg_nr);
-        $arg_nr++;
-      }
-      $result .= tree_to_texi ($arg);
-    }
-    if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
-    }
-    #die "Shouldn't have args: $cmdname\n";
-    $result .= '}' if ($braces);
-  }
-  if ($misc_commands{$cmdname}
-      and $misc_commands{$cmdname} eq 'skipline') {
-    $result .="\n";
-  }
-  $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-  #print STDERR "Result: $result\n";
-  return $result;
-}
 
 # parse special line @-commands, unmacro, set, clear, clickstyle.
 # Also remove spaces or ignore text, as specified in the misc_commands hash.
@@ -3269,6 +3179,111 @@ sub _parse_line_command_args($$$)
     }
   }
   return $args;
+}
+
+# expand a tree to the corresponding texinfo.
+sub tree_to_texi ($)
+{
+  my $root = shift;
+  die "tree_to_texi: root undef\n" if (!defined($root));
+  die "tree_to_texi: bad root type (".ref($root).") $root\n" 
+     if (ref($root) ne 'HASH');
+  my $result = '';
+  #print STDERR "$root ";
+  #print STDERR "$root->{'type'}" if (defined($root->{'type'}));
+  #print STDERR "\n";
+  if (defined($root->{'text'})) {
+    $result .= $root->{'text'};
+  } else {
+    if ($root->{'cmdname'} 
+       or ($root->{'type'} and ($root->{'type'} eq 'def_line'
+                                or $root->{'type'} eq 'menu_entry'
+                                or $root->{'type'} eq 'menu_comment'))) {
+      #print STDERR "cmd: $root->{'cmdname'}\n";
+      $result .= _expand_cmd_args_to_texi($root);
+    }
+    $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
+    #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
+    if (defined($root->{'contents'})) {
+      die "bad contents type(" . ref($root->{'contents'})
+          . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
+      foreach my $child (@{$root->{'contents'}}) {
+        $result .= tree_to_texi($child);
+      }
+    }
+    $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
+    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
+      $result .= '@end '.$root->{'cmdname'};
+    }
+  }
+  #print STDERR "tree_to_texi result: $result\n";
+  return $result;
+}
+
+
+# expand a command argument as texinfo.
+sub _expand_cmd_args_to_texi ($) {
+  my $cmd = shift;
+  my $cmdname = $cmd->{'cmdname'};
+  $cmdname = '' if (!$cmd->{'cmdname'}); 
+  my $result = '';
+  $result = '@'.$cmdname if ($cmdname);
+  #print STDERR "Expand $result\n";
+  # must be before the next condition
+  if ($block_commands{$cmdname}
+         and ($def_commands{$cmdname}
+              or $block_commands{$cmdname} eq 'multitable')
+         and $cmd->{'args'}) {
+     foreach my $arg (@{$cmd->{'args'}}) {
+        my $arg_expanded = tree_to_texi ($arg);
+        $result .= $arg_expanded;
+    }
+  } elsif (($cmd->{'special'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
+           and defined($cmd->{'special'}->{'arg_line'})) {
+    $result .= $cmd->{'special'}->{'arg_line'};
+  } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
+            and defined($cmd->{'args'})) {
+    die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
+      if (ref($cmd->{'args'}) ne 'ARRAY');
+    foreach my $arg (@{$cmd->{'args'}}) {
+       $result .= tree_to_texi ($arg) . ',';
+    }
+    $result =~ s/,$//;
+  } elsif (defined($cmd->{'args'})) {
+    my $braces;
+    $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
+                    and $cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg')
+                    or ($context_brace_commands{$cmdname}));
+    $result .= '{' if ($braces);
+    if ($cmdname eq 'verb') {
+      $result .= $cmd->{'type'};
+    }
+    if ($cmd->{'special'} and exists ($cmd->{'special'}->{'spaces'})) {
+       $result .= $cmd->{'special'}->{'spaces'};
+    }
+    #print STDERR "".Data::Dumper->Dump([$cmd]);
+    my $arg_nr = 0;
+    foreach my $arg (@{$cmd->{'args'}}) {
+      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
+                    and $cmd->{'type'} eq 'definfoenclose_command')) {
+        $result .= ',' if ($arg_nr);
+        $arg_nr++;
+      }
+      $result .= tree_to_texi ($arg);
+    }
+    if ($cmdname eq 'verb') {
+      $result .= $cmd->{'type'};
+    }
+    #die "Shouldn't have args: $cmdname\n";
+    $result .= '}' if ($braces);
+  }
+  if ($misc_commands{$cmdname}
+      and $misc_commands{$cmdname} eq 'skipline') {
+    $result .="\n";
+  }
+  $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
+  #print STDERR "Result: $result\n";
+  return $result;
 }
 
 1;
