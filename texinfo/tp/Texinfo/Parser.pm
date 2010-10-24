@@ -25,6 +25,8 @@ use 5.00405;
 use Data::Dumper;
 # to expand file names in @include
 use Texinfo::Convert::Text;
+# to detect if an encoding may be used to open the files
+use Encode;
 use strict;
 
 require Exporter;
@@ -576,6 +578,45 @@ foreach my $brace_command (keys (%brace_commands)) {
 }
 $full_text_commands{'center'} = 1;
 $full_text_commands{'exdent'} = 1;
+
+my %canonical_texinfo_encodings;
+# These are the encodings from the texinfo manual
+foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
+  'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u') {
+  $canonical_texinfo_encodings{$canonical_encoding} = 1;
+}
+
+
+my %perl_charset_to_html = (
+              'utf8'       => 'utf-8',
+              'utf-8-strict'       => 'utf-8',
+              'ascii'      => 'us-ascii',
+              'shiftjis'      => 'shift_jis',
+);
+
+# encoding name normalization to html-compatible encoding names
+my %encoding_aliases = (
+              'latin1' => 'iso-8859-1',
+);
+
+foreach my $perl_charset (keys(%perl_charset_to_html)) {
+   $encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
+   $encoding_aliases{$perl_charset_to_html{$perl_charset}} 
+        = $perl_charset_to_html{$perl_charset};
+}
+my %makeinfo_encoding_to_map = (
+  "iso-8859-1",  'iso8859_1', 
+  "iso-8859-2",  'iso8859_2',
+  "iso-8859-15", 'iso8859_15',
+  "koi8-r",      'koi8',
+  "koi8-u",      'koi8',
+);  
+    
+foreach my $encoding (keys(%makeinfo_encoding_to_map)) {        
+  $encoding_aliases{$encoding} = $encoding;
+  $encoding_aliases{$makeinfo_encoding_to_map{$encoding}} = $encoding;
+}
+
 
 
 
@@ -1693,6 +1734,8 @@ sub _end_line($$$)
             my $filehandle = do { local *FH };
             if (open ($filehandle, $file)) {
               $included_file = 1;
+              binmode($filehandle, ":encoding($self->{'encoding'})")
+                if (defined($self->{'encoding'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
               $included_file = 1;
               unshift @{$self->{'input'}}, { 
@@ -1707,6 +1750,28 @@ sub _end_line($$$)
           } else {
             _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
                $command, $text), $line_nr);
+          }
+        } elsif ($command eq 'documentencoding') {
+          if ($text =~ /\S/) {
+            _line_warn($self, sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
+                                     $text), $line_nr)
+              if (!$canonical_texinfo_encodings{lc($text)});
+            my $encoding = Encode::resolve_alias($text);
+            if (!$encoding) {
+              _line_warn($self, sprintf($self->__("unrecognized encoding name `%s'"), 
+                         $text), $line_nr);
+            } else {
+              $encoding = $encoding_aliases{$encoding} 
+                if ($encoding_aliases{$encoding});
+              $self->{'encoding'} = $encoding;
+              print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
+              foreach my $input (@{$self->{'input'}}) {
+                binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
+              }
+            }
+          } else {
+            _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
+               $command), $line_nr);
           }
         }
       }

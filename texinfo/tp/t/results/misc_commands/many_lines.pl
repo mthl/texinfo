@@ -1554,6 +1554,24 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':29: warning: Encoding `US-ascii encoding name\' is not a canonical texinfo encoding
+',
+    'file_name' => '',
+    'line_nr' => 29,
+    'macro' => '',
+    'text' => 'Encoding `US-ascii encoding name\' is not a canonical texinfo encoding',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':29: warning: unrecognized encoding name `US-ascii encoding name\'
+',
+    'file_name' => '',
+    'line_nr' => 29,
+    'macro' => '',
+    'text' => 'unrecognized encoding name `US-ascii encoding name\'',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':31: warning: @frenchspacing should only appear at a line beginning
 ',
     'file_name' => '',

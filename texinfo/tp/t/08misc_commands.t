@@ -152,6 +152,9 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 'documentlanguage on its line
 @documentlanguage  en  
 line following documentlanguage
+'],
+['empty_documentencoding',
+'@documentencoding   
 ']
 );
 
