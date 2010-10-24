@@ -2409,6 +2409,9 @@ sub info_default_normal_text($$$$$$$;$)
    my $style_stack = shift;
    my $state = shift;
 
+   # This is always done here since it is not done in t2h_utf8_normal_text
+   $text = uc($text) if (in_cmd($style_stack, 'var'));
+
    # ENCODING_NAME should be defined, but maybe 
    # not when parsing commands in first or second pass, and removing texi
    # like what is done for @setfilename.
@@ -2420,7 +2423,6 @@ sub info_default_normal_text($$$$$$$;$)
    {
       #print STDERR "info_default_normal_text $text $in_preformatted $in_code \n";
       $text = uc($text) if (in_cmd($style_stack, 'sc'));
-      $text = uc($text) if (in_cmd($style_stack, 'var'));
       if (! $in_code and !$in_preformatted)
       {
          $text =~ s/---/\x{1F}/g;

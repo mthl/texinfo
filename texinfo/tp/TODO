@@ -4,6 +4,10 @@ Then it could be possible to come back to the place where the command
 should be closed and give an error message.
 This is certainly only an issue for @footnote and similar not a general issue.
 
+There is no forward looking code anymore, so maybe a lex/yacc parser
+could be used for the main loop.  More simply, a binary tokenizer, at 
+least, could make for a notable speedup.
+
 Following should be an error:
 @example
 @heading A heading

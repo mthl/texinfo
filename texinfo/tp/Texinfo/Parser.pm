@@ -68,21 +68,66 @@ sub __($$)
   return &{$parser->{'gettext'}}(@_);
 }
 
+# these are the default values for the parser state that may be 
+# initialized to values given by the user.
 my %default_configuration = (
   'test' => 0,
   'debug' => 0,
   'gettext' => sub {return $_[0];},
-  'context' => '_root',
-  'aliases' => {},
-  'indices' => [],
-  'values' => {},
-  'macros' => {},
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
+  # this is the initial context.  It is put at the bottom of the 
+  # 'context_stack'
+  'context' => '_root',
+  # these are the user-added indices.  May be an array reference on names
+  # or an hash reference in the same format than %index_names below
+  'indices' => [],
+  # the following are dynamically modified during the document parsing.
+  'aliases' => {},          # key is a command name value is the alias
+  'values' => {},           # the key is the name, the value the @set name 
+                            # argument
+  'macros' => {},           # the key is the user-defined macro name.  The 
+                            # value is the reference on a macro element 
+                            # as obtained by parsing the @macro
   'clickstyle' => 'arrow',
-  'sections_level' => 0,
-  'merged_indices' => {}
+  'sections_level' => 0,    # modified by raise/lowersections
+  'merged_indices' => {},   # the key is merged in the value
 );
+
+# the other possible keys for the parser state are:
+#
+# expanded_formats_hash   each key comes from expanded_formats value is 1
+# index_names             a structure holding the link between index 
+#                         names and prefixes
+#                         see the initial value as %index_names below.
+# context_stack           stack of the contexts, more recent on top.
+#                         'line' is added when on a line or 
+#                         block @-command line,
+#                         'def' is added instead if on a definition line.
+#                         'preformatted' is added in block commands 
+#                         where there is no paragraphs and spaces are kept 
+#                         (format, example, display...)
+#                         'menu' is added in menu commands
+#                         'math', 'footnote', 'caption', 'shortcaption' are 
+#                         also added when in those commands
+# conditionals_stack      a stack of conditional commands that are expanded.
+# definfoenclose          an hash, key is the command name, value is an array
+#                         reference with 2 values, beginning and ending.
+# encoding                Current encoding set by @documentencoding
+# input                   a stack, with last at bottom.  Holds the opened files
+#                         or text.  Pending macro expansion or text expansion
+#                         is also in that structure
+# misc_commands           the same than %misc_commands below, but with index
+#                         entry commands dynamically added
+# no_paragraph_commands   the same than %default_no_paragraph_commands
+#                         below, with index
+#                         entry commands dynamically added
+# simple_text_commands    the same than %simple_text_commands below, but 
+#                         with index entry commands dynamically added
+# errors_warnings         a structure with the errors and warnings.
+# error_nrs               number of errors.
+
+
 
 my %no_brace_commands;             # commands never taking braces
 
@@ -94,6 +139,26 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
 # commands taking a line as argument or no argument.
 # sectioning commands and def* commands are added below.
 # index commands are added dynamically.
+#
+# The values signification is:
+# special:     no value and macro expansion, all the line is used, and 
+#              analysed during parsing (_parse_special_misc_command)
+# lineraw:     no value and macro expansion, the line is kept as-is, not 
+#              analysed
+# skipline:    no argument, everything else on the line is skipped
+# skipspace:   no argument, following spaces are skipped.
+# noarg:       no argument
+# text:        the line is parsed as texinfo, and the argument is converted
+#              to simple text
+# line:        the line is parsed as texinfo
+# a number:    the line is parsed as texinfo and the result should be plain 
+#              text maybe followed by a comment; the result is analysed
+#              during parsing (_parse_line_command_args).  
+#              The number is an indication of the number of arguments of 
+#              the command.
+#
+# Beware that @item and @itemx may be like 'line' or 'skipspace' depending
+# on the context.
 my %misc_commands = (
   'node'              => 'line', # special arg
   'bye'               => 'skipline', # no arg
@@ -147,14 +212,14 @@ my %misc_commands = (
                             # interacts with setchapternewpage
   'setchapternewpage' => 1, # off on odd
 
-  # FIXME for the following the @this* commands are not defined. Also
-  # @value and maybe macro invocations may also be delayed.
+  # only relevant in TeX, and special
   'everyheading'      => 'lineraw',  # @*heading @*footing use @|
   'everyfooting'      => 'lineraw',  # + @thispage @thissectionname
   'evenheading'       => 'lineraw',  # @thissectionnum @thissection
   'evenfooting'       => 'lineraw',  # @thischaptername @thischapternum
   'oddheading'        => 'lineraw',  # @thischapter @thistitle @thisfile
   'oddfooting'        => 'lineraw',
+
   'smallbook'         => 'skipline', # no arg
   'syncodeindex'      => 2,   # args are index identifiers
   'synindex'          => 2,
@@ -203,7 +268,7 @@ my %misc_commands = (
   'allow-recursion'   => 'skipline',
 );
 
-# command with braces. value is the max number of arguments.
+# command with braces. Value is the max number of arguments.
 my %brace_commands;    
 
 # accent commands. They may be called with and without braces.
@@ -260,10 +325,6 @@ foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
 
-my %menu_commands;
-foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
-  $menu_commands{$menu_command} = 1;
-};
 
 
 # commands delimiting blocks, with an @end.
@@ -277,6 +338,7 @@ my %block_item_commands;
 # commands that forces closing an opened paragraph.
 my %close_paragraph_commands;
 
+# the type of index, f: function, v: variable, t: type
 my %index_type_def = (
  'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
  'v' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
@@ -291,28 +353,30 @@ foreach my $index_type (keys %index_type_def) {
 }
 
 my %def_map = (
-    # basic commands
-    'deffn', [ 'category', 'name', 'arg' ],
-    'defvr', [  'category', 'name' ],
+    # basic commands. 
+    # 'arg' and 'argtype' are for everything appearing after the other
+    # arguments.
+    'deffn',     [ 'category', 'name', 'arg' ],
+    'defvr',     [ 'category', 'name' ],
     'deftypefn', [ 'category', 'type', 'name', 'argtype' ],
     'deftypeop', [ 'category', 'class' , 'type', 'name', 'argtype' ],
     'deftypevr', [ 'category', 'type', 'name' ],
-    'defcv', [ 'category', 'class' , 'name' ],
+    'defcv',     [ 'category', 'class' , 'name' ],
     'deftypecv', [ 'category', 'class' , 'type', 'name' ],
-    'defop', [ 'category', 'class' , 'name', 'arg' ],
-    'deftp', [ 'category', 'name', 'argtype' ],
+    'defop',     [ 'category', 'class' , 'name', 'arg' ],
+    'deftp',     [ 'category', 'name', 'argtype' ],
     # shortcuts
     # FIXME i18n
-    'defun', {'deffn' => 'Function'},
-    'defmac', {'deffn' => 'Macro'},
-    'defspec', {'deffn' => '{Special Form}'},
-    'defvar', {'defvr' => 'Variable'},
-    'defopt', {'defvr' => '{User Option}'},
-    'deftypefun', {'deftypefn' => 'Function'},
-    'deftypevar', {'deftypevr' => 'Variable'},
-    'defivar', {'defcv' => '{Instance Variable}'},
-    'deftypeivar', {'deftypecv' => '{Instance Variable}'},
-    'defmethod', {'defop' => 'Method'},
+    'defun',         {'deffn'     => 'Function'},
+    'defmac',        {'deffn'     => 'Macro'},
+    'defspec',       {'deffn'     => '{Special Form}'},
+    'defvar',        {'defvr'     => 'Variable'},
+    'defopt',        {'defvr'     => '{User Option}'},
+    'deftypefun',    {'deftypefn' => 'Function'},
+    'deftypevar',    {'deftypevr' => 'Variable'},
+    'defivar',       {'defcv'     => '{Instance Variable}'},
+    'deftypeivar',   {'deftypecv' => '{Instance Variable}'},
+    'defmethod',     {'defop'     => 'Method'},
     'deftypemethod', {'deftypeop' => 'Method'},
          );
 
@@ -350,23 +414,29 @@ foreach my $def_command(keys %def_map) {
 $block_commands{'multitable'} = 'multitable';
 $block_item_commands{'multitable'} = 1;
 
+# block commands in which menu entry and menu comments appear
+my %menu_commands;
+foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
+  $menu_commands{$menu_command} = 1;
+  $block_commands{$menu_command} = 0;
+};
+
 foreach my $block_command(
-  'menu', 'detailmenu', 'direntry',
-  'cartouche', 'group', 'raggedright', 'flushleft', 'flushright',
-  'titlepage', 'copying', 'documentdescription') {
+    'cartouche', 'group', 'raggedright', 'flushleft', 'flushright',
+    'titlepage', 'copying', 'documentdescription') {
   $block_commands{$block_command} = 0;
 }
 
 my %preformatted_commands;
 foreach my $preformatted_command(
-  'example', 'smallexample', 'display', 'smalldisplay', 'lisp',
-  'smalllisp', 'format', 'smallformat') {
+    'example', 'smallexample', 'display', 'smalldisplay', 'lisp',
+    'smalllisp', 'format', 'smallformat') {
   $block_commands{$preformatted_command} = 0;
   $preformatted_commands{$preformatted_command} = 1;
 }
 
 my @out_formats = ('html', 'tex', 'xml', 'docbook');
-# macro is special
+# macro/rmacro are special
 foreach my $raw_command (@out_formats, 'verbatim', 
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
@@ -411,8 +481,9 @@ my %deprecated_commands = (
   'quote-arg' => N__('arguments are quoted by default'),
 );
 
-my %forbidden_index_name = ();
-
+# key is index name, keys of the reference value are the prefixes.
+# value associated with the prefix is 0 if the prefix is not a code-like
+# prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
 my %index_names = (
  'cp' => {'cp' => 0,'c' => 0},
  'fn' => {'fn' => 1, 'f' => 1},
@@ -421,6 +492,9 @@ my %index_names = (
  'pg' => {'pg' => 1, 'p' => 1},
  'tp' => {'tp' => 1, 't' => 1}
 );
+
+# index names that cannot be set by the user.
+my %forbidden_index_name = ();
 
 foreach my $name(keys(%index_names)) {
   foreach my $prefix (keys %{$index_names{$name}}) {
@@ -435,7 +509,7 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
 
 
 # commands that should only appear at the root level and contain up to
-# the next root command
+# the next root command.  @node and sectioning commands.
 my %root_commands;
 
 foreach my $sectioning_command (

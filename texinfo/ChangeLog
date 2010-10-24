@@ -2,6 +2,8 @@
 
 	* texi2html/texi2html.pl (%index_names): remove the 'prefixes' key, 
 	it isn't useful.
+	* texi2html/formats/info.init (info_default_normal_text): 
+	upper case @var even when producing utf8.  Report from Karl.
 
 2010-10-15  Karl Berry  <karl@gnu.org>
 
