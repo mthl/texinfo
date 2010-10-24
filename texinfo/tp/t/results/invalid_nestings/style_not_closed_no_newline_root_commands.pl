@@ -284,6 +284,15 @@ still not closed
 
 $result_errors{'style_not_closed_no_newline_root_commands'} = [
   {
+    'error_line' => ':8: warning: @node should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@node should not appear in @code',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':8: @code missing close brace
 ',
     'file_name' => '',
@@ -291,6 +300,15 @@ $result_errors{'style_not_closed_no_newline_root_commands'} = [
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':12: warning: @bye should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@bye should not appear in @code',
+    'type' => 'warning'
   },
   {
     'error_line' => ':12: @code missing close brace

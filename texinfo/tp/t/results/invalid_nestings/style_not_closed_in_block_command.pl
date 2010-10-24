@@ -71,6 +71,15 @@ $result_texts{'style_not_closed_in_block_command'} = 'cartouche in code
 
 $result_errors{'style_not_closed_in_block_command'} = [
   {
+    'error_line' => ':3: warning: @end should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@end should not appear in @code',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: @code missing close brace
 ',
     'file_name' => '',

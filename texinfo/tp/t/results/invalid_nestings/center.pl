@@ -590,6 +590,15 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':15: warning: @center should not appear in @code
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@center should not appear in @code',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':15: @code missing close brace
 ',
     'file_name' => '',
