@@ -164,6 +164,27 @@ Some text.
 
 @end example
 '],
+['itemx_in_itemize_enumerate_in_table',
+'@table @strong
+@item item
+
+In item, nested itemize
+@itemize
+@itemx in nested itemize itemx
+@end itemize
+
+@enumerate
+@itemx in nested enumerate itemx
+@end enumerate
+
+@end table
+'],
+['item_tab_outside_of_table_lists',
+'@itemx itemx outside.
+@headitem headitem outside.
+@someitem someitem outside.
+@tab tab outside
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

@@ -31,10 +31,6 @@ t/25regions.t double_copying
 no warning in
 t/19def.t empty_def_arguments
 
-missing test:
-an end table without correspondiing opening part
-@end table
-
 
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
@@ -87,3 +83,8 @@ invalid/def_cmd_dble.texi
 invalid/empty_ifclear.texi
 invalid/footnote_not_closed.texi
 invalid/formats_not_closed.texi
+invalid/html_not_closed.texi
+invalid/ignored_not_closed.texi
+invalid/invalid_command_in_table.texi
+invalid/itemx_in_itemize.texi
+

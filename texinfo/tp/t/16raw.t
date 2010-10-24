@@ -56,6 +56,12 @@ in tex2
 @end tex
 
 End.
+'],
+['raw_not_closed',
+'@html
+
+This is some html
+<address> my address </address>
 ']
 );
 

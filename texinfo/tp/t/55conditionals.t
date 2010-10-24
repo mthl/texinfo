@@ -112,6 +112,11 @@ Something
 
 @end ifset
 '],
+['ignore_not_closed',
+'@ignore
+
+This is ignored
+']
 
 );
 

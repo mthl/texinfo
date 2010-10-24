@@ -28,6 +28,20 @@ my @test_cases = (
 '],
 ['lone_end_itemize',
 '@end itemize
+'],
+['headitem_itemx_in_itemize',
+'@itemize
+@item item
+@itemx itemx
+@headitem headitem
+@end itemize
+'],
+['headitem_itemx_in_enumerate',
+'@enumerate
+@item item enumerate
+@itemx itemx enumerate
+@headitem headitem enumerate
+@end enumerate
 ']
 );
 
