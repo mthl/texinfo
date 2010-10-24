@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'all_commands_delimiters'} = {
   'contents' => [
@@ -10525,3 +10525,7 @@ var then code ret_type1 fun_name1 A1 A2 A3 A4
 $result_errors{'all_commands_delimiters'} = [];
 
 
+$result_indices{'all_commands_delimiters'} = undef;
+
+
+1;

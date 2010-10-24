@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'simple_imbricated_macro'} = {
   'contents' => [
@@ -169,3 +169,7 @@ bidule.
 $result_errors{'simple_imbricated_macro'} = [];
 
 
+$result_indices{'simple_imbricated_macro'} = undef;
+
+
+1;

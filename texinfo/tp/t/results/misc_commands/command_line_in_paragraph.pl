@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'command_line_in_paragraph'} = {
   'contents' => [
@@ -73,3 +73,7 @@ line following documentlanguage
 $result_errors{'command_line_in_paragraph'} = [];
 
 
+$result_indices{'command_line_in_paragraph'} = undef;
+
+
+1;

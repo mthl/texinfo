@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'too_much_args'} = {
   'contents' => [
@@ -119,3 +119,7 @@ $result_errors{'too_much_args'} = [
 ];
 
 
+$result_indices{'too_much_args'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'lone_end_itemize'} = {
   'contents' => [
@@ -32,3 +32,7 @@ $result_errors{'lone_end_itemize'} = [
 ];
 
 
+$result_indices{'lone_end_itemize'} = undef;
+
+
+1;

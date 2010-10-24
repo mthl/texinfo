@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'ignored_text'} = {
   'contents' => [
@@ -54,3 +54,7 @@ $result_errors{'ignored_text'} = [
 ];
 
 
+$result_indices{'ignored_text'} = undef;
+
+
+1;

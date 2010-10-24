@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'comma_value_in_macro_arg'} = {
   'contents' => [
@@ -169,3 +169,7 @@ result: arg1 , arg2  protected \\ -> \\arg1\\
 $result_errors{'comma_value_in_macro_arg'} = [];
 
 
+$result_indices{'comma_value_in_macro_arg'} = undef;
+
+
+1;

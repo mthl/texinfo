@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'all_empty_def'} = {
   'contents' => [
@@ -446,3 +446,7 @@ $result_texts{'all_empty_def'} = '
 $result_errors{'all_empty_def'} = [];
 
 
+$result_indices{'all_empty_def'} = undef;
+
+
+1;

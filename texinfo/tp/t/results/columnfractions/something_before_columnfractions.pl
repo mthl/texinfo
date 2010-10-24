@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'something_before_columnfractions'} = {
   'contents' => [
@@ -95,3 +95,7 @@ $result_texts{'something_before_columnfractions'} = '';
 $result_errors{'something_before_columnfractions'} = [];
 
 
+$result_indices{'something_before_columnfractions'} = undef;
+
+
+1;

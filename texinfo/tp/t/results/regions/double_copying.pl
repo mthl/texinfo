@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'double_copying'} = {
   'contents' => [
@@ -104,3 +104,7 @@ $result_texts{'double_copying'} = '';
 $result_errors{'double_copying'} = [];
 
 
+$result_indices{'double_copying'} = undef;
+
+
+1;

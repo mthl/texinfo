@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'item_tab_outside_of_table_lists'} = {
   'contents' => [
@@ -122,3 +122,7 @@ $result_errors{'item_tab_outside_of_table_lists'} = [
 ];
 
 
+$result_indices{'item_tab_outside_of_table_lists'} = undef;
+
+
+1;

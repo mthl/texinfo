@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'out_of_multitable'} = {
   'contents' => [
@@ -64,3 +64,7 @@ $result_errors{'out_of_multitable'} = [
 ];
 
 
+$result_indices{'out_of_multitable'} = undef;
+
+
+1;

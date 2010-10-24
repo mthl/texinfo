@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'value_node_directions'} = {
   'contents' => [
@@ -433,3 +433,7 @@ bar
 $result_errors{'value_node_directions'} = [];
 
 
+$result_indices{'value_node_directions'} = undef;
+
+
+1;

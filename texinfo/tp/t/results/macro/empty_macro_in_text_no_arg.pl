@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_macro_in_text_no_arg'} = {
   'contents' => [
@@ -151,3 +151,7 @@ $result_errors{'empty_macro_in_text_no_arg'} = [
 ];
 
 
+$result_indices{'empty_macro_in_text_no_arg'} = undef;
+
+
+1;

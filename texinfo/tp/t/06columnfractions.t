@@ -43,5 +43,5 @@ if ($arg_generate) {
   plan tests => 2;
 }
 else {
-  plan tests => (2 + scalar(@done_tests) * 4);
+  plan tests => (2 + scalar(@done_tests) * 5);
 }

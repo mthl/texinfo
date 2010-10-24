@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'invalid_command_and_brace_in_table'} = {
   'contents' => [
@@ -108,3 +108,7 @@ $result_errors{'invalid_command_and_brace_in_table'} = [
 ];
 
 
+$result_indices{'invalid_command_and_brace_in_table'} = undef;
+
+
+1;

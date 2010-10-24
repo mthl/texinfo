@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'defx_after_text'} = {
   'contents' => [
@@ -231,3 +231,7 @@ $result_errors{'defx_after_text'} = [
 ];
 
 
+$result_indices{'defx_after_text'} = undef;
+
+
+1;

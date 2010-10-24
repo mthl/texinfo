@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'unknown_commands'} = {
   'contents' => [
@@ -56,3 +56,7 @@ $result_errors{'unknown_commands'} = [
 ];
 
 
+$result_indices{'unknown_commands'} = undef;
+
+
+1;

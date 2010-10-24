@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'value_in_misc_commands'} = {
   'contents' => [
@@ -3038,3 +3038,7 @@ $result_errors{'value_in_misc_commands'} = [
 ];
 
 
+$result_indices{'value_in_misc_commands'} = undef;
+
+
+1;

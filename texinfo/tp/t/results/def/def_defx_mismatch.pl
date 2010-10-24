@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'def_defx_mismatch'} = {
   'contents' => [
@@ -348,3 +348,7 @@ $result_errors{'def_defx_mismatch'} = [
 ];
 
 
+$result_indices{'def_defx_mismatch'} = undef;
+
+
+1;

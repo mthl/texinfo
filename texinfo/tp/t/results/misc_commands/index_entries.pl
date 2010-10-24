@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'index_entries'} = {
   'contents' => [
@@ -136,3 +136,7 @@ $result_texts{'index_entries'} = '
 $result_errors{'index_entries'} = [];
 
 
+$result_indices{'index_entries'} = undef;
+
+
+1;

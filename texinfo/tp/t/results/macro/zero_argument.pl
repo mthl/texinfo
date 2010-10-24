@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'zero_argument'} = {
   'contents' => [
@@ -97,3 +97,7 @@ $result_texts{'zero_argument'} = '
 $result_errors{'zero_argument'} = [];
 
 
+$result_indices{'zero_argument'} = undef;
+
+
+1;

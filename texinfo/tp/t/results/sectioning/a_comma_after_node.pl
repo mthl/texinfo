@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'a_comma_after_node'} = {
   'contents' => [
@@ -109,3 +109,7 @@ A comma in text, end.
 $result_errors{'a_comma_after_node'} = [];
 
 
+$result_indices{'a_comma_after_node'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'simple'} = {
   'contents' => [
@@ -29,3 +29,7 @@ $result_texts{'simple'} = 'In included file.
 $result_errors{'simple'} = [];
 
 
+$result_indices{'simple'} = undef;
+
+
+1;

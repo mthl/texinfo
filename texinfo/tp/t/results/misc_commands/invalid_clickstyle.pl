@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'invalid_clickstyle'} = {
   'contents' => [
@@ -246,3 +246,7 @@ $result_errors{'invalid_clickstyle'} = [
 ];
 
 
+$result_indices{'invalid_clickstyle'} = undef;
+
+
+1;

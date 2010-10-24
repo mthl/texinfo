@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'menu_entry_name'} = {
   'contents' => [
@@ -665,3 +665,7 @@ $result_texts{'menu_entry_name'} = '* a: (f)b
 $result_errors{'menu_entry_name'} = [];
 
 
+$result_indices{'menu_entry_name'} = undef;
+
+
+1;

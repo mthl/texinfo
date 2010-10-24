@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'not_set'} = {
   'contents' => [],
@@ -13,3 +13,7 @@ $result_texts{'not_set'} = '';
 $result_errors{'not_set'} = [];
 
 
+$result_indices{'not_set'} = undef;
+
+
+1;

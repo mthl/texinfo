@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'space_macro_after_end'} = {
   'contents' => [
@@ -90,3 +90,7 @@ $result_texts{'space_macro_after_end'} = '
 $result_errors{'space_macro_after_end'} = [];
 
 
+$result_indices{'space_macro_after_end'} = undef;
+
+
+1;

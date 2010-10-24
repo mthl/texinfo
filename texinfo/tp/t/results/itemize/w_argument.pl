@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'w_argument'} = {
   'contents' => [
@@ -167,3 +167,7 @@ $result_texts{'w_argument'} = '--build= platform on which the program is compile
 $result_errors{'w_argument'} = [];
 
 
+$result_indices{'w_argument'} = undef;
+
+
+1;

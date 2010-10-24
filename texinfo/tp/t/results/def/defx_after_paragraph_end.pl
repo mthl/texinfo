@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'defx_after_paragraph_end'} = {
   'contents' => [
@@ -240,3 +240,7 @@ $result_errors{'defx_after_paragraph_end'} = [
 ];
 
 
+$result_indices{'defx_after_paragraph_end'} = undef;
+
+
+1;

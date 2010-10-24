@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'implicit_quoting_one_arg'} = {
   'contents' => [
@@ -114,3 +114,7 @@ FIXME: Many arguments, separated by commas, are processed here
 $result_errors{'implicit_quoting_one_arg'} = [];
 
 
+$result_indices{'implicit_quoting_one_arg'} = undef;
+
+
+1;

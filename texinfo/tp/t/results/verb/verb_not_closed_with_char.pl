@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'verb_not_closed_with_char'} = {
   'contents' => [
@@ -89,3 +89,7 @@ $result_errors{'verb_not_closed_with_char'} = [
 ];
 
 
+$result_indices{'verb_not_closed_with_char'} = undef;
+
+
+1;

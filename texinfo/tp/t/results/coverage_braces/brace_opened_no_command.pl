@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'brace_opened_no_command'} = {
   'contents' => [
@@ -74,3 +74,7 @@ $result_errors{'brace_opened_no_command'} = [
 ];
 
 
+$result_indices{'brace_opened_no_command'} = undef;
+
+
+1;

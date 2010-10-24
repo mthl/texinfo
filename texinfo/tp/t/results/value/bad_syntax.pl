@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'bad_syntax'} = {
   'contents' => [
@@ -177,3 +177,7 @@ $result_errors{'bad_syntax'} = [
 ];
 
 
+$result_indices{'bad_syntax'} = undef;
+
+
+1;

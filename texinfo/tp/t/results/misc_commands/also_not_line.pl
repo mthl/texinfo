@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'also_not_line'} = {
   'contents' => [
@@ -461,3 +461,7 @@ $result_errors{'also_not_line'} = [
 ];
 
 
+$result_indices{'also_not_line'} = undef;
+
+
+1;

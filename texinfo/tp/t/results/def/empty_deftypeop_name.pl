@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_deftypeop_name'} = {
   'contents' => [
@@ -190,3 +190,7 @@ $result_texts{'empty_deftypeop_name'} = 'Commandcom Windowint exposeexp
 $result_errors{'empty_deftypeop_name'} = [];
 
 
+$result_indices{'empty_deftypeop_name'} = undef;
+
+
+1;

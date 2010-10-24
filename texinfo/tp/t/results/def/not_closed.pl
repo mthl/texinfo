@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'not_closed'} = {
   'contents' => [
@@ -230,3 +230,7 @@ $result_errors{'not_closed'} = [
 ];
 
 
+$result_indices{'not_closed'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'end_of_lines_protected_in_footnote'} = {
   'contents' => [
@@ -298,3 +298,7 @@ $result_texts{'end_of_lines_protected_in_footnote'} = '
 $result_errors{'end_of_lines_protected_in_footnote'} = [];
 
 
+$result_indices{'end_of_lines_protected_in_footnote'} = undef;
+
+
+1;

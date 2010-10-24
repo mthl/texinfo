@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'menu_no_closed_in_entry'} = {
   'contents' => [
@@ -70,3 +70,7 @@ $result_errors{'menu_no_closed_in_entry'} = [
 ];
 
 
+$result_indices{'menu_no_closed_in_entry'} = undef;
+
+
+1;

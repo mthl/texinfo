@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'many_lines'} = {
   'contents' => [
@@ -1637,3 +1637,7 @@ $result_errors{'many_lines'} = [
 ];
 
 
+$result_indices{'many_lines'} = undef;
+
+
+1;

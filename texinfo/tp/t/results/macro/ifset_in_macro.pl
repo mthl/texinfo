@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'ifset_in_macro'} = {
   'contents' => [
@@ -88,3 +88,7 @@ $result_texts{'ifset_in_macro'} = '
 $result_errors{'ifset_in_macro'} = [];
 
 
+$result_indices{'ifset_in_macro'} = undef;
+
+
+1;

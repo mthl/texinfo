@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'footnote'} = {
   'contents' => [
@@ -99,3 +99,7 @@ $result_texts{'footnote'} = 'text after footnote.';
 $result_errors{'footnote'} = [];
 
 
+$result_indices{'footnote'} = undef;
+
+
+1;

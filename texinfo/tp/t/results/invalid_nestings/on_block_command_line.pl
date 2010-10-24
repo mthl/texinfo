@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'on_block_command_line'} = {
   'contents' => [
@@ -378,3 +378,7 @@ $result_errors{'on_block_command_line'} = [
 ];
 
 
+$result_indices{'on_block_command_line'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'protect_comma_macro_line'} = {
   'contents' => [
@@ -144,3 +144,7 @@ and a last in another paragraph
 $result_errors{'protect_comma_macro_line'} = [];
 
 
+$result_indices{'protect_comma_macro_line'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'nested'} = {
   'contents' => [
@@ -71,3 +71,7 @@ $result_texts{'nested'} = 'type the characters l o g o u t RET.';
 $result_errors{'nested'} = [];
 
 
+$result_indices{'nested'} = undef;
+
+
+1;

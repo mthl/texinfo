@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'nested_macros'} = {
   'contents' => [
@@ -120,3 +120,7 @@ $result_texts{'nested_macros'} = '';
 $result_errors{'nested_macros'} = [];
 
 
+$result_indices{'nested_macros'} = undef;
+
+
+1;

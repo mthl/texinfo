@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'end_of_lines_protected'} = {
   'contents' => [
@@ -250,3 +250,7 @@ deffn
 $result_errors{'end_of_lines_protected'} = [];
 
 
+$result_indices{'end_of_lines_protected'} = undef;
+
+
+1;

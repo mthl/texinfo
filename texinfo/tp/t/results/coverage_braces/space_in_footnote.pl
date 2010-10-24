@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'space_in_footnote'} = {
   'contents' => [
@@ -57,3 +57,7 @@ $result_texts{'space_in_footnote'} = 'text';
 $result_errors{'space_in_footnote'} = [];
 
 
+$result_indices{'space_in_footnote'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'raw_in_para'} = {
   'contents' => [
@@ -219,3 +219,7 @@ End.
 $result_errors{'raw_in_para'} = [];
 
 
+$result_indices{'raw_in_para'} = undef;
+
+
+1;

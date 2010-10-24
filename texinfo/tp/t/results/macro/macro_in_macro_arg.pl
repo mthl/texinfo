@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'macro_in_macro_arg'} = {
   'contents' => [
@@ -221,3 +221,7 @@ a, hello text for macro2 after arg
 $result_errors{'macro_in_macro_arg'} = [];
 
 
+$result_indices{'macro_in_macro_arg'} = undef;
+
+
+1;

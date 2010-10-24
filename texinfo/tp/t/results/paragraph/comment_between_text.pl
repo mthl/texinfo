@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'comment_between_text'} = {
   'contents' => [
@@ -49,3 +49,7 @@ end para';
 $result_errors{'comment_between_text'} = [];
 
 
+$result_indices{'comment_between_text'} = undef;
+
+
+1;

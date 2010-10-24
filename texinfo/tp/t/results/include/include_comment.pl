@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'include_comment'} = {
   'contents' => [
@@ -29,3 +29,7 @@ $result_texts{'include_comment'} = 'In included file.
 $result_errors{'include_comment'} = [];
 
 
+$result_indices{'include_comment'} = undef;
+
+
+1;

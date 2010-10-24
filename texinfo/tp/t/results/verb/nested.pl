@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'nested'} = {
   'contents' => [
@@ -68,3 +68,7 @@ $result_texts{'nested'} = 'in b  in verb { }  in b end';
 $result_errors{'nested'} = [];
 
 
+$result_indices{'nested'} = undef;
+
+
+1;

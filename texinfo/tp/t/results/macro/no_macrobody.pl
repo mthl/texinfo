@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'no_macrobody'} = {
   'contents' => [
@@ -93,3 +93,7 @@ $result_texts{'no_macrobody'} = '
 $result_errors{'no_macrobody'} = [];
 
 
+$result_indices{'no_macrobody'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'recursive_copying'} = {
   'contents' => [
@@ -101,3 +101,7 @@ $result_texts{'recursive_copying'} = '
 $result_errors{'recursive_copying'} = [];
 
 
+$result_indices{'recursive_copying'} = undef;
+
+
+1;

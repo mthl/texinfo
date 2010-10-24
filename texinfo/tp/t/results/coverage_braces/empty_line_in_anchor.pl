@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_line_in_anchor'} = {
   'contents' => [
@@ -85,3 +85,7 @@ $result_errors{'empty_line_in_anchor'} = [
 ];
 
 
+$result_indices{'empty_line_in_anchor'} = undef;
+
+
+1;

@@ -11,7 +11,7 @@ use File::Basename;
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %result_indices);
 
 ok(1);
 
@@ -66,6 +66,9 @@ sub test($$)
                                         'include_directories' => ['t/include/'],
                                         'debug' => $self->{'debug'},
                                        %$parser_options});
+  # take the initial values to record only if there is something new
+  my ($initial_index_names, $initial_merged_indices) 
+    = $parser->indices_information();
   print STDERR "  TEST $test_name\n" if ($self->{'debug'});
   my $result;
   if (ref($test_case) eq 'ARRAY') {
@@ -77,6 +80,12 @@ sub test($$)
 #Texinfo::Structuring::collect_structure($result);
 
   my ($errors, $error_nrs) = $parser->errors();
+  my ($index_names, $merged_indices) = $parser->indices_information();
+  my $indices;
+  $indices->{'index_names'} = $index_names
+    unless (Data::Compare::Compare($index_names, $initial_index_names));
+  $indices->{'merged_indices'} = $merged_indices
+    unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
   my $converted_text = Texinfo::Convert::Text::convert($result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
@@ -91,7 +100,7 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
-    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors);'."\n\n";
+    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
@@ -105,6 +114,8 @@ sub test($$)
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
     $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+    $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n";
+    $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);
     if (ref($test_case) ne 'ARRAY') {
@@ -137,6 +148,7 @@ sub test($$)
     #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
     #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
+    ok (Data::Compare::Compare($indices, $result_indices{$test_name}), $test_name.' indices' );
     ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi' );
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text' );
     #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text' );
@@ -174,7 +186,7 @@ sub run_all($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-    plan tests => (1 + scalar(@$ran_tests) * 4);
+    plan tests => (1 + scalar(@$ran_tests) * 5);
   }
 }
 
@@ -205,7 +217,7 @@ sub run_all_files($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-     plan tests => (1 + scalar(@$ran_tests) * 4);
+     plan tests => (1 + scalar(@$ran_tests) * 5);
   }
 }
 

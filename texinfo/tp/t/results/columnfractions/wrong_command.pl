@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'wrong_command'} = {
   'contents' => [
@@ -110,3 +110,7 @@ $result_errors{'wrong_command'} = [
 ];
 
 
+$result_indices{'wrong_command'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'include_at_end_line'} = {
   'contents' => [
@@ -80,3 +80,7 @@ $result_errors{'include_at_end_line'} = [
 ];
 
 
+$result_indices{'include_at_end_line'} = undef;
+
+
+1;

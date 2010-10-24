@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'commands'} = {
   'contents' => [
@@ -381,3 +381,7 @@ majorheading in b
 $result_errors{'commands'} = [];
 
 
+$result_indices{'commands'} = undef;
+
+
+1;

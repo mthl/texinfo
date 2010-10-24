@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_set_in_ifset'} = {
   'contents' => [
@@ -62,3 +62,7 @@ a is set to:||.
 $result_errors{'empty_set_in_ifset'} = [];
 
 
+$result_indices{'empty_set_in_ifset'} = undef;
+
+
+1;

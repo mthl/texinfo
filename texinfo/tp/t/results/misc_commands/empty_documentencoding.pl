@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_documentencoding'} = {
   'contents' => [
@@ -49,3 +49,7 @@ $result_errors{'empty_documentencoding'} = [
 ];
 
 
+$result_indices{'empty_documentencoding'} = undef;
+
+
+1;

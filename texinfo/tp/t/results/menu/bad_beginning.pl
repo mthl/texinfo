@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'bad_beginning'} = {
   'contents' => [
@@ -95,3 +95,7 @@ $result_texts{'bad_beginning'} = '*
 $result_errors{'bad_beginning'} = [];
 
 
+$result_indices{'bad_beginning'} = undef;
+
+
+1;

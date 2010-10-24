@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'setfilename'} = {
   'contents' => [
@@ -214,3 +214,7 @@ $result_texts{'setfilename'} = '
 $result_errors{'setfilename'} = [];
 
 
+$result_indices{'setfilename'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'two_macros_on_a_line'} = {
   'contents' => [
@@ -435,3 +435,7 @@ $result_errors{'two_macros_on_a_line'} = [
 ];
 
 
+$result_indices{'two_macros_on_a_line'} = undef;
+
+
+1;

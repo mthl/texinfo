@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'value_expansion_in_include'} = {
   'contents' => [
@@ -556,3 +556,7 @@ $result_errors{'value_expansion_in_include'} = [
 ];
 
 
+$result_indices{'value_expansion_in_include'} = undef;
+
+
+1;

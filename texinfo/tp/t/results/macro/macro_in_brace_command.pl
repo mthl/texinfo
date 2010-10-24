@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'macro_in_brace_command'} = {
   'contents' => [
@@ -223,3 +223,7 @@ foo-expansion@bar-expansion,
 $result_errors{'macro_in_brace_command'} = [];
 
 
+$result_indices{'macro_in_brace_command'} = undef;
+
+
+1;

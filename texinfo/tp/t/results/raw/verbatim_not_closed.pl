@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'verbatim_not_closed'} = {
   'contents' => [
@@ -84,3 +84,7 @@ $result_errors{'verbatim_not_closed'} = [
 ];
 
 
+$result_indices{'verbatim_not_closed'} = undef;
+
+
+1;

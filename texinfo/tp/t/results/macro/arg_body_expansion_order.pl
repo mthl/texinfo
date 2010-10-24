@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'arg_body_expansion_order'} = {
   'contents' => [
@@ -237,3 +237,7 @@ different
 $result_errors{'arg_body_expansion_order'} = [];
 
 
+$result_indices{'arg_body_expansion_order'} = undef;
+
+
+1;

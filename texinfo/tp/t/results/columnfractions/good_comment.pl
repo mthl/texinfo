@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'good_comment'} = {
   'contents' => [
@@ -98,3 +98,7 @@ $result_texts{'good_comment'} = '';
 $result_errors{'good_comment'} = [];
 
 
+$result_indices{'good_comment'} = undef;
+
+
+1;

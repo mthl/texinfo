@@ -46,6 +46,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parse_texi_text
   parse_texi_file
   errors
+  indices_information
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -814,6 +815,11 @@ sub errors ($)
   return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 
+sub indices_information ($)
+{
+  my $self = shift;
+  return ($self->{'index_names'}, $self->{'merged_indices'});
+}
 
 # internal sub
 
@@ -3112,6 +3118,10 @@ sub _parse_line_command_args($$$)
     # REMACRO
     if ($line =~ /^([[:alnum:]][[:alnum:]\-]*)$/) {
       my $name = $1;
+      if (!exists($self->{'index_names'}->{$name})) {
+        _line_error ($self, sprintf($self->__("Unknown index `%s' in \@printindex"),
+                                    $name), $line_nr);
+      }
       $args = [$name];
     } else {
       _line_error ($self, sprintf($self->

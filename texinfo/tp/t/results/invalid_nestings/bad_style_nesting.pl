@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'bad_style_nesting'} = {
   'contents' => [
@@ -110,3 +110,7 @@ $result_errors{'bad_style_nesting'} = [
 ];
 
 
+$result_indices{'bad_style_nesting'} = undef;
+
+
+1;

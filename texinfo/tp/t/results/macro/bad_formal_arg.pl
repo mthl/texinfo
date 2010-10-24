@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'bad_formal_arg'} = {
   'contents' => [
@@ -255,3 +255,7 @@ $result_errors{'bad_formal_arg'} = [
 ];
 
 
+$result_indices{'bad_formal_arg'} = undef;
+
+
+1;

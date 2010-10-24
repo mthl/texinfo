@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'multitable_not_closed_item_tab'} = {
   'contents' => [
@@ -160,3 +160,7 @@ $result_errors{'multitable_not_closed_item_tab'} = [
 ];
 
 
+$result_indices{'multitable_not_closed_item_tab'} = undef;
+
+
+1;

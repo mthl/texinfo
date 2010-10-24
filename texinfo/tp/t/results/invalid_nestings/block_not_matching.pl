@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'block_not_matching'} = {
   'contents' => [
@@ -728,3 +728,7 @@ $result_errors{'block_not_matching'} = [
 ];
 
 
+$result_indices{'block_not_matching'} = undef;
+
+
+1;

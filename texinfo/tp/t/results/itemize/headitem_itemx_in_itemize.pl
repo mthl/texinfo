@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'headitem_itemx_in_itemize'} = {
   'contents' => [
@@ -132,3 +132,7 @@ $result_errors{'headitem_itemx_in_itemize'} = [
 ];
 
 
+$result_indices{'headitem_itemx_in_itemize'} = undef;
+
+
+1;

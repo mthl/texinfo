@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'nested_args'} = {
   'contents' => [
@@ -102,3 +102,7 @@ $result_texts{'nested_args'} = '';
 $result_errors{'nested_args'} = [];
 
 
+$result_indices{'nested_args'} = undef;
+
+
+1;

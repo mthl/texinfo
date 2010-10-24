@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'footnote_ending_on_empty_line'} = {
   'contents' => [
@@ -67,3 +67,7 @@ $result_texts{'footnote_ending_on_empty_line'} = 'text';
 $result_errors{'footnote_ending_on_empty_line'} = [];
 
 
+$result_indices{'footnote_ending_on_empty_line'} = undef;
+
+
+1;

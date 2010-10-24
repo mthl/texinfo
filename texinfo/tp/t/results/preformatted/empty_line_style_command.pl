@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_line_style_command'} = {
   'contents' => [
@@ -87,3 +87,7 @@ after empty line
 $result_errors{'empty_line_style_command'} = [];
 
 
+$result_indices{'empty_line_style_command'} = undef;
+
+
+1;

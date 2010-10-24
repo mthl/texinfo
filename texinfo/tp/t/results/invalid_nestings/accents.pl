@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'accents'} = {
   'contents' => [
@@ -217,3 +217,7 @@ $result_errors{'accents'} = [
 ];
 
 
+$result_indices{'accents'} = undef;
+
+
+1;

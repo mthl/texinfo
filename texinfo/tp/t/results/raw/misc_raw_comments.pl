@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'misc_raw_comments'} = {
   'contents' => [
@@ -166,3 +166,7 @@ in verbatim2
 $result_errors{'misc_raw_comments'} = [];
 
 
+$result_indices{'misc_raw_comments'} = undef;
+
+
+1;

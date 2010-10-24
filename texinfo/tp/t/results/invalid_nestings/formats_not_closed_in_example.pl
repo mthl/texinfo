@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'formats_not_closed_in_example'} = {
   'contents' => [
@@ -247,3 +247,7 @@ $result_errors{'formats_not_closed_in_example'} = [
 ];
 
 
+$result_indices{'formats_not_closed_in_example'} = undef;
+
+
+1;

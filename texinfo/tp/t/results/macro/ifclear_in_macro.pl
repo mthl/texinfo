@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'ifclear_in_macro'} = {
   'contents' => [
@@ -112,3 +112,7 @@ arg
 $result_errors{'ifclear_in_macro'} = [];
 
 
+$result_indices{'ifclear_in_macro'} = undef;
+
+
+1;

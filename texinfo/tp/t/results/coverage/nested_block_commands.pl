@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'nested_block_commands'} = {
   'contents' => [
@@ -1088,3 +1088,7 @@ After quotation sp b a
 $result_errors{'nested_block_commands'} = [];
 
 
+$result_indices{'nested_block_commands'} = undef;
+
+
+1;

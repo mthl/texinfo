@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'style_not_closed_root_commands'} = {
   'contents' => [
@@ -322,3 +322,7 @@ $result_errors{'style_not_closed_root_commands'} = [
 ];
 
 
+$result_indices{'style_not_closed_root_commands'} = undef;
+
+
+1;

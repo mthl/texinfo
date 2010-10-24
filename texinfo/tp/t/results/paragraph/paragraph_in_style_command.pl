@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'paragraph_in_style_command'} = {
   'contents' => [
@@ -202,3 +202,7 @@ $result_errors{'paragraph_in_style_command'} = [
 ];
 
 
+$result_indices{'paragraph_in_style_command'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'node_in_copying_not_closed'} = {
   'contents' => [
@@ -174,3 +174,7 @@ $result_errors{'node_in_copying_not_closed'} = [
 ];
 
 
+$result_indices{'node_in_copying_not_closed'} = undef;
+
+
+1;

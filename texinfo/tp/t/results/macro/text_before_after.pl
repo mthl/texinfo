@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'text_before_after'} = {
   'contents' => [
@@ -80,3 +80,7 @@ $result_errors{'text_before_after'} = [
 ];
 
 
+$result_indices{'text_before_after'} = undef;
+
+
+1;

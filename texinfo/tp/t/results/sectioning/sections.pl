@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'sections'} = {
   'contents' => [
@@ -53,3 +53,7 @@ $result_texts{'sections'} = 'a chapter
 $result_errors{'sections'} = [];
 
 
+$result_indices{'sections'} = undef;
+
+
+1;

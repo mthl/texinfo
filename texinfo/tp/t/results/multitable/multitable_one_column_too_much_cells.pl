@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'multitable_one_column_too_much_cells'} = {
   'contents' => [
@@ -418,3 +418,7 @@ $result_errors{'multitable_one_column_too_much_cells'} = [
 ];
 
 
+$result_indices{'multitable_one_column_too_much_cells'} = undef;
+
+
+1;

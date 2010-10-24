@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'value_in_macro_formal_arg'} = {
   'contents' => [
@@ -196,3 +196,7 @@ $result_errors{'value_in_macro_formal_arg'} = [
 ];
 
 
+$result_indices{'value_in_macro_formal_arg'} = undef;
+
+
+1;

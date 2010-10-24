@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'multitable_item_in_index'} = {
   'contents' => [
@@ -154,3 +154,7 @@ $result_errors{'multitable_item_in_index'} = [
 ];
 
 
+$result_indices{'multitable_item_in_index'} = undef;
+
+
+1;

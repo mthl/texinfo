@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'implicit_quoting_recursion'} = {
   'contents' => [
@@ -92,3 +92,7 @@ natopocotuototam
 $result_errors{'implicit_quoting_recursion'} = [];
 
 
+$result_indices{'implicit_quoting_recursion'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'headitem_itemx_in_enumerate'} = {
   'contents' => [
@@ -132,3 +132,7 @@ $result_errors{'headitem_itemx_in_enumerate'} = [
 ];
 
 
+$result_indices{'headitem_itemx_in_enumerate'} = undef;
+
+
+1;

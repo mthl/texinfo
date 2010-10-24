@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'include_space'} = {
   'contents' => [
@@ -29,3 +29,7 @@ $result_texts{'include_space'} = 'In included file.
 $result_errors{'include_space'} = [];
 
 
+$result_indices{'include_space'} = undef;
+
+
+1;

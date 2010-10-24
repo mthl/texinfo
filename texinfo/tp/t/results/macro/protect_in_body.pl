@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'protect_in_body'} = {
   'contents' => [
@@ -157,3 +157,7 @@ the result: f\\irst arg protected \\ -> \\arg1\\ second arg  after macro.
 $result_errors{'protect_in_body'} = [];
 
 
+$result_indices{'protect_in_body'} = undef;
+
+
+1;

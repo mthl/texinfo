@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'macro_one_arg_end_of_file'} = {
   'contents' => [
@@ -82,3 +82,7 @@ Arg .';
 $result_errors{'macro_one_arg_end_of_file'} = [];
 
 
+$result_indices{'macro_one_arg_end_of_file'} = undef;
+
+
+1;

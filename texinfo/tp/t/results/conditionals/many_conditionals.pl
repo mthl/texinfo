@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'many_conditionals'} = {
   'contents' => [
@@ -202,3 +202,7 @@ This is ifnottex text.
 $result_errors{'many_conditionals'} = [];
 
 
+$result_indices{'many_conditionals'} = undef;
+
+
+1;

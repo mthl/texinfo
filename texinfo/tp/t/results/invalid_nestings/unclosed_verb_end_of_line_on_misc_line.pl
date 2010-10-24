@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'unclosed_verb_end_of_line_on_misc_line'} = {
   'contents' => [
@@ -82,3 +82,7 @@ $result_errors{'unclosed_verb_end_of_line_on_misc_line'} = [
 ];
 
 
+$result_indices{'unclosed_verb_end_of_line_on_misc_line'} = undef;
+
+
+1;

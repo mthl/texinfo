@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'expand_two_same'} = {
   'contents' => [
@@ -217,3 +217,7 @@ With a doubles arg arg with comma , here  and re arg with comma , here
 $result_errors{'expand_two_same'} = [];
 
 
+$result_indices{'expand_two_same'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'raiselowersections'} = {
   'contents' => [
@@ -1056,3 +1056,7 @@ Second chapter
 $result_errors{'raiselowersections'} = [];
 
 
+$result_indices{'raiselowersections'} = undef;
+
+
+1;

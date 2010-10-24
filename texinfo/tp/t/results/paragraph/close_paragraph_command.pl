@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'close_paragraph_command'} = {
   'contents' => [
@@ -139,3 +139,7 @@ inew p after sp';
 $result_errors{'close_paragraph_command'} = [];
 
 
+$result_indices{'close_paragraph_command'} = undef;
+
+
+1;

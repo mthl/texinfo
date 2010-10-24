@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'table_command_comment'} = {
   'contents' => [
@@ -103,3 +103,7 @@ $result_texts{'table_command_comment'} = 'item
 $result_errors{'table_command_comment'} = [];
 
 
+$result_indices{'table_command_comment'} = undef;
+
+
+1;

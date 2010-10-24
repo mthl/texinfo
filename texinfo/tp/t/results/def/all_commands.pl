@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'all_commands'} = {
   'contents' => [
@@ -1983,3 +1983,7 @@ d--eftypemethod
 $result_errors{'all_commands'} = [];
 
 
+$result_indices{'all_commands'} = undef;
+
+
+1;

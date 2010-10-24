@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'math_bracketed_inside_not_closed'} = {
   'contents' => [
@@ -74,3 +74,7 @@ $result_errors{'math_bracketed_inside_not_closed'} = [
 ];
 
 
+$result_indices{'math_bracketed_inside_not_closed'} = undef;
+
+
+1;

@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'empty_multitable_with_cells'} = {
   'contents' => [
@@ -172,3 +172,7 @@ $result_errors{'empty_multitable_with_cells'} = [
 ];
 
 
+$result_indices{'empty_multitable_with_cells'} = undef;
+
+
+1;

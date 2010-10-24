@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
 
 $result_trees{'misc_raw'} = {
   'contents' => [
@@ -140,3 +140,7 @@ in verbatim2
 $result_errors{'misc_raw'} = [];
 
 
+$result_indices{'misc_raw'} = undef;
+
+
+1;
