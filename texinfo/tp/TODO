@@ -17,6 +17,8 @@ Following should be an error:
 
 test invalid, especially commands not closed/bad nesting
 
+test empty line in block or brace command in menu description.
+
 in t/57invalid_nestings.t in_table, no warning for bad stuff on @item line.
 
 in hyphenation: only text and accent commands, and should
@@ -27,6 +29,9 @@ dotless:
 
 no warning in 
 t/25regions.t double_copying
+
+no warning in
+t/57invalid_nestings.t recursive_copying
 
 no warning in
 t/19def.t empty_def_arguments
@@ -92,3 +97,13 @@ invalid/macro_def_not_closed.texi
 invalid/math_not_closed.texi
 invalid/multitable_begin_with_tab.texi
 invalid/multitable_too_much_col.texi
+invalid/node_in_copying.texi
+invalid/node_too_much_arguments.texi
+invalid/not_closed_in_menu.texi
+invalid/recursive_copying.texi
+invalid/style_not_closed_in_cartouche.texi
+invalid/style_not_closed_in_table_line.texi
+invalid/tab_in_index.texi                  (but not the printindex)
+invalid/tex_not_closed.texi
+invalid/titlepage_not_closed.texi
+

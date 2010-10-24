@@ -83,6 +83,28 @@ new comment
 *something::
 *@code{in code}::
 @end menu'
+],
+['menu_no_closed_after_empty_line',
+'@menu
+* (manual_in_menu):: desc2
+
+
+'],
+['menu_no_closed_in_description',
+'@menu
+* (manual_in_menu):: desc'
+],
+['menu_no_closed_in_entry',
+'@menu
+* a1:'
+],
+['menu_no_closed_entry_beginning',
+'@menu
+* node'
+],
+['menu_no_closed_star',
+'@menu
+* '
 ]
 );
 

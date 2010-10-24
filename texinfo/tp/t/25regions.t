@@ -17,6 +17,16 @@ This is a copyright notice
 And a second one (?)
 @end copying
 @end copying
+'],
+['double_titlepage_not_closed',
+'@titlepage
+
+This is in title page
+
+
+@titlepage
+
+And still in title page
 ']
 
 );

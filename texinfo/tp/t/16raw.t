@@ -62,6 +62,11 @@ End.
 
 This is some html
 <address> my address </address>
+'],
+['tex_not_closed',
+'@tex
+
+This is some \LaTeX{}
 ']
 );
 

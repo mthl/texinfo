@@ -1,0 +1,84 @@
+use vars qw(%result_texis %result_texts %result_trees %result_errors);
+
+$result_trees{'style_not_closed_in_block_command'} = {
+  'contents' => [
+    {
+      'cmdname' => 'cartouche',
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'cartouche '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'in code 
+'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'contents' => [],
+              'parent' => {}
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        }
+      ],
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    }
+  ],
+  'type' => 'text_root'
+};
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_block_command'}{'contents'}[0];
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_block_command'};
+$result_trees{'style_not_closed_in_block_command'}{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_block_command'};
+
+$result_texis{'style_not_closed_in_block_command'} = '@cartouche
+cartouche @code{in code 
+}@end cartouche
+';
+
+
+$result_texts{'style_not_closed_in_block_command'} = 'cartouche in code 
+';
+
+$result_errors{'style_not_closed_in_block_command'} = [
+  {
+    'error_line' => ':3: @code missing close brace
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@code missing close brace',
+    'type' => 'error'
+  }
+];
+
+

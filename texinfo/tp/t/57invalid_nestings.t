@@ -113,6 +113,17 @@ in quotation}
 @code{@tab bidule}
 @end multitable
 '],
+['tab_in_index',
+'@multitable {one nonlettered character} {normal text}
+@item one nonlettered character @tab aaa
+@vindex in index entry @tab in tab
+@end multitable
+'],
+['multitable_item_in_index',
+'@multitable {aaa} {bbb}
+@vindex @item on item line
+@end multitable
+'],
 ['style_not_closed_no_newline_root_commands',
 '@node Top
 
@@ -149,6 +160,18 @@ in quotation}
 @node Top
 In node
 '],
+['style_not_closed_in_block_command',
+'@cartouche
+cartouche @code{in code 
+@end cartouche
+'],
+['style_not_closed_in_table_line',
+'@table @asis
+@item first item
+line
+line @code{in code @item in item
+@end table
+'],
 ['formats_not_closed_in_example',
 '@example
 
@@ -184,6 +207,57 @@ In item, nested itemize
 @headitem headitem outside.
 @someitem someitem outside.
 @tab tab outside
+'],
+['node_in_copying',
+'@copying
+@node node
+
+@end copying
+'],
+['node_in_copying_not_closed',
+'@copying
+
+This is an unterminatted copyright notice
+
+
+@node Top
+@top Top section
+
+@insertcopying
+'],
+['table_not_closed_in_menu_description',
+'@menu
+* (gcc):: text @table @minus
+@item item
+table line
+@end menu
+'],
+['table_not_closed_in_menu_comment',
+'@menu
+* (manual):: desc
+
+@table @bullet
+@item item
+comment
+* (manual2)::
+@end menu
+'],
+['def_not_closed_in_menu_description',
+'@menu
+* (info):: before deff @deffn bidule truc chose
+
+deffn text
+@end menu
+'],
+['recursive_copying',
+'@copying
+
+In copying.
+
+@insertcopying
+@end copying
+
+@insertcopying
 ']
 );
 
