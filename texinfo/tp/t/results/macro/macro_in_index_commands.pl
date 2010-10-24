@@ -1924,6 +1924,69 @@ $result_errors{'macro_in_index_commands'} = [
     'macro' => '',
     'text' => '@documentlanguage should only appear at a line beginning',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':76: warning: Printing an index `ky\' merged in another one `pg\'
+',
+    'file_name' => '',
+    'line_nr' => 76,
+    'macro' => '',
+    'text' => 'Printing an index `ky\' merged in another one `pg\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':79: warning: Printing an index `truc\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 79,
+    'macro' => '',
+    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':82: warning: Printing an index `truc\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 82,
+    'macro' => '',
+    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':85: warning: Printing an index `cp\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 85,
+    'macro' => '',
+    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':88: warning: Printing an index `cp\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 88,
+    'macro' => '',
+    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':91: warning: Printing an index `defg\' merged in another one `pg\'
+',
+    'file_name' => '',
+    'line_nr' => 91,
+    'macro' => '',
+    'text' => 'Printing an index `defg\' merged in another one `pg\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':94: warning: Printing an index `abc\' merged in another one `defg\'
+',
+    'file_name' => '',
+    'line_nr' => 94,
+    'macro' => '',
+    'text' => 'Printing an index `abc\' merged in another one `defg\'',
+    'type' => 'warning'
   }
 ];
 

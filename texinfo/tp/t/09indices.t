@@ -22,7 +22,10 @@ my @test_cases = (
 ['unknown_printindex',
 '@printindex bidule'],
 ['unknown_synindex',
-'@synindex c truc']
+'@synindex c truc'],
+['print_merged_index',
+'@syncodeindex fn cp
+@printindex fn']
 
 );
 

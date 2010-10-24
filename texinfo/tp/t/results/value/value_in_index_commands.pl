@@ -1607,7 +1607,71 @@ abc
 fn
 ';
 
-$result_errors{'value_in_index_commands'} = [];
+$result_errors{'value_in_index_commands'} = [
+  {
+    'error_line' => ':49: warning: Printing an index `ky\' merged in another one `pg\'
+',
+    'file_name' => '',
+    'line_nr' => 49,
+    'macro' => '',
+    'text' => 'Printing an index `ky\' merged in another one `pg\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':52: warning: Printing an index `truc\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 52,
+    'macro' => '',
+    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':55: warning: Printing an index `truc\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 55,
+    'macro' => '',
+    'text' => 'Printing an index `truc\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':58: warning: Printing an index `cp\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 58,
+    'macro' => '',
+    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':61: warning: Printing an index `cp\' merged in another one `fn\'
+',
+    'file_name' => '',
+    'line_nr' => 61,
+    'macro' => '',
+    'text' => 'Printing an index `cp\' merged in another one `fn\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':64: warning: Printing an index `defg\' merged in another one `pg\'
+',
+    'file_name' => '',
+    'line_nr' => 64,
+    'macro' => '',
+    'text' => 'Printing an index `defg\' merged in another one `pg\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':67: warning: Printing an index `abc\' merged in another one `defg\'
+',
+    'file_name' => '',
+    'line_nr' => 67,
+    'macro' => '',
+    'text' => 'Printing an index `abc\' merged in another one `defg\'',
+    'type' => 'warning'
+  }
+];
 
 
 $result_indices{'value_in_index_commands'} = {

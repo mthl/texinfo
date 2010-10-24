@@ -173,7 +173,6 @@ my %misc_commands = (
 
   # formatting
   'center'            => 'line',
-  # FIXME Verify the index exists?
   'printindex'        => 1,
   'listoffloats'      => 'line',
   # especially in titlepage
@@ -3126,6 +3125,11 @@ sub _parse_line_command_args($$$)
                                     $name), $line_nr);
       
       } else {
+        if ($self->{'merged_indices'}->{$name}) {
+          _line_warn ($self, sprintf($self->__("Printing an index `%s' merged in another one `%s'"), 
+                                     $name, $self->{'merged_indices'}->{$name}),
+                             $line_nr); 
+        }
         $args = [$name];
       }
     } else {
