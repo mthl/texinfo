@@ -64,12 +64,19 @@ double_top_section.texi
 error_in_footnote_caption.texi
 tex_in_copying.texi               (this is not invalid)
 
+partly done:
+indices/recursive_synindex.texi (only done: @synindex aaa bbb
+                                            @synindex bbb aaa)
+
 done:
 formatting/def_end_of_line.texi
 formatting/def_end_of_line_footnote.texi
 formatting/empty_deftype.texi
 formatting/def_cmds.texi (but printindex not tested)
 formatting/paragraph_in_samp.texi
+
+indices/unknown_index_entry.texi
+indices/more_unknown_index_entry.texi (but without the document structure)
 
 invalid/at_after_accent_command.texi
 invalid/bad_nesting.texi

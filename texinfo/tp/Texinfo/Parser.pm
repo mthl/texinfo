@@ -3095,7 +3095,6 @@ sub _parse_line_command_args($$$)
         unless $self->{'index_names'}->{$index_to};
       if ($self->{'index_names'}->{$index_from} 
            and $self->{'index_names'}->{$index_to}) {
-        $args = [$index_from, $index_to];
         my $current_to = $index_to;
         # find the merged indices recursively avoiding loops
         while ($current_to ne $index_from 
@@ -3109,6 +3108,10 @@ sub _parse_line_command_args($$$)
           foreach my $prefix (keys(%{$self->{'index_names'}->{$index_from}})) {
             $self->{'index_names'}->{$current_to}->{$prefix} = $in_code;
           }
+          $args = [$index_from, $index_to];
+        } else {
+          _line_warn ($self, sprintf($self->__("\@%s leads to a merging of %s in itself, ignoring"), 
+                             $command, $index_from), $line_nr);
         }
       }
     } else {
@@ -3121,8 +3124,10 @@ sub _parse_line_command_args($$$)
       if (!exists($self->{'index_names'}->{$name})) {
         _line_error ($self, sprintf($self->__("Unknown index `%s' in \@printindex"),
                                     $name), $line_nr);
+      
+      } else {
+        $args = [$name];
       }
-      $args = [$name];
     } else {
       _line_error ($self, sprintf($self->
                    __("Bad argument to \@%s: %s"), $command, $line), $line_nr);
