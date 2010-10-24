@@ -2422,8 +2422,8 @@ sub _parse_texi($$;$)
                     my $row = $parent->{'contents'}->[-1];
                     die if (!$row->{'type'});
                     if ($row->{'type'} eq 'before_item') {
-                      $self->_line_warn($self->__("\@tab before \@item"), $line_nr);
-                    } elsif ($row->{'special'}->{'cell_number'} > $parent->{'special'}->{'max_columns'}) {
+                      $self->_line_error($self->__("\@tab before \@item"), $line_nr);
+                    } elsif ($row->{'special'}->{'cell_number'} >= $parent->{'special'}->{'max_columns'}) {
                       $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'special'}->{'max_columns'}), $line_nr);
                     } else {
                       $row->{'special'}->{'cell_number'}++;

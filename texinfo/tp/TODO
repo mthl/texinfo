@@ -87,4 +87,8 @@ invalid/html_not_closed.texi
 invalid/ignored_not_closed.texi
 invalid/invalid_command_in_table.texi
 invalid/itemx_in_itemize.texi
-
+invalid/macro_call_not_closed.texi
+invalid/macro_def_not_closed.texi
+invalid/math_not_closed.texi
+invalid/multitable_begin_with_tab.texi
+invalid/multitable_too_much_col.texi

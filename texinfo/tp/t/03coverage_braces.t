@@ -50,7 +50,10 @@ anchor}
 'AAA@footnote{ in footnote
 
 Second paragraph.
-']
+'],
+['math_not_closed','@math{\delta + 2'],
+['math_bracketed_not_closed','@math{{x^i}\over{\tan '],
+['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
