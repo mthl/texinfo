@@ -81,6 +81,7 @@ sub test($$)
   }
 #use Texinfo::Structuring;
 #Texinfo::Structuring::collect_structure($result);
+#Texinfo::Structuring::sectioning_structure($result);
 
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();

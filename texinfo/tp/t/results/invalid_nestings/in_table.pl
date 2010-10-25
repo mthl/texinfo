@@ -309,12 +309,57 @@ $result_errors{'in_table'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':5: warning: @indent should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@indent should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: @titlefont should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@titlefont should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: @anchor should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@anchor should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: @footnote should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@footnote should not appear in @item',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':5: warning: @exdent should only appear at a line beginning
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => '@exdent should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: @exdent should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@exdent should not appear in @item',
     'type' => 'warning'
   }
 ];

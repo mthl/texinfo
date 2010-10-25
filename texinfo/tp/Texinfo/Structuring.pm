@@ -113,7 +113,7 @@ sub _print_current($)
 }
 
 # the tree is modified: 'next' pointers are added.
-sub collect_structure($)
+sub _collect_structure($)
 {
   my $current = shift;
 
@@ -132,6 +132,25 @@ sub collect_structure($)
     }
     print STDERR ""._print_current($current);
     $current = _next_content($current);
+  }
+}
+
+sub sectioning_structure($)
+{
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'}) {
+    return undef;
+  }
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
+        and $content->{'cmdname'} ne 'bye') {
+      my $level = 0;
+      $level = $content->{'extra'}->{'sections_level'}
+        if ($content->{'extra'} and $content->{'extra'}->{'sections_level'});
+
+      print STDERR "$level $content->{'cmdname'}\n";
+    }
   }
 }
 

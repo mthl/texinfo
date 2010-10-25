@@ -75,6 +75,19 @@ some verbatim @
 
 @macro
 
+'],
+['raw_in_brace_command',
+'@code{
+@html
+in html
+@end html
+}
+
+@samp{
+@verbatim
+in verbatim
+@end verbatim
+}
 ']
 );
 

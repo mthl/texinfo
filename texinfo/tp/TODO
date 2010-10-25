@@ -15,8 +15,6 @@ Following should be an error:
 
 test empty line in block or brace command in menu description.
 
-in t/57invalid_nestings.t in_table, no warning for bad stuff on @item line.
-
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 
@@ -31,7 +29,6 @@ t/57invalid_nestings.t recursive_copying
 
 no warning in
 t/19def.t empty_def_arguments
-
 
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 

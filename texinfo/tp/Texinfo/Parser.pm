@@ -149,7 +149,7 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
 # skipspace:   no argument, following spaces are skipped.
 # noarg:       no argument
 # text:        the line is parsed as texinfo, and the argument is converted
-#              to simple text
+#              to simple text (in _end_line)
 # line:        the line is parsed as texinfo
 # a number:    the line is parsed as texinfo and the result should be plain 
 #              text maybe followed by a comment; the result is analysed
@@ -326,7 +326,6 @@ foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
 };
 
 
-
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.
@@ -338,6 +337,7 @@ my %block_item_commands;
 # commands that forces closing an opened paragraph.
 my %close_paragraph_commands;
 
+# currently not used
 # the type of index, f: function, v: variable, t: type
 my %index_type_def = (
  'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
@@ -351,6 +351,7 @@ foreach my $index_type (keys %index_type_def) {
     $def_index_type{$def} = $index_type;
   }
 }
+
 
 my %def_map = (
     # basic commands. 
@@ -607,6 +608,10 @@ foreach my $command (keys(%brace_commands)) {
 foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
                                        'indent', 'columnfractions') {
   $in_full_text_commands{$misc_command_in_full_text} = 1;
+}
+
+foreach my $out_format (@out_formats) {
+  $in_full_text_commands{$out_format} = 1;
 }
 delete $in_full_text_commands{'caption'};
 delete $in_full_text_commands{'shortcaption'};
@@ -2443,7 +2448,9 @@ sub _parse_texi($$;$)
                                and $current->{'type'} eq 'block_line_arg')
                            or ($current->{'type'} 
                                and $current->{'type'} eq 'misc_line_arg'
-                               and $root_commands{$current->{'parent'}->{'cmdname'}})))
+                               and ($root_commands{$current->{'parent'}->{'cmdname'}}
+                                    or $current->{'parent'}->{'cmdname'} eq 'itemx'
+                                    or $current->{'parent'}->{'cmdname'} eq 'item'))))
                      or ($full_text_commands{$current->{'parent'}->{'cmdname'}}
                       and !$in_full_text_commands{$command})) {
               _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
