@@ -28,11 +28,11 @@ $result_trees{'simple_imbricated_macro'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' bidule {}
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -41,8 +41,7 @@ $result_trees{'simple_imbricated_macro'} = {
           'type' => 'empty_line_after_command'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' truc {}
 ',
         'macrobody' => 'truc.
@@ -50,7 +49,8 @@ $result_trees{'simple_imbricated_macro'} = {
 bidule.
 @end macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -88,13 +88,13 @@ bidule.
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' bidule {}
 ',
             'macrobody' => 'bidule.
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

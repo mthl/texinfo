@@ -246,12 +246,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'need',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '0.1'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -384,12 +384,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'asis'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -420,12 +420,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '0'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -456,12 +456,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'none'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -492,12 +492,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '4'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -528,12 +528,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'firstparagraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'none'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -564,12 +564,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'exampleindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '6'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -600,12 +600,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'exampleindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '6'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -636,12 +636,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'footnotestyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'end'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -672,12 +672,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'footnotestyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'separate'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -708,10 +708,10 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'documentencoding',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'US-ascii encoding name'
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -738,10 +738,10 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'documentencoding',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'ISO-8859-1'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -772,12 +772,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'frenchspacing',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'on'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -808,12 +808,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'frenchspacing',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'off'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -844,12 +844,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'fonttextsize',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '10'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -907,12 +907,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'allowcodebreaks',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'false'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -939,12 +939,12 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'allowcodebreaks',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'true'
             ]
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {},

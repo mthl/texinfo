@@ -17,11 +17,11 @@ $result_trees{'invalid_clickstyle'} = {
         }
       ],
       'cmdname' => 'clickstyle',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' @result on the same line
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -45,10 +45,10 @@ $result_trees{'invalid_clickstyle'} = {
           ],
           'cmdname' => 'click',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'clickstyle' => 'result'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -74,11 +74,11 @@ $result_trees{'invalid_clickstyle'} = {
         }
       ],
       'cmdname' => 'clickstyle',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' @nocmd
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -102,10 +102,10 @@ $result_trees{'invalid_clickstyle'} = {
           ],
           'cmdname' => 'click',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'clickstyle' => 'nocmd'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -124,11 +124,11 @@ $result_trees{'invalid_clickstyle'} = {
     },
     {
       'cmdname' => 'clickstyle',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' something
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -152,10 +152,10 @@ $result_trees{'invalid_clickstyle'} = {
           ],
           'cmdname' => 'click',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'clickstyle' => 'nocmd'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

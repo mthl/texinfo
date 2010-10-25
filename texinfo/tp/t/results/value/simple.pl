@@ -16,11 +16,11 @@ $result_trees{'simple'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' a-_5b the value @b{b} @c comment
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

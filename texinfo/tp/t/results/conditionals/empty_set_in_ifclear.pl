@@ -16,11 +16,11 @@ $result_trees{'empty_set_in_ifclear'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' a
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

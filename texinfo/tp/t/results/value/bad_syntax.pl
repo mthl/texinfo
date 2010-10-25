@@ -10,35 +10,35 @@ $result_trees{'bad_syntax'} = {
     },
     {
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => '
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' ?
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' :-/ hey!
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

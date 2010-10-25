@@ -111,10 +111,10 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => 'ringaccent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => ' '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -139,10 +139,10 @@ $result_trees{'commands'} = {
                   ],
                   'cmdname' => 'click',
                   'contents' => [],
-                  'parent' => {},
-                  'special' => {
+                  'extra' => {
                     'clickstyle' => 'arrow'
-                  }
+                  },
+                  'parent' => {}
                 },
                 {
                   'parent' => {},

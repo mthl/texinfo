@@ -16,11 +16,11 @@ $result_trees{'empty_value_in_line'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' myspace
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

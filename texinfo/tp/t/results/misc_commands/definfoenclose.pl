@@ -39,14 +39,14 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'definfoenclose',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'phoo',
               '//',
               '\\'
             ]
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -75,11 +75,11 @@ $result_trees{'definfoenclose'} = {
           ],
           'cmdname' => 'phoo',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'begin' => '//',
             'end' => '\\'
           },
+          'parent' => {},
           'type' => 'definfoenclose_command'
         },
         {
@@ -128,14 +128,14 @@ $result_trees{'definfoenclose'} = {
             }
           ],
           'cmdname' => 'definfoenclose',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'phi',
               ':',
               ':'
             ]
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -164,11 +164,11 @@ $result_trees{'definfoenclose'} = {
           ],
           'cmdname' => 'phi',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'begin' => ':',
             'end' => ':'
           },
+          'parent' => {},
           'type' => 'definfoenclose_command'
         },
         {
@@ -245,14 +245,14 @@ $result_trees{'definfoenclose'} = {
         }
       ],
       'cmdname' => 'definfoenclose',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'strong',
           '(strong:',
           ':)'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -277,11 +277,11 @@ $result_trees{'definfoenclose'} = {
           ],
           'cmdname' => 'strong',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'begin' => '(strong:',
             'end' => ':)'
           },
+          'parent' => {},
           'type' => 'definfoenclose_command'
         },
         {

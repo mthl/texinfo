@@ -34,8 +34,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -83,6 +82,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -141,8 +141,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -205,6 +204,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -243,8 +243,8 @@ $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'a
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0];
+$result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0];
-$result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'special'}{'def_args'}[6][1] = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1];
 $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'wrong_braces_with_end_of_lines'}{'contents'}[0]{'contents'}[1];

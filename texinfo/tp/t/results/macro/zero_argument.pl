@@ -19,13 +19,13 @@ $result_trees{'zero_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' foo {}
 ',
         'macrobody' => 'in foo
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -56,13 +56,13 @@ $result_trees{'zero_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bar
 ',
         'macrobody' => 'in bar
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

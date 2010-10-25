@@ -21,13 +21,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' text 
 ',
             'macrobody' => 'atext
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -58,13 +58,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' Top
 ',
             'macrobody' => 'Top
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -225,13 +225,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' pagesizes-arg
 ',
             'macrobody' => '200mm,150mm
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -262,13 +262,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' afourpaper-macro 
 ',
             'macrobody' => '@afourpaper
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -387,13 +387,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' need-arg
 ',
             'macrobody' => '0.1
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -432,12 +432,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'need',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '0.1'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -462,13 +462,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' raisesections-macro 
 ',
             'macrobody' => '@raisesections
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -497,13 +497,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' lowersections-macro 
 ',
             'macrobody' => '@lowersections
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -556,14 +556,14 @@ $result_trees{'macro_in_misc_commands'} = {
                 }
               ],
               'cmdname' => 'definfoenclose',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   'phoo',
                   '//',
                   '\\\\'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -592,11 +592,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'phoo',
               'contents' => [],
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'begin' => '//',
                 'end' => '\\\\'
               },
+              'parent' => {},
               'type' => 'definfoenclose_command'
             },
             {
@@ -631,13 +631,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' definfoenclose-name 
 ',
             'macrobody' => 'phi
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -670,14 +670,14 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'definfoenclose',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'phi',
               ':',
               ':'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -702,11 +702,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'phi',
               'contents' => [],
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'begin' => ':',
                 'end' => ':'
               },
+              'parent' => {},
               'type' => 'definfoenclose_command'
             },
             {
@@ -741,13 +741,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' strong-macro 
 ',
             'macrobody' => '@strong
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -772,13 +772,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' strong-name 
 ',
             'macrobody' => 'strong
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -851,14 +851,14 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'definfoenclose',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'strong',
               '(strong:',
               ':)'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -883,11 +883,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'strong',
               'contents' => [],
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'begin' => '(strong:',
                 'end' => ':)'
               },
+              'parent' => {},
               'type' => 'definfoenclose_command'
             },
             {
@@ -956,13 +956,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' kbdinputstyle-arg 
 ',
             'macrobody' => 'code
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -995,12 +995,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'kbdinputstyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'code'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1105,13 +1105,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' asis-arg 
 ',
             'macrobody' => 'asis
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1136,13 +1136,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' zero 
 ',
             'macrobody' => '0
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1167,13 +1167,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' none-arg 
 ',
             'macrobody' => 'none
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1198,13 +1198,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' four 
 ',
             'macrobody' => '4
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1229,13 +1229,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' six 
 ',
             'macrobody' => '6
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1274,12 +1274,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'asis'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1306,12 +1306,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '0'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1338,12 +1338,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'none'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1370,12 +1370,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'paragraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '4'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1402,12 +1402,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'firstparagraphindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'none'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1434,12 +1434,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'exampleindent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '6'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1464,13 +1464,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' end-arg 
 ',
             'macrobody' => 'end
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1495,13 +1495,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' separate-arg 
 ',
             'macrobody' => 'separate 
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1534,12 +1534,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'footnotestyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'end'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1566,12 +1566,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'footnotestyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'separate'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1596,13 +1596,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' on-arg 
 ',
             'macrobody' => 'on
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1627,13 +1627,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' off-arg 
 ',
             'macrobody' => 'off
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1666,12 +1666,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'frenchspacing',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'on'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1698,12 +1698,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'frenchspacing',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'off'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1740,13 +1740,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' ten 
 ',
             'macrobody' => '10
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1779,12 +1779,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'fonttextsize',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '10'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -1815,13 +1815,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' false-arg 
 ',
             'macrobody' => 'false
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1846,13 +1846,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' true-arg
 ',
             'macrobody' => 'true
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1885,12 +1885,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'allowcodebreaks',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'false'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1923,12 +1923,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'allowcodebreaks',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'true'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1953,13 +1953,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' page-macro 
 ',
             'macrobody' => '@page
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -1984,13 +1984,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' noindent-macro 
 ',
             'macrobody' => '@noindent
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2015,13 +2015,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' refill-macro 
 ',
             'macrobody' => '@refill
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2262,13 +2262,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' contents-macro 
 ',
             'macrobody' => '@contents
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2321,13 +2321,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' cropmarks-macro
 ',
             'macrobody' => '@cropmarks
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2362,13 +2362,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' exdent-macro 
 ',
             'macrobody' => '@exdent
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2419,13 +2419,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' two 
 ',
             'macrobody' => '2
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2458,12 +2458,12 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'sp',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               '2'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2488,13 +2488,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' result-macro 
 ',
             'macrobody' => '@result
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2517,11 +2517,11 @@ $result_trees{'macro_in_misc_commands'} = {
             }
           ],
           'cmdname' => 'clickstyle',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' @result-macro{}
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2680,13 +2680,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' shortcontents-macro 
 ',
             'macrobody' => '@shortcontents
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -2721,13 +2721,13 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' bye-macro
 ',
             'macrobody' => '@bye
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

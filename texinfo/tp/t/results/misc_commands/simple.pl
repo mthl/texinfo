@@ -21,12 +21,12 @@ $result_trees{'simple'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'idx'
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

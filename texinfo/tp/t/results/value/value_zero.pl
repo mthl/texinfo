@@ -16,11 +16,11 @@ $result_trees{'value_zero'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' zero 0
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'contents' => [

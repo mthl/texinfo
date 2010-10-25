@@ -27,13 +27,13 @@ $result_trees{'print_merged_index'} = {
         }
       ],
       'cmdname' => 'syncodeindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'fn',
           'cp'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -54,12 +54,12 @@ $result_trees{'print_merged_index'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'fn'
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

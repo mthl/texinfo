@@ -21,13 +21,13 @@ $result_trees{'out_of_multitable'} = {
         }
       ],
       'cmdname' => 'columnfractions',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           '0.6',
           '0.4'
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

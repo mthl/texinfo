@@ -25,13 +25,13 @@ $result_trees{'arg_body_expansion_order'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' othermacro
 ',
         'macrobody' => 'initial
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -76,11 +76,11 @@ $result_trees{'arg_body_expansion_order'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' othermacro
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -95,8 +95,7 @@ $result_trees{'arg_body_expansion_order'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' redefineothermacro {arg}
 ',
         'args_index' => {
@@ -108,7 +107,8 @@ different
 @end macro
 \\arg\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -131,11 +131,11 @@ different
         }
       ],
       'cmdname' => 'unmacro',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' othermacro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -154,13 +154,13 @@ different
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' othermacro
 ',
         'macrobody' => 'different
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

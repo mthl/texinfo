@@ -36,13 +36,13 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '0.4',
                   '0.6'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -147,10 +147,10 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -178,10 +178,10 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -245,17 +245,17 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

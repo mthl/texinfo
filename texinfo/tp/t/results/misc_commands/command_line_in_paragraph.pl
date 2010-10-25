@@ -34,10 +34,10 @@ $result_trees{'command_line_in_paragraph'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'en'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

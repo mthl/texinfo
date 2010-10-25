@@ -25,13 +25,13 @@ $result_trees{'text_before_after'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' mymacro
 ',
             'macrobody' => 'in macro
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

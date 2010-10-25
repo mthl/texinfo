@@ -222,8 +222,8 @@ sub convert($)
     print STDERR "  Command: $root->{'cmdname'}\n" if ($root->{'cmdname'});
     print STDERR "  Type: $root->{'type'}\n" if ($root->{'type'});
     print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
-    #print STDERR "  Special def_command: $root->{'special'}->{'def_command'}\n"
-    #  if (defined($root->{'special'}) and $root->{'special'}->{'def_command'});
+    #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
+    #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
   }
 
   return '' if (!($root->{'type'} and $root->{'type'} eq 'def_line')
@@ -246,10 +246,10 @@ sub convert($)
     if (defined($no_brace_commands{$root->{'cmdname'}})) {
       return $no_brace_commands{$root->{'cmdname'}};
     } elsif (defined($brace_no_arg_commands{$root->{'cmdname'}})) {
-      $command = $root->{'special'}->{'clickstyle'}
-         if ($root->{'special'}
-          and defined($root->{'special'}->{'clickstyle'})
-          and defined($brace_no_arg_commands{$root->{'special'}->{'clickstyle'}}));
+      $command = $root->{'extra'}->{'clickstyle'}
+         if ($root->{'extra'}
+          and defined($root->{'extra'}->{'clickstyle'})
+          and defined($brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
       return $brace_no_arg_commands{$command};
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
@@ -277,10 +277,10 @@ sub convert($)
       }
     } elsif ($kept_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {
-        if ($root->{'special'} and $root->{'special'}->{'misc_args'}
-            and $root->{'special'}->{'misc_args'}->[0]) {
+        if ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
+            and $root->{'extra'}->{'misc_args'}->[0]) {
           # this useless copy avoids perl changing the type to integer!
-          my $sp_nr = $root->{'special'}->{'misc_args'}->[0];
+          my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
           $result = "\n" x $sp_nr;
         }
       } elsif ($root->{'cmdname'} ne 'node') {
@@ -292,7 +292,7 @@ sub convert($)
     }
   }
   if ($root->{'type'} and $root->{'type'} eq 'def_line') {
-    #print STDERR "$root->{'special'}->{'def_command'}\n";
+    #print STDERR "$root->{'extra'}->{'def_command'}\n";
     $result = convert($root->{'args'}->[0]) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {

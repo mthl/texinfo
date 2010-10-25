@@ -30,8 +30,7 @@ $result_trees{'implicit_quoting_one_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' FIXME{a}
 ',
         'args_index' => {
@@ -39,7 +38,8 @@ $result_trees{'implicit_quoting_one_arg'} = {
         },
         'macrobody' => '@strong{FIXME: \\a\\}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

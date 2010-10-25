@@ -36,8 +36,7 @@ $result_trees{'ifset_in_macro'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' note {arg}
 ',
         'args_index' => {
@@ -47,7 +46,8 @@ $result_trees{'ifset_in_macro'} = {
 \\arg\\
 @end ifset
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

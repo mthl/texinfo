@@ -5,10 +5,10 @@ $result_trees{'macro_no_argument'} = {
     {
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ''
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

@@ -27,12 +27,12 @@ $result_trees{'wrong_synindex'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'aaa'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [

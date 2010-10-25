@@ -24,8 +24,7 @@ $result_trees{'expansion_order'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bidule{arg}
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'expansion_order'} = {
         },
         'macrobody' => '@machin{}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -70,14 +70,14 @@ $result_trees{'expansion_order'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' machin
 ',
         'macrobody' => '\\\\arg\\\\
 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

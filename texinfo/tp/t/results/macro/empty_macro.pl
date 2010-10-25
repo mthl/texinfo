@@ -12,12 +12,12 @@ $result_trees{'empty_macro'} = {
       ],
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' foo
 ',
         'macrobody' => ''
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

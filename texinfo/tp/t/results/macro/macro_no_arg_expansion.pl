@@ -19,13 +19,13 @@ $result_trees{'macro_no_arg_expansion'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' test1
 ',
         'macrobody' => 'res1
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

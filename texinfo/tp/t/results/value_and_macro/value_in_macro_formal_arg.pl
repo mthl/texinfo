@@ -16,11 +16,11 @@ $result_trees{'value_in_macro_formal_arg'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' argument arg 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -55,8 +55,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' testvalue { arg , the@value{argument} }
 ',
         'args_index' => {
@@ -65,7 +64,8 @@ $result_trees{'value_in_macro_formal_arg'} = {
         },
         'macrobody' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

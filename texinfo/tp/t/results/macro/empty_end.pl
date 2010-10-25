@@ -24,8 +24,7 @@ $result_trees{'empty_end'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' foo {aaa, }
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'empty_end'} = {
         },
         'macrobody' => 'in foo
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

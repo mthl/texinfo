@@ -36,8 +36,8 @@ $result_trees{'not_fraction'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {}
+              'extra' => {},
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -52,10 +52,10 @@ $result_trees{'not_fraction'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 0
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

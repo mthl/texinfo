@@ -19,13 +19,13 @@ $result_trees{'macro_definition_in_include'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' themacro
 ',
         'macrobody' => 'in themacro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

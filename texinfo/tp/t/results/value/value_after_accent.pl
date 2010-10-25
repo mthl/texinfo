@@ -16,21 +16,21 @@ $result_trees{'value_after_accent'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' a_letter a
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'contents' => [
         {
           'cmdname' => 'ringaccent',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => ' '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

@@ -40,13 +40,13 @@ $result_trees{'something_before_columnfractions'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '0.3',
                   '0.7'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -61,10 +61,10 @@ $result_trees{'something_before_columnfractions'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

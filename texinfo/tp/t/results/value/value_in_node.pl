@@ -18,11 +18,11 @@ $result_trees{'value_in_node'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' node1 Node 1
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -306,11 +306,11 @@ $result_trees{'value_in_node'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' sec1 Section 1.1
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

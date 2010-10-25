@@ -24,8 +24,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -49,6 +48,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defvr'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -99,8 +99,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -150,6 +149,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypefn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -200,8 +200,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -264,6 +263,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypeop'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -314,8 +314,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -352,6 +351,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypevr'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -402,8 +402,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -440,6 +439,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defcv'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -490,8 +490,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -541,6 +540,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defop'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -591,8 +591,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -629,6 +628,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftp'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -679,8 +679,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -717,6 +716,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defun'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -767,8 +767,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -805,6 +804,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defmac'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -855,8 +855,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -899,6 +898,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defspec'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -949,8 +949,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -974,6 +973,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defvar'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1024,8 +1024,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1055,6 +1054,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defopt'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1105,8 +1105,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1156,6 +1155,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypefun'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1206,8 +1206,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1244,6 +1243,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypevar'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1294,8 +1294,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1338,6 +1337,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defivar'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1388,8 +1388,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1445,6 +1444,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypeivar'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1495,8 +1495,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1546,6 +1545,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'defmethod'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1596,8 +1596,7 @@ $result_trees{'all_commands'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -1660,6 +1659,7 @@ $result_trees{'all_commands'} = {
             ],
             'def_command' => 'deftypemethod'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -1769,8 +1769,8 @@ $result_trees{'all_commands'}{'contents'}[26]{'parent'} = $result_trees{'all_com
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0];
+$result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27];
-$result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'special'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[0]{'special'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[27]{'contents'}[1];
 $result_trees{'all_commands'}{'contents'}[27]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[27];
 $result_trees{'all_commands'}{'contents'}[27]{'parent'} = $result_trees{'all_commands'};
@@ -1788,8 +1788,8 @@ $result_trees{'all_commands'}{'contents'}[32]{'parent'} = $result_trees{'all_com
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0];
+$result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33];
-$result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'special'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[0]{'special'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[33]{'contents'}[1];
 $result_trees{'all_commands'}{'contents'}[33]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[33];
 $result_trees{'all_commands'}{'contents'}[33]{'parent'} = $result_trees{'all_commands'};
@@ -1816,8 +1816,8 @@ $result_trees{'all_commands'}{'contents'}[41]{'parent'} = $result_trees{'all_com
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0];
+$result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42];
-$result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'special'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[0]{'special'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[42]{'contents'}[1];
 $result_trees{'all_commands'}{'contents'}[42]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[42];
 $result_trees{'all_commands'}{'contents'}[42]{'parent'} = $result_trees{'all_commands'};
@@ -1826,8 +1826,8 @@ $result_trees{'all_commands'}{'contents'}[44]{'parent'} = $result_trees{'all_com
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0];
+$result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45];
-$result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'special'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[0]{'special'}{'def_args'}[0][1];
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'all_commands'}{'contents'}[45]{'contents'}[1];
 $result_trees{'all_commands'}{'contents'}[45]{'contents'}[1]{'parent'} = $result_trees{'all_commands'}{'contents'}[45];
 $result_trees{'all_commands'}{'contents'}[45]{'parent'} = $result_trees{'all_commands'};

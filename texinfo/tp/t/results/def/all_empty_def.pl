@@ -20,10 +20,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -59,10 +59,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'defvr'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -98,10 +98,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deftypefn'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -137,10 +137,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deftypeop'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -176,10 +176,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deftypevr'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -215,10 +215,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'defcv'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -254,10 +254,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deftypecv'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -293,10 +293,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'defop'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -332,10 +332,10 @@ $result_trees{'all_empty_def'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_command' => 'deftp'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],

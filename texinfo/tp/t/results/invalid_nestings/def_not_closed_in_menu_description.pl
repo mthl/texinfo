@@ -61,8 +61,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                           'type' => 'block_line_arg'
                         }
                       ],
-                      'parent' => {},
-                      'special' => {
+                      'extra' => {
                         'def_args' => [
                           [
                             'category',
@@ -99,6 +98,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                         ],
                         'def_command' => 'deffn'
                       },
+                      'parent' => {},
                       'type' => 'def_line'
                     },
                     {

@@ -18,11 +18,11 @@ $result_trees{'value_node_directions'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' a--foo bar
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

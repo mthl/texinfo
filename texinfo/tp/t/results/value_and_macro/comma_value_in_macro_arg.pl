@@ -16,11 +16,11 @@ $result_trees{'comma_value_in_macro_arg'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' comma ,
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -55,8 +55,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro1 { arg1 , arg2 }
 ',
         'args_index' => {
@@ -65,7 +64,8 @@ $result_trees{'comma_value_in_macro_arg'} = {
         },
         'macrobody' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

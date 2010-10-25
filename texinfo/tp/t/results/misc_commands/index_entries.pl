@@ -60,12 +60,12 @@ $result_trees{'index_entries'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'truc'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -19,13 +19,13 @@ $result_trees{'two_macros_on_a_line'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' mymacro
 ',
         'macrobody' => 'in mymacro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -73,8 +73,7 @@ $result_trees{'two_macros_on_a_line'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' mymacro-with-args{arg}
 ',
         'args_index' => {
@@ -84,7 +83,8 @@ $result_trees{'two_macros_on_a_line'} = {
 now the arg \\arg\\
 after
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

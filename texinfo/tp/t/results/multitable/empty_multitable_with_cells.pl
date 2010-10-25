@@ -80,11 +80,11 @@ $result_trees{'empty_multitable_with_cells'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 0,
         'prototypes' => []
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

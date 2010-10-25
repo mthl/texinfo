@@ -22,11 +22,11 @@ $result_trees{'consecutive_conditionals'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' b
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -27,12 +27,12 @@ $result_trees{'recursive_synindex'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'aaa'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -59,12 +59,12 @@ $result_trees{'recursive_synindex'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'bbb'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -91,13 +91,13 @@ $result_trees{'recursive_synindex'} = {
         }
       ],
       'cmdname' => 'synindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'aaa',
           'bbb'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [

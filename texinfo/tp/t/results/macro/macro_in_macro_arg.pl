@@ -25,13 +25,13 @@ $result_trees{'macro_in_macro_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro1
 ',
         'macrobody' => 'a, @macro2
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -67,8 +67,7 @@ $result_trees{'macro_in_macro_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro2{arg}
 ',
         'args_index' => {
@@ -76,7 +75,8 @@ $result_trees{'macro_in_macro_arg'} = {
         },
         'macrobody' => 'hello \\arg\\ after arg
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -123,8 +123,7 @@ $result_trees{'macro_in_macro_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro3{text, arg}
 ',
         'args_index' => {
@@ -134,7 +133,8 @@ $result_trees{'macro_in_macro_arg'} = {
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

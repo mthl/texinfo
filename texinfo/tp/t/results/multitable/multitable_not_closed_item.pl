@@ -77,21 +77,21 @@ $result_trees{'multitable_not_closed_item'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2,
         'prototypes' => [
           {},
           {}
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -110,9 +110,9 @@ $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1]{'conte
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0];
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[0] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'};
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'special'}{'prototypes'}[0] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'special'}{'prototypes'}[1] = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 
 $result_texis{'multitable_not_closed_item'} = '@multitable {r} {t}
 @item rt 

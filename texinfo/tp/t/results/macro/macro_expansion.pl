@@ -53,8 +53,7 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro1 {arg1, arg2 }
 ',
         'args_index' => {
@@ -66,7 +65,8 @@ $result_trees{'macro_expansion'} = {
 \\arg2\\
 @end verbatim
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

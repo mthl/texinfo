@@ -35,8 +35,7 @@ $result_trees{'bad_formal_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bad  { , not_empty}
 ',
         'args_index' => {
@@ -45,7 +44,8 @@ $result_trees{'bad_formal_arg'} = {
         },
         'macrobody' => 'in bad macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -86,8 +86,7 @@ $result_trees{'bad_formal_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bad-space{first, in 2arg}
 ',
         'args_index' => {
@@ -96,7 +95,8 @@ $result_trees{'bad_formal_arg'} = {
         },
         'macrobody' => 'bad space
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -141,11 +141,11 @@ $result_trees{'bad_formal_arg'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' foo {? aaa}
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -154,8 +154,7 @@ $result_trees{'bad_formal_arg'} = {
           'type' => 'empty_line_after_command'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bar {:::}
 ',
         'args_index' => {
@@ -166,7 +165,8 @@ $result_trees{'bad_formal_arg'} = {
 in macro foo
 @end macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -24,8 +24,7 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro2{arg}
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'complex_argument'} = {
         },
         'macrobody' => 'coucou \\arg\\ after arg
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -82,8 +82,7 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro4 {}
 ',
         'macrobody' => '1
@@ -91,7 +90,8 @@ $result_trees{'complex_argument'} = {
 3
 4
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -138,8 +138,7 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro3{text, arg}
 ',
         'args_index' => {
@@ -149,7 +148,8 @@ $result_trees{'complex_argument'} = {
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -359,8 +359,7 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro7 {truc}
 ',
         'args_index' => {
@@ -368,7 +367,8 @@ $result_trees{'complex_argument'} = {
         },
         'macrobody' => '@emph{\\truc\\}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -19,13 +19,13 @@ $result_trees{'space_macro_after_end'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' spaces
 ',
         'macrobody' => '  
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

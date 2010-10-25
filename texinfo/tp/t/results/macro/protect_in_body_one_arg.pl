@@ -29,8 +29,7 @@ $result_trees{'protect_in_body_one_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro1 { arg1 , arg2 }
 ',
         'args_index' => {
@@ -39,7 +38,8 @@ $result_trees{'protect_in_body_one_arg'} = {
         },
         'macrobody' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

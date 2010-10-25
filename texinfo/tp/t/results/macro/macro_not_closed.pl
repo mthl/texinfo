@@ -19,11 +19,11 @@ $result_trees{'macro_not_closed'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' name
 '
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

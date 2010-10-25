@@ -983,7 +983,7 @@ sub _parse_macro_command($$$$$;$)
   my $parent = shift;
   my $line_nr = shift;
   my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
-               'special' => {'arg_line' => $line} };
+               'extra' => {'arg_line' => $line} };
   # REMACRO
   if ($line =~ /^\s+([[:alnum:]][[:alnum:]-]*)\s*(.*)/) {
     my $macro_name = $1;
@@ -1011,7 +1011,7 @@ sub _parse_macro_command($$$$$;$)
       $self->_line_error(sprintf($self->__("Bad or empty \@$command formal argument: %s"),
                                            $formal_arg), $line_nr)
             if ($formal_arg !~ /^[\w\-]+$/);
-      $macro->{'special'}->{'args_index'}->{$formal_arg} = $index;
+      $macro->{'extra'}->{'args_index'}->{$formal_arg} = $index;
       $index++;
     }
   } else {
@@ -1354,9 +1354,9 @@ sub _expand_macro_body($$$$) {
   my $args = shift;
   my $line_nr = shift;
 
-  my $macrobody = $macro->{'special'}->{'macrobody'};
+  my $macrobody = $macro->{'extra'}->{'macrobody'};
   my $args_total = scalar(@{$macro->{'args'}}) -1;
-  my $args_index = $macro->{'special'}->{'args_index'};
+  my $args_index = $macro->{'extra'}->{'args_index'};
 
   my $i;
   for ($i=0; $i<=$args_total; $i++) {
@@ -1717,9 +1717,9 @@ sub _end_line($$$)
     my $def_context = pop @{$self->{'context_stack'}};
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
-    my $arguments = _parse_def ($current->{'parent'}->{'special'}->{'def_command'}, 
+    my $arguments = _parse_def ($current->{'parent'}->{'extra'}->{'def_command'}, 
                                 $current->{'contents'});
-    $current->{'parent'}->{'special'}->{'def_args'} = $arguments 
+    $current->{'parent'}->{'extra'}->{'def_args'} = $arguments 
        if scalar(@$arguments);
     $current = $current->{'parent'}->{'parent'};
 
@@ -1760,11 +1760,11 @@ sub _end_line($$$)
       }
       
       my $multitable = $current->{'parent'};
-      $multitable->{'special'}->{'max_columns'} = scalar(@prototype_row);
+      $multitable->{'extra'}->{'max_columns'} = scalar(@prototype_row);
       if (!scalar(@prototype_row)) {
         $self->_line_warn ($self->__("empty multitable"), $line_nr);
       }
-      $multitable->{'special'}->{'prototypes'} = \@prototype_row;
+      $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
 
     }
     $current = $current->{'parent'};
@@ -1803,7 +1803,7 @@ sub _end_line($$$)
     if ($self->{'misc_commands'}->{$command}
         and $self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
-      $current->{'special'}->{'misc_args'} = $args if (defined($args));
+      $current->{'extra'}->{'misc_args'} = $args if (defined($args));
     } elsif ($self->{'misc_commands'}->{$command}
         and $self->{'misc_commands'}->{$command} eq 'text') {
       if (!$current->{'args'} or !@{$current->{'args'}}) {
@@ -1811,7 +1811,7 @@ sub _end_line($$$)
            $command), $line_nr);
       } else {
         my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
-        $current->{'special'}->{'text_arg'} = $text;
+        $current->{'extra'}->{'text_arg'} = $text;
         if ($command eq 'include') {
           my $file;
           if ($text =~ m,^(/|\./|\.\./),) {
@@ -1885,10 +1885,10 @@ sub _end_line($$$)
           print STDERR "BUG: $context in misc_line_arg ne line\n" 
         if ($context ne 'line');
         $current = $current->{'parent'};
-        $current->{'special'}->{'max_columns'} = 0;
-        $current->{'special'}->{'max_columns'} = 
-            scalar(@{$misc_cmd->{'special'}->{'misc_args'}})
-              if (defined($misc_cmd->{'special'}->{'misc_args'}));
+        $current->{'extra'}->{'max_columns'} = 0;
+        $current->{'extra'}->{'max_columns'} = 
+            scalar(@{$misc_cmd->{'extra'}->{'misc_args'}})
+              if (defined($misc_cmd->{'extra'}->{'misc_args'}));
         push @{$current->{'contents'}}, { 'type' => 'before_item',
            'contents' => [], 'parent', $current };
         $current = $current->{'contents'}->[-1];
@@ -2059,7 +2059,7 @@ sub _parse_texi($$;$)
           push @{$current->{'contents'}}, { 'cmdname' => $1,
                                             'parent' => $current,
                                             'contents' => [],
-                         'special' => {'arg_line' => $line }};
+                         'extra' => {'arg_line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
         # ifclear/ifset may be nested
@@ -2070,7 +2070,7 @@ sub _parse_texi($$;$)
           push @{$current->{'contents'}}, { 'cmdname' => $1,
                                             'parent' => $current,
                                             'contents' => [],
-                         'special' => {'line' => $line }};
+                         'extra' => {'line' => $line }};
           $current = $current->{'contents'}->[-1];
           last;
         } elsif ($line =~ /^(.*?)\@end\s([a-zA-Z][\w-]*)/o and ($2 eq $current->{'cmdname'})) {
@@ -2085,7 +2085,7 @@ sub _parse_texi($$;$)
                     or !$current->{'parent'}->{'cmdname'} 
                     or ($current->{'parent'}->{'cmdname'} ne 'macro'
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
-            $current->{'special'}->{'macrobody'} = 
+            $current->{'extra'}->{'macrobody'} = 
                tree_to_texi({ 'contents' => $current->{'contents'} });
             if ($current->{'args'} and $current->{'args'}->[0]) {
               $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
@@ -2251,9 +2251,9 @@ sub _parse_texi($$;$)
           if ($line =~ /^[^\S\n]/) {
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
               $line =~ s/^([^\S\n]+)//;
-              $current->{'special'}->{'spaces'} = '' 
-                if (!defined($current->{'special'}->{'spaces'}));
-              $current->{'special'}->{'spaces'} .= $1;
+              $current->{'extra'}->{'spaces'} = '' 
+                if (!defined($current->{'extra'}->{'spaces'}));
+              $current->{'extra'}->{'spaces'} .= $1;
             } else {
               _line_warn ($self, sprintf($self->
                 __("Accent command `\@%s' must not be followed by whitespace"),
@@ -2542,7 +2542,7 @@ sub _parse_texi($$;$)
             } elsif ($arg_spec eq 'special') {
               $args 
                 = $self->_parse_special_misc_command($line, $command, $line_nr);
-              $current->{'contents'}->[-1]->{'special'}->{'arg_line'} = $line;
+              $current->{'contents'}->[-1]->{'extra'}->{'arg_line'} = $line;
             }
             foreach my $arg (@$args) {
               push @{$current->{'contents'}->[-1]->{'args'}},
@@ -2591,17 +2591,17 @@ sub _parse_texi($$;$)
               } elsif ($parent = _item_multitable_parent($current)) {
                 if ($command eq 'item' or $command eq 'headitem'
                      or $command eq 'tab') {
-                  if (!$parent->{'special'}->{'max_columns'}) {
+                  if (!$parent->{'extra'}->{'max_columns'}) {
                     $self->_line_warn (sprintf($self->__("\@%s in empty multitable"), $command), $line_nr);
                   } elsif ($command eq 'tab') {
                     my $row = $parent->{'contents'}->[-1];
                     die if (!$row->{'type'});
                     if ($row->{'type'} eq 'before_item') {
                       $self->_line_error($self->__("\@tab before \@item"), $line_nr);
-                    } elsif ($row->{'special'}->{'cell_number'} >= $parent->{'special'}->{'max_columns'}) {
-                      $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'special'}->{'max_columns'}), $line_nr);
+                    } elsif ($row->{'extra'}->{'cell_number'} >= $parent->{'extra'}->{'max_columns'}) {
+                      $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'extra'}->{'max_columns'}), $line_nr);
                     } else {
-                      $row->{'special'}->{'cell_number'}++;
+                      $row->{'extra'}->{'cell_number'}++;
                       push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                   'parent' => $row,
                                                   'contents' => [] };
@@ -2611,7 +2611,7 @@ sub _parse_texi($$;$)
                   } else {
                     print STDERR "ROW\n" if ($self->{'debug'});
                     my $row = { 'type' => 'row', 'contents' => [],
-                                'special' => { 'cell_number' => 1 },
+                                'extra' => { 'cell_number' => 1 },
                                 'parent' => $parent };
                     push @{$parent->{'contents'}}, $row;
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
@@ -2633,7 +2633,7 @@ sub _parse_texi($$;$)
                 { 'cmdname' => $command, 'parent' => $current };
               if ($self->{'sections_level'} and $root_commands{$command}
                    and $command ne 'node') {
-                $current->{'contents'}->[-1]->{'special'}->{'sections_level'}
+                $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
                   = $self->{'sections_level'};
               }
               # def*x
@@ -2658,7 +2658,7 @@ sub _parse_texi($$;$)
                 }
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
-                $current->{'contents'}->[-1]->{'special'} = 
+                $current->{'contents'}->[-1]->{'extra'} = 
                    {'def_command' => $base_command};
               }
             }
@@ -2746,7 +2746,7 @@ sub _parse_texi($$;$)
               push @{$current->{'contents'}}, { 
                                                 'type' => 'def_line',
                                                 'parent' => $current,
-                                                'special' => 
+                                                'extra' => 
                                                   {'def_command' => $command}
                                                 };
             } else {
@@ -2790,11 +2790,11 @@ sub _parse_texi($$;$)
                                               'contents' => [] };
             $current = $current->{'contents'}->[-1];
             if ($command eq 'click') {
-              $current->{'special'}->{'clickstyle'} = $self->{'clickstyle'};
+              $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
             }
             if ($self->{'definfoenclose'}->{$command}) {
               $current->{'type'} = 'definfoenclose_command';
-              $current->{'special'} = { 
+              $current->{'extra'} = { 
                    'begin' => $self->{'definfoenclose'}->{$command}->[0], 
                    'end' => $self->{'definfoenclose'}->{$command}->[1] };
           }
@@ -3354,9 +3354,9 @@ sub _expand_cmd_args_to_texi ($) {
      foreach my $arg (@{$cmd->{'args'}}) {
         $result .= tree_to_texi ($arg);
     }
-  } elsif (($cmd->{'special'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
-           and defined($cmd->{'special'}->{'arg_line'})) {
-    $result .= $cmd->{'special'}->{'arg_line'};
+  } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
+           and defined($cmd->{'extra'}->{'arg_line'})) {
+    $result .= $cmd->{'extra'}->{'arg_line'};
   } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
             and defined($cmd->{'args'})) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
@@ -3374,8 +3374,8 @@ sub _expand_cmd_args_to_texi ($) {
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
     }
-    if ($cmd->{'special'} and exists ($cmd->{'special'}->{'spaces'})) {
-       $result .= $cmd->{'special'}->{'spaces'};
+    if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
+       $result .= $cmd->{'extra'}->{'spaces'};
     }
     #print STDERR "".Data::Dumper->Dump([$cmd]);
     my $arg_nr = 0;

@@ -30,8 +30,7 @@ $result_trees{'expand_two_same'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro2 { arg }
 ',
         'args_index' => {
@@ -40,7 +39,8 @@ $result_trees{'expand_two_same'} = {
         'macrobody' => 'With a doubles arg \\arg\\ and re \\arg\\
 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

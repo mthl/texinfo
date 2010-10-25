@@ -42,14 +42,14 @@ $result_trees{'good_comment'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '0.4',
                   '.6',
                   '5.'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -64,10 +64,10 @@ $result_trees{'good_comment'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 3
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -29,8 +29,7 @@ $result_trees{'implicit_quoting_recursion'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' cat{a,b}
 ',
         'args_index' => {
@@ -39,7 +38,8 @@ $result_trees{'implicit_quoting_recursion'} = {
         },
         'macrobody' => '\\a\\\\b\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

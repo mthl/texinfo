@@ -17,15 +17,15 @@ $result_trees{'no_macrobody'} = {
       ],
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' no-macrobody {arg}
 ',
         'args_index' => {
           'arg' => 0
         },
         'macrobody' => ''
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

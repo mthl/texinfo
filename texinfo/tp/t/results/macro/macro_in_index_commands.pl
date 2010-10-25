@@ -19,13 +19,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' cp
 ',
         'macrobody' => 'cp
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -50,13 +50,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' fn 
 ',
         'macrobody' => 'fn
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -81,13 +81,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' syncodeindex-command 
 ',
         'macrobody' => '@syncodeindex
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -126,13 +126,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'syncodeindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'cp',
           'fn'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -159,13 +159,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'syncodeindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'cp',
           'fn'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -190,13 +190,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' en 
 ',
         'macrobody' => 'en
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -221,13 +221,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' documentlanguage-command 
 ',
         'macrobody' => '@documentlanguage
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -272,10 +272,10 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'en'
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -319,10 +319,10 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'cmdname' => 'documentlanguage',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'en'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -356,13 +356,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' truc 
 ',
         'macrobody' => 'truc
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -408,12 +408,12 @@ $result_trees{'macro_in_index_commands'} = {
             }
           ],
           'cmdname' => 'defindex',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'truc'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -447,13 +447,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' trucindex-command 
 ',
         'macrobody' => '@trucindex
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -517,13 +517,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' codeidx 
 ',
         'macrobody' => 'codeidx
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -562,12 +562,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'defcodeindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'codeidx'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -592,13 +592,13 @@ $result_trees{'macro_in_index_commands'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' defcodeindex-entry 
 ',
         'macrobody' => 'a @var{index entry} t@\'e @^{@dotless{i}}
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -768,13 +768,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'syncodeindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'ky',
           'pg'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -867,13 +867,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'synindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'truc',
           'cp'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -906,12 +906,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'abc'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -938,12 +938,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'defindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'defg'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -976,13 +976,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'synindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'abc',
           'defg'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -1009,13 +1009,13 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'synindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'defg',
           'ky'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1125,12 +1125,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'pg'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1174,12 +1174,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'ky'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1223,12 +1223,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'truc'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1272,12 +1272,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'truc'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1321,12 +1321,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'cp'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1370,12 +1370,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'cp'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1419,12 +1419,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'defg'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1468,12 +1468,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'abc'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -1517,12 +1517,12 @@ $result_trees{'macro_in_index_commands'} = {
         }
       ],
       'cmdname' => 'printindex',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'fn'
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

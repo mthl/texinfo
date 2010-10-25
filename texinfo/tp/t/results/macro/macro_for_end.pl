@@ -19,13 +19,13 @@ $result_trees{'macro_for_end'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' my-end
 ',
         'macrobody' => '@end
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

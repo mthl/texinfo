@@ -24,8 +24,7 @@ $result_trees{'empty_def_command'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -49,6 +48,7 @@ $result_trees{'empty_def_command'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],
@@ -88,8 +88,7 @@ $result_trees{'empty_def_command'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -139,6 +138,7 @@ $result_trees{'empty_def_command'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -161,8 +161,7 @@ $result_trees{'empty_def_command'} = {
             }
           ],
           'cmdname' => 'deffnx',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -186,6 +185,7 @@ $result_trees{'empty_def_command'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],

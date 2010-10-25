@@ -38,8 +38,8 @@ $result_trees{'empty_comment'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {}
+              'extra' => {},
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -54,10 +54,10 @@ $result_trees{'empty_comment'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 0
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

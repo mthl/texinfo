@@ -12,12 +12,12 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       ],
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' texnl{}
 ',
         'macrobody' => ''
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -62,12 +62,12 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       ],
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' texnl2
 ',
         'macrobody' => ''
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

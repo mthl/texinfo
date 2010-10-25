@@ -316,11 +316,11 @@ $result_trees{'raiselowersections'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' do-top
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -497,10 +497,10 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'sections_level' => -1
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -624,10 +624,10 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'sections_level' => -1
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -714,11 +714,11 @@ $result_trees{'raiselowersections'} = {
             }
           ],
           'cmdname' => 'clear',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' do-top
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -727,10 +727,10 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'sections_level' => -1
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [

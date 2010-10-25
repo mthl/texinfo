@@ -24,8 +24,7 @@ $result_trees{'macro_one_arg_end_of_file'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' one-arg{arg}
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'macro_one_arg_end_of_file'} = {
         },
         'macrobody' => 'Arg \\arg\\.
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

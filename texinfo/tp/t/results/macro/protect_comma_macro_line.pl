@@ -42,8 +42,7 @@ $result_trees{'protect_comma_macro_line'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro2 { arg }
 ',
         'args_index' => {
@@ -54,7 +53,8 @@ and another one on another line \\arg\\
 
 and a last in another paragraph
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

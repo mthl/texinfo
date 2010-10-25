@@ -12,12 +12,12 @@ $result_trees{'paragraph_and_macro'} = {
       ],
       'cmdname' => 'macro',
       'contents' => [],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' empty
 ',
         'macrobody' => ''
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -48,13 +48,13 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' space
 ',
         'macrobody' => '   
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -85,13 +85,13 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' word
 ',
         'macrobody' => 'a word
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

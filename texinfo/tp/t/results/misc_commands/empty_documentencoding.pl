@@ -18,10 +18,10 @@ $result_trees{'empty_documentencoding'} = {
         }
       ],
       'cmdname' => 'documentencoding',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'text_arg' => ''
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'

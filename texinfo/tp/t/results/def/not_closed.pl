@@ -24,8 +24,7 @@ $result_trees{'not_closed'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -62,6 +61,7 @@ $result_trees{'not_closed'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -84,8 +84,7 @@ $result_trees{'not_closed'} = {
             }
           ],
           'cmdname' => 'deffnx',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -122,6 +121,7 @@ $result_trees{'not_closed'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         },
         {
@@ -146,8 +146,7 @@ $result_trees{'not_closed'} = {
                   'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'def_args' => [
                   [
                     'category',
@@ -171,6 +170,7 @@ $result_trees{'not_closed'} = {
                 ],
                 'def_command' => 'defvar'
               },
+              'parent' => {},
               'type' => 'def_line'
             }
           ],

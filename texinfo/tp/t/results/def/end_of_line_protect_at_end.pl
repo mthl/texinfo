@@ -29,8 +29,7 @@ $result_trees{'end_of_line_protect_at_end'} = {
               'type' => 'block_line_arg'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'def_args' => [
               [
                 'category',
@@ -67,6 +66,7 @@ $result_trees{'end_of_line_protect_at_end'} = {
             ],
             'def_command' => 'deffn'
           },
+          'parent' => {},
           'type' => 'def_line'
         }
       ],

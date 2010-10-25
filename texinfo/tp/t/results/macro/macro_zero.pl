@@ -19,13 +19,13 @@ $result_trees{'macro_zero'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' zero
 ',
         'macrobody' => '0
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

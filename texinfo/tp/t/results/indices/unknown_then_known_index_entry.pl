@@ -34,12 +34,12 @@ $result_trees{'unknown_then_known_index_entry'} = {
             }
           ],
           'cmdname' => 'defindex',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'misc_args' => [
               'some'
             ]
-          }
+          },
+          'parent' => {}
         },
         {
           'args' => [

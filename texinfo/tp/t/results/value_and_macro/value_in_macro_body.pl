@@ -16,11 +16,11 @@ $result_trees{'value_in_macro_body'} = {
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bodyarg \\arg\\ 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -50,8 +50,7 @@ $result_trees{'value_in_macro_body'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' testvaluebody { arg }
 ',
         'args_index' => {
@@ -59,7 +58,8 @@ $result_trees{'value_in_macro_body'} = {
         },
         'macrobody' => 'result: @emph{\\@value{bodyarg}\\  }
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

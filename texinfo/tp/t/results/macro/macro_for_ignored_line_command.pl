@@ -19,13 +19,13 @@ $result_trees{'macro_for_ignored_line_command'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' page-macro
 ',
         'macrobody' => '@page
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

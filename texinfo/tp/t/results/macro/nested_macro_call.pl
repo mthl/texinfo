@@ -19,13 +19,13 @@ $result_trees{'nested_macro_call'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' machin{}
 ',
         'macrobody' => '(machin)
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -62,14 +62,14 @@ $result_trees{'nested_macro_call'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' truc{}
 ',
         'macrobody' => '@machin{}
 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

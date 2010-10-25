@@ -11,11 +11,11 @@ $result_trees{'clickstyle'} = {
         }
       ],
       'cmdname' => 'clickstyle',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' @result
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -39,10 +39,10 @@ $result_trees{'clickstyle'} = {
           ],
           'cmdname' => 'click',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'clickstyle' => 'result'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

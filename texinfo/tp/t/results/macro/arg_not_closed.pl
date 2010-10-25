@@ -24,8 +24,7 @@ $result_trees{'arg_not_closed'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' foo {arg}
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'arg_not_closed'} = {
         },
         'macrobody' => 'foo
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

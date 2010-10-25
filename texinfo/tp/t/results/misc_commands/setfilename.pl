@@ -33,10 +33,10 @@ $result_trees{'setfilename'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'text_arg' => 'file_comment'
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -63,10 +63,10 @@ $result_trees{'setfilename'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'text_arg' => 'file_and_spaces'
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -104,10 +104,10 @@ $result_trees{'setfilename'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'text_arg' => 'file_space_comment'
-      }
+      },
+      'parent' => {}
     },
     {
       'args' => [
@@ -157,10 +157,10 @@ $result_trees{'setfilename'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'text_arg' => '  name  '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

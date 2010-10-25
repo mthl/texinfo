@@ -13,10 +13,10 @@ $result_trees{'accents'} = {
             }
           ],
           'cmdname' => 'ringaccent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => '    '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -56,10 +56,10 @@ $result_trees{'accents'} = {
         {
           'cmdname' => 'ringaccent',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => '  '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -186,10 +186,10 @@ $result_trees{'accents'} = {
         {
           'cmdname' => 'ringaccent',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => ' '
-          }
+          },
+          'parent' => {}
         },
         {
           'cmdname' => '@',

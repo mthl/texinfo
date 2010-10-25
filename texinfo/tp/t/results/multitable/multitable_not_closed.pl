@@ -53,14 +53,14 @@ $result_trees{'multitable_not_closed'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2,
         'prototypes' => [
           {},
           {}
         ]
-      }
+      },
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -74,9 +74,9 @@ $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3]{
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0];
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[0] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed'};
-$result_trees{'multitable_not_closed'}{'contents'}[0]{'special'}{'prototypes'}[0] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_not_closed'}{'contents'}[0]{'special'}{'prototypes'}[1] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 
 $result_texis{'multitable_not_closed'} = '@multitable {r} {t}
 @end multitable';

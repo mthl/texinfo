@@ -38,11 +38,11 @@ $result_trees{'nested_macros'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' othermacro 
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -53,11 +53,11 @@ $result_trees{'nested_macros'} = {
         {
           'cmdname' => 'macro',
           'contents' => [],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => '
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -66,8 +66,7 @@ $result_trees{'nested_macros'} = {
           'type' => 'empty_line_after_command'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' truc   { arg,  ex}
 ',
         'args_index' => {
@@ -81,7 +80,8 @@ other macro
 @macro
 @end macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

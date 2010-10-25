@@ -35,8 +35,7 @@ $result_trees{'too_much_args'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' twoargs {first, second}
 ',
         'args_index' => {
@@ -46,7 +45,8 @@ $result_trees{'too_much_args'} = {
         'macrobody' => 'first arg: \\first\\
 second arg: \\second\\
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

@@ -21,13 +21,13 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' begin-file
 ',
             'macrobody' => 'macro_i--n_pass@@
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -74,10 +74,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           ],
           'cmdname' => 'setfilename',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'macro_i--n_pass@texi_commands.info'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -102,13 +102,13 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' latin1 
 ',
             'macrobody' => 'ISO-8859-1@@
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -151,10 +151,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           ],
           'cmdname' => 'documentencoding',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'ISO-8859-1@'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -185,14 +185,14 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' multiinclude
 ',
             'macrobody' => 'macro_included.texi
 @include inc_@@f--ile.texi
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -286,13 +286,13 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
               'type' => 'raw'
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' themacro
 ',
             'macrobody' => 'in themacro
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -367,10 +367,10 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           ],
           'cmdname' => 'verbatiminclude',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'inc_@f--ile.texi'
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {}

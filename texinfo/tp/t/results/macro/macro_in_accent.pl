@@ -19,13 +19,13 @@ $result_trees{'macro_in_accent'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' a-letter
 ',
         'macrobody' => 'a
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -56,13 +56,13 @@ $result_trees{'macro_in_accent'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' space
 ',
         'macrobody' => '  
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -87,10 +87,10 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => 'ringaccent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => ' '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -171,10 +171,10 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => 'ringaccent',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'spaces' => '  '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},

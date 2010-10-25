@@ -19,13 +19,13 @@ $result_trees{'macro_in_brace_command'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' foo
 ',
         'macrobody' => 'foo-expansion
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -56,13 +56,13 @@ $result_trees{'macro_in_brace_command'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bar
 ',
         'macrobody' => 'bar-expansion
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

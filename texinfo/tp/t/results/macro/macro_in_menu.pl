@@ -25,13 +25,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' star
 ',
         'macrobody' => '*
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -62,13 +62,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' star-spaces
 ',
         'macrobody' => '* 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -99,13 +99,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' spaces
 ',
         'macrobody' => '  
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -136,13 +136,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' space
 ',
         'macrobody' => ' 
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -173,13 +173,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' two-colon
 ',
         'macrobody' => '::
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -210,13 +210,13 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' colon
 ',
         'macrobody' => ':
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

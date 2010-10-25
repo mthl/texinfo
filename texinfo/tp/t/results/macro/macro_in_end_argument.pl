@@ -19,13 +19,13 @@ $result_trees{'macro_in_end_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' a-cartouche
 ',
         'macrobody' => 'cartouche
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

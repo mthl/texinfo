@@ -31,15 +31,15 @@ $result_trees{'macro_in_value'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' ab
 ',
         'macrobody' => 'a
 
 b
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -67,11 +67,11 @@ b
         }
       ],
       'cmdname' => 'set',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' flagab @ab
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

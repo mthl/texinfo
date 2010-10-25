@@ -108,10 +108,10 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -139,10 +139,10 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -215,10 +215,10 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -261,20 +261,20 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 1,
         'prototypes' => [
           {}
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -332,8 +332,8 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0] = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'};
-$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'special'}{'prototypes'}[0] = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'};
 
 $result_texis{'multitable_one_column_too_much_cells'} = '@multitable {a}

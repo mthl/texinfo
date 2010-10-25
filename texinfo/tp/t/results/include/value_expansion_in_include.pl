@@ -18,11 +18,11 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' testvar incl-incl.txi
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -56,11 +56,11 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' test-var incl-incl.tx
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -94,11 +94,11 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'set',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'arg_line' => ' test_var ncl-incl.tx
 '
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -220,10 +220,10 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'verbatiminclude',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'incl-incl.txi'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -310,10 +310,10 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'verbatiminclude',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'incl-incl.txi'
-          }
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -400,10 +400,10 @@ $result_trees{'value_expansion_in_include'} = {
             }
           ],
           'cmdname' => 'verbatiminclude',
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'text_arg' => 'incl-incl.txi'
-          }
+          },
+          'parent' => {}
         }
       ],
       'parent' => {}

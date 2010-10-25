@@ -12,13 +12,13 @@ $result_trees{'bad_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => '
 ',
         'macrobody' => 'in macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -49,13 +49,13 @@ $result_trees{'bad_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' bar aaa
 ',
         'macrobody' => 'in
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -91,8 +91,7 @@ $result_trees{'bad_argument'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' after-name {ggg} more
 ',
         'args_index' => {
@@ -100,7 +99,8 @@ $result_trees{'bad_argument'} = {
         },
         'macrobody' => 'in macro
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

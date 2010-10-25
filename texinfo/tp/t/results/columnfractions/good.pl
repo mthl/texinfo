@@ -36,14 +36,14 @@ $result_trees{'good'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '0.4',
                   '.6',
                   '5.'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -58,10 +58,10 @@ $result_trees{'good'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 3
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

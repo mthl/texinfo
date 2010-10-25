@@ -27,13 +27,13 @@ $result_trees{'simple'} = {
         }
       ],
       'cmdname' => 'alias',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'myalias',
           'code'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -77,13 +77,13 @@ $result_trees{'simple'} = {
         }
       ],
       'cmdname' => 'alias',
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'misc_args' => [
           'o-theralias',
           'verb'
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

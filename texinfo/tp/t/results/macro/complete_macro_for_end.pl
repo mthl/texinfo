@@ -19,13 +19,13 @@ $result_trees{'complete_macro_for_end'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' the-end
 ',
         'macrobody' => '@end cartouche
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

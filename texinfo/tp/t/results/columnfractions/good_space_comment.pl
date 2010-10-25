@@ -47,13 +47,13 @@ $result_trees{'good_space_comment'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '0',
                   '1'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -68,10 +68,10 @@ $result_trees{'good_space_comment'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

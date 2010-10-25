@@ -49,8 +49,8 @@ $result_trees{'wrong_command'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {}
+              'extra' => {},
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -65,10 +65,10 @@ $result_trees{'wrong_command'} = {
           'type' => 'before_item'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 0
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},

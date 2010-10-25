@@ -42,13 +42,13 @@ $result_trees{'multitable'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'parent' => {},
-              'special' => {
+              'extra' => {
                 'misc_args' => [
                   '6',
                   '7'
                 ]
-              }
+              },
+              'parent' => {}
             }
           ],
           'parent' => {},
@@ -108,10 +108,10 @@ $result_trees{'multitable'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -172,10 +172,10 @@ $result_trees{'multitable'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -251,10 +251,10 @@ $result_trees{'multitable'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         },
         {
@@ -282,17 +282,17 @@ $result_trees{'multitable'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 1
           },
+          'parent' => {},
           'type' => 'row'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -402,21 +402,21 @@ $result_trees{'multitable'} = {
               'parent' => {}
             }
           ],
-          'parent' => {},
-          'special' => {
+          'extra' => {
             'cell_number' => 2
           },
+          'parent' => {},
           'type' => 'row'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'max_columns' => 2,
         'prototypes' => [
           {},
           {}
         ]
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -496,9 +496,9 @@ $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'conten
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4];
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[1] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable'}{'contents'}[4]{'parent'} = $result_trees{'multitable'};
-$result_trees{'multitable'}{'contents'}[4]{'special'}{'prototypes'}[0] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable'}{'contents'}[4]{'special'}{'prototypes'}[1] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[3];
 $result_trees{'multitable'}{'contents'}[5]{'parent'} = $result_trees{'multitable'};
 
 $result_texis{'multitable'} = '

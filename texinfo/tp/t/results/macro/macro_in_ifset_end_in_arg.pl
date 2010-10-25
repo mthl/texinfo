@@ -24,8 +24,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
           'type' => 'raw'
         }
       ],
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'arg_line' => ' macro1 {arg}
 ',
         'args_index' => {
@@ -33,7 +32,8 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
         },
         'macrobody' => '@end ifset
 '
-      }
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
