@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-15.17; # UTC
+htmlxrefversion=2010-10-25.15; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -194,6 +194,9 @@ gforth		node	http://www.complang.tuwien.ac.at/forth/gforth/Docs-html/
 
 global		mono	${GS}/global/manual/global.html
 
+gmp		mono	${GS}/gmp/manual/html_mono/gmp.html
+gmp		node	${GS}/gmp/manual/html_node/
+
 gnu-arch	node	${GS}/gnu-arch/tutorial/
 
 gnu-crypt	node	${GS}/gnu-crypto/manual/
@@ -217,8 +220,17 @@ gnupg		node	${GNUPG}/gnupg/
 
 gnuschool	mono	${GS}/gnuschool/gnuschool.html
 
+gnutls		mono	${GS}/gnutls/manual/gnutls.html
+gnutls		node	${GS}/gnutls/manual/html_node/
+
 gperf		mono	${GS}/gperf/manual/gperf.html
 gperf		node	${GS}/gperf/manual/html_node/
+
+gsasl		mono	${GS}/gsasl/manual/gsasl.html
+gsasl		node	${GS}/gsasl/manual/html_node/
+
+gss		mono	${GS}/gss/manual/gss.html
+gss		node	${GS}/gss/manual/html_node/
 
 gtypist		mono	${GS}/gtypist/doc/
 

@@ -1,3 +1,11 @@
+2010-10-24  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Command List): alphabetization fixes.
+	Report from Christophe Jarry, 23 Oct 2010 17:45:54.
+	
+	(HTML Customization for Anchors, HTML Customization for Images):
+	rename+edit.
+
 2010-10-24  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.pl (%index_names): remove the 'prefixes' key, 

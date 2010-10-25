@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
+@c $Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5351,6 +5351,7 @@ document to be printed).  The special procedure for handling the short
 text before a menu (@pxref{Menus}) also disables this
 feature, for that group of nodes.  In those cases, you will need to
 explicitly specify all pointers.
+
 
 @node anchor
 @section @code{@@anchor}: Defining Arbitrary Cross-reference Targets
@@ -11380,23 +11381,22 @@ Here are the different glyph commands:@refill
 
 @table @asis
 @item @result{}
-@code{@@result@{@}} points to the result of an expression.@refill
+@code{@@result@{@}} points to the result of an expression.
 
 @item @expansion{}
-@code{@@expansion@{@}} shows the results of a macro expansion.@refill
+@code{@@expansion@{@}} shows the results of a macro expansion.
 
 @item @print{}
-@code{@@print@{@}} indicates printed output.@refill
+@code{@@print@{@}} indicates printed output.
 
 @item @error{}
-@code{@@error@{@}} indicates that the following text is an error
-message.@refill
+@code{@@error@{@}} indicates that the following text is an error message.
 
 @item @equiv{}
-@code{@@equiv@{@}} indicates the exact equivalence of two forms.@refill
+@code{@@equiv@{@}} indicates the exact equivalence of two forms.
 
 @item @point{}
-@code{@@point@{@}} shows the location of point.@refill
+@code{@@point@{@}} shows the location of point.
 @end table
 
 @menu
@@ -20854,19 +20854,20 @@ This section describes customizing the HTML output for the basic
 Texinfo commands used within the running text.
 
 @menu
-* Argless: Customizing HTML for Commands Without Arguments.
-* @@-Colon: Customizing HTML After @@-Colon.
-* Simple: Customizing HTML for Simple Commands.
-* Formatting special simple commands::
+* Argless: HTML Customization for Commands Without Arguments.
+* @@-Colon: HTML Customization After @@-Colon.
+* Simple: HTML Customization for Simple Commands.
+* Anchors: HTML Customization for Anchors.
+* Images: HTML Customization for Images.
 * Formatting characters and text::
 * Formatting of simple line commands::
 @end menu
 
 
-@node Customizing HTML for Commands Without Arguments
-@subsection Customizing HTML for Commands Without Arguments
+@node HTML Customization for Commands Without Arguments
+@subsection HTML Customization for Commands Without Arguments
 
-@cindex Customizing HTML for commands without arguments
+@cindex HTML customization for commands without arguments
 @cindex Commands without arguments, customizing HTML for
 @cindex Insertion commands, customizing HTML for
 
@@ -20939,10 +20940,10 @@ invalid Texinfo to have anything other than the empty string there.
 @end deftypefn
 
 
-@node Customizing HTML After @@-Colon
-@subsection Customizing HTML After @@-Colon
+@node HTML Customization After @@-Colon
+@subsection HTML Customization After @@-Colon
 
-@cindex Customizing HTML after @code{@@:}
+@cindex HTML customization after @code{@@:}
 @cindex Punctuation after @code{@@:}, customizing HTML for
 @cindex Sentence punctuation, customizing HTML for
 
@@ -20965,10 +20966,10 @@ that are in @code{%colon_command_punctuation_characters}:
 @end deftypefn
 
 
-@node Customizing HTML for Simple Commands
-@subsection Customizing HTML for Simple Commands
+@node HTML Customization for Simple Commands
+@subsection HTML Customization for Simple Commands
 
-@cindex Customizing HTML for simple commands
+@cindex HTML customization for simple commands
 @cindex Simple commands, customizing HTML for
 @cindex Style commands, customizing HTML for
 @cindex Accent commands, customizing HTML for
@@ -21177,8 +21178,8 @@ structure as above) of the lines produced by the @@-command.
 @cindex Custom interface for simple HTML customization
 @cindex Interface for simple HTML customization, custom
 
-If you don't like the hash interface described in the previous
-section, it is possible to change how the ``simple'' Texinfo commands
+If the hash interface described in the previous section does not
+suffice, it is possible to change how the ``simple'' Texinfo commands
 are processed by redefining the following function reference:
 
 @deftypefn {Function Reference} $resulting_text style $style $command $text @
@@ -21216,84 +21217,128 @@ See the previous section.
 @end deftypefn
 
 
-@node Formatting special simple commands
-@subsection Formatting of anchors, images and spaces
+@node HTML Customization for Anchors
+@subsection HTML Customization for Anchors
 
-The formatting of special simple commands is controlled by functions.  To
-customize the output, the corresponding function references should be
-redefined. All these functions return a formatted text.
+@cindex HTML customization for anchors
+@cindex Anchors, customizing HTML for
 
-The formatting of anchors is controlled by @code{$anchor_label}.
+The HTML formatting of anchors (@pxref{anchor,, @code{@@anchor}}) is
+controlled by functions.  To customize the output, the function
+reference @code{$anchor_label} should be redefined.  The function
+should return the formatted text.
 
 @deftypefn {Function Reference} $anchor_label anchor_label $identifier $anchor
-@var{$identifier} is the anchor identifier, @var{$anchor} is the @code{@@anchor}
-argument.
+@var{$identifier} is the anchor identifier, and @var{$anchor} is the
+@code{@@anchor} argument.
 @end deftypefn
 
-In the default case, it uses a function reference,  @code{$anchor}
- that can do
-a reference target or link. It is especially relevant for @acronym{HTML}
-but can be used in other formats, it is a rather common element
-of different formats.
-@deftypefn {Function Reference} $anchor anchor $identifier $href $text $attributes
-If @var{$identifier} is not empty, this value should be used to create
-a target for links (typically associated with a name or id 
-attribute in @acronym{HTML}).
-The @var{$href} argument specifies a hpertextual reference which should be
-used to link to a target.
-In case both @var{$identifier} and  @var{$href} are given the text produced
-should be both a target for @var{$identifier} and a link to @var{$href}.
-@var{$text} is the text to be displayed. 
-@var{$attributes} are additional attributes.
-It should be reasonable to assume that the attributes are for a @code{<a>}
-@acronym{HTML} element. 
+By default, this uses a function reference, @code{$anchor}, which can
+do a reference target or link. This is especially relevant for HTML
+but can potentially be used in other formats, since it is a rather
+common element among output formats.
+
+@deftypefn {Function Reference} $anchor anchor @
+           $identifier $href $text $attributes
+If @var{$identifier} is not empty, its value should be used to create
+a target for links (typically associated with a name or id attribute
+in HTML).  The @var{$href} argument specifies a hypertext reference
+which should be used to link to a target.  If both @var{$identifier}
+and @var{$href} are given, the text produced should be both a target
+for @var{$identifier} and a link to @var{$href}.  @var{$text} is the
+text to be displayed.  @var{$attributes} are additional attributes for
+an @code{<a>} HTML element.
 @end deftypefn
+
+
+@node HTML Customization for Images
+@subsection HTML Customization for Images
+
+@cindex HTML customization for images
+@cindex Images, customizing HTML for
 
 @vindex @@IMAGE_EXTENSIONS
-To customize the images produced by @code{@@image}, the first possibility 
-is to modify the @code{@@IMAGE_EXTENSIONS} array, which holds a list of 
-filename extensions for image files. It is also possible to redefine
-the function used to determine the filename of the image:
+To customize the images produced by @code{@@image} (@pxref{Images}),
+the first possibility is to modify the @code{@@IMAGE_EXTENSIONS}
+array, which holds a list of filename extensions for image files.
 
-@deftypefn {Function Reference} $filename image_files $basename $extension $texi_base $texi_extension
-@var{$basename} is the first @code{@@image} argument, @var{$extension}
-is the corresponding @code{@@image} argument, both are formatted.  
-Similarly @var{$texi_base} is the first @code{@@image} argument 
-without formatting, and @var{$texi_extension} is the extension, unformatted.
-This function reference 
-should return an array of array references, each array reference holding
-a formatted and an unformatted image filenames without path that the main 
-program should look for.
+Second, it is also possible to redefine the function used to determine
+the filename of the image:
+
+@deftypefn {Function Reference} $filename image_files @
+           $basename $extension $texi_base $texi_extension
+@var{$basename} is the first @code{@@image} argument, and
+@var{$extension} is the corresponding @code{@@image} argument; both
+are formatted.  @var{$texi_base} is the first @code{@@image} argument
+and @var{$texi_extension} is the extension, unformatted.  This
+function reference should return an array of array references, each
+holding both formatted and unformatted image filenames without any path
+for which the main program should look.
 @end deftypefn
 
-Last, it is possible to control 
-the formatting of @code{@@image} by redefining:
-@deftypefn {Function Reference} $image image $file_path $basename $preformatted $file_name $alt_text $width $height $raw_alt $extension $working_dir $file_relative_path $in_paragraph \@@file_locations $base_simple_format $extension_simple_format $file_name_simple_format $line_nr
-@var{$file_path} is the image file name with the path from the output directory
-to the source manual directory prepended, @var{$basename}  
-the file name without extension (the first @code{@@image} argument). 
-@var{$preformatted} is true if the image 
-appears in preformatted text.  @var{$file_name} is the file name without path 
-but with extension. @var{$alt_text} is the alternate text, it may be 
-undefined. @var{$width} and @var{$height} are the corresponding arguments 
-of @code{@@image}, @var{$raw_alt} is the unmodified alt argument of 
-@code{@@image} and @var{$extension} holds the corresponding 
-@code{@@image} argument.
-@var{$working_dir} is the path to working dir relative to the output
-directory. @var{$file_relative_path} is the file name relative to the 
-@var{$working_dir}.
-@var{$in_paragraph} is true if in paragraphs.
-@var{\@@file_locations} is a reference on an array which itself holds a reference on an 
-array with 3 elements: the file name array reference as returned by @code{image_files},
-the image location if it was found, or undef, and the file name formatted using
-a simple formatting in string context.
-@var{$base_simple_format} is the @var{$basename} formatted with a simple format.
-@var{$extension_simple_format} is the @var{$extension} formatted with a simple format.
-@var{$file_name_simple_format} is the @var{$file_name} formatted with a simple format.
-@var{$line_nr}
-is an opaque structure containing the information about the line number of the 
-@@-command. 
+Third, it is possible to control the formatting of @code{@@image} by
+redefining this:
+
+@deftypefn {Function Reference} $image image $file_path $basename @
+           $preformatted $file_name $alt_text $width $height $raw_alt @
+           $extension $working_dir $file_relative_path $in_paragraph @
+           \@@file_locations $base_simple_format @
+           $extension_simple_format $file_name_simple_format $line_nr
+@table @var
+@item $file_path
+The image file name with the path from the output directory to the
+source manual directory prepended.
+
+@item $basename
+The file name without extension---the first argument to the
+@code{@@image} command.
+
+@item $preformatted
+True if the image appears in preformatted text.
+
+@item $file_name
+The file name without path but with extension.
+
+@item $alt_text
+The alternate text, possibly undefined.
+
+@item $width
+@itemx $height
+The corresponding @code{@@image} arguments.
+
+@item $raw_alt
+The unmodified alternate-text @code{@@image} argument.
+
+@item $extension
+The corresponding @code{@@image} argument.
+
+@item $working_dir
+Path to the working directory relative to the output directory.
+
+@item $file_relative_path
+The file name relative to @var{$working_dir}.
+
+@item $in_paragraph
+True if within a paragraph.
+
+@item \@@file_locations
+Array reference holding another array reference with 3 elements: the
+file name array reference as returned by @code{image_files}; the image
+location if it was found, or undef; and the file name formatted using
+simple formatting in string context.
+
+@item $base_simple_format
+@itemx $extension_simple_format
+@itemx $file_name_simple_format
+The corresponding arguments formatted using simple formatting in
+string context.
+
+@item $line_nr
+An opaque structure containing the information about the line number
+of the @@-command.
+@end table
 @end deftypefn
+
 
 The formatting of @code{@@sp} is controlled by:
 @deftypefn {Function Reference} $sp sp $number $preformatted
@@ -21314,7 +21359,7 @@ this command, the other args are defined: @var{\@@explanation_lines} is a
 reference on an array containing the simply fomatted explanation lines, 
 @var{$explanation_text} is the explanation text formatted,
 @var{$explanation_simply_formatted} is the explanation formatted in 
-a string context, enabling in @acronym{HTML} (or @acronym{XML}) the explanation 
+a string context, enabling in HTML (or @acronym{XML}) the explanation 
 to be in an attribute.
 @end deftypefn
 
@@ -21346,11 +21391,11 @@ formatting @@-command that enclose the text.
 In the default case the @samp{---}, @samp{--}, @samp{``} and @samp{''}
 constructs are expanded if needed and the text is upper-cased if in 
 @code{@@sc}. Special characters (@samp{&}, @samp{"},
-@samp{<} and @samp{>} in @acronym{HTML}) are protected if needed. 
+@samp{<} and @samp{>} in HTML) are protected if needed. 
 @end deftypefn
 
 Some characters are special, for example we have  @samp{&}, @samp{"}, 
-@samp{<} and @samp{>} in @acronym{HTML}. In some cases some
+@samp{<} and @samp{>} in HTML. In some cases some
 pieces of text don't go through the above function, but still 
 needs to be protected to appear in text.
 This is done by the function associated with the function reference
@@ -21581,7 +21626,7 @@ formatted output.
 The @code{end} should lead to the end of the 
 formatted output.
 @item class
-The @acronym{HTML} class.  If not defined, the command name.
+The HTML class.  If not defined, the command name.
 @item pre_style
 The preformatted style. If not defined the corresponding @acronym{CSS} style
 is used.
@@ -22380,7 +22425,7 @@ reference:
 @deftypefn {Function Reference} $target index_entry_label $identifier $preformatted $entry $index_name $index_command $texi_entry $formatted_entry $in_region_not_in_output \%index_entry
 @var{$identifier} should be used to create
 a target for links (typically associated with a name or id 
-attribute in @acronym{HTML}).
+attribute in HTML).
 @var{$preformatted} is true if the index entry appeared in preformatted text.
 @var{$entry} is the index entry with all the @@-commands removed.
 @var{$index_name} is the index name, @var{$command} is the index command which
@@ -23103,6 +23148,14 @@ Defining the Entries of an Index}.
 Highlight the name of a book or other reference that has no companion
 Info file.  @xref{cite, , @code{@@cite}}.
 
+@item @@clear @var{flag}
+Unset @var{flag}, preventing the Texinfo formatting commands from
+formatting text between subsequent pairs of @code{@@ifset @var{flag}}
+and @code{@@end ifset} commands, and preventing
+@code{@@value@{@var{flag}@}} from expanding to the value to which
+@var{flag} is set.
+@xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.
+
 @item @@click@{@}
 Represent a single ``click'' in a GUI.  Used within
 @code{@@clicksequence}.  @xref{Click Sequences}.
@@ -23114,14 +23167,6 @@ Represent a sequence of clicks in a GUI.  @xref{Click Sequences}.
 Execute @@@var{cmd} for each @code{@@click}; the default is
 @code{@@arrow}.  The usual following empty braces on @@@var{cmd} are
 omitted.  @xref{Click Sequences}.
-
-@item @@clear @var{flag}
-Unset @var{flag}, preventing the Texinfo formatting commands from
-formatting text between subsequent pairs of @code{@@ifset @var{flag}}
-and @code{@@end ifset} commands, and preventing
-@code{@@value@{@var{flag}@}} from expanding to the value to which
-@var{flag} is set.
-@xref{set clear value, , @code{@@set} @code{@@clear} @code{@@value}}.
 
 @item @@code@{@var{sample-code}@}
 Indicate an expression, a syntactically complete token of a program,
@@ -23364,10 +23409,6 @@ enclosing in asterisks in Info.  @xref{Emphasis, , Emphasizing Text}.
 Ends @var{environment}, as in @samp{@@end example}.  @xref{Formatting
 Commands,,@@-commands}.
 
-@item @@env@{@var{environment-variable}@}
-Indicate an environment variable name, such as @env{PATH}.
-@xref{env,, @code{@@env}}.
-
 @item @@enddots@{@}
 Generate an end-of-sentence ellipsis, like this: @enddots{}
 @xref{dots,,@code{@@dots@{@}}}.
@@ -23378,19 +23419,23 @@ Optionally, start list with @var{number-or-letter}.  Pair with
 @code{@@end enumerate}.  @xref{enumerate, ,
 @code{@@enumerate}}.
 
+@item @@env@{@var{environment-variable}@}
+Indicate an environment variable name, such as @env{PATH}.
+@xref{env,, @code{@@env}}.
+
 @item @@equiv@{@}
 Indicate to the reader the exact equivalence of two forms with a
 glyph: @samp{@equiv{}}.  @xref{Equivalence}.
-
-@item @@euro@{@}
-Generate the Euro currency sign.
-@xref{euro,,@code{@@euro@{@}}}.
 
 @item @@error@{@}
 Indicate to the reader with a glyph that the following text is
 an error message: @samp{@error{}}.  @xref{Error Glyph}.
 
-@item  @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
+@item @@euro@{@}
+Generate the Euro currency sign.
+@xref{euro,,@code{@@euro@{@}}}.
+
+@item @@evenfooting [@var{left}] @@| [@var{center}] @@| [@var{right}]
 @itemx @@evenheading [@var{left}] @@| [@var{center}] @@| [@var{right}]
 Specify page footings resp.@: headings for even-numbered (left-hand)
 pages.  @xref{Custom Headings, ,
@@ -24757,7 +24802,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
+$Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24836,7 +24881,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.332 2010-10-15 18:36:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
