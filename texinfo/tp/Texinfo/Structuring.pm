@@ -70,8 +70,8 @@ sub _next_content($)
            and (!defined($current->{'args'}->[0]->{'type'})
                or ($current->{'args'}->[0]->{'type'} 
                   and $types_to_enter{$current->{'args'}->[0]->{'type'}}
-                  and !($current->{'special'} 
-                        and $current->{'special'}->{'misc_args'}))
+                  and !($current->{'extra'} 
+                        and $current->{'extra'}->{'misc_args'}))
                or $current->{'type'} and $current->{'type'} eq 'menu_entry')) {
     $current = $current->{'args'}->[0];
   } elsif ($current->{'next'}) {
@@ -124,8 +124,8 @@ sub collect_structure($)
       }
     }
     if ($current->{'args'} and scalar(@{$current->{'args'}}) > 1
-        and !($current->{'special'} 
-              and $current->{'special'}->{'misc_args'})) {
+        and !($current->{'extra'} 
+              and $current->{'extra'}->{'misc_args'})) {
       for (my $i = 0; $i < scalar(@{$current->{'args'}}) -1; $i++) {
         $current->{'args'}->[$i]->{'next'} = $current->{'args'}->[$i+1];
       }
