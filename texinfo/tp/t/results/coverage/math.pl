@@ -38,7 +38,8 @@ $result_trees{'math'} = {
                   'type' => 'bracketed'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'math',
@@ -101,7 +102,8 @@ $result_trees{'math'} = {
                   'text' => ' a < b'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'math',
@@ -214,7 +216,8 @@ $result_trees{'math'} = {
                   'type' => 'bracketed'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'math',

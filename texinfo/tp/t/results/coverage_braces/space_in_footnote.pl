@@ -27,7 +27,8 @@ $result_trees{'space_in_footnote'} = {
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'footnote',

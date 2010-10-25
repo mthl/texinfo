@@ -73,7 +73,8 @@ $result_trees{'center'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',
@@ -527,12 +528,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: Closing @quotation
+    'error_line' => ':5: No matching `@end quotation\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Closing @quotation',
+    'text' => 'No matching `@end quotation\'',
     'type' => 'error'
   },
   {

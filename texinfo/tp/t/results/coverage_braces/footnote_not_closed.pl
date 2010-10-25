@@ -45,7 +45,8 @@ $result_trees{'footnote_not_closed'} = {
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'footnote',

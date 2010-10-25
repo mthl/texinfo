@@ -180,7 +180,8 @@ $result_trees{'block_commands'} = {
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'caption',

@@ -33,7 +33,8 @@ $result_trees{'math_bracketed_not_closed'} = {
                   'type' => 'bracketed'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'math',

@@ -13,7 +13,8 @@ $result_trees{'math_not_closed'} = {
                   'text' => '\\delta + 2'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'math',

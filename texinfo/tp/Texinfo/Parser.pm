@@ -471,7 +471,8 @@ foreach my $item_line_command ('table', 'ftable', 'vtable') {
 }
 
 my %type_with_paragraph;
-foreach my $type ('before_item', 'text_root', 'document_root') {
+foreach my $type ('before_item', 'text_root', 'document_root',
+                  'brace_command_context') {
   $type_with_paragraph{$type} = 1;
 }
 
@@ -692,9 +693,8 @@ foreach my $encoding (keys(%makeinfo_encoding_to_map)) {
 }
 
 
-
 
-# deep copy of a structure
+# simple deep copy of a structure
 sub _deep_copy ($)
 {
   my $struct = shift;
@@ -703,6 +703,7 @@ sub _deep_copy ($)
   return $struct;
 }
 
+# enter all the commands associated with an index name.
 sub _enter_index_commands ($$)
 {
   my $self = shift;
@@ -764,10 +765,11 @@ sub parser(;$$)
   $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = _deep_copy (\%index_names);
+  # a hash is simply concatenated
   if (ref($parser->{'indices'}) eq 'HASH') {
     %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
                                    %{$parser->{'indices'}});
-  } else {
+  } else { # an array holds index names defined with @defindex
     foreach my $name (@{$parser->{'indices'}}) {
       $parser->{'index_names'}->{$name} = {$name => 0};
     }
@@ -824,7 +826,7 @@ sub _complete_line_nr($$;$$$)
   return $new_lines;
 }
 
-# The main entry point
+# entry point for text fragments
 sub parse_texi_text($$;$)
 {
   my $self = shift;
@@ -851,6 +853,7 @@ sub parse_texi_text($$;$)
   return $self->_parse_texi();
 }
 
+# parse a texi file
 sub parse_texi_file ($$)
 {
   my $self = shift;
@@ -882,19 +885,19 @@ sub parse_texi_file ($$)
 
 sub tree_to_texi ($);
 
+# return the errors and warnings
 sub errors ($)
 {
   my $self = shift;
   return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 
+# return indices informations
 sub indices_information ($)
 {
   my $self = shift;
   return ($self->{'index_names'}, $self->{'merged_indices'});
 }
-
-# internal sub
 
 # for debugging
 sub _print_current($)
@@ -1084,7 +1087,7 @@ sub _end_paragraph ($$$)
 # a command arg means closing until that command is found.
 # no command arg means closing until the root or a root_command
 # is found.
-sub _end_block_command($$$;$)
+sub _close_commands($$$;$)
 {
   my $self = shift;
   my $current = shift;
@@ -1108,32 +1111,7 @@ sub _end_block_command($$$;$)
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
-    if ($current->{'cmdname'}
-        and exists($block_commands{$current->{'cmdname'}})) {
-      if (defined($command)) {
-        $self->_line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
-                                   $current->{'cmdname'}, $command), $line_nr);
-      } else {
-        $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
-                                   ord('@'), $current->{'cmdname'}), $line_nr);
-      }
-      pop @{$self->{'context_stack'}} if 
-         ($preformatted_commands{$current->{'cmdname'}}
-           or $menu_commands{$current->{'cmdname'}});
-      $current = $current->{'parent'};
-    } elsif ($current->{'parent'}->{'cmdname'}
-             and exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-      $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
-      pop @{$self->{'context_stack'}};
-    } else { 
-      if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
-        # FIXME record the line number in the braccketed and use it
-        _line_error ($self, sprintf($self->__("Misplaced %c"),
-                                             ord('{')), $line_nr);
-      }
-      # silently close containers and @-commands without brace nor @end
-      $current = $current->{'parent'};
-    }
+    $current = $self->_close_current($current, $line_nr, $command);
   }
 
   if ($command and $current->{'cmdname'} 
@@ -1172,8 +1150,6 @@ sub _merge_text ($$$)
          or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument')) {
       $no_merge_with_following_text = 1;
     }
-    # Change this if you don't want to have preceding space added to
-    # the text out of the paragraph
     if (_abort_empty_line ($self, $current, $leading_spaces)) {
       $text =~ s/^(\s+)//;
     } 
@@ -1190,8 +1166,7 @@ sub _merge_text ($$$)
       and !$no_merge_with_following_text) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
     print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
-  }
-  else {
+  } else {
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
     print STDERR "NEW TEXT: $text|||\n" if ($self->{'debug'});
   }
@@ -1387,7 +1362,6 @@ sub _expand_macro_body($$$$) {
   for ($i=0; $i<=$args_total; $i++) {
     $args->[$i] = "" unless (defined($args->[$i]));
   }
-#  line_error (sprintf(__("Macro `%s' called with too many args"), $name), $line_nr) if (defined($args->[$i + 1]));
 
   my $result = '';
   while ($macrobody ne '') {
@@ -1491,7 +1465,6 @@ sub _next_bracketed_or_word($)
     #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
     return ($spaces, shift @{$contents});
   } else {
-    # we don't want to change the initial contents, so first we copy
     #print STDERR "Process $contents->[0]->{'text'}\n";
     $contents->[0]->{'text'} =~ s/^(\s*)//;
     my $space_text = $1;
@@ -1575,33 +1548,52 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
-# close the current command, with error pessages and give the parent.
-sub _close_current($$$)
+# close the current command, with error messages and give the parent.
+# If the last argument is given it is the command being closed if
+# there was no error, currently only block command, used for a
+# better error message.
+sub _close_current($$$;$)
 {
   my $self = shift;
   my $current = shift;
   my $line_nr = shift;
+  my $command = shift;
 
   if ($current->{'cmdname'}) {
     if (exists($brace_commands{$current->{'cmdname'}})) {
+      pop @{$self->{'context_stack'}}
+         if (exists $context_brace_commands{$current->{'cmdname'}});
       $current = _close_brace_command($self, $current, $line_nr);
-    } else {
-      _line_error($self, sprintf($self->__("Closing \@%s"), 
-                                $current->{'cmdname'}), $line_nr);
+    } elsif (exists($block_commands{$current->{'cmdname'}})) {
+      if (defined($command)) {
+        $self->_line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
+                                   $current->{'cmdname'}, $command), $line_nr);
+      } else {
+        $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
+                                   ord('@'), $current->{'cmdname'}), $line_nr);
+      }
+      pop @{$self->{'context_stack'}} if
+         ($preformatted_commands{$current->{'cmdname'}}
+           or $menu_commands{$current->{'cmdname'}});
+      $current = $current->{'parent'};
+    } else { # FIXME is this possible? And does it make sense?
+      # silently close containers and @-commands without brace nor @end
+      #_line_error($self, sprintf($self->__("Closing \@%s"), 
+      #                          $current->{'cmdname'}), $line_nr);
       $current = $current->{'parent'};
     }
   } elsif ($current->{'type'}) {
     if ($current->{'type'} eq 'bracketed') {
-    # FIXME record the line number in the braccketed and use it
+    # FIXME record the line number in the bracketed and use it
       _line_error ($self, sprintf($self->__("Misplaced %c"),
                                              ord('{')), $line_nr);
       $current = $current->{'parent'};
     } else {
       $current = $current->{'parent'} if ($current->{'parent'});
     }
-  } else {
+  } else { # Should never go here.
     $current = $current->{'parent'} if ($current->{'parent'});
-    print STDERR "Where am I?"._print_current($current);
+    print STDERR "BUG: Where am I? "._print_current($current);
   }
   return $current;
 }
@@ -1986,6 +1978,7 @@ sub _start_empty_line_after_command($$) {
 #c 'block_line_arg'
 #
 #c 'brace_command_arg'
+#c 'brace_command_context'
 #
 #c 'before_item'   what comes after @*table, @itemize, @enumerate before
 #                an @item
@@ -2171,7 +2164,7 @@ sub _parse_texi($$;$)
           ($current, $included_file) = 
             _end_line ($self, $current, $line_nr);
           if (!$included_file) {
-            $current = _end_block_command($self, $current, $line_nr);
+            $current = _close_commands($self, $current, $line_nr);
             return $root;
           }
         }
@@ -2492,7 +2485,7 @@ sub _parse_texi($$;$)
               }
               last;
             }
-            $current = _end_block_command($self, $current, $line_nr,
+            $current = _close_commands($self, $current, $line_nr,
                                                 $end_command);
           }
           $line = _start_empty_line_after_command($line, $current);
@@ -2514,7 +2507,7 @@ sub _parse_texi($$;$)
         # commands without braces and not block commands, ie no @end
         if (defined($self->{'misc_commands'}->{$command})) {
           if ($root_commands{$command} or $command eq 'bye') {
-            $current = _end_block_command($self, $current, $line_nr);
+            $current = _close_commands($self, $current, $line_nr);
             # root_level commands leads to starting setting a new root
             # for the whole document and stuffing the preceding text
             # as the first content, this is done only once.
@@ -2848,6 +2841,7 @@ sub _parse_texi($$;$)
             if ($context_brace_commands{$command}) {
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
               $line =~ s/([^\S\n]*)//;
+              $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
@@ -2973,7 +2967,7 @@ sub _parse_texi($$;$)
     my $end_conditional = pop @{$self->{'conditionals_stack'}};
     _line_error ($self, sprintf($self->__("Expected \@end %s"), $end_conditional), $line_nr);
   }
-  $current = _end_block_command($self, $current, $line_nr);
+  $current = _close_commands($self, $current, $line_nr);
   return $root;
 }
 
@@ -3358,8 +3352,7 @@ sub _expand_cmd_args_to_texi ($) {
               or $block_commands{$cmdname} eq 'multitable')
          and $cmd->{'args'}) {
      foreach my $arg (@{$cmd->{'args'}}) {
-        my $arg_expanded = tree_to_texi ($arg);
-        $result .= $arg_expanded;
+        $result .= tree_to_texi ($arg);
     }
   } elsif (($cmd->{'special'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
            and defined($cmd->{'special'}->{'arg_line'})) {
@@ -3374,9 +3367,9 @@ sub _expand_cmd_args_to_texi ($) {
     $result =~ s/,$//;
   } elsif (defined($cmd->{'args'})) {
     my $braces;
-    $braces = 1 if (($cmd->{'args'}->[0]->{'type'} 
-                    and $cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                    or ($context_brace_commands{$cmdname}));
+    $braces = 1 if ($cmd->{'args'}->[0]->{'type'} 
+                    and ($cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg'
+                         or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'));
     $result .= '{' if ($braces);
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};

@@ -89,7 +89,8 @@ $result_trees{'caption_not_closed'} = {
                   'type' => 'empty_line'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'caption',

@@ -73,7 +73,8 @@ $result_trees{'on_itemize_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',

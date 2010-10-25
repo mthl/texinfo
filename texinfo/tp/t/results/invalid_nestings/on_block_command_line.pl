@@ -207,7 +207,8 @@ $result_trees{'on_block_command_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',

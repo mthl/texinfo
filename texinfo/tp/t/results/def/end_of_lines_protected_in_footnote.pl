@@ -237,7 +237,8 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                   'type' => 'empty_line_after_command'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'footnote',

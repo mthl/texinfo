@@ -150,7 +150,8 @@ $result_trees{'in_table'} = {
                           'type' => 'paragraph'
                         }
                       ],
-                      'parent' => {}
+                      'parent' => {},
+                      'type' => 'brace_command_context'
                     }
                   ],
                   'cmdname' => 'footnote',
@@ -209,7 +210,8 @@ $result_trees{'in_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',

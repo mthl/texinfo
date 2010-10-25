@@ -57,7 +57,8 @@ $result_trees{'footnote'} = {
                   'type' => 'paragraph'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'footnote',

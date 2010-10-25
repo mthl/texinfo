@@ -568,12 +568,12 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: Closing @defvr
+    'error_line' => ':5: No matching `@end defvr\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Closing @defvr',
+    'text' => 'No matching `@end defvr\'',
     'type' => 'error'
   }
 ];

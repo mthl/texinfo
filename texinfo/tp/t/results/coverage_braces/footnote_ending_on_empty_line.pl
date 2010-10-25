@@ -34,7 +34,8 @@ $result_trees{'footnote_ending_on_empty_line'} = {
                   'type' => 'empty_line'
                 }
               ],
-              'parent' => {}
+              'parent' => {},
+              'type' => 'brace_command_context'
             }
           ],
           'cmdname' => 'footnote',

@@ -81,7 +81,8 @@ $result_trees{'on_section_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {}
+                  'parent' => {},
+                  'type' => 'brace_command_context'
                 }
               ],
               'cmdname' => 'footnote',

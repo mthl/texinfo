@@ -66,7 +66,9 @@ second paragraph}
 second paragraph
 
 third}
-']
+'],
+['footnote_in_command_not_closed',
+'aaa@code{in code@footnote{in footnote']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
