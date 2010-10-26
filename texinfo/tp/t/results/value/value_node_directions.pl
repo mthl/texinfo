@@ -101,6 +101,11 @@ $result_trees{'value_node_directions'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -147,6 +152,11 @@ $result_trees{'value_node_directions'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -217,6 +227,11 @@ $result_trees{'value_node_directions'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -252,6 +267,11 @@ $result_trees{'value_node_directions'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 8,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -318,6 +338,11 @@ $result_trees{'value_node_directions'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -346,6 +371,11 @@ $result_trees{'value_node_directions'} = {
       ],
       'cmdname' => 'chapter',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

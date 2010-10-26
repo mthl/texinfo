@@ -75,6 +75,11 @@ $result_trees{'test_paths'} = {
           'extra' => {
             'text_arg' => './inc_file.texi'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

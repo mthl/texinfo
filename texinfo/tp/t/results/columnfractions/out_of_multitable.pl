@@ -27,6 +27,11 @@ $result_trees{'out_of_multitable'} = {
           '0.4'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

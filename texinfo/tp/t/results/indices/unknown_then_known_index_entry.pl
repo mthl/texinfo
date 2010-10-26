@@ -39,6 +39,11 @@ $result_trees{'unknown_then_known_index_entry'} = {
               'some'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -66,6 +71,11 @@ $result_trees{'unknown_then_known_index_entry'} = {
             }
           ],
           'cmdname' => 'someindex',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

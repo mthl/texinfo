@@ -29,6 +29,11 @@ $result_trees{'include_at_end_line'} = {
       'extra' => {
         'text_arg' => 'inc_file.texi '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

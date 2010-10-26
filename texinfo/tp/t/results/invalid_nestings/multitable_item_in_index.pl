@@ -79,6 +79,11 @@ $result_trees{'multitable_item_in_index'} = {
                 }
               ],
               'cmdname' => 'vindex',
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

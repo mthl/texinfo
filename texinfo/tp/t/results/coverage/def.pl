@@ -442,6 +442,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -520,6 +525,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -600,6 +610,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -679,6 +694,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -757,6 +777,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -858,6 +883,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -902,6 +932,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 18,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -960,6 +995,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -1009,6 +1049,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 20,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -1103,6 +1148,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -1210,6 +1260,11 @@ $result_trees{'def'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -1315,6 +1370,11 @@ $result_trees{'def'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'

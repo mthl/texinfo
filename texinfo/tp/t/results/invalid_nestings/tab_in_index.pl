@@ -124,6 +124,11 @@ $result_trees{'tab_in_index'} = {
                         }
                       ],
                       'cmdname' => 'vindex',
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     }
                   ],

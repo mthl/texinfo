@@ -33,6 +33,11 @@ $result_trees{'simple'} = {
           'code'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -82,6 +87,11 @@ $result_trees{'simple'} = {
           'o-theralias',
           'verb'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
       },
       'parent' => {}
     },

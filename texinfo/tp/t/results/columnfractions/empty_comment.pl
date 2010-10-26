@@ -39,6 +39,11 @@ $result_trees{'empty_comment'} = {
               ],
               'cmdname' => 'columnfractions',
               'extra' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

@@ -21,6 +21,11 @@ $result_trees{'empty_documentencoding'} = {
       'extra' => {
         'text_arg' => ''
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

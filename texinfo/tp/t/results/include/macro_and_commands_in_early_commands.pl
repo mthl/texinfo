@@ -77,6 +77,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'extra' => {
             'text_arg' => 'macro_i--n_pass@texi_commands.info'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -153,6 +158,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'text_arg' => 'ISO-8859-1@'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -235,6 +245,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 18,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -370,9 +385,19 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'extra' => {
             'text_arg' => 'inc_@f--ile.texi'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 19,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

@@ -42,6 +42,11 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                   '0.6'
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

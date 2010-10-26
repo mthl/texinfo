@@ -21,6 +21,11 @@ $result_trees{'unknown_synindex'} = {
         }
       ],
       'cmdname' => 'synindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

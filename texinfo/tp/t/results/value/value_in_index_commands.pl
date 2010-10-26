@@ -99,6 +99,11 @@ $result_trees{'value_in_index_commands'} = {
           'fn'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -131,6 +136,11 @@ $result_trees{'value_in_index_commands'} = {
           'cp',
           'fn'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -203,6 +213,11 @@ $result_trees{'value_in_index_commands'} = {
               'truc'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -271,6 +286,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'trucindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 16,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -334,6 +354,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'codeidx'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 20,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -459,6 +484,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'codeidxindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 24,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -492,6 +522,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'cindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 26,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -531,6 +566,11 @@ $result_trees{'value_in_index_commands'} = {
           'pg'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 28,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -564,6 +604,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'kindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 30,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -591,6 +636,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'pindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 31,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -630,6 +680,11 @@ $result_trees{'value_in_index_commands'} = {
           'cp'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 33,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -668,6 +723,11 @@ $result_trees{'value_in_index_commands'} = {
           'abc'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 35,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -699,6 +759,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'defg'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 36,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -739,6 +804,11 @@ $result_trees{'value_in_index_commands'} = {
           'defg'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 38,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -771,6 +841,11 @@ $result_trees{'value_in_index_commands'} = {
           'defg',
           'ky'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 39,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -805,6 +880,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'defgindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 41,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -838,6 +918,11 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'cmdname' => 'abcindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 43,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -886,6 +971,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'pg'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 46,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -936,6 +1026,11 @@ $result_trees{'value_in_index_commands'} = {
           'ky'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 49,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -984,6 +1079,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'truc'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 52,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -1034,6 +1134,11 @@ $result_trees{'value_in_index_commands'} = {
           'truc'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 55,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1082,6 +1187,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'cp'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 58,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -1132,6 +1242,11 @@ $result_trees{'value_in_index_commands'} = {
           'cp'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 61,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1180,6 +1295,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'defg'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 64,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -1230,6 +1350,11 @@ $result_trees{'value_in_index_commands'} = {
           'abc'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 67,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1278,6 +1403,11 @@ $result_trees{'value_in_index_commands'} = {
         'misc_args' => [
           'fn'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 70,
+        'macro' => ''
       },
       'parent' => {}
     }

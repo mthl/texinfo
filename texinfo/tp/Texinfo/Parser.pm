@@ -2637,9 +2637,10 @@ sub _parse_texi($$;$)
             } else {
 
               push @{$current->{'contents'}}, 
-                { 'cmdname' => $command, 'parent' => $current };
+                { 'cmdname' => $command, 'parent' => $current,
+                  'line_nr' => $line_nr };
               if ($self->{'sections_level'} and $root_commands{$command}
-                   and $command ne 'node') {
+                   and $command ne 'node' and $command ne 'part') {
                 $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
                   = $self->{'sections_level'};
               }

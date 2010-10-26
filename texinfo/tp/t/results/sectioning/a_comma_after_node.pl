@@ -78,6 +78,11 @@ $result_trees{'a_comma_after_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

@@ -48,6 +48,11 @@ $result_trees{'sp'} = {
           '1'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -79,6 +84,11 @@ $result_trees{'sp'} = {
         'misc_args' => [
           '2'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -122,6 +132,11 @@ $result_trees{'sp'} = {
           '1'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -160,6 +175,11 @@ $result_trees{'sp'} = {
         }
       ],
       'cmdname' => 'sp',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

@@ -57,6 +57,11 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

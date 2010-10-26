@@ -41,6 +41,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'pagesizes',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -88,6 +93,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'headings',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -215,6 +225,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'need',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -251,6 +266,11 @@ $result_trees{'many_lines'} = {
               '0.1'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -282,6 +302,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'setchapternewpage',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -329,6 +354,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'kbdinputstyle',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -389,6 +419,11 @@ $result_trees{'many_lines'} = {
               'asis'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 20,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -424,6 +459,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               '0'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -461,6 +501,11 @@ $result_trees{'many_lines'} = {
               'none'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 22,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -496,6 +541,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               '4'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 23,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -533,6 +583,11 @@ $result_trees{'many_lines'} = {
               'none'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 24,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -568,6 +623,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               '6'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -605,6 +665,11 @@ $result_trees{'many_lines'} = {
               '6'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 26,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -640,6 +705,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               'end'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 27,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -677,6 +747,11 @@ $result_trees{'many_lines'} = {
               'separate'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 28,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -711,6 +786,11 @@ $result_trees{'many_lines'} = {
           'extra' => {
             'text_arg' => 'US-ascii encoding name'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 29,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -740,6 +820,11 @@ $result_trees{'many_lines'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'text_arg' => 'ISO-8859-1'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 30,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -777,6 +862,11 @@ $result_trees{'many_lines'} = {
               'on'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 31,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -812,6 +902,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               'off'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -849,6 +944,11 @@ $result_trees{'many_lines'} = {
               '10'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 33,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -880,6 +980,11 @@ $result_trees{'many_lines'} = {
             }
           ],
           'cmdname' => 'everyheadingmarks',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 34,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -912,6 +1017,11 @@ $result_trees{'many_lines'} = {
               'false'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 35,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -943,6 +1053,11 @@ $result_trees{'many_lines'} = {
             'misc_args' => [
               'true'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 36,
+            'macro' => ''
           },
           'parent' => {}
         }

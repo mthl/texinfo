@@ -640,6 +640,11 @@ $result_trees{'wrong_braces_simple'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -738,6 +743,11 @@ $result_trees{'wrong_braces_simple'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -846,6 +856,11 @@ $result_trees{'wrong_braces_simple'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -952,6 +967,11 @@ $result_trees{'wrong_braces_simple'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'

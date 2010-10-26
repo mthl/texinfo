@@ -13,6 +13,11 @@ $result_trees{'on_itemize_line'} = {
             },
             {
               'cmdname' => 'indent',
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -87,6 +92,7 @@ $result_trees{'on_itemize_line'} = {
             },
             {
               'cmdname' => 'exdent',
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -210,6 +216,7 @@ $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];

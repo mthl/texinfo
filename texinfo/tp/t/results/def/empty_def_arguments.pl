@@ -163,6 +163,11 @@ $result_trees{'empty_def_arguments'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -184,6 +189,11 @@ $result_trees{'empty_def_arguments'} = {
           'cmdname' => 'deffnx',
           'extra' => {
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -218,6 +228,11 @@ $result_trees{'empty_def_arguments'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -276,6 +291,11 @@ $result_trees{'empty_def_arguments'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -307,6 +327,11 @@ $result_trees{'empty_def_arguments'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -370,6 +395,11 @@ $result_trees{'empty_def_arguments'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -406,6 +436,11 @@ $result_trees{'empty_def_arguments'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'
@@ -458,6 +493,11 @@ $result_trees{'empty_def_arguments'} = {
               ]
             ],
             'def_command' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'def_line'

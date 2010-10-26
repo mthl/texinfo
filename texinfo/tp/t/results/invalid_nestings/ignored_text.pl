@@ -25,6 +25,11 @@ $result_trees{'ignored_text'} = {
         }
       ],
       'cmdname' => 'node',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {},
       'remaining_args' => 3
     }

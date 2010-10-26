@@ -108,6 +108,11 @@ $result_trees{'macro_in_early_commands'} = {
           'extra' => {
             'text_arg' => 'macro_in_passtexi_commands.info'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -218,6 +223,11 @@ $result_trees{'macro_in_early_commands'} = {
           'extra' => {
             'text_arg' => 'ISO-8859-1'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 18,
+            'macro' => 'documentencoding-command'
+          },
           'parent' => {}
         },
         {
@@ -299,6 +309,11 @@ $result_trees{'macro_in_early_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 25,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -431,6 +446,11 @@ $result_trees{'macro_in_early_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 26,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

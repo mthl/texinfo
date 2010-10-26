@@ -33,6 +33,11 @@ $result_trees{'print_merged_index'} = {
           'cp'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -58,6 +63,11 @@ $result_trees{'print_merged_index'} = {
         'misc_args' => [
           'fn'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
       },
       'parent' => {}
     }

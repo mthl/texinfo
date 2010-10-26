@@ -223,6 +223,11 @@ $result_trees{'value_expansion_in_include'} = {
           'extra' => {
             'text_arg' => 'incl-incl.txi'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -312,6 +317,11 @@ $result_trees{'value_expansion_in_include'} = {
           'cmdname' => 'verbatiminclude',
           'extra' => {
             'text_arg' => 'incl-incl.txi'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 19,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -403,9 +413,19 @@ $result_trees{'value_expansion_in_include'} = {
           'extra' => {
             'text_arg' => 'incl-incl.txi'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 24,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

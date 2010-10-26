@@ -75,6 +75,11 @@ $result_trees{'style_not_closed_before_first_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

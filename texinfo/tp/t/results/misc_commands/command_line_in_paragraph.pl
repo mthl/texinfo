@@ -37,6 +37,11 @@ $result_trees{'command_line_in_paragraph'} = {
           'extra' => {
             'text_arg' => 'en'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

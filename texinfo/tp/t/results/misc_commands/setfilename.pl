@@ -36,6 +36,11 @@ $result_trees{'setfilename'} = {
       'extra' => {
         'text_arg' => 'file_comment'
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -65,6 +70,11 @@ $result_trees{'setfilename'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'text_arg' => 'file_and_spaces'
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -106,6 +116,11 @@ $result_trees{'setfilename'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'text_arg' => 'file_space_comment'
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -159,6 +174,11 @@ $result_trees{'setfilename'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'text_arg' => '  name  '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
       },
       'parent' => {}
     },

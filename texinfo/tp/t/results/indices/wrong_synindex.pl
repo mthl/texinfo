@@ -32,6 +32,11 @@ $result_trees{'wrong_synindex'} = {
           'aaa'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -53,6 +58,11 @@ $result_trees{'wrong_synindex'} = {
         }
       ],
       'cmdname' => 'synindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

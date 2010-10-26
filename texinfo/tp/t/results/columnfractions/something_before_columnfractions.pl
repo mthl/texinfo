@@ -46,6 +46,11 @@ $result_trees{'something_before_columnfractions'} = {
                   '0.7'
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

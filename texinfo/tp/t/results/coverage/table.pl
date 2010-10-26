@@ -197,6 +197,11 @@ $result_trees{'table'} = {
                 }
               ],
               'cmdname' => 'cindex',
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -273,6 +278,11 @@ $result_trees{'table'} = {
             }
           ],
           'cmdname' => 'kindex',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

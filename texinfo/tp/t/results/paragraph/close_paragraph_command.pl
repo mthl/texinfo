@@ -87,6 +87,11 @@ $result_trees{'close_paragraph_command'} = {
           '4'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

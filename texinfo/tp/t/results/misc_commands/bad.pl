@@ -33,6 +33,11 @@ $result_trees{'bad'} = {
             }
           ],
           'cmdname' => 'kbdinputstyle',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

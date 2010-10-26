@@ -32,6 +32,11 @@ $result_trees{'recursive_synindex'} = {
           'aaa'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -63,6 +68,11 @@ $result_trees{'recursive_synindex'} = {
         'misc_args' => [
           'bbb'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -97,6 +107,11 @@ $result_trees{'recursive_synindex'} = {
           'bbb'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -118,6 +133,11 @@ $result_trees{'recursive_synindex'} = {
         }
       ],
       'cmdname' => 'synindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

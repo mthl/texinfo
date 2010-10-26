@@ -173,6 +173,11 @@ $result_trees{'defx_after_comment'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         }

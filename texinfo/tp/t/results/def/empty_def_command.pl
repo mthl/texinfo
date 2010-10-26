@@ -185,6 +185,11 @@ $result_trees{'empty_def_command'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         }

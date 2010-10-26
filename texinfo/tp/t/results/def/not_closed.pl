@@ -121,6 +121,11 @@ $result_trees{'not_closed'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },

@@ -101,6 +101,11 @@ $result_trees{'value_in_node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -197,6 +202,11 @@ $result_trees{'value_in_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -258,6 +268,11 @@ $result_trees{'value_in_node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -380,6 +395,11 @@ $result_trees{'value_in_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -481,6 +501,11 @@ $result_trees{'value_in_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 19,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

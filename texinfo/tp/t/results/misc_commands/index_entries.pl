@@ -27,6 +27,11 @@ $result_trees{'index_entries'} = {
         }
       ],
       'cmdname' => 'cindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -65,6 +70,11 @@ $result_trees{'index_entries'} = {
           'truc'
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -98,6 +108,11 @@ $result_trees{'index_entries'} = {
         }
       ],
       'cmdname' => 'trucindex',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

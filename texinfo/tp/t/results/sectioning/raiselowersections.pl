@@ -61,6 +61,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -179,6 +184,11 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -207,6 +217,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -373,6 +388,11 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -401,6 +421,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 13,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -500,6 +525,11 @@ $result_trees{'raiselowersections'} = {
       'extra' => {
         'sections_level' => -1
       },
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 14,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -528,6 +558,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 20,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -627,6 +662,11 @@ $result_trees{'raiselowersections'} = {
       'extra' => {
         'sections_level' => -1
       },
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 21,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -655,6 +695,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 27,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -730,6 +775,11 @@ $result_trees{'raiselowersections'} = {
       'extra' => {
         'sections_level' => -1
       },
+      'line_nr' => {
+        'file_name' => 't/include//section_file.texi',
+        'line_nr' => 28,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -758,6 +808,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 30,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -814,6 +869,11 @@ $result_trees{'raiselowersections'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 31,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -17,6 +17,11 @@ $result_trees{'on_section_line'} = {
             },
             {
               'cmdname' => 'noindent',
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -95,6 +100,7 @@ $result_trees{'on_section_line'} = {
             },
             {
               'cmdname' => 'exdent',
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -119,6 +125,7 @@ $result_trees{'on_section_line'} = {
       ],
       'cmdname' => 'section',
       'contents' => [],
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -140,11 +147,13 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[9]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[12]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1];
+$result_trees{'on_section_line'}{'contents'}[1]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'parent'} = $result_trees{'on_section_line'};
 
 $result_texis{'on_section_line'} = '@section @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent

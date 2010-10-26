@@ -3,6 +3,7 @@ use strict;
 use Test::More;
 use Texinfo::Parser qw(:all);
 use Texinfo::Convert::Text;
+use Texinfo::Structuring;
 use Data::Dumper;
 use Data::Compare;
 use File::Basename;
@@ -79,9 +80,8 @@ sub test($$)
   } else {
     $result = $parser->parse_texi_file($test_case);
   }
-#use Texinfo::Structuring;
 #Texinfo::Structuring::collect_structure($result);
-#Texinfo::Structuring::sectioning_structure($result);
+  #my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
 
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();

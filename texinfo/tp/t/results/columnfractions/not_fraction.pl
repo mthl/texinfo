@@ -37,6 +37,11 @@ $result_trees{'not_fraction'} = {
               ],
               'cmdname' => 'columnfractions',
               'extra' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

@@ -48,6 +48,11 @@ $result_trees{'multitable'} = {
                   '7'
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -241,6 +246,11 @@ $result_trees{'multitable'} = {
                         }
                       ],
                       'cmdname' => 'cindex',
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 7,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     }
                   ],

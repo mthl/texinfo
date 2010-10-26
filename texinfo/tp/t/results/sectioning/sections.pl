@@ -32,6 +32,11 @@ $result_trees{'sections'} = {
       ],
       'cmdname' => 'chapter',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

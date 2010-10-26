@@ -247,6 +247,11 @@ $result_trees{'def_defx_mismatch'} = {
             ],
             'def_command' => 'deffn'
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },

@@ -46,6 +46,11 @@ $result_trees{'definfoenclose'} = {
               '\\'
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -134,6 +139,11 @@ $result_trees{'definfoenclose'} = {
               ':',
               ':'
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {}
         }
@@ -251,6 +261,11 @@ $result_trees{'definfoenclose'} = {
           '(strong:',
           ':)'
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
       },
       'parent' => {}
     },

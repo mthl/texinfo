@@ -49,6 +49,11 @@ $result_trees{'good_comment'} = {
                   '5.'
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

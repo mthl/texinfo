@@ -74,6 +74,11 @@ $result_trees{'node_in_copying_not_closed'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -118,6 +123,11 @@ $result_trees{'node_in_copying_not_closed'} = {
 '
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

@@ -169,6 +169,11 @@ $result_trees{'double_command'} = {
                     ],
                     'def_command' => 'deffn'
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'def_line'
                 }

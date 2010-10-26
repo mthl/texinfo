@@ -36,6 +36,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'noindent',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -68,6 +73,11 @@ $result_trees{'also_not_line'} = {
     },
     {
       'cmdname' => 'noindent',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -84,6 +94,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'noindent',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -103,6 +118,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'noindent',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -166,6 +186,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'noindent',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -229,6 +254,11 @@ $result_trees{'also_not_line'} = {
         }
       ],
       'cmdname' => 'subheading',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 18,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -286,6 +316,11 @@ $result_trees{'also_not_line'} = {
         },
         {
           'cmdname' => 'exdent',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 24,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

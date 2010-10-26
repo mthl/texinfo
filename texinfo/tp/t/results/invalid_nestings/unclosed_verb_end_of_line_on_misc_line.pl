@@ -41,6 +41,11 @@ $result_trees{'unclosed_verb_end_of_line_on_misc_line'} = {
         }
       ],
       'cmdname' => 'setfilename',
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

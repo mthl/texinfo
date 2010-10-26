@@ -130,6 +130,11 @@ $result_trees{'style_not_closed_root_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -158,6 +163,11 @@ $result_trees{'style_not_closed_root_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -223,6 +233,11 @@ $result_trees{'style_not_closed_root_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
