@@ -24,6 +24,8 @@ package Texinfo::Structuring;
 use 5.00405;
 use strict;
 
+use Texinfo::Convert::Text;
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -36,7 +38,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
-  
+  sectioning_structure  
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -135,23 +137,155 @@ sub _collect_structure($)
   }
 }
 
-sub sectioning_structure($)
+my %sec2level = (
+              'top', 0,
+              'chapter', 1,
+              'unnumbered', 1,
+              'chapheading', 1,
+              'appendix', 1,
+              'section', 2,
+              'unnumberedsec', 2,
+              'heading', 2,
+              'appendixsec', 2,
+              'subsection', 3,
+              'unnumberedsubsec', 3,
+              'subheading', 3,
+              'appendixsubsec', 3,
+              'subsubsection', 4,
+              'unnumberedsubsubsec', 4,
+              'subsubheading', 4,
+              'appendixsubsubsec', 4,
+         );
+
+# out of the main hierarchy
+$sec2level{'part'} = 0;
+# this are synonyms
+$sec2level{'appendixsection'} = 2;
+# sec2level{'majorheading'} is also 1 and not 0
+$sec2level{'majorheading'} = 1;
+$sec2level{'chapheading'} = 1;
+$sec2level{'centerchap'} = 1;
+
+my %appendix_commands;
+my %unnumbered_commands;
+foreach my $command (keys(%sec2level)) {
+  if ($command =~ /appendix/) {
+    $appendix_commands{$command} = 1;
+  } elsif ($command =~ /unnumbered/) {
+    $unnumbered_commands{$command} = 1;
+  }
+}
+$unnumbered_commands{'top'} = 1;
+$unnumbered_commands{'centerchap'} = 1;
+$unnumbered_commands{'part'} = 1;
+
+my $min_level = $sec2level{'top'};
+my $max_level = $sec2level{'subsubsection'};
+
+sub sectioning_structure($$)
 {
+  my $self = shift;
   my $root = shift;
   if (!$root->{'type'} or $root->{'type'} ne 'document_root'
       or !$root->{'contents'}) {
     return undef;
   }
+
+  my $sec_root = {'text' => '_ROOT'};
+  my $previous_command;
+
+  my $in_appendix = 0;
+  # lowest level with a number.  This is the lowest level above 0.
+  my $number_top_level;
+  
+  # holds the current number for all the levels.  It is not possible to use
+  # something like the last child index, because of @unnumber.
+  my @command_numbers;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
         and $content->{'cmdname'} ne 'bye') {
-      my $level = 0;
-      $level = $content->{'extra'}->{'sections_level'}
-        if ($content->{'extra'} and $content->{'extra'}->{'sections_level'});
+      my $level = $sec2level{$content->{'cmdname'}};
+      # correct level according to raise/lowersections
+      if ($content->{'extra'} and $content->{'extra'}->{'sections_level'}) {
+        $level -= $content->{'extra'}->{'sections_level'};
+        if ($level < $min_level) {
+          $level = $min_level;
+        } elsif ($level > $max_level) {
+          $level = $max_level;
+        }
+      }
+      my $command = { 'section' => $content, 'level' => $level,
+         #             'name' => $content->{'cmdname'}, 
+         #             'text' => 
+         # Texinfo::Convert::Text::convert($content->{'args'}->[0])
+                                                        };
+      if ($previous_command) {
+        # new command is below
+        if ($previous_command->{'level'} < $level) {
+          if ($level - $previous_command->{'level'} > 1) {
+            $self->_line_error(sprintf($self->__("Upping the section level of \@%s which is too low"), 
+                                       $content->{'cmdname'}), $content->{'line_nr'});
+            $command->{'level'} = $previous_command->{'level'} + 1;
+          }
+          $previous_command->{'childs'} = [$command];
+          $command->{'up'} = $previous_command;
+          $command_numbers[$command->{'level'}] = undef;
+        } else {
+          my $up = $previous_command->{'up'};
+          if ($previous_command->{'level'} != $level) {
+            # means it is above the previous command, the up is to be found
+            while ($up->{'up'} and $up->{'level'} >= $level) {
+              $up = $up->{'up'};
+            }
+            if ($level <= $up->{'level'}) {
+              $self->_line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
+                                       $content->{'cmdname'}), $content->{'line_nr'});
+              $command->{'level'} = $up->{'level'} + 1;
+            }
+          }
+          push @{$up->{'childs'}}, $command;
+          $command->{'up'} = $up;
+          $command->{'prev'} = $up->{'childs'}->[-2];
+          $command->{'prev'}->{'next'} = $command;
+          if (!$unnumbered_commands{$content->{'cmdname'}}) {
+            $command_numbers[$command->{'level'}]++;
+          }
+          
+        }
+      } else { # first section determines the level of the root.  It is 
+               # typically -1 when there is a @top.
+        $command->{'up'} = $sec_root;
+        $sec_root->{'level'} = $level - 1;
+        $sec_root->{'childs'} = [$command];
+        $number_top_level = $level;
+        $number_top_level++ if (!$number_top_level);
+      }
+      if (!defined($command_numbers[$command->{'level'}])) {
+        if ($unnumbered_commands{$content->{'cmdname'}}) {
+          $command_numbers[$command->{'level'}] = 0;
+        } else {
+          $command_numbers[$command->{'level'}] = 1;
+        }
+      }
+      if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix) {
+        $in_appendix = 1;
+        $command_numbers[$command->{'level'}] = 'A';
+      }
+      if (!$unnumbered_commands{$content->{'cmdname'}}) {
+        # construct the number
+        $command->{'number'} = $command_numbers[$number_top_level];
+        for (my $i = $number_top_level+1; $i <= $command->{'level'}; $i++) {
+          $command->{'number'} .= ".$command_numbers[$i]";
+        }
+      }
+      $previous_command = $command;
 
-      print STDERR "$level $content->{'cmdname'}\n";
+      #my $number = '';
+      #$number = $command->{'number'} if defined($command->{'number'});
+      #print STDERR "($command->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$command->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
     }
   }
+  return $sec_root;
 }
 
 1;

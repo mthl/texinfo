@@ -12,7 +12,8 @@ use File::Basename;
 #use Struct::Compare;
 use Getopt::Long qw(GetOptions);
 
-use vars qw(%result_texis %result_texts %result_trees %result_errors %result_indices);
+use vars qw(%result_texis %result_texts %result_trees %result_errors 
+   %result_indices %result_sectioning);
 
 ok(1);
 
@@ -46,6 +47,7 @@ sub new_test ($;$$)
 
 sub filter_keys { [grep {$_ ne 'next'} ( sort keys %{$_[0]} )] }
 #sub filter_keys { [grep {$_ ne 'parent' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
+sub filter_main_tree { [grep {$_ ne 'section'} ( sort keys %{$_[0]} )] }
 
 sub test($$) 
 {
@@ -80,8 +82,15 @@ sub test($$)
   } else {
     $result = $parser->parse_texi_file($test_case);
   }
-#Texinfo::Structuring::collect_structure($result);
-  #my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
+
+  my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
+  {
+    local $Data::Dumper::Purity = 1;
+    local $Data::Dumper::Sortkeys = \&filter_main_tree;
+    local $Data::Dumper::Indent = 1;
+
+    #print STDERR Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']);
+  }
 
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();
@@ -97,7 +106,6 @@ sub test($$)
 
   {
     local $Data::Dumper::Purity = 1;
-    local $Data::Dumper::Sortkeys = \&filter_keys;
     local $Data::Dumper::Indent = 1;
 
     my $out_file = $new_file;
@@ -107,7 +115,11 @@ sub test($$)
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
-    my $out_result = "".Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
+    my $out_result;
+    {
+      local $Data::Dumper::Sortkeys = \&filter_keys;
+      $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
+    }
     my $texi_string_result = tree_to_texi($result);
     my $perl_string_result = $texi_string_result;
     $perl_string_result =~ s/\\/\\\\/g;
