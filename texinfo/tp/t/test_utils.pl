@@ -129,8 +129,11 @@ sub test($$)
     $perl_string_converted_text =~ s/'/\\'/g;
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
-    $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
-    $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n";
+    {
+      local $Data::Dumper::Sortkeys = 1;
+      $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+      $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n";
+    }
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);

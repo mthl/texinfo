@@ -18,6 +18,13 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl or texi2html.init.
 
+# The organization of the file is the following:
+#  module definitions.
+#  default parser state.  With explanation of the internal structures.
+#  initializations, mostly determination of command types.
+#  user visible subroutines.
+#  internal subroutines, doing the parsing.
+#  code used to transform a texinfo tree into texinfo text.
 
 package Texinfo::Parser;
 
@@ -116,7 +123,7 @@ my %default_configuration = (
 # encoding                Current encoding set by @documentencoding
 # input                   a stack, with last at bottom.  Holds the opened files
 #                         or text.  Pending macro expansion or text expansion
-#                         is also in that structure
+#                         is also in that structure.
 # misc_commands           the same than %misc_commands below, but with index
 #                         entry commands dynamically added
 # no_paragraph_commands   the same than %default_no_paragraph_commands
@@ -127,6 +134,23 @@ my %default_configuration = (
 # errors_warnings         a structure with the errors and warnings.
 # error_nrs               number of errors.
 
+# A line information is an hash reference with the keys:
+# line_nr        the line number
+# file_name      the file name
+# macro          if in a macro expansion, the name of the macro
+#
+# A text fragment information is a 2 element array reference, the first is the
+# text fragment, the second is the line information.
+#
+# The input structure is an array, the first is the most recently included
+# file.  The last element may be a file if the parsing is done on a file, 
+# with parse_texi_file, or simply pending text, if called as parse_texi_text.
+# each element of the array is a hash reference.  The key are:
+# pending    an array reference containing pending text fragments, either the
+#            text given as parse_texi_text or macro expansion text.
+# name       file name
+# line_nr    current line number in the file
+# fh         filehandle for the file
 
 
 my %no_brace_commands;             # commands never taking braces
@@ -319,11 +343,6 @@ foreach my $three_arg_command('uref','url','inforef') {
 foreach my $five_arg_command('xref','ref','pxref','image') {
   $brace_commands{$five_arg_command} = 5;
 }
-
-my %no_paragraph_contexts;
-foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
-  $no_paragraph_contexts{$no_paragraph_context} = 1;
-};
 
 
 # commands delimiting blocks, with an @end.
@@ -659,6 +678,13 @@ foreach my $brace_command (keys (%brace_commands)) {
 $full_text_commands{'center'} = 1;
 $full_text_commands{'exdent'} = 1;
 
+# contexts on the context_stack stack where empty line don't trigger
+# paragraph
+my %no_paragraph_contexts;
+foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
+  $no_paragraph_contexts{$no_paragraph_context} = 1;
+};
+
 my %canonical_texinfo_encodings;
 # These are the encodings from the texinfo manual
 foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
@@ -708,7 +734,8 @@ sub _deep_copy ($)
   return $struct;
 }
 
-# enter all the commands associated with an index name.
+# enter all the commands associated with an index name using the prefix
+# list
 sub _enter_index_commands ($$)
 {
   my $self = shift;
@@ -720,7 +747,11 @@ sub _enter_index_commands ($$)
   }
 }
 
-# initialize a parser
+# initialization entry point.  Set up a parser.
+# The last argument, optional, is a hash provided by the user to change
+# the default values for what is present in %default_configuration.
+# The exact arguments of the function depend on how it was called,
+# in a object oriented way or not.
 sub parser(;$$)
 {
   my $class = shift;
@@ -766,11 +797,14 @@ sub parser(;$$)
       }
     }
   }
+
+  # Now initialize command hash that are dynamically modified, notably
+  # those for index commands, and lists, based on defaults and user provided.
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
   $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = _deep_copy (\%index_names);
-  # a hash is simply concatenated
+  # a hash is simply concatenated.  It should be like %index_names.
   if (ref($parser->{'indices'}) eq 'HASH') {
     %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
                                    %{$parser->{'indices'}});
@@ -785,6 +819,8 @@ sub parser(;$$)
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
   $parser->{'context_stack'} = [ $parser->{'context'} ];
+  # turn the array to a hash for speed.  Not sure it really matters for such
+  # a small array.
   foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {
     $parser->{'expanded_formats_hash'}->{$expanded_format} = 1;
   }
@@ -803,7 +839,7 @@ sub _text_to_lines($)
   return $lines;
 }
 
-# construct a line numbers array matching a lines array, based on information
+# construct a text fragments array matching a lines array, based on information
 # supplied.
 # If $fixed_line_number is set the line number is not increased, otherwise
 # it is increased, beginning at $first_line.
@@ -904,6 +940,13 @@ sub indices_information ($)
   return ($self->{'index_names'}, $self->{'merged_indices'});
 }
 
+# Following are the internal subsections.  The most important are
+# _parse_texi:  the main parser loop.
+# _end_line:    called at an end of line.  Opening if @include lines is 
+#               done here.
+# _next_text:   present the next text fragment, from pending text or line,
+#               as described above.
+
 # for debugging
 sub _print_current($)
 {
@@ -980,7 +1023,7 @@ sub _line_error($$$)
 }
 
 # parse a @macro line
-sub _parse_macro_command($$$$$;$)
+sub _parse_macro_command_line($$$$$;$)
 {
   my $self = shift;
   my $command = shift;
@@ -1085,6 +1128,56 @@ sub _end_paragraph ($$$)
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
     print STDERR "CLOSE PARA\n" if ($self->{'debug'});
     $current = $current->{'parent'};
+  }
+  return $current;
+}
+
+# close the current command, with error messages and give the parent.
+# If the last argument is given it is the command being closed if
+# there was no error, currently only block command, used for a
+# better error message.
+sub _close_current($$$;$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  my $command = shift;
+
+  if ($current->{'cmdname'}) {
+    if (exists($brace_commands{$current->{'cmdname'}})) {
+      pop @{$self->{'context_stack'}}
+         if (exists $context_brace_commands{$current->{'cmdname'}});
+      $current = _close_brace_command($self, $current, $line_nr);
+    } elsif (exists($block_commands{$current->{'cmdname'}})) {
+      if (defined($command)) {
+        $self->_line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
+                                   $current->{'cmdname'}, $command), $line_nr);
+      } else {
+        $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
+                                   ord('@'), $current->{'cmdname'}), $line_nr);
+      }
+      pop @{$self->{'context_stack'}} if
+         ($preformatted_commands{$current->{'cmdname'}}
+           or $menu_commands{$current->{'cmdname'}});
+      $current = $current->{'parent'};
+    } else { # FIXME is this possible? And does it make sense?
+      # silently close containers and @-commands without brace nor @end
+      #_line_error($self, sprintf($self->__("Closing \@%s"), 
+      #                          $current->{'cmdname'}), $line_nr);
+      $current = $current->{'parent'};
+    }
+  } elsif ($current->{'type'}) {
+    if ($current->{'type'} eq 'bracketed') {
+    # FIXME record the line number in the bracketed and use it
+      _line_error ($self, sprintf($self->__("Misplaced %c"),
+                                             ord('{')), $line_nr);
+      $current = $current->{'parent'};
+    } else {
+      $current = $current->{'parent'} if ($current->{'parent'});
+    }
+  } else { # Should never go here.
+    $current = $current->{'parent'} if ($current->{'parent'});
+    print STDERR "BUG: Where am I? "._print_current($current);
   }
   return $current;
 }
@@ -1553,55 +1646,6 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
-# close the current command, with error messages and give the parent.
-# If the last argument is given it is the command being closed if
-# there was no error, currently only block command, used for a
-# better error message.
-sub _close_current($$$;$)
-{
-  my $self = shift;
-  my $current = shift;
-  my $line_nr = shift;
-  my $command = shift;
-
-  if ($current->{'cmdname'}) {
-    if (exists($brace_commands{$current->{'cmdname'}})) {
-      pop @{$self->{'context_stack'}}
-         if (exists $context_brace_commands{$current->{'cmdname'}});
-      $current = _close_brace_command($self, $current, $line_nr);
-    } elsif (exists($block_commands{$current->{'cmdname'}})) {
-      if (defined($command)) {
-        $self->_line_error(sprintf($self->__("`\@end' expected `%s', but saw `%s'"),
-                                   $current->{'cmdname'}, $command), $line_nr);
-      } else {
-        $self->_line_error(sprintf($self->__("No matching `%cend %s'"),
-                                   ord('@'), $current->{'cmdname'}), $line_nr);
-      }
-      pop @{$self->{'context_stack'}} if
-         ($preformatted_commands{$current->{'cmdname'}}
-           or $menu_commands{$current->{'cmdname'}});
-      $current = $current->{'parent'};
-    } else { # FIXME is this possible? And does it make sense?
-      # silently close containers and @-commands without brace nor @end
-      #_line_error($self, sprintf($self->__("Closing \@%s"), 
-      #                          $current->{'cmdname'}), $line_nr);
-      $current = $current->{'parent'};
-    }
-  } elsif ($current->{'type'}) {
-    if ($current->{'type'} eq 'bracketed') {
-    # FIXME record the line number in the bracketed and use it
-      _line_error ($self, sprintf($self->__("Misplaced %c"),
-                                             ord('{')), $line_nr);
-      $current = $current->{'parent'};
-    } else {
-      $current = $current->{'parent'} if ($current->{'parent'});
-    }
-  } else { # Should never go here.
-    $current = $current->{'parent'} if ($current->{'parent'});
-    print STDERR "BUG: Where am I? "._print_current($current);
-  }
-  return $current;
-}
 
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
@@ -1874,8 +1918,10 @@ sub _end_line($$$)
       }
     }
     $current = $current->{'parent'};
-    if ($included_file) {
-      # remove completly the include file command
+    # if filie was included, remove completly the include file command.
+    # Also ignore @setfilename in included file, as said in the manual.
+    if ($included_file or ($command eq 'setfilename'
+                           and scalar(@{$self->{'input'}}) > 1)) {
       pop @{$current->{'contents'}};
     # columnfractions 
     } elsif ($command eq 'columnfractions') {
@@ -2690,7 +2736,7 @@ sub _parse_texi($$;$)
         # @-command with matching @end
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
-            my $macro = _parse_macro_command ($self, $command, $line, 
+            my $macro = _parse_macro_command_line ($self, $command, $line, 
                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
             $current = $current->{'contents'}->[-1];
@@ -3305,6 +3351,11 @@ sub _parse_line_command_args($$$)
   }
   return $args;
 }
+
+
+
+# Following subroutines deal with transforming a texinfo tree into texinfo
+# text.  Should give the text that was used parsed, except for a few cases.
 
 # expand a tree to the corresponding texinfo.
 sub tree_to_texi ($)

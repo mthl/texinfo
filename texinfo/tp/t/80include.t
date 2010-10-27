@@ -122,7 +122,10 @@ macro_included.texi
 ['include_at_end_line',
 '@include inc_file.texi@
 
-After.']
+After.'],
+['include_with_setfilename',
+'@include included_file_with_setfilename.texi 
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
