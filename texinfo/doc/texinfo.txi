@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
+@c $Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -19392,7 +19392,8 @@ are usually rendered using @code{<pre>} elements in HTML.
 When rendering strings without formatting elements, for example in
 comments (@pxref{Comments}) and titles.  We have two string contexts,
 one that produces plain text, and a second that allows for limited
-formatting, typically without any element when producing HTML or XML.
+formatting, typically without any element when producing HTML or XML,
+so the value can be used in an attribute.
 
 @item math context
 @cindex Math expansion context
@@ -20859,6 +20860,8 @@ Texinfo commands used within the running text.
 * Simple: HTML Customization for Simple Commands.
 * Anchors: HTML Customization for Anchors.
 * Images: HTML Customization for Images.
+* sp: HTML Customization for @code{sp}.
+* Abbrs: HTML Customization for Abbreviations. @code{@@acronym}, @code{@@abbr}.
 * Formatting characters and text::
 * Formatting of simple line commands::
 @end menu
@@ -21340,28 +21343,57 @@ of the @@-command.
 @end deftypefn
 
 
-The formatting of @code{@@sp} is controlled by:
+@node HTML Customization for @code{sp}
+@subsection HTML Customization for @code{sp}
+
+@cindex HTML customization for @code{sp}
+@cindex @code{sp}, customizing HTML for
+
+The formatting of @code{@@sp} (@pxref{sp,,@code{@@sp}}) is controlled by:
+
 @deftypefn {Function Reference} $sp sp $number $preformatted
 @var{$number} is the numeric argument of @code{@@sp}.
-@var{$preformatted} is true if the @code{@@sp} appears in preformatted text.
+@var{$preformatted} is true if the @code{@@sp} appears in preformatted
+text.
 @end deftypefn
 
-The formatting of @code{@@acronym} and @code{@@abbr} is controlled by:
-@deftypefn {Function Reference} $acronym acronym_like $acronym_texi $acronym_text $with_explanation \@@explanation_lines $explanation_text $explanation_simply_formatted
-@var{$acronym_texi} is the acronym argument with texinfo @@-commands, 
-@var{$acronym_text} is formatted. 
 
-The other arguments are related with
-the explanation, the second arg of the acronym.  @var{$with_explanation} is 
-true if the second argument of the acronym command is present. If an
-explanation exists, coming from previous @code{@@acronym} or as an arg of 
-this command, the other args are defined: @var{\@@explanation_lines} is a 
-reference on an array containing the simply fomatted explanation lines, 
-@var{$explanation_text} is the explanation text formatted,
-@var{$explanation_simply_formatted} is the explanation formatted in 
-a string context, enabling in HTML (or @acronym{XML}) the explanation 
-to be in an attribute.
+@node HTML Customization for Abbreviations
+@subsection HTML Customization for Abbreviations
+
+@cindex HTML customization for abbreviations
+@cindex @code{abbr}, customizing HTML for
+@cindex @code{acronym}, customizing HTML for
+
+The formatting of @code{@@acronym} and @code{@@abbr} (@pxref{acronym,,
+@code{@@acronym}} and @ref{abbr,, @code{@@abbr}}) is controlled by:
+
+@deftypefn {Function Reference} $acronym acronym_like @
+           $acronym_texi $acronym_text $with_explanation \@@explanation_lines @
+           $explanation_text $explanation_simply_formatted
+
+@var{$acronym_texi} is the original acronym argument with @@-commands,
+while @var{$acronym_text} is formatted.
+
+The other arguments are related to the explanation (the second arg of
+the acronym).  @var{$with_explanation} is true if the second argument
+of the acronym command is present.  If an explanation exists, coming
+from a previous @code{@@acronym} or as an argument to the present
+command, the remaining arguments are defined:
+
+@table @var
+@item \@@explanation_lines
+Array reference containing simply formatted explanation lines
+(@pxref{Init File Expansion Contexts}).
+
+@item $explanation_text
+Formatted explanation text.
+
+@item $explanation_simply_formatted
+Explanation simply formatted in a string context.
+@end table
 @end deftypefn
+
 
 @node Formatting characters and text
 @subsection Processing special characters in text
@@ -24802,7 +24834,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
+$Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24881,7 +24913,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.333 2010-10-25 16:26:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-25.15; # UTC
+htmlxrefversion=2010-10-27.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -214,6 +214,7 @@ GNUPG = http://www.gnupg.org/documentation/manuals
 gnupg		node	${GNUPG}/gnupg/
  dirmngr	node	${GNUPG}/dirmngr/
  gcrypt		node	${GNUPG}/gcrypt/
+ libgcrypt	node	${GNUPG}/gcrypt/
  ksba		node	${GNUPG}/ksba/
  assuan		node	${GNUPG}/assuan/
  gpgme		node	${GNUPG}/gpgme/
@@ -274,6 +275,9 @@ jwhois		mono	${GS}/jwhois/manual/jwhois.html
 jwhois		node	${GS}/jwhois/manual/html_node/
 
 libextractor	mono	${GS}/libextractor/extractor.html
+
+libidn		mono	${GS}/libidn/manual/libidn.html
+libidn		node	${GS}/libidn/manual/html_node/
 
 libmatheval	mono	${GS}/libmatheval/matheval.html
 
