@@ -75,6 +75,11 @@ $result_trees{'style_not_closed_before_first_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,

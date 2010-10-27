@@ -61,6 +61,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -217,6 +222,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Chapter'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
@@ -421,6 +431,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Chapter-in-included-file'
+        ]
+      },
       'line_nr' => {
         'file_name' => 't/include//section_file.texi',
         'line_nr' => 13,
@@ -558,6 +573,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Section'
+        ]
+      },
       'line_nr' => {
         'file_name' => 't/include//section_file.texi',
         'line_nr' => 20,
@@ -695,6 +715,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Subsection'
+        ]
+      },
       'line_nr' => {
         'file_name' => 't/include//section_file.texi',
         'line_nr' => 27,
@@ -808,6 +833,11 @@ $result_trees{'raiselowersections'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Second-chapter'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 30,

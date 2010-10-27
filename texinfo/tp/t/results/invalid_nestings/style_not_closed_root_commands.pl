@@ -130,6 +130,11 @@ $result_trees{'style_not_closed_root_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -163,6 +168,11 @@ $result_trees{'style_not_closed_root_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'chapter'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 9,

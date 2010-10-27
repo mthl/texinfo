@@ -64,11 +64,11 @@ foreach my $ignored_command ('titlepage', 'copying', 'documentdescription',
   $ignored_block_commands{$ignored_command} = 1;
 }
 
-my %brace_no_arg_commands = (
-               'TeX'          => 'TeX',
-               'LaTeX'          => 'LaTeX',
-               'bullet'       => '*',
-               'copyright' => '(C)',
+our %text_brace_no_arg_commands = (
+               'TeX'                => 'TeX',
+               'LaTeX'              => 'LaTeX',
+               'bullet'             => '*',
+               'copyright'          => '(C)',
                'registeredsymbol'   => '(R)',
                'dots'         => '...',
                'enddots'      => '...',
@@ -108,23 +108,23 @@ my %brace_no_arg_commands = (
                'geq'          => '>=',
                'leq'          => '<=',
                'tie'          => ' ',
-               'textdegree'          => 'o',
-               'quotedblleft'          => '``',
-               'quotedblright'          => "''",
-               'quoteleft'          => '`',
-               'quoteright'          => "'",
-               'quotedblbase'          => ',,',
-               'quotesinglbase'          => ',',
-               'guillemetleft'          => '<<',
-               'guillemetright'          => '>>',
-               'guillemotleft'          => '<<',
-               'guillemotright'          => '>>',
-               'guilsinglleft'          => '<',
-               'guilsinglright'          => '>',
-               'click'                => '', # specially treated
+               'textdegree'      => 'o',
+               'quotedblleft'    => '``',
+               'quotedblright'   => "''",
+               'quoteleft'       => '`',
+               'quoteright'      => "'",
+               'quotedblbase'    => ',,',
+               'quotesinglbase'  => ',',
+               'guillemetleft'   => '<<',
+               'guillemetright'  => '>>',
+               'guillemotleft'   => '<<',
+               'guillemotright'  => '>>',
+               'guilsinglleft'   => '<',
+               'guilsinglright'  => '>',
+               'click'           => '', # specially treated
 );
 
-my %no_brace_commands = (
+our %text_no_brace_commands = (
            '*', "\n",
            ' ', ' ',
            "\t", ' ',
@@ -144,7 +144,7 @@ my %no_brace_commands = (
 my %accent_commands;
 foreach my $accent_command ('"','~','^','`',"'",',','=',
                            'ringaccent','H','dotaccent','u','ubaraccent',
-                           'udotaccent','v','ogonek','tieaccent') {
+                           'udotaccent','v','ogonek','tieaccent', 'dotless') {
   $accent_commands{$accent_command} = 1;
 }
 
@@ -243,14 +243,14 @@ sub convert($)
   }
   if ($root->{'cmdname'}) {
     my $command = $root->{'cmdname'};
-    if (defined($no_brace_commands{$root->{'cmdname'}})) {
-      return $no_brace_commands{$root->{'cmdname'}};
-    } elsif (defined($brace_no_arg_commands{$root->{'cmdname'}})) {
+    if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
+      return $text_no_brace_commands{$root->{'cmdname'}};
+    } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
       $command = $root->{'extra'}->{'clickstyle'}
          if ($root->{'extra'}
           and defined($root->{'extra'}->{'clickstyle'})
-          and defined($brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-      return $brace_no_arg_commands{$command};
+          and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
+      return $text_brace_no_arg_commands{$command};
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});

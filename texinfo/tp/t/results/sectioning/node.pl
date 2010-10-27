@@ -39,6 +39,11 @@ $result_trees{'node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'one-arg'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
@@ -86,6 +91,12 @@ $result_trees{'node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'one-arg',
+          'two-arg'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -147,6 +158,13 @@ $result_trees{'node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'one-arg',
+          'two-arg',
+          'three-arg'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -222,6 +240,14 @@ $result_trees{'node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'one-arg',
+          'two-arg',
+          'three-arg',
+          'four-arg'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -304,6 +330,14 @@ $result_trees{'node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'one-arg',
+          'two-arg',
+          'three-arg',
+          'four-arg-five-arg'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 6,
@@ -355,6 +389,11 @@ $result_trees{'node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'comment'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 8,
@@ -466,6 +505,13 @@ $result_trees{'node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'arg1-_002c-arg2',
+          '_00e7edilla',
+          'comma-in-strong_002c'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,

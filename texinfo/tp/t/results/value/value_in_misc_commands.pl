@@ -59,6 +59,11 @@ $result_trees{'value_in_misc_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,

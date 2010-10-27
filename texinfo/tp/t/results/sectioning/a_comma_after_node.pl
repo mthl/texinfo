@@ -78,6 +78,13 @@ $result_trees{'a_comma_after_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'Commands',
+          'Requirements',
+          'Nodes-and-Menus'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,

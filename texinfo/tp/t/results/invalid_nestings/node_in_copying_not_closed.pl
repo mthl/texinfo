@@ -74,6 +74,11 @@ $result_trees{'node_in_copying_not_closed'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 6,

@@ -101,6 +101,14 @@ $result_trees{'value_in_node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top',
+          '_0028dir_0029',
+          '_0028dir_0029',
+          '_0028dir_0029'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -268,6 +276,14 @@ $result_trees{'value_in_node'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Node-1',
+          '',
+          'Top',
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
@@ -501,6 +517,14 @@ $result_trees{'value_in_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'Section-1_002e1',
+          '',
+          'Node-1',
+          'Node-1'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 19,

@@ -421,6 +421,11 @@ $result_trees{'value_expansion_in_include'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,

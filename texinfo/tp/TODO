@@ -30,6 +30,10 @@ t/57invalid_nestings.t recursive_copying
 no warning in
 t/19def.t empty_def_arguments
 
+Also normalize nodes as first argument of ref, and in menu
+(and anchors and float...).
+at_commands_in_refs some_at_commands_in_ref_nodes
+
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
@@ -75,6 +79,10 @@ formatting/def_end_of_line_footnote.texi
 formatting/empty_deftype.texi
 formatting/def_cmds.texi (but printindex not tested)
 formatting/paragraph_in_samp.texi
+
+sectioning/other_at_comands_in_nodes_refs.texi
+sectioning/at_commands_in_refs.texi
+sectioning/test_refs.texi
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)

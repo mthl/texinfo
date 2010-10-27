@@ -245,6 +245,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 18,

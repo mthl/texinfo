@@ -107,6 +107,11 @@ $result_trees{'macro_in_misc_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'Top'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 9,
@@ -2769,6 +2774,11 @@ $result_trees{'macro_in_misc_commands'} = {
       ],
       'cmdname' => 'node',
       'contents' => [],
+      'extra' => {
+        'normalized' => [
+          'node-atext'
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 195,

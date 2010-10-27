@@ -28,10 +28,13 @@
 
 package Texinfo::Parser;
 
-use 5.00405;
+# We need the unicode stuff.
+use 5.006;
 use Data::Dumper;
 # to expand file names in @include
 use Texinfo::Convert::Text;
+# to normalize node name, anchor, float arg, listoffloats and first *ref argument.
+use Texinfo::Convert::NormalizeNode;
 # to detect if an encoding may be used to open the files
 use Encode;
 use strict;
@@ -1916,9 +1919,14 @@ sub _end_line($$$)
           }
         }
       }
+    } elsif ($command eq 'node') {
+      foreach my $arg (@{$current->{'args'}}) {
+        push @{$current->{'extra'}->{'normalized'}}, 
+         Texinfo::Convert::NormalizeNode::convert($arg);
+      }
     }
     $current = $current->{'parent'};
-    # if filie was included, remove completly the include file command.
+    # if a file was included, remove completly the include file command.
     # Also ignore @setfilename in included file, as said in the manual.
     if ($included_file or ($command eq 'setfilename'
                            and scalar(@{$self->{'input'}}) > 1)) {
