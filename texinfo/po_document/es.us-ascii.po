@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-10-24 23:56+0200\n"
+"POT-Creation-Date: 2010-10-28 23:22+0200\n"
 "PO-Revision-Date: 2008-08-28\n"
 "Last-Translator: Francisco Vila <paconet.org@gmail.com>\n"
 "Language-Team: Unknown\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6272 texi2html/texi2html.pl:6276
-#: texi2html/texi2html.pl:6280
+#: texi2html/texi2html.pl:6273 texi2html/texi2html.pl:6277
+#: texi2html/texi2html.pl:6281
 msgid "About This Document"
 msgstr "Acerca de este documento"
 
-#: texi2html/texi2html.pl:6273 texi2html/texi2html.pl:6277
-#: texi2html/texi2html.pl:6281 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:6278
+#: texi2html/texi2html.pl:6282 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "@'{@dotless{I}}ndice General"
 
-#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:6278
-#: texi2html/texi2html.pl:6282
+#: texi2html/texi2html.pl:6275 texi2html/texi2html.pl:6279
+#: texi2html/texi2html.pl:6283
 msgid "Short Table of Contents"
 msgstr "Resumen del Contenido"
 
-#: texi2html/texi2html.pl:6275 texi2html/texi2html.pl:6279
-#: texi2html/texi2html.pl:6283 texi2html/texi2html.init:6745
+#: texi2html/texi2html.pl:6276 texi2html/texi2html.pl:6280
+#: texi2html/texi2html.pl:6284 texi2html/texi2html.init:6745
 #: texi2html/formats/html.init:2416
 msgid "Footnotes"
 msgstr "Notas al pie"
 
-#: texi2html/texi2html.pl:13007
+#: texi2html/texi2html.pl:13008
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""

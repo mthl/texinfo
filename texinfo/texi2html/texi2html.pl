@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.429 2010-10-24 17:51:44 pertusus Exp $
+# $Id: texi2html.pl,v 1.430 2010-10-28 21:38:27 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -618,6 +618,7 @@ $after_punctuation_characters
 @text_substitutions_pre
 %htmlxref_entries
 %renamed_nodes
+%texi2dvi_formats
 );
 
 # deprecated

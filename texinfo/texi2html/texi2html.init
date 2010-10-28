@@ -21,7 +21,7 @@
 # Those values may be overrided by values set in $sysconfdir/texi2html/Config 
 # and then by values set in $HOME/texi2html/Config.
 #
-# $Id: texi2html.init,v 1.291 2010-09-25 14:34:31 pertusus Exp $
+# $Id: texi2html.init,v 1.292 2010-10-28 21:38:27 pertusus Exp $
 
 
 ##################################################################
@@ -38,7 +38,7 @@
 # (APA: Don't implicitely search ., to conform with the docs!)
 # my @INCLUDE_DIRS = (".");
 
-#use strict;
+use strict;
 
 @INCLUDE_DIRS = ();
 
