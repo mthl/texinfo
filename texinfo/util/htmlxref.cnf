@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-27.17; # UTC
+htmlxrefversion=2010-10-28.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -280,6 +280,12 @@ libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
 
 libmatheval	mono	${GS}/libmatheval/matheval.html
+
+libtool		mono	${GS}/libtool/manual/libtool.html
+libtool		node	${GS}/libtool/manual/html_node/
+
+lightning	mono	${GS}/lightning/manual/lightning.html
+lightning	node	${GS}/lightning/manual/html_node/
 
 liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
 liquidwar6	node	${GS}/liquidwar6/manual/html_node/

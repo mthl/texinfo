@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
+@c $Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -20862,7 +20862,7 @@ Texinfo commands used within the running text.
 * Images: HTML Customization for Images.
 * sp: HTML Customization for @code{sp}.
 * Abbrs: HTML Customization for Abbreviations. @code{@@acronym}, @code{@@abbr}.
-* Formatting characters and text::
+* Text: HTML Customization for Text Sequences. @code{-- --- `` ''}.
 * Formatting of simple line commands::
 @end menu
 
@@ -21395,58 +21395,81 @@ Explanation simply formatted in a string context.
 @end deftypefn
 
 
-@node Formatting characters and text
-@subsection Processing special characters in text
+@node HTML Customization for Text Sequences
+@subsection HTML Customization for Text Sequences
 
-Some characters are processed especially in text: @samp{---}, @samp{--},
-@samp{``} and @samp{''}. This should only be done only if in normal text and not in 
-some commands (@code{@@code}, @code{@@env}@dots{}). A function reference
-is called to process the text and should take care of those constructs.
-It may also be used to transform the text, for example set it in upper
-case if it is in @code{@@sc}. This function should also take care
-of protecting special characters.
+@cindex HTML customization for text sequences
+@cindex Text sequences, customizing HTML for
+@cindex Ligatures in text, customizing HTML for
 
+Some character sequences are processed especially in text: @samp{---},
+@samp{--}, @samp{``} and @samp{''}. This should only be done only if
+in normal text and not within commands for preformatted output
+(@code{@@code}, @code{@@env}@dots{}).  A function reference is called
+to process the text and take care of these constructs.  It may also be
+used to transform the text, for example, convert to upper case if it
+is in @code{@@sc}.  The function should also take care of protecting
+special characters.
 
-@deftypefn {Function Reference} $processed_text normal_text $text $in_raw_text $in_preformatted $in_code $in_math $in_simple $command_stack 
-The function processes @var{$text} and returns @var{$processed_text}. 
-The other arguments give some information about the context of the text.
-@var{$in_raw_text} is true if the text appears in special place where
-there is no formatting, typically in comments.  @var{$in_preformatted}
-is true if in a preformatted environemnt, and @var{$in_code} is true
-if in a special command like @code{@@code}, @code{@@env} where
-@samp{---}, @samp{--}, @samp{``} and @samp{''} should be left as is.  
-@var{$in_math} is true if in @code{@@math}.
-@var{$in_simple} is true if in string context with minimal formatting.
- @var{$command_stack} is an array containing the name of the 
-formatting @@-command that enclose the text.  
+@deftypefn {Function Reference} $processed_text normal_text $text @
+     $in_raw_text $in_preformatted $in_code $in_math $in_simple $command_stack 
+Process @var{$text} and return @var{$processed_text}.  The other
+arguments give some information about the context of the text.
 
-In the default case the @samp{---}, @samp{--}, @samp{``} and @samp{''}
-constructs are expanded if needed and the text is upper-cased if in 
-@code{@@sc}. Special characters (@samp{&}, @samp{"},
-@samp{<} and @samp{>} in HTML) are protected if needed. 
+@table @var
+@item $in_raw_text
+True if the text appears in a place where there is no formatting at
+all; e.g., in comments.
+
+@item $in_preformatted
+True if within a preformatted environemnt
+
+@item $in_code
+True if within a special command such as @code{@@code} or @code{@@env}
+where the text sequences should be left as is.
+
+@item $in_math
+True if within @code{@@math}.
+
+@item $in_simple
+True if in a string context with minimal formatting.
+
+@item $command_stack
+Array containing the name of the formatting @@-commands that enclose
+the text.
+@end table
+
+By default, the @samp{---}, @samp{--}, @samp{``} and @samp{''}
+constructs are expanded if needed and the text is upper-cased if in
+@code{@@sc}.  Special characters (@samp{&}, @samp{"}, @samp{<} and
+@samp{>} in HTML) are protected if needed.
 @end deftypefn
 
-Some characters are special, for example we have  @samp{&}, @samp{"}, 
-@samp{<} and @samp{>} in HTML. In some cases some
-pieces of text don't go through the above function, but still 
-needs to be protected to appear in text.
-This is done by the function associated with the function reference
+@cindex Protecting special output characters
+@cindex Output format characters, protecting
+@cindex HTML characters, protecting
+Some characters are special in a particular output format, such as
+@samp{<} in HTML.  Some text is not processed by the above function,
+but still needs protection before output.  This is done by the
+following:
 
 @deftypefn {Function Reference} $protected_text protect_text $text
-The function processes the unprotected text @var{$text} and returns
-the resulting protected text @var{$protected_text}.
+Process the general text @var{$text} and return the resulting
+protected text @var{$protected_text}.
 @end deftypefn
 
-Empty lines are processed by the following function reference, which could
-be usefull if empty lines are to be removed for example
+@cindex Empty lines, removing
+Empty lines are processed by the following function reference, which
+can be useful if empty lines are to be removed.
 
+@cindex Definition commands, empty lines after
 @deftypefn {Function Reference} $resulting_text empty_line $empty_line $state
-This function processes an @var{$empty_line} and returns the resulting
-text @var{$resulting_text}.  @var{$state} is a structure that holds informations
-about the state of the parsing.
-Empty lines are left as is by default except right after a definition 
-@@-command.
+Process @var{$empty_line} and return @var{$resulting_text}.
+@var{$state} is a structure holding information about the state of
+parsing.  By default, empty lines are left as-is except right after a
+definition @@-command.
 @end deftypefn
+
 
 @node Formatting of simple line commands
 @subsection Customization of simple line command output
@@ -24834,7 +24857,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
+$Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24913,7 +24936,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.334 2010-10-27 17:28:00 karl Exp $
+@comment $Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
