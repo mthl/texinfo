@@ -246,8 +246,13 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
-        'normalized' => [
-          'Top'
+        'nodes_manuals' => [
+          {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          }
         ]
       },
       'line_nr' => {
@@ -443,6 +448,7 @@ $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'};
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'args'}[0];

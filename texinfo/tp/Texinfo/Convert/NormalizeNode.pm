@@ -97,6 +97,7 @@ sub convert($)
   my $result = _convert($root);
   $result = Unicode::Normalize::NFC($result);
   $result = _unicode_to_protected($result);
+  $result = 'Top' if ($result =~ /^Top$/i);
   return $result;
 }
 

@@ -23,6 +23,33 @@ my @test_cases = (
 
 A comma in text, end.
 '],
+['nodename_parentheses',
+'@node Top
+@top The top node
+
+@menu
+* Node (with parentheses)::
+* Other node::
+* (manual)node::
+@end menu
+
+@node Node (with parentheses)
+@chapter Section (nodename with parentheses)
+
+Dummy section
+
+@node Other node
+@chapter Section (nodename without parentheses)
+
+Dummy link to @ref{Node (with parentheses)}.
+
+Dummy link to @ref{(manual)node}.
+
+@node (manual)node
+@chapter (manual)node
+
+Dummy section with (manual)node node syntax.
+'],
 ['character_and_spaces_in_node',
 '
 @node Top

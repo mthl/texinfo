@@ -83,6 +83,7 @@ formatting/paragraph_in_samp.texi
 sectioning/other_at_comands_in_nodes_refs.texi
 sectioning/at_commands_in_refs.texi
 sectioning/test_refs.texi
+sectioning/nodename_parentheses.texi
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)

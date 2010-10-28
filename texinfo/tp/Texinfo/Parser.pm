@@ -1546,6 +1546,50 @@ sub _isolate_last_space($$)
   }
 }
 
+# retrieve a leading manual name in parentheses, if there is one.
+sub _parse_node_manual($)
+{
+  my $node = shift;
+  my @contents = @{$node->{'contents'}};
+  _trim_spaces_comment_from_content(\@contents);
+
+  my $manual;
+  my $result;
+#print STDERR "RRR $contents[0] and $contents[0]->{'text'} \n";
+  if ($contents[0] and $contents[0]->{'text'} and $contents[0]->{'text'} =~ /^\(/) {
+    if ($contents[0]->{'text'} !~ /^\($/) {
+      my $brace = shift @contents;
+      my $brace_text = $brace->{'text'};
+      $brace_text =~ s/^\(//;
+      unshift @contents, { 'text' => $brace_text, 'type' => $brace->{'type'},
+                           'parent' => $brace->{'parent'} } if $brace_text ne '';
+    } else {
+      shift @contents;
+    }
+    while(@contents) {
+      my $content = shift @contents;
+      if (!defined($content->{'text'}) or $content->{'text'} !~ /\)/) {
+        push @$manual, $content;
+      } else {
+        my $brace_text = $content->{'text'};
+        my ($before, $after) = split (/\)/, $brace_text, 2);
+        push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
+            if ($before ne '');
+        unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
+            if ($after ne '');
+        last;
+      }
+    }
+    $result->{'manual_content'} = $manual if (defined($manual));
+  }
+  if (@contents) {
+    $result->{'node_content'} = \@contents;
+    $result->{'normalized'} =
+      Texinfo::Convert::NormalizeNode::convert({'contents' => \@contents});
+  }
+  return $result;
+}
+
 # used for definition line parsing
 sub _next_bracketed_or_word($)
 {
@@ -1921,8 +1965,8 @@ sub _end_line($$$)
       }
     } elsif ($command eq 'node') {
       foreach my $arg (@{$current->{'args'}}) {
-        push @{$current->{'extra'}->{'normalized'}}, 
-         Texinfo::Convert::NormalizeNode::convert($arg);
+        my $node = _parse_node_manual($arg);
+        push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
     }
     $current = $current->{'parent'};
@@ -3091,6 +3135,26 @@ sub _parse_special_misc_command($$$$)
   return ($args);
 }
 
+sub _trim_spaces_comment_from_content($)
+{
+  my $contents = shift;
+  shift @$contents 
+    if ($contents->[0] and $contents->[0]->{'type'}
+       and ($contents->[0]->{'type'} eq 'empty_line_after_command'
+            or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
+            or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'));
+
+  if (@$contents and $contents->[-1]->{'cmdname'} 
+      and ($contents->[-1]->{'cmdname'} eq 'c' 
+           or $contents->[-1]->{'cmdname'} eq 'comment')) {
+    pop @$contents;
+  }
+  if (@$contents and $contents->[-1]->{'type'} 
+      and $contents->[-1]->{'type'} eq 'spaces_at_end') {
+    pop @$contents;
+  }
+}
+
 # at the end of a @-command line with arguments, parse the resulting 
 # text, to collect aliases, definfoenclose and collect errors on 
 # wrong arguments.
@@ -3123,21 +3187,9 @@ sub _parse_line_command_args($$$)
   }
 
   my @contents = @{$arg->{'contents'}};
-  shift @contents 
-    if ($contents[0] and $contents[0]->{'type'}
-       and ($contents[0]->{'type'} eq 'empty_line_after_command'
-            or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
 
-  if (@contents and $contents[-1]->{'cmdname'} 
-      and ($contents[-1]->{'cmdname'} eq 'c' 
-           or $contents[-1]->{'cmdname'} eq 'comment')) {
-    pop @contents;
-  }
-  if (@contents and $contents[-1]->{'type'} 
-      and $contents[-1]->{'type'} eq 'spaces_at_end') {
-    pop @contents;
-  }
-  
+  _trim_spaces_comment_from_content(\@contents);
+
   if (! @contents) {
     _line_error ($self, sprintf($self->__("\@%s missing argument"), 
        $command), $line_nr);

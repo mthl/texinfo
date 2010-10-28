@@ -422,8 +422,13 @@ $result_trees{'value_expansion_in_include'} = {
         }
       ],
       'extra' => {
-        'normalized' => [
-          'Top'
+        'nodes_manuals' => [
+          {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          }
         ]
       },
       'line_nr' => {
@@ -504,6 +509,7 @@ $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
+$result_trees{'value_expansion_in_include'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'};
 
 $result_texis{'value_expansion_in_include'} = '@set testvar incl-incl.txi
