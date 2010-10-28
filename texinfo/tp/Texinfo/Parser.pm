@@ -1968,6 +1968,8 @@ sub _end_line($$$)
         my $node = _parse_node_manual($arg);
         push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
+      _check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
+                        $current->{'args'}->[0], $command, $line_nr);
     }
     $current = $current->{'parent'};
     # if a file was included, remove completly the include file command.
@@ -2065,6 +2067,35 @@ sub _start_empty_line_after_command($$) {
   return $line;
 }
 
+sub _check_empty_node($$$$)
+{
+  my $self = shift;
+  my $parsed_node = shift;
+  my $command = shift;
+  my $line_nr = shift;
+  if (!defined($parsed_node) or !$parsed_node->{'node_content'}
+      or $parsed_node->{'normalized'} !~ /\S/) {
+    _line_error ($self, sprintf($self->__("Empty argument in \@%s"),
+                $command), $line_nr);
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
+sub _check_node_label($$$$$)
+{
+  my $self = shift;
+  my $parsed_node = shift;
+  my $node = shift;
+  my $command = shift;
+  my $line_nr = shift;
+  if ($parsed_node and $parsed_node->{'manual_content'}) {
+    _line_error ($self, sprintf($self->__("Syntax for an external node used for `%s'"),
+          tree_to_texi($node)), $line_nr)
+  }
+  return _check_empty_node($self, $parsed_node, $command, $line_nr);
+}
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -2982,24 +3013,32 @@ sub _parse_texi($$;$)
           _abort_empty_line ($self, $current);
           #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
-             $current = $current->{'parent'};
+            $current = $current->{'parent'};
            # the following will not happen for footnote if there is 
            # a paragraph withing the footnote
           } elsif ($current->{'parent'}
                    and $current->{'parent'}->{'cmdname'}
                    and (exists $brace_commands{$current->{'parent'}->{'cmdname'}}
                          or $self->{'definfoenclose'}->{$current->{'parent'}->{'cmdname'}})) {
-             # for math
-             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-               pop @{$self->{'context_stack'}};
-             }
-             # first is the arg.
-             $self->_isolate_last_space($current) 
-               if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
-                   and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
-             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
-             delete $current->{'parent'}->{'remaining_args'};
-             $current = $current->{'parent'}->{'parent'};
+            # for math
+            if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
+              pop @{$self->{'context_stack'}};
+            }
+            # first is the arg.
+            $self->_isolate_last_space($current) 
+              if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
+                  and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
+            print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+            delete $current->{'parent'}->{'remaining_args'};
+            if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
+              my $parsed_anchor = _parse_node_manual($current);
+              if (_check_node_label($self, $parsed_anchor, $current,
+                                $current->{'parent'}->{'cmdname'}, $line_nr)) {
+                $current->{'parent'}->{'special'}->{'normalized'} 
+                  = $parsed_anchor->{'normalized'};
+              }
+            }
+            $current = $current->{'parent'}->{'parent'};
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
              # closing the context under broader situations

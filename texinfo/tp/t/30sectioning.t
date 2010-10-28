@@ -49,6 +49,9 @@ Dummy link to @ref{(manual)node}.
 @chapter (manual)node
 
 Dummy section with (manual)node node syntax.
+
+@anchor{(manual)anchor}.
+
 '],
 ['character_and_spaces_in_node',
 '

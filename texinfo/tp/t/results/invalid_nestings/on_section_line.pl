@@ -69,7 +69,10 @@ $result_trees{'on_section_line'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
-              'parent' => {}
+              'parent' => {},
+              'special' => {
+                'normalized' => 'in-anchor'
+              }
             },
             {
               'args' => [

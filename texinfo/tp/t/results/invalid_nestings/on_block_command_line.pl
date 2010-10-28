@@ -28,7 +28,10 @@ $result_trees{'on_block_command_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
-                  'parent' => {}
+                  'parent' => {},
+                  'special' => {
+                    'normalized' => 'in-anchor'
+                  }
                 }
               ],
               'parent' => {},
@@ -195,7 +198,10 @@ $result_trees{'on_block_command_line'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
-              'parent' => {}
+              'parent' => {},
+              'special' => {
+                'normalized' => 'in-anchor'
+              }
             },
             {
               'args' => [

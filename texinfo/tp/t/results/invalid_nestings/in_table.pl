@@ -138,7 +138,10 @@ $result_trees{'in_table'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
-                  'parent' => {}
+                  'parent' => {},
+                  'special' => {
+                    'normalized' => 'in-anchor'
+                  }
                 },
                 {
                   'args' => [

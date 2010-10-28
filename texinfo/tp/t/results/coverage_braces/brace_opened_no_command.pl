@@ -31,7 +31,10 @@ $result_trees{'brace_opened_no_command'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
-          'parent' => {}
+          'parent' => {},
+          'special' => {
+            'normalized' => 'truc'
+          }
         },
         {
           'parent' => {},

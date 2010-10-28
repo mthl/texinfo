@@ -577,6 +577,49 @@ $result_trees{'nodename_parentheses'} = {
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => '(manual)anchor'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'anchor',
+              'contents' => [],
+              'parent' => {},
+              'special' => {
+                'normalized' => 'anchor'
+              }
+            },
+            {
+              'parent' => {},
+              'text' => '.
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'line_nr' => {
@@ -681,6 +724,13 @@ $result_trees{'nodename_parentheses'}{'contents'}[8]{'args'}[0]{'parent'} = $res
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[0];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
+$result_trees{'nodename_parentheses'}{'contents'}[8]{'contents'}[4]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[8];
 $result_trees{'nodename_parentheses'}{'contents'}[8]{'parent'} = $result_trees{'nodename_parentheses'};
 
 $result_texis{'nodename_parentheses'} = '@node Top
@@ -708,6 +758,9 @@ Dummy link to @ref{(manual)node}.
 @chapter (manual)node
 
 Dummy section with (manual)node node syntax.
+
+@anchor{(manual)anchor}.
+
 ';
 
 
@@ -730,9 +783,33 @@ Dummy link to .
 (manual)node
 
 Dummy section with (manual)node node syntax.
+
+.
+
 ';
 
-$result_errors{'nodename_parentheses'} = [];
+$result_errors{'nodename_parentheses'} = [
+  {
+    'error_line' => ':22: Syntax for an external node used for ` (manual)node
+\'
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'Syntax for an external node used for ` (manual)node
+\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':27: Syntax for an external node used for `(manual)anchor\'
+',
+    'file_name' => '',
+    'line_nr' => 27,
+    'macro' => '',
+    'text' => 'Syntax for an external node used for `(manual)anchor\'',
+    'type' => 'error'
+  }
+];
 
 
 $result_indices{'nodename_parentheses'} = undef;

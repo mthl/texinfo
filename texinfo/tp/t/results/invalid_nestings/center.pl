@@ -61,7 +61,10 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
-              'parent' => {}
+              'parent' => {},
+              'special' => {
+                'normalized' => 'in-anchor'
+              }
             },
             {
               'args' => [

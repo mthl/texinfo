@@ -130,7 +130,10 @@ $result_trees{'accents'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
-                  'parent' => {}
+                  'parent' => {},
+                  'special' => {
+                    'normalized' => 'truc'
+                  }
                 }
               ],
               'parent' => {},

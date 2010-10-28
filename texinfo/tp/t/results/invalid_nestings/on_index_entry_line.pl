@@ -61,7 +61,10 @@ $result_trees{'on_index_entry_line'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
-              'parent' => {}
+              'parent' => {},
+              'special' => {
+                'normalized' => 'in-anchor'
+              }
             },
             {
               'args' => [
