@@ -1516,10 +1516,12 @@ sub _abort_empty_line($$;$)
 }
 
 # isolate last space in a command to help expansion disregard unuseful spaces.
-sub _isolate_last_space($$)
+sub _isolate_last_space($$;$)
 {
   my $self = shift;
   my $current = shift;
+  my $type = shift;
+  $type = 'spaces_at_end' if (!defined($type));
   if ($current->{'contents'} and @{$current->{'contents'}}) {
     my $index = -1;
     $index = -2 
@@ -1530,12 +1532,12 @@ sub _isolate_last_space($$)
         and !$current->{'contents'}->[$index]->{'type'}
         and $current->{'contents'}->[$index]->{'text'} =~ /\s+$/) {
       if ($current->{'contents'}->[$index]->{'text'} !~ /\S/) {
-        $current->{'contents'}->[$index]->{'type'} = 'spaces_at_end';
+        $current->{'contents'}->[$index]->{'type'} = $type;
       } else {
         $current->{'contents'}->[$index]->{'text'} =~ s/(\s+)$//;
         my $spaces = $1;
         my $new_spaces = { 'text' => $spaces, 'parent' => $current,
-                           'type' => 'spaces_at_end' };
+                           'type' => $type };
         if ($index == -1) {
           push @{$current->{'contents'}}, $new_spaces;
         } else {
@@ -1799,13 +1801,13 @@ sub _end_line($$$)
       $current = $current->{'parent'};
       push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                   'contents' => [], 'parent' => $current };
+      _enter_menu_entry_node($self, $current, $line_nr);
       $current = $current->{'args'}->[-1];
       if (defined($end_comment)) {
         $end_comment->{'parent'} = $current;
         push @{$current->{'contents'}}, $end_comment;
       }
     }
-
   # def line
   } elsif ($current->{'parent'}
             and $current->{'parent'}->{'type'}
@@ -2096,6 +2098,25 @@ sub _check_node_label($$$$$)
   }
   return _check_empty_node($self, $parsed_node, $command, $line_nr);
 }
+
+sub _enter_menu_entry_node($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  foreach my $arg (@{$current->{'args'}}) {
+    if ($arg->{'type'} eq 'menu_entry_node') {
+      $self->_isolate_last_space($arg, 'space_at_end_menu_node');
+      my $parsed_entry_node = _parse_node_manual($arg);
+      if (! defined($parsed_entry_node)) {
+        _line_error ($self, $self->__("Empty node in menu entry"), $line_nr);
+      } else {
+        $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
+      }
+    }
+  }
+}
+
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -2499,6 +2520,7 @@ sub _parse_texi($$;$)
           push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                         'contents' => [],
                                         'parent' => $current };
+          _enter_menu_entry_node($self, $current, $line_nr);
           $current = $current->{'args'}->[-1];
         # end of the menu entry name  
         } elsif ($separator =~ /^:/) {
@@ -2513,6 +2535,7 @@ sub _parse_texi($$;$)
           push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                         'contents' => [],
                                         'parent' => $current };
+          _enter_menu_entry_node($self, $current, $line_nr);
           $current = $current->{'args'}->[-1];
         }
         # REMACRO
