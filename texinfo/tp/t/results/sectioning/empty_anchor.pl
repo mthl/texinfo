@@ -14,6 +14,11 @@ $result_trees{'empty_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -36,6 +41,11 @@ $result_trees{'empty_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

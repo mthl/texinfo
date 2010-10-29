@@ -130,6 +130,11 @@ $result_trees{'accents'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'special' => {
                     'node_content' => [

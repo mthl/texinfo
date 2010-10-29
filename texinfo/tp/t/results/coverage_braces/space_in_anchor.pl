@@ -28,6 +28,11 @@ $result_trees{'space_in_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'special' => {
             'node_content' => [

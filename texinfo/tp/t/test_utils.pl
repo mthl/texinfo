@@ -163,7 +163,7 @@ sub test($$)
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
     #}
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
-               { 'ignore_hash_keys' => [qw(parent next)] }), 
+               { 'ignore_hash_keys' => [qw(parent next node_content)] }), 
         $test_name.' tree' );
     ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
               { 'ignore_hash_keys' => [qw(next prev up section)] }), 

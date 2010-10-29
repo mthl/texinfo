@@ -31,6 +31,11 @@ $result_trees{'brace_opened_no_command'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'special' => {
             'node_content' => [

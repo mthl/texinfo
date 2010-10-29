@@ -11,7 +11,7 @@ my @test_cases = (
 @item @titlefont{in titlefont}
 @end multitable
 
-@quotation @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
+@quotation @indent @titlefont{in titlefont} @anchor{in quotation anchor}@footnote{footnote} @exdent exdent
 @end quotation
 '],
 ['ignored_text',

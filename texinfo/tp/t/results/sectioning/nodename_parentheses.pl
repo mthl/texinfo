@@ -650,6 +650,11 @@ $result_trees{'nodename_parentheses'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              },
               'parent' => {},
               'special' => {
                 'node_content' => [

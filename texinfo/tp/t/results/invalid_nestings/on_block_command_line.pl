@@ -28,6 +28,11 @@ $result_trees{'on_block_command_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'special' => {
                     'node_content' => [
@@ -192,7 +197,7 @@ $result_trees{'on_block_command_line'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'in anchor'
+                      'text' => 'in quotation anchor'
                     }
                   ],
                   'parent' => {},
@@ -201,12 +206,13 @@ $result_trees{'on_block_command_line'} = {
               ],
               'cmdname' => 'anchor',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {},
               'special' => {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'in-anchor'
+                'normalized' => 'in-quotation-anchor'
               }
             },
             {
@@ -308,6 +314,7 @@ $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[3]{
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'special'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
@@ -328,7 +335,7 @@ $result_texis{'on_block_command_line'} = '@multitable {@anchor{in anchor}} @titl
 @item @titlefont{in titlefont}
 @end multitable
 
-@quotation @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
+@quotation @indent @titlefont{in titlefont} @anchor{in quotation anchor}@footnote{footnote} @exdent exdent
 @end quotation
 ';
 

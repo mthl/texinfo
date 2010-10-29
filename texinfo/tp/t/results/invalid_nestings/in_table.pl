@@ -140,6 +140,7 @@ $result_trees{'in_table'} = {
                   ],
                   'cmdname' => 'anchor',
                   'contents' => [],
+                  'line_nr' => {},
                   'parent' => {},
                   'special' => {
                     'node_content' => [
@@ -275,6 +276,7 @@ $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5];
+$result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'special'}{'node_content'}[0] = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];

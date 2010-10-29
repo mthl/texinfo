@@ -102,6 +102,9 @@ my %default_configuration = (
   'clickstyle' => 'arrow',
   'sections_level' => 0,    # modified by raise/lowersections
   'merged_indices' => {},   # the key is merged in the value
+  'nodes'          => {},   # keys are normalized node names, as described
+                            # in the `HTML Xref' node.  Value should be
+                            # a node/anchor or float in the tree.
 );
 
 # the other possible keys for the parser state are:
@@ -1004,12 +1007,13 @@ sub _line_warn($$$)
 }
 
 # format a line error
-sub _line_error($$$)
+sub _line_error($$$;$)
 {
   my $parser = shift;
   my $text = shift;
   chomp ($text);
   my $line_number = shift;
+  my $continuation = shift;
   if (defined($line_number)) {
     my $file = $line_number->{'file_name'};
     $file =~ s/^.*\/// if ($parser->{'test'});
@@ -1018,11 +1022,13 @@ sub _line_error($$$)
        if ($line_number->{'macro'} ne '');
     my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
     warn "$error_text" if ($parser->{'debug'});
+    my $type = 'error';
+    $type = 'error continuation' if ($continuation);
     push @{$parser->{'errors_warnings'}},
-         { 'type' => 'error', 'text' => $text, 'error_line' => $error_text,
+         { 'type' => $type, 'text' => $text, 'error_line' => $error_text,
            %{$line_number} };
   }
-  $parser->{'error_nrs'}++;
+  $parser->{'error_nrs'}++ unless ($continuation);
 }
 
 # parse a @macro line
@@ -1713,6 +1719,27 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
+sub _register_label($$$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $label = shift;
+  my $line_nr = shift;
+  my $normalized = $label->{'normalized'};
+  if ($self->{'nodes'}->{$normalized}) {
+    _line_error($self, sprintf($self->__("\@%s `%s' previously defined"), 
+                         $current->{'cmdname'}, 
+                   tree_to_texi({'contents' => $label->{'node_content'}})), 
+                           $line_nr);
+    _line_error($self, sprintf($self->__("here is the previous definition as \@%s"),
+                               $self->{'nodes'}->{$normalized}->{'cmdname'}),
+                       $self->{'nodes'}->{$normalized}->{'line_nr'}, 1);
+  } else {
+    $current->{'special'}->{'normalized'} = $normalized;
+    $current->{'special'}->{'node_content'} = $label->{'node_content'};
+    $self->{'nodes'}->{$normalized} = $current;
+  }
+}
 
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
@@ -1897,8 +1924,7 @@ sub _end_line($$$)
                                $line_nr);
           if (defined($float_label) and $float_label->{'node_content'}
              and $float_label->{'normalized'} =~ /\S/) {
-            $float->{'special'}->{'normalized'} = $float_label->{'normalized'};
-            $float->{'special'}->{'node_content'} = $float_label->{'node_content'};
+            _register_label($self, $float, $float_label, $line_nr);
           }
         }
         _parse_float_type ($float);
@@ -2011,10 +2037,8 @@ sub _end_line($$$)
       }
       if (_check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
                         $current->{'args'}->[0], $command, $line_nr)) {
-        $current->{'special'}->{'normalized'} 
-          = $current->{'extra'}->{'nodes_manuals'}->[0]->{'normalized'};
-        $current->{'special'}->{'node_content'} 
-          = $current->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'};
+        _register_label($self, $current, 
+                       $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr);
       }
     } elsif ($command eq 'listoffloats') {
       my $empty_listoffloats = 1;
@@ -3122,13 +3146,12 @@ sub _parse_texi($$;$)
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
             delete $current->{'parent'}->{'remaining_args'};
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
+              $current->{'parent'}->{'line_nr'} = $line_nr;
               my $parsed_anchor = _parse_node_manual($current);
               if (_check_node_label($self, $parsed_anchor, $current,
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
-                $current->{'parent'}->{'special'}->{'normalized'} 
-                  = $parsed_anchor->{'normalized'};
-                $current->{'parent'}->{'special'}->{'node_content'} 
-                  = $parsed_anchor->{'node_content'};
+                _register_label($self, $current->{'parent'},
+                  $parsed_anchor, $line_nr);
               }
             }
             $current = $current->{'parent'}->{'parent'};

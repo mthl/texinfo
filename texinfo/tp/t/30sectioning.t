@@ -5,11 +5,11 @@ require 't/test_utils.pl';
 my @test_cases = (
 [ 'node',
 '
-@node one arg 
-@node one arg, two arg
-@node one arg, two arg, three arg
-@node one arg, two arg, three arg, four arg
-@node one arg, two arg, three arg, four arg, five arg
+@node one arg1 
+@node one arg2, two arg
+@node one arg3, two arg, three arg
+@node one arg4, two arg, three arg, four arg
+@node one arg5, two arg, three arg, four arg, five arg
 
 @node comment @comment
 
@@ -304,6 +304,35 @@ Second chapter
 ['empty_anchor',
 '@anchor{}. 
 @anchor{   }.
+'],
+['double_node_anchor_float',
+'@node node1
+
+@node node1
+
+@anchor{node1}
+
+@anchor{anchor1}
+
+@node anchor1
+
+@float Text, node1
+@end float
+
+@float Text, anchor1
+@end float
+
+@float Text, float1
+@end float
+
+@node float1
+'],
+['double_top',
+'@node ToP, top
+
+@node top,,ToP,Top
+
+@anchor{TOP}.
 ']
 
 );

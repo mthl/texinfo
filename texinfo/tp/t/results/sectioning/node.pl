@@ -24,7 +24,7 @@ $result_trees{'node'} = {
             },
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => 'one arg1'
             },
             {
               'parent' => {},
@@ -45,7 +45,7 @@ $result_trees{'node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'one-arg'
+            'normalized' => 'one-arg1'
           }
         ]
       },
@@ -57,7 +57,7 @@ $result_trees{'node'} = {
       'parent' => {},
       'special' => {
         'node_content' => [],
-        'normalized' => 'one-arg'
+        'normalized' => 'one-arg1'
       }
     },
     {
@@ -71,7 +71,7 @@ $result_trees{'node'} = {
             },
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => 'one arg2'
             }
           ],
           'parent' => {},
@@ -106,7 +106,7 @@ $result_trees{'node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'one-arg'
+            'normalized' => 'one-arg2'
           },
           {
             'node_content' => [
@@ -124,7 +124,7 @@ $result_trees{'node'} = {
       'parent' => {},
       'special' => {
         'node_content' => [],
-        'normalized' => 'one-arg'
+        'normalized' => 'one-arg2'
       }
     },
     {
@@ -138,7 +138,7 @@ $result_trees{'node'} = {
             },
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => 'one arg3'
             }
           ],
           'parent' => {},
@@ -187,7 +187,7 @@ $result_trees{'node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'one-arg'
+            'normalized' => 'one-arg3'
           },
           {
             'node_content' => [
@@ -211,7 +211,7 @@ $result_trees{'node'} = {
       'parent' => {},
       'special' => {
         'node_content' => [],
-        'normalized' => 'one-arg'
+        'normalized' => 'one-arg3'
       }
     },
     {
@@ -225,7 +225,7 @@ $result_trees{'node'} = {
             },
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => 'one arg4'
             }
           ],
           'parent' => {},
@@ -288,7 +288,7 @@ $result_trees{'node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'one-arg'
+            'normalized' => 'one-arg4'
           },
           {
             'node_content' => [
@@ -318,7 +318,7 @@ $result_trees{'node'} = {
       'parent' => {},
       'special' => {
         'node_content' => [],
-        'normalized' => 'one-arg'
+        'normalized' => 'one-arg4'
       }
     },
     {
@@ -332,7 +332,7 @@ $result_trees{'node'} = {
             },
             {
               'parent' => {},
-              'text' => 'one arg'
+              'text' => 'one arg5'
             }
           ],
           'parent' => {},
@@ -402,7 +402,7 @@ $result_trees{'node'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'one-arg'
+            'normalized' => 'one-arg5'
           },
           {
             'node_content' => [
@@ -432,7 +432,7 @@ $result_trees{'node'} = {
       'parent' => {},
       'special' => {
         'node_content' => [],
-        'normalized' => 'one-arg'
+        'normalized' => 'one-arg5'
       }
     },
     {
@@ -744,11 +744,11 @@ $result_trees{'node'}{'contents'}[7]{'parent'} = $result_trees{'node'};
 $result_trees{'node'}{'contents'}[7]{'special'}{'node_content'} = $result_trees{'node'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'node'} = '
-@node one arg 
-@node one arg, two arg
-@node one arg, two arg, three arg
-@node one arg, two arg, three arg, four arg
-@node one arg, two arg, three arg, four arg five arg
+@node one arg1 
+@node one arg2, two arg
+@node one arg3, two arg, three arg
+@node one arg4, two arg, three arg, four arg
+@node one arg5, two arg, three arg, four arg five arg
 
 @node comment @comment
 
