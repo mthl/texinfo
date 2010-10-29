@@ -23,6 +23,11 @@ $result_trees{'macro_not_closed'} = {
         'arg_line' => ' name
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

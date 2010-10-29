@@ -31,6 +31,11 @@ $result_trees{'macro_in_macro_arg'} = {
         'macrobody' => 'a, @macro2
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -75,6 +80,11 @@ $result_trees{'macro_in_macro_arg'} = {
         },
         'macrobody' => 'hello \\arg\\ after arg
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -133,6 +143,11 @@ $result_trees{'macro_in_macro_arg'} = {
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -25,6 +25,11 @@ $result_trees{'macro_for_ignored_line_command'} = {
         'macrobody' => '@page
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

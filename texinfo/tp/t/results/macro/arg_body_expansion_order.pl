@@ -31,6 +31,11 @@ $result_trees{'arg_body_expansion_order'} = {
         'macrobody' => 'initial
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -108,6 +113,11 @@ different
 \\arg\\
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -159,6 +169,11 @@ different
 ',
         'macrobody' => 'different
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 14,
+        'macro' => 'redefineothermacro'
       },
       'parent' => {}
     },

@@ -25,6 +25,11 @@ $result_trees{'macro_definition_in_include'} = {
         'macrobody' => 'in themacro
 '
       },
+      'line_nr' => {
+        'file_name' => 't/include//macro_included.texi',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

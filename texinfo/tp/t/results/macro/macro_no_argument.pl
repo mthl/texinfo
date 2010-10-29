@@ -8,6 +8,11 @@ $result_trees{'macro_no_argument'} = {
       'extra' => {
         'arg_line' => ''
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

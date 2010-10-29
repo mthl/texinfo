@@ -27,6 +27,11 @@ $result_trees{'macro_in_early_commands'} = {
             'macrobody' => 'macro_in_pass
 '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -65,6 +70,11 @@ $result_trees{'macro_in_early_commands'} = {
             },
             'macrobody' => 'texi_commands.\\ext\\
 '
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -144,6 +154,11 @@ $result_trees{'macro_in_early_commands'} = {
             'macrobody' => 'ISO-8859-1
 '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -180,6 +195,11 @@ $result_trees{'macro_in_early_commands'} = {
 ',
             'macrobody' => '@documentencoding
 '
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -265,6 +285,11 @@ $result_trees{'macro_in_early_commands'} = {
             'macrobody' => 'macro_included.texi
 @include inc_file.texi
 '
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 20,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -380,6 +405,11 @@ $result_trees{'macro_in_early_commands'} = {
 ',
             'macrobody' => 'in themacro
 '
+          },
+          'line_nr' => {
+            'file_name' => 't/include//macro_included.texi',
+            'line_nr' => 2,
+            'macro' => ''
           },
           'parent' => {}
         },

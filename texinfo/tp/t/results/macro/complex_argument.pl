@@ -33,6 +33,11 @@ $result_trees{'complex_argument'} = {
         'macrobody' => 'coucou \\arg\\ after arg
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -91,6 +96,11 @@ $result_trees{'complex_argument'} = {
 4
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -148,6 +158,11 @@ $result_trees{'complex_argument'} = {
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -377,6 +392,11 @@ $result_trees{'complex_argument'} = {
         },
         'macrobody' => '@emph{\\truc\\}
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 38,
+        'macro' => 'macro3'
       },
       'parent' => {}
     },

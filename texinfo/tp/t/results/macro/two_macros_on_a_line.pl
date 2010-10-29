@@ -25,6 +25,11 @@ $result_trees{'two_macros_on_a_line'} = {
         'macrobody' => 'in mymacro
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -83,6 +88,11 @@ $result_trees{'two_macros_on_a_line'} = {
 now the arg \\arg\\
 after
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },

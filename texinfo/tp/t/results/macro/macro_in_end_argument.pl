@@ -25,6 +25,11 @@ $result_trees{'macro_in_end_argument'} = {
         'macrobody' => 'cartouche
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -56,6 +56,13 @@ in macro foo
 @end macro
 @end macro
 '],
+['double_macro_definition',
+'@macro foo
+@end macro
+
+@macro foo
+@end macro
+'],
 ['macro_no_arg_expansion',
 '@macro test1
 res1

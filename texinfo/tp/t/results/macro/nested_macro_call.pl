@@ -25,6 +25,11 @@ $result_trees{'nested_macro_call'} = {
         'macrobody' => '(machin)
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -68,6 +73,11 @@ $result_trees{'nested_macro_call'} = {
         'macrobody' => '@machin{}
 
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },

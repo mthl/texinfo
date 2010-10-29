@@ -59,6 +59,11 @@ $result_trees{'value_in_macro_body'} = {
         'macrobody' => 'result: @emph{\\@value{bodyarg}\\  }
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -1034,7 +1034,7 @@ sub _parse_macro_command_line($$$$$;$)
   my $parent = shift;
   my $line_nr = shift;
   my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
-               'extra' => {'arg_line' => $line} };
+               'extra' => {'arg_line' => $line}, 'line_nr' => $line_nr };
   # REMACRO
   if ($line =~ /^\s+([[:alnum:]][[:alnum:]-]*)\s*(.*)/) {
     my $macro_name = $1;
@@ -2296,6 +2296,13 @@ sub _parse_texi($$;$)
             $current->{'extra'}->{'macrobody'} = 
                tree_to_texi({ 'contents' => $current->{'contents'} });
             if ($current->{'args'} and $current->{'args'}->[0]) {
+              my $name = $current->{'args'}->[0]->{'text'};
+              if (exists($self->{'macros'}->{$name})) {
+                _line_warn($self, sprintf($self->__("macro `%s' previously defined"), 
+                                          $name), $current->{'line_nr'});
+                _line_warn($self, sprintf($self->__("here is the previous definition of `%s'"), 
+                                   $name), $self->{'macros'}->{$name}->{'line_nr'});
+              }
               $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
             }
           }

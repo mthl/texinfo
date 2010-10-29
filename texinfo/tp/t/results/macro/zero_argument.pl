@@ -25,6 +25,11 @@ $result_trees{'zero_argument'} = {
         'macrobody' => 'in foo
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -61,6 +66,11 @@ $result_trees{'zero_argument'} = {
 ',
         'macrobody' => 'in bar
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },

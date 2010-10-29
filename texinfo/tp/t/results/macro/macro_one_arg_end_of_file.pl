@@ -33,6 +33,11 @@ $result_trees{'macro_one_arg_end_of_file'} = {
         'macrobody' => 'Arg \\arg\\.
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

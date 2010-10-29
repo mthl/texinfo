@@ -47,6 +47,11 @@ $result_trees{'ifset_in_macro'} = {
 @end ifset
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

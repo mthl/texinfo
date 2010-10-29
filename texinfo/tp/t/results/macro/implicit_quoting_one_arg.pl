@@ -39,6 +39,11 @@ $result_trees{'implicit_quoting_one_arg'} = {
         'macrobody' => '@strong{FIXME: \\a\\}
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

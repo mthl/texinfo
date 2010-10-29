@@ -31,6 +31,11 @@ $result_trees{'macro_in_menu'} = {
         'macrobody' => '*
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -67,6 +72,11 @@ $result_trees{'macro_in_menu'} = {
 ',
         'macrobody' => '* 
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -105,6 +115,11 @@ $result_trees{'macro_in_menu'} = {
         'macrobody' => '  
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -141,6 +156,11 @@ $result_trees{'macro_in_menu'} = {
 ',
         'macrobody' => ' 
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 14,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -179,6 +199,11 @@ $result_trees{'macro_in_menu'} = {
         'macrobody' => '::
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 18,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -215,6 +240,11 @@ $result_trees{'macro_in_menu'} = {
 ',
         'macrobody' => ':
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 22,
+        'macro' => ''
       },
       'parent' => {}
     },

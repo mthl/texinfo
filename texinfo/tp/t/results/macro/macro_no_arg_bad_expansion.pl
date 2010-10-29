@@ -25,6 +25,11 @@ $result_trees{'macro_no_arg_bad_expansion'} = {
         'macrobody' => 'res1
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

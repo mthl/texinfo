@@ -66,6 +66,11 @@ $result_trees{'macro_expansion'} = {
 @end verbatim
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

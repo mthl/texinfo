@@ -40,6 +40,11 @@ $result_trees{'expand_two_same'} = {
 
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

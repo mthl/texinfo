@@ -25,6 +25,11 @@ $result_trees{'complete_macro_for_end'} = {
         'macrobody' => '@end cartouche
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

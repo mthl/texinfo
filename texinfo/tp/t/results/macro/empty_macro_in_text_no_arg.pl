@@ -17,6 +17,11 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
 ',
         'macrobody' => ''
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -66,6 +71,11 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
         'arg_line' => ' texnl2
 ',
         'macrobody' => ''
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -39,6 +39,11 @@ $result_trees{'implicit_quoting_recursion'} = {
         'macrobody' => '\\a\\\\b\\
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

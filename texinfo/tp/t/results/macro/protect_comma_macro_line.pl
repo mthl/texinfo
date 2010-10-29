@@ -54,6 +54,11 @@ and another one on another line \\arg\\
 and a last in another paragraph
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

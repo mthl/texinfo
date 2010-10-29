@@ -47,6 +47,11 @@ $result_trees{'ifclear_in_macro'} = {
 @end ifclear
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

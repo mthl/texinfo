@@ -25,6 +25,11 @@ $result_trees{'space_macro_after_end'} = {
         'macrobody' => '  
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

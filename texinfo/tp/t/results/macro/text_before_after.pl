@@ -31,6 +31,11 @@ $result_trees{'text_before_after'} = {
             'macrobody' => 'in macro
 '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

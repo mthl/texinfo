@@ -17,6 +17,11 @@ $result_trees{'paragraph_and_macro'} = {
 ',
         'macrobody' => ''
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -54,6 +59,11 @@ $result_trees{'paragraph_and_macro'} = {
         'macrobody' => '   
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -90,6 +100,11 @@ $result_trees{'paragraph_and_macro'} = {
 ',
         'macrobody' => 'a word
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 8,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -18,6 +18,11 @@ $result_trees{'bad_argument'} = {
         'macrobody' => 'in macro
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -54,6 +59,11 @@ $result_trees{'bad_argument'} = {
 ',
         'macrobody' => 'in
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -99,6 +109,11 @@ $result_trees{'bad_argument'} = {
         },
         'macrobody' => 'in macro
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
       },
       'parent' => {}
     },

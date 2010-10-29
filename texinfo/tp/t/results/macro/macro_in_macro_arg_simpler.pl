@@ -25,6 +25,11 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
         'macrobody' => 'a, macro2
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -82,6 +87,11 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
         'macrobody' => '\\text\\
 &&&& \\arg\\
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -27,6 +27,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             'macrobody' => 'macro_i--n_pass@@
 '
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -112,6 +117,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 ',
             'macrobody' => 'ISO-8859-1@@
 '
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -201,6 +211,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             'macrobody' => 'macro_included.texi
 @include inc_@@f--ile.texi
 '
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -316,6 +331,11 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 ',
             'macrobody' => 'in themacro
 '
+          },
+          'line_nr' => {
+            'file_name' => 't/include//macro_included.texi',
+            'line_nr' => 2,
+            'macro' => ''
           },
           'parent' => {}
         },

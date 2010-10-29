@@ -25,6 +25,11 @@ $result_trees{'macro_in_index_commands'} = {
         'macrobody' => 'cp
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -56,6 +61,11 @@ $result_trees{'macro_in_index_commands'} = {
         'macrobody' => 'fn
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -86,6 +96,11 @@ $result_trees{'macro_in_index_commands'} = {
 ',
         'macrobody' => '@syncodeindex
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -206,6 +221,11 @@ $result_trees{'macro_in_index_commands'} = {
         'macrobody' => 'en
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 14,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -236,6 +256,11 @@ $result_trees{'macro_in_index_commands'} = {
 ',
         'macrobody' => '@documentlanguage
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 17,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -382,6 +407,11 @@ $result_trees{'macro_in_index_commands'} = {
         'macrobody' => 'truc
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 27,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -478,6 +508,11 @@ $result_trees{'macro_in_index_commands'} = {
         'macrobody' => '@trucindex
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 35,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -552,6 +587,11 @@ $result_trees{'macro_in_index_commands'} = {
 ',
         'macrobody' => 'codeidx
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 41,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -632,6 +672,11 @@ $result_trees{'macro_in_index_commands'} = {
 ',
         'macrobody' => 'a @var{index entry} t@\'e @^{@dotless{i}}
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 47,
+        'macro' => ''
       },
       'parent' => {}
     },

@@ -33,6 +33,11 @@ $result_trees{'arg_not_closed'} = {
         'macrobody' => 'foo
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

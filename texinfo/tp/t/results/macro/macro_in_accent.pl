@@ -25,6 +25,11 @@ $result_trees{'macro_in_accent'} = {
         'macrobody' => 'a
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -61,6 +66,11 @@ $result_trees{'macro_in_accent'} = {
 ',
         'macrobody' => '  
 '
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
       },
       'parent' => {}
     },

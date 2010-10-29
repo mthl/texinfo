@@ -25,6 +25,11 @@ $result_trees{'no_macrobody'} = {
         },
         'macrobody' => ''
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

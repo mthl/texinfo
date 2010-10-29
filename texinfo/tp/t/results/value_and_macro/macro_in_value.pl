@@ -39,6 +39,11 @@ $result_trees{'macro_in_value'} = {
 b
 '
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
