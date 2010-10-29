@@ -54,8 +54,13 @@ $result_trees{'block_commands'} = {
             },
             {
               'parent' => {},
-              'text' => 'warning
-'
+              'text' => 'warning'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
@@ -115,8 +120,13 @@ $result_trees{'block_commands'} = {
             },
             {
               'parent' => {},
-              'text' => 'b float
-'
+              'text' => 'b float'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
@@ -194,7 +204,26 @@ $result_trees{'block_commands'} = {
 '
         }
       ],
-      'parent' => {}
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
+      'parent' => {},
+      'special' => {
+        'label' => {
+          'node_content' => [
+            {}
+          ],
+          'normalized' => 'b-float'
+        },
+        'type' => {
+          'content' => [
+            {}
+          ],
+          'normalized' => 'a-float'
+        }
+      }
     },
     {
       'parent' => {},
@@ -214,6 +243,7 @@ $result_trees{'block_commands'}{'contents'}[2]{'parent'} = $result_trees{'block_
 $result_trees{'block_commands'}{'contents'}[3]{'parent'} = $result_trees{'block_commands'};
 $result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'args'}[0];
+$result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4];
 $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0];
 $result_trees{'block_commands'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[4];
@@ -224,6 +254,7 @@ $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1];
+$result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1];
 $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
@@ -238,6 +269,8 @@ $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'parent
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'parent'} = $result_trees{'block_commands'};
+$result_trees{'block_commands'}{'contents'}[7]{'special'}{'label'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1];
+$result_trees{'block_commands'}{'contents'}[7]{'special'}{'type'}{'content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'block_commands'}{'contents'}[8]{'parent'} = $result_trees{'block_commands'};
 
 $result_texis{'block_commands'} = '

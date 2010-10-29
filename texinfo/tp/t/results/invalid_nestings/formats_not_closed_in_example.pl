@@ -34,7 +34,8 @@ $result_trees{'formats_not_closed_in_example'} = {
                 {
                   'parent' => {},
                   'text' => '
-'
+',
+                  'type' => 'space_at_end_block_command'
                 }
               ],
               'parent' => {},

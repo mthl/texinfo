@@ -94,7 +94,8 @@ $result_trees{'accent_argument'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},

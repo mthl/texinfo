@@ -25,7 +25,8 @@ $result_trees{'table'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},

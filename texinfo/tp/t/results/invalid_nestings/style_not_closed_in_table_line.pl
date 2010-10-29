@@ -19,7 +19,8 @@ $result_trees{'style_not_closed_in_table_line'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},

@@ -1829,7 +1829,7 @@ sub _end_line($$$)
     print STDERR "BUG: $context in block_line_arg ne line\n" 
        if ($context ne 'line');
     # @multitable args
-    if ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+    if ($current->{'parent'}->{'cmdname'}
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
       # parse the prototypes and put them in a special arg
       my @prototype_row;
@@ -1864,6 +1864,32 @@ sub _end_line($$$)
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
 
+    } else {
+      $self->_isolate_last_space($current, 'space_at_end_block_command');
+    } 
+    # @float args
+    if ($current->{'parent'}->{'cmdname'}
+               and $current->{'parent'}->{'cmdname'} eq 'float') {
+      my $float = $current->{'parent'};
+      $float->{'line_nr'} = $line_nr;
+      if (@{$float->{'args'}}) {
+        if ($float->{'args'}->[1]) {
+          my $float_label = _parse_node_manual($float->{'args'}->[1]);
+          _check_internal_node($self, $float_label, $float->{'args'}->[1], 
+                               $line_nr);
+          if (defined($float_label) and $float_label->{'node_content'}
+             and $float_label->{'normalized'} =~ /\S/) {
+            $float->{'special'}->{'label'} = $float_label;
+          }
+        }
+        my @type_contents = @{$float->{'args'}->[0]->{'contents'}};
+        _trim_spaces_comment_from_content(\@type_contents);
+        if (@type_contents) {
+          $float->{'special'}->{'type'}->{'normalized'} 
+            = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
+          $float->{'special'}->{'type'}->{'content'} = \@type_contents;
+        }
+      }
     }
     $current = $current->{'parent'};
     delete $current->{'remaining_args'};
@@ -2085,6 +2111,18 @@ sub _check_empty_node($$$$)
   }
 }
 
+sub _check_internal_node ($$$$)
+{
+  my $self = shift;
+  my $parsed_node = shift;
+  my $node = shift;
+  my $line_nr = shift;
+  if ($parsed_node and $parsed_node->{'manual_content'}) {
+    _line_error ($self, sprintf($self->__("Syntax for an external node used for `%s'"),
+          tree_to_texi($node)), $line_nr)
+  }
+}
+
 sub _check_node_label($$$$$)
 {
   my $self = shift;
@@ -2092,10 +2130,7 @@ sub _check_node_label($$$$$)
   my $node = shift;
   my $command = shift;
   my $line_nr = shift;
-  if ($parsed_node and $parsed_node->{'manual_content'}) {
-    _line_error ($self, sprintf($self->__("Syntax for an external node used for `%s'"),
-          tree_to_texi($node)), $line_nr)
-  }
+  _check_internal_node($self, $parsed_node, $node, $line_nr);
   return _check_empty_node($self, $parsed_node, $command, $line_nr);
 }
 
@@ -3212,7 +3247,8 @@ sub _trim_spaces_comment_from_content($)
     pop @$contents;
   }
   if (@$contents and $contents->[-1]->{'type'} 
-      and $contents->[-1]->{'type'} eq 'spaces_at_end') {
+      and ($contents->[-1]->{'type'} eq 'spaces_at_end'
+           or $contents->[-1]->{'type'} eq 'space_at_end_block_command')) {
     pop @$contents;
   }
 }

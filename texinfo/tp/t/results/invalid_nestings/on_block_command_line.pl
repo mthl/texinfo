@@ -242,8 +242,13 @@ $result_trees{'on_block_command_line'} = {
             },
             {
               'parent' => {},
-              'text' => 'exdent
-'
+              'text' => 'exdent'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
@@ -306,6 +311,7 @@ $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8]{
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'parent'} = $result_trees{'on_block_command_line'};
 $result_trees{'on_block_command_line'}{'contents'}[4]{'parent'} = $result_trees{'on_block_command_line'};

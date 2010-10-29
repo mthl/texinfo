@@ -19,8 +19,13 @@ $result_trees{'item_container'} = {
             },
             {
               'parent' => {},
-              'text' => '+
-'
+              'text' => '+'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
@@ -88,7 +93,8 @@ $result_trees{'item_container'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
@@ -144,6 +150,7 @@ $result_trees{'item_container'} = {
 $result_trees{'item_container'}{'contents'}[0]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'args'}[0];
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'args'}[0];
+$result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'args'}[0];
 $result_trees{'item_container'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'item_container'}{'contents'}[1]{'contents'}[1];

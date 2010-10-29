@@ -217,7 +217,8 @@ $result_trees{'block_not_matching'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},

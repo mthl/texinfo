@@ -83,7 +83,8 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
                     {
                       'parent' => {},
                       'text' => '
-'
+',
+                      'type' => 'space_at_end_block_command'
                     }
                   ],
                   'parent' => {},

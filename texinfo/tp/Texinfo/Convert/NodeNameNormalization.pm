@@ -77,7 +77,8 @@ foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',
 my %ignored_types;
 foreach my $type ('empty_line_after_command', 
             'empty_spaces_after_command', 'spaces_at_end',
-            'empty_spaces_before_argument', 'space_at_end_menu_node') {
+            'empty_spaces_before_argument', 'space_at_end_menu_node',
+            'space_at_end_block_command') {
   $ignored_types{$type} = 1;
 }
 

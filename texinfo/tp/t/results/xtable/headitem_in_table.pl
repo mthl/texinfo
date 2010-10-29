@@ -19,7 +19,8 @@ $result_trees{'headitem_in_table'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},

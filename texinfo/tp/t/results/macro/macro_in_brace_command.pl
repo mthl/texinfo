@@ -93,7 +93,8 @@ $result_trees{'macro_in_brace_command'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'space_at_end_block_command'
             }
           ],
           'parent' => {},
