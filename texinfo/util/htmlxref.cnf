@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-28.16; # UTC
+htmlxrefversion=2010-10-29.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -75,92 +75,93 @@ ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
 
 diffutils	mono	${GS}/diffutils/manual/diffutils.html
 
-emacs		mono	${GS}/emacs/manual/html_mono/emacs.html
-emacs		node	${GS}/emacs/manual/html_node/
+EMACS = ${GS}/emacs/manual
+emacs		mono	${EMACS}/html_mono/emacs.html
+emacs		node	${EMACS}/html_node/
  #
- ada-mode	mono	${GS}/emacs/manual/html_mono/ada-mode.html
- ada-mode	node	${GS}/emacs/manual/html_node/ada-mode/
+ ada-mode	mono	${EMACS}/html_mono/ada-mode.html
+ ada-mode	node	${EMACS}/html_node/ada-mode/
  #
- autotype	mono	${GS}/emacs/manual/html_mono/autotype.html
- autotype	node	${GS}/emacs/manual/html_node/autotype/
+ autotype	mono	${EMACS}/html_mono/autotype.html
+ autotype	node	${EMACS}/html_node/autotype/
  #
- ccmode		mono	${GS}/emacs/manual/html_mono/ccmode.html
- ccmode		node	${GS}/emacs/manual/html_node/ccmode/
+ ccmode		mono	${EMACS}/html_mono/ccmode.html
+ ccmode		node	${EMACS}/html_node/ccmode/
  #
- cl		mono	${GS}/emacs/manual/html_mono/cl.html
- cl		node	${GS}/emacs/manual/html_node/cl/
+ cl		mono	${EMACS}/html_mono/cl.html
+ cl		node	${EMACS}/html_node/cl/
  #
- ebrowse	mono	${GS}/emacs/manual/html_mono/ebrowse.html
- ebrowse	node	${GS}/emacs/manual/html_node/ebrowse/
+ ebrowse	mono	${EMACS}/html_mono/ebrowse.html
+ ebrowse	node	${EMACS}/html_node/ebrowse/
  #
- ediff		mono	${GS}/emacs/manual/html_mono/ediff.html
- ediff		node	${GS}/emacs/manual/html_node/ediff/
+ ediff		mono	${EMACS}/html_mono/ediff.html
+ ediff		node	${EMACS}/html_node/ediff/
  #
- eieio		mono	${GS}/emacs/manual/html_mono/eieio.html
- eieio		node	${GS}/emacs/manual/html_node/eieio/
+ eieio		mono	${EMACS}/html_mono/eieio.html
+ eieio		node	${EMACS}/html_node/eieio/
  #
- elisp		mono	${GS}/emacs/manual/html_mono/elisp.html
- elisp		node	${GS}/emacs/manual/html_node/elisp/
+ elisp		mono	${EMACS}/html_mono/elisp.html
+ elisp		node	${EMACS}/html_node/elisp/
  #
- epa		mono	${GS}/emacs/manual/html_mono/epa.html
- epa		node	${GS}/emacs/manual/html_node/epa/
+ epa		mono	${EMACS}/html_mono/epa.html
+ epa		node	${EMACS}/html_node/epa/
  #
- erc		mono	${GS}/emacs/manual/html_mono/erc.html
- erc		node	${GS}/emacs/manual/html_node/erc/
+ erc		mono	${EMACS}/html_mono/erc.html
+ erc		node	${EMACS}/html_node/erc/
  #
- dired-x	mono	${GS}/emacs/manual/html_mono/dired-x.html
- dired-x	node	${GS}/emacs/manual/html_node/dired-x/
+ dired-x	mono	${EMACS}/html_mono/dired-x.html
+ dired-x	node	${EMACS}/html_node/dired-x/
  #
- eshell		mono	${GS}/emacs/manual/html_mono/eshell.html
- eshell		node	${GS}/emacs/manual/html_node/eshell/
+ eshell		mono	${EMACS}/html_mono/eshell.html
+ eshell		node	${EMACS}/html_node/eshell/
  #
- flymake	mono	${GS}/emacs/manual/html_mono/flymake.html
- flymake	node	${GS}/emacs/manual/html_node/flymake/
+ flymake	mono	${EMACS}/html_mono/flymake.html
+ flymake	node	${EMACS}/html_node/flymake/
  #
- gnus		mono	${GS}/emacs/manual/html_mono/gnus.html
- gnus		node	${GS}/emacs/manual/html_node/gnus/
+ gnus		mono	${EMACS}/html_mono/gnus.html
+ gnus		node	${EMACS}/html_node/gnus/
  #
- idlwave	mono	${GS}/emacs/manual/html_mono/idlwave.html
- idlwave	node	${GS}/emacs/manual/html_node/idlwave/
+ idlwave	mono	${EMACS}/html_mono/idlwave.html
+ idlwave	node	${EMACS}/html_node/idlwave/
  #
- message	mono	${GS}/emacs/manual/html_mono/message.html
- message	node	${GS}/emacs/manual/html_node/message/
+ message	mono	${EMACS}/html_mono/message.html
+ message	node	${EMACS}/html_node/message/
  #
- mh-e		mono	${GS}/emacs/manual/html_mono/mh-e.html
- mh-e		node	${GS}/emacs/manual/html_node/mh-e/
+ mh-e		mono	${EMACS}/html_mono/mh-e.html
+ mh-e		node	${EMACS}/html_node/mh-e/
  #
- nxml-mode	mono	${GS}/emacs/manual/html_mono/nxml-mode.html
- nxml-mode	node	${GS}/emacs/manual/html_node/nxml-mode/
+ nxml-mode	mono	${EMACS}/html_mono/nxml-mode.html
+ nxml-mode	node	${EMACS}/html_node/nxml-mode/
  #
- org		mono	${GS}/emacs/manual/html_mono/org.html
- org		node	${GS}/emacs/manual/html_node/org/
+ org		mono	${EMACS}/html_mono/org.html
+ org		node	${EMACS}/html_node/org/
  #
- pcl-cvs	mono	${GS}/emacs/manual/html_mono/pcl-cvs.html
- pcl-cvs	node	${GS}/emacs/manual/html_node/pcl-cvs/
+ pcl-cvs	mono	${EMACS}/html_mono/pcl-cvs.html
+ pcl-cvs	node	${EMACS}/html_node/pcl-cvs/
  #
- rcirc		mono	${GS}/emacs/manual/html_mono/rcirc.html
- rcirc		node	${GS}/emacs/manual/html_node/rcirc/
+ rcirc		mono	${EMACS}/html_mono/rcirc.html
+ rcirc		node	${EMACS}/html_node/rcirc/
  #
- semantic	mono	${GS}/emacs/manual/html_mono/semantic.html
- semantic	node	${GS}/emacs/manual/html_node/semantic/
+ semantic	mono	${EMACS}/html_mono/semantic.html
+ semantic	node	${EMACS}/html_node/semantic/
  #
- smtp		mono	${GS}/emacs/manual/html_mono/smtp.html
- smtp		node	${GS}/emacs/manual/html_node/smtp/
+ smtp		mono	${EMACS}/html_mono/smtp.html
+ smtp		node	${EMACS}/html_node/smtp/
  #
- speedbar	mono	${GS}/emacs/manual/html_mono/speedbar.html
- speedbar	node	${GS}/emacs/manual/html_node/speedbar/
+ speedbar	mono	${EMACS}/html_mono/speedbar.html
+ speedbar	node	${EMACS}/html_node/speedbar/
  #
- tramp		mono	${GS}/emacs/manual/html_mono/tramp.html
- tramp		node	${GS}/emacs/manual/html_node/tramp/
+ tramp		mono	${EMACS}/html_mono/tramp.html
+ tramp		node	${EMACS}/html_node/tramp/
  #
- vip		mono	${GS}/emacs/manual/html_mono/vip.html
- vip		node	${GS}/emacs/manual/html_node/vip/
+ vip		mono	${EMACS}/html_mono/vip.html
+ vip		node	${EMACS}/html_node/vip/
  #
- viper		mono	${GS}/emacs/manual/html_mono/viper.html
- viper		node	${GS}/emacs/manual/html_node/viper/
+ viper		mono	${EMACS}/html_mono/viper.html
+ viper		node	${EMACS}/html_node/viper/
  #
- woman		mono	${GS}/emacs/manual/html_mono/woman.html
- woman		node	${GS}/emacs/manual/html_node/woman/
+ woman		mono	${EMACS}/html_mono/woman.html
+ woman		node	${EMACS}/html_node/woman/
  # (end emacs manuals)
 
 emms		node	${GS}/emms/manual/
@@ -343,6 +344,9 @@ texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
 
 units		mono	${GS}/units/manual/units.html
 units		node	${GS}/units/manual/html_node/
+
+websocket4j	mono	${GS}/websocket4j/manual/websocket4j.html
+websocket4j	node	${GS}/websocket4j/manual/html_node/
 
 wget		mono	${GS}/wget/manual/wget.html
 wget		node	${GS}/wget/manual/html_node/

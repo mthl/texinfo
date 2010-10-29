@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
+@c $Id: texinfo.txi,v 1.336 2010-10-29 17:50:21 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18234,8 +18234,8 @@ Any other command is an error, and the result is unspecified.
 @cindex Transliteration of 8-bit characters in HTML cross-references
 
 Usually, characters other than plain 7-bit ASCII are transformed into
-the corresponding Unicode code point(s) in Normalization Form C, which
-uses precomposed characters where available.  (This is the
+the corresponding Unicode code point(s) in Normalization Form@tie{}C,
+which uses precomposed characters where available.  (This is the
 normalization form recommended by the W3C and other bodies.)  This
 holds when that code point is 0xffff or less, as it almost always is.
 
@@ -18275,9 +18275,11 @@ the purposes of file name creation and referencing. The
 transliteration is based on phonetic principle, which makes the
 produced file names easily readable.
 
-For the definition of Unicode Normalization Form C, see Unicode report
-UAX#15, @uref{http://www.unicode.org/reports/tr15/}.  Many related
-documents and implementations are available elsewhere on the web.
+@cindex Normalization Form C, Unicode
+For the definition of Unicode Normalization Form@tie{}C, see Unicode
+report UAX#15, @uref{http://www.unicode.org/reports/tr15/}.  Many
+related documents and implementations are available elsewhere on the
+web.
 
 
 @node HTML Xref Mismatch
@@ -20857,13 +20859,13 @@ Texinfo commands used within the running text.
 @menu
 * Argless: HTML Customization for Commands Without Arguments.
 * @@-Colon: HTML Customization After @@-Colon.
-* Simple: HTML Customization for Simple Commands.
+* Simple: HTML Customization for Simple Commands.  Indicators, accents, etc.
 * Anchors: HTML Customization for Anchors.
 * Images: HTML Customization for Images.
 * sp: HTML Customization for @code{sp}.
 * Abbrs: HTML Customization for Abbreviations. @code{@@acronym}, @code{@@abbr}.
-* Text: HTML Customization for Text Sequences. @code{-- --- `` ''}.
-* Formatting of simple line commands::
+* Text: HTML Customization for Text Sequences.  @code{-- --- `` ''}, etc.
+* Title: HTML Customization for Title Commands.  @code{@@title}, etc.
 @end menu
 
 
@@ -21186,7 +21188,7 @@ suffice, it is possible to change how the ``simple'' Texinfo commands
 are processed by redefining the following function reference:
 
 @deftypefn {Function Reference} $resulting_text style $style $command $text @
-        $args $no_close $no_open $line_nr $state $command_stack \@@line_numbers
+       $args $no_close $no_open $line_nr \%state $command_stack \@@line_numbers
 @table @var
 @item $command
 The @@-command
@@ -21212,7 +21214,7 @@ last paragraph, while @var{$no_open} is true if this is not the first
 paragraph.
 
 @item $line_nr
-@itemx $state
+@itemx \%state
 @itemx $command_stack
 @itemx \@@line_numbers
 See the previous section.
@@ -21471,26 +21473,33 @@ definition @@-command.
 @end deftypefn
 
 
-@node Formatting of simple line commands
-@subsection Customization of simple line command output
+@node HTML Customization for Title Commands
+@subsection HTML Customization for Title Commands
+
+@cindex HTML customization for title commands
+@cindex Title commands, customizing HTML for
 
 @vindex %line_command_map
-@@-commands that appear on a line and take the line as argument may
-be formatted especially, if they are in the @code{%line_command_map}.
-In that case the following function reference is used to format the
-@@-command:
+Some @@-commands related to titles appear on a line by themselves and
+take the rest of the line as their argument: @code{@@titlepage},
+@code{@@title}, @code{@@subtitle}, and @code{@@author}
+(@pxref{Titlepage & Copyright Page}).  These are listed in
+@code{%line_command_map} and the following function reference is used
+to format them:
 
-@deftypefn {Function Reference} $resulting_text line_command $command $arg_text $arg_texi $state
-@var{$command}Â is the @@-command. @var{$arg_text} is the @@-command formatted 
-argument, @var{$arg_texi} is the @@-command argument without any formatting.
-@var{$state} is a structure that holds informations
-about the state of the parsing.
-The resulting text is @var{$resulting_text}. 
+@deftypefn {Function Reference} $resulting_text line_command @
+           $command $arg_text $arg_texi \%state
+
+@var{$command} is the @@-command, @var{$arg_text} is the
+@@-command's formatted argument, and @var{$arg_texi} is the @@-command
+argument without any formatting.  @var{\%state} is a hash reference
+containing context information.  The function returns
+@var{$resulting_text}.
 @end deftypefn
 
-In the default case, @@-commands appearing in @code{@@titlepage}, 
-@code{@@title}, @code{@@subtitle}, @code{@@author} are formatted
-by this function.
+For more customization of title pages, @pxref{HTML Title Page
+Customization}.
+
 
 @node References and footnotes formatting
 @section References and footnotes formatting
@@ -22865,7 +22874,8 @@ action for this macro is not done.
 @end table
 
 These commands are processed by the @code{misc_command_line} function
-reference.  This is somehow redundant with @ref{Formatting of simple line commands}.
+reference.  This is somehow redundant with @ref{HTML Customization for
+Title Commands} xx.
 
 @deftypefn {Function Reference} {($command, $line, $result)} misc_command_line $command $line \@@args \@@stack \%state
 @var{$command} is the @@-command name.  @var{$line} is what the main program
@@ -24857,7 +24867,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
+$Id: texinfo.txi,v 1.336 2010-10-29 17:50:21 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24936,7 +24946,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.335 2010-10-28 16:30:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.336 2010-10-29 17:50:21 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
