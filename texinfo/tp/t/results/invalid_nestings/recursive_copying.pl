@@ -101,7 +101,4 @@ $result_texts{'recursive_copying'} = '
 $result_errors{'recursive_copying'} = [];
 
 
-$result_indices{'recursive_copying'} = undef;
-
-
 1;

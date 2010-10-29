@@ -80,7 +80,4 @@ $result_errors{'text_before_after'} = [
 ];
 
 
-$result_indices{'text_before_after'} = undef;
-
-
 1;

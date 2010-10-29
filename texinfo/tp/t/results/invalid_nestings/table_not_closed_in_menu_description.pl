@@ -193,7 +193,4 @@ $result_errors{'table_not_closed_in_menu_description'} = [
 ];
 
 
-$result_indices{'table_not_closed_in_menu_description'} = undef;
-
-
 1;

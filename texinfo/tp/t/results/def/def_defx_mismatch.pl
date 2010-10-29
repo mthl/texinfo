@@ -353,7 +353,4 @@ $result_errors{'def_defx_mismatch'} = [
 ];
 
 
-$result_indices{'def_defx_mismatch'} = undef;
-
-
 1;

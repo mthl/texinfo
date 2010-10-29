@@ -63,7 +63,4 @@ $result_errors{'unknown_synindex'} = [
 ];
 
 
-$result_indices{'unknown_synindex'} = undef;
-
-
 1;

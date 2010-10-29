@@ -119,7 +119,4 @@ $result_errors{'too_much_args'} = [
 ];
 
 
-$result_indices{'too_much_args'} = undef;
-
-
 1;

@@ -539,7 +539,4 @@ truc bidule
 $result_errors{'multitable'} = [];
 
 
-$result_indices{'multitable'} = undef;
-
-
 1;

@@ -63,7 +63,4 @@ $result_errors{'group_not_closed'} = [
 ];
 
 
-$result_indices{'group_not_closed'} = undef;
-
-
 1;

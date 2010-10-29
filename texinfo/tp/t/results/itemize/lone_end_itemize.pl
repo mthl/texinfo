@@ -32,7 +32,4 @@ $result_errors{'lone_end_itemize'} = [
 ];
 
 
-$result_indices{'lone_end_itemize'} = undef;
-
-
 1;

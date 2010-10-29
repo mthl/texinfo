@@ -132,7 +132,4 @@ $result_errors{'headitem_itemx_in_itemize'} = [
 ];
 
 
-$result_indices{'headitem_itemx_in_itemize'} = undef;
-
-
 1;

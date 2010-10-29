@@ -247,7 +247,4 @@ $result_errors{'formats_not_closed_in_example'} = [
 ];
 
 
-$result_indices{'formats_not_closed_in_example'} = undef;
-
-
 1;

@@ -584,7 +584,4 @@ $result_errors{'double_command'} = [
 ];
 
 
-$result_indices{'double_command'} = undef;
-
-
 1;

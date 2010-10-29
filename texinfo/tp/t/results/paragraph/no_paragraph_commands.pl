@@ -132,7 +132,4 @@ aa
 $result_errors{'no_paragraph_commands'} = [];
 
 
-$result_indices{'no_paragraph_commands'} = undef;
-
-
 1;

@@ -63,7 +63,4 @@ $result_errors{'raw_not_closed'} = [
 ];
 
 
-$result_indices{'raw_not_closed'} = undef;
-
-
 1;

@@ -370,7 +370,4 @@ $result_errors{'multitable_two_columns_too_much_cells'} = [
 ];
 
 
-$result_indices{'multitable_two_columns_too_much_cells'} = undef;
-
-
 1;

@@ -46,7 +46,4 @@ $result_texts{'simple'} = 'in  b.';
 $result_errors{'simple'} = [];
 
 
-$result_indices{'simple'} = undef;
-
-
 1;

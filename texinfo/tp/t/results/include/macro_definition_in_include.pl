@@ -84,7 +84,4 @@ in themacro
 $result_errors{'macro_definition_in_include'} = [];
 
 
-$result_indices{'macro_definition_in_include'} = undef;
-
-
 1;

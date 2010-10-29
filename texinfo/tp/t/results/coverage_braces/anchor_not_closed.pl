@@ -61,7 +61,4 @@ $result_errors{'anchor_not_closed'} = [
 ];
 
 
-$result_indices{'anchor_not_closed'} = undef;
-
-
 1;

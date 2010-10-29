@@ -133,7 +133,4 @@ $result_errors{'test_paths'} = [
 ];
 
 
-$result_indices{'test_paths'} = undef;
-
-
 1;

@@ -276,7 +276,4 @@ In float
 $result_errors{'block_commands'} = [];
 
 
-$result_indices{'block_commands'} = undef;
-
-
 1;

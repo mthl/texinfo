@@ -153,7 +153,4 @@ $result_errors{'value_in_macro_body'} = [
 ];
 
 
-$result_indices{'value_in_macro_body'} = undef;
-
-
 1;

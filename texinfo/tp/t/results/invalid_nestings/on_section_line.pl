@@ -224,7 +224,4 @@ $result_errors{'on_section_line'} = [
 ];
 
 
-$result_indices{'on_section_line'} = undef;
-
-
 1;

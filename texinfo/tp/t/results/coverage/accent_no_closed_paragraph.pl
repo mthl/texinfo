@@ -78,7 +78,4 @@ $result_errors{'accent_no_closed_paragraph'} = [
 ];
 
 
-$result_indices{'accent_no_closed_paragraph'} = undef;
-
-
 1;

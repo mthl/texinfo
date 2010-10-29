@@ -54,7 +54,4 @@ $result_errors{'unknown_printindex'} = [
 ];
 
 
-$result_indices{'unknown_printindex'} = undef;
-
-
 1;

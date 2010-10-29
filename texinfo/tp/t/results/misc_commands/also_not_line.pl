@@ -496,7 +496,4 @@ $result_errors{'also_not_line'} = [
 ];
 
 
-$result_indices{'also_not_line'} = undef;
-
-
 1;

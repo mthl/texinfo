@@ -190,7 +190,4 @@ $result_errors{'style_not_closed_in_table_line'} = [
 ];
 
 
-$result_indices{'style_not_closed_in_table_line'} = undef;
-
-
 1;

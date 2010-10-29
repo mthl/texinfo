@@ -71,7 +71,4 @@ $result_texts{'nested'} = 'type the characters l o g o u t RET.';
 $result_errors{'nested'} = [];
 
 
-$result_indices{'nested'} = undef;
-
-
 1;

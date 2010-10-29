@@ -66,7 +66,4 @@ $result_errors{'accent_no_closed_comment'} = [
 ];
 
 
-$result_indices{'accent_no_closed_comment'} = undef;
-
-
 1;

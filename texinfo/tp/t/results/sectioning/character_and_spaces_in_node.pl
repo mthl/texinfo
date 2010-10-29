@@ -522,7 +522,4 @@ $result_texts{'character_and_spaces_in_node'} = '
 $result_errors{'character_and_spaces_in_node'} = [];
 
 
-$result_indices{'character_and_spaces_in_node'} = undef;
-
-
 1;

@@ -202,7 +202,4 @@ $result_errors{'paragraph_in_style_command'} = [
 ];
 
 
-$result_indices{'paragraph_in_style_command'} = undef;
-
-
 1;

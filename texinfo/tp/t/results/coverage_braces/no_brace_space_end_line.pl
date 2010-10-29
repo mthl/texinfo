@@ -107,7 +107,4 @@ $result_errors{'no_brace_space_end_line'} = [
 ];
 
 
-$result_indices{'no_brace_space_end_line'} = undef;
-
-
 1;

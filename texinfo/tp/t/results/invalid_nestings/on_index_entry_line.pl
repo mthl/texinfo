@@ -213,7 +213,4 @@ $result_errors{'on_index_entry_line'} = [
 ];
 
 
-$result_indices{'on_index_entry_line'} = undef;
-
-
 1;

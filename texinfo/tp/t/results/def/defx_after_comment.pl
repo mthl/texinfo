@@ -226,7 +226,4 @@ truc bidulr machin...
 $result_errors{'defx_after_comment'} = [];
 
 
-$result_indices{'defx_after_comment'} = undef;
-
-
 1;

@@ -330,7 +330,4 @@ $result_errors{'on_itemize_line'} = [
 ];
 
 
-$result_indices{'on_itemize_line'} = undef;
-
-
 1;

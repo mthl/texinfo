@@ -84,7 +84,4 @@ Macro
 $result_errors{'macro_zero'} = [];
 
 
-$result_indices{'macro_zero'} = undef;
-
-
 1;

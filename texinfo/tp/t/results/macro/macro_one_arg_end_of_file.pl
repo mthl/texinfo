@@ -82,7 +82,4 @@ Arg .';
 $result_errors{'macro_one_arg_end_of_file'} = [];
 
 
-$result_indices{'macro_one_arg_end_of_file'} = undef;
-
-
 1;

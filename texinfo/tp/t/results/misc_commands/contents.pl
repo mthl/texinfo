@@ -173,7 +173,4 @@ $result_errors{'contents'} = [
 ];
 
 
-$result_indices{'contents'} = undef;
-
-
 1;

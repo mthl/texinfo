@@ -62,7 +62,4 @@ $result_texts{'empty_set'} = '
 $result_errors{'empty_set'} = [];
 
 
-$result_indices{'empty_set'} = undef;
-
-
 1;

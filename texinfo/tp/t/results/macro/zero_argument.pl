@@ -97,7 +97,4 @@ $result_texts{'zero_argument'} = '
 $result_errors{'zero_argument'} = [];
 
 
-$result_indices{'zero_argument'} = undef;
-
-
 1;

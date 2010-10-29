@@ -54,7 +54,4 @@ $result_errors{'empty_documentencoding'} = [
 ];
 
 
-$result_indices{'empty_documentencoding'} = undef;
-
-
 1;

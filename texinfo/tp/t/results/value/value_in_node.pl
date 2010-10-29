@@ -748,7 +748,4 @@ Chapter 1
 $result_errors{'value_in_node'} = [];
 
 
-$result_indices{'value_in_node'} = undef;
-
-
 1;

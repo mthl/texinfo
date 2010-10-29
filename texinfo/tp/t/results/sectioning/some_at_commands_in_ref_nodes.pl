@@ -1149,7 +1149,4 @@ see .
 $result_errors{'some_at_commands_in_ref_nodes'} = [];
 
 
-$result_indices{'some_at_commands_in_ref_nodes'} = undef;
-
-
 1;

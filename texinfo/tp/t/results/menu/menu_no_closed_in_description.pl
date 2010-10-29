@@ -93,7 +93,4 @@ $result_errors{'menu_no_closed_in_description'} = [
 ];
 
 
-$result_indices{'menu_no_closed_in_description'} = undef;
-
-
 1;

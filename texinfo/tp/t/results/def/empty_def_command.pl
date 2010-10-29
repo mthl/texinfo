@@ -241,7 +241,4 @@ empty deffnx
 $result_errors{'empty_def_command'} = [];
 
 
-$result_indices{'empty_def_command'} = undef;
-
-
 1;

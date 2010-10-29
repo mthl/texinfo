@@ -266,7 +266,4 @@ $result_texts{'paragraph_and_macro'} = '
 $result_errors{'paragraph_and_macro'} = [];
 
 
-$result_indices{'paragraph_and_macro'} = undef;
-
-
 1;

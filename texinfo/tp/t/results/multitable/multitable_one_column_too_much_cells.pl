@@ -418,7 +418,4 @@ $result_errors{'multitable_one_column_too_much_cells'} = [
 ];
 
 
-$result_indices{'multitable_one_column_too_much_cells'} = undef;
-
-
 1;

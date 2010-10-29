@@ -77,7 +77,4 @@ $result_errors{'brace_opened_no_command'} = [
 ];
 
 
-$result_indices{'brace_opened_no_command'} = undef;
-
-
 1;

@@ -185,7 +185,4 @@ item
 $result_errors{'accent_argument'} = [];
 
 
-$result_indices{'accent_argument'} = undef;
-
-
 1;

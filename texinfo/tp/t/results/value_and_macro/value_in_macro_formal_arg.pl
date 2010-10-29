@@ -196,7 +196,4 @@ $result_errors{'value_in_macro_formal_arg'} = [
 ];
 
 
-$result_indices{'value_in_macro_formal_arg'} = undef;
-
-
 1;

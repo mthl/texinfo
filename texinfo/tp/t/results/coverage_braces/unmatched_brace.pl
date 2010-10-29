@@ -91,7 +91,4 @@ $result_errors{'unmatched_brace'} = [
 ];
 
 
-$result_indices{'unmatched_brace'} = undef;
-
-
 1;

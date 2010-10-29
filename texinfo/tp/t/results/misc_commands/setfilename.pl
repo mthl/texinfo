@@ -234,7 +234,4 @@ $result_texts{'setfilename'} = '
 $result_errors{'setfilename'} = [];
 
 
-$result_indices{'setfilename'} = undef;
-
-
 1;

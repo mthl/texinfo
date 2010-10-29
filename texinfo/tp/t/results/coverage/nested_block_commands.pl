@@ -1088,7 +1088,4 @@ After quotation sp b a
 $result_errors{'nested_block_commands'} = [];
 
 
-$result_indices{'nested_block_commands'} = undef;
-
-
 1;

@@ -368,7 +368,4 @@ $result_errors{'style_not_closed_no_newline_root_commands'} = [
 ];
 
 
-$result_indices{'style_not_closed_no_newline_root_commands'} = undef;
-
-
 1;

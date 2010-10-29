@@ -101,7 +101,4 @@ $result_errors{'unclosed_verb_on_section_line'} = [
 ];
 
 
-$result_indices{'unclosed_verb_on_section_line'} = undef;
-
-
 1;

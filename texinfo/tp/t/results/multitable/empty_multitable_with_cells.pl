@@ -172,7 +172,4 @@ $result_errors{'empty_multitable_with_cells'} = [
 ];
 
 
-$result_indices{'empty_multitable_with_cells'} = undef;
-
-
 1;

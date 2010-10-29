@@ -260,7 +260,4 @@ $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
 ];
 
 
-$result_indices{'itemx_in_itemize_enumerate_in_table'} = undef;
-
-
 1;

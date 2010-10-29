@@ -69,7 +69,4 @@ $result_errors{'out_of_multitable'} = [
 ];
 
 
-$result_indices{'out_of_multitable'} = undef;
-
-
 1;

@@ -236,7 +236,4 @@ $result_errors{'defx_after_text'} = [
 ];
 
 
-$result_indices{'defx_after_text'} = undef;
-
-
 1;

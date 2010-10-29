@@ -61,7 +61,4 @@ $result_errors{'copying_not_closed'} = [
 ];
 
 
-$result_indices{'copying_not_closed'} = undef;
-
-
 1;

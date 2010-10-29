@@ -1752,7 +1752,4 @@ $result_errors{'many_lines'} = [
 ];
 
 
-$result_indices{'many_lines'} = undef;
-
-
 1;

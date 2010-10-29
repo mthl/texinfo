@@ -55,7 +55,4 @@ $result_errors{'ignore_not_closed'} = [
 ];
 
 
-$result_indices{'ignore_not_closed'} = undef;
-
-
 1;

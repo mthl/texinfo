@@ -68,7 +68,4 @@ $result_texts{'nested'} = 'in b  in verb { }  in b end';
 $result_errors{'nested'} = [];
 
 
-$result_indices{'nested'} = undef;
-
-
 1;

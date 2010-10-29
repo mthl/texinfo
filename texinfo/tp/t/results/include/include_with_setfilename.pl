@@ -38,7 +38,4 @@ In included file.
 $result_errors{'include_with_setfilename'} = [];
 
 
-$result_indices{'include_with_setfilename'} = undef;
-
-
 1;

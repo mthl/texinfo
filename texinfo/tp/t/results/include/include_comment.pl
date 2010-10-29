@@ -29,7 +29,4 @@ $result_texts{'include_comment'} = 'In included file.
 $result_errors{'include_comment'} = [];
 
 
-$result_indices{'include_comment'} = undef;
-
-
 1;

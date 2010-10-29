@@ -611,7 +611,4 @@ $result_errors{'macro_in_early_commands'} = [
 ];
 
 
-$result_indices{'macro_in_early_commands'} = undef;
-
-
 1;

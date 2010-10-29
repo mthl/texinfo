@@ -47,7 +47,4 @@ $result_errors{'lone_end_table'} = [
 ];
 
 
-$result_indices{'lone_end_table'} = undef;
-
-
 1;

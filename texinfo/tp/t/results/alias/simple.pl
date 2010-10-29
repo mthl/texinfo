@@ -316,7 +316,4 @@ table item (code)
 $result_errors{'simple'} = [];
 
 
-$result_indices{'simple'} = undef;
-
-
 1;

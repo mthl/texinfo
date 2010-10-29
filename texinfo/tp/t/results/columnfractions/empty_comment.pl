@@ -102,7 +102,4 @@ $result_errors{'empty_comment'} = [
 ];
 
 
-$result_indices{'empty_comment'} = undef;
-
-
 1;

@@ -112,7 +112,4 @@ arg
 $result_errors{'ifset_in_macro_set'} = [];
 
 
-$result_indices{'ifset_in_macro_set'} = undef;
-
-
 1;

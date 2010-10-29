@@ -103,7 +103,4 @@ $result_texts{'good_comment'} = '';
 $result_errors{'good_comment'} = [];
 
 
-$result_indices{'good_comment'} = undef;
-
-
 1;

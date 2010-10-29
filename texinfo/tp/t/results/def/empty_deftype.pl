@@ -648,7 +648,4 @@ Defmethod.
 $result_errors{'empty_deftype'} = [];
 
 
-$result_indices{'empty_deftype'} = undef;
-
-
 1;

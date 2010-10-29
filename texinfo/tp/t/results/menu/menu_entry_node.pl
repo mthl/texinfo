@@ -313,7 +313,4 @@ $result_texts{'menu_entry_node'} = '* (f)a1::
 $result_errors{'menu_entry_node'} = [];
 
 
-$result_indices{'menu_entry_node'} = undef;
-
-
 1;

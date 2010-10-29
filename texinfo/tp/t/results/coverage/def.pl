@@ -1607,7 +1607,4 @@ Various deff lines
 $result_errors{'def'} = [];
 
 
-$result_indices{'def'} = undef;
-
-
 1;

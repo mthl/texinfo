@@ -549,7 +549,4 @@ $result_errors{'macro_and_commands_in_early_commands'} = [
 ];
 
 
-$result_indices{'macro_and_commands_in_early_commands'} = undef;
-
-
 1;

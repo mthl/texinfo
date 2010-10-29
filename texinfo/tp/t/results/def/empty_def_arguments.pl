@@ -609,7 +609,4 @@ truc
 $result_errors{'empty_def_arguments'} = [];
 
 
-$result_indices{'empty_def_arguments'} = undef;
-
-
 1;

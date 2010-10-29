@@ -115,7 +115,4 @@ $result_errors{'wrong_command'} = [
 ];
 
 
-$result_indices{'wrong_command'} = undef;
-
-
 1;

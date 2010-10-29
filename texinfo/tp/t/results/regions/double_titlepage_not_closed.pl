@@ -123,7 +123,4 @@ $result_errors{'double_titlepage_not_closed'} = [
 ];
 
 
-$result_indices{'double_titlepage_not_closed'} = undef;
-
-
 1;

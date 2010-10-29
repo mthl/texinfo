@@ -63,7 +63,4 @@ $result_errors{'flushright_not_closed'} = [
 ];
 
 
-$result_indices{'flushright_not_closed'} = undef;
-
-
 1;

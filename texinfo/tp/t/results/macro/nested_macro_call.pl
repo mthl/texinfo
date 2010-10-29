@@ -140,7 +140,4 @@ Before (machin)
 $result_errors{'nested_macro_call'} = [];
 
 
-$result_indices{'nested_macro_call'} = undef;
-
-
 1;

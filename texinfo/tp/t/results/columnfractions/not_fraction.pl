@@ -100,7 +100,4 @@ $result_errors{'not_fraction'} = [
 ];
 
 
-$result_indices{'not_fraction'} = undef;
-
-
 1;

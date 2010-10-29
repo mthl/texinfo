@@ -37,7 +37,4 @@ text l 2
 $result_errors{'two_lines'} = [];
 
 
-$result_indices{'two_lines'} = undef;
-
-
 1;

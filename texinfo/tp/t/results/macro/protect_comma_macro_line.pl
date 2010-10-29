@@ -144,7 +144,4 @@ and a last in another paragraph
 $result_errors{'protect_comma_macro_line'} = [];
 
 
-$result_indices{'protect_comma_macro_line'} = undef;
-
-
 1;

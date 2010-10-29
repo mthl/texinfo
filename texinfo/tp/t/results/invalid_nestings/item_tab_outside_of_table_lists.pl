@@ -122,7 +122,4 @@ $result_errors{'item_tab_outside_of_table_lists'} = [
 ];
 
 
-$result_indices{'item_tab_outside_of_table_lists'} = undef;
-
-
 1;

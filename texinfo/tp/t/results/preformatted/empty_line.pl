@@ -62,7 +62,4 @@ after empty line
 $result_errors{'empty_line'} = [];
 
 
-$result_indices{'empty_line'} = undef;
-
-
 1;

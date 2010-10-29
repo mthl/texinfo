@@ -39,7 +39,4 @@ $result_texts{'text_comment'} = 'text';
 $result_errors{'text_comment'} = [];
 
 
-$result_indices{'text_comment'} = undef;
-
-
 1;

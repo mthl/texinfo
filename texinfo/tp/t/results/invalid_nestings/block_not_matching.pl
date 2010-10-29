@@ -728,7 +728,4 @@ $result_errors{'block_not_matching'} = [
 ];
 
 
-$result_indices{'block_not_matching'} = undef;
-
-
 1;

@@ -51,7 +51,4 @@ $result_errors{'code_not_closed'} = [
 ];
 
 
-$result_indices{'code_not_closed'} = undef;
-
-
 1;

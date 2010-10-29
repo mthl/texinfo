@@ -69,7 +69,4 @@ after verb.';
 $result_errors{'multiline'} = [];
 
 
-$result_indices{'multiline'} = undef;
-
-
 1;

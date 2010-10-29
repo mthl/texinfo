@@ -211,7 +211,4 @@ $result_errors{'table_not_closed_in_menu_comment'} = [
 ];
 
 
-$result_indices{'table_not_closed_in_menu_comment'} = undef;
-
-
 1;

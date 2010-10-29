@@ -255,7 +255,4 @@ $result_errors{'bad_formal_arg'} = [
 ];
 
 
-$result_indices{'bad_formal_arg'} = undef;
-
-
 1;

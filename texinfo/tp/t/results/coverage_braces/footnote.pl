@@ -100,7 +100,4 @@ $result_texts{'footnote'} = 'text after footnote.';
 $result_errors{'footnote'} = [];
 
 
-$result_indices{'footnote'} = undef;
-
-
 1;

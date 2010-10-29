@@ -178,7 +178,4 @@ $result_texts{'menu_entry_no_entry'} = '* a1:
 $result_errors{'menu_entry_no_entry'} = [];
 
 
-$result_indices{'menu_entry_no_entry'} = undef;
-
-
 1;

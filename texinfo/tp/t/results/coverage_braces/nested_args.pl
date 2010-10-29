@@ -102,7 +102,4 @@ $result_texts{'nested_args'} = '';
 $result_errors{'nested_args'} = [];
 
 
-$result_indices{'nested_args'} = undef;
-
-
 1;

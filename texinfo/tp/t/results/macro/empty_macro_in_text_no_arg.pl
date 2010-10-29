@@ -151,7 +151,4 @@ $result_errors{'empty_macro_in_text_no_arg'} = [
 ];
 
 
-$result_indices{'empty_macro_in_text_no_arg'} = undef;
-
-
 1;

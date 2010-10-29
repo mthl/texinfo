@@ -410,7 +410,4 @@ $result_errors{'definfoenclose'} = [
 ];
 
 
-$result_indices{'definfoenclose'} = undef;
-
-
 1;

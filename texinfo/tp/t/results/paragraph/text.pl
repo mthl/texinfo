@@ -26,7 +26,4 @@ $result_texts{'text'} = 'text';
 $result_errors{'text'} = [];
 
 
-$result_indices{'text'} = undef;
-
-
 1;

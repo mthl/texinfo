@@ -67,7 +67,4 @@ $result_texts{'macro_for_ignored_line_command'} = '
 $result_errors{'macro_for_ignored_line_command'} = [];
 
 
-$result_indices{'macro_for_ignored_line_command'} = undef;
-
-
 1;

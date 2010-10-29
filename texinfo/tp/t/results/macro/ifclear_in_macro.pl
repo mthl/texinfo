@@ -112,7 +112,4 @@ arg
 $result_errors{'ifclear_in_macro'} = [];
 
 
-$result_indices{'ifclear_in_macro'} = undef;
-
-
 1;

@@ -47,7 +47,7 @@ sub new_test ($;$$)
 
 sub filter_keys { [grep {$_ ne 'next'} ( sort keys %{$_[0]} )] }
 #sub filter_keys { [grep {$_ ne 'parent' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
-sub filter_main_tree { [grep {$_ ne 'section'} ( sort keys %{$_[0]} )] }
+sub filter_main_tree { [grep {$_ ne 'section' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
 
 sub test($$) 
 {
@@ -84,13 +84,6 @@ sub test($$)
   }
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
-  {
-    local $Data::Dumper::Purity = 1;
-    local $Data::Dumper::Sortkeys = \&filter_main_tree;
-    local $Data::Dumper::Indent = 1;
-
-    #print STDERR Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']);
-  }
 
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();
@@ -132,7 +125,12 @@ sub test($$)
     {
       local $Data::Dumper::Sortkeys = 1;
       $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
-      $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n";
+      $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
+         if ($indices);
+    }
+    {
+      local $Data::Dumper::Sortkeys = \&filter_main_tree;
+      #$out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']) if ($structure);
     }
     $out_result .= "1;\n";
     print OUT $out_result;

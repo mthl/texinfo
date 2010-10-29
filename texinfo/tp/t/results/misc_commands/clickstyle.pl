@@ -78,7 +78,4 @@ A => (result).
 $result_errors{'clickstyle'} = [];
 
 
-$result_indices{'clickstyle'} = undef;
-
-
 1;

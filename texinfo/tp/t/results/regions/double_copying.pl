@@ -104,7 +104,4 @@ $result_texts{'double_copying'} = '';
 $result_errors{'double_copying'} = [];
 
 
-$result_indices{'double_copying'} = undef;
-
-
 1;

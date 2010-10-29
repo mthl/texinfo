@@ -121,7 +121,4 @@ $result_errors{'menu_no_closed_after_empty_line'} = [
 ];
 
 
-$result_indices{'menu_no_closed_after_empty_line'} = undef;
-
-
 1;

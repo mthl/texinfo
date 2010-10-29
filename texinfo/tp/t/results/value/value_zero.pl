@@ -58,7 +58,4 @@ $result_texts{'value_zero'} = 'Value
 $result_errors{'value_zero'} = [];
 
 
-$result_indices{'value_zero'} = undef;
-
-
 1;

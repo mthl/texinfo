@@ -1384,7 +1384,4 @@ Chapter with nodes
 $result_errors{'character_and_spaces_in_refs'} = [];
 
 
-$result_indices{'character_and_spaces_in_refs'} = undef;
-
-
 1;

@@ -76,7 +76,4 @@ res1 abc
 $result_errors{'macro_no_arg_expansion'} = [];
 
 
-$result_indices{'macro_no_arg_expansion'} = undef;
-
-
 1;

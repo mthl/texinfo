@@ -88,7 +88,4 @@ $result_errors{'empty_macro'} = [
 ];
 
 
-$result_indices{'empty_macro'} = undef;
-
-
 1;

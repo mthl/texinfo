@@ -644,7 +644,4 @@ $result_errors{'complex_argument'} = [
 ];
 
 
-$result_indices{'complex_argument'} = undef;
-
-
 1;

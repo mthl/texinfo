@@ -108,7 +108,4 @@ $result_texts{'good_space_comment'} = '';
 $result_errors{'good_space_comment'} = [];
 
 
-$result_indices{'good_space_comment'} = undef;
-
-
 1;

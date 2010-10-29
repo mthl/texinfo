@@ -177,7 +177,4 @@ $result_errors{'bad_syntax'} = [
 ];
 
 
-$result_indices{'bad_syntax'} = undef;
-
-
 1;

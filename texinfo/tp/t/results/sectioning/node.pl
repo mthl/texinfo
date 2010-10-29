@@ -739,7 +739,4 @@ $result_errors{'node'} = [
 ];
 
 
-$result_indices{'node'} = undef;
-
-
 1;

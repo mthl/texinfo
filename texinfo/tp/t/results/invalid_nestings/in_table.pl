@@ -375,7 +375,4 @@ $result_errors{'in_table'} = [
 ];
 
 
-$result_indices{'in_table'} = undef;
-
-
 1;

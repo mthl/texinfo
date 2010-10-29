@@ -114,7 +114,4 @@ FIXME: Many arguments, separated by commas, are processed here
 $result_errors{'implicit_quoting_one_arg'} = [];
 
 
-$result_indices{'implicit_quoting_one_arg'} = undef;
-
-
 1;

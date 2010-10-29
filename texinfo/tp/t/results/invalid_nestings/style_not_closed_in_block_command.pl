@@ -91,7 +91,4 @@ $result_errors{'style_not_closed_in_block_command'} = [
 ];
 
 
-$result_indices{'style_not_closed_in_block_command'} = undef;
-
-
 1;

@@ -90,7 +90,4 @@ $result_errors{'end_of_line'} = [
 ];
 
 
-$result_indices{'end_of_line'} = undef;
-
-
 1;

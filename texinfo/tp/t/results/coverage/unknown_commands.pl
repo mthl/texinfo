@@ -56,7 +56,4 @@ $result_errors{'unknown_commands'} = [
 ];
 
 
-$result_indices{'unknown_commands'} = undef;
-
-
 1;

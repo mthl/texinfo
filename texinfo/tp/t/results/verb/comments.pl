@@ -128,7 +128,4 @@ something  in verb ';
 $result_errors{'comments'} = [];
 
 
-$result_indices{'comments'} = undef;
-
-
 1;

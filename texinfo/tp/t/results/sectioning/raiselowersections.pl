@@ -1227,7 +1227,4 @@ Second chapter
 $result_errors{'raiselowersections'} = [];
 
 
-$result_indices{'raiselowersections'} = undef;
-
-
 1;

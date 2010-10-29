@@ -175,7 +175,4 @@ $result_errors{'bad_argument'} = [
 ];
 
 
-$result_indices{'bad_argument'} = undef;
-
-
 1;

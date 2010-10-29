@@ -59,7 +59,4 @@ $result_errors{'ignored_text'} = [
 ];
 
 
-$result_indices{'ignored_text'} = undef;
-
-
 1;

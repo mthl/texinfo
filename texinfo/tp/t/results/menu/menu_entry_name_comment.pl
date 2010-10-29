@@ -488,7 +488,4 @@ $result_texts{'menu_entry_name_comment'} = '* a: (f)b* a: (f)b * a: (f)b1c.c,* a
 $result_errors{'menu_entry_name_comment'} = [];
 
 
-$result_indices{'menu_entry_name_comment'} = undef;
-
-
 1;

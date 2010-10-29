@@ -161,7 +161,4 @@ $result_errors{'macro_in_value'} = [
 ];
 
 
-$result_indices{'macro_in_value'} = undef;
-
-
 1;

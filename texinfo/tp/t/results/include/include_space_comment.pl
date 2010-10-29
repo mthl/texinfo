@@ -29,7 +29,4 @@ $result_texts{'include_space_comment'} = 'In included file.
 $result_errors{'include_space_comment'} = [];
 
 
-$result_indices{'include_space_comment'} = undef;
-
-
 1;

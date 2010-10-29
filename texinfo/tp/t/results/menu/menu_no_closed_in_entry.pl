@@ -70,7 +70,4 @@ $result_errors{'menu_no_closed_in_entry'} = [
 ];
 
 
-$result_indices{'menu_no_closed_in_entry'} = undef;
-
-
 1;

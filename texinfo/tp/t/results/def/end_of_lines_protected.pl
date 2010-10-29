@@ -250,7 +250,4 @@ deffn
 $result_errors{'end_of_lines_protected'} = [];
 
 
-$result_indices{'end_of_lines_protected'} = undef;
-
-
 1;

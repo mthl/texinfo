@@ -237,7 +237,4 @@ different
 $result_errors{'arg_body_expansion_order'} = [];
 
 
-$result_indices{'arg_body_expansion_order'} = undef;
-
-
 1;

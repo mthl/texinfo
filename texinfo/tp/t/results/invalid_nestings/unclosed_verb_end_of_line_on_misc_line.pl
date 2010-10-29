@@ -87,7 +87,4 @@ $result_errors{'unclosed_verb_end_of_line_on_misc_line'} = [
 ];
 
 
-$result_indices{'unclosed_verb_end_of_line_on_misc_line'} = undef;
-
-
 1;

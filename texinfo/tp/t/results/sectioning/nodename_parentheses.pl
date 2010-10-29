@@ -849,7 +849,4 @@ $result_errors{'nodename_parentheses'} = [
 ];
 
 
-$result_indices{'nodename_parentheses'} = undef;
-
-
 1;

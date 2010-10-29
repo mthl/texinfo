@@ -85,7 +85,4 @@ $result_errors{'empty_line_in_anchor'} = [
 ];
 
 
-$result_indices{'empty_line_in_anchor'} = undef;
-
-
 1;

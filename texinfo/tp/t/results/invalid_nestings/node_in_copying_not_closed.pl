@@ -195,7 +195,4 @@ $result_errors{'node_in_copying_not_closed'} = [
 ];
 
 
-$result_indices{'node_in_copying_not_closed'} = undef;
-
-
 1;

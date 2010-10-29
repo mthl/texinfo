@@ -140,7 +140,4 @@ in verbatim2
 $result_errors{'misc_raw'} = [];
 
 
-$result_indices{'misc_raw'} = undef;
-
-
 1;

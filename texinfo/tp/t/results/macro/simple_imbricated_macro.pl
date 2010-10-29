@@ -169,7 +169,4 @@ bidule.
 $result_errors{'simple_imbricated_macro'} = [];
 
 
-$result_indices{'simple_imbricated_macro'} = undef;
-
-
 1;

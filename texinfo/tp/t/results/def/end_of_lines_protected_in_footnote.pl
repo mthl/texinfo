@@ -299,7 +299,4 @@ $result_texts{'end_of_lines_protected_in_footnote'} = '
 $result_errors{'end_of_lines_protected_in_footnote'} = [];
 
 
-$result_indices{'end_of_lines_protected_in_footnote'} = undef;
-
-
 1;

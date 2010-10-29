@@ -219,7 +219,4 @@ End.
 $result_errors{'raw_in_para'} = [];
 
 
-$result_indices{'raw_in_para'} = undef;
-
-
 1;

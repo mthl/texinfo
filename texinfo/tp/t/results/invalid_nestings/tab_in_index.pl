@@ -226,7 +226,4 @@ $result_errors{'tab_in_index'} = [
 ];
 
 
-$result_indices{'tab_in_index'} = undef;
-
-
 1;

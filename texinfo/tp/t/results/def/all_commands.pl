@@ -1983,7 +1983,4 @@ d--eftypemethod
 $result_errors{'all_commands'} = [];
 
 
-$result_indices{'all_commands'} = undef;
-
-
 1;

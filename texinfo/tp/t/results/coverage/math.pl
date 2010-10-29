@@ -366,7 +366,4 @@ $result_errors{'math'} = [
 ];
 
 
-$result_indices{'math'} = undef;
-
-
 1;

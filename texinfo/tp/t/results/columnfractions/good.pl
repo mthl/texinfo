@@ -96,7 +96,4 @@ $result_texts{'good'} = '';
 $result_errors{'good'} = [];
 
 
-$result_indices{'good'} = undef;
-
-
 1;

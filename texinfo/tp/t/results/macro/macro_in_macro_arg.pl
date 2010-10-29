@@ -221,7 +221,4 @@ a, hello text for macro2 after arg
 $result_errors{'macro_in_macro_arg'} = [];
 
 
-$result_indices{'macro_in_macro_arg'} = undef;
-
-
 1;

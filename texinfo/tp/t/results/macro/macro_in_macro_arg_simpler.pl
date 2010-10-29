@@ -156,7 +156,4 @@ a, macro2text for macro2
 $result_errors{'macro_in_macro_arg_simpler'} = [];
 
 
-$result_indices{'macro_in_macro_arg_simpler'} = undef;
-
-
 1;

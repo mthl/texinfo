@@ -144,7 +144,4 @@ inew p after sp';
 $result_errors{'close_paragraph_command'} = [];
 
 
-$result_indices{'close_paragraph_command'} = undef;
-
-
 1;

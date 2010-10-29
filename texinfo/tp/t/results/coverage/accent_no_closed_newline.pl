@@ -63,7 +63,4 @@ $result_errors{'accent_no_closed_newline'} = [
 ];
 
 
-$result_indices{'accent_no_closed_newline'} = undef;
-
-
 1;

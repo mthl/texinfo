@@ -51,7 +51,4 @@ $result_errors{'menu_no_closed_entry_beginning'} = [
 ];
 
 
-$result_indices{'menu_no_closed_entry_beginning'} = undef;
-
-
 1;

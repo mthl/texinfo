@@ -202,7 +202,4 @@ This is ifnottex text.
 $result_errors{'many_conditionals'} = [];
 
 
-$result_indices{'many_conditionals'} = undef;
-
-
 1;

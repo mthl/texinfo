@@ -286,7 +286,4 @@ $result_errors{'multitable_begin_with_tab'} = [
 ];
 
 
-$result_indices{'multitable_begin_with_tab'} = undef;
-
-
 1;

@@ -59,7 +59,4 @@ $result_texts{'empty_end'} = '';
 $result_errors{'empty_end'} = [];
 
 
-$result_indices{'empty_end'} = undef;
-
-
 1;

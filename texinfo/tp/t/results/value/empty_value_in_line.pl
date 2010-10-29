@@ -86,7 +86,4 @@ $result_texts{'empty_value_in_line'} = '
 $result_errors{'empty_value_in_line'} = [];
 
 
-$result_indices{'empty_value_in_line'} = undef;
-
-
 1;

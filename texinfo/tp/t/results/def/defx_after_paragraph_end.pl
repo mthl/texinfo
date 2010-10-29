@@ -245,7 +245,4 @@ $result_errors{'defx_after_paragraph_end'} = [
 ];
 
 
-$result_indices{'defx_after_paragraph_end'} = undef;
-
-
 1;

@@ -103,7 +103,4 @@ $result_texts{'table_command_comment'} = 'item
 $result_errors{'table_command_comment'} = [];
 
 
-$result_indices{'table_command_comment'} = undef;
-
-
 1;

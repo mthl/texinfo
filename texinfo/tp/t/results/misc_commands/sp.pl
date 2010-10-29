@@ -243,7 +243,4 @@ $result_errors{'sp'} = [
 ];
 
 
-$result_indices{'sp'} = undef;
-
-
 1;

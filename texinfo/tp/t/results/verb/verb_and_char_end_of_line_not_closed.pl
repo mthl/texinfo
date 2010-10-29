@@ -79,7 +79,4 @@ $result_errors{'verb_and_char_end_of_line_not_closed'} = [
 ];
 
 
-$result_indices{'verb_and_char_end_of_line_not_closed'} = undef;
-
-
 1;

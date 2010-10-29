@@ -199,7 +199,4 @@ $result_errors{'def_not_closed_in_menu_description'} = [
 ];
 
 
-$result_indices{'def_not_closed_in_menu_description'} = undef;
-
-
 1;

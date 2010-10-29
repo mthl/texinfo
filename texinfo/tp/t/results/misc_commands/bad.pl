@@ -83,7 +83,4 @@ $result_errors{'bad'} = [
 ];
 
 
-$result_indices{'bad'} = undef;
-
-
 1;

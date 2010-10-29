@@ -88,7 +88,4 @@ $result_texts{'ifset_in_macro'} = '
 $result_errors{'ifset_in_macro'} = [];
 
 
-$result_indices{'ifset_in_macro'} = undef;
-
-
 1;

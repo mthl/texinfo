@@ -86,7 +86,4 @@ $result_errors{'macro_no_arg_bad_expansion'} = [
 ];
 
 
-$result_indices{'macro_no_arg_bad_expansion'} = undef;
-
-
 1;

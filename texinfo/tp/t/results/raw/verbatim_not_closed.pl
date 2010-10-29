@@ -84,7 +84,4 @@ $result_errors{'verbatim_not_closed'} = [
 ];
 
 
-$result_indices{'verbatim_not_closed'} = undef;
-
-
 1;

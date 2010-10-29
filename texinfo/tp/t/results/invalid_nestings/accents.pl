@@ -220,7 +220,4 @@ $result_errors{'accents'} = [
 ];
 
 
-$result_indices{'accents'} = undef;
-
-
 1;

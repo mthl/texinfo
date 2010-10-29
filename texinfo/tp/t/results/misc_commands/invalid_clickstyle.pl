@@ -246,7 +246,4 @@ $result_errors{'invalid_clickstyle'} = [
 ];
 
 
-$result_indices{'invalid_clickstyle'} = undef;
-
-
 1;

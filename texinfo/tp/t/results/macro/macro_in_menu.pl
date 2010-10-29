@@ -645,7 +645,4 @@ menu comment
 $result_errors{'macro_in_menu'} = [];
 
 
-$result_indices{'macro_in_menu'} = undef;
-
-
 1;

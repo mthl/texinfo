@@ -111,7 +111,4 @@ $result_errors{'end_of_line_protect_at_end'} = [
 ];
 
 
-$result_indices{'end_of_line_protect_at_end'} = undef;
-
-
 1;

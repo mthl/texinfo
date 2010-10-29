@@ -45,7 +45,4 @@ $result_errors{'not_closed_itemize'} = [
 ];
 
 
-$result_indices{'not_closed_itemize'} = undef;
-
-
 1;

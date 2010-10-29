@@ -1163,7 +1163,4 @@ $result_errors{'wrong_braces_simple'} = [
 ];
 
 
-$result_indices{'wrong_braces_simple'} = undef;
-
-
 1;

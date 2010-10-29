@@ -302,7 +302,4 @@ $result_errors{'wrong_braces_with_end_of_lines'} = [
 ];
 
 
-$result_indices{'wrong_braces_with_end_of_lines'} = undef;
-
-
 1;

@@ -92,7 +92,4 @@ natopocotuototam
 $result_errors{'implicit_quoting_recursion'} = [];
 
 
-$result_indices{'implicit_quoting_recursion'} = undef;
-
-
 1;

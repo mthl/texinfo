@@ -162,7 +162,4 @@ $result_errors{'headitem_in_table'} = [
 ];
 
 
-$result_indices{'headitem_in_table'} = undef;
-
-
 1;

@@ -75,7 +75,4 @@ $result_errors{'math_bracketed_inside_not_closed'} = [
 ];
 
 
-$result_indices{'math_bracketed_inside_not_closed'} = undef;
-
-
 1;

@@ -56,7 +56,4 @@ $result_texts{'consecutive_conditionals'} = '
 $result_errors{'consecutive_conditionals'} = [];
 
 
-$result_indices{'consecutive_conditionals'} = undef;
-
-
 1;

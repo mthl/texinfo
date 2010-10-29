@@ -95,7 +95,4 @@ $result_errors{'arg_not_closed'} = [
 ];
 
 
-$result_indices{'arg_not_closed'} = undef;
-
-
 1;

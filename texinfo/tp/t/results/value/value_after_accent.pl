@@ -92,7 +92,4 @@ $result_errors{'value_after_accent'} = [
 ];
 
 
-$result_indices{'value_after_accent'} = undef;
-
-
 1;

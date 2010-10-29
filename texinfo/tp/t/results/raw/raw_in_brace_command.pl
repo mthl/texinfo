@@ -190,7 +190,4 @@ $result_errors{'raw_in_brace_command'} = [
 ];
 
 
-$result_indices{'raw_in_brace_command'} = undef;
-
-
 1;

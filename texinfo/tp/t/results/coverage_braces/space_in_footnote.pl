@@ -58,7 +58,4 @@ $result_texts{'space_in_footnote'} = 'text';
 $result_errors{'space_in_footnote'} = [];
 
 
-$result_indices{'space_in_footnote'} = undef;
-
-
 1;

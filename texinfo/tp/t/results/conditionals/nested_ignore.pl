@@ -149,7 +149,4 @@ $result_texts{'nested_ignore'} = '
 $result_errors{'nested_ignore'} = [];
 
 
-$result_indices{'nested_ignore'} = undef;
-
-
 1;

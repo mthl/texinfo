@@ -51,7 +51,4 @@ $result_errors{'accent_no_closed'} = [
 ];
 
 
-$result_indices{'accent_no_closed'} = undef;
-
-
 1;

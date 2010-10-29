@@ -39,7 +39,4 @@ $result_errors{'unknown_index_entry'} = [
 ];
 
 
-$result_indices{'unknown_index_entry'} = undef;
-
-
 1;

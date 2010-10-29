@@ -42,7 +42,4 @@ $result_errors{'macro_no_argument'} = [
 ];
 
 
-$result_indices{'macro_no_argument'} = undef;
-
-
 1;

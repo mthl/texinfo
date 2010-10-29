@@ -187,7 +187,4 @@ i--tem +
 $result_errors{'item_container'} = [];
 
 
-$result_indices{'item_container'} = undef;
-
-
 1;

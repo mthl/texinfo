@@ -107,7 +107,4 @@ $result_errors{'macro_for_end'} = [
 ];
 
 
-$result_indices{'macro_for_end'} = undef;
-
-
 1;

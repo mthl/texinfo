@@ -97,7 +97,4 @@ $result_errors{'multitable_not_closed'} = [
 ];
 
 
-$result_indices{'multitable_not_closed'} = undef;
-
-
 1;

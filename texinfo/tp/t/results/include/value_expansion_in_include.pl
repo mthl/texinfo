@@ -587,7 +587,4 @@ $result_errors{'value_expansion_in_include'} = [
 ];
 
 
-$result_indices{'value_expansion_in_include'} = undef;
-
-
 1;

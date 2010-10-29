@@ -51,7 +51,4 @@ $result_errors{'menu_no_closed_star'} = [
 ];
 
 
-$result_indices{'menu_no_closed_star'} = undef;
-
-
 1;

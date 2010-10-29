@@ -139,7 +139,4 @@ A comma in text, end.
 $result_errors{'a_comma_after_node'} = [];
 
 
-$result_indices{'a_comma_after_node'} = undef;
-
-
 1;

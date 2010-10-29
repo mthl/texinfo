@@ -121,7 +121,4 @@ $result_errors{'node_in_copying'} = [
 ];
 
 
-$result_indices{'node_in_copying'} = undef;
-
-
 1;

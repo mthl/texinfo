@@ -562,7 +562,4 @@ $result_errors{'macro_expansion'} = [
 ];
 
 
-$result_indices{'macro_expansion'} = undef;
-
-
 1;

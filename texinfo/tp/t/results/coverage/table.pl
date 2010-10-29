@@ -436,7 +436,4 @@ itemx vtable
 $result_errors{'table'} = [];
 
 
-$result_indices{'table'} = undef;
-
-
 1;

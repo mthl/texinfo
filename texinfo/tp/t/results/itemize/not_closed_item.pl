@@ -73,7 +73,4 @@ $result_errors{'not_closed_item'} = [
 ];
 
 
-$result_indices{'not_closed_item'} = undef;
-
-
 1;

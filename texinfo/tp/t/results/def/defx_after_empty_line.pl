@@ -220,7 +220,4 @@ truc bidulr machin...
 $result_errors{'defx_after_empty_line'} = [];
 
 
-$result_indices{'defx_after_empty_line'} = undef;
-
-
 1;

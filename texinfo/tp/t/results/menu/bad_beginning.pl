@@ -95,7 +95,4 @@ $result_texts{'bad_beginning'} = '*
 $result_errors{'bad_beginning'} = [];
 
 
-$result_indices{'bad_beginning'} = undef;
-
-
 1;

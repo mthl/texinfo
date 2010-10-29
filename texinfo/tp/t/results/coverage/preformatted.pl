@@ -203,7 +203,4 @@ in table in format
 $result_errors{'preformatted'} = [];
 
 
-$result_indices{'preformatted'} = undef;
-
-
 1;

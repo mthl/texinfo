@@ -82,7 +82,4 @@ $result_errors{'no_brace'} = [
 ];
 
 
-$result_indices{'no_brace'} = undef;
-
-
 1;

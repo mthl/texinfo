@@ -52,7 +52,4 @@ $result_errors{'macro_not_closed'} = [
 ];
 
 
-$result_indices{'macro_not_closed'} = undef;
-
-
 1;

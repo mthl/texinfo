@@ -87,7 +87,4 @@ after empty line
 $result_errors{'empty_line_style_command'} = [];
 
 
-$result_indices{'empty_line_style_command'} = undef;
-
-
 1;

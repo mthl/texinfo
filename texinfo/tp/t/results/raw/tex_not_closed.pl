@@ -55,7 +55,4 @@ $result_errors{'tex_not_closed'} = [
 ];
 
 
-$result_indices{'tex_not_closed'} = undef;
-
-
 1;

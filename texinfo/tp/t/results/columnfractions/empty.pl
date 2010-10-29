@@ -89,7 +89,4 @@ $result_errors{'empty'} = [
 ];
 
 
-$result_indices{'empty'} = undef;
-
-
 1;

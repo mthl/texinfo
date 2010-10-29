@@ -248,7 +248,4 @@ a*.
 $result_errors{'macro_in_accent'} = [];
 
 
-$result_indices{'macro_in_accent'} = undef;
-
-
 1;

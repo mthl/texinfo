@@ -47,7 +47,4 @@ text
 $result_errors{'text_line'} = [];
 
 
-$result_indices{'text_line'} = undef;
-
-
 1;

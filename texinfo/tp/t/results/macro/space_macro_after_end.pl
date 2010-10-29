@@ -90,7 +90,4 @@ $result_texts{'space_macro_after_end'} = '
 $result_errors{'space_macro_after_end'} = [];
 
 
-$result_indices{'space_macro_after_end'} = undef;
-
-
 1;

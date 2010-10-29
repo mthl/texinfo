@@ -120,7 +120,4 @@ $result_texts{'nested_macros'} = '';
 $result_errors{'nested_macros'} = [];
 
 
-$result_indices{'nested_macros'} = undef;
-
-
 1;

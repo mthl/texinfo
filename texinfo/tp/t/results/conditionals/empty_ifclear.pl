@@ -23,7 +23,4 @@ $result_errors{'empty_ifclear'} = [
 ];
 
 
-$result_indices{'empty_ifclear'} = undef;
-
-
 1;

@@ -190,7 +190,4 @@ $result_texts{'empty_deftypeop_name'} = 'Commandcom Windowint exposeexp
 $result_errors{'empty_deftypeop_name'} = [];
 
 
-$result_indices{'empty_deftypeop_name'} = undef;
-
-
 1;

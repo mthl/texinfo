@@ -561,7 +561,4 @@ bar
 $result_errors{'value_node_directions'} = [];
 
 
-$result_indices{'value_node_directions'} = undef;
-
-
 1;

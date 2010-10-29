@@ -156,7 +156,4 @@ $result_errors{'bad_line'} = [
 ];
 
 
-$result_indices{'bad_line'} = undef;
-
-
 1;

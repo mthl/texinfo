@@ -99,7 +99,4 @@ the value b ';
 $result_errors{'simple'} = [];
 
 
-$result_indices{'simple'} = undef;
-
-
 1;

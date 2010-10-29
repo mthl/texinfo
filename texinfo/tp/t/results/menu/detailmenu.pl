@@ -188,7 +188,4 @@ $result_texts{'detailmenu'} = '
 $result_errors{'detailmenu'} = [];
 
 
-$result_indices{'detailmenu'} = undef;
-
-
 1;

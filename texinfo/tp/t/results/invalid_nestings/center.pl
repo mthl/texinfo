@@ -661,7 +661,4 @@ $result_errors{'center'} = [
 ];
 
 
-$result_indices{'center'} = undef;
-
-
 1;

@@ -51,7 +51,4 @@ $result_errors{'math_not_closed'} = [
 ];
 
 
-$result_indices{'math_not_closed'} = undef;
-
-
 1;

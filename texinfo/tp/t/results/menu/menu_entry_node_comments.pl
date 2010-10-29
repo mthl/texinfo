@@ -338,7 +338,4 @@ $result_texts{'menu_entry_node_comments'} = '* (f)a1c::* (f)a2c::  * (f)a3c::   
 $result_errors{'menu_entry_node_comments'} = [];
 
 
-$result_indices{'menu_entry_node_comments'} = undef;
-
-
 1;

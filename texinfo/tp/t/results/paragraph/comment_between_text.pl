@@ -49,7 +49,4 @@ end para';
 $result_errors{'comment_between_text'} = [];
 
 
-$result_indices{'comment_between_text'} = undef;
-
-
 1;

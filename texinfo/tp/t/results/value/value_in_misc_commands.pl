@@ -3204,7 +3204,4 @@ $result_errors{'value_in_misc_commands'} = [
 ];
 
 
-$result_indices{'value_in_misc_commands'} = undef;
-
-
 1;

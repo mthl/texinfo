@@ -863,7 +863,4 @@ $result_texts{'menu_entry_name'} = '* a: (f)b
 $result_errors{'menu_entry_name'} = [];
 
 
-$result_indices{'menu_entry_name'} = undef;
-
-
 1;

@@ -15178,7 +15178,4 @@ http://somewhere_aaa url /man.cgi/1/ls
 $result_errors{'at_commands_in_refs'} = [];
 
 
-$result_indices{'at_commands_in_refs'} = undef;
-
-
 1;

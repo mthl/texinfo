@@ -165,7 +165,4 @@ $result_errors{'caption_not_closed'} = [
 ];
 
 
-$result_indices{'caption_not_closed'} = undef;
-
-
 1;

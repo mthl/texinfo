@@ -3689,7 +3689,4 @@ $result_errors{'macro_in_misc_commands'} = [
 ];
 
 
-$result_indices{'macro_in_misc_commands'} = undef;
-
-
 1;

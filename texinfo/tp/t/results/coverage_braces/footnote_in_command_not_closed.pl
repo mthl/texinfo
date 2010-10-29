@@ -92,7 +92,4 @@ $result_errors{'footnote_in_command_not_closed'} = [
 ];
 
 
-$result_indices{'footnote_in_command_not_closed'} = undef;
-
-
 1;

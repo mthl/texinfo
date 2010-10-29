@@ -85,7 +85,4 @@ $result_errors{'include_at_end_line'} = [
 ];
 
 
-$result_indices{'include_at_end_line'} = undef;
-
-
 1;

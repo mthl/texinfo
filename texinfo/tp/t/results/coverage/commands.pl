@@ -391,7 +391,4 @@ majorheading in b
 $result_errors{'commands'} = [];
 
 
-$result_indices{'commands'} = undef;
-
-
 1;

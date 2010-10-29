@@ -62,7 +62,4 @@ a is set to:||.
 $result_errors{'empty_set_in_ifset'} = [];
 
 
-$result_indices{'empty_set_in_ifset'} = undef;
-
-
 1;

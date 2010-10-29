@@ -231,7 +231,4 @@ $result_errors{'unknown_command_with_braces'} = [
 ];
 
 
-$result_indices{'unknown_command_with_braces'} = undef;
-
-
 1;

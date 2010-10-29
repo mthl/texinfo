@@ -392,7 +392,4 @@ $result_errors{'on_block_command_line'} = [
 ];
 
 
-$result_indices{'on_block_command_line'} = undef;
-
-
 1;

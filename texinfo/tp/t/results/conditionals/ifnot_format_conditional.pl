@@ -50,7 +50,4 @@ After.';
 $result_errors{'ifnot_format_conditional'} = [];
 
 
-$result_indices{'ifnot_format_conditional'} = undef;
-
-
 1;

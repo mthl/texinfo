@@ -100,7 +100,4 @@ $result_texts{'something_before_columnfractions'} = '';
 $result_errors{'something_before_columnfractions'} = [];
 
 
-$result_indices{'something_before_columnfractions'} = undef;
-
-
 1;

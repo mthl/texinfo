@@ -93,7 +93,4 @@ $result_texts{'no_macrobody'} = '
 $result_errors{'no_macrobody'} = [];
 
 
-$result_indices{'no_macrobody'} = undef;
-
-
 1;

@@ -13,7 +13,4 @@ $result_texts{'not_set'} = '';
 $result_errors{'not_set'} = [];
 
 
-$result_indices{'not_set'} = undef;
-
-
 1;

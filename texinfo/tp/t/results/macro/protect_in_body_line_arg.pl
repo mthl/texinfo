@@ -165,7 +165,4 @@ $result_errors{'protect_in_body_line_arg'} = [
 ];
 
 
-$result_indices{'protect_in_body_line_arg'} = undef;
-
-
 1;

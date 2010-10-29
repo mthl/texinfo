@@ -58,7 +58,4 @@ $result_texts{'sections'} = 'a chapter
 $result_errors{'sections'} = [];
 
 
-$result_indices{'sections'} = undef;
-
-
 1;

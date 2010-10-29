@@ -108,7 +108,4 @@ $result_errors{'invalid_command_and_brace_in_table'} = [
 ];
 
 
-$result_indices{'invalid_command_and_brace_in_table'} = undef;
-
-
 1;

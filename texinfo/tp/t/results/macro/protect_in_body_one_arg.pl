@@ -151,7 +151,4 @@ result: f\\irst arg protected \\ -> \\arg1\\
 $result_errors{'protect_in_body_one_arg'} = [];
 
 
-$result_indices{'protect_in_body_one_arg'} = undef;
-
-
 1;

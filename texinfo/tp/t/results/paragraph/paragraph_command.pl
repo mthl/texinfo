@@ -78,7 +78,4 @@ aaa.
 $result_errors{'paragraph_command'} = [];
 
 
-$result_indices{'paragraph_command'} = undef;
-
-
 1;

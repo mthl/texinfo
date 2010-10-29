@@ -155,7 +155,4 @@ $result_texts{'space_in_image'} = 'a. f.';
 $result_errors{'space_in_image'} = [];
 
 
-$result_indices{'space_in_image'} = undef;
-
-
 1;

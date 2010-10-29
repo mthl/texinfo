@@ -78,7 +78,4 @@ line following documentlanguage
 $result_errors{'command_line_in_paragraph'} = [];
 
 
-$result_indices{'command_line_in_paragraph'} = undef;
-
-
 1;

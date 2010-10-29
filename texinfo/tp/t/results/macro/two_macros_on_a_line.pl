@@ -435,7 +435,4 @@ $result_errors{'two_macros_on_a_line'} = [
 ];
 
 
-$result_indices{'two_macros_on_a_line'} = undef;
-
-
 1;

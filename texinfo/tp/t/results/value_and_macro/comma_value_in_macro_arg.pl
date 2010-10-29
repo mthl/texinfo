@@ -169,7 +169,4 @@ result: arg1 , arg2  protected \\ -> \\arg1\\
 $result_errors{'comma_value_in_macro_arg'} = [];
 
 
-$result_indices{'comma_value_in_macro_arg'} = undef;
-
-
 1;

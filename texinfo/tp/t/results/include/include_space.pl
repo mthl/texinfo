@@ -29,7 +29,4 @@ $result_texts{'include_space'} = 'In included file.
 $result_errors{'include_space'} = [];
 
 
-$result_indices{'include_space'} = undef;
-
-
 1;

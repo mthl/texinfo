@@ -223,7 +223,4 @@ foo-expansion@bar-expansion,
 $result_errors{'macro_in_brace_command'} = [];
 
 
-$result_indices{'macro_in_brace_command'} = undef;
-
-
 1;

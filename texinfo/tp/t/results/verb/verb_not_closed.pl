@@ -53,7 +53,4 @@ $result_errors{'verb_not_closed'} = [
 ];
 
 
-$result_indices{'verb_not_closed'} = undef;
-
-
 1;

@@ -150,7 +150,4 @@ $result_texts{'expansion_order'} = '
 $result_errors{'expansion_order'} = [];
 
 
-$result_indices{'expansion_order'} = undef;
-
-
 1;

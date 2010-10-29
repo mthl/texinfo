@@ -166,7 +166,4 @@ in verbatim2
 $result_errors{'misc_raw_comments'} = [];
 
 
-$result_indices{'misc_raw_comments'} = undef;
-
-
 1;

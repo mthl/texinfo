@@ -135,7 +135,4 @@ $result_errors{'multitable_not_closed_item'} = [
 ];
 
 
-$result_indices{'multitable_not_closed_item'} = undef;
-
-
 1;

@@ -203,7 +203,4 @@ $result_errors{'bad_tab_nesting'} = [
 ];
 
 
-$result_indices{'bad_tab_nesting'} = undef;
-
-
 1;

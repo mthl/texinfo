@@ -10525,7 +10525,4 @@ var then code ret_type1 fun_name1 A1 A2 A3 A4
 $result_errors{'all_commands_delimiters'} = [];
 
 
-$result_indices{'all_commands_delimiters'} = undef;
-
-
 1;

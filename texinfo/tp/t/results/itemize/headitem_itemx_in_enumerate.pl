@@ -132,7 +132,4 @@ $result_errors{'headitem_itemx_in_enumerate'} = [
 ];
 
 
-$result_indices{'headitem_itemx_in_enumerate'} = undef;
-
-
 1;

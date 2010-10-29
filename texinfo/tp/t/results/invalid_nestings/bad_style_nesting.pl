@@ -110,7 +110,4 @@ $result_errors{'bad_style_nesting'} = [
 ];
 
 
-$result_indices{'bad_style_nesting'} = undef;
-
-
 1;
