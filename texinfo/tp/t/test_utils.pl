@@ -123,14 +123,15 @@ sub test($$)
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
     {
+      local $Data::Dumper::Sortkeys = \&filter_main_tree;
+      $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']) 
+        if ($structure);
+    }
+    {
       local $Data::Dumper::Sortkeys = 1;
       $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
       $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
          if ($indices);
-    }
-    {
-      local $Data::Dumper::Sortkeys = \&filter_main_tree;
-      #$out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']) if ($structure);
     }
     $out_result .= "1;\n";
     print OUT $out_result;
@@ -161,11 +162,16 @@ sub test($$)
       #my $diff = Data::Diff->new($result, $result_trees{$test_name});
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
     #}
-    ok (Data::Compare::Compare($result, $result_trees{$test_name}, { 'ignore_hash_keys' => [qw(parent next)] }), $test_name.' tree' );
-    #ok(Struct::Compare::compare($result, $result_trees{$test_name}), $test_name.' tree' );
-    #ok (Data::Compare::Compare($result, $result_trees{$test_name}), $test_name.' tree' );
-    ok (Data::Compare::Compare($errors, $result_errors{$test_name}), $test_name.' errors' );
-    ok (Data::Compare::Compare($indices, $result_indices{$test_name}), $test_name.' indices' );
+    ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
+               { 'ignore_hash_keys' => [qw(parent next)] }), 
+        $test_name.' tree' );
+    ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
+              { 'ignore_hash_keys' => [qw(next prev up section)] }), 
+        $test_name.' sectioning' );
+    ok (Data::Compare::Compare($errors, $result_errors{$test_name}), 
+        $test_name.' errors' );
+    ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 
+        $test_name.' indices' );
     ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi' );
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text' );
     #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text' );
@@ -203,7 +209,7 @@ sub run_all($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-    plan tests => (1 + scalar(@$ran_tests) * 5);
+    plan tests => (1 + scalar(@$ran_tests) * 6);
   }
 }
 
@@ -234,7 +240,7 @@ sub run_all_files($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-     plan tests => (1 + scalar(@$ran_tests) * 5);
+     plan tests => (1 + scalar(@$ran_tests) * 6);
   }
 }
 

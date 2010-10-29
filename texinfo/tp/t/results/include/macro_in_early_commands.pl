@@ -589,6 +589,17 @@ macro_in_pass_texi_commands{info}
 texi_commands.info
 ';
 
+$result_sectioning{'macro_in_early_commands'} = {
+  'childs' => [
+    {
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'macro_in_early_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_in_early_commands'};
 $result_errors{'macro_in_early_commands'} = [
   {
     'error_line' => ':18: warning: @documentencoding-command defined with zero or more than one argument should be invoked with {}

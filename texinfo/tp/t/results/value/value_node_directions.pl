@@ -558,6 +558,33 @@ BarFoo
 bar
 ';
 
+$result_sectioning{'value_node_directions'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        },
+        {
+          'level' => 1,
+          'number' => 2,
+          'prev' => {},
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
+$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0];
+$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
+$result_sectioning{'value_node_directions'}{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'};
 $result_errors{'value_node_directions'} = [];
 
 

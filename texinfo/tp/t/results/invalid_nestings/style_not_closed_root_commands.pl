@@ -346,6 +346,18 @@ still not closed
 
 ';
 
+$result_sectioning{'style_not_closed_root_commands'} = {
+  'childs' => [
+    {
+      'level' => 1,
+      'number' => 1,
+      'up' => {}
+    }
+  ],
+  'level' => 0,
+  'text' => '_ROOT'
+};
+$result_sectioning{'style_not_closed_root_commands'}{'childs'}[0]{'up'} = $result_sectioning{'style_not_closed_root_commands'};
 $result_errors{'style_not_closed_root_commands'} = [
   {
     'error_line' => ':8: @code missing close brace

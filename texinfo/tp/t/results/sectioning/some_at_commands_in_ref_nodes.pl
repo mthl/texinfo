@@ -1146,6 +1146,25 @@ A sc node i" i" E=` /l C\', !
 see .
 ';
 
+$result_sectioning{'some_at_commands_in_ref_nodes'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0];
+$result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0]{'up'} = $result_sectioning{'some_at_commands_in_ref_nodes'};
 $result_errors{'some_at_commands_in_ref_nodes'} = [];
 
 

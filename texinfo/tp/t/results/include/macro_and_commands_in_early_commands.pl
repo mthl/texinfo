@@ -518,6 +518,17 @@ in themacro
 
 ';
 
+$result_sectioning{'macro_and_commands_in_early_commands'} = {
+  'childs' => [
+    {
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'macro_and_commands_in_early_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
     'error_line' => ':11: warning: Encoding `ISO-8859-1@\' is not a canonical texinfo encoding

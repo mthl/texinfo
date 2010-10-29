@@ -556,6 +556,9 @@ test_var include: This is the included file (include-value2.txi).
 
 test_var verbatiminclude: ';
 
+$result_sectioning{'value_expansion_in_include'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'value_expansion_in_include'} = [
   {
     'error_line' => ':12: warning: @include should only appear at a line beginning

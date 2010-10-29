@@ -136,6 +136,9 @@ $result_texts{'a_comma_after_node'} = '
 A comma in text, end.
 ';
 
+$result_sectioning{'a_comma_after_node'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'a_comma_after_node'} = [];
 
 

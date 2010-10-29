@@ -825,6 +825,41 @@ Dummy section with (manual)node node syntax.
 
 ';
 
+$result_sectioning{'nodename_parentheses'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        },
+        {
+          'level' => 1,
+          'number' => 2,
+          'prev' => {},
+          'up' => {}
+        },
+        {
+          'level' => 1,
+          'number' => 3,
+          'prev' => {},
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1];
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'};
 $result_errors{'nodename_parentheses'} = [
   {
     'error_line' => ':22: Syntax for an external node used for ` (manual)node

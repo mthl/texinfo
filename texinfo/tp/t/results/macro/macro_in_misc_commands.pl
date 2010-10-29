@@ -3649,6 +3649,25 @@ chapter
 
 ';
 
+$result_sectioning{'macro_in_misc_commands'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'macro_in_misc_commands'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'macro_in_misc_commands'}{'childs'}[0];
+$result_sectioning{'macro_in_misc_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_in_misc_commands'};
 $result_errors{'macro_in_misc_commands'} = [
   {
     'error_line' => ':26: Bad argument to @headings: on line following headings atext

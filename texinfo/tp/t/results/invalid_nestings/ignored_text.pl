@@ -46,6 +46,9 @@ $result_texis{'ignored_text'} = '@node before ignore ';
 
 $result_texts{'ignored_text'} = '';
 
+$result_sectioning{'ignored_text'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'ignored_text'} = [
   {
     'error_line' => ':1: warning: @ifinfo should only appear at a line beginning

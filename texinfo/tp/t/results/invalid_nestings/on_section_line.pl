@@ -166,6 +166,18 @@ $result_texis{'on_section_line'} = '@section @noindent Text @titlefont{in titlef
 $result_texts{'on_section_line'} = 'Text in titlefont  exdent
 ';
 
+$result_sectioning{'on_section_line'} = {
+  'childs' => [
+    {
+      'level' => 2,
+      'number' => 1,
+      'up' => {}
+    }
+  ],
+  'level' => 1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'on_section_line'}{'childs'}[0]{'up'} = $result_sectioning{'on_section_line'};
 $result_errors{'on_section_line'} = [
   {
     'error_line' => ':1: warning: @noindent should not appear in @section

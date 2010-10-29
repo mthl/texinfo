@@ -262,6 +262,9 @@ $result_texis{'at_commands_in_node'} = '@node A @sc{sc} node @"i @"{@dotless{i}}
 
 $result_texts{'at_commands_in_node'} = '';
 
+$result_sectioning{'at_commands_in_node'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'at_commands_in_node'} = [];
 
 

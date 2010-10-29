@@ -745,6 +745,25 @@ Chapter 1
 .
 ';
 
+$result_sectioning{'value_in_node'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'value_in_node'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'}{'childs'}[0];
+$result_sectioning{'value_in_node'}{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'};
 $result_errors{'value_in_node'} = [];
 
 

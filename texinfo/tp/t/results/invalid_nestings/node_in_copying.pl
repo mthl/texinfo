@@ -99,6 +99,9 @@ $result_texis{'node_in_copying'} = '@copying
 $result_texts{'node_in_copying'} = '
 ';
 
+$result_sectioning{'node_in_copying'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'node_in_copying'} = [
   {
     'error_line' => ':2: No matching `@end copying\'

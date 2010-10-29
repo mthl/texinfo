@@ -3146,6 +3146,17 @@ line after exdent
 
 ';
 
+$result_sectioning{'value_in_misc_commands'} = {
+  'childs' => [
+    {
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'value_in_misc_commands'}{'childs'}[0]{'up'} = $result_sectioning{'value_in_misc_commands'};
 $result_errors{'value_in_misc_commands'} = [
   {
     'error_line' => ':17: Bad argument to @headings: on line following headings atext

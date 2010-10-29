@@ -182,6 +182,17 @@ $result_texts{'node_in_copying_not_closed'} = 'Top section
 
 ';
 
+$result_sectioning{'node_in_copying_not_closed'} = {
+  'childs' => [
+    {
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'node_in_copying_not_closed'}{'childs'}[0]{'up'} = $result_sectioning{'node_in_copying_not_closed'};
 $result_errors{'node_in_copying_not_closed'} = [
   {
     'error_line' => ':6: No matching `@end copying\'

@@ -1381,6 +1381,25 @@ Chapter with nodes
 
 ';
 
+$result_sectioning{'character_and_spaces_in_refs'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0];
+$result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0]{'up'} = $result_sectioning{'character_and_spaces_in_refs'};
 $result_errors{'character_and_spaces_in_refs'} = [];
 
 

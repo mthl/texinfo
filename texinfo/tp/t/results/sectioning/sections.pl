@@ -55,6 +55,18 @@ $result_texis{'sections'} = '@chapter a chapter
 $result_texts{'sections'} = 'a chapter
 ';
 
+$result_sectioning{'sections'} = {
+  'childs' => [
+    {
+      'level' => 1,
+      'number' => 1,
+      'up' => {}
+    }
+  ],
+  'level' => 0,
+  'text' => '_ROOT'
+};
+$result_sectioning{'sections'}{'childs'}[0]{'up'} = $result_sectioning{'sections'};
 $result_errors{'sections'} = [];
 
 

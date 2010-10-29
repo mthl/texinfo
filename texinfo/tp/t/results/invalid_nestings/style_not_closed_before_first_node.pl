@@ -121,6 +121,9 @@ $result_texts{'style_not_closed_before_first_node'} = 'in code
 In node
 ';
 
+$result_sectioning{'style_not_closed_before_first_node'} = {
+  'text' => '_ROOT'
+};
 $result_errors{'style_not_closed_before_first_node'} = [
   {
     'error_line' => ':2: @code missing close brace

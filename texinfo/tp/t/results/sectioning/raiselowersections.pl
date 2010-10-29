@@ -1224,6 +1224,57 @@ Second chapter
 
 ';
 
+$result_sectioning{'raiselowersections'} = {
+  'childs' => [
+    {
+      'childs' => [
+        {
+          'childs' => [
+            {
+              'childs' => [
+                {
+                  'childs' => [
+                    {
+                      'level' => 4,
+                      'number' => '1.1.1.1',
+                      'up' => {}
+                    }
+                  ],
+                  'level' => 3,
+                  'number' => '1.1.1',
+                  'up' => {}
+                }
+              ],
+              'level' => 2,
+              'number' => '1.1',
+              'up' => {}
+            }
+          ],
+          'level' => 1,
+          'number' => 1,
+          'up' => {}
+        },
+        {
+          'level' => 1,
+          'number' => 2,
+          'prev' => {},
+          'up' => {}
+        }
+      ],
+      'level' => 0,
+      'up' => {}
+    }
+  ],
+  'level' => -1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'childs'}[0]{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'childs'}[0]{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'raiselowersections'}{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'raiselowersections'}{'childs'}[0];
+$result_sectioning{'raiselowersections'}{'childs'}[0]{'up'} = $result_sectioning{'raiselowersections'};
 $result_errors{'raiselowersections'} = [];
 
 

@@ -88,6 +88,18 @@ $result_texts{'unclosed_verb_on_section_line'} = 'in section ruc
 Now text.
 ';
 
+$result_sectioning{'unclosed_verb_on_section_line'} = {
+  'childs' => [
+    {
+      'level' => 2,
+      'number' => 1,
+      'up' => {}
+    }
+  ],
+  'level' => 1,
+  'text' => '_ROOT'
+};
+$result_sectioning{'unclosed_verb_on_section_line'}{'childs'}[0]{'up'} = $result_sectioning{'unclosed_verb_on_section_line'};
 $result_errors{'unclosed_verb_on_section_line'} = [
   {
     'error_line' => ':3: @verb missing closing delimiter sequence: T}
