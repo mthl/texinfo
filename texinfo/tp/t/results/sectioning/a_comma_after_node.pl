@@ -105,7 +105,11 @@ $result_trees{'a_comma_after_node'} = {
         'line_nr' => 1,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'Commands'
+      }
     }
   ],
   'type' => 'document_root'
@@ -125,6 +129,7 @@ $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'};
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'a_comma_after_node'} = '@node Commands, Requirements, Nodes and Menus
 

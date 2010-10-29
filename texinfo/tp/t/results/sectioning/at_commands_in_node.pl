@@ -205,7 +205,11 @@ $result_trees{'at_commands_in_node'} = {
         'line_nr' => 1,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+      }
     }
   ],
   'type' => 'document_root'
@@ -256,6 +260,7 @@ $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[12] = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[13];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[13] = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[14];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_node'};
+$result_trees{'at_commands_in_node'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'at_commands_in_node'} = '@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}';
 

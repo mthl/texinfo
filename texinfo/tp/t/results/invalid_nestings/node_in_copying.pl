@@ -73,7 +73,11 @@ $result_trees{'node_in_copying'} = {
         'line_nr' => 2,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'node'
+      }
     }
   ],
   'type' => 'document_root'
@@ -88,6 +92,7 @@ $result_trees{'node_in_copying'}{'contents'}[1]{'contents'}[0]{'parent'} = $resu
 $result_trees{'node_in_copying'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1];
 $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'node_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'};
+$result_trees{'node_in_copying'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'node_in_copying'} = '@copying
 @end copying@node node

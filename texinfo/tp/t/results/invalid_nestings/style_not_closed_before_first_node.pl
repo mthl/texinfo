@@ -90,7 +90,11 @@ $result_trees{'style_not_closed_before_first_node'} = {
         'line_nr' => 3,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'Top'
+      }
     }
   ],
   'type' => 'document_root'
@@ -108,6 +112,7 @@ $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'contents'}[0
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1];
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_before_first_node'};
+$result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'style_not_closed_before_first_node'} = '@code{in code
 

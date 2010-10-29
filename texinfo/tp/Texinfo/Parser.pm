@@ -1897,7 +1897,8 @@ sub _end_line($$$)
                                $line_nr);
           if (defined($float_label) and $float_label->{'node_content'}
              and $float_label->{'normalized'} =~ /\S/) {
-            $float->{'special'}->{'label'} = $float_label;
+            $float->{'special'}->{'normalized'} = $float_label->{'normalized'};
+            $float->{'special'}->{'node_content'} = $float_label->{'node_content'};
           }
         }
         _parse_float_type ($float);
@@ -2008,8 +2009,13 @@ sub _end_line($$$)
         my $node = _parse_node_manual($arg);
         push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
-      _check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
-                        $current->{'args'}->[0], $command, $line_nr);
+      if (_check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
+                        $current->{'args'}->[0], $command, $line_nr)) {
+        $current->{'special'}->{'normalized'} 
+          = $current->{'extra'}->{'nodes_manuals'}->[0]->{'normalized'};
+        $current->{'special'}->{'node_content'} 
+          = $current->{'extra'}->{'nodes_manuals'}->[0]->{'node_content'};
+      }
     } elsif ($command eq 'listoffloats') {
       my $empty_listoffloats = 1;
       if (!_parse_float_type($current)) {
@@ -3121,6 +3127,8 @@ sub _parse_texi($$;$)
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
                 $current->{'parent'}->{'special'}->{'normalized'} 
                   = $parsed_anchor->{'normalized'};
+                $current->{'parent'}->{'special'}->{'node_content'} 
+                  = $parsed_anchor->{'node_content'};
               }
             }
             $current = $current->{'parent'}->{'parent'};

@@ -211,12 +211,10 @@ $result_trees{'block_commands'} = {
       },
       'parent' => {},
       'special' => {
-        'label' => {
-          'node_content' => [
-            {}
-          ],
-          'normalized' => 'b-float'
-        },
+        'node_content' => [
+          {}
+        ],
+        'normalized' => 'b-float',
         'type' => {
           'content' => [
             {}
@@ -269,7 +267,7 @@ $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'parent
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'parent'} = $result_trees{'block_commands'};
-$result_trees{'block_commands'}{'contents'}[7]{'special'}{'label'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1];
+$result_trees{'block_commands'}{'contents'}[7]{'special'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1];
 $result_trees{'block_commands'}{'contents'}[7]{'special'}{'type'}{'content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'block_commands'}{'contents'}[8]{'parent'} = $result_trees{'block_commands'};
 

@@ -140,7 +140,11 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 3,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'Top'
+      }
     },
     {
       'args' => [
@@ -344,7 +348,11 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 10,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'Node-1'
+      }
     },
     {
       'args' => [
@@ -608,7 +616,11 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 19,
         'macro' => ''
       },
-      'parent' => {}
+      'parent' => {},
+      'special' => {
+        'node_content' => [],
+        'normalized' => 'Section-1_002e1'
+      }
     }
   ],
   'type' => 'document_root'
@@ -632,6 +644,7 @@ $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'manu
 $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'manual_content'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[1]{'args'}[2];
 $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[1]{'args'}[3];
 $result_trees{'value_in_node'}{'contents'}[1]{'parent'} = $result_trees{'value_in_node'};
+$result_trees{'value_in_node'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'value_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[2]{'args'}[0];
@@ -665,6 +678,7 @@ $result_trees{'value_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node
 $result_trees{'value_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'value_in_node'}{'contents'}[3]{'args'}[2]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'value_in_node'}{'contents'}[3]{'args'}[3]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[3]{'parent'} = $result_trees{'value_in_node'};
+$result_trees{'value_in_node'}{'contents'}[3]{'special'}{'node_content'} = $result_trees{'value_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0];
 $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_node'}{'contents'}[4]{'args'}[0];
@@ -706,6 +720,7 @@ $result_trees{'value_in_node'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node
 $result_trees{'value_in_node'}{'contents'}[5]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'value_in_node'}{'contents'}[5]{'args'}[2]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[5]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'value_in_node'}{'contents'}[5]{'args'}[3]{'contents'}[1];
 $result_trees{'value_in_node'}{'contents'}[5]{'parent'} = $result_trees{'value_in_node'};
+$result_trees{'value_in_node'}{'contents'}[5]{'special'}{'node_content'} = $result_trees{'value_in_node'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'value_in_node'} = '@set node1 Node 1
 
