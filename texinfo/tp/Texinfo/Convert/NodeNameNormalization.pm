@@ -1,4 +1,4 @@
-# NormalizeNode.pm: output tree as normalized node name.
+# NodeNameNormalization.pm: output tree as normalized node name.
 #
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -20,7 +20,7 @@
 # the rules for conversion are decribed in the Texinfo manual, for
 # HTML crossrefs.
 
-package Texinfo::Convert::NormalizeNode;
+package Texinfo::Convert::NodeNameNormalization;
 
 use 5.00405;
 use strict;

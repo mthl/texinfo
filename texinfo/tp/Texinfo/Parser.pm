@@ -34,7 +34,7 @@ use Data::Dumper;
 # to expand file names in @include
 use Texinfo::Convert::Text;
 # to normalize node name, anchor, float arg, listoffloats and first *ref argument.
-use Texinfo::Convert::NormalizeNode;
+use Texinfo::Convert::NodeNameNormalization;
 # to detect if an encoding may be used to open the files
 use Encode;
 use strict;
@@ -1587,7 +1587,7 @@ sub _parse_node_manual($)
   if (@contents) {
     $result->{'node_content'} = \@contents;
     $result->{'normalized'} =
-      Texinfo::Convert::NormalizeNode::convert({'contents' => \@contents});
+      Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@contents});
   }
   return $result;
 }
