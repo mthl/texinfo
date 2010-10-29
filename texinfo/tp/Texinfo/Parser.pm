@@ -1592,6 +1592,24 @@ sub _parse_node_manual($)
   return $result;
 }
 
+sub _parse_float_type($)
+{
+  my $current = shift;
+  if (@{$current->{'args'}}) {
+    my @type_contents = @{$current->{'args'}->[0]->{'contents'}};
+    _trim_spaces_comment_from_content(\@type_contents);
+    if (@type_contents) {
+      my $normalized = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
+      if ($normalized =~ /\S/) {
+        $current->{'special'}->{'type'}->{'normalized'} = $normalized;
+        $current->{'special'}->{'type'}->{'content'} = \@type_contents;
+        return 1;
+      }
+    }
+  }
+  return 0;
+}
+
 # used for definition line parsing
 sub _next_bracketed_or_word($)
 {
@@ -1882,13 +1900,7 @@ sub _end_line($$$)
             $float->{'special'}->{'label'} = $float_label;
           }
         }
-        my @type_contents = @{$float->{'args'}->[0]->{'contents'}};
-        _trim_spaces_comment_from_content(\@type_contents);
-        if (@type_contents) {
-          $float->{'special'}->{'type'}->{'normalized'} 
-            = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
-          $float->{'special'}->{'type'}->{'content'} = \@type_contents;
-        }
+        _parse_float_type ($float);
       }
     }
     $current = $current->{'parent'};
@@ -1998,6 +2010,12 @@ sub _end_line($$$)
       }
       _check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
                         $current->{'args'}->[0], $command, $line_nr);
+    } elsif ($command eq 'listoffloats') {
+      my $empty_listoffloats = 1;
+      if (!_parse_float_type($current)) {
+        _line_error ($self, sprintf($self->__("\@%s missing argument"), 
+           $command), $line_nr);
+      }
     }
     $current = $current->{'parent'};
     # if a file was included, remove completly the include file command.
