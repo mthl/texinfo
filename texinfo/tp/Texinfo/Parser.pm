@@ -3070,8 +3070,9 @@ sub _parse_texi($$;$)
               push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '' } 
-                      if ($brace_commands{$current->{'parent'}->{'cmdname'}}
-                           and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
+                   if ($brace_commands{$current->{'parent'}->{'cmdname'}}
+                     and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
+                        or $simple_text_commands{$current->{'parent'}->{'cmdname'}}));
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
@@ -3110,7 +3111,8 @@ sub _parse_texi($$;$)
             # first is the arg.
             $self->_isolate_last_space($current) 
               if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
-                  and $brace_commands{$current->{'parent'}->{'cmdname'}} > 1);
+                  and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
+                     or $simple_text_commands{$current->{'parent'}->{'cmdname'}}));
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
             delete $current->{'parent'}->{'remaining_args'};
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {

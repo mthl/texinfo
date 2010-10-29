@@ -295,6 +295,15 @@ Second chapter
 
 @contents
 @bye
+'],
+['empty_node',
+'@node
+
+@node , next, prev, up
+'],
+['empty_anchor',
+'@anchor{}. 
+@anchor{   }.
 ']
 
 );

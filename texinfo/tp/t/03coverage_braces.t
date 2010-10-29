@@ -42,6 +42,9 @@ as much as possible is closed in order to find the @@float beginning.
 
 anchor}
 '],
+['space_in_anchor',
+'@anchor{   anchor  name   }.
+'],
 ['anchor_not_closed',
 '@anchor{my anchor
 
