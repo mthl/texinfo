@@ -758,6 +758,60 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'Superfluous arguments for node',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: unreferenced node `one arg2\'
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'unreferenced node `one arg2\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: unreferenced node `one arg3\'
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'unreferenced node `one arg3\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: unreferenced node `one arg4\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'unreferenced node `one arg4\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: unreferenced node `one arg5\'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'unreferenced node `one arg5\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: warning: unreferenced node `comment\'
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'unreferenced node `comment\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: unreferenced node `arg1 @comma{} arg2\'
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'unreferenced node `arg1 @comma{} arg2\'',
+    'type' => 'warning'
   }
 ];
 

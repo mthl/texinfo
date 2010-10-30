@@ -106,6 +106,7 @@ my %default_configuration = (
   'labels'          => {},  # keys are normalized label names, as described
                             # in the `HTML Xref' node.  Value should be
                             # a node/anchor or float in the tree.
+  'novalidate' => 0,        # same as setting @novalidate.
 );
 
 # the other possible keys for the parser state are:
@@ -2823,6 +2824,8 @@ sub _parse_texi($$;$)
               $self->{'sections_level'}++;
             } elsif ($command eq 'lowersections') {
               $self->{'sections_level'}--;
+            } elsif ($command eq 'novalidate') {
+              $self->{'novalidate'} = 1;
             }
             last NEXT_LINE if ($command eq 'bye');
             last;

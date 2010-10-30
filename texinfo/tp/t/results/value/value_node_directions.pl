@@ -629,7 +629,26 @@ $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'};
 
-$result_errors{'value_node_directions'} = [];
+$result_errors{'value_node_directions'} = [
+  {
+    'error_line' => ':7: warning: unreferenced node `bar\'
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'unreferenced node `bar\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: unreferenced node `BarFoo\'
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'unreferenced node `BarFoo\'',
+    'type' => 'warning'
+  }
+];
 
 
 1;

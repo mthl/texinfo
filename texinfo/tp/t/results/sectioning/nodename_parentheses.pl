@@ -966,6 +966,15 @@ $result_errors{'nodename_parentheses'} = [
     'macro' => '',
     'text' => 'Syntax for an external node used for `(manual)anchor\'',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':22: warning: unreferenced node `node\'
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'unreferenced node `node\'',
+    'type' => 'warning'
   }
 ];
 

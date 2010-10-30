@@ -309,10 +309,11 @@ sub nodes_tree ($)
              and $menu_content->{'extra'}->{'menu_entry_node'}
              and !$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
             if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-              # FIXME novalidate
-              $self->_line_error (sprintf($self->__("Menu reference to nonexistent node `%s'"), 
-                tree_to_texi({ 'contents' => $menu_content->{'extra'}->{'menu_entry_node'}->{'node_content'} })), 
-                $menu_content->{'line_nr'});
+              if (!$self->{'novalidate'}) {
+                $self->_line_error (sprintf($self->__("Menu reference to nonexistent node `%s'"), 
+                  tree_to_texi({ 'contents' => $menu_content->{'extra'}->{'menu_entry_node'}->{'node_content'} })), 
+                  $menu_content->{'line_nr'});
+              }
             } else {
               my $menu_node =
                 $self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}};
@@ -331,6 +332,14 @@ sub nodes_tree ($)
     }
   }
   $top_node = $self->{'nodes'}->[0] if (!$top_node);
+  foreach my $node (@{$self->{'nodes'}}) {
+    # warn if node is not top node and doesn't appear in menu
+    if ($node ne $top_node and !$node->{'menu_up'}) {
+      $self->_line_warn (sprintf($self->__("unreferenced node `%s'"), 
+        tree_to_texi({ 'contents' => $node->{'extra'}->{'node_content'}})), 
+                       $node->{'line_nr'});
+    }
+  }
   return $top_node;
 }
 
