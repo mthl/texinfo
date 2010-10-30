@@ -31,18 +31,18 @@ $result_trees{'brace_opened_no_command'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'extra' => {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'truc'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
           },
-          'parent' => {},
-          'special' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'truc'
-          }
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -61,8 +61,8 @@ $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[1]{'parent'}
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3];
+$result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
-$result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'special'}{'node_content'}[0] = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'parent'} = $result_trees{'brace_opened_no_command'};
 

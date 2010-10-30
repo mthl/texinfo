@@ -355,7 +355,26 @@ $result_texis{'menu_entry_node_comments'} = '@menu
 
 $result_texts{'menu_entry_node_comments'} = '* (f)a1c::* (f)a2c::  * (f)a3c::         d* (f) a4 ::   ';
 
-$result_errors{'menu_entry_node_comments'} = [];
+$result_errors{'menu_entry_node_comments'} = [
+  {
+    'error_line' => ':1: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  }
+];
 
 
 1;

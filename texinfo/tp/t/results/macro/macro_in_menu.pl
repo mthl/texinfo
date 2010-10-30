@@ -697,7 +697,26 @@ menu comment
 * 3rd node: entry. description
 ';
 
-$result_errors{'macro_in_menu'} = [];
+$result_errors{'macro_in_menu'} = [
+  {
+    'error_line' => ':26: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':26: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  }
+];
 
 
 1;

@@ -76,25 +76,23 @@ $result_trees{'style_not_closed_before_first_node'} = {
         }
       ],
       'extra' => {
+        'node_content' => [
+          {}
+        ],
         'nodes_manuals' => [
           {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => [],
             'normalized' => 'Top'
           }
-        ]
+        ],
+        'normalized' => 'Top'
       },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
       },
-      'parent' => {},
-      'special' => {
-        'node_content' => [],
-        'normalized' => 'Top'
-      }
+      'parent' => {}
     }
   ],
   'type' => 'document_root'
@@ -110,9 +108,9 @@ $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'args'}[0]{'c
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1];
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'contents'}[0];
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1];
-$result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_before_first_node'};
-$result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'special'}{'node_content'} = $result_trees{'style_not_closed_before_first_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'};
 
 $result_texis{'style_not_closed_before_first_node'} = '@code{in code
 

@@ -206,6 +206,24 @@ comment
 
 $result_errors{'table_not_closed_in_menu_comment'} = [
   {
+    'error_line' => ':1: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  },
+  {
     'error_line' => ':8: `@end\' expected `table\', but saw `menu\'
 ',
     'file_name' => '',

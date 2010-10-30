@@ -83,6 +83,7 @@ sub __($$)
 my %default_configuration = (
   'test' => 0,
   'debug' => 0,
+  'menus' => 1,             # if false no menu error related.
   'gettext' => sub {return $_[0];},
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
@@ -102,7 +103,7 @@ my %default_configuration = (
   'clickstyle' => 'arrow',
   'sections_level' => 0,    # modified by raise/lowersections
   'merged_indices' => {},   # the key is merged in the value
-  'nodes'          => {},   # keys are normalized node names, as described
+  'labels'          => {},  # keys are normalized label names, as described
                             # in the `HTML Xref' node.  Value should be
                             # a node/anchor or float in the tree.
 );
@@ -139,6 +140,8 @@ my %default_configuration = (
 #                         with index entry commands dynamically added
 # errors_warnings         a structure with the errors and warnings.
 # error_nrs               number of errors.
+# current_node            last seen node.
+# nodes                   list? hash? of nodes.
 
 # A line information is an hash reference with the keys:
 # line_nr        the line number
@@ -1607,8 +1610,8 @@ sub _parse_float_type($)
     if (@type_contents) {
       my $normalized = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
       if ($normalized =~ /\S/) {
-        $current->{'special'}->{'type'}->{'normalized'} = $normalized;
-        $current->{'special'}->{'type'}->{'content'} = \@type_contents;
+        $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
+        $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
         return 1;
       }
     }
@@ -1719,6 +1722,9 @@ sub _parse_def ($$)
   return [@result, @args_results];
 }
 
+# register a label, that is something that may be the target of a reference
+# and must be unique in the document.  Corresponds with @node, @anchor and 
+# @float second arg.
 sub _register_label($$$$)
 {
   my $self = shift;
@@ -1726,18 +1732,20 @@ sub _register_label($$$$)
   my $label = shift;
   my $line_nr = shift;
   my $normalized = $label->{'normalized'};
-  if ($self->{'nodes'}->{$normalized}) {
+  if ($self->{'labels'}->{$normalized}) {
     _line_error($self, sprintf($self->__("\@%s `%s' previously defined"), 
                          $current->{'cmdname'}, 
                    tree_to_texi({'contents' => $label->{'node_content'}})), 
                            $line_nr);
     _line_error($self, sprintf($self->__("here is the previous definition as \@%s"),
-                               $self->{'nodes'}->{$normalized}->{'cmdname'}),
-                       $self->{'nodes'}->{$normalized}->{'line_nr'}, 1);
+                               $self->{'labels'}->{$normalized}->{'cmdname'}),
+                       $self->{'labels'}->{$normalized}->{'line_nr'}, 1);
+    return 0;
   } else {
-    $current->{'special'}->{'normalized'} = $normalized;
-    $current->{'special'}->{'node_content'} = $label->{'node_content'};
-    $self->{'nodes'}->{$normalized} = $current;
+    $current->{'extra'}->{'normalized'} = $normalized;
+    $current->{'extra'}->{'node_content'} = $label->{'node_content'};
+    $self->{'labels'}->{$normalized} = $current;
+    return 1;
   }
 }
 
@@ -2037,8 +2045,12 @@ sub _end_line($$$)
       }
       if (_check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
                         $current->{'args'}->[0], $command, $line_nr)) {
-        _register_label($self, $current, 
-                       $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr);
+        if (_register_label($self, $current, 
+                    $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr)) {
+          $self->{'current_node'} = { 'node' => $current };
+          $self->{'nodes'}->{$current->{'extra'}->{'normalized'}} 
+             = $self->{'current_node'};
+        }
       }
     } elsif ($command eq 'listoffloats') {
       my $empty_listoffloats = 1;
@@ -2191,7 +2203,7 @@ sub _enter_menu_entry_node($$$)
     if ($arg->{'type'} eq 'menu_entry_node') {
       $self->_isolate_last_space($arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
-      if (! defined($parsed_entry_node)) {
+      if (! defined($parsed_entry_node) and $self->{'menus'}) {
         _line_error ($self, $self->__("Empty node in menu entry"), $line_nr);
       } else {
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
@@ -3022,10 +3034,23 @@ sub _parse_texi($$;$)
               push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
               if ($menu_commands{$command}) {
+                push @{$self->{'context_stack'}}, 'menu';
+                if ($self->{'current_node'}) {
+                  if ($command eq 'direntry' and $self->{'menus'}) {
+                    _line_warn ($self, $self->__("\@direntry after first node"),
+                              $line_nr);
+                  } elsif ($command eq 'menu') {
+                    push @{$self->{'current_node'}->{'menus'}}, $current;
+                  }
+                } elsif ($command ne 'direntry' and $self->{'menus'}) {
+                  _line_error ($self, sprintf($self->__("\@%s seen before first \@node"), 
+                                              $command), $line_nr);
+                  _line_error ($self, $self->__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
+                                $line_nr, 1);
+                }
                 push @{$current->{'contents'}}, {'type' => 'menu_comment',
                                                  'parent' => $current,
                                                  'contents' => [] };
-                push @{$self->{'context_stack'}}, 'menu';
                 $current = $current->{'contents'}->[-1];
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'debug'});
               }

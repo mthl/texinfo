@@ -115,6 +115,24 @@ $result_texts{'menu_no_closed_after_empty_line'} = '* (manual_in_menu):: desc2
 
 $result_errors{'menu_no_closed_after_empty_line'} = [
   {
+    'error_line' => ':1: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  },
+  {
     'error_line' => ':4: No matching `@end menu\'
 ',
     'file_name' => '',

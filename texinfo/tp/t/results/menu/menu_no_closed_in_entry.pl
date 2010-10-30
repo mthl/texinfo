@@ -59,6 +59,24 @@ $result_texts{'menu_no_closed_in_entry'} = '* a1:';
 
 $result_errors{'menu_no_closed_in_entry'} = [
   {
+    'error_line' => ':1: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  },
+  {
     'error_line' => ':2: No matching `@end menu\'
 ',
     'file_name' => '',

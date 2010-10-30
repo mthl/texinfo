@@ -92,7 +92,26 @@ $result_texts{'bad_beginning'} = '*
 *in code::
 ';
 
-$result_errors{'bad_beginning'} = [];
+$result_errors{'bad_beginning'} = [
+  {
+    'error_line' => ':1: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  }
+];
 
 
 1;

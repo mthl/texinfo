@@ -204,13 +204,7 @@ $result_trees{'block_commands'} = {
 '
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
-      'parent' => {},
-      'special' => {
+      'extra' => {
         'node_content' => [
           {}
         ],
@@ -221,7 +215,13 @@ $result_trees{'block_commands'} = {
           ],
           'normalized' => 'a-float'
         }
-      }
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
+      'parent' => {}
     },
     {
       'parent' => {},
@@ -266,9 +266,9 @@ $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'conten
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
 $result_trees{'block_commands'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'block_commands'}{'contents'}[7];
+$result_trees{'block_commands'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1];
+$result_trees{'block_commands'}{'contents'}[7]{'extra'}{'type'}{'content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'block_commands'}{'contents'}[7]{'parent'} = $result_trees{'block_commands'};
-$result_trees{'block_commands'}{'contents'}[7]{'special'}{'node_content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[1]{'contents'}[1];
-$result_trees{'block_commands'}{'contents'}[7]{'special'}{'type'}{'content'}[0] = $result_trees{'block_commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'block_commands'}{'contents'}[8]{'parent'} = $result_trees{'block_commands'};
 
 $result_texis{'block_commands'} = '

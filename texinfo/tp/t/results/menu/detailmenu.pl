@@ -195,7 +195,44 @@ $result_texts{'detailmenu'} = '
 * detailmenu::
 ';
 
-$result_errors{'detailmenu'} = [];
+$result_errors{'detailmenu'} = [
+  {
+    'error_line' => ':2: @menu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@menu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':2: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  },
+  {
+    'error_line' => ':5: @detailmenu seen before first @node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@detailmenu seen before first @node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
+    'type' => 'error continuation'
+  }
+];
 
 
 1;
