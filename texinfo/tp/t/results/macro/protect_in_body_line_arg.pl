@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices %result_sectioning %result_nodes);
 
 $result_trees{'protect_in_body_line_arg'} = {
   'contents' => [

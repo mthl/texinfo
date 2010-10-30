@@ -13,7 +13,7 @@ use File::Basename;
 use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
-   %result_indices %result_sectioning);
+   %result_indices %result_sectioning %result_nodes);
 
 ok(1);
 
@@ -47,10 +47,11 @@ sub new_test ($;$$)
 }
 
 my @contents_keys = ('contents', 'args', 'parent', 'line_nr');
-my @menus_keys = ('menu_child', 'menu_next', 'menu_up', 'menu_prev');
+my @menus_keys = ('menu_child', 'menu_next', 'menu_up', 'menu_prev', 
+  'associated_section');
+my @sections_keys = ('next', 'prev', 'up', 'childs', 'associated_node');
 my %avoided_keys_content;
-my @avoided_keys_content = ('next', 'prev', 'up', 'childs', 
-   'associated_section', 'associated_node', 'menus', @menus_keys);
+my @avoided_keys_content = (@sections_keys, 'menus', @menus_keys);
 foreach my $avoided_key(@avoided_keys_content) {
   $avoided_keys_content{$avoided_key} = 1;
 }
@@ -61,13 +62,20 @@ my @avoided_compare_tree = (@avoided_keys_content, 'parent', 'node_content');
 
 my %avoided_keys_sectioning;
 my @avoided_keys_sectioning = ('next', 'node_content', 'nodes_manuals',
-   'associated_section', @contents_keys, 'menus', @menus_keys);
+    @contents_keys, 'menus', @menus_keys);
 foreach my $avoided_key(@avoided_keys_sectioning) {
   $avoided_keys_sectioning{$avoided_key} = 1;
 }
 sub filter_sectioning_keys { [grep {!$avoided_keys_sectioning{$_}}
    ( sort keys %{$_[0]} )] }
 
+my %avoided_keys_nodes;
+my @avoided_keys_nodes = (@sections_keys, @contents_keys);
+foreach my $avoided_key(@avoided_keys_nodes) {
+  $avoided_keys_nodes{$avoided_key} = 1;
+}
+sub filter_nodes_keys { [grep {!$avoided_keys_nodes{$_}}
+   ( sort keys %{$_[0]} )] }
 
 my %avoided_compare_structure;
 my @avoided_compare_structure = (@avoided_keys_sectioning, 'prev', 'up');
@@ -113,7 +121,7 @@ sub test($$)
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
 
-  Texinfo::Structuring::nodes_tree($parser);
+  my $top_node = Texinfo::Structuring::nodes_tree($parser);
 
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();
@@ -135,7 +143,7 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
-    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);'."\n\n";
+    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices %result_sectioning %result_nodes);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
@@ -156,6 +164,11 @@ sub test($$)
       local $Data::Dumper::Sortkeys = \&filter_sectioning_keys;
       $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}'])."\n"
         if ($structure);
+    }
+    {
+      local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
+      #$out_result .=  Data::Dumper->Dump([$top_node], ['$result_nodes{\''.$test_name.'\'}'])."\n"
+      #  if ($top_node);
     }
     {
       local $Data::Dumper::Sortkeys = 1;

@@ -65,8 +65,6 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
 # anchor
 
 # todo:
-# associate menu with node
-# associate nodes with sections
 # complete directions for nodes with automatic sectioning
 #     automatic sectioning: scalar(@{$node->{'extra'}->{'nodes_manuals'} != 1)
 # 
@@ -300,7 +298,9 @@ sub nodes_tree ($)
 {
   my $self = shift;
   return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});
+  my $top_node;
   foreach my $node (@{$self->{'nodes'}}) {
+    $top_node = $node if ($node->{'extra'}->{'normalized'} eq 'Top');
     if ($node->{'menus'}) {
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
@@ -330,6 +330,8 @@ sub nodes_tree ($)
       }
     }
   }
+  $top_node = $self->{'nodes'}->[0] if (!$top_node);
+  return $top_node;
 }
 
 1;

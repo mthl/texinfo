@@ -1,4 +1,4 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices);
+use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices %result_sectioning %result_nodes);
 
 $result_trees{'unknown_then_known_index_entry'} = {
   'contents' => [
