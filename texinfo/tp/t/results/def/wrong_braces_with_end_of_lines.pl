@@ -1,4 +1,5 @@
-use vars qw(%result_texis %result_texts %result_trees %result_errors %results_indices %result_sectioning %result_nodes);
+use vars qw(%result_texis %result_texts %result_trees %result_errors 
+%results_indices %result_sectioning %result_nodes);
 
 $result_trees{'wrong_braces_with_end_of_lines'} = {
   'contents' => [

@@ -291,6 +291,14 @@ sub sectioning_structure($$)
   return $sec_root;
 }
 
+my @node_directions = ('next', 'prev', 'up');
+# FIXME i18n?
+my %direction_texts = (
+ 'prev' => 'Prev',
+ 'next' => 'Next',
+ 'up' => 'Up'
+);
+
 # first go through all the menu and set menu_up, menu_next, menu_prev
 # and warn for unknown nodes.
 # then go through all the nodes and set directions
@@ -338,6 +346,59 @@ sub nodes_tree ($)
       $self->_line_warn (sprintf($self->__("unreferenced node `%s'"), 
         tree_to_texi({ 'contents' => $node->{'extra'}->{'node_content'}})), 
                        $node->{'line_nr'});
+    }
+    my $automatic_directions = 
+      (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) != 1);
+
+    if ($automatic_directions) {
+      if ($node->{'extra'}->{'normalized'} ne 'Top') {
+        foreach my $direction (@node_directions) {
+          next if ($node->{'node_'.$direction});
+          if ($node->{'associated_section'}) {
+            my $section = $node->{'associated_section'};
+            if ($section->{'section_'.$direction}
+               and $section->{'section_'.$direction}->{'associated_node'}) {
+              $node->{'node_'.$direction} 
+                = $section->{'section_'.$direction}->{'associated_node'};
+            }
+          } elsif ($node->{'menu_'.$direction}) {
+            $node->{'node_'.$direction} = $node->{'menu_'.$direction};
+          }
+        }
+      } else {
+        # Special case for Top node.
+        $node->{'node_up'} = Texinfo::Parser::_parse_node_manual(
+                                {'contents' => [ {'text' => '(dir)'} ]});
+        if ($node->{'menu_child'}) {
+          $node->{'node_next'} = $node->{'menu_child'};
+          $node->{'menu_child'}->{'node_prev'} = $node;
+        }
+      }
+    } else {
+      my @directions = @{$node->{'extra'}->{'nodes_manuals'}};
+      shift @directions;
+      foreach my $direction (@node_directions) {
+        my $node_direction = shift @directions;
+        next if ($node->{'node_'.$direction} or !defined($node_direction));
+        # external node
+        if ($node_direction->{'manual_content'}) {
+          $node->{'node_'.$direction} = { 'extra' => $node_direction };
+        } else {
+          if ($self->{'labels'}->{$node_direction->{'normalized'}}) {
+            $node->{'node_'.$direction} 
+              = $self->{'labels'}->{$node_direction->{'normalized'}};
+          } else {
+            if ($self->{'novalidate'}) {
+              $node->{'node_'.$direction} = { 'extra' => $node_direction };
+            } else {
+              $self->_line_error (sprintf($self->__("%s reference to nonexistent `%s'"),
+                    $direction_texts{$direction}, 
+                    tree_to_texi({'contents' => $node_direction->{'node_content'}})), 
+                    $node->{'line_nr'});
+            }
+          }
+        }
+      }
     }
   }
   return $top_node;
