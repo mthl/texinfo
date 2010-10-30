@@ -382,6 +382,58 @@ $result_sectioning{'style_not_closed_root_commands'} = {
 };
 $result_sectioning{'style_not_closed_root_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'style_not_closed_root_commands'};
 
+$result_nodes{'style_not_closed_root_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'level' => 1,
+        'number' => 1
+      },
+      'normalized' => 'chapter'
+    },
+    'node_prev' => {},
+    'node_up' => {}
+  },
+  'menus' => [
+    {
+      'cmdname' => 'menu'
+    }
+  ],
+  'node_next' => {},
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+$result_nodes{'style_not_closed_root_commands'}{'menu_child'}{'node_prev'} = $result_nodes{'style_not_closed_root_commands'};
+$result_nodes{'style_not_closed_root_commands'}{'menu_child'}{'node_up'} = $result_nodes{'style_not_closed_root_commands'};
+$result_nodes{'style_not_closed_root_commands'}{'node_next'} = $result_nodes{'style_not_closed_root_commands'}{'menu_child'};
+
+$result_menus{'style_not_closed_root_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'chapter'
+    },
+    'menu_up' => {}
+  }
+};
+$result_menus{'style_not_closed_root_commands'}{'menu_child'}{'menu_up'} = $result_menus{'style_not_closed_root_commands'};
+
 $result_errors{'style_not_closed_root_commands'} = [
   {
     'error_line' => ':8: @code missing close brace

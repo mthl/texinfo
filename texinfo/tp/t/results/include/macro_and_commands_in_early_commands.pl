@@ -564,6 +564,32 @@ $result_sectioning{'macro_and_commands_in_early_commands'} = {
 };
 $result_sectioning{'macro_and_commands_in_early_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
 
+$result_nodes{'macro_and_commands_in_early_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'macro_and_commands_in_early_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
     'error_line' => ':11: warning: Encoding `ISO-8859-1@\' is not a canonical texinfo encoding

@@ -48,13 +48,14 @@ sub new_test ($;$$)
 
 my @contents_keys = ('contents', 'args', 'parent', 'line_nr', 'node_content', 
   'nodes_manuals');
-my @menus_keys = ('menu_child', 'menu_next', 'menu_up', 'menu_prev', 
-  'associated_section');
+my @menus_keys = ('menu_next', 'menu_up', 'menu_prev');
 my @sections_keys = ('section_next', 'section_prev', 'section_up', 
   'section_childs', 'associated_node');
-my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus');
+my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
+  'associated_section');
 my %avoided_keys_content;
-my @avoided_keys_content = (@sections_keys, @menus_keys, @node_keys);
+my @avoided_keys_content = (@sections_keys, @menus_keys, @node_keys, 
+   'menu_child');
 foreach my $avoided_key(@avoided_keys_content) {
   $avoided_keys_content{$avoided_key} = 1;
 }
@@ -65,7 +66,7 @@ my @avoided_compare_tree = (@avoided_keys_content, 'parent', 'node_content');
 
 my %avoided_keys_sectioning;
 my @avoided_keys_sectioning = ('section_next', @contents_keys, @menus_keys, 
-  @node_keys);
+  @node_keys, 'menu_child');
 foreach my $avoided_key(@avoided_keys_sectioning) {
   $avoided_keys_sectioning{$avoided_key} = 1;
 }
@@ -177,10 +178,15 @@ sub test($$)
       $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}'])."\n"
         if ($structure);
     }
-    {
-      local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
-     # $out_result .=  Data::Dumper->Dump([$top_node], ['$result_nodes{\''.$test_name.'\'}'])."\n"
-     #   if ($top_node);
+    if ($top_node) {
+      {
+        local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
+         $out_result .=  Data::Dumper->Dump([$top_node], ['$result_nodes{\''.$test_name.'\'}'])."\n";
+      }
+      {
+        local $Data::Dumper::Sortkeys = \&filter_menus_keys;
+         $out_result .=  Data::Dumper->Dump([$top_node], ['$result_menus{\''.$test_name.'\'}'])."\n";
+      }
     }
     {
       local $Data::Dumper::Sortkeys = 1;

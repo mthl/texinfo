@@ -807,6 +807,104 @@ $result_sectioning{'value_in_node'} = {
 $result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'}{'section_childs'}[0];
 $result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'};
 
+$result_nodes{'value_in_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'level' => 1,
+        'number' => 1
+      },
+      'normalized' => 'Node-1'
+    },
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Section-1_002e1'
+      },
+      'node_prev' => {},
+      'node_up' => {}
+    },
+    'menus' => [
+      {
+        'cmdname' => 'menu'
+      }
+    ],
+    'node_prev' => {},
+    'node_up' => {}
+  },
+  'menus' => [
+    {
+      'cmdname' => 'menu'
+    }
+  ],
+  'node_next' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
+  },
+  'node_prev' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
+  },
+  'node_up' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
+  }
+};
+$result_nodes{'value_in_node'}{'menu_child'}{'menu_child'}{'node_prev'} = $result_nodes{'value_in_node'}{'menu_child'};
+$result_nodes{'value_in_node'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'value_in_node'}{'menu_child'};
+$result_nodes{'value_in_node'}{'menu_child'}{'node_prev'} = $result_nodes{'value_in_node'};
+$result_nodes{'value_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'value_in_node'};
+
+$result_menus{'value_in_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Node-1'
+    },
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Section-1_002e1'
+      },
+      'menu_up' => {}
+    },
+    'menu_up' => {}
+  }
+};
+$result_menus{'value_in_node'}{'menu_child'}{'menu_child'}{'menu_up'} = $result_menus{'value_in_node'}{'menu_child'};
+$result_menus{'value_in_node'}{'menu_child'}{'menu_up'} = $result_menus{'value_in_node'};
+
 $result_errors{'value_in_node'} = [];
 
 

@@ -75,6 +75,20 @@ $result_texts{'node_empty_direction'} = '';
 
 $result_sectioning{'node_empty_direction'} = {};
 
+$result_nodes{'node_empty_direction'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'name'
+  }
+};
+
+$result_menus{'node_empty_direction'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'name'
+  }
+};
+
 $result_errors{'node_empty_direction'} = [];
 
 

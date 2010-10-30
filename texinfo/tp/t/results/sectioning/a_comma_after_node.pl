@@ -142,7 +142,40 @@ A comma in text, end.
 
 $result_sectioning{'a_comma_after_node'} = {};
 
-$result_errors{'a_comma_after_node'} = [];
+$result_nodes{'a_comma_after_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Commands'
+  }
+};
+
+$result_menus{'a_comma_after_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Commands'
+  }
+};
+
+$result_errors{'a_comma_after_node'} = [
+  {
+    'error_line' => ':1: Next reference to nonexistent `Requirements\'
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `Requirements\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: Prev reference to nonexistent `Nodes and Menus\'
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Prev reference to nonexistent `Nodes and Menus\'',
+    'type' => 'error'
+  }
+];
 
 
 1;

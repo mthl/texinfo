@@ -604,6 +604,20 @@ $result_texts{'double_node_anchor_float'} = '
 
 $result_sectioning{'double_node_anchor_float'} = {};
 
+$result_nodes{'double_node_anchor_float'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'node1'
+  }
+};
+
+$result_menus{'double_node_anchor_float'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'node1'
+  }
+};
+
 $result_errors{'double_node_anchor_float'} = [
   {
     'error_line' => ':3: @node `node1\' previously defined

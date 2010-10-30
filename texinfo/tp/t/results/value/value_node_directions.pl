@@ -630,6 +630,89 @@ $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
 $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'};
 
+$result_nodes{'value_node_directions'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'node_next' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'level' => 1,
+        'number' => 1
+      },
+      'normalized' => 'bar'
+    },
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'level' => 1,
+          'number' => 2
+        },
+        'normalized' => 'BarFoo'
+      },
+      'node_prev' => {},
+      'node_up' => {
+        'extra' => {
+          'manual_content' => [
+            {
+              'text' => 'dir'
+            }
+          ]
+        }
+      }
+    },
+    'node_prev' => {},
+    'node_up' => {
+      'extra' => {
+        'manual_content' => [
+          {
+            'text' => 'dir'
+          }
+        ]
+      }
+    }
+  },
+  'node_prev' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
+  },
+  'node_up' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
+  }
+};
+$result_nodes{'value_node_directions'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'value_node_directions'}{'node_next'};
+$result_nodes{'value_node_directions'}{'node_next'}{'node_prev'} = $result_nodes{'value_node_directions'};
+
+$result_menus{'value_node_directions'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'value_node_directions'} = [
   {
     'error_line' => ':7: warning: unreferenced node `bar\'

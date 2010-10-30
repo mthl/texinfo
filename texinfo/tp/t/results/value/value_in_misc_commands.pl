@@ -3172,6 +3172,32 @@ $result_sectioning{'value_in_misc_commands'} = {
 };
 $result_sectioning{'value_in_misc_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_misc_commands'};
 
+$result_nodes{'value_in_misc_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'value_in_misc_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'value_in_misc_commands'} = [
   {
     'error_line' => ':17: Bad argument to @headings: on line following headings atext

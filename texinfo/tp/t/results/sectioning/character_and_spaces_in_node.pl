@@ -537,6 +537,27 @@ $result_texts{'character_and_spaces_in_node'} = '
 
 $result_sectioning{'character_and_spaces_in_node'} = {};
 
+$result_nodes{'character_and_spaces_in_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'character_and_spaces_in_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'character_and_spaces_in_node'} = [
   {
     'error_line' => ':3: warning: unreferenced node `other nodes\'

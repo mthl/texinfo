@@ -947,6 +947,89 @@ $result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'
 $result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[2]{'section_up'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0];
 $result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'nodename_parentheses'};
 
+$result_nodes{'nodename_parentheses'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'level' => 1,
+        'number' => 1
+      },
+      'normalized' => 'Node-_0028with-parentheses_0029'
+    },
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'level' => 1,
+          'number' => 2
+        },
+        'normalized' => 'Other-node'
+      },
+      'node_prev' => {},
+      'node_up' => {}
+    },
+    'node_prev' => {},
+    'node_up' => {}
+  },
+  'menus' => [
+    {
+      'cmdname' => 'menu'
+    }
+  ],
+  'node_next' => {},
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'nodename_parentheses'}{'menu_child'};
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'nodename_parentheses'};
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_prev'} = $result_nodes{'nodename_parentheses'};
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_up'} = $result_nodes{'nodename_parentheses'};
+$result_nodes{'nodename_parentheses'}{'node_next'} = $result_nodes{'nodename_parentheses'}{'menu_child'};
+
+$result_menus{'nodename_parentheses'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Node-_0028with-parentheses_0029'
+    },
+    'menu_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Other-node'
+      },
+      'menu_prev' => {},
+      'menu_up' => {}
+    },
+    'menu_up' => {}
+  }
+};
+$result_menus{'nodename_parentheses'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus{'nodename_parentheses'}{'menu_child'};
+$result_menus{'nodename_parentheses'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'nodename_parentheses'};
+$result_menus{'nodename_parentheses'}{'menu_child'}{'menu_up'} = $result_menus{'nodename_parentheses'};
+
 $result_errors{'nodename_parentheses'} = [
   {
     'error_line' => ':22: Syntax for an external node used for ` (manual)node

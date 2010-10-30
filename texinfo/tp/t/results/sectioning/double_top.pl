@@ -249,6 +249,22 @@ $result_texts{'double_top'} = '
 
 $result_sectioning{'double_top'} = {};
 
+$result_nodes{'double_top'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'node_next' => {}
+};
+$result_nodes{'double_top'}{'node_next'} = $result_nodes{'double_top'};
+
+$result_menus{'double_top'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'double_top'} = [
   {
     'error_line' => ':3: @node `top\' previously defined

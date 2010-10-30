@@ -164,6 +164,32 @@ $result_texts{'unknown_node_in_menu'} = '
 
 $result_sectioning{'unknown_node_in_menu'} = {};
 
+$result_nodes{'unknown_node_in_menu'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menus' => [
+    {
+      'cmdname' => 'menu'
+    }
+  ],
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'unknown_node_in_menu'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'unknown_node_in_menu'} = [
   {
     'error_line' => ':4: Menu reference to nonexistent node `unknown\'

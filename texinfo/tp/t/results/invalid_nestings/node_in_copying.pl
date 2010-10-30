@@ -105,6 +105,20 @@ $result_texts{'node_in_copying'} = '
 
 $result_sectioning{'node_in_copying'} = {};
 
+$result_nodes{'node_in_copying'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'node'
+  }
+};
+
+$result_menus{'node_in_copying'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'node'
+  }
+};
+
 $result_errors{'node_in_copying'} = [
   {
     'error_line' => ':2: No matching `@end copying\'

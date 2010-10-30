@@ -645,6 +645,32 @@ $result_sectioning{'macro_in_early_commands'} = {
 };
 $result_sectioning{'macro_in_early_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'macro_in_early_commands'};
 
+$result_nodes{'macro_in_early_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'macro_in_early_commands'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'macro_in_early_commands'} = [
   {
     'error_line' => ':18: warning: @documentencoding-command defined with zero or more than one argument should be invoked with {}

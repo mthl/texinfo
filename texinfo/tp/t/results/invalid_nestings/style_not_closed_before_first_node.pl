@@ -127,6 +127,27 @@ In node
 
 $result_sectioning{'style_not_closed_before_first_node'} = {};
 
+$result_nodes{'style_not_closed_before_first_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'style_not_closed_before_first_node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'style_not_closed_before_first_node'} = [
   {
     'error_line' => ':2: @code missing close brace

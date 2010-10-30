@@ -562,6 +562,27 @@ test_var verbatiminclude: ';
 
 $result_sectioning{'value_expansion_in_include'} = {};
 
+$result_nodes{'value_expansion_in_include'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'value_expansion_in_include'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'value_expansion_in_include'} = [
   {
     'error_line' => ':12: warning: @include should only appear at a line beginning

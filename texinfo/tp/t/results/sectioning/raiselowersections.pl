@@ -1390,6 +1390,176 @@ $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'raiselowersections'}{'section_childs'}[0];
 $result_sectioning{'raiselowersections'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'raiselowersections'};
 
+$result_nodes{'raiselowersections'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {},
+        'level' => 1,
+        'number' => 1
+      },
+      'normalized' => 'Chapter'
+    },
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'sections_level' => -1
+          },
+          'level' => 2,
+          'number' => '1.1'
+        },
+        'normalized' => 'Chapter-in-included-file'
+      },
+      'menu_child' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'associated_section' => {
+            'cmdname' => 'section',
+            'extra' => {
+              'sections_level' => -1
+            },
+            'level' => 3,
+            'number' => '1.1.1'
+          },
+          'normalized' => 'Section'
+        },
+        'menu_child' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'subsection',
+              'extra' => {
+                'sections_level' => -1
+              },
+              'level' => 4,
+              'number' => '1.1.1.1'
+            },
+            'normalized' => 'Subsection'
+          },
+          'node_up' => {}
+        },
+        'menus' => [
+          {
+            'cmdname' => 'menu'
+          }
+        ],
+        'node_up' => {}
+      },
+      'menus' => [
+        {
+          'cmdname' => 'menu'
+        }
+      ],
+      'node_up' => {}
+    },
+    'menus' => [
+      {
+        'cmdname' => 'menu'
+      }
+    ],
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'level' => 1,
+          'number' => 2
+        },
+        'normalized' => 'Second-chapter'
+      },
+      'node_prev' => {},
+      'node_up' => {}
+    },
+    'node_prev' => {},
+    'node_up' => {}
+  },
+  'menus' => [
+    {
+      'cmdname' => 'menu'
+    }
+  ],
+  'node_next' => {},
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+$result_nodes{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'raiselowersections'}{'menu_child'}{'menu_child'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'raiselowersections'}{'menu_child'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'raiselowersections'}{'menu_child'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'raiselowersections'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'node_prev'} = $result_nodes{'raiselowersections'};
+$result_nodes{'raiselowersections'}{'menu_child'}{'node_up'} = $result_nodes{'raiselowersections'};
+$result_nodes{'raiselowersections'}{'node_next'} = $result_nodes{'raiselowersections'}{'menu_child'};
+
+$result_menus{'raiselowersections'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Chapter'
+    },
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Chapter-in-included-file'
+      },
+      'menu_child' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'normalized' => 'Section'
+        },
+        'menu_child' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Subsection'
+          },
+          'menu_up' => {}
+        },
+        'menu_up' => {}
+      },
+      'menu_up' => {}
+    },
+    'menu_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Second-chapter'
+      },
+      'menu_prev' => {},
+      'menu_up' => {}
+    },
+    'menu_up' => {}
+  }
+};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_up'} = $result_menus{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_child'}{'menu_up'} = $result_menus{'raiselowersections'}{'menu_child'}{'menu_child'};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_child'}{'menu_up'} = $result_menus{'raiselowersections'}{'menu_child'};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus{'raiselowersections'}{'menu_child'};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'raiselowersections'};
+$result_menus{'raiselowersections'}{'menu_child'}{'menu_up'} = $result_menus{'raiselowersections'};
+
 $result_errors{'raiselowersections'} = [];
 
 

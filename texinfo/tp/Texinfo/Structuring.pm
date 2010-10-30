@@ -348,7 +348,7 @@ sub nodes_tree ($)
                        $node->{'line_nr'});
     }
     my $automatic_directions = 
-      (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) != 1);
+      (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
 
     if ($automatic_directions) {
       if ($node->{'extra'}->{'normalized'} ne 'Top') {

@@ -750,6 +750,20 @@ $result_texts{'node'} = '
 
 $result_sectioning{'node'} = {};
 
+$result_nodes{'node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'one-arg1'
+  }
+};
+
+$result_menus{'node'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'one-arg1'
+  }
+};
+
 $result_errors{'node'} = [
   {
     'error_line' => ':6: warning: Superfluous arguments for node
@@ -770,6 +784,15 @@ $result_errors{'node'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':3: Next reference to nonexistent `two arg\'
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `two arg\'',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':4: warning: unreferenced node `one arg3\'
 ',
     'file_name' => '',
@@ -777,6 +800,24 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'unreferenced node `one arg3\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: Next reference to nonexistent `two arg\'
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `two arg\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':4: Prev reference to nonexistent `three arg\'
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Prev reference to nonexistent `three arg\'',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: warning: unreferenced node `one arg4\'
@@ -788,6 +829,33 @@ $result_errors{'node'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':5: Next reference to nonexistent `two arg\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `two arg\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: Prev reference to nonexistent `three arg\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Prev reference to nonexistent `three arg\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: Up reference to nonexistent `four arg\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Up reference to nonexistent `four arg\'',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: warning: unreferenced node `one arg5\'
 ',
     'file_name' => '',
@@ -795,6 +863,33 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'unreferenced node `one arg5\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: Next reference to nonexistent `two arg\'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `two arg\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':6: Prev reference to nonexistent `three arg\'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Prev reference to nonexistent `three arg\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':6: Up reference to nonexistent `four arg five arg\'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Up reference to nonexistent `four arg five arg\'',
+    'type' => 'error'
   },
   {
     'error_line' => ':8: warning: unreferenced node `comment\'
@@ -813,6 +908,24 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'unreferenced node `arg1 @comma{} arg2\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: Next reference to nonexistent `@,cedilla\'
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'Next reference to nonexistent `@,cedilla\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':10: Prev reference to nonexistent `@strong{comma in strong,}\'
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'Prev reference to nonexistent `@strong{comma in strong,}\'',
+    'type' => 'error'
   }
 ];
 

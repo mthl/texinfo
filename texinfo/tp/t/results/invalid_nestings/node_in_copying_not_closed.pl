@@ -208,6 +208,32 @@ $result_sectioning{'node_in_copying_not_closed'} = {
 };
 $result_sectioning{'node_in_copying_not_closed'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'node_in_copying_not_closed'};
 
+$result_nodes{'node_in_copying_not_closed'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'associated_section' => {
+      'cmdname' => 'top',
+      'extra' => {},
+      'level' => 0
+    },
+    'normalized' => 'Top'
+  },
+  'node_up' => {
+    'manual_content' => [
+      {
+        'text' => 'dir'
+      }
+    ]
+  }
+};
+
+$result_menus{'node_in_copying_not_closed'} = {
+  'cmdname' => 'node',
+  'extra' => {
+    'normalized' => 'Top'
+  }
+};
+
 $result_errors{'node_in_copying_not_closed'} = [
   {
     'error_line' => ':6: No matching `@end copying\'
