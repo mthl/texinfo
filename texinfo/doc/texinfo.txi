@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.337 2010-10-30 17:27:12 karl Exp $
+@c $Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21513,6 +21513,7 @@ Customization}.
 * Footnotes formatting::
 @end menu
 
+
 @node HTML Customization for External References
 @subsection HTML Customization for External References
 
@@ -21526,7 +21527,7 @@ for full external cross references (@pxref{Four and Five Arguments}).
 
 @deftypefn {Function Reference} $href external_href $node $node_identifier @
            $xml_node_identifier $file 
-This function formats a menu reference to an external Texinfo manual.
+This function formats a reference to a node in an external Texinfo manual.
 
 @table @var
 @item $node
@@ -24906,7 +24907,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.337 2010-10-30 17:27:12 karl Exp $
+$Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24985,7 +24986,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.337 2010-10-30 17:27:12 karl Exp $
+@comment $Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
