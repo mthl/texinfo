@@ -62,6 +62,11 @@ $result_trees{'menu_entry_node'} = {
               'normalized' => 'a1'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -116,6 +121,11 @@ $result_trees{'menu_entry_node'} = {
               'normalized' => 'a2'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -169,6 +179,11 @@ $result_trees{'menu_entry_node'} = {
               ],
               'normalized' => 'a3'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'
@@ -234,6 +249,11 @@ $result_trees{'menu_entry_node'} = {
               ],
               'normalized' => '_0040a'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'

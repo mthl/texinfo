@@ -79,6 +79,11 @@ $result_trees{'menu_entry_name_comment'} = {
               'normalized' => 'b'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -156,6 +161,11 @@ $result_trees{'menu_entry_name_comment'} = {
               'normalized' => 'b'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -232,6 +242,11 @@ $result_trees{'menu_entry_name_comment'} = {
               'normalized' => 'b1c_002ec'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -307,6 +322,11 @@ $result_trees{'menu_entry_name_comment'} = {
               ],
               'normalized' => 'b2c_002ec'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'
@@ -387,6 +407,11 @@ $result_trees{'menu_entry_name_comment'} = {
               ],
               'normalized' => 'b3c_002ec'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'

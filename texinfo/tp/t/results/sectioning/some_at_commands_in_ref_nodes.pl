@@ -307,6 +307,11 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                   'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             }

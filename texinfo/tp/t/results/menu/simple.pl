@@ -85,6 +85,11 @@ $result_trees{'simple'} = {
               'normalized' => 'node'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -129,6 +134,11 @@ $result_trees{'simple'} = {
               ],
               'normalized' => 'node-name'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'
@@ -190,6 +200,11 @@ $result_trees{'simple'} = {
               'normalized' => 'node'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -244,6 +259,11 @@ $result_trees{'simple'} = {
               ],
               'normalized' => 'last'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'
@@ -312,6 +332,11 @@ $result_trees{'simple'} = {
               ],
               'normalized' => 'last-node-entry'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'

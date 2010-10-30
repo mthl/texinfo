@@ -121,6 +121,11 @@ $result_trees{'table_not_closed_in_menu_description'} = {
               ]
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         }

@@ -63,6 +63,13 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
 # float printindex contents shortcontents
 # anchor
 
+# todo:
+# associate menu with node
+# associate nodes with sections
+# complete directions for nodes with automatic sectioning
+#     automatic sectioning: scalar(@{$node->{'extra'}->{'nodes_manuals'} != 1)
+# 
+
 sub _next_content($)
 {
   my $current = shift;

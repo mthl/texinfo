@@ -55,6 +55,11 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
               ]
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },

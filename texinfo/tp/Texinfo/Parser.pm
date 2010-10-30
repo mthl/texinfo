@@ -404,7 +404,7 @@ my %def_map = (
     'deftypeivar',   {'deftypecv' => '{Instance Variable}'},
     'defmethod',     {'defop'     => 'Method'},
     'deftypemethod', {'deftypeop' => 'Method'},
-         );
+);
 
 my %def_commands;
 my %def_aliases;
@@ -2197,7 +2197,8 @@ sub _enter_menu_entry_node($$$)
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
       }
     }
-  }
+  } 
+  $current->{'line_nr'} = $line_nr;
 }
 
 # the different types

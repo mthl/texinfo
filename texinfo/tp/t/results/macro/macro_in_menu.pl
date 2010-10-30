@@ -311,6 +311,11 @@ $result_trees{'macro_in_menu'} = {
               'normalized' => 'menu-entry'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 27,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -373,6 +378,11 @@ $result_trees{'macro_in_menu'} = {
               'normalized' => 'node'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 30,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -418,6 +428,11 @@ $result_trees{'macro_in_menu'} = {
               'normalized' => 'other-node'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 31,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -462,6 +477,11 @@ $result_trees{'macro_in_menu'} = {
               ],
               'normalized' => 'node-colon-macro'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'
@@ -522,6 +542,11 @@ $result_trees{'macro_in_menu'} = {
               ],
               'normalized' => 'entry'
             }
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 33,
+            'macro' => ''
           },
           'parent' => {},
           'type' => 'menu_entry'

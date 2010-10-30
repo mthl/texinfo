@@ -136,6 +136,11 @@ $result_trees{'nodename_parentheses'} = {
                   'normalized' => 'Node-_0028with-parentheses_0029'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             },
@@ -180,6 +185,11 @@ $result_trees{'nodename_parentheses'} = {
                   ],
                   'normalized' => 'Other-node'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'
@@ -234,6 +244,11 @@ $result_trees{'nodename_parentheses'} = {
                   ],
                   'normalized' => 'node'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'

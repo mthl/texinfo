@@ -89,6 +89,11 @@ $result_trees{'style_not_closed_no_newline_root_commands'} = {
                   'normalized' => 'chapter'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             }

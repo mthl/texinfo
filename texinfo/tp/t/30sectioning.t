@@ -53,6 +53,9 @@ Dummy section with (manual)node node syntax.
 @anchor{(manual)anchor}.
 
 '],
+['node_empty_direction',
+'@node name, '
+],
 ['character_and_spaces_in_node',
 '
 @node Top

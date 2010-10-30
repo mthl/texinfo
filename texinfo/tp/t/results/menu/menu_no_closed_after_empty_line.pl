@@ -55,6 +55,11 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
               ]
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },

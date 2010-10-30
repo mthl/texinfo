@@ -59,6 +59,11 @@ $result_trees{'detailmenu'} = {
               'normalized' => 'Copying-Conditions'
             }
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'menu_entry'
         },
@@ -118,6 +123,11 @@ $result_trees{'detailmenu'} = {
                   ],
                   'normalized' => 'detailmenu'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'

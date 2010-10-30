@@ -2894,6 +2894,11 @@ $result_trees{'macro_in_misc_commands'} = {
                   'normalized' => 'node-atext'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 192,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             }

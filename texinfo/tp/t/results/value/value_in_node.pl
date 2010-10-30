@@ -235,6 +235,11 @@ $result_trees{'value_in_node'} = {
                   'normalized' => 'Node-1'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             }
@@ -462,6 +467,11 @@ $result_trees{'value_in_node'} = {
                   ],
                   'normalized' => 'Section-1_002e1'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'

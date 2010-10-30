@@ -150,6 +150,11 @@ $result_trees{'raiselowersections'} = {
                   'normalized' => 'Chapter'
                 }
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             },
@@ -194,6 +199,11 @@ $result_trees{'raiselowersections'} = {
                   ],
                   'normalized' => 'Second-chapter'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'
@@ -350,6 +360,11 @@ $result_trees{'raiselowersections'} = {
                   ],
                   'normalized' => 'Chapter-in-included-file'
                 }
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'
@@ -577,6 +592,11 @@ $result_trees{'raiselowersections'} = {
                   'normalized' => 'Section'
                 }
               },
+              'line_nr' => {
+                'file_name' => 't/include//section_file.texi',
+                'line_nr' => 17,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'menu_entry'
             }
@@ -735,6 +755,11 @@ $result_trees{'raiselowersections'} = {
                   ],
                   'normalized' => 'Subsection'
                 }
+              },
+              'line_nr' => {
+                'file_name' => 't/include//section_file.texi',
+                'line_nr' => 24,
+                'macro' => ''
               },
               'parent' => {},
               'type' => 'menu_entry'
