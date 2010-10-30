@@ -770,9 +770,20 @@ Chapter 1
 ';
 
 $result_sectioning{'value_in_node'} = {
-  'childs' => [
+  'level' => -1,
+  'section_childs' => [
     {
-      'childs' => [
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
+      'level' => 0,
+      'section_childs' => [
         {
           'cmdname' => 'chapter',
           'extra' => {
@@ -785,26 +796,15 @@ $result_sectioning{'value_in_node'} = {
           },
           'level' => 1,
           'number' => 1,
-          'up' => {}
+          'section_up' => {}
         }
       ],
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top'
-          }
-        }
-      },
-      'level' => 0,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => -1
+  ]
 };
-$result_sectioning{'value_in_node'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'}{'childs'}[0];
-$result_sectioning{'value_in_node'}{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'};
+$result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'}{'section_childs'}[0];
+$result_sectioning{'value_in_node'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_node'};
 
 $result_errors{'value_in_node'} = [];
 

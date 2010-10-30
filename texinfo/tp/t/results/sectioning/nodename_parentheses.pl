@@ -876,9 +876,20 @@ Dummy section with (manual)node node syntax.
 ';
 
 $result_sectioning{'nodename_parentheses'} = {
-  'childs' => [
+  'level' => -1,
+  'section_childs' => [
     {
-      'childs' => [
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
+      'level' => 0,
+      'section_childs' => [
         {
           'cmdname' => 'chapter',
           'extra' => {
@@ -891,7 +902,7 @@ $result_sectioning{'nodename_parentheses'} = {
           },
           'level' => 1,
           'number' => 1,
-          'up' => {}
+          'section_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -905,8 +916,8 @@ $result_sectioning{'nodename_parentheses'} = {
           },
           'level' => 1,
           'number' => 2,
-          'prev' => {},
-          'up' => {}
+          'section_prev' => {},
+          'section_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -920,31 +931,20 @@ $result_sectioning{'nodename_parentheses'} = {
           },
           'level' => 1,
           'number' => 3,
-          'prev' => {},
-          'up' => {}
+          'section_prev' => {},
+          'section_up' => {}
         }
       ],
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top'
-          }
-        }
-      },
-      'level' => 0,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => -1
+  ]
 };
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0];
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1];
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
-$result_sectioning{'nodename_parentheses'}{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'};
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[2]{'section_prev'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[1];
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_childs'}[2]{'section_up'} = $result_sectioning{'nodename_parentheses'}{'section_childs'}[0];
+$result_sectioning{'nodename_parentheses'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'nodename_parentheses'};
 
 $result_errors{'nodename_parentheses'} = [
   {

@@ -58,17 +58,17 @@ $result_texts{'sections'} = 'a chapter
 ';
 
 $result_sectioning{'sections'} = {
-  'childs' => [
+  'level' => 0,
+  'section_childs' => [
     {
       'cmdname' => 'chapter',
       'level' => 1,
       'number' => 1,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => 0
+  ]
 };
-$result_sectioning{'sections'}{'childs'}[0]{'up'} = $result_sectioning{'sections'};
+$result_sectioning{'sections'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'sections'};
 
 $result_errors{'sections'} = [];
 

@@ -361,7 +361,8 @@ still not closed
 ';
 
 $result_sectioning{'style_not_closed_root_commands'} = {
-  'childs' => [
+  'level' => 0,
+  'section_childs' => [
     {
       'cmdname' => 'chapter',
       'extra' => {
@@ -374,12 +375,11 @@ $result_sectioning{'style_not_closed_root_commands'} = {
       },
       'level' => 1,
       'number' => 1,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => 0
+  ]
 };
-$result_sectioning{'style_not_closed_root_commands'}{'childs'}[0]{'up'} = $result_sectioning{'style_not_closed_root_commands'};
+$result_sectioning{'style_not_closed_root_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'style_not_closed_root_commands'};
 
 $result_errors{'style_not_closed_root_commands'} = [
   {

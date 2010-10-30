@@ -188,7 +188,8 @@ $result_texts{'node_in_copying_not_closed'} = 'Top section
 ';
 
 $result_sectioning{'node_in_copying_not_closed'} = {
-  'childs' => [
+  'level' => -1,
+  'section_childs' => [
     {
       'cmdname' => 'top',
       'extra' => {
@@ -200,12 +201,11 @@ $result_sectioning{'node_in_copying_not_closed'} = {
         }
       },
       'level' => 0,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => -1
+  ]
 };
-$result_sectioning{'node_in_copying_not_closed'}{'childs'}[0]{'up'} = $result_sectioning{'node_in_copying_not_closed'};
+$result_sectioning{'node_in_copying_not_closed'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'node_in_copying_not_closed'};
 
 $result_errors{'node_in_copying_not_closed'} = [
   {

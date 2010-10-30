@@ -576,9 +576,20 @@ bar
 ';
 
 $result_sectioning{'value_node_directions'} = {
-  'childs' => [
+  'level' => -1,
+  'section_childs' => [
     {
-      'childs' => [
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
+      'level' => 0,
+      'section_childs' => [
         {
           'cmdname' => 'chapter',
           'extra' => {
@@ -591,7 +602,7 @@ $result_sectioning{'value_node_directions'} = {
           },
           'level' => 1,
           'number' => 1,
-          'up' => {}
+          'section_up' => {}
         },
         {
           'cmdname' => 'chapter',
@@ -605,29 +616,18 @@ $result_sectioning{'value_node_directions'} = {
           },
           'level' => 1,
           'number' => 2,
-          'prev' => {},
-          'up' => {}
+          'section_prev' => {},
+          'section_up' => {}
         }
       ],
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top'
-          }
-        }
-      },
-      'level' => 0,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => -1
+  ]
 };
-$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
-$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0];
-$result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
-$result_sectioning{'value_node_directions'}{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'};
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[0];
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'value_node_directions'}{'section_childs'}[0];
+$result_sectioning{'value_node_directions'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_node_directions'};
 
 $result_errors{'value_node_directions'} = [];
 

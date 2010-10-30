@@ -544,7 +544,8 @@ in themacro
 ';
 
 $result_sectioning{'macro_and_commands_in_early_commands'} = {
-  'childs' => [
+  'level' => -1,
+  'section_childs' => [
     {
       'cmdname' => 'top',
       'extra' => {
@@ -556,12 +557,11 @@ $result_sectioning{'macro_and_commands_in_early_commands'} = {
         }
       },
       'level' => 0,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => -1
+  ]
 };
-$result_sectioning{'macro_and_commands_in_early_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
+$result_sectioning{'macro_and_commands_in_early_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
 
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {

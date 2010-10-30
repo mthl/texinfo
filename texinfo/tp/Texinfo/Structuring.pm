@@ -230,15 +230,15 @@ sub sectioning_structure($$)
                                        $content->{'cmdname'}), $content->{'line_nr'});
             $content->{'level'} = $previous_section->{'level'} + 1;
           }
-          $previous_section->{'childs'} = [$content];
-          $content->{'up'} = $previous_section;
+          $previous_section->{'section_childs'} = [$content];
+          $content->{'section_up'} = $previous_section;
           $command_numbers[$content->{'level'}] = undef;
         } else {
-          my $up = $previous_section->{'up'};
+          my $up = $previous_section->{'section_up'};
           if ($previous_section->{'level'} != $level) {
             # means it is above the previous command, the up is to be found
-            while ($up->{'up'} and $up->{'level'} >= $level) {
-              $up = $up->{'up'};
+            while ($up->{'section_up'} and $up->{'level'} >= $level) {
+              $up = $up->{'section_up'};
             }
             if ($level <= $up->{'level'}) {
               $self->_line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
@@ -246,10 +246,10 @@ sub sectioning_structure($$)
               $content->{'level'} = $up->{'level'} + 1;
             }
           }
-          push @{$up->{'childs'}}, $content;
-          $content->{'up'} = $up;
-          $content->{'prev'} = $up->{'childs'}->[-2];
-          $content->{'prev'}->{'next'} = $content;
+          push @{$up->{'section_childs'}}, $content;
+          $content->{'section_up'} = $up;
+          $content->{'section_prev'} = $up->{'section_childs'}->[-2];
+          $content->{'section_prev'}->{'section_next'} = $content;
           if (!$unnumbered_commands{$content->{'cmdname'}}) {
             $command_numbers[$content->{'level'}]++;
           }
@@ -257,9 +257,9 @@ sub sectioning_structure($$)
         }
       } else { # first section determines the level of the root.  It is 
                # typically -1 when there is a @top.
-        $content->{'up'} = $sec_root;
+        $content->{'section_up'} = $sec_root;
         $sec_root->{'level'} = $level - 1;
-        $sec_root->{'childs'} = [$content];
+        $sec_root->{'section_childs'} = [$content];
         $number_top_level = $level;
         $number_top_level++ if (!$number_top_level);
       }

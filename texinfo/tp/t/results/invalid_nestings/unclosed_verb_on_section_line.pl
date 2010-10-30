@@ -91,17 +91,17 @@ Now text.
 ';
 
 $result_sectioning{'unclosed_verb_on_section_line'} = {
-  'childs' => [
+  'level' => 1,
+  'section_childs' => [
     {
       'cmdname' => 'section',
       'level' => 2,
       'number' => 1,
-      'up' => {}
+      'section_up' => {}
     }
-  ],
-  'level' => 1
+  ]
 };
-$result_sectioning{'unclosed_verb_on_section_line'}{'childs'}[0]{'up'} = $result_sectioning{'unclosed_verb_on_section_line'};
+$result_sectioning{'unclosed_verb_on_section_line'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'unclosed_verb_on_section_line'};
 
 $result_errors{'unclosed_verb_on_section_line'} = [
   {

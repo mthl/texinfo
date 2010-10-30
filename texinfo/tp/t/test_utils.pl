@@ -49,7 +49,8 @@ sub new_test ($;$$)
 my @contents_keys = ('contents', 'args', 'parent', 'line_nr');
 my @menus_keys = ('menu_child', 'menu_next', 'menu_up', 'menu_prev', 
   'associated_section');
-my @sections_keys = ('next', 'prev', 'up', 'childs', 'associated_node');
+my @sections_keys = ('section_next', 'section_prev', 'section_up', 
+  'section_childs', 'associated_node');
 my %avoided_keys_content;
 my @avoided_keys_content = (@sections_keys, 'menus', @menus_keys);
 foreach my $avoided_key(@avoided_keys_content) {
@@ -61,7 +62,7 @@ sub filter_content_keys { [grep {!$avoided_keys_content{$_}} ( sort keys %{$_[0]
 my @avoided_compare_tree = (@avoided_keys_content, 'parent', 'node_content');
 
 my %avoided_keys_sectioning;
-my @avoided_keys_sectioning = ('next', 'node_content', 'nodes_manuals',
+my @avoided_keys_sectioning = ('section_next', 'node_content', 'nodes_manuals',
     @contents_keys, 'menus', @menus_keys);
 foreach my $avoided_key(@avoided_keys_sectioning) {
   $avoided_keys_sectioning{$avoided_key} = 1;
@@ -70,7 +71,8 @@ sub filter_sectioning_keys { [grep {!$avoided_keys_sectioning{$_}}
    ( sort keys %{$_[0]} )] }
 
 my %avoided_keys_nodes;
-my @avoided_keys_nodes = (@sections_keys, @contents_keys);
+my @avoided_keys_nodes = (@sections_keys, @contents_keys, 'node_content', 
+  'nodes_manuals');
 foreach my $avoided_key(@avoided_keys_nodes) {
   $avoided_keys_nodes{$avoided_key} = 1;
 }
@@ -78,7 +80,8 @@ sub filter_nodes_keys { [grep {!$avoided_keys_nodes{$_}}
    ( sort keys %{$_[0]} )] }
 
 my %avoided_compare_structure;
-my @avoided_compare_structure = (@avoided_keys_sectioning, 'prev', 'up');
+my @avoided_compare_structure = (@avoided_keys_sectioning, 'section_prev', 
+   'section_up');
 foreach my $avoided_key(@avoided_compare_structure) {
   $avoided_compare_structure{$avoided_key} = 1;
 }
@@ -167,8 +170,8 @@ sub test($$)
     }
     {
       local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
-      #$out_result .=  Data::Dumper->Dump([$top_node], ['$result_nodes{\''.$test_name.'\'}'])."\n"
-      #  if ($top_node);
+     # $out_result .=  Data::Dumper->Dump([$top_node], ['$result_nodes{\''.$test_name.'\'}'])."\n"
+     #   if ($top_node);
     }
     {
       local $Data::Dumper::Sortkeys = 1;
@@ -216,8 +219,8 @@ sub test($$)
               { 'ignore_hash_keys' => [@avoided_compare_structure] }))
     {
       local $Data::Dumper::Sortkeys = \&filter_compare_structure;
-      print STDERR  Data::Dumper->Dump([$structure], ['$structure']);
-      print STDERR  Data::Dumper->Dump([$result_sectioning{$test_name}], ['$result_sectioning{\''.$test_name.'\'}']);
+    #  print STDERR  Data::Dumper->Dump([$structure], ['$structure']);
+    #  print STDERR  Data::Dumper->Dump([$result_sectioning{$test_name}], ['$result_sectioning{\''.$test_name.'\'}']);
     }
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), 
         $test_name.' errors' );
