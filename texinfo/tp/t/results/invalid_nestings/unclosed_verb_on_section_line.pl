@@ -57,11 +57,13 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'level' => 2,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     }
   ],
@@ -91,15 +93,16 @@ Now text.
 $result_sectioning{'unclosed_verb_on_section_line'} = {
   'childs' => [
     {
+      'cmdname' => 'section',
       'level' => 2,
       'number' => 1,
       'up' => {}
     }
   ],
-  'level' => 1,
-  'text' => '_ROOT'
+  'level' => 1
 };
 $result_sectioning{'unclosed_verb_on_section_line'}{'childs'}[0]{'up'} = $result_sectioning{'unclosed_verb_on_section_line'};
+
 $result_errors{'unclosed_verb_on_section_line'} = [
   {
     'error_line' => ':3: @verb missing closing delimiter sequence: T}

@@ -601,9 +601,8 @@ $result_texts{'double_node_anchor_float'} = '
 
 ';
 
-$result_sectioning{'double_node_anchor_float'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'double_node_anchor_float'} = {};
+
 $result_errors{'double_node_anchor_float'} = [
   {
     'error_line' => ':3: @node `node1\' previously defined

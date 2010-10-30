@@ -25,6 +25,7 @@ use 5.00405;
 use strict;
 
 use Texinfo::Convert::Text;
+use Texinfo::Parser qw(tree_to_texi);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -198,8 +199,8 @@ sub sectioning_structure($$)
     return undef;
   }
 
-  my $sec_root = {'text' => '_ROOT'};
-  my $previous_command;
+  my $sec_root = {};
+  my $previous_section;
 
   my $in_appendix = 0;
   # lowest level with a number.  This is the lowest level above 0.
@@ -221,25 +222,22 @@ sub sectioning_structure($$)
           $level = $max_level;
         }
       }
-      my $command = { 'section' => $content, 'level' => $level,
-         #             'name' => $content->{'cmdname'}, 
-         #             'text' => 
-         # Texinfo::Convert::Text::convert($content->{'args'}->[0])
-                                                        };
-      if ($previous_command) {
+      $content->{'level'} = $level;
+
+      if ($previous_section) {
         # new command is below
-        if ($previous_command->{'level'} < $level) {
-          if ($level - $previous_command->{'level'} > 1) {
+        if ($previous_section->{'level'} < $level) {
+          if ($level - $previous_section->{'level'} > 1) {
             $self->_line_error(sprintf($self->__("Upping the section level of \@%s which is too low"), 
                                        $content->{'cmdname'}), $content->{'line_nr'});
-            $command->{'level'} = $previous_command->{'level'} + 1;
+            $content->{'level'} = $previous_section->{'level'} + 1;
           }
-          $previous_command->{'childs'} = [$command];
-          $command->{'up'} = $previous_command;
-          $command_numbers[$command->{'level'}] = undef;
+          $previous_section->{'childs'} = [$content];
+          $content->{'up'} = $previous_section;
+          $command_numbers[$content->{'level'}] = undef;
         } else {
-          my $up = $previous_command->{'up'};
-          if ($previous_command->{'level'} != $level) {
+          my $up = $previous_section->{'up'};
+          if ($previous_section->{'level'} != $level) {
             # means it is above the previous command, the up is to be found
             while ($up->{'up'} and $up->{'level'} >= $level) {
               $up = $up->{'up'};
@@ -247,52 +245,91 @@ sub sectioning_structure($$)
             if ($level <= $up->{'level'}) {
               $self->_line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
                                        $content->{'cmdname'}), $content->{'line_nr'});
-              $command->{'level'} = $up->{'level'} + 1;
+              $content->{'level'} = $up->{'level'} + 1;
             }
           }
-          push @{$up->{'childs'}}, $command;
-          $command->{'up'} = $up;
-          $command->{'prev'} = $up->{'childs'}->[-2];
-          $command->{'prev'}->{'next'} = $command;
+          push @{$up->{'childs'}}, $content;
+          $content->{'up'} = $up;
+          $content->{'prev'} = $up->{'childs'}->[-2];
+          $content->{'prev'}->{'next'} = $content;
           if (!$unnumbered_commands{$content->{'cmdname'}}) {
-            $command_numbers[$command->{'level'}]++;
+            $command_numbers[$content->{'level'}]++;
           }
           
         }
       } else { # first section determines the level of the root.  It is 
                # typically -1 when there is a @top.
-        $command->{'up'} = $sec_root;
+        $content->{'up'} = $sec_root;
         $sec_root->{'level'} = $level - 1;
-        $sec_root->{'childs'} = [$command];
+        $sec_root->{'childs'} = [$content];
         $number_top_level = $level;
         $number_top_level++ if (!$number_top_level);
       }
-      if (!defined($command_numbers[$command->{'level'}])) {
+      if (!defined($command_numbers[$content->{'level'}])) {
         if ($unnumbered_commands{$content->{'cmdname'}}) {
-          $command_numbers[$command->{'level'}] = 0;
+          $command_numbers[$content->{'level'}] = 0;
         } else {
-          $command_numbers[$command->{'level'}] = 1;
+          $command_numbers[$content->{'level'}] = 1;
         }
       }
       if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix) {
         $in_appendix = 1;
-        $command_numbers[$command->{'level'}] = 'A';
+        $command_numbers[$content->{'level'}] = 'A';
       }
       if (!$unnumbered_commands{$content->{'cmdname'}}) {
         # construct the number
-        $command->{'number'} = $command_numbers[$number_top_level];
-        for (my $i = $number_top_level+1; $i <= $command->{'level'}; $i++) {
-          $command->{'number'} .= ".$command_numbers[$i]";
+        $content->{'number'} = $command_numbers[$number_top_level];
+        for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
+          $content->{'number'} .= ".$command_numbers[$i]";
         }
       }
-      $previous_command = $command;
+      $previous_section = $content;
 
       #my $number = '';
-      #$number = $command->{'number'} if defined($command->{'number'});
-      #print STDERR "($command->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$command->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
+      #$number = $content->{'number'} if defined($content->{'number'});
+      #print STDERR "($content->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
     }
   }
   return $sec_root;
+}
+
+# first go through all the menu and set menu_up, menu_next, menu_prev
+# and warn for unknown nodes.
+# then go through all the nodes and set directions
+sub nodes_tree ($)
+{
+  my $self = shift;
+  return undef unless ($self->{'nodes'} and @{$self->{'nodes'}});
+  foreach my $node (@{$self->{'nodes'}}) {
+    if ($node->{'menus'}) {
+      foreach my $menu (@{$node->{'menus'}}) {
+        my $previous_node;
+        foreach my $menu_content (@{$menu->{'contents'}}) {
+          if ($menu_content->{'extra'}
+             and $menu_content->{'extra'}->{'menu_entry_node'}
+             and !$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
+            if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
+              # FIXME novalidate
+              $self->_line_error (sprintf($self->__("Menu reference to nonexistent node `%s'"), 
+                tree_to_texi({ 'contents' => $menu_content->{'extra'}->{'menu_entry_node'}->{'node_content'} })), 
+                $menu_content->{'line_nr'});
+            } else {
+              my $menu_node =
+                $self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}};
+              $menu_node->{'menu_up'} = $node;
+              if ($previous_node) {
+                $menu_node->{'menu_prev'} = $previous_node;
+                $previous_node->{'menu_next'} = $menu_node;
+              } else {
+                $node->{'menu_child'} = $menu_node;
+              }
+              $previous_node = $menu_node;
+            }
+          }
+        } # end menu
+      }
+    }
+  }
 }
 
 1;

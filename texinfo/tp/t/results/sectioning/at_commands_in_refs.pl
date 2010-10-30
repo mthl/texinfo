@@ -3565,6 +3565,8 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
@@ -3686,11 +3688,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 32,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -3915,11 +3920,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 35,
         'macro' => ''
       },
+      'number' => 2,
       'parent' => {}
     },
     {
@@ -4220,11 +4228,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 38,
         'macro' => ''
       },
+      'number' => 3,
       'parent' => {}
     },
     {
@@ -4491,11 +4502,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 41,
         'macro' => ''
       },
+      'number' => 4,
       'parent' => {}
     },
     {
@@ -4660,11 +4674,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 44,
         'macro' => ''
       },
+      'number' => 5,
       'parent' => {}
     },
     {
@@ -4965,11 +4982,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 47,
         'macro' => ''
       },
+      'number' => 6,
       'parent' => {}
     },
     {
@@ -5202,11 +5222,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 50,
         'macro' => ''
       },
+      'number' => 7,
       'parent' => {}
     },
     {
@@ -5745,11 +5768,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 53,
         'macro' => ''
       },
+      'number' => 8,
       'parent' => {}
     },
     {
@@ -6308,11 +6334,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 56,
         'macro' => ''
       },
+      'number' => 9,
       'parent' => {}
     },
     {
@@ -6683,11 +6712,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 59,
         'macro' => ''
       },
+      'number' => 10,
       'parent' => {}
     },
     {
@@ -6954,11 +6986,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 62,
         'macro' => ''
       },
+      'number' => 11,
       'parent' => {}
     },
     {
@@ -7225,11 +7260,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 65,
         'macro' => ''
       },
+      'number' => 12,
       'parent' => {}
     },
     {
@@ -7310,11 +7348,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 68,
         'macro' => ''
       },
+      'number' => 13,
       'parent' => {}
     },
     {
@@ -7537,11 +7578,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 71,
         'macro' => ''
       },
+      'number' => 14,
       'parent' => {}
     },
     {
@@ -7764,11 +7808,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 75,
         'macro' => ''
       },
+      'number' => 15,
       'parent' => {}
     },
     {
@@ -7979,11 +8026,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 79,
         'macro' => ''
       },
+      'number' => 16,
       'parent' => {}
     },
     {
@@ -8214,11 +8264,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 83,
         'macro' => ''
       },
+      'number' => 17,
       'parent' => {}
     },
     {
@@ -8329,11 +8382,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 88,
         'macro' => ''
       },
+      'number' => 18,
       'parent' => {}
     },
     {
@@ -8876,11 +8932,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 92,
         'macro' => ''
       },
+      'number' => 19,
       'parent' => {}
     },
     {
@@ -9285,11 +9344,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 95,
         'macro' => ''
       },
+      'number' => 20,
       'parent' => {}
     },
     {
@@ -9405,11 +9467,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 98,
         'macro' => ''
       },
+      'number' => 21,
       'parent' => {}
     },
     {
@@ -9560,11 +9625,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 101,
         'macro' => ''
       },
+      'number' => 22,
       'parent' => {}
     },
     {
@@ -9671,11 +9739,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 104,
         'macro' => ''
       },
+      'number' => 23,
       'parent' => {}
     },
     {
@@ -12570,11 +12641,14 @@ $result_trees{'at_commands_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 107,
         'macro' => ''
       },
+      'number' => 24,
       'parent' => {}
     },
     {
@@ -15375,155 +15449,379 @@ $result_sectioning{'at_commands_in_refs'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '-_007b-_007d'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '----_0021---_002e--_002e-_003f-_0040'
+              }
+            }
+          },
           'level' => 1,
           'number' => 2,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e'
+              }
+            }
+          },
           'level' => 1,
           'number' => 3,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              }
+            }
+          },
           'level' => 1,
           'number' => 4,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_2265-_2264-_2192'
+              }
+            }
+          },
           'level' => 1,
           'number' => 5,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae'
+              }
+            }
+          },
           'level' => 1,
           'number' => 6,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_21d2-_00b0-a-b--_00e5'
+              }
+            }
+          },
           'level' => 1,
           'number' => 7,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe'
+              }
+            }
+          },
           'level' => 1,
           'number' => 8,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119'
+              }
+            }
+          },
           'level' => 1,
           'number' => 9,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361'
+              }
+            }
+          },
           'level' => 1,
           'number' => 10,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_201c-_201d-_2018-_2019-_201e-_201a'
+              }
+            }
+          },
           'level' => 1,
           'number' => 11,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_00ab-_00bb-_00ab-_00bb-_2039-_203a'
+              }
+            }
+          },
           'level' => 1,
           'number' => 12,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d'
+              }
+            }
+          },
           'level' => 1,
           'number' => 13,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'AAA-AAA-BBB'
+              }
+            }
+          },
           'level' => 1,
           'number' => 14,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'CCC-CCC-DDD'
+              }
+            }
+          },
           'level' => 1,
           'number' => 15,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'the-someone-no_005fexplain_0040there'
+              }
+            }
+          },
           'level' => 1,
           'number' => 16,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'f_002d_002dile1-f_002d_002dile'
+              }
+            }
+          },
           'level' => 1,
           'number' => 17,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '-_0040-_007b_007d-_002e-'
+              }
+            }
+          },
           'level' => 1,
           'number' => 18,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i'
+              }
+            }
+          },
           'level' => 1,
           'number' => 19,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'env-code-option-samp-command-file-C_002dx-ESC'
+              }
+            }
+          },
           'level' => 1,
           'number' => 20,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => '8_002e27in'
+              }
+            }
+          },
           'level' => 1,
           'number' => 21,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'sansserif-slanted'
+              }
+            }
+          },
           'level' => 1,
           'number' => 22,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'indicateurl'
+              }
+            }
+          },
           'level' => 1,
           'number' => 23,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls'
+              }
+            }
+          },
           'level' => 1,
           'number' => 24,
           'prev' => {},
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'at_commands_in_refs'}{'childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[0];
@@ -15573,6 +15871,7 @@ $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[22]{'up'} = $re
 $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[23]{'prev'} = $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[22];
 $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'childs'}[23]{'up'} = $result_sectioning{'at_commands_in_refs'}{'childs'}[0];
 $result_sectioning{'at_commands_in_refs'}{'childs'}[0]{'up'} = $result_sectioning{'at_commands_in_refs'};
+
 $result_errors{'at_commands_in_refs'} = [];
 
 

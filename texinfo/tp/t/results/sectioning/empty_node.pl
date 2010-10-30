@@ -166,9 +166,8 @@ $result_texis{'empty_node'} = '@node
 $result_texts{'empty_node'} = '
 ';
 
-$result_sectioning{'empty_node'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'empty_node'} = {};
+
 $result_errors{'empty_node'} = [
   {
     'error_line' => ':1: Empty argument in @node

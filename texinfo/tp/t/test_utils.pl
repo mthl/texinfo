@@ -20,6 +20,7 @@ ok(1);
 our $arg_generate;
 our $arg_debug;
 our $arg_complete;
+our $nr_comparisons = 6;
 
 Getopt::Long::Configure("gnu_getopt");
 GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug, 
@@ -45,9 +46,36 @@ sub new_test ($;$$)
   return $test;
 }
 
-sub filter_keys { [grep {$_ ne 'next'} ( sort keys %{$_[0]} )] }
+my @contents_keys = ('contents', 'args', 'parent', 'line_nr');
+my @menus_keys = ('menu_child', 'menu_next', 'menu_up', 'menu_prev');
+my %avoided_keys_content;
+my @avoided_keys_content = ('next', 'prev', 'up', 'childs', 
+   'associated_section', 'associated_node', 'menus', @menus_keys);
+foreach my $avoided_key(@avoided_keys_content) {
+  $avoided_keys_content{$avoided_key} = 1;
+}
+sub filter_content_keys { [grep {!$avoided_keys_content{$_}} ( sort keys %{$_[0]} )] }
 #sub filter_keys { [grep {$_ ne 'parent' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
-sub filter_main_tree { [grep {$_ ne 'section' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
+
+my @avoided_compare_tree = (@avoided_keys_content, 'parent', 'node_content');
+
+my %avoided_keys_sectioning;
+my @avoided_keys_sectioning = ('next', 'node_content', 'nodes_manuals',
+   'associated_section', @contents_keys, 'menus', @menus_keys);
+foreach my $avoided_key(@avoided_keys_sectioning) {
+  $avoided_keys_sectioning{$avoided_key} = 1;
+}
+sub filter_sectioning_keys { [grep {!$avoided_keys_sectioning{$_}}
+   ( sort keys %{$_[0]} )] }
+
+
+my %avoided_compare_structure;
+my @avoided_compare_structure = (@avoided_keys_sectioning, 'prev', 'up');
+foreach my $avoided_key(@avoided_compare_structure) {
+  $avoided_compare_structure{$avoided_key} = 1;
+}
+sub filter_compare_structure { [grep {!$avoided_compare_structure{$_}}
+   ( sort keys %{$_[0]} )] }
 
 sub test($$) 
 {
@@ -85,6 +113,8 @@ sub test($$)
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
 
+  Texinfo::Structuring::nodes_tree($parser);
+
   my ($errors, $error_nrs) = $parser->errors();
   my ($index_names, $merged_indices) = $parser->indices_information();
   my $indices;
@@ -110,7 +140,7 @@ sub test($$)
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
     {
-      local $Data::Dumper::Sortkeys = \&filter_keys;
+      local $Data::Dumper::Sortkeys = \&filter_content_keys;
       $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     }
     my $texi_string_result = tree_to_texi($result);
@@ -123,8 +153,8 @@ sub test($$)
     $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
     $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
     {
-      local $Data::Dumper::Sortkeys = \&filter_main_tree;
-      $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}']) 
+      local $Data::Dumper::Sortkeys = \&filter_sectioning_keys;
+      $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}'])."\n"
         if ($structure);
     }
     {
@@ -163,11 +193,19 @@ sub test($$)
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
     #}
     ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
-               { 'ignore_hash_keys' => [qw(parent next node_content)] }), 
+               { 'ignore_hash_keys' => [@avoided_compare_tree] }), 
         $test_name.' tree' );
+
     ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
-              { 'ignore_hash_keys' => [qw(next prev up section)] }), 
+              { 'ignore_hash_keys' => [@avoided_compare_structure] }), 
         $test_name.' sectioning' );
+    if (!Data::Compare::Compare($structure, $result_sectioning{$test_name},
+              { 'ignore_hash_keys' => [@avoided_compare_structure] }))
+    {
+      local $Data::Dumper::Sortkeys = \&filter_compare_structure;
+      print STDERR  Data::Dumper->Dump([$structure], ['$structure']);
+      print STDERR  Data::Dumper->Dump([$result_sectioning{$test_name}], ['$result_sectioning{\''.$test_name.'\'}']);
+    }
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), 
         $test_name.' errors' );
     ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 
@@ -209,7 +247,7 @@ sub run_all($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-    plan tests => (1 + scalar(@$ran_tests) * 6);
+    plan tests => (1 + scalar(@$ran_tests) * $nr_comparisons);
   }
 }
 
@@ -240,7 +278,7 @@ sub run_all_files($$;$$$)
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-     plan tests => (1 + scalar(@$ran_tests) * 6);
+     plan tests => (1 + scalar(@$ran_tests) * $nr_comparisons);
   }
 }
 

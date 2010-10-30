@@ -186,6 +186,8 @@ $result_trees{'value_node_directions'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -333,11 +335,14 @@ $result_trees{'value_node_directions'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 8,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -464,11 +469,14 @@ $result_trees{'value_node_directions'} = {
       ],
       'cmdname' => 'chapter',
       'contents' => [],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 11,
         'macro' => ''
       },
+      'number' => 2,
       'parent' => {}
     }
   ],
@@ -572,28 +580,55 @@ $result_sectioning{'value_node_directions'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'bar'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'BarFoo'
+              }
+            }
+          },
           'level' => 1,
           'number' => 2,
           'prev' => {},
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
 $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[0];
 $result_sectioning{'value_node_directions'}{'childs'}[0]{'childs'}[1]{'up'} = $result_sectioning{'value_node_directions'}{'childs'}[0];
 $result_sectioning{'value_node_directions'}{'childs'}[0]{'up'} = $result_sectioning{'value_node_directions'};
+
 $result_errors{'value_node_directions'} = [];
 
 

@@ -246,9 +246,8 @@ $result_texts{'double_top'} = '
 .
 ';
 
-$result_sectioning{'double_top'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'double_top'} = {};
+
 $result_errors{'double_top'} = [
   {
     'error_line' => ':3: @node `top\' previously defined

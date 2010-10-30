@@ -747,9 +747,8 @@ $result_texts{'node'} = '
 
 ';
 
-$result_sectioning{'node'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'node'} = {};
+
 $result_errors{'node'} = [
   {
     'error_line' => ':6: warning: Superfluous arguments for node

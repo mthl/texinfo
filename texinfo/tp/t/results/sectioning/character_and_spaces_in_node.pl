@@ -534,9 +534,8 @@ $result_texis{'character_and_spaces_in_node'} = '
 $result_texts{'character_and_spaces_in_node'} = '
 ';
 
-$result_sectioning{'character_and_spaces_in_node'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'character_and_spaces_in_node'} = {};
+
 $result_errors{'character_and_spaces_in_node'} = [];
 
 

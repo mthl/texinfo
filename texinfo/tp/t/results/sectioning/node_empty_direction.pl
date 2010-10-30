@@ -72,9 +72,8 @@ $result_texis{'node_empty_direction'} = '@node name, ';
 
 $result_texts{'node_empty_direction'} = '';
 
-$result_sectioning{'node_empty_direction'} = {
-  'text' => '_ROOT'
-};
+$result_sectioning{'node_empty_direction'} = {};
+
 $result_errors{'node_empty_direction'} = [];
 
 

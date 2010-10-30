@@ -524,6 +524,8 @@ $result_trees{'character_and_spaces_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
@@ -843,11 +845,14 @@ $result_trees{'character_and_spaces_in_refs'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 21,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -1421,20 +1426,38 @@ $result_sectioning{'character_and_spaces_in_refs'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'other-nodes'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0];
 $result_sectioning{'character_and_spaces_in_refs'}{'childs'}[0]{'up'} = $result_sectioning{'character_and_spaces_in_refs'};
+
 $result_errors{'character_and_spaces_in_refs'} = [];
 
 

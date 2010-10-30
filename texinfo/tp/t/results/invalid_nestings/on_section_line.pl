@@ -132,7 +132,9 @@ $result_trees{'on_section_line'} = {
       ],
       'cmdname' => 'section',
       'contents' => [],
+      'level' => 2,
       'line_nr' => {},
+      'number' => 1,
       'parent' => {}
     }
   ],
@@ -175,15 +177,16 @@ $result_texts{'on_section_line'} = 'Text in titlefont  exdent
 $result_sectioning{'on_section_line'} = {
   'childs' => [
     {
+      'cmdname' => 'section',
       'level' => 2,
       'number' => 1,
       'up' => {}
     }
   ],
-  'level' => 1,
-  'text' => '_ROOT'
+  'level' => 1
 };
 $result_sectioning{'on_section_line'}{'childs'}[0]{'up'} = $result_sectioning{'on_section_line'};
+
 $result_errors{'on_section_line'} = [
   {
     'error_line' => ':1: warning: @noindent should not appear in @section

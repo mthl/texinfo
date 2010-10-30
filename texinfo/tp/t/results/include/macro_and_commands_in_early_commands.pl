@@ -425,6 +425,8 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'parent' => {}
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 19,
@@ -544,14 +546,23 @@ in themacro
 $result_sectioning{'macro_and_commands_in_early_commands'} = {
   'childs' => [
     {
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'macro_and_commands_in_early_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
+
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
     'error_line' => ':11: warning: Encoding `ISO-8859-1@\' is not a canonical texinfo encoding

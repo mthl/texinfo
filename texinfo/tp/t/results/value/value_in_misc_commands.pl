@@ -2531,6 +2531,8 @@ $result_trees{'value_in_misc_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -3152,14 +3154,23 @@ line after exdent
 $result_sectioning{'value_in_misc_commands'} = {
   'childs' => [
     {
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'value_in_misc_commands'}{'childs'}[0]{'up'} = $result_sectioning{'value_in_misc_commands'};
+
 $result_errors{'value_in_misc_commands'} = [
   {
     'error_line' => ':17: Bad argument to @headings: on line following headings atext

@@ -267,6 +267,8 @@ $result_trees{'nodename_parentheses'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
@@ -369,11 +371,14 @@ $result_trees{'nodename_parentheses'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 11,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -530,11 +535,14 @@ $result_trees{'nodename_parentheses'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 16,
         'macro' => ''
       },
+      'number' => 2,
       'parent' => {}
     },
     {
@@ -689,11 +697,14 @@ $result_trees{'nodename_parentheses'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 23,
         'macro' => ''
       },
+      'number' => 3,
       'parent' => {}
     }
   ],
@@ -869,29 +880,64 @@ $result_sectioning{'nodename_parentheses'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'Node-_0028with-parentheses_0029'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'Other-node'
+              }
+            }
+          },
           'level' => 1,
           'number' => 2,
           'prev' => {},
           'up' => {}
         },
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'node'
+              }
+            }
+          },
           'level' => 1,
           'number' => 3,
           'prev' => {},
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
 $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[0];
@@ -899,6 +945,7 @@ $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1]{'up'} = $re
 $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'prev'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[1];
 $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'childs'}[2]{'up'} = $result_sectioning{'nodename_parentheses'}{'childs'}[0];
 $result_sectioning{'nodename_parentheses'}{'childs'}[0]{'up'} = $result_sectioning{'nodename_parentheses'};
+
 $result_errors{'nodename_parentheses'} = [
   {
     'error_line' => ':22: Syntax for an external node used for ` (manual)node

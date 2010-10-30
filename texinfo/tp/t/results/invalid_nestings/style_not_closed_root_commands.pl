@@ -270,11 +270,14 @@ $result_trees{'style_not_closed_root_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -360,15 +363,24 @@ still not closed
 $result_sectioning{'style_not_closed_root_commands'} = {
   'childs' => [
     {
+      'cmdname' => 'chapter',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'chapter'
+          }
+        }
+      },
       'level' => 1,
       'number' => 1,
       'up' => {}
     }
   ],
-  'level' => 0,
-  'text' => '_ROOT'
+  'level' => 0
 };
 $result_sectioning{'style_not_closed_root_commands'}{'childs'}[0]{'up'} = $result_sectioning{'style_not_closed_root_commands'};
+
 $result_errors{'style_not_closed_root_commands'} = [
   {
     'error_line' => ':8: @code missing close brace

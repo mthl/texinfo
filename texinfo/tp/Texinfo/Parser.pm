@@ -141,7 +141,7 @@ my %default_configuration = (
 # errors_warnings         a structure with the errors and warnings.
 # error_nrs               number of errors.
 # current_node            last seen node.
-# nodes                   list? hash? of nodes.
+# nodes                   list of nodes
 
 # A line information is an hash reference with the keys:
 # line_nr        the line number
@@ -2047,9 +2047,8 @@ sub _end_line($$$)
                         $current->{'args'}->[0], $command, $line_nr)) {
         if (_register_label($self, $current, 
                     $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr)) {
-          $self->{'current_node'} = { 'node' => $current };
-          $self->{'nodes'}->{$current->{'extra'}->{'normalized'}} 
-             = $self->{'current_node'};
+          $self->{'current_node'} = $current;
+          push @{$self->{'nodes'}}, $self->{'current_node'};
         }
       }
     } elsif ($command eq 'listoffloats') {
@@ -2087,10 +2086,16 @@ sub _end_line($$$)
         $current = $current->{'contents'}->[-1];
       }
     } elsif ($root_commands{$command}) {
-      #delete $current->{'contents'}->[-1]->{'remaining_args'};
       $current = $current->{'contents'}->[-1];
       delete $current->{'remaining_args'};
       $current->{'contents'} = [];
+      # associate the section (not part) with the current node.
+      if ($command ne 'node' and $command ne 'part'
+           and $self->{'current_node'}
+           and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
+        $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
+        $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
+      }
     }
    # do that last in order to have the line processed if one of the above
    # case is also set.

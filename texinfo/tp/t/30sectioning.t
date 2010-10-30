@@ -67,6 +67,13 @@ Dummy section with (manual)node node syntax.
 ['at_commands_in_node',
 '@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}'
 ],
+['unknown_node_in_menu',
+'@node Top
+
+@menu
+* unknown::
+@end menu
+'],
 ['character_and_spaces_in_refs',
 '@node Top
 @top Test refs

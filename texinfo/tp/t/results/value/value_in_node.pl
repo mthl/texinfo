@@ -257,6 +257,8 @@ $result_trees{'value_in_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -488,11 +490,14 @@ $result_trees{'value_in_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 11,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -769,20 +774,38 @@ $result_sectioning{'value_in_node'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'Node-1'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'value_in_node'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'}{'childs'}[0];
 $result_sectioning{'value_in_node'}{'childs'}[0]{'up'} = $result_sectioning{'value_in_node'};
+
 $result_errors{'value_in_node'} = [];
 
 

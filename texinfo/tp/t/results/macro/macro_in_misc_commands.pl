@@ -2916,6 +2916,8 @@ $result_trees{'macro_in_misc_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
@@ -3099,11 +3101,14 @@ $result_trees{'macro_in_misc_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 196,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -3830,20 +3835,38 @@ $result_sectioning{'macro_in_misc_commands'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'node-atext'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'macro_in_misc_commands'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'macro_in_misc_commands'}{'childs'}[0];
 $result_sectioning{'macro_in_misc_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_in_misc_commands'};
+
 $result_errors{'macro_in_misc_commands'} = [
   {
     'error_line' => ':26: Bad argument to @headings: on line following headings atext

@@ -135,6 +135,8 @@ $result_trees{'node_in_copying_not_closed'} = {
 '
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 7,
@@ -188,14 +190,23 @@ $result_texts{'node_in_copying_not_closed'} = 'Top section
 $result_sectioning{'node_in_copying_not_closed'} = {
   'childs' => [
     {
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'node_in_copying_not_closed'}{'childs'}[0]{'up'} = $result_sectioning{'node_in_copying_not_closed'};
+
 $result_errors{'node_in_copying_not_closed'} = [
   {
     'error_line' => ':6: No matching `@end copying\'

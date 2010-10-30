@@ -488,6 +488,8 @@ $result_trees{'macro_in_early_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 26,
@@ -625,14 +627,23 @@ texi_commands.info
 $result_sectioning{'macro_in_early_commands'} = {
   'childs' => [
     {
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'macro_in_early_commands'}{'childs'}[0]{'up'} = $result_sectioning{'macro_in_early_commands'};
+
 $result_errors{'macro_in_early_commands'} = [
   {
     'error_line' => ':18: warning: @documentencoding-command defined with zero or more than one argument should be invoked with {}

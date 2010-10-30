@@ -32,11 +32,13 @@ $result_trees{'sections'} = {
       ],
       'cmdname' => 'chapter',
       'contents' => [],
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     }
   ],
@@ -58,15 +60,16 @@ $result_texts{'sections'} = 'a chapter
 $result_sectioning{'sections'} = {
   'childs' => [
     {
+      'cmdname' => 'chapter',
       'level' => 1,
       'number' => 1,
       'up' => {}
     }
   ],
-  'level' => 0,
-  'text' => '_ROOT'
+  'level' => 0
 };
 $result_sectioning{'sections'}{'childs'}[0]{'up'} = $result_sectioning{'sections'};
+
 $result_errors{'sections'} = [];
 
 

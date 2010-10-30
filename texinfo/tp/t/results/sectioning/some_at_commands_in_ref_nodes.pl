@@ -329,6 +329,8 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -934,11 +936,14 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {},
+      'level' => 1,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     }
   ],
@@ -1162,20 +1167,38 @@ $result_sectioning{'some_at_commands_in_ref_nodes'} = {
     {
       'childs' => [
         {
+          'cmdname' => 'chapter',
+          'extra' => {
+            'associated_node' => {
+              'cmdname' => 'node',
+              'extra' => {
+                'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+              }
+            }
+          },
           'level' => 1,
           'number' => 1,
           'up' => {}
         }
       ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_node' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'Top'
+          }
+        }
+      },
       'level' => 0,
       'up' => {}
     }
   ],
-  'level' => -1,
-  'text' => '_ROOT'
+  'level' => -1
 };
 $result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0]{'childs'}[0]{'up'} = $result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0];
 $result_sectioning{'some_at_commands_in_ref_nodes'}{'childs'}[0]{'up'} = $result_sectioning{'some_at_commands_in_ref_nodes'};
+
 $result_errors{'some_at_commands_in_ref_nodes'} = [];
 
 

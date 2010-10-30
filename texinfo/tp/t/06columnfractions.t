@@ -26,6 +26,7 @@ my @test_cases = (
 our $arg_generate;
 our $arg_test_case;
 our $arg_debug;
+our $nr_comparisons;
 
 ok(1);
 
@@ -43,5 +44,5 @@ if ($arg_generate) {
   plan tests => 2;
 }
 else {
-  plan tests => (2 + scalar(@done_tests) * 6);
+  plan tests => (2 + scalar(@done_tests) * $nr_comparisons);
 }
