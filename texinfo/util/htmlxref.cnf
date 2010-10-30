@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-29.17; # UTC
+htmlxrefversion=2010-10-30.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -72,6 +72,8 @@ cssc		node	${GS}/cssc/manual/
 #cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
 
 ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
+
+ddrescue	mono	${GS}/ddrescue/manual/ddrescue_manual.html
 
 diffutils	mono	${GS}/diffutils/manual/diffutils.html
 

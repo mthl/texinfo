@@ -1,3 +1,10 @@
+2010-10-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (HTML Customization for External References):
+	rename+edit.
+	Change "cross-reference" to "cross reference" throughout,
+	for consistency.
+
 2010-10-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Customization for Title Commands): rename+edit.
