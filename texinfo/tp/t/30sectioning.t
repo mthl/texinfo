@@ -28,6 +28,14 @@ my @test_cases = (
 
 @node Test               title
 '],
+['empty_nodes_with_commands',
+'
+@node @c comment
+
+@node @
+@node @:
+@node @asis{ }
+'],
 ['sections',
 '@chapter a chapter
 '],

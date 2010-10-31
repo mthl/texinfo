@@ -155,7 +155,21 @@ line following documentlanguage
 '],
 ['empty_documentencoding',
 '@documentencoding   
+'],
+['text_before_line_command',
+'before title @title the title
+
+i@node LD Version Scripts
+--- @chapter LD Version Scripts
+
+ddd @contents
+
+@quotation
+aaa @author quotation author
+quotation
+@end quotation
 ']
+
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

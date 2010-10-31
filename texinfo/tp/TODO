@@ -97,6 +97,8 @@ sectioning/test_two_include.texi (not done at all, but it tests
 sectioning/node-whitespace.tex   (but not @ref)
 sectioning/loop_nodes.texi
 sectioning/sectioning.texi
+sectioning/text_before_line_command.texi
+sectioning/empty_nodes.texi  (but not the @ref)
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)

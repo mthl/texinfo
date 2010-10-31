@@ -1610,7 +1610,7 @@ sub _parse_float_type($)
     _trim_spaces_comment_from_content(\@type_contents);
     if (@type_contents) {
       my $normalized = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
-      if ($normalized =~ /\S/) {
+      if ($normalized =~ /[^-]/) {
         $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
         $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
         return 1;
@@ -1932,7 +1932,7 @@ sub _end_line($$$)
           _check_internal_node($self, $float_label, $float->{'args'}->[1], 
                                $line_nr);
           if (defined($float_label) and $float_label->{'node_content'}
-             and $float_label->{'normalized'} =~ /\S/) {
+             and $float_label->{'normalized'} =~ /[^-]/) {
             _register_label($self, $float, $float_label, $line_nr);
           }
         }
@@ -2171,10 +2171,14 @@ sub _check_empty_node($$$$)
   my $parsed_node = shift;
   my $command = shift;
   my $line_nr = shift;
-  if (!defined($parsed_node) or !$parsed_node->{'node_content'}
-      or $parsed_node->{'normalized'} !~ /\S/) {
+  if (!defined($parsed_node) or !$parsed_node->{'node_content'}) {
     _line_error ($self, sprintf($self->__("Empty argument in \@%s"),
                 $command), $line_nr);
+    return 0;
+  } elsif ($parsed_node->{'normalized'} !~ /[^-]/) {
+    _line_error ($self, sprintf($self->__("Empty node name after expansion `%s'"),
+                tree_to_texi({'contents' => $parsed_node->{'node_content'}})), 
+                $line_nr);
     return 0;
   } else {
     return 1;
