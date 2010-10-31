@@ -3899,6 +3899,7 @@ $result_nodes{'macro_in_misc_commands'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -3913,6 +3914,9 @@ $result_nodes{'macro_in_misc_commands'}{'node_next'} = $result_nodes{'macro_in_m
 $result_menus{'macro_in_misc_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'node-atext' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {

@@ -22,7 +22,7 @@ ok(1);
 our $arg_generate;
 our $arg_debug;
 our $arg_complete;
-our $nr_comparisons = 7;
+our $nr_comparisons = 8;
 
 Getopt::Long::Configure("gnu_getopt");
 GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug, 
@@ -103,7 +103,7 @@ sub new_test ($;$$)
 
 my @contents_keys = ('contents', 'args', 'parent', 'line_nr', 'node_content', 
   'nodes_manuals');
-my @menus_keys = ('menu_next', 'menu_up', 'menu_prev');
+my @menus_keys = ('menu_next', 'menu_up', 'menu_prev', 'menu_childs');
 my @sections_keys = ('section_next', 'section_prev', 'section_up', 
   'section_childs', 'associated_node');
 my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
@@ -294,6 +294,9 @@ sub test($$)
        #print STDERR  Data::Dumper->Dump([$trimmed], ['$top_node']);
   #      print STDERR  Data::Dumper->Dump([$result_nodes{$test_name}], ['$result']);
     }
+    cmp_trimmed($top_node, $result_menus{$test_name}, \@avoided_keys_menus,
+                $test_name.' menus');
+
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), 
         $test_name.' errors');
     ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 

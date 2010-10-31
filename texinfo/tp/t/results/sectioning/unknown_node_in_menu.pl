@@ -175,6 +175,7 @@ $result_nodes{'unknown_node_in_menu'} = {
     }
   ],
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'

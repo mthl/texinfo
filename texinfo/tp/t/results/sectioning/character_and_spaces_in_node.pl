@@ -543,6 +543,7 @@ $result_nodes{'character_and_spaces_in_node'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -569,6 +570,15 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':2: Node `Top\' lacks menu item for `other nodes\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Node `Top\' lacks menu item for `other nodes\' despite being its Up target',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':4: warning: unreferenced node `!_"#$%&\'()*+-.\'
 ',
     'file_name' => '',
@@ -576,6 +586,15 @@ $result_errors{'character_and_spaces_in_node'} = [
     'macro' => '',
     'text' => 'unreferenced node `!_"#$%&\'()*+-.\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: Node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: warning: unreferenced node `/;<=>?[\\]^_`|~\'
@@ -587,6 +606,15 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':3: Node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: warning: unreferenced node `local   node\'
 ',
     'file_name' => '',
@@ -594,6 +622,15 @@ $result_errors{'character_and_spaces_in_node'} = [
     'macro' => '',
     'text' => 'unreferenced node `local   node\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: Node `other nodes\' lacks menu item for `local   node\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Node `other nodes\' lacks menu item for `local   node\' despite being its Up target',
+    'type' => 'error'
   }
 ];
 

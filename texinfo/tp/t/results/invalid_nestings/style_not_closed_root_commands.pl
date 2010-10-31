@@ -408,6 +408,7 @@ $result_nodes{'style_not_closed_root_commands'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -422,6 +423,9 @@ $result_nodes{'style_not_closed_root_commands'}{'node_next'} = $result_nodes{'st
 $result_menus{'style_not_closed_root_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'chapter' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {

@@ -575,6 +575,7 @@ $result_nodes{'macro_and_commands_in_early_commands'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'

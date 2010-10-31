@@ -1231,6 +1231,7 @@ $result_nodes{'some_at_commands_in_ref_nodes'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -1245,6 +1246,9 @@ $result_nodes{'some_at_commands_in_ref_nodes'}{'node_next'} = $result_nodes{'som
 $result_menus{'some_at_commands_in_ref_nodes'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {

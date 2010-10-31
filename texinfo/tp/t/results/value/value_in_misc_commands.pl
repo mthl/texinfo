@@ -3183,6 +3183,7 @@ $result_nodes{'value_in_misc_commands'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'

@@ -1520,6 +1520,7 @@ $result_nodes{'character_and_spaces_in_refs'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -1541,11 +1542,19 @@ $result_nodes{'character_and_spaces_in_refs'}{'node_next'} = $result_nodes{'char
 $result_menus{'character_and_spaces_in_refs'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'other-nodes' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'menu_childs' => {
+        '_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e' => 1,
+        '_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e' => 1,
+        'local-node' => 1
+      },
       'normalized' => 'other-nodes'
     },
     'menu_child' => {

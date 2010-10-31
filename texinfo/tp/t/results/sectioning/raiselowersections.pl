@@ -1495,6 +1495,7 @@ $result_nodes{'raiselowersections'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -1514,21 +1515,34 @@ $result_nodes{'raiselowersections'}{'node_next'} = $result_nodes{'raiselowersect
 $result_menus{'raiselowersections'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'Chapter' => 1,
+      'Second-chapter' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'menu_childs' => {
+        'Chapter-in-included-file' => 1
+      },
       'normalized' => 'Chapter'
     },
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
+        'menu_childs' => {
+          'Section' => 1
+        },
         'normalized' => 'Chapter-in-included-file'
       },
       'menu_child' => {
         'cmdname' => 'node',
         'extra' => {
+          'menu_childs' => {
+            'Subsection' => 1
+          },
           'normalized' => 'Section'
         },
         'menu_child' => {

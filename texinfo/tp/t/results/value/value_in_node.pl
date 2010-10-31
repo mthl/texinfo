@@ -885,11 +885,17 @@ $result_nodes{'value_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'value_i
 $result_menus{'value_in_node'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'Node-1' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'menu_childs' => {
+        'Section-1_002e1' => 1
+      },
       'normalized' => 'Node-1'
     },
     'menu_child' => {

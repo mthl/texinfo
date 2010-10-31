@@ -568,6 +568,7 @@ $result_nodes{'value_expansion_in_include'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'

@@ -323,8 +323,10 @@ sub nodes_tree ($)
                   $menu_content->{'line_nr'});
               }
             } else {
+              my $normalized_menu_node
+                = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
               my $menu_node =
-                $self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}};
+                $self->{'labels'}->{$normalized_menu_node};
               $menu_node->{'menu_up'} = $node;
               if ($previous_node) {
                 $menu_node->{'menu_prev'} = $previous_node;
@@ -332,6 +334,7 @@ sub nodes_tree ($)
               } else {
                 $node->{'menu_child'} = $menu_node;
               }
+              $node->{'extra'}->{'menu_childs'}->{$normalized_menu_node} = 1;
               $previous_node = $menu_node;
             }
           }
@@ -399,6 +402,15 @@ sub nodes_tree ($)
           }
         }
       }
+    }
+    if ($node->{'node_up'} 
+        and !$node->{'node_up'}->{'extra'}->{'manual_content'}
+        and (!$node->{'node_up'}->{'extra'}->{'menu_childs'}
+             or !$node->{'node_up'}->{'extra'}->{'menu_childs'}->{$node->{'extra'}->{'normalized'}})) {
+      $self->_line_error(sprintf($self->__("Node `%s' lacks menu item for `%s' despite being its Up target"), 
+           tree_to_texi({'contents' => $node->{'node_up'}->{'extra'}->{'node_content'}}), 
+           tree_to_texi({'contents' => $node->{'extra'}->{'node_content'}})),
+           $node->{'node_up'}->{'line_nr'});
     }
   }
   return $top_node;

@@ -219,6 +219,7 @@ $result_nodes{'node_in_copying_not_closed'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'

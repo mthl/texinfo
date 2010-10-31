@@ -992,6 +992,7 @@ $result_nodes{'nodename_parentheses'} = {
   ],
   'node_next' => {},
   'node_up' => {
+    'extra' => {},
     'manual_content' => [
       {
         'text' => 'dir'
@@ -1008,6 +1009,10 @@ $result_nodes{'nodename_parentheses'}{'node_next'} = $result_nodes{'nodename_par
 $result_menus{'nodename_parentheses'} = {
   'cmdname' => 'node',
   'extra' => {
+    'menu_childs' => {
+      'Node-_0028with-parentheses_0029' => 1,
+      'Other-node' => 1
+    },
     'normalized' => 'Top'
   },
   'menu_child' => {
