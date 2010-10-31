@@ -85,7 +85,11 @@ sectioning/test_refs.texi
 sectioning/nodename_parentheses.texi
 sectioning/double_node_anchor_float.texi
 sectioning/double_top.texi   (but not @ref and menu)
-sectioning/nodes_test.texi   (only done: unknown entry in menu)
+sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
+                              and errors.  Not sure the remaining is 
+                              interesting)
+sectioning/rec_nodes.texi
+sectioning/semi_auto.texi
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)

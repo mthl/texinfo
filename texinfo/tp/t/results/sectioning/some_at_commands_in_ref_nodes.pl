@@ -550,9 +550,6 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
         'line_nr' => 9,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -1224,9 +1221,6 @@ $result_sectioning{'some_at_commands_in_ref_nodes'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -1262,9 +1256,6 @@ $result_nodes{'some_at_commands_in_ref_nodes'} = {
         'number' => 1
       },
       'normalized' => 'A-SC-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
-    },
-    'menu_up_hash' => {
-      'Top' => 1
     },
     'node_prev' => {},
     'node_up' => {}

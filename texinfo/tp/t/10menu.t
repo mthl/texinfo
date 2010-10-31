@@ -66,6 +66,14 @@ new comment
 @end detailmenu
 @end menu
 '],
+['reference_to_external_manual',
+'
+@node Top
+
+@menu
+* (info)::
+@end menu
+'],
 ['menu_entry_no_entry',
 '@menu
 * a1:

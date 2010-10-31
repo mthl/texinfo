@@ -200,9 +200,6 @@ $result_trees{'style_not_closed_no_newline_root_commands'} = {
         'line_nr' => 8,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -361,9 +358,6 @@ $result_sectioning{'style_not_closed_no_newline_root_commands'} = {
           'cmdname' => 'node',
           'extra' => {
             'normalized' => 'chapter'
-          },
-          'menu_up_hash' => {
-            'Top' => 1
           }
         }
       },
@@ -390,9 +384,6 @@ $result_nodes{'style_not_closed_no_newline_root_commands'} = {
         'number' => 1
       },
       'normalized' => 'chapter'
-    },
-    'menu_up_hash' => {
-      'Top' => 1
     },
     'node_prev' => {},
     'node_up' => {}

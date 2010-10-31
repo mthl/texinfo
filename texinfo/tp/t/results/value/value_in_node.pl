@@ -360,9 +360,6 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 10,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -641,9 +638,6 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 19,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Node-1' => 1
-      },
       'parent' => {}
     }
   ],
@@ -808,9 +802,6 @@ $result_sectioning{'value_in_node'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Node-1'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -852,14 +843,8 @@ $result_nodes{'value_in_node'} = {
       'extra' => {
         'normalized' => 'Section-1_002e1'
       },
-      'menu_up_hash' => {
-        'Node-1' => 1
-      },
       'node_prev' => {},
       'node_up' => {}
-    },
-    'menu_up_hash' => {
-      'Top' => 1
     },
     'menus' => [
       {

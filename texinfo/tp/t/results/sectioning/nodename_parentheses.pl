@@ -324,9 +324,6 @@ $result_trees{'nodename_parentheses'} = {
         'line_nr' => 10,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -435,9 +432,6 @@ $result_trees{'nodename_parentheses'} = {
         'file_name' => '',
         'line_nr' => 15,
         'macro' => ''
-      },
-      'menu_up_hash' => {
-        'Top' => 1
       },
       'parent' => {}
     },
@@ -924,9 +918,6 @@ $result_sectioning{'nodename_parentheses'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Node-_0028with-parentheses_0029'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -941,9 +932,6 @@ $result_sectioning{'nodename_parentheses'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Other-node'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -1000,9 +988,6 @@ $result_nodes{'nodename_parentheses'} = {
       },
       'normalized' => 'Node-_0028with-parentheses_0029'
     },
-    'menu_up_hash' => {
-      'Top' => 1
-    },
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
@@ -1013,9 +998,6 @@ $result_nodes{'nodename_parentheses'} = {
           'number' => 2
         },
         'normalized' => 'Other-node'
-      },
-      'menu_up_hash' => {
-        'Top' => 1
       },
       'node_prev' => {},
       'node_up' => {}

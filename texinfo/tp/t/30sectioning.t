@@ -347,6 +347,64 @@ Second chapter
 
 @anchor{TOP}.
 '],
+['rec_nodes',
+'@node ToP
+Top node
+
+@menu
+* second node::
+* node following second::
+@end menu
+
+@node second node,,Top,Top
+
+@menu
+* other node::
+* second node::
+@end menu
+
+@node other node,,,second node
+
+@menu 
+* other node::
+@end menu
+
+@node node up node following second,,,node following second
+@menu
+* node following second::
+@end menu
+
+in node up node following second
+
+@node node following second,,,node up node following second
+
+in node following second
+@menu
+* node up node following second::
+@end menu
+'],
+['semi_auto',
+'@node Top
+@top Top
+
+@menu
+* Chap1::
+* Section non auto::
+@end menu
+
+@node Chap1
+@chapter Chapter 1
+
+@menu
+* Sec in chapter::
+@end menu
+
+@node Sec in chapter
+@section Sec in chapter
+
+@node Section non auto,, Chap1, Top
+@section Section
+']
 
 );
 

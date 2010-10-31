@@ -2983,9 +2983,6 @@ $result_trees{'macro_in_misc_commands'} = {
         'line_nr' => 195,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -3878,9 +3875,6 @@ $result_sectioning{'macro_in_misc_commands'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'node-atext'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -3916,9 +3910,6 @@ $result_nodes{'macro_in_misc_commands'} = {
         'number' => 1
       },
       'normalized' => 'node-atext'
-    },
-    'menu_up_hash' => {
-      'Top' => 1
     },
     'node_prev' => {},
     'node_up' => {}

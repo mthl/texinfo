@@ -275,9 +275,6 @@ $result_trees{'raiselowersections'} = {
         'line_nr' => 10,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Top' => 1
-      },
       'parent' => {}
     },
     {
@@ -514,9 +511,6 @@ $result_trees{'raiselowersections'} = {
         'line_nr' => 13,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Chapter' => 1
-      },
       'parent' => {}
     },
     {
@@ -683,9 +677,6 @@ $result_trees{'raiselowersections'} = {
         'file_name' => 't/include//section_file.texi',
         'line_nr' => 20,
         'macro' => ''
-      },
-      'menu_up_hash' => {
-        'Chapter-in-included-file' => 1
       },
       'parent' => {}
     },
@@ -854,9 +845,6 @@ $result_trees{'raiselowersections'} = {
         'line_nr' => 27,
         'macro' => ''
       },
-      'menu_up_hash' => {
-        'Section' => 1
-      },
       'parent' => {}
     },
     {
@@ -986,9 +974,6 @@ $result_trees{'raiselowersections'} = {
         'file_name' => '',
         'line_nr' => 30,
         'macro' => ''
-      },
-      'menu_up_hash' => {
-        'Top' => 1
       },
       'parent' => {}
     },
@@ -1341,9 +1326,6 @@ $result_sectioning{'raiselowersections'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Chapter'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -1357,9 +1339,6 @@ $result_sectioning{'raiselowersections'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'Chapter-in-included-file'
-                  },
-                  'menu_up_hash' => {
-                    'Chapter' => 1
                   }
                 },
                 'sections_level' => -1
@@ -1374,9 +1353,6 @@ $result_sectioning{'raiselowersections'} = {
                       'cmdname' => 'node',
                       'extra' => {
                         'normalized' => 'Section'
-                      },
-                      'menu_up_hash' => {
-                        'Chapter-in-included-file' => 1
                       }
                     },
                     'sections_level' => -1
@@ -1391,9 +1367,6 @@ $result_sectioning{'raiselowersections'} = {
                           'cmdname' => 'node',
                           'extra' => {
                             'normalized' => 'Subsection'
-                          },
-                          'menu_up_hash' => {
-                            'Section' => 1
                           }
                         },
                         'sections_level' => -1
@@ -1418,9 +1391,6 @@ $result_sectioning{'raiselowersections'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Second-chapter'
-              },
-              'menu_up_hash' => {
-                'Top' => 1
               }
             }
           },
@@ -1502,13 +1472,7 @@ $result_nodes{'raiselowersections'} = {
             },
             'normalized' => 'Subsection'
           },
-          'menu_up_hash' => {
-            'Section' => 1
-          },
           'node_up' => {}
-        },
-        'menu_up_hash' => {
-          'Chapter-in-included-file' => 1
         },
         'menus' => [
           {
@@ -1517,18 +1481,12 @@ $result_nodes{'raiselowersections'} = {
         ],
         'node_up' => {}
       },
-      'menu_up_hash' => {
-        'Chapter' => 1
-      },
       'menus' => [
         {
           'cmdname' => 'menu'
         }
       ],
       'node_up' => {}
-    },
-    'menu_up_hash' => {
-      'Top' => 1
     },
     'menus' => [
       {
@@ -1545,9 +1503,6 @@ $result_nodes{'raiselowersections'} = {
           'number' => 2
         },
         'normalized' => 'Second-chapter'
-      },
-      'menu_up_hash' => {
-        'Top' => 1
       },
       'node_prev' => {},
       'node_up' => {}
