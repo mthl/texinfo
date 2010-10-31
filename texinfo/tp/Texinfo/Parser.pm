@@ -2726,11 +2726,18 @@ sub _parse_texi($$;$)
                                      $command, $current->{'parent'}->{'cmdname'}),
                            $line_nr);
             }
-          } elsif ($current->{'parent'}->{'type'}
-                    and $current->{'parent'}->{'type'} eq 'def_line'
-                    and !$in_simple_text_commands{$command}) {
+          #} elsif ($current->{'parent'}->{'type'}
+          #          and $current->{'parent'}->{'type'} eq 'def_line'
+          } elsif ($self->{'context_stack'}->[-1] eq 'def'
+                   and !$in_simple_text_commands{$command}) {
+              my $def_block = $current;
+              while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
+                                   or $def_block->{'parent'}->{'type'} ne 'def_line')) {
+                $def_block = $def_block->{'parent'};
+              }
+ 
               _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
-                                     $command, $current->{'parent'}->{'parent'}->{'cmdname'}),
+                                     $command, $def_block->{'parent'}->{'parent'}->{'cmdname'}),
                            $line_nr);
           }
         }

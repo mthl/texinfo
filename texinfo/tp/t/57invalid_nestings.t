@@ -14,6 +14,11 @@ my @test_cases = (
 @quotation @indent @titlefont{in titlefont} @anchor{in quotation anchor}@footnote{footnote} @exdent exdent
 @end quotation
 '],
+['on_def_line',
+'@deffn {@anchor{in anchor}} @titlefont{in titlefont} @footnote{footnote} @exdent exdent
+@deffnx {@anchor{in anchorx}} @titlefont{in titlefontx} @footnote{footnotex} @exdent exdentx
+@end deffn
+'],
 ['ignored_text',
 '@node before ignore @ifinfo
 in ifinfo
