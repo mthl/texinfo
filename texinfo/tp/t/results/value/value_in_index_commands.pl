@@ -288,9 +288,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'trucindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'trucindex',
+          'index_name' => 'truc',
+          'index_prefix' => 'truc'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -491,14 +498,21 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'codeidxindex',
       'extra' => {
-        'misc_content' => [
-          {},
-          {},
-          {},
-          {},
-          {},
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ],
+          'index_at_command' => 'codeidxindex',
+          'index_name' => 'codeidx',
+          'index_prefix' => 'codeidx'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -539,9 +553,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'cindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'cindex',
+          'index_name' => 'cp',
+          'index_prefix' => 'c'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -626,9 +647,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'kindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'kindex',
+          'index_name' => 'ky',
+          'index_prefix' => 'k'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -663,9 +691,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'pindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'pindex',
+          'index_name' => 'pg',
+          'index_prefix' => 'p'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -912,9 +947,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'defgindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'defgindex',
+          'index_name' => 'defg',
+          'index_prefix' => 'defg'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -955,9 +997,16 @@ $result_trees{'value_in_index_commands'} = {
       ],
       'cmdname' => 'abcindex',
       'extra' => {
-        'misc_content' => [
-          {}
-        ]
+        'index_entry' => {
+          'command' => {},
+          'content' => [
+            {}
+          ],
+          'index_at_command' => 'abcindex',
+          'index_name' => 'abc',
+          'index_prefix' => 'abc'
+        },
+        'misc_content' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -1497,7 +1546,9 @@ $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'contents'}[
 $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[13];
-$result_trees{'value_in_index_commands'}{'contents'}[13]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[13]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[13];
+$result_trees{'value_in_index_commands'}{'contents'}[13]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[13]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[13]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[13]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[13]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[14]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[15];
@@ -1530,19 +1581,23 @@ $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[
 $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[21];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[1];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[1] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[2];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[2] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[3];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[3] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[4];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[4] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[5];
-$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'}[5] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[6];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[21];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[2];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[3];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[3] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[4];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[4] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[5];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'}[5] = $result_trees{'value_in_index_commands'}{'contents'}[21]{'args'}[0]{'contents'}[6];
+$result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[21]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[21]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[22]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[23];
-$result_trees{'value_in_index_commands'}{'contents'}[23]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[23]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[23];
+$result_trees{'value_in_index_commands'}{'contents'}[23]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[23]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[23]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[23]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[23]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[24]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[25]{'args'}[0];
@@ -1555,13 +1610,17 @@ $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'contents'}[
 $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[27];
-$result_trees{'value_in_index_commands'}{'contents'}[27]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[27]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[27];
+$result_trees{'value_in_index_commands'}{'contents'}[27]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[27]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[27]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[27]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[27]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[28];
-$result_trees{'value_in_index_commands'}{'contents'}[28]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[28]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[28];
+$result_trees{'value_in_index_commands'}{'contents'}[28]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[28]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[28]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[28]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[28]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[29]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[30]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[30]{'args'}[0];
@@ -1596,14 +1655,18 @@ $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'contents'}[
 $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[38];
-$result_trees{'value_in_index_commands'}{'contents'}[38]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[38]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[38];
+$result_trees{'value_in_index_commands'}{'contents'}[38]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[38]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[38]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[38]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[38]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[39]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0];
 $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[40];
-$result_trees{'value_in_index_commands'}{'contents'}[40]{'extra'}{'misc_content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[40]{'extra'}{'index_entry'}{'command'} = $result_trees{'value_in_index_commands'}{'contents'}[40];
+$result_trees{'value_in_index_commands'}{'contents'}[40]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'value_in_index_commands'}{'contents'}[40]{'args'}[0]{'contents'}[1];
+$result_trees{'value_in_index_commands'}{'contents'}[40]{'extra'}{'misc_content'} = $result_trees{'value_in_index_commands'}{'contents'}[40]{'extra'}{'index_entry'}{'content'};
 $result_trees{'value_in_index_commands'}{'contents'}[40]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[41]{'parent'} = $result_trees{'value_in_index_commands'};
 $result_trees{'value_in_index_commands'}{'contents'}[42]{'contents'}[0]{'parent'} = $result_trees{'value_in_index_commands'}{'contents'}[42];

@@ -116,9 +116,16 @@ $result_trees{'preformatted'} = {
               ],
               'cmdname' => 'item',
               'extra' => {
-                'misc_content' => [
-                  {}
-                ]
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'index_at_command' => 'vtable',
+                  'index_name' => 'vr',
+                  'index_prefix' => 'v'
+                },
+                'misc_content' => []
               },
               'parent' => {}
             },
@@ -172,7 +179,9 @@ $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1];
-$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];

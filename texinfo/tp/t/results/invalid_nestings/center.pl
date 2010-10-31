@@ -169,9 +169,16 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'cindex',
               'extra' => {
-                'misc_content' => [
-                  {}
-                ]
+                'index_entry' => {
+                  'command' => {},
+                  'content' => [
+                    {}
+                  ],
+                  'index_at_command' => 'cindex',
+                  'index_name' => 'cp',
+                  'index_prefix' => 'c'
+                },
+                'misc_content' => []
               },
               'line_nr' => {
                 'file_name' => '',
@@ -528,7 +535,9 @@ $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'con
 $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3];
-$result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
 $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'center'}{'contents'}[2]{'args'}[0];
 $result_trees{'center'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[2];
 $result_trees{'center'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[2]{'args'}[0]{'contents'}[1];

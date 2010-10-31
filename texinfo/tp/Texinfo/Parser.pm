@@ -142,7 +142,11 @@ my %default_configuration = (
 # errors_warnings         a structure with the errors and warnings.
 # error_nrs               number of errors.
 # current_node            last seen node.
-# nodes                   list of nodes
+# nodes                   list of nodes.
+# command_index_prefix    associate a command name to an index prefix.
+# prefix_to_index_name    associate an index prefix to the index name.
+# index_entries           key is an index name, value is an array reference
+#                         on index_entry.
 
 # A line information is an hash reference with the keys:
 # line_nr        the line number
@@ -374,10 +378,10 @@ my %index_type_def = (
  't' => ['deftp']
 );
 
-my %def_index_type;
+my %command_index_prefix;
 foreach my $index_type (keys %index_type_def) {
   foreach my $def (@{$index_type_def{$index_type}}) {
-    $def_index_type{$def} = $index_type;
+    $command_index_prefix{$def} = $index_type;
   }
 }
 
@@ -422,6 +426,7 @@ foreach my $def_command(keys %def_map) {
   # prepare what will be prepended when the def command is an alias
   if (ref($def_map{$def_command}) eq 'HASH') {
     my ($real_command) = keys (%{$def_map{$def_command}});
+    $command_index_prefix{$def_command} = $command_index_prefix{$real_command};
     $def_aliases{$def_command} = $real_command;
     my $prepended = $def_map{$def_command}->{$real_command};
     if ($prepended =~ /^\{/) {
@@ -487,6 +492,9 @@ foreach my $block_command_one_arg('table', 'ftable', 'vtable',
   $block_item_commands{$block_command_one_arg} = 1 
     unless ($block_command_one_arg =~ /quotation/);
 }
+
+$command_index_prefix{'vtable'} = 'v';
+$command_index_prefix{'ftable'} = 'f';
 
 $block_commands{'float'} = 2;
 
@@ -754,6 +762,8 @@ sub _enter_index_commands ($$)
     $self->{'misc_commands'}->{$prefix.'index'} = 'line';
     $self->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
     $self->{'simple_text_commands'}->{$prefix.'index'} = 1;
+    $self->{'command_index_prefix'}->{$prefix.'index'} = $prefix;
+    $self->{'prefix_to_index_name'}->{$prefix} = $index_name;
   }
 }
 
@@ -814,6 +824,7 @@ sub parser(;$$)
   $parser->{'simple_text_commands'} = _deep_copy (\%simple_text_commands);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = _deep_copy (\%index_names);
+  $parser->{'command_index_prefix'} = {%command_index_prefix};
   # a hash is simply concatenated.  It should be like %index_names.
   if (ref($parser->{'indices'}) eq 'HASH') {
     %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
@@ -1750,6 +1761,33 @@ sub _register_label($$$$)
   }
 }
 
+# store an index entry.
+# $current is the command element.
+# $content holds the actual content.
+# for index entries and v|ftable items, it is the index entry content, 
+# for def, it is the parsed arguments.  The actual content should be 
+# constructed based on the definition line arguments.
+sub _enter_index_entry($$$$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $current = shift;
+  my $content = shift;
+
+  my $prefix = $self->{'command_index_prefix'}->{$command};
+  my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
+  my $index_entry = { 'index_name'       => $index_name,
+                      'index_at_command' => $command,
+                      'index_prefix'     => $prefix,
+                      'content'          => $content,
+		      'command'          => $current,
+                    };
+  $index_entry->{'def'} = 1 if ($def_commands{$command});
+  $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
+  push @{$self->{'index_entries'}->{'index_name'}}, $index_entry;
+  $current->{'extra'}->{'index_entry'} = $index_entry;
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -1871,8 +1909,11 @@ sub _end_line($$$)
       if ($def_context ne 'def');
     my $arguments = _parse_def ($current->{'parent'}->{'extra'}->{'def_command'}, 
                                 $current->{'contents'});
-    $current->{'parent'}->{'extra'}->{'def_args'} = $arguments 
-       if scalar(@$arguments);
+    if (scalar(@$arguments)) {
+      $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
+      _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
+          $current->{'parent'}, $current->{'parent'}->{'extra'}->{'def_args'});
+    }
     $current = $current->{'parent'}->{'parent'};
 
   # other block command lines
@@ -2061,6 +2102,14 @@ sub _end_line($$$)
            $command), $line_nr);
       } else {
         $current->{'extra'}->{'misc_content'} = \@contents;
+        if (($command eq 'item' or $command eq 'itemx')
+            and $self->{'command_index_prefix'}->{$current->{'parent'}->{'cmdname'}}) {
+          _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, $current,
+                             $current->{'extra'}->{'misc_content'});
+        } elsif ($self->{'command_index_prefix'}->{$current->{'cmdname'}}) {
+          _enter_index_entry($self, $current->{'cmdname'}, $current,
+                             $current->{'extra'}->{'misc_content'});
+        }
       }
     }
     $current = $current->{'parent'};
@@ -2726,8 +2775,6 @@ sub _parse_texi($$;$)
                                      $command, $current->{'parent'}->{'cmdname'}),
                            $line_nr);
             }
-          #} elsif ($current->{'parent'}->{'type'}
-          #          and $current->{'parent'}->{'type'} eq 'def_line'
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
                    and !$in_simple_text_commands{$command}) {
               my $def_block = $current;
