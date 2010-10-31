@@ -100,6 +100,11 @@ $result_trees{'headitem_in_table'} = {
             }
           ],
           'cmdname' => 'item',
+          'extra' => {
+            'misc_content' => [
+              {}
+            ]
+          },
           'parent' => {}
         }
       ],
@@ -130,6 +135,7 @@ $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1];
+$result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'headitem_in_table'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_in_table'}{'contents'}[0];
 $result_trees{'headitem_in_table'}{'contents'}[0]{'parent'} = $result_trees{'headitem_in_table'};
 $result_trees{'headitem_in_table'}{'contents'}[1]{'parent'} = $result_trees{'headitem_in_table'};

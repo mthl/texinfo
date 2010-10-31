@@ -1972,71 +1972,64 @@ sub _end_line($$$)
     my $misc_cmd = $current;
     my $command = $current->{'cmdname'};
     print STDERR "MISC END \@$command\n" if ($self->{'debug'});
-    if ($self->{'misc_commands'}->{$command}
-        and $self->{'misc_commands'}->{$command} =~ /^\d$/) {
+    if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
-    } elsif ($self->{'misc_commands'}->{$command}
-        and $self->{'misc_commands'}->{$command} eq 'text') {
-      if (!$current->{'args'} or !@{$current->{'args'}}) {
-        _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
-           $command), $line_nr);
-      } else {
-        my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
-        $current->{'extra'}->{'text_arg'} = $text;
-        if ($command eq 'include') {
-          my $file;
-          if ($text =~ m,^(/|\./|\.\./),) {
-            $file = $text if (-e $text and -r $text);
+    } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
+      my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
+      $current->{'extra'}->{'text_arg'} = $text;
+      if ($command eq 'include') {
+        my $file;
+        if ($text =~ m,^(/|\./|\.\./),) {
+          $file = $text if (-e $text and -r $text);
+        } else {
+          foreach my $dir (@{$self->{'include_directories'}}) {
+            $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
+            last if (defined($file));
+          }
+        }
+        if (defined($file)) {
+          my $filehandle = do { local *FH };
+          if (open ($filehandle, $file)) {
+            $included_file = 1;
+            binmode($filehandle, ":encoding($self->{'encoding'})")
+              if (defined($self->{'encoding'}));
+            print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
+            $included_file = 1;
+            unshift @{$self->{'input'}}, { 
+              'name' => $file,
+              'line_nr' => 1,
+              'pending' => [],
+              'fh' => $filehandle };
           } else {
-            foreach my $dir (@{$self->{'include_directories'}}) {
-              $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
-              last if (defined($file));
+            _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
+               $command, $text, $!), $line_nr);
+          }
+        } else {
+          _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
+             $command, $text), $line_nr);
+        }
+      } elsif ($command eq 'documentencoding') {
+        if ($text =~ /\S/) {
+          _line_warn($self, sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
+                                   $text), $line_nr)
+            if (!$canonical_texinfo_encodings{lc($text)});
+          my $encoding = Encode::resolve_alias($text);
+          if (!$encoding) {
+            _line_warn($self, sprintf($self->__("unrecognized encoding name `%s'"), 
+                       $text), $line_nr);
+          } else {
+            $encoding = $encoding_aliases{$encoding} 
+              if ($encoding_aliases{$encoding});
+            $self->{'encoding'} = $encoding;
+            print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
+            foreach my $input (@{$self->{'input'}}) {
+              binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
             }
           }
-          if (defined($file)) {
-            my $filehandle = do { local *FH };
-            if (open ($filehandle, $file)) {
-              $included_file = 1;
-              binmode($filehandle, ":encoding($self->{'encoding'})")
-                if (defined($self->{'encoding'}));
-              print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
-              $included_file = 1;
-              unshift @{$self->{'input'}}, { 
-                'name' => $file,
-                'line_nr' => 1,
-                'pending' => [],
-                'fh' => $filehandle };
-            } else {
-              _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
-                 $command, $text, $!), $line_nr);
-            }
-          } else {
-            _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
-               $command, $text), $line_nr);
-          }
-        } elsif ($command eq 'documentencoding') {
-          if ($text =~ /\S/) {
-            _line_warn($self, sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
-                                     $text), $line_nr)
-              if (!$canonical_texinfo_encodings{lc($text)});
-            my $encoding = Encode::resolve_alias($text);
-            if (!$encoding) {
-              _line_warn($self, sprintf($self->__("unrecognized encoding name `%s'"), 
-                         $text), $line_nr);
-            } else {
-              $encoding = $encoding_aliases{$encoding} 
-                if ($encoding_aliases{$encoding});
-              $self->{'encoding'} = $encoding;
-              print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
-              foreach my $input (@{$self->{'input'}}) {
-                binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
-              }
-            }
-          } else {
-            _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
-               $command), $line_nr);
-          }
+        } else {
+          _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
+             $command), $line_nr);
         }
       }
     } elsif ($command eq 'node') {
@@ -2057,6 +2050,17 @@ sub _end_line($$$)
       if (!_parse_float_type($current)) {
         _line_error ($self, sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);
+      }
+    # handle all the other 'line' commands.  Here just check that they 
+    # have an argument and prepare contents without spaces.
+    } else {
+      my @contents = @{$current->{'args'}->[0]->{'contents'}};
+      _trim_spaces_comment_from_content(\@contents);
+      if (!scalar(@contents)) {
+        _line_error ($self, sprintf($self->__("\@%s missing argument"), 
+           $command), $line_nr);
+      } else {
+        $current->{'extra'}->{'misc_content'} = \@contents;
       }
     }
     $current = $current->{'parent'};

@@ -18,6 +18,9 @@ my @test_cases = (
 ['sections',
 '@chapter a chapter
 '],
+['unnumbered_no_argument',
+'@unnumbered
+'],
 ['a_comma_after_node',
 '@node Commands, Requirements, Nodes and Menus
 
@@ -343,7 +346,7 @@ Second chapter
 @node top,,ToP,Top
 
 @anchor{TOP}.
-']
+'],
 
 );
 

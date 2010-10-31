@@ -274,7 +274,11 @@ $result_trees{'style_not_closed_root_commands'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'misc_content' => [
+          {}
+        ]
+      },
       'level' => 1,
       'line_nr' => {
         'file_name' => '',
@@ -333,6 +337,7 @@ $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1]{'c
 $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[3];
+$result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[3]{'parent'} = $result_trees{'style_not_closed_root_commands'};
 $result_trees{'style_not_closed_root_commands'}{'contents'}[4]{'parent'} = $result_trees{'style_not_closed_root_commands'};
 

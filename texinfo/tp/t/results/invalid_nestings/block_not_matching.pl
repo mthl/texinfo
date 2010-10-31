@@ -173,6 +173,11 @@ $result_trees{'block_not_matching'} = {
             }
           ],
           'cmdname' => 'item',
+          'extra' => {
+            'misc_content' => [
+              {}
+            ]
+          },
           'parent' => {}
         },
         {
@@ -258,6 +263,11 @@ $result_trees{'block_not_matching'} = {
             }
           ],
           'cmdname' => 'item',
+          'extra' => {
+            'misc_content' => [
+              {}
+            ]
+          },
           'parent' => {}
         },
         {
@@ -459,6 +469,7 @@ $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2];
+$result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6];
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[3];
 $result_trees{'block_not_matching'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[6];
@@ -474,6 +485,7 @@ $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1];
+$result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];

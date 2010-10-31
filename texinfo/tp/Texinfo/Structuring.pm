@@ -294,7 +294,14 @@ sub sectioning_structure($$)
 sub _node_extra_to_texi($)
 {
   my $node = shift;
-  return tree_to_texi ({'contents' => $node->{'node_content'}});
+  my $result = '';
+  if ($node->{'manual_content'}) {
+    $result = '('.tree_to_texi({'contents' => $node->{'manual_content'}}) .')';
+  }
+  if ($node->{'node_content'}) {
+    $result .= tree_to_texi ({'contents' => $node->{'node_content'}});
+  }
+  return $result;
 }
 
 my @node_directions = ('next', 'prev', 'up');
@@ -374,6 +381,20 @@ sub nodes_tree ($)
             }
           } elsif ($node->{'menu_'.$direction}) {
             $node->{'node_'.$direction} = $node->{'menu_'.$direction};
+          }
+        }
+        if ($node->{'node_next'}) {
+          if (!defined($node->{'menu_next'})) {
+            $self->_line_warn(sprintf($self->__("No node following `%s' in menu, but `%s' follows in sectioning"), 
+             _node_extra_to_texi($node->{'extra'}), 
+             _node_extra_to_texi($node->{'node_next'}->{'extra'})), 
+             $node->{'line_nr'})
+          } elsif ($node->{'menu_next'} ne $node->{'node_next'}) {
+            $self->_line_warn(sprintf($self->__("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
+            _node_extra_to_texi($node->{'extra'}),
+            _node_extra_to_texi($node->{'menu_next'}->{'extra'}), 
+            _node_extra_to_texi($node->{'node_next'}->{'extra'})),
+            $node->{'line_nr'})
           }
         }
       } else {

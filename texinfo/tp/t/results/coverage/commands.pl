@@ -250,6 +250,12 @@ $result_trees{'commands'} = {
         }
       ],
       'cmdname' => 'cindex',
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 6,
@@ -305,6 +311,12 @@ $result_trees{'commands'} = {
         }
       ],
       'cmdname' => 'majorheading',
+      'extra' => {
+        'misc_content' => [
+          {},
+          {}
+        ]
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 8,
@@ -359,6 +371,8 @@ $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'p
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2];
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0];
@@ -368,6 +382,8 @@ $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'args'}[0]{'p
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4];
+$result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[1] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[2];
 $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 
 $result_texis{'commands'} = '@@ @TeX{} @

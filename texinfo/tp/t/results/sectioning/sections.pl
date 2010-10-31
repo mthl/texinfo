@@ -33,6 +33,11 @@ $result_trees{'sections'} = {
       ],
       'cmdname' => 'chapter',
       'contents' => [],
+      'extra' => {
+        'misc_content' => [
+          {}
+        ]
+      },
       'level' => 1,
       'line_nr' => {
         'file_name' => '',
@@ -49,6 +54,7 @@ $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1];
+$result_trees{'sections'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'sections'}{'contents'}[1]{'parent'} = $result_trees{'sections'};
 
 $result_texis{'sections'} = '@chapter a chapter
@@ -63,6 +69,7 @@ $result_sectioning{'sections'} = {
   'section_childs' => [
     {
       'cmdname' => 'chapter',
+      'extra' => {},
       'level' => 1,
       'number' => 1,
       'section_up' => {}

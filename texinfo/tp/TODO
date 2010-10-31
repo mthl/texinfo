@@ -30,8 +30,7 @@ t/57invalid_nestings.t recursive_copying
 no warning in
 t/19def.t empty_def_arguments
 
-Also normalize nodes as first argument of ref, and in menu
-(and anchors and float...).
+Also normalize internal nodes as first argument of ref
 at_commands_in_refs some_at_commands_in_ref_nodes
 
 Texinfo::Convert::Text
