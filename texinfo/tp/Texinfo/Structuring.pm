@@ -232,7 +232,14 @@ sub sectioning_structure($$)
           }
           $previous_section->{'section_childs'} = [$content];
           $content->{'section_up'} = $previous_section;
-          $command_numbers[$content->{'level'}] = undef;
+
+          # if the up is unnumbered, the number information has to be kept,
+          # to avoid reusing an already used number.
+          if (!$unnumbered_commands{$previous_section->{'cmdname'}}) {
+            $command_numbers[$content->{'level'}] = undef;
+          } elsif (!$unnumbered_commands{$content->{'cmdname'}}) {
+            $command_numbers[$content->{'level'}]++;
+          }
         } else {
           my $up = $previous_section->{'section_up'};
           if ($previous_section->{'level'} != $level) {
@@ -253,7 +260,6 @@ sub sectioning_structure($$)
           if (!$unnumbered_commands{$content->{'cmdname'}}) {
             $command_numbers[$content->{'level'}]++;
           }
-          
         }
       } else { # first section determines the level of the root.  It is 
                # typically -1 when there is a @top.
@@ -283,9 +289,11 @@ sub sectioning_structure($$)
       }
       $previous_section = $content;
 
-      #my $number = '';
-      #$number = $content->{'number'} if defined($content->{'number'});
-      #print STDERR "($content->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
+      if ($self->{'debug'}) {
+        my $number = '';
+        $number = $content->{'number'} if defined($content->{'number'});
+        print STDERR "($content->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
+      }
     }
   }
   return $sec_root;

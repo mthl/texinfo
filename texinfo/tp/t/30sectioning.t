@@ -15,6 +15,19 @@ my @test_cases = (
 
 @node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
 '],
+['space_in_node',
+'
+@node Top
+
+@menu
+* Chap    first here::
+* Test    title   :Test   title.
+@end menu
+
+@node  Chap first	here
+
+@node Test               title
+'],
 ['sections',
 '@chapter a chapter
 '],
@@ -347,6 +360,18 @@ Second chapter
 
 @anchor{TOP}.
 '],
+['double_top_in_menu',
+'@node ToP, top
+Top node
+
+@menu
+* top::
+* TOP:: myself
+@end menu
+
+@node top,,ToP,Top
+second node.
+'],
 ['rec_nodes',
 '@node ToP
 Top node
@@ -404,8 +429,121 @@ in node following second
 
 @node Section non auto,, Chap1, Top
 @section Section
-']
+'],
+['novalidate',
+'
+@novalidate
 
+@node first, unknown node
+
+@menu
+* not a node::
+@end menu
+'],
+['loop_nodes',
+'
+@node Top
+@top top
+
+@menu
+* node up::
+@end menu
+
+@node node up,,,node down
+
+@menu
+* node middle::
+@end menu
+
+@node node middle,,,node up
+
+@menu
+* node down::
+@end menu
+
+@node node down
+'],
+['complex',
+'@node Top,First node,(dir)
+@top
+@menu
+* First node:: 
+* between node::
+* Second node::   node 2
+* Third node unnumbered:: unnumbered in Top menu
+* Last node no description::
+@end menu
+
+@node First node,,Top,Top
+@chapter first node chapter
+
+first node chapter text
+@menu
+* unnumbered:: un
+* unnumbered2:: un2
+* numbered:: nu
+
+@end menu
+
+@node unnumbered
+@unnumberedsec unnumbered section
+
+@menu
+* unnumbered sub:: un
+* numbered sub:: nu
+* unnumbered sub2:: un2
+* numbered sub2:: nu2
+@end menu
+
+@node unnumbered sub
+@unnumberedsubsec unnumbered subsection
+
+@node numbered sub
+@subsection numbered subsection
+
+@node unnumbered sub2
+@unnumberedsubsec unnumbered subsection2
+
+@node numbered sub2
+@subsection numbered subsection2
+
+@node unnumbered2
+@unnumberedsec unnumbered section2
+
+@menu
+*  numbered sub3::
+@end menu
+
+@node numbered sub3
+@subsection numbered subsection3
+
+
+@node numbered
+@section  numbered section
+
+@node between node,,,Top
+
+between node, node without sectioning node
+
+@node Second node,Third node unnumbered,,Top
+
+Second node text
+
+@chapter second node chapter
+
+second node chapter text.
+
+@node Third node unnumbered
+@unnumbered unnumbered chapter
+
+unnumbered chapter text.
+
+
+@node Last node no description,,Third node unnumbered,Top
+
+@contents
+@bye
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

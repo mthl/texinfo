@@ -84,12 +84,19 @@ sectioning/at_commands_in_refs.texi
 sectioning/test_refs.texi
 sectioning/nodename_parentheses.texi
 sectioning/double_node_anchor_float.texi
-sectioning/double_top.texi   (but not @ref and menu)
+sectioning/double_top.texi   (but not @ref)
 sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
                               and errors.  Not sure the remaining is 
                               interesting)
 sectioning/rec_nodes.texi
 sectioning/semi_auto.texi
+sectioning/novalidate.texi    (only errors that aren't flagged by novalidate
+                               done)
+sectioning/test_two_include.texi (not done at all, but it tests 
+          -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros)
+sectioning/node-whitespace.tex   (but not @ref)
+sectioning/loop_nodes.texi
+sectioning/sectioning.texi
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)
