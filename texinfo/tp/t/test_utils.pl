@@ -4,9 +4,11 @@ use Test::More;
 use Texinfo::Parser qw(:all);
 use Texinfo::Convert::Text;
 use Texinfo::Structuring;
+use File::Basename;
 use Data::Dumper;
 use Data::Compare;
-use File::Basename;
+use Test::Deep;
+use Clone qw(clone);
 #use Data::Diff;
 #use Data::Transformer;
 #use Struct::Compare;
@@ -20,7 +22,7 @@ ok(1);
 our $arg_generate;
 our $arg_debug;
 our $arg_complete;
-our $nr_comparisons = 6;
+our $nr_comparisons = 7;
 
 Getopt::Long::Configure("gnu_getopt");
 GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug, 
@@ -30,6 +32,59 @@ our $arg_test_case = shift @ARGV;
 
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
 #my $transformer = Data::Transformer->new('hash'=>$remove_parent);
+sub remove_keys($$;$);
+sub remove_keys($$;$)
+{
+  my $root = shift;
+  my $deleted_keys = shift;
+  my $been_there = shift;
+  return undef if (!defined($root));
+  if (!defined($been_there)) {
+    #print STDERR "First call: $root\n";
+    $root = clone ($root);
+    #print STDERR Data::Dumper->Dump([$root]);
+    $been_there = {};
+  }
+  #print STDERR "remove_keys: $root\n";
+  if (ref($root) eq 'HASH') {
+    foreach my $key (@$deleted_keys) {
+      if (exists($root->{$key})) {
+        delete ($root->{$key});
+        #print STDERR "Deleted $root $key\n";
+      }
+    }
+    $been_there->{$root} = 1;
+    foreach my $key (%$root) {
+      next if (!defined($root->{$key}) or !ref($root->{$key})
+               or (ref($root->{$key}) ne 'HASH' 
+                    and ref($root->{$key}) ne 'ARRAY')
+               or exists($been_there->{$root->{$key}}));
+      #print STDERR "Recurse in $root $key\n";
+      remove_keys($root->{$key}, $deleted_keys, $been_there);
+    }
+  } elsif (ref($root) eq 'ARRAY') {
+    $been_there->{$root} = 1;
+    foreach my $element (@$root) {
+      next if (!defined($element) or !ref($element)
+               or (ref($element) ne 'HASH'
+                    and ref($element) ne 'ARRAY')
+               or exists($been_there->{$element}));
+
+      remove_keys($element, $deleted_keys, $been_there);
+    }
+  }
+  return $root;
+}
+
+sub cmp_trimmed($$$$)
+{
+  my $compared = shift;
+  my $reference = shift;
+  my $deleted_keys = shift;
+  my $test_name = shift;
+  my $trimmed = remove_keys ($compared, $deleted_keys);
+  cmp_deeply($trimmed, $reference, $test_name);
+}
 
 sub new_test ($;$$)
 {
@@ -53,16 +108,15 @@ my @sections_keys = ('section_next', 'section_prev', 'section_up',
   'section_childs', 'associated_node');
 my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus', 
   'associated_section');
-my %avoided_keys_content;
-my @avoided_keys_content = (@sections_keys, @menus_keys, @node_keys, 
+my %avoided_keys_tree;
+my @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
    'menu_child');
-foreach my $avoided_key(@avoided_keys_content) {
-  $avoided_keys_content{$avoided_key} = 1;
+foreach my $avoided_key(@avoided_keys_tree) {
+  $avoided_keys_tree{$avoided_key} = 1;
 }
-sub filter_content_keys { [grep {!$avoided_keys_content{$_}} ( sort keys %{$_[0]} )] }
-#sub filter_keys { [grep {$_ ne 'parent' and $_ ne 'next'} ( sort keys %{$_[0]} )] }
+sub filter_tree_keys { [grep {!$avoided_keys_tree{$_}} ( sort keys %{$_[0]} )] }
 
-my @avoided_compare_tree = (@avoided_keys_content, 'parent', 'node_content');
+#my @avoided_compare_tree = (@avoided_keys_tree, 'parent', 'node_tree');
 
 my %avoided_keys_sectioning;
 my @avoided_keys_sectioning = ('section_next', @contents_keys, @menus_keys, 
@@ -80,6 +134,7 @@ foreach my $avoided_key(@avoided_keys_nodes) {
 }
 sub filter_nodes_keys { [grep {!$avoided_keys_nodes{$_}}
    ( sort keys %{$_[0]} )] }
+#my @avoided_compare_nodes = (@avoided_keys_nodes, 'node_up', 'node_prev');
 
 my %avoided_keys_menus;
 my @avoided_keys_menus = (@sections_keys, @contents_keys, @node_keys);
@@ -87,15 +142,6 @@ foreach my $avoided_key(@avoided_keys_menus) {
   $avoided_keys_menus{$avoided_key} = 1;
 }
 sub filter_menus_keys { [grep {!$avoided_keys_menus{$_}}
-   ( sort keys %{$_[0]} )] }
-
-my %avoided_compare_structure;
-my @avoided_compare_structure = (@avoided_keys_sectioning, 'section_prev', 
-   'section_up');
-foreach my $avoided_key(@avoided_compare_structure) {
-  $avoided_compare_structure{$avoided_key} = 1;
-}
-sub filter_compare_structure { [grep {!$avoided_compare_structure{$_}}
    ( sort keys %{$_[0]} )] }
 
 sub test($$) 
@@ -161,7 +207,7 @@ sub test($$)
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
     {
-      local $Data::Dumper::Sortkeys = \&filter_content_keys;
+      local $Data::Dumper::Sortkeys = \&filter_tree_keys;
       $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     }
     my $texi_string_result = tree_to_texi($result);
@@ -223,27 +269,38 @@ sub test($$)
       #my $diff = Data::Diff->new($result, $result_trees{$test_name});
       #print STDERR "".Data::Dumper->Dump([$diff->raw()], ['$diff']);
     #}
-    ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
-               { 'ignore_hash_keys' => [@avoided_compare_tree] }), 
-        $test_name.' tree' );
+    cmp_trimmed($result, $result_trees{$test_name}, \@avoided_keys_tree,
+                $test_name.' tree');
+#    ok (Data::Compare::Compare($result, $result_trees{$test_name}, 
+#               { 'ignore_hash_keys' => [@avoided_compare_tree] }), 
+#        $test_name.' tree' );
+    cmp_trimmed($structure, $result_sectioning{$test_name},
+                 \@avoided_keys_sectioning, $test_name.' sectioning' );
 
-    ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
-              { 'ignore_hash_keys' => [@avoided_compare_structure] }), 
-        $test_name.' sectioning' );
-    if (!Data::Compare::Compare($structure, $result_sectioning{$test_name},
-              { 'ignore_hash_keys' => [@avoided_compare_structure] }))
+  #  ok (Data::Compare::Compare($structure, $result_sectioning{$test_name}, 
+  #            { 'ignore_hash_keys' => [@avoided_compare_sectioning] }), 
+  #      $test_name.' sectioning' );
+    #my $trimmed = remove_keys ($top_node, \@avoided_keys_nodes);
+    #cmp_deeply($trimmed, $result_nodes{$test_name}, $test_name.' nodes');
+    cmp_trimmed($top_node, $result_nodes{$test_name}, \@avoided_keys_nodes,
+                $test_name.' nodes');
+ #   ok (Data::Compare::Compare($top_node, $result_nodes{$test_name},
+ #                      { 'ignore_hash_keys' => [@avoided_compare_nodes] }),
+ #        $test_name.' nodes');
     {
-      local $Data::Dumper::Sortkeys = \&filter_compare_structure;
-    #  print STDERR  Data::Dumper->Dump([$structure], ['$structure']);
-    #  print STDERR  Data::Dumper->Dump([$result_sectioning{$test_name}], ['$result_sectioning{\''.$test_name.'\'}']);
+    local $Data::Dumper::Purity = 1;
+    local $Data::Dumper::Indent = 1;
+  #     local $Data::Dumper::Sortkeys = \&filter_nodes_keys;
+       #print STDERR  Data::Dumper->Dump([$trimmed], ['$top_node']);
+  #      print STDERR  Data::Dumper->Dump([$result_nodes{$test_name}], ['$result']);
     }
     ok (Data::Compare::Compare($errors, $result_errors{$test_name}), 
-        $test_name.' errors' );
+        $test_name.' errors');
     ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 
-        $test_name.' indices' );
-    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi' );
-    ok ($converted_text eq $result_texts{$test_name}, $test_name.' text' );
-    #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text' );
+        $test_name.' indices');
+    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi');
+    ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
+    #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text');
   }
   #exit;
 }
