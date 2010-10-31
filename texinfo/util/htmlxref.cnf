@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-10-30.16; # UTC
+htmlxrefversion=2010-10-31.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -230,6 +230,9 @@ gnutls		node	${GS}/gnutls/manual/html_node/
 gperf		mono	${GS}/gperf/manual/gperf.html
 gperf		node	${GS}/gperf/manual/html_node/
 
+grub		mono	${GS}/grub/manual/grub.html
+grub		node	${GS}/grub/manual/html_node/
+
 gsasl		mono	${GS}/gsasl/manual/gsasl.html
 gsasl		node	${GS}/gsasl/manual/html_node/
 
@@ -264,6 +267,9 @@ guile-rpc	node	${GS}/guile-rpc/manual/html_node/
 
 gv		mono	${GS}/gv/manual/gv.html
 gv		node	${GS}/gv/manual/html_node/
+
+gzip		mono	${GS}/gzip/manual/gzip.html
+gzip		node	${GS}/gzip/manual/html_node/
 
 hello		mono	${GS}/hello/manual/hello.html
 hello		node	${GS}/hello/manual/html_node/

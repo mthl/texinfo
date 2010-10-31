@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
+@c $Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5920,6 +5920,7 @@ You can write cross reference commands within a paragraph, but note
 how Info and @TeX{} format the output of each of the various commands:
 write @code{@@xref} at the beginning of a sentence; write
 @code{@@pxref} only within parentheses, and so on.@refill
+
 
 @node xref
 @section @code{@@xref}
@@ -21506,12 +21507,56 @@ Customization}.
 @section Customizing HTML References
 
 @cindex References, HTML customization for 
+@cindex Cross references, HTML customization for 
 
 @menu 
+* Internal: HTML Customization for Internal References.
 * External: HTML Customization for External References.
-* Formatting a reference within a manual::
 * Footnotes formatting::
 @end menu
+
+
+@node HTML Customization for Internal References
+@subsection HTML Customization for Internal References
+
+@cindex HTML customization for internal references
+@cindex Internal references, HTML customization for 
+
+This function reference is used to format a reference to a node in the
+current manual (@pxref{Cross References}).
+
+@deftypefn {Function Reference} $text internal_ref $command $href $short_name @
+           $name $is_section \@@args_texi \@@formatted_args \%element
+
+@table @var
+@item $command
+The reference command, namely @code{ref}, @code{xref}, @code{pxref} or
+@code{inforef}).
+
+@item $href
+An HTML href to the node.
+
+@item $short_name
+@itemx $name
+The text for the reference.  @var{$short_name} can be the node name
+which is assumed to be no longer than the section name.
+
+@item $is_section
+True if the reference is to a sectioning element. 
+
+@item \@@args_texi
+@itemx \@@formatted_args
+Array references containing the @@-command arguments, not formatted
+and formatted, respectively.
+
+@item \%element
+Hash reference with information about the target element of the
+reference.
+@end table
+
+The function should return the full formatted text of the internal 
+reference.
+@end deftypefn
 
 
 @node HTML Customization for External References
@@ -21568,17 +21613,16 @@ The book title; may be empty.
 The manual file name.
 
 @item $href
-An href to the external manual constructed using the above
+An HTML href to the external manual constructed using the above
 @code{external_href} function.
 
 @item $cross_ref_name
 Optional cross reference name appearing in the reference command.
 
 @item \@@args_texi
-An array reference containing the @@-command arguments, not formatted.
-
-@item \@@formatted_args
-Another array reference with the formatted @@-command arguments.
+@itemx \@@formatted_args
+Array references containing the @@-command arguments, not formatted
+and formatted, respectively.
 
 @item $node
 The node name, formatted.
@@ -21588,30 +21632,6 @@ The function should return the HTML text for the external manual
 reference.  
 @end deftypefn
 
-
-@node Formatting a reference within a manual
-@subsection Formatting a reference within a manual
-
-A function reference is available for internal references.
-
-@deftypefn {Function Reference} $text internal_ref $command $href $short_name $name $is_section \@@args_texi \@@formatted_args \%element
-This function formats a reference to a node in the current manual.
-The @var{$command} is the ref command (@code{ref}, @code{xref},
-@code{pxref} or @code{inforef}).
-@var{$href} it an hypertextual reference linking to the corresponding
-node or section.  @var{$short_name} and @var{$name} hold the text for the 
-reference but @var{$short_name} can be the node name which is assumed to 
-be shorter than the section name.
-@var{$is_section} is a boolean true if the reference is a reference to a 
-sectioning element. 
-@var{\@@args_texi} is a reference on an array containing the @@-command
-arguments, not formatted, with @var{\@@formatted_args} contains the formatted
-@@-command arguments.
-@var{\%element} is a reference on a hash holding informations about
-the element target of the reference.
-This function returns the full formatted text of the internal 
-reference.
-@end deftypefn
 
 @node Footnotes formatting
 @subsection Customizing the footnotes formatting
@@ -24907,7 +24927,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
+$Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -24986,7 +25006,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.338 2010-10-30 17:29:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
