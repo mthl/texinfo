@@ -206,6 +206,9 @@ $result_trees{'style_not_closed_root_commands'} = {
         'line_nr' => 9,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -371,6 +374,9 @@ $result_sectioning{'style_not_closed_root_commands'} = {
           'cmdname' => 'node',
           'extra' => {
             'normalized' => 'chapter'
+          },
+          'menu_up_hash' => {
+            'Top' => 1
           }
         }
       },
@@ -398,6 +404,9 @@ $result_nodes{'style_not_closed_root_commands'} = {
       },
       'normalized' => 'chapter'
     },
+    'menu_up_hash' => {
+      'Top' => 1
+    },
     'node_prev' => {},
     'node_up' => {}
   },
@@ -423,9 +432,6 @@ $result_nodes{'style_not_closed_root_commands'}{'node_next'} = $result_nodes{'st
 $result_menus{'style_not_closed_root_commands'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      'chapter' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
@@ -433,7 +439,10 @@ $result_menus{'style_not_closed_root_commands'} = {
     'extra' => {
       'normalized' => 'chapter'
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'style_not_closed_root_commands'}{'menu_child'}{'menu_up'} = $result_menus{'style_not_closed_root_commands'};

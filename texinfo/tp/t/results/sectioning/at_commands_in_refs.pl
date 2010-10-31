@@ -3638,6 +3638,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 31,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -3821,6 +3824,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 34,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -4089,6 +4095,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 37,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -4380,6 +4389,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 40,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -4599,6 +4611,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 43,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -4843,6 +4858,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 46,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -5115,6 +5133,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 49,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -5517,6 +5538,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 52,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -6071,6 +6095,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 55,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -6539,6 +6566,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 58,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -6864,6 +6894,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 61,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -7138,6 +7171,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 64,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -7314,6 +7350,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 67,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -7474,6 +7513,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 70,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -7705,6 +7747,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 73,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -7927,6 +7972,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 78,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -8156,6 +8204,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 81,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -8332,6 +8383,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 86,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -8674,6 +8728,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 91,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -9154,6 +9211,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 94,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -9416,6 +9476,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 97,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -9557,6 +9620,9 @@ $result_trees{'at_commands_in_refs'} = {
         'line_nr' => 100,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -9691,6 +9757,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 103,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -9880,6 +9949,9 @@ $result_trees{'at_commands_in_refs'} = {
         'file_name' => '',
         'line_nr' => 106,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -15467,6 +15539,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '-_007b-_007d'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15481,6 +15556,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '----_0021---_002e--_002e-_003f-_0040'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15496,6 +15574,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15511,6 +15592,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15526,6 +15610,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_2265-_2264-_2192'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15541,6 +15628,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15556,6 +15646,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_21d2-_00b0-a-b--_00e5'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15571,6 +15664,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15586,6 +15682,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15601,6 +15700,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15616,6 +15718,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_201c-_201d-_2018-_2019-_201e-_201a'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15631,6 +15736,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_00ab-_00bb-_00ab-_00bb-_2039-_203a'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15646,6 +15754,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15661,6 +15772,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'AAA-AAA-BBB'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15676,6 +15790,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'CCC-CCC-DDD'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15691,6 +15808,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'the-someone-no_005fexplain_0040there'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15706,6 +15826,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'f_002d_002dile1-f_002d_002dile'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15721,6 +15844,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '-_0040-_007b_007d-_002e-'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15736,6 +15862,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15751,6 +15880,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'env-code-option-samp-command-file-C_002dx-ESC'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15766,6 +15898,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => '8_002e27in'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15781,6 +15916,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'sansserif-slanted'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15796,6 +15934,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'indicateurl'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15811,6 +15952,9 @@ $result_sectioning{'at_commands_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -15894,6 +16038,9 @@ $result_nodes{'at_commands_in_refs'} = {
       },
       'normalized' => '-_007b-_007d'
     },
+    'menu_up_hash' => {
+      'Top' => 1
+    },
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
@@ -15904,6 +16051,9 @@ $result_nodes{'at_commands_in_refs'} = {
           'number' => 2
         },
         'normalized' => '----_0021---_002e--_002e-_003f-_0040'
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'node_next' => {
         'cmdname' => 'node',
@@ -15916,6 +16066,9 @@ $result_nodes{'at_commands_in_refs'} = {
           },
           'normalized' => 'LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e'
         },
+        'menu_up_hash' => {
+          'Top' => 1
+        },
         'node_next' => {
           'cmdname' => 'node',
           'extra' => {
@@ -15926,6 +16079,9 @@ $result_nodes{'at_commands_in_refs'} = {
               'number' => 4
             },
             'normalized' => '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212'
+          },
+          'menu_up_hash' => {
+            'Top' => 1
           },
           'node_next' => {
             'cmdname' => 'node',
@@ -15938,6 +16094,9 @@ $result_nodes{'at_commands_in_refs'} = {
               },
               'normalized' => '_2265-_2264-_2192'
             },
+            'menu_up_hash' => {
+              'Top' => 1
+            },
             'node_next' => {
               'cmdname' => 'node',
               'extra' => {
@@ -15948,6 +16107,9 @@ $result_nodes{'at_commands_in_refs'} = {
                   'number' => 6
                 },
                 'normalized' => '_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               },
               'node_next' => {
                 'cmdname' => 'node',
@@ -15960,6 +16122,9 @@ $result_nodes{'at_commands_in_refs'} = {
                   },
                   'normalized' => '_21d2-_00b0-a-b--_00e5'
                 },
+                'menu_up_hash' => {
+                  'Top' => 1
+                },
                 'node_next' => {
                   'cmdname' => 'node',
                   'extra' => {
@@ -15970,6 +16135,9 @@ $result_nodes{'at_commands_in_refs'} = {
                       'number' => 8
                     },
                     'normalized' => '_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe'
+                  },
+                  'menu_up_hash' => {
+                    'Top' => 1
                   },
                   'node_next' => {
                     'cmdname' => 'node',
@@ -15982,6 +16150,9 @@ $result_nodes{'at_commands_in_refs'} = {
                       },
                       'normalized' => '_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119'
                     },
+                    'menu_up_hash' => {
+                      'Top' => 1
+                    },
                     'node_next' => {
                       'cmdname' => 'node',
                       'extra' => {
@@ -15992,6 +16163,9 @@ $result_nodes{'at_commands_in_refs'} = {
                           'number' => 10
                         },
                         'normalized' => '_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361'
+                      },
+                      'menu_up_hash' => {
+                        'Top' => 1
                       },
                       'node_next' => {
                         'cmdname' => 'node',
@@ -16004,6 +16178,9 @@ $result_nodes{'at_commands_in_refs'} = {
                           },
                           'normalized' => '_201c-_201d-_2018-_2019-_201e-_201a'
                         },
+                        'menu_up_hash' => {
+                          'Top' => 1
+                        },
                         'node_next' => {
                           'cmdname' => 'node',
                           'extra' => {
@@ -16014,6 +16191,9 @@ $result_nodes{'at_commands_in_refs'} = {
                               'number' => 12
                             },
                             'normalized' => '_00ab-_00bb-_00ab-_00bb-_2039-_203a'
+                          },
+                          'menu_up_hash' => {
+                            'Top' => 1
                           },
                           'node_next' => {
                             'cmdname' => 'node',
@@ -16026,6 +16206,9 @@ $result_nodes{'at_commands_in_refs'} = {
                               },
                               'normalized' => '_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d'
                             },
+                            'menu_up_hash' => {
+                              'Top' => 1
+                            },
                             'node_next' => {
                               'cmdname' => 'node',
                               'extra' => {
@@ -16036,6 +16219,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                   'number' => 14
                                 },
                                 'normalized' => 'AAA-AAA-BBB'
+                              },
+                              'menu_up_hash' => {
+                                'Top' => 1
                               },
                               'node_next' => {
                                 'cmdname' => 'node',
@@ -16048,6 +16234,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                   },
                                   'normalized' => 'CCC-CCC-DDD'
                                 },
+                                'menu_up_hash' => {
+                                  'Top' => 1
+                                },
                                 'node_next' => {
                                   'cmdname' => 'node',
                                   'extra' => {
@@ -16058,6 +16247,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                       'number' => 16
                                     },
                                     'normalized' => 'the-someone-no_005fexplain_0040there'
+                                  },
+                                  'menu_up_hash' => {
+                                    'Top' => 1
                                   },
                                   'node_next' => {
                                     'cmdname' => 'node',
@@ -16070,6 +16262,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                       },
                                       'normalized' => 'f_002d_002dile1-f_002d_002dile'
                                     },
+                                    'menu_up_hash' => {
+                                      'Top' => 1
+                                    },
                                     'node_next' => {
                                       'cmdname' => 'node',
                                       'extra' => {
@@ -16080,6 +16275,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                           'number' => 18
                                         },
                                         'normalized' => '-_0040-_007b_007d-_002e-'
+                                      },
+                                      'menu_up_hash' => {
+                                        'Top' => 1
                                       },
                                       'node_next' => {
                                         'cmdname' => 'node',
@@ -16092,6 +16290,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                           },
                                           'normalized' => 'cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i'
                                         },
+                                        'menu_up_hash' => {
+                                          'Top' => 1
+                                        },
                                         'node_next' => {
                                           'cmdname' => 'node',
                                           'extra' => {
@@ -16102,6 +16303,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                               'number' => 20
                                             },
                                             'normalized' => 'env-code-option-samp-command-file-C_002dx-ESC'
+                                          },
+                                          'menu_up_hash' => {
+                                            'Top' => 1
                                           },
                                           'node_next' => {
                                             'cmdname' => 'node',
@@ -16114,6 +16318,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                               },
                                               'normalized' => '8_002e27in'
                                             },
+                                            'menu_up_hash' => {
+                                              'Top' => 1
+                                            },
                                             'node_next' => {
                                               'cmdname' => 'node',
                                               'extra' => {
@@ -16124,6 +16331,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                                   'number' => 22
                                                 },
                                                 'normalized' => 'sansserif-slanted'
+                                              },
+                                              'menu_up_hash' => {
+                                                'Top' => 1
                                               },
                                               'node_next' => {
                                                 'cmdname' => 'node',
@@ -16136,6 +16346,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                                   },
                                                   'normalized' => 'indicateurl'
                                                 },
+                                                'menu_up_hash' => {
+                                                  'Top' => 1
+                                                },
                                                 'node_next' => {
                                                   'cmdname' => 'node',
                                                   'extra' => {
@@ -16146,6 +16359,9 @@ $result_nodes{'at_commands_in_refs'} = {
                                                       'number' => 24
                                                     },
                                                     'normalized' => 'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls'
+                                                  },
+                                                  'menu_up_hash' => {
+                                                    'Top' => 1
                                                   },
                                                   'node_prev' => {},
                                                   'node_up' => {}
@@ -16287,32 +16503,6 @@ $result_nodes{'at_commands_in_refs'}{'node_next'} = $result_nodes{'at_commands_i
 $result_menus{'at_commands_in_refs'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      '----_0021---_002e--_002e-_003f-_0040' => 1,
-      '-_0040-_007b_007d-_002e-' => 1,
-      '-_007b-_007d' => 1,
-      '8_002e27in' => 1,
-      'AAA-AAA-BBB' => 1,
-      'CCC-CCC-DDD' => 1,
-      'LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e' => 1,
-      '_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d' => 1,
-      '_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae' => 1,
-      '_00ab-_00bb-_00ab-_00bb-_2039-_203a' => 1,
-      '_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe' => 1,
-      '_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119' => 1,
-      '_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361' => 1,
-      '_201c-_201d-_2018-_2019-_201e-_201a' => 1,
-      '_21d2-_00b0-a-b--_00e5' => 1,
-      '_2261-error_002d_002d_003e-_20ac-_00a1-_2192-_2212' => 1,
-      '_2265-_2264-_2192' => 1,
-      'cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i' => 1,
-      'env-code-option-samp-command-file-C_002dx-ESC' => 1,
-      'f_002d_002dile1-f_002d_002dile' => 1,
-      'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls' => 1,
-      'indicateurl' => 1,
-      'sansserif-slanted' => 1,
-      'the-someone-no_005fexplain_0040there' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
@@ -16436,75 +16626,147 @@ $result_menus{'at_commands_in_refs'} = {
                                                     'normalized' => 'http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls'
                                                   },
                                                   'menu_prev' => {},
-                                                  'menu_up' => {}
+                                                  'menu_up' => {},
+                                                  'menu_up_hash' => {
+                                                    'Top' => 1
+                                                  }
                                                 },
                                                 'menu_prev' => {},
-                                                'menu_up' => {}
+                                                'menu_up' => {},
+                                                'menu_up_hash' => {
+                                                  'Top' => 1
+                                                }
                                               },
                                               'menu_prev' => {},
-                                              'menu_up' => {}
+                                              'menu_up' => {},
+                                              'menu_up_hash' => {
+                                                'Top' => 1
+                                              }
                                             },
                                             'menu_prev' => {},
-                                            'menu_up' => {}
+                                            'menu_up' => {},
+                                            'menu_up_hash' => {
+                                              'Top' => 1
+                                            }
                                           },
                                           'menu_prev' => {},
-                                          'menu_up' => {}
+                                          'menu_up' => {},
+                                          'menu_up_hash' => {
+                                            'Top' => 1
+                                          }
                                         },
                                         'menu_prev' => {},
-                                        'menu_up' => {}
+                                        'menu_up' => {},
+                                        'menu_up_hash' => {
+                                          'Top' => 1
+                                        }
                                       },
                                       'menu_prev' => {},
-                                      'menu_up' => {}
+                                      'menu_up' => {},
+                                      'menu_up_hash' => {
+                                        'Top' => 1
+                                      }
                                     },
                                     'menu_prev' => {},
-                                    'menu_up' => {}
+                                    'menu_up' => {},
+                                    'menu_up_hash' => {
+                                      'Top' => 1
+                                    }
                                   },
                                   'menu_prev' => {},
-                                  'menu_up' => {}
+                                  'menu_up' => {},
+                                  'menu_up_hash' => {
+                                    'Top' => 1
+                                  }
                                 },
                                 'menu_prev' => {},
-                                'menu_up' => {}
+                                'menu_up' => {},
+                                'menu_up_hash' => {
+                                  'Top' => 1
+                                }
                               },
                               'menu_prev' => {},
-                              'menu_up' => {}
+                              'menu_up' => {},
+                              'menu_up_hash' => {
+                                'Top' => 1
+                              }
                             },
                             'menu_prev' => {},
-                            'menu_up' => {}
+                            'menu_up' => {},
+                            'menu_up_hash' => {
+                              'Top' => 1
+                            }
                           },
                           'menu_prev' => {},
-                          'menu_up' => {}
+                          'menu_up' => {},
+                          'menu_up_hash' => {
+                            'Top' => 1
+                          }
                         },
                         'menu_prev' => {},
-                        'menu_up' => {}
+                        'menu_up' => {},
+                        'menu_up_hash' => {
+                          'Top' => 1
+                        }
                       },
                       'menu_prev' => {},
-                      'menu_up' => {}
+                      'menu_up' => {},
+                      'menu_up_hash' => {
+                        'Top' => 1
+                      }
                     },
                     'menu_prev' => {},
-                    'menu_up' => {}
+                    'menu_up' => {},
+                    'menu_up_hash' => {
+                      'Top' => 1
+                    }
                   },
                   'menu_prev' => {},
-                  'menu_up' => {}
+                  'menu_up' => {},
+                  'menu_up_hash' => {
+                    'Top' => 1
+                  }
                 },
                 'menu_prev' => {},
-                'menu_up' => {}
+                'menu_up' => {},
+                'menu_up_hash' => {
+                  'Top' => 1
+                }
               },
               'menu_prev' => {},
-              'menu_up' => {}
+              'menu_up' => {},
+              'menu_up_hash' => {
+                'Top' => 1
+              }
             },
             'menu_prev' => {},
-            'menu_up' => {}
+            'menu_up' => {},
+            'menu_up_hash' => {
+              'Top' => 1
+            }
           },
           'menu_prev' => {},
-          'menu_up' => {}
+          'menu_up' => {},
+          'menu_up_hash' => {
+            'Top' => 1
+          }
         },
         'menu_prev' => {},
-        'menu_up' => {}
+        'menu_up' => {},
+        'menu_up_hash' => {
+          'Top' => 1
+        }
       },
       'menu_prev' => {},
-      'menu_up' => {}
+      'menu_up' => {},
+      'menu_up_hash' => {
+        'Top' => 1
+      }
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'at_commands_in_refs'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'at_commands_in_refs'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_next'};

@@ -637,6 +637,9 @@ $result_trees{'character_and_spaces_in_refs'} = {
         'line_nr' => 20,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -966,6 +969,9 @@ $result_trees{'character_and_spaces_in_refs'} = {
         'line_nr' => 29,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'other-nodes' => 1
+      },
       'parent' => {}
     },
     {
@@ -1070,6 +1076,9 @@ $result_trees{'character_and_spaces_in_refs'} = {
         'line_nr' => 31,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'other-nodes' => 1
+      },
       'parent' => {}
     },
     {
@@ -1159,6 +1168,9 @@ $result_trees{'character_and_spaces_in_refs'} = {
         'file_name' => '',
         'line_nr' => 33,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'other-nodes' => 1
       },
       'parent' => {}
     },
@@ -1444,6 +1456,9 @@ $result_sectioning{'character_and_spaces_in_refs'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'other-nodes'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -1485,15 +1500,24 @@ $result_nodes{'character_and_spaces_in_refs'} = {
       'extra' => {
         'normalized' => '_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e'
       },
+      'menu_up_hash' => {
+        'other-nodes' => 1
+      },
       'node_next' => {
         'cmdname' => 'node',
         'extra' => {
           'normalized' => '_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e'
         },
+        'menu_up_hash' => {
+          'other-nodes' => 1
+        },
         'node_next' => {
           'cmdname' => 'node',
           'extra' => {
             'normalized' => 'local-node'
+          },
+          'menu_up_hash' => {
+            'other-nodes' => 1
           },
           'node_prev' => {},
           'node_up' => {}
@@ -1503,6 +1527,9 @@ $result_nodes{'character_and_spaces_in_refs'} = {
       },
       'node_prev' => {},
       'node_up' => {}
+    },
+    'menu_up_hash' => {
+      'Top' => 1
     },
     'menus' => [
       {
@@ -1542,19 +1569,11 @@ $result_nodes{'character_and_spaces_in_refs'}{'node_next'} = $result_nodes{'char
 $result_menus{'character_and_spaces_in_refs'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      'other-nodes' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
-      'menu_childs' => {
-        '_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e' => 1,
-        '_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e' => 1,
-        'local-node' => 1
-      },
       'normalized' => 'other-nodes'
     },
     'menu_child' => {
@@ -1573,14 +1592,26 @@ $result_menus{'character_and_spaces_in_refs'} = {
             'normalized' => 'local-node'
           },
           'menu_prev' => {},
-          'menu_up' => {}
+          'menu_up' => {},
+          'menu_up_hash' => {
+            'other-nodes' => 1
+          }
         },
         'menu_prev' => {},
-        'menu_up' => {}
+        'menu_up' => {},
+        'menu_up_hash' => {
+          'other-nodes' => 1
+        }
       },
-      'menu_up' => {}
+      'menu_up' => {},
+      'menu_up_hash' => {
+        'other-nodes' => 1
+      }
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'character_and_spaces_in_refs'}{'menu_child'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'character_and_spaces_in_refs'}{'menu_child'}{'menu_child'}{'menu_next'};

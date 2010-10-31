@@ -320,6 +320,9 @@ $result_trees{'nodename_parentheses'} = {
         'line_nr' => 10,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -424,6 +427,9 @@ $result_trees{'nodename_parentheses'} = {
         'file_name' => '',
         'line_nr' => 15,
         'macro' => ''
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'parent' => {}
     },
@@ -898,6 +904,9 @@ $result_sectioning{'nodename_parentheses'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Node-_0028with-parentheses_0029'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -912,6 +921,9 @@ $result_sectioning{'nodename_parentheses'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Other-node'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -968,6 +980,9 @@ $result_nodes{'nodename_parentheses'} = {
       },
       'normalized' => 'Node-_0028with-parentheses_0029'
     },
+    'menu_up_hash' => {
+      'Top' => 1
+    },
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
@@ -978,6 +993,9 @@ $result_nodes{'nodename_parentheses'} = {
           'number' => 2
         },
         'normalized' => 'Other-node'
+      },
+      'menu_up_hash' => {
+        'Top' => 1
       },
       'node_prev' => {},
       'node_up' => {}
@@ -1009,10 +1027,6 @@ $result_nodes{'nodename_parentheses'}{'node_next'} = $result_nodes{'nodename_par
 $result_menus{'nodename_parentheses'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      'Node-_0028with-parentheses_0029' => 1,
-      'Other-node' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
@@ -1026,9 +1040,15 @@ $result_menus{'nodename_parentheses'} = {
         'normalized' => 'Other-node'
       },
       'menu_prev' => {},
-      'menu_up' => {}
+      'menu_up' => {},
+      'menu_up_hash' => {
+        'Top' => 1
+      }
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'nodename_parentheses'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus{'nodename_parentheses'}{'menu_child'};

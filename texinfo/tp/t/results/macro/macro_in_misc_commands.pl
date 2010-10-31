@@ -2969,6 +2969,9 @@ $result_trees{'macro_in_misc_commands'} = {
         'line_nr' => 195,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -3853,6 +3856,9 @@ $result_sectioning{'macro_in_misc_commands'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'node-atext'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -3889,6 +3895,9 @@ $result_nodes{'macro_in_misc_commands'} = {
       },
       'normalized' => 'node-atext'
     },
+    'menu_up_hash' => {
+      'Top' => 1
+    },
     'node_prev' => {},
     'node_up' => {}
   },
@@ -3914,9 +3923,6 @@ $result_nodes{'macro_in_misc_commands'}{'node_next'} = $result_nodes{'macro_in_m
 $result_menus{'macro_in_misc_commands'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      'node-atext' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
@@ -3924,7 +3930,10 @@ $result_menus{'macro_in_misc_commands'} = {
     'extra' => {
       'normalized' => 'node-atext'
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'macro_in_misc_commands'}{'menu_child'}{'menu_up'} = $result_menus{'macro_in_misc_commands'};

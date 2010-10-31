@@ -356,6 +356,9 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 10,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Top' => 1
+      },
       'parent' => {}
     },
     {
@@ -630,6 +633,9 @@ $result_trees{'value_in_node'} = {
         'line_nr' => 19,
         'macro' => ''
       },
+      'menu_up_hash' => {
+        'Node-1' => 1
+      },
       'parent' => {}
     }
   ],
@@ -792,6 +798,9 @@ $result_sectioning{'value_in_node'} = {
               'cmdname' => 'node',
               'extra' => {
                 'normalized' => 'Node-1'
+              },
+              'menu_up_hash' => {
+                'Top' => 1
               }
             }
           },
@@ -833,8 +842,14 @@ $result_nodes{'value_in_node'} = {
       'extra' => {
         'normalized' => 'Section-1_002e1'
       },
+      'menu_up_hash' => {
+        'Node-1' => 1
+      },
       'node_prev' => {},
       'node_up' => {}
+    },
+    'menu_up_hash' => {
+      'Top' => 1
     },
     'menus' => [
       {
@@ -885,17 +900,11 @@ $result_nodes{'value_in_node'}{'menu_child'}{'node_up'} = $result_nodes{'value_i
 $result_menus{'value_in_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'menu_childs' => {
-      'Node-1' => 1
-    },
     'normalized' => 'Top'
   },
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
-      'menu_childs' => {
-        'Section-1_002e1' => 1
-      },
       'normalized' => 'Node-1'
     },
     'menu_child' => {
@@ -903,9 +912,15 @@ $result_menus{'value_in_node'} = {
       'extra' => {
         'normalized' => 'Section-1_002e1'
       },
-      'menu_up' => {}
+      'menu_up' => {},
+      'menu_up_hash' => {
+        'Node-1' => 1
+      }
     },
-    'menu_up' => {}
+    'menu_up' => {},
+    'menu_up_hash' => {
+      'Top' => 1
+    }
   }
 };
 $result_menus{'value_in_node'}{'menu_child'}{'menu_child'}{'menu_up'} = $result_menus{'value_in_node'}{'menu_child'};
