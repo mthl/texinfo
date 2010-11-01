@@ -126,6 +126,7 @@ $result_trees{'style_not_closed_in_table_line'} = {
           ],
           'cmdname' => 'item',
           'extra' => {
+            'invalid_nesting' => 1,
             'misc_content' => [
               {}
             ]

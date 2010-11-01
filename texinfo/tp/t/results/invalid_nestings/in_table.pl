@@ -15,6 +15,9 @@ $result_trees{'in_table'} = {
             },
             {
               'cmdname' => 'xref',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -94,6 +97,9 @@ $result_trees{'in_table'} = {
                 },
                 {
                   'cmdname' => 'indent',
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,
@@ -121,6 +127,9 @@ $result_trees{'in_table'} = {
                   ],
                   'cmdname' => 'titlefont',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'parent' => {}
                 },
                 {
@@ -143,6 +152,7 @@ $result_trees{'in_table'} = {
                   'cmdname' => 'anchor',
                   'contents' => [],
                   'extra' => {
+                    'invalid_nesting' => 1,
                     'node_content' => [
                       {}
                     ],
@@ -172,6 +182,9 @@ $result_trees{'in_table'} = {
                   ],
                   'cmdname' => 'footnote',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'parent' => {}
                 },
                 {
@@ -180,6 +193,9 @@ $result_trees{'in_table'} = {
                 },
                 {
                   'cmdname' => 'exdent',
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },

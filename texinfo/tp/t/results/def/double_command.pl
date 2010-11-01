@@ -419,12 +419,16 @@ $result_trees{'double_command'} = {
                           'index_at_command' => 'defvr',
                           'index_name' => 'vr',
                           'index_prefix' => 'v'
-                        }
+                        },
+                        'invalid_nesting' => 1
                       },
                       'parent' => {},
                       'type' => 'def_line'
                     }
                   ],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'parent' => {}
                 }
               ],

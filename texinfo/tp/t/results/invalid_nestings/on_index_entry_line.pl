@@ -15,6 +15,9 @@ $result_trees{'on_index_entry_line'} = {
             },
             {
               'cmdname' => 'indent',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -42,6 +45,9 @@ $result_trees{'on_index_entry_line'} = {
               ],
               'cmdname' => 'titlefont',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             },
             {
@@ -64,6 +70,7 @@ $result_trees{'on_index_entry_line'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
+                'invalid_nesting' => 1,
                 'node_content' => [
                   {}
                 ],
@@ -93,6 +100,9 @@ $result_trees{'on_index_entry_line'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             },
             {
@@ -101,6 +111,9 @@ $result_trees{'on_index_entry_line'} = {
             },
             {
               'cmdname' => 'exdent',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {},
               'parent' => {}
             },

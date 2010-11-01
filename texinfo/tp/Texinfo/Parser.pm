@@ -2769,6 +2769,7 @@ sub _parse_texi($$;$)
                                      $command), $line_nr);
         }
 
+        my $invalid;
         # error messages for forbidden constructs, like @node in @r, 
         # block command on line command, @xref in @anchor or node...
         if ($current->{'parent'}) { 
@@ -2778,6 +2779,7 @@ sub _parse_texi($$;$)
               _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
                                      $command, $current->{'parent'}->{'cmdname'}),
                            $line_nr);
+              $invalid = 1;
             } elsif ((!$in_simple_text_commands{$command}
                       and ($self->{'simple_text_commands'}->{$current->{'parent'}->{'cmdname'}}
                            # following conditions arise because we distinguish
@@ -2795,6 +2797,7 @@ sub _parse_texi($$;$)
               _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
                                      $command, $current->{'parent'}->{'cmdname'}),
                            $line_nr);
+              $invalid = 1;
             }
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
                    and !$in_simple_text_commands{$command}) {
@@ -2807,6 +2810,7 @@ sub _parse_texi($$;$)
               _line_warn($self, sprintf($self->__("\@%s should not appear in \@%s"), 
                                      $command, $def_block->{'parent'}->{'parent'}->{'cmdname'}),
                            $line_nr);
+              $invalid = 1;
           }
         }
 
@@ -2877,6 +2881,8 @@ sub _parse_texi($$;$)
           if ($arg_spec eq 'noarg') {
             push @{$current->{'contents'}}, {'cmdname' => $command,
                                              'parent' => $current};
+            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+              if ($invalid);
           # all the cases using the raw line
           } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
                    or $arg_spec eq 'special') {
@@ -2887,6 +2893,8 @@ sub _parse_texi($$;$)
             }
             push @{$current->{'contents'}}, {'cmdname' => $command,
                                              'parent' => $current};
+            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+              if ($invalid);
             my $args = [];
             if ($arg_spec eq 'lineraw') {
               $args = [ $line ];
@@ -2925,6 +2933,8 @@ sub _parse_texi($$;$)
                   push @{$parent->{'contents'}},
                     { 'cmdname' => $command, 'parent' => $parent, 
                       'contents' => [] };
+                  $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                    if ($invalid);
                   $current = $parent->{'contents'}->[-1];
                 } else {
                   $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
@@ -2936,6 +2946,8 @@ sub _parse_texi($$;$)
                   $current = $parent;
                   push @{$current->{'contents'}}, 
                     { 'cmdname' => $command, 'parent' => $current };
+                  $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                    if ($invalid);
                   $line_arg = 1;
                 } else {
                   $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
@@ -2958,6 +2970,8 @@ sub _parse_texi($$;$)
                       push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                   'parent' => $row,
                                                   'contents' => [] };
+                      $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                        if ($invalid);
                       $current = $row->{'contents'}->[-1];
                       print STDERR "TAB\n" if ($self->{'debug'});
                     }
@@ -2970,6 +2984,8 @@ sub _parse_texi($$;$)
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                   'parent' => $row,
                                                   'contents' => [] };
+                    $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                      if ($invalid);
                     $current = $row->{'contents'}->[-1];
                   }
                 } else {
@@ -2985,6 +3001,8 @@ sub _parse_texi($$;$)
               push @{$current->{'contents'}}, 
                 { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
+              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                if ($invalid);
               if ($self->{'sections_level'} and $root_commands{$command}
                    and $command ne 'node' and $command ne 'part') {
                 $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
@@ -3039,6 +3057,8 @@ sub _parse_texi($$;$)
             my $macro = _parse_macro_command_line ($self, $command, $line, 
                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
+            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+              if ($invalid);
             $current = $current->{'contents'}->[-1];
             last;
           } elsif ($block_commands{$command} eq 'conditional') {
@@ -3096,6 +3116,8 @@ sub _parse_texi($$;$)
                                                 'parent' => $current,
                                                 'cmdname' => $command,
                                                 'contents' => [] };
+              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                if ($invalid);
               $current = $current->{'contents'}->[-1];
               push @{$current->{'contents'}}, { 
                                                 'type' => 'def_line',
@@ -3103,10 +3125,14 @@ sub _parse_texi($$;$)
                                                 'extra' => 
                                                   {'def_command' => $command}
                                                 };
+              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                if ($invalid);
             } else {
               push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                                 'parent' => $current,
                                                 'contents' => [] };
+              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                if ($invalid);
             }
             $current = $current->{'contents'}->[-1];
             if ($block_arg_commands{$command}) {
@@ -3155,6 +3181,8 @@ sub _parse_texi($$;$)
             push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                               'parent' => $current, 
                                               'contents' => [] };
+            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+              if ($invalid);
             $current = $current->{'contents'}->[-1];
             if ($command eq 'click') {
               $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};

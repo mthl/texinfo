@@ -110,6 +110,9 @@ $result_trees{'bad_tab_nesting'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             }
           ],

@@ -103,7 +103,7 @@ sub new_test ($;$$)
 }
 
 my @contents_keys = ('contents', 'args', 'parent', 'line_nr', 'node_content', 
-  'nodes_manuals', 'misc_content');
+  'nodes_manuals', 'misc_content', 'invalid_nesting');
 my @menus_keys = ('menu_next', 'menu_up', 'menu_prev', 'menu_up_hash');
 my @sections_keys = ('section_next', 'section_prev', 'section_up', 
   'section_childs', 'associated_node');

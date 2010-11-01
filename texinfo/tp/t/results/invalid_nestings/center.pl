@@ -179,6 +179,7 @@ $result_trees{'center'} = {
                   'index_name' => 'cp',
                   'index_prefix' => 'c'
                 },
+                'invalid_nesting' => 1,
                 'misc_content' => []
               },
               'line_nr' => {
@@ -229,6 +230,9 @@ $result_trees{'center'} = {
                   'type' => 'empty_line_after_command'
                 }
               ],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             }
           ],
@@ -316,6 +320,7 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
+                'invalid_nesting' => 1,
                 'misc_content' => [
                   {}
                 ]
@@ -454,6 +459,7 @@ $result_trees{'center'} = {
                       ],
                       'cmdname' => 'center',
                       'extra' => {
+                        'invalid_nesting' => 1,
                         'misc_content' => [
                           {}
                         ]

@@ -103,6 +103,9 @@ $result_trees{'raw_in_brace_command'} = {
           'type' => 'raw'
         }
       ],
+      'extra' => {
+        'invalid_nesting' => 1
+      },
       'parent' => {}
     },
     {

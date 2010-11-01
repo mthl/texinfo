@@ -66,6 +66,9 @@ $result_trees{'on_block_command_line'} = {
               ],
               'cmdname' => 'titlefont',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             },
             {
@@ -160,6 +163,9 @@ $result_trees{'on_block_command_line'} = {
             },
             {
               'cmdname' => 'indent',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -187,6 +193,9 @@ $result_trees{'on_block_command_line'} = {
               ],
               'cmdname' => 'titlefont',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             },
             {
@@ -209,6 +218,7 @@ $result_trees{'on_block_command_line'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
+                'invalid_nesting' => 1,
                 'node_content' => [
                   {}
                 ],
@@ -238,6 +248,9 @@ $result_trees{'on_block_command_line'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'parent' => {}
             },
             {
@@ -246,6 +259,9 @@ $result_trees{'on_block_command_line'} = {
             },
             {
               'cmdname' => 'exdent',
+              'extra' => {
+                'invalid_nesting' => 1
+              },
               'line_nr' => {},
               'parent' => {}
             },
