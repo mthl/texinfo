@@ -25,8 +25,12 @@ package Texinfo::Convert::NodeNameNormalization;
 use 5.00405;
 use strict;
 
-use Texinfo::Convert::Text;
 use Unicode::Normalize;
+# for the accents definition
+use Texinfo::Commands;
+# reuse some conversion hashes
+use Texinfo::Convert::Text;
+# use the hashes and functions
 use Texinfo::Convert::Unicode;
 
 require Exporter;
@@ -37,7 +41,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Covert::Text ':all';
+# This allows declaration   use Texinfo::Convert::NodeNameNormalization ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
@@ -62,11 +66,7 @@ my %normalize_node_no_brace_commands
   = %Texinfo::Convert::Text::text_no_brace_commands;
 $normalize_node_no_brace_commands{'*'} = ' ';
 
-my %accent_commands;
-foreach my $accent_command (keys(%Texinfo::Convert::Unicode::unicode_accented_letters),
-                            'tieaccent', 'dotless') {
-  $accent_commands{$accent_command} = 1;
-}
+my %accent_commands = %Texinfo::Commands::accent_commands;
 
 my %ignored_brace_commands;
 foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',

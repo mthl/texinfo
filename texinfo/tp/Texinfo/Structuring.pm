@@ -24,6 +24,7 @@ package Texinfo::Structuring;
 use 5.00405;
 use strict;
 
+# for debugging only
 use Texinfo::Convert::Text;
 use Texinfo::Parser qw(tree_to_texi);
 

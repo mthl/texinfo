@@ -321,7 +321,8 @@ sub test($$)
         $test_name.' errors');
     ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 
         $test_name.' indices');
-    ok (tree_to_texi($result) eq $result_texis{$test_name}, $test_name.' texi');
+    ok (tree_to_texi($result) eq $result_texis{$test_name}, 
+         $test_name.' texi');
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
     #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text');
   }
