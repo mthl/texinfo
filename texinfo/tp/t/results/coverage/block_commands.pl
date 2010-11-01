@@ -315,4 +315,31 @@ In float
 $result_errors{'block_commands'} = [];
 
 
+$result_floats{'block_commands'} = {
+  'a-float' => [
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'caption' => {
+          'cmdname' => 'caption',
+          'extra' => {
+            'float' => {}
+          }
+        },
+        'normalized' => 'b-float',
+        'type' => {
+          'content' => [
+            {
+              'text' => 'a float'
+            }
+          ],
+          'normalized' => 'a-float'
+        }
+      }
+    }
+  ]
+};
+$result_floats{'block_commands'}{'a-float'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'block_commands'}{'a-float'}[0];
+
+
 1;

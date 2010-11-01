@@ -731,4 +731,50 @@ $result_errors{'double_node_anchor_float'} = [
 ];
 
 
+$result_floats{'double_node_anchor_float'} = {
+  'Text' => [
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'type' => {
+          'content' => [
+            {
+              'text' => 'Text'
+            }
+          ],
+          'normalized' => 'Text'
+        }
+      }
+    },
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'type' => {
+          'content' => [
+            {
+              'text' => 'Text'
+            }
+          ],
+          'normalized' => 'Text'
+        }
+      }
+    },
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'normalized' => 'float1',
+        'type' => {
+          'content' => [
+            {
+              'text' => 'Text'
+            }
+          ],
+          'normalized' => 'Text'
+        }
+      }
+    }
+  ]
+};
+
+
 1;

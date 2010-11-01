@@ -145,6 +145,16 @@ foreach my $avoided_key(@avoided_keys_menus) {
 sub filter_menus_keys { [grep {!$avoided_keys_menus{$_}}
    ( sort keys %{$_[0]} )] }
 
+my %avoided_keys_floats;
+my @avoided_keys_floats = (@sections_keys, @contents_keys, @node_keys, 
+                           @menus_keys);
+foreach my $avoided_key(@avoided_keys_floats) {
+  $avoided_keys_floats{$avoided_key} = 1;
+}
+sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
+   ( sort keys %{$_[0]} )] }
+
+
 sub test($$) 
 {
   my $self = shift;
@@ -245,11 +255,11 @@ sub test($$)
       $out_result .= Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
          if ($indices);
     }
-    #if ($floats)
-    #{
-    #  local $Data::Dumper::Sortkeys = 1;
-    #  $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
-    #}
+    if ($floats)
+    {
+      local $Data::Dumper::Sortkeys = \&filter_floats_keys;
+      $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
+    }
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);

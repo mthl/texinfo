@@ -193,4 +193,30 @@ $result_errors{'caption_not_closed'} = [
 ];
 
 
+$result_floats{'caption_not_closed'} = {
+  'Text' => [
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'caption' => {
+          'cmdname' => 'caption',
+          'extra' => {
+            'float' => {}
+          }
+        },
+        'type' => {
+          'content' => [
+            {
+              'text' => 'Text'
+            }
+          ],
+          'normalized' => 'Text'
+        }
+      }
+    }
+  ]
+};
+$result_floats{'caption_not_closed'}{'Text'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'caption_not_closed'}{'Text'}[0];
+
+
 1;
