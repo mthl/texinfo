@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
+@c $Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18519,11 +18519,12 @@ target format.
 * Output Elements::                The main unit of output documents.
 * Navigation Panel Customization:: Customizing navigation buttons and more.
 * Customizing HTML Page Layout::   Customizing page headers, footers, sections.
-* Customizing Special Elements::      The top, toc, about, etc., elements.
-* Customizing Output-Related Names::  File names and target names.
-* Customizing HTML Headings::
-* Customizing HTML Basic Commands::
-* Customizing HTML References::
+* Customizing Special Elements::     The top, toc, about, etc., elements.
+* Customizing Output-Related Names:: File names and target names.
+* Customizing HTML Headings::       Sectioning commands.
+* Customizing HTML Basic Commands:: Commands with no arguments, images, etc.
+* Customizing HTML References::     @code{@@xref}, external node pointers, etc.
+* Customizing HTML Footnotes::
 * Block commands formatting::
 * Paragraph and preformatted region::
 * Lists tables and definitions formatting::
@@ -20244,7 +20245,7 @@ element.
 
 The following sections describe the details for each special element
 except footnotes, which are formatted when the @code{@@footnote}
-command is expanded (@pxref{Footnotes formatting}).
+command is expanded (@pxref{Customizing HTML Footnotes}).
 
 @menu
 * Top Element Customization::
@@ -21512,7 +21513,6 @@ Customization}.
 @menu 
 * Internal: HTML Customization for Internal References.
 * External: HTML Customization for External References.
-* Footnotes formatting::
 @end menu
 
 
@@ -21633,67 +21633,96 @@ reference.
 @end deftypefn
 
 
-@node Footnotes formatting
-@subsection Customizing the footnotes formatting
+@node Customizing HTML Footnotes
+@section Customizing HTML Footnotes
 
-Each footnote is associated with a footnote entry.  Several footnote entries
-are grouped in a footnote section.  When a footnote appears, two things must
-be formatted: in the main text the place where the footnote appear
-and the footnote text. 
+@cindex Customizing HTML footnotes
+@cindex Footnotes, customizing HTML
 
-It is possible to replace the footnote with some text before formatting the
-footnote. The following function reference, if not undef is used:
+Each footnote is associated with a footnote entry.  Several footnote
+entries are grouped in a footnote section.  When a footnote appears,
+two things must be formatted: the footnote text, and the place in the
+main text where the footnote marker appears.
 
-@deftypefn {Function Reference} $added_text footnote_texi $footnote_text \%state \@@command_stack
-@var{$footnote_text} is the footnote text.
-@var{\%state} holds informations about the context at the footnote
-place in the main document.  For example, 
-@code{\%state->@{'outside_document'@}} or @code{\%state->@{'multiple_pass'@}}
-could be used.
-@var{\@@command_stack} is an array containing the commands enclosing
-the footnote.
+It is possible to replace the footnote with other text before
+formatting the footnote. The following function reference
+is used for this if it is defined:
+
+@deftypefn {Function Reference} $added_text footnote_texi $footnote_text @
+           \%state \@@command_stack
+@table @var
+@item $footnote_text
+The footnote text.
+
+@item \%state
+Hash referencing with information about the context of the footnote
+location in the main document.  Specifically, the entries
+@code{\%state->@{'outside_document'@}} or
+@code{\%state->@{'multiple_pass'@}} can be used.
+
+@item \@@command_stack
+Array reference containing the commands enclosing the footnote.
+@end table
+
+This function should return new formatted text for the footnote.
 @end deftypefn
 
+Two functions, with corresponding function references, control the
+formatting of the footnotes:
 
+@deftypefn {Function Reference} {(\@@lines $doc_text)} foot_line_and_ref @
+           $number_in_doc $number_in_page $footnote_id $place_id @
+           $document_file $footnote_file \@@lines \%state 
+@table @var
+@item $number_in_doc
+The footnote number counted through the whole document, 
 
-Two functions, with corresponding function references control the formatting
-of the footnotes:
+@item $number_in_page
+The footnote number counted on the current page.
 
-@deftypefn {Function Reference} {(\@@lines $text_for_document)} foot_line_and_ref $number_in_doc $number_in_page $footnote_id $place_id $document_file $footnote_file \@@lines \%state
-@var{$number_in_doc} is the footnote number in the whole document, 
-@var{$number_in_page} is the footnote number in the current page.
-@var{$footnote_id} is an identifier for the footnote in the footnote text
-which should be used to make target for references to that footnote,
-while @var{$place_id} is an identifier for the location of the footnote
-in the main document.  Similarly, @var{$document_file} is the file name
-of the file containing the text where the footnote appears in the main 
-document, while @var{$footnote_file} is the file name of the file where 
-the footnote text appears. 
+@item $footnote_id
+An identifier for the footnote text, which should be used to make the
+target for references to the footnote.
 
-@var{\@@lines} is a reference on an array containing the footnote text
-lines, allready formatted.
-And @var{\%state} holds informations about the context at the footnote
-place in the main document.  As usual the most usefull entry is 
-@code{preformatted} which is true if the footnote appears in a preformatted 
-context. 
+@item $place_id
+Identifier for the location of the footnote in the main document.
 
-This function returns a reference on an array, @var{\@@lines} containing
-the updated footnote text for the footnote entry, and @var{$text_for_document},
-the text appearing at the footnote place in the main document, linking
-to the footnote entry.
+@item $document_file
+Name of the file containing the text where the footnote appears in the
+main document
+
+@item $footnote_file
+Name of the file where the footnote text appears.
+
+@item \@@lines
+Array reference containing the footnote text lines, formatted.
+
+@item \%state
+Information about the context at the footnote location in the main
+document.  As usual, the most useful entry is @code{preformatted},
+which is true if the footnote appears in a preformatted context.
+@end table
+
+The function should return a list of two elements: an array reference
+(@var{\@@lines}) containing the updated footnote text for the footnote
+entry, and a string (@var{$doc_text}), for the text to appear at the
+location of the footnote in the main document, i.e., linking to the
+footnote entry.
 @end deftypefn
 
 The following function is only used when footnotes are at the bottom
-of a page and the document is split.  For customization of the
-footnotes page in case they are on a separated page or section,
-@ref{Customizing Layout of Special Elements}.  The footnotes location
-is determined by @code{footnotestyle}.
+of a page and the document is split.  For customization in the case
+when footnotes are on a separate page or section, @pxref{Customizing
+Layout of Special Elements}.  The footnote location is determined by
+@code{footnotestyle} (@pxref{Footnote Styles}).
 
 @deffn {Function Reference} foot_section \@@footnotes_lines
-This function formats a group of footnotes.  @var{\@@footnotes_lines} is a
-reference on an array holding the lines of all the footnote entries
-formatted as explained above.  This function modifies the reference.
+This function formats a group of footnotes.  @var{\@@footnotes_lines}
+is an array reference holding the lines of all the footnote entries
+formatted as explained above.  The function should modify the
+reference.
 @end deffn
+
 
 @node Block commands formatting
 @section Block commands formatting
@@ -24927,7 +24956,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
+$Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -25006,7 +25035,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.339 2010-10-31 18:31:33 karl Exp $
+@comment $Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
