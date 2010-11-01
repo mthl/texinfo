@@ -2185,6 +2185,9 @@ $result_trees{'value_in_misc_commands'} = {
 '
             }
           ],
+          'extra' => {
+            'noindent' => 1
+          },
           'parent' => {},
           'type' => 'paragraph'
         },

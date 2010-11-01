@@ -1139,6 +1139,7 @@ sub _begin_paragraph ($$)
     }
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
+    $current->{'contents'}->[-1]->{'extra'}->{$indent} = 1 if ($indent);
     $current = $current->{'contents'}->[-1];
     print STDERR "PARAGRAPH\n" if ($self->{'debug'});
     return $current;

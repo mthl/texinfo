@@ -2433,6 +2433,9 @@ $result_trees{'macro_in_misc_commands'} = {
 '
             }
           ],
+          'extra' => {
+            'noindent' => 1
+          },
           'parent' => {},
           'type' => 'paragraph'
         },
