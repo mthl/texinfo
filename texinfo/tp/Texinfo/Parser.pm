@@ -1978,6 +1978,7 @@ sub _end_line($$$)
                and $current->{'parent'}->{'cmdname'} eq 'float') {
       my $float = $current->{'parent'};
       $float->{'line_nr'} = $line_nr;
+      my $type = '';
       if (@{$float->{'args'}}) {
         if ($float->{'args'}->[1]) {
           my $float_label = _parse_node_manual($float->{'args'}->[1]);
@@ -1989,14 +1990,14 @@ sub _end_line($$$)
           }
         }
         if (_parse_float_type ($float)) {
-          my $type = $float->{'extra'}->{'type'}->{'normalized'};
-          push @{$self->{'floats'}->{$type}}, $float;
-          $float->{'float_section'} = $self->{'current_section'} 
-            if (defined($self->{'current_section'}));
-          #$float->{'float_node'} = $self->{'current_node'} 
-          #  if (defined($self->{'current_node'}));
+          $type = $float->{'extra'}->{'type'}->{'normalized'};
         }
       }
+      push @{$self->{'floats'}->{$type}}, $float;
+      $float->{'float_section'} = $self->{'current_section'} 
+        if (defined($self->{'current_section'}));
+      #$float->{'float_node'} = $self->{'current_node'} 
+      #  if (defined($self->{'current_node'}));
     }
     $current = $current->{'parent'};
     delete $current->{'remaining_args'};
