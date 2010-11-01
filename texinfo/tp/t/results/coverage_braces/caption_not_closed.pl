@@ -101,10 +101,14 @@ $result_trees{'caption_not_closed'} = {
           ],
           'cmdname' => 'caption',
           'contents' => [],
+          'extra' => {
+            'float' => {}
+          },
           'parent' => {}
         }
       ],
       'extra' => {
+        'caption' => {},
         'type' => {
           'content' => [
             {}
@@ -151,7 +155,9 @@ $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'co
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1];
+$result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'float'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0];
+$result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'};

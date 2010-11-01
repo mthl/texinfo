@@ -3185,6 +3185,37 @@ sub _parse_texi($$;$)
             }
             $current = $current->{'args'}->[-1];
             if ($context_brace_commands{$command}) {
+              if ($command eq 'caption' or $command eq 'shortcaption') {
+                my $float;
+                if (!$current->{'parent'}->{'parent'} 
+                    or !$current->{'parent'}->{'parent'}->{'cmdname'}
+                    or $current->{'parent'}->{'parent'}->{'cmdname'} ne 'float') {
+                  $float = $current->{'parent'};
+                  while ($float->{'parent'} and !($float->{'cmdname'}
+                                                  and $float->{'cmdname'} eq 'float')) {
+                    $float = $float->{'parent'};
+                  }
+                  if (!($float->{'cmdname'} and $float->{'cmdname'} eq 'float')) {
+                    _line_error($self, sprintf($self->__("\@%s is not meaningful outside `\@float' environment"),
+                                               $command), $line_nr);
+                    $float = undef;
+                  } else {
+                    _line_warn($self, sprintf($self->__("\@%s should be right below `\@float'"),
+                                               $command), $line_nr);
+                  }
+                } else {
+                  $float = $current->{'parent'}->{'parent'};
+                }
+                if ($float) {
+                  if ($float->{'extra'}->{$command}) {
+                    _line_warn($self, sprintf($self->__("Ignoring multiple \@%s"),
+                                              $command), $line_nr);
+                  } else {
+                    $current->{'parent'}->{'extra'}->{'float'} = $float;
+                    $float->{'extra'}->{$command} = $current->{'parent'};
+                  }
+                }
+              }
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
               $line =~ s/([^\S\n]*)//;
               $current->{'type'} = 'brace_command_context';
@@ -3230,9 +3261,11 @@ sub _parse_texi($$;$)
                    and $current->{'parent'}->{'cmdname'}
                    and (exists $brace_commands{$current->{'parent'}->{'cmdname'}}
                          or $self->{'definfoenclose'}->{$current->{'parent'}->{'cmdname'}})) {
-            # for math
+            # for math and footnote out of paragraph
             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-              pop @{$self->{'context_stack'}};
+              my $context_command = pop @{$self->{'context_stack'}};
+              die "BUG: def_context $context_command "._print_current($current) 
+                if ($context_command ne $current->{'parent'}->{'cmdname'});
             }
             # first is the arg.
             $self->_isolate_last_space($current) 
@@ -3260,7 +3293,9 @@ sub _parse_texi($$;$)
                    and $brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context_stack'}->[-1]) {
-               pop @{$self->{'context_stack'}};
+               my $context_command = pop @{$self->{'context_stack'}};
+               die "BUG: def_context $context_command "._print_current($current) 
+                 if ($context_command ne $current->{'parent'}->{'cmdname'});
                print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
                $current = $current->{'parent'}->{'parent'};
             }
