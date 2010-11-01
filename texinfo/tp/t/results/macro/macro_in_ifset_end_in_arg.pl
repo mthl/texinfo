@@ -1,5 +1,6 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
-%results_indices %result_sectioning %result_nodes);
+   %result_indices %result_sectioning %result_nodes %result_menus
+   %result_floats);
 
 $result_trees{'macro_in_ifset_end_in_arg'} = {
   'contents' => [

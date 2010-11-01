@@ -15,7 +15,8 @@ use Clone qw(clone);
 use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
-   %result_indices %result_sectioning %result_nodes %result_menus);
+   %result_indices %result_sectioning %result_nodes %result_menus
+   %result_floats);
 
 ok(1);
 
@@ -177,6 +178,7 @@ sub test($$)
   } else {
     $result = $parser->parse_texi_file($test_case);
   }
+  my $floats = $parser->floats_information();
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
 
@@ -189,6 +191,7 @@ sub test($$)
     unless (Data::Compare::Compare($index_names, $initial_index_names));
   $indices->{'merged_indices'} = $merged_indices
     unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
+
   my $converted_text = Texinfo::Convert::Text::convert($result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
@@ -202,7 +205,9 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
-    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".'%results_indices %result_sectioning %result_nodes);'."\n\n";
+    print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
+              '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
+              '   %result_floats);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
@@ -236,10 +241,15 @@ sub test($$)
     }
     {
       local $Data::Dumper::Sortkeys = 1;
-      $out_result .= "".Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
-      $out_result .= "".Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
+      $out_result .= Data::Dumper->Dump([$errors], ['$result_errors{\''.$test_name.'\'}']) ."\n\n";
+      $out_result .= Data::Dumper->Dump([$indices], ['$result_indices{\''.$test_name.'\'}']) ."\n\n"
          if ($indices);
     }
+    #if ($floats)
+    #{
+    #  local $Data::Dumper::Sortkeys = 1;
+    #  $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
+    #}
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);
