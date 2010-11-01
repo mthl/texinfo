@@ -23,11 +23,17 @@ $result_trees{'contents'} = {
         {
           'parent' => {},
           'text' => 'contents '
-        },
-        {
-          'cmdname' => 'contents',
-          'parent' => {}
-        },
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'contents',
+      'parent' => {}
+    },
+    {
+      'contents' => [
         {
           'parent' => {},
           'text' => 'second '
@@ -39,20 +45,32 @@ $result_trees{'contents'} = {
         {
           'parent' => {},
           'text' => 'contents '
-        },
-        {
-          'cmdname' => 'contents',
-          'parent' => {}
-        },
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'contents',
+      'parent' => {}
+    },
+    {
+      'contents' => [
         {
           'parent' => {},
           'text' => 'Third content on the following line on his own
 '
-        },
-        {
-          'cmdname' => 'contents',
-          'parent' => {}
-        },
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'contents',
+      'parent' => {}
+    },
+    {
+      'contents' => [
         {
           'parent' => {},
           'text' => 'Line following contents
@@ -61,30 +79,42 @@ $result_trees{'contents'} = {
         {
           'parent' => {},
           'text' => 'shortcontents '
-        },
-        {
-          'cmdname' => 'shortcontents',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'shortcontents '
-        },
-        {
-          'cmdname' => 'shortcontents',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'summarycontents '
-        },
-        {
-          'cmdname' => 'summarycontents',
-          'parent' => {}
         }
       ],
       'parent' => {},
       'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'shortcontents',
+      'parent' => {}
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'shortcontents '
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'shortcontents',
+      'parent' => {}
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'summarycontents '
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'summarycontents',
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -93,21 +123,26 @@ $result_trees{'contents'}{'contents'}[0]{'parent'} = $result_trees{'contents'};
 $result_trees{'contents'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[1];
 $result_trees{'contents'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'contents'}{'contents'}[1];
 $result_trees{'contents'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'contents'}{'contents'}[1];
-$result_trees{'contents'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'contents'}{'contents'}[1];
 $result_trees{'contents'}{'contents'}[1]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[2]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[3];
+$result_trees{'contents'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'contents'}{'contents'}[3];
+$result_trees{'contents'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'contents'}{'contents'}[3];
+$result_trees{'contents'}{'contents'}[3]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[4]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[5];
+$result_trees{'contents'}{'contents'}[5]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[6]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[7];
+$result_trees{'contents'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'contents'}{'contents'}[7];
+$result_trees{'contents'}{'contents'}[7]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[8]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[9];
+$result_trees{'contents'}{'contents'}[9]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[10]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'contents'}{'contents'}[11];
+$result_trees{'contents'}{'contents'}[11]{'parent'} = $result_trees{'contents'};
+$result_trees{'contents'}{'contents'}[12]{'parent'} = $result_trees{'contents'};
 
 $result_texis{'contents'} = '
 first @@contents @contents

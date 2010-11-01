@@ -580,8 +580,11 @@ foreach my $sectioning_command (
     'centerchap'
 ) {
   $misc_commands{$sectioning_command} = 'line';
-  $root_commands{$sectioning_command} = 1
-    unless ($sectioning_command =~ /heading/);
+  if ($sectioning_command =~ /heading/) {
+    $close_paragraph_commands{$sectioning_command} = 1;
+  } else {
+    $root_commands{$sectioning_command} = 1;
+  }
 }
 
 $root_commands{'node'} = 1;
@@ -629,7 +632,8 @@ $close_paragraph_commands{'verbatim'} = 1;
 
 foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem', 
-  'printindex', 'listoffloats') {
+  'printindex', 'listoffloats', 'center', 'dircategory', 'contents',
+  'shortcontents', 'summarycontents') {
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 
@@ -1115,6 +1119,24 @@ sub _begin_paragraph ($$)
     die "BUG: contents undef "._print_current($current) 
        if (!defined($current->{'contents'}));
 
+    my $indent;
+    if (scalar(@{$current->{'contents'}})) {
+      my $index = scalar(@{$current->{'contents'}}) -1;
+      while ($index >= 0
+            and !($current->{'contents'}->[$index]->{'type'} 
+              and ($current->{'contents'}->[$index]->{'type'} eq 'empty_line'
+                   or $current->{'contents'}->[$index]->{'type'} eq 'paragraph'))
+            and !($current->{'contents'}->[$index]->{'cmdname'}
+                  and $close_paragraph_commands{$current->{'contents'}->[$index]->{'cmdname'}})) {
+        if ($current->{'contents'}->[$index]->{'cmdname'}
+          and ($current->{'contents'}->[$index]->{'cmdname'} eq 'indent'
+              or $current->{'contents'}->[$index]->{'cmdname'} eq 'noindent')) {
+          $indent = $current->{'contents'}->[$index]->{'cmdname'};
+          last;
+        }
+        $index--;
+      }
+    }
     push @{$current->{'contents'}}, 
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current = $current->{'contents'}->[-1];

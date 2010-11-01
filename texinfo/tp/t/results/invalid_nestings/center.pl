@@ -432,44 +432,6 @@ $result_trees{'center'} = {
                     {
                       'parent' => {},
                       'text' => 'in code in center '
-                    },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => ' ',
-                              'type' => 'empty_spaces_after_command'
-                            },
-                            {
-                              'parent' => {},
-                              'text' => 'center in code in center'
-                            },
-                            {
-                              'parent' => {},
-                              'text' => '
-',
-                              'type' => 'spaces_at_end'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'misc_line_arg'
-                        }
-                      ],
-                      'cmdname' => 'center',
-                      'extra' => {
-                        'invalid_nesting' => 1,
-                        'misc_content' => [
-                          {}
-                        ]
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
-                      },
-                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -478,6 +440,44 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'parent' => {}
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'center in code in center'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'center',
+              'extra' => {
+                'invalid_nesting' => 1,
+                'misc_content' => [
+                  {}
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -488,6 +488,7 @@ $result_trees{'center'} = {
       'cmdname' => 'center',
       'extra' => {
         'misc_content' => [
+          {},
           {}
         ]
       },
@@ -591,17 +592,18 @@ $result_trees{'center'}{'contents'}[12]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[13]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0];
 $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'center'}{'contents'}[14]{'args'}[0];
 $result_trees{'center'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[14];
 $result_trees{'center'}{'contents'}[14]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1];
-$result_trees{'center'}{'contents'}[14]{'line_nr'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'center'}{'contents'}[14]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2];
+$result_trees{'center'}{'contents'}[14]{'line_nr'} = $result_trees{'center'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'center'}{'contents'}[14]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[15]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[16]{'parent'} = $result_trees{'center'};
@@ -620,8 +622,8 @@ $result_texis{'center'} = '@center @indent @titlefont{in titlefont} @anchor{in a
 }
 
 
-@center @code{in code in center @center center in code in center
-}
+@center @code{in code in center }@center center in code in center
+
 
 ';
 
