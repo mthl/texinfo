@@ -57,6 +57,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   parse_texi_file
   errors
   indices_information
+  floats_information
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -142,11 +143,14 @@ my %default_configuration = (
 # errors_warnings         a structure with the errors and warnings.
 # error_nrs               number of errors.
 # current_node            last seen node.
+# current_section         last seen section.
 # nodes                   list of nodes.
 # command_index_prefix    associate a command name to an index prefix.
 # prefix_to_index_name    associate an index prefix to the index name.
 # index_entries           key is an index name, value is an array reference
 #                         on index_entry.
+# floats                  key is the normalized float type, value is an array
+#                         reference holding all the floats.
 
 # A line information is an hash reference with the keys:
 # line_nr        the line number
@@ -958,7 +962,14 @@ sub errors ($)
 sub indices_information ($)
 {
   my $self = shift;
-  return ($self->{'index_names'}, $self->{'merged_indices'});
+  #return ($self->{'index_names'}, $self->{'merged_indices'});
+  return ($self->{'index_names'}, $self->{'merged_indices'}, $self->{'index_entries'});
+}
+
+sub floats_information ($)
+{
+  my $self = shift;
+  return $self->{'floats'};
 }
 
 # Following are the internal subsections.  The most important are
@@ -1977,7 +1988,14 @@ sub _end_line($$$)
             _register_label($self, $float, $float_label, $line_nr);
           }
         }
-        _parse_float_type ($float);
+        if (_parse_float_type ($float)) {
+          my $type = $float->{'extra'}->{'type'}->{'normalized'};
+          push @{$self->{'floats'}->{$type}}, $float;
+          $float->{'float_section'} = $self->{'current_section'} 
+            if (defined($self->{'current_section'}));
+          #$float->{'float_node'} = $self->{'current_node'} 
+          #  if (defined($self->{'current_node'}));
+        }
       }
     }
     $current = $current->{'parent'};
@@ -2083,7 +2101,7 @@ sub _end_line($$$)
         if (_register_label($self, $current, 
                     $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr)) {
           $self->{'current_node'} = $current;
-          push @{$self->{'nodes'}}, $self->{'current_node'};
+          push @{$self->{'nodes'}}, $current;
         }
       }
     } elsif ($command eq 'listoffloats') {
@@ -2144,11 +2162,13 @@ sub _end_line($$$)
       delete $current->{'remaining_args'};
       $current->{'contents'} = [];
       # associate the section (not part) with the current node.
-      if ($command ne 'node' and $command ne 'part'
-           and $self->{'current_node'}
+      if ($command ne 'node' and $command ne 'part') {
+        if ($self->{'current_node'}
            and !$self->{'current_node'}->{'extra'}->{'associated_section'}) {
-        $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
-        $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
+          $self->{'current_node'}->{'extra'}->{'associated_section'} = $current;
+          $current->{'extra'}->{'associated_node'} = $self->{'current_node'};
+        }
+        $self->{'current_section'} = $current;
       }
     }
    # do that last in order to have the line processed if one of the above
