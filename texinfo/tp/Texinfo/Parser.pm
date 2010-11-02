@@ -1903,7 +1903,7 @@ sub _end_line($$$)
       }
     } else {
       while ($current->{'parent'} and !($current->{'type'}
-             and ($current->{'type'} eq 'brace_line_arg'
+             and ($current->{'type'} eq 'block_line_arg'
                   or $current->{'type'} eq 'misc_line_arg'))) {
         $current = $self->_close_current($current, $line_nr);
       }

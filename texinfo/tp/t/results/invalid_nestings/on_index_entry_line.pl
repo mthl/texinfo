@@ -107,30 +107,42 @@ $result_trees{'on_index_entry_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'spaces_at_end'
             },
             {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'exdent'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
               'cmdname' => 'exdent',
               'extra' => {
-                'invalid_nesting' => 1
+                'invalid_nesting' => 1,
+                'misc_content' => [
+                  {}
+                ]
               },
               'line_nr' => {},
               'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => 'exdent'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -142,8 +154,6 @@ $result_trees{'on_index_entry_line'} = {
         'index_entry' => {
           'command' => {},
           'content' => [
-            {},
-            {},
             {},
             {},
             {},
@@ -182,11 +192,13 @@ $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'a
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'extra'}{'misc_content'}[0] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[1];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_index_entry_line'}{'contents'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'on_index_entry_line'}{'contents'}[0];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
@@ -197,8 +209,6 @@ $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'con
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[5] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[6];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[6] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[7];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[7] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[8];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[8] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[9];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'}[9] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[10];
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'line_nr'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_index_entry_line'}{'contents'}[0]{'parent'} = $result_trees{'on_index_entry_line'};

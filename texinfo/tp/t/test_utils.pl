@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-use Texinfo::Parser qw(:all);
+use Texinfo::Parser qw(tree_to_texi);
 use Texinfo::Convert::Text;
 use Texinfo::Structuring;
 use File::Basename;

@@ -148,7 +148,8 @@ my %accent_commands = %Texinfo::Commands::accent_commands;
 
 # node?
 my %kept_misc_commands;
-foreach my $command ('sp', 'center', 'item', 'itemx', 'tab', 'headitem',
+foreach my $command ('sp', 'center', 'exdent', 
+                     'item', 'itemx', 'tab', 'headitem',
     'node',
     'top',
     'chapter',

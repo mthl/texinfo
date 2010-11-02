@@ -157,7 +157,7 @@ our %misc_commands = (
   # formatting
   'noindent'          => 'skipspace', # no arg
   'indent'            => 'skipspace',
-  'exdent'            => 'skipspace',
+  'exdent'            => 'line',
   'headitem'          => 'skipspace',
   'item'              => 'skipspace', # or line, depending on the context
   'itemx'             => 'skipspace',
