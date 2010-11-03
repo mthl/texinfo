@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-01.16; # UTC
+htmlxrefversion=2010-11-03.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -330,6 +330,9 @@ pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/
 
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
+
+rottlog		mono	${GS}/rottlog/manual/rottlog.html
+rottlog		node	${GS}/rottlog/manual/html_node/
 
 screen		mono	${GS}/screen/manual/screen.html
 screen		node	${GS}/screen/manual/html_node/

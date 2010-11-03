@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
+@c $Id: texinfo.txi,v 1.341 2010-11-03 18:04:49 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -18524,8 +18524,8 @@ target format.
 * Customizing HTML Headings::       Sectioning commands.
 * Customizing HTML Basic Commands:: Commands with no arguments, images, etc.
 * Customizing HTML References::     @code{@@xref}, external node pointers, etc.
-* Customizing HTML Footnotes::
-* Block commands formatting::
+* Customizing HTML Footnotes::      Footnotes.
+* Customizing HTML Block Commands:: Environments.
 * Paragraph and preformatted region::
 * Lists tables and definitions formatting::
 * Menus indices and floats formatting::
@@ -21724,34 +21724,49 @@ reference.
 @end deffn
 
 
-@node Block commands formatting
-@section Block commands formatting
+@node Customizing HTML Block Commands
+@section Customizing HTML Block Commands
+
+@cindex Customizing HTML block commands
+@cindex Block commands, customizing HTML
+@cindex Environments, customizing HTML
 
 @menu
-* Alignement commands formatting::
+* Align: HTML Customization of Alignment Commands.  @code{@@flushleft}, etc.
 * Preformatted block command formatting::
 * Other block commands formatting::
 @end menu
 
-@node Alignement commands formatting
-@subsection Formatting of commands centering and flushing text
+@node HTML Customization of Alignment Commands
+@subsection HTML Customization of Alignment Commands
+
+@cindex HTML customization of alignment environments
+@cindex Customization of alignment environments
+@cindex Alignment environments, HTML customization of
+@cindex @code{@@center}, HTML customization of
+@cindex @code{@@flushleft}, HTML customization of
+@cindex @code{@@flushright}, HTML customization of
 
 @vindex %paragraph_style
-When a command controlling the alignement of text is used (@code{@@center},
-@code{@@flushleft} and @code{@@flushright}), the main program takes
-care of opening and closing paragraphs.  The alignement commands are the
-key of the @code{%paragraph_style} hash. 
-The value is used in the function doing the formatting of the paragraphs. 
-@xref{Paragraph and preformatted region}.
+When a block with special text alignment of text is used, namely
+@code{@@center} (@pxref{titlefont center sp},,
+@code{@@titlefont}@comma{} @code{@@center}@comma{} and @code{@@sp}),
+@code{@@flushleft} or @code{@@flushright} (@pxref{flushleft &
+flushright,, @code{@@flushleft} and @code{@@flushright}}, the main
+program takes care of opening and closing paragraphs.  The alignment
+commands are the keys in the @code{%paragraph_style} hash.  The value
+is used in the function doing the formatting of the paragraphs
+(@pxref{Paragraph and preformatted region}).
 
-A function references allows for a customization of the formatting of the text 
-appearing in the command block.
+This function reference allows for customizing the formatting of the
+command argument.
 
 @deftypefn {Function Reference} $result paragraph_style_command $command $text
-@var{$command} is the command name, @var{$text} is the text appearing within
-the command.  This function returns a formatted text.
-The default is to return the text unmodified.
+@var{$command} is the command name and @var{$text} is the text
+appearing within the command.  This function should return the
+formatted text.  The default is to return the text unmodified.
 @end deftypefn
+
 
 @node Preformatted block command formatting
 @subsection Preformatted block command (@code{@@example}, @code{@@display}@dots{}) formatting
@@ -21893,8 +21908,8 @@ by function references:
 @deftypefn {Function Reference} $paragraph_text paragraph $text $alignement $index $formatting_command $formatting_command_formatted \$paragraph_number $format $item_number $enumerate_style $number $command_stack_at_end $command_stack_at_begin
 This function formats a paragraph.  @var{$text} is the text of the paragraph,
 @var{$alignement} is the empty string when no alignement command has
-been seen, otherwise it is the current alignement command name.
-@xref{Alignement commands formatting}.
+been seen, otherwise it is the current alignement command name (see
+the previous section).
 @var{$indent} holds @samp{noindent} or @samp{indent} if the corresponding 
 @@-command appeared in the paragraph.
 @var{$command_stack_at_end} and @var{$command_stack_at_begin} are arrays
@@ -24956,7 +24971,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
+$Id: texinfo.txi,v 1.341 2010-11-03 18:04:49 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -25035,7 +25050,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.340 2010-11-01 20:20:56 karl Exp $
+@comment $Id: texinfo.txi,v 1.341 2010-11-03 18:04:49 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
