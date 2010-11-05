@@ -1,3 +1,17 @@
+2010-11-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texi2oldapi.texi: new file archiving several API sections
+	which will likely become obsolete with the new tree-based translator.
+	* doc/texinfo.txi (Customizing HTML Basic Commands,
+        Customizing HTML References,
+	Customizing HTML Footnotes
+	Customizing HTML Block Commands,
+	Paragraph and preformatted region,
+	Lists tables and definitions formatting,
+	Menus indices and floats formatting,
+	Handling special regions,
+        Other and unknown commands): these sections removed.
+
 2010-11-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (HTML Customization of Alignment Commands):
