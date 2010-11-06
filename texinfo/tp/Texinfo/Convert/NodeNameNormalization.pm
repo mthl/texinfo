@@ -175,7 +175,8 @@ sub _convert($;$)
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});
-      return Texinfo::Convert::Unicode::unicode_accent(_convert($root->{'args'}->[0]), $root);
+      return Texinfo::Convert::Unicode::unicode_accent(_convert($root->{'args'}->[0]), 
+                         $root, \&Texinfo::Convert::Text::ascii_accent);
     } elsif ($root->{'cmdname'} eq 'image') {
       return _convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {

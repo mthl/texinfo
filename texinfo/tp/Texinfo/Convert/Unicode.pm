@@ -530,10 +530,11 @@ foreach my $command (keys(%unicode_map)) {
   }
 }
 
-sub unicode_accent($$)
+sub unicode_accent($$$)
 {
   my $text = shift;
   my $command = shift;
+  my $fallback_convert_accent = shift;
 
   my $accent = $command->{'cmdname'};
 
@@ -553,7 +554,7 @@ sub unicode_accent($$)
 
   return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritics{$accent})))
     if (defined($unicode_diacritics{$accent}));
-  return Texinfo::Convert::Text::ascii_accents($text, $command);
+  return &$fallback_convert_accent($text, $command);
 }
 
 1;

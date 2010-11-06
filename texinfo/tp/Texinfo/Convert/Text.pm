@@ -630,7 +630,7 @@ sub _eight_bit_and_unicode_point($$)
   return ($eight_bit, $codepoint);
 }
 
-sub eight_bit_accents($$$)
+sub eight_bit_accent($$$)
 {
   my $current = shift;
   my $encoding = shift;
@@ -653,7 +653,8 @@ sub eight_bit_accents($$$)
 
   while (1) {
     $current_result 
-      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
+      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent,
+                                                    $convert_accent);
     push @results_stack, [$current_result, $accent];
     last if ($accent eq $current);
     $accent = $accent->{'parent'}->{'parent'};
@@ -729,7 +730,7 @@ sub eight_bit_accents($$$)
   return $result;
 }
 
-sub ascii_accents($$)
+sub ascii_accent($$)
 {
   my $text = shift;
   my $command = shift;
@@ -803,13 +804,13 @@ sub convert($;$)
       return '' if (!$root->{'args'});
       if ($options->{'enable_encoding'} and $options->{'enable_encoding'} eq 'utf-8') {
         return Texinfo::Convert::Unicode::unicode_accent(convert($root->{'args'}->[0], $options), 
-                                                         $root->{'cmdname'});
+                                            $root->{'cmdname'}, \&ascii_accent);
       } elsif ($options->{'enable_encoding'} 
          and $Texinfo::Commands::eight_bit_encoding_aliases{$options->{'enable_encoding'}}) {
-        return eight_bit_accents($root, $options->{'enable_encoding'}, 
-              \&ascii_accents);
+        return eight_bit_accent($root, $options->{'enable_encoding'}, 
+              \&ascii_accent);
       } else {
-        return ascii_accents(convert($root->{'args'}->[0], $options), $root);
+        return ascii_accent(convert($root->{'args'}->[0], $options), $root);
       }
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
