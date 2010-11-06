@@ -555,9 +555,9 @@ foreach my $type ('empty_line_after_command',
   $ignored_types{$type} = 1;
 }
 
-sub _accent_stack($)
+# find the innermost accent and the correspponding text
+sub _find_innermost_accent($)
 {
-#unicode_to_eight_bit
   my $current = shift;
   my @accent_commands = ();
   my $text = '';
@@ -574,8 +574,9 @@ sub _accent_stack($)
     }
     push @accent_commands, $current->{'cmdname'};
     my $arg = $current->{'args'}->[0];
+    # a construct like @'e without content
     if (defined($arg->{'text'})) {
-      return ($arg->{'text'}, \@accent_commands, $current);
+      return ($arg->{'text'}, $current, \@accent_commands);
     }
     if (!$arg->{'contents'}) {
       print STDERR "BUG: No content in accent command\n";
@@ -583,6 +584,7 @@ sub _accent_stack($)
       print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
       last;
     }
+    # inside the braces of an accent
     foreach my $content (@{$arg->{'contents'}}) {
       if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
          and !($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
@@ -605,7 +607,27 @@ sub _accent_stack($)
     }
     last;
   }
-  return ($text, \@accent_commands, $current);
+  return ($text, $current, \@accent_commands);
+}
+
+# return the 8 bit, if it exists, and the unicode codepoint
+sub _eight_bit_and_unicode_point($$)
+{
+  my $char = shift;
+  my $encoding_map_name = shift;
+  my ($eight_bit, $codepoint);
+  if (ord($char) <= 128) { 
+    # 7bit ascii characters, the same in every 8bit encodings
+    $eight_bit = uc(sprintf("%02x",ord($char)));
+    $codepoint = uc(sprintf("%04x",ord($char)));
+  } elsif (ord($char) <= hex(0xFFFF)) {
+    $codepoint = uc(sprintf("%04x",ord($char)));
+    if (exists($unicode_to_eight_bit{$encoding_map_name}->{$codepoint})) {
+     $eight_bit 
+         = $unicode_to_eight_bit{$encoding_map_name}->{$codepoint};
+    }
+  }
+  return ($eight_bit, $codepoint);
 }
 
 sub eight_bit_accents($$$)
@@ -614,115 +636,96 @@ sub eight_bit_accents($$$)
   my $encoding = shift;
   my $convert_accent = shift;
 
-  my $debug = 0;
+  my $debug;
+  #$debug = 1;
 
-  my ($text, $stack, $innermost_accent) = _accent_stack($current);
+  my ($text, $innermost_accent, $stack) = _find_innermost_accent($current);
+
+  print STDERR "INNERMOST: $innermost_accent->{'cmdname'}($text)\n"
+    if ($debug);
 
   # accents are formatted and the intermediate results are kept, such
   # that we can return the maximum of multiaccented letters that can be
   # rendered with a given eight bit formatting.
   my $accent = $innermost_accent;
-  if ($debug) {
-    print STDERR "INNERMOST: $innermost_accent->{'cmdname'}($text)\n";
+  my $current_result = $text;
+  my @results_stack;
+
+  while (1) {
+    $current_result 
+      = Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
+    push @results_stack, [$current_result, $accent];
+    last if ($accent eq $current);
+    $accent = $accent->{'parent'}->{'parent'};
   }
-  my $current_result = Texinfo::Convert::Unicode::unicode_accent($text, $accent);
-  print STDERR 'PARTIAL_RESULTS: '.Encode::encode('utf8', $current_result) if ($debug);
-  
-  my @results_stack = ([$current_result, $accent]);
-  if ($accent ne $current) {
-    while ($accent->{'parent'}->{'parent'}) {
-      $accent = $accent->{'parent'}->{'parent'};
-      $current_result = 
-        Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
-      print STDERR '|'.Encode::encode('utf8', $current_result) if ($debug);
-      push @results_stack, [$current_result, $accent];
-      last if ($accent eq $current);
-    }
-  }
-  print STDERR "\n" if ($debug);
 
   if ($debug) {
     print STDERR "stack: ".join('|',@$stack)."\nPARTIAL_RESULATS_STACK:\n";
     foreach my $partial_result (@results_stack) {
-      print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])."|$partial_result->[1]->{'cmdname'}\n";
+      print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])
+                            ."|$partial_result->[1]->{'cmdname'}\n";
     }
   }
 
   my $encoding_map_name 
        = $Texinfo::Commands::eight_bit_encoding_aliases{$encoding};
-  my $eight_bit;
-  my $result;
-  my $accent_done;
   # At this point we have the utf8 encoded results for the accent
   # commands stack, with all the intermediate results.
   # For each one we'll check if it is possible to encode it in the 
   # current eight bit output encoding table
+  my ($eight_bit, $dummy) 
+     = _eight_bit_and_unicode_point($text, $encoding_map_name);
+  my $eight_bit_command_index = -1;
   foreach my $partial_result (@results_stack) {
     my $char = $partial_result->[0];
-    my $new_eight_bit = '';
-    my $new_codepoint;
 
-    if (ord($char) <= 128) { 
-      # 7bit ascii characters, the same in every 8bit encodings
-      $new_eight_bit = uc(sprintf("%02x",ord($char)));
-      $new_codepoint = uc(sprintf("%04x",ord($char)));
-    } elsif (ord($char) <= hex(0xFFFF)) {
-      $new_codepoint = uc(sprintf("%04x",ord($char)));
-      if (exists($unicode_to_eight_bit{$encoding_map_name}->{$new_codepoint})) {
-         $new_eight_bit 
-            = $unicode_to_eight_bit{$encoding_map_name}->{$new_codepoint};
-      }
-    }
-
+    my ($new_eight_bit, $new_codepoint) = _eight_bit_and_unicode_point($char,
+                                                           $encoding_map_name);
     if ($debug) {
       my $eight_bit_txt = 'undef';
       $eight_bit_txt = $eight_bit if (defined($eight_bit));
       print STDERR "" . Encode::encode('utf8', $char) . " ($partial_result->[1]->{'cmdname'}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
     }
 
-    # no corresponding eight bit character found
-    last if ($new_eight_bit eq '');
+    # no corresponding eight bit character found for a composed character
+    last if (!$new_eight_bit);
 
     # in that case, the new eight bit character is the same than the one 
-    # found with one less character (and it isnt a @dotless{i}). It may
-    # mean 2 things
+    # found with one less character (and it isn't a @dotless{i}). It may
+    # hapen in 2 case, both meaning that there is no corresponding 8bit char:
+    #
     # -> there are 2 characters in accent. This could happen, for example
     #    if an accent that cannot be rendered is found and it leads to 
     #    appending or prepending a character. For example this happens for
     #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
     #    n with a tilde, followed by a , 
-    #    In nthat case, the additional utf8 accent is prepended, which 
+    #    In that case, the additional utf8 diacritic is appended, which 
     #    means that it is composed with the , and leaves n with a tilde 
     #    untouched. 
-    # -> ord(char) leads to the same for the more inner character.
-    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
-    #    the same than ord(a with underbar).
-    last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit)
-       and !($partial_result->[1]->{'cmdname'} eq 'dotless' and $char eq 'i')));
-    $result = $partial_result->[0];
-    $accent_done = $partial_result->[1];
+    # -> the diacritic is appended but the normal form doesn't lead
+    #    to a composed character, such that the first character
+    #    of the string is unchanged. This, for example, happens for 
+    #    @ubaraccent{a} since there is no composed accent with a and an 
+    #    underbar.
+    last if (($new_eight_bit eq $eight_bit)
+       and !($partial_result->[1]->{'cmdname'} eq 'dotless' and $char eq 'i'));
     $eight_bit = $new_eight_bit;
+    $eight_bit_command_index++;
   }
-  my $accent_remaining = '';
-  if (defined($accent_done)) {
-    if ($accent_done ne $current) {
-      $accent_remaining = $accent_done->{'parent'}->{'parent'};
-    }
-  } else {
-    $accent_remaining = $innermost_accent;
-    $result = $text;
+  # handle the remaining accents, that have not been converted to 8bit
+  # compatible unicode
+  my $result = $text;
+  $result = $results_stack[$eight_bit_command_index]->[0] 
+    if ($eight_bit_command_index > -1);
+  for (my $remaining_accents = $eight_bit_command_index+1; 
+          $remaining_accents <= $#results_stack; $remaining_accents++) {
+    $result = &$convert_accent($result, $results_stack[$remaining_accents]->[1]);
+    print STDERR "REMAINING($remaining_accents) "
+       .Encode::encode('utf8', $result)."\n" if ($debug);
   }
-  print STDERR "initial: $current, remaining: $accent_remaining, result: "
-     .Encode::encode('utf8', $result)."\n" if ($debug);
-  if ($accent_remaining) {
-    while (1) {
-      $result = &$convert_accent($result, $accent_remaining);
-      if ($accent_remaining eq $current) {
-        return $result;
-      }
-      $accent_remaining = $accent_remaining->{'parent'}->{'parent'};
-    }
-  }
+
+  # An important remark is that the final conversion to 8bit is left to
+  # perl.
   return $result;
 }
 

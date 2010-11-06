@@ -19,7 +19,7 @@
 
 package Texinfo::Convert::Unicode;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 use Encode;
