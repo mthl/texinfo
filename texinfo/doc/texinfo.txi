@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.342 2010-11-05 23:26:21 karl Exp $
+@c $Id: texinfo.txi,v 1.343 2010-11-06 16:16:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -9063,7 +9063,7 @@ text, use the @code{@@itemx} command.  (@xref{itemx,,@code{@@itemx}}.)
 
 @node ftable vtable
 @subsection @code{@@ftable} and @code{@@vtable}
-@cindex Tables with indexes
+@cindex Tables with indexing
 @cindex Indexing table entries automatically
 @findex ftable
 @findex vtable
@@ -9844,6 +9844,7 @@ not split, footnotes are put at the end of the output.  If set to
 @samp{separate}, and the output is split, they are placed in a
 separate file.
 
+
 @node Indices
 @chapter Indices
 @cindex Indices
@@ -9855,10 +9856,10 @@ discussion of each entry.  In a printed manual, this information
 consists of page numbers.  In an Info file, this information is a menu
 entry leading to the first node referenced.
 
-Texinfo provides several predefined kinds of index: an index
-for functions, an index for variables, an index for concepts, and so
-on.  You can combine indices or use them for other than their
-canonical purpose.  Lastly, you can define your own new indices.
+Texinfo provides several predefined kinds of index: an index for
+functions, an index for variables, an index for concepts, and so on.
+You can combine indices or use them for other than their canonical
+purpose.  Lastly, you can define your own new indices.
 
 @xref{Printing Indices & Menus}, for information on how to print
 indices.
@@ -9882,20 +9883,20 @@ When you are making index entries, it is good practice to think of the
 different ways people may look for something.  Different people
 @emph{do not} think of the same words when they look something up.  A
 helpful index will have items indexed under all the different words
-that people may use.  For example, one reader may think it obvious that
-the two-letter names for indices should be listed under ``Indices,
-two-letter names'', since the word ``Index'' is the general concept.
-But another reader may remember the specific concept of two-letter
-names and search for the entry listed as ``Two letter names for
-indices''.  A good index will have both entries and will help both
-readers.@refill
+that people may use.  For example, one reader may think it obvious
+that the two-letter names for indices should be listed under
+``Indices, two-letter names, since ``Indices'' are the general
+concept.  But another reader may remember the specific concept of
+two-letter names and search for the entry listed as ``Two letter names
+for indices''.  A good index will have both entries and will help both
+readers.
 
-Like typesetting, the construction of an index is a highly skilled,
-professional art, the subtleties of which are not appreciated until you
-need to do it yourself.@refill
+Like typesetting, the construction of an index is a skilled art, the
+subtleties of which may not be appreciated until you need to do it
+yourself.
 
-@xref{Printing Indices & Menus}, for information about printing an index
-at the end of a book or creating an index menu in an Info file.@refill
+@xref{Printing Indices & Menus}, for information about printing an
+index at the end of a book or creating an index menu in an Info file.
 
 
 @node Predefined Indices
@@ -10166,6 +10167,7 @@ at the end of a book or creating an index menu in an Info file.@refill
 
 @node New Indices
 @section Defining New Indices
+
 @cindex Defining new indices
 @cindex Indices, defining new
 @cindex New index defining
@@ -18514,15 +18516,15 @@ useful to do so, so we'll write the documentation as if HTML were the
 target format.
 
 @menu
-* Loading Init Files::             Initialization files and their search paths.
-* Init File Basics::               What init files can contain and do.
-* Output Elements::                The main unit of output documents.
-* Navigation Panel Customization:: Customizing navigation buttons and more.
-* Customizing HTML Page Layout::   Customizing page headers, footers, sections.
+* Loading Init Files::               Finding and writing initialization files.
+* Init File Basics::                 What init files can contain and do.
+* Output Elements::                  The main unit of output documents.
+* Navigation Panel Customization::   Navigation buttons and more.
+* Customizing HTML Page Layout::     Page headers, footers, sections.
 * Customizing Special Elements::     The top, toc, about, etc., elements.
 * Customizing Output-Related Names:: File names and target names.
-* Customizing HTML Headings::       Sectioning commands.
-* External index files::
+* Customizing HTML Headings::        Sectioning commands.
+* Customizing Indices::              Manipulating index entries.
 * Customizing CSS::
 @end menu
 
@@ -20849,64 +20851,94 @@ True if the heading is the first of an element.
 @end deftypefn
 
 
-@node External index files
-@section Generation of external files for index entries
+@node Customizing Indices
+@section Customizing Indices
 
-In case you want to do something special with index 
-entries, outside of the document, you should first set the configuration 
-variable @code{IDX_SUMMARY} true.  After that some function reference 
-will be called for each non empty index.  For each index there are 3 
-function references, one called for initialization, one called for each 
-index entry and the last one called for finalization.
+@cindex Customizing indices
+@cindex Indices, customizing
+@vindex IDX_SUMMARY
+To do something special with index entries outside of the Texinfo
+source document (@pxref{Indices}), you should first set the
+configuration variable @code{IDX_SUMMARY} true.  After that, various
+function references will be called for each non-empty index: one for
+initialization, one for each index entry, and one for finalization.
 
-@deffn {Function Reference} index_summary_file_begin $index_name $is_printed $manual_name
-@var{$index_name} is the two letters name for the index.  This function
-is called for each index appearing in the document, before 
-@code{index_summary_file_entry}.
-@var{$is_printed} is true if there is a @code{@@printindex} for that index.
-@var{$manual_name} is the manual basename.
+@deffn {Function Reference} index_summary_file_begin $index_name @
+       $is_printed $manual_name
+This function is called once for each non-empty index used in the
+document, before any calls to @code{index_summary_file_entry}.
+
+@table @var
+@item $index_name
+The two-letter name of the index. 
+
+@item $is_printed
+True if this index has a @code{@@printindex} command.
+
+@item $manual_name
+The manual basename.
+@end table
 @end deffn
 
-@deffn {Function Reference} index_summary_file_entry $index_name $entry_text $entry_reference $formatted_entry $texi_entry $entry_element_reference $entry_element_header $is_printed $manual_name
-This function is called for each entry of an index. @var{index_name} is the
-name of the index. @var{$entry_text} is the entry in plain text,
-@var{$formatted_entry} is the index entry formatted, @var{$texi_entry} is the
-entry with texinfo commands. @var{$entry_reference} is the reference placed 
-at the index entry place, in the form @samp{file#id}.
-@var{$entry_element_reference} is the reference to the
-beginning of the element containing the index entry, in the form
-@var{$entry_element_header} is the formatted header of the element containing 
-the index entry. 
-@samp{file#id}. 
-@var{$is_printed} is true if there is a @code{@@printindex} for that index.
-@var{$manual_name} is the manual basename.
+@deffn {Function Reference} index_summary_file_entry $index_name @
+       $entry_text $entry_reference $formatted_entry $texi_entry @
+       $entry_element_reference $entry_element_header $is_printed $manual_name 
+This function is called for each entry of an index.
+
+@table @var
+@item $index_name
+The two-letter name of the index.
+
+@item $entry_text
+@itemx $formatted_entry
+@itemx $texi_entry
+The entry in plain text, formatted, and original source, respectively.
+
+@item $entry_reference
+The reference used for the index entry, in the form @samp{file#id}.
+
+@item $entry_element_reference
+The reference to the beginning of the element containing the index
+entry, also in the form @samp{file#id} (@pxref{Output Elements
+Defined}).
+
+@item $entry_element_header
+The formatted header of the element containing the index entry. 
+
+@item $is_printed
+True if this index has a @code{@@printindex} command.
+
+@item $manual_name
+The manual basename.
+@end table
 @end deffn
 
-@deffn {Function Reference} index_summary_file_end $index_name $is_printed $manual_name
-@var{$index_name} is the two letters name for the index.  This function
-is called for each index appearing in the document, after
-@code{index_summary_file_entry}.
-@var{$is_printed} is true if there is a @code{@@printindex} for that index.
-@var{$manual_name} is the manual basename.
+@deffn {Function Reference} index_summary_file_end $index_name $is_printed @
+       $manual_name
+This function is called once for each non-empty index used in the
+document, after all calls to @code{index_summary_file_entry}.  The
+arguments are the same as for @code{index_summary_file_begin}, above.
 @end deffn
+
 
 @node Customizing CSS
 @section Customizing the CSS lines
 
 @cindex @acronym{CSS}
 
+@vindex %css_map
+@vindex INLINE_CSS
 The @code{NO_CSS} configuration option turns CSS support off.
 Instead of CSS lines output at the document beginning, they may be added
 to each of the HTML attributes, if @code{INLINE_CSS} is set.
 The configuration variable variable holds the CSS
 specification lines in case CSS is not inline.
-@vindex %css_map
 It is possible to modify the CSS lines by modifying
 the entries or adding to the @code{%css_map} hash.  Each key is a CSS
 selector, the corresponding value is a style string.
 
-It is also possible to change completely the way @code{CSS_LINES}
-are generated by redefining the following function reference:
+It is also possible to change completely the way CSS lines are
+generated by redefining the following function reference:
 
 @deffn {Function Reference} css_lines \@@import_lines \@@rule_lines
 This function should be used to set the variable 
@@ -22789,7 +22821,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.342 2010-11-05 23:26:21 karl Exp $
+$Id: texinfo.txi,v 1.343 2010-11-06 16:16:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22868,7 +22900,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.342 2010-11-05 23:26:21 karl Exp $
+@comment $Id: texinfo.txi,v 1.343 2010-11-06 16:16:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -24750,9 +24782,9 @@ The format does not prescribe the choice between displaying the
 @node Info Format Printindex
 @subsection Info Format: Printindex
 
-@cindex Indexes, in Info format
+@cindex Indices, in Info format
 
-Indexes in Info format are generally written as a menu
+Indices in Info format are generally written as a menu
 (@pxref{Indices}), but with an additional directive at the beginning
 marking this as an index node:
 

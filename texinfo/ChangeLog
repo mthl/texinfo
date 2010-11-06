@@ -1,3 +1,7 @@
+2010-11-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Customizing Indices): rename+edit.
+
 2010-11-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texi2oldapi.texi: new file archiving several API sections

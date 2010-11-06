@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-03.17; # UTC
+htmlxrefversion=2010-11-06.15; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -33,6 +33,11 @@ GS = ${G}/software
 anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/
 anubis		node	${GS}/anubis/manual/html_node/
+
+anubis		section	http://aspell.net/man-html/index.html
+
+auctex		mono	${GS}/auctex/manual/auctex.html
+auctex		node	${GS}/auctex/manual/auctex/
 
 autoconf	mono	${GS}/autoconf/manual/autoconf.html
 autoconf	node	${GS}/autoconf/manual/html_node/
@@ -342,10 +347,18 @@ smalltalk	node	${GS}/smalltalk/manual/html_node/
 smalltalk-base	node	${GS}/smalltalk/manual-base/html_node/
 smalltalk-libs	node	${GS}/smalltalk/manual-libs/html_node/
 
+sourceinstall	mono	${GS}/sourceinstall/manual/sourceinstall.html
+sourceinstall	node	${GS}/sourceinstall/manual/html_node/
+
 standards	mono	${G}/prep/standards/standards.html
 standards	node	${G}/prep/standards/html_node/
 
 swbis		mono	${GS}/swbis/manual.html
+
+tar		mono	${GS}/tar/manual/tar.html
+tar		chapter	${GS}/tar/manual/html_chapter/
+tar		section	${GS}/tar/manual/html_section/
+tar		node	${GS}/autoconf/manual/html_node/
 
 texinfo		mono	${GS}/texinfo/manual/texinfo/texinfo.html
 texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
