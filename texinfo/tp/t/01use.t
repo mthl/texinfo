@@ -10,9 +10,7 @@ use strict;
 #use Test;
 use Test::More;
 BEGIN { plan tests => 2 };
-use Texinfo::Parser qw(:all);
-use Data::Dumper;
-use Data::Compare;
+use Texinfo::Convert::Texinfo;
 ok(1, "modules loading"); # If we made it this far, we're ok.
 
 #########################
@@ -24,9 +22,6 @@ use vars qw($manual_tree $manual_tree_result);
 
 require 't/manual_tree.pl';
 
-is (tree_to_texi($manual_tree), $manual_tree_result, "tree_to_texi on a manually written tree");
+is (Texinfo::Convert::Texinfo::convert($manual_tree), 
+     $manual_tree_result, "tree_to_texi on a manually written tree");
 
-#print STDERR tree_to_texi($manual_tree);
-#print STDERR "".Data::Dumper->Dump([$manual_tree], ['$manual_tree']);
-# returns 1 if they are the same
-# Data::Compare::Compare($manual_tree, $manual_tree)."\n";

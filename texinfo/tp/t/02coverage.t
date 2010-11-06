@@ -12,6 +12,9 @@ my @test_cases = (
 
 @majorheading majorheading @b{in b}
 '],
+['arg_in_brace_no_arg_command',
+'@TeX{in tex}
+'],
 ['accents',
 '@ringaccent    a
 

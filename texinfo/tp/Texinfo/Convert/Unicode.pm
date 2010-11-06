@@ -553,7 +553,7 @@ sub unicode_accent($$)
 
   return Unicode::Normalize::NFC($text . chr(hex($unicode_diacritics{$accent})))
     if (defined($unicode_diacritics{$accent}));
-  return Texinfo::Convert::Text::ascii_accents($text, $accent);
+  return Texinfo::Convert::Text::ascii_accents($text, $command);
 }
 
 1;

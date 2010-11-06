@@ -26,7 +26,8 @@ use strict;
 
 # for debugging only
 use Texinfo::Convert::Text;
-use Texinfo::Parser qw(tree_to_texi);
+# for error messages 
+use Texinfo::Convert::Texinfo;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -300,15 +301,18 @@ sub sectioning_structure($$)
   return $sec_root;
 }
 
+# used to put a node name in error messages.
 sub _node_extra_to_texi($)
 {
   my $node = shift;
   my $result = '';
   if ($node->{'manual_content'}) {
-    $result = '('.tree_to_texi({'contents' => $node->{'manual_content'}}) .')';
+    $result = '('.Texinfo::Convert::Texinfo::convert({'contents' 
+                                     => $node->{'manual_content'}}) .')';
   }
   if ($node->{'node_content'}) {
-    $result .= tree_to_texi ({'contents' => $node->{'node_content'}});
+    $result .= Texinfo::Convert::Texinfo::convert ({'contents' 
+                                          => $node->{'node_content'}});
   }
   return $result;
 }

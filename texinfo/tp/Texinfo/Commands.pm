@@ -378,4 +378,39 @@ foreach my $sectioning_command (
 
 $root_commands{'node'} = 1;
 
+
+
+# charset related definitions.
+
+our %perl_charset_to_html = (
+              'utf8'       => 'utf-8',
+              'utf-8-strict'       => 'utf-8',
+              'ascii'      => 'us-ascii',
+              'shiftjis'      => 'shift_jis',
+);
+
+# encoding name normalization to html-compatible encoding names
+our %encoding_aliases = (
+              'latin1' => 'iso-8859-1',
+);
+
+foreach my $perl_charset (keys(%perl_charset_to_html)) {
+   $encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
+   $encoding_aliases{$perl_charset_to_html{$perl_charset}}
+        = $perl_charset_to_html{$perl_charset};
+}
+our %eight_bit_encoding_aliases = (
+  "iso-8859-1",  'iso8859_1',
+  "iso-8859-2",  'iso8859_2',
+  "iso-8859-15", 'iso8859_15',
+  "koi8-r",      'koi8',
+  "koi8-u",      'koi8',
+);
+
+foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
+  $encoding_aliases{$encoding} = $encoding;
+  $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
+}
+
+
 1;

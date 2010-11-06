@@ -24,7 +24,6 @@
 #  initializations, determination of command types.
 #  user visible subroutines.
 #  internal subroutines, doing the parsing.
-#  code used to transform a texinfo tree into texinfo text.
 
 package Texinfo::Parser;
 
@@ -42,6 +41,8 @@ use Texinfo::Commands;
 use Texinfo::Convert::Text;
 # to normalize node name, anchor, float arg, listoffloats and first *ref argument.
 use Texinfo::Convert::NodeNameNormalization;
+# in error messages
+use Texinfo::Convert::Texinfo;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -56,7 +57,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   parser
-  tree_to_texi      
   parse_texi_text
   parse_texi_file
   errors
@@ -399,37 +399,6 @@ foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
 }
 
 
-my %perl_charset_to_html = (
-              'utf8'       => 'utf-8',
-              'utf-8-strict'       => 'utf-8',
-              'ascii'      => 'us-ascii',
-              'shiftjis'      => 'shift_jis',
-);
-
-# encoding name normalization to html-compatible encoding names
-my %encoding_aliases = (
-              'latin1' => 'iso-8859-1',
-);
-
-foreach my $perl_charset (keys(%perl_charset_to_html)) {
-   $encoding_aliases{$perl_charset} = $perl_charset_to_html{$perl_charset};
-   $encoding_aliases{$perl_charset_to_html{$perl_charset}} 
-        = $perl_charset_to_html{$perl_charset};
-}
-my %makeinfo_encoding_to_map = (
-  "iso-8859-1",  'iso8859_1', 
-  "iso-8859-2",  'iso8859_2',
-  "iso-8859-15", 'iso8859_15',
-  "koi8-r",      'koi8',
-  "koi8-u",      'koi8',
-);  
-    
-foreach my $encoding (keys(%makeinfo_encoding_to_map)) {        
-  $encoding_aliases{$encoding} = $encoding;
-  $encoding_aliases{$makeinfo_encoding_to_map{$encoding}} = $encoding;
-}
-
-
 
 # simple deep copy of a structure
 sub _deep_copy ($)
@@ -632,8 +601,6 @@ sub parse_texi_file ($$)
         }];
   return $self->_parse_texi(\@first_lines);
 }
-
-sub tree_to_texi ($);
 
 # return the errors and warnings
 sub errors ($)
@@ -1357,7 +1324,7 @@ sub _next_bracketed_or_word($)
   $spaces->{'type'} = 'spaces' if (defined($spaces));
   return undef if (!scalar(@{$contents}));
 
-  #print STDERR "BEFORE PROCESSING ".tree_to_texi({'contents' => $contents});
+  #print STDERR "BEFORE PROCESSING ".Texinfo::Convert::Texinfo::convert({'contents' => $contents});
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
     #print STDERR "Return bracketed\n";
     return ($spaces, shift @{$contents});
@@ -1400,10 +1367,10 @@ sub _parse_def ($$)
   foreach my $arg (@args) {
     #print STDERR "$command $arg"._print_current($contents[0]);
     #foreach my $content (@contents) {print STDERR " "._print_current($content)};
-    #print STDERR " contents ->".tree_to_texi ({'contents' => \@contents});
+    #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
     my ($spaces, $next) = _next_bracketed_or_word(\@contents);
     last if (!defined($next));
-    #print STDERR "NEXT ".tree_to_texi($next)."\n";
+    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($next)."\n";
     push @result, ['spaces', $spaces] if (defined($spaces));
     push @result, [$arg, $next];
   }
@@ -1461,7 +1428,8 @@ sub _register_label($$$$)
   if ($self->{'labels'}->{$normalized}) {
     _line_error($self, sprintf($self->__("\@%s `%s' previously defined"), 
                          $current->{'cmdname'}, 
-                   tree_to_texi({'contents' => $label->{'node_content'}})), 
+                   Texinfo::Convert::Texinfo::convert({'contents' => 
+                                                $label->{'node_content'}})), 
                            $line_nr);
     _line_error($self, sprintf($self->__("here is the previous definition as \@%s"),
                                $self->{'labels'}->{$normalized}->{'cmdname'}),
@@ -1657,7 +1625,8 @@ sub _end_line($$$)
             _line_warn ($self, sprintf($self->
                    __("Unexpected argument on \@%s line: %s"), 
                    $current->{'cmdname'}, 
-                   tree_to_texi( { $content->{'contents'} })), $line_nr);
+         Texinfo::Convert::Texinfo::convert({ $content->{'contents'} })), 
+                                            $line_nr);
           } elsif ($content->{'cmdname'} eq 'c' 
                  and $content->{'cmdname'} eq 'comment') {
           } else {
@@ -1782,8 +1751,8 @@ sub _end_line($$$)
             _line_warn($self, sprintf($self->__("unrecognized encoding name `%s'"), 
                        $text), $line_nr);
           } else {
-            $encoding = $encoding_aliases{$encoding} 
-              if ($encoding_aliases{$encoding});
+            $encoding = $Texinfo::Commands::encoding_aliases{$encoding} 
+              if ($Texinfo::Commands::encoding_aliases{$encoding});
             $self->{'encoding'} = $encoding;
             print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
             foreach my $input (@{$self->{'input'}}) {
@@ -1950,7 +1919,8 @@ sub _check_empty_node($$$$)
     return 0;
   } elsif ($parsed_node->{'normalized'} !~ /[^-]/) {
     _line_error ($self, sprintf($self->__("Empty node name after expansion `%s'"),
-                tree_to_texi({'contents' => $parsed_node->{'node_content'}})), 
+                Texinfo::Convert::Texinfo::convert({'contents' 
+                                        => $parsed_node->{'node_content'}})), 
                 $line_nr);
     return 0;
   } else {
@@ -1966,7 +1936,7 @@ sub _check_internal_node ($$$$)
   my $line_nr = shift;
   if ($parsed_node and $parsed_node->{'manual_content'}) {
     _line_error ($self, sprintf($self->__("Syntax for an external node used for `%s'"),
-          tree_to_texi($node)), $line_nr)
+          Texinfo::Convert::Texinfo::convert($node)), $line_nr)
   }
 }
 
@@ -2124,7 +2094,8 @@ sub _parse_texi($$;$)
                     or ($current->{'parent'}->{'cmdname'} ne 'macro'
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
             $current->{'extra'}->{'macrobody'} = 
-               tree_to_texi({ 'contents' => $current->{'contents'} });
+               Texinfo::Convert::Texinfo::convert({ 'contents' 
+                                             => $current->{'contents'} });
             if ($current->{'args'} and $current->{'args'}->[0]) {
               my $name = $current->{'args'}->[0]->{'text'};
               if (exists($self->{'macros'}->{$name})) {
@@ -2313,6 +2284,7 @@ sub _parse_texi($$;$)
           } elsif ($line =~ s/^(.)//o) {
             print STDERR "ACCENT \@$current->{'cmdname'}\n" 
               if ($self->{'debug'});
+            # FIXME this is different than usual tree, no content here
             $current->{'args'} = [ { 'text' => $1, 'parent' => $current } ];
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
               $current->{'args'}->[-1]->{'type'} = 'space_command_arg';
@@ -3449,115 +3421,6 @@ sub _parse_line_command_args($$$)
     }
   }
   return $args;
-}
-
-
-
-# Following subroutines deal with transforming a texinfo tree into texinfo
-# text.  Should give the text that was used parsed, except for a few cases.
-
-# expand a tree to the corresponding texinfo.
-sub tree_to_texi ($)
-{
-  my $root = shift;
-  die "tree_to_texi: root undef\n" if (!defined($root));
-  die "tree_to_texi: bad root type (".ref($root).") $root\n" 
-     if (ref($root) ne 'HASH');
-  my $result = '';
-  #print STDERR "$root ";
-  #print STDERR "$root->{'type'}" if (defined($root->{'type'}));
-  #print STDERR "\n";
-  if (defined($root->{'text'})) {
-    $result .= $root->{'text'};
-  } else {
-    if ($root->{'cmdname'} 
-       or ($root->{'type'} and ($root->{'type'} eq 'def_line'
-                                or $root->{'type'} eq 'menu_entry'
-                                or $root->{'type'} eq 'menu_comment'))) {
-      #print STDERR "cmd: $root->{'cmdname'}\n";
-      $result .= _expand_cmd_args_to_texi($root);
-    }
-    $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
-    if (defined($root->{'contents'})) {
-      die "bad contents type(" . ref($root->{'contents'})
-          . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
-      foreach my $child (@{$root->{'contents'}}) {
-        $result .= tree_to_texi($child);
-      }
-    }
-    $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
-      $result .= '@end '.$root->{'cmdname'};
-    }
-  }
-  #print STDERR "tree_to_texi result: $result\n";
-  return $result;
-}
-
-
-# expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi ($) {
-  my $cmd = shift;
-  my $cmdname = $cmd->{'cmdname'};
-  $cmdname = '' if (!$cmd->{'cmdname'}); 
-  my $result = '';
-  $result = '@'.$cmdname if ($cmdname);
-  #print STDERR "Expand $result\n";
-  # must be before the next condition
-  if ($block_commands{$cmdname}
-         and ($def_commands{$cmdname}
-              or $block_commands{$cmdname} eq 'multitable')
-         and $cmd->{'args'}) {
-     foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= tree_to_texi ($arg);
-    }
-  } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
-           and defined($cmd->{'extra'}->{'arg_line'})) {
-    $result .= $cmd->{'extra'}->{'arg_line'};
-  } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
-            and defined($cmd->{'args'})) {
-    die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
-      if (ref($cmd->{'args'}) ne 'ARRAY');
-    foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= tree_to_texi ($arg) . ',';
-    }
-    $result =~ s/,$//;
-  } elsif (defined($cmd->{'args'})) {
-    my $braces;
-    $braces = 1 if ($cmd->{'args'}->[0]->{'type'} 
-                    and ($cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg'
-                         or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'));
-    $result .= '{' if ($braces);
-    if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
-    }
-    if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
-       $result .= $cmd->{'extra'}->{'spaces'};
-    }
-    #print STDERR "".Data::Dumper->Dump([$cmd]);
-    my $arg_nr = 0;
-    foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
-                    and $cmd->{'type'} eq 'definfoenclose_command')) {
-        $result .= ',' if ($arg_nr);
-        $arg_nr++;
-      }
-      $result .= tree_to_texi ($arg);
-    }
-    if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
-    }
-    #die "Shouldn't have args: $cmdname\n";
-    $result .= '}' if ($braces);
-  }
-  if ($misc_commands{$cmdname}
-      and $misc_commands{$cmdname} eq 'skipline') {
-    $result .="\n";
-  }
-  $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-  #print STDERR "Result: $result\n";
-  return $result;
 }
 
 1;

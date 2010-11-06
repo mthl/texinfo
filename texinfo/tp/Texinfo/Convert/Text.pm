@@ -24,6 +24,7 @@ use strict;
 
 # accent commands list.
 use Texinfo::Commands;
+use Data::Dumper;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -146,6 +147,377 @@ our %text_no_brace_commands = (
 
 my %accent_commands = %Texinfo::Commands::accent_commands;
 
+my %unicode_to_eight_bit = (
+   'iso8859_1' => {
+      '00A0' => 'A0',
+      '00A1' => 'A1',
+      '00A2' => 'A2',
+      '00A3' => 'A3',
+      '00A4' => 'A4',
+      '00A5' => 'A5',
+      '00A6' => 'A6',
+      '00A7' => 'A7',
+      '00A8' => 'A8',
+      '00A9' => 'A9',
+      '00AA' => 'AA',
+      '00AB' => 'AB',
+      '00AC' => 'AC',
+      '00AD' => 'AD',
+      '00AE' => 'AE',
+      '00AF' => 'AF',
+      '00B0' => 'B0',
+      '00B1' => 'B1',
+      '00B2' => 'B2',
+      '00B3' => 'B3',
+      '00B4' => 'B4',
+      '00B5' => 'B5',
+      '00B6' => 'B6',
+      '00B7' => 'B7',
+      '00B8' => 'B8',
+      '00B9' => 'B9',
+      '00BA' => 'BA',
+      '00BB' => 'BB',
+      '00BC' => 'BC',
+      '00BD' => 'BD',
+      '00BE' => 'BE',
+      '00BF' => 'BF',
+      '00C0' => 'C0',
+      '00C1' => 'C1',
+      '00C2' => 'C2',
+      '00C3' => 'C3',
+      '00C4' => 'C4',
+      '00C5' => 'C5',
+      '00C6' => 'C6',
+      '00C7' => 'C7',
+      '00C7' => 'C7',
+      '00C8' => 'C8',
+      '00C9' => 'C9',
+      '00CA' => 'CA',
+      '00CB' => 'CB',
+      '00CC' => 'CC',
+      '00CD' => 'CD',
+      '00CE' => 'CE',
+      '00CF' => 'CF',
+      '00D0' => 'D0',
+      '00D1' => 'D1',
+      '00D2' => 'D2',
+      '00D3' => 'D3',
+      '00D4' => 'D4',
+      '00D5' => 'D5',
+      '00D6' => 'D6',
+      '00D7' => 'D7',
+      '00D8' => 'D8',
+      '00D9' => 'D9',
+      '00DA' => 'DA',
+      '00DB' => 'DB',
+      '00DC' => 'DC',
+      '00DD' => 'DD',
+      '00DE' => 'DE',
+      '00DF' => 'DF',
+      '00E0' => 'E0',
+      '00E1' => 'E1',
+      '00E2' => 'E2',
+      '00E3' => 'E3',
+      '00E4' => 'E4',
+      '00E5' => 'E5',
+      '00E6' => 'E6',
+      '00E7' => 'E7',
+      '00E8' => 'E8',
+      '00E9' => 'E9',
+      '00EA' => 'EA',
+      '00EB' => 'EB',
+      '00EC' => 'EC',
+      '00ED' => 'ED',
+      '00EE' => 'EE',
+      '00EF' => 'EF',
+      '00F0' => 'F0',
+      '00F1' => 'F1',
+      '00F2' => 'F2',
+      '00F3' => 'F3',
+      '00F4' => 'F4',
+      '00F5' => 'F5',
+      '00F6' => 'F6',
+      '00F7' => 'F7',
+      '00F8' => 'F8',
+      '00F9' => 'F9',
+      '00FA' => 'FA',
+      '00FB' => 'FB',
+      '00FC' => 'FC',
+      '00FD' => 'FD',
+      '00FE' => 'FE',
+      '00FF' => 'FF',
+   },
+   'iso8859_15' => {
+      '00A0' => 'A0',
+      '00A1' => 'A1',
+      '00A2' => 'A2',
+      '00A3' => 'A3',
+      '20AC' => 'A4',
+      '00A5' => 'A5',
+      '0160' => 'A6',
+      '00A7' => 'A7',
+      '0161' => 'A8',
+      '00A9' => 'A9',
+      '00AA' => 'AA',
+      '00AB' => 'AB',
+      '00AC' => 'AC',
+      '00AD' => 'AD',
+      '00AE' => 'AE',
+      '00AF' => 'AF',
+      '00B0' => 'B0',
+      '00B1' => 'B1',
+      '00B2' => 'B2',
+      '00B3' => 'B3',
+      '017D' => 'B4',
+      '00B5' => 'B5',
+      '00B6' => 'B6',
+      '00B7' => 'B7',
+      '017E' => 'B8',
+      '00B9' => 'B9',
+      '00BA' => 'BA',
+      '00BB' => 'BB',
+      '0152' => 'BC',
+      '0153' => 'BD',
+      '0178' => 'BE',
+      '00BF' => 'BF',
+      '00C0' => 'C0',
+      '00C1' => 'C1',
+      '00C2' => 'C2',
+      '00C3' => 'C3',
+      '00C4' => 'C4',
+      '00C5' => 'C5',
+      '00C6' => 'C6',
+      '00C7' => 'C7',
+      '00C8' => 'C8',
+      '00C9' => 'C9',
+      '00CA' => 'CA',
+      '00CB' => 'CB',
+      '00CC' => 'CC',
+      '00CD' => 'CD',
+      '00CE' => 'CE',
+      '00CF' => 'CF',
+      '00D0' => 'D0',
+      '00D1' => 'D1',
+      '00D2' => 'D2',
+      '00D3' => 'D3',
+      '00D4' => 'D4',
+      '00D5' => 'D5',
+      '00D6' => 'D6',
+      '00D7' => 'D7',
+      '00D8' => 'D8',
+      '00D9' => 'D9',
+      '00DA' => 'DA',
+      '00DB' => 'DB',
+      '00DC' => 'DC',
+      '00DD' => 'DD',
+      '00DE' => 'DE',
+      '00DF' => 'DF',
+      '00E0' => 'E0',
+      '00E1' => 'E1',
+      '00E2' => 'E2',
+      '00E3' => 'E3',
+      '00E4' => 'E4',
+      '00E5' => 'E5',
+      '00E6' => 'E6',
+      '00E7' => 'E7',
+      '00E8' => 'E8',
+      '00E9' => 'E9',
+      '00EA' => 'EA',
+      '00EB' => 'EB',
+      '00EC' => 'EC',
+      '00ED' => 'ED',
+      '00EE' => 'EE',
+      '00EF' => 'EF',
+      '00F0' => 'F0',
+      '00F1' => 'F1',
+      '00F2' => 'F2',
+      '00F3' => 'F3',
+      '00F4' => 'F4',
+      '00F5' => 'F5',
+      '00F6' => 'F6',
+      '00F7' => 'F7',
+      '00F8' => 'F8',
+      '00F9' => 'F9',
+      '00FA' => 'FA',
+      '00FB' => 'FB',
+      '00FC' => 'FC',
+      '00FD' => 'FD',
+      '00FE' => 'FE',
+      '00FF' => 'FF',
+   },
+   'iso8859_2' => {
+      '00A0' => 'A0',
+      '0104' => 'A1',
+      '02D8' => 'A2',
+      '0141' => 'A3',
+      '00A4' => 'A4',
+      '013D' => 'A5',
+      '015A' => 'A6',
+      '00A7' => 'A7',
+      '00A8' => 'A8',
+      '015E' => 'AA',
+      '0164' => 'AB',
+      '0179' => 'AC',
+      '00AD' => 'AD',
+      '017D' => 'AE',
+      '017B' => 'AF',
+      '00B0' => 'B0',
+      '0105' => 'B1',
+      '02DB' => 'B2',
+      '0142' => 'B3',
+      '00B4' => 'B4',
+      '013E' => 'B5',
+      '015B' => 'B6',
+      '02C7' => 'B7',
+      '00B8' => 'B8',
+      '0161' => 'B9',
+      '015F' => 'BA',
+      '0165' => 'BB',
+      '017A' => 'BC',
+      '02DD' => 'BD',
+      '017E' => 'BE',
+      '017C' => 'BF',
+      '0154' => 'C0',
+      '00C1' => 'C1',
+      '00C2' => 'C2',
+      '0102' => 'C3',
+      '00C4' => 'C4',
+      '0139' => 'C5',
+      '0106' => 'C6',
+      '00C7' => 'C7',
+      '010C' => 'C8',
+      '00C9' => 'C9',
+      '0118' => 'CA',
+      '00CB' => 'CB',
+      '011A' => 'CC',
+      '00CD' => 'CD',
+      '00CE' => 'CE',
+      '010E' => 'CF',
+      '0110' => 'D0',
+      '0143' => 'D1',
+      '0147' => 'D2',
+      '00D3' => 'D3',
+      '00D4' => 'D4',
+      '0150' => 'D5',
+      '00D6' => 'D6',
+      '00D7' => 'D7',
+      '0158' => 'D8',
+      '016E' => 'D9',
+      '00DA' => 'DA',
+      '0170' => 'DB',
+      '00DC' => 'DC',
+      '00DD' => 'DD',
+      '0162' => 'DE',
+      '00DF' => 'DF',
+      '0155' => 'E0',
+      '00E1' => 'E1',
+      '00E2' => 'E2',
+      '0103' => 'E3',
+      '00E4' => 'E4',
+      '013A' => 'E5',
+      '0107' => 'E6',
+      '00E7' => 'E7',
+      '010D' => 'E8',
+      '00E9' => 'E9',
+      '0119' => 'EA',
+      '00EB' => 'EB',
+      '011B' => 'EC',
+      '00ED' => 'ED',
+      '00EE' => 'EE',
+      '010F' => 'EF',
+      '0111' => 'F0',
+      '0144' => 'F1',
+      '0148' => 'F2',
+      '00F3' => 'F3',
+      '00F4' => 'F4',
+      '0151' => 'F5',
+      '00F6' => 'F6',
+      '00F7' => 'F7',
+      '0159' => 'F8',
+      '016F' => 'F9',
+      '00FA' => 'FA',
+      '0171' => 'FB',
+      '00FC' => 'FC',
+      '00FD' => 'FD',
+      '0163' => 'FE',
+      '02D9' => 'FF',
+   },
+   'koi8' => {
+      '0415' => 'A3',
+      '0454' => 'A4',
+      '0456' => 'A6',
+      '0457' => 'A7',
+      '04D7' => 'B3',
+      '0404' => 'B4',
+      '0406' => 'B6',
+      '0407' => 'B7',
+      '042E' => 'C0',
+      '0430' => 'C1',
+      '0431' => 'C2',
+      '0446' => 'C3',
+      '0434' => 'C4',
+      '0435' => 'C5',
+      '0444' => 'C6',
+      '0433' => 'C7',
+      '0445' => 'C8',
+      '0438' => 'C9',
+      '0439' => 'CA',
+      '043A' => 'CB',
+      '043B' => 'CC',
+      '043C' => 'CD',
+      '043D' => 'CE',
+      '043E' => 'CF',
+      '043F' => 'D0',
+      '044F' => 'D1',
+      '0440' => 'D2',
+      '0441' => 'D3',
+      '0442' => 'D4',
+      '0443' => 'D5',
+      '0436' => 'D6',
+      '0432' => 'D7',
+      '044C' => 'D8',
+      '044B' => 'D9',
+      '0437' => 'DA',
+      '0448' => 'DB',
+      '044D' => 'DC',
+      '0449' => 'DD',
+      '0447' => 'DE',
+      '044A' => 'DF',
+      '042D' => 'E0',
+      '0410' => 'E1',
+      '0411' => 'E2',
+      '0426' => 'E3',
+      '0414' => 'E4',
+      '0415' => 'E5',
+      '0424' => 'E6',
+      '0413' => 'E7',
+      '0425' => 'E8',
+      '0418' => 'E9',
+      '0419' => 'EA',
+      '041A' => 'EB',
+      '041B' => 'EC',
+      '041C' => 'ED',
+      '041D' => 'EE',
+      '041E' => 'EF',
+      '041F' => 'F0',
+      '042F' => 'F1',
+      '0420' => 'F2',
+      '0421' => 'F3',
+      '0422' => 'F4',
+      '0423' => 'F5',
+      '0416' => 'F6',
+      '0412' => 'F7',
+      '042C' => 'F8',
+      '042B' => 'F9',
+      '0417' => 'FA',
+      '0428' => 'FB',
+      '042D' => 'FC',
+      '0429' => 'FD',
+      '0427' => 'FE',
+      '042A' => 'FF',
+   },
+);
+
 # node?
 my %kept_misc_commands;
 foreach my $command ('sp', 'center', 'exdent', 
@@ -183,10 +555,182 @@ foreach my $type ('empty_line_after_command',
   $ignored_types{$type} = 1;
 }
 
+sub _accent_stack($)
+{
+#unicode_to_eight_bit
+  my $current = shift;
+  my @accent_commands = ();
+  my $text = '';
+  my $done = 0;
+  my $debug = 0;
+ ACCENT:
+  while (1) {
+    if (!$current->{'args'} or !$current->{'cmdname'} 
+        or !$accent_commands{$current->{'cmdname'}}) {
+      print STDERR "BUG: Not an accent command in accent\n";
+      print STDERR Data::Dumper->Dump([$current]);
+      print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
+      last;
+    }
+    push @accent_commands, $current->{'cmdname'};
+    my $arg = $current->{'args'}->[0];
+    if (defined($arg->{'text'})) {
+      return ($arg->{'text'}, \@accent_commands, $current);
+    }
+    if (!$arg->{'contents'}) {
+      print STDERR "BUG: No content in accent command\n";
+      print STDERR Data::Dumper->Dump([$current]);
+      print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
+      last;
+    }
+    foreach my $content (@{$arg->{'contents'}}) {
+      if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
+         and !($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
+                                  or $content->{'cmdname'} eq 'comment'))) {
+        if (defined($content->{'text'})) {
+          $text .= $content->{'text'};
+          print STDERR "TEXT: $text\n" if ($debug);
+        } elsif ($content->{'cmdname'} and 
+               defined($text_no_brace_commands{$content->{'cmdname'}})) {
+          $text .= $text_no_brace_commands{$content->{'cmdname'}};
+          print STDERR "NO BRACE COMMAND: $text\n" if ($debug);
+        } elsif ($content->{'cmdname'} and $text_brace_no_arg_commands{$content->{'cmdname'}}) {
+          $text .= $text_brace_no_arg_commands{$content->{'cmdname'}};
+          print STDERR "BRACE NO ARG COMMAND: $text\n" if ($debug);
+        } else {
+          $current = $content;
+          next ACCENT;
+        }
+      }
+    }
+    last;
+  }
+  return ($text, \@accent_commands, $current);
+}
+
+sub eight_bit_accents($$$)
+{
+  my $current = shift;
+  my $encoding = shift;
+  my $convert_accent = shift;
+
+  my $debug = 0;
+
+  my ($text, $stack, $innermost_accent) = _accent_stack($current);
+
+  # accents are formatted and the intermediate results are kept, such
+  # that we can return the maximum of multiaccented letters that can be
+  # rendered with a given eight bit formatting.
+  my $accent = $innermost_accent;
+  if ($debug) {
+    print STDERR "INNERMOST: $innermost_accent->{'cmdname'}($text)\n";
+  }
+  my $current_result = Texinfo::Convert::Unicode::unicode_accent($text, $accent);
+  print STDERR 'PARTIAL_RESULTS: '.Encode::encode('utf8', $current_result) if ($debug);
+  
+  my @results_stack = ([$current_result, $accent]);
+  if ($accent ne $current) {
+    while ($accent->{'parent'}->{'parent'}) {
+      $accent = $accent->{'parent'}->{'parent'};
+      $current_result = 
+        Texinfo::Convert::Unicode::unicode_accent($current_result, $accent);
+      print STDERR '|'.Encode::encode('utf8', $current_result) if ($debug);
+      push @results_stack, [$current_result, $accent];
+      last if ($accent eq $current);
+    }
+  }
+  print STDERR "\n" if ($debug);
+
+  if ($debug) {
+    print STDERR "stack: ".join('|',@$stack)."\nPARTIAL_RESULATS_STACK:\n";
+    foreach my $partial_result (@results_stack) {
+      print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])."|$partial_result->[1]->{'cmdname'}\n";
+    }
+  }
+
+  my $encoding_map_name 
+       = $Texinfo::Commands::eight_bit_encoding_aliases{$encoding};
+  my $eight_bit;
+  my $result;
+  my $accent_done;
+  # At this point we have the utf8 encoded results for the accent
+  # commands stack, with all the intermediate results.
+  # For each one we'll check if it is possible to encode it in the 
+  # current eight bit output encoding table
+  foreach my $partial_result (@results_stack) {
+    my $char = $partial_result->[0];
+    my $new_eight_bit = '';
+    my $new_codepoint;
+
+    if (ord($char) <= 128) { 
+      # 7bit ascii characters, the same in every 8bit encodings
+      $new_eight_bit = uc(sprintf("%02x",ord($char)));
+      $new_codepoint = uc(sprintf("%04x",ord($char)));
+    } elsif (ord($char) <= hex(0xFFFF)) {
+      $new_codepoint = uc(sprintf("%04x",ord($char)));
+      if (exists($unicode_to_eight_bit{$encoding_map_name}->{$new_codepoint})) {
+         $new_eight_bit 
+            = $unicode_to_eight_bit{$encoding_map_name}->{$new_codepoint};
+      }
+    }
+
+    if ($debug) {
+      my $eight_bit_txt = 'undef';
+      $eight_bit_txt = $eight_bit if (defined($eight_bit));
+      print STDERR "" . Encode::encode('utf8', $char) . " ($partial_result->[1]->{'cmdname'}), new_codepoint: $new_codepoint 8bit: $new_eight_bit old:$eight_bit_txt\n";
+    }
+
+    # no corresponding eight bit character found
+    last if ($new_eight_bit eq '');
+
+    # in that case, the new eight bit character is the same than the one 
+    # found with one less character (and it isnt a @dotless{i}). It may
+    # mean 2 things
+    # -> there are 2 characters in accent. This could happen, for example
+    #    if an accent that cannot be rendered is found and it leads to 
+    #    appending or prepending a character. For example this happens for
+    #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
+    #    n with a tilde, followed by a , 
+    #    In nthat case, the additional utf8 accent is prepended, which 
+    #    means that it is composed with the , and leaves n with a tilde 
+    #    untouched. 
+    # -> ord(char) leads to the same for the more inner character.
+    #    this, for example, happens for @ubaraccent{a}, where ord(a) is
+    #    the same than ord(a with underbar).
+    last if (defined($eight_bit) and (($new_eight_bit eq $eight_bit)
+       and !($partial_result->[1]->{'cmdname'} eq 'dotless' and $char eq 'i')));
+    $result = $partial_result->[0];
+    $accent_done = $partial_result->[1];
+    $eight_bit = $new_eight_bit;
+  }
+  my $accent_remaining = '';
+  if (defined($accent_done)) {
+    if ($accent_done ne $current) {
+      $accent_remaining = $accent_done->{'parent'}->{'parent'};
+    }
+  } else {
+    $accent_remaining = $innermost_accent;
+    $result = $text;
+  }
+  print STDERR "initial: $current, remaining: $accent_remaining, result: "
+     .Encode::encode('utf8', $result)."\n" if ($debug);
+  if ($accent_remaining) {
+    while (1) {
+      $result = &$convert_accent($result, $accent_remaining);
+      if ($accent_remaining eq $current) {
+        return $result;
+      }
+      $accent_remaining = $accent_remaining->{'parent'}->{'parent'};
+    }
+  }
+  return $result;
+}
+
 sub ascii_accents($$)
 {
   my $text = shift;
-  my $accent = shift;
+  my $command = shift;
+  my $accent = $command->{'cmdname'};
   return $text if ($accent eq 'dotless');
   return $text . "''" if ($accent eq 'H');
   return $text . '.' if ($accent eq 'dotaccent');
@@ -210,11 +754,12 @@ sub _normalise_space($)
   return $text;
 }
 
-sub convert($);
+sub convert($;$);
 
-sub convert($)
+sub convert($;$)
 {
   my $root = shift;
+  my $options = shift;
 
   if (0) {
     print STDERR "root\n";
@@ -253,13 +798,22 @@ sub convert($)
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});
-      return ascii_accents(convert($root->{'args'}->[0]), $root->{'cmdname'});
+      if ($options->{'enable_encoding'} and $options->{'enable_encoding'} eq 'utf-8') {
+        return Texinfo::Convert::Unicode::unicode_accent(convert($root->{'args'}->[0], $options), 
+                                                         $root->{'cmdname'});
+      } elsif ($options->{'enable_encoding'} 
+         and $Texinfo::Commands::eight_bit_encoding_aliases{$options->{'enable_encoding'}}) {
+        return eight_bit_accents($root, $options->{'enable_encoding'}, 
+              \&ascii_accents);
+      } else {
+        return ascii_accents(convert($root->{'args'}->[0], $options), $root);
+      }
     } elsif ($root->{'cmdname'} eq 'image') {
-      return convert($root->{'args'}->[0]);
+      return convert($root->{'args'}->[0], $options);
     } elsif ($root->{'cmdname'} eq 'email') {
-      my $mail = _normalise_space(convert($root->{'args'}->[0]));
+      my $mail = _normalise_space(convert($root->{'args'}->[0], $options));
       my $text;
-      $text = _normalise_space(convert($root->{'args'}->[1])) 
+      $text = _normalise_space(convert($root->{'args'}->[1], $options)) 
          if (defined($root->{'args'}->[1]));
       return $text if (defined($text) and ($text ne ''));
       return $mail;
@@ -267,12 +821,12 @@ sub convert($)
            and (($root->{'args'}->[0]->{'type'}
                 and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')
                 or $root->{'cmdname'} eq 'math')) {
-      return convert($root->{'args'}->[0]);
+      return convert($root->{'args'}->[0], $options);
     # block commands
     } elsif (($root->{'cmdname'} eq 'quotation'
           or $root->{'cmdname'} eq 'smallquotation')) {
       if ($root->{'args'}) {
-        $result = convert($root->{'args'}->[0]) ."\n";
+        $result = convert($root->{'args'}->[0], $options) ."\n";
       }
     } elsif ($kept_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {
@@ -283,7 +837,7 @@ sub convert($)
           $result = "\n" x $sp_nr;
         }
       } elsif ($root->{'cmdname'} ne 'node') {
-        $result = convert($root->{'args'}->[0]);
+        $result = convert($root->{'args'}->[0], $options);
         # we always want an end of line even if is was eaten by a 
         chomp ($result);
         $result .= "\n";
@@ -292,15 +846,15 @@ sub convert($)
   }
   if ($root->{'type'} and $root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
-    $result = convert($root->{'args'}->[0]) if ($root->{'args'});
+    $result = convert($root->{'args'}->[0], $options) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {
-      $result .= convert($arg);
+      $result .= convert($arg, $options);
     }
   }
   if ($root->{'contents'}) {
     foreach my $content (@{$root->{'contents'}}) {
-      $result .= convert($content);
+      $result .= convert($content, $options);
     }
   }
   $result = '{'.$result.'}' 

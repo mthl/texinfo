@@ -1,8 +1,9 @@
 use strict;
 
 use Test::More;
-use Texinfo::Parser qw(tree_to_texi);
+use Texinfo::Parser;
 use Texinfo::Convert::Text;
+use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
 use File::Basename;
 use Data::Dumper;
@@ -225,7 +226,7 @@ sub test($$)
       local $Data::Dumper::Sortkeys = \&filter_tree_keys;
       $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     }
-    my $texi_string_result = tree_to_texi($result);
+    my $texi_string_result = Texinfo::Convert::Texinfo::convert($result);
     my $perl_string_result = $texi_string_result;
     $perl_string_result =~ s/\\/\\\\/g;
     $perl_string_result =~ s/'/\\'/g;
@@ -270,7 +271,8 @@ sub test($$)
       close (OUT);
     }
     
-    print STDERR "--> $test_name\n".tree_to_texi($result)."\n" if ($self->{'generate'});
+    print STDERR "--> $test_name\n".Texinfo::Convert::Texinfo::convert($result)."\n" 
+            if ($self->{'generate'});
   } 
   if (!$self->{'generate'}) {
     require $file;
@@ -321,10 +323,10 @@ sub test($$)
         $test_name.' errors');
     ok (Data::Compare::Compare($indices, $result_indices{$test_name}), 
         $test_name.' indices');
-    ok (tree_to_texi($result) eq $result_texis{$test_name}, 
+    ok (Texinfo::Convert::Texinfo::convert($result) eq $result_texis{$test_name}, 
          $test_name.' texi');
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
-    #is (tree_to_texi($result), $result_texis{$test_name}, $test_name.' text');
+    #is (Texinfo::Convert::Texinfo::convert($result), $result_texis{$test_name}, $test_name.' text');
   }
   #exit;
 }
