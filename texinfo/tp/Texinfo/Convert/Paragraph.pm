@@ -65,7 +65,7 @@ sub _string_width($)
 }
 
 # end a line.
-sub _end_line($)
+sub end_line($)
 {
   my $paragraph = shift;
   $paragraph->{'counter'} = 0;
@@ -119,11 +119,12 @@ sub end($)
 }
 
 # add a word and/or spaces.
-sub add_next($;$$)
+sub add_next($;$$$)
 {
   my $paragraph = shift;
   my $word = shift;
   my $space = shift;
+  my $end_sentence = shift;
   my $result = '';
 
   if (defined($word)) {
@@ -135,7 +136,7 @@ sub add_next($;$$)
     if ($paragraph->{'counter'} != 0 and 
         $paragraph->{'counter'} + _string_width($paragraph->{'word'}) + 
            _string_width($paragraph->{'space'}) > $paragraph->{'max'}) {
-      $result .= $paragraph->_end_line();
+      $result .= $paragraph->end_line();
     }
   }
   if (defined($space)) {
@@ -143,8 +144,11 @@ sub add_next($;$$)
     $paragraph->{'space'} = $space;
     if ($paragraph->{'counter'} + _string_width($paragraph->{'space'}) 
                     > $paragraph->{'max'}) {
-      $result .= $paragraph->_end_line();
+      $result .= $paragraph->end_line();
     }
+  }
+  if ($end_sentence) {
+    $paragraph->{'end_sentence'} = 1;
   }
   return $result;
 }
@@ -169,22 +173,17 @@ sub wrap_next($$)
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
       my $added_word = $paragraph->{'word'};
       $result .= $paragraph->add_pending_word();
-      if (defined($added_word)) {
-        if (!$paragraph->{'frenchspacing'}
-             and $added_word =~ /[$end_sentence_character][$after_punctuation_characters]*$/
-             and $added_word !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
+      if ($paragraph->{'counter'} != 0) {
+        if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
           $paragraph->{'space'} = '  ';
-          print STDERR "NEW_SPACE_2\n" if ($paragraph->{'debug'});
         } else {
           $paragraph->{'space'} = ' ';
-          print STDERR "NEW_SPACE_1\n" if ($paragraph->{'debug'});
         }
-      } else {
-        $paragraph->{'space'} = ' ';
       }
+      delete $paragraph->{'end_sentence'};
       if ($paragraph->{'counter'} + _string_width($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
-        $result .= $paragraph->_end_line();
+        $result .= $paragraph->end_line();
       }
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
@@ -194,12 +193,23 @@ sub wrap_next($$)
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + _string_width($paragraph->{'word'}) 
                                > $paragraph->{'max'}) {
-        $result .= $paragraph->_end_line();
+        $result .= $paragraph->end_line();
       }
       $result .= $paragraph->add_pending_word();
+      delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
-      $result .= $paragraph->add_next($1);
+      my $added_word = $1;
+      $result .= $paragraph->add_next($added_word);
+      # now check if it is considered as an end of sentence
+      if (!$paragraph->{'end_sentence'}) {
+        if ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
+         and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
+          $paragraph->{'end_sentence'} = 1;
+        }
+      } elsif ($added_word !~ /^[$after_punctuation_characters]*$/) {
+        delete $paragraph->{'end_sentence'};
+      }
     }
   }
   return $result;
