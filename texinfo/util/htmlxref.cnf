@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-06.15; # UTC
+htmlxrefversion=2010-11-07.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -81,6 +81,8 @@ ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
 ddrescue	mono	${GS}/ddrescue/manual/ddrescue_manual.html
 
 diffutils	mono	${GS}/diffutils/manual/diffutils.html
+
+ed		mono	${GS}/ddrescue/manual/ed_manual.html
 
 EMACS = ${GS}/emacs/manual
 emacs		mono	${EMACS}/html_mono/emacs.html
