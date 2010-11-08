@@ -45,7 +45,7 @@ sub test_enable_encoding ($)
   my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
   my $tree = $parser->parse_texi_text($texi);
   my $result = 
-       Texinfo::Convert::Text::eight_bit_accent($tree->{'contents'}->[0], 
+       Texinfo::Convert::Text::eight_bit_accents($tree->{'contents'}->[0], 
     'iso-8859-1', \&Texinfo::Convert::Text::ascii_accent);
   if (defined($reference)) {
     #ok (Encode::decode('iso-8859-1', $reference) eq $result, $name);

@@ -557,4 +557,19 @@ sub unicode_accent($$$)
   return &$fallback_convert_accent($text, $command);
 }
 
+sub unicode_text($$)
+{
+  my $self = shift;
+  my $command = shift;
+  my $text = $command->{'text'};
+
+  if (!$self->{'code'} and !$self->{'context'}->[-1] eq 'preformatted') {
+    $text =~ s/---/\x{2014}/g;
+    $text =~ s/--/\x{2013}/g;
+    $text =~ s/``/\x{201C}/g;
+    $text =~ s/''/\x{201D}/g;
+  }
+  return Unicode::Normalize::NFC($text);
+}
+
 1;

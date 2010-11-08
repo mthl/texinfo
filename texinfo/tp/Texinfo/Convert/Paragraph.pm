@@ -118,7 +118,7 @@ sub end($)
   return $result;
 }
 
-# add a word and/or spaces.
+# add a word and/or spaces and end of sentence.
 sub add_next($;$$$)
 {
   my $paragraph = shift;
@@ -147,10 +147,16 @@ sub add_next($;$$$)
       $result .= $paragraph->end_line();
     }
   }
-  if ($end_sentence) {
-    $paragraph->{'end_sentence'} = 1;
+  if (defined($end_sentence)) {
+    $paragraph->{'end_sentence'} = $end_sentence;
   }
   return $result;
+}
+
+sub inhibit_end_sentence($)
+{
+  my $paragraph = shift;
+  $paragraph->{'end_sentence'} = 0;
 }
 
 my $end_sentence_character = quotemeta('.?!');
@@ -202,13 +208,12 @@ sub wrap_next($$)
       my $added_word = $1;
       $result .= $paragraph->add_next($added_word);
       # now check if it is considered as an end of sentence
-      if (!$paragraph->{'end_sentence'}) {
-        if ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
-         and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
-          $paragraph->{'end_sentence'} = 1;
-        }
-      } elsif ($added_word !~ /^[$after_punctuation_characters]*$/) {
-        delete $paragraph->{'end_sentence'};
+      if (defined($paragraph->{'end_sentence'}) and 
+          $added_word =~ /^[$after_punctuation_characters]*$/) {
+        # do nothing in the case of a continuation of after_punctuation_characters
+      } elsif ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
+           and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
+        $paragraph->{'end_sentence'} = 1;
       }
     }
   }

@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 33 };
+BEGIN { plan tests => 38 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
@@ -70,25 +70,25 @@ $result .= $para->wrap_next('aa.)');
 $result .= $para->add_next('_');
 $result .= $para->wrap_next(' after');
 $result .= $para->end();
-is ("aa.)_  after\n", $result, 'add char after end sentence');
+is ($result, "aa.)_  after\n", 'add char after end sentence');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
 $result .= $para->end_line();
 $result .= $para->wrap_next(' after');
 $result .= $para->end();
-is ("\nafter\n", $result, 'space after end_line');
+is ($result, "\nafter\n", 'space after end_line');
 #print STDERR "$result";
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
 $result .= $para->wrap_next('aa.)');
 $result .= $para->add_pending_word();
-is ('aa.)', $result, 'call add_pending_word');
+is ($result, 'aa.)', 'call add_pending_word');
 $result = $para->end_line();
-is ("\n", $result, 'call end_line after add_pending_word');
+is ($result, "\n", 'call end_line after add_pending_word');
 $result = $para->end();
-is ('', $result, 'call end after end_line');
+is ($result, '', 'call end after end_line');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
@@ -96,7 +96,7 @@ $result .= $para->wrap_next('aa.)');
 $result .= $para->add_pending_word();
 $result .= $para->wrap_next(' after');
 $result .= $para->end();
-is ("aa.)  after\n", $result, 'space after sentence and add_pending_word');
+is ($result, "aa.)  after\n", 'space after sentence and add_pending_word');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
@@ -104,7 +104,7 @@ $result .= $para->wrap_next('aA');
 $result .= $para->add_next('.', undef, 1);
 $result .= $para->wrap_next(' after');
 $result .= $para->end();
-is ("aA.  after\n", $result, 'force end sentence after upper case');
+is ($result, "aA.  after\n", 'force end sentence after upper case');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
@@ -112,7 +112,51 @@ $result .= $para->wrap_next('aA');
 $result .= $para->wrap_next('.');
 $result .= $para->wrap_next(' after');
 $result .= $para->end();
-is ("aA. after\n", $result, 'end sentence after upper case');
+is ($result, "aA. after\n", 'end sentence after upper case');
 
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->wrap_next('aa.)');
+$result .= $para->wrap_next('))');
+$result .= $para->wrap_next(' after');
+$result .= $para->end();
+is ($result, "aa.)))  after\n", 'continue with after_punctuation_characters');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->wrap_next('aa.)');
+$para->inhibit_end_sentence();
+$result .= $para->wrap_next(' after');
+$result .= $para->end();
+is ($result, "aa.) after\n", 'inhibit end sentence');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->wrap_next('aa.)');
+$para->inhibit_end_sentence();
+$result .= $para->add_next('_');
+$result .= $para->wrap_next(' after');
+$result .= $para->end();
+is ($result, "aa.)_ after\n", 'inhibit end sentence then add next');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->wrap_next('aa.)');
+$para->inhibit_end_sentence();
+$result .= $para->wrap_next('aa.)');
+$result .= $para->wrap_next(' after');
+$result .= $para->end();
+is ($result, "aa.)aa.)  after\n", 'cancel inhibit end sentence');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->wrap_next('aa.)');
+$para->inhibit_end_sentence();
+$result .= $para->wrap_next('))');
+$result .= $para->wrap_next(' after');
+$result .= $para->end();
+is ($result, "aa.))) after\n", 'inhibit end sentence and ))');
+
+$para = Texinfo::Convert::Paragraph->new();
 
 1;

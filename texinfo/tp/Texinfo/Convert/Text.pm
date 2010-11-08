@@ -630,7 +630,7 @@ sub _eight_bit_and_unicode_point($$)
   return ($eight_bit, $codepoint);
 }
 
-sub eight_bit_accent($$$)
+sub eight_bit_accents($$$)
 {
   my $current = shift;
   my $encoding = shift;
@@ -748,6 +748,32 @@ sub ascii_accent($$)
   return $text . $accent;
 }
 
+# format a stack of accents as ascii
+sub ascii_accents ($)
+{
+  my $current = shift;
+  my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
+
+  foreach my $accent_command (reverse(@$stack)) {
+    $result = ascii_accent ($result, {'cmdname' => $accent_command});
+  }
+  return $result;
+}
+
+# format a stack of accents as unicode
+sub unicode_accents ($$)
+{
+  my $current = shift;
+  my $format_accents = shift;
+  my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
+
+  foreach my $accent_command (reverse(@$stack)) {
+    $result = Texinfo::Convert::Unicode::unicode_accent($result, 
+       {'cmdname' => $accent_command}, \&ascii_accent);
+  }
+  return $result;
+}
+
 sub _normalise_space($)
 {
   return undef unless (defined ($_[0]));
@@ -803,14 +829,16 @@ sub convert($;$)
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return '' if (!$root->{'args'});
       if ($options->{'enable_encoding'} and $options->{'enable_encoding'} eq 'utf-8') {
-        return Texinfo::Convert::Unicode::unicode_accent(convert($root->{'args'}->[0], $options), 
-                                            $root->{'cmdname'}, \&ascii_accent);
+        #return Texinfo::Convert::Unicode::unicode_accent(convert($root->{'args'}->[0], $options), 
+        #                                    $root, \&ascii_accent);
+        return unicode_accents($root, \&ascii_accent);
       } elsif ($options->{'enable_encoding'} 
          and $Texinfo::Commands::eight_bit_encoding_aliases{$options->{'enable_encoding'}}) {
-        return eight_bit_accent($root, $options->{'enable_encoding'}, 
+        return eight_bit_accents($root, $options->{'enable_encoding'}, 
               \&ascii_accent);
       } else {
-        return ascii_accent(convert($root->{'args'}->[0], $options), $root);
+        #return ascii_accent(convert($root->{'args'}->[0], $options), $root);
+        return ascii_accents($root);
       }
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
