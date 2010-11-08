@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-07.18; # UTC
+htmlxrefversion=2010-11-08.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -11,7 +11,8 @@ htmlxrefversion=2010-11-07.18; # UTC
 # The latest version of this file is available at
 # http://ftpmirror.gnu.org/texinfo/htmlxref.cnf.
 # Email corrections or additions to bug-texinfo@gnu.org.
-# The goal is for it to list all relevant GNU manuals, at least.
+# The primary goal is to list all relevant GNU manuals;
+# other free manuals are also welcome.
 #
 # Maintainers: for information on putting manuals on the web, including
 # automatically generating all the useful formats, see
@@ -181,6 +182,11 @@ findutils	node	${GS}/findutils/manual/html_mono/find_html
 gama		mono	${GS}/gama/manual/gama.html
 gama		node	${GS}/gama/manual/html_node/
 
+gawk		mono	${GS}/gawk/manual/gawk.html
+gawk		node	${GS}/gawk/manual/html_node/
+ gawkinet	mono	${GS}/gawk/manual/gawkinet/gawkinet.html
+ gawkinet	node	${GS}/gawk/manual/gawkinet/html_node/
+
 gcal		mono	${GS}/gcal/manual/gcal.html
 gcal		node	${GS}/gcal/manual/html_node/
 
@@ -236,6 +242,11 @@ gnutls		node	${GS}/gnutls/manual/html_node/
 
 gperf		mono	${GS}/gperf/manual/gperf.html
 gperf		node	${GS}/gperf/manual/html_node/
+
+grep		mono	${GS}/grep/manual/grep.html
+grep		node	${GS}/grep/manual/html_node/
+
+groff		node	${GS}/groff/manual/html_node/
 
 grub		mono	${GS}/grub/manual/grub.html
 grub		node	${GS}/grub/manual/html_node/

@@ -1,3 +1,7 @@
+2010-11-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (History): rationale for Perl texi2html -> texi2any.
+
 2010-11-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Customizing CSS): edit.
