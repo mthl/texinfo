@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.344 2010-11-07 18:24:35 karl Exp $
+@c $Id: texinfo.txi,v 1.345 2010-11-08 00:13:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16181,10 +16181,11 @@ customization files are searched for.  @xref{Loading Init Files}.
 
 @item --internal-links=@var{file}
 @opindex --internal-links=@var{file}
-In HTML mode, output a tab separated file containing three columns:
+In HTML mode, output a tab-separated file containing three columns:
 the internal link to an indexed item or item in the table of contents,
 the name of the index (or table of contents) in which it occurs, and
-the term which was indexed or entered.  This can be useful for
+the term which was indexed or entered.  The items are in the natural
+sorting order for the given element.  This can be useful for
 post-processors.
 
 @item --macro-expand=@var{file}
@@ -16820,6 +16821,7 @@ with the following @@-commands:
 @@evenheadingmarks @@oddheadingmarks @@evenfootingmarks @@oddfootingmarks 
 @@fonttextsize @@pagesizes @@setchapternewpage
 @end example
+
 
 @node Configuration variables and options
 @subsection Configuration variables and options
@@ -20863,6 +20865,10 @@ configuration variable @code{IDX_SUMMARY} true.  After that, various
 function references will be called for each non-empty index: one for
 initialization, one for each index entry, and one for finalization.
 
+Another way to work with the index (and tables of contents) entries is
+to specify the @option{--internal-links} option and use the resulting
+table; @pxref{Invoking texi2any}.
+
 @deffn {Function Reference} index_summary_file_begin $index_name @
        $is_printed $manual_name
 This function is called once for each non-empty index used in the
@@ -20883,7 +20889,8 @@ The manual basename.
 @deffn {Function Reference} index_summary_file_entry $index_name @
        $entry_text $entry_reference $formatted_entry $texi_entry @
        $entry_element_reference $entry_element_header $is_printed $manual_name 
-This function is called for each entry of an index.
+This function is called for each entry of an index, in sorted order.
+The sorting happens regardless of whether the index is actually printed.
 
 @table @var
 @item $index_name
@@ -22823,7 +22830,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.344 2010-11-07 18:24:35 karl Exp $
+$Id: texinfo.txi,v 1.345 2010-11-08 00:13:45 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22902,7 +22909,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.344 2010-11-07 18:24:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.345 2010-11-08 00:13:45 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
