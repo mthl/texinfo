@@ -34,8 +34,8 @@ sub new($;$)
 {
   my $class = shift;
   my $conf = shift;
-  my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0,
-              'space' => '', 'frenchspacing' => 0};
+  my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0, 
+              'word_counter' => 0, 'space' => '', 'frenchspacing' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       $self->{$key} = $conf->{$key};
@@ -46,28 +46,11 @@ sub new($;$)
 
 # string fixed length size takeing into account that east asian characters
 # may take 2 spaces.
-sub _string_width($)
-{
-  my $string = shift;
-
-  if (! defined($string)) {
-    Carp::cluck();
-  } 
-  my $width = 0;
-  foreach my $character(split '', $string) {
-    if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
-      $width += 2;
-    } else {
-      $width += 1;
-    }
-  }
-  return $width;
-}
-
 # end a line.
 sub end_line($)
 {
   my $paragraph = shift;
+  return '' if ($paragraph->{'protected_spaces'});
   $paragraph->{'counter'} = 0;
   $paragraph->{'space'} = '';
   if ($paragraph->{'indent_length_next'}) {
@@ -88,18 +71,22 @@ sub add_pending_word($)
     if ($paragraph->{'indent_length'} > $paragraph->{'counter'}) {
       $result .= ' ' x ($paragraph->{'indent_length'} - $paragraph->{'counter'});
       $paragraph->{'counter'} = $paragraph->{'indent_length'};
-      print STDERR "INDENT($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
+      print STDERR "INDENT($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
+                   if ($paragraph->{'debug'});
     } elsif ($paragraph->{'space'}) {
       $result .= $paragraph->{'space'};
-      $paragraph->{'counter'} += _string_width($paragraph->{'space'});
-      print STDERR "ADD_SPACES($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
+      $paragraph->{'counter'} += length($paragraph->{'space'});
+      print STDERR "ADD_SPACES($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
+         if ($paragraph->{'debug'});
       
     }
     $result .= $paragraph->{'word'};
-    $paragraph->{'counter'} += _string_width($paragraph->{'word'});
-    print STDERR "ADD_WORD[$paragraph->{'word'}]($paragraph->{'counter'})\n"
+    $paragraph->{'counter'} += $paragraph->{'word_counter'};
+    print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
       if ($paragraph->{'debug'});
     $paragraph->{'word'} = undef;
+    $paragraph->{'word_counter'} = 0;
+    $paragraph->{'space'} = '';
   }
   return $result;
 }
@@ -115,6 +102,7 @@ sub end($)
   $paragraph->{'counter'} = 0;
   $paragraph->{'space'} = '';
   $paragraph->{'word'} = undef;
+  $paragraph->{'word_counter'} = 0;
   return $result;
 }
 
@@ -130,19 +118,20 @@ sub add_next($;$$$)
   if (defined($word)) {
     $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
     $paragraph->{'word'} .= $word;
+    $paragraph->{'word_counter'} += length($word);
     print STDERR "WORD+ $word -> $paragraph->{'word'}\n" if ($paragraph->{'debug'});
     # The $paragraph->{'counter'} != 0 is here to avoid having an
     # additional line output when the text is longer than the max.
     if ($paragraph->{'counter'} != 0 and 
-        $paragraph->{'counter'} + _string_width($paragraph->{'word'}) + 
-           _string_width($paragraph->{'space'}) > $paragraph->{'max'}) {
+        $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
+           length($paragraph->{'space'}) > $paragraph->{'max'}) {
       $result .= $paragraph->end_line();
     }
   }
   if (defined($space)) {
     $result .= $paragraph->add_pending_word();
     $paragraph->{'space'} = $space;
-    if ($paragraph->{'counter'} + _string_width($paragraph->{'space'}) 
+    if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                     > $paragraph->{'max'}) {
       $result .= $paragraph->end_line();
     }
@@ -159,11 +148,26 @@ sub inhibit_end_sentence($)
   $paragraph->{'end_sentence'} = 0;
 }
 
+sub set_space_protected($$)
+{
+  my $paragraph = shift;
+  my $space_protection = shift;
+  $paragraph->{'protected_spaces'} = $space_protection;
+  # flush the spaces already existing
+  if ($space_protection) {
+    my $new_space = $paragraph->{'space'};
+    $paragraph->{'counter'} += length($new_space);
+    $paragraph->{'space'} = '';
+    return $new_space;
+  }
+  return '';
+}
+
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
 # wrap a text.
-sub wrap_next($$)
+sub add_text($$)
 {
   my $paragraph = shift;
   my $text = shift;
@@ -173,21 +177,33 @@ sub wrap_next($$)
     if ($paragraph->{'debug'}) {
       my $word = 'UNDEF';
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
-      print STDERR "($paragraph->{'counter'}) s `$paragraph->{'space'}', w `$word'\n";
+      print STDERR "($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^\s+//) {
+    if ($text =~ s/^(\s+)//) {
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
       my $added_word = $paragraph->{'word'};
       $result .= $paragraph->add_pending_word();
-      if ($paragraph->{'counter'} != 0) {
-        if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
+      if ($paragraph->{'protected_spaces'}) {
+        $paragraph->{'space'} .= $1;
+        if ($paragraph->{'space'} =~ s/\n/ /g 
+           and !$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}
+           and length($paragraph->{'space'}) < 2) {
           $paragraph->{'space'} = '  ';
-        } else {
-          $paragraph->{'space'} = ' ';
+        }
+        $result .= $paragraph->{'space'};
+        $paragraph->{'counter'} += length($paragraph->{'space'});
+        $paragraph->{'space'} = '';
+      } else {
+        if ($paragraph->{'counter'} != 0) {
+          if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
+            $paragraph->{'space'} = '  ';
+          } else {
+            $paragraph->{'space'} = ' ';
+          }
         }
       }
       delete $paragraph->{'end_sentence'};
-      if ($paragraph->{'counter'} + _string_width($paragraph->{'space'}) 
+      if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
         $result .= $paragraph->end_line();
       }
@@ -196,8 +212,9 @@ sub wrap_next($$)
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'debug'});
       $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
       $paragraph->{'word'} .= $added;
+      $paragraph->{'word_counter'} += 2;
       if ($paragraph->{'counter'} != 0 and
-          $paragraph->{'counter'} + _string_width($paragraph->{'word'}) 
+          $paragraph->{'counter'} + $paragraph->{'word_counter'} 
                                > $paragraph->{'max'}) {
         $result .= $paragraph->end_line();
       }

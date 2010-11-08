@@ -2046,7 +2046,7 @@ sub _parse_texi($$;$)
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'debug'});
-      $line =~ s/([^\S\n]*)//;
+      $line =~ s/^([^\S\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
