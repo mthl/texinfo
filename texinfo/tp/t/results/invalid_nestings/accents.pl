@@ -136,6 +136,11 @@ $result_trees{'accents'} = {
                   'cmdname' => 'anchor',
                   'contents' => [],
                   'extra' => {
+                    'brace_command_contents' => [
+                      [
+                        {}
+                      ]
+                    ],
                     'invalid_nesting' => 1,
                     'node_content' => [
                       {}
@@ -191,6 +196,7 @@ $result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees
 $result_trees{'accents'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'accents'}{'contents'}[2];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3];

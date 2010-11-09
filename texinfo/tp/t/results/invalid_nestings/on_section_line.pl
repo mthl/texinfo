@@ -54,6 +54,11 @@ $result_trees{'on_section_line'} = {
               'cmdname' => 'titlefont',
               'contents' => [],
               'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ]
+                ],
                 'invalid_nesting' => 1
               },
               'parent' => {}
@@ -78,6 +83,11 @@ $result_trees{'on_section_line'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ]
+                ],
                 'invalid_nesting' => 1,
                 'node_content' => [
                   {}
@@ -186,10 +196,12 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'paren
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4];
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6];
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'extra'}{'node_content'}[0] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];

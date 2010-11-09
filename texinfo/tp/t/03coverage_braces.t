@@ -21,6 +21,7 @@ Arg.'],
 
 }'],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
+['empty_second_email_argument', '@email{ a@@b.c, }'],
 ['unmatched_brace','@samp{Closing} @samp{ @} without opening macro }.}'],
 ['brace_opened_no_command','anchor{truc@} @anchor{truc}.
 @bye'],

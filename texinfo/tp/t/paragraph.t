@@ -300,7 +300,7 @@ test_line(['word.  other'], "word. other\n", 'two_words_dot_frenchspacing', {'fr
 test_line(["aa.)\x{7b2c} b"], "aa.)\x{7b2c} b\n", 'end_sentence_east_asian');
 
 my $line = Texinfo::Convert::Line->new();
-my $result = '';
+$result = '';
 $result .= $line->add_text('aa.)');
 $result .= $line->add_next('_');
 $result .= $line->add_text(' after');

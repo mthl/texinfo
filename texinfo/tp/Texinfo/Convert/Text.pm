@@ -774,6 +774,25 @@ sub unicode_accents ($$)
   return $result;
 }
 
+sub text_accents($$)
+{
+  my $accent = shift;
+  my $encoding = shift;
+  
+  return '' if (!$accent->{'args'});
+  if ($encoding and $encoding eq 'utf-8') {
+    #return Texinfo::Convert::Unicode::unicode_accent(convert($accent->{'args'}->[0], $options), 
+    #                                    $accent, \&ascii_accent);
+    return unicode_accents($accent, \&ascii_accent);
+  } elsif ($encoding 
+           and $Texinfo::Commands::eight_bit_encoding_aliases{$encoding}) {
+    return eight_bit_accents($accent, $encoding, \&ascii_accent);
+  } else {
+    #return ascii_accent(convert($accent->{'args'}->[0], $options), $accent);
+    return ascii_accents($accent);
+  }
+}
+
 sub _normalise_space($)
 {
   return undef unless (defined ($_[0]));
@@ -827,19 +846,7 @@ sub convert($;$)
       return $text_brace_no_arg_commands{$command};
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
-      return '' if (!$root->{'args'});
-      if ($options->{'enable_encoding'} and $options->{'enable_encoding'} eq 'utf-8') {
-        #return Texinfo::Convert::Unicode::unicode_accent(convert($root->{'args'}->[0], $options), 
-        #                                    $root, \&ascii_accent);
-        return unicode_accents($root, \&ascii_accent);
-      } elsif ($options->{'enable_encoding'} 
-         and $Texinfo::Commands::eight_bit_encoding_aliases{$options->{'enable_encoding'}}) {
-        return eight_bit_accents($root, $options->{'enable_encoding'}, 
-              \&ascii_accent);
-      } else {
-        #return ascii_accent(convert($root->{'args'}->[0], $options), $root);
-        return ascii_accents($root);
-      }
+      return text_accents ($root, $options->{'enable_encoding'});
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
     } elsif ($root->{'cmdname'} eq 'email') {

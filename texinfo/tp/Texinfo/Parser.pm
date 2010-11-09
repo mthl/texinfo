@@ -1970,6 +1970,20 @@ sub _enter_menu_entry_node($$$)
   $current->{'line_nr'} = $line_nr;
 }
 
+sub _register_brace_command_arg($$)
+{
+  my $self = shift;
+  my $current = shift;
+  $self->_isolate_last_space($current);
+  my @contents = @{$current->{'contents'}};
+  _trim_spaces_comment_from_content(\@contents);
+  if (scalar(@contents)) {
+    push @{$current->{'parent'}->{'extra'}->{'brace_command_contents'}}, \@contents;
+  } else {
+    push @{$current->{'parent'}->{'extra'}->{'brace_command_contents'}}, undef;
+  }
+}
+
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -2992,10 +3006,13 @@ sub _parse_texi($$;$)
                 if ($context_command ne $current->{'parent'}->{'cmdname'});
             }
             # first is the arg.
-            $self->_isolate_last_space($current) 
-              if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
-                  and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
-                     or $simple_text_commands{$current->{'parent'}->{'cmdname'}}));
+            
+            if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
+                and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
+                   or $simple_text_commands{$current->{'parent'}->{'cmdname'}})
+                and $current->{'parent'}->{'cmdname'} ne 'math') {
+              $self->_register_brace_command_arg($current);
+            }
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
             delete $current->{'parent'}->{'remaining_args'};
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
@@ -3030,7 +3047,13 @@ sub _parse_texi($$;$)
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
           _abort_empty_line ($self, $current);
-          $self->_isolate_last_space($current);
+          if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
+              and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
+                 or $simple_text_commands{$current->{'parent'}->{'cmdname'}})) {
+            $self->_register_brace_command_arg($current);
+          } else {
+            $self->_isolate_last_space($current);
+          }
           my $type = $current->{'type'};
           $current = $current->{'parent'};
           $current->{'remaining_args'}--;
@@ -3154,14 +3177,12 @@ sub _trim_spaces_comment_from_content($)
             or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'));
 
-  if (@$contents and $contents->[-1]->{'cmdname'} 
-      and ($contents->[-1]->{'cmdname'} eq 'c' 
-           or $contents->[-1]->{'cmdname'} eq 'comment')) {
-    pop @$contents;
-  }
-  if (@$contents and $contents->[-1]->{'type'} 
-      and ($contents->[-1]->{'type'} eq 'spaces_at_end'
-           or $contents->[-1]->{'type'} eq 'space_at_end_block_command')) {
+  while (@$contents and (($contents->[-1]->{'cmdname'}
+                        and ($contents->[-1]->{'cmdname'} eq 'c' 
+                         or $contents->[-1]->{'cmdname'} eq 'comment'))
+                        or ($contents->[-1]->{'type'}
+                           and ($contents->[-1]->{'type'} eq 'spaces_at_end'
+                                or $contents->[-1]->{'type'} eq 'space_at_end_block_command')))) {
     pop @$contents;
   }
 }

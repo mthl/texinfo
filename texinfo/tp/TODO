@@ -15,6 +15,8 @@ Following should be an error:
 
 test empty line in block or brace command in menu description.
 
+add protected spaces in Line.pm, and unit tests in paragraph.t.
+
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 
@@ -84,6 +86,7 @@ formatting/def_end_of_line_footnote.texi
 formatting/empty_deftype.texi
 formatting/def_cmds.texi (but printindex not tested)
 formatting/paragraph_in_samp.texi
+formatting/test_w.texi            (done in t/paragraph.t)
 
 sectioning/other_at_comands_in_nodes_refs.texi
 sectioning/at_commands_in_refs.texi
