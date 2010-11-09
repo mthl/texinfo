@@ -1,3 +1,7 @@
+2010-11-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Macro Details): more caveats about newlines.
+
 2010-11-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (History): rationale for Perl texi2html -> texi2any.

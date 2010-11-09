@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.346 2010-11-08 19:11:23 karl Exp $
+@c $Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1779,7 +1779,7 @@ in @command{texi2html} to a C program would have been nearly
 impossible.
 
 @item Unicode, and multilingual support generally, especially of east
-Asian language.  Although of course it's perfectly plausible to write
+Asian languages.  Although of course it's perfectly plausible to write
 such support in C, in the particular case of @command{makeinfo}, it
 would have been tantamount to rewriting the entire program.  In Perl,
 much of that comes essentially for free.
@@ -14176,9 +14176,12 @@ other use of @samp{\} in the body yields a warning.
 
 @cindex Spaces in macros
 @cindex Whitespace in macros
-The newlines after the @code{@@macro} line and before the @code{@@end
-macro} line are ignored, that is, not included in the macro body.  All
-other whitespace is treated according to the usual Texinfo rules.
+The newline characters after the @code{@@macro} line and before the
+@code{@@end macro} line are ignored, that is, not included in the
+macro body.  All other whitespace is treated according to the usual
+Texinfo rules.  However, there are still undesirable and unpredictable
+interactions between newlines, macros, and commands which are
+line-delimited, as warned about below (@pxref{Macro Details}).
 
 @cindex Recursive macro invocations
 @findex rmacro
@@ -14239,11 +14242,11 @@ Together: a & b.
 @end display
 
 @cindex Backslash, and macros
-Thus, the arguments and parameters are separated by commas and delimited
-by braces; any whitespace after (but not before) a comma is ignored.
-The braces are required in the invocation (but not the definition), even
-when the macro takes no arguments, consistent with all other Texinfo
-commands.  For example:
+Thus, the arguments and parameters are separated by commas and
+delimited by braces; any whitespace after (but not before) a comma is
+ignored.  The braces are required in the invocation, even when the
+macro takes no arguments, consistent with other Texinfo commands.  For
+example:
 
 @example
 @@macro argless @{@}
@@ -14400,9 +14403,7 @@ Texinfo command name as a macro. Unfortunately this is a very large
 set of names, and the possible resulting errors are unpredictable.
 
 @item
-All macros are expanded inside at least one @TeX{} group.  This means
-that @code{@@set} and other such commands have no effect inside a
-macro.
+All macros are expanded inside at least one @TeX{} group.
 
 @item
 Commas in macro arguments, even if escaped by a backslash, don't
@@ -14417,16 +14418,20 @@ see the next item.
 
 @item
 Macros containing a command which must be on a line by itself, such as
-a conditional, cannot be invoked in the middle of a line.  In general,
-the interaction of newlines in the macro definitions and invocations
-depends on the precise commands and context.  You may be able to work
-around some problems with judicious use of @code{@@c}.  Suppose you
-define a macro that is always intended to be used on a line by itself:
+a conditional, cannot be invoked in the middle of a line.  Similarly,
+macros containing line-oriented commands or text, such as
+@code{@@example} environments, may behave unpredictably in @TeX{}.
+
+@item
+In general, the interaction of newlines in the macro definitions and
+invocations depends on the precise commands and context, despite the
+previous statements.  You may be able to work around some problems
+with judicious use of @code{@@c}.  Suppose you define a macro that is
+always intended to be used on a line by itself:
 
 @example
 @@macro linemac
-@@cindex whatever
-@@c
+@@cindex whatever @@c
 @@end macro
 ...
 foo
@@ -14445,9 +14450,9 @@ invocation would be treated as a comment).
 
 @item
 In general, you can't arbitrarily substitute a macro call for Texinfo
-command arguments, even when the text is the same.  It might work with
-some commands, it fails with others.  Best not to do it at all.  For
-instance, this fails:
+command arguments, even when the text is the same.  Texinfo is not M4,
+or even @TeX{}.  It might work with some commands, it fails with
+others.  Best not to do it at all.  For instance, this fails:
 
 @example
 @@macro offmacro
@@ -22880,7 +22885,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.346 2010-11-08 19:11:23 karl Exp $
+$Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22959,7 +22964,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.346 2010-11-08 19:11:23 karl Exp $
+@comment $Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

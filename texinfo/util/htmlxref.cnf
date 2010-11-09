@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-08.17; # UTC
+htmlxrefversion=2010-11-09.16; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -35,7 +35,7 @@ anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/
 anubis		node	${GS}/anubis/manual/html_node/
 
-anubis		section	http://aspell.net/man-html/index.html
+aspell		section	http://aspell.net/man-html/index.html
 
 auctex		mono	${GS}/auctex/manual/auctex.html
 auctex		node	${GS}/auctex/manual/auctex/
@@ -72,6 +72,9 @@ cflow		node	${GS}/cflow/manual/html_node/
 
 coreutils	mono	${GS}/coreutils/manual/coreutils
 coreutils	node	${GS}/coreutils/manual/html_node/
+
+cpio		mono	${GS}/cpio/manual/cpio
+cpio		node	${GS}/cpio/manual/html_node/
 
 cssc		node	${GS}/cssc/manual/
 
@@ -215,7 +218,7 @@ gmp		node	${GS}/gmp/manual/html_node/
 
 gnu-arch	node	${GS}/gnu-arch/tutorial/
 
-gnu-crypt	node	${GS}/gnu-crypto/manual/
+gnu-crypto	node	${GS}/gnu-crypto/manual/
 
 gnubg		mono	${GS}/gnubg/manual/gnubg.html
 gnubg		node	${GS}/gnubg/manual/html_node/
@@ -301,6 +304,9 @@ inetutils	node	${GS}/inetutils/manual/html_node/
 jwhois		mono	${GS}/jwhois/manual/jwhois.html
 jwhois		node	${GS}/jwhois/manual/html_node/
 
+libc		mono	${GS}/libc/manual/html_mono/libc.html
+libc		node	${GS}/libc/manual/html_node/
+
 libextractor	mono	${GS}/libextractor/extractor.html
 
 libidn		mono	${GS}/libidn/manual/libidn.html
@@ -316,6 +322,9 @@ lightning	node	${GS}/lightning/manual/html_node/
 
 liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
 liquidwar6	node	${GS}/liquidwar6/manual/html_node/
+
+m4		mono	${GS}/m4/manual/m4.html
+m4		node	${GS}/m4/manual/html_node/
 
 mailutils	mono	${GS}/mailutils/manual/mailutils.html
 mailutils	node	${GS}/mailutils/manual/html_node/
