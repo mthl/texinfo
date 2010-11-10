@@ -182,6 +182,13 @@ $result_trees{'macro_in_brace_command'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ]
+      },
       'parent' => {}
     },
     {
@@ -221,6 +228,7 @@ $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'contents'
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6];
+$result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_brace_command'};
 $result_trees{'macro_in_brace_command'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_brace_command'};
 

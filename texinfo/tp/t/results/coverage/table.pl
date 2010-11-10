@@ -124,6 +124,13 @@ $result_trees{'table'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ]
+      },
       'parent' => {}
     },
     {
@@ -391,6 +398,13 @@ $result_trees{'table'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ]
+      },
       'parent' => {}
     },
     {
@@ -423,6 +437,7 @@ $result_trees{'table'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'
 $result_trees{'table'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[4];
 $result_trees{'table'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'table'}{'contents'}[1];
+$result_trees{'table'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[2]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[3]{'parent'} = $result_trees{'table'};
@@ -472,6 +487,7 @@ $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'extra'}{'index_entry'}{'co
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table'}{'contents'}[4];
+$result_trees{'table'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[4]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[5]{'parent'} = $result_trees{'table'};
 

@@ -162,6 +162,13 @@ $result_trees{'formats_not_closed_in_example'} = {
               'parent' => {}
             }
           ],
+          'extra' => {
+            'block_command_line_contents' => [
+              [
+                {}
+              ]
+            ]
+          },
           'parent' => {}
         }
       ],
@@ -203,6 +210,7 @@ $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'co
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[3];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'};
 $result_trees{'formats_not_closed_in_example'}{'contents'}[1]{'parent'} = $result_trees{'formats_not_closed_in_example'};

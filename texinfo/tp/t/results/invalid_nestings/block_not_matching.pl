@@ -297,6 +297,13 @@ $result_trees{'block_not_matching'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ]
+      },
       'parent' => {}
     },
     {
@@ -501,6 +508,7 @@ $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'parent'} = $r
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9];
+$result_trees{'block_not_matching'}{'contents'}[9]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'block_not_matching'}{'contents'}[9]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[9]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[10]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[11]{'parent'} = $result_trees{'block_not_matching'};

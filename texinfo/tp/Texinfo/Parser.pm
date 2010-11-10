@@ -1470,6 +1470,27 @@ sub _enter_index_entry($$$$)
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
+sub _remove_empty_content_arguments($)
+{
+  my $current = shift;
+  my $type;
+  if ($current->{'extra'}) {
+    if ($current->{'extra'}->{'block_command_line_contents'}) {
+      $type = 'block_command_line_contents';
+    } elsif ($current->{'extra'}->{'brace_command_contents'}) {
+      $type = 'brace_command_contents';
+    }
+  }
+  if ($type) {
+    while (@{$current->{'extra'}->{$type}} 
+           and not defined($current->{'extra'}->{$type}->[-1])) {
+      pop @{$current->{'extra'}->{$type}}; 
+    }
+    delete $current->{'extra'}->{$type} if (!@{$current->{'extra'}->{$type}});
+    delete $current->{'extra'} if (!keys(%{$current->{'extra'}}));
+  }
+}
+     
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -1644,6 +1665,7 @@ sub _end_line($$$)
 
     } else {
       $self->_isolate_last_space($current, 'space_at_end_block_command');
+      $self->_register_command_arg($current, 'block_command_line_contents');
     } 
     # @float args
     if ($current->{'parent'}->{'cmdname'}
@@ -1684,6 +1706,9 @@ sub _end_line($$$)
       unshift @{$current->{'contents'}}, $empty_text;
       delete $current->{'args'};
     }
+    # Additionally, remove empty arguments as far as possible
+    _remove_empty_content_arguments($current);
+
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
       push @{$current->{'contents'}}, { 'type' => 'before_item',
@@ -1970,17 +1995,17 @@ sub _enter_menu_entry_node($$$)
   $current->{'line_nr'} = $line_nr;
 }
 
-sub _register_brace_command_arg($$)
+sub _register_command_arg($$$)
 {
   my $self = shift;
   my $current = shift;
-  $self->_isolate_last_space($current);
+  my $type = shift;
   my @contents = @{$current->{'contents'}};
   _trim_spaces_comment_from_content(\@contents);
   if (scalar(@contents)) {
-    push @{$current->{'parent'}->{'extra'}->{'brace_command_contents'}}, \@contents;
+    push @{$current->{'parent'}->{'extra'}->{$type}}, \@contents;
   } else {
-    push @{$current->{'parent'}->{'extra'}->{'brace_command_contents'}}, undef;
+    push @{$current->{'parent'}->{'extra'}->{$type}}, undef;
   }
 }
 
@@ -3011,7 +3036,10 @@ sub _parse_texi($$;$)
                 and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                    or $simple_text_commands{$current->{'parent'}->{'cmdname'}})
                 and $current->{'parent'}->{'cmdname'} ne 'math') {
-              $self->_register_brace_command_arg($current);
+              $self->_isolate_last_space($current);
+              $self->_register_command_arg($current, 'brace_command_contents');
+              # Remove empty arguments, as far as possible
+              _remove_empty_content_arguments($current);
             }
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
             delete $current->{'parent'}->{'remaining_args'};
@@ -3050,9 +3078,13 @@ sub _parse_texi($$;$)
           if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
               and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                  or $simple_text_commands{$current->{'parent'}->{'cmdname'}})) {
-            $self->_register_brace_command_arg($current);
+            $self->_isolate_last_space($current);
+            $self->_register_command_arg($current, 'brace_command_contents');
           } else {
             $self->_isolate_last_space($current);
+            if (exists $block_commands{$current->{'parent'}->{'cmdname'}}) {
+              $self->_register_command_arg($current, 'block_command_line_contents');
+            }
           }
           my $type = $current->{'type'};
           $current = $current->{'parent'};

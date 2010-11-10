@@ -326,6 +326,20 @@ $result_trees{'on_block_command_line'} = {
       ],
       'cmdname' => 'quotation',
       'contents' => [],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        ]
+      },
       'parent' => {}
     },
     {
@@ -392,6 +406,14 @@ $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8]{
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[3];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][1] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[2];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][2] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[3];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][3] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[4];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][4] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[5];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][5] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[6];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][6] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[7];
+$result_trees{'on_block_command_line'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][7] = $result_trees{'on_block_command_line'}{'contents'}[3]{'args'}[0]{'contents'}[8];
 $result_trees{'on_block_command_line'}{'contents'}[3]{'parent'} = $result_trees{'on_block_command_line'};
 $result_trees{'on_block_command_line'}{'contents'}[4]{'parent'} = $result_trees{'on_block_command_line'};
 
