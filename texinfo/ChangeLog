@@ -1,3 +1,11 @@
+2010-11-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Macro Details): mention non-expansion contexts
+	for makeinfo.  More caveats about @macro in TeX.
+	(set value): mention the @value{something} can't be the argument
+	to accent commands.  (makeinfo supports it in braced arguments,
+	but texinfo.tex can't handle it.)
+
 2010-11-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro Details): more caveats about newlines.

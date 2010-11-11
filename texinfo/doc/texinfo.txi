@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
+@c $Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13677,6 +13677,14 @@ It is a @{No value for "howmuch"@} wet day.
 @end group
 @end example
 
+@code{@@value} cannot be reliably used as the argument to an accent
+command (@pxref{Inserting Accents}).  For example, this fails:
+
+@example
+@@set myletter a
+@@'@@value@{myletter@}    @c fails!
+@end example
+
 
 @node ifset ifclear
 @subsection @code{@@ifset} and @code{@@ifclear}
@@ -14387,11 +14395,31 @@ Twice: a,b & a,b.
 @cindex Details of macro usage
 @cindex Caveats for macro usage
 
-Due to unavoidable limitations, certain macro-related constructs cause
-problems with @TeX{}.  If you get macro-related errors when producing
-the printed version of a manual, try expanding the macros with
-@command{makeinfo} by invoking @command{texi2dvi} with the @samp{-E}
-option (@pxref{Format with texi2dvi}).
+@cindex Macro expansion, contexts for
+@cindex Expansion of macros, contexts for
+By design, macro expansion does not happen in the following contexts
+in @command{makeinfo}:
+
+@itemize @bullet
+@item @code{@@macro} and @code{@@unmacro} lines.
+
+@item @code{@@if...} lines, including @code{@@ifset} and similar,
+
+@item @code{@@set}, @code{@@clear}, @code{@@value}.
+
+@item @code{@@clickstyle} lines.
+
+@item @code{@@end} lines.
+@end itemize
+
+@noindent @TeX{} may or may not do some expansion in these situations,
+possibly yielding errors.
+
+Also, due to unavoidable limitations, certain macro-related constructs
+cause problems with @TeX{}.  If you get macro-related errors when
+producing the printed version of a manual, you might try expanding the
+macros with @command{makeinfo} by invoking @command{texi2dvi} with the
+@samp{-E} option (@pxref{Format with texi2dvi}).
 
 @itemize @bullet
 @item
@@ -14413,8 +14441,8 @@ always work.
 Macro arguments cannot cross lines.
 
 @item
-It is (usually) best to avoid comments inside macro definitions, but
-see the next item.
+Macros can't be reliably used in the argument to accent commands
+(@pxref{Inserting Accents}).
 
 @item
 Macros containing a command which must be on a line by itself, such as
@@ -14423,11 +14451,15 @@ macros containing line-oriented commands or text, such as
 @code{@@example} environments, may behave unpredictably in @TeX{}.
 
 @item
+It is (usually) best to avoid comments inside macro definitions, but
+see the next item.
+
+@item
 In general, the interaction of newlines in the macro definitions and
 invocations depends on the precise commands and context, despite the
 previous statements.  You may be able to work around some problems
 with judicious use of @code{@@c}.  Suppose you define a macro that is
-always intended to be used on a line by itself:
+intended to always be used on a line by itself:
 
 @example
 @@macro linemac
@@ -14449,10 +14481,11 @@ sometimes invoked in the middle of a line (the text after the
 invocation would be treated as a comment).
 
 @item
-In general, you can't arbitrarily substitute a macro call for Texinfo
-command arguments, even when the text is the same.  Texinfo is not M4,
-or even @TeX{}.  It might work with some commands, it fails with
-others.  Best not to do it at all.  For instance, this fails:
+In general, you can't arbitrarily substitute a macro (or
+@code{@@value}) call for Texinfo command arguments, even when the text
+is the same.  Texinfo is not M4 (or even plain @TeX{}).  It might work
+with some commands, it fails with others.  Best not to do it at all.
+For instance, this fails:
 
 @example
 @@macro offmacro
@@ -14462,9 +14495,9 @@ off
 @end example
 
 @noindent
-You would expect this to be equivalent to @code{@@headings off}, but
-for @TeX{}nical reasons, it fails with a mysterious error message
-(@code{Paragraph ended before @@headings was complete}).
+This looks equivalent to @code{@@headings off}, but for @TeX{}nical
+reasons, it fails with a mysterious error message (@code{Paragraph
+ended before @@headings was complete}).
 
 @item
 Macros cannot define macros in the natural way.  To do this, you must
@@ -14677,7 +14710,7 @@ the same line by the name of a file to be included.  For example:
 @@include buffers.texi
 @end example
 
-The name of the file is taken literally, with a single exception:
+The name of the file is taken literally, with the exception that
 @code{@@value@{@var{var}@}} references are expanded.  This makes it
 possible to reliably include files in other directories in a
 distribution.  @xref{verbatiminclude,,@code{@@verbatiminclude}}, for
@@ -18205,8 +18238,8 @@ of the HTML cross reference algorithm, you should still avoid using
 
 First, comments are removed.
 
-Next, any @code{@@value} commands (@pxref{set value}) and macro invocations
-(@pxref{Invoking Macros}) are fully expanded.
+Next, any @code{@@value} commands (@pxref{set value}) and macro
+invocations (@pxref{Invoking Macros}) are fully expanded.
 
 Then, for the following commands, the command name and braces are removed,
 the text of the argument is recursively transformed:
@@ -22885,7 +22918,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
+$Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22964,7 +22997,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.347 2010-11-09 17:55:03 karl Exp $
+@comment $Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
