@@ -156,6 +156,16 @@ foreach my $avoided_key(@avoided_keys_floats) {
 sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
    ( sort keys %{$_[0]} )] }
 
+sub convert_to_plaintext($)
+{
+  my $tree = shift;
+  my $converter = Texinfo::Convert::Plaintext::new();
+  return $converter->convert($tree);
+}
+
+my %formats = (
+  'plaintext' => \&convert_to_plaintext,
+);
 
 sub test($$) 
 {
@@ -171,6 +181,10 @@ sub test($$)
     $parser_options = shift @$test_case if (@$test_case);
   } else {
     $test_name = basename($test_case, '.texi');
+  }
+  my @tested_formats;
+  if ($parser_options and $parser_options->{'test_formats'}) {
+    push @tested_formats, @{$parser_options->{'test_formats'}};
   }
 
   my $parser = Texinfo::Parser->parser({'test' => 1,
@@ -205,6 +219,11 @@ sub test($$)
     unless (Data::Compare::Compare($merged_indices, $initial_merged_indices));
 
   my $converted_text = Texinfo::Convert::Text::convert($result);
+
+  my %converted;
+  foreach my $format (@tested_formats) {
+    $converted{$format} = &{$formats{$format}}($result);
+  }
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';

@@ -58,6 +58,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 %EXPORT_TAGS = ( 'all' => [ qw(
   parser
   parse_texi_text
+  parse_texi_line
   parse_texi_file
   errors
   indices_information
@@ -529,18 +530,22 @@ sub _complete_line_nr($$;$$$)
   my $macro = shift;
   my $fixed_line_number = shift;
 
-  return if (!defined($first_line));
-
   $macro = '' if (!defined($macro));
   $file = '' if (!defined($file));
   my $new_lines = [];
 
-  my $line_index = $first_line;
-  foreach my $index(0..scalar(@$lines)-1) {
-     $line_index = $index+$first_line if (!$fixed_line_number);
-     $new_lines->[$index] = [ $lines->[$index],  
-                            { 'line_nr' => $line_index,
-                              'file_name' => $file, 'macro' => $macro } ];
+  if (defined($first_line)) {
+    my $line_index = $first_line;
+    foreach my $index(0..scalar(@$lines)-1) {
+      $line_index = $index+$first_line if (!$fixed_line_number);
+      $new_lines->[$index] = [ $lines->[$index],  
+                             { 'line_nr' => $line_index,
+                               'file_name' => $file, 'macro' => $macro } ];
+    }
+  } else {
+    foreach my $line (@$lines) {
+      push @$new_lines, [ $line ];
+    }
   }
   return $new_lines;
 }
@@ -592,6 +597,12 @@ sub parse_texi_file ($$)
       last;
     }
   }
+  my $root = { 'contents' => [], 'type' => 'text_root' };
+  foreach my $line (@first_lines) {
+    push @{$root->{'contents'}}, { 'text' => $line,
+                                      'type' => 'preamble' };
+  }
+
   $self->{'input'} = [{
        'pending' => [ [$line, { 'line_nr' => $line_nr,
                       'file_name' => $file_name, 'macro' => '' }] ],
@@ -599,7 +610,25 @@ sub parse_texi_file ($$)
        'line_nr' => $line_nr,
        'fh' => $filehandle
         }];
-  return $self->_parse_texi(\@first_lines);
+  return $self->_parse_texi($root);
+}
+
+sub parse_texi_line($$;$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $lines_nr = shift;
+
+  return undef if (!defined($text));
+
+  if (!ref($text)) {
+    $text = _text_to_lines($text);
+  }
+  my $lines_array = _complete_line_nr($text, $lines_nr);
+
+  $self = parser() if (!defined($self));
+  $self->{'input'} = [{'pending' => $lines_array}];
+  return $self->_parse_texi({'contents' => [], 'type' => 'root_line'});
 }
 
 # return the errors and warnings
@@ -2037,19 +2066,15 @@ sub _register_command_arg($$$)
 #special for @verb, type is the character
 
 # the main subroutine
-sub _parse_texi($$;$)
+sub _parse_texi($;$)
 {
   my $self = shift;
-  my $first_lines = shift;
+#  my $first_lines = shift;
 
-  my $root = { 'contents' => [], 'type' => 'text_root' };
+#  my $root = { 'contents' => [], 'type' => 'text_root' };
+  my $root = shift;
+  $root = { 'contents' => [], 'type' => 'text_root' } if (!defined($root));
   my $current = $root;
-  if ($first_lines) {
-    foreach my $line (@$first_lines) {
-      push @{$current->{'contents'}}, { 'text' => $line,
-                                        'type' => 'preamble' };
-    }
-  }
 
   $self->{'conditionals_stack'} = [];
 

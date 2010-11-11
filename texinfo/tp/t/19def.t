@@ -335,6 +335,10 @@ deffn with @{
 deffn with @}
 @end deffn 
 '],
+['protected_brace',
+'@deffn @{
+@end deffn
+'],
 ['empty_def_arguments',
 '@deffn fset @var{i} a g
 @deffnx @b{id @samp{i} ule}    

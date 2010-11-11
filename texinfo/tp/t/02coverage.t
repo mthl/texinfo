@@ -15,10 +15,11 @@ my @test_cases = (
 ['arg_in_brace_no_arg_command',
 '@TeX{in tex}
 '],
-['accents',
+['lettered_accent_and_spaces',
 '@ringaccent    a
-
-accent at end of line @ringaccent
+'],
+['accents_errors',
+'accent at end of line @ringaccent
 accent at end of line and spaces @ringaccent  
 accent followed by @@ @ringaccent@.
 
