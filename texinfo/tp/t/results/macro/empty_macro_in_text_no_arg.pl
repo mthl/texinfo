@@ -40,7 +40,8 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
     },
     {
       'parent' => {},
-      'text' => ' '
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
     },
     {
       'contents' => [
@@ -135,7 +136,7 @@ This 2 see.  A.
 
 
 $result_texts{'empty_macro_in_text_no_arg'} = '
- This.  It.
+This.  It.
 
 
 This 2 see.  A.

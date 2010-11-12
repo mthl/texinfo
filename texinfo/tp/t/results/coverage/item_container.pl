@@ -128,7 +128,8 @@ $result_trees{'item_container'} = {
             },
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'empty_spaces_before_paragraph'
             },
             {
               'contents' => [
@@ -206,7 +207,7 @@ $result_texis{'item_container'} = '
 $result_texts{'item_container'} = '
 i--tem +
 
- b--ullet
+b--ullet
 ';
 
 $result_errors{'item_container'} = [];

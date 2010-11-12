@@ -12,37 +12,8 @@ my @test_cases = (
 
 @majorheading majorheading @b{in b}
 '],
-['arg_in_brace_no_arg_command',
-'@TeX{in tex}
-'],
 ['lettered_accent_and_spaces',
 '@ringaccent    a
-'],
-['accents_errors',
-'accent at end of line @ringaccent
-accent at end of line and spaces @ringaccent  
-accent followed by @@ @ringaccent@.
-
-accent character with spaces @~ following.
-accent character at end of line @~
-accent character followed by @@ @~@.
-
-With @@:
-@ringaccent @@. @^@@.
-'],
-['accent_no_closed',
-'@~{e'],
-['accent_no_closed_newline',
-'@~{e
-
-'],
-['accent_no_closed_paragraph',
-'@~{e
-
-other para.
-'],
-['accent_no_closed_comment',
-'@~{e @c comment
 '],
 ['math',
 'Simple math
@@ -260,6 +231,37 @@ in quotation
 After quotation sp b a
 
 @end group
+']);
+
+my @test_invalid = (
+['arg_in_brace_no_arg_command',
+'@TeX{in tex}
+'],
+['accents_errors',
+'accent at end of line @ringaccent
+accent at end of line and spaces @ringaccent  
+accent followed by @@ @ringaccent@.
+
+accent character with spaces @~ following.
+accent character at end of line @~
+accent character followed by @@ @~@.
+
+With @@:
+@ringaccent @@. @^@@.
+'],
+['accent_no_closed',
+'@~{e'],
+['accent_no_closed_newline',
+'@~{e
+
+'],
+['accent_no_closed_paragraph',
+'@~{e
+
+other para.
+'],
+['accent_no_closed_comment',
+'@~{e @c comment
 '],
 ['flushright_not_closed',
 '@flushright
@@ -277,7 +279,11 @@ text in group
 ']
 );
 
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('coverage', \@test_cases, $arg_test_case,
+run_all ('coverage', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);

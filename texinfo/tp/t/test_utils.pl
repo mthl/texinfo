@@ -5,6 +5,8 @@ use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
+use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
+use Texinfo::Convert::Plaintext;
 use File::Basename;
 use Data::Dumper;
 use Data::Compare;
@@ -156,10 +158,11 @@ foreach my $avoided_key(@avoided_keys_floats) {
 sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
    ( sort keys %{$_[0]} )] }
 
-sub convert_to_plaintext($)
+sub convert_to_plaintext($$)
 {
+  my $self = shift;
   my $tree = shift;
-  my $converter = Texinfo::Convert::Plaintext::new();
+  my $converter = Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'}});
   return $converter->convert($tree);
 }
 
@@ -185,6 +188,7 @@ sub test($$)
   my @tested_formats;
   if ($parser_options and $parser_options->{'test_formats'}) {
     push @tested_formats, @{$parser_options->{'test_formats'}};
+    delete $parser_options->{'test_formats'};
   }
 
   my $parser = Texinfo::Parser->parser({'test' => 1,
@@ -222,7 +226,8 @@ sub test($$)
 
   my %converted;
   foreach my $format (@tested_formats) {
-    $converted{$format} = &{$formats{$format}}($result);
+  #  $converted{$format} = &{$formats{$format}}($self, $result);
+  #  print STDERR "$format: \n$converted{$format}";
   }
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";

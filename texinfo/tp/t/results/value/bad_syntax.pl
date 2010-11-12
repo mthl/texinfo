@@ -45,7 +45,8 @@ $result_trees{'bad_syntax'} = {
     {
       'parent' => {},
       'text' => '
-'
+',
+      'type' => 'empty_spaces_before_paragraph'
     },
     {
       'contents' => [
@@ -106,7 +107,6 @@ gurgl
 
 
 $result_texts{'bad_syntax'} = '
-
 gurgl
 
 

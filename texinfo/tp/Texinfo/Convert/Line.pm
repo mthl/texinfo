@@ -69,6 +69,17 @@ sub _string_width($)
   return $width;
 }
 
+# for debug
+sub dump($)
+{
+  my $self = shift;
+  my $word = 'UNDEF';
+  $word = $self->{'word'} if (defined($self->{'word'}));
+  my $end_sentence = 'UNDEF';
+  $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
+  print STDERR "line ($self->{'line_beginning'}) word: $word, space `$self->{'space'}' end_sentence: $self->{'end_sentence'}\n"; 
+}
+
 # end a line.
 sub end_line($)
 {

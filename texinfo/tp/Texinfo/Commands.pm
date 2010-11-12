@@ -344,6 +344,8 @@ our %deprecated_commands = (
 # the next root command.  @node and sectioning commands.
 our %root_commands;
 
+our %sectioning_commands;
+
 foreach my $sectioning_command (
     'top',
     'chapter',
@@ -374,6 +376,7 @@ foreach my $sectioning_command (
   } else {
     $root_commands{$sectioning_command} = 1;
   }
+  $sectioning_commands{$sectioning_command} = 1;
 }
 
 $root_commands{'node'} = 1;

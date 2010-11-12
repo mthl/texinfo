@@ -518,8 +518,7 @@ my %unicode_to_eight_bit = (
    },
 );
 
-# node?
-my %kept_misc_commands;
+our %kept_misc_commands;
 foreach my $command ('sp', 'center', 'exdent', 
                      'item', 'itemx', 'tab', 'headitem',
     'node',
@@ -551,7 +550,7 @@ foreach my $command ('sp', 'center', 'exdent',
 my %ignored_types;
 foreach my $type ('empty_line_after_command', 
             'empty_spaces_after_command', 'spaces_at_end',
-            'empty_spaces_before_argument') {
+            'empty_spaces_before_argument', 'empty_spaces_before_paragraph') {
   $ignored_types{$type} = 1;
 }
 

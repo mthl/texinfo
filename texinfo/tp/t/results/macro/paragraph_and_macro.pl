@@ -148,7 +148,8 @@ $result_trees{'paragraph_and_macro'} = {
     },
     {
       'parent' => {},
-      'text' => ' '
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
     },
     {
       'contents' => [
@@ -193,7 +194,8 @@ $result_trees{'paragraph_and_macro'} = {
     },
     {
       'parent' => {},
-      'text' => '    '
+      'text' => '    ',
+      'type' => 'empty_spaces_before_paragraph'
     },
     {
       'contents' => [
@@ -271,13 +273,13 @@ $result_texts{'paragraph_and_macro'} = '
 
     
 
- text after empty.
+text after empty.
 
    
 
        
 
-    text after space.
+text after space.
 ';
 
 $result_errors{'paragraph_and_macro'} = [];

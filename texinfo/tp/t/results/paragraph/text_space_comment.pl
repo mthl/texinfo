@@ -6,7 +6,8 @@ $result_trees{'text_space_comment'} = {
   'contents' => [
     {
       'parent' => {},
-      'text' => ' '
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
     },
     {
       'contents' => [
@@ -41,7 +42,7 @@ $result_trees{'text_space_comment'}{'contents'}[1]{'parent'} = $result_trees{'te
 $result_texis{'text_space_comment'} = ' text  @c space comment';
 
 
-$result_texts{'text_space_comment'} = ' text  ';
+$result_texts{'text_space_comment'} = 'text  ';
 
 $result_errors{'text_space_comment'} = [];
 

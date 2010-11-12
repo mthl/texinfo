@@ -795,6 +795,7 @@ sub _begin_paragraph ($$)
     die "BUG: contents undef "._print_current($current) 
        if (!defined($current->{'contents'}));
 
+    # find whether an @indent precedes the paragraph
     my $indent;
     if (scalar(@{$current->{'contents'}})) {
       my $index = scalar(@{$current->{'contents'}}) -1;
@@ -1237,7 +1238,13 @@ sub _abort_empty_line($$;$)
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
-      delete $current->{'contents'}->[-1]->{'type'};
+      # exactly the same condition than to begin a paragraph
+      if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
+         and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
+        $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_before_paragraph';
+      } else { 
+        delete $current->{'contents'}->[-1]->{'type'};
+      }
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
       $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_after_command';
     }
