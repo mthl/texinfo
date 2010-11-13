@@ -24,6 +24,7 @@ use strict;
 
 # accent commands list.
 use Texinfo::Common;
+use Texinfo::Convert::Unicode;
 use Data::Dumper;
 
 require Exporter;

@@ -27,7 +27,6 @@ use 5.006;
 use strict;
 
 use Unicode::EastAsianWidth;
-use Carp qw(cluck);
 
 # initialize a paragraph object.
 sub new($;$)
@@ -39,7 +38,7 @@ sub new($;$)
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if ($key eq 'text') {
-        $self->{'counter'} = _string_width($conf->{$key});
+        $self->{'counter'} = Texinfo::Convert::Unicode::string_width($conf->{$key});
         $self->{'line_beginning'} = 0 if ($self->{'counter'});
       } else {
         $self->{$key} = $conf->{$key};
@@ -47,26 +46,6 @@ sub new($;$)
     }
   }
   bless $self, $class;
-}
-
-# string fixed length size takeing into account that east asian characters
-# may take 2 spaces.
-sub _string_width($)
-{
-  my $string = shift;
-
-  if (! defined($string)) {
-    Carp::cluck();
-  } 
-  my $width = 0;
-  foreach my $character(split '', $string) {
-    if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
-      $width += 2;
-    } else {
-      $width += 1;
-    }
-  }
-  return $width;
 }
 
 # for debug

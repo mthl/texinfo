@@ -24,7 +24,8 @@ use strict;
 
 use Encode;
 use Unicode::Normalize;
-use Texinfo::Convert::Text;
+use Carp qw(cluck);
+use Unicode::EastAsianWidth;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -34,7 +35,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Covert::Text ':all';
+# This allows declaration       use Texinfo::Convert::Unicode ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
@@ -570,6 +571,26 @@ sub unicode_text($$)
     $text =~ s/''/\x{201D}/g;
   }
   return Unicode::Normalize::NFC($text);
+}
+
+# string length size taking into account that east asian characters
+# may take 2 spaces.
+sub string_width($)
+{
+  my $string = shift;
+
+  if (! defined($string)) {
+    Carp::cluck();
+  }
+  my $width = 0;
+  foreach my $character(split '', $string) {
+    if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
+      $width += 2;
+    } else {
+      $width += 1;
+    }
+  }
+  return $width;
 }
 
 1;

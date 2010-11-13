@@ -3,6 +3,7 @@ use strict;
 use Test::More;
 BEGIN { plan tests => 18 };
 
+use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Text;
 use Texinfo::Parser;
 

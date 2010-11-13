@@ -1,11 +1,11 @@
 use strict;
 
 use Test::More;
+use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
-use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Plaintext;
 use File::Basename;
 use Data::Dumper;
@@ -35,7 +35,7 @@ GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug,
 our $arg_test_case = shift @ARGV;
 
 my %formats = (
-  'plaintext' => \&convert_to_plaintext,
+#  'plaintext' => \&convert_to_plaintext,
 );
 
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
