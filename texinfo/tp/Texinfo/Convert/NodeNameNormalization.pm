@@ -27,7 +27,7 @@ use strict;
 
 use Unicode::Normalize;
 # for the accents definition
-use Texinfo::Commands;
+use Texinfo::Common;
 # reuse some conversion hashes
 use Texinfo::Convert::Text;
 # use the hashes and functions
@@ -66,7 +66,7 @@ my %normalize_node_no_brace_commands
   = %Texinfo::Convert::Text::text_no_brace_commands;
 $normalize_node_no_brace_commands{'*'} = ' ';
 
-my %accent_commands = %Texinfo::Commands::accent_commands;
+my %accent_commands = %Texinfo::Common::accent_commands;
 
 my %ignored_brace_commands;
 foreach my $ignored_brace_command ('xref','ref','pxref','inforef','anchor',

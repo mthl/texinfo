@@ -24,7 +24,7 @@ use 5.00405;
 use strict;
 
 # commands definitions
-use Texinfo::Commands;
+use Texinfo::Common;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
@@ -34,10 +34,10 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
-my %misc_commands            = %Texinfo::Commands::misc_commands;
-my %brace_commands           = %Texinfo::Commands::brace_commands;    
-my %block_commands           = %Texinfo::Commands::block_commands;    
-my %def_commands             = %Texinfo::Commands::def_commands;    
+my %misc_commands            = %Texinfo::Common::misc_commands;
+my %brace_commands           = %Texinfo::Common::brace_commands;    
+my %block_commands           = %Texinfo::Common::block_commands;    
+my %def_commands             = %Texinfo::Common::def_commands;    
 
 sub convert ($);
 # Following subroutines deal with transforming a texinfo tree into texinfo

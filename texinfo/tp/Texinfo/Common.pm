@@ -1,4 +1,4 @@
-# Commands.pm: definition of commands. Common code of other Texinfo modules.
+# Common.pm: definition of commands. Common code of other Texinfo modules.
 #
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -18,7 +18,7 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl or texi2html.init.
 
-package Texinfo::Commands;
+package Texinfo::Common;
 
 use strict;
 

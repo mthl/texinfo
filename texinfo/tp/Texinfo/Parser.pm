@@ -36,7 +36,7 @@ use Data::Dumper;
 use Encode;
 
 # commands definitions
-use Texinfo::Commands;
+use Texinfo::Common;
 # to expand file names in @include
 use Texinfo::Convert::Text;
 # to normalize node name, anchor, float arg, listoffloats and first *ref argument.
@@ -176,24 +176,24 @@ my %default_configuration = (
 # fh         filehandle for the file
 
 
-my %no_brace_commands        = %Texinfo::Commands::no_brace_commands;
-my %misc_commands            = %Texinfo::Commands::misc_commands;
-my %brace_commands           = %Texinfo::Commands::brace_commands;    
-my %accent_commands          = %Texinfo::Commands::accent_commands;
-my %context_brace_commands   = %Texinfo::Commands::context_brace_commands;
-my %block_commands           = %Texinfo::Commands::block_commands;
-my %block_item_commands      = %Texinfo::Commands::block_item_commands;
-my %close_paragraph_commands = %Texinfo::Commands::close_paragraph_commands;
-my %def_map                  = %Texinfo::Commands::def_map;
-my %def_commands             = %Texinfo::Commands::def_commands;
-my %def_aliases              = %Texinfo::Commands::def_aliases;
-my %menu_commands            = %Texinfo::Commands::menu_commands;
-my %preformatted_commands    = %Texinfo::Commands::preformatted_commands;
-my %item_container_commands  = %Texinfo::Commands::item_container_commands;
-my %item_line_commands       = %Texinfo::Commands::item_line_commands;
-my %deprecated_commands      = %Texinfo::Commands::deprecated_commands;
-my %root_commands            = %Texinfo::Commands::root_commands;
-my @out_formats              = @Texinfo::Commands::out_formats;
+my %no_brace_commands        = %Texinfo::Common::no_brace_commands;
+my %misc_commands            = %Texinfo::Common::misc_commands;
+my %brace_commands           = %Texinfo::Common::brace_commands;    
+my %accent_commands          = %Texinfo::Common::accent_commands;
+my %context_brace_commands   = %Texinfo::Common::context_brace_commands;
+my %block_commands           = %Texinfo::Common::block_commands;
+my %block_item_commands      = %Texinfo::Common::block_item_commands;
+my %close_paragraph_commands = %Texinfo::Common::close_paragraph_commands;
+my %def_map                  = %Texinfo::Common::def_map;
+my %def_commands             = %Texinfo::Common::def_commands;
+my %def_aliases              = %Texinfo::Common::def_aliases;
+my %menu_commands            = %Texinfo::Common::menu_commands;
+my %preformatted_commands    = %Texinfo::Common::preformatted_commands;
+my %item_container_commands  = %Texinfo::Common::item_container_commands;
+my %item_line_commands       = %Texinfo::Common::item_line_commands;
+my %deprecated_commands      = %Texinfo::Common::deprecated_commands;
+my %root_commands            = %Texinfo::Common::root_commands;
+my @out_formats              = @Texinfo::Common::out_formats;
 
 
 # the type of index, f: function, v: variable, t: type
@@ -1812,8 +1812,8 @@ sub _end_line($$$)
             _line_warn($self, sprintf($self->__("unrecognized encoding name `%s'"), 
                        $text), $line_nr);
           } else {
-            $encoding = $Texinfo::Commands::encoding_aliases{$encoding} 
-              if ($Texinfo::Commands::encoding_aliases{$encoding});
+            $encoding = $Texinfo::Common::encoding_aliases{$encoding} 
+              if ($Texinfo::Common::encoding_aliases{$encoding});
             $self->{'encoding'} = $encoding;
             print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
             foreach my $input (@{$self->{'input'}}) {

@@ -34,6 +34,10 @@ GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug,
 
 our $arg_test_case = shift @ARGV;
 
+my %formats = (
+  'plaintext' => \&convert_to_plaintext,
+);
+
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
 #my $transformer = Data::Transformer->new('hash'=>$remove_parent);
 sub remove_keys($$;$);
@@ -166,10 +170,6 @@ sub convert_to_plaintext($$)
   return $converter->convert($tree);
 }
 
-my %formats = (
-  'plaintext' => \&convert_to_plaintext,
-);
-
 sub test($$) 
 {
   my $self = shift;
@@ -226,8 +226,10 @@ sub test($$)
 
   my %converted;
   foreach my $format (@tested_formats) {
-  #  $converted{$format} = &{$formats{$format}}($self, $result);
-  #  print STDERR "$format: \n$converted{$format}";
+    if (defined($formats{$format})) {
+      $converted{$format} = &{$formats{$format}}($self, $result);
+      print STDERR "$format: \n$converted{$format}";
+    }
   }
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";

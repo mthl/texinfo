@@ -22,7 +22,7 @@ package Texinfo::Convert::Plaintext;
 use 5.00405;
 use strict;
 
-use Texinfo::Commands;
+use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Paragraph;
@@ -66,9 +66,9 @@ foreach my $kept_command('verbatiminclude', 'insertcopying', 'printindex',
 }
 my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
 my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
-my %accent_commands = %Texinfo::Commands::accent_commands;
-my %misc_commands = %Texinfo::Commands::misc_commands;
-my %sectioning_commands = %Texinfo::Commands::sectioning_commands;
+my %accent_commands = %Texinfo::Common::accent_commands;
+my %misc_commands = %Texinfo::Common::misc_commands;
+my %sectioning_commands = %Texinfo::Common::sectioning_commands;
 
 my %ignored_misc_commands;
 foreach my $misc_command (keys(%misc_commands)) {
@@ -221,6 +221,18 @@ sub process_text($$)
   }
 }
 
+sub convert_line($$)
+{
+  my $self = shift;
+  my $converted = shift;
+  my $line = Texinfo::Convert::Line->new($self->{'paragraph_conf'});
+  push @{$self->{'containers'}}, $line;
+  my $result = $self->convert($converted);
+  $result .= $line->end();
+  pop @{$self->{'containers'}};
+  return $result;
+}
+
 # code
 # sp
 # var, sc -> 'upper_case'
@@ -282,7 +294,13 @@ sub convert($$)
   my $paragraph;
   my $line;
   if (defined($root->{'text'})) {
-    $result .= $self->{'containers'}->[-1]->add_text($root->{'text'});
+    # ignore text outside of any format. 
+    if (ref($self->{'containers'}->[-1])) {
+      $result .= $self->{'containers'}->[-1]->add_text($root->{'text'});
+    # Warn if ignored text not empty
+    } elsif ($root->{'text'} =~ /\S/) {
+      warn "BUG: ignored text not empty `$root->{'text'}'\n";
+    }
   }
   if ($root->{'cmdname'}) {
     my $command = $root->{'cmdname'};
@@ -349,6 +367,7 @@ sub convert($$)
         my $quotation_arg = Texinfo::Convert::Texinfo::convert(
           {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
         my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
+        $result = $self->convert_line($prepended);
         #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
         #$result = convert($root->{'args'}->[0]) ."\n";
       }
@@ -360,13 +379,8 @@ sub convert($$)
                or $root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
         # FIXME handle sectioning commands with their underline
         # and item with their prepending
-        $line = Texinfo::Convert::Line->new($self->{'paragraph_conf'});
-        push @{$self->{'containers'}}, $line;
-        $result = $self->convert($root->{'args'}->[0]);
-        $result .= $line->end();
-        pop @{$self->{'containers'}};
+        $result = $self->convert_line($root->{'args'}->[0]);
         chomp ($result);
-         
         $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'}->{'misc_args'}->[0]) {
@@ -393,6 +407,9 @@ sub convert($$)
   } 
   if ($root->{'type'} and $root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
+    foreach my $parsed_arg (@{$root->{'extra'}->{'def_args'}}) {
+      
+    }
     $result = $self->convert($root->{'args'}->[0]) if ($root->{'args'});
   } elsif ($root->{'type'} and $root->{'type'} eq 'menu_entry') {
     foreach my $arg (@{$root->{'args'}}) {

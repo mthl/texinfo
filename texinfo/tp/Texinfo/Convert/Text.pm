@@ -23,7 +23,7 @@ use 5.00405;
 use strict;
 
 # accent commands list.
-use Texinfo::Commands;
+use Texinfo::Common;
 use Data::Dumper;
 
 require Exporter;
@@ -145,7 +145,7 @@ our %text_no_brace_commands = (
            '{', '{',
 );
 
-my %accent_commands = %Texinfo::Commands::accent_commands;
+my %accent_commands = %Texinfo::Common::accent_commands;
 
 my %unicode_to_eight_bit = (
    'iso8859_1' => {
@@ -668,7 +668,7 @@ sub eight_bit_accents($$$)
   }
 
   my $encoding_map_name 
-       = $Texinfo::Commands::eight_bit_encoding_aliases{$encoding};
+       = $Texinfo::Common::eight_bit_encoding_aliases{$encoding};
   # At this point we have the utf8 encoded results for the accent
   # commands stack, with all the intermediate results.
   # For each one we'll check if it is possible to encode it in the 
@@ -784,7 +784,7 @@ sub text_accents($$)
     #                                    $accent, \&ascii_accent);
     return unicode_accents($accent, \&ascii_accent);
   } elsif ($encoding 
-           and $Texinfo::Commands::eight_bit_encoding_aliases{$encoding}) {
+           and $Texinfo::Common::eight_bit_encoding_aliases{$encoding}) {
     return eight_bit_accents($accent, $encoding, \&ascii_accent);
   } else {
     #return ascii_accent(convert($accent->{'args'}->[0], $options), $accent);
