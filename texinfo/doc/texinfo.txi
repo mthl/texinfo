@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
+@c $Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -1786,11 +1786,12 @@ much of that comes essentially for free.
 
 @item Additional back-ends.  The @command{makeinfo} code had grown
 convoluted to the point where adding a new back-end was quite complex,
-with unfortunate interactions with existing back-ends.  In contrast,
-the Perl implementation provides a clean tree-based structure for all
-back-ends to work from.  People have requested numerous different
-back-ends (@LaTeX{}, the latest (X)HTML, @dots{}), and they will now
-be much more feasible to implement.  Which leads to the last item:
+requiring unfortunate interactions with existing back-ends.  In
+contrast, our Perl implementation can provide a clean tree-based
+structure for all back-ends to work from.  People have requested
+numerous different back-ends (@LaTeX{}, the latest (X)HTML, @dots{}),
+and they will now be much more feasible to implement.  Which leads to
+the last item:
 
 @item Making contributions easier.  In general, due to the cleaner
 structure, the Perl program should be considerably easier than the C
@@ -22918,7 +22919,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
+$Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22997,7 +22998,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.348 2010-11-11 19:12:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

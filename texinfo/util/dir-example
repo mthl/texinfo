@@ -4,13 +4,12 @@ This particular dir file is merely made available for your hacking
   pleasure, not official or standard in any way.  If it doesn't make sense
   to you, or you don't like it, ignore it.
 rms suggested that we follow the categories of the Free Software
-  Directory (http://www.gnu.org/directory/) where possible.  Since
-  capitalization in the directory is random, I've chosen to use
-  `minimum' capitals, just the first word and proper nouns.
+  Directory (http://www.gnu.org/directory/) where possible, including
+  `minimal' capitalization, that is, just the first word and proper nouns.
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.81 2010-04-04 17:51:47 karl Exp $
+$Id: dir-example,v 1.82 2010-11-14 18:24:18 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -43,10 +42,6 @@ Basics
 * Inetutils: (inetutils).       GNU networking utilities.
 * Time: (time).                 Measuring program resource usage.
 
-GNU Emacs
-* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol 
-                                  GNU Emacs remote file access via rsh and rcp.
-
 Text creation and manipulation
 * Diff: (diff).                 Comparing and merging files.
 * Diffutils: (diff).            Comparing and merging files.
@@ -55,7 +50,6 @@ Text creation and manipulation
 * Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
 * sed: (sed).                   Stream EDitor.  
-* M4: (m4).                     A powerful macro processor.
 * Wdiff: (wdiff).               Word difference finder and related tools.
 * sed: (sed).                   Stream EDitor.  
 
@@ -122,7 +116,7 @@ Software development
 * Gdb: (gdb).                   The GNU debugger.
 * Gdb-Internals: (gdbint).      The GNU debugger's internals.
 * Stabs: (stabs).               The "stabs" debugging information format.
-* bison: (bison).       	GNU parser generator (Yacc replacement).
+* bison: (bison).               GNU parser generator (Yacc replacement).
 * egcs: (egcs).                 Experimental GNU C compiler.
 * Flex: (flex).                 A fast scanner generator.
 * g++: (gcc).                   The GNU C++ compiler.
@@ -139,6 +133,7 @@ Software development
 * Ld: (ld).                     Linker.
 * Libtool: (libtool).           Generic library support script.
 * Make: (make).                 Remake files automatically.
+* RCS: (rcs).                   GNU (single-file) Revision Control System.
 * PRCS: (prcs).                 Project revision control system.
 * Remsync: (remsync).           Remote synchronization of directory trees.
 * Send PR: (send-pr).           Cygnus bug reporting for Gnats.
@@ -201,12 +196,12 @@ Emacs
 * SMTP: (smtpmail).             Emacs library for sending mail via SMTP.
 * Sieve: (sieve).               Managing Sieve scripts in Emacs.
 * Speedbar: (speedbar).         File/Tag summarizing utility.
-* TRAMP: (tramp).       Transparent Remote Access, Multiple Protocol
-                          Emacs remote file access via rsh and rcp.
+* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol,
+                                  Emacs remote file access via rsh and rcp.
 * VIP: (vip).                   An older VI-emulation for Emacs.
 * VIPER: (viper).               The newest Emacs VI-emulation mode.  (also, A 
                                   VI Plan for Emacs Rescue or the VI PERil.)
-* VM: (vm).             View Mail for Emacs.
+* VM: (vm).                     View Mail for Emacs.
 * Widget: (widget).             The "widget" package used by the Emacs 
                                   Customization facility.
 * WoMan: (woman).               Browse UN*X Manual Pages "W.O. (without) Man".
@@ -247,6 +242,7 @@ Software libraries
 * History: (history).           Recall previous lines of input.
 * Ld internals: (ldint).        GNU linker internals.
 * Libc: (libc).                 C library.
+* libgomp: (libgomp).           GNU OpenMP runtime library
 * Mmalloc: (mmalloc).           The GNU mapped-malloc package.
 * Stabs: (stabs).               The "stabs" debugging information format.
 * Readline: (readline).         General command-line interface.
@@ -356,7 +352,7 @@ Individual utilities
 * diff3: (diff)Invoking diff3.                  Compare 3 files line by line.
 * dir: (coreutils)dir invocation.               List directories briefly.
 * dircolors: (coreutils)dircolors invocation.   Color setup for ls.
-* dirname: (coreutils)dirname invocation.       Strip non-directory suffix.
+* dirname: (coreutils)dirname invocation.       Strip last file name component.
 * dlltool: (binutils)dlltool.	Create files needed to build and use DLLs.
 * dmp: (web2c)Dmp invocation.                   Troff->MPX (MetaPost pictures).
 * du: (coreutils)du invocation.                 Report on disk usage.
@@ -405,13 +401,13 @@ Individual utilities
 * join: (coreutils)join invocation.             Join lines on a common field.
 * kill: (coreutils)kill invocation.             Send a signal to processes.
 * kpsewhich: (kpathsea)Invoking kpsewhich.      TeX file searching.
+* libtool-invocation: (libtool)Invoking libtool. Running the `libtool' script.
 * libtoolize: (libtool)Invoking libtoolize.     Adding libtool support.
 * lid: (id-utils)lid invocation.        	Matching words and patterns.
 * link: (coreutils)link invocation.             Make hard links between files.
 * ln: (coreutils)ln invocation.                 Make links between files.
 * locate: (find)Invoking locate.                Finding files in a database.
-* logger: (inetutils)logger invocation.         Send messages to the system 
-                                                  log.
+* logger: (inetutils)logger invocation.         Send messages to system log.
 * logname: (coreutils)logname invocation.       Print current login name.
 * ls: (coreutils)ls invocation.                 List directory contents.
 * mail-files: (sharutils)mail-files invocation. Send files to remote site.

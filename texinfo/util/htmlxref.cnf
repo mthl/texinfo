@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-11.16; # UTC
+htmlxrefversion=2010-11-14.17; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -177,10 +177,13 @@ emacs		node	${EMACS}/html_node/
  woman		node	${EMACS}/html_node/woman/
  # (end emacs manuals)
 
+emacs-muse	node	${GS}/emacs-muse/manual/muse.html
+emacs-muse	node	${GS}/emacs-muse/manual/html_node/
+
 emms		node	${GS}/emms/manual/
 
 findutils	mono	${GS}/findutils/manual/html_mono/find.html
-findutils	node	${GS}/findutils/manual/html_mono/find_html
+findutils	node	${GS}/findutils/manual/html_node/find_html
 
 gama		mono	${GS}/gama/manual/gama.html
 gama		node	${GS}/gama/manual/html_node/
@@ -366,6 +369,9 @@ rottlog		node	${GS}/rottlog/manual/html_node/
 screen		mono	${GS}/screen/manual/screen.html
 screen		node	${GS}/screen/manual/html_node/
 
+sed		mono	${GS}/sed/manual/sed.html
+sed		node	${GS}/sed/manual/html_node/
+
 # can't use mono files since they have generic names
 smalltalk	node	${GS}/smalltalk/manual/html_node/
 smalltalk-base	node	${GS}/smalltalk/manual-base/html_node/
@@ -373,6 +379,8 @@ smalltalk-libs	node	${GS}/smalltalk/manual-libs/html_node/
 
 sourceinstall	mono	${GS}/sourceinstall/manual/sourceinstall.html
 sourceinstall	node	${GS}/sourceinstall/manual/html_node/
+
+src-highlite	mono	${GS}/src-highlite/source-highlight.html
 
 standards	mono	${G}/prep/standards/standards.html
 standards	node	${G}/prep/standards/html_node/
@@ -395,6 +403,9 @@ texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
 
 units		mono	${GS}/units/manual/units.html
 units		node	${GS}/units/manual/html_node/
+
+wdiff		mono	${GS}/wdiff/manual/wdiff.html
+wdiff		node	${GS}/wdiff/manual/html_node/
 
 websocket4j	mono	${GS}/websocket4j/manual/websocket4j.html
 websocket4j	node	${GS}/websocket4j/manual/html_node/
