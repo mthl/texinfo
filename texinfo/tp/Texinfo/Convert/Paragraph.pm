@@ -62,7 +62,7 @@ sub end_line($)
   return '' if ($paragraph->{'protected_spaces'});
   $paragraph->{'counter'} = 0;
   $paragraph->{'space'} = '';
-  if ($paragraph->{'indent_length_next'}) {
+  if (defined($paragraph->{'indent_length_next'})) {
     $paragraph->{'indent_length'} = $paragraph->{'indent_length_next'};
     delete $paragraph->{'indent_length_next'};        
   }

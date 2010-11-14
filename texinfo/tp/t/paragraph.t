@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 82 };
+BEGIN { plan tests => 91 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
@@ -36,8 +36,11 @@ sub test_para($$$;$)
     $result .= $para->add_text($arg);
   }
   $result .= $para->end();
-  is ($result, $reference, $name);
-  #print STDERR "$result\n";
+  if (defined($reference)) {
+    is ($result, $reference, $name);
+  } else {
+    print STDERR "$result\n";
+  }
 }
 
 test_para(['word'], "word\n", 'word');
@@ -66,6 +69,64 @@ test_para(['word',' other'], "word\nother\n", 'two_elements_space_max', {'max' =
 test_para(["\x{7b2c}\x{4e00} ",'other'], "\x{7b2c}\n\x{4e00}\nother\n", 'east_asian', {'max' => 2});
 test_para(['word.  other'], "word. other\n", 'two_words_dot_frenchspacing', {'frenchspacing' => 1});
 test_para(["aa.)\x{7b2c} b"], "aa.)\x{7b2c} b\n", 'end_sentence_east_asian');
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd eeeeeeeeeeee fffffffff ggggggg"],
+"   aaaa
+ bbbbbbb
+ cccccccc
+ dddddddddddd
+ eeeeeeeeeeee
+ fffffffff
+ ggggggg
+",
+   'indent_indent_next', {'max' => 6, 'indent_length' => 3, 'indent_length_next' => 1});
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd eeeeeeeeeeee fffffffff ggggggg"], 
+"    aaaa
+bbbbbbb
+cccccccc
+dddddddddddd
+eeeeeeeeeeee
+fffffffff
+ggggggg
+",
+   'indent_no_indent_next', {'max' => 12, 'indent_length' => 4, 'indent_length_next' => 0});
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd eeeeeeeeeeee fffffffff ggggggg"],
+"    aaaa
+    bbbbbbb
+    cccccccc
+    dddddddddddd
+    eeeeeeeeeeee
+    fffffffff
+    ggggggg
+",
+   'indent_undef_indent_next', {'max' => 12, 'indent_length' => 4});
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd eeeeeeeeeeee fffffffff ggggggg"], 
+"aaaa bbbbbbb
+   cccccccc
+   dddddddddddd
+   eeeeeeeeeeee
+   fffffffff
+   ggggggg
+",
+   'indent_next_no_indent', {'max' => 12, 'indent_length' => 0, 'indent_length_next' => 3});
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd eeeeeeeeeeee fffffffff ggggggg"],
+"aaaa bbbbbbb
+   cccccccc
+   dddddddddddd
+   eeeeeeeeeeee
+   fffffffff
+   ggggggg
+",
+   'indent_next_undef_indent', {'max' => 12, 'indent_length_next' => 3});
+test_para(["aaaa"], "  aaaa\n", 'indent_and_counter_lower', 
+  {'indent_length' => 8, 'counter' => 6});
+test_para(["aaaa"], "aaaa\n", 'indent_zero_and_counter', 
+  {'indent_length' => 0, 'counter' => 6});
+test_para(["aaaa"], "aaaa\n", 'indent_and_counter_higher', 
+  {'indent_length' => 3, 'counter' => 6});
+test_para(["aaaa bbbbbbb cccccccc dddddddddddd"],
+  "aaaa bbbbbbb\ncccccccc dddddddddddd\n",
+  "counter_and_line", {'counter' => 60});
+
 
 my $para = Texinfo::Convert::Paragraph->new();
 my $result = '';
