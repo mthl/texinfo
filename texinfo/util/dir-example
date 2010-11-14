@@ -9,7 +9,7 @@ rms suggested that we follow the categories of the Free Software
 If you have dir entries for Texinfo manuals you'd like to be added here,
   please send them to karl@gnu.org.
 
-$Id: dir-example,v 1.82 2010-11-14 18:24:18 karl Exp $
+$Id: dir-example,v 1.83 2010-11-14 18:28:48 karl Exp $
 
 File: dir,	Node: Top,	This is the top of the INFO tree.
 
@@ -101,6 +101,10 @@ Printing
 * psmandup: (a2ps) psmandup.       Printing Duplex on Simplex Printers
 * psset: (a2ps) psset.             Inserting calls to setpagedevice
 
+Version control
+* CVS: (cvs).                   Concurrent Versions System
+* RCS: (rcs).                   GNU (single-file) Revision Control System.
+
 Software development
 * Annotate: (annotate).         The obsolete annotation interface.
 * As: (as).                     Assembler.
@@ -108,7 +112,6 @@ Software development
 * Automake: (automake).         Making GNU standards-compliant Makefiles.
 * Binutils: (binutils).         The GNU binary utilities.
 * C: (gnu-c-manual).            GNU C reference manual.
-* CVS: (cvs).                   Concurrent Versions System
 * Cpp: (cpp).                   The GNU C preprocessor.
 * Cpplib: (cppinternals).       Cpplib internals.
 * DejaGnu: (dejagnu).           Testing framework.
@@ -133,7 +136,6 @@ Software development
 * Ld: (ld).                     Linker.
 * Libtool: (libtool).           Generic library support script.
 * Make: (make).                 Remake files automatically.
-* RCS: (rcs).                   GNU (single-file) Revision Control System.
 * PRCS: (prcs).                 Project revision control system.
 * Remsync: (remsync).           Remote synchronization of directory trees.
 * Send PR: (send-pr).           Cygnus bug reporting for Gnats.
