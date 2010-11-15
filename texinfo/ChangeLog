@@ -1,3 +1,9 @@
+2010-11-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Invoking Macros): attempt to clarify
+	calling without braces (only allowed if the macro takes exactly
+	one arg), and leaving arguments out (ok).
+
 2010-11-11  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Macro Details): mention non-expansion contexts

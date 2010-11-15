@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
+@c $Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -14222,6 +14222,7 @@ For example:
 
 @node Invoking Macros
 @section Invoking Macros
+
 @cindex Invoking macros
 @cindex Expanding macros
 @cindex Running macros
@@ -14354,9 +14355,11 @@ macros are used in the argument to other commands, for example, errors
 or incorrect output (the @samp{\} ``escape'' being included
 literally) are likely to result.
 
-If the macro is defined to take a single argument, and is invoked
-without any braces, the entire rest of the line after the macro name is
-supplied as the argument.  For example:
+If the macro is defined to take exactly one argument, and is invoked
+without any braces, the entire rest of the line after the macro name
+is supplied as the argument.  (It's an error to specify the argument
+without braces if the macro takes either zero or more than one
+argument.)  For example:
 
 @example
 @@macro bar @{p@}
@@ -14372,8 +14375,8 @@ Twice: \p\ & \p\.
 Twice: aah & aah.
 @end display
 
-If the macro is defined to take a single argument, and is invoked with
-braces, the braced text is passed as the argument, regardless of
+If the macro is defined to take exactly one argument, and is invoked
+with braces, the braced text is passed as the argument, regardless of
 commas.  For example:
 
 @example
@@ -14387,6 +14390,23 @@ Twice: \p\ & \p\.
 
 @display
 Twice: a,b & a,b.
+@end display
+
+If a macro is defined to take more than one argument, but is called
+with only one (in braces), the remaining arguments are set to the
+empty string, and no error is given.  For example:
+
+@example
+@@macro addtwo @{p, q@}
+Both: \p\\q\.
+@@end macro
+@@addtwo@{a@}
+@end example
+
+@noindent produces simply:
+
+@display
+Both: a.
 @end display
 
 
@@ -22919,7 +22939,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
+$Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -22998,7 +23018,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.349 2010-11-14 18:24:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
