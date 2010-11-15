@@ -194,21 +194,8 @@ my %item_line_commands       = %Texinfo::Common::item_line_commands;
 my %deprecated_commands      = %Texinfo::Common::deprecated_commands;
 my %root_commands            = %Texinfo::Common::root_commands;
 my @out_formats              = @Texinfo::Common::out_formats;
+my %command_index_prefix     = %Texinfo::Common::command_index_prefix;
 
-
-# the type of index, f: function, v: variable, t: type
-my %index_type_def = (
- 'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
- 'v' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
- 't' => ['deftp']
-);
-
-my %command_index_prefix;
-foreach my $index_type (keys %index_type_def) {
-  foreach my $def (@{$index_type_def{$index_type}}) {
-    $command_index_prefix{$def} = $index_type;
-  }
-}
 
 my %def_prepended_content;
 foreach my $def_command(keys %def_map) {
@@ -216,8 +203,6 @@ foreach my $def_command(keys %def_map) {
   # prepare what will be prepended when the def command is an alias
   if (ref($def_map{$def_command}) eq 'HASH') {
     my ($real_command) = keys (%{$def_map{$def_command}});
-    $command_index_prefix{$def_command} = $command_index_prefix{$real_command};
-    $def_aliases{$def_command} = $real_command;
     my $prepended = $def_map{$def_command}->{$real_command};
     if ($prepended =~ /^\{/) {
       my $text = $prepended;
@@ -232,9 +217,6 @@ foreach my $def_command(keys %def_map) {
     push @{$def_prepended_content{$def_command}}, { 'text' => ' ' };
   }
 }
-
-$command_index_prefix{'vtable'} = 'v';
-$command_index_prefix{'ftable'} = 'f';
 
 
 my %type_with_paragraph;

@@ -264,9 +264,32 @@ our %def_map = (
     'deftypemethod', {'deftypeop' => 'Method'},
 );
 
+# the type of index, f: function, v: variable, t: type
+my %index_type_def = (
+ 'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
+ 'v' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
+ 't' => ['deftp']
+);
+
+our %command_index_prefix;
+
+$command_index_prefix{'vtable'} = 'v';
+$command_index_prefix{'ftable'} = 'f';
+
+foreach my $index_type (keys %index_type_def) {
+  foreach my $def (@{$index_type_def{$index_type}}) {
+    $command_index_prefix{$def} = $index_type;
+  }
+}
+
 our %def_commands;
 our %def_aliases;
 foreach my $def_command(keys %def_map) {
+  if (ref($def_map{$def_command}) eq 'HASH') {
+    my ($real_command) = keys (%{$def_map{$def_command}});
+    $command_index_prefix{$def_command} = $command_index_prefix{$real_command};
+    $def_aliases{$def_command} = $real_command;
+  }
   $block_commands{$def_command} = 'def';
   $misc_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
