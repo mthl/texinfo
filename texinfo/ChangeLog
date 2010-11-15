@@ -2,6 +2,7 @@
 
 	* doc/texinfo.txi (Indexing Commands): recommend unique index
 	entries.  (bug-texinfo thread starting 29 Jul 2010 23:23:02)
+	(throughout): consistently @code for <tags> in index entries.
 
 2010-11-14  Karl Berry  <karl@gnu.org>
 

@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
+@c $Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -3057,7 +3057,7 @@ The @code{@@settitle} command should precede everything that generates
 actual output.  The best place for it is right after the
 @code{@@setfilename} command (see the previous section).
 
-@cindex <title> HTML tag
+@cindex @code{<title>} HTML tag
 In the HTML file produced by @command{makeinfo}, @var{title} serves as
 the document @samp{<title>}.  It also becomes the default document
 description in the @samp{<head>} part (@pxref{documentdescription}).
@@ -6776,7 +6776,7 @@ Some people prefer to display url's in the unambiguous format:
 @end display
 
 @noindent
-@cindex <URL: convention, not used
+@cindex @code{<URL...>} convention, not used
 You can use this form in the input file if you wish.  We feel it's not
 necessary to include the @samp{<URL:} and @samp{>} in the output,
 since any software that tries to detect url's in text already has to
@@ -7575,7 +7575,7 @@ Sentence}) to get the correct spacing.  However, you do not have to
 use @code{@@.} within the abbreviation itself; Texinfo automatically
 assumes periods within the abbreviation do not end a sentence.
 
-@cindex <abbr> and <abbrev> tags
+@cindex @code{<abbr>} and @code{<abbrev>} tags
 In @TeX{} and in the Info output, the first argument is printed as-is;
 if the second argument is present, it is printed in parentheses after
 the abbreviation.  In HTML and XML, the @code{<abbr>} tag is
@@ -7615,7 +7615,7 @@ If the acronym is at the end of a sentence, and if there is no second
 argument, remember to use the @code{@@.} or similar command
 (@pxref{Ending a Sentence}) to get the correct spacing.
 
-@cindex <acronym> tag
+@cindex @code{<acronym>} tag
 In @TeX{}, the acronym is printed in slightly smaller font.  In the
 Info output, the argument is printed as-is.  In either format, if the
 second argument is present, it is printed in parentheses after the
@@ -7822,7 +7822,7 @@ accurately.
 Family names are one case where small capitals are sometimes desirable,
 also as shown here.
 
-@cindex <small> tag
+@cindex @code{<small>} tag
 @TeX{} typesets any uppercase letters between the braces of an
 @code{@@sc} command in full-size capitals; only lowercase letters are
 printed in the small caps font.  In the Info output, the argument to
@@ -8107,8 +8107,8 @@ If the @code{@@quotation} argument is exactly one of these English words:
 Caution  Important  Note  Tip  Warning
 @end example
 
-@cindex <note> Docbook tag
-@cindex <blockquote> HTML tag
+@cindex @code{<note>} Docbook tag
+@cindex @code{<blockquote>} HTML tag
 @noindent then the Docbook output uses corresponding special tags
 (@code{<note>}, etc.) instead of the default @code{<blockquote>}.
 HTML output always uses @code{<blockquote>}.
@@ -9268,7 +9268,7 @@ input lines in your source file as necessary.
 
 @findex headitem
 @cindex Heading row, in table
-@cindex <thead> HTML tag
+@cindex @code{<thead>} HTML tag
 You can also use @code{@@headitem} instead of @code{@@item} to produce
 a @dfn{heading row}.  The @TeX{} output for such a row is in bold, and
 the HTML, XML, and Docbook output uses the @code{<thead>} tag.  In
@@ -20210,14 +20210,14 @@ called if the output is split at sections, after
 
 @vindex $EXTRA_HEAD
 @vindex $AFTER_BODY_OPEN
-@cindex @code{<head>}, adding to
+@cindex @code{<head>} block, adding to
 You can define the variable @code{$EXTRA_HEAD} to add text within the
 @code{<head>} HTML element.  Similarly, the value of
 @code{$AFTER_BODY_OPEN} is added just after @code{<body>} is output.
 These variables are empty by default.
 
 @vindex BODYTEXT@r{, in customization}
-@cindex @code{<body>}, attributes of
+@cindex @code{<body>} tag, attributes of
 The @code{<body>} element attributes may be set by defining the
 configuration variable @code{BODYTEXT}.
 
@@ -22945,7 +22945,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
+$Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23024,7 +23024,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
+@comment $Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
