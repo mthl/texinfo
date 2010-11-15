@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
+@c $Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10015,6 +10015,7 @@ into one output index using the @code{@@synindex} or
 
 @node Indexing Commands
 @section Defining the Entries of an Index
+
 @cindex Defining indexing entries
 @cindex Index entries
 @cindex Entries for an index
@@ -10024,13 +10025,13 @@ into one output index using the @code{@@synindex} or
 The data to make an index come from many individual indexing commands
 scattered throughout the Texinfo source file.  Each command says to add
 one entry to a particular index; after formatting, the index will give
-the current page number or node name as the reference.@refill
+the current page number or node name as the reference.
 
 An index entry consists of an indexing command at the beginning of a
-line followed, on the rest of the line, by the entry.@refill
+line followed, on the rest of the line, by the entry.
 
 For example, this section begins with the following five entries for
-the concept index:@refill
+the concept index:
 
 @example
 @@cindex Defining indexing entries
@@ -10047,25 +10048,32 @@ on, as listed in the previous section.
 @cindex Writing index entries
 @cindex Index entry writing
 Concept index entries consist of text.  The best way to write an index
-is to choose entries that are terse yet clear.  If you can do this,
-the index often looks better if the entries are not capitalized, but
+is to devise entries which are terse yet clear.  If you can do this,
+the index usually looks better if the entries are not capitalized, but
 written just as they would appear in the middle of a sentence.
 (Capitalize proper names and acronyms that always call for upper case
 letters.)  This is the case convention we use in most GNU manuals'
 indices.
 
 If you don't see how to make an entry terse yet clear, make it longer
-and clear---not terse and confusing.  If many of the entries are several
-words long, the index may look better if you use a different convention:
-to capitalize the first word of each entry.  But do not capitalize a
-case-sensitive name such as a C or Lisp function name or a shell
-command; that would be a spelling error.
+and clear---not terse and confusing.  If many of the entries are
+several words long, the index may look better if you use a different
+convention: to capitalize the first word of each entry.  Whichever
+case convention you use, use it consistently.
 
-Whichever case convention you use, use it consistently.
+In any event, do not ever capitalize a case-sensitive name such as a C
+or Lisp function name or a shell command; that would be a spelling
+error.  Entries in indices other than the concept index are symbol
+names in programming languages, or program names; these names are
+usually case-sensitive, so likewise use upper and lower case as
+required.
 
-Entries in indices other than the concept index are symbol names in
-programming languages, or program names; these names are usually
-case-sensitive, so use upper and lower case as required for them.
+It is best, though not required, for index entries to be unique.  That
+way, people using the printed output or online completion of index
+entries don't see undifferentiated lists.  Consider this an
+opportunity to make otherwise-identical index entries be more
+specific, so readers can more easily find the exact place they are
+looking for.
 
 Index entries should precede the visible material that is being
 indexed.  For instance:
@@ -10078,14 +10086,6 @@ Hello, there!
 @noindent Among other reasons, that way following indexing links (in
 whatever context) ends up before the material, where readers want to
 be, instead of after.
-
-@c if an index command follows the material, there can be a spurious
-@c space in the output, which can end up as a whole extra blank line
-@c in TeX.  This is the glue between the last character in the
-@c paragraph and the whatsit from the index.  The solution is to
-@c comment out the space, as in:
-@c     He said, "Hello, there!".@c
-@c     @cindex hello
 
 @cindex Index font types
 By default, entries for a concept index are printed in a small roman
@@ -10132,6 +10132,7 @@ would need to enclose every one of them between the braces of
                                  default font of the merged-to index.
 @end menu
 
+
 @node syncodeindex
 @subsection @code{@@syncodeindex}
 @findex syncodeindex
@@ -10139,7 +10140,7 @@ would need to enclose every one of them between the braces of
 When you want to combine functions and concepts into one index, you
 should index the functions with @code{@@findex} and index the concepts
 with @code{@@cindex}, and use the @code{@@syncodeindex} command to
-redirect the function index entries into the concept index.@refill
+redirect the function index entries into the concept index.
 
 The @code{@@syncodeindex} command takes two arguments; they are the name
 of the index to redirect, and the name of the index to redirect it to.
@@ -10225,11 +10226,11 @@ at the end of a book or creating an index menu in an Info file.@refill
 @findex defindex
 @findex defcodeindex
 
-In addition to the predefined indices, you may use the
-@code{@@defindex} and @code{@@defcodeindex} commands to define new
-indices.  These commands create new indexing @@-commands with which
-you mark index entries.  The @code{@@defindex} command is used like
-this:
+In addition to the predefined indices (@pxref{Predefined Indices}),
+you may use the @code{@@defindex} and @code{@@defcodeindex} commands
+to define new indices.  These commands create new indexing @@-commands
+with which you mark index entries.  The @code{@@defindex} command is
+used like this:
 
 @example
 @@defindex @var{name}
@@ -10284,6 +10285,11 @@ except that, in the printed output, it prints entries in an
 You should define new indices before the end-of-header line of a
 Texinfo file, and (of course) before any @code{@@synindex} or
 @code{@@syncodeindex} commands (@pxref{Texinfo File Header}).
+
+As mentioned earlier (@pxref{Predefined Indices}), we recommend having
+a single index in the final document whenever possible, however many
+source indices you use, since then readers have only one place to
+look.
 
 
 @node Insertions
@@ -19180,9 +19186,9 @@ the two arguments of @code{@@synindex}
 
 @cindex Init file flag values
 @cindex Flag values, in init files
+
 @cindex @code{@@set} values, in init files
 @vindex %main::value
-
 Flags defined with @code{@@set} (@pxref{set value})
 may be accessed through the @code{%main::value} hash.  The key is the
 flag name, and the value is the flag value.
@@ -22939,7 +22945,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
+$Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23018,7 +23024,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.350 2010-11-15 01:18:43 karl Exp $
+@comment $Id: texinfo.txi,v 1.351 2010-11-15 19:46:41 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,8 @@
+2010-11-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Indexing Commands): recommend unique index
+	entries.  (bug-texinfo thread starting 29 Jul 2010 23:23:02)
+
 2010-11-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Invoking Macros): attempt to clarify
