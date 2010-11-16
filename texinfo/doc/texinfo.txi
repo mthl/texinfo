@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
+@c $Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -907,7 +907,7 @@ same as Info output, except the navigational control characters are
 omitted.  Also, standard output is used by default.
 
 @item HTML
-@cindex HTML output
+@cindex HTML output, overview
 @cindex W3 consortium
 @cindex Mozilla
 @cindex Lynx
@@ -10046,14 +10046,15 @@ for the concept index, @code{@@findex} for the function index, and so
 on, as listed in the previous section.
 
 @cindex Writing index entries
-@cindex Index entry writing
+@cindex Index entries, advice on writing
+@cindex Advice on writing entries
+@cindex Capitalization of index entries
 Concept index entries consist of text.  The best way to write an index
 is to devise entries which are terse yet clear.  If you can do this,
-the index usually looks better if the entries are not capitalized, but
-written just as they would appear in the middle of a sentence.
-(Capitalize proper names and acronyms that always call for upper case
-letters.)  This is the case convention we use in most GNU manuals'
-indices.
+the index usually looks better if the entries are written just as they
+would appear in the middle of a sentence, that is, capitalizing only
+proper names and acronyms that always call for upper case letters.
+This is the case convention we use in most GNU manuals' indices.
 
 If you don't see how to make an entry terse yet clear, make it longer
 and clear---not terse and confusing.  If many of the entries are
@@ -10068,6 +10069,7 @@ names in programming languages, or program names; these names are
 usually case-sensitive, so likewise use upper and lower case as
 required.
 
+@cindex Unique index entries
 It is best, though not required, for index entries to be unique.  That
 way, people using the printed output or online completion of index
 entries don't see undifferentiated lists.  Consider this an
@@ -11047,22 +11049,17 @@ convenient:
 
 @node Dots Bullets
 @section Inserting Ellipsis and Bullets
-@cindex Dots, inserting
-@cindex Bullets, inserting
-@cindex Ellipsis, inserting
-@cindex Inserting ellipsis
-@cindex Inserting dots
-@cindex Special typesetting commands
-@cindex Typesetting commands for dots, etc.
+@cindex Typesetting ellipses and bullets
 
-An @dfn{ellipsis} (a line of dots) is not typeset as a string of
-periods, so a special command is used for ellipsis in Texinfo.  The
-@code{@@bullet} command is special, too.  Each of these commands is
-followed by a pair of braces, @samp{@{@}}, without any whitespace
-between the name of the command and the braces.  (You need to use braces
-with these commands because you can use them next to other text; without
-the braces, the formatters would be confused.  @xref{Command Syntax, ,
-@@-Command Syntax}, for further information.)@refill
+An @dfn{ellipsis} (a line of dots) would be spaced wrong when typeset
+as a string of periods, so a special command is used for ellipsis in
+Texinfo.  The @code{@@bullet} command is special, too.
+
+Each of these commands is followed by a pair of braces, @samp{@{@}},
+without any whitespace between the name of the command and the braces.
+(You need to use braces with these commands because you can use them
+next to other text; without the braces, the formatters would be
+confused.  @xref{Command Syntax, , @@-Command Syntax}.)
 
 @menu
 * dots::                        How to insert dots @dots{}
@@ -11072,10 +11069,13 @@ the braces, the formatters would be confused.  @xref{Command Syntax, ,
 
 @node dots
 @subsection @code{@@dots}@{@} (@dots{}) and @code{@@enddots}@{@} (@enddots{})
+
 @findex dots
 @findex enddots
 @cindex Inserting dots
+@cindex Inserting ellipsis
 @cindex Dots, inserting
+@cindex Ellipsis, inserting
 
 Use the @code{@@dots@{@}} command to generate an ellipsis, which is
 three dots in a row, appropriately spaced @dots{} like so.  Do
@@ -11098,16 +11098,17 @@ the dots in the ellipsis.
 
 @node bullet
 @subsection @code{@@bullet}@{@} (@bullet{})
+
 @findex bullet
 
 Use the @code{@@bullet@{@}} command to generate a large round dot, or
-the closest possible thing to one.  In Info, an asterisk is used.@refill
+the closest possible thing to one.  In Info, an asterisk is used.
 
 Here is a bullet: @bullet{}
 
 When you use @code{@@bullet} in @code{@@itemize}, you do not need to
 type the braces, because @code{@@itemize} supplies them.
-(@xref{itemize, , @code{@@itemize}}.)@refill
+(@pxref{itemize, , @code{@@itemize}}).
 
 
 @node TeX and copyright
@@ -11186,8 +11187,8 @@ the underlying system (fonts, software, whatever) does not support
 it.  Therefore, in many cases it is preferable to use the word
 ``Euro''.  (In banking circles, the abbreviation for the Euro is EUR.)
 
-@cindex ISO 8859-15
-@cindex Latin 9
+@cindex ISO 8859-15, and Euro
+@cindex Latin 9, and Euro
 In order to get the Euro symbol in encoded Info output, for example,
 it is necessary to specify @code{@@documentencoding ISO-8859-15}.
 (@xref{documentencoding,,@code{@@documentencoding}}.)  The Euro symbol
@@ -11839,7 +11840,8 @@ Start a new printed page if not enough space on this one.
 @section @code{@@*} and @code{@@/}: Generate and Allow Line Breaks
 @findex * @r{(force line break)}
 @findex / @r{(allow line break)}
-@cindex Line breaks
+@cindex Line breaks, controlling
+@cindex Controlling line breaks
 @cindex Breaks in a line
 @cindex Force line break
 @cindex Allow line break
@@ -16315,7 +16317,7 @@ file.  Normally, the results of macro expansion are used internally by
 @item --no-headers
 @opindex --no-headers
 @cindex Node separators, omitting
-@cindex Generating plain text files
+@cindex Generating plain text files with @option{--no-headers}
 @cindex Menus, omitting
 Do not include menus or node separator lines in the output.
 
@@ -16452,7 +16454,7 @@ Indent each paragraph by @var{num} spaces.
 @opindex --plaintext
 @cindex Plain text output
 @cindex ASCII text output
-@cindex Generating plain text files
+@cindex Generating plain text files with @option{--plaintext}
 @cindex @file{INSTALL} file, generating
 @cindex Node separators, omitting
 @cindex Menus, omitting
@@ -17826,7 +17828,9 @@ Display version information and exit successfully.
 
 @node Generating HTML
 @chapter Generating HTML
-@cindex HTML output
+
+@cindex Generating HTML
+@cindex Outputting HTML
 
 @command{makeinfo} generates Info output by default, but given the
 @option{--html} option, it will generate HTML, for web browsers and
@@ -22945,7 +22949,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
+$Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23024,7 +23028,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.352 2010-11-15 19:51:16 karl Exp $
+@comment $Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

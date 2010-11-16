@@ -1,3 +1,7 @@
+2010-11-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: uniqify some index entries.
+
 2010-11-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Indexing Commands): recommend unique index
