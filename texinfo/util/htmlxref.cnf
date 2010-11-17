@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-14.17; # UTC
+htmlxrefversion=2010-11-16.19; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -83,6 +83,12 @@ cssc		node	${GS}/cssc/manual/
 ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
 
 ddrescue	mono	${GS}/ddrescue/manual/ddrescue_manual.html
+
+DICO = http://puszcza.gnu.org.ua/software/dico/manual
+dico		mono	${DICO}/dico.html
+dico		chapter	${DICO}/html_chapter/
+dico		section	${DICO}/html_section/
+dico		node	${DICO}/html_node/
 
 diffutils	mono	${GS}/diffutils/manual/diffutils.html
 

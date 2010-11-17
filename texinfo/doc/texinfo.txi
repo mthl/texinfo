@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
+@c $Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -901,7 +901,7 @@ Standalone, info-stnd, GNU Info}), among others, can read these files.
 @xref{Creating and Installing Info Files}.
 
 @item Plain text
-@cindex Plain text output
+@cindex Plain text output, overview
 (Generated via @command{makeinfo --plaintext}.)  This is almost the
 same as Info output, except the navigational control characters are
 omitted.  Also, standard output is used by default.
@@ -940,9 +940,8 @@ For more information on @TeX{} in general, please see the book
 @uref{http://savannah.gnu.org/projects/teximpatient}.
 
 @item PDF
-@cindex PDF output
+@cindex PDF output, overview
 @cindex Beebe, Nelson
-@pindex pdftex
 (Generated via @command{texi2dvi --pdf} or @command{texi2pdf}.)  This
 format was developed by Adobe Systems for portable document
 interchange, based on their previous PostScript language.  It can
@@ -8461,8 +8460,8 @@ returning the page to its normal width.@refill
 @section @code{@@flushleft} and @code{@@flushright}
 @findex flushleft
 @findex flushright
-@cindex Ragged right
-@cindex Ragged left
+@cindex Ragged right, without filling
+@cindex Ragged left, without filling
 
 The @code{@@flushleft} and @code{@@flushright} commands line up the
 ends of lines on the left and right margins of a page,
@@ -8522,7 +8521,7 @@ left end ragged.
 @node raggedright
 @section @code{@@raggedright}
 @findex raggedright
-@cindex Ragged right
+@cindex Ragged right, with filling
 
 The @code{@@raggedright} fills text as usual, but the text is only
 justified on the left; the right margin is ragged.  The command is
@@ -10070,9 +10069,9 @@ usually case-sensitive, so likewise use upper and lower case as
 required.
 
 @cindex Unique index entries
-It is best, though not required, for index entries to be unique.  That
-way, people using the printed output or online completion of index
-entries don't see undifferentiated lists.  Consider this an
+It is a good idea to make index entries unique wherever feasible.
+That way, people using the printed output or online completion of
+index entries don't see undifferentiated lists.  Consider this an
 opportunity to make otherwise-identical index entries be more
 specific, so readers can more easily find the exact place they are
 looking for.
@@ -11273,7 +11272,7 @@ sequences @samp{>=} and @samp{<=}.
 @node math
 @section @code{@@math}: Inserting Mathematical Expressions
 @findex math
-@cindex Mathematical expressions
+@cindex Mathematical expressions, inserting
 @cindex Formulas, mathematical
 
 You can write a short mathematical expression with the @code{@@math}
@@ -11767,7 +11766,7 @@ ensure that text looks right both in the printed manual and in the
 Info file.
 
 @cindex White space, excessive
-@cindex Page breaks
+@cindex Page breaks, awkward
 For example, in a printed manual, page breaks may occur awkwardly in
 the middle of an example; to prevent this, you can hold text together
 using a grouping command that keeps the text from being split across
@@ -12106,7 +12105,7 @@ The @code{@@br} command is seldom used.
 
 @node page
 @section @code{@@page}: Start a New Page
-@cindex Page breaks
+@cindex Page breaks, forcing
 @findex page
 
 A line containing only @code{@@page} starts a new page in a printed
@@ -13201,13 +13200,13 @@ argument actually is of that type.@refill
 @section A Sample Function Definition
 @cindex Function definitions
 @cindex Command definitions
-@cindex Macro definitions
+@cindex Macro definitions, programming-language
 @cindex Sample function definition
 
 A function definition uses the @code{@@defun} and @code{@@end defun}
 commands.  The name of the function follows immediately after the
 @code{@@defun} command and it is followed, on the same line, by the
-parameter list.@refill
+parameter list.
 
 Here is a definition from @ref{Calling Functions,,, elisp, The GNU Emacs
 Lisp Reference Manual}.
@@ -13515,7 +13514,7 @@ In complex cases, you may wish to define new @TeX{} macros within
 @code{@@tex}.  You must use @code{\gdef} to do this, not @code{\def},
 because @code{@@tex} regions are processed in a @TeX{} group.
 
-@cindex Mathematical expressions
+@cindex Mathematical expressions, in plain @TeX{}
 As an example, here is a mathematical expression written in plain @TeX{}:
 
 @example
@@ -14142,7 +14141,7 @@ customized output in the Info file.
 @node Defining Macros
 @section Defining Macros
 @cindex Defining macros
-@cindex Macro definitions
+@cindex Macro definitions, Texinfo
 
 @findex macro
 You use the Texinfo @code{@@macro} command to define a macro, like this:
@@ -14999,7 +14998,6 @@ Texinfo files.
 @cindex Sorting indices
 @cindex Indices, sorting
 @cindex @TeX{} index sorting
-@pindex texindex
 
 There are three major shell commands for making a printed manual from a
 Texinfo file: one for converting the Texinfo file into a file that will be
@@ -16316,9 +16314,9 @@ file.  Normally, the results of macro expansion are used internally by
 
 @item --no-headers
 @opindex --no-headers
-@cindex Node separators, omitting
+@cindex Node separators, omitting with @option{--no-headers}
 @cindex Generating plain text files with @option{--no-headers}
-@cindex Menus, omitting
+@cindex Menus, omitting with @option{--no-headers}
 Do not include menus or node separator lines in the output.
 
 When generating Info, this is the same as using @option{--plaintext},
@@ -16371,7 +16369,7 @@ with hierarchically-structured manuals.  You should specify
 @itemx --no-validate
 @opindex --no-pointer-validate
 @opindex --no-validate
-@cindex Pointer validation, suppressing
+@cindex Pointer validation, suppressing from command line
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
 command (@pxref{Use TeX,,Use @TeX{}}).  Normally, after a Texinfo file
@@ -16452,12 +16450,12 @@ Indent each paragraph by @var{num} spaces.
 
 @item --plaintext
 @opindex --plaintext
-@cindex Plain text output
-@cindex ASCII text output
+@cindex Plain text output with @option{--plaintext}
+@cindex ASCII text output with @option{--plaintext}
 @cindex Generating plain text files with @option{--plaintext}
+@cindex Node separators, omitting with @option{--plaintext}
+@cindex Menus, omitting with @option{--plaintext}
 @cindex @file{INSTALL} file, generating
-@cindex Node separators, omitting
-@cindex Menus, omitting
 Output a plain text file: do not include menus or node separator lines
 in the output.  This results in a straightforward plain text file that
 you can (for example) send in email without complications, or include
@@ -22949,7 +22947,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
+$Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23028,7 +23026,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.353 2010-11-16 17:49:36 karl Exp $
+@comment $Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,3 +1,7 @@
+2010-11-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi: uniqify more index entries.
+
 2010-11-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: uniqify some index entries.
