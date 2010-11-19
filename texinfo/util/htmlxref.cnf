@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-16.19; # UTC
+htmlxrefversion=2010-11-18.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -226,6 +226,8 @@ gmp		mono	${GS}/gmp/manual/html_mono/gmp.html
 gmp		node	${GS}/gmp/manual/html_node/
 
 gnu-arch	node	${GS}/gnu-arch/tutorial/
+
+gnu-c-manual	mono	${GS}/gnu-c-manual/gnu-c-manual.html
 
 gnu-crypto	node	${GS}/gnu-crypto/manual/
 

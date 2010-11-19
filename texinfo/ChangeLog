@@ -1,3 +1,7 @@
+2010-11-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (GNU Sample Texts): update and make self-consistent.
+
 2010-11-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi: uniqify more index entries.

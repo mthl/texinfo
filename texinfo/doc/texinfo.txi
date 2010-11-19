@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
+@c $Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -39,9 +39,8 @@ This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
 printed manual from a single source.
 
-Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
-1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-2009, 2010 Free Software Foundation, Inc.
+Copyright @copyright{} 1988, 1990--1993, 1995--2010 Free Software
+Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -3158,8 +3157,8 @@ plain text or @TeX{}; it's up to you to use @code{@@insertcopying} to
 emit the copying information.  See the next section for details.
 
 @findex copyright
-The @code{@@copyright@{@}} command generates a @samp{c} inside a circle
-in output formats that support this (print and HTML).  In the other
+The @code{@@copyright@{@}} command generates a @samp{c} inside a
+circle in output formats that support this (print and HTML).  In other
 formats (Info and plain text), it generates @samp{(C)}.  The copyright
 notice itself has the following legally defined sequence:
 
@@ -3191,7 +3190,7 @@ documents with a long history, having many different years of
 publication.  If you do use several lines, do not indent any of them
 (or anything else in the @code{@@copying} block) in the source file.
 
-@xref{Copyright Notices,,,maintain,GNU Maintenance Instructions}, for
+@xref{Copyright Notices,,,maintain,GNU Maintainer Information}, for
 additional information.
 
 
@@ -22857,7 +22856,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright @@copyright@{@} 2009 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2010 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -22947,7 +22946,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
+$Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23026,7 +23025,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.354 2010-11-17 19:51:58 karl Exp $
+@comment $Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -23037,7 +23036,7 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2009 Free Software Foundation, Inc.
+Copyright @copyright{} 2010 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -23079,7 +23078,7 @@ This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}).
 
 @menu
 * Invoking sample::
-* Copying This Manual::
+* GNU Free Documentation License::
 * Index::
 @end menu
 
@@ -23091,7 +23090,7 @@ This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}).
 @cindex invoking @command{sample}
 
 This is a sample manual.  There is no sample program to
-invoke, but if there was, you could see its basic usage
+invoke, but if there were, you could see its basic usage
 and command line options here.
 
 
