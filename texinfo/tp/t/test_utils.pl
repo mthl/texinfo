@@ -186,6 +186,8 @@ sub test($$)
   my $parser_options = {};
   my ($test_name, $test_text);
 
+  my $tests_count = 0;
+
   if (ref($test_case) eq 'ARRAY') {
     $test_name = shift @$test_case;
     $test_text = shift @$test_case;
@@ -366,9 +368,19 @@ sub test($$)
     ok (Texinfo::Convert::Texinfo::convert($result) eq $result_texis{$test_name}, 
          $test_name.' texi');
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
+    $tests_count = $nr_comparisons;
+    if (@tested_formats) {
+      foreach my $format (keys(%result_converted)) {
+        $tests_count++;
+        ok ($converted{$format} eq $result_converted{$format}->{$test_name},
+          $test_name.' converted '.$format);
+      #print STDERR "$format: \n$converted{$format}";
+      }
+    }
     #is (Texinfo::Convert::Texinfo::convert($result), $result_texis{$test_name}, $test_name.' text');
   }
   #exit;
+  return $tests_count;
 }
 
 sub run_all($$;$$$)
@@ -391,17 +403,19 @@ sub run_all($$;$$$)
     }
   }
 
+  my $test_nrs = 0;
+
   foreach my $test_case (@$ran_tests) {
     if ($arg_complete) {
       $test->output_texi_file($test_case)
     } else {
-      $test->test($test_case);
+      $test_nrs += $test->test($test_case);
     }
   }
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-    plan tests => (1 + scalar(@$ran_tests) * $nr_comparisons);
+    plan tests => (1 + $test_nrs);
   }
 }
 

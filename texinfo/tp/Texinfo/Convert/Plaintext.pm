@@ -759,7 +759,7 @@ sub convert($$)
     pop @{$self->{'context'}};
   }
   pop @{$self->{'format_context'}} 
-    if ($indented_commands{$root->{'cmdname'}});
+    if ($root->{'cmdname'} and $indented_commands{$root->{'cmdname'}});
   return $result;
 }
 
