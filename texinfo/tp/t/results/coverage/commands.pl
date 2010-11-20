@@ -430,4 +430,10 @@ majorheading in b
 $result_errors{'commands'} = [];
 
 
+
+$result_converted{'plaintext'}->{'commands'} = '@ TeX  e" i^ a~ a* File -> Open.  b <a>
+
+majorheading in b
+';
+
 1;

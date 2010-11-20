@@ -293,13 +293,13 @@ sub test($$)
       local $Data::Dumper::Sortkeys = \&filter_floats_keys;
       $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
     }
-  #  foreach my $format (@tested_formats) {
-  #    if (defined($converted{$format})) {
-  #      $out_result .= "\n".'$result_converted{\''.$format.'\'}->{\''
-  #        .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
-  #    #print STDERR "$format: \n$converted{$format}";
-  #    }
-  #  }
+    foreach my $format (@tested_formats) {
+      if (defined($converted{$format})) {
+        $out_result .= "\n".'$result_converted{\''.$format.'\'}->{\''
+          .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
+      #print STDERR "$format: \n$converted{$format}";
+      }
+    }
 
     $out_result .= "1;\n";
     print OUT $out_result;

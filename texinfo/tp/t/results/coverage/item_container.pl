@@ -213,4 +213,11 @@ b--ullet
 $result_errors{'item_container'} = [];
 
 
+
+$result_converted{'plaintext'}->{'item_container'} = '
+i-tem +
+
+b-ullet
+';
+
 1;

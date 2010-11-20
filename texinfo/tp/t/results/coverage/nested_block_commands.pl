@@ -1090,4 +1090,44 @@ After quotation sp b a
 $result_errors{'nested_block_commands'} = [];
 
 
+
+$result_converted{'plaintext'}->{'nested_block_commands'} = 'In group
+in quotation
+
+in quotation
+
+In group
+in quotation
+after quotation
+
+In group sp b
+in quotation
+
+In group sp b a
+
+in quotation
+
+In group sp a
+
+in quotation
+
+in quotation sp b
+
+in quotation sp b a
+
+in quotation sp a
+
+in quotation
+
+After quotation sp b
+
+in quotation
+After quotation sp a
+
+in quotation
+
+After quotation sp b a
+
+';
+
 1;

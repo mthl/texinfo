@@ -527,4 +527,14 @@ itemx vtable
 $result_errors{'table'} = [];
 
 
+
+$result_converted{'plaintext'}->{'table'} = '
+table item
+table itemx
+In table
+
+vtable item
+itemx vtable
+';
+
 1;

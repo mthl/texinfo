@@ -119,4 +119,8 @@ $result_texts{'table_command_comment'} = 'item
 $result_errors{'table_command_comment'} = [];
 
 
+
+$result_converted{'plaintext'}->{'table_command_comment'} = 'item
+';
+
 1;
