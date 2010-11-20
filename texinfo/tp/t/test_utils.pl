@@ -19,12 +19,12 @@ use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats);
+   %result_floats %result_converted);
 
 ok(1);
 
 my %formats = (
-#  'plaintext' => \&convert_to_plaintext,
+  'plaintext' => \&convert_to_plaintext,
 );
 
 our $arg_generate;
@@ -37,6 +37,14 @@ GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug,
            'c|complete' => \$arg_complete);
 
 our $arg_test_case = shift @ARGV;
+
+sub protect_perl_string($)
+{
+  my $string = shift;
+  $string =~ s/\\/\\\\/g;
+  $string =~ s/'/\\'/g;
+  return $string;
+}
 
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
 #my $transformer = Data::Transformer->new('hash'=>$remove_parent);
@@ -228,7 +236,7 @@ sub test($$)
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
       $converted{$format} = &{$formats{$format}}($self, $result);
-      print STDERR "$format: \n$converted{$format}";
+      #print STDERR "$format: \n$converted{$format}";
     }
   }
 
@@ -245,7 +253,7 @@ sub test($$)
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
               '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
-              '   %result_floats);'."\n\n";
+              '   %result_floats %result_converted);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
@@ -254,17 +262,14 @@ sub test($$)
       $out_result = Data::Dumper->Dump([$result], ['$result_trees{\''.$test_name.'\'}']);
     }
     my $texi_string_result = Texinfo::Convert::Texinfo::convert($result);
-    my $perl_string_result = $texi_string_result;
-    $perl_string_result =~ s/\\/\\\\/g;
-    $perl_string_result =~ s/'/\\'/g;
-    my $perl_string_converted_text = $converted_text;
-    $perl_string_converted_text =~ s/\\/\\\\/g;
-    $perl_string_converted_text =~ s/'/\\'/g;
-    $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''.$perl_string_result."';\n\n";
-    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''.$perl_string_converted_text."';\n\n";
+    $out_result .= "\n".'$result_texis{\''.$test_name.'\'} = \''
+          .protect_perl_string($texi_string_result)."';\n\n";
+    $out_result .= "\n".'$result_texts{\''.$test_name.'\'} = \''
+          .protect_perl_string($converted_text)."';\n\n";
     {
       local $Data::Dumper::Sortkeys = \&filter_sectioning_keys;
-      $out_result .=  Data::Dumper->Dump([$structure], ['$result_sectioning{\''.$test_name.'\'}'])."\n"
+      $out_result .=  Data::Dumper->Dump([$structure], 
+                           ['$result_sectioning{\''.$test_name.'\'}'])."\n"
         if ($structure);
     }
     if ($top_node) {
@@ -288,6 +293,14 @@ sub test($$)
       local $Data::Dumper::Sortkeys = \&filter_floats_keys;
       $out_result .= Data::Dumper->Dump([$floats], ['$result_floats{\''.$test_name.'\'}']) ."\n\n";
     }
+  #  foreach my $format (@tested_formats) {
+  #    if (defined($converted{$format})) {
+  #      $out_result .= "\n".'$result_converted{\''.$format.'\'}->{\''
+  #        .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
+  #    #print STDERR "$format: \n$converted{$format}";
+  #    }
+  #  }
+
     $out_result .= "1;\n";
     print OUT $out_result;
     close (OUT);
