@@ -58,10 +58,16 @@ my %kept_misc_commands = %Texinfo::Convert::Text::kept_misc_commands;
 #                     'item', 'itemx', 'tab', 'headitem',
 #    'node',
 
-foreach my $kept_command('verbatiminclude', 'insertcopying', 'printindex',
-  'listoffloats', 'dircategory', 'paragraphindent', 'firstparagraphindent',
+my %informative_commands;
+foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
-  'setshortcontentsaftertitlepage', 'setcontentsaftertitlepage',
+  'setshortcontentsaftertitlepage', 'setcontentsaftertitlepage') {
+  $informative_commands{$informative_command} = 1;
+}
+
+foreach my $kept_command(keys (%informative_commands),
+  'verbatiminclude', 'insertcopying', 'printindex',
+  'listoffloats', 'dircategory', 
   'contents', 'shortcontents', 'summarycontents', 
   'author', 'shorttitle', 'shorttitlepage', 'settitle', 'subtitle',
   'title') {
@@ -102,6 +108,8 @@ foreach my $command (keys(%block_commands)) {
   $advance_paragraph_count_commands{$command} = 1;
 }
 
+# group and raggedright do more than not advancing para, they should also
+# be transparent with respect to paragraph number counting.
 foreach my $not_advancing_para ('group', 'raggedright',
   'titlepage', 'copying', 'documentdescription') {
   delete $advance_paragraph_count_commands{$not_advancing_para};
@@ -146,8 +154,9 @@ foreach my $command (keys(%style_map)) {
   $style_map{$command} = [$style_map{$command}, $style_map{$command}];
 }
 
-my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'math', 'sc', 't', 'r',
-  'slanted', 'sansserif', 'var', 'titlefont', 'verb', 'clickstyle',
+# math  is special
+my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
+  'slanted', 'sansserif', 'var', 'titlefont', 'verb', 'clicksequence',
   'headitemfont');
 
 foreach my $asis_command (@asis_commands) {
@@ -402,9 +411,6 @@ sub convert($$)
   # printindex
   # listoffloats
   # dircategory
-  # paragraphindent firstparagraphindent frenchspacing documentencoding
-  #        footnotestyle
-  # documentlanguage?
   # center
   # author (in quotation?)
   # shorttitle/shorttitlepage/settitle/subtitle/title
@@ -412,8 +418,6 @@ sub convert($$)
 # not info but plaintext
 # setshortcontentsaftertitlepage setcontentsaftertitlepage
 # @contents or @shortcontents
-
-  # paragraph left right center line
 
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
   # OUT_ENCODING ENCODING_NAME
@@ -424,6 +428,12 @@ sub convert($$)
     return '';
   }
   my $result = '';
+
+  if ($root->{'type'} and $root->{'type'} eq 'bracketed'
+      and $self->{'context'}->[-1] eq 'math') {
+    $result .= $container_context->{'container'}->add_text('{');
+  }
+
   if (defined($root->{'text'})) {
     # ignore text outside of any format.
     if ($container_context) {
@@ -435,6 +445,7 @@ sub convert($$)
     }
   }
   if ($root->{'cmdname'}) {
+    my $unknown_command;
     my $command = $root->{'cmdname'};
     if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
       if ($command eq ':') {
@@ -463,6 +474,7 @@ sub convert($$)
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'}));
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
+      # FIXME
       return $self->convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
@@ -488,64 +500,119 @@ sub convert($$)
       $container_context->{'code'}++ if ($code_style_commands{$command});
       $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
       $result .= $container_context->{'container'}->add_text($style_map{$command}->[0]);
-      $result .= $self->convert($root->{'args'}->[0]);
+      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
       $result .= $container_context->{'container'}->add_text($style_map{$command}->[1]);
       $container_context->{'code'}-- if ($code_style_commands{$command});
       $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($command eq 'footnote') {
+      # TODO
     } elsif ($command eq 'anchor') {
+      # TODO
+    } elsif ($command eq 'math') {
+      push @{$self->{'context'}}, 'math';
+      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
+      pop @{$self->{'context'}};
+      return $result;
+     # could this be used otherwise?
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
-             and (($root->{'args'}->[0]->{'type'}
-                and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                or $root->{'cmdname'} eq 'math')) {
-      return $self->convert($root->{'args'}->[0]);
+             and $root->{'args'}->[0]->{'type'}
+             and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
+      die "Unhandled command with braces $root->{'cmdname'}\n";
+      #return $self->convert($root->{'args'}->[0]);
     # block commands
-    } elsif (($root->{'cmdname'} eq 'quotation'
-          or $root->{'cmdname'} eq 'smallquotation')) {
-      if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
-        my $quotation_arg = Texinfo::Convert::Texinfo::convert(
-          {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
-        my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
-        $result = $self->convert_line($prepended);
-        #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
-        #$result = convert($root->{'args'}->[0]) ."\n";
+    } elsif (exists($block_commands{$root->{'cmdname'}})) {
+      # TODO
+      # raw
+      # verbatim
+      # preformatted
+      # quotation and smallquotation
+      # multitable
+      # *table
+      # itemize
+      # enumerate
+      # menu
+      # def
+      # group and raggedright -> nothing on format stack
+      # cartouche
+      # flushleft and flushright -> keep track of result and add space
+      #    at the end. do something specific here or at the end?
+      if ($root->{'cmdname'} eq 'quotation'
+          or $root->{'cmdname'} eq 'smallquotation') {
+        if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
+          my $quotation_arg = Texinfo::Convert::Texinfo::convert(
+            {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
+          my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
+          $result = $self->convert_line($prepended);
+          #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
+          #$result = convert($root->{'args'}->[0]) ."\n";
+        }
       }
     } elsif ($root->{'cmdname'} eq 'node') {
         # FIXME handle node
-    } elsif ($root->{'cmdname'} eq 'listoffloats') {
-        # FIXME handle listoffloats
-    } elsif ($root->{'extra'} and ($root->{'extra'}->{'misc_content'}
-                                  or $root->{'extra'}->{'misc_args'})) {
-      if ($sectioning_commands{$root->{'cmdname'}}
-               or $root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
+    } elsif ($misc_commands{$root->{'cmdname'}}) {
+      if (($sectioning_commands{$root->{'cmdname'}}
+          or ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'))
+              and $root->{'args'}) {
         # FIXME handle sectioning commands with their underline
         # and item with their prepending
         $result = $self->convert_line($root->{'args'}->[0]);
         chomp ($result);
         $result .= "\n";
+      } elsif ($root->{'cmdname'} eq 'tab') {
+        # TODO
+      } elsif ($root->{'cmdname'} eq 'listoffloats') {
+        # FIXME handle listoffloats
       } elsif ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'}->{'misc_args'}->[0]) {
           # this useless copy avoids perl changing the type to integer!
           my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
           $result .= "\n" x $sp_nr;
         }
-      } else {
-        my $index_entry;
-        $index_entry = 1 
-          if ($root->{'extra'} and $root->{'extra'}->{'index_entry'});
-        if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
-          $index_entry = 0;
+      # all the @-commands that have an information for the formatting, like
+      # @paragraphindent, @frenchspacing...
+      } elsif ($informative_commands{$root->{'cmdname'}}) {
+        if ($root->{'cmdname'} eq 'frenchspacing' and 
+             $root->{'extra'} and $root->{'extra'}->{'misc_args'} and
+             $root->{'extra'}->{'misc_args'}->[0]) {
+          if ($root->{'extra'}->{'misc_args'}->[0] eq 'on') {
+            $self->{$root->{'cmdname'}} = 1 
+              if (!$self->{'set'}->{$root->{'cmdname'}});
+          } elsif ($root->{'extra'}->{'misc_args'}->[0] eq 'off') {
+            $self->{$root->{'cmdname'}} = 0 
+              if (!$self->{'set'}->{$root->{'cmdname'}});
+          }
+        } elsif (exists($root->{'extra'}->{'text'})) {
+          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'}
+              if (!$self->{'set'}->{$root->{'cmdname'}});
+        } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
+          $self->{$root->{'cmdname'}} = 1;
+        } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
+                 and exists($root->{'extra'}->{'misc_args'}->[0])) {
+          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0]
+              if (!$self->{'set'}->{$root->{'cmdname'}});
         }
-        if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
-          # FIXME do something for index entry?
-        }
+        return '';
       }
-    } elsif ($def_commands{$root->{'cmdname'}}) {
-      # FIXME change indenting? Or in def_line?
-      # everything is done when in the def_line type
+#    FIXME for @def*x commands, they are misc_comands? Or they have index
+#          entries?
+#          @def* commands should be handled with block commands.
+#    } elsif ($def_commands{$root->{'cmdname'}}) {
+#      # FIXME change indenting? Or in def_line?
+#      # everything is done when in the def_line type
     } else {
+      $unknown_command = 1;
+    }
+    if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+      # a real index entry?
+      my $index_entry = 1;
+      if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
+        $index_entry = 0;
+      }
+      # FIXME do something for index entry?
+    } elsif ($unknown_command) {
       die "Unhandled $root->{'cmdname'}\n";
     }
+
     if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     } elsif ($root_commands{$root->{'cmdname'}}) {
@@ -638,9 +705,10 @@ sub convert($$)
     }
     pop @{$self->{'current_contents'}};
   }
-  $result = '{'.$result.'}'
-     if ($root->{'type'} and $root->{'type'} eq 'bracketed'
-          and $self->{'context'}->[-1] eq 'math');
+  if ($root->{'type'} and $root->{'type'} eq 'bracketed'
+      and $self->{'context'}->[-1] eq 'math') {
+    $result .= $container_context->{'container'}->add_text('}');
+  }
   if ($paragraph) {
     $result .= $paragraph->end();
     pop @{$self->{'containers'}};

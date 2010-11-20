@@ -23,6 +23,10 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 
 ok(1);
 
+my %formats = (
+#  'plaintext' => \&convert_to_plaintext,
+);
+
 our $arg_generate;
 our $arg_debug;
 our $arg_complete;
@@ -33,10 +37,6 @@ GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug,
            'c|complete' => \$arg_complete);
 
 our $arg_test_case = shift @ARGV;
-
-my %formats = (
-#  'plaintext' => \&convert_to_plaintext,
-);
 
 #my $remove_parent = sub {my $h = shift; delete $h->{'parent'}};
 #my $transformer = Data::Transformer->new('hash'=>$remove_parent);
