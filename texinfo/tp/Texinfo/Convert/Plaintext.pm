@@ -736,9 +736,10 @@ sub convert($$)
     push @{$self->{'current_contents'}}, \@contents;
     while (@contents) {
       my $content = shift @contents;
-      if (!$paragraph and $content->{'type'} 
+      if ($content->{'type'} 
           and $content->{'type'} eq 'empty_line') {
-        $result .= "\n" if (!$self->{'empty_lines_count'});
+        $result .= "\n" if (!$self->{'empty_lines_count'} 
+                            or $self->{'context'}->[-1] eq 'preformatted');
         $self->{'empty_lines_count'}++;
       } else {
         $result .= $self->convert($content);
