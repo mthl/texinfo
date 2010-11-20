@@ -144,6 +144,7 @@ our %text_no_brace_commands = (
            '@', '@',
            '}', '}',
            '{', '{',
+           '\\', '\\',  # should only appear in math
 );
 
 my %accent_commands = %Texinfo::Common::accent_commands;
