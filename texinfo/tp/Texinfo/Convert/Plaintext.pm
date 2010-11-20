@@ -82,6 +82,7 @@ my %def_commands = %Texinfo::Common::def_commands;
 my %block_commands = %Texinfo::Common::block_commands;
 my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
+my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -97,6 +98,27 @@ my %ignored_commands = %ignored_misc_commands;
 foreach my $ignored_brace_commands ('caption', 'shortcation', 
   'hyphenation') {
   $ignored_commands{$ignored_brace_commands} = 1;
+}
+
+my %item_indent_format_length = ('enumerate' => 2,
+    'itemize' => 3,
+    'table' => 0,
+    'vtable' => 0,
+    'ftable' => 0,
+ );
+
+my $indent_length = 5;
+
+my %indented_commands;
+foreach my $indented_command (keys (%item_indent_format_length), 
+           keys (%preformatted_commands), 'quotation', 'smallquotation', 
+           keys(%def_commands)) {
+  $indented_commands{$indented_command} = 1 
+    if exists($block_commands{$indented_command});
+}
+
+foreach my $non_indented('format', 'smallformat') {
+  delete $indented_commands{$non_indented};
 }
 
 # commands that leads to advancing the paragraph number.  This is mostly
@@ -233,7 +255,9 @@ sub converter(;$)
    };
   $converter->{'context'} = ['_Root_context'];
   $converter->{'containers'} = [];
-  $converter->{'format_context'} = [{'paragraph_count' => 0}];
+  $converter->{'format_context'} = [{'cmdname' => '_top_format',
+                                     'paragraph_count' => 0, 
+                                     'indent_level' => 0}];
   return $converter;
 }
 
@@ -371,6 +395,7 @@ sub _definition_category($$$)
 # and with paragraphs. 
 
 # preformatted
+
 sub convert($$);
 
 sub convert($$)
@@ -383,7 +408,8 @@ sub convert($$)
     $container_context = $self->{'containers'}->[-1];
   }
   if ($self->{'debug'}) {
-    print STDERR "ROOT (@{$self->{'context'}})";
+    print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}})";
+    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}\n";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     print STDERR "\n";
@@ -391,7 +417,7 @@ sub convert($$)
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($container_context) {
-      print STDERR "  Container:($container_context->{'code'},$container_context->{'upper_case'},$container_context->{'preformatted'})";
+      print STDERR "  Container:($container_context->{'code'},$container_context->{'upper_case'},$container_context->{'preformatted'}) ";
       $container_context->{'container'}->dump();
     }
   }
@@ -444,6 +470,7 @@ sub convert($$)
       warn "BUG: ignored text not empty `$root->{'text'}'\n";
     }
   }
+  my $preformatted;
   if ($root->{'cmdname'}) {
     my $unknown_command;
     my $command = $root->{'cmdname'};
@@ -536,6 +563,19 @@ sub convert($$)
       # cartouche
       # flushleft and flushright -> keep track of result and add space
       #    at the end. do something specific here or at the end?
+
+      if ($indented_commands{$root->{'cmdname'}}) {
+        push @{$self->{'format_context'}}, {'cmdname' => $root->{'cmdname'},
+               'paragraph_count' => 0,
+               'indent_level' => 
+                   $self->{'format_context'}->[-1]->{'indent_level'} + 1 };
+      }
+      if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
+        push @{$self->{'context'}}, 'preformatted';
+        $preformatted = Texinfo::Convert::UnFilled->new({
+            'indent_length' => $indent_length*$self->{'format_context'}->[-1]->{'indent_level'} });
+        push @{$self->{'containers'}}, {'container' => $preformatted};
+      }
       if ($root->{'cmdname'} eq 'quotation'
           or $root->{'cmdname'} eq 'smallquotation') {
         if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
@@ -713,6 +753,13 @@ sub convert($$)
     $result .= $paragraph->end();
     pop @{$self->{'containers'}};
   }
+  if ($preformatted) {
+    $result .= $preformatted->end();
+    pop @{$self->{'containers'}};
+    pop @{$self->{'context'}};
+  }
+  pop @{$self->{'format_context'}} 
+    if ($indented_commands{$root->{'cmdname'}});
   return $result;
 }
 
