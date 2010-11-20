@@ -247,17 +247,13 @@ sub converter(;$)
   foreach my $key (keys(%defaults)) {
     $converter->{$key} = $defaults{$key} if (!$converter->{'set'}->{$key});
   }
-  $converter->{'paragraph_conf'} = { 
-      'frenchspacing' => $converter->{'frenchspacing'},
-      'max' => $converter->{'fillcolumn'},
-  #    'indent' => $converter->{'paragraphindent'},
-  #    'indent_length_next' => 0
-   };
   $converter->{'context'} = ['_Root_context'];
   $converter->{'containers'} = [];
   $converter->{'format_context'} = [{'cmdname' => '_top_format',
                                      'paragraph_count' => 0, 
-                                     'indent_level' => 0}];
+                                     'indent_level' => 0,
+                                      'max' => $converter->{'fillcolumn'}
+                                   }];
   return $converter;
 }
 
@@ -298,12 +294,16 @@ sub new_container($$)
 
   
   my $container_object;
+  my $paragraph_conf = { 
+         'max'           => $self->{'format_context'}->[-1]->{'max'},
+         'frenchspacing' => $self->{'frenchspacing'} 
+  };
   if ($type eq 'line') {
-    $container_object = Texinfo::Convert::Line->new($self->{'paragraph_conf'});
+    $container_object = Texinfo::Convert::Line->new($paragraph_conf);
   } elsif ($type eq 'paragraph') {
-    $container_object = Texinfo::Convert::Paragraph->new($self->{'paragraph_conf'});
+    $container_object = Texinfo::Convert::Paragraph->new($paragraph_conf);
   } elsif ($type eq 'unfilled') {
-    $container_object = Texinfo::Convert::UnFilled->new($self->{'paragraph_conf'});
+    $container_object = Texinfo::Convert::UnFilled->new();
   } else {
     die "Unknown container type $type\n";
   }
@@ -409,7 +409,7 @@ sub convert($$)
   }
   if ($self->{'debug'}) {
     print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}})";
-    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}\n";
+    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, $self->{'format_context'}->[-1]->{'max'}\n";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     print STDERR "\n";
@@ -461,11 +461,10 @@ sub convert($$)
   }
 
   if (defined($root->{'text'})) {
-    # ignore text outside of any format.
     if ($container_context) {
       $result .= $container_context->{'container'}->add_text(
                       $self->process_text($root, $container_context));
-    # Warn if ignored text not empty
+    # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
       warn "BUG: ignored text not empty `$root->{'text'}'\n";
     }
@@ -500,6 +499,14 @@ sub convert($$)
       $result .= $container_context->{'container'}->add_text(
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'}));
       return $result;
+    } elsif ($style_map{$command}) {
+      $container_context->{'code'}++ if ($code_style_commands{$command});
+      $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
+      $result .= $container_context->{'container'}->add_text($style_map{$command}->[0]);
+      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
+      $result .= $container_context->{'container'}->add_text($style_map{$command}->[1]);
+      $container_context->{'code'}-- if ($code_style_commands{$command});
+      $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($root->{'cmdname'} eq 'image') {
       # FIXME
       return $self->convert($root->{'args'}->[0]);
@@ -523,14 +530,6 @@ sub convert($$)
         unshift @{$self->{'current_contents'}->[-1]}, @email_contents;
       }
       return '';
-    } elsif ($style_map{$command}) {
-      $container_context->{'code'}++ if ($code_style_commands{$command});
-      $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
-      $result .= $container_context->{'container'}->add_text($style_map{$command}->[0]);
-      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
-      $result .= $container_context->{'container'}->add_text($style_map{$command}->[1]);
-      $container_context->{'code'}-- if ($code_style_commands{$command});
-      $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($command eq 'footnote') {
       # TODO
     } elsif ($command eq 'anchor') {
@@ -565,15 +564,17 @@ sub convert($$)
       #    at the end. do something specific here or at the end?
 
       if ($indented_commands{$root->{'cmdname'}}) {
-        push @{$self->{'format_context'}}, {'cmdname' => $root->{'cmdname'},
+        push @{$self->{'format_context'}}, { 'cmdname' => $root->{'cmdname'},
                'paragraph_count' => 0,
                'indent_level' => 
-                   $self->{'format_context'}->[-1]->{'indent_level'} + 1 };
+                   $self->{'format_context'}->[-1]->{'indent_level'} + 1,
+               'max' => $self->{'format_context'}->[-1]->{'max'} };
       }
       if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, 'preformatted';
         $preformatted = Texinfo::Convert::UnFilled->new({
-            'indent_length' => $indent_length*$self->{'format_context'}->[-1]->{'indent_level'} });
+          'indent_length' 
+            => $indent_length*$self->{'format_context'}->[-1]->{'indent_level'} });
         push @{$self->{'containers'}}, {'container' => $preformatted};
       }
       if ($root->{'cmdname'} eq 'quotation'
@@ -668,8 +669,8 @@ sub convert($$)
       # my $paragraphindent = get_conf('paragraphindent');
       # $paragraphindent = 0 if ($paragraphindent eq 'none');
       # if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
-      $paragraph = Texinfo::Convert::Paragraph->new($self->{'paragraph_conf'});
-      push @{$self->{'containers'}}, {'container' => $paragraph};
+      $paragraph = $self->new_container('paragraph');
+      push @{$self->{'containers'}}, $paragraph;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     } elsif ($root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
@@ -750,7 +751,7 @@ sub convert($$)
     $result .= $container_context->{'container'}->add_text('}');
   }
   if ($paragraph) {
-    $result .= $paragraph->end();
+    $result .= $paragraph->{'container'}->end();
     pop @{$self->{'containers'}};
   }
   if ($preformatted) {
