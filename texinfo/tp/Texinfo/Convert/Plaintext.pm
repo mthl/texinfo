@@ -287,23 +287,32 @@ sub process_text($$$)
   return $text;
 }
 
-sub new_container($$)
+sub new_container($$;$)
 {
   my $self = shift;
   my $type = shift;
+  my $conf = shift;
 
   
   my $container_object;
   my $paragraph_conf = { 
          'max'           => $self->{'format_context'}->[-1]->{'max'},
-         'frenchspacing' => $self->{'frenchspacing'} 
+         'frenchspacing' => $self->{'frenchspacing'},
+         'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
+  if ($conf) {
+    foreach my $key (keys(%$conf)) {
+      $paragraph_conf->{$key} = $conf->{$key};
+    }
+  }
+  $paragraph_conf->{'indent_length'} = $indent_length*$paragraph_conf->{'indent_level'}
+    if (!defined($paragraph_conf->{'indent_length'}));
   if ($type eq 'line') {
     $container_object = Texinfo::Convert::Line->new($paragraph_conf);
   } elsif ($type eq 'paragraph') {
     $container_object = Texinfo::Convert::Paragraph->new($paragraph_conf);
   } elsif ($type eq 'unfilled') {
-    $container_object = Texinfo::Convert::UnFilled->new();
+    $container_object = Texinfo::Convert::UnFilled->new($paragraph_conf);
   } else {
     die "Unknown container type $type\n";
   }
@@ -315,11 +324,12 @@ sub new_container($$)
   return $container;
 }
 
-sub convert_line($$)
+sub convert_line($$;$)
 {
   my $self = shift;
   my $converted = shift;
-  my $container = $self->new_container('line');
+  my $conf = shift;
+  my $container = $self->new_container('line', $conf);
   push @{$self->{'containers'}}, $container;
   my $result = $self->convert($converted);
   $result .= $container->{'container'}->end();
@@ -327,11 +337,12 @@ sub convert_line($$)
   return $result;
 }
 
-sub convert_unfilled($$)
+sub convert_unfilled($$;$)
 {
   my $self = shift;
   my $converted = shift;
-  my $container = $self->new_container('unfilled');
+  my $conf = shift;
+  my $container = $self->new_container('unfilled', $conf);
   $container->{'code'} = 1;
   push @{$self->{'containers'}}, $container;
   my $result = $self->convert($converted);
@@ -563,19 +574,19 @@ sub convert($$)
       # flushleft and flushright -> keep track of result and add space
       #    at the end. do something specific here or at the end?
 
+      if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
+        push @{$self->{'context'}}, 'preformatted';
+      }
       if ($indented_commands{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, { 'cmdname' => $root->{'cmdname'},
                'paragraph_count' => 0,
                'indent_level' => 
                    $self->{'format_context'}->[-1]->{'indent_level'} + 1,
                'max' => $self->{'format_context'}->[-1]->{'max'} };
-      }
-      if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}}, 'preformatted';
-        $preformatted = Texinfo::Convert::UnFilled->new({
-          'indent_length' 
-            => $indent_length*$self->{'format_context'}->[-1]->{'indent_level'} });
-        push @{$self->{'containers'}}, {'container' => $preformatted};
+        if ($self->{'context'}->[-1] eq 'preformatted') {
+          $preformatted = $self->new_container('unfilled');
+          push @{$self->{'containers'}}, $preformatted;
+        }
       }
       if ($root->{'cmdname'} eq 'quotation'
           or $root->{'cmdname'} eq 'smallquotation') {
@@ -596,7 +607,8 @@ sub convert($$)
               and $root->{'args'}) {
         # FIXME handle sectioning commands with their underline
         # and item with their prepending
-        $result = $self->convert_line($root->{'args'}->[0]);
+        $result = $self->convert_line($root->{'args'}->[0],
+            {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
         chomp ($result);
         $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'tab') {
@@ -677,20 +689,22 @@ sub convert($$)
       my @args = @{$root->{'extra'}->{'def_args'}};
       my ($category, $name, $class, $type) = ('', '', '', ''); 
       my ($parsed_category, $parsed_name, $parsed_class, $parsed_type);
+      # FIXME this is all wrong. The def should be formatted as a paragraph,
+      # see info.init.
       while (@args) {
         my $parsed_arg = shift @args;
         if ($parsed_arg->[0] eq 'category') {
           $parsed_category = $self->_def_argument_content($parsed_arg->[1]);
-          $category = $self->convert_unfilled($parsed_category);
+          $category = $self->convert_unfilled($parsed_category, {'indent_length' => 0});
         } elsif ($parsed_arg->[0] eq 'name') {
           $parsed_name = $self->_def_argument_content($parsed_arg->[1]);
-          $name = $self->convert_unfilled($parsed_name);
+          $name = $self->convert_unfilled($parsed_name, {'indent_length' => 0});
         } elsif ($parsed_arg->[0] eq 'class') {
           $parsed_class = $self->_def_argument_content($parsed_arg->[1]);
-          $class = $self->convert_unfilled($parsed_class);
+          $class = $self->convert_unfilled($parsed_class, {'indent_length' => 0});
         } elsif ($parsed_arg->[0] eq 'type') {
           $parsed_type = $self->_def_argument_content($parsed_arg->[1]);
-          $type = $self->convert_unfilled($parsed_type);
+          $type = $self->convert_unfilled($parsed_type, {'indent_length' => 0});
         } elsif ($parsed_arg->[0] eq 'arg' or $parsed_arg->[0] eq 'argtype') {
           unshift @args, $parsed_arg;
           last;
@@ -702,7 +716,7 @@ sub convert($$)
       my $parsed_definition_category = _definition_category ($root, 
                                                  [$parsed_category, $category], 
                                                  [$parsed_class, $class]);
-      my $definition_category = $self->convert_unfilled($parsed_definition_category);
+      my $definition_category = $self->convert_unfilled($parsed_definition_category, {'indent_length' => 0});
       my $type_name = '';
       $type_name .= "$type " if ($type ne '');
       $type_name .= $name if ($name ne '');
@@ -714,7 +728,7 @@ sub convert($$)
           $arg_text = $parsed_arg->[1]->{'text'};
         } else {
           $arg_text 
-          = $self->convert_unfilled($self->_def_argument_content($parsed_arg->[1]));
+          = $self->convert_unfilled($self->_def_argument_content($parsed_arg->[1]), {'indent_length' => 0});
         }
         $arguments .= $arg_text;
       }
@@ -736,6 +750,8 @@ sub convert($$)
     push @{$self->{'current_contents'}}, \@contents;
     while (@contents) {
       my $content = shift @contents;
+      # FIXME an empty line between block commands don't seem to be 
+      # output.
       if ($content->{'type'} 
           and $content->{'type'} eq 'empty_line') {
         $result .= "\n" if (!$self->{'empty_lines_count'} 
@@ -756,7 +772,7 @@ sub convert($$)
     pop @{$self->{'containers'}};
   }
   if ($preformatted) {
-    $result .= $preformatted->end();
+    $result .= $preformatted->{'container'}->end();
     pop @{$self->{'containers'}};
     pop @{$self->{'context'}};
   }

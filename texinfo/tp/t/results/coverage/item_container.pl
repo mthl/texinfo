@@ -215,9 +215,9 @@ $result_errors{'item_container'} = [];
 
 
 $result_converted{'plaintext'}->{'item_container'} = '
-i-tem +
+     i-tem +
 
-b-ullet
+     b-ullet
 ';
 
 1;

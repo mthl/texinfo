@@ -236,7 +236,7 @@ $result_converted{'plaintext'}->{'preformatted'} = '
    text
 item in table in format
 
-in table in format
+     in table in format
 ';
 
 1;

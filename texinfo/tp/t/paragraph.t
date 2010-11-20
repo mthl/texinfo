@@ -9,11 +9,12 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 91 };
+BEGIN { plan tests => 92 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
+use Texinfo::Convert::UnFilled;
 ok(1, "modules loading"); # If we made it this far, we're ok.
 
 #########################
@@ -452,5 +453,13 @@ $result .= $line->add_text('))');
 $result .= $line->add_text(' after');
 $result .= $line->end();
 is ($result, "aa.))) after\n", 'line inhibit end sentence and ))');
+
+my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
+$result = '';
+$result .= $unfilled->add_text("something\n");
+$result .= $unfilled->add_text("\n");
+$result .= $unfilled->add_text(" other\n");
+$result .= $unfilled->end();
+is ($result, "     something\n\n      other\n", 'unfilled and indent');
 
 1;

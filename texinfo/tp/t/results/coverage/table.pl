@@ -531,7 +531,7 @@ $result_errors{'table'} = [];
 $result_converted{'plaintext'}->{'table'} = '
 table item
 table itemx
-In table
+     In table
 
 vtable item
 itemx vtable

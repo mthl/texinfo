@@ -1762,11 +1762,11 @@ $result_errors{'def'} = [];
 
 $result_converted{'plaintext'}->{'def'} = '
  -- c--ategory: d--effn_name a--rguments...
-d-effn
+     d-effn
 
  -- cate--gory: de--ffn_name ar--guments    more args 
  even more so
-def-fn
+     def-fn
 
  -- fset: i a g
  -- cmde: truc
@@ -1781,7 +1781,7 @@ def-fn
  -- truc: followed by a comment
  -- truc: after a deff item
  -- truc: deffnx before end deffn
-Various deff lines
+     Various deff lines
 ';
 
 1;
