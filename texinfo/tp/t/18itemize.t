@@ -19,6 +19,19 @@ my @test_cases = (
 @item item
 @end itemize
 '],
+['enumerate_argument',
+'@enumerate 1
+@end enumerate
+
+@enumerate A@c comment
+@end enumerate
+
+@enumerate z @c comment
+@end enumerate
+']
+);
+
+my @test_invalid = (
 ['not_closed_item',
 '@itemize
 @item in item
@@ -42,11 +55,31 @@ my @test_cases = (
 @itemx itemx enumerate
 @headitem headitem enumerate
 @end enumerate
+'],
+['bad_enumerate_arguments',
+'@enumerate a b
+@end enumerate
+
+@enumerate !
+@end enumerate
+
+@enumerate @code{a}
+@end enumerate
+
+@enumerate a@@
+@end enumerate
+
+@enumerate a0
+@end enumerate
 ']
 );
 
+foreach my $test (@test_cases) {
+#  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('itemize', \@test_cases, $arg_test_case,
+run_all ('itemize', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);
 

@@ -165,6 +165,9 @@ $result_trees{'formats_not_closed_in_example'} = {
                   'parent' => {}
                 }
               ],
+              'extra' => {
+                'enumerate_specification' => 0
+              },
               'parent' => {}
             }
           ],

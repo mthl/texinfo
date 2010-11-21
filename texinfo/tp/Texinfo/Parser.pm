@@ -1756,6 +1756,24 @@ sub _end_line($$$)
 
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
+      if ($current->{'cmdname'} eq 'enumerate') {
+        my $spec = 0;
+        if ($current->{'extra'}->{'block_command_line_contents'}
+            and defined($current->{'extra'}->{'block_command_line_contents'}->[0])) {
+          if (scalar(@{$current->{'extra'}->{'block_command_line_contents'}->[0]}) > 1) {
+            _line_error ($self, sprintf($self->__("Superfluous argument to \@%s"),
+               $current->{'cmdname'}), $line_nr);
+          }
+          my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^[[:alnum:]]$/) {
+            _line_error ($self, sprintf($self->
+               __("Bad argument to \@%s"), $current->{'cmdname'}), $line_nr);
+          } else {
+            $spec = $arg->{'text'};
+          }
+        }
+        $current->{'extra'}->{'enumerate_specification'} = $spec;
+      }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
          'contents' => [], 'parent', $current };
       $current = $current->{'contents'}->[-1];

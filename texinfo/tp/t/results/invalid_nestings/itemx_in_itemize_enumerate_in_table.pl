@@ -163,6 +163,9 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
               'type' => 'before_item'
             }
           ],
+          'extra' => {
+            'enumerate_specification' => 0
+          },
           'parent' => {}
         },
         {

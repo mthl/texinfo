@@ -76,6 +76,9 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'enumerate_specification' => 0
+      },
       'parent' => {}
     },
     {
