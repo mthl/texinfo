@@ -19,7 +19,8 @@
 
 # this module has nothing Texinfo specific.  It is similar with 
 # Texinfo::Convert::Paragraph, but simpler.
-# It could be even simpler: there is no need to delay outputting a word.
+# The delay to output a word is here to be able to detect when an upper
+# case letter is before an end of line
 
 package Texinfo::Convert::Line;
 
@@ -28,12 +29,12 @@ use strict;
 
 use Unicode::EastAsianWidth;
 
-# initialize a paragraph object.
+# initialize a line object.
 sub new($;$)
 {
   my $class = shift;
   my $conf = shift;
-  my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0,
+  my $self = {'indent_length' => 0, 'counter' => 0,
               'space' => '', 'frenchspacing' => 0, 'line_beginning' => 1};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
@@ -98,7 +99,11 @@ sub add_pending_word($)
 sub end($)
 {
   my $line = shift;
-  return $line->end_line();
+  my $result = $line->add_pending_word();
+  $line->{'line_beginning'} = 1;
+  $line->{'space'} = '';
+  print STDERR "END_LINE\n" if ($line->{'debug'});
+  return $result;
 }
 
 # add a word and/or spaces and end of sentence.
@@ -147,7 +152,7 @@ sub add_text($$)
       $word = $line->{'word'} if (defined($line->{'word'}));
       print STDERR "s `$line->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^\s+//) {
+    if ($text =~ s/^[^\S\n]+//) {
       print STDERR "SPACES\n" if ($line->{'debug'});
       my $added_word = $line->{'word'};
       $result .= $line->add_pending_word();
@@ -170,6 +175,8 @@ sub add_text($$)
            and $line->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
         $line->{'end_sentence'} = 1;
       }
+    } elsif ($text =~ s/^\n//) {
+      $result .= $line->end_line();
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
       print STDERR "EAST_ASIAN\n" if ($line->{'debug'});

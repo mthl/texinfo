@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 92 };
+BEGIN { plan tests => 93 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
@@ -346,20 +346,21 @@ sub test_line($$$;$)
   #print STDERR "$result\n";
 }
 
-test_line(['word'], "word\n", 'word');
-test_line(['word other'], "word other\n", 'two_words');
-test_line(['word '], "word\n", 'trailing spaces');
-test_line([' word'], "word\n", 'leading spaces');
-test_line([' ', ' word'], "word\n", 'double leading spaces');
-test_line(['word  other'], "word other\n", 'two_words_two_spaces');
-test_line(['word.  other'], "word.  other\n", 'two_words_dot');
-test_line(['word. other'], "word.  other\n", 'two_words_dot_one_space');
-test_line(['word.) other'], "word.)  other\n", 'two_words_dot_paren_one_space');
-test_line(['worD.  other'], "worD. other\n", 'two_words_dot_upper');
-test_line(['word','other'], "wordother\n", 'concatenate');
-test_line(["\x{7b2c}\x{4e00} ",'other'], "\x{7b2c}\x{4e00} other\n", 'east_asian');
-test_line(['word.  other'], "word. other\n", 'two_words_dot_frenchspacing', {'frenchspacing' => 1});
-test_line(["aa.)\x{7b2c} b"], "aa.)\x{7b2c} b\n", 'end_sentence_east_asian');
+test_line(["word\n"], "word\n", 'word');
+test_line(['word other'], "word other", 'two_words');
+test_line(['word '], "word", 'trailing spaces');
+test_line(["word \n"], "word\n", 'trailing spaces eol');
+test_line([' word'], "word", 'leading spaces');
+test_line([' ', ' word'], "word", 'double leading spaces');
+test_line(['word  other'], "word other", 'two_words_two_spaces');
+test_line(['word.  other'], "word.  other", 'two_words_dot');
+test_line(['word. other'], "word.  other", 'two_words_dot_one_space');
+test_line(['word.) other'], "word.)  other", 'two_words_dot_paren_one_space');
+test_line(['worD.  other'], "worD. other", 'two_words_dot_upper');
+test_line(['word','other',"\n"], "wordother\n", 'concatenate');
+test_line(["\x{7b2c}\x{4e00} ","other \n"], "\x{7b2c}\x{4e00} other\n", 'east_asian');
+test_line(['word.  other'], "word. other", 'two_words_dot_frenchspacing', {'frenchspacing' => 1});
+test_line(["aa.)\x{7b2c} b"], "aa.)\x{7b2c} b", 'end_sentence_east_asian');
 
 my $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -367,14 +368,14 @@ $result .= $line->add_text('aa.)');
 $result .= $line->add_next('_');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.)_  after\n", 'line add char after end sentence');
+is ($result, "aa.)_  after", 'line add char after end sentence');
 
 $para = Texinfo::Convert::Line->new();
 $result = '';
 $result .= $line->end_line();
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "\nafter\n", 'line space after end_line');
+is ($result, "\nafter", 'line space after end_line');
 #print STDERR "$result";
 
 $line = Texinfo::Convert::Line->new();
@@ -385,7 +386,7 @@ is ($result, 'aa.)', 'line call add_pending_word');
 $result = $line->end_line();
 is ($result, "\n", 'line call end_line after add_pending_word');
 $result = $line->end();
-is ($result, "\n", 'line call end after end_line');
+is ($result, "", 'line call end after end_line');
 
 $para = Texinfo::Convert::Line->new();
 $result = '';
@@ -393,7 +394,7 @@ $result .= $line->add_text('aa.)');
 $result .= $line->add_pending_word();
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.)  after\n", 'line space after sentence and add_pending_word');
+is ($result, "aa.)  after", 'line space after sentence and add_pending_word');
 
 $para = Texinfo::Convert::Line->new();
 $result = '';
@@ -401,7 +402,7 @@ $result .= $line->add_text('aA');
 $result .= $line->add_next('.', undef, 1);
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aA.  after\n", 'line force end sentence after upper case');
+is ($result, "aA.  after", 'line force end sentence after upper case');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -409,7 +410,7 @@ $result .= $line->add_text('aA');
 $result .= $line->add_text('.');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aA. after\n", 'line end sentence after upper case');
+is ($result, "aA. after", 'line end sentence after upper case');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -417,7 +418,7 @@ $result .= $line->add_text('aa.)');
 $result .= $line->add_text('))');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.)))  after\n", 'line continue with after_punctuation_characters');
+is ($result, "aa.)))  after", 'line continue with after_punctuation_characters');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -425,7 +426,7 @@ $result .= $line->add_text('aa.)');
 $line->inhibit_end_sentence();
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.) after\n", 'line inhibit end sentence');
+is ($result, "aa.) after", 'line inhibit end sentence');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -434,7 +435,7 @@ $line->inhibit_end_sentence();
 $result .= $line->add_next('_');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.)_ after\n", 'line inhibit end sentence then add next');
+is ($result, "aa.)_ after", 'line inhibit end sentence then add next');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -443,7 +444,7 @@ $line->inhibit_end_sentence();
 $result .= $line->add_text('aa.)');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.)aa.)  after\n", 'line cancel inhibit end sentence');
+is ($result, "aa.)aa.)  after", 'line cancel inhibit end sentence');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';
@@ -452,7 +453,7 @@ $line->inhibit_end_sentence();
 $result .= $line->add_text('))');
 $result .= $line->add_text(' after');
 $result .= $line->end();
-is ($result, "aa.))) after\n", 'line inhibit end sentence and ))');
+is ($result, "aa.))) after", 'line inhibit end sentence and ))');
 
 my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
 $result = '';

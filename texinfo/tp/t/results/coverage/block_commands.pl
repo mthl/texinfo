@@ -364,8 +364,7 @@ $result_floats{'block_commands'}{'a-float'}[0]{'extra'}{'caption'}{'extra'}{'flo
 $result_converted{'plaintext'}->{'block_commands'} = '
 in group
 
-     warning:
-     in quotation
+     warning:     in quotation
 
 In float
 
