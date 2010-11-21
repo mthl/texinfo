@@ -317,6 +317,7 @@ sub test($$)
             if ($self->{'generate'});
   } 
   if (!$self->{'generate'}) {
+    %result_converted = ();
     require $file;
 
     #$transformer->traverse($result_trees{$test_name});
@@ -370,10 +371,14 @@ sub test($$)
     ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
     $tests_count = $nr_comparisons;
     if (@tested_formats) {
-      foreach my $format (keys(%result_converted)) {
-        $tests_count++;
-        ok ($converted{$format} eq $result_converted{$format}->{$test_name},
-          $test_name.' converted '.$format);
+      foreach my $format (@tested_formats) {
+        if (!defined($result_converted{$format})) {
+          print STDERR "\n$format $test_name:\n$converted{$format}";
+        } else {
+          $tests_count++;
+          ok ($converted{$format} eq $result_converted{$format}->{$test_name},
+            $test_name.' converted '.$format);
+        }
       #print STDERR "$format: \n$converted{$format}";
       }
     }

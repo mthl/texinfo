@@ -10,21 +10,14 @@ my @test_cases = (
 ['footnote', 'text@footnote{in footnote.
 
 @r{in footnote r}. } after footnote.'],
-['no_brace', '@TeX and @code code and @footnote footnote '],
-['no_brace_space_end_line',
-'@code {c}.
-
-@code
-Arg.'],
 ['space_in_footnote','text@footnote{ in footnote.}'],
 ['footnote_ending_on_empty_line','text@footnote{ in footnote.
 
 }'],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
 ['empty_second_email_argument', '@email{ a@@b.c, }'],
-['empty_line_in_anchor',
+['end_line_in_anchor',
 '@anchor{an
-
 anchor}
 '],
 ['space_in_anchor',
@@ -32,6 +25,17 @@ anchor}
 ']);
 
 my @test_invalid = (
+['no_brace', '@TeX and @code code and @footnote footnote '],
+['no_brace_space_end_line',
+'@code {c}.
+
+@code
+Arg.'],
+['empty_line_in_anchor',
+'@anchor{an
+
+anchor}
+'],
 ['unmatched_brace','@samp{Closing} @samp{ @} without opening macro }.}'],
 ['brace_opened_no_command','anchor{truc@} @anchor{truc}.
 @bye'],
