@@ -80,6 +80,9 @@ $result_trees{'w_argument'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         },
         {
@@ -119,6 +122,9 @@ $result_trees{'w_argument'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 2
+          },
           'parent' => {}
         }
       ],

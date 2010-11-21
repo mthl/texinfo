@@ -937,8 +937,12 @@ sub _close_commands($$$;$)
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
-    if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable') {
-      _close_multitable($current);
+    if ($current->{'cmdname'}) {
+      if ($current->{'cmdname'} eq 'multitable') {
+        _close_multitable($current);
+      } elsif ($item_container_commands{$current->{'cmdname'}}) {
+        delete $current->{'items_count'};
+      }
     }
     $current = $self->_close_current($current, $line_nr, $command);
   }
@@ -950,8 +954,12 @@ sub _close_commands($$$;$)
        ($preformatted_commands{$current->{'cmdname'}} 
          or $menu_commands{$current->{'cmdname'}});
     $closed_command = $current;
-    if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable') {
-      _close_multitable($current);
+    if ($current->{'cmdname'}) {
+      if ($current->{'cmdname'} eq 'multitable') {
+        _close_multitable($current);
+      } elsif ($item_container_commands{$current->{'cmdname'}}) {
+        delete $current->{'items_count'};
+      }
     }
     $current = $current->{'parent'}
   } elsif ($command) {
@@ -2678,9 +2686,11 @@ sub _parse_texi($;$)
               if ($parent = _item_container_parent($current)) {
                 if ($command eq 'item') {
                   print STDERR "ITEM_CONTAINER\n" if ($self->{'debug'});
+                  $parent->{'items_count'}++;
                   push @{$parent->{'contents'}},
                     { 'cmdname' => $command, 'parent' => $parent, 
-                      'contents' => [] };
+                      'contents' => [], 
+                      'extra' => {'item_number' => $parent->{'items_count'}} };
                   $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
                     if ($invalid);
                   $current = $parent->{'contents'}->[-1];

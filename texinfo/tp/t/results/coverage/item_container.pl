@@ -61,6 +61,9 @@ $result_trees{'item_container'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],
@@ -143,6 +146,9 @@ $result_trees{'item_container'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

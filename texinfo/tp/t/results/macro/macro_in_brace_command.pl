@@ -179,6 +179,9 @@ $result_trees{'macro_in_brace_command'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

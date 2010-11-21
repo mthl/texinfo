@@ -186,6 +186,9 @@ $result_trees{'on_itemize_line'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

@@ -38,6 +38,9 @@ $result_trees{'not_closed_item'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

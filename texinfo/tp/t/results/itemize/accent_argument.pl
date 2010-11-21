@@ -62,6 +62,9 @@ $result_trees{'accent_argument'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],
@@ -138,6 +141,9 @@ $result_trees{'accent_argument'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

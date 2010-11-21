@@ -70,6 +70,9 @@ $result_trees{'headitem_itemx_in_itemize'} = {
               'type' => 'paragraph'
             }
           ],
+          'extra' => {
+            'item_number' => 1
+          },
           'parent' => {}
         }
       ],

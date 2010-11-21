@@ -134,6 +134,9 @@ $result_trees{'formats_not_closed_in_example'} = {
 '
                     }
                   ],
+                  'extra' => {
+                    'item_number' => 1
+                  },
                   'parent' => {}
                 },
                 {
@@ -156,6 +159,9 @@ $result_trees{'formats_not_closed_in_example'} = {
                       'type' => 'empty_line'
                     }
                   ],
+                  'extra' => {
+                    'item_number' => 2
+                  },
                   'parent' => {}
                 }
               ],
