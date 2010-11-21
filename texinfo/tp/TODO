@@ -15,8 +15,6 @@ Following should be an error:
 
 test empty line in block or brace command in menu description.
 
-add protected spaces in Line.pm, and unit tests in paragraph.t.
-
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 

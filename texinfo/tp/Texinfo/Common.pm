@@ -225,6 +225,18 @@ foreach my $five_arg_command('xref','ref','pxref','image') {
 }
 
 
+# some classification to help converters
+our %ref_commands;
+foreach my $ref_command ('xref','ref','pxref','inforef') {
+  $ref_commands{$ref_command} = 1;
+}
+
+our %explained_commands;
+foreach my $explained_command ('abbr', 'acronym') {
+  $explained_commands{$explained_command} = 1;
+}
+
+
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.

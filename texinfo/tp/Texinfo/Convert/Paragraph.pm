@@ -55,11 +55,17 @@ sub dump($)
   print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}' end_sentence: $self->{'end_sentence'}\n"; 
 }
 
+sub _cut_line($)
+{
+  my $paragraph = shift;
+  return '' if ($paragraph->{'ignore_columns'});
+  return $paragraph->end_line();
+}
+
 # end a line.
 sub end_line($)
 {
   my $paragraph = shift;
-  return '' if ($paragraph->{'protected_spaces'});
   $paragraph->{'counter'} = 0;
   $paragraph->{'space'} = '';
   if (defined($paragraph->{'indent_length_next'})) {
@@ -134,7 +140,7 @@ sub add_next($;$$$)
     if ($paragraph->{'counter'} != 0 and 
         $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
            length($paragraph->{'space'}) > $paragraph->{'max'}) {
-      $result .= $paragraph->end_line();
+      $result .= $paragraph->_cut_line();
     }
   }
   if (defined($space)) {
@@ -142,7 +148,7 @@ sub add_next($;$$$)
     $paragraph->{'space'} = $space;
     if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                     > $paragraph->{'max'}) {
-      $result .= $paragraph->end_line();
+      $result .= $paragraph->_cut_line();
     }
   }
   if (defined($end_sentence)) {
@@ -157,11 +163,18 @@ sub inhibit_end_sentence($)
   $paragraph->{'end_sentence'} = 0;
 }
 
-sub set_space_protected($$)
+sub set_space_protection($$;$$)
 {
   my $paragraph = shift;
   my $space_protection = shift;
-  $paragraph->{'protected_spaces'} = $space_protection;
+  my $ignore_columns = shift;
+  my $keep_end_lines = shift;
+  $paragraph->{'protect_spaces'} = $space_protection 
+    if defined($space_protection);
+  $paragraph->{'ignore_columns'} = $ignore_columns
+    if defined($ignore_columns);
+  $paragraph->{'keep_end_lines'} = $keep_end_lines
+    if defined($keep_end_lines);
   # flush the spaces already existing
   if ($space_protection) {
     my $new_space = $paragraph->{'space'};
@@ -189,11 +202,12 @@ sub add_text($$)
       print STDERR "($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
     }
     if ($text =~ s/^(\s+)//) {
+      my $spaces = $1;
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
       my $added_word = $paragraph->{'word'};
       $result .= $paragraph->add_pending_word();
-      if ($paragraph->{'protected_spaces'}) {
-        $paragraph->{'space'} .= $1;
+      if ($paragraph->{'protect_spaces'}) {
+        $paragraph->{'space'} .= $spaces;
         if ($paragraph->{'space'} =~ s/\n/ /g 
            and !$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}
            and length($paragraph->{'space'}) < 2) {
@@ -214,6 +228,9 @@ sub add_text($$)
       delete $paragraph->{'end_sentence'};
       if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
+        $result .= $paragraph->_cut_line();
+      }
+      if ($spaces =~ /\n/ and $paragraph->{'keep_end_lines'}) {
         $result .= $paragraph->end_line();
       }
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
@@ -225,7 +242,7 @@ sub add_text($$)
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + $paragraph->{'word_counter'} 
                                > $paragraph->{'max'}) {
-        $result .= $paragraph->end_line();
+        $result .= $paragraph->_cut_line();
       }
       $result .= $paragraph->add_pending_word();
       delete $paragraph->{'end_sentence'};

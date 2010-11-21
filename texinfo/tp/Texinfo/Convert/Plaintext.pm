@@ -79,10 +79,12 @@ my %accent_commands = %Texinfo::Common::accent_commands;
 my %misc_commands = %Texinfo::Common::misc_commands;
 my %sectioning_commands = %Texinfo::Common::sectioning_commands;
 my %def_commands = %Texinfo::Common::def_commands;
+my %ref_commands = %Texinfo::Common::ref_commands;
 my %block_commands = %Texinfo::Common::block_commands;
 my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
+my %explained_commands = %Texinfo::Common::explained_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -248,11 +250,12 @@ sub converter(;$)
     $converter->{$key} = $defaults{$key} if (!$converter->{'set'}->{$key});
   }
   $converter->{'context'} = ['_Root_context'];
-  $converter->{'containers'} = [];
-  $converter->{'format_context'} = [{'cmdname' => '_top_format',
+  $converter->{'formatters'} = [];
+  $converter->{'format_context'} = [{
+                                     'cmdname' => '_top_format',
                                      'paragraph_count' => 0, 
                                      'indent_level' => 0,
-                                      'max' => $converter->{'fillcolumn'}
+                                     'max' => $converter->{'fillcolumn'}
                                    }];
   return $converter;
 }
@@ -287,41 +290,40 @@ sub process_text($$$)
   return $text;
 }
 
-sub new_container($$;$)
+sub new_formatter($$;$)
 {
   my $self = shift;
   my $type = shift;
   my $conf = shift;
-
   
-  my $container_object;
-  my $paragraph_conf = { 
+  my $container;
+  my $container_conf = { 
          'max'           => $self->{'format_context'}->[-1]->{'max'},
          'frenchspacing' => $self->{'frenchspacing'},
          'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   if ($conf) {
     foreach my $key (keys(%$conf)) {
-      $paragraph_conf->{$key} = $conf->{$key};
+      $container_conf->{$key} = $conf->{$key};
     }
   }
-  $paragraph_conf->{'indent_length'} = $indent_length*$paragraph_conf->{'indent_level'}
-    if (!defined($paragraph_conf->{'indent_length'}));
+  $container_conf->{'indent_length'} = $indent_length*$container_conf->{'indent_level'}
+    if (!defined($container_conf->{'indent_length'}));
   if ($type eq 'line') {
-    $container_object = Texinfo::Convert::Line->new($paragraph_conf);
+    $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
-    $container_object = Texinfo::Convert::Paragraph->new($paragraph_conf);
+    $container = Texinfo::Convert::Paragraph->new($container_conf);
   } elsif ($type eq 'unfilled') {
-    $container_object = Texinfo::Convert::UnFilled->new($paragraph_conf);
+    $container = Texinfo::Convert::UnFilled->new($container_conf);
   } else {
     die "Unknown container type $type\n";
   }
-  my $container = {'container' => $container_object, 'upper_case' => 0,
-                   'code' => 0};
+  my $formatter = {'container' => $container, 'upper_case' => 0,
+                   'code' => 0, 'w' => 0};
   if (defined($self->{'preformatted'})) {
-    $container->{'preformatted'} = $self->{'preformatted'};
+    $formatter->{'preformatted'} = $self->{'preformatted'};
   }
-  return $container;
+  return $formatter;
 }
 
 sub convert_line($$;$)
@@ -329,11 +331,11 @@ sub convert_line($$;$)
   my $self = shift;
   my $converted = shift;
   my $conf = shift;
-  my $container = $self->new_container('line', $conf);
-  push @{$self->{'containers'}}, $container;
+  my $container = $self->new_formatter('line', $conf);
+  push @{$self->{'formatters'}}, $container;
   my $result = $self->convert($converted);
   $result .= $container->{'container'}->end();
-  pop @{$self->{'containers'}};
+  pop @{$self->{'formatters'}};
   return $result;
 }
 
@@ -342,12 +344,12 @@ sub convert_unfilled($$;$)
   my $self = shift;
   my $converted = shift;
   my $conf = shift;
-  my $container = $self->new_container('unfilled', $conf);
+  my $container = $self->new_formatter('unfilled', $conf);
   $container->{'code'} = 1;
-  push @{$self->{'containers'}}, $container;
+  push @{$self->{'formatters'}}, $container;
   my $result = $self->convert($converted);
   $result .= $container->{'container'}->end();
-  pop @{$self->{'containers'}};
+  pop @{$self->{'formatters'}};
   return $result;
 }
 
@@ -415,8 +417,8 @@ sub convert($$)
   my $root = shift;
 
   my $container_context;
-  if (@{$self->{'containers'}}) {
-    $container_context = $self->{'containers'}->[-1];
+  if (@{$self->{'formatters'}}) {
+    $container_context = $self->{'formatters'}->[-1];
   }
   if ($self->{'debug'}) {
     print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}})";
@@ -513,14 +515,24 @@ sub convert($$)
     } elsif ($style_map{$command}) {
       $container_context->{'code'}++ if ($code_style_commands{$command});
       $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
+      if ($command eq 'w') {
+        $container_context->{'w'}++;
+        $container_context->{'container'}->set_space_protection(1,1)
+          if ($container_context->{'w'} == 1);
+      }
       $result .= $container_context->{'container'}->add_text($style_map{$command}->[0]);
       $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
       $result .= $container_context->{'container'}->add_text($style_map{$command}->[1]);
+      if ($command eq 'w') {
+        $container_context->{'w'}--;
+        $container_context->{'container'}->set_space_protection(0,0)
+          if ($container_context->{'w'} == 0);
+      }
       $container_context->{'code'}-- if ($code_style_commands{$command});
       $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($root->{'cmdname'} eq 'image') {
       # FIXME
-      return $self->convert($root->{'args'}->[0]);
+      #return $self->convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
 
@@ -545,6 +557,10 @@ sub convert($$)
       # TODO
     } elsif ($command eq 'anchor') {
       # TODO
+    } elsif ($ref_commands{$command}) {
+      # TODO
+    } elsif ($explained_commands{$command}) {
+      # TODO Beware that a . in abbr won't trigger double spaces.
     } elsif ($command eq 'math') {
       push @{$self->{'context'}}, 'math';
       $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
@@ -573,6 +589,7 @@ sub convert($$)
       # cartouche
       # flushleft and flushright -> keep track of result and add space
       #    at the end. do something specific here or at the end?
+      #    punctuation munging is done, but end of lines are kept.
 
       if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, 'preformatted';
@@ -584,8 +601,8 @@ sub convert($$)
                    $self->{'format_context'}->[-1]->{'indent_level'} + 1,
                'max' => $self->{'format_context'}->[-1]->{'max'} };
         if ($self->{'context'}->[-1] eq 'preformatted') {
-          $preformatted = $self->new_container('unfilled');
-          push @{$self->{'containers'}}, $preformatted;
+          $preformatted = $self->new_formatter('unfilled');
+          push @{$self->{'formatters'}}, $preformatted;
         }
       }
       if ($root->{'cmdname'} eq 'quotation'
@@ -594,7 +611,8 @@ sub convert($$)
           my $quotation_arg = Texinfo::Convert::Texinfo::convert(
             {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
           my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
-          $result = $self->convert_line($prepended);
+          $result = $self->convert_line ($prepended);
+
           #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
           #$result = convert($root->{'args'}->[0]) ."\n";
         }
@@ -681,8 +699,8 @@ sub convert($$)
       # my $paragraphindent = get_conf('paragraphindent');
       # $paragraphindent = 0 if ($paragraphindent eq 'none');
       # if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
-      $paragraph = $self->new_container('paragraph');
-      push @{$self->{'containers'}}, $paragraph;
+      $paragraph = $self->new_formatter('paragraph');
+      push @{$self->{'formatters'}}, $paragraph;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     } elsif ($root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
@@ -769,11 +787,11 @@ sub convert($$)
   }
   if ($paragraph) {
     $result .= $paragraph->{'container'}->end();
-    pop @{$self->{'containers'}};
+    pop @{$self->{'formatters'}};
   }
   if ($preformatted) {
     $result .= $preformatted->{'container'}->end();
-    pop @{$self->{'containers'}};
+    pop @{$self->{'formatters'}};
     pop @{$self->{'context'}};
   }
   pop @{$self->{'format_context'}} 

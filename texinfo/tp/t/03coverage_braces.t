@@ -22,6 +22,16 @@ Arg.'],
 }'],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
 ['empty_second_email_argument', '@email{ a@@b.c, }'],
+['empty_line_in_anchor',
+'@anchor{an
+
+anchor}
+'],
+['space_in_anchor',
+'@anchor{   anchor  name   }.
+']);
+
+my @test_invalid = (
 ['unmatched_brace','@samp{Closing} @samp{ @} without opening macro }.}'],
 ['brace_opened_no_command','anchor{truc@} @anchor{truc}.
 @bye'],
@@ -38,14 +48,6 @@ as much as possible is closed in order to find the @@float beginning.
 @bye
 '],
 ['code_not_closed','@code{in code'],
-['empty_line_in_anchor',
-'@anchor{an
-
-anchor}
-'],
-['space_in_anchor',
-'@anchor{   anchor  name   }.
-'],
 ['anchor_not_closed',
 '@anchor{my anchor
 
@@ -77,7 +79,11 @@ third}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('coverage_braces', \@test_cases, $arg_test_case,
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
+run_all ('coverage_braces', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

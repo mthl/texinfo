@@ -136,6 +136,28 @@ sub inhibit_end_sentence($)
   $line->{'end_sentence'} = 0;
 }
 
+sub set_space_protection($$;$$)
+{
+  my $line = shift;
+  my $space_protection = shift;
+  my $ignore_columns = shift;
+  my $keep_end_lines = shift;
+  $line->{'protect_spaces'} = $space_protection 
+    if defined($space_protection);
+  $line->{'ignore_columns'} = $ignore_columns
+    if defined($ignore_columns);
+  # a no-op in fact
+  $line->{'keep_end_lines'} = $keep_end_lines
+    if defined($keep_end_lines);
+  # flush the spaces already existing
+  if ($space_protection) {
+    my $new_space = $line->{'space'};
+    $line->{'space'} = '';
+    return $new_space;
+  }
+  return '';
+}
+
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
@@ -152,11 +174,15 @@ sub add_text($$)
       $word = $line->{'word'} if (defined($line->{'word'}));
       print STDERR "s `$line->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^[^\S\n]+//) {
+    if ($text =~ s/^([^\S\n]+)//) {
+      my $spaces = $1;
       print STDERR "SPACES\n" if ($line->{'debug'});
       my $added_word = $line->{'word'};
       $result .= $line->add_pending_word();
-      if (!$line->{'begin'}) {
+      if ($line->{'protect_spaces'}) {
+        $result .= $spaces;
+        $line->{'space'} = '';
+      } elsif (!$line->{'begin'}) {
         if (!$line->{'frenchspacing'} and $line->{'end_sentence'}) {
           $line->{'space'} = '  ';
         } else {
