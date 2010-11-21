@@ -76,11 +76,14 @@ $result_trees{'multitable_not_closed_item'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'

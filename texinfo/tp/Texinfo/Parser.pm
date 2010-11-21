@@ -849,6 +849,17 @@ sub _end_paragraph ($$$)
   return $current;
 }
 
+# remove the counters in multitable
+sub _close_multitable($) {
+  my $multitable = shift;
+  foreach my $row (@{$multitable->{'contents'}}) {
+    if ($row->{'type'} and $row->{'type'} eq 'row') {
+      delete $row->{'cells_count'};
+    }
+  }
+  delete $multitable->{'rows_count'};
+}
+
 # close the current command, with error messages and give the parent.
 # If the last argument is given it is the command being closed if
 # there was no error, currently only block command, used for a
@@ -926,21 +937,29 @@ sub _close_commands($$$;$)
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
+    if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable') {
+      _close_multitable($current);
+    }
     $current = $self->_close_current($current, $line_nr, $command);
   }
 
+  my $closed_command;
   if ($command and $current->{'cmdname'} 
     and $current->{'cmdname'} eq $command) {
     pop @{$self->{'context_stack'}} if 
        ($preformatted_commands{$current->{'cmdname'}} 
          or $menu_commands{$current->{'cmdname'}});
+    $closed_command = $current;
+    if ($current->{'cmdname'} and $current->{'cmdname'} eq 'multitable') {
+      _close_multitable($current);
+    }
     $current = $current->{'parent'}
   } elsif ($command) {
     _line_error ($self, 
                 sprintf($self->__("Unmatched `%c%s'"), 
                        ord('@'), "end $command"), $line_nr);
   }
-  return $current;
+  return ($closed_command, $current);
 }
 
 # begin paragraph if needed.  If not try to merge with the previous
@@ -2568,8 +2587,9 @@ sub _parse_texi($;$)
               }
               last;
             }
-            $current = _close_commands($self, $current, $line_nr,
-                                                $end_command);
+            my $closed_command;
+            ($closed_command, $current) 
+               = _close_commands($self, $current, $line_nr, $end_command);
           }
           $line = _start_empty_line_after_command($line, $current);
           next;
@@ -2691,13 +2711,15 @@ sub _parse_texi($;$)
                     die if (!$row->{'type'});
                     if ($row->{'type'} eq 'before_item') {
                       $self->_line_error($self->__("\@tab before \@item"), $line_nr);
-                    } elsif ($row->{'extra'}->{'cell_number'} >= $parent->{'extra'}->{'max_columns'}) {
+                    } elsif ($row->{'cells_count'} >= $parent->{'extra'}->{'max_columns'}) {
                       $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'extra'}->{'max_columns'}), $line_nr);
                     } else {
-                      $row->{'extra'}->{'cell_number'}++;
+                      $row->{'cells_count'}++;
                       push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                   'parent' => $row,
-                                                  'contents' => [] };
+                                                  'contents' => [],
+                                                  'extra' => 
+                            {'cell_number' => $row->{'cells_count'}} };
                       $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
                         if ($invalid);
                       $current = $row->{'contents'}->[-1];
@@ -2705,13 +2727,16 @@ sub _parse_texi($;$)
                     }
                   } else {
                     print STDERR "ROW\n" if ($self->{'debug'});
+                    $parent->{'rows_count'}++;
                     my $row = { 'type' => 'row', 'contents' => [],
-                                'extra' => { 'cell_number' => 1 },
+                                'cells_count' => 1,
+                                'extra' => {'row_number' => $parent->{'rows_count'} },
                                 'parent' => $parent };
                     push @{$parent->{'contents'}}, $row;
                     push @{$row->{'contents'}}, { 'cmdname' => $command,
                                                   'parent' => $row,
-                                                  'contents' => [] };
+                                                  'contents' => [],
+                                                  'extra' => {'cell_number' => 1}};
                     $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
                       if ($invalid);
                     $current = $row->{'contents'}->[-1];

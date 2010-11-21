@@ -88,6 +88,9 @@ $result_trees{'bad_tab_nesting'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             },
             {
@@ -111,13 +114,14 @@ $result_trees{'bad_tab_nesting'} = {
                 }
               ],
               'extra' => {
+                'cell_number' => 2,
                 'invalid_nesting' => 1
               },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 2
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'

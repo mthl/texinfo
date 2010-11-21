@@ -107,11 +107,14 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'
@@ -138,11 +141,14 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 2
           },
           'parent' => {},
           'type' => 'row'
@@ -214,11 +220,14 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 3
           },
           'parent' => {},
           'type' => 'row'
@@ -260,11 +269,14 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 4
           },
           'parent' => {},
           'type' => 'row'

@@ -75,6 +75,9 @@ $result_trees{'tab_in_index'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             },
             {
@@ -152,11 +155,14 @@ $result_trees{'tab_in_index'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 2
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 2
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'

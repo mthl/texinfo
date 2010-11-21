@@ -75,6 +75,9 @@ $result_trees{'multitable_not_closed_item_tab'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             },
             {
@@ -97,11 +100,14 @@ $result_trees{'multitable_not_closed_item_tab'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'extra' => {
+                'cell_number' => 2
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 2
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'

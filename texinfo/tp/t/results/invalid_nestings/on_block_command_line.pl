@@ -138,11 +138,14 @@ $result_trees{'on_block_command_line'} = {
 '
                 }
               ],
+              'extra' => {
+                'cell_number' => 1
+              },
               'parent' => {}
             }
           ],
           'extra' => {
-            'cell_number' => 1
+            'row_number' => 1
           },
           'parent' => {},
           'type' => 'row'

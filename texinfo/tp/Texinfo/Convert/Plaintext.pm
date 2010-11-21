@@ -85,6 +85,7 @@ my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
+my %item_container_commands = %Texinfo::Common::item_container_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -613,6 +614,7 @@ sub convert($$)
         my @contents;
         if ($command eq 'xref') {
           $contents[0] = {'text' => '*Note '};
+          # FIXME error message about no punctuation character following xref.
         } else {
           $contents[0] = {'text' => '*note '};
         }
@@ -733,7 +735,12 @@ sub convert($$)
             {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
         chomp ($result);
         $result .= "\n";
-      } elsif ($root->{'cmdname'} eq 'tab') {
+      } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
+               and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
+        # TODO
+      } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
+               or $root->{'cmdname'} eq 'tab') {
+      #} elsif ($root->{'cmdname'} eq 'tab') {
         # TODO
       } elsif ($root->{'cmdname'} eq 'listoffloats') {
         # FIXME handle listoffloats
@@ -800,6 +807,9 @@ sub convert($$)
       $self->{'empty_lines_count'} = 0;
       # FIXME indenting.  First and not first paragraph.
       # FIXME also beware of 'asis'! The space before has to be kept then.
+      #       it should be just before the paragraph. 
+      #       Maybe just handle empty_spaces_before_paragraph instead of
+      #       ignoring it?
       # my $paragraphindent = get_conf('paragraphindent');
       # $paragraphindent = 0 if ($paragraphindent eq 'none');
       # if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
