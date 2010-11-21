@@ -138,6 +138,11 @@ sub inhibit_end_sentence($)
   my $line = shift;
 }
 
+sub set_space_protection($$;$$$)
+{
+  return '';
+}
+
 # wrap a text.
 sub add_text($$)
 {

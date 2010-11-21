@@ -71,4 +71,8 @@ $result_texts{'too_much_args'} = 'AZE';
 $result_errors{'too_much_args'} = [];
 
 
+
+$result_converted{'plaintext'}->{'too_much_args'} = 'AZE (A truc Z b, E eep)
+';
+
 1;

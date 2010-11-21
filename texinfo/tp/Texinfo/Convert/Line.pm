@@ -138,12 +138,13 @@ sub inhibit_end_sentence($)
   $line->{'end_sentence'} = 0;
 }
 
-sub set_space_protection($$;$$)
+sub set_space_protection($$;$$$)
 {
   my $line = shift;
   my $space_protection = shift;
   my $ignore_columns = shift;
   my $keep_end_lines = shift;
+  my $frenchspacing = shift;
   $line->{'protect_spaces'} = $space_protection 
     if defined($space_protection);
   $line->{'ignore_columns'} = $ignore_columns
@@ -151,6 +152,8 @@ sub set_space_protection($$;$$)
   # a no-op in fact
   $line->{'keep_end_lines'} = $keep_end_lines
     if defined($keep_end_lines);
+  $line->{'frenchspacing'} = $frenchspacing
+    if defined($frenchspacing);
   # flush the spaces already existing
   if ($space_protection) {
     my $new_space = $line->{'space'};

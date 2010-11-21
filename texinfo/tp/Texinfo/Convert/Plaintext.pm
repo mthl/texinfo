@@ -507,7 +507,14 @@ sub convert($$)
          if ($root->{'extra'}
           and defined($root->{'extra'}->{'clickstyle'})
           and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-      $result .= $container_context->{'container'}->add_text($text_brace_no_arg_commands{$command});
+      if ($command eq 'enddots') {
+        $result .= $container_context->{'container'}->add_next($text_brace_no_arg_commands{$command}, undef, 1),
+      } else {
+        $result .= $container_context->{'container'}->add_text($text_brace_no_arg_commands{$command});
+        if ($command eq 'dots') {
+          $container_context->{'container'}->inhibit_end_sentence();
+        }
+      }
       return $result;
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
@@ -555,6 +562,31 @@ sub convert($$)
         unshift @{$self->{'current_contents'}->[-1]}, @email_contents;
       }
       return '';
+    } elsif ($command eq 'uref' or $command eq 'url') {
+      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+        my @contents;
+        if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 3
+             and defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+          @contents = @{$root->{'extra'}->{'brace_command_contents'}->[2]};
+        } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+          if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+             and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+            @contents = (@{$root->{'extra'}->{'brace_command_contents'}->[1]},
+                            {'text' => ' ('},
+                            {'type' => 'frenchspacing',
+                              'contents' => [{'type' => 'code',
+                                       'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]}]
+                            },
+                            {'text' => ')'});
+          } else {
+            @contents = ({'cmdname' => 'code',
+              'args' => [ { 'type' => 'brace_command_arg',
+                          'contents' => $root->{'extra'}->{'brace_command_contents'}->[0],
+                        } ],});
+          }
+        }
+        unshift @{$self->{'current_contents'}->[-1]}, @contents;
+      }
     } elsif ($command eq 'footnote') {
       # TODO
     } elsif ($command eq 'anchor') {
@@ -562,7 +594,24 @@ sub convert($$)
     } elsif ($ref_commands{$command}) {
       # TODO
     } elsif ($explained_commands{$command}) {
-      # TODO Beware that a . in abbr won't trigger double spaces.
+      my @contents;
+      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
+          and defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+        # in abbr spaces never end a sentence.
+        if ($command eq 'abbr') {
+          @contents = ({'type' => 'frenchspacing',
+                     'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]});
+        } else {
+          @contents = @{$root->{'extra'}->{'brace_command_contents'}->[0]};
+        }
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+          and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+          push @contents, {'text' => ' ('},
+                          @{$root->{'extra'}->{'brace_command_contents'}->[-1]},
+                          {'text' => ')'};
+        }
+        unshift @{$self->{'current_contents'}->[-1]}, @contents;
+      }
     } elsif ($command eq 'math') {
       push @{$self->{'context'}}, 'math';
       $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
@@ -765,6 +814,16 @@ sub convert($$)
       foreach my $arg (@{$root->{'args'}}) {
         $result .= $self->convert($arg);
       }
+    } elsif ($root->{'type'} eq 'frenchspacing') {
+      $container_context->{'frenchspacing'}++;
+      if ($container_context->{'frenchspacing'} == 1) {
+        $container_context->{'container'}->set_space_protection(undef,
+          undef, undef, 1);
+        $container_context->{'saved_frenchspacing'} 
+           = $self->{'frenchspacing'};
+      }
+    } elsif ($root->{'type'} eq 'code') {
+      $container_context->{'code'}++;
     }
   }
   if ($root->{'contents'}) {
@@ -786,9 +845,21 @@ sub convert($$)
     }
     pop @{$self->{'current_contents'}};
   }
-  if ($root->{'type'} and $root->{'type'} eq 'bracketed'
+  if ($root->{'type'}) {
+    if ($root->{'type'} eq 'frenchspacing') {
+      $container_context->{'frenchspacing'}--;
+      if ($container_context->{'frenchspacing'} == 0) {
+        $container_context->{'container'}->set_space_protection(undef,
+          undef, undef, $container_context->{'saved_frenchspacing'});
+        delete $container_context->{'saved_frenchspacing'};
+        delete $container_context->{'frenchspacing'};
+      }
+    } elsif ($root->{'type'} eq 'code') {
+      $container_context->{'code'}--;
+    } elsif ($root->{'type'} eq 'bracketed'
       and $self->{'context'}->[-1] eq 'math') {
-    $result .= $container_context->{'container'}->add_text('}');
+      $result .= $container_context->{'container'}->add_text('}');
+    }
   }
   if ($paragraph) {
     $result .= $paragraph->{'container'}->end();

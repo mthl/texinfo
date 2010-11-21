@@ -4,6 +4,30 @@ require 't/test_utils.pl';
 
 my @test_cases = (
 ['simple', '@b{in  b}.'],
+['empty_second_email_argument', '@email{ a@@b.c, }'],
+['email_possibilities',
+'@email{--a,--b}
+@email{,--b}
+@email{--a}
+'],
+['abbr_acronym',
+'@acronym{--a,an accronym}
+@acronym{--a}
+@acronym{--a,an accronym @comma{} @enddots{}}
+@abbr{@\'E--a. @comma{}A., @\'Etude--@comma{} @b{Autonome} }
+@abbr{@\'E--a. @comma{}A.}
+'],
+['uref_url',
+'@uref{--a,--b}
+@uref{--a}
+@uref{,--b}
+@uref{--a,--b,--c}
+@uref{,--b,--c}
+@uref{--a,,--c}
+@uref{,,--c}
+@url{--a,--b}
+@url{--a,--b,--c}
+'],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}}'],
 ['too_much_args', '@abbr{AZE, A truc Z b, E eep}'],
@@ -15,7 +39,6 @@ my @test_cases = (
 
 }'],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
-['empty_second_email_argument', '@email{ a@@b.c, }'],
 ['end_line_in_anchor',
 '@anchor{an
 anchor}
