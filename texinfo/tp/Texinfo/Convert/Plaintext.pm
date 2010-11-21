@@ -298,9 +298,9 @@ sub new_formatter($$;$)
   
   my $container;
   my $container_conf = { 
-         'max'           => $self->{'format_context'}->[-1]->{'max'},
-         'frenchspacing' => $self->{'frenchspacing'},
-         'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'}, 
+         'max'                 => $self->{'format_context'}->[-1]->{'max'},
+         'frenchspacing'       => $self->{'frenchspacing'},
+         'indent_level'        => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
     if (defined($self->{'format_context'}->[-1]->{'counter'}));
@@ -321,7 +321,8 @@ sub new_formatter($$;$)
     die "Unknown container type $type\n";
   }
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   'code' => 0, 'w' => 0};
+                   'code' => 0, 'w' => 0, 
+                   'frenchspacing_stack' => [$self->{'frenchspacing'}]};
   if (defined($self->{'preformatted'})) {
     $formatter->{'preformatted'} = $self->{'preformatted'};
   }
@@ -432,7 +433,7 @@ sub convert($$)
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($container_context) {
-      print STDERR "  Container:($container_context->{'code'},$container_context->{'upper_case'},$container_context->{'preformatted'}) ";
+      print STDERR "  Container:($container_context->{'code'},$container_context->{'upper_case'},$container_context->{'preformatted'},$container_context->{'frenchspacing_stack'}->[-1]) ";
       $container_context->{'container'}->dump();
     }
   }
@@ -522,7 +523,12 @@ sub convert($$)
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'}));
       return $result;
     } elsif ($style_map{$command}) {
-      $container_context->{'code'}++ if ($code_style_commands{$command});
+      if ($code_style_commands{$command}) {
+        $container_context->{'code'}++;
+        push @{$container_context->{'frenchspacing_stack'}}, 1;
+        $container_context->{'container'}->set_space_protection(undef,
+          undef,undef,1);
+      }
       $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
       if ($command eq 'w') {
         $container_context->{'w'}++;
@@ -537,7 +543,12 @@ sub convert($$)
         $container_context->{'container'}->set_space_protection(0,0)
           if ($container_context->{'w'} == 0);
       }
-      $container_context->{'code'}-- if ($code_style_commands{$command});
+      if ($code_style_commands{$command}) {
+        $container_context->{'code'}--;
+        pop @{$container_context->{'frenchspacing_stack'}};
+        $container_context->{'container'}->set_space_protection(undef,
+          undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
+      }
       $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($root->{'cmdname'} eq 'image') {
       # FIXME
@@ -573,9 +584,8 @@ sub convert($$)
              and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
             @contents = (@{$root->{'extra'}->{'brace_command_contents'}->[1]},
                             {'text' => ' ('},
-                            {'type' => 'frenchspacing',
-                              'contents' => [{'type' => 'code',
-                                       'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]}]
+                            {'type' => 'code',
+                             'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]
                             },
                             {'text' => ')'});
           } else {
@@ -815,15 +825,14 @@ sub convert($$)
         $result .= $self->convert($arg);
       }
     } elsif ($root->{'type'} eq 'frenchspacing') {
-      $container_context->{'frenchspacing'}++;
-      if ($container_context->{'frenchspacing'} == 1) {
-        $container_context->{'container'}->set_space_protection(undef,
-          undef, undef, 1);
-        $container_context->{'saved_frenchspacing'} 
-           = $self->{'frenchspacing'};
-      }
+      push @{$container_context->{'frenchspacing_stack'}}, 1;
+      $container_context->{'container'}->set_space_protection(undef,
+        undef,undef,1);
     } elsif ($root->{'type'} eq 'code') {
       $container_context->{'code'}++;
+      push @{$container_context->{'frenchspacing_stack'}}, 1;
+      $container_context->{'container'}->set_space_protection(undef,
+        undef,undef,1);
     }
   }
   if ($root->{'contents'}) {
@@ -847,15 +856,14 @@ sub convert($$)
   }
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'frenchspacing') {
-      $container_context->{'frenchspacing'}--;
-      if ($container_context->{'frenchspacing'} == 0) {
-        $container_context->{'container'}->set_space_protection(undef,
-          undef, undef, $container_context->{'saved_frenchspacing'});
-        delete $container_context->{'saved_frenchspacing'};
-        delete $container_context->{'frenchspacing'};
-      }
+      pop @{$container_context->{'frenchspacing_stack'}};
+      $container_context->{'container'}->set_space_protection(undef,
+        undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
     } elsif ($root->{'type'} eq 'code') {
       $container_context->{'code'}--;
+      pop @{$container_context->{'frenchspacing_stack'}};
+      $container_context->{'container'}->set_space_protection(undef,
+        undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
     } elsif ($root->{'type'} eq 'bracketed'
       and $self->{'context'}->[-1] eq 'math') {
       $result .= $container_context->{'container'}->add_text('}');
