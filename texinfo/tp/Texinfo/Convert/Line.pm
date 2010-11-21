@@ -88,6 +88,7 @@ sub add_pending_word($)
       $result .= $line->{'space'};
       print STDERR "ADD_SPACES\n" if ($line->{'debug'});
     }
+    $line->{'space'} = '';
     $result .= $line->{'word'};
     print STDERR "ADD_WORD[$line->{'word'}]\n" if ($line->{'debug'});
     $line->{'word'} = undef;
@@ -95,11 +96,12 @@ sub add_pending_word($)
   return $result;
 }
 
-# end a paragraph
+# end a line
 sub end($)
 {
   my $line = shift;
   my $result = $line->add_pending_word();
+  $result .= $line->{'space'};
   $line->{'line_beginning'} = 1;
   $line->{'space'} = '';
   print STDERR "END_LINE\n" if ($line->{'debug'});

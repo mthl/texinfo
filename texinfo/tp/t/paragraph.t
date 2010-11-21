@@ -348,7 +348,7 @@ sub test_line($$$;$)
 
 test_line(["word\n"], "word\n", 'word');
 test_line(['word other'], "word other", 'two_words');
-test_line(['word '], "word", 'trailing spaces');
+test_line(['word '], 'word ', 'trailing spaces');
 test_line(["word \n"], "word\n", 'trailing spaces eol');
 test_line([' word'], "word", 'leading spaces');
 test_line([' ', ' word'], "word", 'double leading spaces');

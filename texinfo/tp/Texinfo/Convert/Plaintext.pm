@@ -302,6 +302,8 @@ sub new_formatter($$;$)
          'frenchspacing' => $self->{'frenchspacing'},
          'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
+  $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
+    if (defined($self->{'format_context'}->[-1]->{'counter'}));
   if ($conf) {
     foreach my $key (keys(%$conf)) {
       $container_conf->{$key} = $conf->{$key};
@@ -612,6 +614,8 @@ sub convert($$)
             {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
           my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
           $result = $self->convert_line ($prepended);
+          $self->{'format_context'}->[-1]->{'counter'} += 
+             Texinfo::Convert::Unicode::string_width($result);
 
           #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
           #$result = convert($root->{'args'}->[0]) ."\n";
@@ -775,6 +779,7 @@ sub convert($$)
         $result .= "\n" if (!$self->{'empty_lines_count'} 
                             or $self->{'context'}->[-1] eq 'preformatted');
         $self->{'empty_lines_count'}++;
+        delete $self->{'format_context'}->[-1]->{'counter'};
       } else {
         $result .= $self->convert($content);
       }
