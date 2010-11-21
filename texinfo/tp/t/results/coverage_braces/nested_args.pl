@@ -122,4 +122,8 @@ $result_texts{'nested_args'} = '';
 $result_errors{'nested_args'} = [];
 
 
+
+$result_converted{'plaintext'}->{'nested_args'} = '*Note descr in b: @ `in samp\'
+';
+
 1;

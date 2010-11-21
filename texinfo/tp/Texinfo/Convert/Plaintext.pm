@@ -602,7 +602,48 @@ sub convert($$)
     } elsif ($command eq 'anchor') {
       # TODO
     } elsif ($ref_commands{$command}) {
-      # TODO
+      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
+          and scalar(@{$root->{'extra'}->{'brace_command_contents'}})) {
+        my @args = @{$root->{'extra'}->{'brace_command_contents'}};
+        $args[0] = [{'text' => ''}] if (!defined($args[0]));
+        if ($command eq 'inforef' and scalar(@args) == 3) {
+          $args[3] = $args[2];
+          $args[2] = undef;
+        }
+        my @contents;
+        if ($command eq 'xref') {
+          $contents[0] = {'text' => '*Note '};
+        } else {
+          $contents[0] = {'text' => '*note '};
+        }
+        my $name;
+        if (defined($args[1])) {
+          $name = $args[1];
+        } elsif (defined($args[2])) {
+          $name = $args[2];
+        }
+        my $file;
+        if (defined($args[3])) {
+          $file = [{'text' => '('},
+                   {'type' => 'code',
+                    'contents' => [@{$args[3]}]},
+                   {'text' => ')'},];
+        } elsif (defined($args[4])) {
+          $file = [{'text' => '()'}];
+        }
+        if ($name) {
+          push @contents, (@$name, {'text' => ': '});
+          if ($file) {
+            push @contents, @$file;
+          }
+          push @contents, ({'type' => 'code',
+                            'contents' => [@{$args[0]}]});
+          push @contents, {'text' => '.'} if ($command eq 'pxref');
+        } else {
+          push @contents, (@{$args[0]}, {'text' => '::'});
+        }
+        unshift @{$self->{'current_contents'}->[-1]}, @contents;
+      }
     } elsif ($explained_commands{$command}) {
       my @contents;
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
