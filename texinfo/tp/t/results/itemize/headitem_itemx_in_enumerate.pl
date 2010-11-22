@@ -113,7 +113,7 @@ $result_texis{'headitem_itemx_in_enumerate'} = '@enumerate
 ';
 
 
-$result_texts{'headitem_itemx_in_enumerate'} = 'item enumerate
+$result_texts{'headitem_itemx_in_enumerate'} = '1. item enumerate
 itemx enumerate
 headitem enumerate
 ';

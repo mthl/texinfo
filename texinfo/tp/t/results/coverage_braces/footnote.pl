@@ -102,4 +102,8 @@ $result_texts{'footnote'} = 'text after footnote.';
 $result_errors{'footnote'} = [];
 
 
+
+$result_converted{'plaintext'}->{'footnote'} = 'text after footnote.
+';
+
 1;

@@ -246,8 +246,8 @@ table line
 
 Some text.
 
-first item
-an item
+1. first item
+2. an item
 
 ';
 

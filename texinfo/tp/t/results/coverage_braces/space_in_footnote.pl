@@ -61,4 +61,8 @@ $result_texts{'space_in_footnote'} = 'text';
 $result_errors{'space_in_footnote'} = [];
 
 
+
+$result_converted{'plaintext'}->{'space_in_footnote'} = 'text
+';
+
 1;

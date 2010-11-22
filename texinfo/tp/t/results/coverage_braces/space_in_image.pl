@@ -189,4 +189,8 @@ $result_texts{'space_in_image'} = 'a. f.';
 $result_errors{'space_in_image'} = [];
 
 
+
+$result_converted{'plaintext'}->{'space_in_image'} = '.  .
+';
+
 1;
