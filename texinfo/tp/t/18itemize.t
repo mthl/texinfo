@@ -285,7 +285,7 @@ my @test_invalid = (
 );
 
 foreach my $test (@test_cases) {
-#  $test->[2]->{'test_formats'} = ['plaintext'];
+  $test->[2]->{'test_formats'} = ['plaintext'];
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

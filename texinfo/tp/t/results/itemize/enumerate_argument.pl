@@ -228,4 +228,8 @@ $result_texts{'enumerate_argument'} = '
 $result_errors{'enumerate_argument'} = [];
 
 
+
+$result_converted{'plaintext'}->{'enumerate_argument'} = '
+';
+
 1;

@@ -212,4 +212,10 @@ item
 $result_errors{'accent_argument'} = [];
 
 
+
+$result_converted{'plaintext'}->{'accent_argument'} = '     item
+
+     item
+';
+
 1;

@@ -434,7 +434,7 @@ sub convert($$)
   }
   if ($self->{'debug'}) {
     print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}})";
-    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, $self->{'format_context'}->[-1]->{'max'}\n";
+    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, $self->{'format_context'}->[-1]->{'counter'}, $self->{'format_context'}->[-1]->{'max'}\n";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     print STDERR "\n";
@@ -762,6 +762,7 @@ sub convert($$)
         $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
                and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
+        $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
         my $line = $self->new_formatter('line', 
             {'indent_length' => 
                 ($self->{'format_context'}->[-1]->{'indent_level'} -1)
@@ -769,7 +770,7 @@ sub convert($$)
                    + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
         push @{$self->{'formatters'}}, $line;
         if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
-          $result .= $line->{'container'}->add_text(Texinfo::Convert::Text::enumerate_item_representation(
+          $result .= $line->{'container'}->add_next(Texinfo::Convert::Text::enumerate_item_representation(
             $root->{'parent'}->{'extra'}->{'enumerate_specification'},
             $root->{'extra'}->{'item_number'}) . '. ');
         } else {
@@ -779,7 +780,9 @@ sub convert($$)
                 { 'text' => ' ' }]
             });
         }
-        $line->{'container'}->end();
+        $result .= $line->{'container'}->end();
+        print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
+           if ($self->{'debug'});
         pop @{$self->{'formatters'}};
         $self->{'format_context'}->[-1]->{'counter'} += 
            Texinfo::Convert::Unicode::string_width($result);
@@ -966,6 +969,7 @@ sub convert($$)
   if ($paragraph) {
     $result .= $paragraph->{'container'}->end();
     pop @{$self->{'formatters'}};
+    delete $self->{'format_context'}->[-1]->{'counter'};
   }
   if ($preformatted) {
     $result .= $preformatted->{'container'}->end();
