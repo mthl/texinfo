@@ -335,11 +335,13 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
+our %raw_commands;
 our @out_formats = ('html', 'tex', 'xml', 'docbook');
 # macro/rmacro are special
 foreach my $raw_command (@out_formats, 'verbatim', 
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
+  $raw_commands{$raw_command} = 1;
 }
 
 foreach my $command (@out_formats, 'info', 'plaintext') {

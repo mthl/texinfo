@@ -302,7 +302,8 @@ $result_trees{'block_not_matching'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'emph'
       },
       'parent' => {}
     },

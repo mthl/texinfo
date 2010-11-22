@@ -45,7 +45,8 @@ $result_trees{'in_table'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'xref'
       },
       'parent' => {}
     },
@@ -307,7 +308,8 @@ $result_trees{'in_table'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'code'
       },
       'parent' => {}
     },

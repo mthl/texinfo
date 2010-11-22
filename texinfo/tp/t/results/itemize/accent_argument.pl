@@ -73,7 +73,8 @@ $result_trees{'accent_argument'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => '~'
       },
       'parent' => {}
     },
@@ -152,7 +153,8 @@ $result_trees{'accent_argument'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => '~'
       },
       'parent' => {}
     },

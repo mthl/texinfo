@@ -116,7 +116,8 @@ $result_trees{'table_not_closed_in_menu_description'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'command_as_argument' => 'minus'
                   },
                   'parent' => {}
                 }

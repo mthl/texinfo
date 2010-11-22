@@ -190,7 +190,8 @@ $result_trees{'macro_in_brace_command'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'bullet'
       },
       'parent' => {}
     },

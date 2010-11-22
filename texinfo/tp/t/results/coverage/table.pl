@@ -129,7 +129,8 @@ $result_trees{'table'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'asis'
       },
       'parent' => {}
     },
@@ -403,7 +404,8 @@ $result_trees{'table'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'samp'
       },
       'parent' => {}
     },
@@ -533,8 +535,8 @@ table item
 table itemx
      In table
 
-vtable item
-itemx vtable
+`vtable item\'
+`itemx vtable\'
 ';
 
 1;

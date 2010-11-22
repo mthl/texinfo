@@ -86,6 +86,7 @@ my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
+my %raw_commands = %Texinfo::Common::raw_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -120,8 +121,15 @@ foreach my $indented_command (keys (%item_indent_format_length),
     if exists($block_commands{$indented_command});
 }
 
+my %format_context_commands = %indented_commands;
+
 foreach my $non_indented('format', 'smallformat') {
   delete $indented_commands{$non_indented};
+}
+
+foreach my $format_context_command (keys(%menu_commands), 'verbatim',
+ 'flushleft', 'flushright', 'multitable') {
+  $format_context_commands{$format_context_command} = 1;
 }
 
 # commands that leads to advancing the paragraph number.  This is mostly
@@ -631,6 +639,7 @@ sub convert($$)
                     'contents' => [@{$args[3]}]},
                    {'text' => ')'},];
         } elsif (defined($args[4])) {
+          # FIXME this is a bit strange.
           $file = [{'text' => '()'}];
         }
         if ($name) {
@@ -638,6 +647,7 @@ sub convert($$)
           if ($file) {
             push @contents, @$file;
           }
+          # node name
           push @contents, ({'type' => 'code',
                             'contents' => [@{$args[0]}]});
           push @contents, {'text' => '.'} if ($command eq 'pxref');
@@ -695,15 +705,19 @@ sub convert($$)
       #    at the end. do something specific here or at the end?
       #    punctuation munging is done, but end of lines are kept.
 
-      if ($preformatted_commands{$root->{'cmdname'}} or $menu_commands{$root->{'cmdname'}}) {
+      if ($preformatted_commands{$root->{'cmdname'}} 
+           or $menu_commands{$root->{'cmdname'}}
+           or $root->{'cmdname'} eq 'verbatim') {
         push @{$self->{'context'}}, 'preformatted';
       }
-      if ($indented_commands{$root->{'cmdname'}}) {
+      if ($format_context_commands{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, { 'cmdname' => $root->{'cmdname'},
                'paragraph_count' => 0,
                'indent_level' => 
-                   $self->{'format_context'}->[-1]->{'indent_level'} + 1,
+                   $self->{'format_context'}->[-1]->{'indent_level'},
                'max' => $self->{'format_context'}->[-1]->{'max'} };
+        $self->{'format_context'}->[-1]->{'indent_level'}++
+           if ($indented_commands{$root->{'cmdname'}});
         if ($self->{'context'}->[-1] eq 'preformatted') {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
@@ -726,12 +740,23 @@ sub convert($$)
     } elsif ($root->{'cmdname'} eq 'node') {
         # FIXME handle node
     } elsif ($misc_commands{$root->{'cmdname'}}) {
-      if (($sectioning_commands{$root->{'cmdname'}}
-          or ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'))
-              and $root->{'args'}) {
+      if ($sectioning_commands{$root->{'cmdname'}}) {
         # FIXME handle sectioning commands with their underline
-        # and item with their prepending
-        $result = $self->convert_line($root->{'args'}->[0],
+        if ($root->{'args'}) {
+          $result = $self->convert_line($root->{'args'}->[0]);
+          chomp ($result);
+          $result .= "\n";
+        }
+      } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
+              and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+        my $contents = $root->{'extra'}->{'misc_content'};
+        if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
+          $contents = [{'cmdname' => $root->{'parent'}->{'extra'}->{'command_as_argument'},
+                   'args' => [{'type' => 'brace_command_arg', 
+                              'contents' => [@$contents]}]
+          }];
+        }
+        $result = $self->convert_line({'contents' => [@$contents]},
             {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
         chomp ($result);
         $result .= "\n";
@@ -891,10 +916,7 @@ sub convert($$)
     push @{$self->{'current_contents'}}, \@contents;
     while (@contents) {
       my $content = shift @contents;
-      # FIXME an empty line between block commands don't seem to be 
-      # output.
-      if ($content->{'type'} 
-          and $content->{'type'} eq 'empty_line') {
+      if ($content->{'type'} and $content->{'type'} eq 'empty_line') {
         $result .= "\n" if (!$self->{'empty_lines_count'} 
                             or $self->{'context'}->[-1] eq 'preformatted');
         $self->{'empty_lines_count'}++;

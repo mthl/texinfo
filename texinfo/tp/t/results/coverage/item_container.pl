@@ -157,7 +157,8 @@ $result_trees{'item_container'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'bullet'
       },
       'parent' => {}
     },

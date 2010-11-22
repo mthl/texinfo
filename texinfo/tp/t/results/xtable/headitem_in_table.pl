@@ -114,7 +114,8 @@ $result_trees{'headitem_in_table'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'strong'
       },
       'parent' => {}
     },

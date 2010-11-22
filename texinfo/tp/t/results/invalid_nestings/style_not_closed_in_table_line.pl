@@ -139,7 +139,8 @@ $result_trees{'style_not_closed_in_table_line'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'asis'
       },
       'parent' => {}
     },

@@ -153,7 +153,8 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'command_as_argument' => 'bullet'
               },
               'parent' => {}
             }

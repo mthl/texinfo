@@ -2358,6 +2358,8 @@ sub _parse_texi($;$)
           delete $current->{'contents'};
           print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'debug'});
           $current->{'type'} = 'command_as_argument';
+          $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
+            = $current->{'cmdname'};
           $current = $current->{'parent'};
 
         # now accent commands

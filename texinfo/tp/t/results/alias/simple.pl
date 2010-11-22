@@ -251,7 +251,8 @@ $result_trees{'simple'} = {
           [
             {}
           ]
-        ]
+        ],
+        'command_as_argument' => 'code'
       },
       'parent' => {}
     },

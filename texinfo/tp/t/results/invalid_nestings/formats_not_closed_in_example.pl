@@ -176,7 +176,8 @@ $result_trees{'formats_not_closed_in_example'} = {
               [
                 {}
               ]
-            ]
+            ],
+            'command_as_argument' => 'minus'
           },
           'parent' => {}
         }
