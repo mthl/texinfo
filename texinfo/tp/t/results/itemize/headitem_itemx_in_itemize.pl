@@ -76,6 +76,15 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          {
+            'cmdname' => 'bullet',
+            'parent' => {},
+            'type' => 'command_as_argument'
+          }
+        ]
+      },
       'parent' => {}
     },
     {
@@ -99,6 +108,7 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'conten
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
 

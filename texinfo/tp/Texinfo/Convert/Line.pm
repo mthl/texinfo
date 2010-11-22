@@ -57,7 +57,7 @@ sub dump($)
   $word = $self->{'word'} if (defined($self->{'word'}));
   my $end_sentence = 'UNDEF';
   $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
-  print STDERR "line ($self->{'line_beginning'}) word: $word, space `$self->{'space'}' end_sentence: $self->{'end_sentence'}\n"; 
+  print STDERR "line ($self->{'line_beginning'},$self->{'counter'}) word: $word, space `$self->{'space'}' end_sentence: $self->{'end_sentence'}\n"; 
 }
 
 # end a line.

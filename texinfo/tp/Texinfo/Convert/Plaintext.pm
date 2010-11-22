@@ -762,7 +762,28 @@ sub convert($$)
         $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
                and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
-        # TODO
+        my $line = $self->new_formatter('line', 
+            {'indent_length' => 
+                ($self->{'format_context'}->[-1]->{'indent_level'} -1)
+                  * $indent_length
+                   + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
+        push @{$self->{'formatters'}}, $line;
+        if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
+          $result .= $line->{'container'}->add_text(Texinfo::Convert::Text::enumerate_item_representation(
+            $root->{'parent'}->{'extra'}->{'enumerate_specification'},
+            $root->{'extra'}->{'item_number'}) . '. ');
+        } else {
+          $result .= $self->convert(
+            {'contents' => 
+               [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
+                { 'text' => ' ' }]
+            });
+        }
+        $line->{'container'}->end();
+        pop @{$self->{'formatters'}};
+        $self->{'format_context'}->[-1]->{'counter'} += 
+           Texinfo::Convert::Unicode::string_width($result);
+        # FIXME open a format_context?
       } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
                or $root->{'cmdname'} eq 'tab') {
       #} elsif ($root->{'cmdname'} eq 'tab') {

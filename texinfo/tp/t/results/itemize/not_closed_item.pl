@@ -44,6 +44,15 @@ $result_trees{'not_closed_item'} = {
           'parent' => {}
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          {
+            'cmdname' => 'bullet',
+            'parent' => {},
+            'type' => 'command_as_argument'
+          }
+        ]
+      },
       'parent' => {}
     }
   ],
@@ -55,6 +64,7 @@ $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'p
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2];
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0];
+$result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'};
 
 $result_texis{'not_closed_item'} = '@itemize

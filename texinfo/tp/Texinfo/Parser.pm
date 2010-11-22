@@ -1773,6 +1773,13 @@ sub _end_line($$$)
           }
         }
         $current->{'extra'}->{'enumerate_specification'} = $spec;
+      } elsif ($current->{'cmdname'} eq 'itemize' 
+               and !$current->{'extra'}->{'block_command_line_contents'}) {
+        $current->{'extra'}->{'block_command_line_contents'} = [
+          { 'cmdname' => 'bullet', 
+            'type' => 'command_as_argument',
+            'parent' => $current }
+        ];
       }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
          'contents' => [], 'parent', $current };

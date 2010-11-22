@@ -19,6 +19,15 @@ $result_trees{'not_closed_itemize'} = {
           'type' => 'before_item'
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          {
+            'cmdname' => 'bullet',
+            'parent' => {},
+            'type' => 'command_as_argument'
+          }
+        ]
+      },
       'parent' => {}
     }
   ],
@@ -26,6 +35,7 @@ $result_trees{'not_closed_itemize'} = {
 };
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
+$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'};
 
 $result_texis{'not_closed_itemize'} = '@itemize
