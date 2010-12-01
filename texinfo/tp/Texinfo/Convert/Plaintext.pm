@@ -583,14 +583,12 @@ sub _convert($$)
       }
       return $result;
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
-      $command = $root->{'extra'}->{'clickstyle'}
-         if ($root->{'extra'}
-          and defined($root->{'extra'}->{'clickstyle'})
-          and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
+      my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
+                                                    $self->{'encoding'});
       if ($command eq 'enddots') {
-        $result .= $formatter->{'container'}->add_next($text_brace_no_arg_commands{$command}, undef, 1),
+        $result .= $formatter->{'container'}->add_next($text, undef, 1),
       } else {
-        $result .= $formatter->{'container'}->add_text($text_brace_no_arg_commands{$command});
+        $result .= $formatter->{'container'}->add_text($text);
         if ($command eq 'dots') {
           $formatter->{'container'}->inhibit_end_sentence();
         }

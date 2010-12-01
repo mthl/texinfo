@@ -797,6 +797,30 @@ sub text_accents($$)
   }
 }
 
+sub brace_no_arg_command($;$$)
+{
+  my $root = shift;
+  my $encoding = shift;
+  my $sort_string = shift;
+
+  my $command = $root->{'cmdname'};
+  $command = $root->{'extra'}->{'clickstyle'}
+     if ($root->{'extra'}
+      and defined($root->{'extra'}->{'clickstyle'})
+      and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
+  if ($encoding 
+    and (($encoding eq 'utf-8' 
+       and $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command})
+        or ($Texinfo::Common::eight_bit_encoding_aliases{$encoding}
+        and $unicode_to_eight_bit{$Texinfo::Common::eight_bit_encoding_aliases{$encoding}}->{$Texinfo::Convert::Unicode::unicode_map{$command}}))) {
+    return $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
+  } elsif ($sort_string and $sort_brace_no_arg_commands{$command}) {
+    return $sort_brace_no_arg_commands{$command};
+  } else {
+    return $text_brace_no_arg_commands{$command};
+  }
+}
+
 # decompose a decimal number on a given base. The algorithm looks like
 # the division with growing powers (division suivant les puissances
 # croissantes) ?
@@ -908,15 +932,8 @@ sub convert($;$)
     if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
       return $text_no_brace_commands{$root->{'cmdname'}};
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
-      $command = $root->{'extra'}->{'clickstyle'}
-         if ($root->{'extra'}
-          and defined($root->{'extra'}->{'clickstyle'})
-          and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-      if ($options->{'sort_string'} and $sort_brace_no_arg_commands{$command}) {
-        return $sort_brace_no_arg_commands{$command};
-      } else {
-        return $text_brace_no_arg_commands{$command};
-     }
+      return brace_no_arg_command($root, $options->{'enable_encoding'}, 
+                                  $options->{'sort_string'});
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return text_accents ($root, $options->{'enable_encoding'});

@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 19 };
+BEGIN { plan tests => 21 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Text;
@@ -84,12 +84,16 @@ foreach my $test (
 #my $aa = Texinfo::Parser::parse_texi_line(undef, '@aa{}');
 my $res_e = Texinfo::Parser::parse_texi_line(undef, '@^e');
 my $result = Texinfo::Convert::Text::convert($res_e, {'enable_encoding' => 'utf-8'});
-is ("\x{00EA}", $result, 'enable encoding @^e');
+is ($result, "\x{00EA}", 'enable encoding @^e');
 
 my $res_aa = Texinfo::Parser::parse_texi_line(undef, '@aa{}');
 $result = Texinfo::Convert::Text::convert($res_aa, {'enable_encoding' => 'utf-8'});
+is ($result, "\x{00E5}", 'enable encoding @aa{}');
+
+$result = Texinfo::Convert::Text::convert($res_aa, {'enable_encoding' => 'iso-8859-1'});
+is ($result, "\x{00E5}", 'enable encoding latin1 @aa{}');
 #print STDERR "$result\n";
 #print STDERR "`$result'\n".ord($result)."\n".sprintf("%x\n",ord($result));
-#print STDERR "".Encode::encode('utf8', "\x{00EA}\n");
+#print STDERR "".Encode::encode('utf8', "\x{00E5}\n");
 
 1;
