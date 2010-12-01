@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.430 2010-10-28 21:38:27 pertusus Exp $
+# $Id: texi2html.pl,v 1.431 2010-12-01 22:56:03 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -13055,7 +13055,8 @@ sub scan_texi($$$$;$)
                 { # no brace -> no arg
                     #$cline = 
                     #line_warn("\@$command defined with $args_number arguments should be invoked with {}", $line_nr);
-                    line_warn(sprintf(__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
+                    line_warn(sprintf(__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr)
+                      if ($args_number >= 2);
                     expand_macro ($command, [], $cline, $line_nr, $state);
                     return;
                 }

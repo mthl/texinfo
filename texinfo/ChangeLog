@@ -1,3 +1,9 @@
+2010-12-01  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.pl: don't warn when a user-defined macro
+	without argument is called without braces.  Report from Werner 
+ 	Lemberg.
+
 2010-11-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (GNU Sample Texts): update and make self-consistent.
