@@ -2669,14 +2669,14 @@ unnumbered chapter text.
 ';
 
 
-$result_texts{'complex'} = '
-* First node:: 
+$result_texts{'complex'} = '* First node:: 
 * between node::
 * Second node::   node 2
 * Third node unnumbered:: unnumbered in Top menu
 * Last node no description::
 
 first node chapter
+******************
 
 first node chapter text
 * unnumbered:: un
@@ -2685,6 +2685,7 @@ first node chapter text
 
 
 unnumbered section
+==================
 
 * unnumbered sub:: un
 * numbered sub:: nu
@@ -2692,21 +2693,28 @@ unnumbered section
 * numbered sub2:: nu2
 
 unnumbered subsection
+---------------------
 
 numbered subsection
+-------------------
 
 unnumbered subsection2
+----------------------
 
 numbered subsection2
+--------------------
 
 unnumbered section2
+===================
 
 *  numbered sub3::
 
 numbered subsection3
+--------------------
 
 
 numbered section
+================
 
 
 between node, node without sectioning node
@@ -2715,10 +2723,12 @@ between node, node without sectioning node
 Second node text
 
 second node chapter
+*******************
 
 second node chapter text.
 
 unnumbered chapter
+******************
 
 unnumbered chapter text.
 

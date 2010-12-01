@@ -127,4 +127,7 @@ $result_texts{'nested_macros'} = '';
 $result_errors{'nested_macros'} = [];
 
 
+
+$result_converted{'plaintext'}->{'nested_macros'} = '';
+
 1;

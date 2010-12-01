@@ -84,6 +84,9 @@ new comment
 * a5@b{b}: @c c
 @end menu
 '],
+);
+
+my @test_invalid = (
 ['bad_beginning',
 '@menu
 *   
@@ -113,10 +116,23 @@ new comment
 ['menu_no_closed_star',
 '@menu
 * '
-]
+],
+['direntry_dircategory_after_first_node',
+'@node Top
+@top direntry direcategory after first node
+
+@dircategory Cat
+@direntry
+* in text: (in_text). in text
+@end direntry
+']
 );
+
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('menu', \@test_cases, $arg_test_case,
+run_all ('menu', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);

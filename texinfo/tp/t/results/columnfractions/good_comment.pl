@@ -72,6 +72,7 @@ $result_trees{'good_comment'} = {
         }
       ],
       'extra' => {
+        'columnfractions' => [],
         'max_columns' => 3
       },
       'parent' => {}
@@ -93,6 +94,7 @@ $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
 $result_trees{'good_comment'}{'contents'}[0]{'parent'} = $result_trees{'good_comment'};
 $result_trees{'good_comment'}{'contents'}[1]{'parent'} = $result_trees{'good_comment'};
 

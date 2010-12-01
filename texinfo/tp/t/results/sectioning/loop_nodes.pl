@@ -647,6 +647,7 @@ $result_texis{'loop_nodes'} = '
 
 $result_texts{'loop_nodes'} = '
 top
+***
 
 * node up::
 

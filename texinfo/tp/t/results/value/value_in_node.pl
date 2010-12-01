@@ -777,10 +777,12 @@ $result_texis{'value_in_node'} = '@set node1 Node 1
 
 $result_texts{'value_in_node'} = '
 Expansion in Node Names
+***********************
 
 * Node 1  ::
 
 Chapter 1
+*********
 
 
 * Section 1.1::

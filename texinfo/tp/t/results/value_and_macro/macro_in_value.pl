@@ -155,17 +155,7 @@ flagab: a
 b
 ';
 
-$result_errors{'macro_in_value'} = [
-  {
-    'error_line' => ':9: warning: @ab defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@ab defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'macro_in_value'} = [];
 
 
 1;

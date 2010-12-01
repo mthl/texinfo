@@ -64,4 +64,10 @@ after empty line
 $result_errors{'empty_line'} = [];
 
 
+
+$result_converted{'plaintext'}->{'empty_line'} = '     example
+
+     after empty line
+';
+
 1;

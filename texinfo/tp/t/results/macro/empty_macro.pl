@@ -82,17 +82,7 @@ $result_texts{'empty_macro'} = '
 
 ';
 
-$result_errors{'empty_macro'} = [
-  {
-    'error_line' => ':4: warning: @foo defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@foo defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'empty_macro'} = [];
 
 
 1;

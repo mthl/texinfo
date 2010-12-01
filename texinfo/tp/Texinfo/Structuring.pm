@@ -42,6 +42,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   sectioning_structure  
+  nodes_tree
+  number_floats
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -71,6 +73,7 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
 #     automatic sectioning: scalar(@{$node->{'extra'}->{'nodes_manuals'} != 1)
 # 
 
+# Not used for now
 sub _next_content($)
 {
   my $current = shift;
@@ -122,6 +125,7 @@ sub _print_current($)
   }
 }
 
+# Not used for now
 # the tree is modified: 'next' pointers are added.
 sub _collect_structure($)
 {
@@ -145,38 +149,11 @@ sub _collect_structure($)
   }
 }
 
-my %sec2level = (
-              'top', 0,
-              'chapter', 1,
-              'unnumbered', 1,
-              'chapheading', 1,
-              'appendix', 1,
-              'section', 2,
-              'unnumberedsec', 2,
-              'heading', 2,
-              'appendixsec', 2,
-              'subsection', 3,
-              'unnumberedsubsec', 3,
-              'subheading', 3,
-              'appendixsubsec', 3,
-              'subsubsection', 4,
-              'unnumberedsubsubsec', 4,
-              'subsubheading', 4,
-              'appendixsubsubsec', 4,
-         );
-
-# out of the main hierarchy
-$sec2level{'part'} = 0;
-# this are synonyms
-$sec2level{'appendixsection'} = 2;
-# sec2level{'majorheading'} is also 1 and not 0
-$sec2level{'majorheading'} = 1;
-$sec2level{'chapheading'} = 1;
-$sec2level{'centerchap'} = 1;
+my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 
 my %appendix_commands;
 my %unnumbered_commands;
-foreach my $command (keys(%sec2level)) {
+foreach my $command (keys(%command_structuring_level)) {
   if ($command =~ /appendix/) {
     $appendix_commands{$command} = 1;
   } elsif ($command =~ /unnumbered/) {
@@ -187,8 +164,8 @@ $unnumbered_commands{'top'} = 1;
 $unnumbered_commands{'centerchap'} = 1;
 $unnumbered_commands{'part'} = 1;
 
-my $min_level = $sec2level{'top'};
-my $max_level = $sec2level{'subsubsection'};
+my $min_level = $command_structuring_level{'top'};
+my $max_level = $command_structuring_level{'subsubsection'};
 
 sub sectioning_structure($$)
 {
@@ -205,6 +182,8 @@ sub sectioning_structure($$)
   my $in_appendix = 0;
   # lowest level with a number.  This is the lowest level above 0.
   my $number_top_level;
+
+  my $section_top;
   
   # holds the current number for all the levels.  It is not possible to use
   # something like the last child index, because of @unnumber.
@@ -212,7 +191,15 @@ sub sectioning_structure($$)
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
         and $content->{'cmdname'} ne 'bye') {
-      my $level = $sec2level{$content->{'cmdname'}};
+      if ($content->{'cmdname'} eq 'top') {
+        if ($section_top) {
+          $self->_line_error($self->__("\@top already exists"), 
+                                       $content->{'line_nr'});
+        } else {
+          $section_top = $content;
+        }
+      }
+      my $level = $command_structuring_level{$content->{'cmdname'}};
       # correct level according to raise/lowersections
       if ($content->{'extra'} and $content->{'extra'}->{'sections_level'}) {
         $level -= $content->{'extra'}->{'sections_level'};
@@ -294,7 +281,7 @@ sub sectioning_structure($$)
       if ($self->{'debug'}) {
         my $number = '';
         $number = $content->{'number'} if defined($content->{'number'});
-        print STDERR "($content->{'level'}|$level|$sec2level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
+        print STDERR "($content->{'level'}|$level|$command_structuring_level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
       }
     }
   }
@@ -464,6 +451,35 @@ sub nodes_tree ($)
     }
   }
   return $top_node;
+}
+
+sub number_floats($)
+{
+  my $floats = shift;
+  return if (!defined($floats));
+  foreach my $style (keys(%$floats)) {
+    my %nr_in_chapter;
+    my $float_index = 0;
+    foreach my $float (@{$floats->{$style}}) {
+      next if (!$float->{'extra'} 
+               or !defined($float->{'extra'}->{'normalized'}));
+      $float_index++;
+      my $number;
+      if ($float->{'float_section'}) {
+        my $up = $float->{'float_section'};
+        while ($up->{'section_up'} and $command_structuring_level{$up->{'cmdname'}} 
+               and $command_structuring_level{$up->{'section_up'}->{'cmdname'}}) {
+          $up = $up->{'section_up'};
+        }
+        if (!$unnumbered_commands{$up->{'cmdname'}}) {
+          $nr_in_chapter{$up->{'number'}}++;
+          $number = $up->{'number'} . '.' . $nr_in_chapter{$up->{'number'}};
+        }
+      }
+      $number = $float_index if (!defined($number));
+      $float->{'number'} = $number;
+    }
+  }
 }
 
 1;

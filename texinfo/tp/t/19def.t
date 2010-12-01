@@ -92,38 +92,11 @@ deffn
 @deffnx empty deffnx
 @end deffn
 '],
-['def_defx_mismatch',
-'@defun {my def} args @var{arg} @dots{}
-@deffnx {type} {name} and now the args
-
-In defun.
-
-@end defun
-'],
 ['defx_after_comment',
 '@deffn fset @var{i} a g
 @c comment
 @deffnx {truc} bidulr machin...
 @end deffn'],
-['defx_after_text',
-'@deffn fset @var{i} a g
-Text in deffn
-@deffnx {truc} bidulr machin...
-@end deffn'],
-['defx_after_empty_line',
-'@deffn fset @var{i} a g
-
-@deffnx {truc} bidulr machin...
-@end deffn'],
-['defx_after_paragraph_end',
-'@deffn fset @var{i} a g
-Text in paragraph.
-
-@deffnx {truc} bidulr machin...
-@end deffn'],
-['end_of_line_protect_at_end',
-'
-@deffn category2 deffn_name2 arguments2 @'],
 ['end_of_lines_protected_in_footnote',
 '@footnote{
 @deffn category deffn_name arguments arg2 @
@@ -133,24 +106,6 @@ Text in paragraph.
 deffn
 @end deffn
 }
-'],
-# the command with type is compared with the corresponding command without type
-['empty_deftype',
-'@deftypefun {} f (const type& x)
-Deftypefun.
-@end deftypefun
-
-@defun f (const type& x)
-Defun.
-@end defun
-
-@deftypemethod c {} f (const type& x)
-Deftypemethod.
-@end deftypemethod
-
-@defmethod c f (const type& x)
-Defmethod.
-@end defmethod
 '],
 ['all_commands_delimiters',
 '@deffn Command @var{forward--char} @var{nchars} {argument2} {argument3} @
@@ -304,6 +259,58 @@ Defmethod.
 @deftypefn {var then code} {ret_type1} {fun_name1} @var{A1} @code{A2} @var{A3} @code{A4}
 @end deftypefn
 '],
+['protected_brace',
+'@deffn c @{
+@end deffn
+'],
+);
+
+my @test_invalid = (
+['def_defx_mismatch',
+'@defun {my def} args @var{arg} @dots{}
+@deffnx {type} {name} and now the args
+
+In defun.
+
+@end defun
+'],
+['defx_after_text',
+'@deffn fset @var{i} a g
+Text in deffn
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_after_empty_line',
+'@deffn fset @var{i} a g
+
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_after_paragraph_end',
+'@deffn fset @var{i} a g
+Text in paragraph.
+
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['end_of_line_protect_at_end',
+'
+@deffn category2 deffn_name2 arguments2 @'],
+# the command with type is compared with the corresponding command without type
+['empty_deftype',
+'@deftypefun {} f (const type& x)
+Deftypefun.
+@end deftypefun
+
+@defun f (const type& x)
+Defun.
+@end defun
+
+@deftypemethod c {} f (const type& x)
+Deftypemethod.
+@end deftypemethod
+
+@defmethod c f (const type& x)
+Defmethod.
+@end defmethod
+'],
 ['wrong_braces_simple',
 '@deffn truc machin bidule chose and }
 @end deffn
@@ -334,10 +341,6 @@ deffn with @{
   more args
 deffn with @}
 @end deffn 
-'],
-['protected_brace',
-'@deffn @{
-@end deffn
 '],
 ['empty_def_arguments',
 '@deffn fset @var{i} a g
@@ -399,8 +402,12 @@ bbb
 ']
 );
 
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('def', \@test_cases, $arg_test_case,
+run_all ('def', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);
 

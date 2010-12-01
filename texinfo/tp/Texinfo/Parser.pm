@@ -34,6 +34,9 @@ use Data::Dumper;
 
 # to detect if an encoding may be used to open the files
 use Encode;
+# for i18n
+use Locale::Messages;
+
 
 # commands definitions
 use Texinfo::Common;
@@ -63,6 +66,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   errors
   indices_information
   floats_information
+  gdt
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -73,6 +77,114 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '0.01';
 
 # i18n
+
+# we want a reliable way to switch locale, so we don't use the system
+# gettext.
+Locale::Messages->select_package ('gettext_pp');
+
+my $strings_textdomain = 'texinfo_document';
+my $messages_textdomain = 'texinfo';
+
+# libintl converts between encodings but doesn't decode them into the
+# perl internal format.
+sub encode_i18n_string($$)
+{
+  my $string = shift;
+  my $encoding = shift;
+  if ($encoding ne 'us-ascii' and Encode::resolve_alias($encoding)) {
+    return Encode::decode($encoding, $string);
+  }
+  return $string;
+}
+
+# handle translations of in-document strings.
+sub gdt($$$;$)
+{
+  my $self = shift;
+  my $message = shift;
+  my $context = shift;
+  my $conf = shift;
+
+  my $encoding = $self->{'encoding'};
+
+  my $re = join '|', map { quotemeta $_ } keys %$context
+      if (defined($context) and ref($context));
+
+  my $saved_LANGUAGE = $ENV{'LANGUAGE'};
+  Locale::Messages::textdomain($strings_textdomain);
+  Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
+    if ($encoding ne 'us-ascii');
+  Locale::Messages::bind_textdomain_filter($strings_textdomain,
+    \&encode_i18n_string, $encoding);
+
+  # FIXME do that in the converters when @documentlanguage is found.
+  my $lang = $self->{'documentlanguage'};
+  my @langs = ($lang);
+  if ($lang =~ /^([a-z]+)_([A-Z]+)/) {
+    my $main_lang = $1;
+    my $region_code = $2;
+    push @langs, $main_lang;
+  }
+
+  my $locales = '';
+
+  foreach my $language (@langs) {
+    $locales .= "$language.$encoding:";
+    # always try us-ascii, the charset should always be a subset of
+    # all charset, and should resort to @-commands if needed for non
+    # ascii characters
+    if ($encoding ne 'us-ascii') {
+      $locales .= "$language.us-ascii:";
+    }
+  }
+  $locales =~ s/:$//;
+  #print STDERR "$locales\n";
+  # END FIXME
+
+  Locale::Messages::nl_putenv("LANGUAGE=$locales");
+
+  my $result;
+  if (!defined($context) or ref($context)) {
+    $result = Locale::Messages::gettext($message);
+  } else {
+    $result = Locale::Messages::pgettext($context, $message);
+  }
+
+  Locale::Messages::textdomain($messages_textdomain);
+  # old perl complains 'Use of uninitialized value in scalar assignment'
+  if (!defined($saved_LANGUAGE)) {
+    delete ($ENV{'LANGUAGE'});
+  } else {
+    $ENV{'LANGUAGE'} = $saved_LANGUAGE;
+  }
+
+  my $parser_conf;
+  # we change the substituted brace-enclosed strings to values, that
+  # way they are substituted, including when they are Texinfo trees.
+  if (defined($re)) {
+    # next line taken from libintl perl, copyright Guido. sub __expand
+    $result =~ s/\{($re)\}/\@value\{$1\}/g;
+    foreach my $substitution(keys %$context) {
+      #print STDERR "$result $substitution $context->{$substitution}\n";
+      $parser_conf->{'values'}->{$substitution} = $context->{$substitution};
+    }
+  }
+  # FIXME reuse a parser?
+  if ($self->{'debug'}) {
+    $parser_conf->{'debug'} = 1;
+    print STDERR "GDT $result\n";
+  }
+  my $parser = parser($parser_conf);
+
+  if ($conf->{'paragraph'}) {
+    $result = $parser->parse_texi_text($result);
+  } else {
+    $result = $parser->parse_texi_line($result);
+  }
+  return $result;
+}
+
+
 sub N__($)
 {
   return $_[0];
@@ -100,19 +212,30 @@ my %default_configuration = (
   # or an hash reference in the same format than %index_names below
   'indices' => [],
   # the following are dynamically modified during the document parsing.
-  'aliases' => {},          # key is a command name value is the alias
-  'values' => {},           # the key is the name, the value the @set name 
-                            # argument
-  'macros' => {},           # the key is the user-defined macro name.  The 
-                            # value is the reference on a macro element 
-                            # as obtained by parsing the @macro
+  'aliases' => {},           # key is a command name value is the alias
+  'values' => {},            # the key is the name, the value the @set name 
+                             # argument.  A Texinfo tree may also be used.
+  'macros' => {},            # the key is the user-defined macro name.  The 
+                             # value is the reference on a macro element 
+                             # as obtained by parsing the @macro
   'clickstyle' => 'arrow',
-  'sections_level' => 0,    # modified by raise/lowersections
-  'merged_indices' => {},   # the key is merged in the value
-  'labels'          => {},  # keys are normalized label names, as described
-                            # in the `HTML Xref' node.  Value should be
-                            # a node/anchor or float in the tree.
-  'novalidate' => 0,        # same as setting @novalidate.
+  'sections_level' => 0,     # modified by raise/lowersections
+  'merged_indices' => {},    # the key is merged in the value
+  'labels'          => {},   # keys are normalized label names, as described
+                             # in the `HTML Xref' node.  Value should be
+                             # a node/anchor or float in the tree.
+  'novalidate' => 0,         # same as setting @novalidate.
+  'encoding' => 'us-ascii',  # Current encoding set by @documentencoding
+                             # and normalized
+  'documentlanguage' => 'en' # Current documentlanguage set by @documentlanguage
+                             # or at initialization
+);
+
+# The commands in initialization_overrides are not set in the document if
+# set at the parser initialization.
+my %initialization_overrides = (
+  'encoding' => 1,
+  'documentlanguage' => 1,
 );
 
 # the other possible keys for the parser state are:
@@ -134,7 +257,6 @@ my %default_configuration = (
 # conditionals_stack      a stack of conditional commands that are expanded.
 # definfoenclose          an hash, key is the command name, value is an array
 #                         reference with 2 values, beginning and ending.
-# encoding                Current encoding set by @documentencoding
 # input                   a stack, with last at bottom.  Holds the opened files
 #                         or text.  Pending macro expansion or text expansion
 #                         is also in that structure.
@@ -157,6 +279,10 @@ my %default_configuration = (
 # floats                  key is the normalized float type, value is an array
 #                         reference holding all the floats.
 
+# set                     points to the value set when initializing, for
+#                         configuration items that are not to be overriden
+#                         by @-commands.  For example documentlanguage.
+
 # A line information is an hash reference with the keys:
 # line_nr        the line number
 # file_name      the file name
@@ -176,25 +302,26 @@ my %default_configuration = (
 # fh         filehandle for the file
 
 
-my %no_brace_commands        = %Texinfo::Common::no_brace_commands;
-my %misc_commands            = %Texinfo::Common::misc_commands;
-my %brace_commands           = %Texinfo::Common::brace_commands;    
-my %accent_commands          = %Texinfo::Common::accent_commands;
-my %context_brace_commands   = %Texinfo::Common::context_brace_commands;
-my %block_commands           = %Texinfo::Common::block_commands;
-my %block_item_commands      = %Texinfo::Common::block_item_commands;
-my %close_paragraph_commands = %Texinfo::Common::close_paragraph_commands;
-my %def_map                  = %Texinfo::Common::def_map;
-my %def_commands             = %Texinfo::Common::def_commands;
-my %def_aliases              = %Texinfo::Common::def_aliases;
-my %menu_commands            = %Texinfo::Common::menu_commands;
-my %preformatted_commands    = %Texinfo::Common::preformatted_commands;
-my %item_container_commands  = %Texinfo::Common::item_container_commands;
-my %item_line_commands       = %Texinfo::Common::item_line_commands;
-my %deprecated_commands      = %Texinfo::Common::deprecated_commands;
-my %root_commands            = %Texinfo::Common::root_commands;
-my @out_formats              = @Texinfo::Common::out_formats;
-my %command_index_prefix     = %Texinfo::Common::command_index_prefix;
+my %no_brace_commands         = %Texinfo::Common::no_brace_commands;
+my %misc_commands             = %Texinfo::Common::misc_commands;
+my %brace_commands            = %Texinfo::Common::brace_commands;    
+my %accent_commands           = %Texinfo::Common::accent_commands;
+my %context_brace_commands    = %Texinfo::Common::context_brace_commands;
+my %block_commands            = %Texinfo::Common::block_commands;
+my %block_item_commands       = %Texinfo::Common::block_item_commands;
+my %close_paragraph_commands  = %Texinfo::Common::close_paragraph_commands;
+my %def_map                   = %Texinfo::Common::def_map;
+my %def_commands              = %Texinfo::Common::def_commands;
+my %def_aliases               = %Texinfo::Common::def_aliases;
+my %menu_commands             = %Texinfo::Common::menu_commands;
+my %preformatted_commands     = %Texinfo::Common::preformatted_commands;
+my %item_container_commands   = %Texinfo::Common::item_container_commands;
+my %item_line_commands        = %Texinfo::Common::item_line_commands;
+my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
+my %root_commands             = %Texinfo::Common::root_commands;
+my @out_formats               = @Texinfo::Common::out_formats;
+my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
+my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 
 
 my %def_prepended_content;
@@ -447,17 +574,22 @@ sub parser(;$$)
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if (exists($default_configuration{$key})) {
-        if (ref($conf->{$key}) ne 'CODE') {
+        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
           $parser->{$key} = _deep_copy($conf->{$key});
         } else {
           $parser->{$key} = $conf->{$key};
+        }
+        if ($initialization_overrides{$key}) {
+          $parser->{'set'}->{$key} = $parser->{$key};
         }
       } else {
         warn "$key not a possible configuration in Texinfo::Parser::parser\n";
       }
     }
   }
-
+  #foreach my $value (keys %{$parser->{'values'}}) {
+  #  print STDERR "   ->  $value $parser->{'values'}->{$value}\n";
+  #}
   # Now initialize command hash that are dynamically modified, notably
   # those for index commands, and lists, based on defaults and user provided.
   $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
@@ -555,6 +687,8 @@ sub parse_texi_text($$;$)
       push @$lines_array, [$line, $line_nr];
     }
   }
+
+  $self = parser() if (!defined($self));
   $self->{'input'} = [{'pending' => $lines_array}];
   return $self->_parse_texi();
 }
@@ -585,6 +719,7 @@ sub parse_texi_file ($$)
                                       'type' => 'preamble' };
   }
 
+  $self = parser() if (!defined($self));
   $self->{'input'} = [{
        'pending' => [ [$line, { 'line_nr' => $line_nr,
                       'file_name' => $file_name, 'macro' => '' }] ],
@@ -1372,7 +1507,12 @@ sub _next_bracketed_or_word($)
   #print STDERR "BEFORE PROCESSING ".Texinfo::Convert::Texinfo::convert({'contents' => $contents});
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
     #print STDERR "Return bracketed\n";
-    return ($spaces, shift @{$contents});
+    my $bracketed = shift @{$contents};
+    # FIXME don't modify type here?
+    # return ($spaces, $bracketed);
+    return ($spaces, { 'contents' => $bracketed->{'contents'},
+                       'parent' => $bracketed->{'parent'},
+                       'type' => 'bracketed_def_content', });
   } elsif ($contents->[0]->{'cmdname'}) {
     #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
     return ($spaces, shift @{$contents});
@@ -1655,12 +1795,58 @@ sub _end_line($$$)
     my $def_context = pop @{$self->{'context_stack'}};
     die "BUG: def_context $def_context "._print_current($current) 
       if ($def_context ne 'def');
-    my $arguments = _parse_def ($current->{'parent'}->{'extra'}->{'def_command'}, 
+    my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
+    my $arguments = _parse_def ($def_command, 
                                 $current->{'contents'});
     if (scalar(@$arguments)) {
       $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
-      _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
-          $current->{'parent'}, $current->{'parent'}->{'extra'}->{'def_args'});
+      my $def_parsed_hash;
+      foreach my $arg (@$arguments) {
+        die if (!defined($arg->[0]));
+        last if ($arg->[0] eq 'arg' or $arg->[0] eq 'typearg' 
+                  or $arg->[0] eq 'delimiter');
+        next if ($arg->[0] eq 'spaces');
+        # change of type is done in _parse_def.
+        #if ($arg->[1]->{'type'} and $arg->[1]->{'type'} eq 'bracketed') {
+        #  $def_parsed_hash->{$arg->[0]} = { 'contents' => $arg->[1]->{'contents'},
+        #                                    'type' => 'bracketed_def_content',
+        #                                    'parent' => $arg->[1]->{'parent'}};
+        #} else {
+        #  $def_parsed_hash->{$arg->[0]} = $arg->[1];
+        #}
+        $def_parsed_hash->{$arg->[0]} = $arg->[1];
+      }
+      $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
+      my $index_entry = $def_parsed_hash->{'name'};
+      if (defined($index_entry)) {
+        if ($def_parsed_hash->{'class'}) {
+          if ($command_index_prefix{$def_command} eq 'f') {
+            $index_entry = $self->gdt('{name} on {class}', 
+                                  {'name' => $def_parsed_hash->{'name'},
+                                   'class' => $def_parsed_hash->{'class'}});
+          } elsif ($command_index_prefix{$def_command} eq 'v'
+                  and $def_command ne 'defcv') {
+            $index_entry = $self->gdt('{name} of {class}', 
+                                     {'name' => $def_parsed_hash->{'name'},
+                                     'class' => $def_parsed_hash->{'class'}});
+          }
+        }
+        my $index_contents;
+        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
+          $index_contents = $index_entry->{'contents'};
+        } else {
+          $index_contents = [$index_entry];
+        }
+        _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
+          #  $current->{'parent'}, $arguments);
+          $current->{'parent'}, $index_contents);
+      } else {
+        _line_warn ($self, sprintf($self->__('Missing name for @%s'), 
+         $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
+      }
+    } else {
+      _line_warn ($self, sprintf($self->__('Missing category for @%s'),
+         $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
     }
     $current = $current->{'parent'}->{'parent'};
 
@@ -1678,7 +1864,9 @@ sub _end_line($$$)
       my @prototype_row;
       foreach my $content (@{$current->{'contents'}}) {
         if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
-          push @prototype_row, $content;
+          push @prototype_row, { 'contents' => $content->{'contents'},
+                                 'parent' => $content->{'parent'},
+                                 'type' => 'bracketed_multitable_prototype'};
         } elsif ($content->{'text'}) {
           if ($content->{'text'} =~ /\S/) {
             foreach my $prototype(split /\s+/, $content->{'text'}) {
@@ -1804,40 +1992,43 @@ sub _end_line($$$)
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0]);
-      $current->{'extra'}->{'text_arg'} = $text;
-      if ($command eq 'include') {
-        my $file;
-        if ($text =~ m,^(/|\./|\.\./),) {
-          $file = $text if (-e $text and -r $text);
-        } else {
-          foreach my $dir (@{$self->{'include_directories'}}) {
-            $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
-            last if (defined($file));
-          }
-        }
-        if (defined($file)) {
-          my $filehandle = do { local *FH };
-          if (open ($filehandle, $file)) {
-            $included_file = 1;
-            binmode($filehandle, ":encoding($self->{'encoding'})")
-              if (defined($self->{'encoding'}));
-            print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
-            $included_file = 1;
-            unshift @{$self->{'input'}}, { 
-              'name' => $file,
-              'line_nr' => 1,
-              'pending' => [],
-              'fh' => $filehandle };
+      if ($text eq '') {
+        _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
+           $command), $line_nr);
+      } else {
+        $current->{'extra'}->{'text_arg'} = $text;
+        if ($command eq 'include') {
+          my $file;
+          if ($text =~ m,^(/|\./|\.\./),) {
+            $file = $text if (-e $text and -r $text);
           } else {
-            _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
-               $command, $text, $!), $line_nr);
+            foreach my $dir (@{$self->{'include_directories'}}) {
+              $file = "$dir/$text" if (-e "$dir/$text" and -r "$dir/$text");
+              last if (defined($file));
+            }
           }
-        } else {
-          _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
-             $command, $text), $line_nr);
-        }
-      } elsif ($command eq 'documentencoding') {
-        if ($text =~ /\S/) {
+          if (defined($file)) {
+            my $filehandle = do { local *FH };
+            if (open ($filehandle, $file)) {
+              $included_file = 1;
+              binmode($filehandle, ":encoding($self->{'encoding'})")
+                if (defined($self->{'encoding'}));
+              print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
+              $included_file = 1;
+              unshift @{$self->{'input'}}, { 
+                'name' => $file,
+                'line_nr' => 1,
+                'pending' => [],
+                'fh' => $filehandle };
+            } else {
+              _line_error ($self, sprintf($self->__("\@%s: Cannot open %s: %s"), 
+                 $command, $text, $!), $line_nr);
+            }
+          } else {
+            _line_error ($self, sprintf($self->__("\@%s: Cannot find %s"), 
+               $command, $text), $line_nr);
+          }
+        } elsif ($command eq 'documentencoding') {
           _line_warn($self, sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
                                    $text), $line_nr)
             if (!$canonical_texinfo_encodings{lc($text)});
@@ -1848,15 +2039,18 @@ sub _end_line($$$)
           } else {
             $encoding = $Texinfo::Common::encoding_aliases{$encoding} 
               if ($Texinfo::Common::encoding_aliases{$encoding});
-            $self->{'encoding'} = $encoding;
-            print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
-            foreach my $input (@{$self->{'input'}}) {
-              binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
+            $current->{'extra'}->{'encoding_alias'} =  $encoding;
+
+            if (!$self->{'set'}->{'encoding'}) {
+              $self->{'encoding'} = $encoding;
+              print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
+              foreach my $input (@{$self->{'input'}}) {
+                binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
+              }
             }
           }
-        } else {
-          _line_warn ($self, sprintf($self->__("\@%s missing argument"), 
-             $command), $line_nr);
+        } elsif ($command eq 'documentlanguage' and !$self->{'set'}->{'documentlanguage'}) {
+          $self->{'documentlanguage'} = $text;
         }
       }
     } elsif ($command eq 'node') {
@@ -1897,6 +2091,9 @@ sub _end_line($$$)
                              $current->{'extra'}->{'misc_content'});
         }
       }
+      if (defined($command_structuring_level{$command})) {
+        $current->{'level'} = $command_structuring_level{$command};
+      }
     }
     $current = $current->{'parent'};
     # if a file was included, remove completly the include file command.
@@ -1918,9 +2115,11 @@ sub _end_line($$$)
         if ($context ne 'line');
         $current = $current->{'parent'};
         $current->{'extra'}->{'max_columns'} = 0;
-        $current->{'extra'}->{'max_columns'} = 
-            scalar(@{$misc_cmd->{'extra'}->{'misc_args'}})
-              if (defined($misc_cmd->{'extra'}->{'misc_args'}));
+        if (defined($misc_cmd->{'extra'}->{'misc_args'})) {
+          $current->{'extra'}->{'max_columns'} = 
+            scalar(@{$misc_cmd->{'extra'}->{'misc_args'}});
+          $current->{'extra'}->{'columnfractions'} = $misc_cmd->{'extra'}->{'misc_args'};
+        }
         push @{$current->{'contents'}}, { 'type' => 'before_item',
            'contents' => [], 'parent', $current };
         $current = $current->{'contents'}->[-1];
@@ -2310,7 +2509,10 @@ sub _parse_texi($;$)
           ($arguments, $line, $line_nr) = 
             _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr);
         } elsif (($args_number >= 2) or ($args_number <1)) {
-          _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr);
+        # as agreed on the bug-texinfo mailing list, no warn when zero
+        # arg and not called with {}.
+          _line_warn($self, sprintf($self->__("\@%s defined with zero or more than one argument should be invoked with {}"), $command), $line_nr)
+             if ($args_number >= 2);
         } else {
           if ($line !~ /\n/) {
             ($line, $line_nr) = _new_line($self, $line_nr);
@@ -2519,7 +2721,20 @@ sub _parse_texi($;$)
           if ($line =~ s/^{([\w\-]+)}//) {
             my $value = $1;
             if (exists($self->{'values'}->{$value})) {
-              $line = $self->{'values'}->{$value} . $line;
+              if (!ref($self->{'values'}->{$value})) {
+                $line = $self->{'values'}->{$value} . $line;
+              # the push @{$current->{'contents'}}, {}; prevents a trailing
+              # text to be merged, to avoid having the value tree modified.
+              } elsif (ref($self->{'values'}->{$value}) eq 'ARRAY') {
+                foreach my $content (@{$self->{'values'}->{$value}}) {
+                  push @{$current->{'contents'}}, $content;
+                }
+                push @{$current->{'contents'}}, {};
+              } elsif (ref($self->{'values'}->{$value}) eq 'HASH') {
+                my $content = $self->{'values'}->{$value};
+                push @{$current->{'contents'}}, $content;
+                push @{$current->{'contents'}}, {};
+              }
             } else {
               # caller should expand something along 
               # gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
@@ -2821,7 +3036,8 @@ sub _parse_texi($;$)
                 push @{$self->{'context_stack'}}, 'def';
                 $current->{'contents'}->[-1]->{'type'} = 'def_line';
                 $current->{'contents'}->[-1]->{'extra'} = 
-                   {'def_command' => $base_command};
+                   {'def_command' => $base_command,
+                    'original_def_cmdname' => $command};
               }
             }
             # a container for what is on the @-command line, considered to
@@ -2834,7 +3050,38 @@ sub _parse_texi($;$)
               # @node is the only misc command with args separated with comma
               # FIXME a 3 lingering here deep into the code may not
               # be very wise...
-              $current->{'remaining_args'} = 3 if ($command eq 'node');
+              if ($command eq 'node') {
+                $current->{'remaining_args'} = 3;
+              } elsif ($command eq 'author') {
+                my $parent = $current;
+                my $found;
+                while ($parent->{'parent'}) {
+                  $parent = $parent->{'parent'};
+                  last if ($parent->{'type'}
+                          and $parent->{'type'} eq 'brace_command_context');
+                  if ($parent->{'cmdname'}) {
+                    if ($parent->{'cmdname'} eq 'titlepage') {
+                      push @{$self->{'extra'}->{'author'}}, $current;
+                      $found = 1;
+                    } elsif ($parent->{'cmdname'} eq 'quotation' or
+                        $parent->{'cmdname'} eq 'smallquotation') {
+                      $parent->{'extra'}->{'author'} = $current;
+                      $current->{'extra'}->{'quotation'} = $parent;
+                      $found = 1;
+                    }
+                    last if ($found);
+                  }
+                }
+                if (!$found) {
+                  _line_warn($self, sprintf($self->__(
+               "\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"),
+                                 $command), $current->{'line_nr'});
+                }
+              } elsif ($command eq 'dircategory' and $self->{'current_node'}) {
+                _line_warn ($self, $self->__("\@dircategory after first node"),
+                             $line_nr);
+              }
+
               $current = $current->{'args'}->[-1];
               push @{$self->{'context_stack'}}, 'line' 
                 unless ($def_commands{$command});
@@ -2913,7 +3160,8 @@ sub _parse_texi($;$)
                                                 'type' => 'def_line',
                                                 'parent' => $current,
                                                 'extra' => 
-                                                  {'def_command' => $command}
+                                                 {'def_command' => $command,
+                                                  'original_def_cmdname' => $command}
                                                 };
               $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
                 if ($invalid);
@@ -3070,7 +3318,8 @@ sub _parse_texi($;$)
                      and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                         or $simple_text_commands{$current->{'parent'}->{'cmdname'}}));
             }
-            print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: $current->{'parent'}->{'remaining_args'}, "
+            print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
+              .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
                if ($self->{'debug'});
           } elsif (($current->{'parent'} 

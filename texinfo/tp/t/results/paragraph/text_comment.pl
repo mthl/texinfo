@@ -41,4 +41,8 @@ $result_texts{'text_comment'} = 'text';
 $result_errors{'text_comment'} = [];
 
 
+
+$result_converted{'plaintext'}->{'text_comment'} = 'text
+';
+
 1;

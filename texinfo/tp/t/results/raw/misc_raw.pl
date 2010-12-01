@@ -142,4 +142,10 @@ in verbatim2
 $result_errors{'misc_raw'} = [];
 
 
+
+$result_converted{'plaintext'}->{'misc_raw'} = '
+in verbatim
+in verbatim2
+';
+
 1;

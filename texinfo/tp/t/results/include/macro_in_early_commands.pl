@@ -243,6 +243,7 @@ $result_trees{'macro_in_early_commands'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
+            'encoding_alias' => 'iso-8859-1',
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
@@ -622,6 +623,7 @@ $result_texts{'macro_in_early_commands'} = '
 
 
 top
+***
 
 In included file.
 
@@ -678,26 +680,7 @@ $result_menus{'macro_in_early_commands'} = {
   }
 };
 
-$result_errors{'macro_in_early_commands'} = [
-  {
-    'error_line' => ':18: warning: @documentencoding-command defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 18,
-    'macro' => '',
-    'text' => '@documentencoding-command defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':28: warning: @multiinclude defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 28,
-    'macro' => '',
-    'text' => '@multiinclude defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'macro_in_early_commands'} = [];
 
 
 1;

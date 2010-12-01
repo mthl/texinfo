@@ -142,26 +142,7 @@ This.  It.
 This 2 see.  A.
 ';
 
-$result_errors{'empty_macro_in_text_no_arg'} = [
-  {
-    'error_line' => ':4: warning: @texnl defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@texnl defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':9: warning: @texnl2 defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@texnl2 defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'empty_macro_in_text_no_arg'} = [];
 
 
 1;

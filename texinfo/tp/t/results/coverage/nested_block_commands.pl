@@ -1096,18 +1096,18 @@ $result_converted{'plaintext'}->{'nested_block_commands'} = 'In group
 
      in quotation
 
-In group
+   In group
      in quotation
-after quotation
+   after quotation
 
-In group sp b
-     in quotation
-
-In group sp b a
-
+   In group sp b
      in quotation
 
-In group sp a
+   In group sp b a
+
+     in quotation
+
+   In group sp a
 
      in quotation
 
@@ -1119,14 +1119,14 @@ In group sp a
 
      in quotation
 
-After quotation sp b
+   After quotation sp b
 
      in quotation
-After quotation sp a
+   After quotation sp a
 
      in quotation
 
-After quotation sp b a
+   After quotation sp b a
 
 ';
 

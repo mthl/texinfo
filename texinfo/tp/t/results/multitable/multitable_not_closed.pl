@@ -58,8 +58,16 @@ $result_trees{'multitable_not_closed'} = {
       'extra' => {
         'max_columns' => 2,
         'prototypes' => [
-          {},
-          {}
+          {
+            'contents' => [],
+            'parent' => {},
+            'type' => 'bracketed_multitable_prototype'
+          },
+          {
+            'contents' => [],
+            'parent' => {},
+            'type' => 'bracketed_multitable_prototype'
+          }
         ]
       },
       'parent' => {}
@@ -76,8 +84,10 @@ $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3]{
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0];
-$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[0] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0];
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
+$result_trees{'multitable_not_closed'}{'contents'}[0]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_not_closed'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed'};
 
 $result_texis{'multitable_not_closed'} = '@multitable {r} {t}

@@ -379,4 +379,13 @@ $result_errors{'menu_entry_node_comments'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'menu_entry_node_comments'} = '* Menu:
+
+* (f)a1c::
+* (f)a2c::  
+* (f)a3c::         d
+* (f) a4 ::   
+';
+
 1;

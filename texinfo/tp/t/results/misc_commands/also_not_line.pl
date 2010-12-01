@@ -264,6 +264,7 @@ $result_trees{'also_not_line'} = {
           {}
         ]
       },
+      'level' => 3,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 18,
@@ -473,6 +474,7 @@ After page on its own line.
 page noindent refill  
 novalidate 
 special
+-------
 
 Only valid between iftex:
 vskip cropmarks 

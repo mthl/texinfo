@@ -232,9 +232,10 @@ $result_errors{'preformatted'} = [];
 
 
 $result_converted{'plaintext'}->{'preformatted'} = '
-     e-xample  some  
+     e-xample  some
 
-   text
+        text
+
 `item in table in format\'
 
      in table in format

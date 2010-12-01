@@ -543,6 +543,7 @@ $result_texts{'macro_and_commands_in_early_commands'} = '
 
 
 top
+***
 
 In included file.
 
@@ -614,15 +615,6 @@ $result_errors{'macro_and_commands_in_early_commands'} = [
     'line_nr' => 11,
     'macro' => '',
     'text' => 'unrecognized encoding name `ISO-8859-1@\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':21: warning: @multiinclude defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 21,
-    'macro' => '',
-    'text' => '@multiinclude defined with zero or more than one argument should be invoked with {}',
     'type' => 'warning'
   }
 ];

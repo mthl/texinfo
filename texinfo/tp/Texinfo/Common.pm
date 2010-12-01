@@ -22,9 +22,25 @@ package Texinfo::Common;
 
 use strict;
 
-# nothing exported.
 require Exporter;
-use vars qw($VERSION);
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+
+# This allows declaration       use Texinfo::Covert::Text ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+%EXPORT_TAGS = ( 'all' => [ qw(
+) ] );
+
+@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+@EXPORT = qw(
+);
+
 $VERSION = '0.01';
 
 # i18n
@@ -260,7 +276,7 @@ our %def_map = (
     'defcv',     [ 'category', 'class' , 'name' ],
     'deftypecv', [ 'category', 'class' , 'type', 'name' ],
     'defop',     [ 'category', 'class' , 'name', 'arg' ],
-    	'deftp',     [ 'category', 'name', 'argtype' ],
+    'deftp',     [ 'category', 'name', 'argtype' ],
     # shortcuts
     # FIXME i18n
     'defun',         {'deffn'     => 'Function'},
@@ -381,32 +397,38 @@ our %deprecated_commands = (
 # the next root command.  @node and sectioning commands.
 our %root_commands;
 
+our %command_structuring_level = (
+              'top', 0,
+              'chapter', 1,
+              'unnumbered', 1,
+              'chapheading', 1,
+              'appendix', 1,
+              'section', 2,
+              'unnumberedsec', 2,
+              'heading', 2,
+              'appendixsec', 2,
+              'subsection', 3,
+              'unnumberedsubsec', 3,
+              'subheading', 3,
+              'appendixsubsec', 3,
+              'subsubsection', 4,
+              'unnumberedsubsubsec', 4,
+              'subsubheading', 4,
+              'appendixsubsubsec', 4,
+         );
+
+# out of the main hierarchy
+$command_structuring_level{'part'} = 0;
+# this are synonyms
+$command_structuring_level{'appendixsection'} = 2;
+# command_structuring_level{'majorheading'} is also 1 and not 0
+$command_structuring_level{'majorheading'} = 1;
+$command_structuring_level{'chapheading'} = 1;
+$command_structuring_level{'centerchap'} = 1;
+
 our %sectioning_commands;
 
-foreach my $sectioning_command (
-    'top',
-    'chapter',
-    'unnumbered',
-    'chapheading',
-    'appendix',
-    'section',
-    'unnumberedsec',
-    'heading',
-    'appendixsec',
-    'subsection',
-    'unnumberedsubsec',
-    'subheading',
-    'appendixsubsec',
-    'subsubsection',
-    'unnumberedsubsubsec',
-    'subsubheading',
-    'appendixsubsubsec',
-    'part',
-    'appendixsection',
-    'majorheading',
-    'chapheading',
-    'centerchap'
-) {
+foreach my $sectioning_command (keys (%command_structuring_level)) {
   $misc_commands{$sectioning_command} = 'line';
   if ($sectioning_command =~ /heading/) {
     $close_paragraph_commands{$sectioning_command} = 1;

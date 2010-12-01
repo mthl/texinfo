@@ -136,6 +136,7 @@ $result_trees{'value_in_misc_commands'} = {
               {}
             ]
           },
+          'level' => 3,
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 5,
@@ -1516,6 +1517,7 @@ $result_trees{'value_in_misc_commands'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
+            'encoding_alias' => 'iso-8859-1',
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
@@ -3124,7 +3126,9 @@ After page on it\'s own line.
 
 $result_texts{'value_in_misc_commands'} = '
 top atext
+*********
 Comment like: atext
+-------------------
 
 Text line followed by a comment on the same line and another below 
 

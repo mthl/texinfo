@@ -52,7 +52,7 @@ sub dump($)
   $word = $self->{'word'} if (defined($self->{'word'}));
   my $end_sentence = 'UNDEF';
   $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
-  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}' end_sentence: $self->{'end_sentence'}\n"; 
+  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}' end_sentence: $end_sentence\n"; 
 }
 
 sub _cut_line($)

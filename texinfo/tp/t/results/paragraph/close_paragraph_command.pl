@@ -154,4 +154,18 @@ inew p after sp';
 $result_errors{'close_paragraph_command'} = [];
 
 
+
+$result_converted{'plaintext'}->{'close_paragraph_command'} = 'para
+in titlefont
+************
+   after titlefont.
+
+   p before sp
+
+
+
+
+   inew p after sp
+';
+
 1;

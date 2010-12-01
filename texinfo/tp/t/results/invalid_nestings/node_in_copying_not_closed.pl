@@ -190,6 +190,7 @@ This is an unterminatted copyright notice
 
 
 $result_texts{'node_in_copying_not_closed'} = 'Top section
+***********
 
 
 ';

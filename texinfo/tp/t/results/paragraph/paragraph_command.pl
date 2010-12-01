@@ -80,4 +80,10 @@ aaa.
 $result_errors{'paragraph_command'} = [];
 
 
+
+$result_converted{'plaintext'}->{'paragraph_command'} = '@
+
+   aaa.
+';
+
 1;

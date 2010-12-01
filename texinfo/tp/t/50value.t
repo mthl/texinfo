@@ -299,7 +299,11 @@ After page on it\'s own line.
 
 @set bye_macro @bye
 
-@value{bye_macro}']
+@value{bye_macro}'],
+['value_in_invalid_documentencoding',
+'@set badvalue bad
+@documentencoding @value{badvalue}
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

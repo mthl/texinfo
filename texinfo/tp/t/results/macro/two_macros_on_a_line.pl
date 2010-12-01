@@ -425,26 +425,7 @@ in macro
 after in mymacro
 ';
 
-$result_errors{'two_macros_on_a_line'} = [
-  {
-    'error_line' => ':16: warning: @mymacro defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 16,
-    'macro' => '',
-    'text' => '@mymacro defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':19: warning: @mymacro defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 19,
-    'macro' => '',
-    'text' => '@mymacro defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'two_macros_on_a_line'} = [];
 
 
 1;

@@ -70,7 +70,7 @@ sub remove_keys($$;$)
       }
     }
     $been_there->{$root} = 1;
-    foreach my $key (%$root) {
+    foreach my $key (keys(%$root)) {
       next if (!defined($root->{$key}) or !ref($root->{$key})
                or (ref($root->{$key}) ne 'HASH' 
                     and ref($root->{$key}) ne 'ARRAY')
@@ -221,6 +221,8 @@ sub test($$)
   my $floats = $parser->floats_information();
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
+
+  Texinfo::Structuring::number_floats($floats);
 
   my $top_node = Texinfo::Structuring::nodes_tree($parser);
 

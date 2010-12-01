@@ -28,6 +28,7 @@ use Texinfo::Convert::Text;
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
+use Texinfo::Parser qw(gdt);
 
 use Carp qw(cluck);
 
@@ -58,6 +59,8 @@ my %kept_misc_commands = %Texinfo::Convert::Text::kept_misc_commands;
 #                     'item', 'itemx', 'tab', 'headitem',
 #    'node',
 
+my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
+
 my %informative_commands;
 foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
@@ -87,9 +90,15 @@ my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
+my @out_formats = @Texinfo::Common::out_formats;
 
 foreach my $def_command (keys(%def_commands)) {
   $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
+}
+
+my %preformatted_context_commands = %preformatted_commands;
+foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
+  $preformatted_context_commands{$preformatted_command} = 1;
 }
 
 my %ignored_misc_commands;
@@ -99,7 +108,7 @@ foreach my $misc_command (keys(%misc_commands)) {
 }
 
 my %ignored_commands = %ignored_misc_commands;
-foreach my $ignored_brace_commands ('caption', 'shortcation', 
+foreach my $ignored_brace_commands ('caption', 'shortcaption', 
   'hyphenation') {
   $ignored_commands{$ignored_brace_commands} = 1;
 }
@@ -128,7 +137,7 @@ foreach my $non_indented('format', 'smallformat') {
 }
 
 foreach my $format_context_command (keys(%menu_commands), 'verbatim',
- 'flushleft', 'flushright', 'multitable') {
+ 'flushleft', 'flushright', 'multitable', 'float') {
   $format_context_commands{$format_context_command} = 1;
 }
 
@@ -189,7 +198,7 @@ foreach my $command (keys(%style_map)) {
 
 # math  is special
 my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
-  'slanted', 'sansserif', 'var', 'titlefont', 'verb', 'clicksequence',
+  'slanted', 'sansserif', 'var', 'verb', 'clicksequence',
   'headitemfont');
 
 foreach my $asis_command (@asis_commands) {
@@ -220,7 +229,10 @@ my %defaults = (
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
   'documentencoding'     => 'us-ascii',
+  'encoding'             => 'us-ascii',
+  'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
+  'expanded_formats'     => [],
 
   'debug'                => 0
 );
@@ -259,14 +271,38 @@ sub converter(;$)
     $converter->{$key} = $defaults{$key} if (!$converter->{'set'}->{$key});
   }
   $converter->{'context'} = ['_Root_context'];
-  $converter->{'formatters'} = [];
   $converter->{'format_context'} = [{
                                      'cmdname' => '_top_format',
                                      'paragraph_count' => 0, 
                                      'indent_level' => 0,
                                      'max' => $converter->{'fillcolumn'}
                                    }];
+  $converter->{'formatters'} = [$converter->new_formatter('line')];
+  $converter->{'formatters'}->[-1]->{'_top_formatter'} = 1;
+  %{$converter->{'ignored_types'}} = %ignored_types;
+  %{$converter->{'ignored_commands'}} = %ignored_commands;
+  $converter->{'footnote_index'} = 0;
+  $converter->{'pending_footnotes'} = [];
+
+  # turn the array to a hash for speed.  Not sure it really matters for such
+  # a small array.
+  foreach my $expanded_format(@{$converter->{'expanded_formats'}}) {
+    $converter->{'expanded_formats_hash'}->{$expanded_format} = 1;
+  }
+  foreach my $format (@out_formats) {
+    $converter->{'ignored_commands'}->{$format} = 1 
+       unless ($converter->{'expanded_formats_hash'}->{$format});
+  }
+
   return $converter;
+}
+
+sub convert($)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return ($self->_convert($root) . $self->_footnotes());
 }
 
 sub _normalise_space($)
@@ -304,22 +340,36 @@ sub new_formatter($$;$)
   my $self = shift;
   my $type = shift;
   my $conf = shift;
+
+  my $first_indent_length = $conf->{'first_indent_length'};
+  delete $conf->{'first_indent_length'};
   
   my $container;
-  my $container_conf = { 
+  my $container_conf = {
          'max'                 => $self->{'format_context'}->[-1]->{'max'},
          'frenchspacing'       => $self->{'frenchspacing'},
          'indent_level'        => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
     if (defined($self->{'format_context'}->[-1]->{'counter'}));
+  $container_conf->{'debug'} = 1 if ($self->{'debug'});
   if ($conf) {
     foreach my $key (keys(%$conf)) {
       $container_conf->{$key} = $conf->{$key};
     }
   }
-  $container_conf->{'indent_length'} = $indent_length*$container_conf->{'indent_level'}
-    if (!defined($container_conf->{'indent_length'}));
+  my $indent = $container_conf->{'indent_length'};
+  $indent = $indent_length*$container_conf->{'indent_level'}
+    if (!defined($indent));
+  if ($first_indent_length) {
+    $container_conf->{'indent_length'} = $first_indent_length;
+    $container_conf->{'indent_length_next'} = $indent;
+  } else {
+    $container_conf->{'indent_length'} = $indent;
+  }
+    
+  #$container_conf->{'indent_length'} = $indent_length*$container_conf->{'indent_level'}
+  #  if (!defined($container_conf->{'indent_length'}));
   if ($type eq 'line') {
     $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
@@ -330,11 +380,8 @@ sub new_formatter($$;$)
     die "Unknown container type $type\n";
   }
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   'code' => 0, 'w' => 0, 
+                   'code' => 0, 'w' => 0,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
-  if (defined($self->{'preformatted'})) {
-    $formatter->{'preformatted'} = $self->{'preformatted'};
-  }
   return $formatter;
 }
 
@@ -345,7 +392,7 @@ sub convert_line($$;$)
   my $conf = shift;
   my $container = $self->new_formatter('line', $conf);
   push @{$self->{'formatters'}}, $container;
-  my $result = $self->convert($converted);
+  my $result = $self->_convert($converted);
   $result .= $container->{'container'}->end();
   pop @{$self->{'formatters'}};
   return $result;
@@ -359,43 +406,59 @@ sub convert_unfilled($$;$)
   my $container = $self->new_formatter('unfilled', $conf);
   $container->{'code'} = 1;
   push @{$self->{'formatters'}}, $container;
-  my $result = $self->convert($converted);
+  my $result = $self->_convert($converted);
   $result .= $container->{'container'}->end();
   pop @{$self->{'formatters'}};
   return $result;
 }
 
-sub _def_argument_content($$)
+sub _definition_category($$$$)
 {
   my $self = shift;
-  my $converted = shift;
-  if ($converted->{'type'} and $converted->{'type'} eq 'bracketed') {
-    $converted = { 'contents' => $converted->{'contents'},
-                   'type' => 'bracketed_def_content' };
-  }
-  return $converted;
-}
-
-sub _definition_category($$$)
-{
   my $current = shift;
   my $arg_category = shift;
   my $arg_class = shift;
-  return $arg_category->[0]
-    if (!defined($arg_class->[1]) or $arg_class->[1] !~ /\S/);
+  return $arg_category
+    if (!defined($arg_class));
   
   my $style = 
     $Texinfo::Common::command_index_prefix{$current->{'extra'}->{'def_command'}};
-  my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
-  my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
-  print STDERR "DEFINITION CATEGORY($style): $category $class\n";
+  #my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
+  #my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
+  #print STDERR "DEFINITION CATEGORY($style): $category $class\n"
+  #  if ($self->{'debug'});
   if ($style eq 'f') {
-    return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
-    #gdt('{category} on {class}', { 'category' => $category, 'class' => $class });
+    #return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
+    return $self->gdt('{category} on {class}', { 'category' => $arg_category, 
+                                          'class' => $arg_class });
   } elsif ($style eq 'v') {
-    return Texinfo::Parser::parse_texi_line (undef, "$category of $class");
+    #return Texinfo::Parser::parse_texi_line (undef, "$category of $class");
+    return $self->gdt('{category} of {class}', { 'category' => $arg_category, 
+                                          'class' => $arg_class });
   }
-  return $arg_category->[0];
+  return $arg_category;
+}
+
+my $footnote_indent = 3;
+sub _footnotes($)
+{
+  my $self = shift;
+  my $result = '';
+  if (scalar(@{$self->{'pending_footnotes'}})) {
+    $result .= "\n" unless ($self->{'empty_lines_count'});
+    $result .= "   ---------- Footnotes ----------\n\n";
+    while (@{$self->{'pending_footnotes'}}) {
+      my $footnote = shift (@{$self->{'pending_footnotes'}});
+      my $footnote_text = ' ' x $footnote_indent 
+               . "($footnote->{'number'}) ";
+      $result .= $footnote_text;
+      $self->{'format_context'}->[-1]->{'counter'} += 
+         Texinfo::Convert::Unicode::string_width($footnote_text);
+      $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]);
+      $result .= "\n" unless ($self->{'empty_lines_count'});
+    }
+  }
+  return $result;
 }
 
 # on top, the converter object which holds some gloal information
@@ -412,7 +475,6 @@ sub _definition_category($$$)
 # in container
 # 'upper_case'
 # 'code'
-# and (from the main context) preformatted
 # 
 # paragraph number: incremented with block commands except html and such
 # and group and raggedright and menu*
@@ -421,29 +483,33 @@ sub _definition_category($$$)
 
 # preformatted
 
-sub convert($$);
+sub _convert($$);
 
-sub convert($$)
+sub _convert($$)
 {
   my $self = shift;
   my $root = shift;
 
-  my $container_context;
-  if (@{$self->{'formatters'}}) {
-    $container_context = $self->{'formatters'}->[-1];
-  }
+  #my $formatter;
+  #if (@{$self->{'formatters'}}) {
+  my $formatter = $self->{'formatters'}->[-1];
+  #}
   if ($self->{'debug'}) {
-    print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}})";
-    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, $self->{'format_context'}->[-1]->{'counter'}, $self->{'format_context'}->[-1]->{'max'}\n";
+    my $empty_lines_count = '';
+    $empty_lines_count = $self->{'empty_lines_count'} if defined($self->{'empty_lines_count'});
+    print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}},$empty_lines_count)";
+    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, "
+      .(defined($self->{'format_context'}->[-1]->{'counter'}) ? "counter: $self->{'format_context'}->[-1]->{'counter'}, " : '') 
+       ."max: $self->{'format_context'}->[-1]->{'max'}\n";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     print STDERR "\n";
     print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
-    if ($container_context) {
-      print STDERR "  Container:($container_context->{'code'},$container_context->{'upper_case'},$container_context->{'preformatted'},$container_context->{'frenchspacing_stack'}->[-1]) ";
-      $container_context->{'container'}->dump();
+    if ($formatter) {
+      print STDERR "  Container:($formatter->{'code'},$formatter->{'upper_case'},$formatter->{'frenchspacing_stack'}->[-1]) ";
+      $formatter->{'container'}->dump();
     }
   }
 
@@ -473,8 +539,9 @@ sub convert($$)
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
   # OUT_ENCODING ENCODING_NAME
 
-  if (($root->{'type'} and $ignored_types{$root->{'type'}})
-       or ($root->{'cmdname'} and $ignored_commands{$root->{'cmdname'}})) {
+  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
+       or ($root->{'cmdname'} 
+            and $self->{'ignored_commands'}->{$root->{'cmdname'}})) {
     print STDERR "IGNORED\n" if ($self->{'debug'});
     return '';
   }
@@ -482,34 +549,37 @@ sub convert($$)
 
   if ($root->{'type'} and $root->{'type'} eq 'bracketed'
       and $self->{'context'}->[-1] eq 'math') {
-    $result .= $container_context->{'container'}->add_text('{');
+    $result .= $formatter->{'container'}->add_text('{');
   }
 
   if (defined($root->{'text'})) {
-    if ($container_context) {
-      $result .= $container_context->{'container'}->add_text(
-                      $self->process_text($root, $container_context));
+    if (!$formatter->{'_top_formatter'}) {
+      $result .= $formatter->{'container'}->add_text(
+                      $self->process_text($root, $formatter));
+    } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
+      $result .= $root->{'text'};
     # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
       warn "BUG: ignored text not empty `$root->{'text'}'\n";
     }
   }
   my $preformatted;
+  my $cell;
   if ($root->{'cmdname'}) {
     my $unknown_command;
     my $command = $root->{'cmdname'};
     if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
       if ($command eq ':') {
-        $container_context->{'container'}->inhibit_end_sentence();
+        $formatter->{'container'}->inhibit_end_sentence();
       } elsif ($command eq '*') {
-        $result .= $container_context->{'container'}->add_pending_word();
-        $result .= $container_context->{'container'}->end_line();
+        $result .= $formatter->{'container'}->add_pending_word();
+        $result .= $formatter->{'container'}->end_line();
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
-        $result .= $container_context->{'container'}->add_next($command, undef, 1),
+        $result .= $formatter->{'container'}->add_next($command, undef, 1),
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
-        $result .= $container_context->{'container'}->add_next($text_no_brace_commands{$root->{'cmdname'}});
+        $result .= $formatter->{'container'}->add_next($text_no_brace_commands{$root->{'cmdname'}});
       } else {
-        $result .= $container_context->{'container'}->add_text($text_no_brace_commands{$root->{'cmdname'}});
+        $result .= $formatter->{'container'}->add_text($text_no_brace_commands{$root->{'cmdname'}});
       }
       return $result;
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
@@ -518,50 +588,50 @@ sub convert($$)
           and defined($root->{'extra'}->{'clickstyle'})
           and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
       if ($command eq 'enddots') {
-        $result .= $container_context->{'container'}->add_next($text_brace_no_arg_commands{$command}, undef, 1),
+        $result .= $formatter->{'container'}->add_next($text_brace_no_arg_commands{$command}, undef, 1),
       } else {
-        $result .= $container_context->{'container'}->add_text($text_brace_no_arg_commands{$command});
+        $result .= $formatter->{'container'}->add_text($text_brace_no_arg_commands{$command});
         if ($command eq 'dots') {
-          $container_context->{'container'}->inhibit_end_sentence();
+          $formatter->{'container'}->inhibit_end_sentence();
         }
       }
       return $result;
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
-      $result .= $container_context->{'container'}->add_text(
+      $result .= $formatter->{'container'}->add_text(
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'}));
       return $result;
     } elsif ($style_map{$command}) {
       if ($code_style_commands{$command}) {
-        $container_context->{'code'}++;
-        push @{$container_context->{'frenchspacing_stack'}}, 1;
-        $container_context->{'container'}->set_space_protection(undef,
+        $formatter->{'code'}++;
+        push @{$formatter->{'frenchspacing_stack'}}, 1;
+        $formatter->{'container'}->set_space_protection(undef,
           undef,undef,1);
       }
-      $container_context->{'upper_case'}++ if ($upper_case_commands{$command});
+      $formatter->{'upper_case'}++ if ($upper_case_commands{$command});
       if ($command eq 'w') {
-        $container_context->{'w'}++;
-        $container_context->{'container'}->set_space_protection(1,1)
-          if ($container_context->{'w'} == 1);
+        $formatter->{'w'}++;
+        $formatter->{'container'}->set_space_protection(1,1)
+          if ($formatter->{'w'} == 1);
       }
-      $result .= $container_context->{'container'}->add_text($style_map{$command}->[0]);
-      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
-      $result .= $container_context->{'container'}->add_text($style_map{$command}->[1]);
+      $result .= $formatter->{'container'}->add_text($style_map{$command}->[0]);
+      $result .= $self->_convert($root->{'args'}->[0]) if ($root->{'args'});
+      $result .= $formatter->{'container'}->add_text($style_map{$command}->[1]);
       if ($command eq 'w') {
-        $container_context->{'w'}--;
-        $container_context->{'container'}->set_space_protection(0,0)
-          if ($container_context->{'w'} == 0);
+        $formatter->{'w'}--;
+        $formatter->{'container'}->set_space_protection(0,0)
+          if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
-        $container_context->{'code'}--;
-        pop @{$container_context->{'frenchspacing_stack'}};
-        $container_context->{'container'}->set_space_protection(undef,
-          undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
+        $formatter->{'code'}--;
+        pop @{$formatter->{'frenchspacing_stack'}};
+        $formatter->{'container'}->set_space_protection(undef,
+          undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
       }
-      $container_context->{'upper_case'}-- if ($upper_case_commands{$command});
+      $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($root->{'cmdname'} eq 'image') {
       # FIXME
-      #return $self->convert($root->{'args'}->[0]);
+      #return $self->_convert($root->{'args'}->[0]);
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
 
@@ -594,7 +664,7 @@ sub convert($$)
             @contents = (@{$root->{'extra'}->{'brace_command_contents'}->[1]},
                             {'text' => ' ('},
                             {'type' => 'code',
-                             'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]
+                             'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]
                             },
                             {'text' => ')'});
           } else {
@@ -607,10 +677,21 @@ sub convert($$)
         unshift @{$self->{'current_contents'}->[-1]}, @contents;
       }
     } elsif ($command eq 'footnote') {
-      # TODO
+      my $footnote_number;
+      if ($self->{'number_footnotes'}) {
+        $self->{'footnote_index'}++;
+        $footnote_number = $self->{'footnote_index'};
+      } else {
+        $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
+      }
+      $formatter->{'container'}->add_text("($footnote_number)");
+      push @{$self->{'pending_footnotes'}}, {'root' => $root, 
+                                             'number' => $footnote_number}; 
     } elsif ($command eq 'anchor') {
-      # TODO
+      $result .= $formatter->{'container'}->add_pending_word();
     } elsif ($ref_commands{$command}) {
+      # FIXME if it a reference to a float with a label, $arg[1] should 
+      # be set to '$type $number' or '$number' if there is no type.
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
           and scalar(@{$root->{'extra'}->{'brace_command_contents'}})) {
         my @args = @{$root->{'extra'}->{'brace_command_contents'}};
@@ -636,7 +717,7 @@ sub convert($$)
         if (defined($args[3])) {
           $file = [{'text' => '('},
                    {'type' => 'code',
-                    'contents' => [@{$args[3]}]},
+                    'contents' => $args[3]},
                    {'text' => ')'},];
         } elsif (defined($args[4])) {
           # FIXME this is a bit strange.
@@ -649,7 +730,7 @@ sub convert($$)
           }
           # node name
           push @contents, ({'type' => 'code',
-                            'contents' => [@{$args[0]}]});
+                            'contents' => $args[0]});
           push @contents, {'text' => '.'} if ($command eq 'pxref');
         } else {
           push @contents, (@{$args[0]}, {'text' => '::'});
@@ -663,7 +744,7 @@ sub convert($$)
         # in abbr spaces never end a sentence.
         if ($command eq 'abbr') {
           @contents = ({'type' => 'frenchspacing',
-                     'contents' => [@{$root->{'extra'}->{'brace_command_contents'}->[0]}]});
+                     'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
         } else {
           @contents = @{$root->{'extra'}->{'brace_command_contents'}->[0]};
         }
@@ -677,41 +758,35 @@ sub convert($$)
       }
     } elsif ($command eq 'math') {
       push @{$self->{'context'}}, 'math';
-      $result .= $self->convert($root->{'args'}->[0]) if ($root->{'args'});
+      $result .= $self->_convert($root->{'args'}->[0]) if ($root->{'args'});
       pop @{$self->{'context'}};
       return $result;
      # could this be used otherwise?
+    } elsif ($command eq 'titlefont') {
+      $result = Texinfo::Convert::Text::heading({'level' => 0},
+           $self->convert_line ($root->{'args'}->[0]));
+      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+      return $result;
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
       die "Unhandled command with braces $root->{'cmdname'}\n";
-      #return $self->convert($root->{'args'}->[0]);
+      #return $self->_convert($root->{'args'}->[0]);
     # block commands
     } elsif (exists($block_commands{$root->{'cmdname'}})) {
+      # remark:
+      # cartouche group and raggedright -> nothing on format stack
       # TODO
-      # raw
-      # verbatim
-      # preformatted
-      # quotation and smallquotation
-      # multitable
-      # *table
-      # itemize
-      # enumerate
-      # menu
-      # def
-      # group and raggedright -> nothing on format stack
-      # cartouche
       # flushleft and flushright -> keep track of result and add space
       #    at the end. do something specific here or at the end?
       #    punctuation munging is done, but end of lines are kept.
 
-      if ($preformatted_commands{$root->{'cmdname'}} 
-           or $menu_commands{$root->{'cmdname'}}
-           or $root->{'cmdname'} eq 'verbatim') {
+      if ($preformatted_context_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, 'preformatted';
       }
       if ($format_context_commands{$root->{'cmdname'}}) {
-        push @{$self->{'format_context'}}, { 'cmdname' => $root->{'cmdname'},
+        push @{$self->{'format_context'}}, 
+             { 'cmdname' => $root->{'cmdname'},
                'paragraph_count' => 0,
                'indent_level' => 
                    $self->{'format_context'}->[-1]->{'indent_level'},
@@ -726,26 +801,53 @@ sub convert($$)
       if ($root->{'cmdname'} eq 'quotation'
           or $root->{'cmdname'} eq 'smallquotation') {
         if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
-          my $quotation_arg = Texinfo::Convert::Texinfo::convert(
-            {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
-          my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
+          #my $quotation_arg = Texinfo::Convert::Texinfo::convert(
+          #  {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
+          #my $prepended = Texinfo::Parser::parse_texi_line (undef, '@b{'.${quotation_arg}.':} ');
+          my $prepended = $self->gdt('@b{{quotation_arg}:} ', 
+             {'quotation_arg' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
+          #print STDERR Data::Dumper->Dump([$prepended]);
           $result = $self->convert_line ($prepended);
           $self->{'format_context'}->[-1]->{'counter'} += 
              Texinfo::Convert::Unicode::string_width($result);
+          $self->{'empty_lines_count'} = 0 unless ($result eq '');
 
           #return gdt('@b{{quotation_arg}:} ', {'quotation_arg' => $text}, {'keep_texi' => 1});
           #$result = convert($root->{'args'}->[0]) ."\n";
         }
+      } elsif ($root->{'cmdname'} eq 'menu') {
+        $result .= "* Menu:\n\n";
+      } elsif ($root->{'cmdname'} eq 'multitable') {
+        my $columnsize;
+        if ($root->{'extra'}->{'columnfractions'}) {
+          foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+            push @$columnsize, int($fraction * $self->{'format_context'}->[-1]->{'max'} +0.5);
+          }
+        } elsif ($root->{'extra'}->{'prototypes'}) {
+          foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
+            my $formatted_prototype = $self->convert_line($prototype, {'indent_length' => 0});
+            print STDERR " MULTITABLE_PROTO {$formatted_prototype}\n" 
+              if ($self->{'debug'});
+            push @$columnsize, Texinfo::Convert::Unicode::string_width($formatted_prototype);
+          }
+        }
+        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
+        $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
+      } elsif ($root->{'cmdname'} eq 'direntry') {
+        # FIXME main::line_warn(__("\@direntry after first node"), $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node)); 
+        $result .= "START-INFO-DIR-ENTRY\n";
       }
+
     } elsif ($root->{'cmdname'} eq 'node') {
         # FIXME handle node
+      $self->{'footnote_index'} = 0;
+      $result .= $self->_footnotes();
     } elsif ($misc_commands{$root->{'cmdname'}}) {
       if ($sectioning_commands{$root->{'cmdname'}}) {
-        # FIXME handle sectioning commands with their underline
         if ($root->{'args'}) {
           $result = $self->convert_line($root->{'args'}->[0]);
-          chomp ($result);
-          $result .= "\n";
+          $result = Texinfo::Convert::Text::heading ($root, $result);
+          $self->{'empty_lines_count'} = 0 unless ($result eq '');
         }
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
               and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
@@ -753,12 +855,13 @@ sub convert($$)
         if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
           $contents = [{'cmdname' => $root->{'parent'}->{'extra'}->{'command_as_argument'},
                    'args' => [{'type' => 'brace_command_arg', 
-                              'contents' => [@$contents]}]
+                              'contents' => $contents}]
           }];
         }
-        $result = $self->convert_line({'contents' => [@$contents]},
+        $result = $self->convert_line({'contents' => $contents},
             {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
         chomp ($result);
+        $self->{'empty_lines_count'} = 0 unless ($result eq '');
         $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
                and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
@@ -774,7 +877,7 @@ sub convert($$)
             $root->{'parent'}->{'extra'}->{'enumerate_specification'},
             $root->{'extra'}->{'item_number'}) . '. ');
         } else {
-          $result .= $self->convert(
+          $result .= $self->_convert(
             {'contents' => 
                [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
                 { 'text' => ' ' }]
@@ -786,11 +889,25 @@ sub convert($$)
         pop @{$self->{'formatters'}};
         $self->{'format_context'}->[-1]->{'counter'} += 
            Texinfo::Convert::Unicode::string_width($result);
-        # FIXME open a format_context?
+        $self->{'empty_lines_count'} = 0 unless ($result eq '');
       } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
                or $root->{'cmdname'} eq 'tab') {
-      #} elsif ($root->{'cmdname'} eq 'tab') {
-        # TODO
+        my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
+        $self->{'format_context'}->[-1]->{'item_command'} = $root->{'cmdname'}
+          if ($root->{'cmdname'} ne 'tab');
+        print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$root->{'cmdname'}. Width: $cell_width\n"
+              if ($self->{'debug'});
+        die if (!defined($cell_width));
+        push @{$self->{'format_context'}},
+             { 'cmdname' => $root->{'cmdname'},
+               'paragraph_count' => 0,
+               'indent_level' => 0,
+               'max' => $cell_width - 2 };
+        if ($self->{'context'}->[-1] eq 'preformatted') {
+          $preformatted = $self->new_formatter('unfilled');
+          push @{$self->{'formatters'}}, $preformatted;
+        }
+        $cell = 1;
       } elsif ($root->{'cmdname'} eq 'listoffloats') {
         # FIXME handle listoffloats
       } elsif ($root->{'cmdname'} eq 'sp') {
@@ -798,6 +915,7 @@ sub convert($$)
           # this useless copy avoids perl changing the type to integer!
           my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
           $result .= "\n" x $sp_nr;
+          $self->{'empty_lines_count'} = $sp_nr;
         }
       # all the @-commands that have an information for the formatting, like
       # @paragraphindent, @frenchspacing...
@@ -819,8 +937,22 @@ sub convert($$)
           $self->{$root->{'cmdname'}} = 1;
         } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
                  and exists($root->{'extra'}->{'misc_args'}->[0])) {
-          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0]
-              if (!$self->{'set'}->{$root->{'cmdname'}});
+          if (!$self->{'set'}->{$root->{'cmdname'}}) {
+            $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0];
+            if ($root->{'cmdname'} eq 'paragraphindent') {
+              if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
+                delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
+              } else {
+                $self->{$root->{'cmdname'}} = 0 
+                  if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
+                $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
+              }
+            } elsif ($root->{'cmdname'} eq 'documentencoding') {
+              $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'} 
+                if (defined($root->{'extra'}) 
+                     and defined($root->{'extra'}->{'encoding_alias'}));
+            }
+          }
         }
         return '';
       }
@@ -854,84 +986,73 @@ sub convert($$)
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
       $self->{'empty_lines_count'} = 0;
-      # FIXME indenting.  First and not first paragraph.
-      # FIXME also beware of 'asis'! The space before has to be kept then.
-      #       it should be just before the paragraph. 
-      #       Maybe just handle empty_spaces_before_paragraph instead of
-      #       ignoring it?
-      # my $paragraphindent = get_conf('paragraphindent');
-      # $paragraphindent = 0 if ($paragraphindent eq 'none');
-      # if ($paragraphindent ne 'asis' and $paragraphindent and $line_char_counter == 0 and (defined($content->{'paragraph_in_element_nr'})) and ($info_state->{'indent_para'} or (!defined($info_state->{'indent_para'}) and ($content->{'paragraph_in_element_nr'} or (get_conf('firstparagraphindent') eq 'insert')))))
-      $paragraph = $self->new_formatter('paragraph');
+      my $conf;
+      # indent. Not first paragraph.
+      if ($self->{'format_context'}->[-1]->{'cmdname'} eq '_top_format'
+          and ($self->{'format_context'}->[-1]->{'paragraph_count'} 
+              or $self->{'firstparagraphindent'} eq 'insert') 
+          and $self->{'paragraphindent'} ne 'asis' and $self->{'paragraphindent'}
+          and !$self->{'format_context'}->[-1]->{'counter'}) {
+        $conf->{'first_indent_length'} = $self->{'paragraphindent'};
+      }
+      $paragraph = $self->new_formatter('paragraph', $conf);
       push @{$self->{'formatters'}}, $paragraph;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-    } elsif ($root->{'type'} eq 'def_line') {
+    } elsif ($root->{'type'} eq 'def_line' and $root->{'extra'} 
+             and $root->{'extra'}->{'def_args'}
+             and @{$root->{'extra'}->{'def_args'}}) {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
+      my $parsed_definition_category = $self->_definition_category ($root, 
+              $root->{'extra'}->{'def_parsed_hash'}->{'category'},
+              $root->{'extra'}->{'def_parsed_hash'}->{'class'});
+      # FIXME need i18n here?
+      my @contents = ($parsed_definition_category, {'text' => ': '});
+      if ($root->{'extra'}->{'def_parsed_hash'}->{'type'}) {
+        push @contents, ($root->{'extra'}->{'def_parsed_hash'}->{'type'}, 
+                         {'text' => ' '});
+      }
+      push @contents, $root->{'extra'}->{'def_parsed_hash'}->{'name'};
+
       my @args = @{$root->{'extra'}->{'def_args'}};
-      my ($category, $name, $class, $type) = ('', '', '', ''); 
-      my ($parsed_category, $parsed_name, $parsed_class, $parsed_type);
-      # FIXME this is all wrong. The def should be formatted as a paragraph,
-      # see info.init.
       while (@args) {
-        my $parsed_arg = shift @args;
-        if ($parsed_arg->[0] eq 'category') {
-          $parsed_category = $self->_def_argument_content($parsed_arg->[1]);
-          $category = $self->convert_unfilled($parsed_category, {'indent_length' => 0});
-        } elsif ($parsed_arg->[0] eq 'name') {
-          $parsed_name = $self->_def_argument_content($parsed_arg->[1]);
-          $name = $self->convert_unfilled($parsed_name, {'indent_length' => 0});
-        } elsif ($parsed_arg->[0] eq 'class') {
-          $parsed_class = $self->_def_argument_content($parsed_arg->[1]);
-          $class = $self->convert_unfilled($parsed_class, {'indent_length' => 0});
-        } elsif ($parsed_arg->[0] eq 'type') {
-          $parsed_type = $self->_def_argument_content($parsed_arg->[1]);
-          $type = $self->convert_unfilled($parsed_type, {'indent_length' => 0});
-        } elsif ($parsed_arg->[0] eq 'arg' or $parsed_arg->[0] eq 'argtype') {
-          unshift @args, $parsed_arg;
-          last;
+        last if ($args[0]->[0] ne 'spaces' 
+                and !$root->{'extra'}->{'def_parsed_hash'}->{$args[0]->[0]});
+        shift @args;
+      }
+
+      if (@args) {
+        push @contents, {'text' => ' '};
+        foreach my $arg (@args) {
+          push @contents, $arg->[1];
         }
       }
-      print STDERR "DEF LINE(parsed) category `$category' name `$name' class `$class' type `$type'\n"
-        if ($self->{'debug'});
 
-      my $parsed_definition_category = _definition_category ($root, 
-                                                 [$parsed_category, $category], 
-                                                 [$parsed_class, $class]);
-      my $definition_category = $self->convert_unfilled($parsed_definition_category, {'indent_length' => 0});
-      my $type_name = '';
-      $type_name .= "$type " if ($type ne '');
-      $type_name .= $name if ($name ne '');
+      my $def_paragraph = $self->new_formatter('paragraph', 
+       { 'indent_length' => ($self->{'format_context'}->[-1]->{'indent_level'} -1) *$indent_length,
+         'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length});
+      push @{$self->{'formatters'}}, $def_paragraph;
 
-      my $arguments = '';
-      foreach my $parsed_arg(@args) {
-        my $arg_text;
-        if ($parsed_arg->[0] eq 'spaces') {
-          $arg_text = $parsed_arg->[1]->{'text'};
-        } else {
-          $arg_text 
-          = $self->convert_unfilled($self->_def_argument_content($parsed_arg->[1]), {'indent_length' => 0});
-        }
-        $arguments .= $arg_text;
-      }
-      $arguments = ' '.$arguments if ($arguments ne '');
-      print STDERR "DEF LINE definition_category `$definition_category' arguments `$arguments'\n"
-        if ($self->{'debug'});
-      $result = " -- $definition_category: ${type_name}$arguments";
-      $result =~ s/\s*$//;
-      $result .= "\n";
+      $result .= $def_paragraph->{'container'}->add_next(" -- ");
+      $result .= $self->_convert({'type' => 'code', 'contents' => \@contents});
+      $result .= $def_paragraph->{'container'}->end();
+
+      pop @{$self->{'formatters'}};
+      $self->{'empty_lines_count'} = 0;
       print STDERR "     --> $result" if ($self->{'debug'});
     } elsif ($root->{'type'} eq 'menu_entry') {
       foreach my $arg (@{$root->{'args'}}) {
-        $result .= $self->convert($arg);
+        $result .= $self->_convert($arg);
       }
+      chomp($result);
+      $result .= "\n";
     } elsif ($root->{'type'} eq 'frenchspacing') {
-      push @{$container_context->{'frenchspacing_stack'}}, 1;
-      $container_context->{'container'}->set_space_protection(undef,
+      push @{$formatter->{'frenchspacing_stack'}}, 1;
+      $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'code') {
-      $container_context->{'code'}++;
-      push @{$container_context->{'frenchspacing_stack'}}, 1;
-      $container_context->{'container'}->set_space_protection(undef,
+      $formatter->{'code'}++;
+      push @{$formatter->{'frenchspacing_stack'}}, 1;
+      $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     }
   }
@@ -946,24 +1067,94 @@ sub convert($$)
         $self->{'empty_lines_count'}++;
         delete $self->{'format_context'}->[-1]->{'counter'};
       } else {
-        $result .= $self->convert($content);
+        my $new_text = $self->_convert($content);
+        $result .= $new_text;
+        $self->{'empty_lines_count'} = 0 if ($preformatted and $new_text ne '');
       }
     }
     pop @{$self->{'current_contents'}};
   }
+
+  # now closing
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'frenchspacing') {
-      pop @{$container_context->{'frenchspacing_stack'}};
-      $container_context->{'container'}->set_space_protection(undef,
-        undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
+      pop @{$formatter->{'frenchspacing_stack'}};
+      $formatter->{'container'}->set_space_protection(undef,
+        undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
     } elsif ($root->{'type'} eq 'code') {
-      $container_context->{'code'}--;
-      pop @{$container_context->{'frenchspacing_stack'}};
-      $container_context->{'container'}->set_space_protection(undef,
-        undef, undef, $container_context->{'frenchspacing_stack'}->[-1]);
+      $formatter->{'code'}--;
+      pop @{$formatter->{'frenchspacing_stack'}};
+      $formatter->{'container'}->set_space_protection(undef,
+        undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
     } elsif ($root->{'type'} eq 'bracketed'
       and $self->{'context'}->[-1] eq 'math') {
-      $result .= $container_context->{'container'}->add_text('}');
+      $result .= $formatter->{'container'}->add_text('}');
+    } elsif ($root->{'type'} eq 'row') {
+      my @cell_beginnings;
+      my @cell_lines;
+      my $cell_beginning = 0;
+      my $cell_idx = 0;
+      my $max_lines = 0;
+      my $indent_len = $indent_length 
+             * $self->{'format_context'}->[-1]->{'indent_level'};
+      foreach my $cell (@{$self->{'format_context'}->[-1]->{'row'}}) {
+        $cell_beginnings[$cell_idx] = $cell_beginning;
+        my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$cell_idx];
+        $cell_beginning += $cell_width +1;
+        $cell_lines[$cell_idx] = [ split /^/, $cell ];
+        $max_lines = scalar(@{$cell_lines[$cell_idx]}) 
+          if (scalar(@{$cell_lines[$cell_idx]}) > $max_lines);
+        $cell_idx++;
+      }
+      print STDERR "ROW, max_lines $max_lines, indent_len $indent_len\n" 
+         if ($self->{'debug'});
+      
+      # this is used to keep track of the last cell with content.
+      my $previous_last_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
+      for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++) {
+        my $line_width = $indent_len;
+        my $line = '';
+        # determine the last cell in the line, to fill spaces in 
+        # cells preceding that cell on the line
+        my $last_cell = 0;
+        for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++) {
+          $last_cell = $cell_idx+1 if (defined($cell_lines[$cell_idx]->[$line_idx]));
+        }
+        print STDERR "  L(last_cell $last_cell): $line_idx\n"
+          if ($self->{'debug'});
+        for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++) {
+          my $cell_text = $cell_lines[$cell_idx]->[$line_idx];
+          if (defined($cell_text)) {
+            chomp($cell_text);
+            if ($line eq '' and $cell_text ne '') {
+              $line = ' ' x $indent_len;
+            }
+            print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'debug'});
+            $line .= $cell_text;
+            $line_width += Texinfo::Convert::Unicode::string_width($cell_text);
+          }
+          if ($cell_idx+1 < $last_cell) {
+            if ($line_width < $indent_len + $cell_beginnings[$cell_idx+1]) {
+              if ($line eq '') {
+                $line = ' ' x $indent_len;
+              }
+              my $spaces = ' ' x ($indent_len + $cell_beginnings[$cell_idx+1] - $line_width);
+              $line_width += Texinfo::Convert::Unicode::string_width($spaces);
+              $line .= $spaces;
+            }
+          }
+        }
+        $line .= "\n";
+        $result .= $line;
+        $previous_last_cell = $last_cell;
+      }
+      if ($self->{'format_context'}->[-1]->{'item_command'} eq 'headitem') {
+        # at this point cell_beginning is at the beginning of
+        # the cell following the end of the table -> full width
+        my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
+        $result .= $line;
+      }
+      $self->{'format_context'}->[-1]->{'row'} = [];
     }
   }
   if ($paragraph) {
@@ -971,13 +1162,98 @@ sub convert($$)
     pop @{$self->{'formatters'}};
     delete $self->{'format_context'}->[-1]->{'counter'};
   }
+
+  if ($root->{'cmdname'}) {
+    if ($root->{'cmdname'} eq 'float') {
+      if ($self->{'debug'}) {
+        my $type_texi = '';
+        $type_texi = Texinfo::Convert::Texinfo::convert($root->{'extra'}->{'type'})
+          if ($root->{'extra'} and $root->{'extra'}->{'type'});
+        my $number = '';
+        $number = $root->{'number'} if (defined($root->{'number'}));
+        print STDERR "FLOAT: ($number) ($type_texi)\n";
+      }
+
+      if ($root->{'extra'}) {
+        my $caption;
+        if ($root->{'extra'}->{'caption'}) {
+          $caption = $root->{'extra'}->{'caption'};
+        } elsif ($root->{'extra'}->{'shortcaption'}) {
+          $caption = $root->{'extra'}->{'shortcaption'};
+        }
+        if ($self->{'debug'}) {
+          my $caption_texi = 
+            Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
+          print STDERR "  CAPTION: $caption_texi\n";
+        }
+        my $type;
+        if ($root->{'extra'}->{'type'}) {
+          $type = {'contents' => $root->{'extra'}->{'type'}->{'content'}};
+        }
+
+        my $prepended;
+        if ($type) {
+          #print STDERR "AAAAAAA $root->{'extra'}->{'type'} "
+          #   .Data::Dumper->Dump([$root->{'extra'}->{'type'}]);
+          if ($caption) {
+            if (defined($root->{'number'})) {
+              $prepended = $self->gdt('{float_type} {float_number}: ', 
+                  {'float_type' => $type,
+                    'float_number' => $root->{'number'}});
+            } else {
+              $prepended = $self->gdt('{float_type}: ',
+                  {'float_type' => $type});
+            }
+          } else {
+            if (defined($root->{'number'})) {
+              $prepended = $self->gdt("{float_type} {float_number}\n",
+                  {'float_type' => $type,
+                    'float_number' => $root->{'number'}});
+            } else {
+              $prepended = $self->gdt("{float_type}\n", 
+                  {'float_type' => $type});
+            }
+          }
+        } elsif (defined($root->{'number'})) {
+          if ($caption) {
+            $prepended = $self->gdt('{float_number}: ',
+                 {'float_number' => $root->{'number'}});
+          } else {
+            $prepended = $self->gdt("{float_number}\n",
+                 {'float_number' => $root->{'number'}});
+          }
+        }
+        if ($prepended) {
+          #print STDERR "PREPENDED ".Data::Dumper->Dump([$prepended]);
+          $result .= $self->convert_line ($prepended);
+          $self->{'format_context'}->[-1]->{'counter'} += 
+            Texinfo::Convert::Unicode::string_width($result);
+        }
+        if ($caption) {
+          $result .= $self->_convert($caption->{'args'}->[0]);
+        }
+      }
+    } elsif ($root->{'cmdname'} eq 'direntry') {
+      $result .= "END-INFO-DIR-ENTRY\n";
+    }
+  }
   if ($preformatted) {
     $result .= $preformatted->{'container'}->end();
     pop @{$self->{'formatters'}};
+  }
+
+  if ($root->{'cmdname'} and $preformatted_context_commands{$root->{'cmdname'}}) {
     pop @{$self->{'context'}};
   }
+
   pop @{$self->{'format_context'}} 
-    if ($root->{'cmdname'} and $indented_commands{$root->{'cmdname'}});
+    if ($root->{'cmdname'} and $format_context_commands{$root->{'cmdname'}}
+        or $cell);
+  if ($cell) {
+    push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
+    $result = '';
+  }
+
   return $result;
 }
 

@@ -90,7 +90,11 @@ $result_trees{'def_defx_mismatch'} = {
               ],
               [
                 'name',
-                {}
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
               ],
               [
                 'spaces',
@@ -129,14 +133,21 @@ $result_trees{'def_defx_mismatch'} = {
               ]
             ],
             'def_command' => 'defun',
+            'def_parsed_hash' => {
+              'category' => {},
+              'name' => {}
+            },
             'index_entry' => {
               'command' => {},
-              'content' => [],
+              'content' => [
+                {}
+              ],
               'def' => 1,
               'index_at_command' => 'defun',
               'index_name' => 'fn',
               'index_prefix' => 'f'
-            }
+            },
+            'original_def_cmdname' => 'defun'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -189,7 +200,11 @@ $result_trees{'def_defx_mismatch'} = {
             'def_args' => [
               [
                 'category',
-                {}
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
               ],
               [
                 'spaces',
@@ -200,7 +215,11 @@ $result_trees{'def_defx_mismatch'} = {
               ],
               [
                 'name',
-                {}
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
               ],
               [
                 'spaces',
@@ -256,14 +275,21 @@ $result_trees{'def_defx_mismatch'} = {
               ]
             ],
             'def_command' => 'deffn',
+            'def_parsed_hash' => {
+              'category' => {},
+              'name' => {}
+            },
             'index_entry' => {
               'command' => {},
-              'content' => [],
+              'content' => [
+                {}
+              ],
               'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
-            }
+            },
+            'original_def_cmdname' => 'deffnx'
           },
           'line_nr' => {
             'file_name' => '',
@@ -320,11 +346,14 @@ $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'con
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0];
-$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0];
-$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'};
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
@@ -334,10 +363,14 @@ $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1];
-$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[0][1] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'};
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[0][1];
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1];
-$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'};
+$result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0];
 $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'def_defx_mismatch'}{'contents'}[0]{'contents'}[3];

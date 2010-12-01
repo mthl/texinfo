@@ -138,7 +138,7 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 
 @strong{ is it really strong? }
 '],
-['bad',
+['invalid_kbdinputstyle',
 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 '],
 ['index_entries',
@@ -156,6 +156,21 @@ line following documentlanguage
 ['empty_documentencoding',
 '@documentencoding   
 '],
+['invalid_documentencoding',
+'@c this one is valid
+@documentencoding us-ascii@asis{}
+
+@documentencoding latin1@asis{a}
+@documentencoding YS-ASCII
+@@documentencoding @documentencoding bad encoding name
+@documentencoding 1
+@documentencoding %
+@documentencoding @@
+@documentencoding AAA@TeX{}
+@documentencoding BBB@\'e
+'],
+['command_not_closed_in_documentencoding',
+'@documentencoding @strong{'],
 ['text_before_line_command',
 'before title @title the title
 
@@ -168,8 +183,10 @@ ddd @contents
 aaa @author quotation author
 quotation
 @end quotation
+'],
+['author_outside_titlepage_quotation',
+'@author Some One
 ']
-
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

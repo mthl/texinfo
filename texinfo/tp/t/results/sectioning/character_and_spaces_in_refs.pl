@@ -189,6 +189,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
               {}
             ]
           },
+          'level' => 3,
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 8,
@@ -1509,10 +1510,12 @@ $result_texis{'character_and_spaces_in_refs'} = '@node Top
 
 
 $result_texts{'character_and_spaces_in_refs'} = 'Test refs
+*********
 
 * other nodes::
 
 Testing distant nodes
+---------------------
 
 
 
@@ -1525,6 +1528,7 @@ Testing distant nodes
 
 
 Chapter with nodes
+******************
 
 * !_"#$%&\'()*+-.::
 * /;<=>?[\\]^_`|~::

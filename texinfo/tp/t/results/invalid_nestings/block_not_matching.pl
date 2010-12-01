@@ -75,7 +75,11 @@ $result_trees{'block_not_matching'} = {
             'def_args' => [
               [
                 'category',
-                {}
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
               ],
               [
                 'spaces',
@@ -105,14 +109,21 @@ $result_trees{'block_not_matching'} = {
               ]
             ],
             'def_command' => 'deffn',
+            'def_parsed_hash' => {
+              'category' => {},
+              'name' => {}
+            },
             'index_entry' => {
               'command' => {},
-              'content' => [],
+              'content' => [
+                {}
+              ],
               'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
-            }
+            },
+            'original_def_cmdname' => 'deffn'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -473,9 +484,12 @@ $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0];
-$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[0][1];
+$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0];
-$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'content'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'};
+$result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[3];

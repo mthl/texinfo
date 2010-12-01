@@ -129,6 +129,12 @@ our %text_brace_no_arg_commands = (
                'click'           => '', # specially treated
 );
 
+my %sort_brace_no_arg_commands = (
+  'copyright' => 'C',
+  'registeredsymbol' => 'R',
+  'today' => 't'
+);
+
 our %text_no_brace_commands = (
            '*', "\n",
            ' ', ' ',
@@ -782,14 +788,11 @@ sub text_accents($$)
   
   return '' if (!$accent->{'args'});
   if ($encoding and $encoding eq 'utf-8') {
-    #return Texinfo::Convert::Unicode::unicode_accent(convert($accent->{'args'}->[0], $options), 
-    #                                    $accent, \&ascii_accent);
     return unicode_accents($accent, \&ascii_accent);
   } elsif ($encoding 
            and $Texinfo::Common::eight_bit_encoding_aliases{$encoding}) {
     return eight_bit_accents($accent, $encoding, \&ascii_accent);
   } else {
-    #return ascii_accent(convert($accent->{'args'}->[0], $options), $accent);
     return ascii_accents($accent);
   }
 }
@@ -816,6 +819,7 @@ sub _decompose_integer($$)
   return @result;
 }
 
+# the enumerate item number or letter.
 sub enumerate_item_representation($$)
 {
   my $specification = shift;
@@ -834,6 +838,27 @@ sub enumerate_item_representation($$)
     #because 'ba' is 1,0 and 'aa' is 0,0.
     $result = chr($base_letter + $ord) . $result;
   }
+  return $result;
+}
+
+my %underline_symbol = (
+  0 => '*',
+  1 => '*',
+  2 => '=',
+  3 => '-',
+  4 => '.'
+);
+
+sub heading($$)
+{
+  my $current = shift;
+  my $text = shift;
+
+  chomp ($text);
+  return '' if ($text !~ /\S/);
+  my $result = $text ."\n";
+  $result .=($underline_symbol{$current->{'level'}} 
+     x Texinfo::Convert::Unicode::string_width($text))."\n";
   return $result;
 }
 
@@ -887,7 +912,11 @@ sub convert($;$)
          if ($root->{'extra'}
           and defined($root->{'extra'}->{'clickstyle'})
           and defined($text_brace_no_arg_commands{$root->{'extra'}->{'clickstyle'}}));
-      return $text_brace_no_arg_commands{$command};
+      if ($options->{'sort_string'} and $sort_brace_no_arg_commands{$command}) {
+        return $sort_brace_no_arg_commands{$command};
+      } else {
+        return $text_brace_no_arg_commands{$command};
+     }
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       return text_accents ($root, $options->{'enable_encoding'});
@@ -921,9 +950,13 @@ sub convert($;$)
         }
       } elsif ($root->{'cmdname'} ne 'node') {
         $result = convert($root->{'args'}->[0], $options);
+        if ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
+          $result = heading ($root, $result);
+        } else {
         # we always want an end of line even if is was eaten by a 
-        chomp ($result);
-        $result .= "\n";
+          chomp ($result);
+          $result .= "\n";
+        }
       }
     } elsif ($root->{'cmdname'} eq 'item' 
             and $root->{'parent'}->{'cmdname'} 

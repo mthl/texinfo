@@ -551,6 +551,15 @@ unnumbered chapter text.
 
 @contents
 @bye
+'],
+['double_top_section',
+'@top First top
+
+First top.
+
+@top Second top
+
+Second top.
 ']
 );
 

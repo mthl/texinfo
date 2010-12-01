@@ -934,4 +934,19 @@ $result_errors{'menu_entry_name'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'menu_entry_name'} = '* Menu:
+
+* a: (f)b
+* a: (f)b1.c,
+* a: (f)b2.c,     
+* a: (f)b3.c,    d
+* a: (f)b1.. 
+* a : (f) b2 ..
+* a.n: (f)b3..         d
+* a: (f)b1.c.
+* a: (f)b2.c.  
+* a: (f)b3.c. d
+';
+
 1;

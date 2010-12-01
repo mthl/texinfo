@@ -242,6 +242,7 @@ $result_trees{'block_commands'} = {
         'line_nr' => 10,
         'macro' => ''
       },
+      'number' => 1,
       'parent' => {}
     },
     {
@@ -353,7 +354,8 @@ $result_floats{'block_commands'} = {
           ],
           'normalized' => 'a-float'
         }
-      }
+      },
+      'number' => 1
     }
   ]
 };
@@ -368,6 +370,9 @@ in group
 
 In float
 
+a float 1: in caption
+
+in caption
 ';
 
 1;

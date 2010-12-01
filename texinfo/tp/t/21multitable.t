@@ -3,6 +3,33 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
+['paragraph_in_cells',
+'@multitable {AAA}  {BBB}
+@item truc @tab bidule
+@item begin item
+
+new paragraph in item.
+
+@tab begin tab
+
+new paragraph in tab.
+@end multitable'],
+['multitable_in_example',
+'@example
+@multitable {AAA}  {BBB}
+@item truc @tab bidule example
+@item begin item example
+
+new paragraph in item. example
+
+@tab begin tab example
+
+new paragraph in tab. example
+@end multitable
+@end example']
+);
+
+my @test_invalid = (
 ['empty_multitable_with_cells',
 '@multitable
 @item item in empty multitable @tab tab in empty m @tab second tab in empty m
@@ -47,8 +74,12 @@ my @test_cases = (
 ']
 );
 
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('multitable', \@test_cases, $arg_test_case,
+run_all ('multitable', [@test_cases, @test_invalid], $arg_test_case,
    $arg_generate, $arg_debug);
 

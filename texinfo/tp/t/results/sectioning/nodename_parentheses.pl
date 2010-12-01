@@ -896,22 +896,26 @@ Dummy section with (manual)node node syntax.
 
 
 $result_texts{'nodename_parentheses'} = 'The top node
+************
 
 * Node (with parentheses)::
 * Other node::
 * (manual)node::
 
 Section (nodename with parentheses)
+***********************************
 
 Dummy section
 
 Section (nodename without parentheses)
+**************************************
 
 Dummy link to .
 
 Dummy link to .
 
 (manual)node
+************
 
 Dummy section with (manual)node node syntax.
 

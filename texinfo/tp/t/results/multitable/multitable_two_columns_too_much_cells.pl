@@ -275,6 +275,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
         }
       ],
       'extra' => {
+        'columnfractions' => [],
         'max_columns' => 2
       },
       'parent' => {}
@@ -331,6 +332,7 @@ $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'
 $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'}[3];
 $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
 $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[0]{'parent'} = $result_trees{'multitable_two_columns_too_much_cells'};
 $result_trees{'multitable_two_columns_too_much_cells'}{'contents'}[1]{'parent'} = $result_trees{'multitable_two_columns_too_much_cells'};
 

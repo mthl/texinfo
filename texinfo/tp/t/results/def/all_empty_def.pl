@@ -23,7 +23,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deffn'
+            'def_command' => 'deffn',
+            'original_def_cmdname' => 'deffn'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -62,7 +63,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'defvr'
+            'def_command' => 'defvr',
+            'original_def_cmdname' => 'defvr'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -101,7 +103,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deftypefn'
+            'def_command' => 'deftypefn',
+            'original_def_cmdname' => 'deftypefn'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -140,7 +143,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deftypeop'
+            'def_command' => 'deftypeop',
+            'original_def_cmdname' => 'deftypeop'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -179,7 +183,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deftypevr'
+            'def_command' => 'deftypevr',
+            'original_def_cmdname' => 'deftypevr'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -218,7 +223,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'defcv'
+            'def_command' => 'defcv',
+            'original_def_cmdname' => 'defcv'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -257,7 +263,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deftypecv'
+            'def_command' => 'deftypecv',
+            'original_def_cmdname' => 'deftypecv'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -296,7 +303,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'defop'
+            'def_command' => 'defop',
+            'original_def_cmdname' => 'defop'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -335,7 +343,8 @@ $result_trees{'all_empty_def'} = {
             }
           ],
           'extra' => {
-            'def_command' => 'deftp'
+            'def_command' => 'deftp',
+            'original_def_cmdname' => 'deftp'
           },
           'parent' => {},
           'type' => 'def_line'
@@ -445,7 +454,89 @@ $result_texts{'all_empty_def'} = '
 
 ';
 
-$result_errors{'all_empty_def'} = [];
+$result_errors{'all_empty_def'} = [
+  {
+    'error_line' => ':1: warning: Missing category for @deffn
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Missing category for @deffn',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: Missing category for @defvr
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Missing category for @defvr',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':7: warning: Missing category for @deftypefn
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Missing category for @deftypefn',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: Missing category for @deftypeop
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'Missing category for @deftypeop',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':13: warning: Missing category for @deftypevr
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'Missing category for @deftypevr',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':16: warning: Missing category for @defcv
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'Missing category for @defcv',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':19: warning: Missing category for @deftypecv
+',
+    'file_name' => '',
+    'line_nr' => 19,
+    'macro' => '',
+    'text' => 'Missing category for @deftypecv',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':22: warning: Missing category for @defop
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'Missing category for @defop',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':25: warning: Missing category for @deftp
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => 'Missing category for @deftp',
+    'type' => 'warning'
+  }
+];
 
 
 1;

@@ -2,7 +2,7 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted);
 
-$result_trees{'bad'} = {
+$result_trees{'invalid_kbdinputstyle'} = {
   'contents' => [
     {
       'contents' => [
@@ -49,21 +49,21 @@ $result_trees{'bad'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'bad'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0];
-$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad'}{'contents'}[0]{'contents'}[1];
-$result_trees{'bad'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad'}{'contents'}[0];
-$result_trees{'bad'}{'contents'}[0]{'parent'} = $result_trees{'bad'};
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_kbdinputstyle'}{'contents'}[0];
+$result_trees{'invalid_kbdinputstyle'}{'contents'}[0]{'parent'} = $result_trees{'invalid_kbdinputstyle'};
 
-$result_texis{'bad'} = 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
+$result_texis{'invalid_kbdinputstyle'} = 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 ';
 
 
-$result_texts{'bad'} = 'kbdinputstyle ';
+$result_texts{'invalid_kbdinputstyle'} = 'kbdinputstyle ';
 
-$result_errors{'bad'} = [
+$result_errors{'invalid_kbdinputstyle'} = [
   {
     'error_line' => ':1: warning: @kbdinputstyle should only appear at a line beginning
 ',

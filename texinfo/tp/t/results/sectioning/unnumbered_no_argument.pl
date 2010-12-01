@@ -44,8 +44,7 @@ $result_texis{'unnumbered_no_argument'} = '@unnumbered
 ';
 
 
-$result_texts{'unnumbered_no_argument'} = '
-';
+$result_texts{'unnumbered_no_argument'} = '';
 
 $result_sectioning{'unnumbered_no_argument'} = {
   'level' => 0,

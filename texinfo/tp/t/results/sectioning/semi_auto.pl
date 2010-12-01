@@ -734,17 +734,21 @@ $result_texis{'semi_auto'} = '@node Top
 
 
 $result_texts{'semi_auto'} = 'Top
+***
 
 * Chap1::
 * Section non auto::
 
 Chapter 1
+*********
 
 * Sec in chapter::
 
 Sec in chapter
+==============
 
 Section
+=======
 ';
 
 $result_sectioning{'semi_auto'} = {

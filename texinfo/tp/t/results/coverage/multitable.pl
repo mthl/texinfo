@@ -30,7 +30,7 @@ $result_trees{'multitable'} = {
                     },
                     {
                       'parent' => {},
-                      'text' => '6 7'
+                      'text' => '0.6 0.4'
                     },
                     {
                       'parent' => {},
@@ -46,8 +46,8 @@ $result_trees{'multitable'} = {
               'cmdname' => 'columnfractions',
               'extra' => {
                 'misc_args' => [
-                  '6',
-                  '7'
+                  '0.6',
+                  '0.4'
                 ]
               },
               'line_nr' => {
@@ -335,6 +335,7 @@ $result_trees{'multitable'} = {
         }
       ],
       'extra' => {
+        'columnfractions' => [],
         'max_columns' => 2
       },
       'parent' => {}
@@ -463,8 +464,16 @@ $result_trees{'multitable'} = {
       'extra' => {
         'max_columns' => 2,
         'prototypes' => [
-          {},
-          {}
+          {
+            'contents' => [],
+            'parent' => {},
+            'type' => 'bracketed_multitable_prototype'
+          },
+          {
+            'contents' => [],
+            'parent' => {},
+            'type' => 'bracketed_multitable_prototype'
+          }
         ]
       },
       'parent' => {}
@@ -529,6 +538,7 @@ $result_trees{'multitable'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'conten
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[4]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[4];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable'}{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[1]{'extra'}{'columnfractions'} = $result_trees{'multitable'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
 $result_trees{'multitable'}{'contents'}[1]{'parent'} = $result_trees{'multitable'};
 $result_trees{'multitable'}{'contents'}[2]{'parent'} = $result_trees{'multitable'};
 $result_trees{'multitable'}{'contents'}[3]{'parent'} = $result_trees{'multitable'};
@@ -550,13 +560,15 @@ $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'conten
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4];
-$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[1] = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[3];
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable'}{'contents'}[4]{'args'}[0]{'contents'}[3]{'contents'};
+$result_trees{'multitable'}{'contents'}[4]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[4]{'args'}[0];
 $result_trees{'multitable'}{'contents'}[4]{'parent'} = $result_trees{'multitable'};
 $result_trees{'multitable'}{'contents'}[5]{'parent'} = $result_trees{'multitable'};
 
 $result_texis{'multitable'} = '
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.6 0.4
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -585,16 +597,13 @@ $result_errors{'multitable'} = [];
 
 
 $result_converted{'plaintext'}->{'multitable'} = '
-mu-ltitable headitem
-another tab
-mu-ltitable item
-multitable tab
-mu-ltitable item 2
-multitable tab 2
+mu-ltitable headitem                        another tab
+--------------------------------------------------------------------------
+mu-ltitable item                            multitable tab
+mu-ltitable item 2                          multitable tab 2
 lone mu-ltitable item
 
-truc
-bidule
+truc bidule
 ';
 
 1;

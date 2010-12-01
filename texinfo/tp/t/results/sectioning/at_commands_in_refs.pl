@@ -17081,6 +17081,7 @@ $result_texis{'at_commands_in_refs'} = '@node Top
 
 
 $result_texts{'at_commands_in_refs'} = 'Top
+***
 
 *  { }::
 *      ! 
@@ -17109,53 +17110,77 @@ $result_texts{'at_commands_in_refs'} = 'Top
 * http://somewhere_aaa url /man.cgi/1/ls::
 
  { }
+****
 
       ! 
  .  . ? @
+******************
 
 LaTeX TeX * , (C) ... ...
+*************************
 
 == error--> Euro ! ==> -
+************************
 
 >= <= ->
+********
 
 a o -!- # -| ? (R)
+******************
 
 => o a b  aa
+************
 
 AA ae oe AE OE /o /O ss /l /L D d TH th
+***************************************
 
 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
+*********************************
 
 e. e( e_ .e e< j ee[
+********************
 
 `` \'\' ` \' ,, ,
+**************
 
 << >> << >> < >
+***************
 
 `` \'\' --- --
+************
 
 AAA AAA BBB
+***********
 
 CCC CCC DDD
+***********
 
 the someone no_explain@there
+****************************
 
 f--ile1  f--ile
+***************
 
  @ {} . 
+********
 
 cite asis in @w b in r sc str t var dfn i
+*****************************************
 
 env code option samp command file C-x ESC
+*****************************************
 
 8.27in
+******
 
 sansserif slanted
+*****************
 
 indicateurl
+***********
 
 http://somewhere_aaa url /man.cgi/1/ls
+**************************************
 
 
 

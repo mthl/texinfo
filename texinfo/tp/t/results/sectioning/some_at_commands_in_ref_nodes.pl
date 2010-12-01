@@ -1232,10 +1232,12 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 $result_texts{'some_at_commands_in_ref_nodes'} = '
 Top
+***
 
 * A sc node i" i" E=` /l C\', !::
 
 A sc node i" i" E=` /l C\', !
+****************************
 
 see .
 ';

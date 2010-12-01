@@ -71,7 +71,6 @@ sub _add_text($$)
 {
   my $line = shift;
   my $text = shift;
-  my $result = '';
   if ($line->{'line_beginning'}) {
     if ($line->{'indent_length'}) {
       $line->{'leading_spaces'} .= 
@@ -85,10 +84,10 @@ sub _add_text($$)
       $text = $line->{'leading_spaces'}.$text;
       $line->{'leading_spaces'} = '';
       $line->{'only_spaces'} = 0;
-    } elsif ($text =~ /\n/) {
-      $text = $line->end_line;
-    } else {
-      return '';
+    }
+    if ($text =~ /\n/) {
+      $text =~ s/\s*$//;
+      $text .= $line->end_line;
     }
   } else {
     if ($text =~ /\n/) {

@@ -649,6 +649,12 @@ abc
 fn
 @printindex fn
 '],
+['macro_in_invalid_documentencoding',
+'@macro badmacro
+badm
+@end macro
+@documentencoding @badmacro{}
+'],
 ['macro_in_misc_commands',
 '@macro text 
 atext

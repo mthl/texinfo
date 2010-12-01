@@ -371,11 +371,11 @@ $result_errors{'math'} = [
 
 $result_converted{'plaintext'}->{'math'} = 'Simple math {x^i}\\over{\\tan y}
 
-Math with @-command `math code\' a < b
+   Math with @-command `math code\' a < b
 
-Complex \\underline{`math \\hbox{ code }\'} \\i \\sum_{i}{\\underline{f}}
+   Complex \\underline{`math \\hbox{ code }\'} \\i \\sum_{i}{\\underline{f}}
 
-@\\ outside of math \\
+   @\\ outside of math \\
 
 ';
 

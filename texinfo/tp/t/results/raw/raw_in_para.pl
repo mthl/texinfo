@@ -221,4 +221,15 @@ End.
 $result_errors{'raw_in_para'} = [];
 
 
+
+$result_converted{'plaintext'}->{'raw_in_para'} = 'para
+in verbatim
+
+   para b html in para
+
+   para b tex
+
+   End.
+';
+
 1;

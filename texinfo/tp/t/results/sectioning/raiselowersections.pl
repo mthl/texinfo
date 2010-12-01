@@ -1274,11 +1274,11 @@ Second chapter
 
 
 $result_texts{'raiselowersections'} = '\\input texinfo 
-
 * Chapter::
 * Second chapter::
 
 Chapter
+*******
 
 * Chapter in included file::
 
@@ -1287,19 +1287,23 @@ Chapter
 \\input texinfo 
 
 Chapter in included file
+========================
 
 * Section::
 
 Section
+-------
 
 * Subsection::
 
 Subsection
+..........
 
 
 
 
 Second chapter
+**************
 
 Second chapter
 

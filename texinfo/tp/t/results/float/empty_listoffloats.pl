@@ -53,4 +53,7 @@ $result_errors{'empty_listoffloats'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'empty_listoffloats'} = '';
+
 1;

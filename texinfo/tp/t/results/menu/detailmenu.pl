@@ -237,4 +237,13 @@ $result_errors{'detailmenu'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'detailmenu'} = '
+* Menu:
+
+* Copying Conditions::          Your rights.
+
+* detailmenu::
+';
+
 1;

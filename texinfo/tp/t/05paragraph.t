@@ -29,7 +29,21 @@ text l 2
 
 p before sp
 @sp 4
-inew p after sp'],
+inew p after sp'
+],
+['paragraph_indent_asis',
+'@paragraphindent asis
+
+  para
+  fff
+
+@quotation
+  in quotation
+@end quotation
+
+']);
+
+my @test_invalid = (
 ['paragraph_in_style_command',
 'a 2 paragraphs sample @samp{in first paragraph
 
@@ -43,7 +57,11 @@ in third}.
 ']
 );
 
+foreach my $test (@test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('paragraph', \@test_cases, $arg_test_case, 
+run_all ('paragraph', [@test_cases, @test_invalid], $arg_test_case, 
    $arg_generate, $arg_debug);

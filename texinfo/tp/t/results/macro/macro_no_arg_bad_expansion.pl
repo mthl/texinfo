@@ -80,17 +80,7 @@ $result_texts{'macro_no_arg_bad_expansion'} = '
 res1 abc
 ';
 
-$result_errors{'macro_no_arg_bad_expansion'} = [
-  {
-    'error_line' => ':5: warning: @test1 defined with zero or more than one argument should be invoked with {}
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@test1 defined with zero or more than one argument should be invoked with {}',
-    'type' => 'warning'
-  }
-];
+$result_errors{'macro_no_arg_bad_expansion'} = [];
 
 
 1;

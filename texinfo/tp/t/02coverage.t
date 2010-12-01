@@ -82,7 +82,7 @@ In table
 @end table'
 ],
 ['multitable','
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.6 0.4
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -231,7 +231,12 @@ in quotation
 After quotation sp b a
 
 @end group
-']);
+'],
+['cartouche',
+'@cartouche
+in cartouche.
+@end cartouche']
+);
 
 my @test_invalid = (
 ['arg_in_brace_no_arg_command',

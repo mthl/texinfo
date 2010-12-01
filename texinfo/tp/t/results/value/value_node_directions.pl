@@ -585,11 +585,14 @@ bar
 
 $result_texts{'value_node_directions'} = '
 Var bar
+*******
 bar
 
 BarFoo
+******
 
 bar
+***
 ';
 
 $result_sectioning{'value_node_directions'} = {

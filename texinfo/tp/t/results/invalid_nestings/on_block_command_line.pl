@@ -154,7 +154,11 @@ $result_trees{'on_block_command_line'} = {
       'extra' => {
         'max_columns' => 2,
         'prototypes' => [
-          {},
+          {
+            'contents' => [],
+            'parent' => {},
+            'type' => 'bracketed_multitable_prototype'
+          },
           {}
         ]
       },
@@ -377,7 +381,8 @@ $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'contents'}
 $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'};
 $result_trees{'on_block_command_line'}{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'};

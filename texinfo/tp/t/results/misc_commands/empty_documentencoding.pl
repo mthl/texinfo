@@ -20,9 +20,6 @@ $result_trees{'empty_documentencoding'} = {
         }
       ],
       'cmdname' => 'documentencoding',
-      'extra' => {
-        'text_arg' => ''
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,

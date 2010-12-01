@@ -39,4 +39,8 @@ text l 2
 $result_errors{'two_lines'} = [];
 
 
+
+$result_converted{'plaintext'}->{'two_lines'} = 'text l 1 text l 2
+';
+
 1;

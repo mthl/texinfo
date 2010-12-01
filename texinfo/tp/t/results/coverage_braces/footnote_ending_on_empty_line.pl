@@ -72,7 +72,12 @@ $result_errors{'footnote_ending_on_empty_line'} = [];
 
 
 
-$result_converted{'plaintext'}->{'footnote_ending_on_empty_line'} = 'text
+$result_converted{'plaintext'}->{'footnote_ending_on_empty_line'} = 'text(1)
+
+   ---------- Footnotes ----------
+
+   (1) in footnote.
+
 ';
 
 1;

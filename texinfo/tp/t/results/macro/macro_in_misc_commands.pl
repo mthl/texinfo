@@ -194,6 +194,7 @@ $result_trees{'macro_in_misc_commands'} = {
               {}
             ]
           },
+          'level' => 3,
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 11,
@@ -3808,7 +3809,9 @@ two spaces   @@noindent @noindent    @@refill @refill
 $result_texts{'macro_in_misc_commands'} = '
 
 top atext
+*********
 Comment like: atext
+-------------------
 
 Text line followed by a comment on the same line and another below 
 
@@ -3865,6 +3868,7 @@ line after exdent
 * node atext::
 
 chapter
+*******
 
 
 

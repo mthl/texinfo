@@ -8,6 +8,19 @@ There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
 
+for i18n, one want to do something like
+{style} {number}: {caption}
+  -> new tree. 
+
+and 
+section {section} in @cite{{manual}} 
+  -> new tree
+
+and also maybe
+{acronym_like} ({explanation})
+  -> replace acronym_like with the already formatted text and 
+     explanation with convert(explanation).
+
 Following should be an error:
 @example
 @heading A heading
@@ -72,10 +85,6 @@ from test_paths.texi:
 @verbatiminclude ./formatting/simplest.texi
 
 tests in test/invalid, not incorporated
-author_outside_titlepage_quotation.texi
-bad_documentencoding.texi
-direntry_dircategory_after_first_node.texi
-double_top_section.texi
 error_in_footnote_caption.texi
 tex_in_copying.texi               (this is not invalid)
 
@@ -116,6 +125,8 @@ indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)
 
 invalid/at_after_accent_command.texi
+invalid/author_outside_titlepage_quotation.texi
+invalid/bad_documentencoding.texi
 invalid/bad_nesting.texi
 invalid/bad_style_nesting.texi
 invalid/bad_tab_nesting.texi
@@ -129,6 +140,8 @@ invalid/copying_not_closed.texi
 invalid/def_bad_defx_command.texi
 invalid/def_braces_and_empty.texi
 invalid/def_cmd_dble.texi
+invalid/direntry_dircategory_after_first_node.texi
+invalid/double_top_section.texi
 invalid/empty_ifclear.texi
 invalid/footnote_not_closed.texi
 invalid/formats_not_closed.texi

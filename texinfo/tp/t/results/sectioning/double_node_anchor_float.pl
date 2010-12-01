@@ -453,6 +453,7 @@ $result_trees{'double_node_anchor_float'} = {
             'line_nr' => 17,
             'macro' => ''
           },
+          'number' => 1,
           'parent' => {}
         },
         {
@@ -815,7 +816,8 @@ $result_floats{'double_node_anchor_float'} = {
           ],
           'normalized' => 'Text'
         }
-      }
+      },
+      'number' => 1
     }
   ]
 };
