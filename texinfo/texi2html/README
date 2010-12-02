@@ -10,5 +10,7 @@ texi2html is part of GNU Texinfo, http://www.gnu.org/software/texinfo.
 It used to be a separate project, http://www.nongnu.org/texi2html.
 
 texi2html converts texinfo documents to HTML, Info, plain text, Docbook
-and XML.  The HTML output is highly configurable.  One example is at
-http://www.singular.uni-kl.de/Manual/html.
+and XML.  The HTML output is extremely configurable, at several levels.
+One highly customized example is at http://www.singular.uni-kl.de/Manual/html.
+
+For information about the arrangement of the sources, see README.dev.

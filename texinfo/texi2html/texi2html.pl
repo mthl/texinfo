@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.431 2010-12-01 22:56:03 pertusus Exp $
+# $Id: texi2html.pl,v 1.432 2010-12-02 17:54:15 karl Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -4487,7 +4487,7 @@ sub prepare_htmlxref($)
             $hline =~ s/^\s*//;
             next if $hline =~ /^\s*$/;
             chomp ($hline);
-            if ($hline =~ s/^(\w+)\s*=\s*//)
+            if ($hline =~ s/^\s*(\w+)\s*=\s*//)
             {
                # handle variables
                my $var = $1;
