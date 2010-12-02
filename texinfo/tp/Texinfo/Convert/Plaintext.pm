@@ -178,7 +178,7 @@ my %upper_case_commands = (
 );
 
 my %ignored_types;
-foreach my $type ('empty_line_after_command', 
+foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph') {
   $ignored_types{$type} = 1;
@@ -199,7 +199,7 @@ foreach my $command (keys(%style_map)) {
 # math  is special
 my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
   'slanted', 'sansserif', 'var', 'verb', 'clicksequence',
-  'headitemfont');
+  'headitemfont', 'dmn');
 
 foreach my $asis_command (@asis_commands) {
   $style_map{$asis_command} = ['', ''];
@@ -765,6 +765,10 @@ sub _convert($$)
            $self->convert_line ($root->{'args'}->[0]));
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       return $result;
+    } elsif ($command eq 'value') {
+      my $expansion = $self->gdt('@{No value for `{value}\'@}', 
+                                    {'value' => $root->{'type'}});
+        unshift @{$self->{'current_contents'}->[-1]}, $expansion;
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {

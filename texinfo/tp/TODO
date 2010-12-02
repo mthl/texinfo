@@ -30,6 +30,8 @@ test empty line in block or brace command in menu description.
 
 test @w.
 
+test unknown @value expanded.
+
 test recursive acronym
 @acronym{GNU, @acronym{GNU}'s Not Unix}
 

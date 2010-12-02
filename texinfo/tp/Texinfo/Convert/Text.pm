@@ -556,7 +556,7 @@ foreach my $command ('sp', 'center', 'exdent',
 }
  
 my %ignored_types;
-foreach my $type ('empty_line_after_command', 
+foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph') {
   $ignored_types{$type} = 1;
@@ -575,8 +575,8 @@ sub _find_innermost_accent($)
     if (!$current->{'args'} or !$current->{'cmdname'} 
         or !$accent_commands{$current->{'cmdname'}}) {
       print STDERR "BUG: Not an accent command in accent\n";
-      print STDERR Data::Dumper->Dump([$current]);
       print STDERR Texinfo::Convert::Texinfo::convert($current)."\n";
+      print STDERR Data::Dumper->Dump([$current]);
       last;
     }
     push @accent_commands, $current->{'cmdname'};
