@@ -4,6 +4,24 @@
 	without argument is called without braces.  Report from Werner 
  	Lemberg.
 
+2010-11-28  Karl Berry  <karl@gnu.org>
+
+	* texi2html/texi2html.pl (prepare_htmlxref): ignore whitespace
+	before variable name in variable assignments.
+
+2010-11-26  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh: mention canonical script location.
+
+	* doc/texinfo.txi (node-related nodes): remove @refill, refill
+	source lines, small text changes.
+	(throughout): use "an <@@-command>" consistently, instead of "a".
+
+2010-11-26  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/texi2html.pl: don't warn whan a macro defined with
+	zero arguments is called without braces.  Report from Werner LEMBERG.
+
 2010-11-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (GNU Sample Texts): update and make self-consistent.
