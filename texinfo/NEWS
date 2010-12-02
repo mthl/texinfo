@@ -1,10 +1,10 @@
-$Id: NEWS,v 1.197 2010-08-02 00:43:56 karl Exp $
+$Id: NEWS,v 1.198 2010-12-02 17:52:54 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
-  Free Software Foundation, Inc.
+  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software
+  Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -31,21 +31,28 @@ one of the relevant sections:
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
 
-* texi2html:
-  . new program, replacing and upward-compatible with makeinfo, much
-    slower, but with many additional features.  Cross-manual references
-    are now fully supported, for one.  See xxx in the manual for more
-    about this reimplementation.
+* texi2any is a new generic converter that can produce all supported
+  output formats, both those from texi2dvi (PDF/DVI) and from makeinfo
+  (Info/HTML/etc.).  With this release, texi2any, makeinfo, and
+  texi2html are all essentially the same program with different
+  defaults.
+
+  The new implementation is in Perl (originally the texi2html program).
+  It both replaces and is intended to be (for all practical purposes)
+  upward-compatible with the C makeinfo.  It has many new features not
+  in the C makeinfo.  For example, cross-manual references are now fully
+  supported, and extensive customization of the HTML output is possible.
+  See xxx in the manual for more about this reimplementation.
+  
+  The new program is unfortunately much slower at present than the C
+  program was.  We hope to make it faster in a future release.  In the
+  meantime, we hope all the many improvements make it worthwhile.
 
 * texinfo.tex:
   . support some per-language hyphenation, when the underlying TeX
     engine does (for instance, etex/pdfetex from TeX Live 2008 or
     later).  Words with accented letters are still not handled properly.
   . new Icelandic translation: txi-is.tex.
-
-* texi2any: 
-  . new generic converter that can produce all supported output formats,
-    both those from texi2dvi (PDF/DVI) and from makeinfo (Info/HTML/etc.).
 
 * texi2dvi:
   . new option --max-iterations.
@@ -59,11 +66,13 @@ one of the relevant sections:
   . xz compression supported.
 
 * Documentation:
-  . new appendix on the Info file format.
+  . new appendix with a technical description of the Info file format.
+  . extensive information on the customizations of the HTML output that
+    are now possible.
 
 * Distribution:
   . language support for no removed/renamed to nb, per Norwegian translators.
-  . new translation: id.
+  . new translations: id it.
   . documentation license now GFDLv1.3 or later.
 
 

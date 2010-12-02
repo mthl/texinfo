@@ -15,7 +15,7 @@ This file describes how to use Info, the on-line, menu-driven GNU
 documentation system.
 
 Copyright @copyright{} 1989, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
-2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -359,7 +359,9 @@ the beginning of a node moves to the previous node.  In effect, these
 commands scroll through all the nodes in an Info file as a single
 logical sequence.  You can read an entire manual top to bottom by just
 typing @key{SPC}, and move backward through the entire manual from
-bottom to top by typing @key{DEL} (or @key{BACKSPACE}).
+bottom to top by typing @key{DEL} (or @key{BACKSPACE}).  (Exception:
+this won't work for those very few manuals which do not have the usual
+hierarchical structure.)
 
   In this sequence, a node's subnodes appear following their parent.
 If a node has a menu, @key{SPC} takes you into the subnodes listed in

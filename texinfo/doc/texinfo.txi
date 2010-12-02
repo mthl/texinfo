@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
+@c $Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -39,8 +39,9 @@ This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
 printed manual from a single source.
 
-Copyright @copyright{} 1988, 1990--1993, 1995--2010 Free Software
-Foundation, Inc.
+Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -609,7 +610,7 @@ Generic Translator texi2any/makeinfo
 * Invoking texi2any::           How to run @command{texi2any} and @command{makeinfo} 
                                 from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* makeinfo Configuration Variables:: Description of configuration variables.
+* @command{texi2any} Configuration Variables:: Configuring @command{texi2any}.
 
 Creating and Installing Info Files
 
@@ -3064,7 +3065,7 @@ The title in the @code{@@settitle} command does not affect the title as
 it appears on the title page.  Thus, the two do not need not match
 exactly.  A practice we recommend is to include the version or edition
 number of the manual in the @code{@@settitle} title; on the title page,
-the version number generally appears as a @code{@@subtitle} so it would
+the version number generally appears as an @code{@@subtitle} so it would
 be omitted from the @code{@@title}.  @xref{titlepage}.
 
 Conventionally, when @TeX{} formats a Texinfo file for double-sided
@@ -4067,7 +4068,7 @@ This option is ignored by @command{makeinfo} if
 
 @item @code{insert}
 Include normal paragraph indentation.  This respects the paragraph
-indentation set by a @code{@@paragraphindent} command
+indentation set by an @code{@@paragraphindent} command
 (@pxref{paragraphindent}).
 @end table
 
@@ -4541,10 +4542,10 @@ of asterisks underneath.  (@xref{chapter, , @code{@@chapter}}.)@refill
 @section @code{@@section}
 @findex section
 
-A @code{@@section} command identifies a section within a chapter unit,
-whether created with @code{@@chapter}, @code{@@unnumbered}, or
+An @code{@@section} command identifies a section within a chapter
+unit, whether created with @code{@@chapter}, @code{@@unnumbered}, or
 @code{@@appendix}, following the numbering scheme of the chapter-level
-command.  Thus, within a @code{@@chapter} chapter numbered `1', the
+command.  Thus, within an @code{@@chapter} chapter numbered `1', the
 section is numbered like `1.2'; within an @code{@@appendix}
 ``chapter'' labeled `A', the section is numbered like `A.2'; within an
 @code{@@unnumbered} chapter, the section gets no number.
@@ -4677,32 +4678,32 @@ also be used within sections of @code{@@unnumbered} and
 @findex subsubheading
 
 The fourth and lowest level sectioning commands in Texinfo are the
-`subsub' commands.  They are:@refill
+`subsub' commands.  They are:
 
 @table @code
 @item @@subsubsection
 Subsubsections are to subsections as subsections are to sections.
 (@xref{subsection, , @code{@@subsection}}.)  In a printed manual,
 subsubsection titles appear in the table of contents and are numbered
-four levels deep.@refill
+four levels deep.
 
 @item @@unnumberedsubsubsec
 Unnumbered subsubsection titles appear in the table of contents of a
 printed manual, but lack numbers.  Otherwise, unnumbered
 subsubsections are the same as subsubsections.  In Info, unnumbered
-subsubsections look exactly like ordinary subsubsections.@refill
+subsubsections look exactly like ordinary subsubsections.
 
 @item @@appendixsubsubsec
 Conventionally, appendix commands are used only for appendices and are
 lettered and numbered appropriately in a printed manual.  They also
 appear in the table of contents.  In Info, appendix subsubsections look
-exactly like ordinary subsubsections.@refill
+exactly like ordinary subsubsections.
 
 @item @@subsubheading
 The @code{@@subsubheading} command may be used anywhere that you need
 a small heading that will not appear in the table of contents.  In
 Info, subsubheadings look exactly like ordinary subsubsection
-headings.@refill
+headings.
 @end table
 
 @code{@@unnumberedsubsubsec} and @code{@@appendixsubsubsec} do not
@@ -4713,7 +4714,7 @@ need to be used in ordinary circumstances, because
 
 
 In Info, `subsub' titles are underlined with periods.
-For example,@refill
+For example,
 
 @example
 @@subsubsection This is a subsubsection
@@ -4821,7 +4822,7 @@ included file (@pxref{Include Files}).  Typical usage looks like this:
 @noindent (Without the @code{@@raisesections}, all the subsequent
 sections in the document would be lowered.)
 
-If the included file being lowered has a @code{@@top} node, you'll
+If the included file being lowered has an @code{@@top} node, you'll
 need to conditionalize its inclusion with a flag (@pxref{set value}).
 
 Another difficulty can arise with documents that use the (recommended)
@@ -4862,7 +4863,8 @@ printed books.
 
 Because node names are used in cross references, it is not desirable
 to casually change them.  Such name changes invalidate references from
-other manuals, from mail archives, and so on.
+other manuals, from mail archives, and so on.  @xref{HTML Xref Link
+Preservation}.
 
 @menu
 * Two Paths::                   Different commands to structure
@@ -4885,12 +4887,13 @@ technically independent of each other:
 In Info, node and menu commands provide structure.  The chapter
 structuring commands generate headings with different kinds of
 underlining---asterisks for chapters, hyphens for sections, and so on;
-they do nothing else.@refill
+they do nothing else.  In HTML and other output formats, the situation
+is similar.
 
 @item
-In @TeX{}, the chapter structuring commands generate chapter and section
-numbers and tables of contents.  The node and menu commands provide
-information for cross references; they do nothing else.@refill
+In @TeX{}, the chapter structuring commands generate chapter and
+section numbers and tables of contents.  The node and menu commands
+provide information for cross references; they do nothing else.
 @end itemize
 
 You can use node pointers and menus to structure an Info file any way
@@ -4898,25 +4901,25 @@ you want; and you can write a Texinfo file so that its Info output has a
 different structure than its printed output.  However, virtually all
 Texinfo files are written such that the structure for the Info output
 corresponds to the structure for the printed output.  It is neither
-convenient nor understandable to the reader to do otherwise.@refill
+convenient nor understandable to the reader to do otherwise.
 
 Generally, printed output is structured in a tree-like hierarchy in
 which the chapters are the major limbs from which the sections branch
 out.  Similarly, node pointers and menus are organized to create a
-matching structure in the Info output.@refill
+matching structure in the Info output.
 
 
 @node Node Menu Illustration
 @section Node and Menu Illustration
 
 Here is a copy of the diagram shown earlier that illustrates a Texinfo
-file with three chapters, each of which contains two sections.@refill
+file with three chapters, each of which contains two sections.
 
-The ``root'' is at the top of the diagram and the ``leaves'' are at the
-bottom.  This is how such a diagram is drawn conventionally; it
+The ``root'' is at the top of the diagram and the ``leaves'' are at
+the bottom.  This is how such a diagram is drawn conventionally; it
 illustrates an upside-down tree.  For this reason, the root node is
 called the `Top' node, and `Up' node pointers carry you closer to the
-root.@refill
+root.
 
 @example
 @group
@@ -4946,60 +4949,60 @@ The fully-written command to start Chapter 2 would be this:
 This @code{@@node} line says that the name of this node is ``Chapter
 2'', the name of the `Next' node is ``Chapter 3'', the name of the
 `Previous' node is ``Chapter 1'', and the name of the `Up' node is
-``Top''.  You can omit writing out these node names if your document is
-hierarchically organized (@pxref{makeinfo Pointer Creation}), but the
-pointer relationships still obtain.
+``Top''.  You can (and should) omit writing out these node names if
+your document is hierarchically organized (@pxref{makeinfo Pointer
+Creation}), but the pointer relationships still obtain.
 
 @quotation Note
-@strong{Please Note:} `Next' refers to the next node at the same
-hierarchical level in the manual, not necessarily to the next node
-within the Texinfo file.  In the Texinfo file, the subsequent node may
-be at a lower level---a section-level node most often follows a
-chapter-level node, for example.  `Next' and `Previous' refer to nodes
-at the @emph{same} hierarchical level.  (The `Top' node contains the
-exception to this rule.  Since the `Top' node is the only node at that
-level, `Next' refers to the first following node, which is almost always
-a chapter or chapter-level node.)@refill
+`Next' and `Previous' refer to nodes at the @emph{same hierarchical
+level} in the manual, not necessarily to the next node within the
+Texinfo file.  In the Texinfo file, the subsequent node may be at a
+lower level---a section-level node most often follows a chapter-level
+node, for example.  (The `Top' node contains the exception to this
+rule.  Since the `Top' node is the only node at that level, `Next'
+refers to the first following node, which is almost always a chapter
+or chapter-level node.)
 @end quotation
 
-To go to Sections 2.1 and 2.2 using Info, you need a menu inside Chapter
-2.  (@xref{Menus}.)  You would write the menu just
-before the beginning of Section 2.1, like this:@refill
+To go to Sections 2.1 and 2.2 using Info, you need a menu inside
+Chapter 2.  (@xref{Menus}.)  You would write the menu just before the
+beginning of Section 2.1, like this:
 
 @example
 @group
    @@menu
    * Sect. 2.1::    Description of this section.
-   * Sect. 2.2::
+   * Sect. 2.2::    Description.
    @@end menu
 @end group
 @end example
 
-Write the node for Sect. 2.1 like this:@refill
+Write the node for Sect. 2.1 like this:
 
 @example
 @group
-   @@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
-   @@comment  node-name, next,      previous,  up
+@@node     Sect. 2.1, Sect. 2.2, Chapter 2, Chapter 2
+@@comment  node-name, next,      previous,  up
 @end group
 @end example
 
 In Info format, the `Next' and `Previous' pointers of a node usually
-lead to other nodes at the same level---from chapter to chapter or from
-section to section (sometimes, as shown, the `Previous' pointer points
-up); an `Up' pointer usually leads to a node at the level above (closer
-to the `Top' node); and a `Menu' leads to nodes at a level below (closer
-to `leaves').  (A cross reference can point to a node at any level;
-see @ref{Cross References}.)@refill
+lead to other nodes at the same level---from chapter to chapter or
+from section to section (sometimes, as shown, the `Previous' pointer
+points up); an `Up' pointer usually leads to a node at the level above
+(closer to the `Top' node); and a `Menu' leads to nodes at a level
+below (closer to `leaves').  (A cross reference can point to a node at
+any level; see @ref{Cross References}.)
 
 Usually, an @code{@@node} command and a chapter structuring command are
 used in sequence, along with indexing commands.  (You may follow the
 @code{@@node} line with a comment line that reminds you which pointer is
-which.)@refill
+which.)  The Texinfo processors look for this construct to determine
+the document structure.
 
 Here is the beginning of the chapter in this manual called ``Ending a
-Texinfo File''.  This shows an @code{@@node} line followed by a comment
-line, an @code{@@chapter} line, and then by indexing lines.@refill
+Texinfo File''.  This shows an @code{@@node} line followed by a
+comment line, an @code{@@chapter} line, and then by indexing lines.
 
 @example
 @group
@@ -5029,8 +5032,7 @@ contains only one chapter structuring command, the one that follows
 the @code{@@node} line.  On the other hand, in printed output nodes
 are used only for cross references, so a chapter or section may
 contain any number of nodes.  Indeed, a chapter usually contains
-several nodes, one for each section, subsection, and
-subsubsection.
+several nodes, one for each section, subsection, and subsubsection.
 
 To specify a node, write an @code{@@node} command at the beginning of
 a line, and follow it with up to four arguments, separated by commas,
@@ -5091,7 +5093,7 @@ menu mentions that node.  The node's `Next' pointer contains the name
 of the node that follows the present node in that menu and its
 `Previous' pointer contains the name of the node that precedes it in
 that menu.  When a node's `Previous' node is the same as its `Up'
-node, both node pointers name the same node.
+node, both pointers name the same node.
 
 Usually, the first node of a Texinfo file is the `Top' node, and its
 `Up' and `Previous' pointers point to the @file{dir} file, which
@@ -5102,22 +5104,22 @@ Also, it is helpful to include a brief description of the manual in the
 `Top' node.  @xref{First Node}, for information on how to write the
 first node of a Texinfo file.
 
-Even when you explicitly specify all pointers, that does not mean you
-can write the nodes in the Texinfo source file in an arbitrary order!
-Because @TeX{} processes the file sequentially, irrespective of node
-pointers, you must write the nodes in the order you wish them to appear
-in the output.
+Even when you explicitly specify all pointers, you cannot write the
+nodes in the Texinfo source file in an arbitrary order!  Because
+@TeX{} must process the file sequentially, irrespective of node
+pointers, you must write the nodes in the order you wish them to
+appear in the output.
 
 
 @node Writing a Node
-@subsection How to Write an @code{@@node} Line
+@subsection Writing an @code{@@node} Line
 @cindex Writing an @code{@@node} line
 @cindex @code{@@node} line writing
 @cindex Node line writing
 
-The easiest way to write an @code{@@node} line is to write @code{@@node}
-at the beginning of a line and then the name of the node, like
-this:
+The easiest and preferred way to write an @code{@@node} line is to
+write @code{@@node} at the beginning of a line and then the name of
+the node, like this:
 
 @example
 @@node @var{node-name}
@@ -5173,21 +5175,21 @@ Here are three suggestions:
 
 @itemize @bullet
 @item
-Try to pick node names that are informative but short.@refill
+Try to pick node names that are informative but short.
 
 In the Info file, the file name, node name, and pointer names are all
 inserted on one line, which may run into the right edge of the window.
-(This does not cause a problem with Info, but is ugly.)@refill
+(This does not cause a problem with Info, but is ugly.)
 
 @item
 Try to pick node names that differ from each other near the beginnings
 of their names.  This way, it is easy to use automatic name completion in
-Info.@refill
+Info.
 
 @item
 By convention, node names are capitalized just as they would be for
 section or chapter titles---initial and significant words are
-capitalized; others are not.@refill
+capitalized; others are not.
 @end itemize
 
 
@@ -5222,9 +5224,9 @@ node containing the pointer.
 @cindex @@-commands in nodename
 @cindex Node name, should not contain @@-commands
 @@-commands in node names are not allowed.  This includes punctuation
-characters that are escaped with a @samp{@@}, such as @code{@@} and
-@code{@{}, and accent commands such as @samp{@@'}.  Perhaps
-this limitation will be removed some day.
+characters that are escaped with an @samp{@@}, such as @code{@@} and
+@code{@{}, and accent commands such as @samp{@@'}.  Perhaps this
+limitation will be removed some day.
 
 @item
 @cindex Colon in nodename
@@ -5500,14 +5502,14 @@ Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
 better to use cross references to refer to arbitrary nodes.
 
-In the past, we recommended using a @samp{@@heading} command within an
-@code{@@ifinfo} conditional instead of the normal sectioning commands
-after a very short node with a menu.  This had the advantage of making
-the printed output look better, because there was no very short text
-between two headings on the page.  But this also does not work with
-@command{makeinfo}'s implicit pointer creation, and it also makes the
-XML output incorrect, since it does not reflect the true document
-structure.  So, regrettably, we can no longer recommend this.
+In the past, we recommended using an @samp{@@heading} command within
+an @code{@@ifinfo} conditional instead of the normal sectioning
+commands after a very short node with a menu.  This had the advantage
+of making the printed output look better, because there was no very
+short text between two headings on the page.  But this also does not
+work with @command{makeinfo}'s implicit pointer creation, and it also
+makes the XML output incorrect, since it does not reflect the true
+document structure.  So, regrettably, we can no longer recommend this.
 
 
 @node Writing a Menu
@@ -6573,10 +6575,10 @@ and
 @code{@@xref} (@pxref{xref, , @code{@@xref}}).
 
 In past versions of Texinfo, it was not allowed to write punctuation
-after a @code{@@pxref}, so it could be used @emph{only} before a right
-parenthesis.  This is no longer the case, so now it can be used (for
-example) at the end of a sentence, where a lowercase ``see'' works
-best.  For instance:
+after an @code{@@pxref}, so it could be used @emph{only} before a
+right parenthesis.  This is no longer the case, so now it can be used
+(for example) at the end of a sentence, where a lowercase ``see''
+works best.  For instance:
 
 @example
 @dots{} For more information, @@pxref@{More@}.
@@ -8202,11 +8204,11 @@ character substitutions are made, e.g., all spaces and blank lines are
 significant, including tabs.  In the printed manual, the text is
 typeset in a fixed-width font, and not indented or filled.
 
-Write a @code{@@verbatim} command at the beginning of a line by itself.
-This line will disappear from the output.  Mark the end of the verbatim
-block with a @code{@@end verbatim} command, also written at the
-beginning of a line by itself.  The @code{@@end verbatim} will also
-disappear from the output.
+Write an @code{@@verbatim} command at the beginning of a line by
+itself.  This line will disappear from the output.  Mark the end of
+the verbatim block with an @code{@@end verbatim} command, also written
+at the beginning of a line by itself.  The @code{@@end verbatim} will
+also disappear from the output.
 
 For example:
 @c oops, got to trick this a bit: can't use @end verbatim inside @verbatim
@@ -9276,7 +9278,7 @@ Info, the heading row is followed by a separator line made of dashes
 @findex headitemfont
 @cindex Font for multitable heading rows
 The command @code{@@headitemfont} can be used in templates when the
-entries in a @code{@@headitem} row need to be used in a template.  It
+entries in an @code{@@headitem} row need to be used in a template.  It
 is a synonym for @code{@@b}, but using @code{@@headitemfont} avoids
 any dependency on that particular font style, in case we provide a way
 to change it in the future.
@@ -9439,7 +9441,7 @@ These numbering conventions are not, at present, changeable.
 @cindex Captions, for floats
 @cindex Short captions, for lists of floats
 
-You may write an @code{@@caption} anywhere within a @code{@@float}
+You may write an @code{@@caption} anywhere within an @code{@@float}
 environment, to define a caption for the float.  It is not allowed in
 any other context.  @code{@@caption} takes a single argument, enclosed
 in braces.  Here's an example:
@@ -9492,7 +9494,7 @@ environments such as @code{@@example}, or other complex constructs.
 @cindex Floats, list of
 @cindex Table of contents, for floats
 
-You can write a @code{@@listoffloats} command to generate a list of
+You can write an @code{@@listoffloats} command to generate a list of
 floats for a given float type (@pxref{float}), analogous to the
 document's overall table of contents.  Typically, it is written in its
 own @code{@@unnumbered} node to provide a heading and structure,
@@ -9798,7 +9800,7 @@ superscripted number which is rendered as a hypertext link to the
 footnote text.
 
 By the way, footnotes in the argument of an @code{@@item} command for
-a @code{@@table} must be on the same line as the @code{@@item} (as
+an @code{@@table} must be on the same line as the @code{@@item} (as
 usual).  @xref{Two-column Tables}.
 
 
@@ -14241,7 +14243,7 @@ After a macro is defined (see the previous section), you can use
 @@@var{macroname} @{@var{arg1}, @var{arg2}, @dots{}@}
 @end example
 
-@noindent and the result will be just as if you typed the body of
+@noindent and the result will be more or less as if you typed the body of
 @var{macroname} at that spot.  For example:
 
 @example
@@ -14625,32 +14627,33 @@ character) @samp{-}.
 @cindex Customized highlighting
 @findex definfoenclose
 
-A @code{@@definfoenclose} command may be used to define a highlighting
-command for Info, but not for @TeX{}.  A command defined using
-@code{@@definfoenclose} marks text by enclosing it in strings that
-precede and follow the text.  You can use this to get closer control of
-your Info output.
+An @code{@@definfoenclose} command may be used to define a
+highlighting command for Info, but not for @TeX{}.  A command defined
+using @code{@@definfoenclose} marks text by enclosing it in strings
+that precede and follow the text.  You can use this to get closer
+control of your Info output.
 
 Presumably, if you define a command with @code{@@definfoenclose} for Info,
 you will create a corresponding command for @TeX{}, either in
 @file{texinfo.tex}, @file{texinfo.cnf}, or within an @samp{@@iftex} in
 your document.
 
-Write a @code{@@definfoenclose} command on a line and follow it with
+Write an @code{@@definfoenclose} command on a line and follow it with
 three arguments separated by commas.  The first argument to
-@code{@@definfoenclose} is the @@-command name (without the @code{@@});
-the second argument is the Info start delimiter string; and the third
-argument is the Info end delimiter string.  The latter two arguments
-enclose the highlighted text in the Info file.  A delimiter string may
-contain spaces.  Neither the start nor end delimiter is required.  If
-you do not want a start delimiter but do want an end delimiter, you must
-follow the command name with two commas in a row; otherwise, the Info
-formatting commands will naturally misinterpret the end delimiter string
-you intended as the start delimiter string.
+@code{@@definfoenclose} is the @@-command name (without the
+@code{@@}); the second argument is the Info start delimiter string;
+and the third argument is the Info end delimiter string.  The latter
+two arguments enclose the highlighted text in the Info file.  A
+delimiter string may contain spaces.  Neither the start nor end
+delimiter is required.  If you do not want a start delimiter but do
+want an end delimiter, you must follow the command name with two
+commas in a row; otherwise, the Info formatting commands will
+naturally misinterpret the end delimiter string you intended as the
+start delimiter string.
 
-If you do a @code{@@definfoenclose} on the name of a predefined macro
-(such as @code{@@emph}, @code{@@strong}, @code{@@t}, or @code{@@i}), the
-enclosure definition will override the built-in definition.
+If you do an @code{@@definfoenclose} on the name of a predefined macro
+(such as @code{@@emph}, @code{@@strong}, @code{@@t}, or @code{@@i}),
+the enclosure definition will override the built-in definition.
 
 An enclosure command defined this way takes one argument in braces; this
 is intended for new markup commands (@pxref{Marking Text}).
@@ -16065,10 +16068,9 @@ the command line may also be specified within a initialization file.
 The rest of this chapter gives further details on the program.
 
 @menu
-* Invoking texi2any::           How to run @command{texi2any} or @command{makeinfo} 
-                                from a shell.
+* Invoking texi2any::           How to run @command{texi2any} from a shell.
 * Pointer Validation::          How to check that pointers point somewhere.
-* makeinfo Configuration Variables:: Description of configuration variables.
+* @command{texi2any} Configuration Variables::  Configuring @command{texi2any}.
 @end menu
 
 
@@ -16401,7 +16403,7 @@ than HTML.  @xref{Generating HTML}.
 @opindex --output=@var{file}
 @opindex -o @var{file}
 Specify that the output should be directed to @var{file}.  This
-overrides any file name specified in a @code{@@setfilename} command
+overrides any file name specified in an @code{@@setfilename} command
 found in the Texinfo source.  If neither @code{@@setfilename} nor this
 option are specified, the input file name is used to determine the
 output name.  @xref{setfilename,,@code{@@setfilename}}.
@@ -16468,7 +16470,7 @@ to standard output by default; this can be overridden with @option{-o}.
 Set the configuration variable @var{var} to @var{value}.  Many aspects
 of the behavior and output may be modified by modifying configuration
 variables, beyond what can be set in the document by @@-commands and
-with other command line switches.  @xref{makeinfo Configuration
+with other command line switches.  @xref{@command{texi2any} Configuration
 Variables}.
 
 @item --split=@var{how}
@@ -16589,8 +16591,8 @@ cross reference.
 @end enumerate
 
 
-@node makeinfo Configuration Variables
-@section @code{makeinfo} Configuration Variables
+@node @command{texi2any} Configuration Variables
+@section @command{texi2any} Configuration Variables
 
 @cartouche
 @quotation Warning
@@ -16600,39 +16602,87 @@ promise.
 @end quotation
 @end cartouche
 
-Many aspects of the behavior and output may be modified by modifying 
-configuration variables. 
-The Configuration variables are either
-@itemize @bullet
-@item associated with @@-commands in the document,
-for example @code{@@documentlanguage},
-@item associated with command-line options, for example the configuration
-variable @code{SPLIT} is
-associated with the @option{--split} command-line switch,
-@item other 
-configuration variables, for example @code{NO_CSS} which may be set to 0
-in case one does not want CSS. Those configuration variables may always be set
-on the command-line, using
-@example
---set-init-variable 'VAR_NAME value'
-@end example
-or
-@example
---set-init-variable VAR_NAME=value
-@end example
+Many aspects of the behavior and output of @command{texi2any} may be
+modified by modifying configuration variables.  These @dfn{configuration
+variables} fall into three general categories:
 
-where @var{VAR_NAME} is the variable name, for example @code{SPLIT} or
-@code{NO_CSS}, and @var{value} is the value of the variable. A special
-value is @samp{undef} the sets the variable to this special @command{perl}
-value.
+@itemize @bullet
+@item those associated with @@-commands in the document,
+for example, @code{@@documentlanguage}.
+
+@item associated with command-line options,
+for example, the configuration variable @code{SPLIT} is associated
+with the @option{--split} command-line option.
+
+@item other ad hoc variables,
+for example, @code{NO_CSS} which can be set to 0 to avoid using
+CSS. These ad hoc variables can be set on the command line, using
+@code{--set-init-variable '@var{var} @var{value}'} (quoting the
+variable/value pair) or @code{--set-init-variable
+@var{var}=@var{value}} (using @code{=}).  A special @var{value} is
+@samp{undef}, which sets the variable to this special Perl value for
+undefined.
 @end itemize
 
-The list of configuration variables associated with @@-commands is
-in @ref{Configuration variables for @@-commands}, the list and mapping
-of configuration variables associated with command line options is at 
-@ref{Configuration variables and options}.
+The sections below give the details for each of these.
 
-The other configuration variables are:
+@menu
+* Commands: Configuration Variables for @@-Commands.
+* Options:  Configuration Variables and Options.
+* Other:    Other Configuration Variables.
+@end menu
+
+@node Configuration Variables for @@-Commands
+@subsection Configuration variables for @@-Commands
+
+Configuration variables with the same name than @@-commands are associated
+with the following @@-commands:
+
+@example
+@@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading 
+@@oddfooting @@headings @@allowcodebreaks @@frenchspacing @@exampleindent
+@@firstparagraphindent @@paragraphindent @@clickstyle @@documentlanguage 
+@@contents @@shortcontents @@setcontentsaftertitlepage 
+@@setshortcontentsaftertitlepage @@footnotestyle @@novalidate 
+@@kbdinputstyle @@documentencoding @@setfilename @@today 
+@@documentdescription @@everyheadingmarks @@everyfootingmarks 
+@@evenheadingmarks @@oddheadingmarks @@evenfootingmarks @@oddfootingmarks 
+@@fonttextsize @@pagesizes @@setchapternewpage
+@end example
+
+
+@node Configuration Variables and Options
+@subsection Configuration Variables and Options
+
+The following table describes the association of command-line options and
+variables. For the meaning of the options, @ref{Invoking texi2any}.
+
+@multitable @columnfractions 0.5 0.5
+@headitem option @tab variable
+@item @option{--enable-encoding} @tab @code{ENABLE_ENCODING}
+@item @option{--document-language} @tab @code{documentlanguage}
+@item @option{--error-limit} @tab @code{ERROR_LIMIT}
+@item @option{--fill-column} @tab @code{FILLCOLUMN}
+@item @option{--footnote-style} @tab @code{footnotestyle}
+@item @option{--force} @tab @code{FORCE}
+@item @option{--internal-links} @tab @code{INTERNAL_LINKS}
+@item @option{--macro-expand} @tab @code{MACRO_EXPAND}
+@item @option{--headers} @tab @code{HEADERS} and @code{SHOW_MENU}
+@item @option{--no-warn} @tab @code{NO_WARN}
+@item @option{--no-validate} @tab @code{novalidate}
+@item @option{--number-footnotes} @tab @code{NUMBER_FOOTNOTES}
+@item @option{--number-sections} @tab @code{NUMBER_SECTIONS}
+@item @option{--node-files} @tab @code{NODE_FILES}
+@item @option{--output} @tab @code{OUT}, @code{OUTFILE} and @code{SUBDIR}
+@item @option{--paragraph-indent} @tab @code{paragraphindent}
+@item @option{--split} @tab @code{SPLIT}
+@item @option{--split-size} @tab @code{SPLIT_SIZE}
+@item @option{--verbose} @tab @code{VERBOSE}
+@end multitable
+
+
+@node Other Configuration Variables
+@subsection Other Configuration Variables
 
 @vtable @code
 @item DEBUG
@@ -16740,11 +16790,12 @@ but instead use the mechanism described in @ref{HTML Xref Configuration}.
 For HTML.
 Use entities for doubled single-quote characters (@pxref{Inserting Quotation Marks}, @samp{---} and @samp{--} 
 (@pxref{Conventions, General Syntactic Conventions}).
+
 @item SPLIT_INDEX
-For HTML.
-If set, document is split, and a @code{@@printindex} happens in a sectioning 
-element at the level of splitting, then split index pages at the next letter
-after they have more than that many entries. If set to 0, no index splitting.
+For HTML.  If set, document is split, and an @code{@@printindex}
+happens in a sectioning element at the level of splitting, then split
+index pages at the next letter after they have more than that many
+entries. If set to 0, no index splitting.
 @item IN_ENCODING
 Input file encoding using perl encoding names. Set according to 
 @code{@@documentencoding}.
@@ -16909,62 +16960,6 @@ file is @file{<input_file_basename>-noderename.cnf}.  @xref{HTML Xref
 Link Preservation}.
 
 @end vtable
-
-@menu
-* Configuration variables for @@-commands::   configuration variables
-                                associated with @@-commands.
-* Configuration variables and options::      correspondence between 
-                                configuration variables and command line
-                                options. 
-@end menu
-
-@node Configuration variables for @@-commands
-@subsection Configuration variables for @@-commands
-
-Configuration variables with the same name than @@-commands are associated
-with the following @@-commands:
-
-@example
-@@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading 
-@@oddfooting @@headings @@allowcodebreaks @@frenchspacing @@exampleindent
-@@firstparagraphindent @@paragraphindent @@clickstyle @@documentlanguage 
-@@contents @@shortcontents @@setcontentsaftertitlepage 
-@@setshortcontentsaftertitlepage @@footnotestyle @@novalidate 
-@@kbdinputstyle @@documentencoding @@setfilename @@today 
-@@documentdescription @@everyheadingmarks @@everyfootingmarks 
-@@evenheadingmarks @@oddheadingmarks @@evenfootingmarks @@oddfootingmarks 
-@@fonttextsize @@pagesizes @@setchapternewpage
-@end example
-
-
-@node Configuration variables and options
-@subsection Configuration variables and options
-
-The following table describes the association of command-line options and
-variables. For the meaning of the options, @ref{Invoking texi2any}.
-
-@multitable @columnfractions 0.5 0.5
-@headitem option @tab variable
-@item @option{--enable-encoding} @tab @code{ENABLE_ENCODING}
-@item @option{--document-language} @tab @code{documentlanguage}
-@item @option{--error-limit} @tab @code{ERROR_LIMIT}
-@item @option{--fill-column} @tab @code{FILLCOLUMN}
-@item @option{--footnote-style} @tab @code{footnotestyle}
-@item @option{--force} @tab @code{FORCE}
-@item @option{--internal-links} @tab @code{INTERNAL_LINKS}
-@item @option{--macro-expand} @tab @code{MACRO_EXPAND}
-@item @option{--headers} @tab @code{HEADERS} and @code{SHOW_MENU}
-@item @option{--no-warn} @tab @code{NO_WARN}
-@item @option{--no-validate} @tab @code{novalidate}
-@item @option{--number-footnotes} @tab @code{NUMBER_FOOTNOTES}
-@item @option{--number-sections} @tab @code{NUMBER_SECTIONS}
-@item @option{--node-files} @tab @code{NODE_FILES}
-@item @option{--output} @tab @code{OUT}, @code{OUTFILE} and @code{SUBDIR}
-@item @option{--paragraph-indent} @tab @code{paragraphindent}
-@item @option{--split} @tab @code{SPLIT}
-@item @option{--split-size} @tab @code{SPLIT_SIZE}
-@item @option{--verbose} @tab @code{VERBOSE}
-@end multitable
 
 
 @node Creating and Installing Info Files
@@ -18342,7 +18337,7 @@ present, else the address.  @xref{email}.
 An @code{@@image} command is replaced by the filename (first)
 argument.  @xref{Images}.
 
-A @code{@@verb} command is replaced by its transformed argument.
+An @code{@@verb} command is replaced by its transformed argument.
 @xref{verb}.
 
 Any other command is an error, and the result is unspecified.
@@ -18525,9 +18520,9 @@ in the canonical @file{htmlxref.cnf}):
 G = http://www.gnu.org
 GS = $@{G@}/software
 hello mono    $@{GS@}/hello/manual/hello.html
-hello node    $@{GS@}/hello/manual/html_node/
-hello section $@{GS@}/hello/manual/html_section/
 hello chapter $@{GS@}/hello/manual/html_chapter/
+hello section $@{GS@}/hello/manual/html_section/
+hello node    $@{GS@}/hello/manual/html_node/
 @end smallexample
 
 @cindex monolithic manuals, for HTML cross references
@@ -18575,6 +18570,7 @@ You can get the latest version from
 @cindex Old nodes, preserving links to
 @cindex Renaming nodes, and preserving links
 @cindex Links, preserving to renamed nodes
+@cindex Node renaming, and preserving links
 
 Occasionally changes in a program require removing (or renaming) nodes
 in the manual in order to have the best documentation.  Given the
@@ -18582,6 +18578,7 @@ nature of the web, however, links may exist anywhere to such a removed
 node (renaming appears the same as removal for this purpose), and it's
 not ideal for those links to simply break.
 
+@vindex RENAMED_NODES_FILE
 Therefore, Texinfo provides a way for manual authors to specify old
 node names and the new nodes to which the old names should be
 redirected, via the file @var{manual}@file{-noderename.cnf}, where
@@ -18589,7 +18586,7 @@ redirected, via the file @var{manual}@file{-noderename.cnf}, where
 @file{texinfo.txi} would be supplemented by a file
 @file{texinfo-noderename}.cnf.  (This name can be overridden by
 setting the @file{RENAMED_NODES_FILE} configuration variable;
-@pxref{makeinfo Configuration Variables}).
+@pxref{@command{texi2any} Configuration Variables}).
 
 The file is read in pairs of lines, as follows:
 
@@ -18608,7 +18605,7 @@ The effect is that @command{makeinfo} generates a redirect from
 Thus, external links to the old node are preserved.
 
 Lines consisting only of whitespace are ignored.  Comments are
-indicated with a @samp{@@c} at the beginning of a line, optionally
+indicated with an @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
 
 
@@ -18766,7 +18763,7 @@ files into three general categories:
 @item configuration variables
 @cindex Configuration variables
 Configuration variables are set and accessed through specific
-functions in initialization files (@pxref{makeinfo Configuration
+functions in initialization files (@pxref{@command{texi2any} Configuration
 Variables}).
 
 @item scalars, lists and hashes
@@ -18929,9 +18926,9 @@ if (get_conf('footnotestyle') eq 'separate') @{ ... @}
 @end example
 
 For the configuration variables associated with @@-commands, see
-@ref{Configuration variables for @@-commands}.  For the configuration
+@ref{Configuration Variables for @@-Commands}.  For the configuration
 variables associated with command line options, see @ref{Configuration
-variables and options}.
+Variables and Options}.
 
 
 @node Init File Global Information
@@ -19653,7 +19650,7 @@ languages.
 Expansion can be prevented by setting the key @code{keep_texi} in the
 @code{state} hash.
 
-When a @code{@@documentlanguage} line appears in the document and the
+When an @code{@@documentlanguage} line appears in the document and the
 language was not set on the command line, it is convenient for the
 translations to redefine some variables based on the new language.
 Therefore, Texinfo has a function reference which is called each time
@@ -19700,7 +19697,7 @@ associated with a previous node; they both together make up the
 element.  Either the node or the sectioning command is considered to
 be the main element component, depending on the values of the
 configuration variables @code{USE_NODES} and @code{USE_SECTIONS}
-(@pxref{makeinfo Configuration Variables}).
+(@pxref{@command{texiany} Configuration Variables}).
 
 For example, when generating Info, the nodes are the elements; when
 generating Docbook, sectioning commands are the main element
@@ -19710,14 +19707,14 @@ component; and when generating HTML, either case may happen
 @item Top element
 @cindex Top element
 The top element is the highest element in the document structure.  If
-the document has a @code{@@top} section (@pxref{makeinfo top}), it is
+the document has an @code{@@top} section (@pxref{makeinfo top}), it is
 the element associated with that section; otherwise, it is the element
 associated with the document's @code{@@node Top} (@pxref{The Top
 Node}).  If there is no @code{@@node Top}, the first element in the
 document is the top element.
 
 The top element may end up formatted differently from normal elements
-if there is a @code{@@top} section or the @code{@@node Top} is not
+if there is an @code{@@top} section or the @code{@@node Top} is not
 associated with a sectioning command.
 
 @item Miscellaneous elements
@@ -19957,7 +19954,7 @@ assignments, especially special arrays.  The configuration variables
 @code{VERTICAL_HEAD_NAVIGATION}, @code{ICONS}, @code{HEADERS},
 @code{HEADER_IN_TABLE}, @code{USE_ACCESSKEY} and @code{USE_REL_REV}
 may be used to change the the navigation panel formatting.
-@xref{makeinfo Configuration Variables}.
+@xref{@command{texi2any} Configuration Variables}.
 
 In the unusual case that this isn't enough, it is also possible to
 redefine the function doing the navigation panel formatting.
@@ -20995,7 +20992,7 @@ document, before any calls to @code{index_summary_file_entry}.
 The two-letter name of the index. 
 
 @item $is_printed
-True if this index has a @code{@@printindex} command.
+True if this index has a corresponding @code{@@printindex} command.
 
 @item $manual_name
 The manual basename.
@@ -21029,7 +21026,7 @@ Defined}).
 The formatted header of the element containing the index entry. 
 
 @item $is_printed
-True if this index has a @code{@@printindex} command.
+True if this index has a corresponding @code{@@printindex} command.
 
 @item $manual_name
 The manual basename.
@@ -21258,7 +21255,7 @@ any output.  A synonym for @code{@@comment}.  @kbd{DEL} also
 starts a comment.  @xref{Comments}.
 
 @item @@caption
-Define the full caption for a @code{@@float}.  @xref{caption shortcaption}.
+Define the full caption for an @code{@@float}.  @xref{caption shortcaption}.
 
 @item @@cartouche
 Highlight an example or quotation by drawing a box with rounded
@@ -22059,7 +22056,7 @@ default document description for HTML @samp{<head>}.  @xref{settitle,,
 @code{@@settitle}}.
 
 @item @@shortcaption
-Define the short caption for a @code{@@float}.  @xref{caption shortcaption}.
+Define the short caption for an @code{@@float}.  @xref{caption shortcaption}.
 
 @item @@shortcontents
 Print a short table of contents, with chapter-level entries only.  Not
@@ -22946,7 +22943,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
+$Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23025,7 +23022,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.355 2010-11-19 00:51:39 karl Exp $
+@comment $Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
@@ -24664,8 +24661,8 @@ An arbitrary string beginning the output file, followed by a blank
 line.
 
 @item <copying text>
-The expansion of a @code{@@copying} environment, if
-the manual has one (@pxref{copying}).
+The expansion of an @code{@@copying} environment, if the manual has
+one (@pxref{copying}).
 
 @item <dir entries>
 The result of any @code{@@dircategory} and @code{@@direntry}

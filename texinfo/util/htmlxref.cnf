@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-18.18; # UTC
+htmlxrefversion=2010-11-30.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -22,8 +22,12 @@ htmlxrefversion=2010-11-18.18; # UTC
 # nodes described at
 # http://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Xref.html
 # (otherwise cross-references fail).  This is what makeinfo and
-# texi2html implement.
- 
+# texi2html implement. 
+#
+# When a manual named foo is related to a package named bar, the url
+# should contain ${BAR}.  Otherwise, the gnumaint scripts have no way of
+# knowing they are associated, and thus gnu.org/manual can't include them.
+
 # shorten references to manuals on www.gnu.org.
 G = http://www.gnu.org
 GS = ${G}/software
@@ -55,12 +59,12 @@ avl		node	http://www.stanford.edu/~blp/avl/libavl.html/
 bash		mono	${GS}/bash/manual/bash.html
 bash		node	${GS}/bash/manual/html_node/
 
-BINU = http://sourceware.org/binutils/docs
-binutils	node	${BINU}/binutils/
- as		node	${BINU}/as/
- bfd		node	${BINU}/bfd/
- gprof		node	${BINU}/gprof/
- ld		node	${BINU}/ld/
+BINUTILS = http://sourceware.org/binutils/docs
+binutils	node	${BINUTILS}/binutils/
+ as		node	${BINUTILS}/as/
+ bfd		node	${BINUTILS}/bfd/
+ gprof		node	${BINUTILS}/gprof/
+ ld		node	${BINUTILS}/ld/
 
 bison		mono	${GS}/bison/manual/bison.html
 bison		node	${GS}/bison/manual/html_node/
@@ -202,13 +206,21 @@ gawk		node	${GS}/gawk/manual/html_node/
 gcal		mono	${GS}/gcal/manual/gcal.html
 gcal		node	${GS}/gcal/manual/html_node/
 
-gccint		node	http://gcc.gnu.org/onlinedocs/gccint/
- cpp		node	http://gcc.gnu.org/onlinedocs/gccint/
- gcj		node	http://gcc.gnu.org/onlinedocs/gcj/
- gfortran	node	http://gcc.gnu.org/onlinedocs/gfortran/
- gnat_rm	node	http://gcc.gnu.org/onlinedocs/gnat_rm/
- gnat_ugn_unw	node	http://gcc.gnu.org/onlinedocs/gnat_ugn_unw/
- libgomp	node	http://gcc.gnu.org/onlinedocs/libgomp/
+GCC = http://gcc.gnu.org/onlinedocs
+gcc		node	${GCC}/gcc/
+ cpp		node	${GCC}/gccint/
+ gcj		node	${GCC}/gcj/
+ gfortran	node	${GCC}/gfortran/
+ gnat_rm	node	${GCC}/gnat_rm/
+ gnat_ugn_unw	node	${GCC}/gnat_ugn_unw/
+ libgomp	node	${GCC}/libgomp/
+ libstdc++	node	${GCC}/libstdc++/
+ #
+ gccint		node	${GCC}/gccint/
+ cppinternals	node	${GCC}/cppinternals/
+ gfc-internals	node	${GCC}/gfc-internals/
+ gnat-style	node	${GCC}/gnat-style/
+ libiberty	node	${GCC}/libiberty/
 
 GDB = http://sourceware.org/gdb/current/onlinedocs
 gdb		node	${GDB}/gdb/
@@ -221,6 +233,8 @@ gettext		node	${GS}/gettext/manual/html_node/
 gforth		node	http://www.complang.tuwien.ac.at/forth/gforth/Docs-html/
 
 global		mono	${GS}/global/manual/global.html
+
+gmediaserver	node	${GS}/gmediaserver/manual/
 
 gmp		mono	${GS}/gmp/manual/html_mono/gmp.html
 gmp		node	${GS}/gmp/manual/html_node/
@@ -240,6 +254,12 @@ gnubik		node	${GS}/gnubik/manual/html_node/
 gnulib		mono	${GS}/gnulib/manual/gnulib.html
 gnulib		node	${GS}/gnulib/manual/html_node/
 
+GNUN = ${GS}/trans-coord/manual
+gnun		mono	${GNUN}/gnun/gnun.html
+gnun		node	${GNUN}/gnun/html_node/
+ web-trans	mono	${GNUN}/web-trans/web-trans.html
+ web-trans	node	${GNUN}/web-trans/html_node/
+
 GNUPG = http://www.gnupg.org/documentation/manuals
 gnupg		node	${GNUPG}/gnupg/
  dirmngr	node	${GNUPG}/dirmngr/
@@ -249,7 +269,16 @@ gnupg		node	${GNUPG}/gnupg/
  assuan		node	${GNUPG}/assuan/
  gpgme		node	${GNUPG}/gpgme/
 
+gnuprologjava	node	${GS}/gnuprologjava/manual/
+
 gnuschool	mono	${GS}/gnuschool/gnuschool.html
+
+GNUSTANDARDS = ${G}/prep
+ maintain	mono	${GNUSTANDARDS}/maintain/maintain.html
+ maintain	node	${GNUSTANDARDS}/maintain/html_node/
+ #
+ standards	mono	${GNUSTANDARDS}/standards/standards.html
+ standards	node	${GNUSTANDARDS}/standards/html_node/
 
 gnutls		mono	${GS}/gnutls/manual/gnutls.html
 gnutls		node	${GS}/gnutls/manual/html_node/
@@ -267,6 +296,8 @@ grub		node	${GS}/grub/manual/html_node/
 
 gsasl		mono	${GS}/gsasl/manual/gsasl.html
 gsasl		node	${GS}/gsasl/manual/html_node/
+
+gsl		node	${GS}/gsl/manual/html_node/
 
 gss		mono	${GS}/gss/manual/gss.html
 gss		node	${GS}/gss/manual/html_node/
@@ -293,6 +324,8 @@ GUILE_GNOME = ${GS}/software/guile-gnome/docs
  corba		node	${GUILE_GNOME}/corba/html/
  clutter	node	${GUILE_GNOME}/clutter/html/
  clutter-glx	node	${GUILE_GNOME}/clutter-glx/html/
+
+guile-gtk	node	${GS}/guile-gtk/docs/guile-gtk/
 
 guile-rpc	mono	${GS}/guile-rpc/manual/guile-rpc.html
 guile-rpc	node	${GS}/guile-rpc/manual/html_node/
@@ -325,6 +358,13 @@ libidn		node	${GS}/libidn/manual/html_node/
 
 libmatheval	mono	${GS}/libmatheval/matheval.html
 
+LIBMICROHTTPD = http://www.gnu.org/software/libmicrohttpd/
+ microhttpd	node	${LIBMICROHTTPD}/microhttpd.html
+ # can't use tutorial.html since name is generic. 
+
+libtasn1	mono	${GS}/libtasn1/manual/libtasn1.html
+libtasn1	node	${GS}/libtasn1/manual/html_node/
+
 libtool		mono	${GS}/libtool/manual/libtool.html
 libtool		node	${GS}/libtool/manual/html_node/
 
@@ -334,20 +374,24 @@ lightning	node	${GS}/lightning/manual/html_node/
 liquidwar6	mono	${GS}/liquidwar6/manual/liquidwar6.html
 liquidwar6	node	${GS}/liquidwar6/manual/html_node/
 
+lispintro	mono	${GS}/emacs/emacs-lisp-intro/html_mono/emacs-lisp-intro.html
+lispintro	node	${GS}/emacs/emacs-lisp-intro/html_node/index.html
+
 m4		mono	${GS}/m4/manual/m4.html
 m4		node	${GS}/m4/manual/html_node/
 
 mailutils	mono	${GS}/mailutils/manual/mailutils.html
 mailutils	node	${GS}/mailutils/manual/html_node/
 
-maintain	mono	${G}/prep/maintain/maintain.html
-maintain	node	${G}/prep/maintain/html_node/
-
 make		mono	${GS}/make/manual/make.html
 make		node	${GS}/make/manual/html_node/
 
 mdk		mono	${GS}/mdk/manual/mdk.html
 mdk		node	${GS}/mdk/manual/html_node/
+
+METAEXCHANGE = http://ftp.gwdg.de/pub/gnu2/iwfmdh/doc/texinfo/
+ iwf_mh		node	${METAEXCHANGE}/iwf_mh.html
+ scantest	node	${METAEXCHANGE}/scantest.html
 
 MIT_SCHEME = http://www.gnu.org/software/mit-scheme/documentation
  mit-scheme-ref	  node	${MIT_SCHEME}/mit-scheme-ref/
@@ -359,12 +403,20 @@ moe		mono	${GS}/moe/manual/moe_manual.html
 
 motti		node	${GS}/motti/manual/
 
+mpfr		mono	http://www.mpfr.org/mpfr-current/mpfr.html
+
+myserver	node	http://www.myserverproject.net/documentation/
+
+nettle		chapter	http://www.lysator.liu.se/~nisse/nettle/nettle.html
+
 ocrad		mono	${GS}/ocrad/manual/ocrad_manual.html
 
 parted		mono	${GS}/parted/manual/parted.html
 parted		node	${GS}/parted/manual/html_node/
 
 pascal		mono	http://www.gnu-pascal.de/gpc/
+
+# can't use pcb since url's contain dates --30nov10
 
 pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/
@@ -390,9 +442,6 @@ sourceinstall	node	${GS}/sourceinstall/manual/html_node/
 
 src-highlite	mono	${GS}/src-highlite/source-highlight.html
 
-standards	mono	${G}/prep/standards/standards.html
-standards	node	${G}/prep/standards/html_node/
-
 swbis		mono	${GS}/swbis/manual.html
 
 tar		mono	${GS}/tar/manual/tar.html
@@ -400,14 +449,15 @@ tar		chapter	${GS}/tar/manual/html_chapter/
 tar		section	${GS}/tar/manual/html_section/
 tar		node	${GS}/autoconf/manual/html_node/
 
-texinfo		mono	${GS}/texinfo/manual/texinfo/texinfo.html
-texinfo		node	${GS}/texinfo/manual/texinfo/html_node/
+TEXINFO = ${GS}/texinfo/manual
+texinfo		mono	${TEXINFO}/texinfo/texinfo.html
+texinfo		node	${TEXINFO}/texinfo/html_node/
  #
- info		mono	${GS}/texinfo/manual/info/info.html
- info		node	${GS}/texinfo/manual/info/html_node/
+ info		mono	${TEXINFO}/info/info.html
+ info		node	${TEXINFO}/info/html_node/
  #
- info-stnd	mono	${GS}/texinfo/manual/info-stnd/info-stnd.html
- info-stnd	node	${GS}/texinfo/manual/info-stnd/html_node/
+ info-stnd	mono	${TEXINFO}/info-stnd/info-stnd.html
+ info-stnd	node	${TEXINFO}/info-stnd/html_node/
 
 units		mono	${GS}/units/manual/units.html
 units		node	${GS}/units/manual/html_node/
