@@ -2556,7 +2556,9 @@ sub _parse_texi($;$)
             $self->{'definfoenclose'}->{$current->{'cmdname'}})
            and $line !~ /^{/) {
         # special case for @-command as argument of @itemize or @*table.
-        if ($current->{'parent'} and $current->{'parent'}->{'parent'} 
+        if ($current->{'parent'} and $current->{'parent'}->{'type'}
+            and $current->{'parent'}->{'type'} eq 'block_line_arg'
+            and $current->{'parent'}->{'parent'} 
             and $current->{'parent'}->{'parent'}->{'cmdname'} and
            ($current->{'parent'}->{'parent'}->{'cmdname'} eq 'itemize'
              or $item_line_commands{$current->{'parent'}->{'parent'}->{'cmdname'}})
@@ -2566,12 +2568,18 @@ sub _parse_texi($;$)
                    and $current->{'parent'}->{'contents'}->[0]->{'text'}
                                       =~ /^[^\S\n]*/))) {
           delete $current->{'contents'};
-          print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'debug'});
-          $current->{'type'} = 'command_as_argument';
-          $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
-            = $current->{'cmdname'};
+          if ($accent_commands{$current->{'cmdname'}}) {
+            _line_warn ($self, sprintf($self->
+              __("Accent command `\@%s' not allowed as \@%s argument"),
+              $current->{'cmdname'}, $current->{'parent'}->{'parent'}->{'cmdname'}),
+              $line_nr);
+          } else {
+            print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'debug'});
+            $current->{'type'} = 'command_as_argument';
+            $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
+              = $current->{'cmdname'};
+          }
           $current = $current->{'parent'};
-
         # now accent commands
         } elsif ($accent_commands{$current->{'cmdname'}}) {
           if ($line =~ /^[^\S\n]/) {
