@@ -1,5 +1,5 @@
 /*  man.c: How to read and format man files.
-    $Id: man.c,v 1.15 2009-01-23 09:37:40 gray Exp $
+    $Id: man.c,v 1.16 2010-12-03 23:49:20 karl Exp $
 
    Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
    2007, 2008, 2009 Free Software Foundation, Inc.
@@ -104,7 +104,8 @@ get_manpage_node (FILE_BUFFER *file_buffer, char *pagename)
 	     the feet of info_windows[] array.  Therefore, all the
 	     nodes on that list which are showing man pages have their
 	     contents member pointing into the blue.  Undo that harm.  */
-	  if (old_contents && oldsize && old_contents != file_buffer->contents)
+	  if (old_contents && oldsize && old_contents != file_buffer->contents
+	      && info_windows)
 	    {
 	      int iw;
 	      INFO_WINDOW *info_win;

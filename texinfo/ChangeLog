@@ -1,3 +1,8 @@
+2010-12-03  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
+
+	* info/man.c (get_manpage_node): Avoid null pointer dereference
+	of info_windows.
+
 2010-12-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Configuration Variables and Options),
