@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-11-30.18; # UTC
+htmlxrefversion=2010-12-03.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -417,6 +417,15 @@ parted		node	${GS}/parted/manual/html_node/
 pascal		mono	http://www.gnu-pascal.de/gpc/
 
 # can't use pcb since url's contain dates --30nov10
+
+PIES = http://www.gnu.org.ua/software/pies/manual
+pies		mono	${PIES}/pies.html
+pies 		chapter	${PIES}/html_chapter/
+pies 		section	${PIES}/html_section/
+pies		node	${PIES}/html_node/
+
+proxyknife	mono	${GS}/proxyknife/manual/proxyknife.html
+proxyknife	node	${GS}/proxyknife/manual/html_node/
 
 pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/

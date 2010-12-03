@@ -1,3 +1,14 @@
+2010-12-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Configuration Variables and Options),
+	(Configuration Variables for @@-Commands): rename+edit.
+
+2010-12-02  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (texi2any Configuration Variables): rather than
+	makeinfo, I guess.
+	(Other Configuration Variables): Split off into new node.
+
 2010-12-01  Patrice Dumas  <pertusus@free.fr>
 
 	* texi2html/texi2html.pl: don't warn when a user-defined macro

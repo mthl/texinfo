@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
+@c $Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16603,8 +16603,8 @@ promise.
 @end cartouche
 
 Many aspects of the behavior and output of @command{texi2any} may be
-modified by modifying configuration variables.  These @dfn{configuration
-variables} fall into three general categories:
+modified by modifying configuration variables.  These
+@dfn{configuration variables} fall into three general categories:
 
 @itemize @bullet
 @item those associated with @@-commands in the document,
@@ -16632,53 +16632,92 @@ The sections below give the details for each of these.
 * Other:    Other Configuration Variables.
 @end menu
 
+
 @node Configuration Variables for @@-Commands
-@subsection Configuration variables for @@-Commands
+@subsection Configuration Variables for @@-Commands
 
-Configuration variables with the same name than @@-commands are associated
-with the following @@-commands:
+@cindex Configuration variables for @@-commands
+@cindex @@-commands, configuration variables for
 
-@example
-@@everyheading @@everyfooting @@evenheading @@evenfooting @@oddheading 
-@@oddfooting @@headings @@allowcodebreaks @@frenchspacing @@exampleindent
-@@firstparagraphindent @@paragraphindent @@clickstyle @@documentlanguage 
-@@contents @@shortcontents @@setcontentsaftertitlepage 
-@@setshortcontentsaftertitlepage @@footnotestyle @@novalidate 
-@@kbdinputstyle @@documentencoding @@setfilename @@today 
-@@documentdescription @@everyheadingmarks @@everyfootingmarks 
-@@evenheadingmarks @@oddheadingmarks @@evenfootingmarks @@oddfootingmarks 
-@@fonttextsize @@pagesizes @@setchapternewpage
-@end example
+Each of the following @@-commands has an associated configuration
+variable with the same name (minus the leading @code{@@}):
+
+@smallexample
+@@allowcodebreaks @@clickstyle @@contents @@documentdescription
+@@documentencoding @@documentlanguage @@evenfooting
+@@evenfootingmarks @@evenheading @@evenheadingmarks
+@@everyfooting @@everyfootingmarks @@everyheading
+@@everyheadingmarks @@exampleindent @@firstparagraphindent
+@@fonttextsize @@footnotestyle @@frenchspacing @@headings
+@@kbdinputstyle @@novalidate @@oddfooting @@oddfootingmarks
+@@oddheading @@oddheadingmarks @@pagesizes @@paragraphindent
+@@setchapternewpage @@setcontentsaftertitlepage @@setfilename
+@@setshortcontentsaftertitlepage @@shortcontents @@today
+@end smallexample
+
+Setting such a configuration variable to a value @samp{foo} is
+essentially the same as executing @code{@@@var{cmd} foo}.
 
 
 @node Configuration Variables and Options
 @subsection Configuration Variables and Options
 
-The following table describes the association of command-line options and
-variables. For the meaning of the options, @ref{Invoking texi2any}.
+@cindex Configuration variables for options
+@cindex Options, configuration variables for
+
+The following table gives the configuration variables associated
+with some command line options.  @xref{Invoking
+texi2any}, for the meaning of the options.
 
 @multitable @columnfractions 0.5 0.5
-@headitem option @tab variable
-@item @option{--enable-encoding} @tab @code{ENABLE_ENCODING}
+@headitem Option @tab Variable
+@vindex ENABLE_ENCODING
+@item @option{--enable-encoding}   @tab @code{ENABLE_ENCODING}
+@vindex documentlanguage
 @item @option{--document-language} @tab @code{documentlanguage}
-@item @option{--error-limit} @tab @code{ERROR_LIMIT}
-@item @option{--fill-column} @tab @code{FILLCOLUMN}
-@item @option{--footnote-style} @tab @code{footnotestyle}
-@item @option{--force} @tab @code{FORCE}
-@item @option{--internal-links} @tab @code{INTERNAL_LINKS}
-@item @option{--macro-expand} @tab @code{MACRO_EXPAND}
-@item @option{--headers} @tab @code{HEADERS} and @code{SHOW_MENU}
-@item @option{--no-warn} @tab @code{NO_WARN}
-@item @option{--no-validate} @tab @code{novalidate}
-@item @option{--number-footnotes} @tab @code{NUMBER_FOOTNOTES}
-@item @option{--number-sections} @tab @code{NUMBER_SECTIONS}
-@item @option{--node-files} @tab @code{NODE_FILES}
-@item @option{--output} @tab @code{OUT}, @code{OUTFILE} and @code{SUBDIR}
-@item @option{--paragraph-indent} @tab @code{paragraphindent}
-@item @option{--split} @tab @code{SPLIT}
-@item @option{--split-size} @tab @code{SPLIT_SIZE}
-@item @option{--verbose} @tab @code{VERBOSE}
+@vindex ERROR_LIMIT
+@item @option{--error-limit}       @tab @code{ERROR_LIMIT}
+@vindex FILLCOLUMN
+@item @option{--fill-column}       @tab @code{FILLCOLUMN}
+@vindex footnotestyle
+@item @option{--footnote-style}    @tab @code{footnotestyle}
+@vindex FORCE
+@item @option{--force}             @tab @code{FORCE}
+@vindex INTERNAL_LINKS
+@item @option{--internal-links}    @tab @code{INTERNAL_LINKS}
+@vindex MACRO_EXPAND
+@item @option{--macro-expand}      @tab @code{MACRO_EXPAND}
+@vindex HEADERS
+@vindex SHOW_MENU
+@item @option{--headers}           @tab @code{HEADERS}, @code{SHOW_MENU}
+@vindex NO_WARN
+@item @option{--no-warn}           @tab @code{NO_WARN}
+@vindex novalidate
+@item @option{--no-validate}       @tab @code{novalidate}
+@vindex NUMBER_FOOTNOTES
+@item @option{--number-footnotes}  @tab @code{NUMBER_FOOTNOTES}
+@vindex NUMBER_SECTIONS
+@item @option{--number-sections}   @tab @code{NUMBER_SECTIONS}
+@vindex NODE_FILES
+@item @option{--node-files}        @tab @code{NODE_FILES}
+@vindex OUT
+@vindex OUTFILE
+@vindex SUBDIR
+@item @option{--output}            @tab @code{OUT}, @code{OUTFILE},
+                                        @code{SUBDIR}
+@vindex paragraphindent
+@item @option{--paragraph-indent}  @tab @code{paragraphindent}
+@vindex SPLIT
+@item @option{--split}             @tab @code{SPLIT}
+@vindex SPLIT_SIZE
+@item @option{--split-size}        @tab @code{SPLIT_SIZE}
+@vindex VERBOSE
+@item @option{--verbose}           @tab @code{VERBOSE}
 @end multitable
+
+Setting such a configuration variable to a value @samp{foo} is
+essentially the same as specifying the @code{--@var{opt}=foo} if the
+option takes an argument, or @code{--@var{opt}} if not.
 
 
 @node Other Configuration Variables
@@ -19697,7 +19736,7 @@ associated with a previous node; they both together make up the
 element.  Either the node or the sectioning command is considered to
 be the main element component, depending on the values of the
 configuration variables @code{USE_NODES} and @code{USE_SECTIONS}
-(@pxref{@command{texiany} Configuration Variables}).
+(@pxref{@command{texi2any} Configuration Variables}).
 
 For example, when generating Info, the nodes are the elements; when
 generating Docbook, sectioning commands are the main element
@@ -22943,7 +22982,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
+$Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23022,7 +23061,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.356 2010-12-02 17:52:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
