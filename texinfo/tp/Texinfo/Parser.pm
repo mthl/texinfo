@@ -212,23 +212,24 @@ my %default_configuration = (
   # or an hash reference in the same format than %index_names below
   'indices' => [],
   # the following are dynamically modified during the document parsing.
-  'aliases' => {},           # key is a command name value is the alias
-  'values' => {},            # the key is the name, the value the @set name 
-                             # argument.  A Texinfo tree may also be used.
-  'macros' => {},            # the key is the user-defined macro name.  The 
-                             # value is the reference on a macro element 
-                             # as obtained by parsing the @macro
+  'aliases' => {},            # key is a command name value is the alias
+  'values' => {},             # the key is the name, the value the @set name 
+                              # argument.  A Texinfo tree may also be used.
+  'macros' => {},             # the key is the user-defined macro name.  The 
+                              # value is the reference on a macro element 
+                              # as obtained by parsing the @macro
   'clickstyle' => 'arrow',
-  'sections_level' => 0,     # modified by raise/lowersections
-  'merged_indices' => {},    # the key is merged in the value
-  'labels'          => {},   # keys are normalized label names, as described
-                             # in the `HTML Xref' node.  Value should be
-                             # a node/anchor or float in the tree.
-  'novalidate' => 0,         # same as setting @novalidate.
-  'encoding' => 'us-ascii',  # Current encoding set by @documentencoding
-                             # and normalized
-  'documentlanguage' => 'en' # Current documentlanguage set by @documentlanguage
-                             # or at initialization
+  'sections_level' => 0,      # modified by raise/lowersections
+  'merged_indices' => {},     # the key is merged in the value
+  'labels'          => {},    # keys are normalized label names, as described
+                              # in the `HTML Xref' node.  Value should be
+                              # a node/anchor or float in the tree.
+  'novalidate' => 0,          # same as setting @novalidate.
+  'encoding' => 'us-ascii',   # Current encoding set by @documentencoding
+                              # and normalized
+  'documentlanguage' => 'en', # Current documentlanguage set by 
+                              # @documentlanguage or at initialization
+  'enable_encoding' => 1      # corresponds to --enable-encoding.
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -521,7 +522,7 @@ sub _deep_copy ($)
 
 # enter all the commands associated with an index name using the prefix
 # list
-sub _enter_index_commands ($$)
+sub _register_index_commands ($$)
 {
   my $self = shift;
   my $index_name = shift;
@@ -607,7 +608,7 @@ sub parser(;$$)
     }
   }
   foreach my $index (keys (%{$parser->{'index_names'}})) {
-    $parser->_enter_index_commands($index);
+    $parser->_register_index_commands($index);
   }
   $parser->{'errors_warnings'} = [];
   $parser->{'errors_nrs'} = 0;
@@ -1651,7 +1652,7 @@ sub _enter_index_entry($$$$)
                     };
   $index_entry->{'def'} = 1 if ($def_commands{$command});
   $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
-  push @{$self->{'index_entries'}->{'index_name'}}, $index_entry;
+  push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
@@ -3648,7 +3649,7 @@ sub _parse_line_command_args($$$)
         $in_code = 1 if ($command eq 'defcodeindex');
         $args = [$name];
         $self->{'index_names'}->{$name} = {$name => $in_code};
-        $self->_enter_index_commands($name);
+        $self->_register_index_commands($name);
       }
     } else {
       _line_error ($self, sprintf($self->

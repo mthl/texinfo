@@ -24,7 +24,7 @@ package Texinfo::Structuring;
 use 5.00405;
 use strict;
 
-# for debugging only
+# for debugging.  Also for index entries sorting.
 use Texinfo::Convert::Text;
 # for error messages 
 use Texinfo::Convert::Texinfo;
@@ -44,6 +44,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   sectioning_structure  
   nodes_tree
   number_floats
+  sort_indices
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -480,6 +481,48 @@ sub number_floats($)
       $float->{'number'} = $number;
     }
   }
+}
+
+sub _sort_subroutine($$)
+{
+  my $key1 = shift;
+  my $key2 = shift;
+  my $a = uc($key1->{'key'});
+  my $b = uc($key2->{'key'});
+  my $res = ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or
+            ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
+             || ($a =~ /^[[:alpha:]]/ && 1) || -1;
+  return $res;
+}
+
+sub _do_index_keys($$)
+{
+  my $self = shift;
+  my $index_entries = shift;
+  my $options = {'sort_string' => 1};
+  if ($self->{'enable_encoding'} and $self->{'encoding'}) {
+    $options->{'enable_encoding'} = $self->{'encoding'};
+  }
+  foreach my $index_name (keys(%$index_entries)) {
+    foreach my $entry (@{$index_entries->{$index_name}}) {
+      $entry->{'key'} = Texinfo::Convert::Text::convert(
+                              {'contents' => $entry->{'content'}},
+                              $options);
+    }
+  }
+}
+
+sub sort_indices ($$)
+{
+  my $self = shift;
+  my $index_entries = shift;
+  my $sorted_index_entries;
+  _do_index_keys($self, $index_entries);
+  foreach my $index_name (keys(%$index_entries)) {
+    @{$sorted_index_entries->{$index_name}} = 
+        sort _sort_subroutine @{$index_entries->{$index_name}};
+  }
+  return $sorted_index_entries;
 }
 
 1;
