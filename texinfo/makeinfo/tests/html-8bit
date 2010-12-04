@@ -1,5 +1,8 @@
 #!/bin/sh
-# Test that a minimal Texinfo file can be converted to HTML.
+# Public domain.  Test that a minimal Texinfo file can be converted to HTML.
+
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 
 ../makeinfo --html --no-split ${srcdir-.}/html-min.txi
 exit_status=$?

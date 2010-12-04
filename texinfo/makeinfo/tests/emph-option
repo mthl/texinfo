@@ -1,7 +1,8 @@
 #!/bin/sh
-# Test @option inside @emph. 
+# Public domain.  Test @option inside @emph. 
 
-unset TEXINFO_OUTPUT
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 : ${srcdir=.}
 
 ../makeinfo --no-split --html -o emph-option.out $srcdir/emph-option.txi || exit 1

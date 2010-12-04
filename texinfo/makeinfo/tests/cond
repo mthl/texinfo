@@ -1,7 +1,9 @@
 #!/bin/sh
-# Test conditional text.
+# $Id: cond,v 1.4 2010-12-04 00:05:53 karl Exp $
+# Public domain.  Test conditional text.
 
-unset TEXINFO_OUTPUT
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 : ${srcdir=.}
 
 # Default Info output.

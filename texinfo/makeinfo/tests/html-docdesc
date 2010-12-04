@@ -1,5 +1,8 @@
 #!/bin/sh
-# Test that @documentdescription works.
+# Public domain.  Test that @documentdescription works.
+
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 
 if ../makeinfo --html --no-split ${srcdir-.}/html-docdesc.txi; then
   grep 'explicit document description' html-docdesc.html >/dev/null

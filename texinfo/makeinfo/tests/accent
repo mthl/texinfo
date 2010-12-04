@@ -1,7 +1,9 @@
 #!/bin/sh
-# Test accent output.
+# $Id: accent,v 1.6 2010-12-04 00:05:53 karl Exp $
+# Public domain.  Test accent output.
 
-unset TEXINFO_OUTPUT
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 : ${srcdir=.}
 input=`basename $0`.txi
 

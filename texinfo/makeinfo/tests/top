@@ -1,8 +1,11 @@
 #!/bin/sh
-# Test that a top node can be ignored.
+# $Id: top,v 1.3 2010-12-04 00:05:54 karl Exp $
+# Public domain.  Test that a top node can be ignored.
 
-unset TEXINFO_OUTPUT
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 : ${srcdir=.}
+
 ../makeinfo $srcdir/top.txi || exit 1
 
 # Expected warnings due to use of @ifinfo instead of @ifnottex.

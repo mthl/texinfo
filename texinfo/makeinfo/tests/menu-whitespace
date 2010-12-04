@@ -1,7 +1,10 @@
 #!/bin/sh
-# Bug where whitespace after @menu caused confusion.
+# $Id: menu-whitespace,v 1.3 2010-12-04 00:05:54 karl Exp $
+# Public domain.  Bug where whitespace after @menu caused confusion.
 
-unset TEXINFO_OUTPUT
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
+
 : ${srcdir=.}
 input=`basename $0`.txi
 

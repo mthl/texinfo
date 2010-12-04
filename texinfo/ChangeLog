@@ -1,3 +1,9 @@
+2010-12-03  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/tests/*: uniformly set LC_ALL, unset LANG, LANGUAGE,
+	TEXINFO_OUTPUT.  Report from Ryan Hill, 19 Sep 2010 12:22:20,
+	http://savannah.gnu.org/bugs/?31068.
+
 2010-12-03  Ralf Wildenhues  <Ralf.Wildenhues@gmx.de>
 
 	* info/man.c (get_manpage_node): Avoid null pointer dereference

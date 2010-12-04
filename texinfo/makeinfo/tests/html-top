@@ -1,6 +1,9 @@
 #!/bin/sh
-# Test that a bare top node does not crash with --html.
+# $Id: html-top,v 1.2 2010-12-04 00:05:54 karl Exp $
+# Public domain.  Test that a bare top node does not crash with --html.
 
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 : ${srcdir=.}
 
 # But this input file is erroneous, so throw away errors.

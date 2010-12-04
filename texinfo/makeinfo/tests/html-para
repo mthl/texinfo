@@ -1,5 +1,9 @@
 #!/bin/sh
-# Test that paragraph beginnings in HTML work ok.
+# $Id: html-para,v 1.2 2010-12-04 00:05:54 karl Exp $
+# Public domain.  Test that paragraph beginnings in HTML work ok.
+
+unset TEXINFO_OUTPUT LANG LANGUAGE
+LC_ALL=POSIX; export LC_ALL
 
 ../makeinfo --no-split --html ${srcdir-.}/html-para.txi
 exit_status=$?
