@@ -353,6 +353,18 @@ foreach my $type ('before_item', 'text_root', 'document_root',
   $type_with_paragraph{$type} = 1;
 }
 
+my %global_multiple_commands;
+foreach my $global_multiple_command ('author', 'documentlanguage', 
+  'subtitle') {
+  $global_multiple_commands{$global_multiple_command} = 1;
+}
+
+my %global_unique_commands;
+foreach my $global_unique_command ('documentencoding', 'title', 
+  'shorttitlepage', 'settitle', 'copying', 'documentdescription', 'titlepage',
+  'setfilename') {
+  $global_unique_commands{$global_unique_command} = 1;
+}
 
 # key is index name, keys of the reference value are the prefixes.
 # value associated with the prefix is 0 if the prefix is not a code-like
@@ -853,6 +865,19 @@ sub _line_error($$$;$)
            %{$line_number} };
   }
   $parser->{'error_nrs'}++ unless ($continuation);
+}
+
+sub _register_global_unique_command($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+  if (exists ($self->{'extra'}->{$current->{'cmdname'}})) {
+    _line_warn ($self, sprintf($self->__('Multiple @%s'), 
+      $current->{'cmdname'}), $line_nr); 
+  } else {
+    $self->{'extra'}->{$current->{'cmdname'}} = $current;
+  }
 }
 
 # parse a @macro line
@@ -2884,6 +2909,7 @@ sub _parse_texi($;$)
 
           # noarg skipline skipspace line lineraw /^\d$/
           my $arg_spec = $self->{'misc_commands'}->{$command};
+          my $misc;
 
           if ($arg_spec eq 'noarg') {
             my $ignored = 0;
@@ -2891,7 +2917,8 @@ sub _parse_texi($;$)
               my $parent = $current;
               while ($parent) {
                 if ($parent->{'cmdname'} and $parent->{'cmdname'} eq 'copying') {
-                  $self->_line_error (sprintf($self->__("\@%s not allowed inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                  $self->_line_error (sprintf($self->__("\@%s not allowed inside `\@%s' block"), 
+                                              $command, $parent->{'cmdname'}), $line_nr);
                   $ignored = 1;
                   last;
                 }
@@ -2899,10 +2926,9 @@ sub _parse_texi($;$)
               }
             }
             unless ($ignored) {
-              push @{$current->{'contents'}}, {'cmdname' => $command,
-                                               'parent' => $current};
-              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                if ($invalid);
+              $misc = {'cmdname' => $command,
+                      'parent' => $current};
+              push @{$current->{'contents'}}, $misc;
             }
           # all the cases using the raw line
           } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
@@ -2912,20 +2938,19 @@ sub _parse_texi($;$)
               my ($new_line, $new_line_nr) = _new_line($self, $line_nr);
               $line .= $new_line if (defined($new_line));
             }
-            push @{$current->{'contents'}}, {'cmdname' => $command,
-                                             'parent' => $current};
-            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-              if ($invalid);
+            $misc = {'cmdname' => $command,
+                     'parent' => $current};
+            push @{$current->{'contents'}}, $misc;
             my $args = [];
             if ($arg_spec eq 'lineraw') {
               $args = [ $line ];
             } elsif ($arg_spec eq 'special') {
               $args 
                 = $self->_parse_special_misc_command($line, $command, $line_nr);
-              $current->{'contents'}->[-1]->{'extra'}->{'arg_line'} = $line;
+              $misc->{'extra'}->{'arg_line'} = $line;
             }
             foreach my $arg (@$args) {
-              push @{$current->{'contents'}->[-1]->{'args'}},
+              push @{$misc->{'args'}},
                 { 'type' => 'misc_arg', 'text' => $arg, 
                   'parent' => $current->{'contents'}->[-1] };
             }
@@ -2939,6 +2964,8 @@ sub _parse_texi($;$)
             } elsif ($command eq 'novalidate') {
               $self->{'novalidate'} = 1;
             }
+            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+
             last NEXT_LINE if ($command eq 'bye');
             last;
           } else {
@@ -2952,12 +2979,11 @@ sub _parse_texi($;$)
                 if ($command eq 'item') {
                   print STDERR "ITEM_CONTAINER\n" if ($self->{'debug'});
                   $parent->{'items_count'}++;
-                  push @{$parent->{'contents'}},
-                    { 'cmdname' => $command, 'parent' => $parent, 
-                      'contents' => [], 
-                      'extra' => {'item_number' => $parent->{'items_count'}} };
-                  $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                    if ($invalid);
+                  $misc = { 'cmdname' => $command, 'parent' => $parent,
+                            'contents' => [],
+                            'extra' => 
+                              {'item_number' => $parent->{'items_count'}} };
+                  push @{$parent->{'contents'}}, $misc;
                   $current = $parent->{'contents'}->[-1];
                 } else {
                   $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
@@ -2967,10 +2993,8 @@ sub _parse_texi($;$)
                 if ($command eq 'item' or $command eq 'itemx') {
                   print STDERR "ITEM_LINE\n" if ($self->{'debug'});
                   $current = $parent;
-                  push @{$current->{'contents'}}, 
-                    { 'cmdname' => $command, 'parent' => $current };
-                  $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                    if ($invalid);
+                  $misc = { 'cmdname' => $command, 'parent' => $current };
+                  push @{$current->{'contents'}}, $misc;
                   $line_arg = 1;
                 } else {
                   $self->_line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
@@ -2990,13 +3014,12 @@ sub _parse_texi($;$)
                       $self->_line_error (sprintf($self->__("Too many columns in multitable item (max %d)"), $parent->{'extra'}->{'max_columns'}), $line_nr);
                     } else {
                       $row->{'cells_count'}++;
-                      push @{$row->{'contents'}}, { 'cmdname' => $command,
-                                                  'parent' => $row,
-                                                  'contents' => [],
-                                                  'extra' => 
+                      $misc = { 'cmdname' => $command,
+                                'parent' => $row,
+                                'contents' => [],
+                                'extra' =>
                             {'cell_number' => $row->{'cells_count'}} };
-                      $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                        if ($invalid);
+                      push @{$row->{'contents'}}, $misc;
                       $current = $row->{'contents'}->[-1];
                       print STDERR "TAB\n" if ($self->{'debug'});
                     }
@@ -3008,12 +3031,11 @@ sub _parse_texi($;$)
                                 'extra' => {'row_number' => $parent->{'rows_count'} },
                                 'parent' => $parent };
                     push @{$parent->{'contents'}}, $row;
-                    push @{$row->{'contents'}}, { 'cmdname' => $command,
-                                                  'parent' => $row,
-                                                  'contents' => [],
-                                                  'extra' => {'cell_number' => 1}};
-                    $row->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                      if ($invalid);
+                    $misc =  { 'cmdname' => $command,
+                               'parent' => $row,
+                               'contents' => [],
+                               'extra' => {'cell_number' => 1}};
+                    push @{$row->{'contents'}}, $misc;
                     $current = $row->{'contents'}->[-1];
                   }
                 } else {
@@ -3026,11 +3048,9 @@ sub _parse_texi($;$)
               }
             } else {
 
-              push @{$current->{'contents'}}, 
-                { 'cmdname' => $command, 'parent' => $current,
+              $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
-              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                if ($invalid);
+              push @{$current->{'contents'}}, $misc;
               if ($self->{'sections_level'} and $root_commands{$command}
                    and $command ne 'node' and $command ne 'part') {
                 $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
@@ -3101,8 +3121,8 @@ sub _parse_texi($;$)
                                  $command), $current->{'line_nr'});
                 }
               } elsif ($command eq 'dircategory' and $self->{'current_node'}) {
-                _line_warn ($self, $self->__("\@dircategory after first node"),
-                             $line_nr);
+                  _line_warn ($self, $self->__("\@dircategory after first node"),
+                               $line_nr);
               }
 
               $current = $current->{'args'}->[-1];
@@ -3110,6 +3130,12 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $line = _start_empty_line_after_command($line, $current);
+          }
+          $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+          if ($global_multiple_commands{$command} and $command ne 'author') {
+            push @{$self->{'extra'}->{$command}}, $misc;
+          } elsif ($global_unique_commands{$command}) {
+            $self->_register_global_unique_command($misc, $line_nr);
           }
         # @-command with matching @end
         } elsif (exists($block_commands{$command})) {
@@ -3156,6 +3182,7 @@ sub _parse_texi($;$)
             # the end of line?
             last;
           } else {
+            my $block;
             # a menu command closes a menu_comment, but not the other
             # block commands. This won't catch menu commands buried in 
             # other formats (that are incorrect anyway).
@@ -3172,12 +3199,10 @@ sub _parse_texi($;$)
             # with def*x.
             if ($def_commands{$command}) {
               push @{$self->{'context_stack'}}, 'def';
-              push @{$current->{'contents'}}, { 
-                                                'parent' => $current,
-                                                'cmdname' => $command,
-                                                'contents' => [] };
-              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                if ($invalid);
+              $block = { 'parent' => $current,
+                         'cmdname' => $command,
+                         'contents' => [] };
+              push @{$current->{'contents'}}, $block;
               $current = $current->{'contents'}->[-1];
               push @{$current->{'contents'}}, { 
                                                 'type' => 'def_line',
@@ -3189,11 +3214,10 @@ sub _parse_texi($;$)
               $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
                 if ($invalid);
             } else {
-              push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                                'parent' => $current,
-                                                'contents' => [] };
-              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-                if ($invalid);
+              $block = { 'cmdname' => $command,
+                         'parent' => $current,
+                         'contents' => [] };
+              push @{$current->{'contents'}}, $block;
             }
             $current = $current->{'contents'}->[-1];
             if ($block_arg_commands{$command}) {
@@ -3233,6 +3257,10 @@ sub _parse_texi($;$)
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'debug'});
               }
               
+            }
+            $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            if ($global_unique_commands{$command}) {
+              $self->_register_global_unique_command($block, $line_nr);
             }
             $line = _start_empty_line_after_command($line, $current);
           }

@@ -486,6 +486,15 @@ $result_texts{'invalid_documentencoding'} = '
 
 $result_errors{'invalid_documentencoding'} = [
   {
+    'error_line' => ':4: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':4: warning: Encoding `latin1a\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
@@ -501,6 +510,15 @@ $result_errors{'invalid_documentencoding'} = [
     'line_nr' => 4,
     'macro' => '',
     'text' => 'unrecognized encoding name `latin1a\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
     'type' => 'warning'
   },
   {
@@ -531,6 +549,15 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':6: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':6: warning: Encoding `bad encoding name\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
@@ -546,6 +573,15 @@ $result_errors{'invalid_documentencoding'} = [
     'line_nr' => 6,
     'macro' => '',
     'text' => 'unrecognized encoding name `bad encoding name\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':7: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
     'type' => 'warning'
   },
   {
@@ -567,6 +603,15 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':8: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':8: warning: Encoding `%\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
@@ -582,6 +627,15 @@ $result_errors{'invalid_documentencoding'} = [
     'line_nr' => 8,
     'macro' => '',
     'text' => 'unrecognized encoding name `%\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
     'type' => 'warning'
   },
   {
@@ -603,6 +657,15 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':10: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':10: warning: Encoding `AAATeX\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
@@ -618,6 +681,15 @@ $result_errors{'invalid_documentencoding'} = [
     'line_nr' => 10,
     'macro' => '',
     'text' => 'unrecognized encoding name `AAATeX\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':11: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
     'type' => 'warning'
   },
   {

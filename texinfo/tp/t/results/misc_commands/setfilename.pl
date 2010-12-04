@@ -233,7 +233,35 @@ $result_texis{'setfilename'} = '@setfilename file_comment@c comment
 $result_texts{'setfilename'} = '
 ';
 
-$result_errors{'setfilename'} = [];
+$result_errors{'setfilename'} = [
+  {
+    'error_line' => ':2: warning: Multiple @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Multiple @setfilename',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: Multiple @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Multiple @setfilename',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: Multiple @setfilename
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Multiple @setfilename',
+    'type' => 'warning'
+  }
+];
 
 
 1;

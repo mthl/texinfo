@@ -1700,6 +1700,15 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':30: warning: Multiple @documentencoding
+',
+    'file_name' => '',
+    'line_nr' => 30,
+    'macro' => '',
+    'text' => 'Multiple @documentencoding',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':31: warning: @frenchspacing should only appear at a line beginning
 ',
     'file_name' => '',

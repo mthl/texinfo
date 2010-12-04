@@ -41,12 +41,6 @@ only appear in toplevel
 dotless:
 "%c%s expects `i' or `j' as argument, not `%s'"
 
-no warning in 
-t/25regions.t double_copying
-
-no warning in
-t/57invalid_nestings.t recursive_copying
-
 no warning in
 t/19def.t empty_def_arguments
 
@@ -61,6 +55,10 @@ Texinfo::Convert::Text
 
 use definfoenclose information in Convert::Text?
 
+t/30sectioning.t setfilename_on_top_and_after_node
+there could be a wrning
+ warning: @setfilename after the first element
+
 
 Incorporation of texi2html tests
 --------------------------------
@@ -69,8 +67,6 @@ tests in test/macros, not incorporated
 glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
-double_setfilename.texi
-bad_setfilename.texi
 
 from test_paths.texi:
 @image{formatting/f--ile}

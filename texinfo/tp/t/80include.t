@@ -125,6 +125,9 @@ macro_included.texi
 After.'],
 ['include_with_setfilename',
 '@include included_file_with_setfilename.texi 
+'],
+['include_setfilename_on_setfilename_line',
+'@setfilename file @setfilename other file @include are you joking!
 ']
 );
 

@@ -103,7 +103,17 @@ And a second one (?)
 
 $result_texts{'double_copying'} = '';
 
-$result_errors{'double_copying'} = [];
+$result_errors{'double_copying'} = [
+  {
+    'error_line' => ':5: warning: Multiple @copying
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Multiple @copying',
+    'type' => 'warning'
+  }
+];
 
 
 1;

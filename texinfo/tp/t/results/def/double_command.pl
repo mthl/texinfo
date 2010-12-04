@@ -184,6 +184,7 @@ $result_trees{'double_command'} = {
                       'index_name' => 'fn',
                       'index_prefix' => 'f'
                     },
+                    'invalid_nesting' => 1,
                     'original_def_cmdname' => 'deffnx'
                   },
                   'line_nr' => {

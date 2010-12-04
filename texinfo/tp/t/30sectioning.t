@@ -560,6 +560,12 @@ First top.
 @top Second top
 
 Second top.
+'],
+['setfilename_on_top_and_after_node',
+'@node Top
+@top In top @setfilename very badly placed setfilename
+
+@setfilename a bit too late
 ']
 );
 

@@ -105,6 +105,15 @@ $result_texts{'double_titlepage_not_closed'} = '';
 
 $result_errors{'double_titlepage_not_closed'} = [
   {
+    'error_line' => ':6: warning: Multiple @titlepage
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'Multiple @titlepage',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':8: No matching `@end titlepage\'
 ',
     'file_name' => '',
