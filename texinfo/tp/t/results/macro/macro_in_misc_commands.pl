@@ -3867,8 +3867,8 @@ line after exdent
 
 * node atext::
 
-chapter
-*******
+1 chapter
+*********
 
 
 

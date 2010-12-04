@@ -234,8 +234,8 @@ $result_texis{'on_section_line'} = '@section @noindent Text @titlefont{in titlef
 ';
 
 
-$result_texts{'on_section_line'} = 'Text in titlefont exdent
-========================
+$result_texts{'on_section_line'} = '1 Text in titlefont exdent
+==========================
 ';
 
 $result_sectioning{'on_section_line'} = {

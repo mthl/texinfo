@@ -62,8 +62,8 @@ $result_texis{'sections'} = '@chapter a chapter
 ';
 
 
-$result_texts{'sections'} = 'a chapter
-*********
+$result_texts{'sections'} = '1 a chapter
+***********
 ';
 
 $result_sectioning{'sections'} = {

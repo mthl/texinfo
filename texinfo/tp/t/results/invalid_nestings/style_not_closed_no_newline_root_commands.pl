@@ -348,8 +348,8 @@ $result_texts{'style_not_closed_no_newline_root_commands'} = '
 * chapter::
 
 not closed
-chapter
-*******
+1 chapter
+*********
 
 still not closed
 ';

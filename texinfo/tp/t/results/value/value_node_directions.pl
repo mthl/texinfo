@@ -588,11 +588,11 @@ Var bar
 *******
 bar
 
-BarFoo
-******
+1 BarFoo
+********
 
-bar
-***
+2 bar
+*****
 ';
 
 $result_sectioning{'value_node_directions'} = {

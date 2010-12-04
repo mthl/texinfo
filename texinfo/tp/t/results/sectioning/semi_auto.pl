@@ -739,16 +739,16 @@ $result_texts{'semi_auto'} = 'Top
 * Chap1::
 * Section non auto::
 
-Chapter 1
-*********
+1 Chapter 1
+***********
 
 * Sec in chapter::
 
-Sec in chapter
-==============
+1.1 Sec in chapter
+==================
 
-Section
-=======
+1.2 Section
+===========
 ';
 
 $result_sectioning{'semi_auto'} = {

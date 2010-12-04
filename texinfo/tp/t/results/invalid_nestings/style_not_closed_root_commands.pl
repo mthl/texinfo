@@ -361,8 +361,8 @@ $result_texts{'style_not_closed_root_commands'} = '
 
 not closed
 
-chapter
-*******
+1 chapter
+*********
 
 still not closed
 

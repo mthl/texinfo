@@ -2675,8 +2675,8 @@ $result_texts{'complex'} = '* First node::
 * Third node unnumbered:: unnumbered in Top menu
 * Last node no description::
 
-first node chapter
-******************
+1 first node chapter
+********************
 
 first node chapter text
 * unnumbered:: un
@@ -2695,26 +2695,26 @@ unnumbered section
 unnumbered subsection
 ---------------------
 
-numbered subsection
--------------------
+1.0.1 numbered subsection
+-------------------------
 
 unnumbered subsection2
 ----------------------
 
-numbered subsection2
---------------------
+1.0.2 numbered subsection2
+--------------------------
 
 unnumbered section2
 ===================
 
 *  numbered sub3::
 
-numbered subsection3
---------------------
+1.0.3 numbered subsection3
+--------------------------
 
 
-numbered section
-================
+1.1 numbered section
+====================
 
 
 between node, node without sectioning node
@@ -2722,8 +2722,8 @@ between node, node without sectioning node
 
 Second node text
 
-second node chapter
-*******************
+2 second node chapter
+*********************
 
 second node chapter text.
 

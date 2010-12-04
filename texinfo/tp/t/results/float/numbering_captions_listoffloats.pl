@@ -5687,8 +5687,8 @@ A warning
 
 
 
-A chapter
-*********
+1 A chapter
+***********
 
 Text in chapter
 
@@ -5712,8 +5712,8 @@ A warning
 
 * section::
 
-A section
-=========
+1.1 A section
+=============
 
 
 A text in float no caption a label a type.
@@ -5732,16 +5732,16 @@ float with no type.
 
 
 
-Section within unnumbered
-=========================
+1.2 Section within unnumbered
+=============================
 
 
 Section within unnumbered
 
 
 
-Chapter with unnumbsubsec
-*************************
+2 Chapter with unnumbsubsec
+***************************
 
 * unnumbered sec::
 Chap
@@ -5760,8 +5760,8 @@ float with no type.
 
 
 
-Appendix for float
-******************
+Appendix A Appendix for float
+*****************************
 
 
 Appendix
@@ -6725,8 +6725,8 @@ A warning
 
 Warning 1: C A warning
 
-A chapter
-*********
+1 A chapter
+***********
 
 Text in chapter
 
@@ -6750,8 +6750,8 @@ Warning 1.1: C A warning in chapter
 
 * section::
 
-A section
-=========
+1.1 A section
+=============
 
 A text in float no caption a label a type.
 
@@ -6769,15 +6769,15 @@ float with no type.
 
 5: C No type in unnumbered
 
-Section within unnumbered
-=========================
+1.2 Section within unnumbered
+=============================
 
 Section within unnumbered
 
 Text 6: C Section within unnumbered
 
-Chapter with unnumbsubsec
-*************************
+2 Chapter with unnumbsubsec
+***************************
 
 * Menu:
 
@@ -6797,8 +6797,8 @@ float with no type.
 
 2.1: C No type in unnumbered subsec in chapter
 
-Appendix for float
-******************
+Appendix A Appendix for float
+*****************************
 
 Appendix
 

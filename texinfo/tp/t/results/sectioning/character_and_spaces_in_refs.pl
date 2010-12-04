@@ -1527,8 +1527,8 @@ Testing distant nodes
 
 
 
-Chapter with nodes
-******************
+1 Chapter with nodes
+********************
 
 * !_"#$%&\'()*+-.::
 * /;<=>?[\\]^_`|~::

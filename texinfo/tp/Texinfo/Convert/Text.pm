@@ -878,6 +878,11 @@ sub heading($$)
   my $current = shift;
   my $text = shift;
 
+  $text = $current->{'number'}.' '.$text if (defined($current->{'number'}));
+  if ($current->{'cmdname'} eq 'appendix' and $current->{'level'} == 1) {
+    # FIXME i18n
+    $text = 'Appendix '.$text;
+  }
   chomp ($text);
   return '' if ($text !~ /\S/);
   my $result = $text ."\n";
