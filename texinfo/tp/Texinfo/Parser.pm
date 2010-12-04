@@ -2100,7 +2100,6 @@ sub _end_line($$$)
         }
       }
     } elsif ($command eq 'listoffloats') {
-      my $empty_listoffloats = 1;
       if (!_parse_float_type($current)) {
         _line_error ($self, sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);

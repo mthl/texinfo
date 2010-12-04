@@ -6821,6 +6821,24 @@ text with a lot of features.
 
    A ref to float without type *note label but no type::.
 
+* Menu:
+
+* Text 1: text with a lot of features.   TeX and someething 
+* Text 1.1: text in chapter.             C Text in chapter 
+* Text 1.2: float with a lot of features and no shortcaption.
+                                         An example of float ...
+* Text 1.3: text in section.             
+* Text 5: unnumbered float.              SC unnumbered float 
+* Text 6: Section within unnumbered float.
+                                         SC Section within ...
+* Text 2.1: Chapter with subsec float.   SC Chapter with subsec 
+* Text 2.2: unnumbered sec float.        SC unnumbered sec float 
+* Text A.1: appendix sec float.          SC appendix sec float 
+
+* Menu:
+
+* the\'ore`me 1.1: theoreme.              C A the\'ore`me 
+
 ';
 
 1;

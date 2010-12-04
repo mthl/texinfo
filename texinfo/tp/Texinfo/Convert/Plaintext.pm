@@ -466,6 +466,9 @@ sub _footnotes($)
   return $result;
 }
 
+my $listoffloat_entry_length = 41;
+my $listoffloat_append = '...';
+
 # on top, the converter object which holds some gloal information
 # 
 # context (for footntes, multitable cells):
@@ -528,7 +531,6 @@ sub _convert($$)
   # 
   # other commands processed:
   # verbatiminclude
-  # insertcopying
   # listoffloats
   # dircategory
   # center
@@ -921,10 +923,69 @@ sub _convert($$)
           }
         }
       } elsif ($root->{'cmdname'} eq 'listoffloats') {
-        if (defined($self->{'parser'})) {
+        if ($root->{'extra'} and $root->{'extra'}->{'type'}
+            and defined($root->{'extra'}->{'type'}->{'normalized'}) 
+            and defined($self->{'parser'})) {
           my $floats = $self->{'parser'}->floats_information();
+          if ($floats and $floats->{$root->{'extra'}->{'type'}->{'normalized'}}
+               and @{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+            $result = "* Menu:\n\n";
+            foreach my $float (@{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+              next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
+              my $float_entry;
+              if (exists ($float->{'number'})) {
+                $float_entry = 
+                 $self->gdt('* {float_type} {float_number}: {float_label}.', 
+                  {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                   'float_number' => $float->{'number'},
+                   'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+              } else {
+                $float_entry = $self->gdt('* {float_type}: {float_label}.', 
+                  {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                   'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
+                   });
+              }
+              #print STDERR "$float ".$self->convert_line($float_entry)."\n";
+              my $float_line = $self->convert_line($float_entry);
+              my $line_width 
+                 = Texinfo::Convert::Unicode::string_width($float_line);
+              if ($line_width > $listoffloat_entry_length) {
+                $float_line .= "\n" . ' ' x $listoffloat_entry_length;
+              } else {
+                $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
+              }
+              $line_width = $listoffloat_entry_length;
+              my $caption;
+              if ($float->{'extra'}->{'shortcaption'}) {
+                $caption = $float->{'extra'}->{'shortcaption'};
+              } elsif ($float->{'extra'}->{'caption'}) {
+                $caption = $float->{'extra'}->{'caption'};
+              }
+              if ($caption) {
+                # FIXME should there be some indentation?
+                my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
+                            'type' => $caption->{'cmdname'}.'_listoffloats'});
+                while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
+                  my $new_word = $1;
+                  $new_word =~ s/\n/ /g;
+                  if ((Texinfo::Convert::Unicode::string_width($new_word) +
+                       $line_width) > 
+                           ($self->{'format_context'}->[-1]->{'max'} - 3)) {
+                    $float_line .= $listoffloat_append;
+                    last;
+                  } else {
+                    $float_line .= $new_word;
+                    $line_width += 
+                      Texinfo::Convert::Unicode::string_width($new_word);
+                  }
+                }
+              }
+              $result .= $float_line. "\n";
+            }
+            $result .= "\n";
+            $self->{'empty_lines_count'} = 1;
+          }
         }
-        # FIXME handle listoffloats
       } elsif ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'}->{'misc_args'}->[0]) {
           # this useless copy avoids perl changing the type to integer!
