@@ -68,8 +68,10 @@ foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
   $informative_commands{$informative_command} = 1;
 }
 
+# printindex not handled in plain text output.
+#'printindex',
 foreach my $kept_command(keys (%informative_commands),
-  'verbatiminclude', 'insertcopying', 'printindex',
+  'verbatiminclude', 'insertcopying', 
   'listoffloats', 'dircategory', 
   'contents', 'shortcontents', 'summarycontents', 
   'author', 'shorttitle', 'shorttitlepage', 'settitle', 'subtitle',
@@ -523,7 +525,6 @@ sub _convert($$)
   # verbatiminclude
   # sp
   # insertcopying
-  # printindex
   # listoffloats
   # dircategory
   # center
@@ -757,7 +758,6 @@ sub _convert($$)
       $result .= $self->_convert($root->{'args'}->[0]) if ($root->{'args'});
       pop @{$self->{'context'}};
       return $result;
-     # could this be used otherwise?
     } elsif ($command eq 'titlefont') {
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
            'cmdname' => 'titlefont'},
@@ -909,6 +909,8 @@ sub _convert($$)
           push @{$self->{'formatters'}}, $preformatted;
         }
         $cell = 1;
+      } elsif ($root->{'cmdname'} eq 'insertcopying') {
+        # FIXME handle insertcopying
       } elsif ($root->{'cmdname'} eq 'listoffloats') {
         # FIXME handle listoffloats
       } elsif ($root->{'cmdname'} eq 'sp') {

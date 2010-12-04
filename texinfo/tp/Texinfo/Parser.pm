@@ -2886,10 +2886,24 @@ sub _parse_texi($;$)
           my $arg_spec = $self->{'misc_commands'}->{$command};
 
           if ($arg_spec eq 'noarg') {
-            push @{$current->{'contents'}}, {'cmdname' => $command,
-                                             'parent' => $current};
-            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-              if ($invalid);
+            my $ignored = 0;
+            if ($command eq 'insertcopying') {
+              my $parent = $current;
+              while ($parent) {
+                if ($parent->{'cmdname'} and $parent->{'cmdname'} eq 'copying') {
+                  $self->_line_error (sprintf($self->__("\@%s not allowed inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
+                  $ignored = 1;
+                  last;
+                }
+                $parent = $parent->{'parent'};
+              }
+            }
+            unless ($ignored) {
+              push @{$current->{'contents'}}, {'cmdname' => $command,
+                                               'parent' => $current};
+              $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+                if ($invalid);
+            }
           # all the cases using the raw line
           } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
                    or $arg_spec eq 'special') {
