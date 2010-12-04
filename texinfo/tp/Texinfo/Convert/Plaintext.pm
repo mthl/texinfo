@@ -164,7 +164,8 @@ foreach my $advancing_para('center', 'verbatim', 'listoffloats') {
 }
 
 # FIXME pass raw formats handled (or not handled)
-foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro') {
+foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro', 'copying',
+  'documentdescription', 'titlepage') {
   $ignored_commands{$ignored_block_commands} = 1;
 }
 
@@ -260,6 +261,10 @@ sub converter(;$)
     $name = ref($converter);
   }
   if (defined($conf)) {
+    if ($conf->{'parser'}) {
+      $converter->{'parser'} = $conf->{'parser'};
+      delete $conf->{'parser'};
+    }
     foreach my $key (keys(%$conf)) {
       if (!exists($defaults{$key})) {
         warn "$key not a possible configuration in $name\n";
@@ -523,7 +528,6 @@ sub _convert($$)
   # 
   # other commands processed:
   # verbatiminclude
-  # sp
   # insertcopying
   # listoffloats
   # dircategory
@@ -835,7 +839,6 @@ sub _convert($$)
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
       } elsif ($root->{'cmdname'} eq 'direntry') {
-        # FIXME main::line_warn(__("\@direntry after first node"), $Texi2HTML::THISDOC{'line_nr'}) if (defined($info_default_current_node)); 
         $result .= "START-INFO-DIR-ENTRY\n";
       }
 
@@ -910,8 +913,17 @@ sub _convert($$)
         }
         $cell = 1;
       } elsif ($root->{'cmdname'} eq 'insertcopying') {
-        # FIXME handle insertcopying
+        if (defined($self->{'parser'})) {
+          my $global_commands = $self->{'parser'}->global_commands_information();
+          if ($global_commands and $global_commands->{'copying'}) {
+            unshift @{$self->{'current_contents'}->[-1]}, 
+               {'contents' => $global_commands->{'copying'}->{'contents'}};
+          }
+        }
       } elsif ($root->{'cmdname'} eq 'listoffloats') {
+        if (defined($self->{'parser'})) {
+          my $floats = $self->{'parser'}->floats_information();
+        }
         # FIXME handle listoffloats
       } elsif ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'}->{'misc_args'}->[0]) {

@@ -66,6 +66,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   errors
   indices_information
   floats_information
+  global_commands_information
   gdt
 ) ] );
 
@@ -780,6 +781,12 @@ sub floats_information ($)
 {
   my $self = shift;
   return $self->{'floats'};
+}
+
+sub global_commands_information ($)
+{
+  my $self = shift;
+  return $self->{'extra'};
 }
 
 # Following are the internal subsections.  The most important are

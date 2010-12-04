@@ -170,11 +170,14 @@ foreach my $avoided_key(@avoided_keys_floats) {
 sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
    ( sort keys %{$_[0]} )] }
 
-sub convert_to_plaintext($$)
+sub convert_to_plaintext($$$)
 {
   my $self = shift;
   my $tree = shift;
-  my $converter = Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'}});
+  my $parser = shift;
+  my $converter = 
+     Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'},
+                                             'parser' => $parser });
   return $converter->convert($tree);
 }
 
@@ -239,7 +242,7 @@ sub test($$)
   my %converted;
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
-      $converted{$format} = &{$formats{$format}}($self, $result);
+      $converted{$format} = &{$formats{$format}}($self, $result, $parser);
       #print STDERR "$format: \n$converted{$format}";
     }
   }

@@ -235,7 +235,20 @@ After quotation sp b a
 ['cartouche',
 '@cartouche
 in cartouche.
-@end cartouche']
+@end cartouche'],
+['insertcopying',
+'@copying
+License.
+
+@quotation 
+You are not allowed.
+@end quotation
+@end copying
+
+License:
+
+@insertcopying
+']
 );
 
 my @test_invalid = (
