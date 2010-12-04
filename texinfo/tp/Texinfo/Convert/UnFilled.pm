@@ -33,7 +33,7 @@ sub new($;$)
   my $class = shift;
   my $conf = shift;
   my $self = {'indent_length' => 0, 'counter' => 0, 'line_beginning' => 1,
-              'leading_spaces' => '', 'only_spaces' => 1};
+              'leading_spaces' => '', 'only_spaces' => 1, 'lines_counter' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if ($key eq 'text') {
@@ -63,6 +63,7 @@ sub end_line($)
   $line->{'line_beginning'} = 1;
   $line->{'leading_spaces'} = '';
   $line->{'only_spaces'} = 1;
+  $line->{'lines_counter'}++;
   print STDERR "END_LINE\n" if ($line->{'debug'});
   return "\n";
 }

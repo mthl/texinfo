@@ -35,7 +35,8 @@ sub new($;$)
   my $class = shift;
   my $conf = shift;
   my $self = {'indent_length' => 0, 'counter' => 0,
-              'space' => '', 'frenchspacing' => 0, 'line_beginning' => 1};
+              'space' => '', 'frenchspacing' => 0, 'line_beginning' => 1,
+              'lines_counter' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if ($key eq 'text') {
@@ -67,6 +68,7 @@ sub end_line($)
   my $result = $line->add_pending_word();
   $line->{'line_beginning'} = 1;
   $line->{'space'} = '';
+  $line->{'lines_counter'}++;
   print STDERR "END_LINE\n" if ($line->{'debug'});
   return "$result\n";
 }
@@ -102,8 +104,6 @@ sub end($)
   my $line = shift;
   my $result = $line->add_pending_word();
   $result .= $line->{'space'};
-  $line->{'line_beginning'} = 1;
-  $line->{'space'} = '';
   print STDERR "END_LINE\n" if ($line->{'debug'});
   return $result;
 }

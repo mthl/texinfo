@@ -35,7 +35,8 @@ sub new($;$)
   my $class = shift;
   my $conf = shift;
   my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0, 
-              'word_counter' => 0, 'space' => '', 'frenchspacing' => 0};
+              'word_counter' => 0, 'space' => '', 'frenchspacing' => 0,
+              'lines_counter' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       $self->{$key} = $conf->{$key};
@@ -72,6 +73,7 @@ sub end_line($)
     $paragraph->{'indent_length'} = $paragraph->{'indent_length_next'};
     delete $paragraph->{'indent_length_next'};        
   }
+  $paragraph->{'lines_counter'}++;
   print STDERR "END_LINE\n" if ($paragraph->{'debug'});
   return "\n";
 }
@@ -112,12 +114,10 @@ sub end($)
   my $paragraph = shift;
   print STDERR "PARA END\n" if ($paragraph->{'debug'});
   my $result = $paragraph->add_pending_word();
-  $result .= "\n" if ($paragraph->{'counter'} != 0);
-  # This is only useful if the paragraph is reused.
-  $paragraph->{'counter'} = 0;
-  $paragraph->{'space'} = '';
-  $paragraph->{'word'} = undef;
-  $paragraph->{'word_counter'} = 0;
+  if ($paragraph->{'counter'} != 0) {
+    $result .= "\n"; 
+    $paragraph->{'lines_counter'}++;
+  }
   return $result;
 }
 

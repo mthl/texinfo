@@ -368,8 +368,6 @@ sub new_formatter($$;$)
     $container_conf->{'indent_length'} = $indent;
   }
     
-  #$container_conf->{'indent_length'} = $indent_length*$container_conf->{'indent_level'}
-  #  if (!defined($container_conf->{'indent_length'}));
   if ($type eq 'line') {
     $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
@@ -761,7 +759,8 @@ sub _convert($$)
       return $result;
      # could this be used otherwise?
     } elsif ($command eq 'titlefont') {
-      $result = Texinfo::Convert::Text::heading({'level' => 0},
+      $result = Texinfo::Convert::Text::heading({'level' => 0, 
+           'cmdname' => 'titlefont'},
            $self->convert_line ($root->{'args'}->[0]));
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       return $result;

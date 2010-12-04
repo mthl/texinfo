@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 95 };
+BEGIN { plan tests => 105 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
@@ -323,6 +323,13 @@ $result .= $para->add_text(" ggg\n");
 is ($result, 'aa   ggg', 'space protected space');
 $para->end();
 
+$para = Texinfo::Convert::Paragraph->new({'max' => 8});
+$result = $para->add_text('aa ');
+is ($para->{'lines_counter'}, 0, 'count lines first');
+$result .= $para->add_text('bbbbbbbbbbbbbbbbbbbb');
+is ($para->{'lines_counter'}, 1, 'count lines text pending');
+$result .= $para->end();
+is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
 
 #print STDERR "$result";
 #exit;
@@ -467,12 +474,26 @@ $line->set_space_protection(0,0);
 $result .= $line->end();
 is ($result, " aa.) thenfff     g", 'line space_protection and spaces');
 
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->add_text('aaaa ');
+is ($line->{'lines_counter'}, 0, 'line count line first line begin');
+$result .= $line->add_text("bbbb\n");
+is ($line->{'lines_counter'}, 1, 'line count line first line end');
+$result .= $line->add_text("\n");
+$result .= $line->end();
+is ($line->{'lines_counter'}, 2, 'line count line end line');
+
 my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
 $result = '';
+is ($unfilled->{'lines_counter'}, 0, 'line count unfilled first line begin');
 $result .= $unfilled->add_text("something\n");
+is ($unfilled->{'lines_counter'}, 1, 'line count unfilled first line');
 $result .= $unfilled->add_text("\n");
+is ($unfilled->{'lines_counter'}, 2, 'line count unfilled second line');
 $result .= $unfilled->add_text(" other\n");
 $result .= $unfilled->end();
+is ($unfilled->{'lines_counter'}, 3, 'line count unfilled third line');
 is ($result, "     something\n\n      other\n", 'unfilled and indent');
 
 1;
