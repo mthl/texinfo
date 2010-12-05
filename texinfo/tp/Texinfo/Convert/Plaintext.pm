@@ -878,211 +878,207 @@ sub _convert($$)
         }
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
-      #} elsif ($root->{'cmdname'} eq 'direntry') {
-      #  $result .= "START-INFO-DIR-ENTRY\n";
       }
 
     } elsif ($root->{'cmdname'} eq 'node') {
       $self->{'footnote_index'} = 0;
       $result .= $self->_footnotes();
-    } elsif ($misc_commands{$root->{'cmdname'}}) {
-      if ($sectioning_commands{$root->{'cmdname'}}) {
-        if ($root->{'args'}) {
-          $result = $self->convert_line($root->{'args'}->[0]);
-          $result = Texinfo::Convert::Text::heading ($root, $result);
-          $self->{'empty_lines_count'} = 0 unless ($result eq '');
-        }
-      } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
-              and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
-        my $contents = $root->{'extra'}->{'misc_content'};
-        if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
-          $contents = [{'cmdname' => $root->{'parent'}->{'extra'}->{'command_as_argument'},
-                   'args' => [{'type' => 'brace_command_arg', 
-                              'contents' => $contents}]
-          }];
-        }
-        $result = $self->convert_line({'contents' => $contents},
-            {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-        chomp ($result);
+    } elsif ($sectioning_commands{$root->{'cmdname'}}) {
+      if ($root->{'args'}) {
+        $result = $self->convert_line($root->{'args'}->[0]);
+        $result = Texinfo::Convert::Text::heading ($root, $result);
         $self->{'empty_lines_count'} = 0 unless ($result eq '');
-        $result .= "\n";
-      } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
-               and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
-        $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
-        my $line = $self->new_formatter('line', 
-            {'indent_length' => 
-                ($self->{'format_context'}->[-1]->{'indent_level'} -1)
-                  * $indent_length
-                   + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
-        push @{$self->{'formatters'}}, $line;
-        if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
-          $result .= $line->{'container'}->add_next(Texinfo::Convert::Text::enumerate_item_representation(
-            $root->{'parent'}->{'extra'}->{'enumerate_specification'},
-            $root->{'extra'}->{'item_number'}) . '. ');
-        } else {
-          $result .= $self->_convert(
-            {'contents' => 
-               [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
-                { 'text' => ' ' }]
-            });
-        }
-        $result .= $line->{'container'}->end();
-        print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
-           if ($self->{'debug'});
-        pop @{$self->{'formatters'}};
-        $self->{'format_context'}->[-1]->{'counter'} += 
-           Texinfo::Convert::Unicode::string_width($result);
-        $self->{'empty_lines_count'} = 0 unless ($result eq '');
-      } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
-               or $root->{'cmdname'} eq 'tab') {
-        my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
-        $self->{'format_context'}->[-1]->{'item_command'} = $root->{'cmdname'}
-          if ($root->{'cmdname'} ne 'tab');
-        print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$root->{'cmdname'}. Width: $cell_width\n"
-              if ($self->{'debug'});
-        die if (!defined($cell_width));
-        push @{$self->{'format_context'}},
-             { 'cmdname' => $root->{'cmdname'},
-               'paragraph_count' => 0,
-               'indent_level' => 0,
-               'max' => $cell_width - 2 };
-        if ($self->{'context'}->[-1] eq 'preformatted') {
-          $preformatted = $self->new_formatter('unfilled');
-          push @{$self->{'formatters'}}, $preformatted;
-        }
-        $cell = 1;
-      } elsif ($root->{'cmdname'} eq 'center') {
-        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
-                                       {'indent_length' => 0});
-        $result = _align_lines ($result, $self->{'format_context'}->[-1]->{'max'},
-                                    'center');
-        chomp ($result);
-        $self->{'empty_lines_count'} = 0 unless ($result eq '');
-        $result .= "\n";
-      } elsif ($root->{'cmdname'} eq 'exdent') {
-        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+      }
+    } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
+            and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+      my $contents = $root->{'extra'}->{'misc_content'};
+      if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
+        $contents = [{'cmdname' => $root->{'parent'}->{'extra'}->{'command_as_argument'},
+                 'args' => [{'type' => 'brace_command_arg', 
+                            'contents' => $contents}]
+        }];
+      }
+      $result = $self->convert_line({'contents' => $contents},
           {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-        chomp ($result);
-        $self->{'empty_lines_count'} = 0 unless ($result eq '');
-        $result .= "\n";
-      } elsif ($root->{'cmdname'} eq 'insertcopying') {
-        if (defined($self->{'parser'})) {
-          my $global_commands = $self->{'parser'}->global_commands_information();
-          if ($global_commands and $global_commands->{'copying'}) {
-            unshift @{$self->{'current_contents'}->[-1]}, 
-               {'contents' => $global_commands->{'copying'}->{'contents'}};
-          }
+      chomp ($result);
+      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+      $result .= "\n";
+    } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
+             and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
+      $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
+      my $line = $self->new_formatter('line', 
+          {'indent_length' => 
+              ($self->{'format_context'}->[-1]->{'indent_level'} -1)
+                * $indent_length
+                 + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
+      push @{$self->{'formatters'}}, $line;
+      if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
+        $result .= $line->{'container'}->add_next(Texinfo::Convert::Text::enumerate_item_representation(
+          $root->{'parent'}->{'extra'}->{'enumerate_specification'},
+          $root->{'extra'}->{'item_number'}) . '. ');
+      } else {
+        $result .= $self->_convert(
+          {'contents' => 
+             [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
+              { 'text' => ' ' }]
+          });
+      }
+      $result .= $line->{'container'}->end();
+      print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
+         if ($self->{'debug'});
+      pop @{$self->{'formatters'}};
+      $self->{'format_context'}->[-1]->{'counter'} += 
+         Texinfo::Convert::Unicode::string_width($result);
+      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+    } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
+             or $root->{'cmdname'} eq 'tab') {
+      my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
+      $self->{'format_context'}->[-1]->{'item_command'} = $root->{'cmdname'}
+        if ($root->{'cmdname'} ne 'tab');
+      print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$root->{'cmdname'}. Width: $cell_width\n"
+            if ($self->{'debug'});
+      die if (!defined($cell_width));
+      push @{$self->{'format_context'}},
+           { 'cmdname' => $root->{'cmdname'},
+             'paragraph_count' => 0,
+             'indent_level' => 0,
+             'max' => $cell_width - 2 };
+      if ($self->{'context'}->[-1] eq 'preformatted') {
+        $preformatted = $self->new_formatter('unfilled');
+        push @{$self->{'formatters'}}, $preformatted;
+      }
+      $cell = 1;
+    } elsif ($root->{'cmdname'} eq 'center') {
+      $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+                                     {'indent_length' => 0});
+      $result = _align_lines ($result, $self->{'format_context'}->[-1]->{'max'},
+                                  'center');
+      chomp ($result);
+      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+      $result .= "\n";
+    } elsif ($root->{'cmdname'} eq 'exdent') {
+      $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+        {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+      chomp ($result);
+      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+      $result .= "\n";
+    } elsif ($root->{'cmdname'} eq 'insertcopying') {
+      if (defined($self->{'parser'})) {
+        my $global_commands = $self->{'parser'}->global_commands_information();
+        if ($global_commands and $global_commands->{'copying'}) {
+          unshift @{$self->{'current_contents'}->[-1]}, 
+             {'contents' => $global_commands->{'copying'}->{'contents'}};
         }
-      } elsif ($root->{'cmdname'} eq 'listoffloats') {
-        if ($root->{'extra'} and $root->{'extra'}->{'type'}
-            and defined($root->{'extra'}->{'type'}->{'normalized'}) 
-            and defined($self->{'parser'})) {
-          my $floats = $self->{'parser'}->floats_information();
-          if ($floats and $floats->{$root->{'extra'}->{'type'}->{'normalized'}}
-               and @{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-            $result = "* Menu:\n\n";
-            foreach my $float (@{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-              next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
-              my $float_entry;
-              if (exists ($float->{'number'})) {
-                $float_entry = 
-                 $self->gdt('* {float_type} {float_number}: {float_label}.', 
-                  {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                   'float_number' => $float->{'number'},
-                   'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
-              } else {
-                $float_entry = $self->gdt('* {float_type}: {float_label}.', 
-                  {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                   'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
-                   });
-              }
-              #print STDERR "$float ".$self->convert_line($float_entry)."\n";
-              my $float_line = $self->convert_line($float_entry);
-              my $line_width 
-                 = Texinfo::Convert::Unicode::string_width($float_line);
-              if ($line_width > $listoffloat_entry_length) {
-                $float_line .= "\n" . ' ' x $listoffloat_entry_length;
-              } else {
-                $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
-              }
-              $line_width = $listoffloat_entry_length;
-              my $caption;
-              if ($float->{'extra'}->{'shortcaption'}) {
-                $caption = $float->{'extra'}->{'shortcaption'};
-              } elsif ($float->{'extra'}->{'caption'}) {
-                $caption = $float->{'extra'}->{'caption'};
-              }
-              if ($caption) {
-                # FIXME should there be some indentation?
-                my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
-                            'type' => $caption->{'cmdname'}.'_listoffloats'});
-                while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
-                  my $new_word = $1;
-                  $new_word =~ s/\n/ /g;
-                  if ((Texinfo::Convert::Unicode::string_width($new_word) +
-                       $line_width) > 
-                           ($self->{'format_context'}->[-1]->{'max'} - 3)) {
-                    $float_line .= $listoffloat_append;
-                    last;
-                  } else {
-                    $float_line .= $new_word;
-                    $line_width += 
-                      Texinfo::Convert::Unicode::string_width($new_word);
-                  }
+      }
+    } elsif ($root->{'cmdname'} eq 'listoffloats') {
+      if ($root->{'extra'} and $root->{'extra'}->{'type'}
+          and defined($root->{'extra'}->{'type'}->{'normalized'}) 
+          and defined($self->{'parser'})) {
+        my $floats = $self->{'parser'}->floats_information();
+        if ($floats and $floats->{$root->{'extra'}->{'type'}->{'normalized'}}
+             and @{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+          $result = "* Menu:\n\n";
+          foreach my $float (@{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+            next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
+            my $float_entry;
+            if (exists ($float->{'number'})) {
+              $float_entry = 
+               $self->gdt('* {float_type} {float_number}: {float_label}.', 
+                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                 'float_number' => $float->{'number'},
+                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+            } else {
+              $float_entry = $self->gdt('* {float_type}: {float_label}.', 
+                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
+                 });
+            }
+            #print STDERR "$float ".$self->convert_line($float_entry)."\n";
+            my $float_line = $self->convert_line($float_entry);
+            my $line_width 
+               = Texinfo::Convert::Unicode::string_width($float_line);
+            if ($line_width > $listoffloat_entry_length) {
+              $float_line .= "\n" . ' ' x $listoffloat_entry_length;
+            } else {
+              $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
+            }
+            $line_width = $listoffloat_entry_length;
+            my $caption;
+            if ($float->{'extra'}->{'shortcaption'}) {
+              $caption = $float->{'extra'}->{'shortcaption'};
+            } elsif ($float->{'extra'}->{'caption'}) {
+              $caption = $float->{'extra'}->{'caption'};
+            }
+            if ($caption) {
+              # FIXME should there be some indentation?
+              my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
+                          'type' => $caption->{'cmdname'}.'_listoffloats'});
+              while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
+                my $new_word = $1;
+                $new_word =~ s/\n/ /g;
+                if ((Texinfo::Convert::Unicode::string_width($new_word) +
+                     $line_width) > 
+                         ($self->{'format_context'}->[-1]->{'max'} - 3)) {
+                  $float_line .= $listoffloat_append;
+                  last;
+                } else {
+                  $float_line .= $new_word;
+                  $line_width += 
+                    Texinfo::Convert::Unicode::string_width($new_word);
                 }
               }
-              $result .= $float_line. "\n";
             }
-            $result .= "\n";
-            $self->{'empty_lines_count'} = 1;
+            $result .= $float_line. "\n";
           }
+          $result .= "\n";
+          $self->{'empty_lines_count'} = 1;
         }
-      } elsif ($root->{'cmdname'} eq 'sp') {
-        if ($root->{'extra'}->{'misc_args'}->[0]) {
-          # this useless copy avoids perl changing the type to integer!
-          my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
-          $result .= "\n" x $sp_nr;
-          $self->{'empty_lines_count'} = $sp_nr;
-        }
-      # all the @-commands that have an information for the formatting, like
-      # @paragraphindent, @frenchspacing...
-      } elsif ($informative_commands{$root->{'cmdname'}}) {
-        if ($root->{'cmdname'} eq 'frenchspacing' and 
-             $root->{'extra'} and $root->{'extra'}->{'misc_args'} and
-             $root->{'extra'}->{'misc_args'}->[0]) {
-          if ($root->{'extra'}->{'misc_args'}->[0] eq 'on') {
-            $self->{$root->{'cmdname'}} = 1 
-              if (!$self->{'set'}->{$root->{'cmdname'}});
-          } elsif ($root->{'extra'}->{'misc_args'}->[0] eq 'off') {
-            $self->{$root->{'cmdname'}} = 0 
-              if (!$self->{'set'}->{$root->{'cmdname'}});
-          }
-        } elsif (exists($root->{'extra'}->{'text'})) {
-          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'}
-              if (!$self->{'set'}->{$root->{'cmdname'}});
-        } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
-          $self->{$root->{'cmdname'}} = 1;
-        } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
-                 and exists($root->{'extra'}->{'misc_args'}->[0])) {
-          if (!$self->{'set'}->{$root->{'cmdname'}}) {
-            $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0];
-            if ($root->{'cmdname'} eq 'paragraphindent') {
-              if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
-                delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
-              } else {
-                $self->{$root->{'cmdname'}} = 0 
-                  if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
-                $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
-              }
-            } elsif ($root->{'cmdname'} eq 'documentencoding') {
-              $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'} 
-                if (defined($root->{'extra'}) 
-                     and defined($root->{'extra'}->{'encoding_alias'}));
-            }
-          }
-        }
-        return '';
       }
+    } elsif ($root->{'cmdname'} eq 'sp') {
+      if ($root->{'extra'}->{'misc_args'}->[0]) {
+        # this useless copy avoids perl changing the type to integer!
+        my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
+        $result .= "\n" x $sp_nr;
+        $self->{'empty_lines_count'} = $sp_nr;
+      }
+    # all the @-commands that have an information for the formatting, like
+    # @paragraphindent, @frenchspacing...
+    } elsif ($informative_commands{$root->{'cmdname'}}) {
+      if ($root->{'cmdname'} eq 'frenchspacing' and 
+           $root->{'extra'} and $root->{'extra'}->{'misc_args'} and
+           $root->{'extra'}->{'misc_args'}->[0]) {
+        if ($root->{'extra'}->{'misc_args'}->[0] eq 'on') {
+          $self->{$root->{'cmdname'}} = 1 
+            if (!$self->{'set'}->{$root->{'cmdname'}});
+        } elsif ($root->{'extra'}->{'misc_args'}->[0] eq 'off') {
+          $self->{$root->{'cmdname'}} = 0 
+            if (!$self->{'set'}->{$root->{'cmdname'}});
+        }
+      } elsif (exists($root->{'extra'}->{'text'})) {
+        $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'}
+            if (!$self->{'set'}->{$root->{'cmdname'}});
+      } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
+        $self->{$root->{'cmdname'}} = 1;
+      } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
+               and exists($root->{'extra'}->{'misc_args'}->[0])) {
+        if (!$self->{'set'}->{$root->{'cmdname'}}) {
+          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0];
+          if ($root->{'cmdname'} eq 'paragraphindent') {
+            if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
+              delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
+            } else {
+              $self->{$root->{'cmdname'}} = 0 
+                if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
+              $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
+            }
+          } elsif ($root->{'cmdname'} eq 'documentencoding') {
+            $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'} 
+              if (defined($root->{'extra'}) 
+                   and defined($root->{'extra'}->{'encoding_alias'}));
+          }
+        }
+      }
+      return '';
     } else {
       $unknown_command = 1;
     }
@@ -1363,8 +1359,6 @@ sub _convert($$)
         $result .= $self->convert($self->gdt("\@center --- \@emph{{author}}\n",
                  {'author' => $author->{'extra'}->{'misc_content'}}));
       }
-    #} elsif ($root->{'cmdname'} eq 'direntry') {
-    #  $result .= "END-INFO-DIR-ENTRY\n";
     }
   }
   if ($preformatted) {
