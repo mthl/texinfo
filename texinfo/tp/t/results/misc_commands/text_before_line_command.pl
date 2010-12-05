@@ -244,7 +244,9 @@ $result_trees{'text_before_line_command'} = {
             }
           ],
           'extra' => {
-            'author' => {}
+            'authors' => [
+              {}
+            ]
           },
           'parent' => {}
         },
@@ -312,7 +314,7 @@ $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'content
 $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1];
 $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1];
 $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'extra'}{'author'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1];
+$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'extra'}{'authors'}[0] = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1];
 $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
 $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
 $result_trees{'text_before_line_command'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'text_before_line_command'}{'contents'}[2]{'args'}[0]{'contents'}[1];

@@ -168,3 +168,6 @@ invalid/verb_and_char_end_of_line.texi
 invalid/verb_end_of_line.texi
 invalid/verb_not_closed.texi
 invalid/verbatim_not_closed.texi
+
+info_coverage/exdent_and_commands.texi
+info_coverage/exdent_and_formats.texi

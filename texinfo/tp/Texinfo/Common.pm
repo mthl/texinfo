@@ -264,6 +264,8 @@ our %block_item_commands;
 # commands that forces closing an opened paragraph.
 our %close_paragraph_commands;
 
+$close_paragraph_commands{'exdent'} = 1;
+
 our %def_map = (
     # basic commands. 
     # 'arg' and 'argtype' are for everything appearing after the other

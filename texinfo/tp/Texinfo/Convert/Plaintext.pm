@@ -72,9 +72,9 @@ foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
 #'printindex',
 foreach my $kept_command(keys (%informative_commands),
   'verbatiminclude', 'insertcopying', 
-  'listoffloats', 'dircategory', 
+  'listoffloats', 
   'contents', 'shortcontents', 'summarycontents', 
-  'author', 'shorttitle', 'shorttitlepage', 'settitle', 'subtitle',
+  'shorttitle', 'shorttitlepage', 'settitle', 'subtitle',
   'title') {
   $kept_misc_commands{$kept_command} = 1;
 }
@@ -143,6 +143,11 @@ foreach my $format_context_command (keys(%menu_commands), 'verbatim',
   $format_context_commands{$format_context_command} = 1;
 }
 
+my %flush_commands = (
+  'flushleft'  => 1,
+  'flushright' => 1
+);
+
 # commands that leads to advancing the paragraph number.  This is mostly
 #used to determine the first line, in fact.
 my %advance_paragraph_count_commands;
@@ -163,7 +168,6 @@ foreach my $advancing_para('center', 'verbatim', 'listoffloats') {
   $advance_paragraph_count_commands{$advancing_para} = 1;
 }
 
-# FIXME pass raw formats handled (or not handled)
 foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro', 'copying',
   'documentdescription', 'titlepage') {
   $ignored_commands{$ignored_block_commands} = 1;
@@ -188,7 +192,6 @@ foreach my $type ('empty_line_after_command', 'preamble',
 }
 
 # All those commands run with the text.
-# FIXME w may be diferent here.
 my %style_map = (
   'strong' => '*',
   'dfn'    => '"',
@@ -368,6 +371,7 @@ sub new_formatter($$;$)
   my $indent = $container_conf->{'indent_length'};
   $indent = $indent_length*$container_conf->{'indent_level'}
     if (!defined($indent));
+
   if ($first_indent_length) {
     $container_conf->{'indent_length'} = $first_indent_length;
     $container_conf->{'indent_length_next'} = $indent;
@@ -384,6 +388,11 @@ sub new_formatter($$;$)
   } else {
     die "Unknown container type $type\n";
   }
+
+  if ($self->{'context'}->[-1] eq 'flush') {
+    $container->set_space_protection(undef, 1, 1);
+  }
+
   my $formatter = {'container' => $container, 'upper_case' => 0,
                    'code' => 0, 'w' => 0,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
@@ -466,6 +475,50 @@ sub _footnotes($)
   return $result;
 }
 
+sub _align_lines($$$)
+{
+  my $text = shift;
+  my $max_column = shift;
+  my $direction = shift;
+  my $result = '';
+  foreach my $line (split /^/, $text) {
+    chomp($line);
+    $line =~ s/^\s*//;
+    $line =~ s/\s*$//;
+    my $line_width = Texinfo::Convert::Unicode::string_width($line);
+    if ($line_width == 0) {
+      $result .= "\n";
+    } else {
+      my $spaces_prepended;
+      if ($line_width > $max_column) {
+        $spaces_prepended = 0;
+      } elsif ($direction eq 'center') {
+        $spaces_prepended = (($max_column -1 - $line_width) /2);
+      } else {
+        $spaces_prepended = ($max_column -1 - $line_width);
+      }
+      $result .= ' ' x$spaces_prepended . $line ."\n";
+    }
+  }
+  return $result;
+}
+
+sub _flush_paragraph($$)
+{
+  my $self = shift;
+  my $text = shift;
+
+  my $index = -1;
+  $index--
+    while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
+  # nothing to do in case of flushleft
+  if ($self->{'format_context'}->[$index]->{'cmdname'} eq 'flushleft') {
+    return $text;
+  }
+  return _align_lines($text, $self->{'format_context'}->[$index]->{'max'},
+                          'right');
+}
+
 my $listoffloat_entry_length = 41;
 my $listoffloat_append = '...';
 
@@ -521,22 +574,9 @@ sub _convert($$)
     }
   }
 
-  # if it is a paragraph, process the text and commands.
-  # if it is a simple_text_command 'indicateurl',
-  #                    'email', 'uref', 'url',
-  #                    'dmn', 'ctrl'
-  #   accent_commands it is returned with the inside expanded
-  # and further processed as text, with invalid_nesting commands ignored.
-  # another @command is incorporated
-  # 
   # other commands processed:
   # verbatiminclude
-  # listoffloats
-  # dircategory
-  # center
-  # author (in quotation?)
-  # shorttitle/shorttitlepage/settitle/subtitle/title
-  # exdent
+  # image
 # not info but plaintext
 # setshortcontentsaftertitlepage setcontentsaftertitlepage
 # @contents or @shortcontents
@@ -783,13 +823,11 @@ sub _convert($$)
     } elsif (exists($block_commands{$root->{'cmdname'}})) {
       # remark:
       # cartouche group and raggedright -> nothing on format stack
-      # TODO
-      # flushleft and flushright -> keep track of result and add space
-      #    at the end. do something specific here or at the end?
-      #    punctuation munging is done, but end of lines are kept.
 
       if ($preformatted_context_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, 'preformatted';
+      } elsif ($flush_commands{$root->{'cmdname'}}) {
+        push @{$self->{'context'}}, 'flush';
       }
       if ($format_context_commands{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, 
@@ -840,12 +878,11 @@ sub _convert($$)
         }
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
-      } elsif ($root->{'cmdname'} eq 'direntry') {
-        $result .= "START-INFO-DIR-ENTRY\n";
+      #} elsif ($root->{'cmdname'} eq 'direntry') {
+      #  $result .= "START-INFO-DIR-ENTRY\n";
       }
 
     } elsif ($root->{'cmdname'} eq 'node') {
-        # FIXME handle node
       $self->{'footnote_index'} = 0;
       $result .= $self->_footnotes();
     } elsif ($misc_commands{$root->{'cmdname'}}) {
@@ -914,6 +951,20 @@ sub _convert($$)
           push @{$self->{'formatters'}}, $preformatted;
         }
         $cell = 1;
+      } elsif ($root->{'cmdname'} eq 'center') {
+        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+                                       {'indent_length' => 0});
+        $result = _align_lines ($result, $self->{'format_context'}->[-1]->{'max'},
+                                    'center');
+        chomp ($result);
+        $self->{'empty_lines_count'} = 0 unless ($result eq '');
+        $result .= "\n";
+      } elsif ($root->{'cmdname'} eq 'exdent') {
+        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+          {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+        chomp ($result);
+        $self->{'empty_lines_count'} = 0 unless ($result eq '');
+        $result .= "\n";
       } elsif ($root->{'cmdname'} eq 'insertcopying') {
         if (defined($self->{'parser'})) {
           my $global_commands = $self->{'parser'}->global_commands_information();
@@ -1032,22 +1083,16 @@ sub _convert($$)
         }
         return '';
       }
-#    FIXME for @def*x commands, they are misc_comands? Or they have index
-#          entries?
-#          @def* commands should be handled with block commands.
-#    } elsif ($def_commands{$root->{'cmdname'}}) {
-#      # FIXME change indenting? Or in def_line?
-#      # everything is done when in the def_line type
     } else {
       $unknown_command = 1;
     }
     if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+      # in fact nothing is done for regular plaintext, only handled in info.
       # a real index entry?
       my $index_entry = 1;
       if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
         $index_entry = 0;
       }
-      # FIXME do something for index entry?
     } elsif ($unknown_command) {
       die "Unhandled $root->{'cmdname'}\n";
     }
@@ -1235,6 +1280,9 @@ sub _convert($$)
   }
   if ($paragraph) {
     $result .= $paragraph->{'container'}->end();
+    if ($self->{'context'}->[-1] eq 'flush') {
+      $result = $self->_flush_paragraph ($result);
+    }
     pop @{$self->{'formatters'}};
     delete $self->{'format_context'}->[-1]->{'counter'};
   }
@@ -1309,8 +1357,14 @@ sub _convert($$)
           $result .= $self->_convert($caption->{'args'}->[0]);
         }
       }
-    } elsif ($root->{'cmdname'} eq 'direntry') {
-      $result .= "END-INFO-DIR-ENTRY\n";
+    } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
+             and $root->{'extra'}->{'authors'}) {
+      foreach my $author (@{$root->{'extra'}->{'authors'}}) {
+        $result .= $self->convert($self->gdt("\@center --- \@emph{{author}}\n",
+                 {'author' => $author->{'extra'}->{'misc_content'}}));
+      }
+    #} elsif ($root->{'cmdname'} eq 'direntry') {
+    #  $result .= "END-INFO-DIR-ENTRY\n";
     }
   }
   if ($preformatted) {
@@ -1318,7 +1372,9 @@ sub _convert($$)
     pop @{$self->{'formatters'}};
   }
 
-  if ($root->{'cmdname'} and $preformatted_context_commands{$root->{'cmdname'}}) {
+  if ($root->{'cmdname'} and 
+       ($preformatted_context_commands{$root->{'cmdname'}} 
+        or $flush_commands{$root->{'cmdname'}})) {
     pop @{$self->{'context'}};
   }
 

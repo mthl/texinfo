@@ -186,6 +186,15 @@ quotation
 '],
 ['author_outside_titlepage_quotation',
 '@author Some One
+'],
+['double_exdent',
+'@example
+Example   Hoho.
+@example
+Nested Other line
+@exdent @exdent double  exdented nested other line
+@end example
+@end example
 ']
 );
 

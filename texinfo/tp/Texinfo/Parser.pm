@@ -3114,7 +3114,7 @@ sub _parse_texi($;$)
                       $found = 1;
                     } elsif ($parent->{'cmdname'} eq 'quotation' or
                         $parent->{'cmdname'} eq 'smallquotation') {
-                      $parent->{'extra'}->{'author'} = $current;
+                      push @{$parent->{'extra'}->{'authors'}}, $current;
                       $current->{'extra'}->{'quotation'} = $parent;
                       $found = 1;
                     }
@@ -3142,6 +3142,8 @@ sub _parse_texi($;$)
             push @{$self->{'extra'}->{$command}}, $misc;
           } elsif ($global_unique_commands{$command}) {
             $self->_register_global_unique_command($misc, $line_nr);
+          } elsif ($command eq 'dircategory') {
+            push @{$self->{'extra'}->{'dircategory_direntry'}}, $misc;
           }
         # @-command with matching @end
         } elsif (exists($block_commands{$command})) {
@@ -3243,6 +3245,8 @@ sub _parse_texi($;$)
                 if ($preformatted_commands{$command});
               if ($menu_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'menu';
+                push @{$self->{'extra'}->{'dircategory_direntry'}}, $block
+                  if ($command eq 'direntry');
                 if ($self->{'current_node'}) {
                   if ($command eq 'direntry' and $self->{'menus'}) {
                     _line_warn ($self, $self->__("\@direntry after first node"),

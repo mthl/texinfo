@@ -248,6 +248,156 @@ You are not allowed.
 License:
 
 @insertcopying
+'],
+['flushleft_flushright',
+'
+@flushleft
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+
+lhds
+@end flushleft
+
+@flushright
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+
+lhds
+@end flushright
+'],
+['quotation_author',
+'@quotation
+
+@author First Author
+quotation
+@author S@~econd author
+quotation continues.
+
+@end quotation
+'],
+['flushleft_flushright_in_quotation',
+'
+@quotation
+@flushleft
+   f l
+@end flushleft
+
+@flushright
+  f r
+@end flushright
+@end quotation
+'],
+['center',
+'
+@center  in center @code{in code}
+
+'],
+['exdent_and_formats',
+'@example
+ Example   Hoho. @TeX{} . @* @@.
+
+@exdent Other line
+not exdented
+@end example
+
+
+@example
+@exdent exdented
+Not exdented
+@exdent exdented
+Not exdented
+@end example
+
+Para1.
+
+@quotation
+qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+@end quotation
+
+Para2.
+
+Para3.
+
+@noindent
+qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+
+@noindent noindent in para.
+
+Last para.
+
+@quotation
+quotation1
+quotation2
+@end quotation
+
+@quotation
+quotation para 1
+
+quotation para 2
+@end quotation
+
+@example
+Example   Hoho.
+@example
+Nested Other line
+@exdent exdented nested other line
+@end example
+@end example
+
+@quotation
+@exdent exdented quotation line
+@end quotation
+
+@quotation
+Not exdented followed by exdented
+@exdent  exdented quotation line
+@end quotation
+
+@quotation
+@exdent  exdented quotation line
+Followed by not exdented 
+@end quotation
+
+@quotation
+@exdent exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az
+@exdent azeaz az az az az
+@end quotation
+
+@quotation
+@exdent exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line
+@exdent az az az az
+@end quotation
+
+@quotation
+quotation line oidfjslsd aez a aze azaz aeae za eaz az zelef  aaa
+@exdent ezkfjklezf 
+@end quotation
+
+@quotation
+@exdent very loooooooooooooooooooooooooooooooooong exdented quotation line oidfjslsd aez a aze azaz aeae za eaz az azeaz end line
+@exdent az az az az
+@end quotation
+'],
+['exdent_and_commands',
+'@quotation
+quotation1
+@exdent in exdented protected eol @
+following
+@exdent in exdented a @@* @* and following
+after exdented
+@end quotation
+
+@example
+example
+@exdent in exdented protected eol @
+following
+@exdent in exdented a @@* @* and following
+after exdented
+@end example
 ']
 );
 

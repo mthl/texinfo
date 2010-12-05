@@ -45,7 +45,14 @@ anchor}
 '],
 ['space_in_anchor',
 '@anchor{   anchor  name   }.
-']);
+'],
+['ctrl',
+'
+@ctrl{A}
+
+With @ctrl{B}.
+']
+);
 
 my @test_invalid = (
 ['no_brace', '@TeX and @code code and @footnote footnote '],
