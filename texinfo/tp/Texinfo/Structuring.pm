@@ -194,7 +194,7 @@ sub sectioning_structure($$)
         and $content->{'cmdname'} ne 'bye') {
       if ($content->{'cmdname'} eq 'top') {
         if ($section_top) {
-          $self->_line_error($self->__("\@top already exists"), 
+          $self->line_error($self->__("\@top already exists"), 
                                        $content->{'line_nr'});
         } else {
           $section_top = $content;
@@ -216,7 +216,7 @@ sub sectioning_structure($$)
         # new command is below
         if ($previous_section->{'level'} < $level) {
           if ($level - $previous_section->{'level'} > 1) {
-            $self->_line_error(sprintf($self->__("Upping the section level of \@%s which is too low"), 
+            $self->line_error(sprintf($self->__("Upping the section level of \@%s which is too low"), 
                                        $content->{'cmdname'}), $content->{'line_nr'});
             $content->{'level'} = $previous_section->{'level'} + 1;
           }
@@ -238,7 +238,7 @@ sub sectioning_structure($$)
               $up = $up->{'section_up'};
             }
             if ($level <= $up->{'level'}) {
-              $self->_line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
+              $self->line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
                                        $content->{'cmdname'}), $content->{'line_nr'});
               $content->{'level'} = $up->{'level'} + 1;
             }
@@ -333,7 +333,7 @@ sub nodes_tree ($)
              and !$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
             if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
               if (!$self->{'novalidate'}) {
-                $self->_line_error (sprintf($self->__("Menu reference to nonexistent node `%s'"), 
+                $self->line_error (sprintf($self->__("Menu reference to nonexistent node `%s'"), 
                   _node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})), 
                   $menu_content->{'line_nr'});
               }
@@ -364,7 +364,7 @@ sub nodes_tree ($)
   foreach my $node (@{$self->{'nodes'}}) {
     # warn if node is not top node and doesn't appear in menu
     if ($node ne $top_node and !$node->{'menu_up'}) {
-      $self->_line_warn (sprintf($self->__("unreferenced node `%s'"), 
+      $self->line_warn (sprintf($self->__("unreferenced node `%s'"), 
         _node_extra_to_texi($node->{'extra'})), $node->{'line_nr'});
     }
     my $automatic_directions = 
@@ -387,12 +387,12 @@ sub nodes_tree ($)
         }
         if ($node->{'node_next'}) {
           if (!defined($node->{'menu_next'})) {
-            $self->_line_warn(sprintf($self->__("No node following `%s' in menu, but `%s' follows in sectioning"), 
+            $self->line_warn(sprintf($self->__("No node following `%s' in menu, but `%s' follows in sectioning"), 
              _node_extra_to_texi($node->{'extra'}), 
              _node_extra_to_texi($node->{'node_next'}->{'extra'})), 
              $node->{'line_nr'})
           } elsif ($node->{'menu_next'} ne $node->{'node_next'}) {
-            $self->_line_warn(sprintf($self->__("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
+            $self->line_warn(sprintf($self->__("Node following `%s' in menu `%s' and in sectioning `%s' differ"), 
             _node_extra_to_texi($node->{'extra'}),
             _node_extra_to_texi($node->{'menu_next'}->{'extra'}), 
             _node_extra_to_texi($node->{'node_next'}->{'extra'})),
@@ -425,7 +425,7 @@ sub nodes_tree ($)
             if ($self->{'novalidate'}) {
               $node->{'node_'.$direction} = { 'extra' => $node_direction };
             } else {
-              $self->_line_error (sprintf($self->__("%s reference to nonexistent `%s'"),
+              $self->line_error (sprintf($self->__("%s reference to nonexistent `%s'"),
                     $direction_texts{$direction},
                     _node_extra_to_texi($node_direction)), 
                     $node->{'line_nr'});
@@ -438,14 +438,14 @@ sub nodes_tree ($)
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
       if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node has no menu entry
-          $self->_line_error(sprintf($self->__("Node `%s' lacks menu item for `%s' despite being its Up target"), 
+          $self->line_error(sprintf($self->__("Node `%s' lacks menu item for `%s' despite being its Up target"), 
              _node_extra_to_texi($node->{'node_up'}->{'extra'}), 
              _node_extra_to_texi($node->{'extra'})),
              $node->{'node_up'}->{'line_nr'});
       # This leads to an error when there is an external nodes as up, and 
       # not in Top node.
       } elsif ($node->{'menu_up'}) {
-        $self->_line_warn(sprintf($self->__("For `%s', up in menu `%s' and up `%s' don't match"), 
+        $self->line_warn(sprintf($self->__("For `%s', up in menu `%s' and up `%s' don't match"), 
           _node_extra_to_texi($node->{'extra'}),
           _node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
           _node_extra_to_texi($node->{'node_up'}->{'extra'})), $node->{'line_nr'});

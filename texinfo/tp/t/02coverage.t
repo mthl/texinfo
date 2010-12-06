@@ -398,6 +398,10 @@ following
 @exdent in exdented a @@* @* and following
 after exdented
 @end example
+'],
+['verbatiminclude',
+'
+@verbatiminclude incl-incl.txi
 ']
 );
 

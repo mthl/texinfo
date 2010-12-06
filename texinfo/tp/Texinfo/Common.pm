@@ -476,5 +476,6 @@ foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
   $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
 }
 
-
 1;
+
+

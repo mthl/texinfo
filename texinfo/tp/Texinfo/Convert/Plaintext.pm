@@ -23,6 +23,7 @@ use 5.00405;
 use strict;
 
 use Texinfo::Common;
+use Texinfo::Report;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Paragraph;
@@ -34,7 +35,7 @@ use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter);
+@ISA = qw(Exporter Texinfo::Report);
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -235,9 +236,11 @@ my %defaults = (
   'encoding'             => 'us-ascii',
   'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
-  'expanded_formats'     => [],
+  'expanded_formats'     => undef,
+  'include_directories'  => undef,
 
-  'debug'                => 0
+  'debug'                => 0,
+  'test'                 => 0,
 );
 
 sub converter(;$)
@@ -280,6 +283,7 @@ sub converter(;$)
                and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
                and $converter->{'structuring'}
                and $converter->{'structuring'}->{'sectioning_root'});
+      $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {
@@ -293,6 +297,20 @@ sub converter(;$)
   }
   foreach my $key (keys(%defaults)) {
     $converter->{$key} = $defaults{$key} if (!$converter->{'set'}->{$key});
+  }
+  if (!defined($converter->{'expanded_formats'})) {
+    if ($converter->{'parser'}) {
+      $converter->{'expanded_formats'} = $converter->{'parser'}->{'expanded_formats'};
+    } else {
+      $converter->{'expanded_formats'} = [];
+    }
+  }
+  if (!defined($converter->{'include_directories'})) {
+    if ($converter->{'parser'}) {
+      $converter->{'include_directories'} = $converter->{'parser'}->{'include_directories'};
+    } else {
+      $converter->{'include_directories'} = [ '.' ];
+    }
   }
   $converter->{'context'} = ['_Root_context'];
   $converter->{'format_context'} = [{
@@ -317,6 +335,7 @@ sub converter(;$)
     $converter->{'ignored_commands'}->{$format} = 1 
        unless ($converter->{'expanded_formats_hash'}->{$format});
   }
+  $converter->Texinfo::Report::new;
 
   return $converter;
 }
@@ -623,7 +642,6 @@ sub _convert($$)
   }
 
   # FIXME remaining:
-  # verbatiminclude
   # image
 
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
@@ -1021,6 +1039,11 @@ sub _convert($$)
       chomp ($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
+    } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
+      my $expansion = $self->Texinfo::Parser::expand_verbatiminclude($root);
+      unshift @{$self->{'current_contents'}->[-1]}, $expansion
+        if ($expansion);
+      return '';
     } elsif ($root->{'cmdname'} eq 'insertcopying') {
       if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
         unshift @{$self->{'current_contents'}->[-1]}, 
