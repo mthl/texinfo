@@ -286,6 +286,7 @@ sub sectioning_structure($$)
       }
     }
   }
+  $self->{'structuring'}->{'sectioning_root'} = $sec_root;
   return $sec_root;
 }
 
@@ -451,6 +452,7 @@ sub nodes_tree ($)
       }
     }
   }
+  $self->{'structuring'}->{'top_node'} = $top_node;
   return $top_node;
 }
 

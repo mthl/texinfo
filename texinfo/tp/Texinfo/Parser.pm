@@ -356,14 +356,15 @@ foreach my $type ('before_item', 'text_root', 'document_root',
 
 my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
-  'subtitle') {
+  'subtitle', 'contents', 'shortcontents', 'summarycontents') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
 my %global_unique_commands;
 foreach my $global_unique_command ('documentencoding', 'title', 
   'shorttitlepage', 'settitle', 'copying', 'documentdescription', 'titlepage',
-  'setfilename') {
+  'setfilename', 'setcontentsaftertitlepage', 
+  'setshortcontentsaftertitlepage') {
   $global_unique_commands{$global_unique_command} = 1;
 }
 
@@ -874,17 +875,25 @@ sub _line_error($$$;$)
   $parser->{'error_nrs'}++ unless ($continuation);
 }
 
-sub _register_global_unique_command($$$)
+sub _register_global_command($$$$)
 {
   my $self = shift;
+  my $command = shift;
   my $current = shift;
   my $line_nr = shift;
-  if (exists ($self->{'extra'}->{$current->{'cmdname'}})) {
-    _line_warn ($self, sprintf($self->__('Multiple @%s'), 
-      $current->{'cmdname'}), $line_nr); 
-  } else {
-    $self->{'extra'}->{$current->{'cmdname'}} = $current;
+  if ($global_multiple_commands{$command} and $command ne 'author') {
+    push @{$self->{'extra'}->{$command}}, $current;
+    return 1;
+  } elsif ($global_unique_commands{$command}) {
+    if (exists ($self->{'extra'}->{$current->{'cmdname'}})) {
+      _line_warn ($self, sprintf($self->__('Multiple @%s'), 
+        $current->{'cmdname'}), $line_nr); 
+    } else {
+      $self->{'extra'}->{$current->{'cmdname'}} = $current;
+    }
+    return 1;
   }
+  return 0;
 }
 
 # parse a @macro line
@@ -2936,6 +2945,9 @@ sub _parse_texi($;$)
                       'parent' => $current};
               push @{$current->{'contents'}}, $misc;
             }
+            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            $self->_register_global_command($command, $misc, $line_nr);
+
           # all the cases using the raw line
           } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
                    or $arg_spec eq 'special') {
@@ -2971,6 +2983,7 @@ sub _parse_texi($;$)
               $self->{'novalidate'} = 1;
             }
             $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
+            $self->_register_global_command($command, $misc, $line_nr);
 
             last NEXT_LINE if ($command eq 'bye');
             last;
@@ -3138,11 +3151,9 @@ sub _parse_texi($;$)
             $line = _start_empty_line_after_command($line, $current);
           }
           $misc->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
-          if ($global_multiple_commands{$command} and $command ne 'author') {
-            push @{$self->{'extra'}->{$command}}, $misc;
-          } elsif ($global_unique_commands{$command}) {
-            $self->_register_global_unique_command($misc, $line_nr);
-          } elsif ($command eq 'dircategory') {
+
+          if (!$self->_register_global_command($command, $misc, $line_nr)
+              and $command eq 'dircategory') {
             push @{$self->{'extra'}->{'dircategory_direntry'}}, $misc;
           }
         # @-command with matching @end
@@ -3269,9 +3280,8 @@ sub _parse_texi($;$)
               
             }
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
-            if ($global_unique_commands{$command}) {
-              $self->_register_global_unique_command($block, $line_nr);
-            }
+            $self->_register_global_command($command, $block, $line_nr);
+
             $line = _start_empty_line_after_command($line, $current);
           }
         } elsif (defined($brace_commands{$command})

@@ -2,6 +2,57 @@ use strict;
 
 require 't/test_utils.pl';
 
+my $test_text = 
+'@top top
+
+@chapter chapter
+
+@section section
+
+@subsection subsection
+
+@subsubsection subsubsection
+
+@part part
+
+@chapter chapter in part
+
+@chapter second chapter in part
+
+@unnumbered unnumbered
+
+@appendix appendix
+
+@appendixsec appendixsec
+';
+
+my @tests_converted = (
+['setcontentsaftertitlepage',
+'@setcontentsaftertitlepage
+'
+.$test_text.
+'
+@contents
+'],
+['setshortcontentsaftertitlepage',
+'@setshortcontentsaftertitlepage
+'
+.$test_text.
+'
+@shortcontents
+'],
+['contents',
+$test_text.
+'
+@contents
+'],
+['shortcontents',
+$test_text.
+'
+@shortcontents
+'],
+);
+
 my @test_cases = (
 [ 'node',
 '
@@ -569,8 +620,12 @@ Second top.
 ']
 );
 
+foreach my $test (@tests_converted) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('sectioning', \@test_cases, $arg_test_case,
+run_all ('sectioning', [@test_cases, @tests_converted], $arg_test_case,
    $arg_generate, $arg_debug);
 

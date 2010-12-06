@@ -873,7 +873,7 @@ my %underline_symbol = (
   4 => '.'
 );
 
-sub heading($$)
+sub numbered_heading($$)
 {
   my $current = shift;
   my $text = shift;
@@ -884,6 +884,15 @@ sub heading($$)
     $text = 'Appendix '.$text;
   }
   chomp ($text);
+  return $text;
+}
+
+sub heading($$)
+{
+  my $current = shift;
+  my $text = shift;
+
+  $text = numbered_heading($current, $text);
   return '' if ($text !~ /\S/);
   my $result = $text ."\n";
   $result .=($underline_symbol{$current->{'level'}} 

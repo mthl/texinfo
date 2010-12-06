@@ -63,8 +63,7 @@ my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 my %informative_commands;
 foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
-  'setshortcontentsaftertitlepage', 'setcontentsaftertitlepage') {
+  'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage') {
   $informative_commands{$informative_command} = 1;
 }
 
@@ -73,9 +72,7 @@ foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
 foreach my $kept_command(keys (%informative_commands),
   'verbatiminclude', 'insertcopying', 
   'listoffloats', 
-  'contents', 'shortcontents', 'summarycontents', 
-  'shorttitle', 'shorttitlepage', 'settitle', 'subtitle',
-  'title') {
+  'contents', 'shortcontents', 'summarycontents') {
   $kept_misc_commands{$kept_command} = 1;
 }
 my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
@@ -266,6 +263,23 @@ sub converter(;$)
   if (defined($conf)) {
     if ($conf->{'parser'}) {
       $converter->{'parser'} = $conf->{'parser'};
+      $converter->{'extra'} 
+         = $converter->{'parser'}->global_commands_information();
+      my $floats = $converter->{'parser'}->floats_information();
+      $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
+
+      $converter->{'floats'} = $floats if ($floats);
+      $converter->{'setcontentsaftertitlepage'} = 1 
+         if ($converter->{'extra'}->{'contents'} 
+               and $converter->{'extra'}->{'setcontentsaftertitlepage'}
+               and $converter->{'structuring'}
+               and $converter->{'structuring'}->{'sectioning_root'});
+      $converter->{'setshortcontentsaftertitlepage'} = 1 
+         if (($converter->{'extra'}->{'shortcontents'} 
+              or $converter->{'extra'}->{'summarycontents'})
+               and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
+               and $converter->{'structuring'}
+               and $converter->{'structuring'}->{'sectioning_root'});
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {
@@ -519,6 +533,40 @@ sub _flush_paragraph($$)
                           'right');
 }
 
+sub _contents($$$)
+{
+  my $self = shift;
+  my $section_root = shift;
+  my $contents_or_shortcontents = shift;
+
+  my $contents = 1 if ($contents_or_shortcontents eq 'contents');
+
+  my $section = $section_root->{'section_childs'}->[0];
+  my $root_level = $section->{'level'};
+  my $result = '';
+  while ($section and $section ne $section_root) {
+    my $text = Texinfo::Convert::Text::numbered_heading($section,
+        $self->convert_line({'contents' 
+                => $section->{'extra'}->{'misc_content'}}))."\n";
+    $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
+    if ($section->{'section_childs'} 
+          and ($contents or $section->{'level'} < $root_level+1)) {
+      $section = $section->{'section_childs'}->[0];
+    } elsif ($section->{'section_next'}) {
+      $section = $section->{'section_next'};
+    } else {
+      while ($section->{'section_up'}) {
+        $section = $section->{'section_up'};
+        if ($section->{'section_next'}) {
+          $section = $section->{'section_next'};
+          last;
+        }
+      }
+    }
+  }
+  return $result;
+}
+
 my $listoffloat_entry_length = 41;
 my $listoffloat_append = '...';
 
@@ -574,12 +622,9 @@ sub _convert($$)
     }
   }
 
-  # other commands processed:
+  # FIXME remaining:
   # verbatiminclude
   # image
-# not info but plaintext
-# setshortcontentsaftertitlepage setcontentsaftertitlepage
-# @contents or @shortcontents
 
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
   # OUT_ENCODING ENCODING_NAME
@@ -884,9 +929,23 @@ sub _convert($$)
       $self->{'footnote_index'} = 0;
       $result .= $self->_footnotes();
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {
+      if ($self->{'setcontentsaftertitlepage'} 
+           and $root_commands{$root->{'cmdname'}}) {
+        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                              'contents') ."\n";
+        $self->{'empty_lines_count'} = 0;
+        $self->{'setcontentsaftertitlepage'} = 0;
+      } 
+      if ($self->{'setshortcontentsaftertitlepage'} 
+            and $root_commands{$root->{'cmdname'}}) {
+        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                              'shortcontents')."\n";
+        $self->{'empty_lines_count'} = 0;
+        $self->{'setshortcontentsaftertitlepage'} = 0;
+      }
       if ($root->{'args'}) {
-        $result = $self->convert_line($root->{'args'}->[0]);
-        $result = Texinfo::Convert::Text::heading ($root, $result);
+        my $heading = $self->convert_line($root->{'args'}->[0]);
+        $result .= Texinfo::Convert::Text::heading ($root, $heading);
         $self->{'empty_lines_count'} = 0 unless ($result eq '');
       }
     } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
@@ -963,76 +1022,71 @@ sub _convert($$)
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
     } elsif ($root->{'cmdname'} eq 'insertcopying') {
-      if (defined($self->{'parser'})) {
-        my $global_commands = $self->{'parser'}->global_commands_information();
-        if ($global_commands and $global_commands->{'copying'}) {
-          unshift @{$self->{'current_contents'}->[-1]}, 
-             {'contents' => $global_commands->{'copying'}->{'contents'}};
-        }
+      if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
+        unshift @{$self->{'current_contents'}->[-1]}, 
+           {'contents' => $self->{'extra'}->{'copying'}->{'contents'}};
       }
     } elsif ($root->{'cmdname'} eq 'listoffloats') {
       if ($root->{'extra'} and $root->{'extra'}->{'type'}
           and defined($root->{'extra'}->{'type'}->{'normalized'}) 
-          and defined($self->{'parser'})) {
-        my $floats = $self->{'parser'}->floats_information();
-        if ($floats and $floats->{$root->{'extra'}->{'type'}->{'normalized'}}
-             and @{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-          $result = "* Menu:\n\n";
-          foreach my $float (@{$floats->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-            next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
-            my $float_entry;
-            if (exists ($float->{'number'})) {
-              $float_entry = 
-               $self->gdt('* {float_type} {float_number}: {float_label}.', 
-                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                 'float_number' => $float->{'number'},
-                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
-            } else {
-              $float_entry = $self->gdt('* {float_type}: {float_label}.', 
-                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
-                 });
-            }
-            #print STDERR "$float ".$self->convert_line($float_entry)."\n";
-            my $float_line = $self->convert_line($float_entry);
-            my $line_width 
-               = Texinfo::Convert::Unicode::string_width($float_line);
-            if ($line_width > $listoffloat_entry_length) {
-              $float_line .= "\n" . ' ' x $listoffloat_entry_length;
-            } else {
-              $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
-            }
-            $line_width = $listoffloat_entry_length;
-            my $caption;
-            if ($float->{'extra'}->{'shortcaption'}) {
-              $caption = $float->{'extra'}->{'shortcaption'};
-            } elsif ($float->{'extra'}->{'caption'}) {
-              $caption = $float->{'extra'}->{'caption'};
-            }
-            if ($caption) {
-              # FIXME should there be some indentation?
-              my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
-                          'type' => $caption->{'cmdname'}.'_listoffloats'});
-              while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
-                my $new_word = $1;
-                $new_word =~ s/\n/ /g;
-                if ((Texinfo::Convert::Unicode::string_width($new_word) +
-                     $line_width) > 
-                         ($self->{'format_context'}->[-1]->{'max'} - 3)) {
-                  $float_line .= $listoffloat_append;
-                  last;
-                } else {
-                  $float_line .= $new_word;
-                  $line_width += 
-                    Texinfo::Convert::Unicode::string_width($new_word);
-                }
+          and $self->{'floats'} 
+          and $self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}
+          and @{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+        $result = "* Menu:\n\n";
+        foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
+          next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
+          my $float_entry;
+          if (exists ($float->{'number'})) {
+            $float_entry = 
+             $self->gdt('* {float_type} {float_number}: {float_label}.', 
+              {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+               'float_number' => $float->{'number'},
+               'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+          } else {
+            $float_entry = $self->gdt('* {float_type}: {float_label}.', 
+              {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+               'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
+               });
+          }
+          #print STDERR "$float ".$self->convert_line($float_entry)."\n";
+          my $float_line = $self->convert_line($float_entry);
+          my $line_width 
+             = Texinfo::Convert::Unicode::string_width($float_line);
+          if ($line_width > $listoffloat_entry_length) {
+            $float_line .= "\n" . ' ' x $listoffloat_entry_length;
+          } else {
+            $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
+          }
+          $line_width = $listoffloat_entry_length;
+          my $caption;
+          if ($float->{'extra'}->{'shortcaption'}) {
+            $caption = $float->{'extra'}->{'shortcaption'};
+          } elsif ($float->{'extra'}->{'caption'}) {
+            $caption = $float->{'extra'}->{'caption'};
+          }
+          if ($caption) {
+            # FIXME should there be some indentation?
+            my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
+                        'type' => $caption->{'cmdname'}.'_listoffloats'});
+            while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
+              my $new_word = $1;
+              $new_word =~ s/\n/ /g;
+              if ((Texinfo::Convert::Unicode::string_width($new_word) +
+                   $line_width) > 
+                       ($self->{'format_context'}->[-1]->{'max'} - 3)) {
+                $float_line .= $listoffloat_append;
+                last;
+              } else {
+                $float_line .= $new_word;
+                $line_width += 
+                  Texinfo::Convert::Unicode::string_width($new_word);
               }
             }
-            $result .= $float_line. "\n";
           }
-          $result .= "\n";
-          $self->{'empty_lines_count'} = 1;
+          $result .= $float_line. "\n";
         }
+        $result .= "\n";
+        $self->{'empty_lines_count'} = 1;
       }
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
@@ -1040,6 +1094,21 @@ sub _convert($$)
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         $result .= "\n" x $sp_nr;
         $self->{'empty_lines_count'} = $sp_nr;
+      }
+    } elsif ($root->{'cmdname'} eq 'contents') {
+      if (!defined($self->{'setcontentsaftertitlepage'})
+           and $self->{'structuring'}
+           and $self->{'structuring'}->{'sectioning_root'}) {
+        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                              'contents');
+      }
+    } elsif ($root->{'cmdname'} eq 'shortcontents' 
+               or $root->{'cmdname'} eq 'summarycontents') {
+      if (!defined($self->{'setshortcontentsaftertitlepage'})
+            and $self->{'structuring'}
+            and $self->{'structuring'}->{'sectioning_root'}) {
+        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                              'shortcontents');
       }
     # all the @-commands that have an information for the formatting, like
     # @paragraphindent, @frenchspacing...
