@@ -39,6 +39,11 @@ $result_trees{'footnote_in_command_not_closed'} = {
                   ],
                   'cmdname' => 'footnote',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],

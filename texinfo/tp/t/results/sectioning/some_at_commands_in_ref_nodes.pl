@@ -955,6 +955,11 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

@@ -28,6 +28,11 @@ $result_trees{'anchor_not_closed'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -52,10 +57,10 @@ $result_texts{'anchor_not_closed'} = '';
 
 $result_errors{'anchor_not_closed'} = [
   {
-    'error_line' => ':2: @anchor missing close brace
+    'error_line' => ':1: @anchor missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 2,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@anchor missing close brace',
     'type' => 'error'

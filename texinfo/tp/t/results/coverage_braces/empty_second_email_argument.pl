@@ -53,6 +53,11 @@ $result_trees{'empty_second_email_argument'} = {
               undef
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

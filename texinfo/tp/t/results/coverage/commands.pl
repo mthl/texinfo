@@ -207,6 +207,11 @@ $result_trees{'commands'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

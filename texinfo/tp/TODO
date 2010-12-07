@@ -59,6 +59,8 @@ t/30sectioning.t setfilename_on_top_and_after_node
 there could be a wrning
  warning: @setfilename after the first element
 
+plaintext errors ?
+
 
 Incorporation of texi2html tests
 --------------------------------

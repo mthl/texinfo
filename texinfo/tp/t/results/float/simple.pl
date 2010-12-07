@@ -81,6 +81,11 @@ $result_trees{'simple'} = {
               'extra' => {
                 'float' => {}
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

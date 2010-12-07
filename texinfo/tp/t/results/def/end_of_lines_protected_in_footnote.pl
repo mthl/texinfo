@@ -268,6 +268,11 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

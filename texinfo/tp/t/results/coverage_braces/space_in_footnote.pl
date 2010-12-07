@@ -36,6 +36,11 @@ $result_trees{'space_in_footnote'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

@@ -54,6 +54,11 @@ $result_trees{'footnote_not_closed'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -84,10 +89,10 @@ $result_texts{'footnote_not_closed'} = 'AAA';
 
 $result_errors{'footnote_not_closed'} = [
   {
-    'error_line' => ':3: @footnote missing close brace
+    'error_line' => ':1: @footnote missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 3,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@footnote missing close brace',
     'type' => 'error'

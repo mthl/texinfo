@@ -328,6 +328,14 @@ my @out_formats               = @Texinfo::Common::out_formats;
 my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 
+my %keep_line_nr_brace_commands = %context_brace_commands;
+foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
+  $keep_line_nr_brace_commands{$keep_line_nr_brace_command} = 1;
+}
+foreach my $brace_command (keys (%brace_commands)) {
+  $keep_line_nr_brace_commands{$brace_command} = 1
+    if ($brace_commands{$brace_command} > 1);
+}
 
 my %def_prepended_content;
 foreach my $def_command(keys %def_map) {
@@ -3246,20 +3254,22 @@ sub _parse_texi($;$)
         } elsif (defined($brace_commands{$command})
                or defined($self->{'definfoenclose'}->{$command})) {
           
-            push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                              'parent' => $current, 
-                                              'contents' => [] };
-            $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
-              if ($invalid);
-            $current = $current->{'contents'}->[-1];
-            if ($command eq 'click') {
-              $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
-            }
-            if ($self->{'definfoenclose'}->{$command}) {
-              $current->{'type'} = 'definfoenclose_command';
-              $current->{'extra'} = { 
-                   'begin' => $self->{'definfoenclose'}->{$command}->[0], 
-                   'end' => $self->{'definfoenclose'}->{$command}->[1] };
+          push @{$current->{'contents'}}, { 'cmdname' => $command, 
+                                            'parent' => $current, 
+                                            'contents' => [] };
+          $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
+            if ($keep_line_nr_brace_commands{$command});
+          $current->{'contents'}->[-1]->{'extra'}->{'invalid_nesting'} = 1 
+            if ($invalid);
+          $current = $current->{'contents'}->[-1];
+          if ($command eq 'click') {
+            $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
+          }
+          if ($self->{'definfoenclose'}->{$command}) {
+            $current->{'type'} = 'definfoenclose_command';
+            $current->{'extra'} = { 
+                 'begin' => $self->{'definfoenclose'}->{$command}->[0], 
+                 'end' => $self->{'definfoenclose'}->{$command}->[1] };
           }
         } elsif ($no_brace_commands{$command}) {
           push @{$current->{'contents'}},

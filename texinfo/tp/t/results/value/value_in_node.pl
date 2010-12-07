@@ -604,6 +604,11 @@ $result_trees{'value_in_node'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

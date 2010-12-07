@@ -27,6 +27,11 @@ $result_trees{'no_brace'} = {
         {
           'cmdname' => 'footnote',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

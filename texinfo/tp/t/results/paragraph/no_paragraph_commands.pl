@@ -35,6 +35,11 @@ $result_trees{'no_paragraph_commands'} = {
           ]
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -115,6 +120,11 @@ $result_trees{'no_paragraph_commands'} = {
             {}
           ]
         ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 3,
+        'macro' => ''
       },
       'parent' => {}
     },

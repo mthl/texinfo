@@ -108,7 +108,12 @@ second paragraph
 third}
 '],
 ['footnote_in_command_not_closed',
-'aaa@code{in code@footnote{in footnote']
+'aaa@code{in code@footnote{in footnote'],
+['empty_images',
+'@image{}
+
+@image{ ,aa,bb,cc ,dd}
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

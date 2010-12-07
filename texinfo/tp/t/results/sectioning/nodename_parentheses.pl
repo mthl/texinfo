@@ -496,6 +496,11 @@ $result_trees{'nodename_parentheses'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -540,6 +545,11 @@ $result_trees{'nodename_parentheses'} = {
                     {}
                   ]
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => ''
               },
               'parent' => {}
             },

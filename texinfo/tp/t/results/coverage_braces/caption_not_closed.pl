@@ -105,6 +105,11 @@ $result_trees{'caption_not_closed'} = {
           'extra' => {
             'float' => {}
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -188,10 +193,10 @@ $result_texts{'caption_not_closed'} = '
 
 $result_errors{'caption_not_closed'} = [
   {
-    'error_line' => ':8: @caption missing close brace
+    'error_line' => ':3: @caption missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 3,
     'macro' => '',
     'text' => '@caption missing close brace',
     'type' => 'error'

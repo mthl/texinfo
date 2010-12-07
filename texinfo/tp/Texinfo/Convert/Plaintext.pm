@@ -243,6 +243,21 @@ my %defaults = (
   'test'                 => 0,
 );
 
+sub push_top_formatter($$)
+{
+  my $self = shift;
+  my $top_context = shift;
+  push @{$self->{'context'}}, $top_context;
+  push @{$self->{'format_context'}}, {
+                                     'cmdname' => '_top_format',
+                                     'paragraph_count' => 0,
+                                     'indent_level' => 0,
+                                     'max' => $self->{'fillcolumn'}
+                                   };
+  push @{$self->{'formatters'}}, $self->new_formatter('line');
+  $self->{'formatters'}->[-1]->{'_top_formatter'} = 1;
+}
+
 sub converter(;$)
 {
   my $class = shift;
@@ -312,15 +327,11 @@ sub converter(;$)
       $converter->{'include_directories'} = [ '.' ];
     }
   }
-  $converter->{'context'} = ['_Root_context'];
-  $converter->{'format_context'} = [{
-                                     'cmdname' => '_top_format',
-                                     'paragraph_count' => 0, 
-                                     'indent_level' => 0,
-                                     'max' => $converter->{'fillcolumn'}
-                                   }];
-  $converter->{'formatters'} = [$converter->new_formatter('line')];
-  $converter->{'formatters'}->[-1]->{'_top_formatter'} = 1;
+
+  $converter->{'context'} = [];
+  $converter->{'format_context'} = [];
+  $converter->push_top_formatter('_Root_context');
+
   %{$converter->{'ignored_types'}} = %ignored_types;
   %{$converter->{'ignored_commands'}} = %ignored_commands;
   $converter->{'footnote_index'} = 0;
@@ -496,6 +507,7 @@ sub _footnotes($)
     $result .= "   ---------- Footnotes ----------\n\n";
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
+      $self->push_top_formatter('footnote');
       my $footnote_text = ' ' x $footnote_indent 
                . "($footnote->{'number'}) ";
       $result .= $footnote_text;
@@ -503,6 +515,9 @@ sub _footnotes($)
          Texinfo::Convert::Unicode::string_width($footnote_text);
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]);
       $result .= "\n" unless ($self->{'empty_lines_count'});
+      pop @{$self->{'context'}};
+      pop @{$self->{'format_context'}};
+      pop @{$self->{'formatters'}};
     }
   }
   return $result;
@@ -641,9 +656,6 @@ sub _convert($$)
     }
   }
 
-  # FIXME remaining:
-  # image
-
   # NUMBER_FOOTNOTES SPLIT_SIZE IN_ENCODING FILLCOLUMN ENABLE_ENCODING
   # OUT_ENCODING ENCODING_NAME
 
@@ -736,8 +748,34 @@ sub _convert($$)
       }
       $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
     } elsif ($root->{'cmdname'} eq 'image') {
-      # FIXME
-      #return $self->_convert($root->{'args'}->[0]);
+      if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+        my $basefile = Texinfo::Convert::Text::convert(
+           {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
+        my $txt_file = 
+          $self->Texinfo::Parser::_locate_include_file ($self, $basefile.'.txt');
+        if (!defined($txt_file)) {
+          $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
+        } else {
+          if (open (TXT, $txt_file)) {
+            # FIXME encoding
+            # my $in_encoding = get_conf('IN_ENCODING');
+            # binmode(TXT, ":encoding($in_encoding)");
+            my $top_level = 1;
+            if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+              $result .='[';
+            }
+            while (<TXT>) {
+              $result .= $_;
+            }
+            if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+              $result .=']';
+            }
+            close (TXT);
+          } else {
+            $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), $txt_file, $!), $root->{'line_nr'});
+          }
+        }
+      }
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
 

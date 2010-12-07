@@ -41,6 +41,11 @@ $result_trees{'uref_url'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -69,6 +74,11 @@ $result_trees{'uref_url'} = {
                 {}
               ]
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -105,6 +115,11 @@ $result_trees{'uref_url'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -160,6 +175,11 @@ $result_trees{'uref_url'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -207,6 +227,11 @@ $result_trees{'uref_url'} = {
                 {}
               ]
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -256,6 +281,11 @@ $result_trees{'uref_url'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -296,6 +326,11 @@ $result_trees{'uref_url'} = {
                 {}
               ]
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
           },
           'parent' => {}
         },
@@ -339,6 +374,11 @@ $result_trees{'uref_url'} = {
               ]
             ]
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -393,6 +433,11 @@ $result_trees{'uref_url'} = {
                 {}
               ]
             ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
           },
           'parent' => {}
         },

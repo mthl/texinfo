@@ -18,6 +18,11 @@ $result_trees{'in_table'} = {
               'extra' => {
                 'invalid_nesting' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -143,6 +148,7 @@ $result_trees{'in_table'} = {
                     ],
                     'invalid_nesting' => 1
                   },
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -203,6 +209,7 @@ $result_trees{'in_table'} = {
                   'extra' => {
                     'invalid_nesting' => 1
                   },
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -291,6 +298,11 @@ $result_trees{'in_table'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -342,6 +354,7 @@ $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0];
@@ -353,6 +366,7 @@ $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6];
+$result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0];

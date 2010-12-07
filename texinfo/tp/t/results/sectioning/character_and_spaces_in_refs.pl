@@ -265,6 +265,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -318,6 +323,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                     {}
                   ]
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -386,6 +396,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -414,6 +429,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                     {}
                   ]
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -473,6 +493,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -502,6 +527,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -530,6 +560,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                     {}
                   ]
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
               },
               'parent' => {}
             },
@@ -564,6 +599,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   ]
                 ]
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -596,6 +636,11 @@ $result_trees{'character_and_spaces_in_refs'} = {
                     {}
                   ]
                 ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
               },
               'parent' => {}
             },

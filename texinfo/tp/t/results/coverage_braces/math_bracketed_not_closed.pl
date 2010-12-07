@@ -41,6 +41,11 @@ $result_trees{'math_bracketed_not_closed'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

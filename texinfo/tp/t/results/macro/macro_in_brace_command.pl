@@ -162,6 +162,11 @@ $result_trees{'macro_in_brace_command'} = {
                       ]
                     ]
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 10,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

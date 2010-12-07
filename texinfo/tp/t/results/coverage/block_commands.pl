@@ -208,6 +208,11 @@ $result_trees{'block_commands'} = {
           'extra' => {
             'float' => {}
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

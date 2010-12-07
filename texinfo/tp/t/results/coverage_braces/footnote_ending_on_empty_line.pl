@@ -43,6 +43,11 @@ $result_trees{'footnote_ending_on_empty_line'} = {
           ],
           'cmdname' => 'footnote',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

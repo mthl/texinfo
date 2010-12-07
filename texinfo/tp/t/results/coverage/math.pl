@@ -46,6 +46,11 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -110,6 +115,11 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -224,6 +234,11 @@ $result_trees{'math'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
