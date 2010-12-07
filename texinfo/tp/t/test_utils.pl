@@ -19,7 +19,7 @@ use Getopt::Long qw(GetOptions);
 
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted);
+   %result_floats %result_converted %result_converted_errors);
 
 ok(1);
 
@@ -178,7 +178,9 @@ sub convert_to_plaintext($$$)
   my $converter = 
      Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'},
                                              'parser' => $parser });
-  return $converter->convert($tree);
+  my $result = $converter->convert($tree);
+  my ($errors, $error_nrs) = $parser->errors();
+  return ($errors, $result);
 }
 
 sub test($$) 
@@ -242,7 +244,8 @@ sub test($$)
   my %converted;
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
-      $converted{$format} = &{$formats{$format}}($self, $result, $parser);
+      ($result_converted_errors{$format}, $converted{$format}) 
+           = &{$formats{$format}}($self, $result, $parser);
       #print STDERR "$format: \n$converted{$format}";
     }
   }
@@ -260,7 +263,7 @@ sub test($$)
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
               '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
-              '   %result_floats %result_converted);'."\n\n";
+              '   %result_floats %result_converted %result_converted_errors);'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
@@ -305,6 +308,10 @@ sub test($$)
         $out_result .= "\n".'$result_converted{\''.$format.'\'}->{\''
           .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
       #print STDERR "$format: \n$converted{$format}";
+      }
+      if (defined($result_converted_errors{$format})) {
+      #  $out_result .= Data::Dumper->Dump([$result_converted_errors{$format}], 
+      #           ['$result_converted_errors\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
       }
     }
 

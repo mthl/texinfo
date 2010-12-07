@@ -17,6 +17,27 @@
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
+require Exporter;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+
+# This allows declaration	use Texinfo::Parser ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+%EXPORT_TAGS = ( 'all' => [ qw(
+  errors
+) ] );
+
+@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+@EXPORT = qw(
+);
+
+$VERSION = '0.01';
 
 
 package Texinfo::Report;
@@ -24,6 +45,12 @@ package Texinfo::Report;
 use 5.00405;
 use strict;
 
+# return the errors and warnings
+sub errors ($)
+{
+  my $self = shift;
+  return ($self->{'errors_warnings'}, $self->{'error_nrs'});
+}
 
 sub __($$)
 {

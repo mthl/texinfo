@@ -1,6 +1,6 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
-   %result_floats %result_converted);
+   %result_floats %result_converted %result_converted_errors);
 
 $result_trees{'verb_and_char_end_of_line_not_closed'} = {
   'contents' => [
