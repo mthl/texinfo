@@ -752,7 +752,7 @@ sub _convert($$)
         my $basefile = Texinfo::Convert::Text::convert(
            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
         my $txt_file = 
-          $self->Texinfo::Parser::_locate_include_file ($self, $basefile.'.txt');
+          $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
         if (!defined($txt_file)) {
           $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
         } else {

@@ -179,7 +179,7 @@ sub convert_to_plaintext($$$)
      Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'},
                                              'parser' => $parser });
   my $result = $converter->convert($tree);
-  my ($errors, $error_nrs) = $parser->errors();
+  my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
 
@@ -242,10 +242,12 @@ sub test($$)
   my $converted_text = Texinfo::Convert::Text::convert($result);
 
   my %converted;
+  my %converted_errors;
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
-      ($result_converted_errors{$format}, $converted{$format}) 
+      ($converted_errors{$format}, $converted{$format}) 
            = &{$formats{$format}}($self, $result, $parser);
+      $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
     }
   }
@@ -309,9 +311,10 @@ sub test($$)
           .$test_name.'\'} = \''.protect_perl_string($converted{$format})."';\n\n";
       #print STDERR "$format: \n$converted{$format}";
       }
-      if (defined($result_converted_errors{$format})) {
-      #  $out_result .= Data::Dumper->Dump([$result_converted_errors{$format}], 
-      #           ['$result_converted_errors\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
+      if (defined($converted_errors{$format})) {
+        $out_result .= Data::Dumper->Dump([$converted_errors{$format}], 
+                 ['$result_converted_errors\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
+        #print STDERR "".Data::Dumper->Dump([$converted_errors{$format}]);
       }
     }
 
@@ -387,9 +390,12 @@ sub test($$)
         if (!defined($result_converted{$format})) {
           print STDERR "\n$format $test_name:\n$converted{$format}";
         } else {
-          $tests_count++;
+          $tests_count += 2;
           ok ($converted{$format} eq $result_converted{$format}->{$test_name},
             $test_name.' converted '.$format);
+          ok (Data::Compare::Compare($converted_errors{$format}, 
+                 $result_converted_errors{$format}->{$test_name}),
+                 $test_name.' errors '.$format);
         }
       #print STDERR "$format: \n$converted{$format}";
       }

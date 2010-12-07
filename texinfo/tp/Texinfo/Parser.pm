@@ -1683,6 +1683,8 @@ sub _locate_include_file($$)
   my $self = shift;
   my $text = shift;
   my $file;
+
+  #print STDERR "$self $text @{$self->{'include_directories'}}\n";
   if ($text =~ m,^(/|\./|\.\./),) {
     $file = $text if (-e $text and -r $text);
   } else {

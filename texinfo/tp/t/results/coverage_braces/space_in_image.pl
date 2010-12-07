@@ -197,7 +197,9 @@ $result_errors{'space_in_image'} = [];
 
 
 
-$result_converted{'plaintext'}->{'space_in_image'} = '.  .
+$result_converted{'plaintext'}->{'space_in_image'} = 'An image text before paragraph.
+.[Another image text, in paragraph.
+]  .
 ';
 
 1;

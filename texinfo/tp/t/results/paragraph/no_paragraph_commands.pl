@@ -180,6 +180,7 @@ $result_errors{'no_paragraph_commands'} = [];
 $result_converted{'plaintext'}->{'no_paragraph_commands'} = '
 title font
 **********
+Text for image out of paragraph.
 ';
 
 1;
