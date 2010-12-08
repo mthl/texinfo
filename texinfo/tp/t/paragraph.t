@@ -11,7 +11,7 @@ use strict;
 use Test::More;
 BEGIN { plan tests => 105 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
-#push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
+#use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;

@@ -2,6 +2,7 @@ use strict;
 
 use Test::More;
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
+use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;

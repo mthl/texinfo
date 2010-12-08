@@ -4,6 +4,7 @@ use Test::More;
 BEGIN { plan tests => 5 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
+use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Text;
 use Texinfo::Parser;
 use Texinfo::Structuring;

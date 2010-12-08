@@ -12,7 +12,7 @@ use Test::More;
 use Data::Dumper;
 BEGIN { plan tests => 1 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
-#push @INC, '../texi2html/lib/Unicode-EastAsianWidth/lib/';
+use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Parser;
 use Texinfo::Convert::Texinfo;
 ok(1, "modules loading"); # If we made it this far, we're ok.
