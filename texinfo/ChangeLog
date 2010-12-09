@@ -1,3 +1,7 @@
+2010-12-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Configuration Variables): begin reading.
+
 2010-12-03  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/tests/*: uniformly set LC_ALL, unset LANG, LANGUAGE,

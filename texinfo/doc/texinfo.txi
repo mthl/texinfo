@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
+@c $Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16725,47 +16725,62 @@ option takes an argument, or @code{--@var{opt}} if not.
 
 @vtable @code
 @item DEBUG
-The integer value specifies what kind of debugging output is generated.
-It is a bitmask. Setting it to 255 ensures having all the debugging
-set.
-@item FRAMES
-For HTML. If set, a file describing the frame layout is generated, 
-together with a file with the short table of contents.
+The integer value specifies what kinds of debugging output are
+generated.  It is a bitmask.  Setting it to 255 ensures having all
+available debugging output.
+
 @item DOCTYPE
-For HTML, XML, Docbook.
-The SystemLiteral, the entity's system identifier.  It is a URI, which 
-may be used to retrieve the entity, and it identifies the canonical DTD 
-for the document.
-@item FRAMESET_DOCTYPE
-For HTML.  Same as DOCTYPE, but for the file containing the frame description.
-@item TEST
-If this value is true, some variables which should be dynamically generated
-(the date, the program name, the version) are set to fixed and given values. 
-This is usefull in case the resulting manual is compared with a reference. 
-For example this is used in the tests.
+@vindex SystemLiteral
+For HTML, XML, Docbook.  Specifies the @code{SystemLiteral}, the
+entity's system identifier.  It is a URI, which may be used to
+retrieve the entity, and identifies the canonical DTD for the
+document.
+
 @item DUMP_TEXI
-Mainly useful for debugging.  If set, the result of the first pass is
-put in @file{<document name>.passtexi}, the result of the second pass is 
-put in @file{<document name>.passfirst}.
-@item TOP_FILE
-This file name may be used for the top-level file.  The extension is set 
-appropriately, if necessary. This is used to override the default, and is, in
-general only taken into account when split.
-@item TOC_FILE
-This file name is used for the table of contents.  The extension is set 
-appropriately, if necessary.  It is only used if split and 
-@code{INLINE_CONTENTS} is not set.  Default is @file{<document name>_toc.html}.
+For debugging.  If set, the result of the first pass is put in
+@file{@var{docname}.passtexi}, and the result of the second pass is
+put in @file{@var{docname}.passfirst}.
+
+@item FRAMES
+For HTML. If set, a file describing the frame layout is generated,
+together with a file with the short table of contents.
+
+@item FRAMESET_DOCTYPE
+For HTML.  Same as DOCTYPE, but for the file containing the frame
+description.
+
 @item SHOW_MENU
-If set, the Texinfo menus are shown.  It is set in all the formats, for 
-example it is set for HTML (except if @option{--no-headers} is used),
-Info and XML, but not for Docbook.
-@item USE_NODES
-Use nodes preferentially to decide where elements are separated.
-@item USE_SECTIONS
-Use sectioning @@-commands preferentially to decide where elements are 
-separated.
+@opindex --no-headers
+If set, the Texinfo menus are shown.  By default, it is only unset
+when generating Docbook or if @option{--no-headers} is specified.
+
+@item TEST
+If set to true, some variables which are normally dynamically
+generated anew for each run (the date, the program name, the version)
+are set to fixed and given values.  This is useful to compare the
+output to a reference file, as is done for the tests.
+
+@item TOC_FILE
+@vindex INLINE_CONTENTS
+This file name is used for the table of contents.  The extension is
+set appropriately, if necessary.  It is only used if output is split
+and @code{INLINE_CONTENTS} is not set.  Default is
+@file{@var{docname}_toc.html}.
+
 @item TOC_LINKS
-For HTML. If set links from headings to toc entries are created.
+For HTML.  If set, links from headings to toc entries are created.
+
+@item TOP_FILE
+This file name may be used for the top-level file.  The extension is
+set appropriately, if necessary.  This is used to override the default,
+and is, in general, only taken into account when output is split.
+
+@item USE_NODES
+Preferentially use nodes to decide where elements are separated.
+
+@item USE_SECTIONS
+Preferentially use sectioning to decide where elements are separated.
+
 @item SHORTEXTN
 The default extension is set to @samp{.htm}.
 @item PREFIX
@@ -22982,7 +22997,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
+$Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23061,7 +23076,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.357 2010-12-03 19:25:54 karl Exp $
+@comment $Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

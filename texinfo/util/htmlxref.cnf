@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for Texinfo files on the web.
 
-htmlxrefversion=2010-12-03.18; # UTC
+htmlxrefversion=2010-12-09.18; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -430,10 +430,27 @@ proxyknife	node	${GS}/proxyknife/manual/html_node/
 pspp		mono	${GS}/pspp/manual/pspp.html
 pspp		node	${GS}/pspp/manual/html_node/
 
+R = http://cran.r-project.org/doc/manuals/
+ R-intro	mono	${R}/R-intro.html
+ R-lang		mono	${R}/R-lang.html
+ R-exts		mono	${R}/R-exts.html
+ R-data		mono	${R}/R-data.html
+ R-admin	mono	${R}/R-admin.html
+ R-ints		mono	${R}/R-ints.html
+
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
+
+reftex		mono	${GS}/auctex/manual/reftex.html
+reftex		node	${GS}/auctex/manual/reftex/
 
 rottlog		mono	${GS}/rottlog/manual/rottlog.html
 rottlog		node	${GS}/rottlog/manual/html_node/
+
+RUSH = http://www.gnu.org.ua/software/rush/manual
+rush		mono	${RUSH}/rush.html
+rush 		chapter	${RUSH}/html_chapter/
+rush 		section	${RUSH}/html_section/
+rush		node	${RUSH}/html_node/
 
 screen		mono	${GS}/screen/manual/screen.html
 screen		node	${GS}/screen/manual/html_node/
@@ -449,6 +466,9 @@ smalltalk-libs	node	${GS}/smalltalk/manual-libs/html_node/
 sourceinstall	mono	${GS}/sourceinstall/manual/sourceinstall.html
 sourceinstall	node	${GS}/sourceinstall/manual/html_node/
 
+sqltutor	mono	${GS}/sqltutor/manual/sqltutor.html
+sqltutor	node	${GS}/sqltutor/manual/html_node/
+
 src-highlite	mono	${GS}/src-highlite/source-highlight.html
 
 swbis		mono	${GS}/swbis/manual.html
@@ -457,6 +477,9 @@ tar		mono	${GS}/tar/manual/tar.html
 tar		chapter	${GS}/tar/manual/html_chapter/
 tar		section	${GS}/tar/manual/html_section/
 tar		node	${GS}/autoconf/manual/html_node/
+
+teseq		mono	${GS}/teseq/teseq.html
+teseq		node	${GS}/teseq/html_node/
 
 TEXINFO = ${GS}/texinfo/manual
 texinfo		mono	${TEXINFO}/texinfo/texinfo.html
