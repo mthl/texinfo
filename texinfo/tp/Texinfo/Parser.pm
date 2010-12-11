@@ -2744,11 +2744,17 @@ sub _parse_texi($;$)
               # the push @{$current->{'contents'}}, {}; prevents a trailing
               # text to be merged, to avoid having the value tree modified.
               } elsif (ref($self->{'values'}->{$value}) eq 'ARRAY') {
+                # we don't know for sure, but if we don't do it here it 
+                # won't be done
+                _abort_empty_line ($self, $current);
                 foreach my $content (@{$self->{'values'}->{$value}}) {
                   push @{$current->{'contents'}}, $content;
                 }
                 push @{$current->{'contents'}}, {};
               } elsif (ref($self->{'values'}->{$value}) eq 'HASH') {
+                # we don't know for sure, but if we don't do it here it 
+                # won't be done
+                _abort_empty_line ($self, $current);
                 my $content = $self->{'values'}->{$value};
                 push @{$current->{'contents'}}, $content;
                 push @{$current->{'contents'}}, {};

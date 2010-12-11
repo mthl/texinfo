@@ -6963,7 +6963,6 @@ Unnumbered
 
 * Section within unnumbered::
 unnum
-
 Text 5: C unnumbered float
 float with no type.
 
@@ -6973,7 +6972,6 @@ float with no type.
 =============================
 
 Section within unnumbered
-
 Text 6: C Section within unnumbered
 
 2 Chapter with unnumbsubsec
@@ -6983,14 +6981,12 @@ Text 6: C Section within unnumbered
 
 * unnumbered sec::
 Chap
-
 Text 2.1: C Chapter with subsec
 
 unnumbered sec
 ==============
 
 Chap
-
 Text 2.2: C unnumbered sec float
 
 float with no type.
@@ -7001,7 +6997,6 @@ Appendix A Appendix for float
 *****************************
 
 Appendix
-
 Text A.1: C appendix sec float
 
 list of floats
