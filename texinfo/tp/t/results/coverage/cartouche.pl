@@ -53,7 +53,7 @@ $result_errors{'cartouche'} = [];
 
 
 
-$result_converted{'plaintext'}->{'cartouche'} = '   in cartouche.
+$result_converted{'plaintext'}->{'cartouche'} = 'in cartouche.
 ';
 
 1;

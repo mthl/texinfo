@@ -670,13 +670,15 @@ sub _convert($$)
 
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
-      $result .= $formatter->{'container'}->add_text(
+      return $formatter->{'container'}->add_text(
                       $self->process_text($root, $formatter));
+    # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
-      $result .= $root->{'text'};
+      return $root->{'text'};
     # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
       warn "BUG: ignored text not empty `$root->{'text'}'\n";
+      return '';
     }
   }
   my $preformatted;
@@ -743,6 +745,7 @@ sub _convert($$)
           undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
       }
       $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
+      return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
       if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
         my $basefile = Texinfo::Convert::Text::convert(
@@ -771,6 +774,7 @@ sub _convert($$)
             $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), $txt_file, $!), $root->{'line_nr'});
           }
         }
+        return $result;
       }
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
@@ -802,28 +806,28 @@ sub _convert($$)
       return '';
     } elsif ($command eq 'uref' or $command eq 'url') {
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
-        my @contents;
         if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 3
              and defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
-          @contents = @{$root->{'extra'}->{'brace_command_contents'}->[2]};
+          unshift @{$self->{'current_contents'}->[-1]}, 
+            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[2]};
         } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+          # no mangling of --- and similar in url.
+          my $url = {'type' => 'code',
+              'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
           if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
              and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
-            @contents = (@{$root->{'extra'}->{'brace_command_contents'}->[1]},
-                            {'text' => ' ('},
-                            {'type' => 'code',
-                             'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]
-                            },
-                            {'text' => ')'});
+            my $prepended = $self->gdt('{text} ({url})', 
+                 {'text' => $root->{'extra'}->{'brace_command_contents'}->[1],
+                  'url' => $url });
+            unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           } else {
-            @contents = ({'cmdname' => 'code',
-              'args' => [ { 'type' => 'brace_command_arg',
-                          'contents' => $root->{'extra'}->{'brace_command_contents'}->[0],
-                        } ],});
+            my $prepended = $self->gdt('@code{{url}}', 
+                                        {'url' => $url});
+            unshift @{$self->{'current_contents'}->[-1]}, $prepended
           }
         }
-        unshift @{$self->{'current_contents'}->[-1]}, @contents;
       }
+      return '';
     } elsif ($command eq 'footnote') {
       my $footnote_number;
       if ($self->{'number_footnotes'}) {
@@ -832,11 +836,11 @@ sub _convert($$)
       } else {
         $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
       }
-      $result .= $formatter->{'container'}->add_text("($footnote_number)");
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
                                              'number' => $footnote_number}; 
+      return $formatter->{'container'}->add_text("($footnote_number)");
     } elsif ($command eq 'anchor') {
-      $result .= $formatter->{'container'}->add_pending_word();
+      return $formatter->{'container'}->add_pending_word();
     } elsif ($ref_commands{$command}) {
       # FIXME if it a reference to a float with a label, $arg[1] should 
       # be set to '$type $number' or '$number' if there is no type.
@@ -885,6 +889,7 @@ sub _convert($$)
         }
         unshift @{$self->{'current_contents'}->[-1]}, @contents;
       }
+      return '';
     } elsif ($explained_commands{$command}) {
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
           and defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
@@ -924,6 +929,7 @@ sub _convert($$)
       my $expansion = $self->gdt('@{No value for `{value}\'@}', 
                                     {'value' => $root->{'type'}});
         unshift @{$self->{'current_contents'}->[-1]}, $expansion;
+      return '';
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
@@ -986,6 +992,7 @@ sub _convert($$)
     } elsif ($root->{'cmdname'} eq 'node') {
       $self->{'footnote_index'} = 0;
       $result .= $self->_footnotes();
+      $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {
       if ($self->{'setcontentsaftertitlepage'} 
            and $root_commands{$root->{'cmdname'}}) {
@@ -1006,6 +1013,7 @@ sub _convert($$)
         $result .= Texinfo::Convert::Text::heading ($root, $heading);
         $self->{'empty_lines_count'} = 0 unless ($result eq '');
       }
+      $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
             and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
       my $contents = $root->{'extra'}->{'misc_content'};
@@ -1073,12 +1081,15 @@ sub _convert($$)
       chomp ($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
+      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
+      return $result;
     } elsif ($root->{'cmdname'} eq 'exdent') {
       $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
         {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       chomp ($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
+      return $result;
     } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
       my $expansion = $self->Texinfo::Parser::expand_verbatiminclude($root);
       unshift @{$self->{'current_contents'}->[-1]}, $expansion
@@ -1089,6 +1100,7 @@ sub _convert($$)
         unshift @{$self->{'current_contents'}->[-1]}, 
            {'contents' => $self->{'extra'}->{'copying'}->{'contents'}};
       }
+      return '';
     } elsif ($root->{'cmdname'} eq 'listoffloats') {
       if ($root->{'extra'} and $root->{'extra'}->{'type'}
           and defined($root->{'extra'}->{'type'}->{'normalized'}) 
@@ -1151,28 +1163,33 @@ sub _convert($$)
         $result .= "\n";
         $self->{'empty_lines_count'} = 1;
       }
+      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
+      return $result;
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
-        $result .= "\n" x $sp_nr;
+        $result = "\n" x $sp_nr;
         $self->{'empty_lines_count'} = $sp_nr;
       }
+      return $result;
     } elsif ($root->{'cmdname'} eq 'contents') {
       if (!defined($self->{'setcontentsaftertitlepage'})
            and $self->{'structuring'}
            and $self->{'structuring'}->{'sectioning_root'}) {
-        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        $result = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'contents');
       }
+      return $result;
     } elsif ($root->{'cmdname'} eq 'shortcontents' 
                or $root->{'cmdname'} eq 'summarycontents') {
       if (!defined($self->{'setshortcontentsaftertitlepage'})
             and $self->{'structuring'}
             and $self->{'structuring'}->{'sectioning_root'}) {
-        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        $result = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents');
       }
+      return $result;
     # all the @-commands that have an information for the formatting, like
     # @paragraphindent, @frenchspacing...
     } elsif ($informative_commands{$root->{'cmdname'}}) {
@@ -1225,11 +1242,6 @@ sub _convert($$)
       die "Unhandled $root->{'cmdname'}\n";
     }
 
-    if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
-      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-    } elsif ($root_commands{$root->{'cmdname'}}) {
-      $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
-    }
   }
   my $paragraph;
   if ($root->{'type'}) {
@@ -1434,7 +1446,7 @@ sub _convert($$)
       }
 
       if ($root->{'extra'}) {
-        # FIXME add an ebd if line if there is not already one?
+        # FIXME add an end if line if there is not already one?
         my $caption;
         if ($root->{'extra'}->{'caption'}) {
           $caption = $root->{'extra'}->{'caption'};
@@ -1500,6 +1512,9 @@ sub _convert($$)
                  {'author' => $author->{'extra'}->{'misc_content'}}));
       }
     }
+    if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
+      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
+    }
   }
   if ($preformatted) {
     $result .= $preformatted->{'container'}->end();
@@ -1519,6 +1534,7 @@ sub _convert($$)
     push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
     $result = '';
   }
+
 
   return $result;
 }
