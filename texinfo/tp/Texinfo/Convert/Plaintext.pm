@@ -774,22 +774,30 @@ sub _convert($$)
       }
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
-
       my @email_contents;
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+        my $name;
+        my $email;
         if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
             and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
-          @email_contents = (@{$root->{'extra'}->{'brace_command_contents'}->[1]}, 
-                             {'text' => ' '});
+          $name = $root->{'extra'}->{'brace_command_contents'}->[1];
         }
         if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-          push @email_contents, {'cmdname' => 'indicateurl',
-            'args' => [ { 'type' => 'brace_command_arg',
-                          'contents' => $root->{'extra'}->{'brace_command_contents'}->[0],
-                        } ],
-            'extra' => {'brace_command_contents' => [$root->{'extra'}->{'brace_command_contents'}->[0]] } };
+          $email = $root->{'extra'}->{'brace_command_contents'}->[0];
         }
-        unshift @{$self->{'current_contents'}->[-1]}, @email_contents;
+        my $prepended;
+        if ($name and $email) {
+          $prepended = $self->gdt('{name} @indicateurl{{email}}', 
+                           {'name' => $name, 'email' => $email});
+        } elsif ($email) {
+          $prepended = $self->gdt('@indicateurl{{email}}', 
+                           {'email' => $email});
+        } elsif ($name) {
+          $prepended = {'contents' => $name};
+        } else {
+          return '';
+        }
+        unshift @{$self->{'current_contents'}->[-1]}, $prepended;
       }
       return '';
     } elsif ($command eq 'uref' or $command eq 'url') {
