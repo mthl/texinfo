@@ -946,11 +946,11 @@ sub convert($;$)
     if (defined($text_no_brace_commands{$root->{'cmdname'}})) {
       return $text_no_brace_commands{$root->{'cmdname'}};
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
-      return brace_no_arg_command($root, $options->{'enable_encoding'}, 
+      return brace_no_arg_command($root, $options->{'enabled_encoding'}, 
                                   $options->{'sort_string'});
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
-      return text_accents ($root, $options->{'enable_encoding'});
+      return text_accents ($root, $options->{'enabled_encoding'});
     } elsif ($root->{'cmdname'} eq 'image') {
       return convert($root->{'args'}->[0], $options);
     } elsif ($root->{'cmdname'} eq 'email') {

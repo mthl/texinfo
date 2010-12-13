@@ -503,7 +503,7 @@ sub _do_index_keys($$)
   my $index_entries = shift;
   my $options = {'sort_string' => 1};
   if ($self->{'enable_encoding'} and $self->{'encoding'}) {
-    $options->{'enable_encoding'} = $self->{'encoding'};
+    $options->{'enabled_encoding'} = $self->{'encoding'};
   }
   foreach my $index_name (keys(%$index_entries)) {
     foreach my $entry (@{$index_entries->{$index_name}}) {

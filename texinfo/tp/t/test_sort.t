@@ -17,12 +17,12 @@ my $result = Texinfo::Convert::Text::convert($tree, {'sort_string' => 1});
 is ($result, 'C ,,', 'sort no encoding');
 
 $result = Texinfo::Convert::Text::convert($tree, {'sort_string' => 1,
-                                      'enable_encoding' => 'utf-8'});
+                                      'enabled_encoding' => 'utf-8'});
 
 is ($result, "\x{00A9} \x{201E}", 'sort utf-8');
 
 $result = Texinfo::Convert::Text::convert($tree, {'sort_string' => 1,
-                                      'enable_encoding' => 'iso-8859-1'});
+                                      'enabled_encoding' => 'iso-8859-1'});
 
 is ($result, "\x{00A9} ,,", 'sort iso-8859-1');
 
