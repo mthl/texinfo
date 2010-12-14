@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
+@c $Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16749,6 +16749,20 @@ together with a file with the short table of contents.
 For HTML.  Same as DOCTYPE, but for the file containing the frame
 description.
 
+@item PREFIX
+the output file prefix, which is prepended to some output files.  By
+default it is set by @code{@@setfilename} or from the input file
+(@pxref{setfilename}).  How this value is used depends on the value of
+other configuration variables or command line options, such as split output
+and @code{NODE_FILENAMES}.
+
+@item SHORT_REF
+For HTML.  If this is set, internal cross references are given without
+the sectioning word, even if the target of the reference is a section.
+
+@item SHORTEXTN
+The short extension, @samp{.htm} by default.
+
 @item SHOW_MENU
 @opindex --no-headers
 If set, the Texinfo menus are shown.  By default, it is only unset
@@ -16781,17 +16795,6 @@ Preferentially use nodes to decide where elements are separated.
 @item USE_SECTIONS
 Preferentially use sectioning to decide where elements are separated.
 
-@item SHORTEXTN
-The default extension is set to @samp{.htm}.
-@item PREFIX
-This set the output file prefix, that may be prepended to some output 
-files.  In the default case it is set by @code{@@setfilename} or from
-the input file (@pxref{setfilename}).  How this value is used depends
-on the value of other configuration variables or command line options,
-like split, @code{NODE_FILENAMES}.
-@item SHORT_REF
-For HTML.  If this is set internal cross references are given without the 
-@samp{section} word, even if the target of the reference is a section.
 @item IDX_SUMMARY
 If set, for each @code{@@printindex}, a file @file{<document name>_<index name>.idx}
 is created which contains lines of the form
@@ -18408,7 +18411,8 @@ Usually, characters other than plain 7-bit ASCII are transformed into
 the corresponding Unicode code point(s) in Normalization Form@tie{}C,
 which uses precomposed characters where available.  (This is the
 normalization form recommended by the W3C and other bodies.)  This
-holds when that code point is 0xffff or less, as it almost always is.
+holds when that code point is @code{0xffff} or less, as it almost
+always is.
 
 These will then be further transformed by the rules above into the
 string @samp{_@var{xxxx}}, where @var{xxxx} is the code point in hex.
@@ -18426,12 +18430,12 @@ with a breve accent, which does not exist as a pre-accented Unicode
 character, therefore expands to @samp{B_0306} (B with combining
 breve).
 
-When the Unicode code point is above 0xffff, the transformation is
-@samp{__@var{xxxxxx}}, that is, two leading underscores followed by
+When the Unicode code point is above @code{0xffff}, the transformation
+is @samp{__@var{xxxxxx}}, that is, two leading underscores followed by
 six hex digits.  Since Unicode has declared that their highest code
-point is 0x10ffff, this is sufficient.  (We felt it was better to
-define this extra escape than to always use six hex digits, since the
-first two would nearly always be zeros.)
+point is @code{0x10ffff}, this is sufficient.  (We felt it was better
+to define this extra escape than to always use six hex digits, since
+the first two would nearly always be zeros.)
 
 This method works fine if the node name consists mostly of ASCII
 characters and contains only few 8-bit ones. If the document is
@@ -22997,7 +23001,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
+$Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23076,7 +23080,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.358 2010-12-09 18:37:40 karl Exp $
+@comment $Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
