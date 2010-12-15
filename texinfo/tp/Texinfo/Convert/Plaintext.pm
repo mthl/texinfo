@@ -453,10 +453,11 @@ sub convert_line($$;$)
   my $conf = shift;
   my $container = $self->new_formatter('line', $conf);
   push @{$self->{'formatters'}}, $container;
-  my ($result) = $self->_convert($converted);
-  $result .= $container->{'container'}->end();
+  my ($text, $counts, $new_locations) = $self->_convert($converted);
+  my $end = $container->{'container'}->end();
+  $counts->{'bytes'} += $self->count_bytes($end);
   pop @{$self->{'formatters'}};
-  return $result;
+  return ($text.$end, $counts, $new_locations);
 }
 
 sub convert_unfilled($$;$)
@@ -635,11 +636,14 @@ sub _contents($$$)
 
   my $section = $section_root->{'section_childs'}->[0];
   my $root_level = $section->{'level'};
+
+  # FIXME return bytes count? lines count?
   my $result = '';
   while ($section and $section ne $section_root) {
-    my $text = Texinfo::Convert::Text::numbered_heading($section,
-        $self->convert_line({'contents' 
-                => $section->{'extra'}->{'misc_content'}}))."\n";
+    my ($section_title) = $self->convert_line({'contents'
+                => $section->{'extra'}->{'misc_content'}});
+    my $text = Texinfo::Convert::Text::numbered_heading($section, 
+                                                        $section_title)."\n";
     $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
     if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
@@ -1007,11 +1011,12 @@ sub _convert($$)
       return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count},
              $locations);
     } elsif ($command eq 'titlefont') {
+      ($result) = $self->convert_line ($root->{'args'}->[0]);
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
-           'cmdname' => 'titlefont'},
-           $self->convert_line ($root->{'args'}->[0]));
+           'cmdname' => 'titlefont'}, $result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
-      return ($result, {'bytes' => $self->count_bytes($result)});
+      return ($result, {'bytes' => $self->count_bytes($result),
+                       'lines' => 2});
     } elsif ($command eq 'value') {
       my $expansion = $self->gdt('@{No value for `{value}\'@}', 
                                     {'value' => $root->{'type'}});
@@ -1051,13 +1056,19 @@ sub _convert($$)
           my $prepended = $self->gdt('@b{{quotation_arg}:} ', 
              {'quotation_arg' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
           #print STDERR Data::Dumper->Dump([$prepended]);
-          $result = $self->convert_line ($prepended);
+          ($result) = $self->convert_line ($prepended);
+          $bytes_count += $self->count_bytes($result);
+          # FIXME verify what happens with @*? or @c?
+          $lines_count += 1;
           $self->{'format_context'}->[-1]->{'counter'} += 
              Texinfo::Convert::Unicode::string_width($result);
           $self->{'empty_lines_count'} = 0 unless ($result eq '');
         }
       } elsif ($root->{'cmdname'} eq 'menu') {
-        $result .= "* Menu:\n\n";
+        my $begin = "* Menu:\n\n";
+        $result .= $begin;
+        $lines_count += 2;
+        $bytes_count += $self->count_bytes($begin);
       } elsif ($root->{'cmdname'} eq 'multitable') {
         my $columnsize;
         if ($root->{'extra'}->{'columnfractions'}) {
@@ -1066,7 +1077,7 @@ sub _convert($$)
           }
         } elsif ($root->{'extra'}->{'prototypes'}) {
           foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
-            my $formatted_prototype = $self->convert_line($prototype, 
+            my ($formatted_prototype) = $self->convert_line($prototype, 
                                                         {'indent_length' => 0});
             print STDERR " MULTITABLE_PROTO {$formatted_prototype}\n" 
               if ($self->{'debug'});
@@ -1090,22 +1101,31 @@ sub _convert($$)
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {
       if ($self->{'setcontentsaftertitlepage'} 
            and $root_commands{$root->{'cmdname'}}) {
-        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        my $contents = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'contents') ."\n";
         $self->{'empty_lines_count'} = 0;
         $self->{'setcontentsaftertitlepage'} = 0;
+        $bytes_count += $self->count_bytes($contents);
+        $result .= $contents;
       } 
       if ($self->{'setshortcontentsaftertitlepage'} 
             and $root_commands{$root->{'cmdname'}}) {
-        $result .= $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        my $contents = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents')."\n";
         $self->{'empty_lines_count'} = 0;
         $self->{'setshortcontentsaftertitlepage'} = 0;
+        $bytes_count += $self->count_bytes($contents);
+        $result .= $contents;
       }
       if ($root->{'args'}) {
-        my $heading = $self->convert_line($root->{'args'}->[0]);
-        $result .= Texinfo::Convert::Text::heading ($root, $heading);
-        $self->{'empty_lines_count'} = 0 unless ($result eq '');
+        my ($heading) = $self->convert_line($root->{'args'}->[0]);
+        my $heading_underlined = 
+             Texinfo::Convert::Text::heading ($root, $heading);
+        $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
+        $bytes_count += $self->count_bytes($heading_underlined);
+        # FIXME œ@* and @c?
+        $lines_count += 2;
+        $result .= $heading_underlined;
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
@@ -1117,11 +1137,17 @@ sub _convert($$)
                             'contents' => $contents}]
         }];
       }
-      $result = $self->convert_line({'contents' => $contents},
+      my ($text, $counts, $new_locations) 
+        = $self->convert_line({'contents' => $contents},
           {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-      chomp ($result);
+      $self->update_counts(\$bytes_count, \$lines_count, $locations,
+                            $counts, $new_locations);
+      $result = $text;
+      my $chomp = chomp ($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
+      $bytes_count = $bytes_count + $self->count_bytes("\n") 
+                                  - $self->count_bytes($chomp);
     } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
              and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
@@ -1132,7 +1158,7 @@ sub _convert($$)
                  + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
       push @{$self->{'formatters'}}, $line;
       if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
-        $result .= $line->{'container'}->add_next(Texinfo::Convert::Text::enumerate_item_representation(
+        $result = $line->{'container'}->add_next(Texinfo::Convert::Text::enumerate_item_representation(
           $root->{'parent'}->{'extra'}->{'enumerate_specification'},
           $root->{'extra'}->{'item_number'}) . '. ');
       } else {
@@ -1142,9 +1168,12 @@ sub _convert($$)
              [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
               { 'text' => ' ' }]
           });
-        $result .= $item_line;
+        $result = $item_line;
       }
       $result .= $line->{'container'}->end();
+      $bytes_count += $self->count_bytes($result);
+      # FIXME œ@* and @c
+      $lines_count += 1;
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
          if ($self->{'debug'});
       pop @{$self->{'formatters'}};
@@ -1170,22 +1199,38 @@ sub _convert($$)
       }
       $cell = 1;
     } elsif ($root->{'cmdname'} eq 'center') {
-      $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
-                                     {'indent_length' => 0});
+      my ($counts, $new_locations);
+      ($result, $counts, $new_locations) = $self->convert_line (
+                       {'contents' => $root->{'extra'}->{'misc_content'}},
+                       {'indent_length' => 0});
+      $self->update_counts(\$bytes_count, \$lines_count, $locations,
+                     $counts, $new_locations);
       $result = _align_lines ($result, $self->{'format_context'}->[-1]->{'max'},
                                   'center');
-      chomp ($result);
+      if (chomp ($result)) {
+        $lines_count--;
+      }
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
+      $lines_count++;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      return $result;
+      return ($result, {'bytes' => $self->count_bytes($result), 
+                        'lines' => $lines_count}, $locations);
     } elsif ($root->{'cmdname'} eq 'exdent') {
-      $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+      my ($counts, $new_locations);
+      ($result, $counts, $new_locations) = $self->convert_line (
+        {'contents' => $root->{'extra'}->{'misc_content'}},
         {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+      $self->update_counts(\$bytes_count, \$lines_count, $locations,
+                     $counts, $new_locations);
+      if (chomp ($result)) {
+        $lines_count--;
+      }
       chomp ($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $result .= "\n";
-      return $result;
+      return ($result, {'bytes' => $self->count_bytes($result), 
+                        'lines' => $lines_count+1}, $locations);
     } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
       my $expansion = $self->Texinfo::Parser::expand_verbatiminclude($root);
       unshift @{$self->{'current_contents'}->[-1]}, $expansion
@@ -1220,7 +1265,7 @@ sub _convert($$)
                });
           }
           #print STDERR "$float ".$self->convert_line($float_entry)."\n";
-          my $float_line = $self->convert_line($float_entry);
+          my ($float_line) = $self->convert_line($float_entry);
           my $line_width 
              = Texinfo::Convert::Unicode::string_width($float_line);
           if ($line_width > $listoffloat_entry_length) {
@@ -1255,20 +1300,25 @@ sub _convert($$)
             }
           }
           $result .= $float_line. "\n";
+          $lines_count++;
         }
         $result .= "\n";
+        $lines_count++;
         $self->{'empty_lines_count'} = 1;
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      return $result;
+      return ($result, {'lines' => $self->count_bytes($result), 
+                        'bytes' => $bytes_count});
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         $result = "\n" x $sp_nr;
         $self->{'empty_lines_count'} += $sp_nr;
+        $lines_count += $sp_nr;
       }
-      return $result;
+      return ($result, {'lines' => $self->count_bytes($result), 
+                        'bytes' => $bytes_count});
     } elsif ($root->{'cmdname'} eq 'contents') {
       if (!defined($self->{'setcontentsaftertitlepage'})
            and $self->{'structuring'}
@@ -1596,10 +1646,13 @@ sub _convert($$)
             $prepended = $self->gdt("{float_number}\n",
                  {'float_number' => $root->{'number'}});
           }
+          $lines_count++;
         }
         if ($prepended) {
           #print STDERR "PREPENDED ".Data::Dumper->Dump([$prepended]);
-          $result .= $self->convert_line ($prepended);
+          my ($float_number) = $self->convert_line ($prepended);
+          $result .= $float_number;
+          $bytes_count += $self->count_bytes($float_number);
           $self->{'format_context'}->[-1]->{'counter'} += 
             Texinfo::Convert::Unicode::string_width($result);
         }
@@ -1614,8 +1667,12 @@ sub _convert($$)
     } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
              and $root->{'extra'}->{'authors'}) {
       foreach my $author (@{$root->{'extra'}->{'authors'}}) {
-        $result .= $self->convert($self->gdt("\@center --- \@emph{{author}}\n",
+        my ($text, $counts, $new_locations)
+          = $self->convert($self->gdt("\@center --- \@emph{{author}}\n",
                  {'author' => $author->{'extra'}->{'misc_content'}}));
+        $self->update_counts(\$bytes_count, \$lines_count, $locations,
+                                $counts, $new_locations);
+        $result .= $text;
       }
     }
     if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
@@ -1624,6 +1681,7 @@ sub _convert($$)
   }
   if ($preformatted) {
     $result .= $preformatted->{'container'}->end();
+    # FIXME get lines count?
     pop @{$self->{'formatters'}};
   }
 
@@ -1641,7 +1699,8 @@ sub _convert($$)
     $result = '';
   }
 
-  return $result;
+  return ($result, {'bytes' => $bytes_count, 'lines' => $lines_count},
+          $locations);
 }
 
 1;
