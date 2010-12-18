@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
+@c $Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -16729,6 +16729,11 @@ The integer value specifies what kinds of debugging output are
 generated.  It is a bitmask.  Setting it to 255 ensures having all
 available debugging output.
 
+@item DEF_TABLE
+For HTML.  If this is set a @code{<table>} construction for
+@code{@@deffn} and similar @@-commands is used (looking more like the
+@TeX{} output), instead of definition lists.
+
 @item DOCTYPE
 @vindex SystemLiteral
 For HTML, XML, Docbook.  Specifies the @code{SystemLiteral}, the
@@ -16741,6 +16746,17 @@ For debugging.  If set, the result of the first pass is put in
 @file{@var{docname}.passtexi}, and the result of the second pass is
 put in @file{@var{docname}.passfirst}.
 
+@item EXTERNAL_CROSSREF_SPLIT
+For cross references to other manuals, this determines if the other
+manual is considered to be split or monolithic.  By default, it is set
+based on the value of @code{SPLIT}.  @xref{HTML Xref}, and @pxref{HTML
+Xref Configuration}.
+
+@item EXTERNAL_DIR
+For HTML.  Base directory for external manuals.  It is better to use
+the general external cross-reference mechanism (@pxref{HTML Xref
+Configuration}) and avoid this variable.
+
 @item FRAMES
 For HTML. If set, a file describing the frame layout is generated,
 together with a file with the short table of contents.
@@ -16748,6 +16764,56 @@ together with a file with the short table of contents.
 @item FRAMESET_DOCTYPE
 For HTML.  Same as DOCTYPE, but for the file containing the frame
 description.
+
+@item IDX_SUMMARY
+If set, for each @code{@@printindex} a file
+@file{@var{docname}_@var{idxname}.idx} is created, containing lines
+of the form:
+@example
+@var{key} @var{reference}
+@end example
+@noindent sorted alphabetically (case matters).
+
+@item IGNORE_PREAMBLE_TEXT
+If this is set the text before @@node and sectioning commands is
+ignored.  This is a configuration variable kept for backward
+compatibility and has no particular usefulness nowadays.
+
+@item L2H
+For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
+and @code{@@tex} sections.  Best used with @option{--iftex}.
+
+@item L2H_L2H
+The program invoked as @command{latex2html} if @code{L2H} is set.
+
+@item L2H_SKIP
+(Relevant only if @code{L2H} is set.)  If this is set the actual call
+to @command{latex2html} is skipped; previously generated content is
+reused, instead.  If set to 0, the cache is not used at all.  If set
+to undef, the cache is used for as many @TeX{} fragments as possible
+and for the remaining the command is run.
+
+@item L2H_TMP
+(Relevant only if @code{L2H} is set.)  Set the directory used for
+temporary files. None of the file name components in this directory
+name may start with @samp{.}; otherwise, @command{latex2html} will
+fail (because of @command{dvips}).
+
+@item L2H_FILE
+(Relevant only if @code{L2H} is set.)  If set, the given file is used
+as @command{latex2html}'s init file.
+
+@item L2H_CLEAN
+(Relevant only if @code{L2H} is set.)  If this is set the intermediate
+files generated in relation with @command{latex2html} are removed.
+
+@item L2H_HTML_VERSION
+(Relevant only if @code{L2H} is set.)  The HTML version used in the
+@command{latex2html} call.
+
+@item MONOLITHIC
+For HTML.  Output only one file including the table of contents.  This
+only makes sense when the output is not split.  It is set by default.
 
 @item PREFIX
 the output file prefix, which is prepended to some output files.  By
@@ -16795,54 +16861,6 @@ Preferentially use nodes to decide where elements are separated.
 @item USE_SECTIONS
 Preferentially use sectioning to decide where elements are separated.
 
-@item IDX_SUMMARY
-If set, for each @code{@@printindex}, a file @file{<document name>_<index name>.idx}
-is created which contains lines of the form
-@example
-@var{key} @var{reference}
-@end example
-sorted alphabetically (case matters).
-@item DEF_TABLE
-For HTML.  If this is set a table construction for @code{@@deffn} and similar
-@@-commands is used (looking more like @TeX{} output), instead of 
-definition lists.
-@item L2H
-For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
-and @code{@@tex} sections.  Best used with @option{--iftex}.
-@item L2H_L2H
-Program invoked as @command{latex2html} if @code{L2H} is set.
-@item L2H_SKIP
-Relevant only is @code{L2H} is set. 
-If this is set the actual call to @command{latex2html} is skipped. 
-The previously generated content is reused, instead.
-If set to 0, the cache is not used.
-If undef the cache is used for as many @TeX{} fragments as possible
-and for the remaining the command is run.
-@item L2H_TMP
-Relevant only is @code{L2H} is set.  Set the directory used for temporary 
-files. The path leading to this directory may not contain a dot 
-@samp{.} otherwise, @command{latex2html} will fail (because of dvips).
-@item L2H_FILE
-Relevant only is @code{L2H} is set. 
-If set, this file is sued as @command{latex2html} init file.
-@item L2H_CLEAN
-Relevant only is @code{L2H} is set. 
-if this is set the intermediate files generated in relation with
-@code{L2H} with @command{latex2html} are cleaned.
-@item L2H_HTML_VERSION
-Relevant only is @code{L2H} is set.
-The HTML version used in the @command{latex2html} call.
-@item MONOLITHIC
-For HTML.  Output only one file including the table of content. 
-It only makes sense when not split, and it is set in the default case.
-@item IGNORE_PREAMBLE_TEXT
-If this is set the text before @@node and sectioning commands is ignored.
-This is a backward compatibility configuration variable you certainly 
-shouldn't use.
-@item EXTERNAL_DIR
-For HTML.
-Base directory for external manuals. You shouldn't use this variable,
-but instead use the mechanism described in @ref{HTML Xref Configuration}.
 @item USE_ISO
 For HTML.
 Use entities for doubled single-quote characters (@pxref{Inserting Quotation Marks}, @samp{---} and @samp{--} 
@@ -16992,12 +17010,6 @@ case set auotmatically based on @code{@@documentencoding}.
 Output document encoding. In the default case set automatically
 based on @code{@@documentencoding}. This encoding name is
 the classical charset name in HTML.
-
-@item EXTERNAL_CROSSREF_SPLIT
-For cross references to other manuals, this determines if the other
-manual is considered to be split or monolithic.  In the default case
-set based on @code{SPLIT}. @xref{HTML Xref}, and see @ref{HTML Xref
-Configuration}.
 
 @item BODYTEXT
 For HTML.  The text appearing in @code{<body>}.  Set automatically
@@ -23001,7 +23013,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
+$Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23080,7 +23092,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.359 2010-12-14 17:23:59 karl Exp $
+@comment $Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
