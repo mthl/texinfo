@@ -6,6 +6,7 @@ $result_trees{'at_commands_in_node'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -214,6 +215,7 @@ $result_trees{'at_commands_in_node'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'at_commands_in_node'}{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_node'};
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0];

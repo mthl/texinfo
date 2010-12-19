@@ -6,6 +6,7 @@ $result_trees{'direntry_dircategory_after_first_node'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -222,6 +223,7 @@ $result_trees{'direntry_dircategory_after_first_node'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'direntry_dircategory_after_first_node'}{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'};
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_after_first_node'}{'contents'}[1]{'args'}[0];

@@ -6,6 +6,7 @@ $result_trees{'double_top_in_menu'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -311,6 +312,7 @@ $result_trees{'double_top_in_menu'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'double_top_in_menu'}{'contents'}[0]{'parent'} = $result_trees{'double_top_in_menu'};
 $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_top_in_menu'}{'contents'}[1];

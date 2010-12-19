@@ -6,6 +6,7 @@ $result_trees{'sections'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -51,6 +52,7 @@ $result_trees{'sections'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];

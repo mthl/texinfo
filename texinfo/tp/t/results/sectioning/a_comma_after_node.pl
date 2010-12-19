@@ -6,6 +6,7 @@ $result_trees{'a_comma_after_node'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -114,6 +115,7 @@ $result_trees{'a_comma_after_node'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'a_comma_after_node'}{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'};
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];

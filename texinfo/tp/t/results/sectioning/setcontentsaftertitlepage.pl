@@ -11,6 +11,7 @@ $result_trees{'setcontentsaftertitlepage'} = {
           'parent' => {}
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -535,6 +536,7 @@ $result_trees{'setcontentsaftertitlepage'} = {
   'type' => 'document_root'
 };
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[0];
+$result_trees{'setcontentsaftertitlepage'}{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'};
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0];
 $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setcontentsaftertitlepage'}{'contents'}[1]{'args'}[0];

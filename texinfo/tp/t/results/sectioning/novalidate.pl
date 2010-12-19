@@ -23,6 +23,7 @@ $result_trees{'novalidate'} = {
           'type' => 'empty_line'
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -171,6 +172,7 @@ $result_trees{'novalidate'} = {
 $result_trees{'novalidate'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[0];
 $result_trees{'novalidate'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'novalidate'}{'contents'}[0];
+$result_trees{'novalidate'}{'contents'}[0]{'parent'} = $result_trees{'novalidate'};
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'novalidate'}{'contents'}[1]{'args'}[0];
 $result_trees{'novalidate'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'novalidate'}{'contents'}[1];

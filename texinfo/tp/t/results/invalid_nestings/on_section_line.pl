@@ -6,6 +6,7 @@ $result_trees{'on_section_line'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -192,6 +193,7 @@ $result_trees{'on_section_line'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'on_section_line'}{'contents'}[0]{'parent'} = $result_trees{'on_section_line'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];

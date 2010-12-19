@@ -69,6 +69,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   indices_information
   floats_information
   global_commands_information
+  global_informations
   expand_verbatiminclude
   gdt
 ) ] );
@@ -743,7 +744,7 @@ sub parse_texi_file ($$)
   my $root = { 'contents' => [], 'type' => 'text_root' };
   foreach my $line (@first_lines) {
     push @{$root->{'contents'}}, { 'text' => $line,
-                                      'type' => 'preamble' };
+                                   'type' => 'preamble' };
   }
 
   $self = parser() if (!defined($self));
@@ -754,6 +755,7 @@ sub parse_texi_file ($$)
        'line_nr' => $line_nr,
        'fh' => $filehandle
         }];
+  $self->{'info'}->{'input_file_name'} = $file_name;
   return $self->_parse_texi($root);
 }
 
@@ -800,6 +802,12 @@ sub global_commands_information ($)
 {
   my $self = shift;
   return $self->{'extra'};
+}
+
+sub global_informations ($)
+{
+  my $self = shift;
+  return $self->{'info'};
 }
 
 # Following are the internal subsections.  The most important are
@@ -2890,6 +2898,7 @@ sub _parse_texi($;$)
             if ($command ne 'bye' and $current->{'type'} 
                  and $current->{'type'} eq 'text_root') {
               $root = { 'type' => 'document_root', 'contents' => [$current] };
+              $current->{'parent'} = $root;
               $current = $root;
             } else {
               $current = $current->{'parent'};

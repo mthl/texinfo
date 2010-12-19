@@ -6,6 +6,7 @@ $result_trees{'ignored_text'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -38,6 +39,7 @@ $result_trees{'ignored_text'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'ignored_text'}{'contents'}[0]{'parent'} = $result_trees{'ignored_text'};
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0];
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0];
 $result_trees{'ignored_text'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ignored_text'}{'contents'}[1];

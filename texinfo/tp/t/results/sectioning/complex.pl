@@ -6,6 +6,7 @@ $result_trees{'complex'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -2233,6 +2234,7 @@ $result_trees{'complex'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'complex'}{'contents'}[0]{'parent'} = $result_trees{'complex'};
 $result_trees{'complex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex'}{'contents'}[1]{'args'}[0];
 $result_trees{'complex'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex'}{'contents'}[1]{'args'}[0];
 $result_trees{'complex'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex'}{'contents'}[1];

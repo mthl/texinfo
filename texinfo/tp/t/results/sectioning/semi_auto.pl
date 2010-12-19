@@ -6,6 +6,7 @@ $result_trees{'semi_auto'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -615,6 +616,7 @@ $result_trees{'semi_auto'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'semi_auto'}{'contents'}[0]{'parent'} = $result_trees{'semi_auto'};
 $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0];
 $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0];
 $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'semi_auto'}{'contents'}[1]{'args'}[0];

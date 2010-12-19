@@ -237,6 +237,7 @@ my %defaults = (
   'output_encoding'      => 'us-ascii',
   'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
+  'split_size'           => 300000,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
 
@@ -352,14 +353,55 @@ sub converter(;$)
   return $converter;
 }
 
+sub _convert_node($$)
+{
+  my $self = shift;
+  my $node = shift;
+
+  my $result = '';
+  my $bytes_count = 0;
+  my $lines_count = 0;
+  my $locations = {};
+
+  $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+         $locations, 0, $self->_convert($node));
+
+  $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+         $locations, 0, $self->_footnotes($node));
+
+  foreach my $location (@{$locations->{'bytes'}}) {
+    $location->{'bytes_count'} += $self->{'file_bytes_count'};
+    $self->{'label_locations'}->{$location->{'anchor'}} = $location->{'anchor'};
+  }
+  foreach my $location (@{$locations->{'lines'}}) {
+    if ($location->{'index_entry'}) {
+      $self->{'index_entries'}->{$location->{'index_entry'}} = $location;
+    }
+  }
+  $self->{'file_bytes_count'} += $bytes_count;
+  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count}, 
+          $locations);
+}
+
 sub convert($)
 {
   my $self = shift;
   my $root = shift;
 
-  my ($result) = $self->_convert($root);
-  my ($footnotes) = $self->_footnotes();
-  return $result.$footnotes;
+  my $result = '';
+
+  my $elements = Texinfo::Structuring::split_by_node($root);
+  if (!defined($elements)) {
+    ($result) = $self->_convert($root);
+    my ($footnotes) = $self->_footnotes();
+    $result .= $footnotes;
+  } else {
+    foreach my $node (@$elements) {
+      my ($node_text) = $self->_convert_node($node);
+      $result .= $node_text;
+    }
+  }
+  return $result;
 }
 
 sub _normalise_space($)
@@ -538,9 +580,11 @@ sub update_counts ($$$$$$)
 }
 
 my $footnote_indent = 3;
-sub _footnotes($)
+sub _footnotes($$)
 {
   my $self = shift;
+  my $node = shift;
+
   my $bytes_count = 0;
   my $lines_count = 0;
   my $locations = {};
@@ -550,8 +594,18 @@ sub _footnotes($)
       $result .= "\n";
       $lines_count++;
     }
-    $result .= "   ---------- Footnotes ----------\n\n";
-    $lines_count += 2;
+    if ($self->{'footnotestyle'} eq 'end' or !defined($node)) {
+      $result .= "   ---------- Footnotes ----------\n\n";
+      $lines_count += 2;
+    } else {
+      my $footnotes_node = {
+        'node_up' => $node->{'node'},
+        'extra' => {'node_content' => [@{$node->{'node'}->{'extra'}->{'node_content'}},
+                                     'text' => '-Footnotes']}
+      };
+      $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+               $locations, 0, $self->_node($footnotes_node));
+    }
     $bytes_count = $self->count_bytes($result);
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
@@ -578,6 +632,8 @@ sub _footnotes($)
       pop @{$self->{'formatters'}};
     }
   }
+  $self->{'footnote_index'} = 0;
+
   return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count}, 
           $locations);
 }
@@ -1137,10 +1193,6 @@ sub _convert($$)
       }
 
     } elsif ($root->{'cmdname'} eq 'node') {
-      $self->{'footnote_index'} = 0;
-      $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
-               $locations, 0, $self->_footnotes());
-
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0, $self->_node($root));
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
@@ -1326,7 +1378,7 @@ sub _convert($$)
           }
           if ($caption) {
             # FIXME should there be some indentation?
-            my $caption_text = $self->convert({'contents' => $caption->{'args'}->[0]->{'contents'},
+            my ($caption_text) = $self->_convert({'contents' => $caption->{'args'}->[0]->{'contents'},
                         'type' => $caption->{'cmdname'}.'_listoffloats'});
             while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
               my $new_word = $1;
@@ -1428,6 +1480,8 @@ sub _convert($$)
       if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
         $index_entry = 0;
       }
+      push @{$locations->{'lines'}}, {'lines_count' => $lines_count, 
+                                      'index_entry' => $root};
     } elsif ($unknown_command) {
       die "Unhandled $root->{'cmdname'}\n";
     }
@@ -1484,7 +1538,8 @@ sub _convert($$)
         push @{$self->{'formatters'}}, $def_paragraph;
 
         $result .= $def_paragraph->{'container'}->add_next(" -- ");
-        $result .= $self->convert({'type' => 'code', 'contents' => \@contents});
+        my ($def_body) = $self->_convert({'type' => 'code', 'contents' => \@contents});
+        $result .= $def_body;
         $result .= $def_paragraph->{'container'}->end();
 
         pop @{$self->{'formatters'}};

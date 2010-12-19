@@ -413,7 +413,7 @@ sub nodes_tree ($)
       shift @directions;
       foreach my $direction (@node_directions) {
         my $node_direction = shift @directions;
-        next if ($node->{'node_'.$direction} or !defined($node_direction));
+        next if (!defined($node_direction));
         # external node
         if ($node_direction->{'manual_content'}) {
           $node->{'node_'.$direction} = { 'extra' => $node_direction };
@@ -454,6 +454,82 @@ sub nodes_tree ($)
   }
   $self->{'structuring'}->{'top_node'} = $top_node;
   return $top_node;
+}
+
+sub split_by_node($)
+{
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'} or !@{$root->{'contents'}}) {
+    return undef;
+  }
+  my $elements;
+  my $current = { 'type' => 'element', 'extra' => {'no_node' => 1}};
+  push @$elements, $current; 
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node') {
+      if ($current->{'extra'}->{'no_node'}) {
+        delete $current->{'extra'}->{'no_node'};
+        $current->{'extra'}->{'node'} = $content;
+      } else {
+        $current = { 'type' => 'element', 'extra' => {'node' => $content}};
+        push @$elements, $current;
+      }
+    }
+    push @{$current->{'contents'}}, $content;
+    $content->{'parent'} = $current;
+  }
+  return $elements;
+}
+
+sub split_by_section($)
+{
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'} or !@{$root->{'contents'}}) {
+    return undef;
+  }
+  my $elements;
+  my $current = { 'type' => 'element', 'extra' => {'no_section' => 1}};
+  push @$elements, $current; 
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node' 
+         and $content->{'extra'}->{'associated_section'}) {
+      if ($current->{'extra'}->{'no_section'}) {
+        delete $current->{'extra'}->{'no_section'};
+        $current->{'extra'}->{'section'} = $content->{'extra'}->{'associated_section'};
+      } else {
+        $current = { 'type' => 'element', 'extra' 
+                => {'section' => $content->{'extra'}->{'associated_section'}}};
+        push @$elements, $current;
+      }
+    } elsif ($content->{'cmdname'} and $content->{'cmdname'} ne 'node' 
+                                   and $content->{'cmdname'} ne 'bye') {
+      if ($current->{'extra'}->{'no_section'}) {
+        delete $current->{'extra'}->{'no_section'};
+        $current->{'extra'}->{'section'} = $content;
+      } elsif ($current->{'extra'}->{'section'} ne $content) {
+        $current = { 'type' => 'element', 'extra' => {'section' => $content}};
+        push @$elements, $current;
+      }
+    }
+    push @{$current->{'contents'}}, $content;
+    $content->{'parent'} = $current;
+  }
+  return $elements;
+}
+
+sub _unsplit($)
+{
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'} or !@{$root->{'contents'}}) {
+    return $root;
+  }
+  foreach my $content (@{$root->{'contents'}}) {
+    $content->{'parent'} = $root;
+  }
+  return $root;
 }
 
 sub number_floats($)

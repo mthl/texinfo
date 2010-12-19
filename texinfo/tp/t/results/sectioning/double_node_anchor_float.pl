@@ -6,6 +6,7 @@ $result_trees{'double_node_anchor_float'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -532,6 +533,7 @@ $result_trees{'double_node_anchor_float'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'double_node_anchor_float'}{'contents'}[0]{'parent'} = $result_trees{'double_node_anchor_float'};
 $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0];

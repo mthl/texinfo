@@ -19,6 +19,7 @@ $result_trees{'node_in_copying'} = {
           'parent' => {}
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -84,6 +85,7 @@ $result_trees{'node_in_copying'} = {
 };
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0];
+$result_trees{'node_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'};
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];

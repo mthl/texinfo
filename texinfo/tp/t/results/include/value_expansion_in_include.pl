@@ -115,6 +115,7 @@ $result_trees{'value_expansion_in_include'} = {
           'type' => 'empty_line'
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -462,6 +463,7 @@ $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[6]{'args'
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[0];
+$result_trees{'value_expansion_in_include'}{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'};
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];

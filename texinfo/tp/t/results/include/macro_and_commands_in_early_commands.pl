@@ -234,6 +234,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -474,6 +475,7 @@ $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0]{'contents'}
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'};
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[1]{'args'}[0];

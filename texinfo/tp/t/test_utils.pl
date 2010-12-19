@@ -252,6 +252,8 @@ sub test($$)
       #print STDERR "$format: \n$converted{$format}";
     }
   }
+  # associate elements with the document_root.
+  Texinfo::Structuring::_unsplit($result);
 
   my $file = "t/results/$self->{'name'}/$test_name.pl";
   my $new_file = $file.'.new';

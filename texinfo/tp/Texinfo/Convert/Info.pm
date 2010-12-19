@@ -46,15 +46,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
-sub convert($)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my ($result) = $self->_convert($root);
-  my ($footnotes) = $self->_footnotes();
-  return $result.$footnotes;
-}
 
 sub count_bytes($$) 
 {
@@ -90,51 +81,6 @@ sub update_counts ($$$$$$)
     $$main_bytes_count += $counts->{'bytes'};
     $$main_lines_count += $counts->{'lines'} if ($counts->{'lines'});
   }
-}
-
-my $footnote_indent = 3;
-sub _footnotes($)
-{
-  my $self = shift;
-  my $bytes_count = 0;
-  my $lines_count = 0;
-  my $locations = {};
-  my $result = '';
-  if (scalar(@{$self->{'pending_footnotes'}})) {
-    unless ($self->{'empty_lines_count'}) {
-      $result .= "\n";
-      $lines_count++;
-    }
-    $result .= "   ---------- Footnotes ----------\n\n";
-    $lines_count += 2;
-    $bytes_count = $self->count_bytes($result);
-    while (@{$self->{'pending_footnotes'}}) {
-      my $footnote = shift (@{$self->{'pending_footnotes'}});
-      # this pushes on 'context', 'format_context' and 'formatters'
-      $self->push_top_formatter('footnote');
-      my $footnote_text = ' ' x $footnote_indent 
-               . "($footnote->{'number'}) ";
-      $result .= $footnote_text;
-      $self->{'format_context'}->[-1]->{'counter'} += 
-         Texinfo::Convert::Unicode::string_width($footnote_text);
-      $bytes_count += $self->count_bytes($footnote_text);
-
-      $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
-               $locations, 0, 
-               $self->_convert($footnote->{'root'}->{'args'}->[0]));      
-      unless ($self->{'empty_lines_count'}) {
-        $result .= "\n";
-        $bytes_count += $self->count_bytes("\n");
-        $lines_count++;
-      }
-      
-      pop @{$self->{'context'}};
-      pop @{$self->{'format_context'}};
-      pop @{$self->{'formatters'}};
-    }
-  }
-  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count}, 
-          $locations);
 }
 
 sub _align_lines($$$)
@@ -194,14 +140,50 @@ sub _printindex($$)
 {
   my $self = shift;
   my $printindex = shift;
+
+  
+
   return '';
 }
 
+my @directions = ('Next', 'Prev', 'Up');
 sub _node($$)
 {
   my $self = shift;
   my $node = shift;
-  return '';
+
+  my $bytes_count = 0;
+
+  # FIXME $outfile
+  my $result = "\x{1F}\nFile: outfile,  Node:  ";
+  $bytes_count += $self->count_bytes($result);
+  $self->advance_count_text(\$result, \$bytes_count, undef,
+               undef, 0, $self->convert_line({'type' => 'code', 
+                           'contents' => $node->{'extra'}->{'node_content'}}));
+  foreach my $direction(@directions) {
+    if ($node->{'node_'.lc($direction)}) {
+      my $node_direction = $node->{'node_'.lc($direction)};
+      my $text = ",  $direction: ";
+      $bytes_count += $self->count_bytes($text);
+      $result .= $text;
+      if ($node_direction->{'extra'}->{'manual_content'}) {
+        $self->advance_count_text(\$result, \$bytes_count, undef,
+                undef, 0, $self->convert_line({'type' => 'code',
+                          'contents' => ['text' => '(',
+                             @{$node_direction->{'extra'}->{'manual_content'}},
+                                          'text' => ')']}));
+      }
+      if ($node_direction->{'extra'}->{'node_content'}) {
+        $self->advance_count_text(\$result, \$bytes_count, undef,
+               undef, 0, $self->convert_line({'type' => 'code', 
+                 'contents' => $node_direction->{'extra'}->{'node_content'}}));
+      }
+    }
+  }
+  $result .="\n\n";
+  $bytes_count += $self->count_bytes("\n\n");
+
+  return ($result, {'bytes' => $bytes_count, 'lines' => 3});
 }
 
 sub _anchor($$)

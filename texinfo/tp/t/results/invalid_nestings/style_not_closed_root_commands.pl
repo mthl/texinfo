@@ -6,6 +6,7 @@ $result_trees{'style_not_closed_root_commands'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -293,6 +294,7 @@ $result_trees{'style_not_closed_root_commands'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'style_not_closed_root_commands'}{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_root_commands'};
 $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'style_not_closed_root_commands'}{'contents'}[1]{'args'}[0];

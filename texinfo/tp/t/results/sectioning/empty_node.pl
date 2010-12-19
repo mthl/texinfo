@@ -6,6 +6,7 @@ $result_trees{'empty_node'} = {
   'contents' => [
     {
       'contents' => [],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -141,6 +142,7 @@ $result_trees{'empty_node'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'empty_node'}{'contents'}[0]{'parent'} = $result_trees{'empty_node'};
 $result_trees{'empty_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'empty_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_node'}{'contents'}[1];
 $result_trees{'empty_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_node'}{'contents'}[1];

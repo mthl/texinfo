@@ -13,6 +13,7 @@ $result_trees{'empty_nodes_with_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'parent' => {},
       'type' => 'text_root'
     },
     {
@@ -203,6 +204,7 @@ $result_trees{'empty_nodes_with_commands'} = {
   'type' => 'document_root'
 };
 $result_trees{'empty_nodes_with_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[0];
+$result_trees{'empty_nodes_with_commands'}{'contents'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'};
 $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0];
 $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_nodes_with_commands'}{'contents'}[1]{'args'}[0];
