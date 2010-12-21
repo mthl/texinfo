@@ -68,8 +68,6 @@ foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
   $informative_commands{$informative_command} = 1;
 }
 
-# printindex not handled in plain text output.
-#'printindex',
 foreach my $kept_command(keys (%informative_commands),
   'verbatiminclude', 'insertcopying', 
   'listoffloats', 'printindex',
@@ -375,7 +373,7 @@ sub _convert_node($$)
   }
   foreach my $location (@{$locations->{'lines'}}) {
     if ($location->{'index_entry'}) {
-      $self->{'index_entries'}->{$location->{'index_entry'}} = $location;
+      $self->{'index_entries_line_location'}->{$location->{'index_entry'}} = $location;
     }
   }
   $self->{'file_bytes_count'} += $bytes_count;
@@ -583,7 +581,7 @@ my $footnote_indent = 3;
 sub _footnotes($$)
 {
   my $self = shift;
-  my $node = shift;
+  my $element = shift;
 
   my $bytes_count = 0;
   my $lines_count = 0;
@@ -594,14 +592,16 @@ sub _footnotes($$)
       $result .= "\n";
       $lines_count++;
     }
-    if ($self->{'footnotestyle'} eq 'end' or !defined($node)) {
+    if ($self->{'footnotestyle'} eq 'end' or !defined($element)) {
       $result .= "   ---------- Footnotes ----------\n\n";
       $lines_count += 2;
     } else {
+
       my $footnotes_node = {
-        'node_up' => $node->{'node'},
-        'extra' => {'node_content' => [@{$node->{'node'}->{'extra'}->{'node_content'}},
-                                     'text' => '-Footnotes']}
+        'node_up' => $element->{'extra'}->{'node'},
+        'extra' => {'node_content' => 
+             [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+                                     {'text' => '-Footnotes'}]}
       };
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0, $self->_node($footnotes_node));
@@ -1334,7 +1334,7 @@ sub _convert($$)
       return '';
     } elsif ($root->{'cmdname'} eq 'printindex') {
        $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
-               $locations, 0, $self->_convert($root->{'args'}->[0]));
+               $locations, 0, $self->_printindex($root));
       return ($result, {'bytes' => $bytes_count, 'lines' => $lines_count},
           $locations);
 

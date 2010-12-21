@@ -136,14 +136,132 @@ sub _contents($$$)
   return '';
 }
 
+
+my $index_length_to_node = 41;
+
 sub _printindex($$)
 {
   my $self = shift;
   my $printindex = shift;
 
-  
+  my $index_name;
 
-  return '';
+  if ($printindex->{'extra'} and $printindex->{'extra'}->{'misc_args'}
+      and defined($printindex->{'extra'}->{'misc_args'}->[0])) {
+    $index_name = $printindex->{'extra'}->{'misc_args'}->[0];
+  } else {
+    return '';
+  }
+
+  # this is not redone for each index, only once
+  if (!defined($self->{'index_entries'}) and $self->{'parser'}) {
+    my ($index_names, $merged_indices, $index_entries)
+       = $self->{'parser'}->indices_information();
+    $self->{'index_entries'} = $self->Texinfo::Structuring::sort_indices($index_entries);
+    $self->{'index_names'} = $index_names;
+    $self->{'merged_indices'} = $merged_indices;
+  }
+  if (!$self->{'index_entries'} or !$self->{'index_entries'}->{$index_name}
+      or ! @{$self->{'index_entries'}->{$index_name}}) {
+    return '';
+  }
+
+  my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n";
+
+  my $lines_count = 3;
+  my $bytes_count = $self->count_bytes($result);
+
+  # first determine the line numbers for the spacing of their formatting
+  my %line_nrs;
+  my $max_index_line_nr_string_length = 0;
+  foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
+    my $line_nr;
+    if (defined ($self->{'index_entries_line_location'}->{$entry})) {
+      $line_nr = $self->{'index_entries_line_location'}->{$entry}->{'lines_count'};
+    }
+    if (!defined($entry->{'node'})) {
+      $line_nr = 0;
+    } else {
+      $line_nr = 3 if (defined($line_nr) and $line_nr < 3);
+      $line_nr = 4 if (!defined($line_nr));
+    }
+    my $index_line_nr_string_length = 
+      Texinfo::Convert::Unicode::string_width($line_nr);
+    $max_index_line_nr_string_length = $index_line_nr_string_length 
+     if ($max_index_line_nr_string_length < $index_line_nr_string_length);
+    $line_nrs{$entry} = $line_nr;
+  }
+
+  # this is used to count entries that are the same
+  my %entry_counts = ();
+
+  # FIXME second maybe should be index_prefix of eeach entry?
+  my $in_code = $self->{'index_names'}->{$index_name}->{$index_name};
+
+  foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
+    #my @keys = keys(%$entry);
+    #print STDERR "$index_name $entry: @keys\n";
+    my $entry_tree = {'contents' => $entry->{'content'}};
+    $entry_tree->{'type'} = 'code' if ($in_code);
+    my $entry_text = '';
+    $self->advance_count_text(\$entry_text, \$bytes_count, undef,
+           undef, 0, $self->convert_line($entry_tree, {'indent' => 0}));
+
+    my $entry_nr = '';
+    if (!defined($entry_counts{$entry_text})) {
+      $entry_counts{$entry_text} = 0;
+    } else {
+      $entry_counts{$entry_text}++;
+      $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
+    }
+    my $entry_line = "* $entry_text${entry_nr}: ";
+    $bytes_count += $self->count_bytes("* ${entry_nr}: ");
+    
+    my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    if ($line_width < $index_length_to_node) {
+      my $spaces = ' ' x ($index_length_to_node - $line_width);
+      $entry_line .= $spaces;
+      $bytes_count += $self->count_bytes($spaces);
+    }
+    my $node_text;
+    if (!defined($entry->{'node'})) {
+      $node_text = $self->gdt('(outside of any node)');
+      $bytes_count += $self->count_bytes($node_text);
+      $entry_line .= $node_text;
+    } else {
+      $self->advance_count_text(\$entry_line, \$bytes_count, undef,
+           undef, 0, $self->convert_line({'type' => 'code', 
+                'contents' => $entry->{'node'}->{'extra'}->{'node_content'}}));
+    }
+    $entry_line .= '.';
+    $bytes_count += $self->count_bytes('.');
+
+    $result .= $entry_line;
+
+    my $line_nr = $line_nrs{$entry};
+    my $line_nr_spaces = sprintf("%${max_index_line_nr_string_length}d", $line_nr);
+    my $line_part = "(line ${line_nr_spaces})";
+    $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    my $line_part_width = Texinfo::Convert::Unicode::string_width($line_part);
+    if ($line_width + $line_part_width +1 > $self->{'fillcolumn'}) {
+      $line_part = "\n" . ' ' x ($self->{'fillcolumn'} - $line_part_width) 
+           . "$line_part\n";
+      $lines_count++;
+    } else { 
+      $line_part 
+        = ' ' x ($self->{'fillcolumn'} - $line_part_width - $line_width)
+           . "$line_part\n";
+    }
+    $lines_count++;
+    $result .= $line_part;
+    $bytes_count += $self->count_bytes($line_part);
+  }
+
+  $result .= "\n"; 
+  $lines_count++;
+  $bytes_count += $self->count_bytes("\n");
+  
+  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
 }
 
 my @directions = ('Next', 'Prev', 'Up');
@@ -169,9 +287,9 @@ sub _node($$)
       if ($node_direction->{'extra'}->{'manual_content'}) {
         $self->advance_count_text(\$result, \$bytes_count, undef,
                 undef, 0, $self->convert_line({'type' => 'code',
-                          'contents' => ['text' => '(',
+                          'contents' => [{'text' => '('},
                              @{$node_direction->{'extra'}->{'manual_content'}},
-                                          'text' => ')']}));
+                                          {'text' => ')'}]}));
       }
       if ($node_direction->{'extra'}->{'node_content'}) {
         $self->advance_count_text(\$result, \$bytes_count, undef,
