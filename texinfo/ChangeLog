@@ -1,3 +1,9 @@
+2010-12-23  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\scanmacro): use \empty instead of \endinput,
+	since the actual meaning of \endinput turns out to have nothing to
+	do with it.  Doc fixes.
+
 2010-12-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Other Configuration Variables): continue.
