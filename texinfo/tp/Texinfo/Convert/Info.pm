@@ -46,6 +46,92 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
+my $STDIN_DOCU_NAME = 'stdin';
+my $INFO_EXTENSION = 'info';
+
+sub convert($)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $result = '';
+
+  my $header = $self->_info_header();
+  my $elements = Texinfo::Structuring::split_by_node($root);
+  if (!defined($elements)) {
+    ($result) = $self->_convert($root);
+    my ($footnotes) = $self->_footnotes();
+    $result .= $footnotes;
+  } else {
+    foreach my $node (@$elements) {
+      my ($node_text) = $self->_convert_node($node);
+      $result .= $node_text;
+    }
+  }
+  return $header.$result;
+}
+
+sub _info_header($)
+{
+  my $self = shift;
+  return $self->{'info_header'} if (defined($self->{'info_header'}));
+  my $input_basename;
+  if (defined($self->{'info'}->{'input_file_name'})) {
+    $input_basename = $self->{'info'}->{'input_file_name'};
+  } else {
+    $input_basename = '';
+  }
+  $input_basename =~ s/^.*\///;
+  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
+  my $output_file;
+  if (defined($self->{'output_file'})) {
+    $output_file = $self->{'output_file'};
+  } elsif ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
+           and $self->{'extra'}->{'setfilename'}->{'extra'}
+           and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
+    $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
+    $output_file =~ s/^.*\///;
+  } elsif ($input_basename ne '') {
+    $output_file = $input_basename;
+    $output_file =~ s/\.te?x(i|info)?$//;
+    $output_file .= '.'.$INFO_EXTENSION;
+  } else {
+    $output_file = '';
+  }
+  # FIXME version/program
+  my $text = "This is $output_file, produced by makeinfo version 4.13 from $input_basename.";
+  my $paragraph = Texinfo::Convert::Paragraph->new();
+  my $result = $paragraph->add_text($text);
+  $result .= $paragraph->end();
+  $result .= "\n\n";
+  if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
+    my $options = {};
+    if ($self->{'enable_encoding'}) {
+      $options->{'enabled_encoding'} = $self->{'encoding'};
+    }
+    $result .= Texinfo::Convert::Text::convert({'contents' => 
+                             $self->{'extra'}->{'copying'}->{'contents'}},
+                                               $options);
+  }
+  if ($self->{'info'}->{'dircategory_direntry'}) {
+    $self->{'ignored_commands'}->{'direntry'} = 0;
+    foreach my $command (@{$self->{'info'}->{'dircategory_direntry'}}) {
+      if ($command->{'cmdname'} eq 'dircategory') {
+          if ($command->{'extra'} 
+               and defined($command->{'extra'}->{'text_arg'})) {
+          $result .= "\nINFO-DIR-SECTION $command->{'extra'}->{'text_arg'}\n";
+        }
+      } elsif ($command->{'cmdname'} eq 'direntry') {
+        $result .= "START-INFO-DIR-ENTRY\n";
+        my ($direntry) = $self->_convert($command);
+        $result .= $direntry;
+        $result .= "END-INFO-DIR-ENTRY\n";
+      }
+    }
+    $self->{'ignored_commands'}->{'direntry'} = 1;
+  }
+  return $result;
+}
 
 sub count_bytes($$) 
 {
@@ -68,14 +154,15 @@ sub update_counts ($$$$$$)
   my $counts = shift;
   my $locations = shift;
   if ($locations) {
-    foreach my $line_location (@{$locations->{'lines'}}) {
-      $line_location->{'lines_count'} += $$main_lines_count;
+    foreach my $location(@$locations) {
+      if (defined($location->{'lines'})) {
+        $location->{'lines'} += $$main_lines_count;
+      }
+      if (defined($location->{'bytes'})) {
+        $location->{'bytes'} += $$main_bytes_count;
+      }
     }
-    foreach my $byte_location (@{$locations->{'bytes'}}) {
-      $byte_location->{'bytes_count'} += $$main_bytes_count;
-    }
-    push @{$main_locations->{'lines'}}, @{$locations->{'lines'}};
-    push @{$main_locations->{'bytes'}}, @{$locations->{'bytes'}};
+    push @{$main_locations}, @{$locations};
   }
   if ($counts) {
     $$main_bytes_count += $counts->{'bytes'};
@@ -136,7 +223,6 @@ sub _contents($$$)
   return '';
 }
 
-
 my $index_length_to_node = 41;
 
 sub _printindex($$)
@@ -177,7 +263,7 @@ sub _printindex($$)
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     my $line_nr;
     if (defined ($self->{'index_entries_line_location'}->{$entry})) {
-      $line_nr = $self->{'index_entries_line_location'}->{$entry}->{'lines_count'};
+      $line_nr = $self->{'index_entries_line_location'}->{$entry}->{'lines'};
     }
     if (!defined($entry->{'node'})) {
       $line_nr = 0;
@@ -308,6 +394,74 @@ sub _anchor($$)
 {
   my $self = shift;
   my $anchor = shift;
+
+  # 'lines_count' is in fact only needed when in @flush and @multitable
+  my $locations = [ {'lines' => 0, 'bytes' => 0,
+                     'root' => $anchor} ];
+  return ('', undef, $locations);
+}
+
+my @image_files_extensions = ('png', 'jpg');
+sub _image($$)
+{
+  my $self = shift;
+  my $root = shift;
+  my @extensions = @image_files_extensions;
+
+
+  if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+    my $basefile = Texinfo::Convert::Text::convert(
+      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
+    if (defined($root->{'extra'}->{'brace_command_contents'}->[4])) {
+      my $extension = Texinfo::Convert::Text::convert(
+        {'contents' => $root->{'extra'}->{'brace_command_contents'}->[4]});
+      unshift @extensions, ".$extension";
+      unshift @extensions, "$extension";
+    }
+    my $image_file;
+    foreach my $extension (@extensions) {
+      $image_file = 
+         $self->Texinfo::Parser::_locate_include_file ($basefile.$extension);
+      if (defined($image_file)) {
+        last; 
+      }
+    }
+    my $txt_file =
+      $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
+    my $text = $self->_image_text($root, $basefile);
+    if (defined($text)) {
+      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+        $text = '['.$text.']';
+      }
+    }
+
+    my $result;
+
+    if (defined($image_file)) {
+      $image_file =~ s/\\/\\\\/g;
+      $image_file =~ s/\"/\\\"/g;
+      $result = "\x{00}\x{08}[image src=\"$image_file\"";
+
+      if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+        my $alt = Texinfo::Convert::Text::convert(
+         {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]});
+        $alt =~ s/\\/\\\\/g;
+        $alt =~ s/\"/\\\"/g;
+        $result .= " alt=\"$alt\"";
+      }
+      if (defined($text)) {
+        $text =~ s/\\/\\\\/g;
+        $text =~ s/\"/\\\"/g;
+        $result .= " text=\"$text\"";
+      }
+      $result .= "\x{00}\x{08}]";
+    } else {
+      $result = $text;
+    }
+    if (defined($result)) {
+      return $result;
+    }
+  }
   return '';
 }
 

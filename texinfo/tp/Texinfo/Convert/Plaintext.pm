@@ -165,7 +165,7 @@ foreach my $advancing_para('center', 'verbatim', 'listoffloats') {
 }
 
 foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro', 'copying',
-  'documentdescription', 'titlepage') {
+  'documentdescription', 'titlepage', 'direntry') {
   $ignored_commands{$ignored_block_commands} = 1;
 }
 
@@ -233,6 +233,7 @@ my %defaults = (
   'documentencoding'     => 'us-ascii',
   'encoding'             => 'us-ascii',
   'output_encoding'      => 'us-ascii',
+  'output_file'          => undef,
   'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
   'split_size'           => 300000,
@@ -283,6 +284,7 @@ sub converter(;$)
       $converter->{'parser'} = $conf->{'parser'};
       $converter->{'extra'} 
          = $converter->{'parser'}->global_commands_information();
+      $converter->{'info'} = $converter->{'parser'}->global_informations();
       my $floats = $converter->{'parser'}->floats_information();
       $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
 
@@ -359,7 +361,7 @@ sub _convert_node($$)
   my $result = '';
   my $bytes_count = 0;
   my $lines_count = 0;
-  my $locations = {};
+  my $locations = [];
 
   $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
          $locations, 0, $self->_convert($node));
@@ -367,18 +369,18 @@ sub _convert_node($$)
   $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
          $locations, 0, $self->_footnotes($node));
 
-  foreach my $location (@{$locations->{'bytes'}}) {
-    $location->{'bytes_count'} += $self->{'file_bytes_count'};
-    $self->{'label_locations'}->{$location->{'anchor'}} = $location->{'anchor'};
-  }
-  foreach my $location (@{$locations->{'lines'}}) {
-    if ($location->{'index_entry'}) {
+  foreach my $location (@{$locations}) {
+    if (defined($location->{'bytes'})) {
+      $location->{'bytes'} += $self->{'file_bytes_count'};
+      $self->{'label_locations'}->{$location->{'root'}} = $location->{'root'};
+    }
+    if (defined($location->{'lines'} and $location->{'index_entry'})) {
       $self->{'index_entries_line_location'}->{$location->{'index_entry'}} = $location;
     }
   }
   $self->{'file_bytes_count'} += $bytes_count;
-  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count}, 
-          $locations);
+  # FIXME return $locations?
+  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
 }
 
 sub convert($)
@@ -412,7 +414,7 @@ sub _normalise_space($)
   return $text;
 }
 
-sub process_text($$$)
+sub _process_text($$$)
 {
   my $self = shift;
   my $command = shift;
@@ -562,14 +564,15 @@ sub update_counts ($$$$$$)
   my $counts = shift;
   my $locations = shift;
   if ($locations) {
-    foreach my $line_location (@{$locations->{'lines'}}) {
-      $line_location->{'lines_count'} += $$main_lines_count;
+    foreach my $location(@$locations) {
+      if (defined($location->{'lines'})) {
+        $location->{'lines'} += $$main_lines_count;
+      }
+      if (defined($location->{'bytes'})) {
+        $location->{'bytes'} += $$main_bytes_count;
+      }
     }
-    foreach my $byte_location (@{$locations->{'bytes'}}) {
-      $byte_location->{'bytes_count'} += $$main_bytes_count;
-    }
-    push @{$main_locations->{'lines'}}, @{$locations->{'lines'}};
-    push @{$main_locations->{'bytes'}}, @{$locations->{'bytes'}};
+    push @{$main_locations}, @{$locations};
   }
   if ($counts) {
     $$main_bytes_count += $counts->{'bytes'};
@@ -585,15 +588,18 @@ sub _footnotes($$)
 
   my $bytes_count = 0;
   my $lines_count = 0;
-  my $locations = {};
+  my $locations = [];
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
     unless ($self->{'empty_lines_count'}) {
       $result .= "\n";
+      $bytes_count += $self->count_bytes("\n");
       $lines_count++;
     }
     if ($self->{'footnotestyle'} eq 'end' or !defined($element)) {
-      $result .= "   ---------- Footnotes ----------\n\n";
+      my $footnotes_header = "   ---------- Footnotes ----------\n\n";
+      $result .= $footnotes_header;
+      $bytes_count += $self->count_bytes($footnotes_header);
       $lines_count += 2;
     } else {
 
@@ -606,7 +612,6 @@ sub _footnotes($$)
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0, $self->_node($footnotes_node));
     }
-    $bytes_count = $self->count_bytes($result);
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
       # this pushes on 'context', 'format_context' and 'formatters'
@@ -625,6 +630,7 @@ sub _footnotes($$)
         $result .= "\n";
         $bytes_count += $self->count_bytes("\n");
         $lines_count++;
+        $self->{'empty_lines_count'} = 1;
       }
       
       pop @{$self->{'context'}};
@@ -719,6 +725,20 @@ sub _contents($$$)
   return $result;
 }
 
+sub _menu($$)
+{
+  my $self = shift;
+  my $menu_command = shift;
+
+  if ($menu_command->{'cmdname'} eq 'menu') {
+    my $result = "* Menu:\n\n";
+    return ($result, {'bytes' => $self->count_bytes($result),
+                      'lines' => 2});
+  } else {
+    return '';
+  }
+}
+
 sub _printindex($$)
 {
   my $self = shift;
@@ -772,9 +792,57 @@ sub advance_count_text ($$$$$$@)
   }
 }
 
-# on top, the converter object which holds some gloal information
+sub _image_text($$$)
+{
+  my $self = shift;
+  my $root = shift;
+  my $basefile = shift;
+
+  my $txt_file = $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
+  if (!defined($txt_file)) {
+    $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
+  } else {
+    if (open (TXT, $txt_file)) {
+    # FIXME encoding
+    # my $in_encoding = get_conf('IN_ENCODING');
+    # binmode(TXT, ":encoding($in_encoding)");
+      my $result = '';
+      while (<TXT>) {
+        $result .= $_;
+      }
+      # remove last end of line
+      chomp ($result);
+      close (TXT);
+      return $result;
+    } else {
+      $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), $txt_file, $!), $root->{'line_nr'});
+    }
+  }
+  return undef;
+}
+
+sub _image($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+    my $basefile = Texinfo::Convert::Text::convert(
+     {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
+    my $result = $self->_image_text($root, $basefile);
+    if (defined($result)) {
+      if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+        $result = '['.$result.']';
+      }
+      return $result;
+    }
+  }
+  return '';
+}
+
+# on top, the converter object which holds some global information
 # 
-# context (for footntes, multitable cells):
+# context (for footnotes, multitable cells):
 # 'preformatted'
 # 'max'
 #
@@ -836,13 +904,13 @@ sub _convert($$)
   my $result = '';
   my $bytes_count = 0;
   my $lines_count = 0;
-  my $locations = {};
+  my $locations = [];
 
 
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
       $result = $formatter->{'container'}->add_text(
-                      $self->process_text($root, $formatter));
+                      $self->_process_text($root, $formatter));
       return ($result, {'bytes' => $self->count_bytes($result)});
     # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
@@ -934,35 +1002,9 @@ sub _convert($$)
       return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count},
           $locations);
     } elsif ($root->{'cmdname'} eq 'image') {
-      if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-        my $basefile = Texinfo::Convert::Text::convert(
-           {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]});
-        my $txt_file = 
-          $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
-        if (!defined($txt_file)) {
-          $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
-        } else {
-          if (open (TXT, $txt_file)) {
-            # FIXME encoding
-            # my $in_encoding = get_conf('IN_ENCODING');
-            # binmode(TXT, ":encoding($in_encoding)");
-            my $top_level = 1;
-            if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-              $result .='[';
-            }
-            while (<TXT>) {
-              $result .= $_;
-            }
-            if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
-              $result .=']';
-            }
-            close (TXT);
-          } else {
-            $self->line_warn(sprintf($self->__("\@image file `%s' unreadable: %s"), $txt_file, $!), $root->{'line_nr'});
-          }
-        }
-        return $result;
-      }
+      # FIXME count lines
+      $result = $self->_image($root);
+      return ($result, {'bytes' => $self->count_bytes($result)});
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.
       my @email_contents;
@@ -1167,11 +1209,9 @@ sub _convert($$)
              Texinfo::Convert::Unicode::string_width($result);
           $self->{'empty_lines_count'} = 0 unless ($result eq '');
         }
-      } elsif ($root->{'cmdname'} eq 'menu') {
-        my $begin = "* Menu:\n\n";
-        $result .= $begin;
-        $lines_count += 2;
-        $bytes_count += $self->count_bytes($begin);
+      } elsif ($menu_commands{$root->{'cmdname'}}) {
+        $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+            $locations, 0, $self->_menu($root));
       } elsif ($root->{'cmdname'} eq 'multitable') {
         my $columnsize;
         if ($root->{'extra'}->{'columnfractions'}) {
@@ -1235,9 +1275,6 @@ sub _convert($$)
                             'contents' => $contents}]
         }];
       }
-      my ($text, $counts, $new_locations) 
-        = $self->convert_line({'contents' => $contents},
-          {'indent_level' => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 1, $self->convert_line({'contents' => $contents},
                   {'indent_level' 
@@ -1292,7 +1329,7 @@ sub _convert($$)
       }
       $cell = 1;
     } elsif ($root->{'cmdname'} eq 'center') {
-      my ($counts, $new_locations);
+      #my ($counts, $new_locations);
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0,
                $self->convert_line (
@@ -1480,8 +1517,8 @@ sub _convert($$)
       if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
         $index_entry = 0;
       }
-      push @{$locations->{'lines'}}, {'lines_count' => $lines_count, 
-                                      'index_entry' => $root};
+      push @{$locations}, {'lines' => $lines_count, 
+                           'index_entry' => $root};
     } elsif ($unknown_command) {
       die "Unhandled $root->{'cmdname'}\n";
     }
@@ -1503,6 +1540,19 @@ sub _convert($$)
       $paragraph = $self->new_formatter('paragraph', $conf);
       push @{$self->{'formatters'}}, $paragraph;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
+    } elsif ($root->{'type'} eq 'empty_line') {
+      print STDERR "EMPTY_LINE ($self->{'empty_lines_count'})\n"
+        if ($self->{'debug'});
+      delete $self->{'format_context'}->[-1]->{'counter'};
+      $self->{'empty_lines_count'}++;
+      if ($self->{'empty_lines_count'} <= 1
+          or $self->{'context'}->[-1] eq 'preformatted') {
+        $result = "\n";
+        $lines_count = 1;
+        return ("\n", {'bytes' => $self->count_bytes("\n"), 'lines'=> 1});
+      } else {
+        return '';
+      }
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
@@ -1575,20 +1625,11 @@ sub _convert($$)
     push @{$self->{'current_contents'}}, \@contents;
     while (@contents) {
       my $content = shift @contents;
-      if ($content->{'type'} and $content->{'type'} eq 'empty_line') {
-        print STDERR "EMPTY_LINE ($self->{'empty_lines_count'})\n"
-          if ($self->{'debug'});
-        $result .= "\n" if (!$self->{'empty_lines_count'} 
-                            or $self->{'context'}->[-1] eq 'preformatted');
-        $self->{'empty_lines_count'}++;
-        delete $self->{'format_context'}->[-1]->{'counter'};
-      } else {
-        my ($text, $counts, $new_locations)
-         = $self->_convert($content);
-
-        $result .= $text;
-        $self->{'empty_lines_count'} = 0 if ($preformatted and $text ne '');
-      }
+      my ($text, $counts, $new_locations)
+       = $self->_convert($content);
+      $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+             $locations, 0, $text, $counts, $new_locations);
+      $self->{'empty_lines_count'} = 0 if ($preformatted and $text ne '');
     }
     pop @{$self->{'current_contents'}};
   }
@@ -1676,7 +1717,10 @@ sub _convert($$)
     }
   }
   if ($paragraph) {
-    $result .= $paragraph->{'container'}->end();
+    my $end = $paragraph->{'container'}->end();
+    $result .= $end;
+    $bytes_count += $self->count_bytes($end);
+    $lines_count += $paragraph->{'container'}->{'lines_counter'};
     if ($self->{'context'}->[-1] eq 'flush') {
       $result = $self->_flush_paragraph ($result);
     }

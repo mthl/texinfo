@@ -3137,7 +3137,7 @@ sub _parse_texi($;$)
 
           if (!$self->_register_global_command($command, $misc, $line_nr)
               and $command eq 'dircategory') {
-            push @{$self->{'extra'}->{'dircategory_direntry'}}, $misc;
+            push @{$self->{'info'}->{'dircategory_direntry'}}, $misc;
           }
         # @-command with matching @end
         } elsif (exists($block_commands{$command})) {
@@ -3240,7 +3240,7 @@ sub _parse_texi($;$)
                 if ($preformatted_commands{$command});
               if ($menu_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'menu';
-                push @{$self->{'extra'}->{'dircategory_direntry'}}, $block
+                push @{$self->{'info'}->{'dircategory_direntry'}}, $block
                   if ($command eq 'direntry');
                 if ($self->{'current_node'}) {
                   if ($command eq 'direntry' and $self->{'menus'}) {

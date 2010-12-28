@@ -8,6 +8,10 @@ There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
 
+pass 'output_file' to Plaintext.pm.  Use it to output the result
+(if defined).  Maybe use a different call than convert?
+In Info always ouput to a file unless output_file is -.
+
 for i18n, one want to do something like
 {style} {number}: {caption}
   -> new tree. 
