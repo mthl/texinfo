@@ -376,7 +376,8 @@ my %global_unique_commands;
 foreach my $global_unique_command ('documentencoding', 'title', 
   'shorttitlepage', 'settitle', 'copying', 'documentdescription', 'titlepage',
   'setfilename', 'setcontentsaftertitlepage', 
-  'setshortcontentsaftertitlepage') {
+  'setshortcontentsaftertitlepage', 'paragraphindent', 'firstparagraphindent',
+  'frenchspacing', 'documentencoding', 'footnotestyle') {
   $global_unique_commands{$global_unique_command} = 1;
 }
 

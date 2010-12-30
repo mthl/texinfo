@@ -476,6 +476,29 @@ foreach my $encoding (keys(%eight_bit_encoding_aliases)) {
   $encoding_aliases{$eight_bit_encoding_aliases{$encoding}} = $encoding;
 }
 
+sub open_out ($$;$)
+{
+  my $self = shift;
+  my $file = shift;
+  my $encoding = shift;
+  if ($file eq '-') {
+    binmode(STDOUT, ":encoding($encoding)") if (defined($encoding));
+    return \*STDOUT;
+  }
+  my $filehandle = do { local *FH };
+  if (!open ($filehandle, ">$file")) {
+    return undef; 
+  }
+  if (defined($encoding)) {
+    if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
+      binmode($filehandle, ':utf8');
+    } else {
+      binmode($filehandle, ':bytes');
+    }
+    binmode($filehandle, ":encoding($encoding)");
+  }
+  push @{$self->{'opened_files'}}, $file;
+  return $filehandle;
+}
+
 1;
-
-

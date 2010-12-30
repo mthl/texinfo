@@ -57,18 +57,104 @@ sub convert($)
   my $result = '';
 
   my $header = $self->_info_header();
+  my $header_bytes = $self->count_bytes($header);
   my $elements = Texinfo::Structuring::split_by_node($root);
+
+  my $fh = $self->Texinfo::Common::open_out ($self->{'output_file'}, 
+                                             $self->{'encoding'});
+  if (!$fh) {
+    $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
+                                  $self->{'output_file'}));
+    return undef;
+  }
   if (!defined($elements)) {
+    $self->document_warn($self->__("Document without nodes."));
     ($result) = $self->_convert($root);
     my ($footnotes) = $self->_footnotes();
     $result .= $footnotes;
+    print $fh $result;
+    close ($fh);
   } else {
-    foreach my $node (@$elements) {
+    my $out_file_nr = 1;
+    my @indirect_files;
+    print $fh $header;
+    $self->{'file_bytes_count'} += $header_bytes;
+    my $first_node_bytes_count = $self->{'file_bytes_count'};
+    my @nodes = @$elements;
+    while (@nodes) {
+      my $node = shift @nodes;
       my ($node_text) = $self->_convert_node($node);
-      $result .= $node_text;
+      print $fh $node_text;
+      if (defined($self->{'split_size'}) 
+          and $self->{'file_bytes_count'} > 
+                  $out_file_nr * $self->{'split_size'} and @nodes) {
+        close ($fh);
+        if ($out_file_nr == 1) {
+          unless (rename ($self->{'output_file'}, 
+                          $self->{'output_file'}.'-'.$out_file_nr)) {
+            $self->document_error(sprintf($self->__("Rename %s failed: $!"), 
+                                         $self->{'output_file'}));
+          }
+          push @{$self->{'opened_files'}}, 
+                   $self->{'output_file'}.'-'.$out_file_nr;
+          push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
+                                 $first_node_bytes_count];
+          #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
+        }
+        $out_file_nr++;
+        $fh = $self->Texinfo::Common::open_out (
+                               $self->{'output_file'}.'-'.$out_file_nr, 
+                               $self->{'encoding'});
+        if (!$fh) {
+           $self->document_error(sprintf(
+                  $self->__("Could not open %s for writing: $!"),
+                  $self->{'output_file'}.'-'.$out_file_nr));
+           return undef;
+        }
+        print $fh $header;
+        $self->{'file_bytes_count'} += $header_bytes;
+        push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
+                               $self->{'file_bytes_count'}];
+        #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
+      }
+      #$result .= $node_text;
+    }
+    if ($out_file_nr > 1) {
+      close ($fh);
+      $fh = $self->Texinfo::Common::open_out($self->{'output_file'}, 
+                                             $self->{'encoding'});
+      if (!$fh) {
+        $self->document_error(sprintf(
+              $self->__("Could not open %s for writing: $!"),
+              $self->{'output_file'}.'-'.$out_file_nr));
+        return undef;
+      }
+      print $fh $header;
+      print $fh "\x{1F}\nIndirect:";
+      foreach my $indirect (@indirect_files) {
+        print $fh "\n$indirect->[0]: $indirect->[1]";
+      }
+    }
+    print $fh "\n\x{1F}\nTag Table:\n";
+    if ($out_file_nr > 1) {
+      print $fh "(Indirect)\n";
+    }
+    foreach my $label (@{$self->{'label_locations'}}) {
+      next unless ($label->{'root'});
+      my $prefix = 'Ref';
+      $prefix = 'Node' if ($label->{'root'}->{'cmdname'} eq 'node');
+      my ($label_text) = $self->convert_line({'type' => 'code',
+        'contents' => $label->{'root'}->{'extra'}->{'node_content'}});
+      print $fh "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
+    }
+    print $fh "\x{1F}\nEnd Tag Table\n";
+    my $coding = $self->{'encoding'};
+    $coding = $self->{'documentencoding'} if (!defined($coding));
+    if ($coding and $coding ne 'us-ascii') {
+      print $fh "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
     }
   }
-  return $header.$result;
+  return $self;
 }
 
 sub _info_header($)
@@ -90,28 +176,33 @@ sub _info_header($)
            and $self->{'extra'}->{'setfilename'}->{'extra'}
            and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
     $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
-    $output_file =~ s/^.*\///;
+    $self->{'output_file'} = $output_file;
   } elsif ($input_basename ne '') {
     $output_file = $input_basename;
     $output_file =~ s/\.te?x(i|info)?$//;
     $output_file .= '.'.$INFO_EXTENSION;
+    $self->{'output_file'} = $output_file;
   } else {
     $output_file = '';
   }
+  my $output_basename = $output_file;
+  $output_basename =~ s/^.*\///;
+  $self->{'output_filename'} = $output_basename;
   # FIXME version/program
-  my $text = "This is $output_file, produced by makeinfo version 4.13 from $input_basename.";
+  my $text = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename.";
   my $paragraph = Texinfo::Convert::Paragraph->new();
   my $result = $paragraph->add_text($text);
   $result .= $paragraph->end();
-  $result .= "\n\n";
+  $result .= "\n";
+
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
     my $options = {};
     if ($self->{'enable_encoding'}) {
       $options->{'enabled_encoding'} = $self->{'encoding'};
     }
-    $result .= Texinfo::Convert::Text::convert({'contents' => 
-                             $self->{'extra'}->{'copying'}->{'contents'}},
-                                               $options);
+    my ($copying) = $self->_convert({'contents' => 
+          $self->{'extra'}->{'copying'}->{'contents'}}, $options);
+    $result .= $copying;
   }
   if ($self->{'info'}->{'dircategory_direntry'}) {
     $self->{'ignored_commands'}->{'direntry'} = 0;
@@ -358,8 +449,7 @@ sub _node($$)
 
   my $bytes_count = 0;
 
-  # FIXME $outfile
-  my $result = "\x{1F}\nFile: outfile,  Node:  ";
+  my $result = "\x{1F}\nFile: $self->{'output_filename'},  Node:  ";
   $bytes_count += $self->count_bytes($result);
   $self->advance_count_text(\$result, \$bytes_count, undef,
                undef, 0, $self->convert_line({'type' => 'code', 
@@ -387,7 +477,8 @@ sub _node($$)
   $result .="\n\n";
   $bytes_count += $self->count_bytes("\n\n");
 
-  return ($result, {'bytes' => $bytes_count, 'lines' => 3});
+  return ($result, {'bytes' => $bytes_count, 'lines' => 3}, 
+          [{'bytes' => 0, 'root' => $node}]);
 }
 
 sub _anchor($$)

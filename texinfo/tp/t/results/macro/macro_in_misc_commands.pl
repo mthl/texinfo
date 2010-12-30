@@ -3995,6 +3995,51 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':99: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 99,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':100: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 100,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':101: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 101,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':112: warning: Multiple @footnotestyle
+',
+    'file_name' => '',
+    'line_nr' => 112,
+    'macro' => '',
+    'text' => 'Multiple @footnotestyle',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':121: warning: Multiple @frenchspacing
+',
+    'file_name' => '',
+    'line_nr' => 121,
+    'macro' => '',
+    'text' => 'Multiple @frenchspacing',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':149: warning: @page should only appear at a line beginning (possibly involving @page-macro)
 ',
     'file_name' => '',

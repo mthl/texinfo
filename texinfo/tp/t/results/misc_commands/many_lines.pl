@@ -1610,6 +1610,15 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':21: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':22: warning: @paragraphindent should only appear at a line beginning
 ',
     'file_name' => '',
@@ -1619,12 +1628,30 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':22: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':23: warning: @paragraphindent should only appear at a line beginning
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
     'text' => '@paragraphindent should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':23: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 23,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
     'type' => 'warning'
   },
   {
@@ -1670,6 +1697,15 @@ $result_errors{'many_lines'} = [
     'line_nr' => 28,
     'macro' => '',
     'text' => '@footnotestyle should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':28: warning: Multiple @footnotestyle
+',
+    'file_name' => '',
+    'line_nr' => 28,
+    'macro' => '',
+    'text' => 'Multiple @footnotestyle',
     'type' => 'warning'
   },
   {
@@ -1724,6 +1760,15 @@ $result_errors{'many_lines'} = [
     'line_nr' => 32,
     'macro' => '',
     'text' => '@frenchspacing should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':32: warning: Multiple @frenchspacing
+',
+    'file_name' => '',
+    'line_nr' => 32,
+    'macro' => '',
+    'text' => 'Multiple @frenchspacing',
     'type' => 'warning'
   },
   {

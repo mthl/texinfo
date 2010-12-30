@@ -3260,12 +3260,57 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':71: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 71,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':72: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 72,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':73: warning: Multiple @paragraphindent
+',
+    'file_name' => '',
+    'line_nr' => 73,
+    'macro' => '',
+    'text' => 'Multiple @paragraphindent',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':80: warning: Multiple @footnotestyle
+',
+    'file_name' => '',
+    'line_nr' => 80,
+    'macro' => '',
+    'text' => 'Multiple @footnotestyle',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':88: warning: @documentlanguage should only appear at a line beginning
 ',
     'file_name' => '',
     'line_nr' => 88,
     'macro' => '',
     'text' => '@documentlanguage should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':97: warning: Multiple @frenchspacing
+',
+    'file_name' => '',
+    'line_nr' => 97,
+    'macro' => '',
+    'text' => 'Multiple @frenchspacing',
     'type' => 'warning'
   },
   {

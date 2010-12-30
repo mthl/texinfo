@@ -118,5 +118,27 @@ sub line_error($$$;$)
   $self->{'error_nrs'}++ unless ($continuation);
 }
 
+sub document_warn ($$)
+{
+  my $self = shift;
+  my $text = shift;
+  chomp ($text);
+  my $warn_line = sprintf($self->__("warning: %s\n"), $text);
+  push @{$self->{'errors_warnings'}},
+    { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line};
+}
+
+sub document_error ($$)
+{
+  my $self = shift;
+  my $text = shift;
+  chomp ($text);
+  $text .= "\n";
+  push @{$self->{'errors_warnings'}},
+    { 'type' => 'error', 'text' => $text, 'error_line' => $text };
+  $self->{'error_nrs'}++;
+}
+  
+
 
 1;

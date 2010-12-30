@@ -62,9 +62,12 @@ my %kept_misc_commands = %Texinfo::Convert::Text::kept_misc_commands;
 
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
+my @informative_global_commands = ('paragraphindent', 'firstparagraphindent',
+'frenchspacing', 'documentencoding', 'footnotestyle');
+
 my %informative_commands;
-foreach my $informative_command ('paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage') {
+foreach my $informative_command (@informative_global_commands, 
+                                 'documentlanguage') {
   $informative_commands{$informative_command} = 1;
 }
 
@@ -224,7 +227,7 @@ foreach my $command ('var', 'cite', 'math', keys(%code_style_commands)) {
 }
 
 my %defaults = (
-  'frenchspacing'        => 0,
+  'frenchspacing'        => 'off',
   'paragraphindent'      => 3,
   'firstparagraphindent' => 'none',
   'enable_encoding'      => 1,
@@ -259,6 +262,38 @@ sub push_top_formatter($$)
   $self->{'formatters'}->[-1]->{'_top_formatter'} = 1;
 }
 
+sub _informative_command($$)
+{
+  my $self = shift;
+  my $root = shift;
+  return if ($self->{'set'}->{$root->{'cmdname'}});
+
+  if (exists($root->{'extra'}->{'text'})) {
+    $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'};
+  } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
+    $self->{$root->{'cmdname'}} = 1;
+  } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
+           and exists($root->{'extra'}->{'misc_args'}->[0])) {
+    $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0];
+    if ($root->{'cmdname'} eq 'paragraphindent') {
+      if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
+        delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
+      } else {
+        $self->{$root->{'cmdname'}} = 0 
+          if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
+        $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
+      }
+    } elsif ($root->{'cmdname'} eq 'documentencoding') {
+      if (defined($root->{'extra'})
+           and defined($root->{'extra'}->{'encoding_alias'})) {
+        $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'};
+      } else {
+        $self->{'encoding'} = undef;
+      }
+    }
+  }
+}
+
 sub converter(;$)
 {
   my $class = shift;
@@ -278,6 +313,9 @@ sub converter(;$)
     bless $converter;
     $conf = shift;
     $name = ref($converter);
+  }
+  foreach my $key (keys(%defaults)) {
+    $converter->{$key} = $defaults{$key};
   }
   if (defined($conf)) {
     if ($conf->{'parser'}) {
@@ -301,6 +339,10 @@ sub converter(;$)
                and $converter->{'structuring'}
                and $converter->{'structuring'}->{'sectioning_root'});
       $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
+      foreach my $global_command (@informative_global_commands) {
+        $converter->_informative_command($converter->{'extra'}->{$global_command})
+          if (defined($converter->{'extra'}->{$global_command}));
+      }
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {
@@ -311,9 +353,6 @@ sub converter(;$)
         $converter->{'set'}->{$key} = 1;
       }
     }
-  }
-  foreach my $key (keys(%defaults)) {
-    $converter->{$key} = $defaults{$key} if (!$converter->{'set'}->{$key});
   }
   if (!defined($converter->{'expanded_formats'})) {
     if ($converter->{'parser'}) {
@@ -372,7 +411,7 @@ sub _convert_node($$)
   foreach my $location (@{$locations}) {
     if (defined($location->{'bytes'})) {
       $location->{'bytes'} += $self->{'file_bytes_count'};
-      $self->{'label_locations'}->{$location->{'root'}} = $location->{'root'};
+      push @{$self->{'label_locations'}}, $location;
     }
     if (defined($location->{'lines'} and $location->{'index_entry'})) {
       $self->{'index_entries_line_location'}->{$location->{'index_entry'}} = $location;
@@ -446,9 +485,9 @@ sub new_formatter($$;$)
   my $container;
   my $container_conf = {
          'max'                 => $self->{'format_context'}->[-1]->{'max'},
-         'frenchspacing'       => $self->{'frenchspacing'},
          'indent_level'        => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
+  $container_conf->{'frenchspacing'} = 1 if ($self->{'frenchspacing'} eq 'on');
   $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
     if (defined($self->{'format_context'}->[-1]->{'counter'}));
   $container_conf->{'debug'} = 1 if ($self->{'debug'});
@@ -604,6 +643,7 @@ sub _footnotes($$)
     } else {
 
       my $footnotes_node = {
+        'cmdname' => 'node',
         'node_up' => $element->{'extra'}->{'node'},
         'extra' => {'node_content' => 
              [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
@@ -614,6 +654,14 @@ sub _footnotes($$)
     }
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
+
+      push @$locations, {'bytes' => $bytes_count, 
+           'root' => {'cmdname' => 'anchor',
+                      'extra' => {'node_content' => 
+               [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+                              {'text' => "-Footnote-$footnote->{'number'}"}]}
+                     }
+        } if ($element);
       # this pushes on 'context', 'format_context' and 'formatters'
       $self->push_top_formatter('footnote');
       my $footnote_text = ' ' x $footnote_indent 
@@ -967,7 +1015,7 @@ sub _convert($$)
     } elsif ($style_map{$command}) {
       if ($code_style_commands{$command}) {
         $formatter->{'code'}++;
-        push @{$formatter->{'frenchspacing_stack'}}, 1;
+        push @{$formatter->{'frenchspacing_stack'}}, 'on';
         $formatter->{'container'}->set_space_protection(undef,
           undef,undef,1);
       }
@@ -995,8 +1043,10 @@ sub _convert($$)
       if ($code_style_commands{$command}) {
         $formatter->{'code'}--;
         pop @{$formatter->{'frenchspacing_stack'}};
+        my $frenchspacing = 0;
+        $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
         $formatter->{'container'}->set_space_protection(undef,
-          undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
+          undef, undef, $frenchspacing);
       }
       $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
       return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count},
@@ -1472,40 +1522,7 @@ sub _convert($$)
     # all the @-commands that have an information for the formatting, like
     # @paragraphindent, @frenchspacing...
     } elsif ($informative_commands{$root->{'cmdname'}}) {
-      if ($root->{'cmdname'} eq 'frenchspacing' and 
-           $root->{'extra'} and $root->{'extra'}->{'misc_args'} and
-           $root->{'extra'}->{'misc_args'}->[0]) {
-        if ($root->{'extra'}->{'misc_args'}->[0] eq 'on') {
-          $self->{$root->{'cmdname'}} = 1 
-            if (!$self->{'set'}->{$root->{'cmdname'}});
-        } elsif ($root->{'extra'}->{'misc_args'}->[0] eq 'off') {
-          $self->{$root->{'cmdname'}} = 0 
-            if (!$self->{'set'}->{$root->{'cmdname'}});
-        }
-      } elsif (exists($root->{'extra'}->{'text'})) {
-        $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'}
-            if (!$self->{'set'}->{$root->{'cmdname'}});
-      } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
-        $self->{$root->{'cmdname'}} = 1;
-      } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
-               and exists($root->{'extra'}->{'misc_args'}->[0])) {
-        if (!$self->{'set'}->{$root->{'cmdname'}}) {
-          $self->{$root->{'cmdname'}} = $root->{'extra'}->{'misc_args'}->[0];
-          if ($root->{'cmdname'} eq 'paragraphindent') {
-            if ($root->{'extra'}->{'misc_args'}->[0] eq 'asis') {
-              delete $self->{'ignored_types'}->{'empty_spaces_before_paragraph'};
-            } else {
-              $self->{$root->{'cmdname'}} = 0 
-                if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
-              $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
-            }
-          } elsif ($root->{'cmdname'} eq 'documentencoding') {
-            $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'} 
-              if (defined($root->{'extra'}) 
-                   and defined($root->{'extra'}->{'encoding_alias'}));
-          }
-        }
-      }
+      $self->_informative_command($root);
       return '';
     } else {
       $unknown_command = 1;
@@ -1606,12 +1623,12 @@ sub _convert($$)
         $index++;
       }
     } elsif ($root->{'type'} eq 'frenchspacing') {
-      push @{$formatter->{'frenchspacing_stack'}}, 1;
+      push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'code') {
       $formatter->{'code'}++;
-      push @{$formatter->{'frenchspacing_stack'}}, 1;
+      push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'bracketed') {
@@ -1638,13 +1655,17 @@ sub _convert($$)
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'frenchspacing') {
       pop @{$formatter->{'frenchspacing_stack'}};
+      my $frenchspacing = 0;
+      $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
       $formatter->{'container'}->set_space_protection(undef,
-        undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
+        undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq 'code') {
       $formatter->{'code'}--;
       pop @{$formatter->{'frenchspacing_stack'}};
+      my $frenchspacing = 0;
+      $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
       $formatter->{'container'}->set_space_protection(undef,
-        undef, undef, $formatter->{'frenchspacing_stack'}->[-1]);
+        undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq 'bracketed'
       and $self->{'context'}->[-1] eq 'math') {
       $result .= $formatter->{'container'}->add_text('}');
