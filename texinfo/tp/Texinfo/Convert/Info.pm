@@ -229,7 +229,7 @@ sub count_bytes($$)
   my $self = shift;
   my $string = shift;
 
-  if ($self->{'output_encoding'} ne 'us-ascii') {
+  if ($self->{'output_encoding'} and $self->{'output_encoding'} ne 'us-ascii') {
     return length(Encode::encode($self->{'output_encoding'}, $string));
   } else {
     return length($string);
@@ -479,17 +479,6 @@ sub _node($$)
 
   return ($result, {'bytes' => $bytes_count, 'lines' => 3}, 
           [{'bytes' => 0, 'root' => $node}]);
-}
-
-sub _anchor($$)
-{
-  my $self = shift;
-  my $anchor = shift;
-
-  # 'lines_count' is in fact only needed when in @flush and @multitable
-  my $locations = [ {'lines' => 0, 'bytes' => 0,
-                     'root' => $anchor} ];
-  return ('', undef, $locations);
 }
 
 my @image_files_extensions = ('png', 'jpg');

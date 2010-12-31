@@ -233,9 +233,12 @@ my %defaults = (
   'enable_encoding'      => 1,
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
-  'documentencoding'     => 'us-ascii',
-  'encoding'             => 'us-ascii',
-  'output_encoding'      => 'us-ascii',
+#  'documentencoding'     => 'us-ascii',
+#  'encoding'             => 'us-ascii',
+#  'output_encoding'      => 'us-ascii',
+  'documentencoding'     => undef,
+  'encoding'             => undef,
+  'output_encoding'      => undef,
   'output_file'          => undef,
   'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
@@ -461,7 +464,8 @@ sub _process_text($$$)
   my $text = $command->{'text'};
 
   $text = uc($text) if ($self->{'upper_case'});
-  if ($self->{'enable_encoding'} and $self->{'documentencoding'} eq 'utf-8') {
+  if ($self->{'enable_encoding'} and $self->{'documentencoding'} 
+      and $self->{'documentencoding'} eq 'utf-8') {
     return Texinfo::Convert::Unicode($self, $command);
   } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
     $text =~ s/---/\x{1F}/g;
@@ -587,7 +591,7 @@ sub count_bytes($$)
   my $self = shift;
   my $string = shift;
 
-  if ($self->{'output_encoding'} ne 'us-ascii') {
+  if ($self->{'output_encoding'} and $self->{'output_encoding'} ne 'us-ascii') {
     return length(Encode::encode($self->{'output_encoding'}, $string));
   } else {
     return length($string);
@@ -692,19 +696,44 @@ sub _footnotes($$)
           $locations);
 }
 
-sub _align_lines($$$)
+sub _align_lines($$$$$)
 {
+  my $self = shift;
   my $text = shift;
   my $max_column = shift;
   my $direction = shift;
+  my $locations = shift;
+
   my $result = '';
+
+  my $updated_locations = {};
+  if ($locations and @$locations) {
+    foreach my $location (@$locations) {
+      next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
+      #print STDERR "L anchor $location->{'root'}->{'extra'}->{'normalized'}: $location->{'lines'} ($location->{'bytes'})\n";
+      push @{$updated_locations->{$location->{'lines'}}}, $location;
+    }
+  }
+
+  my $bytes_count = 0;
+  my $delta_bytes = 0;
+  my $line_index = 0;
   foreach my $line (split /^/, $text) {
-    chomp($line);
-    $line =~ s/^\s*//;
-    $line =~ s/\s*$//;
+    my $line_bytes_begin = 0;
+    my $line_bytes_end = 0;
+    my $chomped = chomp($line);
+    # for debugging.
+    my $orig_line = $line;
+    $line_bytes_end -= $self->count_bytes($chomped);
+    $line =~ s/^(\s*)//;
+    $line_bytes_begin -= $self->count_bytes($1);
+    $line =~ s/(\s*)$//;
+    $line_bytes_end -= $self->count_bytes($1);
     my $line_width = Texinfo::Convert::Unicode::string_width($line);
     if ($line_width == 0) {
       $result .= "\n";
+      $line_bytes_end += $self->count_bytes("\n");
+      $bytes_count += $self->count_bytes("\n");
     } else {
       my $spaces_prepended;
       if ($line_width > $max_column) {
@@ -715,25 +744,22 @@ sub _align_lines($$$)
         $spaces_prepended = ($max_column -1 - $line_width);
       }
       $result .= ' ' x$spaces_prepended . $line ."\n";
+      $line_bytes_begin += $self->count_bytes(' ' x$spaces_prepended);
+      $line_bytes_end += $self->count_bytes("\n");
+      if ($updated_locations->{$line_index}) {
+        foreach my $location (@{$updated_locations->{$line_index}}) {
+          $location->{'bytes'} += $line_bytes_begin + $delta_bytes;
+          #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
+        }
+      }
+      $bytes_count += $line_bytes_begin + $line_bytes_end 
+                      + $self->count_bytes($line);
     }
+    $delta_bytes += $line_bytes_begin + $line_bytes_end;
+    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, delta $delta_bytes, bytes_count $bytes_count)\n";
+    $line_index++;
   }
-  return $result;
-}
-
-sub _flush_paragraph($$)
-{
-  my $self = shift;
-  my $text = shift;
-
-  my $index = -1;
-  $index--
-    while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
-  # nothing to do in case of flushleft
-  if ($self->{'format_context'}->[$index]->{'cmdname'} eq 'flushleft') {
-    return $text;
-  }
-  return _align_lines($text, $self->{'format_context'}->[$index]->{'max'},
-                          'right');
+  return ($result, $bytes_count);
 }
 
 sub _contents($$$)
@@ -805,7 +831,12 @@ sub _anchor($$)
 {
   my $self = shift;
   my $anchor = shift;
-  return '';
+
+  # 'lines_count' is in fact only needed when in @flush and @multitable
+  my $locations = 
+   [ {'lines' => $self->{'formatters'}->[-1]->{'container'}->{'lines_counter'},
+      'bytes' => 0, 'root' => $anchor} ];
+  return ('', undef, $locations);
 }
 
 my $listoffloat_entry_length = 41;
@@ -1381,22 +1412,16 @@ sub _convert($$)
     } elsif ($root->{'cmdname'} eq 'center') {
       #my ($counts, $new_locations);
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
-               $locations, 0,
+               $locations, 1,
                $self->convert_line (
                        {'contents' => $root->{'extra'}->{'misc_content'}},
                        {'indent_length' => 0}));
-      $result = _align_lines ($result, $self->{'format_context'}->[-1]->{'max'},
-                                  'center');
-      # only take care of lines count since the whole is recounted
-      # anyway.
-      if (chomp ($result)) {
-        $lines_count--;
-      }
+      ($result, $bytes_count) 
+         = $self->_align_lines ($result, 
+             $self->{'format_context'}->[-1]->{'max'}, 'center', $locations);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
-      $result .= "\n";
-      $lines_count++;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      return ($result, {'bytes' => $self->count_bytes($result), 
+      return ($result, {'bytes' => $bytes_count, 
                         'lines' => $lines_count}, $locations);
     } elsif ($root->{'cmdname'} eq 'exdent') {
       
@@ -1534,7 +1559,8 @@ sub _convert($$)
       if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
         $index_entry = 0;
       }
-      push @{$locations}, {'lines' => $lines_count, 
+      push @{$locations}, {'lines' => $lines_count
+              + $self->{'formatters'}->[-1]->{'container'}->{'lines_counter'}, 
                            'index_entry' => $root};
     } elsif ($unknown_command) {
       die "Unhandled $root->{'cmdname'}\n";
@@ -1743,7 +1769,15 @@ sub _convert($$)
     $bytes_count += $self->count_bytes($end);
     $lines_count += $paragraph->{'container'}->{'lines_counter'};
     if ($self->{'context'}->[-1] eq 'flush') {
-      $result = $self->_flush_paragraph ($result);
+      my $index = -1;
+      $index--
+        while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
+      # nothing to do in case of flushleft
+      if ($self->{'format_context'}->[$index]->{'cmdname'} eq 'flushright') {
+        ($result, $bytes_count) = $self->_align_lines($result, 
+                        $self->{'format_context'}->[$index]->{'max'},
+                        'right', $locations);
+      }
     }
     pop @{$self->{'formatters'}};
     delete $self->{'format_context'}->[-1]->{'counter'};

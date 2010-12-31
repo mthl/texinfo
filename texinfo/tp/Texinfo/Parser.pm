@@ -96,7 +96,7 @@ sub encode_i18n_string($$)
 {
   my $string = shift;
   my $encoding = shift;
-  if ($encoding ne 'us-ascii' and Encode::resolve_alias($encoding)) {
+  if (Encode::resolve_alias($encoding)) {
     return Encode::decode($encoding, $string);
   }
   return $string;
@@ -118,9 +118,9 @@ sub gdt($$$;$)
   my $saved_LANGUAGE = $ENV{'LANGUAGE'};
   Locale::Messages::textdomain($strings_textdomain);
   Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
-    if ($encoding ne 'us-ascii');
+    if ($encoding and $encoding ne 'us-ascii');
   Locale::Messages::bind_textdomain_filter($strings_textdomain,
-    \&encode_i18n_string, $encoding);
+    \&encode_i18n_string, $encoding) if ($encoding and $encoding ne 'us-ascii');
 
   # FIXME do that in the converters when @documentlanguage is found.
   my $lang = $self->{'documentlanguage'};
@@ -134,11 +134,15 @@ sub gdt($$$;$)
   my $locales = '';
 
   foreach my $language (@langs) {
-    $locales .= "$language.$encoding:";
+    if ($encoding) {
+      $locales .= "$language.$encoding:";
+    } else {
+      $locales .= "$language:";
+    }
     # always try us-ascii, the charset should always be a subset of
     # all charset, and should resort to @-commands if needed for non
     # ascii characters
-    if ($encoding ne 'us-ascii') {
+    if ($encoding and $encoding ne 'us-ascii') {
       $locales .= "$language.us-ascii:";
     }
   }
