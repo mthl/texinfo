@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
+@c $Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -134,7 +134,6 @@ printed manual from a single source.
 The first part of this master menu lists the major nodes in this Info
 document, including the @@-command and concept indices.  The rest of
 the menu lists all the lower level nodes in the document.
-
 @end ifnottex
 
 @menu
@@ -22626,11 +22625,12 @@ a complete expression.  Do not write ``You can set:''; instead, write
 Include edition numbers, version numbers, and dates in the
 @code{@@copying} text (for people reading the Texinfo file, and for the
 legal copyright in the output files).  Then use @code{@@insertcopying}
-in the @code{@@titlepage} section (for people reading the printed
-output) and the Top node (for people reading the online output).
+in the @code{@@titlepage} section for people reading the printed
+output (@pxref{Short Sample}).
 
-It is easiest to do this using @code{@@set} and @code{@@value}.
-@xref{value Example, , @code{@@value} Example}, and @ref{GNU Sample Texts}.
+It is easiest to handle such version information using @code{@@set}
+and @code{@@value}.  @xref{value Example,, @code{@@value} Example},
+and @ref{GNU Sample Texts}.
 
 
 @subsubheading Definition Commands
@@ -23013,7 +23013,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
+$Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23092,7 +23092,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.360 2010-12-18 17:01:35 karl Exp $
+@comment $Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

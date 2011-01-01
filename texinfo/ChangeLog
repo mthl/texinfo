@@ -1,3 +1,8 @@
+2010-12-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Tips and Hints): @insertcopying no longer
+	recommended in Top node.  Discrepancy noted by Adrienne Thompson.
+
 2010-12-23  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\scanmacro): use \empty instead of \endinput,
