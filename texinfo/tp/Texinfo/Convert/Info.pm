@@ -157,14 +157,15 @@ sub convert($)
   return $self;
 }
 
+# this also determines the output file
 sub _info_header($)
 {
   my $self = shift;
-  return $self->{'info_header'} if (defined($self->{'info_header'}));
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
     $input_basename = $self->{'info'}->{'input_file_name'};
   } else {
+    # This could happen if called on a piece of texinfo
     $input_basename = '';
   }
   $input_basename =~ s/^.*\///;
@@ -194,14 +195,11 @@ sub _info_header($)
   my $result = $paragraph->add_text($text);
   $result .= $paragraph->end();
   $result .= "\n";
+  $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-    my $options = {};
-    if ($self->{'enable_encoding'}) {
-      $options->{'enabled_encoding'} = $self->{'encoding'};
-    }
     my ($copying) = $self->_convert({'contents' => 
-          $self->{'extra'}->{'copying'}->{'contents'}}, $options);
+          $self->{'extra'}->{'copying'}->{'contents'}});
     $result .= $copying;
   }
   if ($self->{'info'}->{'dircategory_direntry'}) {

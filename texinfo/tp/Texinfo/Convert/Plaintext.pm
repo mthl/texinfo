@@ -1311,8 +1311,11 @@ sub _convert($$)
         }
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
+      } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}
+               and $root->{'extra'}->{'normalized'}) {
+        $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
+               $locations, 0, $self->_anchor($root));
       }
-
     } elsif ($root->{'cmdname'} eq 'node') {
       $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0, $self->_node($root));
@@ -1569,6 +1572,7 @@ sub _convert($$)
     }
 
   }
+  # open 'type' constructs.
   my $paragraph;
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
@@ -1694,8 +1698,7 @@ sub _convert($$)
       $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
       $formatter->{'container'}->set_space_protection(undef,
         undef, undef, $frenchspacing);
-    } elsif ($root->{'type'} eq 'bracketed'
-      and $self->{'context'}->[-1] eq 'math') {
+    } elsif ($root->{'type'} eq 'bracketed') {
       $result .= $formatter->{'container'}->add_text('}');
     } elsif ($root->{'type'} eq 'row') {
       my @cell_beginnings;
