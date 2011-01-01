@@ -1391,6 +1391,7 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
+    # open a multitable cell
     } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
              or $root->{'cmdname'} eq 'tab') {
       my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
@@ -1408,6 +1409,7 @@ sub _convert($$)
         $preformatted = $self->new_formatter('unfilled');
         push @{$self->{'formatters'}}, $preformatted;
       }
+      $self->{'empty_lines_count'} = 0;
       $cell = 1;
     } elsif ($root->{'cmdname'} eq 'center') {
       #my ($counts, $new_locations);
@@ -1712,55 +1714,87 @@ sub _convert($$)
           if (scalar(@{$cell_lines[$cell_idx]}) > $max_lines);
         $cell_idx++;
       }
+
+      $cell_idx = 0;
+      my $cell_updated_locations;
+      foreach my $cell_locations (@{$self->{'format_context'}->[-1]->{'locations'}}) {
+        foreach my $location (@{$cell_locations}) {
+          next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
+          push @{$cell_updated_locations->[$cell_idx]->{$location->{'lines'}}},
+                 $location;
+          print STDERR "MULTITABLE anchor $location->{'root'}->{'extra'}->{'normalized'}: c $cell_idx, l $location->{'lines'} ($location->{'bytes'})\n"
+                if ($self->{'debug'});
+          $max_lines = $location->{'lines'}+1 
+                            if ($location->{'lines'}+1 > $max_lines);
+        }
+        $cell_idx++;
+      }
+
       print STDERR "ROW, max_lines $max_lines, indent_len $indent_len\n" 
          if ($self->{'debug'});
       
       # this is used to keep track of the last cell with content.
-      my $previous_last_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
+      my $max_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
+      $bytes_count = 0;
       for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++) {
         my $line_width = $indent_len;
         my $line = '';
         # determine the last cell in the line, to fill spaces in 
         # cells preceding that cell on the line
         my $last_cell = 0;
-        for (my $cell_idx = 0; $cell_idx < $previous_last_cell; $cell_idx++) {
-          $last_cell = $cell_idx+1 if (defined($cell_lines[$cell_idx]->[$line_idx]));
+        for (my $cell_idx = 0; $cell_idx < $max_cell; $cell_idx++) {
+          $last_cell = $cell_idx+1 if (defined($cell_lines[$cell_idx]->[$line_idx])
+                                       or defined($cell_updated_locations->[$cell_idx]->{$line_idx}));
         }
         print STDERR "  L(last_cell $last_cell): $line_idx\n"
           if ($self->{'debug'});
+
         for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++) {
           my $cell_text = $cell_lines[$cell_idx]->[$line_idx];
           if (defined($cell_text)) {
             chomp($cell_text);
             if ($line eq '' and $cell_text ne '') {
               $line = ' ' x $indent_len;
+              $bytes_count += $self->count_bytes($line);
             }
             print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'debug'});
             $line .= $cell_text;
+            $bytes_count += $self->count_bytes($cell_text);
             $line_width += Texinfo::Convert::Unicode::string_width($cell_text);
+          }
+          if (defined($cell_updated_locations->[$cell_idx]->{$line_idx})) {
+            foreach my $location (@{$cell_updated_locations->[$cell_idx]->{$line_idx}}) {
+              print STDERR "MULTITABLE UPDATE ANCHOR (l $line_idx, c $cell_idx): $location->{'root'}->{'extra'}->{'normalized'}: $location->{'bytes'} -> $bytes_count\n"
+                if ($self->{'debug'});
+              $location->{'bytes'} = $bytes_count;
+            }
           }
           if ($cell_idx+1 < $last_cell) {
             if ($line_width < $indent_len + $cell_beginnings[$cell_idx+1]) {
               if ($line eq '') {
                 $line = ' ' x $indent_len;
+                $bytes_count += $self->count_bytes($line);
               }
               my $spaces = ' ' x ($indent_len + $cell_beginnings[$cell_idx+1] - $line_width);
               $line_width += Texinfo::Convert::Unicode::string_width($spaces);
               $line .= $spaces;
+              $bytes_count += $self->count_bytes($spaces);
             }
           }
         }
         $line .= "\n";
+        $bytes_count += $self->count_bytes("\n");
         $result .= $line;
-        $previous_last_cell = $last_cell;
       }
       if ($self->{'format_context'}->[-1]->{'item_command'} eq 'headitem') {
         # at this point cell_beginning is at the beginning of
         # the cell following the end of the table -> full width
         my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
+        $bytes_count += $self->count_bytes($line);
         $result .= $line;
       }
       $self->{'format_context'}->[-1]->{'row'} = [];
+      $self->{'format_context'}->[-1]->{'locations'} = [];
     }
   }
   if ($paragraph) {
@@ -1888,6 +1922,7 @@ sub _convert($$)
         or $cell);
   if ($cell) {
     push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
+    push @{$self->{'format_context'}->[-1]->{'locations'}}, $locations;
     $result = '';
   }
 
