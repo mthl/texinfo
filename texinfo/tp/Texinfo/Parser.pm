@@ -455,7 +455,7 @@ $close_paragraph_commands{'verbatim'} = 1;
 foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem', 
   'printindex', 'listoffloats', 'center', 'dircategory', 'contents',
-  'shortcontents', 'summarycontents') {
+  'shortcontents', 'summarycontents', 'caption', 'shortcaption') {
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 

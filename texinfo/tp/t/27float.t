@@ -15,6 +15,14 @@ my @test_cases = (
 In float.
 @caption{Caption.}
 @end float'],
+['footnote_in_caption',
+'@listoffloats fl
+
+@float label, fl
+In float.
+@caption{in caption@footnote{in footnote}}
+@end float
+'],
 ['numbering_captions_listoffloats',
 '@node Top
 @top Test floats
