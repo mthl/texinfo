@@ -254,12 +254,14 @@ sub add_text($$)
       my $added_word = $1;
       $result .= $paragraph->add_next($added_word);
       # now check if it is considered as an end of sentence
-      if (defined($paragraph->{'end_sentence'}) and 
-          $added_word =~ /^[$after_punctuation_characters]*$/) {
+      if (defined($paragraph->{'end_sentence'})
+          and $added_word =~ /^[$after_punctuation_characters]*$/) {
         # do nothing in the case of a continuation of after_punctuation_characters
       } elsif ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
            and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
         $paragraph->{'end_sentence'} = 1;
+      } else {
+        delete $paragraph->{'end_sentence'};
       }
     }
   }

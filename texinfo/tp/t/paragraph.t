@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 105 };
+BEGIN { plan tests => 106 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
@@ -170,6 +170,14 @@ $result .= $para->add_next('.', undef, 1);
 $result .= $para->add_text(' after');
 $result .= $para->end();
 is ($result, "aA.  after\n", 'force end sentence after upper case');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_text('aa');
+$result .= $para->add_next('.', undef, 1);
+$result .= $para->add_text('b c');
+$result .= $para->end();
+is ($result, "aa.b c\n", 'force end sentence followed by text');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
