@@ -666,12 +666,13 @@ $result_nodes{'macro_in_early_commands'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

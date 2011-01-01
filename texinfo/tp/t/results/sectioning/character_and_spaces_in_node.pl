@@ -546,12 +546,13 @@ $result_nodes{'character_and_spaces_in_node'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

@@ -6155,12 +6155,13 @@ $result_nodes{'numbering_captions_listoffloats'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

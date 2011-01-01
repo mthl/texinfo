@@ -190,12 +190,13 @@ $result_nodes{'reference_to_external_manual'} = {
     }
   ],
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

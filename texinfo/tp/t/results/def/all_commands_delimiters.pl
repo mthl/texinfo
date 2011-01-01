@@ -11984,37 +11984,37 @@ $result_errors{'all_commands_delimiters'} = [];
 
 
 
-$result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: forward--char nchars argument2 argument3 (arg in brace,
-          [something in v--ar, in, b , comma apref p]) last
+$result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: FORWARD--CHAR NCHARS argument2 argument3 (arg in brace,
+          [something IN V--AR, in, b , comma aPREF p]) last
 
  -- Variable: fill-column
 
- -- Library Function: int foobar (int foo, float bar)
+ -- Library Function: int foobar (int FOO, float BAR)
 
- -- Library Function: int foobar (int foo, float bar) (arg in brace,
-          [something in v--ar, in, b , comma apref p]) ct
+ -- Library Function: int foobar (int FOO, float BAR) (arg in brace,
+          [something IN V--AR, in, b , comma aPREF p]) ct
 
           last
 
  -- Library Function: int foobug [something
 
- -- stacks: private push (s:in out stack; n:in integer) ; ;barg aarg; ;
+ -- stacks: private push (S:in out stack; N:in integer) ; ;barg aarg; ;
           end
 
  -- Global Flag: int enable
 
- -- Data type: pair car cdr (arg in brace, [something in v--ar, in, b ,
-          comma apref p]) last
+ -- Data type: pair car cdr (arg in brace, [something IN V--AR, in, b ,
+          comma aPREF p]) last
 
  -- Class Option of Window: border-pattern
 
  -- Class Option2 of Window: `int\' border-pattern
 
- -- Operation on windows: expose (arg in brace, [something in v--ar, in,
-          b , comma apref p]) last
+ -- Operation on windows: expose (arg in brace, [something IN V--AR, in,
+          b , comma aPREF p]) last
 
- -- Operation2 on W,indow: `int\' expose (arg in brace, [something in
-          v--ar, in, b , comma apref p]) last
+ -- Operation2 on W,indow: `int\' expose (arg in brace, [something IN
+          V--AR, in, b , comma aPREF p]) last
 
  -- Operation5 on Window: `int\' expose type arg
 
@@ -12042,7 +12042,7 @@ $result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: forw
 
  -- Operation21 on ;Window: `int\' ;expose type arg
 
- -- Command on `com\': Window`int\' expose exp name
+ -- Command on `com\': Window`int\' expose EXP name
 
  -- Function: apply function &rest arguments
 

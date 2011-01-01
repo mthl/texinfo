@@ -243,12 +243,13 @@ $result_nodes{'setfilename_on_top_and_after_node'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

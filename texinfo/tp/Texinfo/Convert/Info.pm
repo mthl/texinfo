@@ -439,6 +439,7 @@ sub _printindex($$)
   return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
 }
 
+
 my @directions = ('Next', 'Prev', 'Up');
 sub _node($$)
 {
@@ -447,7 +448,7 @@ sub _node($$)
 
   my $bytes_count = 0;
 
-  my $result = "\x{1F}\nFile: $self->{'output_filename'},  Node:  ";
+  my $result = "\x{1F}\nFile: $self->{'output_filename'},  Node: ";
   $bytes_count += $self->count_bytes($result);
   $self->advance_count_text(\$result, \$bytes_count, undef,
                undef, 0, $self->convert_line({'type' => 'code', 

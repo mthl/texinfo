@@ -18219,12 +18219,13 @@ $result_nodes{'at_commands_in_refs'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'};

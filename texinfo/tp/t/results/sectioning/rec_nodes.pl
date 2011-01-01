@@ -1134,12 +1134,13 @@ $result_nodes{'rec_nodes'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'rec_nodes'}{'menu_child'}{'menu_child'}{'menu_child'} = $result_nodes{'rec_nodes'}{'menu_child'}{'menu_child'};

@@ -136,12 +136,13 @@ $result_nodes{'style_not_closed_before_first_node'} = {
     'normalized' => 'Top'
   },
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 

@@ -887,12 +887,13 @@ $result_nodes{'semi_auto'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'semi_auto'}{'menu_child'};

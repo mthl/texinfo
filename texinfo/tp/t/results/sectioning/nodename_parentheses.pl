@@ -1051,12 +1051,13 @@ $result_nodes{'nodename_parentheses'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'nodename_parentheses'}{'menu_child'};

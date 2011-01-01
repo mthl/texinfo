@@ -408,12 +408,13 @@ $result_nodes{'space_in_node'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'space_in_node'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'space_in_node'}{'menu_child'};

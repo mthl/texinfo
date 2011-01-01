@@ -54,6 +54,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
+my $TOP_NODE_UP = '(dir)';
+
 my %types_to_enter;
 foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
     'paragraph') {
@@ -401,8 +403,8 @@ sub nodes_tree ($)
         }
       } else {
         # Special case for Top node.
-        $node->{'node_up'} = Texinfo::Parser::_parse_node_manual(
-                                {'contents' => [ {'text' => '(dir)'} ]});
+        $node->{'node_up'} = {'extra' => Texinfo::Parser::_parse_node_manual(
+                                {'contents' => [ {'text' => $TOP_NODE_UP} ]})};
         if ($node->{'menu_child'}) {
           $node->{'node_next'} = $node->{'menu_child'};
           $node->{'menu_child'}->{'node_prev'} = $node;

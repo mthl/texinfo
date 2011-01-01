@@ -730,12 +730,13 @@ $result_nodes{'loop_nodes'} = {
   ],
   'node_next' => {},
   'node_up' => {
-    'extra' => {},
-    'manual_content' => [
-      {
-        'text' => 'dir'
-      }
-    ]
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'dir'
+        }
+      ]
+    }
   }
 };
 $result_nodes{'loop_nodes'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'loop_nodes'}{'menu_child'}{'menu_child'};

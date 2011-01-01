@@ -1983,7 +1983,7 @@ $result_converted{'plaintext'}->{'def'} = '
           even more so
      def-fn
 
- -- fset: i a g
+ -- fset: I a g
  -- cmde: truc
  -- Command: log trap
  -- Command: log trap1
