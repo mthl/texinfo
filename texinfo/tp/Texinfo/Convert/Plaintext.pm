@@ -1140,15 +1140,23 @@ sub _convert($$)
       }
       return '';
     } elsif ($command eq 'footnote') {
+      my $multiple_pass = 0;
+      foreach my $context (reverse (@{$self->{'context'}})) {
+        if ($context eq 'listoffloats') {
+          $multiple_pass = 1;
+          last;
+        }
+      }
       my $footnote_number;
       if ($self->{'number_footnotes'}) {
-        $self->{'footnote_index'}++;
+        $self->{'footnote_index'}++ unless ($multiple_pass);
         $footnote_number = $self->{'footnote_index'};
       } else {
         $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
       }
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
-                                             'number' => $footnote_number}; 
+                                             'number' => $footnote_number}
+          unless ($multiple_pass);
       return $formatter->{'container'}->add_text("($footnote_number)");
     } elsif ($command eq 'anchor') {
       $result = $formatter->{'container'}->add_pending_word();
@@ -1496,9 +1504,11 @@ sub _convert($$)
             $caption = $float->{'extra'}->{'caption'};
           }
           if ($caption) {
+            push @{$self->{'context'}}, 'listoffloats';
             # FIXME should there be some indentation?
             my ($caption_text) = $self->_convert({'contents' => $caption->{'args'}->[0]->{'contents'},
                         'type' => $caption->{'cmdname'}.'_listoffloats'});
+            pop @{$self->{'context'}};
             while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
               my $new_word = $1;
               $new_word =~ s/\n//g;

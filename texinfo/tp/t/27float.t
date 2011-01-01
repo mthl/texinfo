@@ -18,7 +18,7 @@ In float.
 ['footnote_in_caption',
 '@listoffloats fl
 
-@float label, fl
+@float fl, label
 In float.
 @caption{in caption@footnote{in footnote}}
 @end float

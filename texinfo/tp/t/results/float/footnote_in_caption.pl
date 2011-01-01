@@ -61,7 +61,7 @@ $result_trees{'footnote_in_caption'} = {
             },
             {
               'parent' => {},
-              'text' => 'label'
+              'text' => 'fl'
             }
           ],
           'parent' => {},
@@ -75,7 +75,7 @@ $result_trees{'footnote_in_caption'} = {
             },
             {
               'parent' => {},
-              'text' => 'fl'
+              'text' => 'label'
             },
             {
               'parent' => {},
@@ -175,12 +175,12 @@ $result_trees{'footnote_in_caption'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'fl',
+        'normalized' => 'label',
         'type' => {
           'content' => [
             {}
           ],
-          'normalized' => 'label'
+          'normalized' => 'fl'
         }
       },
       'line_nr' => {
@@ -236,7 +236,7 @@ $result_trees{'footnote_in_caption'}{'contents'}[3]{'parent'} = $result_trees{'f
 
 $result_texis{'footnote_in_caption'} = '@listoffloats fl
 
-@float label, fl
+@float fl, label
 In float.
 @caption{in caption@footnote{in footnote}}
 @end float
@@ -252,7 +252,7 @@ $result_errors{'footnote_in_caption'} = [];
 
 
 $result_floats{'footnote_in_caption'} = {
-  'label' => [
+  'fl' => [
     {
       'cmdname' => 'float',
       'extra' => {
@@ -262,27 +262,31 @@ $result_floats{'footnote_in_caption'} = {
             'float' => {}
           }
         },
-        'normalized' => 'fl',
+        'normalized' => 'label',
         'type' => {
           'content' => [
             {
-              'text' => 'label'
+              'text' => 'fl'
             }
           ],
-          'normalized' => 'label'
+          'normalized' => 'fl'
         }
       },
       'number' => 1
     }
   ]
 };
-$result_floats{'footnote_in_caption'}{'label'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'footnote_in_caption'}{'label'}[0];
+$result_floats{'footnote_in_caption'}{'fl'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'footnote_in_caption'}{'fl'}[0];
 
 
 
 $result_converted{'plaintext'}->{'footnote_in_caption'} = '
+* Menu:
+
+* fl 1: label.                           in caption(0)
+
 In float.
-label 1: in caption(1)
+fl 1: in caption(1)
 
    ---------- Footnotes ----------
 
