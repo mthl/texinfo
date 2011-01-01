@@ -242,6 +242,7 @@ my %defaults = (
   'output_file'          => undef,
   'documentlanguage'     => 'en',
   'number_footnotes'     => 1,
+  'file_bytes_count'     => 0,
   'split_size'           => 300000,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
@@ -390,7 +391,7 @@ sub converter(;$)
     $converter->{'ignored_commands'}->{$format} = 1 
        unless ($converter->{'expanded_formats_hash'}->{$format});
   }
-  $converter->Texinfo::Report::new;
+  $converter->Texinfo::Report::new();
 
   return $converter;
 }
@@ -463,7 +464,7 @@ sub _process_text($$$)
   my $context = shift;
   my $text = $command->{'text'};
 
-  $text = uc($text) if ($self->{'upper_case'});
+  $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
   if ($self->{'enable_encoding'} and $self->{'documentencoding'} 
       and $self->{'documentencoding'} eq 'utf-8') {
     return Texinfo::Convert::Unicode($self, $command);

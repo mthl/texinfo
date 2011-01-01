@@ -6,7 +6,8 @@ my @test_cases = (
 ['commands','@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
 @clicksequence{File @click{} Open}@.
-@email{a, b}
+@email{a, b} @code{code --- -- \'\' ``}
+--- -- \'\' ``. @sc{small caps}.
 
 @cindex index entry in text @LaTeX{}
 

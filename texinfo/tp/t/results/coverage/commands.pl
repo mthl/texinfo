@@ -216,7 +216,54 @@ $result_trees{'commands'} = {
         },
         {
           'parent' => {},
+          'text' => ' '
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'code --- -- \'\' ``'
+                }
+              ],
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'code',
+          'contents' => [],
+          'parent' => {}
+        },
+        {
+          'parent' => {},
           'text' => '
+'
+        },
+        {
+          'parent' => {},
+          'text' => '--- -- \'\' ``. '
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'small caps'
+                }
+              ],
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'sc',
+          'contents' => [],
+          'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '.
 '
         }
       ],
@@ -281,7 +328,7 @@ $result_trees{'commands'} = {
       },
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 6,
+        'line_nr' => 7,
         'macro' => ''
       },
       'parent' => {}
@@ -343,7 +390,7 @@ $result_trees{'commands'} = {
       'level' => 1,
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 8,
+        'line_nr' => 9,
         'macro' => ''
       },
       'parent' => {}
@@ -389,6 +436,15 @@ $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'args'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[18];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[21]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[21]{'args'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[21]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[21];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'commands'}{'contents'}[0];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[22]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[1]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
@@ -417,7 +473,8 @@ $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 $result_texis{'commands'} = '@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
 @clicksequence{File @click{} Open}@.
-@email{a, b}
+@email{a, b} @code{code --- -- \'\' ``}
+--- -- \'\' ``. @sc{small caps}.
 
 @cindex index entry in text @LaTeX{}
 
@@ -427,7 +484,8 @@ $result_texis{'commands'} = '@@ @TeX{} @
 
 $result_texts{'commands'} = '@ TeX  e" i^ a~ a*
 File -> Open.
-b
+b code --- -- \'\' ``
+--- -- \'\' ``. small caps.
 
 
 majorheading in b
@@ -438,7 +496,8 @@ $result_errors{'commands'} = [];
 
 
 
-$result_converted{'plaintext'}->{'commands'} = '@ TeX  e" i^ a~ a* File -> Open.  b <a>
+$result_converted{'plaintext'}->{'commands'} = '@ TeX  e" i^ a~ a* File -> Open.  b <a> `code --- -- \'\' ``\' -- - " ".
+SMALL CAPS.
 
 majorheading in b
 *****************
