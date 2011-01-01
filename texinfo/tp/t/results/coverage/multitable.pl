@@ -603,7 +603,7 @@ mu-ltitable item                            multitable tab
 mu-ltitable item 2                          multitable tab 2
 lone mu-ltitable item
 
-truc bidule
+truc   bidule
 ';
 
 1;

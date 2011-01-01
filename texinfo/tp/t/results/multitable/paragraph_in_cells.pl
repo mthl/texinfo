@@ -304,14 +304,14 @@ $result_errors{'paragraph_in_cells'} = [];
 
 
 
-$result_converted{'plaintext'}->{'paragraph_in_cells'} = 'trucbidule
-beginbegin
-itemtab
-    
-new new
+$result_converted{'plaintext'}->{'paragraph_in_cells'} = 'truc  bidule
+begin begin
+item  tab
+      
+new   new
 paragraphparagraph
-in  in
-item.tab.
+in    in
+item. tab.
 
 ';
 

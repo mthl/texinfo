@@ -285,9 +285,9 @@ $result_errors{'multitable_in_example'} = [];
 
 
 
-$result_converted{'plaintext'}->{'multitable_in_example'} = '     truc bidule example
+$result_converted{'plaintext'}->{'multitable_in_example'} = '     truc  bidule example
      begin item examplebegin tab example
-         
+           
      new paragraph in item. examplenew paragraph in tab. example
 
 ';

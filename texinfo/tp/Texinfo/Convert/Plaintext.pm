@@ -1307,7 +1307,7 @@ sub _convert($$)
             print STDERR " MULTITABLE_PROTO {$formatted_prototype}\n" 
               if ($self->{'debug'});
             push @$columnsize, 
-                  Texinfo::Convert::Unicode::string_width($formatted_prototype);
+                 2+Texinfo::Convert::Unicode::string_width($formatted_prototype);
           }
         }
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
@@ -1462,7 +1462,8 @@ sub _convert($$)
           and $self->{'floats'} 
           and $self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}
           and @{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-        $result = "* Menu:\n\n";
+        $result .= "\n" if (!$self->{'empty_lines_count'});
+        $result .= "* Menu:\n\n";
         foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
           next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
           my $float_entry;
@@ -1500,7 +1501,7 @@ sub _convert($$)
                         'type' => $caption->{'cmdname'}.'_listoffloats'});
             while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
               my $new_word = $1;
-              $new_word =~ s/\n/ /g;
+              $new_word =~ s/\n//g;
               if ((Texinfo::Convert::Unicode::string_width($new_word) +
                    $line_width) > 
                        ($self->{'format_context'}->[-1]->{'max'} - 3)) {
@@ -1840,11 +1841,11 @@ sub _convert($$)
         } elsif ($root->{'extra'}->{'shortcaption'}) {
           $caption = $root->{'extra'}->{'shortcaption'};
         }
-        if ($self->{'debug'}) {
-          my $caption_texi = 
-            Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
-          print STDERR "  CAPTION: $caption_texi\n";
-        }
+        #if ($self->{'debug'}) {
+        #  my $caption_texi = 
+        #    Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
+        #  print STDERR "  CAPTION: $caption_texi\n";
+        #}
         my $type;
         if ($root->{'extra'}->{'type'}) {
           $type = {'contents' => $root->{'extra'}->{'type'}->{'content'}};
