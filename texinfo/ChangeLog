@@ -1,3 +1,7 @@
+2011-01-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Configuration Variables): continue edit.
+
 2010-12-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Tips and Hints): @insertcopying no longer

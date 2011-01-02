@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
+@c $Id: texinfo.txi,v 1.362 2011-01-02 01:00:45 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -40,8 +40,8 @@ a documentation system that can produce both online information and a
 printed manual from a single source.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
-1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
-Free Software Foundation, Inc.
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -14854,8 +14854,8 @@ Note the use of the prefix argument in interactive use: with a regular
 prefix argument, just @w{@kbd{C-u}}, the
 @code{texinfo-multiple-files-update} command inserts a master menu;
 with a numeric prefix argument, such as @kbd{C-u 8}, the command
-updates @strong{every} pointer and menu in @strong{all} the files and then inserts a
-master menu.
+updates @strong{every} pointer and menu in @strong{all} the files and
+then inserts a master menu.
 
 
 @node Include Files Requirements
@@ -16735,7 +16735,7 @@ For HTML.  If this is set a @code{<table>} construction for
 
 @item DOCTYPE
 @vindex SystemLiteral
-For HTML, XML, Docbook.  Specifies the @code{SystemLiteral}, the
+For Docbook, HTML, XML.  Specifies the @code{SystemLiteral}, the
 entity's system identifier.  It is a URI, which may be used to
 retrieve the entity, and identifies the canonical DTD for the
 document.
@@ -16745,11 +16745,19 @@ For debugging.  If set, the result of the first pass is put in
 @file{@var{docname}.passtexi}, and the result of the second pass is
 put in @file{@var{docname}.passfirst}.
 
+@item ENABLE_ENCODING_USE_ENTITY
+For HTML, XML.  If @option{--enable-encoding} is set, and there is an
+entity corresponding with the letter or the symbol being output,
+prefer the entity.
+
 @item EXTERNAL_CROSSREF_SPLIT
 For cross references to other manuals, this determines if the other
 manual is considered to be split or monolithic.  By default, it is set
 based on the value of @code{SPLIT}.  @xref{HTML Xref}, and @pxref{HTML
 Xref Configuration}.
+
+@item EXTENSION
+The extension added to the output file name.
 
 @item EXTERNAL_DIR
 For HTML.  Base directory for external manuals.  It is better to use
@@ -16764,23 +16772,62 @@ together with a file with the short table of contents.
 For HTML.  Same as DOCTYPE, but for the file containing the frame
 description.
 
+@item I18N_PERL_HASH
+If set, use the old system for the translation of strings output by
+the program in the document.
+
+@item ICONS
+For HTML.  Use icons for the navigation panel.
+
 @item IDX_SUMMARY
-If set, for each @code{@@printindex} a file
-@file{@var{docname}_@var{idxname}.idx} is created, containing lines
-of the form:
+If set, for each @code{@@printindex} a file named
+@file{@var{docname}_@var{idxname}.idx} is created, containing lines of
+the form:
+
 @example
 @var{key} @var{reference}
 @end example
+
 @noindent sorted alphabetically (case matters).
 
 @item IGNORE_PREAMBLE_TEXT
-If this is set the text before @@node and sectioning commands is
-ignored.  This is a configuration variable kept for backward
+If this is set the text before @code{@@node} and sectioning commands
+is ignored.  This is a configuration variable kept for backward
 compatibility and has no particular usefulness nowadays.
+
+@item IN_ENCODING
+Set the input file encoding (@pxref{documentencoding,,
+@code{@@documentencoding}}) using Perl encoding names.
+
+@item INLINE_CONTENTS
+If set, output the contents where the @code{@@contents} and similar
+@@-commands are located.  Ignored if
+@code{@@set*contentsaftertitlepage} is set.
+
+@item INLINE_CSS_STYLE
+For HTML.  Put CSS directly in HTML elements rather than at the
+beginning of the output.
+
+@item INLINE_INSERTCOPYING
+If set, @code{@@insertcopying} is replaced by the @code{@@copying}
+content (@pxref{copying,, @code{@@copying}}) as if
+@code{@@insertcopying} were a user-defined macro.
 
 @item L2H
 For HTML.  If set, @command{latex2html} is used to convert @code{@@math}
 and @code{@@tex} sections.  Best used with @option{--iftex}.
+
+@item L2H_CLEAN
+(Relevant only if @code{L2H} is set.)  If this is set the intermediate
+files generated in relation with @command{latex2html} are removed.
+
+@item L2H_FILE
+(Relevant only if @code{L2H} is set.)  If set, the given file is used
+as @command{latex2html}'s init file.
+
+@item L2H_HTML_VERSION
+(Relevant only if @code{L2H} is set.)  The HTML version used in the
+@command{latex2html} call.
 
 @item L2H_L2H
 The program invoked as @command{latex2html} if @code{L2H} is set.
@@ -16798,21 +16845,15 @@ temporary files. None of the file name components in this directory
 name may start with @samp{.}; otherwise, @command{latex2html} will
 fail (because of @command{dvips}).
 
-@item L2H_FILE
-(Relevant only if @code{L2H} is set.)  If set, the given file is used
-as @command{latex2html}'s init file.
-
-@item L2H_CLEAN
-(Relevant only if @code{L2H} is set.)  If this is set the intermediate
-files generated in relation with @command{latex2html} are removed.
-
-@item L2H_HTML_VERSION
-(Relevant only if @code{L2H} is set.)  The HTML version used in the
-@command{latex2html} call.
-
 @item MONOLITHIC
 For HTML.  Output only one file including the table of contents.  This
 only makes sense when the output is not split.  It is set by default.
+
+@item NO_CSS
+For HTML.  Do not use CSS (@pxref{HTML CSS}).
+
+@item NODE_FILE_EXTENSION
+Extension for node files if @code{NODE_FILENAMES} is set.
 
 @item PREFIX
 the output file prefix, which is prepended to some output files.  By
@@ -16832,6 +16873,16 @@ The short extension, @samp{.htm} by default.
 @opindex --no-headers
 If set, the Texinfo menus are shown.  By default, it is only unset
 when generating Docbook or if @option{--no-headers} is specified.
+
+@item SIMPLE_MENU
+If set, use a simple preformatted style for the menu, instead of
+breaking down the different parts of the menu.  @xref{Menu Parts}.
+
+@item SPLIT_INDEX
+For HTML.  If set, the output is split, and the output from
+@code{@@printindex} happens in a sectioning element at the level of
+splitting, then split index pages at the next letter after they have
+more than that many entries.  If set to 0, no index splitting.
 
 @item TEST
 If set to true, some variables which are normally dynamically
@@ -16865,55 +16916,22 @@ For HTML.
 Use entities for doubled single-quote characters (@pxref{Inserting Quotation Marks}, @samp{---} and @samp{--} 
 (@pxref{Conventions, General Syntactic Conventions}).
 
-@item SPLIT_INDEX
-For HTML.  If set, document is split, and an @code{@@printindex}
-happens in a sectioning element at the level of splitting, then split
-index pages at the next letter after they have more than that many
-entries. If set to 0, no index splitting.
-@item IN_ENCODING
-Input file encoding using perl encoding names. Set according to 
-@code{@@documentencoding}.
 @item USE_NLS
-If set use Native Language Support support fully. In the default case, 
-this is determined automatically at buildtime or at runtime.
-@item VERTICAL_HEAD_NAVIGATION
-For HTML.  
-If set, a vertical navigation panel is used.
-@item INLINE_CONTENTS
-If set, output the contents where the @code{@@contents} and similar 
-@@-commands are located. Ignored if @code{@@set*contentsaftertitlepage}
-is set.
-@item NODE_FILE_EXTENSION
-Extension for node files if @code{NODE_FILENAMES} is set.
-@item NO_CSS
-For HTML.
-Do not use CSS (@pxref{HTML CSS}).
-@item INLINE_CSS_STYLE
-For HTML.
-Put CSS directly in HTML elements and not at the beginning of the file.
-@item USE_TITLEPAGE_FOR_TITLE
-Use the full @code{@@titlepage} as title, not a simple title.
-@item SIMPLE_MENU
-If set use simply a preformatted style for the menu, instead of breaking 
-down the different parts of the menu. @xref{Menu Parts}.
-@item EXTENSION
-Extension added to the output file.
-@item INLINE_INSERTCOPYING
-If set @code{@@insertcopying} is replaced by the @code{@@copying}
-content as if @code{@@insertcopying} was a user defined macro.
+If set, use Native Language Support (NLS) support fully.  The default
+is determined automatically at build time, and is overridden
+automatically runtime.
+
 @item USE_NUMERIC_ENTITY
-For in XML, HTML.
-If set, use numeric entity when there is no corresponding textual entity.
-@item I18N_PERL_HASH
-If set use the old system for the translation of strings output by 
-the program in the document.
-@item ENABLE_ENCODING_USE_ENTITY
-For HTMl and XML.
-If @option{--enable-encoding} is set, but there is an entity corresponding
-with the letter or the symbol being output, prefer the entity.
-@item ICONS
-For HTML.  Use icons for the navigation panel.
-@item USE_UNICODE
+For HTML, XML.  If set, use numeric entities when there is no
+corresponding named entity.
+
+@item USE_TITLEPAGE_FOR_TITLE
+Use the full @code{@@titlepage} as the title, not a simple title string.
+
+@item VERTICAL_HEAD_NAVIGATION
+For HTML.  If set, a vertical navigation panel is used.
+
+@item USE_UNICODE zzz
 Use perl support for unicode. This is automatically detected.
 @item USE_UNIDECODE
 Use the @code{Text::Unidecode} perl module to transliterate more characters.
@@ -23013,7 +23031,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
+$Id: texinfo.txi,v 1.362 2011-01-02 01:00:45 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23092,7 +23110,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.361 2011-01-01 01:29:30 karl Exp $
+@comment $Id: texinfo.txi,v 1.362 2011-01-02 01:00:45 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
