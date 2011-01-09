@@ -1,3 +1,7 @@
+2011-01-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Other Configuration Variables): finish edit.
+
 2011-01-03  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Other Configuration Variables): continue edit.
@@ -9818,7 +9822,7 @@
 	* version 4.6.
 
 
-Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
