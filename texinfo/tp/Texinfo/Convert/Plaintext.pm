@@ -1530,8 +1530,8 @@ sub _convert($$)
         $self->{'empty_lines_count'} = 1;
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      return ($result, {'lines' => $self->count_bytes($result), 
-                        'bytes' => $bytes_count});
+      return ($result, {'bytes' => $self->count_bytes($result), 
+                        'lines' => $lines_count});
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         # this useless copy avoids perl changing the type to integer!
@@ -1834,7 +1834,7 @@ sub _convert($$)
     if ($root->{'cmdname'} eq 'float') {
       if ($self->{'debug'}) {
         my $type_texi = '';
-        $type_texi = Texinfo::Convert::Texinfo::convert($root->{'extra'}->{'type'})
+        $type_texi = Texinfo::Convert::Texinfo::convert({'contents' => $root->{'extra'}->{'type'}->{'content'}})
           if ($root->{'extra'} and $root->{'extra'}->{'type'});
         my $number = '';
         $number = $root->{'number'} if (defined($root->{'number'}));
@@ -1898,9 +1898,11 @@ sub _convert($$)
           $result .= $float_number;
           $bytes_count += $self->count_bytes($float_number);
           $self->{'format_context'}->[-1]->{'counter'} += 
-            Texinfo::Convert::Unicode::string_width($result);
+            Texinfo::Convert::Unicode::string_width($float_number);
         }
         if ($caption) {
+          # FIXME not sure it is right.
+          $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
           $self->advance_count_text(\$result, \$bytes_count, \$lines_count,
                $locations, 0, $self->_convert($caption->{'args'}->[0]));
         }

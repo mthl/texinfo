@@ -51,6 +51,35 @@ $test_text.
 '
 @shortcontents
 '],
+['section_below_unnumbered',
+'
+@contents
+
+@node Top
+@top Top
+
+Top node.
+
+@menu
+* Unn::
+@end menu
+
+
+@node Unn
+@unnumbered Unn
+
+@menu
+* Sec::
+@end menu
+
+@node Sec
+@section Sec
+
+Should be unnumbered.
+
+@bye
+'
+],
 );
 
 my @test_cases = (

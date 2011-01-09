@@ -273,10 +273,17 @@ sub sectioning_structure($$)
         $command_numbers[$content->{'level'}] = 'A';
       }
       if (!$unnumbered_commands{$content->{'cmdname'}}) {
-        # construct the number
-        $content->{'number'} = $command_numbers[$number_top_level];
-        for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
-          $content->{'number'} .= ".$command_numbers[$i]";
+        # construct the number, if not below an unnumbered
+        if ($command_numbers[$number_top_level]) {
+          $content->{'number'} = $command_numbers[$number_top_level];
+          for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
+            $content->{'number'} .= ".$command_numbers[$i]";
+            # If there is an unnumbered above, then no number is added.
+            if (!$command_numbers[$i]) {
+              delete $content->{'number'};
+              last;
+            }
+          }
         }
       }
       $previous_section = $content;

@@ -23,6 +23,145 @@ In float.
 @caption{in caption@footnote{in footnote}}
 @end float
 '],
+['complex_float',
+'@node Top
+@top Test floats
+
+A list of floats at the beginning.
+@listoffloats Text
+
+After the listoffloats.
+@menu
+* chapter::
+@end menu
+
+@float Text, text with a lot of features
+An example of float @enddots{}
+
+@c makeinfo --docbook segfaults
+@ifset texi2html
+An example.
+@example 
+example
+@end example
+
+A multitable.
+@multitable {truc} {bidule}
+@item truc @tab bidule
+@item truc @tab bidule
+@end multitable
+@end ifset
+
+An index entry
+@cindex float example
+
+A table.
+@table @emph
+@item truc 
+line
+@end table
+
+An itemize.
+@itemize @minus
+@item truc 
+line
+@end itemize
+
+A ref.
+@xref{Top,xref Text with features}.
+A footnote.
+@footnote{footnote Text with features}.
+
+@TeX{} and @emph{@b{t@\'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+
+@caption{ An example of float caption@enddots{}
+An example.
+@example 
+example
+@end example
+
+@anchor{Anchor in caption}
+
+A table.
+@table @emph
+@item truc 
+line
+@end table
+
+A multitable.
+@multitable {truc} {bidule}
+@item truc @tab bidule
+@item truc @tab bidule
+@end multitable
+An index entry
+@cindex float example in caption
+
+An itemize.
+@itemize @minus
+@item truc 
+line
+@end itemize
+
+A ref.
+@xref{Top,xref Text with features caption}.
+A footnote.
+@footnote{footnote Text with features caption}.
+
+@TeX{} and @emph{@b{t@\'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+}
+
+@shortcaption{@TeX{} and @emph{@b{t@\'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.}
+
+@end float
+
+@node chapter
+@chapter A chapter
+
+@float Text, float with a lot of features and no shortcaption
+
+Float text of a float with a lot of features.
+
+@caption{ An example of float caption@enddots{} 2
+An example 2.
+@example 
+example 2
+@end example
+
+A table 2.
+@table @emph
+@item truc 2 
+line 2
+@end table
+
+A multitable 2.
+@multitable {truc} {bidule}
+@item truc 2 @tab bidule
+@item truc 2 @tab bidule
+@end multitable
+An index entry 2
+@cindex float example in caption 2
+
+An itemize 2.
+@itemize @minus
+@item truc 2
+line
+@end itemize
+
+@anchor{Anchor in caption 2}
+
+A ref 2.
+@xref{Top,xref Text with features caption}.
+A footnote 2.
+@footnote{footnote Text with features caption 2}.
+
+@TeX{} and @emph{@b{t@\'e@^{@dotless{i}}}@url{an_url}} @sc{and} @verb{!it is @verb!} @ a wo@-rd @!@@ @AE{}.
+}
+
+@end float
+
+@xref{text with a lot of features}.
+
+'],
 ['numbering_captions_listoffloats',
 '@node Top
 @top Test floats

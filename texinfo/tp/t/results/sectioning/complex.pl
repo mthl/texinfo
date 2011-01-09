@@ -1210,7 +1210,6 @@ $result_trees{'complex'} = {
         'line_nr' => 36,
         'macro' => ''
       },
-      'number' => '1.0.1',
       'parent' => {}
     },
     {
@@ -1393,7 +1392,6 @@ $result_trees{'complex'} = {
         'line_nr' => 42,
         'macro' => ''
       },
-      'number' => '1.0.2',
       'parent' => {}
     },
     {
@@ -1656,7 +1654,6 @@ $result_trees{'complex'} = {
         'line_nr' => 52,
         'macro' => ''
       },
-      'number' => '1.0.3',
       'parent' => {}
     },
     {
@@ -2697,22 +2694,22 @@ unnumbered section
 unnumbered subsection
 ---------------------
 
-1.0.1 numbered subsection
--------------------------
+numbered subsection
+-------------------
 
 unnumbered subsection2
 ----------------------
 
-1.0.2 numbered subsection2
---------------------------
+numbered subsection2
+--------------------
 
 unnumbered section2
 ===================
 
 *  numbered sub3::
 
-1.0.3 numbered subsection3
---------------------------
+numbered subsection3
+--------------------
 
 
 1.1 numbered section
@@ -2802,7 +2799,6 @@ $result_sectioning{'complex'} = {
                     }
                   },
                   'level' => 3,
-                  'number' => '1.0.1',
                   'section_prev' => {},
                   'section_up' => {}
                 },
@@ -2831,7 +2827,6 @@ $result_sectioning{'complex'} = {
                     }
                   },
                   'level' => 3,
-                  'number' => '1.0.2',
                   'section_prev' => {},
                   'section_up' => {}
                 }
@@ -2861,7 +2856,6 @@ $result_sectioning{'complex'} = {
                     }
                   },
                   'level' => 3,
-                  'number' => '1.0.3',
                   'section_up' => {}
                 }
               ],
@@ -2987,8 +2981,7 @@ $result_nodes{'complex'} = {
             'associated_section' => {
               'cmdname' => 'subsection',
               'extra' => {},
-              'level' => 3,
-              'number' => '1.0.1'
+              'level' => 3
             },
             'normalized' => 'numbered-sub'
           },
@@ -3008,8 +3001,7 @@ $result_nodes{'complex'} = {
                 'associated_section' => {
                   'cmdname' => 'subsection',
                   'extra' => {},
-                  'level' => 3,
-                  'number' => '1.0.2'
+                  'level' => 3
                 },
                 'normalized' => 'numbered-sub2'
               },
@@ -3045,8 +3037,7 @@ $result_nodes{'complex'} = {
             'associated_section' => {
               'cmdname' => 'subsection',
               'extra' => {},
-              'level' => 3,
-              'number' => '1.0.3'
+              'level' => 3
             },
             'normalized' => 'numbered-sub3'
           },
