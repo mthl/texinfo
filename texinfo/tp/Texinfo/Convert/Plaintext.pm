@@ -55,10 +55,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
-my %kept_misc_commands = %Texinfo::Convert::Text::kept_misc_commands;
-# 'sp', 'center', 'exdent',
-#                     'item', 'itemx', 'tab', 'headitem',
-#    'node',
+# misc commands that are of use for formatting.
+my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
 
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
@@ -75,7 +73,7 @@ foreach my $kept_command(keys (%informative_commands),
   'verbatiminclude', 'insertcopying', 
   'listoffloats', 'printindex',
   'contents', 'shortcontents', 'summarycontents') {
-  $kept_misc_commands{$kept_command} = 1;
+  $formatting_misc_commands{$kept_command} = 1;
 }
 my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
 my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
@@ -94,7 +92,7 @@ my %raw_commands = %Texinfo::Common::raw_commands;
 my @out_formats = @Texinfo::Common::out_formats;
 
 foreach my $def_command (keys(%def_commands)) {
-  $kept_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
+  $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
 my %preformatted_context_commands = %preformatted_commands;
@@ -105,7 +103,7 @@ foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
 my %ignored_misc_commands;
 foreach my $misc_command (keys(%misc_commands)) {
   $ignored_misc_commands{$misc_command} = 1 
-    unless ($kept_misc_commands{$misc_command});
+    unless ($formatting_misc_commands{$misc_command});
 }
 
 my %ignored_commands = %ignored_misc_commands;

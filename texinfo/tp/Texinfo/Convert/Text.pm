@@ -526,7 +526,7 @@ my %unicode_to_eight_bit = (
    },
 );
 
-our %kept_misc_commands;
+our %formatting_misc_commands;
 foreach my $command ('sp', 'center', 'exdent', 
                      'item', 'itemx', 'tab', 'headitem',
     'node',
@@ -552,7 +552,7 @@ foreach my $command ('sp', 'center', 'exdent',
     'majorheading',
     'chapheading',
     'centerchap') {
-  $kept_misc_commands{$command} = 1;
+  $formatting_misc_commands{$command} = 1;
 }
  
 my %ignored_types;
@@ -936,7 +936,7 @@ sub convert($;$)
                      and $root->{'args'}->[0]->{'type'} 
                      and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
                          or $root->{'args'}->[0]->{'type'} eq 'misc_arg') 
-                     and !$kept_misc_commands{$root->{'cmdname'}})))));
+                     and !$formatting_misc_commands{$root->{'cmdname'}})))));
   my $result = '';
   if (defined($root->{'text'})) {
     $result = $root->{'text'};
@@ -971,7 +971,7 @@ sub convert($;$)
       if ($root->{'args'}) {
         $result = convert($root->{'args'}->[0], $options) ."\n";
       }
-    } elsif ($kept_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
+    } elsif ($formatting_misc_commands{$root->{'cmdname'}} and $root->{'args'}) {
       if ($root->{'cmdname'} eq 'sp') {
         if ($root->{'extra'} and $root->{'extra'}->{'misc_args'}
             and $root->{'extra'}->{'misc_args'}->[0]) {
