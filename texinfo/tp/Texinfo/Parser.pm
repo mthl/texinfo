@@ -731,9 +731,13 @@ sub parse_texi_file ($$)
 {
   my $self = shift;
   my $file_name = shift;
+
   my $filehandle = do { local *FH };
-  # FIXME error message
-  open ($filehandle, $file_name) or return undef;
+  if (!open ($filehandle, $file_name)) { 
+    $self->document_error(sprintf($self->__("Can't read file %s: %s"), 
+                                  $file_name, $!));
+    return undef;
+  }
   my $line_nr = 0;
   my $line;
   my @first_lines;
