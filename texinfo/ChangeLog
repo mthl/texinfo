@@ -1,3 +1,8 @@
+2011-01-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (texi2html History): move to texi2oldapi.texi
+	archive file.
+
 2011-01-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Other Configuration Variables): finish edit.

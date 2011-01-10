@@ -1,10 +1,349 @@
-@c sections from the texi2html manual (only partly edited), removed
-@c because the new tree-based translators is likely to obviate them.
+@c history and some customization sections from the texi2html manual
+@c (only partly edited), excised
+@c because the new tree-based translator is likely to obviate them.
 @c Doesn't format on its own, is just here (for now) for archival purposes.
 @c
 @c   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-@c   2001, 2002, 2003, 2004, 2009, 2010 Free Software Foundation, Inc.
+@c   2001, 2002, 2003, 2004, 2009, 2010, 2011 Free Software Foundation, Inc.
 @c See texinfo.txi for copying conditions.
+
+@node Texi2HTML
+@appendix Texi2HTML history and relations with @command{makeinfo}
+
+In 2010 Texi2HTML was merged in GNU Texinfo.  Some informations are
+retained here, mainly for historical purposes.
+
+@menu
+* Texi2HTML history::               Texi2HTML history and makeinfo.
+* Texi2HTML texi2any differences::
+* Texi2HTML changes::               History of incompatibilities.
+@end menu
+
+@node Texi2HTML history
+@appendixsec Texi2HTML history and merge in Texinfo
+
+In early 1998 @command{makeinfo} wasn't able to produce
+HTML output format, but people still wanted documentation in
+HTML.  This was the birthing hour for @command{texi2html},
+with original author Lionel Cons.  The basic purpose of 
+@command{texi2html} was to convert Texinfo documents into HTML.
+
+Since then, HTML support in @command{makeinfo} improved, but
+@command{texi2html} was still stronger in some areas, including the degree to
+which it allows customization.  After being briefly maintained by Karl
+Berry in 1999, Olaf Bachmann was the maintainer until 2000, adding many 
+features.  Adrian Aichner and Derek Price took over maintainance in 2001 
+and Derek was the maintainer from 2003 to 2010, with some help from 
+Patrice Dumas.
+
+In 2010, @command{texi2html}, then hosted
+at @uref{http://www.nongnu.org/texi2html/} was made
+compatible with @command{makeinfo}, losing the focus on HTML to become a
+more generic translator, and merged in 
+@uref{http://www.gnu.org/software/texinfo/, GNU Texinfo} to
+replace @command{makeinfo} in C.
+@command{texi2html} is now installed as part of the texinfo package install,
+as an alias of @command{texi2any}.  The @command{texi2html} documentation 
+is also merged here in the Texinfo manual, as 
+the @command{texi2any}/@command{makeinfo} documentation.
+
+@node Texi2HTML texi2any differences
+@appendixsec Differences between @command{texi2html} and @command{texi2any} invokation
+
+There are some differences between an invokation of @command{texi2any} or
+@command{makeinfo} and @command{texi2html}.  With @command{texi2html}:
+@itemize @bullet
+@item HTML is the default output, as with @option{--html}.
+@item Command line is not parsed exactly like GNU getopt does. To be on the safe
+side:
+@itemize @bullet
+@item always use two dashes for long options.
+@item do not bundle short options, that is, use @code{-v -o -P} and not @code{-voP}.
+@end itemize
+@item Some options, although obsoleted are still available.
+@item The defaults for the HTML formatting may be slightly different. 
+Have a look at the function @code{t2h_default_set_variables_texi2html} 
+in @file{texi2html.init}.
+@end itemize
+
+@node Texi2HTML changes
+@appendixsec Texi2HTML incompatibilities with previous versions
+
+@command{texi2html} has accumulated a lot of incompatibilities in previous
+versions, and more were added after the merge in Texinfo.  Many 
+incompatibilities were introduced in version 1.68.  API changed also a 
+lot between 1.78 and 1.80. Between 1.82 and 5.0 API changed also quite 
+a bit, and more importantly, the whole internationalization handling was 
+changed.
+
+@itemize @bullet
+@item API changes between 5.0 and later versions
+@itemize @bullet
+
+@item no default initialization file for latex2html.  ALso don't search in 
+directories for the latex2html initialization file, simply use the file 
+given in argument.
+
+@item  don't show menu with @option{--no-headers} as said in the makeinfo documentation.
+
+@item obsolete the @option{--iso} command line option.
+
+@item obsolete texi2html specific variables. Here is the list with the associated
+  configuration variables that may be set instead, with @option{--set-init-variable}:
+@multitable {@option{--ignore-preamble-text}} {@code{IGNORE_PREAMBLE_TEXT}}
+@item  @option{--toc-links}               @tab @code{TOC_LINKS}
+@item  @option{--short-ext}               @tab @code{SHORTEXTN}
+@item  @option{--prefix}                  @tab @code{PREFIX}
+@item  @option{--short-ref}               @tab @code{SHORT_REF}
+@item  @option{--idx-sum}                 @tab @code{IDX_SUMMARY}
+@item  @option{--def-table}               @tab @code{DEF_TABLE}
+@item  @option{--ignore-preamble-text}    @tab @code{IGNORE_PREAMBLE_TEXT}
+@item  @option{--html-xref-prefix}        @tab @code{EXTERNAL_DIR}
+@item  @option{--l2h}                     @tab @code{L2H}
+@item  @option{--l2h-l2h}                 @tab @code{L2H_L2H}
+@item  @option{--l2h-skip}                @tab @code{L2H_SKIP}
+@item  @option{--l2h-tmp}                 @tab @code{L2H_TMP}
+@item  @option{--l2h-file}                @tab @code{L2H_FILE}
+@item  @option{--l2h-clean}               @tab @code{L2H_CLEAN}
+@item  @option{--use-nodes}               @tab @code{USE_NODES}
+@item  @option{--monolithic}              @tab @code{MONOLITHIC}
+@item  @option{--top-file}                @tab @code{TOP_FILE}
+@item  @option{--toc-file}                @tab @code{TOC_FILE}
+@item  @option{--frames}                  @tab @code{FRAMES}
+@item  @option{--menu}                    @tab @code{SHOW_MENU}
+@item  @option{--debug}                   @tab @code{DEBUG}
+@item  @option{--doctype}                 @tab @code{DOCTYPE}
+@item  @option{--frameset-doctype}        @tab @code{FRAMESET_DOCTYPE}
+@item  @option{--test}                    @tab @code{TEST}
+@end multitable
+
+@item remove completly $INVISIBLE_MARK, $USE_GLOSSARY, $CHECK, $EXPAND, 
+  $ENCODING, $CENTER_IMAGE, $HREF_DIR_INSTEAD_FILE, $USE_MENU_DIRECTIONS
+  they have been obsolete, sometimes for many years.
+@item DATE is now set as today, DOCUMENT_ENCODING as documentencoding,
+  extension as EXTENSION and DOCUMENT_DESCRIPTION as documentdescription.
+@item Don't use perl variables for configuration variables anymore. Instead, 
+  they should be set by 
+  @code{set_from_init_file('VARIABLE', value);}.
+  For example 
+@example
+$SPLIT = 'node';
+@end example
+  should be replaced by
+@example
+set_from_init_file('SPLIT', 'node');
+@end example
+@item configuration variables are not in @code{Texi2HTML::THISDOC} directly 
+  anymore, but in @code{Texi2HTML::THISDOC@{'variables'@}->@{$var@}}. they 
+  should be accessed
+  through @code{get_conf($var)}.
+@item remove $Texi2HTML::THISDOC@{'program_authors'@}. $Texi2HTML::THISDOC@{'program_and_version'@}
+  holds the program and version, while $Texi2HTML::THISDOC@{'program'@} is only
+  the program name.
+@end itemize
+@item API changes between 1.82 and 5.0:
+@itemize @bullet
+@item complex format handling API changed. $complex_format_map is replaced by 
+  a real hash %complex_format_map and the begin and end are no more 
+  evaluated.
+@item In the default case a gettext-like framework is now used for in document
+  string translations. The old framework is still available by setting 
+  $I18N_PERL_HASH.
+@item Information that can be set by @@-commands should now be accessed
+  through get_conf.
+@item $format_list_item_texi should now modify directly the @@item argument
+  and apply the @@-command given as @@table argument. Correspondingly, 
+  some arguments of $table_item have been removed.
+@item Formatting of titlepage changed, and @@title, @@subtitle and @@author
+  are now handled by $line_command
+@item $SEPARATED_FOOTNOTES has been replaced by $FOOTNOTESTYLE, that takes the 
+  same argument than @@footnotestyle.
+@item replace $LANG by $DOCUMENTLANGUAGE.
+@item replace $DO_CONTENTS by $CONTENTS and $DO_SCONTENTS by $SHORTCONTENTS.
+@item replace $TRANSLITERATE_NODE by $TRANSLITERATE_FILE_NAMES.
+@item replace $SECTION_NAVIGATION by $HEADERS.
+@item @@verbatiminclude is now a $raw command argument distinct from @@verbatim.
+@item @@direntry is formatted like a menu and passed down to $menu_command.
+@item add $NODE_FILENAMES to use node names for files associated with nodes, 
+  such that $NODE_FILES is only means creating redirection files.
+@item Remove the user from footer, and the corresponding USER variable and
+  $Texi2HTML::THISDOC@{user@}.
+@item Don't treat _setfilename as a value set. It should be available through
+  get_conf. Same for all the other @@-commands previously avaiable as
+  values.
+@item change in class attribute for html elements:
+for ul to class "no-bullet" ($NO_BULLET_LIST_ATTRIBUTE). @@top 
+and @@centerchap have now their command name as class.
+@@node heading class is now "node-heading", instead of "node".
+The whole header is in an element with class "header" 
+(was "node" when !$HEADER_IN_TABLE).
+@item print_element_header is obsoleted, 
+things should be directly done in element_heading.
+@item Add 'inline_attribute' for an XML attribute that should be closed at
+  paragraph end and reopened at paragraph begin. Consequently the closing
+  and opening of 'attribute' isn't done anymore in paragraph and 
+  preformatted.
+@item USE_ISO now only determines if @code{''}, @code{``} @code{---} and @code{--} are transformed
+  into entities. t2h_default_set_iso_symbols sets or unsets USE_ISO,
+  %things_map/%pre_map/%simple_format_simple_map_texi, 
+  $OPEN_QUOTE_SYMBOL and $CLOSE_QUOTE_SYMBOL.
+  %iso_symbols is unused now.
+@item change in the normal_text function reference API, now there is an 
+  input variable true if in @@math.
+@item change the external_ref API, fourth argument is now the file name and
+  add the node as an extra argument.
+@item rename $Texi2HTML::THISDOC@{css_lines@} as $Texi2HTML::THISDOC@{css_rule_lines@}
+@end itemize
+@item API changes between 1.78 and 1.80: 
+@itemize @bullet
+@item what was done in the beginning of the $print_section 
+function reference is now done in $print_element_header.
+@item there is a new argument for $normal_text.
+@item there is a new argument for $menu_link and $simple_menu_link, and the 
+name argument is always set, even if there is no explicit name. The new 
+argument is true if there really was an explicit name.
+@item $internal_ref and $external_ref don't change inforef to xref anymore.
+@item in $table_item the text is not formatted with the format command,
+  the text_formatted argument is.
+@item definition index entries are now formatted with $definition_index_entry,
+  not with $definition_category anymore.
+@item $printindex is called if an index appears, even if the index is not 
+defined or there are no index entries.
+@item  new argument (@@-command name) for $quotation and $quotation_prepend_text.
+@item change in the heading API. THIS_HEADER is not used anymore.
+  New function reference, element_heading  to format a node or a section 
+  heading, including navigation and label. Accordingly, print_Top and 
+  one_section don't print the element header anymore. Also it is
+  reported if the element is a new element, is the main element and
+  more arguments, and top element heading is always done in heading.
+@item  print_element_header and print_navigation now return their result.	
+@item the @code{copying} key of %Texi2HTML::THISDOC is now called
+@code{copying_comment}.
+@item TOC_LIST_ATTRIBUTE is now called NO_BULLET_LIST_ATTRIBUTE.
+@item TOC_LIST_STYLE is now called NO_BULLET_LIST_STYLE.
+@item the $unknown function reference has a new argument, the pass number.
+@item @option{--sec-nav} is replaced by @option{--headers}.
+@item @option{--Verbose} is replaced by @option{--verbose}.
+@item @option{--lang} is replaced by @option{--document-language}.
+@item @option{--separated-footnotes} is replaced by @option{--footnote-style}.
+@item @option{--lang} is replaced by @option{--document-language}.
+@item @code{&$menu_comment} is removed, @code{menu_comment} is now handled
+  like an @@-command.
+@item @code{@@detailmenu} is now formatted more like @code{@@menu}, and
+the @code{&$menu} function reference is replaced by @code{&$menu_command}.
+@code{&$menu} is kept for backward compatibility. If @code{&$menu} is defined, 
+@code{@@detailmenu} is ignored.
+@item the API for the formatting of menus completly changed. $simple_menu_link
+  is removed, everything should be done in $menu_link.
+@item image API changed, and is unstable, so not documented.
+@item image file paths are not completed anymore in the default case. 
+  The previous
+  behaviour can be restored with @code{$COMPLETE_IMAGE_PATHS} set to true.
+@item in %misc_command @samp{texi} is not used anymore. The value and macros
+are expanded as they should be unconditionnally.
+@item there is a new 'style' key in $complex_format_map, to be able to 
+  differentiate complex formats inheriting fonts and code_style (like 
+  @@format, @@display).
+@item $EXTENSION should be undef if one doesn't want an extension to be added.
+@item THISDOC@{'title'@} and similar are now for @@title since only one @@title
+  should appear in the document. @@settitle is tried first to set fulltitle.
+@item Configuration variables are modified anymore, instead the variable
+  value is put in $Texi2HTML::THISDOC@{'VAR'@}. This is the case for
+  DO_CONTENTS, DO_SCONTENTS, CSS_LINES, BODYTEXT, DOCUMENT_DESCRIPTION,
+  DOCUMENT_ENCODING, IN_ENCODING, ENCODING_NAME, OUT_ENCODING.
+
+  For example, if $CSS_LINES is defined, the value is put in 
+  $Texi2HTML::THISDOC@{'CSS_LINES'@} which is used for formatting, and if
+  $CSS_LINES is not defined, $Texi2HTML::THISDOC@{'CSS_LINES'@} is 
+  autodetected.
+@item  When there is no section and $USE_NODES is not set don't split by node.
+This behaviour and the previous aren't documented, so it could change
+in the future.
+@end itemize
+@item API changes between 1.76 and 1.78: 
+@itemize @bullet
+@item paragraph has new arguments
+with indentation information, added as the third argument, and
+other context information. The formatting linked with commands
+opened before the paragraph and closed after the paragraph are done
+in the formatting function. Similar
+things are done for preformatted.
+@item normal_text 
+changed completely. There
+are much more arguments to give informations about the context, and
+normal_text now does more text manipulation. 
+@item New arguments for image the alt text, the height and width, 
+the path to working dir and the path to image file relative 
+to working dir. More image formatting is
+done in the formatting function.
+@item New argument for empty_line.
+@item End of line removal is done in formatting function of definition line
+formatting.
+@item node_file_name now should only returns the node file, since the 
+redirection file isn't used anymore. element_file_name only is used for 
+file names, whatever NODES_FILES is.
+@end itemize
+@item changes between 1.66 and 1.68:
+@itemize @bullet
+@item When the manual is split the default is to put resulting files in 
+a directory with name the manual file basename (previously they were left in
+ the current directory). To avoid that, call texi2html with 
+@option{-output .}. This has been changed to be compatible with 
+@command{makeinfo} and also because it fits better with the cross
+manuals reference scheme.
+@item The option @option{--output} signification changed. It now
+has the same meaning than for @command{makeinfo}. It seems
+that in 1.66 it was the same than @option{-out-file}. 
+@option{--output} new meaning allows to replace @option{-out-file} and 
+@option{-subdir} with a unique option. 
+
+More precisely @option{-out-file} forces the output to be unsplit 
+while @option{--output} behaves differently when split (it specifies
+the directory
+where the manual files should be outputted) and unsplit (it specifies
+the output file). @option{-subdir} is retained for backward compatibility.
+
+If you want a backward compatibility you can use @option{-subdir} 
+for the output directory if the document is split, and @option{-out-file}
+if the document isn't split. This hasn't been tested extensively though.
+@item Many options has been obsoleted but they are retained for
+backward compatibility.
+@item The init files are searched in new directories, however they 
+are still searched for in the old directories for backward
+compatibility.
+@item the option @option{--glossary} doesn't do anything. Likely
+nothing specific is done regarding bibliographies. This has been
+decided because this added some semantics to the texinfo formatting 
+language that weren't part of texinfo. 
+
+It should be possible to do
+something similar with macros. See for example @file{glossary.texi} 
+for glossary and @file{my-bib-macros.texi} for bibliography
+in the directory @file{examples}. In the web2c package there is
+an example of use of BibTeX, see @url{http://tug.org/texlive/devsrc/Build/source/TeX/texk/web2c/doc/} (the examples for bibliography are taken from the
+texinfo home page @url{http://www.gnu.org/software/texinfo/texinfo.html}).
+@item don't use @code{T2H_CENTER_IMAGE}. @code{@@center} should be used
+insead, it will give the right output for all the formats.
+@item If a directory creation fails the program aborts. This is much safer.
+@item The interface for internationalisation changed, although
+the previous wasn't documented a lot.
+@item the API described in this manual changed a lot. A important
+change was to use the @code{Texi2HTML::Config} names space instead of
+variables prefixed with @samp{T2H_} or  @samp{t2h_}. To cope with
+the change the prefix should be removed from variables in init files.
+Some variables are now in @code{%Texi2HTML::THISDOC}.
+@item @code{@@ifinfo} regions are not expanded by default. This may lead
+to warnings or errors especially if the Top node is enclosed in 
+@code{@@ifinfo}, as some node won't appear in menus. The quick fix
+is to call @command{texi2html} with the option @option{--ifinfo} and
+the right way should be to make more use of @code{@@ifnottex}.
+@item The code appearing before the first node is now outputted, it was
+ignored before. @option{--ignore-preamble-text} revert to the previous
+behaviour. Enclosing in @code{@@ifnothtml} would be much cleaner.
+
+@end itemize
+@end itemize
+
 
 
 * Customizing HTML Basic Commands:: Commands with no arguments, images, etc.
