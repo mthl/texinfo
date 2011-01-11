@@ -3175,11 +3175,16 @@ sub _parse_texi($;$)
                                            ord('@'), $command), $line_nr);
               }
             } elsif ($command =~ /^ifnot(.*)/) {
-              $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1});
+              $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1}
+                    # exception as explained in the texinfo manual
+                    or ($1 eq 'info' 
+                        and $self->{'expanded_formats_hash'}->{'plaintext'}));
               print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
             } else {
               die unless ($command =~ /^if(.*)/);
-              $ifvalue_true = 1 if ($self->{'expanded_formats_hash'}->{$1});
+              $ifvalue_true = 1 if ($self->{'expanded_formats_hash'}->{$1}
+                      or ($1 eq 'info' 
+                          and $self->{'expanded_formats_hash'}->{'plaintext'}));
               print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
             }
             if ($ifvalue_true) {

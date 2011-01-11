@@ -116,8 +116,43 @@ Something
 '@ignore
 
 This is ignored
-']
-
+'],
+['info_ifplaintext',
+'
+@ifplaintext
+this text will only appear in plain text.
+@end ifplaintext
+', {'expanded_formats' => ['info']}
+],
+['plaintext_ifinfo',
+'
+@ifinfo
+this text will appear only in Info and plain text.
+@end ifinfo
+', {'expanded_formats' => ['plaintext']}
+],
+['ifnotinfo_exception',
+'@ifnotinfo
+in ifnotinfo
+@end ifnotinfo
+', {'expanded_formats' => ['plaintext']}
+],
+['info_ifinfo_ifnotplaintext',
+'@ifinfo
+@ifnotplaintext
+This will be in Info, but not plain text.
+@end ifnotplaintext
+@end ifinfo
+', {'expanded_formats' => ['info']}
+],
+['plaintext_ifinfo_ifnotplaintext',
+'@ifinfo
+@ifnotplaintext
+This will be in Info, but not plain text.
+@end ifnotplaintext
+@end ifinfo
+', {'expanded_formats' => ['plaintext']}
+],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);
