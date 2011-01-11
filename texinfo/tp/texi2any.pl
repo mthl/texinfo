@@ -124,6 +124,8 @@ require Unicode::EastAsianWidth;
 
 # This is done at runtime because the modules are also found at runtime.
 require Texinfo::Parser;
+require Texinfo::Structuring;
+require Texinfo::Convert::Info;
 
 # determine configuration directories.
 
@@ -159,12 +161,21 @@ my $macro_expand = undef;
 my $option_force = 0;
 my $option_error_limit = 100;
 my $option_no_warn = 0;
+my $format = 'info';
+my $converter_default_options = {};
 
 
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub {push @texi2dvi_args, '-E'; $macro_expand = $_[1]; },
  'error-limit|e=i' => \$option_error_limit,
  'no-warn' => \$option_no_warn,
+);
+
+my %formats_table = (
+ 'info' => { 'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{Texinfo::Convert::Info->converter(@_)},
+           },
 );
 
 # Main processing, process all the files given on the command line
@@ -176,6 +187,21 @@ my @input_files = @ARGV;
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
 die sprintf(__("%s: missing file argument.\n"), $real_command_name) 
    .$failure_text unless (scalar(@input_files) >= 1);
+
+sub handle_errors($$) {
+  my $self = shift;
+  my $error_count = shift;
+  my ($errors, $new_error_count) = $self->errors();
+  $error_count += $new_error_count if ($new_error_count);
+  foreach my $error_message (@$errors) {
+    warn $error_message->{'error_line'} if ($error_message->{'type'} eq 'error'
+                                           or !$option_no_warn);
+  }
+  
+  exit (1) if ($error_count and (!$option_force
+     or $error_count > $option_error_limit));
+  return $error_count;
+}
 
 my $file_number = 0;
 # main processing
@@ -200,15 +226,12 @@ while(@input_files)
 
   my $parser = Texinfo::Parser::parser({'gettext' => \&__});
   my $tree = $parser->parse_texi_file($input_file_name);
-  my ($errors, $error_count) = $parser->errors();
-  foreach my $error_message (@$errors) {
-    warn $error_message->{'error_line'} if ($error_message->{'type'} eq 'error'
-                                           or !$option_no_warn);
-  }
-  exit (1) if ($error_count and (!$option_force
-     or $error_count > $option_error_limit));
 
-  next if (!defined($tree));
+  my $error_count = 0;
+  if (!defined($tree)) {
+    handle_errors($parser, $error_count);
+    next;
+  }
   if (defined($macro_expand)) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree);
     #print STDERR "$texinfo_text\n";
@@ -226,4 +249,24 @@ while(@input_files)
     }
   }
   $file_number++;
+  # every format needs the sectioning structure
+  my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
+  # this can be done for every format, since information is already gathered
+  my $floats = $parser->floats_information();
+
+  my $top_node;
+  if ($formats_table{$format}->{'nodes_tree'}) {
+    $top_node = Texinfo::Structuring::nodes_tree($parser);
+  }
+  if ($formats_table{$format}->{'floats'}) {
+    Texinfo::Structuring::number_floats($floats);
+  }
+  $error_count = handle_errors($parser, $error_count);
+
+  my $converter_options = { %$converter_default_options };
+  $converter_options->{'parser'} = $parser;
+  my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
+  $converter->convert($tree);
+  handle_errors($converter, $error_count);
 }
+
