@@ -259,34 +259,6 @@ sub update_counts ($$$$$$)
   }
 }
 
-sub _align_lines($$$)
-{
-  my $text = shift;
-  my $max_column = shift;
-  my $direction = shift;
-  my $result = '';
-  foreach my $line (split /^/, $text) {
-    chomp($line);
-    $line =~ s/^\s*//;
-    $line =~ s/\s*$//;
-    my $line_width = Texinfo::Convert::Unicode::string_width($line);
-    if ($line_width == 0) {
-      $result .= "\n";
-    } else {
-      my $spaces_prepended;
-      if ($line_width > $max_column) {
-        $spaces_prepended = 0;
-      } elsif ($direction eq 'center') {
-        $spaces_prepended = (($max_column -1 - $line_width) /2);
-      } else {
-        $spaces_prepended = ($max_column -1 - $line_width);
-      }
-      $result .= ' ' x$spaces_prepended . $line ."\n";
-    }
-  }
-  return $result;
-}
-
 #sub _flush_paragraph($$)
 #{
 #  my $self = shift;

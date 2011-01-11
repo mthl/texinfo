@@ -162,19 +162,58 @@ my $option_force = 0;
 my $option_error_limit = 100;
 my $option_no_warn = 0;
 my $format = 'info';
-my $converter_default_options = {};
+# this is the format associated with the output format, which is replaced
+# when the output format changes.  It may also be removed if there is the
+# corresponding --no-ifformat.
+my $default_expanded_format = [ $format ];
+my @conf_dirs = ();
+my @include_dirs = ();
+my @prepend_dirs = ();
 
+my $converter_default_options = {};
+my $parser_default_options = {'expanded_formats' => []};
+
+sub set_expansion($$) {
+  my $region = shift;
+  my $set = shift;
+  $set = 1 if (!defined($set));
+  if ($set) {
+    push @{$parser_default_options->{'expanded_formats'}}, $region
+      unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}})
+  } else {
+    @{$parser_default_options->{'expanded_formats'}} = 
+      grep {$_ ne $region} @{$parser_default_options->{'expanded_formats'}};
+    grep {$_ ne $region} @{$default_expanded_format};
+  }
+}
 
 my $result_options = Getopt::Long::GetOptions (
- 'macro-expand|E=s' => sub {push @texi2dvi_args, '-E'; $macro_expand = $_[1]; },
+ 'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; $macro_expand = $_[1]; },
  'error-limit|e=i' => \$option_error_limit,
  'no-warn' => \$option_no_warn,
+ 'ifhtml' => sub { set_expansion('html', $_[1]); },
+ 'ifinfo' => sub { set_expansion('info', $_[1]); },
+ 'ifxml' => sub { set_expansion('xml', $_[1]); },
+ 'ifdocbook' => sub { set_expansion('docbook', $_[1]); },
+ 'iftex' => sub { set_expansion('tex', $_[1]); },
+ 'ifplaintext' => sub { set_expansion('plaintext', $_[1]); },
+ 'I=s' => sub { push @texi2dvi_args, ('-'.$_[0], $_[1]);
+                push @include_dirs, split(/$quoted_path_separator/, $_[1]); },
+ 'conf-dir=s' => sub { push @conf_dirs, split(/$quoted_path_separator/, $_[1]); },
+ 'P=s' => sub { unshift @prepend_dirs, split(/$quoted_path_separator/, $_[1]); },
+# 'number-sections' => 
 );
 
 my %formats_table = (
- 'info' => { 'nodes_tree' => 1,
+ 'info' => {
+             'nodes_tree' => 1,
              'floats' => 1,
              'converter' => sub{Texinfo::Convert::Info->converter(@_)},
+           },
+  'plaintext' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
            },
 );
 
@@ -221,10 +260,21 @@ while(@input_files)
   if ($input_file_name =~ /(.*\/)/) {
     $input_directory = $1;
   }
+
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
 
-  my $parser = Texinfo::Parser::parser({'gettext' => \&__});
+  my $parser_options = { %$parser_default_options };
+
+  $parser_options->{'include_directories'} = [@include_dirs];
+  my @prependended_include_directories = ('.');
+  push @prependended_include_directories, $input_directory
+      if ($input_directory ne '.');
+  unshift @{$parser_options->{'include_directories'}}, @prependended_include_directories;
+  unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
+
+  $parser_options->{'gettext'} = \&__;
+  my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
   my $error_count = 0;

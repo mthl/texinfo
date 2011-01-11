@@ -234,7 +234,7 @@ my %default_configuration = (
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
   'novalidate' => 0,          # same as setting @novalidate.
-  'encoding' => 'us-ascii',   # Current encoding set by @documentencoding
+  'encoding' => undef,        # Current encoding set by @documentencoding
                               # and normalized
   'documentlanguage' => 'en', # Current documentlanguage set by 
                               # @documentlanguage or at initialization
