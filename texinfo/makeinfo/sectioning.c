@@ -1,7 +1,7 @@
 /* sectioning.c -- for @chapter, @section, ..., @contents ...
-   $Id: sectioning.c,v 1.31 2008-11-05 00:38:22 karl Exp $
+   $Id: sectioning.c,v 1.32 2011-01-15 00:23:19 karl Exp $
 
-   Copyright (C) 1999, 2001, 2002, 2003, 2004, 2007
+   Copyright (C) 1999, 2001, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -262,7 +262,7 @@ current_chapter_number (void)
     }
   else
     {
-      char s[5];
+      char s[100];
       sprintf (s, "%4d", numbers[0]);
       return xstrdup (s);
     }

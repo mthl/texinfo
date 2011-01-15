@@ -1,3 +1,9 @@
+2011-01-14  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/sectioning.c (current_chapter_number): increase possible
+	integer string to 100, following get_sectioning_number.
+	Report from Kees Cook, 13 Jan 2011 22:24:25, sv#32122.
+
 2011-01-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (texi2html History): move to texi2oldapi.texi
