@@ -372,16 +372,22 @@ foreach my $type ('before_item', 'text_root', 'document_root',
 
 my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
-  'subtitle', 'contents', 'shortcontents', 'summarycontents') {
+  'subtitle', 'contents', 'shortcontents', 'summarycontents',
+  'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
+  'frenchspacing', 'footnotestyle') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
 my %global_unique_commands;
 foreach my $global_unique_command ('documentencoding', 'title', 
-  'shorttitlepage', 'settitle', 'copying', 'documentdescription', 'titlepage',
+  'shorttitlepage', 'settitle', 'copying', 'documentdescription',
+  'novalidate', 'titlepage',
   'setfilename', 'setcontentsaftertitlepage', 
-  'setshortcontentsaftertitlepage', 'paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'documentencoding', 'footnotestyle') {
+  'setshortcontentsaftertitlepage',
+  'documentencoding', 'everyheadingmarks','everyfootingmarks',
+  'evenheadingmarks', 'oddheadingmarks', 'evenfootingmarks', 'oddfootingmarks',
+  'fonttextsize', 'pagesizes', 'setchapternewpage'
+) {
   $global_unique_commands{$global_unique_command} = 1;
 }
 

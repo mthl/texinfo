@@ -153,14 +153,121 @@ foreach my $texinfo_config_dir (@language_config_dirs) {
   push @program_init_dirs, "${texinfo_config_dir}/init";
 }
 
+# Namespace for configuration
+{
+package Texinfo::Config;
+
+my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
+  'HEADERS',
+  'MACRO_EXPAND', 'NUMBER_SECTIONS',
+  'NUMBER_FOOTNOTES', 'NODE_FILES',
+  'NO_WARN', 'VERBOSE',
+  'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
+  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT',
+  'BATCH', 'SILENT'
+);
+
+# FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
+my @variable_settables = (
+  'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
+  'TOP_FILE', 'TOC_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
+  'PREFIX', 'SHORT_REF', 'IDX_SUMMARY', 'DEF_TABLE', 'L2H', 'MONOLITHIC',
+  'L2H_L2H', 'L2H_SKIP', 'L2H_TMP', 'L2H_FILE', 'L2H_CLEAN',
+  'L2H_HTML_VERSION', 'IGNORE_PREAMBLE_TEXT', 'EXTERNAL_DIR', 'USE_ISO',
+  'SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
+  'VERTICAL_HEAD_NAVIGATION', 'INLINE_CONTENTS', 'NODE_FILE_EXTENSION',
+  'NO_CSS', 'INLINE_CSS_STYLE', 'USE_SECTIONS', 'USE_TITLEPAGE_FOR_TITLE',
+  'SIMPLE_MENU', 'EXTENSION', 'INLINE_INSERTCOPYING', 'USE_NUMERIC_ENTITY',
+  'I18N_PERL_HASH', 'ENABLE_ENCODING_USE_ENTITY', 'ICONS', 'USE_UNICODE',
+  'USE_UNIDECODE', 'DATE_IN_HEADER', 'OPEN_QUOTE_SYMBOL',
+  'CLOSE_QUOTE_SYMBOL', 'TOP_NODE_UP', 'TOP_NODE_FILE',
+  'TOP_NODE_FILE_TARGET', 'SHOW_TITLE', 'WORDS_IN_PAGE',
+  'HEADER_IN_TABLE', 'USE_ACCESSKEY', 'USE_REL_REV', 'USE_LINKS',
+  'OVERVIEW_LINK_TO_TOC', 'AVOID_MENU_REDUNDANCY', 'NODE_NAME_IN_MENU',
+  'NODE_NAME_IN_INDEX', 'USE_SETFILENAME', 'USE_SETFILENAME_EXTENSION',
+  'COMPLEX_FORMAT_IN_TABLE',
+  'USE_UP_FOR_ADJACENT_NODES', 'TOP_HEADING_AT_BEGINNING',
+  'SEPARATE_DESCRIPTION', 'IGNORE_BEFORE_SETFILENAME',
+  'COMPLETE_IMAGE_PATHS', 'USE_NODE_TARGET', 'NEW_CROSSREF_STYLE',
+  'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
+  'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
+  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
+  'TEXI2DVI');
+
+my %valid_options;
+foreach my $var (#@document_settable_at_commands, @document_global_at_commands,
+         @command_line_settables, @variable_settables) {
+  $valid_options{$var} = 1;
+}
+
+
+my ($cmdline_options, $options);
+
+sub _load_config ($) {
+  $cmdline_options = $_[0];
+}
+
+sub load_init_file($$) {
+  my $self = shift;
+  my $file = shift;
+  eval { require($file) ;};
+  if ($@ ne '') {
+    $self->document_warn(sprintf(main::__("error loading %s: %s\n"), 
+                                 $file, $@));
+  }
+}
+
+sub set_from_init_file ($$) {
+  my $var = shift;
+  my $value = shift;
+  if (!$valid_options{$var}) {
+    warn (sprintf(__('Unknown variable %s'), $var));
+    return 0;
+  }
+  return 0 if (defined($cmdline_options->{$var}));
+  $options->{$var} = $value;
+  return 1;
+}
+
+sub set_from_cmdline ($$) {
+  my $var = shift;
+  my $value = shift;
+  delete $options->{$var};
+  if (!$valid_options{$var}) {
+    warn (sprintf(__('Unknown variable %s'), $var));
+    return 0;
+  }
+  $cmdline_options->{$var} = $value;
+  return 1;
+}
+
+# FIXME also get @-command results?
+sub get_conf($) {
+  my $var = shift;
+  if (exists($cmdline_options->{$var})) {
+    return $cmdline_options->{$var};
+  } elsif (exists($options->{$var})) {
+    return $options->{$var};
+  } else {
+    return undef;
+  }
+}
+
+}
+
+sub set_from_cmdline ($$) {
+  return &Texinfo::Config::set_from_cmdline(@_);
+}
+
+sub get_conf ($) {
+  return &Texinfo::Config::get_conf(@_);
+}
+
 my @input_file_suffixes = ('.txi','.texinfo','.texi','.txinfo','');
 
 my @texi2dvi_args = ();
 
 my $macro_expand = undef;
-my $option_force = 0;
-my $option_error_limit = 100;
-my $option_no_warn = 0;
 my $format = 'info';
 # this is the format associated with the output format, which is replaced
 # when the output format changes.  It may also be removed if there is the
@@ -172,6 +279,8 @@ my @prepend_dirs = ();
 
 my $converter_default_options = {};
 my $parser_default_options = {'expanded_formats' => []};
+
+Texinfo::Config::_load_config($parser_default_options);
 
 sub set_expansion($$) {
   my $region = shift;
@@ -187,10 +296,11 @@ sub set_expansion($$) {
   }
 }
 
+
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; $macro_expand = $_[1]; },
- 'error-limit|e=i' => \$option_error_limit,
- 'no-warn' => \$option_no_warn,
+ 'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
+ 'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
  'ifhtml' => sub { set_expansion('html', $_[1]); },
  'ifinfo' => sub { set_expansion('info', $_[1]); },
  'ifxml' => sub { set_expansion('xml', $_[1]); },
@@ -201,7 +311,8 @@ my $result_options = Getopt::Long::GetOptions (
                 push @include_dirs, split(/$quoted_path_separator/, $_[1]); },
  'conf-dir=s' => sub { push @conf_dirs, split(/$quoted_path_separator/, $_[1]); },
  'P=s' => sub { unshift @prepend_dirs, split(/$quoted_path_separator/, $_[1]); },
-# 'number-sections' => 
+ 'number-sections' => sub { set_from_cmdline('NUMBER_SECTIONS', $_[1]); },
+ 'plaintext' => sub {$format = 'plaintext';},
 );
 
 my %formats_table = (
@@ -234,18 +345,19 @@ sub handle_errors($$) {
   $error_count += $new_error_count if ($new_error_count);
   foreach my $error_message (@$errors) {
     warn $error_message->{'error_line'} if ($error_message->{'type'} eq 'error'
-                                           or !$option_no_warn);
+                                           or !get_conf('NO_WARN'));
   }
   
-  exit (1) if ($error_count and (!$option_force
-     or $error_count > $option_error_limit));
+  exit (1) if ($error_count and (!get_conf('FORCE')
+     or $error_count > get_conf('ERROR_LIMIT')));
   return $error_count;
 }
 
-my $file_number = 0;
+my $file_number = -1;
 # main processing
 while(@input_files)
 {
+  $file_number++;
   my $input_file_arg = shift(@input_files);
   my $input_file_name;
   # try to concatenate with different suffixes. The last suffix is ''
@@ -274,6 +386,7 @@ while(@input_files)
   unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
 
   $parser_options->{'gettext'} = \&__;
+
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
@@ -294,11 +407,10 @@ while(@input_files)
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
                     $macro_expand, $!));
       $error_count++;
-      exit (1) if ($error_count and (!$option_force
-         or $error_count > $option_error_limit));
+      exit (1) if ($error_count and (!get_conf('FORCE')
+         or $error_count > get_conf('ERROR_LIMIT')));
     }
   }
-  $file_number++;
   # every format needs the sectioning structure
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
   # this can be done for every format, since information is already gathered
@@ -314,9 +426,12 @@ while(@input_files)
   $error_count = handle_errors($parser, $error_count);
 
   my $converter_options = { %$converter_default_options };
+  if (get_conf('OUTFILE') and $file_number == 0) {
+    $converter_options->{'outfile'} = get_conf('OUTFILE');
+  }
   $converter_options->{'parser'} = $parser;
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
-  $converter->convert($tree);
+  $converter->output($tree);
   handle_errors($converter, $error_count);
 }
 

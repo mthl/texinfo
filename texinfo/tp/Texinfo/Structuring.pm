@@ -189,7 +189,7 @@ sub sectioning_structure($$)
   my $section_top;
   
   # holds the current number for all the levels.  It is not possible to use
-  # something like the last child index, because of @unnumber.
+  # something like the last child index, because of @unnumbered.
   my @command_numbers;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'

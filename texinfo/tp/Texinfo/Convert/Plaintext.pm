@@ -46,6 +46,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  output
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -244,6 +245,7 @@ my %defaults = (
   'split_size'           => 300000,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
+  'NUMBER_SECTIONS'      => 1,
 
   'debug'                => 0,
   'test'                 => 0,
@@ -342,8 +344,13 @@ sub converter(;$)
                and $converter->{'structuring'}->{'sectioning_root'});
       $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
       foreach my $global_command (@informative_global_commands) {
-        $converter->_informative_command($converter->{'extra'}->{$global_command})
-          if (defined($converter->{'extra'}->{$global_command}));
+        if (defined($converter->{'extra'}->{$global_command})) {
+          my $root = $converter->{'extra'}->{$global_command};
+          if (ref($root) eq 'ARRAY') {
+            $root = $converter->{'extra'}->{$global_command}->[0];
+          }
+          $converter->_informative_command($root);
+        }
       }
       delete $conf->{'parser'};
     }
@@ -424,7 +431,7 @@ sub _convert_node($$)
   return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
 }
 
-sub convert($)
+sub convert($$)
 {
   my $self = shift;
   my $root = shift;
@@ -442,7 +449,34 @@ sub convert($)
       $result .= $node_text;
     }
   }
+
   return $result;
+}
+
+sub output($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $outfile = '-';
+  if (defined($self->{'OUTFILE'})) {
+    $outfile = $self->{'OUTFILE'};
+  }
+  
+  my $fh = $self->Texinfo::Common::open_out ($outfile,
+                                             $self->{'encoding'});
+  if (!$fh) {
+    $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
+                                  $outfile));
+    return undef;
+  }
+  my $result = $self->convert($root);
+  if (defined($result)) {
+    print $fh $result;
+    return $self;
+  } else {
+    return undef;
+  }
 }
 
 sub _normalise_space($)
@@ -778,7 +812,7 @@ sub _contents($$$)
     my ($section_title) = $self->convert_line({'contents'
                 => $section->{'extra'}->{'misc_content'}});
     my $text = Texinfo::Convert::Text::numbered_heading($section, 
-                                                        $section_title)."\n";
+                            $section_title, $self->{'NUMBER_SECTIONS'})."\n";
     $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
     if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
@@ -1248,7 +1282,7 @@ sub _convert($$)
     } elsif ($command eq 'titlefont') {
       ($result) = $self->convert_line ($root->{'args'}->[0]);
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
-           'cmdname' => 'titlefont'}, $result);
+           'cmdname' => 'titlefont'}, $result, $self->{'NUMBER_SECTIONS'});
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       return ($result, {'bytes' => $self->count_bytes($result),
                        'lines' => 2});
@@ -1349,7 +1383,8 @@ sub _convert($$)
       if ($root->{'args'}) {
         my ($heading) = $self->convert_line($root->{'args'}->[0]);
         my $heading_underlined = 
-             Texinfo::Convert::Text::heading ($root, $heading);
+             Texinfo::Convert::Text::heading ($root, $heading, 
+                                              $self->{'NUMBER_SECTIONS'});
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
         $bytes_count += $self->count_bytes($heading_underlined);
         # FIXME œ@* and @c?

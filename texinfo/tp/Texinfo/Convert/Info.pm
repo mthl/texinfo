@@ -49,7 +49,7 @@ $VERSION = '0.01';
 my $STDIN_DOCU_NAME = 'stdin';
 my $INFO_EXTENSION = 'info';
 
-sub convert($)
+sub output($)
 {
   my $self = shift;
   my $root = shift;
@@ -171,21 +171,20 @@ sub _info_header($)
   $input_basename =~ s/^.*\///;
   $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
   my $output_file;
-  if (defined($self->{'output_file'})) {
-    $output_file = $self->{'output_file'};
+  if (defined($self->{'OUTFILE'})) {
+    $output_file = $self->{'OUTFILE'};
   } elsif ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
            and $self->{'extra'}->{'setfilename'}->{'extra'}
            and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
     $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
-    $self->{'output_file'} = $output_file;
   } elsif ($input_basename ne '') {
     $output_file = $input_basename;
     $output_file =~ s/\.te?x(i|info)?$//;
     $output_file .= '.'.$INFO_EXTENSION;
-    $self->{'output_file'} = $output_file;
   } else {
     $output_file = '';
   }
+  $self->{'output_file'} = $output_file if ($output_file ne '');
   my $output_basename = $output_file;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
