@@ -8,6 +8,7 @@ use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
 use Texinfo::Convert::Plaintext;
+use Texinfo::Convert::Info;
 use File::Basename;
 use Data::Dumper;
 use Data::Compare;
@@ -26,6 +27,7 @@ ok(1);
 
 my %formats = (
   'plaintext' => \&convert_to_plaintext,
+  'info' => \&convert_to_info,
 );
 
 our $arg_generate;
@@ -103,13 +105,14 @@ sub cmp_trimmed($$$$)
   cmp_deeply($trimmed, $reference, $test_name);
 }
 
-sub new_test ($;$$)
+sub new_test ($;$$$)
 {
   my $name = shift;
   my $generate = shift;
   my $debug = shift;
+  my $formats = shift;
   my $test = {'name' => $name, 'generate' => $generate, 
-              'DEBUG' => $debug};
+              'DEBUG' => $debug, 'test_formats' => $formats};
   
   if ($generate) {
     mkdir "t/results/$name" if (! -d "t/results/$name");
@@ -184,6 +187,19 @@ sub convert_to_plaintext($$$)
   return ($errors, $result);
 }
 
+sub convert_to_info($$$)
+{
+  my $self = shift;
+  my $tree = shift;
+  my $parser = shift;
+  my $converter = 
+     Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
+                                         'parser' => $parser });
+  my $result = $converter->convert($tree);
+  my ($errors, $error_nrs) = $converter->errors();
+  return ($errors, $result);
+}
+
 sub test($$) 
 {
   my $self = shift;
@@ -205,6 +221,8 @@ sub test($$)
   if ($parser_options and $parser_options->{'test_formats'}) {
     push @tested_formats, @{$parser_options->{'test_formats'}};
     delete $parser_options->{'test_formats'};
+  } elsif ($self->{'test_formats'}) {
+    push @tested_formats, @{$self->{'test_formats'}};
   }
 
   my $parser = Texinfo::Parser->parser({'test' => 1,
@@ -445,15 +463,16 @@ sub run_all($$;$$$)
   }
 }
 
-sub run_all_files($$;$$$)
+sub run_all_files($$;$$$$)
 {
   my $name = shift;
   my $test_cases = shift;
   my $test_case_name = shift;
   my $generate = shift;
   my $debug = shift;
+  my $formats = shift;
 
-  my $test = new_test($name, $generate, $debug);
+  my $test = new_test($name, $generate, $debug, $formats);
   my $ran_tests = $test_cases;
   if (defined($test_case_name)) {
     if ($test_case_name =~ /^\d+$/) {

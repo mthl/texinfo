@@ -341,7 +341,7 @@ sub _printindex($$)
   # this is used to count entries that are the same
   my %entry_counts = ();
 
-  # FIXME second maybe should be index_prefix of eeach entry?
+  # FIXME second maybe should be index_prefix of each entry?
   my $in_code = $self->{'index_names'}->{$index_name}->{$index_name};
 
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
@@ -372,13 +372,12 @@ sub _printindex($$)
     my $node_text;
     if (!defined($entry->{'node'})) {
       $node_text = $self->gdt('(outside of any node)');
-      $bytes_count += $self->count_bytes($node_text);
-      $entry_line .= $node_text;
     } else {
-      $self->advance_count_text(\$entry_line, \$bytes_count, undef,
-           undef, 0, $self->convert_line({'type' => 'code', 
-                'contents' => $entry->{'node'}->{'extra'}->{'node_content'}}));
+      $node_text = {'type' => 'code',
+                'contents' => $entry->{'node'}->{'extra'}->{'node_content'}};
     }
+    $self->advance_count_text(\$entry_line, \$bytes_count, undef,
+           undef, 0, $self->convert_line($node_text));
     $entry_line .= '.';
     $bytes_count += $self->count_bytes('.');
 

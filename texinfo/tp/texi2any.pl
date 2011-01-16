@@ -227,7 +227,7 @@ foreach my $var (@document_settable_at_commands, @document_global_at_commands,
 
 
 my $cmdline_options;
-our $options;
+our $options = {};
 
 sub _load_config ($) {
   $cmdline_options = $_[0];

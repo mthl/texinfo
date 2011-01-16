@@ -402,12 +402,27 @@ bbb
 ']
 );
 
+my @test_printindex = ();
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  if ($test->[0] eq 'all_commands' or $test->[0] eq 'all_commands_delimiters') {
+    push @test_printindex, [$test->[0] . '_printindex',
+                            $test->[1] . '
+@heading Functions
+@printindex fn
+
+@heading Types
+@printindex tp
+
+@heading Variables
+@printindex vr
+', {'test_formats' => ['info']}]; 
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('def', [@test_cases, @test_invalid], $arg_test_case,
+run_all ('def', [@test_cases, @test_invalid, @test_printindex], $arg_test_case,
    $arg_generate, $arg_debug);
 
