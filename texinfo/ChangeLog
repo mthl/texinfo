@@ -1,3 +1,9 @@
+2011-01-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (\includezzz, \doverbatiminclude): report what's
+	being included to the log.
+	(\fontttextsize, \DeclareUnicodeCharacter): comment out \wlog calls.
+
 2011-01-14  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/sectioning.c (current_chapter_number): increase possible
