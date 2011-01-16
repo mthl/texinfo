@@ -90,6 +90,12 @@ sub __($) {
   return Locale::Messages::dgettext($messages_textdomain, $msgid);
 }
 
+sub __p($$) {
+  my $context = shift;
+  my $msgid = shift;
+  return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
+}
+
 # FIXME use something else than srcdir?
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
 # FIXME
@@ -149,6 +155,7 @@ push @program_config_dirs, "$ENV{'HOME'}/.$program_name"
 push @program_config_dirs, "$sysconfdir/$program_name" if (defined($sysconfdir));
 push @program_config_dirs, "$datadir/$program_name" if (defined($datadir));
 
+@program_init_dirs = @program_config_dirs;
 foreach my $texinfo_config_dir (@language_config_dirs) {
   push @program_init_dirs, "${texinfo_config_dir}/init";
 }
@@ -156,6 +163,24 @@ foreach my $texinfo_config_dir (@language_config_dirs) {
 # Namespace for configuration
 {
 package Texinfo::Config;
+
+my @document_settable_at_commands =
+       ('everyheading', 'everyfooting', 'evenheading',
+        'evenfooting', 'oddheading', 'oddfooting', 'headings',
+        'allowcodebreaks', 'frenchspacing', 'exampleindent',
+        'firstparagraphindent', 'paragraphindent', 'clickstyle',
+        'documentlanguage');
+
+# those should be unique
+my @document_global_at_commands = ('contents', 'shortcontents',
+        'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
+        'footnotestyle', 'novalidate', 'kbdinputstyle', 'documentencoding',
+        'setfilename', 'today', 'documentdescription',
+        'everyheadingmarks','everyfootingmarks',
+        'evenheadingmarks','oddheadingmarks','evenfootingmarks','oddfootingmarks',
+        'fonttextsize', 'pagesizes', 'setchapternewpage'
+        );
+
 
 my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'HEADERS',
@@ -195,25 +220,26 @@ my @variable_settables = (
   'TEXI2DVI');
 
 my %valid_options;
-foreach my $var (#@document_settable_at_commands, @document_global_at_commands,
+foreach my $var (@document_settable_at_commands, @document_global_at_commands,
          @command_line_settables, @variable_settables) {
   $valid_options{$var} = 1;
 }
 
 
-my ($cmdline_options, $options);
+my $cmdline_options;
+our $options;
 
 sub _load_config ($) {
   $cmdline_options = $_[0];
 }
 
-sub load_init_file($$) {
-  my $self = shift;
+sub _load_init_file($) {
   my $file = shift;
   eval { require($file) ;};
-  if ($@ ne '') {
-    $self->document_warn(sprintf(main::__("error loading %s: %s\n"), 
-                                 $file, $@));
+  my $e = $@;
+  if ($e ne '') {
+    main::document_warn(sprintf(main::__("error loading %s: %s\n"), 
+                                 $file, $e));
   }
 }
 
@@ -234,7 +260,7 @@ sub set_from_cmdline ($$) {
   my $value = shift;
   delete $options->{$var};
   if (!$valid_options{$var}) {
-    warn (sprintf(__('Unknown variable %s'), $var));
+    warn (sprintf(main::__('Unknown variable %s'), $var));
     return 0;
   }
   $cmdline_options->{$var} = $value;
@@ -254,6 +280,42 @@ sub get_conf($) {
 }
 
 }
+
+# file:        file name to locate. It can be a file path.
+# directories: a reference on a array containing a list of directories to
+#              search the file in. 
+# all_files:   if true collect all the files with that name, otherwise stop
+#              at first match.
+sub locate_init_file($$$)
+{
+  my $file = shift;
+  my $directories = shift;
+  my $all_files = shift;
+
+  if ($file =~ /^\//) {
+    return $file if (-e $file and -r $file);
+  } else {
+    my @files;
+    foreach my $dir (@$directories) {
+      next unless (-d "$dir");
+      if ($all_files) {
+        push (@files, "$dir/$file") if (-e "$dir/$file" and -r "$dir/$file");
+      } else {
+        return "$dir/$file" if (-e "$dir/$file" and -r "$dir/$file");
+      }
+    }
+    return @files if ($all_files);
+  }
+  return undef;
+}
+
+
+# read initialization files
+foreach my $file (locate_init_file($conf_file_name, 
+                  [ reverse(@program_config_dirs) ], 1)) {
+  Texinfo::Config::_load_init_file($file);
+}
+
 
 sub set_from_cmdline ($$) {
   return &Texinfo::Config::set_from_cmdline(@_);
@@ -276,11 +338,13 @@ my $default_expanded_format = [ $format ];
 my @conf_dirs = ();
 my @include_dirs = ();
 my @prepend_dirs = ();
+my @css_files = ();
+my @css_refs = ();
 
 my $converter_default_options = {};
-my $parser_default_options = {'expanded_formats' => []};
+my $parser_default_options = {'expanded_formats' => [], 'values' => {}};
 
-Texinfo::Config::_load_config($parser_default_options);
+Texinfo::Config::_load_config($converter_default_options);
 
 sub set_expansion($$) {
   my $region = shift;
@@ -296,11 +360,16 @@ sub set_expansion($$) {
   }
 }
 
+sub document_warn ($) {
+  return if (get_conf('NO_WARN'));
+  my $text = shift;
+  chomp ($text);
+  warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
+}
 
 my $result_options = Getopt::Long::GetOptions (
- 'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; $macro_expand = $_[1]; },
- 'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
- 'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
+ 'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
+                             $macro_expand = $_[1]; },
  'ifhtml' => sub { set_expansion('html', $_[1]); },
  'ifinfo' => sub { set_expansion('info', $_[1]); },
  'ifxml' => sub { set_expansion('xml', $_[1]); },
@@ -312,8 +381,114 @@ my $result_options = Getopt::Long::GetOptions (
  'conf-dir=s' => sub { push @conf_dirs, split(/$quoted_path_separator/, $_[1]); },
  'P=s' => sub { unshift @prepend_dirs, split(/$quoted_path_separator/, $_[1]); },
  'number-sections' => sub { set_from_cmdline('NUMBER_SECTIONS', $_[1]); },
- 'plaintext' => sub {$format = 'plaintext';},
+ 'number-footnotes' => sub { set_from_cmdline('NUMBER_FOOTNOTES', $_[1]); },
+ 'node-files' => sub { set_from_cmdline('NODE_FILES', $_[1]); },
+ 'footnote-style=s' => sub {
+    if ($_[1] eq 'end' or $_[1] eq 'separate') {
+       set_from_cmdline('footnotestyle', $_[1]);
+    } else {
+      die sprintf(__("%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"), $real_command_name, $_[1]);
+    }
+  },
+ 'split=s' => sub { set_from_cmdline('SPLIT', $_[1]); },
+ 'no-split' => sub { set_from_cmdline('SPLIT', ''); 
+                     set_from_cmdline('SPLIT_SIZE', undef);},
+ 'headers' => sub { set_from_cmdline('HEADERS', $_[1]);
+                    set_from_cmdline('SHOW_MENU', $_[1]);
+                    $parser_default_options->{'menus'} = 0;
+                    $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
+ 'output|out|o=s' => sub { 
+    my $var = 'OUTFILE';
+    if ($_[1] =~ m:/$: or -d $_[1]) {
+      $var = 'SUBDIR';
+    }
+    set_from_cmdline($var, $_[1]);
+    set_from_cmdline('OUT', $_[1]);
+    push @texi2dvi_args, '-o', $_[1];
+  },
+ 'no-validate|no-pointer-validate' => sub {
+      set_from_cmdline('novalidate',$_[1]);
+      $parser_default_options->{'novalidate'} = $_[1];
+    },
+ 'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
+ # FIXME pass to parser? What could it mean in parser?
+ 'verbose|v' => sub {set_from_cmdline('VERBOSE', $_[1]); 
+                     push @texi2dvi_args, '--verbose'; },
+ 'document-language=s' => sub { 
+                      set_from_cmdline('documentlanguage', $_[1]); 
+                      $parser_default_options->{'documentlanguage'} = $_[1];
+                      my @messages 
+                       = Texinfo::Common::warn_unknown_language($_[1], \&__);
+                      foreach my $message (@messages) {
+                        document_warn($message);
+                      }
+                    },
+ 'D=s' => sub {$parser_default_options->{'values'}->{$_[1]} = 1;},
+ 'U=s' => sub {delete $parser_default_options->{'values'}->{$_[1]};},
+ 'init-file=s' => sub {
+    my $file = locate_init_file($_[1], [ @conf_dirs, @program_init_dirs ], 0);
+    if (defined($file)) {
+      Texinfo::Config::_load_init_file($file);
+    } else {
+      document_warn (sprintf(__("Can't read init file %s"), $_[1]));
+    }
+ },
+ 'set-init-variable=s' => sub { 
+   my $var_val = $_[1];
+   if ($var_val =~ s/^(\w+)\s*=?\s*//) {
+     my $var = $1;
+     my $value = $var_val;
+     if ($value =~ /^undef$/i) {
+       $value = undef;
+     }
+     set_from_cmdline ($var, $value);
+   }
+ },
+ 'css-include=s' => \@css_files,
+ 'css-ref=s' => \@css_refs,
+ 'transliterate-file-names' => 
+     sub {set_from_cmdline ('TRANSLITERATE_FILE_NAMES', $_[1]);},
+ 'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
+ 'split-size=s' => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
+ 'paragraph-indent|p=s' => sub {
+    my $value = $_[1];
+    if ($value =~ /^([0-9]+)$/ or $value eq 'none' or $value eq 'asis') {
+      set_from_cmdline('paragraphindent', $_[1]);
+    } else {
+      die sprintf(__("%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"), 
+                  $real_command_name, $value);
+    }
+ },
+ 'fill-column|f=i' => sub {set_from_cmdline('FILLCOLUMN',$_[1]);},
+ 'enable-encoding' => sub {set_from_cmdline('ENABLE_ENCODING',$_[1]);
+                     $parser_default_options->{'ENABLE_ENCODING'} = $_[1];},
+ 'disable-encoding' => sub {set_from_cmdline('ENABLE_ENCODING', 0);
+                     $parser_default_options->{'ENABLE_ENCODING'} = 0;},
+ 'internal-links=s' => sub {set_from_cmdline('INTERNAL_LINKS', $_[1]);},
+ 'force|F' => sub {set_from_cmdline('FORCE', $_[1]);},
+ 'commands-in-node-names' => sub { ;},
+ 'output-indent=i' => sub { ;},
+ 'reference-limit=i' => sub { ;},
+ 'Xopt' => \@texi2dvi_args,
+ 'batch' => sub {set_from_cmdline('BATCH', $_[1]); 
+                 push @texi2dvi_args, '--'.$_[0];},
+ 'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
+                         push @texi2dvi_args, '--'.$_[0];},
+   
+ 'plaintext' => sub {$format = $_[0];},
+ 'html' => sub {$format = $_[0];},
+ 'info' => sub {$format = $_[0];},
+ 'docbook' => sub {$format = $_[0];},
+ 'xml' => sub {$format = $_[0];},
+ 'dvi' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
+ 'ps' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
+ 'pdf' => sub {$format = $_[0]; push @texi2dvi_args, '--'.$_[0];},
+ 'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
+                   $parser_default_options->{'DEBUG'} = $_[1];
+                   push @texi2dvi_args, '--'.$_[0]; },
 );
+
+exit 1 if (!$result_options);
 
 my %formats_table = (
  'info' => {
@@ -425,8 +600,9 @@ while(@input_files)
   }
   $error_count = handle_errors($parser, $error_count);
 
-  my $converter_options = { %$converter_default_options };
-  if (get_conf('OUTFILE') and $file_number == 0) {
+  my $converter_options = { %$converter_default_options, 
+                            %$Texinfo::Config::options };
+  if (defined(get_conf('OUTFILE')) and $file_number == 0) {
     $converter_options->{'outfile'} = get_conf('OUTFILE');
   }
   $converter_options->{'parser'} = $parser;

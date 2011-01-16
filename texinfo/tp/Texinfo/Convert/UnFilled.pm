@@ -64,7 +64,7 @@ sub end_line($)
   $line->{'leading_spaces'} = '';
   $line->{'only_spaces'} = 1;
   $line->{'lines_counter'}++;
-  print STDERR "END_LINE\n" if ($line->{'debug'});
+  print STDERR "END_LINE\n" if ($line->{'DEBUG'});
   return "\n";
 }
 
@@ -76,7 +76,7 @@ sub _add_text($$)
     if ($line->{'indent_length'}) {
       $line->{'leading_spaces'} .= 
         ' ' x ($line->{'indent_length'} - $line->{'counter'});
-      print STDERR "INDENT($line->{'counter'})\n" if ($line->{'debug'});
+      print STDERR "INDENT($line->{'counter'})\n" if ($line->{'DEBUG'});
     }
     $line->{'line_beginning'} = 0;
   }

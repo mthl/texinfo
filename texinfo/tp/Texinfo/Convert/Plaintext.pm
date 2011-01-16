@@ -229,7 +229,7 @@ my %defaults = (
   'frenchspacing'        => 'off',
   'paragraphindent'      => 3,
   'firstparagraphindent' => 'none',
-  'enable_encoding'      => 1,
+  'ENABLE_ENCODING'      => 1,
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
 #  'documentencoding'     => 'us-ascii',
@@ -239,15 +239,15 @@ my %defaults = (
   'encoding'             => undef,
   'output_encoding'      => undef,
   'output_file'          => undef,
-  'documentlanguage'     => 'en',
-  'number_footnotes'     => 1,
+  'documentlanguage'     => undef,
+  'NUMBER_FOOTNOTES'     => 1,
   'file_bytes_count'     => 0,
-  'split_size'           => 300000,
+  'SPLIT_SIZE'           => 300000,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
 
-  'debug'                => 0,
+  'DEBUG'                => 0,
   'test'                 => 0,
 );
 
@@ -356,7 +356,8 @@ sub converter(;$)
     }
     foreach my $key (keys(%$conf)) {
       if (!exists($defaults{$key})) {
-        warn "$key not a possible configuration in $name\n";
+        # many things may be passed down
+        #warn "$key not a possible configuration in $name\n";
       } else {
         $converter->{$key} = $conf->{$key};
         $converter->{'set'}->{$key} = 1;
@@ -497,7 +498,7 @@ sub _process_text($$$)
   my $text = $command->{'text'};
 
   $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
-  if ($self->{'enable_encoding'} and $self->{'documentencoding'} 
+  if ($self->{'ENABLE_ENCODING'} and $self->{'documentencoding'} 
       and $self->{'documentencoding'} eq 'utf-8') {
     return Texinfo::Convert::Unicode($self, $command);
   } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
@@ -527,7 +528,7 @@ sub new_formatter($$;$)
   $container_conf->{'frenchspacing'} = 1 if ($self->{'frenchspacing'} eq 'on');
   $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
     if (defined($self->{'format_context'}->[-1]->{'counter'}));
-  $container_conf->{'debug'} = 1 if ($self->{'debug'});
+  $container_conf->{'DEBUG'} = 1 if ($self->{'DEBUG'});
   if ($conf) {
     foreach my $key (keys(%$conf)) {
       $container_conf->{$key} = $conf->{$key};
@@ -606,7 +607,7 @@ sub _definition_category($$$$)
   #my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
   #my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
   #print STDERR "DEFINITION CATEGORY($style): $category $class\n"
-  #  if ($self->{'debug'});
+  #  if ($self->{'DEBUG'});
   if ($style eq 'f') {
     #return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
     return $self->gdt('{category} on {class}', { 'category' => $arg_category, 
@@ -985,7 +986,7 @@ sub _convert($$)
   #if (@{$self->{'formatters'}}) {
   my $formatter = $self->{'formatters'}->[-1];
   #}
-  if ($self->{'debug'}) {
+  if ($self->{'DEBUG'}) {
     my $empty_lines_count = '';
     $empty_lines_count = $self->{'empty_lines_count'} if defined($self->{'empty_lines_count'});
     print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}},$empty_lines_count)";
@@ -1010,7 +1011,7 @@ sub _convert($$)
   if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
        or ($root->{'cmdname'} 
             and $self->{'ignored_commands'}->{$root->{'cmdname'}})) {
-    print STDERR "IGNORED\n" if ($self->{'debug'});
+    print STDERR "IGNORED\n" if ($self->{'DEBUG'});
     return '';
   }
   my $result = '';
@@ -1035,7 +1036,7 @@ sub _convert($$)
   }
 
   if ($root->{'extra'} and $root->{'extra'}->{'invalid_nesting'}) {
-    print STDERR "INVALID_NESTING\n" if ($self->{'debug'});
+    print STDERR "INVALID_NESTING\n" if ($self->{'DEBUG'});
     return '';
   }
 
@@ -1180,7 +1181,7 @@ sub _convert($$)
         }
       }
       my $footnote_number;
-      if ($self->{'number_footnotes'}) {
+      if ($self->{'NUMBER_FOOTNOTES'}) {
         $self->{'footnote_index'}++ unless ($multiple_pass);
         $footnote_number = $self->{'footnote_index'};
       } else {
@@ -1345,12 +1346,12 @@ sub _convert($$)
             my ($formatted_prototype) = $self->convert_line($prototype, 
                                                         {'indent_length' => 0});
             print STDERR " MULTITABLE_PROTO {$formatted_prototype}\n" 
-              if ($self->{'debug'});
+              if ($self->{'DEBUG'});
             push @$columnsize, 
                  2+Texinfo::Convert::Unicode::string_width($formatted_prototype);
           }
         }
-        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'debug'});
+        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'DEBUG'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
       } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}
                and $root->{'extra'}->{'normalized'}) {
@@ -1431,7 +1432,7 @@ sub _convert($$)
       $bytes_count += $self->count_bytes($result);
       $lines_count += 1;
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
-         if ($self->{'debug'});
+         if ($self->{'DEBUG'});
       pop @{$self->{'formatters'}};
       $self->{'format_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($result);
@@ -1443,7 +1444,7 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'item_command'} = $root->{'cmdname'}
         if ($root->{'cmdname'} ne 'tab');
       print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$root->{'cmdname'}. Width: $cell_width\n"
-            if ($self->{'debug'});
+            if ($self->{'DEBUG'});
       die if (!defined($cell_width));
       push @{$self->{'format_context'}},
            { 'cmdname' => $root->{'cmdname'},
@@ -1636,7 +1637,7 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     } elsif ($root->{'type'} eq 'empty_line') {
       print STDERR "EMPTY_LINE ($self->{'empty_lines_count'})\n"
-        if ($self->{'debug'});
+        if ($self->{'DEBUG'});
       delete $self->{'format_context'}->[-1]->{'counter'};
       $self->{'empty_lines_count'}++;
       if ($self->{'empty_lines_count'} <= 1
@@ -1688,7 +1689,7 @@ sub _convert($$)
 
         pop @{$self->{'formatters'}};
         $self->{'empty_lines_count'} = 0;
-        print STDERR "     --> $result" if ($self->{'debug'});
+        print STDERR "     --> $result" if ($self->{'DEBUG'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
       # an end of line is ensured for the last argument.
@@ -1771,7 +1772,7 @@ sub _convert($$)
           push @{$cell_updated_locations->[$cell_idx]->{$location->{'lines'}}},
                  $location;
           print STDERR "MULTITABLE anchor $location->{'root'}->{'extra'}->{'normalized'}: c $cell_idx, l $location->{'lines'} ($location->{'bytes'})\n"
-                if ($self->{'debug'});
+                if ($self->{'DEBUG'});
           $max_lines = $location->{'lines'}+1 
                             if ($location->{'lines'}+1 > $max_lines);
         }
@@ -1779,7 +1780,7 @@ sub _convert($$)
       }
 
       print STDERR "ROW, max_lines $max_lines, indent_len $indent_len\n" 
-         if ($self->{'debug'});
+         if ($self->{'DEBUG'});
       
       # this is used to keep track of the last cell with content.
       my $max_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
@@ -1795,7 +1796,7 @@ sub _convert($$)
                                        or defined($cell_updated_locations->[$cell_idx]->{$line_idx}));
         }
         print STDERR "  L(last_cell $last_cell): $line_idx\n"
-          if ($self->{'debug'});
+          if ($self->{'DEBUG'});
 
         for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++) {
           my $cell_text = $cell_lines[$cell_idx]->[$line_idx];
@@ -1805,7 +1806,7 @@ sub _convert($$)
               $line = ' ' x $indent_len;
               $bytes_count += $self->count_bytes($line);
             }
-            print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'debug'});
+            print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'DEBUG'});
             $line .= $cell_text;
             $bytes_count += $self->count_bytes($cell_text);
             $line_width += Texinfo::Convert::Unicode::string_width($cell_text);
@@ -1813,7 +1814,7 @@ sub _convert($$)
           if (defined($cell_updated_locations->[$cell_idx]->{$line_idx})) {
             foreach my $location (@{$cell_updated_locations->[$cell_idx]->{$line_idx}}) {
               print STDERR "MULTITABLE UPDATE ANCHOR (l $line_idx, c $cell_idx): $location->{'root'}->{'extra'}->{'normalized'}: $location->{'bytes'} -> $bytes_count\n"
-                if ($self->{'debug'});
+                if ($self->{'DEBUG'});
               $location->{'bytes'} = $bytes_count;
             }
           }
@@ -1867,7 +1868,7 @@ sub _convert($$)
 
   if ($root->{'cmdname'}) {
     if ($root->{'cmdname'} eq 'float') {
-      if ($self->{'debug'}) {
+      if ($self->{'DEBUG'}) {
         my $type_texi = '';
         $type_texi = Texinfo::Convert::Texinfo::convert({'contents' => $root->{'extra'}->{'type'}->{'content'}})
           if ($root->{'extra'} and $root->{'extra'}->{'type'});
@@ -1884,7 +1885,7 @@ sub _convert($$)
         } elsif ($root->{'extra'}->{'shortcaption'}) {
           $caption = $root->{'extra'}->{'shortcaption'};
         }
-        #if ($self->{'debug'}) {
+        #if ($self->{'DEBUG'}) {
         #  my $caption_texi = 
         #    Texinfo::Convert::Texinfo::convert({ 'contents' => $caption->{'contents'}});
         #  print STDERR "  CAPTION: $caption_texi\n";

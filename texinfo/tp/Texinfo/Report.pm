@@ -87,7 +87,7 @@ sub line_warn($$$)
     $warn_line = sprintf($self->__("%s:%d: warning: %s\n"),
                          $file, $line_number->{'line_nr'}, $text);
   }
-  warn $warn_line if ($self->{'debug'});
+  warn $warn_line if ($self->{'DEBUG'});
   push @{$self->{'errors_warnings'}},
        { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line,
          %{$line_number} };
@@ -108,7 +108,7 @@ sub line_error($$$;$)
     $macro_text = " (possibly involving \@$line_number->{'macro'})"
        if ($line_number->{'macro'} ne '');
     my $error_text = "$file:$line_number->{'line_nr'}: $text$macro_text\n";
-    warn "$error_text" if ($self->{'debug'});
+    warn "$error_text" if ($self->{'DEBUG'});
     my $type = 'error';
     $type = 'error continuation' if ($continuation);
     push @{$self->{'errors_warnings'}},

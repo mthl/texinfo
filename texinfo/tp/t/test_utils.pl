@@ -109,7 +109,7 @@ sub new_test ($;$$)
   my $generate = shift;
   my $debug = shift;
   my $test = {'name' => $name, 'generate' => $generate, 
-              'debug' => $debug};
+              'DEBUG' => $debug};
   
   if ($generate) {
     mkdir "t/results/$name" if (! -d "t/results/$name");
@@ -177,7 +177,7 @@ sub convert_to_plaintext($$$)
   my $tree = shift;
   my $parser = shift;
   my $converter = 
-     Texinfo::Convert::Plaintext::converter({'debug' => $self->{'debug'},
+     Texinfo::Convert::Plaintext::converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser });
   my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();
@@ -209,7 +209,7 @@ sub test($$)
 
   my $parser = Texinfo::Parser->parser({'test' => 1,
                                         'include_directories' => ['t/include/'],
-                                        'debug' => $self->{'debug'},
+                                        'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
   # take the initial values to record only if there is something new
   my ($initial_index_names, $initial_merged_indices) 
@@ -217,7 +217,7 @@ sub test($$)
   # do a copy to compare the values and not the references
   $initial_index_names = { %{$initial_index_names} };
   $initial_merged_indices = { %{$initial_merged_indices} };
-  print STDERR "  TEST $test_name\n" if ($self->{'debug'});
+  print STDERR "  TEST $test_name\n" if ($self->{'DEBUG'});
   my $result;
   if (ref($test_case) eq 'ARRAY') {
     $result = $parser->parse_texi_text($test_text, 1);

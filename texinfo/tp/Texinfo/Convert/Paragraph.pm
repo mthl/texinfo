@@ -74,7 +74,7 @@ sub end_line($)
     delete $paragraph->{'indent_length_next'};        
   }
   $paragraph->{'lines_counter'}++;
-  print STDERR "END_LINE\n" if ($paragraph->{'debug'});
+  print STDERR "END_LINE\n" if ($paragraph->{'DEBUG'});
   return "\n";
 }
 
@@ -89,18 +89,18 @@ sub add_pending_word($)
       $result .= ' ' x ($paragraph->{'indent_length'} - $paragraph->{'counter'});
       $paragraph->{'counter'} = $paragraph->{'indent_length'};
       print STDERR "INDENT($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
-                   if ($paragraph->{'debug'});
+                   if ($paragraph->{'DEBUG'});
     } elsif ($paragraph->{'space'}) {
       $result .= $paragraph->{'space'};
       $paragraph->{'counter'} += length($paragraph->{'space'});
       print STDERR "ADD_SPACES($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
-         if ($paragraph->{'debug'});
+         if ($paragraph->{'DEBUG'});
       
     }
     $result .= $paragraph->{'word'};
     $paragraph->{'counter'} += $paragraph->{'word_counter'};
     print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
-      if ($paragraph->{'debug'});
+      if ($paragraph->{'DEBUG'});
     $paragraph->{'word'} = undef;
     $paragraph->{'word_counter'} = 0;
     $paragraph->{'space'} = '';
@@ -112,7 +112,7 @@ sub add_pending_word($)
 sub end($)
 {
   my $paragraph = shift;
-  print STDERR "PARA END\n" if ($paragraph->{'debug'});
+  print STDERR "PARA END\n" if ($paragraph->{'DEBUG'});
   my $result = $paragraph->add_pending_word();
   if ($paragraph->{'counter'} != 0) {
     $result .= "\n"; 
@@ -134,7 +134,7 @@ sub add_next($;$$$)
     $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
     $paragraph->{'word'} .= $word;
     $paragraph->{'word_counter'} += length($word);
-    print STDERR "WORD+ $word -> $paragraph->{'word'}\n" if ($paragraph->{'debug'});
+    print STDERR "WORD+ $word -> $paragraph->{'word'}\n" if ($paragraph->{'DEBUG'});
     # The $paragraph->{'counter'} != 0 is here to avoid having an
     # additional line output when the text is longer than the max.
     if ($paragraph->{'counter'} != 0 and 
@@ -199,14 +199,14 @@ sub add_text($$)
   my $result = '';
 
   while ($text ne '') {
-    if ($paragraph->{'debug'}) {
+    if ($paragraph->{'DEBUG'}) {
       my $word = 'UNDEF';
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
       print STDERR "($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
     }
     if ($text =~ s/^(\s+)//) {
       my $spaces = $1;
-      print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'debug'});
+      print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'DEBUG'});
       my $added_word = $paragraph->{'word'};
       $result .= $paragraph->add_pending_word();
       if ($paragraph->{'protect_spaces'}) {
@@ -238,7 +238,7 @@ sub add_text($$)
       }
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
-      print STDERR "EAST_ASIAN\n" if ($paragraph->{'debug'});
+      print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
       $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
       $paragraph->{'word'} .= $added;
       $paragraph->{'word_counter'} += 2;

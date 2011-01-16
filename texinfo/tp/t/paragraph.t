@@ -30,7 +30,7 @@ sub test_para($$$;$)
   my $conf = shift;
 
   my $result = '';
-  #$conf = {'debug' => 1} if (!defined($conf));
+  #$conf = {'DEBUG' => 1} if (!defined($conf));
   $conf = {} if (!defined($conf));
   my $para = Texinfo::Convert::Paragraph->new($conf);
   foreach my $arg (@$args) {
@@ -350,7 +350,7 @@ sub test_line($$$;$)
   my $conf = shift;
 
   my $result = '';
-  #$conf = {'debug' => 1} if (!defined($conf));
+  #$conf = {'DEBUG' => 1} if (!defined($conf));
   $conf = {} if (!defined($conf));
   my $line = Texinfo::Convert::Line->new($conf);
   foreach my $arg (@$args) {

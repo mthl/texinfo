@@ -288,7 +288,7 @@ sub sectioning_structure($$)
       }
       $previous_section = $content;
 
-      if ($self->{'debug'}) {
+      if ($self->{'DEBUG'}) {
         my $number = '';
         $number = $content->{'number'} if defined($content->{'number'});
         print STDERR "($content->{'level'}|$level|$command_structuring_level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
@@ -587,7 +587,7 @@ sub _do_index_keys($$)
   my $self = shift;
   my $index_entries = shift;
   my $options = {'sort_string' => 1};
-  if ($self->{'enable_encoding'} and $self->{'encoding'}) {
+  if ($self->{'ENABLE_ENCODING'} and $self->{'encoding'}) {
     $options->{'enabled_encoding'} = $self->{'encoding'};
   }
   foreach my $index_name (keys(%$index_entries)) {

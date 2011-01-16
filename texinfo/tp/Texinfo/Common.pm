@@ -22,6 +22,8 @@ package Texinfo::Common;
 
 use strict;
 
+use Texinfo::Documentlanguages;
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -499,6 +501,31 @@ sub open_out ($$;$)
   }
   push @{$self->{'opened_files'}}, $file;
   return $filehandle;
+}
+
+sub warn_unknown_language($$) {
+  my $lang = shift;
+  my $gettext = shift;
+
+  my @messages = ();
+  my $lang_code = $lang;
+  my $region_code;
+
+  if ($lang =~ /^([a-z]+)_([A-Z]+)/) {
+    $lang_code = $1;
+    $region_code = $2;
+  }
+
+  if (! $Texinfo::Documentlanguages::language_codes{$lang_code}) {
+    push @messages, sprintf(&$gettext("%s is not a valid language code"), 
+                            $lang_code);
+  }
+  if (defined($region_code) 
+       and ! $Texinfo::Documentlanguages::region_codes{$region_code}) {
+    push @messages, sprintf(&$gettext("%s is not a valid region code"), 
+                            $region_code);
+  }
+  return @messages;
 }
 
 1;

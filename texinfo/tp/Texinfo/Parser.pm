@@ -83,6 +83,8 @@ $VERSION = '0.01';
 
 # i18n
 
+my $DEFAULT_LANGUAGE = 'en';
+
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
@@ -124,6 +126,7 @@ sub gdt($$$;$)
 
   # FIXME do that in the converters when @documentlanguage is found.
   my $lang = $self->{'documentlanguage'};
+  $lang = $DEFAULT_LANGUAGE if (!defined($lang));
   my @langs = ($lang);
   if ($lang =~ /^([a-z]+)_([A-Z]+)/) {
     my $main_lang = $1;
@@ -179,8 +182,8 @@ sub gdt($$$;$)
     }
   }
   # FIXME reuse a parser?
-  if ($self->{'debug'}) {
-    $parser_conf->{'debug'} = 1;
+  if ($self->{'DEBUG'}) {
+    $parser_conf->{'DEBUG'} = 1;
     print STDERR "GDT $result\n";
   }
   my $parser = parser($parser_conf);
@@ -209,7 +212,7 @@ sub __($$)
 # initialized to values given by the user.
 my %default_configuration = (
   'test' => 0,
-  'debug' => 0,
+  'DEBUG' => 0,
   'menus' => 1,             # if false no menu error related.
   'gettext' => sub {return $_[0];},
   'expanded_formats' => [],
@@ -236,9 +239,10 @@ my %default_configuration = (
   'novalidate' => 0,          # same as setting @novalidate.
   'encoding' => undef,        # Current encoding set by @documentencoding
                               # and normalized
-  'documentlanguage' => 'en', # Current documentlanguage set by 
-                              # @documentlanguage or at initialization
-  'enable_encoding' => 1      # corresponds to --enable-encoding.
+  'documentlanguage' => undef, 
+                              # Current documentlanguage set by 
+                              # @documentlanguage
+  'ENABLE_ENCODING' => 1      # corresponds to --enable-encoding.
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -904,7 +908,7 @@ sub _parse_macro_command_line($$$$$;$)
       $self->line_error(sprintf($self->__("Bad syntax for \@%s"), $command),
                          $line_nr);
     }
-    print STDERR "MACRO \@$command $macro_name\n" if ($self->{'debug'});
+    print STDERR "MACRO \@$command $macro_name\n" if ($self->{'DEBUG'});
 
     $macro->{'args'} = [ 
       { 'type' => 'macro_name', 'text' => $macro_name, 
@@ -961,7 +965,7 @@ sub _begin_paragraph ($$)
             { 'type' => 'paragraph', 'parent' => $current, 'contents' => [] };
     $current->{'contents'}->[-1]->{'extra'}->{$indent} = 1 if ($indent);
     $current = $current->{'contents'}->[-1];
-    print STDERR "PARAGRAPH\n" if ($self->{'debug'});
+    print STDERR "PARAGRAPH\n" if ($self->{'DEBUG'});
     return $current;
   }
   return 0;
@@ -1004,7 +1008,7 @@ sub _end_paragraph ($$$)
     $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
   }
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
-    print STDERR "CLOSE PARA\n" if ($self->{'debug'});
+    print STDERR "CLOSE PARA\n" if ($self->{'DEBUG'});
     $current = $current->{'parent'};
   }
   return $current;
@@ -1167,10 +1171,10 @@ sub _merge_text ($$$)
       and $current->{'contents'}->[-1]->{'text'} !~ /\n/
       and !$no_merge_with_following_text) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
-    print STDERR "MERGED TEXT: $text|||\n" if ($self->{'debug'});
+    print STDERR "MERGED TEXT: $text|||\n" if ($self->{'DEBUG'});
   } else {
     push @{$current->{'contents'}}, { 'text' => $text, 'parent' => $current };
-    print STDERR "NEW TEXT: $text|||\n" if ($self->{'debug'});
+    print STDERR "NEW TEXT: $text|||\n" if ($self->{'DEBUG'});
   }
   return $current;
 }
@@ -1299,17 +1303,17 @@ sub _expand_macro_arguments($$$$)
           }
           $arguments->[-1] .= $protected_char;
           
-          print STDERR "MACRO ARG: $separator: $protected_char\n" if ($self->{'debug'});
+          print STDERR "MACRO ARG: $separator: $protected_char\n" if ($self->{'DEBUG'});
         } else {
           $arguments->[-1] .= '\\';
-          print STDERR "MACRO ARG: $separator\n" if ($self->{'debug'});
+          print STDERR "MACRO ARG: $separator\n" if ($self->{'DEBUG'});
         }
       } elsif ($separator eq ',') {
         if ($braces_level == 1) {
           if (scalar(@$arguments) < $args_total) {
             push @$arguments, '';
             $line =~ s/^\s*//;
-            print STDERR "MACRO NEW ARG\n" if ($self->{'debug'});
+            print STDERR "MACRO NEW ARG\n" if ($self->{'DEBUG'});
           } else {
             # implicit quoting when there is one argument.
             if ($args_total != 1) {
@@ -1330,7 +1334,7 @@ sub _expand_macro_arguments($$$$)
         $arguments->[-1] .= $separator;
       }
     } else {
-      print STDERR "MACRO ARG end of line\n" if ($self->{'debug'});
+      print STDERR "MACRO ARG end of line\n" if ($self->{'DEBUG'});
       $arguments->[-1] .= $line;
 
       ($line, $line_nr) = _new_line($self, $line_nr);
@@ -1346,7 +1350,7 @@ sub _expand_macro_arguments($$$$)
                                 $name), $line_nr);
   }
   print STDERR "END MACRO ARGS EXPANSION(".scalar(@$arguments)."): ".
-                  join("|\n", @$arguments) ."|\n" if ($self->{'debug'});
+                  join("|\n", @$arguments) ."|\n" if ($self->{'DEBUG'});
   return ($arguments, $line, $line_nr);
 }
 
@@ -1402,7 +1406,7 @@ sub _abort_empty_line($$;$)
        and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command')) {
-    print STDERR "ABORT EMPTY additional text $additional_text, current $current->{'contents'}->[-1]->{'text'}|)\n" if ($self->{'debug'});
+    print STDERR "ABORT EMPTY additional text $additional_text, current $current->{'contents'}->[-1]->{'text'}|)\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       pop @{$current->{'contents'}} 
@@ -1735,7 +1739,7 @@ sub _end_line($$$)
   if ($current->{'contents'} and @{$current->{'contents'}} 
       and $current->{'contents'}->[-1]->{'type'} 
       and $current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
-    print STDERR "END EMPTY LINE\n" if ($self->{'debug'});
+    print STDERR "END EMPTY LINE\n" if ($self->{'DEBUG'});
     if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
       my $empty_line = pop @{$current->{'contents'}};
       $current = _end_paragraph($self, $current, $line_nr);
@@ -1754,7 +1758,7 @@ sub _end_line($$$)
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
-      print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'debug'});
+      print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'DEBUG'});
     } elsif (!$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
             # FIXME remove this if an empty line in a brace command
             # is acceptable
@@ -1786,7 +1790,7 @@ sub _end_line($$$)
     # we abort the menu entry if there is no node name
     if ($empty_menu_entry_node 
           or $current->{'type'} eq 'menu_entry_name') {
-      print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'debug'});
+      print STDERR "FINALLY NOT MENU ENTRY\n" if ($self->{'DEBUG'});
       my $menu = $current->{'parent'}->{'parent'};
       my $menu_entry = pop @{$menu->{'contents'}};
       if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
@@ -1797,7 +1801,7 @@ sub _end_line($$$)
                                     'parent' => $menu,
                                     'contents' => [] };
         $current = $menu->{'contents'}->[-1];
-        print STDERR "THEN MENU_COMMENT OPEN\n" if ($self->{'debug'});
+        print STDERR "THEN MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
       }
       while (@{$menu_entry->{'args'}}) {
         my $arg = shift @{$menu_entry->{'args'}};
@@ -1820,7 +1824,7 @@ sub _end_line($$$)
       }
       $menu_entry = undef;
     } else {
-      print STDERR "MENU ENTRY END LINE\n" if ($self->{'debug'});
+      print STDERR "MENU ENTRY END LINE\n" if ($self->{'DEBUG'});
       $current = $current->{'parent'};
       push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                   'contents' => [], 'parent' => $current };
@@ -2029,7 +2033,7 @@ sub _end_line($$$)
     $current = $current->{'parent'};
     my $misc_cmd = $current;
     my $command = $current->{'cmdname'};
-    print STDERR "MISC END \@$command\n" if ($self->{'debug'});
+    print STDERR "MISC END \@$command\n" if ($self->{'DEBUG'});
     if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
@@ -2048,7 +2052,7 @@ sub _end_line($$$)
               $included_file = 1;
               binmode($filehandle, ":encoding($self->{'encoding'})")
                 if (defined($self->{'encoding'}));
-              print STDERR "Included $file($filehandle)\n" if ($self->{'debug'});
+              print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
               $included_file = 1;
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
@@ -2078,14 +2082,21 @@ sub _end_line($$$)
 
             if (!$self->{'set'}->{'encoding'}) {
               $self->{'encoding'} = $encoding;
-              print STDERR "Using encoding $encoding\n" if ($self->{'debug'});
+              print STDERR "Using encoding $encoding\n" if ($self->{'DEBUG'});
               foreach my $input (@{$self->{'input'}}) {
                 binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
               }
             }
           }
-        } elsif ($command eq 'documentlanguage' and !$self->{'set'}->{'documentlanguage'}) {
-          $self->{'documentlanguage'} = $text;
+        } elsif ($command eq 'documentlanguage') {
+          my @messages = Texinfo::Common::warn_unknown_language($text,
+                                                          $self->{'gettext'});
+          foreach my $message(@messages) {
+            $self->line_warn ($message, $line_nr);
+          }
+          if (!$self->{'set'}->{'documentlanguage'}) {
+            $self->{'documentlanguage'} = $text;
+          }
         }
       }
     } elsif ($command eq 'node') {
@@ -2180,7 +2191,7 @@ sub _end_line($$$)
     # empty line after a @menu. Reparent to the menu
     if ($current->{'type'} 
         and $current->{'type'} eq 'menu_comment') {
-      print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'debug'});
+      print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'DEBUG'});
       my $empty_line = pop @{$current->{'contents'}};
       $empty_line->{'parent'} = $current->{'parent'};
       unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
@@ -2192,7 +2203,7 @@ sub _end_line($$$)
   if ($self->{'context_stack'}->[-1] eq 'line' 
             or $self->{'context_stack'}->[-1] eq 'def') {
     print STDERR "Still opened line command $self->{'context_stack'}->[-1]:"._print_current($current) 
-      if ($self->{'debug'});
+      if ($self->{'DEBUG'});
     if ($self->{'context_stack'}->[-1] eq 'def') {
       while ($current->{'parent'} and !($current->{'parent'}->{'type'}
             and $current->{'parent'}->{'type'} eq 'def_line')) {
@@ -2360,7 +2371,7 @@ sub _parse_texi($;$)
     ($line, $line_nr) = _next_text($self, $line_nr);
     last if (!defined($line));
 
-    if ($self->{'debug'}) {
+    if ($self->{'DEBUG'}) {
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
@@ -2383,7 +2394,7 @@ sub _parse_texi($;$)
           )
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
-      print STDERR "BEGIN LINE\n" if ($self->{'debug'});
+      print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
       $line =~ s/^([^\S\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
@@ -2455,12 +2466,12 @@ sub _parse_texi($;$)
             # Ignore until end of line
             if ($line !~ /\n/) {
               ($line, $line_nr) = _new_line($self, $line_nr);
-              print STDERR "IGNORE CLOSE line: $line" if ($self->{'debug'});
+              print STDERR "IGNORE CLOSE line: $line" if ($self->{'DEBUG'});
             }
-            print STDERR "CLOSED conditional $end_command\n" if ($self->{'debug'});
+            print STDERR "CLOSED conditional $end_command\n" if ($self->{'DEBUG'});
             last;
           } else {
-            print STDERR "CLOSED raw $end_command\n" if ($self->{'debug'});
+            print STDERR "CLOSED raw $end_command\n" if ($self->{'DEBUG'});
             $line = _start_empty_line_after_command($line, $current);
           }
         } else {
@@ -2495,11 +2506,11 @@ sub _parse_texi($;$)
           push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
                 if ($1 ne '');
-          print STDERR "END VERB\n" if ($self->{'debug'});
+          print STDERR "END VERB\n" if ($self->{'DEBUG'});
         } else {
           push @{$current->{'contents'}}, 
              { 'text' => $line, 'type' => 'raw', 'parent' => $current };
-          print STDERR "LINE VERB: $line" if ($self->{'debug'});
+          print STDERR "LINE VERB: $line" if ($self->{'DEBUG'});
           last;
         }
       }
@@ -2510,7 +2521,7 @@ sub _parse_texi($;$)
       while ($line eq '')
       {
         print STDERR "END OF TEXT not at end of line\n"
-          if ($self->{'debug'});
+          if ($self->{'DEBUG'});
         ($line, $line_nr) = _next_text($self, $line_nr);
         if (!defined($line)) {
           # end of the file
@@ -2560,14 +2571,14 @@ sub _parse_texi($;$)
         my $expanded = _expand_macro_body ($self, $expanded_macro, 
                                    $arguments, $line_nr);
         print STDERR "MACROBODY: $expanded".'||||||'."\n" 
-           if ($self->{'debug'}); 
+           if ($self->{'DEBUG'}); 
         # empty result.  It is ignored here.
         next if ($expanded eq '');
         my $expanded_lines = _text_to_lines($expanded);
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
-                                     ."|\nEND LINES\n" if ($self->{'debug'});
+                                     ."|\nEND LINES\n" if ($self->{'DEBUG'});
         next if (!@$expanded_lines);
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
@@ -2607,7 +2618,7 @@ sub _parse_texi($;$)
               $current->{'cmdname'}, $current->{'parent'}->{'parent'}->{'cmdname'}),
               $line_nr);
           } else {
-            print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'debug'});
+            print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
             $current->{'type'} = 'command_as_argument';
             $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
               = $current->{'cmdname'};
@@ -2634,7 +2645,7 @@ sub _parse_texi($;$)
             $current = $current->{'parent'};
           } elsif ($line =~ s/^(.)//o) {
             print STDERR "ACCENT \@$current->{'cmdname'}\n" 
-              if ($self->{'debug'});
+              if ($self->{'DEBUG'});
             # FIXME this is different than usual tree, no content here
             $current->{'args'} = [ { 'text' => $1, 'parent' => $current } ];
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
@@ -2644,7 +2655,7 @@ sub _parse_texi($;$)
             $current = $current->{'parent'};
           } else { # The accent is at end of line
             # whitespace for commands with letter.
-            print STDERR "STRANGE ACC \@$current->{'cmdname'}\n" if ($self->{'debug'});
+            print STDERR "STRANGE ACC \@$current->{'cmdname'}\n" if ($self->{'DEBUG'});
             $self->line_warn (sprintf($self->
                __("Accent command `\@%s' must not be followed by new line"),
                $current->{'cmdname'}), $line_nr);
@@ -2664,7 +2675,7 @@ sub _parse_texi($;$)
                 and $current->{'contents'}->[-1]->{'type'}
                 and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
                 and $current->{'contents'}->[-1]->{'text'} eq '') {
-        print STDERR "MENU STAR\n" if ($self->{'debug'});
+        print STDERR "MENU STAR\n" if ($self->{'DEBUG'});
         _abort_empty_line ($self, $current);
         $line =~ s/^\*//;
         push @{$current->{'contents'}}, { 'type' => 'menu_star',
@@ -2674,7 +2685,7 @@ sub _parse_texi($;$)
                and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
-        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'debug'});
+        print STDERR "MENU ENTRY (certainly)\n" if ($self->{'DEBUG'});
         # this is the menu star collected previously
         pop @{$current->{'contents'}};
         $line =~ s/^(\s+)//;
@@ -2702,7 +2713,7 @@ sub _parse_texi($;$)
       } elsif ($current->{'contents'} and @{$current->{'contents'}} 
                and $current->{'contents'}->[-1]->{'type'}
                and $current->{'contents'}->[-1]->{'type'} eq 'menu_star') {
-        print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'debug'});
+        print STDERR "ABORT MENU STAR ($line)\n" if ($self->{'DEBUG'});
         delete $current->{'contents'}->[-1]->{'type'};
       # after a separator in menu
       } elsif ($current->{'args'} and @{$current->{'args'}} 
@@ -2725,7 +2736,7 @@ sub _parse_texi($;$)
           $current->{'args'}->[-1]->{'text'} .= $1;
         # now handle the menu part that was closed
         } elsif ($separator =~ /^::/) {
-          print STDERR "MENU NODE no entry $separator\n" if ($self->{'debug'});
+          print STDERR "MENU NODE no entry $separator\n" if ($self->{'DEBUG'});
           # it was previously registered as menu_entry_name, it is 
           # changed to node
           $current->{'args'}->[-2]->{'type'} = 'menu_entry_node';
@@ -2736,14 +2747,14 @@ sub _parse_texi($;$)
           $current = $current->{'args'}->[-1];
         # end of the menu entry name  
         } elsif ($separator =~ /^:/) {
-          print STDERR "MENU ENTRY $separator\n" if ($self->{'debug'});
+          print STDERR "MENU ENTRY $separator\n" if ($self->{'DEBUG'});
           push @{$current->{'args'}}, { 'type' => 'menu_entry_node',
                                         'contents' => [],
                                         'parent' => $current };
           $current = $current->{'args'}->[-1];
         # anything else is the end of the menu node following a menu_entry_name
         } else {
-          print STDERR "MENU NODE $separator\n" if ($self->{'debug'});
+          print STDERR "MENU NODE $separator\n" if ($self->{'DEBUG'});
           push @{$current->{'args'}}, { 'type' => 'menu_entry_description',
                                         'contents' => [],
                                         'parent' => $current };
@@ -2756,7 +2767,7 @@ sub _parse_texi($;$)
         my $command = $1;
         $command = $self->{'aliases'}->{$command} 
            if (exists($self->{'aliases'}->{$command}));
-        print STDERR "COMMAND $command\n" if ($self->{'debug'});
+        print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
 
         if ($command eq 'value') {
           if ($line =~ s/^{([\w\-]+)}//) {
@@ -2868,7 +2879,7 @@ sub _parse_texi($;$)
               $current = _merge_text ($self, $current, "\@end $end_command");
               last;
             }
-            print STDERR "END BLOCK $end_command\n" if ($self->{'debug'});
+            print STDERR "END BLOCK $end_command\n" if ($self->{'DEBUG'});
             if ($block_commands{$end_command} eq 'conditional') {
               if (@{$self->{'conditionals_stack'}} 
                   and $self->{'conditionals_stack'}->[-1] eq $end_command) {
@@ -2994,7 +3005,7 @@ sub _parse_texi($;$)
               # itemize or enumerate
               if ($parent = _item_container_parent($current)) {
                 if ($command eq 'item') {
-                  print STDERR "ITEM_CONTAINER\n" if ($self->{'debug'});
+                  print STDERR "ITEM_CONTAINER\n" if ($self->{'DEBUG'});
                   $parent->{'items_count'}++;
                   $misc = { 'cmdname' => $command, 'parent' => $parent,
                             'contents' => [],
@@ -3008,7 +3019,7 @@ sub _parse_texi($;$)
               # *table
               } elsif ($parent = _item_line_parent($current)) {
                 if ($command eq 'item' or $command eq 'itemx') {
-                  print STDERR "ITEM_LINE\n" if ($self->{'debug'});
+                  print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
                   $current = $parent;
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
@@ -3038,10 +3049,10 @@ sub _parse_texi($;$)
                             {'cell_number' => $row->{'cells_count'}} };
                       push @{$row->{'contents'}}, $misc;
                       $current = $row->{'contents'}->[-1];
-                      print STDERR "TAB\n" if ($self->{'debug'});
+                      print STDERR "TAB\n" if ($self->{'DEBUG'});
                     }
                   } else {
-                    print STDERR "ROW\n" if ($self->{'debug'});
+                    print STDERR "ROW\n" if ($self->{'DEBUG'});
                     $parent->{'rows_count'}++;
                     my $row = { 'type' => 'row', 'contents' => [],
                                 'cells_count' => 1,
@@ -3175,7 +3186,7 @@ sub _parse_texi($;$)
                          and $command eq 'ifclear')) {
                   $ifvalue_true = 1;
                 }
-                print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'debug'});
+                print STDERR "CONDITIONAL \@$command $name: $ifvalue_true\n" if ($self->{'DEBUG'});
               } else {
                 $self->line_error (sprintf($self->__("%c%s requires a name"), 
                                            ord('@'), $command), $line_nr);
@@ -3185,13 +3196,13 @@ sub _parse_texi($;$)
                     # exception as explained in the texinfo manual
                     or ($1 eq 'info' 
                         and $self->{'expanded_formats_hash'}->{'plaintext'}));
-              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
+              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'DEBUG'});
             } else {
               die unless ($command =~ /^if(.*)/);
               $ifvalue_true = 1 if ($self->{'expanded_formats_hash'}->{$1}
                       or ($1 eq 'info' 
                           and $self->{'expanded_formats_hash'}->{'plaintext'}));
-              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'debug'});
+              print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'DEBUG'});
             }
             if ($ifvalue_true) {
               push @{$self->{'conditionals_stack'}}, $command;
@@ -3279,7 +3290,7 @@ sub _parse_texi($;$)
                                                  'parent' => $current,
                                                  'contents' => [] };
                 $current = $current->{'contents'}->[-1];
-                print STDERR "MENU_COMMENT OPEN\n" if ($self->{'debug'});
+                print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
               }
               
             }
@@ -3329,7 +3340,7 @@ sub _parse_texi($;$)
 
       } elsif ($line =~ s/^([{}@,:\t.])//) {
         my $separator = $1;
-        print STDERR "SEPARATOR: $separator\n" if ($self->{'debug'});
+        print STDERR "SEPARATOR: $separator\n" if ($self->{'DEBUG'});
         if ($separator eq '@') {
           # this may happen with a @ at the very end of a file, therefore
           # not followed by anything.
@@ -3398,7 +3409,7 @@ sub _parse_texi($;$)
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
               .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
               .($current->{'type'} ? "type: $current->{'type'}" : '')."\n"
-               if ($self->{'debug'});
+               if ($self->{'DEBUG'});
           } elsif (($current->{'parent'} 
                     and (($current->{'parent'}->{'cmdname'}
                           and $current->{'parent'}->{'cmdname'} eq 'multitable')
@@ -3409,7 +3420,7 @@ sub _parse_texi($;$)
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current };
             $current = $current->{'contents'}->[-1];
-            print STDERR "BRACKETED\n" if ($self->{'debug'});
+            print STDERR "BRACKETED\n" if ($self->{'DEBUG'});
           } else {
             $self->line_error (sprintf($self->__("Misplaced %c"),
                                              ord('{')), $line_nr);
@@ -3443,7 +3454,7 @@ sub _parse_texi($;$)
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
             }
-            print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+            print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;
@@ -3467,7 +3478,7 @@ sub _parse_texi($;$)
                my $context_command = pop @{$self->{'context_stack'}};
                die "BUG: def_context $context_command "._print_current($current) 
                  if ($context_command ne $current->{'parent'}->{'cmdname'});
-               print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'debug'});
+               print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
                $current = $current->{'parent'}->{'parent'};
             }
           } else {
@@ -3520,7 +3531,7 @@ sub _parse_texi($;$)
         $current = _merge_text ($self, $current, $new_text);
       # end of line
       } else {
-        if ($self->{'debug'}) {
+        if ($self->{'DEBUG'}) {
           print STDERR "END LINE: ". _print_current($current)."\n";
         }
         if ($line =~ s/^(\n)//) {
@@ -3580,7 +3591,7 @@ sub _parse_special_misc_command($$$$)
     if ($line =~ /^\s+([[:alnum:]][[:alnum:]\-]*)/) {
       $args = [$1];
       delete $self->{'macros'}->{$1};
-      print STDERR "UNMACRO $1\n" if ($self->{'debug'});
+      print STDERR "UNMACRO $1\n" if ($self->{'DEBUG'});
     } else {
       $self->line_error (sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
@@ -3635,7 +3646,7 @@ sub _parse_line_command_args($$$)
   my $command = $line_command->{'cmdname'};
   my $arg = $line_command->{'args'}->[0];
 
-  if ($self->{'debug'}) {
+  if ($self->{'DEBUG'}) {
     print STDERR "MISC ARGS \@$command\n";
     if (@{$arg->{'contents'}}) {
       my $idx = 0;
@@ -3686,7 +3697,7 @@ sub _parse_line_command_args($$$)
     if ($line =~ s/^([[:alnum:]][[:alnum:]\-]*)\s*,\s*([^\s,]+)\s*,\s*([^\s,]+)$//) {
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
-      print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'debug'});
+      print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'DEBUG'});
     } else {
       $self->line_error (sprintf($self->
                               __("Bad argument to \@%s"), $command), $line_nr);

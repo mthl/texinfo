@@ -85,9 +85,9 @@ sub output($)
       my $node = shift @nodes;
       my ($node_text) = $self->_convert_node($node);
       print $fh $node_text;
-      if (defined($self->{'split_size'}) 
+      if (defined($self->{'SPLIT_SIZE'}) 
           and $self->{'file_bytes_count'} > 
-                  $out_file_nr * $self->{'split_size'} and @nodes) {
+                  $out_file_nr * $self->{'SPLIT_SIZE'} and @nodes) {
         close ($fh);
         if ($out_file_nr == 1) {
           unless (rename ($self->{'output_file'}, 
