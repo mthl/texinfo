@@ -238,7 +238,7 @@ my %defaults = (
   'documentencoding'     => undef,
   'encoding'             => undef,
   'output_encoding'      => undef,
-  'output_file'          => undef,
+  'OUTFILE'              => undef,
   'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
   'file_bytes_count'     => 0,
@@ -422,8 +422,12 @@ sub _convert_node($$)
     if (defined($location->{'bytes'})) {
       $location->{'bytes'} += $self->{'file_bytes_count'};
       push @{$self->{'label_locations'}}, $location;
+      print STDERR "LOCATION $location anchor bytes $location->{'bytes'}\n"
+        if ($self->{'DEBUG'});
     }
     if (defined($location->{'lines'} and $location->{'index_entry'})) {
+      print STDERR "LOCATION $location idx $location->{'index_entry'} lines $location->{'lines'}\n"
+        if ($self->{'DEBUG'});
       $self->{'index_entries_line_location'}->{$location->{'index_entry'}} = $location;
     }
   }
@@ -1603,21 +1607,21 @@ sub _convert($$)
     } else {
       $unknown_command = 1;
     }
-    if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
-      # in fact nothing is done for regular plaintext, only handled in info.
-      # a real index entry?
-      my $index_entry = 1;
-      if ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx') {
-        $index_entry = 0;
-      }
-      push @{$locations}, {'lines' => $lines_count
-              + $self->{'formatters'}->[-1]->{'container'}->{'lines_counter'}, 
-                           'index_entry' => $root};
-    } elsif ($unknown_command) {
+    #} els
+    if ($unknown_command and !($root->{'extra'} 
+                               and $root->{'extra'}->{'index_entry'})) {
       die "Unhandled $root->{'cmdname'}\n";
     }
-
+    
   }
+  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+    push @{$locations}, {'lines' => $lines_count
+            + $self->{'formatters'}->[-1]->{'container'}->{'lines_counter'}, 
+                         'index_entry' => $root};
+    print STDERR "INDEX ENTRY lines_count $locations->[-1]->{'lines'}, index_entry $locations->[-1]->{'index_entry'}\n" 
+       if ($self->{'DEBUG'});
+  }
+
   # open 'type' constructs.
   my $paragraph;
   if ($root->{'type'}) {

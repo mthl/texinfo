@@ -418,7 +418,11 @@ sub _node($$)
 
   my $bytes_count = 0;
 
-  my $result = "\x{1F}\nFile: $self->{'output_filename'},  Node: ";
+  # May happen when only converting a fragment
+  my $output_filename = $self->{'output_filename'};
+  $output_filename = '' if (!defined($self->{'output_filename'}));
+
+  my $result = "\x{1F}\nFile: $output_filename,  Node: ";
   $bytes_count += $self->count_bytes($result);
   $self->advance_count_text(\$result, \$bytes_count, undef,
                undef, 0, $self->convert_line({'type' => 'code', 

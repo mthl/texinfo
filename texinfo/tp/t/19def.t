@@ -408,7 +408,8 @@ foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
   if ($test->[0] eq 'all_commands' or $test->[0] eq 'all_commands_delimiters') {
     push @test_printindex, [$test->[0] . '_printindex',
-                            $test->[1] . '
+                            '@node Top
+'. $test->[1] . '
 @heading Functions
 @printindex fn
 

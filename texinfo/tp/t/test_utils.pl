@@ -36,7 +36,7 @@ our $arg_complete;
 our $nr_comparisons = 8;
 
 Getopt::Long::Configure("gnu_getopt");
-GetOptions('g|generate' => \$arg_generate, 'd|debug' => \$arg_debug, 
+GetOptions('g|generate' => \$arg_generate, 'd|debug=i' => \$arg_debug, 
            'c|complete' => \$arg_complete);
 
 our $arg_test_case = shift @ARGV;
@@ -484,14 +484,15 @@ sub run_all_files($$;$$$$)
       }
     }
   }
+  my $test_nrs = 0;
   foreach my $test_case (@$ran_tests) {
-    $test->test($test_case);
+    $test_nrs += $test->test($test_case);
   }
 
   if ($generate or $arg_complete) {
     plan tests => 1;
   } else {
-     plan tests => (1 + scalar(@$ran_tests) * $nr_comparisons);
+     plan tests => (1 + $test_nrs);
   }
 }
 
