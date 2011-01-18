@@ -1,3 +1,8 @@
+2011-01-17  Oleg Katsitadze <olegkat@gmail.com>
+
+	* doc/texinfo.tex (@uref):  Allow line breaks after and
+	stretchable glue around ., # and / characters in URLs.
+
 2011-01-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (\includezzz, \doverbatiminclude): report what's

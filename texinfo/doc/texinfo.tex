@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-01-15.17}
+\def\texinfoversion{2011-01-17.21}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -168,6 +168,8 @@
 \chardef\rquoteChar= `\'
 \chardef\semiChar  = `\;
 \chardef\underChar = `\_
+\chardef\slashChar = `\/
+\chardef\hashChar  = `\#
 
 % Ignore a token.
 %
@@ -2487,6 +2489,20 @@ end
     \codex
   }
 }
+% This is similar to \code, but allows line breaks after ., # and /.
+{
+  \catcode`\.=\active \catcode`\#=\active \catcode`\/=\active
+  %
+  \global\def\urefcode{\begingroup
+    \setupmarkupstyle{code}%
+    \catcode\dotChar=\active \catcode\hashChar=\active
+    \catcode\slashChar=\active
+    \let.\urefcodedot
+    \let#\urefcodehash
+    \let/\urefcodeslash
+    \codex
+  }
+}
 
 \def\realdash{-}
 \def\codedash{-\discretionary{}{}{}}
@@ -2500,6 +2516,20 @@ end
              \else\normalunderscore \fi
              \discretionary{}{}{}}%
             {\_}%
+}
+\def\urefprestretch{\nobreak \hskip0pt plus.13em }
+\def\urefpoststretch{\allowbreak \hskip0pt plus.1em }
+\def\urefcodedot{\urefprestretch .\urefpoststretch}
+\def\urefcodehash{\urefprestretch \#\urefpoststretch}
+\def\urefcodeslash{\futurelet\next\urefcodeslashfinish}
+{
+  \catcode`\/=\active
+  \global\def\urefcodeslashfinish{%
+    \urefprestretch \slashChar
+    % Allow line break only after the final / in a sequence of
+    % slashes, to avoid line break between the slashes in http://.
+    \ifx\next/\else \urefpoststretch \fi
+  }
 }
 \def\codex #1{\tclose{#1}\endgroup}
 
@@ -2589,10 +2619,12 @@ end
       \ifpdf
         \unhbox0             % PDF: 2nd arg given, show only it
       \else
-        \unhbox0\ (\code{#1})% DVI: 2nd arg given, show both it and url
+        % \empty at the end of \scantokens arg gets rid of
+        % trailing newline (and ultimate spurious whitespace).
+        \unhbox0\ (\urefcode{\scantokens{#1\empty}})% DVI: 2nd arg given, show both it and url
       \fi
     \else
-      \code{#1}% only url given, so show it
+      \urefcode{\scantokens{#1\empty}}% only url given, so show it
     \fi
   \fi
   \endlink
