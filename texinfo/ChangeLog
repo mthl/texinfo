@@ -1,5 +1,9 @@
 2011-01-19  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\urefcode): also allow breaks at ?.
+	(\urefcodequestion): new macro.
+	* doc/texinfo.txi (uref): document new line breaking.
+
 	* doc/texinfo.tex: reduce line lengths to <= 79 chars.
 
 2011-01-17  Oleg Katsitadze <olegkat@gmail.com>

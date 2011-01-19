@@ -163,13 +163,13 @@
 \chardef\dashChar  = `\-
 \chardef\dotChar   = `\.
 \chardef\exclamChar= `\!
+\chardef\hashChar  = `\#
 \chardef\lquoteChar= `\`
 \chardef\questChar = `\?
 \chardef\rquoteChar= `\'
 \chardef\semiChar  = `\;
-\chardef\underChar = `\_
 \chardef\slashChar = `\/
-\chardef\hashChar  = `\#
+\chardef\underChar = `\_
 
 % Ignore a token.
 %
@@ -2491,16 +2491,18 @@ end
     \codex
   }
 }
-% This is similar to \code, but allows line breaks after ., # and /.
+% Handle @url similarly to \code, but allows line breaks after .#?/ (only).
 {
-  \catcode`\.=\active \catcode`\#=\active \catcode`\/=\active
+  \catcode`\.=\active \catcode`\#=\active
+  \catcode`\?=\active \catcode`\/=\active
   %
   \global\def\urefcode{\begingroup
     \setupmarkupstyle{code}%
-    \catcode\dotChar=\active \catcode\hashChar=\active
-    \catcode\slashChar=\active
+    \catcode\dotChar=\active   \catcode\hashChar=\active
+    \catcode\questChar=\active \catcode\slashChar=\active
     \let.\urefcodedot
     \let#\urefcodehash
+    \let?\urefcodequestion
     \let/\urefcodeslash
     \codex
   }
@@ -2519,10 +2521,14 @@ end
              \discretionary{}{}{}}%
             {\_}%
 }
+% we put a little stretch before and after the breakable chars, to help
+% line breaking of long url's.  The unequal skips make look better in
+% cmtt at least, especially for dots.
 \def\urefprestretch{\nobreak \hskip0pt plus.13em }
 \def\urefpoststretch{\allowbreak \hskip0pt plus.1em }
 \def\urefcodedot{\urefprestretch .\urefpoststretch}
 \def\urefcodehash{\urefprestretch \#\urefpoststretch}
+\def\urefcodequestion{\urefprestretch ?\urefpoststretch}
 \def\urefcodeslash{\futurelet\next\urefcodeslashfinish}
 {
   \catcode`\/=\active
