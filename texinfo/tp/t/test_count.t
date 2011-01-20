@@ -28,33 +28,34 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
 
-  my ($text, $counts, $locations) =
+  my $text =
     Texinfo::Convert::Plaintext::_convert($self, $root);
   my $string = '';
   $string .= '@'.$root->{'cmdname'} if ($root->{'cmdname'});
   $string .= ":$root->{'type'}" if ($root->{'type'});
   $string .= ":text" if (defined($root->{'text'}));
-  if ($counts) {
-    if (defined($counts->{'bytes'})) {
-      $string .= ", b $counts->{'bytes'}";
-    }
-    if (defined($counts->{'lines'})) {
-      $string .= ", l $counts->{'lines'}";
-    }
-    if ($locations) {
-      foreach my $location (@$locations) {
-        $string .= "|";
-        if (defined($location->{'lines'})) {
-          $string .= " l $location->{'lines'}";
-        }
-        if (defined($location->{'bytes'})) {
-          $string .= " b $location->{'bytes'}";
-        }
-      }
-    }
-  }
+  #if ($counts) {
+  #  if (defined($counts->{'bytes'})) {
+  #    $string .= ", b $counts->{'bytes'}";
+  #  }
+  #  if (defined($counts->{'lines'})) {
+  #    $string .= ", l $counts->{'lines'}";
+  #  }
+  #  if ($locations) {
+  #    foreach my $location (@$locations) {
+  #      $string .= "|";
+  #      if (defined($location->{'lines'})) {
+  #        $string .= " l $location->{'lines'}";
+  #      }
+  #      if (defined($location->{'bytes'})) {
+  #        $string .= " b $location->{'bytes'}";
+  #      }
+  #    }
+  #  }
+  #}
   #print STDERR "$string\n";
-  return ($text, $counts, $locations);
+  #return ($text, $counts, $locations);
+  return $text;
 }
 
 }

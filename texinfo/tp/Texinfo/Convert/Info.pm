@@ -56,7 +56,10 @@ sub output($)
 
   my $result = '';
 
+  push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+                                     'locations' => []};
   my $header = $self->_info_header();
+  pop @{$self->{'count_context'}};
   my $header_bytes = $self->count_bytes($header);
   my $elements = Texinfo::Structuring::split_by_node($root);
 
@@ -78,15 +81,15 @@ sub output($)
     my $out_file_nr = 1;
     my @indirect_files;
     print $fh $header;
-    $self->{'file_bytes_count'} += $header_bytes;
-    my $first_node_bytes_count = $self->{'file_bytes_count'};
+    $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
+    my $first_node_bytes_count = $header_bytes;
     my @nodes = @$elements;
     while (@nodes) {
       my $node = shift @nodes;
       my ($node_text) = $self->_convert_node($node);
       print $fh $node_text;
       if (defined($self->{'SPLIT_SIZE'}) 
-          and $self->{'file_bytes_count'} > 
+          and $self->{'count_context'}->[-1]->{'bytes'} > 
                   $out_file_nr * $self->{'SPLIT_SIZE'} and @nodes) {
         close ($fh);
         if ($out_file_nr == 1) {
@@ -112,9 +115,9 @@ sub output($)
            return undef;
         }
         print $fh $header;
-        $self->{'file_bytes_count'} += $header_bytes;
+        $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
-                               $self->{'file_bytes_count'}];
+                               $self->{'count_context'}->[-1]->{'bytes'}];
         #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
       }
       #$result .= $node_text;
@@ -139,7 +142,7 @@ sub output($)
     if ($out_file_nr > 1) {
       print $fh "(Indirect)\n";
     }
-    foreach my $label (@{$self->{'label_locations'}}) {
+    foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
       next unless ($label->{'root'});
       my $prefix = 'Ref';
       $prefix = 'Node' if ($label->{'root'}->{'cmdname'} eq 'node');
@@ -188,6 +191,7 @@ sub _info_header($)
   my $output_basename = $output_file;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
+
   # FIXME version/program
   my $text = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename.";
   my $paragraph = Texinfo::Convert::Paragraph->new();
@@ -197,7 +201,7 @@ sub _info_header($)
   $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-    my ($copying) = $self->_convert({'contents' => 
+    my $copying = $self->_convert({'contents' => 
           $self->{'extra'}->{'copying'}->{'contents'}});
     $result .= $copying;
   }
@@ -211,7 +215,7 @@ sub _info_header($)
         }
       } elsif ($command->{'cmdname'} eq 'direntry') {
         $result .= "START-INFO-DIR-ENTRY\n";
-        my ($direntry) = $self->_convert($command);
+        my $direntry = $self->_convert($command);
         $result .= $direntry;
         $result .= "END-INFO-DIR-ENTRY\n";
       }
@@ -232,47 +236,6 @@ sub count_bytes($$)
     return length($string);
   }
 }
-
-sub update_counts ($$$$$$)
-{
-  my $self = shift;
-  my $main_bytes_count = shift;
-  my $main_lines_count = shift;
-  my $main_locations = shift;
-  my $counts = shift;
-  my $locations = shift;
-  if ($locations) {
-    foreach my $location(@$locations) {
-      if (defined($location->{'lines'})) {
-        $location->{'lines'} += $$main_lines_count;
-      }
-      if (defined($location->{'bytes'})) {
-        $location->{'bytes'} += $$main_bytes_count;
-      }
-    }
-    push @{$main_locations}, @{$locations};
-  }
-  if ($counts) {
-    $$main_bytes_count += $counts->{'bytes'};
-    $$main_lines_count += $counts->{'lines'} if ($counts->{'lines'});
-  }
-}
-
-#sub _flush_paragraph($$)
-#{
-#  my $self = shift;
-#  my $text = shift;
-#
-#  my $index = -1;
-#  $index--
-#    while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
-#  # nothing to do in case of flushleft
-#  if ($self->{'format_context'}->[$index]->{'cmdname'} eq 'flushleft') {
-#    return $text;
-#  }
-#  return _align_lines($text, $self->{'format_context'}->[$index]->{'max'},
-#                          'right');
-#}
 
 sub _contents($$$)
 {
@@ -314,16 +277,16 @@ sub _printindex($$)
 
   my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n";
 
-  my $lines_count = 3;
-  my $bytes_count = $self->count_bytes($result);
+  $self->_add_text_count($result);
+  $self->_add_lines_count(3);
 
   # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
   my $max_index_line_nr_string_length = 0;
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     my $line_nr;
-    if (defined ($self->{'index_entries_line_location'}->{$entry})) {
-      $line_nr = $self->{'index_entries_line_location'}->{$entry}->{'lines'};
+    if (defined ($self->{'index_entries_line_location'}->{$entry->{'command'}})) {
+      $line_nr = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'lines'};
     }
     if (!defined($entry->{'node'})) {
       $line_nr = 0;
@@ -350,8 +313,7 @@ sub _printindex($$)
     my $entry_tree = {'contents' => $entry->{'content'}};
     $entry_tree->{'type'} = 'code' if ($in_code);
     my $entry_text = '';
-    $self->advance_count_text(\$entry_text, \$bytes_count, undef,
-           undef, 0, $self->convert_line($entry_tree, {'indent' => 0}));
+    $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
 
     my $entry_nr = '';
     if (!defined($entry_counts{$entry_text})) {
@@ -361,13 +323,13 @@ sub _printindex($$)
       $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
     }
     my $entry_line = "* $entry_text${entry_nr}: ";
-    $bytes_count += $self->count_bytes("* ${entry_nr}: ");
+    $self->_add_text_count($entry_line);
     
     my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
     if ($line_width < $index_length_to_node) {
       my $spaces = ' ' x ($index_length_to_node - $line_width);
       $entry_line .= $spaces;
-      $bytes_count += $self->count_bytes($spaces);
+      $self->_add_text_count($spaces);
     }
     my $node_text;
     if (!defined($entry->{'node'})) {
@@ -376,10 +338,9 @@ sub _printindex($$)
       $node_text = {'type' => 'code',
                 'contents' => $entry->{'node'}->{'extra'}->{'node_content'}};
     }
-    $self->advance_count_text(\$entry_line, \$bytes_count, undef,
-           undef, 0, $self->convert_line($node_text));
+    $entry_line .= $self->convert_line($node_text);
     $entry_line .= '.';
-    $bytes_count += $self->count_bytes('.');
+    $self->_add_text_count('.');
 
     $result .= $entry_line;
 
@@ -391,22 +352,22 @@ sub _printindex($$)
     if ($line_width + $line_part_width +1 > $self->{'fillcolumn'}) {
       $line_part = "\n" . ' ' x ($self->{'fillcolumn'} - $line_part_width) 
            . "$line_part\n";
-      $lines_count++;
+      $self->_add_lines_count(1);
     } else { 
       $line_part 
         = ' ' x ($self->{'fillcolumn'} - $line_part_width - $line_width)
            . "$line_part\n";
     }
-    $lines_count++;
+    $self->_add_lines_count(1);
+    $self->_add_text_count($line_part);
     $result .= $line_part;
-    $bytes_count += $self->count_bytes($line_part);
   }
 
   $result .= "\n"; 
-  $lines_count++;
-  $bytes_count += $self->count_bytes("\n");
+  $self->_add_text_count("\n");
+  $self->_add_lines_count(1);
   
-  return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
+  return $result;
 }
 
 
@@ -416,42 +377,38 @@ sub _node($$)
   my $self = shift;
   my $node = shift;
 
-  my $bytes_count = 0;
-
   # May happen when only converting a fragment
   my $output_filename = $self->{'output_filename'};
   $output_filename = '' if (!defined($self->{'output_filename'}));
 
   my $result = "\x{1F}\nFile: $output_filename,  Node: ";
-  $bytes_count += $self->count_bytes($result);
-  $self->advance_count_text(\$result, \$bytes_count, undef,
-               undef, 0, $self->convert_line({'type' => 'code', 
-                           'contents' => $node->{'extra'}->{'node_content'}}));
+  $self->_add_text_count($result);
+  $result .= $self->convert_line({'type' => 'code',
+                           'contents' => $node->{'extra'}->{'node_content'}});
   foreach my $direction(@directions) {
     if ($node->{'node_'.lc($direction)}) {
       my $node_direction = $node->{'node_'.lc($direction)};
       my $text = ",  $direction: ";
-      $bytes_count += $self->count_bytes($text);
+      $self->_add_text_count($text);
       $result .= $text;
       if ($node_direction->{'extra'}->{'manual_content'}) {
-        $self->advance_count_text(\$result, \$bytes_count, undef,
-                undef, 0, $self->convert_line({'type' => 'code',
+        $result .= $self->convert_line({'type' => 'code',
                           'contents' => [{'text' => '('},
                              @{$node_direction->{'extra'}->{'manual_content'}},
-                                          {'text' => ')'}]}));
+                                          {'text' => ')'}]});
       }
       if ($node_direction->{'extra'}->{'node_content'}) {
-        $self->advance_count_text(\$result, \$bytes_count, undef,
-               undef, 0, $self->convert_line({'type' => 'code', 
-                 'contents' => $node_direction->{'extra'}->{'node_content'}}));
+        $result .= $self->convert_line({'type' => 'code',
+                 'contents' => $node_direction->{'extra'}->{'node_content'}});
       }
     }
   }
   $result .="\n\n";
-  $bytes_count += $self->count_bytes("\n\n");
+  $self->_add_text_count("\n\n");
+  $self->_add_location($node);
+  $self->{'count_context'}->[-1]->{'lines'} = 3;
 
-  return ($result, {'bytes' => $bytes_count, 'lines' => 3}, 
-          [{'bytes' => 0, 'root' => $node}]);
+  return $result;
 }
 
 my @image_files_extensions = ('png', 'jpg');

@@ -2942,15 +2942,15 @@ Functions
  [index ]
 * Menu:
 
-* d--efmac_name:                         Top.                   (line 4)
-* d--efmethod_name on c--lass:           Top.                   (line 4)
-* d--efop_name on c--lass:               Top.                   (line 4)
-* d--efspec_name:                        Top.                   (line 4)
-* d--eftypefn_name:                      Top.                   (line 4)
-* d--eftypefun_name:                     Top.                   (line 4)
-* d--eftypemethod_name on c--lass:       Top.                   (line 4)
-* d--eftypeop_name on c--lass:           Top.                   (line 4)
-* d--efun_name:                          Top.                   (line 4)
+* d--efmac_name:                         Top.                  (line 27)
+* d--efmethod_name on c--lass:           Top.                  (line 51)
+* d--efop_name on c--lass:               Top.                  (line 18)
+* d--efspec_name:                        Top.                  (line 30)
+* d--eftypefn_name:                      Top.                  (line  6)
+* d--eftypefun_name:                     Top.                  (line 39)
+* d--eftypemethod_name on c--lass:       Top.                  (line 54)
+* d--eftypeop_name on c--lass:           Top.                  (line  9)
+* d--efun_name:                          Top.                  (line 24)
 
 
 Types
@@ -2958,7 +2958,7 @@ Types
  [index ]
 * Menu:
 
-* d--eftp_name:                          Top.                   (line 4)
+* d--eftp_name:                          Top.                  (line 21)
 
 
 Variables
@@ -2966,14 +2966,14 @@ Variables
  [index ]
 * Menu:
 
-* d--efcv_name:                          Top.                   (line 4)
-* d--efivar_name of c--lass:             Top.                   (line 4)
-* d--efopt_name:                         Top.                   (line 4)
-* d--eftypeivar_name of c--lass:         Top.                   (line 4)
-* d--eftypevar_name:                     Top.                   (line 4)
-* d--eftypevr_name:                      Top.                   (line 4)
-* d--efvar_name:                         Top.                   (line 4)
-* d--efvr_name:                          Top.                   (line 4)
+* d--efcv_name:                          Top.                  (line 15)
+* d--efivar_name of c--lass:             Top.                  (line 45)
+* d--efopt_name:                         Top.                  (line 36)
+* d--eftypeivar_name of c--lass:         Top.                  (line 48)
+* d--eftypevar_name:                     Top.                  (line 42)
+* d--eftypevr_name:                      Top.                  (line 12)
+* d--efvar_name:                         Top.                  (line 33)
+* d--efvr_name:                          Top.                  (line  3)
 
 ';
 
