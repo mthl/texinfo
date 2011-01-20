@@ -1,3 +1,8 @@
+2011-01-20  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\douref): ensure that we are not in vertical
+	mode when executing \endlink.
+
 2011-01-19  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\urefcode): also allow breaks at ?.
