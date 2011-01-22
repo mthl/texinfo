@@ -28,39 +28,39 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
 
+  
+  $self->{'command_type_nr'}++;
+  my $string = "($self->{'count_context'}->[-1]->{'bytes'},$self->{'count_context'}->[-1]->{'lines'}) ";
+  my $command_type = '['.$self->{'command_type_nr'}.'] ';
+  $command_type .= '@'.$root->{'cmdname'} if ($root->{'cmdname'});
+  $command_type .= ":$root->{'type'}" if ($root->{'type'});
+  $command_type .= ":text" if (defined($root->{'text'}));
+  $string .= $command_type."\n";
+  push @{$self->{'debug_count_strings'}}, $string;
+  
   my $text =
     Texinfo::Convert::Plaintext::_convert($self, $root);
-  my $string = '';
-  $string .= '@'.$root->{'cmdname'} if ($root->{'cmdname'});
-  $string .= ":$root->{'type'}" if ($root->{'type'});
-  $string .= ":text" if (defined($root->{'text'}));
-  #if ($counts) {
-  #  if (defined($counts->{'bytes'})) {
-  #    $string .= ", b $counts->{'bytes'}";
-  #  }
-  #  if (defined($counts->{'lines'})) {
-  #    $string .= ", l $counts->{'lines'}";
-  #  }
-  #  if ($locations) {
-  #    foreach my $location (@$locations) {
-  #      $string .= "|";
-  #      if (defined($location->{'lines'})) {
-  #        $string .= " l $location->{'lines'}";
-  #      }
-  #      if (defined($location->{'bytes'})) {
-  #        $string .= " b $location->{'bytes'}";
-  #      }
-  #    }
-  #  }
-  #}
-  #print STDERR "$string\n";
-  #return ($text, $counts, $locations);
+  my $location_string = '';
+  if ($self->{'count_context'}->[-1]->{'locations'}) {
+    foreach my $location (@{$self->{'count_context'}->[-1]->{'locations'}}) {
+      $location_string .= "  l ";
+      if (defined($location->{'lines'})) {
+        $location_string .= " l $location->{'lines'}";
+      }
+      if (defined($location->{'bytes'})) {
+        $location_string .= " b $location->{'bytes'}";
+      }
+      $location_string .= "\n";
+    }
+  }
+  push @{$self->{'debug_count_strings'}}, "locations $command_type\n" .$location_string
+     if ($location_string ne '');
   return $text;
 }
 
 }
 
-my @test_cases1 = (
+my @test_cases = (
 ['commands',
 '@TeX{}. Ab. @@. @
 @~e, @^{@dotless{i}}
@@ -94,7 +94,7 @@ new para.
 @end flushright
 ']);
 
-my @test_cases = (
+my @test_cases3 = (
 ['multitable',
 '
 @multitable {aaa} {bb1} {ccc}
@@ -117,9 +117,11 @@ foreach my $test_case (@test_cases) {
   my $tree = $parser->parse_texi_text($test_case->[1]);
   my $converter = Texinfo::DebugCount->converter({'DEBUG' => $debug, 
                                                   'parser' => $parser});
-  my ($converted_text) = $converter->_convert($tree);
-
-#  print STDERR $converted_text;
+  $converter->{'debug_count_strings'} = [];
+  $converter->{'command_type_nr'} = 0;
+  my $converted_text = $converter->_convert($tree);
+  #print STDERR @{$converter->{'debug_count_strings'}};
+  #print STDERR $converted_text;
 }
 
 1;
