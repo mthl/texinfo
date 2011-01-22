@@ -36,7 +36,7 @@ sub new($;$)
   my $conf = shift;
   my $self = {'indent_length' => 0, 'counter' => 0,
               'space' => '', 'frenchspacing' => 0, 'line_beginning' => 1,
-              'lines_counter' => 0};
+              'lines_counter' => 0, 'end_line_count' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if ($key eq 'text') {
@@ -61,20 +61,39 @@ sub dump($)
   print STDERR "line ($self->{'line_beginning'},$self->{'counter'}) word: $word, space `$self->{'space'}' end_sentence: $end_sentence\n"; 
 }
 
-# end a line.
 sub end_line($)
 {
   my $line = shift;
-  my $result = $line->add_pending_word();
+  return $line->_end_line();
+}
+
+# end a line.
+sub _end_line($)
+{
+  my $line = shift;
+  my $result = $line->_add_pending_word();
   $line->{'line_beginning'} = 1;
   $line->{'space'} = '';
   $line->{'lines_counter'}++;
+  $line->{'end_line_count'}++;
   print STDERR "END_LINE\n" if ($line->{'DEBUG'});
   return "$result\n";
 }
 
-# put a pending word and spaces in the result string.
+sub end_line_count($)
+{
+  my $line = shift;
+  return $line->{'end_line_count'};
+}
+
 sub add_pending_word($)
+{
+  my $line = shift;
+  $line->{'end_line_count'} = 0;
+  return $line->_add_pending_word();
+}
+# put a pending word and spaces in the result string.
+sub _add_pending_word($)
 {
   my $line = shift;
   my $result = '';
@@ -102,14 +121,25 @@ sub add_pending_word($)
 sub end($)
 {
   my $line = shift;
-  my $result = $line->add_pending_word();
+  $line->{'end_line_count'} = 0;
+  my $result = $line->_add_pending_word();
   $result .= $line->{'space'};
   print STDERR "END_LINE\n" if ($line->{'DEBUG'});
   return $result;
 }
 
-# add a word and/or spaces and end of sentence.
 sub add_next($;$$$)
+{
+  my $line = shift;
+  my $word = shift;
+  my $space = shift;
+  my $end_sentence = shift;
+  $line->{'end_line_count'} = 0;
+  return $line->_add_next($word, $space, $end_sentence);
+}
+
+# add a word and/or spaces and end of sentence.
+sub _add_next($;$$$)
 {
   my $line = shift;
   my $word = shift;
@@ -123,7 +153,7 @@ sub add_next($;$$$)
     print STDERR "WORD+ $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
   }
   if (defined($space)) {
-    $result .= $line->add_pending_word();
+    $result .= $line->_add_pending_word();
     $line->{'space'} = $space;
   }
   if (defined($end_sentence)) {
@@ -171,6 +201,7 @@ sub add_text($$)
 {
   my $line = shift;
   my $text = shift;
+  $line->{'end_line_count'} = 0;
   my $result = '';
 
   while ($text ne '') {
@@ -183,7 +214,7 @@ sub add_text($$)
       my $spaces = $1;
       print STDERR "SPACES\n" if ($line->{'DEBUG'});
       my $added_word = $line->{'word'};
-      $result .= $line->add_pending_word();
+      $result .= $line->_add_pending_word();
       if ($line->{'protect_spaces'}) {
         $result .= $spaces;
         $line->{'space'} = '';
@@ -197,7 +228,7 @@ sub add_text($$)
       delete $line->{'end_sentence'};
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
       my $added_word = $1;
-      $result .= $line->add_next($added_word);
+      $result .= $line->_add_next($added_word);
       # now check if it is considered as an end of sentence
       if (defined($line->{'end_sentence'}) and 
         $added_word =~ /^[$after_punctuation_characters]*$/) {
@@ -207,13 +238,13 @@ sub add_text($$)
         $line->{'end_sentence'} = 1;
       }
     } elsif ($text =~ s/^\n//) {
-      $result .= $line->end_line();
+      $result .= $line->_end_line();
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
       print STDERR "EAST_ASIAN\n" if ($line->{'DEBUG'});
       $line->{'word'} = '' if (!defined($line->{'word'}));
       $line->{'word'} .= $added;
-      $result .= $line->add_pending_word();
+      $result .= $line->_add_pending_word();
       delete $line->{'end_sentence'};
       $line->{'space'} = '';
     }

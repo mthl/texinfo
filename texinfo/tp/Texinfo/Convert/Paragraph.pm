@@ -36,7 +36,7 @@ sub new($;$)
   my $conf = shift;
   my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0, 
               'word_counter' => 0, 'space' => '', 'frenchspacing' => 0,
-              'lines_counter' => 0};
+              'lines_counter' => 0, 'end_line_count' => 0};
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       $self->{$key} = $conf->{$key};
@@ -60,11 +60,24 @@ sub _cut_line($)
 {
   my $paragraph = shift;
   return '' if ($paragraph->{'ignore_columns'});
-  return $paragraph->end_line();
+  return $paragraph->_end_line();
+}
+
+sub end_line_count($)
+{
+  my $paragraph = shift;
+  return $paragraph->{'end_line_count'};
+}
+
+sub end_line($)
+{
+  my $paragraph = shift;
+  $paragraph->{'end_line_count'} = 0;
+  return $paragraph->_end_line();
 }
 
 # end a line.
-sub end_line($)
+sub _end_line($)
 {
   my $paragraph = shift;
   $paragraph->{'counter'} = 0;
@@ -74,12 +87,20 @@ sub end_line($)
     delete $paragraph->{'indent_length_next'};        
   }
   $paragraph->{'lines_counter'}++;
+  $paragraph->{'end_line_count'}++;
   print STDERR "END_LINE\n" if ($paragraph->{'DEBUG'});
   return "\n";
 }
 
-# put a pending word and spaces in the result string.
 sub add_pending_word($)
+{
+  my $paragraph = shift;
+  $paragraph->{'end_line_count'} = 0;
+  return $paragraph->_add_pending_word();
+}
+
+# put a pending word and spaces in the result string.
+sub _add_pending_word($)
 {
   my $paragraph = shift;
   my $result = '';
@@ -112,17 +133,29 @@ sub add_pending_word($)
 sub end($)
 {
   my $paragraph = shift;
+  $paragraph->{'end_line_count'} = 0;
   print STDERR "PARA END\n" if ($paragraph->{'DEBUG'});
-  my $result = $paragraph->add_pending_word();
+  my $result = $paragraph->_add_pending_word();
   if ($paragraph->{'counter'} != 0) {
     $result .= "\n"; 
     $paragraph->{'lines_counter'}++;
+    $paragraph->{'end_line_count'}++;
   }
   return $result;
 }
 
-# add a word and/or spaces and end of sentence.
 sub add_next($;$$$)
+{
+  my $paragraph = shift;
+  my $word = shift;
+  my $space = shift;
+  my $end_sentence = shift;
+  $paragraph->{'end_line_count'} = 0;
+  return $paragraph->_add_next($word, $space, $end_sentence);
+}
+
+# add a word and/or spaces and end of sentence.
+sub _add_next($;$$$)
 {
   my $paragraph = shift;
   my $word = shift;
@@ -144,7 +177,7 @@ sub add_next($;$$$)
     }
   }
   if (defined($space)) {
-    $result .= $paragraph->add_pending_word();
+    $result .= $paragraph->_add_pending_word();
     $paragraph->{'space'} = $space;
     if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                     > $paragraph->{'max'}) {
@@ -196,6 +229,7 @@ sub add_text($$)
 {
   my $paragraph = shift;
   my $text = shift;
+  $paragraph->{'end_line_count'} = 0;
   my $result = '';
 
   while ($text ne '') {
@@ -208,7 +242,7 @@ sub add_text($$)
       my $spaces = $1;
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'DEBUG'});
       my $added_word = $paragraph->{'word'};
-      $result .= $paragraph->add_pending_word();
+      $result .= $paragraph->_add_pending_word();
       if ($paragraph->{'protect_spaces'}) {
         $paragraph->{'space'} .= $spaces;
         if ($paragraph->{'space'} =~ s/\n/ /g 
@@ -234,7 +268,7 @@ sub add_text($$)
         $result .= $paragraph->_cut_line();
       }
       if ($spaces =~ /\n/ and $paragraph->{'keep_end_lines'}) {
-        $result .= $paragraph->end_line();
+        $result .= $paragraph->_end_line();
       }
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
@@ -247,12 +281,12 @@ sub add_text($$)
                                > $paragraph->{'max'}) {
         $result .= $paragraph->_cut_line();
       }
-      $result .= $paragraph->add_pending_word();
+      $result .= $paragraph->_add_pending_word();
       delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
       my $added_word = $1;
-      $result .= $paragraph->add_next($added_word);
+      $result .= $paragraph->_add_next($added_word);
       # now check if it is considered as an end of sentence
       if (defined($paragraph->{'end_sentence'})
           and $added_word =~ /^[$after_punctuation_characters]*$/) {
