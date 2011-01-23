@@ -77,7 +77,7 @@ sub line_warn($$$)
   return if (!defined($line_number));
   my $file = $line_number->{'file_name'};
   # otherwise out of source build fail since the file names are different
-  $file =~ s/^.*\/// if ($self->{'test'});
+  $file =~ s/^.*\/// if ($self->{'TEST'});
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
     $warn_line = sprintf($self->__(
@@ -103,7 +103,7 @@ sub line_error($$$;$)
   my $continuation = shift;
   if (defined($line_number)) {
     my $file = $line_number->{'file_name'};
-    $file =~ s/^.*\/// if ($self->{'test'});
+    $file =~ s/^.*\/// if ($self->{'TEST'});
     my $macro_text = '';
     $macro_text = " (possibly involving \@$line_number->{'macro'})"
        if ($line_number->{'macro'} ne '');

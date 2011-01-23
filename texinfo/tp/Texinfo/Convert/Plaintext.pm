@@ -248,7 +248,7 @@ my %defaults = (
   'NUMBER_SECTIONS'      => 1,
 
   'DEBUG'                => 0,
-  'test'                 => 0,
+  'TEST'                 => 0,
 );
 
 sub push_top_formatter($$)
@@ -410,9 +410,6 @@ sub _convert_node($$)
   my $node = shift;
 
   my $result = '';
-  my $bytes_count = 0;
-  my $lines_count = 0;
-  my $locations = [];
 
   print STDERR "NEW NODE\n" if ($self->{'DEBUG'});
   die "Too much count_context\n" if (scalar(@{$self->{'count_context'}}) != 1);
@@ -427,7 +424,6 @@ sub _convert_node($$)
   print STDERR "AFTER FOOTNOTES ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'DEBUG'});
 
   return $result;
-  #return ($result, {'lines' => $lines_count, 'bytes' => $bytes_count});
 }
 
 sub convert($$)
@@ -672,6 +668,18 @@ sub _count_added($$$)
   return $text;
 }
 
+sub _update_locations_counts($$)
+{
+  my $self = shift;
+  my $locations = shift;
+  foreach my $location (@$locations) {
+    $location->{'bytes'} += $self->{'count_context'}->[-1]->{'bytes'}
+       if (defined($location->{'bytes'}));
+    $location->{'lines'} += $self->{'count_context'}->[-1]->{'lines'}
+      if (defined($location->{'lines'}));
+  }
+}
+
 my $footnote_indent = 3;
 sub _footnotes($$)
 {
@@ -772,7 +780,7 @@ sub _align_lines($$$$$)
   my $updated_locations = {};
   if ($locations and @$locations) {
     foreach my $location (@$locations) {
-      next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
+      next unless (defined($location->{'bytes'}));
       #print STDERR "L anchor $location->{'root'}->{'extra'}->{'normalized'}: $location->{'lines'} ($location->{'bytes'})\n";
       push @{$updated_locations->{$location->{'lines'}}}, $location;
     }
@@ -823,6 +831,25 @@ sub _align_lines($$$$$)
     $line_index++;
   }
   return ($result, $bytes_count);
+}
+
+sub _align_environment($$$$)
+{
+  my $self = shift;
+  my $result = shift;
+  my $max = shift;
+  my $align = shift;
+
+  my $counts = pop @{$self->{'count_context'}};
+  my $bytes_count;
+  ($result, $bytes_count) = $self->_align_lines($result, $max,
+                      $align, $counts->{'locations'});
+  $self->_update_locations_counts($counts->{'locations'});
+  $self->{'count_context'}->[-1]->{'bytes'} += $bytes_count;
+  $self->{'count_context'}->[-1]->{'lines'} += $counts->{'lines'};
+  push @{$self->{'count_context'}->[-1]->{'locations'}},
+                       @{$counts->{'locations'}};
+  return $result;
 }
 
 sub _contents($$$)
@@ -1448,7 +1475,7 @@ sub _convert($$)
                Texinfo::Convert::Text::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
-      } else {
+      } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
         # FIXME convert_line and no array of contents?
         $result = $self->_convert(
           {'contents' => 
@@ -1494,19 +1521,12 @@ sub _convert($$)
                        {'contents' => $root->{'extra'}->{'misc_content'}},
                        {'indent_length' => 0});
       $result = $self->ensure_end_of_line($result);
-      my $counts = pop @{$self->{'count_context'}};
 
-      my $bytes_count;
-      ($result, $bytes_count) 
-         = $self->_align_lines ($result, 
-             $self->{'format_context'}->[-1]->{'max'}, 'center', 
-             $counts->{'locations'});
-      $self->{'count_context'}->[-1]->{'bytes'} += $bytes_count;
-      $self->{'count_context'}->[-1]->{'lines'} += $counts->{'lines'};
+      $result = $self->_align_environment ($result, 
+             $self->{'format_context'}->[-1]->{'max'}, 'center'); 
+
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      push @{$self->{'count_context'}->[-1]->{'locations'}}, 
-                       @{$counts->{'locations'}};
       return $result;
     } elsif ($root->{'cmdname'} eq 'exdent') {
       $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
@@ -1803,8 +1823,9 @@ sub _convert($$)
 
       $cell_idx = 0;
       my $cell_updated_locations;
-      foreach my $cell_locations (@{$self->{'format_context'}->[-1]->{'locations'}}) {
-        foreach my $location (@{$cell_locations}) {
+      my @row_locations;
+      foreach my $cell_locations (@{$self->{'format_context'}->[-1]->{'row_counts'}}) {
+        foreach my $location (@{$cell_locations->{'locations'}}) {
           next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
           push @{$cell_updated_locations->[$cell_idx]->{$location->{'lines'}}},
                  $location;
@@ -1813,6 +1834,7 @@ sub _convert($$)
           $max_lines = $location->{'lines'}+1 
                             if ($location->{'lines'}+1 > $max_lines);
         }
+        push @row_locations, @{$cell_locations->{'locations'}};
         $cell_idx++;
       }
 
@@ -1879,23 +1901,20 @@ sub _convert($$)
         $bytes_count += $self->count_bytes($line);
         $result .= $line;
       }
+      $self->_update_locations_counts(\@row_locations);
+      push @{$self->{'count_context'}->[-1]->{'locations'}}, @row_locations;
+      $self->{'count_context'}->[-1]->{'bytes'} += $bytes_count;
+      $self->{'count_context'}->[-1]->{'lines'} += $max_lines;
       $self->{'format_context'}->[-1]->{'row'} = [];
-      $self->{'format_context'}->[-1]->{'locations'} = [];
+      $self->{'format_context'}->[-1]->{'row_counts'} = [];
     }
   }
   if ($paragraph) {
     $result .= $self->_count_added($paragraph->{'container'},
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flush' and $self->in_flushright()) {
-      my $counts = pop @{$self->{'count_context'}};
-      my $bytes_count;
-      ($result, $bytes_count) = $self->_align_lines($result, 
-                      $self->{'format_context'}->[$self->flushright_index]->{'max'},
-                      'right', $counts->{'locations'});
-      $self->{'count_context'}->[-1]->{'bytes'} += $bytes_count;
-      $self->{'count_context'}->[-1]->{'lines'} += $counts->{'lines'};
-      push @{$self->{'count_context'}->[-1]->{'locations'}},
-                       @{$counts->{'locations'}};
+      $result = $self->_align_environment ($result, 
+        $self->{'format_context'}->[$self->flushright_index]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};
     delete $self->{'format_context'}->[-1]->{'counter'};
@@ -2003,10 +2022,9 @@ sub _convert($$)
     if ($root->{'cmdname'} and $format_context_commands{$root->{'cmdname'}}
         or $cell);
   if ($cell) {
-    # FIXME
     push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
-    #push @{$self->{'format_context'}->[-1]->{'locations'}}, $locations;
-    pop @{$self->{'count_context'}};
+    my $cell_counts = pop @{$self->{'count_context'}};
+    push @{$self->{'format_context'}->[-1]->{'row_counts'}}, $cell_counts;
     $result = '';
   }
 

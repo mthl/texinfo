@@ -9,6 +9,7 @@ use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
+use DebugTexinfo::DebugCount;
 use File::Basename;
 use Data::Dumper;
 use Data::Compare;
@@ -28,6 +29,7 @@ ok(1);
 my %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
+  'debugcount' => \&debugcount,
 );
 
 our $arg_generate;
@@ -200,6 +202,19 @@ sub convert_to_info($$$)
   return ($errors, $result);
 }
 
+sub debugcount($$$)
+{
+  my $self = shift;
+  my $tree = shift;
+  my $parser = shift;
+  my $converter =
+     DebugTexinfo::DebugCount->converter({'DEBUG' => $self->{'DEBUG'},
+                                         'parser' => $parser });
+  my $result = $converter->convert($tree);
+  my ($errors, $error_nrs) = $converter->errors();
+  return ($errors, $result);
+}
+
 sub test($$) 
 {
   my $self = shift;
@@ -225,7 +240,7 @@ sub test($$)
     push @tested_formats, @{$self->{'test_formats'}};
   }
 
-  my $parser = Texinfo::Parser->parser({'test' => 1,
+  my $parser = Texinfo::Parser->parser({'TEST' => 1,
                                         'include_directories' => ['t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});

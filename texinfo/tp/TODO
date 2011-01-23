@@ -8,9 +8,6 @@ There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
 
-pass 'output_file' to Plaintext.pm.  Use it to output the result
-(if defined).  Maybe use a different call than convert?
-
 for i18n, one want to do something like
 {style} {number}: {caption}
   -> new tree. 
@@ -24,29 +21,7 @@ and also maybe
   -> replace acronym_like with the already formatted text and 
      explanation with convert(explanation).
 
---html -> 'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
-   $converter->convert($tree);
---number-sections -> option du convertisseur.
-Config
---init truc.init
-@-command (@footnotestyle par exemple)
-
-Texinfo::Config
-le convertisseur a des defauts. Ils sont overriden par les options.
-Depuis un .init, on peut aussi faire qqch du genre
-set_from_init_file('value', val);
-ne fait rien si ca a ete set par une option.
-Pour le savoir il y a besoin de la reference a $converter_default_options.
-C'est passe au debut dans le namespace Texinfo::Config.
-certainement equivalent a qqch comme t2h_default_load_format -- qui doit etre
-appele au debut pour mettre la reference dans le name space.
-Sinon ca set une option dans un autre hash, 
-dans Texinfo::Config::options et Texinfo::Config::options est delete.
-Ensuite Texinfo::Config::options est merge avec le hash de la ligne de 
-commande.
-Qd on est dans le document, une informative command set seulement si ca
-n'a pas ete passe au convertisseur (avec 'set' comme c'est deja fait dans les
-convertisseurs).
+Test end_line_count in Texinfo/Convert/ containers.
 
 Following should be an error:
 @example
@@ -83,10 +58,8 @@ Texinfo::Convert::Text
 use definfoenclose information in Convert::Text?
 
 t/30sectioning.t setfilename_on_top_and_after_node
-there could be a wrning
+there could be a warning
  warning: @setfilename after the first element
-
-plaintext errors ?
 
 
 Incorporation of texi2html tests

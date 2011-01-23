@@ -395,7 +395,7 @@ my $result_options = Getopt::Long::GetOptions (
                      set_from_cmdline('SPLIT_SIZE', undef);},
  'headers' => sub { set_from_cmdline('HEADERS', $_[1]);
                     set_from_cmdline('SHOW_MENU', $_[1]);
-                    $parser_default_options->{'menus'} = 0;
+                    $parser_default_options->{'SHOW_MENU'} = $_[1];
                     $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
  'output|out|o=s' => sub { 
     my $var = 'OUTFILE';
@@ -433,7 +433,7 @@ my $result_options = Getopt::Long::GetOptions (
       document_warn (sprintf(__("Can't read init file %s"), $_[1]));
     }
  },
- 'set-init-variable=s' => sub { 
+ 'set-init-variable=s' => sub {
    my $var_val = $_[1];
    if ($var_val =~ s/^(\w+)\s*=?\s*//) {
      my $var = $1;
@@ -441,7 +441,10 @@ my $result_options = Getopt::Long::GetOptions (
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     set_from_cmdline ($var, $value);
+     if (set_from_cmdline ($var, $value) 
+         and exists($Texinfo::Parser::default_configuration{$var})) {
+       $parser_default_options->{$var} = $value;
+     }
    }
  },
  'css-include=s' => \@css_files,

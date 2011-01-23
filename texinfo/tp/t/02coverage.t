@@ -57,6 +57,10 @@ in caption}
 @item
  b--ullet
 @end itemize
+
+@itemize
+@item no itemize argument
+@end itemize
 '],
 ['table','
 @table @asis

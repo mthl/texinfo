@@ -210,10 +210,10 @@ sub __($$)
 
 # these are the default values for the parser state that may be 
 # initialized to values given by the user.
-my %default_configuration = (
-  'test' => 0,
+our %default_configuration = (
+  'TEST' => 0,
   'DEBUG' => 0,
-  'menus' => 1,             # if false no menu error related.
+  'SHOW_MENU' => 1,             # if false no menu error related.
   'gettext' => sub {return $_[0];},
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
@@ -1684,6 +1684,7 @@ sub _enter_index_entry($$$$)
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
+# This is always called at command closing.
 sub _remove_empty_content_arguments($)
 {
   my $current = shift;
@@ -2011,9 +2012,10 @@ sub _end_line($$$)
       } elsif ($current->{'cmdname'} eq 'itemize' 
                and !$current->{'extra'}->{'block_command_line_contents'}) {
         $current->{'extra'}->{'block_command_line_contents'} = [
-          { 'cmdname' => 'bullet', 
+          [ { 'cmdname' => 'bullet', 
             'type' => 'command_as_argument',
             'parent' => $current }
+          ]
         ];
       }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
@@ -2299,7 +2301,7 @@ sub _enter_menu_entry_node($$$)
     if ($arg->{'type'} eq 'menu_entry_node') {
       $self->_isolate_last_space($arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
-      if (! defined($parsed_entry_node) and $self->{'menus'}) {
+      if (! defined($parsed_entry_node) and $self->{'SHOW_MENU'}) {
         $self->line_error ($self->__("Empty node in menu entry"), $line_nr);
       } else {
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
@@ -3274,13 +3276,13 @@ sub _parse_texi($;$)
                 push @{$self->{'info'}->{'dircategory_direntry'}}, $block
                   if ($command eq 'direntry');
                 if ($self->{'current_node'}) {
-                  if ($command eq 'direntry' and $self->{'menus'}) {
+                  if ($command eq 'direntry' and $self->{'SHOW_MENU'}) {
                     $self->line_warn ($self->__("\@direntry after first node"),
                               $line_nr);
                   } elsif ($command eq 'menu') {
                     push @{$self->{'current_node'}->{'menus'}}, $current;
                   }
-                } elsif ($command ne 'direntry' and $self->{'menus'}) {
+                } elsif ($command ne 'direntry' and $self->{'SHOW_MENU'}) {
                   $self->line_error (sprintf($self->__("\@%s seen before first \@node"), 
                                               $command), $line_nr);
                   $self->line_error ($self->__("perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 

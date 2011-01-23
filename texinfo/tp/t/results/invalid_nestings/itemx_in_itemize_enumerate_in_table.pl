@@ -119,11 +119,13 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
           ],
           'extra' => {
             'block_command_line_contents' => [
-              {
-                'cmdname' => 'bullet',
-                'parent' => {},
-                'type' => 'command_as_argument'
-              }
+              [
+                {
+                  'cmdname' => 'bullet',
+                  'parent' => {},
+                  'type' => 'command_as_argument'
+                }
+              ]
             ]
           },
           'parent' => {}
@@ -228,7 +230,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4];
-$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'extra'}{'block_command_line_contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];
