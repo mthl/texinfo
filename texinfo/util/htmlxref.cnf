@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2010-12-13.19; # UTC
+htmlxrefversion=2011-01-23.23; # UTC
 
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -447,6 +447,9 @@ R = http://cran.r-project.org/doc/manuals/
  R-ints		mono	${R}/R-ints.html
 
 recode		mono	http://recode.progiciels-bpi.ca/manual/index.html
+
+recutils	mono	${GS}/recutils/manual/recutils.html
+recutils	node	${GS}/recutils/manual/html_node/
 
 reftex		mono	${GS}/auctex/manual/reftex.html
 reftex		node	${GS}/auctex/manual/reftex/
