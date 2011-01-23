@@ -239,6 +239,7 @@ my %defaults = (
   'encoding'             => undef,
   'output_encoding'      => undef,
   'OUTFILE'              => undef,
+  'SUBDIR'               => undef,
   'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
   'empty_lines_count'    => 0,
@@ -1347,7 +1348,8 @@ sub _convert($$)
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
-      die "Unhandled command with braces $root->{'cmdname'}\n";
+      warn "Unhandled command with braces $root->{'cmdname'}\n";
+      $result .= "!!!!! Unhandled command with braces $root->{'cmdname'} !!!!!\n";
     # block commands
     } elsif (exists($block_commands{$root->{'cmdname'}})) {
       # remark:
@@ -1662,7 +1664,8 @@ sub _convert($$)
     #} els
     if ($unknown_command and !($root->{'extra'} 
                                and $root->{'extra'}->{'index_entry'})) {
-      die "Unhandled $root->{'cmdname'}\n";
+      warn "Unhandled $root->{'cmdname'}\n";
+      $result .= "!!!!!!!!! Unhandled $root->{'cmdname'} !!!!!!!!!\n";
     }
     
   }

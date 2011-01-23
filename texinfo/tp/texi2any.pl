@@ -441,10 +441,16 @@ my $result_options = Getopt::Long::GetOptions (
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     if (set_from_cmdline ($var, $value) 
-         and exists($Texinfo::Parser::default_configuration{$var})) {
-       $parser_default_options->{$var} = $value;
+
+     # this is very wrong, but a way to avoid a spurious warning.
+     {
+       no warnings 'once';
+       if (set_from_cmdline ($var, $value) 
+           and exists($Texinfo::Parser::default_configuration{$var})) {
+         $parser_default_options->{$var} = $value;
+       }
      }
+
    }
  },
  'css-include=s' => \@css_files,

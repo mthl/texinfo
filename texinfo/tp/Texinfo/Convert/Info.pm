@@ -60,6 +60,14 @@ sub output($)
                                      'locations' => []};
   my $header = $self->_info_header();
   pop @{$self->{'count_context'}};
+  if (defined($self->{'output_dir'}) and ! -d $self->{'output_dir'}) {
+    if (!mkdir($self->{'output_dir'}, oct(755))) {
+      $self->document_error(sprintf($self->__(
+             "Can't create directories `%s': %s"), 
+             $self->{'output_dir'}, $!));
+      return undef;
+    }
+  }
   my $header_bytes = $self->count_bytes($header);
   my $elements = Texinfo::Structuring::split_by_node($root);
 
@@ -176,21 +184,31 @@ sub _info_header($)
   my $output_file;
   if (defined($self->{'OUTFILE'})) {
     $output_file = $self->{'OUTFILE'};
-  } elsif ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
+  } else {
+    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
            and $self->{'extra'}->{'setfilename'}->{'extra'}
            and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
-    $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
-  } elsif ($input_basename ne '') {
-    $output_file = $input_basename;
-    $output_file =~ s/\.te?x(i|info)?$//;
-    $output_file .= '.'.$INFO_EXTENSION;
-  } else {
-    $output_file = '';
+      $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
+    } elsif ($input_basename ne '') {
+      $output_file = $input_basename;
+      $output_file =~ s/\.te?x(i|info)?$//;
+      $output_file .= '.'.$INFO_EXTENSION;
+    } else {
+      $output_file = '';
+    }
+    if (defined($self->{'SUBDIR'}) and $output_file ne '') {
+      $output_file = "$self->{'SUBDIR'}/$output_file";
+    }
   }
   $self->{'output_file'} = $output_file if ($output_file ne '');
   my $output_basename = $output_file;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
+  my $output_dir = $output_file;
+  $output_dir =~ s|[^/]*$||;
+  if ($output_dir ne '') {
+    $self->{'output_dir'} = $output_dir;
+  }
 
   # FIXME version/program
   my $text = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename.";
