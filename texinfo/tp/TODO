@@ -21,6 +21,9 @@ and also maybe
   -> replace acronym_like with the already formatted text and 
      explanation with convert(explanation).
 
+t/results/coverage/hyphenation.pl
+$result_converted{'plaintext'}->{'hyphenation'} should only be one line, not 2.
+
 Test end_line_count in Texinfo/Convert/ containers.
 
 Following should be an error:

@@ -30,6 +30,11 @@ Complex
 @\
 
 '],
+['hyphenation',
+'
+@hyphenation{some-where }
+
+'],
 ['block_commands','
 @group
 in group

@@ -558,7 +558,8 @@ foreach my $command ('sp', 'center', 'exdent',
 my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
             'empty_spaces_after_command', 'spaces_at_end',
-            'empty_spaces_before_argument', 'empty_spaces_before_paragraph') {
+            'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
+            'empty_spaces_after_close_brace') {
   $ignored_types{$type} = 1;
 }
 

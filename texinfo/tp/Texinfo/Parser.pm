@@ -374,6 +374,11 @@ foreach my $type ('before_item', 'text_root', 'document_root',
   $type_with_paragraph{$type} = 1;
 }
 
+my %command_ignore_space_after;
+foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption') {
+  $command_ignore_space_after{$command} = 1;
+}
+
 my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
@@ -1153,7 +1158,8 @@ sub _merge_text ($$$)
     if ($current->{'contents'} and @{$current->{'contents'}}
       and $current->{'contents'}->[-1]->{'type'}
       and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
-         or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument')) {
+         or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
+         or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
       $no_merge_with_following_text = 1;
     }
     if (_abort_empty_line ($self, $current, $leading_spaces)) {
@@ -1405,7 +1411,8 @@ sub _abort_empty_line($$;$)
        and $current->{'contents'}->[-1]->{'type'}
        and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
-           or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command')) {
+           or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
+           or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
     print STDERR "ABORT EMPTY additional text $additional_text, current $current->{'contents'}->[-1]->{'text'}|)\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
@@ -3467,6 +3474,11 @@ sub _parse_texi($;$)
                   $parsed_anchor, $line_nr);
               }
             }
+            if ($command_ignore_space_after{$current->{'parent'}->{'cmdname'}}) {
+              push @{$current->{'parent'}->{'parent'}->{'contents'}}, 
+                 {'type' => 'empty_spaces_after_close_brace',
+                  'text' => '' };                          
+            }
             $current = $current->{'parent'}->{'parent'};
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
@@ -3622,7 +3634,8 @@ sub _trim_spaces_comment_from_content($)
     if ($contents->[0] and $contents->[0]->{'type'}
        and ($contents->[0]->{'type'} eq 'empty_line_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
-            or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'));
+            or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
+            or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
 
   while (@$contents and (($contents->[-1]->{'cmdname'}
                         and ($contents->[-1]->{'cmdname'} eq 'c' 

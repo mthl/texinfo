@@ -148,9 +148,9 @@ $result_trees{'multitable'} = {
                       'parent' => {}
                     },
                     {
-                      'parent' => {},
                       'text' => '
-'
+',
+                      'type' => 'empty_spaces_after_close_brace'
                     }
                   ],
                   'parent' => {},
@@ -254,9 +254,9 @@ $result_trees{'multitable'} = {
                       'parent' => {}
                     },
                     {
-                      'parent' => {},
                       'text' => '
-'
+',
+                      'type' => 'empty_spaces_after_close_brace'
                     }
                   ],
                   'parent' => {},
@@ -331,7 +331,6 @@ $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'conten
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
@@ -347,7 +346,6 @@ $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'conten
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable'}{'contents'}[1];
@@ -370,9 +368,7 @@ $result_texis{'multitable'} = '
 
 
 $result_texts{'multitable'} = '
-aaa bb 
-ccc
-
+aaa bb ccc
 ';
 
 $result_errors{'multitable'} = [];
@@ -415,7 +411,7 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
       [20] (2,0) @anchor
       [20] (2,0)
  locations  (1) l 0 b 2
-      [21] (2,0) :text
+      [21] (2,0) :empty_spaces_after_close_brace:text
       [21] (2,0)
      [18] (3,1)
     [16] (1,1)
@@ -441,7 +437,7 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
       [32] (0,0) @anchor
       [32] (0,0)
  locations  (2) l 0 b 0
-      [33] (0,0) :text
+      [33] (0,0) :empty_spaces_after_close_brace:text
       [33] (0,0)
      [31] (0,0)
     [29] (17,2)

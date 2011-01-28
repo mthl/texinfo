@@ -125,9 +125,9 @@ $result_trees{'double_node_anchor_float'} = {
               'parent' => {}
             },
             {
-              'parent' => {},
               'text' => '
-'
+',
+              'type' => 'empty_spaces_after_close_brace'
             }
           ],
           'parent' => {},
@@ -175,9 +175,9 @@ $result_trees{'double_node_anchor_float'} = {
               'parent' => {}
             },
             {
-              'parent' => {},
               'text' => '
-'
+',
+              'type' => 'empty_spaces_after_close_brace'
             }
           ],
           'parent' => {},
@@ -551,7 +551,6 @@ $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'content
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1];
-$result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0];
@@ -559,7 +558,6 @@ $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'content
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3];
-$result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'double_node_anchor_float'}{'contents'}[2];
 $result_trees{'double_node_anchor_float'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'args'}[0]{'contents'}[1];
@@ -639,8 +637,6 @@ $result_texis{'double_node_anchor_float'} = '@node node1
 
 
 $result_texts{'double_node_anchor_float'} = '
-
-
 
 
 
