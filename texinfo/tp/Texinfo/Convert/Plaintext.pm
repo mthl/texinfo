@@ -1132,7 +1132,8 @@ sub _convert($$)
          $formatter->{'container'}->add_text(
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'})));
       return $result;
-    } elsif ($style_map{$command}) {
+    } elsif ($style_map{$command} 
+         or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
       if ($code_style_commands{$command}) {
         $formatter->{'code'}++;
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
@@ -1145,14 +1146,22 @@ sub _convert($$)
         $formatter->{'container'}->set_space_protection(1,1)
           if ($formatter->{'w'} == 1);
       }
+      my ($text_before, $text_after);
+      if ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command') {
+        $text_before = $root->{'extra'}->{'begin'};
+        $text_after = $root->{'extra'}->{'end'};
+      } else {
+        $text_before = $style_map{$command}->[0];
+        $text_after = $style_map{$command}->[1];
+      }
       $result = $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text($style_map{$command}->[0]));
+               $formatter->{'container'}->add_text($text_before));
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
 
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text($style_map{$command}->[1]));
+               $formatter->{'container'}->add_text($text_after));
       if ($command eq 'w') {
         $formatter->{'w'}--;
         $formatter->{'container'}->set_space_protection(0,0)

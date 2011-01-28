@@ -412,4 +412,19 @@ $result_errors{'definfoenclose'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'definfoenclose'} = '
+definfoenclose phoo,//,\\
+
+   //bar\\
+
+   definfoenclose phi,:,:
+
+   :bar:
+
+   *very strong*
+
+   (strong: is it really strong?  :)
+';
+
 1;

@@ -128,7 +128,7 @@ if ($0 =~ /\.pl$/) {
 }
 require Unicode::EastAsianWidth;
 
-# This is done at runtime because the modules are also found at runtime.
+# This is done at runtime because the modules above are also found at runtime.
 require Texinfo::Parser;
 require Texinfo::Structuring;
 require Texinfo::Convert::Info;
@@ -225,8 +225,9 @@ foreach my $var (@document_settable_at_commands, @document_global_at_commands,
   $valid_options{$var} = 1;
 }
 
-
+# passed from main program
 my $cmdline_options;
+# used in main program
 our $options = {};
 
 sub _load_config ($) {
@@ -280,6 +281,7 @@ sub get_conf($) {
 }
 
 }
+# back in main program namespace
 
 # file:        file name to locate. It can be a file path.
 # directories: a reference on a array containing a list of directories to
@@ -566,7 +568,8 @@ while(@input_files)
   my @prependended_include_directories = ('.');
   push @prependended_include_directories, $input_directory
       if ($input_directory ne '.');
-  unshift @{$parser_options->{'include_directories'}}, @prependended_include_directories;
+  unshift @{$parser_options->{'include_directories'}},
+     @prependended_include_directories;
   unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
 
   $parser_options->{'gettext'} = \&__;

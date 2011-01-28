@@ -122,22 +122,6 @@ shortcontents @shortcontents eol
 shortcontents @shortcontents eol
 summarycontents @summarycontents line following summarycontents
 '],
-['definfoenclose',
-'
-definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
-
-@phoo{bar}
-
-definfoenclose phi,:,:  @definfoenclose phi,:,:
-
-@phi{bar}
-
-@strong{very strong}
-
-@definfoenclose strong,(strong:,:)
-
-@strong{ is it really strong? }
-'],
 ['invalid_kbdinputstyle',
 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 '],
@@ -198,8 +182,31 @@ Nested Other line
 ']
 );
 
+my @converted_test_cases = (
+['definfoenclose',
+'
+definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
+
+@phoo{bar}
+
+definfoenclose phi,:,:  @definfoenclose phi,:,:
+
+@phi{bar}
+
+@strong{very strong}
+
+@definfoenclose strong,(strong:,:)
+
+@strong{ is it really strong? }
+'],
+);
+
+foreach my $test (@converted_test_cases) {
+  $test->[2]->{'test_formats'} = ['plaintext'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('misc_commands', \@test_cases, $arg_test_case,
+run_all ('misc_commands', [@test_cases, @converted_test_cases], $arg_test_case,
    $arg_generate, $arg_debug);
 
