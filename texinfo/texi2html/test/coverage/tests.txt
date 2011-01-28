@@ -13,6 +13,6 @@ float float.texi
 imbrications imbrications.texi
 formats_titles formats_titles.texi
 # -debug 255
-comments_info comments.texi --init info.init -U texi2html
+comments_info comments.texi --info -U texi2html
 delcomment delcomment.texi
 #line_commands_comment line_commands_comment.texi
