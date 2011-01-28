@@ -414,7 +414,7 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
       [19] (2,0)
       [20] (2,0) @anchor
       [20] (2,0)
- locations   l  l 0 b 2
+ locations  (1) l 0 b 2
       [21] (2,0) :text
       [21] (2,0)
      [18] (3,1)
@@ -428,34 +428,29 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
      [24] (4,1)
     [22] (1,1)
    [11] (17,2)
- locations   l  l 1 b 9
+ locations  (1) l 1 b 9
    [26] (17,2) :row
     [27] (17,2) @item
      [28] (0,0) :empty_spaces_after_command:text
      [28] (0,0)
     [27] (17,2)
- locations   l  l 1 b 9
     [29] (17,2) @tab
      [30] (0,0) :empty_spaces_after_command:text
      [30] (0,0)
      [31] (0,0) :paragraph
       [32] (0,0) @anchor
       [32] (0,0)
- locations   l  l 0 b 0
+ locations  (2) l 0 b 0
       [33] (0,0) :text
       [33] (0,0)
      [31] (0,0)
     [29] (17,2)
- locations   l  l 1 b 9
    [26] (24,3)
- locations   l  l 1 b 9  l  l 2 b 23
+ locations  (2) l 2 b 23
   [3] (24,3)
- locations   l  l 1 b 9  l  l 2 b 23
   [34] (24,3) :empty_line_after_command:text
   [34] (24,3)
- locations   l  l 1 b 9  l  l 2 b 23
  [1] (24,3)
- locations   l  l 1 b 9  l  l 2 b 23
 
 aaa   bb    ccc
       

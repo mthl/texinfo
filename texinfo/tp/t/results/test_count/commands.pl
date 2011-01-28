@@ -376,7 +376,7 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
      [25] (50,6)
     [24] (50,6)
    [23] (58,7)
- locations   l  l 7
+ locations  (1) l 7
    [28] (58,7) :empty_line:text
    [28] (59,8)
    [29] (59,8) :paragraph

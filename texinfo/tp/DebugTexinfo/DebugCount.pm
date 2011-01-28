@@ -44,11 +44,19 @@ sub _convert($$)
   
   my $text =
     Texinfo::Convert::Plaintext::_convert($self, $root);
-  my $locations_string = '';
+  my $all_locations_string = '';
   if ($self->{'count_context'}->[-1]->{'locations'}) {
-    my $location_string = '';
     foreach my $location (@{$self->{'count_context'}->[-1]->{'locations'}}) {
-      $location_string .= "  l ";
+      my $location_nr;
+      if (defined($self->{'debug_location_counts'})
+           and defined ($self->{'debug_location_counts'}->{$location})) {
+        $location_nr = $self->{'debug_location_counts'}->{$location};
+      } else {
+        $self->{'debug_location_counter'}++;
+        $location_nr = $self->{'debug_location_counter'};
+        $self->{'debug_location_counts'}->{$location} = $location_nr;
+      }
+      my $location_string = '';
       if (defined($location->{'lines'})) {
         $location_string .= " l $location->{'lines'}";
       }
@@ -58,19 +66,24 @@ sub _convert($$)
       if (defined($self->{'debug_locations_strings'}->{$location})) {
         if ($self->{'debug_locations_strings'}->{$location} eq $location_string) {
           $location_string = '';
+        } else {
+          $self->{'debug_locations_strings'}->{$location} = $location_string;
+          $location_string = " ($location_nr)$location_string";
         }
       } else {
         $self->{'debug_locations_strings'}->{$location} = $location_string;
+        $location_string = " ($location_nr)$location_string";
       }
+      $all_locations_string .= $location_string if ($location_string);
     }
-    $locations_string .= $location_string ."\n" if ($location_string);
+    $all_locations_string .= "\n" if ($all_locations_string);
   }
   #push @{$self->{'debug_count_strings'}}, ' ' x $self->{'level'}. "TEXT: $text|\n"
   #  if ($self->{'count_context'}->[-1]->{'bytes'} > $bytes_before);
   my $number_after = "($self->{'count_context'}->[-1]->{'bytes'},$self->{'count_context'}->[-1]->{'lines'})";
   my $string_after = ' ' x $self->{'level'}. "$command_nr $number_after\n";
-  $string_after .= " locations $locations_string"
-     if ($locations_string ne '');
+  $string_after .= " locations $all_locations_string"
+     if ($all_locations_string ne '');
   push @{$self->{'debug_count_strings'}}, $string_after;
   $self->{'level'}--;
   if ($self->{'level'} > 0) {

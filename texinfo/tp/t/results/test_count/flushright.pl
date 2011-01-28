@@ -344,62 +344,53 @@ $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
     [7] (6,0)
     [8] (6,0) @anchor
     [8] (6,0)
- locations   l  l 0 b 6
+ locations  (1) l 0 b 6
     [9] (6,0) :text
     [9] (11,1)
     [10] (11,1) :text
     [10] (21,1)
     [11] (21,1) @anchor
     [11] (21,1)
- locations   l  l 1 b 21
+ locations  (2) l 1 b 21
     [12] (21,1) :text
     [12] (25,1)
     [13] (25,1) @anchor
     [13] (25,1)
- locations   l  l 1 b 25
+ locations  (3) l 1 b 25
     [14] (25,1) :text
     [14] (32,2)
    [6] (143,3)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138
+ locations  (1) l 1 b 68 (2) l 2 b 134 (3) l 2 b 138
    [15] (143,3) :empty_line:text
    [15] (144,4)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138
    [16] (144,4) :paragraph
     [17] (0,0) :text
     [17] (4,1)
     [18] (4,1) :text
     [18] (9,2)
    [16] (286,6)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138
    [19] (286,6) :empty_line:text
    [19] (287,7)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138
    [20] (287,7) :paragraph
     [21] (0,0) @anchor
     [21] (0,0)
- locations   l  l 0 b 0
+ locations  (4) l 0 b 0
     [22] (0,0) :text
     [22] (1,1)
    [20] (288,8)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
+ locations  (4) l 7 b 287
    [23] (288,8) :empty_line:text
    [23] (289,9)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
    [24] (289,9) :paragraph
     [25] (0,0) :text
     [25] (10,1)
    [24] (360,10)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
    [26] (360,10) :empty_line:text
    [26] (361,11)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
   [3] (361,11)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
   [27] (361,11) :empty_line_after_command:text
   [27] (361,11)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
  [1] (361,11)
- locations   l  l 1 b 68  l  l 2 b 134  l  l 2 b 138  l  l 7 b 287
 
                                                              aaa bb ada
                                                    dad sff sd and dsdbf
