@@ -199,6 +199,12 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 
 @strong{ is it really strong? }
 '],
+['no_empty_line_between_headings',
+'@top Top
+@subheading Subheading
+@chapter Chapter
+@section Section
+'],
 );
 
 foreach my $test (@converted_test_cases) {

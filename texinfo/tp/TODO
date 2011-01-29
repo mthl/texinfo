@@ -21,6 +21,17 @@ and also maybe
   -> replace acronym_like with the already formatted text and 
      explanation with convert(explanation).
 
+def/end_of_lines_protected_in_footnote.pl the footnote is
+   (1)  -- category: deffn_name arguments arg2 more args with end of line
+and not 
+   (1)
+ -- category: deffn_name arguments arg2 more args with end of line
+It is unclear whether it is right or wrong, but even less clear why it 
+happens this way.
+
+Test empty/no empty line at a multitable beginning, between 2 rows and
+after a multitable.
+
 Test end_line_count in Texinfo/Convert/ containers.
 
 Following should be an error:

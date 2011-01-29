@@ -243,7 +243,7 @@ my %defaults = (
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
   'NUMBER_FOOTNOTES'     => 1,
-  'empty_lines_count'    => 0,
+  'empty_lines_count'    => undef,
   'SPLIT_SIZE'           => 300000,
   'expanded_formats'     => undef,
   'include_directories'  => undef,
@@ -682,6 +682,18 @@ sub _update_locations_counts($$)
   }
 }
 
+sub _add_newline_if_needed($) {
+  my $self = shift;
+  if (defined($self->{'empty_lines_count'}) 
+       and $self->{'empty_lines_count'} == 0) {
+    $self->_add_text_count("\n");
+    $self->_add_lines_count(1);
+    $self->{'empty_lines_count'} = 1;
+    return "\n";
+  }
+  return '';
+}
+
 my $footnote_indent = 3;
 sub _footnotes($$)
 {
@@ -690,16 +702,13 @@ sub _footnotes($$)
 
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
-    unless ($self->{'empty_lines_count'}) {
-      $result .= "\n";
-      $self->_add_text_count("\n");
-      $self->_add_lines_count(1);
-    }
+    $result .= $self->_add_newline_if_needed();
     if ($self->{'footnotestyle'} eq 'end' or !defined($element)) {
       my $footnotes_header = "   ---------- Footnotes ----------\n\n";
       $result .= $footnotes_header;
       $self->_add_text_count($footnotes_header);
       $self->_add_lines_count(2);
+      $self->{'empty_lines_count'} = 1;
     } else {
 
       my $footnotes_node = {
@@ -730,12 +739,7 @@ sub _footnotes($$)
       $self->_add_text_count($footnote_text);
 
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]); 
-      unless ($self->{'empty_lines_count'}) {
-        $result .= "\n";
-        $self->_add_text_count("\n");
-        $self->_add_lines_count(1);
-        $self->{'empty_lines_count'} = 1;
-      }
+      $result .= $self->_add_newline_if_needed();
       
       pop @{$self->{'context'}};
       pop @{$self->{'format_context'}};
@@ -865,8 +869,9 @@ sub _contents($$$)
   my $section = $section_root->{'section_childs'}->[0];
   my $root_level = $section->{'level'};
 
-  # FIXME return bytes count? lines count?
+  # FIXME return bytes count?
   my $result = '';
+  my $lines_count = 0;
   while ($section and $section ne $section_root) {
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
     my ($section_title) = $self->convert_line({'contents'
@@ -875,6 +880,7 @@ sub _contents($$$)
     my $text = Texinfo::Convert::Text::numbered_heading($section, 
                             $section_title, $self->{'NUMBER_SECTIONS'})."\n";
     $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
+    $lines_count++;
     if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
       $section = $section->{'section_childs'}->[0];
@@ -890,7 +896,7 @@ sub _contents($$$)
       }
     }
   }
-  return $result;
+  return ($result, $lines_count);
 }
 
 sub _menu($$)
@@ -1376,7 +1382,8 @@ sub _convert($$)
                'paragraph_count' => 0,
                'indent_level' => 
                    $self->{'format_context'}->[-1]->{'indent_level'},
-               'max' => $self->{'format_context'}->[-1]->{'max'} };
+               'max' => $self->{'format_context'}->[-1]->{'max'},
+             };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
         if ($self->{'context'}->[-1] eq 'preformatted') {
@@ -1417,6 +1424,8 @@ sub _convert($$)
         }
         print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'DEBUG'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
+        $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
+          = $self->{'empty_lines_count'};
       } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}
                and $root->{'extra'}->{'normalized'}) {
         $result .= $self->_anchor($root);
@@ -1427,21 +1436,26 @@ sub _convert($$)
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {
       if ($self->{'setcontentsaftertitlepage'} 
            and $root_commands{$root->{'cmdname'}}) {
-        my $contents = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
-                              'contents') ."\n";
-        $self->{'empty_lines_count'} = 0;
+        my ($contents, $lines_count) 
+                = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                                  'contents');
+        $contents .= "\n";
+        $self->{'empty_lines_count'} = 1;
         $self->{'setcontentsaftertitlepage'} = 0;
         $self->_add_text_count($contents);
-        
+        $self->_add_lines_count($lines_count+1);
         $result .= $contents;
       } 
       if ($self->{'setshortcontentsaftertitlepage'} 
             and $root_commands{$root->{'cmdname'}}) {
-        my $contents = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
-                              'shortcontents')."\n";
-        $self->{'empty_lines_count'} = 0;
+        my ($contents, $lines_count) 
+                = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+                              'shortcontents');
+        $contents .= "\n";
+        $self->{'empty_lines_count'} = 1;
         $self->{'setshortcontentsaftertitlepage'} = 0;
         $self->_add_text_count($contents);
+        $self->_add_lines_count($lines_count+1);
         $result .= $contents;
       }
       if ($root->{'args'}) {
@@ -1451,6 +1465,7 @@ sub _convert($$)
         my $heading_underlined = 
              Texinfo::Convert::Text::heading ($root, $heading, 
                                               $self->{'NUMBER_SECTIONS'});
+        $result .= $self->_add_newline_if_needed();
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
         $self->_add_text_count($heading_underlined);
         # FIXME œ@* and @c?
@@ -1512,6 +1527,9 @@ sub _convert($$)
       print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$root->{'cmdname'}. Width: $cell_width\n"
             if ($self->{'DEBUG'});
       die if (!defined($cell_width));
+      $self->{'empty_lines_count'} 
+         = $self->{'format_context'}->[-1]->{'row_empty_lines_count'};
+
       push @{$self->{'format_context'}},
            { 'cmdname' => $root->{'cmdname'},
              'paragraph_count' => 0,
@@ -1523,7 +1541,6 @@ sub _convert($$)
         $preformatted = $self->new_formatter('unfilled');
         push @{$self->{'formatters'}}, $preformatted;
       }
-      $self->{'empty_lines_count'} = 0;
       $cell = 1;
     } elsif ($root->{'cmdname'} eq 'center') {
       #my ($counts, $new_locations);
@@ -1568,8 +1585,12 @@ sub _convert($$)
           and @{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
         my $lines_count = 0;
-        $result .= "\n" if (!$self->{'empty_lines_count'});
+        if (!$self->{'empty_lines_count'}) {
+          $result .= "\n";
+          $lines_count++;
+        }
         $result .= "* Menu:\n\n";
+        $lines_count += 2;
         foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
           next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
           my $float_entry;
@@ -1648,8 +1669,11 @@ sub _convert($$)
       if (!defined($self->{'setcontentsaftertitlepage'})
            and $self->{'structuring'}
            and $self->{'structuring'}->{'sectioning_root'}) {
-        $result = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        my $lines_count;
+        ($result, $lines_count) 
+            = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'contents');
+        $self->_add_lines_count($lines_count);
         $self->_add_text_count($result);
       }
       return $result;
@@ -1658,8 +1682,11 @@ sub _convert($$)
       if (!defined($self->{'setshortcontentsaftertitlepage'})
             and $self->{'structuring'}
             and $self->{'structuring'}->{'sectioning_root'}) {
-        $result = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
+        my $lines_count;
+        ($result, $lines_count) 
+              = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents');
+        $self->_add_lines_count($lines_count);
         $self->_add_text_count($result);
       }
       return $result;
@@ -1857,9 +1884,10 @@ sub _convert($$)
       # this is used to keep track of the last cell with content.
       my $max_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
       my $bytes_count = 0;
+      my $line;
       for (my $line_idx = 0; $line_idx < $max_lines; $line_idx++) {
         my $line_width = $indent_len;
-        my $line = '';
+        $line = '';
         # determine the last cell in the line, to fill spaces in 
         # cells preceding that cell on the line
         my $last_cell = 0;
@@ -1913,6 +1941,12 @@ sub _convert($$)
         my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
         $bytes_count += $self->count_bytes($line);
         $result .= $line;
+        $self->{'empty_lines_count'} = 0;
+        $max_lines++;
+      } elsif ($line eq "\n") {
+        $self->{'empty_lines_count'} = 1;
+      } else {
+        $self->{'empty_lines_count'} = 0;
       }
       $self->_update_locations_counts(\@row_locations);
       push @{$self->{'count_context'}->[-1]->{'locations'}}, @row_locations;
@@ -1920,6 +1954,8 @@ sub _convert($$)
       $self->{'count_context'}->[-1]->{'lines'} += $max_lines;
       $self->{'format_context'}->[-1]->{'row'} = [];
       $self->{'format_context'}->[-1]->{'row_counts'} = [];
+      $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
+        = $self->{'empty_lines_count'};
     }
   }
   if ($paragraph) {

@@ -261,7 +261,7 @@ sub _contents($$$)
   my $section_root = shift;
   my $contents_or_shortcontents = shift;
 
-  return '';
+  return ('', 0);
 }
 
 my $index_length_to_node = 41;
