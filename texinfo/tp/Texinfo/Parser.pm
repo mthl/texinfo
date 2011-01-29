@@ -383,7 +383,7 @@ my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
-  'frenchspacing', 'footnotestyle') {
+  'frenchspacing', 'footnotestyle', 'hyphenation') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
@@ -434,7 +434,7 @@ foreach my $command ('node', 'end') {
 }
 
 foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption', 
-          'image', '*') {
+          'image', '*', 'hyphenation') {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
 }
 
@@ -3474,6 +3474,8 @@ sub _parse_texi($;$)
                   $parsed_anchor, $line_nr);
               }
             }
+            $self->_register_global_command($current->{'parent'}->{'cmdname'},
+                                            $current->{'parent'}, $line_nr);
             if ($command_ignore_space_after{$current->{'parent'}->{'cmdname'}}) {
               push @{$current->{'parent'}->{'parent'}->{'contents'}}, 
                  {'type' => 'empty_spaces_after_close_brace',
