@@ -300,6 +300,34 @@ sub _informative_command($$)
   }
 }
 
+sub _set_global_multiple_commands($)
+{
+  my $converter = shift;
+
+  foreach my $global_command (@informative_global_commands) {
+    if (defined($converter->{'extra'}->{$global_command})
+        and ref($converter->{'extra'}->{$global_command}) eq 'ARRAY') {
+      my $root = $converter->{'extra'}->{$global_command}->[0];
+      $converter->_informative_command($root);
+    }
+  }
+}
+
+sub _unset_global_multiple_commands($)
+{
+  my $converter = shift;
+
+  foreach my $global_command (@informative_global_commands) {
+    if (defined($converter->{'extra'}->{$global_command})
+        and ref($converter->{'extra'}->{$global_command}) eq 'ARRAY') {
+      my $root = $converter->{'extra'}->{$global_command}->[0];
+      next if ($converter->{'set'}->{$root->{'cmdname'}} 
+               or !exists($defaults{$root->{'cmdname'}}));
+      $converter->{$root->{'cmdname'}} = $defaults{$root->{'cmdname'}};
+    }
+  }
+}
+
 sub converter(;$)
 {
   my $class = shift;
@@ -348,10 +376,12 @@ sub converter(;$)
       foreach my $global_command (@informative_global_commands) {
         if (defined($converter->{'extra'}->{$global_command})) {
           my $root = $converter->{'extra'}->{$global_command};
-          if (ref($root) eq 'ARRAY') {
-            $root = $converter->{'extra'}->{$global_command}->[0];
+          #if (ref($root) eq 'ARRAY') {
+          #  $root = $converter->{'extra'}->{$global_command}->[0];
+          #}
+          if (ref($root) ne 'ARRAY') {
+            $converter->_informative_command($root);
           }
-          $converter->_informative_command($root);
         }
       }
       delete $conf->{'parser'};
@@ -1720,6 +1750,15 @@ sub _convert($$)
       $self->{'empty_lines_count'} = 0;
       my $conf;
       # indent. Not first paragraph.
+      if ($self->{'DEBUG'}) {
+        print STDERR "OPEN PARA ($self->{'format_context'}->[-1]->{'cmdname'}) "
+           . "cnt ". 
+            (defined($self->{'format_context'}->[-1]->{'counter'}) ? 
+             $self->{'format_context'}->[-1]->{'counter'} : 'UNDEF'). ' '
+           . "para cnt $self->{'format_context'}->[-1]->{'paragraph_count'} "
+           . "fparaindent $self->{'firstparagraphindent'} "
+           . "paraindent $self->{'paragraphindent'}\n";
+      }
       if ($self->{'format_context'}->[-1]->{'cmdname'} eq '_top_format'
           and ($self->{'format_context'}->[-1]->{'paragraph_count'} 
               or $self->{'firstparagraphindent'} eq 'insert') 

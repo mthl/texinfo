@@ -196,8 +196,10 @@ sub convert_to_info($$$)
   my $parser = shift;
   my $converter = 
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
-                                         'parser' => $parser });
-  my $result = $converter->convert($tree);
+                                         'parser' => $parser,
+                                         'OUTFILE' => ''});
+  my $result = $converter->output($tree);
+  die if (!defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
@@ -225,13 +227,16 @@ sub test($$)
 
   my $tests_count = 0;
 
-  if (ref($test_case) eq 'ARRAY') {
-    $test_name = shift @$test_case;
-    $test_text = shift @$test_case;
-    $parser_options = shift @$test_case if (@$test_case);
-  } else {
-    $test_name = basename($test_case, '.texi');
+  $test_name = shift @$test_case;
+  die if (!defined($test_name));
+  $test_text = shift @$test_case;
+  $parser_options = shift @$test_case if (@$test_case);
+  my $test_file;
+  if ($parser_options->{'test_file'}) {
+    $test_file = $parser_options->{'test_file'};
+    delete $parser_options->{'test_file'};
   }
+
   my @tested_formats;
   if ($parser_options and $parser_options->{'test_formats'}) {
     push @tested_formats, @{$parser_options->{'test_formats'}};
@@ -252,10 +257,10 @@ sub test($$)
   $initial_merged_indices = { %{$initial_merged_indices} };
   print STDERR "  TEST $test_name\n" if ($self->{'DEBUG'});
   my $result;
-  if (ref($test_case) eq 'ARRAY') {
+  if (!$test_file) {
     $result = $parser->parse_texi_text($test_text, 1);
   } else {
-    $result = $parser->parse_texi_file($test_case);
+    $result = $parser->parse_texi_file($test_file);
   }
   my $floats = $parser->floats_information();
 
@@ -501,7 +506,8 @@ sub run_all_files($$;$$$$)
   }
   my $test_nrs = 0;
   foreach my $test_case (@$ran_tests) {
-    $test_nrs += $test->test($test_case);
+    my $test_name = basename($test_case, '.texi');
+    $test_nrs += $test->test([$test_name, undef, {'test_file' => $test_case}]);
   }
 
   if ($generate or $arg_complete) {

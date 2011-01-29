@@ -12507,7 +12507,9 @@ $result_errors{'all_commands_delimiters_printindex'} = [];
 
 
 
-$result_converted{'info'}->{'all_commands_delimiters_printindex'} = '
+$result_converted{'info'}->{'all_commands_delimiters_printindex'} = 'This is , produced by makeinfo version 4.13 from .
+
+
 File: ,  Node: Top,  Up: (dir)
 
  -- Command: FORWARD--CHAR NCHARS argument2 argument3 (arg in brace,
@@ -12679,6 +12681,12 @@ Variables
 * enable:                                Top.                  (line 20)
 * fill-column:                           Top.                  (line  6)
 
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table
 ';
 
 1;

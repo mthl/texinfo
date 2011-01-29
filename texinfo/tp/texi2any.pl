@@ -343,7 +343,12 @@ my @prepend_dirs = ();
 my @css_files = ();
 my @css_refs = ();
 
-my $converter_default_options = {};
+# defaults for options relevant in the main program, and not undef. 
+# Others are set in the converters.
+# Other relevant options (undef) are NO_WARN FORCE OUTFILE
+
+my $converter_default_options = {'ERROR_LIMIT' => 100};
+
 my $parser_default_options = {'expanded_formats' => [], 'values' => {}};
 
 Texinfo::Config::_load_config($converter_default_options);
@@ -368,6 +373,7 @@ sub document_warn ($) {
   chomp ($text);
   warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
 }
+
 
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 

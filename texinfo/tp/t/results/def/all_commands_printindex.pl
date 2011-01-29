@@ -2880,7 +2880,9 @@ $result_errors{'all_commands_printindex'} = [];
 
 
 
-$result_converted{'info'}->{'all_commands_printindex'} = '
+$result_converted{'info'}->{'all_commands_printindex'} = 'This is , produced by makeinfo version 4.13 from .
+
+
 File: ,  Node: Top,  Up: (dir)
 
  -- c--ategory: d--efvr_name
@@ -2975,6 +2977,12 @@ Variables
 * d--efvar_name:                         Top.                  (line 33)
 * d--efvr_name:                          Top.                  (line  3)
 
+
+
+Tag Table:
+Node: Top86
+
+End Tag Table
 ';
 
 1;
