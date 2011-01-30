@@ -84,6 +84,20 @@ new comment
 * a5@b{b}: @c c
 @end menu
 '],
+['example_in_menu_comment',
+'@menu
+* entry::
+
+@example
+in 
+
+example
+@end example
+
+menu comment.
+
+@end menu
+']
 );
 
 my @test_invalid = (
