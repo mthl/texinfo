@@ -118,7 +118,6 @@ $result_trees{'block_not_matching'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'

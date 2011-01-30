@@ -166,7 +166,6 @@ $result_trees{'empty_deftypeop_name'} = {
                 {},
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
               'index_prefix' => 'f'

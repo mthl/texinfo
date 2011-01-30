@@ -97,7 +97,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -228,7 +227,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -371,7 +369,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -514,7 +511,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -632,7 +628,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -733,7 +728,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -852,7 +846,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -983,7 +976,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -1114,7 +1106,6 @@ $result_trees{'wrong_braces_simple'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'

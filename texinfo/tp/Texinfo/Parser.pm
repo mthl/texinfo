@@ -474,6 +474,11 @@ foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 
+my %close_preformatted_commands = %close_paragraph_commands;
+foreach my $no_close_preformatted('center', 'insertcopying', 'sp') {
+  delete $close_preformatted_commands{$no_close_preformatted};
+}
+
 # commands that may appear in accents
 my %in_accent_commands = (%no_brace_commands, %accent_commands);
 foreach my $brace_command(keys(%brace_commands)) {
@@ -986,7 +991,7 @@ sub _close_brace_command($$$)
 
   my $located_line_nr = $line_nr;
   # use the beginning of the @-command for the error message
-  # line number if available. FIXME. not implemented
+  # line number if available. FIXME currently not done for regular brace commands
   $located_line_nr = $current->{'line_nr'}
     if ($current->{'line_nr'});
   if ($current->{'cmdname'} ne 'verb' or $current->{'type'} eq '') {
@@ -1000,8 +1005,7 @@ sub _close_brace_command($$$)
 }
 
 # close brace commands, that don't set a new context (ie @caption, @footnote)
-# and then the paragraph
-sub _end_paragraph ($$$)
+sub _close_all_style_commands($$$)
 {
   my $self = shift;
   my $current = shift;
@@ -1012,14 +1016,45 @@ sub _end_paragraph ($$$)
           and !exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
     $current = _close_brace_command($self, $current->{'parent'}, $line_nr);
   }
+  return $current;
+}
+
+# close brace commands except for @caption, @footnote then the paragraph
+sub _end_paragraph ($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+
+  $current = _close_all_style_commands($self, $current, $line_nr);
   if ($current->{'type'} and $current->{'type'} eq 'paragraph') {
     print STDERR "CLOSE PARA\n" if ($self->{'DEBUG'});
+    $current = $current->{'parent'};
+  } 
+  return $current;
+}
+
+# close brace commands except for @caption, @footnote then the preformatted
+sub _end_preformatted ($$$)
+{
+  my $self = shift;
+  my $current = shift;
+  my $line_nr = shift;
+
+  $current = _close_all_style_commands($self, $current, $line_nr);
+  if ($current->{'type'} and $current->{'type'} eq 'preformatted') {
+    print STDERR "CLOSE PREFORMATTED\n" if ($self->{'DEBUG'});
+    # completly remove void preformatted contexts
+    if (!@{$current->{'contents'}}) {
+      pop @{$current->{'parent'}->{'contents'}};
+    }
     $current = $current->{'parent'};
   }
   return $current;
 }
 
-# remove the counters in multitable
+# remove the dynamic counters in multitable, they are not of use in the final
+# tree
 sub _close_multitable($) {
   my $multitable = shift;
   foreach my $row (@{$multitable->{'contents'}}) {
@@ -1685,7 +1720,6 @@ sub _enter_index_entry($$$$)
                       'content'          => $content,
 		      'command'          => $current,
                     };
-  $index_entry->{'def'} = 1 if ($def_commands{$command});
   $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
@@ -1872,6 +1906,7 @@ sub _end_line($$$)
         $def_parsed_hash->{$arg->[0]} = $arg->[1];
       }
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
+      # do an standard index entry tree
       my $index_entry = $def_parsed_hash->{'name'};
       if (defined($index_entry)) {
         if ($def_parsed_hash->{'class'}) {
@@ -1887,13 +1922,13 @@ sub _end_line($$$)
           }
         }
         my $index_contents;
+        # 'root_line' is the container returned by gdt.
         if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
           $index_contents = $index_entry->{'contents'};
         } else {
           $index_contents = [$index_entry];
         }
         _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
-          #  $current->{'parent'}, $arguments);
           $current->{'parent'}, $index_contents);
       } else {
         $self->line_warn (sprintf($self->__('Missing name for @%s'), 
@@ -3639,12 +3674,13 @@ sub _trim_spaces_comment_from_content($)
             or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
 
-  while (@$contents and (($contents->[-1]->{'cmdname'}
-                        and ($contents->[-1]->{'cmdname'} eq 'c' 
-                         or $contents->[-1]->{'cmdname'} eq 'comment'))
-                        or ($contents->[-1]->{'type'}
-                           and ($contents->[-1]->{'type'} eq 'spaces_at_end'
-                                or $contents->[-1]->{'type'} eq 'space_at_end_block_command')))) {
+  while (@$contents 
+         and (($contents->[-1]->{'cmdname'}
+               and ($contents->[-1]->{'cmdname'} eq 'c' 
+                    or $contents->[-1]->{'cmdname'} eq 'comment'))
+              or ($contents->[-1]->{'type'}
+                  and ($contents->[-1]->{'type'} eq 'spaces_at_end'
+                       or $contents->[-1]->{'type'} eq 'space_at_end_block_command')))) {
     pop @$contents;
   }
 }

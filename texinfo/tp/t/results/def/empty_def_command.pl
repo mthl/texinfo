@@ -58,7 +58,6 @@ $result_trees{'empty_def_command'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -163,7 +162,6 @@ $result_trees{'empty_def_command'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
@@ -225,7 +223,6 @@ $result_trees{'empty_def_command'} = {
               'content' => [
                 {}
               ],
-              'def' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
               'index_prefix' => 'f'
