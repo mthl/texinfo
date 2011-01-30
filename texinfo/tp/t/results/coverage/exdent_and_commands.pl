@@ -165,9 +165,15 @@ $result_trees{'exdent_and_commands'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => 'example
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'example
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         },
         {
           'args' => [
@@ -207,9 +213,15 @@ $result_trees{'exdent_and_commands'} = {
           'parent' => {}
         },
         {
-          'parent' => {},
-          'text' => 'following
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'following
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         },
         {
           'args' => [
@@ -269,9 +281,15 @@ $result_trees{'exdent_and_commands'} = {
           'parent' => {}
         },
         {
-          'parent' => {},
-          'text' => 'after exdented
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'after exdented
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         }
       ],
       'parent' => {}
@@ -317,6 +335,7 @@ $result_trees{'exdent_and_commands'}{'contents'}[0]{'parent'} = $result_trees{'e
 $result_trees{'exdent_and_commands'}{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'};
 $result_trees{'exdent_and_commands'}{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'};
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
+$result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[1];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0];
@@ -325,6 +344,7 @@ $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'p
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
+$result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[3];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0];
@@ -340,6 +360,7 @@ $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'extra'}{'mis
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'extra'}{'misc_content'}[3] = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[4];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'extra'}{'misc_content'}[4] = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[5];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
+$result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[5];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'contents'}[5]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[3];
 $result_trees{'exdent_and_commands'}{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'};
 $result_trees{'exdent_and_commands'}{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'};

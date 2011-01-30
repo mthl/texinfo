@@ -14,9 +14,15 @@ $result_trees{'double_exdent'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => 'Example   Hoho.
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'Example   Hoho.
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         },
         {
           'cmdname' => 'example',
@@ -28,9 +34,15 @@ $result_trees{'double_exdent'} = {
               'type' => 'empty_line_after_command'
             },
             {
-              'parent' => {},
-              'text' => 'Nested Other line
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'Nested Other line
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'preformatted'
             },
             {
               'args' => [
@@ -115,8 +127,10 @@ $result_trees{'double_exdent'} = {
   'type' => 'text_root'
 };
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[1];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2];
+$result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_exdent'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0];

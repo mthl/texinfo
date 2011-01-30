@@ -20,20 +20,26 @@ $result_trees{'preformatted'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => 'e--xample  some  
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'e--xample  some  
 '
-        },
-        {
-          'parent' => {},
-          'text' => '
+            },
+            {
+              'parent' => {},
+              'text' => '
 ',
-          'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => '   text
+              'type' => 'empty_line'
+            },
+            {
+              'parent' => {},
+              'text' => '   text
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         }
       ],
       'parent' => {}
@@ -131,15 +137,21 @@ $result_trees{'preformatted'} = {
               'parent' => {}
             },
             {
-              'parent' => {},
-              'text' => '
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
 ',
-              'type' => 'empty_line'
-            },
-            {
-              'parent' => {},
-              'text' => 'in table in format
+                  'type' => 'empty_line'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'in table in format
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'preformatted'
             }
           ],
           'extra' => {
@@ -172,9 +184,10 @@ $result_trees{'preformatted'} = {
 };
 $result_trees{'preformatted'}{'contents'}[0]{'parent'} = $result_trees{'preformatted'};
 $result_trees{'preformatted'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[1]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[1]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[1]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[1];
-$result_trees{'preformatted'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[1];
-$result_trees{'preformatted'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'preformatted'}{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[1]{'parent'} = $result_trees{'preformatted'};
 $result_trees{'preformatted'}{'contents'}[2]{'parent'} = $result_trees{'preformatted'};
 $result_trees{'preformatted'}{'contents'}[3]{'parent'} = $result_trees{'preformatted'};
@@ -192,8 +205,9 @@ $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extr
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];
+$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2];
+$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];
-$result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'preformatted'}{'contents'}[4];
 $result_trees{'preformatted'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'preformatted'}{'contents'}[4];

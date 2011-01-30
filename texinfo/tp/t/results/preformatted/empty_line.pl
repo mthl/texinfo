@@ -14,20 +14,26 @@ $result_trees{'empty_line'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => 'example
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'example
 '
-        },
-        {
-          'parent' => {},
-          'text' => '
+            },
+            {
+              'parent' => {},
+              'text' => '
 ',
-          'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => 'after empty line
+              'type' => 'empty_line'
+            },
+            {
+              'parent' => {},
+              'text' => 'after empty line
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         }
       ],
       'parent' => {}
@@ -42,9 +48,10 @@ $result_trees{'empty_line'} = {
   'type' => 'text_root'
 };
 $result_trees{'empty_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line'}{'contents'}[0];
+$result_trees{'empty_line'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_line'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_line'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_line'}{'contents'}[0];
-$result_trees{'empty_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_line'}{'contents'}[0];
-$result_trees{'empty_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_line'}{'contents'}[0];
 $result_trees{'empty_line'}{'contents'}[0]{'parent'} = $result_trees{'empty_line'};
 $result_trees{'empty_line'}{'contents'}[1]{'parent'} = $result_trees{'empty_line'};
 

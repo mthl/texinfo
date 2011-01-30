@@ -10,6 +10,23 @@ example
 after empty line
 @end example
 '],
+['text_on_command_line',
+'@example text on line
+@end example
+
+@example text on line followed by text
+normal text
+@end example
+
+@example
+in example
+@end example text after end
+
+@example
+@example
+@end example text after end example nested in example
+@end example
+']
 );
 
 my @test_invalid = (

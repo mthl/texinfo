@@ -121,9 +121,15 @@ $result_trees{'commands'} = {
           'type' => 'empty_line_after_command'
         },
         {
-          'parent' => {},
-          'text' => 'truc
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'truc
 '
+            }
+          ],
+          'parent' => {},
+          'type' => 'preformatted'
         }
       ],
       'parent' => {}
@@ -268,6 +274,7 @@ $result_trees{'commands'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_tree
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4];
+$result_trees{'commands'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[4];
 $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[5]{'parent'} = $result_trees{'commands'};
@@ -356,36 +363,38 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
   [16] (33,4) @example
    [17] (33,4) :empty_line_after_command:text
    [17] (33,4)
-   [18] (33,4) :text
+   [18] (33,4) :preformatted
+    [19] (33,4) :text
+    [19] (43,5)
    [18] (43,5)
   [16] (43,5)
-  [19] (43,5) :empty_line_after_command:text
-  [19] (43,5)
-  [20] (43,5) :empty_line:text
-  [20] (44,6)
-  [21] (44,6) @vtable
-   [22] (44,6) :before_item
-   [22] (44,6)
-   [23] (44,6) @item
-    [24] (44,6) 
-     [25] (44,6) @samp
-      [26] (44,6) :brace_command_arg
-       [27] (44,6) :text
-       [27] (50,6)
-      [26] (50,6)
-     [25] (50,6)
-    [24] (50,6)
-   [23] (58,7)
+  [20] (43,5) :empty_line_after_command:text
+  [20] (43,5)
+  [21] (43,5) :empty_line:text
+  [21] (44,6)
+  [22] (44,6) @vtable
+   [23] (44,6) :before_item
+   [23] (44,6)
+   [24] (44,6) @item
+    [25] (44,6) 
+     [26] (44,6) @samp
+      [27] (44,6) :brace_command_arg
+       [28] (44,6) :text
+       [28] (50,6)
+      [27] (50,6)
+     [26] (50,6)
+    [25] (50,6)
+   [24] (58,7)
  locations  (1) l 7
-   [28] (58,7) :empty_line:text
-   [28] (59,8)
-   [29] (59,8) :paragraph
-    [30] (59,8) :text
-    [30] (68,8)
-   [29] (69,9)
-  [21] (69,9)
-  [31] (69,9) :empty_line_after_command:text
-  [31] (69,9)
+   [29] (58,7) :empty_line:text
+   [29] (59,8)
+   [30] (59,8) :paragraph
+    [31] (59,8) :text
+    [31] (68,8)
+   [30] (69,9)
+  [22] (69,9)
+  [32] (69,9) :empty_line_after_command:text
+  [32] (69,9)
  [1] (69,9)
 TeX. Ab.  @.   e~, i^
 

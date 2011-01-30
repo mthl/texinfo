@@ -299,9 +299,15 @@ $result_trees{'block_not_matching'} = {
               'type' => 'empty_line_after_command'
             },
             {
-              'parent' => {},
-              'text' => 'example
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => 'example
 '
+                }
+              ],
+              'parent' => {},
+              'type' => 'preformatted'
             }
           ],
           'parent' => {}
@@ -520,6 +526,7 @@ $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'pa
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
+$result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9];
 $result_trees{'block_not_matching'}{'contents'}[9]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'block_not_matching'}{'contents'}[9]{'args'}[0]{'contents'}[1];

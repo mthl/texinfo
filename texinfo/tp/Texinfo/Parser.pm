@@ -981,6 +981,19 @@ sub _begin_paragraph ($$)
   return 0;
 }
 
+sub _begin_preformatted($)
+{
+  my $self = shift;
+  my $current = shift;
+  if ($self->{'context_stack'}->[-1] eq 'preformatted') {
+    push @{$current->{'contents'}}, 
+          { 'type' => 'preformatted', 'parent' => $current, 'contents' => [] };
+    $current = $current->{'contents'}->[-1];
+    print STDERR "PREFORMATTED\n" if ($self->{'DEBUG'});
+  }
+  return $current;
+}
+
 # currently doesn't do much more than
 # return $_[1]->{'parent'}
 sub _close_brace_command($$$)
@@ -1046,7 +1059,8 @@ sub _end_preformatted ($$$)
     print STDERR "CLOSE PREFORMATTED\n" if ($self->{'DEBUG'});
     # completly remove void preformatted contexts
     if (!@{$current->{'contents'}}) {
-      pop @{$current->{'parent'}->{'contents'}};
+      my $removed = pop @{$current->{'parent'}->{'contents'}};
+      print STDERR "popping $removed->{'type'}\n" if ($self->{'DEBUG'});
     }
     $current = $current->{'parent'};
   }
@@ -1126,6 +1140,7 @@ sub _close_commands($$$;$)
   my $command = shift;
 
   $current = _end_paragraph($self, $current, $line_nr);
+  $current = _end_preformatted($self, $current, $line_nr);
 
         # stop if the command is found
   while (!($command and $current->{'cmdname'}
@@ -1789,8 +1804,8 @@ sub _end_line($$$)
       $empty_line->{'parent'} = $current;
     } elsif ($current->{'type'} 
                and $current->{'type'} eq 'menu_entry_description') {
-      # first parent is menu_entry
       my $empty_line = pop @{$current->{'contents'}};
+      # first parent is menu_entry
       $current = $current->{'parent'}->{'parent'};
       
       push @{$current->{'contents'}}, { 'type' => 'after_description_line', 
@@ -2064,6 +2079,7 @@ sub _end_line($$$)
          'contents' => [], 'parent', $current };
       $current = $current->{'contents'}->[-1];
     }
+    $current = $self->_begin_preformatted($current);
 
   # misc command line arguments
   } elsif ($current->{'type'} 
@@ -2185,6 +2201,8 @@ sub _end_line($$$)
       }
     }
     $current = $current->{'parent'};
+    $current = $self->_begin_preformatted($current) 
+       if ($close_preformatted_commands{$command});
     # if a file was included, remove completly the include file command.
     # Also ignore @setfilename in included file, as said in the manual.
     if ($included_file or ($command eq 'setfilename'
@@ -2232,13 +2250,24 @@ sub _end_line($$$)
   } elsif ($current->{'contents'} and @{$current->{'contents'}}
       and $current->{'contents'}->[-1]->{'type'}
       and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
+    if ($current->{'type'}
+        and $current->{'type'} eq 'preformatted') {
+      print STDERR "LINE AFTER COMMAND IN PREFORMATTED\n" if ($self->{'DEBUG'});
+      my $empty_line = pop @{$current->{'contents'}};
+      $empty_line->{'parent'} = $current->{'parent'};
+      my $preformatted = pop @{$current->{'parent'}->{'contents'}};
+      push @{$current->{'parent'}->{'contents'}}, $empty_line;
+      push @{$current->{'parent'}->{'contents'}}, $preformatted;
+    }
     # empty line after a @menu. Reparent to the menu
     if ($current->{'type'} 
         and $current->{'type'} eq 'menu_comment') {
       print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'DEBUG'});
       my $empty_line = pop @{$current->{'contents'}};
       $empty_line->{'parent'} = $current->{'parent'};
-      unshift @{$current->{'parent'}->{'contents'}}, $empty_line;
+      my $menu_comment = pop @{$current->{'parent'}->{'contents'}};
+      push @{$current->{'parent'}->{'contents'}}, $empty_line;
+      push @{$current->{'parent'}->{'contents'}}, $menu_comment;
     }
   }
 
@@ -2398,10 +2427,8 @@ sub _register_command_arg($$$)
 sub _parse_texi($;$)
 {
   my $self = shift;
-#  my $first_lines = shift;
-
-#  my $root = { 'contents' => [], 'type' => 'text_root' };
   my $root = shift;
+
   $root = { 'contents' => [], 'type' => 'text_root' } if (!defined($root));
   my $current = $root;
 
@@ -2942,6 +2969,7 @@ sub _parse_texi($;$)
             ($closed_command, $current) 
                = _close_commands($self, $current, $line_nr, $end_command);
           }
+          $current = $self->_begin_preformatted($current);
           $line = _start_empty_line_after_command($line, $current);
           next;
         }
@@ -2956,6 +2984,9 @@ sub _parse_texi($;$)
 
         if ($close_paragraph_commands{$command}) {
           $current = _end_paragraph($self, $current, $line_nr);
+        }
+        if ($close_preformatted_commands{$command}) {
+          $current = _end_preformatted($self, $current, $line_nr);
         }
 
         # commands without braces and not block commands, ie no @end
@@ -3057,6 +3088,7 @@ sub _parse_texi($;$)
                               {'item_number' => $parent->{'items_count'}} };
                   push @{$parent->{'contents'}}, $misc;
                   $current = $parent->{'contents'}->[-1];
+                  $current = $self->_begin_preformatted($current);
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
                 }
@@ -3093,6 +3125,7 @@ sub _parse_texi($;$)
                             {'cell_number' => $row->{'cells_count'}} };
                       push @{$row->{'contents'}}, $misc;
                       $current = $row->{'contents'}->[-1];
+                      $current = $self->_begin_preformatted($current);
                       print STDERR "TAB\n" if ($self->{'DEBUG'});
                     }
                   } else {
@@ -3109,6 +3142,7 @@ sub _parse_texi($;$)
                                'extra' => {'cell_number' => 1}};
                     push @{$row->{'contents'}}, $misc;
                     $current = $row->{'contents'}->[-1];
+                    $current = $self->_begin_preformatted($current);
                   }
                 } else {
                   $self->line_error (sprintf($self->__("\@%s not meaningful inside `\@%s' block"), $command, $parent->{'cmdname'}), $line_nr);
@@ -3336,7 +3370,7 @@ sub _parse_texi($;$)
                 $current = $current->{'contents'}->[-1];
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
               }
-              
+              $current = $self->_begin_preformatted($current);
             }
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
             $self->_register_global_command($command, $block, $line_nr);

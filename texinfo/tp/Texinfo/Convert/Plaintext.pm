@@ -1124,8 +1124,8 @@ sub _convert($$)
     return '';
   }
 
-  my $preformatted;
   my $cell;
+  my $preformatted;
   if ($root->{'cmdname'}) {
     my $unknown_command;
     my $command = $root->{'cmdname'};
@@ -1416,7 +1416,8 @@ sub _convert($$)
              };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
-        if ($self->{'context'}->[-1] eq 'preformatted') {
+        if ($self->{'context'}->[-1] eq 'preformatted'
+            and ! $preformatted_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
         }
@@ -1567,10 +1568,6 @@ sub _convert($$)
              'max' => $cell_width - 2 };
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                                    'locations' => []};
-      if ($self->{'context'}->[-1] eq 'preformatted') {
-        $preformatted = $self->new_formatter('unfilled');
-        push @{$self->{'formatters'}}, $preformatted;
-      }
       $cell = 1;
     } elsif ($root->{'cmdname'} eq 'center') {
       #my ($counts, $new_locations);
@@ -1787,6 +1784,9 @@ sub _convert($$)
       } else {
         return '';
       }
+    } elsif ($root->{'type'} eq 'preformatted') {
+        $preformatted = $self->new_formatter('unfilled');
+        push @{$self->{'formatters'}}, $preformatted;
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
@@ -1858,7 +1858,8 @@ sub _convert($$)
     while (@contents) {
       my $content = shift @contents;
       my $text = $self->_convert($content);
-      $self->{'empty_lines_count'} = 0 if ($preformatted and $text ne '');
+      $self->{'empty_lines_count'} = 0 
+        if ($self->{'context'}->[-1] eq 'preformatted' and $text ne '');
       $result .= $text;
     }
     pop @{$self->{'current_contents'}};
