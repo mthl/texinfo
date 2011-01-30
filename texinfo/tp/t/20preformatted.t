@@ -26,7 +26,32 @@ in example
 @example
 @end example text after end example nested in example
 @end example
-']
+'],
+['def_in_example',
+'@example
+@defun name arg
+in defun
+@end defun
+@end example
+'],
+['caption_in_example',
+'@float float
+
+@example
+in example 
+
+@caption{caption}
+
+After caption
+@end example
+@end float
+'],
+['titlefont_in_example',
+'@example
+@titlefont{Title}
+Text.
+@end example
+'],
 );
 
 my @test_invalid = (

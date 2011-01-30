@@ -475,7 +475,7 @@ foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
 }
 
 my %close_preformatted_commands = %close_paragraph_commands;
-foreach my $no_close_preformatted('center', 'insertcopying', 'sp') {
+foreach my $no_close_preformatted('sp') {
   delete $close_preformatted_commands{$no_close_preformatted};
 }
 
@@ -1954,6 +1954,7 @@ sub _end_line($$$)
          $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
     }
     $current = $current->{'parent'}->{'parent'};
+    $current = $self->_begin_preformatted($current);
 
   # other block command lines
   } elsif ($current->{'type'}
@@ -3532,6 +3533,7 @@ sub _parse_texi($;$)
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
             }
+            my $closed_command = $current->{'parent'}->{'cmdname'};
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
@@ -3551,6 +3553,8 @@ sub _parse_texi($;$)
                   'text' => '' };                          
             }
             $current = $current->{'parent'}->{'parent'};
+            $current = $self->_begin_preformatted ($current)
+               if ($close_preformatted_commands{$closed_command});
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
              # closing the context under broader situations
@@ -3560,11 +3564,14 @@ sub _parse_texi($;$)
                    and $brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
                    and $context_brace_commands{$current->{'parent'}->{'cmdname'}} eq $self->{'context_stack'}->[-1]) {
-               my $context_command = pop @{$self->{'context_stack'}};
-               die "BUG: def_context $context_command "._print_current($current) 
-                 if ($context_command ne $current->{'parent'}->{'cmdname'});
-               print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
-               $current = $current->{'parent'}->{'parent'};
+              my $context_command = pop @{$self->{'context_stack'}};
+              die "BUG: def_context $context_command "._print_current($current) 
+                if ($context_command ne $current->{'parent'}->{'cmdname'});
+              print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
+              my $closed_command = $current->{'parent'}->{'cmdname'};
+              $current = $current->{'parent'}->{'parent'};
+              $current = $self->_begin_preformatted ($current)
+                 if ($close_preformatted_commands{$closed_command});
             }
           } else {
             $self->line_error (sprintf($self->__("Misplaced %c"),
