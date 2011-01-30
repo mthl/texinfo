@@ -56,6 +56,44 @@ sub output($)
 
   my $result;
 
+  # determine input file base name
+  my $input_basename;
+  if (defined($self->{'info'}->{'input_file_name'})) {
+    $input_basename = $self->{'info'}->{'input_file_name'};
+  } else {
+    # This could happen if called on a piece of texinfo
+    $input_basename = '';
+  }
+  $input_basename =~ s/^.*\///;
+  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
+  $self->{'input_basename'} = $input_basename;
+
+  # determine output file and output file name
+  if (!defined($self->{'OUTFILE'})) {
+    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
+           and $self->{'extra'}->{'setfilename'}->{'extra'}
+           and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
+      $self->{'OUTFILE'} = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
+    } elsif ($input_basename ne '') {
+      $self->{'OUTFILE'} = $input_basename;
+      $self->{'OUTFILE'} =~ s/\.te?x(i|info)?$//;
+      $self->{'OUTFILE'} .= '.'.$INFO_EXTENSION;
+    } else {
+      $self->{'OUTFILE'} = '';
+    }
+    if (defined($self->{'SUBDIR'}) and $self->{'OUTFILE'} ne '') {
+      $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
+    }
+  }
+  my $output_basename = $self->{'OUTFILE'};
+  $output_basename =~ s/^.*\///;
+  $self->{'output_filename'} = $output_basename;
+  my $output_dir = $self->{'OUTFILE'};
+  $output_dir =~ s|[^/]*$||;
+  if ($output_dir ne '') {
+    $self->{'output_dir'} = $output_dir;
+  }
+
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
   my $header = $self->_info_header();
@@ -72,12 +110,12 @@ sub output($)
   my $elements = Texinfo::Structuring::split_by_node($root);
 
   my $fh;
-  if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'}, 
+  if (! $self->{'OUTFILE'} eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'}, 
                                             $self->{'encoding'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
-                                    $self->{'output_file'}));
+                                    $self->{'OUTFILE'}));
       return undef;
     }
   }
@@ -116,25 +154,25 @@ sub output($)
                   $out_file_nr * $self->{'SPLIT_SIZE'} and @nodes and $fh) {
         close ($fh);
         if ($out_file_nr == 1) {
-          unless (rename ($self->{'output_file'}, 
-                          $self->{'output_file'}.'-'.$out_file_nr)) {
+          unless (rename ($self->{'OUTFILE'}, 
+                          $self->{'OUTFILE'}.'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("Rename %s failed: $!"), 
-                                         $self->{'output_file'}));
+                                         $self->{'OUTFILE'}));
           }
           push @{$self->{'opened_files'}}, 
-                   $self->{'output_file'}.'-'.$out_file_nr;
+                   $self->{'OUTFILE'}.'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                  $first_node_bytes_count];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
         }
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
-                               $self->{'output_file'}.'-'.$out_file_nr, 
+                               $self->{'OUTFILE'}.'-'.$out_file_nr, 
                                $self->{'encoding'});
         if (!$fh) {
            $self->document_error(sprintf(
                   $self->__("Could not open %s for writing: $!"),
-                  $self->{'output_file'}.'-'.$out_file_nr));
+                  $self->{'OUTFILE'}.'-'.$out_file_nr));
            return undef;
         }
         print $fh $header;
@@ -147,12 +185,12 @@ sub output($)
     my $tag_text = '';
     if ($out_file_nr > 1) {
       close ($fh);
-      $fh = $self->Texinfo::Common::open_out($self->{'output_file'}, 
+      $fh = $self->Texinfo::Common::open_out($self->{'OUTFILE'}, 
                                              $self->{'encoding'});
       if (!$fh) {
         $self->document_error(sprintf(
               $self->__("Could not open %s for writing: $!"),
-              $self->{'output_file'}.'-'.$out_file_nr));
+              $self->{'OUTFILE'}.'-'.$out_file_nr));
         return undef;
       }
       $tag_text = $header;
@@ -188,50 +226,12 @@ sub output($)
   return $result;
 }
 
-# this also determines the output file
 sub _info_header($)
 {
   my $self = shift;
-  my $input_basename;
-  if (defined($self->{'info'}->{'input_file_name'})) {
-    $input_basename = $self->{'info'}->{'input_file_name'};
-  } else {
-    # This could happen if called on a piece of texinfo
-    $input_basename = '';
-  }
-  $input_basename =~ s/^.*\///;
-  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
-  my $output_file;
-  if (defined($self->{'OUTFILE'})) {
-    $output_file = $self->{'OUTFILE'};
-  } else {
-    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
-           and $self->{'extra'}->{'setfilename'}->{'extra'}
-           and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'})) {
-      $output_file = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'};
-    } elsif ($input_basename ne '') {
-      $output_file = $input_basename;
-      $output_file =~ s/\.te?x(i|info)?$//;
-      $output_file .= '.'.$INFO_EXTENSION;
-    } else {
-      $output_file = '';
-    }
-    if (defined($self->{'SUBDIR'}) and $output_file ne '') {
-      $output_file = "$self->{'SUBDIR'}/$output_file";
-    }
-  }
-  $self->{'output_file'} = $output_file if ($output_file ne '');
-  my $output_basename = $output_file;
-  $output_basename =~ s/^.*\///;
-  $self->{'output_filename'} = $output_basename;
-  my $output_dir = $output_file;
-  $output_dir =~ s|[^/]*$||;
-  if ($output_dir ne '') {
-    $self->{'output_dir'} = $output_dir;
-  }
 
   # FIXME version/program
-  my $text = "This is $output_basename, produced by makeinfo version 4.13 from $input_basename.";
+  my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
   my $paragraph = Texinfo::Convert::Paragraph->new();
   my $result = $paragraph->add_text($text);
   $result .= $paragraph->end();
