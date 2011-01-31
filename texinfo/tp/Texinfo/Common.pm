@@ -374,7 +374,7 @@ $block_commands{'ifclear'} = 'conditional';
 
 # 'macro' ?
 foreach my $block_command_one_arg('table', 'ftable', 'vtable',
-  'itemize', 'enumerate', 'quotation', 'small_quotation') {
+  'itemize', 'enumerate', 'quotation', 'smallquotation') {
   $block_commands{$block_command_one_arg} = 1;
   $block_item_commands{$block_command_one_arg} = 1 
     unless ($block_command_one_arg =~ /quotation/);

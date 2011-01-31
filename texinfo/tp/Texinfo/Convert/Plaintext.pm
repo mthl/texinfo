@@ -274,8 +274,16 @@ sub _informative_command($$)
   my $root = shift;
   return if ($self->{'set'}->{$root->{'cmdname'}});
 
-  if (exists($root->{'extra'}->{'text'})) {
-    $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text'};
+  if (exists($root->{'extra'}->{'text_arg'})) {
+    $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text_arg'};
+    if ($root->{'cmdname'} eq 'documentencoding') {
+      if (defined($root->{'extra'})
+           and defined($root->{'extra'}->{'encoding_alias'})) {
+        $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'};
+      } else {
+        $self->{'encoding'} = undef;
+      }
+    }
   } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
     $self->{$root->{'cmdname'}} = 1;
   } elsif ($root->{'extra'} and $root->{'extra'}->{'misc_args'} 
@@ -288,13 +296,6 @@ sub _informative_command($$)
         $self->{$root->{'cmdname'}} = 0 
           if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
         $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
-      }
-    } elsif ($root->{'cmdname'} eq 'documentencoding') {
-      if (defined($root->{'extra'})
-           and defined($root->{'extra'}->{'encoding_alias'})) {
-        $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'};
-      } else {
-        $self->{'encoding'} = undef;
       }
     }
   }
@@ -1493,15 +1494,18 @@ sub _convert($$)
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
         my ($heading) = $self->convert_line($root->{'args'}->[0]);
         pop @{$self->{'count_context'}};
+        # FIXME œ@* and @c?
         my $heading_underlined = 
              Texinfo::Convert::Text::heading ($root, $heading, 
                                               $self->{'NUMBER_SECTIONS'});
         $result .= $self->_add_newline_if_needed();
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
         $self->_add_text_count($heading_underlined);
-        # FIXME œ@* and @c?
-        $self->_add_lines_count(2);
         $result .= $heading_underlined;
+        if ($heading_underlined ne '') {
+          $self->_add_lines_count(2);
+          $result .= $self->_add_newline_if_needed();
+        }
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
@@ -1757,10 +1761,12 @@ sub _convert($$)
            . "paraindent $self->{'paragraphindent'}\n";
       }
       if ($self->{'format_context'}->[-1]->{'cmdname'} eq '_top_format'
-          and ($self->{'format_context'}->[-1]->{'paragraph_count'} 
-              or $self->{'firstparagraphindent'} eq 'insert') 
           and $self->{'paragraphindent'} ne 'asis' and $self->{'paragraphindent'}
-          and !$self->{'format_context'}->[-1]->{'counter'}) {
+          and (($root->{'extra'} and $root->{'extra'}->{'indent'})
+             or (!($root->{'extra'} and $root->{'extra'}->{'noindent'})
+                and ($self->{'format_context'}->[-1]->{'paragraph_count'} 
+                  or $self->{'firstparagraphindent'} eq 'insert') 
+               and !$self->{'format_context'}->[-1]->{'counter'}))) {
         $conf->{'first_indent_length'} = $self->{'paragraphindent'};
       }
       $paragraph = $self->new_formatter('paragraph', $conf);
@@ -2098,6 +2104,7 @@ sub _convert($$)
   if ($preformatted) {
     $result .= $self->_count_added($preformatted->{'container'},
                                    $preformatted->{'container'}->end());
+    $result = $self->ensure_end_of_line($result);
     pop @{$self->{'formatters'}};
   }
 

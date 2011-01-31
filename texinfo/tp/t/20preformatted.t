@@ -52,6 +52,18 @@ After caption
 Text.
 @end example
 '],
+['comments_in_example',
+'Example with comments 2 lines
+@example 
+line @c comment
+second line @c comment
+@end example
+
+Example with comments 1 line
+@example
+line @c comment
+@end example
+'],
 );
 
 my @test_invalid = (
@@ -61,7 +73,7 @@ example @samp{in samp
 
 after empty} line
 @end example
-']
+'],
 );
 
 foreach my $test (@test_cases) {

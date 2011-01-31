@@ -2997,12 +2997,14 @@ sub _parse_texi($;$)
             # root_level commands leads to starting setting a new root
             # for the whole document and stuffing the preceding text
             # as the first content, this is done only once.
-            if ($command ne 'bye' and $current->{'type'} 
-                 and $current->{'type'} eq 'text_root') {
-              $root = { 'type' => 'document_root', 'contents' => [$current] };
-              $current->{'parent'} = $root;
-              $current = $root;
+            if ($current->{'type'} and $current->{'type'} eq 'text_root') {
+              if ($command ne 'bye') {
+                $root = { 'type' => 'document_root', 'contents' => [$current] };
+                $current->{'parent'} = $root;
+                $current = $root;
+              }
             } else {
+              die if (!defined($current->{'parent'}));
               $current = $current->{'parent'};
             }
           }

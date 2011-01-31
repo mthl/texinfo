@@ -2923,6 +2923,7 @@ File: ,  Node: Top,  Up: (dir)
 
 Functions
 =========
+
  [index ]
 * Menu:
 
@@ -2936,17 +2937,17 @@ Functions
 * d--eftypeop_name on c--lass:           Top.                  (line  9)
 * d--efun_name:                          Top.                  (line 24)
 
-
 Types
 =====
+
  [index ]
 * Menu:
 
 * d--eftp_name:                          Top.                  (line 21)
 
-
 Variables
 =========
+
  [index ]
 * Menu:
 

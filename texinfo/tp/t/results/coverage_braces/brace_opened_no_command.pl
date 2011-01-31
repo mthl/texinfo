@@ -59,6 +59,10 @@ $result_trees{'brace_opened_no_command'} = {
       ],
       'parent' => {},
       'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'bye',
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -73,8 +77,10 @@ $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'extra'}{
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'brace_opened_no_command'}{'contents'}[0];
 $result_trees{'brace_opened_no_command'}{'contents'}[0]{'parent'} = $result_trees{'brace_opened_no_command'};
+$result_trees{'brace_opened_no_command'}{'contents'}[1]{'parent'} = $result_trees{'brace_opened_no_command'};
 
 $result_texis{'brace_opened_no_command'} = 'anchortruc@} @anchor{truc}.
+@bye
 ';
 
 

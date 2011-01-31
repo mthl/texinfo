@@ -205,6 +205,7 @@ $result_converted{'plaintext'}->{'menu_entry_no_entry'} = '* Menu:
 * a1:
 * a2:
 * a1c:* a2c:  * a4a:
-* a5b: ';
+* a5b: 
+';
 
 1;

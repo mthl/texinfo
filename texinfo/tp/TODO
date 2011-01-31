@@ -34,6 +34,9 @@ after a multitable.
 
 Test end_line_count in Texinfo/Convert/ containers.
 
+Test no empty line before and after a sectioning command.  With text, but
+also commands.
+
 Following should be an error:
 @example
 @heading A heading

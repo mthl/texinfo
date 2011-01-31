@@ -331,7 +331,6 @@ my @input_file_suffixes = ('.txi','.texinfo','.texi','.txinfo','');
 
 my @texi2dvi_args = ();
 
-my $macro_expand = undef;
 my $format = 'info';
 # this is the format associated with the output format, which is replaced
 # when the output format changes.  It may also be removed if there is the
@@ -377,7 +376,7 @@ sub document_warn ($) {
 
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
-                             $macro_expand = $_[1]; },
+                             set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml' => sub { set_expansion('html', $_[1]); },
  'ifinfo' => sub { set_expansion('info', $_[1]); },
  'ifxml' => sub { set_expansion('xml', $_[1]); },
@@ -588,21 +587,29 @@ while(@input_files)
     handle_errors($parser, $error_count);
     next;
   }
-  if (defined($macro_expand)) {
+
+  #print STDERR Data::Dumper->Dump([$tree]);
+
+  if (defined(get_conf('MACRO_EXPAND'))) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree);
     #print STDERR "$texinfo_text\n";
-    my $macro_expand_fh = Texinfo::Common::open_out({}, $macro_expand,
+    my $macro_expand_file = get_conf('MACRO_EXPAND');
+    my $macro_expand_fh = Texinfo::Common::open_out({}, $macro_expand_file,
                                                $parser->{'encoding'});
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       close ($macro_expand_fh);
     } else {
       warn (sprintf(__("Could not open %s for writing: %s\n"), 
-                    $macro_expand, $!));
+                    $macro_expand_file, $!));
       $error_count++;
       exit (1) if ($error_count and (!get_conf('FORCE')
          or $error_count > get_conf('ERROR_LIMIT')));
     }
+  }
+  if (get_conf('DUMP_TEXI')) {
+    handle_errors($parser, $error_count);
+    next;
   }
   # every format needs the sectioning structure
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);

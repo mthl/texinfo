@@ -501,6 +501,7 @@ SMALL CAPS.
 
 majorheading in b
 *****************
+
 ';
 
 1;

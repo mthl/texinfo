@@ -98,6 +98,9 @@ A @click{} (result).
 @setfilename @ @verb{: name :}@ 
 
 '],
+['bye',
+'@bye
+'],
 ['invalid_clickstyle',
 '
 @clickstyle @result on the same line
@@ -204,6 +207,36 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 @subheading Subheading
 @chapter Chapter
 @section Section
+'],
+['comments_in_text',
+'
+@c lone comment
+
+Text line followed by a comment on the same line and another below @c comment
+@c comment
+Text line after the comment followed by a comment @comment c
+Text line after the text line followed by the comment.
+
+Comment at the end of the line @c comment
+'],
+['noindent_indent',
+'
+@indent
+First para
+
+@noindent
+qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+
+@noindent noindent in para.
+
+@indent unneeded indent
+'],
+['indent_in_quotation',
+'@quotation
+@indent
+indent in quotation
+@end quotation
 '],
 );
 

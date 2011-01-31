@@ -12569,6 +12569,7 @@ File: ,  Node: Top,  Up: (dir)
 
 Functions
 =========
+
  [index ]
 * Menu:
 
@@ -12605,9 +12606,9 @@ Functions
 * fun_name1:                             Top.                 (line 103)
 * push:                                  Top.                 (line  17)
 
-
 Types
 =====
+
  [index ]
 * Menu:
 
@@ -12616,9 +12617,9 @@ Types
 * A2:                                    Top.                  (line 81)
 * pair:                                  Top.                  (line 22)
 
-
 Variables
 =========
+
  [index ]
 * Menu:
 

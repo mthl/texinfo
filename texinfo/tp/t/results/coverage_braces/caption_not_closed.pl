@@ -145,6 +145,10 @@ $result_trees{'caption_not_closed'} = {
       'text' => '
 ',
       'type' => 'empty_line'
+    },
+    {
+      'cmdname' => 'bye',
+      'parent' => {}
     }
   ],
   'type' => 'text_root'
@@ -174,6 +178,7 @@ $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'type'}{'content'}[0
 $result_trees{'caption_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'};
 $result_trees{'caption_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'};
+$result_trees{'caption_not_closed'}{'contents'}[3]{'parent'} = $result_trees{'caption_not_closed'};
 
 $result_texis{'caption_not_closed'} = '@float Text
 
@@ -184,6 +189,7 @@ as much as possible is closed in order to find the @@float beginning.
 
 }@end float
 
+@bye
 ';
 
 
