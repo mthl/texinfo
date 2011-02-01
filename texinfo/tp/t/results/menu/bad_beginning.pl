@@ -16,43 +16,49 @@ $result_trees{'bad_beginning'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => '*   
-'
-            },
-            {
-              'parent' => {},
-              'text' => '*
-'
-            },
-            {
-              'text' => '*something::
-'
-            },
-            {
-              'text' => '*'
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
+                  'parent' => {},
+                  'text' => '*   
+'
+                },
+                {
+                  'parent' => {},
+                  'text' => '*
+'
+                },
+                {
+                  'text' => '*something::
+'
+                },
+                {
+                  'text' => '*'
+                },
+                {
+                  'args' => [
                     {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => 'in code'
+                        }
+                      ],
                       'parent' => {},
-                      'text' => 'in code'
+                      'type' => 'brace_command_arg'
                     }
                   ],
+                  'cmdname' => 'code',
+                  'contents' => [],
+                  'parent' => {}
+                },
+                {
                   'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'text' => '::
+'
                 }
               ],
-              'cmdname' => 'code',
-              'contents' => [],
-              'parent' => {}
-            },
-            {
               'parent' => {},
-              'text' => '::
-'
+              'type' => 'preformatted'
             }
           ],
           'parent' => {},
@@ -70,12 +76,13 @@ $result_trees{'bad_beginning'} = {
   'type' => 'text_root'
 };
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[4];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
-$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1];
-$result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1];
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0];
 $result_trees{'bad_beginning'}{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'};
 $result_trees{'bad_beginning'}{'contents'}[1]{'parent'} = $result_trees{'bad_beginning'};

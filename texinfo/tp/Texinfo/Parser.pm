@@ -1120,6 +1120,10 @@ sub _close_current($$$;$)
                                              ord('{')), $line_nr);
       $current = $current->{'parent'};
     } else {
+      if ($current->{'type'} eq 'menu_comment') {
+        #print STDERR "Closing MENU_COMMENT when closing\n";
+        pop @{$self->{'context_stack'}};
+      }
       $current = $current->{'parent'} if ($current->{'parent'});
     }
   } else { # Should never go here.
@@ -1815,6 +1819,11 @@ sub _end_line($$$)
                                         'parent' => $current,
                                         'contents' => [] };
       $current = $current->{'contents'}->[-1];
+      push @{$current->{'contents'}}, { 'type' => 'preformatted',
+                                        'parent' => $current,
+                                        'contents' => [] };
+      $current = $current->{'contents'}->[-1];
+      push @{$self->{'context_stack'}}, 'preformatted';
       print STDERR "MENU: END DESCRIPTION, OPEN COMMENT\n" if ($self->{'DEBUG'});
     } elsif (!$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
             # FIXME remove this if an empty line in a brace command
@@ -1853,11 +1862,24 @@ sub _end_line($$$)
       if (@{$menu->{'contents'}} and $menu->{'contents'}->[-1]->{'type'}
          and $menu->{'contents'}->[-1]->{'type'} eq 'menu_comment') {
         $current = $menu->{'contents'}->[-1];
+        if ($current->{'contents'}->[-1] and $current->{'contents'}->[-1]->{'type'}
+          and $current->{'contents'}->[-1]->{'type'} eq 'preformatted') {
+          $current = $current->{'contents'}->[-1];
+        } else {
+          push @{$current->{'contents'}}, {'type' => 'preformatted',
+                                    'parent' => $current,
+                                    'contents' => [] };
+          $current = $current->{'contents'}->[-1];
+        }
       } else {
         push @{$menu->{'contents'}}, {'type' => 'menu_comment',
                                     'parent' => $menu,
                                     'contents' => [] };
         $current = $menu->{'contents'}->[-1];
+        push @{$current->{'contents'}}, {'type' => 'preformatted',
+                                  'parent' => $current,
+                                  'contents' => [] };
+        $current = $current->{'contents'}->[-1];
         print STDERR "THEN MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
       }
       while (@{$menu_entry->{'args'}}) {
@@ -1879,6 +1901,8 @@ sub _end_line($$$)
         }
         $arg = undef;
       }
+      push @{$self->{'context_stack'}}, 'preformatted';
+      # MENU_COMMENT open
       $menu_entry = undef;
     } else {
       print STDERR "MENU ENTRY END LINE\n" if ($self->{'DEBUG'});
@@ -2248,27 +2272,35 @@ sub _end_line($$$)
     }
    # do that last in order to have the line processed if one of the above
    # case is also set.
-  } elsif ($current->{'contents'} and @{$current->{'contents'}}
-      and $current->{'contents'}->[-1]->{'type'}
-      and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
+  } elsif (
+      $current->{'contents'} 
+      and (scalar(@{$current->{'contents'}}) == 1
+           and (($current->{'contents'}->[-1]->{'type'}
+               and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'))
+          or (scalar(@{$current->{'contents'}}) == 2
+               and $current->{'contents'}->[-1]->{'cmdname'}
+               and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c'
+                    or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')
+               and $current->{'contents'}->[-2] 
+               and $current->{'contents'}->[-2]->{'type'}
+               and $current->{'contents'}->[-2]->{'type'} eq 'empty_line_after_command'))) {
+    # empty line after a @menu or before a preformatted. Reparent to the menu
+    # or other format
     if ($current->{'type'}
         and $current->{'type'} eq 'preformatted') {
-      print STDERR "LINE AFTER COMMAND IN PREFORMATTED\n" if ($self->{'DEBUG'});
-      my $empty_line = pop @{$current->{'contents'}};
-      $empty_line->{'parent'} = $current->{'parent'};
-      my $preformatted = pop @{$current->{'parent'}->{'contents'}};
-      push @{$current->{'parent'}->{'contents'}}, $empty_line;
-      push @{$current->{'parent'}->{'contents'}}, $preformatted;
-    }
-    # empty line after a @menu. Reparent to the menu
-    if ($current->{'type'} 
-        and $current->{'type'} eq 'menu_comment') {
-      print STDERR "EMPTY LINE AFTER MENU\n" if ($self->{'DEBUG'});
-      my $empty_line = pop @{$current->{'contents'}};
-      $empty_line->{'parent'} = $current->{'parent'};
-      my $menu_comment = pop @{$current->{'parent'}->{'contents'}};
-      push @{$current->{'parent'}->{'contents'}}, $empty_line;
-      push @{$current->{'parent'}->{'contents'}}, $menu_comment;
+      my $parent = $current->{'parent'};
+      if ($parent->{'type'} and $parent->{'type'} eq 'menu_comment'
+          and scalar(@{$parent->{'contents'}}) == 1) {
+        $parent = $parent->{'parent'};
+      }
+      my $to_reparent = pop @{$parent->{'contents'}};
+      print STDERR "LINE AFTER COMMAND IN PREFORMATTED ($to_reparent->{'type'})\n" if ($self->{'DEBUG'});
+      while (@{$current->{'contents'}}) {
+        my $content = shift @{$current->{'contents'}};
+        $content->{'parent'} = $parent;
+        push @{$parent->{'contents'}}, $content;
+      }
+      push @{$parent->{'contents'}}, $to_reparent;
     }
   }
 
@@ -2741,7 +2773,9 @@ sub _parse_texi($;$)
         }
       # maybe a menu entry beginning: a * at the beginning of a menu line
       } elsif ($line =~ /^\*/ and $current->{'type'}
-                and ($current->{'type'} eq 'menu_comment'
+                and (($current->{'type'} eq 'preformatted'
+                      and $current->{'parent'}->{'type'} 
+                      and $current->{'parent'}->{'type'} eq 'menu_comment')
                     or $current->{'type'} eq 'menu_entry_description')
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
@@ -2762,10 +2796,16 @@ sub _parse_texi($;$)
         pop @{$current->{'contents'}};
         $line =~ s/^(\s+)//;
         my $leading_text = '*' . $1;
-        if ($current->{'type'} eq 'menu_comment') {
-          my $menu = $current->{'parent'};
-          pop @{$menu->{'contents'}} if (!@{$current->{'contents'}});
+        if ($current->{'type'} eq 'preformatted'
+            and $current->{'parent'}->{'type'} 
+            and $current->{'parent'}->{'type'} eq 'menu_comment') {
+          my $menu = $current->{'parent'}->{'parent'};
+          pop @{$menu->{'contents'}} 
+            if (!@{$current->{'contents'}} 
+                and scalar(@{$current->{'parent'}->{'contents'}}) == 1);
           $current = $menu;
+          #print STDERR "Close MENU_COMMENT because new menu entry\n";
+          pop @{$self->{'context_stack'}};
         } else {
           # first parent is menu_entry
           $current = $current->{'parent'}->{'parent'};
@@ -3302,12 +3342,28 @@ sub _parse_texi($;$)
             # block commands. This won't catch menu commands buried in 
             # other formats (that are incorrect anyway).
             if ($menu_commands{$command} and $current->{'type'} 
-                   and $current->{'type'} eq 'menu_comment') {
-              $current = $current->{'parent'};
-              # don't keep empty menu_comment
-              if (!@{$current->{'contents'}->[-1]->{'contents'}}) {
-                pop @{$current->{'contents'}};
+                and (($current->{'type'} eq 'preformatted'
+                     and $current->{'parent'}->{'type'} 
+                     and $current->{'parent'}->{'type'} eq 'menu_comment')
+                   or ($current->{'type'} eq 'menu_comment'))) {
+
+              my $menu;
+              if ($current->{'type'} eq 'preformatted') {
+                $menu = $current->{'parent'}->{'parent'};
+                # don't keep empty menu_comment
+                if (!@{$current->{'contents'}} and
+                     scalar(@{$current->{'parent'}->{'contents'}}) == 1) {
+                  pop @{$menu->{'contents'}};
+                }
+              } else {
+                $menu = $current->{'parent'};
+                pop @{$menu->{'contents'}}
+                  if (!@{$current->{'contents'}});
               }
+              #print STDERR "new menu cmd $command close MENU_COMMENT\n";
+              pop @{$self->{'context_stack'}};
+
+              $current = $menu;
             }
             # the def command holds a line_def* which corresponds with the
             # definition line.  This allows to have a treatement similar
@@ -3371,7 +3427,12 @@ sub _parse_texi($;$)
                                                  'parent' => $current,
                                                  'contents' => [] };
                 $current = $current->{'contents'}->[-1];
+                #push @{$current->{'contents'}}, {'type' => 'preformatted',
+                #                                 'parent' => $current,
+                #                                 'contents' => [] };
+                #$current = $current->{'contents'}->[-1];
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
+                push @{$self->{'context_stack'}}, 'preformatted';
               }
               $current = $self->_begin_preformatted($current);
             }

@@ -70,12 +70,6 @@ $result_trees{'example_in_menu_comment'} = {
           'type' => 'after_description_line'
         },
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'contents' => [
             {
               'cmdname' => 'example',
@@ -115,18 +109,30 @@ $result_trees{'example_in_menu_comment'} = {
               'parent' => {},
               'text' => '
 ',
-              'type' => 'empty_line'
+              'type' => 'empty_line_after_command'
             },
             {
-              'parent' => {},
-              'text' => 'menu comment.
-'
-            },
-            {
-              'parent' => {},
-              'text' => '
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
 ',
-              'type' => 'empty_line'
+                  'type' => 'empty_line'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'menu comment.
+'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                }
+              ],
+              'parent' => {},
+              'type' => 'preformatted'
             }
           ],
           'parent' => {},
@@ -154,29 +160,30 @@ $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3
 $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
 $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3];
 $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
 $result_trees{'example_in_menu_comment'}{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'};
 $result_trees{'example_in_menu_comment'}{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'};
 
 $result_texis{'example_in_menu_comment'} = '@menu
 * entry::
 
-
 @example
 in 
 
 example
 @end example
+
 menu comment.
 
 @end menu
