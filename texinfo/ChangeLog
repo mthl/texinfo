@@ -1,3 +1,11 @@
+2011-02-01  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\douref): reinstate old definition.
+
+2011-01-23  Karl Berry  <karl@gnu.org>
+
+	* util/htmlxref.cnf: add recutils
+
 2011-01-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\douref): ensure that we are not in vertical
