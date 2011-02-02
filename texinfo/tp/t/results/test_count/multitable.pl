@@ -376,50 +376,50 @@ $result_errors{'multitable'} = [];
 
 
 $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
-  [2] (0,0) :empty_line:text
+  [2] (0,0) :empty_line:text|\\n|
   [2] (1,1)
   [3] (1,1) @multitable
    [4] (0,0) :bracketed_multitable_prototype
-    [5] (0,0) :text
+    [5] (0,0) :text|aaa|
     [5] (0,0)
    [4] (0,0)
    [6] (0,0) :bracketed_multitable_prototype
-    [7] (0,0) :text
+    [7] (0,0) :text|bb1|
     [7] (0,0)
    [6] (0,0)
    [8] (0,0) :bracketed_multitable_prototype
-    [9] (0,0) :text
+    [9] (0,0) :text|ccc|
     [9] (0,0)
    [8] (0,0)
    [10] (1,1) :before_item
    [10] (1,1)
    [11] (1,1) :row
     [12] (1,1) @item
-     [13] (0,0) :empty_spaces_after_command:text
+     [13] (0,0) :empty_spaces_after_command:text| |
      [13] (0,0)
      [14] (0,0) :paragraph
-      [15] (0,0) :text
+      [15] (0,0) :text|aaa |
       [15] (4,1)
      [14] (4,1)
     [12] (1,1)
     [16] (1,1) @tab
-     [17] (0,0) :empty_spaces_after_command:text
+     [17] (0,0) :empty_spaces_after_command:text| |
      [17] (0,0)
      [18] (0,0) :paragraph
-      [19] (0,0) :text
+      [19] (0,0) :text|bb |
       [19] (2,0)
       [20] (2,0) @anchor
       [20] (2,0)
  locations  (1) l 0 b 2
-      [21] (2,0) :empty_spaces_after_close_brace:text
+      [21] (2,0) :empty_spaces_after_close_brace:text|\\n|
       [21] (2,0)
      [18] (3,1)
     [16] (1,1)
     [22] (1,1) @tab
-     [23] (0,0) :empty_spaces_after_command:text
+     [23] (0,0) :empty_spaces_after_command:text| |
      [23] (0,0)
      [24] (0,0) :paragraph
-      [25] (0,0) :text
+      [25] (0,0) :text|ccc\\n|
       [25] (4,1)
      [24] (4,1)
     [22] (1,1)
@@ -427,24 +427,24 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
  locations  (1) l 1 b 9
    [26] (17,2) :row
     [27] (17,2) @item
-     [28] (0,0) :empty_spaces_after_command:text
+     [28] (0,0) :empty_spaces_after_command:text| |
      [28] (0,0)
     [27] (17,2)
     [29] (17,2) @tab
-     [30] (0,0) :empty_spaces_after_command:text
+     [30] (0,0) :empty_spaces_after_command:text| |
      [30] (0,0)
      [31] (0,0) :paragraph
       [32] (0,0) @anchor
       [32] (0,0)
  locations  (2) l 0 b 0
-      [33] (0,0) :empty_spaces_after_close_brace:text
+      [33] (0,0) :empty_spaces_after_close_brace:text|\\n|
       [33] (0,0)
      [31] (0,0)
     [29] (17,2)
    [26] (24,3)
  locations  (2) l 2 b 23
   [3] (24,3)
-  [34] (24,3) :empty_line_after_command:text
+  [34] (24,3) :empty_line_after_command:text|\\n|
   [34] (24,3)
  [1] (24,3)
 

@@ -38,7 +38,12 @@ sub _convert($$)
   my $command_type = '';
   $command_type .= '@'.$root->{'cmdname'} if ($root->{'cmdname'});
   $command_type .= ":$root->{'type'}" if ($root->{'type'});
-  $command_type .= ":text" if (defined($root->{'text'}));
+  if (defined($root->{'text'})) {
+    $command_type .= ":text";
+    my $text = $root->{'text'};
+    $text =~ s/\n/\\n/g;
+    $command_type .= "|$text|";
+  }
   my $string_before = ' ' x $self->{'level'}. "$command_nr $number_before $command_type\n";
   push @{$self->{'debug_count_strings'}}, $string_before;
   

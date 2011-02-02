@@ -334,43 +334,43 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
   [2] (0,0) :paragraph
    [3] (0,0) @TeX
    [3] (0,0)
-   [4] (0,0) :text
+   [4] (0,0) :text|. Ab. |
    [4] (8,0)
    [5] (8,0) @@
    [5] (8,0)
-   [6] (8,0) :text
+   [6] (8,0) :text|. |
    [6] (12,0)
    [7] (12,0) @
 
    [7] (12,0)
    [8] (12,0) @~
    [8] (12,0)
-   [9] (12,0) :text
+   [9] (12,0) :text|, |
    [9] (18,0)
    [10] (18,0) @^
    [10] (18,0)
-   [11] (18,0) :text
+   [11] (18,0) :text|\\n|
    [11] (21,0)
   [2] (22,1)
-  [12] (22,1) :empty_line:text
+  [12] (22,1) :empty_line:text|\\n|
   [12] (23,2)
   [13] (23,2) :paragraph
-   [14] (23,2) :text
+   [14] (23,2) :text|Hohoh\\n|
    [14] (31,2)
   [13] (32,3)
-  [15] (32,3) :empty_line:text
+  [15] (32,3) :empty_line:text|\\n|
   [15] (33,4)
   [16] (33,4) @example
-   [17] (33,4) :empty_line_after_command:text
+   [17] (33,4) :empty_line_after_command:text| \\n|
    [17] (33,4)
    [18] (33,4) :preformatted
-    [19] (33,4) :text
+    [19] (33,4) :text|truc\\n|
     [19] (43,5)
    [18] (43,5)
   [16] (43,5)
-  [20] (43,5) :empty_line_after_command:text
+  [20] (43,5) :empty_line_after_command:text|\\n|
   [20] (43,5)
-  [21] (43,5) :empty_line:text
+  [21] (43,5) :empty_line:text|\\n|
   [21] (44,6)
   [22] (44,6) @vtable
    [23] (44,6) :before_item
@@ -379,21 +379,21 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
     [25] (44,6) 
      [26] (44,6) @samp
       [27] (44,6) :brace_command_arg
-       [28] (44,6) :text
+       [28] (44,6) :text|vitem table|
        [28] (50,6)
       [27] (50,6)
      [26] (50,6)
     [25] (50,6)
    [24] (58,7)
  locations  (1) l 7
-   [29] (58,7) :empty_line:text
+   [29] (58,7) :empty_line:text|\\n|
    [29] (59,8)
    [30] (59,8) :paragraph
-    [31] (59,8) :text
+    [31] (59,8) :text|text\\n|
     [31] (68,8)
    [30] (69,9)
   [22] (69,9)
-  [32] (69,9) :empty_line_after_command:text
+  [32] (69,9) :empty_line_after_command:text||
   [32] (69,9)
  [1] (69,9)
 TeX. Ab.  @.   e~, i^

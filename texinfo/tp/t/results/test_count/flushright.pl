@@ -342,69 +342,69 @@ $result_errors{'flushright'} = [];
 
 
 $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
-  [2] (0,0) :empty_line:text
+  [2] (0,0) :empty_line:text|\\n|
   [2] (1,1)
   [3] (1,1) @flushright
-   [4] (1,1) :empty_line_after_command:text
+   [4] (1,1) :empty_line_after_command:text|\\n|
    [4] (1,1)
-   [5] (1,1) :empty_spaces_before_paragraph:text
+   [5] (1,1) :empty_spaces_before_paragraph:text|  |
    [5] (1,1)
    [6] (1,1) :paragraph
-    [7] (0,0) :text
+    [7] (0,0) :text|aaa bb |
     [7] (6,0)
     [8] (6,0) @anchor
     [8] (6,0)
  locations  (1) l 0 b 6
-    [9] (6,0) :empty_spaces_after_close_brace:text
+    [9] (6,0) :empty_spaces_after_close_brace:text| |
     [9] (6,0)
-    [10] (6,0) :text
+    [10] (6,0) :text|ada   \\n|
     [10] (11,1)
-    [11] (11,1) :text
+    [11] (11,1) :text| dad  sff sd |
     [11] (21,1)
     [12] (21,1) @anchor
     [12] (21,1)
  locations  (2) l 1 b 21
-    [13] (21,1) :empty_spaces_after_close_brace:text
+    [13] (21,1) :empty_spaces_after_close_brace:text| |
     [13] (21,1)
-    [14] (21,1) :text
+    [14] (21,1) :text|and |
     [14] (25,1)
     [15] (25,1) @anchor
     [15] (25,1)
  locations  (3) l 1 b 25
-    [16] (25,1) :empty_spaces_after_close_brace:text
+    [16] (25,1) :empty_spaces_after_close_brace:text| |
     [16] (25,1)
-    [17] (25,1) :text
+    [17] (25,1) :text|dsdbf\\n|
     [17] (32,2)
    [6] (143,3)
  locations  (1) l 1 b 68 (2) l 2 b 134 (3) l 2 b 138
-   [18] (143,3) :empty_line:text
+   [18] (143,3) :empty_line:text|\\n|
    [18] (144,4)
    [19] (144,4) :paragraph
-    [20] (0,0) :text
+    [20] (0,0) :text|dqs\\n|
     [20] (4,1)
-    [21] (4,1) :text
+    [21] (4,1) :text|sqdd\\n|
     [21] (9,2)
    [19] (286,6)
-   [22] (286,6) :empty_line:text
+   [22] (286,6) :empty_line:text|\\n|
    [22] (287,7)
    [23] (287,7) :paragraph
     [24] (0,0) @anchor
     [24] (0,0)
  locations  (4) l 0 b 0
-    [25] (0,0) :empty_spaces_after_close_brace:text
+    [25] (0,0) :empty_spaces_after_close_brace:text|\\n|
     [25] (0,0)
    [23] (287,7)
  locations  (4) l 7 b 287
-   [26] (287,7) :empty_line:text
+   [26] (287,7) :empty_line:text|\\n|
    [26] (288,8)
    [27] (288,8) :paragraph
-    [28] (0,0) :text
+    [28] (0,0) :text|new para.\\n|
     [28] (10,1)
    [27] (359,9)
-   [29] (359,9) :empty_line:text
+   [29] (359,9) :empty_line:text|\\n|
    [29] (360,10)
   [3] (360,10)
-  [30] (360,10) :empty_line_after_command:text
+  [30] (360,10) :empty_line_after_command:text|\\n|
   [30] (360,10)
  [1] (360,10)
 

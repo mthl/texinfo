@@ -132,6 +132,7 @@ require Unicode::EastAsianWidth;
 require Texinfo::Parser;
 require Texinfo::Structuring;
 require Texinfo::Convert::Info;
+require DebugTexinfo::DebugCount;
 
 # determine configuration directories.
 
@@ -448,16 +449,17 @@ my $result_options = Getopt::Long::GetOptions (
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-
+     # special case, this is a pseudo format for debug
+     if ($var eq 'DEBUGCOUNT') {
+       $format = 'debugcount';
+     } else {
      # this is very wrong, but a way to avoid a spurious warning.
-     {
        no warnings 'once';
        if (set_from_cmdline ($var, $value) 
            and exists($Texinfo::Parser::default_configuration{$var})) {
          $parser_default_options->{$var} = $value;
        }
      }
-
    }
  },
  'css-include=s' => \@css_files,
@@ -516,6 +518,11 @@ my %formats_table = (
              'nodes_tree' => 1,
              'floats' => 1,
              'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
+           },
+  'debugcount' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
            },
 );
 
