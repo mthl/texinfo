@@ -405,13 +405,21 @@ sub _node($$)
   my $self = shift;
   my $node = shift;
 
+  
+  my $result = '';
+  if (!$self->{'empty_lines_count'}) {
+    $result .= "\n";
+    $self->_add_text_count("\n");
+  }
+
   # May happen when only converting a fragment
   my $output_filename = $self->{'output_filename'};
   $output_filename = '' if (!defined($self->{'output_filename'}));
 
   $self->_add_location($node);
-  my $result = "\x{1F}\nFile: $output_filename,  Node: ";
-  $self->_add_text_count($result);
+  my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";
+  $result .= $node_begin;
+  $self->_add_text_count($node_begin);
   $result .= $self->convert_line({'type' => 'code',
                            'contents' => $node->{'extra'}->{'node_content'}});
   foreach my $direction(@directions) {
@@ -435,6 +443,7 @@ sub _node($$)
   $result .="\n\n";
   $self->_add_text_count("\n\n");
   $self->{'count_context'}->[-1]->{'lines'} = 3;
+  $self->{'empty_lines_count'} = 1;
 
   return $result;
 }

@@ -23,7 +23,17 @@ After paragraphindent.
 
 @bye
 
-']);
+'],
+['text_before_node',
+'@node Top
+
+@menu
+* chapter node::
+@end menu
+
+text.
+@node chapter node
+@chapter chapter']);
 
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['info'];
