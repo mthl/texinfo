@@ -8,6 +8,9 @@ There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at 
 least, could make for a notable speedup.
 
+@ protecting end of lines in @def* is not kept in any way in the tree.
+Maybe it could be possible to have it as a 'type'?
+
 for i18n, one want to do something like
 {style} {number}: {caption}
   -> new tree. 
@@ -187,3 +190,6 @@ invalid/verbatim_not_closed.texi
 
 info_coverage/exdent_and_commands.texi
 info_coverage/exdent_and_formats.texi
+
+coverage/pass0_macro.texi     (not everything, but tests are redundant)
+

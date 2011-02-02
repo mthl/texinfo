@@ -409,6 +409,7 @@ sub _node($$)
   my $output_filename = $self->{'output_filename'};
   $output_filename = '' if (!defined($self->{'output_filename'}));
 
+  $self->_add_location($node);
   my $result = "\x{1F}\nFile: $output_filename,  Node: ";
   $self->_add_text_count($result);
   $result .= $self->convert_line({'type' => 'code',
@@ -433,7 +434,6 @@ sub _node($$)
   }
   $result .="\n\n";
   $self->_add_text_count("\n\n");
-  $self->_add_location($node);
   $self->{'count_context'}->[-1]->{'lines'} = 3;
 
   return $result;

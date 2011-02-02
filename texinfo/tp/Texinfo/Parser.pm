@@ -3434,7 +3434,8 @@ sub _parse_texi($;$)
                 print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
                 push @{$self->{'context_stack'}}, 'preformatted';
               }
-              $current = $self->_begin_preformatted($current);
+              $current = $self->_begin_preformatted($current) 
+                unless ($block_commands{$command} eq 'raw');
             }
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
             $self->_register_global_command($command, $block, $line_nr);

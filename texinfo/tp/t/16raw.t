@@ -57,6 +57,35 @@ in tex2
 
 End.
 '],
+['raw_in_example',
+'@example
+@html
+in html
+@end html
+@end example
+'],
+['braces_in_tex',
+'
+@tex
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+@end tex
+
+
+@example
+@tex
+$$ 
+\chi^2 = \sum_{i=1}^N
+\left(y_i - (a + b x_i)
+\over \sigma_i\right)^2 
+$$
+@end tex
+@end example
+
+']
 );
 
 my @test_invalid = (

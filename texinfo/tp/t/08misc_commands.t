@@ -101,6 +101,11 @@ A @click{} (result).
 ['bye',
 '@bye
 '],
+['text_before_and_after_bye',
+'Before bye @bye on bye line
+
+after bye
+'],
 ['invalid_clickstyle',
 '
 @clickstyle @result on the same line
@@ -139,6 +144,14 @@ summarycontents @summarycontents line following summarycontents
 'documentlanguage on its line
 @documentlanguage  en  
 line following documentlanguage
+'],
+['bad_documentlanguage',
+'
+documentlanguage @documentlanguage  en 
+
+@documentlanguage  en @documentlanguage  en  
+
+@documentlanguage  en  after documentlanguage
 '],
 ['empty_documentencoding',
 '@documentencoding   
