@@ -406,7 +406,7 @@ after exdented
 ['verbatiminclude',
 '
 @verbatiminclude incl-incl.txi
-']
+'],
 );
 
 my @test_invalid = (

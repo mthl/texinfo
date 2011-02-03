@@ -92,6 +92,10 @@ $result_trees{'nested_args'} = {
             'macro' => ''
           },
           'parent' => {}
+        },
+        {
+          'parent' => {},
+          'text' => '.'
         }
       ],
       'parent' => {},
@@ -117,18 +121,19 @@ $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_comma
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][1] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[2];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_args'}{'contents'}[0];
+$result_trees{'nested_args'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_args'}{'contents'}[0];
 $result_trees{'nested_args'}{'contents'}[0]{'parent'} = $result_trees{'nested_args'};
 
-$result_texis{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}}';
+$result_texis{'nested_args'} = '@xref{@@ @samp{in samp}, descr @b{in b}}.';
 
 
-$result_texts{'nested_args'} = '';
+$result_texts{'nested_args'} = '.';
 
 $result_errors{'nested_args'} = [];
 
 
 
-$result_converted{'plaintext'}->{'nested_args'} = '*Note descr in b: @ `in samp\'
+$result_converted{'plaintext'}->{'nested_args'} = '*Note descr in b: @ `in samp\'.
 ';
 
 1;

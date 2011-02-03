@@ -114,6 +114,11 @@ sub _add_text($$)
   return $text;
 }
 
+sub get_pending($)
+{
+  return '';
+}
+
 # put a pending word and spaces in the result string.
 sub add_pending_word($)
 {

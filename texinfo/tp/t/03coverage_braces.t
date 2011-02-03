@@ -29,7 +29,7 @@ my @test_cases = (
 @url{--a,--b,--c}
 '],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
-['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}}'],
+['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}}.'],
 ['too_much_args', '@abbr{AZE, A truc Z b, E eep}'],
 ['footnote', 'text@footnote{in footnote.
 

@@ -1311,7 +1311,6 @@ sub _convert($$)
         my @contents;
         if ($command eq 'xref') {
           $contents[0] = {'text' => '*Note '};
-          # FIXME error message about no punctuation character following xref.
         } else {
           $contents[0] = {'text' => '*note '};
         }
@@ -1343,7 +1342,31 @@ sub _convert($$)
         } else {
           push @contents, (@{$args[0]}, {'text' => '::'});
         }
-        unshift @{$self->{'current_contents'}->[-1]}, @contents;
+        #unshift @{$self->{'current_contents'}->[-1]}, @contents;
+        $result = $self->_convert({'contents' => \@contents});
+        # we could use $formatter, but in case it was changed in _convert 
+        # we play it safe.
+        my $pending = $result 
+            .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+        if ($command ne 'pxref') {
+          if ($command eq 'xref' or ($pending !~ /[\.,]$/ and $pending !~ /::$/)) {
+            my $next = $self->{'current_contents'}->[-1]->[0];
+            if (!($next and $next->{'text'} and $next->{'text'} =~ /^[\.,]/)) {
+              if ($command eq 'xref') {
+                if ($next and defined($next->{'text'}) and $next->{'text'} =~ /\S/) {
+                  my $text = $next->{'text'};
+                  $text =~ s/^\s*//;
+                  my $char = substr($text, 0, 1);
+                  $self->line_warn(sprintf($self->__("`.' or `,' must follow \@xref, not %s"), $char), $root->{'line_nr'});
+                } else {
+                  $self->line_warn($self->__("`.' or `,' must follow \@xref"), $root->{'line_nr'});
+                }
+              }
+              unshift @{$self->{'current_contents'}->[-1]}, {'text' => '.'};
+            }
+          }
+        }
+        return $result;
       }
       return '';
     } elsif ($explained_commands{$command}) {

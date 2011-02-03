@@ -92,6 +92,19 @@ sub _end_line($)
   return "\n";
 }
 
+sub get_pending($)
+{
+  my $paragraph = shift;
+  my $result = '';
+  if ($paragraph->{'space'}) {
+    $result .= $paragraph->{'space'};
+  }
+  if (defined($paragraph->{'word'})) {
+    $result .= $paragraph->{'word'};
+  }
+  return $result;
+}
+
 sub add_pending_word($)
 {
   my $paragraph = shift;
@@ -297,6 +310,12 @@ sub add_text($$)
       } else {
         delete $paragraph->{'end_sentence'};
       }
+    } else {
+      # FIXME
+      # this should never happen, all cases are taken into account above.
+      # however it happens with strange caracters that appear sometime and
+      # look like invalid. Is it a perl bug?
+      die "Unknown caracter leading $text";
     }
   }
   return $result;

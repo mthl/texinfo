@@ -354,7 +354,7 @@ sub test($$)
       }
       if (defined($converted_errors{$format})) {
         $out_result .= Data::Dumper->Dump([$converted_errors{$format}], 
-                 ['$result_converted_errors\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
+                 ['$result_converted_errors{\''.$format.'\'}->{\''.$test_name.'\'}']) ."\n\n";
         #print STDERR "".Data::Dumper->Dump([$converted_errors{$format}]);
       }
     }

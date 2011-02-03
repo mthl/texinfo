@@ -33,7 +33,35 @@ After paragraphindent.
 
 text.
 @node chapter node
-@chapter chapter']);
+@chapter chapter'
+],
+#);
+
+#my @new_tests = (
+['ref_tests',
+'
+@node Top
+
+@ref{(m)in ref followed by comma}, 
+@ref{(m)in ref not followed by comma} after ref.
+@code{@ref{(m)in ref followed by end command}}.
+
+
+@ref{(m)in ref followed by comma, name},
+@ref{(m)in ref not followed by comma, name} after ref.
+@code{@ref{(m)in ref followed by end command, name}}.
+@ref{(m)in ref ending with a dot., name} after ref.
+
+'],
+['xref_test',
+'
+@node Top
+
+@xref{(m)in xref}. @xref{(m)bad xref} after xref.
+@code{@xref{(m)bad nested xref}}.
+@xref{(m)in ref ending with a dot., name} ! after xref and dot inside.
+@xref{(m)in ref followed by symbol}# g.
+']);
 
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['info'];

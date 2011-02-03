@@ -86,6 +86,19 @@ sub end_line_count($)
   return $line->{'end_line_count'};
 }
 
+sub get_pending($)
+{
+  my $line = shift;
+  my $result = '';
+  if ($line->{'space'}) {
+    $result .= $line->{'space'};
+  }
+  if (defined($line->{'word'})) {
+    $result .= $line->{'word'};
+  }
+  return $result;
+}
+
 sub add_pending_word($)
 {
   my $line = shift;
