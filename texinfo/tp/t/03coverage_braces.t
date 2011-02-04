@@ -30,6 +30,9 @@ my @test_cases = (
 '],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}}.'],
+['uref_in_ref',
+'@ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}
+'],
 ['too_much_args', '@abbr{AZE, A truc Z b, E eep}'],
 ['footnote', 'text@footnote{in footnote.
 

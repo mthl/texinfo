@@ -8,7 +8,7 @@ my @test_cases = (
 @item first item
 @item no at-command @code{code}
 @end table
-']
+'],
 );
 
 my @test_invalid = (
@@ -32,6 +32,11 @@ headitem In table text.
 @item item
 @end table
 '],
+['no_arg_brace_command_on_table_line',
+'@table @bullet
+@item item
+@end table
+']
 );
 
 foreach my $test (@test_cases) {
