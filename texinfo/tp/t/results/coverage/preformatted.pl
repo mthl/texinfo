@@ -246,7 +246,7 @@ $result_errors{'preformatted'} = [];
 
 
 $result_converted{'plaintext'}->{'preformatted'} = '
-     e-xample  some
+     e--xample  some
 
         text
 

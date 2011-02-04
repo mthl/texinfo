@@ -589,6 +589,8 @@ sub new_formatter($$;$)
   my $formatter = {'container' => $container, 'upper_case' => 0,
                    'code' => 0, 'w' => 0,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
+  $formatter->{'preformatted'} = 1
+    if ($type eq 'unfilled');
   return $formatter;
 }
 

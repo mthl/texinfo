@@ -10,6 +10,13 @@ example
 after empty line
 @end example
 '],
+['quote_dash_in_example',
+'
+@example
+and now -- yes---now and ``so\'\'.
+
+@end example
+'],
 ['text_on_command_line',
 '@example text on line
 @end example
