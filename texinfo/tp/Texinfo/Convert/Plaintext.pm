@@ -977,7 +977,6 @@ sub ensure_end_of_line($$)
     $self->{'count_context'}->[-1]->{'bytes'} -= $self->count_bytes($chomped);
     $self->{'count_context'}->[-1]->{'lines'} -= 1;
   }
-  $self->{'empty_lines_count'} = 0 unless ($text eq '');
   $text .= "\n";
   $self->_add_text_count("\n");
   $self->_add_lines_count(1);
@@ -1070,7 +1069,7 @@ sub _convert($$)
     $is_top_formatter = 1 if ($formatter->{'_top_formatter'});
     my $empty_lines_count = '';
     $empty_lines_count = $self->{'empty_lines_count'} if defined($self->{'empty_lines_count'});
-    print STDERR "ROOT (".join('|',@{$self->{'context'}})."), formatters ".scalar(@{$self->{'formatters'}}) . " ->";
+    print STDERR "ROOT:$root (".join('|',@{$self->{'context'}})."), formatters ".scalar(@{$self->{'formatters'}}) . " ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
@@ -1102,7 +1101,28 @@ sub _convert($$)
   }
   my $result = '';
 
+  # First handle empty lines. This has to be done before the handling
+  # of text below to be sure that an empty line is always processed
+  # especially
+  if ($root->{'type'} and $root->{'type'} eq 'empty_line') {
+    my $count = $self->{'empty_lines_count'};
+    $count = '' if (!defined($count));
+    print STDERR "EMPTY_LINE ($count)\n"
+      if ($self->{'DEBUG'});
+    delete $self->{'format_context'}->[-1]->{'counter'};
+    $self->{'empty_lines_count'}++;
+    if ($self->{'empty_lines_count'} <= 1
+        or $preformatted_context_commands{$self->{'context'}->[-1]}) {
+      $result = "\n";
+      $self->_add_text_count($result);
+      $self->_add_lines_count(1);
+      return $result;
+    } else {
+      return '';
+    }
+  }
 
+  # process text
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
       $result = $self->_count_added($formatter->{'container'},
@@ -1553,7 +1573,10 @@ sub _convert($$)
       $result = $self->convert_line({'contents' => $contents},
                   {'indent_level'
                     => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-      $result = $self->ensure_end_of_line($result);
+      if ($result ne '') {
+        $result = $self->ensure_end_of_line($result);
+        $self->{'empty_lines_count'} = 0;
+      }
       
     } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
              and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
@@ -1613,19 +1636,23 @@ sub _convert($$)
       $result = $self->convert_line (
                        {'contents' => $root->{'extra'}->{'misc_content'}},
                        {'indent_length' => 0});
-      $result = $self->ensure_end_of_line($result);
+      if ($result ne '') {
+        $result = $self->ensure_end_of_line($result);
 
-      $result = $self->_align_environment ($result, 
+        $result = $self->_align_environment ($result, 
              $self->{'format_context'}->[-1]->{'max'}, 'center'); 
-
-      $self->{'empty_lines_count'} = 0 unless ($result eq '');
+        $self->{'empty_lines_count'} = 0;
+      }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       return $result;
     } elsif ($root->{'cmdname'} eq 'exdent') {
       $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
          {'indent_level' 
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-      $result = $self->ensure_end_of_line ($result);
+      if ($result ne '') {
+        $result = $self->ensure_end_of_line($result);
+        $self->{'empty_lines_count'} = 0;
+      }
       return $result;
     } elsif ($root->{'cmdname'} eq 'verbatiminclude') {
       my $expansion = $self->Texinfo::Parser::expand_verbatiminclude($root);
@@ -1810,29 +1837,12 @@ sub _convert($$)
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                                    'locations' => []};
       }
-    } elsif ($root->{'type'} eq 'empty_line') {
-      my $count = $self->{'empty_lines_count'};
-      $count = '' if (!defined($count));
-      print STDERR "EMPTY_LINE ($count)\n"
-        if ($self->{'DEBUG'});
-      delete $self->{'format_context'}->[-1]->{'counter'};
-      $self->{'empty_lines_count'}++;
-      if ($self->{'empty_lines_count'} <= 1
-          or $preformatted_context_commands{$self->{'context'}->[-1]}) {
-        $result = "\n";
-        $self->_add_text_count($result);
-        $self->_add_lines_count(1);
-        return $result;
-      } else {
-        return '';
-      }
     } elsif ($root->{'type'} eq 'preformatted') {
         $preformatted = $self->new_formatter('unfilled');
         push @{$self->{'formatters'}}, $preformatted;
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
-    #print STDERR "$root->{'extra'}->{'def_command'}\n";
         my $parsed_definition_category = $self->_definition_category ($root, 
                 $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                 $root->{'extra'}->{'def_parsed_hash'}->{'class'});
@@ -1874,7 +1884,6 @@ sub _convert($$)
         print STDERR "     --> $result" if ($self->{'DEBUG'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
-      # FIXME node name should be in code.
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
           $result .= $self->_convert({'type' => 'code',
@@ -1899,6 +1908,7 @@ sub _convert($$)
     }
   }
 
+  # The processing of contents is done here.
   if ($root->{'contents'}) {
     my @contents = @{$root->{'contents'}};
     push @{$self->{'current_contents'}}, \@contents;
@@ -1906,13 +1916,13 @@ sub _convert($$)
       my $content = shift @contents;
       my $text = $self->_convert($content);
       $self->{'empty_lines_count'} = 0 
-        if ($preformatted_context_commands{$self->{'context'}->[-1]} and $text ne '');
+        if ($preformatted and $text =~ /\S/);
       $result .= $text;
     }
     pop @{$self->{'current_contents'}};
   }
 
-  # now closing
+  # now closing. First, close types.
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'frenchspacing') {
       pop @{$formatter->{'frenchspacing_stack'}};
@@ -2058,7 +2068,9 @@ sub _convert($$)
   } elsif ($preformatted) {
     $result .= $self->_count_added($preformatted->{'container'},
                                    $preformatted->{'container'}->end());
-    $result = $self->ensure_end_of_line($result);
+    if ($result ne '') {
+      $result = $self->ensure_end_of_line($result);
+    }
     pop @{$self->{'formatters'}};
     # We assume that, upon closing the preformatted we are at the 
     # beginning of a line.

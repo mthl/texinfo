@@ -78,7 +78,6 @@ $result_errors{'raw_in_example'} = [];
 
 
 
-$result_converted{'plaintext'}->{'raw_in_example'} = '
-';
+$result_converted{'plaintext'}->{'raw_in_example'} = '';
 
 1;

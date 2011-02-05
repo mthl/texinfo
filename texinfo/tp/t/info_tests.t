@@ -35,9 +35,6 @@ text.
 @node chapter node
 @chapter chapter'
 ],
-#);
-
-#my @new_tests = (
 ['ref_tests',
 '
 @node Top
@@ -69,7 +66,15 @@ text.
 
 @node Top
 @top Double contents
-']
+'],
+['empty_line_in_example_end',
+'@example
+in example
+
+@end example
+
+After line
+'],
 
 );
 
