@@ -1,3 +1,9 @@
+2011-02-02  Ben Wong  <bugs.debian.org@wongs.net>  (tiny change)
+
+	* info/window.c (window_line_of_point): do not ever return
+	a negative number, to avoid crash on very small windows.
+	http://savannah.gnu.org/bugs/?32255, http://bugs.debian.org/611151
+
 2011-02-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\douref): reinstate old definition.
