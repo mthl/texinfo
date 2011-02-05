@@ -374,6 +374,20 @@ sub document_warn ($) {
   warn sprintf(__p("warning: warning_message", "warning: %s\n"), $text);
 }
 
+sub handle_errors($$) {
+  my $self = shift;
+  my $error_count = shift;
+  my ($errors, $new_error_count) = $self->errors();
+  $error_count += $new_error_count if ($new_error_count);
+  foreach my $error_message (@$errors) {
+    warn $error_message->{'error_line'} if ($error_message->{'type'} eq 'error'
+                                           or !get_conf('NO_WARN'));
+  }
+  
+  exit (1) if ($error_count and (!get_conf('FORCE')
+     or $error_count > get_conf('ERROR_LIMIT')));
+  return $error_count;
+}
 
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
@@ -526,6 +540,14 @@ my %formats_table = (
            },
 );
 
+if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
+  document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
+  # FIXME see if the following is required.  Should not be
+  # since defaults are per format.
+  #set_from_cmdline('SPLIT', ''); 
+  #set_from_cmdline('FRAMES', 0); 
+}
+
 # Main processing, process all the files given on the command line
 
 my $failure_text =  sprintf(__("Try `%s --help' for more information.\n"), 
@@ -535,21 +557,6 @@ my @input_files = @ARGV;
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
 die sprintf(__("%s: missing file argument.\n"), $real_command_name) 
    .$failure_text unless (scalar(@input_files) >= 1);
-
-sub handle_errors($$) {
-  my $self = shift;
-  my $error_count = shift;
-  my ($errors, $new_error_count) = $self->errors();
-  $error_count += $new_error_count if ($new_error_count);
-  foreach my $error_message (@$errors) {
-    warn $error_message->{'error_line'} if ($error_message->{'type'} eq 'error'
-                                           or !get_conf('NO_WARN'));
-  }
-  
-  exit (1) if ($error_count and (!get_conf('FORCE')
-     or $error_count > get_conf('ERROR_LIMIT')));
-  return $error_count;
-}
 
 my $file_number = -1;
 # main processing

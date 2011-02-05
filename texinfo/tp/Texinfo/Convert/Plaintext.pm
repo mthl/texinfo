@@ -1493,11 +1493,13 @@ sub _convert($$)
         my ($contents, $lines_count) 
                 = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                                   'contents');
-        $contents .= "\n";
-        $self->{'empty_lines_count'} = 1;
+        if ($contents ne '') {
+          $contents .= "\n";
+          $self->{'empty_lines_count'} = 1;
+          $self->_add_text_count($contents);
+          $self->_add_lines_count($lines_count+1);
+        }
         $self->{'setcontentsaftertitlepage'} = 0;
-        $self->_add_text_count($contents);
-        $self->_add_lines_count($lines_count+1);
         $result .= $contents;
       } 
       if ($self->{'setshortcontentsaftertitlepage'} 
@@ -1505,11 +1507,14 @@ sub _convert($$)
         my ($contents, $lines_count) 
                 = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents');
-        $contents .= "\n";
-        $self->{'empty_lines_count'} = 1;
+        if ($contents ne '') {
+          $contents .= "\n";
+          $self->{'empty_lines_count'} = 1;
+          $self->_add_text_count($contents);
+          $self->_add_lines_count($lines_count+1);
+        }
+
         $self->{'setshortcontentsaftertitlepage'} = 0;
-        $self->_add_text_count($contents);
-        $self->_add_lines_count($lines_count+1);
         $result .= $contents;
       }
       if ($root->{'args'}) {

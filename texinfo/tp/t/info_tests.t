@@ -61,7 +61,17 @@ text.
 @code{@xref{(m)bad nested xref}}.
 @xref{(m)in ref ending with a dot., name} ! after xref and dot inside.
 @xref{(m)in ref followed by symbol}# g.
-']);
+'],
+['contents_setcontentsaftertitlepage_before_node',
+'
+@contents
+@setcontentsaftertitlepage
+
+@node Top
+@top Double contents
+']
+
+);
 
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['info'];
