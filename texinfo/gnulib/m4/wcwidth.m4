@@ -1,5 +1,5 @@
-# wcwidth.m4 serial 16
-dnl Copyright (C) 2006-2010 Free Software Foundation, Inc.
+# wcwidth.m4 serial 18
+dnl Copyright (C) 2006-2011 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -41,7 +41,8 @@ AC_DEFUN([gl_FUNC_WCWIDTH],
     AC_CACHE_CHECK([whether wcwidth works reasonably in UTF-8 locales],
       [gl_cv_func_wcwidth_works],
       [
-        AC_TRY_RUN([
+        AC_RUN_IFELSE(
+          [AC_LANG_SOURCE([[
 #include <locale.h>
 /* AIX 3.2.5 declares wcwidth in <string.h>. */
 #include <string.h>
@@ -62,17 +63,24 @@ int wcwidth (int);
 #endif
 int main ()
 {
+  int result = 0;
   if (setlocale (LC_ALL, "fr_FR.UTF-8") != NULL)
-    if (wcwidth (0x0301) > 0 || wcwidth (0x200B) > 0)
-      return 1;
-  return 0;
-}], [gl_cv_func_wcwidth_works=yes], [gl_cv_func_wcwidth_works=no],
+    {
+      if (wcwidth (0x0301) > 0)
+        result |= 1;
+      if (wcwidth (0x200B) > 0)
+        result |= 2;
+    }
+  return result;
+}]])],
+          [gl_cv_func_wcwidth_works=yes],
+          [gl_cv_func_wcwidth_works=no],
           [
 changequote(,)dnl
            case "$host_os" in
-                     # Guess yes on glibc systems.
-             *-gnu*) gl_cv_func_wcwidth_works="guessing yes";;
-             *)      gl_cv_func_wcwidth_works="guessing no";;
+                     # Guess yes on glibc and AIX 7 systems.
+             *-gnu* | aix[7-9]*) gl_cv_func_wcwidth_works="guessing yes";;
+             *)                  gl_cv_func_wcwidth_works="guessing no";;
            esac
 changequote([,])dnl
           ])

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2010 Free Software Foundation, Inc.
+# Copyright (C) 2002-2011 Free Software Foundation, Inc.
 #
 # This file is free software, distributed under the terms of the GNU
 # General Public License.  As a special exception to the GNU General
@@ -12,7 +12,8 @@
 # This file represents the compiled summary of the specification in
 # gnulib-cache.m4. It lists the computed macro invocations that need
 # to be invoked from configure.ac.
-# In projects using CVS, this file can be treated like other built files.
+# In projects that use version control, this file can be treated like
+# other built files.
 
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -127,6 +128,7 @@ AC_DEFUN([gl_INIT],
   gl_FUNC_ARGZ
   # Code from module c++defs:
   # Code from module configmake:
+  gl_CONFIGMAKE_PREP
   # Code from module environ:
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
@@ -268,7 +270,7 @@ AC_DEFUN([gl_INIT],
   # Code from module uniwidth/base:
   gl_LIBUNISTRING_LIBHEADER([0.9], [uniwidth.h])
   # Code from module uniwidth/width:
-  gl_LIBUNISTRING_MODULE([0.9], [uniwidth/width])
+  gl_LIBUNISTRING_MODULE([0.9.4], [uniwidth/width])
   # Code from module unsetenv:
   gl_FUNC_UNSETENV
   gl_STDLIB_MODULE_INDICATOR([unsetenv])
@@ -445,6 +447,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettext.h
   lib/gettimeofday.c
   lib/intprops.h
+  lib/iswblank.c
   lib/localcharset.c
   lib/localcharset.h
   lib/lstat.c
@@ -515,6 +518,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/alloca.m4
   m4/argz.m4
   m4/codeset.m4
+  m4/configmake.m4
   m4/dos.m4
   m4/eealloc.m4
   m4/environ.m4

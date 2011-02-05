@@ -1,6 +1,6 @@
 /* A substitute for ISO C99 <wctype.h>, for platforms that lack it.
 
-   Copyright (C) 2006-2010 Free Software Foundation, Inc.
+   Copyright (C) 2006-2011 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@
 #if __GNUC__ >= 3
 @PRAGMA_SYSTEM_HEADER@
 #endif
+@PRAGMA_COLUMNS@
 
 #if @HAVE_WINT_T@
 /* Solaris 2.5 has a bug: <wchar.h> must be included before <wctype.h>.
@@ -276,14 +277,17 @@ towupper
   return (wc >= 'a' && wc <= 'z' ? wc - 'a' + 'A' : wc);
 }
 
-#elif ! @HAVE_ISWBLANK@
+#elif ! @HAVE_ISWBLANK@ || @REPLACE_ISWBLANK@
 /* Only the iswblank function is missing.  */
 
-static inline int
-iswblank (wint_t wc)
-{
-  return wc == ' ' || wc == '\t';
-}
+# if @REPLACE_ISWBLANK@
+#  if !(defined __cplusplus && defined GNULIB_NAMESPACE)
+#   define iswblank rpl_iswblank
+#  endif
+_GL_FUNCDECL_RPL (iswblank, int, (wint_t wc));
+# else
+_GL_FUNCDECL_SYS (iswblank, int, (wint_t wc));
+# endif
 
 #endif
 
@@ -338,7 +342,11 @@ _GL_CXXALIAS_RPL (iswxdigit, int, (wint_t wc));
 #else
 _GL_CXXALIAS_SYS (iswalnum, int, (wint_t wc));
 _GL_CXXALIAS_SYS (iswalpha, int, (wint_t wc));
+# if @REPLACE_ISWBLANK@
+_GL_CXXALIAS_RPL (iswblank, int, (wint_t wc));
+# else
 _GL_CXXALIAS_SYS (iswblank, int, (wint_t wc));
+# endif
 _GL_CXXALIAS_SYS (iswcntrl, int, (wint_t wc));
 _GL_CXXALIAS_SYS (iswdigit, int, (wint_t wc));
 _GL_CXXALIAS_SYS (iswgraph, int, (wint_t wc));
