@@ -201,6 +201,32 @@ $result_trees{'not_closed'} = {
                     {
                       'text' => 'type1'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'arg',
+                    {
+                      'text' => 'var'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    }
+                  ],
+                  [
+                    'arg',
+                    {
+                      'text' => 'bidule'
+                    }
                   ]
                 ],
                 'def_command' => 'defvar',

@@ -1638,6 +1638,8 @@ sub _parse_def ($$)
   my @result;
   my @args = @{$def_map{$command}};
   my $arg_type;
+  # Even when $arg_type is not set, that is for def* that is not documented
+  # to take args, everything is as is arg_type was set to arg.
   $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
   foreach my $arg (@args) {
     #print STDERR "$command $arg"._print_current($contents[0]);
@@ -1649,41 +1651,40 @@ sub _parse_def ($$)
     push @result, ['spaces', $spaces] if (defined($spaces));
     push @result, [$arg, $next];
   }
+
   my @args_results;
-  if ($arg_type) {
-    while (@contents) {
-      my ($spaces, $next) = _next_bracketed_or_word(\@contents);
-      push @args_results, ['spaces', $spaces] if (defined($spaces));
-      last if (!defined($next));
-      if (defined($next->{'text'})) {
-        while (1) {
-          if ($next->{'text'} =~ s/^([^\[\](),]+)//) {
-            push @args_results, ['arg', {'text' => $1}];
-          } elsif ($next->{'text'} =~ s/^([\[\](),])//) {
-            push @args_results, ['delimiter', 
-                        {'text' => $1, 'type' => 'delimiter'}];
-          } else {
-            last;
-          }
-        }
-      } else {
-        push @args_results, [ 'arg', $next ];
-      }
-    }
-    if ($arg_type eq 'argtype') {
-      my $next_is_type = 1;
-      foreach my $arg(@args_results) {
-        if ($arg->[0] eq 'spaces') {
-        } elsif ($arg->[0] eq 'delimiter') {
-          $next_is_type = 1;
-        } elsif ($arg->[1]->{'cmdname'} and $arg->[1]->{'cmdname'} ne 'code') {
-          $next_is_type = 1;
-        } elsif ($next_is_type) {
-          $arg->[0] = 'typearg';
-          $next_is_type = 0;
+  while (@contents) {
+    my ($spaces, $next) = _next_bracketed_or_word(\@contents);
+    push @args_results, ['spaces', $spaces] if (defined($spaces));
+    last if (!defined($next));
+    if (defined($next->{'text'})) {
+      while (1) {
+        if ($next->{'text'} =~ s/^([^\[\](),]+)//) {
+          push @args_results, ['arg', {'text' => $1}];
+        } elsif ($next->{'text'} =~ s/^([\[\](),])//) {
+          push @args_results, ['delimiter', 
+                      {'text' => $1, 'type' => 'delimiter'}];
         } else {
-          $next_is_type = 1;
+          last;
         }
+      }
+    } else {
+      push @args_results, [ 'arg', $next ];
+    }
+  }
+  if ($arg_type and $arg_type eq 'argtype') {
+    my $next_is_type = 1;
+    foreach my $arg(@args_results) {
+      if ($arg->[0] eq 'spaces') {
+      } elsif ($arg->[0] eq 'delimiter') {
+        $next_is_type = 1;
+      } elsif ($arg->[1]->{'cmdname'} and $arg->[1]->{'cmdname'} ne 'code') {
+        $next_is_type = 1;
+      } elsif ($next_is_type) {
+        $arg->[0] = 'typearg';
+        $next_is_type = 0;
+      } else {
+        $next_is_type = 1;
       }
     }
   }

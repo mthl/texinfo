@@ -589,6 +589,210 @@ $result_trees{'all_commands_delimiters'} = {
                 {
                   'text' => 'fill-column'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '         ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '(',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'arg'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'in'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'brace'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '[',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'something'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'a'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'p'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ']',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ')',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'last'
+                }
               ]
             ],
             'def_command' => 'defvr',
@@ -1911,6 +2115,180 @@ $result_trees{'all_commands_delimiters'} = {
                 {
                   'text' => 'enable'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '         ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '(',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'arg'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'in'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'brace'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '[',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'something'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'a'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'p'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ']',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ')',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'last'
+                }
               ]
             ],
             'def_command' => 'deftypevr',
@@ -2459,6 +2837,180 @@ $result_trees{'all_commands_delimiters'} = {
                 {
                   'text' => 'border-pattern'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '         ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '(',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'arg'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'in'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'brace'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '[',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'something'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'a'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'p'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ']',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ')',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'last'
+                }
               ]
             ],
             'def_command' => 'defcv',
@@ -2671,6 +3223,180 @@ $result_trees{'all_commands_delimiters'} = {
                 'name',
                 {
                   'text' => 'border-pattern'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '         ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '(',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'arg'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'in'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'brace'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => '[',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'something'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ',',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'contents' => [],
+                  'parent' => {},
+                  'type' => 'bracketed_def_content'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'a'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'p'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ']',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'delimiter',
+                {
+                  'text' => ')',
+                  'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {
+                  'text' => 'last'
                 }
               ]
             ],
@@ -6530,6 +7256,28 @@ $result_trees{'all_commands_delimiters'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
               ]
             ],
             'def_command' => 'defvr',
@@ -6683,6 +7431,28 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               [
                 'name',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
                 {}
               ]
             ],
@@ -7288,6 +8058,28 @@ $result_trees{'all_commands_delimiters'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
               ]
             ],
             'def_command' => 'deftypevr',
@@ -7474,6 +8266,28 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               [
                 'name',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
                 {}
               ]
             ],
@@ -8014,6 +8828,28 @@ $result_trees{'all_commands_delimiters'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
               ]
             ],
             'def_command' => 'defcv',
@@ -8441,6 +9277,28 @@ $result_trees{'all_commands_delimiters'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
               ]
             ],
             'def_command' => 'deftypecv',
@@ -8670,6 +9528,28 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               [
                 'name',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
+                {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                }
+              ],
+              [
+                'arg',
                 {}
               ]
             ],
@@ -10261,6 +11141,15 @@ $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[12]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[13]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[19][1] = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[22][1] = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[24][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[10]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[24][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[27][1] = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[12];
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'all_commands_delimiters'}{'contents'}[3]{'contents'}[0];
@@ -10416,6 +11305,11 @@ $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[17][1] = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[20][1] = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[22][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[7]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[22][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[25][1] = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[4][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'all_commands_delimiters'}{'contents'}[18]{'contents'}[0]{'extra'}{'def_args'}[2][1];
@@ -10482,6 +11376,11 @@ $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[17][1] = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[20][1] = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[22][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'contents'}[7]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[22][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[25][1] = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[24]{'contents'}[0]{'extra'}{'def_args'}[4][1];
@@ -10518,6 +11417,11 @@ $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[19][1] = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[22][1] = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[24][1]{'contents'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[9]{'contents'};
+$result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[24][1]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0];
+$result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[27][1] = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[11];
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[27]{'contents'}[0]{'extra'}{'def_args'}[6][1];
@@ -11048,6 +11952,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[7];
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'all_commands_delimiters'}{'contents'}[87]{'contents'}[0];
@@ -11076,6 +11982,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0];
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[7];
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'all_commands_delimiters'}{'contents'}[90]{'contents'}[0];
@@ -11181,6 +12089,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'all_commands_delimiters'}{'contents'}[99]{'contents'}[0]{'args'}[0]{'contents'}[3];
@@ -11215,6 +12125,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'all_commands_delimiters'}{'contents'}[102]{'contents'}[0]{'args'}[0]{'contents'}[3];
@@ -11309,6 +12221,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[111]{'contents'}[0]{'args'}[0]{'contents'}[5];
@@ -11383,6 +12297,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_args'}[10][1] = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[11];
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[117]{'contents'}[0]{'args'}[0]{'contents'}[7];
@@ -11425,6 +12341,8 @@ $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[5];
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_args'}[10][1] = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[11];
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'all_commands_delimiters'}{'contents'}[120]{'contents'}[0]{'args'}[0]{'contents'}[7];
@@ -11940,7 +12858,8 @@ $result_errors{'all_commands_delimiters'} = [];
 $result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: FORWARD--CHAR NCHARS argument2 argument3 (arg in brace,
           [something IN V--AR, in, b , comma aPREF p]) last
 
- -- Variable: fill-column
+ -- Variable: fill-column argument1 argument2 (arg in brace, [something
+          IN V--AR, in, b , comma aPREF p]) last
 
  -- Library Function: int foobar (int FOO, float BAR)
 
@@ -11954,14 +12873,17 @@ $result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: FORW
  -- stacks: private push (S:in out stack; N:in integer) ; ;barg aarg; ;
           end
 
- -- Global Flag: int enable
+ -- Global Flag: int enable (arg in brace, [something IN V--AR, in, b ,
+          comma aPREF p]) last
 
  -- Data type: pair car cdr (arg in brace, [something IN V--AR, in, b ,
           comma aPREF p]) last
 
- -- Class Option of Window: border-pattern
+ -- Class Option of Window: border-pattern (arg in brace, [something IN
+          V--AR, in, b , comma aPREF p]) last
 
- -- Class Option2 of Window: `int\' border-pattern
+ -- Class Option2 of Window: `int\' border-pattern (arg in brace,
+          [something IN V--AR, in, b , comma aPREF p]) last
 
  -- Operation on windows: expose (arg in brace, [something IN V--AR, in,
           b , comma aPREF p]) last
@@ -12003,29 +12925,29 @@ $result_converted{'plaintext'}->{'all_commands_delimiters'} = ' -- Command: FORW
 
  -- `A1\': `A2\' `A3\' `A4\'
 
- -- A1: A2
+ -- A1: A2 A3 A4
 
- -- `A1\': `A2\'
+ -- `A1\': `A2\' `A3\' `A4\'
 
  -- A1: A2 A3 A4 A5
 
  -- `A1\': `A2\' `A3\' `A4\' `A5\'
 
- -- A1: A2 A3
+ -- A1: A2 A3 A4 A5
 
- -- `A1\': A2 `A3\'
+ -- `A1\': A2 `A3\' `A4\' `A5\'
 
  -- A1: A2 A3 A4
 
  -- `A1\': `A2\' `A3\' `A4\'
 
- -- A1 of A2: A3
+ -- A1 of A2: A3 A4 A5
 
  -- `A1\': `A2\' `A3\' `A4\' `A5\'
 
- -- A1 of A2: A3 A4
+ -- A1 of A2: A3 A4 A5 A6
 
- -- `A1\' of `A2\': `A3\' `A4\'
+ -- `A1\' of `A2\': `A3\' `A4\' `A5\' `A6\'
 
  -- A1 on A2: A3 A4 A5
 
