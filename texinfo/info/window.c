@@ -1,7 +1,7 @@
 /* window.c -- windows in Info.
-   $Id: window.c,v 1.20 2008-12-29 23:22:20 karl Exp $
+   $Id: window.c,v 1.21 2011-02-05 19:01:54 karl Exp $
 
-   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008
+   Copyright (C) 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008, 2011
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -923,7 +923,13 @@ window_line_of_point (WINDOW *window)
         break;
     }
 
-  return i - 1;
+  /* Something is wrong with the above logic as it allows a negative
+     index to be returned for small windows.  Until someone figures it
+     out, at least don&#39;t core dump. */
+  if (i > 0)
+    return i - 1;
+  else
+    return 0;
 }
 
 /* Get and return the goal column for this window. */
