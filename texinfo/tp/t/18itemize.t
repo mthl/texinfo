@@ -238,6 +238,17 @@ my @test_cases = (
 @item aaa
 @item aaa
 @end enumerate
+'],
+['enumerate_in_example',
+'
+@example
+@enumerate
+@item first item
+@item second  item
+
+still second
+@end enumerate
+@end example
 ']
 );
 

@@ -73,7 +73,8 @@ sub _end_line($)
   $line->{'only_spaces'} = 1;
   $line->{'lines_counter'}++;
   $line->{'end_line_count'}++;
-  print STDERR "END_LINE\n" if ($line->{'DEBUG'});
+  $line->{'counter'} = 0;
+  print STDERR "END_LINE.U\n" if ($line->{'DEBUG'});
   return "\n";
 }
 
@@ -91,7 +92,7 @@ sub _add_text($$)
     if ($line->{'indent_length'}) {
       $line->{'leading_spaces'} .= 
         ' ' x ($line->{'indent_length'} - $line->{'counter'});
-      print STDERR "INDENT($line->{'counter'})\n" if ($line->{'DEBUG'});
+      print STDERR "INDENT.U($line->{'counter'})\n" if ($line->{'DEBUG'});
     }
     $line->{'line_beginning'} = 0;
   }

@@ -76,7 +76,8 @@ sub _end_line($)
   $line->{'space'} = '';
   $line->{'lines_counter'}++;
   $line->{'end_line_count'}++;
-  print STDERR "END_LINE\n" if ($line->{'DEBUG'});
+  $line->{'counter'} = 0;
+  print STDERR "END_LINE.L\n" if ($line->{'DEBUG'});
   return "$result\n";
 }
 
@@ -115,16 +116,16 @@ sub _add_pending_word($)
     if ($line->{'line_beginning'}) {
       if ($line->{'indent_length'}) {
         $result .= ' ' x ($line->{'indent_length'} - $line->{'counter'});
-        print STDERR "INDENT($line->{'counter'})\n" if ($line->{'DEBUG'});
+        print STDERR "INDENT.L($line->{'counter'})\n" if ($line->{'DEBUG'});
       }
       $line->{'line_beginning'} = 0;
     } elsif ($line->{'space'}) {
       $result .= $line->{'space'};
-      print STDERR "ADD_SPACES\n" if ($line->{'DEBUG'});
+      print STDERR "ADD_SPACES.L\n" if ($line->{'DEBUG'});
     }
     $line->{'space'} = '';
     $result .= $line->{'word'};
-    print STDERR "ADD_WORD[$line->{'word'}]\n" if ($line->{'DEBUG'});
+    print STDERR "ADD_WORD.L[$line->{'word'}]\n" if ($line->{'DEBUG'});
     $line->{'word'} = undef;
   }
   return $result;
@@ -137,7 +138,7 @@ sub end($)
   $line->{'end_line_count'} = 0;
   my $result = $line->_add_pending_word();
   $result .= $line->{'space'};
-  print STDERR "END_LINE\n" if ($line->{'DEBUG'});
+  print STDERR "END_LINE.L\n" if ($line->{'DEBUG'});
   return $result;
 }
 
@@ -163,7 +164,7 @@ sub _add_next($;$$$)
   if (defined($word)) {
     $line->{'word'} = '' if (!defined($line->{'word'}));
     $line->{'word'} .= $word;
-    print STDERR "WORD+ $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
+    print STDERR "WORD+.L $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
   }
   if (defined($space)) {
     $result .= $line->_add_pending_word();
@@ -225,7 +226,7 @@ sub add_text($$)
     }
     if ($text =~ s/^([^\S\n]+)//) {
       my $spaces = $1;
-      print STDERR "SPACES\n" if ($line->{'DEBUG'});
+      print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
       my $added_word = $line->{'word'};
       $result .= $line->_add_pending_word();
       if ($line->{'protect_spaces'}) {
@@ -254,7 +255,7 @@ sub add_text($$)
       $result .= $line->_end_line();
     } elsif ($text =~ s/^(\p{Unicode::EastAsianWidth::InFullwidth})//) {
       my $added = $1;
-      print STDERR "EAST_ASIAN\n" if ($line->{'DEBUG'});
+      print STDERR "EAST_ASIAN.L\n" if ($line->{'DEBUG'});
       $line->{'word'} = '' if (!defined($line->{'word'}));
       $line->{'word'} .= $added;
       $result .= $line->_add_pending_word();

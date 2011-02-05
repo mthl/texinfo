@@ -594,6 +594,7 @@ sub new_formatter($$;$)
       and ! $menu_commands{$self->{'context'}->[-1]}) {
     $formatter->{'preformatted'} = 1;
   }
+  print STDERR "NEW FORMATTER($type)\n" if ($self->{'DEBUG'});
   return $formatter;
 }
 
@@ -1069,14 +1070,19 @@ sub _convert($$)
     $is_top_formatter = 1 if ($formatter->{'_top_formatter'});
     my $empty_lines_count = '';
     $empty_lines_count = $self->{'empty_lines_count'} if defined($self->{'empty_lines_count'});
-    print STDERR "ROOT (@{$self->{'context'}}|@{$self->{'format_context'}},$empty_lines_count|$is_top_formatter)";
-    print STDERR " format_context: $self->{'format_context'}->[-1]->{'cmdname'}, $self->{'format_context'}->[-1]->{'paragraph_count'}, $self->{'format_context'}->[-1]->{'indent_level'}, "
-      .(defined($self->{'format_context'}->[-1]->{'counter'}) ? "counter: $self->{'format_context'}->[-1]->{'counter'}, " : '') 
-       ."max: $self->{'format_context'}->[-1]->{'max'}\n";
+    print STDERR "ROOT (".join('|',@{$self->{'context'}})."), formatters ".scalar(@{$self->{'formatters'}}) . " ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
+    my $text = $root->{'text'}; 
+    if (defined($text)) {
+      $text =~ s/\n/\\n/;
+      print STDERR " text: $text";
+    }
     print STDERR "\n";
-    print STDERR "  Text: $root->{'text'}\n" if (defined($root->{'text'}));
+   
+    print STDERR " empty_lines $empty_lines_count,top_fmter $is_top_formatter,format_ctxt $self->{'format_context'}->[-1]->{'cmdname'},para_cnt $self->{'format_context'}->[-1]->{'paragraph_count'},indent_lvl $self->{'format_context'}->[-1]->{'indent_level'},"
+      .(defined($self->{'format_context'}->[-1]->{'counter'}) ? "counter $self->{'format_context'}->[-1]->{'counter'}," : '') 
+       ."max $self->{'format_context'}->[-1]->{'max'}\n";
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($formatter) {
@@ -1435,11 +1441,11 @@ sub _convert($$)
              };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
-        # reopen a preformatted container, if the command opening the 
+        # open a preformatted container, if the command opening the 
         # preformatted context is not a classical preformatted 
-        # command (ie if it is menu, verbatim and not example and the 
-        # like) or it is inside any other which opend a context.
-        if ($preformatted_context_commands{$self->{'context'}->[-1]}
+        # command (ie if it is menu or verbatim, and not example or  
+        # similar)
+        if ($preformatted_context_commands{$root->{'cmdname'}}
             and ! $preformatted_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
@@ -1805,7 +1811,9 @@ sub _convert($$)
                                                    'locations' => []};
       }
     } elsif ($root->{'type'} eq 'empty_line') {
-      print STDERR "EMPTY_LINE ($self->{'empty_lines_count'})\n"
+      my $count = $self->{'empty_lines_count'};
+      $count = '' if (!defined($count));
+      print STDERR "EMPTY_LINE ($count)\n"
         if ($self->{'DEBUG'});
       delete $self->{'format_context'}->[-1]->{'counter'};
       $self->{'empty_lines_count'}++;
@@ -2139,6 +2147,9 @@ sub _convert($$)
                                    $preformatted->{'container'}->end());
     $result = $self->ensure_end_of_line($result);
     pop @{$self->{'formatters'}};
+    # We assume that, upon closing the preformatted we are at the 
+    # beginning of a line.
+    delete $self->{'format_context'}->[-1]->{'counter'};
   }
 
   if ($root->{'cmdname'}) {
