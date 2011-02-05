@@ -582,15 +582,18 @@ sub new_formatter($$;$)
     die "Unknown container type $type\n";
   }
 
-  if ($self->{'context'}->[-1] eq 'flush') {
+  if ($flush_commands{$self->{'context'}->[-1]}) {
     $container->set_space_protection(undef, 1, 1);
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
                    'code' => 0, 'w' => 0,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
-  $formatter->{'preformatted'} = 1
-    if ($type eq 'unfilled');
+
+  if ($preformatted_context_commands{$self->{'context'}->[-1]}
+      and ! $menu_commands{$self->{'context'}->[-1]}) {
+    $formatter->{'preformatted'} = 1;
+  }
   return $formatter;
 }
 
@@ -608,6 +611,7 @@ sub convert_line($$;$)
   return $text;
 }
 
+# not used
 sub convert_unfilled($$;$)
 {
   my $self = shift;
@@ -774,7 +778,8 @@ sub _footnotes($$)
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]); 
       $result .= $self->_add_newline_if_needed();
       
-      pop @{$self->{'context'}};
+      my $old_context = pop @{$self->{'context'}};
+      die if ($old_context ne 'footnote');
       pop @{$self->{'format_context'}};
       pop @{$self->{'formatters'}};
     }
@@ -782,19 +787,6 @@ sub _footnotes($$)
   $self->{'footnote_index'} = 0;
 
   return $result;
-}
-
-sub in_flushright($)
-{
-  my $self = shift;
-  my $index = -1;
-  $index--
-    while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
-  if ($self->{'format_context'}->[$index]->{'cmdname'} eq 'flushright') {
-    return 1;
-  } else {
-    return 0;
-  }
 }
 
 sub flushright_index ($)
@@ -1400,7 +1392,8 @@ sub _convert($$)
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
       }
-      pop @{$self->{'context'}};
+      my $old_context = pop @{$self->{'context'}};
+      die if ($old_context ne 'math');
       return $result;
     } elsif ($command eq 'titlefont') {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
@@ -1428,9 +1421,9 @@ sub _convert($$)
       # cartouche group and raggedright -> nothing on format stack
 
       if ($preformatted_context_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}}, 'preformatted';
+        push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($flush_commands{$root->{'cmdname'}}) {
-        push @{$self->{'context'}}, 'flush';
+        push @{$self->{'context'}}, $root->{'cmdname'};
       }
       if ($format_context_commands{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, 
@@ -1442,7 +1435,11 @@ sub _convert($$)
              };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
-        if ($self->{'context'}->[-1] eq 'preformatted'
+        # reopen a preformatted container, if the command opening the 
+        # preformatted context is not a classical preformatted 
+        # command (ie if it is menu, verbatim and not example and the 
+        # like) or it is inside any other which opend a context.
+        if ($preformatted_context_commands{$self->{'context'}->[-1]}
             and ! $preformatted_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
@@ -1683,7 +1680,8 @@ sub _convert($$)
             # FIXME should there be some indentation?
             my ($caption_text) = $self->_convert({'contents' => $caption->{'args'}->[0]->{'contents'},
                         'type' => $caption->{'cmdname'}.'_listoffloats'});
-            pop @{$self->{'context'}};
+            my $old_context = pop @{$self->{'context'}};
+            die if ($old_context ne 'listoffloats');
             while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
               my $new_word = $1;
               $new_word =~ s/\n//g;
@@ -1797,7 +1795,7 @@ sub _convert($$)
       $paragraph = $self->new_formatter('paragraph', $conf);
       push @{$self->{'formatters'}}, $paragraph;
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      if ($self->{'context'}->[-1] eq 'flush' and $self->in_flushright()) {
+      if ($self->{'context'}->[-1] eq 'flushright') {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                                    'locations' => []};
       }
@@ -1807,7 +1805,7 @@ sub _convert($$)
       delete $self->{'format_context'}->[-1]->{'counter'};
       $self->{'empty_lines_count'}++;
       if ($self->{'empty_lines_count'} <= 1
-          or $self->{'context'}->[-1] eq 'preformatted') {
+          or $preformatted_context_commands{$self->{'context'}->[-1]}) {
         $result = "\n";
         $self->_add_text_count($result);
         $self->_add_lines_count(1);
@@ -1863,8 +1861,14 @@ sub _convert($$)
         print STDERR "     --> $result" if ($self->{'DEBUG'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
+      # FIXME node name should be in code.
       foreach my $arg (@{$root->{'args'}}) {
-        $result .= $self->_convert($arg);
+        if ($arg->{'type'} eq 'menu_entry_node') {
+          $result .= $self->_convert({'type' => 'code',
+                                      'contents' => $arg->{'contents'}});
+        } else {
+          $result .= $self->_convert($arg);
+        }
       }
       $result = $self->ensure_end_of_line($result);
     } elsif ($root->{'type'} eq 'frenchspacing') {
@@ -1877,7 +1881,6 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'bracketed') {
-      #and $self->{'context'}->[-1] eq 'math') {
       $result .= $self->_count_added($formatter->{'container'}, 
                    $formatter->{'container'}->add_text('{'));
     }
@@ -1890,7 +1893,7 @@ sub _convert($$)
       my $content = shift @contents;
       my $text = $self->_convert($content);
       $self->{'empty_lines_count'} = 0 
-        if ($self->{'context'}->[-1] eq 'preformatted' and $text ne '');
+        if ($preformatted_context_commands{$self->{'context'}->[-1]} and $text ne '');
       $result .= $text;
     }
     pop @{$self->{'current_contents'}};
@@ -2032,7 +2035,7 @@ sub _convert($$)
   if ($paragraph) {
     $result .= $self->_count_added($paragraph->{'container'},
                                    $paragraph->{'container'}->end());
-    if ($self->{'context'}->[-1] eq 'flush' and $self->in_flushright()) {
+    if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment ($result, 
         $self->{'format_context'}->[$self->flushright_index]->{'max'}, 'right');
     }
@@ -2133,10 +2136,15 @@ sub _convert($$)
     pop @{$self->{'formatters'}};
   }
 
-  if ($root->{'cmdname'} and 
-       ($preformatted_context_commands{$root->{'cmdname'}} 
-        or $flush_commands{$root->{'cmdname'}})) {
-    pop @{$self->{'context'}};
+  if ($root->{'cmdname'}) {
+    if ($preformatted_context_commands{$root->{'cmdname'}}) {
+      my $old_context = pop @{$self->{'context'}};
+      die if (!$preformatted_context_commands{$old_context});
+    }
+    elsif ($flush_commands{$root->{'cmdname'}}) {
+      my $old_context = pop @{$self->{'context'}};
+      die if (! $flush_commands{$old_context});
+    }
   }
 
   pop @{$self->{'format_context'}} 

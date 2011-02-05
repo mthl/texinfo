@@ -97,6 +97,14 @@ example
 menu comment.
 
 @end menu
+'],
+['dash_in_menu',
+'
+@menu
+* entry---in: (manual)n---ode.         description --- in.
+
+comment --- in.
+@end menu
 ']
 );
 
