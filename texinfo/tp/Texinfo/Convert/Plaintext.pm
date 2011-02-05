@@ -2045,6 +2045,7 @@ sub _convert($$)
         = $self->{'empty_lines_count'};
     }
   }
+  # close paragraphs and preformatted
   if ($paragraph) {
     $result .= $self->_count_added($paragraph->{'container'},
                                    $paragraph->{'container'}->end());
@@ -2054,8 +2055,17 @@ sub _convert($$)
     }
     pop @{$self->{'formatters'}};
     delete $self->{'format_context'}->[-1]->{'counter'};
+  } elsif ($preformatted) {
+    $result .= $self->_count_added($preformatted->{'container'},
+                                   $preformatted->{'container'}->end());
+    $result = $self->ensure_end_of_line($result);
+    pop @{$self->{'formatters'}};
+    # We assume that, upon closing the preformatted we are at the 
+    # beginning of a line.
+    delete $self->{'format_context'}->[-1]->{'counter'};
   }
 
+  # close commands
   if ($root->{'cmdname'}) {
     if ($root->{'cmdname'} eq 'float') {
       if ($self->{'DEBUG'}) {
@@ -2138,39 +2148,29 @@ sub _convert($$)
                     {'author' => $author->{'extra'}->{'misc_content'}}));
       }
     }
+
     if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     }
-  }
-  if ($preformatted) {
-    $result .= $self->_count_added($preformatted->{'container'},
-                                   $preformatted->{'container'}->end());
-    $result = $self->ensure_end_of_line($result);
-    pop @{$self->{'formatters'}};
-    # We assume that, upon closing the preformatted we are at the 
-    # beginning of a line.
-    delete $self->{'format_context'}->[-1]->{'counter'};
-  }
-
-  if ($root->{'cmdname'}) {
+  
+    # close the contexts and register the cells
     if ($preformatted_context_commands{$root->{'cmdname'}}) {
       my $old_context = pop @{$self->{'context'}};
       die if (!$preformatted_context_commands{$old_context});
-    }
-    elsif ($flush_commands{$root->{'cmdname'}}) {
+    } elsif ($flush_commands{$root->{'cmdname'}}) {
       my $old_context = pop @{$self->{'context'}};
       die if (! $flush_commands{$old_context});
     }
-  }
 
-  pop @{$self->{'format_context'}} 
-    if ($root->{'cmdname'} and $format_context_commands{$root->{'cmdname'}}
-        or $cell);
-  if ($cell) {
-    push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
-    my $cell_counts = pop @{$self->{'count_context'}};
-    push @{$self->{'format_context'}->[-1]->{'row_counts'}}, $cell_counts;
-    $result = '';
+    if ($format_context_commands{$root->{'cmdname'}}) {
+      pop @{$self->{'format_context'}};
+    } elsif ($cell) {
+      pop @{$self->{'format_context'}};
+      push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
+      my $cell_counts = pop @{$self->{'count_context'}};
+      push @{$self->{'format_context'}->[-1]->{'row_counts'}}, $cell_counts;
+      $result = '';
+    }
   }
 
   return $result;
