@@ -453,7 +453,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'forward--char',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 1
                 },
                 'original_def_cmdname' => 'deffn'
               },
@@ -842,7 +843,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'fill-column',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 1
                 },
                 'original_def_cmdname' => 'defvr'
               },
@@ -1059,7 +1061,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'foobar',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 2
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -1569,7 +1572,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'foobar',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 3
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -1704,7 +1708,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'foobug',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 4
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -1992,7 +1997,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'push',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 5
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -2349,7 +2355,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'enable',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 2
                 },
                 'original_def_cmdname' => 'deftypevr'
               },
@@ -2718,7 +2725,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'tp',
                   'index_prefix' => 't',
                   'key' => 'pair',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 1
                 },
                 'original_def_cmdname' => 'deftp'
               },
@@ -3075,7 +3083,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'border-pattern',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 3
                 },
                 'original_def_cmdname' => 'defcv'
               },
@@ -3475,7 +3484,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'border-pattern of Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 4
                 },
                 'original_def_cmdname' => 'deftypecv'
               },
@@ -3830,7 +3840,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'expose on windows',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 6
                 },
                 'original_def_cmdname' => 'defop'
               },
@@ -4218,7 +4229,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'expose on W,indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 7
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -4381,7 +4393,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'expose on Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 8
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -4576,7 +4589,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e,xpose on W,indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 9
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -4771,7 +4785,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ',expose on ,Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 10
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -4934,7 +4949,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e,xpose on W,indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 11
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -5097,7 +5113,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ',expose on ,Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 12
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -5292,7 +5309,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e)xpose on W)indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 13
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -5487,7 +5505,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ')expose on )Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 14
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -5650,7 +5669,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e)xpose on W)indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 15
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -5813,7 +5833,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ')expose on )Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 16
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6008,7 +6029,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e;xpose on W;indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 17
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6203,7 +6225,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ';expose on ;Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 18
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6366,7 +6389,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'e;xpose on W;indow',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 19
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6529,7 +6553,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => ';expose on ;Window',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 20
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6730,7 +6755,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'expose on com',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 21
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -6849,7 +6875,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'apply',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 22
                 },
                 'original_def_cmdname' => 'defun'
               },
@@ -7027,7 +7054,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 23
                 },
                 'original_def_cmdname' => 'deffn'
               },
@@ -7205,7 +7233,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 24
                 },
                 'original_def_cmdname' => 'deffn'
               },
@@ -7383,7 +7412,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 5
                 },
                 'original_def_cmdname' => 'defvr'
               },
@@ -7561,7 +7591,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 6
                 },
                 'original_def_cmdname' => 'defvr'
               },
@@ -7772,7 +7803,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A3',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 25
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -7983,7 +8015,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A3',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 26
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -8194,7 +8227,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A3',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 7
                 },
                 'original_def_cmdname' => 'deftypevr'
               },
@@ -8405,7 +8439,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A3',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 8
                 },
                 'original_def_cmdname' => 'deftypevr'
               },
@@ -8583,7 +8618,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'tp',
                   'index_prefix' => 't',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 2
                 },
                 'original_def_cmdname' => 'deftp'
               },
@@ -8761,7 +8797,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'tp',
                   'index_prefix' => 't',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 3
                 },
                 'original_def_cmdname' => 'deftp'
               },
@@ -8972,7 +9009,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A3',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 9
                 },
                 'original_def_cmdname' => 'defcv'
               },
@@ -9182,7 +9220,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'tp',
                   'index_prefix' => 't',
                   'key' => 'A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 4
                 },
                 'original_def_cmdname' => 'deftp'
               },
@@ -9436,7 +9475,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A4 of A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 10
                 },
                 'original_def_cmdname' => 'deftypecv'
               },
@@ -9690,7 +9730,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'vr',
                   'index_prefix' => 'v',
                   'key' => 'A4 of A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 11
                 },
                 'original_def_cmdname' => 'deftypecv'
               },
@@ -9911,7 +9952,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A3 on A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 27
                 },
                 'original_def_cmdname' => 'defop'
               },
@@ -10132,7 +10174,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A3 on A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 28
                 },
                 'original_def_cmdname' => 'defop'
               },
@@ -10386,7 +10429,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A4 on A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 29
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -10640,7 +10684,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'A4 on A2',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 30
                 },
                 'original_def_cmdname' => 'deftypeop'
               },
@@ -10906,7 +10951,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'fun_name',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 31
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -11172,7 +11218,8 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   'index_name' => 'fn',
                   'index_prefix' => 'f',
                   'key' => 'fun_name1',
-                  'node' => {}
+                  'node' => {},
+                  'number' => 32
                 },
                 'original_def_cmdname' => 'deftypefn'
               },
@@ -13501,27 +13548,27 @@ Functions
 * ,expose on ,Window <1>:                Top.                 (line  47)
 * ;expose on ;Window:                    Top.                 (line  59)
 * ;expose on ;Window <1>:                Top.                 (line  63)
-* `A2\':                                  Top.                 (line  71)
 * A2:                                    Top.                 (line  69)
-* `A3\':                                  Top.                 (line  79)
+* `A2\':                                  Top.                 (line  71)
 * A3:                                    Top.                 (line  77)
-* `A3\' on `A2\':                          Top.                 (line  99)
+* `A3\':                                  Top.                 (line  79)
 * A3 on A2:                              Top.                 (line  97)
-* `A4\' on `A2\':                          Top.                 (line 103)
+* `A3\' on `A2\':                          Top.                 (line  99)
 * A4 on A2:                              Top.                 (line 101)
+* `A4\' on `A2\':                          Top.                 (line 103)
 * apply:                                 Top.                 (line  67)
-* e)xpose on W)indow:                    Top.                 (line  53)
-* e)xpose on W)indow <1>:                Top.                 (line  49)
-* e,xpose on W,indow:                    Top.                 (line  45)
-* e,xpose on W,indow <1>:                Top.                 (line  41)
-* e;xpose on W;indow:                    Top.                 (line  61)
-* e;xpose on W;indow <1>:                Top.                 (line  57)
+* e)xpose on W)indow:                    Top.                 (line  49)
+* e)xpose on W)indow <1>:                Top.                 (line  53)
+* e,xpose on W,indow:                    Top.                 (line  41)
+* e,xpose on W,indow <1>:                Top.                 (line  45)
+* e;xpose on W;indow:                    Top.                 (line  57)
+* e;xpose on W;indow <1>:                Top.                 (line  61)
 * expose on `com\':                       Top.                 (line  65)
 * expose on W,indow:                     Top.                 (line  36)
 * expose on Window:                      Top.                 (line  39)
 * expose on windows:                     Top.                 (line  33)
-* foobar:                                Top.                 (line  11)
-* foobar <1>:                            Top.                 (line   9)
+* foobar:                                Top.                 (line   9)
+* foobar <1>:                            Top.                 (line  11)
 * foobug:                                Top.                 (line  16)
 * FORWARD--CHAR:                         Top.                 (line   3)
 * fun_name:                              Top.                 (line 105)
@@ -13534,9 +13581,9 @@ Types
  [index ]
 * Menu:
 
-* `A2\':                                  Top.                  (line 91)
-* `A2\' <1>:                              Top.                  (line 87)
 * A2:                                    Top.                  (line 85)
+* `A2\':                                  Top.                  (line 87)
+* `A2\' <1>:                              Top.                  (line 91)
 * pair:                                  Top.                  (line 24)
 
 Variables
@@ -13545,11 +13592,11 @@ Variables
  [index ]
 * Menu:
 
-* `A2\':                                  Top.                  (line 75)
 * A2:                                    Top.                  (line 73)
-* A3:                                    Top.                  (line 89)
+* `A2\':                                  Top.                  (line 75)
+* A3:                                    Top.                  (line 81)
 * `A3\':                                  Top.                  (line 83)
-* A3 <1>:                                Top.                  (line 81)
+* A3 <1>:                                Top.                  (line 89)
 * A4 of A2:                              Top.                  (line 93)
 * `A4\' of `A2\':                          Top.                  (line 95)
 * border-pattern:                        Top.                  (line 27)

@@ -226,7 +226,8 @@ $result_trees{'table'} = {
                   ],
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c'
+                  'index_prefix' => 'c',
+                  'number' => 1
                 },
                 'misc_content' => []
               },
@@ -280,7 +281,8 @@ $result_trees{'table'} = {
               ],
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 1
             },
             'misc_content' => []
           },
@@ -331,7 +333,8 @@ $result_trees{'table'} = {
               ],
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
-              'index_prefix' => 'k'
+              'index_prefix' => 'k',
+              'number' => 1
             },
             'misc_content' => []
           },
@@ -386,7 +389,8 @@ $result_trees{'table'} = {
               ],
               'index_at_command' => 'vtable',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 2
             },
             'misc_content' => []
           },

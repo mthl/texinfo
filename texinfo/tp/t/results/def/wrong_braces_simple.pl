@@ -99,7 +99,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -229,7 +230,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -371,7 +373,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 3
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -513,7 +516,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 4
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -630,7 +634,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 5
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -730,7 +735,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 6
             },
             'original_def_cmdname' => 'deffnx'
           },
@@ -848,7 +854,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 7
             },
             'original_def_cmdname' => 'deffnx'
           },
@@ -978,7 +985,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 8
             },
             'original_def_cmdname' => 'deffnx'
           },
@@ -1108,7 +1116,8 @@ $result_trees{'wrong_braces_simple'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 9
             },
             'original_def_cmdname' => 'deffnx'
           },

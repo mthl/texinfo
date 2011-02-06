@@ -144,7 +144,8 @@ $result_trees{'def_defx_mismatch'} = {
               ],
               'index_at_command' => 'defun',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'defun'
           },
@@ -285,7 +286,8 @@ $result_trees{'def_defx_mismatch'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deffnx'
           },

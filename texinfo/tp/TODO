@@ -140,6 +140,7 @@ sectioning/empty_nodes.texi  (but not the @ref)
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)
+indices/double_index_entry.texi
 
 invalid/at_after_accent_command.texi
 invalid/author_outside_titlepage_quotation.texi

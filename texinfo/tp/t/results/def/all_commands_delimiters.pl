@@ -420,7 +420,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -807,7 +808,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defvr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 1
             },
             'original_def_cmdname' => 'defvr'
           },
@@ -1022,7 +1024,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -1530,7 +1533,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 3
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -1663,7 +1667,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 4
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -1949,7 +1954,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 5
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -2304,7 +2310,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypevr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 2
             },
             'original_def_cmdname' => 'deftypevr'
           },
@@ -2671,7 +2678,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
-              'index_prefix' => 't'
+              'index_prefix' => 't',
+              'number' => 1
             },
             'original_def_cmdname' => 'deftp'
           },
@@ -3026,7 +3034,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defcv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 3
             },
             'original_def_cmdname' => 'defcv'
           },
@@ -3424,7 +3433,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypecv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 4
             },
             'original_def_cmdname' => 'deftypecv'
           },
@@ -3777,7 +3787,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 6
             },
             'original_def_cmdname' => 'defop'
           },
@@ -4163,7 +4174,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 7
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -4324,7 +4336,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 8
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -4517,7 +4530,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 9
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -4710,7 +4724,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 10
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -4871,7 +4886,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 11
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5032,7 +5048,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 12
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5225,7 +5242,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 13
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5418,7 +5436,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 14
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5579,7 +5598,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 15
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5740,7 +5760,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 16
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -5933,7 +5954,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 17
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -6126,7 +6148,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 18
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -6287,7 +6310,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 19
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -6448,7 +6472,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 20
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -6647,7 +6672,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 21
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -6764,7 +6790,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defun',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 22
             },
             'original_def_cmdname' => 'defun'
           },
@@ -6940,7 +6967,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 23
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -7116,7 +7144,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 24
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -7292,7 +7321,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defvr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 5
             },
             'original_def_cmdname' => 'defvr'
           },
@@ -7468,7 +7498,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defvr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 6
             },
             'original_def_cmdname' => 'defvr'
           },
@@ -7677,7 +7708,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 25
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -7886,7 +7918,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 26
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -8095,7 +8128,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypevr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 7
             },
             'original_def_cmdname' => 'deftypevr'
           },
@@ -8304,7 +8338,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypevr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 8
             },
             'original_def_cmdname' => 'deftypevr'
           },
@@ -8480,7 +8515,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
-              'index_prefix' => 't'
+              'index_prefix' => 't',
+              'number' => 2
             },
             'original_def_cmdname' => 'deftp'
           },
@@ -8656,7 +8692,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
-              'index_prefix' => 't'
+              'index_prefix' => 't',
+              'number' => 3
             },
             'original_def_cmdname' => 'deftp'
           },
@@ -8865,7 +8902,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defcv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 9
             },
             'original_def_cmdname' => 'defcv'
           },
@@ -9073,7 +9111,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
-              'index_prefix' => 't'
+              'index_prefix' => 't',
+              'number' => 4
             },
             'original_def_cmdname' => 'deftp'
           },
@@ -9325,7 +9364,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypecv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 10
             },
             'original_def_cmdname' => 'deftypecv'
           },
@@ -9577,7 +9617,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypecv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 11
             },
             'original_def_cmdname' => 'deftypecv'
           },
@@ -9796,7 +9837,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 27
             },
             'original_def_cmdname' => 'defop'
           },
@@ -10015,7 +10057,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'defop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 28
             },
             'original_def_cmdname' => 'defop'
           },
@@ -10267,7 +10310,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 29
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -10519,7 +10563,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 30
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -10783,7 +10828,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 31
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -11047,7 +11093,8 @@ $result_trees{'all_commands_delimiters'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 32
             },
             'original_def_cmdname' => 'deftypefn'
           },

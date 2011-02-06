@@ -47,7 +47,8 @@ foreach my $entry (@{$sorted_index_entries->{'cp'}}) {
   push @entries, $entry->{'key'};
 }
 
-my @entries_ref = ('!', '``', 'aaaaaaaaaaaa', 'E', 'e', 'e~');
+# e is before E because they are equal and e appears before E in the document 
+my @entries_ref = ('!', '``', 'aaaaaaaaaaaa', 'e', 'E', 'e~');
 
 cmp_deeply (\@entries, \@entries_ref, 'sorted index entries');
 

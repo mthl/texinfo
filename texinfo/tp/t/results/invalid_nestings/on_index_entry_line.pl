@@ -177,7 +177,8 @@ $result_trees{'on_index_entry_line'} = {
           ],
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
-          'index_prefix' => 'c'
+          'index_prefix' => 'c',
+          'number' => 1
         },
         'misc_content' => []
       },

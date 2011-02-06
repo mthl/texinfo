@@ -191,7 +191,8 @@ $result_trees{'center'} = {
                   ],
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
-                  'index_prefix' => 'c'
+                  'index_prefix' => 'c',
+                  'number' => 1
                 },
                 'invalid_nesting' => 1,
                 'misc_content' => []

@@ -1734,11 +1734,15 @@ sub _enter_index_entry($$$$)
 
   my $prefix = $self->{'command_index_prefix'}->{$command};
   my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
+  my $number = (defined($self->{'index_entries'}->{$index_name})
+                 ? (scalar(@{$self->{'index_entries'}->{$index_name}}) + 1)
+                   : 1);
   my $index_entry = { 'index_name'       => $index_name,
                       'index_at_command' => $command,
                       'index_prefix'     => $prefix,
                       'content'          => $content,
-		      'command'          => $current,
+                      'command'          => $current,
+                      'number'           => $number,
                     };
   $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;

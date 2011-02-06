@@ -296,7 +296,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'trucindex',
           'index_name' => 'truc',
-          'index_prefix' => 'truc'
+          'index_prefix' => 'truc',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -511,7 +512,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'codeidxindex',
           'index_name' => 'codeidx',
-          'index_prefix' => 'codeidx'
+          'index_prefix' => 'codeidx',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -561,7 +563,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
-          'index_prefix' => 'c'
+          'index_prefix' => 'c',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -655,7 +658,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'kindex',
           'index_name' => 'ky',
-          'index_prefix' => 'k'
+          'index_prefix' => 'k',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -699,7 +703,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'pindex',
           'index_name' => 'pg',
-          'index_prefix' => 'p'
+          'index_prefix' => 'p',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -955,7 +960,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'defgindex',
           'index_name' => 'defg',
-          'index_prefix' => 'defg'
+          'index_prefix' => 'defg',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -1005,7 +1011,8 @@ $result_trees{'value_in_index_commands'} = {
           ],
           'index_at_command' => 'abcindex',
           'index_name' => 'abc',
-          'index_prefix' => 'abc'
+          'index_prefix' => 'abc',
+          'number' => 1
         },
         'misc_content' => []
       },

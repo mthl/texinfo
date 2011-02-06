@@ -60,7 +60,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defvr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 1
             },
             'original_def_cmdname' => 'defvr'
           },
@@ -176,7 +177,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'deftypefn'
           },
@@ -316,7 +318,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypeop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deftypeop'
           },
@@ -419,7 +422,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypevr',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 2
             },
             'original_def_cmdname' => 'deftypevr'
           },
@@ -522,7 +526,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defcv',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 3
             },
             'original_def_cmdname' => 'defcv'
           },
@@ -648,7 +653,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defop',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 3
             },
             'original_def_cmdname' => 'defop'
           },
@@ -750,7 +756,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftp',
               'index_name' => 'tp',
-              'index_prefix' => 't'
+              'index_prefix' => 't',
+              'number' => 1
             },
             'original_def_cmdname' => 'deftp'
           },
@@ -852,7 +859,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defun',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 4
             },
             'original_def_cmdname' => 'defun'
           },
@@ -954,7 +962,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defmac',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 5
             },
             'original_def_cmdname' => 'defmac'
           },
@@ -1066,7 +1075,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defspec',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 6
             },
             'original_def_cmdname' => 'defspec'
           },
@@ -1155,7 +1165,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defvar',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 4
             },
             'original_def_cmdname' => 'defvar'
           },
@@ -1254,7 +1265,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defopt',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 5
             },
             'original_def_cmdname' => 'defopt'
           },
@@ -1370,7 +1382,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypefun',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 7
             },
             'original_def_cmdname' => 'deftypefun'
           },
@@ -1473,7 +1486,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypevar',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 6
             },
             'original_def_cmdname' => 'deftypevar'
           },
@@ -1596,7 +1610,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defivar',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 7
             },
             'original_def_cmdname' => 'defivar'
           },
@@ -1733,7 +1748,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypeivar',
               'index_name' => 'vr',
-              'index_prefix' => 'v'
+              'index_prefix' => 'v',
+              'number' => 8
             },
             'original_def_cmdname' => 'deftypeivar'
           },
@@ -1859,7 +1875,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'defmethod',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 8
             },
             'original_def_cmdname' => 'defmethod'
           },
@@ -1999,7 +2016,8 @@ $result_trees{'all_commands'} = {
               ],
               'index_at_command' => 'deftypemethod',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 9
             },
             'original_def_cmdname' => 'deftypemethod'
           },

@@ -105,7 +105,8 @@ $result_trees{'defx_after_comment'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -203,7 +204,8 @@ $result_trees{'defx_after_comment'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deffnx'
           },

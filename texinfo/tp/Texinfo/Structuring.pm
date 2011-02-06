@@ -576,9 +576,13 @@ sub _sort_subroutine($$)
   my $key2 = shift;
   my $a = uc($key1->{'key'});
   my $b = uc($key2->{'key'});
-  my $res = ((($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/) or
-            ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/)) && $a cmp $b)
-             || ($a =~ /^[[:alpha:]]/ && 1) || -1;
+  my $res = (($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/)
+              or ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/))
+              ? ($a cmp $b)
+                : (($a =~ /^[[:alpha:]]/ && 1) || -1);
+  if ($res == 0) {
+    $res = ($key1->{'number'} <=> $key2->{'number'});
+  }
   return $res;
 }
 

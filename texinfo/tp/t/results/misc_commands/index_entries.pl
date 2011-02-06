@@ -37,7 +37,8 @@ $result_trees{'index_entries'} = {
           ],
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
-          'index_prefix' => 'c'
+          'index_prefix' => 'c',
+          'number' => 1
         },
         'misc_content' => []
       },
@@ -130,7 +131,8 @@ $result_trees{'index_entries'} = {
           ],
           'index_at_command' => 'trucindex',
           'index_name' => 'truc',
-          'index_prefix' => 'truc'
+          'index_prefix' => 'truc',
+          'number' => 1
         },
         'misc_content' => []
       },

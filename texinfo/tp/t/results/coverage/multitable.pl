@@ -271,7 +271,8 @@ $result_trees{'multitable'} = {
                           ],
                           'index_at_command' => 'cindex',
                           'index_name' => 'cp',
-                          'index_prefix' => 'c'
+                          'index_prefix' => 'c',
+                          'number' => 1
                         },
                         'misc_content' => []
                       },

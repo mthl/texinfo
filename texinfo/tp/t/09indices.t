@@ -29,8 +29,34 @@ my @test_cases = (
 
 );
 
+my @test_formatted = (
+['double_index_entry',
+'@node Top
+
+@cindex aaa
+
+Text
+
+@cindex aaa
+
+@menu
+* other node::
+@end menu
+
+@node other node,,,Top
+
+@cindex aaa
+
+@printindex cp
+']
+);
+
+foreach my $test (@test_formatted) {
+  $test->[2]->{'test_formats'} = ['info'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('indices', \@test_cases, $arg_test_case,
+run_all ('indices', [@test_cases, @test_formatted], $arg_test_case,
    $arg_generate, $arg_debug);
 

@@ -60,7 +60,8 @@ $result_trees{'empty_def_command'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 1
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -164,7 +165,8 @@ $result_trees{'empty_def_command'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 2
             },
             'original_def_cmdname' => 'deffn'
           },
@@ -225,7 +227,8 @@ $result_trees{'empty_def_command'} = {
               ],
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f'
+              'index_prefix' => 'f',
+              'number' => 3
             },
             'original_def_cmdname' => 'deffnx'
           },

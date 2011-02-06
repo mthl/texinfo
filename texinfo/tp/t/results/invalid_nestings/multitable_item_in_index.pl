@@ -90,7 +90,8 @@ $result_trees{'multitable_item_in_index'} = {
                   ],
                   'index_at_command' => 'vindex',
                   'index_name' => 'vr',
-                  'index_prefix' => 'v'
+                  'index_prefix' => 'v',
+                  'number' => 1
                 },
                 'misc_content' => []
               },
