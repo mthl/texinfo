@@ -88,21 +88,9 @@ $result_errors{'empty_line_in_example_end'} = [];
 
 
 
-$result_converted{'info'}->{'empty_line_in_example_end'} = 'This is , produced by makeinfo version 4.13 from .
-
-     in example
+$result_converted{'plaintext'}->{'empty_line_in_example_end'} = '     in example
 
 After line
 ';
-
-$result_converted_errors{'info'}->{'empty_line_in_example_end'} = [
-  {
-    'error_line' => 'warning: Document without nodes.
-',
-    'text' => 'Document without nodes.',
-    'type' => 'warning'
-  }
-];
-
 
 1;

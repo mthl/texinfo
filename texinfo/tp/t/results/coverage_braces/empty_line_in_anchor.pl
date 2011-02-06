@@ -5,39 +5,33 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 $result_trees{'empty_line_in_anchor'} = {
   'contents' => [
     {
-      'contents' => [
+      'args' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'an
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                }
-              ],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'an
+'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'anchor',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
+          'parent' => {},
+          'type' => 'brace_command_arg'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'cmdname' => 'anchor',
+      'contents' => [],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
+      'parent' => {}
     },
     {
       'contents' => [
@@ -53,10 +47,9 @@ $result_trees{'empty_line_in_anchor'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0];
-$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0];
+$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'args'}[0];
+$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'args'}[0];
+$result_trees{'empty_line_in_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[0];
 $result_trees{'empty_line_in_anchor'}{'contents'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'};
 $result_trees{'empty_line_in_anchor'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_line_in_anchor'}{'contents'}[1];
 $result_trees{'empty_line_in_anchor'}{'contents'}[1]{'parent'} = $result_trees{'empty_line_in_anchor'};

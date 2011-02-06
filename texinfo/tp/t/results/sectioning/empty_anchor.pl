@@ -5,29 +5,29 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 $result_trees{'empty_anchor'} = {
   'contents' => [
     {
-      'contents' => [
+      'args' => [
         {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'anchor',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              undef
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
+          'parent' => {},
+          'type' => 'brace_command_arg'
+        }
+      ],
+      'cmdname' => 'anchor',
+      'contents' => [],
+      'extra' => {
+        'brace_command_contents' => [
+          undef
+        ]
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'contents' => [
         {
           'parent' => {},
           'text' => '. 
@@ -72,13 +72,13 @@ $result_trees{'empty_anchor'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[0];
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
-$result_trees{'empty_anchor'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
+$result_trees{'empty_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[0];
 $result_trees{'empty_anchor'}{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'};
+$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
+$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1];
+$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
+$result_trees{'empty_anchor'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_anchor'}{'contents'}[1];
+$result_trees{'empty_anchor'}{'contents'}[1]{'parent'} = $result_trees{'empty_anchor'};
 
 $result_texis{'empty_anchor'} = '@anchor{}. 
 @anchor{   }.

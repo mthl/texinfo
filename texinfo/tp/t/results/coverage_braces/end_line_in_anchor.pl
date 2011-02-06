@@ -5,67 +5,60 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 $result_trees{'end_line_in_anchor'} = {
   'contents' => [
     {
-      'contents' => [
+      'args' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'an
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'anchor'
-                }
-              ],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'an
+'
+            },
+            {
+              'parent' => {},
+              'text' => 'anchor'
             }
           ],
-          'cmdname' => 'anchor',
-          'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {},
-                {}
-              ]
-            ],
-            'node_content' => [
-              {},
-              {}
-            ],
-            'normalized' => 'an-anchor'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'text' => '
-',
-          'type' => 'empty_spaces_after_close_brace'
+          'parent' => {},
+          'type' => 'brace_command_arg'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'cmdname' => 'anchor',
+      'contents' => [],
+      'extra' => {
+        'brace_command_contents' => [
+          [
+            {},
+            {}
+          ]
+        ],
+        'node_content' => [
+          {},
+          {}
+        ],
+        'normalized' => 'an-anchor'
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'text' => '
+',
+      'type' => 'empty_spaces_after_close_brace'
     }
   ],
   'type' => 'text_root'
 };
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'node_content'}[1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'end_line_in_anchor'}{'contents'}[0]{'parent'} = $result_trees{'end_line_in_anchor'};
 
 $result_texis{'end_line_in_anchor'} = '@anchor{an

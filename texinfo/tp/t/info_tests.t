@@ -67,15 +67,6 @@ text.
 @node Top
 @top Double contents
 '],
-['empty_line_in_example_end',
-'@example
-in example
-
-@end example
-
-After line
-'],
-
 );
 
 foreach my $test (@test_cases) {

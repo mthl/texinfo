@@ -139,36 +139,36 @@ $result_trees{'double_top'} = {
           'type' => 'empty_line'
         },
         {
-          'contents' => [
+          'args' => [
             {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'TOP'
-                    }
-                  ],
                   'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'text' => 'TOP'
                 }
               ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
+              'parent' => {},
+              'type' => 'brace_command_arg'
+            }
+          ],
+          'cmdname' => 'anchor',
+          'contents' => [],
+          'extra' => {
+            'brace_command_contents' => [
+              [
+                {}
+              ]
+            ]
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
+          'parent' => {}
+        },
+        {
+          'contents' => [
             {
               'parent' => {},
               'text' => '.
@@ -234,12 +234,12 @@ $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'contents'}[0]{'parent'} =
 $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'args'}[3];
 $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'double_top'}{'contents'}[2];
 $result_trees{'double_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2];
-$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1];
-$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1];
+$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1];
+$result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_top'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'double_top'}{'contents'}[2];
+$result_trees{'double_top'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_top'}{'contents'}[2]{'contents'}[2];
+$result_trees{'double_top'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'double_top'}{'contents'}[2];
 $result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[2]{'contents'}[0];
 $result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'contents'}[0];

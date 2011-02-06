@@ -219,48 +219,42 @@ $result_trees{'multitable'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
-                  'contents' => [
+                  'args' => [
                     {
-                      'args' => [
+                      'contents' => [
                         {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'anch2'
-                            }
-                          ],
                           'parent' => {},
-                          'type' => 'brace_command_arg'
+                          'text' => 'anch2'
                         }
                       ],
-                      'cmdname' => 'anchor',
-                      'contents' => [],
-                      'extra' => {
-                        'brace_command_contents' => [
-                          [
-                            {}
-                          ]
-                        ],
-                        'node_content' => [
-                          {}
-                        ],
-                        'normalized' => 'anch2'
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    },
-                    {
-                      'text' => '
-',
-                      'type' => 'empty_spaces_after_close_brace'
+                      'parent' => {},
+                      'type' => 'brace_command_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'cmdname' => 'anchor',
+                  'contents' => [],
+                  'extra' => {
+                    'brace_command_contents' => [
+                      [
+                        {}
+                      ]
+                    ],
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anch2'
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
+                  'parent' => {}
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_spaces_after_close_brace'
                 }
               ],
               'extra' => {
@@ -341,11 +335,10 @@ $result_trees{'multitable'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_tr
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'multitable'}{'contents'}[1]{'contents'}[2];
 $result_trees{'multitable'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable'}{'contents'}[1];
@@ -433,19 +426,17 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
     [29] (17,2) @tab
      [30] (0,0) :empty_spaces_after_command:text| |
      [30] (0,0)
-     [31] (0,0) :paragraph
-      [32] (0,0) @anchor
-      [32] (0,0)
- locations  (2) l 0 b 0
-      [33] (0,0) :empty_spaces_after_close_brace:text|\\n|
-      [33] (0,0)
+     [31] (0,0) @anchor
      [31] (0,0)
+ locations  (2) l 0 b 0
+     [32] (0,0) :empty_spaces_after_close_brace:text|\\n|
+     [32] (0,0)
     [29] (17,2)
    [26] (24,3)
  locations  (2) l 2 b 23
   [3] (24,3)
-  [34] (24,3) :empty_line_after_command:text|\\n|
-  [34] (24,3)
+  [33] (24,3) :empty_line_after_command:text|\\n|
+  [33] (24,3)
  [1] (24,3)
 
 aaa   bb    ccc

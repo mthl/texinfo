@@ -434,7 +434,7 @@ foreach my $command ('node', 'end') {
 }
 
 foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption', 
-          'image', '*', 'hyphenation') {
+          'image', '*', 'hyphenation', 'anchor') {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
 }
 

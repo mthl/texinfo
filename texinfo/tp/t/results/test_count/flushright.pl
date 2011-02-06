@@ -188,48 +188,42 @@ $result_trees{'flushright'} = {
           'type' => 'empty_line'
         },
         {
-          'contents' => [
+          'args' => [
             {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'alone'
-                    }
-                  ],
                   'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'text' => 'alone'
                 }
               ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'alone'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'text' => '
-',
-              'type' => 'empty_spaces_after_close_brace'
+              'parent' => {},
+              'type' => 'brace_command_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'cmdname' => 'anchor',
+          'contents' => [],
+          'extra' => {
+            'brace_command_contents' => [
+              [
+                {}
+              ]
+            ],
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'alone'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
+          'parent' => {}
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_spaces_after_close_brace'
         },
         {
           'parent' => {},
@@ -296,16 +290,15 @@ $result_trees{'flushright'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[4];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'args'}[0];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'extra'}{'node_content'}[0] = $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
-$result_trees{'flushright'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[8];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[9];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'parent'} = $result_trees{'flushright'};
 $result_trees{'flushright'}{'contents'}[2]{'parent'} = $result_trees{'flushright'};
 
@@ -387,33 +380,29 @@ $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
    [19] (286,6)
    [22] (286,6) :empty_line:text|\\n|
    [22] (287,7)
-   [23] (287,7) :paragraph
-    [24] (0,0) @anchor
-    [24] (0,0)
- locations  (4) l 0 b 0
-    [25] (0,0) :empty_spaces_after_close_brace:text|\\n|
-    [25] (0,0)
+   [23] (287,7) @anchor
    [23] (287,7)
  locations  (4) l 7 b 287
-   [26] (287,7) :empty_line:text|\\n|
-   [26] (288,8)
-   [27] (288,8) :paragraph
-    [28] (0,0) :text|new para.\\n|
-    [28] (10,1)
-   [27] (359,9)
-   [29] (359,9) :empty_line:text|\\n|
-   [29] (360,10)
-  [3] (360,10)
-  [30] (360,10) :empty_line_after_command:text|\\n|
-  [30] (360,10)
- [1] (360,10)
+   [24] (287,7) :empty_spaces_after_close_brace:text|\\n|
+   [24] (287,7)
+   [25] (287,7) :empty_line:text|\\n|
+   [25] (287,7)
+   [26] (287,7) :paragraph
+    [27] (0,0) :text|new para.\\n|
+    [27] (10,1)
+   [26] (358,8)
+   [28] (358,8) :empty_line:text|\\n|
+   [28] (359,9)
+  [3] (359,9)
+  [29] (359,9) :empty_line_after_command:text|\\n|
+  [29] (359,9)
+ [1] (359,9)
 
                                                              aaa bb ada
                                                    dad sff sd and dsdbf
 
                                                                     dqs
                                                                    sqdd
-
 
                                                               new para.
 
