@@ -1802,6 +1802,10 @@ sub _convert($$)
   }
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $location = $self->_add_location($root);
+    # FIXME: remove a 'lines' from $location if at the very end of a node
+    # since it will lead to the next node otherwise.
+    #if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
+    #}
     $self->{'index_entries_line_location'}->{$root} = $location;
     print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
        if ($self->{'DEBUG'});

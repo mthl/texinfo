@@ -3605,6 +3605,12 @@ sub _parse_texi($;$)
             my $closed_command = $current->{'parent'}->{'cmdname'};
             print STDERR "CLOSING \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
+            if (defined($brace_commands{$closed_command}) 
+                 and $brace_commands{$closed_command} == 0
+                 and @{$current->{'contents'}}) {
+              $self->line_warn (sprintf($self->__("Command \@%s does not accept arguments"), 
+                                        $closed_command), $line_nr);
+            }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;
               my $parsed_anchor = _parse_node_manual($current);

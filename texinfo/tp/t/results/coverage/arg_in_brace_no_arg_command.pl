@@ -48,7 +48,17 @@ $result_texis{'arg_in_brace_no_arg_command'} = '@TeX{in tex}
 $result_texts{'arg_in_brace_no_arg_command'} = 'TeX
 ';
 
-$result_errors{'arg_in_brace_no_arg_command'} = [];
+$result_errors{'arg_in_brace_no_arg_command'} = [
+  {
+    'error_line' => ':1: warning: Command @TeX does not accept arguments
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Command @TeX does not accept arguments',
+    'type' => 'warning'
+  }
+];
 
 
 1;
