@@ -158,7 +158,7 @@ $result_trees{'item_container'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'bullet'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -261,6 +261,7 @@ $result_trees{'item_container'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'co
 $result_trees{'item_container'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'item_container'}{'contents'}[4]{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'item_container'}{'contents'}[4];
 $result_trees{'item_container'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'item_container'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'item_container'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'item_container'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'item_container'}{'contents'}[4]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[5]{'parent'} = $result_trees{'item_container'};
 $result_trees{'item_container'}{'contents'}[6]{'parent'} = $result_trees{'item_container'};

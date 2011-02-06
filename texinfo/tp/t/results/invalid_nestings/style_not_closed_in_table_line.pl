@@ -140,7 +140,7 @@ $result_trees{'style_not_closed_in_table_line'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'asis'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -177,6 +177,7 @@ $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[3]{'a
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[0]{'parent'} = $result_trees{'style_not_closed_in_table_line'};
 $result_trees{'style_not_closed_in_table_line'}{'contents'}[1]{'parent'} = $result_trees{'style_not_closed_in_table_line'};
 

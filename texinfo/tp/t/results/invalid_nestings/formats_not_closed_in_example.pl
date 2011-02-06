@@ -207,7 +207,7 @@ $result_trees{'formats_not_closed_in_example'} = {
                 {}
               ]
             ],
-            'command_as_argument' => 'minus'
+            'command_as_argument' => {}
           },
           'parent' => {}
         }
@@ -256,6 +256,7 @@ $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'co
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[3];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'};
 $result_trees{'formats_not_closed_in_example'}{'contents'}[1]{'parent'} = $result_trees{'formats_not_closed_in_example'};
@@ -288,6 +289,15 @@ Some text.
 ';
 
 $result_errors{'formats_not_closed_in_example'} = [
+  {
+    'error_line' => ':3: Command @minus not accepting argument in brace should not be on @table line
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Command @minus not accepting argument in brace should not be on @table line',
+    'type' => 'error'
+  },
   {
     'error_line' => ':13: `@end\' expected `enumerate\', but saw `example\'
 ',

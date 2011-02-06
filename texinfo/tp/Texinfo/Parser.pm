@@ -2104,6 +2104,17 @@ sub _end_line($$$)
             'parent' => $current }
           ]
         ];
+      } elsif ($item_line_commands{$current->{'cmdname'}}) {
+        if ($current->{'extra'} 
+            and $current->{'extra'}->{'command_as_argument'}
+            and !$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
+            and !$self->{'definfoenclose'}->{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}) {
+          $self->line_error (sprintf($self->
+             __("Command \@%s not accepting argument in brace should not be on \@%s line"), 
+                                    $current->{'extra'}->{'command_as_argument'}->{'cmdname'},
+                                    $current->{'cmdname'}),
+                              $line_nr);
+        }
       }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
          'contents' => [], 'parent', $current };
@@ -2728,9 +2739,9 @@ sub _parse_texi($;$)
               $line_nr);
           } else {
             print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
-            $current->{'type'} = 'command_as_argument';
+            $current->{'type'} = 'command_as_argument' if (!$current->{'type'});
             $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
-              = $current->{'cmdname'};
+              = $current;
           }
           $current = $current->{'parent'};
         # now accent commands

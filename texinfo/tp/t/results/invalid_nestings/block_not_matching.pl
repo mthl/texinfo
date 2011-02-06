@@ -320,7 +320,7 @@ $result_trees{'block_not_matching'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'emph'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -531,6 +531,7 @@ $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2];
 $result_trees{'block_not_matching'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[9];
 $result_trees{'block_not_matching'}{'contents'}[9]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'block_not_matching'}{'contents'}[9]{'args'}[0]{'contents'}[1];
+$result_trees{'block_not_matching'}{'contents'}[9]{'extra'}{'command_as_argument'} = $result_trees{'block_not_matching'}{'contents'}[9]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[9]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[10]{'parent'} = $result_trees{'block_not_matching'};
 $result_trees{'block_not_matching'}{'contents'}[11]{'parent'} = $result_trees{'block_not_matching'};

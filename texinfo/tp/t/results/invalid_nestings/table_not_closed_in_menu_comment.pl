@@ -160,7 +160,7 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
                     {}
                   ]
                 ],
-                'command_as_argument' => 'bullet'
+                'command_as_argument' => {}
               },
               'parent' => {}
             }
@@ -205,6 +205,7 @@ $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'};
@@ -246,6 +247,15 @@ $result_errors{'table_not_closed_in_menu_comment'} = [
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
     'type' => 'error continuation'
+  },
+  {
+    'error_line' => ':4: Command @bullet not accepting argument in brace should not be on @table line
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Command @bullet not accepting argument in brace should not be on @table line',
+    'type' => 'error'
   },
   {
     'error_line' => ':8: `@end\' expected `table\', but saw `menu\'

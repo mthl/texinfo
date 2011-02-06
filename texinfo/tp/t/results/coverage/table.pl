@@ -130,7 +130,7 @@ $result_trees{'table'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'asis'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -409,7 +409,7 @@ $result_trees{'table'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'samp'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -444,6 +444,7 @@ $result_trees{'table'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'
 $result_trees{'table'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table'}{'contents'}[1]{'contents'}[4];
 $result_trees{'table'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'table'}{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'table'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[1]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[2]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[3]{'parent'} = $result_trees{'table'};
@@ -494,6 +495,7 @@ $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'extra'}{'misc_content'} = 
 $result_trees{'table'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table'}{'contents'}[4];
 $result_trees{'table'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'table'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table'}{'contents'}[4]{'parent'} = $result_trees{'table'};
 $result_trees{'table'}{'contents'}[5]{'parent'} = $result_trees{'table'};
 

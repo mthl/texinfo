@@ -115,7 +115,7 @@ $result_trees{'table_in_code'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'emph',
+        'command_as_argument' => {},
         'invalid_nesting' => 1
       },
       'parent' => {}
@@ -153,6 +153,7 @@ $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'parent'} = $result
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'parent'} = $result_trees{'table_in_code'};
 $result_trees{'table_in_code'}{'contents'}[2]{'parent'} = $result_trees{'table_in_code'};
 $result_trees{'table_in_code'}{'contents'}[3]{'parent'} = $result_trees{'table_in_code'};

@@ -242,7 +242,7 @@ $result_trees{'commands'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'samp'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -297,6 +297,7 @@ $result_trees{'commands'}{'contents'}[7]{'contents'}[2]{'parent'} = $result_tree
 $result_trees{'commands'}{'contents'}[7]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[7]{'contents'}[3];
 $result_trees{'commands'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'commands'}{'contents'}[7];
 $result_trees{'commands'}{'contents'}[7]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'commands'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[7]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[8]{'parent'} = $result_trees{'commands'};
 

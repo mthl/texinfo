@@ -75,7 +75,7 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
             {}
           ]
         ],
-        'command_as_argument' => 'bullet'
+        'command_as_argument' => {}
       },
       'parent' => {}
     },
@@ -100,6 +100,7 @@ $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'contents'}[1
 $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0];
 $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[0]{'parent'} = $result_trees{'no_arg_brace_command_on_table_line'};
 $result_trees{'no_arg_brace_command_on_table_line'}{'contents'}[1]{'parent'} = $result_trees{'no_arg_brace_command_on_table_line'};
 
@@ -112,7 +113,17 @@ $result_texis{'no_arg_brace_command_on_table_line'} = '@table @bullet
 $result_texts{'no_arg_brace_command_on_table_line'} = 'item
 ';
 
-$result_errors{'no_arg_brace_command_on_table_line'} = [];
+$result_errors{'no_arg_brace_command_on_table_line'} = [
+  {
+    'error_line' => ':1: Command @bullet not accepting argument in brace should not be on @table line
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Command @bullet not accepting argument in brace should not be on @table line',
+    'type' => 'error'
+  }
+];
 
 
 1;

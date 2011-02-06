@@ -1567,10 +1567,20 @@ sub _convert($$)
             and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
       my $contents = $root->{'extra'}->{'misc_content'};
       if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
-        $contents = [{'cmdname' => $root->{'parent'}->{'extra'}->{'command_as_argument'},
-                 'args' => [{'type' => 'brace_command_arg', 
-                            'contents' => $contents}]
-        }];
+        my $command_as_argument = $root->{'parent'}->{'extra'}->{'command_as_argument'};
+        if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
+          $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
+                   'args' => [{'type' => 'brace_command_arg', 
+                              'contents' => $contents}]
+          }];
+        } else {
+          $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
+                        'type' => $command_as_argument->{'type'},
+                        'extra' => $command_as_argument->{'extra'},
+                   'args' => [{'type' => 'brace_command_arg', 
+                              'contents' => $contents}]
+          }];
+        }
       }
       $result = $self->convert_line({'contents' => $contents},
                   {'indent_level'

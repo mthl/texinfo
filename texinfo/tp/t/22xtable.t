@@ -9,6 +9,16 @@ my @test_cases = (
 @item no at-command @code{code}
 @end table
 '],
+['definfoenclose_on_table_line',
+'@definfoenclose phi,:,:
+
+@table @phi
+@item item
+@itemx item x
+
+table content.
+@end table
+']
 );
 
 my @test_invalid = (
