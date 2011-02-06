@@ -204,7 +204,7 @@ i18n/en.thl i18n/: $(po_document_dir)/po_document/$(PACKAGE)_document.pot
 	  done; \
 	  cat $< | sed -e 's/charset=CHARSET/charset=ascii/' | msgexec "$(srcdir)/gettext_to_separated.pl" | "$(srcdir)/separated_to_hash.pl" en > i18n/en.thl; \
 	else \
-	  cp -p i18n_ref/*.thl i18n; \
+	  cp -p "$(srcdir)/i18n_ref/"*.thl i18n; \
 	fi
 
 i18n_ref:

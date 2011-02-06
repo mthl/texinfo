@@ -1,3 +1,9 @@
+2011-02-06  Patrice Dumas  <pertusus@free.fr>
+
+	* texi2html/Makefile.am: Add a missing $(srcdir).  Report 
+	from Jerker Bäck, fix by Karl.
+	http://savannah.gnu.org/bugs/?32328
+
 2011-02-02  Ben Wong  <bugs.debian.org@wongs.net>  (tiny change)
 
 	* info/window.c (window_line_of_point): do not ever return
