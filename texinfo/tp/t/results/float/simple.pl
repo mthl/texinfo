@@ -204,6 +204,7 @@ $result_floats{'simple'}{'Type'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $res
 
 $result_converted{'plaintext'}->{'simple'} = '
 In float.
+
 Type 1: Caption.
 ';
 

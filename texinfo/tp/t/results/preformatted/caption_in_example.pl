@@ -248,6 +248,7 @@ $result_converted{'plaintext'}->{'caption_in_example'} = '
 
 
      After caption
+
 float: caption
 ';
 

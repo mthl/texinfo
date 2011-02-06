@@ -286,6 +286,7 @@ $result_converted{'plaintext'}->{'footnote_in_caption'} = '
 * fl 1: label.                           in caption(0)
 
 In float.
+
 fl 1: in caption(1)
 
    ---------- Footnotes ----------

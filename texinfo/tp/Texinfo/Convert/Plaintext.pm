@@ -900,7 +900,7 @@ sub _contents($$$)
   my $lines_count = 0;
   while ($section and $section ne $section_root) {
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-    my ($section_title) = $self->convert_line({'contents'
+    my $section_title = $self->convert_line({'contents'
                 => $section->{'extra'}->{'misc_content'}});
     pop @{$self->{'count_context'}};
     my $text = Texinfo::Convert::Text::numbered_heading($section, 
@@ -1423,7 +1423,7 @@ sub _convert($$)
       return $result;
     } elsif ($command eq 'titlefont') {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-      ($result) = $self->convert_line ($root->{'args'}->[0]);
+      $result = $self->convert_line ($root->{'args'}->[0]);
       pop @{$self->{'count_context'}};
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
            'cmdname' => 'titlefont'}, $result, $self->{'NUMBER_SECTIONS'});
@@ -1506,9 +1506,11 @@ sub _convert($$)
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
         $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
           = $self->{'empty_lines_count'};
-      } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}
-               and $root->{'extra'}->{'normalized'}) {
-        $result .= $self->_anchor($root);
+      } elsif ($root->{'cmdname'} eq 'float') {
+        $result .= $self->_add_newline_if_needed();
+        if ($root->{'extra'} and $root->{'extra'}->{'normalized'}) {
+          $result .= $self->_anchor($root);
+        }
       }
     } elsif ($root->{'cmdname'} eq 'node') {
       $result .= $self->_node($root);
@@ -1545,7 +1547,7 @@ sub _convert($$)
       }
       if ($root->{'args'}) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-        my ($heading) = $self->convert_line($root->{'args'}->[0]);
+        my $heading = $self->convert_line($root->{'args'}->[0]);
         pop @{$self->{'count_context'}};
         # FIXME œ@* and @c?
         my $heading_underlined = 
@@ -1698,7 +1700,7 @@ sub _convert($$)
                });
           }
           #print STDERR "$float ".$self->convert_line($float_entry)."\n";
-          my ($float_line) = $self->convert_line($float_entry);
+          my $float_line = $self->convert_line($float_entry);
           my $line_width 
              = Texinfo::Convert::Unicode::string_width($float_line);
           if ($line_width > $listoffloat_entry_length) {
@@ -2089,8 +2091,11 @@ sub _convert($$)
         print STDERR "FLOAT: ($number) ($type_texi)\n";
       }
 
-      if ($root->{'extra'}) {
-        # FIXME add an end if line if there is not already one?
+      if ($root->{'extra'}
+          and ($root->{'extra'}->{'type'} or defined($root->{'number'})
+               or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
+        
+        $result .= $self->_add_newline_if_needed();
         my $caption;
         if ($root->{'extra'}->{'caption'}) {
           $caption = $root->{'extra'}->{'caption'};
@@ -2145,6 +2150,7 @@ sub _convert($$)
           $result .= $float_number;
           $self->{'format_context'}->[-1]->{'counter'} += 
             Texinfo::Convert::Unicode::string_width($float_number);
+          $self->{'empty_lines_count'} = 0;
         }
         if ($caption) {
           # FIXME not sure it is right.

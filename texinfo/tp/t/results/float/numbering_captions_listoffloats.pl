@@ -6807,9 +6807,11 @@ No type but caption and shortcaption.
 No type but label and no caption nor shortcaption.
 
 2
+
 No label, no type, no caption no shortcaption.
 
 No label, no type, but caption and shortcaption.
+
 C No label, no type, but caption and shortcaption.
 
 Second float with no type.
@@ -6851,14 +6853,18 @@ Warning 1.1: C A warning in chapter
 A text in float no caption a label a type.
 
 Text 1.3
+
 Unnumbered
 **********
 
 * Menu:
 
 * Section within unnumbered::
+
 unnum
+
 Text 5: C unnumbered float
+
 float with no type.
 
 5: C No type in unnumbered
@@ -6867,6 +6873,7 @@ float with no type.
 =============================
 
 Section within unnumbered
+
 Text 6: C Section within unnumbered
 
 2 Chapter with unnumbsubsec
@@ -6875,13 +6882,16 @@ Text 6: C Section within unnumbered
 * Menu:
 
 * unnumbered sec::
+
 Chap
+
 Text 2.1: C Chapter with subsec
 
 unnumbered sec
 ==============
 
 Chap
+
 Text 2.2: C unnumbered sec float
 
 float with no type.
@@ -6892,6 +6902,7 @@ Appendix A Appendix for float
 *****************************
 
 Appendix
+
 Text A.1: C appendix sec float
 
 list of floats
