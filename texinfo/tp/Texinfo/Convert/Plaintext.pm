@@ -960,8 +960,7 @@ sub _anchor($$)
   my $self = shift;
   my $anchor = shift;
 
-  # 'lines_count' is in fact only needed when in @flush and @multitable
-  $self->_add_location($anchor);
+  $self->_add_location($anchor) unless ($self->{'multiple_pass'});
   return '';
 }
 
@@ -1293,23 +1292,16 @@ sub _convert($$)
       }
       return '';
     } elsif ($command eq 'footnote') {
-      my $multiple_pass = 0;
-      foreach my $context (reverse (@{$self->{'context'}})) {
-        if ($context eq 'listoffloats') {
-          $multiple_pass = 1;
-          last;
-        }
-      }
       my $footnote_number;
       if ($self->{'NUMBER_FOOTNOTES'}) {
-        $self->{'footnote_index'}++ unless ($multiple_pass);
+        $self->{'footnote_index'}++ unless ($self->{'multiple_pass'});
         $footnote_number = $self->{'footnote_index'};
       } else {
         $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
       }
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
                                              'number' => $footnote_number}
-          unless ($multiple_pass);
+          unless ($self->{'multiple_pass'});
       return $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text("($footnote_number)"));
     } elsif ($command eq 'anchor') {
@@ -1715,6 +1707,7 @@ sub _convert($$)
              = Texinfo::Convert::Unicode::string_width($float_line);
           if ($line_width > $listoffloat_entry_length) {
             $float_line .= "\n" . ' ' x $listoffloat_entry_length;
+            $lines_count++;
           } else {
             $float_line .= ' ' x ($listoffloat_entry_length - $line_width);
           }
@@ -1726,11 +1719,14 @@ sub _convert($$)
             $caption = $float->{'extra'}->{'caption'};
           }
           if ($caption) {
+            $self->{'multiple_pass'} = 1;
             push @{$self->{'context'}}, 'listoffloats';
             # FIXME should there be some indentation?
-            my ($caption_text) = $self->_convert({'contents' => $caption->{'args'}->[0]->{'contents'},
-                        'type' => $caption->{'cmdname'}.'_listoffloats'});
+            my $caption_text = $self->_convert({
+                     'contents' => $caption->{'args'}->[0]->{'contents'},
+                         'type' => $caption->{'cmdname'}.'_listoffloats'});
             my $old_context = pop @{$self->{'context'}};
+            delete $self->{'multiple_pass'};
             die if ($old_context ne 'listoffloats');
             while ($caption_text =~ s/^\s*(\p{Unicode::EastAsianWidth::InFullwidth}\s*|\S+\s*)//) {
               my $new_word = $1;
@@ -1810,7 +1806,8 @@ sub _convert($$)
     }
     
   }
-  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
+  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
+      and !$self->{'multiple_pass'}) {
     my $location = $self->_add_location($root);
     # remove a 'lines' from $location if at the very end of a node
     # since it will lead to the next node otherwise.
