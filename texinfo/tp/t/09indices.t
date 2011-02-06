@@ -48,6 +48,28 @@ Text
 @cindex aaa
 
 @printindex cp
+'],
+['index_entries_locations',
+'
+@node Top
+
+Initial paragraph.
+
+Paragraph
+@cindex entry in paragraph
+end paragraph.
+@cindex entry at end of paragraph.
+
+New paragraph.
+
+@cindex Entry before paragraph
+Another paragraph.
+
+@cindex lone entry
+
+Last paragraph.
+
+@printindex cp
 ']
 );
 
