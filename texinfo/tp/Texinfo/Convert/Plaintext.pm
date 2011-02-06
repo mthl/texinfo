@@ -1681,13 +1681,13 @@ sub _convert($$)
       $result = $self->_printindex($root);
       return $result;
     } elsif ($root->{'cmdname'} eq 'listoffloats') {
+      my $lines_count = 0;
       if ($root->{'extra'} and $root->{'extra'}->{'type'}
           and defined($root->{'extra'}->{'type'}->{'normalized'}) 
           and $self->{'floats'} 
           and $self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}
           and @{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-        my $lines_count = 0;
         if (!$self->{'empty_lines_count'}) {
           $result .= "\n";
           $lines_count++;
@@ -1752,12 +1752,12 @@ sub _convert($$)
         }
         $result .= "\n";
         $lines_count++;
-        $self->_add_lines_count($lines_count);
         $self->{'empty_lines_count'} = 1;
         pop @{$self->{'count_context'}};
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       $self->_add_text_count($result);
+      $self->_add_lines_count($lines_count);
       return $result;
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
@@ -1812,10 +1812,41 @@ sub _convert($$)
   }
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $location = $self->_add_location($root);
-    # FIXME: remove a 'lines' from $location if at the very end of a node
+    # remove a 'lines' from $location if at the very end of a node
     # since it will lead to the next node otherwise.
-    #if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
-    #}
+    if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
+      my $following_not_empty;
+      my @parents = @{$self->{'current_roots'}};
+      my @parent_contents = @{$self->{'current_contents'}};
+      while (@parents) {
+        my $parent = pop @parents;
+        my $parent_content = pop @parent_contents;
+        if ($parent->{'type'} and $parent->{'type'} eq 'paragraph') {
+          $following_not_empty = 1;
+          last;
+        }
+        foreach my $following_content (@$parent_content) {
+          unless (($following_content->{'type'} 
+                and ($following_content->{'type'} eq 'empty_line'
+                    or $ignored_types{$following_content->{'type'}}))
+              or ($following_content->{'cmdname'} 
+                  and ($following_content->{'cmdname'} eq 'c'  
+                       or $following_content->{'cmdname'} eq 'comment'))) {
+            $following_not_empty = 1;
+            last;
+          }
+        }
+        last if $following_not_empty;
+        if ($parent->{'cmdname'} and $root_commands{$parent->{'cmdname'}}) {
+          last;
+        }
+      }
+      if (! $following_not_empty) {
+        print STDERR "INDEX ENTRY $root->{'cmdname'} followed by empty lines\n"
+            if ($self->{'DEBUG'});
+        $location->{'lines'}--;
+      }
+    }
     $self->{'index_entries_line_location'}->{$root} = $location;
     print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
        if ($self->{'DEBUG'});
@@ -1928,6 +1959,7 @@ sub _convert($$)
   if ($root->{'contents'}) {
     my @contents = @{$root->{'contents'}};
     push @{$self->{'current_contents'}}, \@contents;
+    push @{$self->{'current_roots'}}, $root;
     while (@contents) {
       my $content = shift @contents;
       my $text = $self->_convert($content);
@@ -1936,6 +1968,7 @@ sub _convert($$)
       $result .= $text;
     }
     pop @{$self->{'current_contents'}};
+    pop @{$self->{'current_roots'}};
   }
 
   # now closing. First, close types.

@@ -684,7 +684,7 @@ File: ,  Node: second,  Prev: first,  Up: Top
  [index ]
 * Menu:
 
-* lone entry:                            first.                 (line 5)
+* lone entry:                            first.                 (line 4)
 
 
 
