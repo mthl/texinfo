@@ -495,7 +495,13 @@ $result_trees{'nodename_parentheses'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Node-_0028with-parentheses_0029'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -545,7 +551,21 @@ $result_trees{'nodename_parentheses'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'node_argument' => {
+                  'manual_content' => [
+                    {
+                      'parent' => {},
+                      'text' => 'manual'
+                    }
+                  ],
+                  'node_content' => [
+                    {
+                      'parent' => {},
+                      'text' => 'node'
+                    }
+                  ]
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -835,6 +855,7 @@ $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6];
@@ -843,6 +864,8 @@ $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0];
+$result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3];
 $result_trees{'nodename_parentheses'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'nodename_parentheses'}{'contents'}[6];

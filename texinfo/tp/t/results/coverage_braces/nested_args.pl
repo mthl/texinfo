@@ -84,7 +84,15 @@ $result_trees{'nested_args'} = {
                 {},
                 {}
               ]
-            ]
+            ],
+            'node_argument' => {
+              'node_content' => [
+                {},
+                {},
+                {}
+              ],
+              'normalized' => '_0040-in-samp'
+            }
           },
           'line_nr' => {
             'file_name' => '',
@@ -120,6 +128,9 @@ $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_comma
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][2] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][1] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[2];
+$result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[1] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[2] = $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_args'}{'contents'}[0];
 $result_trees{'nested_args'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_args'}{'contents'}[0];
 $result_trees{'nested_args'}{'contents'}[0]{'parent'} = $result_trees{'nested_args'};

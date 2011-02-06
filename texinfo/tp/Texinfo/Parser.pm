@@ -68,6 +68,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   errors
   indices_information
   floats_information
+  internal_references_information
+  labels_information
   global_commands_information
   global_informations
   expand_verbatiminclude
@@ -292,6 +294,7 @@ my %initialization_overrides = (
 #                         on index_entry.
 # floats                  key is the normalized float type, value is an array
 #                         reference holding all the floats.
+# internal_references     an array holding all the internal references.
 
 # set                     points to the value set when initializing, for
 #                         configuration items that are not to be overriden
@@ -336,6 +339,7 @@ my %root_commands             = %Texinfo::Common::root_commands;
 my @out_formats               = @Texinfo::Common::out_formats;
 my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
+my %ref_commands              = %Texinfo::Common::ref_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -827,6 +831,12 @@ sub floats_information ($)
   return $self->{'floats'};
 }
 
+sub internal_references_information ($)
+{
+  my $self = shift;
+  return $self->{'internal_references'};
+}
+
 sub global_commands_information ($)
 {
   my $self = shift;
@@ -837,6 +847,12 @@ sub global_informations ($)
 {
   my $self = shift;
   return $self->{'info'};
+}
+
+sub labels_information ($)
+{
+  my $self = shift;
+  return $self->{'labels'};
 }
 
 # Following are the internal subsections.  The most important are
@@ -3629,6 +3645,28 @@ sub _parse_texi($;$)
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
                 _register_label($self, $current->{'parent'},
                   $parsed_anchor, $line_nr);
+              }
+            } elsif ($ref_commands{$current->{'parent'}->{'cmdname'}}) {
+              my $ref = $current->{'parent'};
+              if (@{$ref->{'args'}}) {
+                my @args = @{$ref->{'extra'}->{'brace_command_contents'}};
+                if (!defined($args[0])) {
+                  $self->line_warn (sprintf($self->__("Command \@%s missing a node argument"),
+                                        $closed_command), $line_nr);
+                } else {
+                  my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
+                  $ref->{'extra'}->{'node_argument'}->{'node_content'} = 
+                       $parsed_ref_node->{'node_content'};
+                  if ($parsed_ref_node->{'manual_content'}) {
+                    $ref->{'extra'}->{'node_argument'}->{'manual_content'} =
+                       $parsed_ref_node->{'manual_content'};
+                  } elsif ($closed_command ne 'inforef' 
+                           and !defined($args[3]) and !defined($args[4])) {
+                    $ref->{'extra'}->{'node_argument'}->{'normalized'} = 
+                       $parsed_ref_node->{'normalized'};
+                    push @{$self->{'internal_references'}}, $ref;
+                  }
+                }  
               }
             }
             $self->_register_global_command($current->{'parent'}->{'cmdname'},

@@ -71,9 +71,6 @@ t/19def.t empty_def_arguments
 
 warn when a @noindent/@indent appears within a paragraph.
 
-Also normalize internal nodes as first argument of ref
-at_commands_in_refs some_at_commands_in_ref_nodes
-
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.

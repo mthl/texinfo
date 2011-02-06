@@ -15,6 +15,19 @@ my @test_cases = (
 In float.
 @caption{Caption.}
 @end float'],
+['ref_to_float',
+'@float Text, Label1
+Float
+@end float
+
+@float , Label2
+In foat 2.
+@end float
+
+@ref{Label1}
+
+@ref{Label2}
+'],
 ['footnote_in_caption',
 '@listoffloats fl
 

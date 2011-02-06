@@ -359,9 +359,11 @@ sub converter(;$)
          = $converter->{'parser'}->global_commands_information();
       $converter->{'info'} = $converter->{'parser'}->global_informations();
       my $floats = $converter->{'parser'}->floats_information();
+      my $labels = $converter->{'parser'}->labels_information();
       $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
 
       $converter->{'floats'} = $floats if ($floats);
+      $converter->{'labels'} = $labels if ($labels);
       $converter->{'setcontentsaftertitlepage'} = 1 
          if ($converter->{'extra'}->{'contents'} 
                and $converter->{'extra'}->{'setcontentsaftertitlepage'}
@@ -1310,11 +1312,38 @@ sub _convert($$)
       $result .= $self->_anchor($root);
       return $result;
     } elsif ($ref_commands{$command}) {
-      # FIXME if it a reference to a float with a label, $arg[1] should 
-      # be set to '$type $number' or '$number' if there is no type.
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
           and scalar(@{$root->{'extra'}->{'brace_command_contents'}})) {
         my @args = @{$root->{'extra'}->{'brace_command_contents'}};
+        # if it a reference to a float with a label, $arg[1] is
+        # set to '$type $number' or '$number' if there is no type.
+        if (! defined($args[1]) 
+            and $root->{'extra'}->{'node_argument'} 
+            and $root->{'extra'}->{'node_argument'}->{'normalized'}
+            and $self->{'labels'}
+            and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}
+            and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}->{'cmdname'} eq 'float') {
+          my $float = $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}};
+          my $type;
+          if ($float->{'extra'}->{'type'}) {
+            $type = {'contents' => $float->{'extra'}->{'type'}->{'content'}};
+          }
+          my $name;
+          if ($type) {            
+            if (defined($float->{'number'})) {
+              $name = $self->gdt("{float_type} {float_number}",
+                  {'float_type' => $type,
+                    'float_number' => $float->{'number'}});
+            } else {
+              $name = $self->gdt("{float_type}",
+                  {'float_type' => $type});
+            }
+          } elsif (defined($float->{'number'})) {
+            $name = $self->gdt("{float_number}",
+               {'float_number' => $float->{'number'}});
+          }
+          $args[1] = $name->{'contents'};
+        }
         $args[0] = [{'text' => ''}] if (!defined($args[0]));
         if ($command eq 'inforef' and scalar(@args) == 3) {
           $args[3] = $args[2];

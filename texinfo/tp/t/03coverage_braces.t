@@ -117,6 +117,11 @@ third}
 '@image{}
 
 @image{ ,aa,bb,cc ,dd}
+'],
+['empty_ref',
+'
+@ref{} @xref{,,something}. @inforef{ }
+ @inforef{ , arg}.
 ']
 );
 
