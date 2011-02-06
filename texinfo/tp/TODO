@@ -40,6 +40,9 @@ Test end_line_count in Texinfo/Convert/ containers.
 Test no empty line before and after a sectioning command.  With text, but
 also commands.
 
+in indices/index_entry_before_node, it would be better to have 4 lines
+associated to the index entry otherwise it goes to the next node.
+
 Following should be an error:
 @example
 @heading A heading

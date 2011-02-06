@@ -70,6 +70,24 @@ Another paragraph.
 Last paragraph.
 
 @printindex cp
+'],
+['index_entry_before_node',
+'@node Top
+
+@menu
+* first::
+* second::
+@end menu
+
+@node first,second,,Top
+
+Para.
+
+@cindex lone entry
+
+@node second,,first,Top
+
+@printindex cp
 ']
 );
 
