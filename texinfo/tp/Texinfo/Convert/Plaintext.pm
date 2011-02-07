@@ -1829,7 +1829,13 @@ sub _convert($$)
     }
     #} els
     if ($unknown_command and !($root->{'extra'} 
-                               and $root->{'extra'}->{'index_entry'})) {
+                               and $root->{'extra'}->{'index_entry'})
+        # commands like def*x are not processed above, since only the def_line
+        # associated is processed. If they have no name and no category they 
+        # are not considered as index entries either so they have a specific
+        # condition
+        and !($def_commands{$root->{'cmdname'}} 
+              and $root->{'cmdname'} =~ /x$/)) {
       warn "Unhandled $root->{'cmdname'}\n";
       $result .= "!!!!!!!!! Unhandled $root->{'cmdname'} !!!!!!!!!\n";
     }

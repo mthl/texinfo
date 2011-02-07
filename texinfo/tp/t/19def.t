@@ -263,6 +263,21 @@ deffn
 '@deffn c @{
 @end deffn
 '],
+['no_category_or_no_name',
+'@deffn
+no category no name
+@end deffn
+
+@deffn {only category}
+no name
+@end deffn
+
+@deffn a b c d 
+@deffnx deffnx_category
+@deffnx 
+with deffnx missing category or name
+@end deffn
+'],
 );
 
 my @test_invalid = (
