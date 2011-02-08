@@ -412,8 +412,8 @@ and following
      example
 in exdented protected eol  
      following
-in exdented a @*
-and following
+in exdented a @* 
+ and following
      after exdented
 ';
 

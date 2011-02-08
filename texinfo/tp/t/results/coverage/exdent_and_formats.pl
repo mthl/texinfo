@@ -151,7 +151,7 @@ $result_trees{'exdent_and_formats'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'exdented'
+                  'text' => 'exdented  and dash --- in example'
                 },
                 {
                   'parent' => {},
@@ -572,7 +572,7 @@ $result_trees{'exdent_and_formats'} = {
                 },
                 {
                   'parent' => {},
-                  'text' => 'exdented quotation line'
+                  'text' => 'exdented quotation line   and dash --- in quotation'
                 },
                 {
                   'parent' => {},
@@ -1318,7 +1318,7 @@ not exdented
 
 
 @example
-@exdent exdented
+@exdent exdented  and dash --- in example
 Not exdented
 @exdent exdented
 Not exdented
@@ -1357,7 +1357,7 @@ Nested Other line
 @end example
 
 @quotation
-@exdent exdented quotation line
+@exdent exdented quotation line   and dash --- in quotation
 @end quotation
 
 @quotation
@@ -1399,7 +1399,7 @@ Other line
 not exdented
 
 
-exdented
+exdented  and dash --- in example
 Not exdented
 exdented
 Not exdented
@@ -1426,7 +1426,7 @@ Example   Hoho.
 Nested Other line
 exdented nested other line
 
-exdented quotation line
+exdented quotation line   and dash --- in quotation
 
 Not exdented followed by exdented
 exdented quotation line
@@ -1457,7 +1457,7 @@ $result_converted{'plaintext'}->{'exdent_and_formats'} = '      Example   Hoho. 
 Other line
      not exdented
 
-exdented
+exdented  and dash --- in example
      Not exdented
 exdented
      Not exdented
@@ -1484,7 +1484,7 @@ Para1.
           Nested Other line
      exdented nested other line
 
-exdented quotation line
+exdented quotation line and dash -- in quotation
 
      Not exdented followed by exdented
 exdented quotation line

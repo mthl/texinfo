@@ -614,7 +614,6 @@ sub convert_line($$;$)
   return $text;
 }
 
-# not used
 sub convert_unfilled($$;$)
 {
   my $self = shift;
@@ -1680,9 +1679,15 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       return $result;
     } elsif ($root->{'cmdname'} eq 'exdent') {
-      $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
+      if ($preformatted_context_commands{$self->{'context'}->[-1]}) {
+        $result = $self->convert_unfilled({'contents' => $root->{'extra'}->{'misc_content'}},
+         {'indent_level'
+          => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+      } else {
+        $result = $self->convert_line ({'contents' => $root->{'extra'}->{'misc_content'}},
          {'indent_level' 
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+      }
       if ($result ne '') {
         $result = $self->ensure_end_of_line($result);
         $self->{'empty_lines_count'} = 0;

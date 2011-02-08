@@ -314,7 +314,7 @@ not exdented
 
 
 @example
-@exdent exdented
+@exdent exdented  and dash --- in example
 Not exdented
 @exdent exdented
 Not exdented
@@ -353,7 +353,7 @@ Nested Other line
 @end example
 
 @quotation
-@exdent exdented quotation line
+@exdent exdented quotation line   and dash --- in quotation
 @end quotation
 
 @quotation
