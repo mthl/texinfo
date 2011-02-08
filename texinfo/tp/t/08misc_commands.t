@@ -251,6 +251,47 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 indent in quotation
 @end quotation
 '],
+['test_allowcodebreaks',
+'@node Top
+
+@macro testallowcodebreakspara {nr}
+Out of code --- out-of-code.
+@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
+@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
+@code{9aaa-bbb rrr_vv}
+@samp{fff-- --- minus@minus{}b aa-tt@\'eff_gg aa@r{r-oman} 
+anc-hor@anchor{A node\nr\}}
+@end macro
+
+@macro testallowcodebreaksexample{}
+
+@example
+@code{in-example}
+@end example
+@end macro
+
+Before first allowcodebreaks
+@testallowcodebreakspara{0}
+@testallowcodebreaksexample{}
+
+@allowcodebreaks false
+After false
+@testallowcodebreakspara{1}
+@testallowcodebreaksexample{}
+
+In w:
+@w{@testallowcodebreakspara{w}
+}
+
+@example
+@w{@code{in-example}}
+@end example
+
+@allowcodebreaks true
+After true
+@testallowcodebreakspara{2}
+@testallowcodebreaksexample{}
+']
 );
 
 foreach my $test (@converted_test_cases) {

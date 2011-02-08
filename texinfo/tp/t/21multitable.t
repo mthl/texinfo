@@ -26,7 +26,14 @@ new paragraph in item. example
 
 new paragraph in tab. example
 @end multitable
-@end example']
+@end example'],
+['w_in_multitable',
+'@multitable {aaaaaaaaa} {bbbbbbbbbbb}
+@item @w{aaaaaaaa
+bbbbbbbbbb}
+@tab gg
+@end multitable
+']
 );
 
 my @test_invalid = (

@@ -55,6 +55,44 @@ anchor}
 @ctrl{A}
 
 With @ctrl{B}.
+'],
+['test_w',
+'@w{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
+ccc dddd}.
+
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a  @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
+
+
+@w{}
+
+@w{ a rr   
+  ggg.}
+
+AA@w{}bbb.
+
+FF@w{d}nnn.
+
+aa@w{  f  f}ggg.
+
+aa2@w{  f  f }ggg2.
+
+
+aa3 @w{  f  f }ggg3.
+
+
+aa4 @w{  f  f } ggg4.
+
+aa5 @w{} ggg5.
+
+aa6 @w{}ggg6.
+
+aa6@w{} ggg6.
+
+aaf @w{ } bbb.
+
+begin and end quotations: @w{@t{`@w{}`@dots{}\'@w{}\'}}.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled.
 ']
 );
 

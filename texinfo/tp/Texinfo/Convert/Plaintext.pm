@@ -1202,7 +1202,8 @@ sub _convert($$)
       $formatter->{'upper_case'}++ if ($upper_case_commands{$command});
       if ($command eq 'w') {
         $formatter->{'w'}++;
-        $formatter->{'container'}->set_space_protection(1,1)
+        $result .= $self->_count_added($formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,1))
           if ($formatter->{'w'} == 1);
       }
       my ($text_before, $text_after);
@@ -1213,17 +1214,17 @@ sub _convert($$)
         $text_before = $style_map{$command}->[0];
         $text_after = $style_map{$command}->[1];
       }
-      $result = $self->_count_added($formatter->{'container'},
+      $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text($text_before));
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
-
       }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text($text_after));
       if ($command eq 'w') {
         $formatter->{'w'}--;
-        $formatter->{'container'}->set_space_protection(0,0)
+        $result .= $self->_count_added($formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(0,0))
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {

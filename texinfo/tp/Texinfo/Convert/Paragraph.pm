@@ -225,7 +225,7 @@ sub set_space_protection($$;$$$)
   $paragraph->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
   # flush the spaces already existing
-  if ($space_protection) {
+  if (defined($space_protection)) {
     my $new_space = $paragraph->{'space'};
     $paragraph->{'counter'} += length($new_space);
     $paragraph->{'space'} = '';
@@ -263,9 +263,9 @@ sub add_text($$)
            and length($paragraph->{'space'}) < 2) {
           $paragraph->{'space'} = '  ';
         }
-        $result .= $paragraph->{'space'};
-        $paragraph->{'counter'} += length($paragraph->{'space'});
-        $paragraph->{'space'} = '';
+        #$result .= $paragraph->{'space'};
+        #$paragraph->{'counter'} += length($paragraph->{'space'});
+        #$paragraph->{'space'} = '';
       } else {
         if ($paragraph->{'counter'} != 0) {
           if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
