@@ -53,8 +53,6 @@ Following should be an error:
 
 test empty line in block or brace command in menu description.
 
-test @w.
-
 test unknown @value expanded.
 
 test recursive acronym

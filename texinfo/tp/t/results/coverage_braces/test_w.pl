@@ -55,7 +55,7 @@ $result_trees{'test_w'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a'
+                  'text' => 'b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a'
                 }
               ],
               'parent' => {},
@@ -751,7 +751,7 @@ $result_trees{'test_w'}{'contents'}[31]{'parent'} = $result_trees{'test_w'};
 $result_texis{'test_w'} = '@w{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
 ccc dddd}.
 
-a a a a a a a a a a a a a a a a a a a a a a a a a a a a  @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a  @w{b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
 
 
 @w{}
@@ -790,7 +790,7 @@ two single quotes to left- and right-hand doubled.
 $result_texts{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
 ccc dddd.
 
-a a a a a a a a a a a a a a a a a a a a a a a a a a a a  a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+a a a a a a a a a a a a a a a a a a a a a a a a a a a a  b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 
 
 
@@ -829,13 +829,13 @@ $result_errors{'test_w'} = [];
 
 
 
-$result_converted{'plaintext'}->{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .  ccc 
-dddd.
+$result_converted{'plaintext'}->{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .  ccc dddd.
 
-   a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+   a a a a a a a a a a a a a a a a a a a a a a a a a a a a b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 
+   
 
-   a rr      ggg.
+    a rr      ggg.
 
    AAbbb.
 

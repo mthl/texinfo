@@ -190,11 +190,15 @@ sub _add_next($;$$$)
     }
   }
   if (defined($space)) {
-    $result .= $paragraph->_add_pending_word();
-    $paragraph->{'space'} = $space;
-    if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
-                    > $paragraph->{'max'}) {
-      $result .= $paragraph->_cut_line();
+    if ($paragraph->{'protect_spaces'}) {
+      $result .= $paragraph->_add_text($space);
+    } else {
+      $result .= $paragraph->_add_pending_word();
+      $paragraph->{'space'} = $space;
+      if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
+                      > $paragraph->{'max'}) {
+        $result .= $paragraph->_cut_line();
+      }
     }
   }
   if (defined($end_sentence)) {
@@ -224,12 +228,9 @@ sub set_space_protection($$;$$$)
     if defined($keep_end_lines);
   $paragraph->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
-  # flush the spaces already existing
-  if (defined($space_protection)) {
-    my $new_space = $paragraph->{'space'};
-    $paragraph->{'counter'} += length($new_space);
-    $paragraph->{'space'} = '';
-    return $new_space;
+  # begin a word, to have something even if empty
+  if ($space_protection) {
+    $paragraph->_add_next('');
   }
   return '';
 }
@@ -255,18 +256,29 @@ sub add_text($$)
       my $spaces = $1;
       print STDERR "SPACES($paragraph->{'counter'})\n" if ($paragraph->{'DEBUG'});
       my $added_word = $paragraph->{'word'};
-      $result .= $paragraph->_add_pending_word();
       if ($paragraph->{'protect_spaces'}) {
-        $paragraph->{'space'} .= $spaces;
-        if ($paragraph->{'space'} =~ s/\n/ /g 
-           and !$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}
-           and length($paragraph->{'space'}) < 2) {
-          $paragraph->{'space'} = '  ';
+        
+        $paragraph->{'word'} .= $spaces;
+        $paragraph->{'word_counter'} += length($spaces);
+        #$paragraph->{'space'} .= $spaces;
+        if ($paragraph->{'word'} =~ s/\n/ /g 
+           and !$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
+          $paragraph->{'word'} =~ /(\s*)$/;
+          if (length($1) < 2) {
+            $paragraph->{'word'} =~ s/(\s*)$/  /;
+            my $removed = $1;
+            $paragraph->{'word_counter'} += length('  ') - length($removed);
+          }
         }
-        #$result .= $paragraph->{'space'};
-        #$paragraph->{'counter'} += length($paragraph->{'space'});
-        #$paragraph->{'space'} = '';
+        # The $paragraph->{'counter'} != 0 is here to avoid having an
+        # additional line output when the text is longer than the max.
+        if ($paragraph->{'counter'} != 0 and 
+            $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
+               length($paragraph->{'space'}) > $paragraph->{'max'}) {
+          $result .= $paragraph->_cut_line();
+        }
       } else {
+        $result .= $paragraph->_add_pending_word();
         if ($paragraph->{'counter'} != 0) {
           if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
             $paragraph->{'space'} = '  ';

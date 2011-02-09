@@ -167,8 +167,12 @@ sub _add_next($;$$$)
     print STDERR "WORD+.L $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
   }
   if (defined($space)) {
-    $result .= $line->_add_pending_word();
-    $line->{'space'} = $space;
+    if ($line->{'protect_spaces'}) {
+      $result .= $line->_add_text($space);
+    } else {
+      $result .= $line->_add_pending_word();
+      $line->{'space'} = $space;
+    }
   }
   if (defined($end_sentence)) {
     $line->{'end_sentence'} = $end_sentence;
@@ -198,11 +202,9 @@ sub set_space_protection($$;$$$)
     if defined($keep_end_lines);
   $line->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
-  # flush the spaces already existing
+  # begin a word, to have something even if empty
   if ($space_protection) {
-    my $new_space = $line->{'space'};
-    $line->{'space'} = '';
-    return $new_space;
+    $line->_add_next('');
   }
   return '';
 }
@@ -227,16 +229,18 @@ sub add_text($$)
     if ($text =~ s/^([^\S\n]+)//) {
       my $spaces = $1;
       print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
-      my $added_word = $line->{'word'};
-      $result .= $line->_add_pending_word();
       if ($line->{'protect_spaces'}) {
-        $result .= $spaces;
-        $line->{'space'} = '';
-      } elsif (!$line->{'begin'}) {
-        if (!$line->{'frenchspacing'} and $line->{'end_sentence'}) {
-          $line->{'space'} = '  ';
-        } else {
-          $line->{'space'} = ' ';
+        $line->{'word'} .= $spaces;
+      } else {
+        my $added_word = $line->{'word'};
+        $result .= $line->_add_pending_word();
+
+        if (!$line->{'begin'}) {
+          if (!$line->{'frenchspacing'} and $line->{'end_sentence'}) {
+            $line->{'space'} = '  ';
+          } else {
+            $line->{'space'} = ' ';
+          }
         }
       }
       delete $line->{'end_sentence'};
