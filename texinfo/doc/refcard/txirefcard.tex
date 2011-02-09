@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.11 2010-04-04 17:51:34 karl Exp $
+% $Id: txirefcard.tex,v 1.12 2011-02-09 19:07:18 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -14,7 +14,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008, 2009, 2010 Free Software Foundation, Inc.
+% Copyright 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -878,10 +878,11 @@ the document according to their needs.
 
 \txicmd{@setchapternewpage}{\code{on|off|odd}}{Specify whether chapters start on new pages, and if so, whether on odd-numbered (right-hand) new pages; also set the page headings accordingly.}
 \txicmd{@headings}{\code{on|off|single|double}}{Turn page headings on or off, specify single-sided or double-sided page headings for printing.}
-\txicmd{@paragraphindent}{indent}{Indent paragraphs by \var{indent} number of spaces (perhaps 0); preserve source file indentation if \var{indent} is the string \code{asis}.}
-\txicmd{@firstparagraphindent}{\code{insert|none}}{Indent first paragraphs after section headings, or not.}
 \txicmd{@exampleindent}{indent}{Indent example-like environments by \var{indent} number of spaces (perhaps 0).}
-\txicmd{@kbdinputstyle}{style}{Specify when \code{@kbd} should use a font distinct from \code{@code}.}
+\txicmd{@firstparagraphindent}{\code{insert|none}}{Indent first paragraphs after section headings, or not.}
+\txicmd{@paragraphindent}{indent}{Indent paragraphs by \var{indent} number of spaces (perhaps 0); preserve source file indentation if \var{indent} is the string \code{asis}.}
+\txicmd{@kbdinputstyle}{\code{code|distinct|example}}{Specify font for \code{@kbd}: normal \code{@code} font, a distinct (slanted) typewriter font, or a distinct font only within \code{@example} and similar.}
+\txicmd{@urefbreakstyle}{\code{after|before|none}}{Specify how \code{@uref} should break at special characters; default \code{after}.}
 
 \section{Ending a Texinfo document}
 

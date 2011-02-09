@@ -1,3 +1,16 @@
+2011-02-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\urefbreak): revised attempt to allow breaking
+	in urls, using only active characters, no \scantokens.
+	(\uref): use it.  (leave old definition as \urefnobreak)
+	(\urefcatcodes, \urefcode, \urefprestretch, \urefpoststretch,
+	 \urefcode{amp,dot,hash,quest,slash}, \urefcodeslashfinish,
+	 \normal{amp,dot,hash,percent,question,slash}): helpers.
+	(\urefbreakstyle): new command.
+	(\wordafter,\wordbefore,\wordnone): helpers.
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (uref): document @urefbreakstyle, more on @uref.
+
 2011-02-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\latonechardefs): typo in ^^b definition,

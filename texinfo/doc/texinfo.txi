@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.365 2011-01-10 17:45:52 karl Exp $
+@c $Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6691,19 +6691,45 @@ meaning.
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info and DVI output, but not in HTML output, the
-url is also output.
+url is output in addition to this text.
 
 @cindex Man page, reference to
 The third argument, if specified, is the text to display, but in this
-case the url is @emph{not} output in any format.  This is useful when
-the text is already sufficiently referential, as in a man page.  If
-the third argument is given, the second argument is ignored.
+case the url is not output in any format.  This is useful when the
+text is already sufficiently referential, as in a man page.  If the
+third argument is given, the second argument is ignored.
 
-If the url is long enough to cause problems with line breaking, you
-may find it useful to insert @code{@@/} at places where a line break
-would be acceptable (after @samp{/} characters, for instance).  This
-tells @TeX{} to allow (but not force) a line break at those places.
-@xref{Line Breaks}.
+@cindex Line breaking, and urls
+@TeX{} allows line breaking within urls at only a few characters
+(which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
+and @samp{/} (but not between @samp{/} characters).  A tiny amount of
+stretchable space is also inserted around these characters to help
+with line breaking.  For HTML output, modern browsers will also do
+line breaking within displayed urls.  If you need to allow breaks at
+other characters you can insert @code{@@/} as needed (@pxref{Line
+Breaks}).
+
+By default, any such breaks at special characters will occur after the
+character.  Some people prefer such breaks to happen after the special
+character.  This can be controlled with the @code{@@urefbreakstyle}
+command (this command has effect only in @TeX{}):
+
+Write this command at the
+beginning of a line with a single word as an argument, one of the
+following:
+
+@vindex after@r{, value for @code{@@urefbreakstyle}}
+@vindex before@r{, value for @code{@@urefbreakstyle}}
+@vindex none@r{, value for @code{@@urefbreakstyle}}
+@table @samp
+@item after
+(the default) Potentially break after the special characters.
+@item before
+Potentially break before the special characters.
+@item none
+Do not consider breaking at the special characters; any potential
+breaks must be manually inserted.
+@end table
 
 Here is an example of the simple one argument form, where the url is
 both the target and the text of the link:
@@ -6761,7 +6787,7 @@ The <a href="/man.cgi/1/ls">ls</a> program @dots{}
 To merely indicate a url without creating a link people can follow, use
 @code{@@indicateurl} (@pxref{indicateurl, @code{@@indicateurl}}).
 
-Some people prefer to display url's in the unambiguous format:
+Some people prefer to display urls in the unambiguous format:
 
 @display
 <URL:http://@var{host}/@var{path}>
@@ -6771,7 +6797,7 @@ Some people prefer to display url's in the unambiguous format:
 @cindex @code{<URL...>} convention, not used
 You can use this form in the input file if you wish.  We feel it's not
 necessary to include the @samp{<URL:} and @samp{>} in the output,
-since any software that tries to detect url's in text already has to
+since any software that tries to detect urls in text already has to
 detect them without the @samp{<URL:} to be useful.
 
 
@@ -6924,7 +6950,7 @@ Indicate an acronym.
 @item @@indicateurl@{@var{uniform-resource-locator}@}
 Indicate an example (that is, nonfunctional) uniform resource locator.
 @xref{indicateurl,,@code{@@indicateurl}}.  (Use @code{@@url}
-(@pxref{uref,,@code{@@url}}) for live url's.)
+(@pxref{uref,,@code{@@url}}) for live urls.)
 
 @item @@email@{@var{email-address}[, @var{displayed-text}]@}
 Indicate an electronic mail address.
@@ -7676,7 +7702,7 @@ locator on the World Wide Web.  This is analogous to @code{@@file},
 @code{@@var}, etc., and is purely for markup purposes.  It does not
 produce a link you can follow in HTML output (use the @code{@@uref}
 command for that, @pxref{uref,, @code{@@uref}}).  It is useful for
-url's which do not actually exist.  For example:
+urls which do not actually exist.  For example:
 
 @example
 For example, the url might be @@indicateurl@{http://example.org/path@}.
@@ -18590,7 +18616,7 @@ i.e., @file{@var{datadir}/texinfo/htmlxref.cnf}.
 The file is line-oriented.  Lines consisting only of whitespace are
 ignored.  Comments are indicated with a @samp{#} at the beginning of a
 line, optionally preceded by whitespace.  Since @samp{#} can occur in
-url's (like almost any character), it does not otherwise start a
+urls (like almost any character), it does not otherwise start a
 comment.
 
 Each non-blank non-comment line must be either a @dfn{variable
@@ -23049,7 +23075,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.365 2011-01-10 17:45:52 karl Exp $
+$Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23128,7 +23154,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.365 2011-01-10 17:45:52 karl Exp $
+@comment $Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
