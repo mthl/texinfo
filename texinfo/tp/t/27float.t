@@ -29,12 +29,39 @@ In foat 2.
 @ref{Label2}
 '],
 ['footnote_in_caption',
-'@listoffloats fl
+'@node Top
+
+@listoffloats fl
 
 @float fl, label
 In float.
 @caption{in caption@footnote{in footnote}}
 @end float
+'],
+['anchor_in_caption',
+'@node Top
+
+@listoffloats fl
+
+@float fl, label
+In float.
+@caption{in caption@anchor{in anchor}}
+@end float
+'],
+['cindex_in_caption',
+'@node Top
+
+@listoffloats fl
+
+@float fl, label
+In float.
+@caption{in caption
+@cindex index entry
+}
+@end float
+
+@printindex cp
+
 '],
 ['complex_float',
 '@node Top
@@ -371,8 +398,17 @@ A ref to float without type @ref{label but no type}.
 ']
 );
 
+my %info_tests = (
+  'anchor_in_caption' => 1,
+  'footnote_in_caption' => 1,
+  'cindex_in_caption' => 1
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  if ($info_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'info';
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
