@@ -126,6 +126,7 @@ our %misc_commands = (
   'allowcodebreaks'   => 1, # false or true
   'exampleindent'     => 1, # asis or a number
   'footnotestyle'     => 1, # end and separate, nothing else on the line
+  'urefbreakstyle'    => 1, # after|before|none
   'afourpaper'        => 'skipline', # no arg
   'afivepaper'        => 'skipline', # no arg
   'afourlatex'        => 'skipline', # no arg
