@@ -407,6 +407,45 @@ after exdented
 '
 @verbatiminclude incl-incl.txi
 '],
+['punctuation_in_line_commands',
+'
+@node node! After punc
+@top top! After punc
+
+@table @asis
+@item item! After punc
+@end table
+
+@quotation quotation arg! After punc
+In quotation
+@exdent exdent quotation! After punc
+@end quotation
+
+@float float type! After punc, float label! After punc
+In float
+@shortcaption{shortcaption! After punc}
+@end float
+
+@float float type! After punc, label with caption
+In float with caption.
+@caption{caption! After punc}
+@end float
+
+@listoffloats float type! After punc
+
+@cindex index! After punc
+
+@heading heading! After punc
+
+@titlefont{titlefont! After punc}
+
+@center center! After punc
+
+@printindex cp
+
+@contents
+
+'],
 );
 
 my @test_invalid = (

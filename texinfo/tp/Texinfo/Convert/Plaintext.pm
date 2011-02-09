@@ -902,7 +902,8 @@ sub _contents($$$)
   while ($section and $section ne $section_root) {
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
     my $section_title = $self->convert_line({'contents'
-                => $section->{'extra'}->{'misc_content'}});
+                => $section->{'extra'}->{'misc_content'},
+               'type' => 'frenchspacing'});
     pop @{$self->{'count_context'}};
     my $text = Texinfo::Convert::Text::numbered_heading($section, 
                             $section_title, $self->{'NUMBER_SECTIONS'})."\n";
@@ -1444,7 +1445,8 @@ sub _convert($$)
       return $result;
     } elsif ($command eq 'titlefont') {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-      $result = $self->convert_line ($root->{'args'}->[0]);
+      $result = $self->convert_line ({'type' => 'frenchspacing',
+               'contents' => [$root->{'args'}->[0]]});
       pop @{$self->{'count_context'}};
       $result = Texinfo::Convert::Text::heading({'level' => 0, 
            'cmdname' => 'titlefont'}, $result, $self->{'NUMBER_SECTIONS'});
@@ -1498,6 +1500,7 @@ sub _convert($$)
           my $prepended = $self->gdt('@b{{quotation_arg}:} ', 
              {'quotation_arg' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
           #print STDERR Data::Dumper->Dump([$prepended]);
+          $prepended->{'type'} = 'frenchspacing';
           $result .= $self->convert_line($prepended);
           $self->{'format_context'}->[-1]->{'counter'} += 
              Texinfo::Convert::Unicode::string_width($result);
@@ -1568,7 +1571,8 @@ sub _convert($$)
       }
       if ($root->{'args'}) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-        my $heading = $self->convert_line($root->{'args'}->[0]);
+        my $heading = $self->convert_line({'type' => 'frenchspacing',
+                         'contents' => [$root->{'args'}->[0]]});
         pop @{$self->{'count_context'}};
         # FIXME œ@* and @c?
         my $heading_underlined = 
@@ -1603,7 +1607,8 @@ sub _convert($$)
           }];
         }
       }
-      $result = $self->convert_line({'contents' => $contents},
+      $result = $self->convert_line({'type' => 'frenchspacing',
+                                     'contents' => $contents},
                   {'indent_level'
                     => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       if ($result ne '') {
@@ -1667,7 +1672,8 @@ sub _convert($$)
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0, 
                                                    'locations' => []};
       $result = $self->convert_line (
-                       {'contents' => $root->{'extra'}->{'misc_content'}},
+                       {'type' => 'frenchspacing',
+                        'contents' => $root->{'extra'}->{'misc_content'}},
                        {'indent_length' => 0});
       if ($result ne '') {
         $result = $self->ensure_end_of_line($result);
@@ -1737,6 +1743,7 @@ sub _convert($$)
                });
           }
           #print STDERR "$float ".$self->convert_line($float_entry)."\n";
+          $float_entry->{'type'} = 'frenchspacing';
           my $float_line = $self->convert_line($float_entry);
           my $line_width 
              = Texinfo::Convert::Unicode::string_width($float_line);
@@ -1757,9 +1764,13 @@ sub _convert($$)
             $self->{'multiple_pass'} = 1;
             push @{$self->{'context'}}, 'listoffloats';
             # FIXME should there be some indentation?
-            my $caption_text = $self->_convert({
-                     'contents' => $caption->{'args'}->[0]->{'contents'},
-                         'type' => $caption->{'cmdname'}.'_listoffloats'});
+            my $tree = {'contents' => $caption->{'args'}->[0]->{'contents'}};
+            # the following does nothing since there are paragraphs within
+            # the shortcaption.
+            #if ($caption->{'cmdname'} eq 'shortcaption') {
+            #  $tree->{'type'} = 'frenchspacing';
+            #}
+            my $caption_text = $self->_convert($tree);
             my $old_context = pop @{$self->{'context'}};
             delete $self->{'multiple_pass'};
             die if ($old_context ne 'listoffloats');
@@ -2231,6 +2242,7 @@ sub _convert($$)
         }
         if ($prepended) {
           #print STDERR "PREPENDED ".Data::Dumper->Dump([$prepended]);
+          $prepended->{'type'} = 'frenchspacing';
           my $float_number = $self->convert_line ($prepended);
           $result .= $float_number;
           $self->{'format_context'}->[-1]->{'counter'} += 
@@ -2240,7 +2252,14 @@ sub _convert($$)
         if ($caption) {
           # FIXME not sure it is right.
           $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
-          $result .= $self->_convert($caption->{'args'}->[0]);
+          my $tree = $caption->{'args'}->[0];
+          # the frenchspacing is ignored since there are paragraphs within
+          # the shortcaption.
+          #if ($caption->{'cmdname'} eq 'shortcaption') {
+          #  $tree = {'type' => 'frenchspacing',
+          #           'contents' => [$caption->{'args'}->[0]]};
+          #}
+          $result .= $self->_convert($tree);
         }
       }
     } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 

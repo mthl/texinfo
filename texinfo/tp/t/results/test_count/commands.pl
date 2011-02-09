@@ -378,7 +378,7 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
    [23] (44,6) :before_item
    [23] (44,6)
    [24] (44,6) @item
-    [25] (44,6) 
+    [25] (44,6) :frenchspacing
      [26] (44,6) @samp
       [27] (44,6) :brace_command_arg
        [28] (44,6) :text|vitem table|

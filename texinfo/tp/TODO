@@ -15,6 +15,9 @@ least, could make for a notable speedup.
 @ protecting end of lines in @def* is not kept in any way in the tree.
 Maybe it could be possible to have it as a 'type'?
 
+Add
+@urefbreakstyle after|before|none
+
 test @anchor, @footnote and @cindex in @caption with @listoffloats.
 
 for i18n, one want to do something like

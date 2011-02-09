@@ -349,7 +349,11 @@ sub _printindex($$)
     #my @keys = keys(%$entry);
     #print STDERR "$index_name $entry: @keys\n";
     my $entry_tree = {'contents' => $entry->{'content'}};
-    $entry_tree->{'type'} = 'code' if ($in_code);
+    if ($in_code) {
+      $entry_tree->{'type'} = 'code';
+    } else {
+      $entry_tree->{'type'} = 'frenchspacing';
+    }
     my $entry_text = '';
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
 
