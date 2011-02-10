@@ -1,5 +1,5 @@
 /* nodes.h -- How we represent nodes internally.
-   $Id: nodes.h,v 1.6 2007-07-01 21:20:31 karl Exp $
+   $Id: nodes.h,v 1.7 2011-02-10 09:14:47 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -41,6 +41,7 @@ typedef struct {
   char *contents;               /* Characters appearing in this node. */
   long nodelen;                 /* The length of the CONTENTS member. */
   unsigned long display_pos;    /* Where to display at, if nonzero.  */
+  long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
 } NODE;
 
