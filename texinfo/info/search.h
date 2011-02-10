@@ -1,5 +1,5 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
-   $Id: search.h,v 1.9 2009-01-23 09:37:40 gray Exp $
+   $Id: search.h,v 1.10 2011-02-10 09:15:33 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2009
    Free Software Foundation, Inc.
@@ -59,7 +59,7 @@ extern enum search_result search_backward (char *input_string,
 extern enum search_result search (char *string, SEARCH_BINDING *binding,
 				  long *poff);
 extern enum search_result regexp_search (char *regexp,
-					 SEARCH_BINDING *binding, long length,
+					 SEARCH_BINDING *binding,
 					 long *poff,
 					 SEARCH_BINDING *pret);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
