@@ -18,7 +18,26 @@ my @test_cases = (
 
 table content.
 @end table
-']
+'],
+['empty_item_itemx',
+'@vtable @asis
+
+VTable
+
+@item first item
+@itemx
+@itemx after an empty itemx, before an empty item
+@item 
+@item in item before end table
+@end vtable
+'],
+['long_item',
+'@table @emph
+@item first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa
+@itemx second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
+
+Text.
+'],
 );
 
 my @test_invalid = (

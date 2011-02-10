@@ -326,8 +326,10 @@ sub add_text($$)
       # FIXME
       # this should never happen, all cases are taken into account above.
       # however it happens with strange caracters that appear sometime and
-      # look like invalid. Is it a perl bug?
-      die "Unknown caracter leading $text";
+      # look like invalid. Is it a perl bug? Maybe an invalid character in
+      # the encoding?
+      #die "Unknown caracter leading $text";
+      last;
     }
   }
   return $result;

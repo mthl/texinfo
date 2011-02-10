@@ -218,7 +218,7 @@ my @variable_settables = (
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'TEXI2DVI');
+  'TEXI2DVI', 'DUMP_TREE');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
@@ -392,19 +392,19 @@ sub handle_errors($$) {
 my $result_options = Getopt::Long::GetOptions (
  'macro-expand|E=s' => sub { push @texi2dvi_args, '-E'; 
                              set_from_cmdline('MACRO_EXPAND', $_[1]); },
- 'ifhtml' => sub { set_expansion('html', $_[1]); },
- 'ifinfo' => sub { set_expansion('info', $_[1]); },
- 'ifxml' => sub { set_expansion('xml', $_[1]); },
- 'ifdocbook' => sub { set_expansion('docbook', $_[1]); },
- 'iftex' => sub { set_expansion('tex', $_[1]); },
- 'ifplaintext' => sub { set_expansion('plaintext', $_[1]); },
+ 'ifhtml!' => sub { set_expansion('html', $_[1]); },
+ 'ifinfo!' => sub { set_expansion('info', $_[1]); },
+ 'ifxml!' => sub { set_expansion('xml', $_[1]); },
+ 'ifdocbook!' => sub { set_expansion('docbook', $_[1]); },
+ 'iftex!' => sub { set_expansion('tex', $_[1]); },
+ 'ifplaintext!' => sub { set_expansion('plaintext', $_[1]); },
  'I=s' => sub { push @texi2dvi_args, ('-'.$_[0], $_[1]);
                 push @include_dirs, split(/$quoted_path_separator/, $_[1]); },
  'conf-dir=s' => sub { push @conf_dirs, split(/$quoted_path_separator/, $_[1]); },
  'P=s' => sub { unshift @prepend_dirs, split(/$quoted_path_separator/, $_[1]); },
- 'number-sections' => sub { set_from_cmdline('NUMBER_SECTIONS', $_[1]); },
- 'number-footnotes' => sub { set_from_cmdline('NUMBER_FOOTNOTES', $_[1]); },
- 'node-files' => sub { set_from_cmdline('NODE_FILES', $_[1]); },
+ 'number-sections!' => sub { set_from_cmdline('NUMBER_SECTIONS', $_[1]); },
+ 'number-footnotes!' => sub { set_from_cmdline('NUMBER_FOOTNOTES', $_[1]); },
+ 'node-files!' => sub { set_from_cmdline('NODE_FILES', $_[1]); },
  'footnote-style=s' => sub {
     if ($_[1] eq 'end' or $_[1] eq 'separate') {
        set_from_cmdline('footnotestyle', $_[1]);
@@ -415,10 +415,10 @@ my $result_options = Getopt::Long::GetOptions (
  'split=s' => sub { set_from_cmdline('SPLIT', $_[1]); },
  'no-split' => sub { set_from_cmdline('SPLIT', ''); 
                      set_from_cmdline('SPLIT_SIZE', undef);},
- 'headers' => sub { set_from_cmdline('HEADERS', $_[1]);
-                    set_from_cmdline('SHOW_MENU', $_[1]);
-                    $parser_default_options->{'SHOW_MENU'} = $_[1];
-                    $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
+ 'headers!' => sub { set_from_cmdline('HEADERS', $_[1]);
+                     set_from_cmdline('SHOW_MENU', $_[1]);
+                     $parser_default_options->{'SHOW_MENU'} = $_[1];
+                     $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
  'output|out|o=s' => sub { 
     my $var = 'OUTFILE';
     if ($_[1] =~ m:/$: or -d $_[1]) {
@@ -478,7 +478,7 @@ my $result_options = Getopt::Long::GetOptions (
  },
  'css-include=s' => \@css_files,
  'css-ref=s' => \@css_refs,
- 'transliterate-file-names' => 
+ 'transliterate-file-names!' => 
      sub {set_from_cmdline ('TRANSLITERATE_FILE_NAMES', $_[1]);},
  'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },
  'split-size=s' => sub {set_from_cmdline('SPLIT_SIZE', $_[1])},
@@ -602,7 +602,14 @@ while(@input_files)
     next;
   }
 
-  #print STDERR Data::Dumper->Dump([$tree]);
+  if (defined(get_conf('DUMP_TREE'))) {
+    # this is very wrong, but a way to avoid a spurious warning.
+    no warnings 'once';
+    local $Data::Dumper::Purity = 1;
+    no warnings 'once';
+    local $Data::Dumper::Indent = 1;
+    print STDERR Data::Dumper->Dump([$tree]);
+  }
 
   if (defined(get_conf('MACRO_EXPAND'))) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree);

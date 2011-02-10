@@ -1589,33 +1589,36 @@ sub _convert($$)
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
-            and $root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
-      my $contents = $root->{'extra'}->{'misc_content'};
-      if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
-        my $command_as_argument = $root->{'parent'}->{'extra'}->{'command_as_argument'};
-        if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
-          $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
-                   'args' => [{'type' => 'brace_command_arg', 
-                              'contents' => $contents}]
-          }];
-        } else {
-          $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
-                        'type' => $command_as_argument->{'type'},
-                        'extra' => $command_as_argument->{'extra'},
-                   'args' => [{'type' => 'brace_command_arg', 
-                              'contents' => $contents}]
-          }];
+            and $root->{'args'} and $root->{'args'}->[0] 
+            and $root->{'args'}->[0]->{'type'}
+            and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
+      if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+        my $contents = $root->{'extra'}->{'misc_content'};
+        if ($root->{'parent'}->{'extra'} and $root->{'parent'}->{'extra'}->{'command_as_argument'}) {
+          my $command_as_argument = $root->{'parent'}->{'extra'}->{'command_as_argument'};
+          if ($command_as_argument->{'type'} ne 'definfoenclose_command') {
+            $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
+                     'args' => [{'type' => 'brace_command_arg', 
+                                'contents' => $contents}]
+            }];
+          } else {
+            $contents = [{'cmdname' => $command_as_argument->{'cmdname'},
+                          'type' => $command_as_argument->{'type'},
+                          'extra' => $command_as_argument->{'extra'},
+                     'args' => [{'type' => 'brace_command_arg', 
+                                'contents' => $contents}]
+            }];
+          }
+        }
+        $result = $self->convert_line({'type' => 'frenchspacing',
+                                     'contents' => $contents},
+                    {'indent_level'
+                      => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+        if ($result ne '') {
+          $result = $self->ensure_end_of_line($result);
+          $self->{'empty_lines_count'} = 0;
         }
       }
-      $result = $self->convert_line({'type' => 'frenchspacing',
-                                     'contents' => $contents},
-                  {'indent_level'
-                    => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-      if ($result ne '') {
-        $result = $self->ensure_end_of_line($result);
-        $self->{'empty_lines_count'} = 0;
-      }
-      
     } elsif ($root->{'cmdname'} eq 'item' and $root->{'parent'}->{'cmdname'}
              and $item_container_commands{$root->{'parent'}->{'cmdname'}}) {
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
