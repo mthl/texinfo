@@ -1,5 +1,5 @@
 /* search.c -- searching large bodies of text.
-   $Id: search.c,v 1.10 2009-01-23 09:37:40 gray Exp $
+   $Id: search.c,v 1.11 2011-02-10 09:15:11 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009
    Free Software Foundation, Inc.
@@ -93,7 +93,7 @@ search (char *string, SEARCH_BINDING *binding, long *poff)
    string instance. 
 */
 enum search_result
-regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
+regexp_search (char *regexp, SEARCH_BINDING *binding, 
 	       long *poff, SEARCH_BINDING *pend)
 {
   static char *previous_regexp = NULL;
@@ -173,14 +173,27 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
   if (previous_content != binding->buffer)
     {
       /* new buffer to search in, let's scan it */
-      regoff_t start = 0;
+      regoff_t start = 0, end;
+      size_t content_length;
       char saved_char;
 
+      if (binding->start < binding->end)
+	{
+	  start = binding->start;
+	  end = binding->end;
+	}
+      else
+	{
+	  start = binding->end;
+	  end = binding->start;
+	}
+      content_length = end - start + 1;
+      
       previous_content = binding->buffer;
-      saved_char = previous_content[length-1];
-      previous_content[length-1] = '\0';
+      saved_char = previous_content[content_length-1];
+      previous_content[content_length-1] = '\0';
 
-      for (match_count = 0; start < length; )
+      for (match_count = 0; start < content_length; )
         {
           int result = 0;
           if (match_count >= match_alloc)
@@ -213,7 +226,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding, long length,
               break;
             }
         }
-      previous_content[length-1] = saved_char;
+      previous_content[content_length-1] = saved_char;
     }
 
   pos = binding->start;
