@@ -1,5 +1,5 @@
 /* nodes.c -- how to get an Info file and node.
-   $Id: nodes.c,v 1.15 2010-10-07 12:24:07 gray Exp $
+   $Id: nodes.c,v 1.16 2011-02-10 09:16:21 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
    2008, 2009 Free Software Foundation, Inc.
@@ -135,6 +135,16 @@ info_get_node (char *filename, char *nodename)
   return node;
 }
 
+static void
+node_set_body_start (NODE *node)
+{
+  int n = skip_node_separator (node->contents);
+  node->body_start = strcspn(node->contents + n, "\n");
+  node->body_start += n;
+  if (node->contents[++node->body_start] == '\n')
+    ++node->body_start;
+}
+
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
@@ -174,6 +184,7 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
       node->nodelen = file_buffer->filesize;
       node->flags = 0;
       node->display_pos = 0;
+      node_set_body_start (node);
     }
 #if defined (HANDLE_MAN_PAGES)
   /* If the file buffer is the magic one associated with manpages, call
@@ -929,7 +940,6 @@ find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag)
   return node;
 }
 
-
 /* Return the node from FILE_BUFFER which matches NODENAME by searching
    the tags table in FILE_BUFFER, or NULL.  */
 static NODE *
@@ -971,6 +981,7 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 	node->contents    = subfile->contents + tag->nodestart;
 	node->display_pos = 0;
 	node->flags       = 0;
+	node_set_body_start (node);
 	
 	if (file_buffer->flags & N_HasTagsTable)
 	  {
