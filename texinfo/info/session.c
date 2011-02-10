@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.46 2009-01-23 09:37:40 gray Exp $
+   $Id: session.c,v 1.47 2011-02-10 09:15:51 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -3741,34 +3741,67 @@ file_buffer_of_window (WINDOW *window)
 static enum search_result
 info_search_in_node_internal (char *string, NODE *node, long int start,
 			      WINDOW *window, int dir, int case_sensitive,
+			      int match_nodename,
 			      long *poff, SEARCH_BINDING *resbnd)
 {
   SEARCH_BINDING binding;
-  enum search_result result;
-  
-  binding.buffer = node->contents;
-  binding.start = start;
-  binding.end = node->nodelen;
+  enum search_result result = search_not_found;
+    
   binding.flags = 0;
   if (!case_sensitive)
     binding.flags |= S_FoldCase;
-
-  if (dir < 0)
-    {
-      binding.end = 0;
-      binding.flags |= S_SkipDest;
-    }
-
-  if (binding.start < 0)
-    return -1;
-
   /* For incremental searches, we always wish to skip past the string. */
   if (isearch_is_active)
     binding.flags |= S_SkipDest;
+  
+  if (match_nodename)
+    {
+      /* Match_nodename is set when we have changed the node and are
+	 about to start searching in the just loaded one.  First of all
+	 we need to see if the node name matches the search string.  It
+	 cannot be matched otherwise, because normally, the entire node
+	 header line is excluded from searches.
 
-  result = (use_regex ? 
-	    regexp_search (string, &binding, node->nodelen, poff, resbnd):
-	    search (string, &binding, poff));
+	 If this initial match fails, we continue as usual. */
+
+      int start_off = string_in_line (INFO_NODE_LABEL, node->contents);
+      if (start_off != -1)
+	{
+	  start_off += skip_whitespace (node->contents + start_off);
+	  binding.buffer = node->nodename;
+	  binding.start = 0;
+	  binding.end = strlen (node->nodename);
+	  
+	  result = (use_regex ? 
+		    regexp_search (string, &binding, poff, resbnd):
+		    search (string, &binding, poff));
+	  if (result == search_success)
+	    *poff += start_off;
+	}
+    }
+
+  if (result != search_success)
+    {
+      binding.buffer = node->contents;
+      binding.start = start;
+      binding.end = node->nodelen;
+      
+      if (dir < 0)
+	{
+	  binding.end = node->body_start;
+	  binding.flags |= S_SkipDest;
+	}
+      
+      if (binding.start < 0)
+	return -1;
+      else if (binding.start < node->body_start)
+	binding.start = node->body_start;
+      
+      result = (use_regex ? 
+		regexp_search (string, &binding, poff, resbnd):
+		search (string, &binding, poff));
+    }
+  
   if (result == search_success && window)
     {
       set_remembered_pagetop_and_point (window);
@@ -3786,7 +3819,7 @@ info_search_in_node (char *string, NODE *node, long int start,
 {
   long offset;
   if (info_search_in_node_internal (string, node, start,
-				    window, dir, case_sensitive,
+				    window, dir, case_sensitive, 0,
 				    &offset, NULL) == search_success)
     return offset;
   return -1;
@@ -3862,7 +3895,7 @@ info_search_internal (char *string, WINDOW *window,
   
   result = info_search_in_node_internal
              (string, window->node, start, window, dir,
-	      case_sensitive, &ret, resbnd);
+	      case_sensitive, 0, &ret, resbnd);
 
   switch (result)
     {
@@ -3976,7 +4009,7 @@ info_search_internal (char *string, WINDOW *window,
 
           result =
             info_search_in_node_internal (string, node, start, window, dir,
-					  case_sensitive, &ret, resbnd);
+					  case_sensitive, 1, &ret, resbnd);
 
           /* Did we find the string in this node? */
           if (result == search_success)
