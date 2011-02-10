@@ -1,3 +1,24 @@
+2011-02-10  Sergey Poznyakoff  <gray@gnu.org>
+
+	Exclude node headers from searches.
+	
+	* info/nodes.h (NODE): New member body_start.
+
+	* info/search.c (regexp_search): Remove length argument.
+	Search bounds are given by binding.  Change the code accordingly.
+	* info/search.h (regexp_search): Change signature.
+	* info/session.c (info_search_in_node_internal): New argument
+	match_nodename.  If it is set, try to match nodename first.
+	Otherwise, match the node contents, excluding the node line.
+	(info_search_in_node): Pass 0 as match_nodename to
+	info_search_in_node_internal.
+	(info_search_internal): Pass 1 as match_nodename after switching
+	to the new node.
+	
+	* info/nodes.c (node_set_body_start): New function.
+	(info_get_node_of_file_buffer): Set body_start on the new node.
+	(info_node_of_file_buffer_tags): Likewise.
+	
 2011-02-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\urefbreak): revised attempt to allow breaking
