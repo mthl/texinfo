@@ -1,15 +1,14 @@
-<!-- $Id: texinfo.dtd,v 1.16 2010-04-04 17:51:35 karl Exp $
-   Document Type Definition for Texinfo XML output (the '-'-xml option).
+<!-- $Id: texinfo.dtd,v 1.17 2011-02-14 19:16:56 karl Exp $
+  Document Type Definition for Texinfo XML output (the '-'-xml option).
 
-  Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
-  Free Software Foundation, Inc.
+  Copyright 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+  2011 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-   Original author: Philippe Martin
-   Contributors: Karl Eichwalder, Alper Ersoy, Karl Berry, Torsten Bronger
+  Original author: Philippe Martin.
 -->
 
 <!-- * ENTITIES * -->
@@ -31,7 +30,7 @@
 <!-- Title page -->
 <!ENTITY % titlepage_cmds "author | booktitle | booksubtitle">
 
-<!-- block -->
+<!-- Block -->
 <!ENTITY % block "menu | para | quotation | smallquotation
                   | example | smallexample | lisp | smalllisp
                   | cartouche | copying
@@ -147,7 +146,14 @@
 <!ELEMENT booktitle    (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT booksubtitle (#PCDATA | %Inline.phrase;)*>
 
-<!-- NODES -->
+<!-- Explicit blank lines -->
+<!ELEMENT sp (#PCDATA)>
+<!ATTLIST sp
+          lines CDATA #IMPLIED>
+
+
+<!-- emacs-page
+     Nodes -->
 <!ELEMENT node (nodename, nodenext?, nodeprev?, nodeup?,
                 (%section.all; | %block; | %toc; | %lang;)*) >
 
@@ -157,7 +163,7 @@
 <!ELEMENT nodeup   (#PCDATA)>
 
 
-<!-- SECTIONING -->
+<!-- Sectioning -->
 <!ELEMENT top           (title?, (%section.level1.content;))>
 <!ELEMENT part          (title?, (%section.level1.content;))>
 
@@ -184,11 +190,9 @@
 <!ELEMENT subsubheading (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT title         (#PCDATA | %Inline.phrase;)*>
 
-<!-- Negative Indentation in Blocks -->
-<!ELEMENT exdent       (#PCDATA | %Inline.phrase;)*>
 
-
-<!-- BLOCK Elements -->
+<!-- emacs-page
+     Block elements -->
 
 <!ELEMENT quotation    (%block; | %Inline.phrase; | exdent)*>
 <!ELEMENT documentdescription (#PCDATA | %block; | %Inline.phrase;)*>
@@ -236,6 +240,9 @@
 <!ELEMENT menunode (#PCDATA)>
 <!ELEMENT menutitle (#PCDATA)>
 <!ELEMENT menucomment (#PCDATA | %Inline.phrase;)*>
+
+<!-- Negative indentation in blocks -->
+<!ELEMENT exdent       (#PCDATA | %Inline.phrase;)*>
 
 <!-- Floating displays -->
 <!ELEMENT float (floattype, floatpos, (%block;)*,
@@ -289,7 +296,9 @@
 <!ELEMENT defclassvar  (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT defoperation (#PCDATA | %Inline.phrase;)*>
 
-<!-- INLINE Elements -->
+
+<!-- emacs-page
+     Inline elements -->
 
 <!-- options -->
 <!ELEMENT frenchspacing (#PCDATA)> <!-- must be on or off -->
@@ -363,6 +372,7 @@
 <!ELEMENT indexterm (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST indexterm
           index CDATA #IMPLIED>
+<!ELEMENT printindex (#PCDATA)>
 
 <!ELEMENT email (emailaddress, emailname?)>
 <!ELEMENT emailaddress (#PCDATA | %Inline.phrase;)*>
@@ -375,6 +385,9 @@
 
 <!ELEMENT footnote (para)>
 
+
+<!-- emacs-page
+     Punctuation and special symbols.  -->
 
 <!ELEMENT punct     (#PCDATA)>
 <!ATTLIST punct
@@ -496,12 +509,3 @@
 <!ENTITY rArr "&#x21d2;">
 
 <!ENTITY macr "&#xaf;">
-
-
-<!-- fixxme: not yet classified -->
-
-<!ELEMENT sp (#PCDATA)>
-<!ATTLIST sp
-          lines CDATA #IMPLIED>
-<!ELEMENT printindex (#PCDATA)>
-
