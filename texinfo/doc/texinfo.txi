@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
+@c $Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6709,6 +6709,7 @@ line breaking within displayed urls.  If you need to allow breaks at
 other characters you can insert @code{@@/} as needed (@pxref{Line
 Breaks}).
 
+@txicmdindex @@urefbreakstyle
 By default, any such breaks at special characters will occur after the
 character.  Some people prefer such breaks to happen after the special
 character.  This can be controlled with the @code{@@urefbreakstyle}
@@ -16671,6 +16672,7 @@ variable with the same name (minus the leading @code{@@}):
 @@oddheading @@oddheadingmarks @@pagesizes @@paragraphindent
 @@setchapternewpage @@setcontentsaftertitlepage @@setfilename
 @@setshortcontentsaftertitlepage @@shortcontents @@today
+@@urefbreakstyle
 @end smallexample
 
 Setting such a configuration variable to a value @samp{foo} is
@@ -21928,12 +21930,12 @@ item text.  Thus, when several items have the same description, use
 @xref{itemx, , @code{@@itemx}}.
 
 @item @@kbd@{@var{keyboard-characters}@}
-Indicate characters of input to be typed by users.  @xref{kbd, ,
-@code{@@kbd}}.
+Indicate characters of input to be typed by users.  @xref{kbd,, @code{@@kbd}}.
 
 @item @@kbdinputstyle @var{style}
 Specify when @code{@@kbd} should use a font distinct from
-@code{@@code}.  @xref{kbd, , @code{@@kbd}}.
+@code{@@code}: @code{code}, @code{distinct}, @code{example}.
+@xref{kbd,, @code{@@kbd}}.
 
 @item @@key@{@var{key-name}@}
 Indicate the name of a key on a keyboard.  @xref{key, , @code{@@key}}.
@@ -22409,6 +22411,11 @@ contents.  In Info, the title is underlined with periods.
 @itemx @@url@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 Define a cross reference to an external uniform resource locator,
 e.g., for the World Wide Web.  @xref{uref, , @code{@@uref}}.
+
+@item @@urefbreakstyle @var{style}
+Specify how @code{@@uref}/@code{@@url} should break at special
+characters: @code{after}, @code{before}, @code{none}.
+@xref{uref,, @code{@@uref}}.
 
 @item @@v@{@var{c}@}
 Generate check accent over the character @var{c}, as in @v{o}.
@@ -23075,7 +23082,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
+$Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23154,7 +23161,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.366 2011-02-09 19:07:17 karl Exp $
+@comment $Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

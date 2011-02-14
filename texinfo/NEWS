@@ -1,9 +1,9 @@
-$Id: NEWS,v 1.198 2010-12-02 17:52:54 karl Exp $
+$Id: NEWS,v 1.199 2011-02-14 19:20:19 karl Exp $
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
   Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software
+  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software
   Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -27,6 +27,7 @@ one of the relevant sections:
   . new command @part for a group of chapters.
   . new environments @raggedright and @smallquotation.
   . new command @headitemfont for the sake of template rows.
+  . new command @urefbreakstyle to control breaking of @url/@uref in TeX.
   . new diacritic command @ogonek.
   . new commands for Icelandic letters eth and thorn: @DH{} @dh{} @TH{} @th{}.
   . DEL (0x7f = 0177 = 127) is a true comment character (catcode 14 in TeX).
@@ -49,6 +50,8 @@ one of the relevant sections:
   meantime, we hope all the many improvements make it worthwhile.
 
 * texinfo.tex:
+  . urls (given to @uref and @url) are broken by default at special
+    characters; behavior controllable with @urefbreakstyle.
   . support some per-language hyphenation, when the underlying TeX
     engine does (for instance, etex/pdfetex from TeX Live 2008 or
     later).  Words with accented letters are still not handled properly.
@@ -58,8 +61,9 @@ one of the relevant sections:
   . new option --max-iterations.
   
 * info:
-  . INFOPATH is determined by PATH by default, or if an element "PATH"
+  . INFOPATH is determined from PATH by default, or if an element "PATH"
     is specified.
+  . Info keywords not included in searches.
   . xz compression supported.
 
 * install-info:
