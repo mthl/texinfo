@@ -1,3 +1,14 @@
+2011-02-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\sectionheading): check that we are not in an
+	environment such as @table.  Report from Akim,
+	https://savannah.gnu.org/bugs/?15514.
+
+	* NEWS,
+	* doc/texinfo.txi (Command Summary): missed @urefbreakstyle.
+	
+	* util/texinfo.dtd (sp, printindex): categorize.
+
 2011-02-10  Sergey Poznyakoff  <gray@gnu.org>
 
 	Exclude node headers from searches.

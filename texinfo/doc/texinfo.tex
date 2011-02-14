@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-02-09.11}
+\def\texinfoversion{2011-02-14.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -548,7 +548,7 @@
 }
 \def\inenvironment#1{%
   \ifx#1\empty
-    out of any environment%
+    outside of any environment%
   \else
     in environment \expandafter\string#1%
   \fi
@@ -2575,8 +2575,6 @@ end
       \ifpdf
         \unhbox0             % PDF: 2nd arg given, show only it
       \else
-        % \empty at the end of \scantokens arg gets rid of
-        % trailing newline (and ultimate spurious whitespace).
         \unhbox0\ (\urefcode{#1})% DVI: 2nd arg given, show both it and url
       \fi
     \else
@@ -5720,6 +5718,8 @@ end
 %
 \def\sectionheading#1#2#3#4{%
   {%
+    \checkenv{}% should not be in an environment.
+    %
     % Switch to the right set of fonts.
     \csname #2fonts\endcsname \rmisbold
     %
