@@ -395,6 +395,28 @@ A ref to float without type @ref{label but no type}.
 @bye
 
 
+'],
+['empty_listoffloats_with_floats',
+'
+@float , label1
+Label no caption.
+@end float
+
+@float , label2
+Label and caption.
+@caption{caption with label}
+@end float
+
+@float
+no label no caption
+@end float
+
+@float
+no label caption
+@caption{caption no label}
+@end float
+
+@listoffloats
 ']
 );
 

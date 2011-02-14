@@ -251,6 +251,15 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 indent in quotation
 @end quotation
 '],
+['noindent_after_smallexample',
+'To obtain.
+@smallexample
+$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain\'
+$ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain\'
+@end smallexample
+@noindent
+Less recent versions are also present.
+'],
 ['test_allowcodebreaks',
 '@node Top
 

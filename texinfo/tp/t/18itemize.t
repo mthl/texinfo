@@ -249,7 +249,151 @@ my @test_cases = (
 still second
 @end enumerate
 @end example
-']
+'],
+['itemize_and_empty_lines',
+'@itemize youhou
+@item first item
+@item
+@example
+In example
+
+end example.
+@end example
+@item
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end itemize
+
+@itemize
+@item first item
+@item
+@example
+In example
+
+end example.
+@end example
+@item
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@item
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end itemize
+
+An itemize
+@itemize @minus
+@item truc 
+line
+@end itemize
+After itemize
+
+
+A nested itemize
+@itemize @minus
+@item truc 
+line
+@itemize @bullet
+@item in nested itemize
+@end itemize
+After inside nested itemize.
+@end itemize
+After nested itemize
+
+@itemize @bullet
+@item the version number of Texinfo and the program(s) or manual(s) involved.
+@item hardware and operating system names and versions.
+@item something aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaa
+b b bbbbbbbbbbbbbbbbbbbbbbb.
+@end itemize
+'],
+['itemize_long_item',
+'@itemize youhou itemize very long item aaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbb cccccccccccc
+@item first item
+@item
+@example
+In example
+
+end example.
+@end example
+@item
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@item
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end itemize
+'],
+['enumerate_and_empty_lines',
+'@enumerate
+@item first item
+@item 
+@example
+In example
+
+end example.
+@end example
+@item 
+
+empty line.
+@item
+
+@example
+In second example
+@end example
+@item 
+@quotation
+Quotation
+@end quotation
+
+@item
+
+@quotation
+quotation after a blank line
+@end quotation
+@end enumerate
+
+@enumerate
+@item aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fffffffff ggggggggg vvvvvvvvv ggggggggg h
+@end enumerate
+'],
 );
 
 my @test_invalid = (

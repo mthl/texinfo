@@ -348,57 +348,57 @@ $result_converted{'debugcount'}->{'commands'} = ' [1] (0,0) :text_root
    [8] (12,0) @~
    [8] (12,0)
    [9] (12,0) :text|, |
-   [9] (18,0)
-   [10] (18,0) @^
-   [10] (18,0)
-   [11] (18,0) :text|\\n|
-   [11] (21,0)
-  [2] (22,1)
-  [12] (22,1) :empty_line:text|\\n|
-  [12] (23,2)
-  [13] (23,2) :paragraph
-   [14] (23,2) :text|Hohoh\\n|
-   [14] (31,2)
-  [13] (32,3)
-  [15] (32,3) :empty_line:text|\\n|
-  [15] (33,4)
-  [16] (33,4) @example
-   [17] (33,4) :empty_line_after_command:text| \\n|
-   [17] (33,4)
-   [18] (33,4) :preformatted
-    [19] (33,4) :text|truc\\n|
-    [19] (43,5)
-   [18] (43,5)
-  [16] (43,5)
-  [20] (43,5) :empty_line_after_command:text|\\n|
-  [20] (43,5)
-  [21] (43,5) :empty_line:text|\\n|
-  [21] (44,6)
-  [22] (44,6) @vtable
-   [23] (44,6) :before_item
-   [23] (44,6)
-   [24] (44,6) @item
-    [25] (44,6) :frenchspacing
-     [26] (44,6) @samp
-      [27] (44,6) :brace_command_arg
-       [28] (44,6) :text|vitem table|
-       [28] (50,6)
-      [27] (50,6)
-     [26] (50,6)
-    [25] (50,6)
-   [24] (58,7)
- locations  (1) l 7
-   [29] (58,7) :empty_line:text|\\n|
-   [29] (59,8)
-   [30] (59,8) :paragraph
-    [31] (59,8) :text|text\\n|
-    [31] (68,8)
-   [30] (69,9)
-  [22] (69,9)
-  [32] (69,9) :empty_line_after_command:text||
-  [32] (69,9)
- [1] (69,9)
-TeX. Ab.  @.   e~, i^
+   [9] (17,0)
+   [10] (17,0) @^
+   [10] (17,0)
+   [11] (17,0) :text|\\n|
+   [11] (20,0)
+  [2] (21,1)
+  [12] (21,1) :empty_line:text|\\n|
+  [12] (22,2)
+  [13] (22,2) :paragraph
+   [14] (22,2) :text|Hohoh\\n|
+   [14] (30,2)
+  [13] (31,3)
+  [15] (31,3) :empty_line:text|\\n|
+  [15] (32,4)
+  [16] (32,4) @example
+   [17] (32,4) :empty_line_after_command:text| \\n|
+   [17] (32,4)
+   [18] (32,4) :preformatted
+    [19] (32,4) :text|truc\\n|
+    [19] (42,5)
+   [18] (42,5)
+  [16] (42,5)
+  [20] (42,5) :empty_line_after_command:text|\\n|
+  [20] (42,5)
+  [21] (42,5) :empty_line:text|\\n|
+  [21] (43,6)
+  [22] (43,6) @vtable
+   [23] (43,6) :before_item
+   [23] (43,6)
+   [24] (43,6) @item
+    [25] (43,6) :frenchspacing
+     [26] (43,6) @samp
+      [27] (43,6) :brace_command_arg
+       [28] (43,6) :text|vitem table|
+       [28] (49,6)
+ locations  (1) l 6
+      [27] (49,6)
+     [26] (49,6)
+    [25] (49,6)
+   [24] (57,7)
+   [29] (57,7) :empty_line:text|\\n|
+   [29] (58,8)
+   [30] (58,8) :paragraph
+    [31] (58,8) :text|text\\n|
+    [31] (67,8)
+   [30] (68,9)
+  [22] (68,9)
+  [32] (68,9) :empty_line_after_command:text||
+  [32] (68,9)
+ [1] (68,9)
+TeX. Ab.  @.  e~, i^
 
    Hohoh
 

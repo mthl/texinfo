@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 101 };
+BEGIN { plan tests => 110 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
@@ -60,10 +60,12 @@ test_para(['word o'], "word\no\n", 'word_letter_max_exact', {'max' => 5});
 test_para(['word o'], "word o\n", 'word_letter_max_plus_two', {'max' => 6});
 test_para(['word  other'], "word other\n", 'two_words_two_spaces');
 test_para(['word.  other'], "word.  other\n", 'two_words_dot');
+#test_para(['word. other'], "word.  other\n", 'two_words_dot_one_space');
 test_para(['word. other'], "word.  other\n", 'two_words_dot_one_space');
 test_para(['word.) other'], "word.)  other\n", 'two_words_dot_paren_one_space');
 test_para(['worD.  other'], "worD. other\n", 'two_words_dot_upper');
 test_para(['word','other'], "wordother\n", 'concatenate');
+test_para(['word.', ' A'], "word.  A\n", 'punctuation_at_end_fragment');
 test_para(['word','other'], "wordother\n", 'concatenate_max', {'max' => 2});
 test_para(['word ','other'], "word\nother\n", 'two_elements_max', {'max' => 2});
 test_para(['word',' other'], "word\nother\n", 'two_elements_space_max', {'max' => 2});
@@ -136,6 +138,43 @@ $result .= $para->add_next('_');
 $result .= $para->add_text(' after');
 $result .= $para->end();
 is ($result, "aa.)_  after\n", 'add char after end sentence');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_text("aa.\n");
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_next('_');
+$result .= $para->add_text("b");
+$result .= $para->end();
+is ($result, "aa.  _b\n", 'add char after space protection end sentence space');
+
+$para = Texinfo::Convert::Paragraph->new();
+#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
+$result = '';
+$result .= $para->add_text("In w:\n");
+$result .= $para->set_space_protection(1,1);
+$result .= $para->add_text("Out of code -- out-of-code.   ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
+$result .= $para->end();
+is ($result, "In w: Out of code -- out-of-code.   ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg\n", 'space protection after end sentence');
+
+$para = Texinfo::Convert::Paragraph->new();
+#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
+$result = '';
+$result .= $para->add_text("In w:\n");
+$result .= $para->set_space_protection(1,1);
+$result .= $para->add_text("Out of code -- out-of-code.");
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_text("in code");
+$result .= $para->end();
+is ($result, "In w: Out of code -- out-of-code.in code\n", 'set frenchspacing after space protection');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_text("a ");
+$result .= $para->add_next('...', undef, 1);
+$result .= $para->add_text("c");
+$result .= $para->end();
+is ($result, "a ...c\n", 'add end sentence and text');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
@@ -229,6 +268,15 @@ $result .= $para->add_text('))');
 $result .= $para->add_text(' after');
 $result .= $para->end();
 is ($result, "aa.))) after\n", 'inhibit end sentence and ))');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$para->set_space_protection(undef,1,1);
+$result .= $para->add_text('  aa.) bb.');
+$result .= $para->end();
+is ($result,"aa.)  bb.\n", 'leading spaces ignore columns and keep spaces');
+
+
 
 $para = Texinfo::Convert::Paragraph->new({'max' => 2});
 $result = '';
@@ -492,6 +540,35 @@ $result .= $line->add_text('fff     g');
 $line->set_space_protection(0,0);
 $result .= $line->end();
 is ($result, " aa.) thenfff     g", 'line space_protection and spaces');
+
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->add_text("aa. ");
+$result .= $line->set_space_protection(undef,undef,undef,1);
+$result .= $line->add_next('_');
+$result .= $line->add_text("b");
+$result .= $line->set_space_protection(undef,undef,undef,0);
+$result .= $line->add_text(". after");
+$result .= $line->end();
+is ($result, "aa.  _b.  after", 'line add char after space protection end sentence space');
+
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->set_space_protection(1,1);
+$result .= $line->add_text("protected. B");
+$result .= $line->set_space_protection(0,0);
+$result .= $line->add_text("  after");
+$result .= $line->end();
+is ($result, "protected. B after", 'line 2 spaces after end space protection');
+
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->set_space_protection(1,1);
+$result .= $line->add_text("protected");
+$result .= $line->set_space_protection(0,0);
+$result .= $line->add_text("  after");
+$result .= $line->end();
+is ($result, "protected after", 'line 2 spaces after end space protection with dot');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';

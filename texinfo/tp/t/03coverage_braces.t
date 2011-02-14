@@ -93,6 +93,17 @@ aaf @w{ } bbb.
 begin and end quotations: @w{@t{`@w{}`@dots{}\'@w{}\'}}.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled.
+'],
+['format_on_first_footnote_line',
+'Texte@footnote{@quotation
+in quotation on the first footnote line
+@end quotation}.
+
+Last text @footnote{@example
+in example
+@end example
+
+}
 ']
 );
 

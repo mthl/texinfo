@@ -20,6 +20,11 @@ $result_trees{'empty_listoffloats'} = {
         }
       ],
       'cmdname' => 'listoffloats',
+      'extra' => {
+        'type' => {
+          'normalized' => ''
+        }
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -40,17 +45,7 @@ $result_texis{'empty_listoffloats'} = '@listoffloats
 
 $result_texts{'empty_listoffloats'} = '';
 
-$result_errors{'empty_listoffloats'} = [
-  {
-    'error_line' => ':1: @listoffloats missing argument
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@listoffloats missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'empty_listoffloats'} = [];
 
 
 

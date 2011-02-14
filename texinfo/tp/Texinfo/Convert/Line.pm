@@ -162,7 +162,16 @@ sub _add_next($;$$$)
   my $result = '';
 
   if (defined($word)) {
-    $line->{'word'} = '' if (!defined($line->{'word'}));
+    if (!defined($line->{'word'})) {
+      $line->{'word'} = '';
+      if ($line->{'end_sentence'} and !$line->{'frenchspacing'}
+           and !$line->{'line_beginning'} and $line->{'space'}) {
+        if ($word !~ /^\s/) {
+          $line->{'space'} = '  ';
+        }
+        delete $line->{'end_sentence'};
+      }
+    }
     $line->{'word'} .= $word;
     print STDERR "WORD+.L $word -> $line->{'word'}\n" if ($line->{'DEBUG'});
   }
@@ -200,6 +209,13 @@ sub set_space_protection($$;$$$)
   # a no-op in fact
   $line->{'keep_end_lines'} = $keep_end_lines
     if defined($keep_end_lines);
+  if (!$line->{'frenchspacing'} and $frenchspacing
+    and $line->{'end_sentence'} and !$line->{'line_beginning'} 
+    and $line->{'space'} and !defined($line->{'word'})) {
+    $line->{'space'} = '  ';
+    print STDERR "SWITCH.L frenchspacing end sentence space\n" if ($line->{'DEBUG'});
+    delete $line->{'end_sentence'};
+  }
   $line->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
   # begin a word, to have something even if empty
@@ -235,15 +251,19 @@ sub add_text($$)
         my $added_word = $line->{'word'};
         $result .= $line->_add_pending_word();
 
-        if (!$line->{'begin'}) {
+        if (!$line->{'line_beginning'}) {
           if (!$line->{'frenchspacing'} and $line->{'end_sentence'}) {
-            $line->{'space'} = '  ';
+            if (length($line->{'space'}) >= 1 or length($spaces) > 1) {
+              $line->{'space'} = '  ';
+              delete $line->{'end_sentence'};
+            } else {
+              $line->{'space'} = ' ';
+            }
           } else {
             $line->{'space'} = ' ';
           }
         }
       }
-      delete $line->{'end_sentence'};
     } elsif ($text =~ s/^([^\s\p{Unicode::EastAsianWidth::InFullwidth}]+)//) {
       my $added_word = $1;
       $result .= $line->_add_next($added_word);
@@ -254,6 +274,11 @@ sub add_text($$)
       } elsif ($line->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
            and $line->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
         $line->{'end_sentence'} = 1;
+        print STDERR "END_SENTENCE.L\n" if ($line->{'DEBUG'});
+      } else {
+        delete $line->{'end_sentence'};
+        print STDERR "delete END_SENTENCE.L($line->{'end_sentence'}): text\n" 
+          if (defined($line->{'end_sentence'}) and $line->{'DEBUG'});
       }
     } elsif ($text =~ s/^\n//) {
       $result .= $line->_end_line();

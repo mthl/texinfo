@@ -340,6 +340,7 @@ my @out_formats               = @Texinfo::Common::out_formats;
 my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
+my %region_commands           = %Texinfo::Common::region_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -666,6 +667,7 @@ sub parser(;$$)
     $parser->_register_index_commands($index);
   }
   $parser->{'context_stack'} = [ $parser->{'context'} ];
+  $parser->{'regions_stack'} = [];
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
   foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {
@@ -1097,7 +1099,7 @@ sub _close_multitable($) {
 
 # close the current command, with error messages and give the parent.
 # If the last argument is given it is the command being closed if
-# there was no error, currently only block command, used for a
+# hadn't there be an error, currently only block command, used for a
 # better error message.
 sub _close_current($$$;$)
 {
@@ -1122,6 +1124,8 @@ sub _close_current($$$;$)
       pop @{$self->{'context_stack'}} if
          ($preformatted_commands{$current->{'cmdname'}}
            or $menu_commands{$current->{'cmdname'}});
+      pop @{$self->{'regions_stack'}} 
+         if ($region_commands{$current->{'cmdname'}});
       $current = $current->{'parent'};
     } else { # FIXME is this possible? And does it make sense?
       # silently close containers and @-commands without brace nor @end
@@ -1193,6 +1197,8 @@ sub _close_commands($$$;$)
     pop @{$self->{'context_stack'}} if 
        ($preformatted_commands{$current->{'cmdname'}} 
          or $menu_commands{$current->{'cmdname'}});
+    pop @{$self->{'regions_stack'}} 
+       if ($region_commands{$current->{'cmdname'}});
     $closed_command = $current;
     if ($current->{'cmdname'}) {
       if ($current->{'cmdname'} eq 'multitable') {
@@ -1592,9 +1598,12 @@ sub _parse_float_type($)
         $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
         $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
         return 1;
+      } else {
+        $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
       }
     }
   }
+  $current->{'extra'}->{'type'}->{'normalized'} = '';
   return 0;
 }
 
@@ -1761,6 +1770,8 @@ sub _enter_index_entry($$$$)
                       'number'           => $number,
                     };
   $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
+  $index_entry->{'region'} = $self->{'regions_stack'}->[-1]
+    if (@{$self->{'regions_stack'}});
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
@@ -2067,9 +2078,8 @@ sub _end_line($$$)
             _register_label($self, $float, $float_label, $line_nr);
           }
         }
-        if (_parse_float_type ($float)) {
-          $type = $float->{'extra'}->{'type'}->{'normalized'};
-        }
+        _parse_float_type ($float);
+        $type = $float->{'extra'}->{'type'}->{'normalized'};
       }
       push @{$self->{'floats'}->{$type}}, $float;
       $float->{'float_section'} = $self->{'current_section'} 
@@ -2230,10 +2240,12 @@ sub _end_line($$$)
         }
       }
     } elsif ($command eq 'listoffloats') {
-      if (!_parse_float_type($current)) {
-        $self->line_error (sprintf($self->__("\@%s missing argument"), 
-           $command), $line_nr);
-      }
+      # Empty listoffloats is allowed
+      _parse_float_type($current);
+      #if (!_parse_float_type($current)) {
+      #  $self->line_error (sprintf($self->__("\@%s missing argument"), 
+      #     $command), $line_nr);
+      #}
     # handle all the other 'line' commands.  Here just check that they 
     # have an argument and prepare contents without spaces.
     } else {
@@ -3438,6 +3450,14 @@ sub _parse_texi($;$)
             } else {
               push @{$self->{'context_stack'}}, 'preformatted' 
                 if ($preformatted_commands{$command});
+              if ($region_commands{$command}) {
+                if (@{$self->{'regions_stack'}}) {
+                  $self->line_error (sprintf($self->__("Region %s inside region %s is not allowed"),
+                                    $command, $self->{'regions_stack'}->[-1]->{'cmdname'}), 
+                                    $line_nr);
+                }
+                push @{$self->{'regions_stack'}}, $block;
+              }
               if ($menu_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'menu';
                 push @{$self->{'info'}->{'dircategory_direntry'}}, $block
@@ -3645,6 +3665,9 @@ sub _parse_texi($;$)
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
                 _register_label($self, $current->{'parent'},
                   $parsed_anchor, $line_nr);
+                if (@{$self->{'regions_stack'}}) {
+                  $current->{'extra'}->{'region'} = $self->{'regions_stack'}->[-1];
+                }
               }
             } elsif ($ref_commands{$current->{'parent'}->{'cmdname'}}) {
               my $ref = $current->{'parent'};

@@ -40,10 +40,28 @@ new para.
 @tab ccc
 @item @tab @anchor{anch2}
 @end multitable
+'],
+['printindex',
+'@node Top
+
+@cindex index entry
+@cindex looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry
+
+@printindex cp
+
+@cindex after index
+
+@printindex cp
+
+@anchor{a counting anchor}
 ']);
 
+my %info_tests = ('printindex' => 1);
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['debugcount'];
+  if ($info_tests{$test->[0]}) {
+    push @{$test->[2]->{'test_formats'}}, 'info';
+  }
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

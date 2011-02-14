@@ -240,7 +240,7 @@ $result_converted{'plaintext'}->{'text_on_command_line'} = '     text on line
      normal text
 
      in example
-text after end
+   text after end
 
      text after end example nested in example
 ';

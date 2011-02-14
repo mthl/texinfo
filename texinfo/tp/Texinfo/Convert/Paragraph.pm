@@ -177,7 +177,17 @@ sub _add_next($;$$$)
   my $result = '';
 
   if (defined($word)) {
-    $paragraph->{'word'} = '' if (!defined($paragraph->{'word'}));
+    if (!defined($paragraph->{'word'})) {
+      $paragraph->{'word'} = '';
+      if ($paragraph->{'end_sentence'} and !$paragraph->{'frenchspacing'}
+           and $paragraph->{'counter'} != 0 and $paragraph->{'space'}) {
+        if ($word !~ /^\s/) {
+          $paragraph->{'space'} = '  ';
+        }
+        delete $paragraph->{'end_sentence'};
+      }
+    }
+    
     $paragraph->{'word'} .= $word;
     $paragraph->{'word_counter'} += length($word);
     print STDERR "WORD+ $word -> $paragraph->{'word'}\n" if ($paragraph->{'DEBUG'});
@@ -226,6 +236,14 @@ sub set_space_protection($$;$$$)
     if defined($ignore_columns);
   $paragraph->{'keep_end_lines'} = $keep_end_lines
     if defined($keep_end_lines);
+  if (!$paragraph->{'frenchspacing'} and $frenchspacing
+    and $paragraph->{'end_sentence'} and $paragraph->{'counter'} != 0 
+    and $paragraph->{'space'} and !defined($paragraph->{'word'})) {
+    $paragraph->{'space'} = '  ';
+    print STDERR "SWITCH.L frenchspacing end sentence space\n" 
+       if ($paragraph->{'DEBUG'});
+    delete $paragraph->{'end_sentence'};
+  }
   $paragraph->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
   # begin a word, to have something even if empty
@@ -281,13 +299,20 @@ sub add_text($$)
         $result .= $paragraph->_add_pending_word();
         if ($paragraph->{'counter'} != 0) {
           if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
-            $paragraph->{'space'} = '  ';
+            if (length($paragraph->{'space'}) >= 1 or length($spaces) > 1) {
+              $paragraph->{'space'} = '  ';
+              delete $paragraph->{'end_sentence'};
+            } else {
+              $paragraph->{'space'} = ' ';
+            }
           } else {
             $paragraph->{'space'} = ' ';
           }
         }
       }
-      delete $paragraph->{'end_sentence'};
+      #print STDERR "delete END_SENTENCE($paragraph->{'end_sentence'}): spaces\n" 
+      #  if (defined($paragraph->{'end_sentence'}) and $paragraph->{'DEBUG'});
+      #delete $paragraph->{'end_sentence'};
       if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
                       > $paragraph->{'max'}) {
         $result .= $paragraph->_cut_line();
@@ -319,8 +344,11 @@ sub add_text($$)
       } elsif ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
            and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
         $paragraph->{'end_sentence'} = 1;
+        print STDERR "END_SENTENCE\n" if ($paragraph->{'DEBUG'});
       } else {
         delete $paragraph->{'end_sentence'};
+        print STDERR "delete END_SENTENCE($paragraph->{'end_sentence'}): text\n" 
+          if (defined($paragraph->{'end_sentence'}) and $paragraph->{'DEBUG'});
       }
     } else {
       # FIXME

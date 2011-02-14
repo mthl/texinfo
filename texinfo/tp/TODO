@@ -36,6 +36,8 @@ and not
 It is unclear whether it is right or wrong, but even less clear why it 
 happens this way.
 
+Force end lines before/after a menu?
+
 Test empty/no empty line at a multitable beginning, between 2 rows and
 after a multitable.
 

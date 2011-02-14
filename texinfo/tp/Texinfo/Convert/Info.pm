@@ -250,9 +250,11 @@ sub _info_header($)
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
     $self->_set_global_multiple_commands();
+    $self->{'in_copying'} = 1;
     my $copying = $self->_convert({'contents' => 
           $self->{'extra'}->{'copying'}->{'contents'}});
     $result .= $copying;
+    delete $self->{'in_copying'};
     $self->_unset_global_multiple_commands();
   }
   if ($self->{'info'}->{'dircategory_direntry'}) {
@@ -313,18 +315,26 @@ sub _printindex($$)
     return '';
   }
 
-  my $result = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n";
+  my $result = '';
+  $result .= $self->_add_newline_if_needed();
+  my $heading = "\x{00}\x{08}[index\x{00}\x{08}]\n* Menu:\n\n";
 
-  $self->_add_text_count($result);
+  $result .= $heading;
+  $self->_add_text_count($heading);
   $self->_add_lines_count(3);
 
   # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
   my $max_index_line_nr_string_length = 0;
+  my %ignored_entries;
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     my $line_nr;
     if (defined ($self->{'index_entries_line_location'}->{$entry->{'command'}})) {
       $line_nr = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'lines'};
+      # ignore index entries in special regions that haven't been seen
+    } elsif ($entry->{'region'}) {
+      $ignored_entries{$entry} = 1;
+      next;
     }
     if (!defined($entry->{'node'})) {
       $line_nr = 0;
@@ -348,6 +358,7 @@ sub _printindex($$)
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     #my @keys = keys(%$entry);
     #print STDERR "$index_name $entry: @keys\n";
+    next if ($ignored_entries{$entry});
     my $entry_tree = {'contents' => $entry->{'content'}};
     if ($in_code) {
       $entry_tree->{'type'} = 'code';
@@ -363,9 +374,11 @@ sub _printindex($$)
     } else {
       $entry_counts{$entry_text}++;
       $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
+      $self->_add_text_count(' <'.'>');
     }
     my $entry_line = "* $entry_text${entry_nr}: ";
-    $self->_add_text_count($entry_line);
+    $self->_add_text_count("* ".": ");
+    #$self->_add_text_count($entry_line);
     
     my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
     if ($line_width < $index_length_to_node) {

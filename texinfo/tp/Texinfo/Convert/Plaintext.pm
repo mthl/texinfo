@@ -1,4 +1,4 @@
-# Plaintext.pm: output tree as text.
+# Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010 Free Software Foundation, Inc.
 # 
@@ -41,7 +41,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Covert::Text ':all';
+# This allows declaration       use Texinfo::Convert::Plaintext ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
@@ -158,7 +158,7 @@ foreach my $command (keys(%block_commands)) {
 # group and raggedright do more than not advancing para, they should also
 # be transparent with respect to paragraph number counting.
 foreach my $not_advancing_para ('group', 'raggedright',
-  'titlepage', 'copying', 'documentdescription') {
+  'titlepage', 'copying', 'documentdescription', 'float') {
   delete $advance_paragraph_count_commands{$not_advancing_para};
 }
 
@@ -260,8 +260,10 @@ sub push_top_formatter($$)
   push @{$self->{'context'}}, $top_context;
   push @{$self->{'format_context'}}, {
                                      'cmdname' => '_top_format',
-                                     'paragraph_count' => 0,
                                      'indent_level' => 0,
+                                     'paragraph_count' => 0,
+                                   };
+  push @{$self->{'text_element_context'}}, {
                                      'max' => $self->{'fillcolumn'}
                                    };
   push @{$self->{'formatters'}}, $self->new_formatter('line');
@@ -551,12 +553,12 @@ sub new_formatter($$;$)
   
   my $container;
   my $container_conf = {
-         'max'                 => $self->{'format_context'}->[-1]->{'max'},
-         'indent_level'        => $self->{'format_context'}->[-1]->{'indent_level'}, 
+         'max'               => $self->{'text_element_context'}->[-1]->{'max'},
+         'indent_level'      => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   $container_conf->{'frenchspacing'} = 1 if ($self->{'frenchspacing'} eq 'on');
-  $container_conf->{'counter'} = $self->{'format_context'}->[-1]->{'counter'}
-    if (defined($self->{'format_context'}->[-1]->{'counter'}));
+  $container_conf->{'counter'} = $self->{'text_element_context'}->[-1]->{'counter'}
+    if (defined($self->{'text_element_context'}->[-1]->{'counter'}));
   $container_conf->{'DEBUG'} = 1 if ($self->{'DEBUG'});
   if ($conf) {
     foreach my $key (keys(%$conf)) {
@@ -742,6 +744,8 @@ sub _footnotes($$)
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
     $result .= $self->_add_newline_if_needed();
+    print STDERR "FOOTNOTES ".scalar(@{$self->{'pending_footnotes'}})."\n"
+        if ($self->{'DEBUG'});
     if ($self->{'footnotestyle'} eq 'end' or !defined($element)) {
       my $footnotes_header = "   ---------- Footnotes ----------\n\n";
       $result .= $footnotes_header;
@@ -768,12 +772,12 @@ sub _footnotes($$)
                [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                               {'text' => "-Footnote-$footnote->{'number'}"}]}
                      }) if ($element);
-      # this pushes on 'context', 'format_context' and 'formatters'
+      # this pushes on 'context', 'format_context' and 'formatters'
       $self->push_top_formatter('footnote');
       my $footnote_text = ' ' x $footnote_indent 
                . "($footnote->{'number'}) ";
       $result .= $footnote_text;
-      $self->{'format_context'}->[-1]->{'counter'} += 
+      $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($footnote_text);
       $self->_add_text_count($footnote_text);
 
@@ -784,6 +788,7 @@ sub _footnotes($$)
       die if ($old_context ne 'footnote');
       pop @{$self->{'format_context'}};
       pop @{$self->{'formatters'}};
+      pop @{$self->{'text_element_context'}};
     }
   }
   $self->{'footnote_index'} = 0;
@@ -1081,8 +1086,8 @@ sub _convert($$)
     print STDERR "\n";
    
     print STDERR " empty_lines $empty_lines_count,top_fmter $is_top_formatter,format_ctxt $self->{'format_context'}->[-1]->{'cmdname'},para_cnt $self->{'format_context'}->[-1]->{'paragraph_count'},indent_lvl $self->{'format_context'}->[-1]->{'indent_level'},"
-      .(defined($self->{'format_context'}->[-1]->{'counter'}) ? "counter $self->{'format_context'}->[-1]->{'counter'}," : '') 
-       ."max $self->{'format_context'}->[-1]->{'max'}\n";
+      .(defined($self->{'text_element_context'}->[-1]->{'counter'}) ? "counter $self->{'text_element_context'}->[-1]->{'counter'}," : '') 
+       ."max $self->{'text_element_context'}->[-1]->{'max'}\n";
     #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
     #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
     if ($formatter) {
@@ -1110,7 +1115,7 @@ sub _convert($$)
     $count = '' if (!defined($count));
     print STDERR "EMPTY_LINE ($count)\n"
       if ($self->{'DEBUG'});
-    delete $self->{'format_context'}->[-1]->{'counter'};
+    delete $self->{'text_element_context'}->[-1]->{'counter'};
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
         or $preformatted_context_commands{$self->{'context'}->[-1]}) {
@@ -1146,6 +1151,49 @@ sub _convert($$)
     return '';
   }
 
+  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
+      and !$self->{'multiple_pass'} and !$self->{'in_copying'}) {
+    my $location = $self->_add_location($root);
+    # remove a 'lines' from $location if at the very end of a node
+    # since it will lead to the next node otherwise.
+    if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
+      my $following_not_empty;
+      my @parents = @{$self->{'current_roots'}};
+      my @parent_contents = @{$self->{'current_contents'}};
+      while (@parents) {
+        my $parent = pop @parents;
+        my $parent_content = pop @parent_contents;
+        if ($parent->{'type'} and $parent->{'type'} eq 'paragraph') {
+          $following_not_empty = 1;
+          last;
+        }
+        foreach my $following_content (@$parent_content) {
+          unless (($following_content->{'type'} 
+                and ($following_content->{'type'} eq 'empty_line'
+                    or $ignored_types{$following_content->{'type'}}))
+              or ($following_content->{'cmdname'} 
+                  and ($following_content->{'cmdname'} eq 'c'  
+                       or $following_content->{'cmdname'} eq 'comment'))) {
+            $following_not_empty = 1;
+            last;
+          }
+        }
+        last if $following_not_empty;
+        if ($parent->{'cmdname'} and $root_commands{$parent->{'cmdname'}}) {
+          last;
+        }
+      }
+      if (! $following_not_empty) {
+        print STDERR "INDEX ENTRY $root->{'cmdname'} followed by empty lines\n"
+            if ($self->{'DEBUG'});
+        $location->{'lines'}--;
+      }
+    }
+    $self->{'index_entries_line_location'}->{$root} = $location;
+    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
+       if ($self->{'DEBUG'});
+  }
+
   my $cell;
   my $preformatted;
   if ($root->{'cmdname'}) {
@@ -1177,6 +1225,17 @@ sub _convert($$)
       if ($command eq 'enddots') {
         $result .= $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
+      } elsif ($command eq 'tie') {
+        $formatter->{'w'}++;
+        $result .= $self->_count_added($formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,1))
+          if ($formatter->{'w'} == 1);
+        $result .= $self->_count_added($formatter->{'container'}, 
+                       $formatter->{'container'}->add_text($text)); 
+        $formatter->{'w'}--;
+        $result .= $self->_count_added($formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(0,0))
+          if ($formatter->{'w'} == 0);
       } else {
         $result .= $self->_count_added($formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text)); 
@@ -1480,7 +1539,6 @@ sub _convert($$)
                'paragraph_count' => 0,
                'indent_level' => 
                    $self->{'format_context'}->[-1]->{'indent_level'},
-               'max' => $self->{'format_context'}->[-1]->{'max'},
              };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
@@ -1502,7 +1560,7 @@ sub _convert($$)
           #print STDERR Data::Dumper->Dump([$prepended]);
           $prepended->{'type'} = 'frenchspacing';
           $result .= $self->convert_line($prepended);
-          $self->{'format_context'}->[-1]->{'counter'} += 
+          $self->{'text_element_context'}->[-1]->{'counter'} += 
              Texinfo::Convert::Unicode::string_width($result);
           $self->{'empty_lines_count'} = 0 unless ($result eq '');
         }
@@ -1512,7 +1570,7 @@ sub _convert($$)
         my $columnsize;
         if ($root->{'extra'}->{'columnfractions'}) {
           foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
-            push @$columnsize, int($fraction * $self->{'format_context'}->[-1]->{'max'} +0.5);
+            push @$columnsize, int($fraction * $self->{'text_element_context'}->[-1]->{'max'} +0.5);
           }
         } elsif ($root->{'extra'}->{'prototypes'}) {
           foreach my $prototype (@{$root->{'extra'}->{'prototypes'}}) {
@@ -1647,7 +1705,7 @@ sub _convert($$)
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
          if ($self->{'DEBUG'});
       pop @{$self->{'formatters'}};
-      $self->{'format_context'}->[-1]->{'counter'} += 
+      $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
     # open a multitable cell
@@ -1665,8 +1723,8 @@ sub _convert($$)
       push @{$self->{'format_context'}},
            { 'cmdname' => $root->{'cmdname'},
              'paragraph_count' => 0,
-             'indent_level' => 0,
-             'max' => $cell_width - 2 };
+             'indent_level' => 0 };
+      push @{$self->{'text_element_context'}}, {'max' => $cell_width - 2 };
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                                    'locations' => []};
       $cell = 1;
@@ -1682,7 +1740,7 @@ sub _convert($$)
         $result = $self->ensure_end_of_line($result);
 
         $result = $self->_align_environment ($result, 
-             $self->{'format_context'}->[-1]->{'max'}, 'center'); 
+             $self->{'text_element_context'}->[-1]->{'max'}, 'center'); 
         $self->{'empty_lines_count'} = 0;
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
@@ -1733,17 +1791,30 @@ sub _convert($$)
         foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
           next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
           my $float_entry;
-          if (exists ($float->{'number'})) {
-            $float_entry = 
-             $self->gdt('* {float_type} {float_number}: {float_label}.', 
-              {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-               'float_number' => $float->{'number'},
-               'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+          if ($root->{'extra'}->{'type'}->{'normalized'} ne '') {
+            if (exists ($float->{'number'})) {
+              $float_entry = 
+               $self->gdt('* {float_type} {float_number}: {float_label}.', 
+                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                 'float_number' => $float->{'number'},
+                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+            } else {
+              $float_entry = $self->gdt('* {float_type}: {float_label}.', 
+                {'float_type' => $root->{'extra'}->{'type'}->{'content'},
+                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
+                 });
+            }
           } else {
-            $float_entry = $self->gdt('* {float_type}: {float_label}.', 
-              {'float_type' => $root->{'extra'}->{'type'}->{'content'},
-               'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
-               });
+            if (exists ($float->{'number'})) {
+              $float_entry = 
+               $self->gdt('*  {float_number}: {float_label}.', 
+                {'float_number' => $float->{'number'},
+                 'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+            } else {
+              $float_entry = $self->gdt('* : {float_label}.', 
+                {'float_label' => $float->{'extra'}->{'block_command_line_contents'}->[1]
+                 });
+            }
           }
           #print STDERR "$float ".$self->convert_line($float_entry)."\n";
           $float_entry->{'type'} = 'frenchspacing';
@@ -1782,7 +1853,7 @@ sub _convert($$)
               $new_word =~ s/\n//g;
               if ((Texinfo::Convert::Unicode::string_width($new_word) +
                    $line_width) > 
-                       ($self->{'format_context'}->[-1]->{'max'} - 3)) {
+                       ($self->{'text_element_context'}->[-1]->{'max'} - 3)) {
                 $float_line .= $listoffloat_append;
                 last;
               } else {
@@ -1859,49 +1930,6 @@ sub _convert($$)
       warn "Unhandled $root->{'cmdname'}\n";
       $result .= "!!!!!!!!! Unhandled $root->{'cmdname'} !!!!!!!!!\n";
     }
-    
-  }
-  if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
-      and !$self->{'multiple_pass'}) {
-    my $location = $self->_add_location($root);
-    # remove a 'lines' from $location if at the very end of a node
-    # since it will lead to the next node otherwise.
-    if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
-      my $following_not_empty;
-      my @parents = @{$self->{'current_roots'}};
-      my @parent_contents = @{$self->{'current_contents'}};
-      while (@parents) {
-        my $parent = pop @parents;
-        my $parent_content = pop @parent_contents;
-        if ($parent->{'type'} and $parent->{'type'} eq 'paragraph') {
-          $following_not_empty = 1;
-          last;
-        }
-        foreach my $following_content (@$parent_content) {
-          unless (($following_content->{'type'} 
-                and ($following_content->{'type'} eq 'empty_line'
-                    or $ignored_types{$following_content->{'type'}}))
-              or ($following_content->{'cmdname'} 
-                  and ($following_content->{'cmdname'} eq 'c'  
-                       or $following_content->{'cmdname'} eq 'comment'))) {
-            $following_not_empty = 1;
-            last;
-          }
-        }
-        last if $following_not_empty;
-        if ($parent->{'cmdname'} and $root_commands{$parent->{'cmdname'}}) {
-          last;
-        }
-      }
-      if (! $following_not_empty) {
-        print STDERR "INDEX ENTRY $root->{'cmdname'} followed by empty lines\n"
-            if ($self->{'DEBUG'});
-        $location->{'lines'}--;
-      }
-    }
-    $self->{'index_entries_line_location'}->{$root} = $location;
-    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
-       if ($self->{'DEBUG'});
   }
 
   # open 'type' constructs.
@@ -1914,8 +1942,8 @@ sub _convert($$)
       if ($self->{'DEBUG'}) {
         print STDERR "OPEN PARA ($self->{'format_context'}->[-1]->{'cmdname'}) "
            . "cnt ". 
-            (defined($self->{'format_context'}->[-1]->{'counter'}) ? 
-             $self->{'format_context'}->[-1]->{'counter'} : 'UNDEF'). ' '
+            (defined($self->{'text_element_context'}->[-1]->{'counter'}) ? 
+             $self->{'text_element_context'}->[-1]->{'counter'} : 'UNDEF'). ' '
            . "para cnt $self->{'format_context'}->[-1]->{'paragraph_count'} "
            . "fparaindent $self->{'firstparagraphindent'} "
            . "paraindent $self->{'paragraphindent'}\n";
@@ -1926,7 +1954,7 @@ sub _convert($$)
              or (!($root->{'extra'} and $root->{'extra'}->{'noindent'})
                 and ($self->{'format_context'}->[-1]->{'paragraph_count'} 
                   or $self->{'firstparagraphindent'} eq 'insert') 
-               and !$self->{'format_context'}->[-1]->{'counter'}))) {
+               and !$self->{'text_element_context'}->[-1]->{'counter'}))) {
         $conf->{'first_indent_length'} = $self->{'paragraphindent'};
       }
       $paragraph = $self->new_formatter('paragraph', $conf);
@@ -2162,10 +2190,10 @@ sub _convert($$)
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment ($result, 
-        $self->{'format_context'}->[$self->flushright_index]->{'max'}, 'right');
+        $self->{'text_element_context'}->[$self->flushright_index]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};
-    delete $self->{'format_context'}->[-1]->{'counter'};
+    delete $self->{'text_element_context'}->[-1]->{'counter'};
   } elsif ($preformatted) {
     $result .= $self->_count_added($preformatted->{'container'},
                                    $preformatted->{'container'}->end());
@@ -2175,7 +2203,7 @@ sub _convert($$)
     pop @{$self->{'formatters'}};
     # We assume that, upon closing the preformatted we are at the 
     # beginning of a line.
-    delete $self->{'format_context'}->[-1]->{'counter'};
+    delete $self->{'text_element_context'}->[-1]->{'counter'};
   }
 
   # close commands
@@ -2184,14 +2212,15 @@ sub _convert($$)
       if ($self->{'DEBUG'}) {
         my $type_texi = '';
         $type_texi = Texinfo::Convert::Texinfo::convert({'contents' => $root->{'extra'}->{'type'}->{'content'}})
-          if ($root->{'extra'} and $root->{'extra'}->{'type'});
+          if ($root->{'extra'} and $root->{'extra'}->{'type'}->{'normalized'} ne '');
         my $number = '';
         $number = $root->{'number'} if (defined($root->{'number'}));
         print STDERR "FLOAT: ($number) ($type_texi)\n";
       }
 
       if ($root->{'extra'}
-          and ($root->{'extra'}->{'type'} or defined($root->{'number'})
+          and ($root->{'extra'}->{'type'}->{'normalized'} ne '' 
+               or defined($root->{'number'})
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         
         $result .= $self->_add_newline_if_needed();
@@ -2207,7 +2236,7 @@ sub _convert($$)
         #  print STDERR "  CAPTION: $caption_texi\n";
         #}
         my $type;
-        if ($root->{'extra'}->{'type'}) {
+        if ($root->{'extra'}->{'type'}->{'normalized'} ne '') {
           $type = {'contents' => $root->{'extra'}->{'type'}->{'content'}};
         }
 
@@ -2248,7 +2277,7 @@ sub _convert($$)
           $prepended->{'type'} = 'frenchspacing';
           my $float_number = $self->convert_line ($prepended);
           $result .= $float_number;
-          $self->{'format_context'}->[-1]->{'counter'} += 
+          $self->{'text_element_context'}->[-1]->{'counter'} += 
             Texinfo::Convert::Unicode::string_width($float_number);
           $self->{'empty_lines_count'} = 0;
         }
@@ -2274,9 +2303,6 @@ sub _convert($$)
       }
     }
 
-    if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
-      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-    }
   
     # close the contexts and register the cells
     if ($preformatted_context_commands{$root->{'cmdname'}}) {
@@ -2291,10 +2317,14 @@ sub _convert($$)
       pop @{$self->{'format_context'}};
     } elsif ($cell) {
       pop @{$self->{'format_context'}};
+      pop @{$self->{'text_element_context'}};
       push @{$self->{'format_context'}->[-1]->{'row'}}, $result;
       my $cell_counts = pop @{$self->{'count_context'}};
       push @{$self->{'format_context'}->[-1]->{'row_counts'}}, $cell_counts;
       $result = '';
+    }
+    if ($advance_paragraph_count_commands{$root->{'cmdname'}}) {
+      $self->{'format_context'}->[-1]->{'paragraph_count'}++;
     }
   }
 

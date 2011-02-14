@@ -67,6 +67,97 @@ text.
 @node Top
 @top Double contents
 '],
+['anchor_in_command',
+'@node Top
+
+@strong{aaa @TeX{} @emph{in emph} after 
+@c emph @emph{emph2 @anchor{anchor in emph} }}.
+emph @emph{emph2 @anchor{anchor in emph}}}.
+'],
+['anchor_and_spaces',
+'@node Top
+@top Element
+@anchor{anchor 0}
+
+Now @anchor{anchor1}.
+
+No space@anchor{anchor2}.
+'],
+[ 'multitable_anchor_and_index_entry',
+'@node Top
+
+@multitable @columnfractions 0.4 0.6
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@c comment in multitable
+@item mu--ltitable item 2 @tab multitable tab 2
+@cindex index entry within multitable
+@anchor{anchor in multitable}
+@item lone mu--ltitable item
+@end multitable
+
+@multitable {A} {B}
+@item A
+B
+
+C
+@tab G
+@item lsfd mlkdsf lk s
+mlsdmjlfdsjm mdsfk 
+@cindex index entry
+@item lsfd2 mlkdsf2 lk2 s2
+mlsdmjlfdsjm mdsfk2
+@tab ATTTTTTTTTTTTTTTTTTTTT
+BTTTTTTt @anchor{mark}
+
+CTTTTTT
+
+@end multitable
+
+@printindex cp
+@ref{mark}
+@ref{anchor in multitable}
+'],
+['nested_multitable_anchor_index',
+'@node Top
+
+@multitable {truc AAAA   machin}    {bidule}
+@item
+@multitable {AAAA} {machin}
+@item AAAA @tab machin @anchor{mark inside}
+@cindex index entry inside
+@end multitable
+ @tab bidule
+@item other item @tab in tab @anchor{mark}
+@cindex index entry
+@end multitable
+
+@printindex cp
+
+@xref{mark}.
+@xref{mark inside}.
+'],
+['def_in_copying',
+'@macro mymacro
+@deffn aa bb cc
+@deffnx aax bbx ccx
+deffnx lines
+@end deffn
+@end macro
+
+@node Top
+@top Test for definition commands
+
+@copying
+In copying
+@mymacro{}
+@end copying
+
+In text
+@mymacro{}
+
+@printindex fn
+'],
 );
 
 foreach my $test (@test_cases) {

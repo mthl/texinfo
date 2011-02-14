@@ -19,11 +19,11 @@
 
 use strict;
 
-use Texinfo::Convert::Plaintext;
+use Texinfo::Convert::Info;
 
 package DebugTexinfo::DebugCount;
 use vars qw(@ISA);
-@ISA = qw(Texinfo::Convert::Plaintext);
+@ISA = qw(Texinfo::Convert::Info);
 
 sub _convert($$)
 {

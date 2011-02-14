@@ -343,10 +343,16 @@ foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
 };
 
 foreach my $block_command(
-    'cartouche', 'group', 'raggedright', 'flushleft', 'flushright',
-    'titlepage', 'copying', 'documentdescription') {
+    'cartouche', 'group', 'raggedright', 'flushleft', 'flushright') {
   $block_commands{$block_command} = 0;
 }
+
+our %region_commands;
+foreach my $block_command('titlepage', 'copying', 'documentdescription') {
+  $block_commands{$block_command} = 0;
+  $region_commands{$block_command} = 1;
+}
+  
 
 our %preformatted_commands;
 foreach my $preformatted_command(

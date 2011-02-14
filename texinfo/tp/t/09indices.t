@@ -88,6 +88,14 @@ Para.
 @node second,,first,Top
 
 @printindex cp
+'],
+['printindex_with_space_before',
+'@node Top
+
+@cindex index
+
+Text.
+@printindex cp
 ']
 );
 

@@ -41,7 +41,15 @@ inew p after sp'
   in quotation
 @end quotation
 
-']);
+'],
+['paragraph_count_and_example',
+'@example
+in example
+@end example
+
+After.
+']
+);
 
 my @test_invalid = (
 ['paragraph_in_style_command',

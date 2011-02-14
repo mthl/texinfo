@@ -154,7 +154,10 @@ $result_trees{'ref_to_float'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'Label2'
+        'normalized' => 'Label2',
+        'type' => {
+          'normalized' => ''
+        }
       },
       'line_nr' => {
         'file_name' => '',
@@ -351,7 +354,10 @@ $result_floats{'ref_to_float'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'Label2'
+        'normalized' => 'Label2',
+        'type' => {
+          'normalized' => ''
+        }
       },
       'number' => 1
     }

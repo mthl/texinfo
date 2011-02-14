@@ -105,6 +105,15 @@ $result_texts{'double_copying'} = '';
 
 $result_errors{'double_copying'} = [
   {
+    'error_line' => ':5: Region copying inside region copying is not allowed
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Region copying inside region copying is not allowed',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: warning: Multiple @copying
 ',
     'file_name' => '',

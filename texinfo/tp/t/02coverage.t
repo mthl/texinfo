@@ -446,6 +446,9 @@ In float with caption.
 @contents
 
 '],
+['test_tie',
+'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@tie{}BBBBBBBBBBB
+']
 );
 
 my @test_invalid = (
