@@ -223,6 +223,11 @@ $result_trees{'defx_after_paragraph_end'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -69,6 +69,11 @@ $result_trees{'empty_def_command'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -241,6 +246,11 @@ $result_trees{'empty_def_command'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -16,6 +16,11 @@ $result_trees{'node_in_copying'} = {
               'type' => 'empty_line_after_command'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],

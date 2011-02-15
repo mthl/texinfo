@@ -255,6 +255,11 @@ $result_trees{'nodename_parentheses'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

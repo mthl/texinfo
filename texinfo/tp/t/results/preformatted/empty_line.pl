@@ -36,6 +36,11 @@ $result_trees{'empty_line'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -80,6 +80,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -197,6 +202,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -338,6 +348,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -442,6 +457,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 13,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -546,6 +566,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 17,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -673,6 +698,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 21,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -776,6 +806,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 25,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -879,6 +914,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 29,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -982,6 +1022,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 33,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1095,6 +1140,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 37,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1185,6 +1235,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 41,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1285,6 +1340,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 45,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1402,6 +1462,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 49,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1506,6 +1571,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 53,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1630,6 +1700,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 57,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1768,6 +1843,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 61,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1895,6 +1975,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 65,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -2036,6 +2121,11 @@ $result_trees{'all_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 69,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

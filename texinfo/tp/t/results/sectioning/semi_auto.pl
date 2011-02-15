@@ -196,6 +196,11 @@ $result_trees{'semi_auto'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -361,6 +366,11 @@ $result_trees{'semi_auto'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

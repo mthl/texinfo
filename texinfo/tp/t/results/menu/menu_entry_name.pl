@@ -750,6 +750,11 @@ $result_trees{'menu_entry_name'} = {
           'type' => 'menu_entry'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

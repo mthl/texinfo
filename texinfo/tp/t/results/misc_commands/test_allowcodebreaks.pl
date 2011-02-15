@@ -552,6 +552,11 @@ anc-hor@anchor{A node\\nr\\}}
               'type' => 'preformatted'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => 'testallowcodebreaksexample'
+          },
           'parent' => {}
         },
         {
@@ -966,6 +971,11 @@ anc-hor@anchor{A node\\nr\\}}
               'type' => 'preformatted'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 26,
+            'macro' => 'testallowcodebreaksexample'
+          },
           'parent' => {}
         },
         {
@@ -1374,6 +1384,11 @@ anc-hor@anchor{A node\\nr\\}}
               'type' => 'preformatted'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 32,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1788,6 +1803,11 @@ anc-hor@anchor{A node\\nr\\}}
               'type' => 'preformatted'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 39,
+            'macro' => 'testallowcodebreaksexample'
+          },
           'parent' => {}
         },
         {

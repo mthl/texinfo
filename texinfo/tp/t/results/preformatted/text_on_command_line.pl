@@ -24,6 +24,11 @@ $result_trees{'text_on_command_line'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -63,6 +68,11 @@ $result_trees{'text_on_command_line'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -98,6 +108,11 @@ $result_trees{'text_on_command_line'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 8,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -141,6 +156,11 @@ $result_trees{'text_on_command_line'} = {
               'type' => 'empty_line_after_command'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -160,6 +180,11 @@ $result_trees{'text_on_command_line'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

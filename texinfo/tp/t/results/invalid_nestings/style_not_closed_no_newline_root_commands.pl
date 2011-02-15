@@ -101,6 +101,11 @@ $result_trees{'style_not_closed_no_newline_root_commands'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

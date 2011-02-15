@@ -224,6 +224,11 @@ $result_trees{'double_index_entry'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

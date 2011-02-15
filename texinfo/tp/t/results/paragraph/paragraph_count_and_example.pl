@@ -25,6 +25,11 @@ $result_trees{'paragraph_count_and_example'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

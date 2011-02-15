@@ -45,6 +45,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -54,6 +59,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -98,6 +108,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -107,6 +122,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 8,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -162,6 +182,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -182,6 +207,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 14,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -243,6 +273,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -252,6 +287,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 22,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -319,6 +359,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 34,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -328,6 +373,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 30,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -389,6 +439,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 42,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -398,6 +453,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 39,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -448,6 +508,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 48,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -457,6 +522,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 47,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -513,6 +583,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'empty_line'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 55,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -522,6 +597,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 54,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -572,6 +652,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'empty_line'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 63,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -581,6 +666,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 62,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -625,6 +715,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 70,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -651,6 +746,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 69,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -695,6 +795,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 78,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -721,6 +826,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 77,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -765,6 +875,11 @@ $result_trees{'nested_block_commands'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 86,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -797,6 +912,11 @@ $result_trees{'nested_block_commands'} = {
           'type' => 'empty_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 85,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

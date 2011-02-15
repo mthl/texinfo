@@ -52,6 +52,11 @@ $result_trees{'bad_style_nesting'} = {
       'extra' => {
         'invalid_nesting' => 1
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

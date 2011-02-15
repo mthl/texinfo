@@ -117,6 +117,11 @@ $result_trees{'dash_in_menu'} = {
           'type' => 'menu_comment'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

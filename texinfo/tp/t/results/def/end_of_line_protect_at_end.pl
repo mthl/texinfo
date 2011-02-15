@@ -87,6 +87,11 @@ $result_trees{'end_of_line_protect_at_end'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

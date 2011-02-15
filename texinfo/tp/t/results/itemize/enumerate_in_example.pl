@@ -98,6 +98,11 @@ $result_trees{'enumerate_in_example'} = {
           'extra' => {
             'enumerate_specification' => 0
           },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -107,6 +112,11 @@ $result_trees{'enumerate_in_example'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

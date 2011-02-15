@@ -26,6 +26,11 @@ $result_trees{'nested_ignore'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -62,6 +67,11 @@ $result_trees{'nested_ignore'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -98,6 +108,11 @@ $result_trees{'nested_ignore'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

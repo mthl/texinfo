@@ -444,6 +444,7 @@ $result_trees{'on_def_line'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -532,6 +533,7 @@ $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry
 $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_def_line'}{'contents'}[0];
+$result_trees{'on_def_line'}{'contents'}[0]{'line_nr'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'on_def_line'}{'contents'}[0]{'parent'} = $result_trees{'on_def_line'};
 $result_trees{'on_def_line'}{'contents'}[1]{'parent'} = $result_trees{'on_def_line'};
 

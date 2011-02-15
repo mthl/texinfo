@@ -61,17 +61,12 @@ $result_trees{'something_before_columnfractions'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'before_item'
-        }
-      ],
+      'contents' => [],
       'extra' => {
         'columnfractions' => [],
         'max_columns' => 2
       },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -90,8 +85,8 @@ $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'con
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0];
-$result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'extra'}{'misc_args'};
+$result_trees{'something_before_columnfractions'}{'contents'}[0]{'line_nr'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'};
 $result_trees{'something_before_columnfractions'}{'contents'}[1]{'parent'} = $result_trees{'something_before_columnfractions'};
 

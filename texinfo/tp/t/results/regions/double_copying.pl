@@ -57,6 +57,11 @@ $result_trees{'double_copying'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -66,6 +71,11 @@ $result_trees{'double_copying'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

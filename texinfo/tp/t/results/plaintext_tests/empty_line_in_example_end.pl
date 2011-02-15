@@ -31,6 +31,11 @@ $result_trees{'empty_line_in_example_end'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

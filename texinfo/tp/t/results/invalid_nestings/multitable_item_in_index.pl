@@ -122,6 +122,11 @@ $result_trees{'multitable_item_in_index'} = {
           }
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -185,6 +190,15 @@ $result_errors{'multitable_item_in_index'} = [
     'macro' => '',
     'text' => '@item outside of table or list',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: warning: @multitable has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@multitable has text but no @item',
+    'type' => 'warning'
   }
 ];
 

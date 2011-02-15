@@ -84,6 +84,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
                   'type' => 'preformatted'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -166,6 +171,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
                   'type' => 'preformatted'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -210,6 +220,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -266,6 +281,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
                   'type' => 'paragraph'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 24,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -283,6 +303,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'enumerate_specification' => 0
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
       },
       'parent' => {}
     },
@@ -340,6 +365,11 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'enumerate_specification' => 0
+      },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 29,
+        'macro' => ''
       },
       'parent' => {}
     },

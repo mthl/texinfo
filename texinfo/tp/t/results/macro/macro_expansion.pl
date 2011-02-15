@@ -114,6 +114,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {
@@ -181,6 +186,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {
@@ -227,6 +237,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 13,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {
@@ -278,6 +293,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 15,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {
@@ -324,6 +344,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 17,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {
@@ -399,6 +424,11 @@ $result_trees{'macro_expansion'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 23,
+        'macro' => 'macro1'
+      },
       'parent' => {}
     },
     {

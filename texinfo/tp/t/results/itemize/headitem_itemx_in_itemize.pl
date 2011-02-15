@@ -87,6 +87,11 @@ $result_trees{'headitem_itemx_in_itemize'} = {
           ]
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

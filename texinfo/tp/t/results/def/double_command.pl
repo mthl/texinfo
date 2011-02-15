@@ -352,6 +352,7 @@ $result_trees{'double_command'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -451,6 +452,11 @@ $result_trees{'double_command'} = {
                   'extra' => {
                     'invalid_nesting' => 1
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 }
               ],
@@ -536,6 +542,7 @@ $result_trees{'double_command'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -566,6 +573,7 @@ $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_en
 $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_command'}{'contents'}[0];
 $result_trees{'double_command'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[1];
 $result_trees{'double_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_command'}{'contents'}[0];
+$result_trees{'double_command'}{'contents'}[0]{'line_nr'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'double_command'}{'contents'}[0]{'parent'} = $result_trees{'double_command'};
 $result_trees{'double_command'}{'contents'}[1]{'parent'} = $result_trees{'double_command'};
 $result_trees{'double_command'}{'contents'}[2]{'parent'} = $result_trees{'double_command'};
@@ -589,6 +597,7 @@ $result_trees{'double_command'}{'contents'}[3]{'contents'}[0]{'extra'}{'index_en
 $result_trees{'double_command'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'double_command'}{'contents'}[3];
 $result_trees{'double_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_command'}{'contents'}[3]{'contents'}[1];
 $result_trees{'double_command'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'double_command'}{'contents'}[3];
+$result_trees{'double_command'}{'contents'}[3]{'line_nr'} = $result_trees{'double_command'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'double_command'}{'contents'}[3]{'parent'} = $result_trees{'double_command'};
 $result_trees{'double_command'}{'contents'}[4]{'parent'} = $result_trees{'double_command'};
 

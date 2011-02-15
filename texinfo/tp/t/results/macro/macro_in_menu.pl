@@ -560,6 +560,11 @@ $result_trees{'macro_in_menu'} = {
           'type' => 'menu_entry'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 26,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -225,6 +225,11 @@ $result_trees{'empty_item_itemx'} = {
         ],
         'command_as_argument' => {}
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

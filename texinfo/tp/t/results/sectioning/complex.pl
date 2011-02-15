@@ -365,6 +365,11 @@ $result_trees{'complex'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -686,6 +691,11 @@ $result_trees{'complex'} = {
               'type' => 'menu_comment'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1002,6 +1012,11 @@ $result_trees{'complex'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 25,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1531,6 +1546,11 @@ $result_trees{'complex'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 47,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

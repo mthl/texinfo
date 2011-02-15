@@ -117,6 +117,11 @@ $result_trees{'headitem_in_table'} = {
         ],
         'command_as_argument' => {}
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

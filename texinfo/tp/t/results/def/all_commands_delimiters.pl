@@ -429,6 +429,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -817,6 +822,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1033,6 +1043,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1542,6 +1557,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1676,6 +1696,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 16,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1963,6 +1988,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 19,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -2319,6 +2349,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 23,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -2687,6 +2722,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 27,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -3043,6 +3083,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 31,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -3442,6 +3487,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 35,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -3796,6 +3846,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 39,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -4183,6 +4238,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 43,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -4345,6 +4405,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 47,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -4539,6 +4604,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 50,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -4733,6 +4803,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 53,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -4895,6 +4970,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 56,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5057,6 +5137,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 59,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5251,6 +5336,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 62,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5445,6 +5535,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 65,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5607,6 +5702,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 68,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5769,6 +5869,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 71,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -5963,6 +6068,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 74,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6157,6 +6267,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 77,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6319,6 +6434,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 80,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6481,6 +6601,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 83,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6681,6 +6806,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 86,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6799,6 +6929,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 89,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -6976,6 +7111,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 92,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -7153,6 +7293,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 95,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -7330,6 +7475,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 98,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -7507,6 +7657,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 101,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -7717,6 +7872,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 104,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -7927,6 +8087,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 107,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -8137,6 +8302,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 110,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -8347,6 +8517,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 113,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -8524,6 +8699,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 116,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -8701,6 +8881,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 119,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -8911,6 +9096,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 122,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -9120,6 +9310,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 125,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -9373,6 +9568,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 128,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -9626,6 +9826,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 131,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -9846,6 +10051,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 134,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -10066,6 +10276,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 137,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -10319,6 +10534,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 140,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -10572,6 +10792,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 143,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -10837,6 +11062,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 146,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -11102,6 +11332,11 @@ $result_trees{'all_commands_delimiters'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 149,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

@@ -494,7 +494,53 @@ text in group
 ['unknown_commands',
 '@unknwon
 @#
-']
+'],
+['formats_only_titles',
+'@itemize
+before first itemize
+@end itemize
+
+@enumerate
+before first enumerate
+@end enumerate
+
+@table @emph
+before first table
+@end table
+
+@vtable @asis
+before first vtable
+@end vtable
+
+@multitable @columnfractions 0.5 0.5
+before first multitable
+@end multitable
+'],
+['formats_only_title_comments',
+'@itemize
+@c comment itemize
+before first itemize
+@end itemize
+
+@enumerate @c comment on enumerate line
+@c comment enumerate
+before first enumerate
+@end enumerate
+
+@table @emph
+@c comment table
+before first table
+@end table
+
+@vtable @asis @c comment on vtable line
+before first vtable
+@end vtable
+
+@multitable @columnfractions 0.5 0.5
+@c comment multitable
+before first multitable
+@end multitable
+'],
 );
 
 foreach my $test (@test_cases) {

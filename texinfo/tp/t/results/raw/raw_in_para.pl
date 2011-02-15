@@ -31,6 +31,11 @@ $result_trees{'raw_in_para'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -68,6 +73,11 @@ $result_trees{'raw_in_para'} = {
               'type' => 'raw'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -126,6 +136,11 @@ $result_trees{'raw_in_para'} = {
               'type' => 'raw'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

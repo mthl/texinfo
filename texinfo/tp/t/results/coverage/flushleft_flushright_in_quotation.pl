@@ -45,6 +45,11 @@ $result_trees{'flushleft_flushright_in_quotation'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -85,6 +90,11 @@ $result_trees{'flushleft_flushright_in_quotation'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -94,6 +104,11 @@ $result_trees{'flushleft_flushright_in_quotation'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

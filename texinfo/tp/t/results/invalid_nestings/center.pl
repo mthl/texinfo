@@ -248,6 +248,11 @@ $result_trees{'center'} = {
               'extra' => {
                 'invalid_nesting' => 1
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -261,11 +266,7 @@ $result_trees{'center'} = {
           {}
         ]
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -578,6 +579,7 @@ $result_trees{'center'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'}[0]{
 $result_trees{'center'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[4]{'args'}[0];
 $result_trees{'center'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[4];
 $result_trees{'center'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'center'}{'contents'}[4]{'line_nr'} = $result_trees{'center'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'center'}{'contents'}[4]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[5];
 $result_trees{'center'}{'contents'}[5]{'parent'} = $result_trees{'center'};

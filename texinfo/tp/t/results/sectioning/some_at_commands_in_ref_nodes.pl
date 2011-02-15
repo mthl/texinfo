@@ -317,6 +317,11 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

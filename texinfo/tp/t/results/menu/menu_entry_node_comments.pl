@@ -288,6 +288,11 @@ $result_trees{'menu_entry_node_comments'} = {
           'type' => 'menu_entry'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

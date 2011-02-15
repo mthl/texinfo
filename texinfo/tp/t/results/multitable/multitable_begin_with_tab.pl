@@ -87,6 +87,11 @@ $result_trees{'multitable_begin_with_tab'} = {
           }
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -218,6 +223,11 @@ $result_trees{'multitable_begin_with_tab'} = {
           }
         ]
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -298,6 +308,15 @@ $result_errors{'multitable_begin_with_tab'} = [
     'macro' => '',
     'text' => '@tab before @item',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: warning: @multitable has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@multitable has text but no @item',
+    'type' => 'warning'
   },
   {
     'error_line' => ':6: @tab before @item

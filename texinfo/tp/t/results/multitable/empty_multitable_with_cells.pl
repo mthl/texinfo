@@ -86,6 +86,11 @@ $result_trees{'empty_multitable_with_cells'} = {
         'max_columns' => 0,
         'prototypes' => []
       },
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -169,6 +174,15 @@ $result_errors{'empty_multitable_with_cells'} = [
     'line_nr' => 3,
     'macro' => '',
     'text' => '@item in empty multitable',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: warning: @multitable has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@multitable has text but no @item',
     'type' => 'warning'
   }
 ];

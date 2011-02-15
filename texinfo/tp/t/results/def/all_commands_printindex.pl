@@ -113,6 +113,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -232,6 +237,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -375,6 +385,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -481,6 +496,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -587,6 +607,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 18,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -716,6 +741,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 22,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -821,6 +851,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 26,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -926,6 +961,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 30,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1031,6 +1071,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 34,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1146,6 +1191,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 38,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1238,6 +1288,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 42,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1340,6 +1395,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 46,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1459,6 +1519,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 50,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1565,6 +1630,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 54,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1691,6 +1761,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 58,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1831,6 +1906,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 62,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -1960,6 +2040,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 66,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -2103,6 +2188,11 @@ $result_trees{'all_commands_printindex'} = {
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 70,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

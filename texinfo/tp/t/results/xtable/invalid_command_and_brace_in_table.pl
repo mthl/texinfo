@@ -45,6 +45,11 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
           'type' => 'before_item'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -106,6 +111,15 @@ $result_errors{'invalid_command_and_brace_in_table'} = [
     'macro' => '',
     'text' => 'Misplaced }',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: warning: @table has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@table has text but no @item',
+    'type' => 'warning'
   }
 ];
 

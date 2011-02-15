@@ -1085,16 +1085,79 @@ sub _end_preformatted ($$$)
   return $current;
 }
 
+# close formats
+sub _close_command_cleanup($$$) {
+  my $self = shift;
+  my $current = shift;
 # remove the dynamic counters in multitable, they are not of use in the final
 # tree
-sub _close_multitable($) {
-  my $multitable = shift;
-  foreach my $row (@{$multitable->{'contents'}}) {
-    if ($row->{'type'} and $row->{'type'} eq 'row') {
-      delete $row->{'cells_count'};
+  return unless ($current->{'cmdname'});
+  if ($current->{'cmdname'} eq 'multitable') {
+    foreach my $row (@{$current->{'contents'}}) {
+      if ($row->{'type'} and $row->{'type'} eq 'row') {
+        delete $row->{'cells_count'};
+      }
+    }
+    delete $current->{'rows_count'};
+  } elsif ($item_container_commands{$current->{'cmdname'}}) {
+    delete $current->{'items_count'};
+  }
+  if ($block_item_commands{$current->{'cmdname'}}) {
+    if (@{$current->{'contents'}}) {
+      my $leading_spaces = 0;
+      my $before_item;
+      if ($current->{'contents'}->[0]->{'type'} and 
+          $current->{'contents'}->[0]->{'type'} eq 'empty_line_after_command'
+          and $current->{'contents'}->[1]
+          and $current->{'contents'}->[1]->{'type'}
+          and $current->{'contents'}->[1]->{'type'} eq 'before_item') {
+        $leading_spaces = 1;
+        $before_item = $current->{'contents'}->[1];
+      } elsif ($current->{'contents'}->[0]->{'type'} 
+              and $current->{'contents'}->[0]->{'type'} eq 'before_item') {
+        $before_item = $current->{'contents'}->[0];
+      }
+      if ($before_item) {
+        # remove empty before_items
+        if (!@{$before_item->{'contents'}}) {
+          if ($leading_spaces) {
+            my $space = shift @{$current->{'contents'}};
+            unshift @{$current->{'contents'}}, $space;
+          } else {
+            shift @{$current->{'contents'}};
+          }
+        } else {
+          my $empty_before_item = 1;
+          foreach my $before_item_content (@{$before_item->{'contents'}}) {
+            if (!$before_item_content->{'cmdname'} or 
+                  ($before_item_content->{'cmdname'} ne 'c' 
+                   and $before_item_content->{'cmdname'} ne 'comment')) {
+              $empty_before_item = 0;
+              last;
+            }
+          }
+          if (!$empty_before_item) {
+            my $empty_format = 1;
+            foreach my $format_content (@{$current->{'contents'}}) {
+              next if ($format_content eq $before_item);
+              if (($format_content->{'cmdname'} and 
+                   ($format_content->{'cmdname'} ne 'c'
+                    or $format_content->{'cmdname'} ne 'comment'))
+                  or ($format_content->{'type'} and
+                    ($format_content->{'type'} ne 'empty_line_after_command'))) {
+                $empty_format = 0;
+                last;
+              }
+            }
+            if ($empty_format) {
+              $self->line_warn (sprintf($self->__("\@%s has text but no \@item"),
+                                        $current->{'cmdname'}), $current->{'line_nr'});                       
+            }
+          }
+        }
+      }
     }
   }
-  delete $multitable->{'rows_count'};
 }
 
 # close the current command, with error messages and give the parent.
@@ -1181,13 +1244,7 @@ sub _close_commands($$$;$)
                and ($root_commands{$current->{'cmdname'}}
                     or ($command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
-    if ($current->{'cmdname'}) {
-      if ($current->{'cmdname'} eq 'multitable') {
-        _close_multitable($current);
-      } elsif ($item_container_commands{$current->{'cmdname'}}) {
-        delete $current->{'items_count'};
-      }
-    }
+    $self->_close_command_cleanup($current);
     $current = $self->_close_current($current, $line_nr, $command);
   }
 
@@ -1200,14 +1257,8 @@ sub _close_commands($$$;$)
     pop @{$self->{'regions_stack'}} 
        if ($region_commands{$current->{'cmdname'}});
     $closed_command = $current;
-    if ($current->{'cmdname'}) {
-      if ($current->{'cmdname'} eq 'multitable') {
-        _close_multitable($current);
-      } elsif ($item_container_commands{$current->{'cmdname'}}) {
-        delete $current->{'items_count'};
-      }
-    }
-    $current = $current->{'parent'}
+    $self->_close_command_cleanup($current);
+    $current = $current->{'parent'};
   } elsif ($command) {
     $self->line_error (sprintf($self->__("Unmatched `%c%s'"), 
                        ord('@'), "end $command"), $line_nr);
@@ -3489,6 +3540,7 @@ sub _parse_texi($;$)
               $current = $self->_begin_preformatted($current) 
                 unless ($block_commands{$command} eq 'raw');
             }
+            $block->{'line_nr'} = $line_nr;
             $block->{'extra'}->{'invalid_nesting'} = 1 if ($invalid);
             $self->_register_global_command($command, $block, $line_nr);
 

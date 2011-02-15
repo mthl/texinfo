@@ -75,6 +75,11 @@ $result_trees{'protected_brace'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

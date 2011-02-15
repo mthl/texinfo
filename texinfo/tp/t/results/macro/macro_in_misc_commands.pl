@@ -1206,6 +1206,11 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'preformatted'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 78,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -2936,6 +2941,11 @@ $result_trees{'macro_in_misc_commands'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 191,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

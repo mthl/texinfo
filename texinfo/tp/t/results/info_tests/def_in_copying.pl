@@ -345,6 +345,11 @@ deffnx lines
                   'type' => 'paragraph'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -354,6 +359,11 @@ deffnx lines
               'type' => 'empty_line_after_command'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -552,6 +562,11 @@ deffnx lines
               'type' => 'paragraph'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 17,
+            'macro' => 'mymacro'
+          },
           'parent' => {}
         },
         {

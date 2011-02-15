@@ -106,6 +106,11 @@ $result_trees{'double_exdent'} = {
               'parent' => {}
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -115,6 +120,11 @@ $result_trees{'double_exdent'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

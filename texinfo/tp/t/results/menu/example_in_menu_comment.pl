@@ -103,6 +103,11 @@ $result_trees{'example_in_menu_comment'} = {
                   'type' => 'preformatted'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -139,6 +144,11 @@ $result_trees{'example_in_menu_comment'} = {
           'type' => 'menu_comment'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

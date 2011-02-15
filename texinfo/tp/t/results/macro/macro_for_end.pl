@@ -72,6 +72,11 @@ $result_trees{'macro_for_end'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],

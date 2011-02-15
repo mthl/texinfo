@@ -337,6 +337,11 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 38,
+        'macro' => 'macro3'
+      },
       'parent' => {}
     },
     {
@@ -361,6 +366,11 @@ $result_trees{'complex_argument'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 38,
+        'macro' => 'macro3'
+      },
       'parent' => {}
     },
     {

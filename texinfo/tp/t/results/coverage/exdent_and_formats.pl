@@ -111,6 +111,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -237,6 +242,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -294,6 +304,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 18,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -385,6 +400,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 29,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -437,6 +457,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 34,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -529,6 +554,11 @@ $result_trees{'exdent_and_formats'} = {
               'parent' => {}
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 42,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -538,6 +568,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'empty_line_after_command'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 40,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -599,6 +634,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 48,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -671,6 +711,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 52,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -743,6 +788,11 @@ $result_trees{'exdent_and_formats'} = {
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 57,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -841,6 +891,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 62,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -939,6 +994,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 67,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1011,6 +1071,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 72,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -1109,6 +1174,11 @@ $result_trees{'exdent_and_formats'} = {
           'parent' => {}
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 77,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

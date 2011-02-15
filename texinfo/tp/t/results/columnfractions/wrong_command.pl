@@ -65,16 +65,11 @@ $result_trees{'wrong_command'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [
-        {
-          'contents' => [],
-          'parent' => {},
-          'type' => 'before_item'
-        }
-      ],
+      'contents' => [],
       'extra' => {
         'max_columns' => 0
       },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -94,7 +89,7 @@ $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
-$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'line_nr'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'wrong_command'}{'contents'}[0]{'parent'} = $result_trees{'wrong_command'};
 $result_trees{'wrong_command'}{'contents'}[1]{'parent'} = $result_trees{'wrong_command'};
 

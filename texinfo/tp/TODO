@@ -64,8 +64,11 @@ only appear in toplevel
 dotless:
 "%c%s expects `i' or `j' as argument, not `%s'"
 
-no warning in
+Missing warnings in
 t/19def.t empty_def_arguments
+for 
+@deffnx {} {}
+@deffnx{} {}
 
 warn when a @noindent/@indent appears within a paragraph.
 

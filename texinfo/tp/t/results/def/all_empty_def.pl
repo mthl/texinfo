@@ -30,6 +30,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -70,6 +75,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 4,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -110,6 +120,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 7,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -150,6 +165,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -190,6 +210,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 13,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -230,6 +255,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 16,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -270,6 +300,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 19,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -310,6 +345,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 22,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -350,6 +390,11 @@ $result_trees{'all_empty_def'} = {
           'type' => 'def_line'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 25,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

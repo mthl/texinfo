@@ -2175,6 +2175,11 @@ $result_trees{'numbering_captions_listoffloats'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 89,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -2538,6 +2543,11 @@ $result_trees{'numbering_captions_listoffloats'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 105,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -3289,6 +3299,11 @@ $result_trees{'numbering_captions_listoffloats'} = {
               'type' => 'menu_entry'
             }
           ],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 134,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

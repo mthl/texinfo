@@ -31,6 +31,11 @@ $result_trees{'raw_in_example'} = {
                   'type' => 'raw'
                 }
               ],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -44,6 +49,11 @@ $result_trees{'raw_in_example'} = {
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

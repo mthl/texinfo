@@ -62,6 +62,11 @@ $result_trees{'space_macro_after_end'} = {
           'type' => 'raw'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {

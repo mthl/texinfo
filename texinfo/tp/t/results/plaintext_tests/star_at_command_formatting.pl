@@ -664,6 +664,11 @@ And end para.
           'type' => 'preformatted'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 18,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -956,6 +961,11 @@ And end para.
           'type' => 'paragraph'
         }
       ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 23,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
