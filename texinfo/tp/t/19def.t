@@ -280,6 +280,18 @@ with deffnx missing category or name
 '],
 );
 
+my @test_info = (
+['space_in_def_for_index',
+'@node Top
+
+@deffn { Category } { name } { argument } argument2...
+@deffnx {AAA1} {AAA2} arg3
+@end deffn
+
+@printindex fn
+'],
+);
+
 my @test_invalid = (
 ['def_defx_mismatch',
 '@defun {my def} args @var{arg} @dots{}
@@ -437,8 +449,12 @@ foreach my $test (@test_cases) {
   }
 }
 
+foreach my $test (@test_info) {
+  $test->[2]->{'test_formats'} = ['info'];
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('def', [@test_cases, @test_invalid, @test_printindex], $arg_test_case,
+run_all ('def', [@test_cases, @test_info, @test_invalid, @test_printindex], $arg_test_case,
    $arg_generate, $arg_debug);
 

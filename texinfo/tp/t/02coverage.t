@@ -299,6 +299,19 @@ quotation continues.
 @end flushright
 @end quotation
 '],
+['flushright_example_nested',
+'@example
+@flushright
+in   --- flushright
+@end flushright
+@end example
+
+@flushright
+@example
+in   --- example
+@end example
+@end flushright
+'],
 ['center',
 '
 @center  in center @code{in code}

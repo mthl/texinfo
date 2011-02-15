@@ -192,6 +192,16 @@ Some text.
 
 @end example
 '],
+['section_in_table',
+'@table @asis
+@item Before
+
+@section Subsection
+
+@item After
+
+@end table
+'],
 ['itemx_in_itemize_enumerate_in_table',
 '@table @strong
 @item item

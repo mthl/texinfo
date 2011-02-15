@@ -594,9 +594,15 @@ sub new_formatter($$;$)
                    'code' => 0, 'w' => 0,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
 
-  if ($preformatted_context_commands{$self->{'context'}->[-1]}
-      and ! $menu_commands{$self->{'context'}->[-1]}) {
-    $formatter->{'preformatted'} = 1;
+  if ($type eq 'unfilled') {
+    foreach my $context (reverse(@{$self->{'context'}})) {
+      if ($menu_commands{$context}) {
+        last;
+      } elsif ($preformatted_context_commands{$context}) {
+        $formatter->{'preformatted'} = 1;
+        last;
+      }
+    }
   }
   print STDERR "NEW FORMATTER($type)\n" if ($self->{'DEBUG'});
   return $formatter;
@@ -1967,6 +1973,10 @@ sub _convert($$)
     } elsif ($root->{'type'} eq 'preformatted') {
         $preformatted = $self->new_formatter('unfilled');
         push @{$self->{'formatters'}}, $preformatted;
+        if ($self->{'context'}->[-1] eq 'flushright') {
+          push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+                                                     'locations' => []};
+        }
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
@@ -2199,6 +2209,10 @@ sub _convert($$)
                                    $preformatted->{'container'}->end());
     if ($result ne '') {
       $result = $self->ensure_end_of_line($result);
+    }
+    if ($self->{'context'}->[-1] eq 'flushright') {
+      $result = $self->_align_environment ($result, 
+        $self->{'text_element_context'}->[$self->flushright_index]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};
     # We assume that, upon closing the preformatted we are at the 
