@@ -591,7 +591,7 @@ sub new_formatter($$;$)
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   'code' => 0, 'w' => 0,
+                   'code' => 0, 'w' => 0, 'type' => $type,
                    'frenchspacing_stack' => [$self->{'frenchspacing'}]};
 
   if ($type eq 'unfilled') {
@@ -1306,6 +1306,9 @@ sub _convert($$)
       # FIXME count lines
       $result = $self->_image($root);
       $self->_add_text_count($result);
+      if ($result ne '' and $formatter->{'type'} ne 'paragraph') {
+        $self->{'empty_lines_count'} = 0;
+      }
       return $result;
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.

@@ -96,7 +96,15 @@ Para.
 
 Text.
 @printindex cp
-']
+'],
+['empty_index_entry',
+'@node Top
+
+@deffn {} { }
+@end deffn
+
+@printindex fn
+'],
 );
 
 foreach my $test (@test_formatted) {

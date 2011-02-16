@@ -83,6 +83,11 @@ Now @anchor{anchor1}.
 
 No space@anchor{anchor2}.
 '],
+['image_quotes', 
+'@node Top
+
+@image{f--ile,,,alt""\\}
+'],
 [ 'multitable_anchor_and_index_entry',
 '@node Top
 

@@ -367,6 +367,7 @@ sub _printindex($$)
     }
     my $entry_text = '';
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
+    next if ($entry_text !~ /\S/);
 
     my $entry_nr = '';
     if (!defined($entry_counts{$entry_text})) {
@@ -475,7 +476,7 @@ sub _node($$)
   return $result;
 }
 
-my @image_files_extensions = ('png', 'jpg');
+my @image_files_extensions = ('.png', '.jpg');
 sub _image($$)
 {
   my $self = shift;
@@ -494,9 +495,10 @@ sub _image($$)
     }
     my $image_file;
     foreach my $extension (@extensions) {
-      $image_file = 
-         $self->Texinfo::Parser::_locate_include_file ($basefile.$extension);
-      if (defined($image_file)) {
+      if ($self->Texinfo::Parser::_locate_include_file ($basefile.$extension)) {
+        # use the basename and not the file found.  It is agreed that it is
+        # better, since in any case the files are moved.
+        $image_file = $basefile.$extension;
         last; 
       }
     }
