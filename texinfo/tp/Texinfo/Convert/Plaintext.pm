@@ -1037,10 +1037,11 @@ sub _image($$)
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $result = '['.$result.']';
       }
-      return $result;
+      my $lines_count = ($result =~ tr/\n/\n/);
+      return ($result, $lines_count);
     }
   }
-  return '';
+  return ('', 0);
 }
 
 # on top, the converter object which holds some global information
@@ -1303,8 +1304,9 @@ sub _convert($$)
       $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      # FIXME count lines
-      $result = $self->_image($root);
+      my $lines_count;
+      ($result, $lines_count) = $self->_image($root);
+      $self->_add_lines_count($lines_count);
       $self->_add_text_count($result);
       if ($result ne '' and $formatter->{'type'} ne 'paragraph') {
         $self->{'empty_lines_count'} = 0;

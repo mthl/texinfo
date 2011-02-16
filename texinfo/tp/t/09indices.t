@@ -97,6 +97,24 @@ Para.
 Text.
 @printindex cp
 '],
+['image_lines_count',
+'@node Top
+
+@image{count_image}
+
+@cindex index entry
+
+@printindex cp
+'],
+['image_text_lines_count',
+'@node Top
+
+@image{count_image_text}
+
+@cindex index entry
+
+@printindex cp
+'],
 ['empty_index_entry',
 '@node Top
 

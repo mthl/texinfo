@@ -483,6 +483,7 @@ sub _image($$)
   my $root = shift;
   my @extensions = @image_files_extensions;
 
+  my $lines_count = 0;
 
   if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
     my $basefile = Texinfo::Convert::Text::convert(
@@ -533,12 +534,13 @@ sub _image($$)
       $result .= "\x{00}\x{08}]";
     } else {
       $result = $text;
+      $lines_count = ($result =~ tr/\n/\n/);
     }
     if (defined($result)) {
-      return $result;
+      return ($result, $lines_count);
     }
   }
-  return '';
+  return ('', 0);
 }
 
 1;
