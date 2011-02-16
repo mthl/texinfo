@@ -532,6 +532,9 @@ sub _image($$)
         $result .= " text=\"$text\"";
       }
       $result .= "\x{00}\x{08}]";
+      if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
+        $result .= "\n";
+      }
     } else {
       $result = $text;
       $lines_count = ($result =~ tr/\n/\n/);
