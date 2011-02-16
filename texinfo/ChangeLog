@@ -1,3 +1,8 @@
+2011-02-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (anchor, HTML Xref Link Preservation): two
+	approaches to preserving links to deleted/renamed nodes.
+
 2011-02-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sectionheading): check that we are not in an

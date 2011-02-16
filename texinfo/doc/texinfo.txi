@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
+@c $Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -5441,6 +5441,15 @@ an argument.  (@xref{goto-node,,,info-stnd,GNU Info}.)
 
 Also like node names, anchor names cannot include some characters
 (@pxref{Node Line Requirements}).
+
+@cindex Nodes, deleting or renaming
+Because of this duality, when you delete or rename a node, it can be
+useful to retain an @code{@@anchor} with the old name.  That way, any
+links to the old node, whether from other Texinfo manuals or general
+web pages, will still work.  You can also do this with the
+@file{RENAMED_NODES_FILE} feature of @command{makeinfo} (@pxref{HTML
+Xref Link Preservation}).  There is no effective difference between
+the two approaches.
 
 
 @node Menus
@@ -18741,6 +18750,9 @@ Lines consisting only of whitespace are ignored.  Comments are
 indicated with an @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
 
+Another approach to preserving links to deleted or renamed nodes is to
+use anchors (@pxref{anchor,, @code{anchor}}).  There is no effective
+difference between the two approaches.
 
 @node texi2any Output Customization
 @chapter @command{texi2any} Output Customization
@@ -23082,7 +23094,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
+$Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23161,7 +23173,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.367 2011-02-14 19:20:19 karl Exp $
+@comment $Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
