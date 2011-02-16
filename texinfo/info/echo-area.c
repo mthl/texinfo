@@ -1,5 +1,5 @@
 /* echo-area.c -- how to read a line in the echo area.
-   $Id: echo-area.c,v 1.14 2008-06-11 09:55:41 gray Exp $
+   $Id: echo-area.c,v 1.15 2011-02-16 21:31:06 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -912,7 +912,9 @@ info_read_maybe_completing (WINDOW *window,
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 {
-  if (!echo_area_completion_items)
+  if (!echo_area_completion_items
+      || (isprint (key)
+	  && ea_last_executed_command == (VFunction *) ea_possible_completions))
     {
       ea_insert (window, count, key);
       return;
