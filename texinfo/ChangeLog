@@ -1,3 +1,11 @@
+2011-02-16  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/echo-area.c (ea_possible_completions): If the
+	key which invokes the function was pressed twice, and
+	it represents a printable character, insert that character in the
+	echo area.  E.g. pressing ?? inserts a single question mark into
+	the EA.
+
 2011-02-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (anchor, HTML Xref Link Preservation): two
