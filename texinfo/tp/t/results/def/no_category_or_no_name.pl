@@ -441,15 +441,4 @@ $result_errors{'no_category_or_no_name'} = [
 ];
 
 
-
-$result_converted{'plaintext'}->{'no_category_or_no_name'} = '     no category no name
-
- -- only category:
-     no name
-
- -- a: b c d
- -- deffnx_category:
-     with deffnx missing category or name
-';
-
 1;

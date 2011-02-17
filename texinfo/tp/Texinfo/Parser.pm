@@ -479,6 +479,10 @@ foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 
+foreach my $close_paragraph_command (keys(%def_commands)) {
+  $close_paragraph_commands{$close_paragraph_command} = 1;
+}
+
 my %close_preformatted_commands = %close_paragraph_commands;
 foreach my $no_close_preformatted('sp') {
   delete $close_preformatted_commands{$no_close_preformatted};
@@ -3307,12 +3311,22 @@ sub _parse_texi($;$)
                 # check that the def*x is first after @def*, no paragraph
                 # in-between.
                 my $after_paragraph = 0;
-                if ($current->{'contents'}) {
-                  foreach my $content (@{$current->{'contents'}}) {
-                    if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
-                      $after_paragraph = 1;
-                      last;
+                foreach my $content (@{$current->{'contents'}}) {
+                  if ($content->{'type'} and $content->{'type'} eq 'paragraph') {
+                    $after_paragraph = 1;
+                    last;
+                  } elsif ($content->{'type'} and $content->{'type'} eq 'preformatted') {
+                    foreach my $preformatted_content (@{$content->{'contents'}}) {
+                      if ((defined($preformatted_content->{'text'}) 
+                           and $preformatted_content->{'text'} =~ /\S/)
+                          or ($preformatted_content->{'cmdname'} 
+                              and ($preformatted_content->{'cmdname'} ne 'c'
+                                   and $preformatted_content->{'cmdname'} ne 'comment'))) {
+                        $after_paragraph = 1;
+                        last;
+                      }
                     }
+                    last if ($after_paragraph);
                   }
                 }
                 if (!$current->{'cmdname'} 

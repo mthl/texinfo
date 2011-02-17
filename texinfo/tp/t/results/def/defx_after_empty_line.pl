@@ -270,4 +270,10 @@ truc bidulr machin...
 $result_errors{'defx_after_empty_line'} = [];
 
 
+
+$result_converted{'plaintext'}->{'defx_after_empty_line'} = ' -- fset: I a g
+
+ -- truc: bidulr machin...
+';
+
 1;

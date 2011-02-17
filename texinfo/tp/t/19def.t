@@ -97,6 +97,37 @@ deffn
 @c comment
 @deffnx {truc} bidulr machin...
 @end deffn'],
+['defx_after_empty_line',
+'@deffn fset @var{i} a g
+
+@deffnx {truc} bidulr machin...
+@end deffn'],
+['defx_in_example',
+'@example
+@deffn fset @var{i} a g
+@deffnx {truc} bidulr machin...
+@end deffn
+@end example
+'],
+['defx_after_comment_in_example',
+'@example
+@deffn fset @var{i} a g
+@c comment
+@deffnx {truc} bidulr machin...
+@end deffn
+@end example
+'],
+['defx_after_empty_line_in_example',
+'@example
+@deffn fset @var{i} a g
+
+@c c
+@comment comment
+
+@deffnx {truc} bidulr machin...
+@end deffn
+@end example
+'],
 ['end_of_lines_protected_in_footnote',
 '@footnote{
 @deffn category deffn_name arguments arg2 @
@@ -263,21 +294,6 @@ deffn
 '@deffn c @{
 @end deffn
 '],
-['no_category_or_no_name',
-'@deffn
-no category no name
-@end deffn
-
-@deffn {only category}
-no name
-@end deffn
-
-@deffn a b c d 
-@deffnx deffnx_category
-@deffnx 
-with deffnx missing category or name
-@end deffn
-'],
 );
 
 my @test_info = (
@@ -293,6 +309,21 @@ my @test_info = (
 );
 
 my @test_invalid = (
+['no_category_or_no_name',
+'@deffn
+no category no name
+@end deffn
+
+@deffn {only category}
+no name
+@end deffn
+
+@deffn a b c d 
+@deffnx deffnx_category
+@deffnx 
+with deffnx missing category or name
+@end deffn
+'],
 ['def_defx_mismatch',
 '@defun {my def} args @var{arg} @dots{}
 @deffnx {type} {name} and now the args
@@ -306,17 +337,21 @@ In defun.
 Text in deffn
 @deffnx {truc} bidulr machin...
 @end deffn'],
-['defx_after_empty_line',
-'@deffn fset @var{i} a g
-
-@deffnx {truc} bidulr machin...
-@end deffn'],
 ['defx_after_paragraph_end',
 '@deffn fset @var{i} a g
 Text in paragraph.
 
 @deffnx {truc} bidulr machin...
 @end deffn'],
+['defx_after_preformatted_with_text',
+'@example
+@deffn fset @var{i} a g
+Text in preformatted.
+
+@deffnx {truc} bidulr machin...
+@end deffn
+@end example
+'],
 ['end_of_line_protect_at_end',
 '
 @deffn category2 deffn_name2 arguments2 @'],
@@ -433,6 +468,7 @@ my @test_printindex = ();
 
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+
   if ($test->[0] eq 'all_commands' or $test->[0] eq 'all_commands_delimiters') {
     push @test_printindex, [$test->[0] . '_printindex',
                             '@node Top
