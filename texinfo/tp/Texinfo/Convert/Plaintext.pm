@@ -780,8 +780,14 @@ sub _footnotes($$)
                      }) if ($element);
       # this pushes on 'context', 'format_context' and 'formatters'
       $self->push_top_formatter('footnote');
+      my $formatted_footnote_number;
+      if ($self->{'NUMBER_FOOTNOTES'}) {
+        $formatted_footnote_number = $footnote->{'number'};
+      } else {
+        $formatted_footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
+      }
       my $footnote_text = ' ' x $footnote_indent 
-               . "($footnote->{'number'}) ";
+               . "($formatted_footnote_number) ";
       $result .= $footnote_text;
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($footnote_text);
@@ -1367,18 +1373,18 @@ sub _convert($$)
       }
       return '';
     } elsif ($command eq 'footnote') {
-      my $footnote_number;
+      $self->{'footnote_index'}++ unless ($self->{'multiple_pass'});
+      my $formatted_footnote_number;
       if ($self->{'NUMBER_FOOTNOTES'}) {
-        $self->{'footnote_index'}++ unless ($self->{'multiple_pass'});
-        $footnote_number = $self->{'footnote_index'};
+        $formatted_footnote_number = $self->{'footnote_index'};
       } else {
-        $footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
+        $formatted_footnote_number = $NO_NUMBER_FOOTNOTE_SYMBOL;
       }
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
-                                             'number' => $footnote_number}
+                                    'number' => $self->{'footnote_index'}}
           unless ($self->{'multiple_pass'});
       return $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text("($footnote_number)"));
+               $formatter->{'container'}->add_text("($formatted_footnote_number)"));
     } elsif ($command eq 'anchor') {
       $result = $self->_count_added($formatter->{'container'},
                    $formatter->{'container'}->add_pending_word());

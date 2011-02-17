@@ -176,42 +176,51 @@ foreach my $avoided_key(@avoided_keys_floats) {
 sub filter_floats_keys { [grep {!$avoided_keys_floats{$_}}
    ( sort keys %{$_[0]} )] }
 
-sub convert_to_plaintext($$$)
+sub convert_to_plaintext($$$;$)
 {
   my $self = shift;
   my $tree = shift;
   my $parser = shift;
+  my $converter_options = shift;
+  $converter_options = {} if (!defined($converter_options));
   my $converter = 
      Texinfo::Convert::Plaintext::converter({'DEBUG' => $self->{'DEBUG'},
-                                             'parser' => $parser });
+                                             'parser' => $parser,
+                                             %$converter_options });
   my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
 
-sub convert_to_info($$$)
+sub convert_to_info($$$;$)
 {
   my $self = shift;
   my $tree = shift;
   my $parser = shift;
+  my $converter_options = shift;
+  $converter_options = {} if (!defined($converter_options));
   my $converter = 
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
-                                         'OUTFILE' => ''});
+                                         'OUTFILE' => '',
+                                          %$converter_options });
   my $result = $converter->output($tree);
   die if (!defined($result));
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }
 
-sub debugcount($$$)
+sub debugcount($$$;$)
 {
   my $self = shift;
   my $tree = shift;
   my $parser = shift;
+  my $converter_options = shift;
+  $converter_options = {} if (!defined($converter_options));
   my $converter =
      DebugTexinfo::DebugCount->converter({'DEBUG' => $self->{'DEBUG'},
-                                         'parser' => $parser });
+                                         'parser' => $parser,
+                                          %$converter_options });
   my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
@@ -223,6 +232,7 @@ sub test($$)
   my $test_case = shift;
 
   my $parser_options = {};
+  my $converter_options = {};
   my ($test_name, $test_text);
 
   my $tests_count = 0;
@@ -231,6 +241,7 @@ sub test($$)
   die if (!defined($test_name));
   $test_text = shift @$test_case;
   $parser_options = shift @$test_case if (@$test_case);
+  $converter_options = shift @$test_case if (@$test_case);
   my $test_file;
   if ($parser_options->{'test_file'}) {
     $test_file = $parser_options->{'test_file'};
@@ -285,7 +296,7 @@ sub test($$)
   foreach my $format (@tested_formats) {
     if (defined($formats{$format})) {
       ($converted_errors{$format}, $converted{$format}) 
-           = &{$formats{$format}}($self, $result, $parser);
+           = &{$formats{$format}}($self, $result, $parser, $converter_options);
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       #print STDERR "$format: \n$converted{$format}";
     }

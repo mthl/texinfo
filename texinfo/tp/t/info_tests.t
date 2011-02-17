@@ -35,6 +35,13 @@ text.
 @node chapter node
 @chapter chapter'
 ],
+['footnote_no_number',
+'@node Top
+
+Para@footnote{Footnote 1.}.
+
+Para2@footnote{Footnote 2.}.
+',{} , {'NUMBER_FOOTNOTES' => 0}],
 ['ref_tests',
 '
 @node Top
