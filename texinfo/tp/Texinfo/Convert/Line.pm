@@ -100,19 +100,22 @@ sub get_pending($)
   return $result;
 }
 
-sub add_pending_word($)
+sub add_pending_word($;$)
 {
   my $line = shift;
+  my $add_spaces = shift;
   $line->{'end_line_count'} = 0;
-  return $line->_add_pending_word();
+  return $line->_add_pending_word($add_spaces);
 }
+
 # put a pending word and spaces in the result string.
 sub _add_pending_word($)
 {
   my $line = shift;
+  my $add_spaces = shift;
   my $result = '';
 
-  if (defined($line->{'word'})) {
+  if (defined($line->{'word'}) or $add_spaces) {
     if ($line->{'line_beginning'}) {
       if ($line->{'indent_length'}) {
         $result .= ' ' x ($line->{'indent_length'} - $line->{'counter'});
@@ -124,9 +127,11 @@ sub _add_pending_word($)
       print STDERR "ADD_SPACES.L\n" if ($line->{'DEBUG'});
     }
     $line->{'space'} = '';
-    $result .= $line->{'word'};
-    print STDERR "ADD_WORD.L[$line->{'word'}]\n" if ($line->{'DEBUG'});
-    $line->{'word'} = undef;
+    if (defined($line->{'word'})) {
+      $result .= $line->{'word'};
+      print STDERR "ADD_WORD.L[$line->{'word'}]\n" if ($line->{'DEBUG'});
+      $line->{'word'} = undef;
+    }
   }
   return $result;
 }

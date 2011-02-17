@@ -1304,13 +1304,15 @@ sub _convert($$)
       $formatter->{'upper_case'}-- if ($upper_case_commands{$command});
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      my $lines_count;
-      ($result, $lines_count) = $self->_image($root);
+      $result = $self->_count_added($formatter->{'container'},
+                   $formatter->{'container'}->add_pending_word(1));
+      my ($image, $lines_count) = $self->_image($root);
       $self->_add_lines_count($lines_count);
-      $self->_add_text_count($result);
-      if ($result ne '' and $formatter->{'type'} ne 'paragraph') {
+      $self->_add_text_count($image);
+      if ($image ne '' and $formatter->{'type'} ne 'paragraph') {
         $self->{'empty_lines_count'} = 0;
       }
+      $result .= $image; 
       return $result;
     } elsif ($root->{'cmdname'} eq 'email') {
       # nothing is output for email, instead the command is substituted.

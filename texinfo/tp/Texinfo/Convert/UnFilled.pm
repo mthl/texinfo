@@ -121,10 +121,19 @@ sub get_pending($)
 }
 
 # put a pending word and spaces in the result string.
-sub add_pending_word($)
+sub add_pending_word($;$)
 {
   my $line = shift;
+  my $add_spaces = shift;
   $line->{'end_line_count'} = 0;
+  if ($add_spaces) {
+    # this set the indentation, if needed
+    $line->_add_text('');
+    my $text = $line->{'leading_spaces'};
+    $line->{'leading_spaces'} = '';
+    return $text;
+  }
+
   return '';
 }
 

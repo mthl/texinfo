@@ -105,20 +105,22 @@ sub get_pending($)
   return $result;
 }
 
-sub add_pending_word($)
+sub add_pending_word($;$)
 {
   my $paragraph = shift;
+  my $add_spaces = shift;
   $paragraph->{'end_line_count'} = 0;
-  return $paragraph->_add_pending_word();
+  return $paragraph->_add_pending_word($add_spaces);
 }
 
 # put a pending word and spaces in the result string.
-sub _add_pending_word($)
+sub _add_pending_word($;$)
 {
   my $paragraph = shift;
+  my $add_spaces = shift;
   my $result = '';
 
-  if (defined($paragraph->{'word'})) {
+  if (defined($paragraph->{'word'}) or $add_spaces) {
     if ($paragraph->{'indent_length'} > $paragraph->{'counter'}) {
       $result .= ' ' x ($paragraph->{'indent_length'} - $paragraph->{'counter'});
       $paragraph->{'counter'} = $paragraph->{'indent_length'};
@@ -131,12 +133,14 @@ sub _add_pending_word($)
          if ($paragraph->{'DEBUG'});
       
     }
-    $result .= $paragraph->{'word'};
-    $paragraph->{'counter'} += $paragraph->{'word_counter'};
-    print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
-      if ($paragraph->{'DEBUG'});
-    $paragraph->{'word'} = undef;
-    $paragraph->{'word_counter'} = 0;
+    if (defined($paragraph->{'word'})) {
+      $result .= $paragraph->{'word'};
+      $paragraph->{'counter'} += $paragraph->{'word_counter'};
+      print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
+        if ($paragraph->{'DEBUG'});
+      $paragraph->{'word'} = undef;
+      $paragraph->{'word_counter'} = 0;
+    }
     $paragraph->{'space'} = '';
   }
   return $result;

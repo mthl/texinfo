@@ -88,6 +88,12 @@ No space@anchor{anchor2}.
 
 @image{f--ile,,,alt""\\}
 '],
+['image_in_paragraph',
+'@node Top
+
+Para.
+@image{f--ile,,,alt""\\}. End para.
+'],
 [ 'multitable_anchor_and_index_entry',
 '@node Top
 

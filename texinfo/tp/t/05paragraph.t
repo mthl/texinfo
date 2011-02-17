@@ -24,6 +24,9 @@ text l 2
 
 @b{aaa}.
 '],
+['image_in_paragraph',
+'Para. @image{aa,bb,cc,dd,ee}. After image.
+'],
 ['close_paragraph_command',
 'para @titlefont{in titlefont} after titlefont.
 
