@@ -1126,7 +1126,8 @@ sub _convert($$)
   # First handle empty lines. This has to be done before the handling
   # of text below to be sure that an empty line is always processed
   # especially
-  if ($root->{'type'} and $root->{'type'} eq 'empty_line') {
+  if ($root->{'type'} and ($root->{'type'} eq 'empty_line' 
+                           or $root->{'type'} eq 'after_description_line')) {
     my $count = $self->{'empty_lines_count'};
     $count = '' if (!defined($count));
     print STDERR "EMPTY_LINE ($count)\n"

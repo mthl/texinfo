@@ -42,6 +42,16 @@ Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @exdent before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @end quotation
 '],
+['space_at_menu_end',
+'@node Top
+
+@menu
+* (out)::
+
+@end menu
+
+A para.
+'],
 ['star_at_command_formatting',
 '@macro mymacro
 Some text @*

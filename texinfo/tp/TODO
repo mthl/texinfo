@@ -41,6 +41,13 @@ and not
 It is unclear whether it is right or wrong, but even less clear why it 
 happens this way.
 
+Should
+@node Top
+@menu
+* (out)::
+@end menu
+lead to Node: Top,  Next: (out),  Up: (dir)
+
 Force end lines before/after a menu?
 
 With something like
