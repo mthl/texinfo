@@ -452,6 +452,9 @@ sub _convert_node($$)
   die "Too much count_context\n" if (scalar(@{$self->{'count_context'}}) != 1);
 
   $self->{'count_context'}->[-1]->{'lines'} = 0;
+  # FIXME this is used for footnote, maybe associate a node to the footnote 
+  # in Parser?
+  $self->{'node'} = $node;
   $result .= $self->_convert($node);
 
   print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'DEBUG'});
@@ -742,7 +745,7 @@ sub _add_newline_if_needed($) {
 }
 
 my $footnote_indent = 3;
-sub _footnotes($$)
+sub _footnotes($;$)
 {
   my $self = shift;
   my $element = shift;
@@ -1383,8 +1386,19 @@ sub _convert($$)
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
                                     'number' => $self->{'footnote_index'}}
           unless ($self->{'multiple_pass'});
-      return $self->_count_added($formatter->{'container'},
+      $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text("($formatted_footnote_number)"));
+      if ($self->{'footnotestyle'} eq 'separate' and $self->{'node'}) {
+        $result .= $self->_convert({'contents' => 
+         [{'text' => ' ('},
+          {'cmdname' => 'pxref',
+           'extra' => {'brace_command_contents' => 
+          [[@{$self->{'node'}->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+                   {'text' => "-Footnote-$self->{'footnote_index'}"}]]}},
+          {'text' => ')'}],
+          });
+      }
+      return $result;
     } elsif ($command eq 'anchor') {
       $result = $self->_count_added($formatter->{'container'},
                    $formatter->{'container'}->add_pending_word());

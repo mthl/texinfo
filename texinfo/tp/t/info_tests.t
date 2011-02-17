@@ -42,6 +42,13 @@ Para@footnote{Footnote 1.}.
 
 Para2@footnote{Footnote 2.}.
 ',{} , {'NUMBER_FOOTNOTES' => 0}],
+['footnote_no_number_separate',
+'@node Top
+
+Para@footnote{Footnote 1.}.
+
+Para2@footnote{Footnote 2.}.
+',{} , {'NUMBER_FOOTNOTES' => 0, 'footnotestyle' => 'separate'}],
 ['ref_tests',
 '
 @node Top
