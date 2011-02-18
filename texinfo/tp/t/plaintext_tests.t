@@ -42,6 +42,14 @@ Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @exdent before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @end quotation
 '],
+['html_expanded',
+'Before
+@html
+html
+@end html
+after.
+',{'expanded_formats' => ['html']}
+],
 ['space_at_menu_end',
 '@node Top
 

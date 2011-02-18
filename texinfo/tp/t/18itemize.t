@@ -394,6 +394,11 @@ quotation after a blank line
 @item aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa fffffffff ggggggggg vvvvvvvvv ggggggggg h
 @end enumerate
 '],
+['asis_as_itemize_argument',
+'@itemize @asis
+@item as is
+@end itemize
+'],
 );
 
 my @test_invalid = (
