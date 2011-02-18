@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
+@c $Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21795,6 +21795,10 @@ node style or @samp{separate} for the separate node style.
 Begin a kind of example.  Like @code{@@display}, but do not indent.
 Pair with @code{@@end format}.  @xref{example,, @code{@@example}}.
 
+@item @@frenchspacing @var{on-off}
+Control spacing after punctuation.  @xref{frenchspacing,,
+@code{@@frenchspacing}}.
+
 @item @@ftable @var{formatting-command}
 Begin a two-column table, using @code{@@item} for each entry.
 Automatically enter each of the items in the first column into the
@@ -23094,7 +23098,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
+$Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23173,7 +23177,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.368 2011-02-16 17:41:13 karl Exp $
+@comment $Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
