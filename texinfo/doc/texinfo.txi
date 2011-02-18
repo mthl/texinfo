@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
+@c $Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21335,6 +21335,10 @@ Change page dimensions for the A4 paper size.  @xref{A4 Paper}.
 Make the command @samp{@@@var{new}} a synonym for the existing command
 @samp{@@@var{existing}}.  @xref{alias}.
 
+@item @@allowcodebreaks @var{true-false}
+Control breaking at @samp{-} and @samp{_} in @TeX{}.
+@xref{allowcodebreaks,, @code{@@allowcodebreaks}}.
+
 @item @@anchor@{@var{name}@}
 Define @var{name} as the current location for use as a cross reference
 target.  @xref{anchor,, @code{@@anchor}}.
@@ -21780,6 +21784,10 @@ right (left) end ragged.  Leave font as is.  Pair with @code{@@end
 flushleft} (@code{@@end flushright}).
 @xref{flushleft & flushright, , @code{@@flushleft} and
 @code{@@flushright}}.
+
+@item @@fonttextsize @var{10-11}
+Change the size of the main body font in the @TeX{} output.
+@xref{Fonts}.
 
 @item @@footnote@{@var{text-of-footnote}@}
 Enter a footnote.  Footnote text is printed at the bottom of the page
@@ -23098,7 +23106,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
+$Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23177,7 +23185,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.369 2011-02-18 01:38:07 karl Exp $
+@comment $Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.13 2011-02-18 01:38:07 karl Exp $
+% $Id: txirefcard.tex,v 1.14 2011-02-18 17:33:29 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -842,7 +842,9 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
 \section{Formatting and headers/footers for \TeX}
 
-\txicmd{@finalout}{}{Tell \TeX\ to omit the large black rectangles beside over-wide lines.}
+\txicmd{@allowcodebreaks}{\code{true|false}}{Control breaks at \code{-} and \code{_} in \TeX; default true.}
+\txicmd{@finalout}{}{Omit large black rectangles at overfull lines in \TeX\ output.}
+\txicmd{@fonttextsize}{\code{10|11}}{Change size of main body font in \TeX.}
 
 \subsection{Paper sizes}
 

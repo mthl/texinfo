@@ -1,3 +1,9 @@
+2011-02-18  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (Command Summary): add @allowcodebreaks,
+        @fonttextsize.
+
 2011-02-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Command Summary): add @frenchspacing.
