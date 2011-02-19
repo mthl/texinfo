@@ -172,21 +172,21 @@ $result_errors{'bad_argument'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: Bad syntax for @rmacro
+    'error_line' => ':5: Bad syntax for @rmacro argument: aaa
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'Bad syntax for @rmacro',
+    'text' => 'Bad syntax for @rmacro argument: aaa',
     'type' => 'error'
   },
   {
-    'error_line' => ':9: Bad syntax for @macro
+    'error_line' => ':9: Bad syntax for @macro argument: more
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'Bad syntax for @macro',
+    'text' => 'Bad syntax for @macro argument: more',
     'type' => 'error'
   }
 ];

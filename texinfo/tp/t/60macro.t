@@ -39,6 +39,11 @@ in
 in macro
 @end macro
 '],
+['bad_macro_name_with_underscore',
+'@macro the_macro {arg1, arg2}
+In macro
+@end macro
+'],
 ['bad_formal_arg',
 '
 @macro bad  { , not_empty}

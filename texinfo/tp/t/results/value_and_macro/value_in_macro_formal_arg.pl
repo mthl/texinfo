@@ -161,12 +161,12 @@ result: macro_arg1 the \\the thearg \\thearg with value \\thearg
 
 $result_errors{'value_in_macro_formal_arg'} = [
   {
-    'error_line' => ':3: Bad syntax for @macro
+    'error_line' => ':3: Bad syntax for @macro argument: }
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => 'Bad syntax for @macro',
+    'text' => 'Bad syntax for @macro argument: }',
     'type' => 'error'
   },
   {

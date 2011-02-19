@@ -934,12 +934,13 @@ sub _parse_macro_command_line($$$$$;$)
     my @args;
 
     if ($args_def =~ s/^\s*{\s*(.*?)\s*}\s*//) {
-      @args = split(/\s*,\s*/ , $1);
+      @args = split(/\s*,\s*/, $1);
     }
  
     if ($args_def =~ /^\s*[^\@]/) {
-      $self->line_error(sprintf($self->__("Bad syntax for \@%s"), $command),
-                         $line_nr);
+      $self->line_error(sprintf($self->__("Bad syntax for \@%s argument: %s"), 
+                                 $command, $args_def),
+                        $line_nr);
     }
     print STDERR "MACRO \@$command $macro_name\n" if ($self->{'DEBUG'});
 
