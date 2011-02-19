@@ -318,7 +318,6 @@ v
 @uref{http://foo.org/some/long/url/which/goes/past/eighty/columns/and/has/no/alternative/text.html}
 @end itemize
 '],
-
 );
 
 foreach my $test (@test_cases) {

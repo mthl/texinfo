@@ -203,6 +203,45 @@ In text
 
 Just before an image @image{this_is_a_long_unknown_file} text after the image, and more text, and more @image{this_is_a_long_unknown_file} text.
 '],
+['error_in_footnote',
+'
+@node Top
+
+@float Text, label
+
+Float text1
+
+@caption{Caption. @TeX. 
+In caption @strong{note}.  
+Now footnote@footnote{@LaTeX. 
+and strong @strong{Note}.}}
+@end float
+
+@listoffloats Text
+
+@listoffloats Text
+'],
+['encoding_us_ascii',
+'
+@documentencoding US-ASCII
+
+@node Top
+
+'],
+['known_encoding',
+'
+@documentencoding latin1
+
+@node Top
+
+'],
+['unknown_encoding',
+'
+@documentencoding ggg
+
+@node Top
+
+'],
 # since there is no split in the test suite, there is no split tested
 # here, in fact.
 ['split_no_copying',

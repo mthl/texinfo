@@ -229,7 +229,6 @@ sub output($)
     }
     $tag_text .=  "\x{1F}\nEnd Tag Table\n";
     my $coding = $self->{'encoding'};
-    $coding = $self->{'documentencoding'} if (!defined($coding));
     if ($coding and $coding ne 'us-ascii') {
       $tag_text .= "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
     }

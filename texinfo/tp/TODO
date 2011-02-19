@@ -92,6 +92,10 @@ for
 
 warn when a @noindent/@indent appears within a paragraph.
 
+in info_tests/error_in_footnote there is an error message for each 
+listoffloats;  Line numbers are right, though, so maybe this is not
+an issue.
+
 Texinfo::Convert::Text
 @c in menu lines (and maybe at other places) should be replaced by 
 \n and not eat the end of line.
@@ -126,8 +130,10 @@ from test_paths.texi:
 @verbatiminclude ./formatting/simplest.texi
 
 tests in test/invalid, not incorporated
-error_in_footnote_caption.texi
-tex_in_copying.texi               (this is not invalid)
+error_in_footnote_caption.texi    (at least partly done in 
+                    info_tests/error_in_footnote.  More shouldn't be needed)
+tex_in_copying.texi               (this is not invalid and not
+                                   such an interesting construct to test)
 
 partly done:
 indices/recursive_synindex.texi (only done: @synindex aaa bbb

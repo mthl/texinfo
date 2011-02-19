@@ -386,6 +386,7 @@ foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption') {
 
 my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
+  'documentencoding',
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'footnotestyle', 'hyphenation', 'urefbreakstyle') {
@@ -393,7 +394,7 @@ foreach my $global_multiple_command ('author', 'documentlanguage',
 }
 
 my %global_unique_commands;
-foreach my $global_unique_command ('documentencoding', 'title', 
+foreach my $global_unique_command ('title', 
   'shorttitlepage', 'settitle', 'copying', 'documentdescription',
   'novalidate', 'titlepage',
   'setfilename', 'setcontentsaftertitlepage', 
