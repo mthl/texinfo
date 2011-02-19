@@ -198,6 +198,11 @@ In text
 
 @printindex fn
 '],
+['file_only_png',
+'@node Top
+
+Just before an image @image{this_is_a_long_unknown_file} text after the image, and more text, and more @image{this_is_a_long_unknown_file} text.
+'],
 );
 
 foreach my $test (@test_cases) {

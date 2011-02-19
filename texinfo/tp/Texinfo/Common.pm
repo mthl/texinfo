@@ -22,6 +22,10 @@ package Texinfo::Common;
 
 use strict;
 
+# to determine the null file
+use Config;
+use File::Spec;
+
 use Texinfo::Documentlanguages;
 
 require Exporter;
@@ -50,6 +54,18 @@ sub N__($)
 {
   return $_[0];
 }
+
+# determine the null devices
+my $default_null_device = File::Spec->devnull();
+our %null_device_file = (
+  $default_null_device => 1
+);
+# special case, djgpp recognizes both null devices
+if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
+  $null_device_file{'/dev/null'} = 1;
+  $null_device_file{'NUL'} = 1;
+}
+
 
 our %no_brace_commands;             # commands never taking braces
 

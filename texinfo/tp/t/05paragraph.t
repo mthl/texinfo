@@ -51,7 +51,17 @@ in example
 @end example
 
 After.
-']
+'],
+['comment_in_quotation',
+'
+@quotation
+Quotation @c
+@end quotation 
+
+@quotation
+Quotation no space@c
+@end quotation 
+'],
 );
 
 my @test_invalid = (

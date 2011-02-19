@@ -283,6 +283,15 @@ v
 @item other item @tab in tab
 @end multitable
 '],
+['empty_multitable_in_itemize',
+'@itemize a--n itemize line
+@item in macro
+
+@multitable
+@end multitable
+
+@end itemize
+'],
 
 );
 

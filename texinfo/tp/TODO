@@ -1,5 +1,5 @@
 Handle
-@xrefautomaticsectiontitle
+@xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
 arg of @*ref).
 
@@ -133,6 +133,13 @@ partly done:
 indices/recursive_synindex.texi (only done: @synindex aaa bbb
                                             @synindex bbb aaa)
 
+In info_coverage, everything is tested for, but the following are not
+especially in the test suite
+code.texi
+commentexample.texi       the comment is in fact in comments_in_example
+                          but no test for vertical spacing (not needed)
+    
+
 done:
 formatting/def_end_of_line.texi
 formatting/def_end_of_line_footnote.texi
@@ -213,8 +220,6 @@ invalid/verb_end_of_line.texi
 invalid/verb_not_closed.texi
 invalid/verbatim_not_closed.texi
 
-info_coverage/exdent_and_commands.texi
-info_coverage/exdent_and_formats.texi
 
 coverage/pass0_macro.texi     (not everything, but tests are redundant)
 

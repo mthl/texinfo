@@ -71,6 +71,31 @@ Example with comments 1 line
 line @c comment
 @end example
 '],
+['nested_example_and_comment',
+'@example
+First line 0 @c
+@example
+Nested example
+@end example
+In first one
+@end example
+
+@example
+First line 1 @c
+@example
+Nested example @c
+@end example
+In first one
+@end example
+
+@example
+First line 2 @c
+@example
+Nested example @c
+@end example
+In first one @c
+@end example
+'],
 );
 
 my @test_invalid = (

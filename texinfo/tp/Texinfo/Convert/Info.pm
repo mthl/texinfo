@@ -88,6 +88,12 @@ sub output($)
     if (defined($self->{'SUBDIR'}) and $self->{'OUTFILE'} ne '') {
       $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
     }
+  } else {
+    # no splitting when writing to the null device or to stdout
+    if ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}} 
+         or $self->{'OUTFILE'} eq '-') {
+      $self->{'SPLIT_SIZE'} = undef;
+    }
   }
 
   my $output_basename = $self->{'OUTFILE'};
@@ -503,13 +509,13 @@ sub _image($$)
         last; 
       }
     }
-    my $txt_file =
-      $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
     my $text = $self->_image_text($root, $basefile);
     if (defined($text)) {
       if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $text = '['.$text.']';
       }
+    } elsif (!defined($image_file)) {
+      $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
     }
 
     my $result;

@@ -1013,7 +1013,8 @@ sub _image_text($$$)
 
   my $txt_file = $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
   if (!defined($txt_file)) {
-    $self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
+    #$self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
+    return undef;
   } else {
     if (open (TXT, $txt_file)) {
     # FIXME encoding
