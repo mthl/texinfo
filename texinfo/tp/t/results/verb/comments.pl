@@ -28,6 +28,11 @@ $result_trees{'comments'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'a'
         },
@@ -75,6 +80,11 @@ $result_trees{'comments'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => ','
         },

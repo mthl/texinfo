@@ -51,6 +51,11 @@ $result_trees{'unclosed_verb_on_section_line'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'T'
             }
@@ -61,11 +66,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
       ],
       'cmdname' => 'section',
       'level' => 2,
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'number' => 1,
       'parent' => {}
     }
@@ -81,6 +82,7 @@ $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'conten
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1];
+$result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'line_nr'} = $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'unclosed_verb_on_section_line'}{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_on_section_line'};
 
 $result_texis{'unclosed_verb_on_section_line'} = '@section in section @verb{Truc
@@ -110,10 +112,10 @@ $result_sectioning{'unclosed_verb_on_section_line'}{'section_childs'}[0]{'sectio
 
 $result_errors{'unclosed_verb_on_section_line'} = [
   {
-    'error_line' => ':3: @verb missing closing delimiter sequence: T}
+    'error_line' => ':1: @verb missing closing delimiter sequence: T}
 ',
     'file_name' => '',
-    'line_nr' => 3,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@verb missing closing delimiter sequence: T}',
     'type' => 'error'

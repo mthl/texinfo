@@ -155,6 +155,11 @@ $result_trees{'macro_in_accent'} = {
           ],
           'cmdname' => '~',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 12,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

@@ -21,6 +21,11 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'b',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

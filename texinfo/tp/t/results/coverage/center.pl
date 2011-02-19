@@ -38,6 +38,11 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -58,11 +63,7 @@ $result_trees{'center'} = {
           {}
         ]
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -84,6 +85,7 @@ $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $re
 $result_trees{'center'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[1];
 $result_trees{'center'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'center'}{'contents'}[1]{'extra'}{'misc_content'}[1] = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'center'}{'contents'}[1]{'line_nr'} = $result_trees{'center'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'center'}{'contents'}[1]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[2]{'parent'} = $result_trees{'center'};
 

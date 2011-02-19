@@ -101,6 +101,11 @@ $result_trees{'value_in_macro_body'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => 'testvaluebody'
+          },
           'parent' => {}
         },
         {

@@ -124,6 +124,11 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -163,6 +168,11 @@ $result_trees{'simple'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => '!'
         },

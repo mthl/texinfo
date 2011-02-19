@@ -144,6 +144,11 @@ $result_trees{'style_not_closed_root_commands'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -271,6 +276,11 @@ $result_trees{'style_not_closed_root_commands'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -455,19 +465,19 @@ $result_menus{'style_not_closed_root_commands'}{'menu_child'}{'menu_up'} = $resu
 
 $result_errors{'style_not_closed_root_commands'} = [
   {
-    'error_line' => ':8: @code missing close brace
+    'error_line' => ':7: @code missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 7,
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'
   },
   {
-    'error_line' => ':13: @code missing close brace
+    'error_line' => ':12: @code missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 13,
+    'line_nr' => 12,
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'

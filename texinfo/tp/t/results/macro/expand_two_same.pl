@@ -86,6 +86,11 @@ $result_trees{'expand_two_same'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => 'macro2'
+          },
           'parent' => {}
         },
         {
@@ -117,6 +122,11 @@ $result_trees{'expand_two_same'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => 'macro2'
+          },
           'parent' => {}
         },
         {

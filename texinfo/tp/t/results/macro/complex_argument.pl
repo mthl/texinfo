@@ -198,6 +198,11 @@ $result_trees{'complex_argument'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 38,
+            'macro' => 'macro3'
+          },
           'parent' => {},
           'type' => '%'
         },
@@ -499,6 +504,11 @@ $result_trees{'complex_argument'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 41,
+            'macro' => 'macro7'
+          },
           'parent' => {}
         },
         {

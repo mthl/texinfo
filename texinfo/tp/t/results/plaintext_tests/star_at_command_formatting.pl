@@ -269,6 +269,11 @@ And end para.
           ],
           'cmdname' => 'asis',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => 'mymacro'
+          },
           'parent' => {}
         },
         {
@@ -295,6 +300,11 @@ And end para.
           ],
           'cmdname' => 'asis',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => 'mymacro'
+          },
           'parent' => {}
         },
         {
@@ -328,6 +338,11 @@ And end para.
           ],
           'cmdname' => 'asis',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => 'mymacro'
+          },
           'parent' => {}
         },
         {
@@ -370,6 +385,11 @@ And end para.
           ],
           'cmdname' => 'asis',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => 'mymacro'
+          },
           'parent' => {}
         },
         {
@@ -546,6 +566,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -572,6 +597,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -605,6 +635,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -647,6 +682,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -843,6 +883,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -869,6 +914,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -902,6 +952,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {
@@ -944,6 +999,11 @@ And end para.
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'mymacro'
+              },
               'parent' => {}
             },
             {

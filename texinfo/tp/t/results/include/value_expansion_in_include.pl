@@ -171,6 +171,11 @@ $result_trees{'value_expansion_in_include'} = {
               ],
               'cmdname' => 'emph',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => 't/include//incl-incl.txi',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -266,6 +271,11 @@ $result_trees{'value_expansion_in_include'} = {
               ],
               'cmdname' => 'emph',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => 't/include//incl-incl.txi',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -361,6 +371,11 @@ $result_trees{'value_expansion_in_include'} = {
               ],
               'cmdname' => 'emph',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => 't/include//incl-incl.txi',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

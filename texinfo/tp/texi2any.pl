@@ -652,6 +652,7 @@ while(@input_files)
     $converter_options->{'OUTFILE'} = get_conf('OUTFILE');
   }
   $converter_options->{'parser'} = $parser;
+  $converter_options->{'output_format'} = $format;
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
   handle_errors($converter, $error_count);

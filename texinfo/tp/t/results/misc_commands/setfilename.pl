@@ -155,6 +155,11 @@ $result_trees{'setfilename'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => ':'
             },
@@ -177,11 +182,7 @@ $result_trees{'setfilename'} = {
       'extra' => {
         'text_arg' => '  name  '
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -219,6 +220,7 @@ $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} 
 $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'setfilename'}{'contents'}[3]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'setfilename'}{'contents'}[3]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[3];
+$result_trees{'setfilename'}{'contents'}[3]{'line_nr'} = $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'setfilename'}{'contents'}[3]{'parent'} = $result_trees{'setfilename'};
 $result_trees{'setfilename'}{'contents'}[4]{'parent'} = $result_trees{'setfilename'};
 

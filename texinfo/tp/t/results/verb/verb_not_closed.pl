@@ -22,6 +22,11 @@ $result_trees{'verb_not_closed'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => '.'
         }

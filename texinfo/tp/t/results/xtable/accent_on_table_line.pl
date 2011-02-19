@@ -90,6 +90,11 @@ $result_trees{'accent_on_table_line'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

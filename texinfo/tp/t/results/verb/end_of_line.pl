@@ -44,6 +44,11 @@ $result_trees{'end_of_line'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => ''
         },

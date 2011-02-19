@@ -35,6 +35,11 @@ $result_trees{'defx_after_empty_line'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -212,11 +217,7 @@ $result_trees{'defx_after_empty_line'} = {
           'type' => 'def_line'
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -253,6 +254,7 @@ $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2]{'extra'}{'d
 $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2];
 $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2]{'extra'}{'def_args'}[2][1];
 $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line'}{'contents'}[0];
+$result_trees{'defx_after_empty_line'}{'contents'}[0]{'line_nr'} = $result_trees{'defx_after_empty_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'defx_after_empty_line'}{'contents'}[0]{'parent'} = $result_trees{'defx_after_empty_line'};
 $result_trees{'defx_after_empty_line'}{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line'};
 

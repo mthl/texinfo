@@ -76,6 +76,11 @@ $result_trees{'bad_tab_nesting'} = {
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     }
                   ],

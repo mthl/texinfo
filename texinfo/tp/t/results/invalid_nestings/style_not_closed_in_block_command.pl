@@ -35,6 +35,11 @@ $result_trees{'style_not_closed_in_block_command'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],
@@ -87,10 +92,10 @@ $result_errors{'style_not_closed_in_block_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: @code missing close brace
+    'error_line' => ':2: @code missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 3,
+    'line_nr' => 2,
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'

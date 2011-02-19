@@ -186,6 +186,7 @@ sub convert_to_plaintext($$$;$)
   my $converter = 
      Texinfo::Convert::Plaintext::converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser,
+                                             'output_format' => 'plaintext',
                                              %$converter_options });
   my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();
@@ -203,6 +204,7 @@ sub convert_to_info($$$;$)
      Texinfo::Convert::Info->converter ({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
                                          'OUTFILE' => '',
+                                         'output_format' => 'info',
                                           %$converter_options });
   my $result = $converter->output($tree);
   die if (!defined($result));
@@ -220,6 +222,7 @@ sub debugcount($$$;$)
   my $converter =
      DebugTexinfo::DebugCount->converter({'DEBUG' => $self->{'DEBUG'},
                                          'parser' => $parser,
+                                         'output_format' => 'info',
                                           %$converter_options });
   my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();

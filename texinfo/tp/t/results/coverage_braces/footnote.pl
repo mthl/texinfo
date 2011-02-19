@@ -48,6 +48,11 @@ $result_trees{'footnote'} = {
                       ],
                       'cmdname' => 'r',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {

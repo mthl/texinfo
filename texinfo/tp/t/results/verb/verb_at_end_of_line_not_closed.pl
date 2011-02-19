@@ -33,6 +33,11 @@ $result_trees{'verb_at_end_of_line_not_closed'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => ''
         }
@@ -70,10 +75,10 @@ $result_errors{'verb_at_end_of_line_not_closed'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':2: @verb missing close brace
+    'error_line' => ':1: @verb missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 2,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@verb missing close brace',
     'type' => 'error'

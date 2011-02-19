@@ -89,6 +89,11 @@ $result_trees{'style_not_closed_in_table_line'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             }
           ],

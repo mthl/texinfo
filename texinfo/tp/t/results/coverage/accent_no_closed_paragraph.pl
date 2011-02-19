@@ -28,6 +28,11 @@ $result_trees{'accent_no_closed_paragraph'} = {
           ],
           'cmdname' => '~',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -69,10 +74,10 @@ $result_texts{'accent_no_closed_paragraph'} = 'e
 
 $result_errors{'accent_no_closed_paragraph'} = [
   {
-    'error_line' => ':2: @~ missing close brace
+    'error_line' => ':1: @~ missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 2,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@~ missing close brace',
     'type' => 'error'

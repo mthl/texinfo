@@ -27,6 +27,11 @@ $result_trees{'table_in_code'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -185,10 +190,10 @@ $result_errors{'table_in_code'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: @code missing close brace
+    'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 3,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'

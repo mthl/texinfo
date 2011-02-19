@@ -216,6 +216,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -237,6 +242,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -258,6 +264,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -279,6 +286,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -301,6 +309,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -322,6 +335,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -343,6 +357,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -364,6 +379,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -386,6 +402,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -446,6 +467,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'r',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 20,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -497,6 +523,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'samp',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -540,6 +567,11 @@ anc-hor@anchor{A node\\nr\\}}
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 21,
+                    'macro' => 'testallowcodebreaksexample'
+                  },
                   'parent' => {}
                 },
                 {
@@ -635,6 +667,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -656,6 +693,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -677,6 +715,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -698,6 +737,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -720,6 +760,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -741,6 +786,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -762,6 +808,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -783,6 +830,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -805,6 +853,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -865,6 +918,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'r',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 25,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -916,6 +974,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'samp',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -959,6 +1018,11 @@ anc-hor@anchor{A node\\nr\\}}
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 26,
+                    'macro' => 'testallowcodebreaksexample'
+                  },
                   'parent' => {}
                 },
                 {
@@ -1021,6 +1085,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -1042,6 +1111,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1063,6 +1133,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1084,6 +1155,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1106,6 +1178,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -1127,6 +1204,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1148,6 +1226,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1169,6 +1248,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1191,6 +1271,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'code',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -1251,6 +1336,11 @@ anc-hor@anchor{A node\\nr\\}}
                               ],
                               'cmdname' => 'r',
                               'contents' => [],
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 29,
+                                'macro' => 'testallowcodebreakspara'
+                              },
                               'parent' => {}
                             },
                             {
@@ -1302,6 +1392,7 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'samp',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -1316,6 +1407,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'w',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 29,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1363,6 +1459,11 @@ anc-hor@anchor{A node\\nr\\}}
                           ],
                           'cmdname' => 'code',
                           'contents' => [],
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 33,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         }
                       ],
@@ -1372,6 +1473,7 @@ anc-hor@anchor{A node\\nr\\}}
                   ],
                   'cmdname' => 'w',
                   'contents' => [],
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -1467,6 +1569,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 38,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -1488,6 +1595,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1509,6 +1617,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1530,6 +1639,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1552,6 +1662,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 38,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -1573,6 +1688,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1594,6 +1710,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1615,6 +1732,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1637,6 +1755,11 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 38,
+                'macro' => 'testallowcodebreakspara'
+              },
               'parent' => {}
             },
             {
@@ -1697,6 +1820,11 @@ anc-hor@anchor{A node\\nr\\}}
                       ],
                       'cmdname' => 'r',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 38,
+                        'macro' => 'testallowcodebreakspara'
+                      },
                       'parent' => {}
                     },
                     {
@@ -1748,6 +1876,7 @@ anc-hor@anchor{A node\\nr\\}}
               ],
               'cmdname' => 'samp',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1791,6 +1920,11 @@ anc-hor@anchor{A node\\nr\\}}
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 39,
+                    'macro' => 'testallowcodebreaksexample'
+                  },
                   'parent' => {}
                 },
                 {
@@ -1872,14 +2006,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[5]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[6]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[7]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[9]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[10]{'args'}[0];
@@ -1888,14 +2025,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[11]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[12]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[13]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[14]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[15]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[16]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[17]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[18]{'args'}[0];
@@ -1920,6 +2060,7 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0]{'contents'}[8]{'extra'}{'node_content'}[0] = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'args'}[0]{'contents'}[5]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[20]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'contents'}[21]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1];
@@ -1946,14 +2087,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[3]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[4]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[5]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[6]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[7]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[9]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[10]{'args'}[0];
@@ -1962,14 +2106,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[11]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[12]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[13]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[14]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[15]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[16]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[17]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[18]{'args'}[0];
@@ -1994,6 +2141,7 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0]{'contents'}[8]{'extra'}{'node_content'}[0] = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'args'}[0]{'contents'}[5]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[20]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'contents'}[21]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1];
@@ -2015,14 +2163,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[9]{'args'}[0];
@@ -2031,14 +2182,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[9]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[12]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[9]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[13]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[14]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[9]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[15]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[16]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[17]{'args'}[0];
@@ -2063,6 +2217,7 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0]{'contents'}[8]{'extra'}{'node_content'}[0] = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'args'}[0]{'contents'}[5]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[19]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'contents'}[20]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[18]{'contents'}[1];
@@ -2075,6 +2230,7 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20]{'contents'}[1]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[20];
@@ -2094,14 +2250,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[5]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[6]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[7]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[2]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[9]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[10]{'args'}[0];
@@ -2110,14 +2269,17 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[11]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[12]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[13]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[14]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[15]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[10]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[16]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[17]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[18]{'args'}[0];
@@ -2142,6 +2304,7 @@ $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0]{'contents'}[8]{'extra'}{'node_content'}[0] = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20];
+$result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'line_nr'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'args'}[0]{'contents'}[5]{'line_nr'};
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[20]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'contents'}[21]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24];
 $result_trees{'test_allowcodebreaks'}{'contents'}[1]{'contents'}[24]{'parent'} = $result_trees{'test_allowcodebreaks'}{'contents'}[1];

@@ -107,6 +107,11 @@ $result_trees{'comma_value_in_macro_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => 'macro1'
+          },
           'parent' => {}
         },
         {
@@ -123,6 +128,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -154,6 +160,7 @@ $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[1]{'args'}[
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[3];
+$result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[3]{'line_nr'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[1]{'line_nr'};
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'contents'}[4]{'parent'} = $result_trees{'comma_value_in_macro_arg'}{'contents'}[5];
 $result_trees{'comma_value_in_macro_arg'}{'contents'}[5]{'parent'} = $result_trees{'comma_value_in_macro_arg'};

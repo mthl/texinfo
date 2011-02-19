@@ -920,6 +920,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'strong',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 63,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1003,6 +1008,11 @@ $result_trees{'macro_in_misc_commands'} = {
                 'begin' => '(strong:',
                 'end' => ':)'
               },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 67,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'definfoenclose_command'
             },
@@ -1038,6 +1048,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'kbd',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 69,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1151,6 +1166,11 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'kbd',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 76,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1194,6 +1214,11 @@ $result_trees{'macro_in_misc_commands'} = {
                   ],
                   'cmdname' => 'kbd',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 79,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

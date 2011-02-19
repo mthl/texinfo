@@ -22,6 +22,11 @@ $result_trees{'bad_style_nesting'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -100,10 +105,10 @@ $result_errors{'bad_style_nesting'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: @code missing close brace
+    'error_line' => ':1: @code missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 2,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@code missing close brace',
     'type' => 'error'

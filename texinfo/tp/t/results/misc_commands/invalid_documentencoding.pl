@@ -39,6 +39,11 @@ $result_trees{'invalid_documentencoding'} = {
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -57,11 +62,7 @@ $result_trees{'invalid_documentencoding'} = {
         'encoding_alias' => 'us-ascii',
         'text_arg' => 'us-ascii'
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -98,6 +99,11 @@ $result_trees{'invalid_documentencoding'} = {
               ],
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -115,11 +121,7 @@ $result_trees{'invalid_documentencoding'} = {
       'extra' => {
         'text_arg' => 'latin1a'
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -414,6 +416,7 @@ $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[1];
+$result_trees{'invalid_documentencoding'}{'contents'}[1]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[2]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0];
@@ -423,6 +426,7 @@ $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[3];
+$result_trees{'invalid_documentencoding'}{'contents'}[3]{'line_nr'} = $result_trees{'invalid_documentencoding'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'invalid_documentencoding'}{'contents'}[3]{'parent'} = $result_trees{'invalid_documentencoding'};
 $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0];
 $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_documentencoding'}{'contents'}[4]{'args'}[0];

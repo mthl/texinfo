@@ -33,6 +33,11 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'f'
             }
@@ -42,11 +47,7 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
         }
       ],
       'cmdname' => 'setfilename',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -58,6 +59,7 @@ $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0];
+$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'line_nr'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'};
 
 $result_texis{'unclosed_verb_on_misc_line'} = '@setfilename name @verb{file.texif}';

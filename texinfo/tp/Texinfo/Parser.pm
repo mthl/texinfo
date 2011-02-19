@@ -3616,6 +3616,7 @@ sub _parse_texi($;$)
                                    'contents' => [] } ];
             $current->{'remaining_args'} = $brace_commands{$command} -1
                   if ($brace_commands{$command} and $brace_commands{$command} -1);
+            $current->{'line_nr'} = $line_nr if ($brace_commands{$command});
             if ($self->{'definfoenclose'}->{$command}) {
               $current->{'remaining_args'} = 0;
             }

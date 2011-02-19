@@ -51,6 +51,11 @@ $result_trees{'raw_in_brace_command'} = {
           ],
           'cmdname' => 'code',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -86,6 +91,11 @@ $result_trees{'raw_in_brace_command'} = {
           ],
           'cmdname' => 'samp',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -185,10 +195,10 @@ $result_errors{'raw_in_brace_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: @samp missing close brace
+    'error_line' => ':7: @samp missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 7,
     'macro' => '',
     'text' => '@samp missing close brace',
     'type' => 'error'

@@ -44,6 +44,11 @@ $result_trees{'defx_after_empty_line_in_example'} = {
                       ],
                       'cmdname' => 'var',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {
@@ -257,11 +262,7 @@ $result_trees{'defx_after_empty_line_in_example'} = {
               'type' => 'def_line'
             }
           ],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -320,6 +321,7 @@ $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'def_args'}[2][1];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'};

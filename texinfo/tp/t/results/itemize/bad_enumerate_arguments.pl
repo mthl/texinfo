@@ -134,6 +134,11 @@ $result_trees{'bad_enumerate_arguments'} = {
               ],
               'cmdname' => 'code',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -157,11 +162,7 @@ $result_trees{'bad_enumerate_arguments'} = {
         ],
         'enumerate_specification' => 0
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -307,6 +308,7 @@ $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[1
 $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0];
 $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[6];
 $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[1];
+$result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'line_nr'} = $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[6]{'parent'} = $result_trees{'bad_enumerate_arguments'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[7]{'parent'} = $result_trees{'bad_enumerate_arguments'};
 $result_trees{'bad_enumerate_arguments'}{'contents'}[8]{'parent'} = $result_trees{'bad_enumerate_arguments'};

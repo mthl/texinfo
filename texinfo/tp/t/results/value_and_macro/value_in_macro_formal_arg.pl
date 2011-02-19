@@ -107,6 +107,11 @@ $result_trees{'value_in_macro_formal_arg'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => 'testvalue'
+          },
           'parent' => {}
         },
         {

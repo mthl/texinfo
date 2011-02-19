@@ -77,6 +77,11 @@ $result_trees{'implicit_quoting_one_arg'} = {
           ],
           'cmdname' => 'strong',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => 'FIXME'
+          },
           'parent' => {}
         },
         {

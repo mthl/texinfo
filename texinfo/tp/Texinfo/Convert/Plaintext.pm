@@ -251,6 +251,7 @@ my %defaults = (
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
+  'output_format'        => '',
 );
 
 sub push_top_formatter($$)
@@ -1294,6 +1295,14 @@ sub _convert($$)
                $formatter->{'container'}->add_text($text_before));
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
+        if ($root->{'cmdname'} eq 'strong' 
+             and scalar (@{$root->{'args'}->[0]->{'contents'}})
+             and $root->{'args'}->[0]->{'contents'}->[0]->{'text'}
+             and $root->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\b/i
+             and $self->{'output_format'}
+             and $self->{'output_format'} eq 'info') {
+          $self->line_warn($self->__("\@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"), $root->{'line_nr'});
+        }
       }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text($text_after));

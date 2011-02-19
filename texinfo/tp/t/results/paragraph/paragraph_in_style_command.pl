@@ -32,6 +32,11 @@ $result_trees{'paragraph_in_style_command'} = {
           ],
           'cmdname' => 'samp',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -83,6 +88,11 @@ $result_trees{'paragraph_in_style_command'} = {
           ],
           'cmdname' => 'samp',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -166,10 +176,10 @@ in third.
 
 $result_errors{'paragraph_in_style_command'} = [
   {
-    'error_line' => ':2: @samp missing close brace
+    'error_line' => ':1: @samp missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 2,
+    'line_nr' => 1,
     'macro' => '',
     'text' => '@samp missing close brace',
     'type' => 'error'
@@ -184,10 +194,10 @@ $result_errors{'paragraph_in_style_command'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @samp missing close brace
+    'error_line' => ':5: @samp missing close brace
 ',
     'file_name' => '',
-    'line_nr' => 6,
+    'line_nr' => 5,
     'macro' => '',
     'text' => '@samp missing close brace',
     'type' => 'error'

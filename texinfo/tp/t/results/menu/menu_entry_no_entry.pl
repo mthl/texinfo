@@ -78,6 +78,11 @@ $result_trees{'menu_entry_no_entry'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 6,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -104,6 +109,11 @@ $result_trees{'menu_entry_no_entry'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 7,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

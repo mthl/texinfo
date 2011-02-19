@@ -45,6 +45,11 @@ $result_trees{'empty_line_style_command'} = {
               ],
               'cmdname' => 'samp',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

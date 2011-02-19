@@ -143,6 +143,21 @@ CTTTTTT
 @ref{mark}
 @ref{anchor in multitable}
 '],
+['note_in_strong',
+'@node Top
+
+One @strong{Note}.
+
+3 @strong{Note a}.
+
+
+
+2 @strong{note}.
+
+4 @strong{note b}.
+
+6 @strong{ note}.
+'],
 ['nested_multitable_anchor_index',
 '@node Top
 

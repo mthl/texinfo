@@ -735,6 +735,11 @@ $result_trees{'macro_in_index_commands'} = {
               ],
               'cmdname' => 'var',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 51,
+                'macro' => 'defcodeindex-entry'
+              },
               'parent' => {}
             },
             {
@@ -774,6 +779,7 @@ $result_trees{'macro_in_index_commands'} = {
                       ],
                       'cmdname' => 'dotless',
                       'contents' => [],
+                      'line_nr' => {},
                       'parent' => {}
                     }
                   ],
@@ -783,6 +789,7 @@ $result_trees{'macro_in_index_commands'} = {
               ],
               'cmdname' => '^',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1915,8 +1922,10 @@ $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6];
+$result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0];
 $result_trees{'macro_in_index_commands'}{'contents'}[37]{'args'}[0]{'parent'} = $result_trees{'macro_in_index_commands'}{'contents'}[37];

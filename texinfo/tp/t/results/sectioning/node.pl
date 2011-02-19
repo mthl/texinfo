@@ -569,6 +569,11 @@ $result_trees{'node'} = {
               ],
               'cmdname' => 'strong',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -622,11 +627,7 @@ $result_trees{'node'} = {
         ],
         'normalized' => 'arg1-_002c-arg2'
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -731,6 +732,7 @@ $result_trees{'node'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'
 $result_trees{'node'}{'contents'}[7]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[1];
 $result_trees{'node'}{'contents'}[7]{'extra'}{'nodes_manuals'}[1]{'node_content'}[1] = $result_trees{'node'}{'contents'}[7]{'args'}[1]{'contents'}[2];
 $result_trees{'node'}{'contents'}[7]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1];
+$result_trees{'node'}{'contents'}[7]{'line_nr'} = $result_trees{'node'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'line_nr'};
 $result_trees{'node'}{'contents'}[7]{'parent'} = $result_trees{'node'};
 
 $result_texis{'node'} = '
