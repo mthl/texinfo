@@ -399,6 +399,27 @@ quotation after a blank line
 @item as is
 @end itemize
 '],
+['itemize_in_example',
+'@example
+@itemize @bullet
+@item first
+
+more.
+@end itemize
+
+@itemize @asis
+@item as is
+@end itemize
+
+@itemize +
+@item item +
+@end itemize
+
+@itemize @bullet{} a--n itemize line
+@item in an itemize line
+@end itemize
+@end example
+'],
 );
 
 my @test_invalid = (

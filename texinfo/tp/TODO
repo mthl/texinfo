@@ -133,20 +133,20 @@ partly done:
 indices/recursive_synindex.texi (only done: @synindex aaa bbb
                                             @synindex bbb aaa)
 
-In info_coverage, everything is tested for, but the following are not
-especially in the test suite
-code.texi
+info/coverage
+code.texi                 certainly not needed
 commentexample.texi       the comment is in fact in comments_in_example
-                          but no test for vertical spacing (not needed)
-    
+                          but no test for vertical spacing (but not needed)
+split_nocopying.texi      this requires not using the test suite since 
+                          the test suite inhibits splitting
 
 done:
 formatting/def_end_of_line.texi
 formatting/def_end_of_line_footnote.texi
 formatting/empty_deftype.texi
-formatting/def_cmds.texi (but printindex not tested)
+formatting/def_cmds.texi
 formatting/paragraph_in_samp.texi
-formatting/test_w.texi            (done in t/paragraph.t)
+formatting/test_w.texi            (done especially in t/paragraph.t)
 
 sectioning/other_at_comands_in_nodes_refs.texi
 sectioning/at_commands_in_refs.texi

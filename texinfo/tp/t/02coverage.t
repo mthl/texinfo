@@ -299,6 +299,15 @@ quotation continues.
 @end flushright
 @end quotation
 '],
+['cartouche_in_quotation',
+'@quotation
+In quotation
+@cartouche
+In cartouche in quotation
+@end cartouche
+end quotation
+@end quotation
+'],
 ['flushright_example_nested',
 '@example
 @flushright

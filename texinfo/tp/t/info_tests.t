@@ -203,6 +203,29 @@ In text
 
 Just before an image @image{this_is_a_long_unknown_file} text after the image, and more text, and more @image{this_is_a_long_unknown_file} text.
 '],
+# since there is no split in the test suite, there is no split tested
+# here, in fact.
+['split_no_copying',
+'\input texinfo
+@setfilename split-nocopying.info
+
+@node Top
+@top Top
+
+This is the top node.
+
+@menu
+* Ch1::
+@end menu
+
+@node Ch1
+@chapter Ch1
+
+First chapter.
+
+@bye
+
+',{},{'SPLIT_SIZE' => 10}],
 );
 
 foreach my $test (@test_cases) {

@@ -147,7 +147,16 @@ my @test_invalid = (
 @direntry
 * in text: (in_text). in text
 @end direntry
-']
+'],
+['menu_in_deffn',
+'@node Top
+
+@deffn a b c 
+@menu
+* (mynode)::
+@end menu
+@end deffn
+'],
 );
 
 foreach my $test (@test_cases) {

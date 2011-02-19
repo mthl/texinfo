@@ -85,7 +85,72 @@ $$
 @end tex
 @end example
 
-']
+'],
+['verbatim_and_verbatiminclude',
+'@verbatim
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+@end verbatim
+
+Text before
+@verbatim
+in verbatime
+@end verbatim
+Text after
+
+@quotation
+In quotation
+@verbatim
+In verbatim in quotation
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+@end verbatim
+@end quotation
+
+Before
+@verbatim
+In verbatim test text
+@end verbatim
+After
+
+@verbatiminclude verb.txt
+
+@quotation
+In quotation include 
+@verbatiminclude verb.txt
+@end quotation
+
+Before include
+@verbatiminclude verb.txt
+After
+
+@example
+In example
+
+@verbatim
+In verbatim in example
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+@end verbatim
+
+@end example
+
+@quotation
+In quotation with spaces
+
+@verbatim
+In verbatim in quotation with spaces
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+@end verbatim
+
+@end quotation
+
+@quotation
+In quotation 
+
+@verbatim
+In verbatim in quotation
+@end verbatim
+in quotation after end verbaatim
+@end quotation
+'],
 );
 
 my @test_invalid = (

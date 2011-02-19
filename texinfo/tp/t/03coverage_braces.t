@@ -112,7 +112,28 @@ in example
 @end example
 
 }
-']
+'],
+['kbd',
+'kbd: @code{in kbd}.
+
+kbd in code: @code{in first @kbd{in nested kbd}}.
+
+kbd in kbd: @kbd{in top kbd @kbd{in nested kbd}}.
+
+kbd in @@example:
+
+@example 
+in example
+@code{in example in kbd}.
+@end example
+
+kbd in @@format:
+
+@format 
+in format
+@code{in format in kbd}.
+@end format
+'],
 );
 
 my @test_invalid = (
