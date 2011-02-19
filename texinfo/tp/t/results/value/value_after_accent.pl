@@ -65,7 +65,7 @@ $result_trees{'value_after_accent'}{'contents'}[1]{'contents'}[3]{'parent'} = $r
 $result_trees{'value_after_accent'}{'contents'}[1]{'parent'} = $result_trees{'value_after_accent'};
 
 $result_texis{'value_after_accent'} = '@set a_letter a
-@ringaccenta
+@ringaccent a
 @~a';
 
 

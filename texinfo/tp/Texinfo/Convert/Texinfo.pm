@@ -91,6 +91,12 @@ sub _expand_cmd_args_to_texi ($) {
   my $result = '';
   $result = '@'.$cmdname if ($cmdname);
   #print STDERR "Expand $result\n";
+
+  # this is done here otherwise for some constructs, there are
+  # no 'args', and so the space is never readded.
+  if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
+    $result .= $cmd->{'extra'}->{'spaces'};
+  }
   # must be before the next condition
   if ($block_commands{$cmdname}
          and ($def_commands{$cmdname}
@@ -118,9 +124,6 @@ sub _expand_cmd_args_to_texi ($) {
     $result .= '{' if ($braces);
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
-    }
-    if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
-       $result .= $cmd->{'extra'}->{'spaces'};
     }
     #print STDERR "".Data::Dumper->Dump([$cmd]);
     my $arg_nr = 0;

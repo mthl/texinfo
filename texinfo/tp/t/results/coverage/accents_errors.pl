@@ -231,7 +231,7 @@ $result_trees{'accents_errors'}{'contents'}[4]{'contents'}[8]{'parent'} = $resul
 $result_trees{'accents_errors'}{'contents'}[4]{'parent'} = $result_trees{'accents_errors'};
 
 $result_texis{'accents_errors'} = 'accent at end of line @ringaccent
-accent at end of line and spaces @ringaccent
+accent at end of line and spaces @ringaccent  
 accent followed by @@ @ringaccent@.
 
 accent character with spaces @~ following.
@@ -239,7 +239,7 @@ accent character at end of line @~
 accent character followed by @@ @~@.
 
 With @@:
-@ringaccent@@. @^@@.
+@ringaccent @@. @^@@.
 ';
 
 
