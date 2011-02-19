@@ -46,7 +46,7 @@ my @test_invalid = (
 @end table
 '],
 ['invalid_command_and_brace_in_table',
-'@table
+'@table @asis
 { @itemTop,, title
 long title}
 Item line
@@ -64,6 +64,12 @@ headitem In table text.
 ['no_arg_brace_command_on_table_line',
 '@table @bullet
 @item item
+@end table
+'],
+['no_argument_for_table',
+'@table
+@item item
+In item.
 @end table
 ']
 );

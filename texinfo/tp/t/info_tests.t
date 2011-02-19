@@ -242,6 +242,15 @@ and strong @strong{Note}.}}
 @node Top
 
 '],
+['top_node_normalization',
+'@node ToP
+
+@xref{TOP}. @xref{tOP}.
+
+@menu
+* tOP::
+@end menu
+'],
 # since there is no split in the test suite, there is no split tested
 # here, in fact.
 ['split_no_copying',

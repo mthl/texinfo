@@ -121,7 +121,8 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                   'type' => 'command_as_argument'
                 }
               ]
-            ]
+            ],
+            'command_as_argument' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -240,6 +241,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0];

@@ -78,7 +78,7 @@ A quotation
 Text
 @end deftypefun
 
-@table
+@table @asis
 @item item
 line
 @end vtable
@@ -180,7 +180,7 @@ line @code{in code @item in item
 ['formats_not_closed_in_example',
 '@example
 
-@table @minus
+@table @asis
 @item item
 table line
 
@@ -242,7 +242,7 @@ This is an unterminatted copyright notice
 '],
 ['table_not_closed_in_menu_description',
 '@menu
-* (gcc):: text @table @minus
+* (gcc):: text @table @asis
 @item item
 table line
 @end menu
@@ -251,7 +251,7 @@ table line
 '@menu
 * (manual):: desc
 
-@table @bullet
+@table @asis
 @item item
 comment
 * (manual2)::

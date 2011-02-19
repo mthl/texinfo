@@ -630,7 +630,8 @@ $result_trees{'itemize_and_empty_lines'} = {
               'type' => 'command_as_argument'
             }
           ]
-        ]
+        ],
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1181,6 +1182,7 @@ $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'contents'}[7]{'contents
 $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'contents'}[7];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'contents'}[7]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[3];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[3];
+$result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'itemize_and_empty_lines'}{'contents'}[3]{'parent'} = $result_trees{'itemize_and_empty_lines'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[4]{'parent'} = $result_trees{'itemize_and_empty_lines'};
 $result_trees{'itemize_and_empty_lines'}{'contents'}[5]{'parent'} = $result_trees{'itemize_and_empty_lines'};

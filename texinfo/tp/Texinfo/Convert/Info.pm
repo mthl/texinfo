@@ -223,8 +223,8 @@ sub output($)
       next unless ($label->{'root'});
       my $prefix = 'Ref';
       $prefix = 'Node' if ($label->{'root'}->{'cmdname'} eq 'node');
-      my ($label_text) = $self->convert_line({'type' => 'code',
-        'contents' => $label->{'root'}->{'extra'}->{'node_content'}});
+      my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
+        'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
       $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
     }
     $tag_text .=  "\x{1F}\nEnd Tag Table\n";
@@ -431,6 +431,14 @@ sub _printindex($$)
   return $result;
 }
 
+sub _normalize_top_node($)
+{
+  my $node = shift;
+  if ($node =~ /^top$/i) {
+    return 'Top';
+  }
+  return $node;
+}
 
 my @directions = ('Next', 'Prev', 'Up');
 sub _node($$)
@@ -453,8 +461,9 @@ sub _node($$)
   my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
-  $result .= $self->convert_line({'type' => 'code',
-                           'contents' => $node->{'extra'}->{'node_content'}});
+  my $node_text = _normalize_top_node($self->convert_line({'type' => 'code',
+                           'contents' => $node->{'extra'}->{'node_content'}}));
+  $result .= $node_text;
   foreach my $direction(@directions) {
     if ($node->{'node_'.lc($direction)}) {
       my $node_direction = $node->{'node_'.lc($direction)};

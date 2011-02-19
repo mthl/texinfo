@@ -83,7 +83,8 @@ $result_trees{'long_uref_after_item'} = {
               'type' => 'command_as_argument'
             }
           ]
-        ]
+        ],
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -112,6 +113,7 @@ $result_trees{'long_uref_after_item'}{'contents'}[0]{'contents'}[2]{'contents'}[
 $result_trees{'long_uref_after_item'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'long_uref_after_item'}{'contents'}[0]{'contents'}[2];
 $result_trees{'long_uref_after_item'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'long_uref_after_item'}{'contents'}[0];
 $result_trees{'long_uref_after_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'long_uref_after_item'}{'contents'}[0];
+$result_trees{'long_uref_after_item'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'long_uref_after_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'long_uref_after_item'}{'contents'}[0]{'parent'} = $result_trees{'long_uref_after_item'};
 $result_trees{'long_uref_after_item'}{'contents'}[1]{'parent'} = $result_trees{'long_uref_after_item'};
 

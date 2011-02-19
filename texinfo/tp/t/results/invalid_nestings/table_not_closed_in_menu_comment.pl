@@ -83,7 +83,7 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'cmdname' => 'bullet',
+                      'cmdname' => 'asis',
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -218,7 +218,7 @@ $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[1]{'parent'} = $re
 $result_texis{'table_not_closed_in_menu_comment'} = '@menu
 * (manual):: desc
 
-@table @bullet
+@table @asis
 @item item
 comment
 * (manual2)::
@@ -251,15 +251,6 @@ $result_errors{'table_not_closed_in_menu_comment'} = [
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
     'type' => 'error continuation'
-  },
-  {
-    'error_line' => ':4: Command @bullet not accepting argument in brace should not be on @table line
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'Command @bullet not accepting argument in brace should not be on @table line',
-    'type' => 'error'
   },
   {
     'error_line' => ':8: `@end\' expected `table\', but saw `menu\'

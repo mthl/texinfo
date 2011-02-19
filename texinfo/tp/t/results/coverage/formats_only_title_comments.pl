@@ -52,7 +52,8 @@ $result_trees{'formats_only_title_comments'} = {
               'type' => 'command_as_argument'
             }
           ]
-        ]
+        ],
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -427,6 +428,7 @@ $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'cont
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
+$result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'parent'} = $result_trees{'formats_only_title_comments'};

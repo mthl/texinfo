@@ -5,14 +5,32 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 $result_trees{'invalid_command_and_brace_in_table'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
+            {
+              'cmdname' => 'asis',
+              'parent' => {},
+              'type' => 'command_as_argument'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'space_at_end_block_command'
+            }
+          ],
+          'parent' => {},
+          'type' => 'block_line_arg'
+        }
+      ],
       'cmdname' => 'table',
       'contents' => [
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
         {
           'contents' => [
             {
@@ -45,6 +63,14 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
           'type' => 'before_item'
         }
       ],
+      'extra' => {
+        'block_command_line_contents' => [
+          [
+            {}
+          ]
+        ],
+        'command_as_argument' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -61,17 +87,22 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0];
 $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1];
-$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[0]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'};
 $result_trees{'invalid_command_and_brace_in_table'}{'contents'}[1]{'parent'} = $result_trees{'invalid_command_and_brace_in_table'};
 
-$result_texis{'invalid_command_and_brace_in_table'} = '@table
+$result_texis{'invalid_command_and_brace_in_table'} = '@table @asis
  ,, title
 long title
 Item line

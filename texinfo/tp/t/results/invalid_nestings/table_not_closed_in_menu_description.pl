@@ -51,7 +51,7 @@ $result_trees{'table_not_closed_in_menu_description'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
-                          'cmdname' => 'minus',
+                          'cmdname' => 'asis',
                           'parent' => {},
                           'type' => 'command_as_argument'
                         },
@@ -185,7 +185,7 @@ $result_trees{'table_not_closed_in_menu_description'}{'contents'}[0]{'parent'} =
 $result_trees{'table_not_closed_in_menu_description'}{'contents'}[1]{'parent'} = $result_trees{'table_not_closed_in_menu_description'};
 
 $result_texis{'table_not_closed_in_menu_description'} = '@menu
-* (gcc):: text @table @minus
+* (gcc):: text @table @asis
 @item item
 table line
 @end table@end menu
@@ -223,15 +223,6 @@ $result_errors{'table_not_closed_in_menu_description'} = [
     'macro' => '',
     'text' => '@table should only appear at a line beginning',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':2: Command @minus not accepting argument in brace should not be on @table line
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => 'Command @minus not accepting argument in brace should not be on @table line',
-    'type' => 'error'
   },
   {
     'error_line' => ':5: `@end\' expected `table\', but saw `menu\'

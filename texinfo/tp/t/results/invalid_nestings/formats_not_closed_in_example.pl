@@ -35,7 +35,7 @@ $result_trees{'formats_not_closed_in_example'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
-                  'cmdname' => 'minus',
+                  'cmdname' => 'asis',
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -272,7 +272,7 @@ $result_trees{'formats_not_closed_in_example'}{'contents'}[1]{'parent'} = $resul
 
 $result_texis{'formats_not_closed_in_example'} = '@example
 
-@table @minus
+@table @asis
 @item item
 table line
 
@@ -298,15 +298,6 @@ Some text.
 ';
 
 $result_errors{'formats_not_closed_in_example'} = [
-  {
-    'error_line' => ':3: Command @minus not accepting argument in brace should not be on @table line
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'Command @minus not accepting argument in brace should not be on @table line',
-    'type' => 'error'
-  },
   {
     'error_line' => ':13: `@end\' expected `enumerate\', but saw `example\'
 ',

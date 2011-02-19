@@ -15,7 +15,8 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
-              'parent' => {}
+              'parent' => {},
+              'type' => 'command_as_argument'
             },
             {
               'args' => [
@@ -65,9 +66,14 @@ $result_trees{'accent_argument'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {}
+            {
+              'cmdname' => 'bullet',
+              'parent' => {},
+              'type' => 'command_as_argument'
+            }
           ]
-        ]
+        ],
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -99,7 +105,8 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
-              'parent' => {}
+              'parent' => {},
+              'type' => 'command_as_argument'
             },
             {
               'parent' => {},
@@ -143,9 +150,14 @@ $result_trees{'accent_argument'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {}
+            {
+              'cmdname' => 'bullet',
+              'parent' => {},
+              'type' => 'command_as_argument'
+            }
           ]
-        ]
+        ],
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -172,7 +184,8 @@ $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'p
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
-$result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'accent_argument'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'accent_argument'}{'contents'}[0]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[1]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[2]{'parent'} = $result_trees{'accent_argument'};
@@ -184,7 +197,8 @@ $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'p
 $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3];
-$result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'accent_argument'}{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3];
+$result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0];
 $result_trees{'accent_argument'}{'contents'}[3]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[4]{'parent'} = $result_trees{'accent_argument'};
 
@@ -226,9 +240,9 @@ $result_errors{'accent_argument'} = [
 
 
 
-$result_converted{'plaintext'}->{'accent_argument'} = '     item
+$result_converted{'plaintext'}->{'accent_argument'} = '   * item
 
-     item
+   * item
 ';
 
 1;

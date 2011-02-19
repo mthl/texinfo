@@ -2179,25 +2179,54 @@ sub _end_line($$$)
           }
         }
         $current->{'extra'}->{'enumerate_specification'} = $spec;
-      } elsif ($current->{'cmdname'} eq 'itemize' 
-               and !$current->{'extra'}->{'block_command_line_contents'}) {
-        $current->{'extra'}->{'block_command_line_contents'} = [
-          [ { 'cmdname' => 'bullet', 
-            'type' => 'command_as_argument',
-            'parent' => $current }
-          ]
-        ];
       } elsif ($item_line_commands{$current->{'cmdname'}}) {
-        if ($current->{'extra'} 
-            and $current->{'extra'}->{'command_as_argument'}
-            and !$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
+        if (!$current->{'extra'} 
+            or !$current->{'extra'}->{'command_as_argument'}) {
+          $self->line_error(sprintf($self->__("%s requires an argument: the formatter for %citem"), 
+                                    $current->{'cmdname'}, ord('@')), $line_nr);
+        } elsif (!$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
             and !$self->{'definfoenclose'}->{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}) {
           $self->line_error (sprintf($self->
              __("Command \@%s not accepting argument in brace should not be on \@%s line"), 
                                     $current->{'extra'}->{'command_as_argument'}->{'cmdname'},
                                     $current->{'cmdname'}),
                               $line_nr);
+          delete $current->{'extra'}->{'command_as_argument'};
         }
+      }
+      if ($current->{'extra'}
+          and $current->{'extra'}->{'command_as_argument'}
+          and $accent_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
+          and ($current->{'cmdname'} eq 'itemize' 
+               or $item_line_commands{$current->{'cmdname'}})) {
+        $self->line_warn (sprintf($self->
+           __("Accent command `\@%s' not allowed as \@%s argument"),
+              $current->{'extra'}->{'command_as_argument'}->{'cmdname'}, 
+              $current->{'cmdname'}),
+              $line_nr);
+        delete $current->{'extra'}->{'command_as_argument'};
+        delete $current->{'extra'}->{'block_command_line_contents'};
+      }
+      if (!$current->{'extra'}->{'block_command_line_contents'}
+          and $current->{'cmdname'} eq 'itemize') {
+        $current->{'extra'}->{'block_command_line_contents'} = [
+          [ { 'cmdname' => 'bullet', 
+            'type' => 'command_as_argument',
+            'parent' => $current }
+          ]
+        ];
+        $current->{'extra'}->{'command_as_argument'} = 
+          $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+      } elsif ($item_line_commands{$current->{'cmdname'}} and
+              ! $current->{'extra'}->{'command_as_argument'}) {
+        $current->{'extra'}->{'block_command_line_contents'} = [
+          [ { 'cmdname' => 'asis', 
+            'type' => 'command_as_argument',
+            'parent' => $current }
+          ]
+        ];
+        $current->{'extra'}->{'command_as_argument'} = 
+          $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
       }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
          'contents' => [], 'parent', $current };
@@ -2817,17 +2846,10 @@ sub _parse_texi($;$)
                    and $current->{'parent'}->{'contents'}->[0]->{'text'}
                                       =~ /^[^\S\n]*/))) {
           delete $current->{'contents'};
-          if ($accent_commands{$current->{'cmdname'}}) {
-            $self->line_warn (sprintf($self->
-              __("Accent command `\@%s' not allowed as \@%s argument"),
-              $current->{'cmdname'}, $current->{'parent'}->{'parent'}->{'cmdname'}),
-              $line_nr);
-          } else {
-            print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
-            $current->{'type'} = 'command_as_argument' if (!$current->{'type'});
-            $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
-              = $current;
-          }
+          print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
+          $current->{'type'} = 'command_as_argument' if (!$current->{'type'});
+          $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
+            = $current;
           $current = $current->{'parent'};
         # now accent commands
         } elsif ($accent_commands{$current->{'cmdname'}}) {
