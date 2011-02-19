@@ -334,6 +334,12 @@ sub nodes_tree ($)
   foreach my $node (@{$self->{'nodes'}}) {
     $top_node = $node if ($node->{'extra'}->{'normalized'} eq 'Top');
     if ($node->{'menus'}) {
+      if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
+        foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
+          $self->line_warn (sprintf($self->__("Multiple \@%s"), 
+                        $menu->{'cmdname'}), $menu->{'line_nr'});
+        }
+      }
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
         foreach my $menu_content (@{$menu->{'contents'}}) {

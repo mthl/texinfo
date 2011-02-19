@@ -157,6 +157,17 @@ my @test_invalid = (
 @end menu
 @end deffn
 '],
+['multiple_menus',
+'@node Top
+
+@menu
+* (a)a::
+@end menu
+
+@menu
+* (b)b::
+@end menu
+'],
 );
 
 foreach my $test (@test_cases) {
