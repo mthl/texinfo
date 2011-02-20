@@ -3,6 +3,11 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
+['no_nodes',
+'Text.'],
+['no_top_node',
+'@node node Top not Top node
+'],
 ['paragraphindent_and_preamble',
 '@copying
 In copying.

@@ -147,6 +147,10 @@ sub output($)
       $result = $output;
     }
   } else {
+    unless ($self->{'structuring'} and $self->{'structuring'}->{'top_node'}
+     and $self->{'structuring'}->{'top_node'}->{'extra'}->{'normalized'} eq 'Top') {
+      $self->document_warn($self->__("Document without Top node."));
+    }
     my $out_file_nr = 1;
     my @indirect_files;
     if ($fh) {
@@ -395,6 +399,14 @@ sub _printindex($$)
     my $node_text;
     if (!defined($entry->{'node'})) {
       $node_text = $self->gdt('(outside of any node)');
+      # Warn, but only once.
+      # FIXME when outside of sectioning commands this message was already
+      # done by the Parser.
+      if (!$self->{'index_entries_no_node'}->{$entry}) {
+        $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"),
+                                 $index_name), $entry->{'command'}->{'line_nr'});
+        $self->{'index_entries_no_node'}->{$entry} = 1;
+      }
     } else {
       $node_text = {'type' => 'code',
                 'contents' => $entry->{'node'}->{'extra'}->{'node_content'}};
