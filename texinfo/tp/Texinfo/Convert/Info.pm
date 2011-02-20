@@ -227,8 +227,10 @@ sub output($)
       next unless ($label->{'root'});
       my $prefix = 'Ref';
       $prefix = 'Node' if ($label->{'root'}->{'cmdname'} eq 'node');
+      push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
       my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
         'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
+      pop @{$self->{'count_context'}};
       $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
     }
     $tag_text .=  "\x{1F}\nEnd Tag Table\n";
@@ -384,7 +386,7 @@ sub _printindex($$)
     } else {
       $entry_counts{$entry_text}++;
       $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
-      $self->_add_text_count(' <'.'>');
+      $self->_add_text_count($entry_nr);
     }
     my $entry_line = "* $entry_text${entry_nr}: ";
     $self->_add_text_count("* ".": ");

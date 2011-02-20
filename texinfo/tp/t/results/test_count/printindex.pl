@@ -99,6 +99,53 @@ $result_trees{'printindex'} = {
                 },
                 {
                   'parent' => {},
+                  'text' => 'index entry'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'cindex',
+          'extra' => {
+            'index_entry' => {
+              'command' => {},
+              'content' => [
+                {}
+              ],
+              'index_at_command' => 'cindex',
+              'index_name' => 'cp',
+              'index_prefix' => 'c',
+              'key' => 'index entry',
+              'node' => {},
+              'number' => 2
+            },
+            'misc_content' => []
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
+          'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
                   'text' => 'looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry'
                 },
                 {
@@ -124,13 +171,13 @@ $result_trees{'printindex'} = {
               'index_prefix' => 'c',
               'key' => 'looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry',
               'node' => {},
-              'number' => 2
+              'number' => 3
             },
             'misc_content' => []
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 4,
+            'line_nr' => 5,
             'macro' => ''
           },
           'parent' => {}
@@ -173,7 +220,7 @@ $result_trees{'printindex'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 6,
+            'line_nr' => 7,
             'macro' => ''
           },
           'parent' => {}
@@ -220,13 +267,13 @@ $result_trees{'printindex'} = {
               'index_prefix' => 'c',
               'key' => 'after index',
               'node' => {},
-              'number' => 3
+              'number' => 4
             },
             'misc_content' => []
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 8,
+            'line_nr' => 9,
             'macro' => ''
           },
           'parent' => {}
@@ -269,7 +316,7 @@ $result_trees{'printindex'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 10,
+            'line_nr' => 11,
             'macro' => ''
           },
           'parent' => {}
@@ -308,7 +355,7 @@ $result_trees{'printindex'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 12,
+            'line_nr' => 13,
             'macro' => ''
           },
           'parent' => {}
@@ -365,40 +412,50 @@ $result_trees{'printindex'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex'}{'contents'}[1];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[4];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[5];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex'}{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'content'};
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'};
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[8];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[9];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'args'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[10];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'extra'}{'node_content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
+$result_trees{'printindex'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'printindex'}{'contents'}[1];
 $result_trees{'printindex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'printindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'printindex'}{'contents'}[1]{'parent'} = $result_trees{'printindex'};
 
 $result_texis{'printindex'} = '@node Top
 
+@cindex index entry
 @cindex index entry
 @cindex looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry
 
@@ -473,76 +530,95 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
    [12] (35,3) @cindex
    [12] (35,3)
  locations  (3) l 3
-   [13] (35,3) :empty_line:text|\\n|
+   [13] (35,3) @cindex
    [13] (35,3)
-   [14] (35,3) @printindex
-    [15] (56,6) :frenchspacing
-     [16] (56,6) :text|after index|
-     [16] (61,6)
-    [15] (61,6)
-    [17] (97,6) :code
-     [18] (97,6) :text|Top|
-     [18] (97,6)
-    [17] (97,6)
-    [19] (129,7) :frenchspacing
-     [20] (129,7) :text|index entry|
-     [20] (134,7)
-    [19] (134,7)
-    [21] (170,7) :code
-     [22] (170,7) :text|Top|
-     [22] (170,7)
-    [21] (170,7)
-    [23] (202,8) :frenchspacing
-     [24] (202,8) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [24] (270,8)
-    [23] (270,8)
-    [25] (280,8) :code
-     [26] (280,8) :text|Top|
-     [26] (280,8)
-    [25] (280,8)
-   [14] (359,11)
-   [27] (359,11) :empty_line:text|\\n|
-   [27] (359,11)
-   [28] (359,11) @cindex
-   [28] (359,11)
- locations  (4) l 11
-   [29] (359,11) :empty_line:text|\\n|
-   [29] (359,11)
-   [30] (359,11) @printindex
-    [31] (380,14) :frenchspacing
-     [32] (380,14) :text|after index|
-     [32] (385,14)
-    [31] (385,14)
-    [33] (421,14) :code
-     [34] (421,14) :text|Top|
-     [34] (421,14)
-    [33] (421,14)
-    [35] (453,15) :frenchspacing
-     [36] (453,15) :text|index entry|
-     [36] (458,15)
-    [35] (458,15)
-    [37] (494,15) :code
-     [38] (494,15) :text|Top|
-     [38] (494,15)
-    [37] (494,15)
-    [39] (526,16) :frenchspacing
-     [40] (526,16) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [40] (594,16)
-    [39] (594,16)
-    [41] (604,16) :code
-     [42] (604,16) :text|Top|
-     [42] (604,16)
-    [41] (604,16)
-   [30] (683,19)
-   [43] (683,19) :empty_line:text|\\n|
-   [43] (683,19)
-   [44] (683,19) @anchor
-   [44] (683,19)
- locations  (5) l 19 b 683
-   [45] (683,19) :empty_spaces_after_close_brace:text|\\n|
-   [45] (683,19)
-  [3] (683,19)
- [1] (683,19)
+ locations  (4) l 3
+   [14] (35,3) :empty_line:text|\\n|
+   [14] (35,3)
+   [15] (35,3) @printindex
+    [16] (56,6) :frenchspacing
+     [17] (56,6) :text|after index|
+     [17] (61,6)
+    [16] (61,6)
+    [18] (97,6) :code
+     [19] (97,6) :text|Top|
+     [19] (97,6)
+    [18] (97,6)
+    [20] (129,7) :frenchspacing
+     [21] (129,7) :text|index entry|
+     [21] (134,7)
+    [20] (134,7)
+    [22] (170,7) :code
+     [23] (170,7) :text|Top|
+     [23] (170,7)
+    [22] (170,7)
+    [24] (202,8) :frenchspacing
+     [25] (202,8) :text|index entry|
+     [25] (207,8)
+    [24] (207,8)
+    [26] (243,8) :code
+     [27] (243,8) :text|Top|
+     [27] (243,8)
+    [26] (243,8)
+    [28] (275,9) :frenchspacing
+     [29] (275,9) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [29] (343,9)
+    [28] (343,9)
+    [30] (353,9) :code
+     [31] (353,9) :text|Top|
+     [31] (353,9)
+    [30] (353,9)
+   [15] (432,12)
+   [32] (432,12) :empty_line:text|\\n|
+   [32] (432,12)
+   [33] (432,12) @cindex
+   [33] (432,12)
+ locations  (5) l 12
+   [34] (432,12) :empty_line:text|\\n|
+   [34] (432,12)
+   [35] (432,12) @printindex
+    [36] (453,15) :frenchspacing
+     [37] (453,15) :text|after index|
+     [37] (458,15)
+    [36] (458,15)
+    [38] (494,15) :code
+     [39] (494,15) :text|Top|
+     [39] (494,15)
+    [38] (494,15)
+    [40] (526,16) :frenchspacing
+     [41] (526,16) :text|index entry|
+     [41] (531,16)
+    [40] (531,16)
+    [42] (567,16) :code
+     [43] (567,16) :text|Top|
+     [43] (567,16)
+    [42] (567,16)
+    [44] (599,17) :frenchspacing
+     [45] (599,17) :text|index entry|
+     [45] (604,17)
+    [44] (604,17)
+    [46] (640,17) :code
+     [47] (640,17) :text|Top|
+     [47] (640,17)
+    [46] (640,17)
+    [48] (672,18) :frenchspacing
+     [49] (672,18) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [49] (740,18)
+    [48] (740,18)
+    [50] (750,18) :code
+     [51] (750,18) :text|Top|
+     [51] (750,18)
+    [50] (750,18)
+   [35] (829,21)
+   [52] (829,21) :empty_line:text|\\n|
+   [52] (829,21)
+   [53] (829,21) @anchor
+   [53] (829,21)
+ locations  (6) l 21 b 829
+   [54] (829,21) :empty_spaces_after_close_brace:text|\\n|
+   [54] (829,21)
+  [3] (829,21)
+ [1] (829,21)
 
 
 File: ,  Node: Top,  Up: (dir)
@@ -552,14 +628,16 @@ File: ,  Node: Top,  Up: (dir)
 
 * after index:                           Top.                   (line 4)
 * index entry:                           Top.                   (line 3)
+* index entry <1>:                       Top.                   (line 3)
 * looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry: Top.
                                                                 (line 3)
 
  [index ]
 * Menu:
 
-* after index:                           Top.                  (line 11)
+* after index:                           Top.                  (line 12)
 * index entry:                           Top.                  (line  3)
+* index entry <1>:                       Top.                  (line  3)
 * looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry: Top.
                                                                (line  3)
 
@@ -576,14 +654,16 @@ File: ,  Node: Top,  Up: (dir)
 
 * after index:                           Top.                   (line 4)
 * index entry:                           Top.                   (line 3)
+* index entry <1>:                       Top.                   (line 3)
 * looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry: Top.
                                                                 (line 3)
 
  [index ]
 * Menu:
 
-* after index:                           Top.                  (line 11)
+* after index:                           Top.                  (line 12)
 * index entry:                           Top.                  (line  3)
+* index entry <1>:                       Top.                  (line  3)
 * looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry: Top.
                                                                (line  3)
 
@@ -591,7 +671,7 @@ File: ,  Node: Top,  Up: (dir)
 
 Tag Table:
 Node: Top52
-Ref: a counting anchor734
+Ref: a counting anchor880
 
 End Tag Table
 ';

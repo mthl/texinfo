@@ -45,6 +45,7 @@ new para.
 '@node Top
 
 @cindex index entry
+@cindex index entry
 @cindex looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry
 
 @printindex cp

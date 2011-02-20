@@ -94,7 +94,9 @@ sub _convert($$)
   if ($self->{'level'} > 0) {
     return $text;
   } else {
-    return "".join('',@{$self->{'debug_count_strings'}}).$text;
+    my $result = join('',@{$self->{'debug_count_strings'}}).$text;
+    @{$self->{'debug_count_strings'}} = ();
+    return $result;
   }
 }
 
