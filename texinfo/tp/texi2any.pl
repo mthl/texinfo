@@ -632,6 +632,7 @@ while(@input_files)
     handle_errors($parser, $error_count);
     next;
   }
+  Texinfo::Structuring::associate_internal_references($parser);
   # every format needs the sectioning structure
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
   # this can be done for every format, since information is already gathered

@@ -862,7 +862,7 @@ sub labels_information ($)
   return $self->{'labels'};
 }
 
-# Following are the internal subsections.  The most important are
+# Following are the internal subroutines.  The most important are
 # _parse_texi:  the main parser loop.
 # _end_line:    called at an end of line.  Opening if @include lines is 
 #               done here.
@@ -1826,7 +1826,9 @@ sub _enter_index_entry($$$$)
                       'command'          => $current,
                       'number'           => $number,
                     };
-  $index_entry->{'node'} = $self->{'current_node'} if ($self->{'current_node'});
+  if ($self->{'current_node'}) {
+    $index_entry->{'node'} = $self->{'current_node'};
+  }
   $index_entry->{'region'} = $self->{'regions_stack'}->[-1]
     if (@{$self->{'regions_stack'}});
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
@@ -4120,6 +4122,11 @@ sub _parse_line_command_args($$$)
           $self->line_warn (sprintf($self->__("Printing an index `%s' merged in another one `%s'"), 
                                      $name, $self->{'merged_indices'}->{$name}),
                              $line_nr); 
+        }
+        if (!defined($self->{'current_node'}) 
+            and !defined($self->{'current_section'})) {
+          $self->line_warn (sprintf($self->__("Printindex before document beginning: \@printindex %s"), 
+                                    $name), $line_nr);
         }
         $args = [$name];
       }

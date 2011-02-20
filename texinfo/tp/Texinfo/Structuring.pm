@@ -43,6 +43,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 %EXPORT_TAGS = ( 'all' => [ qw(
   sectioning_structure  
   nodes_tree
+  associate_internal_references
   number_floats
   sort_indices
 ) ] );
@@ -553,6 +554,26 @@ sub _unsplit($)
     $content->{'parent'} = $root;
   }
   return $root;
+}
+
+sub associate_internal_references($;$$)
+{
+  my $self = shift;
+  my $labels = shift;
+  my $refs = shift;
+  $labels = $self->labels_information() if (!defined($labels));
+  $refs = $self->internal_references_information() if (!defined($refs));
+  return if (!defined($refs));
+  foreach my $ref (@$refs) {
+    if (!$labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}) {
+      $self->line_error (sprintf($self->__("\@%s reference to nonexistent node `%s'"),
+                               $ref->{'cmdname'}, 
+                               _node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
+                        $ref->{'line_nr'})
+    } else {
+      $ref->{'extra'}->{'label'} = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};
+    }
+  }
 }
 
 sub number_floats($)

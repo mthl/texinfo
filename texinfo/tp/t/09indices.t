@@ -25,8 +25,12 @@ my @test_cases = (
 '@synindex c truc'],
 ['print_merged_index',
 '@syncodeindex fn cp
-@printindex fn']
-
+@node Top
+@printindex fn'],
+['printindex_before_document',
+'
+@printindex cp
+'],
 );
 
 my @test_formatted = (

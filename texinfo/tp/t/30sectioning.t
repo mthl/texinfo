@@ -372,6 +372,8 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @bye
 '],
+['ref_to_unknown_node',
+'@xref{unknown node}.'],
 ['raiselowersections',
 '\input texinfo @c -*-texinfo-*-
 

@@ -276,6 +276,7 @@ sub test($$)
   } else {
     $result = $parser->parse_texi_file($test_file);
   }
+  Texinfo::Structuring::associate_internal_references($parser);
   my $floats = $parser->floats_information();
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);

@@ -99,6 +99,8 @@ after
 
 @set defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
 
+@node Top
+
 @codeidxindex @value{defcodeindex_entry}
 
 @cindex cindex entry

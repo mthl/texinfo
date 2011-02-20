@@ -606,6 +606,8 @@ codeidx
 a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 
+@node Top
+
 @codeidxindex @defcodeindex-entry{}
 
 @cindex cindex entry
