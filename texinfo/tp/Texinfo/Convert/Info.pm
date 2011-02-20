@@ -315,11 +315,14 @@ sub _printindex($$)
 
   # this is not redone for each index, only once
   if (!defined($self->{'index_entries'}) and $self->{'parser'}) {
+
     my ($index_names, $merged_indices, $index_entries)
        = $self->{'parser'}->indices_information();
-    $self->{'index_entries'} = $self->Texinfo::Structuring::sort_indices($index_entries);
+    $self->{'index_entries'} 
+      = $self->Texinfo::Structuring::sort_indices(
+          Texinfo::Structuring::merge_indices($index_names, $merged_indices, 
+                                              $index_entries));
     $self->{'index_names'} = $index_names;
-    $self->{'merged_indices'} = $merged_indices;
   }
   if (!$self->{'index_entries'} or !$self->{'index_entries'}->{$index_name}
       or ! @{$self->{'index_entries'}->{$index_name}}) {
@@ -363,13 +366,11 @@ sub _printindex($$)
   # this is used to count entries that are the same
   my %entry_counts = ();
 
-  # FIXME second maybe should be index_prefix of each entry?
-  my $in_code = $self->{'index_names'}->{$index_name}->{$index_name};
-
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     #my @keys = keys(%$entry);
     #print STDERR "$index_name $entry: @keys\n";
     next if ($ignored_entries{$entry});
+    my $in_code = $self->{'index_names'}->{$index_name}->{$entry->{'index_name'}};
     my $entry_tree = {'contents' => $entry->{'content'}};
     if ($in_code) {
       $entry_tree->{'type'} = 'code';

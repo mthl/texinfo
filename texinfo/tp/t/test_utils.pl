@@ -286,7 +286,12 @@ sub test($$)
   my $top_node = Texinfo::Structuring::nodes_tree($parser);
 
   my ($errors, $error_nrs) = $parser->errors();
-  my ($index_names, $merged_indices) = $parser->indices_information();
+  my ($index_names, $merged_indices, $index_entries) 
+       = $parser->indices_information();
+  # FIXME merged_index_entries are not used further, maybe it would be good to
+  # compare them.  Maybe even call sort_indices before.
+  my $merged_index_entries 
+     = Texinfo::Structuring::merge_indices($index_names, $merged_indices, $index_entries);
   my $indices;
   $indices->{'index_names'} = $index_names
     unless (Data::Compare::Compare($index_names, $initial_index_names));

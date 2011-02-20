@@ -45,6 +45,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   nodes_tree
   associate_internal_references
   number_floats
+  merge_indices
   sort_indices
 ) ] );
 
@@ -649,6 +650,28 @@ sub sort_indices ($$)
         sort _sort_subroutine @{$index_entries->{$index_name}};
   }
   return $sorted_index_entries;
+}
+
+sub merge_indices($$$)
+{
+  my $index_names = shift;
+  my $merged_indices = shift;
+  my $index_entries = shift;
+
+  my $merged_index_entries;
+  foreach my $index_name (keys(%$index_names)) {
+    #print STDERR "MERGE_INDICES: $index_name\n";
+    next if ($merged_indices->{$index_name});
+    foreach my $index_prefix (keys (%{$index_names->{$index_name}})) {
+      #print STDERR "MERGE_INDICES: $index_name, prefix $index_prefix\n";
+      if ($index_entries->{$index_prefix}) {
+        #print STDERR "MERGE_INDICES: final $index_name <- $index_prefix\n";
+        push @{$merged_index_entries->{$index_name}},
+          @{$index_entries->{$index_prefix}};
+      }
+    }
+  }
+  return $merged_index_entries;
 }
 
 1;

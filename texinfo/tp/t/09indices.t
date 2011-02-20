@@ -75,6 +75,24 @@ Last paragraph.
 
 @printindex cp
 '],
+['syncode_index_print_both',
+'@syncodeindex fn cp
+
+@node Top
+
+@cindex c---oncept
+@findex f---un
+
+
+Print fn
+
+@printindex fn
+
+Print vr
+
+@printindex cp
+
+'],
 ['index_entry_before_node',
 '@node Top
 
