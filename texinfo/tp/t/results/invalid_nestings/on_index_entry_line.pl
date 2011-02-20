@@ -290,6 +290,15 @@ $result_errors{'on_index_entry_line'} = [
     'macro' => '',
     'text' => '@exdent should not appear in @cindex',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: Entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'error'
   }
 ];
 

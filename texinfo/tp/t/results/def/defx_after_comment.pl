@@ -275,7 +275,26 @@ $result_texts{'defx_after_comment'} = 'fset i a g
 truc bidulr machin...
 ';
 
-$result_errors{'defx_after_comment'} = [];
+$result_errors{'defx_after_comment'} = [
+  {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':3: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

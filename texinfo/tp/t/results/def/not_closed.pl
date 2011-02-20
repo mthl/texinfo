@@ -310,6 +310,33 @@ type1 var bidule
 
 $result_errors{'not_closed'} = [
   {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':3: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':3: No matching `@end defvar\'
 ',
     'file_name' => '',

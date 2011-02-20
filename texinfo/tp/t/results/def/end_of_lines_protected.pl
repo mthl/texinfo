@@ -283,7 +283,17 @@ $result_texts{'end_of_lines_protected'} = 'category deffn_name arguments    more
 deffn
 ';
 
-$result_errors{'end_of_lines_protected'} = [];
+$result_errors{'end_of_lines_protected'} = [
+  {
+    'error_line' => ':4: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

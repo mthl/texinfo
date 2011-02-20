@@ -192,6 +192,15 @@ $result_errors{'multitable_item_in_index'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':2: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':1: warning: @multitable has text but no @item
 ',
     'file_name' => '',

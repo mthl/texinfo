@@ -1807,12 +1807,13 @@ sub _register_label($$$$)
 # for index entries and v|ftable items, it is the index entry content, 
 # for def, it is the parsed arguments.  The actual content should be 
 # constructed based on the definition line arguments.
-sub _enter_index_entry($$$$)
+sub _enter_index_entry($$$$$)
 {
   my $self = shift;
   my $command = shift;
   my $current = shift;
   my $content = shift;
+  my $line_nr = shift;
 
   my $prefix = $self->{'command_index_prefix'}->{$command};
   my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
@@ -1828,6 +1829,9 @@ sub _enter_index_entry($$$$)
                     };
   if ($self->{'current_node'}) {
     $index_entry->{'node'} = $self->{'current_node'};
+  } elsif (!$self->{'current_section'}) {
+    $self->line_error (sprintf($self->__("Entry for index `%s' outside of any node"), 
+                               $index_name), $line_nr);
   }
   $index_entry->{'region'} = $self->{'regions_stack'}->[-1]
     if (@{$self->{'regions_stack'}});
@@ -2059,7 +2063,7 @@ sub _end_line($$$)
           $index_contents = [$index_entry];
         }
         _enter_index_entry($self, $current->{'parent'}->{'extra'}->{'def_command'},
-          $current->{'parent'}, $index_contents);
+          $current->{'parent'}, $index_contents, $line_nr);
       } else {
         $self->line_warn (sprintf($self->__('Missing name for @%s'), 
          $current->{'parent'}->{'extra'}->{'original_def_cmdname'}), $line_nr); 
@@ -2347,10 +2351,10 @@ sub _end_line($$$)
         if (($command eq 'item' or $command eq 'itemx')
             and $self->{'command_index_prefix'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, $current,
-                             $current->{'extra'}->{'misc_content'});
+                             $current->{'extra'}->{'misc_content'}, $line_nr);
         } elsif ($self->{'command_index_prefix'}->{$current->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'cmdname'}, $current,
-                             $current->{'extra'}->{'misc_content'});
+                             $current->{'extra'}->{'misc_content'}, $line_nr);
         }
       }
       if (defined($command_structuring_level{$command})) {

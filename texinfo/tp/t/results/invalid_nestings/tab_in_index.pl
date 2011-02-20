@@ -259,6 +259,15 @@ $result_errors{'tab_in_index'} = [
     'macro' => '',
     'text' => 'ignoring @tab outside of multitable',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':3: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
   }
 ];
 

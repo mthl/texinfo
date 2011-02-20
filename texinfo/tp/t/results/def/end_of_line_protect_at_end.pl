@@ -126,6 +126,15 @@ $result_errors{'end_of_line_protect_at_end'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':2: No matching `@end deffn\'
 ',
     'file_name' => '',

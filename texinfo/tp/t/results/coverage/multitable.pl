@@ -588,7 +588,17 @@ lone mu--ltitable item
 truc bidule
 ';
 
-$result_errors{'multitable'} = [];
+$result_errors{'multitable'} = [
+  {
+    'error_line' => ':7: Entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

@@ -758,6 +758,15 @@ truc
 
 $result_errors{'empty_def_arguments'} = [
   {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':2: warning: Missing name for @deffnx
 ',
     'file_name' => '',
@@ -785,6 +794,15 @@ $result_errors{'empty_def_arguments'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':5: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: warning: Missing name for @deffnx
 ',
     'file_name' => '',
@@ -794,6 +812,15 @@ $result_errors{'empty_def_arguments'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':7: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':8: warning: Missing name for @deffnx
 ',
     'file_name' => '',
@@ -801,6 +828,15 @@ $result_errors{'empty_def_arguments'} = [
     'macro' => '',
     'text' => 'Missing name for @deffnx',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
   }
 ];
 

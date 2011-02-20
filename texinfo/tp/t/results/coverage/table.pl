@@ -536,7 +536,44 @@ itemx vtable
 
 ';
 
-$result_errors{'table'} = [];
+$result_errors{'table'} = [
+  {
+    'error_line' => ':11: Entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':13: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':15: Entry for index `ky\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => 'Entry for index `ky\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':16: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

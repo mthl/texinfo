@@ -1994,7 +1994,143 @@ truc deffnx before end deffn
 Various deff lines
 ';
 
-$result_errors{'def'} = [];
+$result_errors{'def'} = [
+  {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':7: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':11: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':12: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':13: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':14: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':15: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':16: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':17: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':18: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 18,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':19: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 19,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':20: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':21: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':23: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 23,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':25: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

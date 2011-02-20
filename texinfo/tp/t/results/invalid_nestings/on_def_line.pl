@@ -594,6 +594,15 @@ $result_errors{'on_def_line'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':2: warning: @anchor should not appear in @deffn
 ',
     'file_name' => '',
@@ -637,6 +646,15 @@ $result_errors{'on_def_line'} = [
     'macro' => '',
     'text' => '@exdent should not appear in @deffnx',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
   }
 ];
 

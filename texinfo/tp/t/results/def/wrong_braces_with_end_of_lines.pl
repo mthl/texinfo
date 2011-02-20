@@ -346,12 +346,30 @@ $result_errors{'wrong_braces_with_end_of_lines'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: Misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
     'text' => 'Misplaced }',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':7: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
     'type' => 'error'
   }
 ];

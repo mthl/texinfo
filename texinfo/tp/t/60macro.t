@@ -594,8 +594,6 @@ after
 @trucindex
 @end macro
 
-@trucindex-command{} index truc
-
 @macro codeidx 
 codeidx
 @end macro
@@ -607,6 +605,8 @@ a @var{index entry} t@\'e @^{@dotless{i}}
 @end macro
 
 @node Top
+
+@trucindex-command{} index truc
 
 @codeidxindex @defcodeindex-entry{}
 

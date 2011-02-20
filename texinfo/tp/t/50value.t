@@ -91,8 +91,6 @@ after
 
 @set trucindex_command @trucindex
 
-@value{trucindex_command} index truc
-
 @set codeidx codeidx
 
 @defcodeindex @value{codeidx}
@@ -100,6 +98,8 @@ after
 @set defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
 
 @node Top
+
+@value{trucindex_command} index truc
 
 @codeidxindex @value{defcodeindex_entry}
 

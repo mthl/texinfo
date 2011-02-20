@@ -647,6 +647,24 @@ $result_errors{'double_command'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: warning: @defvr should only appear at a line beginning
 ',
     'file_name' => '',
@@ -665,12 +683,30 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':5: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: No matching `@end defvr\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'No matching `@end defvr\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
     'type' => 'error'
   }
 ];

@@ -316,12 +316,30 @@ truc bidulr machin...
 
 $result_errors{'defx_after_preformatted_with_text'} = [
   {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: Must be after `@deffn\' to use `@deffnx\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
     'text' => 'Must be after `@deffn\' to use `@deffnx\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
     'type' => 'error'
   }
 ];

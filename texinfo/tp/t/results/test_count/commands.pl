@@ -339,7 +339,17 @@ vitem table
 text
 ';
 
-$result_errors{'commands'} = [];
+$result_errors{'commands'} = [
+  {
+    'error_line' => ':11: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 

@@ -404,12 +404,30 @@ In defun.
 
 $result_errors{'def_defx_mismatch'} = [
   {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':2: Must be after `@deffn\' to use `@deffnx\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => 'Must be after `@deffn\' to use `@deffnx\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
     'type' => 'error'
   }
 ];

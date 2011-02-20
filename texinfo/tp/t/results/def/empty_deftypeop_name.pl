@@ -240,7 +240,17 @@ $result_texis{'empty_deftypeop_name'} = '@deftypeop Command@code{com} {Window@co
 $result_texts{'empty_deftypeop_name'} = 'Commandcom Windowint exposeexp
 ';
 
-$result_errors{'empty_deftypeop_name'} = [];
+$result_errors{'empty_deftypeop_name'} = [
+  {
+    'error_line' => ':1: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 1;

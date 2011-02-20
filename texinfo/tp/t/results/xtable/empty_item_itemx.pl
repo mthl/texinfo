@@ -310,6 +310,15 @@ in item before end table
 
 $result_errors{'empty_item_itemx'} = [
   {
+    'error_line' => ':5: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: @itemx missing argument
 ',
     'file_name' => '',
@@ -319,12 +328,30 @@ $result_errors{'empty_item_itemx'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':7: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':8: @item missing argument
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
     'text' => '@item missing argument',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':9: Entry for index `vr\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'Entry for index `vr\' outside of any node',
     'type' => 'error'
   }
 ];

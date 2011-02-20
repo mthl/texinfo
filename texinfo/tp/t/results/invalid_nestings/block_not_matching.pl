@@ -702,6 +702,15 @@ $result_errors{'block_not_matching'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':5: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':7: `@end\' expected `deffn\', but saw `deftypefun\'
 ',
     'file_name' => '',

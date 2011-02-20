@@ -134,6 +134,15 @@ $result_errors{'unknown_then_known_index_entry'} = [
     'macro' => '',
     'text' => 'Unknown command `someindex\'',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':3: Entry for index `some\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Entry for index `some\' outside of any node',
+    'type' => 'error'
   }
 ];
 

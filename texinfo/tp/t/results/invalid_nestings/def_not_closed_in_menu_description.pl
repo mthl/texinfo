@@ -239,6 +239,15 @@ $result_errors{'def_not_closed_in_menu_description'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':2: Entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Entry for index `fn\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: `@end\' expected `deffn\', but saw `menu\'
 ',
     'file_name' => '',

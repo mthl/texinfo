@@ -1,3 +1,6 @@
+Add a warning for each index entry outside of any node in the 
+Info backend.
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd

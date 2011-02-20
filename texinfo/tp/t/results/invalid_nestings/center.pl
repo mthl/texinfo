@@ -682,6 +682,15 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':3: Entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':5: warning: @quotation should not appear in @center
 ',
     'file_name' => '',

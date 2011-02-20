@@ -188,7 +188,17 @@ BBB
 $result_texts{'heading_in_footnote'} = 'T
 ';
 
-$result_errors{'heading_in_footnote'} = [];
+$result_errors{'heading_in_footnote'} = [
+  {
+    'error_line' => ':4: Entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'Entry for index `cp\' outside of any node',
+    'type' => 'error'
+  }
+];
 
 
 
