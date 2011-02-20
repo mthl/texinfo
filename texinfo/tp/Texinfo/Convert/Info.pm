@@ -135,7 +135,7 @@ sub output($)
       return undef;
     }
   }
-  if (!defined($elements)) {
+  if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
     $self->document_warn($self->__("Document without nodes."));
     my $output = $header.$self->_convert($root);
     my ($footnotes) = $self->_footnotes();

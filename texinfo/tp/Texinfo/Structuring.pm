@@ -449,7 +449,15 @@ sub nodes_tree ($)
         }
       }
     }
+    # A bit of explanation about !$node->{'node_up'}->{'extra'}->{'normalized'}:
+    # it may happen (rarely) that the node_up has only a manual entry
+    # and therefore !$node->{'node_up'}->{'extra'}->{'normalized'}
+    # In that case there is always a {'manual_content'} and the condition 
+    # !$node->{'node_up'}->{'extra'}->{'manual_content'} is never set.
+    # The node_up should always be different from the menu_up, therefore
+    # if in a menu, the second condition/error message applies.
     if ($node->{'node_up'} and (!$node->{'menu_up_hash'}
+         or !$node->{'node_up'}->{'extra'}->{'normalized'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
       if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node has no menu entry

@@ -274,6 +274,9 @@ First chapter.
 @bye
 
 ',{},{'SPLIT_SIZE' => 10}],
+['no_node_but_top',
+'@top top
+'],
 );
 
 foreach my $test (@test_cases) {
