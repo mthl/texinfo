@@ -1,3 +1,11 @@
+2011-02-20  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (Command Summary): add @copying, @insertcopying,
+	@indent, @headitemfont, @dotless, @unmacro.
+	* doc/refcard/txicmdcheck: also check against implementation.
+	* util/txicmdlist: script to output all implemented commands.
+
 2011-02-18  Karl Berry  <karl@gnu.org>
 
 	* doc/refcard/txirefcard.tex,

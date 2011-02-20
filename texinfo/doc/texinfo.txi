@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
+@c $Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -21409,7 +21409,7 @@ Define the full caption for an @code{@@float}.  @xref{caption shortcaption}.
 @item @@cartouche
 Highlight an example or quotation by drawing a box with rounded
 corners around it.  Pair with @code{@@end cartouche}.  No effect in
-Info.  @xref{cartouche, , Drawing Cartouches Around Examples}.)@refill
+Info.  @xref{cartouche, , Drawing Cartouches Around Examples}.
 
 @item @@center @var{line-of-text}
 Center the line of text following the command.
@@ -21478,8 +21478,11 @@ any output.  A synonym for @code{@@c}.
 
 @item @@contents
 Print a complete table of contents.  Has no effect in Info, which uses
-menus instead.  @xref{Contents, , Generating a Table of
-Contents}.
+menus instead.  @xref{Contents, , Generating a Table of Contents}.
+
+@item @@copying
+Specify copyright holders and copying conditions for the document Pair
+with @code{@@end cartouche}.  @xref{copying,, @code{@@copying}}.
 
 @item @@copyright@{@}
 Generate the copyright symbol @copyright{}.  @xref{copyright symbol,,
@@ -21683,6 +21686,10 @@ Declare the document language as the two-character ISO-639 abbreviation
 Generate a dot accent over the character @var{c}, as in @dotaccent{o}.
 @xref{Inserting Accents}.
 
+@item @@dotless@{@var{i-or-j}@}
+Generate dotless i (`@dotless{i}') and dotless j (`@dotless{j}').
+@xref{Inserting Accents}.
+
 @item @@dots@{@}
 Generate an ellipsis, @samp{@dots{}}.
 @xref{dots, , @code{@@dots}}.
@@ -21849,6 +21856,10 @@ page headings for printing.  @xref{headings on off, , The
 @item @@headitem
 Begin a heading row in a multitable.  @xref{Multitable Rows}.
 
+@item @@headitemfont@{@var{text}@}
+Set @var{text} in the font used for multitable heading rows; mostly
+useful in multitable templates.  @xref{Multitable Rows}.
+
 @item @@html
 Enter HTML completely.  Pair with @code{@@end html}.  @xref{Raw
 Formatter Commands}.
@@ -21918,6 +21929,9 @@ Include graphics image in external @var{filename} scaled to the given
 @item @@include @var{filename}
 Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
 
+@item @@indent
+Insert paragraph indentation.  @xref{indent,, @code{indent}}.
+
 @item @@indicateurl@{@var{indicateurl}@}
 Indicate text that is a uniform resource locator for the World Wide
 Web.  @xref{indicateurl, , @code{@@indicateurl}}.
@@ -21934,6 +21948,10 @@ in the first line of a Texinfo file to cause @TeX{} to make use of the
 is used instead of an @code{@@} because @TeX{} does not recognize
 @code{@@} until after it has read the definitions file.  @xref{Texinfo
 File Header}.
+
+@item @@insertcopying
+Insert the text previously defined with the @code{@@copying}
+environment.  @xref{insertcopying,, @code{@@insertcopying}}.
 
 @item @@item
 Indicate the beginning of a marked paragraph for @code{@@itemize} and
@@ -22406,6 +22424,10 @@ Creating Pointers with @code{makeinfo}}.
 Generate a breve, underbar, or underdot accent, respectively, over or
 under the character @var{c}, as in @u{o}, @ubaraccent{o},
 @udotaccent{o}.  @xref{Inserting Accents}.
+
+@item @@unmacro @var{macroname}
+Undefine the macro @code{@@@var{macroname}} if it has been defined.
+@xref{Defining Macros}.
 
 @item @@unnumbered @var{title}
 Begin a chapter that appears without chapter numbers of any kind.  The
@@ -23106,7 +23128,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
+$Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23185,7 +23207,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.370 2011-02-18 17:33:28 karl Exp $
+@comment $Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

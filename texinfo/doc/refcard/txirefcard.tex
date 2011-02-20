@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.14 2011-02-18 17:33:29 karl Exp $
+% $Id: txirefcard.tex,v 1.15 2011-02-20 18:39:40 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -415,6 +415,8 @@ which they conventionally appear.
 
 \txicmd{@setfilename}{info-file-name}{Provide a name to be used for the output files. This command is essential for \TeX\  formatting as well, even though it produces no output.  Should be the first command in the input.}
 \txicmd{@settitle}{title}{Specify document \var{title}.}
+\txicmd{@copying}{}{Specify copyright and licensing text. Pair with \code{@end copying}.}
+\txicmd{@insertcopying}{}{Insert text defined by \code{@copying}.}
 
 
 \subsection{Internationalization}
@@ -565,6 +567,7 @@ of its own and continue through the following lines of input until a
 corresponding \code{@end \var{envname}} is seen.
 
 \txicmd{@noindent}{}{Omit the normal indentation when starting a new paragraph; often used after environments.}
+\txicmd{@indent}{}{Insert normal paragraph indentation.}
 \txicmd{@exdent}{line-of-text}{Output \var{line-of-text} without any indentation.}
 \txicmd{@cartouche}{}{Highlight an example or quotation by drawing a box with rounded corners around it. Pair with \code{@end cartouche}. No effect in Info.}
 
@@ -602,6 +605,7 @@ margins and normal text font.  Pair with \code{@end format}.}
 \txicmd{@item}{}{Begin an item for the list and table commands.}
 \txicmd{@itemx}{}{Used only with \code{@table}.  Like \code{@item} but do not generate extra preceding vertical space.  When several items have the same description, use \code{@item} for the first and \code{@itemx} for the rest.}
 \txicmd{@headitem}{}{Used only for multitables.  Like \code{@item}, but indicates a heading row.}
+\txicmd{@headitemfont}{\ttbraced{text}}{Set \var{text} in the heading row font.}
 \txicmd{@asis}{text}{Prints \var{text} as-is; used as \var{formatting-command} for tables when no highlighting is desired.}
 
 
@@ -682,6 +686,7 @@ exception of \code{@tieaccent}.
 \txicmd{@O\txicmdarg{\ttbraced{}}, @o}{\ttbraced{}}{Generate uppercase \O\  and lowercase \o.}
 \txicmd{@OE\txicmdarg{\ttbraced{}}, @oe}{\ttbraced{}}{Generate uppercase \OE\  and lowercase \oe.}
 \txicmd{@TH\txicmdarg{\ttbraced{}}, @th}{\ttbraced{}}{Generate uppercase \TH\ and lowercase \th.}
+\txicmd{@dotless}{\ttbraced{i|j}}{Generate dotless \i\ and \j.}
 \txicmd{@exclamdown}{\ttbraced{}}{Generate an upside-down exclamation point, \raise.4ex\hbox{<}.}
 \txicmd{@ordf\txicmdarg{\ttbraced{}}, @ordm}{\ttbraced{}}{Generate \ordf\ and lowercase \ordm.}
 \txicmd{@questiondown}{\ttbraced{}}{Generate an upside-down question mark, \raise.4ex\hbox{?`}.}
@@ -725,6 +730,7 @@ exception of \code{@tieaccent}.
 \txicmd{@\bschar}{}{Inside \code{@math}, generate a backslash, $\backslash$.}
 \txicmd{@geq}{\ttbraced{}}{Generate a greater-than-or-equal sign, $\geq$.}
 \txicmd{@leq}{\ttbraced{}}{Generate a less-than-or-equal sign, $\leq$.}
+
 
 \section{Making and preventing breaks}
 
@@ -831,6 +837,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 
 \txicmd{@alias}{new\code{=}existing}{Make the command \code{@new} a synonym for the existing command \code{@existing}.}
 \txicmd{@macro}{macroname \ttbraced{\var{params}}}{Define a new Texinfo command  \code{@\var{macroname}}.  Pair with \code{@end macro}.}
+\txicmd{@unmacro}{macroname}{Undefine \code{@\var{macroname}} if it is defined.}
 \txicmd{@definfoenclose}{newcmd\code{,} before\code{,} after}{Can only be used within \code{@ifinfo}; create a new command that encloses its argument in the \var{before} and \var{after} strings.}
 
 
