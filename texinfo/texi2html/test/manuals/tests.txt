@@ -11,8 +11,8 @@ texinfo texinfo.texi --split chapter --ifinfo --set-init-var 'IDX_SUMMARY 1' --i
 texinfo_info_dev_null texinfo.texi --info -o /dev/null
 texinfo_nodes texinfo.texi --split node --node-files --ifinfo
 ccvs cvs.texi --split chapter --init cvs.init
-ccvs_mediawiki cvs.texi --init mediawiki.init --split chapter
-ccvs_mediawiki_nosplit cvs.texi --init mediawiki.init --init cvs.init
+#ccvs_mediawiki cvs.texi --init mediawiki.init --split chapter
+#ccvs_mediawiki_nosplit cvs.texi --init mediawiki.init --init cvs.init
 ccvs_info cvs.texi --init info.init
 mini_ker mini_ker.texi --init book.init --split section --node-files --set-init-var 'USE_NODES 1' --iftex --init mini_ker_t2h.init --init tex4ht.init
 texinfo_xml texinfo.texi --init xml.init

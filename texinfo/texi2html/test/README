@@ -1,4 +1,4 @@
-$Id: README,v 1.9 2010-07-25 00:14:28 karl Exp $
+$Id: README,v 1.10 2011-02-21 01:08:33 pertusus Exp $
 texinfo/texi2html/tests/README
 
   Copyright (C) 2010 Free Software Foundation, Inc.
@@ -17,10 +17,13 @@ Prerequisites
 To run this testsuite, sed (with -i), awk, diff, mktemp are used. To 
 find the same results, tex4ht, latex2HTML, html2wiki, perl with unicode 
 support and the Text::Unidecode perl module have to be installed (with their 
-dependencies). It is possible that some test results involving latex2HTML,
+dependencies).  It is possible that some test results involving latex2HTML,
 tex4ht or html2wiki depend on the setup and version of these tools, so you may 
-get false negative. If tex4ht, latex2HTML or html2wiki are not found, the 
+get false negative.  If tex4ht, latex2HTML or html2wiki are not found, the 
 corresponding tests are skipped.
+
+Some tests also require a case insensitive filesystem (especially in 
+encodings/).
 
 
 Running the testsuite

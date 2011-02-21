@@ -37,5 +37,5 @@ more_unknown_index_entry more_unknown_index_entry.texi
 same_doc_nr_split_index_and_element same_doc_nr_split_index_and_element.texi --init index_test.init --split node --node-files
 syncodeindex_to_plain syncodeindex_to_plain.texi
 
-index_entry_in_footnote_info index_entry_in_footnote.texi --init info.init
-index_entry_in_footnote_separated_info index_entry_in_footnote.texi --init info.init --footnote-style=separate
+index_entry_in_footnote_info index_entry_in_footnote.texi --info
+index_entry_in_footnote_separated_info index_entry_in_footnote.texi --info --footnote-style=separate

@@ -38,10 +38,10 @@ double_contents_setcontentsaftertitlepage_book double_contents_setcontentsaftert
 double_contents_setcontentsaftertitlepage_book_chapter double_contents_setcontentsaftertitlepage.texi --init book.init --split chapter
 contents_and_parts contents_and_parts.texi
 
-contents_at_begin_info contents_at_begin.texi --init info.init
-contents_at_end_info contents_at_end.texi  --init info.init
-contents_in_middle_chapter_info contents_in_middle_chapter.texi --init info.init
-contents_in_middle_section_info contents_in_middle_section.texi --init info.init
-double_contents_info double_contents.texi --init info.init
-double_contents_setcontentsaftertitlepage_info double_contents_setcontentsaftertitlepage.texi --init info.init
+contents_at_begin_info contents_at_begin.texi --info
+contents_at_end_info contents_at_end.texi  --info
+contents_in_middle_chapter_info contents_in_middle_chapter.texi --info
+contents_in_middle_section_info contents_in_middle_section.texi --info
+double_contents_info double_contents.texi --info
+double_contents_setcontentsaftertitlepage_info double_contents_setcontentsaftertitlepage.texi --info
 
