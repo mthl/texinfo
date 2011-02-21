@@ -145,6 +145,10 @@ Text.
 
 @printindex fn
 '],
+['empty_cindex_entry',
+'@node Top
+@cindex
+']
 );
 
 foreach my $test (@test_formatted) {

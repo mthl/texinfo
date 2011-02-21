@@ -29,7 +29,9 @@ $result_trees{'empty'} = {
                 }
               ],
               'cmdname' => 'columnfractions',
-              'extra' => {},
+              'extra' => {
+                'missing_argument' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,

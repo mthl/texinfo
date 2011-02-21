@@ -26,6 +26,9 @@ $result_trees{'unnumbered_no_argument'} = {
       ],
       'cmdname' => 'unnumbered',
       'contents' => [],
+      'extra' => {
+        'missing_argument' => 1
+      },
       'level' => 1,
       'line_nr' => {
         'file_name' => '',
@@ -53,6 +56,9 @@ $result_sectioning{'unnumbered_no_argument'} = {
   'section_childs' => [
     {
       'cmdname' => 'unnumbered',
+      'extra' => {
+        'missing_argument' => 1
+      },
       'level' => 1,
       'section_up' => {}
     }

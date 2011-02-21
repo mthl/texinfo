@@ -1828,14 +1828,14 @@ sub _enter_index_entry($$$$$)
                       'command'          => $current,
                       'number'           => $number,
                     };
-  if ($self->{'current_node'}) {
+  if (@{$self->{'regions_stack'}}) {
+    $index_entry->{'region'} = $self->{'regions_stack'}->[-1];
+  } elsif ($self->{'current_node'}) {
     $index_entry->{'node'} = $self->{'current_node'};
   } elsif (!$self->{'current_section'}) {
     $self->line_error (sprintf($self->__("Entry for index `%s' outside of any node"), 
                                $index_name), $line_nr);
   }
-  $index_entry->{'region'} = $self->{'regions_stack'}->[-1]
-    if (@{$self->{'regions_stack'}});
   push @{$self->{'index_entries'}->{$index_name}}, $index_entry;
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
@@ -2262,6 +2262,7 @@ sub _end_line($$$)
       if ($text eq '') {
         $self->line_warn (sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);
+        $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'text_arg'} = $text;
         if ($command eq 'include') {
@@ -2347,6 +2348,7 @@ sub _end_line($$$)
       if (!scalar(@contents)) {
         $self->line_error (sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);
+        $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'misc_content'} = \@contents;
         if (($command eq 'item' or $command eq 'itemx')
@@ -4009,6 +4011,7 @@ sub _parse_line_command_args($$$)
   if (! @contents) {
     $self->line_error (sprintf($self->__("\@%s missing argument"), 
        $command), $line_nr);
+    $line_command->{'extra'}->{'missing_argument'} = 1;
     return undef;
   }
 
@@ -4129,7 +4132,8 @@ sub _parse_line_command_args($$$)
                              $line_nr); 
         }
         if (!defined($self->{'current_node'}) 
-            and !defined($self->{'current_section'})) {
+            and !defined($self->{'current_section'})
+            and !scalar(@{$self->{'regions_stack'}})) {
           $self->line_warn (sprintf($self->__("Printindex before document beginning: \@printindex %s"), 
                                     $name), $line_nr);
         }

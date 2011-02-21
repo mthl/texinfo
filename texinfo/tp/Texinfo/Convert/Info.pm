@@ -135,6 +135,7 @@ sub output($)
       return undef;
     }
   }
+  print STDERR "DOCUMENT\n" if ($self->{'DEBUG'});
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
     $self->document_warn($self->__("Document without nodes."));
     my $output = $header.$self->_convert($root);
@@ -260,12 +261,14 @@ sub _info_header($)
   $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
+    print STDERR "COPYING HEADER\n" if ($self->{'DEBUG'});
     $self->_set_global_multiple_commands();
-    $self->{'in_copying'} = 1;
+    $self->{'in_copying_header'} = 1;
     my $copying = $self->_convert({'contents' => 
           $self->{'extra'}->{'copying'}->{'contents'}});
     $result .= $copying;
-    delete $self->{'in_copying'};
+    $result .= $self->_footnotes();
+    delete $self->{'in_copying_header'};
     $self->_unset_global_multiple_commands();
   }
   if ($self->{'info'}->{'dircategory_direntry'}) {

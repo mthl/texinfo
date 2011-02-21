@@ -116,6 +116,9 @@ $result_trees{'empty_item_itemx'} = {
             }
           ],
           'cmdname' => 'itemx',
+          'extra' => {
+            'missing_argument' => 1
+          },
           'parent' => {}
         },
         {
@@ -174,6 +177,9 @@ $result_trees{'empty_item_itemx'} = {
             }
           ],
           'cmdname' => 'item',
+          'extra' => {
+            'missing_argument' => 1
+          },
           'parent' => {}
         },
         {

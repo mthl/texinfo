@@ -983,7 +983,8 @@ sub _anchor($$)
   my $self = shift;
   my $anchor = shift;
 
-  $self->_add_location($anchor) unless ($self->{'multiple_pass'});
+  $self->_add_location($anchor) unless ($self->{'multiple_pass'} 
+                                        or $self->{'in_copying_header'});
   return '';
 }
 
@@ -1165,13 +1166,18 @@ sub _convert($$)
     }
   }
 
-  if ($root->{'extra'} and $root->{'extra'}->{'invalid_nesting'}) {
-    print STDERR "INVALID_NESTING\n" if ($self->{'DEBUG'});
-    return '';
+  if ($root->{'extra'}) {
+    if ($root->{'extra'}->{'invalid_nesting'}) {
+      print STDERR "INVALID_NESTING\n" if ($self->{'DEBUG'});
+      return '';
+    } elsif ($root->{'extra'}->{'missing_argument'}) {
+      print STDERR "MISSING_ARGUMENT\n" if ($self->{'DEBUG'});
+      return '';
+    }
   }
 
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
-      and !$self->{'multiple_pass'} and !$self->{'in_copying'}) {
+      and !$self->{'multiple_pass'} and !$self->{'in_copying_header'}) {
     my $location = $self->_add_location($root);
     # remove a 'lines' from $location if at the very end of a node
     # since it will lead to the next node otherwise.

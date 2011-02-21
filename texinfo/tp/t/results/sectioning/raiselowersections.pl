@@ -230,7 +230,9 @@ $result_trees{'raiselowersections'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'missing_argument' => 1
+      },
       'level' => 0,
       'line_nr' => {
         'file_name' => '',
@@ -1342,7 +1344,8 @@ $result_sectioning{'raiselowersections'} = {
           'extra' => {
             'normalized' => 'Top'
           }
-        }
+        },
+        'missing_argument' => 1
       },
       'level' => 0,
       'section_childs' => [
@@ -1444,7 +1447,9 @@ $result_nodes{'raiselowersections'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'missing_argument' => 1
+      },
       'level' => 0
     },
     'normalized' => 'Top'
