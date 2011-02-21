@@ -138,6 +138,7 @@ our %misc_commands = (
                        # or a number and forbids anything else on the line
   'firstparagraphindent' => 1, # none insert
   'frenchspacing'     => 1, # on off
+  'xrefautomaticsectiontitle' => 1, # on off
   'fonttextsize'      => 1, # 10 11
   'allowcodebreaks'   => 1, # false or true
   'exampleindent'     => 1, # asis or a number
