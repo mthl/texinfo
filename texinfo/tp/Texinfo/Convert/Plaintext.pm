@@ -535,7 +535,7 @@ sub _process_text($$$)
   $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
   if ($self->{'ENABLE_ENCODING'} and $self->{'documentencoding'} 
       and $self->{'documentencoding'} eq 'utf-8') {
-    return Texinfo::Convert::Unicode($self, $command);
+    return Texinfo::Convert::Unicode::unicode_text($self, $command, $context);
   } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;

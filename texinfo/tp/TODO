@@ -1,6 +1,3 @@
-Add a warning for each index entry outside of any node in the 
-Info backend.
-
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
@@ -113,6 +110,11 @@ t/30sectioning.t setfilename_on_top_and_after_node
 there could be a warning
  warning: @setfilename after the first element
 
+No &copy; &ldquo; &rdquo; in docbook.  Use instead numeric entities.
+
+Add @value and @end to the corresponding commands categories?  Also maybe
+add thischapter thischaptername thischapternum thisfile thispage thistitle
+to misc_commands?
 
 Incorporation of texi2html tests
 --------------------------------
