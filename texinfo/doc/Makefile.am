@@ -1,7 +1,7 @@
-# $Id: Makefile.am,v 1.42 2010-06-24 00:17:01 karl Exp $
+# $Id: Makefile.am,v 1.43 2011-02-22 19:18:14 karl Exp $
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -67,7 +67,9 @@ install-tex:
 	for f in $(TXI_XLATE); do \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(texmf_texinfo)/$$f; done
 
-# The man pages depend on the --help strings and the version number.
+# 
+# Make man pages with help2man.
+# They depend on the --help strings and the version number.
 common_mandeps = $(top_srcdir)/configure.ac
 
 # Set up the variables:
@@ -85,17 +87,23 @@ man_rule_bin = echo "Updating man page $@" && \
 	$(man_rule_0) && \
 	echo cd "$$dir" '&&' $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT) && \
 	    (cd "$$dir"  &&  $(MAKE) $(AM_MAKEFLAGS) $$program$(EXEEXT)) && \
-	echo $(HELP2MAN) --name=\""$$name"\" "$$dir/$$program" -o '$@' && \
-	     $(HELP2MAN) --name="$$name"     "$$dir/$$program" -o '$@'
+	echo $(HELP2MAN) --name=\""$$name"\" -I "$$dir/$$program.h2m" "$$dir/$$program" -o '$@' && \
+	     $(HELP2MAN) --name="$$name"     -I "$$dir/$$program.h2m" "$$dir/$$program" -o '$@'
 
-$(srcdir)/info.1: $(top_srcdir)/info/info.c $(common_mandeps)
+# for Info, we have an additional help2man file since the standard
+# SEE ALSO text from help2man does not fit.
+$(srcdir)/info.1: $(top_srcdir)/info/info.c $(top_srcdir)/info/ginfo.h2m \
+                  $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
+
 $(srcdir)/infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
 	@name="compile customizations for Info" && $(man_rule_bin)
-$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c $(common_mandeps)
+
+$(srcdir)/install-info.1: $(top_srcdir)/install-info/install-info.c \
+                          $(common_mandeps)
 	@name="update info/dir entries" && $(man_rule_bin)
 
-# Here we need some postprocessing:
+# Here we need some postprocessing to avoid man misformatting.
 $(srcdir)/makeinfo.1: $(top_srcdir)/makeinfo/makeinfo.c $(common_mandeps)
 	@name="translate Texinfo documents" && $(man_rule_bin)
 	mv $@ $@.tmp
@@ -106,9 +114,8 @@ $(srcdir)/texindex.1: $(util_srcdir)/texindex.c $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 
-## ---------- ##
-## texi2dvi.  ##
-## ---------- ##
+# 
+# texi2dvi in all its forms.
 
 man_MANS += texi2dvi.1 texi2pdf.1 pdftexi2dvi.1
 util_srcdir = $(top_srcdir)/util

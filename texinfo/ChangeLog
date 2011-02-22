@@ -1,3 +1,11 @@
+2011-02-22  Karl Berry  <karl@gnu.org>
+
+	* info/ginfo.h2m: new file.
+	* doc/Makefile.am (info.1): also depend on info/ginfo.h2m.
+	(man_rule_info): use -I to have help2man optionally include
+	$$program.h2m.
+	https://savannah.gnu.org/bugs/?24052
+
 2011-02-20  Karl Berry  <karl@gnu.org>
 
 	* doc/refcard/txirefcard.tex,
