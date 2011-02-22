@@ -28,11 +28,50 @@ This is in title page
 
 And still in title page
 ']
-
 );
+
+my @test_formatted = (
+['anchor_in_copying',
+'
+@copying
+
+Copying.
+@anchor{Copying information}
+
+@end copying
+
+@node Top
+
+@insertcopying
+
+@insertcopying
+
+'],
+['anchor_in_copying_in_footnote',
+'@copying
+
+Copying@footnote{
+In footnote.
+@anchor{Copying footnote}
+}.
+
+@end copying
+
+@node Top
+
+@insertcopying
+
+@insertcopying
+
+'],
+);
+
+foreach my $test (@test_formatted) {
+  $test->[2]->{'test_formats'} = ['info'];
+}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('regions', \@test_cases, $arg_test_case,
+run_all ('regions', [@test_cases, @test_formatted], $arg_test_case,
    $arg_generate, $arg_debug);
 

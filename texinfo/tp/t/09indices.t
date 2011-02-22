@@ -181,6 +181,34 @@ Top.
 
 @printindex cp
 '],
+['printindex_index_entry_in_copying_in_footnote',
+'@copying
+
+Copying@footnote{
+In footnote
+@cindex Copying this document
+
+}.
+
+@printindex cp
+
+@end copying
+
+@node Top
+
+Top.
+@insertcopying
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter
+
+@insertcopying
+
+'],
 );
 
 foreach my $test (@test_formatted) {
