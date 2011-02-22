@@ -445,7 +445,7 @@ sub converter(;$)
 sub _convert_node($$)
 {
   my $self = shift;
-  my $node = shift;
+  my $element = shift;
 
   my $result = '';
 
@@ -453,14 +453,11 @@ sub _convert_node($$)
   die "Too much count_context\n" if (scalar(@{$self->{'count_context'}}) != 1);
 
   $self->{'count_context'}->[-1]->{'lines'} = 0;
-  # FIXME this is used for footnote, maybe associate a node to the footnote 
-  # in Parser?
-  $self->{'node'} = $node;
-  $result .= $self->_convert($node);
+  $result .= $self->_convert($element);
 
   print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'DEBUG'});
 
-  $result .= $self->_footnotes($node);
+  $result .= $self->_footnotes($element);
 
   print STDERR "AFTER FOOTNOTES ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'DEBUG'});
 
@@ -777,11 +774,16 @@ sub _footnotes($;$)
     while (@{$self->{'pending_footnotes'}}) {
       my $footnote = shift (@{$self->{'pending_footnotes'}});
 
-      $self->_add_location({'cmdname' => 'anchor',
-                      'extra' => {'node_content' => 
-               [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
-                              {'text' => "-Footnote-$footnote->{'number'}"}]}
-                     }) if ($element);
+      if ($element) {
+        my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+                    {'text' => "-Footnote-$footnote->{'number'}"}];
+        my $normalized 
+          = Texinfo::Convert::NodeNameNormalization::convert({'contents' => $node_contents});
+        $self->_add_location({'cmdname' => 'anchor',
+                        'extra' => {'node_content' => $node_contents,
+                                    'normalized' => $normalized}
+                       });
+      }
       # this pushes on 'context', 'format_context' and 'formatters'
       $self->push_top_formatter('footnote');
       my $formatted_footnote_number;
@@ -1213,6 +1215,11 @@ sub _convert($$)
             if ($self->{'DEBUG'});
         $location->{'lines'}--;
       }
+      # special case for index entry not associated with a node but seen. 
+      # this will be an index entry in @copying, in @insertcopying.
+      if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
+        $location->{'node'} = $self->{'node'};
+      }
     }
     $self->{'index_entries_line_location'}->{$root} = $location;
     print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
@@ -1410,7 +1417,7 @@ sub _convert($$)
          [{'text' => ' ('},
           {'cmdname' => 'pxref',
            'extra' => {'brace_command_contents' => 
-          [[@{$self->{'node'}->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+          [[@{$self->{'node'}->{'extra'}->{'node_content'}},
                    {'text' => "-Footnote-$self->{'footnote_index'}"}]]}},
           {'text' => ')'}],
           });
@@ -1645,6 +1652,7 @@ sub _convert($$)
         }
       }
     } elsif ($root->{'cmdname'} eq 'node') {
+      $self->{'node'} = $root;
       $result .= $self->_node($root);
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {

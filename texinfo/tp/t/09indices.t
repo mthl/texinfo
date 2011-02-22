@@ -148,7 +148,39 @@ Text.
 ['empty_cindex_entry',
 '@node Top
 @cindex
-']
+'],
+['printindex_index_entry_in_copying',
+'@copying
+
+@cindex Copying this document
+
+@printindex cp
+
+@end copying
+
+@node Top
+
+Top.
+@insertcopying
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter
+
+@insertcopying
+
+'],
+['index_entry_before_first_node',
+'
+@cindex before nodes
+
+@node Top
+
+@printindex cp
+'],
 );
 
 foreach my $test (@test_formatted) {

@@ -1,3 +1,7 @@
+From texi2html/test/indices/index_special_region.texi
+take anchor in @copying and anchor and index entry in copying and in
+footnote.
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd

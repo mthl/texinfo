@@ -224,10 +224,27 @@ sub output($)
     if ($out_file_nr > 1) {
       $tag_text .=  "(Indirect)\n";
     }
+    # This may happen for anchors in @insertcopying
+    my %seen_anchors;
     foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
       next unless ($label->{'root'});
-      my $prefix = 'Ref';
-      $prefix = 'Node' if ($label->{'root'}->{'cmdname'} eq 'node');
+      my $prefix;
+      if ($label->{'root'}->{'cmdname'} eq 'node') {
+        $prefix = 'Node';
+      } else {
+        if ($seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}}) {
+          $self->line_error(sprintf($self->__("\@%s `%s' output more than once"),
+                         $label->{'root'}->{'cmdname'},
+                   Texinfo::Convert::Texinfo::convert({'contents' =>
+                        $label->{'root'}->{'extra'}->{'node_content'}})),
+                        $label->{'root'}->{'line_nr'});
+
+          next;
+        } else {
+          $seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}} = $label;
+        }
+        $prefix = 'Ref';
+      }
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
       my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
         'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
@@ -342,10 +359,12 @@ sub _printindex($$)
 
   # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
+  my %entry_nodes;
   my $max_index_line_nr_string_length = 0;
   my %ignored_entries;
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
     my $line_nr;
+
     if (defined ($self->{'index_entries_line_location'}->{$entry->{'command'}})) {
       $line_nr = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'lines'};
       # ignore index entries in special regions that haven't been seen
@@ -353,7 +372,15 @@ sub _printindex($$)
       $ignored_entries{$entry} = 1;
       next;
     }
-    if (!defined($entry->{'node'})) {
+
+    my $node;
+    if (defined($entry->{'node'})) {
+      $node = $entry->{'node'};
+    } elsif (defined($self->{'index_entries_line_location'}->{$entry->{'command'}}->{'node'})) {
+      $node = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'node'};
+    }
+    $entry_nodes{$entry} = $node;
+    if (!defined($node)) {
       $line_nr = 0;
     } else {
       $line_nr = 3 if (defined($line_nr) and $line_nr < 3);
@@ -403,7 +430,9 @@ sub _printindex($$)
       $self->_add_text_count($spaces);
     }
     my $node_text;
-    if (!defined($entry->{'node'})) {
+    my $node = $entry_nodes{$entry};
+
+    if (!defined($node)) {
       $node_text = $self->gdt('(outside of any node)');
       # Warn, but only once.
       # FIXME when outside of sectioning commands this message was already
@@ -415,7 +444,7 @@ sub _printindex($$)
       }
     } else {
       $node_text = {'type' => 'code',
-                'contents' => $entry->{'node'}->{'extra'}->{'node_content'}};
+                'contents' => $node->{'extra'}->{'node_content'}};
     }
     $entry_line .= $self->convert_line($node_text);
     $entry_line .= '.';
