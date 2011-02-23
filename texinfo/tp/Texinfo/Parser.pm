@@ -247,7 +247,7 @@ our %default_configuration = (
                               # Current documentlanguage set by 
                               # @documentlanguage
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
-  'MAX_NESTED_MACROS' => 100000, # max number of nested macro calls
+  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -2828,10 +2828,10 @@ sub _parse_texi($;$)
         if ($expanded eq '') {
           next;
         }
-        if ($self->{'MAX_NESTED_MACROS'}
-            and scalar(@{$self->{'macro_stack'}}) > $self->{'MAX_NESTED_MACROS'}) {
+        if ($self->{'MAX_MACRO_CALL_NESTING'}
+            and scalar(@{$self->{'macro_stack'}}) > $self->{'MAX_MACRO_CALL_NESTING'}) {
           $self->line_warn (sprintf($self->
-              __("Too many nested macro call (if correct, set MAX_NESTED_MACROS, now set to %d)"), $self->{'MAX_NESTED_MACROS'}), $line_nr);
+              __("Macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"), $self->{'MAX_MACRO_CALL_NESTING'}), $line_nr);
           next;
         }
         if ($expanded_macro->{'cmdname'} eq 'macro') {

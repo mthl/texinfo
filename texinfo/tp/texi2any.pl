@@ -218,7 +218,7 @@ my @variable_settables = (
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'TEXI2DVI', 'DUMP_TREE', 'MAX_NESTED_MACROS');
+  'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
@@ -555,8 +555,8 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
-$parser_default_options->{'MAX_NESTED_MACROS'} = get_conf('MAX_NESTED_MACROS') 
-  if (defined(get_conf('MAX_NESTED_MACROS')));
+$parser_default_options->{'MAX_MACRO_CALL_NESTING'} = get_conf('MAX_MACRO_CALL_NESTING') 
+  if (defined(get_conf('MAX_MACRO_CALL_NESTING')));
 
 
 
