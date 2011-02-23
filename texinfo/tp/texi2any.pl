@@ -218,7 +218,7 @@ my @variable_settables = (
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
   'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'TEXI2DVI', 'DUMP_TREE');
+  'TEXI2DVI', 'DUMP_TREE', 'MAX_NESTED_MACROS');
 
 my %valid_options;
 foreach my $var (@document_settable_at_commands, @document_global_at_commands,
@@ -349,7 +349,9 @@ my @css_refs = ();
 
 my $converter_default_options = {'ERROR_LIMIT' => 100};
 
-my $parser_default_options = {'expanded_formats' => [], 'values' => {}};
+# options for all the files
+my $parser_default_options = {'expanded_formats' => [], 'values' => {},
+                              'gettext' => \&__};
 
 Texinfo::Config::_load_config($converter_default_options);
 
@@ -548,6 +550,16 @@ if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   #set_from_cmdline('FRAMES', 0); 
 }
 
+foreach my $format (@{$default_expanded_format}) {
+  push @{$parser_default_options->{'expanded_formats'}}, $format 
+    unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
+}
+
+$parser_default_options->{'MAX_NESTED_MACROS'} = get_conf('MAX_NESTED_MACROS') 
+  if (defined(get_conf('MAX_NESTED_MACROS')));
+
+
+
 # Main processing, process all the files given on the command line
 
 my $failure_text =  sprintf(__("Try `%s --help' for more information.\n"), 
@@ -590,8 +602,6 @@ while(@input_files)
   unshift @{$parser_options->{'include_directories'}},
      @prependended_include_directories;
   unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
-
-  $parser_options->{'gettext'} = \&__;
 
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);

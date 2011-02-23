@@ -222,8 +222,8 @@ our %default_configuration = (
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
-  # the stack of the macros being expanded
-  'macro_stack' => [''],
+  # the stack of the macros being expanded (more recent are first)
+  'macro_stack' => [],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
   'indices' => [],
@@ -246,7 +246,8 @@ our %default_configuration = (
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
                               # @documentlanguage
-  'ENABLE_ENCODING' => 1      # corresponds to --enable-encoding.
+  'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
+  'MAX_NESTED_MACROS' => 100000, # max number of nested macro calls
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -1380,8 +1381,8 @@ sub _next_text($$)
       my $new_text = shift @{$current->{'pending'}};
       if ($new_text->[1] and $new_text->[1]->{'end_macro'}) {
         delete $new_text->[1]->{'end_macro'};
-        my $top_macro = pop @{$self->{'macro_stack'}};
-        print STDERR "POP MACRO_STACK(@{$self->{'macro_stack'}}): $top_macro->{'args'}->[0]->{'text'}\n"
+        my $top_macro = shift @{$self->{'macro_stack'}};
+        print STDERR "SHIFT MACRO_STACK(@{$self->{'macro_stack'}}): $top_macro->{'args'}->[0]->{'text'}\n"
           if ($self->{'DEBUG'});
       }
       return ($new_text->[0], $new_text->[1]);
@@ -2827,8 +2828,27 @@ sub _parse_texi($;$)
         if ($expanded eq '') {
           next;
         }
-        push @{$self->{'macro_stack'}}, $expanded_macro;
-        print STDERR "PUSH MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
+        if ($self->{'MAX_NESTED_MACROS'}
+            and scalar(@{$self->{'macro_stack'}}) > $self->{'MAX_NESTED_MACROS'}) {
+          $self->line_warn (sprintf($self->
+              __("Too many nested macro call (if correct, set MAX_NESTED_MACROS, now set to %d)"), $self->{'MAX_NESTED_MACROS'}), $line_nr);
+          next;
+        }
+        if ($expanded_macro->{'cmdname'} eq 'macro') {
+          my $found = 0;
+          foreach my $macro (@{$self->{'macro_stack'}}) {
+            if ($macro->{'args'}->[0]->{'text'} eq $command) {
+              $self->line_error(sprintf($self->
+                __("Recursive call of macro %s is not allowed; use \@rmacro if needed"), $command), $line_nr);
+              $found = 1;
+              last;
+            }
+          }
+          next if ($found);
+        }
+
+        unshift @{$self->{'macro_stack'}}, $expanded_macro;
+        print STDERR "UNSHIFT MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
           if ($self->{'DEBUG'});
         my $expanded_lines = _text_to_lines($expanded);
         chomp ($expanded_lines->[-1]);

@@ -872,7 +872,35 @@ two spaces   @@noindent @noindent-macro{}    @@refill @refill-macro{}
 @end macro
 
 @bye-macro{}
+'],
+# this does not lead to a recursive call with the current implementation
+['recursive_call_in_argument',
+'@macro norecurse{arg}
+a
+@end macro
+
+@norecurse{@norecurse{}}
+'],
+['recursive_call_in_macro',
+'@macro norecurse{arg}
+@norecurse{arg}
+@end macro
+
+@norecurse{}
+'],
+['double_recursive_macro_call',
+'
+@macro mac1 {arg}
+@mac2{}
+@end macro
+
+@macro mac2{arg}
+@mac1{}
+@end macro
+
+@mac2{}
 ']
+
 );
 
 my @todo =(
