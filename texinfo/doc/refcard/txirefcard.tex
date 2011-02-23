@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.15 2011-02-20 18:39:40 karl Exp $
+% $Id: txirefcard.tex,v 1.16 2011-02-23 21:24:43 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -517,6 +517,7 @@ which they conventionally appear.
 \txicmd{@pxref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but starts with `see' instead of `See', and must be used inside parentheses.}
 \txicmd{@ref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but produces only the bare reference without `See' or `see'; must be followed by a punctuation mark.}
 \txicmd{@inforef}{\ttbraced{node, \rmbrack[entry-name], info-file}}{Make a cross reference to an Info file for which there is no printed manual.}
+\txicmd{@xrefautomaticsectiontitle}{\code{on|off}}{By default, use the section title instead of the node name in cross references.}
 
 \subsection{Outside of Info}
 

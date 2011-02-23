@@ -1,3 +1,10 @@
+2011-02-23  Karl Berry  <karl@gnu.org>
+
+	* texinfo.tex (\xrefautomaticsectiontitle): new command.
+	* NEWS,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (Three Arguments): document it.
+
 2011-02-22  Karl Berry  <karl@gnu.org>
 
 	* info/ginfo.h2m: new file.

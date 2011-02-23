@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
+@c $Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6194,12 +6194,11 @@ a cross reference, or within any other section.  The formatters divide
 cross references into arguments according to the commas; a comma
 within a title or other section will divide it into two arguments.  In
 a reference, you need to write a title such as ``Clouds, Mist, and
-Fog'' without the commas.@refill
+Fog'' without the commas.
 
 Also, remember to write a comma or period after the closing brace of an
 @code{@@xref} to terminate the cross reference.  In the following
-examples, a clause follows a terminating comma.@refill
-
+examples, a clause follows a terminating comma.
 
 @need 750
 @noindent
@@ -6263,19 +6262,23 @@ See Section 5.2 [Thunder and Lightning], page 57, for details.
 
 As a practical matter, it is often best to write cross references with
 just the first argument if the node name and the section title are the
-same, and with the first and third arguments if the node name and title
-are different.@refill
+same (or nearly so), and with the first and third arguments if the
+node name and title are different.
 
-Here are several examples from @cite{The GNU Awk User's Guide}:@refill
+If you want the section title to be used by default instead of
+node names in cross references (an explicitly specified third argument
+still takes precedence), Texinfo can do this automatically:
 
-@smallexample
-@@xref@{Sample Program@}.
-@@xref@{Glossary@}.
-@@xref@{Case-sensitivity, ,Case-sensitivity in Matching@}.
-@@xref@{Close Output, , Closing Output Files and Pipes@},
-  for more information.
-@@xref@{Regexp, , Regular Expressions as Patterns@}.
-@end smallexample
+@example
+@@xrefautomaticsectiontitle on
+@end example
+
+Typically this line would be given near the beginning of the document
+and used for the whole thing.  But you can turn it off if you want
+(@code{@@xrefautomaticsectiontitle off}), for example, if you're
+including some other sub-document that doesn't have suitable section
+names.
+
 
 @node Four and Five Arguments
 @subsection @code{@@xref} with Four and Five Arguments
@@ -22520,6 +22523,10 @@ Make a reference that starts with `See' in a printed manual.  Follow
 command with a punctuation mark.  Only the first argument is
 mandatory.  @xref{xref, , @code{@@xref}}.
 
+@item @@xrefautomaticsectiontitle @var{on-off}
+By default, use the section title instead of the node name in cross
+references.  @xref{Three Arguments}.
+
 @end table
 
 
@@ -23128,7 +23135,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
+$Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23207,7 +23214,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.371 2011-02-20 18:39:39 karl Exp $
+@comment $Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
