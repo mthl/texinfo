@@ -222,6 +222,8 @@ our %default_configuration = (
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
+  # the stack of the macros being expanded
+  'macro_stack' => [''],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
   'indices' => [],
@@ -1376,6 +1378,12 @@ sub _next_text($$)
     my $current = $self->{'input'}->[0];
     if (@{$current->{'pending'}}) {
       my $new_text = shift @{$current->{'pending'}};
+      if ($new_text->[1] and $new_text->[1]->{'end_macro'}) {
+        delete $new_text->[1]->{'end_macro'};
+        my $top_macro = pop @{$self->{'macro_stack'}};
+        print STDERR "POP MACRO_STACK(@{$self->{'macro_stack'}}): $top_macro->{'args'}->[0]->{'text'}\n"
+          if ($self->{'DEBUG'});
+      }
       return ($new_text->[0], $new_text->[1]);
     } elsif ($current->{'fh'}) {
       my $fh = $current->{'fh'};
@@ -2810,13 +2818,18 @@ sub _parse_texi($;$)
           my $has_end_of_line = chomp $line;
           $arguments = [$line];
           $line = "\n" if ($has_end_of_line);
-        } 
+        }
         my $expanded = _expand_macro_body ($self, $expanded_macro, 
                                    $arguments, $line_nr);
         print STDERR "MACROBODY: $expanded".'||||||'."\n" 
            if ($self->{'DEBUG'}); 
         # empty result.  It is ignored here.
-        next if ($expanded eq '');
+        if ($expanded eq '') {
+          next;
+        }
+        push @{$self->{'macro_stack'}}, $expanded_macro;
+        print STDERR "PUSH MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
+          if ($self->{'DEBUG'});
         my $expanded_lines = _text_to_lines($expanded);
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
@@ -2826,6 +2839,7 @@ sub _parse_texi($;$)
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);
+        $line_nr->{'end_macro'} = 1;
         unshift @{$self->{'input'}->[0]->{'pending'}}, [$line, $line_nr];
         my $new_text = shift @$new_lines;
         ($line, $line_nr) = ($new_text->[0], $new_text->[1]);
