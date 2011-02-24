@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
+@c $Id: texinfo.txi,v 1.373 2011-02-24 17:20:38 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -10469,33 +10469,37 @@ verbatim---and, unfortunately, some document viewers will mangle these
 characters.  (The free PDF reader @command{xpdf} works fine, but other
 PDF readers, both free and nonfree, have problems.)
 
-If this is a concern for your document, Texinfo provides two special
-settings via @code{@@set}:
+If this is a concern for you, Texinfo provides these two commands:
 
-@table @code
-@item @@set txicodequoteundirected
-causes the output for the @code{'} character to be the undirected
-single quote, like this:
-@set txicodequoteundirected
+@ftable @code
+@item @@codequoteundirected @var{on-off}
+@cindex undirected single quote
+causes the output for the @code{'} character in code environments to
+be the undirected single quote, like this:
+@codequoteundirected on
 @code{'}.
-@clear txicodequoteundirected
+@codequoteundirected off
 
-@item @@set txicodequotebacktick
-causes the output for the @code{`} character to be the standalone grave
-accent, like this:
-@set txicodequotebacktick
+@item @@codequotebacktick @var{on-off}
+@cindex backtick
+@cindex grave accent, standalone
+causes the output for the @code{`} character in code environments to
+be the backtick character (standalone grave accent), like this:
+@codequotebacktick on
 @code{`}.
-@clear txicodequotebacktick
-
+@codequotebacktick off
 @end table
 
 If you want these settings for only part of the document,
-@code{@@clear} will restore the normal behavior, as in
-@code{@@clear@tie{}txicodequoteundirected}.
+@code{@@codequote... off} will restore the normal behavior, as in
+@code{@@codequoteundirected off}.
 
 These settings affect @code{@@code}, @code{@@example}, @code{@@samp},
 @code{verb}, and @code{@@verbatim}; they do not affect @code{@@kbd}.
-(@xref{Useful Highlighting}.)
+@xref{Useful Highlighting}.
+
+This feature used to be controlled by @code{@@set} variable names;
+they are still supported, but the command interface is preferred.
 
 
 @node Inserting Space
@@ -21466,6 +21470,11 @@ Indicate an expression, a syntactically complete token of a program,
 or a program name.  Unquoted in Info output.  @xref{code, ,
 @code{@@code}}.
 
+@item @@codequotebacktick @var{on-off}
+@itemx @@codequoteundirected @var{on-off}
+Control output of @code{`} and @code{'} in code examples.
+@xref{Inserting Quote Characters}.
+
 @item @@comma@{@}
 Insert a comma `,' character; only needed when a literal comma would
 be taken as an argument separator.  @xref{Inserting a Comma}.
@@ -23135,7 +23144,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
+$Id: texinfo.txi,v 1.373 2011-02-24 17:20:38 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23214,7 +23223,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.372 2011-02-23 21:24:43 karl Exp $
+@comment $Id: texinfo.txi,v 1.373 2011-02-24 17:20:38 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

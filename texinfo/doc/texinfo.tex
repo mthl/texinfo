@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2011-02-23.13}
+\def\texinfoversion{2011-02-24.09}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2296,12 +2296,11 @@ end
 
 \let\markupsetuplqkbd \markupsetnoligaturesquoteleft
 
-% Allow an option to not replace quotes with a regular directed right
-% quote/apostrophe (char 0x27), but instead use the undirected quote
-% from cmtt (char 0x0d).  The undirected quote is ugly, so don't make it
-% the default, but it works for pasting with more pdf viewers (at least
-% evince), the lilypond developers report.  xpdf does work with the
-% regular 0x27.
+% Allow an option to not use regular directed right quote/apostrophe
+% (char 0x27), but instead the undirected quote from cmtt (char 0x0d).
+% The undirected quote is ugly, so don't make it the default, but it
+% works for pasting with more pdf viewers (at least evince), the
+% lilypond developers report.  xpdf does work with the regular 0x27.
 %
 \def\codequoteright{%
   \expandafter\ifx\csname SETtxicodequoteundirected\endcsname\relax
@@ -2323,6 +2322,36 @@ end
       \relax`%
     \else \char'22 \fi
   \else \char'22 \fi
+}
+
+% Commands to set the quote options.
+% 
+\parseargdef\codequoteundirected{%
+  \def\temp{#1}%
+  \ifx\temp\onword
+    \expandafter\let\csname SETtxicodequoteundirected\endcsname
+      = t%
+  \else\ifx\temp\offword
+    \expandafter\let\csname SETtxicodequoteundirected\endcsname
+      = \relax
+  \else
+    \errhelp = \EMsimple
+    \errmessage{Unknown @codequoteundirected value `\temp', must be on|off}%
+  \fi\fi
+}
+%
+\parseargdef\codequotebacktick{%
+  \def\temp{#1}%
+  \ifx\temp\onword
+    \expandafter\let\csname SETtxicodequotebacktick\endcsname
+      = t%
+  \else\ifx\temp\offword
+    \expandafter\let\csname SETtxicodequotebacktick\endcsname
+      = \relax
+  \else
+    \errhelp = \EMsimple
+    \errmessage{Unknown @codequotebacktick value `\temp', must be on|off}%
+  \fi\fi
 }
 
 % [Knuth] pp. 380,381,391, disable Spanish ligatures ?` and !` of \tt font.
@@ -7436,7 +7465,7 @@ end
       = \relax
   \else
     \errhelp = \EMsimple
-    \errmessage{Unknown @xrefautomaticsectiontitle option `\temp',
+    \errmessage{Unknown @xrefautomaticsectiontitle value `\temp',
                 must be on|off}%
   \fi\fi
 }

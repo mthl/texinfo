@@ -1,5 +1,5 @@
 % Texinfo reference card.
-% $Id: txirefcard.tex,v 1.16 2011-02-23 21:24:43 karl Exp $
+% $Id: txirefcard.tex,v 1.17 2011-02-24 17:20:38 karl Exp $
 %
 %**start of header
 % This file can be printed with 1, 2, or 3 columns per page (see below).
@@ -884,16 +884,19 @@ The default paper size is \acro{US} letter-size, 8x11\inch.
 \section{Document preferences}
 
 It is usually best to omit any of these settings from the Texinfo
-document, thus allowing users to override the defaults when processing
-the document according to their needs.
+document, thus allowing users to easily override the defaults when
+processing the document according to their desires.
 
-\txicmd{@setchapternewpage}{\code{on|off|odd}}{Specify whether chapters start on new pages, and if so, whether on odd-numbered (right-hand) new pages; also set the page headings accordingly.}
-\txicmd{@headings}{\code{on|off|single|double}}{Turn page headings on or off, specify single-sided or double-sided page headings for printing.}
+\txicmd{@codequoteundirected}{on|off}{Use undirected single quote for @code{'}; default off.}
+\txicmd{@codequotebacktick}{on|off}{Use backtick (standalone grave accent) for @code{`}; default off.}
 \txicmd{@exampleindent}{indent}{Indent example-like environments by \var{indent} number of spaces (perhaps 0).}
 \txicmd{@firstparagraphindent}{\code{insert|none}}{Indent first paragraphs after section headings, or not.}
-\txicmd{@paragraphindent}{indent}{Indent paragraphs by \var{indent} number of spaces (perhaps 0); preserve source file indentation if \var{indent} is the string \code{asis}.}
+\txicmd{@headings}{\code{on|off|single|double}}{Turn page headings on or off, specify single-sided or double-sided page headings for printing.}
 \txicmd{@kbdinputstyle}{\code{code|distinct|example}}{Specify font for \code{@kbd}: normal \code{@code} font, a distinct (slanted) typewriter font, or a distinct font only within \code{@example} and similar.}
+\txicmd{@paragraphindent}{indent}{Indent paragraphs by \var{indent} number of spaces (perhaps 0); preserve source file indentation if \var{indent} is the string \code{asis}.}
+\txicmd{@setchapternewpage}{\code{on|off|odd}}{Specify whether chapters start on new pages, and if so, whether on odd-numbered (right-hand) new pages; also set the page headings accordingly.}
 \txicmd{@urefbreakstyle}{\code{after|before|none}}{Specify how \code{@uref} should break at special characters; default \code{after}.}
+
 
 \section{Ending a Texinfo document}
 

@@ -1,5 +1,12 @@
 2011-02-23  Karl Berry  <karl@gnu.org>
 
+	* texinfo.tex (\codequotebacktick, \codequoteundirected): new commands.
+	* NEWS,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.txi (Inserting Quote Characters): document them.
+
+2011-02-23  Karl Berry  <karl@gnu.org>
+
 	* texinfo.tex (\xrefautomaticsectiontitle): new command.
 	* NEWS,
 	* doc/refcard/txirefcard.tex,
