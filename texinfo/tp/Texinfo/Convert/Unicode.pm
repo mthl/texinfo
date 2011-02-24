@@ -512,6 +512,9 @@ our %unicode_map = (
                'guillemotright'    => '00BB',
                'guilsinglleft'     => '2039',
                'guilsinglright'    => '203A',
+               # this should only happen if the @clickstyle argument isn't a 
+               # command with braces and no argument.
+               'click'             => '2192',
              );
 
 # set the %unicode_character_brace_no_arg_commands value to the character

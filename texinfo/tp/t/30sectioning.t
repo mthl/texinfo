@@ -78,8 +78,22 @@ Top node.
 Should be unnumbered.
 
 @bye
-'
-],
+'],
+['top_no_argument_and_content',
+'@top
+
+A.
+'],
+);
+
+my @tests_info = (
+['anchor_zero',
+'@node Top
+
+@anchor{0}.
+
+@xref{0}.
+']
 );
 
 my @test_cases = (
@@ -529,6 +543,8 @@ in node following second
 @menu
 * not a node::
 @end menu
+
+@xref{unknown ref}.
 '],
 ['loop_nodes',
 '
@@ -654,9 +670,12 @@ Second top.
 foreach my $test (@tests_converted) {
   $test->[2]->{'test_formats'} = ['plaintext'];
 }
+foreach my $test (@tests_info) {
+  $test->[2]->{'test_formats'} = ['info'];
+}
 
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('sectioning', [@test_cases, @tests_converted], $arg_test_case,
+run_all ('sectioning', [@test_cases, @tests_converted, @tests_info], $arg_test_case,
    $arg_generate, $arg_debug);
 

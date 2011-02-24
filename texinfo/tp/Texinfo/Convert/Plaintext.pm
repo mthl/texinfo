@@ -761,12 +761,15 @@ sub _footnotes($;$)
       $self->{'empty_lines_count'} = 1;
     } else {
 
+      my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
+                                     {'text' => '-Footnotes'}];
+      my $normalized 
+        = Texinfo::Convert::NodeNameNormalization::convert({'contents' => $node_contents});
       my $footnotes_node = {
         'cmdname' => 'node',
         'node_up' => $element->{'extra'}->{'node'},
-        'extra' => {'node_content' => 
-             [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
-                                     {'text' => '-Footnotes'}]}
+        'extra' => {'node_content' => $node_contents,
+                    'normalized' => $normalized}
       };
       $result .= $self->_node($footnotes_node);
       $self->{'count_context'}->[-1]->{'lines'} = 0;
@@ -1172,7 +1175,8 @@ sub _convert($$)
     if ($root->{'extra'}->{'invalid_nesting'}) {
       print STDERR "INVALID_NESTING\n" if ($self->{'DEBUG'});
       return '';
-    } elsif ($root->{'extra'}->{'missing_argument'}) {
+    } elsif ($root->{'extra'}->{'missing_argument'} 
+             and (!$root->{'contents'} or !@{$root->{'contents'}})) {
       print STDERR "MISSING_ARGUMENT\n" if ($self->{'DEBUG'});
       return '';
     }

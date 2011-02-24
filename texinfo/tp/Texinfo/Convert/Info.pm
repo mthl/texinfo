@@ -227,7 +227,8 @@ sub output($)
     # This may happen for anchors in @insertcopying
     my %seen_anchors;
     foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
-      next unless ($label->{'root'});
+      next unless ($label->{'root'} and $label->{'root'}->{'extra'} 
+                    and defined($label->{'root'}->{'extra'}->{'normalized'}));
       my $prefix;
       if ($label->{'root'}->{'cmdname'} eq 'node') {
         $prefix = 'Node';

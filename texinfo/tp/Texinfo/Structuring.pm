@@ -566,7 +566,8 @@ sub associate_internal_references($;$$)
   $refs = $self->internal_references_information() if (!defined($refs));
   return if (!defined($refs));
   foreach my $ref (@$refs) {
-    if (!$labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}}) {
+    if (!defined($labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}})
+         and !$self->{'novalidate'}) {
       $self->line_error (sprintf($self->__("\@%s reference to nonexistent node `%s'"),
                                $ref->{'cmdname'}, 
                                _node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
