@@ -63,9 +63,6 @@ tests/indices/index_entry_in_footnote_separated_info the node of index
 entry is Top, it should be the node created especially for the footnote
 and the lines count should also be adjusted.
 
-Is the following error right?  Or maybe it should be a warning?
-test_setfilename.texi:5: @top missing argument
-
 Test empty/no empty line at a multitable beginning, between 2 rows and
 after a multitable.
 
@@ -135,14 +132,6 @@ cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
 Maybe:
 defcondx_Ubar defcondx_Dbar
 
-from test_paths.texi:
-@image{formatting/f--ile}
-
-@@image dot.
-@image{./formatting/f--ile}
-
-@@image dot parent.
-@image{../test/formatting/f--ile}
 
 @verbatiminclude formatting/simplest.texi
 

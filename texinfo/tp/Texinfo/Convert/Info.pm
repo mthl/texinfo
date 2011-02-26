@@ -604,7 +604,7 @@ sub _image($$)
       if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $result .= "\n";
       }
-    } else {
+    } elsif (defined($text)) {
       $result = $text;
       $lines_count = ($result =~ tr/\n/\n/);
     }

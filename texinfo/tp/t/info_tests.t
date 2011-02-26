@@ -113,6 +113,21 @@ No space@anchor{anchor2}.
 Para.
 @image{f--ile,,,alt""\\}. End para.
 '],
+['image_not_found',
+'@node Top
+@image{n_f_image}
+'],
+['image_file_search',
+'@node Top
+
+@image{tp/t/include/f--ile}
+
+@@image dot.
+@image{./tp/t/include/f--ile}
+
+@@image dot parent.
+@image{../include/f--ile}
+',{'include_directories' => ['.', '..', 't/include']}],
 [ 'multitable_anchor_and_index_entry',
 '@node Top
 
