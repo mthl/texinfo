@@ -512,7 +512,7 @@ sub open_out ($$;$)
     return \*STDOUT;
   }
   my $filehandle = do { local *FH };
-  if (!open ($filehandle, ">$file")) {
+  if (!open ($filehandle, '>', $file)) {
     return undef; 
   }
   if (defined($encoding)) {

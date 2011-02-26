@@ -282,6 +282,11 @@ First chapter.
 ['no_node_but_top',
 '@top top
 '],
+['space_in_setfilename',
+'@setfilename @ @verb{: name :}@ 
+
+@node Top
+'],
 #['html_expanded',
 #'Before
 #@html

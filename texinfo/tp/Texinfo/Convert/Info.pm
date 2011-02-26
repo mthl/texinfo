@@ -271,9 +271,16 @@ sub _info_header($)
   my $self = shift;
 
   # FIXME version/program
-  my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
+  #my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
   my $paragraph = Texinfo::Convert::Paragraph->new();
-  my $result = $paragraph->add_text($text);
+  #my $result = $paragraph->add_text($text);
+  my $result = $paragraph->add_text("This is ");
+  # This ensures that spaces in file are kept.
+  $result .= $paragraph->add_next($self->{'output_filename'});
+  # FIXME version/program
+  $result .= $paragraph->add_text(', produced by makeinfo version 4.13 from ');
+  $result .= $paragraph->add_next($self->{'input_basename'});
+  $result .= $paragraph->add_text('.');
   $result .= $paragraph->end();
   $result .= "\n";
   $self->{'empty_lines_count'} = 1;
