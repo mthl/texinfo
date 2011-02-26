@@ -76,8 +76,19 @@ $result_errors{'html_expanded'} = [];
 
 
 
-$result_converted{'plaintext'}->{'html_expanded'} = 'Before html
-after.
+$result_converted{'info'}->{'html_expanded'} = 'This is , produced by makeinfo version 4.13 from .
+
+Before html after.
 ';
+
+$result_converted_errors{'info'}->{'html_expanded'} = [
+  {
+    'error_line' => 'warning: Document without nodes.
+',
+    'text' => 'Document without nodes.',
+    'type' => 'warning'
+  }
+];
+
 
 1;

@@ -231,7 +231,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'missing_argument' => 1
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -1344,8 +1344,7 @@ $result_sectioning{'raiselowersections'} = {
           'extra' => {
             'normalized' => 'Top'
           }
-        },
-        'missing_argument' => 1
+        }
       },
       'level' => 0,
       'section_childs' => [
@@ -1447,9 +1446,7 @@ $result_nodes{'raiselowersections'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'level' => 0
     },
     'normalized' => 'Top'
@@ -1631,17 +1628,7 @@ $result_menus{'raiselowersections'}{'menu_child'}{'menu_next'}{'menu_prev'} = $r
 $result_menus{'raiselowersections'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'raiselowersections'};
 $result_menus{'raiselowersections'}{'menu_child'}{'menu_up'} = $result_menus{'raiselowersections'};
 
-$result_errors{'raiselowersections'} = [
-  {
-    'error_line' => ':4: @top missing argument
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@top missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'raiselowersections'} = [];
 
 
 1;

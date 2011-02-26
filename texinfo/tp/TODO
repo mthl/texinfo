@@ -124,6 +124,13 @@ glossary.texi
 bib-example.texi (big test)
 macro-at.texi (the macro part is already done)
 
+tests of the command:
+macros/
+cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
+cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
+Maybe:
+defcondx_Ubar defcondx_Dbar
+
 from test_paths.texi:
 @image{formatting/f--ile}
 

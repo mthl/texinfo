@@ -282,6 +282,14 @@ First chapter.
 ['no_node_but_top',
 '@top top
 '],
+#['html_expanded',
+#'Before
+#@html
+#html
+#@end html
+#after.
+#',{'expanded_formats' => ['html']}
+#],
 );
 
 foreach my $test (@test_cases) {

@@ -386,7 +386,7 @@ $result_trees{'complex'} = {
         }
       ],
       'extra' => {
-        'missing_argument' => 1
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -2768,8 +2768,7 @@ $result_sectioning{'complex'} = {
           'extra' => {
             'normalized' => 'Top'
           }
-        },
-        'missing_argument' => 1
+        }
       },
       'level' => 0,
       'section_childs' => [
@@ -2962,9 +2961,7 @@ $result_nodes{'complex'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'level' => 0
     },
     'normalized' => 'Top'
@@ -3301,17 +3298,7 @@ $result_menus{'complex'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus
 $result_menus{'complex'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'complex'};
 $result_menus{'complex'}{'menu_child'}{'menu_up'} = $result_menus{'complex'};
 
-$result_errors{'complex'} = [
-  {
-    'error_line' => ':2: @top missing argument
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@top missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'complex'} = [];
 
 
 1;

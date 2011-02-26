@@ -96,9 +96,9 @@ foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
-my %preformatted_context_commands = %preformatted_commands;
+my %default_preformatted_context_commands = %preformatted_commands;
 foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
-  $preformatted_context_commands{$preformatted_command} = 1;
+  $default_preformatted_context_commands{$preformatted_command} = 1;
 }
 
 my %ignored_misc_commands;
@@ -130,7 +130,7 @@ foreach my $indented_command (keys (%item_indent_format_length),
     if exists($block_commands{$indented_command});
 }
 
-my %format_context_commands = %indented_commands;
+my %default_format_context_commands = %indented_commands;
 
 foreach my $non_indented('format', 'smallformat') {
   delete $indented_commands{$non_indented};
@@ -138,7 +138,7 @@ foreach my $non_indented('format', 'smallformat') {
 
 foreach my $format_context_command (keys(%menu_commands), 'verbatim',
  'flushleft', 'flushright', 'multitable', 'float') {
-  $format_context_commands{$format_context_command} = 1;
+  $default_format_context_commands{$format_context_command} = 1;
 }
 
 my %flush_commands = (
@@ -425,6 +425,11 @@ sub converter(;$)
 
   %{$converter->{'ignored_types'}} = %ignored_types;
   %{$converter->{'ignored_commands'}} = %ignored_commands;
+  # this is dynamic because raw formats may either be full comma,nds if
+  # isolated, or simple text if in a paragraph
+  %{$converter->{'format_context_commands'}} = %default_format_context_commands;
+  %{$converter->{'preformatted_context_commands'}} 
+     = %default_preformatted_context_commands;
   $converter->{'footnote_index'} = 0;
   $converter->{'pending_footnotes'} = [];
 
@@ -599,7 +604,7 @@ sub new_formatter($$;$)
     foreach my $context (reverse(@{$self->{'context'}})) {
       if ($menu_commands{$context}) {
         last;
-      } elsif ($preformatted_context_commands{$context}) {
+      } elsif ($self->{'preformatted_context_commands'}->{$context}) {
         $formatter->{'preformatted'} = 1;
         last;
       }
@@ -1143,7 +1148,7 @@ sub _convert($$)
     delete $self->{'text_element_context'}->[-1]->{'counter'};
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
-        or $preformatted_context_commands{$self->{'context'}->[-1]}) {
+        or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
       $result = "\n";
       $self->_add_text_count($result);
       $self->_add_lines_count(1);
@@ -1156,9 +1161,14 @@ sub _convert($$)
   # process text
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
-      $result = $self->_count_added($formatter->{'container'},
+      if ($root->{'type'} and $root->{'type'} eq 'raw') {
+        $result = $self->_count_added($formatter->{'container'},
+                    $formatter->{'container'}->add_next($root->{'text'}));
+      } else {
+        $result = $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_text(
                        $self->_process_text($root, $formatter)));
+      }
       return $result;
     # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
@@ -1589,12 +1599,21 @@ sub _convert($$)
       # remark:
       # cartouche group and raggedright -> nothing on format stack
 
-      if ($preformatted_context_commands{$root->{'cmdname'}}) {
+      if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($flush_commands{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, $root->{'cmdname'};
+      } elsif ($raw_commands{$root->{'cmdname'}}) {
+        if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
+          $result .= $self->_count_added($formatter->{'container'},
+                              $formatter->{'container'}->add_pending_word(1));
+        } else {
+          push @{$self->{'context'}}, $root->{'cmdname'};
+          $self->{'format_context_commands'}->{$root->{'cmdname'}} = 1;
+          $self->{'preformatted_context_commands'}->{$root->{'cmdname'}} = 1;
+        }
       }
-      if ($format_context_commands{$root->{'cmdname'}}) {
+      if ($self->{'format_context_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'format_context'}}, 
              { 'cmdname' => $root->{'cmdname'},
                'paragraph_count' => 0,
@@ -1607,7 +1626,7 @@ sub _convert($$)
         # preformatted context is not a classical preformatted 
         # command (ie if it is menu or verbatim, and not example or  
         # similar)
-        if ($preformatted_context_commands{$root->{'cmdname'}}
+        if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
             and ! $preformatted_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
           push @{$self->{'formatters'}}, $preformatted;
@@ -1689,10 +1708,13 @@ sub _convert($$)
         $self->{'setshortcontentsaftertitlepage'} = 0;
         $result .= $contents;
       }
-      if ($root->{'args'}) {
+      # FIXME use settitle
+      #if ($root->{'cmdname'} eq 'top' and !@{$root->{'extra'}->{'misc_content'}}) {
+      #}
+      if (@{$root->{'extra'}->{'misc_content'}}) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
         my $heading = $self->convert_line({'type' => 'frenchspacing',
-                         'contents' => [$root->{'args'}->[0]]});
+                         'contents' => $root->{'extra'}->{'misc_content'}});
         pop @{$self->{'count_context'}};
         # FIXME œ@* and @c?
         my $heading_underlined = 
@@ -1808,7 +1830,7 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       return $result;
     } elsif ($root->{'cmdname'} eq 'exdent') {
-      if ($preformatted_context_commands{$self->{'context'}->[-1]}) {
+      if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
         $result = $self->convert_unfilled({'contents' => $root->{'extra'}->{'misc_content'}},
          {'indent_level'
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
@@ -2375,16 +2397,21 @@ sub _convert($$)
 
   
     # close the contexts and register the cells
-    if ($preformatted_context_commands{$root->{'cmdname'}}) {
+    if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
       my $old_context = pop @{$self->{'context'}};
-      die if (!$preformatted_context_commands{$old_context});
+      die "Not a preformatted context: $old_context"
+        if (!$self->{'preformatted_context_commands'}->{$old_context});
+      delete ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}})
+       unless ($default_preformatted_context_commands{$root->{'cmdname'}});
     } elsif ($flush_commands{$root->{'cmdname'}}) {
       my $old_context = pop @{$self->{'context'}};
       die if (! $flush_commands{$old_context});
     }
 
-    if ($format_context_commands{$root->{'cmdname'}}) {
+    if ($self->{'format_context_commands'}->{$root->{'cmdname'}}) {
       pop @{$self->{'format_context'}};
+      delete ($self->{'format_context_commands'}->{$root->{'cmdname'}})
+       unless ($default_format_context_commands{$root->{'cmdname'}});
     } elsif ($cell) {
       pop @{$self->{'format_context'}};
       pop @{$self->{'text_element_context'}};

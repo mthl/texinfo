@@ -45,7 +45,7 @@ $result_trees{'top_no_argument_and_content'} = {
         }
       ],
       'extra' => {
-        'missing_argument' => 1
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -81,9 +81,7 @@ $result_sectioning{'top_no_argument_and_content'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'level' => 0,
       'section_up' => {}
     }
@@ -91,17 +89,7 @@ $result_sectioning{'top_no_argument_and_content'} = {
 };
 $result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'top_no_argument_and_content'};
 
-$result_errors{'top_no_argument_and_content'} = [
-  {
-    'error_line' => ':1: @top missing argument
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@top missing argument',
-    'type' => 'error'
-  }
-];
+$result_errors{'top_no_argument_and_content'} = [];
 
 
 

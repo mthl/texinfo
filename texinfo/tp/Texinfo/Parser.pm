@@ -2354,7 +2354,8 @@ sub _end_line($$$)
     } else {
       my @contents = @{$current->{'args'}->[0]->{'contents'}};
       _trim_spaces_comment_from_content(\@contents);
-      if (!scalar(@contents)) {
+      # empty @top is allowed
+      if (!scalar(@contents) and $command ne 'top') {
         $self->line_error (sprintf($self->__("\@%s missing argument"), 
            $command), $line_nr);
         $current->{'extra'}->{'missing_argument'} = 1;

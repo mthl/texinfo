@@ -70,6 +70,13 @@ html
 after.
 ',{'expanded_formats' => ['html']}
 ],
+['isolated_html_expanded',
+'
+@html
+html
+@end html
+',{'expanded_formats' => ['html']}
+],
 ['space_at_menu_end',
 '@node Top
 

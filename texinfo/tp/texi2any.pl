@@ -361,11 +361,12 @@ sub set_expansion($$) {
   $set = 1 if (!defined($set));
   if ($set) {
     push @{$parser_default_options->{'expanded_formats'}}, $region
-      unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}})
+      unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}});
   } else {
     @{$parser_default_options->{'expanded_formats'}} = 
       grep {$_ ne $region} @{$parser_default_options->{'expanded_formats'}};
-    grep {$_ ne $region} @{$default_expanded_format};
+    @{$default_expanded_format} 
+       = grep {$_ ne $region} @{$default_expanded_format};
   }
 }
 
