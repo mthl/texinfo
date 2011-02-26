@@ -3,6 +3,12 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
+['settitle_and_empty_top',
+'@settitle Title
+
+@top
+
+'],
 ['anchor_and_empty_lines',
 'text 1.
 

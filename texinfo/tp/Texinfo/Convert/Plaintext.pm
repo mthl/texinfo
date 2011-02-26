@@ -1708,13 +1708,22 @@ sub _convert($$)
         $self->{'setshortcontentsaftertitlepage'} = 0;
         $result .= $contents;
       }
-      # FIXME use settitle
-      #if ($root->{'cmdname'} eq 'top' and !@{$root->{'extra'}->{'misc_content'}}) {
-      #}
+      # use settitle for empty @top
+      my $contents;
       if (@{$root->{'extra'}->{'misc_content'}}) {
+        $contents = $root->{'extra'}->{'misc_content'};
+      } elsif ($root->{'cmdname'} eq 'top'
+          and $self->{'extra'}->{'settitle'} 
+          and $self->{'extra'}->{'settitle'}->{'extra'}
+          and $self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'}
+          and @{$self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'}}) {
+        $contents = $self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'};
+      }
+             
+      if ($contents) {
         push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
         my $heading = $self->convert_line({'type' => 'frenchspacing',
-                         'contents' => $root->{'extra'}->{'misc_content'}});
+                         'contents' => $contents});
         pop @{$self->{'count_context'}};
         # FIXME œ@* and @c?
         my $heading_underlined = 
