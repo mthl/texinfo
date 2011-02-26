@@ -48,6 +48,10 @@ Should
 @end menu
 lead to Node: Top,  Next: (out),  Up: (dir)
 
+An unknwown command in a context where not all commands are accepted leads
+to an error message.  There is a FIXME in the code.  The test case is
+macro/unknown_macro_on_line_command
+
 Force end lines before/after a menu?
 
 With something like

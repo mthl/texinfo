@@ -24,6 +24,7 @@ $result_trees{'bad_macro_name_with_underscore'} = {
       'extra' => {
         'arg_line' => ' the_macro {arg1, arg2}
 ',
+        'invalid_syntax' => 1,
         'macrobody' => 'In macro
 '
       },

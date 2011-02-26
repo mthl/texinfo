@@ -945,6 +945,7 @@ sub _parse_macro_command_line($$$$$;$)
       $self->line_error(sprintf($self->__("Bad syntax for \@%s argument: %s"), 
                                  $command, $args_def),
                         $line_nr);
+      $macro->{'extra'}->{'invalid_syntax'} = 1;
     }
     print STDERR "MACRO \@$command $macro_name\n" if ($self->{'DEBUG'});
 
@@ -956,15 +957,18 @@ sub _parse_macro_command_line($$$$$;$)
       push @{$macro->{'args'}}, 
         { 'type' => 'macro_arg', 'text' => $formal_arg, 
           'parent' => $macro};
-      $self->line_error(sprintf($self->__("Bad or empty \@$command formal argument: %s"),
-                                           $formal_arg), $line_nr)
-            if ($formal_arg !~ /^[\w\-]+$/);
+      if ($formal_arg !~ /^[\w\-]+$/) {
+        $self->line_error(sprintf($self->__("Bad or empty \@$command formal argument: %s"),
+                                           $formal_arg), $line_nr);
+        $macro->{'extra'}->{'invalid_syntax'} = 1;
+      }
       $macro->{'extra'}->{'args_index'}->{$formal_arg} = $index;
       $index++;
     }
   } else {
     $self->line_error (sprintf($self->
                     __("%c%s requires a name"), ord('@'), $command), $line_nr);
+    $macro->{'extra'}->{'invalid_syntax'} = 1;
   }
   return $macro;
 }
@@ -2706,7 +2710,8 @@ sub _parse_texi($;$)
                 $self->line_warn (sprintf($self->__("here is the previous definition of `%s'"), 
                                    $name), $self->{'macros'}->{$name}->{'line_nr'});
               }
-              $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current;
+              $self->{'macros'}->{$current->{'args'}->[0]->{'text'}} = $current
+                unless ($current->{'extra'}->{'invalid_syntax'});
             }
           }
           $current = $current->{'parent'};
@@ -3108,8 +3113,10 @@ sub _parse_texi($;$)
         # block command on line command, @xref in @anchor or node...
         if ($current->{'parent'}) { 
           if ($current->{'parent'}->{'cmdname'}) {
+          # FIXME in all the cases below, there is an error message even if
+          # the command is an unknown command
             if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
-              and !$in_accent_commands{$command}) {
+                and !$in_accent_commands{$command}) {
               $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
                                      $command, $current->{'parent'}->{'cmdname'}),
                            $line_nr);

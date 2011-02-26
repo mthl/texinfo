@@ -64,6 +64,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
           'arg' => 0,
           'the@value{argument' => 1
         },
+        'invalid_syntax' => 1,
         'macrobody' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
 '
       },
@@ -90,33 +91,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'result: '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'macro_arg1'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'emph',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => 'testvalue'
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' the \\the thearg \\thearg with value \\thearg
+          'text' => 'macro_arg1
 '
         }
       ],
@@ -138,10 +113,6 @@ $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'parent'} = $result_tr
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 
 $result_texis{'value_in_macro_formal_arg'} = '@set argument arg 
@@ -150,13 +121,13 @@ $result_texis{'value_in_macro_formal_arg'} = '@set argument arg
 result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
 @end macro
 
-result: @emph{macro_arg1} the \\the thearg \\thearg with value \\thearg
+macro_arg1
 ';
 
 
 $result_texts{'value_in_macro_formal_arg'} = '
 
-result: macro_arg1 the \\the thearg \\thearg with value \\thearg
+macro_arg1
 ';
 
 $result_errors{'value_in_macro_formal_arg'} = [
@@ -179,30 +150,30 @@ $result_errors{'value_in_macro_formal_arg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: \\ in macro expansion followed `the\' instead of parameter name or \\
+    'error_line' => ':7: Unknown command `testvalue\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '\\ in macro expansion followed `the\' instead of parameter name or \\',
+    'text' => 'Unknown command `testvalue\'',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: \\ in macro expansion followed `thearg\' instead of parameter name or \\
+    'error_line' => ':7: Misplaced {
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '\\ in macro expansion followed `thearg\' instead of parameter name or \\',
+    'text' => 'Misplaced {',
     'type' => 'error'
   },
   {
-    'error_line' => ':7: \\ in macro expansion followed `the@value{argument}\' instead of parameter name or \\
+    'error_line' => ':7: Misplaced }
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '\\ in macro expansion followed `the@value{argument}\' instead of parameter name or \\',
+    'text' => 'Misplaced }',
     'type' => 'error'
   }
 ];

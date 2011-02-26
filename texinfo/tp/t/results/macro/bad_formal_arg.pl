@@ -44,6 +44,7 @@ $result_trees{'bad_formal_arg'} = {
           '' => 0,
           'not_empty' => 1
         },
+        'invalid_syntax' => 1,
         'macrobody' => 'in bad macro
 '
       },
@@ -100,6 +101,7 @@ $result_trees{'bad_formal_arg'} = {
           'first' => 0,
           'in 2arg' => 1
         },
+        'invalid_syntax' => 1,
         'macrobody' => 'bad space
 '
       },
@@ -172,6 +174,7 @@ $result_trees{'bad_formal_arg'} = {
         'args_index' => {
           ':::' => 0
         },
+        'invalid_syntax' => 1,
         'macrobody' => 'in bar
 @macro foo {? aaa}
 in macro foo

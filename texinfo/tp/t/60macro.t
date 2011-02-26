@@ -899,7 +899,10 @@ a
 @end macro
 
 @mac2{}
-']
+'],
+['unknown_macro_on_line_command',
+'@setfilename @begin{}file'
+],
 
 );
 

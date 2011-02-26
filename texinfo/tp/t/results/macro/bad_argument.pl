@@ -17,6 +17,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => '
 ',
+        'invalid_syntax' => 1,
         'macrobody' => 'in macro
 '
       },
@@ -59,6 +60,7 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => ' bar aaa
 ',
+        'invalid_syntax' => 1,
         'macrobody' => 'in
 '
       },
@@ -109,6 +111,7 @@ $result_trees{'bad_argument'} = {
         'args_index' => {
           'ggg' => 0
         },
+        'invalid_syntax' => 1,
         'macrobody' => 'in macro
 '
       },
