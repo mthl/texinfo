@@ -32,6 +32,11 @@ $result_errors{'no_nodes'} = [];
 $result_converted{'info'}->{'no_nodes'} = 'This is , produced by makeinfo version 4.13 from .
 
 Text.
+
+
+Tag Table:
+
+End Tag Table
 ';
 
 $result_converted_errors{'info'}->{'no_nodes'} = [

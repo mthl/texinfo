@@ -136,6 +136,8 @@ sub output($)
     }
   }
   print STDERR "DOCUMENT\n" if ($self->{'DEBUG'});
+  my $out_file_nr = 0;
+  my @indirect_files;
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
     $self->document_warn($self->__("Document without nodes."));
     my $output = $header.$self->_convert($root);
@@ -143,7 +145,6 @@ sub output($)
     $output .= $footnotes;
     if ($fh) {
       print $fh $output;
-      close ($fh);
     } else {
       $result = $output;
     }
@@ -152,8 +153,7 @@ sub output($)
      and $self->{'structuring'}->{'top_node'}->{'extra'}->{'normalized'} eq 'Top') {
       $self->document_warn($self->__("Document without Top node."));
     }
-    my $out_file_nr = 1;
-    my @indirect_files;
+    $out_file_nr = 1;
     if ($fh) {
       print $fh $header;
     } else {
@@ -203,65 +203,66 @@ sub output($)
         #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
       }
     }
-    my $tag_text = '';
-    if ($out_file_nr > 1) {
-      close ($fh);
-      $fh = $self->Texinfo::Common::open_out($self->{'OUTFILE'}, 
-                                             $self->{'encoding'});
-      if (!$fh) {
-        $self->document_error(sprintf(
-              $self->__("Could not open %s for writing: $!"),
-              $self->{'OUTFILE'}.'-'.$out_file_nr));
-        return undef;
-      }
-      $tag_text = $header;
-      $tag_text .= "\x{1F}\nIndirect:";
-      foreach my $indirect (@indirect_files) {
-        $tag_text .= "\n$indirect->[0]: $indirect->[1]";
-      }
+  }
+  my $tag_text = '';
+  if ($out_file_nr > 1) {
+    close ($fh);
+    $fh = $self->Texinfo::Common::open_out($self->{'OUTFILE'}, 
+                                           $self->{'encoding'});
+    if (!$fh) {
+      $self->document_error(sprintf(
+            $self->__("Could not open %s for writing: $!"),
+            $self->{'OUTFILE'}));
+      return undef;
     }
-    $tag_text .= "\n\x{1F}\nTag Table:\n";
-    if ($out_file_nr > 1) {
-      $tag_text .=  "(Indirect)\n";
+    $tag_text = $header;
+    $tag_text .= "\x{1F}\nIndirect:";
+    foreach my $indirect (@indirect_files) {
+      $tag_text .= "\n$indirect->[0]: $indirect->[1]";
     }
-    # This may happen for anchors in @insertcopying
-    my %seen_anchors;
-    foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
-      next unless ($label->{'root'} and $label->{'root'}->{'extra'} 
-                    and defined($label->{'root'}->{'extra'}->{'normalized'}));
-      my $prefix;
-      if ($label->{'root'}->{'cmdname'} eq 'node') {
-        $prefix = 'Node';
-      } else {
-        if ($seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}}) {
-          $self->line_error(sprintf($self->__("\@%s `%s' output more than once"),
-                         $label->{'root'}->{'cmdname'},
-                   Texinfo::Convert::Texinfo::convert({'contents' =>
-                        $label->{'root'}->{'extra'}->{'node_content'}})),
-                        $label->{'root'}->{'line_nr'});
+  }
 
-          next;
-        } else {
-          $seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}} = $label;
-        }
-        $prefix = 'Ref';
-      }
-      push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-      my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
-        'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
-      pop @{$self->{'count_context'}};
-      $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
-    }
-    $tag_text .=  "\x{1F}\nEnd Tag Table\n";
-    my $coding = $self->{'encoding'};
-    if ($coding and $coding ne 'us-ascii') {
-      $tag_text .= "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
-    }
-    if ($fh) {
-      print $fh $tag_text;
+  $tag_text .= "\n\x{1F}\nTag Table:\n";
+  if ($out_file_nr > 1) {
+    $tag_text .=  "(Indirect)\n";
+  }
+  # This may happen for anchors in @insertcopying
+  my %seen_anchors;
+  foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
+    next unless ($label->{'root'} and $label->{'root'}->{'extra'} 
+                  and defined($label->{'root'}->{'extra'}->{'normalized'}));
+    my $prefix;
+    if ($label->{'root'}->{'cmdname'} eq 'node') {
+      $prefix = 'Node';
     } else {
-      $result .= $tag_text;
+      if ($seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}}) {
+        $self->line_error(sprintf($self->__("\@%s `%s' output more than once"),
+                       $label->{'root'}->{'cmdname'},
+                 Texinfo::Convert::Texinfo::convert({'contents' =>
+                      $label->{'root'}->{'extra'}->{'node_content'}})),
+                      $label->{'root'}->{'line_nr'});
+         next;
+      } else {
+        $seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}} = $label;
+      }
+      $prefix = 'Ref';
     }
+    push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
+    my $label_text = _normalize_top_node($self->convert_line({'type' => 'code',
+      'contents' => $label->{'root'}->{'extra'}->{'node_content'}}));
+    pop @{$self->{'count_context'}};
+    $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
+  }
+  $tag_text .=  "\x{1F}\nEnd Tag Table\n";
+  my $coding = $self->{'encoding'};
+  if ($coding and $coding ne 'us-ascii') {
+    $tag_text .= "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
+  }
+  if ($fh) {
+    print $fh $tag_text;
+    close ($fh);
+  } else {
+    $result .= $tag_text;
   }
   return $result;
 }

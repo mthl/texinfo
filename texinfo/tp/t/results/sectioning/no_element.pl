@@ -897,6 +897,19 @@ In float
 
    Ref to main text anchor *note An anchor::
 
+
+
+Tag Table:
+Ref: An anchor0
+Ref: float anchor109
+Ref: Anchor in footnote293
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:
 ';
 
 $result_converted_errors{'info'}->{'no_element'} = [

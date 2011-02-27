@@ -89,6 +89,11 @@ $result_converted{'info'}->{'no_node_but_top'} = 'This is , produced by makeinfo
 top
 ***
 
+
+
+Tag Table:
+
+End Tag Table
 ';
 
 $result_converted_errors{'info'}->{'no_node_but_top'} = [

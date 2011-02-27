@@ -373,6 +373,16 @@ Ref to float
 
 @cindex index entry
 '],
+['top_node_no_menu_direction',
+'@node Top
+
+@menu
+* second node::
+* TOP:: myself
+@end menu
+
+@node second node,,top,TOP
+'],
 );
 
 my @test_cases = (

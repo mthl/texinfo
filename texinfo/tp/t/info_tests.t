@@ -340,7 +340,9 @@ First chapter.
 @node @
 @node @:
 @node @asis{ }
-']
+'],
+['only_documentencoding',
+'@documentencoding ISO-8859-1'],
 );
 
 foreach my $test (@test_cases) {

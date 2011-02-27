@@ -197,6 +197,10 @@ sectioning/node_footnote.texi   (not interesting for Parser or Info, but
                                  maybe for html)
 sectioning/nodes_before_top.texi
 sectioning/no_element.texi
+sectioning/no_section.texi      (no test for the whole, but it is not interesting
+                                 for Structuring and Info)
+sectioning/only_documentencoding.texi
+
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)
