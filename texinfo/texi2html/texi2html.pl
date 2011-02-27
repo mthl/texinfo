@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.432 2010-12-02 17:54:15 karl Exp $
+# $Id: texi2html.pl,v 1.433 2011-02-27 15:53:00 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -198,7 +198,7 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
   'NUMBER_FOOTNOTES', 'NODE_FILES', 
   'NO_WARN', 'VERBOSE', 
   'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
-  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT', 'MONOLITHIC', 
+  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT',
   'BATCH', 'SILENT' 
 );
 
