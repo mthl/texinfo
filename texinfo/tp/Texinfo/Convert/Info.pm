@@ -513,6 +513,7 @@ sub _node($$)
 
   
   my $result = '';
+  return '' if (!defined($node->{'extra'}->{'normalized'}));
   if (!$self->{'empty_lines_count'}) {
     $result .= "\n";
     $self->_add_text_count("\n");
@@ -520,7 +521,11 @@ sub _node($$)
 
   # May happen when only converting a fragment
   my $output_filename = $self->{'output_filename'};
-  $output_filename = '' if (!defined($self->{'output_filename'}));
+  if (defined($self->{'output_filename'})) {
+    $output_filename = $self->{'output_filename'};
+  } else {
+    $output_filename = '';
+  }
 
   $self->_add_location($node);
   my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";

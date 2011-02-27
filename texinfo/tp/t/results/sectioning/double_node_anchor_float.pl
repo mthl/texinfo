@@ -807,4 +807,36 @@ $result_floats{'double_node_anchor_float'} = {
 };
 
 
+
+$result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: node1
+
+Text
+
+Text
+
+Text 1
+
+
+
+Tag Table:
+Node: node152
+Ref: anchor176
+Ref: float188
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'double_node_anchor_float'} = [
+  {
+    'error_line' => 'warning: Document without Top node.
+',
+    'text' => 'Document without Top node.',
+    'type' => 'warning'
+  }
+];
+
+
 1;

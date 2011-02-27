@@ -299,6 +299,28 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @bye
 '],
+['double_node_anchor_float',
+'@node node1
+
+@node node1
+
+@anchor{node1}
+
+@anchor{anchor1}
+
+@node anchor1
+
+@float Text, node1
+@end float
+
+@float Text, anchor1
+@end float
+
+@float Text, float1
+@end float
+
+@node float1
+'],
 );
 
 my @test_cases = (
@@ -437,28 +459,6 @@ Second chapter
 ['empty_anchor',
 '@anchor{}. 
 @anchor{   }.
-'],
-['double_node_anchor_float',
-'@node node1
-
-@node node1
-
-@anchor{node1}
-
-@anchor{anchor1}
-
-@node anchor1
-
-@float Text, node1
-@end float
-
-@float Text, anchor1
-@end float
-
-@float Text, float1
-@end float
-
-@node float1
 '],
 ['double_top',
 '@node ToP, top
