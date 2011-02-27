@@ -109,11 +109,11 @@ text_before_line_command text_before_line_command.texi
 loop_nodes loop_nodes.texi
 
 test_refs_docbook test_refs.texi --docbook
-at_commands_in_refs_info at_commands_in_refs.texi --init info.init
-two_footnotes_in_nodes_info two_footnotes_in_nodes.texi --init info.init
-two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi --init info.init --footnote-style=separate
-node_footnote_info node_footnote.texi --init info.init
-node_footnote_separated_info node_footnote.texi --init info.init --footnote-style=separate
-anchor_in_footnote_info anchor_in_footnote.texi --init info.init
-anchor_in_footnote_separated_info anchor_in_footnote.texi --init info.init --footnote-style=separate
-novalidate_info novalidate.texi --init info.init
+at_commands_in_refs_info at_commands_in_refs.texi --info
+two_footnotes_in_nodes_info two_footnotes_in_nodes.texi --info
+two_footnotes_in_nodes_separated_info two_footnotes_in_nodes.texi --info --footnote-style=separate
+node_footnote_info node_footnote.texi --info
+node_footnote_separated_info node_footnote.texi --info --footnote-style=separate
+anchor_in_footnote_info anchor_in_footnote.texi --info
+anchor_in_footnote_separated_info anchor_in_footnote.texi --info --footnote-style=separate
+novalidate_info novalidate.texi --info

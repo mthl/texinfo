@@ -45,28 +45,28 @@ texi space_in_setfilename.texi
 # test with --html which doesn't make much sense here, replaced with --xml
 # though it is not the same
 cond cond.texi
-cond_xml cond.texi --init xml.init
+cond_xml cond.texi --xml
 cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
 cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
-cond_info cond.texi --init info.init
+cond_info cond.texi --info
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
 macro-at macro-at.texi
 value_in_pass0_macros_plain value_in_pass0_macros.texi --macro-expand=@OUT_DIR@/value_in_pass0_macros-expanded.texi
 macros_in_pass0_macros_plain macros_in_pass0_macros.texi --macro-expand=@OUT_DIR@/macros_in_pass0_macros-expanded.texi
-macro-at_info macro-at.texi --init info.init
+macro-at_info macro-at.texi --info
 value_in_pass0_macros value_in_pass0_macros.texi --init makeinfo.init
 macros_in_pass0_macros macros_in_pass0_macros.texi --init makeinfo.init
 node-expand_plain node-expand.texi
 node-expand node-expand.texi --init makeinfo.init
-node-expand_xml node-expand.texi --init xml.init
-node-expand_info node-expand.texi --init info.init
+node-expand_xml node-expand.texi --xml
+node-expand_info node-expand.texi --info
 include-value include-value.texi
 value_in_misc value_in_misc_valid.texi --iftex
 macro_in_misc macro_in_misc.texi
 macro_commands_in_pass_texi_commands macro_commands_in_pass_texi_commands.texi
-test_include_with_setfilename_info test_include_with_setfilename.texi --init info.init
-no_arg_macro_info no_arg_macro.texi --init info.init
+test_include_with_setfilename_info test_include_with_setfilename.texi --info
+no_arg_macro_info no_arg_macro.texi --info
 simple_imbricated_macro simple_imbricated_macro.texi
 test_paths test_paths.texi
 setfilename_comment setfilename_comment.texi
