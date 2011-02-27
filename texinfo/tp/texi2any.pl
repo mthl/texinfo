@@ -556,9 +556,10 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
-$parser_default_options->{'MAX_MACRO_CALL_NESTING'} = get_conf('MAX_MACRO_CALL_NESTING') 
-  if (defined(get_conf('MAX_MACRO_CALL_NESTING')));
-
+foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING') {
+  $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
+    if (defined(get_conf($parser_settable_option)));
+}
 
 
 # Main processing, process all the files given on the command line

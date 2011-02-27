@@ -340,7 +340,7 @@ $result_errors{'top_node_normalization'} = [
 $result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by makeinfo version 4.13 from .
 
 
-File: ,  Node: Top,  Next: ToP,  Prev: ToP,  Up: (dir)
+File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
 *Note TOP::.  *Note tOP::.
 

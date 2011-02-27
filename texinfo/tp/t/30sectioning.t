@@ -321,6 +321,13 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @node float1
 '],
+['double_top',
+'@node ToP, top
+
+@node top,,ToP,Top
+
+@anchor{TOP}.
+'],
 );
 
 my @test_cases = (
@@ -459,13 +466,6 @@ Second chapter
 ['empty_anchor',
 '@anchor{}. 
 @anchor{   }.
-'],
-['double_top',
-'@node ToP, top
-
-@node top,,ToP,Top
-
-@anchor{TOP}.
 '],
 ['double_top_in_menu',
 '@node ToP, top

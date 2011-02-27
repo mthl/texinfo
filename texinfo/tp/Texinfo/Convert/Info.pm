@@ -547,8 +547,8 @@ sub _node($$)
                                           {'text' => ')'}]});
       }
       if ($node_direction->{'extra'}->{'node_content'}) {
-        $result .= $self->convert_line({'type' => 'code',
-                 'contents' => $node_direction->{'extra'}->{'node_content'}});
+        $result .= _normalize_top_node($self->convert_line({'type' => 'code',
+                 'contents' => $node_direction->{'extra'}->{'node_content'}}));
       }
     }
   }

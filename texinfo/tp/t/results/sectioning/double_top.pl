@@ -316,4 +316,19 @@ $result_errors{'double_top'} = [
 ];
 
 
+
+$result_converted{'info'}->{'double_top'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: Top,  Next: Top
+
+.
+
+
+Tag Table:
+Node: Top52
+
+End Tag Table
+';
+
 1;

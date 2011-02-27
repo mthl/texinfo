@@ -248,6 +248,7 @@ our %default_configuration = (
                               # @documentlanguage
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  'TOP_NODE_UP' => '(dir)'    # up node of Top node
 );
 
 # The commands in initialization_overrides are not set in the document if
