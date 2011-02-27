@@ -154,12 +154,12 @@ result: \\\\arg\\
 
 $result_errors{'value_in_macro_body'} = [
   {
-    'error_line' => ':7: \\ in macro expansion followed `@value{bodyarg}\' instead of parameter name or \\
+    'error_line' => ':7: \\ in @testvaluebody expansion followed `@value{bodyarg}\' instead of parameter name or \\
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '\\ in macro expansion followed `@value{bodyarg}\' instead of parameter name or \\',
+    'text' => '\\ in @testvaluebody expansion followed `@value{bodyarg}\' instead of parameter name or \\',
     'type' => 'error'
   }
 ];

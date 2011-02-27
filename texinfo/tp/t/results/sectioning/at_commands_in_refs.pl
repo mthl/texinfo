@@ -19537,4 +19537,308 @@ $result_menus{'at_commands_in_refs'}{'menu_child'}{'menu_up'} = $result_menus{'a
 $result_errors{'at_commands_in_refs'} = [];
 
 
+
+$result_converted{'info'}->{'at_commands_in_refs'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: Top,  Next: { },  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+*  { }::
+*      ! 
+ .  . ? @::
+* LaTeX TeX * , (C) ... ...::
+* == error--> Euro ! ==> -::
+* >= <= ->::
+* a o -!- # -| ? (R)::
+* => o a b  aa::
+* AA ae oe AE OE /o /O ss /l /L D d TH th::
+* a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
+* e. e( e_ .e e< j ee[::
+* `` \'\' ` \' ,, ,::
+* << >> << >> < >::
+* `` \'\' --- --::
+* AAA (fff) AAA BBB::
+* CCC (rrr) CCC DDD::
+* the someone <someone@somewher> <no_explain@there>::
+*    [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
+*  @ {} . ::
+* `cite asis\' in @w b in r SC *str* t VAR "dfn" i::
+* `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'::
+* 8.27in::
+* sansserif slanted::
+* <indicateurl>::
+* `http://somewhere_aaa\' text (url) ls::
+
+
+File: ,  Node: { },  Next:     !
+. . ? @,  Prev: Top,  Up: Top
+
+1 { }
+*****
+
+
+File: ,  Node:     !
+. . ? @,  Next: LaTeX TeX * , (C) ... ...,  Prev: { },  Up: Top
+
+2     !
+. . ? @
+***************
+
+
+File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error--> Euro ! ==> -,  Prev:     !
+. . ? @,  Up: Top
+
+3 LaTeX TeX * , (C) ... ...
+***************************
+
+
+File: ,  Node: == error--> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
+
+4 == error--> Euro ! ==> -
+**************************
+
+
+File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error--> Euro ! ==> -,  Up: Top
+
+5 >= <= ->
+**********
+
+
+File: ,  Node: a o -!- # -| ? (R),  Next: => o a b aa,  Prev: >= <= ->,  Up: Top
+
+6 a o -!- # -| ? (R)
+********************
+
+
+File: ,  Node: => o a b aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
+
+7 => o a b aa
+*************
+
+
+File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b aa,  Up: Top
+
+8 AA ae oe AE OE /o /O ss /l /L D d TH th
+*****************************************
+
+
+File: ,  Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Next: e. e( e_ .e e< j ee[,  Prev: AA ae oe AE OE /o /O ss /l /L D d TH th,  Up: Top
+
+9 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
+***********************************
+
+
+File: ,  Node: e. e( e_ .e e< j ee[,  Next: `` \'\' ` \' ,, ,,  Prev: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Up: Top
+
+10 e. e( e_ .e e< j ee[
+***********************
+
+
+File: ,  Node: `` \'\' ` \' ,, ,,  Next: << >> << >> < >,  Prev: e. e( e_ .e e< j ee[,  Up: Top
+
+11 `` \'\' ` \' ,, ,
+*****************
+
+
+File: ,  Node: << >> << >> < >,  Next: `` \'\' --- --,  Prev: `` \'\' ` \' ,, ,,  Up: Top
+
+12 << >> << >> < >
+******************
+
+
+File: ,  Node: `` \'\' --- --,  Next: AAA (fff) AAA BBB,  Prev: << >> << >> < >,  Up: Top
+
+13 " " -- -
+***********
+
+
+File: ,  Node: AAA (fff) AAA BBB,  Next: CCC (rrr) CCC DDD,  Prev: `` \'\' --- --,  Up: Top
+
+14 AAA (fff) AAA BBB
+********************
+
+
+File: ,  Node: CCC (rrr) CCC DDD,  Next: the someone <someone@somewher> <no_explain@there>,  Prev: AAA (fff) AAA BBB,  Up: Top
+
+15 CCC (rrr) CCC DDD
+********************
+
+
+File: ,  Node: the someone <someone@somewher> <no_explain@there>,  Next:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Prev: CCC (rrr) CCC DDD,  Up: Top
+
+16 the someone <someone@somewher> <no_explain@there>
+****************************************************
+
+
+File: ,  Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Next:  @ {} . ,  Prev: the someone <someone@somewher> <no_explain@there>,  Up: Top
+
+
+17   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
+****************************************************************************
+
+
+File: ,  Node:  @ {} . ,  Next: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
+
+18  @ {} . 
+***********
+
+
+File: ,  Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Next: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Prev:  @ {} . ,  Up: Top
+
+19 `cite asis\' in @w b in r SC *str* t VAR "dfn" i
+**************************************************
+
+
+File: ,  Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Next: 8.27in,  Prev: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Up: Top
+
+20 `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'
+************************************************************
+
+
+File: ,  Node: 8.27in,  Next: sansserif slanted,  Prev: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\',  Up: Top
+
+21 8.27in
+*********
+
+
+File: ,  Node: sansserif slanted,  Next: <indicateurl>,  Prev: 8.27in,  Up: Top
+
+22 sansserif slanted
+********************
+
+
+File: ,  Node: <indicateurl>,  Next: `http://somewhere_aaa\' text (url) ls,  Prev: sansserif slanted,  Up: Top
+
+23 <indicateurl>
+****************
+
+
+File: ,  Node: `http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up: Top
+
+24 `http://somewhere_aaa\' text (url) ls
+***************************************
+
+*note { }::
+
+   *note     !
+. . ?  @:: *note LaTeX TeX * , (C) ... ...:: *note == error--> Euro !
+==> -::
+
+   *note >= <= ->::
+
+   *note a o -!- # -| ?  (R):: *note => o a b aa:: *note AA ae oe AE OE
+/o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
+*note e.  e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >> << >> <
+>:: *note " " -- -:: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD::
+*note the someone <someone@somewher> <no_explain@there>:: *note   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
+*note  @ {} . :: *note `cite asis\' in @w b in r SC *str* t VAR "dfn" i::
+*note `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\':: *note
+8.27in:: *note sansserif slanted:: *note <indicateurl>:: *note
+`http://somewhere_aaa\' text (url) ls::
+
+
+
+Tag Table:
+Node: Top52
+Node: { }819
+Node:     !
+. . ? @898
+Node: LaTeX TeX * , (C) ... ...1019
+Node: == error--> Euro ! ==> -1185
+Node: >= <= ->1344
+Node: a o -!- # -| ? (R)1464
+Node: => o a b aa1591
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1735
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;1950
+Node: e. e( e_ .e e< j ee[2162
+Node: `` \'\' ` \' ,, ,2325
+Node: << >> << >> < >2458
+Node: `` \'\' --- --2585
+Node: AAA (fff) AAA BBB2701
+Node: CCC (rrr) CCC DDD2837
+Node: the someone <someone@somewher> <no_explain@there>3010
+Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3303
+Node:  @ {} . 3636
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3836
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4098
+Node: 8.27in4378
+Node: sansserif slanted4526
+Node: <indicateurl>4652
+Node: `http://somewhere_aaa\' text (url) ls4800
+
+End Tag Table
+';
+
+$result_converted_errors{'info'}->{'at_commands_in_refs'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':21: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 21
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 81
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 81
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':83: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 83
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 81
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':131: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 131
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
+',
+    'text' => 'Cannot find @image file `f--ile1.txt\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 81
+  }
+];
+
+
 1;

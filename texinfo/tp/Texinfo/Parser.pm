@@ -1533,7 +1533,8 @@ sub _expand_macro_body($$$$) {
         if (defined($args_index->{$arg})) {
           $result .= $args->[$args_index->{$arg}];
         } else {
-          $self->line_error (sprintf($self->__("\\ in macro expansion followed `%s' instead of parameter name or \\"), $arg), $line_nr);
+          $self->line_error (sprintf($self->__("\\ in \@%s expansion followed `%s' instead of parameter name or \\"), 
+                             $macro->{'args'}->[0]->{'text'}, $arg), $line_nr);
           $result .= '\\' . $arg;
         }
       }

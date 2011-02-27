@@ -1428,4 +1428,35 @@ $result_menus{'some_at_commands_in_ref_nodes'}{'menu_child'}{'menu_up'} = $resul
 $result_errors{'some_at_commands_in_ref_nodes'} = [];
 
 
+
+$result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: Top,  Next: A SC node i" i" E=` /l C\', !,  Up: (dir)
+
+Top
+***
+
+* Menu:
+
+* A SC node i" i" E=` /l C\', !::
+
+
+File: ,  Node: A SC node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
+
+1 A SC node i" i" E=` /l C\', !
+******************************
+
+see *note a *strong* ref with SC, a i trema i", a dotless i trema i" E=`
+and exclamdown !: (manual)a *strong* ref with SC, a i trema i", a
+dotless i trema i" E=` and exclamdown !.
+
+
+Tag Table:
+Node: Top52
+Node: A SC node i" i" E=` /l C\', !175
+
+End Tag Table
+';
+
 1;

@@ -639,4 +639,34 @@ $result_errors{'character_and_spaces_in_node'} = [
 ];
 
 
+
+$result_converted{'info'}->{'character_and_spaces_in_node'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: Top,  Up: (dir)
+
+
+File: ,  Node: other nodes,  Next: !_"#$%&\'()*+-.,  Prev: Top,  Up: Top
+
+
+File: ,  Node: !_"#$%&\'()*+-.,  Next: /;<=>?[\\]^_`|~,  Prev: other nodes,  Up: other nodes
+
+
+File: ,  Node: /;<=>?[\\]^_`|~,  Next: local node,  Prev: !_"#$%&\'()*+-.,  Up: other nodes
+
+
+File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
+
+
+
+Tag Table:
+Node: Top52
+Node: other nodes86
+Node: !_"#$%&\'()*+-.161
+Node: /;<=>?[\\]^_`|~255
+Node: local node348
+
+End Tag Table
+';
+
 1;

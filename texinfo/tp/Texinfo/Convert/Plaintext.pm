@@ -1502,6 +1502,12 @@ sub _convert($$)
           # FIXME this is a bit strange.
           $file = [{'text' => '()'}];
         }
+        # FIXME why define the name if there is a file argument?
+        if ($file and !$name) {
+          @$name = ({'type' => 'code',
+                    'contents' => $args[0]});
+        }
+         
         if ($name) {
           push @contents, (@$name, {'text' => ': '});
           if ($file) {

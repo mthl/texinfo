@@ -93,104 +93,6 @@ my @tests_info = (
 @anchor{0}.
 
 @xref{0}.
-']
-);
-
-my @test_cases = (
-[ 'node',
-'
-@node one arg1 
-@node one arg2, two arg
-@node one arg3, two arg, three arg
-@node one arg4, two arg, three arg, four arg
-@node one arg5, two arg, three arg, four arg, five arg
-
-@node comment @comment
-
-@node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
-'],
-['space_in_node',
-'
-@node Top
-
-@menu
-* Chap    first here::
-* Test    title   :Test   title.
-@end menu
-
-@node  Chap first	here
-
-@node Test               title
-'],
-['empty_nodes_with_commands',
-'
-@node @c comment
-
-@node @
-@node @:
-@node @asis{ }
-'],
-['sections',
-'@chapter a chapter
-'],
-['unnumbered_no_argument',
-'@unnumbered
-'],
-['a_comma_after_node',
-'@node Commands, Requirements, Nodes and Menus
-
-A comma in text, end.
-'],
-['nodename_parentheses',
-'@node Top
-@top The top node
-
-@menu
-* Node (with parentheses)::
-* Other node::
-* (manual)node::
-@end menu
-
-@node Node (with parentheses)
-@chapter Section (nodename with parentheses)
-
-Dummy section
-
-@node Other node
-@chapter Section (nodename without parentheses)
-
-Dummy link to @ref{Node (with parentheses)}.
-
-Dummy link to @ref{(manual)node}.
-
-@node (manual)node
-@chapter (manual)node
-
-Dummy section with (manual)node node syntax.
-
-@anchor{(manual)anchor}.
-
-'],
-['node_empty_direction',
-'@node name, '
-],
-['character_and_spaces_in_node',
-'
-@node Top
-@node other nodes, !_"#$%&\'()*+-., Top, Top
-@node !_"#$%&\'()*+-., /;<=>?[\\]^_`|~, other nodes, other nodes
-@node /;<=>?[\\]^_`|~,local   node,!_"#$%&\'()*+-., other nodes
-@node  local   node,,/;<=>?[\\]^_`|~,other nodes
-'],
-['at_commands_in_node',
-'@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}'
-],
-['unknown_node_in_menu',
-'@node Top
-
-@menu
-* unknown::
-@end menu
 '],
 ['character_and_spaces_in_refs',
 '@node Top
@@ -207,6 +109,9 @@ Dummy section with (manual)node node syntax.
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
 @ref{node,,, ../manual/doc.texi}
+
+@subheading Testing local nodes
+
 @ref{!_"#$%&\'()*+-.}
 @ref{/;<=>?[\\]^_`|~}
 @ref{ Top}
@@ -228,6 +133,14 @@ Dummy section with (manual)node node syntax.
 @node  local   node,,/;<=>?[\\]^_`|~,other nodes
 
 @bye
+'],
+['character_and_spaces_in_node',
+'
+@node Top
+@node other nodes, !_"#$%&\'()*+-., Top, Top
+@node !_"#$%&\'()*+-., /;<=>?[\\]^_`|~, other nodes, other nodes
+@node /;<=>?[\\]^_`|~,local   node,!_"#$%&\'()*+-., other nodes
+@node  local   node,,/;<=>?[\\]^_`|~,other nodes
 '],
 ['some_at_commands_in_ref_nodes',
 '
@@ -385,6 +298,96 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye
+'],
+);
+
+my @test_cases = (
+[ 'node',
+'
+@node one arg1 
+@node one arg2, two arg
+@node one arg3, two arg, three arg
+@node one arg4, two arg, three arg, four arg
+@node one arg5, two arg, three arg, four arg, five arg
+
+@node comment @comment
+
+@node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
+'],
+['space_in_node',
+'
+@node Top
+
+@menu
+* Chap    first here::
+* Test    title   :Test   title.
+@end menu
+
+@node  Chap first	here
+
+@node Test               title
+'],
+['empty_nodes_with_commands',
+'
+@node @c comment
+
+@node @
+@node @:
+@node @asis{ }
+'],
+['at_commands_in_node',
+'@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}'
+],
+['sections',
+'@chapter a chapter
+'],
+['unnumbered_no_argument',
+'@unnumbered
+'],
+['a_comma_after_node',
+'@node Commands, Requirements, Nodes and Menus
+
+A comma in text, end.
+'],
+['nodename_parentheses',
+'@node Top
+@top The top node
+
+@menu
+* Node (with parentheses)::
+* Other node::
+* (manual)node::
+@end menu
+
+@node Node (with parentheses)
+@chapter Section (nodename with parentheses)
+
+Dummy section
+
+@node Other node
+@chapter Section (nodename without parentheses)
+
+Dummy link to @ref{Node (with parentheses)}.
+
+Dummy link to @ref{(manual)node}.
+
+@node (manual)node
+@chapter (manual)node
+
+Dummy section with (manual)node node syntax.
+
+@anchor{(manual)anchor}.
+
+'],
+['node_empty_direction',
+'@node name, '
+],
+['unknown_node_in_menu',
+'@node Top
+
+@menu
+* unknown::
+@end menu
 '],
 ['ref_to_unknown_node',
 '@xref{unknown node}.'],
