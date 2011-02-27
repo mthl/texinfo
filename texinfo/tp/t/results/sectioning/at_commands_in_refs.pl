@@ -19549,7 +19549,7 @@ Top
 * Menu:
 
 *  { }::
-*      ! 
+*          ! 
  .  . ? @::
 * LaTeX TeX * , (C) ... ...::
 * == error--> Euro ! ==> -::
@@ -19726,50 +19726,50 @@ File: ,  Node: `http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up:
 *note { }::
 
    *note     !
-. . ?  @:: *note LaTeX TeX * , (C) ... ...:: *note == error--> Euro !
-==> -::
+. . ? @:: *note LaTeX TeX * , (C) ... ...:: *note == error--> Euro ! ==>
+-::
 
    *note >= <= ->::
 
-   *note a o -!- # -| ?  (R):: *note => o a b aa:: *note AA ae oe AE OE
+   *note a o -!- # -| ? (R):: *note => o a b aa:: *note AA ae oe AE OE
 /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
-*note e.  e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >> << >> <
->:: *note " " -- -:: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD::
-*note the someone <someone@somewher> <no_explain@there>:: *note   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]::
-*note  @ {} . :: *note `cite asis\' in @w b in r SC *str* t VAR "dfn" i::
-*note `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\':: *note
-8.27in:: *note sansserif slanted:: *note <indicateurl>:: *note
+*note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >> << >> <
+>:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC
+DDD:: *note the someone <someone@somewher> <no_explain@there>:: *note   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
+:: *note  @ {} . :: *note `cite asis\' in @w b in r SC *str* t VAR "dfn"
+i:: *note `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'::
+*note 8.27in:: *note sansserif slanted:: *note <indicateurl>:: *note
 `http://somewhere_aaa\' text (url) ls::
 
 
 
 Tag Table:
 Node: Top52
-Node: { }819
+Node: { }823
 Node:     !
-. . ? @898
-Node: LaTeX TeX * , (C) ... ...1019
-Node: == error--> Euro ! ==> -1185
-Node: >= <= ->1344
-Node: a o -!- # -| ? (R)1464
-Node: => o a b aa1591
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1735
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;1950
-Node: e. e( e_ .e e< j ee[2162
-Node: `` \'\' ` \' ,, ,2325
-Node: << >> << >> < >2458
-Node: `` \'\' --- --2585
-Node: AAA (fff) AAA BBB2701
-Node: CCC (rrr) CCC DDD2837
-Node: the someone <someone@somewher> <no_explain@there>3010
-Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3303
-Node:  @ {} . 3636
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3836
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4098
-Node: 8.27in4378
-Node: sansserif slanted4526
-Node: <indicateurl>4652
-Node: `http://somewhere_aaa\' text (url) ls4800
+. . ? @902
+Node: LaTeX TeX * , (C) ... ...1023
+Node: == error--> Euro ! ==> -1189
+Node: >= <= ->1348
+Node: a o -!- # -| ? (R)1468
+Node: => o a b aa1595
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1739
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;1954
+Node: e. e( e_ .e e< j ee[2166
+Node: `` \'\' ` \' ,, ,2329
+Node: << >> << >> < >2462
+Node: `` \'\' --- --2589
+Node: AAA (fff) AAA BBB2705
+Node: CCC (rrr) CCC DDD2841
+Node: the someone <someone@somewher> <no_explain@there>3014
+Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3307
+Node:  @ {} . 3640
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3840
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4102
+Node: 8.27in4382
+Node: sansserif slanted4530
+Node: <indicateurl>4656
+Node: `http://somewhere_aaa\' text (url) ls4804
 
 End Tag Table
 ';
@@ -19777,12 +19777,12 @@ End Tag Table
 $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   {
     'file_name' => '',
-    'error_line' => ':21: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
 ',
     'text' => 'Cannot find @image file `f--ile1.txt\'',
     'type' => 'warning',
     'macro' => '',
-    'line_nr' => 21
+    'line_nr' => 81
   },
   {
     'file_name' => '',
@@ -19822,12 +19822,12 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   },
   {
     'file_name' => '',
-    'error_line' => ':131: warning: Cannot find @image file `f--ile1.txt\'
+    'error_line' => ':81: warning: Cannot find @image file `f--ile1.txt\'
 ',
     'text' => 'Cannot find @image file `f--ile1.txt\'',
     'type' => 'warning',
     'macro' => '',
-    'line_nr' => 131
+    'line_nr' => 81
   },
   {
     'file_name' => '',

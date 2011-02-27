@@ -1457,6 +1457,21 @@ sub _convert($$)
       if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
           and scalar(@{$root->{'extra'}->{'brace_command_contents'}})) {
         my @args = @{$root->{'extra'}->{'brace_command_contents'}};
+        $args[0] = [{'text' => ''}] if (!defined($args[0]));
+
+        # normalize node name, to get a ref with the right formatting
+        # FIXME as a consequence, the line numbers appearing in case of errors
+        # correspond to the node lines numbers, and not the @ref.
+        my $node_content;
+        if ($root->{'extra'}->{'node_argument'} 
+            and $root->{'extra'}->{'node_argument'}->{'normalized'}
+            and $self->{'labels'}
+            and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}) {
+          $node_content = $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}->{'extra'}->{'node_content'};
+        } else { 
+          $node_content = $args[0];
+        }
+
         # if it a reference to a float with a label, $arg[1] is
         # set to '$type $number' or '$number' if there is no type.
         if (! defined($args[1]) 
@@ -1470,6 +1485,7 @@ sub _convert($$)
           if ($float->{'extra'}->{'type'}) {
             $type = {'contents' => $float->{'extra'}->{'type'}->{'content'}};
           }
+
           my $name;
           if ($type) {            
             if (defined($float->{'number'})) {
@@ -1486,7 +1502,6 @@ sub _convert($$)
           }
           $args[1] = $name->{'contents'};
         }
-        $args[0] = [{'text' => ''}] if (!defined($args[0]));
         if ($command eq 'inforef' and scalar(@args) == 3) {
           $args[3] = $args[2];
           $args[2] = undef;
@@ -1516,7 +1531,7 @@ sub _convert($$)
         # FIXME why define the name if there is a file argument?
         if ($file and !$name) {
           @$name = ({'type' => 'code',
-                    'contents' => $args[0]});
+                    'contents' => $node_content});
         }
          
         if ($name) {
@@ -1526,10 +1541,11 @@ sub _convert($$)
           }
           # node name
           push @contents, ({'type' => 'code',
-                            'contents' => $args[0]});
+                            'contents' => $node_content});
           push @contents, {'text' => '.'} if ($command eq 'pxref');
         } else {
-          push @contents, (@{$args[0]}, {'text' => '::'});
+          push @contents, ({'type' => 'code',
+                            'contents' => [@{$node_content}, {'text' => '::'}]});
         }
         #unshift @{$self->{'current_contents'}->[-1]}, @contents;
         $result = $self->_convert({'contents' => \@contents});
@@ -2125,10 +2141,24 @@ sub _convert($$)
         print STDERR "     --> $result" if ($self->{'DEBUG'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
+      my $menu_entry_internal_node;
+      if ($root->{'extra'} and $root->{'extra'}->{'menu_entry_node'}
+          and defined($root->{'extra'}->{'menu_entry_node'}->{'normalized'})
+          and $self->{'labels'}
+          and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
+        $menu_entry_internal_node = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
+      }
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
+          # if it is an internal ref, get the real node target name
+          my $node_contents;
+          if ($menu_entry_internal_node) {
+            $node_contents = $menu_entry_internal_node->{'extra'}->{'node_content'};
+          } else {
+            $node_contents = $arg->{'contents'};
+          }
           $result .= $self->_convert({'type' => 'code',
-                                      'contents' => $arg->{'contents'}});
+                                      'contents' => $node_contents});
         } else {
           $result .= $self->_convert($arg);
         }

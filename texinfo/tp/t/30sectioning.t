@@ -328,6 +328,17 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @anchor{TOP}.
 '],
+['equivalent_nodes',
+'@node Top, @emph{node}
+
+@menu
+* @strong{node}::
+@end menu
+
+@node @samp{node}
+
+@xref{node}.
+'],
 );
 
 my @test_cases = (

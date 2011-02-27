@@ -131,7 +131,6 @@ Incorporation of texi2html tests
 tests in test/macros, not incorporated
 glossary.texi
 bib-example.texi (big test)
-macro-at.texi (the macro part is already done)
 
 tests of the command:
 macros/
@@ -176,7 +175,7 @@ sectioning/at_commands_in_refs.texi
 sectioning/test_refs.texi
 sectioning/nodename_parentheses.texi
 sectioning/double_node_anchor_float.texi
-sectioning/double_top.texi   (but not @ref)
+sectioning/double_top.texi
 sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
                               and errors.  Not sure the remaining is 
                               interesting)

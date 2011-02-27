@@ -342,11 +342,11 @@ $result_converted{'info'}->{'top_node_normalization'} = 'This is , produced by m
 
 File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
-*Note TOP::.  *Note tOP::.
+*Note ToP::.  *Note ToP::.
 
 * Menu:
 
-* tOP::
+* ToP::
 
 
 Tag Table:
