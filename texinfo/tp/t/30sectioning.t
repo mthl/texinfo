@@ -678,7 +678,71 @@ Second top.
 @top In top @setfilename very badly placed setfilename
 
 @setfilename a bit too late
-']
+'],
+['unnumbered_before_top',
+'@unnumbered before top
+
+@top top
+'],
+['hole_in_sectioning',
+'@top Top
+
+@chapter Chapter
+
+@section section
+
+@subsubsection subsubsection with no subsection above
+
+@subsection the subsection
+'],
+['lowered_subsubsection',
+'@node Top
+@top
+
+@menu
+* Chapter::
+@end menu
+
+@node Chapter
+@chapter Chapter
+
+@menu
+* Section::
+@end menu
+
+@node Section
+@section Section
+
+@menu
+* Subsection::
+@end menu
+
+@node Subsection
+@subsection Subsection
+
+@menu
+* Subsubsection::
+* Lowered subsec::
+@end menu
+
+@node Subsubsection
+@subsubsection Subsubsection
+
+@lowersections
+@node Lowered subsec
+@subsection Lowered subsec
+
+@menu
+* Lowered subsubsection::
+@end menu
+
+@node Lowered subsubsection
+@subsubsection Lowered subsubsection
+@raisesections
+
+@contents
+@bye
+'],
 );
 
 foreach my $test (@tests_converted) {

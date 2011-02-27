@@ -866,6 +866,20 @@ $result_nodes{'semi_auto'} = {
         },
         'normalized' => 'Sec-in-chapter'
       },
+      'node_next' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'associated_section' => {
+            'cmdname' => 'section',
+            'extra' => {},
+            'level' => 2,
+            'number' => '1.2'
+          },
+          'normalized' => 'Section-non-auto'
+        },
+        'node_prev' => {},
+        'node_up' => {}
+      },
       'node_up' => {}
     },
     'menus' => [
@@ -873,20 +887,7 @@ $result_nodes{'semi_auto'} = {
         'cmdname' => 'menu'
       }
     ],
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'section',
-          'extra' => {},
-          'level' => 2,
-          'number' => '1.2'
-        },
-        'normalized' => 'Section-non-auto'
-      },
-      'node_prev' => {},
-      'node_up' => {}
-    },
+    'node_next' => {},
     'node_prev' => {},
     'node_up' => {}
   },
@@ -906,9 +907,10 @@ $result_nodes{'semi_auto'} = {
     }
   }
 };
+$result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'semi_auto'}{'menu_child'};
+$result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'semi_auto'}{'menu_child'};
-$result_nodes{'semi_auto'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'semi_auto'}{'menu_child'};
-$result_nodes{'semi_auto'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'semi_auto'};
+$result_nodes{'semi_auto'}{'menu_child'}{'node_next'} = $result_nodes{'semi_auto'}{'menu_child'}{'menu_child'}{'node_next'};
 $result_nodes{'semi_auto'}{'menu_child'}{'node_prev'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'menu_child'}{'node_up'} = $result_nodes{'semi_auto'};
 $result_nodes{'semi_auto'}{'node_next'} = $result_nodes{'semi_auto'}{'menu_child'};
@@ -955,7 +957,17 @@ $result_menus{'semi_auto'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_men
 $result_menus{'semi_auto'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'semi_auto'};
 $result_menus{'semi_auto'}{'menu_child'}{'menu_up'} = $result_menus{'semi_auto'};
 
-$result_errors{'semi_auto'} = [];
+$result_errors{'semi_auto'} = [
+  {
+    'error_line' => ':16: warning: No node following `Sec in chapter\' in menu, but `Section non auto\' follows in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'No node following `Sec in chapter\' in menu, but `Section non auto\' follows in sectioning',
+    'type' => 'warning'
+  }
+];
 
 
 1;

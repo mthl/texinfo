@@ -389,14 +389,17 @@ sub nodes_tree ($)
       if ($node->{'extra'}->{'normalized'} ne 'Top') {
         foreach my $direction (@node_directions) {
           next if ($node->{'node_'.$direction});
-          if ($node->{'associated_section'}) {
-            my $section = $node->{'associated_section'};
+          if ($node->{'extra'}->{'associated_section'}) {
+            my $section = $node->{'extra'}->{'associated_section'};
             if ($section->{'section_'.$direction}
-               and $section->{'section_'.$direction}->{'associated_node'}) {
+               and $section->{'section_'.$direction}->{'extra'}
+               and $section->{'section_'.$direction}->{'extra'}->{'associated_node'}) {
               $node->{'node_'.$direction} 
-                = $section->{'section_'.$direction}->{'associated_node'};
+                = $section->{'section_'.$direction}->{'extra'}->{'associated_node'};
+              next;
             }
-          } elsif ($node->{'menu_'.$direction}) {
+          } 
+          if ($node->{'menu_'.$direction}) {
             $node->{'node_'.$direction} = $node->{'menu_'.$direction};
           }
         }

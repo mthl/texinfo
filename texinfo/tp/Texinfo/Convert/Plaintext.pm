@@ -1465,6 +1465,7 @@ sub _convert($$)
         my $node_content;
         if ($root->{'extra'}->{'node_argument'} 
             and $root->{'extra'}->{'node_argument'}->{'normalized'}
+            and !$root->{'extra'}->{'node_argument'}->{'manual_content'}
             and $self->{'labels'}
             and $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}) {
           $node_content = $self->{'labels'}->{$root->{'extra'}->{'node_argument'}->{'normalized'}}->{'extra'}->{'node_content'};
@@ -2144,6 +2145,7 @@ sub _convert($$)
       my $menu_entry_internal_node;
       if ($root->{'extra'} and $root->{'extra'}->{'menu_entry_node'}
           and defined($root->{'extra'}->{'menu_entry_node'}->{'normalized'})
+          and !$root->{'extra'}->{'menu_entry_node'}->{'manual_content'}
           and $self->{'labels'}
           and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
         $menu_entry_internal_node = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};

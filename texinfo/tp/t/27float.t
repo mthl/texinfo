@@ -258,6 +258,14 @@ A warning
 @shortcaption{SC A warning}
 @end float
 
+@menu
+* chapter::
+* Unnumbered::
+* Chapter with unnumbsubsec::
+* Appendix for float::
+* list of floats::
+@end menu
+
 @node chapter
 @chapter A chapter
 

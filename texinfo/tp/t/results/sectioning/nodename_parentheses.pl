@@ -1068,6 +1068,20 @@ $result_nodes{'nodename_parentheses'} = {
         },
         'normalized' => 'Other-node'
       },
+      'node_next' => {
+        'cmdname' => 'node',
+        'extra' => {
+          'associated_section' => {
+            'cmdname' => 'chapter',
+            'extra' => {},
+            'level' => 1,
+            'number' => 3
+          },
+          'normalized' => 'node'
+        },
+        'node_prev' => {},
+        'node_up' => {}
+      },
       'node_prev' => {},
       'node_up' => {}
     },
@@ -1090,6 +1104,8 @@ $result_nodes{'nodename_parentheses'} = {
     }
   }
 };
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'};
+$result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'nodename_parentheses'};
 $result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'nodename_parentheses'}{'menu_child'};
 $result_nodes{'nodename_parentheses'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'nodename_parentheses'};
 $result_nodes{'nodename_parentheses'}{'menu_child'}{'node_prev'} = $result_nodes{'nodename_parentheses'};
@@ -1149,6 +1165,15 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':15: warning: No node following `Other node\' in menu, but `node\' follows in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => 'No node following `Other node\' in menu, but `node\' follows in sectioning',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':22: warning: unreferenced node `node\'
 ',
     'file_name' => '',
@@ -1156,6 +1181,15 @@ $result_errors{'nodename_parentheses'} = [
     'macro' => '',
     'text' => 'unreferenced node `node\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: Node `Top\' lacks menu item for `node\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'Node `Top\' lacks menu item for `node\' despite being its Up target',
+    'type' => 'error'
   }
 ];
 
