@@ -988,13 +988,22 @@ sub _node($$)
   return '';
 }
 
+# no error in plaintext
+sub _error_outside_of_any_node($$)
+{
+  my $self = shift;
+  my $root = shift;
+}
+
 sub _anchor($$)
 {
   my $self = shift;
   my $anchor = shift;
 
-  $self->_add_location($anchor) unless ($self->{'multiple_pass'} 
-                                        or $self->{'in_copying_header'});
+  if (!($self->{'multiple_pass'} or $self->{'in_copying_header'})) {
+    $self->_add_location($anchor); 
+    $self->_error_outside_of_any_node($anchor);
+  }
   return '';
 }
 
@@ -1024,7 +1033,6 @@ sub _image_text($$$)
 
   my $txt_file = $self->Texinfo::Parser::_locate_include_file ($basefile.'.txt');
   if (!defined($txt_file)) {
-    #$self->line_warn(sprintf($self->__("Cannot find \@image file `%s.txt'"), $basefile), $root->{'line_nr'});
     return undef;
   } else {
     if (open (TXT, $txt_file)) {
@@ -1424,6 +1432,9 @@ sub _convert($$)
       push @{$self->{'pending_footnotes'}}, {'root' => $root, 
                                     'number' => $self->{'footnote_index'}}
           unless ($self->{'multiple_pass'});
+      if (!$self->{'in_copying_header'}) {
+        $self->_error_outside_of_any_node($root);
+      }
       $result .= $self->_count_added($formatter->{'container'},
                $formatter->{'container'}->add_text("($formatted_footnote_number)"));
       if ($self->{'footnotestyle'} eq 'separate' and $self->{'node'}) {

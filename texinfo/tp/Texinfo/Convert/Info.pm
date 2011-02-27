@@ -486,6 +486,16 @@ sub _printindex($$)
   return $result;
 }
 
+sub _error_outside_of_any_node($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if (!$self->{'node'}) {
+    $self->line_warn(sprintf($self->__("\@%s outside of any node"),
+                     $root->{'cmdname'}), $root->{'line_nr'});
+  }
+}
+
 sub _normalize_top_node($)
 {
   my $node = shift;
