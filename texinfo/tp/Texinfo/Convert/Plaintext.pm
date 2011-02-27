@@ -1743,8 +1743,9 @@ sub _convert($$)
         $result .= $contents;
       }
       # use settitle for empty @top
+      # ignore @part
       my $contents;
-      if (@{$root->{'extra'}->{'misc_content'}}) {
+      if (@{$root->{'extra'}->{'misc_content'}} and $root->{'cmdname'} ne 'part') {
         $contents = $root->{'extra'}->{'misc_content'};
       } elsif ($root->{'cmdname'} eq 'top'
           and $self->{'extra'}->{'settitle'} 

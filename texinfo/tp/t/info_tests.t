@@ -328,14 +328,19 @@ First chapter.
 
 @node Top
 '],
-#['html_expanded',
-#'Before
-#@html
-#html
-#@end html
-#after.
-#',{'expanded_formats' => ['html']}
-#],
+['novalidate_empty_refs',
+'
+@novalidate
+
+@node Top
+
+@xref{@:}.
+@xref{@asis{ }}.
+
+@node @
+@node @:
+@node @asis{ }
+']
 );
 
 foreach my $test (@test_cases) {

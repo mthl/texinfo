@@ -138,7 +138,10 @@ cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
 cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
 Maybe:
 defcondx_Ubar defcondx_Dbar
+space_in_setfilename
 
+sectioning
+node_footnote_end
 
 @verbatiminclude formatting/simplest.texi
 
@@ -181,15 +184,19 @@ sectioning/nodes_test.texi   (done: unknown entry in menu and * (info)::
                               interesting)
 sectioning/rec_nodes.texi
 sectioning/semi_auto.texi
-sectioning/novalidate.texi    (only errors that aren't flagged by novalidate
-                               done)
+sectioning/novalidate.texi    (errors that aren't flagged by novalidate
+                               done. Not sure the remaining is interesting)
 sectioning/test_two_include.texi (not done at all, but it tests 
           -I .@PATH_SEPARATOR@../manuals@PATH_SEPARATOR@../macros)
 sectioning/node-whitespace.tex   (but not @ref)
 sectioning/loop_nodes.texi
 sectioning/sectioning.texi
 sectioning/text_before_line_command.texi
-sectioning/empty_nodes.texi  (but not the @ref)
+sectioning/empty_nodes.texi
+sectioning/node_footnote.texi   (not interesting for Parser or Info, but 
+                                 maybe for html)
+sectioning/nodes_before_top.texi
+sectioning/no_element.texi
 
 indices/unknown_index_entry.texi
 indices/more_unknown_index_entry.texi (but without the document structure)

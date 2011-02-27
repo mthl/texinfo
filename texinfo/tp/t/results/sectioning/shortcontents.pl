@@ -801,9 +801,6 @@ $result_converted{'plaintext'}->{'shortcontents'} = 'top
 1.1.1.1 subsubsection
 .....................
 
-part
-****
-
 2 chapter in part
 *****************
 

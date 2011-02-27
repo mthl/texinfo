@@ -339,6 +339,40 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 
 @xref{node}.
 '],
+['no_element',
+'@settitle no_element test
+@documentencoding ISO-8859-1
+
+
+@anchor{An anchor}
+
+Ref to the anchor:
+@ref{An anchor}
+
+Ref to the anchor in footnote:
+@ref{Anchor in footnote}.
+
+@footnote{In footnote.
+
+@anchor{Anchor in footnote}
+
+Ref to main text anchor
+@ref{An anchor}
+}
+
+@float , float anchor
+In float
+@end float
+
+Ref to float
+@ref{float anchor}.
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+
+@cindex index entry
+'],
 );
 
 my @test_cases = (
@@ -374,6 +408,10 @@ my @test_cases = (
 @node @
 @node @:
 @node @asis{ }
+'],
+['empty_refs',
+'@xref{@:}.
+@xref{@asis{ }}.
 '],
 ['at_commands_in_node',
 '@node A @sc{sc} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}'
@@ -742,6 +780,63 @@ Second top.
 
 @contents
 @bye
+'],
+['menutextorder',
+'@menu
+* foo::
+* bar::
+@end menu
+
+@node bar
+@chapter bar
+
+@menu
+* onesub2::
+@end menu
+
+@node onesub1
+@section One sub 1
+
+@node onesub2
+@section One sub 2
+
+
+@node foo
+@chapter foo
+
+@menu
+* sub1::
+* sub3::
+* sub2::
+@end menu
+
+@node sub1
+@section Sub1
+
+@node sub2
+@section Sub2
+
+@node sub3
+@section Sub3
+'],
+['nodes_before_top',
+'@node first, Top, ,(dir)
+
+@menu
+* node in menu before top::
+@end menu
+
+@node node in menu before top,,,first
+
+@node Top,,first
+@top top section 
+
+@menu
+* second node::
+@end menu
+
+@node second node
+@chapter a chapter
 '],
 );
 
