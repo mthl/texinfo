@@ -1,3 +1,9 @@
+2011-02-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Raw Formatter Commands),
+	(Conditionals Commands): be clearer that @if... delimits standard
+	Texinfo source, and the commands allowed in @iftex are exceptions.
+
 2011-02-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Four and Five Arguments): explicitly describe

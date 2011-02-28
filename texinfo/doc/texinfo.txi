@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
+@c $Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -13401,7 +13401,8 @@ output.
 @findex ifplaintext
 @findex iftex
 @findex ifxml
-The environments for the other formats are analogous:
+The environments for the other formats are analogous, but without the
+special historical case:
 
 @table @code
 @item @@ifdocbook @dots{} @@end ifdocbook
@@ -13421,7 +13422,13 @@ Text to appear only in the XML output.
 @end table
 
 The @code{@@if@dots{}} and @code{@@end if@dots{}} commands must appear
-on lines by themselves in your source file.
+on lines by themselves in your source file.  The newlines following
+the commands are (more or less) treated as whitespace, so that the
+conditional text is flowed normally into a surrounding paragraph.
+
+The @code{@@if@dots{}} constructs are intended to conditionalize
+normal Texinfo source; @pxref{Raw Formatter Commands}, for using
+underlying format commands directly.
 
 Here is an example showing all these conditionals:
 
@@ -13522,24 +13529,20 @@ with @code{@@iftex}, not raw formatter source as with @code{@@tex}
 @node Raw Formatter Commands
 @section Raw Formatter Commands
 @cindex Raw formatter commands
+
 @cindex @TeX{} commands, using ordinary
 @cindex Ordinary @TeX{} commands, using
 @cindex Commands using raw @TeX{}
-@cindex Docbook, including raw
-@cindex HTML, including raw
-@cindex XML, including raw
 @cindex Plain @TeX{}
 
-Inside a region delineated by @code{@@iftex} and @code{@@end iftex},
-you can embed some raw @TeX{} commands.  The Texinfo processors will
-ignore such a region unless @TeX{} output is being produced.  You can
-write the @TeX{} commands as you would write them in a normal @TeX{}
-file, except that you must replace the @samp{\} used by @TeX{} with an
-@samp{@@}.  For example, in the @code{@@titlepage} section of a
-Texinfo file, you can use the @TeX{} command @code{@@vskip} to format
-the copyright page.  (The @code{@@titlepage} command causes Info to
-ignore the region automatically, as it does with the @code{@@iftex}
-command.)
+Ordinarily, the @code{@@if@dots{}} conditionals just described must be
+used only with normal Texinfo source.  However, for historical reasons
+there is an exception for @code{@@iftex}---you can embed a few raw
+@TeX{} commands, just chaning @samp{\} to @samp{@@}.  For example, in
+the @code{@@titlepage} section of a Texinfo file, you can use the
+@TeX{} command @code{@@vskip} to format the copyright page.  (The
+@code{@@titlepage} command causes Info to ignore the region
+automatically, as it does with the @code{@@iftex} command.)
 
 However, most features of plain @TeX{} will not work within
 @code{@@iftex}, as they are overridden by Texinfo features.  The
@@ -13547,21 +13550,29 @@ purpose of @code{@@iftex} is to provide conditional processing for the
 Texinfo source, not provide access to underlying formatting features.
 
 @findex tex
+@cindex Category codes, of plain @TeX{}
 You can enter plain @TeX{} completely, and use @samp{\} in the @TeX{}
-commands, by delineating a region with the @code{@@tex} and @code{@@end
-tex} commands.  All plain @TeX{} commands and category codes are
-restored within an @code{@@tex} region.  The sole exception is that the
-@code{@@} character still introduces a command, so that @code{@@end tex}
-can be recognized properly.  As with @code{@@iftex}, Texinfo
-processors will ignore such a region unless @TeX{} output is being produced.
+commands, by delineating a region with the @code{@@tex} and
+@code{@@end tex} commands.  All plain @TeX{} commands and category
+codes are restored within an @code{@@tex} region.  The sole exception
+is that the @code{@@} character still introduces a command, so that
+@code{@@end tex} can be recognized.  As with @code{@@iftex}, Texinfo
+processors will ignore such a region unless @TeX{} output is being
+produced.
 
 @findex \gdef @r{within @code{@@tex}}
+@findex \globaldefs @r{within @code{@@tex}}
 In complex cases, you may wish to define new @TeX{} macros within
 @code{@@tex}.  You must use @code{\gdef} to do this, not @code{\def},
-because @code{@@tex} regions are processed in a @TeX{} group.
+because @code{@@tex} regions are processed in a @TeX{} group.  If you
+need to make several definitions, you may wish to set
+@code{\globaldefs=1} (its value will be restored to zero as usual when
+the group ends at @code{@@end tex}, so it won't cause problems with
+the rest of the document).
 
-@cindex Mathematical expressions, in plain @TeX{}
-As an example, here is a mathematical expression written in plain @TeX{}:
+@cindex Equation, displayed, in plain @TeX{}
+@cindex Displayed equation, in plain @TeX{}
+As an example, here is a displayed equation written in plain @TeX{}:
 
 @example
 @@tex
@@ -13586,23 +13597,28 @@ $$ \chi^2 = \sum_{i=1}^N
          \over \sigma_i\right)^2 $$
 @end tex
 
+@cindex HTML, including raw
 @findex ifhtml
 @findex html
-Analogously, you can use @code{@@ifhtml @dots{} @@end ifhtml} to delimit
-a region to be included in HTML output only, and @code{@@html @dots{}
-@@end html} for a region of raw HTML.
+Analogously, you can use @code{@@ifhtml @dots{} @@end ifhtml} to
+delimit Texinfo source to be included in HTML output only, and
+@code{@@html @dots{} @@end html} for a region of raw HTML.
 
+@cindex XML, including raw
 @findex ifxml
 @findex xml
 Likewise, you can use @code{@@ifxml @dots{} @@end ifxml} to delimit
-a region to be included in XML output only, and @code{@@xml @dots{}
-@@end xml} for a region of raw XML.
+Texinfo source to be included in XML output only, and @code{@@xml
+@dots{} @@end xml} for a region of raw XML.
 
+@cindex Docbook, including raw
 @findex ifdocbook
 @findex docbook
 Again likewise, you can use @code{@@ifdocbook @dots{} @@end ifdocbook}
-to delimit a region to be included in Docbook output only, and
+to delimit Texinfo source to be included in Docbook output only, and
 @code{@@docbook @dots{} @@end docbook} for a region of raw Docbook.
+
+The behavior of newlines in raw regions is unspecified.
 
 In all cases, the exception to the raw processing is that @code{@@} is
 still an escape character, so the @code{@@end} command can be
@@ -17261,10 +17277,9 @@ For example, you could write the following in your @file{.emacs} file:@refill
 @c Writing these three cross references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
-For more information, see @ref{makeinfo options, , Options for
-@code{makeinfo}}, as well as ``Easy Customization Interface,'' ``Examining
-and Setting Variables,'' and ``Init File'' in @cite{The GNU Emacs
-Manual}.
+For more information, see @ref{makeinfo Options}, as well as ``Easy
+Customization Interface,'' ``Examining and Setting Variables,'' and
+``Init File'' in @cite{The GNU Emacs Manual}.
 @end iftex
 @ifnottex
 For more information, see@*
@@ -19755,11 +19770,12 @@ encoding, since all the Latin@tie{}1 characters have associated
 characters.
 
 @item Next, the args in string are protected.  For example,
-@samp{@{arg_name@}} becomes
-@samp{@@internal_translation_open_brace@{@}arg_name@@internal_translation_close_brace@{@}}
+@samp{@{ arg_name @}} becomes@*
+@samp{@@internal_translation_open_brace@{@} arg_name@*
+@@internal_translation_close_brace@{@}}
 (this part is skipped if there is nothing to expand).
 
-@item Next, the string is expanded as a Texinfo string.
+@item Next, the string is expanded as Texinfo.
 @samp{@@internal_translation_open_brace@{@}} expands to @samp{@{} and
 @samp{@@internal_translation_close_brace@{@}} expands to @samp{@}},
 such that in the end one still gets @samp{@{arg_name@}} within an
@@ -23154,7 +23170,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
+$Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23233,7 +23249,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
+@comment $Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi
