@@ -241,21 +241,38 @@ sub sectioning_structure($$)
           }
         } else {
           my $up = $previous_section->{'section_up'};
+          my $new_upper_element;
           if ($previous_section->{'level'} != $level) {
             # means it is above the previous command, the up is to be found
             while ($up->{'section_up'} and $up->{'level'} >= $level) {
               $up = $up->{'section_up'};
             }
             if ($level <= $up->{'level'}) {
-              $self->line_error(sprintf($self->__("Lowering the section level of \@%s appearing after a lower element"), 
-                                       $content->{'cmdname'}), $content->{'line_nr'});
-              $content->{'level'} = $up->{'level'} + 1;
+              if ($content->{'cmdname'} eq 'part') {
+                $new_upper_element = 1;
+                if ($level < $up->{'level'}) {
+                  # FIXME warn previous element too low
+                }
+              } else {
+                $self->line_error(sprintf($self->__(
+                    "Lowering the section level of \@%s appearing after a lower element"), 
+                    $content->{'cmdname'}), $content->{'line_nr'});
+                $content->{'level'} = $up->{'level'} + 1;
+              }
             }
           }
-          push @{$up->{'section_childs'}}, $content;
-          $content->{'section_up'} = $up;
-          $content->{'section_prev'} = $up->{'section_childs'}->[-2];
-          $content->{'section_prev'}->{'section_next'} = $content;
+          if ($new_upper_element) {
+            $content->{'section_up'} = $sec_root;
+            $sec_root->{'level'} = $level - 1;
+            push @{$sec_root->{'section_childs'}}, $content;
+            $number_top_level = $level;
+            $number_top_level++ if (!$number_top_level);
+          } else {
+            push @{$up->{'section_childs'}}, $content;
+            $content->{'section_up'} = $up;
+            $content->{'section_prev'} = $up->{'section_childs'}->[-2];
+            $content->{'section_prev'}->{'section_next'} = $content;
+          }
           if (!$unnumbered_commands{$content->{'cmdname'}}) {
             $command_numbers[$content->{'level'}]++;
             $command_unnumbered[$content->{'level'}] = 0;

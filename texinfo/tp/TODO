@@ -3,6 +3,9 @@ Handle
 (does nothing in info, in HTML automatically set the section name as 3rd
 arg of @*ref).
 
+In Info A ref like @ref{node,,,manual} should lead to
+*note (manual)node::.
+
 Before the release, verify that everything on 
 https://savannah.gnu.org/bugs/?group=texinfo
 is fixed and tested for.
@@ -203,6 +206,7 @@ sectioning/only_documentencoding.texi
 sectioning/part_before_section.texi
 sectioning/part_node_before_top.texi
 sectioning/part_node_chapter_after_top.texi
+sectioning/node_part_chapter_after_chapter.texi
 sectioning/section_before_chapter.texi
 sectioning/section_before_part.texi
 sectioning/section_before_top.texi

@@ -924,33 +924,46 @@ sub _contents($$$)
 
   my $contents = 1 if ($contents_or_shortcontents eq 'contents');
 
-  my $section = $section_root->{'section_childs'}->[0];
-  my $root_level = $section->{'level'};
+  #my $section = $section_root->{'section_childs'}->[0];
+  my $root_level = $section_root->{'section_childs'}->[0]->{'level'};
+  foreach my $top_section(@{$section_root->{'section_childs'}}) {
+    $root_level = $top_section->{'level'} 
+      if ($top_section->{'level'} < $root_level);
+  }
 
   # FIXME return bytes count?
   my $result = '';
   my $lines_count = 0;
-  while ($section and $section ne $section_root) {
-    push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
-    my $section_title = $self->convert_line({'contents'
+  # This is done like that because the tree may not be well formed if
+  # there is a @part after a @chapter for example.
+  foreach my $top_section (@{$section_root->{'section_childs'}}) {
+    my $section = $top_section;
+ SECTION:
+    while ($section) {# and $section ne $section_root) {
+      push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
+      my $section_title = $self->convert_line({'contents'
                 => $section->{'extra'}->{'misc_content'},
                'type' => 'frenchspacing'});
-    pop @{$self->{'count_context'}};
-    my $text = Texinfo::Convert::Text::numbered_heading($section, 
+      pop @{$self->{'count_context'}};
+      my $text = Texinfo::Convert::Text::numbered_heading($section, 
                             $section_title, $self->{'NUMBER_SECTIONS'})."\n";
-    $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
-    $lines_count++;
-    if ($section->{'section_childs'} 
+      $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
+      $lines_count++;
+      if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
-      $section = $section->{'section_childs'}->[0];
-    } elsif ($section->{'section_next'}) {
-      $section = $section->{'section_next'};
-    } else {
-      while ($section->{'section_up'}) {
-        $section = $section->{'section_up'};
-        if ($section->{'section_next'}) {
-          $section = $section->{'section_next'};
-          last;
+        $section = $section->{'section_childs'}->[0];
+      } elsif ($section->{'section_next'}) {
+        last if ($section eq $top_section);
+        $section = $section->{'section_next'};
+      } else {
+        last if ($section eq $top_section);
+        while ($section->{'section_up'}) {
+          $section = $section->{'section_up'};
+          last SECTION if ($section eq $top_section);
+          if ($section->{'section_next'}) {
+            $section = $section->{'section_next'};
+            last;
+          }
         }
       }
     }

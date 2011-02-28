@@ -81,13 +81,24 @@ $result_trees{'section_before_part'} = {
         }
       ],
       'cmdname' => 'part',
-      'contents' => [],
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'contents',
+          'parent' => {}
+        }
+      ],
       'extra' => {
         'misc_content' => [
           {}
         ]
       },
-      'level' => 2,
+      'level' => 0,
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -110,12 +121,16 @@ $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'p
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
+$result_trees{'section_before_part'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
+$result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[2]{'parent'} = $result_trees{'section_before_part'};
 
 $result_texis{'section_before_part'} = '@section section 
 
 @part part
+
+@contents
 ';
 
 
@@ -123,11 +138,12 @@ $result_texts{'section_before_part'} = '1 section
 =========
 
 part
-====
+****
+
 ';
 
 $result_sectioning{'section_before_part'} = {
-  'level' => 1,
+  'level' => -1,
   'section_childs' => [
     {
       'cmdname' => 'section',
@@ -139,27 +155,23 @@ $result_sectioning{'section_before_part'} = {
     {
       'cmdname' => 'part',
       'extra' => {},
-      'level' => 2,
-      'section_prev' => {},
+      'level' => 0,
       'section_up' => {}
     }
   ]
 };
 $result_sectioning{'section_before_part'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'section_before_part'};
-$result_sectioning{'section_before_part'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'section_before_part'}{'section_childs'}[0];
 $result_sectioning{'section_before_part'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'section_before_part'};
 
-$result_errors{'section_before_part'} = [
-  {
-    'error_line' => ':3: Lowering the section level of @part appearing after a lower element
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'Lowering the section level of @part appearing after a lower element',
-    'type' => 'error'
-  }
-];
+$result_errors{'section_before_part'} = [];
 
+
+
+$result_converted{'plaintext'}->{'section_before_part'} = '1 section
+=========
+
+  1 section
+part
+';
 
 1;

@@ -259,6 +259,13 @@ Should be unnumbered.
 
 A.
 '],
+['section_before_part',
+'@section section 
+
+@part part
+
+@contents
+'],
 ['section_in_unnumbered_plaintext',
 $section_in_unnumbered_text
 ],
@@ -627,6 +634,26 @@ After a node after part
 @node chapter
 @chapter chapter 
 '],
+['node_part_chapter_after_chapter',
+'@node Top
+@top top
+
+@menu
+* chapter node::
+* part chapter node::
+@end menu
+
+@node chapter node
+
+@chapter chapter node
+
+@node part chapter node
+@part part
+
+@chapter chapter with part node
+
+@contents
+',{'test_formats' => ['plaintext']} ],
 ['section_before_top',
 '@node section node,,,Top
 @section section 
@@ -657,6 +684,29 @@ After a node after part
 @end menu
 
 '],
+['section_node_before_part',
+'
+@node Top
+@section section 
+
+@part part
+'],
+['chapter_node_before_and_after_part',
+'
+@node Top
+@chapter chapter
+
+@menu
+* after::
+@end menu
+
+@part part
+
+@node after
+@chapter chapter 2
+
+@contents
+',{'test_formats' => ['plaintext']}],
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
@@ -1135,10 +1185,12 @@ Second top.
 
 @chapter chapter
 '],
-['section_before_part',
-'@section section 
+['chapter_before_and_after_part',
+'@chapter chapter
 
 @part part
+
+@chapter chapter 2
 '],
 ['section_before_top_no_node',
 '@section section 
@@ -1158,7 +1210,7 @@ foreach my $test (@tests_converted) {
   $test->[2]->{'test_formats'} = ['plaintext'];
 }
 foreach my $test (@tests_info) {
-  $test->[2]->{'test_formats'} = ['info'];
+  push @{$test->[2]->{'test_formats'}}, 'info';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
