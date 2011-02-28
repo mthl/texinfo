@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.375 2011-02-26 22:46:55 karl Exp $
+@c $Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6054,13 +6054,14 @@ avoid including them in the title or other part lest the formatters
 mistake them for separators.@refill
 @end quotation
 
+
 @node One Argument
 @subsection @code{@@xref} with One Argument
 
 The simplest form of @code{@@xref} takes one argument, the name of
-another node in the same Info file.    The Info formatters produce
+another node in the same Info file.  The Info formatters produce
 output that the Info readers can use to jump to the reference; @TeX{}
-produces output that specifies the page and section number for you.@refill
+produces output that specifies the page and section number for you.
 
 @need 700
 @noindent
@@ -6085,10 +6086,10 @@ See Section 3.1 [Tropical Storms], page 24.
 @end quotation
 
 @noindent
-(Note that in the preceding example the closing brace is followed by a
-period.)@refill
+(Note that in the preceding example the closing brace to
+@code{@@xref}'s argument is followed by a period.)
 
-You can write a clause after the cross reference, like this:@refill
+You can write a clause after the cross reference, like this:
 
 @example
 @@xref@{Tropical Storms@}, for more info.
@@ -6285,15 +6286,15 @@ names.
 
 In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
-a fifth argument specifies its title as a printed manual.@refill
+a fifth argument specifies its title as a printed manual.
 
 Remember that a comma or period must follow the closing brace of an
 @code{@@xref} command to terminate the cross reference.  In the
-following examples, a clause follows a terminating comma.@refill
+following examples, a clause follows a terminating comma.
 
 @need 800
 @noindent
-The template is:
+The full template is:
 
 @example
 @group
@@ -6308,66 +6309,44 @@ For example,
 
 @example
 @@xref@{Electrical Effects, Lightning, Thunder and Lightning,
-weather, An Introduction to Meteorology@}, for details.
+weather, An Introduction to Meteorology@}.
 @end example
 
 @noindent
 produces
 
 @example
-*Note Lightning: (weather)Electrical Effects, for details.
+*Note Lightning: (weather)Electrical Effects.
 @end example
 
 @noindent
-The name of the Info file is enclosed in parentheses and precedes
-the name of the node.
+As you can see, the name of the Info file is enclosed in parentheses
+and precedes the name of the node.
 
 @noindent
-In a printed manual, the reference looks like this:@refill
+In a printed manual, the reference looks like this:
 
 @quotation
-See section ``Thunder and Lightning'' in @i{An Introduction to
-Meteorology}, for details.
+See section ``Thunder and Lightning'' in @cite{An Introduction to
+Meteorology}.
 @end quotation
 
 @noindent
-The title of the printed manual is typeset in italics; and the
+The title of the printed manual is typeset like @code{@@cite}; and the
 reference lacks a page number since @TeX{} cannot know to which page a
-reference refers when that reference is to another manual.@refill
+reference refers when that reference is to another manual.
 
-Often, you will leave out the second argument when you use the long
-version of @code{@@xref}.  In this case, the third argument, the topic
-description, will be used as the cross reference name in Info.@refill
-
-@noindent
-The template looks like this:
-
-@example
-@@xref@{@var{node-name}, , @var{title-or-topic}, @var{info-file-name},
-@var{printed-manual-title}@}, for details.
-@end example
-
-@noindent
-which produces
-
-@example
-*Note @var{title-or-topic}: (@var{info-file-name})@var{node-name}, for details.
-@end example
-
-@noindent
-and
-
-@quotation
-See section @var{title-or-topic} in @var{printed-manual-title}, for details.
-@end quotation
+Next case: often, you will leave out the second argument when you use
+the long version of @code{@@xref}.  In this case, the third argument,
+the topic description, will be used as the cross reference name in
+Info.  For example,
 
 @need 700
 @noindent
-For example,
 
 @example
 @@xref@{Electrical Effects, , Thunder and Lightning,
-weather, An Introduction to Meteorology@}, for details.
+weather, An Introduction to Meteorology@}.
 @end example
 
 @noindent
@@ -6375,8 +6354,7 @@ produces
 
 @example
 @group
-*Note Thunder and Lightning: (weather)Electrical Effects,
-for details.
+*Note Thunder and Lightning: (weather)Electrical Effects.
 @end group
 @end example
 
@@ -6384,15 +6362,47 @@ for details.
 and
 
 @quotation
-See section ``Thunder and Lightning'' in @i{An Introduction to
-Meteorology}, for details.
+See section ``Thunder and Lightning'' in @cite{An Introduction to
+Meteorology}.
 @end quotation
 
-On rare occasions, you may want to refer to another Info file that
-is within a single printed manual---when multiple Texinfo files are
-incorporated into the same @TeX{} run but make separate Info files.
-In this case, you need to specify only the fourth argument, and not
-the fifth.@refill
+
+Next case: If the node name and the section title are the same in the
+other manual, you may also leave out the section title.  In this case,
+the node name is used in both instances.  For example,
+
+@need 700
+@noindent
+
+@example
+@@xref@{Electrical Effects,,,
+weather, An Introduction to Meteorology@}.
+@end example
+
+@noindent
+produces
+
+@example
+@group
+*Note (weather)Electrical Effects.
+@end group
+@end example
+
+@noindent
+and
+
+@quotation
+See section ``Electrical Effects'' in @cite{An Introduction to
+Meteorology}.
+@end quotation
+
+
+Finally, on rare occasions, you may want to refer to another Info file
+that is within a single printed manual---when multiple Texinfo files
+are incorporated into the same @TeX{} run but make separate Info
+files.  In this case, you need to specify only the fourth argument,
+and not the fifth.
+
 
 @node Top Node Naming
 @section Naming a `Top' Node
@@ -23144,7 +23154,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.375 2011-02-26 22:46:55 karl Exp $
+$Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23223,7 +23233,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.375 2011-02-26 22:46:55 karl Exp $
+@comment $Id: texinfo.txi,v 1.376 2011-02-28 01:15:18 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

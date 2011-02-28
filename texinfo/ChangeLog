@@ -1,3 +1,8 @@
+2011-02-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Four and Five Arguments): explicitly describe
+	what happens when the third argument is omitted.
+
 2011-02-23  Karl Berry  <karl@gnu.org>
 
 	* texinfo.tex (\codequotebacktick, \codequoteundirected): new commands.
