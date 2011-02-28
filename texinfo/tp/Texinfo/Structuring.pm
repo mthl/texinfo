@@ -191,6 +191,8 @@ sub sectioning_structure($$)
   # holds the current number for all the levels.  It is not possible to use
   # something like the last child index, because of @unnumbered.
   my @command_numbers;
+  # keep track of the unnumbered
+  my @command_unnumbered;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
         and $content->{'cmdname'} ne 'bye') {
@@ -232,6 +234,11 @@ sub sectioning_structure($$)
           } elsif (!$unnumbered_commands{$content->{'cmdname'}}) {
             $command_numbers[$content->{'level'}]++;
           }
+          if ($unnumbered_commands{$content->{'cmdname'}}) {
+            $command_unnumbered[$content->{'level'}] = 1;
+          } else {
+            $command_unnumbered[$content->{'level'}] = 0;
+          }
         } else {
           my $up = $previous_section->{'section_up'};
           if ($previous_section->{'level'} != $level) {
@@ -251,6 +258,9 @@ sub sectioning_structure($$)
           $content->{'section_prev'}->{'section_next'} = $content;
           if (!$unnumbered_commands{$content->{'cmdname'}}) {
             $command_numbers[$content->{'level'}]++;
+            $command_unnumbered[$content->{'level'}] = 0;
+          } else {
+            $command_unnumbered[$content->{'level'}] = 1;
           }
         }
       } else { # first section determines the level of the root.  It is 
@@ -261,6 +271,11 @@ sub sectioning_structure($$)
         $number_top_level = $level;
         $number_top_level++ if (!$number_top_level);
       }
+      #if ($unnumbered_commands{$content->{'cmdname'}}) {
+      #  $command_numbers[$content->{'level'}] = 0;
+      #} elsif (!defined($command_numbers[$content->{'level'}])) {
+      #  $command_numbers[$content->{'level'}] = 1;
+      #}
       if (!defined($command_numbers[$content->{'level'}])) {
         if ($unnumbered_commands{$content->{'cmdname'}}) {
           $command_numbers[$content->{'level'}] = 0;
@@ -279,7 +294,7 @@ sub sectioning_structure($$)
           for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
             $content->{'number'} .= ".$command_numbers[$i]";
             # If there is an unnumbered above, then no number is added.
-            if (!$command_numbers[$i]) {
+            if ($command_unnumbered[$i]) {
               delete $content->{'number'};
               last;
             }

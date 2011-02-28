@@ -26,6 +26,181 @@ my $test_text =
 @appendixsec appendixsec
 ';
 
+my $section_in_unnumbered_text = '
+@setcontentsaftertitlepage
+
+@node Top
+@top Test section in unnumbered
+
+@contents
+
+Menu:
+
+@menu
+* chapter::
+* unnumbered::
+* chapter 2::
+* chapter 3::
+* unnumbered 4::
+@end menu
+
+@node chapter
+@chapter chapter
+
+@menu
+* section in chapter::
+@end menu
+
+@node section in chapter
+@section section in chapter
+
+@node unnumbered
+@unnumbered unnumbered
+
+@menu
+* section in unnumbered::
+@end menu
+
+@node section in unnumbered
+@section section in unnumbered
+
+@node chapter 2
+@chapter chapter 2
+
+@menu
+* unnumberedsec 2::
+* unnumberedsec 2-1::
+@end menu
+
+@node unnumberedsec 2
+@unnumberedsec unnumbered section 2
+
+@menu
+* unnumbered sub 2::
+* numbered sub 2::
+* unnumbered sub2 2::
+* numbered sub2 2::
+@end menu
+
+@node unnumbered sub 2
+@unnumberedsubsec unnumbered subsection 2
+
+@node numbered sub 2
+@subsection numbered subsection 2
+
+@node unnumbered sub2 2
+@unnumberedsubsec unnumbered subsection2 2
+
+@node numbered sub2 2
+@subsection numbered subsection2 2
+
+@node unnumberedsec 2-1
+@unnumberedsec unnumberedsec 2-1
+
+@menu
+* numbered sub 2-1::
+@end menu
+
+@node numbered sub 2-1
+@subsection numbered subsection 2-1
+
+
+@node chapter 3
+@chapter chapter 3
+
+@menu
+* unnumberedsec 3::
+* section 3-1::
+* unnumberedsec 3-2::
+* section 3-3::
+* unnumberedsec 3-4::
+@end menu
+
+@node unnumberedsec 3
+@unnumberedsec unnumbered section 3
+
+@menu
+* unnumbered sub 3::
+* numbered sub 3::
+* unnumbered sub2 3::
+* numbered sub2 3::
+@end menu
+
+@node unnumbered sub 3
+@unnumberedsubsec unnumbered subsection 3
+
+@node numbered sub 3
+@subsection numbered subsection 3
+
+@node unnumbered sub2 3
+@unnumberedsubsec unnumbered subsection2 3
+
+@node numbered sub2 3
+@subsection numbered subsection2 3
+
+@node section 3-1
+@section section 3-1
+
+@node unnumberedsec 3-2
+@unnumberedsec unnumberedsec 3-2
+
+@menu
+* numbered sub 3-2::
+@end menu
+
+@node numbered sub 3-2
+@subsection numbered subsection 3-2
+
+@node section 3-3
+@section section 3-3
+
+@menu
+* subsection 3-3::
+@end menu
+
+@node subsection 3-3
+@subsection subsection 3-3
+
+@node unnumberedsec 3-4
+@unnumberedsec unnumberedsec 3-4
+
+@menu
+* numbered sub 3-4::
+@end menu
+
+@node numbered sub 3-4
+@subsection numbered subsection 3-4
+
+@node unnumbered 4
+@unnumbered unnumbered  4
+
+@menu
+* unnumberedsec 4::
+@end menu
+
+@node unnumberedsec 4
+@unnumberedsec unnumbered section 4
+
+@menu
+* unnumbered sub 4::
+* numbered sub 4::
+* unnumbered sub2 4::
+* numbered sub2 4::
+@end menu
+
+@node unnumbered sub 4
+@unnumberedsubsec unnumbered subsection 4
+
+@node numbered sub 4
+@subsection numbered subsection 4
+
+@node unnumbered sub2 4
+@unnumberedsubsec unnumbered subsection2 4
+
+@node numbered sub2 4
+@subsection numbered subsection2 4
+';
+
 my @tests_converted = (
 ['setcontentsaftertitlepage',
 '@setcontentsaftertitlepage
@@ -84,6 +259,9 @@ Should be unnumbered.
 
 A.
 '],
+['section_in_unnumbered_plaintext',
+$section_in_unnumbered_text
+],
 );
 
 my @tests_info = (
@@ -373,6 +551,44 @@ Ref to float
 
 @cindex index entry
 '],
+['placed_things_before_element',
+'@anchor{An anchor}
+
+Ref to the anchor:
+@ref{An anchor}
+
+Ref to the anchor in footnote:
+@ref{Anchor in footnote}.
+
+@footnote{In footnote.
+
+@anchor{Anchor in footnote}
+
+Ref to main text anchor
+@ref{An anchor}
+}
+
+@float , float anchor
+In float
+@end float
+
+Ref to float
+@ref{float anchor}.
+
+@menu
+* An anchor::                menu entry pointing to the anchor.
+@end menu
+
+@cindex index entry
+
+@section section
+
+Ref to anchor
+@ref{An anchor}
+
+Ref to footnote anchor
+@ref{Anchor in footnote}
+'],
 ['top_node_no_menu_direction',
 '@node Top
 
@@ -383,6 +599,67 @@ Ref to float
 
 @node second node,,top,TOP
 '],
+['part_node_before_top',
+'@node part node before top, Top,,Top
+@part part
+
+@node Top
+@top top
+
+@menu
+* part node before top::
+@end menu
+'],
+['part_node_chapter_after_top',
+'@node Top
+@top top
+
+@menu
+* a node after part::
+* chapter::
+@end menu
+
+@part part
+
+@node a node after part, chapter, Top, Top
+After a node after part
+
+@node chapter
+@chapter chapter 
+'],
+['section_before_top',
+'@node section node,,,Top
+@section section 
+
+@node Top
+@top top
+
+@menu
+* section node::
+@end menu
+'],
+['section_chapter_before_top_nodes',
+'@node section node
+@section section 
+
+@node chapter node
+@chapter chapter
+
+@menu
+* section node::
+@end menu
+
+@node Top
+@top top
+
+@menu
+* chapter node::
+@end menu
+
+'],
+['section_in_unnumbered_info',
+$section_in_unnumbered_text
+],
 );
 
 my @test_cases = (
@@ -847,6 +1124,33 @@ Second top.
 
 @node second node
 @chapter a chapter
+'],
+['part_before_section',
+'@part part
+
+@section section 
+'],
+['section_before_chapter',
+'@section section 
+
+@chapter chapter
+'],
+['section_before_part',
+'@section section 
+
+@part part
+'],
+['section_before_top_no_node',
+'@section section 
+
+@top top
+'],
+['section_chapter_before_top',
+'@section section 
+
+@chapter chapter
+
+@top top
 '],
 );
 
