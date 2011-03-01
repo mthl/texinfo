@@ -36,6 +36,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 10AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBB
 11AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBB
 '],
+['commands_and_punctuation',
+'SomthingA@.   and now inhibit.@: Now dots @dots{} and enddots @enddots{} and'],
+['accent_command_punctuation',
+'@dotaccent{e} after'],
 ['empty_line_in_example_end',
 '@example
 in example

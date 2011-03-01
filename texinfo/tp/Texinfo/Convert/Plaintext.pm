@@ -177,6 +177,11 @@ foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
   $code_style_commands{$command} = 1;
 }
 
+my %punctuation_no_arg_commands;
+foreach my $punctuation_command('enddots', 'exclamdown', 'questiondown') {
+  $punctuation_no_arg_commands{$punctuation_command} = 1;
+}
+
 my %upper_case_commands = (
  'sc' => 1,
  'var' => 1
@@ -1289,7 +1294,7 @@ sub _convert($$)
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
                                                     $self->{'encoding'});
-      if ($command eq 'enddots') {
+      if ($punctuation_no_arg_commands{$command}) {
         $result .= $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
       } elsif ($command eq 'tie') {
@@ -1316,6 +1321,8 @@ sub _convert($$)
       $result .= $self->_count_added($formatter->{'container'},
          $formatter->{'container'}->add_text(
           Texinfo::Convert::Text::text_accents($root, $self->{'encoding'})));
+      # in case the text added ends with punctuation
+      $formatter->{'container'}->inhibit_end_sentence();
       return $result;
     } elsif ($style_map{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
