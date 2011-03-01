@@ -138,7 +138,5 @@ sub document_error ($$)
     { 'type' => 'error', 'text' => $text, 'error_line' => $text };
   $self->{'error_nrs'}++;
 }
-  
-
 
 1;

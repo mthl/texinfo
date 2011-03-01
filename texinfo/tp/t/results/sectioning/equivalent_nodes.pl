@@ -426,7 +426,7 @@ File: ,  Node: Top,  Next: `node\'
 
 * Menu:
 
-* `node\'::
+* *node*::
 
 
 File: ,  Node: `node\',  Up: Top
@@ -440,5 +440,18 @@ Node: `node\'110
 
 End Tag Table
 ';
+
+$result_converted_errors{'info'}->{'equivalent_nodes'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':4: warning: Node expansion `*node*\' in menu differs from normal node expansion ``node\'\'
+',
+    'text' => 'Node expansion `*node*\' in menu differs from normal node expansion ``node\'\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 4
+  }
+];
+
 
 1;

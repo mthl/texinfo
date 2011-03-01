@@ -710,6 +710,22 @@ After a node after part
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
+['space_in_node',
+'
+@node Top
+
+@menu
+* Chap    first here::
+* Test    title   :Test   title.
+*   Last with spaces    ::
+@end menu
+
+@node  Chap first	here
+
+@node Test               title
+
+@node   Last with spaces 
+'],
 );
 
 my @test_cases = (
@@ -724,19 +740,6 @@ my @test_cases = (
 @node comment @comment
 
 @node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
-'],
-['space_in_node',
-'
-@node Top
-
-@menu
-* Chap    first here::
-* Test    title   :Test   title.
-@end menu
-
-@node  Chap first	here
-
-@node Test               title
 '],
 ['empty_nodes_with_commands',
 '

@@ -2162,19 +2162,42 @@ sub _convert($$)
           and !$root->{'extra'}->{'menu_entry_node'}->{'manual_content'}
           and $self->{'labels'}
           and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-        $menu_entry_internal_node = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
+        $menu_entry_internal_node 
+          = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
       }
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
-          # if it is an internal ref, get the real node target name
-          my $node_contents;
           if ($menu_entry_internal_node) {
-            $node_contents = $menu_entry_internal_node->{'extra'}->{'node_content'};
-          } else {
-            $node_contents = $arg->{'contents'};
+            # check that after space collapse the info reader will find the
+            # node.  But always expand what the user provided for the 
+            # menu entry, to keep the user defined spacing.
+            my $saved_error_nrs = $self->{'error_nrs'};
+            my $saved_error_errors_warnings = $self->{'errors_warnings'};
+            $self->{'errors_warnings'} = [];
+            push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
+            my $internal_node = Texinfo::Convert::Info::_normalize_top_node(
+                 $self->convert_line({'type' => 'code',
+                 'contents' 
+                  => $menu_entry_internal_node->{'extra'}->{'node_content'}}));
+            my $menu_node = Texinfo::Convert::Info::_normalize_top_node(
+                 $self->convert_line({'type' => 'code',
+                 'contents' 
+                  => $arg->{'contents'}}));
+            $self->{'error_nrs'} = $saved_error_nrs;
+            $self->{'errors_warnings'} = $saved_error_errors_warnings;
+            # trailing spaces for node in menu are not very predictable.
+            # therefore they are ignored, and they are ignored in both
+            # case, in case there where protected spaces at the end of a node.
+            $internal_node =~ s/\s*$//;
+            $menu_node =~ s/\s*$//;
+            if ($internal_node ne $menu_node) {
+              $self->line_warn(sprintf($self->__("Node expansion `%s' in menu differs from normal node expansion `%s'"), 
+                       $menu_node, $internal_node), $root->{'line_nr'});
+            }
+            pop @{$self->{'count_context'}};
           }
           $result .= $self->_convert({'type' => 'code',
-                                      'contents' => $node_contents});
+                                      'contents' => $arg->{'contents'}});
         } else {
           $result .= $self->_convert($arg);
         }

@@ -346,7 +346,7 @@ File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
 
 * Menu:
 
-* ToP::
+* tOP::
 
 
 Tag Table:

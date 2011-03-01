@@ -421,7 +421,7 @@ File: ,  Node: Top,  Next: second node,  Up: (dir)
 * Menu:
 
 * second node::
-* Top:: myself
+* TOP:: myself
 
 
 File: ,  Node: second node,  Prev: Top,  Up: Top
