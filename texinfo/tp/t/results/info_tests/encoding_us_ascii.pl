@@ -183,6 +183,11 @@ Tag Table:
 Node: Top52
 
 End Tag Table
+
+
+Local Variables:
+coding: us-ascii
+End:
 ';
 
 1;

@@ -139,7 +139,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     {
                       'parent' => {},
                       'text' => ' ',
-                      'type' => 'empty_spaces_before_paragraph'
+                      'type' => 'empty_spaces_before_argument'
                     },
                     {
                       'contents' => [
@@ -1744,7 +1744,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     {
                       'parent' => {},
                       'text' => ' ',
-                      'type' => 'empty_spaces_before_paragraph'
+                      'type' => 'empty_spaces_before_argument'
                     },
                     {
                       'contents' => [

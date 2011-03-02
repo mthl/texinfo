@@ -934,7 +934,7 @@ $result_trees{'complex_float'} = {
                     {
                       'parent' => {},
                       'text' => ' ',
-                      'type' => 'empty_spaces_before_paragraph'
+                      'type' => 'empty_spaces_before_argument'
                     },
                     {
                       'contents' => [
@@ -2330,7 +2330,7 @@ $result_trees{'complex_float'} = {
                     {
                       'parent' => {},
                       'text' => ' ',
-                      'type' => 'empty_spaces_before_paragraph'
+                      'type' => 'empty_spaces_before_argument'
                     },
                     {
                       'contents' => [

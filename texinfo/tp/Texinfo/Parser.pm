@@ -3733,7 +3733,7 @@ sub _parse_texi($;$)
               push @{$self->{'context_stack'}}, $current->{'parent'}->{'cmdname'};
               $line =~ s/([^\S\n]*)//;
               $current->{'type'} = 'brace_command_context';
-              push @{$current->{'contents'}}, { 'type' => 'empty_line', 
+              push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
                                         'text' => $1,
                                         'parent' => $current };
             } else {

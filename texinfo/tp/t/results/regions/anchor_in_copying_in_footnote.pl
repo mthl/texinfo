@@ -35,7 +35,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                           'parent' => {},
                           'text' => '
 ',
-                          'type' => 'empty_line'
+                          'type' => 'empty_spaces_before_argument'
                         },
                         {
                           'contents' => [

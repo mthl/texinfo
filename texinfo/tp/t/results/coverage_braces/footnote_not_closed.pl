@@ -17,7 +17,7 @@ $result_trees{'footnote_not_closed'} = {
                 {
                   'parent' => {},
                   'text' => ' ',
-                  'type' => 'empty_spaces_before_paragraph'
+                  'type' => 'empty_spaces_before_argument'
                 },
                 {
                   'contents' => [

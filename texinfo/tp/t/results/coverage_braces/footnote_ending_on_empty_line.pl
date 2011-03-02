@@ -17,7 +17,7 @@ $result_trees{'footnote_ending_on_empty_line'} = {
                 {
                   'parent' => {},
                   'text' => ' ',
-                  'type' => 'empty_spaces_before_paragraph'
+                  'type' => 'empty_spaces_before_argument'
                 },
                 {
                   'contents' => [

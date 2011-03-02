@@ -815,6 +815,7 @@ sub _footnotes($;$)
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($footnote_text);
       $self->_add_text_count($footnote_text);
+      $self->{'empty_lines_count'} = 0;
 
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]); 
       $result .= $self->_add_newline_if_needed();
