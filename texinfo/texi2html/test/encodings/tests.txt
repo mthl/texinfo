@@ -52,7 +52,7 @@ weird_accents weird_accents.texi
 weird_accents_encoding weird_accents.texi --init enable_encoding.init
 ogolat2 ogolat2.texi
 ogoutf ogoutf.texi
-nodetest_info nodetest.texi --init info.init
+nodetest_info nodetest.texi --info
 japanese japanese.texi
 japanese_shift_jis japanese_shift_jis.texi
 chinese_mixed_with_en chinese_mixed_with_en.texi
@@ -66,7 +66,7 @@ encoding_index-utf8 encoding_index-utf8.texi
 encoding_index-utf8_toutf8 encoding_index-utf8.texi --init utf8.init
 encoding_index-latin1 encoding_index-latin1.texi
 encoding_index-latin1_toutf8 encoding_index-latin1.texi --init utf8.init
-accentenc_info accentenc.texi --init info.init
+accentenc_info accentenc.texi --info
 sample_utf8 sample_utf8.texi
 formatting_utf8_enable_encoding formatting_utf8.texi --enable-encoding
 encoding_index-utf8_enable_encoding encoding_index-utf8.texi --enable-encoding

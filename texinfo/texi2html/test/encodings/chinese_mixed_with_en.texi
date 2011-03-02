@@ -1,4 +1,5 @@
 \input texinfo
+@documentencoding utf-8
 @setfilename  chinese_mixed_with_en.info
 @settitle chinese mixed with english
 
