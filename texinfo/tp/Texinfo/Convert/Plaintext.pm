@@ -1323,11 +1323,15 @@ sub _convert($$)
       return $result;
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
+      my $accented_text 
+         = Texinfo::Convert::Text::text_accents($root, $self->{'encoding'});
       $result .= $self->_count_added($formatter->{'container'},
-         $formatter->{'container'}->add_text(
-          Texinfo::Convert::Text::text_accents($root, $self->{'encoding'})));
-      # in case the text added ends with punctuation
-      $formatter->{'container'}->inhibit_end_sentence();
+         $formatter->{'container'}->add_text($accented_text));
+      # in case the text added ends with punctuation.  
+      # If the text is empty (likely because of an error) previous 
+      # punctuation will be cancelled, we don't want that.
+      $formatter->{'container'}->inhibit_end_sentence()
+        if ($accented_text ne '');
       return $result;
     } elsif ($style_map{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {

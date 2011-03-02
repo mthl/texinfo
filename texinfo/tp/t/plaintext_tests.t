@@ -335,6 +335,10 @@ v
 @uref{http://foo.org/some/long/url/which/goes/past/eighty/columns/and/has/no/alternative/text.html}
 @end itemize
 '],
+['before_accent_punctuation',
+'a. @^a'],
+['invalid_accent_punctuation',
+'a. @^@@'],
 );
 
 foreach my $test (@test_cases) {
