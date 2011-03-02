@@ -19679,7 +19679,7 @@ File: ,  Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\
 
 
 17   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-****************************************************************************
+************************************************************************
 
 
 File: ,  Node:  @ {} . ,  Next: `cite asis\' in @w b in r SC *str* t VAR "dfn" i,  Prev:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ],  Up: Top
@@ -19763,13 +19763,13 @@ Node: AAA (fff) AAA BBB2701
 Node: CCC (rrr) CCC DDD2837
 Node: the someone <someone@somewher> <no_explain@there>3010
 Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3303
-Node:  @ {} . 3636
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3836
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4098
-Node: 8.27in4378
-Node: sansserif slanted4526
-Node: <indicateurl>4652
-Node: `http://somewhere_aaa\' text (url) ls4800
+Node:  @ {} . 3632
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3832
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4094
+Node: 8.27in4374
+Node: sansserif slanted4522
+Node: <indicateurl>4648
+Node: `http://somewhere_aaa\' text (url) ls4796
 
 End Tag Table
 ';

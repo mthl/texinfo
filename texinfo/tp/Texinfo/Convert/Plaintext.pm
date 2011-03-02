@@ -243,7 +243,7 @@ my %defaults = (
 #  'output_encoding'      => 'us-ascii',
   'documentencoding'     => undef,
   'encoding'             => undef,
-  'output_encoding'      => undef,
+#  'output_encoding'      => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
@@ -288,6 +288,9 @@ sub _informative_command($$)
       if (defined($root->{'extra'})
            and defined($root->{'extra'}->{'encoding_alias'})) {
         $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'};
+        if (defined($self->{'fh'})) {
+          binmode($self->{'fh'}, ":encoding($self->{'encoding'})");
+        }
       } else {
         $self->{'encoding'} = undef;
       }
@@ -513,6 +516,7 @@ sub output($$)
                                   $outfile));
     return undef;
   }
+  $self->{'fh'} = $fh;
   my $result = $self->convert($root);
   if (defined($result)) {
     print $fh $result;
@@ -680,8 +684,8 @@ sub count_bytes($$)
   my $self = shift;
   my $string = shift;
 
-  if ($self->{'output_encoding'} and $self->{'output_encoding'} ne 'us-ascii') {
-    return length(Encode::encode($self->{'output_encoding'}, $string));
+  if ($self->{'encoding'} and $self->{'encoding'} ne 'us-ascii') {
+    return length(Encode::encode($self->{'encoding'}, $string));
   } else {
     return length($string);
   }

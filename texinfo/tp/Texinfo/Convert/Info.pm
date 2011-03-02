@@ -134,6 +134,7 @@ sub output($)
                                     $self->{'OUTFILE'}));
       return undef;
     }
+    $self->{'fh'} = $fh;
   }
   print STDERR "DOCUMENT\n" if ($self->{'DEBUG'});
   my $out_file_nr = 0;
@@ -196,6 +197,7 @@ sub output($)
                   $self->{'OUTFILE'}.'-'.$out_file_nr));
            return undef;
         }
+        $self->{'fh'} = $fh;
         print $fh $header;
         $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,

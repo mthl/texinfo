@@ -590,7 +590,9 @@ sub string_width($)
   foreach my $character(split '', $string) {
     if ($character =~ /\p{Unicode::EastAsianWidth::InFullwidth}/) {
       $width += 2;
-    } else {
+    } elsif ($character =~ /\pM/) {
+      # a mark, consider it to be of lenght 0.
+    } elsif ($character =~ /\p{IsPrint}/) {
       $width += 1;
     }
   }

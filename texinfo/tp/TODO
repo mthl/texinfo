@@ -82,6 +82,12 @@ Test end_line_count in Texinfo/Convert/ containers.
 Test no empty line before and after a sectioning command.  With text, but
 also commands.
 
+Test character lengths and encoding.  For instance tests in 
+encodings/at_commands_in_refs_utf8.texi
+
+Image on sectioning command line haven't their length ignored correctly.
+Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
+
 Following should be an error:
 @example
 @heading A heading
