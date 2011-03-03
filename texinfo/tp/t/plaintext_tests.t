@@ -339,6 +339,18 @@ v
 'a. @^a'],
 ['invalid_accent_punctuation',
 'a. @^@@'],
+['sc_with_utf8_enable_encoding',
+'@documentencoding utf-8
+@sc{in sc}.
+'],
+['flushright_not_closed_and_format',
+'@flushright
+flushright
+
+@quotation 
+A quot---ation
+@end quotation
+'],
 );
 
 foreach my $test (@test_cases) {

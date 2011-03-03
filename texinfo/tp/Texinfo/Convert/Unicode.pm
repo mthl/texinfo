@@ -561,12 +561,13 @@ sub unicode_accent($$$)
   return &$fallback_convert_accent($text, $command);
 }
 
-sub unicode_text($$$)
+sub unicode_text($$$$)
 {
   my $self = shift;
+  my $text = shift;
   my $command = shift;
   my $context = shift;
-  my $text = $command->{'text'};
+  $text = $command->{'text'} if (!defined($text));
 
   if (!$context->{'code'} and !$context->{'preformatted'}) {
     $text =~ s/---/\x{2014}/g;

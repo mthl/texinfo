@@ -556,7 +556,8 @@ sub _process_text($$$)
   $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
   if ($self->{'ENABLE_ENCODING'} and $self->{'encoding_name'} 
       and $self->{'encoding_name'} eq 'utf-8') {
-    return Texinfo::Convert::Unicode::unicode_text($self, $command, $context);
+    return Texinfo::Convert::Unicode::unicode_text($self, $text, $command, 
+                                                   $context);
   } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;
@@ -840,15 +841,6 @@ sub _footnotes($;$)
   $self->{'footnote_index'} = 0;
 
   return $result;
-}
-
-sub flushright_index ($)
-{
-  my $self = shift;
-  my $index = -1;
-  $index--
-    while (!$flush_commands{$self->{'format_context'}->[$index]->{'cmdname'}});
-  return $index;
 }
 
 sub _align_lines($$$$$)
@@ -1784,7 +1776,9 @@ sub _convert($$)
       # use settitle for empty @top
       # ignore @part
       my $contents;
-      if (@{$root->{'extra'}->{'misc_content'}} and $root->{'cmdname'} ne 'part') {
+      if ($root->{'extra'}->{'misc_content'} 
+          and @{$root->{'extra'}->{'misc_content'}} 
+          and $root->{'cmdname'} ne 'part') {
         $contents = $root->{'extra'}->{'misc_content'};
       } elsif ($root->{'cmdname'} eq 'top'
           and $self->{'extra'}->{'settitle'} 
@@ -2399,7 +2393,7 @@ sub _convert($$)
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment ($result, 
-        $self->{'text_element_context'}->[$self->flushright_index]->{'max'}, 'right');
+        $self->{'text_element_context'}->[-1]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};
     delete $self->{'text_element_context'}->[-1]->{'counter'};
@@ -2411,11 +2405,11 @@ sub _convert($$)
     }
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment ($result, 
-        $self->{'text_element_context'}->[$self->flushright_index]->{'max'}, 'right');
+        $self->{'text_element_context'}->[-1]->{'max'}, 'right');
     }
     pop @{$self->{'formatters'}};
-    # We assume that, upon closing the preformatted we are at the 
-    # beginning of a line.
+    # We assume that, upon closing the preformatted we are at the 
+    # beginning of a line.
     delete $self->{'text_element_context'}->[-1]->{'counter'};
   }
 
