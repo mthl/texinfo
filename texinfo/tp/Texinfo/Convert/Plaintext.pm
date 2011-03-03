@@ -238,12 +238,10 @@ my %defaults = (
   'ENABLE_ENCODING'      => 1,
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
-#  'documentencoding'     => 'us-ascii',
-#  'encoding'             => 'us-ascii',
-#  'output_encoding'      => 'us-ascii',
-  'documentencoding'     => undef,
-  'encoding'             => undef,
-#  'output_encoding'      => undef,
+#  'perl_encoding'        => 'ascii',
+#  'encoding_name'      => 'us-ascii',
+  'encoding_name'        => undef,
+  'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
@@ -284,16 +282,24 @@ sub _informative_command($$)
 
   if (exists($root->{'extra'}->{'text_arg'})) {
     $self->{$root->{'cmdname'}} = $root->{'extra'}->{'text_arg'};
-    if ($root->{'cmdname'} eq 'documentencoding') {
-      if (defined($root->{'extra'})
-           and defined($root->{'extra'}->{'encoding_alias'})) {
-        $self->{'encoding'} = $root->{'extra'}->{'encoding_alias'};
-        if (defined($self->{'fh'})) {
-          binmode($self->{'fh'}, ":encoding($self->{'encoding'})");
-        }
-      } else {
-        $self->{'encoding'} = undef;
-      }
+    if ($root->{'cmdname'} eq 'documentencoding'
+        and defined($root->{'extra'})
+        and defined($root->{'extra'}->{'perl_encoding'})
+        and !$self->{'perl_encoding'}) {
+      $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
+      $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
+      # the following does not work with shifijs.  The encoding
+      # has to be set only once by open_out. 
+      #if (defined($self->{'fh'})) {
+      #  my $encoding = $self->{'perl_encoding'};
+      #  my $filehandle = $self->{'fh'};
+      #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
+      #    binmode($filehandle, ':utf8');
+      #  } else { # FIXME also right for shiftijs or similar encodings?
+      #    binmode($filehandle, ':bytes');
+      #  }
+      #  binmode($filehandle, ":encoding($encoding)");
+      #}
     }
   } elsif ($misc_commands{$root->{'cmdname'}} eq 'skipline') {
     $self->{$root->{'cmdname'}} = 1;
@@ -369,6 +375,10 @@ sub converter(;$)
       $converter->{'extra'} 
          = $converter->{'parser'}->global_commands_information();
       $converter->{'info'} = $converter->{'parser'}->global_informations();
+      if ($converter->{'info'} and $converter->{'info'}->{'perl_encoding'}) {
+        $converter->{'perl_encoding'} = $converter->{'info'}->{'perl_encoding'};
+        $converter->{'encoding_name'} = $converter->{'info'}->{'encoding_name'};
+      }
       my $floats = $converter->{'parser'}->floats_information();
       my $labels = $converter->{'parser'}->labels_information();
       $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
@@ -510,13 +520,13 @@ sub output($$)
   }
   
   my $fh = $self->Texinfo::Common::open_out ($outfile,
-                                             $self->{'encoding'});
+                                             $self->{'perl_encoding'});
   if (!$fh) {
     $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
                                   $outfile));
     return undef;
   }
-  $self->{'fh'} = $fh;
+  #$self->{'fh'} = $fh;
   my $result = $self->convert($root);
   if (defined($result)) {
     print $fh $result;
@@ -544,8 +554,8 @@ sub _process_text($$$)
   my $text = $command->{'text'};
 
   $text = uc($text) if ($self->{'formatters'}->[-1]->{'upper_case'});
-  if ($self->{'ENABLE_ENCODING'} and $self->{'documentencoding'} 
-      and $self->{'documentencoding'} eq 'utf-8') {
+  if ($self->{'ENABLE_ENCODING'} and $self->{'encoding_name'} 
+      and $self->{'encoding_name'} eq 'utf-8') {
     return Texinfo::Convert::Unicode::unicode_text($self, $command, $context);
   } elsif (!$context->{'code'} and !$context->{'preformatted'}) {
     $text =~ s/---/\x{1F}/g;
@@ -684,8 +694,8 @@ sub count_bytes($$)
   my $self = shift;
   my $string = shift;
 
-  if ($self->{'encoding'} and $self->{'encoding'} ne 'us-ascii') {
-    return length(Encode::encode($self->{'encoding'}, $string));
+  if ($self->{'perl_encoding'} and $self->{'perl_encoding'} ne 'ascii') {
+    return length(Encode::encode($self->{'perl_encoding'}, $string));
   } else {
     return length($string);
   }
@@ -1298,7 +1308,7 @@ sub _convert($$)
       return $result;
     } elsif (defined($text_brace_no_arg_commands{$root->{'cmdname'}})) {
       my $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
-                                                    $self->{'encoding'});
+                                              $self->{'encoding_name'});
       if ($punctuation_no_arg_commands{$command}) {
         $result .= $self->_count_added($formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
@@ -1324,7 +1334,7 @@ sub _convert($$)
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
       my $accented_text 
-         = Texinfo::Convert::Text::text_accents($root, $self->{'encoding'});
+         = Texinfo::Convert::Text::text_accents($root, $self->{'encoding_name'});
       $result .= $self->_count_added($formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text));
       # in case the text added ends with punctuation.  

@@ -95,15 +95,13 @@ my $strings_textdomain = 'texinfo_document';
 my $messages_textdomain = 'texinfo';
 
 # libintl converts between encodings but doesn't decode them into the
-# perl internal format.
+# perl internal format.  This is only caled if the encoding is a proper
+# perl encoding.
 sub encode_i18n_string($$)
 {
   my $string = shift;
   my $encoding = shift;
-  if (Encode::resolve_alias($encoding)) {
-    return Encode::decode($encoding, $string);
-  }
-  return $string;
+  return Encode::decode($encoding, $string);
 }
 
 # handle translations of in-document strings.
@@ -114,7 +112,7 @@ sub gdt($$$;$)
   my $context = shift;
   my $conf = shift;
 
-  my $encoding = $self->{'encoding'};
+  my $encoding = $self->{'encoding_name'};
 
   my $re = join '|', map { quotemeta $_ } keys %$context
       if (defined($context) and ref($context));
@@ -123,8 +121,10 @@ sub gdt($$$;$)
   Locale::Messages::textdomain($strings_textdomain);
   Locale::Messages::bind_textdomain_codeset($strings_textdomain, $encoding)
     if ($encoding and $encoding ne 'us-ascii');
-  Locale::Messages::bind_textdomain_filter($strings_textdomain,
-    \&encode_i18n_string, $encoding) if ($encoding and $encoding ne 'us-ascii');
+  if (!($encoding and $encoding eq 'us-ascii') and $self->{'perl_encoding'}) {
+    Locale::Messages::bind_textdomain_filter($strings_textdomain,
+      \&encode_i18n_string, $self->{'perl_encoding'});
+  }
 
   # FIXME do that in the converters when @documentlanguage is found.
   my $lang = $self->{'documentlanguage'};
@@ -241,7 +241,8 @@ our %default_configuration = (
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
   'novalidate' => 0,          # same as setting @novalidate.
-  'encoding' => undef,        # Current encoding set by @documentencoding
+  'perl_encoding' => undef,   # perl encoding name, set from @documentencoding
+  'encoding_name' => undef,   # Current encoding set by @documentencoding
                               # and normalized
   'documentlanguage' => undef, 
                               # Current documentlanguage set by 
@@ -254,7 +255,7 @@ our %default_configuration = (
 # The commands in initialization_overrides are not set in the document if
 # set at the parser initialization.
 my %initialization_overrides = (
-  'encoding' => 1,
+  'encoding_name' => 1,
   'documentlanguage' => 1,
 );
 
@@ -567,13 +568,6 @@ my %no_paragraph_contexts;
 foreach my $no_paragraph_context ('math', 'preformatted', 'menu', 'def') {
   $no_paragraph_contexts{$no_paragraph_context} = 1;
 };
-
-my %canonical_texinfo_encodings;
-# These are the encodings from the texinfo manual
-foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
-  'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u') {
-  $canonical_texinfo_encodings{$canonical_encoding} = 1;
-}
 
 
 
@@ -2286,8 +2280,8 @@ sub _end_line($$$)
             my $filehandle = do { local *FH };
             if (open ($filehandle, $file)) {
               $included_file = 1;
-              binmode($filehandle, ":encoding($self->{'encoding'})")
-                if (defined($self->{'encoding'}));
+              binmode($filehandle, ":encoding($self->{'perl_encoding'})")
+                if (defined($self->{'perl_encoding'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
               $included_file = 1;
               unshift @{$self->{'input'}}, { 
@@ -2304,23 +2298,27 @@ sub _end_line($$$)
                $command, $text), $line_nr);
           }
         } elsif ($command eq 'documentencoding') {
+          my ($texinfo_encoding, $perl_encoding, $output_encoding)
+            = Texinfo::Common::encoding_alias($text);
           $self->line_warn (sprintf($self->__("Encoding `%s' is not a canonical texinfo encoding"), 
                                    $text), $line_nr)
-            if (!$canonical_texinfo_encodings{lc($text)});
-          my $encoding = Encode::resolve_alias($text);
-          if (!$encoding) {
+            if (!$texinfo_encoding);
+          if (!$perl_encoding) {
             $self->line_warn (sprintf($self->__("unrecognized encoding name `%s'"), 
                        $text), $line_nr);
           } else {
-            $encoding = $Texinfo::Common::encoding_aliases{$encoding} 
-              if ($Texinfo::Common::encoding_aliases{$encoding});
-            $current->{'extra'}->{'encoding_alias'} =  $encoding;
+            if ($output_encoding) {
+              $current->{'extra'}->{'encoding_name'} = $output_encoding;
+            }
+            $current->{'extra'}->{'perl_encoding'} = $perl_encoding;
 
-            if (!$self->{'set'}->{'encoding'}) {
-              $self->{'encoding'} = $encoding;
-              print STDERR "Using encoding $encoding\n" if ($self->{'DEBUG'});
+            if (!$self->{'set'}->{'perl_encoding'}) {
+              $self->{'perl_encoding'} = $perl_encoding;
+              $self->{'info'}->{'perl_encoding'} = $perl_encoding;
+              $self->{'info'}->{'encoding_name'} = $output_encoding;
+              print STDERR "Using encoding $perl_encoding\n" if ($self->{'DEBUG'});
               foreach my $input (@{$self->{'input'}}) {
-                binmode($input->{'fh'}, ":encoding($encoding)") if ($input->{'fh'});
+                binmode($input->{'fh'}, ":encoding($perl_encoding)") if ($input->{'fh'});
               }
             }
           }

@@ -59,7 +59,8 @@ $result_trees{'invalid_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'encoding_alias' => 'us-ascii',
+        'encoding_name' => 'us-ascii',
+        'perl_encoding' => 'ascii',
         'text_arg' => 'us-ascii'
       },
       'line_nr' => {},

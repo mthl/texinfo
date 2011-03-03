@@ -1,3 +1,7 @@
+Fix encodings/at_commands_in_refs_utf8_use_nodes
+@sc{} doesn't seems to work anymore, now that 
+Texinfo::Convert::Unicode::unicode_text is really used in _process_text.
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd

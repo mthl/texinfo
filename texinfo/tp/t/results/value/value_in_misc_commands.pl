@@ -1554,7 +1554,8 @@ $result_trees{'value_in_misc_commands'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'encoding_alias' => 'iso-8859-1',
+            'encoding_name' => 'iso-8859-1',
+            'perl_encoding' => 'iso-8859-1',
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {

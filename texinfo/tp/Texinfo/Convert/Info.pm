@@ -128,13 +128,13 @@ sub output($)
   my $fh;
   if (! $self->{'OUTFILE'} eq '') {
     $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'}, 
-                                            $self->{'encoding'});
+                                            $self->{'perl_encoding'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
                                     $self->{'OUTFILE'}));
       return undef;
     }
-    $self->{'fh'} = $fh;
+    #$self->{'fh'} = $fh;
   }
   print STDERR "DOCUMENT\n" if ($self->{'DEBUG'});
   my $out_file_nr = 0;
@@ -190,14 +190,14 @@ sub output($)
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
                                $self->{'OUTFILE'}.'-'.$out_file_nr, 
-                               $self->{'encoding'});
+                               $self->{'perl_encoding'});
         if (!$fh) {
            $self->document_error(sprintf(
                   $self->__("Could not open %s for writing: $!"),
                   $self->{'OUTFILE'}.'-'.$out_file_nr));
            return undef;
         }
-        $self->{'fh'} = $fh;
+        #$self->{'fh'} = $fh;
         print $fh $header;
         $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
@@ -210,7 +210,7 @@ sub output($)
   if ($out_file_nr > 1) {
     close ($fh);
     $fh = $self->Texinfo::Common::open_out($self->{'OUTFILE'}, 
-                                           $self->{'encoding'});
+                                           $self->{'perl_encoding'});
     if (!$fh) {
       $self->document_error(sprintf(
             $self->__("Could not open %s for writing: $!"),
@@ -256,9 +256,8 @@ sub output($)
     $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
   }
   $tag_text .=  "\x{1F}\nEnd Tag Table\n";
-  my $coding = $self->{'encoding'};
-  #if ($coding and $coding ne 'us-ascii') {
-  if ($coding) {# and $coding ne 'us-ascii') {
+  my $coding = $self->{'encoding_name'};
+  if ($coding) {
     $tag_text .= "\n\x{1F}\nLocal Variables:\ncoding: $coding\nEnd:\n";
   }
   if ($fh) {

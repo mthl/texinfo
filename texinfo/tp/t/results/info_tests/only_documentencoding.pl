@@ -24,7 +24,8 @@ $result_trees{'only_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'encoding_alias' => 'iso-8859-1',
+        'encoding_name' => 'iso-8859-1',
+        'perl_encoding' => 'iso-8859-1',
         'text_arg' => 'ISO-8859-1'
       },
       'line_nr' => {

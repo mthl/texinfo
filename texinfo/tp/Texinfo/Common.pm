@@ -518,7 +518,7 @@ sub open_out ($$;$)
   if (defined($encoding)) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
-    } else {
+    } else { # FIXME also right for shiftijs or similar encodings?
       binmode($filehandle, ':bytes');
     }
     binmode($filehandle, ":encoding($encoding)");
@@ -550,6 +550,27 @@ sub warn_unknown_language($$) {
                             $region_code);
   }
   return @messages;
+}
+
+our %canonical_texinfo_encodings;
+# These are the encodings from the texinfo manual
+foreach my $canonical_encoding('us-ascii', 'utf-8', 'iso-8859-1',
+  'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u') {
+  $canonical_texinfo_encodings{$canonical_encoding} = 1;
+}
+
+sub encoding_alias ($)
+{
+  my $encoding = shift;
+  my $canonical_texinfo_encoding;
+  $canonical_texinfo_encoding 
+    = $encoding if ($canonical_texinfo_encodings{lc($encoding)});
+  my $perl_encoding = Encode::resolve_alias($encoding);
+  my $canonical_output_encoding;
+  if ($perl_encoding) {
+    $canonical_output_encoding = $encoding_aliases{$perl_encoding};
+  }
+  return ($canonical_texinfo_encoding, $perl_encoding, $canonical_output_encoding);
 }
 
 1;

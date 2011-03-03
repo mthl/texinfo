@@ -628,7 +628,7 @@ while(@input_files)
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
     my $macro_expand_fh = Texinfo::Common::open_out({}, $macro_expand_file,
-                                               $parser->{'encoding'});
+                                               $parser->{'perl_encoding'});
     if (defined ($macro_expand_fh)) {
       print $macro_expand_fh $texinfo_text;
       close ($macro_expand_fh);

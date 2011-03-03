@@ -38,7 +38,8 @@ $result_trees{'known_encoding'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'encoding_alias' => 'iso-8859-1',
+            'encoding_name' => 'iso-8859-1',
+            'perl_encoding' => 'iso-8859-1',
             'text_arg' => 'latin1'
           },
           'line_nr' => {
