@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-01-23.23; # UTC
+htmlxrefversion=2011-03-04.19; # UTC
 
-# Copyright 2010 Free Software Foundation, Inc.
+# Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -103,7 +103,7 @@ dico		node	${DICO}/html_node/
 
 diffutils	mono	${GS}/diffutils/manual/diffutils.html
 
-ed		mono	${GS}/ddrescue/manual/ed_manual.html
+ed		mono	${GS}/ed/manual/ed_manual.html
 
 EMACS = ${GS}/emacs/manual
 emacs		mono	${EMACS}/html_mono/emacs.html
@@ -315,7 +315,7 @@ gtypist		mono	${GS}/gtypist/doc/
 guile		mono	${GS}/guile/manual/guile.html
 guile		node	${GS}/guile/manual/html_node/
 
-GUILE_GNOME = ${GS}/software/guile-gnome/docs
+GUILE_GNOME = ${GS}/guile-gnome/docs
  gobject 	node	${GUILE_GNOME}/gobject/html/
  glib		node	${GUILE_GNOME}/glib/html/
  atk		node	${GUILE_GNOME}/atk/html/
@@ -364,7 +364,7 @@ libextractor	mono	${GS}/libextractor/extractor.html
 libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
 
-libmatheval	mono	${GS}/libmatheval/matheval.html
+libmatheval	mono	${GS}/libmatheval/manual/matheval.html
 
 LIBMICROHTTPD = http://www.gnu.org/software/libmicrohttpd/
  microhttpd	node	${LIBMICROHTTPD}/microhttpd.html

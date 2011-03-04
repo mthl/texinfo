@@ -1,8 +1,14 @@
+2011-03-04  Karl Berry  <karl@gnu.org>
+
+	* util/htmlxref.cnf (ed, GUILE_GNOME, libmatheval): typos,
+	report from webmaster Shailesh Gadge.
+
 2011-02-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Raw Formatter Commands),
 	(Conditionals Commands): be clearer that @if... delimits standard
 	Texinfo source, and the commands allowed in @iftex are exceptions.
+	Mention newlines.
 
 2011-02-27  Karl Berry  <karl@gnu.org>
 
