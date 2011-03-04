@@ -1128,10 +1128,8 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
 
-  #my $formatter;
-  #if (@{$self->{'formatters'}}) {
   my $formatter = $self->{'formatters'}->[-1];
-  #}
+
   if ($self->{'DEBUG'}) {
     my $is_top_formatter = 0;
     $is_top_formatter = 1 if ($formatter->{'_top_formatter'});
@@ -1729,7 +1727,8 @@ sub _convert($$)
                  2+Texinfo::Convert::Unicode::string_width($formatted_prototype);
           }
         }
-        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($self->{'DEBUG'});
+        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($columnsize 
+                                                         and $self->{'DEBUG'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
         $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
           = $self->{'empty_lines_count'};
@@ -1854,6 +1853,7 @@ sub _convert($$)
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
       } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
+        
         # FIXME convert_line and no array of contents?
         $result = $self->_convert(
           {'contents' => 

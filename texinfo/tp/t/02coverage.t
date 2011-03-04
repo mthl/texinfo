@@ -470,7 +470,7 @@ In float with caption.
 '],
 ['test_tie',
 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@tie{}BBBBBBBBBBB
-']
+'],
 );
 
 my @test_invalid = (

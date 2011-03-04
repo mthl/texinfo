@@ -353,6 +353,172 @@ A quot---ation
 '],
 );
 
+my @deep_recursion_tests = (
+# more than 100 calls
+['deep_recursion_in_formats',
+'
+@enumerate
+@item
+@example
+@example
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@itemize truc
+@item
+@table @asis
+@item t
+@smallexample
+@enumerate
+@item
+
+@end enumerate
+@end smallexample
+@end table
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end itemize
+@end example
+@end example
+@end enumerate
+'],
+['deep_recursion_in_brace_commands',
+'@code{@samp{@code{@sc{@b{@var{@code{@samp{@code{@sc{@b{@var{
+@code{@samp{@code{@sc{@b{@var{@code{@samp{@code{@sc{@b{@var{
+@code{@samp{@code{@sc{@b{@var{@code{@samp{@code{@sc{@b{@var{
+@code{@samp{@code{@sc{@b{@var{@code{@samp{@code{@sc{@b{@var{
+@code{@samp{@code{@sc{@b{@var{@code{@samp{@code{@sc{@b{@var{
+}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+'],
+);
+
 foreach my $test (@test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
 }

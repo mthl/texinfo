@@ -104,6 +104,7 @@ sub cmp_trimmed($$$$)
   my $deleted_keys = shift;
   my $test_name = shift;
   my $trimmed = remove_keys ($compared, $deleted_keys);
+no warnings 'recursion';
   cmp_deeply($trimmed, $reference, $test_name);
 }
 

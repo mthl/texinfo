@@ -2632,7 +2632,7 @@ sub _parse_texi($;$)
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
-      print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+      #print STDERR "".Data::Dumper->Dump([$root], ['$root']);
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
       print STDERR "NEW LINE($self->{'context_stack'}->[-1]:@{$self->{'conditionals_stack'}}:$line_text): $line";
