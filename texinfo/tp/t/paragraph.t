@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 110 };
+BEGIN { plan tests => 115 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
@@ -147,6 +147,44 @@ $result .= $para->add_next('_');
 $result .= $para->add_text("b");
 $result .= $para->end();
 is ($result, "aa.  _b\n", 'add char after space protection end sentence space');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_text("b");
+$result .= $para->set_space_protection(undef,undef,undef,0);
+$result .= $para->add_text(". after");
+$result .= $para->end();
+is ($result, "b.  after\n", 'punctuation after end space protection');
+
+$para = Texinfo::Convert::Paragraph->new();
+#$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
+$result = '';
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_text("b.");
+$result .= $para->set_space_protection(undef,undef,undef,0);
+$result .= $para->add_text(" follow");
+$result .= $para->end();
+is ($result, "b. follow\n", 'punctuation before end space protection');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_text("b.");
+$result .= $para->set_space_protection(undef,undef,undef,0);
+$result .= $para->add_text("  follow");
+$result .= $para->end();
+is ($result, "b. follow\n", 'punctuation before end space protection 2 space');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->set_space_protection(undef,undef,undef,1);
+$result .= $para->add_text("b. ");
+$result .= $para->set_space_protection(undef,undef,undef,0);
+$result .= $para->add_text(" follow");
+$result .= $para->end();
+is ($result, "b. follow\n", 'punctuation space before end space protection');
+
 
 $para = Texinfo::Convert::Paragraph->new();
 #$para = Texinfo::Convert::Paragraph->new({'DEBUG' => 1});
@@ -551,6 +589,15 @@ $result .= $line->set_space_protection(undef,undef,undef,0);
 $result .= $line->add_text(". after");
 $result .= $line->end();
 is ($result, "aa.  _b.  after", 'line add char after space protection end sentence space');
+
+$line = Texinfo::Convert::Line->new();
+$result = '';
+$result .= $line->set_space_protection(undef,undef,undef,1);
+$result .= $line->add_text("b.");
+$result .= $line->set_space_protection(undef,undef,undef,0);
+$result .= $line->add_text("  follow");
+$result .= $line->end();
+is ($result, "b. follow", 'line punctuation before end space protection 2 space');
 
 $line = Texinfo::Convert::Line->new();
 $result = '';

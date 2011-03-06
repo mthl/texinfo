@@ -339,6 +339,33 @@ v
 'a. @^a'],
 ['invalid_accent_punctuation',
 'a. @^@@'],
+['punctuation_in_command',
+'
+Text. Email @email{a. b,a. b} dmn @dmn{1. 2} and text. indicateurl @indicateurl{i. u} and then kbd @kbd{k. d} and math @math{m. a} and cite @cite{c. e} and emph @emph{e. h} text. 
+asis in code @code{@asis{a. c}}
+'],
+['punctuation_at_end_command',
+'
+Text. Email @email{.,.} dmn @dmn{1.} and text. indicateurl @indicateurl{.} and 
+then kbd @kbd{.} and math @math{.} and cite @cite{.} and emph @emph{.} text. 
+asis in code @code{@asis{.}} text. a dot before a emph open .@emph{ and in emph.}
+'],
+['punctuation_in_command_end_line',
+'Text. Email @email{.,.}
+dmn @dmn{1.}
+and text. indicateurl @indicateurl{.}
+and then kbd @kbd{.}
+and math @math{.}
+and cite @cite{.}
+and emph @emph{.}
+text. asis in code @code{@asis{.}}
+text. a dot before a emph open .@emph{
+and in emph.}
+'],
+['after_punctuation_character_in_command',
+'Text.@asis{)
+follows}.
+'],
 ['sc_with_utf8_enable_encoding',
 '@documentencoding utf-8
 @sc{in sc}.

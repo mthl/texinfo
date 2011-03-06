@@ -169,7 +169,9 @@ sub _add_next($;$$$)
   if (defined($word)) {
     if (!defined($line->{'word'})) {
       $line->{'word'} = '';
-      if ($line->{'end_sentence'} and !$line->{'frenchspacing'}
+      if ($line->{'end_sentence'}
+          and $line->{'end_sentence'} > 0
+          and !$line->{'frenchspacing'}
            and !$line->{'line_beginning'} and $line->{'space'}) {
         if ($word !~ /^\s/) {
           $line->{'space'} = '  ';
@@ -257,7 +259,9 @@ sub add_text($$)
         $result .= $line->_add_pending_word();
 
         if (!$line->{'line_beginning'}) {
-          if (!$line->{'frenchspacing'} and $line->{'end_sentence'}) {
+          if (!$line->{'frenchspacing'}
+               and $line->{'end_sentence'}
+               and $line->{'end_sentence'} > 0) {
             if (length($line->{'space'}) >= 1 or length($spaces) > 1) {
               $line->{'space'} = '  ';
               delete $line->{'end_sentence'};
@@ -278,12 +282,16 @@ sub add_text($$)
         # do nothing in the case of a continuation of after_punctuation_characters
       } elsif ($line->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
            and $line->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
-        $line->{'end_sentence'} = 1;
+        if ($line->{'frenchspacing'}) {
+          $line->{'end_sentence'} = -1;
+        } else {
+          $line->{'end_sentence'} = 1;
+        }
         print STDERR "END_SENTENCE.L\n" if ($line->{'DEBUG'});
       } else {
-        delete $line->{'end_sentence'};
         print STDERR "delete END_SENTENCE.L($line->{'end_sentence'}): text\n" 
           if (defined($line->{'end_sentence'}) and $line->{'DEBUG'});
+        delete $line->{'end_sentence'};
       }
     } elsif ($text =~ s/^\n//) {
       $result .= $line->_end_line();

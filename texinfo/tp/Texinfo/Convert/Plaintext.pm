@@ -226,8 +226,9 @@ $style_map{'key'} = ['<', '>'];
 $style_map{'indicateurl'} = ['<', '>'];
 
 # in those commands, there is no addition of double space after a dot.
+# math is special
 my %no_punctation_munging_commands;
-foreach my $command ('var', 'cite', 'math', keys(%code_style_commands)) {
+foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
   $no_punctation_munging_commands{$command} = 1;
 }
 
@@ -1335,8 +1336,9 @@ sub _convert($$)
       return $result;
     } elsif ($style_map{$command} 
          or ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command')) {
-      if ($code_style_commands{$command}) {
-        $formatter->{'code'}++;
+      $formatter->{'code'}++
+        if ($code_style_commands{$command});
+      if ($no_punctation_munging_commands{$command}) {
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
         $formatter->{'container'}->set_space_protection(undef,
           undef,undef,1);
@@ -1379,6 +1381,8 @@ sub _convert($$)
       }
       if ($code_style_commands{$command}) {
         $formatter->{'code'}--;
+      }
+      if ($no_punctation_munging_commands{$command}) {
         pop @{$formatter->{'frenchspacing_stack'}};
         my $frenchspacing = 0;
         $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
@@ -1631,7 +1635,8 @@ sub _convert($$)
     } elsif ($command eq 'math') {
       push @{$self->{'context'}}, 'math';
       if ($root->{'args'}) {
-        $result .= $self->_convert($root->{'args'}->[0]);
+        $result .= $self->_convert({'type' => 'frenchspacing',
+             'contents' => [$root->{'args'}->[0]]});
       }
       my $old_context = pop @{$self->{'context'}};
       die if ($old_context ne 'math');

@@ -183,7 +183,9 @@ sub _add_next($;$$$)
   if (defined($word)) {
     if (!defined($paragraph->{'word'})) {
       $paragraph->{'word'} = '';
-      if ($paragraph->{'end_sentence'} and !$paragraph->{'frenchspacing'}
+      if ($paragraph->{'end_sentence'} 
+           and $paragraph->{'end_sentence'} > 0
+           and !$paragraph->{'frenchspacing'}
            and $paragraph->{'counter'} != 0 and $paragraph->{'space'}) {
         if ($word !~ /^\s/) {
           $paragraph->{'space'} = '  ';
@@ -284,7 +286,9 @@ sub add_text($$)
         $paragraph->{'word_counter'} += length($spaces);
         #$paragraph->{'space'} .= $spaces;
         if ($paragraph->{'word'} =~ s/\n/ /g 
-           and !$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
+           and !$paragraph->{'frenchspacing'} 
+           and $paragraph->{'end_sentence'}
+           and $paragraph->{'end_sentence'} > 0) {
           $paragraph->{'word'} =~ /(\s*)$/;
           if (length($1) < 2) {
             $paragraph->{'word'} =~ s/(\s*)$/  /;
@@ -302,7 +306,9 @@ sub add_text($$)
       } else {
         $result .= $paragraph->_add_pending_word();
         if ($paragraph->{'counter'} != 0) {
-          if (!$paragraph->{'frenchspacing'} and $paragraph->{'end_sentence'}) {
+          if (!$paragraph->{'frenchspacing'} 
+              and $paragraph->{'end_sentence'} 
+              and $paragraph->{'end_sentence'} > 0) {
             if (length($paragraph->{'space'}) >= 1 or length($spaces) > 1) {
               $paragraph->{'space'} = '  ';
               delete $paragraph->{'end_sentence'};
@@ -347,7 +353,11 @@ sub add_text($$)
         # do nothing in the case of a continuation of after_punctuation_characters
       } elsif ($paragraph->{'word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
            and $paragraph->{'word'} !~ /[[:upper:]][$end_sentence_character][$after_punctuation_characters]*$/) {
-        $paragraph->{'end_sentence'} = 1;
+        if ($paragraph->{'frenchspacing'}) {
+          $paragraph->{'end_sentence'} = -1;
+        } else {
+          $paragraph->{'end_sentence'} = 1;
+        }
         print STDERR "END_SENTENCE\n" if ($paragraph->{'DEBUG'});
       } else {
         delete $paragraph->{'end_sentence'};
