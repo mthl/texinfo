@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-03-04.19; # UTC
+htmlxrefversion=2011-03-06.18; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -175,8 +175,8 @@ emacs		node	${EMACS}/html_node/
  semantic	mono	${EMACS}/html_mono/semantic.html
  semantic	node	${EMACS}/html_node/semantic/
  #
- smtp		mono	${EMACS}/html_mono/smtp.html
- smtp		node	${EMACS}/html_node/smtp/
+ smtp		mono	${EMACS}/html_mono/smtpmail.html
+ smtp		node	${EMACS}/html_node/smtpmail/
  #
  speedbar	mono	${EMACS}/html_mono/speedbar.html
  speedbar	node	${EMACS}/html_node/speedbar/
@@ -410,6 +410,8 @@ MIT_SCHEME = http://www.gnu.org/software/mit-scheme/documentation
 moe		mono	${GS}/moe/manual/moe_manual.html
 
 motti		node	${GS}/motti/manual/
+
+mpc		node	http://www.multiprecision.org/index.php?prog=mpc&page=html
 
 mpfr		mono	http://www.mpfr.org/mpfr-current/mpfr.html
 
