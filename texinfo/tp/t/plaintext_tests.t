@@ -395,7 +395,144 @@ end footnote}
 '@documentencoding utf-8
 
 @var{AA@,c @u{r} @`e}.
-']
+'],
+['sp_with_text_before_in_example',
+'
+@example
+sp@sp 4
+text
+@end example
+'],
+);
+
+my $at_commands_glued_text = 'at@@.
+TeX@TeX{}TeX.
+code@code{in code}code.
+acronym@acronym{ABC, aaa bb cc}acronym.
+acronym2@acronym{ABC}acronym.
+email@email{somebody, mali}email.
+ref@ref{Top}ref.
+Foornote@footnote{in footnote}after footnote.
+accent@^{@dotless{i}}accent.
+and star@*star.
+noindent@noindent after noindent
+sp@sp 4
+anchor@anchor{anchor}anchor
+index@cindex index
+';
+
+my @at_commands_glued_tests = (
+['at_commands_glued_in_paragraph',
+$at_commands_glued_text
+],
+['at_commands_glued_in_example',
+'@example'."\n".$at_commands_glued_text.'@end example'."\n"],
+);
+
+push @test_cases, @at_commands_glued_tests;
+
+my $punctuation_text = '
+Dot. Exclam! Question? Dot.  Exclam!  Question?  GAAA.
+
+End of lines Dot.
+Exclam!
+Question?
+End.
+
+End of lines and spaces
+Dot.
+Exclam!
+Question?
+End.
+
+With paren.) paren.)  Symb.)"\'] Symb.)"\']  End.
+
+End of lines paren.)
+Symb.)"\']
+End.
+
+End of lines and spaces paren.)
+Symb.)"\']
+End.
+';
+
+push @test_cases, (
+['punctuation',
+$punctuation_text
+],
+['punctuation_frenchspacing',
+'@frenchspacing'."\n".$punctuation_text],
+);
+
+
+my $punctuation_commands_text = '
+Dot@. Exclam@! Question@? Dot@.  Exclam@!  Question@?  GAAA.
+
+Enddots@enddots{} Enddots@enddots{}  GBBB.
+
+End of lines Dot@.
+Exclam@!
+Question@?
+Enddots@enddots{}
+End.
+
+End of lines and spaces
+Dot@.
+Exclam@!
+Question@?
+Enddots@enddots{}
+End.
+
+With paren@.) paren@.)  Symb@.)"\'] Symb@.)"\']  End.
+
+End of lines paren@.)
+Symb@.)"\']
+End.
+
+End of lines and spaces paren@.)
+Symb@.)"\']
+End.
+';
+
+push @test_cases, (
+['punctuation_commands',
+$punctuation_commands_text
+],
+['punctuation_commands_frenchspacing',
+'@frenchspacing'."\n".$punctuation_commands_text],
+);
+
+my $no_punctuation_commands_text = '
+Dot.@: Exclam!@: Question?@: Dot.@:  Exclam!@:  Question?@:  GAAA.
+
+End of lines Dot.@:
+Exclam!@:
+Question?@:
+End.
+
+End of lines and spaces
+Dot.@:
+Exclam!@:
+Question?@:
+End.
+
+With paren.@:) paren.@:)  Symb.@:)"\'] Symb.@:)"\']  End.
+
+End of lines paren.@:)
+Symb.@:)"\']
+End.
+
+End of lines and spaces paren.@:)
+Symb.@:)"\']
+End.
+';
+
+push @test_cases, (
+['no_punctuation_commands',
+$no_punctuation_commands_text
+],
+['no_punctuation_commands_frenchspacing',
+'@frenchspacing'."\n".$no_punctuation_commands_text],
 );
 
 my @deep_recursion_tests = (

@@ -7,7 +7,9 @@ my @test_cases = (
 '@TeX{}. Ab. @@. @
 @~e, @^{@dotless{i}}
 
-Hohoh
+Hohoh@sp 2
+
+@sp 3
 
 @example 
 truc

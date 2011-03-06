@@ -2047,10 +2047,12 @@ sub _convert($$)
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
-        $result = "\n" x $sp_nr;
-        $self->_add_text_count($result);
+        for (my $i = 0; $i < $sp_nr; $i++) {
+          $result .= $self->_count_added($formatter->{'container'},
+                $formatter->{'container'}->end_line());
+        }
         $self->{'empty_lines_count'} += $sp_nr;
-        $self->_add_lines_count($sp_nr);
+        delete $self->{'text_element_context'}->[-1]->{'counter'};
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'contents') {
