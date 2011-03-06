@@ -2126,12 +2126,12 @@ sub _convert($$)
                                                    'locations' => []};
       }
     } elsif ($root->{'type'} eq 'preformatted') {
-        $preformatted = $self->new_formatter('unfilled');
-        push @{$self->{'formatters'}}, $preformatted;
-        if ($self->{'context'}->[-1] eq 'flushright') {
-          push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
-                                                     'locations' => []};
-        }
+      $preformatted = $self->new_formatter('unfilled');
+      push @{$self->{'formatters'}}, $preformatted;
+      if ($self->{'context'}->[-1] eq 'flushright') {
+        push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+                                                   'locations' => []};
+      }
     } elsif ($root->{'type'} eq 'def_line') {
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
              and @{$root->{'extra'}->{'def_args'}}) {
@@ -2172,6 +2172,7 @@ sub _convert($$)
                                       $def_paragraph->{'container'}->end());
 
         pop @{$self->{'formatters'}};
+        delete $self->{'text_element_context'}->[-1]->{'counter'};
         $self->{'empty_lines_count'} = 0;
         print STDERR "     --> $result" if ($self->{'DEBUG'});
       }

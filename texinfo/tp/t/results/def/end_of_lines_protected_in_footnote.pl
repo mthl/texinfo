@@ -397,7 +397,7 @@ $result_converted{'plaintext'}->{'end_of_lines_protected_in_footnote'} = '(1)
 
    (1)  -- category: deffn_name arguments arg2 more args with end of
           line within with 3 @ @ one last arg
-deffn
+     deffn
 
 ';
 

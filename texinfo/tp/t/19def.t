@@ -355,6 +355,9 @@ Text in preformatted.
 ['end_of_line_protect_at_end',
 '
 @deffn category2 deffn_name2 arguments2 @'],
+['end_of_line_end_file',
+'@deffn category deffn_name arguments @
+'],
 # the command with type is compared with the corresponding command without type
 ['empty_deftype',
 '@deftypefun {} f (const type& x)

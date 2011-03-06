@@ -244,7 +244,7 @@ sub set_space_protection($$;$$$)
     and $paragraph->{'end_sentence'} and $paragraph->{'counter'} != 0 
     and $paragraph->{'space'} and !defined($paragraph->{'word'})) {
     $paragraph->{'space'} = '  ';
-    print STDERR "SWITCH.L frenchspacing end sentence space\n" 
+    print STDERR "SWITCH frenchspacing end sentence space\n" 
        if ($paragraph->{'DEBUG'});
     delete $paragraph->{'end_sentence'};
   }
@@ -272,7 +272,7 @@ sub add_text($$)
     if ($paragraph->{'DEBUG'}) {
       my $word = 'UNDEF';
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
-      print STDERR "($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
+      print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
     }
     if ($text =~ s/^(\s+)//) {
       my $spaces = $1;
