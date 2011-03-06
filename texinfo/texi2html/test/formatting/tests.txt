@@ -29,7 +29,7 @@ texi symbol_after_command.texi
 texi html-extrali.texi
 texi html-para.texi
 texi html-title.texi
-texi images.texi --init docbook.init
+texi images.texi --docbook
 texi index_in_item_line_table.texi
 texi index_in_item_line_vtable.texi
 texi index_in_item_line_table_in_code.texi
@@ -61,7 +61,7 @@ texi itemize_w.texi
 # for makeinfo
 texi ../coverage/formatting.texi -U texi2html
 def_cmds def_cmds.texi
-def_cmds_info def_cmds.texi --init info.init
+def_cmds_info def_cmds.texi --info
 menus menus.texi
 menus_simple menus.texi --set-init-var 'SIMPLE_MENU 1'
 test_menuentry test_menuentry.texi
@@ -107,22 +107,22 @@ html-extrali html-extrali.texi --init makeinfo.init
 html-para html-para.texi
 html-title html-title.texi
 images images.texi
-images_docbook images.texi --init docbook.init
-float_docbook ../coverage/float.texi --init docbook.init -U texi2html
-formatting_docbook ../coverage/formatting.texi --init docbook.init -U texi2html
-formatting_xml ../coverage/formatting.texi --init xml.init -U texi2html
+images_docbook images.texi --docbook
+float_docbook ../coverage/float.texi --docbook -U texi2html
+formatting_docbook ../coverage/formatting.texi --docbook -U texi2html
+formatting_xml ../coverage/formatting.texi --xml -U texi2html
 index_in_item_line_table index_in_item_line_table.texi 
 index_in_item_line_vtable index_in_item_line_vtable.texi
 index_in_item_line_table_in_code index_in_item_line_table_in_code.texi
 index_in_item_line_vtable_printindex index_in_item_line_vtable_printindex.texi
 table_in_table_item table_in_table_item.texi
-menus_xml menus.texi --init xml.init
-menus_xml_makeinfo menus.texi --init xml.init -U texi2html
-float_xml ../coverage/float.texi --init xml.init
+menus_xml menus.texi --xml
+menus_xml_makeinfo menus.texi --xml -U texi2html
+float_xml ../coverage/float.texi --xml
 nested_formats nested_formats.texi
 inter_item_commands inter_item_commands.texi
-inter_item_commands_xml inter_item_commands.texi --init xml.init
-inter_item_commands_docbook inter_item_commands.texi --init docbook.init
+inter_item_commands_xml inter_item_commands.texi --xml
+inter_item_commands_docbook inter_item_commands.texi --docbook
 double_style_paragraph double_style_paragraph.texi
 at_command_glued at_command_glued.texi
 test_sp test_sp.texi
@@ -145,22 +145,22 @@ itemize_w itemize_w.texi
 
 #lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.init
 quotation_docbook quotation.texi --docbook
-at_command_glued_info at_command_glued.texi --init info.init
-test_sp_info test_sp.texi --init info.init
-kbdinputstyle_info kbdinputstyle.texi --init info.init
-simple_images_info simple_images.texi --init info.init
-nested_formats_info nested_formats.texi --init info.init
+at_command_glued_info at_command_glued.texi --info
+test_sp_info test_sp.texi --info
+kbdinputstyle_info kbdinputstyle.texi --info
+simple_images_info simple_images.texi --info
+nested_formats_info nested_formats.texi --info
 formatting_html ../coverage/formatting.texi --html --no-split
 formatting_html_nodes ../coverage/formatting.texi --html --split node --node-files --set-init-var 'TOP_FILE index.html'
-formatting_info ../coverage/formatting.texi --init info.init -U texi2html
+formatting_info ../coverage/formatting.texi --info -U texi2html
 formatting_plaintext ../coverage/formatting.texi --plaintext -U texi2html
 #formatting_mediawiki ../coverage/formatting.texi --init mediawiki.init
-direntry_dircategory_info direntry_dircategory.texi --init info.init
-direntry_dircategory_info_split direntry_dircategory.texi --init info.init --split-size 1
-direntry_dircategory_xml direntry_dircategory.texi --init xml.init
-heading_info heading.texi --init info.init
-nested_table_info nested_table.texi --init info.init
-simple_table_info simple_table.texi --init info.init
+direntry_dircategory_info direntry_dircategory.texi --info
+direntry_dircategory_info_split direntry_dircategory.texi --info --split-size 1
+direntry_dircategory_xml direntry_dircategory.texi --xml
+heading_info heading.texi --info
+nested_table_info nested_table.texi --info
+simple_table_info simple_table.texi --info
 allowcodebreaks allowcodebreaks.texi
 format_in_titlepage format_in_titlepage.texi
 menu_title_before_entries menu_title_before_entries.texi
