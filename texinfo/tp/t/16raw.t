@@ -151,6 +151,93 @@ In verbatim in quotation
 in quotation after end verbaatim
 @end quotation
 '],
+['raw_commands_and_end_of_lines',
+'
+@html
+Surrounded by empty lines.
+@end html
+
+Block commands on a line
+@html
+in block
+in block l2
+@end html
+end commands on a line.
+
+Before the opening command @html
+in block
+@end html
+end commands on a line.
+
+Before the opening command @html
+in block
+@end html after the closing command.
+
+Before the opening command @html
+in block
+@end html
+. A symbol on a line.
+
+Before the opening command @html
+in block
+@end html. A symbol after the closing command.
+
+@tex
+Surrounded by empty lines.
+@end tex
+
+Block commands on a line
+@tex
+in block
+@end tex
+end commands on a line.
+
+Before the opening command @tex
+in block
+@end tex
+end commands on a line.
+
+Before the opening command @tex
+in block
+@end tex after the closing command.
+
+Before the opening command @tex
+in block
+@end tex
+. A symbol on a line.
+
+Before the opening command @tex
+in block
+@end tex. A symbol after the closing command.
+
+@verbatim
+Surrounded by empty lines.
+@end verbatim
+
+Block commands on a line
+@verbatim
+in block
+@end verbatim
+end commands on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim
+end commands on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim after the closing command.
+
+Before the opening command @verbatim
+in block
+@end verbatim
+. A symbol on a line.
+
+Before the opening command @verbatim
+in block
+@end verbatim. A symbol after the closing command.
+'],
 );
 
 my @test_invalid = (

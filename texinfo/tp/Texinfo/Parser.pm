@@ -2752,6 +2752,13 @@ sub _parse_texi($;$)
           push @{$current->{'contents'}}, 
             { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
               if ($1 ne '');
+          # the condition $line !~ /^\s*@/ leads to no warning when followed by
+          # any @-command.  This is in order to avoid warnings for correct
+          # constructs, like @comment after @end raw
+          $self->line_warn (sprintf($self->
+                __("Superfluous argument to \@%s %s: %s"), 'end', $end_command,
+                                    $line), $line_nr)
+            if ($line =~ /\S/ and $line !~ /^\s*@/);
           # store toplevel macro specification
           if (($end_command eq 'macro' or $end_command eq 'rmacro') 
                and (! $current->{'parent'} 

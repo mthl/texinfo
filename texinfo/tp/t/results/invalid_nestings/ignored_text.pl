@@ -63,6 +63,15 @@ $result_errors{'ignored_text'} = [
     'macro' => '',
     'text' => '@ifinfo should only appear at a line beginning',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: Superfluous argument to @end ifinfo:  on the node line
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end ifinfo:  on the node line',
+    'type' => 'warning'
   }
 ];
 
