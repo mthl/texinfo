@@ -275,9 +275,47 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
           },
           'parent' => {},
           'type' => 'row'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'multitable'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'multitable',
+            'text_arg' => 'multitable'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
+        'end_command' => {},
         'max_columns' => 1,
         'prototypes' => [
           {
@@ -293,12 +331,6 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -349,10 +381,16 @@ $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[3];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0];
+$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'contents'}[4];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_one_column_too_much_cells'}{'contents'}[0]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'};
-$result_trees{'multitable_one_column_too_much_cells'}{'contents'}[1]{'parent'} = $result_trees{'multitable_one_column_too_much_cells'};
 
 $result_texis{'multitable_one_column_too_much_cells'} = '@multitable {a}
 @item a  additional tab  other additional tab  3rd  additiona tab

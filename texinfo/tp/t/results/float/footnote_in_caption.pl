@@ -197,6 +197,43 @@ $result_trees{'footnote_in_caption'} = {
               'parent' => {},
               'text' => '
 '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'float'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'float',
+                'text_arg' => 'float'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
           'extra' => {
@@ -209,6 +246,7 @@ $result_trees{'footnote_in_caption'} = {
               ]
             ],
             'caption' => {},
+            'end_command' => {},
             'node_content' => [
               {}
             ],
@@ -227,12 +265,6 @@ $result_trees{'footnote_in_caption'} = {
           },
           'number' => 1,
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       ],
       'extra' => {
@@ -289,13 +321,19 @@ $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'command'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'caption'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
-$result_trees{'footnote_in_caption'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'footnote_in_caption'}{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_caption'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'footnote_in_caption'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'footnote_in_caption'}{'contents'}[1]{'parent'} = $result_trees{'footnote_in_caption'};
@@ -356,6 +394,14 @@ $result_floats{'footnote_in_caption'} = {
             'float' => {}
           }
         },
+        'end_command' => {
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'float',
+            'text_arg' => 'float'
+          }
+        },
         'normalized' => 'label',
         'type' => {
           'content' => [
@@ -371,6 +417,7 @@ $result_floats{'footnote_in_caption'} = {
   ]
 };
 $result_floats{'footnote_in_caption'}{'fl'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'footnote_in_caption'}{'fl'}[0];
+$result_floats{'footnote_in_caption'}{'fl'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'footnote_in_caption'}{'fl'}[0];
 
 
 

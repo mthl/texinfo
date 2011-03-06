@@ -47,7 +47,8 @@ $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'parent'} = $
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'};
 
 $result_texis{'menu_no_closed_star'} = '@menu
-* @end menu';
+* @end menu
+';
 
 
 $result_texts{'menu_no_closed_star'} = '* ';

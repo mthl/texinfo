@@ -23,19 +23,48 @@ $result_trees{'cartouche'} = {
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'cartouche'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'cartouche',
+            'text_arg' => 'cartouche'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -43,8 +72,13 @@ $result_trees{'cartouche'} = {
 $result_trees{'cartouche'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cartouche'}{'contents'}[0];
 $result_trees{'cartouche'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'cartouche'}{'contents'}[0]{'contents'}[1];
 $result_trees{'cartouche'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'cartouche'}{'contents'}[0];
+$result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cartouche'}{'contents'}[0]{'contents'}[2];
+$result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'cartouche'}{'contents'}[0];
+$result_trees{'cartouche'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'cartouche'}{'contents'}[0];
+$result_trees{'cartouche'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'cartouche'}{'contents'}[0]{'contents'}[2];
 $result_trees{'cartouche'}{'contents'}[0]{'parent'} = $result_trees{'cartouche'};
-$result_trees{'cartouche'}{'contents'}[1]{'parent'} = $result_trees{'cartouche'};
 
 $result_texis{'cartouche'} = '@cartouche
 in cartouche.

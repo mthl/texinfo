@@ -100,6 +100,7 @@ foreach my $no_brace_command ('*',' ',"\t","\n",'-', '|', '/',':','!',
 our %misc_commands = (
   'node'              => 'line', # special arg
   'bye'               => 'skipline', # no arg
+  'end'               => 'text',
   # set, clear
   'set'               => 'special', # special arg
   'clear'             => 'special', # special arg

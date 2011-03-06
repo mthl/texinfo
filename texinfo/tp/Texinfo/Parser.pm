@@ -1127,6 +1127,13 @@ sub _close_command_cleanup($$$) {
         $before_item = $current->{'contents'}->[0];
       }
       if ($before_item) {
+        if ($current->{'extra'}->{'end_command'}
+            and @{$before_item->{'contents'}} 
+            and $before_item->{'contents'}->[-1] eq $current->{'extra'}->{'end_command'}) {
+          my $end = pop @{$before_item->{'contents'}};
+          $end->{'parent'} = $current;
+          push @{$current->{'contents'}}, $end;
+        }
         # remove empty before_items
         if (!@{$before_item->{'contents'}}) {
           if ($leading_spaces) {
@@ -1151,7 +1158,8 @@ sub _close_command_cleanup($$$) {
               next if ($format_content eq $before_item);
               if (($format_content->{'cmdname'} and 
                    ($format_content->{'cmdname'} ne 'c'
-                    or $format_content->{'cmdname'} ne 'comment'))
+                    and $format_content->{'cmdname'} ne 'comment'
+                    and $format_content->{'cmdname'} ne 'end'))
                   or ($format_content->{'type'} and
                     ($format_content->{'type'} ne 'empty_line_after_command'))) {
                 $empty_format = 0;
@@ -1266,7 +1274,7 @@ sub _close_commands($$$;$)
     pop @{$self->{'regions_stack'}} 
        if ($region_commands{$current->{'cmdname'}});
     $closed_command = $current;
-    $self->_close_command_cleanup($current);
+    #$self->_close_command_cleanup($current);
     $current = $current->{'parent'};
   } elsif ($command) {
     $self->line_error (sprintf($self->__("Unmatched `%c%s'"), 
@@ -2262,6 +2270,7 @@ sub _end_line($$$)
     $current = $current->{'parent'};
     my $misc_cmd = $current;
     my $command = $current->{'cmdname'};
+    my $end_command;
     print STDERR "MISC END \@$command\n" if ($self->{'DEBUG'});
     if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args ($self, $current, $line_nr);
@@ -2274,7 +2283,39 @@ sub _end_line($$$)
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'text_arg'} = $text;
-        if ($command eq 'include') {
+        if ($command eq 'end') {
+          # REMACRO
+          my $line = $text;
+          if ($line =~ s/^([[:alnum:]][[:alnum:]-]+)//) {
+            $end_command = $1;
+            
+            if (!exists $block_commands{$end_command}) {
+              $self->line_warn (
+                sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
+              #$current = _merge_text ($self, $current, "\@end $end_command");
+              $end_command = undef;
+            } else {
+              print STDERR "END BLOCK $end_command\n" if ($self->{'DEBUG'});
+              if ($block_commands{$end_command} eq 'conditional') {
+                if (@{$self->{'conditionals_stack'}}
+                  and $self->{'conditionals_stack'}->[-1] eq $end_command) {
+                  pop @{$self->{'conditionals_stack'}};
+                } else {
+                  $self->line_error (sprintf($self->__("Unmatched `%c%s'"),
+                       ord('@'), 'end'), $line_nr);
+                  $end_command = undef;
+                }
+              }
+              $current->{'extra'}->{'command_argument'} = $end_command
+                if (defined($end_command));
+            }
+            if ($line =~ /\S/) {
+              $self->line_error (sprintf($self->__("Superfluous argument to \@%s %s: %s"), $command, $end_command, $line), $line_nr);
+            }
+          } else {
+            $self->line_error (sprintf($self->__("Bad argument to \@%s: %s"), $command, $line), $line_nr);
+          }
+        } elsif ($command eq 'include') {
           my $file = $self->_locate_include_file($text) ;
           if (defined($file)) {
             my $filehandle = do { local *FH };
@@ -2379,8 +2420,26 @@ sub _end_line($$$)
       }
     }
     $current = $current->{'parent'};
-    $current = $self->_begin_preformatted($current) 
-       if ($close_preformatted_commands{$command});
+    if ($end_command) {
+      print STDERR "END COMMAND $end_command\n" if ($self->{'debug'});
+      my $end = pop @{$current->{'contents'}};
+      if ($block_commands{$end_command} ne 'conditional') {
+        my $closed_command;
+        ($closed_command, $current)
+          = _close_commands($self, $current, $line_nr, $end_command);
+        if ($closed_command) {
+          $misc_cmd->{'extra'}->{'command'} = $closed_command;
+          $closed_command->{'extra'}->{'end_command'} = $misc_cmd;
+          $self->_close_command_cleanup($closed_command);
+          $end->{'parent'} = $closed_command;
+          push @{$closed_command->{'contents'}}, $end;
+        }
+        $current = $self->_begin_preformatted($current);
+      }
+    } else {
+      $current = $self->_begin_preformatted($current) 
+        if ($close_preformatted_commands{$command});
+    }
     # if a file was included, remove completly the include file command.
     # Also ignore @setfilename in included file, as said in the manual.
     if ($included_file or ($command eq 'setfilename'
@@ -2632,7 +2691,7 @@ sub _parse_texi($;$)
       $current->{'HERE !!!!'} = 1; # marks where we are in the tree
       local $Data::Dumper::Indent = 1;
       local $Data::Dumper::Purity = 1;
-      #print STDERR "".Data::Dumper->Dump([$root], ['$root']);
+      print STDERR "".Data::Dumper->Dump([$root], ['$root']);
       my $line_text = '';
       $line_text = "$line_nr->{'line_nr'}.$line_nr->{'macro'}" if ($line_nr);
       print STDERR "NEW LINE($self->{'context_stack'}->[-1]:@{$self->{'conditionals_stack'}}:$line_text): $line";
@@ -3155,39 +3214,6 @@ sub _parse_texi($;$)
           }
         }
 
-        if ($command eq 'end') {
-          # REMACRO
-          if ($line =~ s/^\s+([[:alnum:]][[:alnum:]-]*)//) {
-            my $end_command = $1;
-            if (!exists $block_commands{$end_command}) {
-              $self->line_warn (
-                sprintf($self->__("Unknown \@end %s"), $end_command), $line_nr);
-              $current = _merge_text ($self, $current, "\@end $end_command");
-              last;
-            }
-            print STDERR "END BLOCK $end_command\n" if ($self->{'DEBUG'});
-            if ($block_commands{$end_command} eq 'conditional') {
-              if (@{$self->{'conditionals_stack'}} 
-                  and $self->{'conditionals_stack'}->[-1] eq $end_command) {
-                pop @{$self->{'conditionals_stack'}};
-                # Ignore until end of line
-                if ($line !~ /\n/) {
-                  ($line, $line_nr) = _new_line($self, $line_nr);
-                }
-              } else {
-                $self->line_error (sprintf($self->__("Unmatched `%c%s'"), 
-                       ord('@'), 'end'), $line_nr);
-              }
-              last;
-            }
-            my $closed_command;
-            ($closed_command, $current) 
-               = _close_commands($self, $current, $line_nr, $end_command);
-          }
-          $current = $self->_begin_preformatted($current);
-          $line = _start_empty_line_after_command($line, $current);
-          next;
-        }
         # special case with @ followed by a newline protecting end of lines
         # in @def*
         last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");

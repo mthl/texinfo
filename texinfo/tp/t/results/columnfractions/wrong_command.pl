@@ -66,17 +66,45 @@ $result_trees{'wrong_command'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'multitable'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'multitable',
+            'text_arg' => 'multitable'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
+        }
+      ],
       'extra' => {
+        'end_command' => {},
         'max_columns' => 0
       },
       'line_nr' => {},
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -91,9 +119,14 @@ $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'wrong_command'}{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_command'}{'contents'}[0];
+$result_trees{'wrong_command'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'wrong_command'}{'contents'}[0]{'contents'}[0];
 $result_trees{'wrong_command'}{'contents'}[0]{'line_nr'} = $result_trees{'wrong_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'wrong_command'}{'contents'}[0]{'parent'} = $result_trees{'wrong_command'};
-$result_trees{'wrong_command'}{'contents'}[1]{'parent'} = $result_trees{'wrong_command'};
 
 $result_texis{'wrong_command'} = '@multitable @columnfractions @b{3.4} 
 @end multitable';

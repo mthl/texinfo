@@ -50,7 +50,8 @@ $result_trees{'flushright_not_closed'}{'contents'}[0]{'parent'} = $result_trees{
 $result_texis{'flushright_not_closed'} = '@flushright
 
 text flushed right
-@end flushright';
+@end flushright
+';
 
 
 $result_texts{'flushright_not_closed'} = '

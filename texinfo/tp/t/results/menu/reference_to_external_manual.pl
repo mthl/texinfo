@@ -108,20 +108,54 @@ $result_trees{'reference_to_external_manual'} = {
               },
               'parent' => {},
               'type' => 'menu_entry'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'menu'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'menu',
+                'text_arg' => 'menu'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 4,
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       ],
       'extra' => {
@@ -162,8 +196,14 @@ $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'con
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1];
-$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'};
@@ -191,7 +231,17 @@ $result_nodes{'reference_to_external_manual'} = {
   },
   'menus' => [
     {
-      'cmdname' => 'menu'
+      'cmdname' => 'menu',
+      'extra' => {
+        'end_command' => {
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'menu',
+            'text_arg' => 'menu'
+          }
+        }
+      }
     }
   ],
   'node_up' => {
@@ -204,6 +254,7 @@ $result_nodes{'reference_to_external_manual'} = {
     }
   }
 };
+$result_nodes{'reference_to_external_manual'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'reference_to_external_manual'}{'menus'}[0];
 
 $result_menus{'reference_to_external_manual'} = {
   'cmdname' => 'node',

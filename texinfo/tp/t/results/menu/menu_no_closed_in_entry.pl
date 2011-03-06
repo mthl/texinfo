@@ -59,7 +59,8 @@ $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'contents'}[1]{'parent'}
 $result_trees{'menu_no_closed_in_entry'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_in_entry'};
 
 $result_texis{'menu_no_closed_in_entry'} = '@menu
-* a1:@end menu';
+* a1:@end menu
+';
 
 
 $result_texts{'menu_no_closed_in_entry'} = '* a1:';

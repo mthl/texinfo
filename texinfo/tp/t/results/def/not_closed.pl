@@ -300,7 +300,9 @@ $result_trees{'not_closed'}{'contents'}[0]{'parent'} = $result_trees{'not_closed
 $result_texis{'not_closed'} = '@deffn truc bidule machin
 @deffnx truc chose args
 @defvar type1 var bidule
-@end defvar@end deffn';
+@end defvar
+@end deffn
+';
 
 
 $result_texts{'not_closed'} = 'truc bidule machin

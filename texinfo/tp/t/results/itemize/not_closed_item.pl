@@ -78,7 +78,8 @@ $result_trees{'not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'not_c
 
 $result_texis{'not_closed_item'} = '@itemize
 @item in item
-@end itemize';
+@end itemize
+';
 
 
 $result_texts{'not_closed_item'} = 'in item

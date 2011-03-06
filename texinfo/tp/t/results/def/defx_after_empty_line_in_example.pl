@@ -260,30 +260,98 @@ $result_trees{'defx_after_empty_line_in_example'} = {
               },
               'parent' => {},
               'type' => 'def_line'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'deffn'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'deffn',
+                'text_arg' => 'deffn'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {},
           'parent' => {}
         },
         {
-          'parent' => {},
-          'text' => '
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
 ',
-          'type' => 'empty_line_after_command'
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -321,11 +389,23 @@ $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'def_args'}[2][1];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'extra'}{'command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0];
+$result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'defx_after_empty_line_in_example'}{'contents'}[0]{'parent'} = $result_trees{'defx_after_empty_line_in_example'};
-$result_trees{'defx_after_empty_line_in_example'}{'contents'}[1]{'parent'} = $result_trees{'defx_after_empty_line_in_example'};
 
 $result_texis{'defx_after_empty_line_in_example'} = '@example
 @deffn fset @var{i} a g

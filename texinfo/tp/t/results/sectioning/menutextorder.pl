@@ -114,20 +114,54 @@ $result_trees{'menutextorder'} = {
               },
               'parent' => {},
               'type' => 'menu_entry'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'menu'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'menu',
+                'text_arg' => 'menu'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -274,20 +308,54 @@ $result_trees{'menutextorder'} = {
               },
               'parent' => {},
               'type' => 'menu_entry'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'menu'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'menu',
+                'text_arg' => 'menu'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 9,
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -735,20 +803,54 @@ $result_trees{'menutextorder'} = {
               },
               'parent' => {},
               'type' => 'menu_entry'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'menu'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'menu',
+                'text_arg' => 'menu'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 23,
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -1060,9 +1162,15 @@ $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'arg
 $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
 $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0];
 $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[0];
 $result_trees{'menutextorder'}{'contents'}[0]{'parent'} = $result_trees{'menutextorder'};
 $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0];
 $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0];
@@ -1085,9 +1193,15 @@ $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'arg
 $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2];
 $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2];
-$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[2];
 $result_trees{'menutextorder'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'menutextorder'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'menutextorder'}{'contents'}[2]{'parent'} = $result_trees{'menutextorder'};
 $result_trees{'menutextorder'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[3]{'args'}[0];
@@ -1156,9 +1270,15 @@ $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3]{'arg
 $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3]{'args'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3];
 $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[0];
 $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'extra'}{'command'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[4];
 $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8];
 $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'menutextorder'}{'contents'}[8];
 $result_trees{'menutextorder'}{'contents'}[8]{'extra'}{'misc_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'args'}[0]{'contents'}[1];
 $result_trees{'menutextorder'}{'contents'}[8]{'parent'} = $result_trees{'menutextorder'};
 $result_trees{'menutextorder'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menutextorder'}{'contents'}[9]{'args'}[0];
@@ -1437,7 +1557,17 @@ $result_nodes{'menutextorder'} = {
   },
   'menus' => [
     {
-      'cmdname' => 'menu'
+      'cmdname' => 'menu',
+      'extra' => {
+        'end_command' => {
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'menu',
+            'text_arg' => 'menu'
+          }
+        }
+      }
     }
   ],
   'node_next' => {
@@ -1495,7 +1625,17 @@ $result_nodes{'menutextorder'} = {
     },
     'menus' => [
       {
-        'cmdname' => 'menu'
+        'cmdname' => 'menu',
+        'extra' => {
+          'end_command' => {
+            'cmdname' => 'end',
+            'extra' => {
+              'command' => {},
+              'command_argument' => 'menu',
+              'text_arg' => 'menu'
+            }
+          }
+        }
       }
     ],
     'node_prev' => {}
@@ -1504,12 +1644,14 @@ $result_nodes{'menutextorder'} = {
 $result_nodes{'menutextorder'}{'menu_child'}{'node_prev'}{'node_next'} = $result_nodes{'menutextorder'}{'menu_child'};
 $result_nodes{'menutextorder'}{'menu_child'}{'node_prev'}{'node_up'} = $result_nodes{'menutextorder'};
 $result_nodes{'menutextorder'}{'menu_child'}{'node_up'} = $result_nodes{'menutextorder'};
+$result_nodes{'menutextorder'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menutextorder'}{'menus'}[0];
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'} = $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'};
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'};
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'menutextorder'}{'node_next'};
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'menutextorder'}{'node_next'}{'menu_child'};
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'menutextorder'}{'node_next'};
 $result_nodes{'menutextorder'}{'node_next'}{'menu_child'}{'node_up'} = $result_nodes{'menutextorder'}{'node_next'};
+$result_nodes{'menutextorder'}{'node_next'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menutextorder'}{'node_next'}{'menus'}[0];
 $result_nodes{'menutextorder'}{'node_next'}{'node_prev'} = $result_nodes{'menutextorder'};
 
 $result_menus{'menutextorder'} = {

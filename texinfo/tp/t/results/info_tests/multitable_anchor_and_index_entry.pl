@@ -399,20 +399,52 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
               },
               'parent' => {},
               'type' => 'row'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'multitable'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'multitable',
+                'text_arg' => 'multitable'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
           'extra' => {
             'columnfractions' => [],
+            'end_command' => {},
             'max_columns' => 2
           },
           'line_nr' => {},
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -760,9 +792,47 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
               },
               'parent' => {},
               'type' => 'row'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'multitable'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'multitable',
+                'text_arg' => 'multitable'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 29,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
           'extra' => {
+            'end_command' => {},
             'max_columns' => 2,
             'prototypes' => [
               {
@@ -783,12 +853,6 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         },
         {
           'parent' => {},
@@ -1005,94 +1069,106 @@ $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[3];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'columnfractions'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'contents'};
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[3]{'contents'};
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[3];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[3];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[3];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'label'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'label'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6];
+$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'label'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'extra'}{'label'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8];
-$result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'multitable_anchor_and_index_entry'}{'contents'}[1]{'parent'} = $result_trees{'multitable_anchor_and_index_entry'};

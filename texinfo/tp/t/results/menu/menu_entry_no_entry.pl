@@ -139,20 +139,54 @@ $result_trees{'menu_entry_no_entry'} = {
           ],
           'parent' => {},
           'type' => 'menu_comment'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'menu'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'menu',
+            'text_arg' => 'menu'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -180,8 +214,14 @@ $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'contents'}[0
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0];
+$result_trees{'menu_entry_no_entry'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'contents'}[2];
 $result_trees{'menu_entry_no_entry'}{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry'};
-$result_trees{'menu_entry_no_entry'}{'contents'}[1]{'parent'} = $result_trees{'menu_entry_no_entry'};
 
 $result_texis{'menu_entry_no_entry'} = '@menu
 * a1:

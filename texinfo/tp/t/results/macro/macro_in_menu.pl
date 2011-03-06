@@ -558,20 +558,54 @@ $result_trees{'macro_in_menu'} = {
           },
           'parent' => {},
           'type' => 'menu_entry'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'menu'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'menu',
+            'text_arg' => 'menu'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 34,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 26,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -655,8 +689,14 @@ $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'args'}[5]{'conten
 $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'args'}[5]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'args'}[3]{'contents'}[0];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'extra'}{'command'} = $result_trees{'macro_in_menu'}{'contents'}[19];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19];
+$result_trees{'macro_in_menu'}{'contents'}[19]{'extra'}{'end_command'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[8];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'parent'} = $result_trees{'macro_in_menu'};
-$result_trees{'macro_in_menu'}{'contents'}[20]{'parent'} = $result_trees{'macro_in_menu'};
 
 $result_texis{'macro_in_menu'} = '
 @macro star

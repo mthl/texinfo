@@ -22,20 +22,54 @@ $result_trees{'text_on_command_line'} = {
           ],
           'parent' => {},
           'type' => 'preformatted'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -66,20 +100,54 @@ $result_trees{'text_on_command_line'} = {
           ],
           'parent' => {},
           'type' => 'preformatted'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -106,30 +174,54 @@ $result_trees{'text_on_command_line'} = {
           ],
           'parent' => {},
           'type' => 'preformatted'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example text after end'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example text after end'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 8,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => ' ',
-      'type' => 'empty_spaces_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'text after end
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
     },
     {
       'parent' => {},
@@ -154,8 +246,48 @@ $result_trees{'text_on_command_line'} = {
               'text' => '
 ',
               'type' => 'empty_line_after_command'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'example text after end example nested in example'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'command' => {},
+                'command_argument' => 'example',
+                'text_arg' => 'example text after end example nested in example'
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 14,
+                'macro' => ''
+              },
+              'parent' => {}
             }
           ],
+          'extra' => {
+            'end_command' => {}
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 13,
@@ -164,34 +296,52 @@ $result_trees{'text_on_command_line'} = {
           'parent' => {}
         },
         {
-          'contents' => [
+          'args' => [
             {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => 'text after end example nested in example
-'
+              'type' => 'misc_line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 15,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 12,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -199,32 +349,58 @@ $result_trees{'text_on_command_line'} = {
 $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'text_on_command_line'}{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'text_on_command_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'text_on_command_line'}{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'};
 $result_trees{'text_on_command_line'}{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'};
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'extra'}{'command'} = $result_trees{'text_on_command_line'}{'contents'}[2];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[2];
+$result_trees{'text_on_command_line'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'text_on_command_line'}{'contents'}[2]{'contents'}[1];
 $result_trees{'text_on_command_line'}{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0];
-$result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0];
-$result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0];
-$result_trees{'text_on_command_line'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[3];
 $result_trees{'text_on_command_line'}{'contents'}[3]{'parent'} = $result_trees{'text_on_command_line'};
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'extra'}{'command'} = $result_trees{'text_on_command_line'}{'contents'}[4];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[4];
+$result_trees{'text_on_command_line'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'text_on_command_line'}{'contents'}[4]{'contents'}[2];
 $result_trees{'text_on_command_line'}{'contents'}[4]{'parent'} = $result_trees{'text_on_command_line'};
 $result_trees{'text_on_command_line'}{'contents'}[5]{'parent'} = $result_trees{'text_on_command_line'};
 $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6];
 $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'command'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'contents'}[1];
 $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'extra'}{'command'} = $result_trees{'text_on_command_line'}{'contents'}[6];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[6];
+$result_trees{'text_on_command_line'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'text_on_command_line'}{'contents'}[6]{'contents'}[2];
 $result_trees{'text_on_command_line'}{'contents'}[6]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[7]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[8];
-$result_trees{'text_on_command_line'}{'contents'}[8]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[9]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[1];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[2];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[2];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'text_on_command_line'}{'contents'}[10];
-$result_trees{'text_on_command_line'}{'contents'}[10]{'parent'} = $result_trees{'text_on_command_line'};
-$result_trees{'text_on_command_line'}{'contents'}[11]{'parent'} = $result_trees{'text_on_command_line'};
 
 $result_texis{'text_on_command_line'} = '@example text on line
 @end example
@@ -250,12 +426,29 @@ text on line followed by text
 normal text
 
 in example
-text after end
 
-text after end example nested in example
 ';
 
-$result_errors{'text_on_command_line'} = [];
+$result_errors{'text_on_command_line'} = [
+  {
+    'error_line' => ':10: Superfluous argument to @end example:  text after end
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end example:  text after end',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':14: Superfluous argument to @end example:  text after end example nested in example
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => 'Superfluous argument to @end example:  text after end example nested in example',
+    'type' => 'error'
+  }
+];
 
 
 
@@ -265,9 +458,7 @@ $result_converted{'plaintext'}->{'text_on_command_line'} = '     text on line
      normal text
 
      in example
-   text after end
 
-     text after end example nested in example
 ';
 
 1;

@@ -109,7 +109,8 @@ $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'paren
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'parent'} = $result_trees{'end_of_line_protect_at_end'};
 
 $result_texis{'end_of_line_protect_at_end'} = '
-@deffn category2 deffn_name2 arguments2 @end deffn';
+@deffn category2 deffn_name2 arguments2 @end deffn
+';
 
 
 $result_texts{'end_of_line_protect_at_end'} = '

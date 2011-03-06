@@ -247,20 +247,54 @@ $result_trees{'flushright'} = {
           'text' => '
 ',
           'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'flushright'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'flushright',
+            'text_arg' => 'flushright'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 2,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -304,8 +338,14 @@ $result_trees{'flushright'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_tr
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[9];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
 $result_trees{'flushright'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'extra'}{'command'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'flushright'}{'contents'}[1];
+$result_trees{'flushright'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'flushright'}{'contents'}[1]{'contents'}[11];
 $result_trees{'flushright'}{'contents'}[1]{'parent'} = $result_trees{'flushright'};
-$result_trees{'flushright'}{'contents'}[2]{'parent'} = $result_trees{'flushright'};
 
 $result_texis{'flushright'} = '
 @flushright
@@ -398,9 +438,9 @@ $result_converted{'debugcount'}->{'flushright'} = ' [1] (0,0) :text_root
    [26] (358,8)
    [28] (358,8) :empty_line:text|\\n|
    [28] (359,9)
+   [29] (359,9) @end
+   [29] (359,9)
   [3] (359,9)
-  [29] (359,9) :empty_line_after_command:text|\\n|
-  [29] (359,9)
  [1] (359,9)
 
                                                              aaa bb ada

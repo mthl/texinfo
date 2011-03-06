@@ -182,16 +182,50 @@ $result_trees{'empty_deftypeop_name'} = {
           },
           'parent' => {},
           'type' => 'def_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'deftypeop'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'deftypeop',
+            'text_arg' => 'deftypeop'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {},
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -228,9 +262,15 @@ $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'extra'}{'in
 $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[2]{'parent'}{'contents'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[3] = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0];
+$result_trees{'empty_deftypeop_name'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'empty_deftypeop_name'}{'contents'}[0]{'parent'} = $result_trees{'empty_deftypeop_name'};
-$result_trees{'empty_deftypeop_name'}{'contents'}[1]{'parent'} = $result_trees{'empty_deftypeop_name'};
 
 $result_texis{'empty_deftypeop_name'} = '@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
 @end deftypeop

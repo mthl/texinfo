@@ -74,6 +74,43 @@ $result_trees{'headitem_itemx_in_itemize'} = {
             'item_number' => 1
           },
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'itemize'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'itemize',
+            'text_arg' => 'itemize'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -86,7 +123,8 @@ $result_trees{'headitem_itemx_in_itemize'} = {
             }
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -94,12 +132,6 @@ $result_trees{'headitem_itemx_in_itemize'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -116,10 +148,16 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'conten
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[3];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'};
 
 $result_texis{'headitem_itemx_in_itemize'} = '@itemize
 @item item

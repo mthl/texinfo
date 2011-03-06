@@ -50,7 +50,8 @@ $result_trees{'copying_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'co
 $result_texis{'copying_not_closed'} = '@copying
 
 This is a copyright notice
-@end copying';
+@end copying
+';
 
 
 $result_texts{'copying_not_closed'} = '';

@@ -215,20 +215,54 @@ $result_trees{'formats_not_closed_in_example'} = {
             'macro' => ''
           },
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'example'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'example',
+            'text_arg' => 'example'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 13,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -267,8 +301,14 @@ $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'co
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'extra'}{'command'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0];
+$result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'contents'}[3];
 $result_trees{'formats_not_closed_in_example'}{'contents'}[0]{'parent'} = $result_trees{'formats_not_closed_in_example'};
-$result_trees{'formats_not_closed_in_example'}{'contents'}[1]{'parent'} = $result_trees{'formats_not_closed_in_example'};
 
 $result_texis{'formats_not_closed_in_example'} = '@example
 
@@ -282,7 +322,9 @@ Some text.
 @item first item
 @item an item
 
-@end enumerate@end table@end example
+@end enumerate
+@end table
+@end example
 ';
 
 

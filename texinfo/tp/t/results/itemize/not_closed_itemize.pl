@@ -48,7 +48,8 @@ $result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'command_as_argument
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'};
 
 $result_texis{'not_closed_itemize'} = '@itemize
-@end itemize';
+@end itemize
+';
 
 
 $result_texts{'not_closed_itemize'} = '';

@@ -221,6 +221,43 @@ $result_trees{'empty_item_itemx'} = {
             'misc_content' => []
           },
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'vtable'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'vtable',
+            'text_arg' => 'vtable'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -229,7 +266,8 @@ $result_trees{'empty_item_itemx'} = {
             {}
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -237,12 +275,6 @@ $result_trees{'empty_item_itemx'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -286,10 +318,16 @@ $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'extra'}{'index_
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'extra'}{'index_entry'}{'content'};
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'extra'}{'command'} = $result_trees{'empty_item_itemx'}{'contents'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'empty_item_itemx'}{'contents'}[0];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[6];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'parent'} = $result_trees{'empty_item_itemx'};
-$result_trees{'empty_item_itemx'}{'contents'}[1]{'parent'} = $result_trees{'empty_item_itemx'};
 
 $result_texis{'empty_item_itemx'} = '@vtable @asis
 

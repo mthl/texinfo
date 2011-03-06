@@ -58,18 +58,46 @@ $result_trees{'good'} = {
         }
       ],
       'cmdname' => 'multitable',
-      'contents' => [],
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'multitable'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'multitable',
+            'text_arg' => 'multitable'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          },
+          'parent' => {}
+        }
+      ],
       'extra' => {
         'columnfractions' => [],
+        'end_command' => {},
         'max_columns' => 3
       },
       'line_nr' => {},
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -81,10 +109,15 @@ $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good'}{'contents'}[0]{'args'}[0];
 $result_trees{'good'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'good'}{'contents'}[0];
+$result_trees{'good'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
+$result_trees{'good'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'line_nr'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'good'}{'contents'}[0]{'parent'} = $result_trees{'good'};
-$result_trees{'good'}{'contents'}[1]{'parent'} = $result_trees{'good'};
 
 $result_texis{'good'} = '@multitable @columnfractions 0.4 .6 5.
 @end multitable';

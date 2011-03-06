@@ -619,16 +619,50 @@ $result_trees{'empty_def_arguments'} = {
           },
           'parent' => {},
           'type' => 'def_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'deffn'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'deffn',
+            'text_arg' => 'deffn'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {},
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -729,9 +763,15 @@ $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'index_entry'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'extra'}{'def_args'}[2][1];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'extra'}{'command'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[9];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'};
-$result_trees{'empty_def_arguments'}{'contents'}[1]{'parent'} = $result_trees{'empty_def_arguments'};
 
 $result_texis{'empty_def_arguments'} = '@deffn fset @var{i} a g
 @deffnx @b{id @samp{i} ule}    

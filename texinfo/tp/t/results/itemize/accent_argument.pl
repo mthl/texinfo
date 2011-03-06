@@ -61,6 +61,43 @@ $result_trees{'accent_argument'} = {
             'item_number' => 1
           },
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'itemize'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'itemize',
+            'text_arg' => 'itemize'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -73,7 +110,8 @@ $result_trees{'accent_argument'} = {
             }
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -81,12 +119,6 @@ $result_trees{'accent_argument'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -145,6 +177,43 @@ $result_trees{'accent_argument'} = {
             'item_number' => 1
           },
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'itemize'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'itemize',
+            'text_arg' => 'itemize'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -157,7 +226,8 @@ $result_trees{'accent_argument'} = {
             }
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -165,12 +235,6 @@ $result_trees{'accent_argument'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -184,23 +248,35 @@ $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'p
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'accent_argument'}{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[0];
 $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'accent_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[0]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[0]{'parent'} = $result_trees{'accent_argument'};
 $result_trees{'accent_argument'}{'contents'}[1]{'parent'} = $result_trees{'accent_argument'};
+$result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0]{'contents'}[1];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'extra'}{'command'} = $result_trees{'accent_argument'}{'contents'}[2];
+$result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2];
+$result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[2];
+$result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'accent_argument'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'accent_argument'}{'contents'}[2]{'contents'}[1];
 $result_trees{'accent_argument'}{'contents'}[2]{'parent'} = $result_trees{'accent_argument'};
-$result_trees{'accent_argument'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'args'}[0];
-$result_trees{'accent_argument'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'args'}[0];
-$result_trees{'accent_argument'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'args'}[0];
-$result_trees{'accent_argument'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3];
-$result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0];
-$result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1];
-$result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0];
-$result_trees{'accent_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3];
-$result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_argument'}{'contents'}[3];
-$result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'accent_argument'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0];
-$result_trees{'accent_argument'}{'contents'}[3]{'parent'} = $result_trees{'accent_argument'};
-$result_trees{'accent_argument'}{'contents'}[4]{'parent'} = $result_trees{'accent_argument'};
 
 $result_texis{'accent_argument'} = '@itemize @~@comment
 @item item

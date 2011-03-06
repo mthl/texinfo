@@ -159,7 +159,8 @@ $result_texis{'long_item'} = '@table @emph
 @itemx second itemx bbbbbbbbbbbbbbbbbbbbbbbbbbbbb b b b b b b b b b b b b b
 
 Text.
-@end table';
+@end table
+';
 
 
 $result_texts{'long_item'} = 'first item      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaa

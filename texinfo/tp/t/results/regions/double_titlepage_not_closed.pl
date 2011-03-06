@@ -108,7 +108,9 @@ This is in title page
 @titlepage
 
 And still in title page
-@end titlepage@end titlepage';
+@end titlepage
+@end titlepage
+';
 
 
 $result_texts{'double_titlepage_not_closed'} = '';

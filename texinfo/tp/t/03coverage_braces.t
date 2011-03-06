@@ -106,7 +106,8 @@ two single quotes to left- and right-hand doubled.
 ['format_on_first_footnote_line',
 'Texte@footnote{@quotation
 in quotation on the first footnote line
-@end quotation}.
+@end quotation
+}.
 
 Last text @footnote{@example
 in example

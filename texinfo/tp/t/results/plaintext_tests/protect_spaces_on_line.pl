@@ -168,20 +168,54 @@ $result_trees{'protect_spaces_on_line'} = {
           },
           'line_nr' => {},
           'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'quotation'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'quotation',
+            'text_arg' => 'quotation'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
+      'extra' => {
+        'end_command' => {}
+      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -220,8 +254,14 @@ $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'extra'}{'
 $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'extra'}{'misc_content'}[4] = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[5];
 $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3];
+$result_trees{'protect_spaces_on_line'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'contents'}[2];
 $result_trees{'protect_spaces_on_line'}{'contents'}[3]{'parent'} = $result_trees{'protect_spaces_on_line'};
-$result_trees{'protect_spaces_on_line'}{'contents'}[4]{'parent'} = $result_trees{'protect_spaces_on_line'};
 
 $result_texis{'protect_spaces_on_line'} = '
 Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw

@@ -144,12 +144,6 @@ $result_trees{'section_in_table'} = {
           'text' => '
 ',
           'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       ],
       'extra' => {
@@ -193,17 +187,16 @@ $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[1]{'parent'} = $res
 $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[2];
 $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1];
-$result_trees{'section_in_table'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'section_in_table'}{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_table'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'section_in_table'}{'contents'}[1]{'parent'} = $result_trees{'section_in_table'};
 
 $result_texis{'section_in_table'} = '@table @asis
 @item Before
 
-@end table@section Subsection
+@end table
+@section Subsection
 
  After
-
 
 ';
 

@@ -107,6 +107,43 @@ $result_trees{'table_in_code'} = {
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'table'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'table',
+            'text_arg' => 'table'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 6,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -116,6 +153,7 @@ $result_trees{'table_in_code'} = {
           ]
         ],
         'command_as_argument' => {},
+        'end_command' => {},
         'invalid_nesting' => 1
       },
       'line_nr' => {
@@ -124,12 +162,6 @@ $result_trees{'table_in_code'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     },
     {
       'parent' => {},
@@ -156,11 +188,17 @@ $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'extra'}{'misc_cont
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'table_in_code'}{'contents'}[1];
+$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[2];
 $result_trees{'table_in_code'}{'contents'}[1]{'parent'} = $result_trees{'table_in_code'};
 $result_trees{'table_in_code'}{'contents'}[2]{'parent'} = $result_trees{'table_in_code'};
-$result_trees{'table_in_code'}{'contents'}[3]{'parent'} = $result_trees{'table_in_code'};
 
 $result_texis{'table_in_code'} = '@code{
 in code

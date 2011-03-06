@@ -96,6 +96,37 @@ $result_trees{'simple'} = {
           'parent' => {},
           'text' => '
 '
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'float'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'float',
+            'text_arg' => 'float'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -108,6 +139,7 @@ $result_trees{'simple'} = {
           ]
         ],
         'caption' => {},
+        'end_command' => {},
         'node_content' => [
           {}
         ],
@@ -126,11 +158,6 @@ $result_trees{'simple'} = {
       },
       'number' => 1,
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -150,13 +177,18 @@ $result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $re
 $result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'extra'}{'float'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'extra'}{'command'} = $result_trees{'simple'}{'contents'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2];
+$result_trees{'simple'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
-$result_trees{'simple'}{'contents'}[1]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@float Type, Label
 
@@ -184,6 +216,14 @@ $result_floats{'simple'} = {
             'float' => {}
           }
         },
+        'end_command' => {
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'float',
+            'text_arg' => 'float'
+          }
+        },
         'normalized' => 'Label',
         'type' => {
           'content' => [
@@ -199,6 +239,7 @@ $result_floats{'simple'} = {
   ]
 };
 $result_floats{'simple'}{'Type'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'simple'}{'Type'}[0];
+$result_floats{'simple'}{'Type'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'simple'}{'Type'}[0];
 
 
 

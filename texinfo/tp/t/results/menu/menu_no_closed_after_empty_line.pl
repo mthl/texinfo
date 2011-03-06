@@ -119,7 +119,8 @@ $result_texis{'menu_no_closed_after_empty_line'} = '@menu
 * (manual_in_menu):: desc2
 
 
-@end menu';
+@end menu
+';
 
 
 $result_texts{'menu_no_closed_after_empty_line'} = '* (manual_in_menu):: desc2

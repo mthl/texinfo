@@ -87,7 +87,8 @@ $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'contents'}[1]{'pa
 $result_trees{'menu_no_closed_in_description'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_in_description'};
 
 $result_texis{'menu_no_closed_in_description'} = '@menu
-* (manual_in_menu):: desc@end menu';
+* (manual_in_menu):: desc@end menu
+';
 
 
 $result_texts{'menu_no_closed_in_description'} = '* (manual_in_menu):: desc';

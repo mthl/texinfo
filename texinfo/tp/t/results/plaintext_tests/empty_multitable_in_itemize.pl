@@ -68,9 +68,47 @@ $result_trees{'empty_multitable_in_itemize'} = {
                   'contents' => [],
                   'parent' => {},
                   'type' => 'before_item'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => ' ',
+                          'type' => 'empty_spaces_after_command'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => 'multitable'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'misc_line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'command' => {},
+                    'command_argument' => 'multitable',
+                    'text_arg' => 'multitable'
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  },
+                  'parent' => {}
                 }
               ],
               'extra' => {
+                'end_command' => {},
                 'max_columns' => 0,
                 'prototypes' => []
               },
@@ -85,17 +123,48 @@ $result_trees{'empty_multitable_in_itemize'} = {
               'parent' => {},
               'text' => '
 ',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
               'type' => 'empty_line'
             }
           ],
           'extra' => {
             'item_number' => 1
+          },
+          'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'itemize'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'itemize',
+            'text_arg' => 'itemize'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 7,
+            'macro' => ''
           },
           'parent' => {}
         }
@@ -105,7 +174,8 @@ $result_trees{'empty_multitable_in_itemize'} = {
           [
             {}
           ]
-        ]
+        ],
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -113,12 +183,6 @@ $result_trees{'empty_multitable_in_itemize'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -133,13 +197,25 @@ $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'cont
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[2];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
-$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_multitable_in_itemize'}{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_in_itemize'};
-$result_trees{'empty_multitable_in_itemize'}{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_in_itemize'};
 
 $result_texis{'empty_multitable_in_itemize'} = '@itemize a--n itemize line
 @item in macro

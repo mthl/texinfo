@@ -50,7 +50,8 @@ $result_trees{'group_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'grou
 $result_texis{'group_not_closed'} = '@group
 
 text in group
-@end group';
+@end group
+';
 
 
 $result_texts{'group_not_closed'} = '

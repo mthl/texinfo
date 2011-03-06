@@ -160,6 +160,43 @@ $result_trees{'definfoenclose_on_table_line'} = {
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'table'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'table',
+            'text_arg' => 'table'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 8,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
@@ -168,7 +205,8 @@ $result_trees{'definfoenclose_on_table_line'} = {
             {}
           ]
         ],
-        'command_as_argument' => {}
+        'command_as_argument' => {},
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -176,12 +214,6 @@ $result_trees{'definfoenclose_on_table_line'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -211,10 +243,16 @@ $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[1]{'par
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2];
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[3];
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'extra'}{'command'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2];
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'contents'}[4];
 $result_trees{'definfoenclose_on_table_line'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_on_table_line'};
-$result_trees{'definfoenclose_on_table_line'}{'contents'}[3]{'parent'} = $result_trees{'definfoenclose_on_table_line'};
 
 $result_texis{'definfoenclose_on_table_line'} = '@definfoenclose phi,:,:
 

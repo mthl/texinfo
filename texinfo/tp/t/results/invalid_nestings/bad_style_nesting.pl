@@ -52,9 +52,47 @@ $result_trees{'bad_style_nesting'} = {
           ],
           'parent' => {},
           'type' => 'paragraph'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'quotation'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'end',
+          'extra' => {
+            'command' => {},
+            'command_argument' => 'quotation',
+            'text_arg' => 'quotation'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          },
+          'parent' => {}
         }
       ],
       'extra' => {
+        'end_command' => {},
         'invalid_nesting' => 1
       },
       'line_nr' => {
@@ -63,12 +101,6 @@ $result_trees{'bad_style_nesting'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
@@ -80,8 +112,14 @@ $result_trees{'bad_style_nesting'}{'contents'}[0]{'parent'} = $result_trees{'bad
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'};
-$result_trees{'bad_style_nesting'}{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'};
 
 $result_texis{'bad_style_nesting'} = '@code{
 }@quotation

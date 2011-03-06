@@ -14,22 +14,14 @@ $result_trees{'lone_end_table'} = {
       ],
       'parent' => {},
       'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
     }
   ],
   'type' => 'text_root'
 };
 $result_trees{'lone_end_table'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_end_table'}{'contents'}[0];
 $result_trees{'lone_end_table'}{'contents'}[0]{'parent'} = $result_trees{'lone_end_table'};
-$result_trees{'lone_end_table'}{'contents'}[1]{'parent'} = $result_trees{'lone_end_table'};
 
 $result_texis{'lone_end_table'} = 'Text.
-
 ';
 
 

@@ -74,8 +74,11 @@ sub convert ($)
       }
     }
     $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))) {
+    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
+        and !($root->{'extra'} and $root->{'extra'}->{'end_command'})) {
       $result .= '@end '.$root->{'cmdname'};
+      # a missing @end
+      $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
     }
   }
   #print STDERR "convert result: $result\n";

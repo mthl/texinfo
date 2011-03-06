@@ -27,7 +27,8 @@ $manual_tree = { 'cmdname' => 'multitable',
              {'text' => " ccc\n"},
           ],
        } ],
-  'extra' => { 'number_of_columns' => 3 },
+  'extra' => { 'number_of_columns' => 3,
+               'end_command' => {} },
   'contents' => [
            { 'type' => 'multitable_title',
              'contents' => [
@@ -61,8 +62,36 @@ $manual_tree = { 'cmdname' => 'multitable',
                                 'contents' => [ {'text' => " \n" } ]
                               }
                            ]
-           }
+           },
+           { 'cmdname' => 'end',
+             'extra' => {'command_argument' => 'multitable',
+                         'text_arg' => 'multitable',
+                         },
+            'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => ' ',
+                      'type' => 'empty_spaces_after_command'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'multitable'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
+                }
+              ],
 
+           }
   ]
   
 };
@@ -70,6 +99,7 @@ $manual_tree = { 'cmdname' => 'multitable',
 $manual_tree_result = '@multitable {aaaa} {xx@b{rr}} ccc
 title@verb{: in verb } :}@@.
 @item 
-@end multitable';
+@end multitable
+';
 
 1;
