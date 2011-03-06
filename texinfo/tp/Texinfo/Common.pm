@@ -22,9 +22,14 @@ package Texinfo::Common;
 
 use strict;
 
+# for unicode/layer support in binmode
+use 5.006;
+
 # to determine the null file
 use Config;
 use File::Spec;
+
+use Encode;
 
 use Texinfo::Documentlanguages;
 

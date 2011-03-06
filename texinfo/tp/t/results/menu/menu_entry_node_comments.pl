@@ -2,6 +2,8 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors);
 
+use utf8;
+
 $result_trees{'menu_entry_node_comments'} = {
   'contents' => [
     {

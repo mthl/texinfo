@@ -1,7 +1,3 @@
-Fix encodings/at_commands_in_refs_utf8_use_nodes
-@sc{} doesn't seems to work anymore, now that 
-Texinfo::Convert::Unicode::unicode_text is really used in _process_text.
-
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
@@ -45,8 +41,11 @@ def/end_of_lines_protected_in_footnote.pl the footnote is
 and not 
    (1)
  -- category: deffn_name arguments arg2 more args with end of line
-It is unclear whether it is right or wrong, but even less clear why it 
-happens this way.
+It is unclear whether it is right or wrong. It happens this way because
+the paragraph starts right after the footnote number.
+
+@var{@u{r}} leads to R( in @var?  Test in 
+plaintext_tests/characters_and_commands_in_var
 
 Should
 @node Top

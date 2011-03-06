@@ -351,6 +351,24 @@ flushright
 A quot---ation
 @end quotation
 '],
+['characters_and_commands_in_var',
+'@var{aaa}. @var{dlksfjf ) }. @var{(fdfdsfsd}. @var{sqdq,qdsdsq}.
+
+@var{somethingf  @c ]
+vvar}.
+
+@var{AA@,c @u{r} @`e}.
+
+AAA@footnote{jdhfmqsdf
+dsf
+ds @var{rrrr , azeeaz}
+end footnote}
+'],
+['accents_in_var_enable_encoding',
+'@documentencoding utf-8
+
+@var{AA@,c @u{r} @`e}.
+']
 );
 
 my @deep_recursion_tests = (

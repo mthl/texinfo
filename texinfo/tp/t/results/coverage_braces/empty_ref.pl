@@ -2,6 +2,8 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors);
 
+use utf8;
+
 $result_trees{'empty_ref'} = {
   'contents' => [
     {
@@ -85,7 +87,7 @@ $result_trees{'empty_ref'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' '
+                  'text' => 'Â '
                 }
               ],
               'parent' => {},
@@ -203,7 +205,7 @@ $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_tre
 $result_trees{'empty_ref'}{'contents'}[1]{'parent'} = $result_trees{'empty_ref'};
 
 $result_texis{'empty_ref'} = '
-@ref{} @xref{,,something}. @inforef{ }
+@ref{} @xref{,,something}. @inforef{Â }
  @inforef{ , arg}.
 ';
 

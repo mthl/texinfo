@@ -1,5 +1,7 @@
 use strict;
 
+use 5.006;
+
 use Test::More;
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use lib '../texi2html/lib/libintl-perl/lib/';
@@ -325,9 +327,11 @@ sub test($$)
     $out_file = $file if ($self->{'generate'});
 
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
+    binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".
               '   %result_indices %result_sectioning %result_nodes %result_menus'."\n".
               '   %result_floats %result_converted %result_converted_errors);'."\n\n";
+    print OUT 'use utf8;'."\n\n";
 
     #print STDERR "Generate: ".Data::Dumper->Dump([$result], ['$res']);
     my $out_result;
