@@ -9,7 +9,7 @@ use strict;
 
 #use Test;
 use Test::More;
-BEGIN { plan tests => 115 };
+BEGIN { plan tests => 116 };
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 #use lib '../texi2html/lib/libintl-perl/lib/';
 use Texinfo::Convert::Paragraph;
@@ -137,7 +137,17 @@ $result .= $para->add_text('aa.)');
 $result .= $para->add_next('_');
 $result .= $para->add_text(' after');
 $result .= $para->end();
-is ($result, "aa.)_  after\n", 'add char after end sentence');
+is ($result, "aa.)_  after\n", 'add char after end sentence parentheses');
+
+$para = Texinfo::Convert::Paragraph->new();
+$result = '';
+$result .= $para->add_text('b ');
+$result .= $para->add_next('_');
+$result .= $para->add_text('.');
+$result .= $para->add_next('_');
+$result .= $para->add_text(' after');
+$result .= $para->end();
+is ($result, "b _._  after\n", 'add char after end sentence');
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';

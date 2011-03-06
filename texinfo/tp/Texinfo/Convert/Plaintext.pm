@@ -1359,7 +1359,8 @@ sub _convert($$)
         $text_after = $style_map{$command}->[1];
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text($text_before));
+               $formatter->{'container'}->add_next($text_before))
+         if ($text_before ne '');
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
         if ($root->{'cmdname'} eq 'strong' 
@@ -1372,7 +1373,8 @@ sub _convert($$)
         }
       }
       $result .= $self->_count_added($formatter->{'container'},
-               $formatter->{'container'}->add_text($text_after));
+               $formatter->{'container'}->add_next($text_after))
+         if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
         $result .= $self->_count_added($formatter->{'container'},
