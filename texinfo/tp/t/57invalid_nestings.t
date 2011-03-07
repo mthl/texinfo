@@ -284,6 +284,71 @@ Now text.
 ['unclosed_verb_end_of_line_on_misc_line',
 '@setfilename name @verb{
 '],
+['cartouche_in_style_command',
+'@code{
+@cartouche
+cartouche
+@end cartouche
+}
+'],
+['multitable_in_style_command',
+'@code{
+Multitable
+@multitable {truc} {machin}
+@item truc @tab machin
+@end multitable
+}'],
+['enumerate_in_style_command',
+'@code{
+@enumerate 1
+@item item
+@end enumerate
+}'],
+['quotation_in_style_command',
+'@code{
+@quotation
+a quotation
+@end quotation
+}'],
+['def_in_style_command',
+'@code{
+@defun name args...
+text
+@end defun
+}'],
+['flushright_in_style_command',
+'@code{
+@flushright
+in flushright
+@end flushright
+}'],
+['example_in_style_command',
+'@code{
+@example
+example
+@end example
+}'],
+['verbatim_in_style_command',
+'@code{
+@verbatim
+verbatim
+@end verbatim
+}'],
+['float_in_style_command',
+'@code{
+@float A, B
+in float
+@caption{Caption}
+@end float
+}'],
+['menu_in_style_command',
+'@node Top
+
+@code{
+@menu
+* (truc)::
+@end menu
+}'],
 );
 
 my @formatted_cases = (
