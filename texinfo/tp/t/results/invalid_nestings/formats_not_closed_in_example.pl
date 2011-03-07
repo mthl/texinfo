@@ -193,7 +193,7 @@ $result_trees{'formats_not_closed_in_example'} = {
                 }
               ],
               'extra' => {
-                'enumerate_specification' => 0
+                'enumerate_specification' => 1
               },
               'line_nr' => {
                 'file_name' => '',

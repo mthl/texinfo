@@ -2187,7 +2187,7 @@ sub _end_line($$$)
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
       if ($current->{'cmdname'} eq 'enumerate') {
-        my $spec = 0;
+        my $spec = 1;
         if ($current->{'extra'}->{'block_command_line_contents'}
             and defined($current->{'extra'}->{'block_command_line_contents'}->[0])) {
           if (scalar(@{$current->{'extra'}->{'block_command_line_contents'}->[0]}) > 1) {

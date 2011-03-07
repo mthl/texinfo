@@ -174,7 +174,7 @@ $result_texis{'enumerate_in_style_command'} = '@code{
 
 
 $result_texts{'enumerate_in_style_command'} = '
-2. item
+1. item
 ';
 
 $result_errors{'enumerate_in_style_command'} = [

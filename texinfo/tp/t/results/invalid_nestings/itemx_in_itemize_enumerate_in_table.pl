@@ -248,7 +248,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'enumerate_specification' => 0
+            'enumerate_specification' => 1
           },
           'line_nr' => {
             'file_name' => '',

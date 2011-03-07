@@ -77,7 +77,7 @@ $result_trees{'bad_enumerate_arguments'} = {
           ]
         ],
         'end_command' => {},
-        'enumerate_specification' => 0
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -163,7 +163,7 @@ $result_trees{'bad_enumerate_arguments'} = {
           ]
         ],
         'end_command' => {},
-        'enumerate_specification' => 0
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -267,7 +267,7 @@ $result_trees{'bad_enumerate_arguments'} = {
           ]
         ],
         'end_command' => {},
-        'enumerate_specification' => 0
+        'enumerate_specification' => 1
       },
       'line_nr' => {},
       'parent' => {}
@@ -440,7 +440,7 @@ $result_trees{'bad_enumerate_arguments'} = {
           ]
         ],
         'end_command' => {},
-        'enumerate_specification' => 0
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',

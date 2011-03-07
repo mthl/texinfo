@@ -117,7 +117,7 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 0
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
