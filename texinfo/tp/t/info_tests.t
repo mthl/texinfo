@@ -29,6 +29,16 @@ After paragraphindent.
 @bye
 
 '],
+['space_at_menu_end',
+'@node Top
+
+@menu
+* (out)::
+
+@end menu
+
+A para.
+'],
 ['text_before_node',
 '@node Top
 

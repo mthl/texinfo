@@ -376,6 +376,16 @@ $result_nodes{'multiple_menus'} = {
   'extra' => {
     'normalized' => 'Top'
   },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'b'
+        }
+      ],
+      'normalized' => 'b'
+    }
+  },
   'menus' => [
     {
       'cmdname' => 'menu',
@@ -404,6 +414,7 @@ $result_nodes{'multiple_menus'} = {
       }
     }
   ],
+  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -416,11 +427,22 @@ $result_nodes{'multiple_menus'} = {
 };
 $result_nodes{'multiple_menus'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'multiple_menus'}{'menus'}[0];
 $result_nodes{'multiple_menus'}{'menus'}[1]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'multiple_menus'}{'menus'}[1];
+$result_nodes{'multiple_menus'}{'node_next'} = $result_nodes{'multiple_menus'}{'menu_child'};
 
 $result_menus{'multiple_menus'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'b'
+        }
+      ],
+      'normalized' => 'b'
+    }
   }
 };
 

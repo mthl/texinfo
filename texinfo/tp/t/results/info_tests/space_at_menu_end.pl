@@ -260,6 +260,15 @@ $result_nodes{'space_at_menu_end'} = {
   'extra' => {
     'normalized' => 'Top'
   },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'out'
+        }
+      ]
+    }
+  },
   'menus' => [
     {
       'cmdname' => 'menu',
@@ -275,6 +284,7 @@ $result_nodes{'space_at_menu_end'} = {
       }
     }
   ],
+  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -286,11 +296,21 @@ $result_nodes{'space_at_menu_end'} = {
   }
 };
 $result_nodes{'space_at_menu_end'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'space_at_menu_end'}{'menus'}[0];
+$result_nodes{'space_at_menu_end'}{'node_next'} = $result_nodes{'space_at_menu_end'}{'menu_child'};
 
 $result_menus{'space_at_menu_end'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'out'
+        }
+      ]
+    }
   }
 };
 
@@ -298,12 +318,22 @@ $result_errors{'space_at_menu_end'} = [];
 
 
 
-$result_converted{'plaintext'}->{'space_at_menu_end'} = '
+$result_converted{'info'}->{'space_at_menu_end'} = 'This is , produced by makeinfo version 4.13 from .
+
+
+File: ,  Node: Top,  Next: (out),  Up: (dir)
+
 * Menu:
 
 * (out)::
 
 A para.
+
+
+Tag Table:
+Node: Top52
+
+End Tag Table
 ';
 
 1;

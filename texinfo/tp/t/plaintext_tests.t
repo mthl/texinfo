@@ -87,16 +87,6 @@ html
 @end html
 ',{'expanded_formats' => ['html']}
 ],
-['space_at_menu_end',
-'@node Top
-
-@menu
-* (out)::
-
-@end menu
-
-A para.
-'],
 ['star_at_command_formatting',
 '@macro mymacro
 Some text @*

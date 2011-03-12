@@ -231,6 +231,15 @@ $result_nodes{'reference_to_external_manual'} = {
   'extra' => {
     'normalized' => 'Top'
   },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'info'
+        }
+      ]
+    }
+  },
   'menus' => [
     {
       'cmdname' => 'menu',
@@ -246,6 +255,7 @@ $result_nodes{'reference_to_external_manual'} = {
       }
     }
   ],
+  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -257,11 +267,21 @@ $result_nodes{'reference_to_external_manual'} = {
   }
 };
 $result_nodes{'reference_to_external_manual'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'reference_to_external_manual'}{'menus'}[0];
+$result_nodes{'reference_to_external_manual'}{'node_next'} = $result_nodes{'reference_to_external_manual'}{'menu_child'};
 
 $result_menus{'reference_to_external_manual'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'info'
+        }
+      ]
+    }
   }
 };
 

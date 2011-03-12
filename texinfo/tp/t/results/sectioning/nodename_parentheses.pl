@@ -1180,6 +1180,16 @@ $result_menus{'nodename_parentheses'} = {
       'extra' => {
         'normalized' => 'Other-node'
       },
+      'menu_next' => {
+        'extra' => {
+          'manual_content' => [
+            {
+              'text' => 'manual'
+            }
+          ],
+          'normalized' => 'node'
+        }
+      },
       'menu_prev' => {},
       'menu_up' => {},
       'menu_up_hash' => {
@@ -1218,12 +1228,12 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: No node following `Other node\' in menu, but `node\' follows in sectioning
+    'error_line' => ':15: warning: Node following `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'No node following `Other node\' in menu, but `node\' follows in sectioning',
+    'text' => 'Node following `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
     'type' => 'warning'
   },
   {

@@ -47,13 +47,6 @@ the paragraph starts right after the footnote number.
 @var{@u{r}} leads to R( in @var?  Test in 
 plaintext_tests/characters_and_commands_in_var
 
-Should
-@node Top
-@menu
-* (out)::
-@end menu
-lead to Node: Top,  Next: (out),  Up: (dir)
-
 Flag the last end of line of text in a raw format, to let the converter 
 remove it in case a running text is needed.  For example, in
   @html

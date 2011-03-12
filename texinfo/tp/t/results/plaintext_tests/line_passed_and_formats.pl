@@ -3124,6 +3124,16 @@ $result_nodes{'line_passed_and_formats'} = {
   'extra' => {
     'normalized' => 'Top'
   },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'manual'
+        }
+      ],
+      'normalized' => 'node'
+    }
+  },
   'menus' => [
     {
       'cmdname' => 'menu',
@@ -3139,6 +3149,7 @@ $result_nodes{'line_passed_and_formats'} = {
       }
     }
   ],
+  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -3150,11 +3161,22 @@ $result_nodes{'line_passed_and_formats'} = {
   }
 };
 $result_nodes{'line_passed_and_formats'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'line_passed_and_formats'}{'menus'}[0];
+$result_nodes{'line_passed_and_formats'}{'node_next'} = $result_nodes{'line_passed_and_formats'}{'menu_child'};
 
 $result_menus{'line_passed_and_formats'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'manual'
+        }
+      ],
+      'normalized' => 'node'
+    }
   }
 };
 

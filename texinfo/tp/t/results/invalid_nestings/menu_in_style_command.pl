@@ -257,6 +257,15 @@ $result_nodes{'menu_in_style_command'} = {
   'extra' => {
     'normalized' => 'Top'
   },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'truc'
+        }
+      ]
+    }
+  },
   'menus' => [
     {
       'cmdname' => 'menu',
@@ -272,6 +281,7 @@ $result_nodes{'menu_in_style_command'} = {
       }
     }
   ],
+  'node_next' => {},
   'node_up' => {
     'extra' => {
       'manual_content' => [
@@ -283,11 +293,21 @@ $result_nodes{'menu_in_style_command'} = {
   }
 };
 $result_nodes{'menu_in_style_command'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_style_command'}{'menus'}[0];
+$result_nodes{'menu_in_style_command'}{'node_next'} = $result_nodes{'menu_in_style_command'}{'menu_child'};
 
 $result_menus{'menu_in_style_command'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'menu_child' => {
+    'extra' => {
+      'manual_content' => [
+        {
+          'text' => 'truc'
+        }
+      ]
+    }
   }
 };
 

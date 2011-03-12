@@ -30,6 +30,17 @@ in ifinfo
 @table @code
 @item @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 in item@footnote{footnote in item}
+@item @ref{Top,, title
+long title}
+@end table
+'],
+['table_on_item_line',
+'@table @asis
+@item item @table @asis
+   @item in nested table item
+   in nested table line
+   @end table
+in table line
 @end table
 '],
 ['on_itemize_line',
@@ -349,6 +360,15 @@ in float
 * (truc)::
 @end menu
 }'],
+['item_in_ref',
+'@table @asis
+@item first item
+First item text
+
+@ref{Top,, title in first item
+@item second item}
+@end table
+'],
 );
 
 my @formatted_cases = (
