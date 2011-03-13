@@ -24,7 +24,10 @@ my @test_cases = (
 in ifinfo
 @end ifinfo on the node line'],
 ['in_table',
-'@table @xref
+'
+@node Top
+
+@table @xref
 @end table
 
 @table @code
@@ -33,7 +36,21 @@ in item@footnote{footnote in item}
 @item @ref{Top,, title
 long title}
 @item @center centered text in item
+@item @cindex index
 @end table
+
+@vtable @asis
+@item @cindex index
+@option{opt}
+More text
+@item @cindex 2 index
+@option{nopt}
+Even more
+@end vtable
+
+@printindex fn
+
+@printindex cp
 '],
 ['table_on_item_line',
 '@table @asis

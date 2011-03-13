@@ -64,6 +64,18 @@ In footnote.
 @insertcopying
 
 '],
+['format_in_titlepage',
+'@titlepage
+
+@format
+Published
+@end format
+
+@end titlepage
+
+@node Top
+
+'],
 );
 
 foreach my $test (@test_formatted) {

@@ -23,6 +23,16 @@ text l 2
 [ 'paragraph_command','@@
 
 @b{aaa}.
+
+@dotless{i} also dotless i.
+
+@email{m1} email.
+
+@definfoenclose foo,\\,//
+@foo{@@definfoenclose} should work at the beginning of a new paragraph.
+
+@footnote{lone footnote}.
+
 '],
 ['image_in_paragraph',
 'Para. @image{aa,bb,cc,dd,ee}. After image.
@@ -75,7 +85,15 @@ a 3 paragraphs sample @samp{in first paragraph
 in second
 
 in third}.
-']
+'],
+['double_style_paragraph',
+'@emph{@strong{
+First para.
+
+Second para.
+}
+}
+'],
 );
 
 foreach my $test (@test_cases) {

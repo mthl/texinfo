@@ -28,6 +28,17 @@ In foat 2.
 
 @ref{Label2}
 '],
+['float_with_at_commands',
+'@float entr@\'ee, premi@`ere entr@\'ee
+
+Ceci est notre premi@`ere entr@\'ee.
+@caption{La premi@`ere entr@\'ee est importante}
+
+@end float
+
+
+@listoffloats entr@\'ee
+'],
 ['footnote_in_caption',
 '@node Top
 
@@ -425,7 +436,7 @@ no label caption
 @end float
 
 @listoffloats
-']
+'],
 );
 
 my %info_tests = (
