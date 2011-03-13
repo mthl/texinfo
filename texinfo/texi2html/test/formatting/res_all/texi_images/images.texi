@@ -2,7 +2,7 @@
 
 @setfilename images.info
 
-@macro files_char
+@macro files-char
 File with @@-commands and special characters:
 
 @c cannot test a file with newline, since perl says

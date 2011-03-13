@@ -1,7 +1,7 @@
 images.texi(,2) 
 images.texi(,3) @setfilename images.info
 images.texi(,4) 
-images.texi(,5) @macro files_char
+images.texi(,5) @macro files-char
 images.texi(,6) File with @@-commands and special characters:
 images.texi(,7) 
 images.texi(,8) @c cannot test a file with newline, since perl says
@@ -21,18 +21,18 @@ images.texi(,21) In copying.
 images.texi(,22) @image{f--ile}.
 images.texi(,23) 
 images.texi(,24) Text in copying.
-images.texi(files_char,25) File with @@-commands and special characters:
-images.texi(files_char,25) 
-images.texi(files_char,25) @c cannot test a file with newline, since perl says
-images.texi(files_char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,25) @c with a noon reproducible path
-images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) 
-images.texi(files_char,25) And also in alt, and with dimensions:
-images.texi(files_char,25) 
-images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) File with @@-commands and special characters:
+images.texi(files-char,25) 
+images.texi(files-char,25) @c cannot test a file with newline, since perl says
+images.texi(files-char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files-char,25) @c with a noon reproducible path
+images.texi(files-char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) 
+images.texi(files-char,25) And also in alt, and with dimensions:
+images.texi(files-char,25) 
+images.texi(files-char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 images.texi(,26) @end copying
 images.texi(,27) 
 images.texi(,28) @node Top
@@ -44,18 +44,18 @@ images.texi(,21) In copying.
 images.texi(,22) @image{f--ile}.
 images.texi(,23) 
 images.texi(,24) Text in copying.
-images.texi(files_char,25) File with @@-commands and special characters:
-images.texi(files_char,25) 
-images.texi(files_char,25) @c cannot test a file with newline, since perl says
-images.texi(files_char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,25) @c with a noon reproducible path
-images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) 
-images.texi(files_char,25) And also in alt, and with dimensions:
-images.texi(files_char,25) 
-images.texi(files_char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) File with @@-commands and special characters:
+images.texi(files-char,25) 
+images.texi(files-char,25) @c cannot test a file with newline, since perl says
+images.texi(files-char,25) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files-char,25) @c with a noon reproducible path
+images.texi(files-char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) 
+images.texi(files-char,25) And also in alt, and with dimensions:
+images.texi(files-char,25) 
+images.texi(files-char,25) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,25) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 images.texi(,34) 
 images.texi(,35) In normal context
 images.texi(,36) @image{f--ile}.
@@ -86,18 +86,18 @@ images.texi(,60)
 images.texi(,61) @image{f--ile}.
 images.texi(,62) 
 images.texi(,63) 
-images.texi(files_char,64) File with @@-commands and special characters:
-images.texi(files_char,64) 
-images.texi(files_char,64) @c cannot test a file with newline, since perl says
-images.texi(files_char,64) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,64) @c with a noon reproducible path
-images.texi(files_char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,64) 
-images.texi(files_char,64) And also in alt, and with dimensions:
-images.texi(files_char,64) 
-images.texi(files_char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,64) File with @@-commands and special characters:
+images.texi(files-char,64) 
+images.texi(files-char,64) @c cannot test a file with newline, since perl says
+images.texi(files-char,64) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files-char,64) @c with a noon reproducible path
+images.texi(files-char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,64) 
+images.texi(files-char,64) And also in alt, and with dimensions:
+images.texi(files-char,64) 
+images.texi(files-char,64) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,64) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 images.texi(,65) @end example
 images.texi(,66) 
 images.texi(,67) @float
@@ -107,17 +107,17 @@ images.texi(,70)
 images.texi(,71) @image{f--ile}.
 images.texi(,72) @end float
 images.texi(,73) 
-images.texi(files_char,74) File with @@-commands and special characters:
-images.texi(files_char,74) 
-images.texi(files_char,74) @c cannot test a file with newline, since perl says
-images.texi(files_char,74) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
-images.texi(files_char,74) @c with a noon reproducible path
-images.texi(files_char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,74) 
-images.texi(files_char,74) And also in alt, and with dimensions:
-images.texi(files_char,74) 
-images.texi(files_char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
-images.texi(files_char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,74) File with @@-commands and special characters:
+images.texi(files-char,74) 
+images.texi(files-char,74) @c cannot test a file with newline, since perl says
+images.texi(files-char,74) @c Unsuccessful stat on filename containing newline at ././../../texi2html.pl line 7375.
+images.texi(files-char,74) @c with a noon reproducible path
+images.texi(files-char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,74) 
+images.texi(files-char,74) And also in alt, and with dimensions:
+images.texi(files-char,74) 
+images.texi(files-char,74) @c @image{f@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@*<"%@@@verb{:  < & @ % " :}}.
+images.texi(files-char,74) @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@dotless{@^{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 images.texi(,75) 
 images.texi(,76) @bye

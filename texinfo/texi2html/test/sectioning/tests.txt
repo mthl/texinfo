@@ -62,11 +62,11 @@ equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_no
 html-top_no_Top_node html-top.texi
 menu-whitespace_plain menu-whitespace.texi
 menu-whitespace menu-whitespace.texi --init makeinfo.init
-menu-whitespace_xml menu-whitespace.texi --init xml.init
+menu-whitespace_xml menu-whitespace.texi --xml
 node-whitespace_plain node-whitespace.texi
 node-whitespace node-whitespace.texi --init makeinfo.init
 nodename_parentheses nodename_parentheses.texi
-nodes_id_docbook nodes_id.texi --init docbook.init
+nodes_id_docbook nodes_id.texi --docbook
 two_footnotes_in_nodes_plain two_footnotes_in_nodes.texi
 two_footnotes_in_nodes two_footnotes_in_nodes.texi --init makeinfo.init
 section_in_unnumbered section_in_unnumbered.texi

@@ -2,7 +2,7 @@
 
 @setfilename images.info
 
-@macro files_char
+@macro files-char
 File with @@-commands and special characters:
 
 @c cannot test a file with newline, since perl says
@@ -22,7 +22,7 @@ In copying.
 @image{f--ile}.
 
 Text in copying.
-@files_char{}
+@files-char{}
 @end copying
 
 @node Top
@@ -61,7 +61,7 @@ Text. @code{f---ile} with jpeg extension.
 @image{f--ile}.
 
 
-@files_char{}
+@files-char{}
 @end example
 
 @float
@@ -71,6 +71,6 @@ In float.
 @image{f--ile}.
 @end float
 
-@files_char{}
+@files-char{}
 
 @bye
