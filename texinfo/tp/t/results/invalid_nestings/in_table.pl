@@ -434,6 +434,66 @@ $result_trees{'in_table'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'parent' => {},
+                          'text' => ' ',
+                          'type' => 'empty_spaces_after_command'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => 'centered text in item'
+                        },
+                        {
+                          'parent' => {},
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
+                      ],
+                      'parent' => {},
+                      'type' => 'misc_line_arg'
+                    }
+                  ],
+                  'cmdname' => 'center',
+                  'extra' => {
+                    'invalid_nesting' => 1,
+                    'misc_content' => [
+                      {}
+                    ]
+                  },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 9,
+                    'macro' => ''
+                  },
+                  'parent' => {}
+                }
+              ],
+              'parent' => {},
+              'type' => 'misc_line_arg'
+            }
+          ],
+          'cmdname' => 'item',
+          'extra' => {
+            'misc_content' => [
+              {}
+            ]
+          },
+          'parent' => {}
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
                   'parent' => {},
                   'text' => 'table'
                 },
@@ -456,7 +516,7 @@ $result_trees{'in_table'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 9,
+            'line_nr' => 10,
             'macro' => ''
           },
           'parent' => {}
@@ -560,14 +620,24 @@ $result_trees{'in_table'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_tree
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[3];
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'in_table'}{'contents'}[2];
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0];
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4];
-$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'extra'}{'command'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'in_table'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'extra'}{'command'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'in_table'}{'contents'}[2];
 $result_trees{'in_table'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'in_table'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'in_table'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[4];
+$result_trees{'in_table'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5];
 $result_trees{'in_table'}{'contents'}[2]{'parent'} = $result_trees{'in_table'};
 
 $result_texis{'in_table'} = '@table @xref
@@ -578,6 +648,7 @@ $result_texis{'in_table'} = '@table @xref
 in item@footnote{footnote in item}
 @item @ref{Top,, title
 }long title
+@item @center centered text in item
 @end table
 ';
 
@@ -587,6 +658,7 @@ in titlefont exdent
 in item
 
 long title
+centered text in item
 ';
 
 $result_errors{'in_table'} = [
@@ -679,6 +751,15 @@ $result_errors{'in_table'} = [
     'macro' => '',
     'text' => 'Misplaced }',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':9: warning: @center should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@center should not appear in @item',
+    'type' => 'warning'
   }
 ];
 

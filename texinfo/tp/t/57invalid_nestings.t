@@ -32,6 +32,7 @@ in ifinfo
 in item@footnote{footnote in item}
 @item @ref{Top,, title
 long title}
+@item @center centered text in item
 @end table
 '],
 ['table_on_item_line',
@@ -72,6 +73,39 @@ in quotation
 @center @code{in code in center @center center in code in center
 
 }
+
+@code{@center in center in code}
+
+@table @asis
+@center centered line with item @item first item on center line
+@end table
+
+@table @emph
+@item item
+@center centered line with item @item second item on center line
+@end table
+
+Empty double center:
+@center @center
+
+@center @samp{something @center end of samp}
+
+@center after first center @samp{@center after second center
+
+End of samp}
+
+@multitable {AAA}  {BBB}
+@item truc @tab bidule
+@center @item ctruc @tab cbidule
+@center @item cstruc
+@end multitable
+
+@center before the table @table @asis
+@item item in center
+Line in center
+@item second item
+@end table
+
 '],
 ['accents',
 'Valid

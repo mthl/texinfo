@@ -260,6 +260,29 @@ $ wget \'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HE
 @noindent
 Less recent versions are also present.
 '],
+['empty_center',
+'@center 
+'],
+['ref_in_center',
+'@node Top
+
+@center @ref{Top}
+
+@center @ref{Top, ,title
+very long}
+'],
+['footnote_in_center',
+'@center Centered text with a footnote@footnote{This footnote
+shows an important feature of the centered text.
+
+@example
+@table @asis
+@item item
+line
+@end table 
+@end example
+} and text after the footnote.
+'],
 ['test_allowcodebreaks',
 '@node Top
 

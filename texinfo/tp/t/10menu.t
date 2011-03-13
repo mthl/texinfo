@@ -148,7 +148,32 @@ menu comment.
 
 comment --- in.
 @end menu
-']
+'],
+['formats_in_menu',
+'@node Top
+
+@menu
+* (gcc):: text
+@table @asis
+@item item
+* table line::
+@end table
+
+* (info)::
+@verbatim
+some @ verb{x atim
+* texinfo:: in @ verbatim
+@end verbatim
+* (manual2):: %
+@html
+
+<i></i>
+@end html
+Log$
+* (truc):: @acronym{description
+* acronym::}
+@end menu
+'],
 );
 
 my @test_invalid = (

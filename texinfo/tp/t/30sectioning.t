@@ -726,6 +726,31 @@ $section_in_unnumbered_text
 
 @node   Last with spaces 
 '],
+['next_in_menu_is_below',
+'@node Top
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter chapter
+
+@menu
+* section::
+* subsection::
+@end menu
+
+@node section
+@section section
+
+@menu
+* subsection::
+@end menu
+
+@node subsection
+@subsection subsection
+']
 );
 
 my @test_cases = (

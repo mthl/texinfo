@@ -59,6 +59,10 @@ An unknwown command in a context where not all commands are accepted leads
 to an error message.  There is a FIXME in the code.  The test case is
 macro/unknown_macro_on_line_command
 
+sectioning/next_in_menu_is_below there should certainly be a warning for
+the subsection that is both below and next the section, because it is 
+next in menu.
+
 Force end lines before/after a menu?
 
 With something like
