@@ -51,6 +51,11 @@ AAA
 BBB
 }
 '],
+['footnote_no_node',
+'@top top
+
+F@footnote{In footnote}.
+'],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
 ['end_line_in_anchor',
 '@anchor{an

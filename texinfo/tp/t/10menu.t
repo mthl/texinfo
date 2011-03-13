@@ -66,6 +66,49 @@ new comment
 @end detailmenu
 @end menu
 '],
+['detailmenu_on_subnodes',
+'@node Top
+
+@menu
+* chapter::
+* chapter 2::
+
+@detailmenu
+* section::
+@end detailmenu
+
+@detailmenu
+Chap 2
+
+* section chap 2::
+* unnumberedsec::
+@end detailmenu
+@end menu
+
+@node chapter
+@chapter chapter
+
+@menu
+* section::
+@end menu
+
+@node section
+@section section
+
+@node chapter 2
+@chapter chapter 2
+
+@menu
+* section chap 2::
+* unnumberedsec::
+@end menu
+
+@node section chap 2
+@section section chap 2
+
+@node unnumberedsec
+@unnumberedsec unnumberedsec
+'],
 ['reference_to_external_manual',
 '
 @node Top

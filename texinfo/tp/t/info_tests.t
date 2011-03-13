@@ -353,6 +353,26 @@ First chapter.
 '],
 ['only_documentencoding',
 '@documentencoding ISO-8859-1'],
+['direntry_dircategory_and_commands',
+'@dircategory ``category---@var{th  ere}?\'\'
+@direntry
+* foo: (foo).   ``hello---@var{there}?\'\'
+@end direntry
+
+@dircategory cat2
+@direntry
+* aaa ::               aaaa
+                   bbbbb
+
+menutitle
+@end direntry
+
+
+@node Top
+@top Test dircategory and direntry
+
+Text
+'],
 );
 
 foreach my $test (@test_cases) {

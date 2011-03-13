@@ -142,7 +142,7 @@ sub output($)
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
     $self->document_warn($self->__("Document without nodes."));
     my $output = $header.$self->_convert($root);
-    my ($footnotes) = $self->_footnotes();
+    my $footnotes = $self->_footnotes();
     $output .= $footnotes;
     if ($fh) {
       print $fh $output;
@@ -303,15 +303,19 @@ sub _info_header($)
     $self->{'ignored_commands'}->{'direntry'} = 0;
     foreach my $command (@{$self->{'info'}->{'dircategory_direntry'}}) {
       if ($command->{'cmdname'} eq 'dircategory') {
-          if ($command->{'extra'} 
-               and defined($command->{'extra'}->{'text_arg'})) {
-          $result .= "\nINFO-DIR-SECTION $command->{'extra'}->{'text_arg'}\n";
+        if ($command->{'extra'} 
+            and defined($command->{'extra'}->{'misc_content'})) {
+          my $dircategory = "INFO-DIR-SECTION ".$self->convert_line(
+             {'contents' => $command->{'extra'}->{'misc_content'}});
+          $result .= $self->ensure_end_of_line($dircategory);
         }
+        $self->{'empty_lines_count'} = 0;
       } elsif ($command->{'cmdname'} eq 'direntry') {
         $result .= "START-INFO-DIR-ENTRY\n";
         my $direntry = $self->_convert($command);
         $result .= $direntry;
-        $result .= "END-INFO-DIR-ENTRY\n";
+        $result .= "END-INFO-DIR-ENTRY\n\n";
+        $self->{'empty_lines_count'} = 1;
       }
     }
     $self->{'ignored_commands'}->{'direntry'} = 1;

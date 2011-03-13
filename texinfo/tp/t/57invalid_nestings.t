@@ -369,6 +369,12 @@ First item text
 @item second item}
 @end table
 '],
+['ref_in_anchor',
+'@node Top
+@anchor{TOP @ref{Top}}'],
+['ref_in_ref',
+'@node Top
+@ref{@ref{Top}}']
 );
 
 my @formatted_cases = (

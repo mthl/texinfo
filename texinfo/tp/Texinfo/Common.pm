@@ -135,7 +135,7 @@ our %misc_commands = (
   'setshortcontentsaftertitlepage' => 'skipline', # no arg
   'documentencoding'  => 'text', # or 1?
   'novalidate'        => 'skipline', # no arg
-  'dircategory'       => 'text', # line. Position with regard 
+  'dircategory'       => 'line', # line. Position with regard 
                                  # with direntry is significant
   'pagesizes'         => 'line', # can have 2 args 
                            # or one? 200mm,150mm 11.5in

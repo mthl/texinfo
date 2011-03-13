@@ -774,6 +774,8 @@ sub _footnotes($;$)
   my $self = shift;
   my $element = shift;
 
+  $element = undef if ($element and $element->{'extra'}->{'no_node'});
+
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
     $result .= $self->_add_newline_if_needed();
