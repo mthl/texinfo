@@ -63,6 +63,9 @@ sectioning/next_in_menu_is_below there should certainly be a warning for
 the subsection that is both below and next the section, because it is 
 next in menu.
 
+Use PREFIX to override setfilename/input file name to determine output
+name? Isn't -o sufficient? Or call it 'setfilename'?
+
 Force end lines before/after a menu?
 
 With something like
@@ -94,8 +97,6 @@ Following should be an error:
 @end example
 
 test empty line in block or brace command in menu description.
-
-test unknown @value expanded.
 
 test recursive acronym
 @acronym{GNU, @acronym{GNU}'s Not Unix}

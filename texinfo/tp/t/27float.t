@@ -437,12 +437,59 @@ no label caption
 
 @listoffloats
 '],
+['float_copying',
+'@copying
+
+@float Copyright notice, public domain
+
+Public domain is not really a licence, as it means than
+the author abandon his copyright.
+
+@caption{The Public Domain notice@footnote{
+The caption copying footnote
+@anchor{caption copying footnote anchor}
+
+@cindex indexed caption copying footnote
+@findex public domain function
+
+see @ref{Copying and floats}.
+
+}
+
+@anchor{public domain anchor}
+@cindex indexed caption
+@findex indexed caption function
+}
+@end float
+@end copying
+
+@node Top
+@top Top
+
+@insertcopying
+
+@menu
+* Copying and floats::
+@end menu
+
+@node Copying and floats
+@appendix Copying and floats
+
+@insertcopying
+@insertcopying
+
+@listoffloats Copyright notice
+
+@printindex cp
+@printindex fn
+'],
 );
 
 my %info_tests = (
   'anchor_in_caption' => 1,
   'footnote_in_caption' => 1,
-  'cindex_in_caption' => 1
+  'cindex_in_caption' => 1,
+  'float_copying' => 1,
 );
 
 foreach my $test (@test_cases) {

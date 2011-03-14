@@ -172,6 +172,12 @@ some @ verb{x atim
 Log$
 * (truc):: @acronym{description
 * acronym::}
+
+@example
+* subsubsection::
+Menu comment
+@end example
+
 @end menu
 '],
 );

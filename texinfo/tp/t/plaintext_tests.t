@@ -38,6 +38,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 '],
 ['commands_and_punctuation',
 'SomthingA@.   and now inhibit.@: Now dots @dots{} and enddots @enddots{} and'],
+['inhibit_punctuation',
+'foo vs.@: bar.
+colon :@:And something else.
+semi colon ;@:.
+And ? ?@:. ?@:
+Now ! !@:@@ !@:
+but , ,@:
+'],
 ['accent_command_punctuation',
 '@dotaccent{e} after'],
 ['empty_line_in_example_end',
@@ -393,6 +401,8 @@ sp@sp 4
 text
 @end example
 '],
+['unknown_value',
+'@value{unknown}'],
 );
 
 my $at_commands_glued_text = 'at@@.

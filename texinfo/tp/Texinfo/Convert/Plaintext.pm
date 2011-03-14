@@ -1659,8 +1659,14 @@ sub _convert($$)
     } elsif ($command eq 'value') {
       my $expansion = $self->gdt('@{No value for `{value}\'@}', 
                                     {'value' => $root->{'type'}});
-        unshift @{$self->{'current_contents'}->[-1]}, $expansion;
-      return '';
+      if ($formatter->{'_top_formatter'}) {
+        $expansion = {'type' => 'paragraph',
+                      'contents' => [$expansion]};
+      }
+      $result .= $self->_convert($expansion);
+      #  unshift @{$self->{'current_contents'}->[-1]}, $expansion;
+      #return '';
+      return $result;
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
