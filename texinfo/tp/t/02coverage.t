@@ -148,6 +148,19 @@ def--fn
 Various deff lines
 @end deffn
 '],
+['symbol_after_command',
+'@table @asis
+@item. dot
+@item, comma
+@item@@ @@
+@item@{ @{
+@item! exclam
+@item\'\' quotes
+@item: colon
+@end table
+
+@@. @{, @@@@ @?, @!: @@@{ @@\'\' @@:
+'],
 ['nested_block_commands',
 '@group
 In group
@@ -503,6 +516,14 @@ other para.
 ['accent_no_closed_comment',
 '@~{e @c comment
 '],
+['indicateurl_end_lines',
+'@indicateurl{http://begin
+continue on other line}
+
+@indicateurl{http://begin2
+
+cut by blank line}
+'],
 ['flushright_not_closed',
 '@flushright
 
@@ -516,6 +537,79 @@ text in group
 ['unknown_commands',
 '@unknwon
 @#
+'],
+['symbol_after_block',
+'@html
+In html
+@end html. On the line.
+
+@html
+In html
+@end html@@ On the line.
+
+Verbatim:
+
+@verbatim
+In verbatim
+@end verbatim;
+
+@verbatim
+In verbatim
+@end verbatim@@
+
+Table:
+
+@table @emph
+@item a
+l--ine
+@end table+
+
+@table @emph
+@item a
+l--ine
+@end table@@
+
+Itemize:
+
+@itemize @bullet
+@item e--mph item
+@end itemize\'\'
+
+@itemize @bullet
+@item e--mph item
+@end itemize@@
+
+Multitable:
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@end multitable^
+
+@multitable @columnfractions 6 7
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@end multitable@{
+
+Flushleft:
+
+@flushleft
+flushleft
+@end flushleft!
+
+@flushleft
+flushleft
+@end flushleft@@
+
+Copying:
+
+@copying
+Copying
+@end copying*
+
+@copying
+Copying
+@end copying@@
 '],
 ['formats_only_titles',
 '@itemize
