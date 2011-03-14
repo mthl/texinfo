@@ -403,6 +403,44 @@ text
 '],
 ['unknown_value',
 '@value{unknown}'],
+['test_sp',
+'Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+
+A
+@sp 2
+B
+
+sp after para
+@sp 1
+'],
+['sp_in_example',
+'@example
+Para
+@sp 1
+other para
+Now lone @@sp:
+
+@sp 1
+
+@sp 2
+Para after sp
+
+A
+@sp 2
+B
+
+sp after para
+@sp 1
+@end example
+'],
 );
 
 my $at_commands_glued_text = 'at@@.
