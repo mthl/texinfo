@@ -323,7 +323,56 @@ In w:
 After true
 @testallowcodebreakspara{2}
 @testallowcodebreaksexample{}
-']
+'],
+['codequoteundirected_codequotebacktick',
+'@macro quotes
+``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{} @*
+code: @code{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
+asis: @asis{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
+strong: @strong{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
+kbd: @kbd{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
+samp: @samp{``simple-double--three---four----\'\' `simple\' quotedblleft: @quotedblleft{}} @*
+@end macro
+
+@macro allquotes
+@quotes{}
+
+@example
+@@codequoteundirected on
+@@codequotebacktick on
+@end example
+@codequoteundirected
+@codequotebacktick
+@quotes{}
+
+@example
+@@codequoteundirected off
+@@codequotebacktick off
+@end example
+@codequoteundirected off
+@codequotebacktick off
+@quotes{}
+@end macro
+
+@copying
+@allquotes{}
+@end copying
+@titlepage
+Titlepage
+@insertcopying
+@end titlepage
+
+
+@node Top 
+@top test quotes
+
+@allquotes{}
+
+@example
+@allquotes{}
+@end example
+
+'],
 );
 
 foreach my $test (@converted_test_cases) {

@@ -395,7 +395,8 @@ foreach my $global_multiple_command ('author', 'documentlanguage',
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'footnotestyle', 'hyphenation', 'urefbreakstyle',
-  'xrefautomaticsectiontitle') {
+  'xrefautomaticsectiontitle', 'codequoteundirected',
+  'codequotebacktick') {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
 
@@ -4277,7 +4278,9 @@ sub _parse_line_command_args($$$)
       $self->line_error (sprintf($self->__("\@exampleindent arg must be numeric/`asis', not `%s'"), $line), $line_nr);
     }
   } elsif ($command eq 'frenchspacing' 
-           or $command eq 'xrefautomaticsectiontitle') {
+           or $command eq 'xrefautomaticsectiontitle'
+           or $command eq 'codequoteundirected'
+           or $command eq 'codequotebacktick') {
     if ($line eq 'on' or $line eq 'off') {
       $args = [$line];
     } else {

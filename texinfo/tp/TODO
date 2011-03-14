@@ -3,6 +3,12 @@ Handle
 (does nothing in info, in HTML automatically set the section name as 3rd
 arg of @*ref).
 
+do something for?
+@set txicodequoteundirected
+@codequoteundirected
+@set txicodequotebacktick
+@codequotebacktick
+
 In Info A ref like @ref{node,,,manual} should lead to
 *note (manual)node::.
 
