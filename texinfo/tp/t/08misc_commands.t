@@ -133,6 +133,38 @@ summarycontents @summarycontents line following summarycontents
 ['invalid_kbdinputstyle',
 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 '],
+['kbdinputstyle',
+'@macro codekbdmacro
+@code{in code out of example @code{in nested code}}.
+@kbd{kbd out of example}.
+@code{kbd @kbd{in code}}.
+
+in example
+@example
+@code{in code in example @code{in nested code}}.
+@kbd{kbd in example}.
+@code{kbd @kbd{in code} in example}.
+@end example
+@end macro
+
+@@kbdinputstyle code
+
+@kbdinputstyle code
+
+@codekbdmacro{}
+
+@@kbdinputstyle example
+
+@kbdinputstyle example
+
+@codekbdmacro{}
+
+@@kbdinputstyle distinct
+
+@kbdinputstyle distinct
+
+@codekbdmacro{}
+'],
 ['index_entries',
 '@cindex cindex entry
 

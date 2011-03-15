@@ -241,13 +241,21 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence','code',
-  'command','ctrl','dfn','dmn','emph','env','file','headitemfont',
-  'i','slanted','sansserif','kbd','key','option','r','samp','sc','strong',
-  't','var', 'w', 'verb',  'indicateurl',
+foreach my $one_arg_command ('asis','b','cite','clicksequence',
+  'ctrl','dfn','dmn','emph','headitemfont',
+  'i','slanted','sansserif','r','sc','strong',
+  't','var', 'w', 
   'titlefont','hyphenation','anchor') {
   $brace_commands{$one_arg_command} = 1;
 }
+
+our %code_style_commands;
+foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
+   'samp', 'indicateurl', 'verb') {
+  $code_style_commands{$command} = 1;
+  $brace_commands{$command} = 1;
+}
+
 
 # Commands that enclose full texts
 our %context_brace_commands;

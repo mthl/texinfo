@@ -972,6 +972,9 @@ $result_trees{'value_in_misc_commands'} = {
               ],
               'cmdname' => 'kbd',
               'contents' => [],
+              'extra' => {
+                'code' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 58,
@@ -1020,6 +1023,9 @@ $result_trees{'value_in_misc_commands'} = {
                   ],
                   'cmdname' => 'kbd',
                   'contents' => [],
+                  'extra' => {
+                    'code' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 61,

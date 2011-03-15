@@ -235,6 +235,7 @@ our %default_configuration = (
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
   'clickstyle' => 'arrow',
+  'kbdinputstyle' => 'distinct',
   'sections_level' => 0,      # modified by raise/lowersections
   'merged_indices' => {},     # the key is merged in the value
   'labels'          => {},    # keys are normalized label names, as described
@@ -346,6 +347,7 @@ my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
+my %code_style_commands       = %Texinfo::Common::code_style_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -1043,6 +1045,20 @@ sub _close_brace_command($$$)
   }
   $current = $current->{'parent'};
   return $current;
+}
+
+sub _in_code($$)
+{
+  my $self = shift;
+  my $current = shift;
+
+  while ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
+          and exists $brace_commands{$current->{'parent'}->{'cmdname'}}
+          and !exists $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
+    return 1 if ($code_style_commands{$current->{'parent'}->{'cmdname'}});
+    $current = $current->{'parent'}->{'parent'};
+  }
+  return 0;
 }
 
 # close brace commands, that don't set a new context (ie @caption, @footnote)
@@ -3682,6 +3698,15 @@ sub _parse_texi($;$)
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
             $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
+          } elsif ($command eq 'kbd') {
+            if ($self->{'context_stack'}->[-1] eq 'preformatted'
+                and $self->{'kbdinputstyle'} ne 'distinct') {
+              $current->{'extra'}->{'code'} = 1;
+            } elsif ($self->{'kbdinputstyle'} eq 'code'
+                     or ($self->{'kbdinputstyle'} eq 'example'
+                         and $self->_in_code($current->{'parent'}))) {
+              $current->{'extra'}->{'code'} = 1;
+            }
           }
           if ($self->{'definfoenclose'}->{$command}) {
             $current->{'type'} = 'definfoenclose_command';
@@ -4288,6 +4313,7 @@ sub _parse_line_command_args($$$)
     }
   } elsif ($command eq 'kbdinputstyle') {
     if ($line eq 'code' or $line eq 'example' or $line eq 'distinct') {
+      $self->{'kbdinputstyle'} = $line;
       $args = [$line];
     } else {
       $self->line_error (sprintf($self->__("\@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"), $line), $line_nr);

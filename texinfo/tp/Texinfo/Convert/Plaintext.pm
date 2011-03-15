@@ -91,6 +91,7 @@ my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my @out_formats = @Texinfo::Common::out_formats;
+my %code_style_commands       = %Texinfo::Common::code_style_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -169,12 +170,6 @@ foreach my $advancing_para('center', 'verbatim', 'listoffloats') {
 foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro', 'copying',
   'documentdescription', 'titlepage', 'direntry') {
   $ignored_commands{$ignored_block_commands} = 1;
-}
-
-my %code_style_commands;
-foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
-   'samp', 'indicateurl', 'verb') {
-  $code_style_commands{$command} = 1;
 }
 
 my %punctuation_no_arg_commands;

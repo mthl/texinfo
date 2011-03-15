@@ -1168,6 +1168,9 @@ $result_trees{'macro_in_misc_commands'} = {
               ],
               'cmdname' => 'kbd',
               'contents' => [],
+              'extra' => {
+                'code' => 1
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 76,
@@ -1216,6 +1219,9 @@ $result_trees{'macro_in_misc_commands'} = {
                   ],
                   'cmdname' => 'kbd',
                   'contents' => [],
+                  'extra' => {
+                    'code' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 79,
