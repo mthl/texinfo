@@ -420,6 +420,34 @@ more.
 @end itemize
 @end example
 '],
+['inter_item_commands_in_itemize',
+'@itemize @minus
+@c comment in itemize
+@cindex also a cindex in itemize
+@item e--mph item
+@end itemize
+
+@itemize @bullet
+@cindex index entry within itemize
+@item i--tem 1
+@item @cindex index entry right after @@item
+i--tem 2
+@end itemize
+
+@itemize
+@c comment in itemize
+T--ext before items.
+@cindex also a cindex in itemize
+@item bullet item
+@end itemize
+'],
+['inter_item_commands_in_enumerate',
+'@enumerate
+
+@comment comment before first item in enumerate
+@item e--numerate
+@end enumerate
+'],
 );
 
 my @test_invalid = (

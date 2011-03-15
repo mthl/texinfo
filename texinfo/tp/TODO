@@ -156,8 +156,11 @@ Maybe:
 defcondx_Ubar defcondx_Dbar
 space_in_setfilename
 
-sectioning
+sectioning/
 node_footnote_end
+
+formatting/
+inter_item_commands.texi
 
 @verbatiminclude formatting/simplest.texi
 

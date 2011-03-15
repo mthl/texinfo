@@ -97,6 +97,18 @@ deffn
 @c comment
 @deffnx {truc} bidulr machin...
 @end deffn'],
+['inter_item_commands_in_def',
+'@deffn fset @var{i} a g
+@c comment before first deffnx
+
+@deffnx Command { log trap1} {}  
+@cindex between deffnx
+@deffnx cmde2 @b{id @samp{i} ule} truc
+@cindex cindex in deff item
+
+In deff item.
+@end deffn
+'],
 ['defx_after_empty_line',
 '@deffn fset @var{i} a g
 

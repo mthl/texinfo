@@ -96,6 +96,23 @@ Nested example @c
 In first one @c
 @end example
 '],
+['nested_formats',
+'@format
+@example
+
+in -- format/example
+
+@end example
+@end format
+
+@example
+@format
+
+in -- example/format
+
+@end format
+@end example
+'],
 );
 
 my @test_invalid = (

@@ -33,7 +33,28 @@ new paragraph in tab. example
 bbbbbbbbbb}
 @tab gg
 @end multitable
-']
+'],
+['inter_item_commands_in_multitable',
+'@multitable {truc}
+@c comment before first item
+
+@item truc
+
+@cindex index entry between empty lines
+
+@item trouc
+@c last comment
+@end multitable
+
+@multitable @columnfractions 0.6 0.4
+@headitem mu--ltitable headitem @tab another tab
+@item mu--ltitable item @tab multitable tab
+@c comment in multitable
+@item mu--ltitable item 2 @tab multitable tab 2
+@cindex index entry within multitable
+@item lone mu--ltitable item
+@end multitable
+'],
 );
 
 my @test_invalid = (

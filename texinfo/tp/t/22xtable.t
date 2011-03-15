@@ -38,6 +38,49 @@ VTable
 
 Text.
 '],
+['inter_item_commands_in_table',
+'@vtable @code
+@c comment in table
+@item a
+l--ine
+@end vtable
+
+@vtable @asis
+@item a
+@c comment between item and itemx
+@itemx b
+l--ine
+@end vtable
+
+@ftable @var
+@item a
+@cindex index entry between item and itemx
+@c and a comment
+@comment and another comment
+@itemx b
+l--ine
+@item c
+
+@c comment between lines
+
+@itemx d
+
+@c comment at end
+@end ftable
+
+@table @code
+@cindex cindex in table 
+@c comment in table
+@item abb
+l--ine
+@end table
+
+@table @code
+@cindex cindex in table 
+Texte before first item.
+@item abb
+@end table
+'],
 );
 
 my @test_invalid = (
