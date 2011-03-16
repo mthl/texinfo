@@ -483,6 +483,15 @@ see @ref{Copying and floats}.
 @printindex cp
 @printindex fn
 '],
+['comment_space_comand_in_float',
+'@node Top
+
+@float Text @ , label @ @c float
+Float
+@end float
+
+@listoffloats Text @ @c listoffloats
+']
 );
 
 my %info_tests = (
@@ -490,6 +499,7 @@ my %info_tests = (
   'footnote_in_caption' => 1,
   'cindex_in_caption' => 1,
   'float_copying' => 1,
+  'comment_space_comand_in_float' => 1,
 );
 
 foreach my $test (@test_cases) {

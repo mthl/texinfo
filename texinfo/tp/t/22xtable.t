@@ -81,6 +81,48 @@ Texte before first item.
 @item abb
 @end table
 '],
+['table_nested',
+'@macro myvtable
+@vtable @asis
+@item first item
+@itemx second itemx
+
+Text.
+
+@item second item
+
+Text 2
+
+@item last
+@end vtable
+
+Something.
+@table @emph
+@item in item
+Text without blank line
+@item second item
+Text without blank line 2
+@end table
+After table.
+@end macro
+
+Quotation
+@quotation
+@myvtable{}
+@end quotation
+
+Example
+@example
+@myvtable{}
+@end example
+
+Double quotation
+@quotation
+@quotation
+@myvtable{}
+@end quotation
+@end quotation
+'],
 );
 
 my @test_invalid = (

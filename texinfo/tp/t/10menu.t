@@ -3,6 +3,16 @@ use strict;
 require 't/test_utils.pl';
 
 my @test_cases = (
+['menu_title_before_entries',
+'@node Top
+
+@menu
+Horizontal space
+* subnode::
+@end menu
+
+@node subnode
+'],
 ['simple','
 @menu
 comment
@@ -54,6 +64,13 @@ new comment
 * a: (f)b1c.c,@c c
 * a: (f)b2c.c,     @c c
 * a: (f)b3c.c,    d@c c
+@end menu
+'],
+['no_colon_in_menu',
+'@node Top
+
+@menu
+* a
 @end menu
 '],
 ['detailmenu',

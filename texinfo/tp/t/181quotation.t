@@ -62,6 +62,11 @@ a Tip
 a Warning.
 @end quotation
 '],
+['comment_on_quotation_line',
+'@quotation truc@ @c quotation 
+In quotation
+@end quotation
+'],
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

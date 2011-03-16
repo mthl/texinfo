@@ -227,7 +227,7 @@ Nested Other line
 @exdent @exdent double  exdented nested other line
 @end example
 @end example
-']
+'],
 );
 
 my @converted_test_cases = (
@@ -405,10 +405,37 @@ Titlepage
 @end example
 
 '],
+['comment_space_command_on_line',
+'@settitle Settitle @ @c settittle
+
+@node Top  @comment @node Top
+@top top element@  @comment @top
+
+@frenchspacing on @c comment frenchspacing
+
+@cindex index entry @  @c index entry
+
+@heading Heading @     @c heading
+
+@printindex cp @c printindex 
+
+@float Text, label
+float
+@end float
+
+@listoffloats Text @ @c listoffloats
+
+@bye @c bye
+'],
+);
+
+my %info_tests = (
+  'comment_space_command_on_line' => 1,
 );
 
 foreach my $test (@converted_test_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'info' if ($info_tests{$test->[0]});
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
