@@ -98,6 +98,132 @@ This is iftex text.
 This is ifnottex text.
 @end ifnottex
 ', { 'expanded_formats' => ['info', 'html'] }],
+['commands_in_ifset',
+'
+@ifset notset
+@definfoenclose
+@documentencoding ISO-8859-1
+@end ifsettruc
+open { 
+@end ifset
+
+@ifset notset
+@example
+@copying
+@itemize
+@table
+@bye
+@end ifset
+'],
+['ignored_in_ifset',
+'
+@ifset notset
+@ignore
+@end ifset
+@end ignore
+text
+@end ifset
+
+@ifset notset
+@verbatim
+@end ifset
+@end verbatim
+@end ifset
+
+@ifset notset
+@verb{%
+@end ifset
+%}
+@end ifset
+'],
+['empty_ifset_in_ifset_no_set',
+'
+@ifset notset
+@html
+@ifset
+@end html
+@end ifset
+'],
+['ifclear_in_ifset',
+'
+@ifset a
+@ifclear ok  - ok, ignored
+@end junky   - ok, ignored
+@end ifset
+@c WRONG - missing @end ifset.
+'],
+['ifclear_in_ifset_set',
+'
+@set a
+
+@ifset a
+@ifclear ok  - ok, ignored
+@end junky   - ok, ignored
+@end ifset
+@c WRONG - missing @end ifset.
+'],
+['nested_ifset_ifclear',
+'
+@macro conditionals{}
+@ifset somevar
+@ifset anothervar
+Both somevar and anothervar are set.
+@end ifset
+@ifclear anothervar
+Somevar is set, anothervar is not.
+@end ifclear
+@end ifset
+@end macro
+
+@set somevar
+@set anothervar
+@conditionals{}
+
+@set somevar
+@clear anothervar
+@conditionals{}
+
+@clear somevar
+@set anothervar
+@conditionals{}
+
+@clear somevar
+@clear anothervar
+@conditionals{}
+'],
+['end_ifset_in_format',
+'
+@set notset
+
+@ifset notset
+@ignore
+@end ifset
+@end ignore
+text
+@end ifset
+
+@ifset notset
+@verbatim
+@end ifset
+@end verbatim
+@end ifset
+
+@ifset notset
+@verb{%
+@end ifset
+%}
+@end ifset
+'],
+['empty_ifset_in_ifset_set',
+'
+@set notset
+
+@ifset notset
+@html
+@ifset
+@end html
+@end ifset
+'],
 ['empty_ifclear',
 '@ifclear
 
