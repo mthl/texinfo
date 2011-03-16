@@ -2326,7 +2326,7 @@ sub _end_line($$$)
               $current->{'extra'}->{'command_argument'} = $end_command
                 if (defined($end_command));
             }
-            if ($line =~ /\S/) {
+            if ($line =~ /\S/ and defined($end_command)) {
               $self->line_error (sprintf($self->__("Superfluous argument to \@%s %s: %s"), $command, $end_command, $line), $line_nr);
             }
           } else {

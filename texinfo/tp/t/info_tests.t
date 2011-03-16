@@ -164,6 +164,57 @@ Para.
 @@image dot parent.
 @image{../include/f--ile}
 ',{'include_directories' => ['.', '..', 't/include']}],
+['image_extension',
+'@node Top
+
+@image{fext,,,,ext}
+@image{fdotext,,,,ext}
+@image{f--ile,,,,ext}
+'],
+['image_formatting',
+'@node Top
+
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+@code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
+@code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+@image{image} @image{image}
+
+@example
+@code{@@image@{f--ile@}} @image{f--ile}
+@code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
+@code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
+@code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
+@code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
+@code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
+@code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
+@image{image} @image{image}
+@end example
+
+@image{f--ile,,,a very long alt argument that could span more than one line who knows}
+
+in para
+@image{f--ile,,,a very long alt argument that could span more than one line who knows}.
+'],
+['image_and_spaces_formatting',
+'@node Top
+
+@image{words} @image{words} @image{words} @image{words} @image{words} @image{words} @image{words}
+
+Some text @image{words} @image{words} @image{words} @image{words} @image{words} @image{words} @image{words}.
+
+Some text @image{words} text aaaaaaaaa @image{words} text bbbbbbbbbbb @image{words} text ccccccccccccc @image{words} text ddddddddddddd @image{words} text eeeeeeeeeeeeeee @image{words} text fffffffffff @image{words}.
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @image{words}
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB @image{words}
+
+'],
 [ 'multitable_anchor_and_index_entry',
 '@node Top
 

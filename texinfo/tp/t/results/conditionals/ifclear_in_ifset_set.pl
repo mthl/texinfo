@@ -165,15 +165,6 @@ $result_errors{'ifclear_in_ifset_set'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: Superfluous argument to @end :    - ok, ignored
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'Superfluous argument to @end :    - ok, ignored',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':7: Unmatched `@end\'
 ',
     'file_name' => '',
