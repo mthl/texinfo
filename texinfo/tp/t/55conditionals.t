@@ -224,6 +224,38 @@ text
 @end html
 @end ifset
 '],
+['macro_in_ifset',
+'
+@macro truc {}
+truc
+@end macro
+
+@ifset a
+@unmacro truc
+@macro truc{}
+in ifset
+@end macro
+@end ifset
+
+@truc{}
+'],
+['macro_in_ifset_set',
+'
+@set a
+
+@macro truc {}
+truc
+@end macro
+
+@ifset a
+@unmacro truc
+@macro truc{}
+in ifset
+@end macro
+@end ifset
+
+@truc{}
+'],
 ['empty_ifclear',
 '@ifclear
 
