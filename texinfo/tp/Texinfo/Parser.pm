@@ -2997,7 +2997,7 @@ sub _parse_texi($;$)
                 $current->{'cmdname'}), $line_nr);
               $current = $current->{'parent'};
             }
-         } elsif ($line =~ /^\@/) {
+          } elsif ($line =~ /^\@/) {
             $self->line_error (sprintf($self->
               __("Use braces to give a command as an argument to \@%s"),
                 $current->{'cmdname'}), $line_nr);
@@ -3007,6 +3007,11 @@ sub _parse_texi($;$)
               if ($self->{'DEBUG'});
             # FIXME this is different than usual tree, no content here
             $current->{'args'} = [ { 'text' => $1, 'parent' => $current } ];
+            if ($current->{'cmdname'} eq 'dotless' and $1 ne 'i' and $1 ne 'j') {
+              $self->line_error (sprintf($self->
+                 __("%c%s expects `i' or `j' as argument, not `%s'"), 
+                 ord('@'), $current->{'cmdname'}, $1), $line_nr);
+            }
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
               $current->{'args'}->[-1]->{'type'} = 'space_command_arg';
             }
@@ -3899,6 +3904,18 @@ sub _parse_texi($;$)
                   or !defined($image->{'extra'}->{'brace_command_contents'}->[0])) {
                 $self->line_error(
                    $self->__("\@image missing filename argument"), $line_nr);
+              }
+            } elsif($current->{'parent'}->{'cmdname'} eq 'dotless') {
+              my $dotless = $current->{'parent'};
+              if (@{$current->{'contents'}}) {
+                my $text = $current->{'contents'}->[0]->{'text'};
+                if (!defined ($text)
+                  or ($text ne 'i' and $text ne 'j')) {
+                  $self->line_error (sprintf($self->
+                    __("%c%s expects `i' or `j' as argument, not `%s'"), 
+                    ord('@'), $dotless->{'cmdname'}, 
+                    Texinfo::Convert::Texinfo::convert($current)), $line_nr);
+                }
               }
             }
             $self->_register_global_command($current->{'parent'}->{'cmdname'},

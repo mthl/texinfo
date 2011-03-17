@@ -110,9 +110,6 @@ test recursive acronym
 in hyphenation: only text and accent commands, and should
 only appear in toplevel
 
-dotless:
-"%c%s expects `i' or `j' as argument, not `%s'"
-
 Missing warnings in
 t/19def.t empty_def_arguments
 for 

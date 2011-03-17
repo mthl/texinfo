@@ -516,6 +516,8 @@ other para.
 ['accent_no_closed_comment',
 '@~{e @c comment
 '],
+['not_i_j_in_dotless',
+'@dotless a bc, @^{@dotless{q}}.'],
 ['indicateurl_end_lines',
 '@indicateurl{http://begin
 continue on other line}
