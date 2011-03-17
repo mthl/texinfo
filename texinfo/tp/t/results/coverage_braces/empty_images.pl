@@ -163,7 +163,26 @@ $result_texts{'empty_images'} = '
 
 ';
 
-$result_errors{'empty_images'} = [];
+$result_errors{'empty_images'} = [
+  {
+    'error_line' => ':1: @image missing filename argument
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@image missing filename argument',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':3: @image missing filename argument
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@image missing filename argument',
+    'type' => 'error'
+  }
+];
 
 
 1;

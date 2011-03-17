@@ -3892,6 +3892,14 @@ sub _parse_texi($;$)
                   }
                 }  
               }
+            } elsif ($current->{'parent'}->{'cmdname'} eq 'image') {
+              my $image = $current->{'parent'};
+              if (!@{$image->{'args'}} 
+                  or !@{$image->{'extra'}->{'brace_command_contents'}}
+                  or !defined($image->{'extra'}->{'brace_command_contents'}->[0])) {
+                $self->line_error(
+                   $self->__("\@image missing filename argument"), $line_nr);
+              }
             }
             $self->_register_global_command($current->{'parent'}->{'cmdname'},
                                             $current->{'parent'}, $line_nr);
