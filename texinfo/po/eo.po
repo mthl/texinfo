@@ -1,17 +1,18 @@
 # Esperanto translations for GNU Texinfo.
-# Copyright (C) 2010 Free Software Foundation, Inc.
+# Copyright (C) 2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
 # Sergio Pokrovskij <sergio.pokrovskij@gmail.com>, 1999-2010.
-# Benno Schulenberg <benno@vertaalt.nl>, 2010.
+# Benno Schulenberg <benno@vertaalt.nl>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2008-09-18 20:38+0200\n"
-"PO-Revision-Date: 2010-09-14 15:31+0200\n"
+"PO-Revision-Date: 2011-03-15 22:18+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -199,7 +200,7 @@ msgstr "Enŝovi la kompletigon"
 
 #: info/echo-area.c:1222
 msgid "Building completions..."
-msgstr "Serĉante kompletigojn..."
+msgstr "Serĉado de kompletigoj..."
 
 #: info/echo-area.c:1342
 msgid "Scroll the completions window"
@@ -223,7 +224,7 @@ msgstr "Serĉi ĉenon en la indekso por ĉi tiu dosiero"
 
 #: info/indices.c:198
 msgid "Finding index entries..."
-msgstr "Serĉante indeksajn artikolojn..."
+msgstr "Serĉado de indeksaj artikoloj..."
 
 #: info/indices.c:206
 msgid "No indices found."
@@ -266,7 +267,7 @@ msgstr "Trovita «%s» en %s.  („\\[next-index-match]‟ serĉos la sekvan.)"
 #: info/indices.c:549
 #, c-format
 msgid "Scanning indices of `%s'..."
-msgstr "Serĉante en la indeksoj de «%s»..."
+msgstr "Serĉado en la indeksoj de «%s»..."
 
 #: info/indices.c:604
 #, c-format
@@ -671,12 +672,12 @@ msgstr "  %-10s  Iri laŭ la subkursora hiperteksta ligo.\n"
 #: info/infodoc.c:107
 #, c-format
 msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
-msgstr "  %-10s  Iri al la ĉefkataloga nodo.  Ekvivalentas al „g (DIR)‟.\n"
+msgstr "  %-10s  Iri al la ĉefkataloga nodo.  Ekvivalentas al «g (DIR)».\n"
 
 #: info/infodoc.c:108
 #, c-format
 msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
-msgstr "  %-10s  Iri al la radika nodo.  Ekvivalentas al „g Top‟.\n"
+msgstr "  %-10s  Iri al la radika nodo.  Ekvivalentas al «g Top».\n"
 
 #: info/infodoc.c:110
 msgid ""
@@ -813,7 +814,7 @@ msgstr "Eligi helpomesaĝon"
 
 #: info/infodoc.c:495
 msgid "Visit Info node `(info)Help'"
-msgstr "Viziti la Info-nodon „(info)Help‟"
+msgstr "Viziti la Info-nodon «(info)Help»"
 
 #: info/infodoc.c:633
 msgid "Print documentation for KEY"
@@ -960,7 +961,7 @@ msgid "\"%s\", line %u: "
 msgstr "«%s», linio %u: "
 
 #: info/infokey.c:906
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Usage: %s [OPTION]... [INPUT-FILE]\n"
 "\n"
@@ -974,20 +975,23 @@ msgid ""
 msgstr ""
 "Uzmaniero:  %s [OPCIO]... [ENIG-DOSIERO]\n"
 "\n"
+"Kompilas fontan 'infokey' dosieron al infoklava dosiero.  Legas ENIG-DOSIEROn\n"
+"(defaŭlte $HOME/.infokey) kaj eligas kompilaĵon al (defaŭlte) $HOME/.info.\n"
+"\n"
 "Opcioj:\n"
-" --output=DOSIERO         Eligu en DOSIEROn (anatataŭ $HOME/.info).\n"
-" --help                   Eligu ĉi tiun helpeton kaj finu.\n"
-" --version                Eligu la version de la programo kaj finu.\n"
+"  --output=DOSIERO      eligi al DOSIERO (anstataŭ al $HOME/.info)\n"
+"  --help                eligi ĉi tiun helpteksteton kaj fini\n"
+"  --version             eligi la programversion kaj fini\n"
 
 #: info/infomap.c:955
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
-msgstr "Ignorante misan infoklavan dosieron «%s» (tro mallongan)"
+msgstr "Ignoriĝas misa infoklava dosiero «%s» (tro mallongas)"
 
 #: info/infomap.c:958
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
-msgstr "Ignorante misan infoklavan dosieron «%s» (tro longan)"
+msgstr "Ignoriĝas misa infoklava dosiero «%s» (tro longas)"
 
 #: info/infomap.c:971
 #, c-format
@@ -1016,11 +1020,11 @@ msgstr "Misa infoklava dosiero «%s» (misa sekcikodo) -- aktualigu ĝin per «i
 
 #: info/infomap.c:1171
 msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr "Misaj datumoj en infoklava dosiero -- iuj klavasociaĵoj ne validos"
+msgstr "Misaj datumoj en infoklava dosiero -- iuj klavasociaĵoj ignoriĝas"
 
 #: info/infomap.c:1221
 msgid "Bad data in infokey file -- some var settings ignored"
-msgstr "Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ne validos"
+msgstr "Misaj datumoj en infoklava dosiero -- iuj valorizoj de variabloj ignoriĝas"
 
 #: info/m-x.c:68
 msgid "Read the name of an Info command and describe it"
@@ -1362,7 +1366,7 @@ msgstr "Ne eblas trovi nodon referencatan per «%s» en «%s»."
 
 #: info/session.c:2945
 msgid "Read a list of menus starting from dir and follow them"
-msgstr "Legi liston da menuoj, komencante per „dir‟ kaj sekvante ilin"
+msgstr "Legi liston da menuoj, komencante per «dir» kaj sekvante ilin"
 
 #: info/session.c:2947
 msgid "Follow menus: "
@@ -1387,11 +1391,11 @@ msgstr "Manlibran paĝon: "
 
 #: info/session.c:3214
 msgid "Select the node `Top' in this file"
-msgstr "Viziti la nodon „Top‟ en ĉi tiu dosiero"
+msgstr "Viziti la nodon «Top» en ĉi tiu dosiero"
 
 #: info/session.c:3220
 msgid "Select the node `(dir)'"
-msgstr "Viziti la nodon „(dir)‟"
+msgstr "Viziti la nodon «(dir)»"
 
 #: info/session.c:3237 info/session.c:3239
 #, c-format
@@ -1440,7 +1444,7 @@ msgstr "Prete."
 #: info/session.c:3534
 #, c-format
 msgid "Writing node %s..."
-msgstr "Skribante nodon «%s»..."
+msgstr "Skribado de nodo «%s»..."
 
 #: info/session.c:3610
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
@@ -1454,7 +1458,7 @@ msgstr "Ne eblas malfermi dukton al «%s»."
 #: info/session.c:3651
 #, c-format
 msgid "Printing node %s..."
-msgstr "Printante nodon «%s»..."
+msgstr "Printado de nodo «%s»..."
 
 #: info/session.c:3900
 msgid "Search continued from the end of the document."
@@ -1467,7 +1471,7 @@ msgstr "Serĉo kontinuis ekde la komenco de la dokumento."
 #: info/session.c:3922
 #, c-format
 msgid "Searching subfile %s ..."
-msgstr "Serĉante subdosieron «%s»..."
+msgstr "Serĉado en subdosiero «%s»..."
 
 #: info/session.c:3979
 msgid "Read a string and search for it case-sensitively"
@@ -1730,7 +1734,7 @@ msgstr "Uzmaniero: %s [OPCIO]... [INFO-DOSIERO [DIR-DOSIERO]]\n"
 
 #: install-info/install-info.c:510
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
-msgstr ""
+msgstr "Aldonas aŭ forigas la elementojn en INFO-DOSIERO al aŭ el DIR-DOSIERO."
 
 #: install-info/install-info.c:513
 msgid ""
@@ -2217,7 +2221,7 @@ msgstr "@%s ne sencas ekster bloko „@float‟"
 
 #: makeinfo/insertion.c:1978
 msgid "@menu seen before first @node, creating `Top' node"
-msgstr "„@menu‟ renkontitas jam antaŭ la unua „@node‟; nodo „Top‟ kreitas"
+msgstr "„@menu‟ renkontitas jam antaŭ la unua „@node‟; nodo «Top» kreitas"
 
 #: makeinfo/insertion.c:1979
 msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
@@ -2225,7 +2229,7 @@ msgstr "eble via @top-nodo staru sub @ifnottex anstataŭ sub @ifinfo?"
 
 #: makeinfo/insertion.c:1991
 msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr "„@detailmenu‟ renkontitas jam antaŭ la unua nodo; nodo „Top‟ kreitas"
+msgstr "„@detailmenu‟ renkontitas jam antaŭ la unua nodo; nodo «Top» kreitas"
 
 #: makeinfo/insertion.c:2047
 #, c-format
@@ -2440,7 +2444,7 @@ msgstr ""
 "  -o, --output=DOSIERO        skribi en DOSIEROn (aŭ dosierujon por fenda HTML)\n"
 
 #: makeinfo/makeinfo.c:391
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Options for Info and plain text:\n"
 "      --disable-encoding      do not output accented and special characters\n"
@@ -2457,17 +2461,18 @@ msgid ""
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Opcioj por Info kaj plata teksto:\n"
-"      --enable-encoding\t      Eligu diakritaĵojn kaj specialajn signojn\n"
-"\t\t\t\tlaŭ @documentencoding\n"
-"      --fill-column=N\t      Rompu Info-liniojn post N signoj (defaŭlte %d)\n"
-"      --footnote-style=STILO  Aranĝu la piednotojn laŭ STILO:\n"
-"\t\t\t\t„separate‟ -- loku ilin en apartan nodon;\n"
-"\t\t\t\t„end‟  -- loku ilin fine de la nodo en kiu\n"
-"\t\t\t\t\t  ili estas difinitaj (la defaŭlto)\n"
-"      --paragraph-indent=VAL  Alinea enŝovo estu VAL spacetoj (defaŭlte %d);\n"
-"\t\t\t\tse VAL estas „none‟, ne enŝovu;\n"
-"\t\t\t\tse VAL estas „asis‟, obeu la fontan enŝovon\n"
-"      --split-size=N\t      Fendu en dosierojn po N (defaŭlte %d)\n"
+"      --disable-encoding      ne eligi en Info diakritaĵojn kaj specialajn\n"
+"                                signojn laŭ @documentencoding\n"
+"      --enable-encoding       malŝalti '--disable-encoding' (defaŭlto)\n"
+"      --fill-column=NOMBRO    rompi Info-liniojn post NOMBRO signoj (defaŭlte %d)\n"
+"      --footnote-style=STILO  aranĝi la piednotojn laŭ STILO:\n"
+"                                „separate‟ -- loki ilin en apartan nodon;\n"
+"                                „end‟  -- loki ilin fine de la nodo en kiu\n"
+"                                ili estas difinitaj (la defaŭlto)\n"
+"      --paragraph-indent=VAL  alinea enŝovo estu VAL spacetoj (defaŭlte %d);\n"
+"                                se VAL estas „none‟, ne enŝovi;\n"
+"                                se VAL estas „asis‟, obei la fontan enŝovon\n"
+"      --split-size=NOMBRO     fendi en dosieroj po NOMBRO bajtoj (defaŭlte %d)\n"
 
 #: makeinfo/makeinfo.c:409
 msgid ""
@@ -2479,19 +2484,24 @@ msgid ""
 "      --transliterate-file-names\n"
 "                              produce file names in ASCII transliteration.\n"
 msgstr ""
+"Opcioj por HTML:\n"
+"      --css-include=DOSIERO       inkluzivi DOSIEROn en HTML-a eligo de <style>;\n"
+"                                    ĉefenigujo legiĝas se DOSIERO estas «-»\n"
+"      --css-ref=URL               generi referencon al CSS-dosiero\n"
+"      --internal-links=DOSIERO    eligi liston de internaj ligoj al DOSIERO\n"
+"      --transliterate-file-names  reliterumi dosiernomojn en nura ASCII\n"
 
 #: makeinfo/makeinfo.c:419
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
 "                                If VAL is 0, ignorable whitespace is dropped.\n"
 msgstr ""
 "Opcioj por XML kaj Docbook:\n"
-"      --output-indent=VAL     Deŝovu XML-elementojn je VAL spacetoj\n"
-"\t\t\t\t(defaŭlte %d).  Se VAL estas 0, forigu\n"
-"\t\t\t\tsensignifajn spacetojn\n"
-"\n"
+"      --output-indent=NOMBRO    deŝovi XML-elementojn je NOMBRO spacetoj\n"
+"                                  (defaŭlte %d); se NOMBRO estas 0, forigi\n"
+"                                  sensignifajn spacetojn\n"
 
 #: makeinfo/makeinfo.c:426
 msgid ""
@@ -2503,11 +2513,11 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Opcioj pri la fontodosieroj:\n"
-"  --commands-in-node-names    Permesu @-komandojn en nodnomoj\n"
-"  -D VAR\t\t      Difinu la variablon VAR, kvazaŭ per @set\n"
-"  -I UJO\t\t      Alkroĉu dosierUJOn al la serĉvojo de @include\n"
-"  -P UJO\t\t      Antaŭmetu dosierUJOn al la serĉvojo de @include\n"
-"  -U VAR\t\t      Maldifinu la variablon  VAR,  kiel per @clear\n"
+"      --commands-in-node-names    permesi @-komandojn en nodnomoj\n"
+"  -D VAR      difini la variablon VAR, kiel per @set\n"
+"  -I UJO      alkroĉi dosierUJOn al la serĉvojo de @include\n"
+"  -P UJO      antaŭmeti dosierUJOn al la serĉvojo de @include\n"
+"  -U VAR      maldifini la variablon VAR, kiel per @clear\n"
 
 #: makeinfo/makeinfo.c:435
 msgid ""
@@ -2529,23 +2539,23 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 "Kondiĉa traktado ĉe enigo:\n"
-"  --ifdocbook\t   Traktu la pecojn sub @ifdocbook kaj @docbook eĉ se\n"
-"\t\t      ne Docbook estas generata\n"
-"  --ifhtml\t   Traktu la pecojn sub @ifhtml kaj @html eĉ se ne\n"
-"\t\t      HTML estas generata\n"
-"  --ifinfo\t   Traktu la pecojn sub @ifinfo eĉ se ne Info generatas\n"
-"  --ifplaintext\t   Traktu la pecojn sub @ifplaintext eĉ se alia formo ol\n"
-"\t\t      plata teksto estas generata\n"
-"  --iftex\t   Traktu la pecojn sub @iftex kaj @tex; implicas --no-split\n"
-"  --ifxml\t   Traktu la pecojn sub @ifxml kaj @xml\n"
-"  --no-ifdocbook   Ne traktu la pecojn sub @ifdocbook kaj @docbook\n"
-"  --no-ifhtml\t   Ne traktu la pecojn sub @ifhtml kaj @html\n"
-"  --no-ifinfo\t   Ne traktu la pecojn sub @ifinfo\n"
-"  --no-ifplaintext Ne traktu la pecojn sub @ifplaintext\n"
-"  --no-iftex\t   Ne traktu la pecojn sub @iftex kaj @tex\n"
-"  --no-ifxml\t   Ne traktu la pecojn sub @ifxml kaj @xml\n"
+"  --ifdocbook       trakti la pecojn sub @ifdocbook kaj @docbook eĉ se\n"
+"                      ne generiĝas Docbook\n"
+"  --ifhtml\t        trakti la pecojn sub @ifhtml kaj @html eĉ se ne\n"
+"                      generiĝas HTML\n"
+"  --ifinfo\t        trakti la pecojn sub @ifinfo eĉ se ne generiĝas Info\n"
+"  --ifplaintext     trakti la pecojn sub @ifplaintext eĉ se alia formo ol\n"
+"                      plata teksto generiĝas\n"
+"  --iftex\t         trakti la pecojn sub @iftex kaj @tex; implicas '--no-split'\n"
+"  --ifxml\t         trakti la pecojn sub @ifxml kaj @xml\n"
+"  --no-ifdocbook    ne trakti la pecojn sub @ifdocbook kaj @docbook\n"
+"  --no-ifhtml\t     ne trakti la pecojn sub @ifhtml kaj @html\n"
+"  --no-ifinfo\t     ne trakti la pecojn sub @ifinfo\n"
+"  --no-ifplaintext  ne trakti la pecojn sub @ifplaintext\n"
+"  --no-iftex\t      ne trakti la pecojn sub @iftex kaj @tex\n"
+"  --no-ifxml\t      ne trakti la pecojn sub @ifxml kaj @xml\n"
 "\n"
-"  Krome, ĉe la opcioj --no-ifFORMO, ja traktu la pecojn sub @ifnotFORMO.\n"
+"  Krome, ĉe la opcioj --no-ifFORMO, ja traktiĝas la pecoj sub @ifnotFORMO.\n"
 
 #: makeinfo/makeinfo.c:454
 msgid ""
@@ -2555,14 +2565,13 @@ msgid ""
 "  if generating plain text, --ifplaintext is on and the others are off;\n"
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
-"La defaŭlta konduto de la @if...-frazoj dependas je la celata formo:\n"
-"se HTML estas generata, --ifhtml aktivas kaj la ceteraj, malaktivas;\n"
-"ĉe Info-generado, --ifinfo aktivas kaj la ceteraj, malaktivas; \n"
-"se plata teksto estas generata, --ifplaintext aktivas kaj la ceteraj,\n"
-"malaktivas; ĉe XML-generado, --ifxml aktivas kaj la ceteraj, malaktivas.\n"
+"  La defaŭlta konduto de la @if...-frazoj dependas de la celata formo:\n"
+"  kiam HTML generiĝas, --ifhtml aktivas kaj la ceteraj malaktivas;\n"
+"  kiam Info generiĝas, --ifinfo aktivas kaj la ceteraj malaktivas; \n"
+"  kiam plata teksto generiĝas, --ifplaintext aktivas kaj la ceteraj malaktivas;\n"
+"  kiam XML generiĝas, --ifxml aktivas kaj la ceteraj malaktivas.\n"
 
 #: makeinfo/makeinfo.c:462
-#, fuzzy
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -2576,15 +2585,15 @@ msgid ""
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Ekzemploj:\n"
-" makeinfo UM.texi\t\t      konservu Info laŭ @setfilename\n"
-" makeinfo --html UM.texi\t      konservu HTML laŭ @setfilename\n"
-" makeinfo --xml UM.texi\t\t      konservu Texinfo-XML laŭ @setfilename\n"
-" makeinfo --docbook UM.texi\t      konservu DocBook-XML laŭ @setfilename\n"
-" makeinfo --no-headers -o - UM.texi   sendu platan tekston en ĉefeligujon\n"
+"  makeinfo UM.texi\t\t               Konservas Info laŭ @setfilename.\n"
+"  makeinfo --html UM.texi\t          Konservas HTML laŭ @setfilename.\n"
+"  makeinfo --xml UM.texi\t\t         Konservas Texinfo-XML laŭ @setfilename.\n"
+"  makeinfo --docbook UM.texi\t       Konservas DocBook-XML laŭ @setfilename.\n"
+"  makeinfo --no-headers UM.texi      Eligas platan tekston al ĉefeligujo.\n"
 "\n"
-" makeinfo --html --no-headers UM.texi konservu HTML sen la linioj «Node:»\n"
-" makeinfo --number-sections UM.texi   konservu Infoon kun sekcinumeroj\n"
-" makeinfo --no-split UM.texi\t      faru unu Info-dosieron, kiom ajn grandan\n"
+"  makeinfo --html --no-headers UM.texi  Konservas HTML sen la linioj «Node:».\n"
+"  makeinfo --number-sections UM.texi    Konservas Info kun sekcinumeroj.\n"
+"  makeinfo --no-split UM.texi\t         Kreas unu Info-dosieron, kiom ajn grandan.\n"
 
 #: makeinfo/makeinfo.c:622
 #, c-format
@@ -2796,7 +2805,7 @@ msgstr "Nodo «%s» estas jam difinita en la linio %d"
 #: makeinfo/node.c:647
 #, c-format
 msgid "Formatting node %s...\n"
-msgstr "Aranĝante nodon «%s»...\n"
+msgstr "Aranĝado de nodo «%s»...\n"
 
 #: makeinfo/node.c:714
 #, c-format
@@ -2878,7 +2887,7 @@ msgstr "nodo «%s» ne estas referencita"
 #: makeinfo/node.c:1727
 #, c-format
 msgid "Removing %s\n"
-msgstr "Forigante %s\n"
+msgstr "Forigado de %s\n"
 
 #: makeinfo/node.c:1731
 #, c-format
