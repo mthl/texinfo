@@ -1,5 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
-@c $Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
+@c $Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
 @c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
 @c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
@@ -6384,7 +6384,7 @@ produces
 
 @example
 @group
-*Note (weather)Electrical Effects.
+*Note (weather)Electrical Effects::.
 @end group
 @end example
 
@@ -17638,7 +17638,7 @@ set INFOPATH=.;%HOME%/info;c:/usr/local/emacs/info
 @noindent
 The @samp{.} indicates the current directory as usual.  Emacs uses the
 @code{INFOPATH} environment variable to initialize the value of Emacs's
-own @code{Info-directory-list} variable.  The stand-alone Info reader
+own @code{Info-directory-list} variable.  The standalone Info reader
 merges any files named @file{dir} in any directory listed in the
 @env{INFOPATH} variable into a single menu presented to you in the node
 called @samp{(dir)Top}.
@@ -23170,7 +23170,7 @@ Concurrent Versions System}) or RCS
 (@url{http://www.gnu.org/software/rcs}) version control systems, which
 expand it into a string such as:
 @example
-$Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
+$Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
 @end example
 (This is useful in all sources that use version control, not just manuals.)
 You may wish to include the @samp{$Id:} comment in the @code{@@copying}
@@ -23249,7 +23249,7 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id: texinfo.txi,v 1.377 2011-02-28 17:26:02 karl Exp $
+@comment $Id: texinfo.txi,v 1.378 2011-03-18 23:20:37 karl Exp $
 @comment %**start of header
 @setfilename sample.info
 @include version.texi

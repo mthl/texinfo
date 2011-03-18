@@ -1,3 +1,9 @@
+2011-03-18  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Stand-alone Info): bug reporting address.
+	
+	* doc/texinfo.txi: standalone not stand-alone in this manual.
+
 2011-03-06  Karl Berry  <karl@gnu.org>
 
 	* util/htmlxref.cnf (mpc): new GNU package.

@@ -1,5 +1,5 @@
 vb\input texinfo.tex    @c -*-texinfo-*-
-@comment $Id: info-stnd.texi,v 1.29 2010-03-19 01:00:18 karl Exp $
+@comment $Id: info-stnd.texi,v 1.30 2011-03-18 23:20:37 karl Exp $
 @c We must \input texinfo.tex instead of texinfo, otherwise make
 @c distcheck in the Texinfo distribution fails, because the texinfo Info
 @c file is made first, and texi2dvi must include . first in the path.
@@ -18,7 +18,8 @@ a program for viewing documents in Info format (usually created from
 Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software
+Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -99,15 +100,22 @@ Texinfo itself is a documentation system that uses a single source
 file to produce both on-line information and printed output.  You can
 typeset and print the files that you read in Info.
 
+@cindex Emacs Info reader
+@cindex Info files, reading in Emacs
 GNU Emacs also provides an Info reader (just type @kbd{M-x info} in
 Emacs).  Emacs Info and stand-alone Info have nearly identical user
 interfaces, although customization and other details are different
 (this manual explains the stand-alone Info reader).  The Emacs Info
 reader supports the X Window System and other such bitmapped
-interfaces, not just plain ASCII, so if you want the prettiest
-display for Info files, you should try it.  You can use Emacs Info
-without using Emacs for anything else.  (Type @kbd{C-x C-c} to exit;
-this also works in the stand-alone Info reader.)
+interfaces, not just plain ASCII, so if you want a prettier display
+for Info files, you should try it.  You can use Emacs Info without
+using Emacs for anything else.  (Type @kbd{C-x C-c} to exit; this also
+works in the stand-alone Info reader.)
+
+@cindex bugs, reporting
+Please report bugs in this Info program to
+@email{bug-texinfo@@gnu.org}.  (Bugs in the Emacs Info reader should
+be sent to @email{bug-gnu-emacs@@gnu.org}.)
 
 
 @node Invoking Info
@@ -119,7 +127,8 @@ this also works in the stand-alone Info reader.)
 @cindex options, command line
 @cindex arguments, command line
 
-GNU Info accepts several options to control the initial node being
+GNU Info 
+accepts several options to control the initial node being
 viewed, and to specify which directories to search for Info files.  Here
 is a template showing an invocation of GNU Info from the shell:
 
