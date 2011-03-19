@@ -57,6 +57,7 @@ BBB
 F@footnote{In footnote}.
 '],
 ['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
+['space_command_in_image', '@image{f--ile,,,@ } @image{f--ile,,,@:}'],
 ['end_line_in_anchor',
 '@anchor{an
 anchor}
@@ -108,6 +109,39 @@ begin and end quotations: @w{@t{`@w{}`@dots{}\'@w{}\'}}.  This
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled.
 '],
+['test_image',
+'@macro files-char
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+@end macro
+
+@copying
+Text in copying.
+@files-char{}
+@end copying
+
+@node Top
+
+@files-char{}
+
+Insertcopying
+@insertcopying
+
+@example
+@files-char{}
+@end example
+
+@float Image, Image with commands
+@files-char{}
+
+@caption{@files-char{}}
+@end float
+
+@listoffloats Image
+
+',],
+# {'test_formats' => ['info']}],
 ['format_on_first_footnote_line',
 'Texte@footnote{@quotation
 in quotation on the first footnote line
@@ -214,6 +248,9 @@ third}
 '@image{}
 
 @image{ ,aa,bb,cc ,dd}
+
+@image{,,,@ }
+@image{,,,@:}
 '],
 ['empty_ref',
 '
@@ -225,7 +262,7 @@ third}
 our ($arg_test_case, $arg_generate, $arg_debug);
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
 }
 
 run_all ('coverage_braces', [@test_cases, @test_invalid], $arg_test_case,
