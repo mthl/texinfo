@@ -18,7 +18,7 @@ my @test_cases = (
 '],
 ['math',
 'Simple math
-@math{{x^i}\over{\tan y}}
+@math{--{x^i}\over{\tan y}}
 
 Math with @@-command
 @math{@code{math code} a < b}

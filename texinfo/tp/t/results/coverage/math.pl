@@ -18,6 +18,10 @@ $result_trees{'math'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
+                  'text' => '--'
+                },
+                {
                   'contents' => [
                     {
                       'parent' => {},
@@ -299,11 +303,12 @@ $result_trees{'math'} = {
   'type' => 'text_root'
 };
 $result_trees{'math'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1];
 $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[0];
 $result_trees{'math'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[0];
@@ -354,7 +359,7 @@ $result_trees{'math'}{'contents'}[6]{'parent'} = $result_trees{'math'};
 $result_trees{'math'}{'contents'}[7]{'parent'} = $result_trees{'math'};
 
 $result_texis{'math'} = 'Simple math
-@math{{x^i}\\over{\\tan y}}
+@math{--{x^i}\\over{\\tan y}}
 
 Math with @@-command
 @math{@code{math code} a < b}
@@ -369,7 +374,7 @@ Complex
 
 
 $result_texts{'math'} = 'Simple math
-{x^i}\\over{\\tan y}
+--{x^i}\\over{\\tan y}
 
 Math with @-command
 math code a < b
@@ -396,7 +401,7 @@ $result_errors{'math'} = [
 
 
 
-$result_converted{'plaintext'}->{'math'} = 'Simple math {x^i}\\over{\\tan y}
+$result_converted{'plaintext'}->{'math'} = 'Simple math --{x^i}\\over{\\tan y}
 
    Math with @-command `math code\' a < b
 

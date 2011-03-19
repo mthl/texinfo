@@ -804,6 +804,85 @@ $result_trees{'image_and_spaces_formatting'} = {
           'text' => '
 ',
           'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'parent' => {},
+              'text' => 'Text. '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'words'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'image',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ]
+                ]
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              },
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '       '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'words'
+                    }
+                  ],
+                  'parent' => {},
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'image',
+              'contents' => [],
+              'extra' => {
+                'brace_command_contents' => [
+                  [
+                    {}
+                  ]
+                ]
+              },
+              'line_nr' => {},
+              'parent' => {}
+            },
+            {
+              'parent' => {},
+              'text' => '.
+'
+            }
+          ],
+          'parent' => {},
+          'type' => 'paragraph'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'extra' => {
@@ -980,6 +1059,20 @@ $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[22]{'con
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[22]{'contents'}[2]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[22];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[22]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[23]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'args'}[0];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[2]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'args'}[0];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'line_nr'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[1]{'line_nr'};
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[3]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[25]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'parent'} = $result_trees{'image_and_spaces_formatting'};
@@ -996,6 +1089,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @image{words}
 
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB @image{words}
 
+Text. @image{words}       @image{words}.
+
 ';
 
 
@@ -1009,6 +1104,8 @@ Some text words text aaaaaaaaa words text bbbbbbbbbbb words text ccccccccccccc w
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA words
 
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB words
+
+Text. words       words.
 
 ';
 
@@ -1056,6 +1153,8 @@ ddddddddddddd [This is an image words.] text eeeeeeeeeeeeeee [This is an image w
 
    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB
 [This is an image words.]
+   Text. [This is an image words.]  [This is an image words.].
+
 
 
 Tag Table:

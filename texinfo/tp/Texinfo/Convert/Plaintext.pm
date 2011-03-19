@@ -1638,7 +1638,8 @@ sub _convert($$)
       push @{$self->{'context'}}, 'math';
       if ($root->{'args'}) {
         $result .= $self->_convert({'type' => 'frenchspacing',
-             'contents' => [$root->{'args'}->[0]]});
+             'contents' => [{'type' => 'code',
+                            'contents' => [$root->{'args'}->[0]]}]});
       }
       my $old_context = pop @{$self->{'context'}};
       die if ($old_context ne 'math');
