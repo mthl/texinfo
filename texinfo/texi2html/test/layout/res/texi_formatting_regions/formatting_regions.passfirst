@@ -317,7 +317,7 @@ coverage_macro.texi(,308) @enumerate
 coverage_macro.texi(,309) @item e--numerate
 coverage_macro.texi(,310) @end enumerate
 coverage_macro.texi(,311) 
-coverage_macro.texi(,312) @multitable @columnfractions 6 7
+coverage_macro.texi(,312) @multitable @columnfractions 0.4 0.6 
 coverage_macro.texi(,313) @headitem mu--ltitable headitem @tab another tab
 coverage_macro.texi(,314) @item mu--ltitable item @tab multitable tab
 coverage_macro.texi(,315) @c comment in multitable
@@ -1041,7 +1041,7 @@ formatting_regions.texi(mymacro,46) @enumerate
 formatting_regions.texi(mymacro,46) @item e--numerate
 formatting_regions.texi(mymacro,46) @end enumerate
 formatting_regions.texi(mymacro,46) 
-formatting_regions.texi(mymacro,46) @multitable @columnfractions 6 7
+formatting_regions.texi(mymacro,46) @multitable @columnfractions 0.4 0.6 
 formatting_regions.texi(mymacro,46) @headitem mu--ltitable headitem @tab another tab
 formatting_regions.texi(mymacro,46) @item mu--ltitable item @tab multitable tab
 formatting_regions.texi(mymacro,46) @c comment in multitable
@@ -1758,7 +1758,7 @@ formatting_regions.texi(mymacro,49) @enumerate
 formatting_regions.texi(mymacro,49) @item e--numerate
 formatting_regions.texi(mymacro,49) @end enumerate
 formatting_regions.texi(mymacro,49) 
-formatting_regions.texi(mymacro,49) @multitable @columnfractions 6 7
+formatting_regions.texi(mymacro,49) @multitable @columnfractions 0.4 0.6 
 formatting_regions.texi(mymacro,49) @headitem mu--ltitable headitem @tab another tab
 formatting_regions.texi(mymacro,49) @item mu--ltitable item @tab multitable tab
 formatting_regions.texi(mymacro,49) @c comment in multitable

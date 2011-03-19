@@ -324,7 +324,7 @@ coverage_macro.texi(,308) @enumerate
 coverage_macro.texi(,309) @item e--numerate
 coverage_macro.texi(,310) @end enumerate
 coverage_macro.texi(,311) 
-coverage_macro.texi(,312) @multitable @columnfractions 6 7
+coverage_macro.texi(,312) @multitable @columnfractions 0.4 0.6 
 coverage_macro.texi(,313) @headitem mu--ltitable headitem @tab another tab
 coverage_macro.texi(,314) @item mu--ltitable item @tab multitable tab
 coverage_macro.texi(,315) @c comment in multitable
@@ -1052,7 +1052,7 @@ formatting_utf8.texi(mymacro,41) @enumerate
 formatting_utf8.texi(mymacro,41) @item e--numerate
 formatting_utf8.texi(mymacro,41) @end enumerate
 formatting_utf8.texi(mymacro,41) 
-formatting_utf8.texi(mymacro,41) @multitable @columnfractions 6 7
+formatting_utf8.texi(mymacro,41) @multitable @columnfractions 0.4 0.6 
 formatting_utf8.texi(mymacro,41) @headitem mu--ltitable headitem @tab another tab
 formatting_utf8.texi(mymacro,41) @item mu--ltitable item @tab multitable tab
 formatting_utf8.texi(mymacro,41) @c comment in multitable
@@ -1770,7 +1770,7 @@ formatting_utf8.texi(mymacro,45) @enumerate
 formatting_utf8.texi(mymacro,45) @item e--numerate
 formatting_utf8.texi(mymacro,45) @end enumerate
 formatting_utf8.texi(mymacro,45) 
-formatting_utf8.texi(mymacro,45) @multitable @columnfractions 6 7
+formatting_utf8.texi(mymacro,45) @multitable @columnfractions 0.4 0.6 
 formatting_utf8.texi(mymacro,45) @headitem mu--ltitable headitem @tab another tab
 formatting_utf8.texi(mymacro,45) @item mu--ltitable item @tab multitable tab
 formatting_utf8.texi(mymacro,45) @c comment in multitable

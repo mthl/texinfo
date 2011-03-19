@@ -297,7 +297,7 @@ After clickstyle &rArr;
 <orderedlist numeration="arabic"><listitem><para> e&ndash;numerate
 </para></listitem>
 </orderedlist>
-<informaltable><tgroup cols="2"><colspec colwidth="600*"></colspec><colspec colwidth="700*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+<informaltable><tgroup cols="2"><colspec colwidth="40*"></colspec><colspec colwidth="60*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
 </entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
@@ -826,7 +826,7 @@ After clickstyle &rArr;
 <orderedlist numeration="arabic"><listitem><para> e&ndash;numerate
 </para></listitem>
 </orderedlist>
-<informaltable><tgroup cols="2"><colspec colwidth="600*"></colspec><colspec colwidth="700*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+<informaltable><tgroup cols="2"><colspec colwidth="40*"></colspec><colspec colwidth="60*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
 </entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
@@ -1351,7 +1351,7 @@ After clickstyle &rArr;
 <orderedlist numeration="arabic"><listitem><para> e&ndash;numerate
 </para></listitem>
 </orderedlist>
-<informaltable><tgroup cols="2"><colspec colwidth="600*"></colspec><colspec colwidth="700*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
+<informaltable><tgroup cols="2"><colspec colwidth="40*"></colspec><colspec colwidth="60*"></colspec><thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
 </entry></row><row><entry> mu&ndash;ltitable item 2 </entry><entry> multitable tab 2
@@ -1876,7 +1876,7 @@ After clickstyle &rArr;
 <orderedlist numeration="arabic"><listitem> e--numerate
 </listitem>
 </orderedlist>
-<informaltable><tgroup cols="2"><colspec colwidth="600*"></colspec><colspec colwidth="700*"></colspec><thead><row><entry> mu--ltitable headitem </entry><entry> another tab
+<informaltable><tgroup cols="2"><colspec colwidth="40*"></colspec><colspec colwidth="60*"></colspec><thead><row><entry> mu--ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu--ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
 </entry></row><row><entry> mu--ltitable item 2 </entry><entry> multitable tab 2

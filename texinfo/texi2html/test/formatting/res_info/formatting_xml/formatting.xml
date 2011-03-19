@@ -319,8 +319,8 @@ After clickstyle &rArr;
 </para></item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
@@ -862,8 +862,8 @@ After clickstyle &rArr;
 </para></item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
@@ -1400,8 +1400,8 @@ After clickstyle &rArr;
 </para></item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
@@ -1939,8 +1939,8 @@ After clickstyle &rArr;
 </para></item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
@@ -2476,8 +2476,8 @@ After clickstyle &rArr;
 </para></item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu&ndash;ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu&ndash;ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->
@@ -3013,8 +3013,8 @@ A quot---ation
 </item>
 </enumerate>
 
-<multitable><columnfraction>600</columnfraction>
-<columnfraction>700</columnfraction>
+<multitable><columnfraction>40</columnfraction>
+<columnfraction>60</columnfraction>
 <thead><row><entry> mu--ltitable headitem </entry><entry> another tab
 </entry></row></thead><tbody><row><entry> mu--ltitable item </entry><entry> multitable tab
 <!-- comment in multitable -->

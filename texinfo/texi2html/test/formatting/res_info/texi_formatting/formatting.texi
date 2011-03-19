@@ -322,7 +322,7 @@ something, other thing
 @item e--numerate
 @end enumerate
 
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.4 0.6 
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -1033,7 +1033,7 @@ Note, the note
 @item e--numerate
 @end enumerate
 
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.4 0.6 
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -1639,7 +1639,7 @@ Note, the note
 @item e--numerate
 @end enumerate
 
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.4 0.6 
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -2245,7 +2245,7 @@ Note, the note
 @item e--numerate
 @end enumerate
 
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.4 0.6 
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
@@ -2845,7 +2845,7 @@ Note, the note
 @item e--numerate
 @end enumerate
 
-@multitable @columnfractions 6 7
+@multitable @columnfractions 0.4 0.6 
 @headitem mu--ltitable headitem @tab another tab
 @item mu--ltitable item @tab multitable tab
 @c comment in multitable
