@@ -483,7 +483,7 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 @ref{@url{http://somewhere_aaa} @url{url, text} @uref{/man.cgi/1/ls,,ls}}
 
 @bye
-'],
+', {}, {'TEST' => 1}],
 ['double_node_anchor_float',
 '@node node1
 
@@ -1235,7 +1235,7 @@ Second top.
 );
 
 foreach my $test (@tests_converted) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
 }
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';

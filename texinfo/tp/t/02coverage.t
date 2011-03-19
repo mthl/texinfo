@@ -484,6 +484,8 @@ In float with caption.
 ['test_tie',
 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@tie{}BBBBBBBBBBB
 '],
+['test_today',
+'@today{}.', {}, {'TEST' => 1}]
 );
 
 my @test_invalid = (
@@ -662,7 +664,7 @@ before first multitable
 );
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

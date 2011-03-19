@@ -72,6 +72,10 @@ next in menu.
 Use PREFIX to override setfilename/input file name to determine output
 name? Isn't -o sufficient? Or call it 'setfilename'?
 
+Punctuation and spaces before @image do not lead to a doubling of space.
+
+Use INLINE_INSERTCOPYING as the default for some formats?
+
 Force end lines before/after a menu?
 
 With something like

@@ -73,6 +73,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
   global_commands_information
   global_informations
   expand_verbatiminclude
+  expand_today
   gdt
 ) ] );
 
@@ -4415,6 +4416,47 @@ sub expand_verbatiminclude($$)
                     $current->{'cmdname'}, $text), $current->{'line_nr'});
   }
   return $verbatiminclude;
+}
+
+my @MONTH_NAMES =
+    (
+     'January', 'February', 'March', 'April', 'May',
+     'June', 'July', 'August', 'September', 'October',
+     'November', 'December'
+    );
+
+# This is not used as code, but used to mark months as strings to be
+# translated
+if (0) {
+  my $self;
+  my @mark_month_for_translation = (
+   $self->gdt('January'),
+   $self->gdt('February'),
+   $self->gdt('March'),
+   $self->gdt('April'),
+   $self->gdt('May'),
+   $self->gdt('June'),
+   $self->gdt('July'),
+   $self->gdt('August'),
+   $self->gdt('September'),
+   $self->gdt('October'),
+   $self->gdt('November'),
+   $self->gdt('December')
+  );
+}
+
+sub expand_today($)
+{
+  my $self = shift;
+  if ($self->{'TEST'}) {
+    return {'text' => 'a sunny day'};
+  }
+  my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+   = localtime(time);
+  $year += ($year < 70) ? 2000 : 1900;
+  return $self->gdt('{month} {day}, {year}', 
+          { 'month' => $self->gdt($MONTH_NAMES[$mon]),
+            'day' => $mday, 'year' => $year });
 }
 
 1;

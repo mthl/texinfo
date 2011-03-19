@@ -19608,7 +19608,7 @@ Top
 * == error--> Euro ! ==> -::
 * >= <= ->::
 * a o -!- # -| ? (R)::
-* => o a b  aa::
+* => o a b a sunny day aa::
 * AA ae oe AE OE /o /O ss /l /L D d TH th::
 * a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
 * e. e( e_ .e e< j ee[::
@@ -19662,19 +19662,19 @@ File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error--> Euro ! ==
 **********
 
 
-File: ,  Node: a o -!- # -| ? (R),  Next: => o a b aa,  Prev: >= <= ->,  Up: Top
+File: ,  Node: a o -!- # -| ? (R),  Next: => o a b a sunny day aa,  Prev: >= <= ->,  Up: Top
 
 6 a o -!- # -| ? (R)
 ********************
 
 
-File: ,  Node: => o a b aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
+File: ,  Node: => o a b a sunny day aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
 
-7 => o a b aa
-*************
+7 => o a b a sunny day aa
+*************************
 
 
-File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b aa,  Up: Top
+File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b a sunny day aa,  Up: Top
 
 8 AA ae oe AE OE /o /O ss /l /L D d TH th
 *****************************************
@@ -19784,45 +19784,45 @@ File: ,  Node: `http://somewhere_aaa\' text (url) ls,  Prev: <indicateurl>,  Up:
 
    *note >= <= ->::
 
-   *note a o -!- # -| ? (R):: *note => o a b aa:: *note AA ae oe AE OE
-/o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
-*note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >> << >> <
->:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC
-DDD:: *note the someone <someone@somewher> <no_explain@there>:: *note   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]
-:: *note  @ {} . :: *note `cite asis\' in @w b in r SC *str* t VAR "dfn"
-i:: *note `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'::
-*note 8.27in:: *note sansserif slanted:: *note <indicateurl>:: *note
-`http://somewhere_aaa\' text (url) ls::
+   *note a o -!- # -| ? (R):: *note => o a b a sunny day aa:: *note AA
+ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
+e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note `` \'\' ` \' ,, ,:: *note << >>
+<< >> < >:: *note `` \'\' --- --:: *note AAA (fff) AAA BBB:: *note CCC
+(rrr) CCC DDD:: *note the someone <someone@somewher>
+<no_explain@there>:: *note   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]:: *note  @ {} . :: *note `cite asis\' in @w b
+in r SC *str* t VAR "dfn" i:: *note `env\' `code\' `option\' `samp\'
+`command\' `file\' `C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
+*note <indicateurl>:: *note `http://somewhere_aaa\' text (url) ls::
 
 
 
 Tag Table:
 Node: Top52
-Node: { }819
+Node: { }830
 Node:     !
-. . ? @898
-Node: LaTeX TeX * , (C) ... ...1019
-Node: == error--> Euro ! ==> -1185
-Node: >= <= ->1344
-Node: a o -!- # -| ? (R)1464
-Node: => o a b aa1591
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1735
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;1950
-Node: e. e( e_ .e e< j ee[2162
-Node: `` \'\' ` \' ,, ,2325
-Node: << >> << >> < >2458
-Node: `` \'\' --- --2585
-Node: AAA (fff) AAA BBB2701
-Node: CCC (rrr) CCC DDD2837
-Node: the someone <someone@somewher> <no_explain@there>3010
-Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3303
-Node:  @ {} . 3632
-Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3832
-Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4094
-Node: 8.27in4374
-Node: sansserif slanted4522
-Node: <indicateurl>4648
-Node: `http://somewhere_aaa\' text (url) ls4796
+. . ? @909
+Node: LaTeX TeX * , (C) ... ...1030
+Node: == error--> Euro ! ==> -1196
+Node: >= <= ->1355
+Node: a o -!- # -| ? (R)1475
+Node: => o a b a sunny day aa1614
+Node: AA ae oe AE OE /o /O ss /l /L D d TH th1794
+Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2021
+Node: e. e( e_ .e e< j ee[2233
+Node: `` \'\' ` \' ,, ,2396
+Node: << >> << >> < >2529
+Node: `` \'\' --- --2656
+Node: AAA (fff) AAA BBB2772
+Node: CCC (rrr) CCC DDD2908
+Node: the someone <someone@somewher> <no_explain@there>3081
+Node:   [image src="f--ile.png" alt="alt" text="[Image description\\"\\"\\\\.]" ]3374
+Node:  @ {} . 3703
+Node: `cite asis\' in @w b in r SC *str* t VAR "dfn" i3903
+Node: `env\' `code\' `option\' `samp\' `command\' `file\' `C-x <ESC>\'4165
+Node: 8.27in4445
+Node: sansserif slanted4593
+Node: <indicateurl>4719
+Node: `http://somewhere_aaa\' text (url) ls4867
 
 End Tag Table
 ';
