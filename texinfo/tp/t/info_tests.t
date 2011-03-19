@@ -215,6 +215,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @image{words}
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB @image{words}
 
 '],
+['image_and_punctuation',
+'@node Top
+
+One space. @image{f--ile}.
+
+Two spaces.  @image{f--ile}.
+
+End line.
+@image{f--ile}.
+
+One space. @image{words}.
+
+Two spaces.  @image{words}.
+
+End line.
+@image{words}.
+'],
 [ 'multitable_anchor_and_index_entry',
 '@node Top
 

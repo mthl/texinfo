@@ -219,6 +219,7 @@ our %default_configuration = (
   'gettext' => sub {return $_[0];},
   'expanded_formats' => [],
   'include_directories' => [ '.' ],
+  'INLINE_INSERTCOPYING' => 0,
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
@@ -284,6 +285,10 @@ my %initialization_overrides = (
 #                         is also in that structure.
 # misc_commands           the same than %misc_commands below, but with index
 #                         entry commands dynamically added
+# close_paragraph_commands      same than %close_paragraph_command, but with
+#                               insertcopying removed if INLINE_INSERTCOPYING
+# close_preformatted_commands   same than %close_preformatted_command, but with
+#                               insertcopying removed if INLINE_INSERTCOPYING
 # no_paragraph_commands   the same than %default_no_paragraph_commands
 #                         below, with index
 #                         entry commands dynamically added
@@ -471,26 +476,11 @@ my %block_arg_commands;
 foreach my $block_command (keys(%block_commands)) {
   $begin_line_commands{$block_command} = 1;
   $default_no_paragraph_commands{$block_command} = 1;
-  $close_paragraph_commands{$block_command} = 1 
-     unless ($block_commands{$block_command} eq 'raw' or 
-             $block_commands{$block_command} eq 'conditional');
   $block_arg_commands{$block_command} = 1 
     if ($block_command eq 'multitable' 
         or $def_commands{$block_command}
         or ($block_commands{$block_command} 
             and $block_commands{$block_command} =~ /^\d+$/));
-}
-$close_paragraph_commands{'verbatim'} = 1;
-
-foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
-  'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem', 
-  'printindex', 'listoffloats', 'center', 'dircategory', 'contents',
-  'shortcontents', 'summarycontents', 'caption', 'shortcaption') {
-  $close_paragraph_commands{$close_paragraph_command} = 1;
-}
-
-foreach my $close_paragraph_command (keys(%def_commands)) {
-  $close_paragraph_commands{$close_paragraph_command} = 1;
 }
 
 my %close_preformatted_commands = %close_paragraph_commands;
@@ -661,6 +651,12 @@ sub parser(;$$)
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = _deep_copy (\%index_names);
   $parser->{'command_index_prefix'} = {%command_index_prefix};
+  $parser->{'close_paragraph_commands'} = {%close_paragraph_commands};
+  $parser->{'close_preformatted_commands'} = {%close_preformatted_commands};
+  if ($parser->{'INLINE_INSERTCOPYING'}) {
+    delete $parser->{'close_paragraph_commands'}->{'insercopying'};
+    delete $parser->{'close_preformatted_commands'}->{'insercopying'};
+  }
   # a hash is simply concatenated.  It should be like %index_names.
   if (ref($parser->{'indices'}) eq 'HASH') {
     %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
@@ -991,7 +987,7 @@ sub _begin_paragraph ($$)
               and ($current->{'contents'}->[$index]->{'type'} eq 'empty_line'
                    or $current->{'contents'}->[$index]->{'type'} eq 'paragraph'))
             and !($current->{'contents'}->[$index]->{'cmdname'}
-                  and $close_paragraph_commands{$current->{'contents'}->[$index]->{'cmdname'}})) {
+                  and $self->{'close_paragraph_commands'}->{$current->{'contents'}->[$index]->{'cmdname'}})) {
         if ($current->{'contents'}->[$index]->{'cmdname'}
           and ($current->{'contents'}->[$index]->{'cmdname'} eq 'indent'
               or $current->{'contents'}->[$index]->{'cmdname'} eq 'noindent')) {
@@ -2444,11 +2440,33 @@ sub _end_line($$$)
         my $closed_command;
         ($closed_command, $current)
           = _close_commands($self, $current, $line_nr, $end_command);
+        my $inline_copying;
         if ($closed_command) {
           $misc_cmd->{'extra'}->{'command'} = $closed_command;
           $closed_command->{'extra'}->{'end_command'} = $misc_cmd;
           $self->_close_command_cleanup($closed_command);
           $end->{'parent'} = $closed_command;
+
+          # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
+          if ($end_command eq 'copying' and $self->{'INLINE_INSERTCOPYING'}) {
+            # remove the end of line following @copying.
+            my @contents = @{$closed_command->{'contents'}};
+            shift @contents if ($contents[0] and $contents[0]->{'type'}
+               and ($contents[0]->{'type'} eq 'empty_line_after_command'
+                    or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
+            # the macrobody is the @copying content converted to Texinfo.
+            my $body = Texinfo::Convert::Texinfo::convert(
+                         {'contents' => \@contents});
+            
+            #chomp ($body);
+            $self->{'macros'}->{'insertcopying'} = {
+                    'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
+                    'cmdname' => 'macro',
+                    'extra' => {'macrobody' => $body}
+            };
+            $inline_copying = 1;
+            print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'debug'});
+          }
           push @{$closed_command->{'contents'}}, $end;
         }
         $current = $self->_begin_preformatted($current);
@@ -3252,10 +3270,10 @@ sub _parse_texi($;$)
           $current = $paragraph if ($paragraph);
         }
 
-        if ($close_paragraph_commands{$command}) {
+        if ($self->{'close_paragraph_commands'}->{$command}) {
           $current = _end_paragraph($self, $current, $line_nr);
         }
-        if ($close_preformatted_commands{$command}) {
+        if ($self->{'close_preformatted_commands'}->{$command}) {
           $current = _end_preformatted($self, $current, $line_nr);
         }
 
