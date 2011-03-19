@@ -61,7 +61,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--a'
+                  'text' => '--c'
                 }
               ],
               'parent' => {},
@@ -100,7 +100,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--b'
+                  'text' => '--d'
                 }
               ],
               'parent' => {},
@@ -135,7 +135,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--a'
+                  'text' => '--e'
                 }
               ],
               'parent' => {},
@@ -145,7 +145,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--b'
+                  'text' => '--f'
                 }
               ],
               'parent' => {},
@@ -155,7 +155,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--c'
+                  'text' => '--g'
                 }
               ],
               'parent' => {},
@@ -200,7 +200,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--b'
+                  'text' => '--h'
                 }
               ],
               'parent' => {},
@@ -210,7 +210,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--c'
+                  'text' => '--i'
                 }
               ],
               'parent' => {},
@@ -248,7 +248,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--a'
+                  'text' => '--j'
                 }
               ],
               'parent' => {},
@@ -263,7 +263,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--c'
+                  'text' => '--k'
                 }
               ],
               'parent' => {},
@@ -311,7 +311,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--c'
+                  'text' => '--l'
                 }
               ],
               'parent' => {},
@@ -347,7 +347,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--a'
+                  'text' => '--m'
                 }
               ],
               'parent' => {},
@@ -357,7 +357,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--b'
+                  'text' => '--n'
                 }
               ],
               'parent' => {},
@@ -394,7 +394,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--a'
+                  'text' => '--o'
                 }
               ],
               'parent' => {},
@@ -404,7 +404,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--b'
+                  'text' => '--p'
                 }
               ],
               'parent' => {},
@@ -414,7 +414,7 @@ $result_trees{'uref_url'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '--c'
+                  'text' => '--q'
                 }
               ],
               'parent' => {},
@@ -532,33 +532,33 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_tre
 $result_trees{'uref_url'}{'contents'}[0]{'parent'} = $result_trees{'uref_url'};
 
 $result_texis{'uref_url'} = '@uref{--a,--b}
-@uref{--a}
-@uref{,--b}
-@uref{--a,--b,--c}
-@uref{,--b,--c}
-@uref{--a,,--c}
-@uref{,,--c}
-@url{--a,--b}
-@url{--a,--b,--c}
+@uref{--c}
+@uref{,--d}
+@uref{--e,--f,--g}
+@uref{,--h,--i}
+@uref{--j,,--k}
+@uref{,,--l}
+@url{--m,--n}
+@url{--o,--p,--q}
 ';
 
 
 $result_texts{'uref_url'} = '--a
---a
+--c
 
---a
+--e
 
---a
+--j
 
---a
---a
+--m
+--o
 ';
 
 $result_errors{'uref_url'} = [];
 
 
 
-$result_converted{'plaintext'}->{'uref_url'} = '-b (--a) `--a\' -c -c -c -c -b (--a) -c
+$result_converted{'plaintext'}->{'uref_url'} = '-b (--a) `--c\' -d -g -i -k -l -n (--m) -q
 ';
 
 1;

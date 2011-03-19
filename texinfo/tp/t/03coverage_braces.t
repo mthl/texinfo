@@ -19,14 +19,14 @@ my @test_cases = (
 '],
 ['uref_url',
 '@uref{--a,--b}
-@uref{--a}
-@uref{,--b}
-@uref{--a,--b,--c}
-@uref{,--b,--c}
-@uref{--a,,--c}
-@uref{,,--c}
-@url{--a,--b}
-@url{--a,--b,--c}
+@uref{--c}
+@uref{,--d}
+@uref{--e,--f,--g}
+@uref{,--h,--i}
+@uref{--j,,--k}
+@uref{,,--l}
+@url{--m,--n}
+@url{--o,--p,--q}
 '],
 ['nested', 'type the characters @kbd{l o g o u t @key{RET}}.'],
 ['nested_args', '@xref{@@ @samp{in samp}, descr @b{in b}, S@~{e}ction, 

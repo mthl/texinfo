@@ -17,6 +17,13 @@ and now -- yes---now and ``so\'\'.
 
 @end example
 '],
+['quote_dash_in_display',
+'
+@display
+and now -- yes---now and ``so\'\'.
+
+@end display
+'],
 ['text_on_command_line',
 '@example text on line
 @end example

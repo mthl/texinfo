@@ -91,7 +91,7 @@ $result_trees{'misc_raw'} = {
         },
         {
           'parent' => {},
-          'text' => 'in verbatim
+          'text' => 'in  v---erbatim``
 ',
           'type' => 'raw'
         },
@@ -143,7 +143,7 @@ in html @end html
 @end tex
 
 @verbatim
-in verbatim
+in  v---erbatim``
 in verbatim2
 @end verbatim
 ';
@@ -152,7 +152,7 @@ in verbatim2
 $result_texts{'misc_raw'} = '
 
 
-in verbatim
+in  v---erbatim``
 in verbatim2
 ';
 
@@ -161,7 +161,7 @@ $result_errors{'misc_raw'} = [];
 
 
 $result_converted{'plaintext'}->{'misc_raw'} = '
-in verbatim
+in  v---erbatim``
 in verbatim2
 ';
 

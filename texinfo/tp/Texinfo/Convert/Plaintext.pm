@@ -92,6 +92,7 @@ my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my @out_formats = @Texinfo::Common::out_formats;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
+my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -620,7 +621,7 @@ sub new_formatter($$;$)
     foreach my $context (reverse(@{$self->{'context'}})) {
       if ($menu_commands{$context}) {
         last;
-      } elsif ($self->{'preformatted_context_commands'}->{$context}) {
+      } elsif ($preformatted_code_commands{$context}) {
         $formatter->{'preformatted'} = 1;
         last;
       }
@@ -1453,6 +1454,10 @@ sub _convert($$)
                                         {'url' => $url});
             unshift @{$self->{'current_contents'}->[-1]}, $prepended
           }
+        } elsif (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
+                 and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+          unshift @{$self->{'current_contents'}->[-1]}, 
+            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[1]};
         }
       }
       return '';

@@ -20,7 +20,7 @@ in html @end html
 @end tex
 
 @verbatim
-in verbatim
+in  v---erbatim``
 in verbatim2
 @end verbatim
 '],

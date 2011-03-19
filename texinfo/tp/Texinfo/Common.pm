@@ -395,6 +395,12 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
+our %preformatted_code_commands;
+foreach my $preformatted_command(
+    'example', 'smallexample', 'lisp', 'smalllisp') {
+  $preformatted_code_commands{$preformatted_command} = 1;
+}
+
 our %raw_commands;
 our @out_formats = ('html', 'tex', 'xml', 'docbook');
 # macro/rmacro are special

@@ -16,6 +16,8 @@ my @test_cases = (
 ['lettered_accent_and_spaces',
 '@ringaccent    a
 '],
+['accent_and_dash',
+'@^{a--}'],
 ['math',
 'Simple math
 @math{--{x^i}\over{\tan y}}
