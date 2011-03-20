@@ -1,5 +1,5 @@
 EXTRA_DIST = anchor_paragraph.texi images_quotes.texi simple_cartouche.texi \
-center_flush.texi index_after_heading.texi simple_def.texi \
+center_flush.texi simple_def.texi \
 cindex_at_end_node.texi itemize_in_example.texi simple_enumerate.texi \
 commentexample.texi itemize_long_item.texi simple_float.texi \
 comment_in_example.texi line_passed_and_formats.texi simple_footnotes.texi \
