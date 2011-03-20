@@ -250,8 +250,7 @@ $result_errors{'enumerate_in_example'} = [];
 
 
 
-$result_converted{'plaintext'}->{'enumerate_in_example'} = '
-       1. first item
+$result_converted{'plaintext'}->{'enumerate_in_example'} = '       1. first item
        2. second  item
 
           still second

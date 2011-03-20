@@ -420,7 +420,6 @@ my $result_options = Getopt::Long::GetOptions (
                      set_from_cmdline('SPLIT_SIZE', undef);},
  'headers!' => sub { set_from_cmdline('HEADERS', $_[1]);
                      set_from_cmdline('SHOW_MENU', $_[1]);
-                     $parser_default_options->{'SHOW_MENU'} = $_[1];
                      $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
  'output|out|o=s' => sub { 
     my $var = 'OUTFILE';
@@ -510,7 +509,9 @@ my $result_options = Getopt::Long::GetOptions (
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
- 'plaintext' => sub {$format = $_[0];},
+ 'plaintext' => sub {$format = $_[0]; 
+                     set_from_cmdline('SHOW_MENU', 0);
+ },
  'html' => sub {$format = $_[0];},
  'info' => sub {$format = $_[0];},
  'docbook' => sub {$format = $_[0];},
@@ -557,7 +558,7 @@ foreach my $format (@{$default_expanded_format}) {
 }
 
 foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
-                                    'INLINE_INSERTCOPYING') {
+                                    'INLINE_INSERTCOPYING', 'SHOW_MENU') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
 }

@@ -3184,8 +3184,7 @@ $result_errors{'line_passed_and_formats'} = [];
 
 
 
-$result_converted{'plaintext'}->{'line_passed_and_formats'} = '
-     special: Quotation special.
+$result_converted{'plaintext'}->{'line_passed_and_formats'} = '     special: Quotation special.
           Nested quotation sdflkmsfdlkmfsdqmlkfsdq mlfdsqlkmfdsqmlkfdsq
           klm fsqdlkmfdsq fdsfsdqmlkfsqd m lqlkmf qskmlfq sklm fqds
 

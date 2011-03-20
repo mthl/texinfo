@@ -386,8 +386,7 @@ $result_errors{'preformatted'} = [
 
 
 
-$result_converted{'plaintext'}->{'preformatted'} = '
-     e--xample  some
+$result_converted{'plaintext'}->{'preformatted'} = '     e--xample  some
 
         text
 

@@ -787,8 +787,7 @@ $result_errors{'inter_item_commands_in_multitable'} = [
 
 
 
-$result_converted{'plaintext'}->{'inter_item_commands_in_multitable'} = '
-truc
+$result_converted{'plaintext'}->{'inter_item_commands_in_multitable'} = 'truc
 
 trouc
 

@@ -423,8 +423,7 @@ $result_floats{'footnote_in_caption'}{'fl'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'plaintext'}->{'footnote_in_caption'} = '
-* Menu:
+$result_converted{'plaintext'}->{'footnote_in_caption'} = '* Menu:
 
 * fl 1: label.                           in caption(0)
 

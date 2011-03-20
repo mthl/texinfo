@@ -425,8 +425,7 @@ $result_errors{'definfoenclose'} = [
 
 
 
-$result_converted{'plaintext'}->{'definfoenclose'} = '
-definfoenclose phoo,//,\\
+$result_converted{'plaintext'}->{'definfoenclose'} = 'definfoenclose phoo,//,\\
 
    //bar\\
 

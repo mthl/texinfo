@@ -203,8 +203,7 @@ $result_errors{'noindent_indent'} = [];
 
 
 
-$result_converted{'plaintext'}->{'noindent_indent'} = '
-   First para
+$result_converted{'plaintext'}->{'noindent_indent'} = '   First para
 
 qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq
 qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q

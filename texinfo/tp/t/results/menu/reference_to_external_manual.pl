@@ -289,8 +289,7 @@ $result_errors{'reference_to_external_manual'} = [];
 
 
 
-$result_converted{'plaintext'}->{'reference_to_external_manual'} = '
-* Menu:
+$result_converted{'plaintext'}->{'reference_to_external_manual'} = '* Menu:
 
 * (info)::
 ';

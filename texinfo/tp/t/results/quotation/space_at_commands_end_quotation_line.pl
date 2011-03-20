@@ -332,8 +332,7 @@ $result_errors{'space_at_commands_end_quotation_line'} = [];
 
 
 
-$result_converted{'plaintext'}->{'space_at_commands_end_quotation_line'} = '
-     @ at the end of line  : A @ at the end of the @quotation line.
+$result_converted{'plaintext'}->{'space_at_commands_end_quotation_line'} = '     @ at the end of line  : A @ at the end of the @quotation line.
 
      @  at the end of line  : A @  at the end of the @quotation line.
 ';

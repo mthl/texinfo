@@ -514,8 +514,7 @@ $result_floats{'cindex_in_caption'}{'fl'}[0]{'extra'}{'end_command'}{'extra'}{'c
 
 
 
-$result_converted{'plaintext'}->{'cindex_in_caption'} = '
-* Menu:
+$result_converted{'plaintext'}->{'cindex_in_caption'} = '* Menu:
 
 * fl 1: label.                           in caption
 

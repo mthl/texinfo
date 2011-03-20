@@ -607,8 +607,7 @@ $result_errors{'punctuation_commands_frenchspacing'} = [
 
 
 
-$result_converted{'plaintext'}->{'punctuation_commands_frenchspacing'} = '
-Dot.  Exclam!  Question?  Dot.  Exclam!  Question?  GAAA.
+$result_converted{'plaintext'}->{'punctuation_commands_frenchspacing'} = 'Dot.  Exclam!  Question?  Dot.  Exclam!  Question?  GAAA.
 
    Enddots...  Enddots...  GBBB.
 

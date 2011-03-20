@@ -511,117 +511,116 @@ $result_converted{'debugcount'}->{'printindex'} = ' [1] (0,0) :element
   [2] (0,0) :text_root
   [2] (0,0)
   [3] (0,0) @node
-   [4] (18,0) :code
-    [5] (18,0) :text|Top|
-    [5] (18,0)
- locations  (1) l 0 b 1
-   [4] (18,0)
-   [6] (28,0) :code
-    [7] (28,0) :text|(|
-    [7] (28,0)
-    [8] (28,0) :text|dir|
-    [8] (28,0)
-    [9] (28,0) :text|)|
-    [9] (28,0)
-   [6] (28,0)
-   [10] (35,3) :empty_line:text|\\n|
-   [10] (35,3)
-   [11] (35,3) @cindex
-   [11] (35,3)
+   [4] (17,0) :code
+    [5] (17,0) :text|Top|
+    [5] (17,0)
+ locations  (1) l 0 b 0
+   [4] (17,0)
+   [6] (27,0) :code
+    [7] (27,0) :text|(|
+    [7] (27,0)
+    [8] (27,0) :text|dir|
+    [8] (27,0)
+    [9] (27,0) :text|)|
+    [9] (27,0)
+   [6] (27,0)
+   [10] (34,3) :empty_line:text|\\n|
+   [10] (34,3)
+   [11] (34,3) @cindex
+   [11] (34,3)
  locations  (2) l 3
-   [12] (35,3) @cindex
-   [12] (35,3)
+   [12] (34,3) @cindex
+   [12] (34,3)
  locations  (3) l 3
-   [13] (35,3) @cindex
-   [13] (35,3)
+   [13] (34,3) @cindex
+   [13] (34,3)
  locations  (4) l 3
-   [14] (35,3) :empty_line:text|\\n|
-   [14] (35,3)
-   [15] (35,3) @printindex
-    [16] (56,6) :frenchspacing
-     [17] (56,6) :text|after index|
-     [17] (61,6)
-    [16] (61,6)
-    [18] (97,6) :code
-     [19] (97,6) :text|Top|
-     [19] (97,6)
-    [18] (97,6)
-    [20] (129,7) :frenchspacing
-     [21] (129,7) :text|index entry|
-     [21] (134,7)
-    [20] (134,7)
-    [22] (170,7) :code
-     [23] (170,7) :text|Top|
-     [23] (170,7)
-    [22] (170,7)
-    [24] (202,8) :frenchspacing
-     [25] (202,8) :text|index entry|
-     [25] (207,8)
-    [24] (207,8)
-    [26] (243,8) :code
-     [27] (243,8) :text|Top|
-     [27] (243,8)
-    [26] (243,8)
-    [28] (275,9) :frenchspacing
-     [29] (275,9) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [29] (343,9)
-    [28] (343,9)
-    [30] (353,9) :code
-     [31] (353,9) :text|Top|
-     [31] (353,9)
-    [30] (353,9)
-   [15] (432,12)
-   [32] (432,12) :empty_line:text|\\n|
-   [32] (432,12)
-   [33] (432,12) @cindex
-   [33] (432,12)
+   [14] (34,3) :empty_line:text|\\n|
+   [14] (34,3)
+   [15] (34,3) @printindex
+    [16] (55,6) :frenchspacing
+     [17] (55,6) :text|after index|
+     [17] (60,6)
+    [16] (60,6)
+    [18] (96,6) :code
+     [19] (96,6) :text|Top|
+     [19] (96,6)
+    [18] (96,6)
+    [20] (128,7) :frenchspacing
+     [21] (128,7) :text|index entry|
+     [21] (133,7)
+    [20] (133,7)
+    [22] (169,7) :code
+     [23] (169,7) :text|Top|
+     [23] (169,7)
+    [22] (169,7)
+    [24] (201,8) :frenchspacing
+     [25] (201,8) :text|index entry|
+     [25] (206,8)
+    [24] (206,8)
+    [26] (242,8) :code
+     [27] (242,8) :text|Top|
+     [27] (242,8)
+    [26] (242,8)
+    [28] (274,9) :frenchspacing
+     [29] (274,9) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [29] (342,9)
+    [28] (342,9)
+    [30] (352,9) :code
+     [31] (352,9) :text|Top|
+     [31] (352,9)
+    [30] (352,9)
+   [15] (431,12)
+   [32] (431,12) :empty_line:text|\\n|
+   [32] (431,12)
+   [33] (431,12) @cindex
+   [33] (431,12)
  locations  (5) l 12
-   [34] (432,12) :empty_line:text|\\n|
-   [34] (432,12)
-   [35] (432,12) @printindex
-    [36] (453,15) :frenchspacing
-     [37] (453,15) :text|after index|
-     [37] (458,15)
-    [36] (458,15)
-    [38] (494,15) :code
-     [39] (494,15) :text|Top|
-     [39] (494,15)
-    [38] (494,15)
-    [40] (526,16) :frenchspacing
-     [41] (526,16) :text|index entry|
-     [41] (531,16)
-    [40] (531,16)
-    [42] (567,16) :code
-     [43] (567,16) :text|Top|
-     [43] (567,16)
-    [42] (567,16)
-    [44] (599,17) :frenchspacing
-     [45] (599,17) :text|index entry|
-     [45] (604,17)
-    [44] (604,17)
-    [46] (640,17) :code
-     [47] (640,17) :text|Top|
-     [47] (640,17)
-    [46] (640,17)
-    [48] (672,18) :frenchspacing
-     [49] (672,18) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
-     [49] (740,18)
-    [48] (740,18)
-    [50] (750,18) :code
-     [51] (750,18) :text|Top|
-     [51] (750,18)
-    [50] (750,18)
-   [35] (829,21)
-   [52] (829,21) :empty_line:text|\\n|
-   [52] (829,21)
-   [53] (829,21) @anchor
-   [53] (829,21)
- locations  (6) l 21 b 829
-   [54] (829,21) :empty_spaces_after_close_brace:text|\\n|
-   [54] (829,21)
-  [3] (829,21)
- [1] (829,21)
-
+   [34] (431,12) :empty_line:text|\\n|
+   [34] (431,12)
+   [35] (431,12) @printindex
+    [36] (452,15) :frenchspacing
+     [37] (452,15) :text|after index|
+     [37] (457,15)
+    [36] (457,15)
+    [38] (493,15) :code
+     [39] (493,15) :text|Top|
+     [39] (493,15)
+    [38] (493,15)
+    [40] (525,16) :frenchspacing
+     [41] (525,16) :text|index entry|
+     [41] (530,16)
+    [40] (530,16)
+    [42] (566,16) :code
+     [43] (566,16) :text|Top|
+     [43] (566,16)
+    [42] (566,16)
+    [44] (598,17) :frenchspacing
+     [45] (598,17) :text|index entry|
+     [45] (603,17)
+    [44] (603,17)
+    [46] (639,17) :code
+     [47] (639,17) :text|Top|
+     [47] (639,17)
+    [46] (639,17)
+    [48] (671,18) :frenchspacing
+     [49] (671,18) :text|looooooooooooooooooooooooooooooooooooooooooooooooooooooooooong index entry|
+     [49] (739,18)
+    [48] (739,18)
+    [50] (749,18) :code
+     [51] (749,18) :text|Top|
+     [51] (749,18)
+    [50] (749,18)
+   [35] (828,21)
+   [52] (828,21) :empty_line:text|\\n|
+   [52] (828,21)
+   [53] (828,21) @anchor
+   [53] (828,21)
+ locations  (6) l 21 b 828
+   [54] (828,21) :empty_spaces_after_close_brace:text|\\n|
+   [54] (828,21)
+  [3] (828,21)
+ [1] (828,21)
 
 File: ,  Node: Top,  Up: (dir)
 

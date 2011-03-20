@@ -404,8 +404,7 @@ $result_errors{'empty_item_itemx'} = [
 
 
 
-$result_converted{'plaintext'}->{'empty_item_itemx'} = '
-     VTable
+$result_converted{'plaintext'}->{'empty_item_itemx'} = '     VTable
 
 first item
 after an empty itemx, before an empty item

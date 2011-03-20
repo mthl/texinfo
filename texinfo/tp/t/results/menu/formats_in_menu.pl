@@ -880,8 +880,7 @@ $result_errors{'formats_in_menu'} = [];
 
 
 
-$result_converted{'plaintext'}->{'formats_in_menu'} = '
-* Menu:
+$result_converted{'plaintext'}->{'formats_in_menu'} = '* Menu:
 
 * (gcc):: text
 item

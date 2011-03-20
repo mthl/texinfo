@@ -442,8 +442,7 @@ $result_errors{'heading_in_copying'} = [];
 
 
 
-$result_converted{'plaintext'}->{'heading_in_copying'} = '
-in copying @ _heading_
+$result_converted{'plaintext'}->{'heading_in_copying'} = 'in copying @ _heading_
 ======================
 
 second in copying @ _subheading_

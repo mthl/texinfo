@@ -368,8 +368,7 @@ $result_errors{'punctuation_at_end_command'} = [];
 
 
 
-$result_converted{'plaintext'}->{'punctuation_at_end_command'} = '
-Text.  Email .  <.> dmn 1. and text.  indicateurl <.> and then kbd `.\'
+$result_converted{'plaintext'}->{'punctuation_at_end_command'} = 'Text.  Email .  <.> dmn 1. and text.  indicateurl <.> and then kbd `.\'
 and math . and cite `.\' and emph _._  text.  asis in code `.\' text.  a
 dot before a emph open ._  and in emph._
 ';

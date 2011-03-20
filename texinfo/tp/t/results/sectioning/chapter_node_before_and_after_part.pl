@@ -579,8 +579,7 @@ $result_errors{'chapter_node_before_and_after_part'} = [];
 
 
 
-$result_converted{'plaintext'}->{'chapter_node_before_and_after_part'} = '
-1 chapter
+$result_converted{'plaintext'}->{'chapter_node_before_and_after_part'} = '1 chapter
 *********
 
 * Menu:

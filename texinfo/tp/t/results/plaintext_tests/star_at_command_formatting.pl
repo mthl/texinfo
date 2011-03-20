@@ -1452,8 +1452,7 @@ $result_errors{'star_at_command_formatting'} = [];
 
 
 
-$result_converted{'plaintext'}->{'star_at_command_formatting'} = '
-Some text
+$result_converted{'plaintext'}->{'star_at_command_formatting'} = 'Some text
 more text.  Even more text.
 not at eol.
 

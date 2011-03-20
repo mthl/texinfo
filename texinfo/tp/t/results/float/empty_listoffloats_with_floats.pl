@@ -714,8 +714,7 @@ $result_floats{'empty_listoffloats_with_floats'}{''}[3]{'extra'}{'end_command'}{
 
 
 
-$result_converted{'plaintext'}->{'empty_listoffloats_with_floats'} = '
-Label no caption.
+$result_converted{'plaintext'}->{'empty_listoffloats_with_floats'} = 'Label no caption.
 
 1
 

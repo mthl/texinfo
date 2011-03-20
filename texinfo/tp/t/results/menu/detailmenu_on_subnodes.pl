@@ -1828,8 +1828,7 @@ $result_errors{'detailmenu_on_subnodes'} = [];
 
 
 
-$result_converted{'plaintext'}->{'detailmenu_on_subnodes'} = '
-* Menu:
+$result_converted{'plaintext'}->{'detailmenu_on_subnodes'} = '* Menu:
 
 * chapter::
 * chapter 2::

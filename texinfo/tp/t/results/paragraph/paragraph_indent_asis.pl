@@ -207,8 +207,7 @@ $result_errors{'paragraph_indent_asis'} = [];
 
 
 
-$result_converted{'plaintext'}->{'paragraph_indent_asis'} = '
-  para fff
+$result_converted{'plaintext'}->{'paragraph_indent_asis'} = '  para fff
 
        in quotation
 

@@ -414,8 +414,7 @@ $result_errors{'empty_quotation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'empty_quotation'} = '
-     Empty: 
+$result_converted{'plaintext'}->{'empty_quotation'} = '     Empty: 
      : 
 
      : ';

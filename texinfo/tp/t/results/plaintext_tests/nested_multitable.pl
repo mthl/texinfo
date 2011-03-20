@@ -497,8 +497,7 @@ $result_errors{'nested_multitable'} = [];
 
 
 
-$result_converted{'plaintext'}->{'nested_multitable'} = '
-AAAA   machin        bidule
+$result_converted{'plaintext'}->{'nested_multitable'} = 'AAAA   machin        bidule
 other item           in tab
 ';
 

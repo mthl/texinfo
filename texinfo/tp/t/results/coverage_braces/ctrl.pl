@@ -157,8 +157,7 @@ $result_errors{'ctrl'} = [
 
 
 
-$result_converted{'plaintext'}->{'ctrl'} = '
-A
+$result_converted{'plaintext'}->{'ctrl'} = 'A
 
    With B.
 ';

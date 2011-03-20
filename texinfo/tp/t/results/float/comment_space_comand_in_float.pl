@@ -383,8 +383,7 @@ $result_floats{'comment_space_comand_in_float'}{'Text--'}[0]{'extra'}{'end_comma
 
 
 
-$result_converted{'plaintext'}->{'comment_space_comand_in_float'} = '
-Float
+$result_converted{'plaintext'}->{'comment_space_comand_in_float'} = 'Float
 
 Text   1
 

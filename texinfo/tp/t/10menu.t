@@ -2,18 +2,9 @@ use strict;
 
 require 't/test_utils.pl';
 
-my @test_cases = (
-['menu_title_before_entries',
-'@node Top
+my $simple_menu_text = '
+Before menu.
 
-@menu
-Horizontal space
-* subnode::
-@end menu
-
-@node subnode
-'],
-['simple','
 @menu
 comment
 * menu entry name : node.    description
@@ -26,7 +17,23 @@ comment
 new comment
 * last node entry ::
 @end menu
+
+After menu.
+';
+
+my @test_cases = (
+['menu_title_before_entries',
+'@node Top
+
+@menu
+Horizontal space
+* subnode::
+@end menu
+
+@node subnode
 '],
+['simple', $simple_menu_text],
+['simple_no_menu', $simple_menu_text, {'SHOW_MENU' => 0}, {'SHOW_MENU' => 0}],
 ['menu_entry_node',
 '@menu
 * (f)a1::
@@ -262,7 +269,7 @@ my @test_invalid = (
 );
 
 foreach my $test (@test_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

@@ -39,8 +39,7 @@ $result_errors{'unknown_value'} = [
 
 
 
-$result_converted{'plaintext'}->{'unknown_value'} = '
-{No value for `unknown\'}
+$result_converted{'plaintext'}->{'unknown_value'} = '{No value for `unknown\'}
 ';
 
 1;

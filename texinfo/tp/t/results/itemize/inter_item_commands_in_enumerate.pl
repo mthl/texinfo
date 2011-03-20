@@ -150,8 +150,7 @@ $result_errors{'inter_item_commands_in_enumerate'} = [];
 
 
 
-$result_converted{'plaintext'}->{'inter_item_commands_in_enumerate'} = '
-  1. e-numerate
+$result_converted{'plaintext'}->{'inter_item_commands_in_enumerate'} = '  1. e-numerate
 ';
 
 1;

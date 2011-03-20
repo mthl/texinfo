@@ -237,8 +237,7 @@ $result_errors{'insertcopying'} = [];
 
 
 
-$result_converted{'plaintext'}->{'insertcopying'} = '
-License:
+$result_converted{'plaintext'}->{'insertcopying'} = 'License:
 
    License.
 

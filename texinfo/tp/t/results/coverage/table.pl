@@ -655,8 +655,7 @@ $result_errors{'table'} = [
 
 
 
-$result_converted{'plaintext'}->{'table'} = '
-table item
+$result_converted{'plaintext'}->{'table'} = 'table item
 table itemx
 
      In table

@@ -219,8 +219,7 @@ $result_errors{'no_colon_in_menu'} = [];
 
 
 
-$result_converted{'plaintext'}->{'no_colon_in_menu'} = '
-* Menu:
+$result_converted{'plaintext'}->{'no_colon_in_menu'} = '* Menu:
 
 * a
 ';

@@ -505,8 +505,7 @@ $result_floats{'block_commands'}{'a-float'}[0]{'extra'}{'end_command'}{'extra'}{
 
 
 
-$result_converted{'plaintext'}->{'block_commands'} = '
-in group
+$result_converted{'plaintext'}->{'block_commands'} = 'in group
 
      warning: in quotation
 

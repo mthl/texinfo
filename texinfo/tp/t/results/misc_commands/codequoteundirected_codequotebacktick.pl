@@ -5095,8 +5095,7 @@ $result_errors{'codequoteundirected_codequotebacktick'} = [
 
 
 
-$result_converted{'plaintext'}->{'codequoteundirected_codequotebacktick'} = '
-test quotes
+$result_converted{'plaintext'}->{'codequoteundirected_codequotebacktick'} = 'test quotes
 ***********
 
 "simple-double-three--four---" `simple\' quotedblleft: ``

@@ -8097,8 +8097,7 @@ $result_errors{'section_in_unnumbered_plaintext'} = [];
 
 
 
-$result_converted{'plaintext'}->{'section_in_unnumbered_plaintext'} = '
-Test section in unnumbered
+$result_converted{'plaintext'}->{'section_in_unnumbered_plaintext'} = 'Test section in unnumbered
 1 chapter
   1.1 section in chapter
 unnumbered

@@ -1317,8 +1317,7 @@ $result_floats{'punctuation_in_line_commands'}{'float-type_0021-After-punc'}[1]{
 
 
 
-$result_converted{'plaintext'}->{'punctuation_in_line_commands'} = '
-top! After punc
+$result_converted{'plaintext'}->{'punctuation_in_line_commands'} = 'top! After punc
 ***************
 
 item! After punc

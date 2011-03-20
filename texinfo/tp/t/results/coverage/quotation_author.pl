@@ -247,8 +247,7 @@ $result_errors{'quotation_author'} = [];
 
 
 
-$result_converted{'plaintext'}->{'quotation_author'} = '
-     quotation quotation continues.
+$result_converted{'plaintext'}->{'quotation_author'} = '     quotation quotation continues.
 
                            -- _First Author_
                           -- _Se~cond author_

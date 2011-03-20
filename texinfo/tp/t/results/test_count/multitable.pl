@@ -409,8 +409,8 @@ $result_errors{'multitable'} = [];
 
 $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
   [2] (0,0) :empty_line:text|\\n|
-  [2] (1,1)
-  [3] (1,1) @multitable
+  [2] (0,0)
+  [3] (0,0) @multitable
    [4] (0,0) :bracketed_multitable_prototype
     [5] (0,0) :text|aaa|
     [5] (0,0)
@@ -423,16 +423,16 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
     [9] (0,0) :text|ccc|
     [9] (0,0)
    [8] (0,0)
-   [10] (1,1) :row
-    [11] (1,1) @item
+   [10] (0,0) :row
+    [11] (0,0) @item
      [12] (0,0) :empty_spaces_after_command:text| |
      [12] (0,0)
      [13] (0,0) :paragraph
       [14] (0,0) :text|aaa |
       [14] (4,1)
      [13] (4,1)
-    [11] (1,1)
-    [15] (1,1) @tab
+    [11] (0,0)
+    [15] (0,0) @tab
      [16] (0,0) :empty_spaces_after_command:text| |
      [16] (0,0)
      [17] (0,0) :paragraph
@@ -444,23 +444,23 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
       [20] (2,0) :empty_spaces_after_close_brace:text|\\n|
       [20] (2,0)
      [17] (3,1)
-    [15] (1,1)
-    [21] (1,1) @tab
+    [15] (0,0)
+    [21] (0,0) @tab
      [22] (0,0) :empty_spaces_after_command:text| |
      [22] (0,0)
      [23] (0,0) :paragraph
       [24] (0,0) :text|ccc\\n|
       [24] (4,1)
      [23] (4,1)
-    [21] (1,1)
-   [10] (17,2)
- locations  (1) l 1 b 9
-   [25] (17,2) :row
-    [26] (17,2) @item
+    [21] (0,0)
+   [10] (16,1)
+ locations  (1) l 0 b 8
+   [25] (16,1) :row
+    [26] (16,1) @item
      [27] (0,0) :empty_spaces_after_command:text| |
      [27] (0,0)
-    [26] (17,2)
-    [28] (17,2) @tab
+    [26] (16,1)
+    [28] (16,1) @tab
      [29] (0,0) :empty_spaces_after_command:text| |
      [29] (0,0)
      [30] (0,0) @anchor
@@ -468,14 +468,13 @@ $result_converted{'debugcount'}->{'multitable'} = ' [1] (0,0) :text_root
  locations  (2) l 0 b 0
      [31] (0,0) :empty_spaces_after_close_brace:text|\\n|
      [31] (0,0)
-    [28] (17,2)
-   [25] (24,3)
- locations  (2) l 2 b 23
-   [32] (24,3) @end
-   [32] (24,3)
-  [3] (24,3)
- [1] (24,3)
-
+    [28] (16,1)
+   [25] (23,2)
+ locations  (2) l 1 b 22
+   [32] (23,2) @end
+   [32] (23,2)
+  [3] (23,2)
+ [1] (23,2)
 aaa   bb    ccc
       
 ';

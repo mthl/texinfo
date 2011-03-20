@@ -841,8 +841,7 @@ $result_floats{'comment_space_command_on_line'}{'Text'}[0]{'extra'}{'end_command
 
 
 
-$result_converted{'plaintext'}->{'comment_space_command_on_line'} = '
-top element 
+$result_converted{'plaintext'}->{'comment_space_command_on_line'} = 'top element 
 ************
 
 Heading  

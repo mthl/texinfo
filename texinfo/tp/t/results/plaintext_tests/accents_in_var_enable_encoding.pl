@@ -167,8 +167,7 @@ $result_errors{'accents_in_var_enable_encoding'} = [];
 
 
 
-$result_converted{'plaintext'}->{'accents_in_var_enable_encoding'} = '
-AAç r̆ è.
+$result_converted{'plaintext'}->{'accents_in_var_enable_encoding'} = 'AAç r̆ è.
 ';
 
 1;

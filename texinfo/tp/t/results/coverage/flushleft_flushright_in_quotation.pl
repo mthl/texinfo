@@ -283,8 +283,7 @@ $result_errors{'flushleft_flushright_in_quotation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'flushleft_flushright_in_quotation'} = '
-     f l
+$result_converted{'plaintext'}->{'flushleft_flushright_in_quotation'} = '     f l
 
                                                                     f r
 ';

@@ -78,6 +78,13 @@ Use INLINE_INSERTCOPYING as the default for some formats?
 
 Force end lines before/after a menu?
 
+SHOW_MENU is used to determine if menus are shown in Plaintext, and is
+true in the default case.  
+
+HEADERS is not used to determine if node headers are output or not, this is 
+determined by the module used (Plaintext.pm or info.pm).  No idea whether
+it is right or wrong.
+
 With something like
 @deffn { category}
 the space is stripped everywhere but in sorting. Should be stripped in 

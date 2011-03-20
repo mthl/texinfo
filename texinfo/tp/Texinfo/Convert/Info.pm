@@ -517,7 +517,6 @@ sub _node($$)
 {
   my $self = shift;
   my $node = shift;
-
   
   my $result = '';
   return '' if (!defined($node->{'extra'}->{'normalized'}));

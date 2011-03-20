@@ -233,6 +233,9 @@ my %defaults = (
   'paragraphindent'      => 3,
   'firstparagraphindent' => 'none',
   'ENABLE_ENCODING'      => 1,
+# this default is for Info, but also when doing Texinfo fragments.  So this 
+# has to be explicitly set to 0 when doing real plaintext.
+  'SHOW_MENU'            => 1,
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
 #  'perl_encoding'        => 'ascii',
@@ -492,6 +495,7 @@ sub convert($$)
   my $result = '';
 
   my $elements = Texinfo::Structuring::split_by_node($root);
+  $self->{'empty_lines_count'} = 1;
   if (!defined($elements)) {
     $result = $self->_convert($root);
     my $footnotes = $self->_footnotes();
@@ -1133,7 +1137,8 @@ sub _convert($$)
     my $is_top_formatter = 0;
     $is_top_formatter = 1 if ($formatter->{'_top_formatter'});
     my $empty_lines_count = '';
-    $empty_lines_count = $self->{'empty_lines_count'} if defined($self->{'empty_lines_count'});
+    $empty_lines_count = $self->{'empty_lines_count'} 
+      if defined($self->{'empty_lines_count'});
     print STDERR "ROOT:$root (".join('|',@{$self->{'context'}})."), formatters ".scalar(@{$self->{'formatters'}}) . " ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
@@ -1171,10 +1176,11 @@ sub _convert($$)
   # especially
   if ($root->{'type'} and ($root->{'type'} eq 'empty_line' 
                            or $root->{'type'} eq 'after_description_line')) {
-    my $count = $self->{'empty_lines_count'};
-    $count = '' if (!defined($count));
-    print STDERR "EMPTY_LINE ($count)\n"
-      if ($self->{'DEBUG'});
+    if ($self->{'DEBUG'}) {
+      my $count = $self->{'empty_lines_count'};
+      $count = '' if (!defined($count));
+      print STDERR "EMPTY_LINE ($count)\n";
+    }
     delete $self->{'text_element_context'}->[-1]->{'counter'};
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
@@ -1681,6 +1687,9 @@ sub _convert($$)
       # remark:
       # cartouche group and raggedright -> nothing on format stack
 
+      if ($menu_commands{$root->{'cmdname'}} and !$self->{'SHOW_MENU'}) {
+        return '';
+      }
       if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
         push @{$self->{'context'}}, $root->{'cmdname'};
       } elsif ($flush_commands{$root->{'cmdname'}}) {

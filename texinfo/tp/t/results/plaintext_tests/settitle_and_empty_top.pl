@@ -134,8 +134,7 @@ $result_errors{'settitle_and_empty_top'} = [];
 
 
 
-$result_converted{'plaintext'}->{'settitle_and_empty_top'} = '
-Title
+$result_converted{'plaintext'}->{'settitle_and_empty_top'} = 'Title
 *****
 
 ';

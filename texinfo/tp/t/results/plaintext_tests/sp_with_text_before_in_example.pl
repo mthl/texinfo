@@ -163,8 +163,7 @@ $result_errors{'sp_with_text_before_in_example'} = [];
 
 
 
-$result_converted{'plaintext'}->{'sp_with_text_before_in_example'} = '
-     sp
+$result_converted{'plaintext'}->{'sp_with_text_before_in_example'} = '     sp
 
 
 

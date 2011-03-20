@@ -251,8 +251,7 @@ $result_errors{'punctuation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'punctuation'} = '
-Dot.  Exclam!  Question?  Dot.  Exclam!  Question?  GAAA.
+$result_converted{'plaintext'}->{'punctuation'} = 'Dot.  Exclam!  Question?  Dot.  Exclam!  Question?  GAAA.
 
    End of lines Dot.  Exclam!  Question?  End.
 

@@ -234,8 +234,7 @@ $result_errors{'dash_in_menu'} = [
 
 
 
-$result_converted{'plaintext'}->{'dash_in_menu'} = '
-* Menu:
+$result_converted{'plaintext'}->{'dash_in_menu'} = '* Menu:
 
 * entry--in: (manual)n---ode.         description -- in.
 

@@ -190,8 +190,7 @@ $result_errors{'heading_in_quotation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'heading_in_quotation'} = '
-     in quotation @ _heading_
+$result_converted{'plaintext'}->{'heading_in_quotation'} = '     in quotation @ _heading_
 =============================
 
 ';

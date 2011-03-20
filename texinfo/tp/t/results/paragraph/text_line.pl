@@ -52,8 +52,7 @@ $result_errors{'text_line'} = [];
 
 
 
-$result_converted{'plaintext'}->{'text_line'} = '
-text
+$result_converted{'plaintext'}->{'text_line'} = 'text
 
 ';
 

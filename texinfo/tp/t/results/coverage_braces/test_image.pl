@@ -4252,8 +4252,7 @@ $result_floats{'test_image'}{'Image'}[0]{'extra'}{'end_command'}{'extra'}{'comma
 
 
 
-$result_converted{'plaintext'}->{'test_image'} = '
-In text .
+$result_converted{'plaintext'}->{'test_image'} = 'In text .
 
    Insertcopying
    Text in copying. 

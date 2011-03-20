@@ -245,8 +245,7 @@ $result_floats{'simple'}{'Type'}[0]{'extra'}{'end_command'}{'extra'}{'command'} 
 
 
 
-$result_converted{'plaintext'}->{'simple'} = '
-In float.
+$result_converted{'plaintext'}->{'simple'} = 'In float.
 
 Type 1: Caption.
 ';

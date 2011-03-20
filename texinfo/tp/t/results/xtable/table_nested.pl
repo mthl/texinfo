@@ -2522,8 +2522,7 @@ $result_errors{'table_nested'} = [
 
 
 
-$result_converted{'plaintext'}->{'table_nested'} = '
-Quotation
+$result_converted{'plaintext'}->{'table_nested'} = 'Quotation
      first item
      second itemx
 

@@ -1488,8 +1488,7 @@ $result_floats{'float_copying'}{'Copyright-notice'}[0]{'extra'}{'end_command'}{'
 
 
 
-$result_converted{'plaintext'}->{'float_copying'} = '
-Top
+$result_converted{'plaintext'}->{'float_copying'} = 'Top
 ***
 
 Public domain is not really a licence, as it means than the author

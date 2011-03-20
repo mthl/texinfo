@@ -497,8 +497,7 @@ $result_floats{'float_with_at_commands'}{'entr_00e9e'}[0]{'extra'}{'end_command'
 
 
 
-$result_converted{'plaintext'}->{'float_with_at_commands'} = '
-Ceci est notre premie`re entre\'e.
+$result_converted{'plaintext'}->{'float_with_at_commands'} = 'Ceci est notre premie`re entre\'e.
 
 entre\'e 1: La premie`re entre\'e est importante
 

@@ -364,8 +364,7 @@ $result_errors{'menu_title_before_entries'} = [];
 
 
 
-$result_converted{'plaintext'}->{'menu_title_before_entries'} = '
-* Menu:
+$result_converted{'plaintext'}->{'menu_title_before_entries'} = '* Menu:
 
 Horizontal space
 * subnode::

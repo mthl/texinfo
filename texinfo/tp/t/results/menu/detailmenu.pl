@@ -330,8 +330,7 @@ $result_errors{'detailmenu'} = [
 
 
 
-$result_converted{'plaintext'}->{'detailmenu'} = '
-* Menu:
+$result_converted{'plaintext'}->{'detailmenu'} = '* Menu:
 
 * Copying Conditions::          Your rights.
 

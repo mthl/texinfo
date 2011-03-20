@@ -2256,8 +2256,7 @@ $result_errors{'def'} = [
 
 
 
-$result_converted{'plaintext'}->{'def'} = '
- -- c--ategory: d--effn_name a--rguments...
+$result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rguments...
      d-effn
 
  -- cate--gory: de--ffn_name ar--guments more args

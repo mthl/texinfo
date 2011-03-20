@@ -68,7 +68,6 @@ $result_errors{'hyphenation'} = [];
 
 
 
-$result_converted{'plaintext'}->{'hyphenation'} = '
-';
+$result_converted{'plaintext'}->{'hyphenation'} = '';
 
 1;

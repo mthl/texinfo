@@ -884,8 +884,7 @@ $result_errors{'section_below_unnumbered'} = [];
 
 
 
-$result_converted{'plaintext'}->{'section_below_unnumbered'} = '
-Top
+$result_converted{'plaintext'}->{'section_below_unnumbered'} = 'Top
 Unn
   Sec
 Top

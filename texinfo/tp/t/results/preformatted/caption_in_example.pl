@@ -336,8 +336,7 @@ $result_floats{'caption_in_example'}{'float'}[0]{'extra'}{'end_command'}{'extra'
 
 
 
-$result_converted{'plaintext'}->{'caption_in_example'} = '
-     in example
+$result_converted{'plaintext'}->{'caption_in_example'} = '     in example
 
 
 

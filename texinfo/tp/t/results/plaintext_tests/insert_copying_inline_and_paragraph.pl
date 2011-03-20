@@ -133,8 +133,7 @@ $result_errors{'insert_copying_inline_and_paragraph'} = [];
 
 
 
-$result_converted{'plaintext'}->{'insert_copying_inline_and_paragraph'} = '
-Insertcopying In copying.
+$result_converted{'plaintext'}->{'insert_copying_inline_and_paragraph'} = 'Insertcopying In copying.
 ';
 
 1;
