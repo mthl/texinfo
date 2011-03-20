@@ -59,3 +59,9 @@ texi2html/maintained_extra/chm.init
 texi2html/maintained_extra/html32.init
 texi2html/maintained_extra/tex4ht.init
 texi2html/maintained_extra/mediawiki.init
+tp/texi2any.pl
+tp/Texinfo/Common.pm
+tp/Texinfo/Parser.pm
+tp/Texinfo/Structuring.pm
+tp/Texinfo/Convert/Info.pm
+tp/Texinfo/Convert/Plaintext.pm

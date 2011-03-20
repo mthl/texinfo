@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2010-10-28 23:22+0200\n"
+"POT-Creation-Date: 2011-03-20 19:01+0100\n"
 "PO-Revision-Date: 2008-03-19\n"
 "Last-Translator: Reinhold Kainhofer <reinhold@kainhofer.com>\n"
 "Language-Team: Unknown\n"
@@ -37,7 +37,7 @@ msgstr "Kurzes Inhaltsverzeichnis"
 msgid "Footnotes"
 msgstr "Fu@ss{}noten"
 
-#: texi2html/texi2html.pl:13008
+#: texi2html/texi2html.pl:13008 tp/Texinfo/Convert/Plaintext.pm:1670
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -285,11 +285,13 @@ msgid "{style}: {shortcaption_first_line}"
 msgstr "{style}: {shortcaption_first_line}"
 
 #: texi2html/texi2html.init:5744 texi2html/texi2html.init:5765
+#: tp/Texinfo/Parser.pm:2082
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr ""
 
 #: texi2html/texi2html.init:5748 texi2html/texi2html.init:5769
+#: tp/Texinfo/Parser.pm:2087
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr ""
@@ -406,6 +408,7 @@ msgid "{acronym_like} ({explanation})"
 msgstr "{acronym_like} ({explanation})"
 
 #: texi2html/texi2html.init:7028 texi2html/formats/docbook.init:1399
+#: tp/Texinfo/Convert/Plaintext.pm:1729
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr "@b{{quotation_arg}:} "
@@ -414,55 +417,55 @@ msgstr "@b{{quotation_arg}:} "
 msgid "(outside of any element)"
 msgstr ""
 
-#: texi2html/T2h_i18n.pm:295
+#: texi2html/T2h_i18n.pm:295 tp/Texinfo/Parser.pm:4435
 msgid "January"
 msgstr "Januar"
 
-#: texi2html/T2h_i18n.pm:296
+#: texi2html/T2h_i18n.pm:296 tp/Texinfo/Parser.pm:4436
 msgid "February"
 msgstr "Februar"
 
-#: texi2html/T2h_i18n.pm:297
+#: texi2html/T2h_i18n.pm:297 tp/Texinfo/Parser.pm:4437
 msgid "March"
 msgstr "M@\"arz"
 
-#: texi2html/T2h_i18n.pm:298
+#: texi2html/T2h_i18n.pm:298 tp/Texinfo/Parser.pm:4438
 msgid "April"
 msgstr "April"
 
-#: texi2html/T2h_i18n.pm:299
+#: texi2html/T2h_i18n.pm:299 tp/Texinfo/Parser.pm:4439
 msgid "May"
 msgstr "Mai"
 
-#: texi2html/T2h_i18n.pm:300
+#: texi2html/T2h_i18n.pm:300 tp/Texinfo/Parser.pm:4440
 msgid "June"
 msgstr "Juni"
 
-#: texi2html/T2h_i18n.pm:301
+#: texi2html/T2h_i18n.pm:301 tp/Texinfo/Parser.pm:4441
 msgid "July"
 msgstr "Juli"
 
-#: texi2html/T2h_i18n.pm:302
+#: texi2html/T2h_i18n.pm:302 tp/Texinfo/Parser.pm:4442
 msgid "August"
 msgstr "August"
 
-#: texi2html/T2h_i18n.pm:303
+#: texi2html/T2h_i18n.pm:303 tp/Texinfo/Parser.pm:4443
 msgid "September"
 msgstr "September"
 
-#: texi2html/T2h_i18n.pm:304
+#: texi2html/T2h_i18n.pm:304 tp/Texinfo/Parser.pm:4444
 msgid "October"
 msgstr "Oktober"
 
-#: texi2html/T2h_i18n.pm:305
+#: texi2html/T2h_i18n.pm:305 tp/Texinfo/Parser.pm:4445
 msgid "November"
 msgstr "November"
 
-#: texi2html/T2h_i18n.pm:306
+#: texi2html/T2h_i18n.pm:306 tp/Texinfo/Parser.pm:4446
 msgid "December"
 msgstr "Dezember"
 
-#: texi2html/T2h_i18n.pm:319
+#: texi2html/T2h_i18n.pm:319 tp/Texinfo/Parser.pm:4459
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{day}. {month} {year}"
@@ -604,6 +607,7 @@ msgid "The node you are looking for is at {href}."
 msgstr "Der Knoten, den Sie sehen, befindet sich bei {href}"
 
 #: texi2html/formats/html.init:2644 texi2html/formats/info.init:2808
+#: tp/Texinfo/Convert/Plaintext.pm:2540
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -621,7 +625,7 @@ msgstr "Abschnitt"
 msgid "Jump to"
 msgstr "Springe zu"
 
-#: texi2html/formats/info.init:3129
+#: texi2html/formats/info.init:3129 tp/Texinfo/Convert/Info.pm:451
 msgid "(outside of any node)"
 msgstr ""
 
@@ -636,6 +640,106 @@ msgstr ""
 #: texi2html/examples/roff.init:655
 msgid "Menu:"
 msgstr "Auswahl:"
+
+#: tp/Texinfo/Convert/Plaintext.pm:684
+#, perl-brace-format
+msgid "{category} on {class}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:688
+#, perl-brace-format
+msgid "{category} of {class}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1429
+#, perl-brace-format
+msgid "{name} @indicateurl{{email}}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1432
+#, perl-brace-format
+msgid "@indicateurl{{email}}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1454
+#, perl-brace-format
+msgid "{text} ({url})"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1459
+#, perl-brace-format
+msgid "@code{{url}}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1539
+#, fuzzy, perl-brace-format
+msgid "{float_type} {float_number}"
+msgstr "{style} {number}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1543
+#, perl-brace-format
+msgid "{float_type}"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1547
+#, fuzzy, perl-brace-format
+msgid "{float_number}"
+msgstr "{style} {number}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1637
+#, fuzzy, perl-brace-format
+msgid "{abbr_or_acronym} ({explanation})"
+msgstr "{acronym_like} ({explanation})"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1986
+#, perl-brace-format
+msgid "* {float_type} {float_number}: {float_label}."
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1991
+#, perl-brace-format
+msgid "* {float_type}: {float_label}."
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1999
+#, perl-brace-format
+msgid "*  {float_number}: {float_label}."
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2003
+#, perl-brace-format
+msgid "* : {float_label}."
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2488
+#, fuzzy, perl-brace-format
+msgid "{float_type} {float_number}: "
+msgstr "{style} {number}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2492
+#, perl-brace-format
+msgid "{float_type}: "
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2497
+#, fuzzy, perl-brace-format
+msgid "{float_type} {float_number}\n"
+msgstr "{style} {number}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2501
+#, perl-brace-format
+msgid "{float_type}\n"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2507
+#, perl-brace-format
+msgid "{float_number}: "
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2510
+#, perl-brace-format
+msgid "{float_number}\n"
+msgstr ""
 
 #~ msgid "Node following in node reading order"
 #~ msgstr "N@\"achster Abschnitt in Lesereihenfolge"

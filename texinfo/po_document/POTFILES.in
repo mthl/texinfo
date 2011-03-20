@@ -15,3 +15,6 @@ texi2html/maintained_extra/html32.init
 texi2html/maintained_extra/tex4ht.init
 texi2html/maintained_extra/mediawiki.init
 texi2html/examples/roff.init
+tp/Texinfo/Parser.pm
+tp/Texinfo/Convert/Info.pm
+tp/Texinfo/Convert/Plaintext.pm
