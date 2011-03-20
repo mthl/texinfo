@@ -56,12 +56,12 @@ sub output($)
 
   my $result;
 
-  # determine input file base name
+  # determine input file base name
   my $input_basename;
   if (defined($self->{'info'}->{'input_file_name'})) {
     $input_basename = $self->{'info'}->{'input_file_name'};
   } else {
-    # This could happen if called on a piece of texinfo
+    # This could happen if called on a piece of texinfo
     $input_basename = '';
   }
   $input_basename =~ s/^.*\///;
@@ -74,7 +74,7 @@ sub output($)
         and $self->{'extra'}->{'setfilename'}->{'extra'}
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
 
-  # determine output file and output file name
+  # determine output file and output file name
   if (!defined($self->{'OUTFILE'})) {
     if (defined($setfilename)) {
       $self->{'OUTFILE'} = $setfilename;
@@ -89,7 +89,7 @@ sub output($)
       $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
     }
   } else {
-    # no splitting when writing to the null device or to stdout
+    # no splitting when writing to the null device or to stdout
     if ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}} 
          or $self->{'OUTFILE'} eq '-') {
       $self->{'SPLIT_SIZE'} = undef;
@@ -97,8 +97,8 @@ sub output($)
   }
 
   my $output_basename = $self->{'OUTFILE'};
-  # this is a case that should happen rarely: one wants to get 
-  # the result in a string and there is a setfilename.
+  # this is a case that should happen rarely: one wants to get 
+  # the result in a string and there is a setfilename.
   if ($self->{'OUTFILE'} eq '' and defined($setfilename)) {
     $output_basename = $setfilename;
   }
@@ -228,7 +228,7 @@ sub output($)
   if ($out_file_nr > 1) {
     $tag_text .=  "(Indirect)\n";
   }
-  # This may happen for anchors in @insertcopying
+  # This may happen for anchors in @insertcopying
   my %seen_anchors;
   foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
     next unless ($label->{'root'} and $label->{'root'}->{'extra'} 
@@ -273,14 +273,14 @@ sub _info_header($)
 {
   my $self = shift;
 
-  # FIXME version/program
+  # FIXME version/program
   #my $text = "This is $self->{'output_filename'}, produced by makeinfo version 4.13 from $self->{'input_basename'}.";
   my $paragraph = Texinfo::Convert::Paragraph->new();
   #my $result = $paragraph->add_text($text);
   my $result = $paragraph->add_text("This is ");
-  # This ensures that spaces in file are kept.
+  # This ensures that spaces in file are kept.
   $result .= $paragraph->add_next($self->{'output_filename'});
-  # FIXME version/program
+  # FIXME version/program
   $result .= $paragraph->add_text(', produced by makeinfo version 4.13 from ');
   $result .= $paragraph->add_next($self->{'input_basename'});
   $result .= $paragraph->add_text('.');
@@ -348,7 +348,7 @@ sub _printindex($$)
     return '';
   }
 
-  # this is not redone for each index, only once
+  # this is not redone for each index, only once
   if (!defined($self->{'index_entries'}) and $self->{'parser'}) {
 
     my ($index_names, $merged_indices, $index_entries)
@@ -372,7 +372,7 @@ sub _printindex($$)
   $self->_add_text_count($heading);
   $self->_add_lines_count(3);
 
-  # first determine the line numbers for the spacing of their formatting
+  # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
   my %entry_nodes;
   my $max_index_line_nr_string_length = 0;
@@ -382,7 +382,7 @@ sub _printindex($$)
 
     if (defined ($self->{'index_entries_line_location'}->{$entry->{'command'}})) {
       $line_nr = $self->{'index_entries_line_location'}->{$entry->{'command'}}->{'lines'};
-      # ignore index entries in special regions that haven't been seen
+      # ignore index entries in special regions that haven't been seen
     } elsif ($entry->{'region'}) {
       $ignored_entries{$entry} = 1;
       next;
@@ -408,7 +408,7 @@ sub _printindex($$)
     $line_nrs{$entry} = $line_nr;
   }
 
-  # this is used to count entries that are the same
+  # this is used to count entries that are the same
   my %entry_counts = ();
 
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
@@ -449,9 +449,9 @@ sub _printindex($$)
 
     if (!defined($node)) {
       $node_text = $self->gdt('(outside of any node)');
-      # Warn, but only once.
-      # FIXME when outside of sectioning commands this message was already
-      # done by the Parser.
+      # Warn, but only once.
+      # FIXME when outside of sectioning commands this message was already
+      # done by the Parser.
       if (!$self->{'index_entries_no_node'}->{$entry}) {
         $self->line_warn (sprintf($self->__("Entry for index `%s' outside of any node"),
                                  $index_name), $entry->{'command'}->{'line_nr'});
@@ -525,7 +525,7 @@ sub _node($$)
     $self->_add_text_count("\n");
   }
 
-  # May happen when only converting a fragment
+  # May happen when only converting a fragment
   my $output_filename = $self->{'output_filename'};
   if (defined($self->{'output_filename'})) {
     $output_filename = $self->{'output_filename'};
@@ -587,8 +587,8 @@ sub _image($$)
     my $image_file;
     foreach my $extension (@extensions) {
       if ($self->Texinfo::Parser::_locate_include_file ($basefile.$extension)) {
-        # use the basename and not the file found.  It is agreed that it is
-        # better, since in any case the files are moved.
+        # use the basename and not the file found.  It is agreed that it is
+        # better, since in any case the files are moved.
         $image_file = $basefile.$extension;
         last; 
       }

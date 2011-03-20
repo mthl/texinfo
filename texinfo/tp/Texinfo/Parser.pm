@@ -92,12 +92,14 @@ my $DEFAULT_LANGUAGE = 'en';
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
 
-my $strings_textdomain = 'texinfo_document';
+#my $strings_textdomain = 'texinfo_document';
+# FIXME use texinfo_document
+my $strings_textdomain = 'texi2html_document';
 my $messages_textdomain = 'texinfo';
 
 # libintl converts between encodings but doesn't decode them into the
 # perl internal format.  This is only caled if the encoding is a proper
-# perl encoding.
+# perl encoding.
 sub encode_i18n_string($$)
 {
   my $string = shift;
@@ -106,7 +108,7 @@ sub encode_i18n_string($$)
 }
 
 # handle translations of in-document strings.
-sub gdt($$$;$)
+sub gdt($$;$$)
 {
   my $self = shift;
   my $message = shift;
@@ -148,12 +150,12 @@ sub gdt($$$;$)
     # always try us-ascii, the charset should always be a subset of
     # all charset, and should resort to @-commands if needed for non
     # ascii characters
-    if ($encoding and $encoding ne 'us-ascii') {
+    if (!$encoding or ($encoding and $encoding ne 'us-ascii')) {
       $locales .= "$language.us-ascii:";
     }
   }
   $locales =~ s/:$//;
-  #print STDERR "$locales\n";
+  #print STDERR "$locales $message\n";
   # END FIXME
 
   Locale::Messages::nl_putenv("LANGUAGE=$locales");
@@ -224,7 +226,7 @@ our %default_configuration = (
   # this is the initial context.  It is put at the bottom of the 
   # 'context_stack'
   'context' => '_root',
-  # the stack of the macros being expanded (more recent are first)
+  # the stack of the macros being expanded (more recent are first)
   'macro_stack' => [],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
@@ -244,7 +246,7 @@ our %default_configuration = (
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
   'novalidate' => 0,          # same as setting @novalidate.
-  'perl_encoding' => undef,   # perl encoding name, set from @documentencoding
+  'perl_encoding' => undef,   # perl encoding name, set from @documentencoding
   'encoding_name' => undef,   # Current encoding set by @documentencoding
                               # and normalized
   'documentlanguage' => undef, 
@@ -252,7 +254,7 @@ our %default_configuration = (
                               # @documentlanguage
   'ENABLE_ENCODING' => 1,     # corresponds to --enable-encoding.
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  'TOP_NODE_UP' => '(dir)'    # up node of Top node
+  'TOP_NODE_UP' => '(dir)'    # up node of Top node
 );
 
 # The commands in initialization_overrides are not set in the document if
@@ -286,9 +288,9 @@ my %initialization_overrides = (
 #                         is also in that structure.
 # misc_commands           the same than %misc_commands below, but with index
 #                         entry commands dynamically added
-# close_paragraph_commands      same than %close_paragraph_command, but with
+# close_paragraph_commands      same than %close_paragraph_command, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
-# close_preformatted_commands   same than %close_preformatted_command, but with
+# close_preformatted_commands   same than %close_preformatted_command, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
 # no_paragraph_commands   the same than %default_no_paragraph_commands
 #                         below, with index
@@ -306,7 +308,7 @@ my %initialization_overrides = (
 #                         on index_entry.
 # floats                  key is the normalized float type, value is an array
 #                         reference holding all the floats.
-# internal_references     an array holding all the internal references.
+# internal_references     an array holding all the internal references.
 
 # set                     points to the value set when initializing, for
 #                         configuration items that are not to be overriden
@@ -1098,7 +1100,7 @@ sub _end_preformatted ($$$)
   $current = _close_all_style_commands($self, $current, $line_nr);
   if ($current->{'type'} and $current->{'type'} eq 'preformatted') {
     print STDERR "CLOSE PREFORMATTED\n" if ($self->{'DEBUG'});
-    # completly remove void preformatted contexts
+    # completly remove void preformatted contexts
     if (!@{$current->{'contents'}}) {
       my $removed = pop @{$current->{'parent'}->{'contents'}};
       print STDERR "popping $removed->{'type'}\n" if ($self->{'DEBUG'});
@@ -1108,12 +1110,12 @@ sub _end_preformatted ($$$)
   return $current;
 }
 
-# close formats
+# close formats
 sub _close_command_cleanup($$$) {
   my $self = shift;
   my $current = shift;
 # remove the dynamic counters in multitable, they are not of use in the final
-# tree
+# tree
   return unless ($current->{'cmdname'});
   if ($current->{'cmdname'} eq 'multitable') {
     foreach my $row (@{$current->{'contents'}}) {
@@ -1148,7 +1150,7 @@ sub _close_command_cleanup($$$) {
           $end->{'parent'} = $current;
           push @{$current->{'contents'}}, $end;
         }
-        # remove empty before_items
+        # remove empty before_items
         if (!@{$before_item->{'contents'}}) {
           if ($leading_spaces) {
             my $space = shift @{$current->{'contents'}};
@@ -1752,8 +1754,8 @@ sub _parse_def ($$)
   my @result;
   my @args = @{$def_map{$command}};
   my $arg_type;
-  # Even when $arg_type is not set, that is for def* that is not documented
-  # to take args, everything is as is arg_type was set to arg.
+  # Even when $arg_type is not set, that is for def* that is not documented
+  # to take args, everything is as is arg_type was set to arg.
   $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
   foreach my $arg (@args) {
     #print STDERR "$command $arg"._print_current($contents[0]);
@@ -1871,7 +1873,7 @@ sub _enter_index_entry($$$$$)
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
-# This is always called at command closing.
+# This is always called at command closing.
 sub _remove_empty_content_arguments($)
 {
   my $current = shift;
@@ -2029,7 +2031,7 @@ sub _end_line($$$)
         $arg = undef;
       }
       push @{$self->{'context_stack'}}, 'preformatted';
-      # MENU_COMMENT open
+      # MENU_COMMENT open
       $menu_entry = undef;
     } else {
       print STDERR "MENU ENTRY END LINE\n" if ($self->{'DEBUG'});
@@ -2072,7 +2074,7 @@ sub _end_line($$$)
         $def_parsed_hash->{$arg->[0]} = $arg->[1];
       }
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
-      # do an standard index entry tree
+      # do an standard index entry tree
       my $index_entry = $def_parsed_hash->{'name'};
       if (defined($index_entry)) {
         if ($def_parsed_hash->{'class'}) {
@@ -2088,7 +2090,7 @@ sub _end_line($$$)
           }
         }
         my $index_contents;
-        # 'root_line' is the container returned by gdt.
+        # 'root_line' is the container returned by gdt.
         if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
           $index_contents = $index_entry->{'contents'};
         } else {
@@ -2402,7 +2404,7 @@ sub _end_line($$$)
         }
       }
     } elsif ($command eq 'listoffloats') {
-      # Empty listoffloats is allowed
+      # Empty listoffloats is allowed
       _parse_float_type($current);
       #if (!_parse_float_type($current)) {
       #  $self->line_error (sprintf($self->__("\@%s missing argument"), 
@@ -2448,14 +2450,14 @@ sub _end_line($$$)
           $self->_close_command_cleanup($closed_command);
           $end->{'parent'} = $closed_command;
 
-          # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
+          # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
           if ($end_command eq 'copying' and $self->{'INLINE_INSERTCOPYING'}) {
-            # remove the end of line following @copying.
+            # remove the end of line following @copying.
             my @contents = @{$closed_command->{'contents'}};
             shift @contents if ($contents[0] and $contents[0]->{'type'}
                and ($contents[0]->{'type'} eq 'empty_line_after_command'
                     or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
-            # the macrobody is the @copying content converted to Texinfo.
+            # the macrobody is the @copying content converted to Texinfo.
             my $body = Texinfo::Convert::Texinfo::convert(
                          {'contents' => \@contents});
             
@@ -2533,7 +2535,7 @@ sub _end_line($$$)
                and $current->{'contents'}->[-2]->{'type'}
                and $current->{'contents'}->[-2]->{'type'} eq 'empty_line_after_command'))) {
     # empty line after a @menu or before a preformatted. Reparent to the menu
-    # or other format
+    # or other format
     if ($current->{'type'}
         and $current->{'type'} eq 'preformatted') {
       my $parent = $current->{'parent'};
@@ -3169,16 +3171,16 @@ sub _parse_texi($;$)
               # the push @{$current->{'contents'}}, {}; prevents a trailing
               # text to be merged, to avoid having the value tree modified.
               } elsif (ref($self->{'values'}->{$value}) eq 'ARRAY') {
-                # we don't know for sure, but if we don't do it here it 
-                # won't be done
+                # we don't know for sure, but if we don't do it here it 
+                # won't be done
                 _abort_empty_line ($self, $current);
                 foreach my $content (@{$self->{'values'}->{$value}}) {
                   push @{$current->{'contents'}}, $content;
                 }
                 push @{$current->{'contents'}}, {};
               } elsif (ref($self->{'values'}->{$value}) eq 'HASH') {
-                # we don't know for sure, but if we don't do it here it 
-                # won't be done
+                # we don't know for sure, but if we don't do it here it 
+                # won't be done
                 _abort_empty_line ($self, $current);
                 my $content = $self->{'values'}->{$value};
                 push @{$current->{'contents'}}, $content;
@@ -3221,7 +3223,7 @@ sub _parse_texi($;$)
         if ($current->{'parent'}) { 
           if ($current->{'parent'}->{'cmdname'}) {
           # FIXME in all the cases below, there is an error message even if
-          # the command is an unknown command
+          # the command is an unknown command
             if ($accent_commands{$current->{'parent'}->{'cmdname'}}                            
                 and !$in_accent_commands{$command}) {
               $self->line_warn (sprintf($self->__("\@%s should not appear in \@%s"), 
@@ -3572,7 +3574,7 @@ sub _parse_texi($;$)
               }
             } elsif ($command =~ /^ifnot(.*)/) {
               $ifvalue_true = 1 if !($self->{'expanded_formats_hash'}->{$1}
-                    # exception as explained in the texinfo manual
+                    # exception as explained in the texinfo manual
                     or ($1 eq 'info' 
                         and $self->{'expanded_formats_hash'}->{'plaintext'}));
               print STDERR "CONDITIONAL \@$command format $1: $ifvalue_true\n" if ($self->{'DEBUG'});

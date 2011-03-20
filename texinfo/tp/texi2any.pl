@@ -84,6 +84,9 @@ $real_command_name =~ s/\.pl$//;
 #my $messages_textdomain = 'texinfo';
 my $messages_textdomain = '@PACKAGE@';
 $messages_textdomain = 'texinfo' if ($messages_textdomain eq '@'.'PACKAGE@');
+my $strings_textdomain = '@PACKAGE@' . '_document';
+# FIXME use texinfo
+$strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
 sub __($) {
   my $msgid = shift;
@@ -115,6 +118,28 @@ require Locale::Messages;
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
+
+if ($0 =~ /\.pl$/) {
+  # in case of out of source build, the locales directory should
+  # FIXME srcdir
+  # be in the same directory or in the srcdir, 
+  # FIXME
+  # or in the texi2html directory
+  my $locales_dir_found = 0;
+  foreach my $locales_dir ("$srcdir/locales", "./locales", '../texi2html/locales') {
+    if (-d $locales_dir) {
+      Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+      $locales_dir_found = 1;
+      last;
+    }
+  }
+  if (!$locales_dir_found) {
+    warn "Locales dir for document strings not found\n";
+  }
+} else {
+  Locale::Messages::bindtextdomain ($strings_textdomain, "$datadir/locale");
+}
+Locale::Messages::bindtextdomain ($messages_textdomain, "$datadir/locale");
 
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$srcdir/lib/Unicode-EastAsianWidth/lib";
@@ -438,7 +463,7 @@ my $result_options = Getopt::Long::GetOptions (
  # FIXME pass to parser? What could it mean in parser?
  'verbose|v' => sub {set_from_cmdline('VERBOSE', $_[1]); 
                      push @texi2dvi_args, '--verbose'; },
- 'document-language=s' => sub { 
+ 'document-language=s' => sub {
                       set_from_cmdline('documentlanguage', $_[1]); 
                       $parser_default_options->{'documentlanguage'} = $_[1];
                       my @messages 

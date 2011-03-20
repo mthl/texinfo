@@ -26,6 +26,11 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors);
 
+my $strings_textdomain = 'texi2html_document';
+Locale::Messages->select_package ('gettext_pp');
+# FIXME use texinfo instead of texi2html
+Locale::Messages::bindtextdomain ('texi2html_document', '../texi2html/locales');
+
 ok(1);
 
 my %formats = (

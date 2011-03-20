@@ -56,7 +56,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 $VERSION = '0.01';
 
-# misc commands that are of use for formatting.
+# misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
 
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
@@ -233,8 +233,8 @@ my %defaults = (
   'paragraphindent'      => 3,
   'firstparagraphindent' => 'none',
   'ENABLE_ENCODING'      => 1,
-# this default is for Info, but also when doing Texinfo fragments.  So this 
-# has to be explicitly set to 0 when doing real plaintext.
+# this default is for Info, but also when doing Texinfo fragments.  So this 
+# has to be explicitly set to 0 when doing real plaintext.
   'SHOW_MENU'            => 1,
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
@@ -288,14 +288,14 @@ sub _informative_command($$)
         and !$self->{'perl_encoding'}) {
       $self->{'encoding_name'} = $root->{'extra'}->{'encoding_name'};
       $self->{'perl_encoding'} = $root->{'extra'}->{'perl_encoding'};
-      # the following does not work with shifijs.  The encoding
-      # has to be set only once by open_out. 
+      # the following does not work with shifijs.  The encoding
+      # has to be set only once by open_out. 
       #if (defined($self->{'fh'})) {
       #  my $encoding = $self->{'perl_encoding'};
       #  my $filehandle = $self->{'fh'};
       #  if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       #    binmode($filehandle, ':utf8');
-      #  } else { # FIXME also right for shiftijs or similar encodings?
+      #  } else { # FIXME also right for shiftijs or similar encodings?
       #    binmode($filehandle, ':bytes');
       #  }
       #  binmode($filehandle, ":encoding($encoding)");
@@ -443,8 +443,8 @@ sub converter(;$)
 
   %{$converter->{'ignored_types'}} = %ignored_types;
   %{$converter->{'ignored_commands'}} = %ignored_commands;
-  # this is dynamic because raw formats may either be full comma,nds if
-  # isolated, or simple text if in a paragraph
+  # this is dynamic because raw formats may either be full comma,nds if
+  # isolated, or simple text if in a paragraph
   %{$converter->{'format_context_commands'}} = %default_format_context_commands;
   %{$converter->{'preformatted_context_commands'}} 
      = %default_preformatted_context_commands;
@@ -872,7 +872,7 @@ sub _align_lines($$$$$)
     my $line_bytes_begin = 0;
     my $line_bytes_end = 0;
     my $chomped = chomp($line);
-    # for debugging.
+    # for debugging.
     my $orig_line = $line;
     $line_bytes_end -= $self->count_bytes($chomped);
     $line =~ s/^(\s*)//;
@@ -946,11 +946,11 @@ sub _contents($$$)
       if ($top_section->{'level'} < $root_level);
   }
 
-  # FIXME return bytes count?
+  # FIXME return bytes count?
   my $result = '';
   my $lines_count = 0;
-  # This is done like that because the tree may not be well formed if
-  # there is a @part after a @chapter for example.
+  # This is done like that because the tree may not be well formed if
+  # there is a @part after a @chapter for example.
   foreach my $top_section (@{$section_root->{'section_childs'}}) {
     my $section = $top_section;
  SECTION:
@@ -1016,7 +1016,7 @@ sub _node($$)
   return '';
 }
 
-# no error in plaintext
+# no error in plaintext
 sub _error_outside_of_any_node($$)
 {
   my $self = shift;
@@ -1171,9 +1171,9 @@ sub _convert($$)
   }
   my $result = '';
 
-  # First handle empty lines. This has to be done before the handling
-  # of text below to be sure that an empty line is always processed
-  # especially
+  # First handle empty lines. This has to be done before the handling
+  # of text below to be sure that an empty line is always processed
+  # especially
   if ($root->{'type'} and ($root->{'type'} eq 'empty_line' 
                            or $root->{'type'} eq 'after_description_line')) {
     if ($self->{'DEBUG'}) {
@@ -1194,7 +1194,7 @@ sub _convert($$)
     }
   }
 
-  # process text
+  # process text
   if (defined($root->{'text'})) {
     if (!$formatter->{'_top_formatter'}) {
       if ($root->{'type'} and $root->{'type'} eq 'raw') {
@@ -1206,7 +1206,7 @@ sub _convert($$)
                        $self->_process_text($root, $formatter)));
       }
       return $result;
-    # the following is only possible if paragraphindent is set to asis
+    # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
       $self->_add_text_count($root->{'text'});
       return $root->{'text'};
@@ -1231,8 +1231,8 @@ sub _convert($$)
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}
       and !$self->{'multiple_pass'} and !$self->{'in_copying_header'}) {
     my $location = $self->_add_location($root);
-    # remove a 'lines' from $location if at the very end of a node
-    # since it will lead to the next node otherwise.
+    # remove a 'lines' from $location if at the very end of a node
+    # since it will lead to the next node otherwise.
     if ($root->{'cmdname'} and $root->{'cmdname'} =~ /index/) {
       my $following_not_empty;
       my @parents = @{$self->{'current_roots'}};
@@ -1265,9 +1265,9 @@ sub _convert($$)
             if ($self->{'DEBUG'});
         $location->{'lines'}--;
       }
-      # special case for index entry not associated with a node but seen. 
-      # this will be an index entry in @copying, in @insertcopying.
     }
+    # special case for index entry not associated with a node but seen. 
+    # this will be an index entry in @copying, in @insertcopying.
     if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
       $location->{'node'} = $self->{'node'};
     }
@@ -1336,8 +1336,8 @@ sub _convert($$)
       $result .= $self->_count_added($formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text));
       # in case the text added ends with punctuation.  
-      # If the text is empty (likely because of an error) previous 
-      # punctuation will be cancelled, we don't want that.
+      # If the text is empty (likely because of an error) previous 
+      # punctuation will be cancelled, we don't want that.
       $formatter->{'container'}->inhibit_end_sentence()
         if ($accented_text ne '');
       return $result;
@@ -1446,7 +1446,7 @@ sub _convert($$)
           unshift @{$self->{'current_contents'}->[-1]}, 
             {'contents' => $root->{'extra'}->{'brace_command_contents'}->[2]};
         } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-          # no mangling of --- and similar in url.
+          # no mangling of --- and similar in url.
           my $url = {'type' => 'code',
               'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
           if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
@@ -1505,9 +1505,9 @@ sub _convert($$)
         my @args = @{$root->{'extra'}->{'brace_command_contents'}};
         $args[0] = [{'text' => ''}] if (!defined($args[0]));
 
-        # normalize node name, to get a ref with the right formatting
-        # FIXME as a consequence, the line numbers appearing in case of errors
-        # correspond to the node lines numbers, and not the @ref.
+        # normalize node name, to get a ref with the right formatting
+        # FIXME as a consequence, the line numbers appearing in case of errors
+        # correspond to the node lines numbers, and not the @ref.
         my $node_content;
         if ($root->{'extra'}->{'node_argument'} 
             and $root->{'extra'}->{'node_argument'}->{'normalized'}
@@ -1575,7 +1575,7 @@ sub _convert($$)
           # FIXME this is a bit strange.
           $file = [{'text' => '()'}];
         }
-        # FIXME why define the name if there is a file argument?
+        # FIXME why define the name if there is a file argument?
         if ($file and !$name) {
           @$name = ({'type' => 'code',
                     'contents' => $node_content});
@@ -1596,8 +1596,8 @@ sub _convert($$)
         }
         #unshift @{$self->{'current_contents'}->[-1]}, @contents;
         $result = $self->_convert({'contents' => \@contents});
-        # we could use $formatter, but in case it was changed in _convert 
-        # we play it safe.
+        # we could use $formatter, but in case it was changed in _convert 
+        # we play it safe.
         my $pending = $result 
             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
         if ($command ne 'pxref') {
@@ -1713,10 +1713,10 @@ sub _convert($$)
              };
         $self->{'format_context'}->[-1]->{'indent_level'}++
            if ($indented_commands{$root->{'cmdname'}});
-        # open a preformatted container, if the command opening the 
-        # preformatted context is not a classical preformatted 
+        # open a preformatted container, if the command opening the 
+        # preformatted context is not a classical preformatted 
         # command (ie if it is menu or verbatim, and not example or  
-        # similar)
+        # similar)
         if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
             and ! $preformatted_commands{$root->{'cmdname'}}) {
           $preformatted = $self->new_formatter('unfilled');
@@ -1820,7 +1820,7 @@ sub _convert($$)
         my $heading = $self->convert_line({'type' => 'frenchspacing',
                          'contents' => $contents});
         pop @{$self->{'count_context'}};
-        # FIXME œ@* and @c?
+        # FIXME @* and @c?
         my $heading_underlined = 
              Texinfo::Convert::Text::heading ($root, $heading, 
                                               $self->{'NUMBER_SECTIONS'});
@@ -1882,7 +1882,7 @@ sub _convert($$)
                  $root->{'extra'}->{'item_number'}) . '. '));
       } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
         
-        # FIXME convert_line and no array of contents?
+        # FIXME convert_line and no array of contents?
         $result = $self->_convert(
           {'contents' => 
              [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
@@ -1897,7 +1897,7 @@ sub _convert($$)
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($result);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
-    # open a multitable cell
+    # open a multitable cell
     } elsif ($root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'item'
              or $root->{'cmdname'} eq 'tab') {
       my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
@@ -2028,8 +2028,8 @@ sub _convert($$)
             push @{$self->{'context'}}, 'listoffloats';
             # FIXME should there be some indentation?
             my $tree = {'contents' => $caption->{'args'}->[0]->{'contents'}};
-            # the following does nothing since there are paragraphs within
-            # the shortcaption.
+            # the following does nothing since there are paragraphs within
+            # the shortcaption.
             #if ($caption->{'cmdname'} eq 'shortcaption') {
             #  $tree->{'type'} = 'frenchspacing';
             #}
@@ -2113,10 +2113,10 @@ sub _convert($$)
     #} els
     if ($unknown_command and !($root->{'extra'} 
                                and $root->{'extra'}->{'index_entry'})
-        # commands like def*x are not processed above, since only the def_line
-        # associated is processed. If they have no name and no category they 
-        # are not considered as index entries either so they have a specific
-        # condition
+        # commands like def*x are not processed above, since only the def_line
+        # associated is processed. If they have no name and no category they 
+        # are not considered as index entries either so they have a specific
+        # condition
         and !($def_commands{$root->{'cmdname'}} 
               and $root->{'cmdname'} =~ /x$/)) {
       warn "Unhandled $root->{'cmdname'}\n";
@@ -2124,7 +2124,7 @@ sub _convert($$)
     }
   }
 
-  # open 'type' constructs.
+  # open 'type' constructs.
   my $paragraph;
   if ($root->{'type'}) {
     if ($root->{'type'} eq 'paragraph') {
@@ -2220,9 +2220,9 @@ sub _convert($$)
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
           if ($menu_entry_internal_node) {
-            # check that after space collapse the info reader will find the
-            # node.  But always expand what the user provided for the 
-            # menu entry, to keep the user defined spacing.
+            # check that after space collapse the info reader will find the
+            # node.  But always expand what the user provided for the 
+            # menu entry, to keep the user defined spacing.
             my $saved_error_nrs = $self->{'error_nrs'};
             my $saved_error_errors_warnings = $self->{'errors_warnings'};
             $self->{'errors_warnings'} = [];
@@ -2238,8 +2238,8 @@ sub _convert($$)
             $self->{'error_nrs'} = $saved_error_nrs;
             $self->{'errors_warnings'} = $saved_error_errors_warnings;
             # trailing spaces for node in menu are not very predictable.
-            # therefore they are ignored, and they are ignored in both
-            # case, in case there where protected spaces at the end of a node.
+            # therefore they are ignored, and they are ignored in both
+            # case, in case there where protected spaces at the end of a node.
             $internal_node =~ s/\s*$//;
             $menu_node =~ s/\s*$//;
             if ($internal_node ne $menu_node) {
@@ -2270,7 +2270,7 @@ sub _convert($$)
     }
   }
 
-  # The processing of contents is done here.
+  # The processing of contents is done here.
   if ($root->{'contents'}) {
     my @contents = @{$root->{'contents'}};
     push @{$self->{'current_contents'}}, \@contents;
@@ -2419,7 +2419,7 @@ sub _convert($$)
         = $self->{'empty_lines_count'};
     }
   }
-  # close paragraphs and preformatted
+  # close paragraphs and preformatted
   if ($paragraph) {
     $result .= $self->_count_added($paragraph->{'container'},
                                    $paragraph->{'container'}->end());
@@ -2445,7 +2445,7 @@ sub _convert($$)
     delete $self->{'text_element_context'}->[-1]->{'counter'};
   }
 
-  # close commands
+  # close commands
   if ($root->{'cmdname'}) {
     if ($root->{'cmdname'} eq 'float') {
       if ($self->{'DEBUG'}) {
@@ -2521,11 +2521,11 @@ sub _convert($$)
           $self->{'empty_lines_count'} = 0;
         }
         if ($caption) {
-          # FIXME not sure it is right.
+          # FIXME not sure it is right.
           $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
           my $tree = $caption->{'args'}->[0];
-          # the frenchspacing is ignored since there are paragraphs within
-          # the shortcaption.
+          # the frenchspacing is ignored since there are paragraphs within
+          # the shortcaption.
           #if ($caption->{'cmdname'} eq 'shortcaption') {
           #  $tree = {'type' => 'frenchspacing',
           #           'contents' => [$caption->{'args'}->[0]]};
@@ -2543,7 +2543,7 @@ sub _convert($$)
     }
 
   
-    # close the contexts and register the cells
+    # close the contexts and register the cells
     if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}) {
       my $old_context = pop @{$self->{'context'}};
       die "Not a preformatted context: $old_context"
