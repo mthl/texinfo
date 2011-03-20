@@ -556,7 +556,8 @@ foreach my $format (@{$default_expanded_format}) {
     unless (grep {$_ eq $format} @{$parser_default_options->{'expanded_formats'}});
 }
 
-foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING') {
+foreach my $parser_settable_option ('TOP_NODE_UP', 'MAX_MACRO_CALL_NESTING',
+                                    'INLINE_INSERTCOPYING') {
   $parser_default_options->{$parser_settable_option} = get_conf($parser_settable_option) 
     if (defined(get_conf($parser_settable_option)));
 }

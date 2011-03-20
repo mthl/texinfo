@@ -64,6 +64,7 @@ sub dump($)
 sub end_line($)
 {
   my $line = shift;
+  $line->{'end_line_count'} = 0;
   return $line->_end_line();
 }
 

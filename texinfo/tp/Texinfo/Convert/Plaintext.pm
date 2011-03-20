@@ -1261,9 +1261,9 @@ sub _convert($$)
       }
       # special case for index entry not associated with a node but seen. 
       # this will be an index entry in @copying, in @insertcopying.
-      if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
-        $location->{'node'} = $self->{'node'};
-      }
+    }
+    if (!$root->{'extra'}->{'index_entry'}->{'node'} and $self->{'node'}) {
+      $location->{'node'} = $self->{'node'};
     }
     $self->{'index_entries_line_location'}->{$root} = $location;
     print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
@@ -2063,6 +2063,7 @@ sub _convert($$)
           $result .= $self->_count_added($formatter->{'container'},
                 $formatter->{'container'}->end_line());
         }
+        
         $self->{'empty_lines_count'} += $sp_nr;
         delete $self->{'text_element_context'}->[-1]->{'counter'};
       }

@@ -152,9 +152,19 @@ Text.
 ['printindex_index_entry_in_copying',
 '@copying
 
-@cindex Copying this document
+@findex Copying this document
 
-@printindex cp
+@defun fun arg
+@defunx xf arg
+Defun
+@end defun
+
+@ftable @asis
+@item ftable item
+@itemx xftable xitem
+@end ftable
+
+@printindex fn
 
 @end copying
 
@@ -171,6 +181,42 @@ Top.
 @chapter Chapter
 
 @insertcopying
+
+@printindex fn
+
+'],
+['printindex_index_entry_in_copying_no_insertcopying',
+'@copying
+
+@findex Copying this document
+
+@defun fun arg
+@defunx xf arg
+Defun
+@end defun
+
+@ftable @asis
+@item ftable item
+@itemx xftable xitem
+@end ftable
+
+@printindex fn
+
+@end copying
+
+@node Top
+
+Top.
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter
+
+
+@printindex fn
 
 '],
 ['index_entry_before_first_node',
