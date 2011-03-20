@@ -191,7 +191,7 @@ sub sectioning_structure($$)
   # holds the current number for all the levels.  It is not possible to use
   # something like the last child index, because of @unnumbered.
   my @command_numbers;
-  # keep track of the unnumbered
+  # keep track of the unnumbered
   my @command_unnumbered;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
@@ -252,7 +252,7 @@ sub sectioning_structure($$)
               if ($content->{'cmdname'} eq 'part') {
                 $new_upper_element = 1;
                 if ($level < $up->{'level'}) {
-                  # FIXME warn previous element too low
+                  # FIXME warn previous element too low
                 }
               } else {
                 $self->line_error(sprintf($self->__(
@@ -306,7 +306,7 @@ sub sectioning_structure($$)
           $content->{'number'} = $command_numbers[$number_top_level];
           for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
             $content->{'number'} .= ".$command_numbers[$i]";
-            # If there is an unnumbered above, then no number is added.
+            # If there is an unnumbered above, then no number is added.
             if ($command_unnumbered[$i]) {
               delete $content->{'number'};
               last;
@@ -499,12 +499,12 @@ sub nodes_tree ($)
       }
     }
     # A bit of explanation about !$node->{'node_up'}->{'extra'}->{'normalized'}:
-    # it may happen (rarely) that the node_up has only a manual entry
-    # and therefore !$node->{'node_up'}->{'extra'}->{'normalized'}
-    # In that case there is always a {'manual_content'} and the condition 
-    # !$node->{'node_up'}->{'extra'}->{'manual_content'} is never set.
+    # it may happen (rarely) that the node_up has only a manual entry
+    # and therefore !$node->{'node_up'}->{'extra'}->{'normalized'}
+    # In that case there is always a {'manual_content'} and the condition 
+    # !$node->{'node_up'}->{'extra'}->{'manual_content'} is never set.
     # The node_up should always be different from the menu_up, therefore
-    # if in a menu, the second condition/error message applies.
+    # if in a menu, the second condition/error message applies.
     if ($node->{'node_up'} and (!$node->{'menu_up_hash'}
          or !$node->{'node_up'}->{'extra'}->{'normalized'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {

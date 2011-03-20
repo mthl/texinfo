@@ -130,8 +130,8 @@ sub output($)
     $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'}, 
                                             $self->{'perl_encoding'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
-                                    $self->{'OUTFILE'}));
+      $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                    $self->{'OUTFILE'}, $!));
       return undef;
     }
     #$self->{'fh'} = $fh;
@@ -178,8 +178,8 @@ sub output($)
         if ($out_file_nr == 1) {
           unless (rename ($self->{'OUTFILE'}, 
                           $self->{'OUTFILE'}.'-'.$out_file_nr)) {
-            $self->document_error(sprintf($self->__("Rename %s failed: $!"), 
-                                         $self->{'OUTFILE'}));
+            $self->document_error(sprintf($self->__("Rename %s failed: %s"), 
+                                         $self->{'OUTFILE'}, $!));
           }
           push @{$self->{'opened_files'}}, 
                    $self->{'OUTFILE'}.'-'.$out_file_nr;
@@ -193,8 +193,8 @@ sub output($)
                                $self->{'perl_encoding'});
         if (!$fh) {
            $self->document_error(sprintf(
-                  $self->__("Could not open %s for writing: $!"),
-                  $self->{'OUTFILE'}.'-'.$out_file_nr));
+                  $self->__("Could not open %s for writing: %s"),
+                  $self->{'OUTFILE'}.'-'.$out_file_nr, $!));
            return undef;
         }
         #$self->{'fh'} = $fh;
@@ -213,8 +213,8 @@ sub output($)
                                            $self->{'perl_encoding'});
     if (!$fh) {
       $self->document_error(sprintf(
-            $self->__("Could not open %s for writing: $!"),
-            $self->{'OUTFILE'}));
+            $self->__("Could not open %s for writing: %s"),
+            $self->{'OUTFILE'}, $!));
       return undef;
     }
     $tag_text = $header;

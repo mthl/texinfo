@@ -22,7 +22,7 @@ package Texinfo::Common;
 
 use strict;
 
-# for unicode/layer support in binmode
+# for unicode/layer support in binmode
 use 5.006;
 
 # to determine the null file
@@ -559,7 +559,7 @@ sub open_out ($$;$)
   if (defined($encoding)) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
-    } else { # FIXME also right for shiftijs or similar encodings?
+    } else { # FIXME also right for shiftijs or similar encodings?
       binmode($filehandle, ':bytes');
     }
     binmode($filehandle, ":encoding($encoding)");

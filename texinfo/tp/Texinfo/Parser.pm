@@ -955,8 +955,8 @@ sub _parse_macro_command_line($$$$$;$)
         { 'type' => 'macro_arg', 'text' => $formal_arg, 
           'parent' => $macro};
       if ($formal_arg !~ /^[\w\-]+$/) {
-        $self->line_error(sprintf($self->__("Bad or empty \@$command formal argument: %s"),
-                                           $formal_arg), $line_nr);
+        $self->line_error(sprintf($self->__("Bad or empty \@%s formal argument: %s"),
+                                           $command, $formal_arg), $line_nr);
         $macro->{'extra'}->{'invalid_syntax'} = 1;
       }
       $macro->{'extra'}->{'args_index'}->{$formal_arg} = $index;

@@ -523,8 +523,8 @@ sub output($$)
   my $fh = $self->Texinfo::Common::open_out ($outfile,
                                              $self->{'perl_encoding'});
   if (!$fh) {
-    $self->document_error(sprintf($self->__("Could not open %s for writing: $!"),
-                                  $outfile));
+    $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
+                                  $outfile, $!));
     return undef;
   }
   #$self->{'fh'} = $fh;

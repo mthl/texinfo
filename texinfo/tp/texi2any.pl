@@ -27,7 +27,7 @@ use strict;
 
 # to determine the path separator and null file
 use Config;
-# for dirname.
+# for dirname.
 use File::Basename;
 #use Cwd;
 use Getopt::Long qw(GetOptions);
@@ -85,7 +85,7 @@ $real_command_name =~ s/\.pl$//;
 my $messages_textdomain = '@PACKAGE@';
 $messages_textdomain = 'texinfo' if ($messages_textdomain eq '@'.'PACKAGE@');
 my $strings_textdomain = '@PACKAGE@' . '_document';
-# FIXME use texinfo
+# FIXME use texinfo
 $strings_textdomain = 'texi2html_document' if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
 sub __($) {
@@ -99,9 +99,9 @@ sub __p($$) {
   return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
 }
 
-# FIXME use something else than srcdir?
+# FIXME use something else than srcdir?
 my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : dirname $0;
-# FIXME
+# FIXME
 $srcdir = "$srcdir/../texi2html";
 if ($0 =~ /\.pl$/) {
   unshift @INC, "$srcdir/lib/libintl-perl/lib";
@@ -153,13 +153,13 @@ if ($0 =~ /\.pl$/) {
 }
 require Unicode::EastAsianWidth;
 
-# This is done at runtime because the modules above are also found at runtime.
+# This is done at runtime because the modules above are also found at runtime.
 require Texinfo::Parser;
 require Texinfo::Structuring;
 require Texinfo::Convert::Info;
 require DebugTexinfo::DebugCount;
 
-# determine configuration directories.
+# determine configuration directories.
 
 my $conf_file_name = 'Config' ;
 my $texinfo_htmlxref = 'htmlxref.cnf';
@@ -186,7 +186,7 @@ foreach my $texinfo_config_dir (@language_config_dirs) {
   push @program_init_dirs, "${texinfo_config_dir}/init";
 }
 
-# Namespace for configuration
+# Namespace for configuration
 {
 package Texinfo::Config;
 
@@ -251,9 +251,9 @@ foreach my $var (@document_settable_at_commands, @document_global_at_commands,
   $valid_options{$var} = 1;
 }
 
-# passed from main program
+# passed from main program
 my $cmdline_options;
-# used in main program
+# used in main program
 our $options = {};
 
 sub _load_config ($) {
@@ -294,7 +294,7 @@ sub set_from_cmdline ($$) {
   return 1;
 }
 
-# FIXME also get @-command results?
+# FIXME also get @-command results?
 sub get_conf($) {
   my $var = shift;
   if (exists($cmdline_options->{$var})) {
@@ -307,7 +307,7 @@ sub get_conf($) {
 }
 
 }
-# back in main program namespace
+# back in main program namespace
 
 # file:        file name to locate. It can be a file path.
 # directories: a reference on a array containing a list of directories to
@@ -358,9 +358,9 @@ my @input_file_suffixes = ('.txi','.texinfo','.texi','.txinfo','');
 my @texi2dvi_args = ();
 
 my $format = 'info';
-# this is the format associated with the output format, which is replaced
-# when the output format changes.  It may also be removed if there is the
-# corresponding --no-ifformat.
+# this is the format associated with the output format, which is replaced
+# when the output format changes.  It may also be removed if there is the
+# corresponding --no-ifformat.
 my $default_expanded_format = [ $format ];
 my @conf_dirs = ();
 my @include_dirs = ();
@@ -369,12 +369,12 @@ my @css_files = ();
 my @css_refs = ();
 
 # defaults for options relevant in the main program, and not undef. 
-# Others are set in the converters.
-# Other relevant options (undef) are NO_WARN FORCE OUTFILE
+# Others are set in the converters.
+# Other relevant options (undef) are NO_WARN FORCE OUTFILE
 
 my $converter_default_options = {'ERROR_LIMIT' => 100};
 
-# options for all the files
+# options for all the files
 my $parser_default_options = {'expanded_formats' => [], 'values' => {},
                               'gettext' => \&__};
 
@@ -460,7 +460,7 @@ my $result_options = Getopt::Long::GetOptions (
       $parser_default_options->{'novalidate'} = $_[1];
     },
  'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
- # FIXME pass to parser? What could it mean in parser?
+ # FIXME pass to parser? What could it mean in parser?
  'verbose|v' => sub {set_from_cmdline('VERBOSE', $_[1]); 
                      push @texi2dvi_args, '--verbose'; },
  'document-language=s' => sub {
@@ -490,11 +490,11 @@ my $result_options = Getopt::Long::GetOptions (
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     # special case, this is a pseudo format for debug
+     # special case, this is a pseudo format for debug
      if ($var eq 'DEBUGCOUNT') {
        $format = 'debugcount';
      } else {
-     # this is very wrong, but a way to avoid a spurious warning.
+     # this is very wrong, but a way to avoid a spurious warning.
        no warnings 'once';
        if (set_from_cmdline ($var, $value) 
            and exists($Texinfo::Parser::default_configuration{$var})) {
@@ -571,8 +571,8 @@ my %formats_table = (
 
 if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
   document_warn (sprintf(__('Ignoring splitting for format %s'), $format));
-  # FIXME see if the following is required.  Should not be
-  # since defaults are per format.
+  # FIXME see if the following is required.  Should not be
+  # since defaults are per format.
   #set_from_cmdline('SPLIT', ''); 
   #set_from_cmdline('FRAMES', 0); 
 }
@@ -642,7 +642,7 @@ while(@input_files)
   }
 
   if (defined(get_conf('DUMP_TREE'))) {
-    # this is very wrong, but a way to avoid a spurious warning.
+    # this is very wrong, but a way to avoid a spurious warning.
     no warnings 'once';
     local $Data::Dumper::Purity = 1;
     no warnings 'once';
@@ -672,7 +672,7 @@ while(@input_files)
     next;
   }
   Texinfo::Structuring::associate_internal_references($parser);
-  # every format needs the sectioning structure
+  # every format needs the sectioning structure
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
   # this can be done for every format, since information is already gathered
   my $floats = $parser->floats_information();
