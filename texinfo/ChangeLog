@@ -1,11 +1,17 @@
+2011-03-22  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs_template,
+	* util/gendocs_template_min: 2011, boilerplate updates.
+
 2011-03-22  Patrice Dumas  <pertusus@free.fr>
 
 	* configure.ac, lib/: ship Text::Unidecode to have more
-	reproducable results and less conditionals.
+	reproduceable results and fewer conditionals.
 
 2011-03-20  Patrice Dumas  <pertusus@free.fr>
 
-	* po/POTFILES.in po_document/POTFILES.in: add files in tp/.
+	* po/POTFILES.in,
+	* po_document/POTFILES.in: add files in tp/.
 
 2011-03-18  Karl Berry  <karl@gnu.org>
 
