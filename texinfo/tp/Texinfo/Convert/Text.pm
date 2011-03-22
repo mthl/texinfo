@@ -563,16 +563,17 @@ foreach my $type ('empty_line_after_command', 'preamble',
   $ignored_types{$type} = 1;
 }
 
-# find the innermost accent and the correspponding text
-sub _find_innermost_accent($)
+# find the innermost accent and the correspponding text contents
+# FIXME This is not output dependent, move to Texinfo::Parser?
+sub _find_innermost_accent_contents($;$)
 {
   my $current = shift;
+  my $encoding = shift;
   my @accent_commands = ();
-  my $text = '';
-  my $done = 0;
   my $debug = 0;
  ACCENT:
   while (1) {
+    # the following can happen if called with a bad tree
     if (!$current->{'args'} or !$current->{'cmdname'} 
         or !$accent_commands{$current->{'cmdname'}}) {
       print STDERR "BUG: Not an accent command in accent\n";
@@ -584,7 +585,7 @@ sub _find_innermost_accent($)
     my $arg = $current->{'args'}->[0];
     # a construct like @'e without content
     if (defined($arg->{'text'})) {
-      return ($arg->{'text'}, $current, \@accent_commands);
+      return ([$arg], $current, \@accent_commands);
     }
     if (!$arg->{'contents'}) {
       print STDERR "BUG: No content in accent command\n";
@@ -593,29 +594,35 @@ sub _find_innermost_accent($)
       last;
     }
     # inside the braces of an accent
+    my $text_contents = [];
     foreach my $content (@{$arg->{'contents'}}) {
       if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
          and !($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
                                   or $content->{'cmdname'} eq 'comment'))) {
-        if (defined($content->{'text'})) {
-          $text .= $content->{'text'};
-          print STDERR "TEXT: $text\n" if ($debug);
-        } elsif ($content->{'cmdname'} and 
-               defined($text_no_brace_commands{$content->{'cmdname'}})) {
-          $text .= $text_no_brace_commands{$content->{'cmdname'}};
-          print STDERR "NO BRACE COMMAND: $text\n" if ($debug);
-        } elsif ($content->{'cmdname'} and $text_brace_no_arg_commands{$content->{'cmdname'}}) {
-          $text .= $text_brace_no_arg_commands{$content->{'cmdname'}};
-          print STDERR "BRACE NO ARG COMMAND: $text\n" if ($debug);
-        } else {
+        if ($content->{'cmdname'} and $accent_commands{$content->{'cmdname'}}) {
           $current = $content;
           next ACCENT;
+        } else {
+          push @$text_contents, $content;
         }
       }
     }
-    last;
+    # we go here if there was no nested accent
+    return ($text_contents, $current, \@accent_commands);
   }
-  return ($text, $current, \@accent_commands);
+}
+
+# find the innermost accent and format the correspponding text contents
+sub _find_innermost_accent($;$)
+{
+  my $current = shift;
+  my $encoding = shift;
+  my ($contents, $innermost_accent, $stack) 
+      = _find_innermost_accent_contents($current);
+  my $options = {};
+  $options = {'enabled_encoding' => $encoding} if (defined($encoding));
+  return (convert({'contents' => $contents}, $options), 
+                                             $innermost_accent, $stack);
 }
 
 # return the 8 bit, if it exists, and the unicode codepoint
@@ -647,7 +654,8 @@ sub eight_bit_accents($$$)
   my $debug;
   #$debug = 1;
 
-  my ($text, $innermost_accent, $stack) = _find_innermost_accent($current);
+  my ($text, $innermost_accent, $stack) = _find_innermost_accent($current, 
+                                                                 $encoding);
 
   print STDERR "INNERMOST: $innermost_accent->{'cmdname'}($text)\n"
     if ($debug);
@@ -773,7 +781,8 @@ sub unicode_accents ($$)
 {
   my $current = shift;
   my $format_accents = shift;
-  my ($result, $innermost_accent, $stack) = _find_innermost_accent($current);
+  my ($result, $innermost_accent, $stack) = _find_innermost_accent($current,
+          'utf-8');
 
   foreach my $accent_command (reverse(@$stack)) {
     $result = Texinfo::Convert::Unicode::unicode_accent($result, 

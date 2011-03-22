@@ -1,7 +1,7 @@
 use strict;
 
 use Test::More;
-BEGIN { plan tests => 21 };
+BEGIN { plan tests => 23 };
 
 use lib '../texi2html/lib/Unicode-EastAsianWidth/lib/';
 use lib '../texi2html/lib/libintl-perl/lib/';
@@ -34,7 +34,9 @@ foreach my $test (['@~e', 'simple', 'e|~'],
           ['@~{@c comment
 e}', 'comment', 'e|~'],
           ['@~{@@}','no_brace_command', '@|~'],
-          ['@~{@TeX{}}','no_brace_command', 'TeX|~'],
+          ['@~{@TeX{}}','brace_no_arg_command', 'TeX|~'],
+          ['@~{@TeX{}@^{a@dotless{i}}}','text_and_accent', 'i|~|^|dotless'],
+          ['@~{@^{a}@ringaccent b}}','two_accents', 'a|~|^'],
         ) { 
   test_accent_stack($test);
 }
