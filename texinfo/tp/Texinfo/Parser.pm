@@ -1672,7 +1672,7 @@ sub _parse_node_manual($)
   if (@contents) {
     $result->{'node_content'} = \@contents;
     $result->{'normalized'} =
-      Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@contents});
+      Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@contents});
   }
   return $result;
 }
@@ -1684,7 +1684,7 @@ sub _parse_float_type($)
     my @type_contents = @{$current->{'args'}->[0]->{'contents'}};
     _trim_spaces_comment_from_content(\@type_contents);
     if (@type_contents) {
-      my $normalized = Texinfo::Convert::NodeNameNormalization::convert({'contents' => \@type_contents});
+      my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@type_contents});
       if ($normalized =~ /[^-]/) {
         $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
         $current->{'extra'}->{'type'}->{'content'} = \@type_contents;

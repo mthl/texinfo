@@ -1,5 +1,5 @@
 # Process this file with autoconf to produce a configure script.
-# $Id: configure.ac,v 1.99 2010-07-25 23:17:48 pertusus Exp $
+# $Id: configure.ac,v 1.100 2011-03-22 00:36:56 pertusus Exp $
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -253,19 +253,17 @@ AC_ARG_WITH([external-Unicode-EastAsianWidth],
 
 AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 
-USE_UNIDECODE=unknown
-AC_ARG_WITH([unidecode],
-    AC_HELP_STRING([--with-unidecode],
-           [use Text::Unidecode (default: runtime detection)]),
-    [if test $withval = 'no'; then
-         USE_UNIDECODE=0
-     else
-         USE_UNIDECODE=1
-     fi],
-    [])
+USE_EXTERNAL_UNIDECODE=no
+AC_ARG_WITH([external-Text-Unidecode],
+    AC_HELP_STRING([--with-external-Text-Unidecode],
+           [use external Text::Unidecode if found (default: no)]),
+   [if test $withval = 'yes'; then
+      USE_EXTERNAL_UNIDECODE=yes
+   fi]
+)
 
 AC_SUBST([USE_UNICODE])
-AC_SUBST([USE_UNIDECODE])
+AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
 t2h_try_translations=
 AC_ARG_ENABLE([translations],

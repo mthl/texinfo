@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texi2html 1.83\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-03-20 19:01+0100\n"
+"POT-Creation-Date: 2011-03-21 21:51+0100\n"
 "PO-Revision-Date: 2001-01-01\n"
 "Last-Translator: Unknown\n"
 "Language-Team: Unknown\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=us-ascii\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:6273 texi2html/texi2html.pl:6277
-#: texi2html/texi2html.pl:6281
+#: texi2html/texi2html.pl:6267 texi2html/texi2html.pl:6271
+#: texi2html/texi2html.pl:6275
 msgid "About This Document"
 msgstr "No translation available!"
 
-#: texi2html/texi2html.pl:6274 texi2html/texi2html.pl:6278
-#: texi2html/texi2html.pl:6282 texi2html/examples/roff.init:989
+#: texi2html/texi2html.pl:6268 texi2html/texi2html.pl:6272
+#: texi2html/texi2html.pl:6276 texi2html/examples/roff.init:989
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
 
-#: texi2html/texi2html.pl:6275 texi2html/texi2html.pl:6279
-#: texi2html/texi2html.pl:6283
+#: texi2html/texi2html.pl:6269 texi2html/texi2html.pl:6273
+#: texi2html/texi2html.pl:6277
 msgid "Short Table of Contents"
 msgstr "Korte inhoudsopgave"
 
-#: texi2html/texi2html.pl:6276 texi2html/texi2html.pl:6280
-#: texi2html/texi2html.pl:6284 texi2html/texi2html.init:6745
+#: texi2html/texi2html.pl:6270 texi2html/texi2html.pl:6274
+#: texi2html/texi2html.pl:6278 texi2html/texi2html.init:6745
 #: texi2html/formats/html.init:2416
 msgid "Footnotes"
 msgstr "No translation available!"
 
-#: texi2html/texi2html.pl:13008 tp/Texinfo/Convert/Plaintext.pm:1670
+#: texi2html/texi2html.pl:13002 tp/Texinfo/Convert/Plaintext.pm:1660
 #, perl-brace-format
 msgid "@{No value for `{value}'@}"
 msgstr ""
@@ -398,7 +398,7 @@ msgid "{acronym_like} ({explanation})"
 msgstr ""
 
 #: texi2html/texi2html.init:7028 texi2html/formats/docbook.init:1399
-#: tp/Texinfo/Convert/Plaintext.pm:1729
+#: tp/Texinfo/Convert/Plaintext.pm:1719
 #, perl-brace-format
 msgid "@b{{quotation_arg}:} "
 msgstr ""
@@ -594,7 +594,7 @@ msgid "The node you are looking for is at {href}."
 msgstr ""
 
 #: texi2html/formats/html.init:2644 texi2html/formats/info.init:2808
-#: tp/Texinfo/Convert/Plaintext.pm:2540
+#: tp/Texinfo/Convert/Plaintext.pm:2530
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr ""
@@ -628,102 +628,102 @@ msgstr ""
 msgid "Menu:"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:684
+#: tp/Texinfo/Convert/Plaintext.pm:674
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:688
+#: tp/Texinfo/Convert/Plaintext.pm:678
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1429
+#: tp/Texinfo/Convert/Plaintext.pm:1419
 #, perl-brace-format
 msgid "{name} @indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1432
+#: tp/Texinfo/Convert/Plaintext.pm:1422
 #, perl-brace-format
 msgid "@indicateurl{{email}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1454
+#: tp/Texinfo/Convert/Plaintext.pm:1444
 #, perl-brace-format
 msgid "{text} ({url})"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1459
+#: tp/Texinfo/Convert/Plaintext.pm:1449
 #, perl-brace-format
 msgid "@code{{url}}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1539
+#: tp/Texinfo/Convert/Plaintext.pm:1529
 #, perl-brace-format
 msgid "{float_type} {float_number}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1543
+#: tp/Texinfo/Convert/Plaintext.pm:1533
 #, perl-brace-format
 msgid "{float_type}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1547
+#: tp/Texinfo/Convert/Plaintext.pm:1537
 #, perl-brace-format
 msgid "{float_number}"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1637
+#: tp/Texinfo/Convert/Plaintext.pm:1627
 #, perl-brace-format
 msgid "{abbr_or_acronym} ({explanation})"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1986
+#: tp/Texinfo/Convert/Plaintext.pm:1976
 #, perl-brace-format
 msgid "* {float_type} {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1991
+#: tp/Texinfo/Convert/Plaintext.pm:1981
 #, perl-brace-format
 msgid "* {float_type}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1999
+#: tp/Texinfo/Convert/Plaintext.pm:1989
 #, perl-brace-format
 msgid "*  {float_number}: {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2003
+#: tp/Texinfo/Convert/Plaintext.pm:1993
 #, perl-brace-format
 msgid "* : {float_label}."
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2488
+#: tp/Texinfo/Convert/Plaintext.pm:2478
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2492
+#: tp/Texinfo/Convert/Plaintext.pm:2482
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2497
+#: tp/Texinfo/Convert/Plaintext.pm:2487
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2501
+#: tp/Texinfo/Convert/Plaintext.pm:2491
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2507
+#: tp/Texinfo/Convert/Plaintext.pm:2497
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2510
+#: tp/Texinfo/Convert/Plaintext.pm:2500
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr ""

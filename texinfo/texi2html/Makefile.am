@@ -268,6 +268,11 @@ install-data-local: i18n
 	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
 	$(INSTALL_DATA) $(srcdir)/lib/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
 	 $(DESTDIR)$(pkgdatadir)/lib/Unicode-EastAsianWidth/lib/Unicode
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
+	$(INSTALL_DATA) $(srcdir)/lib/Text-Unidecode/lib/Text/Unidecode.pm \
+	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text
+	$(INSTALL_DATA) $(srcdir)/lib/Text-Unidecode/lib/Text/Unidecode/*.pm \
+	  $(DESTDIR)$(pkgdatadir)/lib/Text-Unidecode/lib/Text/Unidecode
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/ $(DESTDIR)$(pkgdatadir)/i18n

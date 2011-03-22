@@ -443,7 +443,7 @@ sub converter(;$)
 
   %{$converter->{'ignored_types'}} = %ignored_types;
   %{$converter->{'ignored_commands'}} = %ignored_commands;
-  # this is dynamic because raw formats may either be full comma,nds if
+  # this is dynamic because raw formats may either be full commands if
   # isolated, or simple text if in a paragraph
   %{$converter->{'format_context_commands'}} = %default_format_context_commands;
   %{$converter->{'preformatted_context_commands'}} 
@@ -535,16 +535,6 @@ sub output($$)
   } else {
     return undef;
   }
-}
-
-sub _normalise_space($)
-{
-  return undef unless (defined ($_[0]));
-  my $text = shift;
-  $text =~ s/\s+/ /go;
-  $text =~ s/ $//;
-  $text =~ s/^ //;
-  return $text;
 }
 
 sub _process_text($$$)
@@ -792,7 +782,7 @@ sub _footnotes($;$)
       my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                                      {'text' => '-Footnotes'}];
       my $normalized 
-        = Texinfo::Convert::NodeNameNormalization::convert({'contents' => $node_contents});
+        = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_contents});
       my $footnotes_node = {
         'cmdname' => 'node',
         'node_up' => $element->{'extra'}->{'node'},
@@ -809,7 +799,7 @@ sub _footnotes($;$)
         my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                     {'text' => "-Footnote-$footnote->{'number'}"}];
         my $normalized 
-          = Texinfo::Convert::NodeNameNormalization::convert({'contents' => $node_contents});
+          = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_contents});
         $self->_add_location({'cmdname' => 'anchor',
                         'extra' => {'node_content' => $node_contents,
                                     'normalized' => $normalized}

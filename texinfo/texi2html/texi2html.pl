@@ -90,7 +90,7 @@ if ($0 =~ /\.pl$/)
 }
 
 # CVS version:
-# $Id: texi2html.pl,v 1.433 2011-02-27 15:53:00 pertusus Exp $
+# $Id: texi2html.pl,v 1.434 2011-03-22 00:36:56 pertusus Exp $
 
 # Homepage:
 my $T2H_HOMEPAGE = "http://www.gnu.org/software/texinfo/";
@@ -4302,34 +4302,28 @@ if (get_conf('USE_UNICODE'))
     require Unicode::EastAsianWidth;
 }
 
-# no user provided USE_UNIDECODE, use configure provided
-if (!defined(get_conf('USE_UNIDECODE')))
+if ($0 =~ /\.pl$/)
 {
-    Texi2HTML::Config::set_default('USE_UNIDECODE', '@USE_UNIDECODE@');
+   unshift @INC, "$T2H_HOME/lib/Text-Unidecode/lib";
 }
+elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes')
+{
+   unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+} 
+else 
+{
+   eval {
+       require Text::Unidecode;
+   };
+   if ($@)
+   {
+       unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+   }
+}
+require Text::Unidecode;
+Text::Unidecode->import('unidecode');
 
-# no user provided nor configured, run time test
-if (get_conf('USE_UNIDECODE') eq 'unknown' or get_conf('USE_UNIDECODE') eq '@' .'USE_UNIDECODE@')
-{
-    eval {
-        require Text::Unidecode;
-        Text::Unidecode->import('unidecode');
-    };
-    if ($@)
-    {
-        Texi2HTML::Config::set_default('USE_UNIDECODE', 0);
-    }
-    else
-    {
-        Texi2HTML::Config::set_default('USE_UNIDECODE', 1);
-    }
-}
-
-if (get_conf('USE_UNIDECODE'))
-{
-    require Text::Unidecode;
-    Text::Unidecode->import('unidecode');
-}
+Texi2HTML::Config::set_default('USE_UNIDECODE', 1);
 
 print STDERR "# USE_UNICODE ".get_conf('USE_UNICODE').", USE_UNIDECODE ".get_conf('USE_UNIDECODE')." \n" 
   if ($T2H_VERBOSE);

@@ -153,6 +153,18 @@ if ($0 =~ /\.pl$/) {
 }
 require Unicode::EastAsianWidth;
 
+if ($0 =~ /\.pl$/) {
+  unshift @INC, "$srcdir/lib/Text-Unidecode/lib";
+} elsif ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
+  unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+} else {
+  eval { require Text::Unidecode; };
+  if ($@) {
+    unshift @INC, "$pkgdatadir/lib/Text-Unidecode/lib";
+  }
+}
+require Text::Unidecode;
+
 # This is done at runtime because the modules above are also found at runtime.
 require Texinfo::Parser;
 require Texinfo::Structuring;

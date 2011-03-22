@@ -26,6 +26,7 @@ use 5.00405;
 use strict;
 
 use Unicode::Normalize;
+use Text::Unidecode;
 # for the accents definition
 use Texinfo::Common;
 # reuse some conversion hashes
@@ -46,6 +47,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  normalize_node
+  transliterate_texinfo
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -82,6 +85,34 @@ foreach my $type ('empty_line_after_command',
   $ignored_types{$type} = 1;
 }
 
+
+sub normalize_node ($)
+{
+  my $root = shift;
+  my $result = convert($root);
+  $result = Unicode::Normalize::NFC($result);
+  $result = _unicode_to_protected($result);
+  $result = 'Top' if ($result =~ /^Top$/i);
+  return $result;
+}
+
+sub transliterate_texinfo ($;$)
+{
+  my $root = shift;
+  my $no_unidecode = shift;
+  my $result = convert($root);
+  $result = Unicode::Normalize::NFC($result);
+  $result = _unicode_to_protected(
+                _unicode_to_transliterate($result, $no_unidecode));
+  return $result;
+}
+
+sub convert($)
+{
+  my $root = shift;
+  my $result = _convert($root);
+}
+
 sub _normalise_space($)
 {
   return undef unless (defined ($_[0]));
@@ -90,16 +121,6 @@ sub _normalise_space($)
   $text =~ s/ $//;
   $text =~ s/^ //;
   return $text;
-}
-
-sub convert($)
-{
-  my $root = shift;
-  my $result = _convert($root);
-  $result = Unicode::Normalize::NFC($result);
-  $result = _unicode_to_protected($result);
-  $result = 'Top' if ($result =~ /^Top$/i);
-  return $result;
 }
 
 sub _unicode_to_protected($)
@@ -130,6 +151,53 @@ sub _unicode_to_protected($)
   }
   return $result;
 }
+
+sub _unicode_to_transliterate($;$)
+{
+  my $text = shift;
+  my $no_unidecode = shift;
+  if (chomp($text)) {
+     print STDERR "Strange: end of line to transliterate: $text\n";
+  }
+  my $result = '';
+  while ($text ne '') {
+    if ($text =~ s/^([A-Za-z0-9 ]+)//o) {
+      $result .= $1;
+    } elsif ($text =~ s/^(.)//o) {
+      my $char = $1;
+      if (exists($Texinfo::Convert::Unicode::unicode_simple_character_map{$char})) {
+        $result .= $char;
+      } elsif (ord($char) <= hex(0xFFFF)
+               and exists($Texinfo::Convert::Unicode::transliterate_map{uc(sprintf("%04x",ord($char)))})) {
+        $result .= $Texinfo::Convert::Unicode::transliterate_map{uc(sprintf("%04x",ord($char)))};
+      } elsif (ord($char) <= hex(0xFFFF) 
+               and exists($Texinfo::Convert::Unicode::unicode_diacritics{uc(sprintf("%04x",ord($char)))})) {
+        $result .= '';
+      # in this case, we want to avoid calling unidecode, as we are sure
+      # that there is no useful transliteration of the unicode character
+      # instead we want to keep it as is.
+      # This is the case, for example, for @exclamdown, is corresponds
+      # with x00a1, but unidecode transliterates it to a !, we want
+      # to avoid that and keep x00a1.
+      } elsif (ord($char) <= hex(0xFFFF) 
+               and exists($Texinfo::Convert::Unicode::no_transliterate_map{uc(sprintf("%04x",ord($char)))})) {
+        $result .= $char;
+      } else {
+        if ($no_unidecode) {
+          $result .= $char;
+        } else {
+          $result .= unidecode($char);
+        }
+      }
+    } else {
+      print STDERR "Bug: unknown character in cross ref transliteration (likely in infinite loop)\n";
+      print STDERR "Text: !!$text!!\n";
+      sleep 1;
+    }
+  }
+  return $result;
+}
+
 
 
 sub _convert($;$);
