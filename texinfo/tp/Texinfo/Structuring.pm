@@ -594,6 +594,42 @@ sub split_by_section($)
   return $elements;
 }
 
+# associate elements to pages according to the splitting specification.
+sub split_pages ($$)
+{
+  my $elements = shift;
+  my $split = shift;
+
+  return undef if (!$elements or !$split);
+
+  my $split_level;
+  if ($split eq 'chapter') {
+    $split_level = 1;
+  } elsif ($split eq 'section') {
+    $split_level = 2;
+  }
+
+  my @pages = ();
+
+  foreach my $element (@$elements) {
+    my $level;
+    if ($element->{'extra'}->{'section'}) {
+      $level = $element->{'extra'}->{'section'}->{'level'};
+    } elsif ($element->{'extra'}->{'node'} 
+             and $element->{'extra'}->{'node'}->{'associated_section'}) {
+      $level = $element->{'extra'}->{'node'}->{'associated_section'}->{'level'};
+    }
+    if ($split eq 'node' or (defined($level) and $split_level <= $level)
+        or !@pages) {
+      push @pages, {};
+    }
+    push @{$pages[-1]->{'contents'}}, $element;
+    $element->{'parent'} = $pages[-1];
+  }
+  return \@pages;
+}
+
+# this is used in the test suite, but not likely to be useful in real life.
 sub _unsplit($)
 {
   my $root = shift;

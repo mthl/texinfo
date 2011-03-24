@@ -47,7 +47,6 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 $VERSION = '0.01';
 
 my $STDIN_DOCU_NAME = 'stdin';
-my $INFO_EXTENSION = 'info';
 
 sub output($)
 {
@@ -56,58 +55,13 @@ sub output($)
 
   my $result;
 
-  # determine input file base name
-  my $input_basename;
-  if (defined($self->{'info'}->{'input_file_name'})) {
-    $input_basename = $self->{'info'}->{'input_file_name'};
-  } else {
-    # This could happen if called on a piece of texinfo
-    $input_basename = '';
-  }
-  $input_basename =~ s/^.*\///;
-  $input_basename = $STDIN_DOCU_NAME if ($input_basename eq '-');
-  $self->{'input_basename'} = $input_basename;
+  $self->_set_outfile();
+  $self->{'input_basename'} = $STDIN_DOCU_NAME if ($self->{'input_basename'} eq '-');
 
-  my $setfilename;
-  $setfilename = $self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}
-    if ($self->{'extra'} and $self->{'extra'}->{'setfilename'}
-        and $self->{'extra'}->{'setfilename'}->{'extra'}
-        and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
-
-  # determine output file and output file name
-  if (!defined($self->{'OUTFILE'})) {
-    if (defined($setfilename)) {
-      $self->{'OUTFILE'} = $setfilename;
-    } elsif ($input_basename ne '') {
-      $self->{'OUTFILE'} = $input_basename;
-      $self->{'OUTFILE'} =~ s/\.te?x(i|info)?$//;
-      $self->{'OUTFILE'} .= '.'.$INFO_EXTENSION;
-    } else {
-      $self->{'OUTFILE'} = '';
-    }
-    if (defined($self->{'SUBDIR'}) and $self->{'OUTFILE'} ne '') {
-      $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
-    }
-  } else {
-    # no splitting when writing to the null device or to stdout
-    if ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}} 
-         or $self->{'OUTFILE'} eq '-') {
-      $self->{'SPLIT_SIZE'} = undef;
-    }
-  }
-
-  my $output_basename = $self->{'OUTFILE'};
-  # this is a case that should happen rarely: one wants to get 
-  # the result in a string and there is a setfilename.
-  if ($self->{'OUTFILE'} eq '' and defined($setfilename)) {
-    $output_basename = $setfilename;
-  }
-  $output_basename =~ s/^.*\///;
-  $self->{'output_filename'} = $output_basename;
-  my $output_dir = $self->{'OUTFILE'};
-  $output_dir =~ s|[^/]*$||;
-  if ($output_dir ne '') {
-    $self->{'output_dir'} = $output_dir;
+  # no splitting when writing to the null device or to stdout
+  if ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}} 
+       or $self->{'OUTFILE'} eq '-') {
+    $self->{'SPLIT_SIZE'} = undef;
   }
 
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,

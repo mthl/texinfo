@@ -236,6 +236,10 @@ my %defaults = (
 # this default is for Info, but also when doing Texinfo fragments.  So this 
 # has to be explicitly set to 0 when doing real plaintext.
   'SHOW_MENU'            => 1,
+# not used for plaintext, since default is '-' for plaintext.
+  'EXTENSION'            => 'info',
+  'USE_SETFILENAME_EXTENSION' => 1,
+
   'footnotestyle'        => 'end',
   'fillcolumn'           => 72,
 #  'perl_encoding'        => 'ascii',
