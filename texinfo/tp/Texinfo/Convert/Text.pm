@@ -526,6 +526,8 @@ my %unicode_to_eight_bit = (
    },
 );
 
+# verbatiminclude would be nice to have too, however it requires a Report
+# object and a list of directories, which is too much for this converter
 our %formatting_misc_commands;
 foreach my $command ('sp', 'center', 'exdent', 
                      'item', 'itemx', 'tab', 'headitem',

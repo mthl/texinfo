@@ -193,7 +193,7 @@ sub convert_to_plaintext($$$;$)
   my $converter_options = shift;
   $converter_options = {} if (!defined($converter_options));
   my $converter = 
-     Texinfo::Convert::Plaintext::converter({'DEBUG' => $self->{'DEBUG'},
+     Texinfo::Convert::Plaintext->converter({'DEBUG' => $self->{'DEBUG'},
                                              'parser' => $parser,
                                              'output_format' => 'plaintext',
                                              %$converter_options });

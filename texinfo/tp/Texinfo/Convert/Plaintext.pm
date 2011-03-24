@@ -22,8 +22,8 @@ package Texinfo::Convert::Plaintext;
 use 5.00405;
 use strict;
 
+use Texinfo::Convert::Converter;
 use Texinfo::Common;
-use Texinfo::Report;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Paragraph;
@@ -35,7 +35,7 @@ use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter Texinfo::Report);
+@ISA = qw(Exporter Texinfo::Convert::Converter);
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -331,138 +331,42 @@ sub _set_global_multiple_commands($)
   }
 }
 
-sub _unset_global_multiple_commands($)
+sub _defaults($)
 {
-  my $converter = shift;
-
-  foreach my $global_command (@informative_global_commands) {
-    if (defined($converter->{'extra'}->{$global_command})
-        and ref($converter->{'extra'}->{$global_command}) eq 'ARRAY') {
-      my $root = $converter->{'extra'}->{$global_command}->[0];
-      next if ($converter->{'set'}->{$root->{'cmdname'}} 
-               or !exists($defaults{$root->{'cmdname'}}));
-      $converter->{$root->{'cmdname'}} = $defaults{$root->{'cmdname'}};
-    }
-  }
+  return %defaults;
 }
 
-sub converter(;$)
+sub _global_commands($)
 {
-  my $class = shift;
-  my $converter = { 'set' => {} };
+  return @informative_global_commands;
+}
 
-  my $conf;
-  my $name = 'converter';
+sub _initialize($)
+{
+  my $self = shift;
 
-  if (ref($class) eq 'HASH') {
-    $conf = $class;
-    bless $converter;
-  } elsif (defined($class)) {
-    bless $converter, $class;
-    $name = ref($class);
-    $conf = shift;
-  } else {
-    bless $converter;
-    $conf = shift;
-    $name = ref($converter);
-  }
-  foreach my $key (keys(%defaults)) {
-    $converter->{$key} = $defaults{$key};
-  }
-  if (defined($conf)) {
-    if ($conf->{'parser'}) {
-      $converter->{'parser'} = $conf->{'parser'};
-      $converter->{'extra'} 
-         = $converter->{'parser'}->global_commands_information();
-      $converter->{'info'} = $converter->{'parser'}->global_informations();
-      if ($converter->{'info'} and $converter->{'info'}->{'perl_encoding'}) {
-        $converter->{'perl_encoding'} = $converter->{'info'}->{'perl_encoding'};
-        $converter->{'encoding_name'} = $converter->{'info'}->{'encoding_name'};
-      }
-      my $floats = $converter->{'parser'}->floats_information();
-      my $labels = $converter->{'parser'}->labels_information();
-      $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
-
-      $converter->{'floats'} = $floats if ($floats);
-      $converter->{'labels'} = $labels if ($labels);
-      $converter->{'setcontentsaftertitlepage'} = 1 
-         if ($converter->{'extra'}->{'contents'} 
-               and $converter->{'extra'}->{'setcontentsaftertitlepage'}
-               and $converter->{'structuring'}
-               and $converter->{'structuring'}->{'sectioning_root'});
-      $converter->{'setshortcontentsaftertitlepage'} = 1 
-         if (($converter->{'extra'}->{'shortcontents'} 
-              or $converter->{'extra'}->{'summarycontents'})
-               and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
-               and $converter->{'structuring'}
-               and $converter->{'structuring'}->{'sectioning_root'});
-      $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
-      foreach my $global_command (@informative_global_commands) {
-        if (defined($converter->{'extra'}->{$global_command})) {
-          my $root = $converter->{'extra'}->{$global_command};
-          #if (ref($root) eq 'ARRAY') {
-          #  $root = $converter->{'extra'}->{$global_command}->[0];
-          #}
-          if (ref($root) ne 'ARRAY') {
-            $converter->_informative_command($root);
-          }
-        }
-      }
-      delete $conf->{'parser'};
-    }
-    foreach my $key (keys(%$conf)) {
-      if (!exists($defaults{$key})) {
-        # many things may be passed down
-        #warn "$key not a possible configuration in $name\n";
-      } else {
-        $converter->{$key} = $conf->{$key};
-        $converter->{'set'}->{$key} = 1;
-      }
-    }
-  }
-  if (!defined($converter->{'expanded_formats'})) {
-    if ($converter->{'parser'}) {
-      $converter->{'expanded_formats'} = $converter->{'parser'}->{'expanded_formats'};
-    } else {
-      $converter->{'expanded_formats'} = [];
-    }
-  }
-  if (!defined($converter->{'include_directories'})) {
-    if ($converter->{'parser'}) {
-      $converter->{'include_directories'} = $converter->{'parser'}->{'include_directories'};
-    } else {
-      $converter->{'include_directories'} = [ '.' ];
-    }
-  }
-
-  $converter->{'context'} = [];
-  $converter->{'format_context'} = [];
-  $converter->push_top_formatter('_Root_context');
-  push @{$converter->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
+  $self->{'context'} = [];
+  $self->{'format_context'} = [];
+  $self->push_top_formatter('_Root_context');
+  push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
 
-  %{$converter->{'ignored_types'}} = %ignored_types;
-  %{$converter->{'ignored_commands'}} = %ignored_commands;
+  %{$self->{'ignored_types'}} = %ignored_types;
+  %{$self->{'ignored_commands'}} = %ignored_commands;
   # this is dynamic because raw formats may either be full commands if
   # isolated, or simple text if in a paragraph
-  %{$converter->{'format_context_commands'}} = %default_format_context_commands;
-  %{$converter->{'preformatted_context_commands'}} 
+  %{$self->{'format_context_commands'}} = %default_format_context_commands;
+  %{$self->{'preformatted_context_commands'}} 
      = %default_preformatted_context_commands;
-  $converter->{'footnote_index'} = 0;
-  $converter->{'pending_footnotes'} = [];
+  $self->{'footnote_index'} = 0;
+  $self->{'pending_footnotes'} = [];
 
-  # turn the array to a hash for speed.  Not sure it really matters for such
-  # a small array.
-  foreach my $expanded_format(@{$converter->{'expanded_formats'}}) {
-    $converter->{'expanded_formats_hash'}->{$expanded_format} = 1;
-  }
   foreach my $format (@out_formats) {
-    $converter->{'ignored_commands'}->{$format} = 1 
-       unless ($converter->{'expanded_formats_hash'}->{$format});
+    $self->{'ignored_commands'}->{$format} = 1 
+       unless ($self->{'expanded_formats_hash'}->{$format});
   }
-  $converter->Texinfo::Report::new();
 
-  return $converter;
+  return $self;
 }
 
 sub _convert_node($$)
