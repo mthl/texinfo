@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2011-03-06.18; # UTC
+htmlxrefversion=2011-03-25.18; # UTC
 
 # Copyright 2010, 2011 Free Software Foundation, Inc.
 # 
@@ -364,7 +364,7 @@ libextractor	mono	${GS}/libextractor/extractor.html
 libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
 
-libmatheval	mono	${GS}/libmatheval/manual/matheval.html
+libmatheval	mono	${GS}/libmatheval/manual/libmatheval.html
 
 LIBMICROHTTPD = http://www.gnu.org/software/libmicrohttpd/
  microhttpd	node	${LIBMICROHTTPD}/microhttpd.html
@@ -404,7 +404,7 @@ METAEXCHANGE = http://ftp.gwdg.de/pub/gnu2/iwfmdh/doc/texinfo/
 MIT_SCHEME = http://www.gnu.org/software/mit-scheme/documentation
  mit-scheme-ref	  node	${MIT_SCHEME}/mit-scheme-ref/
  mit-scheme-user  node	${MIT_SCHEME}/mit-scheme-user/
- sos		  node	${MIT_SCHEME}/sos/
+ sos		  node	${MIT_SCHEME}/mit-scheme-sos/
  mit-scheme-imail node	${MIT_SCHEME}/mit-scheme-imail/
 
 moe		mono	${GS}/moe/manual/moe_manual.html

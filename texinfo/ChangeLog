@@ -1,3 +1,7 @@
+2011-03-25  Karl Berry  <karl@gnu.org>
+
+	* doc/htmlxref.cnf (ed, smtp, libmatheval, sos, mpc): correct links.
+
 2011-03-22  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs_template,
