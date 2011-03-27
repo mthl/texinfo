@@ -9,8 +9,8 @@ API HTML:
   complex commands, that have both arguments and contents, like quotations,
   the call would be
 
-fun($converter, $cmd_or_type_name, $command_in_tree, $contents_formatted,
-    $args_formatted);
+fun($converter, $cmd_or_type_name, $command_in_tree, $args_formatted,
+    $contents_formatted);
 
   For a command with contents and no meaningful arg (like @example
   or @table):

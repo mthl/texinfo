@@ -271,10 +271,18 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
   $brace_commands{$accent_command} = 1;
 }
 
-foreach my $one_arg_command ('asis','b','cite','clicksequence',
-  'ctrl','dfn','dmn','emph','headitemfont',
-  'i','slanted','sansserif','r','sc','strong',
-  't','var', 'w', 
+our %style_commands;
+foreach my $style_command ('asis','b','cite','clicksequence',
+  'dfn', 'emph',
+  'i', 'sc', 't', 'r', 'slanted', 'sansserif', 'var',
+  'headitemfont', 'code', 'command', 'env', 'file', 'kbd',
+  'option', 'samp', 'strong') {
+  $brace_commands{$style_command} = 1;
+  $style_commands{$style_command} = 1;
+}
+
+foreach my $one_arg_command (
+  'ctrl','dmn', 'w', 
   'titlefont','hyphenation','anchor') {
   $brace_commands{$one_arg_command} = 1;
 }

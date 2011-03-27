@@ -12,6 +12,7 @@ use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
+use Texinfo::Convert::HTML;
 use DebugTexinfo::DebugCount;
 use File::Basename;
 use Data::Dumper;
@@ -37,6 +38,7 @@ ok(1);
 my %formats = (
   'plaintext' => \&convert_to_plaintext,
   'info' => \&convert_to_info,
+  'html' => \&convert_to_html,
   'debugcount' => \&debugcount,
 );
 
@@ -214,6 +216,25 @@ sub convert_to_info($$$;$)
                                          'parser' => $parser,
                                          'OUTFILE' => '',
                                          'output_format' => 'info',
+                                          %$converter_options });
+  my $result = $converter->output($tree);
+  die if (!defined($result));
+  my ($errors, $error_nrs) = $converter->errors();
+  return ($errors, $result);
+}
+
+sub convert_to_html($$$;$)
+{
+  my $self = shift;
+  my $tree = shift;
+  my $parser = shift;
+  my $converter_options = shift;
+  $converter_options = {} if (!defined($converter_options));
+  my $converter =
+     Texinfo::Convert::HTML->converter ({'DEBUG' => $self->{'DEBUG'},
+                                         'parser' => $parser,
+                                         'OUTFILE' => '',
+                                         'output_format' => 'html',
                                           %$converter_options });
   my $result = $converter->output($tree);
   die if (!defined($result));

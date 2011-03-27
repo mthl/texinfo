@@ -364,4 +364,87 @@ foreach my $text_no_brace_commands (keys(%Texinfo::Convert::Text::text_no_brace_
     = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_commands};
 }
 
+my %xml_accent_entities = (
+          '"',  'uml',
+          '~',  'tilde',
+          '^',  'circ',
+          '`',  'grave',
+          "'", 'acute',
+          ",", 'cedil',
+          'ringaccent', 'ring',
+          'ogonek', 'ogon',
+         );
+
+my %xml_accent_text_with_entities = (
+      'ringaccent' => 'aA',
+      "'"          => 'aeiouyAEIOUY',
+      ','          => 'cC',
+      '^'          => 'aeiouAEIOU',
+      '`'          => 'aeiouAEIOU',
+      '~'          => 'nNaoAO',
+      '"'          => 'aeiouyAEIOU',
+# according to http://www2.lib.virginia.edu/small/vhp/download/ISO.txt
+# however this doesn't seems to work in firefox
+#      'ogonek'     => 'aeiuAEIU',
+);
+
+
+sub xml_accent($$;$)
+{
+  my $text = shift;
+  my $command = shift;
+  my $use_numeric_entities = shift;
+  my $accent = $command->{'cmdname'};
+  
+  return "&${text}$xml_accent_entities{$accent};" 
+    if (defined($xml_accent_entities{$accent}) 
+        and defined($xml_accent_text_with_entities{$accent}) 
+        and ($text =~ /^[$xml_accent_text_with_entities{$accent}]$/));
+  if ($use_numeric_entities
+      and exists($Texinfo::Convert::unicode_accented_letters{$accent}) 
+      and exists($Texinfo::Convert::unicode_accented_letters{$accent}->{$text})) {
+    return ('&#' . 
+      hex($Texinfo::Convert::unicode_accented_letters{$accent}->{$text}). ';');
+  }
+  return $text . '&lt;' if ($accent eq 'v');
+  return Texinfo::Convert::Text::ascii_accent($text, $command);
+}
+
+sub xml_accent_numeric_entities($$)
+{
+  my $text = shift;
+  my $command = shift;
+  return xml_accent($text, $command, 1);
+}
+
+sub xml_accents($$)
+{ 
+  my $self = shift;
+  my $accent = shift;
+  my $format_accents;
+  if ($self->{'USE_NUMERIC_ENTITY'}) {
+    $format_accents = \&xml_accent_numeric_entities;
+  } else {
+    $format_accents = \&xml_accent;
+  }
+  
+  if ($self->{'ENABLE_ENCODING'}) {
+    if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
+      return Texinfo::Convert::Text::unicode_accents($accent, $format_accents);
+    } elsif ($self->{'encoding_name'} 
+           and $Texinfo::Common::eight_bit_encoding_aliases{$self->{'encoding_name'}}) {
+      return Texinfo::Convert::Text::eight_bit_accents($accent, 
+                                      $self->{'encoding_name'}, $format_accents);
+    }
+  }
+  my ($contents, $innermost_accent, $stack)
+      = Texinfo::Convert::Text::_find_innermost_accent_contents($accent);
+  my $result = $self->_convert({'contents' => $contents});
+  
+  foreach my $accent_command (reverse(@$stack)) {
+    $result = &$format_accents ($result, {'cmdname' => $accent_command});
+  }
+  return $result;
+}
+
 1;

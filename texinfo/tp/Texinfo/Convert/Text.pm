@@ -25,6 +25,8 @@ use strict;
 # accent commands list.
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;
+# for debugging
+use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 
 require Exporter;
@@ -544,7 +546,9 @@ foreach my $type ('empty_line_after_command', 'preamble',
 }
 
 # find the innermost accent and the correspponding text contents
-# FIXME This is not output dependent, move to Texinfo::Parser?
+# FIXME This is not output dependent, so could be in 
+# Texinfo::Convert::Converter.  However this would create a 
+# dependency loop.
 sub _find_innermost_accent_contents($;$)
 {
   my $current = shift;
@@ -766,7 +770,7 @@ sub unicode_accents ($$)
 
   foreach my $accent_command (reverse(@$stack)) {
     $result = Texinfo::Convert::Unicode::unicode_accent($result, 
-       {'cmdname' => $accent_command}, \&ascii_accent);
+       {'cmdname' => $accent_command}, $format_accents);
   }
   return $result;
 }

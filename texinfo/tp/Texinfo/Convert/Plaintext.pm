@@ -1232,8 +1232,12 @@ sub _convert($$)
       return $result;
     # commands with braces
     } elsif ($accent_commands{$root->{'cmdname'}}) {
+      my $encoding;
+      if ($self->{'ENABLE_ENCODING'}) {
+        $encoding = $self->{'encoding_name'};
+      }
       my $accented_text 
-         = Texinfo::Convert::Text::text_accents($root, $self->{'encoding_name'});
+         = Texinfo::Convert::Text::text_accents($root, $encoding);
       $result .= $self->_count_added($formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text));
       # in case the text added ends with punctuation.  
