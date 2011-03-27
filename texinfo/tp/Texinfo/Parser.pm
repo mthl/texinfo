@@ -427,14 +427,7 @@ foreach my $global_unique_command ('title',
 # key is index name, keys of the reference value are the prefixes.
 # value associated with the prefix is 0 if the prefix is not a code-like
 # prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
-my %index_names = (
- 'cp' => {'cp' => 0,'c' => 0},
- 'fn' => {'fn' => 1, 'f' => 1},
- 'vr' => {'vr' => 1, 'v' => 1},
- 'ky' => {'ky' => 1, 'k' => 1},
- 'pg' => {'pg' => 1, 'p' => 1},
- 'tp' => {'tp' => 1, 't' => 1}
-);
+my %index_names = %Texinfo::Common::index_names;
 
 # index names that cannot be set by the user.
 my %forbidden_index_name = ();

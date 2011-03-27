@@ -716,6 +716,15 @@ index';
 
 $result_errors{'at_commands_glued_in_example'} = [
   {
+    'error_line' => ':15: warning: @cindex should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@cindex should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':15: Entry for index `cp\' outside of any node
 ',
     'file_name' => '',

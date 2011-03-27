@@ -70,12 +70,6 @@ foreach my $informative_command (@informative_global_commands,
   $informative_commands{$informative_command} = 1;
 }
 
-foreach my $kept_command(keys (%informative_commands),
-  'verbatiminclude', 'insertcopying', 
-  'listoffloats', 'printindex',
-  'contents', 'shortcontents', 'summarycontents') {
-  $formatting_misc_commands{$kept_command} = 1;
-}
 my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
 my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
 my %accent_commands = %Texinfo::Common::accent_commands;
@@ -93,6 +87,15 @@ my %raw_commands = %Texinfo::Common::raw_commands;
 my @out_formats = @Texinfo::Common::out_formats;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
+my %default_index_commands = %Texinfo::Common::default_index_commands;
+
+foreach my $kept_command(keys (%informative_commands),
+  keys (%default_index_commands),
+  'verbatiminclude', 'insertcopying', 
+  'listoffloats', 'printindex',
+  'contents', 'shortcontents', 'summarycontents') {
+  $formatting_misc_commands{$kept_command} = 1;
+}
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});

@@ -223,6 +223,29 @@ our %misc_commands = (
   'allow-recursion'   => 'skipline',
 );
 
+# key is index name, keys of the reference value are the prefixes.
+# value associated with the prefix is 0 if the prefix is not a code-like
+# prefix, 1 if it is a code-like prefix (set by defcodeindex/syncodeindex).
+our %index_names = (
+ 'cp' => {'cp' => 0, 'c' => 0},
+ 'fn' => {'fn' => 1, 'f' => 1},
+ 'vr' => {'vr' => 1, 'v' => 1},
+ 'ky' => {'ky' => 1, 'k' => 1},
+ 'pg' => {'pg' => 1, 'p' => 1},
+ 'tp' => {'tp' => 1, 't' => 1}
+);
+
+our %default_index_commands;
+# all the commands are readded dynamically in the Parser.
+foreach my $index_name (keys (%index_names)) {
+  foreach my $index_prefix (keys (%{$index_names{$index_name}})) {
+    next if ($index_prefix eq $index_name);
+    # only put the one letter versions in the hash.
+    $misc_commands{$index_prefix.'index'} = 'line';
+    $default_index_commands{$index_prefix.'index'} = 1;
+  }
+}
+
 # command with braces. Value is the max number of arguments.
 our %brace_commands;    
 

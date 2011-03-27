@@ -1938,6 +1938,15 @@ second item
 
 $result_errors{'center'} = [
   {
+    'error_line' => ':3: warning: @cindex should only appear at a line beginning
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@cindex should only appear at a line beginning',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: warning: @cindex should not appear in @center
 ',
     'file_name' => '',
