@@ -1,3 +1,48 @@
+API HTML:
+
+* user wanting to change how a command/type is formatted can pass a reference
+  on a function used to format the command.  For example:
+
+%commands_conversion{'quotation'} = \&my_quotation_convert_function;
+
+* the call of this function depends on the type of command.  For the most
+  complex commands, that have both arguments and contents, like quotations,
+  the call would be
+
+fun($converter, $cmd_or_type_name, $command_in_tree, $contents_formatted,
+    $args_formatted);
+
+  For a command with contents and no meaningful arg (like @example
+  or @table):
+
+fun($converter, $cmd_or_type_name, $command_in_tree, $contents_formatted)
+
+  For a command with args and no content (like @image, @code):
+
+fun($converter, $cmd_or_type_name, $command_in_tree, $args_formatted)
+
+  For a command that have no argument, like @TeX{} or @@:
+
+fun($converter, $cmd_or_type_name, $command_in_tree)
+
+  For text
+
+fun($converter, $cmd_or_type_name, $command_in_tree, $text)
+
+$converter is an opaque structure that may be queried for context information,
+like am I in string, in preformatted, in footnote, in code style command?
+
+* how the contents and the args are formatted may be determined by
+  2 hashes, one for the contents and the other for the args:
+
+$commands_contents{'copying'} = ['raw', 'text'];
+$commands_args{'image'} = [['raw'], ['raw'], ['raw'], ['raw, 'string', 'text'],
+                           ['raw']];
+# this means no formatting
+$commands_args{'^'} = [[[]];
+
+
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
@@ -11,6 +56,8 @@ do something for?
 
 In Info A ref like @ref{node,,,manual} should lead to
 *note (manual)node::.
+
+Test @w{'} for the substitution of '.
 
 Before the release, verify that everything on 
 https://savannah.gnu.org/bugs/?group=texinfo
@@ -145,9 +192,11 @@ there could be a warning
 
 No &copy; &ldquo; &rdquo; in docbook.  Use instead numeric entities.
 
-Add @value and @end to the corresponding commands categories?  Also maybe
-add thischapter thischaptername thischapternum thisfile thispage thistitle
-to misc_commands?
+Add @value to the corresponding commands categories?
+
+Functions:
+sectioning_command_target_name
+node_target_name
 
 Incorporation of texi2html tests
 --------------------------------

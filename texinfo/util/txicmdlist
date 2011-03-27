@@ -32,8 +32,6 @@ my @all_commands = (
   keys(%Texinfo::Common::misc_commands),
   keys(%Texinfo::Common::no_brace_commands), 
   qw(cindex findex kindex pindex tindex value vindex),
-  qw(thischapter thischaptername thischapternum thisfile thispage thistitle),
-  qw(end),
 );
 
 print map { "\@$_\n" } sort (@all_commands);

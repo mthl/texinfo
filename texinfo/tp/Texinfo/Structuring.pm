@@ -621,7 +621,7 @@ sub split_pages ($$)
     }
     if ($split eq 'node' or (defined($level) and $split_level <= $level)
         or !@pages) {
-      push @pages, {};
+      push @pages, {'type' => 'page'};
     }
     push @{$pages[-1]->{'contents'}}, $element;
     $element->{'parent'} = $pages[-1];

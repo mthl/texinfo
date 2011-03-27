@@ -427,6 +427,11 @@ float
 
 @bye @c bye
 '],
+['command_in_heading_footing',
+'@everyheading something @thispage @thischapternum
+
+In text @thispage @thischapternum text.
+'],
 );
 
 my %info_tests = (

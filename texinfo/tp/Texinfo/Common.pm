@@ -206,6 +206,13 @@ our %misc_commands = (
   'item'              => 'skipspace', # or line, depending on the context
   'itemx'             => 'skipspace',
   'tab'               => 'skipspace', 
+  # only valid in heading or footing
+  'thischapter'       => 'noarg',
+  'thischaptername'   => 'noarg',
+  'thischapternum'    => 'noarg',
+  'thisfile'          => 'noarg',
+  'thispage'          => 'noarg',
+  'thistitle'         => 'noarg',
   # not valid for info (should be in @iftex)
   'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
@@ -288,6 +295,11 @@ foreach my $explained_command ('abbr', 'acronym') {
   $explained_commands{$explained_command} = 1;
 }
 
+our %in_heading_commands;
+foreach my $in_heading_command ('thischapter', 'thischaptername',
+  'thischapternum', 'thisfile', 'thispage', 'thistitle') {
+  $in_heading_commands{$in_heading_command} = 1;
+}
 
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by

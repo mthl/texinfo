@@ -243,4 +243,17 @@ sub _set_outfile($$$)
   }
 }
 
+sub xml_protect_text($$)
+{
+  my $self = shift;
+  my $text = shift;
+  $text =~ s/&/&amp;/g;
+  $text =~ s/</&lt;/g;
+  $text =~ s/>/&gt;/g;
+  $text =~ s/\"/&quot;/g;
+  return $text;
+
+}
+
+
 1;

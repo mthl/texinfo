@@ -356,6 +356,7 @@ my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
+my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
 
 my %keep_line_nr_brace_commands = %context_brace_commands;
 foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
@@ -471,7 +472,7 @@ foreach my $no_paragraph_command (keys(%misc_commands)) {
 foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
                                 'noindent', 'indent', 'columnfractions',
                                 'tab', 'item', 'headitem', 'verbatiminclude',
-                                'vskip') {
+                                'vskip', keys(%in_heading_commands)) {
   delete $begin_line_commands{$misc_not_begin_line};
 }
 
@@ -3316,6 +3317,10 @@ sub _parse_texi($;$)
                 }
                 $parent = $parent->{'parent'};
               }
+            } elsif ($in_heading_commands{$command}) {
+              $self->line_error (sprintf($self->__("\@%s should only appear in heading or footing"),
+                                              $command), $line_nr);
+              $invalid = 1;
             }
             unless ($ignored) {
               $misc = {'cmdname' => $command,
