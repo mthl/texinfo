@@ -243,6 +243,47 @@ sub _set_outfile($$$)
   }
 }
 
+my @MONTH_NAMES =
+    (
+     'January', 'February', 'March', 'April', 'May',
+     'June', 'July', 'August', 'September', 'October',
+     'November', 'December'
+    );
+
+# This is not used as code, but used to mark months as strings to be
+# translated
+if (0) {
+  my $self;
+  my @mark_month_for_translation = (
+   $self->gdt('January'),
+   $self->gdt('February'),
+   $self->gdt('March'),
+   $self->gdt('April'),
+   $self->gdt('May'),
+   $self->gdt('June'),
+   $self->gdt('July'),
+   $self->gdt('August'),
+   $self->gdt('September'),
+   $self->gdt('October'),
+   $self->gdt('November'),
+   $self->gdt('December')
+  );
+}
+
+sub expand_today($)
+{
+  my $self = shift;
+  if ($self->{'TEST'}) {
+    return {'text' => 'a sunny day'};
+  }
+  my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+   = localtime(time);
+  $year += ($year < 70) ? 2000 : 1900;
+  return $self->gdt('{month} {day}, {year}',
+          { 'month' => $self->gdt($MONTH_NAMES[$mon]),
+            'day' => $mday, 'year' => $year });
+}
+
 sub xml_protect_text($$)
 {
   my $self = shift;
@@ -255,5 +296,72 @@ sub xml_protect_text($$)
 
 }
 
+# 'today' is not set here.
+our %default_xml_commands_formatting; 
+$default_xml_commands_formatting{'normal'} = {
+               'TeX'          => 'TeX',
+               'LaTeX'          => 'LaTeX',
+# pertusus: unknown by makeinfo, not in texinfo manual (@* is the right thing)
+#               'br', '<br>',     # paragraph break
+               'bullet'       => '&bull;',
+#               #'copyright' => '(C)',
+               'copyright'    => '&copy;',
+               'registeredsymbol'   => '&reg;',
+               'dots'         => '&hellip;',
+               'enddots'      => '...',
+               'equiv'        => '&equiv;',
+# FIXME i18n
+               'error'        => 'error--&gt;',
+               'expansion'    => '&rarr;',
+               'arrow'        => '&rarr;',
+               'click'        => '&rarr;',
+               'minus'        => '-',
+               'point'        => '&lowast;',
+               'print'        => '-|',
+               'result'       => '&rArr;',
+               'aa'           => '&aring;',
+               'AA'           => '&Aring;',
+               'ae'           => '&aelig;',
+               'oe'           => '&oelig;', #pertusus: also &#156;. &oelig; not in html 3.2
+               'AE'           => '&AElig;',
+               'OE'           => '&OElig;', #pertusus: also &#140;. &OElig; not in html 3.2
+               'o'            =>  '&oslash;',
+               'O'            =>  '&Oslash;',
+               'ss'           => '&szlig;',
+               'DH'           => '&ETH;',
+               'dh'           => '&eth;',
+               'TH'           => '&THORN;',
+               'th'           => '&thorn;',
+               'l'            => '&#322;',
+               'L'            => '&#321;',
+               'exclamdown'   => '&iexcl;',
+               'questiondown' => '&iquest;',
+               'pounds'       => '&pound;',
+               'ordf'         => '&ordf;',
+               'ordm'         => '&ordm;',
+               'comma'        => ',',
+               'euro'         => '&euro;',
+               'geq'          => '&ge;',
+               'leq'          => '&le;',
+               'tie'          => '&nbsp;',
+               'textdegree'          => '&deg;',
+               'quotedblleft'          => '&ldquo;',
+               'quotedblright'          => '&rdquo;',
+               'quoteleft'          => '&lsquo;',
+               'quoteright'          => '&rsquo;',
+               'quotedblbase'          => '&bdquo;',
+               'quotesinglbase'          => '&sbquo;',
+               'guillemetleft'          => '&laquo;',
+               'guillemetright'          => '&raquo;',
+               'guillemotleft'          => '&laquo;',
+               'guillemotright'          => '&raquo;',
+               'guilsinglleft'          => '&lsaquo;',
+               'guilsinglright'          => '&rsaquo;',
+};
+
+foreach my $text_no_brace_commands (keys(%Texinfo::Convert::Text::text_no_brace_commands)) {
+  $default_xml_commands_formatting{'normal'}->{$text_no_brace_commands}
+    = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_commands};
+}
 
 1;

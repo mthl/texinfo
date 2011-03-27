@@ -41,6 +41,7 @@ $commands_args{'image'} = [['raw'], ['raw'], ['raw'], ['raw, 'string', 'text'],
 # this means no formatting
 $commands_args{'^'} = [[[]];
 
+$commands_formatting{'normal' | 'string' | 'preformatted'}
 
 
 Handle
