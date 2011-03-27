@@ -531,29 +531,7 @@ my %unicode_to_eight_bit = (
 our %formatting_misc_commands;
 foreach my $command ('sp', 'center', 'exdent', 
                      'item', 'itemx', 'tab', 'headitem',
-    'node',
-    'top',
-    'chapter',
-    'unnumbered',
-    'chapheading',
-    'appendix',
-    'section',
-    'unnumberedsec',
-    'heading',
-    'appendixsec',
-    'subsection',
-    'unnumberedsubsec',
-    'subheading',
-    'appendixsubsec',
-    'subsubsection',
-    'unnumberedsubsubsec',
-    'subsubheading',
-    'appendixsubsubsec',
-    'part',
-    'appendixsection',
-    'majorheading',
-    'chapheading',
-    'centerchap') {
+    'node', keys(%Texinfo::Common::sectioning_commands)) {
   $formatting_misc_commands{$command} = 1;
 }
  
