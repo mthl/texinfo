@@ -418,8 +418,15 @@ foreach my $menu_command ('menu', 'detailmenu', 'direntry') {
   $block_commands{$menu_command} = 0;
 };
 
+our %align_commands;
+foreach my $align_command('raggedright', 'flushleft', 'flushright') {
+  $block_commands{$align_command} = 0;
+  $align_commands{$align_command} = 1;
+}
+$align_commands{'center'} = 1;
+
 foreach my $block_command(
-    'cartouche', 'group', 'raggedright', 'flushleft', 'flushright') {
+    'cartouche', 'group') {
   $block_commands{$block_command} = 0;
 }
 
@@ -429,19 +436,19 @@ foreach my $block_command('titlepage', 'copying', 'documentdescription') {
   $region_commands{$block_command} = 1;
 }
   
-
 our %preformatted_commands;
-foreach my $preformatted_command(
-    'example', 'smallexample', 'display', 'smalldisplay', 'lisp',
-    'smalllisp', 'format', 'smallformat') {
-  $block_commands{$preformatted_command} = 0;
-  $preformatted_commands{$preformatted_command} = 1;
-}
-
 our %preformatted_code_commands;
 foreach my $preformatted_command(
     'example', 'smallexample', 'lisp', 'smalllisp') {
+  $block_commands{$preformatted_command} = 0;
+  $preformatted_commands{$preformatted_command} = 1;
   $preformatted_code_commands{$preformatted_command} = 1;
+}
+
+foreach my $preformatted_command(
+    'display', 'smalldisplay', 'format', 'smallformat') {
+  $block_commands{$preformatted_command} = 0;
+  $preformatted_commands{$preformatted_command} = 1;
 }
 
 our %raw_commands;

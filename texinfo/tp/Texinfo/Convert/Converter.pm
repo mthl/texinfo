@@ -359,9 +359,9 @@ $default_xml_commands_formatting{'normal'} = {
                'guilsinglright'          => '&rsaquo;',
 };
 
-foreach my $text_no_brace_commands (keys(%Texinfo::Convert::Text::text_no_brace_commands)) {
-  $default_xml_commands_formatting{'normal'}->{$text_no_brace_commands}
-    = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_commands};
+foreach my $text_no_brace_command (keys(%Texinfo::Convert::Text::text_no_brace_commands)) {
+  $default_xml_commands_formatting{'normal'}->{$text_no_brace_command}
+    = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_command};
 }
 
 my %xml_accent_entities = (
@@ -403,8 +403,8 @@ sub xml_accent($$;$)
   if ($use_numeric_entities
       and exists($Texinfo::Convert::unicode_accented_letters{$accent}) 
       and exists($Texinfo::Convert::unicode_accented_letters{$accent}->{$text})) {
-    return ('&#' . 
-      hex($Texinfo::Convert::unicode_accented_letters{$accent}->{$text}). ';');
+    return '&#' . 
+      hex($Texinfo::Convert::unicode_accented_letters{$accent}->{$text}). ';';
   }
   return $text . '&lt;' if ($accent eq 'v');
   return Texinfo::Convert::Text::ascii_accent($text, $command);

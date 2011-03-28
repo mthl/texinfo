@@ -57,7 +57,7 @@ $VERSION = '0.01';
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
 my %text_no_brace_commands = %Texinfo::Convert::Text::text_no_brace_commands;
-my %no_brace_commands = %Texinfo::Convert::Text::no_brace_commands;
+my %no_brace_commands = %Texinfo::Common::no_brace_commands;
 my %text_brace_no_arg_commands = %Texinfo::Convert::Text::text_brace_no_arg_commands;
 my %accent_commands = %Texinfo::Common::accent_commands;
 my %misc_commands = %Texinfo::Common::misc_commands;
@@ -77,10 +77,76 @@ my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %style_commands = %Texinfo::Common::style_commands;
+my %align_commands = %Texinfo::Common::align_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
+
+# FIXME remove raw commands?
+my %format_context_commands = (%block_commands, %root_commands);
+
+foreach my $misc_context_command('tab', 'item', 'itemx', 'headitem', 'math') {
+  $format_context_commands{$misc_context_command} = 1;
+}
+
+# FIXME allow customization?
+my %upper_case_commands = ( 'sc' => 1 );
+
+sub in_math($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'math'};
+}
+
+sub in_preformatted($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'preformatted'};
+}
+
+sub in_upper_case($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'upper_case'};
+}
+
+sub in_space_protected($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'space_protected'};
+}
+
+sub in_code($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'code'};
+}
+
+sub in_string($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'string'};
+}
+
+sub paragraph_number($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'paragraph_number'};
+}
+
+sub top_format($)
+{
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'formats'};
+}
+
+sub align($)
+{  
+  my $self = shift;
+  return $self->{'context'}->[-1]->{'align'};
+}
+
 
 
 my %defaults = (
@@ -223,11 +289,11 @@ $default_commands_formatting{'normal'}->{"\n"} = '&nbsp;';
 
 foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
   $default_commands_formatting{'preformatted'}->{$command} = 
-     $default_commands_formatting{'normal'}->{$command} 
-       unless exists($default_commands_formatting{'preformatted'}->{$command});
+     $default_commands_formatting{'normal'}->{$command};
+#       unless exists($default_commands_formatting{'preformatted'}->{$command});
   $default_commands_formatting{'string'}->{$command} =
-     $default_commands_formatting{'normal'}->{$command} 
-       unless exists($default_commands_formatting{'string'}->{$command});
+     $default_commands_formatting{'normal'}->{$command};
+#       unless exists($default_commands_formatting{'string'}->{$command});
 }
 
 $default_commands_formatting{'normal'}->{'enddots'} 
@@ -376,8 +442,8 @@ sub style_commands($$$$)
   if (defined($attribute_hash->{$cmdname})) {
     if (defined($attribute_hash->{$cmdname}->{'attribute'})) {
       my ($style, $class, $attribute_text)
-        = parse_attribute ($attribute_hash->{$cmdname}->{'attribute'});
-      $text = attribute_class($style, $class) . "$attribute_text>" 
+        = _parse_attribute ($attribute_hash->{$cmdname}->{'attribute'});
+      $text = $self->attribute_class($style, $class) . "$attribute_text>" 
               . "$text" . "</$style>";
     }
     if (defined($attribute_hash->{$cmdname}->{'quote'})) {
@@ -399,7 +465,7 @@ sub accent_commands($$$$)
 }
 
 foreach my $command (keys(%accent_commands)) {
-$default_commands_conversion{$command} = \&accent_commands;
+  $default_commands_conversion{$command} = \&accent_commands;
 }
 
 my %default_types_conversion;
@@ -427,14 +493,15 @@ sub paragraph_type($$$$)
   my $content = shift;
 
   if ($self->paragraph_number() == 1) {
-    my $in_format = $self->in_format();
+    my $in_format = $self->top_format();
+    # FIXME also verify that in @item/@tab/@headitem
     return $content 
       if ($in_format eq 'itemize' 
           or $in_format eq 'enumerate'
           or $in_format eq 'multitable');
   }
-  if ($self->align()) {
-    my $align = $self->align();
+  my $align = $self->align();
+  if ($paragraph_style{$align}) {
     return "<p align=\"$paragraph_style{$align}\">".$content."</p>";
   } else {
     return "<p>".$content."</p>";
@@ -540,6 +607,10 @@ sub _initialize($)
           = $default_types_conversion{$type};
     }
   }
+
+  $self->{'context'} = [{'cmdname' => '_toplevel_context'}];
+  $self->{'formats'} = [];
+  $self->{'align'} = ['raggedright'];
 
   return $self;
 }
@@ -1066,7 +1137,29 @@ sub _convert($$)
     # FIXME definfoenclose_command 
     # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
     if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
+      my $result;
       my $content_formatted;
+      if (exists($format_context_commands{$root->{'cmdname'}})) {
+        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'}};
+      }
+      if (exists($block_commands{$root->{'cmdname'}})) {
+        push @{$self->{'formats'}}, $root->{'cmdname'};
+      }
+      if ($preformatted_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'preformatted'}++;
+      }
+      if ($code_style_commands{$root->{'cmdname'}} or 
+          $preformatted_code_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'code'}++;
+      } elsif ($upper_case_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'upper_case'}++;
+      } elsif ($root->{'cmdname'} eq 'math') {
+        $self->{'context'}->[-1]->{'math'}++;
+      } elsif ($root->{'cmdname'} eq 'w') {
+        $self->{'context'}->[-1]->{'space_protected'}++;
+      } elsif ($align_commands{$root->{'cmdname'}}) {
+        push @{$self->{'align'}}, $root->{'cmdname'};
+      }
       if ($root->{'contents'}) {
         $content_formatted = '';
         # TODO different types of contents
@@ -1087,16 +1180,41 @@ sub _convert($$)
             push @$args_formatted, {'normal' => $self->_convert($arg)};
           }
         }
-        return &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
+        $result = &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
                 $root->{'cmdname'}, $root, $args_formatted, $content_formatted);
       } else {
-        return &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
+        $result = &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
                 $root->{'cmdname'}, $root, $content_formatted);
       }
+      if ($preformatted_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'preformatted'}--;
+      }
+      if ($code_style_commands{$root->{'cmdname'}} or 
+          $preformatted_code_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'code'}--;
+      } elsif ($upper_case_commands{$root->{'cmdname'}}) {
+        $self->{'context'}->[-1]->{'upper_case'}--;
+      } elsif ($root->{'cmdname'} eq 'math') {
+        $self->{'context'}->[-1]->{'math'}--;
+      } elsif ($root->{'cmdname'} eq 'w') {
+        $self->{'context'}->[-1]->{'space_protected'}--;
+      } elsif ($align_commands{$root->{'cmdname'}}) {
+        pop @{$self->{'align'}};
+      }
+      if (exists($block_commands{$root->{'cmdname'}})) {
+        pop @{$self->{'formats'}};
+      }
+      if (exists($format_context_commands{$root->{'cmdname'}})) {
+        pop @{$self->{'context'}};
+      }
+      return $result;
     } else {
-      print STDERR "BUG: unknown command $root->{'cmdname'}\n";
+      print STDERR "BUG: unknown command `$root->{'cmdname'}'\n";
     }
   } elsif ($root->{'type'}) {
+    if ($root->{'type'} eq 'paragraph') {
+      $self->{'context'}->[-1]->{'paragraph_number'}++;
+    }
     my $content_formatted;
     if ($root->{'contents'}) {
       $content_formatted = '';
@@ -1113,6 +1231,12 @@ sub _convert($$)
     } elsif (defined($content_formatted)) {
       return $content_formatted;
     }
+  } elsif ($root->{'contents'}) {
+    my $content_formatted = '';
+    foreach my $content (@{$root->{'contents'}}) {
+      $content_formatted .= $self->_convert($content);
+    }
+    return $content_formatted;
   }
     #} elsif ($command eq 'value') {
     #  my $expansion = $self->gdt('@{No value for `{value}\'@}', 
