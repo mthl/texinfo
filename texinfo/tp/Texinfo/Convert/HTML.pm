@@ -39,11 +39,12 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration       use Texinfo::Convert::Plaintext ':all';
+# This allows declaration       use Texinfo::Convert::HTML ':all';
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  convert_tree
   output
 ) ] );
 
@@ -219,6 +220,10 @@ foreach my $indented_format ('example', 'display', 'lisp')
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
 
+# default specification of arguments formatting
+my %default_commands_args = (
+  'email' => [['code'], ['normal']]);
+
 # Default for the function references used for the formatting
 # of commands.
 my %default_commands_conversion;
@@ -334,7 +339,7 @@ sub convert_today($$$)
   my $command = shift;
 
   my $tree = $self->expand_today();
-  return $self->_convert($tree);
+  return $self->convert_tree($tree);
 }
 
 $default_commands_conversion{'today'} = \&convert_today;
@@ -401,7 +406,6 @@ foreach my $command(keys(%style_commands)) {
 delete $style_commands_formatting{'preformatted'}->{'sc'}->{'attribute'};
 delete $style_commands_formatting{'preformatted'}->{'sc'};
 
-#      'email',      {'function' => \&html_default_email},
 #      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
 #      'uref',       {'function' => \&html_default_uref},
 #      'url',        {'function' => \&html_default_uref},
@@ -453,6 +457,32 @@ sub style_commands($$$$)
   }
   return $text;
 }
+
+sub expand_email($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+
+  my $mail_arg = shift @$args;
+  my $text_arg = shift @$args;
+  my $mail = '';
+  if (defined($mail_arg)) {
+    $mail = $mail_arg->{'code'};
+  }
+  # $mail = main::normalise_space($mail);
+  my $text = '';
+  if (defined($text_arg)) {
+    $text = $text_arg->{'normal'};
+    # $text = main::normalise_space($text);
+  }
+  $text = $mail unless ($text ne '');
+  return $text if ($mail eq '');
+  return "<a href=\"mailto:$mail\">$text</a>";
+}
+
+$default_commands_conversion{'email'} = \&expand_email;
 
 sub accent_commands($$$$)
 {
@@ -607,6 +637,14 @@ sub _initialize($)
           = $default_types_conversion{$type};
     }
   }
+  foreach my $command (keys %{$self->{'commands_conversion'}}) {
+    if (exists($Texinfo::Config::commands_args{$command})) {
+      $self->{'commands_args'}->{$command} 
+         = $Texinfo::Config::commands_conversion{$command};
+    } elsif (exists($default_commands_args{$command})) {
+      $self->{'commands_args'}->{$command} = $default_commands_args{$command};
+    }
+  }
 
   $self->{'context'} = [{'cmdname' => '_toplevel_context'}];
   $self->{'formats'} = [];
@@ -633,6 +671,15 @@ sub _convert_element($$)
   #print STDERR "AFTER FOOTNOTES\n" if ($self->{'DEBUG'});
 
   return $result;
+}
+
+# the entry point
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $element = shift;
+
+  return $self->_convert($element);
 }
 
 sub _normalized_to_id($)
@@ -1128,12 +1175,6 @@ sub _convert($$)
   my $cell;
   my $preformatted;
   if ($root->{'cmdname'}) {
-    # TODO if w -> set protext_space
-    #      if code_style -> set it
-    #    if ($code_style_commands{$command});
-    #      if sc -> also in_upper_case
-    #      align command
-    #      preformatted
     # FIXME definfoenclose_command 
     # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
     if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
@@ -1176,8 +1217,24 @@ sub _convert($$)
               or ($root->{'cmdname'} eq 'float')) {
         $args_formatted = [];
         if ($root->{'args'}) {
+          my @args_specification;
+          @args_specification = @{$self->{'commands_args'}->{$root->{'cmdname'}}}
+            if (defined($self->{'commands_args'}->{$root->{'cmdname'}}));
           foreach my $arg (@{$root->{'args'}}) {
-            push @$args_formatted, {'normal' => $self->_convert($arg)};
+            my $arg_spec = shift @args_specification;
+            $arg_spec = ['normal'] if (!defined($arg_spec));
+            my $arg_formatted = {'tree' => $arg};
+            foreach my $arg_type (@$arg_spec) {
+              if ($arg_type eq 'normal') {
+                $arg_formatted->{'normal'} = $self->_convert($arg);
+              } elsif ($arg_type eq 'code') {
+                $self->{'context'}->[-1]->{'code'}++;
+                $arg_formatted->{'code'} = $self->_convert($arg);
+                $self->{'context'}->[-1]->{'code'}--;
+              }
+            }
+            
+            push @$args_formatted, $arg_formatted;
           }
         }
         $result = &{$self->{'commands_conversion'}->{$root->{'cmdname'}}}($self,
