@@ -375,15 +375,18 @@ $style_attribute_commands{'normal'} = {
       't'           => 'tt',
       'var'         => 'var',
       'verb'        => 'tt',
+      'math'        => 'em',
 };
 
-foreach my $command (keys(%{$default_commands_formatting{'normal'}})) {
-  $style_attribute_commands{'preformatted'}->{$command} = 
-     $style_attribute_commands{'normal'}->{$command};
-}
-
 my %style_commands_formatting;
-foreach my $command(keys(%style_commands)) {
+
+# this weird construct does like uniq, it avoids duplicates.
+# it is required since math is not in the %style_commands as it is 
+# context command.
+my @all_style_commands = keys %{{ map { $_ => 1 } (keys(%style_commands), 
+                                                   keys(%{$style_attribute_commands{'normal'}})) }};
+
+foreach my $command(@all_style_commands) {
   # default is no attribute.
   if ($style_attribute_commands{'normal'}->{$command}) {
     $style_commands_formatting{'normal'}->{$command}->{'attribute'}
@@ -409,7 +412,6 @@ delete $style_commands_formatting{'preformatted'}->{'sc'};
 #      'key',        {'begin' => '&lt;', 'end' => '&gt;'},
 #      'uref',       {'function' => \&html_default_uref},
 #      'url',        {'function' => \&html_default_uref},
-#      'math',       {'function' => \&html_default_math},
 #      'indicateurl', {'begin' => '&lt;<code>', 'end' => '</code>&gt;'},
 
 sub _parse_attribute($)
@@ -483,6 +485,18 @@ sub expand_email($$$$)
 }
 
 $default_commands_conversion{'email'} = \&expand_email;
+
+#sub expand_math($$$$)
+#{
+#  my $self = shift;
+#  my $cmdname = shift;
+#  my $command = shift;
+#  my $args = shift;
+#
+#  return $args->[0]->{'normal'};
+#}
+
+#$default_commands_conversion{'math'} = \&expand_math;
 
 sub accent_commands($$$$)
 {
@@ -615,6 +629,19 @@ sub empty_line($$$) {
 
 $default_types_conversion{'empty_line'} = \&empty_line;
 $default_types_conversion{'after_description_line'} = \&empty_line;
+
+sub bracketed($$$$) {
+  my $self = shift;
+  my $type = shift;
+  my $command = shift;
+  my $content = shift;
+#print STDERR "$self $type $command $content\n";
+
+  return '{'.$content.'}';
+}
+
+$default_types_conversion{'bracketed'} = \&bracketed;
+
 
 sub process_text($$$)
 {
