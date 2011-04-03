@@ -68,11 +68,12 @@ sub output($)
                                      'locations' => []};
   my $header = $self->_info_header();
   pop @{$self->{'count_context'}};
-  if (defined($self->{'output_dir'}) and ! -d $self->{'output_dir'}) {
-    if (!mkdir($self->{'output_dir'}, oct(755))) {
+  if (defined($self->{'destination_directory'})
+      and ! -d $self->{'destination_directory'}) {
+    if (!mkdir($self->{'destination_directory'}, oct(755))) {
       $self->document_error(sprintf($self->__(
              "Can't create directories `%s': %s"), 
-             $self->{'output_dir'}, $!));
+             $self->{'destination_directory'}, $!));
       return undef;
     }
   }
