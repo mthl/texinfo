@@ -79,6 +79,7 @@ my %preformatted_code_commands = %Texinfo::Common::preformatted_code_commands;
 my %default_index_commands = %Texinfo::Common::default_index_commands;
 my %style_commands = %Texinfo::Common::style_commands;
 my %align_commands = %Texinfo::Common::align_commands;
+my %region_commands = %Texinfo::Common::region_commands;
 
 foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
@@ -166,7 +167,7 @@ my %defaults = (
   'include_directories'  => undef,
   'NUMBER_SECTIONS'      => 1,
   'USE_NODES'            => 1,
-  'SPLIT'                => 0,
+  'SPLIT'                => 'node',
 # if set style is added in attribute.
   'INLINE_CSS_STYLE'     => 0,
 # if set, no css is used.
@@ -177,7 +178,12 @@ my %defaults = (
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
   'allowcodebreaks'      => 'true',
-
+# file name used for Top node when NODE_FILENAMES is true
+  'TOP_NODE_FILE'        => 'index',
+  'NODE_FILE_EXTENSION'  => 'html',
+  'EXTENSION'            => 'html',
+  'TRANSLITERATE_FILE_NAMES' => 1,
+  
 
   'DEBUG'                => 0,
   'TEST'                 => 0,
@@ -684,6 +690,11 @@ $default_types_conversion{'text'} = \&process_text;
 sub _initialize($)
 {
   my $self = shift;
+
+  if (!$self->{'set'}->{'EXTENSION'} and $self->{'SHORTEXTN'}) {
+    $self->{'EXTENSION'} = 'htm';
+  }
+
   %{$self->{'css_map'}} = %css_map;
 
   foreach my $context (keys(%default_commands_formatting)) {
@@ -792,55 +803,129 @@ sub _normalized_to_id($)
   return $id;
 }
 
-# TODO also convert to html, to use name in cross-refs
-sub _set_root_commands_id($$)
+# FIXME also convert to html, to use name in cross-refs or do it on demand?
+sub _set_root_commands_targets_node_files($$)
 {
   my $self = shift;
   my $elements = shift;
 
-  foreach my $element (@$elements) {
-    foreach my $root_command(@{$element->{'contents'}}) {
-      # FIXME this happens before the first element, for type 'text_root'.
-      # What should be done in that case?
-      next if (!defined($root_command->{'cmdname'}));
-      if ($root_command->{'cmdname'} eq 'node') {
-        my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
-        my $id = $target;
-        # FIXME something spcial for Top node ?
-        if (defined($Texinfo::Config::node_target_name)) {
-          ($target, $id) = &Texinfo::Config::node_target_name($root_command,
-                                                             $target, $id);
+  my $no_unidecode;
+  $no_unidecode = 1 if (defined($self->{'USE_UNIDECODE'}) 
+                        and !$self->{'USE_UNIDECODE'});
+
+  if ($elements) {
+    foreach my $element (@$elements) {
+      foreach my $root_command(@{$element->{'contents'}}) {
+        # FIXME this happens before the first element, for type 'text_root'.
+        # What should be done in that case?
+        next if (!defined($root_command->{'cmdname'}));
+        if ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
+          my $target_base = _normalized_to_id(
+             Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+                {'contents' => $root_command->{'extra'}->{'misc_content'}},
+                $no_unidecode));
+          my $nr=0;
+          my $target = $target_base;
+          while ($self->{'labels'}->{$target}) {
+            $target = $target_base.'-'.$nr;
+            $nr++;
+            # Avoid integer overflow
+            die if ($nr == 0);
+          }
+          my $id = $target;
+          if ($root_command->{'associated_node'} and $self->{'USE_NODE_TARGET'}) {
+            $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
+          }
+          if (defined($Texinfo::Config::sectioning_command_target_name)) {
+            ($target, $id) = &$Texinfo::Config::sectioning_command_target_name(
+                                                               $self,
+                                                               $root_command,
+                                                               $target, $id);
+          }
+          $self->{'targets'}->{$root_command} = {'target' => $target, 
+                                                'id' => $id};
         }
-        $self->{'targets'}->{$root_command} = {'target' => $target, 
-                                              'id' => $id};
-      } elsif ($Texinfo::Common::root_commands{$root_command->{'cmdname'}}) {
-        my $no_unidecode;
-        $no_unidecode = 1 if (defined($self->{'USE_UNIDECODE'})
-                              and !$self->{'USE_UNIDECODE'});
-        my $target_base = _normalized_to_id(
-           Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-              {'contents' => $root_command->{'extra'}->{'misc_content'}},
-              $no_unidecode));
-        my $nr=0;
-        my $target = $target_base;
-        while ($self->{'labels'}->{$target}) {
-          $target = $target_base.'-'.$nr;
-          $nr++;
-          # Avoid integer overflow
-          die if ($nr == 0);
-        }
-        my $id = $target;
-        if ($root_command->{'associated_node'} and $self->{'USE_NODE_TARGET'}) {
-          $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
-        }
-        if (defined($Texinfo::Config::sectioning_command_target_name)) {
-          ($target, $id) = &Texinfo::Config::sectioning_command_target_name(
-                                                             $root_command,
-                                                             $target, $id);
-        }
-        $self->{'targets'}->{$root_command} = {'target' => $target, 
-                                              'id' => $id};
       }
+    }
+  }
+
+  if ($self->{'labels'}) {
+    foreach my $root_command (values(%{$self->{'labels'}})) {
+      my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
+      my $id = $target;
+      # FIXME something special for Top node ?
+      if (defined($Texinfo::Config::node_target_name)) {
+        ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
+                                                           $target, $id);
+      }
+      my $filename;
+      if ($self->{'TRANSLITERATE_FILE_NAMES'}) {
+        $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
+          {'contents' => $root_command->{'extra'}->{'node_content'}},
+              $no_unidecode);
+      } else {
+        $filename = $root_command->{'extra'}->{'normalized'};
+      }
+      $filename .= '.'.$self->{'NODE_FILE_EXTENSION'} 
+        if (defined($self->{'NODE_FILE_EXTENSION'}) 
+            and $self->{'NODE_FILE_EXTENSION'} ne '');
+      if (defined($Texinfo::Config::node_file_name)) {
+        $filename = &$Texinfo::Config::node_file_name($self, $root_command,
+                                                     $filename);
+      }
+      $self->{'targets'}->{$root_command} = {'target' => $target, 
+                                             'id' => $id,
+                                             'filename' => $filename};
+    }
+  }
+}
+
+sub _set_page_file($$$)
+{
+  my $self = shift;
+  my $page = shift;
+  my $filename = shift;
+
+  $page->{'filename'} = $filename;
+  $page->{'out_filename'} = $self->{'destination_directory'} . $filename;
+}
+
+sub _get_page($$);
+
+# FIXME also find contents/shortcontents/summarycontents page
+sub _get_page($$)
+{
+  my $self = shift;
+  my $current = shift;
+  while (1) {
+    if ($current->{'type'} and $current->{'type'} eq 'page') {
+      return $current;
+    }
+    if ($current->{'cmdname'}) {
+      if ($region_commands{$current->{'cmdname'}}) {
+        if ($current->{'cmdname'} eq 'copying' 
+            and $self->{'extra'} and $self->{'extra'}->{'insertcopying'}) {
+          foreach my $insertcopying(@{$self->{'extra'}->{'insertcopying'}}) {
+            my $page = $self->_get_page($insertcopying);
+            return $page if (defined($page));
+          } 
+        } elsif ($current->{'cmdname'} eq 'titlepage'
+                 and $self->{'USE_TITLEPAGE_FOR_TITLE'}
+                 and $self->{'SHOW_TITLE'}
+                 and $self->{'pages'}->[0]) {
+          return $self->{'pages'}->[0];
+        }
+        return undef;
+      }
+      if ($current->{'cmdname'} eq 'footnote' 
+           and $self->{'footnotestyle'} eq 'separate') {
+        return $self->{'special_pages'}->{'footnotes'};
+      }
+    }
+    if ($current->{'parent'}) {
+      $current = $current->{'parent'};
+    } else {
+      return undef;
     }
   }
 }
@@ -849,13 +934,65 @@ sub _set_page_files($$)
 {
   my $self = shift;
   my $pages = shift;
+  # Ensure that the document is split
   return undef if (!defined($pages) or !@$pages);
 
-  my $node_top = $self->{'labels'}->{'Top'};
+  my $node_top;
+  #my $section_top;
+  $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
+  #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
   # first determine the top node file name.
-  if ($self->{'USE_NODES'}) {
-    
+  if ($self->{'NODE_FILENAMES'} and $node_top) {
+    if (defined($self->{'TOP_NODE_FILE'})) {
+      my $node_top_page = $self->_get_page($node_top);
+      die "BUG: No page for top node" if (!defined($node_top));
+      my $filename = $self->{'TOP_NODE_FILE'};
+      $filename .= '.'.$self->{'NODE_FILE_EXTENSION'} 
+        if (defined($self->{'NODE_FILE_EXTENSION'}) 
+            and $self->{'NODE_FILE_EXTENSION'} ne '');
+      $self->_set_page_file($node_top_page, $filename);
+    }
+  }
+  my $file_nr = 0;
+  if ($self->{'NODE_FILENAMES'}) {
+   PAGE:
+    foreach my $page(@$pages) {
+      next if (defined($page->{'filename'}));
+      foreach my $element (@{$page->{'contents'}}) {
+        foreach my $root_comand (@{$element->{'contents'}}) {
+          if ($root_comand->{'cmdname'} 
+              and $root_comand->{'cmdname'} eq 'node') {
+            $self->_set_page_file($page, 
+                      $self->{'targets'}->{$root_comand}->{'filename'});
+            next PAGE;
+          }
+        }
+      }
+      my $filename = $self->{'document_name'} . "_$file_nr";
+      $filename .= '.'.$self->{'EXTENSION'} 
+          if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $self->_set_page_file($page, $filename);
+      $file_nr++;
+    }
+  } else {
+    foreach my $page(@$pages) {
+      my $filename = $self->{'document_name'} . "_$file_nr";
+      $filename .= '.'.$self->{'EXTENSION'} 
+          if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $self->_set_page_file($page, $filename);
+      $file_nr++;
+    }
+  }
+  if (defined($Texinfo::Config::page_file_name)) {
+    foreach my $page (@$pages) {
+      # FIXME pass the information that it is associated with @top or @node Top?
+      my $filename = &$Texinfo::Config::page_file_name($self, $page, 
+                                                       $page->{'filename'});
+    }
+  }
+  foreach my $page (@$pages) {
+    $self->{'file_counters'}->{$page->{'filename'}}++;
   }
 }
 
@@ -870,7 +1007,7 @@ sub _prepare_elements($$)
   } else {
     $elements = Texinfo::Structuring::split_by_section($root);
   }
-  $self->_set_root_commands_id($elements) if ($elements);
+  $self->_set_root_commands_targets_node_files($elements);
   return $elements;
 }
 
@@ -934,18 +1071,30 @@ sub output($$)
            or $self->{'OUTFILE'} eq '')) {
     $self->{'SPLIT'} = 0;
   }
+  if (!exists($self->{'set'}->{'NODE_FILES'}) and $self->{'SPLIT'}) {
+    $self->{'NODE_FILES'} = 1;
+  }
+  if (!exists($self->{'set'}->{'NODE_FILENAMES'}) 
+      and ($self->{'NODE_FILES'} or $self->{'SPLIT'} eq 'node')) {
+    $self->{'NODE_FILENAMES'} = 1;
+  }
+                                                   
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
   # undef if no elements or not split
   my $pages = Texinfo::Structuring::split_pages($elements, $self->{'SPLIT'});
+  $self->{'pages'} = $pages;
   
   # TODO handle special elements, footnotes element, contents and shortcontents
   # elements, titlepage association
 
-  # this sets OUTFILE, to be used if not split, but also 'output_dir',
+  # this sets OUTFILE, to be used if not split, but also 'destination_directory',
   # and 'output_filename' that are useful when split.
   $self->_set_outfile();
+
+  # determine file names associated with the different pages.
+  $self->_set_page_files($pages);
 
   my $fh;
   my $output = '';
@@ -976,7 +1125,6 @@ sub output($$)
     my %files;
     # TODO set page file names $page->{'filename'} (relative) and 
     # $page->{'out_filename'} (absolute)
-    # also set $files{$page->{'filename'}}->{'counter'}
     
     foreach my $page (@$pages) {
       my $file_fh;
@@ -999,8 +1147,8 @@ sub output($$)
         my $element_text = $self->_convert_element($element);
         print $file_fh $element_text;
       }
-      $files{$page->{'filename'}}->{'counter'}--;
-      if ($files{$page->{'filename'}}->{'counter'} == 0) {
+      $self->{'file_counters'}->{$page->{'filename'}}--;
+      if ($self->{'file_counters'}->{$page->{'filename'}} == 0) {
         # end file
       }
     }

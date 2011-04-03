@@ -401,7 +401,7 @@ foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption') {
 
 my %global_multiple_commands;
 foreach my $global_multiple_command ('author', 'documentlanguage', 
-  'documentencoding',
+  'documentencoding', 'insertcopying',
   'subtitle', 'contents', 'shortcontents', 'summarycontents',
   'kbdinputstyle', 'paragraphindent', 'firstparagraphindent',
   'frenchspacing', 'footnotestyle', 'hyphenation', 'urefbreakstyle',

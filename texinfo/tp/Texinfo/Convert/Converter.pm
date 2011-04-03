@@ -206,25 +206,35 @@ sub _set_outfile($$$)
         and $self->{'extra'}->{'setfilename'}->{'extra'}
         and defined($self->{'extra'}->{'setfilename'}->{'extra'}->{'text_arg'}));
 
+  my $document_name;
   # determine output file and output file name
   if (!defined($self->{'OUTFILE'})) {
     if (defined($setfilename)) {
       $self->{'OUTFILE'} = $setfilename;
       if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
         $self->{'OUTFILE'} =~ s/\.[^\.]*$//;
+        $document_name = $self->{'OUTFILE'};
         $self->{'OUTFILE'} .= '.'.$self->{'EXTENSION'} 
           if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
       }
     } elsif ($input_basename ne '') {
       $self->{'OUTFILE'} = $input_basename;
       $self->{'OUTFILE'} =~ s/\.te?x(i|info)?$//;
+      $document_name = $self->{'OUTFILE'};
       $self->{'OUTFILE'} .= '.'.$self->{'EXTENSION'} 
         if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
     } else {
       $self->{'OUTFILE'} = '';
+      $document_name = $self->{'OUTFILE'};
     }
     if (defined($self->{'SUBDIR'}) and $self->{'OUTFILE'} ne '') {
       $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
+    }
+  } else {
+    $document_name = $self->{'OUTFILE'};
+    # FIXME use a different configuration variable?
+    if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
+      $document_name =~ s/\.[^\.]*$//;
     }
   }
 
@@ -233,13 +243,20 @@ sub _set_outfile($$$)
   # the result in a string and there is a setfilename.
   if ($self->{'OUTFILE'} eq '' and defined($setfilename)) {
     $output_basename = $setfilename;
+    $document_name = $setfilename;
+    if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
+      $document_name =~ s/\.[^\.]*$//;
+    }
   }
+  # FIXME use a specific configuration variable (TOP_FILE, PREFIX)?
+  $document_name =~ s/^.*\///;
+  $self->{'document_name'} = $document_name;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
   my $output_dir = $self->{'OUTFILE'};
   $output_dir =~ s|[^/]*$||;
   if ($output_dir ne '') {
-    $self->{'output_dir'} = $output_dir;
+    $self->{'destination_directory'} = $output_dir;
   }
 }
 
