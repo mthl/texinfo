@@ -175,11 +175,6 @@ do
         continue
       fi
       use_tex4ht=yes
-    elif echo "$remaining" | grep -qs -- '-init info.init'; then
-      do_info=yes
-    fi
-    if echo "$remaining" | grep -qs -- '--info'; then
-      do_info=yes
     fi
     one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
@@ -217,8 +212,6 @@ do
       rm -f "$out_dir/$dir/$basename.1"
     fi
     if [ -d "$results_dir/$dir" ]; then
-      #exclude_info=
-      #[ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
       diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "$out_dir/$dir" 2>>$logfile > "$diffs_dir/$dir.diff"
       dif_ret=$?
       if [ $dif_ret != 0 ]; then

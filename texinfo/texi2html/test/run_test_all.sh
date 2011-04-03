@@ -278,8 +278,6 @@ do
         rm -f "${outdir}$dir/$basename.1"
       fi
       if [ -d "$results_dir/$dir" ]; then
-      #exclude_info=
-      #[ z"$do_info" = z'yes' ] && exclude_info="--exclude=$basename.2"
         diff -a -u --exclude=CVS --exclude='*.png' --exclude='*_l2h.css' -r "$results_dir/$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then

@@ -43,6 +43,8 @@ $commands_args{'^'} = [[[]];
 
 $commands_formatting{'normal' | 'string' | 'preformatted'}
 
+When the HTML.pm is finished, document the API, that is everything
+in Texinfo::Config.
 
 Handle
 @xrefautomaticsectiontitle on|off
