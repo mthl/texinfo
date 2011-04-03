@@ -200,13 +200,13 @@ $result_sectioning{'double_top_section'}{'section_childs'}[1]{'section_up'} = $r
 
 $result_errors{'double_top_section'} = [
   {
-    'error_line' => ':5: @top already exists
+    'error_line' => ':5: warning: Multiple @top
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@top already exists',
-    'type' => 'error'
+    'text' => 'Multiple @top',
+    'type' => 'warning'
   }
 ];
 

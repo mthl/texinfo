@@ -139,13 +139,13 @@ sub paragraph_number($)
 sub top_format($)
 {
   my $self = shift;
-  return $self->{'context'}->[-1]->{'formats'};
+  return $self->{'formats'}->[-1];
 }
 
 sub align($)
 {  
   my $self = shift;
-  return $self->{'context'}->[-1]->{'align'};
+  return $self->{'context'}->[-1]->{'align'}->[-1];
 }
 
 
@@ -176,6 +176,7 @@ my %defaults = (
   'OPEN_QUOTE_SYMBOL'    => '&lsquo;',
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
+  'allowcodebreaks'      => 'true',
 
 
   'DEBUG'                => 0,
@@ -605,9 +606,9 @@ sub paragraph_type($$$$)
     my $in_format = $self->top_format();
     # FIXME also verify that in @item/@tab/@headitem
     return $content 
-      if ($in_format eq 'itemize' 
-          or $in_format eq 'enumerate'
-          or $in_format eq 'multitable');
+      if ($in_format and ($in_format eq 'itemize' 
+                          or $in_format eq 'enumerate'
+                          or $in_format eq 'multitable'));
   }
   my $align = $self->align();
   if ($paragraph_style{$align}) {
@@ -748,9 +749,9 @@ sub _initialize($)
     }
   }
 
-  $self->{'context'} = [{'cmdname' => '_toplevel_context'}];
+  $self->{'context'} = [{'cmdname' => '_toplevel_context', 
+                         'align' => ['raggedright']}];
   $self->{'formats'} = [];
-  $self->{'align'} = ['raggedright'];
 
   return $self;
 }
@@ -799,8 +800,11 @@ sub _set_root_commands_id($$)
 
   foreach my $element (@$elements) {
     foreach my $root_command(@{$element->{'contents'}}) {
+      # FIXME this happens before the first element, for type 'text_root'.
+      # What should be done in that case?
+      next if (!defined($root_command->{'cmdname'}));
       if ($root_command->{'cmdname'} eq 'node') {
-        my $target = _normalized_to_id($root_command->{'extra'}->{'normalzed'});
+        my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
         my $id = $target;
         # FIXME something spcial for Top node ?
         if (defined($Texinfo::Config::node_target_name)) {
@@ -838,6 +842,20 @@ sub _set_root_commands_id($$)
                                               'id' => $id};
       }
     }
+  }
+}
+
+sub _set_page_files($$)
+{
+  my $self = shift;
+  my $pages = shift;
+  return undef if (!defined($pages) or !@$pages);
+
+  my $node_top = $self->{'labels'}->{'Top'};
+  
+  # first determine the top node file name.
+  if ($self->{'USE_NODES'}) {
+    
   }
 }
 
@@ -932,6 +950,7 @@ sub output($$)
   my $fh;
   my $output = '';
   if (!$pages) {
+    # not split output
     if ($self->{'OUTFILE'} ne '') {
       $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'},
                                             $self->{'perl_encoding'});
@@ -941,7 +960,6 @@ sub output($$)
         return undef;
       }
       #$self->{'fh'} = $fh;
-      
     }
     my $header = page_head($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
@@ -954,6 +972,7 @@ sub output($$)
       $output .= _output_text($self->_convert($root), $fh);
     } 
   } else {
+    # split output
     my %files;
     # TODO set page file names $page->{'filename'} (relative) and 
     # $page->{'out_filename'} (absolute)
@@ -1283,7 +1302,8 @@ sub _convert($$)
       my $result;
       my $content_formatted;
       if (exists($format_context_commands{$root->{'cmdname'}})) {
-        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'}};
+        push @{$self->{'context'}}, {'cmdname' => $root->{'cmdname'},
+                                     'align' => ['raggedright']};
       }
       if (exists($block_commands{$root->{'cmdname'}})) {
         push @{$self->{'formats'}}, $root->{'cmdname'};
@@ -1301,7 +1321,7 @@ sub _convert($$)
       } elsif ($root->{'cmdname'} eq 'w') {
         $self->{'context'}->[-1]->{'space_protected'}++;
       } elsif ($align_commands{$root->{'cmdname'}}) {
-        push @{$self->{'align'}}, $root->{'cmdname'};
+        push @{$self->{'context'}->[-1]->{'align'}}, $root->{'cmdname'};
       }
       if ($root->{'contents'}) {
         $content_formatted = '';
@@ -1358,7 +1378,7 @@ sub _convert($$)
       } elsif ($root->{'cmdname'} eq 'w') {
         $self->{'context'}->[-1]->{'space_protected'}--;
       } elsif ($align_commands{$root->{'cmdname'}}) {
-        pop @{$self->{'align'}};
+        pop @{$self->{'context'}->[-1]->{'align'}};
       }
       if (exists($block_commands{$root->{'cmdname'}})) {
         pop @{$self->{'formats'}};

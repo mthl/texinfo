@@ -1236,6 +1236,7 @@ Second top.
 
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  #push @{$test->[2]->{'test_formats'}}, 'html';
 }
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';

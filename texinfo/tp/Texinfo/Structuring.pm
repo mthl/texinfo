@@ -198,8 +198,9 @@ sub sectioning_structure($$)
         and $content->{'cmdname'} ne 'bye') {
       if ($content->{'cmdname'} eq 'top') {
         if ($section_top) {
-          $self->line_error($self->__("\@top already exists"), 
-                                       $content->{'line_nr'});
+      #    already warned as a unique command.
+      #    $self->line_error($self->__("\@top already exists"), 
+      #                                 $content->{'line_nr'});
         } else {
           $section_top = $content;
         }

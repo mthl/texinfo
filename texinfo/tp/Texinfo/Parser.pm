@@ -418,7 +418,7 @@ foreach my $global_unique_command ('title',
   'setshortcontentsaftertitlepage',
   'documentencoding', 'everyheadingmarks','everyfootingmarks',
   'evenheadingmarks', 'oddheadingmarks', 'evenfootingmarks', 'oddfootingmarks',
-  'fonttextsize', 'pagesizes', 'setchapternewpage'
+  'fonttextsize', 'pagesizes', 'setchapternewpage', 'top'
 ) {
   $global_unique_commands{$global_unique_command} = 1;
 }

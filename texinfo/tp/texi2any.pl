@@ -169,6 +169,7 @@ require Text::Unidecode;
 require Texinfo::Parser;
 require Texinfo::Structuring;
 require Texinfo::Convert::Info;
+require Texinfo::Convert::HTML;
 require DebugTexinfo::DebugCount;
 
 # determine configuration directories.
@@ -573,6 +574,11 @@ my %formats_table = (
              'nodes_tree' => 1,
              'floats' => 1,
              'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
+           },
+  'html' => {
+             'nodes_tree' => 1,
+             'floats' => 1,
+             'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'debugcount' => {
              'nodes_tree' => 1,
