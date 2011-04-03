@@ -498,6 +498,71 @@ foreach my $command (keys(%accent_commands)) {
   $default_commands_conversion{$command} = \&accent_commands;
 }
 
+my $DEFAULT_RULE = '<hr>';
+
+sub default_heading_text($$$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $text = shift;
+  my $level = shift;
+  my $command = shift;
+
+  return '' if ($text !~ /\S/);
+  # FIXME use a class=*contents?
+  my $class = '';
+  if ($cmdname !~ /contents$/) {
+    $class = $cmdname;
+    $class = 'node-heading' if ($cmdname eq 'node');
+  }   
+  my $align = '';
+  $align = ' align="center"' if ($cmdname eq 'centerchap' or $cmdname eq 'settitle');
+  $level = 1 if ($level == 0);
+  my $result = $self->attribute_class ("h$level", $class) ."$align>$text</h$level>";
+  # FIXME titlefont appears inline in text, so no end of line is
+  # added. The end of line should be added by the user if needed.
+  $result .= "\n" unless ($cmdname eq 'titlefont');
+  $result .= $DEFAULT_RULE . "\n" if ($cmdname eq 'part' and defined($DEFAULT_RULE) and $DEFAULT_RULE ne '');
+  return $result;
+}
+
+sub expand_heading_commands($$$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $contents = shift;
+
+  # FIXME in texi2html, level is set to 0 if top node, 3 otherwise 
+  # and it is printed if $element->{'this'} and !$element->{'with_section'}
+
+  my $do_heading = 1;
+  if ($cmdname eq 'node') {
+    $do_heading = 0;
+  }
+  # FIXME TODO
+  #if ($self->{'TOC_LINKS'} and defined($element->{'tocid'})) {
+  #  $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
+  #}
+  my $heading = $args->[0]->{'normal'};
+  my $result = '';
+  if ($heading ne '' and $do_heading) {
+    if ($self->in_preformatted()) {
+      $result .= '<strong>'.$heading.'</strong>'."\n";
+    } else {
+      $result .= &{$self->{'heading_text'}}($self, $cmdname, $heading, 
+                                            $command->{'level'}, $command);
+    }
+  }
+  $result .= $contents if (defined($contents));
+  return $result;
+}
+
+foreach my $command (keys(%sectioning_commands), 'node') {
+  $default_commands_conversion{$command} = \&expand_heading_commands;
+}
+
 my %default_types_conversion;
 
 #my %ignored_types;
@@ -646,6 +711,16 @@ sub _initialize($)
     }
   }
 
+  foreach my $formatting_references (
+     ['heading_text', \&default_heading_text, $Texinfo::Config::heading_text],
+  ) {
+    if (defined($formatting_references->[2])) {
+      $self->{$formatting_references->[0]} = $formatting_references->[2];
+    } else {
+      $self->{$formatting_references->[0]} = $formatting_references->[1];
+    }
+  }
+
   $self->{'context'} = [{'cmdname' => '_toplevel_context'}];
   $self->{'formats'} = [];
   $self->{'align'} = ['raggedright'];
@@ -696,7 +771,7 @@ sub _set_root_commands_id($$)
   my $elements = shift;
 
   foreach my $element (@$elements) {
-    foreach my $root_command($element->{'contents'}) {
+    foreach my $root_command(@{$element->{'contents'}}) {
       if ($root_command->{'cmdname'} eq 'node') {
         my $target = _normalized_to_id($root_command->{'extra'}->{'normalzed'});
         my $id = $target;
