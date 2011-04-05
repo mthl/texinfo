@@ -23,6 +23,7 @@ use 5.00405;
 use strict;
 
 use Texinfo::Report;
+use Texinfo::Common;
 
 use vars qw(@ISA);
 @ISA = qw(Texinfo::Report);
@@ -85,7 +86,11 @@ sub converter(;$)
   }
   my %defaults = $converter->_defaults();
   foreach my $key (keys(%defaults)) {
-    $converter->{$key} = $defaults{$key};
+    if (Texinfo::Common::valid_option($key)) {
+      $converter->{'conf'}->{$key} = $defaults{$key};
+    } else {
+      $converter->{$key} = $defaults{$key};
+    }
   }
   if (defined($conf)) {
     if ($conf->{'parser'}) {
@@ -103,12 +108,12 @@ sub converter(;$)
 
       $converter->{'floats'} = $floats if ($floats);
       $converter->{'labels'} = $labels if ($labels);
-      $converter->{'setcontentsaftertitlepage'} = 1 
+      $converter->set_conf('setcontentsaftertitlepage', 1)
          if ($converter->{'extra'}->{'contents'} 
                and $converter->{'extra'}->{'setcontentsaftertitlepage'}
                and $converter->{'structuring'}
                and $converter->{'structuring'}->{'sectioning_root'});
-      $converter->{'setshortcontentsaftertitlepage'} = 1 
+      $converter->set_conf('setshortcontentsaftertitlepage', 1)
          if (($converter->{'extra'}->{'shortcontents'} 
               or $converter->{'extra'}->{'summarycontents'})
                and $converter->{'extra'}->{'setshortcontentsaftertitlepage'}
@@ -133,7 +138,11 @@ sub converter(;$)
         # many things may be passed down
         #warn "$key not a possible configuration in $name\n";
       } else {
-        $converter->{$key} = $conf->{$key};
+        if (Texinfo::Common::valid_option($key)) {
+          $converter->{'conf'}->{$key} = $conf->{$key};
+        } else {
+          $converter->{$key} = $conf->{$key};
+        }
         $converter->{'set'}->{$key} = 1;
       }
     }
@@ -176,9 +185,50 @@ sub _unset_global_multiple_commands($)
       my $root = $converter->{'extra'}->{$global_command}->[0];
       next if ($converter->{'set'}->{$root->{'cmdname'}} 
                or !exists($defaults{$root->{'cmdname'}}));
-      $converter->{$root->{'cmdname'}} = $defaults{$root->{'cmdname'}};
+      $converter->set_conf($root->{'cmdname'}, $defaults{$root->{'cmdname'}});
     }
   }
+}
+
+sub get_conf($$)
+{
+  my $self = shift;
+  my $conf = shift;
+  if (!Texinfo::Common::valid_option($conf)) {
+    warn "BUG: unknown option $conf\n";
+    return undef;
+  }
+  return $self->{'conf'}->{$conf};
+}
+
+sub set_conf($$$)
+{
+  my $self = shift;
+  my $conf = shift;
+  my $value = shift;
+  if (!Texinfo::Common::valid_option($conf)) {
+    warn "BUG: unknown option $conf\n";
+    return undef;
+  }
+  if ($self->{'set'}->{$conf}) {
+    return 0;
+  } else {
+    $self->{'conf'}->{$conf} = $value;
+    return 1;
+  }
+}
+
+sub force_conf($$$)
+{
+  my $self = shift;
+  my $conf = shift; 
+  my $value = shift;
+  if (!Texinfo::Common::valid_option($conf)) {
+    warn "BUG: unknown option $conf\n";
+    return undef;
+  }
+  $self->{'conf'}->{$conf} = $value;
+  return 1;
 }
 
 my $STDIN_DOCU_NAME = 'stdin';
@@ -208,43 +258,47 @@ sub _set_outfile($$$)
 
   my $document_name;
   # determine output file and output file name
-  if (!defined($self->{'OUTFILE'})) {
+  my $outfile;
+  if (!defined($self->get_conf('OUTFILE'))) {
     if (defined($setfilename)) {
-      $self->{'OUTFILE'} = $setfilename;
-      if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
-        $self->{'OUTFILE'} =~ s/\.[^\.]*$//;
-        $document_name = $self->{'OUTFILE'};
-        $self->{'OUTFILE'} .= '.'.$self->{'EXTENSION'} 
-          if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $outfile = $setfilename;
+      if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
+        $outfile =~ s/\.[^\.]*$//;
+        $document_name = $outfile;
+        $outfile .= '.'.$self->get_conf('EXTENSION') 
+          if (defined($self->get_conf('EXTENSION')) 
+              and $self->get_conf('EXTENSION') ne '');
       }
     } elsif ($input_basename ne '') {
-      $self->{'OUTFILE'} = $input_basename;
-      $self->{'OUTFILE'} =~ s/\.te?x(i|info)?$//;
-      $document_name = $self->{'OUTFILE'};
-      $self->{'OUTFILE'} .= '.'.$self->{'EXTENSION'} 
-        if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $outfile = $input_basename;
+      $outfile =~ s/\.te?x(i|info)?$//;
+      $document_name = $outfile;
+      $outfile .= '.'.$self->get_conf('EXTENSION') 
+        if (defined($self->get_conf('EXTENSION')) 
+            and $self->get_conf('EXTENSION') ne '');
     } else {
-      $self->{'OUTFILE'} = '';
-      $document_name = $self->{'OUTFILE'};
+      $outfile = '';
+      $document_name = $outfile;
     }
-    if (defined($self->{'SUBDIR'}) and $self->{'OUTFILE'} ne '') {
-      $self->{'OUTFILE'} = "$self->{'SUBDIR'}/$self->{'OUTFILE'}";
+    if (defined($self->get_conf('SUBDIR')) and $outfile ne '') {
+      $outfile = $self->get_conf('SUBDIR')."/$outfile";
     }
+    $self->set_conf('OUTFILE', $outfile);
   } else {
-    $document_name = $self->{'OUTFILE'};
+    $document_name = $self->get_conf('OUTFILE');
     # FIXME use a different configuration variable?
-    if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
+    if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
       $document_name =~ s/\.[^\.]*$//;
     }
   }
 
-  my $output_basename = $self->{'OUTFILE'};
+  my $output_basename = $self->get_conf('OUTFILE');
   # this is a case that should happen rarely: one wants to get 
   # the result in a string and there is a setfilename.
-  if ($self->{'OUTFILE'} eq '' and defined($setfilename)) {
+  if ($self->get_conf('OUTFILE') eq '' and defined($setfilename)) {
     $output_basename = $setfilename;
     $document_name = $setfilename;
-    if (!$self->{'USE_SETFILENAME_EXTENSION'}) {
+    if (!$self->get_conf('USE_SETFILENAME_EXTENSION')) {
       $document_name =~ s/\.[^\.]*$//;
     }
   }
@@ -253,7 +307,7 @@ sub _set_outfile($$$)
   $self->{'document_name'} = $document_name;
   $output_basename =~ s/^.*\///;
   $self->{'output_filename'} = $output_basename;
-  my $output_dir = $self->{'OUTFILE'};
+  my $output_dir = $self->get_conf('OUTFILE');
   $output_dir =~ s|[^/]*$||;
   if ($output_dir ne '') {
     $self->{'destination_directory'} = $output_dir;
@@ -290,7 +344,7 @@ if (0) {
 sub expand_today($)
 {
   my $self = shift;
-  if ($self->{'TEST'}) {
+  if ($self->get_conf('TEST')) {
     return {'text' => 'a sunny day'};
   }
   my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
@@ -447,13 +501,13 @@ sub xml_accents($$)
   my $self = shift;
   my $accent = shift;
   my $format_accents;
-  if ($self->{'USE_NUMERIC_ENTITY'}) {
+  if ($self->get_conf('USE_NUMERIC_ENTITY')) {
     $format_accents = \&xml_accent_numeric_entities;
   } else {
     $format_accents = \&xml_accent;
   }
   
-  if ($self->{'ENABLE_ENCODING'}) {
+  if ($self->get_conf('ENABLE_ENCODING')) {
     if ($self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
       return Texinfo::Convert::Text::unicode_accents($accent, $format_accents);
     } elsif ($self->{'encoding_name'} 

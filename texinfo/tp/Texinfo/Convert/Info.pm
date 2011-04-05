@@ -59,9 +59,9 @@ sub output($)
   $self->{'input_basename'} = $STDIN_DOCU_NAME if ($self->{'input_basename'} eq '-');
 
   # no splitting when writing to the null device or to stdout
-  if ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}} 
-       or $self->{'OUTFILE'} eq '-') {
-    $self->{'SPLIT_SIZE'} = undef;
+  if ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')} 
+       or $self->get_conf('OUTFILE') eq '-') {
+    $self->force_conf('SPLIT_SIZE', undef);
   }
 
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
@@ -81,17 +81,16 @@ sub output($)
   my $elements = Texinfo::Structuring::split_by_node($root);
 
   my $fh;
-  if (! $self->{'OUTFILE'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'}, 
+  if (! $self->get_conf('OUTFILE') eq '') {
+    $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'), 
                                             $self->{'perl_encoding'});
     if (!$fh) {
       $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->{'OUTFILE'}, $!));
+                                    $self->get_conf('OUTFILE'), $!));
       return undef;
     }
-    #$self->{'fh'} = $fh;
   }
-  print STDERR "DOCUMENT\n" if ($self->{'DEBUG'});
+  print STDERR "DOCUMENT\n" if ($self->get_conf('DEBUG'));
   my $out_file_nr = 0;
   my @indirect_files;
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
@@ -126,33 +125,33 @@ sub output($)
       } else {
         $result .= $node_text;
       }
-      if (defined($self->{'SPLIT_SIZE'}) 
+      if (defined($self->get_conf('SPLIT_SIZE')) 
           and $self->{'count_context'}->[-1]->{'bytes'} > 
-                  $out_file_nr * $self->{'SPLIT_SIZE'} and @nodes and $fh) {
+                  $out_file_nr * $self->get_conf('SPLIT_SIZE') 
+          and @nodes and $fh) {
         close ($fh);
         if ($out_file_nr == 1) {
-          unless (rename ($self->{'OUTFILE'}, 
-                          $self->{'OUTFILE'}.'-'.$out_file_nr)) {
+          unless (rename ($self->get_conf('OUTFILE'), 
+                          $self->get_conf('OUTFILE').'-'.$out_file_nr)) {
             $self->document_error(sprintf($self->__("Rename %s failed: %s"), 
-                                         $self->{'OUTFILE'}, $!));
+                                         $self->get_conf('OUTFILE'), $!));
           }
           push @{$self->{'opened_files'}}, 
-                   $self->{'OUTFILE'}.'-'.$out_file_nr;
+                   $self->get_conf('OUTFILE').'-'.$out_file_nr;
           push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
                                  $first_node_bytes_count];
           #print STDERR join(' --> ', @{$indirect_files[-1]}) ."\n";
         }
         $out_file_nr++;
         $fh = $self->Texinfo::Common::open_out (
-                               $self->{'OUTFILE'}.'-'.$out_file_nr, 
+                               $self->get_conf('OUTFILE').'-'.$out_file_nr, 
                                $self->{'perl_encoding'});
         if (!$fh) {
            $self->document_error(sprintf(
                   $self->__("Could not open %s for writing: %s"),
-                  $self->{'OUTFILE'}.'-'.$out_file_nr, $!));
+                  $self->get_conf('OUTFILE').'-'.$out_file_nr, $!));
            return undef;
         }
-        #$self->{'fh'} = $fh;
         print $fh $header;
         $self->{'count_context'}->[-1]->{'bytes'} += $header_bytes;
         push @indirect_files, [$self->{'output_filename'}.'-'.$out_file_nr,
@@ -164,12 +163,12 @@ sub output($)
   my $tag_text = '';
   if ($out_file_nr > 1) {
     close ($fh);
-    $fh = $self->Texinfo::Common::open_out($self->{'OUTFILE'}, 
+    $fh = $self->Texinfo::Common::open_out($self->get_conf('OUTFILE'), 
                                            $self->{'perl_encoding'});
     if (!$fh) {
       $self->document_error(sprintf(
             $self->__("Could not open %s for writing: %s"),
-            $self->{'OUTFILE'}, $!));
+            $self->get_conf('OUTFILE'), $!));
       return undef;
     }
     $tag_text = $header;
@@ -244,7 +243,7 @@ sub _info_header($)
   $self->{'empty_lines_count'} = 1;
 
   if ($self->{'extra'} and $self->{'extra'}->{'copying'}) {
-    print STDERR "COPYING HEADER\n" if ($self->{'DEBUG'});
+    print STDERR "COPYING HEADER\n" if ($self->get_conf('DEBUG'));
     $self->_set_global_multiple_commands();
     $self->{'in_copying_header'} = 1;
     my $copying = $self->_convert({'contents' => 

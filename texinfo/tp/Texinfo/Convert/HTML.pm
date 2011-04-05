@@ -460,8 +460,8 @@ sub style_commands($$$$)
               . "$text" . "</$style>";
     }
     if (defined($attribute_hash->{$cmdname}->{'quote'})) {
-      $text = $self->{'OPEN_QUOTE_SYMBOL'} . $text
-                . $self->{'CLOSE_QUOTE_SYMBOL'};
+      $text = $self->get_conf('OPEN_QUOTE_SYMBOL') . $text
+                . $self->get_conf('CLOSE_QUOTE_SYMBOL');
     }
   }
   return $text;
@@ -665,14 +665,15 @@ sub process_text($$$)
 
   $text = uc($text) if ($self->in_upper_case());
   $text = $self->xml_protect_text($text);
-  if ($self->{'ENABLE_ENCODING'} and !$self->{'ENABLE_ENCODING_USE_ENTITY'}
+  if ($self->get_conf('ENABLE_ENCODING') and 
+      !$self->get_conf('ENABLE_ENCODING_USE_ENTITY')
       and $self->{'encoding_name'} and $self->{'encoding_name'} eq 'utf-8') {
     my $context = {'code' => $self->in_code(), 
                    'preformatted' => $self->in_preformatted()};
     $text = Texinfo::Convert::Unicode::unicode_text($self, $text, $command,
                                                          $context);
   } elsif (!$self->in_code() and !$self->in_preformatted()) {
-    if ($self->{'USE_ISO'}) {
+    if ($self->get_conf('USE_ISO')) {
       $text =~ s/---/\&mdash\;/g;
       $text =~ s/--/\&ndash\;/g;
       $text =~ s/``/\&ldquo\;/g;
@@ -697,8 +698,8 @@ sub _initialize($)
 {
   my $self = shift;
 
-  if (!$self->{'set'}->{'EXTENSION'} and $self->{'SHORTEXTN'}) {
-    $self->{'EXTENSION'} = 'htm';
+  if ($self->get_conf('SHORTEXTN')) {
+    $self->set_conf('EXTENSION', 'html');
   }
 
   %{$self->{'css_map'}} = %css_map;
@@ -781,11 +782,11 @@ sub _convert_element($$)
 
   my $result = '';
 
-  print STDERR "NEW ELEMENT\n" if ($self->{'DEBUG'});
+  print STDERR "NEW ELEMENT\n" if ($self->get_conf('DEBUG'));
 
   $result .= $self->_convert($element);
 
-  print STDERR "END ELEMENT\n" if ($self->{'DEBUG'});
+  print STDERR "END ELEMENT\n" if ($self->get_conf('DEBUG'));
 
   #$result .= $self->_footnotes($element);
 
@@ -817,8 +818,8 @@ sub _set_root_commands_targets_node_files($$)
   my $elements = shift;
 
   my $no_unidecode;
-  $no_unidecode = 1 if (defined($self->{'USE_UNIDECODE'}) 
-                        and !$self->{'USE_UNIDECODE'});
+  $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
+                        and !$self->get_conf('USE_UNIDECODE'));
 
   if ($elements) {
     foreach my $element (@$elements) {
@@ -840,7 +841,7 @@ sub _set_root_commands_targets_node_files($$)
             die if ($nr == 0);
           }
           my $id = $target;
-          if ($root_command->{'associated_node'} and $self->{'USE_NODE_TARGET'}) {
+          if ($root_command->{'associated_node'} and $self->get_conf('USE_NODE_TARGET')) {
             $id = $self->{'targets'}->{$root_command->{'associated_node'}}->{'id'};
           }
           if (defined($Texinfo::Config::sectioning_command_target_name)) {
@@ -866,16 +867,16 @@ sub _set_root_commands_targets_node_files($$)
                                                            $target, $id);
       }
       my $filename;
-      if ($self->{'TRANSLITERATE_FILE_NAMES'}) {
+      if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
         $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
           {'contents' => $root_command->{'extra'}->{'node_content'}},
               $no_unidecode);
       } else {
         $filename = $root_command->{'extra'}->{'normalized'};
       }
-      $filename .= '.'.$self->{'NODE_FILE_EXTENSION'} 
-        if (defined($self->{'NODE_FILE_EXTENSION'}) 
-            and $self->{'NODE_FILE_EXTENSION'} ne '');
+      $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+        if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+            and $self->get_conf('NODE_FILE_EXTENSION') ne '');
       if (defined($Texinfo::Config::node_file_name)) {
         $filename = &$Texinfo::Config::node_file_name($self, $root_command,
                                                      $filename);
@@ -917,15 +918,15 @@ sub _get_page($$)
             return $page if (defined($page));
           } 
         } elsif ($current->{'cmdname'} eq 'titlepage'
-                 and $self->{'USE_TITLEPAGE_FOR_TITLE'}
-                 and $self->{'SHOW_TITLE'}
+                 and $self->get_conf('USE_TITLEPAGE_FOR_TITLE')
+                 and $self->get_conf('SHOW_TITLE')
                  and $self->{'pages'}->[0]) {
           return $self->{'pages'}->[0];
         }
         return undef;
       }
       if ($current->{'cmdname'} eq 'footnote' 
-           and $self->{'footnotestyle'} eq 'separate') {
+           and $self->get_conf('footnotestyle') eq 'separate') {
         return $self->{'special_pages'}->{'footnotes'};
       }
     }
@@ -950,21 +951,21 @@ sub _set_page_files($$)
   #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
   # first determine the top node file name.
-  if ($self->{'NODE_FILENAMES'} and $node_top) {
-    if (defined($self->{'TOP_NODE_FILE'})) {
+  if ($self->get_conf('NODE_FILENAMES') and $node_top) {
+    if (defined($self->get_conf('TOP_NODE_FILE'))) {
       my $node_top_page = $self->_get_page($node_top);
       die "BUG: No page for top node" if (!defined($node_top));
-      my $filename = $self->{'TOP_NODE_FILE'};
-      $filename .= '.'.$self->{'NODE_FILE_EXTENSION'} 
-        if (defined($self->{'NODE_FILE_EXTENSION'}) 
-            and $self->{'NODE_FILE_EXTENSION'} ne '');
+      my $filename = $self->get_conf('TOP_NODE_FILE');
+      $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+        if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+            and $self->get_conf('NODE_FILE_EXTENSION') ne '');
       $self->_set_page_file($node_top_page, $filename);
     }
   }
   # FIXME add a number for each page?
   my $file_nr = 0;
   my $previous_page;
-  if ($self->{'NODE_FILENAMES'}) {
+  if ($self->get_conf('NODE_FILENAMES')) {
    PAGE:
     foreach my $page(@$pages) {
       if (defined($previous_page)) {
@@ -985,8 +986,9 @@ sub _set_page_files($$)
         }
       }
       my $filename = $self->{'document_name'} . "_$file_nr";
-      $filename .= '.'.$self->{'EXTENSION'} 
-          if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $filename .= '.'.$self->get_conf('EXTENSION') 
+          if (defined($self->get_conf('EXTENSION')) 
+              and $self->get_conf('EXTENSION') ne '');
       $self->_set_page_file($page, $filename);
       $file_nr++;
     }
@@ -999,8 +1001,9 @@ sub _set_page_files($$)
       }
       $previous_page = $page;
       my $filename = $self->{'document_name'} . "_$file_nr";
-      $filename .= '.'.$self->{'EXTENSION'} 
-          if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
+      $filename .= '.'.$self->get_conf('EXTENSION') 
+          if (defined($self->get_conf('EXTENSION')) 
+              and $self->get_conf('EXTENSION') ne '');
       $self->_set_page_file($page, $filename);
       $file_nr++;
     }
@@ -1023,7 +1026,7 @@ sub _prepare_elements($$)
   my $root = shift;
 
   my $elements;
-  if ($self->{'USE_NODES'}) {
+  if ($self->get_conf('USE_NODES')) {
     $elements = Texinfo::Structuring::split_by_node($root);
   } else {
     $elements = Texinfo::Structuring::split_by_section($root);
@@ -1032,13 +1035,46 @@ sub _prepare_elements($$)
   return $elements;
 }
 
-sub page_head($$$)
+# FIXME object oriented API for elements?
+sub begin_file($$$)
 {
   my $self = shift;
   my $filename = shift;
   my $page = shift;
 
   # TODO
+  
+  my $title;
+  # FIXME
+  # if ($page and $page->{'contents'}->[0]) {
+  #   my $element
+  #     = Texinfo::Convert::HTML::Element::new($self, $page->{'contents'}->[0]);
+  #   my $element_string = $selement->string();
+  #   if ($element_string ne $self->{'title_string'}) {
+  #     my $title_tree = $self->gdt('{title}: {element_text}', 
+  #                                $self->{'title_tree'}, $selement->tree());
+  #     $self->{'context'}->[-1]->{'string'} = 1;
+  #     $title = $self->_convert($title_tree);
+  #     delete $self->{'context'}->[-1]->{'string'};
+  #   }
+  # }
+  $title = $self->{'title_string'} if (!defined($title));
+
+  my $description;
+  if ($self->{'documentdescription_string'}) {
+    $description = $self->{'documentdescription_string'};
+  } else {
+    $description = $title;
+  }
+  $description = "<meta name=\"description\" content=\"$description\">" 
+    if ($description ne '');
+  my $encoding = '';
+  $encoding 
+     = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".
+       $self->get_conf('ENCODING_NAME')."\">" 
+    if (defined($self->get_conf('ENCODING_NAME')) 
+        and ($self->get_conf('ENCODING_NAME') ne ''));
+  
   return '';
 }
 
@@ -1086,39 +1122,39 @@ sub output($$)
 
   # no splitting when writing to the null device or to stdout or returning
   # a string
-  if (defined($self->{'OUTFILE'})
-      and ($Texinfo::Common::null_device_file{$self->{'OUTFILE'}}
-           or $self->{'OUTFILE'} eq '-'
-           or $self->{'OUTFILE'} eq '')) {
-    $self->{'SPLIT'} = 0;
+  if (defined($self->get_conf('OUTFILE'))
+      and ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')}
+           or $self->get_conf('OUTFILE') eq '-'
+           or $self->get_conf('OUTFILE') eq '')) {
+    $self->force_conf('SPLIT', 0);
   }
-  if (!exists($self->{'set'}->{'NODE_FILES'}) and $self->{'SPLIT'}) {
-    $self->{'NODE_FILES'} = 1;
+  if ($self->{'SPLIT'}) {
+    $self->set_conf('NODE_FILES', 1);
   }
-  if (!exists($self->{'set'}->{'NODE_FILENAMES'}) 
-      and ($self->{'NODE_FILES'} or $self->{'SPLIT'} eq 'node')) {
-    $self->{'NODE_FILENAMES'} = 1;
+  if ($self->get_conf('NODE_FILES') or $self->get_conf('SPLIT') eq 'node') {
+    $self->set_conf('NODE_FILENAMES', 1);
   }
                                                    
   # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
   # undef if no elements or not split
-  my $pages = Texinfo::Structuring::split_pages($elements, $self->{'SPLIT'});
+  my $pages = Texinfo::Structuring::split_pages($elements, 
+                                                $self->get_conf('SPLIT'));
   $self->{'pages'} = $pages;
   
   # TODO handle special elements, footnotes element, contents and shortcontents
   # elements, titlepage association
 
-  # this sets OUTFILE, to be used if not split, but also 'destination_directory',
-  # and 'output_filename' that are useful when split.
+  # this sets OUTFILE, to be used if not split, but also
+  # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
 
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
 
   # FIXME set language and documentencoding/encoding_name
-  # title
+  # prepare title
   my $fulltitle;
   foreach my $fulltitle_command('settitle', 'title', 
      'shorttitlepage', 'top') {
@@ -1126,7 +1162,7 @@ sub output($$)
       my $command = $self->{'extra'}->{$fulltitle_command};
       next if ($command->{'extra'} 
                and $command->{'extra'}->{'missing_argument'});
-      $fulltitle = $command;
+      $fulltitle = {'contents' => $command->{'contents'}};
       last;
     }
   }
@@ -1136,49 +1172,71 @@ sub output($$)
       and defined($self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}->[0])) {
     $fulltitle = $self->{'extra'}->{'titlefont'}->[0];
   }
-  my $simpletitle;
+  # prepare simpletitle
   foreach my $simpletitle_command('settitle', 'shorttitlepage') {
     if ($self->{'extra'}->{$simpletitle_command}) {
       my $command = $self->{'extra'}->{$simpletitle_command};
       next if ($command->{'extra'} 
                and $command->{'extra'}->{'missing_argument'});
-      $simpletitle = $command;
+      $self->{'simpletitle_tree'} = {'contents' => $command->{'contents'}};
       last;
     }
   }
 
-  my $default_title = $self->gdt('Untitled Document');
   $self->{'context'}->[-1]->{'string'} = 1;
-  my $html_default_title = $self->_convert($default_title);
+  my $html_title_string;
+  if ($fulltitle) {
+    $self->{'title_tree'} = $fulltitle;
+    $html_title_string = $self->_convert($self->{'title_tree'});
+  }
+  if (!defined($html_title_string) or $html_title_string !~ /\S/) {
+    my $default_title = $self->gdt('Untitled Document');
+    $self->{'title_tree'} = $default_title;
+    $self->{'title_string'} = $self->_convert($self->{'title_tree'});
+    $self->document_warn(__("Must specify a title with a title command or \@top"));
+  } else {
+    $self->{'title_string'} = $html_title_string;
+  }
   delete $self->{'context'}->[-1]->{'string'};
+
+  # copying comment
   if ($self->{'extra'}->{'copying'}) {
     my $options;
-    if ($self->{'ENABLE_ENCODING'} and $self->{'encoding_name'}) {
+    if ($self->get_conf('ENABLE_ENCODING') 
+        and $self->{'encoding_name'}) {
       $options->{'enabled_encoding'} = $self->{'encoding_name'};
     }
-
     my $copying_comment = Texinfo::Convert::Text::convert(
      {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, $options);
     if ($copying_comment ne '') {
-      $copying_comment = &{$self->{'comment'}}($self, $copying_comment);
+      $self->{'copying_comment'} = &{$self->{'comment'}}($self, $copying_comment);
     }
   }
 
+  # documentdescription
+  if ($self->{'extra'}->{'documentdescription'}) {
+    $self->{'context'}->[-1]->{'string'} = 1;
+    $self->{'documentdescription_string'} = $self->_convert(
+      {'contents' => $self->{'extra'}->{'documentdescription'}->{'contents'}});
+    delete $self->{'context'}->[-1]->{'string'};
+  }
+
+  # Now do the output
   my $fh;
   my $output = '';
   if (!$pages) {
     # not split output
-    if ($self->{'OUTFILE'} ne '') {
-      $fh = $self->Texinfo::Common::open_out ($self->{'OUTFILE'},
+    if ($self->get_conf('OUTFILE') ne '') {
+      $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'),
                                             $self->{'perl_encoding'});
        if (!$fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
-                                    $self->{'OUTFILE'}, $!));
+                                    $self->get_conf('OUTFILE'), $!));
         return undef;
       }
       #$self->{'fh'} = $fh;
     }
-    my $header = page_head($self, $self->{'output_filename'}, undef);
+    my $header = begin_file($self, $self->{'output_filename'}, undef);
     $output .= _output_text($header, $fh);
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
@@ -1205,8 +1263,7 @@ sub output($$)
           # FIXME close/remove files already created
           return undef;
         }
-        #print $file_fh page_head(
-        print $file_fh "".page_head($self, $page->{'filename'}, $page);
+        print $file_fh "".begin_file($self, $page->{'filename'}, $page);
         $files{$page->{'filename'}}->{'fh'} = $file_fh;
       } else {
         $file_fh = $files{$page->{'filename'}}->{'fh'};
@@ -1229,11 +1286,12 @@ sub attribute_class($$$)
   my $element = shift;
   my $class = shift;
 
-  return "<$element" if (!defined($class) or $class eq '' or $self->{'NO_CSS'});
+  return "<$element" if (!defined($class) or $class eq '' 
+                         or $self->get_conf('NO_CSS'));
 
   my $style = '';
 
-  if ($self->{'INLINE_CSS_STYLE'} 
+  if ($self->get_conf('INLINE_CSS_STYLE') 
       and defined($self->{'css_map'}->{"$element.$class"})) {
     $style = ' style="'.$self->{'css_map'}->{"$element.$class"}.'"';
   }
@@ -1249,10 +1307,11 @@ sub protect_space_codebreak($$)
 
   my $in_w = 1 if ($self->in_space_protected());
 
-  if ($in_w or $self->in_code() and $self->{'allowcodebreaks'} eq 'false') {
+  if ($in_w or $self->in_code() 
+      and $self->get_conf('allowcodebreaks') eq 'false') {
     my $class = 'nolinebreak';
     $class = 'nocodebreak' if ($self->in_code() 
-                               and $self->{'allowcodebreaks'} eq 'false');
+                           and $self->get_conf('allowcodebreaks') eq 'false');
     my $open = $self->attribute_class('span', $class).'>';
     # protect spaces in the html leading attribute in case we are in 'w'
     $open =~ s/ /\x{1F}/g if ($in_w);
@@ -1284,7 +1343,7 @@ sub _definition_category($$$$)
   #my $category = Texinfo::Convert::Texinfo::convert($arg_category->[0]);
   #my $class = Texinfo::Convert::Texinfo::convert($arg_class->[0]);
   #print STDERR "DEFINITION CATEGORY($style): $category $class\n"
-  #  if ($self->{'DEBUG'});
+  #  if ($self->get_conf('DEBUG'));
   if ($style eq 'f') {
     #return Texinfo::Parser::parse_texi_line (undef, "$category on $class");
     return $self->gdt('{category} on {class}', { 'category' => $arg_category, 
@@ -1324,7 +1383,7 @@ sub _contents($$$)
                'type' => 'frenchspacing'});
       
       my $text = numbered_heading($section, 
-                            $section_title, $self->{'NUMBER_SECTIONS'})."\n";
+                       $section_title, $self->get_conf('NUMBER_SECTIONS'))."\n";
       # FIXME get ref.
       # FIXME do li
       $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
@@ -1450,7 +1509,7 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
 
-  if ($self->{'DEBUG'}) {
+  if ($self->get_conf('DEBUG')) {
     print STDERR "ROOT:$root (".join('|',@{$self->{'context'}})."), ->";
     print STDERR " cmd: $root->{'cmdname'}," if ($root->{'cmdname'});
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
@@ -1471,7 +1530,7 @@ sub _convert($$)
        or ($root->{'cmdname'}
             and exists($self->{'commands_conversion'}->{$root->{'cmdname'}})
             and !defined($self->{'commands_conversion'}->{$root->{'cmdname'}}))) {
-    print STDERR "IGNORED\n" if ($self->{'DEBUG'});
+    print STDERR "IGNORED\n" if ($self->get_conf('DEBUG'));
     return '';
   }
 
@@ -1485,11 +1544,11 @@ sub _convert($$)
 
   if ($root->{'extra'}) {
     if ($root->{'extra'}->{'invalid_nesting'}) {
-      print STDERR "INVALID_NESTING\n" if ($self->{'DEBUG'});
+      print STDERR "INVALID_NESTING\n" if ($self->get_conf('DEBUG'));
       return '';
     } elsif ($root->{'extra'}->{'missing_argument'} 
              and (!$root->{'contents'} or !@{$root->{'contents'}})) {
-      print STDERR "MISSING_ARGUMENT\n" if ($self->{'DEBUG'});
+      print STDERR "MISSING_ARGUMENT\n" if ($self->get_conf('DEBUG'));
       return '';
     }
   }
@@ -1504,7 +1563,7 @@ sub _convert($$)
 #    }
 #    $self->{'index_entries_line_location'}->{$root} = $location;
 #    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
-#       if ($self->{'DEBUG'});
+#       if ($self->get_conf('DEBUG'));
   }
 
 

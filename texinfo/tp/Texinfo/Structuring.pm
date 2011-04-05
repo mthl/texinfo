@@ -576,9 +576,13 @@ sub split_by_section($)
         delete $current->{'extra'}->{'no_section'};
         $current->{'extra'}->{'section'} 
           = $content->{'extra'}->{'associated_section'};
+        $current->{'extra'}->{'node'} = $content;
       } else {
         $current = { 'type' => 'element', 'extra' 
-                => {'section' => $content->{'extra'}->{'associated_section'}}};
+                => {'section' => $content->{'extra'}->{'associated_section'},
+                    'node' => $content }};
+        $current->{'element_prev'} = $elements->[-1];
+        $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
     } elsif ($content->{'cmdname'} and $content->{'cmdname'} ne 'node' 
@@ -588,6 +592,8 @@ sub split_by_section($)
         $current->{'extra'}->{'section'} = $content;
       } elsif ($current->{'extra'}->{'section'} ne $content) {
         $current = { 'type' => 'element', 'extra' => {'section' => $content}};
+        $current->{'element_prev'} = $elements->[-1];
+        $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
     }

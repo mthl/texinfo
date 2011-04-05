@@ -71,6 +71,73 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
   $null_device_file{'NUL'} = 1;
 }
 
+# configuration options
+my @document_settable_at_commands =
+       ('everyheading', 'everyfooting', 'evenheading',
+        'evenfooting', 'oddheading', 'oddfooting', 'headings',
+        'allowcodebreaks', 'frenchspacing', 'exampleindent',
+        'firstparagraphindent', 'paragraphindent', 'clickstyle',
+        'documentlanguage');
+
+# those should be unique
+my @document_global_at_commands = ('contents', 'shortcontents',
+        'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
+        'footnotestyle', 'novalidate', 'kbdinputstyle', 'documentencoding',
+        'setfilename', 'today', 'documentdescription',
+        'everyheadingmarks','everyfootingmarks',
+        'evenheadingmarks','oddheadingmarks','evenfootingmarks','oddfootingmarks',
+        'fonttextsize', 'pagesizes', 'setchapternewpage'
+        );
+
+
+my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
+  'HEADERS',
+  'MACRO_EXPAND', 'NUMBER_SECTIONS',
+  'NUMBER_FOOTNOTES', 'NODE_FILES',
+  'NO_WARN', 'VERBOSE',
+  'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
+  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR', 'OUT',
+  'BATCH', 'SILENT'
+);
+
+# FIXME TOP_HEADING_AT_BEGINNING seems to be a no-op
+my @variable_settables = (
+  'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
+  'TOP_FILE', 'TOC_FILE', 'SHOW_MENU', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
+  'PREFIX', 'SHORT_REF', 'IDX_SUMMARY', 'DEF_TABLE', 'L2H', 'MONOLITHIC',
+  'L2H_L2H', 'L2H_SKIP', 'L2H_TMP', 'L2H_FILE', 'L2H_CLEAN',
+  'L2H_HTML_VERSION', 'IGNORE_PREAMBLE_TEXT', 'EXTERNAL_DIR', 'USE_ISO',
+  'SPLIT_INDEX', 'IN_ENCODING', 'USE_NLS',
+  'VERTICAL_HEAD_NAVIGATION', 'INLINE_CONTENTS', 'NODE_FILE_EXTENSION',
+  'NO_CSS', 'INLINE_CSS_STYLE', 'USE_SECTIONS', 'USE_TITLEPAGE_FOR_TITLE',
+  'SIMPLE_MENU', 'EXTENSION', 'INLINE_INSERTCOPYING', 'USE_NUMERIC_ENTITY',
+  'I18N_PERL_HASH', 'ENABLE_ENCODING_USE_ENTITY', 'ICONS', 'USE_UNICODE',
+  'USE_UNIDECODE', 'DATE_IN_HEADER', 'OPEN_QUOTE_SYMBOL',
+  'CLOSE_QUOTE_SYMBOL', 'TOP_NODE_UP', 'TOP_NODE_FILE',
+  'TOP_NODE_FILE_TARGET', 'SHOW_TITLE', 'WORDS_IN_PAGE',
+  'HEADER_IN_TABLE', 'USE_ACCESSKEY', 'USE_REL_REV', 'USE_LINKS',
+  'OVERVIEW_LINK_TO_TOC', 'AVOID_MENU_REDUNDANCY', 'NODE_NAME_IN_MENU',
+  'NODE_NAME_IN_INDEX', 'USE_SETFILENAME', 'USE_SETFILENAME_EXTENSION',
+  'COMPLEX_FORMAT_IN_TABLE',
+  'USE_UP_FOR_ADJACENT_NODES', 'TOP_HEADING_AT_BEGINNING',
+  'SEPARATE_DESCRIPTION', 'IGNORE_BEFORE_SETFILENAME',
+  'COMPLETE_IMAGE_PATHS', 'USE_NODE_TARGET', 'NEW_CROSSREF_STYLE',
+  'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES', 'DEFAULT_ENCODING',
+  'OUT_ENCODING', 'ENCODING_NAME', 'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
+  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
+  'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING');
+
+my %valid_options;
+foreach my $var (@document_settable_at_commands, @document_global_at_commands,
+         @command_line_settables, @variable_settables) {
+  $valid_options{$var} = 1;
+}
+
+sub valid_option($)
+{
+  my $option = shift;
+  return $valid_options{$option};
+}
 
 our %no_brace_commands;             # commands never taking braces
 

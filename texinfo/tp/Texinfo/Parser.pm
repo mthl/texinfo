@@ -129,7 +129,7 @@ sub gdt($$;$$)
   }
 
   # FIXME do that in the converters when @documentlanguage is found.
-  my $lang = $self->{'documentlanguage'};
+  my $lang = $self->get_conf('documentlanguage');
   $lang = $DEFAULT_LANGUAGE if (!defined($lang));
   my @langs = ($lang);
   if ($lang =~ /^([a-z]+)_([A-Z]+)/) {
@@ -186,7 +186,7 @@ sub gdt($$;$$)
     }
   }
   # FIXME reuse a parser?
-  if ($self->{'DEBUG'}) {
+  if ($self->get_conf('DEBUG')) {
     $parser_conf->{'DEBUG'} = 1;
     print STDERR "GDT $result\n";
   }
@@ -676,6 +676,13 @@ sub parser(;$$)
   $parser->Texinfo::Report::new;
 
   return $parser;
+}
+
+sub get_conf($$)
+{
+  my $self = shift;
+  my $var = shift;
+  return $self->{$var};
 }
 
 # split a scalar text in an array lines.

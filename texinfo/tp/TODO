@@ -46,6 +46,9 @@ $commands_formatting{'normal' | 'string' | 'preformatted'}
 When the HTML.pm is finished, document the API, that is everything
 in Texinfo::Config.
 
+Add an API for everything used in conf, for example in page_head, use 
+$self->title_string() and so on and so forth.  
+
 Handle
 @xrefautomaticsectiontitle on|off
 (does nothing in info, in HTML automatically set the section name as 3rd
