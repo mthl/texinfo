@@ -519,6 +519,12 @@ foreach my $command (keys(%accent_commands)) {
   $default_commands_conversion{$command} = \&accent_commands;
 }
 
+sub default_comment($$) {
+  my $self = shift;
+  my $text = shift;
+  return $self->xml_default_comment($text);
+}
+
 my $DEFAULT_RULE = '<hr>';
 
 sub default_heading_text($$$$$)
@@ -752,6 +758,7 @@ sub _initialize($)
 
   foreach my $formatting_references (
      ['heading_text', \&default_heading_text, $Texinfo::Config::heading_text],
+     ['comment', \&default_comment, $Texinfo::Config::comment],
   ) {
     if (defined($formatting_references->[2])) {
       $self->{$formatting_references->[0]} = $formatting_references->[2];
@@ -954,10 +961,18 @@ sub _set_page_files($$)
       $self->_set_page_file($node_top_page, $filename);
     }
   }
+  # FIXME add a number for each page?
   my $file_nr = 0;
+  my $previous_page;
   if ($self->{'NODE_FILENAMES'}) {
    PAGE:
     foreach my $page(@$pages) {
+      if (defined($previous_page)) {
+        $page->{'page_prev'} = $previous_page;
+        $previous_page->{'page_next'} = $page;
+      }
+      $previous_page = $page;
+      # For Top node.
       next if (defined($page->{'filename'}));
       foreach my $element (@{$page->{'contents'}}) {
         foreach my $root_comand (@{$element->{'contents'}}) {
@@ -976,7 +991,13 @@ sub _set_page_files($$)
       $file_nr++;
     }
   } else {
+    my $previous_page;
     foreach my $page(@$pages) {
+      if (defined($previous_page)) {
+        $page->{'page_prev'} = $previous_page;
+        $previous_page->{'page_next'} = $page;
+      }
+      $previous_page = $page;
       my $filename = $self->{'document_name'} . "_$file_nr";
       $filename .= '.'.$self->{'EXTENSION'} 
           if (defined($self->{'EXTENSION'}) and $self->{'EXTENSION'} ne '');
@@ -1095,6 +1116,53 @@ sub output($$)
 
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
+
+  # FIXME set language and documentencoding/encoding_name
+  # title
+  my $fulltitle;
+  foreach my $fulltitle_command('settitle', 'title', 
+     'shorttitlepage', 'top') {
+    if ($self->{'extra'}->{$fulltitle_command}) {
+      my $command = $self->{'extra'}->{$fulltitle_command};
+      next if ($command->{'extra'} 
+               and $command->{'extra'}->{'missing_argument'});
+      $fulltitle = $command;
+      last;
+    }
+  }
+  if (!$fulltitle and $self->{'extra'}->{'titlefont'}
+      and $self->{'extra'}->{'titlefont'}->[0]->{'extra'}
+      and $self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}
+      and defined($self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}->[0])) {
+    $fulltitle = $self->{'extra'}->{'titlefont'}->[0];
+  }
+  my $simpletitle;
+  foreach my $simpletitle_command('settitle', 'shorttitlepage') {
+    if ($self->{'extra'}->{$simpletitle_command}) {
+      my $command = $self->{'extra'}->{$simpletitle_command};
+      next if ($command->{'extra'} 
+               and $command->{'extra'}->{'missing_argument'});
+      $simpletitle = $command;
+      last;
+    }
+  }
+
+  my $default_title = $self->gdt('Untitled Document');
+  $self->{'context'}->[-1]->{'string'} = 1;
+  my $html_default_title = $self->_convert($default_title);
+  delete $self->{'context'}->[-1]->{'string'};
+  if ($self->{'extra'}->{'copying'}) {
+    my $options;
+    if ($self->{'ENABLE_ENCODING'} and $self->{'encoding_name'}) {
+      $options->{'enabled_encoding'} = $self->{'encoding_name'};
+    }
+
+    my $copying_comment = Texinfo::Convert::Text::convert(
+     {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, $options);
+    if ($copying_comment ne '') {
+      $copying_comment = &{$self->{'comment'}}($self, $copying_comment);
+    }
+  }
 
   my $fh;
   my $output = '';

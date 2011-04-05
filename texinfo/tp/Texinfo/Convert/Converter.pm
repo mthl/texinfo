@@ -381,6 +381,14 @@ foreach my $text_no_brace_command (keys(%Texinfo::Convert::Text::text_no_brace_c
     = $Texinfo::Convert::Text::text_no_brace_commands{$text_no_brace_command};
 }
 
+sub xml_default_comment($$)
+{
+  my $self = shift;
+  my $text = shift;
+  $text =~ s/--+/-/go;
+  return '<!-- ' . $text . ' -->' . "\n";
+}
+
 my %xml_accent_entities = (
           '"',  'uml',
           '~',  'tilde',

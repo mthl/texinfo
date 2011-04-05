@@ -548,6 +548,8 @@ sub split_by_node($)
         $current->{'extra'}->{'node'} = $content;
       } else {
         $current = { 'type' => 'element', 'extra' => {'node' => $content}};
+        $current->{'element_prev'} = $elements->[-1];
+        $elements->[-1]->{'element_next'} = $current;
         push @$elements, $current;
       }
     }
