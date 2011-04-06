@@ -1,5 +1,5 @@
 /* infokey.c -- compile ~/.infokey to ~/.info.
-   $Id: infokey.c,v 1.18 2008-06-11 09:55:42 gray Exp $
+   $Id: infokey.c,v 1.19 2011-04-06 21:17:38 gray Exp $
 
    Copyright (C) 1999, 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
@@ -72,11 +72,10 @@ struct sect
 static char *mkpath (const char *dir, const char *file);
 static int compile (FILE *fp, const char *filename, struct sect *sections);
 static int write_infokey_file (FILE *fp, struct sect *sections);
-static void syntax_error (const char *filename,
-    unsigned int linenum, const char *fmt,
-    const void *a1, const void *a2, const void *a3, const void *a4);
-static void error_message (int error_code, const char *fmt,
-    const void *a1, const void *a2, const void *a3, const void *a4);
+static void syntax_error (const char *filename, unsigned int linenum,
+			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
+static void error_message (int error_code, const char *fmt, ...)
+  TEXINFO_PRINTFLIKE(2,3);
 static void suggest_help (void);
 static void short_help (void);
 
@@ -167,8 +166,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
   else if (optind != argc)
     {
-      error_message (0, _("incorrect number of arguments"),
-          NULL, NULL, NULL, NULL);
+      error_message (0, _("incorrect number of arguments"));
       suggest_help ();
       xexit (1);
     }
@@ -199,7 +197,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     if (!inf)
       {
 	error_message (errno, _("cannot open input file `%s'"),
-            input_filename, NULL, NULL, NULL);
+		       input_filename);
 	xexit (1);
       }
 
@@ -213,7 +211,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 	if (!outf)
 	  {
 	    error_message (errno, _("cannot create output file `%s'"),
-                output_filename, NULL, NULL, NULL);
+			   output_filename);
 	    xexit (1);
 	  }
 
@@ -224,13 +222,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 	if (!write_infokey_file (outf, sections))
 	  {
 	    error_message (errno, _("error writing to `%s'"),
-                output_filename, NULL, NULL, NULL);
+			   output_filename);
 	    write_error = 1;
 	  }
 	if (fclose (outf) == EOF)
 	  {
 	    error_message (errno, _("error closing output file `%s'"),
-                output_filename, NULL, NULL, NULL);
+			   output_filename);
 	    write_error = 1;
 	  }
 	if (write_error)
@@ -447,8 +445,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		      seq[slen++] = meta ? Meta(c) : (c); \
 		    else \
 		      { \
-			syntax_error(filename, lnum, _("key sequence too long"), \
-                            NULL, NULL, NULL, NULL); \
+			syntax_error(filename, lnum, \
+				     _("key sequence too long")); \
 			error = 1; \
 		      } \
 		    meta = 0; \
@@ -526,8 +524,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		  rescan = 1;
 		  if (slen == 0)
 		    {
-		      syntax_error (filename, lnum, _("missing key sequence"),
-                          NULL, NULL, NULL, NULL);
+		      syntax_error (filename, lnum, _("missing key sequence"));
 		      error = 1;
 		    }
 		}
@@ -607,8 +604,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		  else
 		    {
 		      syntax_error (filename, lnum,
-                          _("NUL character (\\000) not permitted"),
-                          NULL, NULL, NULL, NULL);
+				    _("NUL character (\\000) not permitted"));
 		      error = 1;
 		    }
 		}
@@ -638,8 +634,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      else
 		{
 		  syntax_error (filename, lnum,
-                      _("NUL character (^%c) not permitted"),
-                      (void *) (long) c, NULL, NULL, NULL);
+				_("NUL character (^%c) not permitted"), c);
 		  error = 1;
 		}
 	      seqstate = normal;
@@ -662,8 +657,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      rescan = 1;
 	      if (alen == 0)
 		{
-		  syntax_error (filename, lnum, _("missing action name"),
-				(void *) (long) c, NULL, NULL, NULL);
+		  syntax_error (filename, lnum, _("missing action name"));
 		  error = 1;
 		}
 	      else
@@ -678,15 +672,14 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 			    && add_to_section (&sections[section], "", 1)
 			    && add_to_section (&sections[section], &av, 1)))
 			{
-			  syntax_error (filename, lnum, _("section too long"),
-                              NULL, NULL, NULL, NULL);
+			  syntax_error (filename, lnum, _("section too long"));
 			  error = 1;
 			}
 		    }
 		  else
 		    {
 		      syntax_error (filename, lnum, _("unknown action `%s'"),
-                          act, NULL, NULL, NULL);
+				    act);
 		      error = 1;
 		    }
 		}
@@ -695,8 +688,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    act[alen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("action name too long"),
-                  NULL, NULL, NULL, NULL);
+	      syntax_error (filename, lnum, _("action name too long"));
 	      error = 1;
 	    }
 	  break;
@@ -709,8 +701,8 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	  else if (!isspace (c))
 	    {
 	      syntax_error (filename, lnum,
-                  _("extra characters following action `%s'"),
-                  act, NULL, NULL, NULL);
+			    _("extra characters following action `%s'"),
+			    act);
 	      error = 1;
 	    }
 	  break;
@@ -720,8 +712,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    {
 	      if (varlen == 0)
 		{
-		  syntax_error (filename, lnum, _("missing variable name"),
-                      NULL, NULL, NULL, NULL);
+		  syntax_error (filename, lnum, _("missing variable name"));
 		  error = 1;
 		}
 	      state = get_value;
@@ -730,16 +721,14 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	  else if (c == '\n' || isspace (c))
 	    {
 	      syntax_error (filename, lnum,
-                  _("missing `=' immediately after variable name"),
-                  NULL, NULL, NULL, NULL);
+			    _("missing `=' immediately after variable name"));
 	      error = 1;
 	    }
 	  else if (varlen < sizeof varn)
 	    varn[varlen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("variable name too long"),
-                  NULL, NULL, NULL, NULL);
+	      syntax_error (filename, lnum, _("variable name too long"));
 	      error = 1;
 	    }
 	  break;
@@ -753,8 +742,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		    && add_to_section (&sections[section], val, vallen)
 		    && add_to_section (&sections[section], "", 1)))
 		{
-		  syntax_error (filename, lnum, _("section too long"),
-                      NULL, NULL, NULL, NULL);
+		  syntax_error (filename, lnum, _("section too long"));
 		  error = 1;
 		}
 	    }
@@ -762,8 +750,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	    val[vallen++] = c;
 	  else
 	    {
-	      syntax_error (filename, lnum, _("value too long"),
-                  NULL, NULL, NULL, NULL);
+	      syntax_error (filename, lnum, _("value too long"));
 	      error = 1;
 	    }
 	  break;
@@ -868,11 +855,14 @@ write_infokey_file (FILE *fp, struct sect *sections)
 	progname: "filename", line N: message
  */
 static void
-error_message (int error_code, const char *fmt,
-    const void *a1, const void *a2, const void *a3, const void *a4)
+error_message (int error_code, const char *fmt, ...)
 {
+  va_list ap;
+
   fprintf (stderr, "%s: ", program_name);
-  fprintf (stderr, fmt, a1, a2, a3, a4);
+  va_start(ap, fmt);
+  vfprintf (stderr, fmt, ap);
+  va_end(ap);
   if (error_code)
     fprintf (stderr, " - %s", strerror (error_code));
   fprintf (stderr, "\n");
@@ -883,12 +873,15 @@ error_message (int error_code, const char *fmt,
  */
 static void
 syntax_error (const char *filename,
-    unsigned int linenum, const char *fmt,
-    const void *a1, const void *a2, const void *a3, const void *a4)
+	      unsigned int linenum, const char *fmt, ...)
 {
+  va_list ap;
+  
   fprintf (stderr, "%s: ", program_name);
   fprintf (stderr, _("\"%s\", line %u: "), filename, linenum);
-  fprintf (stderr, fmt, a1, a2, a3, a4);
+  va_start(ap, fmt);
+  vfprintf (stderr, fmt, ap);
+  va_end(ap);
   fprintf (stderr, "\n");
 }
 
