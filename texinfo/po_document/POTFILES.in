@@ -18,3 +18,4 @@ texi2html/examples/roff.init
 tp/Texinfo/Parser.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/Plaintext.pm
+tp/Texinfo/Convert/HTML.pm
