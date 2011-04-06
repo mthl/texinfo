@@ -1,5 +1,5 @@
 /* install-info -- create Info directory entry(ies) for an Info file.
-   $Id: install-info.c,v 1.15 2009-09-04 17:45:07 karl Exp $
+   $Id: install-info.c,v 1.16 2011-04-06 21:20:08 gray Exp $
 
    Copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -203,32 +203,47 @@ int order_new_sections_alphabetically_flag = 1;
 
 /* Error message functions.  */
 
-/* Print error message.  S1 is printf control string, S2 and S3 args for it. */
-
-/* VARARGS1 */
 void
-error (const char *s1, const char *s2, const char *s3)
+vdiag (const char *fmt, const char *diagtype, va_list ap)
 {
   fprintf (stderr, "%s: ", progname);
-  fprintf (stderr, s1, s2, s3);
+  if (diagtype)
+    fprintf (stderr, "%s: ", diagtype);
+  vfprintf (stderr, fmt, ap);
   putc ('\n', stderr);
+}
+
+void
+error (const char *fmt, ...)
+{
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
 }
 
 /* VARARGS1 */
 void
-warning (const char *s1, const char *s2, const char *s3)
+warning (const char *fmt, ...)
 {
-  fprintf (stderr, _("%s: warning: "), progname);
-  fprintf (stderr, s1, s2, s3);
-  putc ('\n', stderr);
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, "warning", ap);
+  va_end (ap);
 }
 
 /* Print error message and exit.  */
 
 void
-fatal (const char *s1, const char *s2, const char *s3)
+fatal (const char *fmt, ...)
 {
-  error (s1, s2, s3);
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
   xexit (1);
 }
 
@@ -267,8 +282,7 @@ copy_string (const char *string, int size)
 void
 pfatal_with_name (const char *name)
 {
-  char *s = concat ("", strerror (errno), _(" for %s"));
-  fatal (s, name, 0);
+  fatal (_("%s for %s"), strerror (errno), name);
 }
 
 /* Compare the menu item names in LINE1 (line length LEN1)
@@ -623,10 +637,8 @@ The first time you invoke Info you start off looking at this node.\n\
       else
         {
           /* Didn't exist, but couldn't open for writing.  */
-          fprintf (stderr,
-                   _("%s: could not read (%s) and could not create (%s)\n"),
-                   dirfile, readerr, strerror (errno));
-          xexit (1);
+	  fatal (_("%s: could not read (%s) and could not create (%s)"),
+		 dirfile, readerr, strerror (errno));
         }
     }
   else
@@ -721,7 +733,7 @@ open_possibly_compressed_file (char *filename,
       /* Empty files don't set errno, so we get something like
          "install-info: No error for foo", which is confusing.  */
       if (nread == 0)
-        fatal (_("%s: empty file"), *opened_filename, 0);
+        fatal (_("%s: empty file"), *opened_filename);
       pfatal_with_name (*opened_filename);
     }
 
@@ -1064,7 +1076,7 @@ parse_input (const struct line_data *lines, int nlines,
               reset_tail = 1;
 
               if (start_of_this_entry != 0)
-                fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"), 0, 0);
+                fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"));
               start_of_this_entry = lines[i + 1].start;
             }
           else if (start_of_this_entry)
@@ -1099,13 +1111,12 @@ parse_input (const struct line_data *lines, int nlines,
               else if (!strncmp ("END-INFO-DIR-ENTRY",
                                  lines[i].start, lines[i].size)
                        && sizeof ("END-INFO-DIR-ENTRY") - 1 == lines[i].size)
-                fatal (_("END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"), 0, 0);
+                fatal (_("END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"));
             }
         }
     }
   if (start_of_this_entry != 0)
-    fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"),
-           0, 0);
+    fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"));
 
   /* If we ignored the INFO-DIR-ENTRY directives, we need now go back
      and plug the names of all the sections we found into every
@@ -2088,7 +2099,7 @@ main (int argc, char *argv[])
               {
                 warning 
                   (_("Extra regular expression specified, ignoring `%s'"),
-                   optarg, 0);
+                   optarg);
                 break;
               }
             psecreg = (regex_t *) xmalloc (sizeof (regex_t));
@@ -2100,7 +2111,7 @@ main (int argc, char *argv[])
                 char *errbuf = (char *) xmalloc (errbuf_size);
                 regerror (error, psecreg, errbuf, errbuf_size);
                 fatal (_("Error in regular expression `%s': %s"),
-                       optarg, errbuf);
+		       optarg, errbuf);
               };
           }
           break;
@@ -2157,14 +2168,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       else if (dirfile == 0)
         dirfile = argv[optind];
       else
-        error (_("excess command line argument `%s'"), argv[optind], 0);
+        error (_("excess command line argument `%s'"), argv[optind]);
     }
 
   if (!infile)
-    fatal (_("No input file specified; try --help for more information."),
-           0, 0);
+    fatal (_("No input file specified; try --help for more information."));
   if (!dirfile)
-    fatal (_("No dir file specified; try --help for more information."), 0, 0);
+    fatal (_("No dir file specified; try --help for more information."));
 
   /* Now read in the Info dir file.  */
   if (debug_flag)
@@ -2306,7 +2316,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
              problem for the maintainer), and there's no need to cause
              subsequent parts of `make install' to fail.  */
           if (!quiet_flag)
-            warning (_("no info dir entry in `%s'"), infile, 0);
+            warning (_("no info dir entry in `%s'"), infile);
           xexit (0);
         }
 
@@ -2554,7 +2564,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
 
   if (delete_flag && !something_deleted && !quiet_flag)
-    warning (_("no entries found for `%s'; nothing deleted"), infile, 0);
+    warning (_("no entries found for `%s'; nothing deleted"), infile);
 
   if (debug_flag)
     printf ("debug: writing dir file %s\n", opened_dirfilename);
