@@ -1,5 +1,5 @@
 /* xml.c -- xml output, both TexinfoML and Docbook.
-   $Id: xml.c,v 1.75 2008-01-31 18:33:27 karl Exp $
+   $Id: xml.c,v 1.76 2011-04-06 21:22:03 gray Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
    Free Software Foundation, Inc.
@@ -821,15 +821,7 @@ static int start_element_inserted = 1;
    barfs because `element' is a typedef declared near the beginning of
    this file.  */
 void
-#if defined (VA_FPRINTF) && __STDC__
 xml_insert_element_with_attribute (int elt, int arg, char *format, ...)
-#else
-xml_insert_element_with_attribute (elt, arg, format, va_alist)
-     int elt;
-     int arg;
-     char *format;
-     va_dcl
-#endif
 {
   /* Look at the replace_elements table to see if we have to change the element */
   if (xml_sort_index)
@@ -998,16 +990,10 @@ xml_insert_element_with_attribute (elt, arg, format, va_alist)
   if (format)
     {
       char temp_string[2000]; /* xx no fixed limits */
-#ifdef VA_SPRINTF
       va_list ap;
-#endif
 
-      VA_START (ap, format);
-#ifdef VA_SPRINTF
-      VA_SPRINTF (temp_string, format, ap);
-#else
-      sprintf (temp_string, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif
+      va_start (ap, format);
+      vsnprintf (temp_string, sizeof (temp_string), format, ap);
       insert (' ');
       insert_string (temp_string);
       va_end (ap);
