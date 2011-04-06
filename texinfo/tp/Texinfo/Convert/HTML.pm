@@ -85,14 +85,14 @@ foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
-# FIXME remove raw commands?
+# FIXME remove raw commands?
 my %format_context_commands = (%block_commands, %root_commands);
 
 foreach my $misc_context_command('tab', 'item', 'itemx', 'headitem', 'math') {
   $format_context_commands{$misc_context_command} = 1;
 }
 
-# FIXME allow customization?
+# FIXME allow customization?
 my %upper_case_commands = ( 'sc' => 1 );
 
 sub in_math($)
@@ -178,11 +178,18 @@ my %defaults = (
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
   'allowcodebreaks'      => 'true',
-# file name used for Top node when NODE_FILENAMES is true
+# file name used for Top node when NODE_FILENAMES is true
   'TOP_NODE_FILE'        => 'index',
   'NODE_FILE_EXTENSION'  => 'html',
   'EXTENSION'            => 'html',
   'TRANSLITERATE_FILE_NAMES' => 1,
+  'USE_LINKS'            => 1,
+  'DATE_IN_HEADER'       => 0,
+  'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
+                              'Up', 'NextFile', 'PrevFile'],
+  'DOCTYPE'              => '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
+  'BODYTEXT'             => undef,
+  'documentlanguage'     => 'en',
   
 
   'DEBUG'                => 0,
@@ -227,15 +234,15 @@ foreach my $indented_format ('example', 'display', 'lisp')
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
 
-# default specification of arguments formatting
+# default specification of arguments formatting
 my %default_commands_args = (
   'email' => [['code'], ['normal']]);
 
-# Default for the function references used for the formatting
-# of commands.
+# Default for the function references used for the formatting
+# of commands.
 my %default_commands_conversion;
 
-# Ignored commands
+# Ignored commands
 
 my %kept_misc_commands;
 foreach my $command ('footnotestyle', 'documentlanguage', 
@@ -243,14 +250,14 @@ foreach my $command ('footnotestyle', 'documentlanguage',
   $kept_misc_commands{$command} = 1;
 }
 
-# taken from global
-# 'xrefautomaticsectiontitle' (or in Parser?)
-# 'documentencoding'
+# taken from global
+# 'xrefautomaticsectiontitle' (or in Parser?)
+# 'documentencoding'
 # 'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage'
 # 'novalidate'
 foreach my $misc_command('verbatiminclude', 'contents', 'shortcontents',
         'summarycontents', 'insertcopying', 'printindex', 'listoffloats',
-# not sure for settitle
+# not sure for settitle
         'shorttitle', 'shorttitlepage', 'settitle', 'author', 'subtitle',
         'title', keys(%default_index_commands)) {
   $kept_misc_commands{$misc_command} = 1;
@@ -284,10 +291,10 @@ foreach my $ignored_block_commands ('ignore', 'macro', 'rmacro', 'copying',
   $default_commands_conversion{$ignored_block_commands} = undef;
 };
 
-# Formatting of commands without args
+# Formatting of commands without args
 
-# The hask holding the defaults for the formatting of
-# most commands without args 
+# The hash holding the defaults for the formatting of
+# most commands without args 
 my %default_commands_formatting;
 
 foreach my $command (keys(%{$Texinfo::Convert::Converter::default_xml_commands_formatting{'normal'}})) {
@@ -351,7 +358,7 @@ sub convert_today($$$)
 
 $default_commands_conversion{'today'} = \&convert_today;
 
-# style commands
+# style commands
 
 my %quoted_style_commands;
 foreach my $quoted_command ('file', 'option', 'samp') {
@@ -387,14 +394,14 @@ $style_attribute_commands{'normal'} = {
 
 my %style_commands_formatting;
 
-# this weird construct does like uniq, it avoids duplicates.
-# it is required since math is not in the %style_commands as it is 
-# context command.
+# this weird construct does like uniq, it avoids duplicates.
+# it is required since math is not in the %style_commands as it is 
+# context command.
 my @all_style_commands = keys %{{ map { $_ => 1 } (keys(%style_commands), 
                                                    keys(%{$style_attribute_commands{'normal'}})) }};
 
 foreach my $command(@all_style_commands) {
-  # default is no attribute.
+  # default is no attribute.
   if ($style_attribute_commands{'normal'}->{$command}) {
     $style_commands_formatting{'normal'}->{$command}->{'attribute'}
      = $style_attribute_commands{'normal'}->{$command};
@@ -484,7 +491,7 @@ sub expand_email($$$$)
   my $text = '';
   if (defined($text_arg)) {
     $text = $text_arg->{'normal'};
-    # $text = main::normalise_space($text);
+    # $text = main::normalise_space($text);
   }
   $text = $mail unless ($text ne '');
   return $text if ($mail eq '');
@@ -561,14 +568,14 @@ sub expand_heading_commands($$$$$)
   my $args = shift;
   my $contents = shift;
 
-  # FIXME in texi2html, level is set to 0 if top node, 3 otherwise 
-  # and it is printed if $element->{'this'} and !$element->{'with_section'}
+  # FIXME in texi2html, level is set to 0 if top node, 3 otherwise 
+  # and it is printed if $element->{'this'} and !$element->{'with_section'}
 
   my $do_heading = 1;
   if ($cmdname eq 'node') {
     $do_heading = 0;
   }
-  # FIXME TODO
+  # FIXME TODO
   #if ($self->{'TOC_LINKS'} and defined($element->{'tocid'})) {
   #  $text = &$anchor ('', "$Texi2HTML::THISDOC{'toc_file'}#$element->{'tocid'}", $text);
   #}
@@ -795,7 +802,7 @@ sub _convert_element($$)
   return $result;
 }
 
-# the entry point
+# the entry point
 sub convert_tree($$)
 {
   my $self = shift;
@@ -811,7 +818,20 @@ sub _normalized_to_id($)
   return $id;
 }
 
-# FIXME also convert to html, to use name in cross-refs or do it on demand?
+sub _prepare_css($)
+{
+  my $self = shift;
+  
+  return if ($self->get_conf('NO_CSS'));
+  # TODO collect_all_css_files in texi2html.pl
+  #  ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_rule_lines'})
+  #    = collect_all_css_files();
+  # &$Texi2HTML::Config::css_lines($Texi2HTML::THISDOC{'css_import_lines'},
+  #     $Texi2HTML::THISDOC{'css_rule_lines'});
+  # T2H_DEFAULT_css_lines in texi2html.init
+}
+
+# FIXME also convert to html, to use name in cross-refs or do it on demand?
 sub _set_root_commands_targets_node_files($$)
 {
   my $self = shift;
@@ -837,7 +857,7 @@ sub _set_root_commands_targets_node_files($$)
           while ($self->{'labels'}->{$target}) {
             $target = $target_base.'-'.$nr;
             $nr++;
-            # Avoid integer overflow
+            # Avoid integer overflow
             die if ($nr == 0);
           }
           my $id = $target;
@@ -861,7 +881,7 @@ sub _set_root_commands_targets_node_files($$)
     foreach my $root_command (values(%{$self->{'labels'}})) {
       my $target = _normalized_to_id($root_command->{'extra'}->{'normalized'});
       my $id = $target;
-      # FIXME something special for Top node ?
+      # FIXME something special for Top node ?
       if (defined($Texinfo::Config::node_target_name)) {
         ($target, $id) = &$Texinfo::Config::node_target_name($root_command,
                                                            $target, $id);
@@ -900,7 +920,7 @@ sub _set_page_file($$$)
 
 sub _get_page($$);
 
-# FIXME also find contents/shortcontents/summarycontents page
+# FIXME also find contents/shortcontents/summarycontents page
 sub _get_page($$)
 {
   my $self = shift;
@@ -942,7 +962,7 @@ sub _set_page_files($$)
 {
   my $self = shift;
   my $pages = shift;
-  # Ensure that the document is split
+  # Ensure that the document is split
   return undef if (!defined($pages) or !@$pages);
 
   my $node_top;
@@ -950,7 +970,7 @@ sub _set_page_files($$)
   $node_top = $self->{'labels'}->{'Top'} if ($self->{'labels'});
   #$section_top = $self->{'extra'}->{'top'} if ($self->{'extra'});
   
-  # first determine the top node file name.
+  # first determine the top node file name.
   if ($self->get_conf('NODE_FILENAMES') and $node_top) {
     if (defined($self->get_conf('TOP_NODE_FILE'))) {
       my $node_top_page = $self->_get_page($node_top);
@@ -962,7 +982,7 @@ sub _set_page_files($$)
       $self->_set_page_file($node_top_page, $filename);
     }
   }
-  # FIXME add a number for each page?
+  # FIXME add a number for each page?
   my $file_nr = 0;
   my $previous_page;
   if ($self->get_conf('NODE_FILENAMES')) {
@@ -1010,7 +1030,7 @@ sub _set_page_files($$)
   }
   if (defined($Texinfo::Config::page_file_name)) {
     foreach my $page (@$pages) {
-      # FIXME pass the information that it is associated with @top or @node Top?
+      # FIXME pass the information that it is associated with @top or @node Top?
       my $filename = &$Texinfo::Config::page_file_name($self, $page, 
                                                        $page->{'filename'});
     }
@@ -1035,28 +1055,29 @@ sub _prepare_elements($$)
   return $elements;
 }
 
-# FIXME object oriented API for elements?
+# FIXME object oriented API for elements?
 sub begin_file($$$)
 {
   my $self = shift;
   my $filename = shift;
   my $page = shift;
 
-  # TODO
+  # TODO
+  
   
   my $title;
-  # FIXME
-  # if ($page and $page->{'contents'}->[0]) {
-  #   my $element
+  # FIXME
+  # if ($page and $page->{'contents'}->[0]) {
+  #   my $element
   #     = Texinfo::Convert::HTML::Element::new($self, $page->{'contents'}->[0]);
   #   my $element_string = $selement->string();
   #   if ($element_string ne $self->{'title_string'}) {
   #     my $title_tree = $self->gdt('{title}: {element_text}', 
-  #                                $self->{'title_tree'}, $selement->tree());
+  #                                $self->{'title_tree'}, $selement->tree());
   #     $self->{'context'}->[-1]->{'string'} = 1;
   #     $title = $self->_convert($title_tree);
   #     delete $self->{'context'}->[-1]->{'string'};
-  #   }
+  #   }
   # }
   $title = $self->{'title_string'} if (!defined($title));
 
@@ -1071,11 +1092,74 @@ sub begin_file($$$)
   my $encoding = '';
   $encoding 
      = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=".
-       $self->get_conf('ENCODING_NAME')."\">" 
-    if (defined($self->get_conf('ENCODING_NAME')) 
-        and ($self->get_conf('ENCODING_NAME') ne ''));
-  
-  return '';
+       $self->{'encoding_name'}."\">" 
+    if (defined($self->{'encoding_name'}) 
+        and ($self->{'encoding_name'} ne ''));
+
+  my $date = '';
+  if ($self->get_conf('DATE_IN_HEADER')) {
+    $self->{'context'}->[-1]->{'string'} = 1;
+    my $today = $self->convert_tree({'cmdname' => 'today'});
+    delete $self->{'context'}->[-1]->{'string'};
+    $date = "\n<meta name=\"date\" content=\"$today\">";
+  }
+
+  my $links = '';
+  if ($self->get_conf('USE_LINKS')) {
+    my $link_buttons = $self->get_conf('LINKS_BUTTONS');
+    foreach my $link (@$link_buttons) {
+      # TODO
+#            if (defined($Texi2HTML::HREF{$link}) and $Texi2HTML::HREF{$link} ne '')
+#            {
+#                my $title = '';
+#                $title = " title=\"$Texi2HTML::SIMPLE_TEXT{$link}\"" if (defined($Texi2HTML::SIMPLE_TEXT{$link}));
+#                my $rel = '';
+#                $rel = " rel=\"$BUTTONS_REL{$link}\"" if (defined($BUTTONS_REL{$link}));
+#                $links .= "<link href=\"$Texi2HTML::HREF{$link}\"${rel}${title}>\n";
+#            }
+    }
+  }
+  my $css_lines;
+  if (defined($self->get_conf('CSS_LINES'))) {
+    $css_lines = $self->get_conf('CSS_LINES');
+  } else {
+    $css_lines = '';
+  }
+  my $doctype = $self->get_conf('DOCTYPE');
+  my $bodytext = $self->get_conf('BODYTEXT');
+  my $copying_comment = '';
+  $copying_comment = $self->{'copying_comment'} 
+    if (defined($self->{'copying_comment'}));
+  my $after_body_open = '';
+  $after_body_open = $self->get_conf('AFTER_BODY_OPEN')
+    if (defined($self->get_conf('AFTER_BODY_OPEN')));
+  my $extra_head = '';
+  $extra_head = $self->get_conf('EXTRA_HEAD')
+    if (defined($self->get_conf('EXTRA_HEAD')));
+  my $program_and_version = ''; # $Texi2HTML::THISDOC{'program_and_version'}
+  my $program_homepage = ''; # $Texi2HTML::THISDOC{'program_homepage'}
+  my $program = ''; # $Texi2HTML::THISDOC{'program'}
+
+  my $result = "$doctype
+<html>
+$copying_comment<!-- Created by $program_and_version, $program_homepage -->
+<head>
+<title>$title</title>
+
+$description
+<meta name=\"keywords\" content=\"$title\">
+<meta name=\"resource-type\" content=\"document\">
+<meta name=\"distribution\" content=\"global\">
+<meta name=\"Generator\" content=\"$program\">$date
+$encoding
+${links}$css_lines
+$extra_head
+</head>
+
+<body $bodytext>
+$after_body_open";
+
+  return $result;
 }
 
 sub convert($$)
@@ -1085,7 +1169,7 @@ sub convert($$)
 
   my $result = '';
 
-  # This should return undef if called on a tree without node or sections.
+  # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
   if (!defined($elements)) {
@@ -1102,7 +1186,7 @@ sub convert($$)
   return $result;
 }
 
-# output fo $fh if defined, otherwise return the text.
+# output fo $fh if defined, otherwise return the text.
 sub _output_text($$)
 {
   my $text = shift;
@@ -1121,7 +1205,7 @@ sub output($$)
   my $root = shift;
 
   # no splitting when writing to the null device or to stdout or returning
-  # a string
+  # a string
   if (defined($self->get_conf('OUTFILE'))
       and ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')}
            or $self->get_conf('OUTFILE') eq '-'
@@ -1135,7 +1219,7 @@ sub output($$)
     $self->set_conf('NODE_FILENAMES', 1);
   }
                                                    
-  # This should return undef if called on a tree without node or sections.
+  # This should return undef if called on a tree without node or sections.
   my $elements = $self->_prepare_elements($root);
 
   # undef if no elements or not split
@@ -1143,18 +1227,25 @@ sub output($$)
                                                 $self->get_conf('SPLIT'));
   $self->{'pages'} = $pages;
   
-  # TODO handle special elements, footnotes element, contents and shortcontents
-  # elements, titlepage association
+  # TODO handle special elements, footnotes element, contents and shortcontents
+  # elements, titlepage association
 
-  # this sets OUTFILE, to be used if not split, but also
-  # 'destination_directory' and 'output_filename' that are useful when split.
+  # this sets OUTFILE, to be used if not split, but also
+  # 'destination_directory' and 'output_filename' that are useful when split.
   $self->_set_outfile();
+
+  $self->_prepare_css();
 
   # determine file names associated with the different pages.
   $self->_set_page_files($pages);
 
-  # FIXME set language and documentencoding/encoding_name
-  # prepare title
+  # Before that, set multiple commands
+
+  $self->set_conf('BODYTEXT',  'lang="' . $self->get_conf('documentlanguage') . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
+
+
+  # FIXME set language and documentencoding/encoding_name
+  # prepare title
   my $fulltitle;
   foreach my $fulltitle_command('settitle', 'title', 
      'shorttitlepage', 'top') {
@@ -1172,7 +1263,7 @@ sub output($$)
       and defined($self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}->[0])) {
     $fulltitle = $self->{'extra'}->{'titlefont'}->[0];
   }
-  # prepare simpletitle
+  # prepare simpletitle
   foreach my $simpletitle_command('settitle', 'shorttitlepage') {
     if ($self->{'extra'}->{$simpletitle_command}) {
       my $command = $self->{'extra'}->{$simpletitle_command};
@@ -1193,13 +1284,13 @@ sub output($$)
     my $default_title = $self->gdt('Untitled Document');
     $self->{'title_tree'} = $default_title;
     $self->{'title_string'} = $self->_convert($self->{'title_tree'});
-    $self->document_warn(__("Must specify a title with a title command or \@top"));
+    $self->document_warn($self->__("Must specify a title with a title command or \@top"));
   } else {
     $self->{'title_string'} = $html_title_string;
   }
   delete $self->{'context'}->[-1]->{'string'};
 
-  # copying comment
+  # copying comment
   if ($self->{'extra'}->{'copying'}) {
     my $options;
     if ($self->get_conf('ENABLE_ENCODING') 
@@ -1213,7 +1304,7 @@ sub output($$)
     }
   }
 
-  # documentdescription
+  # documentdescription
   if ($self->{'extra'}->{'documentdescription'}) {
     $self->{'context'}->[-1]->{'string'} = 1;
     $self->{'documentdescription_string'} = $self->_convert(
@@ -1221,11 +1312,11 @@ sub output($$)
     delete $self->{'context'}->[-1]->{'string'};
   }
 
-  # Now do the output
+  # Now do the output
   my $fh;
   my $output = '';
   if (!$pages) {
-    # not split output
+    # not split output
     if ($self->get_conf('OUTFILE') ne '') {
       $fh = $self->Texinfo::Common::open_out ($self->get_conf('OUTFILE'),
                                             $self->{'perl_encoding'});
@@ -1247,10 +1338,10 @@ sub output($$)
       $output .= _output_text($self->_convert($root), $fh);
     } 
   } else {
-    # split output
+    # split output
     my %files;
-    # TODO set page file names $page->{'filename'} (relative) and 
-    # $page->{'out_filename'} (absolute)
+    # TODO set page file names $page->{'filename'} (relative) and 
+    # $page->{'out_filename'} (absolute)
     
     foreach my $page (@$pages) {
       my $file_fh;
@@ -1260,7 +1351,7 @@ sub output($$)
         if (!$file_fh) {
          $self->document_error(sprintf($self->__("Could not open %s for writing: %s"),
                                     $page->{'out_filename'}, $!));
-          # FIXME close/remove files already created
+          # FIXME close/remove files already created
           return undef;
         }
         print $file_fh "".begin_file($self, $page->{'filename'}, $page);
@@ -1315,7 +1406,7 @@ sub protect_space_codebreak($$)
     my $open = $self->attribute_class('span', $class).'>';
     # protect spaces in the html leading attribute in case we are in 'w'
     $open =~ s/ /\x{1F}/g if ($in_w);
-    # special span to avoid breaking at _-
+    # special span to avoid breaking at _-
     $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
   }
   if ($in_w) {
@@ -1384,12 +1475,12 @@ sub _contents($$$)
       
       my $text = numbered_heading($section, 
                        $section_title, $self->get_conf('NUMBER_SECTIONS'))."\n";
-      # FIXME get ref.
-      # FIXME do li
+      # FIXME get ref.
+      # FIXME do li
       $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
       if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
-        # FIXME do ul
+        # FIXME do ul
         $section = $section->{'section_childs'}->[0];
       } elsif ($section->{'section_next'}) {
         last if ($section eq $top_section);
@@ -1397,7 +1488,7 @@ sub _contents($$$)
       } else {
         last if ($section eq $top_section);
         while ($section->{'section_up'}) {
-          # FIXME close ul
+          # FIXME close ul
           $section = $section->{'section_up'};
           last SECTION if ($section eq $top_section);
           if ($section->{'section_next'}) {
@@ -1571,8 +1662,8 @@ sub _convert($$)
   my $cell;
   my $preformatted;
   if ($root->{'cmdname'}) {
-    # FIXME definfoenclose_command 
-    # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
+    # FIXME definfoenclose_command 
+    # ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command'))
     if (exists($self->{'commands_conversion'}->{$root->{'cmdname'}})) {
       my $result;
       my $content_formatted;
@@ -1727,12 +1818,12 @@ sub _convert($$)
 #    } elsif ($informative_commands{$root->{'cmdname'}}) {
 #      $self->_informative_command($root);
 
-# TODO types
+# TODO types
 #    } elsif ($root->{'type'} eq 'preformatted') {
 #    } elsif ($root->{'type'} eq 'def_line') {
 #    } elsif ($root->{'type'} eq 'menu_entry') {
 #    } elsif ($root->{'type'} eq 'code') {
- # TODO ?
+ # TODO ?
  #   } elsif ($root->{'type'} eq 'bracketed') {
 
  #   } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 

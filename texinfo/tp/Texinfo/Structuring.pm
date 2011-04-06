@@ -638,7 +638,7 @@ sub split_pages ($$)
   return \@pages;
 }
 
-# this is used in the test suite, but not likely to be useful in real life.
+# this is used in the test suite, but not likely to be useful in real life.
 sub _unsplit($)
 {
   my $root = shift;

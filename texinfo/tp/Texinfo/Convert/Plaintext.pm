@@ -62,11 +62,10 @@ my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands
 my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 my @informative_global_commands = ('paragraphindent', 'firstparagraphindent',
-'frenchspacing', 'documentencoding', 'footnotestyle');
+'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage');
 
 my %informative_commands;
-foreach my $informative_command (@informative_global_commands, 
-                                 'documentlanguage') {
+foreach my $informative_command (@informative_global_commands) {
   $informative_commands{$informative_command} = 1;
 }
 
@@ -239,7 +238,7 @@ my %defaults = (
 # this default is for Info, but also when doing Texinfo fragments.  So this 
 # has to be explicitly set to 0 when doing real plaintext.
   'SHOW_MENU'            => 1,
-# not used for plaintext, since default is '-' for plaintext.
+# not used for plaintext, since default is '-' for plaintext.
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
 
@@ -277,6 +276,15 @@ sub push_top_formatter($$)
                                    };
   push @{$self->{'formatters'}}, $self->new_formatter('line');
   $self->{'formatters'}->[-1]->{'_top_formatter'} = 1;
+}
+
+sub _initialize_global_command($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if (ref($root) ne 'ARRAY') {
+    $self->_informative_command($root);
+  }
 }
 
 sub _informative_command($$)
@@ -319,19 +327,6 @@ sub _informative_command($$)
           if ($root->{'extra'}->{'misc_args'}->[0] eq 'none');
         $self->{'ignored_types'}->{'empty_spaces_before_paragraph'} = 1;
       }
-    }
-  }
-}
-
-sub _set_global_multiple_commands($)
-{
-  my $converter = shift;
-
-  foreach my $global_command (@informative_global_commands) {
-    if (defined($converter->{'extra'}->{$global_command})
-        and ref($converter->{'extra'}->{$global_command}) eq 'ARRAY') {
-      my $root = $converter->{'extra'}->{$global_command}->[0];
-      $converter->_informative_command($root);
     }
   }
 }

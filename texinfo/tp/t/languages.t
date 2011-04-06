@@ -11,10 +11,36 @@ my @test_cases = (
 @defivar AAA BBB CCC
 @end defivar
 '],
+['multiple',
+'@documentlanguage fr
+
+@copying
+@defivar copying a b
+@end defivar
+@end copying
+
+@node Top
+
+@defivar fr BBB CCC
+@end defivar
+
+@insertcopying
+
+@documentlanguage pt
+
+@defivar pt BBB CCC
+@end defivar
+
+@insertcopying
+']);
+
+my %info_tests = (
+  'multiple' => 1,
 );
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'info' if ($info_tests{$test->[0]});
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);

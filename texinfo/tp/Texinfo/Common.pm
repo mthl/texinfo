@@ -71,7 +71,7 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
   $null_device_file{'NUL'} = 1;
 }
 
-# configuration options
+# configuration options
 my @document_settable_at_commands =
        ('everyheading', 'everyfooting', 'evenheading',
         'evenfooting', 'oddheading', 'oddfooting', 'headings',
@@ -273,7 +273,7 @@ our %misc_commands = (
   'item'              => 'skipspace', # or line, depending on the context
   'itemx'             => 'skipspace',
   'tab'               => 'skipspace', 
-  # only valid in heading or footing
+  # only valid in heading or footing
   'thischapter'       => 'noarg',
   'thischaptername'   => 'noarg',
   'thischapternum'    => 'noarg',
@@ -303,11 +303,11 @@ our %index_names = (
 );
 
 our %default_index_commands;
-# all the commands are readded dynamically in the Parser.
+# all the commands are readded dynamically in the Parser.
 foreach my $index_name (keys (%index_names)) {
   foreach my $index_prefix (keys (%{$index_names{$index_name}})) {
     next if ($index_prefix eq $index_name);
-    # only put the one letter versions in the hash.
+    # only put the one letter versions in the hash.
     $misc_commands{$index_prefix.'index'} = 'line';
     $default_index_commands{$index_prefix.'index'} = 1;
   }

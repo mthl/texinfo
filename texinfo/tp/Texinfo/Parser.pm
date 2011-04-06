@@ -4391,7 +4391,7 @@ sub _parse_line_command_args($$$)
   return $args;
 }
 
-# left here because it uses _locate_include_file
+# left here because it uses _locate_include_file
 sub expand_verbatiminclude($$)
 {
   my $self = shift;

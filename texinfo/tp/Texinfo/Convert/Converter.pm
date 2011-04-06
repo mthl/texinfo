@@ -64,6 +64,10 @@ sub _global_commands($)
   return ();
 }
 
+sub _initialize_global_command($$)
+{
+}
+
 sub converter(;$)
 {
   my $class = shift;
@@ -126,9 +130,10 @@ sub converter(;$)
           #if (ref($root) eq 'ARRAY') {
           #  $root = $converter->{'extra'}->{$global_command}->[0];
           #}
-          if (ref($root) ne 'ARRAY') {
-            $converter->_informative_command($root);
-          }
+          #if (ref($root) ne 'ARRAY') {
+          #$converter->_informative_command($root);
+          $converter->_initialize_global_command($root);
+          #}
         }
       }
       delete $conf->{'parser'};
@@ -175,17 +180,45 @@ sub converter(;$)
   return $converter;
 }
 
+sub _set_global_multiple_commands($;$)
+{
+  my $self = shift;
+  my $multiple_commands_index = shift;
+  # FIXME 0 (first) or -1 (last)?
+  $multiple_commands_index = 0 if (!defined($multiple_commands_index));
+
+  foreach my $global_command ($self->_global_commands()) {
+    if (defined($self->{'extra'}->{$global_command})
+        and ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
+      my $root = $self->{'extra'}->{$global_command}->[$multiple_commands_index];
+      if ($self->get_conf('DEBUG')) {
+        print STDERR "SET_global_multiple_commands($multiple_commands_index) $global_command\n";
+      }
+      $self->_informative_command($root);
+    }
+  }
+}
+
+# Notice that set_conf is used, which means that it is not possible to
+# customize what is done for those commands.
 sub _unset_global_multiple_commands($)
 {
-  my $converter = shift;
+  my $self = shift;
 
-  foreach my $global_command ($converter->_global_commands()) {
-    if (defined($converter->{'extra'}->{$global_command})
-        and ref($converter->{'extra'}->{$global_command}) eq 'ARRAY') {
-      my $root = $converter->{'extra'}->{$global_command}->[0];
-      next if ($converter->{'set'}->{$root->{'cmdname'}} 
-               or !exists($defaults{$root->{'cmdname'}}));
-      $converter->set_conf($root->{'cmdname'}, $defaults{$root->{'cmdname'}});
+  foreach my $global_command ($self->_global_commands()) {
+    if (defined($self->{'extra'}->{$global_command})
+        and ref($self->{'extra'}->{$global_command}) eq 'ARRAY') {
+      next if (!exists($defaults{$global_command}));
+      if (Texinfo::Common::valid_option($global_command)) {
+        if ($self->get_conf('DEBUG')) {
+          my $default = 'UNDEF';
+          $default = $defaults{$global_command} if (defined($defaults{$global_command}));
+          print STDERR "UNSET_global_multiple_commands $global_command: $default\n";
+        }
+        $self->set_conf($global_command, $defaults{$global_command});
+      } else {
+        $self->{$global_command} = $defaults{$global_command};
+      }
     }
   }
 }
