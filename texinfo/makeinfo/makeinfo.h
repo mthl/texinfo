@@ -1,5 +1,5 @@
 /* makeinfo.h -- declarations for Makeinfo.
-   $Id: makeinfo.h,v 1.31 2008-03-26 23:57:12 karl Exp $
+   $Id: makeinfo.h,v 1.32 2011-04-06 21:21:33 gray Exp $
 
    Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
    2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -373,23 +373,13 @@ extern int get_until (char *match, char **string),
   current_output_column (void),
   fs_error (char *filename);
 
-#if defined (VA_FPRINTF) && __STDC__
-/* Unfortunately we must use prototypes if we are to use <stdarg.h>.  */
-extern void add_word_args (const char *, ...),
-  add_html_block_elt_args (const char *, ...),
-  execute_string (char *, ...),
-  warning (const char *format, ...),
-  error (const char *format, ...),
-  line_error (const char *format, ...),
-  file_line_error (char *infile, int lno, const char *format, ...);
-#else
-extern void add_word_args (),
-  add_html_block_elt_args (),
-  execute_string (),
-  warning (),
-  error (),
-  line_error (),
-  file_line_error ();
-#endif /* no prototypes */
+extern void add_word_args (const char *, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void add_html_block_elt_args (const char *, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void execute_string (char *, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void warning (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void line_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+extern void file_line_error (char *infile, int lno, const char *format, ...)
+  TEXINFO_PRINTFLIKE(3,4);
 
 #endif /* not MAKEINFO_H */
