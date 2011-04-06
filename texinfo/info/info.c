@@ -1,5 +1,5 @@
 /* info.c -- Display nodes of Info files in multiple windows.
-   $Id: info.c,v 1.35 2010-03-19 01:00:24 karl Exp $
+   $Id: info.c,v 1.36 2011-04-06 21:16:12 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2005, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
@@ -400,18 +400,16 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
      file name is either "dir", or the contents of user_filename if one
      was specified. */
   {
-    const char *errstr;
-    char *errarg1, *errarg2;
-    NODE *new_initial_node;
-
-   /* If they say info -O info, we want to show them the invocation node
-      for standalone info; there's nothing useful in info.texi.  */
-   if (goto_invocation_p && argv[optind]
-       && mbscasecmp (argv[optind], "info") == 0)
-     argv[optind] = "info-stnd";
-
+    NODE *new_initial_node, *error_node;
+    
+    /* If they say info -O info, we want to show them the invocation node
+       for standalone info; there's nothing useful in info.texi.  */
+    if (goto_invocation_p && argv[optind]
+	&& mbscasecmp (argv[optind], "info") == 0)
+      argv[optind] = "info-stnd";
+    
     new_initial_node = info_follow_menus (initial_node, argv + optind,
-        &errstr, &errarg1, &errarg2);
+					  &error_node);
 
     if (new_initial_node && new_initial_node != initial_node)
       initial_node = new_initial_node;
@@ -433,18 +431,21 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
        accordingly if the initial node was not found.  */
     if (user_output_filename && !goto_invocation_p)
       {
-        if (!errstr)
+        if (error_node)
+	  show_error_node (error_node);
+        else
           dump_node_to_file (initial_node, user_output_filename,
                              dump_subnodes);
-        else
-          info_error (errstr, errarg1, errarg2);
       }
     else
       {
-
-        if (errstr)
-          begin_info_session_with_error (initial_node, errstr,
-              errarg1, errarg2);
+        if (error_node)
+	  {
+	    initialize_info_session (initial_node, 1);
+	    show_error_node (error_node);
+	    info_session ();
+	  }
+	
         /* If the user specified `--index-search=STRING' or
            --show-options, start the info session in the node
            corresponding to what they want. */
@@ -556,23 +557,18 @@ int info_error_was_printed = 0;
 /* Non-zero means ring terminal bell on errors. */
 int info_error_rings_bell_p = 1;
 
-/* Print FORMAT with ARG1 and ARG2.  If the window system was initialized,
+/* Print AP according to FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
 void
-info_error (const char *format, void *arg1, void *arg2)
+vinfo_error (const char *format, va_list ap)
 {
   info_error_was_printed = 1;
 
   if (!info_windows_initialized_p || display_inhibited)
     {
       fprintf (stderr, "%s: ", program_name);
-      if (arg1)
-        fprintf (stderr, format, arg1, arg2);
-      else
-        /* If we're passed a string, just print it.  Otherwise a % in a
-           filename gets treated as a format specifier.  */
-        fputs (format, stderr);
+      vfprintf (stderr, format, ap);
       fprintf (stderr, "\n");
       fflush (stderr);
     }
@@ -582,11 +578,11 @@ info_error (const char *format, void *arg1, void *arg2)
         {
           if (info_error_rings_bell_p)
             terminal_ring_bell ();
-          window_message_in_echo_area (format, arg1, arg2);
+          vwindow_message_in_echo_area (format, ap);
         }
       else
         {
-          NODE *temp = build_message_node (format, arg1, arg2);
+          NODE *temp = build_message_node (format, ap);
           if (info_error_rings_bell_p)
             terminal_ring_bell ();
           inform_in_echo_area (temp->contents);
@@ -594,6 +590,30 @@ info_error (const char *format, void *arg1, void *arg2)
           free (temp);
         }
     }
+}
+
+void
+info_error (const char *format, ...)
+{
+  va_list ap;
+  va_start (ap, format);
+  vinfo_error (format, ap);
+  va_end (ap);
+}
+
+void
+show_error_node (NODE *node)
+{
+  if (info_error_rings_bell_p)
+    terminal_ring_bell ();
+  if (!echo_area_is_active)
+    {
+      free_echo_area ();
+      window_set_node_of_window (the_echo_area, node);
+      display_update_one_window (the_echo_area);
+    }
+  else
+    inform_in_echo_area (node->contents);
 }
 
 
