@@ -1,5 +1,5 @@
 /* session.c -- user windowing interface to Info.
-   $Id: session.c,v 1.47 2011-02-10 09:15:51 gray Exp $
+   $Id: session.c,v 1.48 2011-04-06 21:18:03 gray Exp $
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -134,17 +134,6 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
         }
     }
   display_startup_message_and_start ();
-}
-
-/* Start an info session with INITIAL_NODE, and an error message in the echo
-   area made from FORMAT and ARG. */
-void
-begin_info_session_with_error (NODE *initial_node, const char *format,
-    void *arg1, void *arg2)
-{
-  initialize_info_session (initial_node, 1);
-  info_error (format, arg1, arg2);
-  info_session ();
 }
 
 /* Start an info session with INITIAL_NODE. */
@@ -2799,12 +2788,12 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
    will be NULL.  */
 
 NODE *
-info_follow_menus (NODE *initial_node, char **menus,
-    const char **errstr, char **errarg1, char **errarg2)
+info_follow_menus (NODE *initial_node, char **menus, NODE **err_node)
 {
   NODE *node = NULL;
-  *errstr = *errarg1 = *errarg2 = NULL;
 
+  if (err_node)
+    *err_node = NULL;
   for (; *menus; menus++)
     {
       static char *first_arg = NULL;
@@ -2835,8 +2824,9 @@ info_follow_menus (NODE *initial_node, char **menus,
               if (node)
                 goto maybe_got_node;
             }
-          *errstr = _("No menu in node `%s'.");
-          *errarg1 = node_printed_rep (initial_node);
+	  if (err_node)
+	    *err_node = format_message_node (_("No menu in node `%s'."),
+					     node_printed_rep (initial_node));
           return initial_node;
         }
 
@@ -2881,9 +2871,10 @@ info_follow_menus (NODE *initial_node, char **menus,
             }
 
           info_free_references (menu);
-          *errstr = _("No menu item `%s' in node `%s'.");
-          *errarg1 = arg;
-          *errarg2 = node_printed_rep (initial_node);
+	  if (err_node)
+	    *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
+					     arg,
+					     node_printed_rep (initial_node));
           return initial_node;
         }
 
@@ -2911,9 +2902,11 @@ info_follow_menus (NODE *initial_node, char **menus,
     maybe_got_node:
       if (!node)
         {
-          *errstr = _("Unable to find node referenced by `%s' in `%s'.");
-          *errarg1 = xstrdup (entry->label);
-          *errarg2 = node_printed_rep (initial_node);
+	  if (err_node)
+	    *err_node = format_message_node (
+		     _("Unable to find node referenced by `%s' in `%s'."),
+		     entry->label,
+		     node_printed_rep (initial_node));
           info_free_references (menu);
           return initial_node;
         }
@@ -2976,8 +2969,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
 
   if (*line)
     {
-      const char *errstr;
-      char *errarg1, *errarg2;
+      NODE *err_node;
       NODE *dir_node = info_get_node (NULL, NULL);
       char **nodes = split_list_of_nodenames (line);
       NODE *node = NULL;
@@ -2998,13 +2990,13 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (!dir_node)
         info_error (msg_cant_find_node, "Top", NULL);
       else
-        node = info_follow_menus (dir_node, nodes, &errstr, &errarg1, &errarg2);
+        node = info_follow_menus (dir_node, nodes, &err_node);
 
       free (nodes);
-      if (!errstr)
-        info_set_node_of_window (1, window, node);
+      if (err_node)
+	show_error_node (err_node);
       else
-        info_error (errstr, errarg1, errarg2);
+        info_set_node_of_window (1, window, node);
     }
 
   free (line);
