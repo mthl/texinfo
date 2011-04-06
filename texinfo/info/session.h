@@ -1,5 +1,5 @@
 /* session.h -- Functions found in session.c.
-   $Id: session.h,v 1.10 2008-03-04 09:44:57 gray Exp $
+   $Id: session.h,v 1.11 2011-04-06 21:18:26 gray Exp $
 
    Copyright (C) 1993, 1998, 1999, 2001, 2002, 2004, 2007
    Free Software Foundation, Inc.
@@ -118,13 +118,11 @@ extern void info_set_input_from_file (char *filename);
 extern void begin_multiple_window_info_session (char *filename,
     char **nodenames);
 extern void begin_info_session (NODE *initial_node);
-extern void begin_info_session_with_error (NODE *initial_node,
-    const char *format, void *arg1, void *arg2);
 extern void info_session (void);
 extern void initialize_info_session (NODE *node, int clear_screen);
 extern void info_read_and_dispatch (void);
 extern void info_intuit_options_node (WINDOW *window,
-    NODE *initial_node, char *program);
+				      NODE *initial_node, char *program);
 
 /* Moving the point within a node. */
 extern void info_next_line (WINDOW *window, int count, unsigned char key);
@@ -198,7 +196,7 @@ extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
 extern NODE *info_follow_menus (NODE *initial_node, char **menus,
-    const char **errstr, char **errarg1, char **errarg2);
+				NODE **err_node);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);
 extern void select_visited_node (WINDOW *window, int count, unsigned char key);
