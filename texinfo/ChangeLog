@@ -1,3 +1,60 @@
+2011-04-06  Sergey Poznyakoff  <gray@gnu.org>
+
+	Use C99 stdarg.
+	
+	* system.h [HAVE_VPRINTF]: Remove obsolete stuff.  Include
+	stdarg.h unconditionally.
+	(TEXINFO_PRINTFLIKE): New macro.
+	* info/info.c (main): Update invocations of info_follow_menus.
+	(vinfo_error): New function.
+	(info_error): Change signature to that of a variadic function.
+	(show_error_node): New function.
+	* info/info.h (info_error): Change signature.
+	(vinfo_error,show_error_node): New function.
+	* info/infodoc.c (create_internal_info_help_node): Use
+	string_to_node.
+	* info/infokey.c (syntax_error, error_message): Change to
+	variadic functions.  All uses updated.
+	* info/session.c (begin_info_session_with_error): Remove.
+	(info_follow_menus): On errors fill in a formatted error node.
+	* info/session.h (begin_info_session_with_error): Remove proto.
+	(info_follow_menus): Change prototype.
+	* info/window.c (free_echo_area): Remove static qualifier.
+	(vwindow_message_in_echo_area): New function.
+	(window_message_in_echo_area): Rewrite as a variadic function.
+	(message_in_echo_area): Likewise.
+	(message_buffer_size, message_buffer_index): Change type to size_t.
+	(message_buffer_resize): Remove.
+	(build_message_buffer): Rewrite from scratch, using vsnprintf.
+	(printf_to_message_buffer): Rewrite as a variadic function.
+	(message_buffer_length_this_line): Rewrite via strrchr.
+	* info/window.h (build_message_node): Change prototype.
+	(format_message_node,): New prototypes.
+	(printf_to_message_buffer): Now a variadic function.
+	(window_message_in_echo_area): Likewise.
+	(message_in_echo_area): Likewise.
+	(vwindow_message_in_echo_area): New prototype.
+	(free_echo_area): New prototype.
+	* install-info/install-info.c (vdiag): New functions.
+	(error,warning,fatal): Rewrite as variadic functions.
+	All uses updated.
+	(insert_html_tag_with_attribute): Likewise.
+	* makeinfo/html.h (insert_html_tag_with_attribute): New prototype.
+	* makeinfo/makeinfo.c (error,file_line_error)
+	(line_error,warning,add_word_args)
+	(add_html_block_elt_args,execute_string): Rewrite as variadic functions.
+	All uses updated.
+	* makeinfo/makeinfo.h (add_word_args,add_html_block_elt_args)
+	(execute_string,warning,error)
+	(line_error,file_line_error): Change signatures.
+	* makeinfo/xml.c (xml_insert_element_with_attribute): Use C99
+	stdarg.
+	(xml_insert_element_with_attribute): Likewise.
+	* po/Makevars (XGETTEXT_OPTIONS): Add new flags.
+	* po/POTFILES.in: Remove perl sources, taken care of in
+	po_document.
+	* util/texindex.c (fatal,error): Rewrite as variadic functions.
+
 2011-03-28  Karl Berry  <karl@gnu.org>
 
 	* doc/gendocs_template: rm comments about xml.
