@@ -1,5 +1,5 @@
 /* system.h: system-dependent declarations; include this first.
-   $Id: system.h,v 1.11 2009-03-29 00:34:19 karl Exp $
+   $Id: system.h,v 1.12 2011-04-06 21:15:36 gray Exp $
 
    Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
    2006, 2007, 2008, 2009 Free Software Foundation, Inc.
@@ -40,6 +40,8 @@ extern char *substring (const char *, const char *);
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
+#include <stdarg.h>
 
 /* Use POSIX headers.  If they are not available, we use the substitute
    provided by gnulib.  */
@@ -131,25 +133,6 @@ extern int strcoll ();
 #  define O_BINARY 0
 # endif
 #endif /* O_BINARY */
-
-/* We'd like to take advantage of _doprnt if it's around, a la error.c,
-   but then we'd have no VA_SPRINTF.  */
-#if HAVE_VPRINTF
-# if __STDC__
-#  include <stdarg.h>
-#  define VA_START(args, lastarg) va_start(args, lastarg)
-# else
-#  include <varargs.h>
-#  define VA_START(args, lastarg) va_start(args)
-# endif
-# define VA_FPRINTF(file, fmt, ap) vfprintf (file, fmt, ap)
-# define VA_SPRINTF(str, fmt, ap) vsprintf (str, fmt, ap)
-#else /* not HAVE_VPRINTF */
-# define VA_START(args, lastarg)
-# define va_alist a1, a2, a3, a4, a5, a6, a7, a8
-# define va_dcl char *a1, *a2, *a3, *a4, *a5, *a6, *a7, *a8;
-# define va_end(args)
-#endif
 
 #if O_BINARY
 # ifdef HAVE_IO_H
@@ -257,4 +240,8 @@ extern void xexit (int);
 #include "dmalloc.h"
 #endif
 
+#ifndef TEXINFO_PRINTFLIKE
+# define TEXINFO_PRINTFLIKE(fmt,narg) __attribute__ ((__format__ (__printf__, fmt, narg)))
+#endif
+			     
 #endif /* TEXINFO_SYSTEM_H */
