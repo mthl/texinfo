@@ -1,5 +1,5 @@
 /* texindex -- sort TeX index dribble output into an actual index.
-   $Id: texindex.c,v 1.24 2008-02-22 19:18:25 karl Exp $
+   $Id: texindex.c,v 1.25 2011-04-06 21:23:04 gray Exp $
 
    Copyright (C) 1987, 1991, 1992, 1996, 1997, 1998, 1999, 2000, 2001,
    2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
@@ -117,8 +117,8 @@ int compare_field (struct keyfield *keyfield, char *start1,
                    long int length2, long int pos2);
 int compare_full (const void *, const void *);
 void pfatal_with_name (const char *name);
-void fatal (const char *format, const char *arg);
-void error (const char *format, const char *arg);
+void fatal (const char *format, ...);
+void error (const char *format, ...);
 void *xmalloc (), *xrealloc ();
 static char *concat3 (const char *, const char *, const char *);
 
@@ -1146,20 +1146,34 @@ writelines (char **linearray, int nlines, FILE *ostream)
 /* Print error message and exit.  */
 
 void
-fatal (const char *format, const char *arg)
+vdiag (const char *fmt, const char *diagtype, va_list ap)
 {
-  error (format, arg);
-  xexit (1);
+  fprintf (stderr, "%s: ", program_name);
+  if (diagtype)
+    fprintf (stderr, "%s: ", diagtype);
+  vfprintf (stderr, fmt, ap);
+  putc ('\n', stderr);
 }
 
-/* Print error message.  FORMAT is printf control string, ARG is arg for it. */
 void
-error (const char *format, const char *arg)
+error (const char *fmt, ...)
 {
-  printf ("%s: ", program_name);
-  printf (format, arg);
-  if (format[strlen (format) -1] != '\n')
-    printf ("\n");
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
+}
+
+void
+fatal (const char *fmt, ...)
+{
+  va_list ap;
+
+  va_start (ap, fmt);
+  vdiag (fmt, NULL, ap);
+  va_end (ap);
+  xexit (1);
 }
 
 void
