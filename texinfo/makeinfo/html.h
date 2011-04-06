@@ -1,5 +1,5 @@
 /* html.h -- declarations for html-related utilities.
-   $Id: html.h,v 1.11 2008-05-19 18:26:48 karl Exp $
+   $Id: html.h,v 1.12 2011-04-06 21:20:24 gray Exp $
 
    Copyright (C) 1999, 2000, 2002, 2004, 2007, 2008
    Free Software Foundation, Inc.
@@ -58,10 +58,6 @@ extern void add_nodename_to_filename (char *nodename, int href);
 extern char *nodename_to_filename (char *nodename);
 extern int rollback_empty_tag (char *tag);
 
-#if defined (VA_FPRINTF) && __STDC__
-extern void insert_html_tag_with_attribute (int start_or_end, char *tag, char *format, ...);
-#else
-extern void insert_html_tag_with_attribute ();
-#endif
+extern void insert_html_tag_with_attribute (int start_or_end, char *tag, char *format, ...) TEXINFO_PRINTFLIKE(3,4);
 
 #endif /* !HTML_H */
