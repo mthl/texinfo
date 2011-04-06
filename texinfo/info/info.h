@@ -1,5 +1,5 @@
 /* info.h -- Header file which includes all of the other headers.
-   $Id: info.h,v 1.10 2010-03-17 22:01:05 pertusus Exp $
+   $Id: info.h,v 1.11 2011-04-06 21:16:39 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007
    Free Software Foundation, Inc.
@@ -129,10 +129,12 @@ extern int raw_escapes_p;
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
-/* Print FORMAT with ARG1 and ARG2.  If the window system was initialized,
+/* Print args as per FORMAT.  If the window system was initialized,
    then the message is printed in the echo area.  Otherwise, a message is
    output to stderr. */
-extern void info_error (const char *format, void *arg1, void *arg2);
+extern void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
+
+extern void vinfo_error (const char *format, va_list ap);
 
 extern void add_file_directory_to_path (char *filename);
 
@@ -162,5 +164,7 @@ extern void set_variable_to_value (char *name, char *value);
 
 /* Found in m-x.c.  */
 extern char *read_function_name (const char *prompt, WINDOW *window);
+
+extern void show_error_node (NODE *node);
 
 #endif /* !INFO_H */
