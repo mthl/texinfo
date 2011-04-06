@@ -1,5 +1,5 @@
 /* infodoc.c -- functions which build documentation nodes.
-   $Id: infodoc.c,v 1.26 2008-06-11 09:55:42 gray Exp $
+   $Id: infodoc.c,v 1.27 2011-04-06 21:17:06 gray Exp $
 
    Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2006,
    2007, 2008 Free Software Foundation, Inc.
@@ -372,10 +372,7 @@ create_internal_info_help_node (int help_is_only_window_p)
   else
     {
       /* We already had the right contents, so simply use them. */
-      node = build_message_node ("", 0, 0);
-      free (node->contents);
-      node->contents = contents;
-      node->nodelen = 1 + strlen (contents);
+      node = string_to_node (contents);
     }
 
   internal_info_help_node = node;
