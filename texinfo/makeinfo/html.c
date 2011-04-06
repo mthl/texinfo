@@ -1,5 +1,5 @@
 /* html.c -- html-related utilities.
-   $Id: html.c,v 1.42 2008-05-19 18:26:47 karl Exp $
+   $Id: html.c,v 1.43 2011-04-06 21:32:42 gray Exp $
 
    Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
    Free Software Foundation, Inc.
@@ -496,15 +496,7 @@ rollback_empty_tag (char *tag)
 
 /* Open or close TAG according to START_OR_END. */
 void
-#if defined (VA_FPRINTF) && __STDC__
 insert_html_tag_with_attribute (int start_or_end, char *tag, char *format, ...)
-#else
-insert_html_tag_with_attribute (start_or_end, tag, format, va_alist)
-     int start_or_end;
-     char *tag;
-     char *format;
-     va_dcl
-#endif
 {
   char *old_tag = NULL;
   char *old_attribs = NULL;
@@ -523,16 +515,10 @@ insert_html_tag_with_attribute (start_or_end, tag, format, va_alist)
   
   if (format)
     {
-#ifdef VA_SPRINTF
       va_list ap;
-#endif
 
-      VA_START (ap, format);
-#ifdef VA_SPRINTF
-      VA_SPRINTF (formatted_attribs, format, ap);
-#else
-      sprintf (formatted_attribs, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif
+      va_start (ap, format);
+      vsnprintf (formatted_attribs, sizeof (formatted_attribs), format, ap);
       va_end (ap);
     }
   else

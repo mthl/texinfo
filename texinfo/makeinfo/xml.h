@@ -1,5 +1,5 @@
 /* xml.h -- xml (including Docbook) output declarations.
-   $Id: xml.h,v 1.32 2008-01-31 18:33:28 karl Exp $
+   $Id: xml.h,v 1.33 2011-04-06 21:32:42 gray Exp $
 
    Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007, 2008
    Free Software Foundation, Inc.
@@ -150,10 +150,7 @@ extern void xml_begin_definition (void),
 extern int xml_current_stack_index (void),
   xml_element (char *name);
 
-#if defined (VA_FPRINTF) && __STDC__
-void xml_insert_element_with_attribute (int elt, int arg, char *format, ...);
-#else
-void xml_insert_element_with_attribute ();
-#endif
+void xml_insert_element_with_attribute (int elt, int arg, char *format, ...)
+  TEXINFO_PRINTFLIKE(3,4);
 
 #endif /* XML_H */
