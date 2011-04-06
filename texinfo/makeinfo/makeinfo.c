@@ -1,5 +1,5 @@
 /* makeinfo -- convert Texinfo source into other formats.
-   $Id: makeinfo.c,v 1.123 2008-08-28 22:53:30 karl Exp $
+   $Id: makeinfo.c,v 1.124 2011-04-06 21:21:01 gray Exp $
 
    Copyright (C) 1987, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
    2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
@@ -204,26 +204,14 @@ fs_error (char *filename)
 
 /* Print an error message, and return false. */
 void
-#if defined (VA_FPRINTF) && __STDC__
 error (const char *format, ...)
-#else
-error (format, va_alist)
-     const char *format;
-     va_dcl
-#endif
 {
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
   remember_error ();
 
-  VA_START (ap, format);
-#ifdef VA_FPRINTF
-  VA_FPRINTF (stderr, format, ap);
-#else
-  fprintf (stderr, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_FPRINTF */
+  va_start (ap, format);
+  vfprintf (stderr, format, ap);
   va_end (ap);
 
   putc ('\n', stderr);
@@ -231,29 +219,15 @@ error (format, va_alist)
 
 /* Just like error (), but print the input file and line number as well. */
 void
-#if defined (VA_FPRINTF) && __STDC__
 file_line_error (char *infile, int lno, const char *format, ...)
-#else
-file_line_error (infile, lno, format, va_alist)
-   char *infile;
-   int lno;
-   const char *format;
-   va_dcl
-#endif
 {
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
   remember_error ();
   fprintf (stderr, "%s:%d: ", infile, lno);
 
-  VA_START (ap, format);
-#ifdef VA_FPRINTF
-  VA_FPRINTF (stderr, format, ap);
-#else
-  fprintf (stderr, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_FPRINTF */
+  va_start (ap, format);
+  vfprintf (stderr, format, ap);
   va_end (ap);
 
   fprintf (stderr, ".\n");
@@ -262,55 +236,31 @@ file_line_error (infile, lno, format, va_alist)
 /* Just like file_line_error (), but take the input file and the line
    number from global variables. */
 void
-#if defined (VA_FPRINTF) && __STDC__
 line_error (const char *format, ...)
-#else
-line_error (format, va_alist)
-   const char *format;
-   va_dcl
-#endif
 {
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
   remember_error ();
   fprintf (stderr, "%s:%d: ", input_filename, line_number);
 
-  VA_START (ap, format);
-#ifdef VA_FPRINTF
-  VA_FPRINTF (stderr, format, ap);
-#else
-  fprintf (stderr, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_FPRINTF */
+  va_start (ap, format);
+  vfprintf (stderr, format, ap);
   va_end (ap);
 
   fprintf (stderr, ".\n");
 }
 
 void
-#if defined (VA_FPRINTF) && __STDC__
 warning (const char *format, ...)
-#else
-warning (format, va_alist)
-     const char *format;
-     va_dcl
-#endif
 {
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
   if (print_warnings)
     {
       fprintf (stderr, _("%s:%d: warning: "), input_filename, line_number);
 
-      VA_START (ap, format);
-#ifdef VA_FPRINTF
-      VA_FPRINTF (stderr, format, ap);
-#else
-      fprintf (stderr, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_FPRINTF */
+      va_start (ap, format);
+      vfprintf (stderr, format, ap);
       va_end (ap);
 
       fprintf (stderr, ".\n");
@@ -2547,25 +2497,13 @@ current_output_column (void)
 }
 
 void
-#if defined (VA_FPRINTF) && __STDC__
 add_word_args (const char *format, ...)
-#else
-add_word_args (format, va_alist)
-    const char *format;
-    va_dcl
-#endif
 {
   char buffer[2000]; /* xx no fixed limits */
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
-  VA_START (ap, format);
-#ifdef VA_SPRINTF
-  VA_SPRINTF (buffer, format, ap);
-#else
-  sprintf (buffer, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_SPRINTF */
+  va_start (ap, format);
+  vsnprintf (buffer, sizeof (buffer), format, ap);
   va_end (ap);
   add_word (buffer);
 }
@@ -2602,25 +2540,13 @@ add_html_block_elt (char *string)
 }
 
 void
-#if defined (VA_FPRINTF) && __STDC__
 add_html_block_elt_args (const char *format, ...)
-#else
-add_html_block_elt_args (format, va_alist)
-    const char *format;
-    va_dcl
-#endif
 {
   char buffer[2000]; /* xx no fixed limits */
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
 
-  VA_START (ap, format);
-#ifdef VA_SPRINTF
-  VA_SPRINTF (buffer, format, ap);
-#else
-  sprintf (buffer, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_SPRINTF */
+  va_start (ap, format);
+  vsnprintf (buffer, sizeof (buffer), format, ap);
   va_end (ap);
   add_html_block_elt (buffer);
 }
@@ -4122,31 +4048,19 @@ maybe_update_execution_strings (char **text, unsigned int new_len)
 /* Execute the string produced by formatting the ARGs with FORMAT.  This
    is like submitting a new file with @include. */
 void
-#if defined (VA_FPRINTF) && __STDC__
 execute_string (char *format, ...)
-#else
-execute_string (format, va_alist)
-    char *format;
-    va_dcl
-#endif
 {
   EXECUTION_STRING *es;
   char *temp_string, *temp_input_filename;
-#ifdef VA_FPRINTF
   va_list ap;
-#endif
   int insertion_level_at_start = insertion_level;
 
   es = get_execution_string (EXECUTE_STRING_MAX);
   temp_string = es->string;
   es->in_use = 1;
 
-  VA_START (ap, format);
-#ifdef VA_SPRINTF
-  VA_SPRINTF (temp_string, format, ap);
-#else
-  sprintf (temp_string, format, a1, a2, a3, a4, a5, a6, a7, a8);
-#endif /* not VA_SPRINTF */
+  va_start (ap, format);
+  vsnprintf (temp_string, EXECUTE_STRING_MAX, format, ap);
   va_end (ap);
 
   pushfile ();
